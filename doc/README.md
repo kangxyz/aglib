@@ -9,6 +9,7 @@ The [source-family guides](../Aglib/README.md) record both reusable interfaces a
 | [Interfaces](INTERFACES.md) | Native owners, canonical maps, universe boundaries and explicit theorem-family inputs |
 | [Scope](SCOPE.md) | General mathematics admitted here and deferred application layers |
 | [Development](DEVELOPMENT.md) | Focused builds, source guards, whole-package checks and downstream usage |
+| [Downstream integration](DOWNSTREAM.md) | Quillen and R5Lab dependency order, compatibility boundaries and application verification |
 | [References](REFERENCES.md) | Exact source identities and inspected organization references |
 | [Work plan](WORK_PLAN.md) | Current source/integration coverage and remaining work |
 
