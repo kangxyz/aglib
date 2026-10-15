@@ -356,6 +356,23 @@
     "diagnosis": "The job exceeded its actual three-hour execution limit; the complete saved log contained no Lean compilation error.",
     "workflow_sha256": "0f4646ca863b84bf64fc3820ffdcdc82549587755bbbf21ee4d5305d99fd2595",
     "cache_behavior": "Explicit dependency saves follow successful acquisition. Immutable run/attempt project generations preserve eligible partial progress after later failures; version-independent configuration hashing, compiler validation, pruning and rehash remain required.",
-    "validation_boundary": "YAML, shell syntax, 96 source regressions and the full local default route passed. Hosted Linux execution is assessed from the actual workflow result."
+    "validation_boundary": "YAML, shell syntax, 96 source regressions and the full local default route passed. Actual hosted Linux cold and warm runs of the same revision both passed. Version-only reuse is separately covered by the isolated local fixture, without a production version change.",
+    "verified_revision": "419bd685cee21ac408756fbfe99565be19d186fd",
+    "cold_run": {
+      "url": "https://github.com/kangxyz/aglib/actions/runs/38711518878",
+      "conclusion": "success",
+      "dependency_cache": "miss; saved after successful acquisition",
+      "project_cache": "miss; saved after successful checks"
+    },
+    "warm_run": {
+      "url": "https://github.com/kangxyz/aglib/actions/runs/38724351327",
+      "conclusion": "success",
+      "job_duration_seconds": 270,
+      "dependency_cache_hit": true,
+      "project_cache_restored_from_run": 38711518878,
+      "library_build": "cache hit; no compilation needed",
+      "independent_client_build": "cache hit; no compilation needed",
+      "new_project_cache_generation_saved": true
+    }
   }
 }

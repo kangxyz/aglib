@@ -60,4 +60,6 @@ Actual Quillen integration requires the original general cone-map additivity law
 
 The public-hosted CI recovery addresses an actual three-hour timeout without a Lean compilation error. The workflow uses the public Ubuntu runner and explicit cache restore/save actions. Dependencies save after successful acquisition; immutable run/attempt project generations preserve eligible partial outputs after later check failures. Package version changes preserve incremental reuse, while compiler validation, pruning and `--rehash` remain required. These changes pass all 96 source regressions. Hosted execution is assessed from the actual workflow result.
 
+Revision `419bd685cee21ac408756fbfe99565be19d186fd` passes both the [cold hosted run](https://github.com/kangxyz/aglib/actions/runs/38711518878) and a [second run of the same revision](https://github.com/kangxyz/aglib/actions/runs/38724351327). The second job completes in 270 seconds, restores both dependency and project caches, and reports that the library and independent client need no compilation. Both runs save their project-cache generations. Version-only reuse remains covered by the isolated local fixture; these hosted checks do not change the package version.
+
 The completed checks apply to the recorded source and artifact basis. Supplied mathematical premises remain explicit parts of their theorem statements.
