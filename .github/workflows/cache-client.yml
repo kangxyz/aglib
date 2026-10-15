@@ -21,8 +21,8 @@ jobs:
       AGLIB_BUILD_THREADS: 2
       AGLIB_LEAN_MEMORY_MB: 12800
       AGLIB_RSS_LIMIT_MB: 13824
-      CACHE_CLIENT_EVIDENCE: ${{ runner.temp }}/cache-client-evidence
-      QUILLEN_VERIFY_DIR: ${{ runner.temp }}/cache-client-evidence/mathlib
+      CACHE_CLIENT_EVIDENCE: .lake/verification/cache-client-${{ github.run_id }}-${{ github.run_attempt }}
+      QUILLEN_VERIFY_DIR: .lake/verification/cache-client-${{ github.run_id }}-${{ github.run_attempt }}/mathlib
     steps:
       # Root checkout must precede the nested tooling checkout.
       - name: Check out the actual Quillen consumer
