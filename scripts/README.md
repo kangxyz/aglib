@@ -154,12 +154,26 @@ remain significant; missing or unusable configuration fails instead of returning
 a partial key. Changing package versions therefore preserves the configuration
 key. Dependency revisions, Lean options, and toolchains change it.
 
+CI uses separate pinned `actions/cache/restore` and `actions/cache/save`
+steps. The dependency cache retains its exact OS/architecture, toolchain
+and manifest key. It is saved after matching Mathlib proof-cache acquisition
+succeeds, before the long project check.
+
 The project cache contains only `.lake/build` and
 `examples/downstream/.lake/build`. Its save key combines OS, architecture,
-configuration digest, and the current root/test/downstream Lean source digest.
-The pinned cache action restores and saves successful job outputs automatically.
-Restore prefixes try the same configuration first, then another configuration on
-the same OS/architecture. Package semver appears in neither restore prefix.
+configuration digest, the current root/test/downstream Lean source digest,
+and the GitHub run ID and attempt. Cache entries are immutable; these
+generations let identical-source retries save further partial progress.
+Restore prefixes try the same source and configuration first, then the same
+configuration, then another configuration on the same OS/architecture.
+The first prefix also matches legacy exact-source keys without a generation.
+Package-version-independent hashing remains unchanged.
+
+The explicit project save uses `always()` but requires a primary key from
+the restore step and successful compiler/cache preparation. It can therefore
+preserve available build outputs after a later check fails. Restoration
+still validates compiler stamps and prunes obsolete modules before the current
+`--rehash --ci` checks; partial caches do not establish verification.
 Source changes can reuse unaffected compiled modules through Lake `--rehash`.
 
 The official proof-cache command uses `resource_guard.py --bootstrap-cache`,

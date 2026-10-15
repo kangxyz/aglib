@@ -1357,6 +1357,10 @@
       "Module.scalarKernelEquiv"
     ],
     [
+      "AlgebraicGeometry.Scheme.CoefficientBaseChange",
+      "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+    ],
+    [
       "Aglib.Algebra.Category.ModuleCat.Localization",
       "ModuleCat"
     ],
@@ -1571,6 +1575,10 @@
     [
       "Aglib.RingTheory.Descent.Datum.Hom",
       "Algebra.Descent.Datum.Hom"
+    ],
+    [
+      "Aglib.Scheme.CoefficientBaseChange",
+      "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
     ],
     [
       "Aglib.RingTheory.smooth_isReduced",
@@ -2133,6 +2141,15 @@
       "module": "Aglib.Algebra.Homology.MappingCone.Map",
       "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor.",
       "boundary": "Declaration-specific routing; the remaining original MappingConeBiprod module stays in Quillen."
+    },
+    {
+      "family": "scheme and algebra coefficient base change",
+      "correspondence": {
+        "Quillen.Scheme.CoefficientBaseChange": "AlgebraicGeometry.Scheme.BaseChange.Coefficients",
+        "AlgebraicGeometry.Scheme.CoefficientBaseChange": "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      },
+      "module_prefix": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients",
+      "boundary": "Namespace routing to the existing actual coefficient diagrams; the intermediate Scheme.CoefficientBaseChange spelling is a migration stage, not an additional interface. Original endpoints, variance and hypotheses are unchanged."
     }
   ],
   "contextual_namespace_refinements": {

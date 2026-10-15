@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "Aglib",
   "root_module": "Aglib",
-  "status": "The current public mapping-cone interface amendment passed narrow compilation and a generic public-boundary probe; complete current-source integration is pending. Earlier acceptance records retain their original source/artifact bases.",
+  "status": "Complete current-source default integration passed, including all 422 root exact-module replay records and independent downstream build/audit/replay. Historical records below retain their original source/artifact bases.",
   "source_basis": {
     "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
     "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
@@ -241,7 +241,7 @@
   },
   "mapping_cone_interface_refinement": {
     "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
-    "status": "Narrow compilation and independent ordinary source/mathematical review passed; complete default integration pending.",
+    "status": "Independent ordinary source/mathematical review, focused public-boundary compilation and complete current-source default integration passed.",
     "declaration": "CochainComplex.mappingCone.map_add",
     "module": "Aglib.Algebra.Homology.MappingCone.Map",
     "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor.",
@@ -268,7 +268,7 @@
     ],
     "original_dependency_caches_unchanged": true,
     "all_owned_groups_closed": true,
-    "full_default_status": "pending"
+    "full_default_status": "passed; exact current evidence is current_source_acceptance"
   },
   "current_surface": {
     "production_modules": 412,
@@ -277,6 +277,85 @@
     "root_compiled_modules": 422,
     "root_lean_files": 426,
     "client_lean_files": 4,
-    "full_kernel_replay_status": "pending on current amended source basis"
+    "full_kernel_replay_status": "passed on current amended source basis; 422 modules, 6431 last-private inventory constants, 14 vacuous modules"
+  },
+  "historical_record_scope": {
+    "enrollment": "Initial accepted pre-header and pre-mapping-cone snapshot; current enrollment is current_surface.",
+    "confirmed_checks": "Initial accepted source/artifact basis, preserved without relabeling.",
+    "default_pipeline": "Initial complete default execution; current execution is current_source_acceptance."
+  },
+  "current_source_acceptance": {
+    "mathematical_revision": "415896064689def8ca298cefd3dcbc979e103099",
+    "ci_merge_parent": "fa8568431646d4c7f874a9bc4ee3a4d108e2c43b",
+    "command": "bash scripts/check.sh --rehash",
+    "exit_code": 0,
+    "source_regression_tests": 96,
+    "compilation_tests_declaration_lint_style_controls_inventory": "passed",
+    "production_axiom_audit": {
+      "declarations": 6384,
+      "defining_modules": 411,
+      "private_generated_origin_controls": 16,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "passed"
+    },
+    "root_kernel_replay": {
+      "status": "passed",
+      "expected_modules": 422,
+      "covered_modules": 422,
+      "new_constants": 6431,
+      "vacuous_modules": 14,
+      "proof_basis_sha256": "44fc963ab644af52705c66a7f822f476dcbf11737527097be5115eb4e010fbfe",
+      "semantics": "installed LeanChecker.replayFromImports; last-most-private part; empty is vacuous",
+      "execution_profiles_preserved_per_module": true,
+      "adopted_modules": 0
+    },
+    "independent_downstream": {
+      "build": "passed",
+      "audit": "passed",
+      "audited_client_foundation_declarations": 337,
+      "kernel_replay": {
+        "status": "passed",
+        "expected_modules": 3,
+        "covered_modules": 3,
+        "new_constants": 0,
+        "vacuous_modules": 3,
+        "proof_basis_sha256": "a8ea5677da7d9f203053d8b1779d36a7fb704c71aed087981c9a00f4fa4d20a8",
+        "semantics": "installed LeanChecker.replayFromImports; last-most-private part; empty is vacuous",
+        "execution_profiles_preserved_per_module": true,
+        "adopted_modules": 0
+      },
+      "boundary": "All three final private inventories are empty, so the extra client replay is vacuous; the independent compilation and audit exercise the public interfaces."
+    },
+    "source_only_transition": {
+      "changed_helper": "scripts/test_ci_cache.py",
+      "current_sha256": "4996047df0d2d5e2c36e2547dad1505e8572f8ec7eca28be16935eae656c47cd",
+      "mathematical_sources_unchanged": 430,
+      "candidate_inputs_unchanged": 4,
+      "root_client_configurations_unchanged": 6,
+      "boundary": "The original 24-helper freeze remains historical. Only the CI regression helper changed before the final full wrapper; checker inputs and both proof bases are unchanged. Every replay receipt retains its actual execution profile."
+    },
+    "all_owned_groups_closed": true,
+    "original_dependency_cache_entries_unchanged": 145024,
+    "evidence_sha256": {
+      "source": "5aac5b673664c563e16958357a34b3116829117b587753a216fe86f4318fec36",
+      "helper": "c73ea0422624cc081adb9bbb90af7dc98ae4dda549e802fcf61d855986a4f996",
+      "config": "45ce7e1f27db53702b6209496f02f439d24dbb3b05c8bb5a7c03bf91602a48cf",
+      "artifact": "c1a530242109fe71a7d02116a40609da65a4be1323308f7a0ece64cc194f9f03",
+      "full_default_report": "9138ca681f04e900e40dc5a44ceb86ff16e6e11af0914684a73dacdd2b7c0c42",
+      "full_default_receipt": "904adf89615f3fc6b3faa1bb9aa3f1e988010a1636be4e915a23efa1ab5865f2",
+      "sealed_evidence_manifest": "ed245cf37cb745bc383cb6a27646d3d35c954278bf9aa4f173678c8e87ef470c",
+      "source_only_transition": "29fcc409af2a9ad95e90d79a01a6557830e1642b7f9cbc25f1478943bad003a9"
+    }
+  },
+  "public_ci_recovery": {
+    "previous_run": "https://github.com/kangxyz/aglib/actions/runs/38680808159",
+    "diagnosis": "The job exceeded its actual three-hour execution limit; the complete saved log contained no Lean compilation error.",
+    "workflow_sha256": "0f4646ca863b84bf64fc3820ffdcdc82549587755bbbf21ee4d5305d99fd2595",
+    "cache_behavior": "Explicit dependency saves follow successful acquisition. Immutable run/attempt project generations preserve eligible partial progress after later failures; version-independent configuration hashing, compiler validation, pruning and rehash remain required.",
+    "validation_boundary": "YAML, shell syntax, 96 source regressions and the full local default route passed. Hosted Linux execution is assessed from the actual workflow result."
   }
 }
