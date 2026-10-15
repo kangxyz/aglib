@@ -126,6 +126,22 @@ actual producer and consumer revisions. The workflow is manual-only, has its own
 concurrency group and read-only repository permissions, uploads its evidence,
 and does not build Quillen mathematics or publish caches.
 
+### Verified initial rollout
+
+Aglib infrastructure commit `b7713c414aacaad13d07b83d6bab1f0216191595`
+passed [library and cache-publication CI](https://github.com/kangxyz/aglib/actions/runs/38772498398).
+Its current-source checks reused the existing compiled library, and the native
+cache release was published successfully.
+
+The [real Quillen acceptance run](https://github.com/kangxyz/aglib/actions/runs/38775313932)
+used Quillen `6fd36c20d05bc3dae38a474aae1eb93564614f35`, retaining its Aglib
+pin `419bd685cee21ac408756fbfe99565be19d186fd`. Into an empty isolated native
+cache, it anonymously imported the actual producer `b7713c4` and unpacked all
+412 production Aglib modules under `--rehash --no-build`, with zero Aglib source
+compilations. Tensor and Span import checks also passed. This records actual
+cross-repository delivery and compatible reuse across an infrastructure-only
+revision; complete Quillen verification belongs to its own library CI.
+
 ## R5Lab and future libraries
 
 For a local R5Lab consumer, select a reviewed Aglib tooling checkout independently

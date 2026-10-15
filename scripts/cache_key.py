@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hash root/client build configuration, excluding only package TOML versions.
+"""Hash root/client configuration, excluding package versions and cache storage policy.
 
 Adapted from Quillen's scripts/cache_key.py (typed-json-v1).
 Requires Python 3.11+. Executable Lake configurations are always hashed raw.
@@ -46,7 +46,11 @@ def config_hash(root: Path, packages=PACKAGES) -> str:
             if name == 'lakefile.toml':
                 try:
                     config = tomllib.loads(data.decode('utf-8'))
-                    config.pop('version', None)
+                    # Native cache storage/restoration does not change compiler
+                    # inputs. Retain the existing schema so enabling it can
+                    # recover conventional outputs from pre-migration keys.
+                    for field in ('version', 'enableArtifactCache', 'restoreAllArtifacts'):
+                        config.pop(field, None)
                     content = _canonical(config)
                 except (ValueError, UnicodeError) as error:
                     raise ValueError(f'{relative}: {error}') from error

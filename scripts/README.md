@@ -150,11 +150,13 @@ unsandboxed execution route; monitoring failure cannot count as success.
 
 `cache_key.py` adapts the typed TOML normalization from Quillen's
 `scripts/cache_key.py`. It hashes root and downstream toolchains, manifests,
-TOML configuration, and any executable `lakefile.lean` bytes. Only the top-level
-package `version` is omitted from each TOML configuration. Types and array order
+TOML configuration, and any executable `lakefile.lean` bytes. The top-level
+package `version`, `enableArtifactCache` and `restoreAllArtifacts` are omitted
+from each TOML configuration; native storage-policy migration preserves the
+existing schema and legacy keys. Types and array order
 remain significant; missing or unusable configuration fails instead of returning
-a partial key. Changing package versions therefore preserves the configuration
-key. Dependency revisions, Lean options, and toolchains change it.
+a partial key. Changing package versions or native storage policy therefore
+preserves the configuration key. Dependency revisions, Lean options, and toolchains change it.
 
 CI uses separate pinned `actions/cache/restore` and `actions/cache/save`
 steps. The dependency cache retains its exact OS/architecture, toolchain

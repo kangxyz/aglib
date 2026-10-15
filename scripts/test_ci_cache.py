@@ -64,6 +64,37 @@ class CacheKeyTests(CacheFixture):
             digests.append(config_hash(self.root))
         self.assertEqual(len(set(digests)), len(digests))
 
+    def test_native_storage_policy_absent_true_false_preserves_legacy_key(self):
+        baseline = config_hash(self.root)
+        for package in ('', 'examples/downstream'):
+            path = self.root / package / 'lakefile.toml'
+            original = path.read_text()
+            for enabled in (None, True, False):
+                for restored in (None, True, False):
+                    flags = ''.join(f'{name} = {str(value).lower()}\n'
+                                    for name, value in [('enableArtifactCache', enabled),
+                                                        ('restoreAllArtifacts', restored)]
+                                    if value is not None)
+                    with self.subTest(package=package, enabled=enabled, restored=restored):
+                        path.write_text(flags + original)
+                        self.assertEqual(config_hash(self.root), baseline)
+            path.write_text(original)
+
+    def test_nested_storage_named_fields_remain_significant(self):
+        baseline = config_hash(self.root)
+        for package in ('', 'examples/downstream'):
+            path = self.root / package / 'lakefile.toml'
+            original = path.read_text()
+            for table in ('[leanOptions]', '[[require]]\nname="dependency"'):
+                for field in ('enableArtifactCache', 'restoreAllArtifacts'):
+                    digests = []
+                    for value in ('true', 'false'):
+                        path.write_text(original + f'\n{table}\n{field}={value}\n')
+                        digests.append(config_hash(self.root))
+                    self.assertNotIn(baseline, digests)
+                    self.assertNotEqual(*digests)
+            path.write_text(original)
+
     def test_table_order_and_comments_are_normalized_but_array_order_is_not(self):
         self.config('name="fixture"\nvalues=["a", "b"]\n')
         original = config_hash(self.root)
@@ -297,7 +328,7 @@ class WorkflowTests(unittest.TestCase):
     def test_public_runner_profile_leaves_time_to_save_after_check_timeout(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
         job = workflow[workflow.index('  library:'):workflow.index('    steps:')]
-        self.assertIn('runs-on: ubuntu-latest', job)
+        self.assertIn('runs-on: ubuntu-24.04', job)
         self.assertIn('timeout-minutes: 360', job)
         self.assertIn('AGLIB_BUILD_THREADS: 4', job)
         self.assertIn('AGLIB_LEAN_MEMORY_MB: 12800', job)
