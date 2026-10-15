@@ -52,4 +52,6 @@ The current tree contains 411 production modules, eight positive-client modules 
 
 The accepted hosted route runs full compilation, tests, lint/style, axiom auditing, rejection controls, inventory checks and a downstream build/audit. The two additional independent kernel replays remain required locally before publication. The maintained workflow owns its runner and resource settings; machine-specific local settings are not repository policy.
 
+The CI execution repair replaces repeated per-module Lake invocations with one ordinary build graph and records expected cold-cache probe diagnostics separately. The 92 source regression tests pass. Isolated actual builds verify cold, warm, version-only and affected-source behavior, with one active compiler and configurable internal threads. Both native CI linter commands pass on the same pinned mathematical sources; only their tool prerequisites are built. Original dependency-cache identities and root proof artifacts remain unchanged. These local results validate the execution change; the hosted runner's result is tracked separately.
+
 The completed checks apply to the recorded source and artifact basis. Supplied mathematical premises remain explicit parts of their theorem statements.

@@ -29,15 +29,33 @@ compilation, declaration/style lint, axiom audits, controls, inventory, and the
 independent downstream build and audit remain required. Default local `check.sh`
 also performs both independent kernel replays before publication.
 
-The declaration linter runs the pinned Batteries source directly:
+CI invokes the configured Batteries declaration linter and Mathlib's Lean style
+driver through their native Lake interfaces, from the Aglib package root:
+
+```sh
+lake lint -- --no-build
+lake exe mathlib/lint-style Aglib AglibTest
+```
+
+The first command includes Lake's configured builtin phase and then runs the
+Batteries driver selected in `lakefile.toml`. The driver selects declarations by
+defining-module origin, so native mathematical namespaces do not reduce package
+coverage. Its `--no-build` rejects missing imported library artifacts; Lake can
+still build the executable's tool prerequisites. The style driver reads Aglib's
+current-root configuration and receives the explicit `Aglib AglibTest` selection.
+Neither command replaces the separate Lean axiom/origin audit. Python checks
+package structure, import enrollment and execution; it does not implement these
+Lean declaration or text-style rules.
+
+The local route preserves shared dependency caches by running the same pinned
+Batteries source directly:
 
 ```sh
 python3 scripts/resource_guard.py --capped-toolchain --receipt .lake/verification/declaration-lint.json -- lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
 ```
 
-It selects declarations by defining-module origin, so native mathematical
-namespaces do not reduce package coverage. `--no-build` rejects missing project
-or linter oleans instead of rebuilding dependency caches.
+`--no-build` rejects missing project or linter oleans instead of rebuilding
+dependency caches.
 
 `run_style_linter.py` executes the pinned Mathlib
 `scripts/lint-style.lean` with the arguments `Aglib AglibTest`:
@@ -56,8 +74,8 @@ also compiles the byte-identical driver into the overlay, then runs an import-on
 shim with the pinned Lake shared library loaded. This initializes driver options
 before evaluation and makes Lake's native workspace loader available.
 The actual checks and arguments remain those of the pinned driver. The helper
-does not pass `--fix`. The normal Lake lint-driver configuration remains available
-for ordinary dependency checkouts.
+does not pass `--fix`. CI owns writable dependency caches and uses the native
+commands above instead of this local overlay.
 
 ## Resource limits and exact kernel replay
 
@@ -69,8 +87,17 @@ same count to native `-j` and `LEAN_NUM_THREADS`, including Lake-spawned compile
 while retaining the memory limits and one compiler process.
 The wrapper links the installed toolchain read-only and changes no source or
 proof options. `build_serial.py` first checks whether all targets are cached;
-otherwise it builds one local module at a time after its local imports. The pinned
-Lake has no `-j` or maximum-jobs CLI flag.
+otherwise it invokes one ordinary Lake build graph for the requested targets.
+Lake resolves and schedules the dependency graph once, with its parent worker
+limited to one and compiler children receiving the requested internal parallelism.
+The pinned Lake has no `-j` or maximum-jobs CLI flag.
+
+The no-build probe writes its full output to `cached-check.log` and prints one
+cache-hit or cache-miss summary. Only pinned Lake's exit code 3 accompanied
+exclusively by its expected out-of-date errors permits a build fallback. Other
+probe errors are printed and stop the run. Compiler failures remain visible in
+the ordinary build output. Each receipt directory owns one probe log and refuses
+to overwrite prior evidence.
 
 `AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` configure the native allocation
 limit and aggregate owned-group RSS cutoff in MiB. Defaults are conservative and
@@ -171,11 +198,11 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | File | Interface and consumer |
 | --- | --- |
 | `resource_guard.py` | Samples only its owned process group's RSS; enforces one active Lean and closes the group on failure. `--capped-toolchain` supplies native compiler caps; the restricted `--bootstrap-cache` exception keeps the RSS limit. |
-| `build_serial.py` | Checks cached targets first, then builds exact local modules in source dependency order with one capped compiler. |
+| `build_serial.py` | Checks cached targets first, then invokes one Lake build graph with one capped compiler process. |
 | `check_kernel.py` | Replays bounded batches of the exact current production, positive-test, and audit-support inventory using installed `LeanChecker.replayFromImports`; writes resumable source/artifact-bound coverage receipts. `--client` checks the independent Consumer package. |
 | `test_resource_guard.py` | Pure Python budget, fail-closed monitoring, exit propagation, and owned-PID termination regressions. |
 | `test_kernel.py` | Exact enrollment, bounded task barrier, failed-batch rejection, RSS backoff, immutable attempt logs, and basis-checked legacy adoption regressions. |
-| `test_build_serial.py` | Checks source dependency order, one-target scheduling, cache hits, and actual compiler-wrapper argument caps using a small Python executable. |
+| `test_build_serial.py` | Checks target validation, single-graph scheduling, strict cache-miss fallback, preserved probe logs, and compiler-wrapper argument caps using a small Python executable. |
 | `check.sh` | Serialized source/full integration entry point; accepts `--source-only` and `--rehash`. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. |
@@ -187,7 +214,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `run_style_linter.py` | Runs the exact pinned style driver through a temporary optional-module overlay. `--check-prerequisites --sysroot PATH` inspects direct driver/source prerequisites without Lake, compilation, or writes. |
 | `prepare_downstream.py` | Prepares the independently configured client's manifest and dependency-cache link from the pinned root manifest. It preserves the root manifest and existing dependency sources. |
 | `migration_helpers.py` | Read-only transitional inspection of initial-extraction routing and namespace maps. `read_source` requires an explicit source root, exact Git revision, and exact source SHA-256; `write_source` and `record` are retired and always fail before writes. It is not the redesigned-source authoring pipeline or a production dependency. |
-| `test_check_script.py` | Fixed command-level regressions for failure propagation, immutable-cache-safe linter dispatch, explicit audits, and scoped kernel replay. |
+| `test_check_script.py` | Fixed command-level regressions for failure propagation, native CI and immutable-cache-safe local linter dispatch, explicit audits, and scoped kernel replay. |
 | `test_integration_setup.py` | Regressions for exact compiled enrollment, isolated downstream manifest setup, and read-only optional linter prerequisite planning. |
 | `test_migration_helpers.py` | Regressions for explicit source selection, revision/hash guards, preserved provenance identities, and retired writer failure without module/metadata mutation. |
 | `test_source_guards.py` | Regression fixtures for lexical boundaries, facade ownership/enrollment, cycles, modern exports, placeholders, downstream imports, and local heartbeat policy. |

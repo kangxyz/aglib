@@ -157,5 +157,57 @@
     },
     "handback_sha256": "9f1485a1e6cb6fd5f7d055cb744a69386e2c76fb9a44603f02859d0fa5b59003",
     "semantic_boundary": "Execution scheduling changed; mathematical source statements, proofs, imports, options and compiled artifacts did not change."
+  },
+  "ci_execution_update": {
+    "status": "Local execution and independent source review passed; hosted Intel CI result remains separate.",
+    "mathematical_source_basis": "Unchanged from the accepted 7760993163b3393592f78b4f20d537305534e818 snapshot.",
+    "source_only_command": "bash scripts/check.sh --source-only",
+    "source_regression_tests": 92,
+    "implementation_sha256": {
+      ".github/workflows/ci.yml": "ed5e328f0bd3b3a54d7170701418131380602b287e80446483c18740df5dbc6f",
+      "scripts/build_serial.py": "7c24ee5132aa1a4e5058f4ed3016247b5ecbfb1da1a4b65ae0e25577ee4bc355",
+      "scripts/test_build_serial.py": "a2408f475495dcae8fb440bcc78eb0535477cd57eb5b71c07cb6aae7e4f7ef54",
+      "scripts/check.sh": "dadcf2b63c265bca6e2276704eec54b3e4a6b63ccbbb2c9d204204f6cd783992",
+      "scripts/test_check_script.py": "020737cc1f6e0ad0277ddff6eac75968af76b69b619d0ede052523ab781d6780",
+      "scripts/resource_guard.py": "4286c5b59df8a86e067e4bca288b38b1f0d9a341aba86cbbab1b463c86873e2f"
+    },
+    "build_graph": {
+      "ordinary_build_invocations_per_miss": 1,
+      "expected_probe_diagnostics": "Retained in exclusive cached-check.log; only pinned exit 3 with exclusively out-of-date errors permits fallback.",
+      "actual_fixture_cases": [
+        "cold root/client build",
+        "warm reuse",
+        "root/client version-only reuse",
+        "affected source closure with unrelated outputs preserved",
+        "visible configuration failure"
+      ],
+      "max_observed_compiler_processes": 1,
+      "all_owned_groups_closed": true,
+      "handback_sha256": "d44bd861bf6d165f0ee75a1850805f6abf214d6a58129c446b253c271c369822"
+    },
+    "native_lint": {
+      "commands": [
+        {
+          "command": "lake --rehash lint -- --no-build",
+          "exit_code": 0
+        },
+        {
+          "command": "lake --rehash exe mathlib/lint-style Aglib AglibTest",
+          "exit_code": 0
+        }
+      ],
+      "execution_platform": "Local macOS arm64; not a hosted Intel runner verdict.",
+      "scope": "Same pinned Batteries declaration driver and Mathlib Lean style driver; the builtin phase reported no environment linters for the project libraries.",
+      "integrity": {
+        "unchanged_mathematical_sources": 428,
+        "unchanged_root_proof_artifacts": 1258,
+        "unchanged_original_dependency_cache_identities": 134671,
+        "all_owned_groups_closed": true
+      },
+      "failed_attempts": "A prior lower-budget lint attempt failed and remains excluded from acceptance.",
+      "report_sha256": "10ec82048c8c0d382e967ba896a7886e00926c9fa7698cdcc009b2114b672001"
+    },
+    "independent_review": "Build helper and native CI routing reviewed separately; no substantiated defect found.",
+    "semantic_boundary": "Only execution and regression infrastructure changed. The accepted mathematical source/artifact basis and required audits remain unchanged."
   }
 }

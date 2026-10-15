@@ -70,11 +70,26 @@ class CheckScriptTests(unittest.TestCase):
         code, log = self.run_script('', '--rehash', '--ci')
         self.assertEqual(code, 0)
         for stage in ['build_serial.py', '--rehash Aglib AglibTest', 'lake --rehash test',
-                      'batteries/scripts/runLinter.lean', 'run_style_linter.py',
+                      'lake --rehash lint -- --no-build',
+                      'lake --rehash exe mathlib/lint-style Aglib AglibTest',
                       'AglibTest/Axioms.lean', 'check_negative_controls.py',
                       'check_compiled_inventory.py', 'prepare_downstream.py',
                       '--rehash Consumer', 'Audit.lean']:
             self.assertIn(stage, log)
+        self.assertNotIn('check_kernel.py', log)
+        self.assertNotIn('batteries/scripts/runLinter.lean', log)
+        self.assertNotIn('run_style_linter.py', log)
+
+    def test_ci_native_declaration_linter_failure_stops_dependents(self):
+        code, log = self.run_script('lint -- --no-build', '--ci')
+        self.assertEqual(code, 19)
+        self.assertNotIn('exe mathlib/lint-style', log)
+        self.assertNotIn('AglibTest/Axioms.lean', log)
+
+    def test_ci_native_style_failure_stops_audits(self):
+        code, log = self.run_script('exe mathlib/lint-style', '--ci')
+        self.assertEqual(code, 19)
+        self.assertNotIn('AglibTest/Axioms.lean', log)
         self.assertNotIn('check_kernel.py', log)
 
     def test_declaration_linter_failure_stops_style_and_audits(self):

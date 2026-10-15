@@ -20,7 +20,7 @@ python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration \
   Aglib.CategoryTheory.ExactCategory.Basic
 ```
 
-The helper accepts `--root ROOT`, `--rehash` and one or more module targets. It first checks whether the requested targets are already cached, then builds missing work in local import order with one capped Lean process. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
+The helper accepts `--root ROOT`, `--rehash` and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
 
 ## Local verification and CI
 
@@ -53,6 +53,8 @@ bash scripts/check.sh --rehash --ci
 | Extra independent library and client kernel replay | Included | Omitted; required locally before publication |
 
 `--ci` skips only the two extra `check_kernel.py` calls. Lean itself kernel-checks theorem proofs when compiling them; those compiler checks remain part of the build. The separate independent replay is a local prepublication requirement.
+
+CI uses the configured Batteries Lean linter through `lake lint -- --no-build`, followed by `lake exe mathlib/lint-style Aglib AglibTest`. These are the standard Lake interfaces to the pinned Lean implementations. The local route runs the same pinned declaration and style implementations without writing executable outputs into shared dependency caches. Python checks cover package structure, enrollment and execution; the axiom/origin audit is a separate Lean check. See [linter entry points](../scripts/README.md#check-entry-points) for the coverage and cache boundary.
 
 ## Memory and exact replay
 

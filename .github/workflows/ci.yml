@@ -18,6 +18,7 @@ jobs:
     timeout-minutes: 180
     env:
       LEAN_NUM_THREADS: 1
+      AGLIB_BUILD_THREADS: 2
       AGLIB_LEAN_MEMORY_MB: 10240
       AGLIB_RSS_LIMIT_MB: 11264
     steps:

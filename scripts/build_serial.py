@@ -44,11 +44,14 @@ def capped_toolchain(root, threads=1):
             ' if a in ["-j","-M"]: i+=2; continue\n'
             ' if a.startswith("-j") or a.startswith("-M"): i+=1; continue\n'
             ' args.append(a); i+=1\n'
-            'os.execv(' + repr(lean) + ',[' + repr(lean) + ',' + repr('-j' + str(threads)) + ','
+            'threads=1 if args in [["--githash"],["--print-prefix"],["--version"]] else '
+            + repr(threads) + '\n'
+            'os.environ["LEAN_NUM_THREADS"]=str(threads)\n'
+            'os.execv(' + repr(lean) + ',[' + repr(lean) + ',"-j"+str(threads),'
             + repr('-M' + str(budget['lean_memory_mb'])) + ']+args)\n')
         wrapper.chmod(0o755)
         yield dict(os.environ, LEAN_SYSROOT=str(overlay), LEAN=str(wrapper),
-                   LAKE_OVERRIDE_LEAN='true', LEAN_NUM_THREADS=str(threads),
+                   LAKE_OVERRIDE_LEAN='true', LEAN_NUM_THREADS='1',
                    PATH=str(overlay / 'bin') + os.pathsep + os.environ.get('PATH', ''))
 
 
@@ -72,25 +75,43 @@ def source_order(root, targets):
     return result
 
 
+def expected_cache_miss(code, output):
+    # Pinned Lake Build/Run.lean assigns noBuildCode = 3. A mixed graph can
+    # contain other failures too, so never classify by exit status alone.
+    errors = [line.split('error:', 1)[1].strip()
+              for line in output.splitlines() if 'error:' in line]
+    return code == 3 and bool(errors) and all(
+        error == 'target is out-of-date and needs to be rebuilt' for error in errors)
+
+
 def build(root, targets, directory, rehash=False):
     directory.mkdir(parents=True, exist_ok=True)
-    order = source_order(root, targets)
+    source_order(root, targets)
     lake = ['lake'] + (['--rehash'] if rehash else [])
     budget = limits()
-    budget['lean_threads'] = build_threads()
-    with capped_toolchain(root, threads=budget['lean_threads']) as env:
-        code = run(lake + ['--no-build', 'build', *targets], cwd=root, env=env,
-                   receipt=directory / 'cached-check.json', budget=budget)
+    # Lake's one worker admits one external frontend at a time. Its compiler
+    # wrapper supplies the requested native parallelism only to that child.
+    # The strict guard remains a fail-closed check on actual process concurrency.
+    budget['native_build_threads'] = build_threads()
+    with capped_toolchain(root, threads=budget['native_build_threads']) as env:
+        log = directory / 'cached-check.log'
+        # Each receipt directory owns one probe. Preserve earlier evidence rather
+        # than silently overwriting it when a caller accidentally reuses a path.
+        with log.open('x') as output:
+            code = run(lake + ['--no-build', 'build', *targets], cwd=root, env=env,
+                       receipt=directory / 'cached-check.json', budget=budget,
+                       stdout=output, stderr=output)
         if code == 0:
+            print(f'Build cache hit; no compilation needed (probe log: {log}).', flush=True)
             return 0
-        if code in [125, 137]:
+        diagnostics = log.read_text()
+        if not expected_cache_miss(code, diagnostics):
+            print(f'Build cache probe failed ({code}); see {log}.', file=sys.stderr, flush=True)
+            print(diagnostics, file=sys.stderr, end='' if diagnostics.endswith('\n') else '\n')
             return code
-        for index, module in enumerate(order):
-            code = run(lake + ['build', '+' + module], cwd=root, env=env,
-                       receipt=directory / ('module-' + str(index).zfill(4) + '.json'), budget=budget)
-            if code:
-                return code
-    return 0
+        print(f'Build cache miss; building requested targets (probe log: {log}).', flush=True)
+        return run(lake + ['build', *targets], cwd=root, env=env,
+                   receipt=directory / 'graph-build.json', budget=budget)
 
 
 def main():

@@ -36,14 +36,19 @@ safe() {
 python3 scripts/build_serial.py --receipt-dir "$verification_dir/build" \
   ${lake_args[@]+"${lake_args[@]}"} Aglib AglibTest AglibTest.AuditSupport
 safe test lake ${lake_args[@]+"${lake_args[@]}"} test
-# Execute pinned sources without building binaries in immutable dependencies.
-# --no-build makes missing linter/library oleans a failure, not an implicit build.
-safe declaration-lint lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
-safe style python3 scripts/run_style_linter.py
+if (( ci_mode )); then
+  # CI owns writable dependency caches, so use Mathlib's native Lake entry points.
+  safe declaration-lint lake ${lake_args[@]+"${lake_args[@]}"} lint -- --no-build
+  safe style lake ${lake_args[@]+"${lake_args[@]}"} exe mathlib/lint-style Aglib AglibTest
+else
+  # Execute the same pinned Lean linters without changing shared dependency caches.
+  safe declaration-lint lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
+  safe style python3 scripts/run_style_linter.py
+fi
 # Cached oleans do not re-execute the trust audit, so replay the source explicitly.
 safe axioms lake env lean -j1 AglibTest/Axioms.lean
 safe negative-controls python3 scripts/check_negative_controls.py
-# Replay the exact current inventory sequentially, including private/generated declarations.
+# Check exact current inventory, including private/generated declarations.
 python3 scripts/check_compiled_inventory.py
 if (( ! ci_mode )); then
   python3 scripts/check_kernel.py --receipt-dir "$verification_dir/kernel"
