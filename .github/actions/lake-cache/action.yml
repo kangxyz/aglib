@@ -1,0 +1,101 @@
+name: Native Lake artifact cache
+description: Restore native Lake cache and public dependency assets, stage outputs, or publish release assets
+inputs:
+  mode:
+    description: restore before building, publish to stage checked outputs, release in a separate publish job
+    required: true
+  root:
+    description: Lake package directory
+    default: .
+  repositories:
+    description: Whitespace-separated trusted GitHub repositories for direct manifest dependencies
+    default: ''
+  mappings:
+    description: Native lake build -o mappings (publish only)
+    default: ''
+  artifact:
+    description: Same-run staging artifact name (release only)
+    default: ''
+outputs:
+  artifact-name:
+    description: Same-run staging artifact for the separate release job
+    value: ${{ steps.stage.outputs.artifact-name }}
+  cache-key:
+    description: Immutable key for the caller's always-save step
+    value: ${{ steps.local.outputs.cache-primary-key }}
+  cache-path:
+    description: Shared native cache directory
+    value: ${{ runner.temp }}/lake-native-cache
+runs:
+  using: composite
+  steps:
+    - name: Select runner-owned native Lake cache
+      shell: bash
+      env:
+        CACHE_MODE: ${{ inputs.mode }}
+      run: |
+        case "$CACHE_MODE" in restore|publish|release) ;; *) echo 'Expected restore, publish or release' >&2; exit 2 ;; esac
+        echo 'LAKE_CACHE_DIR=${{ runner.temp }}/lake-native-cache' >> "$GITHUB_ENV"
+    - name: Select toolchain cache key
+      if: inputs.mode == 'restore'
+      id: key
+      shell: bash
+      env:
+        PACKAGE_ROOT: ${{ inputs.root }}
+      run: |
+        set -euo pipefail
+        toolchain=$(tr '/:' '--' < "$PACKAGE_ROOT/lean-toolchain" | tr -d '\n\r')
+        echo "prefix=lake-native-v1-${{ runner.os }}-${{ runner.arch }}-$toolchain-" >> "$GITHUB_OUTPUT"
+    - name: Restore native artifacts and mappings across source/configuration pins
+      if: inputs.mode == 'restore'
+      id: local
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ${{ runner.temp }}/lake-native-cache
+        key: ${{ steps.key.outputs.prefix }}${{ github.run_id }}-${{ github.run_attempt }}
+        restore-keys: ${{ steps.key.outputs.prefix }}
+    - name: Import pinned public dependency release assets
+      if: inputs.mode == 'restore'
+      shell: bash
+      env:
+        PACKAGE_ROOT: ${{ inputs.root }}
+        REPOSITORIES: ${{ inputs.repositories }}
+      run: |
+        set -euo pipefail
+        read -r -a repositories <<< "$REPOSITORIES"
+        python3 "$GITHUB_ACTION_PATH/cache.py" --root "$PACKAGE_ROOT" restore --repositories "${repositories[@]}"
+    - name: Stage native outputs with source/compiler provenance
+      if: inputs.mode == 'publish'
+      id: stage
+      shell: bash
+      env:
+        PACKAGE_ROOT: ${{ inputs.root }}
+        MAPPINGS: ${{ inputs.mappings }}
+        REPOSITORY: ${{ github.repository }}
+      run: |
+        set -euo pipefail
+        python3 "$GITHUB_ACTION_PATH/cache.py" --root "$PACKAGE_ROOT" stage \
+          --mappings "$MAPPINGS" --repository "$REPOSITORY" \
+          --destination '${{ runner.temp }}/lake-native-stage'
+    - name: Publish immutable native Lake staging directory
+      if: inputs.mode == 'publish'
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: ${{ steps.stage.outputs.artifact-name }}
+        path: ${{ steps.stage.outputs.artifact-path }}
+        if-no-files-found: error
+        retention-days: 30
+        compression-level: 0
+    - name: Publish public native Lake release asset
+      if: inputs.mode == 'release'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        PACKAGE_ROOT: ${{ inputs.root }}
+        REPOSITORY: ${{ github.repository }}
+        REVISION: ${{ github.sha }}
+        STAGING_ARTIFACT: ${{ inputs.artifact }}
+      run: |
+        set -euo pipefail
+        python3 "$GITHUB_ACTION_PATH/cache.py" --root "$PACKAGE_ROOT" release \
+          --repository "$REPOSITORY" --revision "$REVISION" --artifact "$STAGING_ARTIFACT"

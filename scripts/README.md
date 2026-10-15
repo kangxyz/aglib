@@ -146,6 +146,8 @@ unsandboxed execution route; monitoring failure cannot count as success.
 
 ## Incremental CI build cache
 
+[Native caching](../doc/CACHING.md) owns the canonical `.github/actions/lake-cache` action and adjacent adapter. Its native toolchain cache retains artifacts and input mappings across manifest/option changes; public cache prerelease assets deliver upstream builds without cross-repository credentials. `build_serial.py --outputs FILE` forwards native Lake `-o` on both its no-build probe and ordinary build. Existing checkout cache behavior below remains additional incremental storage.
+
 `cache_key.py` adapts the typed TOML normalization from Quillen's
 `scripts/cache_key.py`. It hashes root and downstream toolchains, manifests,
 TOML configuration, and any executable `lakefile.lean` bytes. Only the top-level

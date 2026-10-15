@@ -8,6 +8,8 @@ testDriver = "AglibTest"
 lintDriver = "batteries/runLinter"
 lintDriverArgs = ["Aglib"]
 builtinLint = true
+enableArtifactCache = true
+restoreAllArtifacts = true
 
 [[lean_lib]]
 name = "Aglib"

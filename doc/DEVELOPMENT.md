@@ -22,7 +22,7 @@ python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration \
   Aglib.CategoryTheory.ExactCategory.Basic
 ```
 
-The helper accepts `--root ROOT`, `--rehash` and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
+The helper accepts `--root ROOT`, `--rehash`, optional native Lake `--outputs FILE` mappings and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
 
 ## Local verification and CI
 
@@ -75,6 +75,8 @@ python3 scripts/check_kernel.py --root examples/downstream --client \
 Run these after the corresponding build and audits, or use the full local route. `--only MODULE` is a diagnostic probe and cannot establish complete coverage. Resume only with the same source, artifact, configuration and installed-checker basis; a changed basis requires a fresh receipt directory. Historical receipts are not current verification evidence.
 
 ## Incremental cache and publication
+
+[Native caching](CACHING.md) owns shared toolchain artifacts, cross-checkout and cross-library reuse, public CI cache release assets, and the reusable producer/consumer protocol. Package options retain ordinary `.lake/build` files for existing audits. Mathlib keeps `lake exe cache get`. The checkout caches below additionally preserve incremental partial progress.
 
 The project cache covers the root and downstream build directories. Only the top-level package `version` in each root/client TOML file is omitted from semantic configuration hashing. All other configuration fields and executable `lakefile.lean` bytes remain significant. Source changes retain unaffected outputs through Lake `--rehash`; same-ABI dependency, option and other configuration changes retain reusable artifacts while Lake invalidates affected work. Changed, missing or unrecognized compiler stamps reset the owned build roots, and obsolete or renamed module outputs are pruned. Dependencies remain outside those owned roots. See [incremental cache details](../scripts/README.md#incremental-ci-build-cache).
 

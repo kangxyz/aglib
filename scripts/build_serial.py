@@ -84,10 +84,13 @@ def expected_cache_miss(code, output):
         error == 'target is out-of-date and needs to be rebuilt' for error in errors)
 
 
-def build(root, targets, directory, rehash=False):
+def build(root, targets, directory, rehash=False, outputs=None):
     directory.mkdir(parents=True, exist_ok=True)
     source_order(root, targets)
     lake = ['lake'] + (['--rehash'] if rehash else [])
+    output_args = ['-o', str(outputs.resolve())] if outputs is not None else []
+    if outputs is not None:
+        outputs.parent.mkdir(parents=True, exist_ok=True)
     budget = limits()
     # Lake's one worker admits one external frontend at a time. Its compiler
     # wrapper supplies the requested native parallelism only to that child.
@@ -98,7 +101,7 @@ def build(root, targets, directory, rehash=False):
         # Each receipt directory owns one probe. Preserve earlier evidence rather
         # than silently overwriting it when a caller accidentally reuses a path.
         with log.open('x') as output:
-            code = run(lake + ['--no-build', 'build', *targets], cwd=root, env=env,
+            code = run(lake + ['--no-build', 'build', *targets, *output_args], cwd=root, env=env,
                        receipt=directory / 'cached-check.json', budget=budget,
                        stdout=output, stderr=output)
         if code == 0:
@@ -110,7 +113,7 @@ def build(root, targets, directory, rehash=False):
             print(diagnostics, file=sys.stderr, end='' if diagnostics.endswith('\n') else '\n')
             return code
         print(f'Build cache miss; building requested targets (probe log: {log}).', flush=True)
-        return run(lake + ['build', *targets], cwd=root, env=env,
+        return run(lake + ['build', *targets, *output_args], cwd=root, env=env,
                    receipt=directory / 'graph-build.json', budget=budget)
 
 
@@ -119,10 +122,11 @@ def main():
     parser.add_argument('--root', type=Path, default=Path.cwd())
     parser.add_argument('--receipt-dir', type=Path, required=True)
     parser.add_argument('--rehash', action='store_true')
+    parser.add_argument('--outputs', type=Path, help='Native Lake input-to-output mappings')
     parser.add_argument('targets', nargs='+')
     args = parser.parse_args()
     try:
-        return build(args.root.resolve(), args.targets, args.receipt_dir, args.rehash)
+        return build(args.root.resolve(), args.targets, args.receipt_dir, args.rehash, args.outputs)
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         print('Serial build failed: ' + str(error), file=sys.stderr)
         return 1

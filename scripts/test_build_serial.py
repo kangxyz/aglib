@@ -113,6 +113,27 @@ class SerialBuildTests(unittest.TestCase):
                 self.assertEqual(run.call_count, 2)
                 self.assertIn('real compiler failure', errors.getvalue())
 
+    def test_native_output_mappings_forwarded_on_cached_and_cold_paths(self):
+        for codes in ([0], [3, 0]):
+            with self.subTest(codes=codes), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                (root / 'A.lean').write_text('module\n')
+                remaining = iter(codes)
+                def fake_run(command, **kwargs):
+                    code = next(remaining)
+                    if code == 3:
+                        kwargs['stderr'].write('error: target is out-of-date and needs to be rebuilt\n')
+                    self.assertEqual(command[-2:], ['-o', str((root / 'export/outputs.jsonl').resolve())])
+                    self.assertIn('--rehash', command)
+                    return code
+                with patch.object(build_serial, 'capped_toolchain', return_value=nullcontext({})), \
+                        patch.object(build_serial, 'run', side_effect=fake_run) as run, \
+                        redirect_stdout(io.StringIO()):
+                    self.assertEqual(build_serial.build(root, ['A'], root / 'receipts', True,
+                                                        root / 'export/outputs.jsonl'), 0)
+                    self.assertEqual(run.call_count, len(codes))
+                    self.assertTrue((root / 'export').is_dir())
+
     def test_unexpected_probe_and_resource_errors_fail_without_compilation(self):
         for code, diagnostic in [(1, 'error: unknown target A\n'),
                 (3, 'error: target is out-of-date and needs to be rebuilt\nerror: broken configuration\n'),
