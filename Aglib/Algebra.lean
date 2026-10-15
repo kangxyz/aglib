@@ -18,6 +18,7 @@ public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.ScalarExtensionUnit
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.SheafificationPushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorAdditive
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorExact
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorFiniteFree
@@ -50,6 +51,8 @@ public import Aglib.Algebra.Homology.MappingCone.Acyclicity
 public import Aglib.Algebra.Homology.MappingCone.Identity
 public import Aglib.Algebra.Homology.MappingCone.Map
 public import Aglib.Algebra.Homology.MappingCone.QuasiIso
+public import Aglib.Algebra.Homology.MappingCone.ShortExact
+public import Aglib.Algebra.Homology.MappingCone.WeakMap
 public import Aglib.Algebra.Homology.QuasiIso
 public import Aglib.Algebra.Homology.ShortComplex.Retract
 public import Aglib.Algebra.Homology.TotalComplex.AddCommGrp

@@ -40,6 +40,21 @@ lemma unitTotalPostcompose_app {A : Type*} [Category A]
     (unitTotalPostcompose G F T η).app K = T.map (F.map (η.app K)) := rfl
 
 
+/-- The component of a map identified with the postcomposition of a natural unit.
+
+Source: `Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTensorUnit.lean`, lines 69–77,
+delivered source SHA256 `f6ab606ffa121800baf06ecddf3a4ac410763587916a19ca6f25a7bd4f8b18ab`.
+The composite codomain keeps the implicit map objects aligned. -/
+theorem unitPostcompose_whiskerRight_app_of_eq
+    {A B : Type*} [Category A] [Category B] (G F : A ⥤ A) (H : A ⥤ B)
+    (η : 𝟭 A ⟶ G) (τ : F ⋙ H ⟶ (G ⋙ F) ⋙ H)
+    (hτ : τ = Functor.whiskerRight (unitPostcompose G F η) H) (K : A) :
+    @Eq (H.obj (F.obj K) ⟶ H.obj ((G ⋙ F).obj K)) (τ.app K)
+      (H.map (X := F.obj K) (Y := (G ⋙ F).obj K)
+        (F.map (X := K) (Y := G.obj K) (η.app K))) := by
+  subst τ
+  rfl
+
 /-- Precompose the unit `η : 𝟭 A ⟶ T` with `F`, giving components `η.app (F.obj K)`. -/
 def unitPrecompose {A : Type*} [Category A] (T F : A ⥤ A)
     (η : 𝟭 A ⟶ T) : F ⟶ F ⋙ T where

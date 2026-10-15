@@ -1,0 +1,1376 @@
+{
+  "group": "tt-foundations",
+  "source": {
+    "repository": "quillen-k-theory",
+    "archive": "quillen-tt-cone-additivity-product-swap-20261015T1654Z-complete.tar.xz",
+    "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+    "archive_base_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+    "downstream_entry_revision": "6db56ddd3fdb898ef5de29d5fe51a0c61f9ba116"
+  },
+  "destination_entry_revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+  "selection_rule": "General algebraic geometry and related mathematical theory, selected by complete hypotheses and actual dependencies; specialized curve/projective-line/Waldhausen/K-theory applications remain downstream.",
+  "families": [
+    {
+      "family": "mapping cones and exact functors",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/Algebra/Homology/MappingConeShortExact.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "efc41ac9598b78dbcfe52dcc62a429d2e2f3d193693d7dabb362ef25b9815fd2",
+          "lines": 155
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/Algebra/Homology/MappingConeWeakMap.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "a490ef603748e13d17d4471fd64cc1c3ef02f30354b9bfe9dd15f97361d40bce",
+          "lines": 58
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/Algebra/Homology/QuasiIsoExtension.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "e84480cac547c346b826a5e5238c79748fad2864518bf169e92c72ba54885681",
+          "lines": 54
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/ExactCategory/FunctorPushout.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "2d71c3fe2dda921c39c9f80f58687f3be70e224ce0933ff3ac90a7cc20d613fa",
+          "lines": 110
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/ExactCategory/MatrixInflation.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "55d1fe116f59f2347ba365e8e008e544b1c6199f7797c5e645eed4e6c73a68b3",
+          "lines": 69
+        }
+      ],
+      "selection": "Complete general mapping-cone constructions; the exact-functor pushout theorem and necessary private cokernel/matrix helpers. Quasi-isomorphism extension supplies only the private general argument used by the cone proof. No Waldhausen structure is imported.",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Homology/MappingCone/ShortExact.lean",
+          "module": "Aglib.Algebra.Homology.MappingCone.ShortExact",
+          "sha256": "31a320a49c36995e094ad29c1cbd7230913486d3b8191077c55e9745ccf9a40e"
+        },
+        {
+          "path": "Aglib/Algebra/Homology/MappingCone/WeakMap.lean",
+          "module": "Aglib.Algebra.Homology.MappingCone.WeakMap",
+          "sha256": "336476d0843055ffb1fc1b62c31cc9c8747a2bb020892e768f572a412b254e12"
+        },
+        {
+          "path": "Aglib/CategoryTheory/ExactCategory/FunctorPushout.lean",
+          "module": "Aglib.CategoryTheory.ExactCategory.FunctorPushout",
+          "sha256": "8c2e5657c7cecc7de3d80b7f1d954f43a03e0a9ca9fa247f76e7e8c4dcc50ecb"
+        }
+      ],
+      "correspondence": {
+        "Quillen.Algebra.Homology.MappingConeShortExact": "Aglib.Algebra.Homology.MappingCone.ShortExact",
+        "Quillen.Algebra.Homology.MappingConeWeakMap": "Aglib.Algebra.Homology.MappingCone.WeakMap",
+        "Quillen.HomologicalAlgebra.biprodMapShortComplex": "CategoryTheory.ShortComplex.biprodMap",
+        "Quillen.HomologicalAlgebra.shortExact_biprod_map": "CategoryTheory.ShortComplex.shortExact_biprodMap",
+        "Quillen.HomologicalAlgebra.mappingConeTermIso": "CochainComplex.mappingConeTermIso",
+        "Quillen.HomologicalAlgebra.mappingConeTermIso_inl": "CochainComplex.mappingConeTermIso_inl",
+        "Quillen.HomologicalAlgebra.mappingConeTermIso_inr": "CochainComplex.mappingConeTermIso_inr",
+        "Quillen.HomologicalAlgebra.mappingConeTermIso_naturality": "CochainComplex.mappingConeTermIso_naturality",
+        "Quillen.HomologicalAlgebra.mappingConeNatTransFunctor": "CochainComplex.mappingConeNatTransFunctor",
+        "Quillen.HomologicalAlgebra.mappingConeNatTransFunctor_additive": "CochainComplex.mappingConeNatTransFunctor_additive",
+        "Quillen.HomologicalAlgebra.mappingConeNatTransFunctor_shortExact": "CochainComplex.mappingConeNatTransFunctor_shortExact",
+        "Quillen.HomologicalAlgebra.mappingCone_triangle_shortExact": "CochainComplex.mappingCone_triangle_shortExact",
+        "Quillen.HomologicalAlgebra.mappingConeTriangleShortComplexMap": "CochainComplex.mappingConeTriangleShortComplexMap",
+        "Quillen.HomologicalAlgebra.mappingCone_map_quasiIso": "CochainComplex.mappingCone_map_quasiIso",
+        "Quillen.CategoryTheory.ExactCategory.FunctorPushout": "Aglib.CategoryTheory.ExactCategory.FunctorPushout",
+        "Quillen.ExactFunctor.map_isPushout": "CategoryTheory.ExactCategory.ExactFunctor.map_isPushout"
+      },
+      "conditions": "Actual commuting-square maps and signed mapping cones; exact-functor pushouts retain admissibility of the first map. Object and morphism universes remain independent."
+    },
+    {
+      "family": "full subcategories and sequential colimits",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/FullSubcategoryLiftPushout.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "3b83a08211e6ee40df163b7cd1373f8cd9c9de2cf709d0875268f9832b56328d",
+          "lines": 38
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/SequentialIsoColimit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "aa10b0d79332868b793bd7a641d1ecb4e2cb55024540ddb9b776647632a0426a",
+          "lines": 104
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/SequentialTailColimit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "fa9a171ed0c0046c10403972c5b614adf30b4c9b32d7a54d9d22b603177e3e1c",
+          "lines": 46
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/SequentialEventuallyIsoColimit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "8230116e6ee81bc7fb4ebe699d351ebe224fad7787079daf738a6daa1ca77dd0",
+          "lines": 49
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/SequentialSignCorrection.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "81391b6ac44ed8f3ec8e54375a9cd195f8da1ec16ef1506039507c7cf850c0b3",
+          "lines": 64
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Limits/SequentialSignCorrectionHom.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "01d75f2f0f175c7a1ba67ef423f7ba5903aa407b1925e8be63352108ccb9902b",
+          "lines": 56
+        }
+      ],
+      "selection": "General full-subcategory pushouts, sequential isomorphism/tail/eventual-isomorphism colimits, and sign corrections. The two source sign-correction files share one native owner.",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/Limits/FullSubcategory/Pushout.lean",
+          "module": "Aglib.CategoryTheory.Limits.FullSubcategory.Pushout",
+          "sha256": "417baf1a05f8220623b2fe1813409eda0768dbe09b7f9a993dc5e03adf8b68b8"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Limits/Shapes/SequentialSystem/IsoColimit.lean",
+          "module": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.IsoColimit",
+          "sha256": "7686d18ada263bbb7151609842e7520f2af9d46549fb0342f0baeb8b38dd896d"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Limits/Shapes/SequentialSystem/TailColimit.lean",
+          "module": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit",
+          "sha256": "ee1808df03e4bb6ee548453b15e2fb14ec6b58e88937ad6513099e160e8192a9"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Limits/Shapes/SequentialSystem/EventuallyIsoColimit.lean",
+          "module": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.EventuallyIsoColimit",
+          "sha256": "b8b54e397e8076540bab9b85b24436bff6c4d4a1be5dfce8c28a075dfcbab927"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Limits/Shapes/SequentialSystem/SignCorrection.lean",
+          "module": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection",
+          "sha256": "f1e89176c548ac74711ff07fd969b77ab214efe40b111c77d6e43abc13c87144"
+        }
+      ],
+      "import_correspondence": {
+        "Quillen.CategoryTheory.Limits.FullSubcategoryLiftPushout": "Aglib.CategoryTheory.Limits.FullSubcategory.Pushout",
+        "Quillen.CategoryTheory.Limits.SequentialIsoColimit": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.IsoColimit",
+        "Quillen.CategoryTheory.Limits.SequentialTailColimit": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit",
+        "Quillen.CategoryTheory.Limits.SequentialEventuallyIsoColimit": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.EventuallyIsoColimit",
+        "Quillen.CategoryTheory.Limits.SequentialSignCorrection": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection",
+        "Quillen.CategoryTheory.Limits.SequentialSignCorrectionHom": "Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection"
+      },
+      "correspondence": {
+        "CategoryTheory.ObjectProperty.isPushout_lift": "CategoryTheory.ObjectProperty.isPushout_lift",
+        "Quillen.SequentialIsoColimit.toZeroIso": "CategoryTheory.Limits.SequentialSystem.toZeroIso",
+        "Quillen.SequentialIsoColimit.toZero": "CategoryTheory.Limits.SequentialSystem.toZero",
+        "Quillen.SequentialIsoColimit.constIso": "CategoryTheory.Limits.SequentialSystem.constIso",
+        "Quillen.SequentialIsoColimit.cocone": "CategoryTheory.Limits.SequentialSystem.cocone",
+        "Quillen.SequentialIsoColimit.isColimit": "CategoryTheory.Limits.SequentialSystem.isColimit",
+        "Quillen.SequentialIsoColimit.colimitIso": "CategoryTheory.Limits.SequentialSystem.colimitIso",
+        "Quillen.SequentialIsoColimit.ι_colimitIso_hom": "CategoryTheory.Limits.SequentialSystem.ι_colimitIso_hom",
+        "Quillen.SequentialIsoColimit.reconstructionIso": "CategoryTheory.Limits.SequentialSystem.reconstructionIso",
+        "Quillen.SequentialIsoColimit.colimitIsoOfSucc": "CategoryTheory.Limits.SequentialSystem.colimitIsoOfSucc",
+        "Quillen.SequentialIsoColimit.ι_colimitIsoOfSucc_hom": "CategoryTheory.Limits.SequentialSystem.ι_colimitIsoOfSucc_hom",
+        "Quillen.sequentialShiftFunctor": "CategoryTheory.Limits.SequentialSystem.shiftFunctor",
+        "Quillen.instFinalSequentialShiftFunctor": "CategoryTheory.Limits.SequentialSystem.instFinalShiftFunctor",
+        "Quillen.sequentialTailColimitIso": "CategoryTheory.Limits.SequentialSystem.tailColimitIso",
+        "Quillen.sequentialTailColimitIso_ι_hom": "CategoryTheory.Limits.SequentialSystem.tailColimitIso_ι_hom",
+        "Quillen.sequentialTailColimitIso_ι_inv": "CategoryTheory.Limits.SequentialSystem.tailColimitIso_ι_inv",
+        "Quillen.sequentialTailColimitIso_ι_hom_assoc": "CategoryTheory.Limits.SequentialSystem.tailColimitIso_ι_hom_assoc",
+        "Quillen.sequentialTailColimitIso_ι_inv_assoc": "CategoryTheory.Limits.SequentialSystem.tailColimitIso_ι_inv_assoc",
+        "Quillen.sequentialColimit_ι_zero_eq_inv": "CategoryTheory.Limits.SequentialSystem.colimit_ι_zero_eq_inv",
+        "Quillen.sequentialColimit_ι_isIso_of_tail": "CategoryTheory.Limits.SequentialSystem.colimit_ι_isIso_of_tail",
+        "Quillen.alternatingIso": "CategoryTheory.Limits.SequentialSystem.alternatingIso",
+        "Quillen.alternatingIso_zero": "CategoryTheory.Limits.SequentialSystem.alternatingIso_zero",
+        "Quillen.alternatingIso_succ": "CategoryTheory.Limits.SequentialSystem.alternatingIso_succ",
+        "Quillen.alternatingIso_hom": "CategoryTheory.Limits.SequentialSystem.alternatingIso_hom",
+        "Quillen.alternatingIso_naturality": "CategoryTheory.Limits.SequentialSystem.alternatingIso_naturality",
+        "Quillen.sequentialSignCorrectionIso": "CategoryTheory.Limits.SequentialSystem.signCorrectionIso",
+        "Quillen.sequentialSignCorrectionIso_hom_app": "CategoryTheory.Limits.SequentialSystem.signCorrectionIso_hom_app",
+        "Quillen.alternatingHom_naturality": "CategoryTheory.Limits.SequentialSystem.alternatingHom_naturality",
+        "Quillen.sequentialSignCorrectionHom": "CategoryTheory.Limits.SequentialSystem.signCorrectionHom",
+        "Quillen.sequentialSignCorrectionHom_app": "CategoryTheory.Limits.SequentialSystem.signCorrectionHom_app",
+        "Quillen.sequentialSignCorrectionHom_eq_iso_hom": "CategoryTheory.Limits.SequentialSystem.signCorrectionHom_eq_iso_hom"
+      },
+      "conditions": {
+        "FullSubcategory/Pushout": "Arbitrary source and target category universes; actual mapped pushout and explicit membership witness only.",
+        "EventuallyIsoColimit": "Arbitrary category, an existing colimit, and actual successor IsIso only at n >= i; no earlier-map hypotheses.",
+        "SignCorrection": "Arbitrary preadditive category, literal original maps, explicit anticommuting successor squares; hom constructor assumes no stage IsIso."
+      }
+    },
+    {
+      "family": "triangle endpoint transport",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/CategoryTheory/Triangulated/EndpointTransport.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "f976966a00b8ce3c4adad6035d2048cf1bd28ed78d953b9b9b9b70f4bc049aad",
+          "lines": 45
+        }
+      ],
+      "selection": "The general functor and natural isomorphism transporting all three actual arrows.",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/Triangulated/EndpointTransport.lean",
+          "module": "Aglib.CategoryTheory.Triangulated.EndpointTransport",
+          "sha256": "62e24c912689c2ed258adf02946f2131f90f8090ae79755d5aa56e7eb1d244ab"
+        }
+      ],
+      "correspondence": {
+        "Quillen.TriangleTransport.functor": "CategoryTheory.Pretriangulated.Triangle.transportEndpoints",
+        "Quillen.TriangleTransport.iso": "CategoryTheory.Pretriangulated.Triangle.transportEndpointsIso"
+      },
+      "conditions": "J arbitrary category; C arbitrary category with HasShift C ℤ; explicit A and three natural endpoint isomorphisms; no preadditive, zero, or pretriangulated premise"
+    },
+    {
+      "family": "base products and polynomial/Laurent coordinates",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/Scheme/BaseProductInterchange.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "7ec69cef161801f81533c1215b27e6b3aa885c09809f00068df9088897cf3f44",
+          "lines": 281
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/Scheme/Affine/PolynomialCoordinate.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "49eef11c2a0faa65f158a3d3bd52e42ec88f24658f08970459f57ecb40e5c6f8",
+          "lines": 50
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/Scheme/Affine/LaurentNegativeCoordinate.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "e8e5d4b2a82cc5978f3863a16bfa435ac976d258264cc7824c05ca4a290b1667",
+          "lines": 52
+        }
+      ],
+      "selection": [
+        {
+          "path": "Quillen/AlgebraicGeometry/Scheme/BaseProductInterchange.lean",
+          "module": "Aglib.AlgebraicGeometry.Products.IntegerBaseInterchange",
+          "lines": [
+            25,
+            231
+          ]
+        },
+        {
+          "path": "Quillen/AlgebraicGeometry/Scheme/BaseProductInterchange.lean",
+          "module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ProductInterchange",
+          "lines": [
+            233,
+            279
+          ]
+        },
+        {
+          "path": "Quillen/AlgebraicGeometry/Scheme/Affine/PolynomialCoordinate.lean",
+          "module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Coordinates",
+          "lines": [
+            23,
+            49
+          ]
+        },
+        {
+          "path": "Quillen/AlgebraicGeometry/Scheme/Affine/LaurentNegativeCoordinate.lean",
+          "module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Coordinates",
+          "lines": [
+            25,
+            51
+          ]
+        }
+      ],
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Products/IntegerBaseInterchange.lean",
+          "module": "Aglib.AlgebraicGeometry.Products.IntegerBaseInterchange",
+          "sha256": "189effd55f32e338fc926080de60e52035ecc19f913a129f6cddffc695c37432"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ProductInterchange.lean",
+          "module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ProductInterchange",
+          "sha256": "68349be960dd551b008087c3d60bda1cfe6ec760c706b97000786eb9142e7fa4"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Coordinates.lean",
+          "module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Coordinates",
+          "sha256": "450ac47d1355f239e594089216af016f0d2b1300eb4205516a2af13b794fa6b4"
+        }
+      ],
+      "correspondence": {
+        "Quillen.Scheme.Bass.baseProductSwapMap": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap",
+        "Quillen.Scheme.Bass.baseProductSwapMap_fst_fst": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_fst_fst",
+        "Quillen.Scheme.Bass.baseProductSwapMap_fst_fst_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_fst_fst_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapMap_fst_snd": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_fst_snd",
+        "Quillen.Scheme.Bass.baseProductSwapMap_fst_snd_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_fst_snd_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapMap_snd": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_snd",
+        "Quillen.Scheme.Bass.baseProductSwapMap_snd_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_snd_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapMap_comp": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_comp",
+        "Quillen.Scheme.Bass.baseProductSwapMap_naturality": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_naturality",
+        "Quillen.Scheme.Bass.baseProductSwapMap_naturality_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapMap_naturality_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapIso": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso",
+        "Quillen.Scheme.Bass.baseProductSwapIso_hom_app": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_hom_app",
+        "Quillen.Scheme.Bass.baseProductSwapIso_inv_app": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_inv_app",
+        "Quillen.Scheme.Bass.baseProductSwapIso_trans": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_trans",
+        "Quillen.Scheme.Bass.baseProductSwapIso_projection_first": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_projection_first",
+        "Quillen.Scheme.Bass.baseProductSwapIso_projection_first_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_projection_first_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapIso_projection_second": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_projection_second",
+        "Quillen.Scheme.Bass.baseProductSwapIso_projection_second_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_projection_second_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapIso_transformation_first": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_transformation_first",
+        "Quillen.Scheme.Bass.baseProductSwapIso_transformation_first_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_transformation_first_assoc",
+        "Quillen.Scheme.Bass.baseProductSwapIso_transformation_second": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_transformation_second",
+        "Quillen.Scheme.Bass.baseProductSwapIso_transformation_second_assoc": "AlgebraicGeometry.Scheme.Products.baseProductSwapIso_transformation_second_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_hom_hom": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_hom_hom",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_projection_first": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_projection_first",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_projection_second": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_projection_second",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_transformation_first": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_transformation_first",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_transformation_first_assoc": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_transformation_first_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_transformation_second": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_transformation_second",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_transformation_second_assoc": "AlgebraicGeometry.Scheme.Products.qcBaseProductSwapIso_transformation_second_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_plus_first": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_plus_first",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_plus_first_assoc": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_plus_first_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_minus_first": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_minus_first",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_minus_first_assoc": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_minus_first_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_plus_second": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_plus_second",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_plus_second_assoc": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_plus_second_assoc",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_minus_second": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_minus_second",
+        "Quillen.Scheme.Bass.qcBaseProductSwapIso_minus_second_assoc": "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative.qcBaseProductSwapIso_minus_second_assoc",
+        "Quillen.Scheme.PolynomialLaurent.polynomialGlobalCoordinate": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialGlobalCoordinate",
+        "Quillen.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_original": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_original",
+        "Quillen.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_laurentPlus": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_laurentPlus",
+        "Quillen.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_laurentMinus": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialGlobalCoordinate_laurentMinus",
+        "Quillen.SchemeSheaf.isIso_restricted_twoLineUnit": "AlgebraicGeometry.Scheme.Modules.isIso_restricted_twoLineUnit",
+        "Quillen.SchemeSheaf.isIso_twoLineUnit_tensor_sheafification": "AlgebraicGeometry.Scheme.Modules.isIso_twoLineUnit_tensor_sheafification",
+        "Quillen.SchemeSheaf.lineTensorLeftUnitComparison": "AlgebraicGeometry.Scheme.Modules.lineTensorLeftUnitComparison",
+        "Quillen.SchemeSheaf.lineTensorRightUnitComparison": "AlgebraicGeometry.Scheme.Modules.lineTensorRightUnitComparison",
+        "Quillen.SchemeSheaf.lineTensorPresheafAssociator": "AlgebraicGeometry.Scheme.Modules.lineTensorPresheafAssociator",
+        "Quillen.SchemeSheaf.moduleLineTensorAssociator": "AlgebraicGeometry.Scheme.Modules.moduleLineTensorAssociator",
+        "Quillen.SchemeSheaf.restrictionSheafificationIso": "AlgebraicGeometry.Scheme.Modules.restrictionSheafificationIso",
+        "Quillen.SchemeSheaf.isIso_sheafified_restricted_unit": "AlgebraicGeometry.Scheme.Modules.isIso_sheafified_restricted_unit",
+        "Quillen.SchemeSheaf.isIso_restricted_unit_of_iso_sheaf": "AlgebraicGeometry.Scheme.Modules.isIso_restricted_unit_of_iso_sheaf",
+        "Quillen.SchemeSheaf.isIso_line_tensor_sheafificationUnit": "AlgebraicGeometry.Scheme.Modules.isIso_line_tensor_sheafificationUnit"
+      },
+      "conditions": "Arbitrary base schemes and the actual product morphisms. Coordinate identities use actual polynomial/Laurent sections, including the zero-ring case; no nonempty, curve or K-theory premise."
+    },
+    {
+      "family": "structural perfect complexes",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "lines": 137
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/VectorBundleInclusion.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "1a315778b76b2796196f270c3d80f1e10310824bcaf37d1774354e7a74df4b57",
+          "lines": 85
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "lines": 106
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "lines": 115
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "lines": 111
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "lines": 94
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Closure.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "f00f011637c12cdae0c63d884912fd2c4bb7addcaa3eeb5b398bacf853b029b9",
+          "lines": 56
+        }
+      ],
+      "selection": "Only the listed structural declarations and necessary private general proofs. Vector-bundle/Waldhausen/K-theory models and all application wrappers stay downstream.",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Strict.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "sha256": "4cfd15796c6de0759e0b370e62b81d300153082084c7a0f0986eb04e6fd08525"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Exact.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Exact",
+          "sha256": "25409494c3e9a047472b1c0a0cc3511e94f474b656b1d4ae0ebc8d8c64a55a6f"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Restriction.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+          "sha256": "8a54a25aaa1c874a30cdbc7c3a8796f3378e5ef8cb2642f4ad02b80446fc3885"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Local.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "sha256": "a1346cd033c102625457bd3984e34fddf41385043796e00e50953593f5f71ea3"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/LocalRestriction.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "sha256": "427c224a2e1080a356308dc5dfa3cd61cbbaa339d138d0a1a058f2e3c7f2adbc"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/LocalModels.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "sha256": "015bc565f40391e729701b1b9cf396ccdcd256aed31b25fd0981a686c9db662d"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Closure.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Closure",
+          "sha256": "51c63a3c45a7b64aac0d5b097382aa481a77fb18346f9229ad38556930b291fe"
+        }
+      ],
+      "declarations": {
+        "Quillen.PerfectComplexes.IsBounded": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.IsBounded",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 46
+        },
+        "Quillen.PerfectComplexes.strictPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 50
+        },
+        "Quillen.PerfectComplexes.StrictPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.StrictPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 54
+        },
+        "Quillen.PerfectComplexes.strictPerfect_of_isZero": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_of_isZero",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 59
+        },
+        "Quillen.PerfectComplexes.strictPerfect_containsZero": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_containsZero",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 64
+        },
+        "Quillen.PerfectComplexes.strictPerfect_of_iso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_of_iso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 68
+        },
+        "Quillen.PerfectComplexes.strictPerfect_closedUnderIsomorphisms": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_closedUnderIsomorphisms",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 76
+        },
+        "Quillen.PerfectComplexes.strictPerfect_of_shortExact": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_of_shortExact",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 80
+        },
+        "Quillen.PerfectComplexes.strictPerfect_extensionClosed": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_extensionClosed",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 98
+        },
+        "Quillen.PerfectComplexes.strictPerfect_closedUnderFiniteProducts": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_closedUnderFiniteProducts",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 102
+        },
+        "Quillen.PerfectComplexes.single_strictPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.single_strictPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 116
+        },
+        "Quillen.PerfectComplexes.vectorBundleInclusion": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.vectorBundleInclusion",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+          "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+          "source_line": 131
+        },
+        "Quillen.PerfectComplexes.strictExactStructure": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictExactStructure",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Exact",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/VectorBundleInclusion.lean",
+          "source_sha256": "1a315778b76b2796196f270c3d80f1e10310824bcaf37d1774354e7a74df4b57",
+          "source_line": 39
+        },
+        "Quillen.PerfectComplexes.vectorBundleInclusion_additive": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.vectorBundleInclusion_additive",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Exact",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/VectorBundleInclusion.lean",
+          "source_sha256": "1a315778b76b2796196f270c3d80f1e10310824bcaf37d1774354e7a74df4b57",
+          "source_line": 42
+        },
+        "Quillen.PerfectComplexes.vectorBundleExactInclusion": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.vectorBundleExactInclusion",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Exact",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/VectorBundleInclusion.lean",
+          "source_sha256": "1a315778b76b2796196f270c3d80f1e10310824bcaf37d1774354e7a74df4b57",
+          "source_line": 48
+        },
+        "Quillen.PerfectComplexes.strictPerfect_restrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_restrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 63
+        },
+        "Quillen.PerfectComplexes.strictRestrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictRestrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 72
+        },
+        "Quillen.PerfectComplexes.strictRestrict_additive": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictRestrict_additive",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 76
+        },
+        "Quillen.PerfectComplexes.strictExactRestrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictExactRestrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 81
+        },
+        "Quillen.PerfectComplexes.locallyPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 61
+        },
+        "Quillen.PerfectComplexes.Perfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.Perfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 67
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_of_strictPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_of_strictPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 73
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_of_iso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_of_iso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 80
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_closedUnderIsomorphisms": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_closedUnderIsomorphisms",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 86
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_containsZero": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_containsZero",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 90
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_iff_of_quasiIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_iff_of_quasiIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 96
+        },
+        "Quillen.PerfectComplexes.strictToPerfect": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictToPerfect",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 108
+        },
+        "Quillen.PerfectComplexes.strictToPerfect_comp_inclusion": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictToPerfect_comp_inclusion",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Local.lean",
+          "source_sha256": "706d05324a254c5734c9e6138888cdc875033cf40a4298e2ada16f2f5242b82f",
+          "source_line": 112
+        },
+        "Quillen.PerfectComplexes.restrict_congr": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_congr",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 36
+        },
+        "Quillen.PerfectComplexes.restrictCompIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrictCompIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 43
+        },
+        "Quillen.PerfectComplexes.derivedRestrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 58
+        },
+        "Quillen.PerfectComplexes.derivedRestrictFactors": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictFactors",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 67
+        },
+        "Quillen.PerfectComplexes.restrictDerivedIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrictDerivedIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 72
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_iff_of_derivedIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_iff_of_derivedIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 80
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_restrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_restrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 92
+        },
+        "Quillen.PerfectComplexes.perfectRestrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.perfectRestrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalRestriction.lean",
+          "source_sha256": "9e6fda16dcd3977cb3553d5961036c2d6db5dbd47524c7b48744fc4ab42b23a1",
+          "source_line": 107
+        },
+        "Quillen.PerfectComplexes.HasStrictModel": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.HasStrictModel",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 35
+        },
+        "Quillen.PerfectComplexes.HasStrictModel.of_iso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.HasStrictModel.of_iso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 39
+        },
+        "Quillen.PerfectComplexes.HasStrictModel.restrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.HasStrictModel.restrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 45
+        },
+        "Quillen.PerfectComplexes.HasStrictModel.restrict_of_le": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.HasStrictModel.restrict_of_le",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 53
+        },
+        "Quillen.PerfectComplexes.exists_common_strictModels": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.exists_common_strictModels",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 65
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_of_openImmersion_models": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_of_openImmersion_models",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/LocalModels.lean",
+          "source_sha256": "4a5c9fc79cdf45e0b7cf020745bf4199b8b4de78876f7c3ff25987883c6a8330",
+          "source_line": 78
+        },
+        "Quillen.PerfectComplexes.strictPerfect_shift": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_shift",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Closure",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Closure.lean",
+          "source_sha256": "f00f011637c12cdae0c63d884912fd2c4bb7addcaa3eeb5b398bacf853b029b9",
+          "source_line": 31
+        },
+        "Quillen.PerfectComplexes.strictPerfect_mappingCone": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.strictPerfect_mappingCone",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Closure",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Closure.lean",
+          "source_sha256": "f00f011637c12cdae0c63d884912fd2c4bb7addcaa3eeb5b398bacf853b029b9",
+          "source_line": 43
+        },
+        "Quillen.PerfectComplexes.restrict": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 38
+        },
+        "Quillen.PerfectComplexes.restrict_additive": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_additive",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 41
+        },
+        "Quillen.PerfectComplexes.restrict_preservesFiniteLimits": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_preservesFiniteLimits",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 45
+        },
+        "Quillen.PerfectComplexes.restrict_preservesFiniteColimits": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_preservesFiniteColimits",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 49
+        },
+        "Quillen.PerfectComplexes.restrictFunctor_preservesHomology": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrictFunctor_preservesHomology",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 53
+        },
+        "Quillen.PerfectComplexes.restrict_quasiIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_quasiIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+          "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+          "source_line": 57
+        }
+      },
+      "model_replacements": {
+        "Quillen.PerfectComplexes.Complex": {
+          "replacement": "CochainComplex X.Modules ℤ",
+          "kind": "native carrier; replace syntax with actual scheme parameter; no abbreviation survives"
+        },
+        "Quillen.PerfectComplexes.Derived": {
+          "replacement": "DerivedCategory X.Modules",
+          "kind": "native carrier under local HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _; definitionally equal to old GZ carrier"
+        },
+        "Quillen.PerfectComplexes.toDerived": {
+          "replacement": "DerivedCategory.Q (C := X.Modules)",
+          "kind": "actual native functor, definitionally equal to old source Q"
+        },
+        "Quillen.PerfectComplexes.toDerived_isLocalization": {
+          "replacement": "inferInstanceAs ((DerivedCategory.Q (C := X.Modules)).IsLocalization (HomologicalComplex.quasiIso X.Modules (ComplexShape.up ℤ)))",
+          "kind": "native instance"
+        },
+        "Quillen.PerfectComplexes.toDerived_map_isIso": {
+          "replacement": "inferInstanceAs (IsIso (DerivedCategory.Q.map f))",
+          "kind": "native instance, with [QuasiIso f]"
+        },
+        "Quillen.PerfectComplexes.restrict_toDerived_inverts": {
+          "replacement": null,
+          "kind": "internal old-lift construction lemma is removed; if needed use native Q inversion after Complex.restrict_quasiIso"
+        },
+        "Quillen.PerfectComplexes.toDerived_derivedRestrict": {
+          "replacement": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictFactors",
+          "kind": "IMPORTANT: equality is not retained; replace equality rewriting with the actual native factorization natural isomorphism and its hom/inv components. The old direct GZ lift is naturally isomorphic to the canonical exact lift, with component exactly factors.inv.app K (checked in ArchivePerfectStructural)."
+        },
+        "Quillen.PerfectComplexes.instPreadditiveDerived": {
+          "replacement": "inferInstanceAs (Preadditive (DerivedCategory X.Modules))",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.derived_hasZeroObject": {
+          "replacement": "inferInstanceAs (HasZeroObject (DerivedCategory X.Modules))",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.instHasShiftDerived": {
+          "replacement": "inferInstanceAs (HasShift (DerivedCategory X.Modules) ℤ)",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.derived_shift_additive": {
+          "replacement": "inferInstanceAs ((shiftFunctor (DerivedCategory X.Modules) n).Additive)",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.instPretriangulatedDerived": {
+          "replacement": "inferInstanceAs (Pretriangulated (DerivedCategory X.Modules))",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.derived_isTriangulated": {
+          "replacement": "inferInstanceAs (IsTriangulated (DerivedCategory X.Modules))",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.toDerived_additive": {
+          "replacement": "inferInstanceAs ((DerivedCategory.Q (C := X.Modules)).Additive)",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.instCommShiftToDerived": {
+          "replacement": "inferInstanceAs ((DerivedCategory.Q (C := X.Modules)).CommShift ℤ)",
+          "kind": "native Mathlib structure; remove duplicate Q instance wrapper"
+        },
+        "Quillen.PerfectComplexes.shortExactTriangle": {
+          "replacement": "DerivedCategory.triangleOfSES",
+          "import": "Mathlib.Algebra.Homology.DerivedCategory.ShortExact",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.shortExactTriangle_distinguished": {
+          "replacement": "DerivedCategory.triangleOfSES_distinguished",
+          "import": "Mathlib.Algebra.Homology.DerivedCategory.ShortExact",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.mappingConeTriangle_distinguished": {
+          "replacement": "DerivedCategory.mappingCone_triangle_distinguished",
+          "import": "Mathlib.Algebra.Homology.DerivedCategory.Basic",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.exactDerivedRestrict": {
+          "replacement": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict",
+          "import": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.instCommShiftExactDerivedRestrict": {
+          "replacement": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictCommShift",
+          "import": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.exactDerivedRestrict_isTriangulated": {
+          "replacement": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict_isTriangulated",
+          "import": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        },
+        "Quillen.PerfectComplexes.exactDerivedRestrictFactors": {
+          "replacement": "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictFactors",
+          "import": "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "kind": "native existing actual object/map/structure; source exact restriction and factors are definitionally these checked native definitions"
+        }
+      },
+      "native_instances": [
+        "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictCommShift",
+        "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict_isTriangulated"
+      ],
+      "conditions": "Actual CochainComplex X.Modules integers and Mathlib DerivedCategory X.Modules. The standard HasDerivedCategory.{u+1} choice is local, never a competing global instance. Strict complexes have globally bounded finite-locally-free terms; local perfection uses actual derived isomorphisms on opens. No global strictification or equivalence of the chain category with its derived localization is asserted. The old direct GZ lift is compared to the canonical exact lift by derivedRestrictFactors, not equality."
+    },
+    {
+      "family": "right tensor unit and tensor-to-unit morphisms",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorRightUnit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "0e07f8f90451a865f02b6ac008ab23b7875854903a33a5411044c5fca838b6ce",
+          "lines": 47
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "lines": 123
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateUnit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "e5b9d3435a1f60f33a891eb4c19e61538c4a73e6e8e2c5c1f400df6d7e4515da",
+          "lines": 49
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateSingle.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "eed7e4c58d062e7048c3e0f1f05aff251dae0c89039a3a94cfb2a1336b0cc6fc",
+          "lines": 56
+        }
+      ],
+      "selection": [
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "source_sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "source_declaration": "Quillen.PerfectComplexes.moduleLineCoordinate",
+          "source_range": [
+            31,
+            34
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "destination_sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.tensorToUnit",
+          "destination_range": [
+            36,
+            39
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "source_sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "source_declaration": "Quillen.PerfectComplexes.moduleLineCoordinate_section",
+          "source_range": [
+            37,
+            47
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "destination_sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_section",
+          "destination_range": [
+            42,
+            52
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "source_sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "source_declaration": "Quillen.PerfectComplexes.moduleLineCoordinate_restrict",
+          "source_range": [
+            50,
+            68
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "destination_sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_restrict",
+          "destination_range": [
+            55,
+            73
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "source_sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "source_declaration": "Quillen.PerfectComplexes.complexLineCoordinate",
+          "source_range": [
+            91,
+            95
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/TensorToUnit.lean",
+          "destination_sha256": "1945d7b366addd867cf46ac258641c963716cc13ad6f8f401527fcb70f0f0d28",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit",
+          "destination_range": [
+            34,
+            38
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateTensor.lean",
+          "source_sha256": "caf930aa8b8e1fdc3623dc1ef9dbd544bd2aabf115ec30811f10059e8dedfaa5",
+          "source_declaration": "Quillen.PerfectComplexes.complexLineCoordinate_f",
+          "source_range": [
+            98,
+            102
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/TensorToUnit.lean",
+          "destination_sha256": "1945d7b366addd867cf46ac258641c963716cc13ad6f8f401527fcb70f0f0d28",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit_f",
+          "destination_range": [
+            41,
+            45
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateUnit.lean",
+          "source_sha256": "e5b9d3435a1f60f33a891eb4c19e61538c4a73e6e8e2c5c1f400df6d7e4515da",
+          "source_declaration": "Quillen.PerfectComplexes.lineCoordinate_unitors",
+          "source_range": [
+            30,
+            37
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "destination_sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.tensorUnitors_eq",
+          "destination_range": [
+            76,
+            84
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateUnit.lean",
+          "source_sha256": "e5b9d3435a1f60f33a891eb4c19e61538c4a73e6e8e2c5c1f400df6d7e4515da",
+          "source_declaration": "Quillen.PerfectComplexes.moduleLineCoordinate_unit",
+          "source_range": [
+            40,
+            47
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "destination_sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_unit",
+          "destination_range": [
+            87,
+            94
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateSingle.lean",
+          "source_sha256": "eed7e4c58d062e7048c3e0f1f05aff251dae0c89039a3a94cfb2a1336b0cc6fc",
+          "source_declaration": "Quillen.PerfectComplexes.unitCoefficientSingleIso",
+          "source_range": [
+            26,
+            34
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/TensorToUnit.lean",
+          "destination_sha256": "1945d7b366addd867cf46ac258641c963716cc13ad6f8f401527fcb70f0f0d28",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.Complex.tensorLeftSingleUnitIso",
+          "destination_range": [
+            48,
+            56
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineCoordinateSingle.lean",
+          "source_sha256": "eed7e4c58d062e7048c3e0f1f05aff251dae0c89039a3a94cfb2a1336b0cc6fc",
+          "source_declaration": "Quillen.PerfectComplexes.complexLineCoordinate_unit_single",
+          "source_range": [
+            37,
+            54
+          ],
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/TensorToUnit.lean",
+          "destination_sha256": "1945d7b366addd867cf46ac258641c963716cc13ad6f8f401527fcb70f0f0d28",
+          "native_declaration": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit_single",
+          "destination_range": [
+            59,
+            76
+          ],
+          "conditions": "Arbitrary scheme X, arbitrary module sheaf L and actual f:L→O_X; displayed open immersion/section/degree retained for the corresponding equation; no local-freeness/bounds/perfect premises."
+        },
+        {
+          "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorRightUnit.lean",
+          "source_sha256": "0e07f8f90451a865f02b6ac008ab23b7875854903a33a5411044c5fca838b6ce",
+          "source_declaration": "SheafOfModulesOfCommRing.tensorRightUnitIso",
+          "source_range": [
+            31,
+            48
+          ],
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/RightUnit.lean",
+          "destination_sha256": "eed276439c12abd0f795ea7c2e2e91635c92cab8f658f7e9d55df494c7ad513b",
+          "native_declaration": "SheafOfModulesOfCommRing.tensorRightUnitIso",
+          "destination_range": [
+            34,
+            51
+          ],
+          "conditions": "Original independent u/v/w, category/site coefficient sheaf, HasSheafCompose, HasSheafify and WEqualsLocallyBijective assumptions exactly retained."
+        },
+        {
+          "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorRightUnit.lean",
+          "source_sha256": "0e07f8f90451a865f02b6ac008ab23b7875854903a33a5411044c5fca838b6ce",
+          "source_declaration": "SheafOfModulesOfCommRing.tensorRightUnitIso_hom_app",
+          "source_range": [
+            41,
+            48
+          ],
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/RightUnit.lean",
+          "destination_sha256": "eed276439c12abd0f795ea7c2e2e91635c92cab8f658f7e9d55df494c7ad513b",
+          "native_declaration": "SheafOfModulesOfCommRing.tensorRightUnitIso_hom_app",
+          "destination_range": [
+            44,
+            51
+          ],
+          "conditions": "Original independent u/v/w, category/site coefficient sheaf, HasSheafCompose, HasSheafify and WEqualsLocallyBijective assumptions exactly retained."
+        }
+      ],
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/RightUnit.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit",
+          "sha256": "eed276439c12abd0f795ea7c2e2e91635c92cab8f658f7e9d55df494c7ad513b"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Tensor/ToUnit.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Tensor.ToUnit",
+          "sha256": "ce54bbedc5a2d66228288ae33eeb5239c7e52053ac776f49afd3a1debc3371f0"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Complex/TensorToUnit.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.TensorToUnit",
+          "sha256": "1945d7b366addd867cf46ac258641c963716cc13ad6f8f401527fcb70f0f0d28"
+        }
+      ],
+      "correspondence": {
+        "Quillen.PerfectComplexes.moduleLineCoordinate": "AlgebraicGeometry.Scheme.Modules.tensorToUnit",
+        "Quillen.PerfectComplexes.moduleLineCoordinate_section": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_section",
+        "Quillen.PerfectComplexes.moduleLineCoordinate_restrict": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_restrict",
+        "Quillen.PerfectComplexes.complexLineCoordinate": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit",
+        "Quillen.PerfectComplexes.complexLineCoordinate_f": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit_f",
+        "Quillen.PerfectComplexes.lineCoordinate_unitors": "AlgebraicGeometry.Scheme.Modules.tensorUnitors_eq",
+        "Quillen.PerfectComplexes.moduleLineCoordinate_unit": "AlgebraicGeometry.Scheme.Modules.tensorToUnit_unit",
+        "Quillen.PerfectComplexes.unitCoefficientSingleIso": "AlgebraicGeometry.Scheme.Modules.Complex.tensorLeftSingleUnitIso",
+        "Quillen.PerfectComplexes.complexLineCoordinate_unit_single": "AlgebraicGeometry.Scheme.Modules.Complex.tensorToUnit_single"
+      },
+      "import_correspondence": {
+        "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorRightUnit": [
+          "Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.LineCoordinateUnit": [
+          "Aglib.AlgebraicGeometry.Modules.Tensor.ToUnit"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.LineCoordinateSingle": [
+          "Aglib.AlgebraicGeometry.Modules.Complex.TensorToUnit"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.Local": [
+          "Aglib.AlgebraicGeometry.Modules.Perfect.Local"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.LocalRestriction": [
+          "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.LocalModels": [
+          "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.Closure": [
+          "Aglib.AlgebraicGeometry.Modules.Perfect.Closure"
+        ],
+        "Quillen.AlgebraicGeometry.PerfectComplexes.DerivedStructure": [
+          "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+          "Mathlib.Algebra.Homology.DerivedCategory.ShortExact"
+        ]
+      },
+      "conditions": "Arbitrary site module sheaves for the right unitor; arbitrary scheme module sheaf L and actual f : L -> O_X for tensor-to-unit. Complex and single-object comparisons use those actual maps. No invertibility, line-bundle, perfectness or projective-line assumption. Scalar and perfect-cover wrappers remain downstream."
+    },
+    {
+      "family": "quasicoherent and perfect homology",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Homology.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "bfb93dda9ff5df57674129b0a5255631ac11bebebaab26d50426b51f4fdbaf34",
+          "lines": 159
+        }
+      ],
+      "refactor_input": {
+        "path": "Quillen/AlgebraicGeometry/PerfectComplexes/Homology.lean",
+        "sha256": "5c3aa2c2a65dfad3868fb1cb2e0114e3bf41693497a51c3497640d7e6d0b5d8a",
+        "basis": "Already retargeted current-source input, distinct from raw delivered bytes."
+      },
+      "selection": "All seven general homology declarations, separated by their actual hypotheses into quasicoherence, ordinary complexes, and local perfection.",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Homology.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology",
+          "sha256": "5e10e74bd135da3a05e5cc52829d9800c56beb3fffff8d7226203a4f5433b1a8"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Complex/Homology.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Homology",
+          "sha256": "29d9426f845cc78393dcc2bb48e617dc991863ad6e1690b448d7500c32c6ab14"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Perfect/Homology.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Homology",
+          "sha256": "aa6f558a6f3089cceabecb4e6b58a061756b85406603b6d1e1082e4ee492d452"
+        }
+      ],
+      "declarations": {
+        "AlgebraicGeometry.Scheme.Modules.Coherent.quasicoherent_of_openNeighborhoods": {
+          "new": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_of_openNeighborhoods",
+          "module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology",
+          "refactor_input_line": 50
+        },
+        "AlgebraicGeometry.Scheme.Modules.Coherent.quasicoherent_homology": {
+          "new": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_homology",
+          "module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology",
+          "refactor_input_line": 86
+        },
+        "Quillen.PerfectComplexes.homologyIsoOfDerivedIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.homologyIsoOfDerivedIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Homology",
+          "refactor_input_line": 108
+        },
+        "Quillen.PerfectComplexes.restrictHomologyIso": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.restrictHomologyIso",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Homology",
+          "refactor_input_line": 117
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_quasicoherent_homology": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_quasicoherent_homology",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Homology",
+          "refactor_input_line": 125
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_exists_local_homology_bounds": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_exists_local_homology_bounds",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Homology",
+          "refactor_input_line": 141
+        },
+        "Quillen.PerfectComplexes.locallyPerfect_homology_bounded": {
+          "new": "AlgebraicGeometry.Scheme.Modules.Complex.locallyPerfect_homology_bounded",
+          "module": "Aglib.AlgebraicGeometry.Modules.Perfect.Homology",
+          "refactor_input_line": 156
+        }
+      },
+      "conditions": {
+        "QC_two_lemmas": "arbitrary scheme; termwise quasicoherence only on quasicoherent_homology",
+        "ordinary_two_isos": "actual CochainComplex and native DerivedCategory/Q with same local standard u+1",
+        "local_perfect_homology_and_local_bounds": "arbitrary scheme, actual locallyPerfect property; no termwise QC or global strict model",
+        "global_bound": "CompactSpace X retained only on locallyPerfect_homology_bounded"
+      }
+    },
+    {
+      "family": "Godement proof elaboration",
+      "sources": [
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTensorUnit.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "f6ab606ffa121800baf06ecddf3a4ac410763587916a19ca6f25a7bd4f8b18ab",
+          "lines": 121
+        },
+        {
+          "repository": "quillen-k-theory",
+          "path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/OriginalLineGodementContractions.lean",
+          "archive_sha256": "16c127c5b7a5874cb4d841e1161b436190c35aeb08802b89cb19fd8c76ad1d48",
+          "sha256": "40238a98b43990ae0088d12ec950af27665b095365d6998b3177e82f31540c1b",
+          "lines": 226
+        }
+      ],
+      "existing_implementation_basis": [
+        {
+          "repository": "aglib",
+          "revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+          "path": "Aglib/CategoryTheory/NatTrans/Unit.lean",
+          "sha256": "02c51cd4aa7dfeb5bd228583afd0515667c84a03d400e1b6c00a4e3fe47aff90"
+        },
+        {
+          "repository": "aglib",
+          "revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.lean",
+          "sha256": "17a6b66436eb62932645dab7ce5ee8d55a9aecb36ea410f43f1801f16b8b582d"
+        },
+        {
+          "repository": "aglib",
+          "revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Contraction.lean",
+          "sha256": "b2aa40bcd1c1d7b43b20168866969a8476dedd6c8910dc5c7adb6c5d9b59a12b"
+        },
+        {
+          "repository": "aglib",
+          "revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115"
+        }
+      ],
+      "selection": "Only the typed natural-transformation component helper (GodementTensorUnit lines 69-77), the abstract postcomposition/reflexive helpers (OriginalLineGodementContractions lines 85-98), and proof elaboration improvements to the existing native general constructions. No projective-line application or whole source is migrated.",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/NatTrans/Unit.lean",
+          "module": "Aglib.CategoryTheory.NatTrans.Unit",
+          "sha256": "ad0ec0769acb548a986b97fb488d8a3ff63a3bfc0482dc197d3b8a71966e17b3"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.lean",
+          "module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Tensor",
+          "sha256": "d3c71f572c3728585c1babeb272d7a394c1b793ac224332045aa3bf40ae55207"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Contraction.lean",
+          "module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Contraction",
+          "sha256": "6b8e14828be793d468a43d68a5c3d8ab9c539fa11d6ace19d61793599f100324"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "module": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+          "sha256": "2cc31814f5a090cfb4ec67ef61fac678131717a0228a28acbb3c1436cd3a8330"
+        }
+      ],
+      "correspondence": {
+        "Quillen.SchemeSheaf.originalUnitPostcompose": "CategoryTheory.NatTrans.unitPostcompose (existing definition unchanged)",
+        "Quillen.SchemeSheaf.originalUnitPostcompose_whiskerRight_app_of_eq": "CategoryTheory.NatTrans.unitPostcompose_whiskerRight_app_of_eq",
+        "Quillen.SchemeSheaf.postcomposeWeak_named": "private Godement.postcompose_quasiIso_of_eq",
+        "Quillen.SchemeSheaf.natTransSelfEq": "private Godement.natTrans_self_eq",
+        "Quillen.SchemeSheaf.godementTensorTotalUnit_app": "AlgebraicGeometry.Scheme.Modules.Godement.godementTensorTotalUnit_app (same component equation)",
+        "Quillen.SchemeSheaf.godementContractionInsertion_quasiIso": "AlgebraicGeometry.Scheme.Modules.Godement.godementContractionInsertion_quasiIso (same hypotheses and canonical map)"
+      },
+      "conditions": "Existing theorem hypotheses and canonical maps are retained. NatTrans helper has independent source/target categories. Open-base-change optimization preserves all original public statements and maps. The private reflexive equality is intentionally declaration-locally exempt from synTaut to preserve its measured elaboration role.",
+      "performance_evidence": "../PERFORMANCE.md"
+    }
+  ],
+  "unchanged_correspondences": {
+    "derived": {
+      "Aglib/Algebra/Homology/DerivedCategory/Plus/ExactDerivedContraction.lean": "fa46240da0a5b84dd0ff0fb05b6ed29da7ab1c967588288835563a9e3138d87d",
+      "Aglib/Algebra/Homology/DerivedCategory/Plus/BoundedComparison.lean": "de41bf163a1ffe6c3543e85e0a08845ba2c72a1a240a817576b7af10e116092d",
+      "Aglib/Algebra/Homology/DerivedCategory/Plus/ShortExact.lean": "7ab8623d0db074f1d5662d6a5c1d41bfa88884d22d6ef7ce26e5a06717a2707a"
+    },
+    "tensor": [
+      {
+        "source": "Quillen/AlgebraicGeometry/Scheme/Sheaf/LineTensorAssociator.lean",
+        "archive_sha256": "f2d12649a162b111cb5beb36945c5fc14398f438e9674288bfebd5b332df7f00",
+        "base_sha256": "2c95dba85f1cd064216f3ce950309f14d648ba2847df5f26f2e2408d006a511c",
+        "canonical": "Aglib/AlgebraicGeometry/Modules/Invertible/TensorFunctorAssociator.lean",
+        "canonical_sha256": "1f4ce341b82fc5f15224ce99477e692443265973d14fb9b279f692a95927fca7",
+        "delta": "Only an Authors header line was added; no mathematical delta; canonical file unchanged and cached output preserved."
+      },
+      {
+        "source": "Quillen/AlgebraicGeometry/Scheme/Sheaf/LineTensorSheafification.lean",
+        "archive_sha256": "492ca05dc86ba3153156f0cb84ff88e778a154d84143dc4690d5f7c1d19c9ca1",
+        "base_sha256": "b50f7f36dea58fcfaceb459613f0241e945db79658ad6b6fff026e0dbd0ae037",
+        "canonical": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+        "canonical_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e",
+        "delta": "Only an Authors header line was added; no mathematical delta; canonical file unchanged and cached output preserved."
+      }
+    ],
+    "reason": "Delivered changes only add author metadata; the current native implementations and their cached output are retained."
+  },
+  "evidence_boundary": "This ledger records exact source identities, selected declarations and current destination identities. Producer elaboration, scoped origin/axiom audits and independent ordinary mathematical reviews are tracked separately from downstream integration. It asserts neither completion of the full TT project nor exhaustive migration of all general theory in either source library."
+}

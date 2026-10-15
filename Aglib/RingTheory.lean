@@ -60,6 +60,7 @@ public import Aglib.RingTheory.Support.Localization
 public import Aglib.RingTheory.TensorProduct.Domain
 public import Aglib.RingTheory.TensorProduct.Equalizer
 public import Aglib.RingTheory.TensorProduct.PurelyInseparable
+public import Aglib.RingTheory.Unramified.Rigidity
 
 /-!
 # RingTheory

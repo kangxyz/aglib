@@ -11,6 +11,7 @@ Objects are Mathlib's actual `X.Modules` on a scheme's Zariski site. Native `Sch
 | [Generators](Generators/README.md) and [Locality](Locality/README.md) | Actual open-free generators, finite local lifts and stalk/open-cover detection |
 | [Restriction](Restriction/README.md), [Pullback](Pullback/README.md), [Pushforward](Pushforward/README.md) | Canonical geometric functors, units/counits, extension by zero and scalar comparisons |
 | [Complex](Complex/README.md) | Ordinary integer complexes, geometric restriction, flat pullback, tensor and acyclicity on specified opens |
+| [Perfect](Perfect/README.md) | Strict term-bounded finite locally free complexes, their inherited exact structure, locally strict derived models and open restriction |
 | [StructureSheaf](StructureSheaf/README.md) and [BaseChange](BaseChange/README.md) | Actual direct image of the unit and the adjunction-mate base-change map |
 | [QuasiCoherent](QuasiCoherent/README.md) | Affine module comparison, local/limit closure, finite-type objects and scalar-localization results |
 | [FinitePresentation](FinitePresentation/README.md) | Actual finite generators/relations, transport and open-locality without a coherent-category dependency |
@@ -22,3 +23,5 @@ Objects are Mathlib's actual `X.Modules` on a scheme's Zariski site. Native `Sch
 The main consumers are the more specific object-property categories and [scheme cohomology](../Cohomology/README.md). Scheme/object/coefficient universes remain those of the source statement, including the sheaf-object universe when a small model is used.
 
 The latest general surface adds [Tensor](Tensor/README.md), [Stalk](Stalk/README.md), [ProjectionFormula](ProjectionFormula/README.md), coefficient/cartesian base change and the affine/tensor subfamilies of finite locally free sheaves. All tensors delegate to one site construction. The arbitrary-morphism projection formula requires finite local freeness of its target coefficient; the closed-immersion module formula permits arbitrary coefficients.
+
+The perfect-complex family uses these same ordinary sheaf complexes. `Scheme.Modules.Complex.StrictPerfect X` and `Perfect X` are full subcategories of the chain-map category; the latter's local-model predicate uses the canonical `DerivedCategory.Q`. The [family guide](Perfect/README.md) separates term bounds, local derived representatives and the exact structures actually supplied. Its definitions and restriction results hold on arbitrary schemes, without global quasi-compactness, Noetherianity or projectivity assumptions.

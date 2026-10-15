@@ -1,6 +1,6 @@
 # Agent instructions
 
-- Keep Aglib focused on general commutative algebra, scheme geometry and module-sheaf/cohomology theory. Keep curve/P1/genus/degree/Riemann–Roch and K/G/Q/S applications downstream. Check complete hypotheses when selecting general results.
+- Develop general algebraic geometry and related mathematics. Select general statements and their necessary algebraic, categorical and homological foundations by complete hypotheses; keep specialized curve/P1/genus/degree/Riemann–Roch and K/G/Q/S applications downstream in this migration.
 - Reuse Mathlib's actual objects and canonical maps. Maintain one implementation per declaration, precise lower-leaf imports, and native mathematical namespaces. Follow [architecture](doc/ARCHITECTURE.md) and [naming](doc/NAMING.md).
 - Preserve universes, bounds, hypotheses and explicit theorem-family inputs. Distinguish arbitrary finite-type quasicoherent theory from guarded locally Noetherian coherence; use [interface boundaries](doc/INTERFACES.md).
 - Use modern `module` headers, precise `public import` and exposed public interfaces where required. Keep the pinned dependencies and follow Mathlib style; see [development](doc/DEVELOPMENT.md).

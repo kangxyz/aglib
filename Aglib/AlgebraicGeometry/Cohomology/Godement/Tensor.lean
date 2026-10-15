@@ -57,18 +57,41 @@ def godementTensorTotalUnit (X : Scheme.{u}) (E : X.Modules) :
         godementTotalPlus X :=
   Functor.whiskerRight (godementTensorUnit X E) (godementTotalPlus X)
 
+/-- The component retains the original augmentation before the outer total.
+
+The typed component proof is taken from the delivered source
+`Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTensorUnit.lean`, lines 80–96,
+SHA256 `f6ab606ffa121800baf06ecddf3a4ac410763587916a19ca6f25a7bd4f8b18ab`.
+The composite codomain preserves the aligned canonical map arguments. -/
 lemma godementTensorTotalUnit_app (X : Scheme.{u}) (E : X.Modules)
     (C : CochainComplex.Plus X.Modules) :
-    (godementTensorTotalUnit X E).app C =
-      (godementTotalPlus X).map
+    @Eq
+      ((godementTotalPlus X).obj
+          ((moduleTensorLeftFunctor X E).mapCochainComplexPlus.obj C) ⟶
+        (godementTotalPlus X).obj
+          ((godementTotalPlus X ⋙
+            (moduleTensorLeftFunctor X E).mapCochainComplexPlus).obj C))
+      ((godementTensorTotalUnit X E).app C)
+      ((godementTotalPlus X).map
+        (X := (moduleTensorLeftFunctor X E).mapCochainComplexPlus.obj C)
+        (Y := (godementTotalPlus X ⋙
+          (moduleTensorLeftFunctor X E).mapCochainComplexPlus).obj C)
         ((moduleTensorLeftFunctor X E).mapCochainComplexPlus.map
-          ((godementTotalPlusUnit X).app C)) := rfl
+          (X := C) (Y := (godementTotalPlus X).obj C)
+          ((godementTotalPlusUnit X).app C))) := by
+  exact CategoryTheory.NatTrans.unitPostcompose_whiskerRight_app_of_eq
+    (godementTotalPlus X) (moduleTensorLeftFunctor X E).mapCochainComplexPlus
+    (godementTotalPlus X) (godementTotalPlusUnit X) (godementTensorTotalUnit X E) rfl C
 
 theorem godementTensorTotalUnit_quasiIso {X : Scheme.{u}} (E : X.Modules)
     [IsFiniteLocallyFree X E] (C : CochainComplex.Plus X.Modules) :
     QuasiIso ((godementTensorTotalUnit X E).app C).hom := by
   let := godementTensorUnit_quasiIso E C
-  exact godementTotalPlus_map_quasiIso ((godementTensorUnit X E).app C)
+  exact godementTotalPlus_map_quasiIso
+    (K := (moduleTensorLeftFunctor X E).mapCochainComplexPlus.obj C)
+    (L := (godementTotalPlus X ⋙
+      (moduleTensorLeftFunctor X E).mapCochainComplexPlus).obj C)
+    ((godementTensorUnit X E).app C)
 
 theorem godementTotalPlus_sameLowerBound {X : Scheme.{u}}
     (C : CochainComplex.Plus X.Modules) (a : ℤ) [C.obj.IsStrictlyGE a] :

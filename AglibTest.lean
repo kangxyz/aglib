@@ -8,13 +8,27 @@ Authors: kangxyz
 module
 
 public import AglibTest.AffineCohomology
+public import AglibTest.ArchiveBaseProductInterchange
+public import AglibTest.ArchiveEndpointTransport
+public import AglibTest.ArchiveExactFunctorPushout
+public import AglibTest.ArchiveFullSubcategoryPushout
+public import AglibTest.ArchiveGodementClosedSectionSpan
+public import AglibTest.ArchiveGodementTensor
+public import AglibTest.ArchiveMappingConeShortExact
+public import AglibTest.ArchiveMappingConeWeakMap
+public import AglibTest.ArchivePerfectStructural
+public import AglibTest.ArchiveSequentialSystemColimit
+public import AglibTest.ArchiveSequentialSystemSignCorrection
 public import AglibTest.AuditCoverage
 public import AglibTest.CoefficientUnit
 public import AglibTest.ExactFunctor
+public import AglibTest.FiniteEtale
 public import AglibTest.FiniteLocallyFree
 public import AglibTest.FiniteTypePushforward
 public import AglibTest.MappingCone
 public import AglibTest.SheafTensor
+public import AglibTest.TensorToUnit
+public import AglibTest.UnramifiedRigidity
 
 /-!
 # Aglib trust tests

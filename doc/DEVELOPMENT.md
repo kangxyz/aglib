@@ -105,3 +105,56 @@ Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree 
 During development build changed leaves and affected clients. At integration use the full route above for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and required local replays. Build success does not discharge mathematical premises.
 
 A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.
+
+## Downstream candidates for Aglib
+
+During downstream development, place a new reusable general-theory implementation
+that belongs in Aglib in the host library's `Aglib/` subtree:
+
+| Source package | Source directory | Temporary module prefix |
+| --- | --- | --- |
+| R5Lab | `lean/R5Lab/Aglib/` | `R5Lab.Aglib` |
+| Quillen | `Quillen/Aglib/` | `Quillen.Aglib` |
+
+These are ordinary checked source modules with a prospective upstream owner.
+Do not create a package-root `Aglib/` source tree in a downstream package: it
+would compete with the actual dependency's `Aglib.*` module identities.
+
+- Search Mathlib and the pinned Aglib API first. Reuse or extend their actual
+  objects and maps. A candidate must state general algebraic geometry or related
+  mathematical theory under its full hypotheses. Curve, projective-line,
+  arithmetic and K-theory applications keep their downstream owners; being
+  useful in two applications alone does not select Aglib ownership.
+- Mirror Aglib's mathematical hierarchy below the temporary prefix, following
+  [architecture](ARCHITECTURE.md) and [naming](NAMING.md). Use native mathematical
+  declaration namespaces from the start, such as `Algebra`, `CategoryTheory`,
+  `CochainComplex` and `AlgebraicGeometry.Scheme`; the host prefix is a module
+  location, not a declaration namespace. Do not add `R5Lab.Aglib`,
+  `Quillen.Aglib` or `Aglib` wrappers around general declarations.
+- Keep the candidate dependency closure general. Import focused Mathlib and
+  Aglib leaves or explicitly designated candidate leaves, respecting the
+  existing package dependency direction. Do not import ordinary host
+  application modules. Isolate a required general prerequisite as a candidate
+  first; keep application adapters outside the subtree. Coordinate one source
+  owner when both downstream libraries need the same result.
+- In each module docstring, name the intended `Aglib.*` module, describe the
+  generality and actual hypotheses, and identify the current consumer. A
+  family README records its interfaces and main mathematical results. A direct
+  upstream contribution may skip the temporary location when it is already
+  ready to integrate.
+- Candidates use the host's normal source enrollment, Lean options, focused
+  builds, lint and axiom policy. They are maintained proofs, not scratch or a
+  place for placeholders. Put incomplete exploration outside production source.
+  Add a focused client only for a meaningful uncovered interface condition.
+- Move a ready, coherent candidate dependency group into Aglib, update its
+  colocated guides and source provenance, obtain acceptance on the current
+  identities, and then advance downstream pins. Retarget consumers to the
+  upstream modules and remove the candidate implementation in the same
+  downstream change. Preserve native declaration names when they still express
+  the correct interface. Do not retain duplicate implementations or introduce
+  a compatibility facade as the default migration route.
+
+The two subtrees currently document this convention; create mathematical
+subdirectories and source facades only when real candidate modules need them.
+A temporary location does not itself assert upstream acceptance or a completed
+migration.

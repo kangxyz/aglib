@@ -4,6 +4,8 @@ The library is organized by mathematical objects, hypotheses and reusable constr
 
 ## Mathematical ownership
 
+The library's remit is general algebraic geometry and related mathematics. A migration batch admits general definitions and theorems with their necessary lower foundations. Existing downstream demand helps identify interfaces; it does not limit the library's mathematical scope. Specialized application objects and their comparison data retain downstream owners.
+
 Choose an owner from the complete statement and its current consumer. Rings, ideals, modules, categories, complexes, topological sheaves and schemes have their own mathematical subjects. Origin in a curve, K-theory or perfect-complex file records provenance and does not make a general lemma part of that application layer.
 
 Use the pinned Mathlib object and interface when available. Extend its native mathematical owner, or introduce a focused subject next to it when the admitted objects require that extension. `Aglib` identifies imports; the declaration namespace identifies the object. This distinction permits a module to extend a native namespace without duplicating its object or inheriting the source package's identity.

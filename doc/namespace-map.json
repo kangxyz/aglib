@@ -1705,6 +1705,30 @@
       "owner": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
       "original_namespace": "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf",
       "status": "Existing generic helpers moved out of invertible-sheaf construction; unique implementation, actual source provenance in general-geometry.json."
+    },
+    {
+      "family": "general TT foundations",
+      "owner": "Native CategoryTheory, CochainComplex, CommRingCat and AlgebraicGeometry.Scheme owners",
+      "source_correspondence": "migration/tt-foundations.json",
+      "status": "Exact declaration and import routes are recorded per family. Mapping cones, exact pushouts, sequential colimits, triangle transport, base products and tensor-to-unit maps use their mathematical owners; no Quillen or Aglib declaration prefix is introduced."
+    },
+    {
+      "family": "perfect complexes and homology",
+      "owner": "AlgebraicGeometry.Scheme.Modules.Complex",
+      "source_correspondence": "migration/tt-foundations.json",
+      "status": "Use actual CochainComplex X.Modules integers, native DerivedCategory X.Modules and DerivedCategory.Q; there is no parallel Complex/Derived/toDerived abbreviation. The former direct restriction-lift equality is replaced by the actual derivedRestrictFactors natural isomorphism. The standard derived-category instance is local. Quasicoherent homology belongs to Scheme.Modules.QuasiCoherent, ordinary derived/restriction comparison to Scheme.Modules.Complex, and locally perfect homology to the Perfect module family."
+    },
+    {
+      "family": "finite-etale covers and finite point lifts",
+      "owner": "AlgebraicGeometry.Scheme.FiniteEtale; AlgebraicGeometry.Scheme.Finite",
+      "source_correspondence": "migration/r5-general-etale.json",
+      "status": "Scheme.finiteEtaleProperty selects actual finite-etale objects of Over X; Scheme.FiniteEtale X is their full subcategory. Native category/fiber/base-change methods replace FiniteEtaleCovers.Cover directly. Finite-Hom lemmas live under Morphisms.Finite because their hypotheses do not require etaleness."
+    },
+    {
+      "family": "general unramified rigidity",
+      "owner": "Algebra.FormallyUnramified; AlgebraicGeometry.Scheme.Hom",
+      "source_correspondence": "migration/r5-general-etale.json",
+      "status": "Ring quotient-map rigidity and separated/formally-unramified scheme section rigidity are independent general owners. Pointed finite-etale and curve/K-theory adapters remain downstream."
     }
   ],
   "native_declaration_refinements": [

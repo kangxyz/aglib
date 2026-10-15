@@ -1,4 +1,4 @@
-# Coproduct comparison and split pushouts
+# Coproducts, pushouts and sequential colimits
 
 [NatTransCoproduct](NatTransCoproduct.lean), imported as `Aglib.CategoryTheory.Limits.NatTransCoproduct`, gives `CategoryTheory.NatTrans.isIso_app_coproduct` for the actual coproduct comparison with the source's preservation and componentwise-isomorphism hypotheses. [FiniteCoproductFunctor](../Abelian/FiniteCoproductFunctor.lean) separately supplies finite-limit/finite-colimit preservation of finite coproducts in the abelian setting.
 
@@ -7,3 +7,5 @@
 Finite-free sheaf tensors and degreewise split cochain pushout arguments consume these actual universal-property maps. Product/coproduct index and universe hypotheses are preserved by each source statement.
 
 [BiproductPushout](BiproductPushout.lean), imported as `Aglib.CategoryTheory.Limits.BiproductPushout`, proves `CategoryTheory.Limits.IsPushout.biprod_map`: the literal biproduct maps of two displayed pushout squares form a pushout in a preadditive category with binary biproducts. No mono or splitting premise is required. [Shapes](Shapes/README.md) owns displayed cokernel-to-pushout and zero-coproduct results. The [identity-cone functor](../../Algebra/Homology/MappingCone/README.md) consumes these universal-property primitives.
+
+[FullSubcategory](FullSubcategory/README.md) lifts a displayed ambient pushout to the actual full-subcategory functor once every value, including the chosen apex, satisfies the object property. [SequentialSystem](Shapes/SequentialSystem/README.md) constructs colimits of sequences of isomorphisms, finite-tail comparisons and invertibility of the original stage inclusions for eventually invertible sequences. Its sign-correction leaf turns anti-commuting successor squares into natural transformations with the prescribed alternating components. These categorical results retain only their stated colimit, isomorphism or preadditivity hypotheses.

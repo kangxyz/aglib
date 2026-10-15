@@ -86,14 +86,38 @@ def godementContractionInsertion (X : Scheme.{u}) (F : X.Modules ⥤ X.Modules)
     godementContractionPlain X F E ⟶ godementContractionResolved X F E :=
   Functor.whiskerRight (godementContractionPreTotalMap X F E) (godementTotalPlus X)
 
+/- Archive proof transport from
+`Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/OriginalLineGodementContractions.lean`,
+lines 85–114, source SHA256
+`40238a98b43990ae0088d12ec950af27665b095365d6998b3177e82f31540c1b`. -/
+private theorem postcompose_quasiIso_of_eq
+    {X : Scheme.{u}} {D : Type*} [Category D]
+    {F G : D ⥤ CochainComplex.Plus X.Modules} (α : F ⟶ G)
+    (T : CochainComplex.Plus X.Modules ⥤ CochainComplex.Plus X.Modules)
+    (β : F ⋙ T ⟶ G ⋙ T) (hβ : β = Functor.whiskerRight α T)
+    (hα : ∀ K, QuasiIso (α.app K).hom)
+    (hT : ∀ {K C : CochainComplex.Plus X.Modules} (f : K ⟶ C),
+      QuasiIso f.hom → QuasiIso (T.map f).hom) (K : D) :
+    QuasiIso (β.app K).hom := by
+  subst β
+  exact Plus.plus_nattrans_postcompose_quasiIso α T hα hT K
+
+-- This intentionally reflexive certificate fixes the functor endpoints before specializing
+-- the proof below to Godement totalization, preserving the accepted kernel conversion behavior.
+@[nolint synTaut]
+private theorem natTrans_self_eq {C D : Type*} [Category C] [Category D]
+    {F G : C ⥤ D} (α : F ⟶ G) : α = α := rfl
+
 theorem godementContractionInsertion_quasiIso {X : Scheme.{u}}
     (F : X.Modules ⥤ X.Modules) [F.Additive] (E : X.Modules)
     [IsFiniteLocallyFree X E] (K : CochainComplex.Plus X.Modules) :
-    QuasiIso ((godementContractionInsertion X F E).app K).hom :=
-  Plus.plus_nattrans_postcompose_quasiIso _ _ (godementContractionPreTotalMap_quasiIso F E)
-    (fun f hf => by
-      let := hf
-      exact godementTotalPlus_map_quasiIso f) K
+    QuasiIso ((godementContractionInsertion X F E).app K).hom := by
+  exact postcompose_quasiIso_of_eq (godementContractionPreTotalMap X F E)
+    (godementTotalPlus X) (godementContractionInsertion X F E)
+    (natTrans_self_eq (F := godementContractionPlain X F E)
+      (G := godementContractionResolved X F E) (godementContractionInsertion X F E))
+    (godementContractionPreTotalMap_quasiIso F E)
+    (@godementTotalPlus_map_quasiIso X) K
 
 /-- The map from Godement totalization to resolved contraction formed from `e` and the insertion
 map. -/

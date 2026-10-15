@@ -1,0 +1,346 @@
+{
+  "group": "r5-general-etale",
+  "source_repository": "r5-lab",
+  "source_revision": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+  "destination_entry_revision": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+  "families": [
+    {
+      "family": "finite morphism field-valued points and finite-etale covers",
+      "sources": [
+        {
+          "repository": "r5-lab",
+          "revision": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+          "path": "lean/R5Lab/AlgebraicGeometry/FiniteEtale/Basic.lean",
+          "sha256": "448735e35852bb729246eb18dcba2285554c59e506ec1d3bf966e36207719c48",
+          "lines": 97,
+          "selected_lines": [
+            45,
+            96
+          ],
+          "selection": "all mathematical declarations; Fiber finite-only lemmas split into Morphisms/Finite/PointLifts"
+        },
+        {
+          "repository": "r5-lab",
+          "revision": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+          "path": "lean/R5Lab/AlgebraicGeometry/FiniteEtale/Fiber.lean",
+          "sha256": "2ea7277dcd82b233b4ecada3e0aa91cd6099a8e7704248b807eb140af8f12355",
+          "lines": 174,
+          "selected_lines": [
+            46,
+            173
+          ],
+          "selection": "all mathematical declarations; Fiber finite-only lemmas split into Morphisms/Finite/PointLifts"
+        },
+        {
+          "repository": "r5-lab",
+          "revision": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+          "path": "lean/R5Lab/AlgebraicGeometry/FiniteEtale/BaseChange.lean",
+          "sha256": "38e14f8b7e7d37836d0091b104fd2363ba6366bf801a7220f1e7f64d66450ea2",
+          "lines": 119,
+          "selected_lines": [
+            46,
+            118
+          ],
+          "selection": "all mathematical declarations; Fiber finite-only lemmas split into Morphisms/Finite/PointLifts"
+        }
+      ],
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Morphisms/Finite/PointLifts.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.Finite.PointLifts",
+          "sha256": "094371f6af73eb62b287219eafae66c69fa66375b9cb2abd41c6c4052eec0841"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/FiniteEtale/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic",
+          "sha256": "3c2220fd28e5491dfad9b9c2f7f62886387401c9ff08c0515aee6fdf4dd0b62b"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/FiniteEtale/Fiber.lean",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber",
+          "sha256": "cff773b8573d0d73e946d6ac7dea85288adb74dc1ad9691b702ed6f59fa7193c"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/FiniteEtale/BaseChange.lean",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange",
+          "sha256": "f602e19ecf22ae4aa16764e06954ff7538d8f53aea60686d4a07fca34d2f72b1"
+        }
+      ],
+      "declarations": [
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.finiteEtale",
+          "new": "AlgebraicGeometry.Scheme.finiteEtaleProperty",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.Cover",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.mk",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.mk",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.forget",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.forget",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.forgetToScheme",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.forgetToScheme",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.forgetToScheme_obj",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.forgetToScheme_obj",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.forgetToScheme_map",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.forgetToScheme_map",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.toEtale",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.toEtale",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.toEtaleForgetIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.toEtaleForgetIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.toEtale_obj_hom",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.toEtale_obj_hom",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.Fiber",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.Fiber",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.smallEtaleFiberIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.smallEtaleFiberIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber_obj",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber_obj",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber_map",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber_map",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber_map_left",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber_map_left",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber_map_id",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber_map_id",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiber_map_comp",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiber_map_comp",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.pointToPreimage",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.pointToPreimage",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.pointToPreimage_map",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.pointToPreimage_map",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.pointToPreimage_surjective",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.pointToPreimage_surjective",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.finite_hom_over_field",
+          "new": "AlgebraicGeometry.Scheme.Finite.finite_hom_over_field",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.Finite.PointLifts"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.finite_hom_over_point",
+          "new": "AlgebraicGeometry.Scheme.Finite.finite_hom_over_point",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.Finite.PointLifts"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.finiteFiber",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.finiteFiber",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberToFinite",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberToFiniteForgetIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberToFiniteForgetIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberToFinite_map",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite_map",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.baseChange",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChange",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.baseChangeForgetIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChangeForgetIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.baseChange_obj_hom",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChange_obj_hom",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.baseChangeId",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChangeId",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.baseChangeComp",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.baseChangeComp",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeEquiv",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeEquiv",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeEquiv_left",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeEquiv_left",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeEquiv_symm_left",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeEquiv_symm_left",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeIso_hom_app_apply",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeIso_hom_app_apply",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberBaseChangeIso_inv_app_apply",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberBaseChangeIso_inv_app_apply",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtaleCovers.fiberToFiniteBaseChangeIso",
+          "new": "AlgebraicGeometry.Scheme.FiniteEtale.fiberToFiniteBaseChangeIso",
+          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange"
+        }
+      ],
+      "conditions": "The Hom-over-field and Hom-over-point finiteness lemmas need a finite morphism and an arbitrary field, not etaleness or a separably closed field. FiniteEtale X is the full subcategory of Over X selected by Scheme.finiteEtaleProperty. Actual scheme pullback and geometric fibers are retained; empty covers are allowed. Only the explicit comparison to the small etale site assumes a separably closed field."
+    },
+    {
+      "family": "general unramified rigidity",
+      "sources": [
+        {
+          "path": "lean/R5Lab/AlgebraicGeometry/FiniteEtale/UnramifiedRigidity.lean",
+          "git_baseline_commit": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+          "git_baseline_blob": "ed815db595fbabd4a75c1e9c6296aece975912cf",
+          "git_baseline_sha256": "ae7a23021c805bedf235075e127e7cff6672cfc9548527e143b377dbef735b3e",
+          "current_pre_deletion_sha256": "ae7a23021c805bedf235075e127e7cff6672cfc9548527e143b377dbef735b3e",
+          "same_bytes": true,
+          "git_baseline_lines": 40,
+          "current_pre_deletion_lines": 40,
+          "selected_mathematical_cut": "lines 7-38",
+          "git_baseline_selected_cut_sha256": "b8865c39d3faa3a08cb9adb63ba8ff07eec48ae2e5c60ae72cce33cb0957bd6f",
+          "current_input_selected_cut_sha256": "b8865c39d3faa3a08cb9adb63ba8ff07eec48ae2e5c60ae72cce33cb0957bd6f",
+          "selected_cut_equal": true
+        },
+        {
+          "path": "lean/R5Lab/AlgebraicGeometry/FiniteEtale/PointedRigidity.lean",
+          "git_baseline_commit": "2f9ca464b192cff865858dda70b2d8e5dca8b3df",
+          "git_baseline_blob": "305d3b9da4f8d4da58606946a34ca323adc8e2f2",
+          "git_baseline_sha256": "6014707cbe74aac457557e1731bd7ccf40421968789c45e59f1a834360226265",
+          "current_pre_deletion_sha256": "6014707cbe74aac457557e1731bd7ccf40421968789c45e59f1a834360226265",
+          "same_bytes": true,
+          "git_baseline_lines": 112,
+          "current_pre_deletion_lines": 112,
+          "selected_mathematical_cut": "lines 43-89",
+          "git_baseline_selected_cut_sha256": "84cbd6c230d337bad8e1eca05a7636183b8dc4ca8bfff401eb3e659144e276b3",
+          "current_input_selected_cut_sha256": "84cbd6c230d337bad8e1eca05a7636183b8dc4ca8bfff401eb3e659144e276b3",
+          "selected_cut_equal": true
+        }
+      ],
+      "source_identity_note": "Git2f9 commit/blob identity and the guarded current pre-deletion input are distinct fields. Both happen to have equal bytes in these two paths; no prior consumer-refactor modification is present in their accepted inputs.",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Unramified/Rigidity.lean",
+          "module": "Aglib.RingTheory.Unramified.Rigidity",
+          "sha256": "d7805d24a1696fea62546ef7c3d3753c2bc81e50a81090820f5d291096f16e30"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/SectionRigidity.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.SectionRigidity",
+          "sha256": "5f09187d655736ccf855d58165556d3b4de66ea3d69d6addc427dc95ae897397"
+        }
+      ],
+      "declarations": [
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtale.UnramifiedRigidity.eq_of_comp_mkQ_eq",
+          "new": "Algebra.FormallyUnramified.eq_of_comp_mkQ_eq",
+          "module": "Aglib.RingTheory.Unramified.Rigidity",
+          "source_cut": "UnramifiedRigidity.lean:7-38 (all mathematical content)"
+        },
+        {
+          "old": "R5Lab.AlgebraicGeometry.FiniteEtale.eq_of_comp_eq_of_section",
+          "new": "AlgebraicGeometry.Scheme.Hom.eq_of_comp_eq_of_section",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.SectionRigidity",
+          "source_cut": "PointedRigidity.lean:43-89 (first general theorem and its docstring only)"
+        }
+      ],
+      "conditions": {
+        "ring": "Independent R/A/B universes; commutative rings and the actual algebra structures; B a domain; A essentially finite type and formally unramified over R; a prime ideal Q and actual equality of quotient algebra maps. No nilpotent-ideal, field or Noetherian hypothesis is added.",
+        "scheme": "The actual map p is separated, formally unramified and locally of finite type. The actual map q is geometrically connected and has the supplied section. Both displayed map equations remain explicit. No field, reducedness or Noetherian premise is added."
+      },
+      "downstream_boundary": "Only the first general theorem of PointedRigidity is extracted; its pointed finite-etale adapter remains downstream with the same body and native helper call."
+    }
+  ],
+  "source_disposition": {
+    "removed_pure_modules": [
+      "R5Lab.AlgebraicGeometry.FiniteEtale.Basic",
+      "R5Lab.AlgebraicGeometry.FiniteEtale.Fiber",
+      "R5Lab.AlgebraicGeometry.FiniteEtale.BaseChange",
+      "R5Lab.AlgebraicGeometry.FiniteEtale.UnramifiedRigidity"
+    ],
+    "retained_mixed_module": "R5Lab.AlgebraicGeometry.FiniteEtale.PointedRigidity",
+    "native_api_policy": "Direct native API consumers; no compatibility facade or duplicate implementation remains in the source package."
+  },
+  "selection_boundary": "Six precisely selected general producers from five source files. The 200-file finite-etale inventory is not an exhaustive mathematical audit; unselected general results may remain in R5Lab. Generality is the boundary for future admission, not an assertion that every remaining file is an application.",
+  "evidence_boundary": "Exact source/cut and current destination identities. Producer elaboration, focused component clients, native lints, scoped permitted-axiom audits and independent ordinary reviews passed on these identities. Downstream source refactoring and package-pin acceptance are separate checks; no whole-library or exhaustive migration completion is inferred."
+}

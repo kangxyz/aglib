@@ -100,6 +100,15 @@ lemma totalPlus_terms_isFlasque (P : Scheme.{u}) (K : CochainComplex.Plus P.Modu
   exact godementTotal_isFlasque K.obj a
     (fun i hi => CochainComplex.isZero_of_isStrictlyGE K.obj a i hi) n
 
+private lemma pushforward_godement_map_quasiIso {P Y : Scheme.{u}} (p : P ⟶ Y)
+    {K M : CochainComplex.Plus P.Modules} (s : K ⟶ M) (hs : QuasiIso s.hom) :
+    QuasiIso ((Scheme.Modules.pushforward p).mapCochainComplexPlus.map
+      ((godementTotalPlus P).map s)).hom := by
+  let := hs
+  let : QuasiIso ((godementTotalPlus P).map s).hom := godementTotalPlus_map_quasiIso s
+  exact Plus.pushforward_quasiIso_of_flasque p _ (totalPlus_terms_isFlasque P K)
+    (totalPlus_terms_isFlasque P M)
+
 variable {W U V X : Scheme.{u}} (a : W ⟶ U) (b : W ⟶ V) (f : U ⟶ X) (j : V ⟶ X)
   [IsOpenImmersion a] [IsOpenImmersion j] (h : IsPullback a b f j)
 
@@ -251,12 +260,11 @@ lemma openBaseChangeGlobalLeg_quasiIso (K : CochainComplex.Plus X.Modules) :
 
 lemma openBaseChangeLocalLeg_quasiIso (K : CochainComplex.Plus X.Modules) :
     QuasiIso (openBaseChangeLocalLeg a b f j h K).hom := by
-  have : QuasiIso (openTotalBridge a b f j h K).hom :=
-    openTotalBridge_quasiIso a b f j h K
-  have : QuasiIso ((godementTotalPlus W).map (openTotalBridge a b f j h K)).hom :=
-    godementTotalPlus_map_quasiIso _
-  exact Plus.pushforward_quasiIso_of_flasque b _ (totalPlus_terms_isFlasque W _)
-    (totalPlus_terms_isFlasque W _)
+  exact pushforward_godement_map_quasiIso b
+    (K := (Scheme.Modules.pullback b).mapCochainComplexPlus.obj
+      ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))
+    (M := restrictedTotalPlus a f K) (openTotalBridge a b f j h K)
+    (openTotalBridge_quasiIso a b f j h K)
 
 private lemma augmentation_component_naturality {C : Type*} [Category C] [HasZeroMorphisms C]
     (T : CochainComplex.Plus C ⥤ CochainComplex.Plus C) (η : 𝟭 _ ⟶ T)
