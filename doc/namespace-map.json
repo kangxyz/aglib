@@ -1,0 +1,2269 @@
+{
+  "root_module": "Aglib",
+  "policy": "Original source prefix routes are followed by native_prefix_rewrites and native_module_prefix_rewrites. Mixed ring families are routed by declaration identity; API owners are native mathematical namespaces. Aglib is only the module root.",
+  "prefix_rewrites": [
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.restrictedSheafificationUnit_sheafification_iso",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_sheafification_iso"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.restrictedSheafificationUnit_locallySurjective",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallySurjective"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.restrictedSheafificationUnit_locallyInjective",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallyInjective"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.restrictedSheafificationUnit",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.isIso_of_locallyBijective",
+      "PresheafOfModules.isIso_of_locallyBijective"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.sheafificationOverIso",
+      "PresheafOfModules.Restriction.sheafificationOverIso"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.locallyBijective_of_local_isIso",
+      "AlgebraicGeometry.Scheme.Modules.locallyBijective_of_local_isIso"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf.restrictPresheaf",
+      "PresheafOfModules.Restriction.restrictPresheaf"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.FiniteEtale.FieldObjectDescent",
+      "Aglib.RingTheory.Descent.FieldObjects"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.FiniteEtale.PurelyInseparable",
+      "Aglib.RingTheory.Descent.PurelyInseparable"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.FiniteEtale.GeometricPoints",
+      "Aglib.Scheme.Finite.GeometricPoints"
+    ],
+    [
+      "R5Lab.KTheory.WeightTwo.UnramifiedRootsExtension",
+      "Aglib.RingTheory.Unramified.Roots"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.TargetLocalizationEtale",
+      "Aglib.Scheme.LocalRing.Etale"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Differentials",
+      "Aglib.Scheme.Differentials"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.GroupScalarExtension",
+      "Aglib.Scheme.Group.BaseChange"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Cohomology",
+      "Aglib.Scheme.Cohomology"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.PointedIsogenies",
+      "Aglib.Scheme.OverField"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.ConnectedField",
+      "Aglib.Scheme.Geometrically"
+    ],
+    [
+      "R5Lab.RingTheory.RegularLocalNormality",
+      "Aglib.RingTheory.RegularLocalRing"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Degree",
+      "Aglib.Scheme.Modules"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves.Picard",
+      "Aglib.Scheme.Picard"
+    ],
+    [
+      "R5Lab.KTheory.WeightTwo.Grayson.Cycle",
+      "Aglib.RingTheory.LocalLength"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.GenericFiber",
+      "Aglib.Scheme.LocalRing.GenericFiber"
+    ],
+    [
+      "Quillen.FiniteModuleLocalization",
+      "Aglib.Algebra.Category.ModuleCat.FiniteLocalization"
+    ],
+    [
+      "R5Lab.RingTheory.AlgebraDescent",
+      "Aglib.RingTheory.Descent"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry.Curves",
+      "Aglib.Scheme"
+    ],
+    [
+      "Quillen.InjectiveResolution",
+      "Aglib.Algebra.Homology.InjectiveResolution"
+    ],
+    [
+      "Quillen.HomologicalAlgebra",
+      "Aglib.Algebra.Homology"
+    ],
+    [
+      "Quillen.ModuleLocalization",
+      "Aglib.Algebra.Category.ModuleCat.Localization"
+    ],
+    [
+      "R5Lab.HomologicalAlgebra",
+      "Aglib.Algebra.Homology"
+    ],
+    [
+      "Quillen.SheafCohomology",
+      "Aglib.Cohomology.Sheaf"
+    ],
+    [
+      "R5Lab.AlgebraicGeometry",
+      "Aglib.Scheme"
+    ],
+    [
+      "Quillen.CoherentScheme",
+      "Aglib.Scheme.Coherent"
+    ],
+    [
+      "Quillen.RegularLocal",
+      "Aglib.RingTheory.RegularLocalRing"
+    ],
+    [
+      "R5Lab.CategoryTheory",
+      "Aglib.CategoryTheory"
+    ],
+    [
+      "Quillen.SchemeSheaf",
+      "Aglib.Scheme.Modules"
+    ],
+    [
+      "Quillen.Devissage",
+      "Aglib.CategoryTheory.SerreClass"
+    ],
+    [
+      "R5Lab.RingTheory",
+      "Aglib.RingTheory"
+    ],
+    [
+      "Quillen.Scheme",
+      "Aglib.Scheme"
+    ],
+    [
+      "Quillen.Cech",
+      "Aglib.Cohomology.Cech"
+    ],
+    [
+      "Quillen",
+      "Aglib.CategoryTheory"
+    ]
+  ],
+  "native_prefix_rewrites": [
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.principalEuler_eq_weighted_sum_of_supportDim",
+      "Module.PrimeFiltrationFrom.principalEuler_eq_weighted_sum_of_supportDim"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent_of_coordinates",
+      "Algebra.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent_of_coordinates"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.principalEuler_eq_sum_of_finite_cokernel",
+      "Module.PrimeFiltrationFrom.principalEuler_eq_sum_of_finite_cokernel"
+    ],
+    [
+      "Aglib.RingTheory.RelativeDimension.ringKrullDim_le_two_of_principal_open_height_le_one",
+      "IsLocalRing.ringKrullDim_le_two_of_principal_open_height_le_one"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension_le_one",
+      "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension_le_one"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.localized_length_eq_count_of_bot",
+      "Module.PrimeFiltrationFrom.localized_length_eq_count_of_bot"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.spanFinrank_maximalIdeal_quotient_parameter_le",
+      "IsLocalRing.spanFinrank_maximalIdeal_quotient_parameter_le"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation_ker_le_nilradical",
+      "Algebra.TensorProduct.tensorAugmentation_ker_le_nilradical"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.exists_prime_le_of_mem_support",
+      "Module.PrimeFiltrationFrom.exists_prime_le_of_mem_support"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.principalEuler_eq_weighted_sum",
+      "Module.PrimeFiltrationFrom.principalEuler_eq_weighted_sum"
+    ],
+    [
+      "Aglib.RingTheory.RelativeDimension.height_le_two_of_mem_minimalPrimes_span_pair",
+      "Ideal.height_le_two_of_mem_minimalPrimes_span_pair"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.restrictedSheafificationUnit_sheafification_iso",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_sheafification_iso"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension",
+      "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.restrictedSheafificationUnit_locallySurjective",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallySurjective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent",
+      "Algebra.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation_ker_isNilpotent",
+      "Algebra.TensorProduct.tensorAugmentation_ker_isNilpotent"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.length_baseChange_eq_add_sum",
+      "Module.PrimeFiltrationFrom.length_baseChange_eq_add_sum"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.restrictedSheafificationUnit_locallyInjective",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallyInjective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.tensorMap_descendTensorMap",
+      "Algebra.Descent.PurelyInseparable.tensorMap_descendTensorMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPure_invariants_finite",
+      "Algebra.Descent.PurelyInseparable.baseChangedPure_invariants_finite"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPure_invariants_etale",
+      "Algebra.Descent.PurelyInseparable.baseChangedPure_invariants_etale"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.primeFactor_support_subset",
+      "Module.PrimeFiltrationFrom.primeFactor_support_subset"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_associativity_of_minimalRegular",
+      "Module.principalEuler_associativity_of_minimalRegular"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.dvd_of_isIntegral_div_of_normal_parameter",
+      "IsFractionRing.dvd_of_isIntegral_div_of_normal_parameter"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.localized_length_eq_count",
+      "Module.PrimeFiltrationFrom.localized_length_eq_count"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_integral_power_multiplier_not_dvd",
+      "IsFractionRing.exists_integral_power_multiplier_not_dvd"
+    ],
+    [
+      "Aglib.RingTheory.RelativeDimension.height_eq_one_of_mem_minimalPrimes_span",
+      "Ideal.height_eq_one_of_mem_minimalPrimes_span"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.isNilpotent_comap_of_injective",
+      "Ideal.isNilpotent_comap_of_injective"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_parameter_avoiding_minimalPrimes",
+      "IsLocalRing.exists_parameter_avoiding_minimalPrimes"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_baseChanged_comp_equiv",
+      "Algebra.Descent.PurelyInseparable.counit_baseChanged_comp_equiv"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation_algebraMap",
+      "Algebra.TensorProduct.tensorAugmentation_algebraMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation_surjective",
+      "Algebra.TensorProduct.tensorAugmentation_surjective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.minimalPrime_mem_primes",
+      "Module.PrimeFiltrationFrom.minimalPrime_mem_primes"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localizedMinimalSupportEquiv_symm_apply_val",
+      "Module.localizedMinimalSupportEquiv_symm_apply_val"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_generators_containing_parameter",
+      "IsLocalRing.exists_generators_containing_parameter"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isField_of_regularLocal_dimension_zero",
+      "IsRegularLocalRing.isField_of_regularLocal_dimension_zero"
+    ],
+    [
+      "Aglib.RingTheory.mvPolynomial_localizationAtPrime_dimension_of_isMaximal",
+      "MvPolynomial.mvPolynomial_localizationAtPrime_dimension_of_isMaximal"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedOverlapEquiv_tmul",
+      "Algebra.Descent.PurelyInseparable.baseChangedOverlapEquiv_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPureInvariantsMap",
+      "Algebra.Descent.PurelyInseparable.baseChangedPureInvariantsMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePure_invariants_finite",
+      "Algebra.Descent.PurelyInseparable.finitePure_invariants_finite"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.formallyEtale_comp_bijective",
+      "Algebra.FormallyEtale.formallyEtale_comp_bijective"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isSMulRegular_of_regularLocal_ne_zero",
+      "IsRegularLocalRing.isSMulRegular_of_regularLocal_ne_zero"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_projection_assoc",
+      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_projection_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalProjection_inclusion_assoc",
+      "HomologicalComplex\u2082.singleSecondZeroTotalProjection_inclusion_assoc"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePure_invariants_etale",
+      "Algebra.Descent.PurelyInseparable.finitePure_invariants_etale"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.finitePrincipal_terms",
+      "Module.PrimeFiltrationFrom.finitePrincipal_terms"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.principalEuler_eq_sum",
+      "Module.PrimeFiltrationFrom.principalEuler_eq_sum"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.isMaximal_of_mem_support_of_length_ne_top",
+      "Module.isMaximal_of_mem_support_of_length_ne_top"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_localization_of_surjective",
+      "Module.principalEuler_localization_of_surjective"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.tensorProduct_noZeroDivisors_finiteType",
+      "Algebra.TensorProduct.tensorProduct_noZeroDivisors_finiteType"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.tensorMap_bijective",
+      "Algebra.Descent.PurelyInseparable.tensorMap_bijective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.tensorMap_injective",
+      "Algebra.Descent.PurelyInseparable.tensorMap_injective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.datumOfNilpotentCounitsHom",
+      "Algebra.Descent.Nilpotent.datumOfNilpotentCounitsHom"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.mem_support_iff_localized_length_ne_zero",
+      "Module.mem_support_iff_localized_length_ne_zero"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePureBaseChangeEquiv",
+      "Algebra.Descent.PurelyInseparable.finitePureBaseChangeEquiv"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensor_scalar_coordinates",
+      "Algebra.Descent.PurelyInseparable.tensor_scalar_coordinates"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isDomain_of_regularLocal_dimension",
+      "IsRegularLocalRing.isDomain_of_regularLocal_dimension"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isIntegrallyClosed_of_regularLocal",
+      "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal"
+    ],
+    [
+      "Aglib.RingTheory.mvPolynomial_localizationAtPrime_isRegularLocalRing",
+      "MvPolynomial.mvPolynomial_localizationAtPrime_isRegularLocalRing"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.canonicalDatumHom",
+      "Algebra.Descent.PurelyInseparable.canonicalDatumHom"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localizedMinimalSupportEquiv_apply_val",
+      "Module.localizedMinimalSupportEquiv_apply_val"
+    ],
+    [
+      "Aglib.RingTheory.RelativeDimension.exists_mem_maximalIdeal_avoiding",
+      "IsLocalRing.exists_mem_maximalIdeal_avoiding"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.descendTensorMap",
+      "Algebra.Descent.PurelyInseparable.descendTensorMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedOverlapEquiv",
+      "Algebra.Descent.PurelyInseparable.baseChangedOverlapEquiv"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPureDatumHom",
+      "Algebra.Descent.PurelyInseparable.baseChangedPureDatumHom"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.datumOfNilpotentCounits",
+      "Algebra.Descent.Nilpotent.datumOfNilpotentCounits"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePureInvariantsMap",
+      "Algebra.Descent.PurelyInseparable.finitePureInvariantsMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation_tmul",
+      "Algebra.TensorProduct.tensorAugmentation_tmul"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.length_eq_add_sum",
+      "Module.PrimeFiltrationFrom.length_eq_add_sum"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.prime_mem_support",
+      "Module.PrimeFiltrationFrom.prime_mem_support"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.length_baseChange_add_of_submodule_le",
+      "Module.length_baseChange_add_of_submodule_le"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrimeEulerTerm_eq_cokernelTerm",
+      "Module.minimalPrimeEulerTerm_eq_cokernelTerm"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.normal_integral_minimalPrime_contract",
+      "Ideal.normal_integral_minimalPrime_contract"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_ker_isNilpotent",
+      "Algebra.Descent.PurelyInseparable.counit_ker_isNilpotent"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_of_quotientFiltration",
+      "Module.principalEuler_of_quotientFiltration"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_zero_of_finite_length",
+      "Module.principalEuler_zero_of_finite_length"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.supportDim_le_one_of_finite_cokernel",
+      "Module.supportDim_le_one_of_finite_cokernel"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.regularLocal_quotient_parameter",
+      "IsRegularLocalRing.regularLocal_quotient_parameter"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_projection",
+      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_projection"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalIso_naturality_assoc",
+      "HomologicalComplex\u2082.singleSecondZeroTotalIso_naturality_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalProjection_inclusion",
+      "HomologicalComplex\u2082.singleSecondZeroTotalProjection_inclusion"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_liftedCoaction",
+      "Algebra.Descent.Nilpotent.counit_liftedCoaction"
+    ],
+    [
+      "Aglib.RingTheory.IntegralHeight.height_eq_height_under_of_normal",
+      "Ideal.height_eq_height_under_of_normal"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrime_map_under_of_goingDown",
+      "Ideal.minimalPrime_map_under_of_goingDown"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_prime_parameter_not_dvd",
+      "IsRegularLocalRing.exists_prime_parameter_not_dvd"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootAlgebra_formallyUnramified",
+      "Algebra.RootsOfUnity.rootAlgebra_formallyUnramified"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootEtaleSurjection_surjective",
+      "Algebra.RootsOfUnity.rootEtaleSurjection_surjective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPureDatum",
+      "Algebra.Descent.PurelyInseparable.baseChangedPureDatum"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.baseChangedPureEquiv",
+      "Algebra.Descent.PurelyInseparable.baseChangedPureEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.primes_isPrime",
+      "Module.PrimeFiltrationFrom.primes_isPrime"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.length_ne_top_of_support_isMaximal",
+      "Module.length_ne_top_of_support_isMaximal"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_add_of_submodule_le",
+      "Module.principalEuler_add_of_submodule_le"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.supportDim_nonpos_of_length_ne_top",
+      "Module.supportDim_nonpos_of_length_ne_top"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isIntegral_div_iff_exists_dvd",
+      "IsFractionRing.isIntegral_div_iff_exists_dvd"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finitePrincipal_of_support_subset",
+      "Module.finitePrincipal_of_support_subset"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.length_localization_of_surjective",
+      "Module.length_localization_of_surjective"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_sub_mul_dvd_parameter",
+      "IsFractionRing.exists_sub_mul_dvd_parameter"
+    ],
+    [
+      "Aglib.RingTheory.mvPolynomial_localizationAtPrime_dimension_le",
+      "MvPolynomial.mvPolynomial_localizationAtPrime_dimension_le"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_f_isIso",
+      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_f_isIso"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentationFlip_naturality_assoc",
+      "HomologicalComplex\u2082.totalAugmentationFlip_naturality_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNatTotalComplexShapeSymmetrySymmetry",
+      "ComplexShape.upNatTotalComplexShapeSymmetrySymmetry"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.exists_stage_finite_set",
+      "Algebra.Descent.FieldOfDefinition.exists_stage_finite_set"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.finitePresentationModel",
+      "Algebra.Descent.FieldOfDefinition.finitePresentationModel"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePureDatumHom",
+      "Algebra.Descent.PurelyInseparable.finitePureDatumHom"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.tensorAugmentation",
+      "Algebra.TensorProduct.tensorAugmentation"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localized_length_flat_baseChange",
+      "Module.localized_length_flat_baseChange"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrimes_eq_of_prime_le_iff",
+      "Ideal.minimalPrimes_eq_of_prime_le_iff"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.support_prime_minimal_or_maximal",
+      "Module.support_prime_minimal_or_maximal"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isDomain_of_prime_parameter",
+      "IsLocalRing.isDomain_of_prime_parameter"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isIntegral_div_of_prime_mul",
+      "IsFractionRing.isIntegral_div_of_prime_mul"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_cycle_boundary_of_rowwise_exact",
+      "HomologicalComplex\u2082.total_cycle_boundary_of_rowwise_exact"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.faithfullyFlat_lTensor",
+      "Algebra.Descent.FieldOfDefinition.faithfullyFlat_lTensor"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.overlap_tmul_invariant",
+      "Algebra.Descent.OverlapDatum.overlap_tmul_invariant"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.counit_surjective",
+      "Algebra.Descent.Nilpotent.counit_surjective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finiteLength_of_support_maximal",
+      "Module.finiteLength_of_support_maximal"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalCokernel_associativity",
+      "Module.principalCokernel_associativity"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalConnecting_exact_right",
+      "Module.principalConnecting_exact_right"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalar_mem_annihilator_cokernel",
+      "Module.scalar_mem_annihilator_cokernel"
+    ],
+    [
+      "Aglib.RingTheory.RelativeDimension.two_le_height_of_mem_pair",
+      "Ideal.two_le_height_of_mem_pair"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.exists_specialization_ne_zero",
+      "Algebra.FiniteType.exists_specialization_ne_zero"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.restrictedSheafificationUnit",
+      "PresheafOfModules.Restriction.restrictedSheafificationUnit"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.exists_stage_preimage",
+      "Algebra.Descent.FieldOfDefinition.exists_stage_preimage"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.overlap_swap_one_tmul",
+      "Algebra.Descent.OverlapDatum.overlap_swap_one_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.Global.tensorMap",
+      "Algebra.Descent.PurelyInseparable.tensorMap"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finitePrincipal_doubleCokernel",
+      "Module.finitePrincipal_doubleCokernel"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localized_primeQuotient_length",
+      "Module.localized_primeQuotient_length"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.monoidAlgebra_isNoetherianRing",
+      "MonoidAlgebra.monoidAlgebra_isNoetherianRing"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalConnecting_exact_left",
+      "Module.principalConnecting_exact_left"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelRestrictionEquiv",
+      "Module.scalarCokernelRestrictionEquiv"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.tensorProduct_noZeroDivisors",
+      "Algebra.TensorProduct.tensorProduct_noZeroDivisors"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalIso_naturality",
+      "HomologicalComplex\u2082.singleSecondZeroTotalIso_naturality"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d_coordinate_vertical'",
+      "HomologicalComplex\u2082.totalSummand_d_coordinate_vertical'"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.exact_invariants_difference",
+      "Algebra.Descent.Datum.exact_invariants_difference"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.tensorInclusion_mem",
+      "AlgHom.Equalizer.tensorInclusion_mem"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.finitePureDatum",
+      "Algebra.Descent.PurelyInseparable.finitePureDatum"
+    ],
+    [
+      "Aglib.RingTheory.IntegralHeight.primeSpectrum_height_comap",
+      "PrimeSpectrum.primeSpectrum_height_comap"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.exists_prime_cyclic_submodule",
+      "Module.exists_prime_cyclic_submodule"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalar_mem_annihilator_kernel",
+      "Module.scalar_mem_annihilator_kernel"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.dvd_of_prime_pow_mul_dvd",
+      "Prime.dvd_of_prime_pow_mul_dvd"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.exists_regular_parameter",
+      "IsRegularLocalRing.exists_regular_parameter"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.isDomain_of_regularLocal",
+      "IsRegularLocalRing.isDomain_of_regularLocal"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.specializeTensor_coordinate",
+      "Algebra.TensorProduct.specializeTensor_coordinate"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentation_naturality_assoc",
+      "HomologicalComplex\u2082.totalAugmentation_naturality_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_coordinate_self_assoc",
+      "HomologicalComplex\u2082.totalSummand_coordinate_self_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d_coordinate_eq_zero'",
+      "HomologicalComplex\u2082.totalSummand_d_coordinate_eq_zero'"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d_coordinate_vertical",
+      "HomologicalComplex\u2082.totalSummand_d_coordinate_vertical"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.difference_tensor_coaction",
+      "Algebra.Descent.Datum.difference_tensor_coaction"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.exists_stage_finset",
+      "Algebra.Descent.FieldOfDefinition.exists_stage_finset"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.fieldMap_transition",
+      "Algebra.Descent.FieldOfDefinition.fieldMap_transition"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.range_stageMap_mono",
+      "Algebra.Descent.FieldOfDefinition.range_stageMap_mono"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.stageMap_transition",
+      "Algebra.Descent.FieldOfDefinition.stageMap_transition"
+    ],
+    [
+      "Aglib.RingTheory.Descent.PurelyInseparable.liftedCoaction",
+      "Algebra.Descent.Nilpotent.liftedCoaction"
+    ],
+    [
+      "Aglib.RingTheory.Descent.baseChange_toCanonicalInvariants",
+      "Algebra.Descent.baseChange_toCanonicalInvariants"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.annihilator_le_localized_iff",
+      "Module.annihilator_le_localized_iff"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finitePrincipal_minimalPrime",
+      "Module.finitePrincipal_minimalPrime"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localizedMinimalSupportEquiv",
+      "Module.localizedMinimalSupportEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localized_minimalSupport_iff",
+      "Module.localized_minimalSupport_iff"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrime_map_prime_under",
+      "Ideal.minimalPrime_map_prime_under"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.nonempty_primeFiltrationFrom",
+      "Module.nonempty_primeFiltrationFrom"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_associativity",
+      "Module.principalEuler_associativity"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelMap_surjective",
+      "Module.scalarCokernelMap_surjective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelRestrictionEquiv",
+      "Module.scalarKernelRestrictionEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalar_regular_primeQuotient",
+      "Module.scalar_regular_primeQuotient"
+    ],
+    [
+      "Aglib.RingTheory.mvPolynomial_height_eq_card_of_isMaximal",
+      "MvPolynomial.mvPolynomial_height_eq_card_of_isMaximal"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.isIso_of_locallyBijective",
+      "PresheafOfModules.isIso_of_locallyBijective"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d_coordinate_eq_zero",
+      "HomologicalComplex\u2082.totalSummand_d_coordinate_eq_zero"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom.baseChange_naturality",
+      "Algebra.Descent.Datum.Hom.baseChange_naturality"
+    ],
+    [
+      "Aglib.RingTheory.Descent.toCanonicalInvariants_bijective",
+      "Algebra.Descent.toCanonicalInvariants_bijective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_add_of_exact",
+      "Module.principalEuler_add_of_exact"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelBaseChangeEquiv",
+      "Module.scalarKernelBaseChangeEquiv"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.mem_integralNumerators",
+      "IsFractionRing.mem_integralNumerators"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentationFlip_naturality",
+      "HomologicalComplex\u2082.totalAugmentationFlip_naturality"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_coordinate_ne_assoc",
+      "HomologicalComplex\u2082.totalSummand_coordinate_ne_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.\u03b9Total_coordinate_ne_outer_assoc",
+      "HomologicalComplex\u2082.\u03b9Total_coordinate_ne_outer_assoc"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom.invariantsMap_unique",
+      "Algebra.Descent.Datum.Hom.invariantsMap_unique"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom.primes",
+      "Module.PrimeFiltrationFrom.primes"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finitePrincipal_of_regular",
+      "Module.finitePrincipal_of_regular"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.length_add_of_submodule_le",
+      "Module.length_add_of_submodule_le"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_interchange",
+      "Module.principalEuler_interchange"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalProjection",
+      "HomologicalComplex\u2082.singleSecondZeroTotalProjection"
+    ],
+    [
+      "Aglib.CategoryTheory.serre_isClosedUnderFiniteProducts",
+      "CategoryTheory.ObjectProperty.serre_isClosedUnderFiniteProducts"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom.invariantsMap_apply",
+      "Algebra.Descent.Datum.Hom.invariantsMap_apply"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.FiniteEtaleModel",
+      "Algebra.Descent.FieldOfDefinition.FiniteEtaleModel"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.finiteEtaleModel",
+      "Algebra.Descent.FieldOfDefinition.finiteEtaleModel"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.equalizer_exact",
+      "AlgHom.Equalizer.equalizer_exact"
+    ],
+    [
+      "Aglib.RingTheory.IntegralHeight.height_eq_height_under",
+      "Ideal.height_eq_height_under"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.iterated_localized_length",
+      "Module.iterated_localized_length"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.length_kernel_eq_cokernel",
+      "Module.length_kernel_eq_cokernel"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.mem_support_localized_iff",
+      "Module.mem_support_localized_iff"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_of_regular",
+      "Module.principalEuler_of_regular"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarDoubleCokernelEquiv",
+      "Module.scalarDoubleCokernelEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelMap_injective",
+      "Module.scalarKernelMap_injective"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.dvd_of_prime_mul_dvd",
+      "Prime.dvd_of_prime_mul_dvd"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootEtalePair_hasMap",
+      "Algebra.RootsOfUnity.rootEtalePair_hasMap"
+    ],
+    [
+      "Aglib.Algebra.Homology.acyclic_total_of_rowwise_exact",
+      "HomologicalComplex\u2082.acyclic_total_of_rowwise_exact"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_totalAugmentationFlip",
+      "HomologicalComplex\u2082.quasiIso_totalAugmentationFlip"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion",
+      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalIso_hom_f",
+      "HomologicalComplex\u2082.singleSecondZeroTotalIso_hom_f"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNatTotalComplexShapeSymmetry",
+      "ComplexShape.upNatTotalComplexShapeSymmetry"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom.map_mem_invariants",
+      "Algebra.Descent.Datum.Hom.map_mem_invariants"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.counit_tensorInclusion",
+      "Algebra.Descent.Datum.counit_tensorInclusion"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.fieldTransition",
+      "Algebra.Descent.FieldOfDefinition.fieldTransition"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.map_surjective",
+      "AlgHom.Equalizer.map_surjective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrimeCokernelTerm",
+      "Module.minimalPrimeCokernelTerm"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.monoidAlgebra_finiteType",
+      "MonoidAlgebra.monoidAlgebra_finiteType"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.nonempty_primeFiltration",
+      "Module.nonempty_primeFiltration"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.tensorProduct_isDomain",
+      "Algebra.TensorProduct.tensorProduct_isDomain"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootEtaleSurjection",
+      "Algebra.RootsOfUnity.rootEtaleSurjection"
+    ],
+    [
+      "Aglib.RingTheory.isIntegrallyClosed_of_faithfullyFlat",
+      "IsIntegrallyClosed.isIntegrallyClosed_of_faithfullyFlat"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.sheafificationOverIso",
+      "PresheafOfModules.Restriction.sheafificationOverIso"
+    ],
+    [
+      "Algebra.FormallyUnramified.isRegularLocalRing_of_flat",
+      "Algebra.FormallyUnramified.isRegularLocalRing_of_flat"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalFlipIso_naturality_assoc",
+      "HomologicalComplex\u2082.totalFlipIso_naturality_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.\u03b9Total_totalFlipIso_hom_assoc",
+      "HomologicalComplex\u2082.\u03b9Total_totalFlipIso_hom_assoc"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChange_surjective",
+      "Algebra.Descent.Datum.baseChange_surjective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.map_injective",
+      "AlgHom.Equalizer.map_injective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.coaction_apply",
+      "Algebra.Descent.OverlapDatum.coaction_apply"
+    ],
+    [
+      "Aglib.RingTheory.Descent.toCanonicalInvariants_apply",
+      "Algebra.Descent.toCanonicalInvariants_apply"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.mem_moduleMinimalPrimes",
+      "Module.mem_moduleMinimalPrimes"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelMap_exact",
+      "Module.scalarCokernelMap_exact"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelMap_lsmul",
+      "Module.scalarCokernelMap_lsmul"
+    ],
+    [
+      "Aglib.RingTheory.RegularLocalRing.integralNumerators",
+      "IsFractionRing.integralNumerators"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootAlgebra_finite",
+      "Algebra.RootsOfUnity.rootAlgebra_finite"
+    ],
+    [
+      "Aglib.RingTheory.isMaximal_comap_of_finiteType_field",
+      "Ideal.isMaximal_comap_of_finiteType_field"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalIso_hom",
+      "HomologicalComplex\u2082.singleSecondZeroTotalIso_hom"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentation_naturality",
+      "HomologicalComplex\u2082.totalAugmentation_naturality"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalCoordinate_d_of_support",
+      "HomologicalComplex\u2082.totalCoordinate_d_of_support"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_coordinate_self",
+      "HomologicalComplex\u2082.totalSummand_coordinate_self"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChangeEquiv_tmul",
+      "Algebra.Descent.Datum.baseChangeEquiv_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChange_injective",
+      "Algebra.Descent.Datum.baseChange_injective"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.tensorInclusion_tmul",
+      "Algebra.Descent.Datum.tensorInclusion_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.swap_one_tmul",
+      "Algebra.Descent.OverlapDatum.swap_one_tmul"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.intLength_add_of_exact",
+      "Module.intLength_add_of_exact"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrime_map_under",
+      "Ideal.minimalPrime_map_under"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCrossKernelEquiv",
+      "Module.scalarCrossKernelEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.support_scalarCokernel",
+      "Module.support_scalarCokernel"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.torsionFree_baseChange",
+      "Module.torsionFree_baseChange"
+    ],
+    [
+      "Aglib.Scheme.Picard.locallyBijective_of_local_isIso",
+      "AlgebraicGeometry.Scheme.Modules.locallyBijective_of_local_isIso"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_cycle_zero_at_zero",
+      "HomologicalComplex\u2082.quasiIso_cycle_zero_at_zero"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.coaction_baseChange",
+      "Algebra.Descent.Datum.coaction_baseChange"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.overlap_tmul",
+      "Algebra.Descent.OverlapDatum.overlap_tmul"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.comapMkQQuotientEquiv",
+      "Submodule.comapMkQQuotientEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.finitePrincipal_congr",
+      "Module.finitePrincipal_congr"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrimeEulerTerm",
+      "Module.minimalPrimeEulerTerm"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelMap_apply",
+      "Module.scalarKernelMap_apply"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelMap_exact",
+      "Module.scalarKernelMap_exact"
+    ],
+    [
+      "Algebra.FormallyUnramified.ringKrullDim_eq_of_flat",
+      "Algebra.FormallyUnramified.ringKrullDim_eq_of_flat"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_totalAugmentation",
+      "HomologicalComplex\u2082.quasiIso_totalAugmentation"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_coordinate_ne",
+      "HomologicalComplex\u2082.totalSummand_coordinate_ne"
+    ],
+    [
+      "Aglib.Algebra.Homology.\u03b9Total_coordinate_ne_outer",
+      "HomologicalComplex\u2082.\u03b9Total_coordinate_ne_outer"
+    ],
+    [
+      "Aglib.CategoryTheory.Sheaves.NoetherianCohomology",
+      "TopCat.Sheaf.CohomologySupport"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.equiv_tmul",
+      "AlgHom.Equalizer.equiv_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.canonicalInvariantsEquiv",
+      "Algebra.Descent.canonicalInvariantsEquiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.intLength_exact_pair",
+      "Module.intLength_exact_pair"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.minimalPrime_map_iff",
+      "Ideal.minimalPrime_map_iff"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler_congr",
+      "Module.principalEuler_congr"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelMap_mk",
+      "Module.scalarCokernelMap_mk"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.root_isIntegral",
+      "Algebra.RootsOfUnity.root_isIntegral"
+    ],
+    [
+      "Aglib.Algebra.Homology.ExtExactFunctorComparison",
+      "CategoryTheory.InjectiveResolution.ExactFunctor"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_total_of_rowwise",
+      "HomologicalComplex\u2082.quasiIso_total_of_rowwise"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalMap_coordinate_assoc",
+      "HomologicalComplex\u2082.totalMap_coordinate_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_d_summand_supported",
+      "HomologicalComplex\u2082.total_d_summand_supported"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom.invariantsMap",
+      "Algebra.Descent.Datum.Hom.invariantsMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.invariants_finite",
+      "Algebra.Descent.Datum.invariants_finite"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.stageField",
+      "Algebra.Descent.FieldOfDefinition.stageField"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.transition",
+      "Algebra.Descent.FieldOfDefinition.transition"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.PrimeFiltrationFrom",
+      "Module.PrimeFiltrationFrom"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.localMap_surjective",
+      "Localization.localMap_surjective"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.moduleMinimalPrimes",
+      "Module.moduleMinimalPrimes"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalConnecting",
+      "Module.principalConnecting"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelEquiv",
+      "Module.scalarCokernelEquiv"
+    ],
+    [
+      "Aglib.Scheme.Picard.ModuleSheaf.restrictPresheaf",
+      "PresheafOfModules.Restriction.restrictPresheaf"
+    ],
+    [
+      "Aglib.Algebra.Homology.singleSecondZeroTotalIso",
+      "HomologicalComplex\u2082.singleSecondZeroTotalIso"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_cycle_zero_at_zero",
+      "HomologicalComplex\u2082.total_cycle_zero_at_zero"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.invariants_etale",
+      "Algebra.Descent.Datum.invariants_etale"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.stageRing",
+      "Algebra.Descent.FieldOfDefinition.stageRing"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.map_tmul",
+      "AlgHom.Equalizer.map_tmul"
+    ],
+    [
+      "Aglib.RingTheory.TensorProduct.specializeTensor",
+      "Algebra.TensorProduct.specializeTensor"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.rootEtalePair",
+      "Algebra.RootsOfUnity.rootEtalePair"
+    ],
+    [
+      "Aglib.RingTheory.exists_heightOne_prime_not_mem",
+      "IsLocalRing.exists_heightOne_prime_not_mem"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_cycle_boundary",
+      "HomologicalComplex\u2082.quasiIso_cycle_boundary"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_of_cycle_lifts",
+      "HomologicalComplex\u2082.quasiIso_of_cycle_lifts"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_of_fiber_lifts",
+      "HomologicalComplex\u2082.quasiIso_of_fiber_lifts"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentationFlip_f",
+      "HomologicalComplex\u2082.totalAugmentationFlip_f"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalFlipIso_naturality",
+      "HomologicalComplex\u2082.totalFlipIso_naturality"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_row_boundary_lift",
+      "HomologicalComplex\u2082.total_row_boundary_lift"
+    ],
+    [
+      "Aglib.Algebra.Homology.\u03b9Total_totalFlipIso_hom",
+      "HomologicalComplex\u2082.\u03b9Total_totalFlipIso_hom"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChangeEquiv",
+      "Algebra.Descent.Datum.baseChangeEquiv"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChange_tmul",
+      "Algebra.Descent.Datum.baseChange_tmul"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.tensorInclusion",
+      "Algebra.Descent.Datum.tensorInclusion"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.fieldMap",
+      "Algebra.Descent.FieldOfDefinition.fieldMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.stageMap",
+      "Algebra.Descent.FieldOfDefinition.stageMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.baseMap",
+      "AlgHom.Equalizer.baseMap"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.coaction",
+      "Algebra.Descent.OverlapDatum.coaction"
+    ],
+    [
+      "Aglib.RingTheory.Descent.toCanonicalInvariants",
+      "Algebra.Descent.toCanonicalInvariants"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.integer_telescope",
+      "Int.integer_telescope"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarCokernelMap",
+      "Module.scalarCokernelMap"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelEquiv",
+      "Module.scalarKernelEquiv"
+    ],
+    [
+      "Aglib.Algebra.Category.ModuleCat.Localization",
+      "ModuleCat"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_map_assoc",
+      "HomologicalComplex\u2082.totalSummand_map_assoc"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_supported",
+      "HomologicalComplex\u2082.totalSummand_supported"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.mem_invariants",
+      "Algebra.Descent.Datum.mem_invariants"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FieldObjects.FPModel",
+      "Algebra.Descent.FieldOfDefinition.FPModel"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum.toDatum",
+      "Algebra.Descent.OverlapDatum.toDatum"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.RootAlgebra",
+      "Algebra.RootsOfUnity.RootAlgebra"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.root_isUnit",
+      "Algebra.RootsOfUnity.root_isUnit"
+    ],
+    [
+      "Aglib.Algebra.Homology.AdditiveFirstQuadrant",
+      "HomologicalComplex\u2082.AddCommGrp"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentationFlip",
+      "HomologicalComplex\u2082.totalAugmentationFlip"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.equiv",
+      "AlgHom.Equalizer.equiv"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.FinitePrincipal",
+      "Module.FinitePrincipal"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarKernelMap",
+      "Module.scalarKernelMap"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.ScalarCokernel",
+      "Module.ScalarCokernel"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.principalEuler",
+      "Module.principalEuler"
+    ],
+    [
+      "Aglib.Algebra.Homology.InjectiveResolution",
+      "CategoryTheory.InjectiveResolution"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_cycle_lift",
+      "HomologicalComplex\u2082.quasiIso_cycle_lift"
+    ],
+    [
+      "Aglib.Algebra.Homology.quasiIso_fiber_lift",
+      "HomologicalComplex\u2082.quasiIso_fiber_lift"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentation_f",
+      "HomologicalComplex\u2082.totalAugmentation_f"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalCoordinate_ext",
+      "HomologicalComplex\u2082.totalCoordinate_ext"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalCoordinate_sum",
+      "HomologicalComplex\u2082.totalCoordinate_sum"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalMap_coordinate",
+      "HomologicalComplex\u2082.totalMap_coordinate"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_map_supported",
+      "HomologicalComplex\u2082.total_map_supported"
+    ],
+    [
+      "Aglib.RingTheory.Descent.FlatEqualizer.map",
+      "AlgHom.Equalizer.map"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.root_coe",
+      "Algebra.RootsOfUnity.root_coe"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.root_pow",
+      "Algebra.RootsOfUnity.root_pow"
+    ],
+    [
+      "Aglib.Algebra.Homology.TotalSupportedFrom",
+      "HomologicalComplex\u2082.TotalSupportedFrom"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.baseChange",
+      "Algebra.Descent.Datum.baseChange"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.difference",
+      "Algebra.Descent.Datum.difference"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.invariants",
+      "Algebra.Descent.Datum.invariants"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.ScalarKernel",
+      "Module.ScalarKernel"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.scalarSquare",
+      "Module.scalarSquare"
+    ],
+    [
+      "Aglib.RingTheory.standardSmooth_isReduced",
+      "Algebra.IsStandardSmooth.standardSmooth_isReduced"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalAugmentation",
+      "HomologicalComplex\u2082.totalAugmentation"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d_up",
+      "HomologicalComplex\u2082.totalSummand_d_up"
+    ],
+    [
+      "Aglib.Algebra.Homology.SingleSecondZero",
+      "HomologicalComplex\u2082.SingleSecondZero"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalDegreeEquiv",
+      "HomologicalComplex\u2082.totalDegreeEquiv"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_map",
+      "HomologicalComplex\u2082.totalSummand_map"
+    ],
+    [
+      "Aglib.Algebra.Homology.total_fiber_lift",
+      "HomologicalComplex\u2082.total_fiber_lift"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNatTensorSigns",
+      "ComplexShape.upNatTensorSigns"
+    ],
+    [
+      "Aglib.RingTheory.Descent.canonicalDatum",
+      "Algebra.Descent.canonicalDatum"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalCoordinate",
+      "HomologicalComplex\u2082.totalCoordinate"
+    ],
+    [
+      "Aglib.RingTheory.LocalLength.intLength",
+      "Module.intLength"
+    ],
+    [
+      "Aglib.RingTheory.Unramified.Roots.root",
+      "Algebra.RootsOfUnity.root"
+    ],
+    [
+      "Aglib.Scheme.pushforwardStructureSheaf",
+      "AlgebraicGeometry.Scheme.Modules.pushforwardStructureSheaf"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand_d",
+      "HomologicalComplex\u2082.totalSummand_d"
+    ],
+    [
+      "Aglib.RingTheory.Descent.OverlapDatum",
+      "Algebra.Descent.OverlapDatum"
+    ],
+    [
+      "Aglib.Algebra.Homology.FirstQuadrant",
+      "HomologicalComplex\u2082.FirstQuadrant"
+    ],
+    [
+      "Aglib.CategoryTheory.SmallModelExact",
+      "CategoryTheory.SmallModel"
+    ],
+    [
+      "Aglib.RingTheory.Descent.counit_tmul",
+      "Algebra.Descent.counit_tmul"
+    ],
+    [
+      "Aglib.Scheme.Coherent.AffineSections",
+      "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.AffineSections"
+    ],
+    [
+      "Aglib.Algebra.Homology.totalSummand",
+      "HomologicalComplex\u2082.totalSummand"
+    ],
+    [
+      "Aglib.Algebra.Homology.TotalDegree",
+      "HomologicalComplex\u2082.TotalDegree"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum.Hom",
+      "Algebra.Descent.Datum.Hom"
+    ],
+    [
+      "Aglib.RingTheory.smooth_isReduced",
+      "Algebra.Smooth.smooth_isReduced"
+    ],
+    [
+      "Aglib.Scheme.Picard.PullbackLocal",
+      "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction"
+    ],
+    [
+      "Aglib.Algebra.Category.ModuleCat",
+      "ModuleCat"
+    ],
+    [
+      "Aglib.RingTheory.etale_isReduced",
+      "Algebra.Etale.etale_isReduced"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNat_\u03b5\u2081",
+      "ComplexShape.upNat_\u03b5\u2081"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNat_\u03b5\u2082",
+      "ComplexShape.upNat_\u03b5\u2082"
+    ],
+    [
+      "Aglib.CategoryTheory.SerreClass",
+      "CategoryTheory.ObjectProperty"
+    ],
+    [
+      "Aglib.RingTheory.Descent.counit",
+      "Algebra.Descent.counit"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNat_\u03b5",
+      "ComplexShape.upNat_\u03b5"
+    ],
+    [
+      "Aglib.Algebra.Homology.upNat_\u03c3",
+      "ComplexShape.upNat_\u03c3"
+    ],
+    [
+      "Aglib.RingTheory.Descent.Datum",
+      "Algebra.Descent.Datum"
+    ],
+    [
+      "Aglib.Scheme.Coherent.Finite",
+      "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.Finite"
+    ],
+    [
+      "Aglib.Scheme.Picard.HomSheaf",
+      "AlgebraicGeometry.Scheme.Modules.InternalHom"
+    ],
+    [
+      "Aglib.Scheme.Differentials",
+      "AlgebraicGeometry.Scheme.Modules.Differentials"
+    ],
+    [
+      "Aglib.Scheme.Cohomology",
+      "AlgebraicGeometry.Scheme.Cohomology"
+    ],
+    [
+      "Aglib.Algebra.Homology",
+      "CochainComplex"
+    ],
+    [
+      "Aglib.Cohomology.Sheaf",
+      "TopCat.Sheaf"
+    ],
+    [
+      "Aglib.Cohomology.Cech",
+      "CategoryTheory.Cech"
+    ],
+    [
+      "Aglib.Scheme.Coherent",
+      "AlgebraicGeometry.Scheme.Modules.Coherent"
+    ],
+    [
+      "Aglib.CategoryTheory",
+      "CategoryTheory.ExactCategory"
+    ],
+    [
+      "Aglib.Scheme.Modules",
+      "AlgebraicGeometry.Scheme.Modules"
+    ],
+    [
+      "Aglib.Scheme.Picard",
+      "AlgebraicGeometry.Scheme.Modules.Invertible"
+    ],
+    [
+      "Aglib.Scheme",
+      "AlgebraicGeometry.Scheme"
+    ]
+  ],
+  "native_module_prefix_rewrites": {
+    "Aglib/CategoryTheory/Abelian/SerreFiniteProducts.lean": [
+      [
+        "Aglib.CategoryTheory",
+        "CategoryTheory.ObjectProperty"
+      ]
+    ],
+    "Aglib/Algebra/Homology/FirstQuadrantComparison.lean": [
+      [
+        "Aglib.Algebra.Homology",
+        "HomologicalComplex\u2082"
+      ]
+    ],
+    "Aglib/Algebra/Homology/FirstQuadrantSigns.lean": [
+      [
+        "Aglib.Algebra.Homology",
+        "ComplexShape"
+      ]
+    ],
+    "Aglib/Scheme/Modules/Structure.lean": [
+      [
+        "Aglib.Scheme",
+        "AlgebraicGeometry.Scheme.Modules"
+      ]
+    ]
+  },
+  "semantic_refinements": [
+    {
+      "family": "module sheaf restriction and sheafification",
+      "owner": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+      "original_namespace": "R5Lab.AlgebraicGeometry.Curves.Picard.ModuleSheaf",
+      "status": "Existing generic helpers moved out of invertible-sheaf construction; unique implementation, actual source provenance in general-geometry.json."
+    }
+  ],
+  "native_declaration_refinements": [
+    {
+      "family": "finite-type quasicoherent and coherent sheaves",
+      "correspondence": {
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.AffineQuasicoherent": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.AffineQuasicoherent",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherent_hasFiniteLimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherent_hasFiniteLimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.instAbelianAffineQuasicoherent": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.instAbelianAffineQuasicoherent",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteType": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteType",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteType_iff": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteType_iff",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteType_isoClosed": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteType_isoClosed",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.AffineFiniteType": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.AffineFiniteType",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteTypeToModules": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteTypeToModules",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteTypeModuleEquivalence": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteTypeModuleEquivalence",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteType_essentiallySmall": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteType_essentiallySmall",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentToSheavesIso": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentToSheavesIso",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentToSheaves_preservesFiniteLimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentToSheaves_preservesFiniteLimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentToSheaves_preservesFiniteColimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentToSheaves_preservesFiniteColimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_isoClosed": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_isoClosed",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_eq_essImage": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_eq_essImage",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType_isoClosed": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_isoClosed",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.FiniteTypeSheaves": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteTypeSheaves",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheaves_essentiallySmall": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheaves_essentiallySmall",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesToModules": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesToModules",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finite_globalSections_of_generatingSections": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finite_globalSections_of_generatingSections",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finite_globalSections_of_presentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finite_globalSections_of_presentation",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_of_presentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_of_presentation",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_exists_generatingSections": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_exists_generatingSections",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_iff_exists_generatingSections": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_iff_exists_generatingSections",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteSheaf_restrict": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_restrict",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.principalOpen": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.principalOpen",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.restrictionGlobalSections": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.restrictionGlobalSections",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.restrictionGlobalSectionsEquiv": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.restrictionGlobalSectionsEquiv",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.toRestrictionGlobalSections": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.toRestrictionGlobalSections",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.restrictionGlobalSections_isLocalized": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.restrictionGlobalSections_isLocalized",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.localizationRestrictionIso": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.localizationRestrictionIso",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.localizationRestrictionIso_hom_apply": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.localizationRestrictionIso_hom_apply",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.restrictionGlobalSectionsFunctor": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.restrictionGlobalSectionsFunctor",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.toRestrictionGlobalSections_natural": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.toRestrictionGlobalSections_natural",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.localizationRestrictionNatIso": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.localizationRestrictionNatIso",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.principalRestrictionGlobalSectionsIso": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.principalRestrictionGlobalSectionsIso",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentRestriction": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentRestriction",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineFiniteType_restriction": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteType_restriction",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affinePrincipalRestriction": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestriction",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affinePrincipalRestriction_comp_inclusion": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestriction_comp_inclusion",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affinePrincipalRestrictionSquare": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestrictionSquare",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType_spec_iff": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_spec_iff",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType_spec_eq_affineFiniteSheaf": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_spec_eq_affineFiniteSheaf",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesAffineEquivalence": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesAffineEquivalence",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesAffineEquivalence_comp_inclusion": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesAffineEquivalence_comp_inclusion",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesSpec_essentiallySmall": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesSpec_essentiallySmall",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesSpecModuleEquivalence": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesSpecModuleEquivalence",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.isClosed_support": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.isClosed_support",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineSupportedAway": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineSupportedAway",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineSupportedAway_iff": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineSupportedAway_iff",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineSupportedAway_iff_support_disjoint": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineSupportedAway_iff_support_disjoint",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineSupportedAway_iff_support_subset": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineSupportedAway_iff_support_subset",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.SupportedAffineFiniteType": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.SupportedAffineFiniteType",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherent_exists_presentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherent_exists_presentation",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_of_affineCharts": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_of_affineCharts",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_iff_affineCharts": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_iff_affineCharts",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherent_finiteLimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherent_finiteLimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherent_finiteColimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherent_finiteColimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_finiteLimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_finiteLimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_finiteColimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_finiteColimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_kernel": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_kernel",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_cokernel": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_cokernel",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finitePresentation_pushforward_of_isLeftAdjoint": "AlgebraicGeometry.Scheme.Modules.finitePresentation_pushforward_of_isLeftAdjoint",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finitePresentation_restrict": "AlgebraicGeometry.Scheme.Modules.finitePresentation_restrict",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finitePresentation_over_of_restrict": "AlgebraicGeometry.Scheme.Modules.finitePresentation_over_of_restrict",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finitePresentation_of_openCover": "AlgebraicGeometry.Scheme.Modules.finitePresentation_of_openCover",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType_of_finitePresentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_of_finitePresentation",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineLocallyFiniteType_restrict": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_restrict",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesRestriction": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesRestriction",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesRestriction_comp_inclusion": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesRestriction_comp_inclusion",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesSupportedAway": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesSupportedAway",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesRestriction_kernel_eq_support": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesRestriction_kernel_eq_support",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.finiteTypeSheavesSupportedAway_iff_support_subset": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypeSheavesSupportedAway_iff_support_subset",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.SupportedFiniteTypeSheaves": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.SupportedFiniteTypeSheaves",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.mono_of_schemeOpenCover": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.mono_of_schemeOpenCover",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentPullbackIso": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentPullbackIso",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.affineQuasicoherentPullback_preservesFiniteLimits": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherentPullback_preservesFiniteLimits",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.mono_pullback_specMap": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.mono_pullback_specMap",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.mono_pullback_affine": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.mono_pullback_affine",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.mono_pullback_affineTarget": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.mono_pullback_affineTarget",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.mono_pullback_of_flat": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.mono_pullback_of_flat",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.shortExact_pullback_of_flat": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.shortExact_pullback_of_flat",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.isIso_openBaseChangeUnit": "AlgebraicGeometry.Scheme.Modules.isIso_openBaseChangeUnit",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.openBaseChange": "AlgebraicGeometry.Scheme.Modules.openBaseChange",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.ClosedImmersion.Ideal.globalSectionsExact": "AlgebraicGeometry.Scheme.Modules.Coherent.globalSectionsExact",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.moduleSheaf_isIso_iff_stalks": "AlgebraicGeometry.Scheme.Modules.moduleSheaf_isIso_iff_stalks",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.moduleSheaf_isIso_restrict_of_stalks": "AlgebraicGeometry.Scheme.Modules.moduleSheaf_isIso_restrict_of_stalks",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.moduleSheaf_isIso_restrict_of_openCover": "AlgebraicGeometry.Scheme.Modules.moduleSheaf_isIso_restrict_of_openCover",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_pushforward_open": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_pushforward_open",
+        "AlgebraicGeometry.Scheme.Modules.CoherentSheaf.quasicoherent_pushforward_open_of_locallyNoetherian": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.quasicoherent_pushforward_open_of_locallyNoetherian"
+      },
+      "canonical_interface": {
+        "generic_import": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward",
+        "generic_namespace": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent",
+        "canonical_functor": "finiteTypePushforward",
+        "coherent_aliases": "coherentPushforward now has guarded Scheme.CoherentSheaf source/target; exact functor retains both Noetherian hypotheses",
+        "original_general_comparisons": [
+          "finiteTypePushforwardOpenBaseChange",
+          "finiteTypePushforwardIdIso",
+          "finiteTypePushforwardCompIso",
+          "finiteTypePushforwardSpecSquare",
+          "finiteTypePushforwardAffinePresentationComparison"
+        ]
+      },
+      "boundary": "Arbitrary-scheme finite-type objects and finite direct image live below the explicitly guarded locally Noetherian coherent category. Existing coherent aliases preserve their guarded consumer role."
+    },
+    {
+      "family": "topological sheaf cohomology and dimension",
+      "priority_rules": [
+        [
+          "TopCat.Sheaf.CohomologySupport.genericPoint_exists_open_disjoint",
+          "TopologicalSpace.genericPoint_exists_open_disjoint"
+        ],
+        [
+          "TopCat.Sheaf.CohomologySupport.exists_irreducibleCloseds_gt_of_avoids_genericPoints",
+          "TopologicalSpace.exists_irreducibleCloseds_gt_of_avoids_genericPoints"
+        ],
+        [
+          "TopCat.Sheaf.CohomologySupport.topologicalKrullDim_closed_le_of_avoids_genericPoints",
+          "TopologicalSpace.topologicalKrullDim_closed_le_of_avoids_genericPoints"
+        ],
+        [
+          "TopCat.Sheaf.CohomologySupport",
+          "TopCat.Sheaf"
+        ]
+      ],
+      "correspondence": [
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.exists_finite_opens_subcover",
+          "new": "TopCat.Sheaf.exists_finite_opens_subcover",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.isSheaf_of_finite_gluing",
+          "new": "TopCat.Sheaf.isSheaf_of_finite_gluing",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.isSheaf_of_preserves_finite_pairwise",
+          "new": "TopCat.Sheaf.isSheaf_of_preserves_finite_pairwise",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.filtered_pointwiseColimit_isSheaf",
+          "new": "TopCat.Sheaf.filtered_pointwiseColimit_isSheaf",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.filtered_additive_pointwiseColimit_isSheaf",
+          "new": "TopCat.Sheaf.filtered_additive_pointwiseColimit_isSheaf",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.noetherian_sheafToPresheaf_preservesColimitsOfShape",
+          "new": "TopCat.Sheaf.noetherian_sheafToPresheaf_preservesColimitsOfShape",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.colimit_map_sections_epi",
+          "new": "TopCat.Sheaf.colimit_map_sections_epi",
+          "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.additivePullback_preservesFiniteLimits",
+          "new": "TopCat.Sheaf.additivePullback_preservesFiniteLimits",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.additivePullback_additive",
+          "new": "TopCat.Sheaf.additivePullback_additive",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.additivePushforward_additive",
+          "new": "TopCat.Sheaf.additivePushforward_additive",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.constantSheafPullbackIso",
+          "new": "TopCat.Sheaf.constantSheafPullbackIso",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.pushforward_stalk_isZero",
+          "new": "TopCat.Sheaf.pushforward_stalk_isZero",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.stalkPushforward_naturality",
+          "new": "TopCat.Sheaf.stalkPushforward_naturality",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedEmbedding_pushforward_preservesEpimorphisms",
+          "new": "TopCat.Sheaf.closedEmbedding_pushforward_preservesEpimorphisms",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedEmbedding_pushforward_preservesFiniteColimits",
+          "new": "TopCat.Sheaf.closedEmbedding_pushforward_preservesFiniteColimits",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.pullback_unit_construction",
+          "new": "TopCat.Sheaf.pullback_unit_construction",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.pullback_unit_stalk_isIso",
+          "new": "TopCat.Sheaf.pullback_unit_stalk_isIso",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedSupport_unit_isIso",
+          "new": "TopCat.Sheaf.closedSupport_unit_isIso",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedSupportIso",
+          "new": "TopCat.Sheaf.closedSupportIso",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedEmbeddingCohomologyEquiv",
+          "new": "TopCat.Sheaf.closedEmbeddingCohomologyEquiv",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.closedSupportCohomologyEquiv",
+          "new": "TopCat.Sheaf.closedSupportCohomologyEquiv",
+          "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.isFlasque_of_iso",
+          "new": "TopCat.Sheaf.isFlasque_of_iso",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.filtered_colimit_isFlasque",
+          "new": "TopCat.Sheaf.filtered_colimit_isFlasque",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.product_isFlasque",
+          "new": "TopCat.Sheaf.product_isFlasque",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.abelianStalk",
+          "new": "TopCat.Sheaf.abelianStalk",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementFactor",
+          "new": "TopCat.Sheaf.godementFactor",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementFunctor",
+          "new": "TopCat.Sheaf.godementFunctor",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementUnit",
+          "new": "TopCat.Sheaf.godementUnit",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementUnit_mono",
+          "new": "TopCat.Sheaf.godementUnit_mono",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementFunctor_isFlasque",
+          "new": "TopCat.Sheaf.godementFunctor_isFlasque",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementDiagramUnit",
+          "new": "TopCat.Sheaf.godementDiagramUnit",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementDiagramUnit_mono",
+          "new": "TopCat.Sheaf.godementDiagramUnit_mono",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementDiagramSequence",
+          "new": "TopCat.Sheaf.godementDiagramSequence",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.godementDiagramSequence_shortExact",
+          "new": "TopCat.Sheaf.godementDiagramSequence_shortExact",
+          "destination_path": "Aglib/Topology/Sheaves/Godement.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.openIntersectionFunctor",
+          "new": "TopCat.Sheaf.openIntersectionFunctor",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.openIntersectionPresheaf",
+          "new": "TopCat.Sheaf.openIntersectionPresheaf",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.openIntersectionPresheaf_isSheaf",
+          "new": "TopCat.Sheaf.openIntersectionPresheaf_isSheaf",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.openIntersectionSheaf",
+          "new": "TopCat.Sheaf.openIntersectionSheaf",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.toOpenIntersection",
+          "new": "TopCat.Sheaf.toOpenIntersection",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAway",
+          "new": "TopCat.Sheaf.supportedAway",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAway_section_lift",
+          "new": "TopCat.Sheaf.supportedAway_section_lift",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAway_stalk_isZero",
+          "new": "TopCat.Sheaf.supportedAway_stalk_isZero",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.openIntersectionMap",
+          "new": "TopCat.Sheaf.openIntersectionMap",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.toOpenIntersection_comp",
+          "new": "TopCat.Sheaf.toOpenIntersection_comp",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayMap",
+          "new": "TopCat.Sheaf.supportedAwayMap",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayMap_\u03b9",
+          "new": "TopCat.Sheaf.supportedAwayMap_\u03b9",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportNeighborhoods",
+          "new": "TopCat.Sheaf.supportNeighborhoods",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportNeighborhoods_isCofiltered",
+          "new": "TopCat.Sheaf.supportNeighborhoods_isCofiltered",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayDiagram",
+          "new": "TopCat.Sheaf.supportedAwayDiagram",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayCocone",
+          "new": "TopCat.Sheaf.supportedAwayCocone",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayColimitMap",
+          "new": "TopCat.Sheaf.supportedAwayColimitMap",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayColimitMap_mono",
+          "new": "TopCat.Sheaf.supportedAwayColimitMap_mono",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayColimitMap_isIso_of_sections",
+          "new": "TopCat.Sheaf.supportedAwayColimitMap_isIso_of_sections",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.exists_supportNeighborhood_of_stalks_zero",
+          "new": "TopCat.Sheaf.exists_supportNeighborhood_of_stalks_zero",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayColimitMap_isIso_of_stalks_zero",
+          "new": "TopCat.Sheaf.supportedAwayColimitMap_isIso_of_stalks_zero",
+          "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.genericPoint_exists_open_disjoint",
+          "new": "TopologicalSpace.genericPoint_exists_open_disjoint",
+          "destination_path": "Aglib/Topology/KrullDimension/ClosedSubspace.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.exists_irreducibleCloseds_gt_of_avoids_genericPoints",
+          "new": "TopologicalSpace.exists_irreducibleCloseds_gt_of_avoids_genericPoints",
+          "destination_path": "Aglib/Topology/KrullDimension/ClosedSubspace.lean"
+        },
+        {
+          "old": "TopCat.Sheaf.CohomologySupport.topologicalKrullDim_closed_le_of_avoids_genericPoints",
+          "new": "TopologicalSpace.topologicalKrullDim_closed_le_of_avoids_genericPoints",
+          "destination_path": "Aglib/Topology/KrullDimension/ClosedSubspace.lean"
+        }
+      ],
+      "boundary": "Generic TopCat.Sheaf support and Godement statements and TopologicalSpace dimension statements are separated from locally Noetherian scheme applications."
+    }
+  ],
+  "contextual_namespace_refinements": {
+    "prefixes": [
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.Finite.Affine",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.Finite.Affine"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.Finite",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.Finite"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local",
+        "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent",
+        "AlgebraicGeometry.Scheme.Modules.Coherent"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.QuasiCoherent",
+        "AlgebraicGeometry.Scheme.Modules.QuasiCoherent"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Invertible",
+        "AlgebraicGeometry.Scheme.Modules.Invertible"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Differentials",
+        "AlgebraicGeometry.Scheme.Modules.Differentials"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.InternalHom",
+        "AlgebraicGeometry.Scheme.Modules.InternalHom"
+      ]
+    ],
+    "exact_declarations": [
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.closedSource_isLocallyNoetherian",
+        "AlgebraicGeometry.Scheme.closedSource_isLocallyNoetherian"
+      ],
+      [
+        "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.closedSource_isNoetherian",
+        "AlgebraicGeometry.Scheme.closedSource_isNoetherian"
+      ]
+    ],
+    "guarded_type": "AlgebraicGeometry.Scheme.CoherentSheaf remains the explicit object category."
+  },
+  "post_naming_semantic_refinements": [
+    {
+      "family": "finite presentation and pullback",
+      "declaration_moves": {
+        "AlgebraicGeometry.Scheme.Modules.Coherent.exists_finite_presentation_tilde": "AlgebraicGeometry.Scheme.Modules.exists_finite_presentation_tilde",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.finitePresentation_tilde": "AlgebraicGeometry.Scheme.Modules.finitePresentation_tilde",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.affineFiniteSheaf_exists_presentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineFiniteSheaf_exists_presentation",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.affineLocallyFiniteType_finitePresentation": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_finitePresentation",
+        "AlgebraicGeometry.Scheme.Modules.Coherent.affineLocallyFiniteType_pullback": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_pullback"
+      },
+      "canonical_interface": {
+        "basis": "After principal serial contextual module/namespace renaming; Quillen source identities and source SHA preserved",
+        "module_count": 111,
+        "source_contribution_count": 116,
+        "canonical_functor": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypePullback",
+        "canonical_conditions": "IsLocallyNoetherian Y; X arbitrary; arbitrary f:X\u2192Y; no flatness added",
+        "coherent_alias": "AlgebraicGeometry.Scheme.Modules.Coherent.coherentPullback",
+        "coherent_conditions": "IsLocallyNoetherian X and Y; Y.CoherentSheaf\u2192X.CoherentSheaf",
+        "definitional_equality": "AlgebraicGeometry.Scheme.Modules.Coherent.coherentPullback_eq_finiteTypePullback",
+        "proof_support": "FinitePresentation.Noetherian owns the unchanged finite-module tilde and all-chart FP construction; no Coherent implementation imports",
+        "scope": "Current lower leaf passed configured no-output Lean; FP.Noetherian emitted in native-stage18. Guarded alias/current downstream proof checks await emission of the new lower leaf. Prior phase logs are historical and not relabeled.",
+        "style_scan": "111 current owned leaves, no non-import line over 100 characters"
+      },
+      "boundary": "finiteTypePullback keeps the actual Noetherianity of Y and arbitrary X; coherentPullback is a guarded specialization on both coherent categories."
+    },
+    {
+      "family": "formal etaleness of ring homomorphisms",
+      "declaration_moves": [
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.ringHom_formallyEtale_iff",
+          "RingHom.FormallyEtale.iff_formallyUnramified_and_formallySmooth"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_stableUnderComposition",
+          "RingHom.FormallyEtale.stableUnderComposition"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_respectsIso",
+          "RingHom.FormallyEtale.respectsIso"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_isStableUnderBaseChange",
+          "RingHom.FormallyEtale.isStableUnderBaseChange"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_holdsForLocalization",
+          "RingHom.FormallyEtale.holdsForLocalization"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_localRingHom",
+          "RingHom.FormallyEtale.localRingHom"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.ringHom_etale_formallyEtale",
+          "RingHom.Etale.formallyEtale"
+        ]
+      ],
+      "boundary": "Generic ring-homomorphism properties are owned by RingHom.FormallyEtale and RingHom.Etale, below the scheme-stalk consumers."
+    }
+  ],
+  "root_identity_refinement": {
+    "from": "AGLib",
+    "to": "Aglib",
+    "package_name": "Aglib",
+    "repo_directory": "aglib",
+    "meaning": "User-selected package/module spelling; native mathematical owners unchanged."
+  },
+  "declaration_lint_refinements": [
+    {
+      "from": "AlgebraicGeometry.Scheme.LocalRing.Etale.stalkMapIsoOfIsPullback_of_flat_preimmersion",
+      "to": "AlgebraicGeometry.Scheme.LocalRing.Etale.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion",
+      "meaning": "Data uses lowerCamelCase; original signature and map retained."
+    },
+    {
+      "from": "AlgebraicGeometry.Scheme.Cohomology.quasiIsoAtZero_of_augmentation_exact",
+      "to": "CochainComplex.quasiIsoAtZero_of_augmentation_exact",
+      "meaning": "Generic abelian-category augmentation criterion belongs to the complex owner."
+    },
+    {
+      "from": "AlgebraicGeometry.Scheme.Cohomology.instDecidableMemCarrierCarrierCommRingCatOpens_aglib",
+      "to": "AlgebraicGeometry.Scheme.Cohomology.decidablePointMemSchemeOpen",
+      "meaning": "Explicit lowerCamelCase name for the existing local decidability instance; its type and body are unchanged.",
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Vanishing/Noetherian.lean"
+    }
+  ]
+}

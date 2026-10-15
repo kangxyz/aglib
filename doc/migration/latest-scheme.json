@@ -1,0 +1,3316 @@
+{
+  "group": "latest-scheme",
+  "basis": "authoritative clean LOCAL Quillen189; accepted71-source audit and114-node module closure; concrete native extraction author phase",
+  "entries": [
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.CoefficientBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientBaseChange.lean",
+      "source_sha256": "9ec41b44dbbc025bdb65fd4c4c93f0cf91f8184ea16318d922cad118c5c4b8f0",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          169
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Basic.lean",
+          "destination_sha256": "133cf0823361344f74cebb0bf39b33ac15b2ffcf5252d8d635c723736b195d34",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Polynomial.LaurentBaseChange",
+      "source_path": "Quillen/Algebra/Polynomial/LaurentBaseChange.lean",
+      "source_sha256": "1b5e9c9129e04ff64da037b2961645275f366d8cc937a217aa4afee470c5a3ea",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          215
+        ]
+      ],
+      "native_namespaces": [
+        "CommRingCat.PolynomialLaurent"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Polynomial.Laurent.BaseChange",
+          "destination_path": "Aglib/Algebra/Polynomial/Laurent/BaseChange.lean",
+          "destination_sha256": "d7c2e1d348d3e0670b535891020bd83c75ba5c1f839a92b28676800b4f682bdb",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.QuasiCompact",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/QuasiCompact.lean",
+      "source_sha256": "615cf29ac6cf93310600a0f2428fa27522fcdaca8edb6a1052b1facd10adc635",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          37
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Properties.QuasiCompactCategory",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/QuasiCompactCategory.lean",
+          "destination_sha256": "232b64ab0ce48d240bd00a3d11db71995d90abd16c2520f4fba704ea54f5faeb",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.BaseProduct",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/BaseProduct.lean",
+      "source_sha256": "2897b7bfe627b6516fc2e9b99d2902ae256c9a3270a5655c27fa682f107ab38f",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          117
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Products"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Products.IntegerBase",
+          "destination_path": "Aglib/AlgebraicGeometry/Products/IntegerBase.lean",
+          "destination_sha256": "49dc5c493c72723b3de7e158a8a39498b226b59dfc746e3201f1b1f31e92e095",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Affine.PolynomialLaurent",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Affine/PolynomialLaurent.lean",
+      "source_sha256": "d470bd23db10e6883ea7e26f1472fc47c8368cc7981ffb22e68d1b29d084cd3e",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          145
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Basic.lean",
+          "destination_sha256": "811b7e1a5f9e44a024dd52183f37c44563dcb833985f6bc499622174d9d2690f",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.PolynomialLaurent",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/PolynomialLaurent.lean",
+      "source_sha256": "07fcd4fbd1443efc266f17fa13f66c6ad4aec66dc91fc5dba008c83d7e19e6e7",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          99
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Relative",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Relative.lean",
+          "destination_sha256": "a95cc94d7ec9b1b2977d8f9235922976ef23e1e75effeaebb60df55ab917c3f5",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Affine.PolynomialLaurentBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Affine/PolynomialLaurentBaseChange.lean",
+      "source_sha256": "549cb4288851ac6577d8cb2f012b388494ed1fbd08a45260db76bea17f594aa3",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          148
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent.Relative"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.BaseChange",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/BaseChange.lean",
+          "destination_sha256": "a650970107a4de3094cd8da2206da567207ab64796a39e5a393ed96ec8ca5170",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Affine.LaurentUnitNaturality",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Affine/LaurentUnitNaturality.lean",
+      "source_sha256": "e3254312bcd5f943626015f65e6a4351d2c144cbcf4e031dfd511e04899c7f1c",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          37
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Units",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Units.lean",
+          "destination_sha256": "847647b5c6dba1fa3372e0311585ddd3dfecc836173e0c985ebe1f91669ee763",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Polynomial.LaurentSquare",
+      "source_path": "Quillen/Algebra/Polynomial/LaurentSquare.lean",
+      "source_sha256": "1e2f8241bfc5c7f4b1d747da600145ced5ee43e570ff6d97c1fbb02539192cac",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          96
+        ]
+      ],
+      "native_namespaces": [
+        "CommRingCat.PolynomialLaurent"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Polynomial.Laurent.Square",
+          "destination_path": "Aglib/Algebra/Polynomial/Laurent/Square.lean",
+          "destination_sha256": "e340d4d87a8f39bcb073ee07f7e6ba2125f3a81d76443d73824e03768aa9dfd8",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Polynomial.LaurentUnderSquare",
+      "source_path": "Quillen/Algebra/Polynomial/LaurentUnderSquare.lean",
+      "source_sha256": "e1921a47760b150747cab0599f0ff1b7411c3ae8f0d5239f4bab809dc2f207df",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          133
+        ]
+      ],
+      "native_namespaces": [
+        "CommRingCat.PolynomialLaurent"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Polynomial.Laurent.UnderSquare",
+          "destination_path": "Aglib/Algebra/Polynomial/Laurent/UnderSquare.lean",
+          "destination_sha256": "7fb7860b78872ce0a60ce046757f258c9b9cd282889123d08707be510c2e70e5",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.CoefficientPolynomialLaurent",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientPolynomialLaurent.lean",
+      "source_sha256": "f657f3aec899e6655ee07784dd91b4bfe932a24cd41287aa0d00fdcaa4ee687b",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          217
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurent",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurent.lean",
+          "destination_sha256": "0bc1fdaef3feaa75e8d4f1c4d566458ce6839f530a5f2b5859da83dbdc14b1e9",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.CoefficientPolynomialLaurentNaturality",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientPolynomialLaurentNaturality.lean",
+      "source_sha256": "4317b897cba9d41a01051f5311aa77df2ae54b7ca78d7b6a10b18437d2b22995",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          124
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentNaturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentNaturality.lean",
+          "destination_sha256": "a411c006f8c3499b273e2c1fc14210b5ebd31c3842acac85406d2874b22e129d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary commutative base R, actual P in Over(Spec R), actual Under R coefficient arrows. Polynomial/Laurent coefficient projections and pullback isomorphisms are natural; integral-base products use ULift Z. No field, Noetherian, flatness, or P1 premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.CoefficientPolynomialLaurentSchemeNaturality",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientPolynomialLaurentSchemeNaturality.lean",
+      "source_sha256": "7d83f8918bd09d0999dfefd6515b2f35ec71bb3bfd2144f4e5fc53926eabe428",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          93
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentSchemeNaturality.lean",
+          "destination_sha256": "f6c107484765f912d4b8127882dafa7cb9f0a3da007eb3d2a8112475b601f654",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary P,Q over Spec R and actual scheme arrow f:P→Q; joint scheme/coefficient naturality of polynomial/Laurent projections, isomorphisms and coordinate maps. No P1 premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.Tensor",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/Tensor.lean",
+      "source_sha256": "c5642a44cd3543151454c7bf1fde90c5fbfa845bff698d8ea0ef4567b6c882d7",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          118
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/Basic.lean",
+          "destination_sha256": "7347af1a31750be856fcabba8b37aba733850e085f3f1803918060354b49b1e3",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorAdditive",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorAdditive.lean",
+      "source_sha256": "d17e9b082d36c4701bbf16c206241eaff84436722b89c8c42f940d48849b2a7d",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          86
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorAdditive",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorAdditive.lean",
+          "destination_sha256": "0e7d91b8b411796fd80b72d4ba4d2727ac6065bb2e2845da4d762a9796ad5154",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.CategoryTheory.Abelian.FiniteCoproductFunctor",
+      "source_path": "Quillen/CategoryTheory/Abelian/FiniteCoproductFunctor.lean",
+      "source_sha256": "8e14de60128ce3d60e65668fa5aca378a07dc10657a32738e68bcb20073fb3c2",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          55
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.Limits"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.CategoryTheory.Abelian.FiniteCoproductFunctor",
+          "destination_path": "Aglib/CategoryTheory/Abelian/FiniteCoproductFunctor.lean",
+          "destination_sha256": "83fb2de0f2486fd2362f7ac195375a841a557db13619b194da5932e893114f0d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorFiniteFree",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorFiniteFree.lean",
+      "source_sha256": "95f552b63811e3010b841f09116e02b459a17a757030e174705591fae06327f9",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          80
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorFiniteFree",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorFiniteFree.lean",
+          "destination_sha256": "6544f8dc401da710042758fbc007f1e8599e08202b457a95c073150b22007c3f",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.ShortComplex.Retract",
+      "source_path": "Quillen/Algebra/Homology/ShortComplex/Retract.lean",
+      "source_sha256": "1ef99e508dc768139ba739cf8f476766c58cc273d78c987a6e4b636b2c5b2392",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          50
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.ShortComplex"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.ShortComplex.Retract",
+          "destination_path": "Aglib/Algebra/Homology/ShortComplex/Retract.lean",
+          "destination_sha256": "72eed5c8dd2e45dc38a550a71d8089f7eef2f88814ecdffab937b911613655f5",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorExact",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorExact.lean",
+      "source_sha256": "6f8236bd1b0e11ef66314366770412cf46ca15d6f31a752047f5568396370eec",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          58
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorExact",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorExact.lean",
+          "destination_sha256": "f9ff32f1b4db40ef3a67d9c2220a4c6d3cc1c6f8be488e7e094a83d470a9d831",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorExact",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorExact.lean",
+      "source_sha256": "60c83d9252bc3e53168a45a7a4095576eea7930046e51c36d7cf873729d62dec",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          92
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Basic.lean",
+          "destination_sha256": "71fa6044665d9a5e491da09fceac42b9c3eaefb7e6da909d532fb17ca007173d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.OpenCoverQuasiIso",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/OpenCoverQuasiIso.lean",
+      "source_sha256": "91a857c5fa146de0c719c66e7bcd4effd71db7e9425919ee292fb40142a29628",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          48
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/QuasiIso.lean",
+          "destination_sha256": "cefb183c14d1d9280b55d8f87207c108a88680f166461840d114b9158e2bfaca",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.CochainKernelSequence",
+      "source_path": "Quillen/Algebra/Homology/CochainKernelSequence.lean",
+      "source_sha256": "b9aacde9d9aa00450f5f879713c987e8aed097978f4211dc25e971a8f96ef6c0",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          53
+        ]
+      ],
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.CochainComplex.KernelSequence",
+          "destination_path": "Aglib/Algebra/Homology/CochainComplex/KernelSequence.lean",
+          "destination_sha256": "519f0eeb78c3c13bd0fcef3578118b038cc2923840af9d82440f6f29096287c7",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.MappingConeAcyclicity",
+      "source_path": "Quillen/Algebra/Homology/MappingConeAcyclicity.lean",
+      "source_sha256": "02759d721fc7720e632abe41f0cc28b58165c3063f8a734b7a90608212416801",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          34
+        ]
+      ],
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.MappingCone.Acyclicity",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Acyclicity.lean",
+          "destination_sha256": "261e3894d50dc90645e9e4c7a2fad7290680b9bf81039a329e2c17602417923f",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.FlasqueComplex",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/FlasqueComplex.lean",
+      "source_sha256": "1b71f99c2a6497d1acaa452500482270a08c08d7e7b59a1165df51a251b411ef",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          181
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.Complex",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/Complex.lean",
+          "destination_sha256": "fca55b267bd0151caf240bab35bfa7a3f2456040b27bcaa965773ec75b4eca0b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedPushforwardPlus",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedPushforwardPlus.lean",
+      "source_sha256": "d58160f46e6ea0fd75e652cad517fd1ce62e8272b21814a2bf2242f3a3b4cf66",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          39
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pushforward",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Pushforward.lean",
+          "destination_sha256": "5a11df331fc857a158c3b51b853f9eba9485fa04edbf9a7cecb7bb2cf21441fb",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.LocallyFlasqueDerivedPushforward",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/LocallyFlasqueDerivedPushforward.lean",
+      "source_sha256": "38699c1fd478c4fcd6bac39e4feb255a0a8d18a3b5416e1414d1f1a7b1ce7c65",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          113
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.LocalDerivedPushforward",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/LocalDerivedPushforward.lean",
+          "destination_sha256": "b261dc4bcb30004c063c23dd3502bb6f38c3beb67e6d7a0bcb86b390ddc5fb32",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorInjectiveRetract",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorInjectiveRetract.lean",
+      "source_sha256": "89981d5711c352d10b7933a31694ad7e77924a8a676a17dd25d8b7f1651be79f",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          56
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorInjectiveRetract",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorInjectiveRetract.lean",
+          "destination_sha256": "a608e2bb9c741bb163401ed097d40f6eda8bc76f79bd45fe5967b49abb53e867",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Regular.AffineProjective",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Regular/AffineProjective.lean",
+      "source_sha256": "0ab2df54fd264d1eb6f799a5ad8d6cee0ed626e5869b1463d99c4a2716059bf9",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          197
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.LocalBases",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Affine/LocalBases.lean",
+          "destination_sha256": "59a074335035e721359b60f9a07a23e770b0f322a6c42709e6ce1f5c385058a7",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.AffineProjective",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/AffineProjective.lean",
+      "source_sha256": "4aa9458afc9d105b0f8d7e5901e597ea24e0d3181945cce6b2ed8b4a7c407b90",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          81
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.Projective",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Affine/Projective.lean",
+          "destination_sha256": "8f69ee65427888e45c7eca9a6c2711a4783815da1b4080ce678df7f2adcfb920",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.CategoryTheory.Limits.NatTransCoproduct",
+      "source_path": "Quillen/CategoryTheory/Limits/NatTransCoproduct.lean",
+      "source_sha256": "1c73ef5cbc977851a2f1dc073065e385868cdc808ef449c01416f1385999e8eb",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.NatTrans"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.CategoryTheory.Limits.NatTransCoproduct",
+          "destination_path": "Aglib/CategoryTheory/Limits/NatTransCoproduct.lean",
+          "destination_sha256": "c360c46a72f46aa52fce160306e070bde0ad5ae622a523531c2775b214b5d6d8",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.AffineRetract",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/AffineRetract.lean",
+      "source_sha256": "05ec36fc0c3c8f8016a1dbde24f8d915812732c8f92b91bfab4a33bcb236789f",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          85
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.Retract",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Affine/Retract.lean",
+          "destination_sha256": "4bea19f518a71398403e962ce11530fd810c3194f5f8be05e91b2f835b8d1801",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.SheafificationPushforward",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/SheafificationPushforward.lean",
+      "source_sha256": "df1f31bedc07156412578e76ec84eb86a90e6d5a0a2cea3f6ca5911a6ea5038c",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          99
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.SheafificationPushforward",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/SheafificationPushforward.lean",
+          "destination_sha256": "a7991ae1aff60179c0d8438fb642ca69d4c4488a93e138fcbdfa7df5f772501d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Monoidal.RestrictScalars",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Monoidal/RestrictScalars.lean",
+      "source_sha256": "0948aad6bd89b4d49731732209ed2962795fde700db69adacd2d13e1c9f81ddc",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          30
+        ]
+      ],
+      "native_namespaces": [
+        "ModuleCat"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Monoidal.RestrictScalars",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Monoidal/RestrictScalars.lean",
+          "destination_sha256": "9428acbc3ef74e6ad89385871c4fda2b376ed149e469d902a2586e5102c7ff7d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Presheaf.TensorPushforward",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Presheaf/TensorPushforward.lean",
+      "source_sha256": "1eabc27e5b3259d0ad77985f2454966e952a49a8f84b9d59cdaa753cab55febc",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          69
+        ]
+      ],
+      "native_namespaces": [
+        "PresheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/TensorPushforward.lean",
+          "destination_sha256": "d54f187c85ee5d8a3b769b55ebe5f96a5df10f1fb75478e50b9a1bb6c0a50ed2",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorPushforward",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorPushforward.lean",
+      "source_sha256": "371bb42f9cdf50e7e14b37f4d3d48652b12a8900cd7bff5bf259e236250f4865",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          121
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorPushforward.lean",
+          "destination_sha256": "592f5e53deafbd2cec55e8455343ddaa013990bc0ad42da60a1fa9a9296a5744",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorRestriction",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorRestriction.lean",
+      "source_sha256": "a748f2122bb4c9dbadfc1b8fa3d2fa462b7aa339b187d6cd35aafbc7d2bb1ea1",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Restriction",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
+          "destination_sha256": "62d381bf6fbdf1710df9541aa8958ebad91a32674f13d4e4f3ed3e64f6f7b76b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.CartesianBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/CartesianBaseChange.lean",
+      "source_sha256": "65f7df4d7ffd984f7a66e68adcf36de7c1cf661671122f7e6a52600bebf8bab4",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Cartesian",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Cartesian.lean",
+          "destination_sha256": "d8164083de514cea2b76176b03151c0c116691df1229821037a727c87f06d508",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.CategoryTheory.Adjunction.MateHomEquiv",
+      "source_path": "Quillen/CategoryTheory/Adjunction/MateHomEquiv.lean",
+      "source_sha256": "9acd2d05208ef2d087c49a0c3a071efaf17ca069224e74534911732e8555a6d3",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          37
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.CategoryTheory.Adjunction.MateHomEquiv",
+          "destination_path": "Aglib/CategoryTheory/Adjunction/MateHomEquiv.lean",
+          "destination_sha256": "d8bf27e7e4218fd4063ff2ddacd86dd0cb8787e7c60a05c4e33412d16af1506c",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.PullbackUnit",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/PullbackUnit.lean",
+      "source_sha256": "0c66c2e882f0b41c5422d73db8926e1e8ded80f04ba5fc8fbba7a7ec33e945c7",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          185
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.Unit",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/Unit.lean",
+          "destination_sha256": "f6276859eb38cfc23648cf0c72cc6e002e42b723fa5a4b782b430e7ab1d832dc",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.CartesianOpenBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/CartesianOpenBaseChange.lean",
+      "source_sha256": "bff25a1e0678ec34bc613fc27dbc9faeb45f7552fb38f02e8a49441acf4239de",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          194
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Cartesian",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/OpenImmersion/Cartesian.lean",
+          "destination_sha256": "6db689e2788ff6519af493ecb6f31402e5640d7d90a60cefcc71f847e2f3c231",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion.",
+      "canonical_reuse": {
+        "source_declaration": "AlgebraicGeometry.Scheme.Modules.opensRange_of_isPullback",
+        "canonical_declaration": "AlgebraicGeometry.Scheme.Hom.opensRange_of_isPullback",
+        "canonical_module": "Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian",
+        "preserved_conditions": "IsOpenImmersion a; IsOpenImmersion j; the displayed IsPullback a b f j witness",
+        "implementation": "The higher module helper is an exact proof-term alias; the lower geometric owner has no module-sheaf dependency."
+      }
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.TensorInjectiveRestriction",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/TensorInjectiveRestriction.lean",
+      "source_sha256": "99b95e198c2218c60074daf6af032291542a1fb920f891defe0815c79cd9841b",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          62
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.InjectiveRestriction",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/InjectiveRestriction.lean",
+          "destination_sha256": "4bd806d2538505e71edb934f0509543a4e07d82eb01a00371f75546c3d1d0f85",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.TensorLocalExactness",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/TensorLocalExactness.lean",
+      "source_sha256": "640dd62e3c03d9adf88223f60ffb979abe55c379c92f506e4fab877d0410b5d2",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          48
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/Exact.lean",
+          "destination_sha256": "d9b3de07fca4a28f5929be57078774a43b43777eb80a779d550aa46f9786223b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorSections",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorSections.lean",
+      "source_sha256": "8be037fd8582d1454614bde7ac4162d45268c496becd7562749035836dae076d",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          71
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorSections.lean",
+          "destination_sha256": "5a18844fc9af28dcf171d26cc6bcaeb8a846164c9b669aed58d00a9e24b639c3",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap",
+      "source_path": "Quillen/Algebra/Category/ModuleCat/Sheaf/TensorPushforwardMap.lean",
+      "source_sha256": "73ecca3024a263ea89f2d4930649739d39c0c3f0187925027ead853a9a5027db",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          254
+        ]
+      ],
+      "native_namespaces": [
+        "SheafOfModulesOfCommRing"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/TensorPushforwardMap.lean",
+          "destination_sha256": "2cb0863096b2c4583b96dc3cc86c10d674862be06435fef1837e3de9962eed82",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorSections",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorSections.lean",
+      "source_sha256": "364dce7d72fa30bce1365b570297e15b3b794337dfda128d40df272b60243a61",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          66
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Sections",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sections.lean",
+          "destination_sha256": "7bbbbfd23404e750bdbcfd45899ef78b19c9ba38f841ca08d3eb3919dd12f6d2",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ProjectionFormula.lean",
+      "source_sha256": "d8e35cbea9bdc6c88a80cf6e9e040eaf03b4f891a3e0e4b54e3b022c851745d2",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          184
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/Basic.lean",
+          "destination_sha256": "800a9913d057f6581d7394c5c0a643c4d08636624cf231528b4972d13121acbf",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.AffineProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/AffineProjectionFormula.lean",
+      "source_sha256": "9a3dd226423f17661a674e8bb0e7de5bb66c8bf3ef64c9522ec042a29f75511c",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.Affine",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/Affine.lean",
+          "destination_sha256": "1ce8608e9e45bdc07eb5bae434a44bfe16ba5b789aee0008d48b294f1a51f046",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.CartesianOpenBaseChangeSections",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/CartesianOpenBaseChangeSections.lean",
+      "source_sha256": "4b90b10fe04cf96f20649393a6bb3ec9aba37f771ecf087d08b4afc801846e09",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          62
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.CartesianSections",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/OpenImmersion/CartesianSections.lean",
+          "destination_sha256": "26729da20de5a641730474270256949ee446a1dd737c4951e7d7ff43f7ae4b37",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ProjectionFormulaOpenBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ProjectionFormulaOpenBaseChange.lean",
+      "source_sha256": "7f1a4fd8c31bcdb601c2cb564a9d2753edc0690855ab13f0f5209e47c0a91df9",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          110
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.OpenBaseChange",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/OpenBaseChange.lean",
+          "destination_sha256": "dc73ac022e75457c4eecc6ac61c4d231b26824b83878ef60608fa5939113a875",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.ProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/ProjectionFormula.lean",
+      "source_sha256": "126f3de300a8267a33c86cfb6a6def445727ad4c89888a71c611b60a638c5f89",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          85
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.FiniteLocallyFree",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/FiniteLocallyFree.lean",
+          "destination_sha256": "9f5a0afd76af6ae81bffbdab81ca311f1bcfb517216150480df4428d95e68938",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.CochainComplexPlusFunctoriality",
+      "source_path": "Quillen/Algebra/Homology/CochainComplexPlusFunctoriality.lean",
+      "source_sha256": "e829f238603b1386bb0e20c280f4431a7eb18ed80e3246fbab05079aa0ded277",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          45
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.NatIso",
+        "CategoryTheory.Functor"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.CochainComplexPlus.Functoriality",
+          "destination_path": "Aglib/Algebra/Homology/CochainComplexPlus/Functoriality.lean",
+          "destination_sha256": "8ad37ae4d3fc2385e17eaaddb8b5ec0aa960c3e7fe3771f91fe995ff5b5df663",
+          "writer": "existing author; read-only reuse"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlusComposition",
+      "source_path": "Quillen/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlusComposition.lean",
+      "source_sha256": "5616ed89294bfb253e679870f8000a8693e25d97847cc0d3011e4a60aebbb745",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          184
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.Functor"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition",
+          "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean",
+          "destination_sha256": "69401b1d39a43ffdf92a62c5f9b364539851e48f0184dd7ca9af3cf65dd8258c",
+          "writer": "existing author; read-only reuse"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.TensorDerivedPushforward",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/TensorDerivedPushforward.lean",
+      "source_sha256": "4d63592472573ca76f4cbf1ed61c0cdca472066aed9db9b41cdf9612c3478885",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          90
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.TensorPushforward",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/ProjectionFormula/TensorPushforward.lean",
+          "destination_sha256": "e80e49c7ece97cd6e4aa32ace1af961d9b930307da81386654d99b177367494a",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.DiagonalCoefficientFunctors",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/DiagonalCoefficientFunctors.lean",
+      "source_sha256": "6680d9dd4a901264bb6e3e515ced3fbce42073f2e4726a8ff196bf3dcb7c3b98",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          31,
+          48
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Symmetry",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Symmetry.lean",
+          "destination_sha256": "9cb0ca2b152cb30e60b7c8ea19824e46fd2e26f247090a8712036f055deb253b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: arbitrary scheme X,module M; native sheafified tensor braiding and right tensor exactness when M is finite locally free. Exclude all relativeFirst R, incidence-sequence coefficient functors and their three P1 exactness instances.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.CochainComplexPlusSingle",
+      "source_path": "Quillen/Algebra/Homology/CochainComplexPlusSingle.lean",
+      "source_sha256": "724c0879c2a6f317694d22d3673b7468155f8a03db1a7213a730bb94650a908b",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "native_namespaces": [
+        "CochainComplex",
+        "CategoryTheory.Functor"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.CochainComplexPlus.Single",
+          "destination_path": "Aglib/Algebra/Homology/CochainComplexPlus/Single.lean",
+          "destination_sha256": "f738c0d0d5f37cb6ba181f97be2b40da188fb4dbf03b9cade8669b2b78c27181",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.CochainComplexPlusNatTrans",
+      "source_path": "Quillen/Algebra/Homology/CochainComplexPlusNatTrans.lean",
+      "source_sha256": "cf28da851c7a1e87478705a4ae0b6e1fbd70ab4b4c0e4535ecb696d83274cf02",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          42
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.NatTrans"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.CochainComplexPlus.NatTrans",
+          "destination_path": "Aglib/Algebra/Homology/CochainComplexPlus/NatTrans.lean",
+          "destination_sha256": "17ead51b5802f374e47f54433dead330abb1bb4609dfa8d6435b81c470b977c0",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedFlatBaseChange",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedFlatBaseChange.lean",
+      "source_sha256": "7e47b2494c988bc06a778048e3957eaaca25fc30dd519efd0b43bfbabb5b7a17",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          78
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.Flat",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Flat.lean",
+          "destination_sha256": "7e495ab5ab95219d550b24e75965d500b843e411efdae0ac7e1f4bce00d553f1",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedFlatPullbackSingle",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedFlatPullbackSingle.lean",
+      "source_sha256": "02d75d8ac97887a2687c657ac0846575d0036f20da44999f227f59758eda4f44",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          50
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackSingle",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackSingle.lean",
+          "destination_sha256": "0778c00cb50db7a2082b74780752efc158e8b5322a645d6e2bf3841174328543",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": null,
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/PullbackTensorCompatibility.lean",
+      "source_sha256": "097ce5cee34107cb70617129ebe0cc6778c9072bfe0943d62d7456a35af4e9e1",
+      "selection": "tiny_general_helper_cut",
+      "source_ranges": [
+        [
+          291,
+          295
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Symmetry",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Symmetry.lean",
+          "destination_sha256": "9cb0ca2b152cb30e60b7c8ea19824e46fd2e26f247090a8712036f055deb253b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.DiagonalGenerationEndpoints",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/DiagonalGenerationEndpoints.lean",
+      "source_sha256": "5ca6bd243475f0f37b5a3e0f7dc1b96838eb83e6fad35da29599d4fadf294896",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          39,
+          56
+        ],
+        [
+          66,
+          89
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.SingleComparison",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/SingleComparison.lean",
+          "destination_sha256": "e1ea12b9240671617b7d3369f8d67b601aa942b776efaaa4b8823785c2a2da63",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Symmetry",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Symmetry.lean",
+          "destination_sha256": "9cb0ca2b152cb30e60b7c8ea19824e46fd2e26f247090a8712036f055deb253b",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackSingleNaturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackSingleNaturality.lean",
+          "destination_sha256": "ee72776339637dd9e6940f0016da4b64b612e54defdc4926e57beaae9819bf97",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: arbitrary scheme-module additive F; single-complex comparison; exact-derived single comparison additionally PreservesHomology; arbitrary tensor symmetry; flat pullback single naturality additionally Flat f. Exclude self-base-change, tautological-right-tensor, and all P1 generation endpoints/maps/triangles.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.PlusSingleTriangle",
+      "source_path": "Quillen/Algebra/Homology/DerivedCategory/PlusSingleTriangle.lean",
+      "source_sha256": "4cdfe1f82248ccaac440031a83588879e29864947e77cca711de47b8ad2cf023",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          61
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.ShortComplex.ShortExact"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.SingleTriangle",
+          "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/SingleTriangle.lean",
+          "destination_sha256": "c38d8f04838ee9957fd6e778ae23a5203fa52d0f73be4501a5ab3b5cb5e0372b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.DiagonalGenerationNaturality",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/DiagonalGenerationNaturality.lean",
+      "source_sha256": "338c87965d8648513cfb22961bd21581d83eba45149366a225171da07f6446bf",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          34,
+          78
+        ],
+        [
+          88,
+          95
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.ShortComplex.ShortExact",
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.SingleTriangleNaturality",
+          "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/SingleTriangleNaturality.lean",
+          "destination_sha256": "0d37d902130ea239d20cc82fc3db56abf009385f7218443c06a28879fa240cbb",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.SingleComparison",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/SingleComparison.lean",
+          "destination_sha256": "e1ea12b9240671617b7d3369f8d67b601aa942b776efaaa4b8823785c2a2da63",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: arbitrary abelian C with HasDerivedCategory C and actual map between two short exact sequences; maps of their D+ single triangles and all three components. Also arbitrary additive functor between scheme module categories, canonical right-derived single comparison (not asserted iso). Exclude P1 diagonal/generation naturality.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.DiagonalLineRotation",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/DiagonalLineRotation.lean",
+      "source_sha256": "d72a7785de7179fcaf8e6e8dbab812cb96ae1a7e256262765df96222b84cfe70",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          112,
+          116
+        ]
+      ],
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.CochainComplex.SingleShift",
+          "destination_path": "Aglib/Algebra/Homology/CochainComplex/SingleShift.lean",
+          "destination_sha256": "f03ff9102446dc36f7316c6c07f21ae4bc2c102c62ca8af735b3e3959f43dad8",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: any abelian C, M,N:C, literal chain map from single(M,0) to single(N,0)[1] is zero. Exclude every P1 rotated-generation triangle and its tautological vertices. This is a chain-map statement, not vanishing of derived Ext1.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlusIdentity",
+      "source_path": "Quillen/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlusIdentity.lean",
+      "source_sha256": "d883637c0288a16a948f5433be68895d6fefc2764481a5b9abf46d372a8d66de",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          61
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.Functor"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Identity",
+          "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Identity.lean",
+          "destination_sha256": "026e00eb4507a002e671fa3859227f25e54703a7c21f3397d6c943f84850af27",
+          "writer": "existing author; read-only reuse"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.OriginalLineContractionComplexes",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/OriginalLineContractionComplexes.lean",
+      "source_sha256": "9a2940df013af3c80dc9dbd1684d5dc48a35478fea094af77ab188eddf35db36",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          25,
+          62
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.ComplexContraction",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/ComplexContraction.lean",
+          "destination_sha256": "98c9bee73d65dcc4ee8fbbeabc571ecd20001ea6baec4ac0a7757a3e8840f1bb",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: arbitrary scheme module category, additive endofunctors F,G and supplied actual contraction e:F⋙G≅Id; termwise cochain and D+ complex lifts with literal component equations. Exclude six tautological/P1 specializations.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementFirst",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementFirst.lean",
+      "source_sha256": "f8a19b51c031274b24a8b219a55e3c9121aa26bf6a8294631f3a34a8e644656c",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          472
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.First",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/First.lean",
+          "destination_sha256": "3dcafec2bb5e2f6d6498b7911506979b51c766f3bbe2320d9b83faa01e203b6f",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme X and a family of modules over actual stalk rings. Product-of-skyscrapers realization, scalar action, Godement first functor, natural mono unit, flasqueness and exactness including section evaluations. No commutation of stalks with infinite products asserted.",
+      "validation_status": "Current two-file simpNF source repair frozen; exact infrastructure producer/linter rerun pending.",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion.",
+      "simp_normal_form_repair": {
+        "source_sha256": "d7134b6e56e43df74355257b57fc4998a00078189c40614420ef41221db09594",
+        "original_identity_unchanged": true,
+        "mathematical_conditions_unchanged": true,
+        "method": "First unit: explicit Hom.app source M preserves the existing simp rule and literal germ formula."
+      }
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementResolution",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementResolution.lean",
+      "source_sha256": "5d34d1db31e526766f8b8ac0f7356eb26a856c629b9e6ad3708a8002ead134c3",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          387
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Resolution",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Resolution.lean",
+          "destination_sha256": "769e32ba4407af6e3166dfc4318b320a0a081cdb3997bc6fe0de2727b3c821fc",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme module sheaves; cokernel/iterated Godement first functor, exact resolution and actual single augmentation quasiIso. No geometric/Noetherian premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.FlasqueComplexDerivedPushforward",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/FlasqueComplexDerivedPushforward.lean",
+      "source_sha256": "f81d601dceb3a6b0bac4c9566f8bbdcdb68ae067748122b089dd96e8ff080170",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.DerivedPushforward",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/DerivedPushforward.lean",
+          "destination_sha256": "4054a184f9d2bb857fc721e5261749c9a50ef8bdd73a5b3c55df3ee46509473b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementComplex",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementComplex.lean",
+      "source_sha256": "b7f0c35cd5a8434d79aa3b25800665dcd54adc5bcab286ccc20b963171aa1cf9",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          326
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Basic.lean",
+          "destination_sha256": "30fafe6ea2f88636cf2f56f26921a65c0325f326a649f29458d7edf94821c1c5",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme module sheaves, N-resolution embedded in Z, bicomplex and direct-sum total. Lower-bound/finite diagonal/flasque conclusions retain explicit a or Plus. The functor/unit are constructed on complexes before bounded-below augmentation is proved.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementStalkSplit",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementStalkSplit.lean",
+      "source_sha256": "1faeee44cafa116557885fe35f0e9e92d746917e95aa45fb959ad1cb223487bc",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          176
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Stalk.Splitting",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Stalk/Splitting.lean",
+          "destination_sha256": "7059d35b421bbd1ef43cbdfcc8aa28f3b6b4a280b718576dab7b0de390e72f39",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point; natural retraction and quotient-section splitting of the Godement short exact stalk sequence, and N-degree homotopy equations.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementStalkIntContraction",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementStalkIntContraction.lean",
+      "source_sha256": "5ba80acc5b751499eacb9f2f79646fa9ab5fc105f296b3c1f172bf6f2aeadb7d",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          192
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Stalk.IntContraction",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Stalk/IntContraction.lean",
+          "destination_sha256": "2db6fb9e5dcdd1441e7192a6ed641b3faf43fd2f53d8880dcdafdf6a5a071276",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point/module; explicit split Godement stalk contraction in integer degrees, negative terms zero and zero/successor contraction identities.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementTotalExact",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTotalExact.lean",
+      "source_sha256": "11a9f632f62b44328e0a04c34a81089c327baf0439f15996c0fc329b9e547159",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          193
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Exactness",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Exactness.lean",
+          "destination_sha256": "d7826293ac2315f8b7396ad2528394d95292a9600c984fb595f82e5fb48eb72d",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme; degreewise exactness and categorical exactness of Godement resolution/direct-sum total, including unbounded complexes. PreservesHomology here concerns abelian categories of complexes, not unbounded underlying-complex quasiIso preservation.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementStalkTotalMatrix",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementStalkTotalMatrix.lean",
+      "source_sha256": "ea75d8385ceee34095699c0c9500fedeeada9b9ef88e3b1b1400fa2ad62cc1ac",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          252
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Stalk.TotalMatrix",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Stalk/TotalMatrix.lean",
+          "destination_sha256": "16dfff58b0712d8227c03dd5fc1b6ab46a5d3e5249a4b5b10d06f35f4f91e255",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point and Plus input; actual total diagonal coproduct, differential/sign entries, projection/back matrix and retraction. Bounded-below input retained.",
+      "validation_status": "Current two-file simpNF source repair frozen; exact infrastructure producer/linter rerun pending.",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion.",
+      "simp_normal_form_repair": {
+        "source_sha256": "762c89842e32e74df4c759667bbbe67aaf76e81d686183a0efcfc483be4f2d42",
+        "original_identity_unchanged": true,
+        "mathematical_conditions_unchanged": true,
+        "method": "Stalk total unit: normalized stalk.map formula is the simp rule; original component equality remains an exact explicit-rewrite alias."
+      }
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementStalkTotalHomotopy",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementStalkTotalHomotopy.lean",
+      "source_sha256": "4fc26092353a6685050cfce60ecdc738e4e1b7c6222ff9292677bab9bc0f8a46",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          208
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Stalk.TotalHomotopy",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Stalk/TotalHomotopy.lean",
+          "destination_sha256": "326fd5486d0e0e107e79c31cc49aa348382e42617f7dbc71483e54a556f2bc06",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point and Plus input; actual total stalk homotopy, retraction, homotopy equivalence and augmentation quasiIso. Bounded-below input retained.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementStalkReflection",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementStalkReflection.lean",
+      "source_sha256": "a41a64de825de035464043b6ae6df32886a76ef300d049a5009bb27c30736193",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          74
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Stalk.Reflection",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Stalk/Reflection.lean",
+          "destination_sha256": "0b0ea96505a478bc06dd4e401c85c6c68703114896597974c1b02901d771fe14",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme sheaves and cochain maps; module stalks jointly detect zero objects, isomorphisms, and quasi-isomorphisms. No boundedness requirement for stalk detection itself.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementTotalQuasiIso",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTotalQuasiIso.lean",
+      "source_sha256": "b811d46675ccd2d47f1545bcfaa275ced23fcf19f14e25db14b634624d7a3deb",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          66
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.QuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/QuasiIso.lean",
+          "destination_sha256": "02e787dcd393d9595cae79b7384cc42fad3cd70ab06f0d5e022f084a06c81dee",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme; original total augmentation quasiIso for Plus or explicit IsStrictlyGE input, and total preserves quasiIso maps between Plus inputs. Does not claim unbounded augmentation/quasiIso preservation.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementTensorUnit",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTensorUnit.lean",
+      "source_sha256": "94ba3c3da5f8f5053225e081014a1d1eb2caf54042b5537d3dce2d81b9e0d287",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          100
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Tensor",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.lean",
+          "destination_sha256": "17a6b66436eb62932645dab7ce5ee8d55a9aecb36ea410f43f1801f16b8b582d",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.CategoryTheory.NatTrans.Unit",
+          "destination_path": "Aglib/CategoryTheory/NatTrans/Unit.lean",
+          "destination_sha256": "02c51cd4aa7dfeb5bd228583afd0515667c84a03d400e1b6c00a4e3fe47aff90",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary X and E, actual postcomposition unit and tensor/total insertion maps. Tensor-unit quasiIso uses E finite locally free. Same-lower-bound and termwise-flasque results for Plus inputs.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.OriginalUnitPostcomposition",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/OriginalUnitPostcomposition.lean",
+      "source_sha256": "cbec5ac587e6ef96dffc428cf282dcb8731b8c0b4ccbe9d7398a7f340b53b8a1",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          102
+        ]
+      ],
+      "native_namespaces": [
+        "CategoryTheory.NatTrans",
+        "AlgebraicGeometry.Scheme.Modules.Plus"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.CategoryTheory.NatTrans.Unit",
+          "destination_path": "Aglib/CategoryTheory/NatTrans/Unit.lean",
+          "destination_sha256": "02c51cd4aa7dfeb5bd228583afd0515667c84a03d400e1b6c00a4e3fe47aff90",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "First natural-unit operations are for any category A and endofunctors. QuasiIso consequences currently typed on Plus of arbitrary scheme modules retain explicit hη,hF,hT where used. Several duplicate API wrappers of51/52/47.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.ProjectiveLine.OriginalLineGodementContractions",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/OriginalLineGodementContractions.lean",
+      "source_sha256": "6fd5c428149439c07f75b8d0de45a40b6962ad8fb83a63d967fc11c77c7a84f3",
+      "selection": "cut_general",
+      "source_ranges": [
+        [
+          28,
+          149
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Contraction",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Contraction.lean",
+          "destination_sha256": "b2aa40bcd1c1d7b43b20168866969a8476dedd6c8910dc5c7adb6c5d9b59a12b",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Cut: arbitrary X, additive F, arbitrary sheaf E and Godement insertion functors; quasi-isomorphism statements require finite local freeness of E; contraction comparisons additionally actual e:F⋙Tensor(E)≅Id; bounded-below input and lower-bound/flasque consequences retained. Exclude eight tautological/P1 specializations.",
+      "validation_status": "Current defining source passed configured no-output Lean check; final producer emission belongs to the integration owner.",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion.",
+      "focused_validation": {
+        "source_sha256": "a55d6c13b5b193b8c89e6196f97af075243a5737e120eade14b3a6a3d5262f43",
+        "exit_code": 0,
+        "maxHeartbeats": 200000,
+        "repair": "Explicit Functor.isoWhiskerRight scope only; original comparison and hypotheses unchanged."
+      }
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.PullbackStalkUnit",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/PullbackStalkUnit.lean",
+      "source_sha256": "96b3481a21713dfcfb47ec12fb37829e252091b1ac33a60b4f42a170008db593",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          41
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.StalkUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/StalkUnit.lean",
+          "destination_sha256": "0d8a13c544f13c0632a51cc2df50905f3f06ce50a6d5fd2088357625d7f12f55",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme map and sheaf; actual pullback stalk iso sends the adjunction unit germ to 1 tensor original germ. No flatness premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorStalkPure",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkPure.lean",
+      "source_sha256": "af83c168808309b77ab2a1317451916c7e4cee1a458b16746134f90a4477e9ec",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          99
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Pure",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Stalk/Pure.lean",
+          "destination_sha256": "f878657f9c1116b3b3d65d510f79d5d075a9092d4e760b836c5f41a88cd56328",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point/sheaves; simultaneous two-germ representatives, independence/restriction of pure-tensor germ construction.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorStalkBilinear",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkBilinear.lean",
+      "source_sha256": "510e9d9267125f25a46fc4167064ac8a4fd5dedf1c7aa38edac2f30e8a882397",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          142
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Bilinear",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Stalk/Bilinear.lean",
+          "destination_sha256": "998e47405a99ddd449109567673dceaedef78834fc3bd9fb215e81168d80389c",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme, point and module sheaves; simultaneous germ representatives, linear pure-tensor germ map and bilinearity; inverse stalk tensor map.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorStalkMap",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkMap.lean",
+      "source_sha256": "b438505a56e6a1147d356b947d2bde95c7e4450141cc3e9dc0a7f18bab7f0690",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          142
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Map",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Stalk/Map.lean",
+          "destination_sha256": "b8109bd8407ee5fa9e09104c562f94fd43cd4ce5f694b92e53fac79196e77a42",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point/sheaves; scalar/germ compatibility, literal tensor presheaf, map to point skyscraper and forward tensor-stalk map.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorStalkIso",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkIso.lean",
+      "source_sha256": "a0de4d165f7086cb33342c9b7fca9912de42b9ea49424f0dafc54e1830d4e410",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          83
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Stalk/Basic.lean",
+          "destination_sha256": "bd09f664eec9ac5de71b758c55cdea0414000364eddaaf8e3343dd21dd8c0b21",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point/sheaves; actual sheafified tensor stalk iso and both germ formulas, with pure-tensor extensionality.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.TensorStalkNaturality",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkNaturality.lean",
+      "source_sha256": "b0a27c6a9d502f4023878de8ac8e36e89455f30f5024a5a0190f0e05149100ec",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          93
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Naturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Stalk/Naturality.lean",
+          "destination_sha256": "9722c200836be01cd9b32213c87206669069089b22229a8fa51d6f77c4796281",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme/point/sheaves/maps; tensor-stalk isomorphism natural in both variables and the tensor-left functor.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.PushforwardModuleStalk",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/PushforwardModuleStalk.lean",
+      "source_sha256": "c344a5fe1121111767f2949ca3941c030c05cbe476c1f7435a2eb0c9157da70c",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          134
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pushforward.Stalk",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pushforward/Stalk.lean",
+          "destination_sha256": "ed2759a830cedfc074ca6f06e4dc7c3a848d7eec2ce5249b7749a2a6a230cc08",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme map; canonical pushforward module-stalk map and naturality. Isomorphism additionally IsInducing f; off-image zero additionally closed range, with closed-immersion specialization.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ScalarExtensionTensor",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ScalarExtensionTensor.lean",
+      "source_sha256": "6914108fb107352e38c8b9b0d11815e2bb7e7462d39ed9aae28a2823648cfff4",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          89
+        ]
+      ],
+      "native_namespaces": [
+        "ModuleCat"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/Tensor/ScalarExtension.lean",
+          "destination_sha256": "13f9af24a641e25b493c304f23bb971697fb5f2d9fc9d5b1144df5c8b3a49c30",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary commutative rings A,B and ring hom α; restriction of (B⊗A E)⊗B T canonically equals E⊗A restriction(T), including generator equations/naturality. No flatness premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ProjectionFormulaStalk",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ProjectionFormulaStalk.lean",
+      "source_sha256": "53ce2352507dd0278892d30eef7446a1244cea7e86fa4abb18d450564bba6c4e",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          125
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.Stalk",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/Stalk.lean",
+          "destination_sha256": "354595102750c969f09ce2733be235cc0a8ada43487f95eae1f993bac64c4173",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary inducing f:X→Y, stalk x, E:Y.Modules,M:X.Modules; canonical source/target tensor stalk isos, literal generator comparison with original projection map and scalar-extension tensor iso.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ClosedPushforwardExactness",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ClosedPushforwardExactness.lean",
+      "source_sha256": "3f9009da04a0ff8b918afe84e9d2f1935ec6758417680999b5461212be6c4baf",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          83
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pushforward.ClosedImmersion",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pushforward/ClosedImmersion.lean",
+          "destination_sha256": "ef8e9788be7ef3a6c29a80e6696178be012ceb327898a8366f6574bfcebf191e",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary module stalks detect epis. For topologically closed embedding f, ordinary module pushforward preserves epis; closed immersion specializes this to finite-colimit/short-exact preservation and an exact functor. No coherence/Noetherian premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.ClosedImmersionProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/ClosedImmersionProjectionFormula.lean",
+      "source_sha256": "0c48191a82cc50c18aabdc17e6814a2d81f5f765144cd73d762f51c70b254e29",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          127
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.ClosedImmersion",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/ClosedImmersion.lean",
+          "destination_sha256": "fbdd7d1ae6dc3c1d9c7a82b66e955564d59bfb50c91861cc533c75719e40955e",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Stalk.Reflection",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Stalk/Reflection.lean",
+          "destination_sha256": "0b0ea96505a478bc06dd4e401c85c6c68703114896597974c1b02901d771fe14",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary closed immersion f:X→Y and arbitrary sheaves E:Y.Modules,M:X.Modules; original projection-formula map is iso, with both naturalities and generator equations. Joint stalk detection helper also general.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.FlasqueExtensions",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/FlasqueExtensions.lean",
+      "source_sha256": "c7f72a108ef8240353939920a76582f52a37cc094bb4c076abe11ef45a230c6d",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          56
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.Extensions",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/Extensions.lean",
+          "destination_sha256": "b9faee7b4031e1d657278241f899ad100bab4abdc4e259ef3d8ecff3362ac209",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Actual short exact sequence of arbitrary scheme module sheaves with both outer sheaves flasque; middle is flasque.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.FlasquePushforwardExact",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/FlasquePushforwardExact.lean",
+      "source_sha256": "25b4075de292d56c985a73f3abef90e19be9a91d36ae21dcbd9a9c27a5cf3ab1",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          61
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.PushforwardExactness",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/PushforwardExactness.lean",
+          "destination_sha256": "6c4654884f915b824e2f7b7e5950f467fdae1b4f43ef9bda700798336b78e0ca",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme map and actual short exact module/sheaf-complex sequence, with flasque kernel (degreewise for complexes); ordinary pushforward retains short exactness. No lower-bound requirement for this degreewise exactness result.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementTotalDerivedComparison",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementTotalDerivedComparison.lean",
+      "source_sha256": "da1f368db81886ae2c70e0aa8d1d1561e5b6d26860553de9702f1fa802eb4b81",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          59
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.DerivedPushforward.Total",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/DerivedPushforward/Total.lean",
+          "destination_sha256": "7c87bb9f6e559ec71a1b19f547280180ea12bde675cf698f24d4b3c541fc8f3e",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme map, actual D+ Godement total/direct-image comparison, original derived unit, and augmentation iso. No properness/perfectness premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementBaseChangeUnit",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementBaseChangeUnit.lean",
+      "source_sha256": "8acbac5962a9df91a6fccd7791a2502909235a48e1c039012239c36d591d2b7e",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          154
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.GodementUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/GodementUnit.lean",
+          "destination_sha256": "87c7ef6939dd7cf960c592418dfeca451c9025d8218fa8c5d6912d7f649dfcc1",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary cartesian square a,b,f,j with IsPullback and Flat j,Flat a; actual ordinary mate followed by Godement unit, derived target comparison, original unit equation. Source-unit invertibility additionally degreewise flasque bounded-below K.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedPushforwardComposition",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedPushforwardComposition.lean",
+      "source_sha256": "c7aea6c6ee14ec0954d34d73dee84c983bd852002a16a160469f68e690fe192c",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          108
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PushforwardComposition",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PushforwardComposition.lean",
+          "destination_sha256": "742dbf08326a6037babf55fd4cd902daadb5ab148658d97f9d86dca519a7448a",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedPushforwardSection",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedPushforwardSection.lean",
+      "source_sha256": "bde95c7d4b628b273c7fcd42c3106acd937568fae38ac0a07165164c1e8543ba",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PushforwardSection",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PushforwardSection.lean",
+          "destination_sha256": "ab16fd115bffa7d22efaa2c250f1c4ff141037e5bfb472ee477d8c9abe7781f0",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementClosedSectionSpan",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementClosedSectionSpan.lean",
+      "source_sha256": "535072ca586db224865d66b8bfb5a625c7f007847ab0f46490f89f56564c23f0",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          200
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Section.Span",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Section/Span.lean",
+          "destination_sha256": "f67c34f3752f02a51182097410c8ee1b47101e6c9e461640085bebcab57b7809",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary s:X→Y,p:Y→X; actual section equation s≫p=Id for section comparison; quasi-isomorphism arguments in this ambient section retain IsClosedImmersion s. Actual Godement total/image maps, lower-bounded inputs and flasque consequences.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementClosedSectionSpanUnits",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementClosedSectionSpanUnits.lean",
+      "source_sha256": "84cc114fae9c07b9a3614f59370c6df4bb31efdb265edb555f3f8477c20fbb2e",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          92
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Section.Units",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Section/Units.lean",
+          "destination_sha256": "bb9302f4581b9a2f4017f2092cee2f20cea45e99e5317eedad39595b1c4567fb",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary pushforward f or genuine section s≫p=Id; literal Godement-derived and section-composition unit equations. No perfectness hypothesis.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementClosedSectionSpanLocalization",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementClosedSectionSpanLocalization.lean",
+      "source_sha256": "ffb42b333d0d5071ccf8fecca57f6bc1caf954936ee412ab399ecad4d54e48ba",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          132
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Section.Localization",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Section/Localization.lean",
+          "destination_sha256": "8e23162deea0958457179a0fd34db8b675aa171e0053f0925a4408acc3fed90e",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary genuine section s≫p=Id; actual D+ localization comparisons and source-total/repeated-total iso. Unlike closed-section quasiIso proofs in source34, these derived-comparison statements have no closed-immersion assumption in this source.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementDerivedSheaf",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementDerivedSheaf.lean",
+      "source_sha256": "f349d7210017d14899fc2232d31d36be2b7d07fc140f0859e6d6277369ecb92e",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          90
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.DerivedPushforward.Sheaf",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/DerivedPushforward/Sheaf.lean",
+          "destination_sha256": "f23344f389af80357393a1b8070001be7c93574d8c6d0831c8ef2e2aadcc42cd",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme map; degree-zero single and Godement resolution compute the actual D+ derived pushforward via original derived unit and augmentation.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.DerivedProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/VectorBundle/DerivedProjectionFormula.lean",
+      "source_sha256": "8223648a2c50768f7191f433a375596aca513e3966a371b4cb98e5295e5ff273",
+      "selection": "whole_general_prerequisite",
+      "source_ranges": [
+        [
+          1,
+          110
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/ProjectionFormula/Basic.lean",
+          "destination_sha256": "875f049e57d37dc924b4ee57d71106bdb33da4d379fe9a63c55c36bdf6d6f8a4",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementProjectionFormula",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementProjectionFormula.lean",
+      "source_sha256": "67085234823daac12fff0e9f8a747fd5c64b47971eb41aa3ec8aab5e0df7591a",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          212
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.ProjectionFormula",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/ProjectionFormula.lean",
+          "destination_sha256": "fa5f8dac039ef9f1c030646c66fe930bab7dad8bca743f77cbea1a419e0cb503",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary f:X→Y and finite locally free E on Y; ordinary/derived projection formula comparison with actual Godement augmentation; source comparison iso/quasiIso additionally degreewise flasque Plus input. Generic plusQ-reflects-quasiIso helper is general.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": null,
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueDiagonalExact.lean",
+      "source_sha256": "71015904610f723946dcbbb59b55f467ae0bc2901ea9f2fb2f84ddb7af55f85e",
+      "selection": "tiny_general_helper_cut",
+      "source_ranges": [
+        [
+          78,
+          98
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/PushforwardQuasiIso.lean",
+          "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementWeakComposition",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementWeakComposition.lean",
+      "source_sha256": "49ec657c0e264180a3857bd543cbe265fbc7b73b82d990b035ceb51308e8e77a",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          41
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/PushforwardQuasiIso.lean",
+          "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme morphism; total then ordinary pushforward preserves quasiIso maps of Plus inputs; composition/isomorphism helpers for Plus maps. Requires general helper cut from FlasqueDiagonalExact, not its application import.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.GodementWeakTransformation",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementWeakTransformation.lean",
+      "source_sha256": "76b096ff1fee12311080700b311cd0f83915d35e9aa3ae6d9bae3d29409ecab7",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          36
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Naturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Naturality.lean",
+          "destination_sha256": "38dbf14c88e1a371b38a7efe8b56831e8d5a6297e29965ecbc7a2c50fc920b45",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary category D and functors into Plus X.Modules; composition, iso, and total/image whiskering retain pointwise quasiIso.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.LineTensorSheafification",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/LineTensorSheafification.lean",
+      "source_sha256": "b50f7f36dea58fcfaceb459613f0241e945db79658ad6b6fff026e0dbd0ae037",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          117
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Sheafification",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+          "destination_sha256": "41b6a086b547e3cea850281a0e9fd4ceda0de2fb4551642f02f9adb39201bed5",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary open immersion and presheaf; restriction/sheafification iso and unit statements. Last result retains a covering family trivializing L as unit. No P1 hypothesis.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.LineTensorAssociator",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/LineTensorAssociator.lean",
+      "source_sha256": "2c95dba85f1cd064216f3ce950309f14d648ba2847df5f26f2e2408d006a511c",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          139
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.TensorFunctorAssociator",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/TensorFunctorAssociator.lean",
+          "destination_sha256": "7e6589de844a7c1432cac0f34bb8b3418e5626d12062dc35abf28fb5066a48cd",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary X,L,M and a genuine open cover simultaneously trivializing both L,M as structure modules; tensor-sheafification units and actual tensor-functor associator. Keep cover/trivialization witnesses; no P1 hypothesis.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.SectionPushforwardModuleStalk",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/SectionPushforwardModuleStalk.lean",
+      "source_sha256": "a5f53ecfa994305fba25c37f52e47403b2da8393fe70bb105ebeae0a599a6bb5",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          81
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pushforward.SectionStalk",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pushforward/SectionStalk.lean",
+          "destination_sha256": "0651b53ec701adcd1350b646a8d1d5c0d5f08f5c50da142de60b9cd47f2d8830",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary genuine section; actual stalk-ring map and retraction. Pushforward stalk iso/germ equation additionally IsInducing i.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.SectionPullbackStalk",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/SectionPullbackStalk.lean",
+      "source_sha256": "bb1ff0759dbc66b2c4aa861dde608b5452e5487378b1d876dc4adfcab6f298b0",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          41
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.SectionStalk",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/SectionStalk.lean",
+          "destination_sha256": "4d3550ef07f015584bf4d58bd16e94ac8fde1d0619a74684d4ca585daf8bdf88",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary map with identified image point, or genuine section i≫p=Id; actual pullback stalk transport with its specific transported stalk-ring map. No flatness premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.SectionPullbackTensorStalk",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/SectionPullbackTensorStalk.lean",
+      "source_sha256": "6f5b121304c39bcf89b6f8bfc3dd56efc2b8bfbffa7f49000f56fc5fe5f640e6",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          47
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.SectionStalk",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/SectionStalk.lean",
+          "destination_sha256": "25bc37337ad683325fc539100f5ea50ba8a7d2bcc58e93f50bfcb4002c115712",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary genuine section i≫p=Id and E on source; canonical pulled-back tensor-stalk/scalar-restriction functor iso. No inducing/flatness premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.SheafStalkShortExact",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/SheafStalkShortExact.lean",
+      "source_sha256": "be9bfc346c348324142fb69ac1b5e167d765c254211947c8803ee5794e407b1b",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          55
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "ModuleCat"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Stalk.Exactness",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Stalk/Exactness.lean",
+          "destination_sha256": "5a7fdc21af388cc061764b976455ff51cd7a48f2186abcfa59208912a1b0941a",
+          "writer": "quillen_scheme_delta_scope"
+        },
+        {
+          "destination_module": "Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness",
+          "destination_path": "Aglib/Algebra/Category/ModuleCat/ChangeOfRings/Exactness.lean",
+          "destination_sha256": "18a2e941cfeff45b988ed39a1955174e653a5bb4006951bfc29886dacf6c781c",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary scheme module short complex; stalkwise exact/short-exact detection. Last result is arbitrary rings and scalar restriction reflecting short exactness, independent of schemes.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.WeakFunctorTransport",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/WeakFunctorTransport.lean",
+      "source_sha256": "d0628af277b50b9c0182c80722f3fa52bdfb5427c8e97b4af4db11a122fd9232",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          66
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.NatTransQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/NatTransQuasiIso.lean",
+          "destination_sha256": "c74212383c70478a8125b977a0d327c3e0b15842b69b8e554b53c7424b2722a4",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary categories, p and reassociated natural transformations into Plus X.Modules with pointwise quasiIso; actual total/image transport and iso transport for cochain functors. No P1 premise.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.WeakFunctorMap",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/WeakFunctorMap.lean",
+      "source_sha256": "cc64f0439bc29106d737180207e03cb9fed1b2a1ae1019a5245b7ec9de40d333",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.NatTransQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/NatTransQuasiIso.lean",
+          "destination_sha256": "c74212383c70478a8125b977a0d327c3e0b15842b69b8e554b53c7424b2722a4",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Arbitrary category D, scheme map p, functor F into Plus X.Modules and additive homology-preserving T; tensor then total then ordinary image preserves the given quasiIso. Lower-boundedness remains in F codomain.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.WeakFunctorOpaque",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/WeakFunctorOpaque.lean",
+      "source_sha256": "50682a596ed05865275c93121b3c545e02cdfebe7fd6e6a5f81031545c4aa923",
+      "selection": "whole_general",
+      "source_ranges": [
+        [
+          1,
+          45
+        ]
+      ],
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "destinations": [
+        {
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.NatTransQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/NatTransQuasiIso.lean",
+          "destination_sha256": "c74212383c70478a8125b977a0d327c3e0b15842b69b8e554b53c7424b2722a4",
+          "writer": "quillen_scheme_delta_scope"
+        }
+      ],
+      "conditions": "Same arbitrary D,p,F,T; typed irreducible boundary is literally the tensor/total/image functor, with equality and quasiIso lemma. Opacity is an implementation aid, not additional mathematics.",
+      "validation_status": "native extraction authored; central focused build/author diagnostic iteration pending",
+      "evidence_boundary": "Accepted source-applicability classification. Compilation will not discharge explicit theorem-family premises or promote bounded Godement augmentation to an unbounded assertion."
+    }
+  ],
+  "canonical_interfaces": {
+    "tensor_primitive": "SheafOfModulesOfCommRing.tensorLeftFunctor, tensorFunctor and tensorBraiding in Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic. Existing Scheme.Modules.Invertible.tensorSheaf/tensorSheafMap/tensorSheafBraiding are geometry-owner aliases; the three object/map/braiding rfl equalities are in Modules.Invertible.TensorComparison.",
+    "tensor_symmetry": "AlgebraicGeometry.Scheme.Modules.moduleTensorSymmetry and moduleTensorRightLeftIso; moduleTensorSymmetryNatIso is an alias with explicit hom-component normalization.",
+    "godement": "AlgebraicGeometry.Scheme.Modules.Godement owns actual scalar Godement first/resolution/total/contraction and D+ derived comparisons.",
+    "generic_units": "CategoryTheory.NatTrans.unitPostcompose/unitTotalPostcompose/unitPrecompose is the sole generic natural-unit implementation.",
+    "boundedness": "Total categorical exactness allows unbounded complexes. Augmentation/QI/homotopy/total-image weak maps retain Plus or explicit IsStrictlyGE; no unbounded QI upgrade.",
+    "cartesian_open_range": "Scheme.Modules.opensRange_of_isPullback is an exact proof-term alias of the geometric Scheme.Hom.opensRange_of_isPullback in Morphisms.OpenImmersion.Cartesian; the displayed square and both open-immersion instances are unchanged."
+  },
+  "remaining_validation": [
+    "Focused central compilation and author repairs of111 new leaves.",
+    "Object,map,braiding rfl comparison against geometry-owned specialized wrapper bodies.",
+    "Forward component equality for the right/left tensor natural comparison.",
+    "Same-scope consumer/source correspondence and native imports after existing owners finalize their primitives."
+  ],
+  "original_exclusions": "P1/curve/perfect/K/G/Q/S application declarations excluded exactly by the accepted audit. Two tiny generic helpers extracted from application containers; no production application import.",
+  "validation_note": "Current post-principal naming surface: focused native producers in progress. Stage18 two author repairs passed exact current configured no-output checks; same-scope inputs/logs in scratch. Prior producer coverage remains bound to its actual defining-module/source basis.",
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "group": "general-geometry",
+  "entries": [
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.FiniteEtale.PointedCover",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "0c4df023fa4982470872177355ddb47ae665ba627c65fb402835a3b86ee35288",
+      "destination_module": "Aglib.AlgebraicGeometry.SchemeOverField",
+      "destination_path": "Aglib/AlgebraicGeometry/SchemeOverField.lean",
+      "encoded_subset": "Base and FScheme only, original lines 59–66"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Degree.Basic",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "ff0e45f9b8df48a20eb8b56604e1cb3e8c95e25fb1dfee1fa8115e4296e042f7",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.StructureSheaf.Pushforward",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/StructureSheaf/Pushforward.lean",
+      "encoded_subset": "pushforwardStructureSheaf only, original lines 40–42"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Degree.Sheaf",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "906ece4301ed05170c1e27b2ecdf92f9329ccf512f5f80c28a30dc7ff8f00408",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Basic.lean",
+      "encoded_subset": "whole arbitrary-scheme module-sheaf interface; explicit AffineModuleBaseChange and LocalBasisFibreDimension premises retained"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Degree.SheafRank",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "f5e408d847d29b7b3d1b1cc31e7bfc7a39704d28f8b174fb9ec0b6efd23ef617",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Rank",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Rank.lean",
+      "encoded_subset": "whole arbitrary-scheme module-sheaf interface; explicit AffineModuleBaseChange and LocalBasisFibreDimension premises retained",
+      "interface_refinement": "Original finite-local-basis witness proved equivalent to canonical IsFiniteLocallyFree on the same q; SheafFiniteLocallyFree is an abbreviation; rank results use class instances and category objects. LocalBasisFibreDimension remains explicit."
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Core",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "82e139a47b587c797858077c809fab2a9c647f4b028855c2ca2fe5ac3dd8297a",
+      "destination_module": "Aglib.AlgebraicGeometry.Properties.Normal.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Properties/Normal/Basic.lean",
+      "encoded_subset": "NormalStalks, NormalComponentsOpen, NormalStalks.isReduced, and isIntegral_of_connected_normalStalks only"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Core",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "82e139a47b587c797858077c809fab2a9c647f4b028855c2ca2fe5ac3dd8297a",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Properties.lean",
+      "encoded_subset": "SmoothFieldNormality, SmoothFieldRegularity, SmoothFieldDimension, SmoothClosedPointDimension only"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Geometrically.SmoothIntegral",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "6fe53e832d650a5d31bd5223106345d3a0b3730d87b0cdbf7fc245f30750df47",
+      "destination_module": "Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents",
+      "destination_path": "Aglib/AlgebraicGeometry/Properties/Normal/StalkComponents.lean",
+      "encoded_subset": "Four generic domain-stalk component/connectedness lemmas only; no smooth or relative-dimension-one conclusions"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.Polynomial",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "60fc10a4cd3943e643878ff8d713626f685d08beae654c60fab461023cbb7f39",
+      "destination_module": "Aglib.AlgebraicGeometry.Stalk.Polynomial",
+      "destination_path": "Aglib/AlgebraicGeometry/Stalk/Polynomial.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.Etale",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "e144e3baf30dd1c886f01a7df22b3b5ee5aa60b259a16274147293e3feb74359",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Etale.StalkMap",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkMap.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.GenericFiber",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c34414699264267e0f5f8e105b122e1e57e41bcdf5d4a1a20279978c8a8d7612",
+      "destination_module": "Aglib.AlgebraicGeometry.Stalk.GenericFiber",
+      "destination_path": "Aglib/AlgebraicGeometry/Stalk/GenericFiber.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.EtaleBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c21b0c1938c7661086c7b61d6b6826e08d0988e72688805046567b782650b96d",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Etale.StalkBaseChange",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkBaseChange.lean",
+      "encoded_subset": "Scheme-specific stalk-map formal etaleness, canonical stalk flatness, pullback stalk-map isomorphism and stalk-base-change transport; generic ring-homomorphism properties extracted into RingTheory.Etale.FormalProperties",
+      "generic_ring_dependency": "Aglib.RingTheory.Etale.FormalProperties",
+      "interface_refinement": "Generic helpers have one implementation in native RingHom namespaces; the four actual scheme-stalk declarations retain Scheme.LocalRing.Etale and their original conditions/maps.",
+      "declaration_correspondence": [
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.stalkMapIsoOfIsPullback_of_flat_preimmersion",
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion"
+        ]
+      ],
+      "declaration_lint_refinement": "The data-producing stalk-map isomorphism now has the lowerCamelCase name stalkMapIsoOfIsPullbackOfFlatOfPreimmersion; body, universes, flat/preimmersion hypotheses and canonical maps are unchanged."
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.EtaleLocus",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "7394f130d1721e49c5be894999ea43f54d5d6b1ca8b7d7e4cde0bc617b320429",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Etale.Locus",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/Locus.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Geometrically.CommonOverfield",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "7a593a71e1a59ae19320be3a541f76dac48f4ff6b3ab3a33d3bd6c3756b2bb9d",
+      "destination_module": "Aglib.AlgebraicGeometry.Geometrically.Connected.CommonOverfield",
+      "destination_path": "Aglib/AlgebraicGeometry/Geometrically/Connected/CommonOverfield.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Geometrically.FieldExtension",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "13031d440ccb06f2fec20b27ab200219aac43f491db8467d3fa78a50df53d81a",
+      "destination_module": "Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension",
+      "destination_path": "Aglib/AlgebraicGeometry/Geometrically/Connected/FieldExtension.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Finite.GeometricPoints",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4ab3bcc1214bc088c60ae64ca1ffb3dadaf7e82b67ea948961508a26b3fd7135",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Finite.GeometricPoints",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Finite/GeometricPoints.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Group.ScalarExtension",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "e3771d44901853bba7558bd8ca0e6285e202deedfa9e9b93cdf0c42eb7ba8843",
+      "destination_module": "Aglib.AlgebraicGeometry.Group.ScalarExtension",
+      "destination_path": "Aglib/AlgebraicGeometry/Group/ScalarExtension.lean",
+      "encoded_subset": "whole general interface",
+      "declaration_lint_refinement": "Eleven projected formulas remain unchanged plain rewrite lemmas; nine reassociated variants are retained without simp registration. Canonical underlying Over-map simp normalizations are retained, and the formulas are proved by those maps, pullback projection laws and the existing canonical-comparison computations."
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.SmoothCharts",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "567e4c1d5d55138321b0c68dd7142dbb1917b9e462c7da87f0c002fe3bdbbeb6",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Charts.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.GeneralSmooth",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5788cc9d8f96743807f048bb7151a488c5cfb12417a6190776dbe923ef01f70b",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Regularity.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.GeneralSmoothNormal",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "cc3c6a6e4a4905f4d8a5f831b7c073c047ab45399b7a7438e915fa402562b965",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Normality.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.SmoothDimensions",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "8b5cff12925ec39481605614cab8bc0d88b3abbdabc33ccfaaab54eb87af070d",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Dimension.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.NormalComponents",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "39ba4a85f8e4c30ae49b2289f1a58b155434a5e3fc8e5e373c55b235e1706b64",
+      "destination_module": "Aglib.AlgebraicGeometry.Properties.Normal.Components",
+      "destination_path": "Aglib/AlgebraicGeometry/Properties/Normal/Components.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Differentials",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "ce56117c8977710b984556c9f6d10d741e9f839554d1bd723b7ed32ec6544101",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Differentials.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Differentials/Basic.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Differentials.Properties",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "82ea98a64403f8d2ca9594ea54085f3beb06088dbb1aa18a8b4b3bc07261d013",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Differentials.Properties",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Differentials/Properties.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Differentials.EtalePullback",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "2afd565d634e95076373d7368466c3a56d1c909108fab04beb2459e54d2d8cfe",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Differentials.EtalePullback",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Differentials/EtalePullback.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.Basic",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c33d8da36003cd36f8fdbd456ac8f126815310f145a0d457eb78c50873ea398d",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/Basic.lean",
+      "encoded_subset": "whole general interface",
+      "interface_refinement": "Tensor object/map wrappers transparently specialize the shared SheafOfModulesOfCommRing tensor primitive; original objects and maps are retained by definitional comparison.",
+      "generic_tensor_dependency": "Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.Tensor",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "eda5484bf5c90dbfaf2efa099b5693f5a86ebaa28d34126ba2724937b5db77f0",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.Tensor",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/Tensor.lean",
+      "encoded_subset": "Generic over-restriction and sheafification helpers moved to lower OpenRestriction; remaining tensor/line-bundle interfaces retained",
+      "interface_refinement": "The existing braiding wrapper transparently specializes SheafOfModulesOfCommRing.tensorBraiding; original braiding retained by definitional comparison.",
+      "generic_tensor_dependency": "Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.TensorAssociator",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "b377658614dc9f797a32cc8c99dfc75713f3b164dfdc66af3dad549969a5befb",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/TensorAssociator.lean",
+      "encoded_subset": "Generic locally-bijective/isomorphism helpers moved to lower OpenRestriction; remaining tensor associativity interfaces retained"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.HomSheaf",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "ad1c74766d7d5e85346e926c7b6088289f71317aa89cd8e54a27193f868f30cc",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.InternalHom",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/InternalHom.lean",
+      "encoded_subset": "whole general interface",
+      "declaration_lint_refinement": "Meaningful docs describe additive natural transformations, target scalar action, componentwise structure-linearity, internal hom transport and evaluation at one. smulRawHom_apply remains the same rfl formula as a plain rewrite lemma because its left side already simplifies."
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.Dual",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "9656801a4421684d45821c11a64eaea8c9bf01a4e02cfbe1f5f28178a2aee55c",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.Dual",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/Dual.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.Pullback",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "dd427a19886f46452152575d9232f3d4b17947ff23e1165238a8efc9ce29abe0",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.Pullback",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/Pullback.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.PullbackLocal",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "7d3d1f2d85d4a5b6aab3270f9aada6e23cb49e2209a21f8e885e15ce88a4d1b8",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.PullbackTensor",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "757f7b4a24be6f6597504d134033d2e167afe4ebc4a8b62cb9b1a40e6d282821",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.PullbackTensor",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/PullbackTensor.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.PullbackTensor.Local",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "71aae275e2f8282f0ec2fc03617ef022dd01151c3286c6d575c1c2f6a95804ec",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.PullbackTensor.Local",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/PullbackTensor/Local.lean",
+      "encoded_subset": "whole general interface"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Geometrically.SmoothIntegral",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "6fe53e832d650a5d31bd5223106345d3a0b3730d87b0cdbf7fc245f30750df47",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced",
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Reduced.lean",
+      "encoded_subset": "isReduced_of_smooth_over_field only, original lines 51–68; arbitrary smooth field scheme"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.Tensor",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "eda5484bf5c90dbfaf2efa099b5693f5a86ebaa28d34126ba2724937b5db77f0",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+      "encoded_subset": "Generic over-restriction/sheafification helpers"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.TensorAssociator",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "b377658614dc9f797a32cc8c99dfc75713f3b164dfdc66af3dad549969a5befb",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+      "encoded_subset": "isIso_of_locallyBijective and locallyBijective_of_local_isIso, preserving original maps and hypotheses"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.LocalRing.EtaleBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c21b0c1938c7661086c7b61d6b6826e08d0988e72688805046567b782650b96d",
+      "destination_module": "Aglib.RingTheory.Etale.FormalProperties",
+      "destination_path": "Aglib/RingTheory/Etale/FormalProperties.lean",
+      "encoded_subset": "First seven generic ring-homomorphism declarations; native RingHom/FormallyEtale owners with unchanged commutative-ring types, universes and hypotheses",
+      "declaration_correspondence": [
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.ringHom_formallyEtale_iff",
+          "RingHom.FormallyEtale.iff_formallyUnramified_and_formallySmooth"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_stableUnderComposition",
+          "RingHom.FormallyEtale.stableUnderComposition"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_respectsIso",
+          "RingHom.FormallyEtale.respectsIso"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_isStableUnderBaseChange",
+          "RingHom.FormallyEtale.isStableUnderBaseChange"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_holdsForLocalization",
+          "RingHom.FormallyEtale.holdsForLocalization"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.formallyEtale_localRingHom",
+          "RingHom.FormallyEtale.localRingHom"
+        ],
+        [
+          "AlgebraicGeometry.Scheme.LocalRing.Etale.ringHom_etale_formallyEtale",
+          "RingHom.Etale.formallyEtale"
+        ]
+      ]
+    }
+  ],
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

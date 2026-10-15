@@ -1,0 +1,238 @@
+{
+  "package": "Aglib",
+  "root_module": "Aglib",
+  "test_root": "AglibTest",
+  "governing_namespace_map": "doc/namespace-map.json",
+  "lean": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "source_adaptations": [
+    {
+      "source": "Quillen",
+      "revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "path": "scripts/library_sources.py",
+      "sha256": "57f0b946a8b227a3ed67013513730bc18bbd70cdb6d0d165fb1b0846afb48823"
+    },
+    {
+      "source": "Quillen",
+      "revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "path": "scripts/generate_imports.py",
+      "sha256": "cb03620b96c2f423e7b5e35933ae6add6adf0fe010f96637c3c899c78bacf914"
+    },
+    {
+      "source": "Quillen",
+      "revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "path": "scripts/check_library_layout.py",
+      "sha256": "25c014ee3ab2387c609a095ed1b65d758a27f0624a9d0c7b8a26fb794446b509"
+    },
+    {
+      "source": "Quillen",
+      "revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "path": "scripts/check_placeholders.py",
+      "sha256": "9b3f155d1eaa8d9506382e49f3382cc8f11dd257e1bd5da1336048e3af779c2e"
+    },
+    {
+      "source": "Quillen",
+      "revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "path": "QuillenTest/Axioms.lean",
+      "sha256": "4403edb9751e6dc8be050001210a491ebe75ac510e696df12a58e47102b34f60"
+    },
+    {
+      "source": "R5Lab",
+      "revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "path": "lean/Checks/Basic.lean",
+      "sha256": "40fa12a1711bfb1bf6fc13da4ec660abc3602a3749cb62e7e6bcc1be1d69e2ef"
+    }
+  ],
+  "files": [
+    {
+      "path": "Aglib.lean",
+      "sha256": "8877b2ef52a421b4d9e809c10204caf2b48f4eccc4c6530d0bd5c454c8d65ebf"
+    },
+    {
+      "path": "AglibTest/AffineCohomology.lean",
+      "sha256": "b16ad2f21e9d3f6725bc550559bcf948228e6fde4e99929ba2ed4af0a8034c85"
+    },
+    {
+      "path": "AglibTest/AuditCoverage.lean",
+      "sha256": "6aaa2d7c71a456ed97f0b46110d25c7b1341e8085fd32a7d8525cde2d028be3e"
+    },
+    {
+      "path": "AglibTest/AuditSupport.lean",
+      "sha256": "8554a9ca500a3048f35a757373eb49c20c4b80b1c978a48a94608d3c6478af6f"
+    },
+    {
+      "path": "AglibTest/Axioms.lean",
+      "sha256": "128cc7f9854814bf9e6250d0a4b4bbc0ed0b52350b74b41c877a7dc88fe67b3c"
+    },
+    {
+      "path": "AglibTest/CoefficientUnit.lean",
+      "sha256": "6db87740fea7308fb62b0eb705fb3b2f3ef78d8dc1a73f95377baae46b78971f"
+    },
+    {
+      "path": "AglibTest/ExactFunctor.lean",
+      "sha256": "abc4b2c0d408b830e02782c96215013084982d65fe6fd3722775796483d22539"
+    },
+    {
+      "path": "AglibTest/NegativeControls/ImportedAudit.lean",
+      "sha256": "6e8fec8f9fb9c878aeaa766d60cf5b849fe87443db2659e0e7a91b854405b745"
+    },
+    {
+      "path": "AglibTest/NegativeControls/ImportedFixture.lean",
+      "sha256": "08366fa88b60cd870be873277db2b0eb7e8732a6c718e49f9db7501d1896a78f"
+    },
+    {
+      "path": "AglibTest/NegativeControls/LocalAudit.lean",
+      "sha256": "7d74e1c336cd73075574493b6e06cc85b3bb5ae23daa0436dfdb2b9a7111747b"
+    },
+    {
+      "path": "AglibTest.lean",
+      "sha256": "88740c2112f3100b2b8de56dc9081f3f8349ef9c2fd096b784e38ce3dab50623"
+    },
+    {
+      "path": "examples/downstream/Audit.lean",
+      "sha256": "36d46218f93deeef489639d45b14beb6d3d5d97130e7724e122a41c6bfc21b83"
+    },
+    {
+      "path": "examples/downstream/Consumer/CoefficientUnit.lean",
+      "sha256": "e175051c96abad06ef4caaf8e734731caa49fd303ebc782e7c8248c3d357aff0"
+    },
+    {
+      "path": "examples/downstream/Consumer.lean",
+      "sha256": "d864c7704ddaf226c63f017f46534cdb2a47e1e2b29b767ade7d1a5bb522776c"
+    },
+    {
+      "path": "examples/downstream/lake-manifest.json",
+      "sha256": "b4d979a8fc1628a840378ef47dd1a8d41e651dbc971945b3d0caef4722297866"
+    },
+    {
+      "path": "examples/downstream/lakefile.toml",
+      "sha256": "3e9e200ed4c9cadd4800904b1e8fad9f2309940c863a7cb85c63747d5b8ea923"
+    },
+    {
+      "path": "examples/downstream/lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "scripts/check.sh",
+      "sha256": "6655f0146c96a9347f7ce9a030fe91260704c4e007c16c7e760ccfef89758a24"
+    },
+    {
+      "path": "scripts/check_compiled_inventory.py",
+      "sha256": "2b7aede26645e384822f9e9539540059795a70795d7f29f0c2dfe2e8a0467dc3"
+    },
+    {
+      "path": "scripts/check_library_layout.py",
+      "sha256": "fe90f6284ca11d8a063efa94f1bef3022dcee7b88d44945f1809b73e14652358"
+    },
+    {
+      "path": "scripts/check_negative_controls.py",
+      "sha256": "b3d3b065d741428958a7f53872d6f00aaedced80d666a3812549c7ca85b32818"
+    },
+    {
+      "path": "scripts/check_placeholders.py",
+      "sha256": "204dd3815ca226170b319b9d8c9eae06ee5017b4f0a9a3e4835f2291514c61b5"
+    },
+    {
+      "path": "scripts/check_source_policy.py",
+      "sha256": "7f2af665856deac4669ac56eeab6785bd7f0c84175d87416f10dd2aba9ceafb9"
+    },
+    {
+      "path": "scripts/generate_imports.py",
+      "sha256": "b7b88e1065fb4d609066e94572db640eae287911e5141ababda70f0fdead7ed0"
+    },
+    {
+      "path": "scripts/library_sources.py",
+      "sha256": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787"
+    },
+    {
+      "path": "scripts/prepare_downstream.py",
+      "sha256": "50f13e5e00ac7657fbe13d4ff22c9245e983dbfa979509355bbcca13f5a607e6"
+    },
+    {
+      "path": "scripts/test_check_script.py",
+      "sha256": "36f92ac958861db31dd981057301d621dede7c01654bf8c9832ead5ba279fd46"
+    },
+    {
+      "path": "scripts/test_integration_setup.py",
+      "sha256": "589a526d6596b2ac3ae164c8e1c2c2de159359535807a952338fcaa8e3b03101"
+    },
+    {
+      "path": "scripts/test_source_guards.py",
+      "sha256": "d4f2bc991f05ab95dcd6d5bc119b5421033e73850bc7e45329b6a83429555034"
+    }
+  ],
+  "audit_policy": {
+    "origin": "defining module identity, independent of declaration namespace",
+    "production_prefix": "Aglib",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "private_imports": "legacy AglibTest.Axioms and AuditSupport; positive fixtures are modern",
+    "coverage": [
+      "imported declaration inventories",
+      "current stage-2 declarations",
+      "private declarations",
+      "generated declarations",
+      "compiled root enrollment",
+      "compiled production import boundary"
+    ],
+    "negative_controls": "temporary LEAN_PATH overlay; excluded from positive source and build view",
+    "boundary": "Axiom auditing and source graph checks do not discharge mathematical theorem premises."
+  },
+  "observations": [
+    {
+      "command": "lake env lean AGLibTest/AuditSupport.lean",
+      "exit_status": 0,
+      "coverage": "Lean-only no-output audit support compilation"
+    },
+    {
+      "command": "bash scripts/check.sh --source-only",
+      "exit_status": 0,
+      "production_modules": 226,
+      "positive_modules": 5,
+      "regression_tests": 30,
+      "basis": "current AGLib source snapshot during stage3 integration after fixture and adjacent-comment guard repairs"
+    },
+    {
+      "command": "lake env printenv LEAN_PATH",
+      "cwd": "examples/downstream",
+      "exit_status": 0,
+      "coverage": "independent downstream config/manifest resolves only foundation and pinned Mathlib dependency closure"
+    },
+    {
+      "command": "lake env lean AGLibTest/AuditCoverage.lean",
+      "exit_status": 0,
+      "coverage": "no-output compilation; genuine private hiddenDatum remains inaccessible to public definitions"
+    },
+    {
+      "command": "lake env lean AGLibTest/ExactFunctor.lean",
+      "exit_status": 0,
+      "coverage": "no-output compilation with explicit local abelian finite-biproduct instance"
+    }
+  ],
+  "remaining": [],
+  "integration_commands": [
+    "python3 scripts/generate_imports.py --check",
+    "bash scripts/check.sh --source-only",
+    "bash scripts/check.sh",
+    "bash scripts/check.sh --rehash --ci"
+  ],
+  "historical_evidence": "The earlier 25-test pre-rename pass is not current AGLib acceptance.",
+  "source_inventory_sha256": "71abd0919b2af9243413c43f6cd6fe2a3254dd8e25e9c8584180f79b8d668be4",
+  "heartbeat_guard_boundary": "Pinned Mathlib convention: options with a maxHeartbeats name component, including synthInstance.maxHeartbeats, are declaration-local and followed by explanatory comments after in. Documented local 0 is permitted. Necessity and comment content remain author judgments. Lean default 200000 is inherited without a package-wide override.",
+  "status": "Full local integration passed; see doc/migration/integration.json for the exact evidence basis.",
+  "private_coverage_control": "Axioms.lean selects the actual origin-enumerated private constant ending hiddenDatum and requires it in the checked environment. The public rootDatum is independent, not a public alias for the private constant.",
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  },
+  "source_inventory_script_sha256": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787"
+}

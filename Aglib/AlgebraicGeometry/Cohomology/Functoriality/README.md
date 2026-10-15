@@ -1,0 +1,17 @@
+# Actual pullback on cohomology
+
+[Pullback](Pullback.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pullback`, constructs `AlgebraicGeometry.Scheme.Cohomology.zariskiCohomologyMap` using exact inverse image and an actual coefficient map. It proves coefficient naturality on the original additive `Sheaf.H`.
+
+`structureCohomologyPullbackLinear` is linear for a morphism over the structural field. `structureCohomologyPullbackSemilinear` retains the actual compatible field-change square and gives the corresponding semilinear map. Constant-section and scalar compatibility identify the field action; no new general theorem-family premise is used.
+
+[Isomorphism](Isomorphism.lean) gives bijectivity for an actual scheme isomorphism and the native `structureCohomologyIso`. The maps are the original cohomology pullback maps, with H0 normalization supplied by the coefficient/H0 and base-change comparisons.
+
+The consumers are canonical field base change, affine direct-image comparison and differential-sheaf pullback. [Coefficients/scalars](../Modules/README.md) and native exact inverse image are lower prerequisites.
+
+[Pushforward](Pushforward.lean) defines the original `Scheme.Modules.derivedPushforwardPlus` and its unit. [PushforwardComposition](PushforwardComposition.lean) gives the actual D+ composition isomorphism for scheme morphisms and its original unit equation; [PushforwardSection](PushforwardSection.lean) gives the one-sided comparison for a supplied section/projection composite identity.
+
+[PullbackSingle](PullbackSingle.lean), [SingleComparison](SingleComparison.lean), [ComplexContraction](ComplexContraction.lean) and [PlusQuasiIso](PlusQuasiIso.lean) retain actual single objects, lower bounds, original units and supplied quasi-isomorphism/contraction data. Flat derived pullback and bounded comparison conditions are separate from ordinary structural pullback. No natural replacement/model choice is inferred.
+
+[PullbackPushforward](PullbackPushforward.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward`, constructs `Scheme.Modules.Plus.pullbackPushforwardUnit` on actual bounded-below complexes for an arbitrary scheme morphism. This unit goes from the identity to termwise pullback followed by termwise direct image. Its derived composite `Scheme.Modules.derivedPullbackPushforwardPlus`, `derivedPullbackPushforwardPlusUnitOnPlus` and `derivedPullbackPushforwardPlusUnit` retain flatness and the canonical derived-category choices. The derived composite is `derivedFlatPullbackPlus p ⋙ derivedPushforwardPlus p`; the component equation records the installed derived unit. Ordinary definition and derived comparison have separate hypotheses.
+
+[Identity](Identity.lean) gives `Scheme.Modules.derivedFlatPullbackPlusIdIso` from the actual module pullback identity and the native right-derived identity comparison. [Restriction](Restriction.lean) constructs `Scheme.Modules.derivedRestrictionPlus` for an actual open immersion. `isIso_derivedRestrictionPlusUnit` makes its original right-derived unit invertible, using preservation of homology by the actual exact restriction functor. These interfaces act on the actual D+ module category and require no perfect-object predicate.

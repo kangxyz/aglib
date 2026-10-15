@@ -1,0 +1,9 @@
+# Exact tensor with finite locally free coefficients
+
+[Exact](Exact.lean), imported as `Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact`, gives `Scheme.Modules.tensor_shortExact_finiteLocallyFree` and the left/right tensor `PreservesHomology` interfaces. The coefficient sheaf is actual finite locally free; the input is an actual short exact module-sheaf sequence. Local finite-free reductions and the canonical braiding preserve the original tensor maps.
+
+[InjectiveRestriction](InjectiveRestriction.lean) gives `tensor_pullback_affine_injective` for pullback of a finite locally free coefficient from an affine scheme and an actual injective source sheaf. Its open-restricted version retains the specified affine open immersion and pullback square. These results use the [finite-free retract](../Affine/README.md), rather than asserting injective preservation for arbitrary tensor coefficients.
+
+The canonical right tensor remains in [Modules/Tensor/Basic](../../Tensor/Basic.lean) and generic symmetry lies below this exactness layer. Godement tensor and derived projection formula consume these exact/preservation interfaces. They do not supply the separate `LocalBasisFibreDimension` rank premise.
+
+[LocallySplit](LocallySplit.lean), imported as `Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.LocallySplit`, proves `Scheme.Modules.shortExact_tensorLeft_of_finiteLocallyFree_quotient` and `shortExact_tensorRight_of_finiteLocallyFree_quotient`. For an actual short exact sheaf sequence, its quotient is finite locally free; the coefficient sheaf on the chosen tensor side may be arbitrary. Local splitting supplies exactness, with no flatness or quasicoherence premise on that coefficient. This differs from exactness of tensoring every sequence with a finite locally free coefficient.

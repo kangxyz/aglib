@@ -1,0 +1,7 @@
+# Supplied resolutions and exact-functor Ext comparison
+
+[ResolutionKernels](ResolutionKernels.lean), imported as `Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels`, defines `CategoryTheory.InjectiveResolution.initialSequence` and `kernelSequence`. For a supplied actual injective resolution in an arbitrary abelian category, `initialSequence_shortExact` and `kernelSequence_shortExact` prove the actual augmentation/successive-kernel sequences short exact. This is not an existence theorem for resolutions in arbitrary categories.
+
+[ExactFunctor](ExactFunctor.lean) uses `CategoryTheory.InjectiveResolution.ExactFunctor`. It constructs compatible lifts from the image of a resolution under an exact additive functor to an actual target resolution. `extMk_mapExactFunctor_comp_mk₀` identifies the original exact-functor Ext map, followed by the coefficient map, with the actual mapped cycle. Injectivity is used in the target resolution; preservation of source injectives is not assumed.
+
+Source and target object, morphism and Ext universes are independent. The stated `HasExt`, derived-category availability, lift compatibility and normalization hypotheses remain explicit. The consumers are flasque/module-resolution dimension shifting and canonical scheme Cech/geometric comparison. [Total complexes](../../../Algebra/Homology/TotalComplex/README.md) supplies the complementary bicomplex interface.

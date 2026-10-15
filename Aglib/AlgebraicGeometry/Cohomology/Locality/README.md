@@ -1,0 +1,7 @@
+# Quasi-isomorphism detection on open covers
+
+[QuasiIso](QuasiIso.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso`, gives `Scheme.Modules.quasiIso_of_restrict_openCover`. The actual coefficient-complex map is a quasi-isomorphism when its restrictions along a jointly covering family of actual open immersions are quasi-isomorphisms.
+
+The cover and local-QI hypotheses are inputs. Lower actual [stalk reflection](../../Modules/Stalk/README.md) identifies the original homology/sheaf maps, without a coherent or Noetherian requirement. Locally flasque derived direct-image and Godement comparison are consumers of this local detection interface.
+
+[Derived](Derived.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Locality.Derived`, proves `Scheme.Modules.isIso_of_derivedRestriction_openCover` and `isIso_of_derivedOpenPullback_openCover` for an actual D+ morphism whose indicated local restrictions or pullbacks are invertible. It also proves `isZero_of_derivedOpenCover`. An actual family of open immersions indexed in `Type v` covers every point of a scheme in universe `u`; a bounded-below derived module object is zero if all its displayed derived pullbacks are zero. The theorem retains the canonical `HasDerivedCategory.{u+1}` choices and actual cover, with no quasicoherence or perfect-object premise. It uses the ordinary local acyclicity/detection route; the conclusion is conditional on every local zero-object proof.

@@ -1,0 +1,7 @@
+# Exact coherent direct image along closed immersions
+
+[IdealPushforward](IdealPushforward.lean) compares actual affine closed-immersion pushforward `Spec(R/I) → Spec R` with the genuine quotient-ring action on modules killed by `I`. Its ideal pushforward is a transparent specialization of canonical finite pushforward and is full and faithful. `coherentClosedEquivalence` identifies the actual finite-type sheaves on `Spec(R/I)` with the actual sheaves killed by `I`; exact enhancements retain Noetherianity. Being killed by every element of `I` is not power torsion.
+
+[GeneralPushforward](GeneralPushforward.lean), imported as `Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.ClosedImmersion.GeneralPushforward`, uses `Scheme.Modules.Coherent.Pushforward.ClosedImmersion` for `coherentPushforward`, `coherentPushforwardExact` and `coherentOpenBaseChange`. These are transparent specializations of the sole finite-morphism implementation, using the native fact that a closed immersion is finite. The exact layer retains local Noetherianity of source and target. The general closed pushforward is faithful. [PushforwardFunctoriality](PushforwardFunctoriality.lean) gives the original identity/composition natural isomorphisms.
+
+[Closed-source Noetherianity](../../../../Morphisms/ClosedImmersion/README.md), [quotient-ring finite modules](../../../../../Algebra/Category/ModuleCat/README.md) and affine finite-type comparison are lower inputs. Finite coherent pushforward includes the comparison with this construction. No regular-immersion or DVR condition is imposed.

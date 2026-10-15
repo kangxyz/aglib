@@ -1,0 +1,1435 @@
+{
+  "group": "cohomology",
+  "entries": [
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.StructureSheaf",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "fd8bd615191f53b52edb6ff11f6ecf8bc1adbffca8202a83575b92ab8b335822",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Modules.StructureSheaf",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Modules/StructureSheaf.lean",
+      "encoded_subset": "Structure additive sheaf, actual structure cohomology, scalars and H0 equivalence; structural constants moved to Modules.Constants.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "00cde4497a4325fe1d26fbe378c64378c4ae2da9bd1756dc062326383e371dda",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "b6e2704f450628739701c9037aa3e9ec1806f6f4d0eded762e8156bc82f065b6",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Pullback",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "9f5d72382ee19fd7e5a155e956f3205fa1ebee94f46b7d2532cb71c126df8bb6",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pullback",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Pullback.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "05e75f670d3916310cc7e13a8cc7cb30a885164cec2419ecc6e2f51c7055de45",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "6d9a64013dd48b8438b8102c93645b8dc15ef06c5da7bbf55d9d840e6c684586",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Modules",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5bf6c46abf1b409caa179b532ddc6455ac8c2e9d8518675f85718fc1869f1225",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Modules.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Basic.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "b006b2fa729acf799ccfc11a296aa547c8f46a1d07bae5e306b45ae13943db30",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "8fd043437e8106abbab64cb7a178e5c5f0331dd3d8493b38f689d57035d918a7",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Properties",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "3514da8066a641eaba33480dcefcba0f9e199ba249e28b1baf4244c672556c59",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Finiteness.Coherent",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Finiteness/Coherent.lean",
+      "encoded_subset": "ProperModuleCohomologyFinite, finite-presentation and global-section finiteness declarations; Noetherian vanishing input moved to Vanishing.Basic.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "f3331618dbd25c1be92c04a336d1e3e776efcabd747bac67d44aa68c3ab3d37a",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "40f8620f967d8980f421a07c7fc01a8ea900c49a7ff3f8bde0f6507e86e18f11",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Isomorphism",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c3c21b1f1f1cd24ee831271fd330bc6f25607b71270c0090e8434368e4c1af7a",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Isomorphism",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Isomorphism.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "607e07b3c56c3e0549333aa91b3b0b65840a8cb1652175b61de6b055c44c5d95",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "795b3cc457ff6a4120b8a108f27f97ab15361860f4c66f043301fa73db2afd26",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.BaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4c2876285257a3058ffddb00ee99cd67af4e6ccc47d9d82dba5d5bfb7016dc7b",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.Field",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Field.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "4b4af9a5d518fd5e4e8e2b43f29f0e225c25ee36a5afb924cd3deda75b57c046",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "7bac73a4ae80c87a0e778d331048cb9927a3ed89fc24e08251817d3a402acc8e",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.FlatBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "83adc28e25891a413fee4ee829e3e8d6e93cfdd65846d5b08ca8c558ef5e5d23",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.Affine",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Affine.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "d520a91f98e869d4eca2e79c2a28697311f709a6d342dede443f4e582114b8a7",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "a4632240798ed982498e45ecdc0e17cb287303a65948c8d81a6ab78943008f10",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.GlobalSectionsBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "3867b9231b1db35ccaa260d0d5fa6c75ced9166c9a3d76c12609bd7a0abcedb4",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.GlobalSections",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/GlobalSections.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "5700d319827a4634a05ebb7425f6e18b55635b2bafaf7163a0394085f538e2e5",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "c4066a144cc9da13485f7f27cec7d050617fed1238ff3702a1cd931828f878c6",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "96cef4e3b4c1a2be64e8833d620ff41811d665fe7524384b89feadffa69f4be9",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.FieldBaseChange",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/FieldBaseChange.lean",
+      "encoded_subset": "Scheme field-Cech base change; generic finite coefficient isomorphisms moved to CategoryTheory.Sites.SheafCohomology.Cech.FiniteCoefficients.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "f3f21b6c982a0e20e1502bb7a2ec4210b4e469584db75b7db8e4601e140ca769",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "176d54316013d63f1f1f1b818fa7c770d6e4d52f152eac049ac05895b3e380d8",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "46802de5083f2ed4fa4c86c1a8fd1c65e4239aaf081f4ba30dcb2b663a12034b",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "encoded_subset": "Cech/sheaf cohomology comparison, additive gluing, resolution and bicomplex arguments, scalar and geometric naturality. General augmentation and the arbitrary-category degree-zero criterion have separate lower owners.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Definition helpers needed by exposed definitions made public without changing bodies",
+        "Cech computational-support instances and augmentation-zero theorem made public for exposed-complex construction; surplus blank lines collapsed below the original package line limit.",
+        "Qualified generic CategoryTheory.evaluation to preserve the additive section-functor body in the native Scheme namespace.",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "f75ee72c707f0e6172bbe3445df4ce9a9e048c542607cf9d14ae4cdf88d21c4c",
+      "validation_history": [
+        {
+          "kind": "no-output Lean check",
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+          "source_sha256": "839be2e3046deca4f6bda4c07d7f9f328d155567e1d45d7f1614150f50e62bf0",
+          "exit_code": 0,
+          "flags": [
+            "-DautoImplicit=false",
+            "-Dweak.linter.mathlibStandardSet=true",
+            "-DwarningAsError=true",
+            "-DmaxHeartbeats=200000"
+          ],
+          "prerequisite_basis": "Principal native-stage15 emitted production prerequisites.",
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/native15-cech-comparison.log",
+          "command": "lake env lean -DautoImplicit=false -Dweak.linter.mathlibStandardSet=true -DwarningAsError=true -DmaxHeartbeats=200000 Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean"
+        },
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "839be2e3046deca4f6bda4c07d7f9f328d155567e1d45d7f1614150f50e62bf0",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage16.log",
+          "success_line": 43
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CanonicalCechBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4ea4baa7633e710185aebc09423dba16f8bfd8fcac16be096ed65e4cc3615ed5",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.CechComparison",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/CechComparison.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Definition helpers needed by exposed definitions made public without changing bodies",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "ef88ef80c84af3fe9d52e61da5e45159071f0cf328f4607dd8a7a8a23403d2b7",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "bfd8e9d871c877e1429b2fc2939b963801716ab1f633a400efbbed0f5e78d78a",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage16.log",
+          "success_line": 44
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.ProperBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a62108470d643b40ff967072ef03c36b351545f839635ff96bc0127eb94c187c",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.QuasiCompactSeparated",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/QuasiCompactSeparated.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "b9832a837ade805aefcd8eaa6afc49dd2adec91f6cd9a4c6cfa7eea4246ee03c",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "b885a5d848d62ef9264686f7bb1aa1d29753e6d4245393c4d54ab4497bcc6ad1",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage16.log",
+          "success_line": 45
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.AffineAcyclicity",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "e2b8727146d7dc90d525567c6613f1139f4d4c0a826957fe6194c2a3e3f0e615",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "3b8765c95e6b103b3cf1b69499cd0e261a335bb73fb03cf906161942646ab471",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "c74f7ec7e8245348e70bb54780ea8e68242476b6b652d69ae292c76ca03755d8",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.AffineHigherComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "0b65dba3f1a7082b0245031bbbe1a96d43346e5c3f1c33be446854c67b898593",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Affine.SheafCohomology",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "64bcc4d3daa9cc5afb89a2ba1fb6f548078f2f43b5a162a9ddb0b779dba4a0b4",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "f4a590cac998d005bf3f587f579a81d19dd6456c8f12e701dd601ab22a6b13cd",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage15.log",
+          "success_line": 89
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Skyscraper",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "1ef6712c8b8e90ec4bc0c5d230738ea91dfebf4052329a0866f03574ecbc17c3",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Support.Skyscraper",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Support/Skyscraper.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "7585fe3856a77a1da4f6aa8c5616629a1ae6380c889816fa733954589e2cf502",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "fb918919bfc0d1cfaec2c16744f382ca29331cac766d63ccd62da7780fdeefed",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.FiniteSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "eb7a2bc9a8ba44ef777b879eb3adec864cb0c8ce4ce50d39d3ab7190818dcddd",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Support.Finite",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Support/Finite.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Original local 800000 heartbeat allowance preserved with its existing justification after the scoped option.",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "a8e6d2b16987b764614792e2291e09eace83a6ba61601c96739de11e1d7d4102",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "042e43858a193bd08618f4c518131ed6666c6631460e1d2398474219d9d6ee44",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.FiniteSupportScalars",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4a6343d31717af25543bc9bb15509c75abfc39d7a0bdaa8d818d996c59f1768a",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Modules.StalkScalars",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Modules/StalkScalars.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Registers the existing nativeModuleStalkStructure wrapper locally for moved constant-germ comparisons; original native ring/stalk action, no additional premise.",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "additional_sources": [
+        {
+          "source_module": "R5Lab.AlgebraicGeometry.Curves.RiemannRoch.CurveEuler",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "7f5a057d26eeb1ceae5b865249277e8d65d9395223adf621ba8ff118a9822422",
+          "encoded_subset": "moduleAdditiveStalk_smul_eq_constantGerm and moduleAdditiveStalkModule_eq."
+        }
+      ],
+      "current_source_sha256": "13b318d767a8c3f1048c4c182f68e5cf86dbd6bc62c72be5509410cd64f13776",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "022a102b265194046070e167f23c718d7f56a8d14f5dd41f37bcdc5dcb90af94",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.QuotientEuler",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "1b4b68c4809abace3cf33bd26d014b196f02734cfca750024c285a52dac62280",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Exact.Euler",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Exact/Euler.lean",
+      "encoded_subset": "General quotient-Euler and connecting-map declarations; duplicate moduleCohomologyMap_exact consolidated in ExactSequences; generic Mono-map moduleH0Map_injective relocated to ExactSequences with its original statement.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Imports ExactSequences for unique generic exactness/H0-injectivity ownership; proof-local class binding style repaired"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "additional_sources": [
+        {
+          "source_module": "R5Lab.AlgebraicGeometry.Curves.RiemannRoch.CurveEuler",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "7f5a057d26eeb1ceae5b865249277e8d65d9395223adf621ba8ff118a9822422",
+          "encoded_subset": "moduleEuler_of_shortExact, moduleH0H1_finite_iff_of_finiteClosedSupport and moduleEuler_of_finiteClosedSupport."
+        }
+      ],
+      "current_source_sha256": "8df5660bc28728c363362b74d42650e91cc705864f426a0c28db3578138ed988",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "55ea08a458626cd979fa7a136d2c9201450c0a316db8947e626382c36446b4f0",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Relative",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "28cc813dfa913f6bdef411c30f225edc752a459f6b2e997de652bc3b9f7b6e62",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.BaseChange.Relative",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Relative.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Unqualified legacy Degree references replaced by Aglib.Scheme.Modules; precise Mathlib morphism-property imports"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "a95bf827e4b7c3237fd902aa3bd3a5edcb92443388f77e391462627a75e014a2",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "528168305bc5db6b7efc7dfd3be60550377930c31a80f781ce742b7babfbc785",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.NoetherianDimension",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "96987e9d0c75078dbebab8e22fc7f0633266b7bd5d91c8988d58bcbf2c556eb3",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Vanishing.Noetherian",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Vanishing/Noetherian.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Proof-local Fintype binding uses let under the standard haveILetI linter.",
+        "Qualified generic CategoryTheory.evaluation for pointwise Godement diagrams and refreshed the filtered-colimit support comment."
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "09fc34ccf038161fc4f99975ab4a00d796509bd5a025d8b5a4e8ad050968873f",
+      "validation_history": [
+        {
+          "kind": "no-output Lean check",
+          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Vanishing.Noetherian",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Vanishing/Noetherian.lean",
+          "source_sha256": "8a286d2ac8bdc27a189c8c7a1594bb9963aad10d0c31280c811090ddf0916001",
+          "exit_code": 0,
+          "flags": [
+            "-DautoImplicit=false",
+            "-Dweak.linter.mathlibStandardSet=true",
+            "-DwarningAsError=true",
+            "-DmaxHeartbeats=200000"
+          ],
+          "prerequisite_basis": "Principal native-stage15 emitted production prerequisites.",
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/native15-noetherian.log",
+          "command": "lake env lean -DautoImplicit=false -Dweak.linter.mathlibStandardSet=true -DwarningAsError=true -DmaxHeartbeats=200000 Aglib/AlgebraicGeometry/Cohomology/Vanishing/Noetherian.lean"
+        },
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "8a286d2ac8bdc27a189c8c7a1594bb9963aad10d0c31280c811090ddf0916001",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage16.log",
+          "success_line": 37
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.StandardCoherentFiniteness",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "f8acdbe589a4eb40faf1e29779ce476286cf4fdc9af2b64ee2a1368c59e77d91",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Finiteness.StructureSheaf",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Finiteness/StructureSheaf.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "61c84f7cebcd0f4393917e6bda9ab50e08fc7f3bf393eb92bfb8baba95e76a9d",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "43c3a4fb34dbd8eb4bb04b2b06aeb517cda3b746a92edcde6cb6ca1310c249e3",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.ProperCurves.FinitePushforward",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "08342a58fdfb874c76802413f724386d613d57e74b12415fda4d86336ad04fef",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Affine.FirstCohomologyPushforward",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Affine/FirstCohomologyPushforward.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "8ee3b82bc024f522f39c5f5d80894f63ce6688a661602d5516cb469d5a02d7c8",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "01326af0fac9084e6bf96e75e52dc516a969ec6f70793e6d5302f308593da5cf",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage.",
+          "producer_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage15.log",
+          "success_line": 110
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.RiemannRoch.CurveEuler",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "7f5a057d26eeb1ceae5b865249277e8d65d9395223adf621ba8ff118a9822422",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Exact/LongExact.lean",
+      "encoded_subset": "Basic coefficient sequences, actual linear connecting maps, exactness and H0 monomorphism maps only; stalk/finite/Euler consequences have subject owners.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Generic monomorphism H0-injectivity imported from its original QuotientEuler source; short-exact specialization has the distinct name moduleH0Map_injective_of_shortExact."
+      ],
+      "additional_sources": [
+        {
+          "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.QuotientEuler",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "encoded_subset": "QuotientEuler lines 113–128: generic moduleH0Map_injective theorem for coefficient monomorphisms.",
+          "source_sha256": "1b4b68c4809abace3cf33bd26d014b196f02734cfca750024c285a52dac62280"
+        }
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "8a312fe2a2494c42d3bbf5b249957a3622b827d65c3843f9d0bbcab053ca589c",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "94f40c5de1710fe9f1b7cfd8c41c38727183b085f473c5ef1942bc3241735a67",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Homology.FirstQuadrantSigns",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "fec72fddda536c4ac0902fd06520fbe6ac6d6941118f7051b36809b101c2e9db",
+      "destination_module": "Aglib.Algebra.Homology.TotalComplex.NatSigns",
+      "destination_path": "Aglib/Algebra/Homology/TotalComplex/NatSigns.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "3b595af9406a2b0ce6dc8aabcfaa1e326179eb18278c6bbf71582c945be08f60",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "3b595af9406a2b0ce6dc8aabcfaa1e326179eb18278c6bbf71582c945be08f60",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Homology.FirstQuadrantComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "af023ecc3a7178c5313e5247db719093d5e6006b487362c88172d2ef1845715e",
+      "destination_module": "Aglib.Algebra.Homology.TotalComplex.FirstQuadrant",
+      "destination_path": "Aglib/Algebra/Homology/TotalComplex/FirstQuadrant.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "e1a5fb56e33d5c5e647acdcc64d7a94c7294e6e15d3b9bd96dc5eaff01bf08fe",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "380be3c8d09e11852c2b41ced8d57d5dff03a260c4edaec5960d62fbb1e810fd",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Homology.AdditiveFirstQuadrant",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "ce9f0268d99eb378e2205c1da4a21e88c7bc4c3fd942b18c8a405117951bbf8e",
+      "destination_module": "Aglib.Algebra.Homology.TotalComplex.AddCommGrp",
+      "destination_path": "Aglib/Algebra/Homology/TotalComplex/AddCommGrp.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "b6394bcc67b1ababc7ad1bead3a36352f7d87b84328474ba8238604efb701144",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "a87eadfdeca42bc4385a030b3ef6e6e43964d0cf608cd90f3f0df335020cbeb1",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Homology.ExtExactFunctorComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "26498baba5f1b73cb82ac0f8a459f2f3b1832862c44415180626716d2f5b0bf6",
+      "destination_module": "Aglib.CategoryTheory.Abelian.Injective.ExactFunctor",
+      "destination_path": "Aglib/CategoryTheory/Abelian/Injective/ExactFunctor.lean",
+      "encoded_subset": "All declarations; original mathematical hypotheses, maps and proof bodies retained, with canonical namespaces and modern exports.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Definition helpers needed by exposed definitions made public without changing bodies",
+        "Flexible-simp normalization replaced by Lean-suggested exact simp-only lemma list"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "c54550b8930e7690c9f48c249bf534afd5a588cf34757aa8a40573419adad1a0",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "733abe58cfe165d2a049ce8f690c7b3f16d216a0d2bca9efa70ffe67691b5ef2",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Genus",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "8ad6e704342c9abb766bcf34e0192d964cc72bae674f1a805affbcf70c4600d7",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Finiteness.ProperInputs",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Finiteness/ProperInputs.lean",
+      "encoded_subset": "Only ProperStructureCohomologyFinite; constants input is separately owned in Finiteness.Constants.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "168511a9a1781cd8385553e0b456e475b565ccedf54561cde5fbde9772664757",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "50b96552c2a054b3e4b3974b1b0745e75c9965e69cf97768f6b6212dcadfc89b",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Sheaves.NoetherianCohomology",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a8ca7a16a22687767127f776d3d0b12997565d8b4a1a46b3eb1df3d0c25c87c1",
+      "destination_module": "Aglib.Topology.Sheaves.FilteredColimits",
+      "destination_path": "Aglib/Topology/Sheaves/FilteredColimits.lean",
+      "encoded_subset": "Filtered-colimit and sectionwise-epimorphism declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "4beeea9b7665954fcd2f040219fc156ffb61c8526b7f2813b6df4170beffde1d",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "4beeea9b7665954fcd2f040219fc156ffb61c8526b7f2813b6df4170beffde1d",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Sheaves.NoetherianCohomology",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a8ca7a16a22687767127f776d3d0b12997565d8b4a1a46b3eb1df3d0c25c87c1",
+      "destination_module": "Aglib.Topology.Sheaves.ClosedSupport",
+      "destination_path": "Aglib/Topology/Sheaves/ClosedSupport.lean",
+      "encoded_subset": "Closed-embedding, inverse-image-unit and closed-support comparison declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "ee1e231574091eb54de244d7c320e28c094a8f3a1286fc6a98297055bf0c9f40",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "ee1e231574091eb54de244d7c320e28c094a8f3a1286fc6a98297055bf0c9f40",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Sheaves.NoetherianCohomology",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a8ca7a16a22687767127f776d3d0b12997565d8b4a1a46b3eb1df3d0c25c87c1",
+      "destination_module": "Aglib.Topology.Sheaves.Godement",
+      "destination_path": "Aglib/Topology/Sheaves/Godement.lean",
+      "encoded_subset": "Godement, product/filtered-colimit flasqueness and diagram-sequence declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained.",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "15adeb693918ebd77835050b7136363079896e562defcb5e32420cd8fa93d2cc",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "cfb77cd78df2d1a0de317afba00a71f74a832df7928949f12d372e0400a18fd7",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Sheaves.NoetherianCohomology",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a8ca7a16a22687767127f776d3d0b12997565d8b4a1a46b3eb1df3d0c25c87c1",
+      "destination_module": "Aglib.Topology.Sheaves.SupportedAway",
+      "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean",
+      "encoded_subset": "Supported-away subsheaves, neighborhood diagrams and colimit-map declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "59ff8c52799bacb9b336c7d019389ca922649eb06592aafca7dd1219dea6721e",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "ca16eb86a6b3e18779208f36cee8c381606925046fd44bdd5e4b9dd253afa7e7",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.CategoryTheory.Sheaves.NoetherianCohomology",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "a8ca7a16a22687767127f776d3d0b12997565d8b4a1a46b3eb1df3d0c25c87c1",
+      "destination_module": "Aglib.Topology.KrullDimension.ClosedSubspace",
+      "destination_path": "Aglib/Topology/KrullDimension/ClosedSubspace.lean",
+      "encoded_subset": "The three generic-point and closed-subspace dimension lemmas only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "79c35541a5636d2f3c2e374f4a65606bd2d67af51c02d4b24f80987dd2188032",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "79c35541a5636d2f3c2e374f4a65606bd2d67af51c02d4b24f80987dd2188032",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "96cef4e3b4c1a2be64e8833d620ff41811d665fe7524384b89feadffa69f4be9",
+      "destination_module": "Aglib.CategoryTheory.Sites.SheafCohomology.Cech.FiniteCoefficients",
+      "destination_path": "Aglib/CategoryTheory/Sites/SheafCohomology/Cech/FiniteCoefficients.lean",
+      "encoded_subset": "The generic finite-family cosimplicial/cochain coefficient isomorphisms with their original universes and finite-product-only premises; additionally two definitional-agreement lemmas under the existing arbitrary-limit interface premise.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained.",
+        "Reuses CategoryTheory.Cech.alternatingCofaceCoefficientIso and proves agreement with Cech.Comparison under PreservesLimitsOfSize via rfl; finite scope is not weakened."
+      ],
+      "pre_cut_source_sha256": "3f8c0be6b9d08648fbf8752a9b15c2963f6d2911af9e70e1f95f116b1c82c331",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "5966a3e0f07d4454d4788a6052a50a8b97c789cb851c35e964533e111d4330a8",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "815382cd11d8df9d3c54e66f07853d55dd4c97e62c17dc341e041f67da0f98fa",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.StructureSheaf",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "fd8bd615191f53b52edb6ff11f6ecf8bc1adbffca8202a83575b92ab8b335822",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Modules.Constants",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Modules/Constants.lean",
+      "encoded_subset": "The constants, constantSection and map_constantSection declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "b928a92fe1a3490c46a7fc9fb420cf12008c696b499a4a20f6be27520ddf47e9",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "3f25d9b6ff0a1efa050730cf1c4c5168d3d09441c345cfb3d390d2d4d197b403",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "2c02d5d7fad4f44d6369152d7f7c4735c55fad750dd143b64205b88602097270",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Genus",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "8ad6e704342c9abb766bcf34e0192d964cc72bae674f1a805affbcf70c4600d7",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Finiteness.Constants",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Finiteness/Constants.lean",
+      "encoded_subset": "Only ProperGeometricallyIntegralConstants, from the selected Genus lines 54–61.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "681c9428e191ef4e8e74ace081a4f8ae8bca63070ea5f5066970305fbf224a19",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "f450580be8de0c5155be070d3ab0a1621476acd7c74c6754b25df6fc573e763a",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "811a5e35426bfc28749d89099cd342d5175fbda1ad316be03f71f1d9bb5556c4",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.Properties",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "3514da8066a641eaba33480dcefcba0f9e199ba249e28b1baf4244c672556c59",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Vanishing.Basic",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Vanishing/Basic.lean",
+      "encoded_subset": "Only NoetherianSheafCohomologyVanishing with its original scheme/Ext universe and conditions.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "pre_cut_source_sha256": "020761750a83d3ab61e3dec672be7506e59dd4223581fc50891869a0f03e4bbd",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "943630de8c347000483324a9ab40daea61148c4709c9f633e5841c2441413dc8",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "415e29681761a7914aa90be7e702048f93f260f178a7fea5d0e70ab2ce529e95",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.RiemannRoch.CurveEuler",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "7f5a057d26eeb1ceae5b865249277e8d65d9395223adf621ba8ff118a9822422",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Finiteness.ExactSequences",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Finiteness/ExactSequences.lean",
+      "encoded_subset": "LinearAlgebra and module-cohomology finite-middle/left/H0-H1 declarations only.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Modern public imports and exposed definitions",
+        "Canonical code-identifier namespaces",
+        "Enforced whitespace and line wrapping",
+        "Generic monomorphism H0-injectivity imported from its original QuotientEuler source; short-exact specialization has the distinct name moduleH0Map_injective_of_shortExact.",
+        "Subject cut from the accepted native-layout snapshot; mathematical bodies and encoded conditions retained."
+      ],
+      "additional_sources": [
+        {
+          "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.QuotientEuler",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "encoded_subset": "QuotientEuler lines 113–128: generic moduleH0Map_injective theorem for coefficient monomorphisms.",
+          "source_sha256": "1b4b68c4809abace3cf33bd26d014b196f02734cfca750024c285a52dac62280"
+        }
+      ],
+      "pre_cut_source_sha256": "b462e3dfdd232a71fa8988ed8f31e4f854854eb90a580f31e9986be907051df3",
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "current_source_sha256": "1563c74b13e1a1230a874a7955c707c9152e2ff5a75ca86af789a0ab3f21fcce",
+      "validation_history": [
+        {
+          "kind": "current native producer closure",
+          "source_sha256": "e7907424773580f215189a2aa027c30e7d73e3d843c7d1b12bdc6c77f8bca405",
+          "basis": "Principal confirmed all 38 baseline entries green after native-stage16; unchanged prerequisites retain their current validated producer coverage."
+        }
+      ]
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "46802de5083f2ed4fa4c86c1a8fd1c65e4239aaf081f4ba30dcb2b663a12034b",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "encoded_subset": "General scheme-open presheaf Cech augmentation block: cechAugmentationZero and cechAugmentation with their unchanged component, differential and naturality lemmas.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Separated the natural mathematical owner while preserving statement and proof tokens",
+        "Modern public imports and exposed definitions",
+        "Original source identity and mathematical hypotheses retained",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "validation_history": [],
+      "current_source_sha256": "21e64c20069dca4abd8a78dcecae77de15d01ab503a8cfc904aa8ec5a68a3981"
+    },
+    {
+      "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "46802de5083f2ed4fa4c86c1a8fd1c65e4239aaf081f4ba30dcb2b663a12034b",
+      "destination_module": "Aglib.Algebra.Homology.CochainComplex.Augmentation",
+      "destination_path": "Aglib/Algebra/Homology/CochainComplex/Augmentation.lean",
+      "encoded_subset": "The arbitrary-abelian-category SingleZero augmentation criterion, with the same universe arity and definitionally equal encoded type, moved to CochainComplex.quasiIsoAtZero_of_augmentation_exact.",
+      "namespace_policy": "Native mathematical declaration owners; Aglib is the import-module root.",
+      "conditions": "Original universes, fields, scheme/module hypotheses and explicit theorem-family inputs retained; no additional mathematical premise.",
+      "adaptations": [
+        "Separated the natural mathematical owner while preserving statement and proof tokens",
+        "Modern public imports and exposed definitions",
+        "Original source identity and mathematical hypotheses retained",
+        "Meaningful declaration documentation and explicit local instance naming where required",
+        "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
+      ],
+      "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
+      "validation_history": [],
+      "current_source_sha256": "832e3379c41a9e2bdc28a66276eb845673a6dd2c40bff3b7b0437d28b6c6e7f2"
+    }
+  ],
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "native_validation_history": [
+    {
+      "status": "all 38 baseline native producer modules validated",
+      "module_count": 38,
+      "source_set_sha256": "46ac72c7d89834a35715f072bd63eb33db4e7a1393743072733b6284bda49984",
+      "lean_version": "4.34.1",
+      "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "r5_source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "quillen_source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "flags": [
+        "autoImplicit=false",
+        "weak.linter.mathlibStandardSet=true",
+        "warningAsError=true",
+        "maxHeartbeats=200000"
+      ],
+      "evidence_basis": "Principal native-stage15 emitted Affine.SheafCohomology and Affine.FirstCohomologyPushforward. Native-stage16 emitted Vanishing.Noetherian, Cech.Comparison, BaseChange.CechComparison and BaseChange.QuasiCompactSeparated and validated the current baseline producer closure. The worker reconciled all 38 current source hashes without additional mathematical checks.",
+      "retained_conditions": [
+        "Original Sheaf.H at cohomology universe u+1 and actual scalar/module actions",
+        "ProperModuleCohomologyFinite input hstandard",
+        "ProperStructureCohomologyFinite and ProperGeometricallyIntegralConstants input families",
+        "LocalFreeCohomologyBaseChange input where required",
+        "Original affine, quasicoherence, separation, Noetherian, support and finiteness hypotheses"
+      ],
+      "scope_boundary": "Only the selected 38-module baseline closure; whole-package acceptance and separate latest-source Godement authority remain with their owners."
+    }
+  ],
+  "declaration_lint_repair": {
+    "status": "Frozen declaration-lint repair source; fresh renamed-package producer and client validation pending",
+    "module_count": 40,
+    "current_source_set_sha256": "e5da75c21ab9165b06fe49c24cdfcbae8c2dfa637bdc7fd738b9be1f2e9c8f0f",
+    "basis": "Principal current 409-module compiled basis before declaration-lint repairs; original R5 and Mathlib identities unchanged.",
+    "scoped_ownership": [
+      "Aglib/Algebra/Homology/TotalComplex/AddCommGrp.lean",
+      "Aglib/Algebra/Homology/TotalComplex/FirstQuadrant.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Affine.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/BaseChange/CechComparison.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/BaseChange/GlobalSections.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/FieldBaseChange.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/Modules/StalkScalars.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/Support/Finite.lean",
+      "Aglib/Topology/Sheaves/Godement.lean",
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "Aglib/Algebra/Homology/CochainComplex/Augmentation.lean"
+    ],
+    "diagnostics_addressed": {
+      "defsWithUnderscore": 2,
+      "docBlame": 45,
+      "simpNF": 11
+    },
+    "lexical_preservation": {
+      "matched_original_declarations": 376,
+      "mismatches": 0,
+      "certificate": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/lexical-preservation.json"
+    },
+    "no_output_checks": [
+      {
+        "path": "Aglib/Algebra/Homology/TotalComplex/FirstQuadrant.lean",
+        "source_sha256": "b2a1faad9bc5d7273979f93a9ea9204dd030a9e292e2dd9cdd480909dc799986",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/FirstQuadrant.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/FirstQuadrant-lint.log"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/TotalComplex/AddCommGrp.lean",
+        "source_sha256": "50cf199eac18cff225bdc16aa57c09d8993f9101cfdbddd51f92bde261098bfa",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/AddCommGrp.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/AddCommGrp-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+        "source_sha256": "3c4bfc86d447f5975e60f8457e3bd58aca7b7e3281be0ad6296a39f7dbfb1119",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/SchemeAugmentation.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/SchemeAugmentation-lint.log"
+      },
+      {
+        "path": "Aglib/Algebra/Homology/CochainComplex/Augmentation.lean",
+        "source_sha256": "832e3379c41a9e2bdc28a66276eb845673a6dd2c40bff3b7b0437d28b6c6e7f2",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/CochainAugmentation.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/CochainAugmentation-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/Affine.lean",
+        "source_sha256": "5d391361d824ae6a3d1aaa7912f24025fd0c9da2d3e4c5d8204f12612385faac",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_BaseChange_AffineFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_BaseChange_AffineFinal-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/CechComparison.lean",
+        "source_sha256": "f30506d1b127313b98b9736a8f269a3c11fc38ab43cbfcce0558189bef6d96ac",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_BaseChange_CechComparisonFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_BaseChange_CechComparisonFinal-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/BaseChange/GlobalSections.lean",
+        "source_sha256": "d2e03f8cc43f29cfc1852126633821e8d0ab106f74592505c9e67659a6240b64",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_BaseChange_GlobalSectionsFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_BaseChange_GlobalSectionsFinal-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/FieldBaseChange.lean",
+        "source_sha256": "6c111ef981c962c6d1125c739ea60605836981883d762a06ad1fa2ed0af05ed3",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_Cech_FieldBaseChangeFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_Cech_FieldBaseChangeFinal-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/Modules/StalkScalars.lean",
+        "source_sha256": "9314eba054f39c6a0bbbf885e54687281253e51d3c18fcbafbc71eef05e51cc2",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_Modules_StalkScalarsFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_Modules_StalkScalarsFinal-lint.log"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/Cohomology/Support/Finite.lean",
+        "source_sha256": "b6ac17bc8f6ff50acb65c0aed16e23b96e199bd6736469b77c5861681e46e4b5",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_AlgebraicGeometry_Cohomology_Support_FiniteFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_AlgebraicGeometry_Cohomology_Support_FiniteFinal-lint.log"
+      },
+      {
+        "path": "Aglib/Topology/Sheaves/Godement.lean",
+        "source_sha256": "017f0913e674f579893dcd2a8fc3b794c6d21f78dd4b64f04caaa791907717e0",
+        "kind": "Source-copy compile and declaration linter check",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/Aglib_Topology_Sheaves_GodementFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/Aglib_Topology_Sheaves_GodementFinal-lint.log"
+      },
+      {
+        "paths": [
+          "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+          "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+          "Aglib/Algebra/Homology/CochainComplex/Augmentation.lean"
+        ],
+        "kind": "Joint source-copy check with exact lower declaration bodies, native owner scopes, and two qualified consumers; blank lines removed only in the scratch harness",
+        "linters": [
+          "simpNF",
+          "docBlame",
+          "defsWithUnderscore"
+        ],
+        "exit_code": 0,
+        "harness": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/checks/CechCombinedFinal.lean",
+        "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/CechCombinedFinal-lint.log"
+      }
+    ],
+    "generic_criterion_type_equality": {
+      "exit_code": 0,
+      "log": "/private/tmp/r5-investigations/algebraic-geometry-build/cohomology/declaration-lint/criterion-type-equality.log"
+    },
+    "new_public_name_correspondence": [
+      {
+        "old": "AlgebraicGeometry.Scheme.Cohomology.instDecidableMemCarrierCarrierCommRingCatOpens_aGLib",
+        "new": "AlgebraicGeometry.Scheme.Cohomology.decidablePointMemOpen",
+        "kind": "Explicit name of the unchanged local classical instance"
+      },
+      {
+        "old": "TopCat.Sheaf.instDecidableMemCarrierOpens_aGLib",
+        "new": "TopCat.Sheaf.decidablePointMemOpen",
+        "kind": "Explicit name of the unchanged local classical instance"
+      },
+      {
+        "old": "AlgebraicGeometry.Scheme.Cohomology.quasiIsoAtZero_of_augmentation_exact",
+        "new": "CochainComplex.quasiIsoAtZero_of_augmentation_exact",
+        "kind": "Native owner of the category-generic augmentation criterion; encoded type checked definitionally equal"
+      }
+    ],
+    "added_normalized_simp_declarations": [
+      "HomologicalComplex₂.AddCommGrp.ι_mapTotalComparison_f",
+      "HomologicalComplex₂.AddCommGrp.ι_mapTotalComparison_f_assoc",
+      "AlgebraicGeometry.Scheme.Cohomology.resolutionSectionsCohomologyEquiv_coe"
+    ],
+    "simp_changes": [
+      {
+        "names": [
+          "HomologicalComplex₂.AddCommGrp.ι_mapTotalIso_hom_f",
+          "HomologicalComplex₂.AddCommGrp.ι_mapTotalIso_hom_f_assoc"
+        ],
+        "action": "Retained ordinary/reassociated formulas; normalized replacement ι_mapTotalComparison_f and its reassociated simp rule.",
+        "reason": "mapTotalIso_hom rewrites the isomorphism hom to mapTotalComparison before the injection rule applies."
+      },
+      {
+        "names": [
+          "HomologicalComplex₂.singleSecondZeroTotalIso_hom_f",
+          "HomologicalComplex₂.AddCommGrp.singleSecondZeroTotalIso_hom_f"
+        ],
+        "action": "Retained ordinary component formulas.",
+        "reason": "The canonical whole-map singleSecondZeroTotalIso_hom rules remain simp; the inclusion/projection inverse rules retain their existing normal form."
+      },
+      {
+        "names": [
+          "AlgebraicGeometry.Scheme.Cohomology.resolutionSectionsCohomologyEquiv_mk"
+        ],
+        "action": "Retained ordinary constructor formula; added normalized simp rule resolutionSectionsCohomologyEquiv_coe.",
+        "reason": "QuotientAddGroup.mk'_apply normalizes the quotient constructor to its coercion."
+      },
+      {
+        "names": [
+          "AlgebraicGeometry.Scheme.Cohomology.structureSectionsBaseChangeMap_tmul",
+          "AlgebraicGeometry.Scheme.Cohomology.structureOpenSectionsBaseChangeMap_tmul"
+        ],
+        "action": "Retained exact ordinary pure-tensor formulas and proofs.",
+        "reason": "Over.mk_left normalizes hidden base-change codomain arguments. The inherited rfl wrappers are non-normal; positive controls with the original attributes also fail in the tested default-simp applications."
+      },
+      {
+        "names": [
+          "AlgebraicGeometry.Scheme.Cohomology.structureSectionsTensorComparison_app_tmul"
+        ],
+        "action": "Retained exact ordinary component formula and proof.",
+        "reason": "Functor.comp_obj, Functor.op_obj and Over.mk_left normalize hidden coefficient-morphism types before the inherited rfl rule. Positive and negative default-simp controls agree on the tested formula."
+      },
+      {
+        "names": [
+          "AlgebraicGeometry.Scheme.Cohomology.structureCechTensorUnitMap_f_apply",
+          "AlgebraicGeometry.Scheme.Cohomology.fieldTensorUnit_app_apply"
+        ],
+        "action": "Retained exact ordinary scalar-unit formulas and proofs.",
+        "reason": "Functor-object coercion types in the inherited rfl wrappers are not simp-normal; the actual tensor unit and every explicit formula remain unchanged."
+      },
+      {
+        "names": [
+          "AlgebraicGeometry.Scheme.Cohomology.nativeModuleStalkLinearEquiv_naturality",
+          "AlgebraicGeometry.Scheme.Cohomology.nativeModuleStalkLinearEquiv_apply",
+          "AlgebraicGeometry.Scheme.Cohomology.nativeModuleStalkLinearEquiv_germ"
+        ],
+        "action": "Retained exact ordinary naturality, identity and germ formulas.",
+        "reason": "Identity-comparison applications and hidden stalk-functor object coercions are not canonical simp left sides. Removing the naturality attribute exposed the two analogous type-normalization diagnostics; all three formulas and proofs remain available explicitly. Original-attribute positive controls also fail in the tested default-simp uses."
+      }
+    ],
+    "mathematical_boundary": "No original mathematical statement, coefficient map, scalar/module action, universe, or hypothesis was changed. Added normalized rules follow existing theorems. Attribute and native-owner changes are explicit; this record does not claim fresh producer/client closure."
+  },
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

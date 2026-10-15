@@ -1,0 +1,298 @@
+"""Regress version-independent CI keys and isolated project-cache preparation."""
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+from cache_key import config_hash
+from check_compiled_inventory import check_inventory
+from prepare_build_cache import prepare, STAMP
+
+
+class CacheFixture(unittest.TestCase):
+    def setUp(self):
+        temporary_root = '/private/tmp' if Path('/private/tmp').is_dir() else None
+        self.tmp = tempfile.TemporaryDirectory(prefix='ag-ci-cache-', dir=temporary_root)
+        self.root = Path(self.tmp.name)
+        for package in (Path('.'), Path('examples/downstream')):
+            directory = self.root / package
+            directory.mkdir(parents=True, exist_ok=True)
+            (directory / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+            (directory / 'lake-manifest.json').write_text('{"packages": []}\n')
+            (directory / 'lakefile.toml').write_text(
+                'name = "fixture"\nversion = "0.1.0"\nvalues = ["a", "b"]\n'
+                '[[lean_lib]]\nname = "Aglib"\n')
+        for name in ('Aglib', 'Aglib/Current', 'AglibTest', 'AglibTest/Positive',
+                     'AglibTest/AuditSupport', 'AglibTest/Axioms',
+                     'AglibTest/NegativeControls/Bad', 'examples/downstream/Consumer',
+                     'examples/downstream/Consumer/Current', 'examples/downstream/Audit'):
+            path = self.root / (name + '.lean')
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('module\n')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def artifact(self, name, package='', directory='lib/lean', suffix='.olean'):
+        path = self.root / package / '.lake/build' / directory / (name + suffix)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b'cached project output')
+        return path
+
+    def prepare(self, compiler='Lean fixture compiler 1', client='Lean fixture compiler 1'):
+        return prepare(self.root, compiler, client)
+
+    def config(self, text, package=''):
+        (self.root / package / 'lakefile.toml').write_text(text)
+
+
+class CacheKeyTests(CacheFixture):
+    def test_only_top_level_package_versions_are_ignored_in_both_packages(self):
+        original = config_hash(self.root)
+        for package in ('', 'examples/downstream'):
+            path = self.root / package / 'lakefile.toml'
+            path.write_text(path.read_text().replace('version = "0.1.0"', 'version = "4.9.2"'))
+            self.assertEqual(config_hash(self.root), original)
+        path.write_text(path.read_text() + '\n[options]\nversion = "important"\n')
+        self.assertNotEqual(config_hash(self.root), original)
+
+    def test_scalar_types_do_not_collide(self):
+        digests = []
+        for value in ('true', '1', '"1"', '1.0', '"true"'):
+            self.config('name = "fixture"\nvalue = ' + value + '\n')
+            digests.append(config_hash(self.root))
+        self.assertEqual(len(set(digests)), len(digests))
+
+    def test_table_order_and_comments_are_normalized_but_array_order_is_not(self):
+        self.config('name="fixture"\nvalues=["a", "b"]\n')
+        original = config_hash(self.root)
+        self.config('# comment\nvalues = ["a", "b"]\nname = "fixture"\n')
+        self.assertEqual(config_hash(self.root), original)
+        self.config('name="fixture"\nvalues=["b", "a"]\n')
+        self.assertNotEqual(config_hash(self.root), original)
+
+    def test_options_dependencies_and_each_package_toolchain_affect_key(self):
+        for package in ('', 'examples/downstream'):
+            for name, addition in (
+                    ('lakefile.toml', '\n[leanOptions]\nautoImplicit=false\n'),
+                    ('lakefile.toml', '\n[[require]]\nname="new-dependency"\nrev="new-pin"\n'),
+                    ('lean-toolchain', 'different-toolchain\n'),
+                    ('lake-manifest.json', ' ')):
+                with self.subTest(package=package, name=name, addition=addition):
+                    path = self.root / package / name
+                    original_bytes = path.read_bytes()
+                    original = config_hash(self.root)
+                    path.write_bytes(original_bytes + addition.encode())
+                    self.assertNotEqual(config_hash(self.root), original)
+                    path.write_bytes(original_bytes)
+
+    def test_executable_configuration_is_always_raw(self):
+        for package in ('', 'examples/downstream'):
+            path = self.root / package / 'lakefile.lean'
+            absent = config_hash(self.root)
+            path.write_text('-- executable package config\n')
+            present = config_hash(self.root)
+            self.assertNotEqual(present, absent)
+            path.write_text('-- executable package config changed\n')
+            self.assertNotEqual(config_hash(self.root), present)
+
+    def test_missing_empty_malformed_and_unsupported_configuration_fail(self):
+        for package in ('', 'examples/downstream'):
+            for name in ('lean-toolchain', 'lake-manifest.json', 'lakefile.toml'):
+                path = self.root / package / name
+                original = path.read_bytes()
+                path.unlink()
+                with self.assertRaises(OSError):
+                    config_hash(self.root)
+                path.write_bytes(b' ')
+                with self.assertRaises(ValueError):
+                    config_hash(self.root)
+                path.write_bytes(original)
+        for invalid in ('name = [', 'name="fixture"\nvalue=nan\n'):
+            self.config(invalid)
+            with self.assertRaises(ValueError):
+                config_hash(self.root)
+
+
+class CachePreparationTests(CacheFixture):
+    def test_compatible_source_and_version_changes_preserve_current_outputs(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        client = self.artifact('Consumer/Current', 'examples/downstream')
+        original = (output.stat().st_mtime_ns, client.stat().st_mtime_ns)
+        (self.root / 'Aglib/Current.lean').write_text('module\n-- changed source\n')
+        for package in ('', 'examples/downstream'):
+            path = self.root / package / 'lakefile.toml'
+            path.write_text(path.read_text().replace('0.1.0', '0.2.0'))
+        self.assertTrue(all('preserved' in line for line in self.prepare()))
+        self.assertEqual((output.stat().st_mtime_ns, client.stat().st_mtime_ns), original)
+
+    def test_compiler_change_clears_only_incompatible_package_build(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        client = self.artifact('Consumer/Current', 'examples/downstream')
+        dependency = self.root / '.lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean'
+        dependency.parent.mkdir(parents=True)
+        dependency.write_bytes(b'dependency-owned')
+        outside = self.root / 'unrelated'
+        outside.write_bytes(b'foreign')
+        self.prepare(compiler='Lean fixture compiler 2')
+        self.assertFalse(output.exists())
+        self.assertTrue(client.exists())
+        self.assertEqual(dependency.read_bytes(), b'dependency-owned')
+        self.assertEqual(outside.read_bytes(), b'foreign')
+        self.prepare(compiler='Lean fixture compiler 2', client='Lean fixture compiler 3')
+        self.assertFalse(client.exists())
+
+    def test_abi_compatible_option_and_dependency_changes_preserve_outputs_for_rehash(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        client = self.artifact('Consumer/Current', 'examples/downstream')
+        path = self.root / 'examples/downstream/lakefile.toml'
+        path.write_text(path.read_text() + '\n[leanOptions]\nwarningAsError=true\n')
+        self.prepare()
+        self.assertTrue(output.exists())
+        self.assertTrue(client.exists())
+        path = self.root / 'lake-manifest.json'
+        path.write_text('{"packages": [{"name": "changed-pin"}]}\n')
+        self.prepare()
+        self.assertTrue(output.exists())
+        self.assertTrue(client.exists())
+        self.assertEqual(json.loads((self.root / '.lake/build' / STAMP).read_text())[
+            'configuration'], config_hash(self.root, ('',)))
+        self.assertEqual(json.loads((self.root / 'examples/downstream/.lake/build' / STAMP).read_text())[
+            'configuration'], config_hash(self.root))
+
+    def test_toolchain_change_resets_before_using_foreign_olean_headers(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        (self.root / 'lean-toolchain').write_text('different ABI\n')
+        self.prepare()
+        self.assertFalse(output.exists())
+
+    def test_absent_malformed_and_old_schema_stamps_reset_cache(self):
+        for stamp in (None, '{broken', json.dumps({'schema': 'old'})):
+            with self.subTest(stamp=stamp):
+                output = self.artifact('Aglib/Current')
+                metadata = self.root / '.lake/build' / STAMP
+                if stamp is None:
+                    metadata.unlink(missing_ok=True)
+                else:
+                    metadata.write_text(stamp)
+                self.prepare()
+                self.assertFalse(output.exists())
+
+    def test_incomplete_stamp_is_untrusted_even_with_matching_compiler_fields(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        metadata = self.root / '.lake/build' / STAMP
+        previous = json.loads(metadata.read_text())
+        previous.pop('configuration')
+        metadata.write_text(json.dumps(previous))
+        self.prepare()
+        self.assertFalse(output.exists())
+
+    def test_prune_deleted_renamed_and_old_roots_and_all_module_facets(self):
+        self.prepare()
+        current = []
+        for name in ('Aglib', 'Aglib/Current', 'AglibTest', 'AglibTest/Positive',
+                     'AglibTest/AuditSupport'):
+            current.append(self.artifact(name))
+        current.append(self.artifact('Aglib/Current', directory='ir', suffix='.c.o'))
+        stale = []
+        for name in ('Aglib/Deleted', 'Aglib/Renamed', 'AglibTest/Axioms',
+                     'AglibTest/NegativeControls/Bad',
+                     'AlgebraicGeometry/Old', 'AlgebraicGeometryTest', 'R5Lab/Old', 'Quillen'):
+            for directory, suffix in (('lib/lean', '.olean'), ('lib/lean', '.olean.private'),
+                                      ('lib/lean', '.olean.hash'), ('lib/lean', '.trace'),
+                                      ('lib/lean', '.ilean'), ('ir', '.c.o')):
+                stale.append(self.artifact(name, directory=directory, suffix=suffix))
+        stale.append(self.artifact('Consumer/Deleted', 'examples/downstream'))
+        client = self.artifact('Consumer/Current', 'examples/downstream')
+        self.prepare()
+        self.assertTrue(all(path.exists() for path in current + [client]))
+        self.assertTrue(all(not path.exists() for path in stale))
+        self.assertEqual(check_inventory(self.root), [])
+
+    def test_old_case_roots_are_pruned_without_aliasing_current_enrollment(self):
+        # On case-insensitive hosts these names cannot coexist with the current
+        # roots; create them first, just as a restored old-root cache would.
+        self.prepare()
+        stale = [self.artifact('AGLib/Old'), self.artifact('AGLibTest')]
+        self.prepare()
+        self.assertTrue(all(not path.exists() for path in stale))
+
+    def test_build_root_and_nested_symlinks_fail_without_touching_foreign_paths(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        foreign = self.root / 'foreign'
+        foreign.mkdir()
+        protected = foreign / 'protected'
+        protected.write_bytes(b'foreign output')
+        client_build = self.root / 'examples/downstream/.lake/build'
+        import shutil
+        shutil.rmtree(client_build)
+        client_build.symlink_to(foreign, target_is_directory=True)
+        with self.assertRaises(ValueError):
+            self.prepare(compiler='changed')
+        self.assertTrue(output.exists())  # Validate both roots before any deletion.
+        self.assertEqual(protected.read_bytes(), b'foreign output')
+        client_build.unlink()
+        client_build.mkdir()
+        (output.parent / 'Foreign.olean').symlink_to(protected)
+        with self.assertRaises(ValueError):
+            self.prepare()
+        self.assertEqual(protected.read_bytes(), b'foreign output')
+
+    def test_missing_config_or_compiler_fails_before_mutating_outputs(self):
+        self.prepare()
+        output = self.artifact('Aglib/Current')
+        with self.assertRaises(ValueError):
+            self.prepare(compiler='')
+        (self.root / 'examples/downstream/lake-manifest.json').unlink()
+        with self.assertRaises(OSError):
+            self.prepare(compiler='changed')
+        self.assertTrue(output.exists())
+
+
+class WorkflowTests(unittest.TestCase):
+    def test_python_is_selected_before_source_only_checks(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        checkout = workflow.index('uses: actions/checkout@')
+        setup = workflow.index('uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97')
+        source_only = workflow.index('run: bash scripts/check.sh --source-only')
+        self.assertLess(checkout, setup)
+        self.assertLess(setup, source_only)
+        self.assertIn("python-version: '3.13'", workflow[setup:source_only])
+
+    def test_cache_order_keys_and_unconditional_ci_rehash_route(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        compute = workflow.index('id: project-cache-config')
+        restore = workflow.index('- name: Restore incremental project builds')
+        prepare_step = workflow.index('- name: Validate cached compilers')
+        check = workflow.index('- name: Run CI checks for the library and independent client')
+        self.assertLess(compute, restore)
+        self.assertLess(restore, prepare_step)
+        self.assertLess(prepare_step, check)
+        cache = workflow[restore:prepare_step]
+        self.assertIn('actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', cache)
+        self.assertIn('            .lake/build\n            examples/downstream/.lake/build\n', cache)
+        self.assertIn("hashFiles('Aglib.lean', 'Aglib/**/*.lean'", cache)
+        self.assertIn("'!examples/downstream/.lake/**'", cache)
+        prefixes = cache.split('restore-keys: |\n', 1)[1].strip().splitlines()
+        self.assertEqual([line.strip() for line in prefixes], [
+            'project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-',
+            'project-build-v1-${{ runner.os }}-${{ runner.arch }}-'])
+        self.assertNotIn('version', cache)
+        self.assertNotIn('if:', workflow[check:])
+        self.assertIn('runs-on: macos-15-intel', workflow)
+        self.assertIn('bash scripts/check.sh --rehash --ci', workflow[check:])
+        self.assertIn('LEAN_NUM_THREADS: 1', workflow)
+        self.assertIn('AGLIB_LEAN_MEMORY_MB: 10240', workflow)
+        self.assertIn('AGLIB_RSS_LIMIT_MB: 11264', workflow)
+        self.assertIn('scripts/resource_guard.py --bootstrap-cache --receipt '
+                      '"$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get', workflow)
+
+
+if __name__ == '__main__':
+    unittest.main()

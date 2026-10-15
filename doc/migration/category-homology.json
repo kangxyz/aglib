@@ -1,0 +1,353 @@
+{
+  "group": "category-homology",
+  "entries": [
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Basic",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "382cb942407509b17a9ad93bf41b41a7c2644ac8e47f1d865dab8f4cb24fde88",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Basic",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Basic.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory"
+      ],
+      "destination_sha256": "23c6e78fc88b47b0a4c4c2f6d4ebd397cd05101d98c6083caf61cc6d613678b0"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.MatrixDeflation",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "93f9ff170d6ade9cc09784503ff5370f78df0c4af7abcc621d31a79ca74f9a2c",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.MatrixDeflation",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/MatrixDeflation.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure"
+      ],
+      "destination_sha256": "a4138eeb9b6742045eb61d88c707377d226f22afc2ce74351b575cf9812fba8e"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Abelian",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "2852e96f1122c6590136bb0ff9a908ef9124a8f64c2f5b04d05fe60c16176855",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Abelian",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Abelian.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory"
+      ],
+      "destination_sha256": "dbc5a9386cc67e4f6f9354f6ea3cd3d7dcc08bd901c9458557b301a3e440d8f8"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Isomorphisms",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "02cbac19854815efcc3855d0d0d53371fd0d8aa630c0b5f58d08d5c33f64924f",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Isomorphisms",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Isomorphisms.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure"
+      ],
+      "destination_sha256": "0431591997d31e1af7d87ee24760ff44ada28aa3186f2e13ecfe91e5485f8e49"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Equivalence",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "7c19e951e0c2380afd02d1cec46c992b1aabbfde3718caad65847cc3090cd051",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Equivalence",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Equivalence.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure"
+      ],
+      "destination_sha256": "70d10fa8c97984ce733d4c549d99f1040ab5eb977c9cf1b01177c1779f20ea38"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Composition",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "e91122b84830a8682d5c516b1e56d8730d476f98d758b927a695159202bfbae9",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Composition",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Composition.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure"
+      ],
+      "destination_sha256": "bc8d920db3dd88d0e3a435f3a65626b1442f73185aadf54a3a33246b1713a673"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Functor",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "fd48ddd59842f0a5e8fa1345bded239825368e8bbc1210c7375ab11a660c19a2",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Functor",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Functor.lean",
+      "selection": {
+        "retained_source_lines": "1–164 and namespace closure",
+        "excluded": "Q-compatible functor and all mapQ declarations"
+      },
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory"
+      ],
+      "destination_sha256": "a88797dc4e4ac926584143b9b22f227eec4bcd68382c5c053c98a12fdb91efdc"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.BaseChange",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "8fd45729ce372e8a265bf54ec8440a2290b233e236ea4f99990376c2fd6a9db6",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.BaseChange",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/BaseChange.lean",
+      "additional_sources": [
+        {
+          "source_module": "Quillen.KTheory.GrothendieckComparison.Basic",
+          "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+          "retained_source_lines": "161–208",
+          "retained_declarations": [
+            "conflation_of_inflation_of_isCokernel",
+            "inflation_biprod_inl",
+            "inflation_biprod_inr",
+            "conflation_biprod_inl_snd",
+            "conflation_biprod_inr_fst"
+          ],
+          "excluded": "Q, object loops, K and Grothendieck group applications",
+          "source_repository": "quillen-k-theory",
+          "source_sha256": "44b8aade2c4a939279cbfd679e5324c8e8142e897b51b5522126e04d4e17008d"
+        }
+      ],
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure"
+      ],
+      "destination_sha256": "8585d1efe522cceb70945bee2879e237414bdb9f47ad26beddf200b43dfc33e0"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.ExactCategory.Subcategory",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "225a96d1f95aa8f9b1d094c2bfc62a99a72ac1d320bf3006ce82a6fa85b16e3c",
+      "destination_module": "Aglib.CategoryTheory.ExactCategory.Subcategory",
+      "destination_path": "Aglib/CategoryTheory/ExactCategory/Subcategory.lean",
+      "selection": {
+        "retained_source_lines": "1–285, 293–313 and namespace closure",
+        "excluded": "mapQ, KMap, fullSubcategoryKMap"
+      },
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure",
+        "CategoryTheory.ExactCategory.ExactSubcategory"
+      ],
+      "destination_sha256": "0c689f77b889abbd908b4d7af84db5f54278374f59391fbd285aad2d7bd45166"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.SmallModel.Exact",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "c6904217244281616d2fe1bd458c74fb673f8ad12eae710a5c0a33dcc6f2ee59",
+      "destination_module": "Aglib.CategoryTheory.SmallModel.Exact",
+      "destination_path": "Aglib/CategoryTheory/SmallModel/Exact.lean",
+      "selection": {
+        "retained_source_lines": "1–94, 104–115, 120–180 and section/namespace closure",
+        "excluded": "mapQ equivalence, SmallK, smallKMap, presentationKEquiv"
+      },
+      "native_namespaces": [
+        "CategoryTheory.SmallModel",
+        "CategoryTheory.ExactCategory.ExactStructure",
+        "CategoryTheory.ExactCategory.ExactFunctor"
+      ],
+      "destination_sha256": "a749285dd8729e763dac8260685b31dfcf9e2be11a5424acae6f8883d120aefe"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.SmallModel.Abelian",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "37acada3a2f675ca371f04f3d53f42d2fabcfeb2fe4c7460b29b7940b7348cfe",
+      "destination_module": "Aglib.CategoryTheory.SmallModel.Abelian",
+      "destination_path": "Aglib/CategoryTheory/SmallModel/Abelian.lean",
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactStructure",
+        "CategoryTheory.ExactCategory"
+      ],
+      "destination_sha256": "6ba9deba28820a831ae1b2906f8163287db8e532d4406776c0783eac04247640"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.SmallModel.Functoriality",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "5c551a0ba4e7c8e579e1630a937e80fe11740605281ccc29060c679eb56b386f",
+      "destination_module": "Aglib.CategoryTheory.SmallModel.Functoriality",
+      "destination_path": "Aglib/CategoryTheory/SmallModel/Functoriality.lean",
+      "selection": {
+        "retained_source_lines": "1–74 and namespace closure",
+        "excluded": "smallKMap naturality, identity and composition"
+      },
+      "native_namespaces": [
+        "CategoryTheory.ExactCategory.ExactFunctor"
+      ],
+      "destination_sha256": "0c2ec892d371ef997c8e5be87a520a129d73897b50a92b3266b7c37ad54e3dce"
+    },
+    {
+      "source_module": "Quillen.Devissage.Setup",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "194826cd1ad4cd0aacd0610b5cdc00086d04b884eb9ccfab9852bd90fb6f6cf3",
+      "destination_module": "Aglib.CategoryTheory.Abelian.Subcategory.Exact",
+      "destination_path": "Aglib/CategoryTheory/Abelian/Subcategory/Exact.lean",
+      "selection": {
+        "retained_source_lines": "1–105 and namespace closure",
+        "excluded": "Filtration, Q/K/Grothendieck maps and application imports"
+      },
+      "native_namespaces": [
+        "CategoryTheory.ObjectProperty"
+      ],
+      "post_migration_repairs": [
+        {
+          "change": "Open the exact-category topic and explicitly qualify ExactCategory.ExactStructure, ExactCategory.ExactFunctor and ExactCategory.abelianExactStructure in the ObjectProperty implementation.",
+          "reason": "The selected-conflation ExactFunctor is distinct from Mathlib CategoryTheory.ExactFunctor; theorem inputs and definitions are preserved."
+        }
+      ],
+      "destination_sha256": "aff207f63c6b20afc8f2cafabe5f0e87f9362516a59032d038bc7221c5de3dbd"
+    },
+    {
+      "source_module": "Quillen.Localization.Serre.FiniteProducts",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "8f086c2f58d24b53babb58a57733d2bf303979f337dc1cbe11ecc0cd54f79091",
+      "destination_module": "Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts",
+      "destination_path": "Aglib/CategoryTheory/Abelian/SerreClass/FiniteProducts.lean",
+      "native_namespaces": [
+        "CategoryTheory.ObjectProperty"
+      ],
+      "destination_sha256": "d40c65b90ca4d5ccc70af20d763004879a63340916b126da7d10bddeb7003a3e"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Sites.CechExactness",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "736ca4db18e2ba4efb49a2379f480b7cf4a95d0e74b9e6589843adf3530c7188",
+      "destination_module": "Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness",
+      "destination_path": "Aglib/CategoryTheory/Sites/SheafCohomology/Cech/Exactness.lean",
+      "native_namespaces": [
+        "CategoryTheory.Cech"
+      ],
+      "destination_sha256": "d958a1d7a816b1171c9ff6d7a8a1dc7b98cd74b9c6122f7720859725d290b7b8"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Sites.CechExactSequences",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "a6f2ae388fd3701bf475f1cd3ff956ac268795469a32c5fda905e8d0c53eaa49",
+      "destination_module": "Aglib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences",
+      "destination_path": "Aglib/CategoryTheory/Sites/SheafCohomology/Cech/ExactSequences.lean",
+      "native_namespaces": [
+        "CategoryTheory.Cech"
+      ],
+      "destination_sha256": "ebe03b0935f0a86424d88890551eceeb1c6cfd2f250b45f53032053b1298c9ba"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Sites.CechComparison",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "21fbbd036fee3e37b73af416317cc5d89ae99014ed84527c8a3d02264121315d",
+      "destination_module": "Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison",
+      "destination_path": "Aglib/CategoryTheory/Sites/SheafCohomology/Cech/Comparison.lean",
+      "native_namespaces": [
+        "CategoryTheory.Cech"
+      ],
+      "destination_sha256": "f370143fee39f9ded5f4dd4682acb5316b9877cd69b9a977f9d9af179fe0c482"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Sites.MayerVietorisSections",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "7201404208bebd68536a0bd23736bed1032bdb9ace739ad6c00b84ebccc37fe1",
+      "destination_module": "Aglib.Topology.Sheaves.MayerVietorisSections",
+      "destination_path": "Aglib/Topology/Sheaves/MayerVietorisSections.lean",
+      "native_namespaces": [
+        "TopCat.Sheaf"
+      ],
+      "destination_sha256": "ce7e751c81248be61d484ced1cb1b86e71701b3ef892faf39bd6e4ba09ae2390"
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Sites.BasisExactness",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "ffa3084370afbcec292e0f10c3d7505f49c16d96a91bfd49cd3c574a933a9f0d",
+      "destination_module": "Aglib.Topology.Sheaves.BasisExactness",
+      "destination_path": "Aglib/Topology/Sheaves/BasisExactness.lean",
+      "namespace_repairs": [
+        {
+          "source_reference": "HomologicalAlgebra.quasiIso_of_mappingCone_acyclic",
+          "destination_reference": "CochainComplex.quasiIso_of_mappingCone_acyclic",
+          "reason": "The original relative qualifier resolved through Quillen; abstract sheaf and homology namespaces now have distinct mathematical owners. Types and proof arguments are unchanged."
+        }
+      ],
+      "native_namespaces": [
+        "TopCat.Sheaf"
+      ],
+      "destination_sha256": "2445f47fb844abf00ca12e3844af1d7fdd9ae912bbe0c5851c0f25d30cbe2270"
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.LocalizedExactness",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "6a96fcd50bb7ad4d3fe633dbcd9c7094b60a89a2964fd0c193d2db85d0e6a2a6",
+      "destination_module": "Aglib.Algebra.Category.ModuleCat.Localization.Exactness",
+      "destination_path": "Aglib/Algebra/Category/ModuleCat/Localization/Exactness.lean",
+      "native_namespaces": [
+        "ModuleCat"
+      ],
+      "destination_sha256": "219c1e1535d15f21cd751942f4fd7852ee287e0fd03d7c6a033288a32c005d56"
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.InjectiveResolutionKernels",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "6c85b0838520edff7f6143c8b0678cdb7c2d25390138985026e491d73b4f53e1",
+      "destination_module": "Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels",
+      "destination_path": "Aglib/CategoryTheory/Abelian/Injective/ResolutionKernels.lean",
+      "native_namespaces": [
+        "CategoryTheory.InjectiveResolution"
+      ],
+      "destination_sha256": "3e938a2f3909343c5a6f4d95c56ea66d74c83d4182d8f68ef788177afb357487"
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.MappingConeQuasiIso",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "74a1dac1b9fa22b2dc407196993cbfa238d379dbb811cb4dbc222fbabe478058",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.QuasiIso",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/QuasiIso.lean",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "destination_sha256": "b12414e5a3b54e85776c13c1444947eaaf07b7b6d62d2e3b420365f7aa0b9001"
+    }
+  ],
+  "native_api_phase": {
+    "module_root": "AGLib",
+    "declaration_policy": "Mathlib-native object owners, with CategoryTheory.ExactCategory and CategoryTheory.Cech as collision-safe mathematical topic namespaces.",
+    "conditions": "Preserve all encoded objects, maps, universes and hypotheses from the recorded source selections. Earlier AGLib-prefixed checks and the 384-name proposal check are not native-basis elaboration coverage.",
+    "validation": {
+      "basis": "Current native mathematical namespaces and transferred AGLib module paths.",
+      "coverage": "All 22 owned source modules, including reused current native foundational outputs from native-stage1/2 and the closing native-stage3 build.",
+      "root_reported_exit_code": 0,
+      "root_build_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage3.log",
+      "reproduction_command": "lake build AGLib.CategoryTheory.ExactCategory.Subcategory AGLib.CategoryTheory.SmallModel.Abelian AGLib.CategoryTheory.SmallModel.Functoriality AGLib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison AGLib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences AGLib.Topology.Sheaves.BasisExactness AGLib.CategoryTheory.Abelian.Injective.ResolutionKernels AGLib.Algebra.Category.ModuleCat.Localization.Exactness",
+      "flags": {
+        "autoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.longFile": 1500,
+        "warningAsError": true,
+        "maxHeartbeats": 200000
+      },
+      "boundary": "Compilation checks the retained encoded statements under their explicit inputs. It does not realize these inputs or provide an independent mathematical source review."
+    }
+  },
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

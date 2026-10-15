@@ -1,0 +1,55 @@
+# First extraction execution plan
+
+Build the independent `Aglib` Lake package under `tmp/aglib`, with modern `Aglib` module identities. The first integrated surface contains general commutative algebra, arbitrary-dimensional schemes, module/coherent sheaves, line-bundle objects and general cohomology. Curve/P1/genus/degree/Riemann–Roch and K/G/Q/S applications stay in their source packages.
+
+The source basis is R5Lab `95a3772b895fbc19a81684be4ffd519d0fdcd6b3` and the authoritative local Quillen release `189a8e779f0c68b2dfc6f8195daebb3e684a5905`, Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. The local Quillen checkout is `tmp/output/quillen-library-release/quillen-k-theory`, identified by the user's existing task. All 133 initially selected Quillen sources are byte-identical to the initial `83629578a3d70787d41ec631f5234af8758716af` extraction. New general results are admitted by inspecting their full hypotheses and dependency closure. Aglib is the import root. Declaration namespaces use native mathematical owners and collision-safe subjects under the user-authorized refactor, while preserving exact hypotheses, canonical maps and explicit theorem-family parameters. Original source repositories are read-only for this staged extraction.
+
+## Parallel ownership
+
+| Workstream | Source and implementation ownership | Consumer |
+| --- | --- | --- |
+| Package integration | Lake files, dependency/runtime setup, work plan and whole-package integration | All source families |
+| Checks and generation | scripts, production/test entry facades, origin audits, structural/visibility/source checks and interface fixtures | Independent package acceptance |
+| Ring theory | R5 general RingTheory and Quillen regular-local prerequisites, generic localization-length support | Smooth geometry and module operations |
+| Category and homology | Quillen exact/abelian/small-model and homology support | General sheaf and coherent operations |
+| Scheme operations | Quillen general sheaf/coherent/vector-bundle functors and required finite-module support | Coherent cohomology |
+| General geometry | R5 lower scheme/rank/field definitions, smooth/normal/differentials and generic Picard | Cohomology and original general APIs |
+| Cohomology | R5 general cohomology, general CurveEuler and first-quadrant/Ext/Noetherian support | General scheme cohomology consumers |
+| Latest Quillen scheme theory | General module tensor, base change, Godement resolutions and derived operations, with application-independent closure | General sheaf and cohomology clients |
+| Latest Quillen general cuts | Precisely selected general declarations under application directories, with minimal lower helpers | qcqs induction, ordinary complex support and canonical-unit comparisons |
+| Documentation | Colocated subfamily mathematical/API guides and doc/ cross-family guides | Mathematical and package users |
+
+Each implementation author writes only assigned module paths and its provenance fragment. Root Git/index operations and shared entry generation are serial. Other writers are present; preserve their changes and request dependency edits from the named owner. Temporary logs and experiments use separate `/private/tmp/r5-investigations/algebraic-geometry-build/` directories. Root integration owns mutable whole-package build output; authors receive exact diagnostics and retain proof repair ownership.
+
+## Execution order and acceptance
+
+1. Create the pinned independent package and enforce Mathlib-only production dependencies. Establish modern modules, standard mathlib lint/budget settings, source provenance and generator/check ownership.
+2. Produce ring/category/homology primitives in parallel. Extract generic exact/Serre/subcategory/small-model and localization-length support from their Q/K/G application owners.
+3. Produce ordinary sheaf/coherent/vector-bundle operations and general geometry/Picard in disjoint paths. Keep group maps and curve-specific consumers outside the package.
+4. Connect the actual general cohomology surface to these lower objects. Settle modern export visibility and compile repairs without altering assumptions or conclusions.
+5. Generate complete entry facades, build admitted source and positive clients, replay source enrollment/origin audits, run structural/style checks and kernel replay on the identified complete source basis.
+6. Verify standalone usage and document exact remaining premises and coverage. Compare source identities and preserve original repositories. Update this plan with the accepted surface and any real unresolved work.
+
+Every occupied source subfamily owns a README describing objects, interfaces, mathematical conditions, canonical maps, focused imports and current consumers. Root doc/ owns scope, source/dependency provenance, cross-family routes and development checks. Documentation does not establish proof closure; retained standard inputs remain explicit.
+
+The user fixed the root module as Aglib, requested Mathlib/Stacks/monograph-informed architecture, and authorized interface redesign and large refactoring. The canonical namespace policy is in ARCHITECTURE.md and namespace-map.json. Checks on earlier module identities do not establish acceptance of the final source surface.
+
+The maintained extension rules live in `ARCHITECTURE.md`; `NAMING.md` distinguishes module paths, native namespaces, object types and declaration names. Parent context supplies the subject: `Morphisms.Finite`, `Morphisms.Smooth`, `Modules.Coherent`, `Modules.QuasiCoherent`, `Modules.LocallyFree`, `Modules.Invertible`, `Modules.Differentials` and `Modules.Flat`. Actual mathematical objects retain their meaning, including `Scheme.CoherentSheaf` and `StructureSheaf`. Exact Mathlib spellings such as `CochainComplexPlus` and `RightDerivedFunctorPlus` are retained. Helpers belong to their mathematical owner rather than their first application; generic ring-homomorphism properties and closed-source Noetherianity are routed accordingly.
+
+## Current integration boundary
+
+The original 221 extracted implementation modules have been reorganized by mathematical subject, with semantic splits and native namespaces. The source skeleton follows Mathlib's RingTheory, Algebra, CategoryTheory, Topology/Sheaves and AlgebraicGeometry families. Scheme module operations share one object layer; finite-type quasicoherence, finite presentation, coherent exactness, local freeness, invertible sheaves and differentials have distinct interfaces. Scheme cohomology is collected in one family. Intrinsic scheme properties and morphism properties have separate owners.
+
+The substantive interface work separates the arbitrary-scheme finite-type quasicoherent category and finite direct image from locally Noetherian coherent exactness, moves presentation transport below its consumers, connects the two existing finite local-basis interfaces by a proved bridge, and separates general support/dimension arguments from Noetherian filtered-colimit results. New general sheaf tensor operations own the canonical implementation shared by line-bundle wrappers. Conflation-preserving exact functors live under `CategoryTheory.ExactCategory` to distinguish their meaning from Mathlib's bundled finite-limit/colimit interface.
+
+The latest local Quillen delta has complete applicability ledgers for 71 Scheme paths and 315 PerfectComplexes paths. The Scheme extraction has 111 new implementation leaves and three existing-category reuses; ordinary homology adds 12 leaves. Twenty further precise general cut groups contain 91 source declarations, extracted into 22 destinations with minimal general prerequisites. Existing canonical APIs are reused where they already express the same result. These counts describe source coverage, not final build acceptance. Whole curve, projective-line, perfect-complex and K-theory applications remain outside this first batch.
+
+The complete pre-rename build passed on 409 production modules and eight positive clients. Declaration lint then identified missing declaration documentation, non-normal simp rules, three data/instance names and two unused arguments. These findings have been repaired against the actual statements and canonical maps. The guarded coherent alias keeps its locally Noetherian premise; its documented unused-argument exception preserves that semantic boundary. Prior producer checks are historical after source repair and the user-selected root rename.
+
+The contextual naming pass moved 108 existing source modules and reconciled current destination paths, names and hashes while preserving original source identities. Obsolete module outputs were quarantined rather than relabeled. The four independent general cuts and the refreshed whole library compile under their current names. Finite-type pullback along `f : X ⟶ Y` lands on arbitrary `X` below the guarded coherent pullback, retaining the Noetherianity of `Y` used by its actual proof. New lower proof owners avoid importing the coherent layer merely to establish finite presentation.
+
+The current tree contains 411 production modules, eight positive-client modules and AuditSupport, under the `Aglib` package/import identity and `tmp/aglib` directory. Full local integration exits zero: 82 source regressions, complete builds and tests, declaration/style lint, the 6383-declaration production axiom audit, rejection controls, compiled inventory, all 420 exact root replays and independent downstream build/audit/replay pass. The three downstream modules have empty final private inventories, so their additional replay is vacuous; their compilation and audit exercise the public interfaces. An earlier interrupted replay is excluded from acceptance. Package-version-independent cache keys, ABI-aware pruning and actual warm/version/source-change behavior have been verified in isolated ordinary and bounded-producer fixtures, including configured multithreaded compilation. Source correspondence reports no mismatch in 476 records from 378 original files; documentation checks cover 830 local links and all 118 occupied source families. Current acceptance evidence is consolidated in [migration/integration.json](migration/integration.json).
+
+The accepted hosted route runs full compilation, tests, lint/style, axiom auditing, rejection controls, inventory checks and a downstream build/audit. The two additional independent kernel replays remain required locally before publication. The maintained workflow owns its runner and resource settings; machine-specific local settings are not repository policy.
+
+The completed checks apply to the recorded source and artifact basis. Supplied mathematical premises remain explicit parts of their theorem statements.

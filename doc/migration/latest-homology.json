@@ -1,0 +1,418 @@
+{
+  "group": "latest-homology",
+  "authoritative_source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+  "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+  "baseline_revision": "83629578a3d70787d41ec631f5234af8758716af",
+  "lean": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "entries": [
+    {
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.PlusComplexTriangle",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "8cd65ebcad24e9035cfdc1e1b6d8c4621f739275a42f70934b31ce19d0a977af",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExact",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/ShortExact.lean",
+      "destination_sha256": "f9be89698f3342b9e26a9591046ef761955d57fd59e64ea8e45e6e66eb11035a",
+      "native_owners": [
+        "DerivedCategory.Plus"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian C; HasDerivedCategory C; supplied ShortComplex of CochainComplex.Plus C whose underlying unbounded short complex is ShortExact.",
+      "functionality": "Actual distinguished D+ short-exact triangle and functorial triangle maps with the original arrows and connecting map.",
+      "native_split_override": {},
+      "header_repairs": [
+        {
+          "before_sha256": "22b5692fcc44dbf5667d3c6c06fa2410efe7be07424c4d8aade3d394db288106",
+          "after_sha256": "f9be89698f3342b9e26a9591046ef761955d57fd59e64ea8e45e6e66eb11035a",
+          "body_after_copyright_sha256": "066a110dbde37234552b06eee31fe7c653a8ae4445a9fc49cdfce13eee0e9fa6",
+          "body_after_copyright_byte_identical": true,
+          "change": "Added Authors: Quillen K-theory contributors to the original abbreviated copyright/license header.",
+          "attribution_basis": "The authoritative LOCAL189 source names Quillen K-theory contributors as its copyright holder and supplies no individual Authors line."
+        }
+      ]
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.CochainComplexPlusFunctoriality",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "e829f238603b1386bb0e20c280f4431a7eb18ed80e3246fbab05079aa0ded277",
+      "destination_module": "Aglib.Algebra.Homology.CochainComplexPlus.Functoriality",
+      "destination_path": "Aglib/Algebra/Homology/CochainComplexPlus/Functoriality.lean",
+      "destination_sha256": "8ad37ae4d3fc2385e17eaaddb8b5ec0aa960c3e7fe3771f91fe995ff5b5df663",
+      "native_owners": [
+        "CategoryTheory.NatIso",
+        "CategoryTheory.Functor"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Preadditive source/target categories, additive functors; actual supplied natural isomorphism or composite.",
+      "functionality": "Componentwise natural-isomorphism and composition coherence on the actual bounded-below complex functors.",
+      "native_split_override": {}
+    },
+    {
+      "source_module": "Quillen.CategoryTheory.Triangulated.NatTransIso",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "906e4605226904a462ac4daab086080470e2a65f535e4932938802c221f6c553",
+      "destination_module": "Aglib.CategoryTheory.Triangulated.NatTransIso",
+      "destination_path": "Aglib/CategoryTheory/Triangulated/NatTransIso.lean",
+      "destination_sha256": "b3e6b4aa97e753d2f685e596a6166e3391437bb8c7aad70d71fc33d4448ba2f7",
+      "native_owners": [
+        "CategoryTheory.NatTrans"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Preadditive/pretriangulated categories with zero objects and additive integer shifts; shift-compatible triangulated F,G and shift-compatible τ; actual distinguished triangle and isomorphism components at both ends.",
+      "functionality": "Constructs the actual triangle map and forces its middle component to be an isomorphism.",
+      "native_split_override": {}
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.DegreewiseSplitMono",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "bb799b3352a98bf99fa3d7a5a00f55dbbe2dfaf36005cfe7b28edc211cafad38",
+      "destination_module": "Aglib.Algebra.Homology.CochainComplex.DegreewiseSplitMono",
+      "destination_path": "Aglib/Algebra/Homology/CochainComplex/DegreewiseSplitMono.lean",
+      "destination_sha256": "1820d85d3ccd6872ed7e33e13acd7e06f5bfd5881381bb0cbf0c169a6d52a6e3",
+      "native_owners": [
+        "CochainComplex",
+        "CategoryTheory.Limits.IsPushout"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Arbitrary category and chosen IsPushout square for the split-mono cobase-change lemma; Abelian A and actual Z-cochain complexes for degreewiseSplitMono.",
+      "functionality": "Multiplicativity, ambient monomorphism, zero/isomorphism cases and pushout stability for termwise splitting without a chain retraction.",
+      "native_split_override": {
+        "Quillen.Waldhausen.isSplitMono_of_isPushout": "CategoryTheory.Limits.IsPushout.isSplitMono_inr",
+        "all_other_declarations": "CochainComplex"
+      }
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.ExactDerivedContraction",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "ebf2559792dee9816b6e5df43f05a771685f9bb667904999cabf914dd8aa464d",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/ExactDerivedContraction.lean",
+      "destination_sha256": "5be783c6a143d592548d5350b6591104b90880776f303048bca91f30fb3736b0",
+      "native_owners": [
+        "DerivedCategory.Plus"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A; EnoughInjectives A; HasDerivedCategory A; additive F,G:A⥤A; G.PreservesHomology; supplied F⋙G≅Id.",
+      "functionality": "Canonical derived contraction and exact installed composite-unit equation; only the stated one-sided composite.",
+      "native_split_override": {},
+      "header_repairs": [
+        {
+          "before_sha256": "60a8fa3d4f5390deef4230ac440bf51ccac535bb34602c6db94efc579dc172d6",
+          "after_sha256": "7d071a101a806fdafebee1f57ebd7c64204bf4872ef1f4a4544dabd5e98078de",
+          "body_after_copyright_sha256": "235b611f3e2091de714678310f5e551e86c8adacdf50d54544552b1a6226a50b",
+          "body_after_copyright_byte_identical": true,
+          "change": "Added Authors: Quillen K-theory contributors to the original abbreviated copyright/license header.",
+          "attribution_basis": "The authoritative LOCAL189 source names Quillen K-theory contributors as its copyright holder and supplies no individual Authors line."
+        }
+      ]
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.PlusBoundedComparison",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "85bb8664d03c36254e46d34e2bd15777a361509d4b069103ba34eb4a768c99ef",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.BoundedComparison",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/BoundedComparison.lean",
+      "destination_sha256": "56fc5da009a44b150f17722ebc15864d96bf42d70491035b37376233b25ad180",
+      "native_owners": [
+        "DerivedCategory.Plus"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A with HasDerivedCategory; preadditive/pretriangulated D with zero object and additive integer shifts; shift-compatible triangulated F,G and shift-compatible τ; explicit lower/upper zero-term bounds on K and isomorphisms on all its degree-zero single terms.",
+      "functionality": "Propagates a supplied comparison from single terms to a bounded original D+ representative; no natural model choice or unbounded-above result.",
+      "native_split_override": {},
+      "header_repairs": [
+        {
+          "before_sha256": "2c46c74cd3790455b76d5dcc0ae000848400f1108f60971239e210e62fb253ca",
+          "after_sha256": "7d45aafd10862e0549b058e0fcb49b3fb6d14058406a0399d85400cc27242334",
+          "body_after_copyright_sha256": "37fe9e44b9e3db153b0819a64ad5a51d0e69808bac5cdbc72ddb4d146b9e7505",
+          "body_after_copyright_byte_identical": true,
+          "change": "Added Authors: Quillen K-theory contributors to the original abbreviated copyright/license header.",
+          "attribution_basis": "The authoritative LOCAL189 source names Quillen K-theory contributors as its copyright holder and supplies no individual Authors line."
+        }
+      ]
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlusIdentity",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "d883637c0288a16a948f5433be68895d6fefc2764481a5b9abf46d372a8d66de",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Identity",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Identity.lean",
+      "destination_sha256": "026e00eb4507a002e671fa3859227f25e54703a7c21f3397d6c943f84850af27",
+      "native_owners": [
+        "CategoryTheory.Functor"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian C; HasDerivedCategory C; EnoughInjectives C for installed right-derived comparison; the identity-is-right-derived theorem explicitly omits EnoughInjectives.",
+      "functionality": "Termwise and installed derived identity comparisons retaining their unit equation.",
+      "native_split_override": {}
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlusComposition",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "5616ed89294bfb253e679870f8000a8693e25d97847cc0d3011e4a60aebbb745",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean",
+      "destination_sha256": "69401b1d39a43ffdf92a62c5f9b364539851e48f0184dd7ca9af3cf65dd8258c",
+      "native_owners": [
+        "CategoryTheory.Functor"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian categories A,B,C with their declared HasDerivedCategory inputs; EnoughInjectives A,B for actual derived composites; additive F,G; separate branches require F.PreservesInjectiveObjects OR G.PreservesHomology. Unit-on-injective-complex theorem retains a supplied termwise Injective condition.",
+      "functionality": "Derived-unit, natural-isomorphism and composition comparisons with exact original-unit equations; no unconditional derived composition theorem.",
+      "native_split_override": {}
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.BoundedComparison",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "e2ebbf5862251ade42e2fb41e5f8b61b1b8a3d0d9e261a6520c751b7f358497d",
+      "destination_module": "Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison",
+      "destination_path": "Aglib/Algebra/Homology/HomotopyCategory/Plus/BoundedComparison.lean",
+      "destination_sha256": "d6ed60f2247cc3b264e8226bc7406f2b6658c60df491eaf6b7686186f7c2bfc0",
+      "native_owners": [
+        "CochainComplex"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A; actual integer-indexed complex K; target pretriangulated/additive shifts and shift-compatible triangulated F,G,τ for comparison results; explicit upper/lower zero-term bounds where stated.",
+      "functionality": "Brutal-layer triangles, finite downward comparison induction and transport from degree-zero singles. No global boundedness or model-choice claim.",
+      "native_split_override": {},
+      "native_resolution_repairs": [
+        {
+          "original_reference": "shiftFunctor D n",
+          "native_reference": "CategoryTheory.shiftFunctor D n",
+          "scope": "Hypothesis and matching omit clause",
+          "reason": "Native CochainComplex.shiftFunctor would shadow the original categorical shift; explicit qualification retains the original target-category shift assumption."
+        }
+      ]
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.StupidTruncation.Maps",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "876f46d14b4a9f460e13e987e71c403b153ae995ba67b8ce16ec977a5bada91f",
+      "destination_module": "Aglib.Algebra.Homology.Embedding.StupidTrunc.Maps",
+      "destination_path": "Aglib/Algebra/Homology/Embedding/StupidTrunc/Maps.lean",
+      "destination_sha256": "8182dea9820996558319a2abc5245977db55d07aaa09d2d001cc870178cd52ce",
+      "native_owners": [
+        "HomologicalComplex",
+        "CochainComplex"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A; arbitrary HomologicalComplex and relation-reflecting shape embedding for stupidTruncXIso_hom_d; actual Z-cochain complex for GE maps.",
+      "functionality": "Original brutal truncation inclusions, naturality and termwise split monomorphism; no chain retraction or projectivity claim.",
+      "native_split_override": {
+        "Quillen.Waldhausen.GilletWaldhausen.stupidTruncXIso_hom_d": "HomologicalComplex.stupidTruncXIso_hom_d",
+        "all_other_declarations": "CochainComplex"
+      }
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.StupidTruncation.Transition",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "dad373480a1717b14db28628e1502cbf0ec89c6ef4e371aba2ea161d51f0c511",
+      "destination_module": "Aglib.Algebra.Homology.Embedding.StupidTrunc.Transition",
+      "destination_path": "Aglib/Algebra/Homology/Embedding/StupidTrunc/Transition.lean",
+      "destination_sha256": "dbbe9677fa655e5d6766f0907255bf05b0f0015a3bab7dcf7993a3cc401d7850",
+      "native_owners": [
+        "CochainComplex"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A; actual Z-cochain complex K; integers n≤m for the transition.",
+      "functionality": "Natural nested truncation transitions, literal identities/composition and termwise splitting.",
+      "native_split_override": {}
+    },
+    {
+      "source_module": "Quillen.Algebra.Homology.StupidTruncation.Layer",
+      "source_repository": "quillen-k-theory",
+      "source_root": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "e08a5e7a98c6a7072bc70741f190786a11fe0d41a7495118f926d608dac33c35",
+      "destination_module": "Aglib.Algebra.Homology.Embedding.StupidTrunc.Layer",
+      "destination_path": "Aglib/Algebra/Homology/Embedding/StupidTrunc/Layer.lean",
+      "destination_sha256": "d8367622ced3403390841d7c84d7828c601969f878907583e9735c780ba05775",
+      "native_owners": [
+        "CochainComplex"
+      ],
+      "selection": "Whole original generic module, with accepted native namespace relocation and precise mixed-owner splits.",
+      "conditions": "Abelian A; actual Z-cochain complex K and integer cutoff n.",
+      "functionality": "Actual adjacent truncation short-exact sequence, termwise splitting, original single-term cokernel and projection equation; no boundedness/projectivity input.",
+      "native_split_override": {}
+    }
+  ],
+  "validation": {
+    "milestone": "Current full-package header correction; three comment-only repairs frozen, awaiting infrastructure producer retry.",
+    "coverage": "Historical author-phase coverage: twelve assigned modules emitted across native-stage9/10 on the then-current source/facade basis; current full409 producer acceptance is pending the header-repair retry.",
+    "successful_closing_build_log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage10.log",
+    "package_options": {
+      "autoImplicit": false,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500,
+      "warningAsError": true,
+      "maxHeartbeats": 200000
+    },
+    "per_module_success": [
+      {
+        "module": "AGLib.Algebra.Homology.DerivedCategory.Plus.ShortExact",
+        "destination_path": "AGLib/Algebra/Homology/DerivedCategory/Plus/ShortExact.lean",
+        "destination_sha256": "22b5692fcc44dbf5667d3c6c06fa2410efe7be07424c4d8aade3d394db288106",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3504/3536] Built AGLib.Algebra.Homology.DerivedCategory.Plus.ShortExact (5.4s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.CochainComplexPlus.Functoriality",
+        "destination_path": "AGLib/Algebra/Homology/CochainComplexPlus/Functoriality.lean",
+        "destination_sha256": "8ad37ae4d3fc2385e17eaaddb8b5ec0aa960c3e7fe3771f91fe995ff5b5df663",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3386/3433] Built AGLib.Algebra.Homology.CochainComplexPlus.Functoriality (3.9s)"
+        }
+      },
+      {
+        "module": "AGLib.CategoryTheory.Triangulated.NatTransIso",
+        "destination_path": "AGLib/CategoryTheory/Triangulated/NatTransIso.lean",
+        "destination_sha256": "b3e6b4aa97e753d2f685e596a6166e3391437bb8c7aad70d71fc33d4448ba2f7",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3383/3418] Built AGLib.CategoryTheory.Triangulated.NatTransIso (3.6s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.CochainComplex.DegreewiseSplitMono",
+        "destination_path": "AGLib/Algebra/Homology/CochainComplex/DegreewiseSplitMono.lean",
+        "destination_sha256": "1820d85d3ccd6872ed7e33e13acd7e06f5bfd5881381bb0cbf0c169a6d52a6e3",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3382/3413] Built AGLib.Algebra.Homology.CochainComplex.DegreewiseSplitMono (3.4s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction",
+        "destination_path": "AGLib/Algebra/Homology/DerivedCategory/Plus/ExactDerivedContraction.lean",
+        "destination_sha256": "60a8fa3d4f5390deef4230ac440bf51ccac535bb34602c6db94efc579dc172d6",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3523/3536] Built AGLib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction (2.3s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.DerivedCategory.Plus.BoundedComparison",
+        "destination_path": "AGLib/Algebra/Homology/DerivedCategory/Plus/BoundedComparison.lean",
+        "destination_sha256": "2c46c74cd3790455b76d5dcc0ae000848400f1108f60971239e210e62fb253ca",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage10.log",
+          "line": "✔ [3079/3079] Built AGLib.Algebra.Homology.DerivedCategory.Plus.BoundedComparison (2.1s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Identity",
+        "destination_path": "AGLib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Identity.lean",
+        "destination_sha256": "09c7871963c7247c79371e4c81dd163fa825fa9e65fb5fb9ea122de26e540066",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3520/3536] Built AGLib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Identity (2.7s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition",
+        "destination_path": "AGLib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Composition.lean",
+        "destination_sha256": "ce9f8965c0a7e3d2c248e65ed1fdf9685d80b95bca60244547ed51cd6b16134c",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3513/3536] Built AGLib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition (6.6s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison",
+        "destination_path": "AGLib/Algebra/Homology/HomotopyCategory/Plus/BoundedComparison.lean",
+        "destination_sha256": "93f6db39b7dad50247cde1c5003d63bc06f82b2b8961bb301b45ffe381d50134",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage10.log",
+          "line": "✔ [3074/3079] Built AGLib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison (3.3s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.Embedding.StupidTrunc.Maps",
+        "destination_path": "AGLib/Algebra/Homology/Embedding/StupidTrunc/Maps.lean",
+        "destination_sha256": "7d41a2ddc94e9c629e51aa41db60b7d9f399cebf5d932ff10b807eb008b9e992",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3512/3536] Built AGLib.Algebra.Homology.Embedding.StupidTrunc.Maps (6.2s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.Embedding.StupidTrunc.Transition",
+        "destination_path": "AGLib/Algebra/Homology/Embedding/StupidTrunc/Transition.lean",
+        "destination_sha256": "538d8b31eec7dd58eca8078c234980950bd756455c340107f6f4ddfab88f83f8",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3518/3536] Built AGLib.Algebra.Homology.Embedding.StupidTrunc.Transition (3.1s)"
+        }
+      },
+      {
+        "module": "AGLib.Algebra.Homology.Embedding.StupidTrunc.Layer",
+        "destination_path": "AGLib/Algebra/Homology/Embedding/StupidTrunc/Layer.lean",
+        "destination_sha256": "3b5879febf24dd994833f97fbad8929d8253aae20819395da89f5c7f14cc6875",
+        "successful_emission": {
+          "log": "/private/tmp/r5-investigations/algebraic-geometry-build/principal/native-stage9.log",
+          "line": "✔ [3522/3536] Built AGLib.Algebra.Homology.Embedding.StupidTrunc.Layer (2.4s)"
+        }
+      }
+    ],
+    "scoped_author_check": {
+      "file": "AGLib/Algebra/Homology/HomotopyCategory/Plus/BoundedComparison.lean",
+      "command": "lake env lean AGLib/Algebra/Homology/HomotopyCategory/Plus/BoundedComparison.lean -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -Dweak.linter.style.longFile=1500 -DmaxHeartbeats=200000 -DautoImplicit=false",
+      "working_directory": "/Users/kang/Documents/New project/tmp/algebraic-geometry",
+      "exit_code": 0,
+      "diagnostics": "empty",
+      "log": "/private/tmp/r5-investigations/algebraic-geometry-build/category_homology/latest-delta/bounded-comparison-repair.log",
+      "output_files_written": false
+    },
+    "source_correspondence": {
+      "artifact": "/private/tmp/r5-investigations/algebraic-geometry-build/category_homology/latest-delta/latest12-current-correspondence.json",
+      "artifact_sha256": "ac45cc4bcc1dc20f5be6c7e19784e1925358f4f1299c91fb7fb22c35d7b13034",
+      "coverage": "12/12 accepted code-only namespace/import transforms plus the recorded categorical shift qualification"
+    },
+    "evidence_boundary": "Current scoped source correspondence and Lean elaboration. The failed aggregate native-stage9 run is used only for its individual successful owned-module emissions; native-stage10 is the successful closing run. This does not claim a whole-library build, independent proof review, or realization of theorem hypotheses.",
+    "frozen": true,
+    "historical_milestone": "Latest-local-Quillen generic homology author phase; all 12 exact assigned modules elaborated and frozen.",
+    "coverage_basis": "The recorded native-stage9/10 emissions belong to the prior author-phase source/facade context. They are not acceptance of the current full409 named-module context.",
+    "current_full_producer_context": {
+      "log": "/private/tmp/r5-investigations/algebraic-geometry-build/_infrastructure/producer-full.log",
+      "observed_failure": "AGLib/Algebra/Homology/DerivedCategory/Plus/BoundedComparison.lean:4:0: Copyright too short!",
+      "repair_coverage": "Scanned exactly the twelve assigned headers; three lacked Authors lines and received this comment-only correction.",
+      "current_build_status": "pending infrastructure retry",
+      "header_repair_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/category_homology/latest-delta/latest12-header-repair.json"
+    }
+  },
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

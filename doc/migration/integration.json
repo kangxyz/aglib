@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "package": "Aglib",
+  "root_module": "Aglib",
+  "status": "Full local integration passed on the recorded source and artifact basis.",
+  "source_basis": {
+    "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+    "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+    "Lean": "4.34.1",
+    "Mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "enrollment": {
+    "production_modules": 411,
+    "positive_client_modules": 8,
+    "audit_support_modules": 1,
+    "source_hash_records": 424,
+    "source_manifest_sha256": "de718eb1eeae2c4e13b4c73431abc0741a0f32d90092821da23a575de6a6c384",
+    "manifest_encoding": "SHA-256 of the sorted path-to-SHA-256 map, encoded as compact JSON with separators comma and colon."
+  },
+  "confirmed_checks": {
+    "fresh_compiled_module_emissions": 420,
+    "declaration_lint": {
+      "explicit_declarations": 3499,
+      "generated_declarations": 2884,
+      "linters": 15,
+      "status": "passed"
+    },
+    "pinned_mathlib_style": "passed",
+    "axiom_audit": {
+      "production_declarations": 6383,
+      "origin_control_declarations": 16,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "passed"
+    },
+    "negative_controls": "Imported and local custom axioms rejected; setup failure does not count as successful rejection.",
+    "compiled_inventory": "passed",
+    "root_kernel_replay": {
+      "expected_modules": 420,
+      "covered_modules": 420,
+      "last_private_inventory_constants": 6430,
+      "vacuous_modules": 13,
+      "status": "passed",
+      "method": "The pinned installed LeanChecker.replayFromImports on exact current modules and their server/private artifacts.",
+      "embedded_driver_sha256": "063ab4389662ffa0f7d93dd6c287a005f10a007d5a0c768d738fc777d6f01eaa",
+      "semantic_boundary": "The unchanged installed replay skips unsafe/partial constants and validates constructors and recursors against regenerated declarations; the inventory count is not a count of direct addDecl calls.",
+      "basis_sha256": "6e2d650282242844ec0f252927ba4d9fb305fdf39a65ce2bcdd6e4ac8a91bf6a",
+      "resumption": "Completed exact-module receipts were copied, then validated against identical current sources, all artifact parts, Lean configurations, installed checker and original execution profile. Original receipts remained unchanged."
+    },
+    "downstream": {
+      "build": "passed",
+      "audited_client_and_foundation_declarations": 337,
+      "audit": "passed",
+      "kernel_modules": 3,
+      "kernel_covered_modules": 3,
+      "last_private_inventory_constants": 0,
+      "vacuous_modules": 3,
+      "kernel_status": "passed",
+      "basis_sha256": "cb9ca721a4844bbcabb5286afcfa3ac0fb2ae1b0e95ae8cea0525347c307f094",
+      "boundary": "These three compiled clients have empty final private inventories. Their standalone compilation and audit establish the interface checks; the additional replay is vacuous."
+    },
+    "process_closure": "All owned process groups closed; no resource guard failure."
+  },
+  "source_correspondence": {
+    "records_checked": 476,
+    "unique_original_files": 378,
+    "hash_mismatches": 0,
+    "details": "The family migration fragments retain original identities and current destination correspondences."
+  },
+  "incremental_build_validation": {
+    "status": "passed",
+    "cases": [
+      "Warm builds and root/client version-only changes preserve all four fixture oleans and launch no compiler jobs.",
+      "Source edits rebuild the affected closure while preserving unrelated artifacts.",
+      "Semantic options invalidate affected work through Lake rehashing.",
+      "Renamed and removed modules are pruned; incompatible compiler stamps reset only owned build roots.",
+      "Configured build threads reach the native compiler and environment without invalidating warm/version-only reuse."
+    ]
+  },
+  "verification_routes": {
+    "default_local": "bash scripts/check.sh",
+    "hosted_ci": "bash scripts/check.sh --rehash --ci",
+    "scope": "Both routes retain compilation, tests, lint/style, axiom auditing, rejection controls, inventory checks and downstream build/audit. The two additional independent kernel replays are required locally before publication.",
+    "configuration_owner": "../../.github/workflows/ci.yml"
+  },
+  "mathematical_boundary": "Compilation, lint, axiom auditing and kernel replay do not discharge retained theorem premises such as standard comparison, finiteness, flatness or local-freeness inputs.",
+  "default_pipeline": {
+    "command": "bash scripts/check.sh --rehash",
+    "exit_code": 0,
+    "source_regression_tests": 82,
+    "receipt_sha256": "beb7be2e266c98e38968cada29537845c59e82cd757d1a98a7737f13b44de9e5",
+    "report_sha256": "7bc41f806cd18667467cbf503496ab4adf2ec310df3f01a6c8fd9cbc3245314b",
+    "root_artifact_manifest_sha256": "c0b498aa16542edb42b18256c66367c25c5aa12f2b83086964cecaa252646c66",
+    "combined_root_client_source_manifest_sha256": "6ec13ec2dd0857a1b44303fd5866ede5ddbbbed91e149321bd571528315c13df",
+    "configuration_manifest_sha256": "37f67790cfe802c07bfaf653014f6be15ac6d91dfba67724b77785a28acd7cda",
+    "baseline_infrastructure_sha256": {
+      ".github/workflows/ci.yml": "9edf57128253c4311ff8451f5cabb177d36acd1c82d5939fd73b9a5ca79144f4",
+      "scripts/build_serial.py": "5778ce93301f29aaa59cd49c4571ebd6c8dc6d20cf729f6545c17a43f7d3c23a",
+      "scripts/cache_key.py": "757b9f9ad63ba6d93d3295e56b277d5f0fcc02cabd369b3f406e7e1651a0dd27",
+      "scripts/check.sh": "6655f0146c96a9347f7ce9a030fe91260704c4e007c16c7e760ccfef89758a24",
+      "scripts/check_compiled_inventory.py": "2b7aede26645e384822f9e9539540059795a70795d7f29f0c2dfe2e8a0467dc3",
+      "scripts/check_kernel.py": "7398cde2b7fe41af9961c2fd6a0895e4720becb9a5e1de8a5e1fdda452cde8e5",
+      "scripts/check_library_layout.py": "fe90f6284ca11d8a063efa94f1bef3022dcee7b88d44945f1809b73e14652358",
+      "scripts/check_negative_controls.py": "b3d3b065d741428958a7f53872d6f00aaedced80d666a3812549c7ca85b32818",
+      "scripts/check_placeholders.py": "204dd3815ca226170b319b9d8c9eae06ee5017b4f0a9a3e4835f2291514c61b5",
+      "scripts/check_source_policy.py": "7f2af665856deac4669ac56eeab6785bd7f0c84175d87416f10dd2aba9ceafb9",
+      "scripts/generate_imports.py": "b7b88e1065fb4d609066e94572db640eae287911e5141ababda70f0fdead7ed0",
+      "scripts/library_sources.py": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787",
+      "scripts/migration_helpers.py": "09d9bf810a70479406b2f87c813b0f45c857dc637074ee5a83a6f59073d8eed9",
+      "scripts/prepare_build_cache.py": "d102896f8a42a8e74361e4f03c1af589efeabd9ec5c394a1035a5bd74661da09",
+      "scripts/prepare_downstream.py": "50f13e5e00ac7657fbe13d4ff22c9245e983dbfa979509355bbcca13f5a607e6",
+      "scripts/resource_guard.py": "b49fa5be5609d2200bccee2d888809278795858ad87bfcf5f324e44ba0442ffa",
+      "scripts/run_style_linter.py": "aceab628e8d690847981a2ad0052f3e8249be616170a8097c26b53025fed320f",
+      "scripts/test_build_serial.py": "53a51b128c7b98aa3843ff4ade5fa5a1c5ecc5ddf1a9e3c48aa06092c3c884cd",
+      "scripts/test_check_script.py": "36f92ac958861db31dd981057301d621dede7c01654bf8c9832ead5ba279fd46",
+      "scripts/test_ci_cache.py": "426b8f0dbc2356d40c39635abc33bd860faf78419d9b06eb5dd34b4a2d605a9f",
+      "scripts/test_integration_setup.py": "589a526d6596b2ac3ae164c8e1c2c2de159359535807a952338fcaa8e3b03101",
+      "scripts/test_kernel.py": "31fbc3b116c22f7b50f834c343b18047ee5bd1d9ba10a2aa80c9517ba99e9617",
+      "scripts/test_migration_helpers.py": "32fc28d7efe04f387cc79931d9537d814cbc2a4ff348d942ae99a6a397f203af",
+      "scripts/test_resource_guard.py": "69df0277b99bd98455551e7584139a968fec8a298b2ddb50cb273e05ae411dac",
+      "scripts/test_source_guards.py": "d4f2bc991f05ab95dcd6d5bc119b5421033e73850bc7e45329b6a83429555034"
+    }
+  }
+}

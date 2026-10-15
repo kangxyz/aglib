@@ -1,0 +1,42 @@
+{
+  "repository": "kangxyz/quillen-k-theory",
+  "authoritative_local_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+  "authoritative_task_id": "01a138bc-bfd5-7973-b47a-6cf30486f1b2",
+  "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+  "initial_extraction_revision": "83629578a3d70787d41ec631f5234af8758716af",
+  "working_tree": "clean main...origin/main",
+  "pins": {
+    "old_lean_toolchain": "leanprover/lean4:v4.34.1",
+    "new_lean_toolchain": "leanprover/lean4:v4.34.1",
+    "old_mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "new_mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "lakefile_toml_identical": true
+  },
+  "existing_selected_source_count": 133,
+  "existing_selected_changes": {
+    "unchanged": 133
+  },
+  "hash_verification": "All133 original source blobs match the initial manifest hashes in the authoritative local worktree.",
+  "new_delta_counts": {
+    "A": 458,
+    "M": 18
+  },
+  "new_scope_status": "Complete current extraction:111 new Scheme implementation leaves plus3 existing-category reuses;12 ordinary homology leaves;20 eligible general cut groups (91 source declarations) implemented in22 destinations with minimal application-independent prerequisites. Typed delta ledgers retain all exclusions.",
+  "acceptance_status": "The 411-production-module and 8-positive-client Aglib surface passed complete local integration, including all 420 root modules and the independent downstream package. Explicit mathematical premises remain unchanged.",
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_source_correspondence": {
+    "records_checked": 476,
+    "unique_files": 378,
+    "hash_mismatches": 0,
+    "boundary": "Actual source-byte identities, distinct from mathematical acceptance."
+  },
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

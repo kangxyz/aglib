@@ -1,0 +1,13 @@
+# Scheme Cech exactness and comparison with Sheaf.H
+
+[Augmentation](Augmentation.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation`, constructs `Scheme.Cohomology.cechAugmentationZero` by restricting global presheaf sections to the degree-zero Cech intersections. For a scheme and open-family index in universe `u`, coefficients are any preadditive category with `HasProducts.{u}`. `cechAugmentationZero_π` gives the actual component formula and `cechAugmentationZero_d` shows that the signed first differential annihilates it. A zero object permits the cochain map `cechAugmentation` from the degree-zero single; `cechAugmentation_naturality` preserves the actual coefficient maps. No covering, affine or sheaf hypothesis is needed for these constructions.
+
+[AffineDegreeOne](AffineDegreeOne.lean) and [AffineHigherExactness](AffineHigherExactness.lean) prove actual principal-cover Cech exactness for quasicoherent module coefficients on an affine scheme over any commutative ring. The cover is a finite principal cover; the numerator/denominator and higher exactness arguments preserve actual sections/restrictions. No Noetherian premise is added.
+
+[InjectiveCoefficients](InjectiveCoefficients.lean) proves positive exactness for the original scheme Cech complex with injective module coefficients. [Restriction](Restriction.lean) gives actual Cech/restriction comparisons. Their lower section-representing open-free objects and generic [site Cech](../../../CategoryTheory/Sites/SheafCohomology/Cech/README.md) results are actual objects, rather than chosen replacement complexes.
+
+[Comparison](Comparison.lean) uses the lower augmentation and [generic degree-zero criterion](../../../Algebra/Homology/CochainComplex/Augmentation.lean), identifies open `Sheaf.H'` with unchanged whole-space `Sheaf.H` in every degree and compares original Cech cohomology with it. The statement retains the actual cover/acyclicity hypotheses and proves coefficient naturality, H0 normalization and compatibility with structural scalars.
+
+[FieldBaseChange](FieldBaseChange.lean) constructs `Scheme.Cohomology.structureCechComplex` and its canonical tensor/geometric comparisons for a finite family of affine opens in a separated field scheme. A covering premise is not needed for that complex-level comparison; its cohomology consequence uses the separate covering/comparison route. Generic finite coefficient comparison lives below schemes in [FiniteCoefficients](../../../CategoryTheory/Sites/SheafCohomology/Cech/FiniteCoefficients.lean).
+
+Focused imports follow these seven leaves. [Canonical field base change](../BaseChange/README.md) consumes the precise scalar/naturality comparison with the original cohomology tensor map.

@@ -1,0 +1,74 @@
+name: Aglib CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  library:
+    runs-on: macos-15-intel
+    timeout-minutes: 180
+    env:
+      LEAN_NUM_THREADS: 1
+      AGLIB_LEAN_MEMORY_MB: 10240
+      AGLIB_RSS_LIMIT_MB: 11264
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python 3.13
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Check source organization
+        run: bash scripts/check.sh --source-only
+      - name: Install the pinned Lean toolchain
+        env:
+          ELAN_HOME: ${{ runner.temp }}/elan
+        run: |
+          set -euo pipefail
+          echo "ELAN_HOME=$ELAN_HOME" >> "$GITHUB_ENV"
+          curl -fsSL --retry 3 https://raw.githubusercontent.com/leanprover/elan/v4.2.4/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
+          "$ELAN_HOME/bin/elan" toolchain install "$(cat lean-toolchain)"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/packages
+          key: third-party-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
+      - name: Fetch matching Mathlib proof cache
+        run: python3 scripts/resource_guard.py --bootstrap-cache --receipt "$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get
+      - name: Compute version-independent project cache configuration
+        id: project-cache-config
+        run: |
+          config_hash=$(python3 scripts/cache_key.py)
+          echo "hash=$config_hash" >> "$GITHUB_OUTPUT"
+      - name: Restore incremental project builds
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .lake/build
+            examples/downstream/.lake/build
+          key: project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-${{ hashFiles('Aglib.lean', 'Aglib/**/*.lean', 'AglibTest.lean', 'AglibTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}
+          restore-keys: |
+            project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-
+            project-build-v1-${{ runner.os }}-${{ runner.arch }}-
+      - name: Validate cached compilers and prune obsolete project modules
+        run: |
+          set -euo pipefail
+          compiler_id=$(lean --version)
+          downstream_compiler_id=$(cd examples/downstream && lean --version)
+          python3 scripts/prepare_build_cache.py \
+            --compiler-id "$compiler_id" \
+            --downstream-compiler-id "$downstream_compiler_id"
+      - name: Run CI checks for the library and independent client
+        run: |
+          set -euo pipefail
+          lean --version
+          bash scripts/check.sh --rehash --ci

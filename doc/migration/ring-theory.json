@@ -1,0 +1,1227 @@
+{
+  "group": "ring-theory",
+  "entries": [
+    {
+      "source_module": "R5Lab.RingTheory.Descent.FaithfullyFlatAlgebraDescent",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "3426f90de31fb5831c17c911468f6553022fed0c2fdb4a5651e119e21009d7ca",
+      "destination_path": "Aglib/RingTheory/Descent/Basic.lean",
+      "destination_module": "Aglib.RingTheory.Descent.Basic",
+      "transferred_native_declarations": [
+        "Algebra.Descent.Datum",
+        "Algebra.Descent.Datum.baseChange",
+        "Algebra.Descent.Datum.baseChangeEquiv",
+        "Algebra.Descent.Datum.baseChangeEquiv_tmul",
+        "Algebra.Descent.Datum.baseChange_injective",
+        "Algebra.Descent.Datum.baseChange_surjective",
+        "Algebra.Descent.Datum.baseChange_tmul",
+        "Algebra.Descent.Datum.coaction_baseChange",
+        "Algebra.Descent.Datum.counit_tensorInclusion",
+        "Algebra.Descent.Datum.difference",
+        "Algebra.Descent.Datum.difference_tensor_coaction",
+        "Algebra.Descent.Datum.exact_invariants_difference",
+        "Algebra.Descent.Datum.invariants",
+        "Algebra.Descent.Datum.mem_invariants",
+        "Algebra.Descent.Datum.tensorInclusion",
+        "Algebra.Descent.Datum.tensorInclusion_tmul",
+        "Algebra.Descent.counit",
+        "Algebra.Descent.counit_tmul"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent",
+        "Algebra.Descent.Datum"
+      ],
+      "destination_sha256": "f882621d1e927853f38de3e3bc2ba5bc2ba5a338510b2c08fb856bcf74edb886"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.AlgebraDescentCanonical",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4b82b0e617b914b79b77bcf51724e7ec8e489cb8f65511e562f0ceeef565c804",
+      "destination_path": "Aglib/RingTheory/Descent/Canonical.lean",
+      "destination_module": "Aglib.RingTheory.Descent.Canonical",
+      "transferred_native_declarations": [
+        "Algebra.Descent.baseChange_toCanonicalInvariants",
+        "Algebra.Descent.canonicalDatum",
+        "Algebra.Descent.canonicalInvariantsEquiv",
+        "Algebra.Descent.toCanonicalInvariants",
+        "Algebra.Descent.toCanonicalInvariants_apply",
+        "Algebra.Descent.toCanonicalInvariants_bijective"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent"
+      ],
+      "destination_sha256": "ecefe5cd8dba26bf2315f5ee7a785f64c029eb268ff5b77aa868036bee4ad72e"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.FieldObjectProperties",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "472a68131c346a7bc316954adff365ab339cadd2eb87ef0d897d8cd4230c394b",
+      "destination_path": "Aglib/RingTheory/Descent/FieldOfDefinition/Etale.lean",
+      "destination_module": "Aglib.RingTheory.Descent.FieldOfDefinition.Etale",
+      "transferred_native_declarations": [
+        "Algebra.Descent.FieldOfDefinition.FPModel.etale",
+        "Algebra.Descent.FieldOfDefinition.FPModel.finite",
+        "Algebra.Descent.FieldOfDefinition.FPModel.module",
+        "Algebra.Descent.FieldOfDefinition.FiniteEtaleModel",
+        "Algebra.Descent.FieldOfDefinition.faithfullyFlat_lTensor",
+        "Algebra.Descent.FieldOfDefinition.finiteEtaleModel",
+        "Algebra.Descent.FieldOfDefinition.stage_faithfullyFlat"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.FieldOfDefinition",
+        "Algebra.Descent.FieldOfDefinition.FPModel"
+      ],
+      "destination_sha256": "e00a3f55eb59b875bc3fce0e1b57e0ff17a6bb113d9b3822ed3511cf68b73cd9"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.FieldObjectDescent",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "bc0258fe92647cff15d59a63bd043b5a70523ce3a8572ca44f9c2478bf6bdbe3",
+      "destination_path": "Aglib/RingTheory/Descent/FieldOfDefinition/Presentation.lean",
+      "destination_module": "Aglib.RingTheory.Descent.FieldOfDefinition.Presentation",
+      "transferred_native_declarations": [
+        "Algebra.Descent.FieldOfDefinition.FPModel",
+        "Algebra.Descent.FieldOfDefinition.exists_stage_finite_set",
+        "Algebra.Descent.FieldOfDefinition.exists_stage_finset",
+        "Algebra.Descent.FieldOfDefinition.exists_stage_preimage",
+        "Algebra.Descent.FieldOfDefinition.fieldMap",
+        "Algebra.Descent.FieldOfDefinition.fieldMap_transition",
+        "Algebra.Descent.FieldOfDefinition.fieldTransition",
+        "Algebra.Descent.FieldOfDefinition.finitePresentationModel",
+        "Algebra.Descent.FieldOfDefinition.range_stageMap_mono",
+        "Algebra.Descent.FieldOfDefinition.stageAlgebra",
+        "Algebra.Descent.FieldOfDefinition.stageField",
+        "Algebra.Descent.FieldOfDefinition.stageField_finite",
+        "Algebra.Descent.FieldOfDefinition.stageMap",
+        "Algebra.Descent.FieldOfDefinition.stageMap_transition",
+        "Algebra.Descent.FieldOfDefinition.stageRing",
+        "Algebra.Descent.FieldOfDefinition.transition"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.FieldOfDefinition"
+      ],
+      "destination_sha256": "8fa71c00950797483b1c229fe4107e9be40fcf783096b3e905524a3e6d7ebc46"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.AlgebraDescentMorphisms",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "fc81a1cc3773e3d0219cd6f71fd0c7537f8a5b581c92cea9e87f1382f5b7f41e",
+      "destination_path": "Aglib/RingTheory/Descent/Morphisms.lean",
+      "destination_module": "Aglib.RingTheory.Descent.Morphisms",
+      "transferred_native_declarations": [
+        "Algebra.Descent.Datum.Hom",
+        "Algebra.Descent.Datum.Hom.baseChange_naturality",
+        "Algebra.Descent.Datum.Hom.invariantsMap",
+        "Algebra.Descent.Datum.Hom.invariantsMap_apply",
+        "Algebra.Descent.Datum.Hom.invariantsMap_unique",
+        "Algebra.Descent.Datum.Hom.map_mem_invariants",
+        "Algebra.Descent.Datum.invariants_etale",
+        "Algebra.Descent.Datum.invariants_finite"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.Datum",
+        "Algebra.Descent.Datum.Hom"
+      ],
+      "destination_sha256": "549752c3b8723f5c07241abdf4dd781eb5f270e0bb9c5592c5abcf0e524e9ede"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.NilpotentDescent",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "cf6206f46c8ad123b4d352cd92c0e9ff970799e5a155e9a9eb8bb5474bc17e55",
+      "destination_path": "Aglib/RingTheory/Descent/Nilpotent.lean",
+      "destination_module": "Aglib.RingTheory.Descent.Nilpotent",
+      "transferred_native_declarations": [
+        "Algebra.Descent.Nilpotent.counit_liftedCoaction",
+        "Algebra.Descent.Nilpotent.counit_surjective",
+        "Algebra.Descent.Nilpotent.datumOfNilpotentCounits",
+        "Algebra.Descent.Nilpotent.datumOfNilpotentCounitsHom",
+        "Algebra.Descent.Nilpotent.liftedCoaction",
+        "Algebra.Descent.PurelyInseparable.counit_ker_isNilpotent",
+        "Algebra.Descent.PurelyInseparable.finitePureBaseChangeEquiv",
+        "Algebra.Descent.PurelyInseparable.finitePureDatum",
+        "Algebra.Descent.PurelyInseparable.finitePureDatumHom",
+        "Algebra.Descent.PurelyInseparable.finitePureInvariantsMap",
+        "Algebra.Descent.PurelyInseparable.finitePure_invariants_etale",
+        "Algebra.Descent.PurelyInseparable.finitePure_invariants_finite",
+        "Ideal.isNilpotent_comap_of_injective"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.Nilpotent",
+        "Algebra.Descent.PurelyInseparable",
+        "Ideal"
+      ],
+      "destination_sha256": "0b30ecc1d4dccdca8525674dd062922dc5b5a9dc0eec2632e7e2fa1cf7662e2d"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.AlgebraOverlapDescent",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "d61722f1d3d89f489177dc1396698d417334f5e00c9f9b73575150ba5806b93a",
+      "interface_adaptations": [
+        {
+          "declaration": "Algebra.Descent.OverlapDatum.swap_one_tmul",
+          "kind": "omit_unused_section_instances",
+          "omitted_instances": [
+            "Algebra S B",
+            "IsScalarTower R S B"
+          ],
+          "reason": "The canonical scalar-exchange type and proof use only the commutative rings and their R-algebra structures. These automatically included source section instances are unused; the generic helper needs no S-action on B.",
+          "mathematical_type_change": "Conclusion, objects, universes and canonical maps unchanged; only these two irrelevant implicit typeclass binders are omitted."
+        }
+      ],
+      "destination_path": "Aglib/RingTheory/Descent/Overlap.lean",
+      "destination_module": "Aglib.RingTheory.Descent.Overlap",
+      "transferred_native_declarations": [
+        "Algebra.Descent.OverlapDatum",
+        "Algebra.Descent.OverlapDatum.coaction",
+        "Algebra.Descent.OverlapDatum.coaction_apply",
+        "Algebra.Descent.OverlapDatum.overlap_swap_one_tmul",
+        "Algebra.Descent.OverlapDatum.overlap_tmul",
+        "Algebra.Descent.OverlapDatum.overlap_tmul_invariant",
+        "Algebra.Descent.OverlapDatum.swap_one_tmul",
+        "Algebra.Descent.OverlapDatum.toDatum"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent",
+        "Algebra.Descent.OverlapDatum"
+      ],
+      "destination_sha256": "01369acee740fb021f9827433c74cf4c722ba7627a2e1b1f20fc21a116a93535"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.BaseChangedPureAlgebra",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "bd2605f8241a8000a21f8f4894d36214957e49e8fe2b396220a4b23453cb378e",
+      "destination_path": "Aglib/RingTheory/Descent/PurelyInseparable/BaseChange.lean",
+      "destination_module": "Aglib.RingTheory.Descent.PurelyInseparable.BaseChange",
+      "transferred_native_declarations": [
+        "Algebra.Descent.PurelyInseparable.baseChangedOverlapEquiv",
+        "Algebra.Descent.PurelyInseparable.baseChangedOverlapEquiv_tmul",
+        "Algebra.Descent.PurelyInseparable.baseChangedPureDatum",
+        "Algebra.Descent.PurelyInseparable.baseChangedPureDatumHom",
+        "Algebra.Descent.PurelyInseparable.baseChangedPureEquiv",
+        "Algebra.Descent.PurelyInseparable.baseChangedPureInvariantsMap",
+        "Algebra.Descent.PurelyInseparable.baseChangedPure_invariants_etale",
+        "Algebra.Descent.PurelyInseparable.baseChangedPure_invariants_finite",
+        "Algebra.Descent.PurelyInseparable.counit_baseChanged_comp_equiv",
+        "Algebra.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent",
+        "Algebra.Descent.PurelyInseparable.counit_baseChanged_ker_isNilpotent_of_coordinates",
+        "Algebra.Descent.PurelyInseparable.tensor_scalar_coordinates"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.PurelyInseparable"
+      ],
+      "destination_sha256": "393d293d6ba07a11b2b28d1cc797bffe5c773ca0e781b9adaa49158c7e116e43"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.GlobalFinitePureAlgebraMaps",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "727f0c2493ff24afa616b9d34f879c85507840716ef547472a3e5a13bece9fba",
+      "destination_path": "Aglib/RingTheory/Descent/PurelyInseparable/Morphisms.lean",
+      "destination_module": "Aglib.RingTheory.Descent.PurelyInseparable.Morphisms",
+      "transferred_native_declarations": [
+        "Algebra.Descent.PurelyInseparable.canonicalDatumHom",
+        "Algebra.Descent.PurelyInseparable.descendTensorMap",
+        "Algebra.Descent.PurelyInseparable.tensorMap",
+        "Algebra.Descent.PurelyInseparable.tensorMap_bijective",
+        "Algebra.Descent.PurelyInseparable.tensorMap_descendTensorMap",
+        "Algebra.Descent.PurelyInseparable.tensorMap_injective"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.Descent.PurelyInseparable"
+      ],
+      "destination_sha256": "8d56ac6075051a61b63b29c00ce656d243d866efd29a403c358d7e9087597974"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.FiniteLengthSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "ca529353814fbb1acd5d9156c0d8be585a85736fe863f3c841e076fc14c9c623",
+      "destination_path": "Aglib/RingTheory/FiniteLength/Support.lean",
+      "destination_module": "Aglib.RingTheory.FiniteLength.Support",
+      "transferred_native_declarations": [
+        "Module.finiteLength_of_support_maximal",
+        "Module.isMaximal_of_mem_support_of_length_ne_top",
+        "Module.length_ne_top_of_support_isMaximal"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "source_components": [
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.FiniteLengthSupport",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "ca529353814fbb1acd5d9156c0d8be585a85736fe863f3c841e076fc14c9c623",
+          "transferred_native_declarations": [
+            "Module.finiteLength_of_support_maximal"
+          ]
+        },
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "5dd0cee73230a6d3cf58f6ac525d8aa880a5bc6e7ad08eb823b6f0e2913099eb",
+          "transferred_native_declarations": [
+            "Module.isMaximal_of_mem_support_of_length_ne_top",
+            "Module.length_ne_top_of_support_isMaximal"
+          ]
+        }
+      ],
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "0e90db58247ec94ff669539d44d0067895ffc2c8176573530a1e7cd8b3cb207e"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.TorsionFreeBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "18dac8e178a5ad512b07fe6e9eee530a18d8d6c2b6aedfe99493b3728ebb5739",
+      "destination_path": "Aglib/RingTheory/Flat/TorsionFreeBaseChange.lean",
+      "destination_module": "Aglib.RingTheory.Flat.TorsionFreeBaseChange",
+      "transferred_native_declarations": [
+        "Module.torsionFree_baseChange"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "d336ad35629efc02a61975d555011e122941b787e1eb6c6b76b6f3654f2b5967"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.MinimalFlatBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "b2bd805d2fc33379b16390bd5c7ea09670e8b7a675b882c9039c568e81bf6177",
+      "destination_path": "Aglib/RingTheory/Ideal/MinimalPrime/FlatBaseChange.lean",
+      "destination_module": "Aglib.RingTheory.Ideal.MinimalPrime.FlatBaseChange",
+      "transferred_native_declarations": [
+        "Ideal.minimalPrime_map_iff",
+        "Ideal.minimalPrime_map_under"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal"
+      ],
+      "destination_sha256": "11c7ef8f15f32bc6b2c72b577a9c4e1d183f8d3cafc0c6b4c093eaad897e2c75"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.GoingDownMinimalPrime",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "00b85bfbfdaa8be4265e0f346c5d67d8f9e29caaebe4d679e75c6359df9bd690",
+      "destination_path": "Aglib/RingTheory/Ideal/MinimalPrime/GoingDown.lean",
+      "destination_module": "Aglib.RingTheory.Ideal.MinimalPrime.GoingDown",
+      "transferred_native_declarations": [
+        "Ideal.minimalPrime_map_prime_under",
+        "Ideal.minimalPrime_map_under_of_goingDown",
+        "Ideal.normal_integral_minimalPrime_contract"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal"
+      ],
+      "destination_sha256": "5f702a1d4ef7e632692b35d21cb7b27b07f9a7de86775caefb7e94831abc3079"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.IntegralClosure.FaithfullyFlat",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4572e8c667c8fbe37f07d5061ac10949cc0151e3e0e860f04c7f12d6ee16fbff",
+      "destination_path": "Aglib/RingTheory/IntegralClosure/FlatDescent.lean",
+      "destination_module": "Aglib.RingTheory.IntegralClosure.FlatDescent",
+      "transferred_native_declarations": [
+        "IsIntegrallyClosed.isIntegrallyClosed_of_faithfullyFlat"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsIntegrallyClosed"
+      ],
+      "destination_sha256": "7b37e9d5bea7458117f01a31247f2837569f0ad1cc40417ca01fd85847b6d581"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.RegularLocalRing.Normal",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "9179c6d9d165e8a73305c56dd74032778ace37d6f0f9e9a69ff2e6500bb2294c",
+      "destination_path": "Aglib/RingTheory/IntegralClosure/FractionRing.lean",
+      "destination_module": "Aglib.RingTheory.IntegralClosure.FractionRing",
+      "transferred_native_declarations": [
+        "IsFractionRing.dvd_of_isIntegral_div_of_normal_parameter",
+        "IsFractionRing.exists_integral_power_multiplier_not_dvd",
+        "IsFractionRing.exists_sub_mul_dvd_parameter",
+        "IsFractionRing.integralNumerators",
+        "IsFractionRing.isIntegral_div_iff_exists_dvd",
+        "IsFractionRing.isIntegral_div_of_prime_mul",
+        "IsFractionRing.mem_integralNumerators",
+        "Prime.dvd_of_prime_mul_dvd",
+        "Prime.dvd_of_prime_pow_mul_dvd"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsFractionRing",
+        "Prime"
+      ],
+      "destination_sha256": "d51633683f646e665a6112879cb9fac8d0b63b2fef4e00a5c2c2c90bed9827b6"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.KrullDimension.HorizontalPrime",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "93fe04e9bdd86badc55114f3a11faa205175813732c1eeb0aab5d5a5d223437b",
+      "destination_path": "Aglib/RingTheory/KrullDimension/HeightOnePrime.lean",
+      "destination_module": "Aglib.RingTheory.KrullDimension.HeightOnePrime",
+      "transferred_native_declarations": [
+        "IsLocalRing.exists_heightOne_prime_not_mem"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsLocalRing"
+      ],
+      "destination_sha256": "27c641e0f5d51379c3949f41b23e304f6653ed8cfa97cd7b5ed2e9d28ce859e9"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.KrullDimension.IntegralGoingDown",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4204b2004922b41c66cd30b9bc30cba3af3f825a33c80500d863df85d8c830ae",
+      "destination_path": "Aglib/RingTheory/KrullDimension/IntegralExtension.lean",
+      "destination_module": "Aglib.RingTheory.KrullDimension.IntegralExtension",
+      "transferred_native_declarations": [
+        "Ideal.height_eq_height_under",
+        "Ideal.height_eq_height_under_of_normal",
+        "PrimeSpectrum.primeSpectrum_height_comap"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal",
+        "PrimeSpectrum"
+      ],
+      "destination_sha256": "6a74e163855c151a87fd60490ef4e56c73524c292f7a9d749a7177c756ee25e0"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.KrullDimension.PolynomialField",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "1e52eb14146f6331c2031b69148f91644027ce2daca41a3111d644be80c0e435",
+      "destination_path": "Aglib/RingTheory/KrullDimension/Polynomial.lean",
+      "destination_module": "Aglib.RingTheory.KrullDimension.Polynomial",
+      "transferred_native_declarations": [
+        "Ideal.isMaximal_comap_of_finiteType_field",
+        "MvPolynomial.mvPolynomial_height_eq_card_of_isMaximal",
+        "MvPolynomial.mvPolynomial_localizationAtPrime_dimension_le",
+        "MvPolynomial.mvPolynomial_localizationAtPrime_dimension_of_isMaximal",
+        "MvPolynomial.mvPolynomial_localizationAtPrime_isRegularLocalRing"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal",
+        "MvPolynomial"
+      ],
+      "destination_sha256": "087c8c7e1b8efd362193fcd241bc25efce60bc373e3760ad914ad3b4b0045a72"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.KrullDimension.PrincipalOpenBound",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "6b3eef3e665da1ba177e95a6181757193ccef302286c2ce298add2e9b4b6038e",
+      "destination_path": "Aglib/RingTheory/KrullDimension/PrincipalOpen.lean",
+      "destination_module": "Aglib.RingTheory.KrullDimension.PrincipalOpen",
+      "transferred_native_declarations": [
+        "Ideal.height_eq_one_of_mem_minimalPrimes_span",
+        "Ideal.height_le_two_of_mem_minimalPrimes_span_pair",
+        "Ideal.two_le_height_of_mem_pair",
+        "IsLocalRing.exists_mem_maximalIdeal_avoiding",
+        "IsLocalRing.ringKrullDim_le_two_of_principal_open_height_le_one"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal",
+        "IsLocalRing"
+      ],
+      "destination_sha256": "d718e7522828cff24e74ba6f5bf6917385dbf173f083253ae298c088b6baa526"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "d15099f8ac6ef7764769d54446a0995386aec85b1b6770c405de472eb9fde981",
+      "destination_path": "Aglib/RingTheory/Length/ExactSequence.lean",
+      "destination_module": "Aglib.RingTheory.Length.ExactSequence",
+      "transferred_native_declarations": [
+        "Module.intLength",
+        "Module.intLength_add_of_exact",
+        "Module.intLength_exact_pair",
+        "Module.length_kernel_eq_cokernel"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "source_components": [
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "d15099f8ac6ef7764769d54446a0995386aec85b1b6770c405de472eb9fde981",
+          "transferred_native_declarations": [
+            "Module.length_kernel_eq_cokernel"
+          ]
+        },
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "26ee2397a837a665bc1b1c6f248fdacdc0d43009ea147acb68137233d7c5446d",
+          "transferred_native_declarations": [
+            "Module.intLength",
+            "Module.intLength_add_of_exact",
+            "Module.intLength_exact_pair"
+          ]
+        }
+      ],
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "a8eaee64851170536f71f5eb5f910bfdef3798ce02aaf8f00a7cc44afe7f6ac4"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.ParameterAvoidance",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "293606b51e7c17c4eaea2520338f4737ac6fd7508afbc6d9079c8edeeeee7ba8",
+      "destination_path": "Aglib/RingTheory/LocalRing/ParameterAvoidance.lean",
+      "destination_module": "Aglib.RingTheory.LocalRing.ParameterAvoidance",
+      "transferred_native_declarations": [
+        "IsLocalRing.exists_parameter_avoiding_minimalPrimes",
+        "IsLocalRing.isDomain_of_prime_parameter"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "0ca3d03b5ff85c9e1bd47560403fdfa36cb984b74c3a198e470eb32c279eb9c3"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.ParameterQuotient",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "848871057c33da3a84886d133b551c6c063b184f723f36db1409937abb1bfd8a",
+      "destination_path": "Aglib/RingTheory/LocalRing/ParameterQuotient.lean",
+      "destination_module": "Aglib.RingTheory.LocalRing.ParameterQuotient",
+      "transferred_native_declarations": [
+        "IsLocalRing.exists_generators_containing_parameter",
+        "IsLocalRing.spanFinrank_maximalIdeal_quotient_parameter_le"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "9de21005f322fe0bee6d4efd9185c3fce60615126a0d750671d85cf1de6ef134"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.IteratedLocalizationLength",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "0bf5bd73c760e4024c7e066d80383546a19e7973b329afa9562fb58bfb642b1c",
+      "destination_path": "Aglib/RingTheory/Localization/IteratedModuleLength.lean",
+      "destination_module": "Aglib.RingTheory.Localization.IteratedModuleLength",
+      "transferred_native_declarations": [
+        "Module.iterated_localized_length",
+        "Module.mem_support_iff_localized_length_ne_zero",
+        "Module.mem_support_localized_iff"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "3962140d8f30a6fd252349951f14417fce23506af24391862056d520e0587faf"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.FlatBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "1eb05acffb8c68c527a71b87bf9c9944f2ab7ca44c9de1944fd6e6449f7a7b16",
+      "destination_path": "Aglib/RingTheory/Localization/LengthFlatBaseChange.lean",
+      "destination_module": "Aglib.RingTheory.Localization.LengthFlatBaseChange",
+      "transferred_native_declarations": [
+        "Module.localized_length_flat_baseChange"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "964d59c12f6f6755f45483a2053d17b1ec301669a69529498e810036355a6fa4"
+    },
+    {
+      "source_module": "R5Lab.KTheory.Grayson.Cycle.LocalLength",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "12f3f8fbc4c284a725802bb602194f047b5963563237989bf5f46e58fdd1b8bf",
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "destination_path": "Aglib/RingTheory/Localization/LengthSurjective.lean",
+      "destination_module": "Aglib.RingTheory.Localization.LengthSurjective",
+      "transferred_native_declarations": [
+        "Localization.localMap_surjective",
+        "Module.length_localization_of_surjective"
+      ],
+      "native_namespaces": [
+        "Localization",
+        "Module"
+      ],
+      "destination_sha256": "4bb252934033a81cfe99d6659783826916ab95873dbdcda7a5c220c806519fdf"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.MonoidAlgebraNoetherian",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "eaea516e1a9e5acf1e1a6851d0011f13a8cdd85f2ea2a3a9590b6b84a4964863",
+      "destination_path": "Aglib/RingTheory/MonoidAlgebra/FiniteType.lean",
+      "destination_module": "Aglib.RingTheory.MonoidAlgebra.FiniteType",
+      "transferred_native_declarations": [
+        "MonoidAlgebra.monoidAlgebra_finiteType",
+        "MonoidAlgebra.monoidAlgebra_isNoetherianRing"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "MonoidAlgebra"
+      ],
+      "destination_sha256": "57161976dd3d531e4af48523178bcb39b18cf4aed0f8319e41bcaea8473291aa"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "26ee2397a837a665bc1b1c6f248fdacdc0d43009ea147acb68137233d7c5446d",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Additivity.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Additivity",
+      "transferred_native_declarations": [
+        "Int.integer_telescope",
+        "Module.finitePrincipal_congr",
+        "Module.principalEuler_add_of_exact",
+        "Module.principalEuler_congr"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Int",
+        "Module"
+      ],
+      "destination_sha256": "d5ff6993103c94e38044fd6168cfd42132939fd12677a62aed046931b9bcf064"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAssociativity",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "bf1fac16ef81cd1e488dd55b90c1a3ebb8edcd9faa70f6691fe1b5843db48f74",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Associativity.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Associativity",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.principalEuler_eq_weighted_sum",
+        "Module.PrimeFiltrationFrom.principalEuler_eq_weighted_sum_of_supportDim",
+        "Module.finitePrincipal_minimalPrime",
+        "Module.mem_moduleMinimalPrimes",
+        "Module.minimalPrimeCokernelTerm",
+        "Module.minimalPrimeEulerTerm",
+        "Module.minimalPrimeEulerTerm_eq_cokernelTerm",
+        "Module.moduleMinimalPrimes",
+        "Module.principalCokernel_associativity",
+        "Module.principalEuler_associativity",
+        "Module.scalar_regular_primeQuotient",
+        "Module.supportDim_le_one_of_finite_cokernel",
+        "Module.supportDim_nonpos_of_length_ne_top",
+        "Module.support_prime_minimal_or_maximal"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "edd99ff45b0aa256801090f7f26ef1b6807cabaf17fbdc1957402b01870928e9"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "d15099f8ac6ef7764769d54446a0995386aec85b1b6770c405de472eb9fde981",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Basic.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Basic",
+      "transferred_native_declarations": [
+        "Module.FinitePrincipal",
+        "Module.finitePrincipal_of_regular",
+        "Module.principalEuler",
+        "Module.principalEuler_of_regular",
+        "Module.principalEuler_zero_of_finite_length"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "source_components": [
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "d15099f8ac6ef7764769d54446a0995386aec85b1b6770c405de472eb9fde981",
+          "transferred_native_declarations": [
+            "Module.principalEuler",
+            "Module.principalEuler_zero_of_finite_length",
+            "Module.principalEuler_of_regular"
+          ]
+        },
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "26ee2397a837a665bc1b1c6f248fdacdc0d43009ea147acb68137233d7c5446d",
+          "transferred_native_declarations": [
+            "Module.FinitePrincipal",
+            "Module.finitePrincipal_of_regular"
+          ]
+        }
+      ],
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "3c94c4ae440d8f2d7dbaecccae35f2765d3fc8f166538b4342e01fdb7a649dcc"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerFiltration",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "860f378ac24bc0033903038bcae32ff592ede183c1c0378541bfd5a3a092a1f6",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Filtration.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Filtration",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.principalEuler_eq_sum",
+        "Module.principalEuler_add_of_submodule_le",
+        "Module.principalEuler_of_quotientFiltration"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "fcc65acc9c2dc39e2a39503c98e4ddce05643a15d6c66f641e1aa0871654a9eb"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerInterchange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "4272b5e8e6303deec26e073b19c1243de481d2a4907315493549841749a42285",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Interchange.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Interchange",
+      "transferred_native_declarations": [
+        "Module.finitePrincipal_doubleCokernel",
+        "Module.principalEuler_associativity_of_minimalRegular",
+        "Module.principalEuler_interchange",
+        "Module.scalarCokernelMap_lsmul",
+        "Module.scalarCrossKernelEquiv",
+        "Module.scalarDoubleCokernelEquiv"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "d2a9ac82fd82fc4ef4ea0d4a59cc82c5ee2176ad6e8a8170103c53260866ef29"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerScalarTransport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "f3aef136d6013533d3a6e295159d993b7c0b3f74e1079bb8a7635f13a88e5fd4",
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Localization.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Localization",
+      "transferred_native_declarations": [
+        "Module.principalEuler_localization_of_surjective"
+      ],
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "f56eb368f04b944661e78c867b4dddf213bd389359f986696ee71476fd656fb0"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5dd0cee73230a6d3cf58f6ac525d8aa880a5bc6e7ad08eb823b6f0e2913099eb",
+      "destination_path": "Aglib/RingTheory/Multiplicity/PrincipalEuler/Support.lean",
+      "destination_module": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Support",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.finitePrincipal_terms",
+        "Module.PrimeFiltrationFrom.principalEuler_eq_sum_of_finite_cokernel",
+        "Module.finitePrincipal_of_support_subset",
+        "Module.scalar_mem_annihilator_cokernel",
+        "Module.scalar_mem_annihilator_kernel",
+        "Module.support_scalarCokernel"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "b7948445640ffbcad86e5be9efec6b97f382b3b89e7cbdfbf5076c647e95ed1e"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrimeFiltration",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "db7d2a0e0feca332afce29c5912aa3245bbc0812ffbbad273c98da5219662b62",
+      "destination_path": "Aglib/RingTheory/PrimeFiltration/Basic.lean",
+      "destination_module": "Aglib.RingTheory.PrimeFiltration.Basic",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom",
+        "Module.exists_prime_cyclic_submodule",
+        "Module.nonempty_primeFiltration",
+        "Module.nonempty_primeFiltrationFrom",
+        "Submodule.comapMkQQuotientEquiv"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Submodule"
+      ],
+      "destination_sha256": "7523aa419706ee6c39c2a4cb1a25d4863f86790ed8e368309f460bf9b12478ab"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5dd0cee73230a6d3cf58f6ac525d8aa880a5bc6e7ad08eb823b6f0e2913099eb",
+      "destination_path": "Aglib/RingTheory/PrimeFiltration/Length.lean",
+      "destination_module": "Aglib.RingTheory.PrimeFiltration.Length",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.length_eq_add_sum",
+        "Module.length_add_of_submodule_le"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "71a152173546e1db110afea5332dc8beb05b30ef12dfe32187c058a3df8db951"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrimeFiltrationMultiplicity",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "0f5acb5ba60a99f298e2f85fe90763dcc7f3366b82dca8eb5b5c7bb8dd0ff019",
+      "destination_path": "Aglib/RingTheory/PrimeFiltration/Multiplicity.lean",
+      "destination_module": "Aglib.RingTheory.PrimeFiltration.Multiplicity",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.exists_prime_le_of_mem_support",
+        "Module.PrimeFiltrationFrom.length_baseChange_eq_add_sum",
+        "Module.PrimeFiltrationFrom.localized_length_eq_count",
+        "Module.PrimeFiltrationFrom.localized_length_eq_count_of_bot",
+        "Module.PrimeFiltrationFrom.minimalPrime_mem_primes",
+        "Module.length_baseChange_add_of_submodule_le",
+        "Module.localized_primeQuotient_length"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module",
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "85f350ec00ac8f330effc515726895ae047bae97051926b2ff961e3b89713642"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerFiltration",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "860f378ac24bc0033903038bcae32ff592ede183c1c0378541bfd5a3a092a1f6",
+      "destination_path": "Aglib/RingTheory/PrimeFiltration/Primes.lean",
+      "destination_module": "Aglib.RingTheory.PrimeFiltration.Primes",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.primes"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "05b9865b203e71076675c3285f990b5a95293b08143f7dd6076062a5a1dbb1fb"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5dd0cee73230a6d3cf58f6ac525d8aa880a5bc6e7ad08eb823b6f0e2913099eb",
+      "destination_path": "Aglib/RingTheory/PrimeFiltration/Support.lean",
+      "destination_module": "Aglib.RingTheory.PrimeFiltration.Support",
+      "transferred_native_declarations": [
+        "Module.PrimeFiltrationFrom.primeFactor_support_subset",
+        "Module.PrimeFiltrationFrom.prime_mem_support",
+        "Module.PrimeFiltrationFrom.primes_isPrime"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module.PrimeFiltrationFrom"
+      ],
+      "destination_sha256": "a0566da845fcbbc48a0a08f89c23b4820b847e8cfc88e1880ee57754f4318117"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.DimensionZero",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "6b0b3548725bd7e9efdc14cea4479705df42476ab9051520efcea03769900786",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/DimensionZero.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.DimensionZero",
+      "transferred_native_declarations": [
+        "IsRegularLocalRing.isField_of_regularLocal_dimension_zero"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsRegularLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "3999941215781c9f35ad905d21dc8c0f8be9415be2b53a3f1c3795c84dda1841"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.Domain",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "8539bed6a2a2c8d416bc7586712cb3c95762e3678bb8be07f8ba78b232c27f74",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/Domain.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.Domain",
+      "transferred_native_declarations": [
+        "IsRegularLocalRing.isDomain_of_regularLocal",
+        "IsRegularLocalRing.isDomain_of_regularLocal_dimension"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsRegularLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "a7e305af36286ef23e9ac1087aed7bb3f66f51ebcea7adb0298023ef8b748298"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.RegularLocalRing.Etale",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "5f9a38edf67583b89fe22d3eadbbe842f0c1b40bd26edc6c47b5df0bafcfe343",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/Etale.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.Etale",
+      "transferred_native_declarations": [
+        "Algebra.FormallyUnramified.isRegularLocalRing_of_flat",
+        "Algebra.FormallyUnramified.ringKrullDim_eq_of_flat"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.FormallyUnramified"
+      ],
+      "destination_sha256": "e0a972c29f8b59ea6bc7a94223e4f915c36bc42ff1e84b8218227c42d36f2aeb"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.RegularLocalRing.Normal",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "9179c6d9d165e8a73305c56dd74032778ace37d6f0f9e9a69ff2e6500bb2294c",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/Normal.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.Normal",
+      "transferred_native_declarations": [
+        "IsRegularLocalRing.exists_prime_parameter_not_dvd",
+        "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal",
+        "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension",
+        "IsRegularLocalRing.isIntegrallyClosed_of_regularLocal_dimension_le_one"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsRegularLocalRing"
+      ],
+      "destination_sha256": "8fb3848b5255ba0c6d2ded4e0f94fc28f6dde03c9c78611799d464215e65e0ad"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.ParameterQuotient",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "848871057c33da3a84886d133b551c6c063b184f723f36db1409937abb1bfd8a",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/ParameterQuotient.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.ParameterQuotient",
+      "transferred_native_declarations": [
+        "IsRegularLocalRing.regularLocal_quotient_parameter"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsRegularLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "1ddb0a9389e7f4dabacf30ed248231e26f77d32483acc46ededbe8080c602c73"
+    },
+    {
+      "source_module": "Quillen.Algebra.RegularLocal.Parameters",
+      "source_repository": "quillen-k-theory",
+      "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
+      "source_sha256": "2301e5157a8695fc5aff1299a27e2f6e5fd5fe0fe80fdc797df0b78db69d0f5f",
+      "destination_path": "Aglib/RingTheory/RegularLocalRing/Parameters.lean",
+      "destination_module": "Aglib.RingTheory.RegularLocalRing.Parameters",
+      "transferred_native_declarations": [
+        "IsRegularLocalRing.exists_regular_parameter",
+        "IsRegularLocalRing.isSMulRegular_of_regularLocal_ne_zero"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "IsRegularLocalRing"
+      ],
+      "accepted_current_source": {
+        "repository_path": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+        "revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+        "selected_source_bytes": "Unchanged from recorded extraction SHA-256; main attests all selected 133 Quillen source files are byte-identical at this revision."
+      },
+      "destination_sha256": "efaacd8cdf5e7a99967d04ff1c7050110b5adaefc0429b97532c691218dfe98b"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.DiscreteValuationRing.UnramifiedRoots",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "0ff5d84f4fc799b1f1f162206a2913476d4ebf9d10f5cccd5f0ea04bcfc2dc5d",
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "destination_path": "Aglib/RingTheory/RootsOfUnity/Adjoin.lean",
+      "destination_module": "Aglib.RingTheory.RootsOfUnity.Adjoin",
+      "transferred_native_declarations": [
+        "Algebra.RootsOfUnity.RootAlgebra",
+        "Algebra.RootsOfUnity.root",
+        "Algebra.RootsOfUnity.rootAlgebra_finite",
+        "Algebra.RootsOfUnity.rootAlgebra_formallyUnramified",
+        "Algebra.RootsOfUnity.rootEtalePair",
+        "Algebra.RootsOfUnity.rootEtalePair_hasMap",
+        "Algebra.RootsOfUnity.rootEtaleSurjection",
+        "Algebra.RootsOfUnity.rootEtaleSurjection_surjective",
+        "Algebra.RootsOfUnity.root_coe",
+        "Algebra.RootsOfUnity.root_isIntegral",
+        "Algebra.RootsOfUnity.root_isUnit",
+        "Algebra.RootsOfUnity.root_pow"
+      ],
+      "native_namespaces": [
+        "Algebra.RootsOfUnity"
+      ],
+      "destination_sha256": "102f98c36fad6eb5a592a56ca7e4451cf448e9e4aac838bb5a7a0dfd7a47db16"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerScalarTransport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "f3aef136d6013533d3a6e295159d993b7c0b3f74e1079bb8a7635f13a88e5fd4",
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "destination_path": "Aglib/RingTheory/ScalarHomology/BaseChange.lean",
+      "destination_module": "Aglib.RingTheory.ScalarHomology.BaseChange",
+      "transferred_native_declarations": [
+        "Module.principalCokernelBaseChangeEquiv",
+        "Module.principalSubmodule_eq_range",
+        "Module.scalarCokernelRestrictionEquiv",
+        "Module.scalarKernelBaseChangeEquiv",
+        "Module.scalarKernelRestrictionEquiv"
+      ],
+      "source_components": [
+        {
+          "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerScalarTransport",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "f3aef136d6013533d3a6e295159d993b7c0b3f74e1079bb8a7635f13a88e5fd4",
+          "source_subset": "The three general scalar-kernel/cokernel base-change and restriction equivalences listed in transferred_native_declarations; the Euler identity has a separate destination owner.",
+          "transferred_native_declarations": [
+            "Module.scalarKernelBaseChangeEquiv",
+            "Module.scalarKernelRestrictionEquiv",
+            "Module.scalarCokernelRestrictionEquiv"
+          ]
+        },
+        {
+          "source_module": "R5Lab.KTheory.Grayson.Cycle.PrincipalFaceCokernel",
+          "source_repository": "r5-lab",
+          "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+          "source_sha256": "3899115099799263e12a0de1fdd0cfb9e975e356e2ebedd14e5ed955641f5058",
+          "source_subset": "The two generic helpers principalSubmodule_eq_range and principalCokernelBaseChangeEquiv, source lines 140–169; no application interfaces.",
+          "transferred_native_declarations": [
+            "Module.principalSubmodule_eq_range",
+            "Module.principalCokernelBaseChangeEquiv"
+          ]
+        }
+      ],
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "09828470e3dd8e90e19bcee1c892a2bedcdc2a85737e7207aed945ee8f5f4a92"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "26ee2397a837a665bc1b1c6f248fdacdc0d43009ea147acb68137233d7c5446d",
+      "destination_path": "Aglib/RingTheory/ScalarHomology/Basic.lean",
+      "destination_module": "Aglib.RingTheory.ScalarHomology.Basic",
+      "transferred_native_declarations": [
+        "Module.ScalarCokernel",
+        "Module.ScalarKernel",
+        "Module.principalConnecting",
+        "Module.principalConnecting_exact_left",
+        "Module.principalConnecting_exact_right",
+        "Module.scalarCokernelEquiv",
+        "Module.scalarCokernelMap",
+        "Module.scalarCokernelMap_exact",
+        "Module.scalarCokernelMap_mk",
+        "Module.scalarCokernelMap_surjective",
+        "Module.scalarKernelEquiv",
+        "Module.scalarKernelMap",
+        "Module.scalarKernelMap_apply",
+        "Module.scalarKernelMap_exact",
+        "Module.scalarKernelMap_injective",
+        "Module.scalarSquare"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Module"
+      ],
+      "destination_sha256": "8a5676d6bdabe5ddc0827156fc0cb2a91e8aa51d15731ba3159655de3ff4cbc2"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.RegularLocalRing.Smooth",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "bc58a719836727c2f58b5e288e7baff0572303f818aa7f969bd8030b6f822fee",
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "destination_path": "Aglib/RingTheory/Smooth/Reduced.lean",
+      "destination_module": "Aglib.RingTheory.Smooth.Reduced",
+      "transferred_native_declarations": [
+        "Algebra.Etale.etale_isReduced",
+        "Algebra.IsStandardSmooth.standardSmooth_isReduced",
+        "Algebra.Smooth.smooth_isReduced"
+      ],
+      "native_namespaces": [
+        "Algebra.Etale",
+        "Algebra.IsStandardSmooth",
+        "Algebra.Smooth"
+      ],
+      "destination_sha256": "c9be16a968cb8ef63a3a6f6af9c5c5cfdfa0de39a3a32279818e3c87b19dca1c"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.LocalLength.LocalizedMinimalSupport",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "c90ea23ec2031a113bd73f186233dae0e4d63466fdeb6ee64d0a6dbd391bdcdd",
+      "destination_path": "Aglib/RingTheory/Support/Localization.lean",
+      "destination_module": "Aglib.RingTheory.Support.Localization",
+      "transferred_native_declarations": [
+        "Ideal.minimalPrimes_eq_of_prime_le_iff",
+        "Module.annihilator_le_localized_iff",
+        "Module.localizedMinimalSupportEquiv",
+        "Module.localizedMinimalSupportEquiv_apply_val",
+        "Module.localizedMinimalSupportEquiv_symm_apply_val",
+        "Module.localized_minimalSupport_iff"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Ideal",
+        "Module"
+      ],
+      "destination_sha256": "44903358412d8e645adb67f50d9c0f1b5bc109de6d5af5d87b45226dfe6a2ae8"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.TensorProduct.Domain",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "66ee85396cc4b6eb3599a632079ab82b5e6dc19305dd091401bd6df5882cefdc",
+      "destination_path": "Aglib/RingTheory/TensorProduct/Domain.lean",
+      "destination_module": "Aglib.RingTheory.TensorProduct.Domain",
+      "transferred_native_declarations": [
+        "Algebra.FiniteType.exists_specialization_ne_zero",
+        "Algebra.TensorProduct.specializeTensor",
+        "Algebra.TensorProduct.specializeTensor_coordinate",
+        "Algebra.TensorProduct.tensorProduct_isDomain",
+        "Algebra.TensorProduct.tensorProduct_noZeroDivisors",
+        "Algebra.TensorProduct.tensorProduct_noZeroDivisors_finiteType"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.FiniteType",
+        "Algebra.TensorProduct"
+      ],
+      "destination_sha256": "371fac735aa870aabb3148eb7aabb1ce94698de8e75524c20904b43f04c70df2"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.FlatEqualizerBaseChange",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "f4d31b6a34353ae5986f29d3b06d6a807afca6b3bda63adf8d973af3412a5590",
+      "destination_path": "Aglib/RingTheory/TensorProduct/Equalizer.lean",
+      "destination_module": "Aglib.RingTheory.TensorProduct.Equalizer",
+      "transferred_native_declarations": [
+        "AlgHom.Equalizer.baseMap",
+        "AlgHom.Equalizer.equalizer_exact",
+        "AlgHom.Equalizer.equiv",
+        "AlgHom.Equalizer.equiv_tmul",
+        "AlgHom.Equalizer.map",
+        "AlgHom.Equalizer.map_injective",
+        "AlgHom.Equalizer.map_surjective",
+        "AlgHom.Equalizer.map_tmul",
+        "AlgHom.Equalizer.tensorInclusion_mem"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "AlgHom.Equalizer"
+      ],
+      "destination_sha256": "f84d00c1c36cc1ad2899f798956e3d55cfde11912d642f690f2b43e21b28d6bf"
+    },
+    {
+      "source_module": "R5Lab.RingTheory.Descent.PurelyInseparableTensor",
+      "source_repository": "r5-lab",
+      "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
+      "source_sha256": "b05313682caa392cba7c7500b9aaa26730854a0f8daf6e06b6b769f2ef7d5d7c",
+      "destination_path": "Aglib/RingTheory/TensorProduct/PurelyInseparable.lean",
+      "destination_module": "Aglib.RingTheory.TensorProduct.PurelyInseparable",
+      "transferred_native_declarations": [
+        "Algebra.FormallyEtale.formallyEtale_comp_bijective",
+        "Algebra.TensorProduct.tensorAugmentation",
+        "Algebra.TensorProduct.tensorAugmentation_algebraMap",
+        "Algebra.TensorProduct.tensorAugmentation_ker_isNilpotent",
+        "Algebra.TensorProduct.tensorAugmentation_ker_le_nilradical",
+        "Algebra.TensorProduct.tensorAugmentation_surjective",
+        "Algebra.TensorProduct.tensorAugmentation_tmul"
+      ],
+      "source_subset": "Exactly the source declarations listed in transferred_native_declarations; other portions of these sources have separate destination owners.",
+      "native_namespaces": [
+        "Algebra.FormallyEtale",
+        "Algebra.TensorProduct"
+      ],
+      "destination_sha256": "fc2888bddd5868bb526ac547541bed0bb7fc2b8e9fb34ec1113af307812c5a60"
+    }
+  ],
+  "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

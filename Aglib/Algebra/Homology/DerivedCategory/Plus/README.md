@@ -1,0 +1,9 @@
+# D+ triangles, bounded comparison and one-sided contraction
+
+[ShortExact](ShortExact.lean), imported as `Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExact`, gives `DerivedCategory.Plus.triangleOfSESPlus`, `triangleOfSESPlus_distinguished` and `triangleOfSESPlusMap`. The coefficient category is abelian with `HasDerivedCategory`; the supplied short complex of bounded-below complexes has an actual short-exact underlying ordinary complex. The triangle and its functorial arrows use that sequence, without a chosen injective resolution.
+
+[SingleTriangle](SingleTriangle.lean) and [SingleTriangleNaturality](SingleTriangleNaturality.lean) specialize to actual single objects and their original triangle maps. [BoundedComparison](BoundedComparison.lean) gives `DerivedCategory.Plus.isIso_app_of_term_bounds`: an already defined shift-compatible triangulated comparison is propagated from degree-zero single objects under actual lower and upper zero-term bounds. The comparison is not an unbounded-above theorem or a natural model-choice result.
+
+[ExactDerivedContraction](ExactDerivedContraction.lean) gives `DerivedCategory.Plus.exactDerivedContractionIso` and its unit equation. It assumes an abelian category with enough injectives and a derived category, additive endofunctors `F,G`, `G.PreservesHomology`, and an actual `F ⋙ G ≅ Id`. The conclusion is the one-sided `RF ⋙ RG ≅ Id` with the installed unit compatibility. No opposite-composition isomorphism or two-sided equivalence is supplied.
+
+The lower subjects are [distinguished-triangle comparison](../../../../CategoryTheory/Triangulated/README.md), [actual truncation layers](../../Embedding/StupidTrunc/README.md) and [right-derived unit comparisons](../RightDerivedFunctorPlus/README.md). Godement contraction and original scheme D+ comparison are the current consumers. Source correspondence is recorded in [latest-homology](../../../../../doc/migration/latest-homology.json).

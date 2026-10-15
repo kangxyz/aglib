@@ -1,0 +1,4220 @@
+{
+  "phase": "Authorized general cuts authoring; four independent roots principal stage17 exit 0; coupled accepted leaves individually checked with exact current hashes.",
+  "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+  "source_authority": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
+  "destination_head": "Initial Aglib source snapshot; exact current source identities and integration evidence are recorded in doc/migration/integration.json.",
+  "entries": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+      "source": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeFiniteCoverInduction.lean",
+      "ranges": [
+        [
+          1,
+          113
+        ]
+      ],
+      "namespace": "AlgebraicGeometry.Scheme.AffineInduction",
+      "source_names": [
+        "compact_finiteAffineUnion",
+        "of_finiteAffineUnion_of_separated",
+        "of_compactOpen_of_separated",
+        "of_compactOpen",
+        "of_qcqs"
+      ],
+      "api": [
+        "AlgebraicGeometry.Scheme.AffineInduction.of_finiteAffineUnion_of_separated",
+        "AlgebraicGeometry.Scheme.AffineInduction.of_compactOpen_of_separated",
+        "AlgebraicGeometry.Scheme.AffineInduction.of_compactOpen",
+        "AlgebraicGeometry.Scheme.AffineInduction.of_qcqs"
+      ],
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "fa0bd7ed0040404c3e091735082619a2a3bc7273caec266734ff959b53b854e0",
+      "destination_module": "Aglib.AlgebraicGeometry.Properties.AffineInduction",
+      "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+      "validation": "Principal stage17 exit 0 under current package flags. Mathematical source body unchanged afterward; AffineInduction received only source-range comment correction 114→113, passing bounded static line check.",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.NativeFiniteCoverInduction",
+      "source_repository": "quillen-k-theory",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeFiniteCoverInduction.lean",
+      "source_ranges": [
+        [
+          1,
+          113
+        ]
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.AffineInduction"
+      ],
+      "source_lines": 113,
+      "selection": {
+        "declarations": [
+          "compact_finiteAffineUnion",
+          "of_finiteAffineUnion_of_separated",
+          "of_compactOpen_of_separated",
+          "of_compactOpen",
+          "of_qcqs"
+        ],
+        "source_ranges": [
+          [
+            1,
+            113
+          ]
+        ],
+        "scope": "general exact cut; generic TruncGE lift recorded separately where applicable"
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+      "source": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/BassPositiveCharts.lean",
+      "ranges": [
+        [
+          141,
+          152
+        ]
+      ],
+      "namespace": "AlgebraicGeometry.Scheme.PolynomialLaurent",
+      "source_names": [
+        "polynomialZeroSection",
+        "polynomialZeroSection_projection"
+      ],
+      "api": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialZeroSection",
+        "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialZeroSection_projection"
+      ],
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "0db622409af6393aa5dd691ccba71a7f4ea6809bac45fe9d1c4a24cfe15bc9d7",
+      "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ZeroSection",
+      "destination_sha256": "39b98eb9d84912ab25b6d1e91225e1884982197134e64111934aa836f1ac1bcb",
+      "validation": "Principal stage17 exit 0 under current package flags. Mathematical source body unchanged afterward; AffineInduction received only source-range comment correction 114→113, passing bounded static line check.",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.BassPositiveCharts",
+      "source_repository": "quillen-k-theory",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/BassPositiveCharts.lean",
+      "source_ranges": [
+        [
+          141,
+          152
+        ]
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.PolynomialLaurent"
+      ],
+      "source_lines": 209,
+      "selection": {
+        "declarations": [
+          "polynomialZeroSection",
+          "polynomialZeroSection_projection"
+        ],
+        "source_ranges": [
+          [
+            141,
+            152
+          ]
+        ],
+        "scope": "general exact cut; generic TruncGE lift recorded separately where applicable"
+      }
+    },
+    {
+      "path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+      "source": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedBelowComparison.lean",
+      "ranges": [
+        [
+          117,
+          125
+        ]
+      ],
+      "namespace": "CochainComplex",
+      "source_names": [
+        "fromGoodTruncation",
+        "fromGoodTruncation_fac"
+      ],
+      "api": [
+        "CochainComplex.fromTruncGE",
+        "CochainComplex.πTruncGE_fromTruncGE"
+      ],
+      "formalization_change": "Explicit authorized generic lift from X.Modules to an arbitrary abelian category A with independent object/morphism universes u,v. The actual original proof uses only these cochain truncation APIs. Original scheme input is recovered by A := X.Modules; f:L→K and K.IsStrictlyGE a are unchanged.",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "8fc2ddec29ee432d99f89dd2ef79a0149db1506a0190d7a7ff5db5db85a11a58",
+      "destination_module": "Aglib.Algebra.Homology.Embedding.CochainComplex.TruncGE",
+      "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+      "validation": "Principal stage17 exit 0 under current package flags. Mathematical source body unchanged afterward; AffineInduction received only source-range comment correction 114→113, passing bounded static line check.",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.BoundedBelowComparison",
+      "source_repository": "quillen-k-theory",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedBelowComparison.lean",
+      "source_ranges": [
+        [
+          117,
+          125
+        ]
+      ],
+      "destination_path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "source_lines": 186,
+      "selection": {
+        "declarations": [
+          "fromGoodTruncation",
+          "fromGoodTruncation_fac"
+        ],
+        "source_ranges": [
+          [
+            117,
+            125
+          ]
+        ],
+        "scope": "general exact cut; generic TruncGE lift recorded separately where applicable"
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean",
+      "source": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeBinaryUnion.lean",
+      "ranges": [
+        [
+          44,
+          50
+        ]
+      ],
+      "namespace": "AlgebraicGeometry.Scheme.Hom",
+      "source_names": [
+        "cartesian_openRange"
+      ],
+      "api": [
+        "AlgebraicGeometry.Scheme.Hom.opensRange_of_isPullback"
+      ],
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "753edb4d726375560ba033777b732becd608e08ed46eed0408de42c90ba10b91",
+      "destination_module": "Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian",
+      "destination_sha256": "72aa0f5a02522b33d8bf0947dc5313e267f58e54e02c069b9db7416354f941f9",
+      "validation": "Principal stage17 exit 0 under current package flags. Mathematical source body unchanged afterward; AffineInduction received only source-range comment correction 114→113, passing bounded static line check.",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.NativeBinaryUnion",
+      "source_repository": "quillen-k-theory",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeBinaryUnion.lean",
+      "source_ranges": [
+        [
+          44,
+          50
+        ]
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Hom"
+      ],
+      "source_lines": 99,
+      "selection": {
+        "declarations": [
+          "cartesian_openRange"
+        ],
+        "source_ranges": [
+          [
+            44,
+            50
+          ]
+        ],
+        "scope": "general exact cut; generic TruncGE lift recorded separately where applicable"
+      }
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/CategoryTheory/Limits/BiproductPushout.lean",
+      "source_module": "Quillen.CategoryTheory.Limits.BiproductPushout",
+      "source_sha256": "ffe7ed6ea79b2f1ecfc9fd4d2f2e40a051b2e43710b9d9ffc78b70669a25c0aa",
+      "source_lines": 52,
+      "source_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "source_names": [
+        "isPushout_biprod_map"
+      ],
+      "source_conditions": [
+        "C:Type u, Category.{v} C, Preadditive C, HasBinaryBiproducts C; two actual displayed pushouts. Required by the identity-cone pushout proof; no Waldhausen, mono or split premise."
+      ],
+      "destination_path": "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
+      "destination_module": "Aglib.CategoryTheory.Limits.BiproductPushout",
+      "destination_sha256": "cf194724895a73c7fab6749217deddbc679b0a49999165594e7646ef41234307",
+      "native_namespaces": [
+        "CategoryTheory.Limits"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "isPushout_biprod_map"
+        ],
+        "source_ranges": [
+          [
+            1,
+            52
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.CategoryTheory.Limits.BiproductPushout.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Waldhausen/QuillenComparison/QuotientCalculus.lean",
+      "source_module": "Quillen.Waldhausen.QuillenComparison.QuotientCalculus",
+      "source_sha256": "942e8b7f327eddbf9c3cde6a7ff495297e8a27e398ff1ab706453073d9955e5d",
+      "source_lines": 110,
+      "source_ranges": [
+        [
+          31,
+          49
+        ]
+      ],
+      "source_names": [
+        "isPushoutOfZeroCokernel"
+      ],
+      "source_conditions": [
+        "C:Type u, Category.{v} C, Preadditive C; displayed cokernel universal property hp, IsZero Z and actual maps z,q. No chosen Waldhausen zero or exact structure premise."
+      ],
+      "destination_path": "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
+      "destination_module": "Aglib.CategoryTheory.Limits.Shapes.CokernelPushout",
+      "destination_sha256": "d3f74f41eefd1452aa42c364d527aa165747f2c2c78c6c9cd4f7f1db0fbdeec0",
+      "native_namespaces": [
+        "CategoryTheory.Limits"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "isPushoutOfZeroCokernel"
+        ],
+        "source_ranges": [
+          [
+            31,
+            49
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.CategoryTheory.Limits.Shapes.CokernelPushout.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativePhiObjects.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativePhiObjects",
+      "source_sha256": "a0c31550c8b4ac9090c49b8d681d0fb83eb6f2232085781c80bd9306a82556fa",
+      "source_lines": 147,
+      "source_ranges": [
+        [
+          102,
+          109
+        ]
+      ],
+      "source_names": [
+        "coprod_isZero"
+      ],
+      "source_conditions": [
+        "Arbitrary Category C with zero morphisms; actual A,B with HasBinaryCoproduct A B and both IsZero. Required by admitted coprod_acyclic."
+      ],
+      "destination_path": "Aglib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
+      "destination_module": "Aglib.CategoryTheory.Limits.Shapes.ZeroObjects",
+      "destination_sha256": "b80ece5d936df35d8d1bb46042bdcca1bcb388e06e5674762c2f9c87a1d1d06d",
+      "native_namespaces": [
+        "CategoryTheory.Limits"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "coprod_isZero"
+        ],
+        "source_ranges": [
+          [
+            102,
+            109
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.CategoryTheory.Limits.Shapes.ZeroObjects.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Waldhausen/SplitComplexes/FactorizationFunctor.lean",
+      "source_module": "Quillen.Waldhausen.SplitComplexes.FactorizationFunctor",
+      "source_sha256": "bb3576f24fe649de3950079b904d286221a10cdc9fc8832a80cd4bf2bfa1a977",
+      "source_lines": 105,
+      "source_ranges": [
+        [
+          34,
+          42
+        ]
+      ],
+      "source_names": [
+        "identityConeFunctor"
+      ],
+      "source_conditions": [
+        "A:Type u, Category.{v} A, Abelian A; actual mappingCone(identity), functorially on all integer cochain complexes. The other factorization/model declarations are not dependencies."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
+      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "selection": {
+        "declarations": [
+          "identityConeFunctor"
+        ],
+        "source_ranges": [
+          [
+            34,
+            42
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Waldhausen/Cylinder/Pushout.lean",
+      "source_module": "Quillen.Waldhausen.Cylinder.Pushout",
+      "source_sha256": "b760358f4aa9027f932f99e0995fa531b339463b1f583f7e1ae8891b0e893514",
+      "source_lines": 91,
+      "source_ranges": [
+        [
+          32,
+          42
+        ],
+        [
+          43,
+          54
+        ],
+        [
+          55,
+          62
+        ],
+        [
+          63,
+          81
+        ]
+      ],
+      "source_names": [
+        "isPushout_of_degreewise",
+        "identityConeTermIso",
+        "identityConeTermIso_naturality",
+        "identityConeFunctor_map_isPushout"
+      ],
+      "source_conditions": [
+        "Arbitrary abelian A with independent object/morphism universes u,v; actual degreewise pushouts and neighboring-term biproducts. No Waldhausen structure assumption in this cut."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
+      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "selection": {
+        "declarations": [
+          "isPushout_of_degreewise",
+          "identityConeTermIso",
+          "identityConeTermIso_naturality",
+          "identityConeFunctor_map_isPushout"
+        ],
+        "source_ranges": [
+          [
+            32,
+            42
+          ],
+          [
+            43,
+            54
+          ],
+          [
+            55,
+            62
+          ],
+          [
+            63,
+            81
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Waldhausen/Cylinder/ZeroEndpoint.lean",
+      "source_module": "Quillen.Waldhausen.Cylinder.ZeroEndpoint",
+      "source_sha256": "854e6ef243c7560d5891a3684ac31ad97ee34a8810606e993a7da90e5a9e61ab",
+      "source_lines": 72,
+      "source_ranges": [
+        [
+          30,
+          39
+        ]
+      ],
+      "source_names": [
+        "identityCone_isZero"
+      ],
+      "source_conditions": [
+        "Arbitrary abelian A; actual zero-complex input. No native K/path/model premise."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
+      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "selection": {
+        "declarations": [
+          "identityCone_isZero"
+        ],
+        "source_ranges": [
+          [
+            30,
+            39
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Algebra/Homology/MappingConeBiprod.lean",
+      "source_module": "Quillen.Algebra.Homology.MappingConeBiprod",
+      "source_sha256": "4b95511976c458eb12ca317b8f4ac2190ccdcdd40f065cdc57c796359d8b291c",
+      "source_lines": 74,
+      "source_ranges": [
+        [
+          32,
+          41
+        ]
+      ],
+      "source_names": [
+        "mappingCone_map_add"
+      ],
+      "source_conditions": [
+        "Generic preadditive category with binary biproducts and independent object/morphism universes; needed only for identity-cone additivity. May remain a private exact helper in Identity if no other admitted consumer needs public export."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
+      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "selection": {
+        "declarations": [
+          "mappingCone_map_add"
+        ],
+        "source_ranges": [
+          [
+            32,
+            41
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/FlasqueShift.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.FlasqueShift",
+      "source_sha256": "78944f4baecd627e51378eba3c20d6c215bd1e010a46566c0bfc2cf673a8fd62",
+      "source_lines": 221,
+      "source_ranges": [
+        [
+          31,
+          37
+        ],
+        [
+          38,
+          43
+        ],
+        [
+          61,
+          72
+        ],
+        [
+          73,
+          105
+        ]
+      ],
+      "source_names": [
+        "identityConeFunctor_additive",
+        "coneSequence_shortExact",
+        "identityConeFunctor_map_mono",
+        "identityConeFunctor_shortExact"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; ordinary integer cochain complexes. Mono f for map_mono; S.ShortExact for exactness; both complexes Acyclic for QI criterion. No bounded, flasque or perfect object premise."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
+      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "selection": {
+        "declarations": [
+          "identityConeFunctor_additive",
+          "coneSequence_shortExact",
+          "identityConeFunctor_map_mono",
+          "identityConeFunctor_shortExact"
+        ],
+        "source_ranges": [
+          [
+            31,
+            37
+          ],
+          [
+            38,
+            43
+          ],
+          [
+            61,
+            72
+          ],
+          [
+            73,
+            105
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/FlasqueShift.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.FlasqueShift",
+      "source_sha256": "78944f4baecd627e51378eba3c20d6c215bd1e010a46566c0bfc2cf673a8fd62",
+      "source_lines": 221,
+      "source_ranges": [
+        [
+          116,
+          120
+        ]
+      ],
+      "source_names": [
+        "quasiIso_of_two_acyclic"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; ordinary integer cochain complexes. Mono f for map_mono; S.ShortExact for exactness; both complexes Acyclic for QI criterion. No bounded, flasque or perfect object premise."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/QuasiIso.lean",
+      "destination_module": "Aglib.Algebra.Homology.QuasiIso",
+      "destination_sha256": "861434d7ff4b8e481926ea1e4097d29bb865b429cc2b52a5465eef0c0c5084d0",
+      "native_namespaces": [
+        "CochainComplex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "quasiIso_of_two_acyclic"
+        ],
+        "source_ranges": [
+          [
+            116,
+            120
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.QuasiIso.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedFlat/CoefficientBassMap.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.BoundedFlat.CoefficientBassMap",
+      "source_sha256": "d152bbfa5722c5c23c77065fc9232e258e6fc308a6398cc2ea30b51cfb11e8be",
+      "source_lines": 490,
+      "source_ranges": [
+        [
+          44,
+          50
+        ]
+      ],
+      "source_names": [
+        "coefficientTransformation_naturality"
+      ],
+      "source_conditions": [
+        "R:CommRingCat.{u}; arbitrary P:Over(Spec R), M,N:Under R→Under R, α:M→N and u:a→b. Actual contravariant coefficient scheme-map square; no perfect-complex or flatness premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Naturality",
+      "destination_sha256": "f39d0a37b20cf240bfc62188f8f91aa91a6070f76b10d04705ab0affd23f1535",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "coefficientTransformation_naturality"
+        ],
+        "source_ranges": [
+          [
+            44,
+            50
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Naturality.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "source_module": "Quillen.Algebra.Homology.DerivedCategory.ExactFunctorHomology",
+      "source_sha256": "681d9171b7050b81d1ec930f729923d7345fc605b8709f07d276f09618b543df",
+      "source_lines": 94,
+      "source_ranges": [
+        [
+          1,
+          94
+        ]
+      ],
+      "source_names": [
+        "homologyFunctorFactors",
+        "mapCochainComplexPlusHomologyIso",
+        "rightDerivedFunctorPlusHomologyIso",
+        "rightDerivedFunctorPlusHomologyIso_unit"
+      ],
+      "source_conditions": [
+        "Independent u,v,u′,v′; both abelian categories and HasDerivedCategory choices; F.Additive and F.PreservesHomology; EnoughInjectives A for the right-derived comparison. Actual unit square retained."
+      ],
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+      "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology",
+      "destination_sha256": "0618e00f37f5ea01b8ba2830eb36bba572a2f65859359f7b2b5cb4f7a20f4df9",
+      "native_namespaces": [
+        "DerivedCategory.Plus",
+        "CategoryTheory.Functor"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "homologyFunctorFactors",
+          "mapCochainComplexPlusHomologyIso",
+          "rightDerivedFunctorPlusHomologyIso",
+          "rightDerivedFunctorPlusHomologyIso_unit"
+        ],
+        "source_ranges": [
+          [
+            1,
+            94
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5LocallySplitTensor.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5LocallySplitTensor",
+      "source_sha256": "761c5e4f310c183b34150bb0b1e6e86594b8babb17405062b283a47d25413765",
+      "source_lines": 60,
+      "source_ranges": [
+        [
+          31,
+          51
+        ],
+        [
+          52,
+          59
+        ]
+      ],
+      "source_names": [
+        "shortExact_tensorLeft_of_finiteLocallyFree_quotient",
+        "shortExact_tensorRight_of_finiteLocallyFree_quotient"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary coefficient M:X.Modules; S.ShortExact and IsFiniteLocallyFree X S.X₃. No flatness, quasicoherence or perfection premise on M."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.LocallySplit",
+      "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "shortExact_tensorLeft_of_finiteLocallyFree_quotient",
+          "shortExact_tensorRight_of_finiteLocallyFree_quotient"
+        ],
+        "source_ranges": [
+          [
+            31,
+            51
+          ],
+          [
+            52,
+            59
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.LocallySplit.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.Restriction",
+      "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+      "source_lines": 106,
+      "source_ranges": [
+        [
+          38,
+          40
+        ],
+        [
+          41,
+          44
+        ],
+        [
+          45,
+          48
+        ],
+        [
+          49,
+          52
+        ],
+        [
+          53,
+          56
+        ],
+        [
+          57,
+          62
+        ]
+      ],
+      "source_names": [
+        "restrict",
+        "restrict_additive",
+        "restrict_preservesFiniteLimits",
+        "restrict_preservesFiniteColimits",
+        "restrictFunctor_preservesHomology",
+        "restrict_quasiIso"
+      ],
+      "source_conditions": [
+        "Open immersion j:U→X; literal degreewise Scheme.Modules.restrictFunctor; no strict/locally-perfect predicate. Native module restriction inputs are already general."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "restrict",
+          "restrict_additive",
+          "restrict_preservesFiniteLimits",
+          "restrict_preservesFiniteColimits",
+          "restrictFunctor_preservesHomology",
+          "restrict_quasiIso"
+        ],
+        "source_ranges": [
+          [
+            38,
+            40
+          ],
+          [
+            41,
+            44
+          ],
+          [
+            45,
+            48
+          ],
+          [
+            49,
+            52
+          ],
+          [
+            53,
+            56
+          ],
+          [
+            57,
+            62
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Basic.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Pullback.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.Pullback",
+      "source_sha256": "2e5ce5b94f6bdf7b63190c25514b058ee2d10ff210bee636504ca723df0028e2",
+      "source_lines": 211,
+      "source_ranges": [
+        [
+          41,
+          43
+        ],
+        [
+          44,
+          47
+        ],
+        [
+          190,
+          196
+        ]
+      ],
+      "source_names": [
+        "pullbackComplex",
+        "pullbackComplex_additive",
+        "pullbackComplexRestrictIso"
+      ],
+      "source_conditions": [
+        "Arbitrary f:X→Y; degreewise actual module pullback; canonical pullback/inverse-image-open restriction comparison. The acyclic strict-perfect theorem is not a dependency."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "pullbackComplex",
+          "pullbackComplex_additive",
+          "pullbackComplexRestrictIso"
+        ],
+        "source_ranges": [
+          [
+            41,
+            43
+          ],
+          [
+            44,
+            47
+          ],
+          [
+            190,
+            196
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Basic.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/FlatPullback.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.FlatPullback",
+      "source_sha256": "e68368b05013e5642baabac948a30e7d7493acd660ace47346b774827295bc33",
+      "source_lines": 197,
+      "source_ranges": [
+        [
+          34,
+          36
+        ],
+        [
+          37,
+          41
+        ],
+        [
+          42,
+          47
+        ]
+      ],
+      "source_names": [
+        "pullbackComplex_preservesFiniteLimits",
+        "pullbackFunctor_preservesHomology",
+        "pullbackComplex_quasiIso"
+      ],
+      "source_conditions": [
+        "Flat f:X→Y; ordinary module-sheaf pullback exactness/QI interface. Stop before derived perfect-model consumers."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "pullbackComplex_preservesFiniteLimits",
+          "pullbackFunctor_preservesHomology",
+          "pullbackComplex_quasiIso"
+        ],
+        "source_ranges": [
+          [
+            34,
+            36
+          ],
+          [
+            37,
+            41
+          ],
+          [
+            42,
+            47
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Basic.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeCoefficientsSupport.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativeCoefficientsSupport",
+      "source_sha256": "f960093218542cb3dc2e13439cc03be9268b0cb50607f10d119b08f3d24a31dd",
+      "source_lines": 174,
+      "source_ranges": [
+        [
+          37,
+          44
+        ],
+        [
+          45,
+          51
+        ],
+        [
+          96,
+          104
+        ],
+        [
+          105,
+          111
+        ]
+      ],
+      "source_names": [
+        "restrictModule_isFlasque",
+        "restrict_isStrictlyGE",
+        "ordinaryOpenRestrictionIso",
+        "ordinaryOpenRestrictionIso_hom_f"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; open immersion j where used. Restriction of flasqueness assumes original module is flasque; bound transport assumes K.IsStrictlyGE a. Ordinary pushforward mate has arbitrary f:P→Y and Z:Y.Opens. Tensor acyclicity/support requires finite locally free L and the exact displayed acyclicity premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
+      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "restrictModule_isFlasque",
+          "restrict_isStrictlyGE",
+          "ordinaryOpenRestrictionIso",
+          "ordinaryOpenRestrictionIso_hom_f"
+        ],
+        "source_ranges": [
+          [
+            37,
+            44
+          ],
+          [
+            45,
+            51
+          ],
+          [
+            96,
+            104
+          ],
+          [
+            105,
+            111
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Basic.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineTensor.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.LineTensor",
+      "source_sha256": "80b4048e0507b829d438c3aa681ba364645f6c93e62146e7013f9e33e04ee98e",
+      "source_lines": 182,
+      "source_ranges": [
+        [
+          58,
+          61
+        ],
+        [
+          81,
+          84
+        ],
+        [
+          85,
+          88
+        ],
+        [
+          89,
+          91
+        ],
+        [
+          92,
+          96
+        ],
+        [
+          97,
+          101
+        ],
+        [
+          102,
+          108
+        ]
+      ],
+      "source_names": [
+        "tensorByLineComplex",
+        "tensorByLineRightComplex",
+        "tensorByLineComplexSymmetry",
+        "tensorByLineComplex_additive",
+        "tensorByLineComplex_preservesFiniteLimits",
+        "tensorByLineComplex_preservesFiniteColimits",
+        "tensorByLineComplex_quasiIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}, arbitrary coefficient L. Finite-locally-free premises remain only on exactness/QI declarations. Tensor orders are actual sheafified presheaf tensor; no line rank-one/chart/perfect premise. This interval stops before chart/perfect consumers."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
+      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": "Use the canonical native left/right tensor functors and inverse native right/left comparison. Their literal original right-tensor and sheafified-braiding formulas are checked by definitional equality; coefficient finite-local-freeness is unchanged on exactness/QI statements.",
+      "selection": {
+        "declarations": [
+          "tensorByLineComplex",
+          "tensorByLineRightComplex",
+          "tensorByLineComplexSymmetry",
+          "tensorByLineComplex_additive",
+          "tensorByLineComplex_preservesFiniteLimits",
+          "tensorByLineComplex_preservesFiniteColimits",
+          "tensorByLineComplex_quasiIso"
+        ],
+        "source_ranges": [
+          [
+            58,
+            61
+          ],
+          [
+            81,
+            84
+          ],
+          [
+            85,
+            88
+          ],
+          [
+            89,
+            91
+          ],
+          [
+            92,
+            96
+          ],
+          [
+            97,
+            101
+          ],
+          [
+            102,
+            108
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Tensor.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueCoefficientOperations.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.FlasqueCoefficientOperations",
+      "source_sha256": "5f3c26c6e4098e7710135369b9bfa057c833cb1880dea3ef318c4265606bb071",
+      "source_lines": 207,
+      "source_ranges": [
+        [
+          43,
+          47
+        ],
+        [
+          48,
+          52
+        ],
+        [
+          53,
+          57
+        ],
+        [
+          58,
+          64
+        ]
+      ],
+      "source_names": [
+        "rightLineComplex_additive",
+        "rightLineComplex_preservesFiniteLimits",
+        "rightLineComplex_preservesFiniteColimits",
+        "rightLineComplex_quasiIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary L:X.Modules. Additivity needs no finite-local-freeness; exactness/finite limits/colimits/QI preservation require IsFiniteLocallyFree X L."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
+      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": "Use the canonical native left/right tensor functors and inverse native right/left comparison. Their literal original right-tensor and sheafified-braiding formulas are checked by definitional equality; coefficient finite-local-freeness is unchanged on exactness/QI statements.",
+      "selection": {
+        "declarations": [
+          "rightLineComplex_additive",
+          "rightLineComplex_preservesFiniteLimits",
+          "rightLineComplex_preservesFiniteColimits",
+          "rightLineComplex_quasiIso"
+        ],
+        "source_ranges": [
+          [
+            43,
+            47
+          ],
+          [
+            48,
+            52
+          ],
+          [
+            53,
+            57
+          ],
+          [
+            58,
+            64
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Tensor.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativePhiSupport.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativePhiSupport",
+      "source_sha256": "91cab94a8c9ac24cbaaed74cf4fcd39bacea273e378e4a00ba43a9fa26ae76b2",
+      "source_lines": 142,
+      "source_ranges": [
+        [
+          45,
+          50
+        ]
+      ],
+      "source_names": [
+        "leftTensorRestrictionIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary integer cochain complexes. Pullback requires Flat f; tensor acyclicity requires finite locally free L; restriction requires an open immersion; coproduct requires both actual complexes acyclic. Support is precisely acyclicity on the displayed actual open. No compactness/quasicoherence/perfection premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
+      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": "Use the canonical native left/right tensor functors and inverse native right/left comparison. Their literal original right-tensor and sheafified-braiding formulas are checked by definitional equality; coefficient finite-local-freeness is unchanged on exactness/QI statements.",
+      "selection": {
+        "declarations": [
+          "leftTensorRestrictionIso"
+        ],
+        "source_ranges": [
+          [
+            45,
+            50
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Tensor.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeCoefficientsSupport.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativeCoefficientsSupport",
+      "source_sha256": "f960093218542cb3dc2e13439cc03be9268b0cb50607f10d119b08f3d24a31dd",
+      "source_lines": 174,
+      "source_ranges": [
+        [
+          112,
+          120
+        ]
+      ],
+      "source_names": [
+        "rightTensorRestrictionIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; open immersion j where used. Restriction of flasqueness assumes original module is flasque; bound transport assumes K.IsStrictlyGE a. Ordinary pushforward mate has arbitrary f:P→Y and Z:Y.Opens. Tensor acyclicity/support requires finite locally free L and the exact displayed acyclicity premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
+      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": "Use the canonical native left/right tensor functors and inverse native right/left comparison. Their literal original right-tensor and sheafified-braiding formulas are checked by definitional equality; coefficient finite-local-freeness is unchanged on exactness/QI statements.",
+      "selection": {
+        "declarations": [
+          "rightTensorRestrictionIso"
+        ],
+        "source_ranges": [
+          [
+            112,
+            120
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.Tensor.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativePhiSupport.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativePhiSupport",
+      "source_sha256": "91cab94a8c9ac24cbaaed74cf4fcd39bacea273e378e4a00ba43a9fa26ae76b2",
+      "source_lines": 142,
+      "source_ranges": [
+        [
+          31,
+          36
+        ],
+        [
+          37,
+          44
+        ],
+        [
+          51,
+          56
+        ],
+        [
+          57,
+          65
+        ],
+        [
+          66,
+          79
+        ],
+        [
+          80,
+          87
+        ]
+      ],
+      "source_names": [
+        "flatPullback_acyclic",
+        "flatPullback_preservesSupport",
+        "leftTensor_acyclic",
+        "leftTensor_preservesSupport",
+        "coprod_acyclic",
+        "coprod_preservesSupport"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary integer cochain complexes. Pullback requires Flat f; tensor acyclicity requires finite locally free L; restriction requires an open immersion; coproduct requires both actual complexes acyclic. Support is precisely acyclicity on the displayed actual open. No compactness/quasicoherence/perfection premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport",
+      "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "flatPullback_acyclic",
+          "flatPullback_preservesSupport",
+          "leftTensor_acyclic",
+          "leftTensor_preservesSupport",
+          "coprod_acyclic",
+          "coprod_preservesSupport"
+        ],
+        "source_ranges": [
+          [
+            31,
+            36
+          ],
+          [
+            37,
+            44
+          ],
+          [
+            51,
+            56
+          ],
+          [
+            57,
+            65
+          ],
+          [
+            66,
+            79
+          ],
+          [
+            80,
+            87
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeCoefficientsSupport.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativeCoefficientsSupport",
+      "source_sha256": "f960093218542cb3dc2e13439cc03be9268b0cb50607f10d119b08f3d24a31dd",
+      "source_lines": 174,
+      "source_ranges": [
+        [
+          121,
+          127
+        ],
+        [
+          128,
+          136
+        ]
+      ],
+      "source_names": [
+        "rightTensor_acyclic",
+        "rightTensor_restrictAcyclic"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; open immersion j where used. Restriction of flasqueness assumes original module is flasque; bound transport assumes K.IsStrictlyGE a. Ordinary pushforward mate has arbitrary f:P→Y and Z:Y.Opens. Tensor acyclicity/support requires finite locally free L and the exact displayed acyclicity premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport",
+      "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Complex"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "rightTensor_acyclic",
+          "rightTensor_restrictAcyclic"
+        ],
+        "source_ranges": [
+          [
+            121,
+            127
+          ],
+          [
+            128,
+            136
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeProjectionPerfect.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.NativeProjectionPerfect",
+      "source_sha256": "afe81abde71858d5f16de1d8cdb3a69d2c80e50de7ac710eb5b9860fa1d94361",
+      "source_lines": 158,
+      "source_ranges": [
+        [
+          54,
+          59
+        ]
+      ],
+      "source_names": [
+        "derivedFlatPullbackPlusIdIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; the standard actual DerivedCategory.Plus X.Modules; no perfectDerivedObjects premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Identity",
+      "destination_sha256": "bf930d809ce9e8a88587dee4277d569abf6a3e410248fa58627823581b55a392",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "derivedFlatPullbackPlusIdIso"
+        ],
+        "source_ranges": [
+          [
+            54,
+            59
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Functoriality.Identity.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedOpenBaseChange.lean",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedOpenBaseChange",
+      "source_sha256": "f8885ace11ed0ee182729887d1c57ccdcf7f094cc9a3d47fa53aa3c1bf1860f9",
+      "source_lines": 86,
+      "source_ranges": [
+        [
+          31,
+          35
+        ],
+        [
+          36,
+          41
+        ]
+      ],
+      "source_names": [
+        "derivedRestrictionPlus",
+        "isIso_derivedRestrictionPlusUnit"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; actual open immersion and canonical HasDerivedCategory.{u+1} choices. Only these first two declarations are necessary; whole derived open-base-change file not required."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Restriction.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Restriction",
+      "destination_sha256": "54e20b058653c4ab2c595f0700b332ee05b583a7356f7877f9222feef532e078",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "derivedRestrictionPlus",
+          "isIso_derivedRestrictionPlusUnit"
+        ],
+        "source_ranges": [
+          [
+            31,
+            35
+          ],
+          [
+            36,
+            41
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Functoriality.Restriction.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedOpenCoverConservativity.lean",
+      "source_module": "Quillen.AlgebraicGeometry.Scheme.Sheaf.DerivedOpenCoverConservativity",
+      "source_sha256": "06bd4bcc7ba3b48a5adadfa2f5cd8e75ee2191242c37b83d38144188411fd60e",
+      "source_lines": 57,
+      "source_ranges": [
+        [
+          32,
+          45
+        ],
+        [
+          48,
+          56
+        ]
+      ],
+      "source_names": [
+        "isIso_of_derivedRestriction_openCover",
+        "isIso_of_derivedOpenPullback_openCover"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; independent cover index Type v; actual covering open immersions and every displayed local derived map IsIso. The accepted zero-object corollary uses these exact interfaces."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.Derived",
+      "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "isIso_of_derivedRestriction_openCover",
+          "isIso_of_derivedOpenPullback_openCover"
+        ],
+        "source_ranges": [
+          [
+            32,
+            45
+          ],
+          [
+            48,
+            56
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Locality.Derived.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeNegativeVanishing.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5NativeNegativeVanishing",
+      "source_sha256": "a4dfe13e4c931d2b2b2852fdb372a9d01c0730549cbcd3c437f9a145ddc0b24d",
+      "source_lines": 126,
+      "source_ranges": [
+        [
+          34,
+          48
+        ]
+      ],
+      "source_names": [
+        "isZero_of_derivedOpenCover"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; covering index ι:Type v; actual open immersion family covering every point; arbitrary K:DerivedCategory.Plus X.Modules; all displayed derived pullbacks IsZero. Canonical HasDerivedCategory.{u+1} choices retained."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.Derived",
+      "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "isZero_of_derivedOpenCover"
+        ],
+        "source_ranges": [
+          [
+            34,
+            48
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Locality.Derived.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5PositiveUnitAffine.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5PositiveUnitAffine",
+      "source_sha256": "e2a5e17578652e168b9679659a38015d6f1a771effbcf83fb8d740b8cd83edfd",
+      "source_lines": 197,
+      "source_ranges": [
+        [
+          34,
+          48
+        ],
+        [
+          69,
+          73
+        ],
+        [
+          74,
+          81
+        ],
+        [
+          82,
+          86
+        ],
+        [
+          87,
+          91
+        ],
+        [
+          92,
+          97
+        ],
+        [
+          98,
+          104
+        ]
+      ],
+      "source_names": [
+        "geometricPlusUnit",
+        "derivedPositive",
+        "unitOnPlus",
+        "identityQLifting",
+        "positiveQLifting",
+        "derivedPositiveUnit",
+        "derivedPositiveUnit_app"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary p:P→X and bounded-below complexes. Ordinary definitions need no flatness. Derived comparison/localization/transfer requires Flat p and canonical derived-category choices. QI-to-unit direction assumes the actual ordinary unit component QI; unit-to-QI direction assumes the actual derived unit component IsIso. No universal invertibility assertion is admitted."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward",
+      "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Plus"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "geometricPlusUnit",
+          "derivedPositive",
+          "unitOnPlus",
+          "identityQLifting",
+          "positiveQLifting",
+          "derivedPositiveUnit",
+          "derivedPositiveUnit_app"
+        ],
+        "source_ranges": [
+          [
+            34,
+            48
+          ],
+          [
+            69,
+            73
+          ],
+          [
+            74,
+            81
+          ],
+          [
+            82,
+            86
+          ],
+          [
+            87,
+            91
+          ],
+          [
+            92,
+            97
+          ],
+          [
+            98,
+            104
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5PositiveUnitAffine.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5PositiveUnitAffine",
+      "source_sha256": "e2a5e17578652e168b9679659a38015d6f1a771effbcf83fb8d740b8cd83edfd",
+      "source_lines": 197,
+      "source_ranges": [
+        [
+          49,
+          54
+        ],
+        [
+          55,
+          60
+        ],
+        [
+          61,
+          68
+        ],
+        [
+          105,
+          116
+        ],
+        [
+          117,
+          142
+        ],
+        [
+          143,
+          153
+        ],
+        [
+          154,
+          173
+        ]
+      ],
+      "source_names": [
+        "positivePlus",
+        "positivePlusUnit",
+        "positivePlusUnit_app",
+        "positiveValueDerivedIso",
+        "positivePlusUnit_original_comparison",
+        "unitOnPlus_isIso_of_quasiIso",
+        "positivePlusUnit_quasiIso_of_derivedUnit"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary p:P→X and bounded-below complexes. Ordinary definitions need no flatness. Derived comparison/localization/transfer requires Flat p and canonical derived-category choices. QI-to-unit direction assumes the actual ordinary unit component QI; unit-to-QI direction assumes the actual derived unit component IsIso. No universal invertibility assertion is admitted."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.PullbackPushforward",
+      "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "positivePlus",
+          "positivePlusUnit",
+          "positivePlusUnit_app",
+          "positiveValueDerivedIso",
+          "positivePlusUnit_original_comparison",
+          "unitOnPlus_isIso_of_quasiIso",
+          "positivePlusUnit_quasiIso_of_derivedUnit"
+        ],
+        "source_ranges": [
+          [
+            49,
+            54
+          ],
+          [
+            55,
+            60
+          ],
+          [
+            61,
+            68
+          ],
+          [
+            105,
+            116
+          ],
+          [
+            117,
+            142
+          ],
+          [
+            143,
+            153
+          ],
+          [
+            154,
+            173
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Godement.PullbackPushforward.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueDiagonalComparisons.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.FlasqueDiagonalComparisons",
+      "source_sha256": "e0b489185484f1e2d2cdc119bbcc7ee74dfaabbe901be4957c0e14b1301450e2",
+      "source_lines": 164,
+      "source_ranges": [
+        [
+          69,
+          79
+        ]
+      ],
+      "source_names": [
+        "totalPlusUnderlyingIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; actual Godement total on Plus and the actual cochain inclusion; no perfection premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
+      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "formalization_change": "Use the original canonical five-associator/whiskering expression inline at its three admitted carrier consumers. This is definitional expansion of forgetComposeIso, with no new categorical API, object, map, premise or universe condition.",
+      "selection": {
+        "declarations": [
+          "totalPlusUnderlyingIso"
+        ],
+        "source_ranges": [
+          [
+            69,
+            79
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueThirdSpan.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.FlasqueThirdSpan",
+      "source_sha256": "ee37f051f2106910d8b4acd0e12d72bec94cd92614e9885905e845a093d6c39e",
+      "source_lines": 432,
+      "source_ranges": [
+        [
+          246,
+          256
+        ]
+      ],
+      "source_names": [
+        "forgetComposeIso"
+      ],
+      "source_conditions": [
+        "Six arbitrary categories and actual eF:F⋙J≅I⋙U, eG:G⋙K≅J⋙V; unchanged Type* universe inference. Required by admitted resolved Godement carrier comparisons."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
+      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "formalization_change": "Use the original canonical five-associator/whiskering expression inline at its three admitted carrier consumers. This is definitional expansion of forgetComposeIso, with no new categorical API, object, map, premise or universe condition.",
+      "selection": {
+        "declarations": [
+          "forgetComposeIso"
+        ],
+        "source_ranges": [
+          [
+            246,
+            256
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueGammaCarrierComparisons.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.FlasqueGammaCarrierComparisons",
+      "source_sha256": "6aa2d56a3600756c704c5d04db03d4fe4fd7b0c39496cc9c3143b49774831aff",
+      "source_lines": 164,
+      "source_ranges": [
+        [
+          98,
+          107
+        ],
+        [
+          108,
+          129
+        ],
+        [
+          148,
+          163
+        ]
+      ],
+      "source_names": [
+        "plusTotalCarrierIso",
+        "resolvedPlusCarrierIso",
+        "precomposedResolvedCarrierIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; arbitrary additive F:X.Modules→X.Modules and E:X.Modules; arbitrary source category and supplied actual Plus/cochain carrier comparison where used. No finite-local-freeness, contraction-isomorphism or perfection premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
+      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "formalization_change": "Use the original canonical five-associator/whiskering expression inline at its three admitted carrier consumers. This is definitional expansion of forgetComposeIso, with no new categorical API, object, map, premise or universe condition.",
+      "selection": {
+        "declarations": [
+          "plusTotalCarrierIso",
+          "resolvedPlusCarrierIso",
+          "precomposedResolvedCarrierIso"
+        ],
+        "source_ranges": [
+          [
+            98,
+            107
+          ],
+          [
+            108,
+            129
+          ],
+          [
+            148,
+            163
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier.json"
+    },
+    {
+      "source_repository": "quillen-k-theory",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5PositiveUnitOpen.lean",
+      "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.ProjectiveLine.P5PositiveUnitOpen",
+      "source_sha256": "5c431ecd8bb08af3ce18cc4d638cada3b8b8d1cde05b6044df1ecd8add2d3446",
+      "source_lines": 371,
+      "source_ranges": [
+        [
+          39,
+          51
+        ],
+        [
+          52,
+          59
+        ],
+        [
+          197,
+          216
+        ],
+        [
+          32,
+          38
+        ],
+        [
+          64,
+          75
+        ],
+        [
+          76,
+          86
+        ],
+        [
+          87,
+          100
+        ],
+        [
+          101,
+          109
+        ],
+        [
+          110,
+          130
+        ],
+        [
+          131,
+          140
+        ],
+        [
+          141,
+          144
+        ],
+        [
+          145,
+          148
+        ],
+        [
+          149,
+          153
+        ],
+        [
+          154,
+          158
+        ],
+        [
+          159,
+          164
+        ],
+        [
+          165,
+          171
+        ],
+        [
+          172,
+          178
+        ],
+        [
+          179,
+          183
+        ],
+        [
+          184,
+          196
+        ],
+        [
+          217,
+          223
+        ],
+        [
+          224,
+          231
+        ],
+        [
+          232,
+          237
+        ],
+        [
+          238,
+          244
+        ],
+        [
+          245,
+          259
+        ],
+        [
+          260,
+          288
+        ],
+        [
+          289,
+          305
+        ],
+        [
+          306,
+          327
+        ],
+        [
+          328,
+          347
+        ],
+        [
+          348,
+          357
+        ],
+        [
+          360,
+          370
+        ]
+      ],
+      "source_names": [
+        "totalTermsFlasque",
+        "pushPlus_quasiIso_flasque",
+        "quasiIso_of_QPlus_map_isIso",
+        "openPushPlusIso",
+        "openPullPlusIso",
+        "open_geometric_unit",
+        "openTotalBridge",
+        "openTotalBridge_quasiIso",
+        "restrictedTotal_flasque",
+        "restrictedPositive",
+        "localPositive",
+        "restrictedTotal",
+        "openSpanTarget",
+        "restrictedPositiveUnit",
+        "openPositiveComparison",
+        "globalSpanLeg",
+        "localSpanLeg",
+        "restrictedPositiveUnit_factor",
+        "quasiIso_of_plus_span",
+        "globalSpanLeg_quasiIso",
+        "localSpanLeg_quasiIso",
+        "augmentation_component_naturality",
+        "openTotalBridge_f",
+        "local_total_unit_component",
+        "open_component_first_square",
+        "open_component_second_square",
+        "open_positive_unit_span_component",
+        "open_positive_unit_span_factorized",
+        "open_positive_unit_span",
+        "positivePlusUnit_restrict_quasiIso"
+      ],
+      "source_conditions": [
+        "Scheme.{u}; actual W,U,V,X; a:W→U,b:W→V,f:U→X,j:V→X; IsOpenImmersion a,j and IsPullback a b f j. Bounded-below K:X.Modules. Final conclusion assumes the actual local canonical unit for b is QI. Pushed QIs have bounded-below flasque source and target. No Flat f,b, compactness, P1, quasicoherence or perfection premise."
+      ],
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+      "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+      "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+      "native_namespaces": [
+        "AlgebraicGeometry.Scheme.Modules",
+        "AlgebraicGeometry.Scheme.Modules.Plus",
+        "AlgebraicGeometry.Scheme.Modules.Godement"
+      ],
+      "formalization_change": null,
+      "selection": {
+        "declarations": [
+          "totalTermsFlasque",
+          "pushPlus_quasiIso_flasque",
+          "quasiIso_of_QPlus_map_isIso",
+          "openPushPlusIso",
+          "openPullPlusIso",
+          "open_geometric_unit",
+          "openTotalBridge",
+          "openTotalBridge_quasiIso",
+          "restrictedTotal_flasque",
+          "restrictedPositive",
+          "localPositive",
+          "restrictedTotal",
+          "openSpanTarget",
+          "restrictedPositiveUnit",
+          "openPositiveComparison",
+          "globalSpanLeg",
+          "localSpanLeg",
+          "restrictedPositiveUnit_factor",
+          "quasiIso_of_plus_span",
+          "globalSpanLeg_quasiIso",
+          "localSpanLeg_quasiIso",
+          "augmentation_component_naturality",
+          "openTotalBridge_f",
+          "local_total_unit_component",
+          "open_component_first_square",
+          "open_component_second_square",
+          "open_positive_unit_span_component",
+          "open_positive_unit_span_factorized",
+          "open_positive_unit_span",
+          "positivePlusUnit_restrict_quasiIso"
+        ],
+        "source_ranges": [
+          [
+            39,
+            51
+          ],
+          [
+            52,
+            59
+          ],
+          [
+            197,
+            216
+          ],
+          [
+            32,
+            38
+          ],
+          [
+            64,
+            75
+          ],
+          [
+            76,
+            86
+          ],
+          [
+            87,
+            100
+          ],
+          [
+            101,
+            109
+          ],
+          [
+            110,
+            130
+          ],
+          [
+            131,
+            140
+          ],
+          [
+            141,
+            144
+          ],
+          [
+            145,
+            148
+          ],
+          [
+            149,
+            153
+          ],
+          [
+            154,
+            158
+          ],
+          [
+            159,
+            164
+          ],
+          [
+            165,
+            171
+          ],
+          [
+            172,
+            178
+          ],
+          [
+            179,
+            183
+          ],
+          [
+            184,
+            196
+          ],
+          [
+            217,
+            223
+          ],
+          [
+            224,
+            231
+          ],
+          [
+            232,
+            237
+          ],
+          [
+            238,
+            244
+          ],
+          [
+            245,
+            259
+          ],
+          [
+            260,
+            288
+          ],
+          [
+            289,
+            305
+          ],
+          [
+            306,
+            327
+          ],
+          [
+            328,
+            347
+          ],
+          [
+            348,
+            357
+          ],
+          [
+            360,
+            370
+          ]
+        ],
+        "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
+      },
+      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.json"
+    }
+  ],
+  "write_ownership": [
+    "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
+    "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+    "Aglib/Algebra/Homology/QuasiIso.lean",
+    "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
+    "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
+    "Aglib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
+    "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+    "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+    "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
+    "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Restriction.lean",
+    "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
+    "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+    "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+    "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+    "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean",
+    "doc/migration/latest-general-cuts.json"
+  ],
+  "evidence_boundary": "Exact source applicability/migration correspondence and author Lean elaboration/lint evidence. No independent review, established-status assignment, whole-library completion or proof of newly supplied local-QI/unit-isomorphism/flatness/finite-local-freeness premises is asserted.",
+  "group": "latest-general-cuts",
+  "static_checks": {
+    "non_import_max_line_length": 100,
+    "checked_paths": [
+      "AGLib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
+      "AGLib/Algebra/Homology/MappingCone/Identity.lean",
+      "AGLib/Algebra/Homology/QuasiIso.lean",
+      "AGLib/CategoryTheory/Limits/BiproductPushout.lean",
+      "AGLib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
+      "AGLib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
+      "AGLib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "AGLib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "AGLib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
+      "AGLib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
+      "AGLib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Functoriality/Restriction.lean",
+      "AGLib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
+      "AGLib/AlgebraicGeometry/Properties/AffineInduction.lean",
+      "AGLib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+      "AGLib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+      "AGLib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean"
+    ],
+    "failure_count": 0
+  },
+  "contextual_naming_validation": "Current leaf names and source hashes reconciled after principal naming completion. Recorded author checks use current module paths; no full-library completion assertion.",
+  "specialization_checks": {
+    "question": "Recover original Scheme module-sheaf statements after generic lifts and preserve original sheafified right tensor/braiding maps",
+    "source_formula_identity_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+    "certificate_source_sha256": "869be83457dd837c2fbdb1f10f39addec6dfe305f1e100c89eafb5145f49b648",
+    "certificate_path": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/GeneralSpecializations.lean",
+    "certificate_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/GeneralSpecializations.json",
+    "exit_code": 0,
+    "scope": [
+      "A := X.Modules specialization of generic TruncGE factorization and identity-cone exactness",
+      "Literal original right tensor equals native moduleTensorRightFunctor by definitional equality",
+      "Literal original sheafified curried braiding equals moduleTensorRightLeftIso.symm by definitional equality",
+      "Degreewise tensor order-comparison formulas agree by definitional equality"
+    ],
+    "boundary": "Checks the displayed formulas and specialized theorem types. Does not prove supplied local-QI, unit-isomorphism, flatness or finite-local-freeness premises."
+  },
+  "accepted_cut_group_count": 20,
+  "accepted_delta_declaration_count": 91,
+  "required_lower_helper_count": 14,
+  "additional_required_general_interface_count": 4,
+  "canonical_name_checks": {
+    "checked_public_cut_names": 84,
+    "exit_code": 0,
+    "certificate_source_sha256": "f644eff498c68f414f6909ffb82fc5c192a32e82a389bebd067652aea8c123bb",
+    "certificate_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/InterfaceNames.json",
+    "pending_carrier_names": 4,
+    "private_embedded_helpers": 1,
+    "native_expression_dependencies": 2,
+    "boundary": "Resolution and compatibility in one coherent import context; proof and source applicability boundaries remain separate."
+  },
+  "accepted_cuts": [
+    {
+      "cut_id": "scheme_induction",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeFiniteCoverInduction.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "fa0bd7ed0040404c3e091735082619a2a3bc7273caec266734ff959b53b854e0",
+      "source_conditions": "Scheme.{u}; arbitrary P; affine case and compact binary-open-union closure on quasi-separated schemes with overlap P supplied. General compact-open/qcqs conclusions additionally use actual isomorphism invariance. Separated variants require separated ambient X; final qcqs requires CompactSpace X and QuasiSeparatedSpace X.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "compact_finiteAffineUnion",
+          "source_line": 36,
+          "canonical_api": "AlgebraicGeometry.Scheme.AffineInduction.compact_finiteAffineUnion",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+          "visibility": "private embedded helper; not an exported public name"
+        },
+        {
+          "source_declaration": "of_finiteAffineUnion_of_separated",
+          "source_line": 48,
+          "canonical_api": "AlgebraicGeometry.Scheme.AffineInduction.of_finiteAffineUnion_of_separated",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "of_compactOpen_of_separated",
+          "source_line": 81,
+          "canonical_api": "AlgebraicGeometry.Scheme.AffineInduction.of_compactOpen_of_separated",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "of_compactOpen",
+          "source_line": 93,
+          "canonical_api": "AlgebraicGeometry.Scheme.AffineInduction.of_compactOpen",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "of_qcqs",
+          "source_line": 110,
+          "canonical_api": "AlgebraicGeometry.Scheme.AffineInduction.of_qcqs",
+          "destination_path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "85206b5dc24fe378b839775a4a7c65b6068db12658dcde5c920f111c47db0ecc",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          36,
+          47
+        ],
+        [
+          48,
+          80
+        ],
+        [
+          81,
+          92
+        ],
+        [
+          93,
+          109
+        ],
+        [
+          110,
+          113
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Mathlib separated schemes, limits and compact-open induction"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "split_quotient_tensor",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5LocallySplitTensor.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "761c5e4f310c183b34150bb0b1e6e86594b8babb17405062b283a47d25413765",
+      "source_conditions": "Scheme.{u}; arbitrary coefficient M:X.Modules; S.ShortExact and IsFiniteLocallyFree X S.X₃. No flatness, quasicoherence or perfection premise on M.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "shortExact_tensorLeft_of_finiteLocallyFree_quotient",
+          "source_line": 31,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.shortExact_tensorLeft_of_finiteLocallyFree_quotient",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "shortExact_tensorRight_of_finiteLocallyFree_quotient",
+          "source_line": 52,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.shortExact_tensorRight_of_finiteLocallyFree_quotient",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          31,
+          51
+        ],
+        [
+          52,
+          60
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Scheme.VectorBundle.LocalSplitting",
+        "tensor restriction",
+        "open-cover exactness",
+        "baseline_line_tensor"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "truncation_factorization",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedBelowComparison.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "8fc2ddec29ee432d99f89dd2ef79a0149db1506a0190d7a7ff5db5db85a11a58",
+      "source_conditions": "Scheme.{u}; K,L:CochainComplex X.Modules ℤ; f:L→K; a:ℤ; K.IsStrictlyGE a. No locallyPerfect or compactness premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "fromGoodTruncation",
+          "source_line": 117,
+          "canonical_api": "CochainComplex.fromTruncGE",
+          "destination_path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "fromGoodTruncation_fac",
+          "source_line": 121,
+          "canonical_api": "CochainComplex.πTruncGE_fromTruncGE",
+          "destination_path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          117,
+          120
+        ],
+        [
+          121,
+          127
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Mathlib good truncation and canonical πTruncGE",
+        "native cochain type"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "identity_cone",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/FlasqueShift.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "78944f4baecd627e51378eba3c20d6c215bd1e010a46566c0bfc2cf673a8fd62",
+      "source_conditions": "Scheme.{u}; ordinary integer cochain complexes. Mono f for map_mono; S.ShortExact for exactness; both complexes Acyclic for QI criterion. No bounded, flasque or perfect object premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "identityConeFunctor_additive",
+          "source_line": 31,
+          "canonical_api": "CochainComplex.identityConeFunctor_additive",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "disposition": "new_interface",
+          "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
+          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "coneSequence_shortExact",
+          "source_line": 38,
+          "canonical_api": "CochainComplex.coneSequence_shortExact",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "disposition": "new_interface",
+          "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
+          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "identityConeFunctor_map_mono",
+          "source_line": 61,
+          "canonical_api": "CochainComplex.identityConeFunctor_map_mono",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "disposition": "new_interface",
+          "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
+          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "identityConeFunctor_shortExact",
+          "source_line": 73,
+          "canonical_api": "CochainComplex.identityConeFunctor_shortExact",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "disposition": "new_interface",
+          "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
+          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "quasiIso_of_two_acyclic",
+          "source_line": 116,
+          "canonical_api": "CochainComplex.quasiIso_of_two_acyclic",
+          "destination_path": "Aglib/Algebra/Homology/QuasiIso.lean",
+          "disposition": "new_interface",
+          "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
+          "destination_sha256": "861434d7ff4b8e481926ea1e4097d29bb865b429cc2b52a5465eef0c0c5084d0",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          31,
+          37
+        ],
+        [
+          38,
+          43
+        ],
+        [
+          61,
+          72
+        ],
+        [
+          73,
+          105
+        ],
+        [
+          116,
+          120
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_identity_cone",
+        "MappingConeBiprod.mappingCone_map_add",
+        "Mathlib degreewise exactness/QI reflection"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "right_tensor_interfaces",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueCoefficientOperations.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "5f3c26c6e4098e7710135369b9bfa057c833cb1880dea3ef318c4265606bb071",
+      "source_conditions": "Scheme.{u}; arbitrary L:X.Modules. Additivity needs no finite-local-freeness; exactness/finite limits/colimits/QI preservation require IsFiniteLocallyFree X L.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "rightLineModule_preservesFiniteLimits",
+          "source_line": 29,
+          "canonical_api": "CategoryTheory.Functor.preservesFiniteLimits_of_preservesHomology",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/Exact.lean",
+          "disposition": "reuse_native_instance",
+          "interface_note": "Apply to the canonical moduleTensorRightFunctor X L; finite-locally-free premise remains.",
+          "destination_sha256": "d9b3de07fca4a28f5929be57078774a43b43777eb80a779d550aa46f9786223b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineModule_preservesFiniteColimits",
+          "source_line": 33,
+          "canonical_api": "CategoryTheory.Functor.preservesFiniteColimits_of_preservesHomology",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/Exact.lean",
+          "disposition": "reuse_native_instance",
+          "interface_note": "",
+          "destination_sha256": "d9b3de07fca4a28f5929be57078774a43b43777eb80a779d550aa46f9786223b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineModule_preservesHomology",
+          "source_line": 37,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.moduleTensorRight_preservesHomology",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/Exact.lean",
+          "disposition": "reuse_existing",
+          "interface_note": "",
+          "destination_sha256": "d9b3de07fca4a28f5929be57078774a43b43777eb80a779d550aa46f9786223b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineComplex_additive",
+          "source_line": 43,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_additive",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineComplex_preservesFiniteLimits",
+          "source_line": 48,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_preservesFiniteLimits",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineComplex_preservesFiniteColimits",
+          "source_line": 53,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_preservesFiniteColimits",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightLineComplex_quasiIso",
+          "source_line": 58,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          29,
+          32
+        ],
+        [
+          33,
+          36
+        ],
+        [
+          37,
+          42
+        ],
+        [
+          43,
+          47
+        ],
+        [
+          48,
+          52
+        ],
+        [
+          53,
+          57
+        ],
+        [
+          58,
+          64
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_line_tensor",
+        "actual exact left tensor and its PreservesHomology"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "open_complex_support",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeCoefficientsSupport.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "f960093218542cb3dc2e13439cc03be9268b0cb50607f10d119b08f3d24a31dd",
+      "source_conditions": "Scheme.{u}; open immersion j where used. Restriction of flasqueness assumes original module is flasque; bound transport assumes K.IsStrictlyGE a. Ordinary pushforward mate has arbitrary f:P→Y and Z:Y.Opens. Tensor acyclicity/support requires finite locally free L and the exact displayed acyclicity premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "restrictModule_isFlasque",
+          "source_line": 37,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.restrictModule_isFlasque",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+          "disposition": "new_interface",
+          "interface_note": "A sheaf-property instance by the literal underlying presheaf restriction; import only Mathlib flasque predicate, never higher cohomology.",
+          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrict_isStrictlyGE",
+          "source_line": 45,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_isStrictlyGE",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "ordinaryOpenRestrictionIso",
+          "source_line": 96,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.ordinaryOpenRestrictionIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "ordinaryOpenRestrictionIso_hom_f",
+          "source_line": 105,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.ordinaryOpenRestrictionIso_hom_f",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightTensorRestrictionIso",
+          "source_line": 112,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRightRestrictionIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightTensor_acyclic",
+          "source_line": 121,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "rightTensor_restrictAcyclic",
+          "source_line": 128,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorRight_restrict_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          37,
+          44
+        ],
+        [
+          45,
+          51
+        ],
+        [
+          96,
+          104
+        ],
+        [
+          105,
+          111
+        ],
+        [
+          112,
+          120
+        ],
+        [
+          121,
+          127
+        ],
+        [
+          128,
+          136
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_complex_geometry",
+        "baseline_line_tensor",
+        "CartesianOpenBaseChangeMate",
+        "TensorRestriction",
+        "right_tensor_interfaces"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "acyclic_complex_support",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativePhiSupport.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "91cab94a8c9ac24cbaaed74cf4fcd39bacea273e378e4a00ba43a9fa26ae76b2",
+      "source_conditions": "Scheme.{u}; arbitrary integer cochain complexes. Pullback requires Flat f; tensor acyclicity requires finite locally free L; restriction requires an open immersion; coproduct requires both actual complexes acyclic. Support is precisely acyclicity on the displayed actual open. No compactness/quasicoherence/perfection premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "flatPullback_acyclic",
+          "source_line": 31,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.pullback_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "flatPullback_preservesSupport",
+          "source_line": 37,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.pullback_restrict_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "leftTensorRestrictionIso",
+          "source_line": 45,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorLeftRestrictionIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "leftTensor_acyclic",
+          "source_line": 51,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorLeft_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "leftTensor_preservesSupport",
+          "source_line": 57,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.tensorLeft_restrict_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "coprod_acyclic",
+          "source_line": 66,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.coprod_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "coprod_preservesSupport",
+          "source_line": 80,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Complex.coprod_restrict_acyclic",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          31,
+          36
+        ],
+        [
+          37,
+          44
+        ],
+        [
+          45,
+          50
+        ],
+        [
+          51,
+          56
+        ],
+        [
+          57,
+          65
+        ],
+        [
+          66,
+          79
+        ],
+        [
+          80,
+          87
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_complex_geometry",
+        "baseline_line_tensor",
+        "TensorRestriction",
+        "actual exact tensor",
+        "coproduct_zero_dependency"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "zero_on_derived_cover",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativeNegativeVanishing.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "a4dfe13e4c931d2b2b2852fdb372a9d01c0730549cbcd3c437f9a145ddc0b24d",
+      "source_conditions": "Scheme.{u}; covering index ι:Type v; actual open immersion family covering every point; arbitrary K:DerivedCategory.Plus X.Modules; all displayed derived pullbacks IsZero. Canonical HasDerivedCategory.{u+1} choices retained.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "isZero_of_derivedOpenCover",
+          "source_line": 34,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.isZero_of_derivedOpenCover",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          34,
+          48
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "DerivedOpenCoverConservativity",
+        "DerivedFlatBaseChange",
+        "Mathlib map_zero/isIsoZero"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "canonical_godement_unit",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5PositiveUnitAffine.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "e2a5e17578652e168b9679659a38015d6f1a771effbcf83fb8d740b8cd83edfd",
+      "source_conditions": "Scheme.{u}; arbitrary p:P→X and bounded-below complexes. Ordinary definitions need no flatness. Derived comparison/localization/transfer requires Flat p and canonical derived-category choices. QI-to-unit direction assumes the actual ordinary unit component QI; unit-to-QI direction assumes the actual derived unit component IsIso. No universal invertibility assertion is admitted.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "geometricPlusUnit",
+          "source_line": 34,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Plus.pullbackPushforwardUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "Ordinary bounded-below geometric adjunction unit; requires no Flat premise.",
+          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlus",
+          "source_line": 49,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlusUnit",
+          "source_line": 55,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlusUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlusUnit_app",
+          "source_line": 61,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlusUnit_app",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "derivedPositive",
+          "source_line": 69,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.derivedPullbackPushforwardPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "unitOnPlus",
+          "source_line": 74,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.derivedPullbackPushforwardPlusUnitOnPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "derivedPositiveUnit",
+          "source_line": 92,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.derivedPullbackPushforwardPlusUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "derivedPositiveUnit_app",
+          "source_line": 98,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.derivedPullbackPushforwardPlusUnit_app",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positiveValueDerivedIso",
+          "source_line": 105,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlusDerivedIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlusUnit_original_comparison",
+          "source_line": 117,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlusUnit_derived_comparison",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "unitOnPlus_isIso_of_quasiIso",
+          "source_line": 143,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.isIso_derivedUnit_of_quasiIso_unit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlusUnit_quasiIso_of_derivedUnit",
+          "source_line": 154,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.quasiIso_unit_of_isIso_derivedUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          34,
+          48
+        ],
+        [
+          49,
+          54
+        ],
+        [
+          55,
+          60
+        ],
+        [
+          61,
+          68
+        ],
+        [
+          69,
+          73
+        ],
+        [
+          74,
+          91
+        ],
+        [
+          92,
+          97
+        ],
+        [
+          98,
+          104
+        ],
+        [
+          105,
+          116
+        ],
+        [
+          117,
+          142
+        ],
+        [
+          143,
+          153
+        ],
+        [
+          154,
+          173
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "GodementComplex",
+        "GodementBaseChangeUnit",
+        "DerivedPushforwardPlus",
+        "DerivedFlatBaseChange",
+        "Mathlib localization and QI reflection"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "canonical_unit_open_descent",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5PositiveUnitOpen.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "5c431ecd8bb08af3ce18cc4d638cada3b8b8d1cde05b6044df1ecd8add2d3446",
+      "source_conditions": "Scheme.{u}; actual W,U,V,X; a:W→U,b:W→V,f:U→X,j:V→X; IsOpenImmersion a,j and IsPullback a b f j. Bounded-below K:X.Modules. Final conclusion assumes the actual local canonical unit for b is QI. Pushed QIs have bounded-below flasque source and target. No Flat f,b, compactness, P1, quasicoherence or perfection premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "totalTermsFlasque",
+          "source_line": 32,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.totalPlus_terms_isFlasque",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "pushPlus_quasiIso_flasque",
+          "source_line": 39,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Plus.pushforward_quasiIso_of_flasque",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "quasiIso_of_QPlus_map_isIso",
+          "source_line": 52,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Plus.quasiIso_of_isIso_Q_map",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openPushPlusIso",
+          "source_line": 64,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openPushPlusIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openPullPlusIso",
+          "source_line": 76,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openPullPlusIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_geometric_unit",
+          "source_line": 87,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_geometric_unit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openTotalBridge",
+          "source_line": 101,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openTotalBridge",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openTotalBridge_quasiIso",
+          "source_line": 110,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openTotalBridge_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrictedTotal_flasque",
+          "source_line": 131,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.restrictedTotalPlus_flasque",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrictedPositive",
+          "source_line": 141,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.restrictedPullbackPushforwardPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "localPositive",
+          "source_line": 145,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.localPullbackPushforwardPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrictedTotal",
+          "source_line": 149,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.restrictedTotalPlus",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openSpanTarget",
+          "source_line": 154,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeSpanTarget",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrictedPositiveUnit",
+          "source_line": 159,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.restrictedPullbackPushforwardPlusUnit",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "openPositiveComparison",
+          "source_line": 165,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openPullbackPushforwardComparison",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "globalSpanLeg",
+          "source_line": 172,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeGlobalLeg",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "localSpanLeg",
+          "source_line": 179,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeLocalLeg",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "restrictedPositiveUnit_factor",
+          "source_line": 184,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.restrictedPullbackPushforwardPlusUnit_factor",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "quasiIso_of_plus_span",
+          "source_line": 197,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Plus.quasiIso_of_span",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "globalSpanLeg_quasiIso",
+          "source_line": 217,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeGlobalLeg_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "localSpanLeg_quasiIso",
+          "source_line": 224,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeLocalLeg_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "augmentation_component_naturality",
+          "source_line": 232,
+          "canonical_api": "congrArg (fun q => q.hom.f n) (η.naturality s)",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "reuse_native_expression",
+          "interface_note": "Required ordinary-complex component helper, implemented with original naturality expression; no new generic categorical public leaf.",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "canonical expression at admitted consumers"
+        },
+        {
+          "source_declaration": "openTotalBridge_f",
+          "source_line": 238,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.openTotalBridge_f",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "local_total_unit_component",
+          "source_line": 245,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.local_total_unit_component",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_component_first_square",
+          "source_line": 260,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_component_first_square",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_component_second_square",
+          "source_line": 289,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_component_second_square",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_positive_unit_span_component",
+          "source_line": 306,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_unit_span_component",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_positive_unit_span_factorized",
+          "source_line": 328,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_unit_span_factorized",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "open_positive_unit_span",
+          "source_line": 348,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.open_unit_span",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "positivePlusUnit_restrict_quasiIso",
+          "source_line": 360,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.pullbackPushforwardPlusUnit_restrict_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          32,
+          38
+        ],
+        [
+          39,
+          51
+        ],
+        [
+          52,
+          63
+        ],
+        [
+          64,
+          75
+        ],
+        [
+          76,
+          86
+        ],
+        [
+          87,
+          100
+        ],
+        [
+          101,
+          109
+        ],
+        [
+          110,
+          130
+        ],
+        [
+          131,
+          140
+        ],
+        [
+          141,
+          144
+        ],
+        [
+          145,
+          148
+        ],
+        [
+          149,
+          153
+        ],
+        [
+          154,
+          158
+        ],
+        [
+          159,
+          164
+        ],
+        [
+          165,
+          171
+        ],
+        [
+          172,
+          178
+        ],
+        [
+          179,
+          183
+        ],
+        [
+          184,
+          196
+        ],
+        [
+          197,
+          216
+        ],
+        [
+          217,
+          223
+        ],
+        [
+          224,
+          231
+        ],
+        [
+          232,
+          237
+        ],
+        [
+          238,
+          244
+        ],
+        [
+          245,
+          259
+        ],
+        [
+          260,
+          288
+        ],
+        [
+          289,
+          305
+        ],
+        [
+          306,
+          327
+        ],
+        [
+          328,
+          347
+        ],
+        [
+          348,
+          359
+        ],
+        [
+          360,
+          371
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "canonical_godement_unit ordinary definitions",
+        "open_complex_support flasque restriction",
+        "GodementComplex/TotalQuasiIso/FlasquePushforward",
+        "actual cartesian open/pullback mates",
+        "baseline_complex_geometry.restrict_quasiIso"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "pushforward_total_qi",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueDiagonalExact.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "71015904610f723946dcbbb59b55f467ae0bc2901ea9f2fb2f84ddb7af55f85e",
+      "source_conditions": "Scheme.{u}; arbitrary p:X→Y; QI f:K→L between bounded-below X.Modules complexes. No perfection, upper bound, term-QC or flatness premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "totalPushforwardPlus_quasiIso",
+          "source_line": 78,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.totalPushforwardPlus_quasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/PushforwardQuasiIso.lean",
+          "disposition": "reuse_existing_other_owner",
+          "interface_note": "",
+          "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          78,
+          99
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "GodementComplex strict bounds/flasque terms",
+        "GodementTotalQuasiIso",
+        "FlasqueComplex"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "plus_total_carrier",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueDiagonalComparisons.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "e0b489185484f1e2d2cdc119bbcc7ee74dfaabbe901be4957c0e14b1301450e2",
+      "source_conditions": "Scheme.{u}; actual Godement total on Plus and the actual cochain inclusion; no perfection premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "totalPlusUnderlyingIso",
+          "source_line": 69,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.totalPlusCompιIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+          "disposition": "new_interface",
+          "interface_note": "Definitionally the native ObjectProperty.liftCompιIso for actual godementTotalPlus; no liftUnderlyingIso duplicate.",
+          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          69,
+          79
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "GodementComplex",
+        "reuse native ObjectProperty.liftCompιIso rather than adding liftUnderlyingIso alias"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "resolved_godement_carriers",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueGammaCarrierComparisons.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "6aa2d56a3600756c704c5d04db03d4fe4fd7b0c39496cc9c3143b49774831aff",
+      "source_conditions": "Scheme.{u}; arbitrary additive F:X.Modules→X.Modules and E:X.Modules; arbitrary source category and supplied actual Plus/cochain carrier comparison where used. No finite-local-freeness, contraction-isomorphism or perfection premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "plusTotalCarrierIso",
+          "source_line": 98,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.compTotalPlusCarrierIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "resolvedPlusCarrierIso",
+          "source_line": 108,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.resolvedContractionCompιIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "precomposedResolvedCarrierIso",
+          "source_line": 148,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.Godement.precompResolvedContractionCompιIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          98,
+          107
+        ],
+        [
+          108,
+          129
+        ],
+        [
+          148,
+          164
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "plus_total_carrier",
+        "forget_compose_dependency",
+        "baseline_line_tensor",
+        "baseline_godement_resolved"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "identity_derived_pullback",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeProjectionPerfect.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "afe81abde71858d5f16de1d8cdb3a69d2c80e50de7ac710eb5b9860fa1d94361",
+      "source_conditions": "Scheme.{u}; the standard actual DerivedCategory.Plus X.Modules; no perfectDerivedObjects premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "derivedFlatPullbackPlusIdIso",
+          "source_line": 54,
+          "canonical_api": "AlgebraicGeometry.Scheme.Modules.derivedFlatPullbackPlusIdIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
+          "disposition": "new_interface",
+          "interface_note": "Alias to actual Modules.pullbackId followed by native rightDerivedFunctorPlusIso/IdIso; no duplicated derived identity proof.",
+          "destination_sha256": "bf930d809ce9e8a88587dee4277d569abf6a3e410248fa58627823581b55a392",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          54,
+          59
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "DerivedFlatBaseChange",
+        "actual Scheme.Modules.pullbackId",
+        "generic rightDerivedFunctorPlusIso and identity iso"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "coefficient_identity",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedFlat/CoefficientBassCoherence.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "2b6cb6e9409a05c9822dfc8b5d855897f16bc1dc7a8c49a28334c6d8475136be",
+      "source_conditions": "R:CommRingCat.{u}; arbitrary P:Over(Spec R) and a:Under R. Actual space=pullback P.hom (Spec.map a.hom); no flatness/affineness/compactness/perfection/polynomial/Laurent premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "boundedFlatCoefficientGeometricIdentity",
+          "source_line": 34,
+          "canonical_api": "AlgebraicGeometry.Scheme.BaseChange.Coefficients.map_id",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Basic.lean",
+          "disposition": "reuse_existing",
+          "interface_note": "Specialize i=(op P,a); coefficientMap definition recovers the exact original equation. Do not add an application-named alias.",
+          "destination_sha256": "133cf0823361344f74cebb0bf39b33ac15b2ffcf5252d8d635c723736b195d34",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          34,
+          39
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_coefficient_geometry",
+        "prefer existing actual map_id over application-named alias"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "coefficient_naturality",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/BoundedFlat/CoefficientBassMap.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "d152bbfa5722c5c23c77065fc9232e258e6fc308a6398cc2ea30b51cfb11e8be",
+      "source_conditions": "R:CommRingCat.{u}; arbitrary P:Over(Spec R), M,N:Under R→Under R, α:M→N and u:a→b. Actual contravariant coefficient scheme-map square; no perfect-complex or flatness premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "coefficientTransformation_naturality",
+          "source_line": 44,
+          "canonical_api": "AlgebraicGeometry.Scheme.BaseChange.Coefficients.coefficientMap_naturality",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "f39d0a37b20cf240bfc62188f8f91aa91a6070f76b10d04705ab0affd23f1535",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          44,
+          53
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_coefficient_geometry.coefficientMap_comp",
+        "actual α.naturality"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "polynomial_zero_section",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/BassPositiveCharts.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "0db622409af6393aa5dd691ccba71a7f4ea6809bac45fe9d1c4a24cfe15bc9d7",
+      "source_conditions": "R:CommRingCat.{u}; actual Spec(evalRingHom 0):Spec R→Spec R[T] and projection Spec(Polynomial.C). These two declarations contain no P1, perfect-complex or K input.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "polynomialZeroSection",
+          "source_line": 141,
+          "canonical_api": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialZeroSection",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "39b98eb9d84912ab25b6d1e91225e1884982197134e64111934aa836f1ac1bcb",
+          "visibility": "public native declaration"
+        },
+        {
+          "source_declaration": "polynomialZeroSection_projection",
+          "source_line": 144,
+          "canonical_api": "AlgebraicGeometry.Scheme.PolynomialLaurent.polynomialZeroSection_projection",
+          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "39b98eb9d84912ab25b6d1e91225e1884982197134e64111934aa836f1ac1bcb",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          141,
+          143
+        ],
+        [
+          144,
+          153
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "baseline_polynomial_projection",
+        "Mathlib Polynomial.eval_C and Spec.map_comp/map_id"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "cartesian_open_range",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/NativeBinaryUnion.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "753edb4d726375560ba033777b732becd608e08ed46eed0408de42c90ba10b91",
+      "source_conditions": "Scheme.{u}; a,b,f,g in an actual IsPullback square, with IsOpenImmersion a,g. Conclusion a.opensRange=f⁻¹ᵁg.opensRange. No compactness/P1/perfection premise.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "cartesian_openRange",
+          "source_line": 44,
+          "canonical_api": "AlgebraicGeometry.Scheme.Hom.opensRange_of_isPullback",
+          "destination_path": "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean",
+          "disposition": "implemented_frozen",
+          "interface_note": "",
+          "destination_sha256": "72aa0f5a02522b33d8bf0947dc5313e267f58e54e02c069b9db7416354f941f9",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          44,
+          52
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Mathlib IsPullback.isoPullback",
+        "opensRange_comp_of_isIso",
+        "opensRange_pullbackFst"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "coproduct_zero_dependency",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/P5NativePhiObjects.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "a0c31550c8b4ac9090c49b8d681d0fb83eb6f2232085781c80bd9306a82556fa",
+      "source_conditions": "Arbitrary Category C with zero morphisms; actual A,B with HasBinaryCoproduct A B and both IsZero. Required by admitted coprod_acyclic.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "coprod_isZero",
+          "source_line": 102,
+          "canonical_api": "CategoryTheory.Limits.coprod_isZero",
+          "destination_path": "Aglib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
+          "disposition": "new_interface",
+          "interface_note": "",
+          "destination_sha256": "b80ece5d936df35d8d1bb46042bdcca1bcb388e06e5674762c2f9c87a1d1d06d",
+          "visibility": "public native declaration"
+        }
+      ],
+      "source_ranges": [
+        [
+          102,
+          109
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Mathlib coproduct universal property and IsZero.iff_id_eq_zero"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    },
+    {
+      "cut_id": "forget_compose_dependency",
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/FlasqueThirdSpan.lean",
+      "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
+      "source_sha256": "ee37f051f2106910d8b4acd0e12d72bec94cd92614e9885905e845a093d6c39e",
+      "source_conditions": "Six arbitrary categories and actual eF:F⋙J≅I⋙U, eG:G⋙K≅J⋙V; unchanged Type* universe inference. Required by admitted resolved Godement carrier comparisons.",
+      "declaration_mappings": [
+        {
+          "source_declaration": "forgetComposeIso",
+          "source_line": 246,
+          "canonical_api": "Functor.associator F G K ≪≫ isoWhiskerLeft F eG ≪≫ (Functor.associator F J V).symm ≪≫ isoWhiskerRight eF V ≪≫ Functor.associator I U V",
+          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
+          "disposition": "reuse_native_expression",
+          "interface_note": "Reuse the exact canonical expression locally at its admitted Godement carrier consumers; no standalone reference-bookkeeping module.",
+          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "visibility": "canonical expression at admitted consumers"
+        }
+      ],
+      "source_ranges": [
+        [
+          246,
+          256
+        ]
+      ],
+      "source_repository": "quillen-k-theory",
+      "minimal_general_dependencies": [
+        "Mathlib associators and nat-iso whiskering"
+      ],
+      "mathematical_boundary": "Argument-owned source applicability: complete declaration types/section premises and relevant proof use inspected for this selected cut. No extraction, compilation, axiom check, independent mathematical review, or established status was performed."
+    }
+  ],
+  "required_lower_helpers": [
+    {
+      "source_path": "Quillen/Waldhausen/SplitComplexes/FactorizationFunctor.lean",
+      "source_sha256": "bb3576f24fe649de3950079b904d286221a10cdc9fc8832a80cd4bf2bfa1a977",
+      "source_conditions": "A:Type u, Category.{v} A, Abelian A; actual mappingCone(identity), functorially on all integer cochain complexes. The other factorization/model declarations are not dependencies.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "mapping": "CochainComplex.identityConeFunctor; exact original generic abelian-category definition"
+    },
+    {
+      "source_path": "Quillen/Waldhausen/Cylinder/Pushout.lean",
+      "source_sha256": "b760358f4aa9027f932f99e0995fa531b339463b1f583f7e1ae8891b0e893514",
+      "source_conditions": "Arbitrary abelian A with independent object/morphism universes u,v; actual degreewise pushouts and neighboring-term biproducts. No Waldhausen structure assumption in this cut.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "mapping": "CochainComplex.isPushout_of_degreewise, identityConeTermIso, identityConeTermIso_naturality, identityConeFunctor_map_isPushout; generic abelian-category conditions unchanged"
+    },
+    {
+      "source_path": "Quillen/Waldhausen/Cylinder/ZeroEndpoint.lean",
+      "source_sha256": "854e6ef243c7560d5891a3684ac31ad97ee34a8810606e993a7da90e5a9e61ab",
+      "source_conditions": "Arbitrary abelian A; actual zero-complex input. No native K/path/model premise.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+      "mapping": "CochainComplex.identityCone_isZero; generic abelian-category conditions unchanged"
+    },
+    {
+      "source_path": "Quillen/Waldhausen/QuillenComparison/QuotientCalculus.lean",
+      "source_sha256": "942e8b7f327eddbf9c3cde6a7ff495297e8a27e398ff1ab706453073d9955e5d",
+      "source_conditions": "C:Type u, Category.{v} C, Preadditive C; displayed cokernel universal property hp, IsZero Z and actual maps z,q. No chosen Waldhausen zero or exact structure premise.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
+      "mapping": "CategoryTheory.Limits.isPushout_of_isColimit_cokernel; preserve arbitrary actual zero object Z and its actual maps z,q"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/ProjectiveLine/LineTensor.lean",
+      "source_sha256": "80b4048e0507b829d438c3aa681ba364645f6c93e62146e7013f9e33e04ee98e",
+      "source_conditions": "Scheme.{u}, arbitrary coefficient L. Finite-locally-free premises remain only on exactness/QI declarations. Tensor orders are actual sheafified presheaf tensor; no line rank-one/chart/perfect premise. This interval stops before chart/perfect consumers.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
+      "mapping": "moduleTensorByLineRight becomes canonical Scheme.Modules.moduleTensorRightFunctor; its symmetry is moduleTensorRightLeftIso.symm. Degreewise tensorLeft/tensorRight/tensorLeftRightIso are new Complex interfaces. Existing additive/exact module instances are reused"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Strict.lean",
+      "source_sha256": "93b391540dcb92c7d58bda3d9357e16f9327ea7dfc1f13c12976f7f084c2981d",
+      "source_conditions": "Alias only: CochainComplex X.Modules ℤ. Prefer that native type; do not import strictPerfect.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Mathlib.Algebra.Homology.HomologicalComplex",
+      "mapping": "Use native CochainComplex X.Modules ℤ directly; do not introduce another Complex alias"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Restriction.lean",
+      "source_sha256": "00896057a7423474dc1d4f8b6743337ce31c9f93490cbf5d11989649ccf1d3f3",
+      "source_conditions": "Open immersion j:U→X; literal degreewise Scheme.Modules.restrictFunctor; no strict/locally-perfect predicate. Native module restriction inputs are already general.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "mapping": "Scheme.Modules.Complex.restrict and canonical additive/exact/QI instances; actual module restriction remains native"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/Pullback.lean",
+      "source_sha256": "2e5ce5b94f6bdf7b63190c25514b058ee2d10ff210bee636504ca723df0028e2",
+      "source_conditions": "Arbitrary f:X→Y; degreewise actual module pullback; canonical pullback/inverse-image-open restriction comparison. The acyclic strict-perfect theorem is not a dependency.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "mapping": "Scheme.Modules.Complex.pullback and pullbackRestrictIso, preserving actual module pullback and inverse-image-open comparison"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/PerfectComplexes/FlatPullback.lean",
+      "source_sha256": "e68368b05013e5642baabac948a30e7d7493acd660ace47346b774827295bc33",
+      "source_conditions": "Flat f:X→Y; ordinary module-sheaf pullback exactness/QI interface. Stop before derived perfect-model consumers.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
+      "mapping": "Reuse native Modules.Pullback.FlatMorphism exactness; install only the degreewise complex interface/inference wrappers with original Flat premise"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/ProjectiveLine/OriginalLineGodementContractions.lean",
+      "source_sha256": "6fd5c428149439c07f75b8d0de45a40b6962ad8fb83a63d967fc11c77c7a84f3",
+      "source_conditions": "Scheme.{u}; arbitrary additive F:X.Modules→X.Modules and E:X.Modules. Definition only of F→Godement total→left tensor E→Godement total on Plus; no actual P1 object or contraction hypothesis.",
+      "source_file_delta": "A",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Contraction.lean",
+      "mapping": "Reuse Scheme.Modules.Godement.godementContractionResolved exactly; other owner, no write"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientBaseChange.lean",
+      "source_sha256": "9ec41b44dbbc025bdb65fd4c4c93f0cf91f8184ea16318d922cad118c5c4b8f0",
+      "source_conditions": "Arbitrary R:CommRingCat.{u}; index (Over(Spec R))ᵒᵖ × Under R; actual pullback, native pullback lift, identity and composition. No flatness/affineness/perfection premise. The full lower family must be accepted by the Scheme owner; do not import its K/Bass consumers.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Basic.lean",
+      "mapping": "Reuse exact existing Scheme.BaseChange.Coefficients geometric family, map_id/map_comp and canonical endpoints; other owner, no write"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/CoefficientPolynomialLaurent.lean",
+      "source_sha256": "f657f3aec899e6655ee07784dd91b4bfe932a24cd41287aa0d00fdcaa4ee687b",
+      "source_conditions": "General coefficient-map subfamily only. Its coefficientMap_isPullback proof is general too, but is not needed for these two delta laws. Polynomial/Laurent/Bass specializations after this cut are not dependencies.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurent.lean",
+      "mapping": "Reuse coefficientMap/coefficientMap_comp; other owner, no write"
+    },
+    {
+      "source_path": "Quillen/AlgebraicGeometry/Scheme/Affine/PolynomialLaurent.lean",
+      "source_sha256": "d470bd23db10e6883ea7e26f1472fc47c8368cc7981ffb22e68d1b29d084cd3e",
+      "source_conditions": "R:CommRingCat.{u}; literal Spec.map(CommRingCat.ofHom Polynomial.C). No projective-line or K object.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Basic.lean",
+      "mapping": "Reuse Scheme.PolynomialLaurent.polynomialProjection; other owner, no write"
+    },
+    {
+      "source_path": "Quillen/CategoryTheory/Limits/BiproductPushout.lean",
+      "source_sha256": "ffe7ed6ea79b2f1ecfc9fd4d2f2e40a051b2e43710b9d9ffc78b70669a25c0aa",
+      "source_conditions": "C:Type u, Category.{v} C, Preadditive C, HasBinaryBiproducts C; two actual displayed pushouts. Required by the identity-cone pushout proof; no Waldhausen, mono or split premise.",
+      "source_file_delta": "unchanged",
+      "destination_path": "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
+      "mapping": "CategoryTheory.Limits.IsPushout.biprod_map or isPushout_biprod_map; preserve Preadditive + HasBinaryBiproducts and both actual displayed squares"
+    }
+  ],
+  "additional_required_general_interfaces": [
+    {
+      "path": "Quillen/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "declarations": [
+        "DerivedCategory.Plus.homologyFunctorFactors",
+        "CategoryTheory.Functor.mapCochainComplexPlusHomologyIso",
+        "CategoryTheory.Functor.rightDerivedFunctorPlusHomologyIso",
+        "CategoryTheory.Functor.rightDerivedFunctorPlusHomologyIso_unit"
+      ],
+      "conditions": "Independent u,v,u′,v′; both abelian categories and HasDerivedCategory choices; F.Additive and F.PreservesHomology; EnoughInjectives A for the right-derived comparison. Actual unit square retained.",
+      "source_sha256": "681d9171b7050b81d1ec930f729923d7345fc605b8709f07d276f09618b543df",
+      "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean"
+    },
+    {
+      "path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedOpenBaseChange.lean",
+      "declarations": [
+        "AlgebraicGeometry.Scheme.Modules.derivedRestrictionPlus",
+        "AlgebraicGeometry.Scheme.Modules.isIso_derivedRestrictionPlusUnit"
+      ],
+      "conditions": "Scheme.{u}; actual open immersion and canonical HasDerivedCategory.{u+1} choices. Only these first two declarations are necessary; whole derived open-base-change file not required.",
+      "source_sha256": "f8885ace11ed0ee182729887d1c57ccdcf7f094cc9a3d47fa53aa3c1bf1860f9",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Restriction.lean"
+    },
+    {
+      "path": "Quillen/AlgebraicGeometry/Scheme/Sheaf/DerivedOpenCoverConservativity.lean",
+      "declarations": [
+        "AlgebraicGeometry.Scheme.Modules.isIso_of_derivedRestriction_openCover",
+        "AlgebraicGeometry.Scheme.Modules.isIso_of_derivedOpenPullback_openCover"
+      ],
+      "conditions": "Scheme.{u}; independent cover index Type v; actual covering open immersions and every displayed local derived map IsIso. The accepted zero-object corollary uses these exact interfaces.",
+      "source_sha256": "06bd4bcc7ba3b48a5adadfa2f5cd8e75ee2191242c37b83d38144188411fd60e",
+      "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean"
+    },
+    {
+      "path": "Quillen/Algebra/Homology/MappingConeBiprod.lean",
+      "declarations": [
+        "CochainComplex.mappingCone_map_add"
+      ],
+      "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; needed only for identity-cone additivity. May remain a private exact helper in Identity if no other admitted consumer needs public export.",
+      "source_sha256": "4b95511976c458eb12ca317b8f4ac2190ccdcdd40f065cdc57c796359d8b291c",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean"
+    }
+  ],
+  "source_phase": "Completed assigned 22-path general-cut source authoring; principal whole-library integration is separate and ongoing.",
+  "current_identity_validation": {
+    "package_name": "Aglib",
+    "root_module": "Aglib",
+    "repo_directory": "aglib",
+    "destination_identity": "Current destination paths and recorded hashes reconciled.",
+    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+    "integration_record": "doc/migration/integration.json",
+    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  }
+}

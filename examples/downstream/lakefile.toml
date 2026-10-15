@@ -1,0 +1,11 @@
+name = "aglib-downstream"
+version = "0.1.0"
+defaultTargets = ["Consumer"]
+
+[[lean_lib]]
+name = "Consumer"
+leanOptions = {autoImplicit = false, warningAsError = true}
+
+[[require]]
+name = "Aglib"
+path = "../.."
