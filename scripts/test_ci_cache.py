@@ -7,6 +7,7 @@ import unittest
 from cache_key import config_hash
 from check_compiled_inventory import check_inventory
 from prepare_build_cache import prepare, STAMP
+from resource_guard import limits
 
 
 class CacheFixture(unittest.TestCase):
@@ -275,23 +276,97 @@ class WorkflowTests(unittest.TestCase):
         self.assertLess(restore, prepare_step)
         self.assertLess(prepare_step, check)
         cache = workflow[restore:prepare_step]
-        self.assertIn('actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', cache)
+        self.assertIn('actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', cache)
         self.assertIn('            .lake/build\n            examples/downstream/.lake/build\n', cache)
         self.assertIn("hashFiles('Aglib.lean', 'Aglib/**/*.lean'", cache)
         self.assertIn("'!examples/downstream/.lake/**'", cache)
         prefixes = cache.split('restore-keys: |\n', 1)[1].strip().splitlines()
         self.assertEqual([line.strip() for line in prefixes], [
+            "project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-${{ hashFiles('Aglib.lean', 'Aglib/**/*.lean', 'AglibTest.lean', 'AglibTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}",
             'project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-',
             'project-build-v1-${{ runner.os }}-${{ runner.arch }}-'])
         self.assertNotIn('version', cache)
-        self.assertNotIn('if:', workflow[check:])
-        self.assertIn('runs-on: macos-15-intel', workflow)
-        self.assertIn('bash scripts/check.sh --rehash --ci', workflow[check:])
+        save = workflow.index('- name: Save incremental project builds, including partial progress')
+        self.assertLess(check, save)
+        self.assertNotIn('if:', workflow[check:save])
+        self.assertIn('bash scripts/check.sh --rehash --ci', workflow[check:save])
         self.assertIn('LEAN_NUM_THREADS: 1', workflow)
-        self.assertIn('AGLIB_LEAN_MEMORY_MB: 10240', workflow)
-        self.assertIn('AGLIB_RSS_LIMIT_MB: 11264', workflow)
         self.assertIn('scripts/resource_guard.py --bootstrap-cache --receipt '
                       '"$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get', workflow)
+
+    def test_public_runner_profile_leaves_time_to_save_after_check_timeout(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        job = workflow[workflow.index('  library:'):workflow.index('    steps:')]
+        self.assertIn('runs-on: ubuntu-latest', job)
+        self.assertIn('timeout-minutes: 360', job)
+        self.assertIn('AGLIB_BUILD_THREADS: 4', job)
+        self.assertIn('AGLIB_LEAN_MEMORY_MB: 12800', job)
+        self.assertIn('AGLIB_RSS_LIMIT_MB: 13824', job)
+        environment = {
+            name: next(line.strip().split(': ', 1)[1] for line in job.splitlines()
+                       if line.strip().startswith(name + ':'))
+            for name in ('AGLIB_LEAN_MEMORY_MB', 'AGLIB_RSS_LIMIT_MB')}
+        for physical_mib in (16384, 15872):
+            profile = limits(environment, physical_mib * 1024**2)
+            self.assertEqual(profile['lean_memory_mb'], 12800)
+            self.assertEqual(profile['rss_limit_mb'], 13824)
+            self.assertEqual(profile['lean_threads'], 1)
+            self.assertEqual(profile['max_active_lean'], 1)
+        with self.assertRaises(ValueError):
+            limits(environment, 15871 * 1024**2)
+        check = workflow[workflow.index('- name: Run CI checks for the library and independent client'):]
+        self.assertIn('timeout-minutes: 300', check.split('      - name:', 1)[0])
+        self.assertIn("cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}", workflow)
+
+    def test_identical_source_retries_advance_immutable_cache_generations(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        cache = workflow[workflow.index('- name: Restore incremental project builds'):
+                         workflow.index('- name: Validate cached compilers')]
+        key = next(line.strip().removeprefix('key: ') for line in cache.splitlines()
+                   if line.strip().startswith('key: '))
+        prefixes = [line.strip() for line in cache.split('restore-keys: |\n', 1)[1].strip().splitlines()]
+        self.assertEqual(key, prefixes[0] + '-${{ github.run_id }}-${{ github.run_attempt }}')
+        self.assertTrue(key.startswith(prefixes[1]))
+        self.assertTrue(key.startswith(prefixes[2]))
+        for prefix in prefixes:
+            self.assertNotIn('github.run_id', prefix)
+            self.assertNotIn('github.run_attempt', prefix)
+        generations = [key.replace('${{ github.run_id }}', run).replace('${{ github.run_attempt }}', attempt)
+                       for run, attempt in [('42', '1'), ('42', '2'), ('43', '1')]]
+        self.assertEqual(len(set(generations)), 3)
+        self.assertTrue(all(generation.startswith(prefixes[0]) for generation in generations))
+        # A pre-generation exact-source key is still matched by the first prefix.
+        self.assertEqual(prefixes[0], key.rsplit('-${{ github.run_id }}', 1)[0])
+
+    def test_partial_project_save_is_guarded_and_independent_of_check_success(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        save = workflow[workflow.index('- name: Save incremental project builds, including partial progress'):]
+        condition = next(line.strip() for line in save.splitlines() if line.strip().startswith('if:'))
+        self.assertIn('always()', condition)
+        self.assertIn("steps.project-build-cache.outputs.cache-primary-key != ''", condition)
+        self.assertIn("steps.prepare-project-cache.outcome == 'success'", condition)
+        self.assertNotIn('success()', condition)
+        self.assertIn('actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', save)
+        self.assertIn('            .lake/build\n            examples/downstream/.lake/build\n', save)
+        self.assertIn('key: ${{ steps.project-build-cache.outputs.cache-primary-key }}', save)
+
+    def test_dependency_cache_is_saved_after_fetch_before_long_project_check(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        restore = workflow.index('- name: Restore third-party proof cache')
+        fetch = workflow.index('- name: Fetch matching Mathlib proof cache')
+        save = workflow.index('- name: Save matching third-party proof cache')
+        compute = workflow.index('- name: Compute version-independent project cache configuration')
+        self.assertLess(restore, fetch)
+        self.assertLess(fetch, save)
+        self.assertLess(save, compute)
+        dependency = workflow[restore:compute]
+        self.assertIn('actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', dependency)
+        self.assertIn('actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9', dependency)
+        self.assertIn("key: third-party-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}", dependency)
+        self.assertIn("steps.mathlib-cache-fetch.outcome == 'success'", dependency)
+        self.assertIn("steps.third-party-cache.outputs.cache-primary-key != ''", dependency)
+        self.assertIn("steps.third-party-cache.outputs.cache-hit != 'true'", dependency)
+        self.assertIn('key: ${{ steps.third-party-cache.outputs.cache-primary-key }}', dependency)
 
 
 if __name__ == '__main__':

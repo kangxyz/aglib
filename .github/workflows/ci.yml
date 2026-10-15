@@ -15,13 +15,13 @@ concurrency:
 
 jobs:
   library:
-    runs-on: macos-15-intel
-    timeout-minutes: 180
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
     env:
       LEAN_NUM_THREADS: 1
-      AGLIB_BUILD_THREADS: 2
-      AGLIB_LEAN_MEMORY_MB: 10240
-      AGLIB_RSS_LIMIT_MB: 11264
+      AGLIB_BUILD_THREADS: 4
+      AGLIB_LEAN_MEMORY_MB: 12800
+      AGLIB_RSS_LIMIT_MB: 13824
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Set up Python 3.13
@@ -40,28 +40,41 @@ jobs:
           sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
           echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
           "$ELAN_HOME/bin/elan" toolchain install "$(cat lean-toolchain)"
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      - name: Restore third-party proof cache
+        id: third-party-cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/packages
           key: third-party-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
       - name: Fetch matching Mathlib proof cache
+        id: mathlib-cache-fetch
         run: python3 scripts/resource_guard.py --bootstrap-cache --receipt "$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get
+      - name: Save matching third-party proof cache
+        if: ${{ steps.mathlib-cache-fetch.outcome == 'success' && steps.third-party-cache.outputs.cache-primary-key != '' && steps.third-party-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/packages
+          key: ${{ steps.third-party-cache.outputs.cache-primary-key }}
       - name: Compute version-independent project cache configuration
         id: project-cache-config
         run: |
           config_hash=$(python3 scripts/cache_key.py)
           echo "hash=$config_hash" >> "$GITHUB_OUTPUT"
       - name: Restore incremental project builds
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        id: project-build-cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             .lake/build
             examples/downstream/.lake/build
-          key: project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-${{ hashFiles('Aglib.lean', 'Aglib/**/*.lean', 'AglibTest.lean', 'AglibTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}
+          # Cache entries are immutable; every attempt can advance a partial build.
+          key: project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-${{ hashFiles('Aglib.lean', 'Aglib/**/*.lean', 'AglibTest.lean', 'AglibTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
+            project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-${{ hashFiles('Aglib.lean', 'Aglib/**/*.lean', 'AglibTest.lean', 'AglibTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}
             project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-
             project-build-v1-${{ runner.os }}-${{ runner.arch }}-
       - name: Validate cached compilers and prune obsolete project modules
+        id: prepare-project-cache
         run: |
           set -euo pipefail
           compiler_id=$(lean --version)
@@ -70,7 +83,16 @@ jobs:
             --compiler-id "$compiler_id" \
             --downstream-compiler-id "$downstream_compiler_id"
       - name: Run CI checks for the library and independent client
+        timeout-minutes: 300
         run: |
           set -euo pipefail
           lean --version
           bash scripts/check.sh --rehash --ci
+      - name: Save incremental project builds, including partial progress
+        if: ${{ always() && steps.project-build-cache.outputs.cache-primary-key != '' && steps.prepare-project-cache.outcome == 'success' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .lake/build
+            examples/downstream/.lake/build
+          key: ${{ steps.project-build-cache.outputs.cache-primary-key }}
