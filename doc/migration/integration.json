@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "Aglib",
   "root_module": "Aglib",
-  "status": "Full mathematical implementation integration and the bounded replay execution update passed on their recorded basis; the subsequent author-header/documentation-only update is verified separately below.",
+  "status": "The current public mapping-cone interface amendment passed narrow compilation and a generic public-boundary probe; complete current-source integration is pending. Earlier acceptance records retain their original source/artifact bases.",
   "source_basis": {
     "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
     "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
@@ -238,5 +238,45 @@
     "edited_guide_links_checked": 102,
     "all_owned_groups_closed": true,
     "evidence_boundary": "The original compiled-term audits and exact kernel receipts retain their original source/artifact basis. They are not relabeled as new replays; the separately verified change affects only headers, generator author defaults and documentation."
+  },
+  "mapping_cone_interface_refinement": {
+    "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+    "status": "Narrow compilation and independent ordinary source/mathematical review passed; complete default integration pending.",
+    "declaration": "CochainComplex.mappingCone.map_add",
+    "module": "Aglib.Algebra.Homology.MappingCone.Map",
+    "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor.",
+    "proof_change": "Original Quillen proof moved verbatim to one public lower owner; both identity-cone uses reuse it.",
+    "source_sha256": {
+      "Aglib/Algebra/Homology/MappingCone/Map.lean": "71e64096a541729d208216d450c7675c4c6eb40ac5235c528254067b01f0e95a",
+      "Aglib/Algebra/Homology/MappingCone/Identity.lean": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
+      "Aglib/Algebra/Homology/MappingCone/README.md": "8f9700c03e37288b4aa89426ae5c84ad66885825db31663d4e07f32df43a3356",
+      "AglibTest/MappingCone.lean": "53c7b1283f69955761c856f44ea7abf004623b698c8c99ade871e18e02c13948"
+    },
+    "review": "Independent ordinary review accepted these exact four source hashes; no new proof obligation.",
+    "narrow_report_sha256": "857d01f69c28d0340687200f4bf32ab82b5bde34d1a7f0fe15a93c344fcf3177",
+    "narrow_targets": [
+      "Aglib.Algebra.Homology.MappingCone.Map",
+      "Aglib.Algebra.Homology.MappingCone.Identity",
+      "AglibTest.MappingCone"
+    ],
+    "narrow_exit_code": 0,
+    "public_boundary_probe_exit_code": 0,
+    "reported_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "original_dependency_caches_unchanged": true,
+    "all_owned_groups_closed": true,
+    "full_default_status": "pending"
+  },
+  "current_surface": {
+    "production_modules": 412,
+    "positive_client_modules": 9,
+    "audit_support_modules": 1,
+    "root_compiled_modules": 422,
+    "root_lean_files": 426,
+    "client_lean_files": 4,
+    "full_kernel_replay_status": "pending on current amended source basis"
   }
 }

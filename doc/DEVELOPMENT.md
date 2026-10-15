@@ -13,6 +13,8 @@ python3 scripts/resource_guard.py --bootstrap-cache \
 
 The bootstrap mode accepts only that exact cache command. It retains the process-group RSS cutoff and capped compiler threads while allowing the cache tool's compiler children. Normal project proof work uses the sequential route.
 
+Keep writable dependency build caches owned by this checkout. Before building with dependency links into another checkout, prepare private copies; ordinary Lake builds may compile missing dependency modules. Preserve the original sources and caches when making those copies.
+
 Build a changed leaf and its affected consumers with [build_serial.py](../scripts/build_serial.py):
 
 ```sh

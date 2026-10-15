@@ -358,11 +358,11 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+      "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
       "native_namespaces": [
         "CochainComplex"
       ],
-      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Cone-map additivity is public in lower MappingCone.Map under its original preadditive and binary-biproduct assumptions; identity-cone constructions retain their abelian setting. Original A := X.Modules statements are checked in the specialization certificate.",
       "selection": {
         "declarations": [
           "identityConeFunctor"
@@ -375,8 +375,18 @@
         ],
         "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
       },
-      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
-      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+      "validation": "Current Map and Identity production modules and external public-module fixture compiled successfully; the generic signature and three allowed axioms were checked. Complete current-source integration is pending.",
+      "validation_receipt": "/private/tmp/r5-investigations/aglib-mapping-cone-api/execution/narrow-milestone.json",
+      "validation_history": [
+        {
+          "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+          "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+          "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+        }
+      ]
     },
     {
       "source_repository": "quillen-k-theory",
@@ -414,11 +424,11 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+      "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
       "native_namespaces": [
         "CochainComplex"
       ],
-      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Cone-map additivity is public in lower MappingCone.Map under its original preadditive and binary-biproduct assumptions; identity-cone constructions retain their abelian setting. Original A := X.Modules statements are checked in the specialization certificate.",
       "selection": {
         "declarations": [
           "isPushout_of_degreewise",
@@ -446,8 +456,18 @@
         ],
         "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
       },
-      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
-      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+      "validation": "Current Map and Identity production modules and external public-module fixture compiled successfully; the generic signature and three allowed axioms were checked. Complete current-source integration is pending.",
+      "validation_receipt": "/private/tmp/r5-investigations/aglib-mapping-cone-api/execution/narrow-milestone.json",
+      "validation_history": [
+        {
+          "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+          "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+          "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+        }
+      ]
     },
     {
       "source_repository": "quillen-k-theory",
@@ -470,11 +490,11 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+      "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
       "native_namespaces": [
         "CochainComplex"
       ],
-      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Cone-map additivity is public in lower MappingCone.Map under its original preadditive and binary-biproduct assumptions; identity-cone constructions retain their abelian setting. Original A := X.Modules statements are checked in the specialization certificate.",
       "selection": {
         "declarations": [
           "identityCone_isZero"
@@ -487,8 +507,18 @@
         ],
         "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
       },
-      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
-      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+      "validation": "Current Map and Identity production modules and external public-module fixture compiled successfully; the generic signature and three allowed axioms were checked. Complete current-source integration is pending.",
+      "validation_receipt": "/private/tmp/r5-investigations/aglib-mapping-cone-api/execution/narrow-milestone.json",
+      "validation_history": [
+        {
+          "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+          "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+          "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+        }
+      ]
     },
     {
       "source_repository": "quillen-k-theory",
@@ -507,15 +537,15 @@
         "mappingCone_map_add"
       ],
       "source_conditions": [
-        "Generic preadditive category with binary biproducts and independent object/morphism universes; needed only for identity-cone additivity. May remain a private exact helper in Identity if no other admitted consumer needs public export."
+        "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor."
       ],
-      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
-      "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Map.lean",
+      "destination_module": "Aglib.Algebra.Homology.MappingCone.Map",
+      "destination_sha256": "71e64096a541729d208216d450c7675c4c6eb40ac5235c528254067b01f0e95a",
       "native_namespaces": [
-        "CochainComplex"
+        "CochainComplex.mappingCone"
       ],
-      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "formalization_change": "The original statement and proof are preserved at public CochainComplex.mappingCone.map_add in the lower Map module. Identity imports and reuses that single implementation; its abelian hypotheses are unchanged.",
       "selection": {
         "declarations": [
           "mappingCone_map_add"
@@ -528,8 +558,21 @@
         ],
         "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
       },
-      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
-      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+      "validation": "Current Map and Identity production modules and external public-module fixture compiled successfully; the generic signature and three allowed axioms were checked. Complete current-source integration is pending.",
+      "validation_receipt": "/private/tmp/r5-investigations/aglib-mapping-cone-api/execution/narrow-milestone.json",
+      "validation_history": [
+        {
+          "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+          "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+          "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+        }
+      ],
+      "native_declarations": [
+        "CochainComplex.mappingCone.map_add"
+      ]
     },
     {
       "source_repository": "quillen-k-theory",
@@ -567,11 +610,11 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+      "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
       "native_namespaces": [
         "CochainComplex"
       ],
-      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+      "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Cone-map additivity is public in lower MappingCone.Map under its original preadditive and binary-biproduct assumptions; identity-cone constructions retain their abelian setting. Original A := X.Modules statements are checked in the specialization certificate.",
       "selection": {
         "declarations": [
           "identityConeFunctor_additive",
@@ -599,8 +642,18 @@
         ],
         "scope": "Exact general cut or necessary generic helper; canonical native APIs reused, source object/map/premise boundaries preserved."
       },
-      "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
-      "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+      "validation": "Current Map and Identity production modules and external public-module fixture compiled successfully; the generic signature and three allowed axioms were checked. Complete current-source integration is pending.",
+      "validation_receipt": "/private/tmp/r5-investigations/aglib-mapping-cone-api/execution/narrow-milestone.json",
+      "validation_history": [
+        {
+          "basis_revision": "a7ebd6f6455c0f05e53e83248372ef53967b0103",
+          "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "formalization_change": "The selected FlasqueShift scheme statements are explicitly lifted to arbitrary abelian A : Type u with Category.{v} A. The generic identity-cone source helpers already use that setting. Private cone-map additivity helper is specialized to the abelian consumer. Original A := X.Modules statements are checked in the specialization certificate.",
+          "validation": "Author changed-module Lean check exit 0, exact current source SHA; current package standard lint flags, outputs in assigned scratch only.",
+          "validation_receipt": "/private/tmp/r5-investigations/algebraic-geometry-build/quillen-perfect-delta-scope/lean-checks/Aglib.Algebra.Homology.MappingCone.Identity.json"
+        }
+      ]
     },
     {
       "source_repository": "quillen-k-theory",
@@ -2609,7 +2662,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
           "visibility": "public native declaration"
         },
         {
@@ -2619,7 +2672,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
           "visibility": "public native declaration"
         },
         {
@@ -2629,7 +2682,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
           "visibility": "public native declaration"
         },
         {
@@ -2639,7 +2692,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
+          "destination_sha256": "a2192b00ca31eec8e8f41af068285dba289b55dbd2f24846a3d5a3fc1b7db8f1",
           "visibility": "public native declaration"
         },
         {
@@ -4202,9 +4255,12 @@
       "declarations": [
         "CochainComplex.mappingCone_map_add"
       ],
-      "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; needed only for identity-cone additivity. May remain a private exact helper in Identity if no other admitted consumer needs public export.",
+      "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor.",
       "source_sha256": "4b95511976c458eb12ca317b8f4ac2190ccdcdd40f065cdc57c796359d8b291c",
-      "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean"
+      "destination_path": "Aglib/Algebra/Homology/MappingCone/Map.lean",
+      "native_declarations": [
+        "CochainComplex.mappingCone.map_add"
+      ]
     }
   ],
   "source_phase": "Completed assigned 22-path general-cut source authoring; principal whole-library integration is separate and ongoing.",

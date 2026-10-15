@@ -13,6 +13,7 @@ public import AglibTest.CoefficientUnit
 public import AglibTest.ExactFunctor
 public import AglibTest.FiniteLocallyFree
 public import AglibTest.FiniteTypePushforward
+public import AglibTest.MappingCone
 public import AglibTest.SheafTensor
 
 /-!

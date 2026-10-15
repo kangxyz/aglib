@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Homology.MappingCone.Map
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.Shapes.CokernelPushout
 public import Mathlib.Algebra.Homology.HomotopyCategory.DegreewiseSplit
@@ -37,13 +38,6 @@ Source SHA-256:
 `854e6ef243c7560d5891a3684ac31ad97ee34a8810606e993a7da90e5a9e61ab`.
 Selected declarations: identityCone_isZero.
 Source:
-`Quillen/Algebra/Homology/MappingConeBiprod.lean`
-at LOCAL Quillen
-`189a8e779f0c68b2dfc6f8195daebb3e684a5905`.
-Source SHA-256:
-`4b95511976c458eb12ca317b8f4ac2190ccdcdd40f065cdc57c796359d8b291c`.
-Selected declarations: mappingCone_map_add.
-Source:
 `Quillen/AlgebraicGeometry/PerfectComplexes/FlasqueShift.lean`
 at LOCAL Quillen
 `189a8e779f0c68b2dfc6f8195daebb3e684a5905`.
@@ -73,16 +67,6 @@ def identityConeFunctor : CochainComplex A ℤ ⥤ CochainComplex A ℤ where
   map_comp f g := by
     ext n
     simp [mappingCone.ext_from_iff _ (n + 1) n rfl, mappingCone.map]
-
-private lemma mappingCone_map_add {K₁ L₁ K₂ L₂ : CochainComplex A ℤ}
-    (f : K₁ ⟶ L₁) (g : K₂ ⟶ L₂) (a a' : K₁ ⟶ K₂) (b b' : L₁ ⟶ L₂)
-    (h : f ≫ b = a ≫ g) (h' : f ≫ b' = a' ≫ g) :
-    mappingCone.map f g (a + a') (b + b') (by simp [Preadditive.comp_add, Preadditive.add_comp, h,
-      h']) =
-      mappingCone.map f g a b h + mappingCone.map f g a' b' h' := by
-  ext n
-  simp [mappingCone.ext_from_iff _ (n + 1) n rfl, mappingCone.map,
-    Preadditive.comp_add, Preadditive.add_comp]
 
 theorem isPushout_of_degreewise
     {K L M N : CochainComplex A ℤ} {f : K ⟶ L} {g : K ⟶ M} {i : L ⟶ N} {j : M ⟶ N}
@@ -142,7 +126,7 @@ theorem identityCone_isZero {K : CochainComplex A ℤ} (hK : IsZero K) :
 instance identityConeFunctor_additive : (identityConeFunctor (A := A)).Additive where
   map_add := by
     intro K L f g
-    exact mappingCone_map_add (𝟙 K) (𝟙 L)
+    exact mappingCone.map_add (𝟙 K) (𝟙 L)
       f g f g (by simp) (by simp)
 
 lemma coneSequence_shortExact (K : CochainComplex A ℤ) :
@@ -166,7 +150,7 @@ lemma identityConeFunctor_shortExact {S : ShortComplex (CochainComplex A ℤ)} (
   let F : CochainComplex A ℤ ⥤ CochainComplex A ℤ := identityConeFunctor
   let : F.Additive := ⟨by
     intro K L f g
-    exact mappingCone_map_add (𝟙 K) (𝟙 L)
+    exact mappingCone.map_add (𝟙 K) (𝟙 L)
       f g f g (by simp) (by simp)⟩
   have hp : IsPushout S.f (0 : S.X₁ ⟶ 0) S.g (0 : 0 ⟶ S.X₃) :=
     isPushout_of_isColimit_cokernel S.zero hS.gIsCokernel

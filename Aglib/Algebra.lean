@@ -48,6 +48,7 @@ public import Aglib.Algebra.Homology.Embedding.StupidTrunc.Transition
 public import Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison
 public import Aglib.Algebra.Homology.MappingCone.Acyclicity
 public import Aglib.Algebra.Homology.MappingCone.Identity
+public import Aglib.Algebra.Homology.MappingCone.Map
 public import Aglib.Algebra.Homology.MappingCone.QuasiIso
 public import Aglib.Algebra.Homology.QuasiIso
 public import Aglib.Algebra.Homology.ShortComplex.Retract

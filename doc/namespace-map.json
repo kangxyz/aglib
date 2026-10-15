@@ -2124,6 +2124,15 @@
         }
       ],
       "boundary": "Generic TopCat.Sheaf support and Godement statements and TopologicalSpace dimension statements are separated from locally Noetherian scheme applications."
+    },
+    {
+      "family": "mapping-cone map additivity",
+      "correspondence": {
+        "Quillen.CochainComplex.mappingCone_map_add": "CochainComplex.mappingCone.map_add"
+      },
+      "module": "Aglib.Algebra.Homology.MappingCone.Map",
+      "conditions": "Generic preadditive category with binary biproducts and independent object/morphism universes; no Abelian hypothesis. The public map law serves generic cone-biproduct comparisons and the abelian identity-cone functor.",
+      "boundary": "Declaration-specific routing; the remaining original MappingConeBiprod module stays in Quillen."
     }
   ],
   "contextual_namespace_refinements": {
