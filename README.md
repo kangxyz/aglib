@@ -1,55 +1,67 @@
 # Aglib
 
-`Aglib` is a Lean library of commutative algebra, scheme-module theory and general Zariski cohomology. Its import root is `Aglib`. Declarations extend native mathematical owners such as `Module`, `Algebra`, `CategoryTheory` and `AlgebraicGeometry.Scheme`; original R5Lab and Quillen names are provenance.
+Aglib is a Lean 4 library for commutative algebra, arbitrary-dimensional scheme geometry, module sheaves and Zariski cohomology, built on Mathlib. It works with Mathlib's actual rings, schemes, module sheaves and `Sheaf.H`, extending their native namespaces with reusable constructions, canonical maps and theorems.
 
-The library uses Mathlib's actual rings, categories, schemes, module sheaves and `Sheaf.H`. It supplies reusable objects and canonical maps together with theorem interfaces describing their properties.
+The library develops general theory. Curve, projective-line, genus, degree, Riemann–Roch and K/G/Q/S applications remain downstream.
 
-| Entry guide | Principal reusable interfaces |
+## Installation and use
+
+Use Lean **4.34.1**. Add Aglib to your project's `lakefile.toml`:
+
+```toml
+[[require]]
+name = "Aglib"
+git = "https://github.com/kangxyz/aglib.git"
+rev = "main"
+```
+
+Run `lake update` to resolve the dependency. Aglib pins its compatible Mathlib revision in [lakefile.toml](lakefile.toml); retain the resulting `lake-manifest.json` for reproducible builds. Use a specific Aglib commit in place of `main` when you need a fixed version.
+
+Import a focused module, for example to use the domain theorem for tensor products over an algebraically closed field:
+
+```lean
+import Aglib.RingTheory.TensorProduct.Domain
+
+open scoped TensorProduct
+
+example (k A B : Type) [Field k] [IsAlgClosed k]
+    [CommRing A] [IsDomain A] [Algebra k A]
+    [CommRing B] [IsDomain B] [Algebra k B] :
+    IsDomain (A ⊗[k] B) :=
+  Algebra.TensorProduct.tensorProduct_isDomain k A B
+```
+
+The theorem is [defined here](Aglib/RingTheory/TensorProduct/Domain.lean). Use `import Aglib` for the aggregate public surface. [Interface examples](AglibTest) and an [independent downstream package](examples/downstream) show further uses.
+
+## Main results
+
+The linked family guides give precise statements, focused imports and canonical declaration names.
+
+- **Commutative algebra:** [regular local rings](Aglib/RingTheory/RegularLocalRing/README.md) are domains and integrally closed; in positive dimension a scalar-regular first parameter gives a regular quotient of dimension one less. [Tensor products of commutative domains](Aglib/RingTheory/TensorProduct/README.md) over an algebraically closed field are domains, without a finite-type assumption. A [finite module over a Noetherian ring](Aglib/RingTheory/FiniteLength/README.md) has finite length if every prime in its support is maximal.
+- **Affine module sheaves and vector bundles:** [quasicoherent sheaves on affine schemes](Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md) have the native module/tilde comparison and vanishing positive Zariski cohomology over every commutative ring. [Finite locally free sheaves](Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md) form an exact category, and arbitrary scheme pullback preserves its short exact sequences by local splitting. On [affine schemes](Aglib/AlgebraicGeometry/Modules/LocallyFree/Affine/README.md), their global sections are finitely presented projective modules with actual finite-free retracts.
+- **Geometry and invertible sheaves:** [smooth schemes over arbitrary fields](Aglib/AlgebraicGeometry/Morphisms/Smooth/README.md) have regular and normal stalks; relative dimension `n` bounds stalk dimensions, with equality at closed points and scheme dimension `n` for nonempty schemes. [Locally Noetherian schemes with domain stalks](Aglib/AlgebraicGeometry/Properties/Normal/README.md) have open irreducible components; connectedness together with domain and integrally closed stalks gives integrality. [Rank-one module sheaves](Aglib/AlgebraicGeometry/Modules/Invertible/README.md) give an ordinary additive Picard group on every scheme and additive pullback along every scheme morphism.
+- **Canonical comparison maps:** the [projection formula](Aglib/AlgebraicGeometry/Modules/ProjectionFormula/README.md) holds for arbitrary scheme morphisms with finite locally free target coefficient, and for closed immersions with both coefficients arbitrary. [Structure-cohomology field base change](Aglib/AlgebraicGeometry/Cohomology/BaseChange/README.md) is bijective in every nonnegative degree for quasi-compact separated schemes over a field, without a finite-generation premise.
+- **Cohomological dimension:** on a [Noetherian scheme of topological Krull dimension at most `d`](Aglib/AlgebraicGeometry/Cohomology/Vanishing/README.md), every abelian sheaf has zero Zariski `Sheaf.H` in degrees greater than `d`; properness and quasicoherence are unnecessary.
+- **Complexes and derived methods:** [Godement totalization](Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/README.md) preserves categorical short exactness even on unbounded integer complexes; augmentation and D+ calculation retain bounded-below or explicit lower-term bounds. [Short exact bounded-below complexes](Aglib/Algebra/Homology/DerivedCategory/Plus/README.md) give distinguished triangles in an abelian derived setting; single-term comparison retains both lower and upper term bounds, and derived contraction gives the stated one-sided unit-compatible isomorphism. [Joint open covers](Aglib/AlgebraicGeometry/Cohomology/Locality/README.md) detect isomorphisms and zero objects in the bounded-below derived module category from the actual local hypotheses. [Affine induction on qcqs schemes](Aglib/AlgebraicGeometry/Properties/README.md) uses isomorphism invariance and compact binary-union closure with the overlap property supplied.
+
+Some interfaces retain explicit general inputs: proper module-cohomology finiteness uses `ProperModuleCohomologyFinite`, smooth differential rank uses `SmoothDifferentialRank`, local-basis fibre/rank comparisons use `LocalBasisFibreDimension`, and relative locally free cohomology base change uses `LocalFreeCohomologyBaseChange`. These premises remain required where used; the derived constructions do not supply them. See the [interface guide](doc/INTERFACES.md).
+
+## Interfaces and documentation
+
+| Family | Interfaces |
 | --- | --- |
-| [RingTheory](Aglib/RingTheory/README.md) | Descent data and equalizer algebras, regular-local parameters, support, filtrations, length and scalar Euler expressions |
-| [Algebra](Aglib/Algebra/README.md) | Finite-module functors, localized exactness, mapping cones and first-quadrant total complexes |
-| [CategoryTheory](Aglib/CategoryTheory/README.md) | Selected exact structures, exact functors, abelian subcategories, small models, injective resolutions and site Cech comparisons |
-| [Topology/Sheaves](Aglib/Topology/Sheaves/README.md) | Section complexes, basis detection, Mayer–Vietoris and Noetherian-space sheaf support |
-| [AlgebraicGeometry](Aglib/AlgebraicGeometry/README.md) | Actual scheme modules, quasicoherence, presentations, locally free/coherent/invertible/differential sheaves, morphism properties and cohomology |
+| [RingTheory](Aglib/RingTheory/README.md) | Descent and equalizers, regular-local parameters, support, filtrations, length and scalar Euler expressions |
+| [Algebra](Aglib/Algebra/README.md) | Finite-module functors, localized exactness, mapping cones and total complexes |
+| [CategoryTheory](Aglib/CategoryTheory/README.md) | Selected exact structures and functors, abelian subcategories, small models, injective resolutions and site Cech comparisons |
+| [Topology/Sheaves](Aglib/Topology/Sheaves/README.md) | Section complexes, basis detection, Mayer–Vietoris and Noetherian-space support |
+| [AlgebraicGeometry](Aglib/AlgebraicGeometry/README.md) | Scheme modules, quasicoherence, locally free/coherent/invertible/differential sheaves, morphisms and cohomology |
 
-## Main mathematical results
+Finite-type quasicoherent theory is available on arbitrary schemes; the coherent specialization keeps its explicit locally Noetherian guard. Constructions reuse canonical objects and maps rather than introducing parallel replacements.
 
-The owning guides give focused imports, canonical declaration names and the precise source statements.
+The [documentation index](doc/README.md) links reading routes, [scope](doc/SCOPE.md), [architecture](doc/ARCHITECTURE.md), [naming](doc/NAMING.md), [source provenance](doc/REFERENCES.md) and [integration status](doc/WORK_PLAN.md).
 
-| Result | Conditions and conclusion |
-| --- | --- |
-| [Regular-local domain and normality](Aglib/RingTheory/RegularLocalRing/README.md) | A commutative regular local ring is a domain and integrally closed. Positive-dimensional regular local rings admit a scalar-regular first parameter with regular quotient and dimension drop one. |
-| [Tensor products of domains](Aglib/RingTheory/TensorProduct/README.md) | Over an algebraically closed field, the tensor product of two arbitrary commutative domain algebras is a domain; no finite-type assumption is made on the final algebras. |
-| [Finite length from support](Aglib/RingTheory/FiniteLength/README.md) | A finite module over a Noetherian commutative ring has finite length when every prime of its actual support is maximal. Canonical localization-length comparisons retain their separate flatness or surjectivity hypotheses. |
-| [Affine quasicoherent comparison and acyclicity](Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md) | Actual quasicoherent sheaves on an affine scheme have the native module/tilde comparison. Their positive Zariski cohomology vanishes over every commutative affine ring, without Noetherianity. |
-| [Exact vector-bundle pullback](Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md) | Finite locally free sheaves form an exact category. Pullback along an arbitrary scheme morphism preserves its short exact sequences, by local splitting; no flatness of the morphism is required. |
-| [Smooth field-scheme geometry](Aglib/AlgebraicGeometry/Morphisms/Smooth/README.md) | Smooth schemes over arbitrary fields have regular and normal stalks. Relative dimension `n` bounds every stalk dimension by `n`; equality holds at closed points, and the scheme dimension is `n` when the scheme is nonempty. |
-| [Normal components](Aglib/AlgebraicGeometry/Properties/Normal/README.md) | Domain stalks on a locally Noetherian scheme give open irreducible components. A connected locally Noetherian scheme with domain and integrally closed stalks is integral. |
-| [Ordinary Picard-group pullback](Aglib/AlgebraicGeometry/Modules/Invertible/README.md) | Actual rank-one module sheaves on every scheme give an ordinary additive Picard group by tensor and duality. Every scheme morphism induces an additive pullback map. |
-| [Canonical cohomology field base change](Aglib/AlgebraicGeometry/Cohomology/BaseChange/README.md) | For a quasi-compact separated scheme over a field, extension of that field makes the constructed structure-cohomology tensor map bijective in every nonnegative degree; no finite-generation premise is used. |
-| [Noetherian cohomological dimension](Aglib/AlgebraicGeometry/Cohomology/Vanishing/README.md) | For every abelian sheaf on a Noetherian scheme of topological Krull dimension at most `d`, its actual Zariski `Sheaf.H` vanishes in degrees greater than `d`. Properness and quasicoherence are not required. |
+## Contributing and license
 
-The library also exposes conditional result interfaces from explicit general inputs. Proper module-cohomology finiteness requires `ProperModuleCohomologyFinite`; smooth differential rank requires `SmoothDifferentialRank`; local-basis fibre/rank comparisons require `LocalBasisFibreDimension`; and relative locally free cohomology base change requires `LocalFreeCohomologyBaseChange`. The [interface guide](doc/INTERFACES.md) states these families on their actual objects and maps. The new Godement resolutions and derived interfaces do not discharge these R5 inputs. Build and foundation checks do not supply them.
+Follow the [development guide](doc/DEVELOPMENT.md) for setup, focused builds, tests, linters and integration checks, and the [contribution conventions](doc/DEVELOPMENT.md#contribution-conventions) for source and documentation changes. [AGENTS.md](AGENTS.md) gives concise instructions for coding agents.
 
-
-The latest local Quillen surface adds these general result interfaces:
-
-| Result | Conditions and conclusion |
-| --- | --- |
-| [Affine vector-bundle sections](Aglib/AlgebraicGeometry/Modules/LocallyFree/Affine/README.md) | A finite locally free sheaf on `Spec R` has finitely presented projective global sections over any commutative ring, with an actual finite-free retract. |
-| [Projection formula](Aglib/AlgebraicGeometry/Modules/ProjectionFormula/README.md) | For arbitrary scheme morphisms the target coefficient is finite locally free; for closed immersions both module coefficients may be arbitrary. The isomorphism uses the actual projection map. |
-| [Godement totalization](Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/README.md) | Totalization preserves categorical short exactness on ordinary integer complexes, including unbounded objects. Augmentation/QI and D+ calculation retain bounded-below membership or an explicit strict lower term bound. |
-| [D+ triangles and bounded comparison](Aglib/Algebra/Homology/DerivedCategory/Plus/README.md) | Actual short exact bounded-below complexes give distinguished triangles in an abelian derived setting. Single-term comparison retains both actual lower and upper term bounds; a derived contraction gives only the stated one-sided unit-compatible isomorphism. |
-| [Derived open-cover detection](Aglib/AlgebraicGeometry/Cohomology/Locality/README.md) | A jointly covering family of actual open immersions detects isomorphisms and zero objects in the bounded-below derived module category, from the corresponding actual local hypotheses. |
-| [Affine induction](Aglib/AlgebraicGeometry/Properties/README.md) | On qcqs schemes, an isomorphism-invariant property follows from its affine case and compact binary-union closure with the overlap property supplied. |
-
-
-## Use and source basis
-
-The aggregate import is `import Aglib`. The family guides identify focused imports for individual results; production implementations use precise lower leaves. [Positive interface fixtures](AglibTest) and [the independent consumer](examples/downstream/Consumer.lean) exercise the public surface.
-
-Use the bounded [development and verification route](doc/DEVELOPMENT.md). CI includes builds, tests, linters, style, axiom audits, controls, inventory and downstream build/audit; the extra independent library and client kernel replays run locally before publication. Incremental caches preserve unaffected outputs across package-version bumps and do not replace current verification.
-
-The package pins Lean **4.34.1** and Mathlib **`d13f23b723b8a846827a245b89c10fc7d3f11612`**. Its extraction source basis is R5Lab **`95a3772b895fbc19a81684be4ffd519d0fdcd6b3`** and the authoritative local Quillen release **`189a8e779f0c68b2dfc6f8195daebb3e684a5905`**. The initial 133 selected Quillen files from **`83629578a3d70787d41ec631f5234af8758716af`** are byte-identical in that release. See [documentation](doc/README.md), [scope](doc/SCOPE.md), [overall design principles](doc/ARCHITECTURE.md), [naming conventions](doc/NAMING.md), [development commands](doc/DEVELOPMENT.md) and [source provenance](doc/REFERENCES.md). [WORK_PLAN.md](doc/WORK_PLAN.md) records current integration coverage.
-
-Curve/P1/genus/degree/Riemann–Roch and K/G/Q/S applications remain in their original packages. Ordinary Picard groups here give no Picard scheme or curve-degree theorem.
+Current source author credit is **kangxyz**; future contributions should credit their actual authors. Aglib is licensed under [Apache 2.0](LICENSE).

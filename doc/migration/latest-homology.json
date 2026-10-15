@@ -14,7 +14,7 @@
       "source_sha256": "8cd65ebcad24e9035cfdc1e1b6d8c4621f739275a42f70934b31ce19d0a977af",
       "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.ShortExact",
       "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/ShortExact.lean",
-      "destination_sha256": "f9be89698f3342b9e26a9591046ef761955d57fd59e64ea8e45e6e66eb11035a",
+      "destination_sha256": "7ab8623d0db074f1d5662d6a5c1d41bfa88884d22d6ef7ce26e5a06717a2707a",
       "native_owners": [
         "DerivedCategory.Plus"
       ],
@@ -97,7 +97,7 @@
       "source_sha256": "ebf2559792dee9816b6e5df43f05a771685f9bb667904999cabf914dd8aa464d",
       "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction",
       "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/ExactDerivedContraction.lean",
-      "destination_sha256": "5be783c6a143d592548d5350b6591104b90880776f303048bca91f30fb3736b0",
+      "destination_sha256": "fa46240da0a5b84dd0ff0fb05b6ed29da7ab1c967588288835563a9e3138d87d",
       "native_owners": [
         "DerivedCategory.Plus"
       ],
@@ -124,7 +124,7 @@
       "source_sha256": "85bb8664d03c36254e46d34e2bd15777a361509d4b069103ba34eb4a768c99ef",
       "destination_module": "Aglib.Algebra.Homology.DerivedCategory.Plus.BoundedComparison",
       "destination_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/BoundedComparison.lean",
-      "destination_sha256": "56fc5da009a44b150f17722ebc15864d96bf42d70491035b37376233b25ad180",
+      "destination_sha256": "de41bf163a1ffe6c3543e85e0a08845ba2c72a1a240a817576b7af10e116092d",
       "native_owners": [
         "DerivedCategory.Plus"
       ],

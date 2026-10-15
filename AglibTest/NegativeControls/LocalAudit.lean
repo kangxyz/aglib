@@ -1,3 +1,9 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+
 import AglibTest.AuditSupport
 
 /-! Must fail on a current-module stage-2 axiom with an unrelated root name. -/

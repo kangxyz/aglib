@@ -17,7 +17,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "00cde4497a4325fe1d26fbe378c64378c4ae2da9bd1756dc062326383e371dda",
+      "current_source_sha256": "6ac6e7cf67f99696a8b0192d95c31d780a43fe30f8c7538b8cc172ae6dc1caef",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -42,7 +42,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "05e75f670d3916310cc7e13a8cc7cb30a885164cec2419ecc6e2f51c7055de45",
+      "current_source_sha256": "2e9916effebddbc7316bbb78cd1c60e8bbeb3f85715d5fd116abcb72bd85cff3",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -67,7 +67,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "b006b2fa729acf799ccfc11a296aa547c8f46a1d07bae5e306b45ae13943db30",
+      "current_source_sha256": "3329a3346fc0dbd3d186f0fe20f2c70f39fd7a8bfe319707ab50534c4cd03950",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -92,7 +92,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "f3331618dbd25c1be92c04a336d1e3e776efcabd747bac67d44aa68c3ab3d37a",
+      "current_source_sha256": "54196a2e1309f48d976568fae47ea18cd72dcab84c0409b5a928fd5de27ff786",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -117,7 +117,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "607e07b3c56c3e0549333aa91b3b0b65840a8cb1652175b61de6b055c44c5d95",
+      "current_source_sha256": "e97937367b33f2eee4ed13831dfbad4e9729e8efde2d493e54a10b7042f0cdc6",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -142,7 +142,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "4b4af9a5d518fd5e4e8e2b43f29f0e225c25ee36a5afb924cd3deda75b57c046",
+      "current_source_sha256": "0deea6a353102669aa162c5795a08871cbc0846ed1eefb3133809a579e32c7f4",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -169,7 +169,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "d520a91f98e869d4eca2e79c2a28697311f709a6d342dede443f4e582114b8a7",
+      "current_source_sha256": "0f6be23184dc6e1e4ad0261cbd3626ec81ccec23add66464787a65b78e8f48ba",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -196,7 +196,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "5700d319827a4634a05ebb7425f6e18b55635b2bafaf7163a0394085f538e2e5",
+      "current_source_sha256": "ff54e5988d2e3156e1417a9a807c32c1d72ba9acad18178835002031a8a0d161",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -223,7 +223,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "f3f21b6c982a0e20e1502bb7a2ec4210b4e469584db75b7db8e4601e140ca769",
+      "current_source_sha256": "0c6837b96a3d16da9401f1a2cd598d45376b7e987bf2fe4293224cff923772a6",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -253,7 +253,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "f75ee72c707f0e6172bbe3445df4ce9a9e048c542607cf9d14ae4cdf88d21c4c",
+      "current_source_sha256": "735aae93b024d07b2b3506ceaad486ce773f9d3c3075b21afc12a8965df0f95d",
       "validation_history": [
         {
           "kind": "no-output Lean check",
@@ -299,7 +299,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "ef88ef80c84af3fe9d52e61da5e45159071f0cf328f4607dd8a7a8a23403d2b7",
+      "current_source_sha256": "2cd066479d89fc0f4e5e950a68bc90c14ee80e61c14cfa3d3122b2aa87dedafb",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -326,7 +326,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "b9832a837ade805aefcd8eaa6afc49dd2adec91f6cd9a4c6cfa7eea4246ee03c",
+      "current_source_sha256": "882dea6cfd96248b776d2dcb1807819e4cb8eb91c204aa9ed0884cb8b714eb5c",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -353,7 +353,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "3b8765c95e6b103b3cf1b69499cd0e261a335bb73fb03cf906161942646ab471",
+      "current_source_sha256": "e10e6c4bde50def4054ee8144459c152903abc036d2b1c9f733be68c779c66c0",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -378,7 +378,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "64bcc4d3daa9cc5afb89a2ba1fb6f548078f2f43b5a162a9ddb0b779dba4a0b4",
+      "current_source_sha256": "d6e6e3a97f7f3ce509c92d7d7338e3b200f9553edc130c2687facc2dd6b298ad",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -405,7 +405,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "7585fe3856a77a1da4f6aa8c5616629a1ae6380c889816fa733954589e2cf502",
+      "current_source_sha256": "f5bf5f5320904a0966062bb3f27a8c648f1fac291550f9a4a1c15f8ef7d292ec",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -433,7 +433,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "a8e6d2b16987b764614792e2291e09eace83a6ba61601c96739de11e1d7d4102",
+      "current_source_sha256": "d444645254b8ec7e59992ff33afaea9b4333d30555eb0622ce2fe822a3ecedd4",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -469,7 +469,7 @@
           "encoded_subset": "moduleAdditiveStalk_smul_eq_constantGerm and moduleAdditiveStalkModule_eq."
         }
       ],
-      "current_source_sha256": "13b318d767a8c3f1048c4c182f68e5cf86dbd6bc62c72be5509410cd64f13776",
+      "current_source_sha256": "63a4ddecf168ffa0399b5bbf2da8baa7684f9270209ad9dcb813b6aaee5179e8",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -503,7 +503,7 @@
           "encoded_subset": "moduleEuler_of_shortExact, moduleH0H1_finite_iff_of_finiteClosedSupport and moduleEuler_of_finiteClosedSupport."
         }
       ],
-      "current_source_sha256": "8df5660bc28728c363362b74d42650e91cc705864f426a0c28db3578138ed988",
+      "current_source_sha256": "be4d4c7b408f296f98637e7560d372cc4dfa2eb699937c0c0ebf0007694b2f71",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -529,7 +529,7 @@
         "Unqualified legacy Degree references replaced by Aglib.Scheme.Modules; precise Mathlib morphism-property imports"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "a95bf827e4b7c3237fd902aa3bd3a5edcb92443388f77e391462627a75e014a2",
+      "current_source_sha256": "f4afb14e8ad76a770692615e9619178f1771c768666c736baca902365032592f",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -556,7 +556,7 @@
         "Qualified generic CategoryTheory.evaluation for pointwise Godement diagrams and refreshed the filtered-colimit support comment."
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "09fc34ccf038161fc4f99975ab4a00d796509bd5a025d8b5a4e8ad050968873f",
+      "current_source_sha256": "71c94180780c9016635be9b21c418c8757dc088e9a91b137392a77b101732135",
       "validation_history": [
         {
           "kind": "no-output Lean check",
@@ -599,7 +599,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "61c84f7cebcd0f4393917e6bda9ab50e08fc7f3bf393eb92bfb8baba95e76a9d",
+      "current_source_sha256": "fec5f04050ea896fd5a250917e02da0be1b32ab03a59273526b5b6b11834eee7",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -624,7 +624,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "8ee3b82bc024f522f39c5f5d80894f63ce6688a661602d5516cb469d5a02d7c8",
+      "current_source_sha256": "d4eb42669f4d48f9945538c8d4348df375c88de45bfa8ae26af61b58013e6372",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -660,7 +660,7 @@
         }
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "8a312fe2a2494c42d3bbf5b249957a3622b827d65c3843f9d0bbcab053ca589c",
+      "current_source_sha256": "924e27132a6306ab4b4501eb4c616be71cb47b5b898130a4c7ff8bf9dffca5cf",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -685,7 +685,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "3b595af9406a2b0ce6dc8aabcfaa1e326179eb18278c6bbf71582c945be08f60",
+      "current_source_sha256": "5058cc162519d0ec202b02a9ecea41deabd845a8f9f4d9421d015754c12f6d22",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -712,7 +712,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "e1a5fb56e33d5c5e647acdcc64d7a94c7294e6e15d3b9bd96dc5eaff01bf08fe",
+      "current_source_sha256": "ade162789ce0c99207a745cdc119a5cee317b39e241545a032fd58d158ca9ff6",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -739,7 +739,7 @@
         "Original statement and body tokens preserved under the recorded owner/name correspondence; simp metadata changes recorded separately"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "b6394bcc67b1ababc7ad1bead3a36352f7d87b84328474ba8238604efb701144",
+      "current_source_sha256": "dcfc82d0ed15849a60c0f5cf5182e4bc6a4e9515861ae8836d6ac76d8a577b06",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -766,7 +766,7 @@
         "Flexible-simp normalization replaced by Lean-suggested exact simp-only lemma list"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "c54550b8930e7690c9f48c249bf534afd5a588cf34757aa8a40573419adad1a0",
+      "current_source_sha256": "11d26e9987d1f5f915a78967c80842b2368b98988833328d4ec696d8ec5c43e4",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -791,7 +791,7 @@
         "Enforced whitespace and line wrapping"
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "168511a9a1781cd8385553e0b456e475b565ccedf54561cde5fbde9772664757",
+      "current_source_sha256": "470faebabf326275ccf61ea9a64c9478d2b73cad8349c86e05f78e9316d4206c",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -818,7 +818,7 @@
       ],
       "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "4beeea9b7665954fcd2f040219fc156ffb61c8526b7f2813b6df4170beffde1d",
+      "current_source_sha256": "3573c3d2f3c640b80233b437fafb161f6ab907658eb70d1594724e707a15d5ba",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -845,7 +845,7 @@
       ],
       "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "ee1e231574091eb54de244d7c320e28c094a8f3a1286fc6a98297055bf0c9f40",
+      "current_source_sha256": "702553ec46858e4e685550bc9306909724f5f99a17e25d0ef5c91118e1afe0d6",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -874,7 +874,7 @@
       ],
       "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "15adeb693918ebd77835050b7136363079896e562defcb5e32420cd8fa93d2cc",
+      "current_source_sha256": "e902c898f36d1d97036aa7d8ca79b3469139d0ed07198bf44d9a9c8178bb8144",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -901,7 +901,7 @@
       ],
       "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "59ff8c52799bacb9b336c7d019389ca922649eb06592aafca7dd1219dea6721e",
+      "current_source_sha256": "05e1cc0fad1a3d457ebb31e46fb235a5b2a60a48c9beb21d6f32cf467b5104ce",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -928,7 +928,7 @@
       ],
       "pre_cut_source_sha256": "c64fc7f10f1c9719fadfe014d5ca39aca1e5b153b35f99c60e1065b766cfa858",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "79c35541a5636d2f3c2e374f4a65606bd2d67af51c02d4b24f80987dd2188032",
+      "current_source_sha256": "1bb27133bf2eb4f3658de885749b8018aafca24549cab79e87df192fa95b690e",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -956,7 +956,7 @@
       ],
       "pre_cut_source_sha256": "3f8c0be6b9d08648fbf8752a9b15c2963f6d2911af9e70e1f95f116b1c82c331",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "5966a3e0f07d4454d4788a6052a50a8b97c789cb851c35e964533e111d4330a8",
+      "current_source_sha256": "2670269aa423f3252d36af0cb3e1090d408d2c67126c0c3fc6fe4604ebaba8d9",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -983,7 +983,7 @@
       ],
       "pre_cut_source_sha256": "b928a92fe1a3490c46a7fc9fb420cf12008c696b499a4a20f6be27520ddf47e9",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "3f25d9b6ff0a1efa050730cf1c4c5168d3d09441c345cfb3d390d2d4d197b403",
+      "current_source_sha256": "7265072ab4cacf3c011e60403a46425a47ca57000a12507e2a887cc64a85b81d",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -1010,7 +1010,7 @@
       ],
       "pre_cut_source_sha256": "681c9428e191ef4e8e74ace081a4f8ae8bca63070ea5f5066970305fbf224a19",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "f450580be8de0c5155be070d3ab0a1621476acd7c74c6754b25df6fc573e763a",
+      "current_source_sha256": "bff19b89976b158dd4b7f3922b0eb94bf64ad539f4e6d7da793732bb1e6e15d1",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -1037,7 +1037,7 @@
       ],
       "pre_cut_source_sha256": "020761750a83d3ab61e3dec672be7506e59dd4223581fc50891869a0f03e4bbd",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "943630de8c347000483324a9ab40daea61148c4709c9f633e5841c2441413dc8",
+      "current_source_sha256": "c058d2642c1003f4360cf21e279fda13361fe70e30fe03d640be8d818126a26d",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -1073,7 +1073,7 @@
       ],
       "pre_cut_source_sha256": "b462e3dfdd232a71fa8988ed8f31e4f854854eb90a580f31e9986be907051df3",
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
-      "current_source_sha256": "1563c74b13e1a1230a874a7955c707c9152e2ff5a75ca86af789a0ab3f21fcce",
+      "current_source_sha256": "ebb356e1e9950ae84a1605158699cc91e883d3971a6cf4b8182fb65ec1bd8c3d",
       "validation_history": [
         {
           "kind": "current native producer closure",
@@ -1101,7 +1101,7 @@
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
       "validation_history": [],
-      "current_source_sha256": "21e64c20069dca4abd8a78dcecae77de15d01ab503a8cfc904aa8ec5a68a3981"
+      "current_source_sha256": "11ccc1ba1e8cac2bde2c17f13dc60fc1fc389b5a0a2af9ab44cc876224ac54e5"
     },
     {
       "source_module": "R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison",
@@ -1122,7 +1122,7 @@
       ],
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
       "validation_history": [],
-      "current_source_sha256": "832e3379c41a9e2bdc28a66276eb845673a6dd2c40bff3b7b0437d28b6c6e7f2"
+      "current_source_sha256": "2c4f23076fb0371d18c647d7daad4559974593a6d18a706439c0d8956b19f02f"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",

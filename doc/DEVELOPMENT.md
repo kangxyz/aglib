@@ -78,12 +78,22 @@ The project cache covers the root and downstream build directories. Only the top
 
 A cache hit does not replace current tests, audits, inventory checks or the required local replay, and never makes a historical verification receipt current. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
 
-The publication target is the private repository `kangxyz/aglib`. Complete the full local route, including both independent kernel replays and the downstream audit, before publishing the verified source snapshot. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
+The publication target is the public repository [`kangxyz/aglib`](https://github.com/kangxyz/aglib). Complete the full local route, including both independent kernel replays and the downstream audit, before publishing the verified source snapshot. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
 
 [generate_imports.py](../scripts/generate_imports.py) owns aggregate imports. The generator owner updates enrollment; `python3 scripts/generate_imports.py --check` detects drift. Modern `module` headers, precise `public import` and exposed public sections define the consumer/reduction boundary. [AglibTest](../AglibTest) and [examples/downstream](../examples/downstream) remain consumers, with rejection controls outside production imports.
 
 Lean's default `maxHeartbeats` is 200000, and Mathlib uses that default. An override of `maxHeartbeats` or `synthInstance.maxHeartbeats` must be declaration-local (`set_option ... in`) and followed by a comment explaining why it is needed. The pinned [style linter](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Tactic/Linter/Style.lean#L78) requires local scope, and the [heartbeat-comment linter](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Tactic/Linter/DeprecatedSyntaxLinter.lean#L103) requires the explanation. A documented local value `0` is allowed; this library imposes no additional finite-positive restriction. Measure a declaration with `#count_heartbeats in` and leave headroom; Mathlib's [counting guide](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Util/CountHeartbeats.lean) suggests a sufficient budget of the form `2^k * 200000`.
 
-Preserve contributor/license headers and exact source correspondence. Update the family guide when an object, namespace, hypothesis, result or canonical map changes.
+## Contribution conventions
+
+Keep maintained text, identifiers, comments and documentation in English. Follow Mathlib source style and the [naming conventions](NAMING.md). Use the pinned Lean and Mathlib versions; dependency changes require their own coordinated update.
+
+Current source author headers credit `kangxyz`. Credit actual contributors when they contribute; do not enforce a permanent single-author list or add blanket tool attribution. Preserve copyright and Apache 2.0 license notices. Keep historical source identities and correspondence in [REFERENCES.md](REFERENCES.md) and the existing migration records; current author credit does not erase provenance.
+
+Update the owning family README when an object, namespace, hypothesis, result or canonical map changes. Keep cross-family architecture, development and provenance in `doc/`. New families need an admitted object or result and a current consumer, rather than empty scaffolding.
+
+Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree status before writing and before staging or committing; coordinate overlapping edits and shared build outputs. Keep Git index and `HEAD` mutations serial. Do not push without an explicit current request.
+
+During development build changed leaves and affected clients. At integration use the full route above for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and required local replays. Build success does not discharge mathematical premises.
 
 A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.

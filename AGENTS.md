@@ -1,15 +1,10 @@
-# Aglib development
+# Agent instructions
 
-Maintain general commutative algebra, arbitrary-dimensional schemes and module-sheaf/cohomology theory. Keep curve, genus, degree, projective-line and K/G/Q/S applications in their original libraries. Inspect complete hypotheses, not source paths, when selecting general mathematics.
-
-Use Lean's modern module system with explicit public imports and exposed public interfaces where reduction is intended. Preserve the pinned Lean and Mathlib revisions and Lean's default maxHeartbeats of 200000. Follow pinned Mathlib: options with a maxHeartbeats name component, including synthInstance.maxHeartbeats, may change only for an individual declaration with an explanatory comment after the scoped in. Documented local 0 is permitted; avoid global overrides. Comment quality and budget necessity belong to the mathematical owner.
-
-Keep one implementation per declaration. Aglib is the module root; declaration namespaces use native mathematical owners and collision-safe subject namespaces below them. Follow the mathematical boundaries in doc/ARCHITECTURE.md. Original R5Lab/Quillen names are provenance; any compatibility adapters belong in original application packages. Production imports only Mathlib and precise lower Aglib leaves. Tests, scripts and downstream packages are consumers.
-
-Follow Mathlib source style and preserve original contributor/license headers and exact source provenance. Keep all maintained text in English. Preserve actual objects, maps, universes, hypotheses and explicit general-theorem premises during extraction; compilation and axiom auditing do not discharge such premises.
-
-Place mathematical/interface documentation in the owning subfamily README.md. Root doc/ owns the overview, dependency directions, cross-family routes and development/provenance. Add occupied structure for current consumers, not empty future families.
-
-Build changed leaves and affected clients during iteration. At an integration milestone check complete source enrollment, import direction, private/generated defining-module axiom coverage, relevant rejection controls and kernel replay. Preserve foreign work and exact write ownership. Git operations are serial; do not push without an explicit current request.
-
-Follow [doc/DEVELOPMENT.md](doc/DEVELOPMENT.md) for build, verification and publication commands.
+- Keep Aglib focused on general commutative algebra, scheme geometry and module-sheaf/cohomology theory. Keep curve/P1/genus/degree/Riemann–Roch and K/G/Q/S applications downstream. Check complete hypotheses when selecting general results.
+- Reuse Mathlib's actual objects and canonical maps. Maintain one implementation per declaration, precise lower-leaf imports, and native mathematical namespaces. Follow [architecture](doc/ARCHITECTURE.md) and [naming](doc/NAMING.md).
+- Preserve universes, bounds, hypotheses and explicit theorem-family inputs. Distinguish arbitrary finite-type quasicoherent theory from guarded locally Noetherian coherence; use [interface boundaries](doc/INTERFACES.md).
+- Use modern `module` headers, precise `public import` and exposed public interfaces where required. Keep the pinned dependencies and follow Mathlib style; see [development](doc/DEVELOPMENT.md).
+- Write maintained text, identifiers and comments in English. Credit actual contributors and preserve licenses and source provenance; see [contribution conventions](doc/DEVELOPMENT.md#contribution-conventions).
+- Update the owning family README when an interface or mathematical statement changes. Put cross-family rules in `doc/`; create structure only for current consumers.
+- Build changed leaves and affected consumers; use the [integration checks](doc/DEVELOPMENT.md#local-verification-and-ci) before integration. Verification does not supply an explicit mathematical premise.
+- Preserve other contributors' work and assigned write ownership. Coordinate shared builds and serial Git operations; do not push without an explicit current request.

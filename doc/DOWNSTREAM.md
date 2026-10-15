@@ -16,7 +16,7 @@ flowchart TD
 
 Migrate Quillen first, then R5Lab. Pin a verified Aglib commit, retain Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, and update each Lake manifest through its dependency workflow. R5Lab currently pins Quillen `83629578a3d70787d41ec631f5234af8758716af`, while the inspected Quillen source is `189a8e779f0c68b2dfc6f8195daebb3e684a5905`. Moving R5Lab to the migrated Quillen commit is an explicit dependency update requiring application verification.
 
-At the inspected rollout state, Aglib and R5Lab are private and Quillen is public. Preserve Aglib's approved private visibility. Local adaptation branches can use authorized access; private CI needs read access to Aglib. Publishing a public Quillen release with this private dependency would prevent unauthenticated users from building it. Resolve that release-access decision before publishing Quillen's dependency switch; existing public releases can remain available during local integration.
+Aglib and Quillen are public; R5Lab is private. Quillen can resolve its Aglib dependency without private repository credentials. Pin the verified published Aglib revision before publishing Quillen's dependency switch, then pin that Quillen revision in R5Lab.
 
 ## Inspected scope
 
@@ -33,7 +33,7 @@ Quillen's retained transitive implementation closure contains 2613 files. For R5
 
 - Keep one implementation of every migrated general declaration, in Aglib. Entirely transferred owners may temporarily import precise Aglib leaves. Mixed owners remove only the transferred declarations and keep their application remainder.
 - Native objects and instances must be shared. In particular, replace Quillen's old exact structures/functors with `CategoryTheory.ExactCategory` objects, and use the canonical scheme module, coherent and invertible-sheaf objects. Do not recreate structures, quotient relations or registered instances to preserve an old spelling.
-- Prefer updating consumers to native names. Where a transition adapter has a real consumer, use transparent abbreviations or theorem aliases with exact types, universes and premises. A type abbreviation alone does not recreate old projection, method or theorem namespaces.
+- Refactor retained consumers to precise Aglib imports and native names. Transparent abbreviations or theorem aliases may stage a batch with exact types, universes and premises, but remove them and vacated general source modules once their consumers are migrated. A type abbreviation alone does not recreate old projection, method or theorem namespaces.
 - Preserve modern public imports and intended reduction visibility. Keep adapters in the original consumer packages; Aglib must not import them.
 - Preserve all explicit mathematical inputs. Importing Aglib does not provide standard comparison, cohomology finiteness, flatness, local-freeness or other supplied assumptions.
 

@@ -33,7 +33,7 @@
         "Algebra.Descent",
         "Algebra.Descent.Datum"
       ],
-      "destination_sha256": "f882621d1e927853f38de3e3bc2ba5bc2ba5a338510b2c08fb856bcf74edb886"
+      "destination_sha256": "edb93dcbb6a983d4d844deae273aac0f4dee558be1443c17dceb1419ba940b09"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.AlgebraDescentCanonical",
@@ -54,7 +54,7 @@
       "native_namespaces": [
         "Algebra.Descent"
       ],
-      "destination_sha256": "ecefe5cd8dba26bf2315f5ee7a785f64c029eb268ff5b77aa868036bee4ad72e"
+      "destination_sha256": "6c348a391d0a1f026134c01420e9cb024fa4c7c753f71a87d9bb7c0d421e5f3e"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.FieldObjectProperties",
@@ -77,7 +77,7 @@
         "Algebra.Descent.FieldOfDefinition",
         "Algebra.Descent.FieldOfDefinition.FPModel"
       ],
-      "destination_sha256": "e00a3f55eb59b875bc3fce0e1b57e0ff17a6bb113d9b3822ed3511cf68b73cd9"
+      "destination_sha256": "03e25afe311db6da7317f8de0c016e87cf7e3b43c70c15359281c604ef83cb2d"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.FieldObjectDescent",
@@ -108,7 +108,7 @@
       "native_namespaces": [
         "Algebra.Descent.FieldOfDefinition"
       ],
-      "destination_sha256": "8fa71c00950797483b1c229fe4107e9be40fcf783096b3e905524a3e6d7ebc46"
+      "destination_sha256": "e6faae956afda819b588337f5f480f04c9f9500541a21b7a00791b940a0c2a5d"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.AlgebraDescentMorphisms",
@@ -132,7 +132,7 @@
         "Algebra.Descent.Datum",
         "Algebra.Descent.Datum.Hom"
       ],
-      "destination_sha256": "549752c3b8723f5c07241abdf4dd781eb5f270e0bb9c5592c5abcf0e524e9ede"
+      "destination_sha256": "6276e670d1b661ebcc2430c31b2c1465b57e901654a94e0cf23bed32ee069ba1"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.NilpotentDescent",
@@ -162,7 +162,7 @@
         "Algebra.Descent.PurelyInseparable",
         "Ideal"
       ],
-      "destination_sha256": "0b30ecc1d4dccdca8525674dd062922dc5b5a9dc0eec2632e7e2fa1cf7662e2d"
+      "destination_sha256": "cc2be2fb53b8fdfe2b945dbf32d3446ed8e4aff65cc6a396fb75e5e7311dcb76"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.AlgebraOverlapDescent",
@@ -198,7 +198,7 @@
         "Algebra.Descent",
         "Algebra.Descent.OverlapDatum"
       ],
-      "destination_sha256": "01369acee740fb021f9827433c74cf4c722ba7627a2e1b1f20fc21a116a93535"
+      "destination_sha256": "790cafe28487282d0c3b12381973350a8b3daa940886d7fe2ff01099a39f3d0f"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.BaseChangedPureAlgebra",
@@ -225,7 +225,7 @@
       "native_namespaces": [
         "Algebra.Descent.PurelyInseparable"
       ],
-      "destination_sha256": "393d293d6ba07a11b2b28d1cc797bffe5c773ca0e781b9adaa49158c7e116e43"
+      "destination_sha256": "be06a9812c87df513320dbfc3eeccfdbcadf5eb295c211f142150b35c0c8e3a8"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.GlobalFinitePureAlgebraMaps",
@@ -246,7 +246,7 @@
       "native_namespaces": [
         "Algebra.Descent.PurelyInseparable"
       ],
-      "destination_sha256": "8d56ac6075051a61b63b29c00ce656d243d866efd29a403c358d7e9087597974"
+      "destination_sha256": "45a2b06b877b078ca9aa75d303a0e636ffad7bce0fe58125d3b0256b91e0cc38"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.FiniteLengthSupport",
@@ -285,7 +285,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "0e90db58247ec94ff669539d44d0067895ffc2c8176573530a1e7cd8b3cb207e"
+      "destination_sha256": "eabdb67f7b6ad1ae66bdb5b713654501ea79ef0768d20b1285740213b16c1b34"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.TorsionFreeBaseChange",
@@ -301,7 +301,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "d336ad35629efc02a61975d555011e122941b787e1eb6c6b76b6f3654f2b5967"
+      "destination_sha256": "9430d424e139b6a5c7658a13a04caaba930f1774645a94e845d953ea4176e28e"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.MinimalFlatBaseChange",
@@ -318,7 +318,7 @@
       "native_namespaces": [
         "Ideal"
       ],
-      "destination_sha256": "11c7ef8f15f32bc6b2c72b577a9c4e1d183f8d3cafc0c6b4c093eaad897e2c75"
+      "destination_sha256": "da3e923aa5d90adbad463cb92bb122fc6a45eab481f551246e153a5c5e6cd4dc"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.GoingDownMinimalPrime",
@@ -336,7 +336,7 @@
       "native_namespaces": [
         "Ideal"
       ],
-      "destination_sha256": "5f702a1d4ef7e632692b35d21cb7b27b07f9a7de86775caefb7e94831abc3079"
+      "destination_sha256": "26cbc4abc0e48674adbb21983b3c1708800d59b114389e5aa9497b9fc0d73fbe"
     },
     {
       "source_module": "R5Lab.RingTheory.IntegralClosure.FaithfullyFlat",
@@ -352,7 +352,7 @@
       "native_namespaces": [
         "IsIntegrallyClosed"
       ],
-      "destination_sha256": "7b37e9d5bea7458117f01a31247f2837569f0ad1cc40417ca01fd85847b6d581"
+      "destination_sha256": "65770db01a0f8f9db0d7fdfed81ae9d2c63672c0461f88b63d274f80dd701d92"
     },
     {
       "source_module": "R5Lab.RingTheory.RegularLocalRing.Normal",
@@ -377,7 +377,7 @@
         "IsFractionRing",
         "Prime"
       ],
-      "destination_sha256": "d51633683f646e665a6112879cb9fac8d0b63b2fef4e00a5c2c2c90bed9827b6"
+      "destination_sha256": "00357586105270587f3f15bb5df030bae6355fa7a9f0c8d2de2c5f6a33fbc2b9"
     },
     {
       "source_module": "R5Lab.RingTheory.KrullDimension.HorizontalPrime",
@@ -393,7 +393,7 @@
       "native_namespaces": [
         "IsLocalRing"
       ],
-      "destination_sha256": "27c641e0f5d51379c3949f41b23e304f6653ed8cfa97cd7b5ed2e9d28ce859e9"
+      "destination_sha256": "f09524eea3bffae9dcfdf2b48bc088af158b98b32a27cc242c97122b06022e4a"
     },
     {
       "source_module": "R5Lab.RingTheory.KrullDimension.IntegralGoingDown",
@@ -412,7 +412,7 @@
         "Ideal",
         "PrimeSpectrum"
       ],
-      "destination_sha256": "6a74e163855c151a87fd60490ef4e56c73524c292f7a9d749a7177c756ee25e0"
+      "destination_sha256": "fb586e1694f8c5faedc6bf32942786eb950a9d1349c4615f03072f1778bda613"
     },
     {
       "source_module": "R5Lab.RingTheory.KrullDimension.PolynomialField",
@@ -433,7 +433,7 @@
         "Ideal",
         "MvPolynomial"
       ],
-      "destination_sha256": "087c8c7e1b8efd362193fcd241bc25efce60bc373e3760ad914ad3b4b0045a72"
+      "destination_sha256": "3b9366f4505fd805f4b4ed7d42a6bbea470e59f6dea222533ce37145837ed817"
     },
     {
       "source_module": "R5Lab.RingTheory.KrullDimension.PrincipalOpenBound",
@@ -454,7 +454,7 @@
         "Ideal",
         "IsLocalRing"
       ],
-      "destination_sha256": "d718e7522828cff24e74ba6f5bf6917385dbf173f083253ae298c088b6baa526"
+      "destination_sha256": "4fc5cdc81753e44259d5e257fdb9151e715d28e778b7e605f1b366b5951925ce"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
@@ -495,7 +495,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "a8eaee64851170536f71f5eb5f910bfdef3798ce02aaf8f00a7cc44afe7f6ac4"
+      "destination_sha256": "d5488269f349ee7170ec51de47b74a20f6fda17729f17715c7eda55caf0f29c8"
     },
     {
       "source_module": "Quillen.Algebra.RegularLocal.ParameterAvoidance",
@@ -557,7 +557,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "3962140d8f30a6fd252349951f14417fce23506af24391862056d520e0587faf"
+      "destination_sha256": "6729142127d63b8881c56ea891059763953d2e9288aa2ede049c889060b29f2c"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.FlatBaseChange",
@@ -573,7 +573,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "964d59c12f6f6755f45483a2053d17b1ec301669a69529498e810036355a6fa4"
+      "destination_sha256": "b7bb9b4880de6f73086ad65e36675c7ad754cabf2c9f477d29ffdef4dcffc7e6"
     },
     {
       "source_module": "R5Lab.KTheory.Grayson.Cycle.LocalLength",
@@ -591,7 +591,7 @@
         "Localization",
         "Module"
       ],
-      "destination_sha256": "4bb252934033a81cfe99d6659783826916ab95873dbdcda7a5c220c806519fdf"
+      "destination_sha256": "b6838711d2306610a234a5f3de24550756b3e957b4149675c36684bbbebcda6b"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.MonoidAlgebraNoetherian",
@@ -608,7 +608,7 @@
       "native_namespaces": [
         "MonoidAlgebra"
       ],
-      "destination_sha256": "57161976dd3d531e4af48523178bcb39b18cf4aed0f8319e41bcaea8473291aa"
+      "destination_sha256": "eba936823cd91ac0755b7cef3bdcf8ba8a44c15e1aeaf0c65167a92e1a7e9ce8"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
@@ -628,7 +628,7 @@
         "Int",
         "Module"
       ],
-      "destination_sha256": "d5ff6993103c94e38044fd6168cfd42132939fd12677a62aed046931b9bcf064"
+      "destination_sha256": "ff7dc2b939e2e72a71a1b3a65b921037aefdabee2093e138b40ef73c9ec26f74"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAssociativity",
@@ -658,7 +658,7 @@
         "Module",
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "edd99ff45b0aa256801090f7f26ef1b6807cabaf17fbdc1957402b01870928e9"
+      "destination_sha256": "a50cb34591c0466aa7449f0a6c90ef14e2d50feafdd7f575fc93ff1644e30456"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEuler",
@@ -701,7 +701,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "3c94c4ae440d8f2d7dbaecccae35f2765d3fc8f166538b4342e01fdb7a649dcc"
+      "destination_sha256": "f164baf700c2747343b36363e9b6b173b9f065d5871b9d66c7d13b17bfa21741"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerFiltration",
@@ -720,7 +720,7 @@
         "Module",
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "fcc65acc9c2dc39e2a39503c98e4ddce05643a15d6c66f641e1aa0871654a9eb"
+      "destination_sha256": "405b304e0b7f4c09844b9f7043ba153588646fe70febc612f787cdc7fdf124bb"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerInterchange",
@@ -741,7 +741,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "d2a9ac82fd82fc4ef4ea0d4a59cc82c5ee2176ad6e8a8170103c53260866ef29"
+      "destination_sha256": "9d6014d4e744a8d62744316ca333a7ebbb000329b5ca9546b3ba6a7ac28343d3"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerScalarTransport",
@@ -757,7 +757,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "f56eb368f04b944661e78c867b4dddf213bd389359f986696ee71476fd656fb0"
+      "destination_sha256": "66db5563ea556858f5c2b8195429508fe63420460863be24c8ba1244154a6ae7"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
@@ -779,7 +779,7 @@
         "Module",
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "b7948445640ffbcad86e5be9efec6b97f382b3b89e7cbdfbf5076c647e95ed1e"
+      "destination_sha256": "c30b1ac6d8a329ba5e9ba1e88f286b42c11dd4983fcc6b94662dd4795accf671"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrimeFiltration",
@@ -800,7 +800,7 @@
         "Module",
         "Submodule"
       ],
-      "destination_sha256": "7523aa419706ee6c39c2a4cb1a25d4863f86790ed8e368309f460bf9b12478ab"
+      "destination_sha256": "345a490e66f822e44dda8fd2b98dfacc28f5411a735a641801e5371d2af527c6"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
@@ -818,7 +818,7 @@
         "Module",
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "71a152173546e1db110afea5332dc8beb05b30ef12dfe32187c058a3df8db951"
+      "destination_sha256": "af6a07f88722b99347d53017b85f7a72dad1e253d18e214f0120aa2b9c195c81"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrimeFiltrationMultiplicity",
@@ -841,7 +841,7 @@
         "Module",
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "85f350ec00ac8f330effc515726895ae047bae97051926b2ff961e3b89713642"
+      "destination_sha256": "daa5deeb820ba2df3ee540f0e38375b506418568bff46ee586f3c4b7d5489297"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerFiltration",
@@ -857,7 +857,7 @@
       "native_namespaces": [
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "05b9865b203e71076675c3285f990b5a95293b08143f7dd6076062a5a1dbb1fb"
+      "destination_sha256": "0670258ffd8bb6d02ca496c6b764e7f6210845adcc3d09c223892d38603137ba"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerSupport",
@@ -875,7 +875,7 @@
       "native_namespaces": [
         "Module.PrimeFiltrationFrom"
       ],
-      "destination_sha256": "a0566da845fcbbc48a0a08f89c23b4820b847e8cfc88e1880ee57754f4318117"
+      "destination_sha256": "6b46588ea1ab49c541070081ff8625be20c00b84f33318cf54fab9fa802179af"
     },
     {
       "source_module": "Quillen.Algebra.RegularLocal.DimensionZero",
@@ -935,7 +935,7 @@
       "native_namespaces": [
         "Algebra.FormallyUnramified"
       ],
-      "destination_sha256": "e0a972c29f8b59ea6bc7a94223e4f915c36bc42ff1e84b8218227c42d36f2aeb"
+      "destination_sha256": "f8e42cedb35073c51a3999e9d52a55bb694df0fd511b87d99b10ee27ea3029c2"
     },
     {
       "source_module": "R5Lab.RingTheory.RegularLocalRing.Normal",
@@ -954,7 +954,7 @@
       "native_namespaces": [
         "IsRegularLocalRing"
       ],
-      "destination_sha256": "8fb3848b5255ba0c6d2ded4e0f94fc28f6dde03c9c78611799d464215e65e0ad"
+      "destination_sha256": "355e96d3e4096df9d41fd1a0b76da1758defc8e7e2d66cbfcb91125090a345d6"
     },
     {
       "source_module": "Quillen.Algebra.RegularLocal.ParameterQuotient",
@@ -1024,7 +1024,7 @@
       "native_namespaces": [
         "Algebra.RootsOfUnity"
       ],
-      "destination_sha256": "102f98c36fad6eb5a592a56ca7e4451cf448e9e4aac838bb5a7a0dfd7a47db16"
+      "destination_sha256": "b6fbab84dd2a17f95c002f3a031ecdb2c750edef7527c0da0138e63c76478277"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerScalarTransport",
@@ -1069,7 +1069,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "09828470e3dd8e90e19bcee1c892a2bedcdc2a85737e7207aed945ee8f5f4a92"
+      "destination_sha256": "174579df25050c5ecf8ef36651fae4a503070a0e5a6896c08386523a0253f149"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.PrincipalEulerAdditivity",
@@ -1100,7 +1100,7 @@
       "native_namespaces": [
         "Module"
       ],
-      "destination_sha256": "8a5676d6bdabe5ddc0827156fc0cb2a91e8aa51d15731ba3159655de3ff4cbc2"
+      "destination_sha256": "b0c2ad02937fcf7533cc60f4c519c720abeedb8f80921025c2078097d740b58e"
     },
     {
       "source_module": "R5Lab.RingTheory.RegularLocalRing.Smooth",
@@ -1120,7 +1120,7 @@
         "Algebra.IsStandardSmooth",
         "Algebra.Smooth"
       ],
-      "destination_sha256": "c9be16a968cb8ef63a3a6f6af9c5c5cfdfa0de39a3a32279818e3c87b19dca1c"
+      "destination_sha256": "c0f6c1e99e66baf8bb44b6e79a999a05589a1f69bad07c8accd4b84a37f8aa7f"
     },
     {
       "source_module": "R5Lab.RingTheory.LocalLength.LocalizedMinimalSupport",
@@ -1142,7 +1142,7 @@
         "Ideal",
         "Module"
       ],
-      "destination_sha256": "44903358412d8e645adb67f50d9c0f1b5bc109de6d5af5d87b45226dfe6a2ae8"
+      "destination_sha256": "31dd521c767f04d24c31210521339e9b51d508f022287876cd6c328b7d0ff19d"
     },
     {
       "source_module": "R5Lab.RingTheory.TensorProduct.Domain",
@@ -1164,7 +1164,7 @@
         "Algebra.FiniteType",
         "Algebra.TensorProduct"
       ],
-      "destination_sha256": "371fac735aa870aabb3148eb7aabb1ce94698de8e75524c20904b43f04c70df2"
+      "destination_sha256": "28a49372955f6559363b08a4b8674a337bc0f6d66f962f004dae9a22e0f950e0"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.FlatEqualizerBaseChange",
@@ -1188,7 +1188,7 @@
       "native_namespaces": [
         "AlgHom.Equalizer"
       ],
-      "destination_sha256": "f84d00c1c36cc1ad2899f798956e3d55cfde11912d642f690f2b43e21b28d6bf"
+      "destination_sha256": "35fc16b5565914ffcd68d25b8cee5f121a893edee9775b50c132a3aa18bf8914"
     },
     {
       "source_module": "R5Lab.RingTheory.Descent.PurelyInseparableTensor",
@@ -1211,7 +1211,7 @@
         "Algebra.FormallyEtale",
         "Algebra.TensorProduct"
       ],
-      "destination_sha256": "fc2888bddd5868bb526ac547541bed0bb7fc2b8e9fb34ec1113af307812c5a60"
+      "destination_sha256": "5c00c0a65dcd0c0d936c166776742aa8d8902c0fb197305cc865704d8ed55bc2"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",

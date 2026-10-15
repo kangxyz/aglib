@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "Aglib",
   "root_module": "Aglib",
-  "status": "Full local integration and the bounded replay execution update passed on unchanged mathematical sources and artifacts.",
+  "status": "Full mathematical implementation integration and the bounded replay execution update passed on their recorded basis; the subsequent author-header/documentation-only update is verified separately below.",
   "source_basis": {
     "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
     "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
@@ -209,5 +209,34 @@
     },
     "independent_review": "Build helper and native CI routing reviewed separately; no substantiated defect found.",
     "semantic_boundary": "Only execution and regression infrastructure changed. The accepted mathematical source/artifact basis and required audits remain unchanged."
+  },
+  "author_documentation_update": {
+    "basis_revision": "2c9d8c0a535a02c7e47eda7a1796f39b0753d573",
+    "current_repository_visibility": "public",
+    "changed_lean_files": 159,
+    "author_line_normalizations": 157,
+    "added_negative_control_headers": 2,
+    "all_tracked_lean_authors": "kangxyz",
+    "tracked_lean_files": 428,
+    "declaration_and_proof_body_changes": 0,
+    "exact_transformation_verification": "Every changed file equals its basis bytes with only the initial Authors line normalized, or the exact new copyright/license/author header prepended to the two headerless negative controls.",
+    "original_source_hashes_preserved": true,
+    "current_destination_hash_fields_refreshed": 210,
+    "baseline_root_source_manifest_sha256": "de718eb1eeae2c4e13b4c73431abc0741a0f32d90092821da23a575de6a6c384",
+    "current_root_source_manifest_sha256": "82b1c953ac8a705260558181db514b3ff2b90c15f9811a1850af7b7e0f8d11fc",
+    "header_certificate_sha256": "8070313d8ee2385adb9f0824da9ac3e2d9dcd66ce7b80f75daaebce337b5d180",
+    "generator_sha256": "c01fe38dce7b5e0cf43cbc08dfab449b18c784d7a4cf7081ba83810535299a3a",
+    "source_regression_tests": 92,
+    "readme_example": {
+      "exit_code": 0,
+      "resource_receipt_sha256": "ffe5c6149f0c4cb2a44c6576346e967441eb1f223693c45c1dfe648e65c23f70"
+    },
+    "pinned_mathlib_style": {
+      "exit_code": 0,
+      "resource_receipt_sha256": "b2e49b15efc3091e215dd286e8611ba9a1e26cc07daa755da36d9896b0d64a20"
+    },
+    "edited_guide_links_checked": 102,
+    "all_owned_groups_closed": true,
+    "evidence_boundary": "The original compiled-term audits and exact kernel receipts retain their original source/artifact basis. They are not relabeled as new replays; the separately verified change affects only headers, generator author defaults and documentation."
   }
 }

@@ -42,7 +42,7 @@ Create occupied structure for an admitted object/result and a current consumer. 
 
 Each family README is the authority for objects, focused imports, canonical interfaces, principal mathematical results, exact conditions and remaining explicit inputs. It names lower prerequisites and present consumers. Root `doc/` coordinates the overview, reading routes, design/naming, development and source provenance instead of duplicating every local API.
 
-Keep maintained text and identifiers in English, preserve exact source locators and contributor/license headers, and avoid unrelated cleanup. Earlier source names remain provenance; adapters for original application packages belong to those packages.
+Keep maintained text and identifiers in English, preserve exact source locators and copyright/license notices, and avoid unrelated cleanup. Credit actual contributors under the [contribution conventions](DEVELOPMENT.md#contribution-conventions). Earlier source names remain provenance; adapters for original application packages belong to those packages.
 
 ## Extension admission and current acceptance
 

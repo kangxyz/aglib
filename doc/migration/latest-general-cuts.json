@@ -136,7 +136,7 @@
       "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
       "source_sha256": "8fc2ddec29ee432d99f89dd2ef79a0149db1506a0190d7a7ff5db5db85a11a58",
       "destination_module": "Aglib.Algebra.Homology.Embedding.CochainComplex.TruncGE",
-      "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+      "destination_sha256": "b6b626adfba10ea2b903a8e3984dae0222f277bf452f855f6576a28e845b2cce",
       "validation": "Principal stage17 exit 0 under current package flags. Mathematical source body unchanged afterward; AffineInduction received only source-range comment correction 114→113, passing bounded static line check.",
       "source_module": "Quillen.AlgebraicGeometry.PerfectComplexes.BoundedBelowComparison",
       "source_repository": "quillen-k-theory",
@@ -235,7 +235,7 @@
       ],
       "destination_path": "Aglib/CategoryTheory/Limits/BiproductPushout.lean",
       "destination_module": "Aglib.CategoryTheory.Limits.BiproductPushout",
-      "destination_sha256": "cf194724895a73c7fab6749217deddbc679b0a49999165594e7646ef41234307",
+      "destination_sha256": "afb920318d9586266d8b1bcb3b3883a3e8630982a56e73a864fd3063b003d05e",
       "native_namespaces": [
         "CategoryTheory.Limits"
       ],
@@ -276,7 +276,7 @@
       ],
       "destination_path": "Aglib/CategoryTheory/Limits/Shapes/CokernelPushout.lean",
       "destination_module": "Aglib.CategoryTheory.Limits.Shapes.CokernelPushout",
-      "destination_sha256": "d3f74f41eefd1452aa42c364d527aa165747f2c2c78c6c9cd4f7f1db0fbdeec0",
+      "destination_sha256": "04123222933c882a91476937630462e93108683f936efcd8d9fedc54b2a08a59",
       "native_namespaces": [
         "CategoryTheory.Limits"
       ],
@@ -317,7 +317,7 @@
       ],
       "destination_path": "Aglib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
       "destination_module": "Aglib.CategoryTheory.Limits.Shapes.ZeroObjects",
-      "destination_sha256": "b80ece5d936df35d8d1bb46042bdcca1bcb388e06e5674762c2f9c87a1d1d06d",
+      "destination_sha256": "a29babc96a27ff4a45a95d4c246471ab0a2780853516c8c3f24a222fa10c56de",
       "native_namespaces": [
         "CategoryTheory.Limits"
       ],
@@ -358,7 +358,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -414,7 +414,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -470,7 +470,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -511,7 +511,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -567,7 +567,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
       "destination_module": "Aglib.Algebra.Homology.MappingCone.Identity",
-      "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+      "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -623,7 +623,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/QuasiIso.lean",
       "destination_module": "Aglib.Algebra.Homology.QuasiIso",
-      "destination_sha256": "861434d7ff4b8e481926ea1e4097d29bb865b429cc2b52a5465eef0c0c5084d0",
+      "destination_sha256": "de17f06cbee126f8e2ee457c1fd768c5c0ea16dd375f7bac3fcc0c588f218e8e",
       "native_namespaces": [
         "CochainComplex"
       ],
@@ -664,7 +664,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Naturality",
-      "destination_sha256": "f39d0a37b20cf240bfc62188f8f91aa91a6070f76b10d04705ab0affd23f1535",
+      "destination_sha256": "abf9d0e75094c060c27dc539eace3eff20f3ef34feefab392abd101e6ce4a109",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.BaseChange.Coefficients"
       ],
@@ -708,7 +708,7 @@
       ],
       "destination_path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Homology.lean",
       "destination_module": "Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology",
-      "destination_sha256": "0618e00f37f5ea01b8ba2830eb36bba572a2f65859359f7b2b5cb4f7a20f4df9",
+      "destination_sha256": "d7d0f1ac0d2c0995f4c011a6cad7a60a065fc0f065590110a09acd862c9b1ef3",
       "native_namespaces": [
         "DerivedCategory.Plus",
         "CategoryTheory.Functor"
@@ -758,7 +758,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.LocallySplit",
-      "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+      "destination_sha256": "735e3021907a3dbd3132181b952902a5ee41be112e8dc4fc226ff4070395cb47",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules"
       ],
@@ -829,7 +829,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
-      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Complex"
@@ -906,7 +906,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
-      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Complex"
@@ -968,7 +968,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
-      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Complex"
@@ -1035,7 +1035,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Basic",
-      "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+      "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Complex"
@@ -1122,7 +1122,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
-      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1208,7 +1208,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
-      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1264,7 +1264,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
-      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1305,7 +1305,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Tensor",
-      "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+      "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1371,7 +1371,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport",
-      "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+      "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1442,7 +1442,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.AcyclicSupport",
-      "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+      "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Complex"
       ],
@@ -1488,7 +1488,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Identity",
-      "destination_sha256": "bf930d809ce9e8a88587dee4277d569abf6a3e410248fa58627823581b55a392",
+      "destination_sha256": "dca8e916a717f813f5abfe3c6f9c100d49ec4003849acfd4e3c914632eb2f1ef",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules"
       ],
@@ -1534,7 +1534,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Restriction.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.Restriction",
-      "destination_sha256": "54e20b058653c4ab2c595f0700b332ee05b583a7356f7877f9222feef532e078",
+      "destination_sha256": "25cc0a83b9530383016e078d704776354690c8c4d0078f7bd963014e779acc4a",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules"
       ],
@@ -1585,7 +1585,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.Derived",
-      "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+      "destination_sha256": "8369e4f3dbbfab9dcd8456583f2ae8e0d8ef3e417a6c754da75c2ac51c6fd945",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules"
       ],
@@ -1631,7 +1631,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.Derived",
-      "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+      "destination_sha256": "8369e4f3dbbfab9dcd8456583f2ae8e0d8ef3e417a6c754da75c2ac51c6fd945",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules"
       ],
@@ -1702,7 +1702,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward",
-      "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+      "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Plus"
@@ -1804,7 +1804,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.PullbackPushforward",
-      "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+      "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Godement"
       ],
@@ -1875,7 +1875,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
-      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Godement"
       ],
@@ -1916,7 +1916,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
-      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Godement"
       ],
@@ -1967,7 +1967,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Carrier",
-      "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+      "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules.Godement"
       ],
@@ -2163,7 +2163,7 @@
       ],
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
-      "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+      "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
       "native_namespaces": [
         "AlgebraicGeometry.Scheme.Modules",
         "AlgebraicGeometry.Scheme.Modules.Plus",
@@ -2517,7 +2517,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+          "destination_sha256": "735e3021907a3dbd3132181b952902a5ee41be112e8dc4fc226ff4070395cb47",
           "visibility": "public native declaration"
         },
         {
@@ -2527,7 +2527,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Tensor/LocallySplit.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "df8d816c1880f384a1dd26cdbe6b577f3d3603c0bb5d559dd2499b5c6417265c",
+          "destination_sha256": "735e3021907a3dbd3132181b952902a5ee41be112e8dc4fc226ff4070395cb47",
           "visibility": "public native declaration"
         }
       ],
@@ -2564,7 +2564,7 @@
           "destination_path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
           "disposition": "implemented_frozen",
           "interface_note": "",
-          "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+          "destination_sha256": "b6b626adfba10ea2b903a8e3984dae0222f277bf452f855f6576a28e845b2cce",
           "visibility": "public native declaration"
         },
         {
@@ -2574,7 +2574,7 @@
           "destination_path": "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
           "disposition": "implemented_frozen",
           "interface_note": "",
-          "destination_sha256": "c4d8ec65a63e551f1bf4c084b00a683f34ce9c301e05171c0b8ba35f755b8c56",
+          "destination_sha256": "b6b626adfba10ea2b903a8e3984dae0222f277bf452f855f6576a28e845b2cce",
           "visibility": "public native declaration"
         }
       ],
@@ -2609,7 +2609,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
           "visibility": "public native declaration"
         },
         {
@@ -2619,7 +2619,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
           "visibility": "public native declaration"
         },
         {
@@ -2629,7 +2629,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
           "visibility": "public native declaration"
         },
         {
@@ -2639,7 +2639,7 @@
           "destination_path": "Aglib/Algebra/Homology/MappingCone/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "aa743fc30310cdab926d55b6d0d974b55b7268875da1e821f19c684a533b368e",
+          "destination_sha256": "f194cbee8bd0a40febc08cac8847e9ac30f3dbb76a10bf1f9d47e2e298edc4dc",
           "visibility": "public native declaration"
         },
         {
@@ -2649,7 +2649,7 @@
           "destination_path": "Aglib/Algebra/Homology/QuasiIso.lean",
           "disposition": "new_interface",
           "interface_note": "Proposed arbitrary abelian A interface; original X.Modules theorem is its exact specialization. Actual inspected proof uses only generic abelian cochain APIs; retain independent u,v. This lift requires author proof check, without a new status claim.",
-          "destination_sha256": "861434d7ff4b8e481926ea1e4097d29bb865b429cc2b52a5465eef0c0c5084d0",
+          "destination_sha256": "de17f06cbee126f8e2ee457c1fd768c5c0ea16dd375f7bac3fcc0c588f218e8e",
           "visibility": "public native declaration"
         }
       ],
@@ -2727,7 +2727,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         },
         {
@@ -2737,7 +2737,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         },
         {
@@ -2747,7 +2747,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         },
         {
@@ -2757,7 +2757,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         }
       ],
@@ -2812,7 +2812,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
           "disposition": "new_interface",
           "interface_note": "A sheaf-property instance by the literal underlying presheaf restriction; import only Mathlib flasque predicate, never higher cohomology.",
-          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
           "visibility": "public native declaration"
         },
         {
@@ -2822,7 +2822,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
           "visibility": "public native declaration"
         },
         {
@@ -2832,7 +2832,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
           "visibility": "public native declaration"
         },
         {
@@ -2842,7 +2842,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Basic.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "2d1b77904813383a5d955141ee8e1fa762c7b12edbce03a34a11cf5326556c7e",
+          "destination_sha256": "87bfd3b272fbed5d33d94cb2fe26046d5f2dadd4ce4ff1373d039ada2f595093",
           "visibility": "public native declaration"
         },
         {
@@ -2852,7 +2852,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         },
         {
@@ -2862,7 +2862,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2872,7 +2872,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         }
       ],
@@ -2930,7 +2930,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2940,7 +2940,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2950,7 +2950,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Tensor.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "914e143016b334df5fa9e3e174f39517e63765bc858888f90706829c17d1065f",
+          "destination_sha256": "13281e094c75502a8315c2827f70836d82036c861b7ed5416a5633908e6e3f4e",
           "visibility": "public native declaration"
         },
         {
@@ -2960,7 +2960,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2970,7 +2970,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2980,7 +2980,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         },
         {
@@ -2990,7 +2990,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/AcyclicSupport.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "40118309ff7e973d97c7a8bfbb859e98c858c3d221d72f91b4038e5ad06a7af4",
+          "destination_sha256": "3bad69b6727877231f7bef2cb544d62c76bc39ee80624b3c16322d017e85364a",
           "visibility": "public native declaration"
         }
       ],
@@ -3048,7 +3048,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/Derived.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "cd629a0db8159740e42e8cf322b7e6cbbd3c32402b73ed03ac1fe615bcea9752",
+          "destination_sha256": "8369e4f3dbbfab9dcd8456583f2ae8e0d8ef3e417a6c754da75c2ac51c6fd945",
           "visibility": "public native declaration"
         }
       ],
@@ -3080,7 +3080,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "Ordinary bounded-below geometric adjunction unit; requires no Flat premise.",
-          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
           "visibility": "public native declaration"
         },
         {
@@ -3090,7 +3090,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3100,7 +3100,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3110,7 +3110,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3120,7 +3120,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
           "visibility": "public native declaration"
         },
         {
@@ -3130,7 +3130,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
           "visibility": "public native declaration"
         },
         {
@@ -3140,7 +3140,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
           "visibility": "public native declaration"
         },
         {
@@ -3150,7 +3150,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "c2ad6163ae9174eed1e33b4edbe2c6834578cf6c86ed95698dfe9afae1e2596b",
+          "destination_sha256": "0623b4b4169d95e25bb2df39cf0e4e96ac992233410afdc51307619b78095c9d",
           "visibility": "public native declaration"
         },
         {
@@ -3160,7 +3160,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3170,7 +3170,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3180,7 +3180,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         },
         {
@@ -3190,7 +3190,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/PullbackPushforward.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "1938c9b6e55eb0459b25f0b2ddfe060de7f69f51a4070b40ab0585055a50f5bd",
+          "destination_sha256": "728ae315b8311876b21a8ea47466221274ce01f74108a662ba6185a14f19761b",
           "visibility": "public native declaration"
         }
       ],
@@ -3268,7 +3268,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3278,7 +3278,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3288,7 +3288,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3298,7 +3298,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3308,7 +3308,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3318,7 +3318,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3328,7 +3328,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3338,7 +3338,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3348,7 +3348,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3358,7 +3358,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3368,7 +3368,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3378,7 +3378,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3388,7 +3388,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3398,7 +3398,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3408,7 +3408,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3418,7 +3418,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3428,7 +3428,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3438,7 +3438,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3448,7 +3448,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3458,7 +3458,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3468,7 +3468,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3478,7 +3478,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "reuse_native_expression",
           "interface_note": "Required ordinary-complex component helper, implemented with original naturality expression; no new generic categorical public leaf.",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "canonical expression at admitted consumers"
         },
         {
@@ -3488,7 +3488,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3498,7 +3498,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3508,7 +3508,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3518,7 +3518,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3528,7 +3528,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3538,7 +3538,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3548,7 +3548,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         },
         {
@@ -3558,7 +3558,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "d66e5003270596156587779649a4b48b3dcb62fc7b8fde88cfc28224c778f1e4",
+          "destination_sha256": "1287a091103f56c8ba8c9f3cbe89bf2cf0943345734db1345810c9648e8c1115",
           "visibility": "public native declaration"
         }
       ],
@@ -3740,7 +3740,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
           "disposition": "new_interface",
           "interface_note": "Definitionally the native ObjectProperty.liftCompιIso for actual godementTotalPlus; no liftUnderlyingIso duplicate.",
-          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
           "visibility": "public native declaration"
         }
       ],
@@ -3771,7 +3771,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
           "visibility": "public native declaration"
         },
         {
@@ -3781,7 +3781,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
           "visibility": "public native declaration"
         },
         {
@@ -3791,7 +3791,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
           "visibility": "public native declaration"
         }
       ],
@@ -3832,7 +3832,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/Identity.lean",
           "disposition": "new_interface",
           "interface_note": "Alias to actual Modules.pullbackId followed by native rightDerivedFunctorPlusIso/IdIso; no duplicated derived identity proof.",
-          "destination_sha256": "bf930d809ce9e8a88587dee4277d569abf6a3e410248fa58627823581b55a392",
+          "destination_sha256": "dca8e916a717f813f5abfe3c6f9c100d49ec4003849acfd4e3c914632eb2f1ef",
           "visibility": "public native declaration"
         }
       ],
@@ -3895,7 +3895,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Naturality.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "f39d0a37b20cf240bfc62188f8f91aa91a6070f76b10d04705ab0affd23f1535",
+          "destination_sha256": "abf9d0e75094c060c27dc539eace3eff20f3ef34feefab392abd101e6ce4a109",
           "visibility": "public native declaration"
         }
       ],
@@ -4003,7 +4003,7 @@
           "destination_path": "Aglib/CategoryTheory/Limits/Shapes/ZeroObjects.lean",
           "disposition": "new_interface",
           "interface_note": "",
-          "destination_sha256": "b80ece5d936df35d8d1bb46042bdcca1bcb388e06e5674762c2f9c87a1d1d06d",
+          "destination_sha256": "a29babc96a27ff4a45a95d4c246471ab0a2780853516c8c3f24a222fa10c56de",
           "visibility": "public native declaration"
         }
       ],
@@ -4033,7 +4033,7 @@
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Carrier.lean",
           "disposition": "reuse_native_expression",
           "interface_note": "Reuse the exact canonical expression locally at its admitted Godement carrier consumers; no standalone reference-bookkeeping module.",
-          "destination_sha256": "e438e3b66ca646d34a22bab8c60e72c5a2858eaa5215c217bcd087566a5d2b10",
+          "destination_sha256": "5a6eb2275ee8229de1607147119ee48654807fca5aad39ccaa78f6fa85b38354",
           "visibility": "canonical expression at admitted consumers"
         }
       ],
