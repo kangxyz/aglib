@@ -8,11 +8,19 @@ Authors: kangxyz
 module
 
 public import Aglib.Topology.KrullDimension.ClosedSubspace
+public import Aglib.Topology.Semicontinuity
 public import Aglib.Topology.Sheaves.BasisExactness
 public import Aglib.Topology.Sheaves.ClosedSupport
+public import Aglib.Topology.Sheaves.Cohomology.Restriction
+public import Aglib.Topology.Sheaves.Cohomology.Restriction.Geometric
+public import Aglib.Topology.Sheaves.ExtensionByZero
+public import Aglib.Topology.Sheaves.ExtensionByZero.Free
 public import Aglib.Topology.Sheaves.FilteredColimits
+public import Aglib.Topology.Sheaves.FreeAbelianPullback
+public import Aglib.Topology.Sheaves.FreeAbelianPullback.Composition
 public import Aglib.Topology.Sheaves.Godement
 public import Aglib.Topology.Sheaves.MayerVietorisSections
+public import Aglib.Topology.Sheaves.Restriction
 public import Aglib.Topology.Sheaves.SupportedAway
 
 /-!

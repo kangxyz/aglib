@@ -7,3 +7,17 @@ The focused imports are `Aglib.CategoryTheory.Limits.Shapes.CokernelPushout` and
 [ZeroObjects](ZeroObjects.lean) proves `CategoryTheory.Limits.coprod_isZero`: a binary coproduct of two actual zero objects is zero. It requires a category with zero morphisms, existence of that binary coproduct and both zero-object proofs.
 
 The [identity-cone functor](../../../Algebra/Homology/MappingCone/README.md) uses the cokernel pushout statement in its short-exactness comparison. The zero-coproduct statement supplies the lower primitive for [coproduct acyclicity of actual module-sheaf complexes](../../../AlgebraicGeometry/Modules/Complex/README.md). Neither leaf imports the application source from which its general statement was selected.
+
+[RegularKernel](RegularKernel.lean) proves
+`preservesKernel_of_generalizedInverse`. An actual morphism `f` with a
+displayed generalized inverse `s`, satisfying `f ≫ s ≫ f = f`, has its
+kernel preserved by every additive functor between preadditive categories.
+Only existence of that one source kernel is required. Its complementary
+projection is the original `1 - f ≫ s`; no abelian or exact-functor
+hypothesis is introduced.
+
+`kernelRetractOfGeneralizedInverse` exposes the actual kernel retract and
+its complementary projection, while `sourceRetractOfGeneralizedInverse`
+expresses the source as a retract of the kernel plus the target. The
+kernel-preservation proof uses this same implementation. These actual
+retractions also supply the projectivity criterion in the abelian family.

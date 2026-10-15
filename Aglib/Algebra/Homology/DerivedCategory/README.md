@@ -1,4 +1,9 @@
-# Bounded-below derived categories and comparison units
+# Derived categories, Ext and comparison units
+
+[Ext](Ext/README.md) gives the original exact-functor/source-precomposition
+comparison and its all-degree acyclic-injective comparison criterion. It
+retains arbitrary Ext size universes and does not assume preservation of
+injective objects.
 
 [Plus](Plus/README.md) gives actual short-exact triangles, their maps, bounded term comparisons and a one-sided derived contraction. [RightDerivedFunctorPlus](RightDerivedFunctorPlus/README.md) supplies the actual identity/composition comparisons with their installed units.
 

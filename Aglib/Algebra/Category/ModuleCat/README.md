@@ -14,3 +14,10 @@ Focused imports are `Aglib.Algebra.Category.ModuleCat.Finite`, [FiniteRestrictio
 [Localization/Exactness](Localization/README.md) is the lower actual-localization detection interface. [Affine finite-type quasicoherent sheaves](../../../AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md), finite direct image and closed-immersion module actions are the geometric consumers. [Abelian subcategories](../../../CategoryTheory/Abelian/Subcategory/README.md) and [exact structures](../../../CategoryTheory/ExactCategory/README.md) provide the categorical layer.
 
 The latest generic lower interfaces add [ChangeOfRings](ChangeOfRings/README.md), [Monoidal scalar restriction](Monoidal/README.md), [scalar-extension tensor](Tensor/README.md), [module presheaves](Presheaf/README.md) and [site module sheaves](Sheaf/README.md). The site tensor is canonical below scheme and invertible sheaves; finite-free/retract exactness and injective preservation are separate properties.
+
+[FinitePresentation](FinitePresentation.lean) proves finite presentation of
+the actual categorical cokernel of a map from a finite module to a
+finitely presented module. Ring and carrier universes remain independent.
+The proof transfers the native quotient presentation through the original
+cokernel/range-quotient isomorphism. Free-locus and Grauert arguments use
+this lower result without imposing Noetherianity.

@@ -35,11 +35,12 @@ def forbidden_domain_import(name: str) -> bool:
     if parts[0] != PROJECT.casefold():
         return False
     for index, part in enumerate(parts[1:], 1):
-        # The accepted generic D^+/K^+ leaves use the standard bounded-below
-        # marker; this module identity is unrelated to a plus-construction family.
+        # These owners use Plus for actual bounded-below complexes/categories,
+        # unrelated to a plus-construction application family.
         bounded_below = part == 'plus' and parts[:index] in [
             [PROJECT.casefold(), 'algebra', 'homology', 'derivedcategory'],
-            [PROJECT.casefold(), 'algebra', 'homology', 'homotopycategory']]
+            [PROJECT.casefold(), 'algebra', 'homology', 'homotopycategory'],
+            [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'cech', 'resolution']]
         if part in APPLICATION_COMPONENTS and not bounded_below:
             return True
     return False

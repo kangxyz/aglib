@@ -1,5 +1,14 @@
 # Explicit proper finiteness and exact-sequence transfer
 
+[Modules](Modules.lean) transfers finite generation along the original
+module-sheaf long exact sequence for a specified structural map from a
+Noetherian ring. `moduleCohomology_finite_quotient_of_hom` takes finite
+middle cohomology in degree `n` and finite kernel cohomology in degree
+`n+1`, and proves finite quotient cohomology in degree `n`. The same leaf
+gives middle, next-left and submodule-H⁰ transfers. Every finiteness input
+uses the actual cohomology with its original structural scalar action;
+no proper-finiteness input is hidden in these generic results.
+
 [Coherent](Coherent.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Finiteness.Coherent`, defines `AlgebraicGeometry.Scheme.Cohomology.ProperModuleCohomologyFinite`: for every field, every proper field scheme, every finitely presented module sheaf and every nonnegative degree, actual structural-field cohomology is finite-dimensional. This is an explicit retained input. Finite local bases give the actual finite-presentation witness, and H0/global-section comparison preserves the field action.
 
 [ProperInputs](ProperInputs.lean) defines `Scheme.ProperStructureCohomologyFinite`. [StructureSheaf](StructureSheaf.lean) supplies `properStructureCohomologyFinite_of_standard`, `structureCohomology_finite_of_standard` and `structureH1_finite_of_standard`, all retaining `hstandard : ProperModuleCohomologyFinite`. The unit module's actual finite presentation and scalar-compatible cohomology comparison transfer the supplied all-module input.

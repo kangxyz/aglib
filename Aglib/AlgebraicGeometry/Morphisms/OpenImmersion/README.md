@@ -3,3 +3,12 @@
 [Cartesian](Cartesian.lean), imported as `Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian`, gives `AlgebraicGeometry.Scheme.Hom.opensRange_of_isPullback`. In a supplied square `a,b,f,g`, with `a` and `g` open immersions and `IsPullback a b f g`, the actual open range of `a` is the inverse image under `f` of the open range of `g`.
 
 This is a scheme/open-set equality. It assumes neither flatness of the arbitrary remaining map nor a sheaf, coherence or derived-category structure. The separate [module open-base-change comparison](../../Modules/BaseChange/OpenImmersion/README.md) and Godement local section diagrams consume this geometric identification.
+
+[Affine](Affine.lean) identifies the original `hU.fromSpec` for an affine
+open of `Spec R` with `Spec.map` of the original coordinate algebra map.
+`Scheme.isPullback_morphismRestrict_isoSpec` gives the supplied cartesian
+square whose source is the actual inverse-image open and whose other
+projection is the original restricted morphism followed by `hU.isoSpec.hom`.
+The statement requires only affineness of the target open. Principal-open
+cohomology localization uses this same square and its native affine-open
+isomorphism directly.

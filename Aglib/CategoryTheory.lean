@@ -10,6 +10,8 @@ module
 public import Aglib.CategoryTheory.Abelian.FiniteCoproductFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels
+public import Aglib.CategoryTheory.Abelian.Regular
+public import Aglib.CategoryTheory.Abelian.RightDerived.Cochain
 public import Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts
 public import Aglib.CategoryTheory.Abelian.Subcategory.Exact
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
@@ -22,9 +24,12 @@ public import Aglib.CategoryTheory.ExactCategory.Functor
 public import Aglib.CategoryTheory.ExactCategory.Isomorphisms
 public import Aglib.CategoryTheory.ExactCategory.MatrixDeflation
 public import Aglib.CategoryTheory.ExactCategory.Subcategory
+public import Aglib.CategoryTheory.Functor.KanExtension.ClosedImage
+public import Aglib.CategoryTheory.Functor.Sections.Initial
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.NatTransCoproduct
 public import Aglib.CategoryTheory.Limits.Shapes.CokernelPushout
+public import Aglib.CategoryTheory.Limits.Shapes.RegularKernel
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison

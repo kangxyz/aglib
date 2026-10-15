@@ -7,12 +7,12 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Basic
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Colimits
 public import Mathlib.Algebra.Category.Grp.EpiMono
 public import Mathlib.Algebra.Category.Grp.Abelian
 public import Mathlib.Topology.Sheaves.LocallySurjective
 public import Mathlib.CategoryTheory.ConcreteCategory.EpiMono
 public import Mathlib.CategoryTheory.Sites.Abelian
-public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Colimits
 /-!
 # Epimorphisms of module sheaves are locally surjective
 
@@ -39,30 +39,15 @@ variable {C : Type w} [Category.{w'} C] {J : GrothendieckTopology C}
   [HasSheafify J AddCommGrpCat.{v}] [J.WEqualsLocallyBijective AddCommGrpCat.{v}]
   {D : Type t} [Category.{t'} D] [HasColimitsOfShape D AddCommGrpCat.{v}]
 
-/-- Forgetting a sheaf's scalar action commutes with colimits. -/
-instance toSheaf_preservesColimitsOfShape :
-    PreservesColimitsOfShape D (SheafOfModules.toSheaf.{v} R) where
-  preservesColimit {F} := by
-    let L := _root_.PresheafOfModules.sheafification (𝟙 R.obj)
-    let G := SheafOfModules.toSheaf.{v} R
-    let P := F ⋙ SheafOfModules.forget R
-    have : PreservesColimit P (L ⋙ G) := by
-      change PreservesColimit P
-        (_root_.PresheafOfModules.toPresheaf R.obj ⋙ presheafToSheaf J AddCommGrpCat.{v})
-      infer_instance
-    let h := isColimitOfPreserves L (colimit.isColimit P)
-    have : PreservesColimit (P ⋙ L) G :=
-      preservesColimit_of_preserves_colimit_cocone h
-        (isColimitOfPreserves (L ⋙ G) (colimit.isColimit P))
-    let e : P ⋙ L ≅ F := Functor.isoWhiskerLeft F
-      (asIso (_root_.PresheafOfModules.sheafificationAdjunction (𝟙 R.obj)).counit)
-    exact preservesColimit_of_iso_diagram G e
+/-- Compatibility name for the native scalar-forgetting colimit instance. -/
+abbrev toSheaf_preservesColimitsOfShape :
+    PreservesColimitsOfShape D (SheafOfModules.toSheaf.{v} R) :=
+  SheafOfModules.toSheaf_preservesColimitsOfShape R
 
-/-- Epimorphisms remain epimorphisms after forgetting the scalar action. -/
-instance toSheaf_preservesEpimorphisms :
-    (SheafOfModules.toSheaf.{v} R).PreservesEpimorphisms := by
-  let : PreservesFiniteColimits (SheafOfModules.toSheaf.{v} R) := ⟨fun _ => inferInstance⟩
-  infer_instance
+/-- Compatibility name for native scalar forgetting of epimorphisms. -/
+abbrev toSheaf_preservesEpimorphisms :
+    (SheafOfModules.toSheaf.{v} R).PreservesEpimorphisms :=
+  SheafOfModules.toSheaf_preservesEpimorphisms R
 
 variable [J.HasSheafCompose (CategoryTheory.forget AddCommGrpCat.{v})]
 

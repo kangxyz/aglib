@@ -7,3 +7,20 @@
 Latest local Quillen additions include [CochainComplexPlus](CochainComplexPlus/README.md), [actual truncation layers](Embedding/StupidTrunc/README.md), [bounded homotopy comparison](HomotopyCategory/Plus/README.md), [D+ and right-derived units](DerivedCategory/README.md), and [short-complex retract exactness](ShortComplex/README.md). [DegreewiseSplitMono](CochainComplex/DegreewiseSplitMono.lean) supplies termwise splitting and its isomorphism, zero, pushout and multiplicativity laws in the abelian setting; it does not provide a chain retraction. [KernelSequence](CochainComplex/KernelSequence.lean) constructs the actual kernel sequence of an acyclic cochain complex, and [MappingCone.Acyclicity](MappingCone/Acyclicity.lean) gives the converse cone-acyclicity result for a quasi-isomorphism. [SingleShift](CochainComplex/SingleShift.lean) retains the original shifted-single normalization.
 
 The [cochain-complex guide](CochainComplex/README.md) records the kernel, splitting and single-shift conditions. The [mapping-cone guide](MappingCone/README.md) adds the generic additive identity-cone functor and its pushout and short-exactness comparisons. [QuasiIso](QuasiIso.lean), imported as `Aglib.Algebra.Homology.QuasiIso`, proves `CochainComplex.quasiIso_of_two_acyclic`: any actual map between two acyclic integer cochain complexes in an abelian category is a quasi-isomorphism. Both acyclicity proofs are explicit inputs.
+
+[Semicontinuity](Semicontinuity.lean) proves upper semicontinuity of the
+homology dimension of the original residue-field scalar-extension complex,
+for any complex shape. In degree `i`, only finiteness of `K.X i` and finite
+presentation and flatness of `K.X (c.next i)` are required. The finite-projective
+specialization needs neither boundedness nor Noetherianity. The proof uses
+the original short complex and its cokernels, without assuming that homology
+commutes with tensor product.
+
+[EulerCharacteristic](EulerCharacteristic.lean) proves the native
+Euler–Poincare identity for a termwise bounded complex of finite-dimensional
+vector spaces. Its bounded-support result does not require finite terms.
+The [fibre Euler-characteristic guide](EulerCharacteristic/README.md) records
+local constancy for the actual residue-field complexes of bounded finitely
+presented flat complexes. These numerical results are lower prerequisites;
+a geometric application must still identify the original fibre cohomology
+with that of the displayed complex.

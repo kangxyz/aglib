@@ -9,3 +9,42 @@ The object is the actual integer-indexed `CochainComplex X.Modules ℤ`. A compl
 [AcyclicSupport](AcyclicSupport.lean) gives `Scheme.Modules.Complex.pullback_acyclic` and `pullback_restrict_acyclic` under flatness of the actual morphism. Tensor acyclicity on either side requires finite local freeness of the coefficient and acyclicity of the original complex. `coprod_acyclic` and `coprod_restrict_acyclic` require both complexes to be acyclic on the indicated scope. Support here means acyclicity after restriction to the exact displayed open; the pullback statement uses its actual inverse-image open.
 
 Lower inputs are the actual module functors, [stalk detection](../Stalk/README.md), [locally free tensor exactness](../LocallyFree/Tensor/README.md) and generic homological algebra. Godement comparisons and derived open-cover detection consume these ordinary maps. No compactness, quasicoherence or perfect-complex predicate is imposed by the general complex interfaces.
+
+[Homology](Homology.lean) gives `homologyIsoOfDerivedIso` through the native
+derived homology factorization and `restrictHomologyIso` through the actual
+exact restriction comparison. The original homology sheaves are retained.
+The derived category has the standard morphism universe `u + 1` for
+`X : Scheme.{u}`. These results precede [local perfect models](../Perfect/README.md).
+
+[Sections](Sections.lean) detects actual `ExactAt` and acyclicity in any
+complex shape from original variable-ring sections on a topological basis.
+Its `quasiIso_of_sections_on_basis` detects actual quasi-isomorphisms of
+integer cochain complexes by those native section maps. It imports no
+cohomology implementation and assumes no quasicoherence, termwise
+acyclicity, boundedness or finiteness. The proof uses exact conservative
+native scalar forgetting and the established additive-sheaf basis criterion.
+The leaf passed `1792103250738244000-40548`; the independent raw-evaluation
+and arbitrary-index-universe consumer passed `1792103303811904000-41257`,
+with only the three standard axioms.
+
+[Tilde](Tilde.lean) applies the original affine `fromTildeΓNatTrans` counit
+to actual module complexes of any shape. `tildeGlobalSectionsCounit_f`
+and `tildeGlobalSectionsCounit_toOpen` retain the literal original counit
+and its section-localization unit equation. The chain map is natural in
+original coefficient chain maps. When this actual counit is a
+quasi-isomorphism, `tildeGlobalSectionsHomologyIso` computes the original
+homology sheaf from the native affine section-complex homology, using the
+exact tilde comparison and the homology map of that same counit. The
+resulting original homology sheaf is quasicoherent.
+
+The same leaf identifies native module localization with actual tilde
+sections on `D(r)` through the original `tilde.toOpen`. This section functor
+is exact, and its original complex unit localizes actual homology in every
+shape and degree. `tildeBasicOpenComplexUnit_counit` is the exact chain-map
+equation saying that this unit followed by the original counit equals the
+original top-to-open restriction. Consequently,
+`tildeGlobalSectionsCounit_quasiIso_of_isLocalized` proves the actual
+integer-cochain counit a quasi-isomorphism when those actual homology
+restrictions localize on every principal open. It uses the native section
+basis criterion, with no assumption of quasicoherence of the target terms
+or homology.

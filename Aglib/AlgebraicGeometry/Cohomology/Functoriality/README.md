@@ -8,6 +8,27 @@
 
 The consumers are canonical field base change, affine direct-image comparison and differential-sheaf pullback. [Coefficients/scalars](../Modules/README.md) and native exact inverse image are lower prerequisites.
 
+[DegreeZero](DegreeZero.lean) owns `zariskiCohomologyMap_addEquiv₀` and
+`zariskiCohomologyMap_equiv₀`, the original degree-zero normalization independent
+of field or base-change assumptions. The former field owner publicly imports
+this single implementation.
+
+[Modules](Modules.lean) constructs `moduleCohomologyMapAlong` from an actual
+module-sheaf coefficient arrow `M ⟶ f_* N`. The map is the original additive
+`zariskiCohomologyMap` applied to its adjoint coefficient map.
+`moduleCohomologyMapAlongLinear` is linear for every specified structural ring,
+and `moduleCohomologyMapAlong_equiv₀` identifies the actual section map.
+`moduleCohomologyPullback` specializes the coefficient arrow to the original
+module adjunction unit. Construction uses no quasicoherence, flatness,
+properness or finite-generation premise.
+
+[Modules/Composition](Modules/Composition.lean) proves the original additive
+coefficient mate's Hom-adjunction formula, coefficient pre/postcomposition,
+composition through the native inverse-image comparison, and transport
+along equal scheme morphisms with the actual direct-image comparison. These
+equations preserve the specified module arrows and have no geometric
+flatness or quasicoherence premise.
+
 [Pushforward](Pushforward.lean) defines the original `Scheme.Modules.derivedPushforwardPlus` and its unit. [PushforwardComposition](PushforwardComposition.lean) gives the actual D+ composition isomorphism for scheme morphisms and its original unit equation; [PushforwardSection](PushforwardSection.lean) gives the one-sided comparison for a supplied section/projection composite identity.
 
 [PullbackSingle](PullbackSingle.lean), [SingleComparison](SingleComparison.lean), [ComplexContraction](ComplexContraction.lean) and [PlusQuasiIso](PlusQuasiIso.lean) retain actual single objects, lower bounds, original units and supplied quasi-isomorphism/contraction data. Flat derived pullback and bounded comparison conditions are separate from ordinary structural pullback. No natural replacement/model choice is inferred.

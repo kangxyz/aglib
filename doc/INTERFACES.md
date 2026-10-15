@@ -18,13 +18,89 @@ The module-base-change map is the actual pullback/pushforward counit mate, with 
 
 Structure and module cohomology are actual additive `Sheaf.H`. For schemes/fields in universe `u`, these Ext-defined types are in `Type (u+1)`. Structural constants induce the field action. The H0 comparison, coefficient maps, connecting maps, geometric pullback and field-tensor map preserve these objects and actions. A resolution/Cech computation becomes a statement about `Sheaf.H` through its proved canonical comparison.
 
+The affine module-base-change theorem now has the unconditional supplier
+`Scheme.Modules.affineModuleBaseChange` in
+`Aglib.AlgebraicGeometry.Modules.BaseChange.Affine`.
+`moduleBaseChangeMap_isIso` concerns the original counit mate for affine `f`,
+quasicoherent coefficients and arbitrary `g`; it has no flatness, finiteness or
+Noetherian premise. The retained `AffineModuleBaseChange` proposition and older
+parameterized consumers remain available, with this proof as their input.
+
+An arbitrary structural ring map `α : R →+* Γ(X, ⊤)` acts on the unchanged
+`Sheaf.H` through `moduleCohomologyModuleOfHom`. This action is explicit in `α`
+to distinguish different structural maps. The general Cech linear computation
+and geometric module-coefficient maps preserve that action and the original
+degree-zero comparison. Their construction does not assume flatness or finite
+generation. For a quasi-compact separated `f : X ⟶ Spec A`, a flat ring map
+`A → B` and any quasicoherent module coefficient, the
+[general module base-change supplier](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/Modules/Separated.lean)
+now proves invertibility of the original `moduleCohomologyBaseChangeMap` in
+every nonnegative degree. Its unit-pure-tensor formula is the actual geometric
+cohomology pullback. The [qcqs supplier](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/Modules/Qcqs.lean)
+extends this to quasi-compact quasi-separated `f` in every degree, and to
+an arbitrary supplied Cartesian square over the same ring map, with the
+original unit and tensor mate. Arbitrary-base higher-direct-image and
+derived formulations remain separate obligations.
+
+Original module-linear Ext from the structure module now computes the same
+additive cohomology in every degree, linearly for the specified structural
+ring map. The forward map is native exact scalar forgetting and the original
+integer-generator-one map. Coefficient maps, Yoneda composition and degree-zero
+section evaluation are explicit. The native long exact sequence and its
+Noetherian finite-generation transfers use the same original objects; the
+existing field-linear exactness interfaces specialize this implementation.
+
+On actual polynomial projective space over an arbitrary commutative ring,
+every integer twist has finite free cohomology in all degrees. Over a
+Noetherian base ring, every coherent coefficient has finite cohomology in
+every degree, proved from actual finite negative-twist presentations and
+coherent kernels. The same conclusion holds through an actual closed
+immersion into that projective space, using the original pushforward
+cohomology comparison and displayed structural factorization. This does not yet supply the
+quantified proper-finiteness family below.
+
+The lower finite-complex numerical interfaces concern the original native
+residue-field scalar-extension complexes: their homology dimensions are
+upper semicontinuous for finite projective terms, and their native
+homological Euler characteristic is locally constant when those terms are
+bounded. The latter only requires finitely presented flat terms. A geometric
+consumer must supply an actual comparison with its original fibre
+cohomology; these statements alone do not discharge a proper base-change
+or local-freeness family.
+
+For an actual closed projective embedding over a Noetherian commutative
+base and a coherent relatively flat coefficient, the constructed universal
+finite-projective model now supplies that geometric comparison. Every
+original ordinary fibre-cohomology dimension is upper semicontinuous, and
+their intrinsic alternating sum is locally constant. These public endpoints
+construct the model internally and retain the original structural actions.
+The original degreewise base-change map is identified with the native
+homology mate of the same model by a full linear square. Over a reduced
+Noetherian affine base, local constancy of an original fibre dimension
+gives finite projective original cohomology and arbitrary original base
+change. Over a Noetherian local base, the original residue-field
+surjectivity criterion gives arbitrary base change and the adjacent-degree
+freeness criterion, without reducedness. The actual sheaf-valued `Rf_*` of
+this coherent relatively flat coefficient also has a constructed strict
+perfect model, both before and after every ring base change. Its
+comparison uses the original injective resolution, actual tilde--Gamma
+counit and installed derived unit. These projective results do not yet
+supply arbitrary perfect-coefficient or general proper endpoints.
+
+The [projective Serre duality family](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/README.md)
+proves full complementary-degree coherent Serre duality on polynomial
+projective space over a field, including the original Yoneda/residue
+pairing, perfectness, coefficient naturality and dimension zero. The top
+Hom/cohomology duality also holds over every Noetherian commutative base
+ring. Passage to general smooth projective schemes and to general proper
+dualizing complexes remains separate.
+
 ## Explicit theorem-family inputs
 
 These proposition-valued families quantify over actual objects and constructed maps. They remain parameters of their dependent results.
 
 | Native input owner | Conditions and conclusion |
 | --- | --- |
-| `AlgebraicGeometry.Scheme.Modules.AffineModuleBaseChange` | Affine `f`, quasicoherent coefficients, arbitrary base change `g`: the canonical mate is invertible; no flatness of `g` is assumed. |
 | `AlgebraicGeometry.Scheme.Modules.LocalBasisFibreDimension` | An actual finite local free presentation and a field-valued point in its trivializing open: the fibre is finite and its dimension is the basis cardinality. |
 | `AlgebraicGeometry.Scheme.Modules.Differentials.SmoothDifferentialRank` | Smooth field scheme of relative dimension `n`: the actual differential sheaf has rank `n`, over every field. |
 | `AlgebraicGeometry.Scheme.Cohomology.ProperModuleCohomologyFinite` | Proper field scheme, finitely presented module sheaf, nonnegative degree: the actual structural-field cohomology is finite-dimensional. |
@@ -32,9 +108,19 @@ These proposition-valued families quantify over actual objects and constructed m
 | `AlgebraicGeometry.Scheme.ProperGeometricallyIntegralConstants` | Proper geometrically integral field scheme: the actual structural constant map is bijective. |
 | `AlgebraicGeometry.Scheme.Cohomology.LocalFreeCohomologyBaseChange` | Proper, locally finitely presented, flat `f`; locally free/finitely presented coefficients; geometric fibre cohomology concentrated in degree zero of rank `r`: direct image has rank `r`, and its actual mate is invertible after every change of base. |
 
-Predicate definitions and theorem suppliers are separate interfaces. Supplier modules in the current source provide smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing and quasi-compact separated field base change. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md).
+Predicate definitions and theorem suppliers are separate interfaces. Supplier modules in the current source provide smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing, affine module base change and qcqs flat module-cohomology base change over spectra. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md) and the focused [cohomology plan](COHOMOLOGY_PLAN.md).
 
 ## Latest tensor and derived boundaries
+
+The existing [perfect-complex family](../Aglib/AlgebraicGeometry/Modules/Perfect/README.md)
+uses actual integer module-sheaf complexes and actual derived isomorphisms.
+`strictPerfect` requires bounds on terms and finite local freeness in every
+degree. `locallyPerfect` requires strict derived models on neighborhoods;
+`HasStrictModel` instead supplies one model over the whole displayed scheme.
+Local perfectness gives quasicoherent homology and local cohomological
+bounds; quasi-compactness gives one global cohomological bound. It does not
+give a global strict model, and this family alone does not prove that a
+proper direct image is perfect.
 
 `SheafOfModulesOfCommRing.tensorLeftFunctor`/`tensorFunctor` is the single site tensor. `Scheme.Modules.moduleTensorLeftFunctor`, its right counterpart and invertible wrappers specialize that construction. Finite-locally-free left/right tensor `PreservesHomology` lives in the locally free exactness tier; generic symmetry depends on neither projection formula nor invertible sheaves.
 
