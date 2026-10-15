@@ -114,6 +114,18 @@ The workflows encode publication; configuring them does not prove that a remote
 asset already exists or has been downloaded. The first successful producer run
 and downstream restore must establish remote transport operation.
 
+The manual [cache-client acceptance workflow](../.github/workflows/cache-client.yml)
+checks real Linux producer-to-Quillen delivery independently of full library CI.
+Dispatch it only after an Aglib producer cache release has been published. It
+checks out Quillen main and this workflow revision's separate tooling, fetches
+the existing pinned Mathlib prerequisites, and requires a public Aglib import
+into a newly empty isolated native cache. A remote miss fails this acceptance
+run. `lake --rehash --no-build build Aglib` must then succeed without upstream
+proof compilation, followed by one scratch Tensor/Span import. Logs record both
+actual producer and consumer revisions. The workflow is manual-only, has its own
+concurrency group and read-only repository permissions, uploads its evidence,
+and does not build Quillen mathematics or publish caches.
+
 ## R5Lab and future libraries
 
 For a local R5Lab consumer, select a reviewed Aglib tooling checkout independently
