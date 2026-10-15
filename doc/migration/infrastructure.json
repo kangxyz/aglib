@@ -220,7 +220,6 @@
     "bash scripts/check.sh --rehash --ci"
   ],
   "historical_evidence": "The earlier 25-test pre-rename pass is not current AGLib acceptance.",
-  "source_inventory_sha256": "71abd0919b2af9243413c43f6cd6fe2a3254dd8e25e9c8584180f79b8d668be4",
   "heartbeat_guard_boundary": "Pinned Mathlib convention: options with a maxHeartbeats name component, including synthInstance.maxHeartbeats, are declaration-local and followed by explanatory comments after in. Documented local 0 is permitted. Necessity and comment content remain author judgments. Lean default 200000 is inherited without a package-wide override.",
   "status": "Full local integration passed; see doc/migration/integration.json for the exact evidence basis.",
   "private_coverage_control": "Axioms.lean selects the actual origin-enumerated private constant ending hiddenDatum and requires it in the checked environment. The public rootDatum is independent, not a public alias for the private constant.",
@@ -234,5 +233,13 @@
     "integration_record": "doc/migration/integration.json",
     "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
   },
-  "source_inventory_script_sha256": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787"
+  "source_inventory_script_sha256": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787",
+  "historical_source_inventory_sha256": "71abd0919b2af9243413c43f6cd6fe2a3254dd8e25e9c8584180f79b8d668be4",
+  "current_execution_implementation_sha256": {
+    "scripts/check_kernel.py": "10ff5c1d602a781baa96f74316a9b12d7c1ac6339e334e51948de114bda4d557",
+    "scripts/resource_guard.py": "4286c5b59df8a86e067e4bca288b38b1f0d9a341aba86cbbab1b463c86873e2f",
+    "scripts/test_kernel.py": "482b6a2fdb2ac8d37cedb602af0e0346b9a6bfca2144f903b419155a9f013b63",
+    "scripts/README.md": "ad3d81b2674c6cf7d269923a680a4b0bacf6f46e51a592fcd2656e04579609f7"
+  },
+  "current_source_regression_tests": 87
 }

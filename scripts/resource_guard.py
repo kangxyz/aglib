@@ -91,14 +91,16 @@ def terminate_group(group, known=()):
         time.sleep(0.2)
 
 
-def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, budget=None):
+def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, budget=None,
+        stdout=None, stderr=None):
     budget = limits() if budget is None else budget
     environment = dict(os.environ if env is None else env,
                        LEAN_NUM_THREADS=str(budget['lean_threads']))
     started = time.monotonic()
     # Probe monitoring permission before starting any potentially expensive work.
     sampler(os.getpgrp())
-    child = subprocess.Popen(command, cwd=cwd, env=environment, start_new_session=True)
+    child = subprocess.Popen(command, cwd=cwd, env=environment, start_new_session=True,
+                             stdout=stdout, stderr=stderr)
     group = child.pid
     peak, reason, members = 0, None, []
     try:

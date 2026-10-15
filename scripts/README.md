@@ -89,20 +89,29 @@ required. No address-space limit is used.
 
 The pinned `leanchecker` executable launches every selected module concurrently.
 `check_kernel.py` instead imports the installed `LeanChecker` module and calls
-only `replayFromImports` for one exact module in each fresh process. It never
-executes imported `main` or requests fresh replay of imported proofs. Exported,
-server, and private parts are inspected; a module is recorded as vacuous only
-when its last, most private part contains no new constants. Receipts bind the
-complete unique inventory to source, compiled artifacts, configuration, and the
-installed checker. A successful probe is not complete coverage. Resume uses the
-same receipt directory and rejects any changed basis:
+only `replayFromImports` for bounded batches of exact modules. Each fresh process
+runs at most the selected number of tasks; the next batch starts after it exits.
+`--batch-size` or `AGLIB_KERNEL_BATCH_SIZE` selects a positive bound that fits the
+available logical CPUs. It never executes imported `main` or requests fresh replay
+of imported proofs. Exported, server, and private parts are inspected; a module is
+recorded as vacuous only when its last, most private part contains no new constants.
+All tasks must succeed before any module success is accepted. An RSS-cutoff failure
+retries smaller batches; proof, monitoring, malformed-output, and other failures
+stop the check. Receipts bind the complete unique inventory to source, compiled
+artifacts, configuration, and the installed checker, while preserving each
+successful batch's execution profile. A successful probe is not complete coverage.
+Resume uses the same receipt directory and rejects any changed proof basis:
 
 ```sh
 python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
 ```
 
-The pinned replay core checks declarations sequentially. Normal-build thread
-settings do not change its explicit replay profile or accelerate that core.
+The pinned replay core checks each module's declarations sequentially; bounded
+module tasks provide replay parallelism. Normal-build thread settings remain
+separate from the replay batch setting. Explicit `--adopt-legacy` migration also
+requires the full frozen source basis and the recognized prior runner through
+`--legacy-source-basis` and `--legacy-runner`. It validates prior success records
+and retains their raw evidence and original execution profiles.
 
 Do not run another Lean job concurrently with this serialized route. On restricted
 macOS hosts, process monitoring and owned-process signaling require the authorized
@@ -163,9 +172,9 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | --- | --- |
 | `resource_guard.py` | Samples only its owned process group's RSS; enforces one active Lean and closes the group on failure. `--capped-toolchain` supplies native compiler caps; the restricted `--bootstrap-cache` exception keeps the RSS limit. |
 | `build_serial.py` | Checks cached targets first, then builds exact local modules in source dependency order with one capped compiler. |
-| `check_kernel.py` | Replays the exact current production, positive-test, and audit-support inventory sequentially using installed `LeanChecker.replayFromImports`; writes resumable source/artifact-bound coverage receipts. `--client` checks the independent Consumer package. |
+| `check_kernel.py` | Replays bounded batches of the exact current production, positive-test, and audit-support inventory using installed `LeanChecker.replayFromImports`; writes resumable source/artifact-bound coverage receipts. `--client` checks the independent Consumer package. |
 | `test_resource_guard.py` | Pure Python budget, fail-closed monitoring, exit propagation, and owned-PID termination regressions. |
-| `test_kernel.py` | Fixed exact-module enrollment, non-fanout driver, vacuous-module accounting, and basis-checked resumption regressions. |
+| `test_kernel.py` | Exact enrollment, bounded task barrier, failed-batch rejection, RSS backoff, immutable attempt logs, and basis-checked legacy adoption regressions. |
 | `test_build_serial.py` | Checks source dependency order, one-target scheduling, cache hits, and actual compiler-wrapper argument caps using a small Python executable. |
 | `check.sh` | Serialized source/full integration entry point; accepts `--source-only` and `--rehash`. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |

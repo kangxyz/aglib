@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "Aglib",
   "root_module": "Aglib",
-  "status": "Full local integration passed on the recorded source and artifact basis.",
+  "status": "Full local integration and the bounded replay execution update passed on unchanged mathematical sources and artifacts.",
   "source_basis": {
     "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
     "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
@@ -123,5 +123,39 @@
       "scripts/test_resource_guard.py": "69df0277b99bd98455551e7584139a968fec8a298b2ddb50cb273e05ae411dac",
       "scripts/test_source_guards.py": "d4f2bc991f05ab95dcd6d5bc119b5421033e73850bc7e45329b6a83429555034"
     }
+  },
+  "execution_update": {
+    "status": "passed",
+    "source_only_command": "bash scripts/check.sh --source-only",
+    "source_regression_tests": 87,
+    "implementation_sha256": {
+      "scripts/check_kernel.py": "10ff5c1d602a781baa96f74316a9b12d7c1ac6339e334e51948de114bda4d557",
+      "scripts/resource_guard.py": "4286c5b59df8a86e067e4bca288b38b1f0d9a341aba86cbbab1b463c86873e2f",
+      "scripts/test_kernel.py": "482b6a2fdb2ac8d37cedb602af0e0346b9a6bfca2144f903b419155a9f013b63",
+      "scripts/README.md": "ad3d81b2674c6cf7d269923a680a4b0bacf6f46e51a592fcd2656e04579609f7"
+    },
+    "independent_review": "Fixed implementation and subsequent evidence-retention repair reviewed; no remaining defect in the reviewed scope.",
+    "actual_nonempty_probe_module_counts": [
+      4,
+      8,
+      16
+    ],
+    "acceptance": "One guarded Lean process; bounded exact-module tasks through the same installed checker; every task joins successfully before exact markers are accepted.",
+    "memory_backoff": "RSS-watchdog failures retry smaller batches. Native memory-limit failures stop directly.",
+    "root_adoption": {
+      "covered_modules": 420,
+      "last_private_inventory_constants": 6430,
+      "vacuous_modules": 13,
+      "receipt_sha256": "dc50aaeda456ee08361641c830d2b23c7769145626b421a8231e22a0a0a9e2fc",
+      "boundary": "Validated original source, all artifact parts, Lean configurations, installed checker, every original marker and successful resource closure; retained original single-task profiles and raw evidence without rerunning or relabeling them."
+    },
+    "downstream_batch": {
+      "covered_modules": 3,
+      "vacuous_modules": 3,
+      "receipt_sha256": "b55057db67f52508077aff2a3bdc43af90a2689369781ce8ef9f67a47aad4eec",
+      "status": "passed"
+    },
+    "handback_sha256": "9f1485a1e6cb6fd5f7d055cb744a69386e2c76fb9a44603f02859d0fa5b59003",
+    "semantic_boundary": "Execution scheduling changed; mathematical source statements, proofs, imports, options and compiled artifacts did not change."
   }
 }

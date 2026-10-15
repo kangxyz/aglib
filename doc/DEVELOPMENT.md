@@ -56,11 +56,11 @@ bash scripts/check.sh --rehash --ci
 
 ## Memory and exact replay
 
-The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` selects its internal parallelism, otherwise inheriting `LEAN_NUM_THREADS` or using the conservative default. Exact kernel replay remains sequential. A temporary toolchain wrapper applies the selected native `-j` and `-M` limits to direct and Lake-spawned frontends. The RSS watchdog sums the owned process group's memory, fails closed on monitoring, memory or concurrency failure, and signals only PIDs whose owned-group identity it rechecks. Native heap limits alone do not bound all mapped memory.
+The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` selects its internal parallelism, otherwise inheriting `LEAN_NUM_THREADS` or using the conservative default. Exact kernel replay uses bounded batches in one monitored process; select their size with `AGLIB_KERNEL_BATCH_SIZE` or `--batch-size`. Batches that reach the RSS cutoff are retried at smaller sizes. A temporary toolchain wrapper applies the selected native `-j` and `-M` limits to direct and Lake-spawned frontends. The RSS watchdog sums the owned process group's memory, fails closed on monitoring, memory or concurrency failure, and signals only PIDs whose owned-group identity it rechecks. Native heap limits alone do not bound all mapped memory.
 
 `AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` are in MiB. Choose values appropriate to the host, keeping the native Lean limit below the owned-group RSS cutoff. The helpers validate their settings; the workflow is the authority for CI's configured profile. Do not run another Lean job alongside this route.
 
-Use [check_kernel.py](../scripts/check_kernel.py) for exact current-module replay, including server/private artifacts. It reuses the pinned installed `LeanChecker.replayFromImports` in a fresh process for one exact module at a time. The default `leanchecker` CLI expands module prefixes and fans out concurrent jobs; use the maintained exact checker for whole-library replay.
+Use [check_kernel.py](../scripts/check_kernel.py) for exact current-module replay, including server/private artifacts. It reuses the pinned installed `LeanChecker.replayFromImports` concurrently for a bounded set of exact enrolled modules. The default `leanchecker` CLI expands module prefixes and fans out concurrent jobs; use the maintained exact checker for whole-library replay.
 
 ```sh
 python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
