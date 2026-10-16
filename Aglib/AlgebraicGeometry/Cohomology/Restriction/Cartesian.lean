@@ -88,8 +88,58 @@ private theorem paste_native_naturality
     _ = _ := (Category.assoc j (δ.app s) (Q.map (F.map k))).trans
       (congrArg (fun z => j ≫ z) (δ.naturality k).symm)
 
-set_option maxHeartbeats 500000 in
--- The literal statement expands the original module units through four native cohomology maps.
+private theorem moduleHPrimeOpenMap_comp_congr_top
+    {W T : Scheme.{u}} (a : W ⟶ Y) (b : W ⟶ T) (p : Y ⟶ X) (j : T ⟶ X)
+    (w : a ≫ p = b ≫ j) {M : X.Modules} {N : Y.Modules} {L : T.Modules} {P : W.Modules}
+    (φp : M ⟶ (Scheme.Modules.pushforward p).obj N)
+    (φa : N ⟶ (Scheme.Modules.pushforward a).obj P)
+    (φj : M ⟶ (Scheme.Modules.pushforward j).obj L)
+    (φb : L ⟶ (Scheme.Modules.pushforward b).obj P)
+    (hφ : φp ≫ (Scheme.Modules.pushforward p).map φa ≫
+        (Scheme.Modules.pushforwardComp a p).hom.app P ≫
+        (Scheme.Modules.pushforwardCongr w).hom.app P =
+      φj ≫ (Scheme.Modules.pushforward j).map φb ≫
+        (Scheme.Modules.pushforwardComp b j).hom.app P)
+    (U : X.Opens) (ha : a ⁻¹ᵁ (p ⁻¹ᵁ U) = ⊤) (hj : j ⁻¹ᵁ U = ⊤) (n : ℕ) :
+    (zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
+        (moduleCoefficientPullback p (M := M) (N := N) φp) n).app (op U) ≫
+      (zariskiCohomologyOpenMap a (moduleAddSheaf Y N) (moduleAddSheaf W P)
+        (moduleCoefficientPullback a (M := N) (N := P) φa) n).app (op (p ⁻¹ᵁ U)) ≫
+      (Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf W P) n).map
+        (eqToHom ha.symm).op =
+    (zariskiCohomologyOpenMap j (moduleAddSheaf X M) (moduleAddSheaf T L)
+        (moduleCoefficientPullback j (M := M) (N := L) φj) n).app (op U) ≫
+      (Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf T L) n).map
+        (eqToHom hj.symm).op ≫
+      (zariskiCohomologyOpenMap b (moduleAddSheaf T L) (moduleAddSheaf W P)
+        (moduleCoefficientPullback b (M := L) (N := P) φb) n).app (op ⊤) := by
+  let A := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf X M) n
+  let B := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf Y N) n
+  let Q := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf W P) n
+  let J := Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf T L) n
+  let gp : A ⟶ (Opens.map p.base).op ⋙ B :=
+    zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
+      (moduleCoefficientPullback p (M := M) (N := N) φp) n
+  let ga : B ⟶ (Opens.map a.base).op ⋙ Q :=
+    zariskiCohomologyOpenMap a (moduleAddSheaf Y N) (moduleAddSheaf W P)
+      (moduleCoefficientPullback a (M := N) (N := P) φa) n
+  let gj : A ⟶ (Opens.map j.base).op ⋙ J :=
+    zariskiCohomologyOpenMap j (moduleAddSheaf X M) (moduleAddSheaf T L)
+      (moduleCoefficientPullback j (M := M) (N := L) φj) n
+  let gb : J ⟶ (Opens.map b.base).op ⋙ Q :=
+    zariskiCohomologyOpenMap b (moduleAddSheaf T L) (moduleAddSheaf W P)
+      (moduleCoefficientPullback b (M := L) (N := P) φb) n
+  let kA : (⊤ : W.Opens) ⟶ a ⁻¹ᵁ (p ⁻¹ᵁ U) := eqToHom ha.symm
+  let kJ : (⊤ : T.Opens) ⟶ j ⁻¹ᵁ U := eqToHom hj.symm
+  let t : op ((a ≫ p) ⁻¹ᵁ U) ⟶ op ((b ≫ j) ⁻¹ᵁ U) :=
+    (eqToHom (congrArg (fun f : W ⟶ X => f ⁻¹ᵁ U) w).symm).op
+  have hc : (gp.app (op U) ≫ ga.app (op (p ⁻¹ᵁ U))) ≫ Q.map t =
+      gj.app (op U) ≫ gb.app (op (j ⁻¹ᵁ U)) :=
+    moduleHPrimeOpenMap_comp_congr a b p j w φp φa φj φb hφ n (op U)
+  have hk : t ≫ (Opens.map b.base).op.map kJ.op = kA.op := Subsingleton.elim _ _
+  exact paste_native_naturality (Opens.map b.base).op J Q gb
+    (gp.app (op U)) (ga.app (op (p ⁻¹ᵁ U))) (gj.app (op U)) kJ.op t kA.op hk hc
+
 /-- The two original unit paths through an open cartesian square agree on actual native
 open cohomology, retaining the actual pullback/restriction mate and open transports. -/
 theorem moduleHPrimeOpenMap_pullback_restrict (p : Y ⟶ X) (M : X.Modules)
@@ -145,37 +195,8 @@ theorem moduleHPrimeOpenMap_pullback_restrict (p : Y ⟶ X) (M : X.Modules)
     (Scheme.Modules.restrictAdjunction j).unit.app M
   let φb : M.restrict j ⟶ (Scheme.Modules.pushforward b).obj P :=
     (Scheme.Modules.pullbackPushforwardAdjunction b).unit.app (M.restrict j)
-  let A : X.Opensᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-    Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf X M) n
-  let B : Y.Opensᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-    Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf Y N) n
-  let Q : V.toScheme.Opensᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-    Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf V.toScheme P) n
-  let J : U.toScheme.Opensᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-    Sheaf.cohomologyPresheaf.{u + 1} (moduleAddSheaf U.toScheme (M.restrict j)) n
-  let gp : A ⟶ (Opens.map p.base).op ⋙ B :=
-    zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
-      (moduleCoefficientPullback p (M := M) (N := N) φp) n
-  let ga : B ⟶ (Opens.map a.base).op ⋙ Q :=
-    zariskiCohomologyOpenMap a (moduleAddSheaf Y N) (moduleAddSheaf V.toScheme P)
-      (moduleCoefficientPullback a (M := N) (N := P) φa) n
-  let gj : A ⟶ (Opens.map j.base).op ⋙ J :=
-    zariskiCohomologyOpenMap j (moduleAddSheaf X M)
-      (moduleAddSheaf U.toScheme (M.restrict j))
-      (moduleCoefficientPullback j (M := M) (N := M.restrict j) φj) n
-  let gb : J ⟶ (Opens.map b.base).op ⋙ Q :=
-    zariskiCohomologyOpenMap b (moduleAddSheaf U.toScheme (M.restrict j))
-      (moduleAddSheaf V.toScheme P) (moduleCoefficientPullback b (M := M.restrict j) (N := P) φb) n
-  let kA : (⊤ : V.toScheme.Opens) ⟶ a ⁻¹ᵁ V := eqToHom V.ι_preimage_self.symm
-  let kJ : (⊤ : U.toScheme.Opens) ⟶ j ⁻¹ᵁ U := eqToHom U.ι_preimage_self.symm
-  let t : op ((a ≫ p) ⁻¹ᵁ U) ⟶ op ((b ≫ j) ⁻¹ᵁ U) :=
-    (eqToHom (congrArg (fun f : V.toScheme ⟶ X => f ⁻¹ᵁ U) h.w).symm).op
-  have hc : (gp.app (op U) ≫ ga.app (op V)) ≫ Q.map t =
-      gj.app (op U) ≫ gb.app (op (j ⁻¹ᵁ U)) :=
-    moduleHPrimeOpenMap_comp_congr a b p j h.w φp φa φj φb
-      (Scheme.Modules.cartesianPullbackBaseChangeMate_inv_unit_comp a b p j h M) n (op U)
-  have hk : t ≫ (Opens.map b.base).op.map kJ.op = kA.op := Subsingleton.elim _ _
-  exact paste_native_naturality (Opens.map b.base).op J Q gb
-    (gp.app (op U)) (ga.app (op V)) (gj.app (op U)) kJ.op t kA.op hk hc
+  exact moduleHPrimeOpenMap_comp_congr_top a b p j h.w φp φa φj φb
+    (Scheme.Modules.cartesianPullbackBaseChangeMate_inv_unit_comp a b p j h M)
+    U V.ι_preimage_self U.ι_preimage_self n
 
 end AlgebraicGeometry.Scheme.Cohomology

@@ -43,8 +43,8 @@ proof helpers:
   This run has different output/profiling settings from the isolated module
   comparison, so the wall times are not a controlled speedup ratio. The original
   component equation and its actual rewrite-based quasi-isomorphism consumer
-  both pass. The remaining total-quasi-isomorphism task still takes about
-  40 seconds.
+  both pass. The refactor below addresses the remaining
+  total-quasi-isomorphism task, measured at 42.79 seconds in the follow-up baseline.
 - Explicit objects and a private equality-transport lemma in OpenBaseChange
   reduced its named kernel probe from 52.14 to 21.16 seconds. The adopted module
   passes, and its public `.olean`, IR and C outputs match the original artifacts.
@@ -56,12 +56,15 @@ pass against the fresh producer artifacts. Existing constructors and canonical
 maps are unchanged. Contraction's public `.olean` and runtime outputs also match
 the original artifacts; its helpers change proof implementation.
 
-Broad abstraction was less reliable. A generic-constructor Span candidate
-compiled faster but failed an actual consumer's reduction proof. Narrower
-candidates also failed elaboration or a consumer. Span therefore keeps its
-explicit construction, with three additional checks of the original component
-formula and quasi-isomorphism hypotheses. A fast generic helper alone is not
-evidence that its expensive specialization is fixed.
+Abstraction must preserve the component reduction interface. Span now constructs
+the source-total arrow inside a local constructor over abstract functors and
+only then supplies the concrete Godement functors. The local `let` retains the
+original component formula through beta/zeta reduction. Its naturality proof is
+checked before the Godement objects enter the comparison. A separately applied
+proof helper had instead reintroduced expensive conversion between the
+preserves-zero instance proofs carried by the section isomorphism and freshly
+constructed complex functors. The original component and quasi-isomorphism
+consumers remain the acceptance checks for this boundary.
 
 The full-subcategory boundary in Quillen's `FlasqueThirdSpan` exposed another
 expensive conversion: identifying a lifted functor followed by the inclusion
@@ -78,6 +81,167 @@ profile export adds substantial overhead. These are controlled client results,
 not whole-module speedup or CI resource measurements. The actual changed
 `FlasqueThirdSpan` subsequently compiled in a focused Lake run in 219 seconds,
 with only that leaf rebuilt. Its complete CI memory fit remains unmeasured.
+
+## Current measurements
+
+The first follow-up comparison starts from Aglib
+`55b439b7219f12ad6ff2645b32d9f8b073dd8b28` and changes only
+[Tensor](../Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.lean) and
+[Span](../Aglib/AlgebraicGeometry/Cohomology/Godement/Section/Span.lean) in the
+measured mathematical source. Tensor proves the whiskered quasi-isomorphism
+through a private lemma with abstract functor endpoints. Span uses the local
+constructor described above. Their public types, hypotheses and actual component
+maps are retained, with the standard 200000-heartbeat budget.
+
+| Module | Baseline guarded wall s | Refactored guarded wall s | Baseline / refactored peak group GiB |
+| --- | ---: | ---: | ---: |
+| `Godement.Tensor` | 64.21 | 22.07 | 7.70 / 3.29 |
+| `Godement.Section.Span` | 226.71 | 122.15 | 12.64 / 6.79 |
+
+Tensor's `godementTensorTotalUnit_quasiIso` kernel task falls from 42.79 seconds
+to below the 100 ms display threshold. Span's source-arrow naturality auxiliary
+and constructor similarly fall from 82.72 and 24.06 seconds to below that
+threshold. Tensor's user CPU time falls from 66.73 to 22.38 seconds. The remaining
+displayed Span kernels include `sectionTotalToRepeated_quasiIso` at 32.56 seconds,
+`pushforward_godementTotal_map_quasiIso` at 23.11 seconds and
+`sectionSourceTotalToRepeated_quasiIso` at 21.64 seconds.
+
+These are successful local source compilations with the same pinned dependencies,
+production setup options and launch settings, one guarded frontend, `trace.profiler` at 100 ms,
+and isolated `.olean` outputs. They include imports, checking, linting and output
+serialization, without C generation. Another Quillen build was active on the
+host; these observations are not whole-library or CI speedup measurements.
+Nested and asynchronous profiler intervals overlap and must not be added.
+
+These initial comparisons preceded a correction to the direct `lake env lean`
+resource wrapper. Lake can prepend its compiler directory to `PATH`, bypassing
+a bare wrapper name. The comparisons retain their matched launch conditions,
+but they do not certify propagation of explicit native thread/heap flags.
+The current guard binds the absolute wrapper; subsequent runs verify actual
+`-j` and `-M` arguments separately from parent and process-group limits.
+
+For reproduction after a focused Lake build, use the module's current owned
+`.lake/build/ir/...setup.json`, a fresh receipt and a separate output path:
+
+```sh
+AGLIB_BUILD_THREADS=1 python3 scripts/resource_guard.py --capped-toolchain \
+  --receipt /absolute/fresh/profile.json -- \
+  /usr/bin/time -lp lake env lean \
+  --setup .lake/build/ir/Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.setup.json \
+  -Dtrace.profiler=true -Dtrace.profiler.threshold=100 \
+  -o /absolute/fresh/Tensor.olean \
+  Aglib/AlgebraicGeometry/Cohomology/Godement/Tensor.lean
+```
+
+Compile the changed producers and their actual consumers through the ordinary
+focused build route. `ArchiveGodementClosedSectionSpan` checks the original
+source-arrow component by `rfl`; `Godement.Section.Units` consumes its original
+derived-unit equation. `ArchiveGodementTensor` checks the literal component and
+its rewrite-based quasi-isomorphism proof, and `Godement.Contraction` exercises
+the tensor interface.
+
+The focused rehashed build passes both producers and all four named consumers.
+Units and the archive fixtures were rebuilt against the producer artifacts;
+Contraction retains current cached artifacts under Lake's dependency checks.
+
+`OpenBaseChange` remains a separate bottleneck. A full globally instrumented run
+of the unchanged source reached the default heartbeat limit in three component
+lemmas. That failed profile supplies no successful whole-module baseline and
+does not establish failure of an ordinary build. Use ordinary timed compilation
+or narrower instrumentation to resolve that question; require successful paired
+runs before claiming a module speedup.
+
+## Whole-library pass
+
+The first aggregate pass covers all 1112 production modules and the requested
+positive-test closure, 1136 modules in total, at `55b439b` with the retained
+Tensor/Span changes. The ordinary rehashed build passes in 833.99 seconds with
+6.17 GiB peak process-group RSS. It records 120 timed compilations and reuses or
+restores the remaining artifacts. This is an incremental/cache-restoring build,
+not a cold whole-library timing. The source/configuration snapshot remains fixed
+through the run.
+
+```sh
+AGLIB_BUILD_THREADS=1 python3 scripts/build_serial.py \
+  --receipt-dir /absolute/fresh/aggregate --rehash Aglib AglibTest AglibTest.AuditSupport
+```
+
+Its slowest actual compilations are `Godement.Section.Localization` (78 s),
+`BaseChange.CechComparison` (72 s), `Exact.LongExact` (57 s),
+`Duality.Projective.TwistExt.Linear` (39 s),
+`Affine.FirstCohomologyPushforward` (38 s), `Duality.Projective.Higher` (35 s)
+and `Exact.Euler` (29 s). Cached modules have no new compilation timing in this
+pass; their cost remains unknown here.
+
+The [committed-source CI run](https://github.com/kangxyz/aglib/actions/runs/38864750301)
+at the same base revision supplies 493 successful production-module timings,
+with 619 modules lacking a successful timing row. It fails in
+`Cohomology.Restriction.Cartesian.moduleHPrimeOpenMap_pullback_restrict` with
+kernel excessive memory consumption after a 190-second module task. That
+runner uses four compiler threads, a 12800 MiB native heap limit and a
+13824 MiB process-group RSS limit. This resource-profile failure remains a
+priority despite the successful cached local aggregate.
+
+| Current committed CI priority | Successful task s | Transitive reverse imports |
+| --- | ---: | ---: |
+| `BaseChange.Modules.Map.Open` | 209 | 41 |
+| `Restriction.Open` | 141 | 44 |
+| `MayerVietoris.Scalars` | 131 | 44 |
+| `Modules.Scalars` | 123 | 176 |
+| `Modules.Scalars.Open` | 120 | 59 |
+| `Cech.Comparison` | 101 | 151 |
+
+These CI observations select the next isolated comparisons; they do not measure
+local improvements or complete cold-build time. Broader refactors must preserve
+the original scalar actions, base-change mates and component reductions, then
+repeat their affected consumers and aggregate validation.
+
+The Cartesian proof now proves the top-open pasting law over abstract coefficient
+modules before supplying the original pullback/restriction units. The public
+statement is byte-identical, and the former local 500000-heartbeat allowance is
+removed. In isolated ordinary compilation with observed native `-j4 -M12800`
+and the 13824 MiB process-group bound, the original source exits with a memory
+exception after 133.40 seconds, peaking at 13.15 GiB group RSS. The refactor
+passes in 71.55 seconds at 7.45 GiB with the default 200000-heartbeat budget.
+This establishes bounded compilation success; the failed baseline does not
+provide a successful timing ratio. Actual consumers and aggregate integration
+remain separate checks.
+
+Two module-sheaf proofs also return to the default heartbeat budget. Global
+transport of free generating sections replaces the per-open construction in
+`Modules.BaseChange.Basic.unit_isLocallyFree`; abstract sectionwise formulas
+replace specialized unfolding in
+`Modules.Pullback.OpenRestriction.restrictedPushforwardMap_app`.
+Their former 800000 and 400000 allowances are removed. Matched ordinary source
+compilations with native `-j1 -M24576` fall from 19.67 to 13.53 seconds and from
+22.50 to 20.27 seconds, respectively. The rehashed producer/consumer build passes,
+rebuilding the restriction/tensor consumers; the affine mate remains current
+under Lake's dependency checks. Public statements and actual map definitions
+are retained.
+
+The scalar pass also checks linear-equivalence records over abstract additive
+carriers with the exact original module structures. The retained degree-zero
+constructor in `Modules.Scalars` preserves its canonical additive equivalence;
+its Cech degree-zero and forgetful consumers pass. A refreshed ordinary caller
+control has overlapping CPU measurements, so it does not establish a persistent
+caller regression or a separate caller speedup.
+
+In `MayerVietoris.Scalars`, the same boundary handles the whole-space linear
+equivalence. A second local constructor checks the biproduct comparison over
+abstract module-valued presheaves and their actual connecting map before
+specializing them. Matched ordinary source compilations with native
+`-j1 -M24576` fall from 90.99 to 74.76 seconds, with user CPU time falling from
+87.48 to 67.52 seconds. The exactness proof is already below the diagnostic
+100 ms display threshold and is unchanged. The real producer, degree-zero
+consumer and `Restriction.Top` dependency graph compile; external `rfl` checks
+retain the original top equivalence, connecting map and biproduct components.
+
+A proposed abstract factory for `Modules.Scalars.Open` is rejected. Although
+its own ordinary user CPU time falls by about 9.94 seconds, the unchanged
+Mayer–Vietoris caller gains about 10.22 seconds on the corresponding dependency
+basis. This does not establish a library-wide saving. The original open
+presheaf definition is retained. Constructor abstraction must be measured at
+its actual consumers as well as at the producer.
 
 ## Why a short proof can be expensive
 
@@ -134,6 +298,13 @@ Do not change toolchains based only on an issue title or a historical speedup.
    arguments. Determine whether forming the type or checking the proof causes
    the expensive comparison. Distinguish a large type conversion from a large
    proof term.
+   A theorem-type probe should put the original proposition in a theorem binder,
+   for example `theorem probe (_h : P) : True := True.intro`. Encoding it as
+   `def probe : Prop := P` instead invokes nested-proof abstraction on the value.
+   In the Cartesian investigation that introduced boxed `HasSheafify` proofs and
+   inflated the probe's kernel work. Its corrected theorem-binder check takes
+   7.55 seconds in the kernel; the earlier 73-second definition-value result
+   does not establish intrinsic formation cost of the original theorem type.
 4. Choose one mechanism supported by those diagnostics: matching explicit
    arguments, an explicit equality certificate, a named statement proof, or a
    narrowly factored construction. Preserve mathematical hypotheses, canonical

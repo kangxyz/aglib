@@ -205,10 +205,12 @@ private import Mathlib.Data.Nat.Basic
                 self.write('Aglib/Algebra/A.lean', HEADER + source)
                 self.assertTrue(check_source_policy(self.root))
 
-    def test_documented_local_heartbeat_values_include_zero(self):
+    def test_documented_local_positive_heartbeat_budgets(self):
         for option in ['maxHeartbeats', 'synthInstance.maxHeartbeats',
-                       '«synthInstance».«maxHeartbeats»']:
-            for value in [0, 1, 200000, 400000]:
+                       '«synthInstance».«maxHeartbeats»',
+                       'foo.maxHeartbeats.bar', '«with spaces».maxHeartbeats']:
+            for value in ['1', '200000', '400000', '200_000', '0x10', '0X0_1',
+                          '0b1', '0B0_1', '0o1', '0O0_1']:
                 for comment in ['-- Explanation supplied by the mathematical owner.\n',
                                 '/- Explanation supplied by the mathematical owner. -/\n']:
                     with self.subTest(option=option, value=value, comment=comment):
@@ -216,10 +218,63 @@ private import Mathlib.Data.Nat.Basic
                             f'set_option {option} {value} in\n' + comment + 'def datum := 1\n')
                         self.assertEqual(check_source_policy(self.root), [])
 
+    def test_documented_local_zero_heartbeat_budgets_are_rejected(self):
+        for option in ['maxHeartbeats', 'synthInstance.maxHeartbeats',
+                       '«synthInstance».«maxHeartbeats»',
+                       'foo.maxHeartbeats.bar', '«with spaces».maxHeartbeats']:
+            for value in ['0', '00', '0000', '0_0', '0__0', '0x0', '0x00',
+                          '0X0_0', '0b0', '0B0_0', '0o00', '0O0_0']:
+                for comment in ['-- A local explanation cannot allow unlimited work.\n',
+                                '/- A local explanation cannot allow unlimited work. -/\n']:
+                    with self.subTest(option=option, value=value, comment=comment):
+                        self.write('Aglib/Algebra/A.lean', HEADER +
+                            f'set_option {option} {value} in\n' + comment + 'def datum := 1\n')
+                        errors = check_source_policy(self.root)
+                        self.assertEqual(len(errors), 1, errors)
+                        self.assertIn('positive and finite', errors[0])
+
+    def test_heartbeat_lexical_boundaries(self):
+        self.write('Aglib/Algebra/A.lean', HEADER + '''
+/- set_option maxHeartbeats 0 in /- nested -/ -/
+-- set_option synthInstance.maxHeartbeats 0
+def text := "set_option maxHeartbeats 0 in \\"quoted\\""
+def «set_option maxHeartbeats 0» := 1
+set_option «foo maxHeartbeats».«bar--baz» 0
+def datum := 1
+''')
+        self.assertEqual(check_source_policy(self.root), [])
+        self.write('Aglib/Algebra/A.lean', HEADER + '''
+set_option /- option -/ «with /- spaces -/».«maxHeartbeats» /- budget -/ 0x00 in
+/- Explanation /- nested -/ supplied. -/
+def datum := 1
+''')
+        errors = check_source_policy(self.root)
+        self.assertEqual(len(errors), 1, errors)
+        self.assertIn(':5: heartbeat budgets must be positive and finite', errors[0])
+
+    def test_heartbeat_option_next_to_term_punctuation(self):
+        for value in ['0', '400000']:
+            with self.subTest(value=value):
+                self.write('Aglib/Algebra/A.lean', HEADER +
+                           f'def datum : Nat := (set_option maxHeartbeats {value} in\n'
+                           '-- Explanation for this term.\n1)\n')
+                errors = check_source_policy(self.root)
+                if value == '0':
+                    self.assertTrue(any('positive and finite' in error for error in errors), errors)
+                else:
+                    self.assertEqual(errors, [])
+
+    def test_scope_requires_the_in_keyword(self):
+        self.write('Aglib/Algebra/A.lean', HEADER +
+                   "set_option maxHeartbeats 400000 in'\n"
+                   '-- This is not the scope keyword.\ndef datum := 1\n')
+        errors = check_source_policy(self.root)
+        self.assertTrue(any('declaration-local' in error for error in errors), errors)
+
     def test_heartbeat_rule_matches_name_components_not_substrings(self):
         for option in ['maxHeartbeatsExtra', '«foo.maxHeartbeats»', 'maxRecDepth']:
             with self.subTest(option=option):
-                self.write('Aglib/Algebra/A.lean', HEADER + f'set_option {option} 100\n')
+                self.write('Aglib/Algebra/A.lean', HEADER + f'set_option {option} 0\n')
                 self.assertEqual(check_source_policy(self.root), [])
 
     def test_bounded_below_plus_marker_is_distinct_from_application_plus(self):

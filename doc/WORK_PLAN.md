@@ -1,5 +1,32 @@
 # Migration work and validation boundaries
 
+## Heartbeat and compilation-performance checkpoint
+
+The performance batch starts from `55b439b7219f12ad6ff2645b32d9f8b073dd8b28`.
+Source policy now rejects every zero heartbeat budget, including documented
+declaration-local overrides. Positive overrides remain documented and local;
+the package default remains 200000. Three former allowances return to that
+default in Cartesian restriction, the structure-module local-freeness proof
+and the restricted-pushforward component formula.
+
+Typed helpers and local constructors reduce concrete conversion in Godement
+Tensor/Span, scalar degree-zero comparison and Mayer–Vietoris comparison.
+Public statements, original module structures and canonical component formulas
+are retained. Direct frontend invocation now propagates the selected native
+thread and heap bounds. [PERFORMANCE.md](PERFORMANCE.md) records controlled
+measurements, a rejected cost-transfer experiment and their limits.
+
+All changed Lean leaves pass source compilation. Focused producer/consumer
+builds and literal component checks pass for Tensor/Span, module-sheaf and
+scalar changes. Cartesian also passes ordinary source compilation under the
+CI heap/RSS profile where the original fails; its full consumer integration
+remains part of CI. The current source-only suite passes 108 script tests and
+checks the 1112-module production source basis; the separate native-cache
+transport suite passes ten tests. The earlier cache-restoring aggregate pass
+covers 1136 production/positive modules on its recorded earlier source basis.
+These are scoped results: complete current-tree CI, downstream audit and both
+additional independent local kernel replays are not yet claimed.
+
 ## Cohomology integration checkpoint
 
 The cohomology checkpoint `fae98131ae2f4cf4390e73f435dd1a62bcc5467f`

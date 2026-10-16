@@ -43,12 +43,21 @@ def moduleHPrimeTopLinearEquivOfHom (n : ℕ) :
     letI := moduleCohomologyModuleOfHom X α M n
     Sheaf.H'.{u + 1} (moduleAddSheaf X M) n ⊤ ≃ₗ[R]
       Sheaf.H.{u + 1} (moduleAddSheaf X M) n := by
-  letI := moduleHPrimeModuleOfHom X α M n ⊤
-  letI := moduleCohomologyModuleOfHom X α M n
-  exact {
-    __ := sheafHPrimeTopAddEquiv X (moduleAddSheaf X M) n
-    map_smul' := fun a x =>
-      sheafHPrimeTopAddEquiv_naturality X (moduleScalarOfGlobal X M (α a)) n x }
+  let build (A B : AddCommGrpCat.{u + 1}) (sA : Module R A) (sB : Module R B)
+      (e : A ≃+ B)
+      (h : letI := sA; letI := sB; ∀ (a : R) (x : A), e (a • x) = a • e x) :
+      letI := sA; letI := sB; A ≃ₗ[R] B := by
+    letI := sA
+    letI := sB
+    exact { __ := e, map_smul' := h }
+  refine build
+    (Sheaf.H'.{u + 1} (moduleAddSheaf X M) n ⊤)
+    (AddCommGrpCat.of (Sheaf.H.{u + 1} (moduleAddSheaf X M) n))
+    (moduleHPrimeModuleOfHom X α M n ⊤) (moduleCohomologyModuleOfHom X α M n)
+    (sheafHPrimeTopAddEquiv X (moduleAddSheaf X M) n) ?_
+  dsimp only
+  intro a x
+  exact sheafHPrimeTopAddEquiv_naturality X (moduleScalarOfGlobal X M (α a)) n x
 
 /-- The signed native Mayer–Vietoris connecting map, retaining the structural scalars. -/
 def moduleMayerVietorisDelta (U V : X.Opens) (n : ℕ) :
@@ -94,35 +103,67 @@ def moduleMayerVietorisSequenceForgetIso (U V : X.Opens) (n : ℕ) :
         forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1} ≅
       (Opens.mayerVietorisSquare U V).sequence (moduleAddSheaf X M) n (n + 1) rfl := by
   let G := forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1}
-  let P := moduleHPrimePresheaf X α M n
-  let Q := moduleHPrimePresheaf X α M (n + 1)
-  refine isoMk₅ (Iso.refl _) (G.mapBiprod (P.obj (op U)) (P.obj (op V)))
-    (Iso.refl _) (Iso.refl _) (G.mapBiprod (Q.obj (op U)) (Q.obj (op V)))
-    (Iso.refl _) ?_ ?_ ?_ ?_ ?_
-  · erw [Category.id_comp]
-    exact biprod.map_lift_mapBiprod G _ _ _ _
-  · erw [Category.comp_id]
-    symm
-    change (G.mapBiprod (P.obj (op U)) (P.obj (op V))).hom ≫
-      biprod.desc (G.map (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
-        (-(G.map (P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))) =
-      G.map (biprod.desc (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
-        (-(P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))
-    rw [← G.map_neg]
-    exact biprod.mapBiprod_hom_desc G _ _ _ _
-  · erw [Category.id_comp, Category.comp_id]
-    rfl
-  · erw [Category.id_comp]
-    exact biprod.map_lift_mapBiprod G _ _ _ _
-  · erw [Category.comp_id]
-    symm
-    change (G.mapBiprod (Q.obj (op U)) (Q.obj (op V))).hom ≫
-      biprod.desc (G.map (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
-        (-(G.map (Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))) =
-      G.map (biprod.desc (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
-        (-(Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))
-    rw [← G.map_neg]
-    exact biprod.mapBiprod_hom_desc G _ _ _ _
+  -- Build the biproduct comparison before specializing the two cohomology presheaves.
+  let build
+      (P Q : X.Opensᵒᵖ ⥤ ModuleCat.{u + 1} R)
+      (d : P.obj (op (U ⊓ V)) ⟶ Q.obj (op (U ⊔ V))) :
+      mk₅
+        (biprod.lift
+          (P.map (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op)
+          (P.map (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op))
+        (biprod.desc
+          (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+          (-(P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))
+        d
+        (biprod.lift
+          (Q.map (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op)
+          (Q.map (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op))
+        (biprod.desc
+          (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+          (-(Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))) ⋙ G ≅
+      mk₅
+        (biprod.lift
+          (G.map (P.map (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op))
+          (G.map (P.map (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op)))
+        (biprod.desc
+          (G.map (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
+          (-(G.map (P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))))
+        (G.map d)
+        (biprod.lift
+          (G.map (Q.map (homOfLE (show U ≤ U ⊔ V from le_sup_left)).op))
+          (G.map (Q.map (homOfLE (show V ≤ U ⊔ V from le_sup_right)).op)))
+        (biprod.desc
+          (G.map (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
+          (-(G.map (Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))) := by
+    refine isoMk₅ (Iso.refl _) (G.mapBiprod (P.obj (op U)) (P.obj (op V)))
+      (Iso.refl _) (Iso.refl _) (G.mapBiprod (Q.obj (op U)) (Q.obj (op V)))
+      (Iso.refl _) ?_ ?_ ?_ ?_ ?_
+    · erw [Category.id_comp]
+      exact biprod.map_lift_mapBiprod G _ _ _ _
+    · erw [Category.comp_id]
+      symm
+      change (G.mapBiprod (P.obj (op U)) (P.obj (op V))).hom ≫
+        biprod.desc (G.map (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
+          (-(G.map (P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))) =
+        G.map (biprod.desc (P.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+          (-(P.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))
+      rw [← G.map_neg]
+      exact biprod.mapBiprod_hom_desc G _ _ _ _
+    · erw [Category.id_comp, Category.comp_id]
+      rfl
+    · erw [Category.id_comp]
+      exact biprod.map_lift_mapBiprod G _ _ _ _
+    · erw [Category.comp_id]
+      symm
+      change (G.mapBiprod (Q.obj (op U)) (Q.obj (op V))).hom ≫
+        biprod.desc (G.map (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op))
+          (-(G.map (Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op))) =
+        G.map (biprod.desc (Q.map (homOfLE (show U ⊓ V ≤ U from inf_le_left)).op)
+          (-(Q.map (homOfLE (show U ⊓ V ≤ V from inf_le_right)).op)))
+      rw [← G.map_neg]
+      exact biprod.mapBiprod_hom_desc G _ _ _ _
+  exact build (moduleHPrimePresheaf X α M n) (moduleHPrimePresheaf X α M (n + 1))
+    (moduleMayerVietorisDelta X α M U V n)
 
 /-- Exactness of the original native Mayer–Vietoris sequence over the structural ring. -/
 theorem moduleMayerVietorisSequence_exact (U V : X.Opens) (n : ℕ) :

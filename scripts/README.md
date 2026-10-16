@@ -8,7 +8,7 @@ Run these tools from the package root. Production Lean modules do not depend on
 ## Check entry points
 
 `check.sh --source-only` verifies generated enrollment, source layout, proof-token
-policy, scoped heartbeat modifications with explanatory comments, and the Python regression suite. Run it
+policy, positive finite scoped heartbeat budgets with explanatory comments, and the Python regression suite. Run it
 on a settled source tree; implementation authors and import generation share a
 serial integration boundary.
 
@@ -91,6 +91,22 @@ otherwise it invokes one ordinary Lake build graph for the requested targets.
 Lake resolves and schedules the dependency graph once, with its parent worker
 limited to one and compiler children receiving the requested internal parallelism.
 The pinned Lake has no `-j` or maximum-jobs CLI flag.
+
+`resource_guard.py --capped-toolchain` uses the same selected child-thread count
+and keeps the parent `LEAN_NUM_THREADS=1`. It binds the absolute capped compiler
+for direct `lean ARGUMENTS` and `lake env lean ARGUMENTS` commands, including an
+absolute Lake launcher and an optional `/usr/bin/time -lp` prefix. This binding
+is necessary because Lake's augmented `PATH` can bypass a bare wrapper name.
+Arguments after `lean` are preserved. Other Lake commands retain their native
+compiler selection. Unsupported direct Lake-env, timing, absolute-Lean, shell
+and `env` wrapper forms fail before launch rather than being interpreted.
+Other launcher programs remain RSS/concurrency guarded; indirect children that
+recompute executable paths, including the local Python style launcher, need
+their own explicit native-cap binding. A capped `PATH` alone is not evidence
+that such nested frontend commands received native thread or memory flags.
+The guard receipt records `native_build_threads` separately from the one-thread
+parent and the one-active-frontend bound. The exact cache bootstrap exception
+retains one child thread and its existing fanout/RSS policy.
 
 The no-build probe writes its full output to `cached-check.log` and prints one
 cache-hit or cache-miss summary. Only pinned Lake's exit code 3 accompanied
@@ -226,7 +242,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |
 | `check_placeholders.py` | Rejects proof placeholders/custom-axiom tokens outside isolated negative controls; comments and strings are masked. Accepts `--root PATH`. |
-| `check_source_policy.py` | Follows pinned Mathlib: any option with a `maxHeartbeats` name component, including `synthInstance.maxHeartbeats`, must be scoped to one declaration with an explanatory comment after `in`. Documented local `0` is permitted. Other fixed source safety remains enforced; comment quality and budget necessity remain author judgments. Accepts `--root PATH`. |
+| `check_source_policy.py` | Any option with an exact `maxHeartbeats` name component, including `synthInstance.maxHeartbeats`, must use a positive finite budget scoped to one declaration with an explanatory comment after `in`. Aglib rejects `0` (unlimited), including documented local zero budgets; this is stricter than pinned Mathlib. Other fixed source safety remains enforced; comment quality and budget necessity remain author judgments. Accepts `--root PATH`. |
 | `check_compiled_inventory.py` | Matches the root-owned compiled replay view to current source; rejects deleted/old-prefix artifacts and negative controls in the positive view. Accepts `--root PATH`. |
 | `check_negative_controls.py` | Compiles isolated control data in a temporary overlay and requires the specific imported/current-module axiom rejection. Setup errors cannot count as rejection. |
 | `run_style_linter.py` | Runs the exact pinned style driver through a temporary optional-module overlay. `--check-prerequisites --sysroot PATH` inspects direct driver/source prerequisites without Lake, compilation, or writes. |
@@ -257,8 +273,9 @@ through their current owner rather than replaying this helper.
 
 Lean's default `maxHeartbeats` remains 200000, matching the pinned Mathlib lakefile's
 choice not to override it. The option-name component rule also covers
-`synthInstance.maxHeartbeats`; it does not impose a separate prohibition on local
-`0`. A comment before the option alone does not replace the comment after `in`
+`synthInstance.maxHeartbeats`. Aglib additionally requires positive finite budgets:
+`0` means unlimited and is forbidden even in a documented local scope. A comment
+before the option alone does not replace the comment after `in`
 required by the pinned deprecated-syntax linter. This infrastructure change does
 not introduce or increase a production proof budget.
 

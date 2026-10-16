@@ -33,6 +33,29 @@ def frontend_args(lean='lean'):
     return [lean, '-j1', '-M' + str(limits()['lean_memory_mb'])]
 
 
+def capped_command(command, environment):
+    """Bind supported direct frontends; Lake's augmented PATH can bypass our wrapper."""
+    command = list(command)
+    executable = Path(command[0]).name
+    if executable == 'time':
+        if command[:2] != ['/usr/bin/time', '-lp'] or len(command) < 3:
+            raise ValueError('Capped timing supports only /usr/bin/time -lp COMMAND')
+        if Path(command[2]).name not in {'lake', 'lean'}:
+            raise ValueError('Capped timing requires a direct Lean or Lake command')
+        return command[:2] + capped_command(command[2:], environment)
+    if executable in {'sh', 'bash', 'zsh', 'dash', 'fish', 'env'}:
+        raise ValueError('Capped frontends require a direct command, not a shell or env wrapper')
+    if executable == 'lean':
+        if command[0] != 'lean':
+            raise ValueError('Use bare lean to select the capped pinned compiler')
+        return [environment['LEAN'], *command[1:]]
+    if executable == 'lake' and 'env' in command[1:]:
+        if command[1:3] != ['env', 'lean']:
+            raise ValueError('Capped Lake env supports only lake env lean ARGUMENTS')
+        return command[:2] + [environment['LEAN']] + command[3:]
+    return command
+
+
 def group_processes(group):
     result = subprocess.run(['ps', '-eo', 'pid=,pgid=,rss=,comm='],
                             capture_output=True, text=True, check=True)
@@ -161,7 +184,7 @@ def main():
     parser.add_argument('--bootstrap-cache', action='store_true',
                         help='allow cache-tool compiler fanout only for exact lake exe cache get; RSS cap stays')
     parser.add_argument('--capped-toolchain', action='store_true',
-                        help='supply a temporary compiler wrapper enforcing native -j1/-M caps')
+                        help='supply selected native -j/-M caps for supported direct frontends')
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     command = args.command[1:] if args.command[:1] == ['--'] else args.command
@@ -174,9 +197,12 @@ def main():
         budget['max_active_lean'] = None
     try:
         if args.bootstrap_cache or args.capped_toolchain:
-            from build_serial import capped_toolchain
-            with capped_toolchain(Path.cwd()) as env:
-                return run(command, receipt=args.receipt, budget=budget, env=env)
+            from build_serial import build_threads, capped_toolchain
+            threads = 1 if args.bootstrap_cache else build_threads()
+            budget['native_build_threads'] = threads
+            with capped_toolchain(Path.cwd(), threads=threads) as env:
+                bounded = command if args.bootstrap_cache else capped_command(command, env)
+                return run(bounded, receipt=args.receipt, budget=budget, env=env)
         return run(command, receipt=args.receipt, budget=budget)
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         print('Resource guard unavailable: ' + str(error), file=sys.stderr)

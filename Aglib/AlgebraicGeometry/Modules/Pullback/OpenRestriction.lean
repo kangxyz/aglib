@@ -138,25 +138,36 @@ def restrictedPushforwardMap (N : X.Modules) :
       ((Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι).unit.app N) ≫
       (pushforwardSquare f U).hom.app _)
 
-set_option maxHeartbeats 400000 in
--- The sectionwise restriction/direct-image comparison uses 256000 heartbeats
--- after the comparison is unfolded separately.
+private theorem restrictHomEquiv_symm_app
+    {Z T : Scheme.{u}} (j : Z ⟶ T) [IsOpenImmersion j]
+    {M : T.Modules} {P : Z.Modules}
+    (a : M ⟶ (Scheme.Modules.pushforward j).obj P) (V : Z.Opens) :
+    (((Scheme.Modules.restrictAdjunction j).homEquiv M P).symm a).app V =
+      a.app (j ''ᵁ V) ≫
+        P.presheaf.map (eqToHom (j.preimage_image_eq V).symm).op := by
+  rw [Adjunction.homEquiv_counit, Scheme.Modules.Hom.comp_app,
+    Scheme.Modules.restrictAdjunction_counit_app_app]
+  rfl
+
+private theorem pushforwardSquare_hom_app_app
+    (M : (f ⁻¹ᵁ U).toScheme.Modules) (W : Y.Opens) :
+    ((pushforwardSquare f U).hom.app M).app W =
+      M.presheaf.map (eqToHom (congrArg
+        (fun h : (f ⁻¹ᵁ U).toScheme ⟶ Y => h ⁻¹ᵁ W)
+        (morphismRestrict_ι f U))).op := by
+  dsimp only [pushforwardSquare, Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app,
+    Scheme.Modules.Hom.comp_app]
+  simp only [Scheme.Modules.pushforwardComp_hom_app_app,
+    Scheme.Modules.pushforwardComp_inv_app_app,
+    Scheme.Modules.pushforwardCongr_hom_app_app, Category.id_comp, Category.comp_id]
+
 theorem restrictedPushforwardMap_app (N : X.Modules) (V : U.toScheme.Opens) :
     (restrictedPushforwardMap f U N).app V =
       N.presheaf.map (eqToHom (image_morphismRestrict_preimage f U V)).op := by
-  unfold restrictedPushforwardMap
-  rw [Adjunction.homEquiv_counit]
-  simp only [Functor.map_comp, Scheme.Modules.Hom.comp_app,
-    Scheme.Modules.restrictAdjunction_counit_app_app]
+  rw [restrictedPushforwardMap, restrictHomEquiv_symm_app,
+    Scheme.Modules.Hom.comp_app, Scheme.Modules.pushforward_map_app,
+    Scheme.Modules.restrictAdjunction_unit_app_app, pushforwardSquare_hom_app_app]
   rw [Category.assoc]
-  change ((Scheme.Modules.pushforward f).map
-      ((Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι).unit.app N)).app (U.ι ''ᵁ V) ≫
-    ((pushforwardSquare f U).hom.app _).app (U.ι ''ᵁ V) ≫ _ = _
-  dsimp only [pushforwardSquare, Iso.trans_hom, Iso.symm_hom, NatTrans.comp_app,
-    Scheme.Modules.Hom.comp_app]
-  simp only [Scheme.Modules.pushforward_map_app, Scheme.Modules.restrictAdjunction_unit_app_app,
-    Scheme.Modules.pushforwardComp_hom_app_app, Scheme.Modules.pushforwardComp_inv_app_app,
-    Scheme.Modules.pushforwardCongr_hom_app_app, Category.id_comp, Category.comp_id]
   simp only [Scheme.Modules.pushforward_obj_presheaf_map, Scheme.Modules.restrict_map]
   change N.presheaf.map _ ≫ N.presheaf.map _ ≫ N.presheaf.map _ = N.presheaf.map _
   rw [← Functor.map_comp, ← Functor.map_comp]
