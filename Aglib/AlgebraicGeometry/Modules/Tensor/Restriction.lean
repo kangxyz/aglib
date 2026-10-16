@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
+public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
+public import Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
 
 /-!
@@ -31,19 +33,6 @@ open AlgebraicGeometry.Scheme.Modules
 
 namespace AlgebraicGeometry.Scheme.Modules
 variable {X Y : Scheme.{u}} (j : X ⟶ Y) [IsOpenImmersion j]
-/-- The actual inverse section-ring maps of an open immersion. -/
-def restrictionRingHom : X.sheaf ⟶
-    (j.opensFunctor.sheafPushforwardContinuous CommRingCat
-      (Opens.grothendieckTopology X)
-      (Opens.grothendieckTopology Y)).obj Y.sheaf :=
-  ⟨{ app U := (j.appIso U.unop).inv
-     naturality := fun {_ _} f => j.appIso_inv_naturality f }⟩
-/-- The original restriction ring morphism is invertible on every open. -/
-instance restrictionRingHom_isIso : IsIso (restrictionRingHom j).hom := by
-  rw [NatTrans.isIso_iff_isIso_app]
-  intro U
-  change IsIso (j.appIso U.unop).inv
-  infer_instance
 /-- The original sheaf tensor commutes with actual open restriction. -/
 def tensorRestrictionIso (M N : Y.Modules) :
     (moduleTensorLeftFunctor X (M.restrict j)).obj (N.restrict j) ≅
@@ -79,4 +68,38 @@ theorem tensorRestrictionIso_unit (M N : Y.Modules) :
           (((SheafOfModulesOfCommRing.toPresheaf Y.sheaf).obj M) ⊗
               ((SheafOfModulesOfCommRing.toPresheaf Y.sheaf).obj N))) :=
   SheafOfModulesOfCommRing.tensorPushforwardIso_unit (restrictionRingHom j) M N
+end AlgebraicGeometry.Scheme.Modules
+
+namespace AlgebraicGeometry.Scheme.Modules
+open Opposite TopologicalSpace
+variable (X : Scheme.{u})
+
+/-- The sectionwise tensor comparison on the site over an open. -/
+def tensorPresheafOverIso (M N : SheafOfModules.{u} X.ringCatSheaf) (U : X.Opens) :
+    (_root_.PresheafOfModules.Restriction.restrictPresheaf X.ringCatSheaf U).obj
+      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val) ≅
+    PresheafOfModulesOfCommRing.Monoidal.tensorObj
+      (R := (Over.forget U).op ⋙ X.presheaf) (M.over U).val (N.over U).val :=
+  _root_.PresheafOfModules.isoMk (fun _ => Iso.refl _) (by intros; rfl)
+
+/-- Tensor two supplied unit trivializations on the same open. -/
+def tensorOverTrivialization (M N : SheafOfModules.{u} X.ringCatSheaf) (U : X.Opens)
+    (e : M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U))
+    (f : N.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U)) :
+    (tensorSheaf X M N).over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U) := by
+  let S := _root_.PresheafOfModules.sheafification (𝟙 (X.ringCatSheaf.over U).obj)
+  let e' := (SheafOfModules.forget (X.ringCatSheaf.over U)).mapIso e
+  let f' := (SheafOfModules.forget (X.ringCatSheaf.over U)).mapIso f
+  let t := CategoryTheory.MonoidalCategory.tensorIso
+    (C := PresheafOfModulesOfCommRing.{u} ((Over.forget U).op ⋙ X.presheaf)) e' f'
+  let l := CategoryTheory.MonoidalCategory.leftUnitor
+    (C := PresheafOfModulesOfCommRing.{u} ((Over.forget U).op ⋙ X.presheaf))
+    (SheafOfModules.unit (X.ringCatSheaf.over U)).val
+  exact (_root_.PresheafOfModules.Restriction.sheafificationOverIso X.ringCatSheaf U _).symm ≪≫
+    S.mapIso (tensorPresheafOverIso X M N U) ≪≫ S.mapIso t ≪≫ S.mapIso l ≪≫
+    asIso
+      ((_root_.PresheafOfModules.sheafificationAdjunction
+        (𝟙 (X.ringCatSheaf.over U).obj)).counit.app
+      (SheafOfModules.unit (X.ringCatSheaf.over U)))
+
 end AlgebraicGeometry.Scheme.Modules

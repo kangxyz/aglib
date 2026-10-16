@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.RingTheory.Etale.FormalProperties
-public import Aglib.AlgebraicGeometry.Stalk.GenericFiber
+public import Aglib.AlgebraicGeometry.Stalk.FlatBaseChange
 public import Mathlib.AlgebraicGeometry.Stalk
 public import Mathlib.AlgebraicGeometry.Morphisms.Etale
 
@@ -45,42 +45,6 @@ theorem etale_stalkMap_formallyEtale
       RingHom.FormallyEtale.localRingHom rfl (RingHom.Etale.formallyEtale hf))
     inferInstance z
 
-/-- The actual canonical target localization is flat. -/
-theorem fromSpecStalk_flat (X : Scheme.{u}) (x : X) : Flat (X.fromSpecStalk x) := by
-  obtain ⟨U, hU, hxU, _⟩ := Opens.isBasis_iff_nbhd.mp X.isBasis_affineOpens
-    (Opens.mem_top x)
-  rw [← hU.fromSpecStalk_eq_fromSpecStalk hxU]
-  letI : Algebra Γ(X, U) (X.presheaf.stalk x) := (X.presheaf.germ U x hxU).hom.toAlgebra
-  letI := hU.isLocalization_stalk ⟨x, hxU⟩
-  letI : Module.Flat Γ(X, U) (X.presheaf.stalk x) :=
-    IsLocalization.flat (X.presheaf.stalk x) (hU.primeIdealOf ⟨x, hxU⟩).asIdeal.primeCompl
-  haveI : Flat (Spec.map (X.presheaf.germ U x hxU)) := by
-    apply Flat.SpecMap_iff.mpr
-    exact RingHom.flat_algebraMap_iff.mpr inferInstance
-  dsimp only [IsAffineOpen.fromSpecStalk]
-  infer_instance
-
-/-- A flat preimmersion base change preserves the actual local ring map.
-This is the same commutative stalk square as for open immersions. -/
-def stalkMapIsoOfIsPullbackOfFlatOfPreimmersion {P Z Y X : Scheme.{u}}
-    {fst : P ⟶ Z} {snd : P ⟶ Y} {f : Z ⟶ X} {g : Y ⟶ X}
-    (h : IsPullback fst snd f g) [Flat g] [IsPreimmersion g]
-    (p : P) (z : Z := fst p) (hz : fst p = z := by cat_disch) :
-    Arrow.mk (f.stalkMap z) ≅ Arrow.mk (snd.stalkMap p) := by
-  haveI : Flat fst := MorphismProperty.of_isPullback h.flip ‹_›
-  haveI : IsPreimmersion fst := MorphismProperty.of_isPullback h.flip ‹_›
-  haveI : IsIso (g.stalkMap (snd p)) :=
-    GenericFiber.stalkMap_isIso_of_flat_of_surjectiveOnStalks g (snd p)
-  haveI : IsIso (fst.stalkMap p) :=
-    GenericFiber.stalkMap_isIso_of_flat_of_surjectiveOnStalks fst p
-  exact Arrow.isoMk' _ _
-    (TopCat.Presheaf.stalkCongr _ (.of_eq <| by rw [← hz, ← Scheme.Hom.comp_apply, h.w]; simp) ≪≫
-      asIso (g.stalkMap (snd p)))
-    (TopCat.Presheaf.stalkCongr _ (.of_eq <| by rw [hz]) ≪≫ asIso (fst.stalkMap p))
-    (by
-      subst hz
-      simp [← Scheme.Hom.stalkMap_comp, ← Scheme.Hom.stalkMap_comp,
-        Scheme.Hom.stalkMap_congr_hom _ _ h.w])
 
 /-- Actual etaleness after target-stalk base change makes the original stalk
 map formally etale. No flatness assumption on the original morphism is used. -/
@@ -97,10 +61,11 @@ theorem stalkMap_formallyEtale_of_etale_stalkBaseChange
     change (lift ≫ Limits.pullback.fst f g) (IsLocalRing.closedPoint _) = z
     rw [Limits.pullback.lift_fst]
     exact Scheme.fromSpecStalk_closedPoint
-  letI : Flat g := fromSpecStalk_flat X (f z)
+  letI : Flat g := Scheme.fromSpecStalk_flat X (f z)
   letI : IsPreimmersion g := inferInstanceAs (IsPreimmersion (X.fromSpecStalk (f z)))
   letI : Etale (Limits.pullback.snd f g) := h
-  let e := stalkMapIsoOfIsPullbackOfFlatOfPreimmersion (IsPullback.of_hasPullback f g) p z hp
+  let e := Scheme.Hom.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion
+    (IsPullback.of_hasPullback f g) p z hp
   exact (RingHom.FormallyEtale.respectsIso.arrow_mk_iso_iff e).mpr
     (etale_stalkMap_formallyEtale (Limits.pullback.snd f g) p)
 

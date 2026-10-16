@@ -2,6 +2,39 @@
 
 Aglib develops general algebraic geometry and related mathematics. Its remit includes general scheme, sheaf, cohomological and derived theory, together with the commutative algebra, category theory and homological algebra that support it. A result may belong here independently of whether Quillen or R5Lab currently consumes it. A statement's complete hypotheses, objects and dependencies determine its owner, including when it was extracted from a curve or K-theory source.
 
+## Migration criterion
+
+Select existing general theory by its actual mathematical interface, not by its
+source directory, its present consumer, or how easily its imports can be moved.
+Noetherian, qcqs, proper, smooth, flat, finite-presentation and intrinsic local
+Cartier hypotheses are normal general-theory conditions. They do not turn a
+result into a curve or K-theory application. General coherent and perfect-complex
+theory, derived categories, descent, normalization and relevant algebraic and
+homological foundations are within scope.
+
+If a general producer imports a downstream helper, isolate the necessary general
+helper closure. Split mixed files by declaration. An exact existing Mathlib or
+Aglib interface should be reused, with consumers retargeted and duplicate
+implementations removed. A stronger statement needing a new proof is a separate
+obligation; a migration ledger must not count it as already implemented.
+
+Standard functorial geometric constructions are eligible independently of their
+current applications. This includes spectra of polynomial/Laurent algebras and
+an algebraic simplex family over arbitrary coefficient rings. Intrinsic curve,
+genus, degree, Riemann--Roch, nodal-resolution and arithmetic endpoints remain
+downstream in this migration. K/G/Q/S, spectrum and Waldhausen/K-map models remain
+downstream even when parameterized by arbitrary schemes. Their general geometric,
+exact and homological prerequisites are selected independently.
+
+A requested source-tree review records every file's disposition: migrate, split,
+reuse upstream, retain an application, or aggregate. Preserve exact source hashes,
+selected statements and the mathematical reason. Unreviewed or unresolved rows
+remain open; completing a dependency-selected subset does not establish that all
+in-scope general theory in the source library has been migrated. A definition or
+conditional interface is recorded separately from a theorem supplying it.
+
+## Mathematical families
+
 The ring layer contains actual algebra descent data/equalizers, finite-field models, nilpotent purely inseparable overlaps, integral closedness, regular-local parameters/domain/normality, prime heights, tensor-domain results, support, prime filtrations, localized length and scalar Euler expressions. Its generic scalar homology, fraction and filtration prerequisites sit in their own lower subjects; the multiplicity layer consumes them.
 
 The categorical and algebraic layers contain selected exact structures, exact functors, abelian full subcategories, small models, finite modules, scalar restriction/localization, supplied injective resolutions, Ext-map comparison and first-quadrant total complexes. Topological sheaves and generic site Cech interfaces lie below scheme-specialized cohomology.
@@ -22,4 +55,4 @@ The general source surface also includes generic site/scheme tensor, coefficient
 
 Four earlier general cuts from application owners supply qcqs affine induction, the actual polynomial zero section, good-truncation factorization in an arbitrary abelian category with original scheme specialization, and cartesian opens-range equality. Selected lower prerequisites also supply the generic identity-cone functor, exact-functor derived homology, locally split tensor exactness, ordinary module-complex restriction/tensor/acyclicity, actual Godement carrier/unit and open-span comparisons, and D+ open-cover reflection. Their original containing application modules are not imported wholesale. Remaining applications of perfect complexes to projective-line constructions, Waldhausen models and K-theory stay downstream. Godement categorical total exactness is valid on ordinary complexes; augmentation/QI/computational derived statements retain their own bounds and flasque/unit conditions.
 
-The [finite-etale family](../Aglib/AlgebraicGeometry/FiniteEtale/README.md) includes empty covers and uses the actual `Over` objects, fibre maps and base-change comparisons. Finiteness of field-valued lifts through a finite morphism needs only an arbitrary field and permits an empty lift set. [Unramified algebra rigidity](../Aglib/RingTheory/Unramified/README.md) and [section rigidity](../Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/README.md) give equality of actual algebra and scheme maps under their distinct hypotheses, stated in the family guides. Their specialized pointed, inertia and cohomological application consumers remain downstream.
+The [finite-etale family](../Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/README.md) includes empty covers and uses the actual `Over` objects, fibre maps and base-change comparisons. Finiteness of field-valued lifts through a finite morphism needs only an arbitrary field and permits an empty lift set. [Unramified algebra rigidity](../Aglib/RingTheory/Unramified/README.md) and [section rigidity](../Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/README.md) give equality of actual algebra and scheme maps under their distinct hypotheses, stated in the family guides. Their specialized pointed, inertia and cohomological application consumers remain downstream.

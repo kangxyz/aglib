@@ -11,3 +11,13 @@ The focused imports `Aglib.Algebra.Homology.CochainComplex.KernelSequence`, `.De
 [Augmentation](Augmentation.lean), imported as `Aglib.Algebra.Homology.CochainComplex.Augmentation`, owns `CochainComplex.quasiIsoAtZero_of_augmentation_exact`. In an arbitrary abelian category, take an actual augmentation from a degree-zero single to an ℕ-indexed cochain complex. If its degree-zero component is monic and the augmented short complex in degrees zero and one is exact, the map is a quasi-isomorphism at degree zero. The conclusion concerns that degree; no higher-degree acyclicity is assumed or supplied. The scheme Cech comparison is a consumer of this category-generic criterion.
 
 The [stupid truncation layers](../Embedding/StupidTrunc/README.md) use degreewise splitting. The [flasque complex calculation](../../../AlgebraicGeometry/Cohomology/Flasque/README.md) uses kernel sequences and cone acyclicity. These generic complex interfaces precede their scheme-specialized consumers.
+
+[OppositeQuasiIso](OppositeQuasiIso.lean) preserves actual quasi-isomorphisms
+under the two integer-negation reindexings and the inverse opposite cochain
+equivalence, without a term bound. [Cycles](Cycles.lean) retains native cycles,
+their actual inclusions and differential lifts. An exact next degree gives a
+short exact cycle sequence; kernel closure descends from an explicit upper bound
+in an acyclic complex. An additive functor with short-exact mapped cycle
+sequences has an acyclic image, without an ambient exactness premise.
+The [bounded-above family](BoundedAbove/README.md) supplies the actual full
+subcategory, projective models and genuine comparisons up to chain homotopy.

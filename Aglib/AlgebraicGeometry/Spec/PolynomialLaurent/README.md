@@ -1,0 +1,13 @@
+# Polynomial–Laurent spectra, relative maps and zero section
+
+[Basic](Basic.lean), imported as `Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Basic`, constructs the actual polynomial/Laurent spectra, structural projections, specified open-range maps and Laurent coordinate unit. [Units](Units.lean) identifies the actual global unit with its coefficient and variable formulas.
+
+[Relative](Relative.lean) packages relative product functors over the universe-lifted integer spectrum on arbitrary quasi-compact base schemes, which need not be affine. Morphisms in that full quasi-compact category are unrestricted. [BaseChange](BaseChange.lean) proves the actual scalar/spectrum comparison and naturality of the specified plus/minus maps. The lower [algebra under-category squares](../../../Algebra/Polynomial/Laurent/README.md) and [coefficient pullbacks](../../BaseChange/Coefficients/README.md) fix these maps.
+
+[ZeroSection](ZeroSection.lean) gives `Scheme.PolynomialLaurent.polynomialZeroSection`: the spectrum map of polynomial evaluation at zero. `polynomialZeroSection_projection` proves its composite with the actual polynomial projection is the identity. The coefficient ring is an arbitrary commutative ring; no field or Noetherian premise is added to this selected construction.
+
+[Coordinates](Coordinates.lean), imported as `Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Coordinates`, defines `Scheme.PolynomialLaurent.polynomialGlobalCoordinate`. `polynomialGlobalCoordinate_original` identifies it with `Polynomial.X` under the affine global-sections isomorphism. Its pullback along `laurentPlus` is the existing `laurentGlobalUnit`; its pullback along `laurentMinus` is that unit's inverse, by `polynomialGlobalCoordinate_laurentPlus` and `polynomialGlobalCoordinate_laurentMinus`. All three statements hold for every commutative ring, including the zero ring.
+
+[ProductInterchange](ProductInterchange.lean), imported as `Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.ProductInterchange`, specializes [integer-base interchange](../../Products/README.md) in `Scheme.PolynomialLaurent.Relative`. The four equations `qcBaseProductSwapIso_plus_first`, `qcBaseProductSwapIso_minus_first`, `qcBaseProductSwapIso_plus_second` and `qcBaseProductSwapIso_minus_second` commute the actual `plus` or `minus` transformation with interchange in either factor. They retain `QuasiCompact q` for the additional factor map `q : T ⟶ integerBase` and take an actual quasi-compact scheme `X`.
+
+Consumers are actual scheme/coefficient base change and projection/section normalization. The guide does not import the original Bass/projective-line/perfect-complex application containing the zero-section source range.

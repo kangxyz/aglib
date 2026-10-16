@@ -123,7 +123,7 @@ private import Mathlib.Data.Nat.Basic
     def test_prohibited_application_families(self):
         for name in ['Curves', 'P1', 'Genus', 'Degree', 'RiemannRoch', 'KTheory',
                      'GTheory', 'QConstruction', 'SConstruction', 'Plus', 'Bass',
-                     'Spectra', 'PerfectComplexes']:
+                     'Spectra']:
             with self.subTest(name=name):
                 self.write('Aglib/Algebra/A.lean',
                     'module\npublic import Aglib.' + name + '.Bad\n')

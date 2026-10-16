@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.TensorPushforward
+public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.FiniteLocallyFree
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/VectorBundle/DerivedProjectionFormula.lean` at LOCAL
@@ -39,16 +40,6 @@ namespace AlgebraicGeometry.Scheme.Modules
 local instance derivedProjectionStandardDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) (E : Y.Modules) [IsFiniteLocallyFree Y E]
-/-- The original ordinary projection formula as an actual natural isomorphism. -/
-def projectionFormulaNatIso :
-    Scheme.Modules.pushforward f ⋙ moduleTensorLeftFunctor Y E ≅
-      moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E) ⋙
-        Scheme.Modules.pushforward f :=
-  NatIso.ofComponents (projectionFormulaIso f E)
-    (fun g => projectionFormulaMap_naturality f E g)
-/-- Each forward component is literally the original ordinary projection-formula arrow. -/
-theorem projectionFormulaNatIso_hom_app (M : X.Modules) :
-    (projectionFormulaNatIso f E).hom.app M = projectionFormulaMap f E M := rfl
 /-- The canonical tensor/direct-image derived comparison. -/
 def tensorPushforwardDerivedCompIso :
     (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E) ⋙

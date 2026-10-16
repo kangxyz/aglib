@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso
-public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso
+public import Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementWeakTransformation.lean` at LOCAL Quillen

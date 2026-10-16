@@ -1,7 +1,5 @@
-# Open restriction, sections and extension by zero
+# Ordinary open restriction and sheafification
 
-[Sections](Sections.lean) constructs actual section and cochain-complex isomorphisms under open restriction. [Square](Square.lean) compares the original restriction functors in an actual commuting square, retaining the specified morphism equality and unit compatibility.
+[Sheafification](Sheafification.lean), imported as `Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification`, owns `Scheme.Modules.restrictionRingHom` and its invertibility for an actual open immersion, together with `restrictionSheafificationIso`, `isIso_sheafified_restricted_unit` and `isIso_restricted_unit_of_iso_sheaf`. All maps are the original structure-ring morphisms and sheafification units; the last criterion retains its supplied actual sheaf isomorphism.
 
-[ExtensionByZero](ExtensionByZero.lean), imported as `Aglib.AlgebraicGeometry.Modules.Restriction.ExtensionByZero`, gives `Scheme.Modules.extensionByZero`, its restriction adjunction and stalk formulas. The extension is zero outside the actual open range, fully faithful, and exact on the original short exact module-sheaf sequences. The flat-stalk transport keeps its own coefficient-flatness hypotheses.
-
-These maps feed [preservation of injectives by open restriction](../../Cohomology/Injective/README.md), local basis/presentation transport and the canonical [open-base-change](../BaseChange/README.md) comparison. Open immersion is a geometric input; no Noetherian or finite-type hypothesis is imposed merely to define the functors.
+The construction uses the canonical generic sheafification/direct-image comparison. It requires no tensor or rank-one coefficient hypothesis. [Scheme tensor restriction](../Tensor/Restriction.lean) and [line-tensor sheafification](../Tensor/Sheafification.lean) are higher consumers.

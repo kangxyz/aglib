@@ -61,9 +61,19 @@
       "source_repository": "r5-lab",
       "source_revision": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
       "source_sha256": "6fe53e832d650a5d31bd5223106345d3a0b3730d87b0cdbf7fc245f30750df47",
-      "destination_module": "Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents",
-      "destination_path": "Aglib/AlgebraicGeometry/Properties/Normal/StalkComponents.lean",
-      "encoded_subset": "Four generic domain-stalk component/connectedness lemmas only; no smooth or relative-dimension-one conclusions"
+      "destination_module": "Aglib.AlgebraicGeometry.Properties.IrreducibleComponents",
+      "destination_path": "Aglib/AlgebraicGeometry/Properties/IrreducibleComponents.lean",
+      "encoded_subset": "Four generic domain-stalk component/connectedness lemmas only; no smooth or relative-dimension-one conclusions",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_path": "Aglib/AlgebraicGeometry/Properties/Normal/StalkComponents.lean",
+            "destination_module": "Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "R5Lab.AlgebraicGeometry.LocalRing.Polynomial",
@@ -303,7 +313,10 @@
       "source_sha256": "757f7b4a24be6f6597504d134033d2e167afe4ebc4a8b62cb9b1a40e6d282821",
       "destination_module": "Aglib.AlgebraicGeometry.Modules.Invertible.PullbackTensor",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/Invertible/PullbackTensor.lean",
-      "encoded_subset": "whole general interface"
+      "encoded_subset": "whole general interface",
+      "current_destination_status": "superseded by accepted lower-owner split",
+      "current_destination_checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
+      "original_destination_identity_preserved": true
     },
     {
       "source_module": "R5Lab.AlgebraicGeometry.Curves.Picard.PullbackTensor.Local",
@@ -379,16 +392,343 @@
           "RingHom.Etale.formallyEtale"
         ]
       ]
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Stalk.Dimension",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Stalk/Dimension.lean",
+          "module": "Aglib.AlgebraicGeometry.Stalk.Dimension",
+          "sha256": "4ca503b055e1834cfd521d713992250a26764bdb1d33bcd001aff1fff6d12364"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/0",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.topologicalKrullDim_eq_iSup_stalk",
+            "new_symbol": "AlgebraicGeometry.Scheme.topologicalKrullDim_eq_iSup_stalk",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Charts.lean",
+            "old_declaration_range": [
+              24,
+              30
+            ],
+            "old_source_sha256": "6dd9422be84d4597d48b72ca87610490b968ff177accdd91cb4a252754aa510e",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/Dimension.lean",
+            "new_declaration_range": [
+              31,
+              37
+            ],
+            "new_source_sha256": "4ca503b055e1834cfd521d713992250a26764bdb1d33bcd001aff1fff6d12364",
+            "normalized_before_sha256": "ef6c4b83fbe3ef2a12561dc5f408fc530baecf8ea654d70835af7523b9a7ba54",
+            "normalized_after_sha256": "ef6c4b83fbe3ef2a12561dc5f408fc530baecf8ea654d70835af7523b9a7ba54"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Stalk.EtalePolynomial",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Stalk/EtalePolynomial.lean",
+          "module": "Aglib.AlgebraicGeometry.Stalk.EtalePolynomial",
+          "sha256": "fa487e4c8c042c561e410718305ade9e5c7c9da0e130cd7ced8e764f02f10d90"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/6",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_isRegularLocalRing",
+            "new_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_isRegularLocalRing",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Regularity.lean",
+            "old_declaration_range": [
+              27,
+              36
+            ],
+            "old_source_sha256": "90388cbcf516a1340244d0566ee8aad6011b9663acc87c8e74f0dcbdd670f1b9",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/EtalePolynomial.lean",
+            "new_declaration_range": [
+              35,
+              44
+            ],
+            "new_source_sha256": "fa487e4c8c042c561e410718305ade9e5c7c9da0e130cd7ced8e764f02f10d90",
+            "normalized_before_sha256": "816a29929b4113ddf7bc5edb6eae13f384aef398c1467c87024308244c26a46b",
+            "normalized_after_sha256": "816a29929b4113ddf7bc5edb6eae13f384aef398c1467c87024308244c26a46b"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/7",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_dimension_le",
+            "new_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_dimension_le",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Regularity.lean",
+            "old_declaration_range": [
+              40,
+              50
+            ],
+            "old_source_sha256": "90388cbcf516a1340244d0566ee8aad6011b9663acc87c8e74f0dcbdd670f1b9",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/EtalePolynomial.lean",
+            "new_declaration_range": [
+              48,
+              58
+            ],
+            "new_source_sha256": "fa487e4c8c042c561e410718305ade9e5c7c9da0e130cd7ced8e764f02f10d90",
+            "normalized_before_sha256": "d9b068a09362a36219866cd9ebdf6246bb3ef98707256a0c3eb1fd5b1549b0f7",
+            "normalized_after_sha256": "d9b068a09362a36219866cd9ebdf6246bb3ef98707256a0c3eb1fd5b1549b0f7"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/8",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_dimension_of_isMaximal",
+            "new_symbol": "AlgebraicGeometry.Scheme.etale_polynomial_stalk_dimension_of_isMaximal",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Smooth/Dimension.lean",
+            "old_declaration_range": [
+              25,
+              37
+            ],
+            "old_source_sha256": "17886987a0394e5dde37a623181cba226f1788269225131ea6611bb03d93a5f6",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/EtalePolynomial.lean",
+            "new_declaration_range": [
+              61,
+              73
+            ],
+            "new_source_sha256": "fa487e4c8c042c561e410718305ade9e5c7c9da0e130cd7ced8e764f02f10d90",
+            "normalized_before_sha256": "92e5924e667bba4a0a18f25bfcbb1ac2003e471d694752217d118e1aece651df",
+            "normalized_after_sha256": "92e5924e667bba4a0a18f25bfcbb1ac2003e471d694752217d118e1aece651df"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Stalk.FlatBaseChange",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Stalk/FlatBaseChange.lean",
+          "module": "Aglib.AlgebraicGeometry.Stalk.FlatBaseChange",
+          "sha256": "506c9745ee1fe1b70191a339d3199a790e0c627151a8df2a64dfdb0dee06edde"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/1",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.LocalRing.GenericFiber.stalkMap_isIso_of_flat_of_surjectiveOnStalks",
+            "new_symbol": "AlgebraicGeometry.Scheme.Hom.isIso_stalkMap_of_flat_of_surjectiveOnStalks",
+            "old_path": "Aglib/AlgebraicGeometry/Stalk/GenericFiber.lean",
+            "old_declaration_range": [
+              35,
+              44
+            ],
+            "old_source_sha256": "886aa4d81d845a354d966e80546369cd9384c9cab3f03acecb1ac4c8418bc818",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/FlatBaseChange.lean",
+            "new_declaration_range": [
+              44,
+              53
+            ],
+            "new_source_sha256": "506c9745ee1fe1b70191a339d3199a790e0c627151a8df2a64dfdb0dee06edde",
+            "normalized_before_sha256": "fc86041a7a4a8c388073831d83682864a72adb1c2c4e6cf0073dc935a5efccc3",
+            "normalized_after_sha256": "fc86041a7a4a8c388073831d83682864a72adb1c2c4e6cf0073dc935a5efccc3"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/2",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.LocalRing.Etale.fromSpecStalk_flat",
+            "new_symbol": "AlgebraicGeometry.Scheme.fromSpecStalk_flat",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkBaseChange.lean",
+            "old_declaration_range": [
+              49,
+              61
+            ],
+            "old_source_sha256": "92f00651144c450c566f6b0decffef9bb210e10a4375ceeef02bc91f878b0ed1",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/FlatBaseChange.lean",
+            "new_declaration_range": [
+              60,
+              72
+            ],
+            "new_source_sha256": "506c9745ee1fe1b70191a339d3199a790e0c627151a8df2a64dfdb0dee06edde",
+            "normalized_before_sha256": "6bf7092d0be83239c2e4e9e70c277d96273e1fd58e1835a51d4306a37ede49a5",
+            "normalized_after_sha256": "6bf7092d0be83239c2e4e9e70c277d96273e1fd58e1835a51d4306a37ede49a5"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/3",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.LocalRing.Etale.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion",
+            "new_symbol": "AlgebraicGeometry.Scheme.Hom.stalkMapIsoOfIsPullbackOfFlatOfPreimmersion",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkBaseChange.lean",
+            "old_declaration_range": [
+              65,
+              83
+            ],
+            "old_source_sha256": "92f00651144c450c566f6b0decffef9bb210e10a4375ceeef02bc91f878b0ed1",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/FlatBaseChange.lean",
+            "new_declaration_range": [
+              80,
+              98
+            ],
+            "new_source_sha256": "506c9745ee1fe1b70191a339d3199a790e0c627151a8df2a64dfdb0dee06edde",
+            "normalized_before_sha256": "c58c98fe5f45347ab353464a423f6928e6d5e7cd395ac106aa189f1ae17b5eb5",
+            "normalized_after_sha256": "c58c98fe5f45347ab353464a423f6928e6d5e7cd395ac106aa189f1ae17b5eb5"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Stalk.MapProperties",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Stalk/MapProperties.lean",
+          "module": "Aglib.AlgebraicGeometry.Stalk.MapProperties",
+          "sha256": "8e12df676e31dbc9d8ea1b5793065e56bf1427f29ba28e09f962b6d9c6ba0557"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/4",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.stalkMap_maximalIdeal_liesOver",
+            "new_symbol": "AlgebraicGeometry.Scheme.stalkMap_maximalIdeal_liesOver",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkMap.lean",
+            "old_declaration_range": [
+              44,
+              51
+            ],
+            "old_source_sha256": "7e6e678108ca638be126c9107240767b13546462f0e517a9c3a61e1c84e50071",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/MapProperties.lean",
+            "new_declaration_range": [
+              37,
+              44
+            ],
+            "new_source_sha256": "8e12df676e31dbc9d8ea1b5793065e56bf1427f29ba28e09f962b6d9c6ba0557",
+            "normalized_before_sha256": "513f7bb803b97fc9ca50305c09bf7b6a156238e452f7c44f1b6fc5e6585714db",
+            "normalized_after_sha256": "513f7bb803b97fc9ca50305c09bf7b6a156238e452f7c44f1b6fc5e6585714db"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/5",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.isNoetherianRing_stalk_of_locallyOfFiniteType",
+            "new_symbol": "AlgebraicGeometry.Scheme.isNoetherianRing_stalk_of_locallyOfFiniteType",
+            "old_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/StalkMap.lean",
+            "old_declaration_range": [
+              55,
+              62
+            ],
+            "old_source_sha256": "7e6e678108ca638be126c9107240767b13546462f0e517a9c3a61e1c84e50071",
+            "new_path": "Aglib/AlgebraicGeometry/Stalk/MapProperties.lean",
+            "new_declaration_range": [
+              48,
+              55
+            ],
+            "new_source_sha256": "8e12df676e31dbc9d8ea1b5793065e56bf1427f29ba28e09f962b6d9c6ba0557",
+            "normalized_before_sha256": "c9736adeef4ce6f03053a25755cd44a56b96251562ff5da99db9d401d6d85072",
+            "normalized_after_sha256": "c9736adeef4ce6f03053a25755cd44a56b96251562ff5da99db9d401d6d85072"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Etale.Polynomial",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Etale/Polynomial.lean",
+          "module": "Aglib.RingTheory.Etale.Polynomial",
+          "sha256": "248d03d120cf42a6dcb1c0a1d0073dde0ffdc2e00afaa86c8f30d8236a59bea0"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-geometry-cuts/correspondence.json",
+            "sha256": "109f76aa0c933c03434fabb61c2c01b5c1d04c4f0bcd3e675d129e53e091f51e"
+          },
+          "pointer": "/selected_declarations/9",
+          "record": {
+            "old_symbol": "AlgebraicGeometry.Scheme.isMaximal_comap_etale_polynomial",
+            "new_symbol": "RingHom.Etale.isMaximal_comap_polynomial",
+            "old_path": "Aglib/AlgebraicGeometry/Stalk/Polynomial.lean",
+            "old_declaration_range": [
+              53,
+              65
+            ],
+            "old_source_sha256": "3dce42775a993ec280857299dd8e914814f0beb3397288dbf343828dc045fd1a",
+            "new_path": "Aglib/RingTheory/Etale/Polynomial.lean",
+            "new_declaration_range": [
+              31,
+              43
+            ],
+            "new_source_sha256": "248d03d120cf42a6dcb1c0a1d0073dde0ffdc2e00afaa86c8f30d8236a59bea0",
+            "normalized_before_sha256": "e8a7ac9374cb7f928e34b8f661938f479af994687515304c18ad42dfff94a599",
+            "normalized_after_sha256": "e8a7ac9374cb7f928e34b8f661938f479af994687515304c18ad42dfff94a599"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

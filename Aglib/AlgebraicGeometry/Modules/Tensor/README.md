@@ -9,3 +9,5 @@
 A supplied retract of finite free coefficients gives the stated pulled-back tensor short-exact result in Basic. General finite-locally-free left/right exactness and `PreservesHomology` belong to [LocallyFree/Tensor/Exact](../LocallyFree/Tensor/README.md). Tensor construction alone does not assert arbitrary-coefficient exactness.
 
 Projection formula, Godement tensor and [ordinary Picard tensor](../Invertible/README.md) are consumers of these same objects/maps. The higher `TensorComparison` explicitly relates the invertible wrappers to the canonical tensor. The [ordinary-complex tensor-to-unit interface](../Complex/TensorToUnit.lean) applies the same natural transformation degreewise and fixes its value on a single complex.
+
+The non-tensor `restrictionRingHom`, its invertibility, `restrictionSheafificationIso` and original restricted-unit isomorphism criteria belong to [ordinary restriction/sheafification](../Restriction/README.md). Tensor Restriction and Sheafification import those maps; the latter retains the explicit line-trivializing-cover tensor theorem.

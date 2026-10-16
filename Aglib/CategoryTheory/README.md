@@ -4,6 +4,6 @@
 
 [Site sheaf cohomology](Sites/SheafCohomology/README.md) contains generic Cech complexes and their actual coefficient/section comparisons. [Topological sheaves](../Topology/Sheaves/README.md) is the lower owner for topological section complexes and basis detection. Scheme specialization belongs to [AlgebraicGeometry/Cohomology](../AlgebraicGeometry/Cohomology/README.md).
 
-The principal categorical results are preservation/transport of actual conflations, abelian subcategory construction from explicit closure conditions, exact kernel sequences of a supplied resolution and split/restricted-cover Cech exactness. Their guides distinguish structures constructed from supplied data from separate existence assertions.
+The principal categorical results are preservation/transport of actual conflations, abelian subcategory construction from explicit closure conditions, exact kernel sequences of a supplied resolution and split-cover Cech exactness. Restricted-open Cech comparisons belong to [topological Cech theory](../Topology/Sheaves/Cech/README.md). Their guides distinguish structures constructed from supplied data from separate existence assertions.
 
 [Triangulated](Triangulated/README.md), [Adjunction](Adjunction/README.md), [Limits](Limits/README.md) and [NatTrans](NatTrans/README.md) add the generic triangle, mate, coproduct and unit comparisons used by bounded derived/Godement calculations. Their hypotheses remain categorical until a scheme consumer supplies the geometric data.

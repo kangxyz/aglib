@@ -6,9 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.RingTheory.RegularLocalRing.Etale
+public import Aglib.AlgebraicGeometry.Stalk.MapProperties
 public import Mathlib.AlgebraicGeometry.Morphisms.Etale
-public import Mathlib.AlgebraicGeometry.Noetherian
-public import Mathlib.RingTheory.Localization.Submodule
 
 /-!
 # Essentially etale maps on actual scheme stalks
@@ -39,27 +38,6 @@ theorem stalkMap_essentiallyEtaleProperties (f : X ⟶ Y)
   ⟨LocallyOfFiniteType.stalkMap f x, Flat.stalkMap f x,
     FormallyUnramified.stalkMap f x⟩
 
-/-- The maximal ideal of the actual source stalk lies over that of the target
-stalk, for the algebra defined by the actual stalk map. -/
-theorem stalkMap_maximalIdeal_liesOver (f : X ⟶ Y) (x : X) :
-    let := (f.stalkMap x).hom.toAlgebra
-    (maximalIdeal (X.presheaf.stalk x)).LiesOver
-      (maximalIdeal (Y.presheaf.stalk (f x))) := by
-  let := (f.stalkMap x).hom.toAlgebra
-  let : IsLocalHom (algebraMap (Y.presheaf.stalk (f x)) (X.presheaf.stalk x)) :=
-    f.toLRSHom.prop x
-  infer_instance
-
-/-- Essential finite type of the actual stalk map transports Noetherianity
-from the target stalk; no global Noetherian hypothesis is required. -/
-theorem isNoetherianRing_stalk_of_locallyOfFiniteType (f : X ⟶ Y)
-    [LocallyOfFiniteType f] (x : X)
-    [IsNoetherianRing (Y.presheaf.stalk (f x))] :
-    IsNoetherianRing (X.presheaf.stalk x) := by
-  let := (f.stalkMap x).hom.toAlgebra
-  let : Algebra.EssFiniteType (Y.presheaf.stalk (f x)) (X.presheaf.stalk x) :=
-    LocallyOfFiniteType.stalkMap f x
-  exact Algebra.EssFiniteType.isNoetherianRing (Y.presheaf.stalk (f x)) (X.presheaf.stalk x)
 
 /-- An essentially etale map preserves the dimensions of the actual
 Noetherian scheme stalks. -/

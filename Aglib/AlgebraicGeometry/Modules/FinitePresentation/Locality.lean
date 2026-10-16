@@ -7,9 +7,9 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Basic
-public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Transport
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent.Pushforward
 /-!
-# Coherence is local on actual open covers
+# Finite presentation is local on actual open covers
 
 Finite local presentations are transported by the geometric restriction and
 by the equivalence between opens of an open subscheme and the over-site.
@@ -25,43 +25,6 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace
 
 namespace AlgebraicGeometry.Scheme.Modules
 
-section Transport
-variable {C : Type w} [Category.{w'} C] {J : GrothendieckTopology C}
-  {R : Sheaf J RingCat.{u}}
-  {D : Type t} [Category.{t'} D] {K : GrothendieckTopology D}
-  {S : Sheaf K RingCat.{u}}
-  [∀ U, HasSheafify (J.over U) AddCommGrpCat.{u}]
-  [∀ U, (J.over U).WEqualsLocallyBijective AddCommGrpCat.{u}]
-  [∀ U, HasSheafify (K.over U) AddCommGrpCat.{u}]
-  [∀ U, (K.over U).WEqualsLocallyBijective AddCommGrpCat.{u}]
-  (G : D ⥤ C) [G.IsContinuous K J] [G.IsCocontinuous K J]
-  (φ : S ⟶ (G.sheafPushforwardContinuous RingCat.{u} K J).obj R)
-  (η : (SheafOfModules.pushforward φ).obj (SheafOfModules.unit R) ≅ SheafOfModules.unit S)
-  [G.IsLeftAdjoint] [IsIso φ]
-  [hpost : ∀ U, (Over.post (X := U) G).IsContinuous (K.over U) (J.over (G.obj U))]
-  [HasPullbacks C] [HasPullbacks D]
-
-include η
-
-/-- The finite local presentations are carried by the same site functor as
-ordinary quasicoherent data; both finite index types are unchanged. -/
-theorem finitePresentation_pushforward_of_isLeftAdjoint
-    (M : SheafOfModules.{u} R) [M.IsFinitePresentation] :
-    ((SheafOfModules.pushforward φ).obj M).IsFinitePresentation := by
-  obtain ⟨q, hq⟩ := SheafOfModules.IsFinitePresentation.exists_quasicoherentData M
-  let q' := q.pushforward G φ η (Scheme.Modules.localBasisPushforward_preservesColimits G φ)
-  have hq' : q'.IsFinitePresentation := by
-    constructor
-    intro i
-    dsimp [q', SheafOfModules.QuasicoherentData.pushforward]
-    infer_instance
-  refine ⟨q'.shrink, ?_⟩
-  constructor
-  intro i
-  dsimp [SheafOfModules.QuasicoherentData.shrink]
-  infer_instance
-
-end Transport
 
 /-- Actual open restriction preserves finite local presentation. -/
 theorem finitePresentation_restrict {U X : Scheme.{u}} (j : U ⟶ X)
@@ -76,7 +39,7 @@ theorem finitePresentation_restrict {U X : Scheme.{u}} (j : U ⟶ X)
     rw [← isIso_iff_of_reflects_iso _ (ObjectProperty.ι _)]
     dsimp [φ]
     infer_instance
-  exact finitePresentation_pushforward_of_isLeftAdjoint j.opensFunctor φ
+  exact SheafOfModules.finitePresentation_pushforward_of_isLeftAdjoint j.opensFunctor φ
     (Scheme.Modules.restrictUnitIso j) M
 
 /-- Finite presentation transports from an open subscheme to its over-site. -/
@@ -100,7 +63,8 @@ theorem finitePresentation_over_of_restrict {X : Scheme.{u}} (M : X.Modules)
         ((Opens.grothendieckTopology U.toScheme).over (U.overEquivalence.functor.obj A)) := by
     exact Functor.isContinuous_of_preservesOneHypercovers _ _ _
   have h : (E.inverse.obj (M.restrict U.ι)).IsFinitePresentation :=
-    finitePresentation_pushforward_of_isLeftAdjoint (hpost := hpost) U.overEquivalence.functor φ
+    SheafOfModules.finitePresentation_pushforward_of_isLeftAdjoint (hpost := hpost)
+      U.overEquivalence.functor φ
       (U.sheafOfModulesEquivOverInverseUnit X.ringCatSheaf) _
   let e : E.inverse.obj (M.restrict U.ι) ≅ M.over U :=
     (E.inverse.mapIso ((Scheme.Modules.overFunctorEquiv U).app M)).symm ≪≫

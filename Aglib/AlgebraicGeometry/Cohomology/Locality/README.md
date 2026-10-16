@@ -1,6 +1,6 @@
-# Quasi-isomorphism detection on open covers
+# Derived locality and ordinary-complex detection
 
-[QuasiIso](QuasiIso.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso`, gives `Scheme.Modules.quasiIso_of_restrict_openCover`. The actual coefficient-complex map is a quasi-isomorphism when its restrictions along a jointly covering family of actual open immersions are quasi-isomorphisms.
+[Ordinary-complex locality](../../Modules/Complex/Locality.lean), imported as `Aglib.AlgebraicGeometry.Modules.Complex.Locality`, gives `Scheme.Modules.quasiIso_of_restrict_openCover`. The actual coefficient-complex map is a quasi-isomorphism when its restrictions along a jointly covering family of actual open immersions are quasi-isomorphisms.
 
 The cover and local-QI hypotheses are inputs. Lower actual [stalk reflection](../../Modules/Stalk/README.md) identifies the original homology/sheaf maps, without a coherent or Noetherian requirement. Locally flasque derived direct-image and Godement comparison are consumers of this local detection interface.
 

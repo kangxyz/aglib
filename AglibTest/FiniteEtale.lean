@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.FiniteEtale.BaseChange
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange
 
 /-! # Strict clients of the actual finite etale category and point fibres -/
 @[expose] public section

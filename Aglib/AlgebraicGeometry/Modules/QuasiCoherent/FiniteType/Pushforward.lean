@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.FiniteRestrictionScalars
+public import Aglib.Algebra.Category.FGModuleCat.RestrictScalars
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Pushforward
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FiniteTypeComparison
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction

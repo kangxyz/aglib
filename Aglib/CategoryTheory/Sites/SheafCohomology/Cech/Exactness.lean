@@ -10,22 +10,17 @@ public import Mathlib.CategoryTheory.Sites.SheafCohomology.Cech
 public import Mathlib.Algebra.Homology.Opposite
 public import Mathlib.Algebra.Homology.SingleHomology
 public import Mathlib.CategoryTheory.Abelian.Opposite
-public import Mathlib.CategoryTheory.Category.GaloisConnection
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
-public import Mathlib.Topology.Category.TopCat.Opens
 /-!
-# Exactness of the actual Cech complex on split and restricted covers
+# Exactness of the Cech complex over arbitrary categories
 
 A terminal cover component gives an extra degeneracy, hence exactness in every
-positive degree of mathlib's `cechComplexFunctor`. The proof compares its
+positive degree of Mathlib's `cechComplexFunctor`. The proof compares its
 alternating coface complex to the opposite of the contracted face complex.
 
-`cechCosimplicialChangeIso` compares Cech objects under a finite-product
-preserving functor with thin target. Applying it to the intersection/right-
-adjoint functor into opens below a fixed open proves
-`restrictedCech_exactAt_succ`: restricting coefficients to intersections with
-one member makes the actual Cech complex exact in every positive degree.
-No sheaf condition is needed for this formal contraction.
+`cechCosimplicialChangeIso` compares the original Cech objects under a
+finite-product-preserving functor with thin target. The ambient category,
+coefficient categories and their product-universe hypotheses remain explicit.
 
 Reference: Stacks Project, [Tag 01X9](https://stacks.math.columbia.edu/tag/01X9).
 -/
@@ -97,29 +92,6 @@ lemma cechComplex_exactAt_succ_of_terminal_component {ι : Type w} (V : ι → C
 
 end CategoryTheory.Cech
 
-open TopologicalSpace
-namespace CategoryTheory.Cech
-
-/-- Intersecting actual opens with a fixed open. -/
-def intersectFunctor {X : TopCat.{u}} (W : Opens X) : Opens X ⥤ Opens X where
-  obj U := U ⊓ W
-  map h := homOfLE (inf_le_inf (leOfHom h) le_rfl)
-
-/-- The actual inclusion of each intersection into its original open. -/
-def intersectToId {X : TopCat.{u}} (W : Opens X) : intersectFunctor W ⟶ 𝟭 (Opens X) where
-  app _ := homOfLE inf_le_left
-
-/-- Restriction of a presheaf's actual sections to intersections with `W`. -/
-def restrictPresheaf {X : TopCat.{u}} {A : Type*} [Category A]
-    (P : (Opens X)ᵒᵖ ⥤ A) (W : Opens X) :
-    P ⟶ (intersectFunctor W).op ⋙ P where
-  app U := P.map (homOfLE (inf_le_left : U.unop ⊓ W ≤ U.unop)).op
-  naturality U V h := by
-    dsimp
-    rw [← P.map_comp, ← P.map_comp]
-    rfl
-
-end CategoryTheory.Cech
 
 namespace CategoryTheory.Cech
 
@@ -148,44 +120,5 @@ def cechCosimplicialChangeIso :
     limit.lift_π, Pi.mapIso_hom_π_assoc, Function.comp_apply]
   congr 2
   apply Subsingleton.elim
-
-end CategoryTheory.Cech
-
-open TopologicalSpace
-namespace CategoryTheory.Cech
-
-variable {X : TopCat.{u}} (W : Opens X)
-
-theorem intersectionGaloisConnection : GaloisConnection
-    (fun U : Set.Iic W => U.val) (fun U : Opens X => (⟨U ⊓ W, by exact (inf_le_right : U ⊓ W ≤ W)⟩ :
-      Set.Iic W)) :=
-  fun U V => ⟨fun h => le_inf h U.property, fun h => (show U.val ≤ V ⊓ W from h).trans inf_le_left⟩
-
-/-- The functor sending an open `U` to `U ⊓ W`, viewed as an open below `W`. -/
-abbrev intersectToIic : Opens X ⥤ Set.Iic W :=
-  (intersectionGaloisConnection W).monotone_u.functor
-
-/-- The inclusion of opens below `W` into all opens of `X`. -/
-abbrev iicInclusion : Set.Iic W ⥤ Opens X :=
-  (intersectionGaloisConnection W).monotone_l.functor
-
-instance : (intersectToIic W).IsRightAdjoint :=
-  (intersectionGaloisConnection W).adjunction.isRightAdjoint
-
-/-- The Cech complex of sections restricted to one member of the cover
-is exact in every positive degree. This statement concerns the original
-Cech functor and actual intersection restrictions, with arbitrary coefficients. -/
-lemma restrictedCech_exactAt_succ {A : Type u'} [Category.{v'} A]
-    [Abelian A] [HasProducts.{w} A] {ι : Type w}
-    (V : ι → Opens X) (P : (Opens X)ᵒᵖ ⥤ A) (i₀ : ι) (n : ℕ) :
-    ((cechComplexFunctor V).obj ((intersectFunctor (V i₀)).op ⋙ P)).ExactAt (n + 1) := by
-  let F := intersectToIic (V i₀)
-  let Q := (iicInclusion (V i₀)).op ⋙ P
-  have h := cechComplex_exactAt_succ_of_terminal_component (hT := isTerminalTop)
-    Q (fun i => F.obj (V i)) (i₀ := i₀) (homOfLE (by
-      change V i₀ ≤ V i₀ ⊓ V i₀
-      exact le_inf le_rfl le_rfl)) n
-  exact h.of_iso ((AlgebraicTopology.alternatingCofaceMapComplex A).mapIso
-    (cechCosimplicialChangeIso F V Q)).symm
 
 end CategoryTheory.Cech

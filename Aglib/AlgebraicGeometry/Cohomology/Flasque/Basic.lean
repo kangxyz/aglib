@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels
-public import Aglib.AlgebraicGeometry.Modules.Epimorphisms
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms
 public import Aglib.AlgebraicGeometry.Modules.Exact
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Limits
 public import Mathlib.Topology.Sheaves.Flasque

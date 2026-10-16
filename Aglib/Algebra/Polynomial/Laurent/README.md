@@ -4,4 +4,4 @@
 
 [Square](Square.lean) gives identity/composition and the original commuting polynomial-to-Laurent squares. [UnderSquare](UnderSquare.lean) packages these maps in the actual under-category, with `polynomialUnderFunctor`, `laurentUnderFunctor` and their forgetful comparison.
 
-Coefficient rings are arbitrary commutative rings. The consumers are [actual polynomial/Laurent spectra](../../../AlgebraicGeometry/AffineSpace/PolynomialLaurent/README.md) and [scheme/algebra coefficient base change](../../../AlgebraicGeometry/Modules/BaseChange/Coefficients/README.md). No finite type, field or characteristic premise is added to the literal scalar maps unless a particular property result requires it.
+Coefficient rings are arbitrary commutative rings. The consumers are [actual polynomial/Laurent spectra](../../../AlgebraicGeometry/Spec/PolynomialLaurent/README.md) and [scheme/algebra coefficient base change](../../../AlgebraicGeometry/BaseChange/Coefficients/README.md). No finite type, field or characteristic premise is added to the literal scalar maps unless a particular property result requires it.

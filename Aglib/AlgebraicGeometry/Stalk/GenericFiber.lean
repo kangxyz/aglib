@@ -5,12 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Mathlib.AlgebraicGeometry.Morphisms.Flat
-public import Mathlib.AlgebraicGeometry.Morphisms.Preimmersion
+public import Aglib.AlgebraicGeometry.Stalk.FlatBaseChange
 public import Mathlib.RingTheory.Flat.Localization
-public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 public import Mathlib.RingTheory.Localization.FractionRing
-public import Mathlib.Tactic.Algebraize
 
 /-!
 # Stalks on an actual generic fibre
@@ -31,17 +28,6 @@ open CategoryTheory Limits AlgebraicGeometry
 universe u
 namespace AlgebraicGeometry.Scheme.LocalRing.GenericFiber
 
-/-- Flatness and surjectivity on stalks make each actual local homomorphism an iso. -/
-theorem stalkMap_isIso_of_flat_of_surjectiveOnStalks
-    {X Y : Scheme.{u}} (f : X ⟶ Y) [Flat f] [SurjectiveOnStalks f] (x : X) :
-    IsIso (f.stalkMap x) := by
-  rw [ConcreteCategory.isIso_iff_bijective]
-  refine ⟨?_, f.stalkMap_surjective x⟩
-  algebraize [(f.stalkMap x).hom]
-  have : Module.FaithfullyFlat (Y.presheaf.stalk (f x)) (X.presheaf.stalk x) :=
-    @Module.FaithfullyFlat.of_flat_of_isLocalHom _ _ _ _ _ _ _
-      (Flat.stalkMap f x) (f.toLRSHom.prop x)
-  exact ‹RingHom.FaithfullyFlat _›.injective
 
 variable (A F : Type u) [CommRing A] [Field F]
   [Algebra A F] [IsFractionRing A F]
@@ -71,7 +57,7 @@ theorem projection_stalkMap_isIso (x : scheme A F p) :
     IsIso ((projection A F p).stalkMap x) := by
   let := baseMap_flat A F
   let := baseMap_preimmersion A F
-  exact stalkMap_isIso_of_flat_of_surjectiveOnStalks (projection A F p) x
+  exact Scheme.Hom.isIso_stalkMap_of_flat_of_surjectiveOnStalks (projection A F p) x
 
 /-- The canonical ring equivalence is the actual projection's stalk map. -/
 def stalkEquiv (x : scheme A F p) :

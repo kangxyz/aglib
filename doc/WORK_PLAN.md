@@ -1,10 +1,120 @@
 # Migration work and validation boundaries
 
-## Current TT archive and general finite-etale migration
+## Partial accepted local checkpoint
+
+The current checkpoint preserves accepted organization, module/site and Cech
+cuts, K-injective and Ext1 foundations, local algebra and normalization,
+fibrewise flatness, intrinsic/local perfect complexes, canonical tensor maps,
+Small exact categories, and the twenty-one D-minus flat-model producers.
+Their focused producer checks and ordinary reviews are separate from this
+checkout's affected export checks and from downstream package acceptance.
+Historical full integration at `451aeda6b8bb5b44402b574dd6cf60f912360f8c`
+remains evidence for that earlier source snapshot only.
+
+The twenty-source pointwise/affine supplier wave is excluded: this checkpoint
+keeps its baseline rank/differential/test APIs and their theorem-family inputs.
+Cartier/ideal geometry and the coherent-localization wave, including its held
+Abelian append, are also excluded pending their own acceptance. General source
+classification and placement decisions below do not claim those future groups
+are implemented or validated here. The exact selected sources and bounded
+checks are recorded in [checkpoint provenance](migration/checkpoint-accepted-2026-10-16.json).
+
+## Complete general-theory source review and placement correction
+
+The source review has classified all 1309 source files under the Quillen
+`AlgebraicGeometry` tree and all 1136 R5Lab source files in the recorded input snapshot, including
+general theory hidden under curve and K-theory owners. Each file has a fixed
+source hash and a reason for migration, splitting, upstream reuse or retention.
+Necessary general prerequisites outside these trees are tracked separately;
+this is not an exhaustive review of Quillen's unrelated topological theories.
+The supplied R5 foundation inventory provides existing-code candidates. Its
+future formalization plan is outside this migration.
+
+The earlier extraction selected useful dependency groups but did not complete
+this whole-source review. Generality under the criterion in [SCOPE.md](SCOPE.md),
+rather than current downstream demand, now controls admission. The placement
+review also corrects whole-family names and separates general lower statements
+from stronger or specialized owners; [ARCHITECTURE.md](ARCHITECTURE.md) and
+[NAMING.md](NAMING.md) record the rules.
+
+Snapshot `451aeda6b8bb5b44402b574dd6cf60f912360f8c` has the scoped acceptance
+recorded below. Subsequent organization and migration work changes its source
+surface and requires current affected-module validation. Native build artifacts
+and valid prior evidence are preserved; the source review is not a claim of
+fresh compilation, whole-source migration completion or missing theorem proofs.
+
+## Dependency order for the remaining extraction
+
+Migration includes existing proofs and constructions, their actual canonical
+maps and the necessary general prerequisite closure. A theorem-family input is
+not counted as its implementation. Exact upstream interfaces are reused;
+mixed application files lose only their admitted general cuts.
+
+| Layer | Existing source material to integrate | Acceptance boundary |
+| --- | --- | --- |
+| General foundations | Small exact categories, Ext1 extensions, K-injective Hom and adjunctions, bounded projective and localization machinery, local flatness and finite-presentation approximation | Native categorical and ring/module objects, with every original universe and hypothesis |
+| Module sheaves and complexes | Arbitrary-site helpers, pullback–tensor maps, local free bases, flat resolutions and models, ordinary restriction, extension by zero and derived functors | The original sheaves, functors, adjunction mates and unit/counit equations; no perfect or coherent hypothesis on a general statement |
+| Coherent theory | General coherent extensions, localization, Serre quotients, finite support and finite-length stalk functors | The stated Noetherian, finiteness and support conditions; subsequent K-group identifications stay downstream |
+| Perfect and derived theory | Intrinsic derived-perfect objects, local lifting and homotopy, affine comparisons, open gluing, supported restriction and qcqs extension up to a retract | Keep chain categories distinct from derived subcategories, preserve explicit bounds and compactness, and assert no global strict representative |
+| General geometry | Finite-etale categories, descent and fundamental-group interfaces, normalization and DVR completion, standard functorial constructions, general Picard and Cartier prerequisites | Arbitrary bases subject to the source hypotheses; curve, genus, degree and arithmetic endpoints remain downstream |
+| Existing supplier proofs | Pullback–tensor isomorphism, affine module base change, local-basis fibre dimension, finite-flat local freeness, smooth differential rank, proper constants and fibrewise regularity | Implement the existing general producer on the native interface; do not treat a declared input family as a proved result |
+| Downstream consumers | Quillen and R5Lab imports, declaration names and dependency pins | Replace old implementations, remove duplicates, then compile the changed modules and their actual affected consumers |
+
+Each closed group records its source correspondence and focused validation
+before another group depends on it. Family READMEs document the interfaces,
+mathematical results and retained inputs. This file coordinates the groups;
+source-only classification and extraction do not count as compiled acceptance.
+
+## Current group acceptance
+
+The general Ext1, K-injective/adjunction and flat-resolution producers have
+passed focused compilation, declaration/style lint, defining-origin axiom
+checks and independent ordinary review. The generic/topological Cech split and
+the lower site/module ownership corrections have the same scoped acceptance.
+R5's former Ext1 implementations have been removed and its two direct consumers
+retargeted and compiled. Native Lake cache transfer reuses the accepted Aglib
+producer artifacts in R5 without recompiling those proofs. This closes that
+consumer group, while the remaining downstream groups retain their own checks.
+
+The arbitrary-base fibrewise regularity and principal-quotient flatness group
+has passed those producer checks and independent review. Its public theorem
+keeps flatness, finite presentation and all-prime residue-fibre regularity, with
+no Noetherian or reduced-base premise. Removal of an unused local-ring premise
+from one auxiliary lemma is recorded separately from the unchanged root type.
+
+The thirteen local/derived perfect-complex producers have passed focused
+compilation, declaration/style lint, defining-origin axiom checks and independent
+ordinary review. Their intrinsic derived-perfect category is distinct from the
+chain category; local strict models do not assert a global strict representative.
+
+The local-algebra and generic-normalization producers, the two new
+formally-unramified rigidity results for arbitrary local residue targets, and
+the generic short-exact-sequence transport helper have the same scoped
+acceptance. Their sixteen producer modules preserve the source hypotheses,
+universes and actual maps. The helper's actual Quillen consumer also compiles
+and has accepted independent ordinary review; whole CI and its memory fit remain
+separate checks.
+
+The canonical tensor and pullback group has the same scoped producer acceptance,
+including six independently inspected actual-arrow comparison proofs and its
+original rank-one/Picard consumers. Its general maps live below those consumers.
+
+The twenty-one D-minus flat-model producers have accepted focused native
+compilation, declaration/style and origin/axiom checks, and independent ordinary
+review on their recorded final source guards. Existing geometric
+supplier proofs are also being exposed as pointwise results, removing obsolete
+global theorem-family arguments from rank and differential interfaces. That
+source transition still requires its native checks and coordinated downstream
+updates. Coherent localization and Cartier/ideal geometry are being separated
+into precise mathematical owners and their necessary lower prerequisites.
+Shared guide and consumer updates follow the final interfaces. These are
+successive closed groups, not a completion claim for the whole migration.
+
+## TT and finite-etale snapshot before the complete review
 
 The current cuts admit general algebraic geometry and related algebraic, categorical and homological theory from the TT archive and R5 sources. Specialized curve, projective-line, Waldhausen and K-theory applications remain downstream. The current source-correspondence records are linked from the [documentation index](README.md); the historical extraction counts below are not an inventory or validation claim for these additions.
 
-The seven-leaf native structural perfect-complex core and the three homology leaves split among quasicoherent modules, ordinary complexes and perfect complexes have accepted independent review on their recorded inputs. They use actual cochain complexes and the standard native derived category. Strict perfection bounds finite locally free terms; local perfection supplies local derived strict models. Quasicoherent homology and local homology bounds hold on arbitrary schemes, while a single global homology interval retains `CompactSpace X`. No global strictification is asserted. The [perfect-complex guide](../Aglib/AlgebraicGeometry/Modules/Perfect/README.md) states these distinctions.
+The seven-leaf native structural perfect-complex core and the three homology leaves split among quasicoherent modules, ordinary complexes and perfect complexes have accepted independent review on their recorded inputs. They use actual cochain complexes and the standard native derived category. Strict perfection bounds finite locally free terms; local perfection supplies local derived strict models. Quasicoherent homology and local homology bounds hold on arbitrary schemes, while a single global homology interval retains `CompactSpace X`. No global strictification is asserted. The [perfect-complex guide](../Aglib/AlgebraicGeometry/Modules/PerfectComplexes/README.md) states these distinctions.
 
 The admitted general cuts also include signed mapping cones, selected exact-functor and full-subcategory pushouts, sequential colimits and sign correction, integer-base interchange, polynomial/Laurent coordinates, and canonical tensor/unit/Godement comparisons. The R5 general finite-etale cut supplies the actual finite-etale category, field-valued fibres and base change, together with the weaker finiteness results for field-valued lifts through finite morphisms. Its algebraic and scheme section-rigidity leaves have successful focused producer and declaration/style-lint checks, accepted independent review and a scoped two-declaration permitted-axiom audit. The [interface guide](INTERFACES.md) routes their exact premises to their family owners.
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
 public import Mathlib.AlgebraicGeometry.Modules.Sheaf
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.LocallyFree
 public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Monoidal
@@ -17,8 +17,8 @@ public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Sheafification
 A line bundle is an actual structure-module sheaf with local free bases
 indexed by singleton types. `LineBundleClass` quotients these objects by actual
 module-sheaf isomorphism. The trivial bundle and transport of local rank one
-under isomorphism are constructed here. Tensor objects and maps specialize
-the shared generic site primitive in `ModuleCat.Sheaf.Tensor.Basic`.
+under isomorphism are constructed here. Tensor objects and maps are supplied by
+the lower scheme tensor owner, which specializes the shared generic site construction.
 Tensor closure, associativity and dual inverses are supplied by the following
 modules.
 
@@ -76,29 +76,6 @@ theorem lineBundle_isLocallyFree (L : LineBundle X) : L.val.IsLocallyFree := by
 theorem class_eq_iff (L M : LineBundle X) :
     Quotient.mk (lineBundleSetoid X) L = Quotient.mk (lineBundleSetoid X) M ↔
       Nonempty (L.val ≅ M.val) := Quotient.eq
-
-/-- The actual tensor sheaf: sheafification of the sectionwise module tensor. -/
-def tensorSheaf (M N : SheafOfModules.{u} X.ringCatSheaf) :
-    SheafOfModules.{u} X.ringCatSheaf :=
-  (SheafOfModulesOfCommRing.tensorLeftFunctor X.sheaf M).obj N
-
-/-- The induced morphism on actual tensor sheaves. -/
-def tensorSheafMap {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
-    (f : M ⟶ M') (g : N ⟶ N') : tensorSheaf X M N ⟶ tensorSheaf X M' N' :=
-  (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map
-    (CategoryTheory.MonoidalCategory.tensorHom
-      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map f)
-      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map g))
-
-/-- Tensor sheaves of isomorphic factors are actually isomorphic. -/
-def tensorSheafIso {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
-    (e : M ≅ M') (f : N ≅ N') : tensorSheaf X M N ≅ tensorSheaf X M' N' := by
-  letI : MonoidalCategory (_root_.PresheafOfModules.{u} X.ringCatSheaf.obj) :=
-    inferInstanceAs (MonoidalCategory (PresheafOfModulesOfCommRing.{u} X.presheaf))
-  exact (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
-    (CategoryTheory.MonoidalCategory.tensorIso
-      ((SheafOfModules.forget X.ringCatSheaf).mapIso e)
-      ((SheafOfModules.forget X.ringCatSheaf).mapIso f))
 
 /-- Local rank one is invariant under actual module-sheaf isomorphisms. -/
 theorem isLocallyRankOne_of_iso {M N : SheafOfModules.{u} X.ringCatSheaf} (e : M ≅ N)

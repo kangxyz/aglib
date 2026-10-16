@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ProductInterchange
-public import Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Coordinates
+public import Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.ProductInterchange
+public import Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Coordinates
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Strict clients of actual integer-base product interchange and chart coordinates -/

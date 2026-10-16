@@ -143,7 +143,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.Basic",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/Basic.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "020c9e5d07b21d00dcfca4f5447765b9c5181a59c9656b97595fb93f62dfe710",
+      "destination_sha256": "87a04006bd9fb3c300518bed30ed2089a9feba3a7e7ad4748268191cb37b50fc",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.injective_isFlasque",
         "AlgebraicGeometry.Scheme.Modules.toAdditiveSheaf",
@@ -152,6 +152,15 @@
         "AlgebraicGeometry.Scheme.Modules.sections_surjective_of_flasque_kernel",
         "AlgebraicGeometry.Scheme.Modules.flasque_of_shortExact",
         "AlgebraicGeometry.Scheme.Modules.injectiveResolution_kernel_isFlasque"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "020c9e5d07b21d00dcfca4f5447765b9c5181a59c9656b97595fb93f62dfe710"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -212,7 +221,10 @@
         "AlgebraicGeometry.Scheme.Modules.toSheaf_preservesColimitsOfShape",
         "AlgebraicGeometry.Scheme.Modules.toSheaf_preservesEpimorphisms",
         "AlgebraicGeometry.Scheme.Modules.isLocallySurjective_of_epi"
-      ]
+      ],
+      "current_destination_status": "superseded by accepted lower-owner split",
+      "current_destination_checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
+      "original_destination_identity_preserved": true
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.Basic",
@@ -393,7 +405,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Affine.GlobalSectionsExactness",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Affine/GlobalSectionsExactness.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "84fdb01dd61a2b7224479d66cfc0ba9929bce2253d64a031162c2720c8794be2",
+      "destination_sha256": "5915867457e70ce04bcc5ab96f7d5234a423567717c1dcb82087e51e4827a13d",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.AffineCech.mapSection",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.mapSection_res",
@@ -406,6 +418,15 @@
         "AlgebraicGeometry.Scheme.Modules.AffineCech.epi_globalSections_of_quasicoherent_kernel",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.globalSections_isRightAdjoint",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.shortExact_globalSections_of_quasicoherent_kernel"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "84fdb01dd61a2b7224479d66cfc0ba9929bce2253d64a031162c2720c8794be2"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -701,7 +722,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.InjectiveCoefficients",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/InjectiveCoefficients.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "605b9dca6acfce5b338944264aed44a756e57e0557cff6e6064397b2610674fb",
+      "destination_sha256": "c4d0a0c5dcc9b20d4d137800b464c827e9bb378fdb1f02c2dcdf7b00ade6a763",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.openFree_stalkCech_exact_succ",
         "AlgebraicGeometry.Scheme.Modules.shortComplex_exact_of_moduleStalk",
@@ -714,6 +735,15 @@
         "AlgebraicGeometry.Scheme.Modules.openFreeYonedaIso",
         "AlgebraicGeometry.Scheme.Modules.injectiveCech_exact_succ",
         "AlgebraicGeometry.Scheme.Modules.affine_injectiveCech_exact_succ"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "605b9dca6acfce5b338944264aed44a756e57e0557cff6e6064397b2610674fb"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -743,10 +773,19 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Restriction",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Restriction.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "366a9b269b18837ac653de295c9ee5ea09226952c62c14980ec84e3f339f0db4",
+      "destination_sha256": "e6e508ff685a0ea01ebbeaf91ce3c33e7bd22f4a8038e8e0b15960388e8dfb02",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.restrictPreimagePresheafIso",
         "AlgebraicGeometry.Scheme.Modules.cechRestrictIso"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "366a9b269b18837ac653de295c9ee5ea09226952c62c14980ec84e3f339f0db4"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -757,7 +796,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Cech.AffineHigherExactness",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/AffineHigherExactness.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "2177b56b3b3b5952682e4758c8b6198289addf221a85d05108ba4aa64f7cc95f",
+      "destination_sha256": "e1658284cd7adcd3c4cd751a9b2dc30b7a0a32e3452a6aefd42f14ee1ce32943",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCechComplex",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCech_exactAt_succ_of_isUnit",
@@ -767,6 +806,15 @@
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCechRestriction",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCechRestriction_isLocalized",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCech_exactAt_succ"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "2177b56b3b3b5952682e4758c8b6198289addf221a85d05108ba4aa64f7cc95f"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -793,7 +841,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Affine.Vanishing",
       "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Affine/Vanishing.lean",
       "selection": "whole general implementation; actual dependencies of selected sheaf core",
-      "destination_sha256": "c200bbfcf26b359a50f704e60110fb698a20cba5670163a952bfaaedbecf4cd8",
+      "destination_sha256": "99ccf0fc888b4e0d6bc6478db41913232d331fa37c215d708de6ca410ff1e6bd",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.AffineCech.exists_section_lift_of_cechOne_exact",
         "AlgebraicGeometry.Scheme.Modules.AffineCech.exists_finite_principal_section_lifts_on",
@@ -809,6 +857,15 @@
         "AlgebraicGeometry.Scheme.Modules.AffineCech.principalCech_exactAt_succ_on_basicOpen",
         "AlgebraicGeometry.Scheme.Modules.AffineDerived.globalSections_injectiveResolution_exact_succ",
         "AlgebraicGeometry.Scheme.Modules.AffineDerived.isZero_rightDerived_globalSections_succ"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "c200bbfcf26b359a50f704e60110fb698a20cba5670163a952bfaaedbecf4cd8"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -889,7 +946,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FiniteTypeCategory",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/FiniteTypeCategory.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "f80729a146859a6bd0359e873c6d8364ce235b39a1ed12fac8eaf1dabdd1a2c0",
+      "destination_sha256": "a4b70c279d3f952af5562c97a3db942acf2a73ca6555ba9a1ede0c17cecb0a29",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.AffineQuasicoherent",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affineQuasicoherent_hasFiniteLimits",
@@ -905,6 +962,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Affine/Basic.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/FiniteTypeCategory.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f80729a146859a6bd0359e873c6d8364ce235b39a1ed12fac8eaf1dabdd1a2c0"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -912,8 +978,8 @@
       "source_repository": "quillen-k-theory",
       "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
       "source_sha256": "8722a83c7074a37cf6e7be5847565e1e8dbc82b0e054bb1c9a61f2b6ad6dbd56",
-      "destination_module": "Aglib.Algebra.Category.ModuleCat.Finite",
-      "destination_path": "Aglib/Algebra/Category/ModuleCat/Finite.lean",
+      "destination_module": "Aglib.Algebra.Category.FGModuleCat.Basic",
+      "destination_path": "Aglib/Algebra/Category/FGModuleCat/Basic.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
       "destination_sha256": "01791fdc7597dc2320673309af2c520740dfe21a8c3a27ea6f4096190b13f78c",
       "destination_explicit_public_names": [
@@ -926,6 +992,16 @@
         "ModuleCat.finiteModule_subobjects",
         "ModuleCat.finiteModule_isSerreClass",
         "ModuleCat.finiteModuleExactStructure"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_path": "Aglib/Algebra/Category/ModuleCat/Finite.lean",
+            "destination_module": "Aglib.Algebra.Category.ModuleCat.Finite"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1214,7 +1290,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.Locality",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2",
+      "destination_sha256": "a3118b9275c9304d141145581452f85f060371020c1d493de2fdc5361ed518c6",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.presentationOfIsIso_generators_isIso",
         "AlgebraicGeometry.Scheme.Modules.presentationMap_generators_isIso",
@@ -1227,6 +1303,15 @@
         "AlgebraicGeometry.Scheme.Modules.finiteLocallyFree_of_schemeOpenCover",
         "AlgebraicGeometry.Scheme.Modules.finiteLocallyFree_iff_schemeOpenCover",
         "AlgebraicGeometry.Scheme.Modules.finiteLocallyFree_of_affineCharts"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1251,7 +1336,7 @@
       "omitted_named_declarations": [
         "schemeKRestrict"
       ],
-      "destination_sha256": "d7d645bfbda89e87d27ed0de091b3f6cfe2cb90934c5a1c80d787d2c67e1a852",
+      "destination_sha256": "46ec216547439acb6d7d9a6165cec9f70770d632a76fbf0ef425b8782005858b",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.pushforwardLocalBasis",
         "AlgebraicGeometry.Scheme.Modules.pushforwardLocalBasis_isLocallyFreeData",
@@ -1266,6 +1351,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
         "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "d7d645bfbda89e87d27ed0de091b3f6cfe2cb90934c5a1c80d787d2c67e1a852"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1294,7 +1388,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalSplitting",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/LocalSplitting.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "94cfee29dd531d224caa4aade61fc94f4dcab4e67cc2b23d69d7e857eb6cf9fa",
+      "destination_sha256": "4d5f9606a0d53249809064902a9fcbec4e4f633f408f3b69a0eb0e7c36edfc5a",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.exists_local_section_of_finite_basis",
         "AlgebraicGeometry.Scheme.Modules.overRestriction",
@@ -1303,6 +1397,15 @@
         "AlgebraicGeometry.Scheme.Modules.overRestriction_additive",
         "AlgebraicGeometry.Scheme.Modules.shortExact_over",
         "AlgebraicGeometry.Scheme.Modules.exists_local_splitting"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "94cfee29dd531d224caa4aade61fc94f4dcab4e67cc2b23d69d7e857eb6cf9fa"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1350,7 +1453,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.FinitePresentation.Locality",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Locality.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "aaa8f811926c9494b46ab8dd1236beec0d5df254385ca5f9d2295a857e09b28f",
+      "destination_sha256": "e1b91d429af4453efaec9c95211b0f549beecc0de3d92f8a382f0ac7fa3f5774",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.finitePresentation_pushforward_of_isLeftAdjoint",
         "AlgebraicGeometry.Scheme.Modules.finitePresentation_restrict",
@@ -1360,6 +1463,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Locality.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/FinitePresentation.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "aaa8f811926c9494b46ab8dd1236beec0d5df254385ca5f9d2295a857e09b28f"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1505,10 +1617,10 @@
       "source_repository": "quillen-k-theory",
       "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
       "source_sha256": "7c1b45b23898956dec4b7635708126552e4940190302113e1296d9bea74b584d",
-      "destination_module": "Aglib.Algebra.Category.ModuleCat.FiniteRestrictionScalars",
-      "destination_path": "Aglib/Algebra/Category/ModuleCat/FiniteRestrictionScalars.lean",
+      "destination_module": "Aglib.Algebra.Category.FGModuleCat.RestrictScalars",
+      "destination_path": "Aglib/Algebra/Category/FGModuleCat/RestrictScalars.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "85b99ab5b33a71d60569940c256412c67209d0306e7ddc1f4a8091f2fc97cff5",
+      "destination_sha256": "236474ed89f89e7829af077a2844206ba5286042c815ac2a39f5034cef11201a",
       "destination_explicit_public_names": [
         "ModuleCat.FiniteRestrictionScalars.moduleRestriction",
         "ModuleCat.FiniteRestrictionScalars.moduleRestriction_obj",
@@ -1517,6 +1629,17 @@
         "ModuleCat.FiniteRestrictionScalars.moduleRestriction_preservesFiniteLimits",
         "ModuleCat.FiniteRestrictionScalars.moduleRestriction_preservesFiniteColimits",
         "ModuleCat.FiniteRestrictionScalars.moduleRestrictionExact"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_path": "Aglib/Algebra/Category/ModuleCat/FiniteRestrictionScalars.lean",
+            "destination_module": "Aglib.Algebra.Category.ModuleCat.FiniteRestrictionScalars",
+            "destination_sha256": "85b99ab5b33a71d60569940c256412c67209d0306e7ddc1f4a8091f2fc97cff5"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1662,7 +1785,7 @@
         "coherentPushforwardGMap_openBaseChange",
         "coherentPushforwardGMap_quotient"
       ],
-      "destination_sha256": "c3aff0f8e96a8d066eece03cd3f914eb8134f82ae1d50929263e6d550cb00fe5",
+      "destination_sha256": "cf610c676d4af5e30b240b5cbae54b1f2e3800efd1dc6b71cb08416f4c4298a8",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.affineLocallyFiniteType_pushforward_iso",
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.affineLocallyFiniteType_pushforward_affine",
@@ -1676,7 +1799,16 @@
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.coherentPushforwardExact",
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.coherentPushforward_quotient"
       ],
-      "retention_scope": "selected declaration family from this original source, across its current owned destination splits; destination_explicit_public_names locates this specific file"
+      "retention_scope": "selected declaration family from this original source, across its current owned destination splits; destination_explicit_public_names locates this specific file",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "c3aff0f8e96a8d066eece03cd3f914eb8134f82ae1d50929263e6d550cb00fe5"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.Coherent.ClosedImmersion.IdealPushforward",
@@ -1731,7 +1863,7 @@
         "specPushforwardGMap",
         "specPushforwardGMap_square"
       ],
-      "destination_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+      "destination_sha256": "893d304f71308dd90451e5ca202038b7e8964c8fc17080860d811572c80f7dc3",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.closedRing",
         "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.closedMap",
@@ -1770,6 +1902,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Affine/GlobalSections.lean",
         "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1777,8 +1918,8 @@
       "source_repository": "quillen-k-theory",
       "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
       "source_sha256": "5b5e2d0b7df5fd6ddf28e849d2965b51f441efdece2c867aefabdfc37bf3ce47",
-      "destination_module": "Aglib.Algebra.Category.ModuleCat.IdealClosedSupport",
-      "destination_path": "Aglib/Algebra/Category/ModuleCat/IdealClosedSupport.lean",
+      "destination_module": "Aglib.Algebra.Category.FGModuleCat.IdealClosedSupport",
+      "destination_path": "Aglib/Algebra/Category/FGModuleCat/IdealClosedSupport.lean",
       "selection": "whole general implementation; replace application-bearing lower imports with actual generic finite-module and Mathlib abelian support",
       "retained_named_declarations": [
         "ClosedRing",
@@ -1814,7 +1955,7 @@
         "killed_hasFiniteProducts"
       ],
       "omitted_named_declarations": [],
-      "destination_sha256": "a621d4de8b5e5cf04f5da5adf778654a207fc8dbb109435758bcdc7c1d42eaab",
+      "destination_sha256": "03b7e97c218ca0e492357446d2e79d3ea1078c09dddcd209e9ee8e2b48bbc52d",
       "destination_explicit_public_names": [
         "ModuleCat.FiniteLocalization.IdealClosedSupport.ClosedRing",
         "ModuleCat.FiniteLocalization.IdealClosedSupport.killedBy",
@@ -1848,7 +1989,18 @@
         "ModuleCat.FiniteLocalization.IdealClosedSupport.killedInclusion_preservesFiniteColimits",
         "ModuleCat.FiniteLocalization.IdealClosedSupport.killedInclusionExact"
       ],
-      "retention_scope": "selected declaration family from this original source, across its current owned destination splits; destination_explicit_public_names locates this specific file"
+      "retention_scope": "selected declaration family from this original source, across its current owned destination splits; destination_explicit_public_names locates this specific file",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_path": "Aglib/Algebra/Category/ModuleCat/IdealClosedSupport.lean",
+            "destination_module": "Aglib.Algebra.Category.ModuleCat.IdealClosedSupport",
+            "destination_sha256": "a621d4de8b5e5cf04f5da5adf778654a207fc8dbb109435758bcdc7c1d42eaab"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.Coherent.Finite.Functoriality",
@@ -1895,10 +2047,19 @@
       "destination_module": "Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.Noetherian",
       "destination_path": "Aglib/AlgebraicGeometry/Morphisms/ClosedImmersion/Noetherian.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "d46603e7dfa08b7594959ea61ab96eb6e9b406b8b69eb884ac124cf231e479f0",
+      "destination_sha256": "6f4fb9ed4d6aeea8ce81c40965dd7f4cb380d04831be02d1a4eac6b32dc52ee8",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.closedSource_isLocallyNoetherian",
         "AlgebraicGeometry.Scheme.closedSource_isNoetherian"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "d46603e7dfa08b7594959ea61ab96eb6e9b406b8b69eb884ac124cf231e479f0"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1909,7 +2070,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FiniteTypeRestriction",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/FiniteTypeRestriction.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
-      "destination_sha256": "bc32e33c41a5f86c0585e3cf5e1c13aa6670d00dce1d73bf123129df4ee904bb",
+      "destination_sha256": "6e465580c380ba5ce26bd92be56a5f572934afeb8b064fcbdd8e5531562a170e",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.principalOpen",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.restrictionGlobalSections",
@@ -1927,6 +2088,15 @@
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestriction",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestriction_comp_inclusion",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.affinePrincipalRestrictionSquare"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "bc32e33c41a5f86c0585e3cf5e1c13aa6670d00dce1d73bf123129df4ee904bb"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -1934,8 +2104,8 @@
       "source_repository": "quillen-k-theory",
       "source_revision": "83629578a3d70787d41ec631f5234af8758716af",
       "source_sha256": "e3ebbc88418121c740e63581a741df0b39917a92e8744ac45c57c6cb6d907184",
-      "destination_module": "Aglib.Algebra.Category.ModuleCat.FiniteLocalization",
-      "destination_path": "Aglib/Algebra/Category/ModuleCat/FiniteLocalization.lean",
+      "destination_module": "Aglib.Algebra.Category.FGModuleCat.Localization",
+      "destination_path": "Aglib/Algebra/Category/FGModuleCat/Localization.lean",
       "selection": "whole general implementation; selected coherent/vector-bundle seed or its actual generic closure",
       "destination_sha256": "6c7d427a52b89a051663ed50548148c4e5d2e33c1a0c397d1f74e11c3c0550cf",
       "destination_explicit_public_names": [
@@ -1954,6 +2124,16 @@
         "ModuleCat.FiniteLocalization.torsion_powers_iff_elementwise",
         "ModuleCat.FiniteLocalization.torsion_iff_uniform",
         "ModuleCat.FiniteLocalization.torsion_powers_iff_uniform"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_path": "Aglib/Algebra/Category/ModuleCat/FiniteLocalization.lean",
+            "destination_module": "Aglib.Algebra.Category.ModuleCat.FiniteLocalization"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2157,7 +2337,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.FinitePresentation.Basic",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
       "selection": "accepted semantic declaration cut into the native mathematical owner; exact original conditions and maps retained",
-      "destination_sha256": "fb3cf4be303d84a2475c735f1a32c1112c5c5d3685bac0880fa02dfe4550fea2",
+      "destination_sha256": "071545359f837ceb2e730d22127893bca38badd25a8de57fc5041f1e3b8d39d4",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.generatingSections_ofEpi_isIso",
         "AlgebraicGeometry.Scheme.Modules.finitePresentation_map_isFinite",
@@ -2182,6 +2362,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
         "Aglib/AlgebraicGeometry/Modules/LocallyFree/Basic.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "fb3cf4be303d84a2475c735f1a32c1112c5c5d3685bac0880fa02dfe4550fea2"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2218,7 +2407,10 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
         "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean"
-      ]
+      ],
+      "current_destination_status": "superseded by accepted lower-owner split",
+      "current_destination_checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
+      "original_destination_identity_preserved": true
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.Coherent.Basic",
@@ -2485,7 +2677,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean",
       "selection": "accepted semantic split: arbitrary-scheme finite-type quasicoherent finite pushforward and actual comparisons are the lower implementation; coherent functors transparently reuse it",
-      "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714",
+      "destination_sha256": "b81bc551fd8947e947f62c69aefca59d88b2c58f05331d1d16211b62845f3091",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.affineLocallyFiniteType_pushforward_spec",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.exists_affine_presentation",
@@ -2508,6 +2700,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/Finite/GeneralPushforward.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2518,7 +2719,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean",
       "selection": "accepted semantic split: arbitrary-scheme finite-type quasicoherent finite pushforward and actual comparisons are the lower implementation; coherent functors transparently reuse it",
-      "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714",
+      "destination_sha256": "b81bc551fd8947e947f62c69aefca59d88b2c58f05331d1d16211b62845f3091",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.affineLocallyFiniteType_pushforward_spec",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.exists_affine_presentation",
@@ -2541,6 +2742,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/Finite/AffinePushforward.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2551,7 +2761,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean",
       "selection": "accepted semantic split: arbitrary-scheme finite-type quasicoherent finite pushforward and actual comparisons are the lower implementation; coherent functors transparently reuse it",
-      "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714",
+      "destination_sha256": "b81bc551fd8947e947f62c69aefca59d88b2c58f05331d1d16211b62845f3091",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.affineLocallyFiniteType_pushforward_spec",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.exists_affine_presentation",
@@ -2574,6 +2784,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/Finite/Functoriality.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2584,7 +2803,7 @@
       "destination_module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward",
       "destination_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean",
       "selection": "accepted semantic split: arbitrary-scheme finite-type quasicoherent finite pushforward and actual comparisons are the lower implementation; coherent functors transparently reuse it",
-      "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714",
+      "destination_sha256": "b81bc551fd8947e947f62c69aefca59d88b2c58f05331d1d16211b62845f3091",
       "destination_explicit_public_names": [
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.affineLocallyFiniteType_pushforward_spec",
         "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteMorphism.exists_affine_presentation",
@@ -2607,6 +2826,15 @@
       "current_source_destinations": [
         "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/Finite/AffineFunctoriality.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pushforward.lean"
+      ],
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f69ab0dbdcc4e14979c481dbbb249a233fa124216da5cc1edf8d29eb5edd3714"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
       ]
     },
     {
@@ -2673,6 +2901,789 @@
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/FiniteType/Pullback.lean",
         "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Pullback.lean"
       ]
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction",
+          "sha256": "1ebed12fb3e9b4e36c7ffb21be4db06839819666807f1b3d936838df956738ea"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/14",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 52,
+            "old_full_name": "PresheafOfModules.Restriction.restrictPresheaf",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.restrictPresheaf",
+            "declaration_name": "restrictPresheaf"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/15",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 57,
+            "old_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit",
+            "declaration_name": "restrictedSheafificationUnit"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/16",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 65,
+            "old_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallyInjective",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallyInjective",
+            "declaration_name": "restrictedSheafificationUnit_locallyInjective"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/17",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 74,
+            "old_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallySurjective",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_locallySurjective",
+            "declaration_name": "restrictedSheafificationUnit_locallySurjective"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/18",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 81,
+            "old_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_sheafification_iso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.restrictedSheafificationUnit_sheafification_iso",
+            "declaration_name": "restrictedSheafificationUnit_sheafification_iso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/19",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 93,
+            "old_full_name": "PresheafOfModules.Restriction.sheafificationOverIso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.Restriction.sheafificationOverIso",
+            "declaration_name": "sheafificationOverIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/20",
+          "record": {
+            "cut_id": "site-slice-sheafification",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+            "raw_source_sha256": "59486f9a2887f0b9aef7266d8021cd0c26792525efd2b5b4335e04555cd281d3",
+            "raw_source_line": 116,
+            "old_full_name": "PresheafOfModules.isIso_of_locallyBijective",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean",
+            "new_full_name": "PresheafOfModules.isIso_of_locallyBijective",
+            "declaration_name": "isIso_of_locallyBijective"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Epimorphisms.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms",
+          "sha256": "19873d54ba2c8c47c0d24aa14b0a7f9a9256d8275668852e4e6f3da18598944b"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/0",
+          "record": {
+            "cut_id": "site-epimorphisms",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "raw_source_sha256": "9f34c7fede80f84f59fbfe2f5cef224d5f6e05d382bfa9b9d2d08cfbdeb9c9e0",
+            "raw_source_line": 43,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.toSheaf_preservesColimitsOfShape",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Epimorphisms.lean",
+            "new_full_name": "SheafOfModules.toSheaf_preservesColimitsOfShape",
+            "declaration_name": "toSheaf_preservesColimitsOfShape"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/1",
+          "record": {
+            "cut_id": "site-epimorphisms",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "raw_source_sha256": "9f34c7fede80f84f59fbfe2f5cef224d5f6e05d382bfa9b9d2d08cfbdeb9c9e0",
+            "raw_source_line": 62,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.toSheaf_preservesEpimorphisms",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Epimorphisms.lean",
+            "new_full_name": "SheafOfModules.toSheaf_preservesEpimorphisms",
+            "declaration_name": "toSheaf_preservesEpimorphisms"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/2",
+          "record": {
+            "cut_id": "site-epimorphisms",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Epimorphisms.lean",
+            "raw_source_sha256": "9f34c7fede80f84f59fbfe2f5cef224d5f6e05d382bfa9b9d2d08cfbdeb9c9e0",
+            "raw_source_line": 70,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.isLocallySurjective_of_epi",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Epimorphisms.lean",
+            "new_full_name": "SheafOfModules.isLocallySurjective_of_epi",
+            "declaration_name": "isLocallySurjective_of_epi"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Locality",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Locality.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Locality",
+          "sha256": "f52accbb85c59166285ca1a6519203f8acc7a693806970fd8b566eabf9654f05"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/12",
+          "record": {
+            "cut_id": "site-basis-locality",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "raw_source_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2",
+            "raw_source_line": 66,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.finiteLocalBasis_of_sheafIso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Locality.lean",
+            "new_full_name": "SheafOfModules.finiteLocalBasis_of_sheafIso",
+            "declaration_name": "finiteLocalBasis_of_sheafIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/13",
+          "record": {
+            "cut_id": "site-basis-locality",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "raw_source_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2",
+            "raw_source_line": 98,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.finiteLocalBasis_bind",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Locality.lean",
+            "new_full_name": "SheafOfModules.finiteLocalBasis_bind",
+            "declaration_name": "finiteLocalBasis_bind"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Pushforward",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Pushforward.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Pushforward",
+          "sha256": "c6599110c01640cb52f69366f0f6b3d561f83135d7c2a0512d285662343bb9f8"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/9",
+          "record": {
+            "cut_id": "site-locally-free-pushforward",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "raw_source_sha256": "d7d645bfbda89e87d27ed0de091b3f6cfe2cb90934c5a1c80d787d2c67e1a852",
+            "raw_source_line": 50,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.pushforwardLocalBasis",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Pushforward.lean",
+            "new_full_name": "SheafOfModules.pushforwardLocalBasis",
+            "declaration_name": "pushforwardLocalBasis"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/10",
+          "record": {
+            "cut_id": "site-locally-free-pushforward",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "raw_source_sha256": "d7d645bfbda89e87d27ed0de091b3f6cfe2cb90934c5a1c80d787d2c67e1a852",
+            "raw_source_line": 56,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.pushforwardLocalBasis_isLocallyFreeData",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Pushforward.lean",
+            "new_full_name": "SheafOfModules.pushforwardLocalBasis_isLocallyFreeData",
+            "declaration_name": "pushforwardLocalBasis_isLocallyFreeData"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/11",
+          "record": {
+            "cut_id": "site-locally-free-pushforward",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean",
+            "raw_source_sha256": "d7d645bfbda89e87d27ed0de091b3f6cfe2cb90934c5a1c80d787d2c67e1a852",
+            "raw_source_line": 66,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.pushforwardLocalBasis_isFiniteType",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/LocallyFree/Pushforward.lean",
+            "new_full_name": "SheafOfModules.pushforwardLocalBasis_isFiniteType",
+            "declaration_name": "pushforwardLocalBasis_isFiniteType"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Sheaf.Presentation",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Presentation.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.Presentation",
+          "sha256": "32091f4d06e5afa4ef8942a61e07020511bb027f05155ec5592b2938d8e12a57"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/3",
+          "record": {
+            "cut_id": "generic-presentations",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
+            "raw_source_sha256": "fb3cf4be303d84a2475c735f1a32c1112c5c5d3685bac0880fa02dfe4550fea2",
+            "raw_source_line": 42,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.generatingSections_ofEpi_isIso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Presentation.lean",
+            "new_full_name": "SheafOfModules.generatingSections_ofEpi_isIso",
+            "declaration_name": "generatingSections_ofEpi_isIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/4",
+          "record": {
+            "cut_id": "generic-presentations",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Basic.lean",
+            "raw_source_sha256": "fb3cf4be303d84a2475c735f1a32c1112c5c5d3685bac0880fa02dfe4550fea2",
+            "raw_source_line": 51,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.finitePresentation_map_isFinite",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Presentation.lean",
+            "new_full_name": "SheafOfModules.finitePresentation_map_isFinite",
+            "declaration_name": "finitePresentation_map_isFinite"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/5",
+          "record": {
+            "cut_id": "generic-presentations",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "raw_source_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2",
+            "raw_source_line": 38,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.presentationOfIsIso_generators_isIso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Presentation.lean",
+            "new_full_name": "SheafOfModules.presentationOfIsIso_generators_isIso",
+            "declaration_name": "presentationOfIsIso_generators_isIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/6",
+          "record": {
+            "cut_id": "generic-presentations",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/Locality.lean",
+            "raw_source_sha256": "63707ec1099ec3f8e22aac5b09edaf5cac5cba94047bc52ea700beab11dafad2",
+            "raw_source_line": 46,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.presentationMap_generators_isIso",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Presentation.lean",
+            "new_full_name": "SheafOfModules.presentationMap_generators_isIso",
+            "declaration_name": "presentationMap_generators_isIso"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent.Pushforward",
+      "destinations": [
+        {
+          "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent/Pushforward.lean",
+          "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent.Pushforward",
+          "sha256": "74b555846634dbe6c3f898b8253125f2a05c4a302fd555f68d207ec338a65918"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/7",
+          "record": {
+            "cut_id": "site-presentation-pushforward",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
+            "raw_source_sha256": "e247b47da51a5aa5c8b176240e619d49a2c6188c347b34edbecc002bf2a7cc3d",
+            "raw_source_line": 48,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.localBasisPushforward_preservesColimits",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent/Pushforward.lean",
+            "new_full_name": "SheafOfModules.localBasisPushforward_preservesColimits",
+            "declaration_name": "localBasisPushforward_preservesColimits"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/8",
+          "record": {
+            "cut_id": "site-presentation-pushforward",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Locality.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Locality.lean",
+            "raw_source_sha256": "aaa8f811926c9494b46ab8dd1236beec0d5df254385ca5f9d2295a857e09b28f",
+            "raw_source_line": 48,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.finitePresentation_pushforward_of_isLeftAdjoint",
+            "new_path": "Aglib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent/Pushforward.lean",
+            "new_full_name": "SheafOfModules.finitePresentation_pushforward_of_isLeftAdjoint",
+            "declaration_name": "finitePresentation_pushforward_of_isLeftAdjoint"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Complex.Restriction",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Complex/Restriction.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Complex.Restriction",
+          "sha256": "f69bf72240dc5b729f08dc771b279d3ac6f5c5660f38c455c34c8d7aff842b10"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/21",
+          "record": {
+            "cut_id": "ordinary-restriction-out-of-perfect",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Perfect/LocalRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/PerfectComplexes/LocalRestriction.lean",
+            "raw_source_sha256": "427c224a2e1080a356308dc5dfa3cd61cbbaa339d138d0a1a058f2e3c7f2adbc",
+            "raw_source_line": 47,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_congr",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Complex/Restriction.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.Complex.restrict_congr",
+            "declaration_name": "restrict_congr"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/22",
+          "record": {
+            "cut_id": "ordinary-restriction-out-of-perfect",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Perfect/LocalRestriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/PerfectComplexes/LocalRestriction.lean",
+            "raw_source_sha256": "427c224a2e1080a356308dc5dfa3cd61cbbaa339d138d0a1a058f2e3c7f2adbc",
+            "raw_source_line": 54,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Complex.restrictCompIso",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Complex/Restriction.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.Complex.restrictCompIso",
+            "declaration_name": "restrictCompIso"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.DerivedCategory.Basic",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/DerivedCategory/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.DerivedCategory.Basic",
+          "sha256": "6b56ac847e4b2d27e64e86a11e645a96e7524e3ff326a45e638873364ca63905"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "original_repository": "Aglib",
+          "original_revision": "451aeda6b8bb5b44402b574dd6cf60f912360f8c",
+          "original_input_path": "Aglib/AlgebraicGeometry/Modules/Perfect/Local.lean",
+          "original_input_sha256": "a1346cd033c102625457bd3984e34fddf41385043796e00e50953593f5f71ea3",
+          "source_identity_locator": "Explicit provenance header of accepted destination; checked against exact HEAD blob.",
+          "selection": "Relocated native standard derived-category instance",
+          "final_accepted_evidence": {
+            "sha256": "6b56ac847e4b2d27e64e86a11e645a96e7524e3ff326a45e638873364ca63905",
+            "basis": "organization-review/execution-module-cuts/native-verify-v3/final-source-and-facets.json",
+            "role": "frozen_native_dependency",
+            "locator": "/Aglib_closure/Aglib.AlgebraicGeometry.Modules.DerivedCategory.Basic"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.DerivedCategory.Restriction",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/DerivedCategory/Restriction.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.DerivedCategory.Restriction",
+          "sha256": "40a43ed510f4507ec744c2cc6a9487a56e1b94aeba7f2467933be10e376cfac7",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_sha256": "af26c7f94fa30e982953fc69fd83acd24a04ba030466b0e32aa709862528f003",
+              "transition": "current namespace3 native accepted"
+            }
+          ]
+        }
+      ],
+      "source_correspondence": [
+        {
+          "original_repository": "Aglib",
+          "original_revision": "451aeda6b8bb5b44402b574dd6cf60f912360f8c",
+          "original_input_path": "Aglib/AlgebraicGeometry/Modules/Perfect/LocalRestriction.lean",
+          "original_input_sha256": "427c224a2e1080a356308dc5dfa3cd61cbbaa339d138d0a1a058f2e3c7f2adbc",
+          "source_identity_locator": "Explicit provenance header of accepted destination; checked against exact HEAD blob.",
+          "selection": "Relocated native exact derived restriction/factorization APIs; pending root-namespace transition excluded.",
+          "final_accepted_evidence": {
+            "sha256": "af26c7f94fa30e982953fc69fd83acd24a04ba030466b0e32aa709862528f003",
+            "basis": "organization-review/execution-module-cuts/native-verify-v3/final-source-and-facets.json",
+            "role": "frozen_native_dependency",
+            "locator": "/Aglib_closure/Aglib.AlgebraicGeometry.Modules.DerivedCategory.Restriction"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ClosedImmersion",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ClosedImmersion",
+          "sha256": "b5816cceccd1763b5338ba7b67228d40ad28fe3580d6b881dbe2cc5941286169"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/36",
+          "record": {
+            "cut_id": "general-affine-finite-type-prefix",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "raw_source_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+            "raw_source_line": 42,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.closedRing",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedRing",
+            "declaration_name": "closedRing"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/37",
+          "record": {
+            "cut_id": "general-affine-finite-type-prefix",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "raw_source_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+            "raw_source_line": 45,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.closedMap",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedMap",
+            "declaration_name": "closedMap"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/38",
+          "record": {
+            "cut_id": "general-affine-finite-type-prefix",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "raw_source_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+            "raw_source_line": 48,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.closedMap_isClosedImmersion",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedMap_isClosedImmersion",
+            "declaration_name": "closedMap_isClosedImmersion"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/39",
+          "record": {
+            "cut_id": "general-affine-finite-type-prefix",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "raw_source_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+            "raw_source_line": 53,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.affineFiniteSheaf_pushforward",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal.affineFiniteSheaf_pushforward",
+            "declaration_name": "affineFiniteSheaf_pushforward"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/40",
+          "record": {
+            "cut_id": "general-affine-finite-type-prefix",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Coherent/Pushforward/ClosedImmersion/IdealPushforward.lean",
+            "raw_source_sha256": "56d33b9c4b1d464c4226a9ce518ec9e8ea69f72b2503a1922f40214bab7f9bec",
+            "raw_source_line": 67,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal.affineLocallyFiniteType_pushforward",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/ClosedImmersion.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal.affineLocallyFiniteType_pushforward",
+            "declaration_name": "affineLocallyFiniteType_pushforward"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification",
+          "sha256": "709381074214ddce1b1ef0b10327e7161b6025d0fc0b21e8355f3bb07fa57880"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/31",
+          "record": {
+            "cut_id": "restriction-sheafification-out-of-tensor",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
+            "raw_source_sha256": "62d381bf6fbdf1710df9541aa8958ebad91a32674f13d4e4f3ed3e64f6f7b76b",
+            "raw_source_line": 35,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionRingHom",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionRingHom",
+            "declaration_name": "restrictionRingHom"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/32",
+          "record": {
+            "cut_id": "restriction-sheafification-out-of-tensor",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
+            "raw_source_sha256": "62d381bf6fbdf1710df9541aa8958ebad91a32674f13d4e4f3ed3e64f6f7b76b",
+            "raw_source_line": 42,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionRingHom_isIso",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionRingHom_isIso",
+            "declaration_name": "restrictionRingHom_isIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/33",
+          "record": {
+            "cut_id": "restriction-sheafification-out-of-tensor",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "raw_source_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e",
+            "raw_source_line": 35,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionSheafificationIso",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.restrictionSheafificationIso",
+            "declaration_name": "restrictionSheafificationIso"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/34",
+          "record": {
+            "cut_id": "restriction-sheafification-out-of-tensor",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "raw_source_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e",
+            "raw_source_line": 46,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.isIso_sheafified_restricted_unit",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.isIso_sheafified_restricted_unit",
+            "declaration_name": "isIso_sheafified_restricted_unit"
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-module-cuts/execution-map.json",
+            "sha256": "e01ab7b978b6d772cdc6c69f138fda8a2c436cb54626bab999a3df108a61ac82"
+          },
+          "pointer": "/declaration_map/35",
+          "record": {
+            "cut_id": "restriction-sheafification-out-of-tensor",
+            "old_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "live_before_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
+            "raw_source_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e",
+            "raw_source_line": 59,
+            "old_full_name": "AlgebraicGeometry.Scheme.Modules.isIso_restricted_unit_of_iso_sheaf",
+            "new_path": "Aglib/AlgebraicGeometry/Modules/Restriction/Sheafification.lean",
+            "new_full_name": "AlgebraicGeometry.Scheme.Modules.isIso_restricted_unit_of_iso_sheaf",
+            "declaration_name": "isIso_restricted_unit_of_iso_sheaf"
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "namespace_refinements": [
@@ -2814,6 +3825,321 @@
       "exactness": "Both local-Noetherian premises for the exact functor are retained; finite morphism, flatness and ideal-annihilation conditions are unchanged in their actual results",
       "authorization": "Principal accepted native reusable-interface redesign and specifically directed lowering the raw constructor with guarded coherent aliases",
       "coverage_boundary": "Principal native-stage14 emitted both canonical finite/closed Functoriality and general QC open-pushforward terminals. Affine.Vanishing current formatting variant passed configured no-output Lean and awaits producer re-emission. No whole-stage14 success is asserted."
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Invertible.TensorComparison",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Invertible/TensorComparison.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Invertible.TensorComparison",
+          "sha256": "31b563073fa363040d67b869a6c20edac7d6e967f04fbc40613039d0c93cc835"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/tensor-interface-refinement/v1/freeze.json",
+            "sha256": "8f6f78a6a98f74249c4c40dbe41ecb8838a731ff4cc8a460cf0043947a4ffbc2"
+          },
+          "pointer": "/native_name_map and /exact_existing_general_declaration_token_moves",
+          "native_name_map": {
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+          },
+          "original_basis_manifest": "before-manifest.json",
+          "additional_retarget_before_manifest": "retarget-before-manifest.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Basic",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Pullback/Tensor/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Basic",
+          "sha256": "9df20659e8190da988e4d3dd1a4655fc55cc5a108f61bdcd8b0212f86848b703"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/tensor-interface-refinement/v1/freeze.json",
+            "sha256": "8f6f78a6a98f74249c4c40dbe41ecb8838a731ff4cc8a460cf0043947a4ffbc2"
+          },
+          "pointer": "/native_name_map and /exact_existing_general_declaration_token_moves",
+          "native_name_map": {
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+          },
+          "original_basis_manifest": "before-manifest.json",
+          "additional_retarget_before_manifest": "retarget-before-manifest.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Isomorphism",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Pullback/Tensor/Isomorphism.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Isomorphism",
+          "sha256": "b31bb26defd13cbd5832ed117e246cba219bafbaae0b43a292dce52210280de4"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/tensor-interface-refinement/v1/freeze.json",
+            "sha256": "8f6f78a6a98f74249c4c40dbe41ecb8838a731ff4cc8a460cf0043947a4ffbc2"
+          },
+          "pointer": "/native_name_map and /exact_existing_general_declaration_token_moves",
+          "native_name_map": {
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+          },
+          "original_basis_manifest": "before-manifest.json",
+          "additional_retarget_before_manifest": "retarget-before-manifest.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Pullback/Tensor/Restriction.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction",
+          "sha256": "a2579a3beeaebf96b2f2e98b04d41b7d2aa30f1b3f1200502d7d97dfd387fbaf"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/tensor-interface-refinement/v1/freeze.json",
+            "sha256": "8f6f78a6a98f74249c4c40dbe41ecb8838a731ff4cc8a460cf0043947a4ffbc2"
+          },
+          "pointer": "/native_name_map and /exact_existing_general_declaration_token_moves",
+          "native_name_map": {
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+          },
+          "original_basis_manifest": "before-manifest.json",
+          "additional_retarget_before_manifest": "retarget-before-manifest.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Unit",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Modules/Pullback/Tensor/Unit.lean",
+          "module": "Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Unit",
+          "sha256": "138f54828e3c395e33be09b98ef0b297a983ea4ae605789853b9cd9935e0e3f4"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/tensor-interface-refinement/v1/freeze.json",
+            "sha256": "8f6f78a6a98f74249c4c40dbe41ecb8838a731ff4cc8a460cf0043947a4ffbc2"
+          },
+          "pointer": "/native_name_map and /exact_existing_general_declaration_token_moves",
+          "native_name_map": {
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+            "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+          },
+          "original_basis_manifest": "before-manifest.json",
+          "additional_retarget_before_manifest": "retarget-before-manifest.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
@@ -2880,12 +4206,19 @@
     }
   },
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

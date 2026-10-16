@@ -6,14 +6,14 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.ClosedImmersion.GeneralPushforward
+public import Mathlib.AlgebraicGeometry.Noetherian
+public import Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion
 /-! # Noetherianity of the source of an actual closed immersion -/
 @[expose] public section
 
 noncomputable section
 universe u
 open CategoryTheory AlgebraicGeometry
-open AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
 namespace AlgebraicGeometry.Scheme
 

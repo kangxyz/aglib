@@ -9,6 +9,8 @@ module
 
 public import Aglib.Topology.KrullDimension.ClosedSubspace
 public import Aglib.Topology.Sheaves.BasisExactness
+public import Aglib.Topology.Sheaves.Cech.Cocycles
+public import Aglib.Topology.Sheaves.Cech.Restriction
 public import Aglib.Topology.Sheaves.ClosedSupport
 public import Aglib.Topology.Sheaves.FilteredColimits
 public import Aglib.Topology.Sheaves.Godement

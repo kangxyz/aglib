@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.QuasiIso
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.Complex
-public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso
+public import Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/Sheaf/GodementWeakComposition.lean` at LOCAL Quillen

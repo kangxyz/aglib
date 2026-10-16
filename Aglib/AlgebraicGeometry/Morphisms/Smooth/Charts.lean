@@ -5,11 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
 public import Mathlib.AlgebraicGeometry.Morphisms.Smooth
 public import Mathlib.RingTheory.RingHom.StandardSmooth
 
-/-! Affine polynomial coordinates and the global dimension bridge for schemes. -/
+/-! Affine polynomial charts for smooth schemes over arbitrary fields. -/
 
 @[expose] public section
 
@@ -19,15 +18,6 @@ namespace AlgebraicGeometry.Scheme
 
 universe u
 
-/-- Scheme dimension is the supremum of the dimensions of its actual local
-rings. No Noetherian or quasi-compact hypothesis is used. -/
-theorem topologicalKrullDim_eq_iSup_stalk (X : Scheme.{u}) :
-    topologicalKrullDim X = ⨆ x : X, ringKrullDim (X.presheaf.stalk x) := by
-  simp only [ringKrullDim_stalk_eq_coheight]
-  rw [topologicalKrullDim,
-    Order.krullDim_eq_of_orderIso
-      (irreducibleSetEquivPoints (α := X)),
-    Order.krullDim_eq_iSup_coheight]
 
 /-- A smooth scheme over a field admits affine etale polynomial coordinates
 near each point, without a uniform relative dimension hypothesis. -/

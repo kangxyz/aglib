@@ -51,19 +51,51 @@
           "sha256": "094371f6af73eb62b287219eafae66c69fa66375b9cb2abd41c6c4052eec0841"
         },
         {
-          "path": "Aglib/AlgebraicGeometry/FiniteEtale/Basic.lean",
-          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic",
-          "sha256": "3c2220fd28e5491dfad9b9c2f7f62886387401c9ff08c0515aee6fdf4dd0b62b"
+          "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Basic",
+          "sha256": "3c2220fd28e5491dfad9b9c2f7f62886387401c9ff08c0515aee6fdf4dd0b62b",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "path": "Aglib/AlgebraicGeometry/FiniteEtale/Basic.lean",
+                "module": "Aglib.AlgebraicGeometry.FiniteEtale.Basic"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
-          "path": "Aglib/AlgebraicGeometry/FiniteEtale/Fiber.lean",
-          "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber",
-          "sha256": "cff773b8573d0d73e946d6ac7dea85288adb74dc1ad9691b702ed6f59fa7193c"
+          "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/Fiber.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Fiber",
+          "sha256": "1b34599ef12d6f9896b849dfc7c2068956154e3a11c1eb91e75181e3bab4825b",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "path": "Aglib/AlgebraicGeometry/FiniteEtale/Fiber.lean",
+                "module": "Aglib.AlgebraicGeometry.FiniteEtale.Fiber",
+                "sha256": "cff773b8573d0d73e946d6ac7dea85288adb74dc1ad9691b702ed6f59fa7193c"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
-          "path": "Aglib/AlgebraicGeometry/FiniteEtale/BaseChange.lean",
-          "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange",
-          "sha256": "f602e19ecf22ae4aa16764e06954ff7538d8f53aea60686d4a07fca34d2f72b1"
+          "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/BaseChange.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange",
+          "sha256": "fcb730e30caca5136225b3e81e22e6e54032ea32d3bc806d4ebbc1dbcb3b9a5c",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "path": "Aglib/AlgebraicGeometry/FiniteEtale/BaseChange.lean",
+                "module": "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange",
+                "sha256": "f602e19ecf22ae4aa16764e06954ff7538d8f53aea60686d4a07fca34d2f72b1"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "declarations": [
@@ -302,7 +334,16 @@
         {
           "path": "Aglib/RingTheory/Unramified/Rigidity.lean",
           "module": "Aglib.RingTheory.Unramified.Rigidity",
-          "sha256": "d7805d24a1696fea62546ef7c3d3753c2bc81e50a81090820f5d291096f16e30"
+          "sha256": "bae9729f12277e6de2a0a5d5e3d07213a7dd6e7fddb54a624bafdd38a617f338",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "sha256": "d7805d24a1696fea62546ef7c3d3753c2bc81e50a81090820f5d291096f16e30"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
           "path": "Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/SectionRigidity.lean",
@@ -329,6 +370,1588 @@
         "scheme": "The actual map p is separated, formally unramified and locally of finite type. The actual map q is geometrically connected and has the supplied section. Both displayed map equations remain explicit. No field, reducedness or Noetherian premise is added."
       },
       "downstream_boundary": "Only the first general theorem of PointedRigidity is extracted; its pointed finite-etale adapter remains downstream with the same body and native helper call."
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.FunctionField.Basic",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.FunctionField.Basic",
+          "sha256": "78894e3d98bfea7b41c571fadcb112d0b6f253dfc8754f9c6aa06289c885abfb"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/1",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericInclusion_apply",
+            "source_range": [
+              54,
+              59
+            ],
+            "target_key": "function_basic",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+            "native_name": "fromSpecStalk_genericPoint_apply",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.fromSpecStalk_genericPoint_apply",
+            "native_range": [
+              50,
+              55
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/2",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericInclusion_preimage",
+            "source_range": [
+              62,
+              68
+            ],
+            "target_key": "function_basic",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+            "native_name": "fromSpecStalk_genericPoint_preimage",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.fromSpecStalk_genericPoint_preimage",
+            "native_range": [
+              58,
+              64
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/3",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericInclusion_quasiCompact",
+            "source_range": [
+              70,
+              73
+            ],
+            "target_key": "function_basic",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+            "native_name": "instQuasiCompactFromSpecStalkGenericPoint",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.instQuasiCompactFromSpecStalkGenericPoint",
+            "native_range": [
+              67,
+              70
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/4",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericSectionsIso",
+            "source_range": [
+              80,
+              83
+            ],
+            "target_key": "function_basic",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+            "native_name": "functionFieldSectionsIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.functionFieldSectionsIso",
+            "native_range": [
+              74,
+              77
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/5",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericSectionsIso_square",
+            "source_range": [
+              86,
+              98
+            ],
+            "target_key": "function_basic",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Basic.lean",
+            "native_name": "fromSpecStalk_genericPoint_app_functionFieldSectionsIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.fromSpecStalk_genericPoint_app_functionFieldSectionsIso",
+            "native_range": [
+              80,
+              92
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.FunctionField.Normalization",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+          "module": "Aglib.AlgebraicGeometry.FunctionField.Normalization",
+          "sha256": "f8ce0311846f7ce66f5106003aeaa248b197e2ead17d591cd57e05464d0bf75a"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/6",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericInclusion_normalization_isIso",
+            "source_range": [
+              103,
+              139
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "instIsIsoFromNormalizationFromSpecStalkGenericPoint",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.instIsIsoFromNormalizationFromSpecStalkGenericPoint",
+            "native_range": [
+              54,
+              90
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/7",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericPullback_normalization_isIso",
+            "source_range": [
+              147,
+              150
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "instIsIsoFromNormalizationGenericPullback",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.instIsIsoFromNormalizationGenericPullback",
+            "native_range": [
+              98,
+              101
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/8",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.extendGenericMap",
+            "source_range": [
+              154,
+              159
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "extendFromGenericFiber",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.extendFromGenericFiber",
+            "native_range": [
+              105,
+              110
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/9",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.extendGenericMap_over",
+            "source_range": [
+              161,
+              166
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "extendFromGenericFiber_over",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.extendFromGenericFiber_over",
+            "native_range": [
+              113,
+              118
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/10",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.extendGenericMap_square",
+            "source_range": [
+              168,
+              184
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "extendFromGenericFiber_comp",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.extendFromGenericFiber_comp",
+            "native_range": [
+              121,
+              137
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/11",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericMap_ext",
+            "source_range": [
+              188,
+              204
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "genericFiber_hom_ext",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.genericFiber_hom_ext",
+            "native_range": [
+              141,
+              157
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/12",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.existsUnique_extension",
+            "source_range": [
+              208,
+              215
+            ],
+            "target_key": "function_normalization",
+            "target_path": "Aglib/AlgebraicGeometry/FunctionField/Normalization.lean",
+            "native_name": "existsUnique_extensionFromGenericFiber",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.existsUnique_extensionFromGenericFiber",
+            "native_range": [
+              161,
+              168
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFiber",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+          "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFiber",
+          "sha256": "cdb9cad11c6eade88ad069e83ac8f507abb5f1c1c1b9ce0c87f9979e931dea56"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/13",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericCoverMapToScheme",
+            "source_range": [
+              223,
+              228
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "genericFiberMapToScheme",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.genericFiberMapToScheme",
+            "native_range": [
+              51,
+              56
+            ],
+            "private": true
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/14",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericCoverMapToScheme_over",
+            "source_range": [
+              231,
+              242
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "genericFiberMapToScheme_over",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.genericFiberMapToScheme_over",
+            "native_range": [
+              59,
+              70
+            ],
+            "private": true
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/15",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.extendCoverMap",
+            "source_range": [
+              245,
+              252
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "extendGenericFiberMap",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.extendGenericFiberMap",
+            "native_range": [
+              73,
+              80
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/16",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.baseChange_extendCoverMap",
+            "source_range": [
+              255,
+              272
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "baseChange_extendGenericFiberMap",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.baseChange_extendGenericFiberMap",
+            "native_range": [
+              83,
+              100
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/17",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.coverMap_ext",
+            "source_range": [
+              275,
+              284
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "genericFiber_hom_ext",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.genericFiber_hom_ext",
+            "native_range": [
+              103,
+              112
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/18",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericRestriction_full",
+            "source_range": [
+              289,
+              290
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "instFullBaseChangeGenericPoint",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.instFullBaseChangeGenericPoint",
+            "native_range": [
+              115,
+              116
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/19",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericRestriction_faithful",
+            "source_range": [
+              293,
+              294
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "instFaithfulBaseChangeGenericPoint",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.instFaithfulBaseChangeGenericPoint",
+            "native_range": [
+              119,
+              120
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/20",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.genericCoverHomEquiv",
+            "source_range": [
+              297,
+              302
+            ],
+            "target_key": "finite_etale_generic",
+            "target_path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/GenericFiber.lean",
+            "native_name": "genericFiberHomEquiv",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.genericFiberHomEquiv",
+            "native_range": [
+              123,
+              128
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Basic",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+          "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Basic",
+          "sha256": "c393aea7f1e407c3b50cbd3d8a6e2401112d8bb918c77525e5046ef558f341b4"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/21",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericComparison",
+            "source_range": [
+              60,
+              61
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "comparison",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.comparison",
+            "native_range": [
+              54,
+              55
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/22",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericComparison_fst",
+            "source_range": [
+              63,
+              64
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "comparison_fst",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.comparison_fst",
+            "native_range": [
+              58,
+              59
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/23",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericComparison_snd",
+            "source_range": [
+              66,
+              67
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "comparison_snd",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.comparison_snd",
+            "native_range": [
+              62,
+              63
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/24",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.originalMap_preimage",
+            "source_range": [
+              73,
+              75
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "preimage_genericMap",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.preimage_genericMap",
+            "native_range": [
+              70,
+              72
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/25",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartOriginalSectionsIso",
+            "source_range": [
+              87,
+              89
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "chartOriginalSectionsIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.chartOriginalSectionsIso",
+            "native_range": [
+              76,
+              78
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/26",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartFieldMap",
+            "source_range": [
+              94,
+              96
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "chartFunctionFieldMap",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.chartFunctionFieldMap",
+            "native_range": [
+              81,
+              83
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/27",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartFieldAlgebra",
+            "source_range": [
+              98,
+              99
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instChartFunctionFieldAlgebra",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instChartFunctionFieldAlgebra",
+            "native_range": [
+              86,
+              87
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/28",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartBaseAlgebra",
+            "source_range": [
+              101,
+              102
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instChartBaseAlgebra",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instChartBaseAlgebra",
+            "native_range": [
+              90,
+              91
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/29",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericAppLE_square",
+            "source_range": [
+              104,
+              113
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "genericAppLE_square",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.genericAppLE_square",
+            "native_range": [
+              93,
+              102
+            ],
+            "private": true
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/30",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartScalarTower",
+            "source_range": [
+              115,
+              123
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instChartScalarTower",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instChartScalarTower",
+            "native_range": [
+              105,
+              113
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/31",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartAlgebra_finite",
+            "source_range": [
+              125,
+              141
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instChartAlgebraFinite",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instChartAlgebraFinite",
+            "native_range": [
+              116,
+              132
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/32",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartAlgebra_etale",
+            "source_range": [
+              143,
+              154
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instChartAlgebraEtale",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instChartAlgebraEtale",
+            "native_range": [
+              135,
+              146
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/33",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartSpec_isPullback",
+            "source_range": [
+              167,
+              182
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "chartSpec_isPullback",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.chartSpec_isPullback",
+            "native_range": [
+              151,
+              166
+            ],
+            "private": true
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/34",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.chartNormalization_isPullback",
+            "source_range": [
+              192,
+              206
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "isPullback_chart",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.isPullback_chart",
+            "native_range": [
+              171,
+              185
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/35",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.originalPreimage_iota_isIso",
+            "source_range": [
+              208,
+              212
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "originalPreimage_iota_isIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.originalPreimage_iota_isIso",
+            "native_range": [
+              187,
+              191
+            ],
+            "private": true
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/36",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.localOriginalIso",
+            "source_range": [
+              216,
+              222
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "localOriginalIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.localOriginalIso",
+            "native_range": [
+              195,
+              201
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/37",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.localOriginalIso_structure",
+            "source_range": [
+              224,
+              242
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "localOriginalIso_structure",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.localOriginalIso_structure",
+            "native_range": [
+              204,
+              222
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/38",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.localOriginalIso_normalization",
+            "source_range": [
+              244,
+              253
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "localOriginalIso_normalization",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.localOriginalIso_normalization",
+            "native_range": [
+              225,
+              234
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/39",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.normalization_generic_isPullback",
+            "source_range": [
+              260,
+              278
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "isPullback_generic",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.isPullback_generic",
+            "native_range": [
+              241,
+              259
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/40",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericComparison_isIso",
+            "source_range": [
+              282,
+              289
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "instIsIsoComparison",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instIsIsoComparison",
+            "native_range": [
+              269,
+              276
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/41",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.genericFiberOverIso",
+            "source_range": [
+              297,
+              299
+            ],
+            "target_key": "normalization_basic",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Basic.lean",
+            "native_name": "genericFiberOverIso",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.genericFiberOverIso",
+            "native_range": [
+              285,
+              287
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Dimension",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Dimension.lean",
+          "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Dimension",
+          "sha256": "9c43a6ac58aa1a9b525f7b6ae22b6525013bdb13326de748601b51760d992f7b"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/46",
+          "record": {
+            "stem": "LocalDimension",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationLocalDimensions.integralClosureSpec_stalk_dimension",
+            "source_range": [
+              86,
+              113
+            ],
+            "target_key": "normalization_dimension",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Dimension.lean",
+            "native_name": "integralClosureSpec_stalk_dimension",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/LocalDimension.lean",
+            "source_sha256": "6a2e59621ddd5980c88c33794972285f67afb285c25e14ed51edf92ea74092ab",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.integralClosureSpec_stalk_dimension",
+            "native_range": [
+              49,
+              76
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/47",
+          "record": {
+            "stem": "LocalDimension",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationLocalDimensions.normalization_stalk_dimension",
+            "source_range": [
+              123,
+              153
+            ],
+            "target_key": "normalization_dimension",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Dimension.lean",
+            "native_name": "stalk_ringKrullDim",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/LocalDimension.lean",
+            "source_sha256": "6a2e59621ddd5980c88c33794972285f67afb285c25e14ed51edf92ea74092ab",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.stalk_ringKrullDim",
+            "native_range": [
+              86,
+              116
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Finite",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Finite.lean",
+          "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Finite",
+          "sha256": "7aaf834e739e048274c1674bd2be3056bccfec90680f5eaaf1a3178db5a72a21"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/42",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.structureMap_finite_app",
+            "source_range": [
+              308,
+              320
+            ],
+            "target_key": "normalization_finite",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Finite.lean",
+            "native_name": "finite_app",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.finite_app",
+            "native_range": [
+              54,
+              66
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/43",
+          "record": {
+            "stem": "GenericNormalization",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalModel.normalization_finite",
+            "source_range": [
+              326,
+              341
+            ],
+            "target_key": "normalization_finite",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Finite.lean",
+            "native_name": "instIsFinite",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericNormalization.lean",
+            "source_sha256": "d4e8c371f13557079b4051530de44bc742dcd1d9c6850e9a5788477b95c26601",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instIsFinite",
+            "native_range": [
+              72,
+              87
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Stalks",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+          "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Stalks",
+          "sha256": "2fa80fa1b7e16fda76bf774fe24c52b879fb3b2ba5d752dc69041f88ffb1fed6"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/50",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.integralClosureSpec_normalDomain_stalk",
+            "source_range": [
+              78,
+              102
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "integralClosureSpec_stalk_normal_domain",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.integralClosureSpec_stalk_normal_domain",
+            "native_range": [
+              52,
+              76
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/51",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalization_locallyNoetherian",
+            "source_range": [
+              112,
+              113
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "instIsLocallyNoetherian",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instIsLocallyNoetherian",
+            "native_range": [
+              86,
+              87
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/52",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalization_stalk_normal_domain",
+            "source_range": [
+              120,
+              142
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "stalk_normal_domain",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.stalk_normal_domain",
+            "native_range": [
+              90,
+              112
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/53",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalization_stalk_integrallyClosed",
+            "source_range": [
+              144,
+              146
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "instIsIntegrallyClosedStalk",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instIsIntegrallyClosedStalk",
+            "native_range": [
+              115,
+              117
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/54",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalization_stalk_domain",
+            "source_range": [
+              148,
+              150
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "instIsDomainStalk",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.instIsDomainStalk",
+            "native_range": [
+              120,
+              122
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/55",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalization_stalk_conditions",
+            "source_range": [
+              154,
+              159
+            ],
+            "target_key": "normalization_stalks",
+            "target_path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Stalks.lean",
+            "native_name": "stalk_conditions",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.stalk_conditions",
+            "native_range": [
+              125,
+              130
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Properties.Normal.Affine",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Properties/Normal/Affine.lean",
+          "module": "Aglib.AlgebraicGeometry.Properties.Normal.Affine",
+          "sha256": "415e731e83935b5225baca1e34f3f529ff15d4a26a8f624593e112b1f6f75923"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/0",
+          "record": {
+            "stem": "GenericFullFaithfulness",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationGlobalGenericMaps.affineSections_integrallyClosed",
+            "source_range": [
+              38,
+              47
+            ],
+            "target_key": "normal_affine",
+            "target_path": "Aglib/AlgebraicGeometry/Properties/Normal/Affine.lean",
+            "native_name": "isIntegrallyClosed_sections_of_isAffineOpen",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/GenericFullFaithfulness.lean",
+            "source_sha256": "56316f6517043fcd7e709e55d04765986ce74140b7d0d4e98e59a4648ec25c47",
+            "native_symbol": "AlgebraicGeometry.Scheme.isIntegrallyClosed_sections_of_isAffineOpen",
+            "native_range": [
+              56,
+              65
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/48",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.normalDomainSpec_stalk",
+            "source_range": [
+              37,
+              47
+            ],
+            "target_key": "normal_affine",
+            "target_path": "Aglib/AlgebraicGeometry/Properties/Normal/Affine.lean",
+            "native_name": "isIntegrallyClosed_and_isDomain_stalk_Spec",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.isIntegrallyClosed_and_isDomain_stalk_Spec",
+            "native_range": [
+              69,
+              79
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/49",
+          "record": {
+            "stem": "NormalStalks",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationSourceNormality.piEquiv_normalDomain_stalk",
+            "source_range": [
+              52,
+              73
+            ],
+            "target_key": "normal_affine",
+            "target_path": "Aglib/AlgebraicGeometry/Properties/Normal/Affine.lean",
+            "native_name": "isIntegrallyClosed_and_isDomain_stalk_Spec_of_piEquiv",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/NormalStalks.lean",
+            "source_sha256": "a419e35892f4760d1613685421bc25ce81ec13caca35a645dc1b8c91aa05c9f3",
+            "native_symbol": "AlgebraicGeometry.Scheme.isIntegrallyClosed_and_isDomain_stalk_Spec_of_piEquiv",
+            "native_range": [
+              84,
+              105
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Stalk.IntegralExtension",
+      "destinations": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Stalk/IntegralExtension.lean",
+          "module": "Aglib.AlgebraicGeometry.Stalk.IntegralExtension",
+          "sha256": "4388fe7c28aeb17a51e1eefd580f2cd76a2324bffa94577fd5aa976c1af2e4ca"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/44",
+          "record": {
+            "stem": "LocalDimension",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationLocalDimensions.integralSpec_stalk_dimension",
+            "source_range": [
+              23,
+              40
+            ],
+            "target_key": "stalk_integral",
+            "target_path": "Aglib/AlgebraicGeometry/Stalk/IntegralExtension.lean",
+            "native_name": "ringKrullDim_stalk_Spec_eq_of_integral_of_goingDown",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/LocalDimension.lean",
+            "source_sha256": "6a2e59621ddd5980c88c33794972285f67afb285c25e14ed51edf92ea74092ab",
+            "native_symbol": "AlgebraicGeometry.Scheme.ringKrullDim_stalk_Spec_eq_of_integral_of_goingDown",
+            "native_range": [
+              48,
+              65
+            ],
+            "private": false
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-generic-normalization/correspondence.json",
+            "sha256": "7aac2d16eeec3708e95660b088d2fdbf56e939ba4019f446d344064c55da5066"
+          },
+          "pointer": "/declarations/45",
+          "record": {
+            "stem": "LocalDimension",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.NormalizationLocalDimensions.piEquiv_stalk_dimension",
+            "source_range": [
+              44,
+              82
+            ],
+            "target_key": "stalk_integral",
+            "target_path": "Aglib/AlgebraicGeometry/Stalk/IntegralExtension.lean",
+            "native_name": "ringKrullDim_stalk_Spec_eq_of_piEquiv",
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/LocalDimension.lean",
+            "source_sha256": "6a2e59621ddd5980c88c33794972285f67afb285c25e14ed51edf92ea74092ab",
+            "native_symbol": "AlgebraicGeometry.Scheme.ringKrullDim_stalk_Spec_eq_of_piEquiv",
+            "native_range": [
+              69,
+              107
+            ],
+            "private": false
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "source_disposition": {

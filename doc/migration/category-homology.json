@@ -226,7 +226,16 @@
       "native_namespaces": [
         "CategoryTheory.Cech"
       ],
-      "destination_sha256": "d958a1d7a816b1171c9ff6d7a8a1dc7b98cd74b9c6122f7720859725d290b7b8"
+      "destination_sha256": "7fba39f446a93be78be37b40d0db905beb6e7e7c6748475f4ab4aedaec8604af",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "d958a1d7a816b1171c9ff6d7a8a1dc7b98cd74b9c6122f7720859725d290b7b8"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "Quillen.CategoryTheory.Sites.CechExactSequences",
@@ -238,7 +247,16 @@
       "native_namespaces": [
         "CategoryTheory.Cech"
       ],
-      "destination_sha256": "ebe03b0935f0a86424d88890551eceeb1c6cfd2f250b45f53032053b1298c9ba"
+      "destination_sha256": "3f0241e8e504eecc9310add5ffcdc0c1a4210d8f5cda7ddb0e8d929dec99cb31",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "ebe03b0935f0a86424d88890551eceeb1c6cfd2f250b45f53032053b1298c9ba"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "Quillen.CategoryTheory.Sites.CechComparison",
@@ -250,7 +268,16 @@
       "native_namespaces": [
         "CategoryTheory.Cech"
       ],
-      "destination_sha256": "f370143fee39f9ded5f4dd4682acb5316b9877cd69b9a977f9d9af179fe0c482"
+      "destination_sha256": "db851441cce6a93aed3203d7bdf105870a3e09812f2278f51561ab340e19af6d",
+      "destination_history": [
+        {
+          "checkpoint": "accepted-partial-2026-10-16",
+          "previous_destination": {
+            "destination_sha256": "f370143fee39f9ded5f4dd4682acb5316b9877cd69b9a977f9d9af179fe0c482"
+          },
+          "boundary": "Original source fields and earlier validation basis unchanged."
+        }
+      ]
     },
     {
       "source_module": "Quillen.CategoryTheory.Sites.MayerVietorisSections",
@@ -318,6 +345,453 @@
         "CochainComplex"
       ],
       "destination_sha256": "b12414e5a3b54e85776c13c1444947eaaf07b7b6d62d2e3b420365f7aa0b9001"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.CategoryTheory.Abelian.Ext1.Equality",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext1/Equality.lean",
+          "module": "Aglib.CategoryTheory.Abelian.Ext1.Equality",
+          "sha256": "d31cff3b91bbfcfc2e0a4be6d6b06bfa09ab1a2dd688ae965bac4a152bb5ebd8"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-ext1/freeze.json",
+            "sha256": "3c5de0fe4de7d176d0c75a24feeacbaf01fa81fbfb2ee3027b5a26ebde9f94e3"
+          },
+          "pointer": "/input_basis/sources and /source_correspondence",
+          "original_sources": {
+            "Extension": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "candidate_details": "candidates/007.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension",
+                  "lines": [
+                    14,
+                    20
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                  "lines": [
+                    21,
+                    23
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                  "lines": [
+                    24,
+                    26
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso",
+                  "lines": [
+                    27,
+                    31
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension",
+                "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso"
+              ]
+            },
+            "Equality": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "candidate_details": "candidates/006.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                  "lines": [
+                    20,
+                    31
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.extClass_eq_iso",
+                  "lines": [
+                    32,
+                    75
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                "R5Lab.CategoryTheory.Ext1.extClass_eq_iso"
+              ]
+            },
+            "Representability": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "candidate_details": "candidates/008.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                  "lines": [
+                    25,
+                    47
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                  "lines": [
+                    48,
+                    64
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.exists_extension",
+                  "lines": [
+                    69,
+                    96
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                "R5Lab.CategoryTheory.Ext1.exists_extension"
+              ]
+            }
+          },
+          "source_correspondence": {
+            "Extension": {
+              "source_sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "native_sha256": "1066224a6c9186eee8459873855262f75469c3ad67beda3949ff76936b8e7000",
+              "source_declaration_count": 4
+            },
+            "Equality": {
+              "source_sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "native_sha256": "d31cff3b91bbfcfc2e0a4be6d6b06bfa09ab1a2dd688ae965bac4a152bb5ebd8",
+              "source_declaration_count": 2
+            },
+            "Representability": {
+              "source_sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "native_sha256": "16c9782f9fb4ace6a864c789d6accab24d8fad35be28ffb5c5cd70e32c2a92b5",
+              "source_declaration_count": 3
+            }
+          },
+          "native_namespace": "CategoryTheory.Abelian.Ext1",
+          "preserved_universes_hypotheses": {
+            "all_leaves": "C : Type u, Category.{v} C, Abelian C; X,Y actual C objects. No universe identification or generalization.",
+            "Extension": "Structure and fixed-endpoint Iso need only C/category/Abelian; Extension.extClass has HasExt.{w} C and Ext.{w} X Y 1.",
+            "Equality": "extClass_eq_iso retains HasExt.{w} C and equality E.extClass = E'.extClass. The actual short-complex isomorphism fixes both endpoints. The proof chooses HasDerivedCategory.standard C internally.",
+            "Representability": "First two lemmas retain HasDerivedCategory.{w'} C, the actual degree-zero single-functor triangle and its distinguishedness; exists_extension retains HasExt.{w} C and uses the standard derived category internally."
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.CategoryTheory.Abelian.Ext1.Extension",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext1/Extension.lean",
+          "module": "Aglib.CategoryTheory.Abelian.Ext1.Extension",
+          "sha256": "1066224a6c9186eee8459873855262f75469c3ad67beda3949ff76936b8e7000"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-ext1/freeze.json",
+            "sha256": "3c5de0fe4de7d176d0c75a24feeacbaf01fa81fbfb2ee3027b5a26ebde9f94e3"
+          },
+          "pointer": "/input_basis/sources and /source_correspondence",
+          "original_sources": {
+            "Extension": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "candidate_details": "candidates/007.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension",
+                  "lines": [
+                    14,
+                    20
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                  "lines": [
+                    21,
+                    23
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                  "lines": [
+                    24,
+                    26
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso",
+                  "lines": [
+                    27,
+                    31
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension",
+                "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso"
+              ]
+            },
+            "Equality": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "candidate_details": "candidates/006.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                  "lines": [
+                    20,
+                    31
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.extClass_eq_iso",
+                  "lines": [
+                    32,
+                    75
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                "R5Lab.CategoryTheory.Ext1.extClass_eq_iso"
+              ]
+            },
+            "Representability": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "candidate_details": "candidates/008.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                  "lines": [
+                    25,
+                    47
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                  "lines": [
+                    48,
+                    64
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.exists_extension",
+                  "lines": [
+                    69,
+                    96
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                "R5Lab.CategoryTheory.Ext1.exists_extension"
+              ]
+            }
+          },
+          "source_correspondence": {
+            "Extension": {
+              "source_sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "native_sha256": "1066224a6c9186eee8459873855262f75469c3ad67beda3949ff76936b8e7000",
+              "source_declaration_count": 4
+            },
+            "Equality": {
+              "source_sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "native_sha256": "d31cff3b91bbfcfc2e0a4be6d6b06bfa09ab1a2dd688ae965bac4a152bb5ebd8",
+              "source_declaration_count": 2
+            },
+            "Representability": {
+              "source_sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "native_sha256": "16c9782f9fb4ace6a864c789d6accab24d8fad35be28ffb5c5cd70e32c2a92b5",
+              "source_declaration_count": 3
+            }
+          },
+          "native_namespace": "CategoryTheory.Abelian.Ext1",
+          "preserved_universes_hypotheses": {
+            "all_leaves": "C : Type u, Category.{v} C, Abelian C; X,Y actual C objects. No universe identification or generalization.",
+            "Extension": "Structure and fixed-endpoint Iso need only C/category/Abelian; Extension.extClass has HasExt.{w} C and Ext.{w} X Y 1.",
+            "Equality": "extClass_eq_iso retains HasExt.{w} C and equality E.extClass = E'.extClass. The actual short-complex isomorphism fixes both endpoints. The proof chooses HasDerivedCategory.standard C internally.",
+            "Representability": "First two lemmas retain HasDerivedCategory.{w'} C, the actual degree-zero single-functor triangle and its distinguishedness; exists_extension retains HasExt.{w} C and uses the standard derived category internally."
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.CategoryTheory.Abelian.Ext1.Representability",
+      "destinations": [
+        {
+          "path": "Aglib/CategoryTheory/Abelian/Ext1/Representability.lean",
+          "module": "Aglib.CategoryTheory.Abelian.Ext1.Representability",
+          "sha256": "16c9782f9fb4ace6a864c789d6accab24d8fad35be28ffb5c5cd70e32c2a92b5"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-ext1/freeze.json",
+            "sha256": "3c5de0fe4de7d176d0c75a24feeacbaf01fa81fbfb2ee3027b5a26ebde9f94e3"
+          },
+          "pointer": "/input_basis/sources and /source_correspondence",
+          "original_sources": {
+            "Extension": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Extension.lean",
+              "candidate_details": "candidates/007.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension",
+                  "lines": [
+                    14,
+                    20
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                  "lines": [
+                    21,
+                    23
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                  "lines": [
+                    24,
+                    26
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso",
+                  "lines": [
+                    27,
+                    31
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension",
+                "R5Lab.CategoryTheory.Ext1.Extension.toShortComplex",
+                "R5Lab.CategoryTheory.Ext1.Extension.extClass",
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso"
+              ]
+            },
+            "Equality": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Equality.lean",
+              "candidate_details": "candidates/006.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                  "lines": [
+                    20,
+                    31
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.extClass_eq_iso",
+                  "lines": [
+                    32,
+                    75
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.Extension.Iso.toShortComplexIso",
+                "R5Lab.CategoryTheory.Ext1.extClass_eq_iso"
+              ]
+            },
+            "Representability": {
+              "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "relative_path": "R5Lab/CategoryTheory/Abelian/Ext1Representability.lean",
+              "candidate_details": "candidates/008.json",
+              "source_cuts": [
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                  "lines": [
+                    25,
+                    47
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                  "lines": [
+                    48,
+                    64
+                  ]
+                },
+                {
+                  "symbol": "R5Lab.CategoryTheory.Ext1.exists_extension",
+                  "lines": [
+                    69,
+                    96
+                  ]
+                }
+              ],
+              "selected_symbols": [
+                "R5Lab.CategoryTheory.Ext1.shortExact_of_singleTriangle_distinguished",
+                "R5Lab.CategoryTheory.Ext1.singleδ_eq_of_distinguished",
+                "R5Lab.CategoryTheory.Ext1.exists_extension"
+              ]
+            }
+          },
+          "source_correspondence": {
+            "Extension": {
+              "source_sha256": "c1dc9c274c180f08766a974d87b31ff55de974a0d594ca4c53199b2ca434579c",
+              "native_sha256": "1066224a6c9186eee8459873855262f75469c3ad67beda3949ff76936b8e7000",
+              "source_declaration_count": 4
+            },
+            "Equality": {
+              "source_sha256": "32fc90951a445982889ae4f61cb78867accf792c9f1ca9a3905aedf0fdd04864",
+              "native_sha256": "d31cff3b91bbfcfc2e0a4be6d6b06bfa09ab1a2dd688ae965bac4a152bb5ebd8",
+              "source_declaration_count": 2
+            },
+            "Representability": {
+              "source_sha256": "a2ee63fe1490e45f754e2e8e5f45e708f8b50881d479693e19dae0621ea817a3",
+              "native_sha256": "16c9782f9fb4ace6a864c789d6accab24d8fad35be28ffb5c5cd70e32c2a92b5",
+              "source_declaration_count": 3
+            }
+          },
+          "native_namespace": "CategoryTheory.Abelian.Ext1",
+          "preserved_universes_hypotheses": {
+            "all_leaves": "C : Type u, Category.{v} C, Abelian C; X,Y actual C objects. No universe identification or generalization.",
+            "Extension": "Structure and fixed-endpoint Iso need only C/category/Abelian; Extension.extClass has HasExt.{w} C and Ext.{w} X Y 1.",
+            "Equality": "extClass_eq_iso retains HasExt.{w} C and equality E.extClass = E'.extClass. The actual short-complex isomorphism fixes both endpoints. The proof chooses HasDerivedCategory.standard C internally.",
+            "Representability": "First two lemmas retain HasDerivedCategory.{w'} C, the actual degree-zero single-functor triangle and its distinguishedness; exists_extension retains HasExt.{w} C and uses the standard derived category internally."
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "native_api_phase": {
@@ -342,12 +816,19 @@
   },
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

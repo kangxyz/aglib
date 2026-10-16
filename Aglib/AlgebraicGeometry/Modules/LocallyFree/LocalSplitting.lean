@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Epimorphisms
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms
 public import Aglib.AlgebraicGeometry.Modules.Generators.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalBases
 public import Aglib.AlgebraicGeometry.Modules.Exact

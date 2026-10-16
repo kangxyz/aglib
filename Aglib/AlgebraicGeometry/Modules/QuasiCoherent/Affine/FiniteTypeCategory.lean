@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Finite
+public import Aglib.Algebra.Category.FGModuleCat.Basic
 public import Mathlib.AlgebraicGeometry.Modules.Tilde
 public import Mathlib.CategoryTheory.Abelian.Transfer
 public import Mathlib.CategoryTheory.ObjectProperty.Equivalence

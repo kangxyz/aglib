@@ -91,5 +91,21 @@ def projectionFormulaIso {X Y : Scheme.{u}} (f : X ⟶ Y)
 theorem projectionFormulaIso_hom {X Y : Scheme.{u}} (f : X ⟶ Y)
     (E : Y.Modules) [IsFiniteLocallyFree Y E] (M : X.Modules) :
     (projectionFormulaIso f E M).hom = projectionFormulaMap f E M := rfl
+
+/-! The ordinary natural isomorphism is relocated from
+`Aglib/AlgebraicGeometry/Cohomology/ProjectionFormula/Basic.lean` at Aglib451aeda, SHA-256
+`875f049e57d37dc924b4ee57d71106bdb33da4d379fe9a63c55c36bdf6d6f8a4`. -/
+variable {X Y : Scheme.{u}} (f : X ⟶ Y) (E : Y.Modules) [IsFiniteLocallyFree Y E]
+/-- The original ordinary projection formula as an actual natural isomorphism. -/
+def projectionFormulaNatIso :
+    Scheme.Modules.pushforward f ⋙ moduleTensorLeftFunctor Y E ≅
+      moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E) ⋙
+        Scheme.Modules.pushforward f :=
+  NatIso.ofComponents (projectionFormulaIso f E)
+    (fun g => projectionFormulaMap_naturality f E g)
+/-- Each forward component is literally the original ordinary projection-formula arrow. -/
+theorem projectionFormulaNatIso_hom_app (M : X.Modules) :
+    (projectionFormulaNatIso f E).hom.app M = projectionFormulaMap f E M := rfl
+
 end AlgebraicGeometry.Scheme.Modules
 end

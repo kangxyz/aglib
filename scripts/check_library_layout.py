@@ -22,7 +22,7 @@ OLD_ROOTS = {'r5lab', 'quillen', 'essays', 'tests', 'oldtests', 'quillentest',
 APPLICATION_COMPONENTS = {'curve', 'curves', 'genus', 'p1', 'projectiveline', 'degree',
     'riemannroch', 'rr', 'ktheory', 'gtheory', 'qconstruction', 'sconstruction',
     'plus', 'plusconstruction', 'bass', 'spectra', 'prespectrum', 'prespectra',
-    'perfectcomplex', 'perfectcomplexes', 'k', 'g', 'q', 's'}
+    'perfectcomplex', 'k', 'g', 'q', 's'}
 
 
 def forbidden_domain_import(name: str) -> bool:

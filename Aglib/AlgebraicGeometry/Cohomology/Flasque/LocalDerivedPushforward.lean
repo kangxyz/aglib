@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso
+public import Aglib.AlgebraicGeometry.Modules.Complex.Locality
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.Complex
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pushforward
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion

@@ -81,8 +81,8 @@ theorem tensorUnitWhiskerRight_locallyBijective (M N O : SheafOfModules.{u} X.ri
   obtain ⟨V, hxV, ⟨f⟩⟩ := (isLocallyRankOne_iff_local_unit X N).mp hN x
   let W := U ⊓ V
   have hunit := restrictedTensorUnit_isIso X M N W
-    (restrictUnitIso X M (homOfLE inf_le_left) e)
-    (restrictUnitIso X N (homOfLE inf_le_right) f)
+    (restrictOverUnitIso X M (homOfLE inf_le_left) e)
+    (restrictOverUnitIso X N (homOfLE inf_le_right) f)
   refine ⟨W, ⟨hxU, hxV⟩, ?_⟩
   change IsIso (PresheafOfModulesOfCommRing.Monoidal.tensorHom
     (R := (Over.forget W).op ⋙ X.presheaf)
@@ -108,8 +108,8 @@ theorem tensorUnitWhiskerLeft_locallyBijective (M N O : SheafOfModules.{u} X.rin
   obtain ⟨V, hxV, ⟨f⟩⟩ := (isLocallyRankOne_iff_local_unit X O).mp hO x
   let W := U ⊓ V
   have hunit := restrictedTensorUnit_isIso X N O W
-    (restrictUnitIso X N (homOfLE inf_le_left) e)
-    (restrictUnitIso X O (homOfLE inf_le_right) f)
+    (restrictOverUnitIso X N (homOfLE inf_le_left) e)
+    (restrictOverUnitIso X O (homOfLE inf_le_right) f)
   refine ⟨W, ⟨hxU, hxV⟩, ?_⟩
   change IsIso (PresheafOfModulesOfCommRing.Monoidal.tensorHom
     (R := (Over.forget W).op ⋙ X.presheaf) (𝟙 (M.over W).val)

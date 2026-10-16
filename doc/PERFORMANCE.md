@@ -63,6 +63,22 @@ explicit construction, with three additional checks of the original component
 formula and quasi-isomorphism hypotheses. A fast generic helper alone is not
 evidence that its expensive specialization is fixed.
 
+The full-subcategory boundary in Quillen's `FlasqueThirdSpan` exposed another
+expensive conversion: identifying a lifted functor followed by the inclusion
+with the raw Godement functor unfolded the large concrete construction. The
+general [short-exact-sequence transport lemma](../Aglib/Algebra/Homology/ShortComplex/Subcategory.lean)
+instead uses the actual supplied natural isomorphism and the `map_comp` law.
+It preserves the original exact functor and its short-exactness certificate.
+
+In two clients importing the same literal source prefix, kernel checking of
+the generated exactness proof fell from 85.43 seconds to 0.098 seconds. Peak
+resident memory fell from 12.84 to 2.57 GiB for the complete profiled clients;
+each client checks both a separate certificate and the record, and detailed
+profile export adds substantial overhead. These are controlled client results,
+not whole-module speedup or CI resource measurements. The actual changed
+`FlasqueThirdSpan` subsequently compiled in a focused Lake run in 219 seconds,
+with only that leaf rebuilt. Its complete CI memory fit remains unmeasured.
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks

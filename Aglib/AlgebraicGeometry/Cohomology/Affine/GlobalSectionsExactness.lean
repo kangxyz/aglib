@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.AffineDegreeOne
-public import Aglib.AlgebraicGeometry.Modules.Epimorphisms
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms
 public import Aglib.AlgebraicGeometry.Modules.Exact
 public import Aglib.AlgebraicGeometry.Modules.Generators.LocalLifting
 public import Mathlib.Topology.Sheaves.AddCommGrpCat

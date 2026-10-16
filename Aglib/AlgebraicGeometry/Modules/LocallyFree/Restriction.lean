@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Exact
-public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Transport
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Pushforward
 /-!
 # Actual open restriction of vector bundles
 
@@ -29,50 +29,6 @@ attribute [local instance] Abelian.hasFiniteBiproducts
 
 namespace AlgebraicGeometry.Scheme.Modules
 
-section General
-variable {C : Type w} [Category.{w'} C] {J : GrothendieckTopology C}
-  {R : Sheaf J RingCat.{u}}
-  {D : Type t} [Category.{t'} D] {K : GrothendieckTopology D}
-  {S : Sheaf K RingCat.{u}}
-  [∀ U, HasSheafify (J.over U) AddCommGrpCat.{u}]
-  [∀ U, (J.over U).WEqualsLocallyBijective AddCommGrpCat.{u}]
-  [∀ U, HasSheafify (K.over U) AddCommGrpCat.{u}]
-  [∀ U, (K.over U).WEqualsLocallyBijective AddCommGrpCat.{u}]
-  (G : D ⥤ C) [G.IsContinuous K J] [G.IsCocontinuous K J]
-  (φ : S ⟶ (G.sheafPushforwardContinuous RingCat.{u} K J).obj R)
-  (η : (SheafOfModules.pushforward φ).obj (SheafOfModules.unit R) ≅ SheafOfModules.unit S)
-  [G.IsLeftAdjoint] [IsIso φ]
-  [∀ U, (Over.post (X := U) G).IsContinuous (K.over U) (J.over (G.obj U))]
-  [HasPullbacks C] [HasPullbacks D]
-
-/-- Transport a local basis by a continuous, cocontinuous left adjoint on
-sites which carries the structure sheaf isomorphically to the target one. -/
-def pushforwardLocalBasis {M : SheafOfModules.{u} R}
-    (q : SheafOfModules.LocalGeneratorsData M) [q.IsLocallyFreeData] :
-    SheafOfModules.LocalGeneratorsData ((SheafOfModules.pushforward φ).obj M) :=
-  (q.quasiCoherentData.pushforward G φ η
-    (localBasisPushforward_preservesColimits G φ)).localGeneratorsData
-
-instance pushforwardLocalBasis_isLocallyFreeData {M : SheafOfModules.{u} R}
-    (q : SheafOfModules.LocalGeneratorsData M) [q.IsLocallyFreeData] :
-    (pushforwardLocalBasis G φ η q).IsLocallyFreeData where
-  isIso i := by
-    dsimp [pushforwardLocalBasis, SheafOfModules.QuasicoherentData.localGeneratorsData,
-      SheafOfModules.QuasicoherentData.pushforward]
-    rw [SheafOfModules.Presentation.map_π_eq]
-    dsimp only [SheafOfModules.LocalGeneratorsData.quasiCoherentData]
-    infer_instance
-
-instance pushforwardLocalBasis_isFiniteType {M : SheafOfModules.{u} R}
-    (q : SheafOfModules.LocalGeneratorsData M) [q.IsLocallyFreeData] [hq : q.IsFiniteType] :
-    (pushforwardLocalBasis G φ η q).IsFiniteType where
-  isFiniteType i := by
-    let := hq.isFiniteType i.2.1
-    constructor
-    change Finite (q.generators i.2.1).I
-    infer_instance
-
-end General
 
 /-- Actual geometric open restriction preserves finite local freeness. -/
 instance finiteLocallyFree_restrict {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
@@ -88,7 +44,7 @@ instance finiteLocallyFree_restrict {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImme
     dsimp [φ]
     infer_instance
   obtain ⟨q, hq, hf⟩ := hM.exists_localBasis
-  exact ⟨pushforwardLocalBasis j.opensFunctor φ (Scheme.Modules.restrictUnitIso j) q,
+  exact ⟨SheafOfModules.pushforwardLocalBasis j.opensFunctor φ (Scheme.Modules.restrictUnitIso j) q,
     inferInstance, inferInstance⟩
 
 variable {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]

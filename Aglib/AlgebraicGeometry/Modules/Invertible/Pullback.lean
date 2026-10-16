@@ -6,8 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
-public import Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree
-public import Mathlib.CategoryTheory.Filtered.Final
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Free
+public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
 
 /-!
 # Pullback of line bundles
@@ -35,26 +35,6 @@ namespace AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 variable {X Y : Scheme.{u}}
 
-/-- The pullback of the structure module along `f`, identified with the structure module on `X`. -/
-def pullbackUnitIso (f : X ⟶ Y) :
-    (Scheme.Modules.pullback f).obj (SheafOfModules.unit Y.ringCatSheaf) ≅
-      SheafOfModules.unit X.ringCatSheaf := by
-  let : (Opens.map f.base).Final := Functor.final_of_exists_of_isFiltered _
-    (fun V => ⟨⊤, ⟨homOfLE (by simp)⟩⟩)
-    (fun {_ _} s s' => ⟨_, 𝟙 _, Subsingleton.elim _ _⟩)
-  have hu : IsIso (SheafOfModules.pullbackObjUnitToUnit
-      (F := Opens.map f.base) (S := Y.ringCatSheaf) (R := X.ringCatSheaf) f.toRingCatSheafHom) := by
-    infer_instance
-  exact asIso (SheafOfModules.pullbackObjUnitToUnit
-    (F := Opens.map f.base) (S := Y.ringCatSheaf) (R := X.ringCatSheaf) f.toRingCatSheafHom)
-
-/-- The structure module over the open `U`, transported to the structure module on `U.toScheme`. -/
-def overUnitIso (U : X.Opens) :
-    (Scheme.Modules.overEquiv U).functor.obj (SheafOfModules.unit (X.ringCatSheaf.over U)) ≅
-      SheafOfModules.unit U.toScheme.ringCatSheaf :=
-  (Scheme.Modules.overFunctorEquiv U).app (SheafOfModules.unit X.ringCatSheaf) ≪≫
-    Scheme.Modules.restrictUnitIso U.ι
-
 theorem isLocallyRankOne_iff_restrict_unit (M : SheafOfModules.{u} X.ringCatSheaf) :
     IsLocallyRankOne X M ↔ ∀ x : X, ∃ U : X.Opens, x ∈ U ∧
       Nonempty ((Scheme.Modules.restrictFunctor U.ι).obj M ≅
@@ -71,25 +51,13 @@ theorem isLocallyRankOne_iff_restrict_unit (M : SheafOfModules.{u} X.ringCatShea
     exact (Scheme.Modules.overEquiv U).functor.preimageIso
       ((Scheme.Modules.overFunctorEquiv U).app M ≪≫ e ≪≫ (overUnitIso U).symm)
 
-/-- Restriction of the pullback of `M` to `f ⁻¹ᵁ U`, identified with pullback of its restriction
-to `U` along `f ∣_ U`. -/
-def restrictPullbackIso (f : X ⟶ Y) (U : Y.Opens) (M : Y.Modules) :
-    (Scheme.Modules.restrictFunctor (f ⁻¹ᵁ U).ι).obj ((Scheme.Modules.pullback f).obj M) ≅
-      (Scheme.Modules.pullback (f ∣_ U)).obj ((Scheme.Modules.restrictFunctor U.ι).obj M) :=
-  (Scheme.Modules.restrictFunctorIsoPullback (f ⁻¹ᵁ U).ι).app _ ≪≫
-    (Scheme.Modules.pullbackComp (f ⁻¹ᵁ U).ι f).app M ≪≫
-    (Scheme.Modules.pullbackCongr (morphismRestrict_ι f U).symm).app M ≪≫
-    ((Scheme.Modules.pullbackComp (f ∣_ U) U.ι).app M).symm ≪≫
-    (Scheme.Modules.pullback (f ∣_ U)).mapIso
-      ((Scheme.Modules.restrictFunctorIsoPullback U.ι).app M).symm
-
 theorem pullback_locallyRankOne (f : X ⟶ Y) (M : SheafOfModules.{u} Y.ringCatSheaf)
     (hM : IsLocallyRankOne Y M) :
     IsLocallyRankOne X ((Scheme.Modules.pullback f).obj M) := by
   rw [isLocallyRankOne_iff_restrict_unit] at hM ⊢
   intro x
   obtain ⟨U, hxU, ⟨e⟩⟩ := hM (f.base x)
-  exact ⟨f ⁻¹ᵁ U, hxU, ⟨restrictPullbackIso f U M ≪≫
+  exact ⟨f ⁻¹ᵁ U, hxU, ⟨((Scheme.Modules.pullbackRestrictIso f U).app M) ≪≫
     (Scheme.Modules.pullback (f ∣_ U)).mapIso e ≪≫ pullbackUnitIso (f ∣_ U)⟩⟩
 
 /-- Pullback of a line bundle along the scheme morphism `f`. -/

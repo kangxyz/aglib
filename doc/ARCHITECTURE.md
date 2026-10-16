@@ -6,7 +6,7 @@ The library is organized by mathematical objects, hypotheses and reusable constr
 
 The library's remit is general algebraic geometry and related mathematics. A migration batch admits general definitions and theorems with their necessary lower foundations. Existing downstream demand helps identify interfaces; it does not limit the library's mathematical scope. Specialized application objects and their comparison data retain downstream owners.
 
-Choose an owner from the complete statement and its current consumer. Rings, ideals, modules, categories, complexes, topological sheaves and schemes have their own mathematical subjects. Origin in a curve, K-theory or perfect-complex file records provenance and does not make a general lemma part of that application layer.
+Choose an owner from the complete statement, the constructed objects and the dependency direction. A current consumer records usage; it does not determine admission or placement. Rings, ideals, modules, categories, complexes, topological sheaves and schemes have their own mathematical subjects. Origin in a curve or K-theory file records provenance and does not make a general lemma part of that application layer.
 
 Use the pinned Mathlib object and interface when available. Extend its native mathematical owner, or introduce a focused subject next to it when the admitted objects require that extension. `Aglib` identifies imports; the declaration namespace identifies the object. This distinction permits a module to extend a native namespace without duplicating its object or inheriting the source package's identity.
 
@@ -20,6 +20,54 @@ If a lower object needs a generic map currently hidden in a higher source, split
 
 The implemented graph decides precise dependencies. A reading order or book chapter order is not a substitute for inspecting the actual imports and object types.
 
+## Selecting a source family
+
+Use the actual pinned Mathlib subject as the first reference, inspecting its
+contents rather than matching a namespace or directory name mechanically.
+Otherwise select the mathematical object, property or construction described by
+the complete interface. The following decisions apply to extensions:
+
+| Interface | Source owner | Reason |
+| --- | --- | --- |
+| A scheme property | `AlgebraicGeometry.Properties` or its established Mathlib subject | A property of the scheme itself is distinct from a property of a structural morphism. |
+| A morphism property and its selected objects over a base | `AlgebraicGeometry.Morphisms` | Finite-etale objects of `Over X` are selected by their structural morphisms; their category, fibres and base change belong in `Morphisms.FiniteEtale`. |
+| Polynomial/Laurent spectra and their relative products | `AlgebraicGeometry.Spec.PolynomialLaurent` | The family includes both spectra and base changes over possibly nonaffine schemes. Its objects are not all affine spaces or globally affine schemes. |
+| Scheme-valued base-change diagrams | `AlgebraicGeometry.BaseChange` | A construction with codomain `Scheme` belongs below the module-sheaf operations that consume it. |
+| Scheme module sheaves and their ordinary complexes | `AlgebraicGeometry.Modules`, including `Modules.Complex` | Ordinary restriction, quasi-isomorphism and contraction infrastructure is distinct from a cohomology computation. |
+| Derived categories of scheme module sheaves | `AlgebraicGeometry.Modules.DerivedCategory` | General derived restriction and Hom transport precede their perfect-complex consequences; interfaces distinguish actual complexes from localized objects. |
+| Perfect complexes and local models | `AlgebraicGeometry.Modules.PerfectComplexes` | The complete object name is needed: a module is not a complex. Chain categories and derived objects must be distinguished in the interface. |
+| Arbitrary-site module sheaf/presheaf interfaces | `Algebra.Category.ModuleCat.Sheaf` / `Presheaf` | A scheme specialization must not own a statement quantified over arbitrary sites. |
+| Finitely generated module categories | `Algebra.Category.FGModuleCat` | These interfaces use the actual native `FGModuleCat`, rather than the category of all modules. |
+| Generic and topological Cech constructions | `CategoryTheory.Sites.SheafCohomology.Cech` / `Topology.Sheaves.Cech` | An arbitrary category and the opens of a topological space have different object-level dependencies. |
+
+A whole family must fit its owner, including relative constructions and its
+weakest general statements. Split a mixed file when the lower declarations need
+neither the stronger hypothesis nor the specialized objects of its parent.
+For example, arbitrary-scheme stalk dimension belongs below smooth dimension;
+flat stalk base change belongs below its etale use. A ring-only lemma does not
+acquire scheme hypotheses from a geometric consumer.
+
+Check every declaration in a proposed new leaf, including its helper
+definitions. A `CommRingCat` localization map belongs to ring/localization
+theory, even when its first use is a smooth Cartier argument; it does not belong
+to `Scheme.Hom`. A regularity lemma without a flatness premise does not belong
+to a flatness-only family. Group natural-isomorphism and adjunction facts by
+their respective interfaces rather than collecting unrelated operations in a
+generic transport file. Trivial wrapper maps can be replaced by the canonical
+native expressions, retaining any equations actually used by consumers.
+
+An established native subject can justify a deliberate spelling or location.
+For example, Mathlib's `Geometrically` and `Group` subjects remain valid owners,
+and its finite-type ring theory contains monoid-algebra property results. A
+namespace alone is not a rule for moving these results across source roots.
+Explain a non-obvious extension in the family guide; avoid cosmetic uniformity.
+
+Cohomology legitimately contains derived direct images, resolutions and their
+comparison/computation methods, not only declarations mentioning `Sheaf.H`.
+Godement remains such a method family. Move an independent ordinary-complex
+primitive to its lower owner without relocating the entire derived-cohomology
+surface merely because its objects are complexes.
+
 ## Canonical implementations and comparisons
 
 There is one canonical implementation of each mathematical object or map. Specializations and compatibility bridges delegate to it, rather than constructing a second copy with a similar name. Comparisons should identify the actual object, coefficient action and forward map needed by the consumer.
@@ -28,9 +76,32 @@ The generic site tensor feeds scheme module tensors and invertible wrappers. Gen
 
 An isomorphism of some replacement object does not identify the original map. Cohomology comparisons must preserve the actual `Sheaf.H`, structural scalars and canonical pullback/tensor map. Derived computations retain the installed unit and its equation. A one-sided contraction is not a two-sided equivalence.
 
+When changing an owner or namespace, check name resolution at every moved use.
+For example, module-sheaf restriction and cochain-complex restriction are
+different functors; use `Complex.restrict` explicitly where a surrounding
+module-sheaf namespace would select the other operation. Preserved source
+tokens alone do not establish preserved elaborated objects.
+
+When a bundled type moves upstream, its extensions can use the type's native
+namespace while their files remain downstream. Dot notation searches that
+namespace: keeping a K-theory extension under the former application-owned
+type name can break a call such as `C.K`. General bundling constructors belong
+with the upstream object; K-theory extensions still belong in the K-theory
+package. This preserves one type and a usable interface without an upstream
+dependency on the application.
+
 ## Interfaces and hypotheses
 
 Prefer one reusable class or explicit data interface for a mathematical property. Finite locally free objects use the canonical local-basis class; bridges preserve the same cover and basis witness. Keep universe and size bounds, quantifiers, canonical maps and exact hypotheses visible.
+
+Expose proved general facts as ordinary theorems or justified instances. A
+global proposition packaging a missing theorem over all schemes is an input
+obligation, not a replacement for that theorem. When its existing proof is
+admitted, provide the pointwise native interface and remove unnecessary input
+parameters from its corollaries and consumers. Retain conditional inputs only
+for genuinely unsupplied results or deliberately abstract mathematics; record
+that distinction in the family guide. Do not add a definitions-only layer merely
+to preserve a retired input wrapper.
 
 Finite type, finite presentation, local freeness and coherence are distinct properties. General quasicoherent finite-type categories and finite-presentation transport work below the locally Noetherian coherent interpretation. `Scheme.CoherentSheaf` retains an explicit locally Noetherian guard. Exact coherent functors keep the guards needed for their abelian/exact structures; an unused section variable must not become an accidental theorem premise.
 

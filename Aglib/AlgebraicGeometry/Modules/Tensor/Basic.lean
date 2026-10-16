@@ -112,3 +112,79 @@ instance moduleTensorRightFunctor_additive (Z : Scheme.{u}) (M : Z.Modules) :
   change (SheafOfModulesOfCommRing.tensorFunctor Z.sheaf ⋙ (evaluation _ _).obj M).Additive
   infer_instance
 end AlgebraicGeometry.Scheme.Modules
+
+namespace AlgebraicGeometry.Scheme.Modules
+
+variable (X : Scheme.{u})
+
+
+/-- The existing site tensor object specialized to scheme module sheaves. -/
+def tensorSheaf (M N : SheafOfModules.{u} X.ringCatSheaf) :
+    SheafOfModules.{u} X.ringCatSheaf :=
+  (SheafOfModulesOfCommRing.tensorLeftFunctor X.sheaf M).obj N
+
+/-- The existing sheafified tensor map in both module arguments. -/
+def tensorSheafMap {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
+    (f : M ⟶ M') (g : N ⟶ N') : tensorSheaf X M N ⟶ tensorSheaf X M' N' :=
+  (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map
+    (CategoryTheory.MonoidalCategory.tensorHom
+      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map f)
+      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map g))
+
+/-- Tensoring two actual module-sheaf isomorphisms. -/
+def tensorSheafIso {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
+    (e : M ≅ M') (f : N ≅ N') : tensorSheaf X M N ≅ tensorSheaf X M' N' := by
+  letI : MonoidalCategory (_root_.PresheafOfModules.{u} X.ringCatSheaf.obj) :=
+    inferInstanceAs (MonoidalCategory (PresheafOfModulesOfCommRing.{u} X.presheaf))
+  exact (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
+    (CategoryTheory.MonoidalCategory.tensorIso
+      ((SheafOfModules.forget X.ringCatSheaf).mapIso e)
+      ((SheafOfModules.forget X.ringCatSheaf).mapIso f))
+
+/-- The sheafification counit on the underlying presheaf of a module sheaf. -/
+def sheafifyForgetIso (M : SheafOfModules.{u} X.ringCatSheaf) :
+    (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj M.val ≅ M :=
+  asIso ((_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).counit.app M)
+
+/-- The canonical site left unitor, specialized to the scheme module category. -/
+def tensorSheafLeftUnit (M : SheafOfModules.{u} X.ringCatSheaf) :
+    tensorSheaf X (SheafOfModules.unit X.ringCatSheaf) M ≅ M :=
+  (SheafOfModulesOfCommRing.tensorLeftUnitIso X.sheaf).app M
+
+/-- The canonical site tensor braiding on scheme modules. -/
+def tensorSheafBraiding (M N : SheafOfModules.{u} X.ringCatSheaf) :
+    tensorSheaf X M N ≅ tensorSheaf X N M :=
+  SheafOfModulesOfCommRing.tensorBraiding X.sheaf M N
+
+/-- The original sheafification unit of the sectionwise tensor. -/
+def tensorSheafUnit (M N : SheafOfModules.{u} X.ringCatSheaf) :
+    PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val ⟶
+      (tensorSheaf X M N).val :=
+  (_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).unit.app _
+
+variable {M M' M'' N N' N'' : SheafOfModules.{u} X.ringCatSheaf}
+
+@[reassoc] theorem tensorSheafMap_comp (a : M ⟶ M') (b : N ⟶ N')
+    (c : M' ⟶ M'') (d : N' ⟶ N'') :
+    tensorSheafMap X a b ≫ tensorSheafMap X c d = tensorSheafMap X (a ≫ c) (b ≫ d) := by
+  unfold tensorSheafMap
+  rw [← Functor.map_comp]
+  congr 1
+  ext U : 1
+  apply ModuleCat.MonoidalCategory.tensor_ext
+  intro m n
+  rfl
+
+@[reassoc] theorem tensorSheafUnit_naturality (a : M ⟶ M') (b : N ⟶ N') :
+    tensorSheafUnit X M N ≫ (tensorSheafMap X a b).val =
+      PresheafOfModulesOfCommRing.Monoidal.tensorHom a.val b.val ≫ tensorSheafUnit X M' N' :=
+  ((_root_.PresheafOfModules.sheafificationAdjunction
+    (𝟙 X.ringCatSheaf.obj)).unit.naturality _).symm
+
+theorem tensorSheafMap_tmul (a : M ⟶ M') (b : N ⟶ N')
+    (U : X.Opensᵒᵖ) (m : M.val.obj U) (n : N.val.obj U) :
+    (tensorSheafMap X a b).val.app U ((tensorSheafUnit X M N).app U (m ⊗ₜ n)) =
+      (tensorSheafUnit X M' N').app U (a.val.app U m ⊗ₜ b.val.app U n) :=
+  congrArg (fun k ↦ k.app U (m ⊗ₜ n)) (tensorSheafUnit_naturality X a b)
+
+end AlgebraicGeometry.Scheme.Modules

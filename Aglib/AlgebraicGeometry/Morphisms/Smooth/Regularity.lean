@@ -6,8 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
-public import Aglib.AlgebraicGeometry.Stalk.Polynomial
-public import Aglib.AlgebraicGeometry.Morphisms.Etale.StalkMap
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
+public import Aglib.AlgebraicGeometry.Stalk.EtalePolynomial
 
 /-!
 Universal smooth-field regularity and dimension suppliers. The actual etale
@@ -23,31 +23,6 @@ namespace AlgebraicGeometry.Scheme
 
 universe u
 
-/-- An actual affine etale polynomial chart has regular local rings. -/
-theorem etale_polynomial_stalk_isRegularLocalRing
-    (K : Type u) [Field K] (n : ℕ) {B : Type u} [CommRing B]
-    (g : MvPolynomial (Fin n) K →+* B) (hg : g.Etale) (q : Spec (.of B)) :
-    IsRegularLocalRing ((Spec (.of B)).presheaf.stalk q) := by
-  let φ := Spec.map (CommRingCat.ofHom g)
-  let : Etale φ := (HasRingHomProperty.Spec_iff (P := @Etale)).mpr hg
-  let : IsRegularLocalRing
-      ((Spec (.of (MvPolynomial (Fin n) K))).presheaf.stalk (φ q)) :=
-    polynomial_spec_stalk_isRegularLocalRing K n (φ q)
-  exact AlgebraicGeometry.Scheme.isRegularLocalRing_stalk_of_etale φ q
-
-/-- Dimension in an actual affine etale polynomial chart is at most its
-number of coordinates at every point. -/
-theorem etale_polynomial_stalk_dimension_le
-    (K : Type u) [Field K] (n : ℕ) {B : Type u} [CommRing B]
-    (g : MvPolynomial (Fin n) K →+* B) (hg : g.Etale) (q : Spec (.of B)) :
-    ringKrullDim ((Spec (.of B)).presheaf.stalk q) ≤ n := by
-  let φ := Spec.map (CommRingCat.ofHom g)
-  let : Etale φ := (HasRingHomProperty.Spec_iff (P := @Etale)).mpr hg
-  let : IsRegularLocalRing
-      ((Spec (.of (MvPolynomial (Fin n) K))).presheaf.stalk (φ q)) :=
-    polynomial_spec_stalk_isRegularLocalRing K n (φ q)
-  rw [AlgebraicGeometry.Scheme.ringKrullDim_stalk_eq_of_etale φ q]
-  exact polynomial_spec_stalk_dimension_le K n (φ q)
 
 /-- Exact term of the original all-fields, all-smooth-schemes regularity
 interface, without perfectness, characteristic or relative-dimension premises. -/

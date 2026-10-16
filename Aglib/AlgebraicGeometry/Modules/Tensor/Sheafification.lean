@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Restriction
+public import Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification
 public import Aglib.AlgebraicGeometry.Modules.Locality.Exactness
 
 /-!
@@ -31,53 +32,6 @@ open AlgebraicGeometry.Scheme.Modules
 
 namespace AlgebraicGeometry.Scheme.Modules
 
-/-- The original module-sheafification comparison under open restriction. -/
-def restrictionSheafificationIso {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j] :
-    PresheafOfModulesOfCommRing.pushforward (restrictionRingHom j).hom ⋙
-        SheafOfModulesOfCommRing.associatedSheaf U.sheaf ≅
-      SheafOfModulesOfCommRing.associatedSheaf X.sheaf ⋙ Scheme.Modules.restrictFunctor j :=
-  SheafOfModules.sheafificationPushforwardIso
-    (F := j.opensFunctor) (J := Opens.grothendieckTopology U)
-    (K := Opens.grothendieckTopology X)
-    (S := U.ringCatSheaf) (R := X.ringCatSheaf)
-    ⟨whiskerRight (restrictionRingHom j).hom (forget₂ CommRingCat RingCat)⟩
-
-/-- The sheafified original unit remains invertible after the actual open restriction. -/
-theorem isIso_sheafified_restricted_unit {U X : Scheme.{u}} (j : U ⟶ X)
-    [IsOpenImmersion j] (P : PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :
-    IsIso ((SheafOfModulesOfCommRing.associatedSheaf U.sheaf).map
-      ((PresheafOfModulesOfCommRing.pushforward (restrictionRingHom j).hom).map
-        ((SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf).app P))) :=
-  SheafOfModules.isIso_sheafification_pushforward_unit
-    (F := j.opensFunctor) (J := Opens.grothendieckTopology U)
-    (K := Opens.grothendieckTopology X)
-    (S := U.ringCatSheaf) (R := X.ringCatSheaf)
-    ⟨whiskerRight (restrictionRingHom j).hom (forget₂ CommRingCat RingCat)⟩ P
-
-/-- A presheaf which is an actual module sheaf after open restriction has
-an invertible restricted original sheafification unit before further tensoring. -/
-theorem isIso_restricted_unit_of_iso_sheaf {U X : Scheme.{u}} (j : U ⟶ X)
-    [IsOpenImmersion j] (P : PresheafOfModulesOfCommRing.{u} X.sheaf.obj)
-    (M : U.Modules)
-    (e : (PresheafOfModulesOfCommRing.pushforward (restrictionRingHom j).hom).obj P ≅
-      (SheafOfModulesOfCommRing.toPresheaf U.sheaf).obj M) :
-    IsIso ((PresheafOfModulesOfCommRing.pushforward (restrictionRingHom j).hom).map
-      ((SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf).app P)) := by
-  let F := PresheafOfModulesOfCommRing.pushforward (restrictionRingHom j).hom
-  have hη : IsIso ((SheafOfModulesOfCommRing.associatedSheafUnit U.sheaf).app (F.obj P)) :=
-    (PresheafOfModules.sheafificationAdjunction
-      (R := U.ringCatSheaf) (𝟙 _)).isIso_unit_app_of_iso e
-  have h := SheafOfModules.sheafificationPushforwardComparison_unit
-    (F := j.opensFunctor) (J := Opens.grothendieckTopology U)
-    (K := Opens.grothendieckTopology X)
-    (S := U.ringCatSheaf) (R := X.ringCatSheaf)
-    ⟨whiskerRight (restrictionRingHom j).hom (forget₂ CommRingCat RingCat)⟩ P
-  change (SheafOfModulesOfCommRing.associatedSheafUnit U.sheaf).app (F.obj P) ≫
-      (SheafOfModulesOfCommRing.toPresheaf U.sheaf).map ((restrictionSheafificationIso
-          j).hom.app P) =
-    F.map ((SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf).app P) at h
-  rw [← h]
-  infer_instance
 
 /-- Actual line tensor preserves the original sheafification unit after sheafification. -/
 theorem isIso_line_tensor_sheafificationUnit {X : Scheme.{u}} (L : X.Modules)

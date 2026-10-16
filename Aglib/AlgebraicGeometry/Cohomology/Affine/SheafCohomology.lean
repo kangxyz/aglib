@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles
+public import Mathlib.Algebra.Category.ModuleCat.Sheaf.LocallyFree
 public import Mathlib.CategoryTheory.Adjunction.Whiskering
 public import Mathlib.Topology.Sheaves.Flasque
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.ExactSequences

@@ -1212,16 +1212,1690 @@
         "Algebra.TensorProduct"
       ],
       "destination_sha256": "5c00c0a65dcd0c0d936c166776742aa8d8902c0fb197305cc865704d8ed55bc2"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.AdicCompletion.DiscreteValuationRing",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+          "module": "Aglib.RingTheory.AdicCompletion.DiscreteValuationRing",
+          "sha256": "031e604f5a627bf10e6015d40de0dce347d9e9d8f392cff1a4bc2efae89f5704"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/10",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.maximalIdeal_eq_span",
+            "source_range": [
+              33,
+              40
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.maximalIdeal_eq_span_of_irreducible",
+            "target_range": [
+              46,
+              56
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/11",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.image_pow_ne_zero",
+            "source_range": [
+              42,
+              45
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.algebraMap_pow_ne_zero_of_irreducible",
+            "target_range": [
+              58,
+              62
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/12",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.ring_isDomain",
+            "source_range": [
+              47,
+              50
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.instIsDomainMaximalIdeal",
+            "target_range": [
+              64,
+              69
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/13",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.ring_isDiscreteValuationRing",
+            "source_range": [
+              52,
+              55
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.instIsDiscreteValuationRingMaximalIdeal",
+            "target_range": [
+              71,
+              77
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/14",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.image_irreducible",
+            "source_range": [
+              57,
+              60
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.irreducible_algebraMap",
+            "target_range": [
+              79,
+              82
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/15",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.ring_henselianLocalRing",
+            "source_range": [
+              62,
+              66
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.instHenselianLocalRingMaximalIdeal",
+            "target_range": [
+              84,
+              90
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/18",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.residueFieldEquiv",
+            "source_range": [
+              74,
+              76
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.residueFieldEquiv",
+            "target_range": [
+              93,
+              95
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/19",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.residueFieldEquiv_map",
+            "source_range": [
+              78,
+              80
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.residueFieldEquiv_map",
+            "target_range": [
+              97,
+              100
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/20",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.residueEquiv",
+            "source_range": [
+              83,
+              84
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.residueFieldEquivOfEquiv",
+            "target_range": [
+              103,
+              105
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/21",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.residueEquiv_comp",
+            "source_range": [
+              86,
+              90
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.residueFieldEquivOfEquiv_comp",
+            "target_range": [
+              107,
+              112
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/23",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.fractionMap",
+            "source_range": [
+              96,
+              100
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.fractionRingMap",
+            "target_range": [
+              115,
+              123
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/24",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.fractionMap_algebraMap",
+            "source_range": [
+              102,
+              106
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.fractionRingMap_algebraMap",
+            "target_range": [
+              125,
+              131
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/25",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.constantsMap",
+            "source_range": [
+              109,
+              110
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.fractionRingConstantsMap",
+            "target_range": [
+              134,
+              138
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/26",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/AdicDVR.lean",
+            "source_sha256": "dc7afe9b0b54d32e6db803543c440c5f3d96f5f6128389c09517acf11483a4d0",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.constantsMap_triangle",
+            "source_range": [
+              112,
+              116
+            ],
+            "carrier_map_normalization": "Source abbrev delta expansions listed separately; no isomorphic replacement carrier or alternate map.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/DiscreteValuationRing.lean",
+            "target_symbol": "AdicCompletion.fractionRingConstantsMap_eq_comp",
+            "target_range": [
+              140,
+              144
+            ]
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.AdicCompletion.FiniteModule",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/AdicCompletion/FiniteModule.lean",
+          "module": "Aglib.RingTheory.AdicCompletion.FiniteModule",
+          "sha256": "d2ee9118bf316829e66a47c39a323e5777f9cb2a53bf4fcc227371ddbe810d56"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/27",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/FiniteComplete.lean",
+            "source_sha256": "db6c0a91383357bf2289b3077c6664e9ae31eb82068ab5add2be5702ba24726f",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.FiniteComplete.finite_module",
+            "source_range": [
+              15,
+              35
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/FiniteModule.lean",
+            "target_symbol": "IsAdicComplete.of_finite",
+            "target_range": [
+              40,
+              61
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/28",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/FiniteComplete.lean",
+            "source_sha256": "db6c0a91383357bf2289b3077c6664e9ae31eb82068ab5add2be5702ba24726f",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.FiniteComplete.finite_algebra",
+            "source_range": [
+              38,
+              41
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/AdicCompletion/FiniteModule.lean",
+            "target_symbol": "IsAdicComplete.map_algebraMap_of_finite",
+            "target_range": [
+              64,
+              67
+            ]
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.FinitePresentation.FiniteStage",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/FinitePresentation/FiniteStage.lean",
+          "module": "Aglib.RingTheory.Flat.FinitePresentation.FiniteStage",
+          "sha256": "822e6307f15afad2f6dd818722b6568a179dc5f34580ba90a075398024fdb31c"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/12",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              2874,
+              2876
+            ],
+            [
+              2880,
+              2886
+            ],
+            [
+              2890,
+              2899
+            ],
+            [
+              2913,
+              2948
+            ],
+            [
+              2966,
+              3012
+            ],
+            [
+              3029,
+              3049
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.FinitePresentation.LocalModel",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/FinitePresentation/LocalModel.lean",
+          "module": "Aglib.RingTheory.Flat.FinitePresentation.LocalModel",
+          "sha256": "d035cde74e67c51f9332ee53716b248836e2b3b31100f50bba921561cd95a519"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/10",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              1964,
+              1979
+            ],
+            [
+              1994,
+              1999
+            ],
+            [
+              2001,
+              2015
+            ],
+            [
+              2021,
+              2022
+            ],
+            [
+              2024,
+              2025
+            ],
+            [
+              2031,
+              2071
+            ],
+            [
+              2088,
+              2093
+            ],
+            [
+              2095,
+              2098
+            ],
+            [
+              2100,
+              2116
+            ],
+            [
+              2120,
+              2157
+            ],
+            [
+              2162,
+              2174
+            ],
+            [
+              2178,
+              2192
+            ],
+            [
+              2197,
+              2227
+            ],
+            [
+              2236,
+              2239
+            ],
+            [
+              2241,
+              2243
+            ],
+            [
+              2245,
+              2250
+            ],
+            [
+              2254,
+              2271
+            ],
+            [
+              2292,
+              2315
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.FinitePresentation.LocalRegularity",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/FinitePresentation/LocalRegularity.lean",
+          "module": "Aglib.RingTheory.Flat.FinitePresentation.LocalRegularity",
+          "sha256": "1b6143e66fb90520e3483d3bd18ad95b212e64b7288da836a5147ef1a6c22e19"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/11",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              2339,
+              2372
+            ],
+            [
+              2407,
+              2419
+            ],
+            [
+              2422,
+              2428
+            ],
+            [
+              2432,
+              2448
+            ],
+            [
+              2672,
+              2678
+            ],
+            [
+              2682,
+              2712
+            ],
+            [
+              2818,
+              2858
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.FinitePresentation.Localization",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/FinitePresentation/Localization.lean",
+          "module": "Aglib.RingTheory.Flat.FinitePresentation.Localization",
+          "sha256": "636fb8cbf19c8d3eedaa0742b8a250eaaa39e0b3a6ff574e2453491e83035b6e"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/9",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              1864,
+              1875
+            ],
+            [
+              1879,
+              1890
+            ],
+            [
+              1901,
+              1917
+            ],
+            [
+              1928,
+              1944
+            ],
+            [
+              2465,
+              2470
+            ],
+            [
+              2472,
+              2477
+            ],
+            [
+              2486,
+              2488
+            ],
+            [
+              2492,
+              2510
+            ],
+            [
+              2512,
+              2516
+            ],
+            [
+              2518,
+              2524
+            ],
+            [
+              2534,
+              2537
+            ],
+            [
+              2539,
+              2541
+            ],
+            [
+              2547,
+              2550
+            ],
+            [
+              2554,
+              2564
+            ],
+            [
+              2566,
+              2574
+            ],
+            [
+              2576,
+              2585
+            ],
+            [
+              2617,
+              2629
+            ],
+            [
+              2638,
+              2649
+            ],
+            [
+              2652,
+              2656
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.FinitePresentation.Relations",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/FinitePresentation/Relations.lean",
+          "module": "Aglib.RingTheory.Flat.FinitePresentation.Relations",
+          "sha256": "6a75cba4e567cd8d82576a3a867c7901d1c8b31a696ead7f2b02393a14bec748"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/8",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              1228,
+              1251
+            ],
+            [
+              1255,
+              1268
+            ],
+            [
+              1275,
+              1289
+            ],
+            [
+              1293,
+              1318
+            ],
+            [
+              1384,
+              1414
+            ],
+            [
+              1417,
+              1423
+            ],
+            [
+              1443,
+              1475
+            ],
+            [
+              1480,
+              1490
+            ],
+            [
+              1673,
+              1694
+            ],
+            [
+              1698,
+              1711
+            ],
+            [
+              1729,
+              1750
+            ],
+            [
+              1753,
+              1758
+            ],
+            [
+              1763,
+              1812
+            ],
+            [
+              1830,
+              1844
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.LocalCriterion.Adic",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/LocalCriterion/Adic.lean",
+          "module": "Aglib.RingTheory.Flat.LocalCriterion.Adic",
+          "sha256": "c2d5623bdbae6910b0cc2cf9478ab5c31261f884265201f22a8d15ea525d0b78"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/1",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              292,
+              297
+            ],
+            [
+              299,
+              300
+            ],
+            [
+              302,
+              308
+            ],
+            [
+              310,
+              322
+            ],
+            [
+              326,
+              342
+            ],
+            [
+              346,
+              360
+            ],
+            [
+              364,
+              377
+            ],
+            [
+              393,
+              406
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.LocalCriterion.Residue",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/LocalCriterion/Residue.lean",
+          "module": "Aglib.RingTheory.Flat.LocalCriterion.Residue",
+          "sha256": "bd1270107d23b8b832dc7506e26ccefea8f9d0668ee6b3115259283800482c7e"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/3",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              493,
+              493
+            ],
+            [
+              495,
+              496
+            ],
+            [
+              498,
+              504
+            ],
+            [
+              506,
+              510
+            ],
+            [
+              512,
+              512
+            ],
+            [
+              514,
+              514
+            ],
+            [
+              516,
+              517
+            ],
+            [
+              519,
+              524
+            ],
+            [
+              526,
+              536
+            ],
+            [
+              538,
+              549
+            ],
+            [
+              554,
+              600
+            ],
+            [
+              609,
+              623
+            ],
+            [
+              627,
+              634
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.LocalCriterion.ResidueSyzygies",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/LocalCriterion/ResidueSyzygies.lean",
+          "module": "Aglib.RingTheory.Flat.LocalCriterion.ResidueSyzygies",
+          "sha256": "70c4f8a293368154d5b9291f13a6f30c97b93505332e959e0fb5775b5c4a9bef"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/2",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              1509,
+              1510
+            ],
+            [
+              1514,
+              1515
+            ],
+            [
+              1517,
+              1523
+            ],
+            [
+              1526,
+              1534
+            ],
+            [
+              1536,
+              1537
+            ],
+            [
+              1539,
+              1540
+            ],
+            [
+              1552,
+              1567
+            ],
+            [
+              1571,
+              1583
+            ],
+            [
+              1596,
+              1599
+            ],
+            [
+              1603,
+              1623
+            ],
+            [
+              1627,
+              1648
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.LocalCriterion.Tensor",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/LocalCriterion/Tensor.lean",
+          "module": "Aglib.RingTheory.Flat.LocalCriterion.Tensor",
+          "sha256": "8796acf0396c96b9adafa34efc4192ba8a2e7527ebd7e054a397cb635a7ec261"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/0",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              97,
+              133
+            ],
+            [
+              135,
+              142
+            ],
+            [
+              144,
+              155
+            ],
+            [
+              239,
+              259
+            ],
+            [
+              261,
+              288
+            ],
+            [
+              380,
+              390
+            ],
+            [
+              1330,
+              1347
+            ],
+            [
+              1351,
+              1364
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.PrincipalQuotient.BaseChange",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/PrincipalQuotient/BaseChange.lean",
+          "module": "Aglib.RingTheory.Flat.PrincipalQuotient.BaseChange",
+          "sha256": "58e2e575a6e880f3075cc54a3da839e2361fda538efb3742f3aaf49124d8160b"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/5",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              185,
+              190
+            ],
+            [
+              193,
+              198
+            ],
+            [
+              204,
+              207
+            ],
+            [
+              215,
+              226
+            ],
+            [
+              232,
+              237
+            ],
+            [
+              2382,
+              2392
+            ],
+            [
+              2730,
+              2734
+            ],
+            [
+              2738,
+              2748
+            ],
+            [
+              3067,
+              3075
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.PrincipalQuotient.Basic",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/PrincipalQuotient/Basic.lean",
+          "module": "Aglib.RingTheory.Flat.PrincipalQuotient.Basic",
+          "sha256": "c5179dbbf3de523996266123c3ad703e534f9bb1cd0492bfe640bdac52eca529"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/4",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              161,
+              167
+            ],
+            [
+              172,
+              177
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/PrincipalQuotient/Fibrewise.lean",
+          "module": "Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise",
+          "sha256": "63af812f29f5b5d6ea9cb4f25f30b75a3560ed7b0e722a22e0181ae91a6c0f39"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/13",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              3083,
+              3087
+            ],
+            [
+              3092,
+              3143
+            ],
+            [
+              3160,
+              3168
+            ],
+            [
+              3234,
+              3256
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.PrincipalQuotient.Local",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/PrincipalQuotient/Local.lean",
+          "module": "Aglib.RingTheory.Flat.PrincipalQuotient.Local",
+          "sha256": "d0f0fcde3c58534384f4d792d4fb6d192de2802d857500101ed5f40781758f52"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/6",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              419,
+              478
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Flat.PrincipalQuotient.Localization",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Flat/PrincipalQuotient/Localization.lean",
+          "module": "Aglib.RingTheory.Flat.PrincipalQuotient.Localization",
+          "sha256": "1d8a878d4a3bdd9066ce647e0c9655398c6fdce7c7be1416cdf000ec37cb9ae1"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-fibrewise-flat/native/frozen-targets.json",
+            "sha256": "48a21338535054a8b17ad199be3ed53544b25cc9f5904e1cc8386d67000dfd0f"
+          },
+          "pointer": "/producer_modules/7",
+          "original_source": {
+            "path": "/private/tmp/r5-investigations/aglib-downstream/r5/checkout/lean/R5Lab/AlgebraicGeometry/Curves/RelativeDivisors/FibrewiseRegularity.lean",
+            "bytes": 160896,
+            "sha256": "79621aa63046ca16c5f98424d77f16bc8cd45b99a84ddc8bc561fc8f9ccfe923"
+          },
+          "source_revision": "79307ff88f07d34fd5c3edb859f799c55e38f290 (frozen dirty source file identified by SHA-256)",
+          "selected_source_ranges": [
+            [
+              2594,
+              2600
+            ],
+            [
+              2603,
+              2608
+            ],
+            [
+              2758,
+              2776
+            ],
+            [
+              2787,
+              2794
+            ],
+            [
+              3184,
+              3199
+            ],
+            [
+              3202,
+              3217
+            ]
+          ]
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.IntegralClosure.FiniteEtale",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+          "module": "Aglib.RingTheory.IntegralClosure.FiniteEtale",
+          "sha256": "eb5321c2bb9c63e5e788252499608840a452a3e2dd8c258d7fff0d61c2047d49"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/0",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/EtaleAlgebra.lean",
+            "source_sha256": "e99fffbbabe662d55b43913ceb638bede808a016c2424b0e7c3beb06169ac7b4",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteEtaleInertiaEtale.normalizationProdEquiv",
+            "source_range": [
+              12,
+              41
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.equivPi",
+            "target_range": [
+              50,
+              79
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/2",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.finite",
+            "source_range": [
+              24,
+              44
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.finite_of_etale",
+            "target_range": [
+              87,
+              108
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/3",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.isLocalization",
+            "source_range": [
+              48,
+              60
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.isLocalization",
+            "target_range": [
+              112,
+              124
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/4",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.genericFiberEquiv",
+            "source_range": [
+              63,
+              68
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.genericFiberEquiv",
+            "target_range": [
+              127,
+              132
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/5",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.genericFiberEquiv_tmul",
+            "source_range": [
+              70,
+              77
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.genericFiberEquiv_tmul",
+            "target_range": [
+              134,
+              141
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/6",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.free",
+            "source_range": [
+              80,
+              86
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.free_of_etale",
+            "target_range": [
+              144,
+              150
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/7",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/FiniteEtale/Normalization/FiniteModel.lean",
+            "source_sha256": "60dd994f14b6f00acbaf105021a663a100e5addd20e031efc0d8ccbffff991c1",
+            "source_symbol": "R5Lab.AlgebraicGeometry.FiniteEtale.FiniteNormalization.flat",
+            "source_range": [
+              88,
+              91
+            ],
+            "carrier_map_normalization": "Source Model R A delta-expanded to the literal integralClosure R A.",
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/IntegralClosure/FiniteEtale.lean",
+            "target_symbol": "integralClosure.flat_of_etale",
+            "target_range": [
+              152,
+              155
+            ]
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.LocalRing.SeparatedPrincipal",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/LocalRing/SeparatedPrincipal.lean",
+          "module": "Aglib.RingTheory.LocalRing.SeparatedPrincipal",
+          "sha256": "ac51ae9eff4eb05af927a8e3c7416e6100d0646e970514a58fe961e40b570772"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/31",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/SeparatedPrincipal.lean",
+            "source_sha256": "fb4fd950fd8a455c23d5b40ed3b689cd553d9c7fed4b00f131f3de1c44a235b6",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.unit_mul_pow_of_not_mem",
+            "source_range": [
+              18,
+              38
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/LocalRing/SeparatedPrincipal.lean",
+            "target_symbol": "IsLocalRing.exists_eq_unit_mul_pow_of_not_mem_maximalIdeal_pow",
+            "target_range": [
+              44,
+              64
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/32",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/SeparatedPrincipal.lean",
+            "source_sha256": "fb4fd950fd8a455c23d5b40ed3b689cd553d9c7fed4b00f131f3de1c44a235b6",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.unit_mul_pow",
+            "source_range": [
+              43,
+              52
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/LocalRing/SeparatedPrincipal.lean",
+            "target_symbol": "IsLocalRing.exists_eq_unit_mul_pow_of_isHausdorff",
+            "target_range": [
+              69,
+              78
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/33",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/SeparatedPrincipal.lean",
+            "source_sha256": "fb4fd950fd8a455c23d5b40ed3b689cd553d9c7fed4b00f131f3de1c44a235b6",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.domain_of_pow_ne_zero",
+            "source_range": [
+              56,
+              70
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/LocalRing/SeparatedPrincipal.lean",
+            "target_symbol": "IsLocalRing.isDomain_of_isHausdorff_of_maximalIdeal_eq_span",
+            "target_range": [
+              82,
+              97
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/34",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/SeparatedPrincipal.lean",
+            "source_sha256": "fb4fd950fd8a455c23d5b40ed3b689cd553d9c7fed4b00f131f3de1c44a235b6",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.AdicDVR.dvr_of_pow_ne_zero",
+            "source_range": [
+              73,
+              84
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/LocalRing/SeparatedPrincipal.lean",
+            "target_symbol": "IsLocalRing.isDiscreteValuationRing_of_isHausdorff_of_maximalIdeal_eq_span",
+            "target_range": [
+              100,
+              112
+            ]
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.RingTheory.Smooth.AdicCompletion",
+      "destinations": [
+        {
+          "path": "Aglib/RingTheory/Smooth/AdicCompletion.lean",
+          "module": "Aglib.RingTheory.Smooth.AdicCompletion",
+          "sha256": "5fffe52c52bb314a8c22e217a52d94ec8e24f619f7dfdfd497af96a62ff6ef4b"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/29",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/FiniteComplete.lean",
+            "source_sha256": "db6c0a91383357bf2289b3077c6664e9ae31eb82068ab5add2be5702ba24726f",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.FiniteComplete.lift_to_finite_algebra",
+            "source_range": [
+              44,
+              50
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/Smooth/AdicCompletion.lean",
+            "target_symbol": "Algebra.FormallySmooth.exists_mkₐ_comp_eq_of_finite",
+            "target_range": [
+              46,
+              52
+            ]
+          }
+        },
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/generality-audit/implementation-local-algebra/correspondence.json",
+            "sha256": "90f2485a818c7a041efd6d8f437abaca2e54e5aa111eb381cd06c0fdfc8e2934"
+          },
+          "pointer": "/declarations/30",
+          "record": {
+            "source_path": "R5Lab/AlgebraicGeometry/LocalRing/ResidueLift.lean",
+            "source_sha256": "bb3feea43f8c1adf7e1468e22759fadcc67cdec9ba0c26e566b6e7686b448243",
+            "source_symbol": "R5Lab.AlgebraicGeometry.LocalRing.FiniteComplete.tensor_map_surjective",
+            "source_range": [
+              16,
+              31
+            ],
+            "disposition": "new_native",
+            "target_path": "Aglib/RingTheory/Smooth/AdicCompletion.lean",
+            "target_symbol": "Algebra.FormallySmooth.tensorProduct_map_surjective_of_finite",
+            "target_range": [
+              58,
+              73
+            ]
+          }
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

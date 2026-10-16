@@ -2,7 +2,7 @@
 
 [Basic](Basic.lean), imported as `Aglib.AlgebraicGeometry.Modules.ProjectionFormula.Basic`, constructs `Scheme.Modules.projectionFormulaMap f E M` for actual module sheaves: `E ⊗ f_*M → f_*(f*E ⊗ M)`. Its forward map is built from native tensor/direct-image and adjunction maps. The section formula and coefficient naturality identify that map.
 
-[FiniteLocallyFree](FiniteLocallyFree.lean) supplies `isIso_projectionFormulaMap` and `projectionFormulaIso` for an arbitrary scheme morphism with finite locally free target coefficient `E`, and arbitrary source coefficient `M`. Flatness or Noetherianity of the scheme map is not assumed. Local finite bases reduce the map to its actual affine finite-free comparison.
+[FiniteLocallyFree](FiniteLocallyFree.lean) supplies `isIso_projectionFormulaMap` and `projectionFormulaIso` for an arbitrary scheme morphism with finite locally free target coefficient `E`, and arbitrary source coefficient `M`. Flatness or Noetherianity of the scheme map is not assumed. Local finite bases reduce the map to its actual affine finite-free comparison. The same leaf owns `projectionFormulaNatIso f E` and `projectionFormulaNatIso_hom_app`; its forward component is literally the original `projectionFormulaMap f E M`.
 
 [ClosedImmersion](ClosedImmersion.lean) instead gives `isIso_projectionFormulaMap_of_closedImmersion` with arbitrary `E` and `M`. It supplies natural comparison isomorphisms in both coefficient variables, retaining the original projection map; no finite-local-free hypothesis is needed in this closed case.
 

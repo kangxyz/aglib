@@ -50,7 +50,8 @@ theorem affineLocallyFiniteType_pushforward_affine {Z : Scheme.{u}} (R : CommRin
   rw [hi]
   exact (affineLocallyFiniteType (Spec R)).prop_of_iso
     ((pushforwardComp e.hom (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))).app M)
-    (Ideal.affineLocallyFiniteType_pushforward R I (affineLocallyFiniteType_pushforward_iso e hM))
+    (QuasiCoherent.Pushforward.ClosedImmersion.Ideal.affineLocallyFiniteType_pushforward
+      R I (affineLocallyFiniteType_pushforward_iso e hM))
 
 /-- Actual direct image along every closed immersion preserves coherence.
 The proof tests actual affine charts and uses actual open base change. -/
@@ -112,12 +113,15 @@ abbrev coherentOpenBaseChange {V : Scheme.{u}}
 quotient presentation, including the source scheme isomorphism. -/
 def affinePresentationComparison {Z : Scheme.{u}} [IsLocallyNoetherian Z]
     (R : CommRingCat.{u}) [IsNoetherianRing R] (i : Z ⟶ Spec R) [IsClosedImmersion i]
-    (I : Ideal R) (e : Z ≅ Spec (Ideal.closedRing R I))
-    (hi : i = e.hom ≫ Ideal.closedMap R I) :
+    (I : Ideal R) (e : Z ≅ Spec
+      (QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedRing R I))
+    (hi : i = e.hom ≫ QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedMap R I)
+      :
     coherentPushforward i ≅ finiteTypeSheavesRestriction e.inv ⋙ Ideal.coherentPushforward R I :=
   Functor.fullyFaithfulCancelRight (finiteTypeSheavesToModules (Spec R))
     (Functor.isoWhiskerLeft (finiteTypeSheavesToModules Z)
-      (pushforwardCongr hi ≪≫ (pushforwardComp e.hom (Ideal.closedMap R I)).symm ≪≫
+      (pushforwardCongr hi ≪≫ (pushforwardComp e.hom
+        (QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedMap R I)).symm ≪≫
         Functor.isoWhiskerRight (Scheme.Modules.pushforwardIsoRestrict e) _))
 
 /-- The exact closed-immersion specialization of finite direct image. -/
@@ -129,6 +133,7 @@ abbrev coherentPushforwardExact :
 quotient pushforward already constructed in the affine case. -/
 @[simp] theorem coherentPushforward_quotient (R : CommRingCat.{u}) [IsNoetherianRing R]
     (I : Ideal R) :
-    coherentPushforward (Ideal.closedMap R I) = Ideal.coherentPushforward R I := rfl
+    coherentPushforward (QuasiCoherent.Pushforward.ClosedImmersion.Ideal.closedMap R
+      I) = Ideal.coherentPushforward R I := rfl
 
 end AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion

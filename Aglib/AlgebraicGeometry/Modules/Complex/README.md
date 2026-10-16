@@ -12,6 +12,38 @@ The object is the actual integer-indexed `CochainComplex X.Modules ℤ`. A compl
 
 Lower inputs are the actual module functors, [stalk detection](../Stalk/README.md), [locally free tensor exactness](../LocallyFree/Tensor/README.md) and generic homological algebra. Godement comparisons and derived open-cover detection consume these ordinary maps. No compactness, quasicoherence or perfect-complex predicate is imposed by the general complex interfaces.
 
-[Perfect](../Perfect/README.md) imposes global term bounds and finite locally free terms for strict perfect objects, or local strict representatives after quasi-isomorphism localization for locally perfect objects. Those predicates are additional structure on the ordinary complexes used here.
+[PerfectComplexes](../PerfectComplexes/README.md) imposes global term bounds and finite locally free terms for strict perfect objects, or local strict representatives after quasi-isomorphism localization for locally perfect objects. Those predicates are additional structure on the ordinary complexes used here.
 
 [Homology](Homology.lean), imported as `Aglib.AlgebraicGeometry.Modules.Complex.Homology`, defines `Scheme.Modules.Complex.homologyIsoOfDerivedIso`: an isomorphism between the actual `DerivedCategory.Q` images of `K,L` induces `K.homology i ≅ L.homology i`. It uses the standard native derived category in morphism universe `u + 1`, composing the inverse source component of `DerivedCategory.homologyFunctorFactors`, the mapped derived isomorphism and the target factorization component. For an open immersion `j : U ⟶ X`, `restrictHomologyIso j K i` identifies the homology of `(restrict j).obj K` with the actual restriction of `K.homology i`, via `(K.sc i).mapHomologyIso`. These comparisons apply to arbitrary ordinary complexes, without bounds, termwise quasicoherence or perfectness hypotheses.
+
+[Contraction](Contraction.lean) lifts a supplied isomorphism `F ⋙ G ≅ 𝟭 X.Modules` for
+additive endofunctors to ordinary integer-indexed complexes and to bounded-below
+complexes. The component equations retain the same supplied contraction.
+[PlusQuasiIso](PlusQuasiIso.lean) gives composition, isomorphism and whiskering
+rules for actual bounded-below quasi-isomorphisms. Its unit-postcomposition result
+retains the supplied componentwise quasi-isomorphism and both functors' stated
+quasi-isomorphism-preservation hypotheses.
+
+[Locality](Locality.lean) detects a quasi-isomorphism of complexes of any shape
+from its actual restrictions to a jointly covering family of open immersions.
+The cover need not be finite. The family of maps, the covering proof and every
+local quasi-isomorphism are explicit inputs; there is no Noetherian or
+quasicoherence premise. Derived open-cover detection remains in
+[cohomological locality](../../Cohomology/Locality/README.md).
+
+[Restriction](Restriction.lean) owns ordinary `restrict_congr` and `restrictCompIso` for actual open immersions. [Native derived restriction](../DerivedCategory/Restriction.lean) owns `derivedRestrict`, its shift/triangulated structures, `derivedRestrictFactors` and `restrictDerivedIso`, on `DerivedCategory X.Modules`. [DerivedCategory/Basic](../DerivedCategory/Basic.lean) supplies the local `Scheme.Modules.standardHasDerivedCategory` choice, retaining the same native `HasDerivedCategory.standard` data in morphism universe `u + 1` for `Scheme.{u}`. The source Q-factorization components, including the inverse source component in derived-isomorphism transport, are unchanged. These lower leaves impose no perfectness hypothesis.
+
+[LocalHomotopy](LocalHomotopy.lean) gives the actual cochain predicate
+`HomotopyAbove`, transports nullhomotopies through supplied natural
+isomorphisms, and constructs a nullhomotopy when that predicate reaches the
+supplied lower zero-term bound. It also records preservation of acyclicity by
+exact open restriction. These ordinary statements require no perfectness and
+sit below the finite-locally-free local correction theorem.
+
+[Pullback](Pullback.lean) supplies the actual identity and composition
+isomorphisms for ordinary complex pullback, with no flatness or term-bound
+hypothesis. [Sheafification](Sheafification.lean) retains the actual degreewise
+sheafification counit, its literal component formula and its naturality on
+arbitrary complexes. It reuses generic module-sheafification additivity.
+The [flat family](Flat/README.md) imposes actual stalkwise flatness and strict
+upper term bounds for the appropriate replacements and pullback results.

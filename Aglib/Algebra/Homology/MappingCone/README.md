@@ -11,3 +11,8 @@
 [ShortExact](ShortExact.lean), imported as `Aglib.Algebra.Homology.MappingCone.ShortExact`, constructs `CochainComplex.mappingConeNatTransFunctor α` for `α : F ⟶ G`, where `F,G : D ⥤ CochainComplex A ℤ` and `A` is abelian. Its degree-`n` comparison `mappingConeTermIso` is with `K.X (n + 1) ⊞ L.X n`; `mappingConeTermIso_naturality` identifies the actual cone map with the block-diagonal endpoint maps. If `D` is preadditive and both functors are additive, `mappingConeNatTransFunctor_shortExact` says that a short complex `S` has a short exact cone image whenever both `S.map F` and `S.map G` are short exact. The lower `CategoryTheory.ShortComplex.biprodMap` and `shortExact_biprodMap` supply the corresponding block-diagonal short-exact sequence in an abelian category.
 
 The identity-cone pushout argument uses the lower [biproduct and cokernel pushout interfaces](../../../CategoryTheory/Limits/README.md). [Basis exactness](../../../Topology/Sheaves/README.md) and [flasque cohomology](../../../AlgebraicGeometry/Cohomology/Flasque/README.md) consume cone criteria. The identity-cone construction is admitted as generic homological algebra; its original cylinder or perfect-complex applications remain provenance.
+
+[NullHomotopy](NullHomotopy.lean) proves that, in an arbitrary abelian category,
+a nullhomotopy of a chain map followed by the original cone inclusion supplies
+an actual chain lift up to an actual chain homotopy. Its proof uses the native
+homotopy-category cone triangle and retains the original signed cone maps.

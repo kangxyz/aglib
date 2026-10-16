@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic
-public import Aglib.AlgebraicGeometry.Modules.Invertible.Tensor
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
 
 /-!
 # Comparison with the canonical specialized tensor sheaf
@@ -25,17 +25,17 @@ namespace AlgebraicGeometry.Scheme.Modules
 
 lemma tensorLeftFunctor_obj_eq_tensorSheaf (X : Scheme.{u}) (M N : X.Modules) :
     (SheafOfModulesOfCommRing.tensorLeftFunctor X.sheaf M).obj N =
-      Invertible.tensorSheaf X M N := rfl
+      _root_.AlgebraicGeometry.Scheme.Modules.tensorSheaf X M N := rfl
 
 lemma tensorMap_eq_tensorSheafMap (X : Scheme.{u}) {M M' N N' : X.Modules}
     (f : M ⟶ M') (g : N ⟶ N') :
     (SheafOfModulesOfCommRing.associatedSheaf X.sheaf).map
       ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).map f ⊗ₘ
         (SheafOfModulesOfCommRing.toPresheaf X.sheaf).map g) =
-      Invertible.tensorSheafMap X f g := rfl
+      _root_.AlgebraicGeometry.Scheme.Modules.tensorSheafMap X f g := rfl
 
 lemma tensorBraiding_eq_tensorSheafBraiding (X : Scheme.{u}) (M N : X.Modules) :
     SheafOfModulesOfCommRing.tensorBraiding X.sheaf M N =
-      Invertible.tensorSheafBraiding X M N := rfl
+      _root_.AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding X M N := rfl
 
 end AlgebraicGeometry.Scheme.Modules

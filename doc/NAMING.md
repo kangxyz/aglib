@@ -12,6 +12,20 @@ A source path should identify the mathematical subject with enough context to di
 
 This is a contextual rule. Preserve complete mathematical object names where they carry meaning: `StructureSheaf`, `ClosedImmersion`, `RegularLocalRing` and `RootsOfUnity` are examples. The actual type `AlgebraicGeometry.Scheme.CoherentSheaf` retains its name and its locally Noetherian guard. Shortening the source-family or helper namespace to `Modules.Coherent` does not change that type or remove the guard.
 
+The parent must fix the same mathematical object. `Morphisms.Finite` and
+`Modules.Coherent` satisfy that condition. `Modules.Perfect` does not: its objects
+are complexes, so use `Modules.PerfectComplexes`. A declaration such as
+`Scheme.Modules.Complex.Perfect` already has the complex context; module paths
+and declaration namespaces need not be identical. In a family name, plural
+`PerfectComplexes` names the collection of objects and its interfaces; use a
+singular object name when naming an individual bundled type.
+
+Names must cover every object in the family. `Spec.PolynomialLaurent` includes
+polynomial and Laurent spectra and their actual relative base changes. Calling
+that whole family `AffineSpace` omits its Laurent object, while `AffineScheme`
+would misclassify relative products over nonaffine bases. The name does not
+assert an unconstructed multiplicative-group structure.
+
 File names should state the object, property or comparison they provide. `Products.IntegerBase` records products over the integer spectrum; `IntegralBase` would incorrectly suggest an arbitrary integral-base hypothesis. `InternalHom` denotes the constructed structure-linear internal-Hom sheaf and its actual section/restricted-morphism comparisons. The name alone supplies no closed-monoidal adjunction or derived-Hom theorem.
 
 Use the same property spelling at comparable levels: `Morphisms.Finite` and `Modules.Coherent.Pushforward.Finite` both concern finite morphisms, whereas `QuasiCoherent.FiniteType` concerns finite-type sheaves. Preserve this mathematical distinction.

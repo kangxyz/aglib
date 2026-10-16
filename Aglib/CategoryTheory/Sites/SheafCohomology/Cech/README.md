@@ -1,9 +1,32 @@
 # Generic Cech exactness and coefficient comparison
 
-Import `Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness` for `CategoryTheory.Cech.splitCech_exactAt_succ` and `restrictedCech_exactAt_succ`. A specified section from an actual terminal object into a cover member gives positive-degree exactness; restriction to a cover member gives the corresponding restricted result. Coefficients are abelian and the exact product-universe existence assumptions are retained.
+[Exactness](Exactness.lean), imported as
+`Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness`, works over an
+arbitrary category with finite products. `splitCech_exactAt_succ` gives
+positive-degree exactness from a specified map of an actual terminal object
+into a selected family member. `cechCosimplicialChangeIso` compares the original
+Cech objects under a finite-product-preserving functor with thin target.
+Abelian coefficients and the exact product-universe hypotheses stay explicit.
 
-[Comparison](Comparison.lean) gives `cechComplexCoefficientIso`, `cechCosimplicialCoefficientIso` and `cechCosimplicialIntersectIso` for actual coefficient/alternating-coface/intersection comparison. [ExactSequences](ExactSequences.lean) supplies native module-cochain formulas, cocycle/coboundary calculations and `cech_shortExact_of_sections` with the original sectionwise short-exact premises.
+[Comparison](Comparison.lean) gives `cechCosimplicialCoefficientIso`,
+`alternatingCofaceCoefficientIso` and `cechComplexCoefficientIso` for the actual
+coefficient and alternating-coface comparisons. The cochain comparison retains
+additivity and the stated product-preservation assumptions.
 
-[FiniteCoefficients](FiniteCoefficients.lean) separately supplies `CategoryTheory.Cech.finiteCechCosimplicialCoefficientIso` and `finiteCechComplexCoefficientIso` for a finite family and a coefficient functor preserving finite products. It has no scheme, field or covering hypothesis. Agreement with the all-product comparison retains the separately stated `PreservesLimitsOfSize.{w,w}` premise.
+[ExactSequences](ExactSequences.lean) supplies the original differential formula
+`cech_d_comp_π`, actual products of module short exact sequences and
+`cech_shortExact_of_sections`. The last result assumes short exactness on all
+finite products of the selected objects; a covering alone supplies no such
+hypothesis. These statements contain no topological-space or sheaf condition.
 
-The focused `Aglib.CategoryTheory.Sites.SheafCohomology.Cech` leaves are lower inputs to scheme injective Cech exactness, affine principal-cover exactness and canonical comparison with `Sheaf.H`. They make no automatic sectionwise-exactness conclusion from merely having a cover.
+[FiniteCoefficients](FiniteCoefficients.lean) separately gives the finite-family
+coefficient comparisons for a finite-product-preserving coefficient functor.
+Agreement with the all-product comparison retains the separately stated
+`PreservesLimitsOfSize.{w,w}` premise.
+
+[Topological Cech restriction and cocycles](../../../../Topology/Sheaves/Cech/README.md)
+own the actual `TopCat`/`Opens X` specializations. Import those leaves directly
+for open-intersection restriction, restricted exactness or the literal
+pairwise/triple-intersection cocycle calculations. Their declarations retain
+the native `CategoryTheory.Cech` namespace. Generic leaves do not import their
+topological consumers.

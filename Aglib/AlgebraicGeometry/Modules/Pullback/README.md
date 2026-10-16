@@ -4,7 +4,7 @@
 
 [FlatMorphism](FlatMorphism.lean), imported as `Aglib.AlgebraicGeometry.Modules.Pullback.FlatMorphism`, gives `Scheme.Modules.pullbackModuleStalkIso` with extension of scalars along the actual stalk map. `flatExactPullback` and `shortExact_pullback_of_flat_all` retain flatness of the scheme morphism for exactness on arbitrary coefficients.
 
-[OpenRestriction](OpenRestriction.lean) owns generic restriction/sheafification and pullback-square helpers below the invertible tier. The actual owners include `Scheme.Modules.Pullback.OpenRestriction` and `PresheafOfModules.Restriction`; `PresheafOfModules.isIso_of_locallyBijective` and `Scheme.Modules.locallyBijective_of_local_isIso` use the original local sheafification maps.
+[OpenRestriction](OpenRestriction.lean) owns the actual scheme restriction/pullback-square helpers below the invertible tier. The arbitrary-site `PresheafOfModules.Restriction` constructions and `PresheafOfModules.isIso_of_locallyBijective` are imported from [module-presheaf sheafification restriction](../../../Algebra/Category/ModuleCat/Presheaf/SheafificationRestriction.lean). The scheme criterion `Scheme.Modules.locallyBijective_of_local_isIso` consumes the same original local maps.
 
 Consumers are finite-presentation/quasicoherent transport, [arbitrary vector-bundle pullback](../LocallyFree/README.md), invertible tensor pullback and cohomological base change. Exactness for all module sheaves under a flat morphism and exactness for locally split vector-bundle sequences under arbitrary morphisms are separate results.
 

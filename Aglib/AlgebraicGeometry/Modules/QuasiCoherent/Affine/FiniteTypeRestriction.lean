@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Exact
-public import Aglib.Algebra.Category.ModuleCat.FiniteLocalization
+public import Aglib.Algebra.Category.FGModuleCat.Localization
 public import Aglib.AlgebraicGeometry.Modules.Exact
 /-! # Actual principal-open restriction of affine finite-type sheaves -/
 @[expose] public section

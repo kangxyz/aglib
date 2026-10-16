@@ -7,12 +7,13 @@ module
 
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness
 /-!
-# Comparison isomorphisms for the original Cech complex
+# Coefficient comparison for the Cech complex over arbitrary categories
 
-`cechComplexCoefficientIso` commutes mathlib's Cech cochain complex with
-an additive product-preserving coefficient functor. `cechCosimplicialIntersectIso`
-identifies a family's original Cech object with actual intersection restriction
-to any open containing every member. No covering or sheaf hypothesis is needed.
+`cechCosimplicialCoefficientIso` compares the original Cech cosimplicial objects
+under a product-preserving coefficient functor. `cechComplexCoefficientIso`
+retains the actual alternating coface complex and requires additivity.
+The source, coefficient and product universes remain explicit; no topological
+space, covering or sheaf hypothesis is imposed.
 -/
 @[expose] public section
 
@@ -21,7 +22,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 universe w v v' v'' u u' u''
-open CategoryTheory CategoryTheory.Limits TopologicalSpace Opposite
+open CategoryTheory CategoryTheory.Limits Opposite
 open scoped Simplicial
 namespace CategoryTheory.Cech
 
@@ -67,30 +68,5 @@ def cechComplexCoefficientIso :
     ((FormalCoproduct.cosimplicialObjectFunctor (FormalCoproduct.mk _ U).cech).obj P) ≪≫
       (AlgebraicTopology.alternatingCofaceMapComplex B).mapIso
         (cechCosimplicialCoefficientIso F U P)
-
-end CategoryTheory.Cech
-
-namespace CategoryTheory.Cech
-
-variable {X : TopCat.{u}} {A : Type u'} [Category.{v} A] [HasProducts.{w} A]
-
-/-- The comparison between the Cech cosimplicial object of `P` and that of its intersection
-restriction to `W`, when every member of `U` lies in `W`. -/
-def cechCosimplicialIntersectIso {ι : Type w} (U : ι → Opens X)
-    (P : (Opens X)ᵒᵖ ⥤ A) (W : Opens X) (hU : ∀ i, U i ≤ W) :
-    (FormalCoproduct.cosimplicialObjectFunctor (FormalCoproduct.mk _ U).cech).obj P ≅
-      (FormalCoproduct.cosimplicialObjectFunctor (FormalCoproduct.mk _ U).cech).obj
-        ((intersectFunctor W).op ⋙ P) := by
-  have hprod (n : ℕ) (a : Fin (n + 1) → ι) : (∏ᶜ fun i => U (a i)) ⊓ W =
-      (∏ᶜ fun i => U (a i)) :=
-    inf_eq_left.mpr ((leOfHom (Limits.Pi.π _ 0)).trans (hU (a 0)))
-  refine NatIso.ofComponents (fun n => Limits.Pi.mapIso fun a =>
-    P.mapIso (eqToIso (hprod n.len a)).op) ?_
-  intro n m g
-  apply Limits.Pi.hom_ext
-  intro a
-  simp [FormalCoproduct.cosimplicialObjectFunctor, FormalCoproduct.evalOp,
-    FormalCoproduct.cech, FormalCoproduct.mapPower, ← Functor.map_comp]
-  congr 2
 
 end CategoryTheory.Cech

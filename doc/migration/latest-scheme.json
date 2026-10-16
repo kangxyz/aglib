@@ -20,10 +20,20 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Basic",
-          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Basic.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.BaseChange.Coefficients.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/BaseChange/Coefficients/Basic.lean",
           "destination_sha256": "133cf0823361344f74cebb0bf39b33ac15b2ffcf5252d8d635c723736b195d34",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/Basic.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Basic"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -132,10 +142,20 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Basic",
-          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Basic.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Basic",
+          "destination_path": "Aglib/AlgebraicGeometry/Spec/PolynomialLaurent/Basic.lean",
           "destination_sha256": "811b7e1a5f9e44a024dd52183f37c44563dcb833985f6bc499622174d9d2690f",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Basic.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Basic"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -160,10 +180,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Relative",
-          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Relative.lean",
-          "destination_sha256": "a95cc94d7ec9b1b2977d8f9235922976ef23e1e75effeaebb60df55ab917c3f5",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Relative",
+          "destination_path": "Aglib/AlgebraicGeometry/Spec/PolynomialLaurent/Relative.lean",
+          "destination_sha256": "3d46947129195e04cf4b728377e381c774f074495a0a651f921c1df84944e377",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Relative.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Relative",
+                "destination_sha256": "a95cc94d7ec9b1b2977d8f9235922976ef23e1e75effeaebb60df55ab917c3f5"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -188,10 +219,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.BaseChange",
-          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/BaseChange.lean",
-          "destination_sha256": "a650970107a4de3094cd8da2206da567207ab64796a39e5a393ed96ec8ca5170",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.BaseChange",
+          "destination_path": "Aglib/AlgebraicGeometry/Spec/PolynomialLaurent/BaseChange.lean",
+          "destination_sha256": "026f47f56093d6ca79a7663924bddf6505d7633053e1c5db011e67b182139d17",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/BaseChange.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.BaseChange",
+                "destination_sha256": "a650970107a4de3094cd8da2206da567207ab64796a39e5a393ed96ec8ca5170"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -216,10 +258,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Units",
-          "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Units.lean",
-          "destination_sha256": "847647b5c6dba1fa3372e0311585ddd3dfecc836173e0c985ebe1f91669ee763",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Units",
+          "destination_path": "Aglib/AlgebraicGeometry/Spec/PolynomialLaurent/Units.lean",
+          "destination_sha256": "14bcde1684fcc1f1702b4609fdd21daaec9f3484d006689aa9d489591056307a",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/Units.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Units",
+                "destination_sha256": "847647b5c6dba1fa3372e0311585ddd3dfecc836173e0c985ebe1f91669ee763"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -300,10 +353,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurent",
-          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurent.lean",
-          "destination_sha256": "0bc1fdaef3feaa75e8d4f1c4d566458ce6839f530a5f2b5859da83dbdc14b1e9",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurent",
+          "destination_path": "Aglib/AlgebraicGeometry/BaseChange/Coefficients/PolynomialLaurent.lean",
+          "destination_sha256": "a0a5df47b32460f899484298bbb80388e1483270a8beedf3b45ad386f74ee634",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurent.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurent",
+                "destination_sha256": "0bc1fdaef3feaa75e8d4f1c4d566458ce6839f530a5f2b5859da83dbdc14b1e9"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -328,10 +392,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentNaturality",
-          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentNaturality.lean",
-          "destination_sha256": "a411c006f8c3499b273e2c1fc14210b5ebd31c3842acac85406d2874b22e129d",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurentNaturality",
+          "destination_path": "Aglib/AlgebraicGeometry/BaseChange/Coefficients/PolynomialLaurentNaturality.lean",
+          "destination_sha256": "d20661bc0173de9461eb8bec831ce13120fba54af96688f6f9158ca1b1581680",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentNaturality.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentNaturality",
+                "destination_sha256": "a411c006f8c3499b273e2c1fc14210b5ebd31c3842acac85406d2874b22e129d"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Arbitrary commutative base R, actual P in Over(Spec R), actual Under R coefficient arrows. Polynomial/Laurent coefficient projections and pullback isomorphisms are natural; integral-base products use ULift Z. No field, Noetherian, flatness, or P1 premise.",
@@ -356,10 +431,21 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality",
-          "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentSchemeNaturality.lean",
-          "destination_sha256": "f6c107484765f912d4b8127882dafa7cb9f0a3da007eb3d2a8112475b601f654",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_module": "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality",
+          "destination_path": "Aglib/AlgebraicGeometry/BaseChange/Coefficients/PolynomialLaurentSchemeNaturality.lean",
+          "destination_sha256": "ee56c1234f5dfaeab7e71e9d64dc5fbeaa19cea196e6e5b618fd58d1aa8b817f",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Modules/BaseChange/Coefficients/PolynomialLaurentSchemeNaturality.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality",
+                "destination_sha256": "f6c107484765f912d4b8127882dafa7cb9f0a3da007eb3d2a8112475b601f654"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Arbitrary P,Q over Spec R and actual scheme arrow f:P→Q; joint scheme/coefficient naturality of polynomial/Laurent projections, isomorphisms and coordinate maps. No P1 premise.",
@@ -554,8 +640,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Basic",
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Basic.lean",
-          "destination_sha256": "71fa6044665d9a5e491da09fceac42b9c3eaefb7e6da909d532fb17ca007173d",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "9e646c7824957ad1a3c03a121612898bbd7f1a83ce141e31f20b2957e2179a6e",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "71fa6044665d9a5e491da09fceac42b9c3eaefb7e6da909d532fb17ca007173d"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -580,10 +675,20 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso",
-          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/QuasiIso.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Locality",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Locality.lean",
           "destination_sha256": "cefb183c14d1d9280b55d8f87207c108a88680f166461840d114b9158e2bfaca",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Locality/QuasiIso.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -722,8 +827,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Flasque.LocalDerivedPushforward",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Flasque/LocalDerivedPushforward.lean",
-          "destination_sha256": "b261dc4bcb30004c063c23dd3502bb6f38c3beb67e6d7a0bcb86b390ddc5fb32",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "0e0d287c3df38da4f8a600abaa339fddd14fe60933f566d24797d10f01edbf75",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "b261dc4bcb30004c063c23dd3502bb6f38c3beb67e6d7a0bcb86b390ddc5fb32"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -1002,8 +1116,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Restriction",
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Restriction.lean",
-          "destination_sha256": "62d381bf6fbdf1710df9541aa8958ebad91a32674f13d4e4f3ed3e64f6f7b76b",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "870e1c065f98977e71c650804e2ba40c5342a937b615505dc023c30b05f5bcbc",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "62d381bf6fbdf1710df9541aa8958ebad91a32674f13d4e4f3ed3e64f6f7b76b"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -1401,8 +1524,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Modules.ProjectionFormula.FiniteLocallyFree",
           "destination_path": "Aglib/AlgebraicGeometry/Modules/ProjectionFormula/FiniteLocallyFree.lean",
-          "destination_sha256": "9f5a0afd76af6ae81bffbdab81ca311f1bcfb517216150480df4428d95e68938",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "55db9aa1993afe7c5922af37ff3589fe3665d8f4eabb2e29f7dcc17e06be5760",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "9f5a0afd76af6ae81bffbdab81ca311f1bcfb517216150480df4428d95e68938"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -1848,10 +1980,20 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.ComplexContraction",
-          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/ComplexContraction.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.Contraction",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/Contraction.lean",
           "destination_sha256": "98c9bee73d65dcc4ee8fbbeabc571ecd20001ea6baec4ac0a7757a3e8840f1bb",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/ComplexContraction.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.ComplexContraction"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Cut: arbitrary scheme module category, additive endofunctors F,G and supplied actual contraction e:F⋙G≅Id; termwise cochain and D+ complex lifts with literal component equations. Exclude six tautological/P1 specializations.",
@@ -2231,10 +2373,20 @@
       ],
       "destinations": [
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
-          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/PlusQuasiIso.lean",
           "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
           "destination_module": "Aglib.CategoryTheory.NatTrans.Unit",
@@ -2267,8 +2419,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.Contraction",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/Contraction.lean",
-          "destination_sha256": "b2aa40bcd1c1d7b43b20168866969a8476dedd6c8910dc5c7adb6c5d9b59a12b",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "86e427959dfd9f666d712bacbd4ac90b3f4ec2c345b529d9992fedf538b79fed",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "b2aa40bcd1c1d7b43b20168866969a8476dedd6c8910dc5c7adb6c5d9b59a12b"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Cut: arbitrary X, additive F, arbitrary sheaf E and Godement insertion functors; quasi-isomorphism statements require finite local freeness of E; contraction comparisons additionally actual e:F⋙Tensor(E)≅Id; bounded-below input and lower-bound/flasque consequences retained. Exclude eight tautological/P1 specializations.",
@@ -2895,8 +3056,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.Basic",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/ProjectionFormula/Basic.lean",
-          "destination_sha256": "875f049e57d37dc924b4ee57d71106bdb33da4d379fe9a63c55c36bdf6d6f8a4",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "602a84b0d60983f2817b0122ad05da1fdad92008500d27f1d0cbd19f0fec64f7",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "875f049e57d37dc924b4ee57d71106bdb33da4d379fe9a63c55c36bdf6d6f8a4"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -2951,8 +3121,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/PushforwardQuasiIso.lean",
-          "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "e7f82322027fd7cd9f4953957b556dac9c681a0bba43a49fcf032ffcd657b98e",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Accepted general prerequisite or exact tiny helper cut; conditions retained from complete source signatures in accepted71/114-node audit.",
@@ -2979,14 +3158,33 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/PushforwardQuasiIso.lean",
-          "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "e7f82322027fd7cd9f4953957b556dac9c681a0bba43a49fcf032ffcd657b98e",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "de37ad8c1e76cbc6ed07b3b88c7d413332d0f7611aaf9c83cfdcec693a316e70"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
-          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/PlusQuasiIso.lean",
           "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Arbitrary scheme morphism; total then ordinary pushforward preserves quasiIso maps of Plus inputs; composition/isomorphism helpers for Plus maps. Requires general helper cut from FlasqueDiagonalExact, not its application import.",
@@ -3013,14 +3211,33 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Naturality",
           "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/Naturality.lean",
-          "destination_sha256": "38dbf14c88e1a371b38a7efe8b56831e8d5a6297e29965ecbc7a2c50fc920b45",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "5f22e5675ca2c685f8676f39ad68ce0f10b884fd291259902670c7f36a7cffba",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "38dbf14c88e1a371b38a7efe8b56831e8d5a6297e29965ecbc7a2c50fc920b45"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         },
         {
-          "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
-          "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+          "destination_module": "Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso",
+          "destination_path": "Aglib/AlgebraicGeometry/Modules/Complex/PlusQuasiIso.lean",
           "destination_sha256": "e6f2559b3966c56ee8756cfa1421acece2de45565e5c85fd48a917007964e194",
-          "writer": "quillen_scheme_delta_scope"
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_path": "Aglib/AlgebraicGeometry/Cohomology/Functoriality/PlusQuasiIso.lean",
+                "destination_module": "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Arbitrary category D and functors into Plus X.Modules; composition, iso, and total/image whiskering retain pointwise quasiIso.",
@@ -3047,8 +3264,17 @@
         {
           "destination_module": "Aglib.AlgebraicGeometry.Modules.Tensor.Sheafification",
           "destination_path": "Aglib/AlgebraicGeometry/Modules/Tensor/Sheafification.lean",
-          "destination_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e",
-          "writer": "quillen_scheme_delta_scope"
+          "destination_sha256": "ff846bd7cd59f2f8aedf31214cd214ce97ff3289514b5200678f35f88e445d0d",
+          "writer": "quillen_scheme_delta_scope",
+          "destination_history": [
+            {
+              "checkpoint": "accepted-partial-2026-10-16",
+              "previous_destination": {
+                "destination_sha256": "07831bbd73ab7751d7641150adbd9762c61c20115f4dfbe9bef4e597c8f1c32e"
+              },
+              "boundary": "Original source fields and earlier validation basis unchanged."
+            }
+          ]
         }
       ],
       "conditions": "Arbitrary open immersion and presheaf; restriction/sheafification iso and unit statements. Last result retains a covering family trivializing L as unit. No P1 hypothesis.",
@@ -3305,12 +3531,19 @@
   "validation_note": "Current post-principal naming surface: focused native producers in progress. Stage18 two author repairs passed exact current configured no-output checks; same-scope inputs/logs in scratch. Prior producer coverage remains bound to its actual defining-module/source basis.",
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

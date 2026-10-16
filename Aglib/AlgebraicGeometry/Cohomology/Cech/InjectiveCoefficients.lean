@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Topology.Sheaves.Cech.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor

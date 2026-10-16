@@ -1,6 +1,10 @@
 # Sources and organization references
 
-The extraction basis is R5Lab `95a3772b895fbc19a81684be4ffd519d0fdcd6b3` and the authoritative LOCAL Quillen release `189a8e779f0c68b2dfc6f8195daebb3e684a5905` at `tmp/output/quillen-library-release/quillen-k-theory`. The initial 133 selected files from Quillen `83629578a3d70787d41ec631f5234af8758716af` are byte-identical in the local release; that is a bounded source comparison, not a claim about every file in the older tree. The package pins Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; the local Mathlib checkout's HEAD was checked against that pin. Contributor/license headers and exact source comments remain with the implementation.
+The maintained interfaces extend Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. Module comments and migration records identify the exact original source, selected mathematical statements and canonical maps. Historical source paths are provenance; current family guides and import surfaces give the maintained owners. Source correspondence does not by itself establish compilation or theorem acceptance.
+
+## Initial extraction basis
+
+The initial extraction basis was R5Lab `95a3772b895fbc19a81684be4ffd519d0fdcd6b3` and the then-selected local Quillen release `189a8e779f0c68b2dfc6f8195daebb3e684a5905` at `tmp/output/quillen-library-release/quillen-k-theory`. The initial 133 selected files from Quillen `83629578a3d70787d41ec631f5234af8758716af` are byte-identical in the local release; that is a bounded source comparison, not a claim about every file in the older tree. The package pins Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; the local Mathlib checkout's HEAD was checked against that pin. Contributor/license headers and exact source comments remain with the implementation.
 
 [Migration fragments](migration) record original file identities, selected source ranges and declaration correspondence for [ring theory](migration/ring-theory.json), [category/homology](migration/category-homology.json), [scheme operations](migration/scheme-operations.json), [general geometry](migration/general-geometry.json) and [cohomology](migration/cohomology.json). [module-map.json](module-map.json) anchors the initial path refactor; [namespace-map.json](namespace-map.json) records native-owner correspondence. Later substantive source cuts retain their own recorded locators. Original application/implementation snapshots are provenance, not proof claims for their complete source applications.
 
@@ -41,3 +45,13 @@ Local-basis fibre dimension, proper module finiteness and relative locally free 
 [latest-quillen](migration/latest-quillen.json) records the local source-authority comparison. [latest-scheme](migration/latest-scheme.json) records the fixed generic scheme/tensor/Godement selections and their exact cuts. [latest-homology](migration/latest-homology.json) records the twelve generic bounded derived/truncation/comparison leaves. [latest-general-cuts](migration/latest-general-cuts.json) records the four independent affine-induction, zero-section, good-truncation and cartesian-open roots and the eighteen coupled lower destinations. Multi-source leaves have separate rows for their exact original-source selections. These include generic cone/sequence and coefficient primitives, ordinary module-complex operations, locally split tensor, actual Godement carrier/unit/open comparisons and derived locality. Original containing PerfectComplexes/projective-line paths are source locators, not production imports or wholesale admission.
 
 The extended organization crosswalk includes Stacks Chapter 13, Derived Categories, alongside Chapters 12, 17–18 and 20–21 for the generic derived/site tensor layer. At the Mathlib pin, `Algebra/Homology/DerivedCategory/{Plus,ShortExact,RightDerivedFunctorPlus}.lean`, `CategoryTheory/Triangulated/Functor.lean`, `Algebra/Homology/Embedding/CochainComplex.lean`, `Algebra/Category/ModuleCat/Presheaf/Monoidal.lean` and `Sheaf/Colimits.lean` were checked as actual source paths. These are organization/source-interface correspondences, not new external theorem attributions.
+
+The subsequent source-placement review also inspected the Stacks chapter tables
+for [Morphisms of Schemes (01QL)](https://stacks.math.columbia.edu/tag/01QL),
+[Derived Categories of Schemes (08CU)](https://stacks.math.columbia.edu/tag/08CU),
+[Etale Morphisms of Schemes (024J)](https://stacks.math.columbia.edu/tag/024J)
+and [Fundamental Groups of Schemes (0BQ6)](https://stacks.math.columbia.edu/tag/0BQ6).
+They support the subject distinctions used in the architecture. In particular,
+the derived-scheme chapter explicitly names perfect complexes; it does not
+justify abbreviating the object to `Perfect` under a module-sheaf parent. These
+are classification references, with no theorem-source applicability claim.

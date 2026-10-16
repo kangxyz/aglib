@@ -13,3 +13,12 @@
 The lower subjects are finite presentation, actual stalk/pullback/locality and exact subcategories. Coherent inclusion, differential rank and relative cohomology use these same class/witness interfaces; the category structure does not supply the explicit fibre-dimension family.
 
 [Tensor](Tensor/README.md) owns exact left/right tensor and `PreservesHomology` for finite locally free coefficients, with affine/injective restriction conditions retained. These results still do not supply `LocalBasisFibreDimension`.
+
+The general local-basis pushforward and binding declarations live in [module sheaves on arbitrary sites](../../../Algebra/Category/ModuleCat/Sheaf/LocallyFree/README.md), in namespace `SheafOfModules`. The scheme Restriction and Locality leaves specialize those actual cover, basis and finite-type witnesses.
+
+[LocalLifting](LocalLifting.lean) converts the actual local splitting of a finite
+locally free quotient into a section on an actual open subscheme. Maps from a
+finite locally free sheaf lift locally through epimorphisms and factor locally
+through an exact short complex, with the original restriction equations. These
+statements do not assume that the sheaf is globally projective. They supply the
+finite local correction step for strict-perfect chain nullhomotopies.

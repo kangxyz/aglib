@@ -338,11 +338,11 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_projection_assoc",
-      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_projection_assoc"
+      "HomologicalComplex₂.singleSecondZeroTotalInclusion_projection_assoc"
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalProjection_inclusion_assoc",
-      "HomologicalComplex\u2082.singleSecondZeroTotalProjection_inclusion_assoc"
+      "HomologicalComplex₂.singleSecondZeroTotalProjection_inclusion_assoc"
     ],
     [
       "Aglib.RingTheory.Descent.PurelyInseparable.finitePure_invariants_etale",
@@ -482,15 +482,15 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_projection",
-      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_projection"
+      "HomologicalComplex₂.singleSecondZeroTotalInclusion_projection"
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalIso_naturality_assoc",
-      "HomologicalComplex\u2082.singleSecondZeroTotalIso_naturality_assoc"
+      "HomologicalComplex₂.singleSecondZeroTotalIso_naturality_assoc"
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalProjection_inclusion",
-      "HomologicalComplex\u2082.singleSecondZeroTotalProjection_inclusion"
+      "HomologicalComplex₂.singleSecondZeroTotalProjection_inclusion"
     ],
     [
       "Aglib.RingTheory.Descent.PurelyInseparable.counit_liftedCoaction",
@@ -562,11 +562,11 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion_f_isIso",
-      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion_f_isIso"
+      "HomologicalComplex₂.singleSecondZeroTotalInclusion_f_isIso"
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentationFlip_naturality_assoc",
-      "HomologicalComplex\u2082.totalAugmentationFlip_naturality_assoc"
+      "HomologicalComplex₂.totalAugmentationFlip_naturality_assoc"
     ],
     [
       "Aglib.Algebra.Homology.upNatTotalComplexShapeSymmetrySymmetry",
@@ -610,7 +610,7 @@
     ],
     [
       "Aglib.Algebra.Homology.total_cycle_boundary_of_rowwise_exact",
-      "HomologicalComplex\u2082.total_cycle_boundary_of_rowwise_exact"
+      "HomologicalComplex₂.total_cycle_boundary_of_rowwise_exact"
     ],
     [
       "Aglib.RingTheory.Descent.FieldObjects.faithfullyFlat_lTensor",
@@ -690,11 +690,11 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalIso_naturality",
-      "HomologicalComplex\u2082.singleSecondZeroTotalIso_naturality"
+      "HomologicalComplex₂.singleSecondZeroTotalIso_naturality"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d_coordinate_vertical'",
-      "HomologicalComplex\u2082.totalSummand_d_coordinate_vertical'"
+      "HomologicalComplex₂.totalSummand_d_coordinate_vertical'"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.exact_invariants_difference",
@@ -738,19 +738,19 @@
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentation_naturality_assoc",
-      "HomologicalComplex\u2082.totalAugmentation_naturality_assoc"
+      "HomologicalComplex₂.totalAugmentation_naturality_assoc"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_coordinate_self_assoc",
-      "HomologicalComplex\u2082.totalSummand_coordinate_self_assoc"
+      "HomologicalComplex₂.totalSummand_coordinate_self_assoc"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d_coordinate_eq_zero'",
-      "HomologicalComplex\u2082.totalSummand_d_coordinate_eq_zero'"
+      "HomologicalComplex₂.totalSummand_d_coordinate_eq_zero'"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d_coordinate_vertical",
-      "HomologicalComplex\u2082.totalSummand_d_coordinate_vertical"
+      "HomologicalComplex₂.totalSummand_d_coordinate_vertical"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.difference_tensor_coaction",
@@ -830,7 +830,7 @@
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d_coordinate_eq_zero",
-      "HomologicalComplex\u2082.totalSummand_d_coordinate_eq_zero"
+      "HomologicalComplex₂.totalSummand_d_coordinate_eq_zero"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.Hom.baseChange_naturality",
@@ -854,15 +854,15 @@
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentationFlip_naturality",
-      "HomologicalComplex\u2082.totalAugmentationFlip_naturality"
+      "HomologicalComplex₂.totalAugmentationFlip_naturality"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_coordinate_ne_assoc",
-      "HomologicalComplex\u2082.totalSummand_coordinate_ne_assoc"
+      "HomologicalComplex₂.totalSummand_coordinate_ne_assoc"
     ],
     [
-      "Aglib.Algebra.Homology.\u03b9Total_coordinate_ne_outer_assoc",
-      "HomologicalComplex\u2082.\u03b9Total_coordinate_ne_outer_assoc"
+      "Aglib.Algebra.Homology.ιTotal_coordinate_ne_outer_assoc",
+      "HomologicalComplex₂.ιTotal_coordinate_ne_outer_assoc"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.Hom.invariantsMap_unique",
@@ -886,7 +886,7 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalProjection",
-      "HomologicalComplex\u2082.singleSecondZeroTotalProjection"
+      "HomologicalComplex₂.singleSecondZeroTotalProjection"
     ],
     [
       "Aglib.CategoryTheory.serre_isClosedUnderFiniteProducts",
@@ -946,19 +946,19 @@
     ],
     [
       "Aglib.Algebra.Homology.acyclic_total_of_rowwise_exact",
-      "HomologicalComplex\u2082.acyclic_total_of_rowwise_exact"
+      "HomologicalComplex₂.acyclic_total_of_rowwise_exact"
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_totalAugmentationFlip",
-      "HomologicalComplex\u2082.quasiIso_totalAugmentationFlip"
+      "HomologicalComplex₂.quasiIso_totalAugmentationFlip"
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalInclusion",
-      "HomologicalComplex\u2082.singleSecondZeroTotalInclusion"
+      "HomologicalComplex₂.singleSecondZeroTotalInclusion"
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalIso_hom_f",
-      "HomologicalComplex\u2082.singleSecondZeroTotalIso_hom_f"
+      "HomologicalComplex₂.singleSecondZeroTotalIso_hom_f"
     ],
     [
       "Aglib.Algebra.Homology.upNatTotalComplexShapeSymmetry",
@@ -1014,11 +1014,11 @@
     ],
     [
       "Aglib.Algebra.Homology.totalFlipIso_naturality_assoc",
-      "HomologicalComplex\u2082.totalFlipIso_naturality_assoc"
+      "HomologicalComplex₂.totalFlipIso_naturality_assoc"
     ],
     [
-      "Aglib.Algebra.Homology.\u03b9Total_totalFlipIso_hom_assoc",
-      "HomologicalComplex\u2082.\u03b9Total_totalFlipIso_hom_assoc"
+      "Aglib.Algebra.Homology.ιTotal_totalFlipIso_hom_assoc",
+      "HomologicalComplex₂.ιTotal_totalFlipIso_hom_assoc"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.baseChange_surjective",
@@ -1062,19 +1062,19 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalIso_hom",
-      "HomologicalComplex\u2082.singleSecondZeroTotalIso_hom"
+      "HomologicalComplex₂.singleSecondZeroTotalIso_hom"
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentation_naturality",
-      "HomologicalComplex\u2082.totalAugmentation_naturality"
+      "HomologicalComplex₂.totalAugmentation_naturality"
     ],
     [
       "Aglib.Algebra.Homology.totalCoordinate_d_of_support",
-      "HomologicalComplex\u2082.totalCoordinate_d_of_support"
+      "HomologicalComplex₂.totalCoordinate_d_of_support"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_coordinate_self",
-      "HomologicalComplex\u2082.totalSummand_coordinate_self"
+      "HomologicalComplex₂.totalSummand_coordinate_self"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.baseChangeEquiv_tmul",
@@ -1118,7 +1118,7 @@
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_cycle_zero_at_zero",
-      "HomologicalComplex\u2082.quasiIso_cycle_zero_at_zero"
+      "HomologicalComplex₂.quasiIso_cycle_zero_at_zero"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.coaction_baseChange",
@@ -1154,15 +1154,15 @@
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_totalAugmentation",
-      "HomologicalComplex\u2082.quasiIso_totalAugmentation"
+      "HomologicalComplex₂.quasiIso_totalAugmentation"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_coordinate_ne",
-      "HomologicalComplex\u2082.totalSummand_coordinate_ne"
+      "HomologicalComplex₂.totalSummand_coordinate_ne"
     ],
     [
-      "Aglib.Algebra.Homology.\u03b9Total_coordinate_ne_outer",
-      "HomologicalComplex\u2082.\u03b9Total_coordinate_ne_outer"
+      "Aglib.Algebra.Homology.ιTotal_coordinate_ne_outer",
+      "HomologicalComplex₂.ιTotal_coordinate_ne_outer"
     ],
     [
       "Aglib.CategoryTheory.Sheaves.NoetherianCohomology",
@@ -1202,15 +1202,15 @@
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_total_of_rowwise",
-      "HomologicalComplex\u2082.quasiIso_total_of_rowwise"
+      "HomologicalComplex₂.quasiIso_total_of_rowwise"
     ],
     [
       "Aglib.Algebra.Homology.totalMap_coordinate_assoc",
-      "HomologicalComplex\u2082.totalMap_coordinate_assoc"
+      "HomologicalComplex₂.totalMap_coordinate_assoc"
     ],
     [
       "Aglib.Algebra.Homology.total_d_summand_supported",
-      "HomologicalComplex\u2082.total_d_summand_supported"
+      "HomologicalComplex₂.total_d_summand_supported"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.Hom.invariantsMap",
@@ -1254,11 +1254,11 @@
     ],
     [
       "Aglib.Algebra.Homology.singleSecondZeroTotalIso",
-      "HomologicalComplex\u2082.singleSecondZeroTotalIso"
+      "HomologicalComplex₂.singleSecondZeroTotalIso"
     ],
     [
       "Aglib.Algebra.Homology.total_cycle_zero_at_zero",
-      "HomologicalComplex\u2082.total_cycle_zero_at_zero"
+      "HomologicalComplex₂.total_cycle_zero_at_zero"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.invariants_etale",
@@ -1286,31 +1286,31 @@
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_cycle_boundary",
-      "HomologicalComplex\u2082.quasiIso_cycle_boundary"
+      "HomologicalComplex₂.quasiIso_cycle_boundary"
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_of_cycle_lifts",
-      "HomologicalComplex\u2082.quasiIso_of_cycle_lifts"
+      "HomologicalComplex₂.quasiIso_of_cycle_lifts"
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_of_fiber_lifts",
-      "HomologicalComplex\u2082.quasiIso_of_fiber_lifts"
+      "HomologicalComplex₂.quasiIso_of_fiber_lifts"
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentationFlip_f",
-      "HomologicalComplex\u2082.totalAugmentationFlip_f"
+      "HomologicalComplex₂.totalAugmentationFlip_f"
     ],
     [
       "Aglib.Algebra.Homology.totalFlipIso_naturality",
-      "HomologicalComplex\u2082.totalFlipIso_naturality"
+      "HomologicalComplex₂.totalFlipIso_naturality"
     ],
     [
       "Aglib.Algebra.Homology.total_row_boundary_lift",
-      "HomologicalComplex\u2082.total_row_boundary_lift"
+      "HomologicalComplex₂.total_row_boundary_lift"
     ],
     [
-      "Aglib.Algebra.Homology.\u03b9Total_totalFlipIso_hom",
-      "HomologicalComplex\u2082.\u03b9Total_totalFlipIso_hom"
+      "Aglib.Algebra.Homology.ιTotal_totalFlipIso_hom",
+      "HomologicalComplex₂.ιTotal_totalFlipIso_hom"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.baseChangeEquiv",
@@ -1366,11 +1366,11 @@
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_map_assoc",
-      "HomologicalComplex\u2082.totalSummand_map_assoc"
+      "HomologicalComplex₂.totalSummand_map_assoc"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_supported",
-      "HomologicalComplex\u2082.totalSummand_supported"
+      "HomologicalComplex₂.totalSummand_supported"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.mem_invariants",
@@ -1394,11 +1394,11 @@
     ],
     [
       "Aglib.Algebra.Homology.AdditiveFirstQuadrant",
-      "HomologicalComplex\u2082.AddCommGrp"
+      "HomologicalComplex₂.AddCommGrp"
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentationFlip",
-      "HomologicalComplex\u2082.totalAugmentationFlip"
+      "HomologicalComplex₂.totalAugmentationFlip"
     ],
     [
       "Aglib.RingTheory.Descent.FlatEqualizer.equiv",
@@ -1426,31 +1426,31 @@
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_cycle_lift",
-      "HomologicalComplex\u2082.quasiIso_cycle_lift"
+      "HomologicalComplex₂.quasiIso_cycle_lift"
     ],
     [
       "Aglib.Algebra.Homology.quasiIso_fiber_lift",
-      "HomologicalComplex\u2082.quasiIso_fiber_lift"
+      "HomologicalComplex₂.quasiIso_fiber_lift"
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentation_f",
-      "HomologicalComplex\u2082.totalAugmentation_f"
+      "HomologicalComplex₂.totalAugmentation_f"
     ],
     [
       "Aglib.Algebra.Homology.totalCoordinate_ext",
-      "HomologicalComplex\u2082.totalCoordinate_ext"
+      "HomologicalComplex₂.totalCoordinate_ext"
     ],
     [
       "Aglib.Algebra.Homology.totalCoordinate_sum",
-      "HomologicalComplex\u2082.totalCoordinate_sum"
+      "HomologicalComplex₂.totalCoordinate_sum"
     ],
     [
       "Aglib.Algebra.Homology.totalMap_coordinate",
-      "HomologicalComplex\u2082.totalMap_coordinate"
+      "HomologicalComplex₂.totalMap_coordinate"
     ],
     [
       "Aglib.Algebra.Homology.total_map_supported",
-      "HomologicalComplex\u2082.total_map_supported"
+      "HomologicalComplex₂.total_map_supported"
     ],
     [
       "Aglib.RingTheory.Descent.FlatEqualizer.map",
@@ -1466,7 +1466,7 @@
     ],
     [
       "Aglib.Algebra.Homology.TotalSupportedFrom",
-      "HomologicalComplex\u2082.TotalSupportedFrom"
+      "HomologicalComplex₂.TotalSupportedFrom"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.baseChange",
@@ -1494,27 +1494,27 @@
     ],
     [
       "Aglib.Algebra.Homology.totalAugmentation",
-      "HomologicalComplex\u2082.totalAugmentation"
+      "HomologicalComplex₂.totalAugmentation"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d_up",
-      "HomologicalComplex\u2082.totalSummand_d_up"
+      "HomologicalComplex₂.totalSummand_d_up"
     ],
     [
       "Aglib.Algebra.Homology.SingleSecondZero",
-      "HomologicalComplex\u2082.SingleSecondZero"
+      "HomologicalComplex₂.SingleSecondZero"
     ],
     [
       "Aglib.Algebra.Homology.totalDegreeEquiv",
-      "HomologicalComplex\u2082.totalDegreeEquiv"
+      "HomologicalComplex₂.totalDegreeEquiv"
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_map",
-      "HomologicalComplex\u2082.totalSummand_map"
+      "HomologicalComplex₂.totalSummand_map"
     ],
     [
       "Aglib.Algebra.Homology.total_fiber_lift",
-      "HomologicalComplex\u2082.total_fiber_lift"
+      "HomologicalComplex₂.total_fiber_lift"
     ],
     [
       "Aglib.Algebra.Homology.upNatTensorSigns",
@@ -1526,7 +1526,7 @@
     ],
     [
       "Aglib.Algebra.Homology.totalCoordinate",
-      "HomologicalComplex\u2082.totalCoordinate"
+      "HomologicalComplex₂.totalCoordinate"
     ],
     [
       "Aglib.RingTheory.LocalLength.intLength",
@@ -1542,7 +1542,7 @@
     ],
     [
       "Aglib.Algebra.Homology.totalSummand_d",
-      "HomologicalComplex\u2082.totalSummand_d"
+      "HomologicalComplex₂.totalSummand_d"
     ],
     [
       "Aglib.RingTheory.Descent.OverlapDatum",
@@ -1550,7 +1550,7 @@
     ],
     [
       "Aglib.Algebra.Homology.FirstQuadrant",
-      "HomologicalComplex\u2082.FirstQuadrant"
+      "HomologicalComplex₂.FirstQuadrant"
     ],
     [
       "Aglib.CategoryTheory.SmallModelExact",
@@ -1566,11 +1566,11 @@
     ],
     [
       "Aglib.Algebra.Homology.totalSummand",
-      "HomologicalComplex\u2082.totalSummand"
+      "HomologicalComplex₂.totalSummand"
     ],
     [
       "Aglib.Algebra.Homology.TotalDegree",
-      "HomologicalComplex\u2082.TotalDegree"
+      "HomologicalComplex₂.TotalDegree"
     ],
     [
       "Aglib.RingTheory.Descent.Datum.Hom",
@@ -1597,12 +1597,12 @@
       "Algebra.Etale.etale_isReduced"
     ],
     [
-      "Aglib.Algebra.Homology.upNat_\u03b5\u2081",
-      "ComplexShape.upNat_\u03b5\u2081"
+      "Aglib.Algebra.Homology.upNat_ε₁",
+      "ComplexShape.upNat_ε₁"
     ],
     [
-      "Aglib.Algebra.Homology.upNat_\u03b5\u2082",
-      "ComplexShape.upNat_\u03b5\u2082"
+      "Aglib.Algebra.Homology.upNat_ε₂",
+      "ComplexShape.upNat_ε₂"
     ],
     [
       "Aglib.CategoryTheory.SerreClass",
@@ -1613,12 +1613,12 @@
       "Algebra.Descent.counit"
     ],
     [
-      "Aglib.Algebra.Homology.upNat_\u03b5",
-      "ComplexShape.upNat_\u03b5"
+      "Aglib.Algebra.Homology.upNat_ε",
+      "ComplexShape.upNat_ε"
     ],
     [
-      "Aglib.Algebra.Homology.upNat_\u03c3",
-      "ComplexShape.upNat_\u03c3"
+      "Aglib.Algebra.Homology.upNat_σ",
+      "ComplexShape.upNat_σ"
     ],
     [
       "Aglib.RingTheory.Descent.Datum",
@@ -1683,7 +1683,7 @@
     "Aglib/Algebra/Homology/FirstQuadrantComparison.lean": [
       [
         "Aglib.Algebra.Homology",
-        "HomologicalComplex\u2082"
+        "HomologicalComplex₂"
       ]
     ],
     "Aglib/Algebra/Homology/FirstQuadrantSigns.lean": [
@@ -2090,8 +2090,8 @@
           "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
         },
         {
-          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayMap_\u03b9",
-          "new": "TopCat.Sheaf.supportedAwayMap_\u03b9",
+          "old": "TopCat.Sheaf.CohomologySupport.supportedAwayMap_ι",
+          "new": "TopCat.Sheaf.supportedAwayMap_ι",
           "destination_path": "Aglib/Topology/Sheaves/SupportedAway.lean"
         },
         {
@@ -2246,9 +2246,9 @@
         "module_count": 111,
         "source_contribution_count": 116,
         "canonical_functor": "AlgebraicGeometry.Scheme.Modules.QuasiCoherent.finiteTypePullback",
-        "canonical_conditions": "IsLocallyNoetherian Y; X arbitrary; arbitrary f:X\u2192Y; no flatness added",
+        "canonical_conditions": "IsLocallyNoetherian Y; X arbitrary; arbitrary f:X→Y; no flatness added",
         "coherent_alias": "AlgebraicGeometry.Scheme.Modules.Coherent.coherentPullback",
-        "coherent_conditions": "IsLocallyNoetherian X and Y; Y.CoherentSheaf\u2192X.CoherentSheaf",
+        "coherent_conditions": "IsLocallyNoetherian X and Y; Y.CoherentSheaf→X.CoherentSheaf",
         "definitional_equality": "AlgebraicGeometry.Scheme.Modules.Coherent.coherentPullback_eq_finiteTypePullback",
         "proof_support": "FinitePresentation.Noetherian owns the unchanged finite-module tilde and all-chart FP construction; no Coherent implementation imports",
         "scope": "Current lower leaf passed configured no-output Lean; FP.Noetherian emitted in native-stage18. Guarded alias/current downstream proof checks await emission of the new lower leaf. Prior phase logs are historical and not relabeled.",
@@ -2315,5 +2315,247 @@
       "meaning": "Explicit lowerCamelCase name for the existing local decidability instance; its type and body are unchanged.",
       "path": "Aglib/AlgebraicGeometry/Cohomology/Vanishing/Noetherian.lean"
     }
-  ]
+  ],
+  "accepted_partial_checkpoint": {
+    "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "module_path_moves": [
+      [
+        "Aglib.AlgebraicGeometry.FiniteEtale.Basic",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Basic"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.FiniteEtale.Fiber",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Fiber"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.FiniteEtale.BaseChange",
+        "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Basic",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Basic"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Relative",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Relative"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.BaseChange",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.BaseChange"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Units",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Units"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ZeroSection",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.ZeroSection"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.Coordinates",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Coordinates"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.AffineSpace.PolynomialLaurent.ProductInterchange",
+        "Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.ProductInterchange"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents",
+        "Aglib.AlgebraicGeometry.Properties.IrreducibleComponents"
+      ],
+      [
+        "Aglib.Algebra.Category.ModuleCat.Finite",
+        "Aglib.Algebra.Category.FGModuleCat.Basic"
+      ],
+      [
+        "Aglib.Algebra.Category.ModuleCat.FiniteLocalization",
+        "Aglib.Algebra.Category.FGModuleCat.Localization"
+      ],
+      [
+        "Aglib.Algebra.Category.ModuleCat.FiniteRestrictionScalars",
+        "Aglib.Algebra.Category.FGModuleCat.RestrictScalars"
+      ],
+      [
+        "Aglib.Algebra.Category.ModuleCat.IdealClosedSupport",
+        "Aglib.Algebra.Category.FGModuleCat.IdealClosedSupport"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Strict",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Strict"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Exact",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Exact"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Restriction",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Restriction"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Local",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Local"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.LocalRestriction",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalRestriction"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalModels"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Closure",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Closure"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.Perfect.Homology",
+        "Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Homology"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Basic",
+        "Aglib.AlgebraicGeometry.BaseChange.Coefficients.Basic"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.Naturality",
+        "Aglib.AlgebraicGeometry.BaseChange.Coefficients.Naturality"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurent",
+        "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurent"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentNaturality",
+        "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurentNaturality"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Modules.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality",
+        "Aglib.AlgebraicGeometry.BaseChange.Coefficients.PolynomialLaurentSchemeNaturality"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Cohomology.Functoriality.ComplexContraction",
+        "Aglib.AlgebraicGeometry.Modules.Complex.Contraction"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Cohomology.Functoriality.PlusQuasiIso",
+        "Aglib.AlgebraicGeometry.Modules.Complex.PlusQuasiIso"
+      ],
+      [
+        "Aglib.AlgebraicGeometry.Cohomology.Locality.QuasiIso",
+        "Aglib.AlgebraicGeometry.Modules.Complex.Locality"
+      ]
+    ],
+    "cut_scoped_declaration_refinements": [
+      [
+        "Quillen.CochainComplex.exists_chain_representative_of_isKInjective",
+        "CochainComplex.exists_chain_representative_of_isKInjective"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyOfDerivedEqOfIsKInjective",
+        "CochainComplex.homotopyOfDerivedEqOfIsKInjective"
+      ],
+      [
+        "Quillen.CochainComplex.exists_chain_factorization_up_to_homotopy_into_isKInjective",
+        "CochainComplex.exists_chain_factorization_up_to_homotopy_into_isKInjective"
+      ],
+      [
+        "Quillen.CochainComplex.quasiIso_map_of_isKInjective",
+        "CochainComplex.quasiIso_map_of_isKInjective"
+      ],
+      [
+        "Quillen.CochainComplex.quasiIso_map_of_lowerBounded_injective",
+        "CochainComplex.quasiIso_map_of_lowerBounded_injective"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyToDerivedHom",
+        "CochainComplex.homotopyToDerivedHom"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyToDerivedHom_bijective",
+        "CochainComplex.homotopyToDerivedHom_bijective"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyDerivedHomEquiv",
+        "CochainComplex.homotopyDerivedHomEquiv"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyDerivedHomEquiv_map",
+        "CochainComplex.homotopyDerivedHomEquiv_map"
+      ],
+      [
+        "Quillen.CochainComplex.homotopyDerivedHomEquiv_symm_map",
+        "CochainComplex.homotopyDerivedHomEquiv_symm_map"
+      ],
+      [
+        "Quillen.CochainComplex.mapDerivedHomOfKInjective",
+        "CochainComplex.mapDerivedHomOfKInjective"
+      ],
+      [
+        "Quillen.CochainComplex.mapDerivedHomOfKInjective_map",
+        "CochainComplex.mapDerivedHomOfKInjective_map"
+      ],
+      [
+        "Quillen.CochainComplex.mapDerivedHomOfKInjective_id",
+        "CochainComplex.mapDerivedHomOfKInjective_id"
+      ],
+      [
+        "Quillen.CochainComplex.mapDerivedHomOfKInjective_comp",
+        "CochainComplex.mapDerivedHomOfKInjective_comp"
+      ],
+      [
+        "Quillen.CochainComplex.mapDerivedHomOfKInjective_add",
+        "CochainComplex.mapDerivedHomOfKInjective_add"
+      ],
+      [
+        "Quillen.CochainComplex.isIso_mapDerivedHomOfKInjective",
+        "CochainComplex.isIso_mapDerivedHomOfKInjective"
+      ]
+    ],
+    "tensor_declaration_refinements": {
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheaf": "AlgebraicGeometry.Scheme.Modules.tensorSheaf",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafIso": "AlgebraicGeometry.Scheme.Modules.tensorSheafIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.sheafifyForgetIso": "AlgebraicGeometry.Scheme.Modules.sheafifyForgetIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafBraiding": "AlgebraicGeometry.Scheme.Modules.tensorSheafBraiding",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_comp": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_comp",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafUnit_naturality": "AlgebraicGeometry.Scheme.Modules.tensorSheafUnit_naturality",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafMap_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafMap_tmul",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorPresheafOverIso": "AlgebraicGeometry.Scheme.Modules.tensorPresheafOverIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorOverTrivialization": "AlgebraicGeometry.Scheme.Modules.tensorOverTrivialization",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.overUnitIso": "AlgebraicGeometry.Scheme.Modules.overUnitIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.tensorSheafLeftUnit_tmul": "AlgebraicGeometry.Scheme.Modules.tensorSheafLeftUnit_tmul",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_tmul",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_naturality",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_adjoint",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_naturality",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pushforwardTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pushforwardTensorMap_leftUnit",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_leftUnit_isIso": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_leftUnit_isIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackTensorMap_isIso_of_trivial_left": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_isIso_of_trivial_left",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.restrictUnitIso": "AlgebraicGeometry.Scheme.Modules.restrictOverUnitIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso (existing Pullback.Free)",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.restrictPullbackIso f U M": "(AlgebraicGeometry.Scheme.Modules.pullbackRestrictIso f U).app M",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.pullbackUnitIso_adjoint": "AlgebraicGeometry.Scheme.Modules.pullbackUnitIso_homEquiv, after unfolding the homEquiv unit formula",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_isIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_isIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorIso_hom": "AlgebraicGeometry.Scheme.Modules.restrictTensorIso_hom",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_tmul": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_tmul",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictTensorMap_naturality": "AlgebraicGeometry.Scheme.Modules.restrictTensorMap_naturality",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforward_tensor": "AlgebraicGeometry.Scheme.Modules.restrictedPushforward_tensor",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.pullbackTensorMap_restrict": "AlgebraicGeometry.Scheme.Modules.pullbackTensorMap_restrict",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedUnit": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedUnit",
+      "AlgebraicGeometry.Scheme.Modules.Invertible.PullbackTensor.Local.restrictedPushforwardMap_apply": "AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction.restrictedPushforwardMap_apply"
+    },
+    "boundary": "Pure path moves do not change declaration namespaces. Current derived namespace3 has separate native affected-graph acceptance. Original prefix rewrites and original-input keys remain historical. Pointwise20 stays excluded.",
+    "current_derived_namespace_refinement": {
+      "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict": "AlgebraicGeometry.Scheme.Modules.derivedRestrict",
+      "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictCommShift": "AlgebraicGeometry.Scheme.Modules.derivedRestrictCommShift",
+      "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrict_isTriangulated": "AlgebraicGeometry.Scheme.Modules.derivedRestrict_isTriangulated",
+      "AlgebraicGeometry.Scheme.Modules.Complex.derivedRestrictFactors": "AlgebraicGeometry.Scheme.Modules.derivedRestrictFactors"
+    }
+  }
 }

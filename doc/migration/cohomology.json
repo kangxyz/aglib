@@ -1123,6 +1123,52 @@
       "coverage_boundary": "Current source is frozen after the declaration-lint repair phase. Earlier producer evidence remains tied to its historical source hash in validation_history. Genuinely fresh renamed-package producer, declaration-linter, and client acceptance remain with the principal.",
       "validation_history": [],
       "current_source_sha256": "2c4f23076fb0371d18c647d7daad4559974593a6d18a706439c0d8956b19f02f"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Topology.Sheaves.Cech.Cocycles",
+      "destinations": [
+        {
+          "path": "Aglib/Topology/Sheaves/Cech/Cocycles.lean",
+          "module": "Aglib.Topology.Sheaves.Cech.Cocycles",
+          "sha256": "8edb62b45d14ccc1dd55b38643875c5110d6c23053bcf97b74f8238924bbc6e9"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/frozen-source.json",
+            "sha256": "479c2ff81bb274163ec4dac19cf03bd063657fc6bbcd62489301a584c577d4ae"
+          },
+          "pointer": "/declaration_owner_map and /source_correspondence",
+          "declaration_owner_map": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/declaration-owner-map.json",
+          "source_correspondence": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/cut-identities.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+    },
+    {
+      "family": "accepted partial checkpoint: Aglib.Topology.Sheaves.Cech.Restriction",
+      "destinations": [
+        {
+          "path": "Aglib/Topology/Sheaves/Cech/Restriction.lean",
+          "module": "Aglib.Topology.Sheaves.Cech.Restriction",
+          "sha256": "8d5a6df23f5a6b6a3eff0837a845dbbce49b6f2a4476b4af4c655dcb78c64e7b"
+        }
+      ],
+      "source_correspondence": [
+        {
+          "map_identity": {
+            "path": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/frozen-source.json",
+            "sha256": "479c2ff81bb274163ec4dac19cf03bd063657fc6bbcd62489301a584c577d4ae"
+          },
+          "pointer": "/declaration_owner_map and /source_correspondence",
+          "declaration_owner_map": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/declaration-owner-map.json",
+          "source_correspondence": "/private/tmp/r5-investigations/quillen-tt-import/organization-review/execution-cech-cuts/cut-identities.json"
+        }
+      ],
+      "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
+      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
@@ -1424,12 +1470,19 @@
     "mathematical_boundary": "No original mathematical statement, coefficient map, scalar/module action, universe, or hypothesis was changed. Added normalized rules follow existing theorems. Attribute and native-owner changes are explicit; this record does not claim fresh producer/client closure."
   },
   "current_identity_validation": {
-    "package_name": "Aglib",
-    "root_module": "Aglib",
-    "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
-    "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
-  }
+    "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
+    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "boundary": "No whole-library/default-CI/replay acceptance is inferred."
+  },
+  "current_identity_validation_history": [
+    {
+      "package_name": "Aglib",
+      "root_module": "Aglib",
+      "repo_directory": "aglib",
+      "destination_identity": "Current destination paths and recorded hashes reconciled.",
+      "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
+      "integration_record": "doc/migration/integration.json",
+      "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+    }
+  ]
 }

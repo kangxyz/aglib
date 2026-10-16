@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Topology.Sheaves.Cech.Restriction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness
 public import Aglib.Algebra.Category.ModuleCat.Localization.Exactness
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.AffineDegreeOne

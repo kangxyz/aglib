@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Topology.Sheaves.Cech.Restriction
+public import Aglib.Topology.Sheaves.Cech.Cocycles
 public import Aglib.AlgebraicGeometry.Cohomology.Affine.SheafCohomology
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.MayerVietoris
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison

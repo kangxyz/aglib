@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
-public import Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents
+public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents
 
 /-!
 A term of the original `NormalComponentsOpen` interface. The mathematical

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Perfect.LocalModels
-public import Aglib.AlgebraicGeometry.Modules.Perfect.Closure
+public import Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalModels
+public import Aglib.AlgebraicGeometry.Modules.PerfectComplexes.Closure
 
 /-! # Native objects and maps for the structural perfect-complex migration -/
 
@@ -17,6 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+open AlgebraicGeometry.Scheme.Modules
 open AlgebraicGeometry.Scheme.Modules.Complex
 
 universe u
@@ -25,6 +26,7 @@ attribute [local instance] Abelian.hasFiniteBiproducts
 
 namespace AglibTest.ArchivePerfect
 
+/-- The standard derived category used by these interface checks. -/
 local instance standard (X : Scheme.{u}) : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 

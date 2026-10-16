@@ -7,8 +7,9 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Pushforward
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.Finite.GeneralPushforward
-public import Aglib.Algebra.Category.ModuleCat.IdealClosedSupport
+public import Aglib.Algebra.Category.FGModuleCat.IdealClosedSupport
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Comparison
 public import Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion
 /-!
@@ -34,42 +35,12 @@ attribute [local instance] Abelian.hasFiniteBiproducts
 
 namespace AlgebraicGeometry.Scheme.Modules.Coherent.Pushforward.ClosedImmersion.Ideal
 
+open AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Pushforward.ClosedImmersion.Ideal
+
 open ModuleCat.FiniteLocalization.IdealClosedSupport
 
 variable (R : CommRingCat.{u}) (I : Ideal R)
 
-/-- The closed subscheme's affine coordinate ring. -/
-abbrev closedRing : CommRingCat.{u} := CommRingCat.of (ClosedRing I)
-
-/-- The actual closed immersion induced by the quotient map. -/
-def closedMap : Spec (closedRing R I) ⟶ Spec R :=
-  Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk (I)))
-
-instance closedMap_isClosedImmersion : IsClosedImmersion (closedMap R I) := by
-  unfold closedMap
-  infer_instance
-
-/-- Actual sheaf pushforward preserves the affine coherence property. -/
-theorem affineFiniteSheaf_pushforward {M : (Spec (closedRing R I)).Modules}
-    (hM : affineFiniteSheaf (closedRing R I) M) :
-    affineFiniteSheaf R ((Scheme.Modules.pushforward (closedMap R I)).obj M) := by
-  have : M.IsQuasicoherent := hM.1
-  refine ⟨Scheme.Modules.isQuasicoherent_pushforward _ M, ?_⟩
-  let N : FGModuleCat (ClosedRing I) := ⟨moduleSpecΓFunctor.obj M, hM.2⟩
-  have : Module.Finite R ((moduleSpecΓFunctor ⋙
-      ModuleCat.restrictScalars (CommRingCat.ofHom (Ideal.Quotient.mk (I))).hom).obj M) :=
-    ((closedRestriction I).obj N).property
-  exact Module.Finite.equiv
-    ((Scheme.Modules.pushforwardGlobalSectionsIso
-      (CommRingCat.ofHom (Ideal.Quotient.mk (I)))).app M).symm.toLinearEquiv
-
-/-- Actual closed pushforward preserves the all-affine-chart finite-type quasicoherent predicate. -/
-theorem affineLocallyFiniteType_pushforward {M : (Spec (closedRing R I)).Modules}
-    (hM : affineLocallyFiniteType (Spec (closedRing R I)) M) :
-    affineLocallyFiniteType (Spec R) ((Scheme.Modules.pushforward (closedMap R I)).obj M) :=
-  (affineLocallyFiniteType_spec_iff R _).mpr
-    (affineFiniteSheaf_pushforward R I ((affineLocallyFiniteType_spec_iff (closedRing R I) M).mp
-      hM))
 
 variable [IsNoetherianRing R]
 

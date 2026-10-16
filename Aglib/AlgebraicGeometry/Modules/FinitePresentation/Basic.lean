@@ -7,6 +7,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.AlgebraicGeometry.Modules.Sheaf
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Presentation
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.LocallyFree
 public import Mathlib.CategoryTheory.ObjectProperty.ContainsZero
 
@@ -29,41 +30,6 @@ namespace AlgebraicGeometry.Scheme.Modules
 
 open scoped ZeroObject
 
-section Presentation
-
-variable {C : Type w} [Category.{v} C] {J : GrothendieckTopology C}
-  {R : Sheaf J RingCat.{u}} [HasSheafify J AddCommGrpCat.{u}]
-  [J.WEqualsLocallyBijective AddCommGrpCat.{u}]
-  {D : Type w'} [Category.{v'} D] {K : GrothendieckTopology D}
-  {S : Sheaf K RingCat.{u}} [HasSheafify K AddCommGrpCat.{u}]
-  [K.WEqualsLocallyBijective AddCommGrpCat.{u}]
-
-/-- Transporting generating sections by an isomorphism preserves the basis condition. -/
-instance generatingSections_ofEpi_isIso {M N : SheafOfModules.{u} R}
-    (G : M.GeneratingSections) (f : M ⟶ N) [IsIso f] [IsIso G.π] :
-    IsIso (G.ofEpi f).π := by
-  rw [SheafOfModules.GeneratingSections.ofEpi_π]
-  infer_instance
-
-/-- A colimit-preserving functor which preserves the unit carries finite
-presentations to finite presentations: the generator and relation index sets
-are unchanged. -/
-instance finitePresentation_map_isFinite {M : SheafOfModules.{u} R}
-    (P : M.Presentation) [P.IsFinite]
-    (F : SheafOfModules.{u} R ⥤ SheafOfModules.{u} S)
-    [PreservesColimitsOfSize.{u, u} F]
-    (η : SheafOfModules.unit S ≅ F.obj (SheafOfModules.unit R)) :
-    (P.map F η).IsFinite where
-  isFiniteType_generators := by
-    constructor
-    change Finite P.generators.I
-    infer_instance
-  isFiniteType_relations := by
-    constructor
-    change Finite P.relations.I
-    infer_instance
-
-end Presentation
 
 variable (X : Scheme.{u})
 

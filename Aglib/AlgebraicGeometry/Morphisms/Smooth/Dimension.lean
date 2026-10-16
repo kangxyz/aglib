@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity
+public import Aglib.AlgebraicGeometry.Stalk.Dimension
+public import Aglib.AlgebraicGeometry.Stalk.EtalePolynomial
 
 /-!
 Exact maximal/closed stalk dimension and global dimension for smooth schemes
@@ -21,20 +23,6 @@ namespace AlgebraicGeometry.Scheme
 
 universe u
 
-/-- A maximal point in an etale polynomial chart has dimension n. -/
-theorem etale_polynomial_stalk_dimension_of_isMaximal
-    (K : Type u) [Field K] (n : ℕ) {B : Type u} [CommRing B]
-    (g : MvPolynomial (Fin n) K →+* B) (hg : g.Etale) (q : Spec (.of B))
-    [q.asIdeal.IsMaximal] :
-    ringKrullDim ((Spec (.of B)).presheaf.stalk q) = n := by
-  let φ := Spec.map (CommRingCat.ofHom g)
-  let : Etale φ := (HasRingHomProperty.Spec_iff (P := @Etale)).mpr hg
-  let : IsRegularLocalRing
-      ((Spec (.of (MvPolynomial (Fin n) K))).presheaf.stalk (φ q)) :=
-    polynomial_spec_stalk_isRegularLocalRing K n (φ q)
-  let : (φ q).asIdeal.IsMaximal := isMaximal_comap_etale_polynomial K n g hg q.asIdeal
-  rw [AlgebraicGeometry.Scheme.ringKrullDim_stalk_eq_of_etale φ q]
-  exact polynomial_spec_stalk_dimension_of_isMaximal K n (φ q)
 
 /-- Exact term of the original closed-point dimension interface. The residue
 field may be inseparable over the base field. -/

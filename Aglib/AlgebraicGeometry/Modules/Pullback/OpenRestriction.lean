@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.AlgebraicGeometry.Modules.Sheaf
+public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
 public import Mathlib.AlgebraicGeometry.Pullbacks
 public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Sheafification
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Localization
@@ -22,7 +23,7 @@ local isomorphism, with the adjoint of the restricted morphism.
 These are identities for arbitrary structure-module sheaves and use no
 base-change theorem-family premise. An open-local isomorphism criterion
 is included. The supporting generic over-restriction and sheafification
-constructions have their single implementation here, below the invertible tier.
+constructions are imported from the module-presheaf owner.
 
 Extraction sources: `R5Lab.AlgebraicGeometry.Curves.Picard.PullbackLocal`,
 `R5Lab.AlgebraicGeometry.Curves.Picard.Tensor`, and
@@ -39,95 +40,6 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 set_option backward.defeqAttrib.useBackward true
 open AlgebraicGeometry CategoryTheory Opposite TopologicalSpace
-namespace PresheafOfModules.Restriction
-universe u v
-variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
-variable (R : Sheaf J RingCat.{u})
-variable [HasWeakSheafify J AddCommGrpCat.{u}] [J.WEqualsLocallyBijective AddCommGrpCat.{u}]
-variable (U : C)
-variable [HasWeakSheafify (J.over U) AddCommGrpCat.{u}]
-variable [(J.over U).WEqualsLocallyBijective AddCommGrpCat.{u}]
-
-/-- Restriction of module presheaves to the slice over U, with the identity scalar map. -/
-def restrictPresheaf : _root_.PresheafOfModules.{u} R.obj ⥤
-    _root_.PresheafOfModules.{u} (R.over U).obj :=
-  _root_.PresheafOfModules.pushforward (F := Over.forget U) (𝟙 _)
-
-/-- The actual module sheafification unit restricted to the slice over U. -/
-def restrictedSheafificationUnit (P : _root_.PresheafOfModules.{u} R.obj) :
-    (restrictPresheaf R U).obj P ⟶
-      ((_root_.PresheafOfModules.sheafification (𝟙 R.obj)).obj P).over U |>.val :=
-  (restrictPresheaf R U).map
-    ((_root_.PresheafOfModules.sheafificationAdjunction (𝟙 R.obj)).unit.app P)
-
-omit [HasWeakSheafify (J.over U) AddCommGrpCat.{u}]
-  [(J.over U).WEqualsLocallyBijective AddCommGrpCat.{u}] in
-theorem restrictedSheafificationUnit_locallyInjective (P : _root_.PresheafOfModules.{u} R.obj) :
-    _root_.PresheafOfModules.IsLocallyInjective (J.over U)
-      (restrictedSheafificationUnit R U P) := by
-  change Presheaf.IsLocallyInjective (J.over U)
-    (Functor.whiskerLeft (Over.forget U).op (CategoryTheory.toSheafify J P.presheaf))
-  exact Presheaf.isLocallyInjective_whisker (J.over U) J (Over.forget U) _
-
-omit [HasWeakSheafify (J.over U) AddCommGrpCat.{u}]
-  [(J.over U).WEqualsLocallyBijective AddCommGrpCat.{u}] in
-theorem restrictedSheafificationUnit_locallySurjective (P : _root_.PresheafOfModules.{u} R.obj) :
-    _root_.PresheafOfModules.IsLocallySurjective (J.over U)
-      (restrictedSheafificationUnit R U P) := by
-  change Presheaf.IsLocallySurjective (J.over U)
-    (Functor.whiskerLeft (Over.forget U).op (CategoryTheory.toSheafify J P.presheaf))
-  exact Presheaf.isLocallySurjective_whisker (J.over U) J (Over.forget U) _
-
-theorem restrictedSheafificationUnit_sheafification_iso (P : _root_.PresheafOfModules.{u} R.obj) :
-    IsIso ((_root_.PresheafOfModules.sheafification (𝟙 (R.over U).obj)).map
-      (restrictedSheafificationUnit R U P)) := by
-  apply Functor.IsLocalization.inverts
-    (W := (J.over U).W.inverseImage (_root_.PresheafOfModules.toPresheaf (R.over U).obj))
-  change (J.over U).W ((_root_.PresheafOfModules.toPresheaf (R.over U).obj).map
-    (restrictedSheafificationUnit R U P))
-  rw [(J.over U).W_iff_isLocallyBijective]
-  exact ⟨restrictedSheafificationUnit_locallyInjective R U P,
-    restrictedSheafificationUnit_locallySurjective R U P⟩
-
-/-- Sheafification of slice restriction compared with slice restriction of sheafification. -/
-def sheafificationOverIso (P : _root_.PresheafOfModules.{u} R.obj) :
-    (_root_.PresheafOfModules.sheafification (𝟙 (R.over U).obj)).obj
-      ((restrictPresheaf R U).obj P) ≅
-      ((_root_.PresheafOfModules.sheafification (𝟙 R.obj)).obj P).over U := by
-  let S : SheafOfModules.{u} (R.over U) :=
-    ((_root_.PresheafOfModules.sheafification (𝟙 R.obj)).obj P).over U
-  let f : (_root_.PresheafOfModules.sheafification (𝟙 (R.over U).obj)).obj
-      ((restrictPresheaf R U).obj P) ⟶
-      (_root_.PresheafOfModules.sheafification (𝟙 (R.over U).obj)).obj S.val :=
-    (_root_.PresheafOfModules.sheafification (𝟙 (R.over U).obj)).map
-      (restrictedSheafificationUnit R U P)
-  have hf : IsIso f := restrictedSheafificationUnit_sheafification_iso R U P
-  let c := (_root_.PresheafOfModules.sheafificationAdjunction (𝟙 (R.over U).obj)).counit.app S
-  have hc : IsIso c := inferInstance
-  exact asIso f ≪≫ asIso c
-
-end PresheafOfModules.Restriction
-
-namespace PresheafOfModules
-universe u v
-variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
-variable {R : Cᵒᵖ ⥤ RingCat.{u}}
-variable [J.WEqualsLocallyBijective AddCommGrpCat.{u}]
-theorem isIso_of_locallyBijective {P Q : _root_.PresheafOfModules.{u} R} (f : P ⟶ Q)
-    (hP : Presheaf.IsSheaf J P.presheaf) (hQ : Presheaf.IsSheaf J Q.presheaf)
-    [_root_.PresheafOfModules.IsLocallyInjective J f]
-    [_root_.PresheafOfModules.IsLocallySurjective J f] :
-    IsIso f := by
-  let eP := _root_.PresheafOfModules.homEquivOfIsLocallyBijective (J := J) f hP
-  let eQ := _root_.PresheafOfModules.homEquivOfIsLocallyBijective (J := J) f hQ
-  let g : Q ⟶ P := eP.symm (𝟙 P)
-  have hfg : f ≫ g = 𝟙 P := eP.apply_symm_apply _
-  have hgf : g ≫ f = 𝟙 Q := by
-    apply eQ.injective
-    change f ≫ (g ≫ f) = f ≫ 𝟙 Q
-    rw [← Category.assoc, hfg, Category.id_comp, Category.comp_id]
-  exact ⟨⟨g, hfg, hgf⟩⟩
-end PresheafOfModules
 
 namespace AlgebraicGeometry.Scheme.Modules
 universe u
@@ -326,4 +238,65 @@ theorem isIso_of_local_restrict {M N : SheafOfModules.{u} X.ringCatSheaf} (φ : 
   let : IsIso ((SheafOfModules.forget X.ringCatSheaf).map φ) :=
     _root_.PresheafOfModules.isIso_of_locallyBijective φ.val M.isSheaf N.isSheaf
   exact isIso_of_reflects_iso φ (SheafOfModules.forget _)
+end AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction
+
+namespace AlgebraicGeometry.Scheme.Modules
+universe u
+variable (X : Scheme.{u})
+
+/-- Restrict a supplied over-site unit trivialization to a smaller open. -/
+def restrictOverUnitIso (M : SheafOfModules.{u} X.ringCatSheaf) {U V : X.Opens}
+    (i : U ⟶ V) (e : M.over V ≅ SheafOfModules.unit (X.ringCatSheaf.over V)) :
+    M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U) :=
+  ((SheafOfModules.overFunctorMap X.ringCatSheaf i).app M).symm ≪≫
+    (SheafOfModules.overMap X.ringCatSheaf i).mapIso e ≪≫
+      SheafOfModules.overMapUnitIso (R := X.ringCatSheaf) i
+
+end AlgebraicGeometry.Scheme.Modules
+
+namespace AlgebraicGeometry.Scheme.Modules
+universe u
+variable {X : Scheme.{u}}
+
+/-- Transport the over-site structure module to the open subscheme. -/
+def overUnitIso (U : X.Opens) :
+    (Scheme.Modules.overEquiv U).functor.obj (SheafOfModules.unit (X.ringCatSheaf.over U)) ≅
+      SheafOfModules.unit U.toScheme.ringCatSheaf :=
+  (Scheme.Modules.overFunctorEquiv U).app (SheafOfModules.unit X.ringCatSheaf) ≪≫
+    Scheme.Modules.restrictUnitIso U.ι
+
+end AlgebraicGeometry.Scheme.Modules
+
+namespace AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction
+universe u
+variable {X Y : Scheme.{u}} (f : X ⟶ Y) (U : Y.Opens)
+
+theorem restrictedUnit (M : Y.Modules) :
+    (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)).unit.app
+        ((Scheme.Modules.restrictFunctor U.ι).obj M) ≫
+      (Scheme.Modules.pushforward (f ∣_ U)).map ((localPullbackIso f U).inv.app M) =
+    (Scheme.Modules.restrictFunctor U.ι).map
+        ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M) ≫
+      restrictedPushforwardMap f U ((Scheme.Modules.pullback f).obj M) := by
+  let A := Scheme.Modules.pullbackPushforwardAdjunction f
+  let B := Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)
+  let φ := (Scheme.Modules.restrictFunctor U.ι).map (A.unit.app M) ≫
+    restrictedPushforwardMap f U ((Scheme.Modules.pullback f).obj M)
+  have h := restrictedAdjoint_eq f U (A.unit.app M)
+  have hi : (A.homEquiv _ _).symm (A.unit.app M) = 𝟙 _ := A.homEquiv_symm_unit M
+  rw [hi, CategoryTheory.Functor.map_id] at h
+  have he : (B.homEquiv _ _).symm φ = (localPullbackIso f U).inv.app M := by
+    apply (cancel_epi ((localPullbackIso f U).hom.app M)).mp
+    exact h.symm.trans (Iso.hom_inv_id_app (localPullbackIso f U) M).symm
+  have hh := congrArg (B.homEquiv _ _) he
+  rw [Equiv.apply_symm_apply, Adjunction.homEquiv_unit] at hh
+  exact hh.symm
+
+theorem restrictedPushforwardMap_apply (M : X.Modules) (W : U.toScheme.Opensᵒᵖ)
+    (m : ((Scheme.Modules.restrictFunctor U.ι).obj
+      ((Scheme.Modules.pushforward f).obj M)).val.obj W) :
+    (restrictedPushforwardMap f U M).val.app W m =
+      M.val.map (eqToHom (image_morphismRestrict_preimage f U W.unop)).op m := by
+  exact congrArg (fun k ↦ k m) (restrictedPushforwardMap_app f U M W.unop)
+
 end AlgebraicGeometry.Scheme.Modules.Pullback.OpenRestriction

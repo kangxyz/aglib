@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
 public import Mathlib.CategoryTheory.Sites.PreservesLocallyBijective
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Localization
@@ -32,57 +33,10 @@ source names are provenance.
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
-open AlgebraicGeometry CategoryTheory
+open AlgebraicGeometry CategoryTheory Opposite TopologicalSpace
 namespace AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 variable (X : Scheme.{u})
-/-- Sheafification of the underlying module presheaf of `M`, identified with `M`. -/
-def sheafifyForgetIso (M : SheafOfModules.{u} X.ringCatSheaf) :
-    (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj M.val ≅ M :=
-  asIso ((_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).counit.app M)
-/-- The left unit isomorphism for the sheafified tensor product with the structure module. -/
-def tensorSheafLeftUnit (M : SheafOfModules.{u} X.ringCatSheaf) :
-    tensorSheaf X (SheafOfModules.unit X.ringCatSheaf) M ≅ M := by
-  letI : MonoidalCategory (_root_.PresheafOfModules.{u} X.ringCatSheaf.obj) :=
-    inferInstanceAs (MonoidalCategory (PresheafOfModulesOfCommRing.{u} X.presheaf))
-  exact (_root_.PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
-    (CategoryTheory.MonoidalCategory.leftUnitor M.val) ≪≫ sheafifyForgetIso X M
-/-- The symmetry isomorphism for the sheafified tensor product of module sheaves `M` and `N`. -/
-def tensorSheafBraiding (M N : SheafOfModules.{u} X.ringCatSheaf) :
-    tensorSheaf X M N ≅ tensorSheaf X N M :=
-  SheafOfModulesOfCommRing.tensorBraiding X.sheaf M N
-
-open Opposite TopologicalSpace
-
-/-- Restriction of the tensor presheaf to `U`, identified with the tensor of the restrictions. -/
-def tensorPresheafOverIso (M N : SheafOfModules.{u} X.ringCatSheaf) (U : X.Opens) :
-    (_root_.PresheafOfModules.Restriction.restrictPresheaf X.ringCatSheaf U).obj
-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val) ≅
-    PresheafOfModulesOfCommRing.Monoidal.tensorObj
-      (R := (Over.forget U).op ⋙ X.presheaf) (M.over U).val (N.over U).val :=
-  _root_.PresheafOfModules.isoMk (fun _ => Iso.refl _) (by intros; rfl)
-
-/-- A trivialization over `U` of the tensor sheaf, constructed from the supplied trivializations
-of `M` and `N`. -/
-def tensorOverTrivialization (M N : SheafOfModules.{u} X.ringCatSheaf) (U : X.Opens)
-    (e : M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U))
-    (f : N.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U)) :
-    (tensorSheaf X M N).over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U) := by
-  let S := _root_.PresheafOfModules.sheafification (𝟙 (X.ringCatSheaf.over U).obj)
-  let e' := (SheafOfModules.forget (X.ringCatSheaf.over U)).mapIso e
-  let f' := (SheafOfModules.forget (X.ringCatSheaf.over U)).mapIso f
-  let t := CategoryTheory.MonoidalCategory.tensorIso
-    (C := PresheafOfModulesOfCommRing.{u} ((Over.forget U).op ⋙ X.presheaf)) e' f'
-  let l := CategoryTheory.MonoidalCategory.leftUnitor
-    (C := PresheafOfModulesOfCommRing.{u} ((Over.forget U).op ⋙ X.presheaf))
-    (SheafOfModules.unit (X.ringCatSheaf.over U)).val
-  exact (_root_.PresheafOfModules.Restriction.sheafificationOverIso X.ringCatSheaf U _).symm ≪≫
-    S.mapIso (tensorPresheafOverIso X M N U) ≪≫ S.mapIso t ≪≫ S.mapIso l ≪≫
-    asIso
-      ((_root_.PresheafOfModules.sheafificationAdjunction
-        (𝟙 (X.ringCatSheaf.over U).obj)).counit.app
-      (SheafOfModules.unit (X.ringCatSheaf.over U)))
-
 theorem isLocallyRankOne_iff_local_unit (M : SheafOfModules.{u} X.ringCatSheaf) :
     IsLocallyRankOne X M ↔ ∀ x : X, ∃ U : X.Opens, x ∈ U ∧
       Nonempty (M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U)) := by
@@ -120,14 +74,6 @@ theorem isLocallyRankOne_iff_local_unit (M : SheafOfModules.{u} X.ringCatSheaf) 
       SheafOfModules.free.generatingSections_π]
     infer_instance
 
-/-- Restrict a supplied trivialization of `M` over `V` to the smaller open `U`. -/
-def restrictUnitIso (M : SheafOfModules.{u} X.ringCatSheaf) {U V : X.Opens}
-    (i : U ⟶ V) (e : M.over V ≅ SheafOfModules.unit (X.ringCatSheaf.over V)) :
-    M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U) :=
-  ((SheafOfModules.overFunctorMap X.ringCatSheaf i).app M).symm ≪≫
-    (SheafOfModules.overMap X.ringCatSheaf i).mapIso e ≪≫
-      SheafOfModules.overMapUnitIso (R := X.ringCatSheaf) i
-
 theorem tensorSheaf_locallyRankOne (M N : SheafOfModules.{u} X.ringCatSheaf)
     (hM : IsLocallyRankOne X M) (hN : IsLocallyRankOne X N) :
     IsLocallyRankOne X (tensorSheaf X M N) := by
@@ -137,8 +83,8 @@ theorem tensorSheaf_locallyRankOne (M N : SheafOfModules.{u} X.ringCatSheaf)
   obtain ⟨V, hxV, ⟨f⟩⟩ := hN x
   refine ⟨U ⊓ V, ⟨hxU, hxV⟩, ⟨?_⟩⟩
   exact tensorOverTrivialization X M N (U ⊓ V)
-    (restrictUnitIso X M (homOfLE inf_le_left) e)
-    (restrictUnitIso X N (homOfLE inf_le_right) f)
+    (restrictOverUnitIso X M (homOfLE inf_le_left) e)
+    (restrictOverUnitIso X N (homOfLE inf_le_right) f)
 
 /-- Tensor product of actual locally rank-one sheaves. -/
 def tensorLineBundle (L M : LineBundle X) : LineBundle X :=
