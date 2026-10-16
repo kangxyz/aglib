@@ -224,11 +224,14 @@ private import Mathlib.Data.Nat.Basic
 
     def test_bounded_below_plus_marker_is_distinct_from_application_plus(self):
         for name in ['Aglib.Algebra.Homology.DerivedCategory.Plus.SingleTriangle',
-                     'Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison']:
+                     'Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison',
+                     'Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus']:
             self.assertFalse(forbidden_domain_import(name))
         for name in ['Aglib.Plus.Basic', 'Aglib.PlusConstruction.Basic',
                      'Aglib.Other.DerivedCategory.Plus.Basic',
-                     'Aglib.Algebra.Homology.DerivedCategory.Plus.KTheory.Application']:
+                     'Aglib.Algebra.Homology.DerivedCategory.Plus.KTheory.Application',
+                     'Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus.KTheory.Bad',
+                     'Aglib.Other.Cech.Resolution.Plus']:
             self.assertTrue(forbidden_domain_import(name))
 
 

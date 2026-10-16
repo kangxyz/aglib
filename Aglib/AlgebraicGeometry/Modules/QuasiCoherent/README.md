@@ -7,3 +7,8 @@ The objects are actual `X.Modules` with Mathlib's quasicoherence property. [Affi
 Focused imports follow these three leaves and the subfamilies. Quasicoherence and finite type require no locally Noetherian premise merely to define the objects. [Coherent](../Coherent/README.md) is the later locally Noetherian abelian/exact specialization; module-resolution affine cohomology and canonical base change consume the lower quasicoherent results.
 
 [Homology](Homology.lean), imported as `Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology`, proves `quasicoherent_of_openNeighborhoods`: a module sheaf is quasicoherent if every point has an actual open neighborhood on which its restriction is quasicoherent. `quasicoherent_homology` proves that `K.homology i` is quasicoherent for every integer `i` when every term `K.X n` is quasicoherent. Both statements hold on arbitrary schemes; the homology result requires neither a term bound nor local Noetherianity. The [perfect-complex homology results](../PerfectComplexes/Homology.lean) combine these statements with the separate [ordinary-complex homology comparisons](../Complex/Homology.lean).
+
+[Homology](Homology.lean) proves `quasicoherent_of_openNeighborhoods` on
+actual scheme opens and `quasicoherent_homology` for every termwise
+quasicoherent integer complex. The latter retains the native homology
+sheaf and requires neither boundedness nor Noetherianity.

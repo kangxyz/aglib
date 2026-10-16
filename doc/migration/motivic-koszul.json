@@ -1,0 +1,188 @@
+{
+  "source_archive": "motivic-cohomology-complete-current742-source-m27-20261016T002808.167583Z.tar.gz",
+  "source_author": "Motivic Cohomology contributors (archive supplied by kangxyz)",
+  "adaptation": "Only the selected generic proof closure is admitted. Native ChainComplex.Koszul and CategoryTheory.ShortComplex owners replace the source namespace. Imports follow the unique lower owners. Source licenses and author headers are retained. The short-complex criterion is generalized to arbitrary rings and an independent carrier universe. The finite-term leaf adds the thin ring-coefficient finiteness instance.",
+  "leaves": [
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingle.lean",
+      "source_sha256": "363f6489ce524d6192891869006c060763ace55d16f41d983cd2b15352a60a34",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single.lean",
+      "destination_sha256": "e0416aecd5ce1ac1a0422a7409afc40bd659cb28008e83aae75c4a26ced1ef1b",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113643318386000-2689"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulFinite.lean",
+      "source_sha256": "3547493bb056ef3f31adc85bd33054e83755e4b5cf93761a42ab5096d76403d3",
+      "destination": "Aglib/Algebra/Homology/Koszul/Basic.lean",
+      "destination_sha256": "d7dac7c333aa4efe0da995cac0feab1b0df5dbbb2033b1f2b36f1f3092293f3b",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113652597836000-2893"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleTensorCoordinates.lean",
+      "source_sha256": "95aac555342bb10e0da2df798c530bf0dc2ca4edf15a4ba834333817e1f2a14b",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Tensor/Coordinates.lean",
+      "destination_sha256": "82dc6c7c583264dadeeff869b4843ed9be5af651db616cfc3e711625fcc6cc13",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113663298188000-3087"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulCoefficientComplex.lean",
+      "source_sha256": "133eadd8193364628cad326f5cfbe4eaf8ea8a8b6f0f52c132f71aaf27fac10b",
+      "destination": "Aglib/Algebra/Homology/Koszul/Coefficient.lean",
+      "destination_sha256": "818fd38dfd14af03e4d5fda940653c7a6929f2e8249fb38ac1c6ffec9289e839",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113789049669000-5221"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleQuotientComplex.lean",
+      "source_sha256": "a198f4c91ba6321f74d9cb19f76693824730fc7b8a3d2bb540d7d693762e123b",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Quotient.lean",
+      "destination_sha256": "2a0e0c13be03c0792b23f4c267897693f4a0c3d2eb94b7bb1940284cdd783bb0",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113818788485000-5646"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulScalarQuotientFunctor.lean",
+      "source_sha256": "b3b759e0bcd5036cb3f75a34892209fa778c99072536f244e78d21d5f72acdae",
+      "destination": "Aglib/Algebra/Homology/Koszul/ScalarQuotientFunctor.lean",
+      "destination_sha256": "99275acc71ed5ac780d5393ac44f912d2065c5630f8f603aa99f60b2d92f7187",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113826913058000-5816"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleTensorDifferential.lean",
+      "source_sha256": "2119887a9cf4cf767225f654853e18756dc63b964d48562f63616f0208806964",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Tensor/Differential.lean",
+      "destination_sha256": "260e25c34585aeff133ac65a8772db0eeeb525e72250c1450355c1e1b92e67ab",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113835274555000-6037"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleTensorFunctor.lean",
+      "source_sha256": "087e7aa728d55fedc53dbc72da33ba35c984cee11284bffa3c263af7f52c93a5",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Tensor/Functor.lean",
+      "destination_sha256": "3eaee3835ce9c711085a515a2b65467b82cf9a7b310f3f4f24685cd5153f75f4",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113856143752000-6531"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulCoefficientQuotient.lean",
+      "source_sha256": "25fb3526b3428a50703c0e634159a5bf8686707cd32f822d34fe6712f61e6f2a",
+      "destination": "Aglib/Algebra/Homology/Koszul/Coefficient/Quotient.lean",
+      "destination_sha256": "0e6a88f304075d1979ee3489645583eaf34055afa37edc2ca8edd4aef36e4aa7",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113867147835000-6780"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulCoefficientRegularity.lean",
+      "source_sha256": "5b2396cc055d4e81f9e34d18f5bed23261127d74a0d6a9bce0270d89e92576ce",
+      "destination": "Aglib/Algebra/Homology/Koszul/Coefficient/Regular.lean",
+      "destination_sha256": "8803cf412cd2cd8459a2fa861b4915f19959ed0d2f4dfb013266031673462665",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113875888579000-6953"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleTensorElements.lean",
+      "source_sha256": "7c6601da0155ec83781767d8a25489b32df2734eacb6361a3231da512a6c5e0d",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Tensor/Elements.lean",
+      "destination_sha256": "424a7476814798f3cad2e0f19fc467f5d05f8e9702c9865bb559ade011e98861",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113907913348000-7557"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/ModuleQuasiIsoCriterion.lean",
+      "source_sha256": "92e6a21ecde28c66b2b24a502b5ebaec7cd389d920e41cf93406e7636398a997",
+      "destination": "Aglib/Algebra/Homology/ShortComplex/ModuleQuasiIso.lean",
+      "destination_sha256": "29b6f06f69ccb0dca8ed0c59af8841b6a2bc526e6dfd5291d66e53cb13265477",
+      "native_namespace": "CategoryTheory.ShortComplex",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113916572491000-7746"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulSingleTensorQuotient.lean",
+      "source_sha256": "48aa49753331bb0053efefa4a9d6ebb2353259e3f8f93db93608ff9ff45013de",
+      "destination": "Aglib/Algebra/Homology/Koszul/Single/Tensor/Quotient.lean",
+      "destination_sha256": "b4d70d9d7033218c649d2b24e79bc85c5f7ca35c37ec1fcad8c116116a67cbaf",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113924733595000-7939"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulFiniteAugmentation.lean",
+      "source_sha256": "905a8fa2a1fa2ed96316c6ca1fd542d41d901f444479f1bcbd193b89bb46add3",
+      "destination": "Aglib/Algebra/Homology/Koszul/Augmentation.lean",
+      "destination_sha256": "cf016f63041d655a54848ad19c44a8625a2d26c0de31b29019982969d3f76915",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113933571072000-8114"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulFiniteDifferential.lean",
+      "source_sha256": "ab7c3c349b44c5cc8192cd1d18d6b38f2e8fc7297dc335d6ec9db355e1e20d09",
+      "destination": "Aglib/Algebra/Homology/Koszul/Differential.lean",
+      "destination_sha256": "964ef128321e915c48535c6db2f11c52157c25a04972d41b0bca540184aec825",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113961491079000-8622"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulFiniteIdeal.lean",
+      "source_sha256": "06db974bb54ac41277d30f84049125c28a97d6bdf288d9f34b47625532466d94",
+      "destination": "Aglib/Algebra/Homology/Koszul/Ideal.lean",
+      "destination_sha256": "7a9b7a6f865fa53c3f8a685f0ef098824262c1ed292acfb8cf798df59b9481bf",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113973434970000-8941"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulFiniteResolution.lean",
+      "source_sha256": "b85b17acc3aeeb646bd06593da2255c277038f1bf6a4ee0ec7472e82e01bd74f",
+      "destination": "Aglib/Algebra/Homology/Koszul/Resolution.lean",
+      "destination_sha256": "442521523e1553712a7d712582667bd165db6ee2aeb9419860e3d26e744e6d9e",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792113983799779000-9312"
+    },
+    {
+      "source": "Motivic/Algebra/Homology/KoszulCoefficientFiniteness.lean",
+      "source_sha256": "ed319791b9eeb09b5b3643fa557df84ac49a8144ef55257900e86261796e7a46",
+      "destination": "Aglib/Algebra/Homology/Koszul/Coefficient/Finite.lean",
+      "destination_sha256": "faf971383aa89f47a702f9a42fbe677366abe2dce79c4de29a4ecef272478beb",
+      "native_namespace": "ChainComplex.Koszul",
+      "focused_build_passed": true,
+      "focused_build_receipt": "1792114079577841000-11355"
+    }
+  ],
+  "source_archive_sha256": "4729be914f477dc072771923565e53ecc54c9b70ee059b7e586c15f64150f3cd",
+  "public_consumer": {
+    "path": "work/ext-validation/KoszulConsumer.lean (external to repository)",
+    "receipt": "1792114125363225000-12053",
+    "coverage": [
+      "empty list, actual monoidal tensor unit",
+      "single and concatenation chain isomorphisms",
+      "native signed new-column differential",
+      "literal generated ideal quotient",
+      "native weak/regular sequence resolution, original complex and augmentation rfl",
+      "projective and finite terms over arbitrary commutative rings",
+      "noncommutative-ring short-complex criterion with independent carrier universe"
+    ],
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  }
+}

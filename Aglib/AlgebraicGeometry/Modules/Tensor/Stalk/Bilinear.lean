@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Stalk.Pure
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Linear
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorStalkBilinear.lean` at LOCAL Quillen
@@ -84,13 +85,6 @@ theorem moduleTensorSection_smul_left (X : Scheme.{u}) (M N : X.Modules) (U : X.
   change moduleTensorSectionLinear X M N U ((a • s) ⊗ₜ t) =
     a • moduleTensorSectionLinear X M N U (s ⊗ₜ t)
   rw [← TensorProduct.smul_tmul', _root_.map_smul]
-
-theorem moduleTensorSection_smul_right (X : Scheme.{u}) (M N : X.Modules) (U : X.Opens)
-    (a : Γ(X, U)) (s : Γ(M, U)) (t : Γ(N, U)) :
-    moduleTensorSection X M N U s (a • t) = a • moduleTensorSection X M N U s t := by
-  change moduleTensorSectionLinear X M N U (s ⊗ₜ (a • t)) =
-    a • moduleTensorSectionLinear X M N U (s ⊗ₜ t)
-  rw [TensorProduct.tmul_smul, _root_.map_smul]
 
 theorem moduleTensorStalkPure_add_left (X : Scheme.{u}) (x : X) (M N : X.Modules)
     (m m' : M.presheaf.stalk x) (n : N.presheaf.stalk x) :

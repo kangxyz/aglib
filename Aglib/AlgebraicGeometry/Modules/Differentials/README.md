@@ -6,6 +6,14 @@
 
 [EtalePullback](EtalePullback.lean) proves `Scheme.Modules.Differentials.EtalePullback.isIso_differentialPullbackMap` for the actual canonical arrow of an etale field-scheme morphism. `Scheme.Modules.Differentials.etaleDifferentialIso` is `asIso` of that same arrow, and `etaleDifferentialIso_hom` is its exact `rfl` hom equation. No global supplier premise is required.
 
-[SmoothRank](SmoothRank.lean) proves `Scheme.Modules.Differentials.differentialSheaf_hasRank_of_smooth K X n hX` over every field in the source universe and in every smooth relative dimension. Actual standard-smooth affine charts supply the local bases. `Scheme.Modules.Differentials.smoothDifferential_finiteLocallyFree X n hX` consumes that proved rank. The emptied Properties module and both global differential theorem packages are retired.
+[SmoothRank](SmoothRank.lean) proves `Scheme.Modules.Differentials.differentialSheaf_hasRank_of_smooth K X n hX` over every field in the source universe and in every smooth relative dimension. Actual standard-smooth affine charts supply the local bases. `Scheme.Modules.Differentials.smoothDifferential_finiteLocallyFree X n hX` consumes that proved rank. The former global theorem-family premises and the empty `Properties` entry are retired. The actual successors are `SmoothRank` and `EtalePullback`.
 
 Lower actual module pullback, structural maps and [rank/class](../LocallyFree/README.md) interfaces feed the maps. General differential consumers use them without a canonical-bundle degree, genus or curve Riemann–Roch assertion.
+
+The minimal direct selection from local Aglib main `40af743` is recorded in
+[the migration manifest](../../../../doc/migration/upstream-smooth-differentials.json).
+Each selected leaf and the independent public consumer passed at the default
+budgets. The standard-smooth basis supports independent ring and algebra
+universes. The global rank theorem retains the source universe and includes
+the empty scheme. Exterior powers, the canonical line, and its identification
+with the Serre dualizing coefficient remain separate proof obligations.

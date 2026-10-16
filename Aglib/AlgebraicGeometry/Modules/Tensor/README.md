@@ -11,3 +11,20 @@ A supplied retract of finite free coefficients gives the stated pulled-back tens
 Projection formula, Godement tensor and [ordinary Picard tensor](../Invertible/README.md) are consumers of these same objects/maps. The higher `TensorComparison` explicitly relates the invertible wrappers to the canonical tensor. The [ordinary-complex tensor-to-unit interface](../Complex/TensorToUnit.lean) applies the same natural transformation degreewise and fixes its value on a single complex.
 
 The non-tensor `restrictionRingHom`, its invertibility, `restrictionSheafificationIso` and original restricted-unit isomorphism criteria belong to [ordinary restriction/sheafification](../Restriction/README.md). Tensor Restriction and Sheafification import those maps; the latter retains the explicit line-trivializing-cover tensor theorem.
+
+Projection formula, Godement tensor and [ordinary Picard tensor](../Invertible/README.md) are consumers of these same objects/maps. The higher `TensorComparison` explicitly relates the invertible wrappers to the canonical tensor.
+
+[Linear](Linear.lean) proves structural linearity of the original
+`moduleTensorLeftFunctor` for every explicit ring map into global functions.
+`moduleTensorLeftFunctor_map_globalScalarEndomorphism` retains the actual
+scalar-center endomorphism, and `moduleTensorLeftFunctor_map_smul` applies
+to arbitrary coefficient morphisms. The proof uses the original
+pure-tensor section generators and sheafification unit. The structural
+ring and scheme universes are independent; no QC, flatness or finiteness
+is required. The source passed `1792124172271151000-66462`; the raw
+independent-universe and opposite-twist consumer passed
+`1792124277369972000-67924`, with the three standard axioms.
+
+The scalar-right section theorem `moduleTensorSection_smul_right` has its
+sole implementation in `Linear`. Its native scalar-first parameter order is
+preserved; the stalk bilinearity leaf imports that lower theorem.

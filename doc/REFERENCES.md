@@ -61,3 +61,47 @@ original/current source identities, the final pointwise names, the fifteen
 unretired Spec comparison obligations, and separate native/review states for
 pointwise, Cartier and coherent groups. Earlier migration ledgers and their
 original source IDs, paths, revisions and hashes remain unchanged.
+
+## Supplied Motivic Koszul selection
+
+[motivic-koszul](migration/motivic-koszul.json) records the selected eighteen
+generic source leaves from the user-supplied archive
+`motivic-cohomology-complete-current742-source-m27-20261016T002808.167583Z.tar.gz`.
+The user authored this independent library and authorized early reuse of
+needed foundations. Original contributor and Apache notices are retained.
+The record keeps archive and per-source hashes, current destination hashes,
+native owners and focused verification receipts. This is a bounded source
+selection, not admission or verification of the complete independent library.
+Actual finite Koszul complexes, signed maps and regular-sequence quotient
+resolutions now live under `ChainComplex.Koszul`; the elementwise criterion
+belongs to `CategoryTheory.ShortComplex`. Geometric purity and determinant
+identifications are separate consumers.
+
+[upstream-derived](migration/upstream-derived.json) records six exact generic
+adjunction/K-injective leaves selected from local Aglib main `f87a691`, with
+unchanged destination bytes and their independent public consumer. This
+source is distinct from the fetched remote main. Later root-authored
+injective-complex and original unit-comparison leaves have their own native
+owners and are not represented as unchanged upstream selections.
+
+[upstream-smooth-differentials](migration/upstream-smooth-differentials.json)
+records the minimal four-leaf selection from local Aglib main `40af743`.
+It supplies the canonical affine differential comparison, standard-smooth
+bases and the actual field-scheme smooth-rank theorem, preserving the
+source's earlier R5 provenance in each header. The record includes exact
+source/destination hashes and independent public verification. It does not
+attribute exterior, determinant or duality identifications to that source.
+
+## Relative Euler sequence and determinant normalization
+
+[Stacks Section 50.11](https://stacks.math.columbia.edu/tag/0FMG), especially
+Lemma 50.11.1, gives the standard-chart Euler maps and the top differential
+twist calculation over a ring. Its stated range starts at positive projective
+dimension; the formal dimension-zero case is checked separately.
+[Section 27.21](https://stacks.math.columbia.edu/tag/01OA) fixes the quotient
+convention for projective bundles, and [Section 17.26](https://stacks.math.columbia.edu/tag/0B37)
+gives the determinant rule for an exact sequence of finite locally free
+sheaves. The coordinate-free det(V) factor in the cohomology plan is a
+mathematical deduction from these constructions. The actual Euler maps,
+exactness, determinant comparison and original residue trace still need
+native proofs; no source statement is inserted as a mathematical assumption.

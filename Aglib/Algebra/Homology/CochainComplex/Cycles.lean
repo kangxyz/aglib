@@ -9,6 +9,9 @@ public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.KernelClosed
 public import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
 public import Mathlib.Data.Int.Init
+public import Mathlib.Algebra.Homology.Embedding.CochainComplex
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
 
 /-!
 # Actual cycle sequences and acyclicity under additive functors
@@ -148,5 +151,19 @@ theorem acyclic_map_of_cycle_sequences (F : A ⥤ B) [F.Additive]
   simpa using he (n - 1)
 
 end
+
+end CochainComplex
+
+namespace CochainComplex
+
+variable {C : Type*} [Category* C] [Abelian C]
+
+/-- Compatibility theorem for the same native cycle sequence. The sole
+short-exactness proof is `cycleSequence_shortExact`. -/
+theorem shortExact_cycles (K : CochainComplex C ℤ) (n : ℤ) (h : K.ExactAt (n + 1)) :
+    (ShortComplex.mk (K.iCycles n) (K.toCycles n (n + 1)) (by
+      rw [← cancel_mono (K.iCycles (n + 1)), Category.assoc, toCycles_i,
+        iCycles_d, zero_comp])).ShortExact :=
+  cycleSequence_shortExact K n h
 
 end CochainComplex

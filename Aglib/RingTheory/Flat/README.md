@@ -9,3 +9,20 @@ The module need not be projective. The exact algebra, flatness and torsion-free 
 [LocalBasis](LocalBasis.lean) gives an actual finite basis after one localization outside a specified prime for a finitely presented flat module. The algebra corollary retains module finiteness and algebra finite presentation; rings and modules keep the source universe.
 
 [IdealBaseChange](IdealBaseChange.lean), imported as `Aglib.RingTheory.Flat.IdealBaseChange`, supplies actual quotient-flat kernel comparisons for tensor products and algebra pushouts, with the original surjectivity and scalar-tower data. [Quotient](Quotient.lean) transports base-flatness of the actual kernel quotient through a surjective ring map; it adds no ambient or base-change flatness premise.
+
+[Exact](Exact.lean), imported as `Aglib.RingTheory.Flat.Exact`, proves
+`Module.Flat.of_universally_lTensor_injective`: if the original map `M →ₗ[R] P`
+is injective after tensoring with every scalar-universe module and `P` is flat,
+then `M` is flat. The native tensor square proves the tensor-injectivity criterion;
+no purity interface is assumed. `Module.Flat.ker_of_surjective` then proves that
+the actual kernel of a surjection between flat modules is flat, using native
+flat-quotient tensor exactness. The ring is commutative, and the scalar, source
+and target module universes are independent. The current consumer is the lower
+universal-tensor terminal-cycle criterion for bounded flat cohomology models.
+
+The Exact leaf was compiled alone through the shared serialized wrapper,
+receipt `1792086884716582000-29290`.
+The external `work/proper-validation/FlatExactConsumer.lean` checks both native
+interfaces in independent scalar/source/target universes and passed with receipt
+`1792086931469921000-29690`. The inspected proofs use only `propext`,
+`Classical.choice` and `Quot.sound`.

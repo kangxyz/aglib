@@ -12,3 +12,17 @@ The [identity-cone functor](../../../Algebra/Homology/MappingCone/README.md) use
 
 [BinaryProducts](BinaryProducts.lean) gives the product-preserving-functor criterion for a
 mapped morphism into a binary product to vanish when both mapped projections vanish.
+
+[RegularKernel](RegularKernel.lean) proves
+`preservesKernel_of_generalizedInverse`. An actual morphism `f` with a
+displayed generalized inverse `s`, satisfying `f ≫ s ≫ f = f`, has its
+kernel preserved by every additive functor between preadditive categories.
+Only existence of that one source kernel is required. Its complementary
+projection is the original `1 - f ≫ s`; no abelian or exact-functor
+hypothesis is introduced.
+
+`kernelRetractOfGeneralizedInverse` exposes the actual kernel retract and
+its complementary projection, while `sourceRetractOfGeneralizedInverse`
+expresses the source as a retract of the kernel plus the target. The
+kernel-preservation proof uses this same implementation. These actual
+retractions also supply the projectivity criterion in the abelian family.

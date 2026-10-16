@@ -18,7 +18,8 @@ public import Mathlib.Algebra.Homology.Functor
 public import Mathlib.Algebra.Homology.HomologicalBicomplex
 public import Mathlib.Algebra.Category.Grp.AB
 public import Aglib.Algebra.Homology.TotalComplex.AddCommGrp
-public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Affine
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.DegreeZero
+public import Mathlib.AlgebraicGeometry.Morphisms.Separated
 /-!
 # Original Cech cohomology and canonical comparison with Sheaf.H
 

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact
-public import Mathlib.RingTheory.Finiteness.Finsupp
+public import Aglib.RingTheory.Finiteness.Exact
 
 /-!
 # Finiteness under actual cohomology exact sequences
@@ -39,8 +39,8 @@ variable {k A B C : Type*} [Field k] [AddCommGroup A] [AddCommGroup B] [AddCommG
 /-- Finite outer vector spaces force a finite middle term, without a surjectivity hypothesis. -/
 theorem finite_middle_of_exact (f : A →ₗ[k] B) (g : B →ₗ[k] C)
     (h : Function.Exact f g) [Module.Finite k A] [Module.Finite k C] :
-    Module.Finite k B := by
-  exact Module.Finite.of_exact h.linearMap_rangeRestrict g.surjective_rangeRestrict
+    Module.Finite k B :=
+  Module.Finite.of_exact_of_isNoetherian f g h
 end LinearAlgebra
 
 /-- Finiteness of actual cohomology is preserved under module-sheaf extensions. -/

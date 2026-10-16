@@ -47,3 +47,53 @@ sheafification counit, its literal component formula and its naturality on
 arbitrary complexes. It reuses generic module-sheafification additivity.
 The [flat family](Flat/README.md) imposes actual stalkwise flatness and strict
 upper term bounds for the appropriate replacements and pullback results.
+
+[Homology](Homology.lean) gives `homologyIsoOfDerivedIso` through the native
+derived homology factorization and `restrictHomologyIso` through the actual
+exact restriction comparison. The original homology sheaves are retained.
+The derived category has the standard morphism universe `u + 1` for
+`X : Scheme.{u}`. These results precede [local perfect models](../PerfectComplexes/README.md).
+
+[Sections](Sections.lean) detects actual `ExactAt` and acyclicity in any
+complex shape from original variable-ring sections on a topological basis.
+Its `quasiIso_of_sections_on_basis` detects actual quasi-isomorphisms of
+integer cochain complexes by those native section maps. It imports no
+cohomology implementation and assumes no quasicoherence, termwise
+acyclicity, boundedness or finiteness. The proof uses exact conservative
+native scalar forgetting and the established additive-sheaf basis criterion.
+The leaf passed `1792103250738244000-40548`; the independent raw-evaluation
+and arbitrary-index-universe consumer passed `1792103303811904000-41257`,
+with only the three standard axioms.
+
+[Tilde](Tilde.lean) applies the original affine `fromTildeΓNatTrans` counit
+to actual module complexes of any shape. `tildeGlobalSectionsCounit_f`
+and `tildeGlobalSectionsCounit_toOpen` retain the literal original counit
+and its section-localization unit equation. The chain map is natural in
+original coefficient chain maps. When this actual counit is a
+quasi-isomorphism, `tildeGlobalSectionsHomologyIso` computes the original
+homology sheaf from the native affine section-complex homology, using the
+exact tilde comparison and the homology map of that same counit. The
+resulting original homology sheaf is quasicoherent.
+
+The same leaf identifies native module localization with actual tilde
+sections on `D(r)` through the original `tilde.toOpen`. This section functor
+is exact, and its original complex unit localizes actual homology in every
+shape and degree. `tildeBasicOpenComplexUnit_counit` is the exact chain-map
+equation saying that this unit followed by the original counit equals the
+original top-to-open restriction. Consequently,
+`tildeGlobalSectionsCounit_quasiIso_of_isLocalized` proves the actual
+integer-cochain counit a quasi-isomorphism when those actual homology
+restrictions localize on every principal open. It uses the native section
+basis criterion, with no assumption of quasicoherence of the target terms
+or homology.
+
+[Tilde/HomologyMap](Tilde/HomologyMap.lean) identifies the actual affine counit
+with the native complex-adjunction counit. The original complex mate followed
+by this counit recovers its specified sheaf-complex arrow.
+`tildeGlobalSectionsHomologyIso_mate` computes that arrow on homology using
+only exact tilde and the stated quasi-isomorphism of the actual counit.
+Its `_mate_sections_unit` and `_mate_sections` equations retain the original
+tilde units and native homology isomorphisms in affine section coordinates.
+They hold in every complex shape and independent index universe, without a
+hypothesis that global sections preserve homology. The proved direct-image
+counit supplier and canonical derived base-change normalization are consumers.

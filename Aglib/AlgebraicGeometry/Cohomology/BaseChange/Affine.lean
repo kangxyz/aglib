@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Field
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles
 public import Mathlib.AlgebraicGeometry.Morphisms.Affine
 public import Mathlib.Algebra.Category.Ring.Constructions
@@ -49,55 +50,6 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 universe u
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y)
-
-/-- In degree zero the Ext construction is the actual composite of sheaf maps. -/
-theorem zariskiCohomologyMap_addEquiv₀
-    (A : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
-    (B : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
-    (a : (zariskiPullback f).obj A ⟶ B) (x : Sheaf.H.{u + 1} A 0) :
-    Abelian.Ext.addEquiv₀ (zariskiCohomologyMap f A B a 0 x) =
-      (constantPullbackIso f).inv.app (AddCommGrpCat.of (ULift.{u} ℤ)) ≫
-        (zariskiPullback f).map (Abelian.Ext.addEquiv₀ x) ≫ a := by
-  apply (Abelian.Ext.mk₀_bijective _ _).injective
-  rw [Abelian.Ext.mk₀_addEquiv₀_apply]
-  conv_lhs => rw [← Abelian.Ext.mk₀_addEquiv₀_apply x]
-  change ((Abelian.Ext.mk₀ _).comp
-    ((Abelian.Ext.mk₀ _).mapExactFunctor (zariskiPullback f)) (Nat.zero_add 0)).comp
-      (Abelian.Ext.mk₀ a) (Nat.add_zero 0) = _
-  simp only [Abelian.Ext.mapExactFunctor_mk₀, Abelian.Ext.mk₀_comp_mk₀, Category.assoc]
-
-/-- Constant-sheaf transport was chosen by the global-sections adjunction,
-so its effect on degree-zero classes is the actual adjoint coefficient map. -/
-theorem zariskiCohomologyMap_equiv₀
-    (A : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
-    (B : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
-    (a : (zariskiPullback f).obj A ⟶ B) (x : Sheaf.H.{u + 1} A 0) :
-    Sheaf.H.equiv₀ B isTerminalTop (zariskiCohomologyMap f A B a 0 x) =
-      (pushforwardSectionsIso f).hom.app B
-        ((((TopCat.Sheaf.pullbackPushforwardAdjunction AddCommGrpCat.{u}
-          f.base).homEquiv A B a).hom.app (op ⊤))
-          (Sheaf.H.equiv₀ A isTerminalTop x)) := by
-  let adjY := constantSheafAdj (Opens.grothendieckTopology Y) AddCommGrpCat.{u}
-    isTerminalTop
-  let adjX := constantSheafAdj (Opens.grothendieckTopology X) AddCommGrpCat.{u}
-    isTerminalTop
-  let adjf := TopCat.Sheaf.pullbackPushforwardAdjunction AddCommGrpCat.{u} f.base
-  let adj := (adjY.comp adjf).ofNatIsoRight (pushforwardSectionsIso f)
-  change integerSheafHomEquiv B
-    (Abelian.Ext.addEquiv₀ (zariskiCohomologyMap f A B a 0 x)) = _
-  rw [zariskiCohomologyMap_addEquiv₀]
-  change (AddCommGrpCat.uliftZMultiplesAddEquiv _)
-    (adjX.homEquiv _ _ ((adj.leftAdjointUniq adjX).inv.app _ ≫
-      (zariskiPullback f).map (Abelian.Ext.addEquiv₀ x) ≫ a)) = _
-  rw [Adjunction.leftAdjointUniq_inv_app, Adjunction.homEquiv_naturality_right,
-    Adjunction.homEquiv_leftAdjointUniq_hom_app, ← Adjunction.homEquiv_unit,
-    Adjunction.homEquiv_ofNatIsoRight_apply, Adjunction.comp_homEquiv]
-  change (AddCommGrpCat.uliftZMultiplesAddEquiv _)
-    (adjY.homEquiv _ _
-      (adjf.homEquiv _ _ ((zariskiPullback f).map (Abelian.Ext.addEquiv₀ x) ≫ a)) ≫
-        (pushforwardSectionsIso f).hom.app B) = _
-  rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right]
-  rfl
 
 /-- In degree zero the constructed structure-sheaf pullback is the actual
 ring map on global sections. -/

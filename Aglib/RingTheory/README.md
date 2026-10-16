@@ -11,6 +11,8 @@ The objects are actual Mathlib rings, algebras, ideals, prime spectra, localizat
 | [IntegralClosure](IntegralClosure/README.md) | Faithfully flat descent of integral closedness between domains |
 | [FiniteLength](FiniteLength/README.md), [Support](Support/README.md) and [Localization](Localization/README.md) | Finite length from maximal support, localized minimal support and actual scalar/localized-length comparisons |
 | [PrimeFiltration](PrimeFiltration/README.md) and [Multiplicity](Multiplicity/README.md) | Prime cyclic filtrations, local occurrence counts and finite-scalar-homology Euler formulae |
+| [Finiteness](Finiteness/README.md) | Finite middle modules in exact pairs with a finite source and Noetherian target, without surjectivity |
+| [Spectrum](Spectrum/README.md) | Open residue-fibre surjectivity, upper semicontinuity of finite-module fibre dimension and local constancy under finite-presentation flatness |
 | [Ideal/MinimalPrime](Ideal/MinimalPrime/README.md), [Flat](Flat/README.md), [MonoidAlgebra](MonoidAlgebra/README.md), [RootsOfUnity](RootsOfUnity/README.md), [Smooth](Smooth/README.md), [Etale](Etale/README.md) | Actual minimal-prime, flat-module, finite-type monoid algebra, root-adjoin, reducedness and formal-etale ring-map prerequisites |
 
 [Generic exact-sequence length](Length/README.md), [scalar homology](ScalarHomology/README.md), fraction and filtration calculations belong to their lower object owners; the multiplicity proofs consume them. No Grayson cycle, principal-face, curve or K/G/Q/S application object is introduced. Scheme smooth/stalk/connectedness results consume the regular-local, polynomial and tensor-domain leaves; other admitted interfaces remain available as public standalone results.

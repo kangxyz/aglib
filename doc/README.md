@@ -39,3 +39,7 @@ then [effective Cartier ideals](../Aglib/AlgebraicGeometry/EffectiveCartierDivis
 [Coherent extension](../Aglib/AlgebraicGeometry/Modules/Coherent/Extension/README.md)
 and [Serre localization](../Aglib/AlgebraicGeometry/Modules/Coherent/Localization/README.md)
 retain their distinct local and global Noetherian hypotheses.
+
+The source authority and exact new selections are [latest-quillen](migration/latest-quillen.json), [latest-scheme](migration/latest-scheme.json), [latest-homology](migration/latest-homology.json) and [latest-general-cuts](migration/latest-general-cuts.json). These provenance records do not replace the source's bounds or input families.
+
+[Cohomology development](COHOMOLOGY_PLAN.md) records the current affine/flat base-change, projective finiteness, duality and proper-base-change targets and their exact proof boundaries.

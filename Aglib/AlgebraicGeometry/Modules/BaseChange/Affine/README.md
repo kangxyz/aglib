@@ -7,3 +7,10 @@ The namespace is `Scheme.Modules.BaseChange.Affine`, with the square constructio
 Lower ring/module scalar-extension and tensor-pushout objects live in [ModuleCat/BaseChange](../../../../Algebra/Category/ModuleCat/BaseChange.lean); generic adjunction comparison and mate whiskering live in [Adjunction/Mates](../../../../CategoryTheory/Adjunction/Mates.lean). The existing native affine tilde/pullback/pushforward comparisons remain in [QuasiCoherent/Affine](../../QuasiCoherent/Affine/README.md), and canonical scheme pullback/open restriction remains in [Pullback](../../Pullback/README.md).
 
 The public result is a supplier of the existing family on the original map. The internal affine-square reduction introduces no new public theorem-family input. Native module-fibre, finite locally free and relative-family consumers may use this supplier; the theorem does not assert proper cohomology base change.
+
+The affine global-section leaf retains two specified adjunction coordinates.
+`BaseChange.Affine` uses transported restriction with literal top evaluation;
+`Scheme.Modules` uses pullback with spectrum-global sections. Their original
+unit and counit formulas are preserved. These functors are canonically
+isomorphic, but the library does not identify their chosen adjunction data by
+definitional equality.

@@ -1,8 +1,49 @@
 # Migration work and validation boundaries
 
-## Current accepted source checkpoint
+## Cohomology integration checkpoint
 
-The current source contains 625 production modules and 23 trust-test modules.
+The cohomology checkpoint `fae98131ae2f4cf4390e73f435dd1a62bcc5467f`
+is integrated with the general-source checkpoint
+`40af743ab794d607f566cec0c5417d8e4d02a735`.
+The mathematical development and its remaining dependencies are recorded in
+[COHOMOLOGY_PLAN.md](COHOMOLOGY_PLAN.md).
+
+The new proofs supply canonical affine module base change, flat base change
+for arbitrary quasicoherent coefficients and bounded-below complexes with
+quasicoherent cohomology, and the original higher-direct-image comparison over
+general bases. Proper coherent cohomology is finite over a Noetherian affine
+base; affine localization gives coherence of higher direct images over every
+locally Noetherian target. For coherent relatively flat coefficients, the same
+bounded finite-projective Cech model computes all ordinary base changes over a
+Noetherian base. Pointwise criteria, upper semicontinuity and local constancy of
+the Euler characteristic use that model and its actual comparison maps.
+
+The integration also retains the quotient-linear principal Koszul Ext
+calculation and the native differential and exterior-power prerequisites.
+Relative Serre duality, its canonical-bundle identification and perfect direct
+image for general perfect coefficients remain explicit development targets.
+These are not consequences merely of naming a dualizing sheaf or constructing
+a finite model for a relatively flat sheaf.
+
+Owner reconciliation preserves the existing adjunction maps and main-library
+declaration names. Perfect-complex implementations have the single canonical
+`Modules.PerfectComplexes` owner; consumed older imports are thin compatibility
+entries. The weaker dense-affine results belong to `Properties.DenseAffine`.
+The two affine global-section comparisons retain their distinct native
+adjunction normalizations. Public consumers check the mixed interfaces.
+
+Validation is scoped to modified Lean leaves, their required dependencies and
+focused public consumers. The 84 author-header repairs each have an exact-leaf
+compile receipt and preserve the complete body and original provenance.
+The merged source-only suite checks 1112 production modules, 23 trust-test
+modules and 99 Python regressions, including generated exports, layout,
+placeholder and source-policy checks. This integration does not claim a fresh
+aggregate library build, complete CI run, downstream acceptance or additional
+whole-library kernel replay.
+
+## Previous accepted migration checkpoint
+
+That earlier source checkpoint contains 625 production modules and 23 trust-test modules.
 The normal public export and four focused clients pass under the pinned Lean
 and Mathlib versions. Native Lake artifact transfer reuses the accepted producer
 artifacts: all 693 advertised artifact pairs for the 99 selected source/test
@@ -24,9 +65,10 @@ and the accepted prose addendum. Detailed identities and scoped evidence are in
 
 The coherent quotient equivalence retains `IsNoetherian X`; lower subobject and
 fullness results keep their locally Noetherian conditions. Cartier results keep
-their separate finite, flat and locally finitely presented hypotheses. Proper
-module-cohomology finiteness and relative locally free cohomology base change
-remain explicit inputs.
+their separate finite, flat and locally finitely presented hypotheses. On that earlier source basis, proper module-cohomology finiteness and
+relative locally free cohomology base change remained explicit inputs. The
+cohomology integration below supplies the former; the full arbitrary-base
+locally free base-change family remains a separate boundary.
 
 The earlier checkpoints `f87a691813bc5f763dd7a119990c298b35c389f4` and `451aeda`
 retain their original source and validation bases. Current normal export checks

@@ -21,6 +21,8 @@ public import Aglib.RingTheory.Descent.PurelyInseparable.Morphisms
 public import Aglib.RingTheory.Etale.FormalProperties
 public import Aglib.RingTheory.Etale.Polynomial
 public import Aglib.RingTheory.FiniteLength.Support
+public import Aglib.RingTheory.Finiteness.Exact
+public import Aglib.RingTheory.Flat.Exact
 public import Aglib.RingTheory.Flat.FinitePresentation.FiniteStage
 public import Aglib.RingTheory.Flat.FinitePresentation.LocalModel
 public import Aglib.RingTheory.Flat.FinitePresentation.LocalRegularity
@@ -67,6 +69,12 @@ public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Filtration
 public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Interchange
 public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Localization
 public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Support
+public import Aglib.RingTheory.MvPolynomial.CoordinateExponents
+public import Aglib.RingTheory.MvPolynomial.CoordinateGrading
+public import Aglib.RingTheory.MvPolynomial.CoordinateLocalization
+public import Aglib.RingTheory.MvPolynomial.CoordinatePieces
+public import Aglib.RingTheory.MvPolynomial.GradedMap
+public import Aglib.RingTheory.MvPolynomial.Homogeneous
 public import Aglib.RingTheory.PrimeFiltration.Basic
 public import Aglib.RingTheory.PrimeFiltration.Length
 public import Aglib.RingTheory.PrimeFiltration.Multiplicity
@@ -85,7 +93,15 @@ public import Aglib.RingTheory.ScalarHomology.BaseChange
 public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion
 public import Aglib.RingTheory.Smooth.Reduced
+public import Aglib.RingTheory.Spectrum.Prime.FiberDimension
+public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.BaseChange
+public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Flat
+public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.LocallyFree
+public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Reduced
+public import Aglib.RingTheory.Spectrum.Prime.FiberInjectivity
+public import Aglib.RingTheory.Spectrum.Prime.Surjectivity
 public import Aglib.RingTheory.Support.Localization
+public import Aglib.RingTheory.Support.Powers
 public import Aglib.RingTheory.TensorProduct.Domain
 public import Aglib.RingTheory.TensorProduct.Equalizer
 public import Aglib.RingTheory.TensorProduct.PurelyInseparable

@@ -10,3 +10,11 @@ The construction uses the canonical generic sheafification/direct-image comparis
 [ZeroMorphisms](ZeroMorphisms.lean) give ordinary module restriction interfaces: isomorphisms
 on smaller opens and open ranges, the comparison on the same chosen pullback, and zero-map
 detection for a target in the actual open direct-image essential image.
+
+These maps feed [preservation of injectives by open restriction](../../Cohomology/Injective/README.md), local basis/presentation transport and the canonical [open-base-change](../BaseChange/README.md) comparison. Open immersion is a geometric input; no Noetherian or finite-type hypothesis is imposed merely to define the functors.
+
+[ExtensionByZero/ClosedImmersion](ExtensionByZero/ClosedImmersion.lean)
+gives the original exchange of closed pushforward with genuine open
+extension by zero, with its exact unit and all-module stalkwise
+invertibility. Its [focused guide](ExtensionByZero/README.md) records the
+closed-right-adjoint open-locality consumer.
