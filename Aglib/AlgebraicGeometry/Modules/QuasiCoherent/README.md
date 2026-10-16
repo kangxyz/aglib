@@ -12,3 +12,11 @@ Focused imports follow these three leaves and the subfamilies. Quasicoherence an
 actual scheme opens and `quasicoherent_homology` for every termwise
 quasicoherent integer complex. The latter retains the native homology
 sheaf and requires neither boundedness nor Noetherianity.
+
+[Tensor](Tensor.lean), imported as
+`Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor`, identifies the actual
+sheaf tensor of two native tilde modules with tilde of their module tensor.
+`tildeTensorIso_hom_tmul` preserves the original sheafification-unit formula on
+every open. `isQuasicoherent_moduleTensorLeftFunctor` proves tensor closure on
+arbitrary schemes without flatness, finiteness, or Noetherian hypotheses; the
+module owner has no cohomology dependency.

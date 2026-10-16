@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Counit
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor
 public import Mathlib.CategoryTheory.Adjunction.FullyFaithful
 
@@ -33,7 +34,11 @@ namespace CategoryTheory.Adjunction
 
 variable {C D : Type*} [Category* C] [Category* D] [Abelian C] [Abelian D]
     {F : C ⥤ D} {G : D ⥤ C} [F.Additive] [G.Additive] [F.PreservesHomology]
-    (adj : F ⊣ G) [IsIso adj.counit]
+    (adj : F ⊣ G)
+
+section
+
+variable [IsIso adj.counit]
 
 /-- Reflecting the original included short-complex homology gives the original homology,
 using the native homology comparison and original counit. -/
@@ -70,10 +75,16 @@ theorem reflectedHomologyIso_naturality {S T : ShortComplex D} (f : S ⟶ T) :
   simpa only [Category.assoc] using
     congrArg (fun z => ((S.map G).mapHomologyIso F).inv ≫ z) hh
 
+end
+
 /-- The canonical unit from included homology to the inclusion of original homology. -/
-def homologyReflectionUnit (S : ShortComplex D) :
+def homologyReflectionUnit [IsIso adj.counit] (S : ShortComplex D) :
     (S.map G).homology ⟶ G.obj S.homology :=
-  adj.unit.app (S.map G).homology ≫ G.map (adj.reflectedHomologyIso S).hom
+  adj.homologyCounitMate S
+
+section
+
+variable [IsIso adj.counit]
 
 /-- The canonical reflection unit retains actual coefficient naturality. -/
 @[reassoc]
@@ -85,7 +96,10 @@ theorem homologyReflectionUnit_naturality {S T : ShortComplex D} (f : S ⟶ T) :
       adj.unit.app (S.map G).homology ≫
         G.map (F.map (ShortComplex.homologyMap (G.mapShortComplex.map f))) :=
     adj.unit.naturality _
-  unfold homologyReflectionUnit
+  change ShortComplex.homologyMap (G.mapShortComplex.map f) ≫
+      (adj.unit.app (T.map G).homology ≫ G.map (adj.reflectedHomologyIso T).hom) =
+    (adj.unit.app (S.map G).homology ≫ G.map (adj.reflectedHomologyIso S).hom) ≫
+      G.map (ShortComplex.homologyMap f)
   rw [← Category.assoc, hu, Category.assoc]
   rw [← G.map_comp, adj.reflectedHomologyIso_naturality, G.map_comp]
   exact (Category.assoc _ _ _).symm
@@ -96,13 +110,7 @@ comparison. This equation fixes the orientation of the sheafification comparison
 theorem map_homologyReflectionUnit_counit (S : ShortComplex D) :
     F.map (adj.homologyReflectionUnit S) ≫ adj.counit.app S.homology =
       (adj.reflectedHomologyIso S).hom := by
-  have he : F.map (G.map (adj.reflectedHomologyIso S).hom) ≫
-        adj.counit.app S.homology =
-      adj.counit.app (F.obj (S.map G).homology) ≫ (adj.reflectedHomologyIso S).hom :=
-    adj.counit.naturality _
-  unfold homologyReflectionUnit
-  rw [F.map_comp, Category.assoc, he,
-    ← Category.assoc, adj.left_triangle_components, Category.id_comp]
+  exact adj.map_homologyCounitMate_counit S
 
 /-- The image of the original homology reflection unit is invertible. No homology
 preservation by the right adjoint is required. -/
@@ -115,5 +123,7 @@ theorem map_homologyReflectionUnit_isIso (S : ShortComplex D) :
     exact adj.map_homologyReflectionUnit_counit S
   rw [hu]
   infer_instance
+
+end
 
 end CategoryTheory.Adjunction

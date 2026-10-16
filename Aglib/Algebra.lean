@@ -20,6 +20,8 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Derived
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Ext
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Principal
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Quotient
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Finiteness
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Flat
@@ -186,6 +188,7 @@ public import Aglib.Algebra.Homology.MappingCone.WeakMap
 public import Aglib.Algebra.Homology.QuasiIso
 public import Aglib.Algebra.Homology.Semicontinuity
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction
+public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Counit
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Cycles
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Exactness
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction.Reflection

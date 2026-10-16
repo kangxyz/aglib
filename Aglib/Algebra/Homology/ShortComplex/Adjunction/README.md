@@ -14,11 +14,22 @@ homology map. Kernel or homology preservation by the left adjoint,
 finiteness and boundedness are not premises. The current consumer is the
 pointwise scalar-extension/base-change criterion.
 
+[Counit](Counit.lean) constructs `Adjunction.homologyCounit` and its ordinary
+adjunction mate `homologyCounitMate` for additive functors whose left adjoint
+preserves homology. The mate starts with the original unit at
+`(S.map G).homology`. `cyclesCounitMate_iCycles` and
+`homologyCounitMate_homologyπ` retain the actual cycle inclusion and class
+projection; `map_homologyCounitMate_counit` recovers the original counit
+homology map. No homology preservation by the right adjoint or invertibility
+of the counit is needed. These equations supply the affine section-counit
+normalization.
+
 [Reflection](Reflection.lean) treats an additive adjunction with invertible
 counit and homology-preserving left adjoint. `reflectedHomologyIso` identifies
 the reflection of the original included homology with original homology in
-the reflective category. `homologyReflectionUnit` uses the actual adjunction
-unit followed by that isomorphism. Coefficient naturality and the original
+the reflective category. `homologyReflectionUnit` delegates to the canonical
+`homologyCounitMate` and retains its original invertible-counit argument. Its
+actual adjunction-unit/isomorphism formula remains definitionally unchanged. Coefficient naturality and the original
 unit/counit equation are explicit, and reflecting this unit gives an
 isomorphism. Homology preservation by the right adjoint is not a premise.
 Native module-sheaf sheafification is the current consumer.
@@ -33,3 +44,7 @@ original cycle classes. The right adjoint preserves homology, and the left
 adjoint need not be exact. Native scalar extension of resolution sections
 is the current consumer, including its unit pure-tensor formula without
 scalar flatness.
+
+The cycle/projection normalization in `Cycles` delegates to the sole native
+[MapHomology/Components](../MapHomology/Components.lean) owner. Its original
+right-adjoint homology-preservation guard remains unchanged.

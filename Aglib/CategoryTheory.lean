@@ -51,6 +51,7 @@ public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.NatTrans.Unit
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness

@@ -28,3 +28,12 @@ independent-universe and opposite-twist consumer passed
 The scalar-right section theorem `moduleTensorSection_smul_right` has its
 sole implementation in `Linear`. Its native scalar-first parameter order is
 preserved; the stalk bilinearity leaf imports that lower theorem.
+
+[AffineSections](AffineSections.lean), imported as
+`Aglib.AlgebraicGeometry.Modules.Tensor.AffineSections`, proves that the original
+`moduleTensorSectionLinear` is bijective on every affine open for arbitrary
+quasicoherent factors. `moduleTensorSectionIso` is the native section-module
+isomorphism with that same forward map; its pure-section formula is unchanged.
+The proof consumes the canonical [quasicoherent tilde tensor comparison](../QuasiCoherent/Tensor.lean)
+and the original affine chart/restriction maps. It adds no flatness, finiteness,
+separatedness, or Noetherian premise and has no cohomology dependency.

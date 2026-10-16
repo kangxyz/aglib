@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction
+public import Aglib.Algebra.Homology.ShortComplex.MapHomology.Components
 
 /-!
 # Cycles of the original homology adjunction unit
@@ -32,21 +33,6 @@ universe u v u' v'
 
 variable {C : Type u} [Category.{v} C] [Abelian C]
   {D : Type u'} [Category.{v'} D] [Abelian D]
-
-private theorem mapHomologyIso_homologyπ (H : C ⥤ D) [H.Additive] [H.PreservesHomology]
-    (S : ShortComplex C) :
-    (S.map H).homologyπ ≫ (S.mapHomologyIso H).hom =
-      (S.mapCyclesIso H).hom ≫ H.map S.homologyπ := by
-  let h := S.homologyData.left
-  rw [h.mapHomologyIso_eq H]
-  simp only [Iso.trans_hom, Functor.mapIso_hom, Iso.symm_hom]
-  rw [← Category.assoc, ShortComplex.LeftHomologyData.homologyπ_comp_homologyIso_hom]
-  simp only [ShortComplex.LeftHomologyData.map_π]
-  rw [Category.assoc, ← H.map_comp,
-    ShortComplex.LeftHomologyData.π_comp_homologyIso_inv, H.map_comp]
-  have hc := congrArg (fun e => e.hom) (h.mapCyclesIso_eq H)
-  simp only [Iso.trans_hom, Functor.mapIso_hom, Iso.symm_hom] at hc
-  simpa only [Category.assoc] using congrArg (fun z => z ≫ H.map S.homologyπ) hc.symm
 
 variable {F : C ⥤ D} {G : D ⥤ C} [F.Additive] [G.Additive] [G.PreservesHomology]
   (adj : F ⊣ G) (S : ShortComplex C)
@@ -80,7 +66,7 @@ theorem cyclesUnit_homologyπ :
       (S.mapCyclesIso (𝟭 C)).inv ≫ (S.map (𝟭 C)).homologyπ := by
     apply (cancel_mono (S.mapHomologyIso (𝟭 C)).hom).mp
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-    rw [mapHomologyIso_homologyπ, Iso.inv_hom_id_assoc]
+    rw [ShortComplex.homologyπ_mapHomologyIso_hom, Iso.inv_hom_id_assoc]
     rfl
   unfold homologyUnit cyclesUnit
   rw [← Category.assoc, ← Category.assoc, hId]
@@ -90,7 +76,7 @@ theorem cyclesUnit_homologyπ :
   simp only [Category.assoc]
   change (S.mapCyclesIso (𝟭 C)).inv ≫ ShortComplex.cyclesMap (S.mapNatTrans adj.unit) ≫
       ((S.map F).map G).homologyπ ≫ ((S.map F).mapHomologyIso G).hom = _
-  rw [mapHomologyIso_homologyπ]
+  rw [ShortComplex.homologyπ_mapHomologyIso_hom]
 
 /-- Follow the original cycle unit by the native cycle map of an actual coefficient arrow. -/
 def cyclesUnitMap {T : ShortComplex D} (δ : S.map F ⟶ T) : S.cycles ⟶ G.obj T.cycles :=

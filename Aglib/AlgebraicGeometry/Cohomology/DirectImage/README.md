@@ -155,6 +155,15 @@ to compute the actual `rightDerived n` pushforward. The specialization
 `higherDirectImageRestrictionIso f U n` uses the actual inverse-image open and
 `f ∣_ U`. No quasicoherence, qcqs, Noetherianity or finiteness is required.
 
+[Restriction/Resolution](Restriction/Resolution.lean) is the sole owner of
+`openBaseChangeResolutionMapPlus` and
+`higherDirectImageOpenRestrictionIso_app_resolution`. The literal cartesian
+open map on a supplied original resolution, followed by its native
+exact-restriction comparison, computes the unchanged native higher-image
+open isomorphism. Its components retain the original ordinary cartesian
+mate. The statements apply to all module sheaves and natural degrees,
+without qcqs or quasicoherence assumptions.
+
 [QuasiCoherent](QuasiCoherent.lean) proves
 `moduleHigherDirectImage_isQuasicoherent`: for qcqs `f : X ⟶ Y` and any
 quasicoherent `M`, the actual `((Modules.pushforward f).rightDerived n).obj M`

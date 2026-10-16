@@ -35,3 +35,11 @@ The actual-ideal Ext source and independent public consumer passed
 `1792127777119394000-2349` and `1792127830785831000-2948`, with only propext,
 Classical.choice and Quot.sound. The ordinary quotient action preserves
 independent ring and coefficient universes.
+
+`singleQuotientIdealQuotientLinearEquiv` retains the original principal
+quotient comparison and representatives while making its `R/(a)`-linearity
+explicit. The extension passed `1792148189772184000-18901`. Its current
+consumer is the actual [derived principal coinduction](../../../Category/ModuleCat/ChangeOfRings/Coinduction/Principal.lean),
+whose homology normalization uses the unchanged Koszul class. The public
+consumer `1792150144251703000-34185` checks both the ordinary map and the
+actual concentrated derived object at independent derived sizes.

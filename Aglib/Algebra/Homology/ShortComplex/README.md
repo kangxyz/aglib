@@ -105,3 +105,14 @@ cycle and reflecting boundaries proves that the actual map is a
 quasi-isomorphism, using native kernel/range-quotient homology data. The
 one-element Koszul tensor augmentation consumes this selected generic proof
 from the user-supplied Motivic source.
+
+The same component owner also proves
+`homologyπ_mapHomologyIso_hom`, `map_homologyπ_mapHomologyIso_inv`
+and `mapCyclesIso_inv_iCycles`. The actual homology projection from cycles
+and cycle inclusion commute with the original comparisons in both
+directions. These equations use the same exact additive functors and
+independent category universes; scalar-coinduction Ext normalization and
+higher-image open restriction consume them. The source passed
+`1792144127942933000-87382` and its production-only public consumer passed
+`1792144212660631000-88415`, including all three reassociated equations
+and only the standard axioms.

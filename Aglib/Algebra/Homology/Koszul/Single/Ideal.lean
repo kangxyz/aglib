@@ -94,4 +94,30 @@ theorem singleQuotientModule_mk_smul (r : R) (x : SingleQuotient M a) :
     Ideal.Quotient.mk (Ideal.span {a}) r • x = r • x :=
   Module.IsTorsionBy.mk_smul (singleQuotientIsTorsionBy a M) r x
 
+/-- The unchanged principal quotient comparison is linear over the actual quotient ring. -/
+def singleQuotientIdealQuotientLinearEquiv :
+    letI := singleQuotientModule a R
+    SingleQuotient R a ≃ₗ[R ⧸ Ideal.span {a}] R ⧸ Ideal.span {a} := by
+  letI := singleQuotientModule a R
+  exact {
+    __ := (singleQuotientIdealLinearEquiv a).toAddEquiv
+    map_smul' := by
+      intro b x
+      obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective b
+      rw [singleQuotientModule_mk_smul]
+      exact (singleQuotientIdealLinearEquiv a).map_smul r x }
+
+/-- Quotient-linearity retains the original additive comparison. -/
+@[simp]
+theorem singleQuotientIdealQuotientLinearEquiv_toAddEquiv :
+    letI := singleQuotientModule a R
+    (singleQuotientIdealQuotientLinearEquiv a).toAddEquiv =
+      (singleQuotientIdealLinearEquiv a).toAddEquiv := rfl
+
+/-- The quotient-linear comparison retains every original ring representative. -/
+@[simp]
+theorem singleQuotientIdealQuotientLinearEquiv_apply_mk (r : R) :
+    singleQuotientIdealQuotientLinearEquiv a (Submodule.Quotient.mk r) =
+      Ideal.Quotient.mk (Ideal.span {a}) r := singleQuotientIdealLinearEquiv_apply_mk a r
+
 end ChainComplex.Koszul

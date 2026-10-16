@@ -222,9 +222,9 @@ generation and representability is a larger separate project; see
 
 ## New source review and completed shared gates
 
-The latest successful fetch left `origin/main` at `e3f6c75`. The local main
-checkout first advanced to `f87a691` and now to `40af743`; these local
-revisions are not conflated with the fetched remote. Six exact generic leaves from that local revision have been
+During the initial source comparison, fetched `origin/main` was `e3f6c75`
+and local main advanced through `f87a691` to `40af743`. Those source
+snapshots remain distinct from the integrated checkpoints recorded below. Six exact generic leaves from that local revision have been
 admitted and compiled individually: homological-complex and homotopy
 adjunctions, and native K-injective Hom, representatives, mapped Hom and
 pointwise derived Hom adjunction. The public independent-universe consumer
@@ -536,9 +536,18 @@ polynomial-chart differential frames are now proved in
 `ProjectiveSpace/Differentials/Euler`. The actual left arrow on these charts
 and its zero composite with evaluation are also proved (source
 `1792141554330768000-64003`, public consumer
-`1792141770904737000-65539`). The global left arrow, kernel
-identification, exactness and determinant formula remain proof obligations,
-not new suppliers.
+`1792141770904737000-65539`). The complete actual chart sequence is now
+short exact with an explicit splitting, over every commutative ring and
+arbitrary coordinate type. Its literal original homogeneous-fraction
+formula is checked, including the empty complementary basis in dimension
+zero. The unchanged public entry now imports four precise owners:
+`Euler/Basic`, `PolynomialChart`, `MiddleFrame` and `LocalExact`.
+The final local closure and literal-fraction consumer passed
+`1792144773088804000-94914` and `1792145085352001000-97575`.
+Overlap compatibility and global gluing are the next cell. They share the
+actual InternalHom restriction/gluing adapters with general base change.
+Global Euler exactness and the determinant formula remain proof
+obligations, not new suppliers.
 
 None of D1--D5 is discharged by inserting a differential-rank or purity
 supplier as a new mathematical assumption. The rank, conormal, exterior,
@@ -704,7 +713,17 @@ The first checkpoint does not require a full internal-RHom bifunctor.
    Hom_R(-, J) give the matching kernel rows. Once the actual negative-twist
    comparisons into J and their coefficient/trace normalization are proved,
    those rows recover the comparison for M without assuming J injective.
-   The tensor/trace comparisons into J remain proof obligations.
+   The bounded native tensor comparison and all-twist bounded-flat terms
+   are proved without a Flat J premise. The actual tilde tensor isomorphism
+   and arbitrary-scheme quasicoherence of tensor are proved in
+   `Modules/QuasiCoherent/Tensor` (source `1792143533976032000-81965`, public
+   consumer `1792143753178286000-84082`).
+   `Modules/Tensor/AffineSections` proves invertibility of the original
+   `moduleTensorSectionLinear` for arbitrary quasicoherent inputs on an
+   affine open, retaining the literal pure-section formula (source
+   `1792145645342597000-2816`, public consumer
+   `1792146083875700000-5405`). The actual Cech coefficient comparison,
+   trace_J and coefficient-J duality remain proof obligations.
 5. Extend to D+ base complexes by finite brutal truncations of an actual
    bounded-below representative. For a fixed shift the upper bound on RΓM
    makes both tail Hom groups vanish; the exact smooth pullback and omega
@@ -802,9 +821,15 @@ an intermediate result never changes an endpoint's completion status.
 
 ## Current status
 
-The integrated checkpoint `55b439b` was merged and pushed to main. Subsequent
-proved cells below are present in the active proof worktree; their next
-checkpoint still needs enrollment and scoped integration.
+Checkpoint `e04f09d` was fast-forwarded from `55b439b` to main and pushed.
+It includes all-degree derived Serre duality on polynomial projective space
+over Noetherian affine bases, proper Grauert and intrinsic numerical
+descent over locally Noetherian targets, and arbitrary-base smooth
+differential rank. This follow-on checkpoint contains local Euler exactness
+and coordinate transitions, unique gluing of actual module morphisms,
+affine higher-image restriction normalization, and native regular-principal
+purity with its original Ext action, coefficient maps and resolution
+independence. Its precise proved scope and remaining consumers are below.
 
 Affine module base change and general flat base change are proved on the
 original installed maps. The separated and qcqs affine-ring endpoints allow
@@ -915,10 +940,21 @@ D1 closure passed independent ordinary review against digest
 `8e812a7cc8e316c15a46bd55ea7dd2558a727f4a34d05ff7830737575247b42a`.
 The earlier field-scheme rank theorem remains compatible. Actual exterior powers, restriction,
 finite-free determinant coordinates and top exterior line bundles are also
-proved. The actual Euler sequence, conormal determinant sequence, top forms
+proved. The global Euler sequence, conormal determinant sequence, top forms
 on projective space and trace-normalized canonical-bundle identification
 remain separate consumers. D1 alone does not identify a Serre dualizing
 coefficient with the canonical line.
+
+The actual local Euler arrows and local split exactness now retain literal
+original homogeneous fractions and work over every commutative ring. The
+new `Euler/Overlap` proves the original ratio and inverse-twist transitions,
+the relative quotient derivation formula, the identical kernel-vector
+transition, and the original chart differential formula on every chart open.
+It passed `1792148719332682000-21639`; public consumer
+`1792148829367539000-22198` checks these maps and degree zero with five
+standard-axiom lists. Native overlap-arrow equality and global exactness are
+the remaining Euler gluing gates; no determinant or canonical identification
+is asserted by these local formulas alone.
 
 `DirectImage/ResolutionSections/Derived` identifies homology of installed D+
 global sections on the original coefficient single with original additive
@@ -949,6 +985,31 @@ digest `6cfd5290970d78da6302d5a0aebc8241f367f73f2484fa3ad6e371d2b8076280`.
 This acceptance covers that precise affine-base module-coefficient endpoint;
 internal RHom, general-base descent and canonical identification remain distinct.
 
+The original module Hom sheaf now provides exact open-restriction
+comparisons and unique gluing of actual module morphisms through native
+pullback-overlap comparisons. Its index universe is independent, empty
+covers on empty schemes are supported, and no QC or finiteness premise is
+used. The restriction and gluing leaves passed `1792147083619050000-12766`
+and `1792148218709248000-19035`; their public consumers passed
+`1792147215734347000-13537` and `1792148266102614000-19285`. This shared
+lower interface is consumed by global Euler and general nonflat base-change
+map gluing. It does not turn global Ext groups into Zariski sheaves.
+
+The actual affine higher-image/cohomology comparison now commutes with
+original open restriction. `moduleHigherDirectImageAffineSectionsLinearEquiv_openRestriction`
+retains both the literal native restriction-unit section and the original
+`moduleCohomologyMapAlong` arrow. It needs only qcqs f, QC M, the supplied
+cartesian affine-open square and original resolutions; target qcqs follows
+internally. There is no finite-H, Noetherian, reducedness, relative-flatness
+or base-flatness premise. The unchanged generic native resolution
+normalization has the sole lower owner `DirectImage/Restriction/Resolution`
+(source `1792150006885800000-32883`, public
+`1792150040061228000-33096`). The affine consumer imports that lower owner,
+with source `1792150061769229000-33227` and production-only public consumer
+`1792150222927379000-34988` (four standard-axiom lists, all q and degree zero).
+Generic open pasting, the actual affine nonflat beta and its global module-map
+gluing are the next consumers; this cell does not yet assert their conclusions.
+
 The sole closed right adjoint i! exists on all module sheaves. Its affine
 coinduction comparison and original unit/counit are proved, as are ordinary
 and native D+ open restriction. Native scalar coinduction now also
@@ -965,10 +1026,35 @@ actual installed derived coinduction to the unchanged native Ext group,
 using its actual Hom complex and any supplied injective resolution
 (source `1792142067048567000-68407`, public consumer
 `1792142200367839000-69227`). The common ring/module carrier universe is
-retained, with independent Ext and derived sizes. The remaining purity route
-must identify the quotient-ring action under that same additive comparison,
-then use the original one-equation Koszul class and iterate this derived
-composition.
+retained, with independent Ext and derived sizes. Its native cycle
+comparison now preserves the original linear maps and target-ring action.
+The original homology projection gives exactly the original
+injective-resolution Ext class (source `1792145518226095000-1614`, public
+consumer `1792145827305212000-4124`). Target-ring scalar multiplication
+also agrees with native Yoneda source multiplication for both original R^n
+and the actual installed D+ functor (source `1792146354600396000-7346`).
+No commutativity, regularity, flatness or finiteness premise is added.
+The same owner now proves literal coefficient-cocycle postcomposition,
+native Yoneda coefficient naturality for original higher coinduction and
+installed D+ homology, and independence of both comparisons from the supplied
+injective resolution (source `1792149290569566000-26194`, public consumer
+`1792149367685045000-27013`, six standard-axiom lists and independent sizes).
+`Coinduction/Quotient` now transports that same additive comparison to the
+existing native quotient-ring Ext module, with no change of its underlying
+map. It is linear over `R/I` for every ideal, coefficient and natural degree
+(final source `1792149718119709000-30321`, public consumer
+`1792150146467176000-34212`, five standard-axiom lists). Original coefficient
+naturality and resolution independence are retained. `Coinduction/Principal` now normalizes the
+one-equation derived object by the original Koszul class. Ring regularity
+alone gives the upper bound one, coefficient regularity alone gives the
+lower bound one, and both give the actual D+ single of the coefficient
+quotient in degree one. For the ring coefficient its target is the actual
+ring quotient `R/(a)` in degree one, with the original quotient comparison.
+The homology equations retain the same maps (source
+`1792149988379734000-32635`, public consumer
+`1792150144251703000-34185`, thirteen standard-axiom lists). All three
+comparisons are independent of the supplied resolution. Iteration of the
+native derived composition and determinant normalization are the next gates.
 Ordered regular equations must match the top Koszul class and its
 determinant change before any geometric purity assertion.
 The imported actual finite Koszul resolution
@@ -989,9 +1075,12 @@ actions and supported universes and report only propext, Classical.choice
 and Quot.sound. No aggregate Lean build or full replay is claimed. Generated
 imports and the source-only integration suite passed for merged checkpoint
 `55b439b` at 1112 production modules and 23 Lean test modules, with all 99
-Python regressions passing. This source checkpoint also passed the
-generated-import, layout, source-token and source-policy checks at 1144
+Python regressions passing. The following merged and pushed checkpoint
+`e04f09d` passed the generated-import, layout, source-token and source-policy
+checks at 1144 production modules and 23 Lean test modules, with all 99
+Python regressions passing. The following settled-source batch passed
+generated-import, layout, source-token and source-policy checks at 1159
 production modules and 23 Lean test modules, with all 99 Python regressions
-passing. The new mathematical cells have their focused source and
-public-consumer checks above. No scratch, build cache or experimental output
-belongs in a source checkpoint.
+passing. Its mathematical sources and public consumers have the focused
+checks above. No aggregate Lean compilation or full replay is claimed.
+No scratch, build cache or experimental output belongs in a source checkpoint.

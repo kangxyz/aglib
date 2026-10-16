@@ -19,7 +19,13 @@ restriction and module action. Ring and scheme universes may differ.
 
 [Stalk](Stalk/Basic.lean) constructs `moduleStalk`, `moduleStalkMap` and the actual stalk/skyscraper adjunction; `moduleStalkExactFunctor` is the genuine module-valued stalk exact functor. [Support](Support.lean) defines support through nonzero stalks, gives `isZero_iff_stalks` and compares support with actual open restriction. [Exact](Exact.lean) supplies `sheafExactStructure`, exact open restriction and the supported-away property. [Epimorphisms](Epimorphisms.lean) proves actual sheaf epimorphisms are locally surjective. [IsomorphismFunctors](IsomorphismFunctors.lean) gives pullback/direct-image equivalences for scheme isomorphisms.
 
-[InternalHom](InternalHom.lean) is the generic `Scheme.Modules.InternalHom` of actual structure-linear maps between restrictions. Its `sectionHomEquiv` identifies sections with the actual restricted module-sheaf morphisms. It lies below invertible sheaves and has no rank-one hypothesis.
+[InternalHom](InternalHom.lean) is the generic `Scheme.Modules.InternalHom` of actual structure-linear maps between restrictions. Its `sectionHomEquiv` identifies sections with the actual restricted module-sheaf morphisms. It lies below invertible sheaves and has no rank-one hypothesis. The
+[restriction and gluing guide](InternalHom/README.md) gives literal native
+open-restriction comparisons and unique global module morphisms from
+compatible arrows on jointly covering open immersions. It needs no
+quasicoherence or finiteness, allows independent cover-index universes and
+includes empty covers on empty schemes. Euler maps and higher-direct-image
+base-change maps share this lower interface.
 
 | Subfamily | Objects and principal results |
 | --- | --- |
