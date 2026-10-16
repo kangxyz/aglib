@@ -47,6 +47,7 @@ public import Aglib.RingTheory.Ideal.RegularPrincipal
 public import Aglib.RingTheory.IntegralClosure.FiniteEtale
 public import Aglib.RingTheory.IntegralClosure.FlatDescent
 public import Aglib.RingTheory.IntegralClosure.FractionRing
+public import Aglib.RingTheory.Kaehler.StandardSmooth
 public import Aglib.RingTheory.KrullDimension.HeightOnePrime
 public import Aglib.RingTheory.KrullDimension.IntegralExtension
 public import Aglib.RingTheory.KrullDimension.Polynomial
@@ -73,6 +74,7 @@ public import Aglib.RingTheory.MvPolynomial.CoordinateExponents
 public import Aglib.RingTheory.MvPolynomial.CoordinateGrading
 public import Aglib.RingTheory.MvPolynomial.CoordinateLocalization
 public import Aglib.RingTheory.MvPolynomial.CoordinatePieces
+public import Aglib.RingTheory.MvPolynomial.DegreeOne
 public import Aglib.RingTheory.MvPolynomial.GradedMap
 public import Aglib.RingTheory.MvPolynomial.Homogeneous
 public import Aglib.RingTheory.PrimeFiltration.Basic

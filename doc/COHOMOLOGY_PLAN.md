@@ -222,9 +222,9 @@ generation and representability is a larger separate project; see
 
 ## New source review and completed shared gates
 
-The latest successful fetch left `origin/main` at `e3f6c75`. The local main
-checkout first advanced to `f87a691` and now to `40af743`; these local
-revisions are not conflated with the fetched remote. Six exact generic leaves from that local revision have been
+During the initial source comparison, fetched `origin/main` was `e3f6c75`
+and local main advanced through `f87a691` to `40af743`. Those source
+snapshots remain distinct from the integrated checkpoints recorded below. Six exact generic leaves from that local revision have been
 admitted and compiled individually: homological-complex and homotopy
 adjunctions, and native K-injective Hom, representatives, mapped Hom and
 pointwise derived Hom adjunction. The public independent-universe consumer
@@ -478,13 +478,22 @@ first finiteness proof does not depend on them.
    bounded-flat truncation, universal tensor comparison and F2 finiteness.
    Apply the existing finite-projective replacement to construct the
    universal model internally for coherent relatively flat M.
-2. Reuse its original linear comparison square with
-   `moduleCohomologyBaseChangeMap`, actual residue-fibre computations and
-   generic numerical lemmas. Transfer semicontinuity, intrinsic Euler
-   local constancy, the nonreduced pointwise/adjacent-degree criteria and
-   reduced-base Grauert to proper f. Complete the remaining residue
-   surjectivity/free-locus normalization and basic-open neighbourhood
-   criterion once in the lower algebraic owner.
+2. The original linear comparison square with `moduleCohomologyBaseChangeMap`
+   now transfers semicontinuity, intrinsic Euler local constancy, nonreduced
+   local criteria and reduced-base Grauert to proper f. Original residue-field
+   surjectivity is identified with the actual outgoing-cokernel free locus;
+   its basic-open theorem gives every original composite base-change map.
+   This affine suite passed independent ordinary review against digest
+   `71c03da9b1c5a4bc40f2a9bd07106316e086a332e16705f6e815b93bcce8af23`.
+   The actual general-point fibre and its affine-coordinate comparison are
+   also proved. Upper semicontinuity of the intrinsic point-fibre dimension
+   and local constancy of its intrinsic Euler characteristic now hold over
+   arbitrary locally Noetherian targets. On reduced locally
+   Noetherian targets, local constancy of that dimension gives finite local
+   freeness of the literal higher direct image, without target
+   quasi-compactness. General nonflat sheaf-valued comparison is still a
+   separate descent consumer; neighbourhood freeness retains its
+   adjacent-degree condition.
 3. Obtain the actual sheaf-valued perfect Rf through exact tilde transport
    and the proved original counit. The same model handles all ordinary
    pulled coefficients after arbitrary ring maps. Preserve actual chain
@@ -504,7 +513,7 @@ acceptance sequence, including the user's smooth canonical-bundle request.
 
 | Step | Original object and theorem to prove | Dependency and normalization |
 | --- | --- | --- |
-| D1 | Native relative differential sheaf is finite locally free for a smooth morphism; its rank is the actual fixed relative dimension | Field-scheme fixed-dimension case now proved by `differentialSheaf_hasRank_of_smooth`, with actual affine localization comparison and no family premise; general relative base and variable-dimension components remain explicit boundaries |
+| D1 | Native relative differential sheaf is finite locally free for a smooth morphism; its rank is the actual fixed relative dimension | Arbitrary-base fixed-dimension case now proved by `relativeDifferentialSheaf_hasRank_of_smooth`, using native standard-smooth charts and original open comparisons; no field, Noetherian or family premise. Variable-dimension components remain a separate interface |
 | D2 | Actual top exterior power is a line bundle and satisfies the determinant formula for the conormal sequence | Use the same differential sheaves, their original maps and the locally split exact sequence; track basis changes |
 | D3 | On projective space, the top differential line is the actual `O(-N-1)` | Normalize through original affine polynomial coordinates and transition functions; preserve the coordinate orientation used by the existing trace |
 | D4 | The sole nonzero homology of `Ri!omega_P` is the determinant-normalized canonical line of a smooth regular closed source | Relate the actual Koszul top Ext class under change of regular equations to D2; use the shared normalized single-homology reconstruction |
@@ -522,7 +531,23 @@ Only the selected ordered polynomial basis trivializes det(V). Its determinant
 factor must therefore be retained under coordinate changes and matched with
 the original residue orientation. An unqualified GL-equivariance claim for
 O(-n-1) alone would lose that factor. Dimension zero needs its own checked
-normalization. These remain formal proof obligations, not new suppliers.
+normalization. The actual evaluation, its epimorphism and the original
+polynomial-chart differential frames are now proved in
+`ProjectiveSpace/Differentials/Euler`. The actual left arrow on these charts
+and its zero composite with evaluation are also proved (source
+`1792141554330768000-64003`, public consumer
+`1792141770904737000-65539`). The complete actual chart sequence is now
+short exact with an explicit splitting, over every commutative ring and
+arbitrary coordinate type. Its literal original homogeneous-fraction
+formula is checked, including the empty complementary basis in dimension
+zero. The unchanged public entry now imports four precise owners:
+`Euler/Basic`, `PolynomialChart`, `MiddleFrame` and `LocalExact`.
+The final local closure and literal-fraction consumer passed
+`1792144773088804000-94914` and `1792145085352001000-97575`.
+Overlap compatibility and global gluing are the next cell. They share the
+actual InternalHom restriction/gluing adapters with general base change.
+Global Euler exactness and the determinant formula remain proof
+obligations, not new suppliers.
 
 None of D1--D5 is discharged by inserting a differential-rank or purity
 supplier as a new mathematical assumption. The rank, conormal, exterior,
@@ -544,11 +569,14 @@ renamed. There are two precise later gates:
   against [Stacks 0E2Z](https://stacks.math.columbia.edu/tag/0E2Z). It is a
   separate general-base gate, not an inferred corollary of field duality.
 
-The new affine relative differential comparison already allows arbitrary
-commutative ring maps. The sole relative differential sheaf for every scheme morphism is now
+The actual affine relative differential comparison now allows arbitrary
+commutative ring maps, preserves both original principal-open differential
+formulas, and identifies the original sheaf with the native Kahler tilde.
+The sole relative differential sheaf for every scheme morphism is now
 constructed in `Modules/Differentials/Relative/Basic`, with its universal
 property against every module sheaf and the literal differential on `f.c`.
-Its affine comparison and smooth frames remain the next obligations. Exterior powers and determinant transitions therefore belong to
+Its affine and open comparisons and fixed-dimension smooth frames are proved.
+Exterior powers and determinant transitions belong to
 general module presheaves and sheaves on ringed sites, so this new layer can
 serve the global relative construction. General-base Serre acceptance requires
 all of these maps and their base-change/trace normalization, not just a line
@@ -679,6 +707,23 @@ The first checkpoint does not require a full internal-RHom bifunctor.
    with `Hom_D(R)(RΓ(M), J[i-n])` then avoids the field-only exact-dual
    argument. The negative-twist source is finite free over R, so it kills
    positive base Ext for every J, not only injective J.
+   For the planned top-Hom_J step, use two successive finite negative-twist
+   presentations Q -> P -> M. The cohomological upper bound makes
+   Hn(Q) -> Hn(P) -> Hn(M) right exact, while both Hom(-, omega_J) and
+   Hom_R(-, J) give the matching kernel rows. Once the actual negative-twist
+   comparisons into J and their coefficient/trace normalization are proved,
+   those rows recover the comparison for M without assuming J injective.
+   The bounded native tensor comparison and all-twist bounded-flat terms
+   are proved without a Flat J premise. The actual tilde tensor isomorphism
+   and arbitrary-scheme quasicoherence of tensor are proved in
+   `Modules/QuasiCoherent/Tensor` (source `1792143533976032000-81965`, public
+   consumer `1792143753178286000-84082`).
+   `Modules/Tensor/AffineSections` proves invertibility of the original
+   `moduleTensorSectionLinear` for arbitrary quasicoherent inputs on an
+   affine open, retaining the literal pure-section formula (source
+   `1792145645342597000-2816`, public consumer
+   `1792146083875700000-5405`). The actual Cech coefficient comparison,
+   trace_J and coefficient-J duality remain proof obligations.
 5. Extend to D+ base complexes by finite brutal truncations of an actual
    bounded-below representative. For a fixed shift the upper bound on RΓM
    makes both tail Hom groups vanish; the exact smooth pullback and omega
@@ -776,6 +821,16 @@ an intermediate result never changes an endpoint's completion status.
 
 ## Current status
 
+Checkpoint `e04f09d` was fast-forwarded from `55b439b` to main and pushed.
+It includes all-degree derived Serre duality on polynomial projective space
+over Noetherian affine bases, proper Grauert and intrinsic numerical
+descent over locally Noetherian targets, and arbitrary-base smooth
+differential rank. This follow-on checkpoint contains local Euler exactness
+and coordinate transitions, unique gluing of actual module morphisms,
+affine higher-image restriction normalization, and native regular-principal
+purity with its original Ext action, coefficient maps and resolution
+independence. Its precise proved scope and remaining consumers are below.
+
 Affine module base change and general flat base change are proved on the
 original installed maps. The separated and qcqs affine-ring endpoints allow
 arbitrary quasicoherent coefficients. `BaseChange/Derived/Locality` proves
@@ -825,9 +880,28 @@ passed the recorded focused receipts in `Proper/LocalCriterion`'s guide
 Proper upper semicontinuity is also proved, using the same model and original
 fiber-cohomology dimension; its final public consumer is `99293`. The proper intrinsic Euler local-constancy statement is also proved on the
 original alternating sum (public consumer `1911`). Reduced-base Grauert is
-the next numerical specialization; its generic global method and old thin
-wrapper have already passed their focused builds. The open residue-surjectivity/free-locus comparison and
-geometric neighbourhood criterion remain explicit obligations.
+proved for proper coherent relatively flat coefficients over Noetherian rings.
+Local constancy of the original fibre dimension gives finite projectivity of
+original cohomology and invertibility of every original base-change map;
+freeness retains the additional local-ring hypothesis. No flatness or
+Noetherianity is imposed on the target ring. Generic, projective and proper
+interfaces were rechecked on `55b439b`, including their original-map consumers.
+The native residue-surjectivity/free-locus comparison and basic-open geometric
+base-change theorem are also proved without reducedness. The proper wrapper
+internally supplies the same finite model. The literal point fibre and
+its affine-coordinate comparison are now constructed. General-target
+Grauert proves finite local freeness of the actual higher direct image over
+every reduced locally Noetherian target, without quasi-compactness
+(source `1792140336680841000-53608`, public consumer
+`1792140410407561000-54151`). Intrinsic point-fibre dimensions are upper
+semicontinuous over any locally Noetherian target, without reducedness
+(source `1792140900129246000-58710`, public consumer
+`1792140956057537000-59264`, final dependency basis
+`1792141471821185000-63632`). The intrinsic point-fibre Euler characteristic
+is locally constant over the same arbitrary locally Noetherian targets
+(source `1792141410627337000-63173`, combined original-point/finsum/empty-base
+consumer `1792141554003098000-63986`). Nonflat higher-image sheaf comparison and neighbourhood
+freeness with its adjacent-degree condition remain explicit obligations.
 
 On polynomial projective space, actual twists, polynomial sections, all-ring
 finite-free twist cohomology, original Laurent residue trace, Noetherian
@@ -835,11 +909,16 @@ coherent finiteness and uniform Serre vanishing are proved. Full coherent
 Serre Ext/cohomology duality over fields is proved with the original pairing,
 naturality and dimension-zero normalization. Top Hom/cohomology duality holds
 over Noetherian rings. The arbitrary-ring twist Ext/cohomology equivalence is
-now R-linear with unchanged underlying additive equivalence. Its original
-Hom-section/counit normalization is the active affine-worker cell; the
-arbitrary-injective-base-coefficient relative route is detailed above.
-Full relative Serre duality and general smooth projective/proper duality are
-not yet proved.
+now R-linear with unchanged underlying additive equivalence and original
+coefficient naturality. Its concrete Hom-section/counit normalization remains
+an independent residue-formula obligation. The active relative route uses the
+installed derived global sections and original connecting maps; it does not
+wait for that independent normalization. The arbitrary-base-module extension
+is detailed above.
+The module-coefficient derived-Hom duality on polynomial projective space over
+an affine Noetherian base is now proved as detailed below. Arbitrary base
+coefficients/complexes, general-base descent and general smooth
+projective/proper duality remain separate extensions.
 
 The sole relative differential sheaf now exists for every scheme morphism,
 with its universal property against every coefficient module sheaf and the
@@ -847,16 +926,138 @@ literal original differential of f.c. Generic sheafification and scheme
 consumers passed `1792126614365656000-90330` and
 `1792126811001944000-92123`. The affine-base derivation/sheaf comparison is proved for arbitrary f and
 arbitrary coefficient sheaves, without QC (public consumer
-`1792127797400441000-2580`). The original Spec-map/tilde comparison is next. The field-scheme smooth differential rank theorem is proved
-without a supplied rank family. Actual exterior powers, restriction,
+`1792127797400441000-2580`). The actual Spec-map/tilde comparison is proved
+for every commutative-ring map, with both principal-open differential formulas
+and unconditional quasicoherence. Its original-map consumer passed
+`1792134390210630000-74751`. The arbitrary-ring affine localization and
+differential implementations have sole lower owners; old field imports are
+transparent compatibility entries. Open restriction and general commuting
+open-square comparisons preserve the original differentials. The actual
+relative differential sheaf has rank n and is finite locally free for every
+native smooth morphism of fixed relative dimension n over an arbitrary base.
+No field, Noetherian, QC or theorem-family premise is inserted. The fixed
+D1 closure passed independent ordinary review against digest
+`8e812a7cc8e316c15a46bd55ea7dd2558a727f4a34d05ff7830737575247b42a`.
+The earlier field-scheme rank theorem remains compatible. Actual exterior powers, restriction,
 finite-free determinant coordinates and top exterior line bundles are also
-proved. The original relative affine comparison, general-base smooth frames,
-conormal determinant sequence, top forms on projective space and
-trace-normalized canonical-bundle identification remain separate consumers.
+proved. The global Euler sequence, conormal determinant sequence, top forms
+on projective space and trace-normalized canonical-bundle identification
+remain separate consumers. D1 alone does not identify a Serre dualizing
+coefficient with the canonical line.
+
+The actual local Euler arrows and local split exactness now retain literal
+original homogeneous fractions and work over every commutative ring. The
+new `Euler/Overlap` proves the original ratio and inverse-twist transitions,
+the relative quotient derivation formula, the identical kernel-vector
+transition, and the original chart differential formula on every chart open.
+It passed `1792148719332682000-21639`; public consumer
+`1792148829367539000-22198` checks these maps and degree zero with five
+standard-axiom lists. Native overlap-arrow equality and global exactness are
+the remaining Euler gluing gates; no determinant or canonical identification
+is asserted by these local formulas alone.
+
+`DirectImage/ResolutionSections/Derived` identifies homology of installed D+
+global sections on the original coefficient single with original additive
+cohomology, linearly for the specified structural ring map. The derived unit,
+resolution-cycle class, coefficient naturality and resolution independence
+are retained, with no QC, flatness, Noetherian or finiteness premise. The native
+Ext-to-D+ lift preserves the original shifted morphism, Yoneda composition
+and unsigned extension boundary. The top-edge Hom equivalence needs only an
+upper cohomological bound and retains actual homology and truncation maps.
+
+`Duality/Projective/Derived/Trace` constructs the actual installed derived
+trace over every commutative ring, including dimension zero. Its top homology
+is exactly the original Laurent residue trace, through every supplied
+injective resolution, and it respects original scalar endomorphisms.
+`Derived/Comparison` uses that trace to construct the canonical R-linear
+Ext-to-derived-Hom map for every module coefficient and degree, with the
+original Yoneda law, coefficient naturality and unsigned connecting arrow.
+Its degree-zero homology formula is the original `projectiveTopSerreMap`.
+Bijectivity is proved for every nonnegative degree and every original coherent
+coefficient over a Noetherian affine base. `projectiveDerivedSerreDuality`
+retains that same comparison as its forward map. Actual negative-twist
+presentations, coherent kernels and both source/target effacements feed the
+native unsigned exact rows. No coefficient flatness, perfectness or base
+regularity is added; dimension zero retains higher base-ring Ext. The coherent
+source and public consumer passed `1792139000781404000-34811` and
+`1792139145456042000-38028`. The fixed complete closure passed independent complex ordinary review against
+digest `6cfd5290970d78da6302d5a0aebc8241f367f73f2484fa3ad6e371d2b8076280`.
+This acceptance covers that precise affine-base module-coefficient endpoint;
+internal RHom, general-base descent and canonical identification remain distinct.
+
+The original module Hom sheaf now provides exact open-restriction
+comparisons and unique gluing of actual module morphisms through native
+pullback-overlap comparisons. Its index universe is independent, empty
+covers on empty schemes are supported, and no QC or finiteness premise is
+used. The restriction and gluing leaves passed `1792147083619050000-12766`
+and `1792148218709248000-19035`; their public consumers passed
+`1792147215734347000-13537` and `1792148266102614000-19285`. This shared
+lower interface is consumed by global Euler and general nonflat base-change
+map gluing. It does not turn global Ext groups into Zariski sheaves.
+
+The actual affine higher-image/cohomology comparison now commutes with
+original open restriction. `moduleHigherDirectImageAffineSectionsLinearEquiv_openRestriction`
+retains both the literal native restriction-unit section and the original
+`moduleCohomologyMapAlong` arrow. It needs only qcqs f, QC M, the supplied
+cartesian affine-open square and original resolutions; target qcqs follows
+internally. There is no finite-H, Noetherian, reducedness, relative-flatness
+or base-flatness premise. The unchanged generic native resolution
+normalization has the sole lower owner `DirectImage/Restriction/Resolution`
+(source `1792150006885800000-32883`, public
+`1792150040061228000-33096`). The affine consumer imports that lower owner,
+with source `1792150061769229000-33227` and production-only public consumer
+`1792150222927379000-34988` (four standard-axiom lists, all q and degree zero).
+Generic open pasting, the actual affine nonflat beta and its global module-map
+gluing are the next consumers; this cell does not yet assert their conclusions.
 
 The sole closed right adjoint i! exists on all module sheaves. Its affine
 coinduction comparison and original unit/counit are proved, as are ordinary
-and native D+ open restriction. The imported actual finite Koszul resolution
+and native D+ open restriction. Native scalar coinduction now also
+composes through the original right-adjoint comparison. Its installed D+
+right-derived functors compose because the same coinduction preserves
+injectives. The comparison retains the original cochain arrow and both
+installed units, for independent ring and derived-category universes,
+without commutativity or flatness assumptions. The ordinary and derived
+leaves passed `1792140329491573000-53466` and
+`1792141014746584000-59763`; the combined public consumer
+`1792141388265718000-63068` checked the original maps and standard axioms.
+`Coinduction/Ext` now gives an additive equivalence from homology of the
+actual installed derived coinduction to the unchanged native Ext group,
+using its actual Hom complex and any supplied injective resolution
+(source `1792142067048567000-68407`, public consumer
+`1792142200367839000-69227`). The common ring/module carrier universe is
+retained, with independent Ext and derived sizes. Its native cycle
+comparison now preserves the original linear maps and target-ring action.
+The original homology projection gives exactly the original
+injective-resolution Ext class (source `1792145518226095000-1614`, public
+consumer `1792145827305212000-4124`). Target-ring scalar multiplication
+also agrees with native Yoneda source multiplication for both original R^n
+and the actual installed D+ functor (source `1792146354600396000-7346`).
+No commutativity, regularity, flatness or finiteness premise is added.
+The same owner now proves literal coefficient-cocycle postcomposition,
+native Yoneda coefficient naturality for original higher coinduction and
+installed D+ homology, and independence of both comparisons from the supplied
+injective resolution (source `1792149290569566000-26194`, public consumer
+`1792149367685045000-27013`, six standard-axiom lists and independent sizes).
+`Coinduction/Quotient` now transports that same additive comparison to the
+existing native quotient-ring Ext module, with no change of its underlying
+map. It is linear over `R/I` for every ideal, coefficient and natural degree
+(final source `1792149718119709000-30321`, public consumer
+`1792150146467176000-34212`, five standard-axiom lists). Original coefficient
+naturality and resolution independence are retained. `Coinduction/Principal` now normalizes the
+one-equation derived object by the original Koszul class. Ring regularity
+alone gives the upper bound one, coefficient regularity alone gives the
+lower bound one, and both give the actual D+ single of the coefficient
+quotient in degree one. For the ring coefficient its target is the actual
+ring quotient `R/(a)` in degree one, with the original quotient comparison.
+The homology equations retain the same maps (source
+`1792149988379734000-32635`, public consumer
+`1792150144251703000-34185`, thirteen standard-axiom lists). All three
+comparisons are independent of the supplied resolution. Iteration of the
+native derived composition and determinant normalization are the next gates.
+Ordered regular equations must match the top Koszul class and its
+determinant change before any geometric purity assertion.
+The imported actual finite Koszul resolution
 bounds projective dimension for every weakly regular list. Its original
 one-element Ext class gives a coefficient-natural linear quotient equivalence
 and concentration in degree one when the scalar is regular on both ring and
@@ -872,6 +1073,14 @@ Every source check remains leaf-local under the serialized compiler lock.
 Independent public consumers inspect original maps, hypotheses, scalar
 actions and supported universes and report only propext, Classical.choice
 and Quot.sound. No aggregate Lean build or full replay is claimed. Generated
-imports and the source-only integration suite passed for this checkpoint at
-914 production modules, with all 96 Python regressions passing. No scratch, build
-cache or experimental output belongs in a source checkpoint.
+imports and the source-only integration suite passed for merged checkpoint
+`55b439b` at 1112 production modules and 23 Lean test modules, with all 99
+Python regressions passing. The following merged and pushed checkpoint
+`e04f09d` passed the generated-import, layout, source-token and source-policy
+checks at 1144 production modules and 23 Lean test modules, with all 99
+Python regressions passing. The following settled-source batch passed
+generated-import, layout, source-token and source-policy checks at 1159
+production modules and 23 Lean test modules, with all 99 Python regressions
+passing. Its mathematical sources and public consumers have the focused
+checks above. No aggregate Lean compilation or full replay is claimed.
+No scratch, build cache or experimental output belongs in a source checkpoint.

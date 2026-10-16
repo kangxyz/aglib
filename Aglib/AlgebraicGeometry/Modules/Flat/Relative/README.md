@@ -67,3 +67,13 @@ to check actual affine-spectrum sections, arbitrary affine-open sections and
 the literal base-ring stalk action. It passed with receipt
 `1792092982505594000-55363`; the inspected locality and section proofs use only
 `propext`, `Classical.choice` and `Quot.sound`.
+
+`relativeFlat_of_comp_isOpenImmersion` transports relative flatness from
+`b ≫ j` to `b` when `j` is an actual open immersion, through the native
+isomorphism of the two base stalk rings. The scalar-restriction equivalence
+retains the actual stalk maps. `relativeFlat_pullback_of_isOpenImmersion`
+then proves relative flatness of the ordinary coefficient pullback on the
+actual fibre product over an open target. Both helpers require no
+quasicoherence, Noetherianity or flatness of the original morphism. The
+[general-target proper Grauert descent](../../../Cohomology/DirectImage/Proper/Grauert.lean)
+uses this target-open transport.

@@ -109,3 +109,24 @@ receipt `1792097532858517000-36152`, checking actual cycles and truncation,
 literal tensor differentials, all-ring acyclicity, and the original mapped
 quasi-isomorphism in four independent universes. All five inspected
 declarations use only `propext`, `Classical.choice`, and `Quot.sound`.
+
+## Arbitrary module tensor on the same complexes
+
+[ModuleTensor](ModuleTensor.lean) uses native `tensorLeft J` and `tensorRight J`
+in `ModuleCat R`, with the ring and module carriers in the native common
+universe. `acyclic_tensorLeft_of_flat` and `acyclic_tensorRight_of_flat`
+retain an actual strict upper term bound and original term flatness.
+`quasiIso_tensorRight_of_flat` tensors the literal original map of two
+bounded-above flat complexes. Its proof applies
+`universally_lTensor_exact_of_acyclic` to the actual bounded flat mapping
+cone and uses the native additive mapped-cone comparison. The coefficient
+`J` is arbitrary; it need not be flat, finite, projective, or injective.
+
+The two `ShortComplex.tensorLeft/Right_preservesKernel_of_universally_lTensor_exact`
+results prove only the displayed boundary-kernel preservation, from the
+original universal tensor exactness and flatness of the following two terms.
+`CochainComplex.tensorRightTruncLEIso` is the existing native good-truncation
+comparison with that exact kernel hypothesis discharged. Its
+`_hom_ιTruncLE` equation preserves the actual mapped original inclusion.
+No tensor functor is given a global preservation-of-homology instance.
+The bounded flat projective twist Cech model is a current consumer.

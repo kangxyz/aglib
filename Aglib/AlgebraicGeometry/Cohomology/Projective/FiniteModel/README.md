@@ -353,3 +353,20 @@ The old names, intrinsic alternating sum, strict support argument and
 original geometric endpoint remain unchanged. Source
 `1792127605022548000-229` and unchanged original consumer
 `1792127629970824000-658` passed, with only standard axioms.
+
+The two reduced global model-level Grauert proofs now uniquely live in
+[shared Grauert/Global](../../FiniteModel/Grauert/Global.lean). The old
+`Projective/Grauert/Global` retains all four exact public statements and
+its actual embedding-based suppliers as thin specializations. The old
+source `1792127923492986000-3850` and unchanged original public consumer
+`1792128019349233000-4538` passed, with only standard axioms. Reducedness
+remains explicit, and no local-ring hypothesis is introduced globally.
+
+The local model-level Grauert proof now uniquely lives in
+[shared Grauert](../../FiniteModel/Grauert.lean). The old
+`Projective/Grauert` retains both exact public statements and the original
+embedding supplier as thin specialization, with both reducedness and the
+local-ring guard. Old source `1792128390040003000-8348` and unchanged
+original consumer `1792128437382519000-9057` passed, standard axioms only.
+The six numerical owner moves preserve all fourteen old theorem
+signatures exactly; original fibre and Euler definitions remain unchanged.

@@ -81,16 +81,8 @@ theorem sheafification_map_homologyPresheafUnit_counit :
     (PresheafOfModules.sheafification.{m} (𝟙 R.obj)).map (homologyPresheafUnit R K i) ≫
         (PresheafOfModules.sheafificationAdjunction.{m} (𝟙 R.obj)).counit.app (K.homology i) =
       (sheafificationHomologyIso R K i).hom := by
-  dsimp only [homologyPresheafUnit, sheafificationHomologyIso,
-    CategoryTheory.Adjunction.homologyReflectionUnit]
-  let adj := sheafificationForgetAdjunction R
-  have he := adj.counit.naturality (adj.reflectedHomologyIso (K.sc i)).hom
-  dsimp only [Functor.comp_map, Functor.id_map] at he
-  rw [Functor.map_comp, Category.assoc]
-  erw [he]
-  rw [← Category.assoc]
-  erw [adj.left_triangle_components]
-  exact Category.id_comp (adj.reflectedHomologyIso (K.sc i)).hom
+  dsimp only [homologyPresheafUnit, sheafificationHomologyIso]
+  exact (sheafificationForgetAdjunction R).map_homologyReflectionUnit_counit (K.sc i)
 
 /-- Sheafification inverts the original presheaf-homology unit. -/
 theorem sheafification_map_homologyPresheafUnit_isIso :

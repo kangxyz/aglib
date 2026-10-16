@@ -96,4 +96,42 @@ theorem flat_stalk_of_relativeFlat_specMap {A B : CommRingCat.{u}} (φ : A ⟶ B
     ((ModuleCat.restrictScalarsComp φ.hom (StructureSheaf.toStalk B x).hom).app
       ((moduleStalk (Spec B) x).obj M)).symm.toLinearEquiv).mpr h
 
+/-- Relative flatness over a composite with an open immersion is relative flatness
+over the open target itself, through its actual base-stalk ring isomorphism. -/
+theorem relativeFlat_of_comp_isOpenImmersion {W V Y : Scheme.{u}}
+    (b : W ⟶ V) (j : V ⟶ Y) [IsOpenImmersion j] {N : W.Modules}
+    (hN : relativeFlat (b ≫ j) N) : relativeFlat b N := by
+  intro x
+  let T := (moduleStalk W x).obj N
+  let P := (ModuleCat.restrictScalars (b.stalkMap x).hom).obj T
+  let e := (asIso (j.stalkMap (b x))).commRingCatIsoToRingEquiv
+  let F := ModuleCat.restrictScalarsEquivalenceOfRingEquiv e
+  have hc : ((b ≫ j).stalkMap x).hom =
+      (b.stalkMap x).hom.comp (j.stalkMap (b x)).hom :=
+    congrArg CommRingCat.Hom.hom (Scheme.Hom.stalkMap_comp b j x)
+  let E := (ModuleCat.restrictScalarsComp' (j.stalkMap (b x)).hom (b.stalkMap x).hom
+    ((b ≫ j).stalkMap x).hom hc).app T
+  let : Module.Flat (Y.presheaf.stalk (j (b x)))
+      (F.functor.obj P) :=
+    (Module.Flat.equiv_iff E.toLinearEquiv).mp (hN x)
+  let : Module.Flat (V.presheaf.stalk (b x))
+      ((F.functor ⋙ F.inverse).obj P) :=
+    flat_restrictScalars e.symm.toRingHom (RingHom.Flat.of_bijective e.symm.bijective)
+      (F.functor.obj P)
+  exact Module.Flat.of_linearEquiv (F.unitIso.app P).toLinearEquiv
+
+/-- Ordinary pullback to an open target preserves intrinsic relative flatness.
+The proof uses actual open-restriction stalks and the original base-stalk isomorphism. -/
+theorem relativeFlat_pullback_of_isOpenImmersion {X Y V : Scheme.{u}}
+    (f : X ⟶ Y) (j : V ⟶ Y) [IsOpenImmersion j] {M : X.Modules}
+    (hM : relativeFlat f M) :
+    relativeFlat (pullback.snd f j) ((Scheme.Modules.pullback (pullback.fst f j)).obj M) := by
+  let a := pullback.fst f j
+  let b := pullback.snd f j
+  have hsource := relativeFlat_restrict a f hM
+  have he : a ≫ f = b ≫ j := pullback.condition
+  rw [he] at hsource
+  have hrest := relativeFlat_of_comp_isOpenImmersion b j hsource
+  exact relativeFlat_of_iso b ((Scheme.Modules.restrictFunctorIsoPullback a).app M).symm hrest
+
 end AlgebraicGeometry.Scheme.Modules

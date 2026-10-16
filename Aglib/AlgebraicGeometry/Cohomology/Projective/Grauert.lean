@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Grauert.Global
-public import Aglib.Algebra.Homology.CochainComplex.Grauert
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Grauert
 
 /-!
 # Grauert criteria over reduced affine and local bases
@@ -47,20 +47,10 @@ theorem ProjectiveCohomologyModel.free_moduleCohomology_of_isLocallyConstant_fib
     let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
     letI := moduleCohomologyModuleOfHom X α M q
     Module.Free R (Sheaf.H.{u + 1} (moduleAddSheaf X M) q) := by
-  let (j : ℤ) : Module.Finite R (D.complex.X j) := D.finite_X j
-  let (j : ℤ) : Module.Projective R (D.complex.X j) := D.projective_X j
-  have he : moduleFiberCohomologyDimension f M q = fun p : PrimeSpectrum R =>
-      finrank p.asIdeal.ResidueField
-        ((((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-          (.up ℤ)).obj D.complex).homology (q : ℤ)) :=
-    funext (D.fiberCohomologyDimension_eq_finrank e hflat q)
-  rw [he] at h
-  let : Module.Free R (D.complex.homology (q : ℤ)) :=
-    CochainComplex.free_homology_of_isLocallyConstant_residueField_finrank.{u, 0}
-      D.complex (q : ℤ) h
-  let := moduleCohomologyModuleOfHom X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) M q
-  exact Module.Free.of_equiv (D.cohomologyLinearEquiv e q)
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.free_moduleCohomology_of_isLocallyConstant_fiberDimension D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat q h
 
 /-- Coherent relatively flat coefficients on an actual projective embedding over a
 reduced Noetherian local ring have free original cohomology in each degree whose

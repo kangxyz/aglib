@@ -30,3 +30,10 @@ for open-intersection restriction, restricted exactness or the literal
 pairwise/triple-intersection cocycle calculations. Their declarations retain
 the native `CategoryTheory.Cech` namespace. Generic leaves do not import their
 topological consumers.
+
+[CoefficientNaturality](CoefficientNaturality.lean), imported as
+`Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality`, proves
+`finiteCechComplexCoefficientIso_naturality_functor`: the original forward
+finite Cech comparisons commute with any native natural transformation between
+additive finite-product-preserving coefficient functors. The equation retains
+the original product projections and independent category/product/index universes.

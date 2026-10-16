@@ -26,3 +26,11 @@ The module action is not installed as a global instance. Its first consumer
 is the [actual principal-ideal Koszul calculation](../../Koszul/Single/Ext/Ideal.lean).
 Source and public consumer passed `1792127465949194000-98994` and
 `1792127498584479000-99373` with only the standard three axioms.
+
+[SingleShift](SingleShift.lean) proves that maps from the native same-degree
+single of a projective object to a positive integer shift of any coefficient
+single are zero. It retains the original single-functor shift and localization
+comparisons. Only projectivity of the displayed source object is required;
+there is no `HasExt`, enough-projectives, enough-injectives or coefficient
+projectivity premise. Concentrated finite-free derived global sections in
+relative projective Serre duality are a current consumer.

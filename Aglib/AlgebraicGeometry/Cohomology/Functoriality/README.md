@@ -40,3 +40,12 @@ flatness or quasicoherence premise.
 [Pushforward/Shift](Pushforward/Shift.lean) exposes the original installed
 derived pushforward's native shifts, triangulated structure and unit
 compatibility, without a new derived model or geometric hypothesis.
+
+[Modules/Isomorphism](Modules/Isomorphism.lean) proves bijectivity of the
+original `moduleCohomologyMapAlong` for a scheme isomorphism and an actual
+invertible coefficient arrow, including the original module-pullback unit.
+`moduleCohomologyRestrictionIsoOfPullbackIso` retains compatible structural
+scalars and an actual ordinary pullback-coefficient isomorphism; its forward
+arrow is the same original geometric map. No quasicoherence, Noetherianity
+or finiteness is assumed. The [point-fibre coordinate comparison](../Fibers/Affine.lean)
+uses this interface.

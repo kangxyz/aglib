@@ -65,6 +65,18 @@ lift internally. The corresponding equation for homology of the installed
 iso. The original counit, tilde unit, structural scalar action and large
 cohomology universe are retained throughout.
 
+[Cohomology/Restriction](Cohomology/Restriction.lean) proves
+`moduleHigherDirectImageAffineSectionsLinearEquiv_openRestriction` for an
+actual cartesian open square between affine targets. Under the original
+affine section equivalences, the native higher-image open comparison on
+the original restriction-unit section is exactly
+`moduleCohomologyMapAlong` for the original source restriction unit. The
+source morphism is qcqs and the original coefficient is quasicoherent;
+target qcqs follows from the square. Supplied original resolutions and
+all natural degrees, including zero, are retained. The generic resolution
+formula is imported from its sole
+[lower owner](../Restriction/Resolution.lean).
+
 [Single](Single.lean) gives the actual installed
 `Scheme.Modules.affineDerivedPushforwardSingleIso f M`: for any affine
 morphism and any quasicoherent coefficient, `RF(single₀ M)` is the native

@@ -175,3 +175,47 @@ additional model-level inputs. The generic source passed
 `1792127713517360000-1604` in 2.7 seconds and its arbitrary-universe
 consumer `1792127734693142000-1911`. All inspected declarations use only
 the standard three axioms.
+
+[Grauert/Global](Grauert/Global.lean) owns the original constant-dimension
+criterion on this same `D`. It retains `IsReduced R`: local constancy of
+original ordinary fibre-cohomology dimension gives projectivity of
+unchanged cohomology and invertibility of the original geometric
+base-change map after every ring map. The base need not be local; the
+model-level proof needs no Noetherian hypothesis. Geometric suppliers
+separately provide actual cohomological finiteness; projectivity alone is
+not used to infer it over a noncoherent ring. Generic source
+`1792127811719014000-2710` passed in 2.8 seconds, exact old wrapper
+`1792127923492986000-3850` in 2 seconds, and unchanged original public
+consumer `1792128019349233000-4538`. The actual proper specialization
+passed `1792128253009558000-6846` in 7 seconds and independent public
+consumer `1792128281150102000-7131`. All inspected declarations use only
+the standard three axioms. These constant-dimension criteria retain their
+reducedness guard, unlike the explicit residue-map-surjectivity criteria.
+
+[Grauert](Grauert.lean) owns the original constant-dimension freeness
+criterion on this same `D` over a reduced local ring. Both `IsReduced R`
+and `IsLocalRing R` remain explicit; no Noetherianity is added at model
+level. The unchanged original structural action is retained on `Sheaf.H`.
+Generic source `1792128341342631000-7609` passed in 2.7 seconds, old
+projective wrapper `1792128390040003000-8348` in 4.1 seconds, and unchanged
+original public consumer `1792128437382519000-9057`. The proper local
+specialization passed `1792128482923431000-9755` in 3.3 seconds and its
+independent arbitrary-universe public consumer
+`1792128564293877000-10712`. All inspected declarations use only the
+standard three axioms. All six old numerical-owner extractions are now
+closed; their exact old theorem signatures and geometric endpoints are
+preserved. The genuine open-neighbourhood residue/free-locus step and the
+arbitrary-perfect-complex relative-Tor tier remain separate obligations.
+
+[BaseChangeLocus](BaseChangeLocus.lean) now supplies the previously separate
+basic-open original-map conclusion. For this same supplied `D`, surjectivity
+of the original degree-`q` comparison to `p.asIdeal.ResidueField` gives
+`r ∉ p.asIdeal` such that every `τ : Localization.Away r →+* B` makes the
+original `moduleCohomologyBaseChangeMap f (τ.comp (algebraMap R _)) M q`
+invertible. The proof uses the actual outgoing cokernel's native free locus,
+localizes `D.complex.sc q`, and applies the unchanged native mate composition
+identity before the original geometric comparison square. No new localized
+model, reducedness, Noetherianity, or target-ring flatness is assumed. The
+original morphism, coefficient and ordinary fibre products are retained.
+A general-target sheaf descent and neighbourhood freeness with its
+adjacent-degree condition remain further steps.

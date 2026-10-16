@@ -59,6 +59,77 @@ theorem extendScalarsForgetUnit_comp_complex {ι : Type w} {c : ComplexShape ι}
   ext1 i
   exact extendScalarsForgetUnit_comp σ τ (K.X i)
 
+/-- The original scalar units compose on the actual mapped short complex. -/
+theorem extendScalarsForgetUnit_comp_shortComplex
+    (A : ShortComplex (ModuleCat.{max u v} R)) :
+    A.mapNatTrans (extendScalarsForgetUnit (τ.comp σ)) ≫
+        (forget₂ (ModuleCat.{max u v} T) AddCommGrpCat.{max u v}).mapShortComplex.map
+          (A.mapNatTrans (extendScalarsComp σ τ).hom) =
+      A.mapNatTrans (extendScalarsForgetUnit σ) ≫
+        (A.map (extendScalars σ)).mapNatTrans (extendScalarsForgetUnit τ) := by
+  ext1
+  · exact extendScalarsForgetUnit_comp σ τ A.X₁
+  · exact extendScalarsForgetUnit_comp σ τ A.X₂
+  · exact extendScalarsForgetUnit_comp σ τ A.X₃
+
+/-- The original short-complex homology mates compose through the native scalar
+composition isomorphism. Neither scalar extension needs to preserve homology. -/
+@[reassoc]
+theorem homologyBaseChangeMap_comp
+    (A : ShortComplex (ModuleCat.{max u v} R)) :
+    (extendScalarsComp σ τ).hom.app A.homology ≫
+        (extendScalars τ).map (homologyBaseChangeMap σ A) ≫
+        homologyBaseChangeMap τ (A.map (extendScalars σ)) =
+      homologyBaseChangeMap (τ.comp σ) A ≫
+        ShortComplex.homologyMap (A.mapNatTrans (extendScalarsComp σ τ).hom) := by
+  let F := extendScalars σ
+  let G := extendScalars τ
+  let U := forget₂ (ModuleCat.{max u v} T) AddCommGrpCat.{max u v}
+  let L := A.map F
+  let D := L.map G
+  let χ := A.mapNatTrans (extendScalarsComp σ τ).hom
+  let a := homologyBaseChangeMap σ A
+  let b := homologyBaseChangeMap τ L
+  let ησ := A.mapNatTrans (extendScalarsForgetUnit σ)
+  let ητ := L.mapNatTrans (extendScalarsForgetUnit τ)
+  let E := A.mapHomologyIso (forget₂ (ModuleCat.{max u v} R) AddCommGrpCat.{max u v})
+  let E'' := D.mapHomologyIso U
+  have hs := extendScalarsForgetUnit_homology_shortComplex σ A
+  have ht := extendScalarsForgetUnit_homology_shortComplex τ L
+  have hn := (extendScalarsForgetUnit τ).naturality a
+  have hleft :
+      (extendScalarsForgetUnit (τ.comp σ)).app A.homology ≫
+          U.map ((extendScalarsComp σ τ).hom.app A.homology ≫ G.map a ≫ b) ≫ E''.inv =
+        E.inv ≫ ShortComplex.homologyMap ησ ≫ ShortComplex.homologyMap ητ := by
+    simp only [Functor.map_comp, Category.assoc]
+    rw [extendScalarsForgetUnit_comp_assoc]
+    erw [← reassoc_of% hn]
+    erw [reassoc_of% hs]
+    erw [reassoc_of% ht]
+    simp only [E, E'', U, L, D, F, G, ησ, ητ,
+      Iso.hom_inv_id_assoc, Iso.hom_inv_id, Category.comp_id]
+  have hright :
+      (extendScalarsForgetUnit (τ.comp σ)).app A.homology ≫
+          U.map (homologyBaseChangeMap (τ.comp σ) A ≫ ShortComplex.homologyMap χ) ≫
+            E''.inv =
+        E.inv ≫ ShortComplex.homologyMap ησ ≫ ShortComplex.homologyMap ητ := by
+    have hnχ := ShortComplex.mapHomologyIso_inv_naturality χ U
+    simp only [Functor.map_comp, Category.assoc]
+    erw [extendScalarsForgetUnit_homology_shortComplex_assoc]
+    erw [hnχ]
+    erw [Iso.hom_inv_id_assoc]
+    rw [← ShortComplex.homologyMap_comp]
+    erw [extendScalarsForgetUnit_comp_shortComplex]
+    rw [ShortComplex.homologyMap_comp]
+  apply ((extendRestrictScalarsAdj (τ.comp σ)).homEquiv _ _).injective
+  apply (forget₂ (ModuleCat.{max u v} R) AddCommGrpCat.{max u v}).map_injective
+  change (extendScalarsForgetUnit (τ.comp σ)).app A.homology ≫
+      U.map ((extendScalarsComp σ τ).hom.app A.homology ≫ G.map a ≫ b) =
+    (extendScalarsForgetUnit (τ.comp σ)).app A.homology ≫
+      U.map (homologyBaseChangeMap (τ.comp σ) A ≫ ShortComplex.homologyMap χ)
+  apply (cancel_mono E''.inv).mp
+  exact hleft.trans hright.symm
+
 end ModuleCat
 
 namespace HomologicalComplex

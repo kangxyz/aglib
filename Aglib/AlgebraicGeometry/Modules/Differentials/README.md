@@ -17,3 +17,34 @@ budgets. The standard-smooth basis supports independent ring and algebra
 universes. The global rank theorem retains the source universe and includes
 the empty scheme. Exterior powers, the canonical line, and its identification
 with the Serre dualizing coefficient remain separate proof obligations.
+
+[Affine](Affine.lean) is the sole arbitrary-ring owner of
+`affineRelativeConstants`, the native constant-base differential presheaf,
+its original localization seed and `affineRelativeDifferentialIso`.
+The implementation was extracted from the second generic block of
+`SmoothRank`; its former qualified names remain public compatibility exports.
+The still more general affine presheaf sheafification/tilde comparison now
+lives in [Localization/AffineSheafification](../QuasiCoherent/Localization/AffineSheafification.lean).
+Neither lower owner imports field geometry or cohomology, and the original
+seed, differential and sheafification equations are unchanged.
+`affineRelativeDifferentialIso_hom_d` identifies the image of the original
+sheafified differential on every principal open with `tilde.toOpen` of the
+original ring differential. This normalization is owned here independently
+of the scheme-relative comparison that consumes it.
+
+[Relative](Relative/README.md) constructs the actual relative differential
+sheaf for arbitrary scheme morphisms using the original structure map.
+Its universal property holds for every coefficient module sheaf. The
+affine-base derivation equivalence and actual differential-sheaf comparison
+use native principal localization and sheaf separatedness, without a
+quasicoherence premise on the coefficient. `Relative.Affine` combines this
+bridge with the lower affine owner to identify the actual general relative
+sheaf on `Spec.map σ` with the tilde of the original Kähler module. Both
+principal-open differential formulas and actual quasicoherence are proved.
+
+`Relative.Restriction` retains the actual derivation under source and base
+open restrictions. `Relative.SmoothRank` proves finite local freeness and
+the displayed rank for every smooth morphism of fixed relative dimension
+over arbitrary bases, using its native standard-smooth local frames.
+No field, Noetherianity, coefficient family or quasi-compactness premise
+is added. Determinant and Serre trace normalization remain separate.

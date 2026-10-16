@@ -13,3 +13,11 @@ interface: native truncation homology, normalized single layers, and one
 finite extension induction under homology bounds. The terms of the
 chosen object need not be bounded or satisfy the property. Proper
 coherent images and flat-base-change comparisons share this lower tier.
+
+[Ext](Ext.lean) identifies each original Ext group with shifted Hom between
+native bounded-below singles, additively and with independent Ext and derived
+size universes. The forward lift uses the fully faithful inclusion and its
+original shift comparison. It preserves Yoneda composition, degree-zero maps
+and the actual unsigned `singleTrianglePlus` connecting arrow. No
+injective or projective availability hypothesis is added. A protected signed
+`Ext.δ` must retain its original sign when used by a derived comparison.
