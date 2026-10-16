@@ -26,6 +26,8 @@ public import Aglib.RingTheory.Flat.FinitePresentation.LocalModel
 public import Aglib.RingTheory.Flat.FinitePresentation.LocalRegularity
 public import Aglib.RingTheory.Flat.FinitePresentation.Localization
 public import Aglib.RingTheory.Flat.FinitePresentation.Relations
+public import Aglib.RingTheory.Flat.IdealBaseChange
+public import Aglib.RingTheory.Flat.LocalBasis
 public import Aglib.RingTheory.Flat.LocalCriterion.Adic
 public import Aglib.RingTheory.Flat.LocalCriterion.Residue
 public import Aglib.RingTheory.Flat.LocalCriterion.ResidueSyzygies
@@ -35,9 +37,11 @@ public import Aglib.RingTheory.Flat.PrincipalQuotient.Basic
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Local
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Localization
+public import Aglib.RingTheory.Flat.Quotient
 public import Aglib.RingTheory.Flat.TorsionFreeBaseChange
 public import Aglib.RingTheory.Ideal.MinimalPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.MinimalPrime.GoingDown
+public import Aglib.RingTheory.Ideal.RegularPrincipal
 public import Aglib.RingTheory.IntegralClosure.FiniteEtale
 public import Aglib.RingTheory.IntegralClosure.FlatDescent
 public import Aglib.RingTheory.IntegralClosure.FractionRing
@@ -45,13 +49,16 @@ public import Aglib.RingTheory.KrullDimension.HeightOnePrime
 public import Aglib.RingTheory.KrullDimension.IntegralExtension
 public import Aglib.RingTheory.KrullDimension.Polynomial
 public import Aglib.RingTheory.KrullDimension.PrincipalOpen
+public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance
 public import Aglib.RingTheory.LocalRing.ParameterQuotient
+public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.Localization.IteratedModuleLength
 public import Aglib.RingTheory.Localization.LengthFlatBaseChange
 public import Aglib.RingTheory.Localization.LengthSurjective
+public import Aglib.RingTheory.Localization.ModulePresentation
 public import Aglib.RingTheory.MonoidAlgebra.FiniteType
 public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Additivity
 public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Associativity
@@ -65,6 +72,8 @@ public import Aglib.RingTheory.PrimeFiltration.Length
 public import Aglib.RingTheory.PrimeFiltration.Multiplicity
 public import Aglib.RingTheory.PrimeFiltration.Primes
 public import Aglib.RingTheory.PrimeFiltration.Support
+public import Aglib.RingTheory.Regular.TensorProduct
+public import Aglib.RingTheory.RegularLocalRing.ArtinianQuotient
 public import Aglib.RingTheory.RegularLocalRing.DimensionZero
 public import Aglib.RingTheory.RegularLocalRing.Domain
 public import Aglib.RingTheory.RegularLocalRing.Etale

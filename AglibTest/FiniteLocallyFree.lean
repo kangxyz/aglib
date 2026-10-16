@@ -10,8 +10,8 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Basic
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Rank
 
 /-! Category objects reuse the canonical finite-local-freeness class and its
-finite-presentation instance. Rank detection keeps the fibre-dimension family
-as an explicit input, independently of those instances. -/
+finite-presentation instance. Rank detection uses the proved pointwise
+fibre-dimension theorem. -/
 
 @[expose] public section
 
@@ -32,7 +32,6 @@ example (X : Scheme.{u}) :
       finiteLocallyFreeForget :=
   finiteLocallyFreeToFinitePresentation_comp_forget
 
-example (rankLocalBasisFibreDimension : LocalBasisFibreDimension.{u})
-    {X : Scheme.{u}} (M : Scheme.Modules.FiniteLocallyFree X) (n : ℕ) :
+example {X : Scheme.{u}} (M : Scheme.Modules.FiniteLocallyFree X) (n : ℕ) :
     SheafHasRank M.obj n ↔ ∀ x, Scheme.Modules.FiniteLocallyFree.rank M x = n :=
-  Scheme.Modules.FiniteLocallyFree.hasRank_iff_rank_eq rankLocalBasisFibreDimension M n
+  Scheme.Modules.FiniteLocallyFree.hasRank_iff_rank_eq M n

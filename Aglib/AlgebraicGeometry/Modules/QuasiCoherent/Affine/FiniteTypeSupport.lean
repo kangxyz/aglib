@@ -60,7 +60,8 @@ theorem affineSupportedAway_iff_support_subset (M : AffineFiniteType R) :
   rw [affineSupportedAway_iff_support_disjoint]
   exact Set.disjoint_left
 
-/-- The full abelian category of actual supported coherent sheaves. -/
+/-- The full subcategory of affine finite-type quasicoherent sheaves
+supported outside the selected open. -/
 abbrev SupportedAffineFiniteType := (affineSupportedAway R j).FullSubcategory
 
 end AlgebraicGeometry.Scheme.Modules.QuasiCoherent

@@ -9,3 +9,6 @@ The focused imports are `Aglib.CategoryTheory.Limits.Shapes.CokernelPushout` and
 The [identity-cone functor](../../../Algebra/Homology/MappingCone/README.md) uses the cokernel pushout statement in its short-exactness comparison. The zero-coproduct statement supplies the lower primitive for [coproduct acyclicity of actual module-sheaf complexes](../../../AlgebraicGeometry/Modules/Complex/README.md). Neither leaf imports the application source from which its general statement was selected.
 
 [SequentialSystem](SequentialSystem/README.md) owns the natural-number indexing shape: explicit colimit comparisons for invertible successor maps, finite-tail comparisons, eventual invertibility of the original colimit legs, and alternating-sign correction of stage morphisms. These are separate from the finite cokernel and coproduct shapes above; general colimit comparisons need no additive structure, while sign correction requires a preadditive category.
+
+[BinaryProducts](BinaryProducts.lean) gives the product-preserving-functor criterion for a
+mapped morphism into a binary product to vanish when both mapped projections vanish.

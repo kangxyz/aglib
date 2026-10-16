@@ -38,7 +38,7 @@ These concrete paths were inspected at the stated Mathlib revision. The library 
 
 Exact proof attributions belong to the implementing module comments, with the stated hypotheses and constructed map. Preserve persistent Stacks tags and locators only for their identified source results. A derived corollary retains its disclosed extra identifications; sharing a tag does not make it the source's literal statement.
 
-Local-basis fibre dimension, proper module finiteness and relative locally free base change retain their explicit inputs and original inspected-source boundaries. The relative corollary identifies actual pushforward, the adjunction mate and geometric fibres in addition to its cited derived results. Documentation does not independently establish those external proof chains. Unchecked load-bearing attribution must remain marked rather than acquiring guessed metadata or unconditional status.
+Local-basis fibre dimension now has a native pointwise proof. Proper module finiteness and relative locally free base change retain their explicit inputs and original inspected-source boundaries. The relative corollary identifies actual pushforward, the adjunction mate and geometric fibres in addition to its cited derived results. Documentation does not independently establish those external proof chains. Unchecked load-bearing attribution must remain marked rather than acquiring guessed metadata or unconditional status.
 
 ## Latest local source selections
 
@@ -55,3 +55,9 @@ They support the subject distinctions used in the architecture. In particular,
 the derived-scheme chapter explicitly names perfect complexes; it does not
 justify abbreviating the object to `Perfect` under a module-sheaf parent. These
 are classification references, with no theorem-source applicability claim.
+
+[The next group projection](migration/pointwise-cartier-coherent.json) records exact
+original/current source identities, the final pointwise names, the fifteen
+unretired Spec comparison obligations, and separate native/review states for
+pointwise, Cartier and coherent groups. Earlier migration ledgers and their
+original source IDs, paths, revisions and hashes remain unchanged.

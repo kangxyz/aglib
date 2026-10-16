@@ -38,8 +38,8 @@ namespace AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
 variable (R : CommRingCat.{u})
 
-/-- The all-affine-chart coherence predicate agrees with finite global
-sections and quasicoherence on an affine scheme, over any ring. -/
+/-- The affine-chart finite-type quasicoherent predicate agrees with
+quasicoherence and finite global sections on an affine scheme over any ring. -/
 theorem affineLocallyFiniteType_spec_iff (M : (Spec R).Modules) :
     affineLocallyFiniteType (Spec R) M ↔ affineFiniteSheaf R M := by
   constructor

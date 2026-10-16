@@ -10,9 +10,14 @@ module
 public import Aglib.Algebra.Category.FGModuleCat.Basic
 public import Aglib.Algebra.Category.FGModuleCat.IdealClosedSupport
 public import Aglib.Algebra.Category.FGModuleCat.Localization
+public import Aglib.Algebra.Category.FGModuleCat.Localization.EssentialSurjectivity
+public import Aglib.Algebra.Category.FGModuleCat.Localization.Quotient
 public import Aglib.Algebra.Category.FGModuleCat.RestrictScalars
+public import Aglib.Algebra.Category.ModuleCat.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness
+public import Aglib.Algebra.Category.ModuleCat.KernelBaseChange
 public import Aglib.Algebra.Category.ModuleCat.Localization.Exactness
+public import Aglib.Algebra.Category.ModuleCat.Localization.Submodule
 public import Aglib.Algebra.Category.ModuleCat.Monoidal.RestrictScalars
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
@@ -33,6 +38,8 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
+public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.Group.Subgroup.Ker
 public import Aglib.Algebra.Homology.CochainComplex.Augmentation
 public import Aglib.Algebra.Homology.CochainComplex.BoundedAbove.Basic
 public import Aglib.Algebra.Homology.CochainComplex.BoundedAbove.ProjectiveHomotopy
@@ -80,6 +87,7 @@ public import Aglib.Algebra.Homology.ShortComplex.Subcategory
 public import Aglib.Algebra.Homology.TotalComplex.AddCommGrp
 public import Aglib.Algebra.Homology.TotalComplex.FirstQuadrant
 public import Aglib.Algebra.Homology.TotalComplex.NatSigns
+public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule
 public import Aglib.Algebra.Polynomial.Laurent.BaseChange
 public import Aglib.Algebra.Polynomial.Laurent.Square
 public import Aglib.Algebra.Polynomial.Laurent.UnderSquare

@@ -26,3 +26,7 @@ algebraic and categorical interfaces. Current geometric consumers are
 [affine finite-type quasicoherent sheaves](../../../AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md),
 finite direct image and closed-immersion module actions. General scalar, tensor
 and site constructions remain in [ModuleCat](../ModuleCat/README.md).
+
+The [localization family](Localization/README.md) adds arbitrary-ring essential
+surjectivity and the Noetherian torsion Serre quotient equivalence for the actual
+finite-module localization functor.

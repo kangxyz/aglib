@@ -13,9 +13,11 @@ public import Aglib.CategoryTheory.Abelian.Ext1.Representability
 public import Aglib.CategoryTheory.Abelian.FiniteCoproductFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels
+public import Aglib.CategoryTheory.Abelian.SerreClass.Exact
 public import Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts
 public import Aglib.CategoryTheory.Abelian.Subcategory.Exact
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
+public import Aglib.CategoryTheory.Adjunction.Mates
 public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.BaseChange
 public import Aglib.CategoryTheory.ExactCategory.Basic
@@ -31,6 +33,7 @@ public import Aglib.CategoryTheory.ExactCategory.Subcategory
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
 public import Aglib.CategoryTheory.Limits.NatTransCoproduct
+public import Aglib.CategoryTheory.Limits.Shapes.BinaryProducts
 public import Aglib.CategoryTheory.Limits.Shapes.CokernelPushout
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.EventuallyIsoColimit
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.IsoColimit
@@ -45,7 +48,9 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.FiniteCoefficients
 public import Aglib.CategoryTheory.SmallModel.Abelian
 public import Aglib.CategoryTheory.SmallModel.Exact
+public import Aglib.CategoryTheory.SmallModel.Functor
 public import Aglib.CategoryTheory.SmallModel.Functoriality
+public import Aglib.CategoryTheory.SmallModel.Localization
 public import Aglib.CategoryTheory.Triangulated.EndpointTransport
 public import Aglib.CategoryTheory.Triangulated.NatTransIso
 

@@ -9,12 +9,13 @@ module
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Basic
 public import Aglib.AlgebraicGeometry.Modules.Support
 /-!
-# Exact restriction and actual support for global coherent sheaves
+# Open restriction and support for finite-type quasicoherent sheaves
 
-The affine-chart definition is stable under open restriction by composition
-of actual affine charts. The full coherent inclusion reflects finite limits
-and colimits, so restriction is exact. Its kernel is exactly vanishing on
-the open, equivalently ordinary stalk support in the closed complement.
+Finite-type quasicoherence, defined on all affine charts, is stable under open
+restriction by composition of actual affine charts. The restriction kernel is
+exactly vanishing on the open, equivalently ordinary stalk support in the closed
+complement. Guarded exact and abelian structures are provided in
+`Aglib.AlgebraicGeometry.Modules.Coherent.Restriction`.
 No global quotient-equivalence or global localization theorem is assumed.
 -/
 @[expose] public section
@@ -53,7 +54,7 @@ theorem finiteTypeSheavesRestriction_comp_inclusion :
     finiteTypeSheavesRestriction j ⋙ finiteTypeSheavesToModules U =
       finiteTypeSheavesToModules X ⋙ Scheme.Modules.restrictFunctor j := rfl
 
-/-- Actual coherent sheaves vanishing on the selected open. -/
+/-- Finite-type quasicoherent sheaves vanishing on the selected open. -/
 def finiteTypeSheavesSupportedAway : ObjectProperty (FiniteTypeSheaves X) :=
   (Scheme.Modules.supportedAway j).inverseImage (finiteTypeSheavesToModules X)
 
@@ -73,7 +74,8 @@ theorem finiteTypeSheavesSupportedAway_iff_support_subset (M : FiniteTypeSheaves
   rw [Scheme.Modules.supportedAway_iff_support_disjoint]
   exact Set.disjoint_left
 
-/-- The actual full abelian category of supported coherent sheaves. -/
+/-- The full subcategory of finite-type quasicoherent sheaves supported
+outside the selected open. -/
 abbrev SupportedFiniteTypeSheaves := (finiteTypeSheavesSupportedAway j).FullSubcategory
 
 end AlgebraicGeometry.Scheme.Modules.QuasiCoherent

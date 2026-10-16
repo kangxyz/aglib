@@ -5,3 +5,5 @@
 [Retract](Retract.lean) constructs `exists_retract_finiteFree` for the actual affine sheaf. `isIso_app_affineBundle_of_unit_general` propagates a natural transformation's invertibility from the unit to a finite locally free affine sheaf for additive functors into the stated preadditive category. Its zero-object variant retains the same additive/unit hypothesis.
 
 These are object/retract properties, not a newly selected category equivalence with all projective modules. They supply finite-free reductions for [tensor injective preservation](../Tensor/README.md) and arbitrary-morphism projection formula. No Noetherian or globally free assumption is inserted.
+
+[Flat](Flat.lean) constructs finite local bases for an affine quasicoherent module whose actual section module is flat and finitely presented. Localization and basis comparisons use the existing tilde/pullback objects.

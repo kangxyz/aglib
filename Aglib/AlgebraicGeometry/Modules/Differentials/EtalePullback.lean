@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Differentials.Properties
+public import Aglib.AlgebraicGeometry.Modules.Differentials.Basic
 public import Mathlib.RingTheory.Etale.Kaehler
 public import Mathlib.AlgebraicGeometry.Morphisms.Etale
 public import Mathlib.Topology.Sheaves.SheafCondition.UniqueGluing
@@ -16,8 +16,8 @@ public import Mathlib.Topology.Sheaves.SheafCondition.UniqueGluing
 The proof extends actual sheaf-valued derivations uniquely on affine etale charts,
 glues these extensions, and applies the differential-sheaf universal property.
 `differential_precompose` identifies the resulting Hom map with the canonical
-adjoint map defined in Differentials.lean. The final producer has the unchanged
-`EtaleDifferentialPullback` signature, matching Stacks 04BX with base identity.
+adjoint map defined in `Differentials.Basic`. Its invertibility gives the canonical
+`etaleDifferentialIso`, matching Stacks 04BX with the identity on the base field.
 -/
 
 @[expose] public section
@@ -48,6 +48,7 @@ noncomputable def extendDerivation (f : A →+* B) (hf : f.FormallyEtale)
     (KaehlerDifferential.tensorKaehlerEquivOfFormallyEtale ℤ A B).symm.toLinearMap).compDer
       (KaehlerDifferential.D ℤ B)
 
+/-- The extended absolute derivation agrees with the original derivation on the source ring. -/
 lemma extendDerivation_apply (f : A →+* B) (hf : f.FormallyEtale)
     (D : let := Module.compHom M f; Derivation ℤ A M) (a : A) :
     extendDerivation f hf D (f a) = D a := by
@@ -120,6 +121,7 @@ noncomputable def localSourceDerivation (M : X.left.Modules) (d : OnTargetDeriva
   · exact M.val.map_smul (homOfLE e).op (f.left.app U a) (d.d b)
   · exact M.val.map_smul (homOfLE e).op (f.left.app U b) (d.d a)
 
+/-- Restricting the target derivation gives the displayed source-section value. -/
 lemma localSourceDerivation_apply (M : X.left.Modules) (d : OnTargetDerivation f M)
     (U : Y.left.Opens) (V : X.left.Opens) (e : V ≤ f.left ⁻¹ᵁ U) (a : Γ(Y.left, U)) :
     localSourceDerivation f M d U V e a = (M.val.map (homOfLE e).op) (d.d a) := rfl
@@ -133,6 +135,7 @@ noncomputable def localDerivation [Etale f.left] (M : X.left.Modules)
   extendDerivation (f.left.appLE U V e).hom (f.left.etale_appLE hU hV e).formallyEtale
     (localSourceDerivation f M d U V e)
 
+/-- The affine étale extension agrees with the target derivation after pullback. -/
 lemma localDerivation_apply [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (U : Y.left.Opens) (hU : IsAffineOpen U)
     (V : X.left.Opens) (hV : IsAffineOpen V) (e : V ≤ f.left ⁻¹ᵁ U)
@@ -195,6 +198,7 @@ structure Chart (W : X.left.Opens) (T : Y.left.Opens) where
   leT : U ≤ T
   lePull : V ≤ f.left ⁻¹ᵁ U
 
+/-- Compatible affine source and target charts cover the indicated source open. -/
 lemma chartCover (W : X.left.Opens) (T : Y.left.Opens) (hWT : W ≤ f.left ⁻¹ᵁ T) :
     W ≤ iSup (fun i : Chart f W T => i.V) := by
   intro x hx
@@ -250,6 +254,7 @@ lemma chartSection_compatible [Etale f.left] (M : X.left.Modules)
     ← Functor.map_comp, ← Functor.map_comp]
   rfl
 
+/-- The compatible chart values admit a unique glued section of the actual module sheaf. -/
 lemma sectionGluingExists [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W : X.left.Opens) (a : Γ(X.left, W)) :
     ∃! s : Γ(M, W), ∀ i : Chart f W ⊤,
@@ -263,6 +268,7 @@ noncomputable def globalSection [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W : X.left.Opens) (a : Γ(X.left, W)) : Γ(M, W) :=
   (sectionGluingExists f M d W a).exists.choose
 
+/-- The glued extension restricts to its value on every compatible affine chart. -/
 lemma globalSection_restrict [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) {W : X.left.Opens} {T : Y.left.Opens}
     (i : Chart f W T) (a : Γ(X.left, W)) :
@@ -270,6 +276,7 @@ lemma globalSection_restrict [Etale f.left] (M : X.left.Modules)
   let j : Chart f W ⊤ := ⟨i.U, i.V, i.affineU, i.affineV, i.leW, le_top, i.lePull⟩
   exact (sectionGluingExists f M d W a).exists.choose_spec j
 
+/-- The glued extension is additive on structure sections. -/
 lemma globalSection_add [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W : X.left.Opens) (a b : Γ(X.left, W)) :
     globalSection f M d W (a + b) = globalSection f M d W a + globalSection f M d W b := by
@@ -281,6 +288,7 @@ lemma globalSection_add [Etale f.left] (M : X.left.Modules)
   erw [map_add, globalSection_restrict, globalSection_restrict, globalSection_restrict]
   simp [chartSection]
 
+/-- The glued extension satisfies the Leibniz rule. -/
 lemma globalSection_mul [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W : X.left.Opens) (a b : Γ(X.left, W)) :
     globalSection f M d W (a * b) = a • globalSection f M d W b +
@@ -295,6 +303,7 @@ lemma globalSection_mul [Etale f.left] (M : X.left.Modules)
   simp [chartSection, Derivation.leibniz]
   rfl
 
+/-- The glued extension commutes with restriction of structure sections. -/
 lemma globalSection_naturality [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W W' : X.left.Opens) (h : W' ≤ W) (a : Γ(X.left, W)) :
     globalSection f M d W' (X.left.presheaf.map (homOfLE h).op a) =
@@ -313,6 +322,7 @@ lemma globalSection_naturality [Etale f.left] (M : X.left.Modules)
     rfl
   · exact (globalSection_restrict f M d j a).symm
 
+/-- The glued extension vanishes on sections from the base field. -/
 lemma globalSection_constant [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) (W : X.left.Opens) (c : F) :
     globalSection f M d W (constantSection X W c) = 0 := by
@@ -365,6 +375,7 @@ noncomputable def sourceAbsolute (M : X.left.Modules)
     (V : X.left.Opens) : Derivation ℤ Γ(X.left, V) Γ(M, V) :=
   Derivation.mk' (d.d (X := op V)).toIntLinearMap (d.d_mul (X := op V))
 
+/-- Any source derivation extending the target derivation has the prescribed chart values. -/
 lemma sourceDerivation_onChart [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M)
     (dx : PresheafOfModulesOfCommRing.Derivation' M.val (constantsPresheafMap X))
@@ -386,6 +397,7 @@ lemma sourceDerivation_onChart [Etale f.left] (M : X.left.Modules)
   rw [← hlocal]
   exact (dx.d_map (homOfLE i.leW).op a).symm
 
+/-- An extension of the target derivation to the source is unique. -/
 lemma extendOnSource_unique [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M)
     (dx : PresheafOfModulesOfCommRing.Derivation' M.val (constantsPresheafMap X))
@@ -399,6 +411,7 @@ lemma extendOnSource_unique [Etale f.left] (M : X.left.Modules)
   rw [globalSection_restrict]
   exact (sourceDerivation_onChart f M d dx h i a).symm
 
+/-- Precomposing the glued source extension recovers the target derivation. -/
 lemma precompose_extendOnSource [Etale f.left] (M : X.left.Modules)
     (d : OnTargetDerivation f M) : precomposeDerivation f M (extendOnSource f M d) = d := by
   ext U a
@@ -424,6 +437,7 @@ lemma precompose_extendOnSource [Etale f.left] (M : X.left.Modules)
   rw [← M.val.map_comp_apply]
   rfl
 
+/-- Precomposition along an étale morphism bijects the actual relative derivations. -/
 lemma precomposeDerivation_bijective [Etale f.left] (M : X.left.Modules) :
     Function.Bijective (precomposeDerivation f M) := by
   constructor
@@ -449,6 +463,7 @@ lemma differential_precompose (M : X.left.Modules) (h : differentialSheaf X ⟶ 
   rw [differentialPushforwardMap_d]
   rfl
 
+/-- The canonical differential pullback map of an étale morphism is an isomorphism. -/
 theorem isIso_differentialPullbackMap [Etale f.left] : IsIso (differentialPullbackMap f) := by
   apply isIso_of_coyoneda_map_bijective
   intro M
@@ -476,10 +491,23 @@ theorem isIso_differentialPullbackMap [Etale f.left] : IsIso (differentialPullba
 
 end Scheme
 
-theorem etaleDifferentialPullback : EtaleDifferentialPullback.{u} := by
-  intro F _ X Y f hf
-  let : Etale f.left := hf
-  exact isIso_differentialPullbackMap f
-
-
 end AlgebraicGeometry.Scheme.Modules.Differentials.EtalePullback
+
+namespace AlgebraicGeometry.Scheme.Modules.Differentials
+
+universe u
+
+variable {F : Type u} [Field F]
+
+/-- The isomorphism induced by the canonical differential pullback map of an étale morphism. -/
+def etaleDifferentialIso {X Y : FScheme F} (f : X ⟶ Y) [Etale f.left] :
+    (Scheme.Modules.pullback f.left).obj (differentialSheaf Y) ≅ differentialSheaf X := by
+  letI := EtalePullback.isIso_differentialPullbackMap f
+  exact asIso (differentialPullbackMap f)
+
+/-- The étale differential isomorphism has exactly the canonical differential map as its hom. -/
+@[simp]
+theorem etaleDifferentialIso_hom {X Y : FScheme F} (f : X ⟶ Y) [Etale f.left] :
+    (etaleDifferentialIso f).hom = differentialPullbackMap f := rfl
+
+end AlgebraicGeometry.Scheme.Modules.Differentials

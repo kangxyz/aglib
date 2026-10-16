@@ -7,3 +7,10 @@ The object is Mathlib's actual `CategoryTheory.SmallModel.{w} C`, for supplied `
 [Functoriality](Functoriality.lean) supplies `CategoryTheory.ExactCategory.ExactFunctor.smallModel`, `smallModelIdIso`, `smallModelCompIso` and `smallModelNatIso`. The identity/composition statements are natural isomorphisms between choices, not strict equality of chosen models.
 
 Focused imports are `Aglib.CategoryTheory.SmallModel.{Exact,Abelian,Functoriality}`. The main consumer is the actual locally Noetherian coherent category, whose stated sheaf-object universe bound must remain explicit. The lower prerequisite is [exact-structure equivalence transport](../ExactCategory/README.md).
+
+[Functor](Functor.lean) conjugates the actual functor by the chosen Mathlib small-model
+equivalences and compares its represented-object kernel. [Localization](Localization.lean)
+transports the ordinary Serre localization. The same [Abelian](Abelian.lean) owner extends
+its existing exact-structure comparison with `SmallModel.abelianExactComparison`,
+`abelianExactComparison_isEquivalence` and `mapAbelianExactFunctor`, using the original
+identity and conjugated functors.

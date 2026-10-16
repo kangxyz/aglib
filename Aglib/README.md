@@ -6,6 +6,7 @@
 | --- | --- |
 | [RingTheory](RingTheory/README.md) | Effective algebra descent, regular-local domain/normality, tensor domains, support, filtration and localized-length/Euler results |
 | [Algebra](Algebra/README.md) | Finite-module scalar/localization interfaces, localized exactness, cones and first-quadrant total-complex comparison |
+| [LinearAlgebra](LinearAlgebra/README.md) | Tensor-product maps and transported injectivity |
 | [CategoryTheory](CategoryTheory/README.md) | Selected exact structures, abelian subcategories, small-model transport, resolution kernels and generic Cech exactness |
 | [Topology](Topology/README.md) | Actual sheaf sections, basis detection, Mayer–Vietoris and Noetherian topological support |
 | [AlgebraicGeometry](AlgebraicGeometry/README.md) | Scheme modules, geometric properties/morphisms, ordinary Picard objects and actual cohomology/comparison results |

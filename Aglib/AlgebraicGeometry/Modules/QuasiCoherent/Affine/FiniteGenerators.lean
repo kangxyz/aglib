@@ -59,8 +59,9 @@ theorem finite_globalSections_of_presentation {M : (Spec R).Modules}
   have : M.IsQuasicoherent := P.isQuasicoherent
   exact finite_globalSections_of_generatingSections R M P.generators
 
-/-- A finite global presentation gives actual affine coherence without a
-noetherianity hypothesis. -/
+/-- A global presentation with finitely many generators gives affine
+finite-type quasicoherence over any commutative ring. No finite-relations
+hypothesis is needed. -/
 theorem affineFiniteSheaf_of_presentation {M : (Spec R).Modules}
     (P : M.Presentation) [P.generators.IsFiniteType] : affineFiniteSheaf R M :=
   ⟨P.isQuasicoherent, finite_globalSections_of_presentation R P⟩

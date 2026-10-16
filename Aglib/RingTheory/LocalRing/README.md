@@ -7,3 +7,5 @@
 Native owners follow the actual local/regular-local mathematical subject. These two parameter leaves feed [regular-local domain/parameters/normality](../RegularLocalRing/README.md). Their source statements preserve the nonzero cotangent, dimension and generator conditions used by the induction.
 
 [SeparatedPrincipal](SeparatedPrincipal.lean), imported as `Aglib.RingTheory.LocalRing.SeparatedPrincipal`, treats a local ring with a specified principal maximal-ideal generator. A finite bound on maximal-ideal order yields a unit-power factorization; Hausdorff separation yields such a bound for each nonzero element. If every generator power is nonzero, the same ring is a domain and then a DVR, without a Noetherian hypothesis. [Adic-completion DVR structures](../AdicCompletion/DiscreteValuationRing.lean) use this criterion.
+
+[ResidueTensor](ResidueTensor.lean), imported as `Aglib.RingTheory.LocalRing.ResidueTensor`, gives closed-base-fibre Nakayama, surjectivity and finite-kernel injectivity tests over a local algebra. The original local structure-map, finite-module and quotient-flatness premises are explicit; no Noetherian assumption is introduced.

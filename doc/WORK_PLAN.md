@@ -1,23 +1,38 @@
 # Migration work and validation boundaries
 
-## Partial accepted local checkpoint
+## Current accepted source checkpoint
 
-The current checkpoint preserves accepted organization, module/site and Cech
-cuts, K-injective and Ext1 foundations, local algebra and normalization,
-fibrewise flatness, intrinsic/local perfect complexes, canonical tensor maps,
-Small exact categories, and the twenty-one D-minus flat-model producers.
-Their focused producer checks and ordinary reviews are separate from this
-checkout's affected export checks and from downstream package acceptance.
-Historical full integration at `451aeda6b8bb5b44402b574dd6cf60f912360f8c`
-remains evidence for that earlier source snapshot only.
+The current source contains 625 production modules and 23 trust-test modules.
+The normal public export and four focused clients pass under the pinned Lean
+and Mathlib versions. Native Lake artifact transfer reuses the accepted producer
+artifacts: all 693 advertised artifact pairs for the 99 selected source/test
+modules match. The production cache export covers all 625 modules.
 
-The twenty-source pointwise/affine supplier wave is excluded: this checkpoint
-keeps its baseline rank/differential/test APIs and their theorem-family inputs.
-Cartier/ideal geometry and the coherent-localization wave, including its held
-Abelian append, are also excluded pending their own acceptance. General source
-classification and placement decisions below do not claim those future groups
-are implemented or validated here. The exact selected sources and bounded
-checks are recorded in [checkpoint provenance](migration/checkpoint-accepted-2026-10-16.json).
+| Group | Accepted scope | Downstream boundary |
+| --- | --- | --- |
+| Pointwise and affine suppliers | Twenty producers and the finite-locally-free test; actual fibre/rank, differential, constants, affine base-change and generic-field interfaces; accepted naming and kernel-type correspondence. | R5 consumer refactoring is in progress. Nineteen checked equalities and independent review prove the fifteen old Spec-map correspondences; their four actual callers still need transport. |
+| Cartier and ideal geometry | Thirty-nine producers with exact source correspondence, producer checks and independent review; current naming dependencies, actual comparison maps and explicit flatness/finiteness hypotheses are retained. | Original R5 application and producer cuts need coordinated cleanup and focused client checks. |
+| Coherent restriction and localization | Thirty-three producers, 119 explicit declarations, seventeen canonical reuses and one consolidated duplicate; complete ordinary review includes all 57 mathematical dependencies. | Quillen's general implementations and application interfaces need the corresponding native retarget. |
+
+Focused producer compilation, declaration/style lint, defining-origin axiom audits
+and independent ordinary review cover these groups. The eight reviewed prose
+qualifications change no operative Lean code; only their eight source leaves
+were recompiled. The coherent source record preserves the original native
+packet, its inherited cache provenance, six baseline comment-only transitions,
+and the accepted prose addendum. Detailed identities and scoped evidence are in
+[the current group projection](migration/pointwise-cartier-coherent.json).
+
+The coherent quotient equivalence retains `IsNoetherian X`; lower subobject and
+fullness results keep their locally Noetherian conditions. Cartier results keep
+their separate finite, flat and locally finitely presented hypotheses. Proper
+module-cohomology finiteness and relative locally free cohomology base change
+remain explicit inputs.
+
+The earlier checkpoints `f87a691813bc5f763dd7a119990c298b35c389f4` and `451aeda`
+retain their original source and validation bases. Current normal export checks
+do not claim complete downstream acceptance, CI success or additional full
+kernel replay. The classified general-source inventory is also broader than
+these completed migration groups.
 
 ## Complete general-theory source review and placement correction
 
@@ -65,7 +80,7 @@ before another group depends on it. Family READMEs document the interfaces,
 mathematical results and retained inputs. This file coordinates the groups;
 source-only classification and extraction do not count as compiled acceptance.
 
-## Current group acceptance
+## Earlier accepted producer groups
 
 The general Ext1, K-injective/adjunction and flat-resolution producers have
 passed focused compilation, declaration/style lint, defining-origin axiom
@@ -101,13 +116,10 @@ original rank-one/Picard consumers. Its general maps live below those consumers.
 
 The twenty-one D-minus flat-model producers have accepted focused native
 compilation, declaration/style and origin/axiom checks, and independent ordinary
-review on their recorded final source guards. Existing geometric
-supplier proofs are also being exposed as pointwise results, removing obsolete
-global theorem-family arguments from rank and differential interfaces. That
-source transition still requires its native checks and coordinated downstream
-updates. Coherent localization and Cartier/ideal geometry are being separated
-into precise mathematical owners and their necessary lower prerequisites.
-Shared guide and consumer updates follow the final interfaces. These are
+review on their recorded final source guards. The next pointwise and geometric source waves are tracked in the current-status
+table above; their later native/review states do not retroactively alter these
+earlier accepted input identities. The coherent and Cartier source ownership and review states are tracked above;
+a native producer pass does not replace their pending independent reviews. These are
 successive closed groups, not a completion claim for the whole migration.
 
 ## TT and finite-etale snapshot before the complete review
@@ -118,7 +130,7 @@ The seven-leaf native structural perfect-complex core and the three homology lea
 
 The admitted general cuts also include signed mapping cones, selected exact-functor and full-subcategory pushouts, sequential colimits and sign correction, integer-base interchange, polynomial/Laurent coordinates, and canonical tensor/unit/Godement comparisons. The R5 general finite-etale cut supplies the actual finite-etale category, field-valued fibres and base change, together with the weaker finiteness results for field-valued lifts through finite morphisms. Its algebraic and scheme section-rigidity leaves have successful focused producer and declaration/style-lint checks, accepted independent review and a scoped two-declaration permitted-axiom audit. The [interface guide](INTERFACES.md) routes their exact premises to their family owners.
 
-The current Aglib acceptance reconciles 35 production leaves and 14 focused clients with their successful source and artifact identities. The four import facades changed since the preceding check compile; unchanged facade evidence is reused. Native declaration lint, official style, compiled inventory and enrollment, and all 99 source-only regressions pass on 443 library modules and 23 trust-test modules. Scoped producer-origin audits and independent ordinary reviews cover the admitted mathematics. Affected Quillen and R5Lab dependency-graph validation remains in progress; these Aglib checks do not establish downstream completion or a fresh complete kernel replay. Supplied theorem-family inputs remain explicit throughout.
+The earlier recorded TT/finite-etale acceptance reconciled 35 production leaves and 14 focused clients with their successful source and artifact identities. The four import facades changed since the preceding check compile; unchanged facade evidence is reused. Native declaration lint, official style, compiled inventory and enrollment, and all 99 source-only regressions pass on 443 library modules and 23 trust-test modules. Scoped producer-origin audits and independent ordinary reviews cover the admitted mathematics. Affected Quillen and R5Lab dependency-graph validation remains in progress; these Aglib checks do not establish downstream completion or a fresh complete kernel replay. Supplied theorem-family inputs remained explicit on that earlier source basis. These historical counts do not describe the proposed next checkpoint.
 
 ## Historical first-extraction plan
 

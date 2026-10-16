@@ -9,7 +9,7 @@ module
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FiniteTypeCategory
 public import Mathlib.CategoryTheory.ObjectProperty.FiniteLimits
 /-!
-# The affine-local coherent-sheaf property
+# The affine-local finite-type quasicoherent property
 
 This object property is defined without noetherianity: quasicoherence together
 with finite global sections. On a noetherian affine it is exactly the essential

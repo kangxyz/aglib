@@ -12,3 +12,5 @@ and [integer-base products](../Products/README.md) provide the geometric
 comparison routes. Individual statements retain their quasi-compactness,
 coefficient and cartesian-square data. These constructions introduce no
 projective-line, curve, degree or K-theory application object.
+
+[Localization](Localization.lean), imported as `Aglib.AlgebraicGeometry.Spec.Localization`, gives the actual spectral square of canonical principal localization maps and the resulting closed-immersion and quotient-to-base morphism consequences. Local quasi-finiteness, flatness and local finite presentation each retain their own stated premise. These constructions have no smoothness, Cartier or ideal-module hypothesis; their ring equations are supplied by the lower [CommRingCat localization API](../../Algebra/Category/Ring/Localization.lean).

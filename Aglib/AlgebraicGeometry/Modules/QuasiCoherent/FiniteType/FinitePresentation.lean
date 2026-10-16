@@ -26,8 +26,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace
 
 namespace AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
-/-- Finite presentation implies the actual affine-chart definition of
-coherence; this direction does not need a noetherianity assumption. -/
+/-- Finite presentation implies finite-type quasicoherence on all affine
+charts. No Noetherian hypothesis is required. -/
 theorem affineLocallyFiniteType_of_finitePresentation {X : Scheme.{u}} (M : X.Modules)
     [M.IsFinitePresentation] : affineLocallyFiniteType X M := by
   intro R j _

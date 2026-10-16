@@ -20,3 +20,7 @@ detection interface. [ChangeOfRings](ChangeOfRings/README.md),
 The site tensor is canonical below scheme and invertible sheaves; finite-free,
 retract-exactness and injective-preservation statements retain their separate
 hypotheses.
+
+[BaseChange](BaseChange.lean) identifies the actual scalar-extension/restriction mate over an arbitrary commutative-ring pushout with the canonical tensor comparison. Pure-tensor and original-unit equations preserve the same map; no flatness or finiteness hypothesis is used.
+
+[KernelBaseChange](KernelBaseChange.lean), imported as `Aglib.Algebra.Category.ModuleCat.KernelBaseChange`, constructs the actual restricted and scalar-extended maps of ring kernels and their inclusion equation. Its canonical scalar-extension comparison is natural for actual module morphisms. Construction requires the displayed commutative square; flatness is reserved for the lower quotient-flat ideal theorem.

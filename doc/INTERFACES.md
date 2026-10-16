@@ -26,16 +26,14 @@ Structure and module cohomology are actual additive `Sheaf.H`. For schemes/field
 
 ## Explicit theorem-family inputs
 
-These proposition-valued families quantify over actual objects and constructed maps. They remain parameters of their dependent results.
+Some proposition-valued interfaces remain as explicit data. The affine base-change and proper-constants interfaces below now have actual theorem suppliers; their predicate definitions are retained. Proper module-cohomology finiteness and relative locally free base change remain unsupplied inputs.
 
 | Native input owner | Conditions and conclusion |
 | --- | --- |
-| `AlgebraicGeometry.Scheme.Modules.AffineModuleBaseChange` | Affine `f`, quasicoherent coefficients, arbitrary base change `g`: the canonical mate is invertible; no flatness of `g` is assumed. |
-| `AlgebraicGeometry.Scheme.Modules.LocalBasisFibreDimension` | An actual finite local free presentation and a field-valued point in its trivializing open: the fibre is finite and its dimension is the basis cardinality. |
-| `AlgebraicGeometry.Scheme.Modules.Differentials.SmoothDifferentialRank` | Smooth field scheme of relative dimension `n`: the actual differential sheaf has rank `n`, over every field. |
+| `AlgebraicGeometry.Scheme.Modules.AffineModuleBaseChange` | The retained predicate has a proved supplier for affine `f`, quasicoherent coefficients and arbitrary `g`; the actual canonical mate is invertible without flatness of `g`. |
 | `AlgebraicGeometry.Scheme.Cohomology.ProperModuleCohomologyFinite` | Proper field scheme, finitely presented module sheaf, nonnegative degree: the actual structural-field cohomology is finite-dimensional. |
 | `AlgebraicGeometry.Scheme.ProperStructureCohomologyFinite` | Structure-sheaf specialization of proper field-scheme finiteness; the module family supplies it through the actual scalar-compatible comparison. |
-| `AlgebraicGeometry.Scheme.ProperGeometricallyIntegralConstants` | Proper geometrically integral field scheme: the actual structural constant map is bijective. |
+| `AlgebraicGeometry.Scheme.ProperGeometricallyIntegralConstants` | The predicate file is unchanged. `Scheme.constants_bijective_of_proper_geometricallyIntegral` supplies bijectivity of the actual constants map for proper geometrically integral field schemes. |
 | `AlgebraicGeometry.Scheme.Cohomology.LocalFreeCohomologyBaseChange` | Proper, locally finitely presented, flat `f`; locally free/finitely presented coefficients; geometric fibre cohomology concentrated in degree zero of rank `r`: direct image has rank `r`, and its actual mate is invertible after every change of base. |
 
 Predicate definitions and theorem suppliers are separate interfaces. Supplier modules in the current source provide smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing and quasi-compact separated field base change. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md).
@@ -50,7 +48,7 @@ The module projection-formula map is constructed for arbitrary coefficients. Its
 
 Generic D+ term comparison keeps both lower and upper zero-term bounds. `exactDerivedContractionIso` needs additive `F,G`, homology preservation by `G` and a supplied `F ⋙ G ≅ Id` in the stated abelian/enough-injective/derived setting; only the one-sided derived isomorphism and original unit equation are supplied.
 
-None of these new constructions supplies `ProperModuleCohomologyFinite`, `SmoothDifferentialRank`, `LocalBasisFibreDimension` or `LocalFreeCohomologyBaseChange`. Dependent R5 bridges retain their explicit `hstandard`/family parameters until a supplier is actually introduced and accepted.
+The tensor and derived constructions do not supply `ProperModuleCohomologyFinite` or `LocalFreeCohomologyBaseChange`. The pointwise fibre-dimension, smooth-rank and etale-differential results now have separate proved interfaces; those three obsolete global family requirements are retired. Downstream bridge retargeting is a separate acceptance question.
 
 The ordinary module-complex layer constructs restriction and pullback on actual integer-indexed complexes. Open restriction preserves homology; pullback preservation retains flatness of the morphism. Left/right coefficient tensor preserves homology when the coefficient is finite locally free. Separately, an actual short exact sequence with finite locally free quotient remains short exact after tensor with an arbitrary coefficient sheaf, by local splitting. Acyclicity on an open means restriction to that displayed open is acyclic; flat pullback uses its actual inverse-image open. These statements need neither a term bound nor a perfect-complex predicate.
 
@@ -63,3 +61,37 @@ Godement open-unit descent uses an actual cartesian square `IsPullback a b f j` 
 `CochainComplex.mappingCone.map_add` in `Aglib.Algebra.Homology.MappingCone.Map` gives additivity in the two maps of a commutative square of integer-indexed cochain complexes. It assumes only a preadditive category with binary biproducts, with independent object and morphism universes. The [mapping-cone guide](../Aglib/Algebra/Homology/MappingCone/README.md) distinguishes this general map interface from the identity-cone functor's abelian setting.
 
 In an abelian coefficient category, the same [cone family](../Aglib/Algebra/Homology/MappingCone/README.md) supplies quasi-isomorphism of the literal cone map from quasi-isomorphisms of both endpoints. Its short-exactness theorem for a natural-transformation cone functor retains a preadditive source, additive endpoint functors and short exactness of both actual endpoint image sequences. These results require no term bounds. The [sequential-system family](../Aglib/CategoryTheory/Limits/Shapes/SequentialSystem/README.md) compares finite tails and, given the diagram's colimit, makes the original inclusion at a stage invertible when all successors from that stage are invertible. Its alternating-sign construction turns anti-commuting successor squares into natural transformations in a preadditive category; invertibility of the stage maps is required only for its isomorphism version. Exact imports, signs and colimit hypotheses are recorded in the family guides.
+
+## Pointwise suppliers and canonical comparisons
+
+[Finite local bases](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md) give
+`Scheme.Modules.moduleFibre_finite_and_finrank_eq_card` on the actual field fibre.
+[Differentials](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md) use
+`Scheme.Modules.Differentials.differentialSheaf_hasRank_of_smooth` and the actual
+etale `differentialPullbackMap`. Their rank and isomorphism constructors no longer
+accept `LocalBasisFibreDimension`, `SmoothDifferentialRank` or
+`EtaleDifferentialPullback`. `Modules/Differentials/Properties.lean` is retired;
+its actual successor interfaces are in `SmoothRank.lean` and `EtalePullback.lean`.
+
+[Affine base change](../Aglib/AlgebraicGeometry/Modules/BaseChange/Affine/README.md)
+concerns the literal `moduleBaseChangeMap`, not an isomorphism of unrelated objects.
+The fifteen old R5 Spec comparison interfaces remain unretired. Nineteen actual
+map-equality witnesses pass native checks and independent PartB correspondence
+review. Four R5 caller transports remain pending; no old producer/caller interface
+is removed here. The accepted unit/counit/hom-equivalence equations are separate
+from the finite-flat local-freeness property. Proper constants do not imply proper module-cohomology finiteness.
+
+## Coherent quotient and Cartier boundaries
+
+For an open immersion between locally Noetherian schemes, coherent restriction
+has the coherent sheaves supported in the closed complement as kernel. The
+proved quotient equivalence with coherent sheaves on the open assumes
+`IsNoetherian X`. [Coherent extension](../Aglib/AlgebraicGeometry/Modules/Coherent/Extension/README.md)
+means an extension with an isomorphism after restriction; it is distinct from
+extension by zero, which generally does not preserve quasicoherence.
+
+[Cartier ideal criteria](../Aglib/AlgebraicGeometry/EffectiveCartierDivisor/Smooth/README.md)
+retain smooth relative dimension one, a closed immersion and the separately
+stated finite, flat and locally finitely presented composite at their finite-flat
+root. Their bases can be nonreduced and non-Noetherian. The lower ideal-kernel
+comparisons keep their quotient-flatness and actual scalar-square conditions.

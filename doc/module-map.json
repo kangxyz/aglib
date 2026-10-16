@@ -328,5 +328,22 @@
       "Aglib.Algebra.Homology.CochainComplex.Augmentation"
     ],
     "meaning": "Scheme-open augmentation and generic complex criterion have separate lower owners."
-  }
+  },
+  "retired_current_destinations": [
+    {
+      "historical_destination": "Aglib/AlgebraicGeometry/Modules/Differentials/Properties.lean",
+      "historical_destination_sha256": "b76409b4ba51700fa801346d9b7893f4b42b8a6accff890559306030b1d67500",
+      "original_path_rewrite_keys": [
+        "Aglib/Scheme/Differentials/Properties.lean"
+      ],
+      "status": "Retired by main accepted current99 source/test integration; historical path map retained",
+      "actual_successors": [
+        "Aglib/AlgebraicGeometry/Modules/Differentials/SmoothRank.lean",
+        "Aglib/AlgebraicGeometry/Modules/Differentials/EtalePullback.lean"
+      ],
+      "relation": "Explicit split of actual smooth-rank and etale-pullback APIs; not a one-to-one module alias",
+      "source_integration_sha256": "9e9e36faa2ff3b9ecadb5a9a37f90b558314f860a6e9c32e06b1e193cd94154c",
+      "projection": "doc/migration/pointwise-cartier-coherent.json"
+    }
+  ]
 }

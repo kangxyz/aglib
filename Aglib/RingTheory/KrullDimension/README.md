@@ -7,3 +7,5 @@
 [HeightOnePrime](HeightOnePrime.lean) gives `IsLocalRing.exists_heightOne_prime_not_mem`: in a Noetherian local domain of dimension greater than one, a height-one prime avoids the specified nonzero nonunit. [PrincipalOpen](PrincipalOpen.lean) gives `IsLocalRing.ringKrullDim_le_two_of_principal_open_height_le_one`: in a Noetherian local domain, if a nonzero `t` has every prime avoiding `t` of height at most one, the ring has Krull dimension at most two.
 
 Focused imports are the four `Aglib.RingTheory.KrullDimension` leaves. Height/dimension bounds retain their hypotheses and do not assert regularity or normality merely from a numerical bound.
+
+[RegularQuotient](RegularQuotient.lean), imported as `Aglib.RingTheory.KrullDimension.RegularQuotient`, proves that a regular element in the actual kernel of a surjection from a ring of dimension at most one makes its target zero-dimensional. The Artinian consequence adds the original Noetherian source-ring hypothesis.

@@ -17,7 +17,7 @@ The [source-family guides](../Aglib/README.md) record both reusable interfaces a
 
 For affine module theory, start with [ModuleCat](../Aglib/Algebra/Category/ModuleCat/README.md), then [quasicoherent affine sheaves](../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md). Finite type and finite presentation are distinct object properties. [Coherent sheaves](../Aglib/AlgebraicGeometry/Modules/Coherent/README.md) supplies the locally Noetherian abelian/exact specialization. Finite and closed-immersion direct image uses the actual geometric functors and affine scalar comparisons.
 
-For vector bundles, start with [locally free sheaves](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md), its finite-local-basis class and local splitting. The rank interface retains its fibre-dimension input. [Invertible sheaves](../Aglib/AlgebraicGeometry/Modules/Invertible/README.md) separately constructs the ordinary tensor Picard group and additive arbitrary pullback. [Differential sheaves](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md) gives actual universal derivations and etale pullback, with smooth rank retained as an input.
+For vector bundles, start with [locally free sheaves](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md), its finite-local-basis class and local splitting. The pointwise fibre-dimension theorem supplies the rank interface. [Invertible sheaves](../Aglib/AlgebraicGeometry/Modules/Invertible/README.md) separately constructs the ordinary tensor Picard group and additive arbitrary pullback. [Differential sheaves](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md) gives actual universal derivations and etale pullback, with proved smooth rank and canonical etale differential pullback.
 
 For cohomology, read [generic resolution and exact-functor comparison](../Aglib/CategoryTheory/Abelian/Injective/README.md), [total complexes](../Aglib/Algebra/Homology/TotalComplex/README.md), [generic site Cech maps](../Aglib/CategoryTheory/Sites/SheafCohomology/Cech/README.md) and [topological sheaf sections](../Aglib/Topology/Sheaves/README.md). The [scheme cohomology](../Aglib/AlgebraicGeometry/Cohomology/README.md) route then constructs structural scalars, proves affine/finite-support comparisons, and identifies canonical Cech and field-base-change maps with the original `Sheaf.H`.
 
@@ -30,3 +30,12 @@ For structural perfect complexes, continue from ordinary complexes to the [perfe
 For finite-etale objects and their canonical field-valued fibres/base change, read [FiniteEtale](../Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/README.md). The [finite-morphism point-lift guide](../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md) supplies the weaker finite-Hom result over arbitrary fields, with empty lift sets allowed. The [unramified algebra](../Aglib/RingTheory/Unramified/README.md) and [formally unramified section](../Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/README.md) rigidity guides state their separate map-equality interfaces and exact premises.
 
 Current source correspondence is recorded in [TT foundations](migration/tt-foundations.json) and [R5 general finite-etale theory](migration/r5-general-etale.json). The earlier source selections remain in [latest-quillen](migration/latest-quillen.json), [latest-scheme](migration/latest-scheme.json), [latest-homology](migration/latest-homology.json) and [latest-general-cuts](migration/latest-general-cuts.json). These provenance records identify source cuts and native destinations; the family guides retain the bounds and input families, and [WORK_PLAN.md](WORK_PLAN.md) distinguishes historical coverage from current integration.
+
+
+[Linear algebra](../Aglib/LinearAlgebra/README.md) owns the tensor-product map and
+injectivity comparison route. For actual ideal modules and arbitrary-base
+relative Cartier consequences, read [ideal sheaves](../Aglib/AlgebraicGeometry/IdealSheaf/README.md)
+then [effective Cartier ideals](../Aglib/AlgebraicGeometry/EffectiveCartierDivisor/README.md).
+[Coherent extension](../Aglib/AlgebraicGeometry/Modules/Coherent/Extension/README.md)
+and [Serre localization](../Aglib/AlgebraicGeometry/Modules/Coherent/Localization/README.md)
+retain their distinct local and global Noetherian hypotheses.

@@ -9,3 +9,8 @@ The lower affine condition and module equivalence are in [Affine](../Affine/READ
 [Pushforward](Pushforward.lean) now owns `Scheme.Modules.QuasiCoherent.finiteTypePushforward` for an arbitrary finite scheme morphism, on these actual finite-type sheaves. `finiteTypePushforwardOpenBaseChange`, `finiteTypePushforwardIdIso`, `finiteTypePushforwardCompIso`, `finiteTypePushforwardSpec` and its scalar/presentation squares are the canonical lower comparisons. No Noetherian class is needed here. The guarded coherent aliases and exact functors are higher specializations.
 
 [Pullback](Pullback.lean) owns `Scheme.Modules.QuasiCoherent.finiteTypePullback` for a morphism `X ⟶ Y` with locally Noetherian target `Y` and arbitrary receiving scheme `X`. `finiteTypePullback_comp_inclusion` is the literal equality with ambient module pullback. `finiteTypePullbackIdIso` requires the identity scheme to be locally Noetherian. `finiteTypePullbackCompIso` requires the intermediate and final target schemes to be locally Noetherian, with arbitrary receiving scheme; `finiteTypeRestrictionIsoPullback` adds the actual open-immersion hypothesis. These comparisons use the original geometric maps. The [coherent pullback](../../Coherent/Pullback.lean) is a transparent specialization with both locally Noetherian guards. The target hypothesis on this lower construction is retained; it is not an all-scheme finite-type pullback theorem.
+
+[Support](Support.lean) proves closedness of ordinary stalk support on arbitrary schemes.
+[Extension](Extension/README.md) gives affine finite-type approximation over arbitrary
+commutative rings; [restriction comparisons](Restriction/README.md) retain the actual
+open-range, top-open and principal restriction maps.

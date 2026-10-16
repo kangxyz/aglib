@@ -7,3 +7,11 @@
 [FinitePresentation](FinitePresentation.lean) uses the lower [Noetherian finite-presentation constructions](../FinitePresentation/Noetherian.lean) to give the coherent-category finite-type/finite-presentation comparison under local Noetherianity. General finite-presentation transport/locality remains below this category. [Homology](Homology.lean) preserves the actual finite-type/coherent property under homology on locally Noetherian schemes; [AffineDetection](AffineDetection.lean) detects a zero coherent object on the specified actual affine restrictions.
 
 [Affine coherent comparison](Affine/README.md) and [coherent direct image](Pushforward/README.md) retain their Noetherian/exact-structure hypotheses. [Finite locally free sheaves](../LocallyFree/README.md) has an exact coherent inclusion under local Noetherianity. General module cohomology consumes the underlying actual module and finite-presentation witness.
+
+[Subobjects](Subobjects.lean) proves finite type of quasicoherent subobjects of coherent
+objects under the stated Noetherian hypotheses; [Gluing](Gluing.lean) retains the specified
+open-cover and overlap equations. [Extension](Extension/README.md),
+[localization](Localization/README.md) and [support](Support/README.md) separate geometric
+extension, the ordinary Serre quotient and its chosen small presentations. Local
+Noetherianity supplies coherent subobject extension and quotient fullness; the proved
+essential-surjectivity/localization specialization assumes `IsNoetherian X`.

@@ -62,3 +62,41 @@ theorem abelianExactStructure_smallModel :
   abelianExactStructure_ofEquivalence (equivSmallModel C).symm
 
 end CategoryTheory.ExactCategory
+
+namespace CategoryTheory.SmallModel
+
+open CategoryTheory.ExactCategory
+attribute [local instance] Abelian.hasFiniteBiproducts
+variable (C : Type u₁) [Category.{v₁} C] [Abelian C] [EssentiallySmall.{w} C]
+
+/-- The identity exact functor between the proved-equal transported and
+standard abelian exact structures on the chosen small model. -/
+def abelianExactComparison : ExactCategory.ExactFunctor (abelianExactStructure C).smallModel
+    (abelianExactStructure (SmallModel.{w} C)) where
+  toFunctor := 𝟭 _
+  map_conflation _ h := by
+    rw [abelianExactStructure_smallModel] at h
+    exact h
+
+/-- The identity exact comparison has an underlying equivalence. -/
+instance abelianExactComparison_isEquivalence :
+    (abelianExactComparison.{w} C).toFunctor.IsEquivalence := inferInstanceAs (𝟭 _).IsEquivalence
+
+variable {C} {D : Type u₂} [Category.{v₂} D] [Abelian D]
+  [EssentiallySmall.{w} D]
+
+/-- The same canonical small-model functor, with the equal standard abelian
+exact structures instead of the transported structures. -/
+def mapAbelianExactFunctor
+    (F : ExactCategory.ExactFunctor (abelianExactStructure C) (abelianExactStructure D)) :
+    ExactCategory.ExactFunctor (abelianExactStructure (SmallModel.{w} C))
+      (abelianExactStructure (SmallModel.{w} D)) where
+  toFunctor := F.smallModel.toFunctor
+  map_conflation S h := by
+    have hs : (abelianExactStructure C).smallModel.conflation S := by
+      rwa [abelianExactStructure_smallModel]
+    have ht := F.smallModel.map_conflation S hs
+    exact (congrArg (fun E : ExactStructure (SmallModel.{w} D) =>
+      E.conflation (S.map F.smallModel.toFunctor)) (abelianExactStructure_smallModel D)).mp ht
+
+end CategoryTheory.SmallModel
