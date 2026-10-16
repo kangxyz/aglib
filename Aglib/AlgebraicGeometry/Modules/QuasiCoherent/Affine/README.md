@@ -60,3 +60,11 @@ the resolved-base-change consumer.
 [Free](Free.lean) gives `tildeBasisIso`: a native module basis identifies the
 actual tilde sheaf with the native free sheaf on the same index type. Smooth
 affine differential charts use this comparison.
+
+[Free/Sections](Free/Sections.lean) identifies original localized basis vectors
+and native free sections under the existing `tildeBasisIso`, in both directions.
+The original map is unchanged. Its supporting summand equation uses the native
+tilde/Finsupp coproduct comparison. The ring, module, basis, index type and opens
+retain their native universes, with no finite, field, Noetherian, or nontrivial
+premise. The actual projective Euler coordinate and Kähler frames consume these
+section formulas.

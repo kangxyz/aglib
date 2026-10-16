@@ -34,3 +34,19 @@ wrapper with `1792113888702105000-7202`, and the independent old/new-import
 `PrincipalCechLowerConsumer.lean` with `1792113934128889000-8125`.
 The native cocycle theorem uses only the three standard axioms. Ordinary
 quasicoherent extension closure consumes this lower section calculation.
+
+[AffineSheafification](AffineSheafification.lean) owns the actual comparison
+from any affine module presheaf with a compatible localization seed to the
+tilde sheaf of the seed module. In the native `Scheme.Modules` namespace,
+`affineSheafificationTildeIso` uses the original principal-open localization
+maps, original module sheafification and its original counit.
+`affineSheafificationTildeIso_seed` sends each original sheafified seed to
+the original tilde section. No field, smoothness, or cohomology import is
+needed, and no quasicoherence assumption is imposed on the input presheaf.
+
+This is the sole implementation extracted from the first generic block of
+`Modules.Differentials.SmoothRank`, admitted from Aglib revision `40af743`.
+The former `SmoothRank` qualified names remain public compatibility exports.
+The arbitrary-ring affine relative differential computation and its general
+scheme-relative consumer use this lower owner. Source provenance is retained
+in the file; only namespace ownership and local instance-binding style changed.

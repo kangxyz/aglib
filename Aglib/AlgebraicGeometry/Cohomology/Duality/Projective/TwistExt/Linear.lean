@@ -137,4 +137,61 @@ theorem twistingExtCohomologyLinearEquiv_toAddEquiv (a b : ℤ) (q : ℕ) :
     (twistingExtCohomologyLinearEquiv R ι a b q).toAddEquiv =
       twistingExtCohomologyAddEquiv R ι a b q := rfl
 
+/-- The existing additive twist comparison retains native coefficient functoriality. -/
+theorem twistingExtCohomologyAddEquiv_naturality_right (a b c : ℤ)
+    (φ : twistingSheaf R ι b ⟶ twistingSheaf R ι c) (q : ℕ)
+    (x : Ext.{u + 1} (C := (ProjectiveSpace R ι).Modules)
+      (twistingSheaf R ι a) (twistingSheaf R ι b) q) :
+    twistingExtCohomologyAddEquiv R ι a c q (x.comp (Ext.mk₀ φ) (Nat.add_zero q)) =
+      Sheaf.H.map ((SheafOfModules.toSheaf.{u} (ProjectiveSpace R ι).ringCatSheaf).map
+        ((twistingTensorIso R ι (-a) b).inv ≫
+          (twistingTensorEquivalence R ι a).inverse.map φ ≫
+            (twistingTensorIso R ι (-a) c).hom)) q
+        (twistingExtCohomologyAddEquiv R ι a b q x) := by
+  let X := ProjectiveSpace R ι
+  let O : X.Modules := SheafOfModules.unit X.ringCatSheaf
+  let T := twistingTensorEquivalence R ι a
+  let : T.functor.Additive := inferInstanceAs
+    (moduleTensorLeftFunctor X (twistingSheaf R ι a)).Additive
+  let : T.inverse.Additive := inferInstanceAs
+    (moduleTensorLeftFunctor X (twistingSheaf R ι (-a))).Additive
+  let δ : twistingSheaf R ι (-a + b) ⟶ twistingSheaf R ι (-a + c) :=
+    (twistingTensorIso R ι (-a) b).inv ≫ T.inverse.map φ ≫
+      (twistingTensorIso R ι (-a) c).hom
+  let y := (Ext.mk₀ (twistingTensorUnitIso R ι a).hom).comp x (Nat.zero_add q)
+  change moduleExtCohomologyMap X (twistingSheaf R ι (-a + c)) q
+      ((T.toAdjunction.extEquiv
+        ((Ext.mk₀ (twistingTensorUnitIso R ι a).hom).comp
+          (x.comp (Ext.mk₀ φ) (Nat.add_zero q)) (Nat.zero_add q))).comp
+            (Ext.mk₀ (twistingTensorIso R ι (-a) c).hom) (Nat.add_zero q)) =
+    Sheaf.H.map ((SheafOfModules.toSheaf.{u} X.ringCatSheaf).map δ) q
+      (moduleExtCohomologyMap X (twistingSheaf R ι (-a + b)) q
+        ((T.toAdjunction.extEquiv y).comp
+          (Ext.mk₀ (twistingTensorIso R ι (-a) b).hom) (Nat.add_zero q)))
+  rw [← moduleExtCohomologyMap_naturality]
+  apply congrArg (moduleExtCohomologyMap X (twistingSheaf R ι (-a + c)) q)
+  have hp : (Ext.mk₀ (twistingTensorUnitIso R ι a).hom).comp
+        (x.comp (Ext.mk₀ φ) (Nat.add_zero q)) (Nat.zero_add q) =
+      y.comp (Ext.mk₀ φ) (Nat.add_zero q) :=
+    (Ext.comp_assoc_of_third_deg_zero _ _ _ (Nat.zero_add q)).symm
+  rw [hp, T.toAdjunction.extEquiv_naturality_right₀]
+  dsimp only [δ]
+  simp only [Ext.comp_assoc_of_second_deg_zero, Ext.mk₀_comp_mk₀, Iso.hom_inv_id_assoc]
+
+
+/-- The linear refinement retains the original cohomology coefficient map. The coefficient
+arrow is the original opposite-twist tensor map conjugated by the actual multiplication isos. -/
+theorem twistingExtCohomologyLinearEquiv_naturality_right (a b c : ℤ)
+    (φ : twistingSheaf R ι b ⟶ twistingSheaf R ι c) (q : ℕ)
+    (x : Ext.{u + 1} (C := (ProjectiveSpace R ι).Modules)
+      (twistingSheaf R ι a) (twistingSheaf R ι b) q) :
+    twistingExtCohomologyLinearEquiv R ι a c q (x.comp (Ext.mk₀ φ) (Nat.add_zero q)) =
+      moduleCohomologyMapOfHom (ProjectiveSpace R ι)
+        ((toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom)
+        ((twistingTensorIso R ι (-a) b).inv ≫
+          (twistingTensorEquivalence R ι a).inverse.map φ ≫
+            (twistingTensorIso R ι (-a) c).hom) q
+        (twistingExtCohomologyLinearEquiv R ι a b q x) :=
+  twistingExtCohomologyAddEquiv_naturality_right R ι a b c φ q x
+
 end AlgebraicGeometry.Scheme.Cohomology

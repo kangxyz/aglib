@@ -191,3 +191,17 @@ It delegates to the sole finite-product comparison and native pullback
 symmetry, including the literal empty-family first projection. Finite
 coordinates give properness of the original projection and local
 Noetherianity over a locally Noetherian new base.
+
+The [derived Serre comparison](../Cohomology/Duality/Projective/Derived/README.md)
+also treats coherent module coefficients over every Noetherian base ring,
+in all nonnegative Ext degrees, with the original trace and the actual
+derived global-section functor. It adds no coefficient flatness or base
+regularity assumption.
+
+[Differentials](Differentials/README.md) constructs the actual Euler
+evaluation `O(-1) tensor pi*V -> O`, where V is the original homogeneous
+degree-one polynomial module. The evaluation, its epimorphism and the
+original polynomial-chart differential frames are proved. The actual
+left differential arrow is constructed on those same polynomial charts
+and its composite with evaluation is zero. Global gluing, full kernel
+identification and the determinant comparison remain the next steps; these partial results do not yet identify the canonical bundle.

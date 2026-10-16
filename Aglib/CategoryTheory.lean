@@ -62,6 +62,7 @@ public import Aglib.CategoryTheory.SmallModel.Functoriality
 public import Aglib.CategoryTheory.SmallModel.Localization
 public import Aglib.CategoryTheory.Triangulated.EndpointTransport
 public import Aglib.CategoryTheory.Triangulated.NatTransIso
+public import Aglib.CategoryTheory.Triangulated.Yoneda.Exact
 
 /-!
 # CategoryTheory

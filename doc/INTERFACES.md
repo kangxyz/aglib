@@ -101,26 +101,43 @@ supplied for proper morphisms over
 Noetherian affine bases in `Proper/FiniteModel`, including this one-model,
 all-ring strict-perfect direct-image statement. Proper upper semicontinuity,
 intrinsic Euler local constancy and nonreduced local base-change/freeness
-criteria now consume this same model and the original maps. Reduced-base
-Grauert and the geometric neighbourhood criterion remain separate next
-consumers.
+criteria consume this same model and the original maps. Reduced-base
+Grauert and the geometric basic-open neighbourhood criterion are proved
+on those original maps. The latter gives every composite base-change map
+on a neighbourhood from residue-field surjectivity. The intrinsic
+point-fibre comparison also gives upper semicontinuity and intrinsic Euler
+local constancy over every locally Noetherian target. If that target is reduced and the actual fibre dimension
+is locally constant, the original higher direct image is finite locally
+free; the target need not be quasi-compact. General nonflat sheaf-valued
+base-change comparison remains a separate construction.
 Arbitrary perfect-coefficient direct images remain a separate endpoint.
 
 The actual relative differential sheaf for an arbitrary scheme morphism
 is owned by `Modules/Differentials/Relative/Basic`. It represents native
 relative derivations against every coefficient module sheaf, retains the
 original `f.c` differential and its restriction formulas, and has no
-quasicoherence, smoothness or base-field premise. The affine-base comparison to constant-base derivations is proved for every
-coefficient sheaf. The actual algebraic Spec-map/tilde comparison and smooth
-relative rank still need their geometric proofs.
+quasicoherence, smoothness or base-field premise. The affine-base comparison
+to constant-base derivations is proved for every coefficient sheaf. The
+actual Spec-map/tilde comparison retains the original principal-open
+differentials. Actual open-restriction comparisons and native
+standard-smooth charts prove finite local freeness and rank n for every
+smooth morphism of fixed relative dimension n over an arbitrary base.
+This does not yet identify its determinant with the Serre coefficient.
 
 The [projective Serre duality family](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/README.md)
 proves full complementary-degree coherent Serre duality on polynomial
 projective space over a field, including the original Yoneda/residue
 pairing, perfectness, coefficient naturality and dimension zero. The top
 Hom/cohomology duality also holds over every Noetherian commutative base
-ring. Passage to general smooth projective schemes and to general proper
-dualizing complexes remains separate.
+ring. The [derived comparison](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Derived/README.md)
+now identifies every nonnegative Ext group of a coherent module into the
+original dualizing twist with Hom from its actual RΓ to the shifted
+single-term base module, over every Noetherian commutative ring. The
+forward map is the original trace after the installed derived functor.
+There is no coefficient-flatness, perfectness or base-regularity premise;
+higher base-ring Ext is retained in dimension zero. Passage to general
+bases, smooth projective schemes and general proper dualizing complexes
+remains separate.
 
 ## Retained theorem-family interfaces
 
@@ -135,7 +152,7 @@ proved suppliers below can now discharge the proper-finiteness inputs.
 | `AlgebraicGeometry.Scheme.ProperGeometricallyIntegralConstants` | Proper geometrically integral field scheme: the actual structural constant map is bijective. |
 | `AlgebraicGeometry.Scheme.Cohomology.LocalFreeCohomologyBaseChange` | Proper, locally finitely presented, flat `f`; locally free/finitely presented coefficients; geometric fibre cohomology concentrated in degree zero of rank `r`: direct image has rank `r`, and its actual mate is invertible after every change of base. |
 
-Predicate definitions and theorem suppliers are separate interfaces. Current suppliers include proper coherent finiteness, actual fixed-dimension field-scheme differential rank, smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing, affine module base change and qcqs flat base change over arbitrary bases. The former `SmoothDifferentialRank` input is retired: `differentialSheaf_hasRank_of_smooth` proves the actual rank without a supplied family, and `Properties` is only a compatibility import. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md) and the focused [cohomology plan](COHOMOLOGY_PLAN.md).
+Predicate definitions and theorem suppliers are separate interfaces. Current suppliers include proper coherent finiteness, actual arbitrary-base fixed relative differential rank, smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing, affine module base change and qcqs flat base change over arbitrary bases. The former `SmoothDifferentialRank` input is retired: `differentialSheaf_hasRank_of_smooth` and `relativeDifferentialSheaf_hasRank_of_smooth` prove the actual rank without a supplied family. The empty `Properties` entry is retired; its actual successors are `SmoothRank`, `EtalePullback` and the general relative differential family. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md) and the focused [cohomology plan](COHOMOLOGY_PLAN.md).
 
 For proper geometrically integral field schemes,
 `Scheme.constants_bijective_of_proper_geometricallyIntegral` proves bijectivity

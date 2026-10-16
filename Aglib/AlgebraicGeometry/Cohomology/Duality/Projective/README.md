@@ -86,3 +86,16 @@ The full Higher leaf passed `1792105567325167000-86284`. The independent public 
 [ExtVanishing](ExtVanishing.lean) proves `projectiveDualizingExt_subsingleton_of_gt` for every coherent source and every `q > n`, including dimension zero. Its base case uses the original H⁰ injection, the proved canonical Serre duality and the original Ext exact row; higher degrees use actual coherent presentations. `projectiveDualizingExt_finite` gives finiteness over the original base field in every nonnegative degree. The scope is coherent source modules, without an ambient injective-dimension claim. The final leaf passed `1792106008215864000-92761`.
 
 [SignedBoundary](SignedBoundary.lean) distinguishes the original extension-class composition from Mathlib's signed `Ext.δ`. `projectiveSerrePairing_extδ` keeps the exact factor `Int.negOnePow (j+1)` in the pairing with the original cohomology connecting map. It works over arbitrary commutative rings, with no coherence or field premise, and passed `1792106076971795000-93584`. The independent bounds/sign consumer passed `1792106155567419000-95038`, including arbitrary geometric universes, all-degree Ext finiteness, dimension-zero Ext vanishing, and the original signed map. All inspected declarations use only the standard three axioms.
+
+[Derived](Derived/README.md) extends the same original trace to the actual
+bounded-below derived global-section functor over arbitrary commutative
+rings. Over a Noetherian base ring, `projectiveDerivedSerreDuality` identifies
+every original `Ext^i(M,O(-card ι))`, for coherent module coefficients and
+all `i : ℕ`, with Hom from the actual RΓ(M) to `(single_n R)[i]` in the
+native derived category. Its forward map is the canonical derived trace
+comparison, and its degree-zero homology formula is the original
+`projectiveTopSerreMap`. No flatness or perfectness of M, regularity of R,
+or field assumption is added. Dimension zero retains higher base-ring Ext.
+General coefficient modules in the dualizing target, internal RHom,
+general-base descent and the smooth canonical-bundle identification remain
+separate consumers.

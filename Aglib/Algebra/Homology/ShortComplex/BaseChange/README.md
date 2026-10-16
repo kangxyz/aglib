@@ -66,6 +66,29 @@ Noetherianity are not required.
 the original outgoing cokernel's free locus. After localization there,
 the unchanged native homology mate is invertible for every further ring
 map, including target rings in an independent universe. A finite middle
-term and finitely presented projective final term suffice. Identification
-of this locus with original residue-field surjectivity remains a separate
-normalization step.
+term and finitely presented projective final term suffice.
+`epi_residue_homologyBaseChangeMap_iff_mem_freeLocus` identifies this same
+locus with surjectivity of the original map to `p.asIdeal.ResidueField`.
+It factors the original ring map through `Localization.AtPrime p.asIdeal`,
+whose native local-ring residue field is definitionally that same field.
+The canonical cokernel comparison retains the original outgoing map.
+`exists_basicOpen_homologyBaseChangeMap_isIso_of_epi_residue` therefore
+obtains the basic-open neighbourhood directly from original residue-field
+surjectivity. Neither reducedness nor Noetherianity is required, and the
+first term need not be finite.
+
+The normalization uses
+[`ModuleCat.homologyBaseChangeMap_comp`](../../../Category/ModuleCat/ChangeOfRings/Homology/Composition.lean).
+This compares the actual short-complex homology mates through the native
+`extendScalarsComp` isomorphism on both original homology and the actual
+short complex. Neither scalar extension is assumed to preserve homology.
+The rings share the universe required by the native composition
+isomorphism; the module-carrier universe remains independent. The later
+basic-open theorem also retains an independent target-ring universe.
+
+`homologyBaseChangeMap_comp_isIso_of_basicOpen_subset_freeLocus` also proves
+invertibility of the original mate for the composite `R → R[1/r] → B`.
+It uses exact localization and the same native composition identity; its
+rings share the native composition universe. The geometric
+[`FiniteModel/BaseChangeLocus`](../../../../AlgebraicGeometry/Cohomology/FiniteModel/BaseChangeLocus.lean)
+consumer applies this corollary to the same original finite Cech complex.

@@ -7,3 +7,11 @@
 [EndpointTransport](EndpointTransport.lean), imported as `Aglib.CategoryTheory.Triangulated.EndpointTransport`, owns `CategoryTheory.Pretriangulated.Triangle.transportEndpoints` and `transportEndpointsIso`. For a functor `A : J ⥤ Triangle C` and specified isomorphisms `e₁,e₂,e₃` from functors `F₁,F₂,F₃ : J ⥤ C` to its vertex functors, the construction transports all three arrows through those isomorphisms. The third arrow uses the shifted inverse of `e₁`; `transportEndpointsIso` identifies the transported triangle functor naturally with `A`. This construction requires only category structures and `HasShift C ℤ`, without a pretriangulated structure or distinguishedness premise.
 
 Bounded homotopy/D+ term comparisons and the actual short-exact triangle constructions are current consumers. Exact source conditions and locators appear in [latest-homology](../../../doc/migration/latest-homology.json).
+
+[Yoneda/Exact](Yoneda/Exact.lean) exposes native contravariant Yoneda exact
+rows as `Function.Exact` for the original triangle precomposition maps and
+`ShiftedHom.comp` by its actual unsigned connecting arrow. It also proves
+surjectivity of that same boundary when the displayed next-degree middle Hom
+group is subsingleton. The coefficient object and all integer degrees are
+arbitrary; only the native pretriangulated and additive-shift hypotheses
+are required. No replacement boundary or derived functor is defined.

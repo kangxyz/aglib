@@ -101,3 +101,63 @@ It uses this same model and its actual strict bounds, with no reducedness
 hypothesis or substituted numerical invariant. Source
 `1792127713517360000-1604` and independent arbitrary-universe consumer
 `1792127734693142000-1911` passed, with standard axioms only.
+
+[Grauert/Global](../Grauert/Global.lean) gives the original proper Grauert
+criterion over a reduced Noetherian affine base. In each degree with
+locally constant original ordinary fibre dimension, unchanged cohomology
+is finite projective and its original geometric base-change map is
+invertible after every ring map. The same model proves projectivity and
+canonical map compatibility; the already-proved actual proper finiteness
+supplies the finite-generation half. There is no local-ring assumption,
+Noetherianity of the target ring, or flatness of its ring map. Reducedness
+is retained, and is not replaced by constancy of dimensions over a
+nonreduced base. Source `1792128253009558000-6846` passed in 7 seconds;
+independent arbitrary-universe public consumer `1792128281150102000-7131`
+checks both actual proper endpoints and their shared proofs, standard
+axioms only. The explicit residue-surjectivity criterion remains the
+separate available nonreduced-base interface.
+
+[Grauert](../Grauert.lean) adds
+`moduleCohomology_free_of_isLocallyConstant_of_proper`: unchanged original
+cohomology is free in any degree of locally constant original ordinary
+fibre dimension over a reduced Noetherian local base. Both reducedness
+and locality are retained; the original structural scalar action and the
+same internally constructed model are used. The global arbitrary original
+base-change endpoint is also available from this entry point. Source
+`1792128482923431000-9755` passed in 3.3 seconds; independent
+arbitrary-universe original-action/map consumer
+`1792128564293877000-10712` passed with only standard axioms. The explicit
+nonreduced local residue-surjectivity and adjacent-degree criteria remain
+in `LocalCriterion`; dimension constancy alone is not used there.
+
+[BaseChangeLocus](../BaseChangeLocus.lean) now gives the genuine basic-open
+conclusion from surjectivity of the original comparison at the actual
+`p.asIdeal.ResidueField`. The original Noetherian/proper/coherent/relative-flat
+inputs internally supply one model. There is `r ∉ p.asIdeal` such that for
+every ring `B` and `τ : Localization.Away r →+* B`, the unchanged geometric
+map for `τ.comp (algebraMap R (Localization.Away r))` is invertible. The
+original morphism, coefficient and ordinary fibre product remain literal;
+no independent localized model or comparison family is supplied. Neither
+reducedness nor locality of `R`, nor flatness or Noetherianity of `B`, is
+required. This closes the previously separate basic-open normalization at
+the original degreewise-map endpoint. General-target sheaf descent and a
+neighbourhood-freeness conclusion with its adjacent-degree condition remain
+further steps.
+
+The existing [Semicontinuity](../Semicontinuity.lean) and
+[EulerCharacteristic](../EulerCharacteristic.lean) owners also give the
+general-target numerical endpoints. For any locally Noetherian `Y`, proper
+`f : X ⟶ Y`, original coherent `M` and intrinsic `relativeFlat f M`,
+`modulePointFiberCohomologyDimension f M q` is upper semicontinuous in every
+degree and the honest intrinsic `modulePointFiberEulerChar f M` is locally
+constant. Neither reducedness, quasi-compactness of `Y` nor flatness of `f`
+is required.
+
+The exact [point-fibre affine normalization](../../Fibers/Affine.lean) and
+target-open relative-flatness transport retain the actual residue fields
+and ordinary pulled coefficients. Each target affine open supplies its own
+finite-cover model and cohomological bound through this same supplier.
+The intrinsic Euler function is the original alternating `finsum`, with
+proved affine equality; no uniform global bound on a non-quasi-compact
+target is asserted. The separate nonflat higher-image base-change sheaf
+map is not needed for these numerical descent statements.

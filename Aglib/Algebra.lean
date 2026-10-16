@@ -17,6 +17,9 @@ public import Aglib.Algebra.Category.ModuleCat.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Additive
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Algebra
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.BaseChange
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Derived
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Coinduction.Ext
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Finiteness
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Flat
@@ -88,6 +91,7 @@ public import Aglib.Algebra.Homology.CochainComplexPlus.Single
 public import Aglib.Algebra.Homology.Coproduct.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction.InjectiveComplex
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.ExactResolution
@@ -102,6 +106,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.KProjective.Representatives
 public import Aglib.Algebra.Homology.DerivedCategory.Minus.Localization
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.BoundedComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.Ext
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Comparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Layers
@@ -116,6 +121,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Ide
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.InjectiveResolution
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleHomology
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
+public import Aglib.Algebra.Homology.DerivedCategory.TStructure.HomToSingle
 public import Aglib.Algebra.Homology.DerivedCategory.TStructure.Homology
 public import Aglib.Algebra.Homology.Embedding.CochainComplex.TruncGE
 public import Aglib.Algebra.Homology.Embedding.MapExtend
@@ -140,6 +146,7 @@ public import Aglib.Algebra.Homology.FiniteProjective.SingleModel
 public import Aglib.Algebra.Homology.FiniteProjective.UpperCancellation
 public import Aglib.Algebra.Homology.Flat.BoundedAcyclic
 public import Aglib.Algebra.Homology.Flat.Kernel
+public import Aglib.Algebra.Homology.Flat.ModuleTensor
 public import Aglib.Algebra.Homology.Flat.ScalarExtension
 public import Aglib.Algebra.Homology.Flat.Truncation
 public import Aglib.Algebra.Homology.Flat.UniversalTensor

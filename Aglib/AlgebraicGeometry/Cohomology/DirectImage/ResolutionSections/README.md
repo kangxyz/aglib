@@ -1,5 +1,21 @@
 # Native resolution-section comparisons
 
+[Derived](Derived.lean), imported as
+`Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Derived`,
+identifies homology of the installed bounded-below derived global sections
+of the original degree-zero coefficient single with the unchanged additive
+`Sheaf.H`. For an arbitrary commutative ring and scheme in universe `u`,
+`moduleDerivedGlobalSectionsSingleCohomologyLinearEquiv X α I n` is linear
+over the specified map `α : R →+* Γ(X, ⊤)` and retains original cohomology
+in universe `u + 1`. Its supplied-model comparison is homology of the
+original resolution/derived-unit isomorphism inverse followed by native
+`homologyFunctorFactors`. The `_model` and `_homologyπ` formulas retain
+that exact model and its original resolution-cycle Ext class. Naturality
+holds for every actual coefficient-resolution lift and uses the original
+`moduleCohomologyMapOfHom`; `_eq` proves independence of the supplied
+resolution. These comparisons require no quasicoherence, flatness,
+Noetherianity or finiteness and introduce no global categorical instance.
+
 [Pullback](Pullback.lean), imported as
 `Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Pullback`,
 constructs `moduleResolutionPullbackSectionsTensorMap` from the actual

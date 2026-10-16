@@ -69,6 +69,15 @@ This keeps the original projective global-section computation and residue
 pairing on the same lower algebraic coefficient maps. The lower owner passed
 `1792099434951339000-74640`.
 
+[DegreeOne](DegreeOne.lean) supplies the original coordinate basis
+`homogeneousDegreeOneBasis` of the actual `homogeneousSubmodule ι R 1`.
+Its native basis coordinates are exactly `coeff (Finsupp.single i 1)`,
+and `degreeOneExponentEquiv` identifies coordinate indices with the original
+degree-one monomial exponents. The coordinate type is arbitrary, ring and
+index universes are independent, and a commutative semiring suffices,
+including the singleton semiring. No finite, field, domain, nontrivial,
+or Noetherian premise is added.
+
 The lower inputs are Mathlib's polynomial, localization, monoid algebra
 and grading objects. The current consumers are projective chart rings and
 the actual projective twisting-sheaf section computation. These are local

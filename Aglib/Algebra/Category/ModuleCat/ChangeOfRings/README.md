@@ -46,3 +46,11 @@ The three rings share the universe required by the native composition
 isomorphism; carrier and complex-index universes remain independent.
 [Homology/Forget](Homology/Forget.lean) owns the sole short-complex
 additive-unit calculation; its original complex version delegates to it.
+
+[Coinduction](Coinduction/README.md) treats the original native right
+adjoints to scalar restriction. It supplies ordinary composition with its
+unit/counit equations, preservation of injectives, and composition of the
+installed D+ right-derived functors with their original units. The ring
+universes and supplied derived-category sizes remain independent; no
+commutativity or flatness premise is added. The homology/Ext and geometric
+purity identifications remain separate consumers.

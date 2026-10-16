@@ -21,3 +21,15 @@ The independent native Ext/large-H consumer and literal old-map check
 passed `1792124867769536000-75237`, using the three standard axioms.
 The actual tensor-unit and geometric section normalization is a separate
 immediate consumer of these same maps.
+
+`twistingExtCohomologyAddEquiv_naturality_right` and its literal linear
+refinement retain original coefficient functoriality in every degree. A
+map `φ : O(b) → O(c)` induces the actual opposite-twist tensor map,
+conjugated by the original multiplication isomorphisms
+`O(-a) ⊗ O(b) ≅ O(-a+b)` and `O(-a) ⊗ O(c) ≅ O(-a+c)`.
+The result is the original `Sheaf.H.map`, equivalently
+`moduleCohomologyMapOfHom` for the same structural action. No new
+cohomology map is constructed. The extended leaf passed
+`1792129617355406000-21005`; its raw arbitrary-ring consumer, old-map
+identity and four axiom checks passed `1792129787016977000-23764`
+with only the three standard axioms.
