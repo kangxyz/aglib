@@ -127,7 +127,6 @@ def twistingExtCohomologyLinearEquiv (a b : ℤ) (q : ℕ) :
   rw [e₁.map_smul, e₂.map_smul, e₃.map_smul, e₄.map_smul]
 
 /-- The linear refinement retains the existing original additive equivalence by definition. -/
-@[simp]
 theorem twistingExtCohomologyLinearEquiv_toAddEquiv (a b : ℤ) (q : ℕ) :
     let α : R →+* Γ(ProjectiveSpace R ι, ⊤) :=
       (toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom

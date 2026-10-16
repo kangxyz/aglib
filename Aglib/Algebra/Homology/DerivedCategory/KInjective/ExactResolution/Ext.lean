@@ -45,7 +45,8 @@ local instance : PreservesFiniteLimits F :=
 local instance : PreservesFiniteColimits F :=
   Functor.preservesFiniteColimits_of_preservesHomology F
 
-local instance :
+/-- The native shift comparison on the mapped complex localization functor. -/
+local instance mappedComplexLocalizationCommShift :
     (F.mapHomologicalComplexUpToQuasiIsoLocalizerMorphism (.up ℤ)).functor.CommShift ℤ :=
   inferInstanceAs ((F.mapHomologicalComplex (.up ℤ)).CommShift ℤ)
 

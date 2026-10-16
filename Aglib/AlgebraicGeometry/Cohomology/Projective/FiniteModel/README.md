@@ -160,11 +160,14 @@ original `fromTildeΓ` on each actual pushed term.
 The `_of_counit` composition criteria retain explicitly the mathematical
 condition that this original affine counit is a quasi-isomorphism.
 Under that condition, the actual pushed resolution has native
-`HasStrictModel`, and `derivedPushforwardIso_of_counit` gives an actual
+`HasStrictModel`, and `derivedPushforwardIsoOfCounit` gives an actual
 native derived-object isomorphism to the installed original `Rf_*` of the
 coefficient in degree zero. Its `_hom` is the localized literal sheaf
-arrow followed by the original injective-resolution derived unit. These
-criteria alone do not discharge the geometric counit condition and are
+arrow followed by the original injective-resolution derived unit.
+The former `derivedPushforwardIso_of_counit` remains a transparent deprecated
+alias, and the existing `derivedPushforwardIso_of_counit_hom` component formula
+retains its name. These criteria alone do not discharge the geometric counit
+condition and are
 not a claimed perfect-direct-image existence theorem. The actual geometric
 supplier must prove that condition. This assembly leaf passed with receipt
 `1792105536129155000-85637` under the default budget.

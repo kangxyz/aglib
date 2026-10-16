@@ -36,6 +36,7 @@ variable {C : Type w} [Category.{w'} C] {R : Cᵒᵖ ⥤ CommRingCat.{u}}
 @[ext]
 structure AlternatingMap (M : PresheafOfModulesOfCommRing.{v} R)
     (N : PresheafOfModulesOfCommRing.{max u v} R) (n : ℕ) where
+  /-- The alternating map on sections at each object. -/
   app (X : Cᵒᵖ) : ModuleCat.AlternatingMap (R := R.obj X) (M.obj X) (N.obj X) n
   naturality {X Y : Cᵒᵖ} (f : X ⟶ Y) (s : Fin n → M.obj X) :
     N.map f (app X s) = app Y (fun i => M.map f (s i))
@@ -76,11 +77,19 @@ def desc (d : AlternatingMap M N n) : exteriorPower M n ⟶ N :=
     exact (d.naturality f s).symm)
 
 /-- Descent evaluates on a wedge by the given original alternating map. -/
-@[simp]
 theorem desc_app_mk (d : AlternatingMap M N n) (X : Cᵒᵖ) (s : Fin n → M.obj X) :
     d.desc.app X (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
       d.app X s :=
   ModuleCat.exteriorPower.desc_mk (d.app X) s
+
+/-- Canonical coercion form of `desc_app_mk`
+for simplification. -/
+@[simp]
+private theorem desc_app_mk' (d : AlternatingMap M N n) (X : Cᵒᵖ) (s : Fin n → M.obj X) :
+    (show (M.obj X).exteriorPower n ⟶ N.obj X from d.desc.app' X)
+        (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
+      d.app X s := by
+  exact desc_app_mk d X s
 
 end AlternatingMap
 

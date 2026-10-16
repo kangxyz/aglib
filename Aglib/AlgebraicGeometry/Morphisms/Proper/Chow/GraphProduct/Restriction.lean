@@ -60,9 +60,9 @@ variable [∀ i, IsProper (P i).hom] [∀ i, QuasiCompact (U i).ι]
 /-- On the inverse image of a graph domain, the original target coordinate is the original
 local map composed with the original source projection. -/
 @[reassoc (attr := simp)]
-theorem toTarget_π_restrict (i : Fin n) :
-    ((toSource f P U h w) ⁻¹ᵁ U i).ι ≫ toTarget f P U h w ≫
-        (finiteProductOverπ P i).left =
+private theorem toComponent_toTarget_restrict (i : Fin n) :
+    ((toSource f P U h w) ⁻¹ᵁ U i).ι ≫ toComponent f P U h w i ≫
+        GraphClosure.toTarget f (P i).hom (U i) (h i) (w i) =
       (toSource f P U h w ∣_ U i) ≫ h i := by
   have hc : (GraphClosure.toSource f (P i).hom (U i) (h i) (w i) ∣_ U i) ≫ h i =
       ((GraphClosure.toSource f (P i).hom (U i) (h i) (w i)) ⁻¹ᵁ U i).ι ≫
@@ -72,7 +72,15 @@ theorem toTarget_π_restrict (i : Fin n) :
       infer_instance
     apply (cancel_epi (GraphClosure.fromOpenToPreimage f (P i).hom (U i) (h i) (w i))).mp
     simp [← Category.assoc]
-  rw [toTarget_π, ← toComponentRestrict_ι_assoc, ← hc, toComponentRestrict_toSource_assoc]
+  rw [← toComponentRestrict_ι_assoc, ← hc, toComponentRestrict_toSource_assoc]
+
+/-- The original graph-product coordinate formula. -/
+@[reassoc]
+theorem toTarget_π_restrict (i : Fin n) :
+    ((toSource f P U h w) ⁻¹ᵁ U i).ι ≫ toTarget f P U h w ≫
+        (finiteProductOverπ P i).left =
+      (toSource f P U h w ∣_ U i) ≫ h i := by
+  rw [toTarget_π, toComponent_toTarget_restrict]
 
 /-- The original individual graph projection is invertible on every smaller original open. -/
 theorem component_restrict_isIso (i : Fin n) (V : X.Opens) (hV : V ≤ U i) :

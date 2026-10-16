@@ -97,7 +97,6 @@ theorem moduleExteriorPowerOverIso_hom_mk (M : X.Modules) (n : ℕ) (U : X.Opens
   exact H'
 
 /-- The inverse comparison also preserves the same original wedge. -/
-@[simp]
 theorem moduleExteriorPowerOverIso_inv_mk (M : X.Modules) (n : ℕ) (U : X.Opens)
     (V : (Over U)ᵒᵖ) (s : Fin n → (M.over U).val.obj V) :
     (moduleExteriorPowerOverIso X M n U).inv.val.app V
@@ -108,6 +107,18 @@ theorem moduleExteriorPowerOverIso_inv_mk (M : X.Modules) (n : ℕ) (U : X.Opens
   rw [← moduleExteriorPowerOverIso_hom_mk X M n U V s]
   exact ConcreteCategory.congr_hom
     (congrArg (fun φ => φ.val.app V) (moduleExteriorPowerOverIso X M n U).hom_inv_id) _
+
+/-- Canonical coercion form of `moduleExteriorPowerOverIso_inv_mk`
+for simplification. -/
+@[simp]
+private theorem moduleExteriorPowerOverIso_inv_mk' (M : X.Modules) (n : ℕ) (U : X.Opens)
+    (V : (Over U)ᵒᵖ) (s : Fin n → (M.over U).val.obj V) :
+    (moduleExteriorPowerOverIso X M n U).inv.val.app V
+        ((SheafOfModulesOfCommRing.exteriorPowerMk X.sheaf M n).app
+          (op (unop V).left) s) =
+      (SheafOfModulesOfCommRing.exteriorPowerMk
+        (X.sheaf.over U) (M.over U) n).app V s := by
+  exact moduleExteriorPowerOverIso_inv_mk X M n U V s
 
 /-- The restriction comparison is natural for the original coefficient morphisms. -/
 theorem moduleExteriorPowerOverIso_naturality {M N : X.Modules} (φ : M ⟶ N)

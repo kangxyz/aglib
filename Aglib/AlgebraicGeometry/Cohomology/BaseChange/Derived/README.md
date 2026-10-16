@@ -25,7 +25,9 @@ square and native derived uniqueness give this same map's compatibility.
 Only flatness of the base map is required; flatness of the pulled-back leg
 is derived from the supplied Cartesian square. No quasicoherence,
 Noetherianity, cohomological dimension or invertibility premise is used.
-The native flat-pullback shift and triangulated structures are retained.
+The native flat-pullback shift instance is `derivedFlatPullbackPlusCommShift`;
+`derivedFlatPullbackPlus_commShift` remains a transparent deprecated alias without
+a second instance. The native triangulated structure is retained.
 The lower bounded-below quasi-isomorphism shift stability is proved in
 `CochainComplexPlus.QuasiIsoShift`, respecting the irreducible native induced
 shifts. Shared Postnikov comparisons consume this original transformation.

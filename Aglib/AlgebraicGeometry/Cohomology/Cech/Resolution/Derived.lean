@@ -35,9 +35,11 @@ universe u
 variable {R : Type u} [CommRing R] (X : Scheme.{u}) (α : R →+* Γ(X, ⊤))
   {ι : Type u} (U : ι → X.Opens)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance moduleCechDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance moduleCechDerivedTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

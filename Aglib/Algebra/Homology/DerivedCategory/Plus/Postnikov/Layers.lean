@@ -114,10 +114,17 @@ def isoSingleHomology (K : Plus C) (n : ℤ) [K.IsGE n] [K.IsLE n] :
     (DerivedCategory.isoSingleHomology (ι.obj K) n)
 
 /-- The bounded-below comparison is exactly the normalized native derived comparison. -/
-@[simp]
 theorem ι_map_isoSingleHomology_hom (K : Plus C) (n : ℤ) [K.IsGE n] [K.IsLE n] :
     (ι : Plus C ⥤ DerivedCategory C).map (isoSingleHomology K n).hom =
       (DerivedCategory.isoSingleHomology (ι.obj K) n).hom :=
   (ι : Plus C ⥤ DerivedCategory C).map_preimage _
+
+/-- Canonical coercion form of `ι_map_isoSingleHomology_hom`
+for simplification. -/
+@[simp]
+private theorem ι_map_isoSingleHomology_hom' (K : Plus C) (n : ℤ) [K.IsGE n] [K.IsLE n] :
+    (isoSingleHomology K n).hom.hom =
+      (DerivedCategory.isoSingleHomology (ι.obj K) n).hom := by
+  exact ι_map_isoSingleHomology_hom K n
 
 end DerivedCategory.Plus

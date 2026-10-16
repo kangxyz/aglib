@@ -90,9 +90,11 @@ theorem exists_finiteCechCohomologyModel_of_proper
     nonempty_finiteCechCohomologyModel_of_proper R f M hM hflat U n
       Equiv.ulift hU hcover⟩
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance properModelDerivedSheaves (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance properModelDerivedModules (R : CommRingCat.{u}) :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} R) := HasDerivedCategory.standard _
 

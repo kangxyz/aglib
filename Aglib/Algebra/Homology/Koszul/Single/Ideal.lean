@@ -50,11 +50,18 @@ def singleQuotientIdealLinearEquiv :
   Submodule.quotEquivOfEq _ _ (singleScalarRange_eq_span a)
 
 /-- The quotient comparison retains every original ring representative. -/
-@[simp]
 theorem singleQuotientIdealLinearEquiv_apply_mk (r : R) :
     singleQuotientIdealLinearEquiv a (Submodule.Quotient.mk r) =
       Ideal.Quotient.mk (Ideal.span {a}) r :=
   Submodule.quotEquivOfEq_mk _ _ _ r
+
+/-- Canonical coercion form of `singleQuotientIdealLinearEquiv_apply_mk`
+for simplification. -/
+@[simp]
+private theorem singleQuotientIdealLinearEquiv_apply_mk' (r : R) :
+    singleQuotientIdealLinearEquiv a (Ideal.Quotient.mk (LinearMap.lsmul R R a).range r) =
+      Ideal.Quotient.mk (Ideal.span {a}) r := by
+  exact singleQuotientIdealLinearEquiv_apply_mk a r
 
 /-- The inverse comparison retains the same representative in the original module quotient. -/
 @[simp]
@@ -115,9 +122,16 @@ theorem singleQuotientIdealQuotientLinearEquiv_toAddEquiv :
       (singleQuotientIdealLinearEquiv a).toAddEquiv := rfl
 
 /-- The quotient-linear comparison retains every original ring representative. -/
-@[simp]
 theorem singleQuotientIdealQuotientLinearEquiv_apply_mk (r : R) :
     singleQuotientIdealQuotientLinearEquiv a (Submodule.Quotient.mk r) =
       Ideal.Quotient.mk (Ideal.span {a}) r := singleQuotientIdealLinearEquiv_apply_mk a r
+
+/-- Canonical coercion form of `singleQuotientIdealQuotientLinearEquiv_apply_mk`
+for simplification. -/
+@[simp]
+private theorem singleQuotientIdealQuotientLinearEquiv_apply_mk' (r : R) :
+    singleQuotientIdealQuotientLinearEquiv a (Ideal.Quotient.mk (LinearMap.lsmul R R a).range r) =
+      Ideal.Quotient.mk (Ideal.span {a}) r := by
+  exact singleQuotientIdealQuotientLinearEquiv_apply_mk a r
 
 end ChainComplex.Koszul

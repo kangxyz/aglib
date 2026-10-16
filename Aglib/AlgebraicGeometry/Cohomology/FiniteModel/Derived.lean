@@ -103,9 +103,11 @@ theorem baseChangeToCechPlus_quasiIso (e : ι ≃ Fin (n + 1))
   change QuasiIso (D.baseChangeComparison hU hcover e hflat σ ≫ moduleFiniteCechInclusion Y β V N n)
   infer_instance
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeDerivedSheaves (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeDerivedModules (A : Type u) [CommRing A] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

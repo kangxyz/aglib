@@ -147,9 +147,25 @@ Contraction retains current cached artifacts under Lake's dependency checks.
 `OpenBaseChange` remains a separate bottleneck. A full globally instrumented run
 of the unchanged source reached the default heartbeat limit in three component
 lemmas. That failed profile supplies no successful whole-module baseline and
-does not establish failure of an ordinary build. Use ordinary timed compilation
-or narrower instrumentation to resolve that question; require successful paired
-runs before claiming a module speedup.
+does not establish failure of an ordinary build. At the merged `197ca072`
+snapshot, fresh ordinary source compilation with observed native `-j4 -M12800`
+and the 13824 MiB RSS cutoff passes in 338.94 seconds, with 392.83 seconds user
+CPU and 9.84 GiB peak group RSS. The retained Span passes in 115.75 seconds with
+6.14 GiB peak group RSS under the same bounds. These checks reuse their pinned
+imports and write isolated outputs; they are not cold whole-library builds.
+
+A first-square proof-helper candidate for OpenBaseChange passes in 329.76
+seconds with 385.66 seconds user CPU and 10.15 GiB peak group RSS. The native
+setup and all 2985 import-artifact identities match the baseline. This small
+time difference with higher memory does not justify the additional helper;
+the original source is retained. A more useful boundary still needs attribution.
+The isolated Tensor recheck stops at setup because three import artifacts need
+rebuilding; it supplies no additional Tensor source/resource verdict.
+
+A faithful theorem-binder probe for the first-square proposition completes with
+4.36 ms cumulative native type checking across its small source; imports take
+6.06 seconds. Thus this proposition can be formed cheaply on its own. The probe
+does not check the original proof body or attribute the remaining module cost.
 
 ## Whole-library pass
 
@@ -179,10 +195,10 @@ with 619 modules lacking a successful timing row. It fails in
 `Cohomology.Restriction.Cartesian.moduleHPrimeOpenMap_pullback_restrict` with
 kernel excessive memory consumption after a 190-second module task. That
 runner uses four compiler threads, a 12800 MiB native heap limit and a
-13824 MiB process-group RSS limit. This resource-profile failure remains a
-priority despite the successful cached local aggregate.
+13824 MiB process-group RSS limit. This resource-profile failure motivates
+the Cartesian refactor below.
 
-| Current committed CI priority | Successful task s | Transitive reverse imports |
+| Earlier committed CI priority | Successful task s | Transitive reverse imports |
 | --- | ---: | ---: |
 | `BaseChange.Modules.Map.Open` | 209 | 41 |
 | `Restriction.Open` | 141 | 44 |
@@ -242,6 +258,72 @@ Mayer–Vietoris caller gains about 10.22 seconds on the corresponding dependenc
 basis. This does not establish a library-wide saving. The original open
 presheaf definition is retained. Constructor abstraction must be measured at
 its actual consumers as well as at the producer.
+
+A subsequent `Restriction.Open` linear-equivalence constructor is retained.
+Matched ordinary CI4 source compilations fall from
+96.23 to 69.99 seconds, with user CPU falling from 103.47 to 76.08 seconds and
+group RSS from 5.10 to 4.87 GiB. The unchanged geometric caller takes 18.87 and
+18.73 seconds, respectively; its CPU changes from 21.08 to 20.78 seconds.
+Literal forward/inverse component checks and the actual inverse/tensor consumers
+`DirectImage.Affine.Localization.Open` and `BaseChange.Modules.Qcqs.Open` pass.
+That consumer build recompiles 39 Aglib modules with 8.30 GiB peak group RSS.
+
+`BaseChange.Modules.Map.Open` constructs its natural transformation over
+abstract module-valued functors and only then supplies the original geometric
+map and scalar-linearity proof. Matched ordinary CI4 producer checks fall from
+156.38 to 61.16 seconds, with user CPU from 163.26 to 65.99 seconds and peak
+group RSS from 6.84 to 4.30 GiB. The unchanged Mayer--Vietoris caller rises from
+34.70 to 42.88 seconds, with user CPU from 36.76 to 43.78 seconds. The combined
+producer/caller CPU falls from 200.02 to 109.77 seconds; this pair does not
+establish a whole-library improvement.
+
+Literal component, forgotten additive-map and tensor-mate checks pass. The
+broader actual-consumer graph also passes, including gluing, open restriction,
+localization and the assembled quasicoherent comparison. In matched native
+artifact-producing builds, the summed rounded task times of seven common
+producer/consumer leaves fall from 373.3 to 341.1 seconds. Several callers slow
+down, so the producer saving must not be presented as the library saving.
+A separate unit-proof helper regresses the producer to 201.39 seconds and is
+rejected; the retained change is the constructor alone.
+
+The finite-support degree-zero formula now proves the cohomology/biproduct
+projection law before supplying the concrete stalk-skyscraper maps. Its public
+type and all existing definitions and component data are unchanged. The former
+800000-heartbeat allowance is removed. Matched ordinary CI4 source checks take
+108.12 and 100.46 seconds, with user CPU 102.54 and 98.12 seconds. Peak group
+RSS rises from 2.85 to 3.09 GiB, a roughly 245 MiB tradeoff. The production
+default-budget build and actual `Exact.Euler` consumer pass, rebuilding
+`Support.Finite`, `Exact.Modules`, `Exact.LongExact` and `Exact.Euler`.
+
+The [published first-batch CI](https://github.com/kangxyz/aglib/actions/runs/38922128757)
+at `197ca072` completes the 5024-job production/positive-test build and
+`lake test`. Fresh task rows include Cartesian at 119 seconds, Span at 190
+seconds and Tensor at 31 seconds. This build reuses caches; only 285 production
+modules have fresh timing rows, and OpenBaseChange has none. Logged CI bounds
+are four compiler threads, a 12800 MiB native heap and 13824 MiB group RSS;
+sampled process/RSS receipts are unavailable from that run. Declaration lint
+then reports 91 errors across 51 files. Style, axiom, rejection-control,
+inventory and independent downstream stages are not reached.
+
+The subsequent source snapshot passes the complete local native
+`bash scripts/check.sh --rehash --ci` route with four compiler threads, a
+12800 MiB native heap and the 13824 MiB group RSS cutoff. It covers 1159
+production modules, 23 trust-test modules and 108 script tests, followed by
+production/positive-test builds, declaration/style lint, axiom audits, negative
+controls, exact compiled inventory and the independent downstream package.
+The production audit covers 15575 declarations; the downstream audit covers
+339. The build reuses current native artifacts and supplies no cold-build
+speedup measurement. The two additional independent local kernel replays are
+not part of this CI route.
+
+The lint repair fills missing documentation, retains historical data names
+through five transparent deprecated aliases, and supplies private canonical
+simp forms while preserving the public rewrite statements. The derived
+pushforward shift instance has one shared owner with the same original data.
+Bounded kernel checks pass for 20 original propositions, all five aliases and
+four data providers; all 22 registered private simp helpers pass the pinned
+simp-normal-form checker. These checks include the subsequent Restriction,
+Map and finite-support changes and their actual consumers.
 
 ## Why a short proof can be expensive
 

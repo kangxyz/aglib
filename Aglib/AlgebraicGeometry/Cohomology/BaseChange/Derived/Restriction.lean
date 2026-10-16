@@ -36,6 +36,7 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeRestrictionStandard (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 

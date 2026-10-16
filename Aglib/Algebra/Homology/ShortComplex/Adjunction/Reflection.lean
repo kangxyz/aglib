@@ -77,8 +77,9 @@ theorem reflectedHomologyIso_naturality {S T : ShortComplex D} (f : S ⟶ T) :
 
 end
 
-/-- The canonical unit from included homology to the inclusion of original homology. -/
-def homologyReflectionUnit [IsIso adj.counit] (S : ShortComplex D) :
+/-- The canonical unit from included homology to the inclusion of original homology.
+The invertible counit is retained as the reflective-family guard; the underlying mate is general. -/
+def homologyReflectionUnit [_reflectiveCounit : IsIso adj.counit] (S : ShortComplex D) :
     (S.map G).homology ⟶ G.obj S.homology :=
   adj.homologyCounitMate S
 

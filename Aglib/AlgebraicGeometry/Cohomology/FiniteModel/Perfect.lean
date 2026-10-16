@@ -129,9 +129,11 @@ theorem baseChangeSheafModelPlus_strictPerfect :
   Scheme.Modules.Complex.strictPerfect_tilde_of_finite_projective
     S (D.baseChangePlus σ).obj 0 (n : ℤ)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance perfectModelDerived (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance perfectModelDerivedModules (A : CommRingCat.{u}) :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

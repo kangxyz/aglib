@@ -5,9 +5,9 @@
 The performance batch starts from `55b439b7219f12ad6ff2645b32d9f8b073dd8b28`.
 Source policy now rejects every zero heartbeat budget, including documented
 declaration-local overrides. Positive overrides remain documented and local;
-the package default remains 200000. Three former allowances return to that
+the package default remains 200000. Four former allowances return to that
 default in Cartesian restriction, the structure-module local-freeness proof
-and the restricted-pushforward component formula.
+and the restricted-pushforward and finite-support component formulas.
 
 Typed helpers and local constructors reduce concrete conversion in Godement
 Tensor/Span, scalar degree-zero comparison and Mayer–Vietoris comparison.
@@ -19,13 +19,45 @@ measurements, a rejected cost-transfer experiment and their limits.
 All changed Lean leaves pass source compilation. Focused producer/consumer
 builds and literal component checks pass for Tensor/Span, module-sheaf and
 scalar changes. Cartesian also passes ordinary source compilation under the
-CI heap/RSS profile where the original fails; its full consumer integration
-remains part of CI. The current source-only suite passes 108 script tests and
-checks the 1112-module production source basis; the separate native-cache
+CI heap/RSS profile where the original fails. The pre-merge source-only suite
+passes 108 script tests and checks the 1112-module production source basis;
+the separate native-cache
 transport suite passes ten tests. The earlier cache-restoring aggregate pass
 covers 1136 production/positive modules on its recorded earlier source basis.
-These are scoped results: complete current-tree CI, downstream audit and both
-additional independent local kernel replays are not yet claimed.
+Those earlier results cover their recorded source basis; the subsequent full
+native CI checkpoint is recorded below. The two additional independent local
+kernel replays remain outside that CI route.
+
+The published first performance checkpoint is `197ca072`, merging the newer
+general-source commits through `3da7bb3`. Its source-only suite checks 1159
+production modules and passes the same 108 script tests. Fresh CI4 source
+checks also pass OpenBaseChange and the retained Span; their bounds and a
+rejected proof-helper trial are recorded in PERFORMANCE.md. Its actual CI
+completes the 5024-job production/positive-test build and `lake test`, then
+fails declaration lint with 91 diagnostics across 51 files. Later style,
+axiom, controls, inventory and independent downstream stages are not reached.
+
+The subsequent Restriction.Open and Map.Open constructors preserve their
+literal component interfaces and pass the actual inverse, tensor, gluing and
+localization consumers. The Map comparison includes measured downstream cost
+transfer, recorded alongside its scoped net saving in PERFORMANCE.md. The
+finite-support formula also passes its actual Exact.Euler consumer at the
+default budget, with the recorded small RSS increase.
+
+The complete local native `bash scripts/check.sh --rehash --ci` route now passes
+on the subsequent source snapshot: 1159 production modules, 23 trust-test
+modules, 108 script tests, production/positive builds, declaration/style lint,
+axiom audits, negative controls, exact compiled inventory and the independent
+downstream build and audit. It uses the existing CI heap/RSS limits and current
+native caches. Bounded kernel certificates retain the original public
+propositions, transparent legacy aliases and actual data providers; the private
+canonical simp forms also pass the pinned checker. The shared derived
+pushforward shift instance keeps its literal original data. The additional
+independent local kernel replays are not claimed by this CI checkpoint.
+
+The remaining local heartbeat allowances are 800000 in the Cech
+tensor-comparison component and 300000 in geometric restriction; neither
+allowance is a runtime ranking.
 
 ## Cohomology integration checkpoint
 

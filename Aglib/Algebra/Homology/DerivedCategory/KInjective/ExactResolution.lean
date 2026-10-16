@@ -96,9 +96,14 @@ theorem mapCochainComparison_quasiIso : QuasiIso (mapCochainComparison F I J) :=
 
 /-- The original mapped augmentation followed by the actual chain comparison is homotopic to
 the original target augmentation, with no injectivity assumption on the mapped source terms. -/
-def mapCochainComparison_augmentationHomotopy :
+def mapCochainComparisonAugmentationHomotopy :
     Homotopy (mapCochainAugmentation F I ≫ mapCochainComparison F I J) J.ι' :=
   CochainComplex.homotopyOfDerivedEqOfIsKInjective _ _
     (mapCochainAugmentation_comparison_Q_map F I J)
+
+/-- Deprecated compatibility name for `mapCochainComparisonAugmentationHomotopy`. -/
+-- Preserve the public data name as a transparent alias of the canonical construction.
+@[deprecated (since := "2026-10-17"), nolint defsWithUnderscore]
+alias mapCochainComparison_augmentationHomotopy := mapCochainComparisonAugmentationHomotopy
 
 end CategoryTheory.InjectiveResolution

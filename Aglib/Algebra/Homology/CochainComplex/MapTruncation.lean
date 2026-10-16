@@ -64,7 +64,7 @@ theorem truncLEXIsoCycles_hom_iCycles (e : c.Embedding c') [e.IsTruncLE]
     Iso.hom_inv_id, Category.comp_id]
 
 /-- Away from the upper boundary the native term comparison is its inclusion. -/
-@[reassoc (attr := simp)]
+@[simp, reassoc]
 theorem truncLEXIso_hom_eq_ιTruncLE_f (e : c.Embedding c') [e.IsTruncLE]
     {i : ι} {i' : ι'} (hi : e.f i = i') (hb : ¬ e.BoundaryLE i) :
     (K.truncLEXIso e hi hb).hom = (K.ιTruncLE e).f i' := by
@@ -81,7 +81,7 @@ namespace CochainComplex
 variable {C : Type*} [Category* C] [Abelian C] (K : CochainComplex C ℤ)
 
 /-- The native integer-indexed upper term comparison is its original inclusion. -/
-@[reassoc (attr := simp)]
+@[simp, reassoc]
 theorem truncLEXIso_hom_eq_ιTruncLE_f (b q : ℤ) (hq : q < b) :
     (K.truncLEXIso b q hq).hom = (K.ιTruncLE b).f q := by
   dsimp only [truncLEXIso]

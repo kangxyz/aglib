@@ -103,10 +103,15 @@ theorem d_zero_of_unique [Unique ι] :
 
 /-- The native degree-zero homology for one vertex is the scalar module, through
 the original cycles inclusion and evaluation on the unique tuple. -/
-def homologyZeroLinearEquiv_of_unique [Unique ι] :
+def homologyZeroLinearEquivOfUnique [Unique ι] :
     (complex R (Set.univ : Set ι)).homology 0 ≃ₗ[R] R :=
   (((complex R (Set.univ : Set ι)).isoHomologyπ₀).symm ≪≫
     (complex R (Set.univ : Set ι)).iCyclesIso 0 1 (by simp)
       d_zero_of_unique).toLinearEquiv.trans (LinearEquiv.funUnique _ R R)
+
+/-- Deprecated compatibility name for `homologyZeroLinearEquivOfUnique`. -/
+-- Preserve the public data name as a transparent alias of the canonical construction.
+@[deprecated (since := "2026-10-17"), nolint defsWithUnderscore]
+alias homologyZeroLinearEquiv_of_unique := homologyZeroLinearEquivOfUnique
 
 end AlgebraicTopology.RelativeSimplex

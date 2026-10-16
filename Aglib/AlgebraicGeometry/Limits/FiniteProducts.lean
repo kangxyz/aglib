@@ -100,7 +100,7 @@ theorem finiteProductOverπ_succ {n : ℕ} (X : Fin (n + 1) → Over S) (i : Fin
       prod.snd ≫ finiteProductOverπ (fun j : Fin n => X j.succ) i := by
   simp only [finiteProductOverπ, Fin.cases_succ]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem finiteProductOverπ_hom {n : ℕ} (X : Fin n → Over S) (i : Fin n) :
     (finiteProductOverπ X i).left ≫ (X i).hom = (finiteProductOver X).hom :=
   (finiteProductOverπ X i).w
