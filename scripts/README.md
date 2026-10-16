@@ -124,10 +124,24 @@ of imported proofs. Exported, server, and private parts are inspected; a module 
 recorded as vacuous only when its last, most private part contains no new constants.
 All tasks must succeed before any module success is accepted. An RSS-cutoff failure
 retries smaller batches; proof, monitoring, malformed-output, and other failures
-stop the check. Receipts bind the complete unique inventory to source, compiled
-artifacts, configuration, and the installed checker, while preserving each
-successful batch's execution profile. A successful probe is not complete coverage.
-Resume uses the same receipt directory and rejects any changed proof basis:
+stop the check. Full coverage still requires the complete unique current inventory;
+`--only` and `--modules` are diagnostic probes. Each module's evidence binds its
+actual compiled import closure to source and exported/server/private/IR artifacts,
+effective configuration, the installed compiler/runtime and checker, and exact
+replay semantics. A single guarded metadata pass reads compiled import arrays;
+it does not replay imported proofs. The graph is shared, dependency keys are
+memoized, and module mappings are released after copying their import names.
+
+Reuse is explicit: select the same receipt directory across adjacent source
+snapshots, or relocate that directory with its coherent checkout. Unrelated
+module edits and enrollment changes retain matching evidence; changed imported
+source or artifacts invalidate dependents even if their own `.olean` is unchanged.
+Missing source metadata disables reuse for the affected closure; incomplete
+compiled metadata fails closed. Configuration uses the existing typed cache
+normalization (ignoring only package version and storage-policy fields); raw
+configuration hashes remain in the full provenance. No historical-directory
+search is performed. The default full-check timestamp directories remain fresh;
+select a stable directory explicitly for incremental replay:
 
 ```sh
 python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
@@ -135,10 +149,29 @@ python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
 
 The pinned replay core checks each module's declarations sequentially; bounded
 module tasks provide replay parallelism. Normal-build thread settings remain
-separate from the replay batch setting. Explicit `--adopt-legacy` migration also
-requires the full frozen source basis and the recognized prior runner through
-`--legacy-source-basis` and `--legacy-runner`. It validates prior success records
-and retains their raw evidence and original execution profiles.
+separate from the replay batch setting. Original bases, module records, logs and
+resource profiles remain immutable. Changed full bases live under
+`snapshots/<basis-hash>/`; the current coverage/probe summaries point to each
+module's original record and report reused counts without relabeling execution.
+Only these selected summaries and the initial basis are consulted. Full content
+identities are captured at start and end; between batches, exact input/facet and
+namespace-resolution metadata guards include inode and ctime, rejecting even
+changed-and-restored files. An initial compiled-tree stat sweep fences metadata
+extraction; it is not repeated per batch. Concurrent source/build activity may
+conservatively invalidate a run.
+
+Explicit `--adopt-legacy` migration also requires the full frozen source basis
+and the recognized prior runner through `--legacy-source-basis` and
+`--legacy-runner`. It validates prior success records and preserves their raw
+evidence and execution profiles. Older receipts lack dependency metadata and
+require a new closure-bound replay before automatic reuse. Missing or corrupted
+selected records, original bases, logs or resource evidence fail closed.
+
+During development, build changed leaves and affected clients. When a scoped
+replay is warranted, continue it through the explicit lineage. Integration and publication retain
+full current library/client coverage and all other required checks. Matching
+per-closure replay evidence discharges unchanged replay coverage; a probe alone
+cannot discharge the full-publication requirement.
 
 Do not run another Lean job concurrently with this serialized route. On restricted
 macOS hosts, process monitoring and owned-process signaling require the authorized

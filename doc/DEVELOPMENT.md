@@ -72,7 +72,9 @@ python3 scripts/check_kernel.py --root examples/downstream --client \
   --receipt-dir .lake/verification/client-kernel
 ```
 
-Run these after the corresponding build and audits, or use the full local route. `--only MODULE` is a diagnostic probe and cannot establish complete coverage. Resume only with the same source, artifact, configuration and installed-checker basis; a changed basis requires a fresh receipt directory. Historical receipts are not current verification evidence.
+Run these after the corresponding build and audits, or use the full local route. `--only MODULE` and `--modules MODULE ...` are diagnostic probes and cannot establish complete coverage. Select the same explicit receipt directory to continue scoped work across small source changes. Matching evidence is reused by each module's actual compiled import closure, including dependency source, exported/server/private/IR artifacts, effective configuration, compiler/runtime and checker semantics. An unrelated edit or new enrollment does not discard unaffected evidence; an imported source/artifact change invalidates its dependents. A coherent relocation can reuse matching evidence without rewriting the original execution provenance.
+
+The checker captures full identities at start/end and guards exact inputs and search-resolution candidates between batches, including ctime to detect changed-and-restored files. Missing dependency source metadata prevents reuse; incomplete compiled metadata or corrupt selected evidence fails closed. Original bases, records, logs and resource profiles remain immutable; current coverage summaries reference the original evidence and distinguish reuse from fresh execution. Older receipts without dependency metadata require a new closure-bound replay. [Replay mechanics](../scripts/README.md#resource-limits-and-exact-kernel-replay) describe the evidence layout and configuration normalization.
 
 ## Incremental cache and publication
 
@@ -84,7 +86,7 @@ CI uses explicit cache restore and save steps. Newly acquired dependency proof c
 
 Main-branch CI runs serialize without cancelling the active run, allowing eligible build progress to be saved before the next snapshot starts. GitHub keeps the latest pending snapshot in that group. Other branches and pull-request refs cancel superseded active runs. See [workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).
 
-A cache hit does not replace current tests, audits, inventory checks or the required local replay, and never makes a historical verification receipt current. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
+A build-cache hit does not replace current tests, audits, inventory checks or required local replay coverage. The replay controller can discharge unchanged modules with validated matching per-closure evidence from the explicitly selected lineage; a historical receipt alone supplies no current coverage. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
 
 The publication target is the public repository [`kangxyz/aglib`](https://github.com/kangxyz/aglib). Complete the full local route, including both independent kernel replays and the downstream audit, before publishing the verified source snapshot. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
 
@@ -102,7 +104,7 @@ Update the owning family README when an object, namespace, hypothesis, result or
 
 Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree status before writing and before staging or committing; coordinate overlapping edits and shared build outputs. Keep Git index and `HEAD` mutations serial. Do not push without an explicit current request.
 
-During development build changed leaves and affected clients. At integration use the full route above for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and required local replays. Build success does not discharge mathematical premises.
+During development build changed leaves and affected clients. When a scoped replay is warranted, continue it through the explicit receipt lineage. At integration and publication use the full route above for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and complete required local replay coverage. Current matching per-closure evidence covers unchanged modules; diagnostic probes do not establish the full inventory. Build success does not discharge mathematical premises.
 
 A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.
 
