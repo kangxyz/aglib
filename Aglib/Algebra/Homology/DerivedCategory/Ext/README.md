@@ -16,3 +16,13 @@ preserve injective objects or to be fully faithful.
 The unit-module/additive-sheaf cohomology comparison uses this criterion
 with the actual scalar-forgetting functor and its proved flasque injective
 images. No scheme or quasicoherence hypothesis occurs in this lower family.
+
+[Quotient](Quotient.lean) proves that original Ext from `R/I` is annihilated
+by I and constructs its native quotient-ring module action explicitly.
+That action equals original Yoneda precomposition with multiplication on
+`R/I`, the action used by scalar coinduction. All degrees and arbitrary
+coefficients are included, without regularity, finiteness or Noetherianity.
+The module action is not installed as a global instance. Its first consumer
+is the [actual principal-ideal Koszul calculation](../../Koszul/Single/Ext/Ideal.lean).
+Source and public consumer passed `1792127465949194000-98994` and
+`1792127498584479000-99373` with only the standard three axioms.

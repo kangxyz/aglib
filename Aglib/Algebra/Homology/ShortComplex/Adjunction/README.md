@@ -22,3 +22,14 @@ unit followed by that isomorphism. Coefficient naturality and the original
 unit/counit equation are explicit, and reflecting this unit gives an
 isomorphism. Homology preservation by the right adjoint is not a premise.
 Native module-sheaf sheafification is the current consumer.
+
+[Cycles](Cycles.lean) defines `Adjunction.cyclesUnit` through the original
+unit and native exact right-adjoint cycle comparisons. Its inclusion and
+projection equations retain the actual `iCycles`, `homologyπ` and original
+`homologyUnit`. Following any actual `δ : S.map F ⟶ T` gives
+`cyclesUnitMap`; `homologyComparison_map_homologyπ` computes the existing
+canonical homology mate followed by the actual homology map on those
+original cycle classes. The right adjoint preserves homology, and the left
+adjoint need not be exact. Native scalar extension of resolution sections
+is the current consumer, including its unit pure-tensor formula without
+scalar flatness.

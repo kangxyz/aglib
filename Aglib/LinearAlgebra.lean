@@ -8,6 +8,8 @@ Authors: kangxyz
 module
 
 public import Aglib.LinearAlgebra.DFinsupp.Subtype
+public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
+public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 
 /-!
 # LinearAlgebra

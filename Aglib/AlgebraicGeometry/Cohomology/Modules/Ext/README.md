@@ -71,3 +71,14 @@ formula. All schemes, module coefficients, nonnegative degrees and
 structural ring maps are allowed; no quasicoherence or finiteness is needed.
 The leaf passed `1792102911445337000-34547` and supplies the boundary
 normalization for the higher Serre-pairing argument.
+
+[Pullback](Pullback.lean) constructs `modulePullbackAdditiveComparison` as the
+original additive inverse-image mate of the native module pullback unit.
+Its unit-module and integer-generator equations retain the actual structural
+map and native `pullbackUnitIso`, for every scheme morphism.
+`moduleExtCohomologyMap_pullback` proves that, for a flat morphism, exact native
+module pullback on Ext computes precisely the original geometric cohomology
+map with that unit. It applies to every module coefficient and every natural
+degree, with the original Ext/cohomology universe; no quasicoherence,
+Noetherianity or finiteness is assumed. This comparison supplies the actual
+coefficient map used by derived flat base change.

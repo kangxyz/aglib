@@ -139,8 +139,10 @@ space over every Noetherian base ring. Its closed-immersion consumer also
 proves embedded projective finiteness with the original structural map to
 the affine base. The actual tensor isomorphism and coherent tensor preservation
 also give Serre vanishing with one bound for all positive original cohomology
-and all larger twists. Serre duality still requires its geometric trace and
-pairing steps.
+and all larger twists. The
+[projective-space duality family](../Cohomology/Duality/Projective/README.md)
+supplies the original trace/Yoneda perfect pairing for all complementary
+degrees of coherent sheaves over an arbitrary field.
 
 The lower dependencies are Mathlib's projective spectrum, homogeneous
 polynomials, variable ideal and finite lattice operations. The immediate
@@ -167,3 +169,25 @@ chart inclusion is an immersion, and the structural factorization is
 literal. The existential endpoints require neither a chosen algebra
 instance nor a Noetherian or field hypothesis. This is a geometric
 prerequisite for the graph-closure route to Chow modifications.
+
+[AffineImmersion.Open](AffineImmersion/Open.lean) transports this construction
+through the original affine-open `isoSpec`. Every affine open of a locally
+finite-type scheme over `Spec R` therefore has an actual immersion into finite
+polynomial projective space with exactly the original restricted structural
+map. No Noetherian or properness hypothesis is needed for this transport.
+
+[BaseChange](BaseChange/README.md) proves that actual polynomial projective
+space commutes with every coefficient-ring base change. The comparison
+uses the original `Proj.map`, standard charts and structural maps, and its
+forward map is exactly the native pullback lift of those original maps.
+No finite-coordinate, flatness, Noetherian or nonempty-coordinate hypothesis
+is imposed. Relative projective projections use this result on affine
+base opens; twisting-module pullback formulas remain a separate interface.
+
+[Products.BaseChange](Products/README.md) retains the original base and
+component projections when the actual fibre product of a finite projective
+product is identified with the native product of its component pullbacks.
+It delegates to the sole finite-product comparison and native pullback
+symmetry, including the literal empty-family first projection. Finite
+coordinates give properness of the original projection and local
+Noetherianity over a locally Noetherian new base.

@@ -23,3 +23,12 @@ No field, Noetherianity or finiteness premise is needed. The
 higher-direct-image and derived sheaf-level comparisons remain in progress.
 
 [Flat](Flat.lean) constructs `Scheme.Modules.derivedFlatBaseChangeMap` on an actual cartesian square with the specified flat base map. [GodementUnit](GodementUnit.lean) compares that map with the bounded-below Godement construction under the actual `IsPullback`, `Flat j` and `Flat a` hypotheses. Its original-unit equation identifies the map; `isIso_baseChangeSourceUnit_of_flasque` additionally retains termwise flasqueness. These are constructed comparison/unit statements, not an unconditional base-change isomorphism for arbitrary coefficients and morphisms.
+
+[HigherDirectImage](HigherDirectImage.lean) gives the actual natural map
+`R^n f_* ; j* → a* ; R^n b_*` as homology of the original installed derived
+flat comparison through the native single and exact-pullback isomorphisms.
+Its component equation, coefficient naturality and literal isomorphism hom
+are retained. It is invertible for qcqs `f`, flat `j` and arbitrary QC
+coefficients, over arbitrary bases and in every natural degree. The
+[derived guide](Derived/README.md) records the complete D+ QC-homology
+endpoint and its affine-open descent.

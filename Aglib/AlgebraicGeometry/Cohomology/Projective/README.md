@@ -223,3 +223,27 @@ the model internally; their independent consumer passed
 `1792104773395115000-70510`, with only the three standard axioms.
 
 [Coherent higher Serre duality](../Duality/Projective/Higher.lean) is now proved for every field, arbitrary projective dimension and every complementary pair `i+j=n`. The original Yoneda/residue pairing is perfect, giving both `Extʲ(M,O(-n-1)) ≃ Hⁱ(M)ᵛ` and `Hⁱ(M) ≃ Extʲ(M,O(-n-1))ᵛ`, with exact original coefficient naturality and dimension zero retained. Its [owning guide](../Duality/Projective/README.md) records the actual presentation proof, field hypothesis, map formulas and public verification.
+
+## Relative projective projections
+
+The focused [Projection](Projection/README.md) family proves coherence of
+all actual higher direct images under any base change of polynomial
+projective-space projection to a locally Noetherian base. It retains the
+original right-derived pushforward, actual Cartesian square and structural
+ring actions; neither a Noetherian original presentation ring nor relative
+flatness of the coefficient is required. For every quasicoherent coefficient
+over an arbitrary base, the same family's sharp relative bound proves that
+the original higher images vanish above the projective dimension. Its actual
+bounded-derived amplitude theorem sends quasicoherent homology in `[l,b]`
+to the native interval `[l,b+n]`, without a condition on representative terms.
+Over a locally Noetherian base, the original derived image also preserves
+the shared coherent-homology property for every cohomologically bounded
+object, with that same explicit interval. The
+[Products](Products/README.md) consumer now iterates the original native
+`finiteProductOver`, with upper bound `b + ∑ i, d i` and the empty product
+equal to the actual base identity. Actual base-change and finite-embedding
+consumers now preserve the original product projection and displayed
+factorization. Finite maps into such products over a Noetherian affine
+base have finite unchanged cohomology in every degree. These results
+supply the two inputs for the proper-modification support argument;
+general proper finiteness remains its subsequent conclusion.

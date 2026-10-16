@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.Fibers
-public import Aglib.Algebra.Homology.Semicontinuity
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Semicontinuity
 
 /-!
 # Upper semicontinuity of projective fibre cohomology
@@ -46,18 +46,10 @@ theorem ProjectiveCohomologyModel.upperSemicontinuous_fiberCohomologyDimension
     (D : ProjectiveCohomologyModel R ι i f M n) [M.IsQuasicoherent]
     (e : ι ≃ Fin (n + 1)) (hflat : Scheme.Modules.relativeFlat f M) (q : ℕ) :
     UpperSemicontinuous (moduleFiberCohomologyDimension f M q) := by
-  let (j : ℤ) : Module.Finite R (D.complex.X j) := D.finite_X j
-  let (j : ℤ) : Module.Projective R (D.complex.X j) := D.projective_X j
-  have h := upperSemicontinuous_finrank_homology_residueField_of_projective.{u, u, 0}
-    D.complex (q : ℤ)
-  have he : (fun p : PrimeSpectrum R => finrank p.asIdeal.ResidueField
-      ((((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-        (.up ℤ)).obj D.complex).homology (q : ℤ))) =
-      moduleFiberCohomologyDimension f M q := by
-    funext p
-    exact (D.fiberCohomologyDimension_eq_finrank e hflat q p).symm
-  rw [he] at h
-  exact h
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.upperSemicontinuous_fiberCohomologyDimension D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat q
 
 /-- Coherent relatively flat coefficients on an actual projective embedding over a
 Noetherian ring have upper semicontinuous original fibre-cohomology dimension in every

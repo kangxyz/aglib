@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.BaseChangeCriterion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.Fibers
-public import Aglib.Algebra.Homology.ShortComplex.BaseChange.Grauert.Global
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Grauert.Global
 
 /-!
 # Grauert's criterion over a reduced affine base
@@ -49,32 +49,10 @@ theorem ProjectiveCohomologyModel.projective_moduleCohomology_of_isLocallyConsta
     let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
     letI := moduleCohomologyModuleOfHom X α M q
     Module.Projective R (Sheaf.H.{u + 1} (moduleAddSheaf X M) q) := by
-  let (j : ℤ) : Module.Finite R (D.complex.X j) := D.finite_X j
-  let (j : ℤ) : Module.Projective R (D.complex.X j) := D.projective_X j
-  let S : ShortComplex (ModuleCat.{u} R) := D.complex.sc (q : ℤ)
-  let : Module.Finite R S.X₁ := by
-    change Module.Finite R (D.complex.X ((ComplexShape.up ℤ).prev (q : ℤ)))
-    infer_instance
-  let : Module.FinitePresentation R S.X₂ := by
-    change Module.FinitePresentation R (D.complex.X (q : ℤ))
-    exact Module.finitePresentation_of_projective R _
-  let : Module.Finite R S.X₃ := by
-    change Module.Finite R (D.complex.X ((ComplexShape.up ℤ).next (q : ℤ)))
-    infer_instance
-  let : Module.Projective R S.X₃ := by
-    change Module.Projective R (D.complex.X ((ComplexShape.up ℤ).next (q : ℤ)))
-    infer_instance
-  have he : moduleFiberCohomologyDimension f M q = fun p : PrimeSpectrum R =>
-      finrank p.asIdeal.ResidueField
-        ((((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-          (.up ℤ)).obj D.complex).homology (q : ℤ)) :=
-    funext (D.fiberCohomologyDimension_eq_finrank e hflat q)
-  rw [he] at h
-  let : Module.Projective R (D.complex.homology (q : ℤ)) :=
-    ShortComplex.projective_homology_of_isLocallyConstant_residueField_finrank.{u, 0} S h
-  let := moduleCohomologyModuleOfHom X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) M q
-  exact Module.Projective.of_equiv' (D.cohomologyLinearEquiv e q)
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.projective_moduleCohomology_of_isLocallyConstant_fiberDimension D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat q h
 
 /-- Over a reduced base, locally constant original fibre dimension gives arbitrary
 base change for the original geometric map on the same actual model. The base need
@@ -85,30 +63,10 @@ theorem ProjectiveCohomologyModel.moduleCohomologyBaseChangeMap_isIso_of_isLocal
     (h : IsLocallyConstant (moduleFiberCohomologyDimension f M q))
     {B : Type u} [CommRing B] (σ : R →+* B) :
     IsIso (moduleCohomologyBaseChangeMap f σ M q) := by
-  let (j : ℤ) : Module.Finite R (D.complex.X j) := D.finite_X j
-  let (j : ℤ) : Module.Projective R (D.complex.X j) := D.projective_X j
-  let S : ShortComplex (ModuleCat.{u} R) := D.complex.sc (q : ℤ)
-  let : Module.Finite R S.X₁ := by
-    change Module.Finite R (D.complex.X ((ComplexShape.up ℤ).prev (q : ℤ)))
-    infer_instance
-  let : Module.FinitePresentation R S.X₂ := by
-    change Module.FinitePresentation R (D.complex.X (q : ℤ))
-    exact Module.finitePresentation_of_projective R _
-  let : Module.Finite R S.X₃ := by
-    change Module.Finite R (D.complex.X ((ComplexShape.up ℤ).next (q : ℤ)))
-    infer_instance
-  let : Module.Projective R S.X₃ := by
-    change Module.Projective R (D.complex.X ((ComplexShape.up ℤ).next (q : ℤ)))
-    infer_instance
-  have he : moduleFiberCohomologyDimension f M q = fun p : PrimeSpectrum R =>
-      finrank p.asIdeal.ResidueField
-        ((((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-          (.up ℤ)).obj D.complex).homology (q : ℤ)) :=
-    funext (D.fiberCohomologyDimension_eq_finrank e hflat q)
-  rw [he] at h
-  apply (D.moduleCohomologyBaseChangeMap_isIso_iff e hflat σ q).mpr
-  exact homologyBaseChangeMap_isIso_of_isLocallyConstant_residueField_finrank_of_isReduced.{u,
-    0, u} σ S h
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.moduleCohomologyBaseChangeMap_isIso_of_isLocallyConstant D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat q h σ
 
 /-- Original cohomology is finite projective when its original fibre dimension is
 locally constant for coherent relatively flat coefficients on an actual projective

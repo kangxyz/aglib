@@ -15,7 +15,7 @@ The audit is against the task's pinned Mathlib revision `d13f23b723b8a846827a245
 | Closed subschemes and images | Mathlib `Scheme.IdealSheafData.subscheme`, `Hom.image`, `imageι`, `toImage`; ideals, radicals and `vanishingIdeal` | Assemble these native objects into the Chow modification |
 | Quasi-compact immersions | Mathlib `IsImmersion.isPullback_toImage_liftCoborder` and the open-immersion instance on `toImage` | The original graph-closure projections are supplied here |
 | Proper quasi-finite maps | Mathlib `IsFinite.of_isProper_of_locallyQuasiFinite` in `ZariskisMainTheorem` | Apply it to the constructed morphism; no new finiteness criterion is needed |
-| Projective geometry | Actual polynomial `Proj`, standard polynomial charts, proper structural map, twists and original cohomology computations | Finite-type affine projective-chart embeddings, projective products/Segre, and the arbitrary-ring projective-space base-change/twist comparison |
+| Projective geometry | Actual polynomial `Proj`, standard polynomial charts, proper structural map, twists, original cohomology computations and finite-type affine projective-chart immersions | Arbitrary-ring projective-space base change and local projective projection coherence; Segre and twist base change can follow later |
 | Coherent support | Native stalk support, affine closed support, affine quotient-ring/killed-by-ideal equivalence, coherent closed/finite pushforward, and quasicoherent pushforward from quasi-compact opens | Global coherent submodule extension, support descent or ideal-power devissage, and the actual Noetherian support induction |
 | Noetherian topology | `WellFoundedLT (Closeds X)` and finite irreducible decomposition | Use them with actual coherent modules, without a finite Krull-dimension assumption |
 | Derived composition | Aglib `derivedPushforwardPlusCompIso` for arbitrary scheme morphisms, with the original pushforward comparison and both derived units | Combine it with proved acyclicity and the actual higher-direct-image/cohomology interfaces; no supplied Leray/composition family |
@@ -23,11 +23,42 @@ The audit is against the task's pinned Mathlib revision `d13f23b723b8a846827a245
 ## Dependency plan
 
 1. Close the graph-closure interface above, including its exact original maps and an independent public consumer.
-2. Embed an arbitrary finite-type affine `R`-scheme into a standard chart of finite polynomial projective space, retaining its original structural map. Construct the needed native finite projective products. Defer Segre if iterated projective projections close the cohomological argument with fewer new geometric interfaces.
-3. For an integral proper source, form the finite fiber product over the source of the individual graph closures of a finite nonempty affine cover. The original projections should be proper surjective and isomorphisms on the dense common open. On the inverse image of each cover member, use its projective immersion to prove local quasi-finiteness of the map to the product of projective spaces. Properness and native Zariski's Main Theorem then give a finite map to the product. Actual finite pushforward followed by proved successive projective direct-image calculations can suffice for the cohomological reduction; an optional Segre comparison gives a finite map to one projective space. These construction and local quasi-finiteness claims remain to be proved.
-4. Establish the projective-space base-change and twist pullback comparisons needed over affine opens of a nonaffine target. Extend the existing absolute projective finiteness and Serre vanishing through actual closed or finite pushforward. For the product route, choose the exponents one factor at a time, simultaneously for the projection chain over the source and the chain over the affine base. Prove coherence and higher-direct-image vanishing at each stage and use native derived composition; no product finiteness premise is supplied.
-5. Prove global coherent support devissage. Quasicoherent open pushforward and kernels can extend local submodule graphs; the existing affine annihilated-module equivalence supplies the closed-support algebra. Noetherian induction on closed supports handles all coherent coefficients, including nonreduced and reducible sources, while only requiring Chow on integral closed subschemes.
-6. Use the original bounded-below derived composition and the constructed acyclic coefficient to complete proper coherent direct-image finiteness. Over `Spec R`, retain the existing structural-ring action and identify the result with finiteness of the unchanged `Sheaf.H`.
+2. The actual finite-type affine immersion is now supplied by
+   [ProjectiveSpace.AffineImmersion](../../ProjectiveSpace/AffineImmersion.lean).
+   [DenseAffine](../../Properties/Noetherian/README.md) supplies finite dense
+   affine covers of every Noetherian scheme, with dense common intersection.
+   Its neighborhood theorem only requires finitely many irreducible components.
+3. [Chow](Chow/README.md) constructs the finite native product of
+   these original graph closures, its closed pairing into `X` times the target
+   product, and its proper surjective source projection. Its original
+   restriction to the common open is an isomorphism. The original target map
+   is locally an immersion, hence locally quasi-finite; properness and native
+   Zariski's Main Theorem make it finite. `Chow.Basic` now supplies all these
+   data unconditionally for every proper morphism over a Noetherian affine
+   base. No integral or reduced source assumption is needed, and
+   scheme-theoretic dominance is not claimed.
+4. Prove scheme-level polynomial projective-space base change, then identify
+   actual higher images of each projective projection on affine target opens.
+   Absolute projective finiteness and its cohomological bound, shared derived
+   locality and finite Postnikov give bounded coherent direct images along
+   finite projection towers and closed/finite composites. This first route
+   does not require Segre, twist pullback or simultaneous relative Serre
+   vanishing.
+5. For a fixed proper source, use Noetherian induction on a closed set `Z`,
+   quantifying over every closed scheme `W → X` with image contained in `Z`
+   and every coherent coefficient on `W`. For its graph modification `pi`,
+   take the native cone of the ordinary pullback unit followed by the actual
+   right-derived pushforward unit. Its bounded coherent homology is supported
+   on the strict closed boundary. Actual ideal-power annihilation and
+   ideal-killed descent let the induction apply to those finitely many layers;
+   the shared finite-Postnikov theorem supplies cone finiteness. This handles
+   boundary nilpotents without a global annihilator construction or prime
+   filtration.
+6. The original derived composition and cone triangle then prove finiteness of
+   the unchanged `Sheaf.H` over `Spec R`, with its original structural action.
+   Shared actual higher-image localization extends this to proper coherent
+   direct images over locally Noetherian bases. These cohomological steps
+   remain explicit obligations; no proper-finiteness family is assumed.
 
 The geometric and cohomological route is guided by [Stacks, Chow's lemma](https://stacks.math.columbia.edu/tag/02O2) and [Stacks, proper coherent direct images](https://stacks.math.columbia.edu/tag/02O3). These are mathematical references, not formal premises. Existing projective results remain independently proved; the new geometric and support constructions must discharge every transition to general proper morphisms.
 

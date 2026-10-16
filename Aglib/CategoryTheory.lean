@@ -9,7 +9,10 @@ module
 
 public import Aglib.CategoryTheory.Abelian.FiniteCoproductFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctor
+public import Aglib.CategoryTheory.Abelian.Injective.MapAugmentation
 public import Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels
+public import Aglib.CategoryTheory.Abelian.ObjectProperty.ExactFive
+public import Aglib.CategoryTheory.Abelian.Projective.Dimension
 public import Aglib.CategoryTheory.Abelian.Regular
 public import Aglib.CategoryTheory.Abelian.RightDerived.Cochain
 public import Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts
@@ -24,6 +27,7 @@ public import Aglib.CategoryTheory.ExactCategory.Functor
 public import Aglib.CategoryTheory.ExactCategory.Isomorphisms
 public import Aglib.CategoryTheory.ExactCategory.MatrixDeflation
 public import Aglib.CategoryTheory.ExactCategory.Subcategory
+public import Aglib.CategoryTheory.Functor.Derived.RightDerivedCommShift
 public import Aglib.CategoryTheory.Functor.KanExtension.ClosedImage
 public import Aglib.CategoryTheory.Functor.Sections.Initial
 public import Aglib.CategoryTheory.Limits.BiproductPushout

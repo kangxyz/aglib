@@ -36,3 +36,13 @@ sheaf, whose sheaf condition constructs the global morphism.
 and `homOfLocalSections_generator` sends the canonical local generator to
 the supplied target section. Neither a gluing-existence premise nor
 quasicoherence, finiteness or Noetherianity is required.
+
+[TensorFunctorAssociator/Sections](TensorFunctorAssociator/Sections.lean)
+records the original left/right tensor-unit and nested pure-section
+formulas. `moduleLineTensorAssociator_hom_section` and `_inv_section`
+use the actual associator, its original sheafification units and the
+original two-line trivialization data; the third module is arbitrary.
+No new tensor, associator or compatibility assumption is introduced.
+The cover and scheme universes remain independent. The source passed
+`1792125344557185000-79728` at default budgets; the raw native-map
+consumer passed `1792125406028387000-80022`, using the three standard axioms.

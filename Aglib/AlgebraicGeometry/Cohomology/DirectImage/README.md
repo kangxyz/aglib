@@ -141,3 +141,32 @@ arbitrary ring. The independent public consumer passed
 `1792108251788846000-25675` with only the standard three axioms. Passage
 to a general target and comparison with the installed derived flat
 base-change map remain further interfaces.
+
+[Restriction](Restriction.lean) gives `Scheme.Modules.derivedOpenBaseChangeIso`
+on an actual cartesian square whose horizontal maps are open immersions.
+It is the installed bounded-below derived pushforward/restriction comparison:
+exact target restriction supplies one native composition iso and injective
+preservation by source restriction supplies the other. Its `_unit` equation
+retains the original ordinary `cartesianOpenBaseChange` and both installed
+composite-derived units. The functor isomorphism is natural in all original
+coefficients. `higherDirectImageOpenRestrictionIso` takes native homology,
+through the shared original Rn/single comparison and exact restriction maps,
+to compute the actual `rightDerived n` pushforward. The specialization
+`higherDirectImageRestrictionIso f U n` uses the actual inverse-image open and
+`f ∣_ U`. No quasicoherence, qcqs, Noetherianity or finiteness is required.
+
+[QuasiCoherent](QuasiCoherent.lean) proves
+`moduleHigherDirectImage_isQuasicoherent`: for qcqs `f : X ⟶ Y` and any
+quasicoherent `M`, the actual `((Modules.pushforward f).rightDerived n).obj M`
+is quasicoherent for every natural degree on an arbitrary target scheme.
+The original supplied-square open-restriction iso reduces each actual affine
+chart to the completed native affine computation. No Noetherianity,
+separatedness, relative coefficient flatness or finite generation is used.
+This is the shared quasicoherence input for proper coherent direct images
+and sheaf-valued flat base change.
+
+[Proper/Coherent](Proper/Coherent.lean) descends the proved affine-base
+proper theorem to every locally Noetherian target using the original
+higher-image open comparison. All natural degrees and arbitrary coherent
+coefficients are included, without a quasi-compact-target or relative-flatness
+premise. See its [focused guide](Proper/README.md).

@@ -8,6 +8,18 @@ commutative semirings, an arbitrary coefficient ring homomorphism and an
 arbitrary variable type. No invertibility, field or finiteness assumption
 is used.
 
+`Aglib.RingTheory.MvPolynomial.GradedMap` bundles the original
+`MvPolynomial.map f` as `gradedMap f` for the actual total-degree grading,
+with native identity and composition equations. It works for commutative
+semirings with independent coefficient and variable universes. For
+commutative rings, `irrelevant_map_gradedMap` proves that the original
+irrelevant ideal maps onto the new irrelevant ideal. The existing
+`irrelevant_homogeneousSubmodule_eq_idealOfVars` declaration is owned here;
+its original proof was moved from `ProjectiveSpace.Basic`, which now imports
+this sole implementation. Its ring and variable universes are independent.
+The actual projective-space coefficient map and base-change charts consume
+these lower normalizations.
+
 The immediate consumer is the projective chart calculation: evaluating
 homogeneous coordinates at the fractions `Xⱼ / Xᵢ` divides a homogeneous
 polynomial of degree `n` by `Xᵢ ^ n`.

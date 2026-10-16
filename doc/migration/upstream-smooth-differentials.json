@@ -1,0 +1,68 @@
+{
+  "upstream": "40af743ab794d607f566cec0c5417d8e4d02a735",
+  "source_kind": "local-main",
+  "fetched_origin_main": "e3f6c759d2a1ece1387518aecba7393a863718a9",
+  "selection": "Actual smooth differential rank and its minimal direct helpers; existing local Rank and finite-presentation owners are unchanged.",
+  "files": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Differentials/EtalePullback.lean",
+      "source_sha256": "7ef8354b6cc72f223a39f38826f8f9cb9d1fdcba956e8fb9db64bef0c7e466f6",
+      "destination_sha256": "7ef8354b6cc72f223a39f38826f8f9cb9d1fdcba956e8fb9db64bef0c7e466f6",
+      "upstream_exact": true,
+      "build_receipt": "1792120759662130000-24992",
+      "build_status": "passed"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/LocallyFree/FreeCover.lean",
+      "source_sha256": "5bc6138047ae5d2f041f6cc40783e63da84748767fd86b9dfa22d43f0903ea56",
+      "destination_sha256": "5bc6138047ae5d2f041f6cc40783e63da84748767fd86b9dfa22d43f0903ea56",
+      "upstream_exact": true,
+      "build_receipt": "1792120812234915000-26419",
+      "build_status": "passed"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/Free.lean",
+      "source_sha256": "dae2093f2f15b4a1ccff01a513bb130219568f18b23ce00daf3e71e3bf7d14c3",
+      "destination_sha256": "dae2093f2f15b4a1ccff01a513bb130219568f18b23ce00daf3e71e3bf7d14c3",
+      "upstream_exact": true,
+      "build_receipt": "1792120855942850000-27394",
+      "build_status": "passed"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Modules/Differentials/SmoothRank.lean",
+      "source_sha256": "b43d7f762243ea8c6e9b7abb7c264420b26a4439c90263c74efe6cabaaa5a0c0",
+      "destination_sha256": "b43d7f762243ea8c6e9b7abb7c264420b26a4439c90263c74efe6cabaaa5a0c0",
+      "upstream_exact": true,
+      "build_receipt": "1792120897378841000-28233",
+      "build_status": "passed"
+    }
+  ],
+  "compatibility_import": {
+    "path": "Aglib/AlgebraicGeometry/Modules/Differentials/Properties.lean",
+    "change": "Retire theorem-family premises and re-export the actual SmoothRank owner.",
+    "build_receipt": "1792121055476931000-30489"
+  },
+  "public_consumer": {
+    "path": "SmoothDifferentialConsumer.lean",
+    "receipt": "1792121092228773000-31117",
+    "status": "passed",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "coverage": [
+      "arbitrary independent standard-smooth ring and algebra universes",
+      "actual affine relative differential sheafification and tilde isomorphism",
+      "every field-scheme universe and every fixed smooth relative dimension, without a nonempty hypothesis",
+      "actual finite local freeness",
+      "original etale pullback map as rfl hom",
+      "canonical localization seed normalization"
+    ]
+  },
+  "remaining": [
+    "Relative differential sheaf over an arbitrary scheme base",
+    "Sheaf exterior powers and determinant transitions",
+    "Identification of Serre omega with the canonical line and normalization of trace"
+  ]
+}

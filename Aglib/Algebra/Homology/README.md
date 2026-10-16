@@ -24,3 +24,8 @@ local constancy for the actual residue-field complexes of bounded finitely
 presented flat complexes. These numerical results are lower prerequisites;
 a geometric application must still identify the original fibre cohomology
 with that of the displayed complex.
+
+[Koszul](Koszul/README.md) constructs finite native tensor Koszul complexes,
+their original signed differential and actual quotient augmentation, and the
+regular-sequence projective resolution. Its generic proofs are selected from
+the supplied Motivic library; geometric purity remains a separate consumer.

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel
-public import Aglib.AlgebraicGeometry.Cohomology.Modules.Fibers
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Fibers
 
 /-!
 # Original fibre dimensions on a constructed projective model
@@ -46,15 +46,9 @@ theorem ProjectiveCohomologyModel.fiberCohomologyDimension_eq_finrank
     moduleFiberCohomologyDimension f M q p = finrank p.asIdeal.ResidueField
       ((((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
         (.up ℤ)).obj D.complex).homology (q : ℤ)) := by
-  let k := p.asIdeal.ResidueField
-  let σ := Spec.map (CommRingCat.ofHom (algebraMap R k))
-  let Y := pullback f σ
-  let a := pullback.fst f σ
-  let b := pullback.snd f σ
-  let N := (Scheme.Modules.pullback a).obj M
-  let β := b.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom
-  let := moduleCohomologyModuleOfHom Y β N q
-  exact (D.baseChangeCohomologyLinearEquiv e hflat
-    (algebraMap R p.asIdeal.ResidueField) q).finrank_eq.symm
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.fiberCohomologyDimension_eq_finrank D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat q p
 
 end AlgebraicGeometry.Scheme.Cohomology

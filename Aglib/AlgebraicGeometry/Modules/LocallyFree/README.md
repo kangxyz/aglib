@@ -13,3 +13,9 @@
 The lower subjects are finite presentation, actual stalk/pullback/locality and exact subcategories. Coherent inclusion, differential rank and relative cohomology use these same class/witness interfaces; the category structure does not supply the explicit fibre-dimension family.
 
 [Tensor](Tensor/README.md) owns exact left/right tensor and `PreservesHomology` for finite locally free coefficients, with affine/injective restriction conditions retained. These results still do not supply `LocalBasisFibreDimension`.
+
+[FreeCover](FreeCover.lean) constructs actual local bases from displayed free
+restrictions on an open cover, including the fixed-rank `SheafHasRank`
+interface. It also transports a displayed free presentation through an
+actual scheme isomorphism. The smooth differential rank theorem consumes
+these constructions; no local-basis fibre-dimension assumption enters them.

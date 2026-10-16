@@ -1,0 +1,43 @@
+{
+  "upstream": "f87a691",
+  "leaves": [
+    {
+      "path": "Aglib/Algebra/Homology/HomologicalComplex/Adjunction.lean",
+      "sha256": "447aaa4bf8a77298776cd627fdcaffc0bf69bc3cf4ac69e63436c49b42eacb8f",
+      "upstream_exact": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/HomotopyCategory/Adjunction.lean",
+      "sha256": "93b68ae575755471504d659645a3802bb6d6a08f0c5fbdfdf545fdbda4e84071",
+      "upstream_exact": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Hom.lean",
+      "sha256": "e7cb3752f8ed43247352f374c8f421f80da1561435cda80ba8597bebbb66e208",
+      "upstream_exact": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Representatives.lean",
+      "sha256": "714a75aaebf642339720b23d0a1414fa6251d15ab7193571164f957f8a58e094",
+      "upstream_exact": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Map.lean",
+      "sha256": "7f06dbb192ba5ad821fa16fd303f6202a8619042359f2f3daafe7eb948cb7e69",
+      "upstream_exact": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/KInjective/Adjunction.lean",
+      "sha256": "aa78dca0c6ed3bee72870421bae8de00eebc1b5ef617f70f7d9aa354b5b2aecd",
+      "upstream_exact": true
+    }
+  ],
+  "source_kind": "Local Aglib main checkout; separate from unchanged origin/main after fetch.",
+  "public_consumer_receipt": "1792112123111714000-79282",
+  "public_consumer_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "Six exact generic leaves only. Bounded-above flat replacements, derivedPullbackMinus and perfect-derived groups are reviewed but not included by this record."
+}

@@ -47,6 +47,7 @@ public import Aglib.RingTheory.MvPolynomial.CoordinateExponents
 public import Aglib.RingTheory.MvPolynomial.CoordinateGrading
 public import Aglib.RingTheory.MvPolynomial.CoordinateLocalization
 public import Aglib.RingTheory.MvPolynomial.CoordinatePieces
+public import Aglib.RingTheory.MvPolynomial.GradedMap
 public import Aglib.RingTheory.MvPolynomial.Homogeneous
 public import Aglib.RingTheory.PrimeFiltration.Basic
 public import Aglib.RingTheory.PrimeFiltration.Length
@@ -71,6 +72,7 @@ public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Reduced
 public import Aglib.RingTheory.Spectrum.Prime.FiberInjectivity
 public import Aglib.RingTheory.Spectrum.Prime.Surjectivity
 public import Aglib.RingTheory.Support.Localization
+public import Aglib.RingTheory.Support.Powers
 public import Aglib.RingTheory.TensorProduct.Domain
 public import Aglib.RingTheory.TensorProduct.Equalizer
 public import Aglib.RingTheory.TensorProduct.PurelyInseparable

@@ -5,3 +5,9 @@
 [ExtensionByZero](ExtensionByZero.lean), imported as `Aglib.AlgebraicGeometry.Modules.Restriction.ExtensionByZero`, gives `Scheme.Modules.extensionByZero`, its restriction adjunction and stalk formulas. The extension is zero outside the actual open range, fully faithful, and exact on the original short exact module-sheaf sequences. The flat-stalk transport keeps its own coefficient-flatness hypotheses.
 
 These maps feed [preservation of injectives by open restriction](../../Cohomology/Injective/README.md), local basis/presentation transport and the canonical [open-base-change](../BaseChange/README.md) comparison. Open immersion is a geometric input; no Noetherian or finite-type hypothesis is imposed merely to define the functors.
+
+[ExtensionByZero/ClosedImmersion](ExtensionByZero/ClosedImmersion.lean)
+gives the original exchange of closed pushforward with genuine open
+extension by zero, with its exact unit and all-module stalkwise
+invertibility. Its [focused guide](ExtensionByZero/README.md) records the
+closed-right-adjoint open-locality consumer.

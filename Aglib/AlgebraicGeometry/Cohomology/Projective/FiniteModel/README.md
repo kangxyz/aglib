@@ -290,3 +290,66 @@ Original cohomology stays in universe `u+1`; the model stays in universe `u`.
 No Noetherianity or flatness of the ring map is required once the model is
 given. The public geometric Grauert consumer checks the native epimorphy
 criterion independently, with only the standard three axioms.
+
+## Shared model owner
+
+The sole model record and construction now live in
+[FiniteModel/Basic](../../FiniteModel/Basic.lean), with its
+[family guide](../../FiniteModel/README.md). `ProjectiveCohomologyModel`
+is the transparent coordinate-cover specialization, retaining the old
+qualified `.mk` and field access and all existing public methods as thin
+delegation. The old source passed `1792123795908750000-61238`; its enhanced
+original public consumer passed `1792123861038373000-62261` with only the
+three standard axioms, including the literal all-ring comparison and
+original inclusion/derived-unit equations. Existing resolution, sheaf,
+numerical and fibre source implementations remain unchanged in this move.
+
+The canonical three base-change equations now delegate to the sole
+[shared BaseChange owner](../../FiniteModel/BaseChange.lean), with the
+same original geometric map, native homology mate, unit pure-tensor
+formula and full mixed-universe linear square. The old wrapper passed
+`1792124530024031000-70518`; the unchanged original public consumer passed
+`1792124584660258000-71578` with only the standard three axioms. There is
+no new flatness or Noetherianity premise on the target ring.
+
+The original all-base-change derived-global-sections methods now delegate
+to [shared Derived](../../FiniteModel/Derived.lean). Their exact names,
+signatures, original scalar-extended integer Cech map and native derived
+unit factors are retained. The old wrapper passed
+`1792125107996662000-77649` in 3 seconds; the unchanged original
+`ProjectiveDerivedBaseChangeConsumer.lean` passed
+`1792125137568494000-78077` with only the standard three axioms for all
+four inspected declarations. No resolution, sheaf or numerical consumer
+source changed in this extraction.
+
+The original `fiberCohomologyDimension_eq_finrank` now delegates to the
+sole [shared Fibers owner](../../FiniteModel/Fibers.lean), retaining its
+exact old statement, ordinary fibre and structural residue-field action.
+The old wrapper passed `1792126437887773000-87565`; the unchanged original
+Euler consumer passed `1792126574816467000-88998`, with only the three
+standard axioms for its two inspected declarations. The same lower proof
+also passed an internally constructed proper-model consumer in arbitrary
+universe `u` (`1792126612714972000-90284`).
+
+The two original `moduleCohomologyBaseChangeMap_isIso_iff` and `_epi_iff`
+methods now thinly delegate to the sole
+[shared BaseChangeCriterion owner](../../FiniteModel/BaseChangeCriterion.lean).
+The old exact public statements and native maps are preserved. The old
+wrapper passed `1792126747172015000-91610`; the unchanged original Grauert
+consumer passed `1792126773999586000-91838`, and the same lower proof on an
+internally constructed proper model passed `1792126810983862000-92117`.
+All inspected declarations use only the standard three axioms.
+
+The model-level upper-semicontinuity proof is now uniquely in
+[shared Semicontinuity](../../FiniteModel/Semicontinuity.lean). The old
+`Projective/Semicontinuity` interface and its geometric supplier retain
+both exact public statements by thin specialization. The old leaf passed
+`1792127403413653000-98249` and its unchanged original public consumer
+`1792127442874241000-98742`, with only the standard three axioms.
+
+Both original model-level Euler statements now thinly delegate to
+[shared EulerCharacteristic](../../FiniteModel/EulerCharacteristic.lean).
+The old names, intrinsic alternating sum, strict support argument and
+original geometric endpoint remain unchanged. Source
+`1792127605022548000-229` and unchanged original consumer
+`1792127629970824000-658` passed, with only standard axioms.

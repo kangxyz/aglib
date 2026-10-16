@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.Fibers
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Fibers.EulerCharacteristic
 public import Aglib.Algebra.Homology.EulerCharacteristic.Cohomology
-public import Aglib.Algebra.Homology.EulerCharacteristic.Fiber
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.EulerCharacteristic
 
 /-!
 # Locally constant projective fibre Euler characteristics
@@ -50,22 +50,10 @@ theorem ProjectiveCohomologyModel.moduleFiberEulerChar_eq_homologyEulerChar
     moduleFiberEulerChar f M p = HomologicalComplex.homologyEulerChar
       (((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
         (.up ℤ)).obj D.complex) := by
-  let : D.complex.IsStrictlyGE 0 := D.lowerBound
-  let : D.complex.IsStrictlyLE (n : ℤ) := D.upperBound
-  let K : CochainComplex (ModuleCat.{u} p.asIdeal.ResidueField) ℤ :=
-    ((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-      (.up ℤ)).obj D.complex
-  have hvan (q : ℕ) (hq : n < q) : moduleFiberCohomologyDimension f M q p = 0 := by
-    rw [D.fiberCohomologyDimension_eq_finrank e hflat q p]
-    let : Subsingleton (K.homology (q : ℤ)) :=
-      ModuleCat.subsingleton_of_isZero (K.isZero_of_isLE (n : ℤ) (q : ℤ)
-        (by exact_mod_cast hq))
-    exact Module.finrank_zero_of_subsingleton
-  rw [moduleFiberEulerChar_eq_sum_range f M p n hvan,
-    K.homologyEulerChar_eq_sum_range n]
-  apply Finset.sum_congr rfl
-  intro q _
-  rw [D.fiberCohomologyDimension_eq_finrank e hflat q p]
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.moduleFiberEulerChar_eq_homologyEulerChar D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat p
 
 /-- The intrinsic original fibre Euler characteristic is locally constant for the
 displayed actual universal model, without additional Noetherian hypotheses on its data. -/
@@ -73,17 +61,10 @@ theorem ProjectiveCohomologyModel.isLocallyConstant_moduleFiberEulerChar
     (D : ProjectiveCohomologyModel R ι i f M n) [M.IsQuasicoherent]
     (e : ι ≃ Fin (n + 1)) (hflat : Scheme.Modules.relativeFlat f M) :
     IsLocallyConstant (moduleFiberEulerChar f M) := by
-  let : D.complex.IsStrictlyGE 0 := D.lowerBound
-  let : D.complex.IsStrictlyLE (n : ℤ) := D.upperBound
-  let (j : ℤ) : Module.Finite R (D.complex.X j) := D.finite_X j
-  let (j : ℤ) : Module.Projective R (D.complex.X j) := D.projective_X j
-  have he : moduleFiberEulerChar f M = fun p : PrimeSpectrum R =>
-      HomologicalComplex.homologyEulerChar
-        (((ModuleCat.extendScalars (algebraMap R p.asIdeal.ResidueField)).mapHomologicalComplex
-          (.up ℤ)).obj D.complex) :=
-    funext (D.moduleFiberEulerChar_eq_homologyEulerChar e hflat)
-  rw [he]
-  exact D.complex.isLocallyConstant_homologyEulerChar_residueField_of_projective 0 (n : ℤ)
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.isLocallyConstant_moduleFiberEulerChar D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat
 
 /-- Original fibre Euler characteristics of coherent relatively flat coefficients on
 an actual projective embedding over a Noetherian ring are locally constant. The proved

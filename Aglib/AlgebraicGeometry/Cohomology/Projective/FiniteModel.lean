@@ -1,24 +1,23 @@
 /-
 Copyright (c) 2026 Aglib contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Homology.FiniteProjective.Replacement
-public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.FlatModel
-public import Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Derived
+public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
 
 /-!
 # Constructed finite-projective cohomology models for projective embeddings
 
 The coordinate cover of an actual closed immersion into projective space
-gives the original bounded flat Cech complex for a relatively flat coherent
-coefficient. Over a Noetherian base, proved projective coherent finiteness
-supplies finite original homology. Actual algebraic replacement constructs
-a bounded finite-projective complex and an actual map into this unchanged
-Cech model. The same literal map remains a quasi-isomorphism after every
-ring base change. The model is output data, not an assumed comparison family.
+specializes the sole finite-affine-cover model. Over a Noetherian base,
+proved projective coherent finiteness supplies the actual cohomology input
+to that generic constructor. Original public names, constructor/field access
+and all original chain, cohomology and derived-unit maps are retained as
+transparent specialization and thin delegation. There is one model record
+and one construction, shared with the proper supplier.
 -/
 
 @[expose] public section
@@ -44,18 +43,67 @@ variable (R : Type u) [CommRing R] (ι : Type u) {X : Scheme.{u}}
 /-- Actual bounded finite-projective model data and its literal comparison
 to the original coordinate-cover good Cech truncation. All-base-change
 quasi-isomorphisms concern this same actual chain map. -/
-structure ProjectiveCohomologyModel where
-  complex : CochainComplex (ModuleCat.{u} R) ℤ
-  lowerBound : complex.IsStrictlyGE 0
-  upperBound : complex.IsStrictlyLE (n : ℤ)
-  finite_X : ∀ j, Module.Finite R (complex.X j)
-  projective_X : ∀ j, Module.Projective R (complex.X j)
-  comparison : complex ⟶ moduleFiniteCechComplex X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)
-    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n
-  quasiIso : QuasiIso comparison
-  baseChange_quasiIso : ∀ (B : Type u) [CommRing B] (σ : R →+* B),
-    QuasiIso (((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map comparison)
+abbrev ProjectiveCohomologyModel :=
+  FiniteCechCohomologyModel R ι X f (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n
+
+namespace ProjectiveCohomologyModel
+
+variable {R ι i f M n}
+
+/-- The original constructor access for the transparent coordinate-cover specialization. -/
+abbrev mk (complex : CochainComplex (ModuleCat.{u} R) ℤ)
+    (lowerBound : complex.IsStrictlyGE 0) (upperBound : complex.IsStrictlyLE (n : ℤ))
+    (finite_X : ∀ j, Module.Finite R (complex.X j))
+    (projective_X : ∀ j, Module.Projective R (complex.X j))
+    (comparison : complex ⟶ moduleFiniteCechComplex X
+      (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)
+      (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n)
+    (quasiIso : QuasiIso comparison)
+    (baseChange_quasiIso : ∀ (B : Type u) [CommRing B] (σ : R →+* B),
+      QuasiIso (((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map comparison)) :
+    ProjectiveCohomologyModel R ι i f M n :=
+  { complex := complex
+    lowerBound := lowerBound
+    upperBound := upperBound
+    finite_X := finite_X
+    projective_X := projective_X
+    comparison := comparison
+    quasiIso := quasiIso
+    baseChange_quasiIso := baseChange_quasiIso }
+
+/-- The same actual finite-projective complex. -/
+abbrev complex (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.complex D
+
+/-- The original strict lower bound. -/
+abbrev lowerBound (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.lowerBound D
+
+/-- The original strict upper bound. -/
+abbrev upperBound (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.upperBound D
+
+/-- Finiteness of the same original terms. -/
+abbrev finite_X (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.finite_X D
+
+/-- Projectivity of the same original terms. -/
+abbrev projective_X (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.projective_X D
+
+/-- The same actual map to the coordinate-cover Cech truncation. -/
+abbrev comparison (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.comparison D
+
+/-- The original comparison quasi-isomorphism. -/
+abbrev quasiIso (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.quasiIso D
+
+/-- Quasi-isomorphism of each literal scalar extension of the same map. -/
+abbrev baseChange_quasiIso (D : ProjectiveCohomologyModel R ι i f M n) :=
+  FiniteCechCohomologyModel.baseChange_quasiIso D
+
+end ProjectiveCohomologyModel
 
 variable [IsClosedImmersion i]
 
@@ -68,37 +116,11 @@ theorem nonempty_projectiveCohomologyModel_of_embedding [IsNoetherianRing R]
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
   let : M.IsQuasicoherent :=
     quasicoherent_of_affineCharts M (fun A j _ => (hM A j).1)
-  let α := f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom
-  let U : ι → X.Opens := fun j => i ⁻¹ᵁ coordinateOpen R ι j
-  have hU (j : ι) : IsAffineOpen (U j) := (isAffineOpen_coordinateOpen R ι j).preimage i
-  have hcover : iSup U = ⊤ := i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)
-  let K : CochainComplex (ModuleCat.{u} R) ℤ := moduleFiniteCechComplex X α U M n
-  let (j : ℤ) : Module.Flat R (K.X j) :=
-    moduleFiniteCechComplex_flat_X_of_relativeFlat f M hflat U n e hU hcover j
-  let (j : ℤ) : Module.Finite R (K.homology j) := by
-    by_cases hj : 0 ≤ j
-    · let q := j.toNat
-      let := moduleCohomologyModuleOfHom X α M q
-      let : Module.Finite R (Sheaf.H.{u + 1} (moduleAddSheaf X M) q) :=
-        moduleCohomology_finite_of_projectiveEmbedding R ι i n e f hf M hM q
-      have hq : (q : ℤ) = j := Int.toNat_of_nonneg hj
-      have H : Module.Finite R (K.homology (q : ℤ)) := Module.Finite.equiv
-        (moduleFiniteCechCohomologyLinearEquiv X α U M n e hU hcover q).symm
-      rw [hq] at H
-      exact H
-    · let := ModuleCat.subsingleton_of_isZero
-        ((K.exactAt_of_isGE 0 j (by omega)).isZero_homology)
-      infer_instance
-  obtain ⟨P, hge, hle, hfinite, hprojective, u, hu, hbase⟩ :=
-    CochainComplex.exists_finiteProjective_model_with_baseChange.{u, u, u} K n
-  exact ⟨{ complex := P
-           lowerBound := hge
-           upperBound := hle
-           finite_X := hfinite
-           projective_X := hprojective
-           comparison := u
-           quasiIso := hu
-           baseChange_quasiIso := hbase }⟩
+  exact nonempty_finiteCechCohomologyModel_of_finite_cohomology R ι X f
+    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n e
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) hflat
+    (fun q => moduleCohomology_finite_of_projectiveEmbedding R ι i n e f hf M hM q)
 
 /-- A chosen actual finite-projective model, obtained from the proved
 existence theorem and retaining its original chain comparison. -/
@@ -113,17 +135,13 @@ namespace ProjectiveCohomologyModel
 variable {R ι i f M n} (D : ProjectiveCohomologyModel R ι i f M n)
 
 /-- The actual bounded model packed in the native bounded-below category. -/
-def toPlus : CochainComplex.Plus (ModuleCat.{u} R) :=
-  ⟨D.complex, 0, D.lowerBound⟩
+def toPlus : CochainComplex.Plus (ModuleCat.{u} R) := FiniteCechCohomologyModel.toPlus D
 
 /-- The original model comparison followed by the original good-truncation
 inclusion, as an actual map to the unchanged native integer Cech complex. -/
 def toCechPlus : D.toPlus ⟶ moduleCechComplexPlus X
     (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)
-    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M :=
-  ⟨D.comparison ≫ moduleFiniteCechInclusion X
-    (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)
-    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n⟩
+    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M := FiniteCechCohomologyModel.toCechPlus D
 
 variable [M.IsQuasicoherent]
 
@@ -131,15 +149,9 @@ variable [M.IsQuasicoherent]
 quasi-isomorphism, using the original coordinate-cover inclusion. -/
 theorem toCechPlus_quasiIso (e : ι ≃ Fin (n + 1)) : QuasiIso D.toCechPlus.hom := by
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
-  let : QuasiIso D.comparison := D.quasiIso
-  let : QuasiIso (moduleFiniteCechInclusion X
-      (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)
-      (fun j => i ⁻¹ᵁ coordinateOpen R ι j) M n) :=
-    moduleFiniteCechInclusion_quasiIso X _ _ M n e
-      (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
-      (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι))
-  change QuasiIso (D.comparison ≫ _)
-  infer_instance
+  exact FiniteCechCohomologyModel.toCechPlus_quasiIso D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e
 
 local instance finiteModelDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
@@ -157,13 +169,10 @@ def derivedGlobalSectionsIso (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M
         (f.appTop.hom.comp
           (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom)).rightDerivedFunctorPlus.obj
           ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M) := by
-  let : IsIso (DerivedCategory.Plus.Q.map D.toCechPlus) :=
-    Localization.inverts _ (CochainComplex.Plus.quasiIso (ModuleCat.{u} R)) _
-      (D.toCechPlus_quasiIso e)
-  exact asIso (DerivedCategory.Plus.Q.map D.toCechPlus) ≪≫
-    moduleCechDerivedGlobalSectionsIso X _ _ I
-      (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι))
-      (isAffineOpen_projectiveEmbeddingTuple R ι i)
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.derivedGlobalSectionsIso D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e I
 
 /-- The native derived-object comparison retains the literal actual map
 to original Cech and the original derived Cech comparison. -/
@@ -183,11 +192,9 @@ def cohomologyLinearEquiv (e : ι ≃ Fin (n + 1)) (q : ℕ) :
     letI := moduleCohomologyModuleOfHom X α M q
     D.complex.homology (q : ℤ) ≃ₗ[R] Sheaf.H.{u + 1} (moduleAddSheaf X M) q := by
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
-  let : QuasiIso D.comparison := D.quasiIso
-  exact (asIso (homologyMap D.comparison (q : ℤ))).toLinearEquiv.trans
-    (moduleFiniteCechCohomologyLinearEquiv X _ _ M n e
-      (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
-      (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) q)
+  exact FiniteCechCohomologyModel.cohomologyLinearEquiv D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e q
 
 /-- The scalar-linear comparison retains the original native homology
 map of the actual model-to-Cech chain comparison. -/
@@ -213,21 +220,19 @@ def baseChangeComparison (e : ι ≃ Fin (n + 1))
         (r.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of B)).inv.hom)
         (fun j => p ⁻¹ᵁ (i ⁻¹ᵁ coordinateOpen R ι j)) ((Scheme.Modules.pullback p).obj M) n := by
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
-  exact ((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.comparison ≫
-    (moduleFiniteCechBaseChangeIso f M hflat (fun j => i ⁻¹ᵁ coordinateOpen R ι j) n e
-      (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
-      (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) σ).hom
+  exact FiniteCechCohomologyModel.baseChangeComparison D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat σ
 
 /-- The actual base-change representative is a quasi-isomorphism for
 every ring map, including nonflat maps to non-Noetherian rings. -/
 theorem baseChangeComparison_quasiIso (e : ι ≃ Fin (n + 1))
     (hflat : Scheme.Modules.relativeFlat f M) {B : Type u} [CommRing B] (σ : R →+* B) :
     QuasiIso (D.baseChangeComparison e hflat σ) := by
-  let : QuasiIso
-      (((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.comparison) :=
-    D.baseChange_quasiIso B σ
-  dsimp only [baseChangeComparison]
-  infer_instance
+  let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
+  exact FiniteCechCohomologyModel.baseChangeComparison_quasiIso D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat σ
 
 /-- The exact representative square retains the original model-to-Cech
 map, both original finite inclusions, and the original integer Cech
@@ -245,17 +250,10 @@ theorem baseChangeComparison_inclusion (e : ι ≃ Fin (n + 1))
           (fun j => p ⁻¹ᵁ (i ⁻¹ᵁ coordinateOpen R ι j)) ((Scheme.Modules.pullback p).obj M) n =
       ((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.toCechPlus.hom ≫
         moduleCechIntBaseChangeMap f σ M (fun j => i ⁻¹ᵁ coordinateOpen R ι j) := by
-  let : Fintype ι := Fintype.ofEquiv (Fin (n + 1)) e.symm
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
-  dsimp only
-  have h := moduleFiniteCechBaseChangeIso_hom_ιTruncLE f M hflat
-    (fun j => i ⁻¹ᵁ coordinateOpen R ι j) n e
+  exact FiniteCechCohomologyModel.baseChangeComparison_inclusion D
     (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
-    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) σ
-  dsimp only at h
-  simpa only [baseChangeComparison, toCechPlus, Functor.map_comp, Category.assoc] using
-    congrArg
-      (fun k => ((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.comparison ≫ k) h
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat σ
 
 /-- After every ring base change the actual tensor of this same model
 computes the unchanged original cohomology of the ordinary pulled
@@ -272,13 +270,9 @@ def baseChangeCohomologyLinearEquiv (e : ι ≃ Fin (n + 1))
     ((((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).obj D.complex).homology
       (q : ℤ)) ≃ₗ[B] Sheaf.H.{u + 1} (moduleAddSheaf Y N) q := by
   let : X.IsSeparated := ⟨by rw [← terminal.comp_from i]; infer_instance⟩
-  let a := ((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.comparison
-  let : QuasiIso a := D.baseChange_quasiIso B σ
-  exact (asIso (homologyMap a (q : ℤ))).toLinearEquiv.trans
-    (moduleFiniteCechBaseChangeCohomologyLinearEquiv f M hflat
-      (fun j => i ⁻¹ᵁ coordinateOpen R ι j) n e
-      (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
-      (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) σ q)
+  exact FiniteCechCohomologyModel.baseChangeCohomologyLinearEquiv D
+    (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
+    (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e hflat σ q
 
 /-- The all-base-change computation uses the homology of the literal
 scalar extension of the same actual model comparison. -/

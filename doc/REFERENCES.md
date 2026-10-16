@@ -41,3 +41,33 @@ Local-basis fibre dimension, proper module finiteness and relative locally free 
 [latest-quillen](migration/latest-quillen.json) records the local source-authority comparison. [latest-scheme](migration/latest-scheme.json) records the fixed generic scheme/tensor/Godement selections and their exact cuts. [latest-homology](migration/latest-homology.json) records the twelve generic bounded derived/truncation/comparison leaves. [latest-general-cuts](migration/latest-general-cuts.json) records the four independent affine-induction, zero-section, good-truncation and cartesian-open roots and the eighteen coupled lower destinations. Multi-source leaves have separate rows for their exact original-source selections. These include generic cone/sequence and coefficient primitives, ordinary module-complex operations, locally split tensor, actual Godement carrier/unit/open comparisons and derived locality. Original containing PerfectComplexes/projective-line paths are source locators, not production imports or wholesale admission.
 
 The extended organization crosswalk includes Stacks Chapter 13, Derived Categories, alongside Chapters 12, 17–18 and 20–21 for the generic derived/site tensor layer. At the Mathlib pin, `Algebra/Homology/DerivedCategory/{Plus,ShortExact,RightDerivedFunctorPlus}.lean`, `CategoryTheory/Triangulated/Functor.lean`, `Algebra/Homology/Embedding/CochainComplex.lean`, `Algebra/Category/ModuleCat/Presheaf/Monoidal.lean` and `Sheaf/Colimits.lean` were checked as actual source paths. These are organization/source-interface correspondences, not new external theorem attributions.
+
+## Supplied Motivic Koszul selection
+
+[motivic-koszul](migration/motivic-koszul.json) records the selected eighteen
+generic source leaves from the user-supplied archive
+`motivic-cohomology-complete-current742-source-m27-20261016T002808.167583Z.tar.gz`.
+The user authored this independent library and authorized early reuse of
+needed foundations. Original contributor and Apache notices are retained.
+The record keeps archive and per-source hashes, current destination hashes,
+native owners and focused verification receipts. This is a bounded source
+selection, not admission or verification of the complete independent library.
+Actual finite Koszul complexes, signed maps and regular-sequence quotient
+resolutions now live under `ChainComplex.Koszul`; the elementwise criterion
+belongs to `CategoryTheory.ShortComplex`. Geometric purity and determinant
+identifications are separate consumers.
+
+[upstream-derived](migration/upstream-derived.json) records six exact generic
+adjunction/K-injective leaves selected from local Aglib main `f87a691`, with
+unchanged destination bytes and their independent public consumer. This
+source is distinct from the fetched remote main. Later root-authored
+injective-complex and original unit-comparison leaves have their own native
+owners and are not represented as unchanged upstream selections.
+
+[upstream-smooth-differentials](migration/upstream-smooth-differentials.json)
+records the minimal four-leaf selection from local Aglib main `40af743`.
+It supplies the canonical affine differential comparison, standard-smooth
+bases and the actual field-scheme smooth-rank theorem, preserving the
+source's earlier R5 provenance in each header. The record includes exact
+source/destination hashes and independent public verification. It does not
+attribute exterior, determinant or duality identifications to that source.

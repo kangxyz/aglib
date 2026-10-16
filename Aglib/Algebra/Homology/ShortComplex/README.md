@@ -88,3 +88,11 @@ left-homology generalization). The affected field Cech
 consumer compiled with `build Aglib.AlgebraicGeometry.Cohomology.BaseChange.CechComparison`,
 receipt `.lake/verification/cohomology/1792072566845036000-37322`, after replacing its
 proof with delegation. No aggregate library compilation was run.
+
+[ModuleQuasiIso](ModuleQuasiIso.lean) proves
+`ShortComplex.quasiIso_of_liftCycles_of_reflectBoundaries` for modules over an
+arbitrary ring, with independent ring and carrier universes. Lifting every
+cycle and reflecting boundaries proves that the actual map is a
+quasi-isomorphism, using native kernel/range-quotient homology data. The
+one-element Koszul tensor augmentation consumes this selected generic proof
+from the user-supplied Motivic source.

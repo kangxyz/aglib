@@ -36,3 +36,7 @@ flatness or quasicoherence premise.
 [PullbackPushforward](PullbackPushforward.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward`, constructs `Scheme.Modules.Plus.pullbackPushforwardUnit` on actual bounded-below complexes for an arbitrary scheme morphism. This unit goes from the identity to termwise pullback followed by termwise direct image. Its derived composite `Scheme.Modules.derivedPullbackPushforwardPlus`, `derivedPullbackPushforwardPlusUnitOnPlus` and `derivedPullbackPushforwardPlusUnit` retain flatness and the canonical derived-category choices. The derived composite is `derivedFlatPullbackPlus p ⋙ derivedPushforwardPlus p`; the component equation records the installed derived unit. Ordinary definition and derived comparison have separate hypotheses.
 
 [Identity](Identity.lean) gives `Scheme.Modules.derivedFlatPullbackPlusIdIso` from the actual module pullback identity and the native right-derived identity comparison. [Restriction](Restriction.lean) constructs `Scheme.Modules.derivedRestrictionPlus` for an actual open immersion. `isIso_derivedRestrictionPlusUnit` makes its original right-derived unit invertible, using preservation of homology by the actual exact restriction functor. These interfaces act on the actual D+ module category and require no perfect-object predicate.
+
+[Pushforward/Shift](Pushforward/Shift.lean) exposes the original installed
+derived pushforward's native shifts, triangulated structure and unit
+compatibility, without a new derived model or geometric hypothesis.
