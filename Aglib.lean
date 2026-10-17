@@ -558,6 +558,14 @@ public import Aglib.AlgebraicGeometry.Cohomology.Support.Finite
 public import Aglib.AlgebraicGeometry.Cohomology.Support.Skyscraper
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Noetherian
+public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
+public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
+public import Aglib.AlgebraicGeometry.Descent.Modules.OpenCoverGluing
+public import Aglib.AlgebraicGeometry.Descent.Modules.Pseudofunctor
+public import Aglib.AlgebraicGeometry.Descent.Modules.RestrictPullback
+public import Aglib.AlgebraicGeometry.Descent.Modules.Substack
+public import Aglib.AlgebraicGeometry.Descent.Modules.Zariski
+public import Aglib.AlgebraicGeometry.Descent.Modules.ZariskiStack
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.FinitePresentation
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Fibre
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Field
@@ -578,8 +586,6 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Fibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
-public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
-public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.Pullback
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
@@ -678,12 +684,6 @@ public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Minus.PullbackComp
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Minus.ResolvedPullback
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Restriction
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.RestrictionHom
-public import Aglib.AlgebraicGeometry.Modules.Descent.OpenCoverGluing
-public import Aglib.AlgebraicGeometry.Modules.Descent.Pseudofunctor
-public import Aglib.AlgebraicGeometry.Modules.Descent.RestrictPullback
-public import Aglib.AlgebraicGeometry.Modules.Descent.Substack
-public import Aglib.AlgebraicGeometry.Modules.Descent.Zariski
-public import Aglib.AlgebraicGeometry.Modules.Descent.ZariskiStack
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Affine
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Basic
 public import Aglib.AlgebraicGeometry.Modules.Differentials.EtalePullback
