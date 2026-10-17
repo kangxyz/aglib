@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Full integration is serialized by the package integrator. Source-only is read-only.
+# Separately requested comprehensive diagnostics and declared CI only; normal local checks must be incremental. Source-only is read-only.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 source_only=0
@@ -25,7 +25,7 @@ verification_dir="${AGLIB_VERIFY_DIR:-$PWD/.lake/verification/$(date +%Y%m%d-%H%
 project_root="$PWD"
 export LEAN_NUM_THREADS=1
 if (( ci_mode )); then
-  echo "CI scope: build/lint/axiom/control/inventory/client checks; additional independent kernel replay is local prepublication."
+  echo "CI scope: build/lint/axiom/control/inventory/client checks; publication replay coverage may reuse compatible local evidence."
 fi
 safe() {
   local phase="$1"
