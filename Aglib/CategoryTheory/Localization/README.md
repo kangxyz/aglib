@@ -15,3 +15,21 @@ that the localized inclusion is fully faithful; a uniform counit index is not
 assumed. Essential surjectivity or an equivalence is not supplied by this
 criterion. The bounded-above derived-category localization uses good truncation
 as this actual approximation family.
+
+## Monoidal localization through chosen isomorphisms
+
+[Monoidal/Induced](Monoidal/Induced.lean), imported as
+`Aglib.CategoryTheory.Localization.Monoidal.Induced`, works in Mathlib's
+namespace `CategoryTheory.Localization.Monoidal`. Let `L : C ⥤ D` be a
+localization functor at a monoidal class `W`, with Mathlib's localized
+monoidal structure `LocalizedMonoidal L W ε`. For objects `Mᵢ` with chosen
+isomorphisms `eᵢ : L.obj Aᵢ ≅ Mᵢ`, `μOf e₁ e₂ : M₁ ⊗ M₂ ≅ L.obj (A₁ ⊗ A₂)`
+transports Mathlib's tensor comparison `μ`. The lemmas `map_tensorHom_eq`,
+`map_whiskerRight_comp_associator_eq`, `map_leftUnitor_hom_comp`,
+`map_rightUnitor_hom_comp` and `μOf_hom_comp_map_braiding` express the
+localized tensor maps, associator, unitors and braiding through `μOf` as
+images under `L` of the structure maps of `C`, in exactly the shape of the
+equations of `Monoidal.InducingFunctorData` and of the braiding condition of
+`BraidedCategory.ofFaithful`. Objects, morphisms and isomorphisms are
+arbitrary, and the file imports only Mathlib. Its consumer is the
+[monoidal structure on scheme modules](../../AlgebraicGeometry/Modules/Tensor/Monoidal/README.md).

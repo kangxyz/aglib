@@ -20,6 +20,10 @@ public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
 public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Integral
 public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Spec
+public import AglibTest.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
+public import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
+public import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.LocalIso
+public import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.Sections
 public import AglibTest.AlgebraicGeometry.Picard.Affine
 public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
 public import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms

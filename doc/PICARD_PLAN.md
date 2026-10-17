@@ -504,6 +504,11 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     epimorphism `∐ᵢ O(0) ⊗ F → O(1) ⊗ F` and commuting coordinate
     multiplications. Nitsure Lemma 2.1 (a)–(c) and Thm 2.3 are open.
   - The flattening stratification needs Fitting ideals, a new foundation.
+- **Tensor layer (supports M4).** `Modules/Tensor/Monoidal` gives a symmetric
+  monoidal structure on `X.Modules` whose data are Aglib's tensor maps, with a general
+  associator; its input is that local isomorphisms of module presheaves are stable
+  under tensor (`presheafLocalIso_isMonoidal`). The twisting sheaves as a monoidal
+  functor `Discrete ℤ ⥤ P.Modules` are in progress.
 - **M3 in progress.**
   - Done for the free module `R^n` over `Spec R`:
     - Grassmannian charts, chart representability on `Over (Spec R)`, and the

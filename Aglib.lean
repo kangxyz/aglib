@@ -735,6 +735,8 @@ public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeFunctor
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafSource
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
@@ -906,6 +908,11 @@ public import Aglib.AlgebraicGeometry.Modules.Support
 public import Aglib.AlgebraicGeometry.Modules.Tensor.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Linear
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Associator
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.LocalIso
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Sections
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Symmetric
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Tensor.SectionStalk
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Sections
@@ -1066,6 +1073,7 @@ public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
 public import Aglib.CategoryTheory.Localization.Approximation
+public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
