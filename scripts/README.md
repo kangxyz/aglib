@@ -9,8 +9,11 @@ Run these tools from the package root. Production Lean modules do not depend on
 
 Incremental checking includes applicable compilation, declaration/text-style lint,
 affected `AglibTest` and client tests, and affected source/trust checks. Cover the
-relevant categories for a coherent maintained change, reusing compatible evidence;
-compilation alone does not supply separate lint or test coverage. The
+relevant categories in the task's final validation before delivery, reusing
+compatible evidence. Develop with incremental compilation and its diagnostics;
+independent lint and tests run only at final validation, not after each
+helper return, internal commit or merge. After repairs, rerun only failed or
+newly affected checks. Compilation alone does not supply separate lint or test coverage. The
 [authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds) owns that selection
 and timing. Check scope is incremental across these categories.
 
