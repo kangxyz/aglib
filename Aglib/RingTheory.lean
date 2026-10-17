@@ -14,6 +14,7 @@ public import Aglib.RingTheory.Descent.Canonical
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Etale
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Presentation
 public import Aglib.RingTheory.Descent.FinitePresentation
+public import Aglib.RingTheory.Descent.Ideal
 public import Aglib.RingTheory.Descent.Invertible
 public import Aglib.RingTheory.Descent.Morphisms
 public import Aglib.RingTheory.Descent.Nilpotent
