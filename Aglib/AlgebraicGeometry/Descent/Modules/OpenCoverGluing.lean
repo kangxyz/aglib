@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Descent.Zariski
+public import Aglib.AlgebraicGeometry.Descent.Modules.Zariski
 public import Mathlib.Topology.Sheaves.SheafCondition.UniqueGluing
 
 /-!

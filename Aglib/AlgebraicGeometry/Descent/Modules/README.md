@@ -34,7 +34,7 @@ categorical descent family (Aglib `CategoryTheory/Sites/Descent/` or Mathlib).
 [RestrictPullback](RestrictPullback.lean) proves that Mathlib's
 `restrictFunctorIsoPullback` is compatible with `restrictFunctorComp`/`pullbackComp`
 (`restrictFunctorIsoPullback_comp_hom_app`) and with `restrictFunctorCongr`/`pullbackCongr`.
-Its intended owner is [Pullback](../Pullback/README.md) (`OpenRestriction`) or Mathlib's
+Its intended owner is [Pullback](../../Modules/Pullback/README.md) (`OpenRestriction`) or Mathlib's
 `Modules/Sheaf.lean`.
 
 [Zariski](Zariski.lean):
@@ -119,4 +119,4 @@ two lemmas in Pseudofunctor, one definition in Substack, four lemmas in Zariski,
 `comp_first_restrict_eq`). RestrictPullback needs none.
 
 The focused consumer is
-[AglibTest/AlgebraicGeometry/Modules/Descent/Zariski.lean](../../../../AglibTest/AlgebraicGeometry/Modules/Descent/Zariski.lean).
+[AglibTest/AlgebraicGeometry/Descent/Modules/Zariski.lean](../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Zariski.lean).

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Descent.Pseudofunctor
-public import Aglib.AlgebraicGeometry.Modules.Descent.Substack
-public import Aglib.AlgebraicGeometry.Modules.Descent.RestrictPullback
+public import Aglib.AlgebraicGeometry.Descent.Modules.Pseudofunctor
+public import Aglib.AlgebraicGeometry.Descent.Modules.Substack
+public import Aglib.AlgebraicGeometry.Descent.Modules.RestrictPullback
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Locality

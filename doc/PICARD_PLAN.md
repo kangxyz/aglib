@@ -133,10 +133,10 @@ commitments.
 | --- | --- | --- | --- |
 | F1 | Picard presheaves on `Over S` (migrated from R5Lab), group structure, base and family maps | proved: `Picard/Presheaf`, `Picard/Normalized`, `Picard/Fppf` (namespace `Scheme.RelativePicard`), including the sheafified-family comparison | S |
 | F2 | `PicardGroup (Spec A) ≃+ CommRing.Pic A`; local triviality; `Small.{u} (PicardGroup X)` | proved: `Modules/Invertible/Affine`, `LocalRing`, `ChartCocycle` | M |
-| F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | proved: `Modules/Descent` (`isStack_pullbackPseudofunctor_zariskiTopology`, `isStack_quasicoherentPseudofunctor_zariskiTopology`, `isStack_lineBundlePseudofunctor_zariskiTopology`) | M |
+| F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | proved: `Descent/Modules` (`isStack_pullbackPseudofunctor_zariskiTopology`, `isStack_quasicoherentPseudofunctor_zariskiTopology`, `isStack_lineBundlePseudofunctor_zariskiTopology`) | M |
 | F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | proved: `Cohomology/Proper/StructureSheaf` | M |
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | proved: `Algebra/Category/ModuleCat/Descent` (`isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, for Mathlib's descent data on `CommRingCatᵒᵖ`) and `RingTheory/Descent/FinitePresentation`, `Invertible` | M |
-| F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | partial: closed-subscheme descent along one flat, surjective, quasi-compact morphism (`IdealSheaf/Descent`, Nitsure 6.7(2)), with 6.7(1) from Mathlib's `EffectiveEpi`; the fppf `IsStack` forms are in progress (`Modules/Descent/Fppf`) | L |
+| F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | partial: closed-subscheme descent along one flat, surjective, quasi-compact morphism (`Descent/IdealSheaf`, Nitsure 6.7(2)), with 6.7(1) from Mathlib's `EffectiveEpi`; the fppf `IsStack` forms are in progress (`Descent/Modules/Fppf`) | L |
 | F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | absent | M |
 | F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras) and `Grassmannian/FunctorOfPoints` (the extension to all test schemes); open: locally free `E`, the locally free quotient description, `P(E)`, Plücker | L |
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
@@ -355,8 +355,8 @@ flowchart TD
 M1, M3 and the commutative algebra of F11 and F12 have disjoint write scopes
 and can run in parallel. Write ownership is by family:
 `AlgebraicGeometry/Picard/` for F1, F7, F15, F17 and F18;
-`AlgebraicGeometry/Modules/Descent/` and `Algebra/Category/ModuleCat/Descent/`
-for F3, F5 and F6, with `AlgebraicGeometry/IdealSheaf/Descent/` and
+`AlgebraicGeometry/Descent/Modules/` and `Algebra/Category/ModuleCat/Descent/`
+for F3, F5 and F6, with `AlgebraicGeometry/Descent/IdealSheaf/` and
 `RingTheory/Descent/Ideal` for closed-subscheme descent; `AlgebraicGeometry/Grassmannian/` and
 `AlgebraicGeometry/ProjectiveSpace/` for F8 and F9; `AlgebraicGeometry/Hilbert/`
 for F13, F14 and F16, with `RingTheory/GenericFreeness/` and
@@ -469,11 +469,11 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     presentation and invertibility. An independent statement review found it
     corresponding; its documentation repairs are applied.
   - F3 done: module sheaves, quasi-coherent sheaves and line bundles form stacks
-    for `Scheme.zariskiTopology` (unconditional instances in `Modules/Descent`).
+    for `Scheme.zariskiTopology` (unconditional instances in `Descent/Modules`).
     An independent statement review, which recompiled the frozen copy, found it
     corresponding.
   - F6, closed subschemes: Nitsure Lemma 6.7(2) for one flat, surjective,
-    quasi-compact morphism, in ideal-sheaf form (`IdealSheaf/Descent`, with the
+    quasi-compact morphism, in ideal-sheaf form (`Descent/IdealSheaf`, with the
     ring-level `RingTheory/Descent/Ideal`). An independent statement review found
     it corresponding.
   - F7 first slice: rigidified pairs, Kleiman Lemmas 2.9 and 2.10, and the
