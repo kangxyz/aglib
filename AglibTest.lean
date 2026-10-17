@@ -9,6 +9,8 @@ module
 
 public import AglibTest.AffineCohomology
 public import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
+public import AglibTest.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial
+public import AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity
 public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 public import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 public import AglibTest.AlgebraicGeometry.Grassmannian.Chart

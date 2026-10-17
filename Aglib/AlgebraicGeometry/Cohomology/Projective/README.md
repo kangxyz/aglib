@@ -224,6 +224,16 @@ the model internally; their independent consumer passed
 
 [Coherent higher Serre duality](../Duality/Projective/Higher.lean) is now proved for every field, arbitrary projective dimension and every complementary pair `i+j=n`. The original Yoneda/residue pairing is perfect, giving both `Extʲ(M,O(-n-1)) ≃ Hⁱ(M)ᵛ` and `Hⁱ(M) ≃ Extʲ(M,O(-n-1))ᵛ`, with exact original coefficient naturality and dimension zero retained. Its [owning guide](../Duality/Projective/README.md) records the actual presentation proof, field hypothesis, map formulas and public verification.
 
+## Hilbert polynomials and regularity
+
+[HilbertPolynomial](HilbertPolynomial/README.md) proves that `m ↦ χ(O(m) ⊗ F)` is
+a polynomial function on all integers for every coherent module `F` on polynomial
+projective space over a field, and defines its Hilbert polynomial.
+[Regularity](Regularity/README.md) defines Castelnuovo–Mumford regularity and
+proves the coordinate epimorphism `∐ᵢ O(0) ⊗ F → O(1) ⊗ F` and the commutation of
+coordinate multiplications over any base ring. Nitsure's Lemma 2.1, Mumford's
+bound and local constancy of the Hilbert polynomial in flat families remain open.
+
 ## Relative projective projections
 
 The focused [Projection](Projection/README.md) family proves coherence of

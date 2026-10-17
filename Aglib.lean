@@ -513,6 +513,11 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.GlobalSections.Homog
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.GlobalSections.Polynomial
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Grauert
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Grauert.Global
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Coordinate
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Difference
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.EulerCharacteristic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.TwistMultiplication
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LaurentComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LocalBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LocalCoefficients
@@ -527,6 +532,8 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Amplitude
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Coherence
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Derived
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Vanishing
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.CoordinateGeneration
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.RightExact
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Semicontinuity
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing
