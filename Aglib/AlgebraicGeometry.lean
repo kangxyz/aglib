@@ -689,6 +689,9 @@ public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Basic
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Dimension
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Finite
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Stalks
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Injectivity
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.Normalized
 public import Aglib.AlgebraicGeometry.Picard.Presheaf

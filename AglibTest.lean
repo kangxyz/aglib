@@ -15,6 +15,9 @@ public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
 public import AglibTest.AlgebraicGeometry.Picard.Affine
 public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
+public import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms
+public import AglibTest.AlgebraicGeometry.Picard.Comparison.Injectivity
+public import AglibTest.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import AglibTest.AlgebraicGeometry.Picard.Functors
 public import AglibTest.AlgebraicGeometry.Picard.Interfaces
 public import AglibTest.ArchiveBaseProductInterchange

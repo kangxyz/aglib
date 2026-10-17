@@ -65,9 +65,15 @@ set-valued fppf sheafification of `T ↦ Pic(X_T)`; here sheafification is taken
 `AddCommGrpCat.{u + 1}`. The local-bijectivity criterion is Mathlib's
 `GrothendieckTopology.WEqualsLocallyBijective` instance for `AddCommGrpCat.{u + 1}`.
 
-Not yet proved here: injectivity of `toFppfPicardSheaf` when `O_T ≅ f_{T*}O_{X_T}`
-holds universally, its bijectivity with a section (target 4 of the plan), rigidified
-pairs and representability.
+[Comparison](Comparison/README.md) adds the rigidified functor with Kleiman's Lemmas
+2.9 and 2.10. It also reduces the injectivity of `toFppfPicardSheaf` (Thm 2.5(1)) to the
+equivalent premise `FppfLocallyTrivialMemBaseImage`.
+
+Not yet proved here:
+
+- that premise under universal O-connectedness;
+- the bijectivity of `toFppfPicardSheaf` with a section (target 4 of the plan);
+- representability.
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,

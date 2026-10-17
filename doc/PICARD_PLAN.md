@@ -280,9 +280,13 @@ fppf functor.
 6. The class of the universal divisor bundle in `Pic_(fppf)(Z)` has equal
    pullbacks to `R`, so it descends along the fppf covering `Z → Q`. This
    defines `h_Q → Pic^{φ₀}_{0,(fppf)}` on all test schemes. At locally
-   Noetherian `T` the map is injective: lifts of two `T`-points to `Z` with
-   equal classes are fppf-locally related by `R`, by target 4 injectivity and
-   step 5. It is surjective: step 4 lifts a class fppf-locally to `Z`, and the
+   Noetherian `T` the map is injective. The two `T`-points lift to `Z`
+   fppf-locally. Lifts with equal classes in the sheafification have
+   fppf-locally equal classes in
+   `P_{X/S}`, so they are fppf-locally related by `R`. They are then related by
+   `R` itself, because `h_R` is an fppf sheaf and `R → Z ×_S Z` is a
+   monomorphism. Target 4 injectivity is not needed here, and for the same
+   reason `R ≅ Z ×_{Pic_(fppf)} Z`. It is surjective: step 4 lifts a class fppf-locally to `Z`, and the
    local preimages glue, because `h_Q` is an fppf sheaf and injectivity holds on
    the overlaps. Fppf coverings of a locally Noetherian scheme are locally
    Noetherian, so the argument stays in that class.
@@ -459,7 +463,21 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     Mathlib's descent data on `CommRingCatᵒᵖ`, plus descent of finite
     presentation and invertibility. An independent statement review found it
     corresponding; its documentation repairs are applied.
-  - F3 in progress: Zariski gluing of module sheaves.
+  - F3 in progress: Zariski gluing of module sheaves. The prestacks are proved,
+    and the stacks are proved conditionally on the cocycle step.
+  - F7 first slice: rigidified pairs, Kleiman Lemmas 2.9 and 2.10, and the
+    reduction of injectivity of `toFppfPicardSheaf` (Thm 2.5(1)) to an
+    equivalent named premise.
+    - Kleiman's proof of that premise uses flat base change. Stacks 0B9M avoids
+      it, using O-connectedness on global units (F4), effective fppf descent of
+      invertible sheaves, and full faithfulness of descent (F6).
+    - The premise is not on the path of target 5 (step 6 above). The target-6
+      tangent-space step uses target-4 injectivity.
+    - With a section, Thm 2.5(2) follows by showing that the rigidified
+      functor is an fppf sheaf (Stacks 0B9N). This uses Lemma 2.10 at every
+      test scheme and F6 for line bundles on `X_T`, with full faithfulness of
+      descent along the covering of `T`. Kleiman's own proof of Part 2 uses
+      Part 1 instead.
 - **M3 in progress.**
   - Done for the free module `R^n` over `Spec R`:
     - Grassmannian charts, chart representability on `Over (Spec R)`, and the
