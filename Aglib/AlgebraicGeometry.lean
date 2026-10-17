@@ -319,6 +319,10 @@ public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Noetherian
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
+public import Aglib.AlgebraicGeometry.Descent.Modules.Fppf.AffineStack
+public import Aglib.AlgebraicGeometry.Descent.Modules.Fppf.ChosenPullback
+public import Aglib.AlgebraicGeometry.Descent.Modules.Fppf.CompTransCoherence
+public import Aglib.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
 public import Aglib.AlgebraicGeometry.Descent.Modules.OpenCoverGluing
 public import Aglib.AlgebraicGeometry.Descent.Modules.Pseudofunctor
 public import Aglib.AlgebraicGeometry.Descent.Modules.RestrictPullback
@@ -597,6 +601,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ScalarAdjunct
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Sections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Support
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildeExact
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Extensions.Affine
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Extensions.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Extensions.Global

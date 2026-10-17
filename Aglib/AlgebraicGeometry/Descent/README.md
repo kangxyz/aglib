@@ -9,7 +9,7 @@ paths group them here. Stack statements use Mathlib's
 
 | Family | Content |
 | --- | --- |
-| [Modules](Modules/README.md) | The pullback pseudofunctor of module sheaves on `Scheme`, its quasi-coherent and line-bundle full subpseudofunctors, and unconditional stack instances for `Scheme.zariskiTopology` |
+| [Modules](Modules/README.md) | The pullback pseudofunctor of module sheaves on `Scheme`, its quasi-coherent and line-bundle full subpseudofunctors, and unconditional stack instances for `Scheme.zariskiTopology`; in [Fppf](Modules/Fppf/README.md), effective descent of quasi-coherent sheaves along a faithfully flat ring map |
 | [IdealSheaf](IdealSheaf/README.md) | Faithfully flat descent of ideal sheaves and closed subschemes along flat, surjective, quasi-compact morphisms (Nitsure, Lemma 6.7(2)) |
 
 The affine and ring-level inputs stay with their algebraic owners:

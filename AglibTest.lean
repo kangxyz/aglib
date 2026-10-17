@@ -11,7 +11,11 @@ public import AglibTest.AffineCohomology
 public import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 public import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.Pullback
+public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.AffineStack
+public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.CompTransCoherence
+public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
 public import AglibTest.AlgebraicGeometry.Descent.Modules.Zariski
+public import AglibTest.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildePullback
 public import AglibTest.ArchiveBaseProductInterchange
 public import AglibTest.ArchiveEndpointTransport
 public import AglibTest.ArchiveExactFunctorPushout
