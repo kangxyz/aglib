@@ -214,8 +214,11 @@ def interSwapIso [BaseChangeMkQFormula.{u, u, u} R (Fin n → R)]
 
 variable (R) in
 /-- The transition isomorphism between the two coordinate rings of the intersection of the charts
-at `x` and `y`: both localizations corepresent the same subfunctor (Nitsure's `θ_{I,J}`,
-arXiv:math/0504590v1, §1, p. 8). -/
+at `x` and `y`: both localizations corepresent the same subfunctor. Since
+`chartTransitionDet x y` lives on the chart at `x`, the source is the coordinate ring of Nitsure's
+`U^x_y` and the target that of `U^y_x`; so the `hom` is the ring map of Nitsure's
+`θ_{y,x} : U^y_x → U^x_y` (with `I = y`, `J = x`; arXiv:math/0504590v1, §1, p. 8), and the
+`inv` is that of `θ_{x,y}`. -/
 def chartTransitionIso [BaseChangeMkQFormula.{u, u, u} R (Fin n → R)]
     (x y : Fin k → Fin n → R) :
     CommAlgCat.of R (Localization.Away (chartTransitionDet x y)) ≅

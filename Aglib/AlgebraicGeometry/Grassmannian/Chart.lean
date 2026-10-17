@@ -20,9 +20,11 @@ Mathlib's adjunction `algΓAlgSpecAdjunction` composed with the corepresentation
 `Module.Grassmannian.chartFunctorCorepresentableBy`.
 
 This is the representability of the subfunctors `F_i` of the Grassmannian functor in Stacks,
-Tag 089T, where `F_i(S)` is identified with a product of copies of `Γ(S, O_S)`; for a coordinate
-tuple `x`, the chart scheme is Nitsure's affine chart `U^I` (arXiv:math/0504590v1, §1,
-"Construction of Grassmannian", p. 8) over `Spec R`.
+Tag 089T, where `F_i(S)` is identified with a product of copies of `Γ(S, O_S)`. For a coordinate
+tuple `x b = e_{I b}` with `I` injective (an ordering of a `k`-subset of `Fin n`), the chart
+scheme is Nitsure's affine chart `U^I` (arXiv:math/0504590v1, §1, "Construction of
+Grassmannian", p. 8) over `Spec R`; for a non-injective `I` the chart ring is the zero ring and
+the chart scheme is empty.
 
 ## Main definitions and results
 

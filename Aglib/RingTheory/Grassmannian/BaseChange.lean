@@ -12,11 +12,13 @@ public import Mathlib.RingTheory.Grassmannian
 
 Mathlib's `Module.Grassmannian.map` is defined through `Module.Grassmannian.baseChangeMkQ`,
 whose body `N.mkQ.baseChange B ∘ₗ (cancelBaseChange R A B B M).symm.toLinearMap` is not exposed:
-outside `Mathlib.RingTheory.Grassmannian` even `baseChangeMkQ.eq_1` is unknown, and the public
+in module-system sources (such as Aglib's) that do not `import all` that module, even
+`baseChangeMkQ.eq_1` is unknown, and the public
 API (`baseChangeMkQ_surjective`, `map_toSubmodule`, `map_id`, `map_comp`) does not determine the
 values of `map`. The component formula on pure tensors is therefore recorded as the named
 premise `BaseChangeMkQFormula`. It is the statement of the upstream lemma that an exposure of
-`baseChangeMkQ` (or an upstream `baseChangeMkQ_tmul`) would prove; no instance is provided here.
+`baseChangeMkQ` (or an upstream `baseChangeMkQ_tmul`) would prove; no instance is provided here
+(the instance is in `Aglib.RingTheory.Grassmannian.BaseChangeFormula`).
 -/
 
 @[expose] public section

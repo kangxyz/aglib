@@ -18,10 +18,12 @@ columns are the vectors `x b`. Hence the chart functor `chartFunctor R x` is cor
 the chart ring `ChartRing R x = R[Φ a j] ⧸ (entries of Φ X - 1)`.
 
 For a coordinate tuple `x b = e_{i_b}` the relations say that the columns `i_1, …, i_k` of `Φ`
-form the identity matrix, so `ChartRing R x` is the polynomial ring in the remaining
-`k (n - k)` entries: this is the chart `U^I = Spec Z[X^I]` of Nitsure, *Construction of Hilbert
-and Quot schemes* (arXiv:math/0504590v1), §1, "Construction of Grassmannian", p. 8, base-changed
-to `R`, and the representability of the subfunctors `F_i` in Stacks, Tag 089T.
+form the identity matrix. If `b ↦ i_b` is injective (an ordering of a `k`-subset `I` of
+`Fin n`), `ChartRing R x` is therefore the polynomial ring in the remaining `k (n - k)` entries:
+this is the chart `U^I = Spec Z[X^I]` of Nitsure, *Construction of Hilbert and Quot schemes*
+(arXiv:math/0504590v1), §1, "Construction of Grassmannian", p. 8, base-changed to `R`, and the
+representability of the subfunctors `F_i` in Stacks, Tag 089T. If `i_b = i_{b'}` for some
+`b ≠ b'`, the relations force `1 = 0`: `ChartRing R x` is the zero ring and the chart is empty.
 
 ## Main definitions and results
 

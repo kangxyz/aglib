@@ -138,7 +138,7 @@ commitments.
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | partial (comonadicity) | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | absent | L |
 | F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | absent | M |
-| F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | absent (Mathlib functor only) | L |
+| F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras) and `Grassmannian/FunctorOfPoints` (the extension to all test schemes); open: locally free `E`, the locally free quotient description, `P(E)`, Plücker | L |
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial (Euler local constancy) | M |
 | F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | absent | L |
@@ -448,18 +448,28 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     `Split.quotientEquiv`, `Scheme.Modules.isIso_of_forall_bijective_app` and
     the module helpers of `StructureSheaf/Coefficient`.
 - **M3 in progress.**
-  - Done: Grassmannian charts, chart representability on `Over (Spec R)`, and
-    the chart gluing as a `Scheme.GlueData`.
+  - Done for the free module `R^n` over `Spec R`:
+    - Grassmannian charts, chart representability on `Over (Spec R)`, and the
+      chart gluing as a `Scheme.GlueData`;
+    - `representableIso`: representability of Mathlib's
+      `Module.Grassmannian.functor` on `R`-algebras;
+    - `localFunctorIso`: its extension to all test schemes.
   - The values of Mathlib's `map` use the formula class `BaseChangeMkQFormula`,
-    because Mathlib does not expose `baseChangeMkQ`. Its instance is supplied by
-    `RingTheory/Grassmannian/BaseChangeFormula`, the only leaf allowed a private
-    `import all` (a one-file exception in `scripts/check_library_layout.py`).
-    Remove both once Mathlib exposes `baseChangeMkQ`.
-  - Open: representability of Mathlib's `Module.Grassmannian.functor` on
-    `R`-algebras.
+    because Mathlib does not expose `baseChangeMkQ`. The instance is supplied by
+    `RingTheory/Grassmannian/BaseChangeFormula`. That leaf is the only one
+    allowed a private `import all`, as a one-file exception in
+    `scripts/check_library_layout.py`. Remove both once Mathlib exposes
+    `baseChangeMkQ`.
+  - An independent statement review found the slice corresponding; its
+    documentation repairs are applied.
+  - Open:
+    - the description of the functor of points by locally free quotients of
+      `O_T^n`, which needs module sheaves;
+    - `Gr(E, r)` for locally free `E`;
+    - `P(E)`;
+    - the Plücker embedding (F9).
 - **Next.**
   - M2: F3, F5, F6 and F7.
-  - The M3 representability theorem.
   - The `Over S` Zariski-representability adapter: shrink the values, pass to
     the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
     then apply `Scheme.LocalRepresentability.isRepresentable`.

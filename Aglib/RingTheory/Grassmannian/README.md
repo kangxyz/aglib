@@ -10,7 +10,7 @@ Grassmannian", pp. 7–8.
 
 | Leaf | Main declarations | Hypotheses |
 | --- | --- | --- |
-| [BaseChange](BaseChange.lean) | `BaseChangeMkQFormula` (named premise), `baseChangeMkQ_tmul`, `baseChangeMkQQuotEquiv` | none |
+| [BaseChange](BaseChange.lean) | `BaseChangeMkQFormula` (named premise), `baseChangeMkQ_tmul`, `baseChangeMkQQuotEquiv` | `baseChangeMkQ_tmul` assumes `BaseChangeMkQFormula`; the class and `baseChangeMkQQuotEquiv` assume nothing |
 | [Chart](Chart.lean) | `chart`, `chartFunctor`, `map_mem_chart`, `mem_chart_map_iff`, `chartEquiv`, `map_ofChartSection`, `chartEquiv_map` | arbitrary `M` |
 | [ChartRing](ChartRing.lean) | `ChartRing`, `chartSectionsEquivAlgHom`, `chartFunctorCorepresentableBy` | `M = Fin n → R`, algebras in the universe of `R` |
 | [Overlap](Overlap.lean) | `transitionMatrix`, `mem_chart_iff_isUnit_det` | arbitrary `M` |
@@ -36,15 +36,19 @@ change of `chartMap` along `f` is bijective (`mem_chart_map_iff`, and
 columns `x b`. `chartFunctorCorepresentableBy R x` is a
 `Functor.CorepresentableBy` for `(chartFunctor R x).toFunctor` on `CommAlgCat.{u} R` by
 `CommAlgCat.of R (ChartRing R x)`. For a coordinate tuple `x b = e_{I b}` the relations make
-the `I`-columns of `Φ` the identity: Nitsure's `Z[X^I]` base-changed to `R`.
+the `I`-columns of `Φ` the identity. For injective `I` (an ordering of a `k`-subset of `Fin n`)
+this is Nitsure's `Z[X^I]` base-changed to `R`; for non-injective `I` the relations force
+`1 = 0`, so the chart ring is zero and the chart is empty.
 
 **Overlaps and covering.** A chart point lies in the chart at `y` exactly when
 `det (φ (y b) a)` is a unit (`mem_chart_iff_isUnit_det`): the intersection of two charts is a
 basic open of either one. For `M = Fin n → R` the intersection subfunctor
 `chartFunctor R x ⊓ chartFunctor R y` is corepresented by
 `Localization.Away (chartTransitionDet x y)` (`chartInterCorepresentableBy`), and the two
-descriptions of the intersection are related by `chartTransitionIso`, Nitsure's `θ_{I,J}`, which
-is the identity on underlying points
+descriptions of the intersection are related by
+`chartTransitionIso R x y : Away (chartTransitionDet x y) ≅ Away (chartTransitionDet y x)`, whose
+`hom` is the ring map of Nitsure's `θ_{y,x} : U^y_x → U^x_y` (`I = y`, `J = x`). It is the
+identity on underlying points
 (`chartInterCorepresentableBy_homEquiv_transitionIso_hom`); for `y = x` the determinant is a
 unit and the transition is the identity (`isUnit_chartTransitionDet_self`,
 `chartTransitionIso_self`). The intersection of a chart with
@@ -63,7 +67,8 @@ points over the `Localization.Away (s i)` whose base changes agree on overlaps g
 `Localization.Away (s i)` compatible with the maps from `A`.
 
 **Module exposure and the named premise.** Mathlib's `baseChangeMkQ`, `baseChangeMkQEquiv` and
-`map` have unexposed bodies; outside Mathlib's module even `baseChangeMkQ.eq_1` is unknown, and
+`map` have unexposed bodies; in module-system sources (such as Aglib's) that do not `import all`
+`Mathlib.RingTheory.Grassmannian`, even `baseChangeMkQ.eq_1` is unknown, and
 the public API (`baseChangeMkQ_surjective`, `map_toSubmodule`, `map_id`, `map_comp`, `functor`)
 does not determine the values of `map`. Therefore `BaseChange.lean`
 states the component formula `baseChangeMkQ B N (b ⊗ m) = b ⊗ [1 ⊗ m]` as the Prop-valued class
@@ -72,7 +77,8 @@ the values of Mathlib's `map` (charts as subfunctors, the base-change criteria, 
 corepresentations, overlaps, covering, chart loci, separatedness and gluing) takes it as an
 instance argument. Mathlib's definition satisfies the formula; an upstream `@[expose]` on
 `Module.Grassmannian.baseChangeMkQ`, or an upstream `baseChangeMkQ_tmul`, would supply the
-instance. Statements not involving `map` (`chartEquiv`, the chart rings and their algebra-map
+instance. Statements that do not depend on the values of `map` (`chartEquiv`, the chart rings
+and their algebra-map
 equivalence, `mem_chart_iff_isUnit_det`, `exists_localizedModule_bijective`,
 `map_toSubmodule_of_algebraMap`, `finite_projective_rankAtStalk_of_localizationSpan`) carry no
 premise.
