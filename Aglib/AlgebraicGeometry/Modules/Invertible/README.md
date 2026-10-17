@@ -14,6 +14,27 @@ The canonical tensor is now defined below schemes in [ModuleCat/Sheaf/Tensor/Bas
 
 [Trivialization](Trivialization.lean) gives section coordinates and generators in an actual unit chart, with no integral-scheme premise. [Field](Field.lean) gives actual field-spectrum triviality and singleton module bases. [Locality](Locality.lean) glues local rank one along an arbitrary open cover. [ZeroLocus](ZeroLocus/README.md) gives the pointwise fibrewise-regular line-bundle theorem through actual image-ideal zero data.
 
+[LocalRing](LocalRing.lean), [Affine](Affine.lean) and
+[ChartCocycle](ChartCocycle.lean) compare Picard groups with smaller models. If a
+point of `X` has `X` as its only open neighbourhood, every line bundle is trivial;
+in particular `PicardGroup (Spec R)` is a subsingleton for every commutative local
+ring `R` (`nonempty_iso_unit_of_isLocalRing`). Line bundles are finite locally free
+and quasicoherent on every scheme (`lineBundle_isQuasicoherent`). For an arbitrary
+commutative ring `R`, global sections of a line bundle on `Spec R` form an invertible
+module, `tilde` of an invertible module is locally rank one, and
+`picardGroupEquivCommRingPic R : PicardGroup (Spec R) ≃+ Additive (CommRing.Pic R)`
+sends `[L]` to Mathlib's class of `Γ(Spec R, L)`; tensor products go through the actual
+`tildeTensorIso`, and `picardGroupEquivCommRingPic_pullbackClass` matches pullback along
+`Spec.map φ` with `CommRing.Pic.mapRingHom φ.hom` through `tildePullbackIso`. On every scheme, `chartReconstructionIso` identifies a line bundle with
+the bundle glued from the unit cocycle of chosen charts indexed by the points, so
+`small_picardGroup : Small.{u} (PicardGroup X)` holds for `X : Scheme.{u}`; its local
+criterion is `Scheme.Modules.isIso_of_forall_bijective_app`. No Noetherian, domain or
+finiteness hypothesis is used. The consumers are the Picard functor family
+[Picard](../../Picard/README.md), whose fppf comparison uses the local unit charts of
+`isLocallyRankOne_iff_restrict_unit` to make every Picard class vanish on a Zariski
+covering, and the focused tests `AglibTest.AlgebraicGeometry.Picard.Affine` and
+`.ChartCocycle`.
+
 [Gluing](Gluing.lean) constructs an actual line bundle from a family of
 scheme opens covering the whole space and actual units on their pairwise
 intersections. `UnitCocycle` retains the cocycle equation under the actual

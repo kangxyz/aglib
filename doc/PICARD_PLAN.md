@@ -131,10 +131,10 @@ commitments.
 
 | ID | Foundation | Status | Weight |
 | --- | --- | --- | --- |
-| F1 | Picard presheaves on `Over S` (migrated from R5Lab), group structure, base and family maps | R5Lab only | S |
-| F2 | `PicardGroup (Spec A) ≃+ CommRing.Pic A`; local triviality; `Small.{u} (PicardGroup X)` | absent (R5Lab has local triviality) | M |
+| F1 | Picard presheaves on `Over S` (migrated from R5Lab), group structure, base and family maps | proved: `Picard/Presheaf`, `Picard/Normalized`, `Picard/Fppf` (namespace `Scheme.RelativePicard`), including the sheafified-family comparison | S |
+| F2 | `PicardGroup (Spec A) ≃+ CommRing.Pic A`; local triviality; `Small.{u} (PicardGroup X)` | proved: `Modules/Invertible/Affine`, `LocalRing`, `ChartCocycle` | M |
 | F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | absent (line-bundle cocycles only) | M |
-| F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | partial | M |
+| F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | proved: `Cohomology/Proper/StructureSheaf` | M |
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | partial (comonadicity) | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | absent | L |
 | F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | absent | M |
@@ -426,3 +426,38 @@ variety `Pic^0_red` remain later extensions.
   algebraic-space route).
 - J. S. Milne, *Jacobian Varieties* (2021), Thm 1.1: the source of R5Lab's retained
   curve parameter.
+
+## Current status
+
+Status on branch `claude/picard-scheme`, 2026-10-17.
+
+- **M0 done.** The probes are in `AglibTest/AlgebraicGeometry/Picard/Interfaces.lean`.
+  Aglib already proves quasi-coherent pullback along arbitrary morphisms
+  (`Scheme.Modules.quasicoherent_pullback`).
+- **M1 done.**
+  - F1: `Picard/Presheaf`, `Picard/Normalized` and `Picard/Fppf`, including
+    `fppfFamilyPicardSheafIso`.
+  - F2: `Modules/Invertible/LocalRing`, `Affine` and `ChartCocycle`.
+  - F4 (target 2): `Cohomology/Proper/StructureSheaf`, with endpoint
+    `isIso_c_pullback_snd_of_isProper_of_flat_of_geometricallyIntegral`.
+  - An independent statement and source-correspondence review on 2026-10-17
+    found every checked definition and statement corresponding. Its
+    documentation repairs are applied.
+  - Open from M1: small values of the fppf sheafification, which the Zariski
+    representability adapter needs. Generic helpers to move to lower owners:
+    `Split.quotientEquiv`, `Scheme.Modules.isIso_of_forall_bijective_app` and
+    the module helpers of `StructureSheaf/Coefficient`.
+- **M3 in progress, uncommitted.**
+  - Done: Grassmannian charts, chart representability on `Over (Spec R)`, and
+    the chart gluing as a `Scheme.GlueData`.
+  - Open: representability of Mathlib's `Module.Grassmannian.functor` on
+    `R`-algebras.
+  - Pending decision: the ring-level base-change leaf needs a private
+    `import all` of Mathlib's Grassmannian, because `baseChangeMkQ` is not
+    exposed. That conflicts with the public-import policy.
+- **Next.**
+  - M2: F3, F5, F6 and F7.
+  - The M3 representability theorem.
+  - The `Over S` Zariski-representability adapter: shrink the values, pass to
+    the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
+    then apply `Scheme.LocalRepresentability.isRepresentable`.

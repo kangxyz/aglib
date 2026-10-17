@@ -8,6 +8,11 @@ Authors: kangxyz
 module
 
 public import AglibTest.AffineCohomology
+public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
+public import AglibTest.AlgebraicGeometry.Picard.Affine
+public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
+public import AglibTest.AlgebraicGeometry.Picard.Functors
+public import AglibTest.AlgebraicGeometry.Picard.Interfaces
 public import AglibTest.ArchiveBaseProductInterchange
 public import AglibTest.ArchiveEndpointTransport
 public import AglibTest.ArchiveExactFunctorPushout
