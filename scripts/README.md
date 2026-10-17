@@ -7,6 +7,13 @@ Run these tools from the package root. Production Lean modules do not depend on
 
 ## Check entry points
 
+Incremental checking includes applicable compilation, declaration/text-style lint,
+affected `AglibTest` and client tests, and affected source/trust checks. Cover the
+relevant categories for a coherent maintained change, reusing compatible evidence;
+compilation alone does not supply separate lint or test coverage. The
+[authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds) owns that selection
+and timing. Check scope is incremental across these categories.
+
 Follow the [authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
 
 `check.sh --source-only` is a broad source/tooling integration check: it scans the
