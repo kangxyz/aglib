@@ -175,22 +175,31 @@ def moduleH0EquivOfHom (α : R →+* Γ(X, ⊤)) (M : X.Modules) :
     letI := moduleCohomologyModuleOfHom X α M 0
     letI : Module R (M.val.obj (op ⊤)) := Module.compHom _ α
     Sheaf.H.{u + 1} (moduleAddSheaf X M) 0 ≃ₗ[R] M.val.obj (op ⊤) := by
-  letI := moduleCohomologyModuleOfHom X α M 0
-  letI : Module R (M.val.obj (op ⊤)) := Module.compHom _ α
-  exact {
-    __ := Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop
-    map_smul' := fun a x ↦ by
-      have h := (Sheaf.H.equiv₀_naturality
-        (Limits.isTerminalTop (α := X.Opens)) (moduleScalarOfGlobal X M (α a)) x).symm
-      change Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop
-        (Sheaf.H.map (moduleScalarOfGlobal X M (α a)) 0 x) =
-          α a • (show M.val.obj (op ⊤) from
-            Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop x)
-      change Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop
-        (Sheaf.H.map (moduleScalarOfGlobal X M (α a)) 0 x) =
-          globalRestriction X ⊤ (α a) • (show M.val.obj (op ⊤) from
-            Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop x) at h
-      simpa only [globalRestriction_top_apply] using h }
+  let build (A : AddCommGrpCat.{u + 1}) (B : AddCommGrpCat.{u}) (sA : Module R A) (sB : Module R B)
+      (e : A ≃+ B)
+      (h : letI := sA; letI := sB; ∀ (a : R) (x : A), e (a • x) = a • e x) :
+      letI := sA; letI := sB; A ≃ₗ[R] B := by
+    letI := sA
+    letI := sB
+    exact { __ := e, map_smul' := h }
+  refine build
+    (AddCommGrpCat.of (Sheaf.H.{u + 1} (moduleAddSheaf X M) 0))
+    (AddCommGrpCat.of (M.val.obj (op ⊤)))
+    (moduleCohomologyModuleOfHom X α M 0) (Module.compHom _ α)
+    (Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop) ?_
+  dsimp only
+  intro a x
+  have h := (Sheaf.H.equiv₀_naturality
+    (Limits.isTerminalTop (α := X.Opens)) (moduleScalarOfGlobal X M (α a)) x).symm
+  change Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop
+    (Sheaf.H.map (moduleScalarOfGlobal X M (α a)) 0 x) =
+      α a • (show M.val.obj (op ⊤) from
+        Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop x)
+  change Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop
+    (Sheaf.H.map (moduleScalarOfGlobal X M (α a)) 0 x) =
+      globalRestriction X ⊤ (α a) • (show M.val.obj (op ⊤) from
+        Sheaf.H.equiv₀ (moduleAddSheaf X M) Limits.isTerminalTop x) at h
+  simpa only [globalRestriction_top_apply] using h
 
 open AlgebraicGeometry.Scheme.OverField
 

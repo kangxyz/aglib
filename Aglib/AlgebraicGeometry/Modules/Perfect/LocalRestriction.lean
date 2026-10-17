@@ -42,7 +42,7 @@ abbrev derivedRestrictCommShift : (derivedRestrict j).CommShift ℤ :=
   Scheme.Modules.derivedRestrictCommShift j
 
 /-- Legacy name for the canonical triangulated proof, without a second instance. -/
-abbrev derivedRestrict_isTriangulated : (derivedRestrict j).IsTriangulated :=
+theorem derivedRestrict_isTriangulated : (derivedRestrict j).IsTriangulated :=
   Scheme.Modules.derivedRestrict_isTriangulated j
 
 /-- Legacy name for the same original native localization factorization. -/

@@ -82,7 +82,6 @@ theorem exteriorPowerTopEquiv_symm_apply (b : Basis (Fin n) R M) (r : R) :
     b.exteriorPowerTopEquiv.symm r = r • exteriorPower.ιMulti R n b := rfl
 
 /-- The original basis wedge has scalar coordinate one, including rank zero. -/
-@[simp]
 theorem exteriorPowerTopEquiv_basis (b : Basis (Fin n) R M) :
     b.exteriorPowerTopEquiv (exteriorPower.ιMulti R n b) = 1 := by
   rw [exteriorPowerTopEquiv_ιMulti, b.det_self]

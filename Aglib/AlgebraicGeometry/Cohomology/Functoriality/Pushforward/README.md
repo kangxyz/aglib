@@ -7,3 +7,10 @@ derived models and actual right-derived shift structures. Any scheme
 morphism is allowed; no coefficient or geometric condition is imposed.
 Finite Postnikov arguments and original base-change descents consume the
 installed geometric functor without selecting another model.
+
+The native shift instance is `derivedPushforwardPlusCommShift`. Its former
+name `derivedPushforwardPlus_commShift` remains a transparent deprecated alias
+without registering another instance.
+
+The [geometric-section comparison](../PushforwardSection.lean) imports and
+reuses this same native shift instance.

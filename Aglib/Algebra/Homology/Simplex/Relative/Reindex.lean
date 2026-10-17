@@ -114,9 +114,17 @@ def complexReindexIso (e : ι ≃ κ) :
     complex R (Set.univ : Set ι) ≅ complex R (Set.univ : Set κ) :=
   (alternatingCofaceMapComplex _).mapIso (cosimplicialReindexIso e)
 
-@[simp]
 theorem complexReindexIso_hom_f_apply (e : ι ≃ κ) (n : ℕ)
     (x : Cochains R (Set.univ : Set ι) n) (a : Tuple (Set.univ : Set κ) n) :
     (complexReindexIso (R := R) e).hom.f n x a = x (tupleReindex e.symm a) := rfl
+
+/-- Canonical coercion form of `complexReindexIso_hom_f_apply`
+for simplification. -/
+@[simp]
+private theorem complexReindexIso_hom_f_apply' (e : ι ≃ κ) (n : ℕ)
+    (x : Cochains R (Set.univ : Set ι) n) (a : Tuple (Set.univ : Set κ) n) :
+    (show Cochains R (Set.univ : Set ι) n →ₗ[R] Cochains R (Set.univ : Set κ) n from
+      ((complexReindexIso (R := R) e).hom.f n).hom) x a = x (tupleReindex e.symm a) := by
+  exact complexReindexIso_hom_f_apply (R := R) e n x a
 
 end AlgebraicTopology.RelativeSimplex

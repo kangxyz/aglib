@@ -132,9 +132,23 @@ def moduleHPrimeOpenLinearEquiv (X : Scheme.{u}) {R : Type u} [CommRing R]
       Sheaf.H.{u + 1} (moduleAddSheaf U.toScheme (M.restrict U.ι)) n := by
   letI := moduleHPrimeModuleOfHom X α M n U
   letI := moduleCohomologyModuleOfHom U.toScheme (U.ι.appTop.hom.comp α) (M.restrict U.ι) n
-  refine {
-    __ := sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n
-    map_smul' := fun a x => ?_ }
+  -- Check the linear-equivalence record before supplying the concrete cohomology data.
+  -- Explicit module arguments retain the original structural scalar actions.
+  let build (A B : AddCommGrpCat.{u + 1}) (mA : Module R A) (mB : Module R B) :
+      letI := mA
+      letI := mB
+      (e : A ≃+ B) → (∀ (a : R) (x : A), e (a • x) = a • e x) → A ≃ₗ[R] B := by
+    letI := mA
+    letI := mB
+    intro e he
+    exact { __ := e, map_smul' := he }
+  refine build
+    (AddCommGrpCat.of (Sheaf.H'.{u + 1} (moduleAddSheaf X M) n U))
+    (AddCommGrpCat.of (Sheaf.H.{u + 1} (moduleAddSheaf U.toScheme (M.restrict U.ι)) n))
+    (moduleHPrimeModuleOfHom X α M n U)
+    (moduleCohomologyModuleOfHom U.toScheme (U.ι.appTop.hom.comp α) (M.restrict U.ι) n)
+    (sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n) ?_
+  intro a x
   change sheafHPrimeOpenRestrictionAddEquiv X U (moduleAddSheaf X M) n
       (((Sheaf.cohomologyPresheafFunctor (Opens.grothendieckTopology X) n).map
         (moduleScalarOfGlobal X M (α a))).app (op U) x) =

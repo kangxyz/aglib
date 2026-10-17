@@ -95,30 +95,27 @@ def AffineModuleBaseChange : Prop :=
     (M : X.Modules), IsAffineHom f → M.IsQuasicoherent →
     IsIso (moduleBaseChangeMap f g M)
 
-set_option maxHeartbeats 800000 in
--- Transporting free generators through the over-functor uses about 504000
--- heartbeats; this individual budget gives the sheaf coercions headroom.
 theorem unit_isLocallyFree (X : Scheme.{u}) :
     (SheafOfModules.unit X.ringCatSheaf).IsLocallyFree := by
   let e : SheafOfModules.free (R := X.ringCatSheaf) PUnit.{u+1} ≅
       SheafOfModules.unit X.ringCatSheaf := coproductUniqueIso _
-  let q :=
-    (SheafOfModules.free.generatingSections (R := X.ringCatSheaf) PUnit.{u+1}).localGeneratorsData
-  have hq : q.IsLocallyFreeData := inferInstance
-  let q' : (SheafOfModules.unit X.ringCatSheaf).LocalGeneratorsData.{u} := {
-    I := q.I
-    X := q.X
-    coversTop := q.coversTop
-    generators i := (q.generators i).ofEpi
-      ((SheafOfModules.overFunctor X.ringCatSheaf (q.X i)).map e.hom) }
-  haveI : q'.IsLocallyFreeData := by
+  let G : (SheafOfModules.unit X.ringCatSheaf).GeneratingSections :=
+    (SheafOfModules.free.generatingSections (R := X.ringCatSheaf) PUnit.{u+1}).ofEpi e.hom
+  haveI : IsIso G.π := by
+    change IsIso (((SheafOfModules.free.generatingSections
+      (R := X.ringCatSheaf) PUnit.{u+1}).ofEpi e.hom).π)
+    rw [SheafOfModules.GeneratingSections.ofEpi_π,
+      SheafOfModules.free.generatingSections_π]
+    infer_instance
+  let q : (SheafOfModules.unit X.ringCatSheaf).LocalGeneratorsData.{u} :=
+    G.localGeneratorsData
+  haveI : q.IsLocallyFreeData := by
     constructor
     intro i
-    dsimp [q']
-    rw [SheafOfModules.GeneratingSections.ofEpi_π]
-    letI := hq.isIso i
+    change IsIso (G.map (SheafOfModules.pushforward (𝟙 (X.ringCatSheaf.over i)))
+      (Iso.refl _)).π
     infer_instance
-  exact q'.isLocallyFree
+  exact q.isLocallyFree
 
 /-- The pullback of the structure module along `q`, identified with the structure module on `T`. -/
 def pullbackStructureUnitIso {T : Scheme.{u}} (q : T ⟶ X) :

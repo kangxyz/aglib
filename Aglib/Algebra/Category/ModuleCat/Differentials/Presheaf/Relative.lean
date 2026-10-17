@@ -70,11 +70,18 @@ def absoluteDesc {φ : S ⟶ F.op ⋙ R} {M : PresheafOfModulesOfCommRing.{u} R}
   (isUniversal' (integerConstants R)).desc (absoluteOfRelative d)
 
 /-- Absolute descent evaluates on the original absolute differential as the given derivation. -/
-@[simp]
 theorem absoluteDesc_d {φ : S ⟶ F.op ⋙ R} {M : PresheafOfModulesOfCommRing.{u} R}
     (d : M.Derivation φ) (X : Dᵒᵖ) (a : R.obj X) :
     (absoluteDesc d).app X ((absoluteDerivation R).d a) = d.d a :=
   Derivation.congr_d ((isUniversal' (integerConstants R)).fac (absoluteOfRelative d)) a
+
+/-- Canonical coercion form of `absoluteDesc_d`
+for simplification. -/
+@[simp]
+private theorem absoluteDesc_d' {φ : S ⟶ F.op ⋙ R} {M : PresheafOfModulesOfCommRing.{u} R}
+    (d : M.Derivation φ) (X : Dᵒᵖ) (a : R.obj X) :
+    (absoluteDesc d).app' X ((absoluteDerivation R).d a) = d.d a := by
+  exact absoluteDesc_d d X a
 
 variable (φ : S ⟶ F.op ⋙ R)
 
@@ -99,12 +106,19 @@ def absolutePushforwardMap : absoluteDifferentials S ⟶
     (pushforward φ).obj (absoluteDifferentials R) :=
   (isUniversal' (integerConstants S)).desc (absolutePushforwardDerivation φ)
 
-@[simp]
 theorem absolutePushforwardMap_d (X : Cᵒᵖ) (a : S.obj X) :
     (absolutePushforwardMap φ).app X ((absoluteDerivation S).d a) =
       (absoluteDerivation R).d (φ.app X a) :=
   Derivation.congr_d ((isUniversal' (integerConstants S)).fac
     (absolutePushforwardDerivation φ)) a
+
+/-- Canonical coercion form of `absolutePushforwardMap_d`
+for simplification. -/
+@[simp]
+private theorem absolutePushforwardMap_d' (X : Cᵒᵖ) (a : S.obj X) :
+    (absolutePushforwardMap φ).app' X ((absoluteDerivation S).d a) =
+      (absoluteDerivation R).d (φ.app X a) := by
+  exact absolutePushforwardMap_d φ X a
 
 variable [(pushforward.{u} φ).IsRightAdjoint]
 
@@ -182,7 +196,6 @@ def relativeDesc {M : PresheafOfModulesOfCommRing.{u} R} (d : M.Derivation φ) :
       exact d.d_app a))
 
 /-- Relative descent preserves the exact original derivation values. -/
-@[simp]
 theorem relativeDesc_d {M : PresheafOfModulesOfCommRing.{u} R} (d : M.Derivation φ)
     (X : Dᵒᵖ) (a : R.obj X) :
     (relativeDesc φ d).app X ((derivation φ).d a) = d.d a := by
@@ -192,6 +205,14 @@ theorem relativeDesc_d {M : PresheafOfModulesOfCommRing.{u} R} (d : M.Derivation
         rw [absoluteDesc_d]
         exact d.d_app b)))
   exact h.trans (absoluteDesc_d d X a)
+
+/-- Canonical coercion form of `relativeDesc_d`
+for simplification. -/
+@[simp]
+private theorem relativeDesc_d' {M : PresheafOfModulesOfCommRing.{u} R} (d : M.Derivation φ)
+    (X : Dᵒᵖ) (a : R.obj X) :
+    (relativeDesc φ d).app' X ((derivation φ).d a) = d.d a := by
+  exact relativeDesc_d φ d X a
 
 /-- The native cokernel construction is universal for the original relative derivations. -/
 def isUniversal : (derivation φ).Universal where
@@ -266,17 +287,31 @@ def relativeDifferentialsIdIso :
       (relativeDesc_d (F := 𝟭 D) ψ (derivation' ψ) X a)
 
 /-- The identity-functor comparison sends the actual cokernel differential to the native one. -/
-@[simp]
 theorem relativeDifferentialsIdIso_hom_d (X : Dᵒᵖ) (a : R.obj X) :
     (relativeDifferentialsIdIso ψ).hom.app X ((derivation (F := 𝟭 D) ψ).d a) =
       (derivation' ψ).d a := relativeDesc_d (F := 𝟭 D) ψ (derivation' ψ) X a
 
-/-- The inverse comparison preserves the same original differential, without a sign or unit. -/
+/-- Canonical coercion form of `relativeDifferentialsIdIso_hom_d`
+for simplification. -/
 @[simp]
+private theorem relativeDifferentialsIdIso_hom_d' (X : Dᵒᵖ) (a : R.obj X) :
+    (relativeDifferentialsIdIso ψ).hom.app' X ((derivation (F := 𝟭 D) ψ).d a) =
+      (derivation' ψ).d a := by
+  exact relativeDifferentialsIdIso_hom_d ψ X a
+
+/-- The inverse comparison preserves the same original differential, without a sign or unit. -/
 theorem relativeDifferentialsIdIso_inv_d (X : Dᵒᵖ) (a : R.obj X) :
     (relativeDifferentialsIdIso ψ).inv.app X ((derivation' ψ).d a) =
       (derivation (F := 𝟭 D) ψ).d a :=
   Derivation.congr_d ((isUniversal' ψ).fac (derivation (F := 𝟭 D) ψ)) a
+
+/-- Canonical coercion form of `relativeDifferentialsIdIso_inv_d`
+for simplification. -/
+@[simp]
+private theorem relativeDifferentialsIdIso_inv_d' (X : Dᵒᵖ) (a : R.obj X) :
+    (relativeDifferentialsIdIso ψ).inv.app' X ((derivation' ψ).d a) =
+      (derivation (F := 𝟭 D) ψ).d a := by
+  exact relativeDifferentialsIdIso_inv_d ψ X a
 
 end Identity
 

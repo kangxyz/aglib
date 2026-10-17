@@ -83,9 +83,11 @@ theorem baseChangeToCechPlus_quasiIso (e : ι ≃ Fin (n + 1))
     (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
     (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) σ e hflat
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeDerivedSheaves (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeDerivedModules (A : Type u) [CommRing A] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

@@ -46,11 +46,13 @@ theorem moduleSectionsBaseChangeScalars (p : Y ⟶ X)
     rw [hw, ← Scheme.ΓSpecIso_inv_naturality_assoc]
   exact congrArg CommRingCat.Hom.hom h
 
-/-- A supplied affine fibre square gives the pushout of its actual structural ring maps. -/
+/-- A supplied affine fibre square gives the pushout of its actual structural ring maps.
+Affineness of `Y` is retained as the affine-square family guard,
+though this proof does not use it. -/
 theorem moduleSectionsBaseChange_isPushout (p : Y ⟶ X)
     (q : Y ⟶ Spec (CommRingCat.of B)) (f : X ⟶ Spec (CommRingCat.of A))
     (σ : A →+* B) (h : IsPullback p q f (Spec.map (CommRingCat.ofHom σ)))
-    [IsAffine X] [IsAffine Y] :
+    [IsAffine X] [_affineY : IsAffine Y] :
     IsPushout
       (CommRingCat.ofHom (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of A)).inv.hom))
       (CommRingCat.ofHom σ) p.appTop

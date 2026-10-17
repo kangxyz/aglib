@@ -53,7 +53,6 @@ theorem singleIdealQuotientExtLinearEquiv_apply (n : ℕ)
       (Ext.mk₀ (singleQuotientIdealLinearEquiv a).toModuleIso.inv).comp z (zero_add n) := rfl
 
 /-- The same transport retains native coefficient postcomposition in every degree. -/
-@[simp]
 theorem singleIdealQuotientExtLinearEquiv_comp_mk₀ {N' : ModuleCat.{u} R}
     (g : N ⟶ N') (n : ℕ) (z : Ext (ModuleCat.of R (SingleQuotient R a)) N n) :
     (singleIdealQuotientExtLinearEquiv a N n z).comp (Ext.mk₀ g) (add_zero n) =

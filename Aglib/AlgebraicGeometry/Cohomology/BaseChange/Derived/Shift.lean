@@ -35,13 +35,19 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance baseChangeShiftStandardDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 
 /-- The installed exact flat pullback uses the original right-derived shifts. -/
-instance derivedFlatPullbackPlus_commShift {X Y : Scheme.{u}} (f : X ⟶ Y) [Flat f] :
+instance derivedFlatPullbackPlusCommShift {X Y : Scheme.{u}} (f : X ⟶ Y) [Flat f] :
     (derivedFlatPullbackPlus f).CommShift ℤ :=
   inferInstanceAs ((pullback f).rightDerivedFunctorPlus.CommShift ℤ)
+
+/-- Deprecated compatibility name for `derivedFlatPullbackPlusCommShift`. -/
+-- Preserve the public data name without registering a second shift instance.
+@[deprecated (since := "2026-10-17"), nolint defsWithUnderscore]
+alias derivedFlatPullbackPlus_commShift := derivedFlatPullbackPlusCommShift
 
 /-- The installed flat pullback is triangulated for those same native shifts. -/
 instance derivedFlatPullbackPlus_isTriangulated {X Y : Scheme.{u}} (f : X ⟶ Y) [Flat f] :

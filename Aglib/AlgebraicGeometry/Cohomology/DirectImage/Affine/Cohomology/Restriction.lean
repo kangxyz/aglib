@@ -531,6 +531,7 @@ end Forward
 
 section NativeOpen
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance nativeAffineStandard (Z : Scheme.{u}) :
     HasDerivedCategory.{u + 1} Z.Modules := HasDerivedCategory.standard _
 

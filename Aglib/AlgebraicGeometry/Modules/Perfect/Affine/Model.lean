@@ -60,6 +60,7 @@ theorem tildeModelMap_quasiIso [QuasiIso q]
   dsimp only [tildeModelMap]
   infer_instance
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance affineModelDerivedSheaves : HasDerivedCategory.{u + 1} (Spec R).Modules :=
   HasDerivedCategory.standard _
 

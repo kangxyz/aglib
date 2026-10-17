@@ -44,9 +44,11 @@ variable {R : Type u} [CommRing R] {ι : Type u} {X : Scheme.{u}}
   (I : InjectiveResolution
     ((Scheme.Modules.pullback (pullback.fst f (Spec.map (CommRingCat.ofHom σ)))).obj M))
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance changedResolutionSource (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance changedResolutionTarget (A : Type u) [CommRing A] :
     HasDerivedCategory.{u + 1} (ModuleCat.{u} A) := HasDerivedCategory.standard _
 

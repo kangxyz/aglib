@@ -41,9 +41,11 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 
 variable (R : Type u) [CommRing R] (ι : Type u) [Fintype ι]
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance projectiveDerivedSerreSource :
     HasDerivedCategory.{u + 1} (ProjectiveSpace R ι).Modules :=
   HasDerivedCategory.standard _
+/-- The standard derived-category structure on the indicated module category. -/
 local instance projectiveDerivedSerreTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

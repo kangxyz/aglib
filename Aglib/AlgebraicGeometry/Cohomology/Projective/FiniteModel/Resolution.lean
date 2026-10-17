@@ -39,9 +39,11 @@ variable {R : Type u} [CommRing R] {ι : Type u} {X : Scheme.{u}}
   (D : ProjectiveCohomologyModel R ι i f M n) (e : ι ≃ Fin (n + 1))
   (I : InjectiveResolution M)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance resolutionModelSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance resolutionModelTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

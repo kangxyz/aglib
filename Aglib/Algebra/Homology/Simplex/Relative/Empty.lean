@@ -86,10 +86,17 @@ def emptySupportConstantCycle (r : R) : (complex R (∅ : Set ι)).cycles 0 :=
     rw [d_apply, Fin.sum_univ_two]
     simp [extendByZero])
 
-@[simp]
 theorem i_emptySupportConstantCycle (r : R) :
     (complex R (∅ : Set ι)).iCycles 0 (emptySupportConstantCycle r) = fun _ => r :=
   (complex R (∅ : Set ι)).i_cyclesMk _ _ _ _
+
+/-- Canonical coercion form of `i_emptySupportConstantCycle`
+for simplification. -/
+@[simp]
+private theorem i_emptySupportConstantCycle' (r : R) :
+    (show (complex R (∅ : Set ι)).cycles 0 →ₗ[R] Cochains R (∅ : Set ι) 0 from
+      ((complex R (∅ : Set ι)).iCycles 0).hom) (emptySupportConstantCycle r) = fun _ => r := by
+  exact i_emptySupportConstantCycle (R := R) (ι := ι) r
 
 /-- Actual scalar-linear evaluation of an original zero-cycle at a vertex. -/
 def emptySupportCyclesEval (j : ι) : (complex R (∅ : Set ι)).cycles 0 →ₗ[R] R :=

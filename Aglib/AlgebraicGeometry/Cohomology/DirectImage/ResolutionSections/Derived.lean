@@ -39,9 +39,11 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 
 variable {R : Type u} [CommRing R] (X : Scheme.{u}) (α : R →+* Γ(X, ⊤))
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance derivedGlobalSectionsSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance derivedGlobalSectionsTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

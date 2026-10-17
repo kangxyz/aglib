@@ -46,11 +46,13 @@ variable (R : Type u) [CommRing R] (ι : Type u) (X : Scheme.{u})
 /-- The sole bounded finite-projective replacement of an original finite Cech
 truncation, retaining its actual map and literal arbitrary scalar extensions. -/
 structure FiniteCechCohomologyModel where
+  /-- The bounded complex of finite projective modules in the model. -/
   complex : CochainComplex (ModuleCat.{u} R) ℤ
   lowerBound : complex.IsStrictlyGE 0
   upperBound : complex.IsStrictlyLE (n : ℤ)
   finite_X : ∀ j, Module.Finite R (complex.X j)
   projective_X : ∀ j, Module.Projective R (complex.X j)
+  /-- The comparison from the model to the supplied finite Cech complex. -/
   comparison : complex ⟶ moduleFiniteCechComplex X
     (f.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom) U M n
   quasiIso : QuasiIso comparison
@@ -145,9 +147,11 @@ theorem toCechPlus_quasiIso (e : ι ≃ Fin (n + 1)) : QuasiIso D.toCechPlus.hom
   change QuasiIso (D.comparison ≫ _)
   infer_instance
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance finiteModelDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance finiteModelDerivedTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

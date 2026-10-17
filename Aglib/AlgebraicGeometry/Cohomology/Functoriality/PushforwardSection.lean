@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pushforward.Shift
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PushforwardComposition
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Identity
 
@@ -35,11 +36,6 @@ namespace AlgebraicGeometry.Scheme.Modules
 /-- Standard original module-sheaf derived categories. -/
 local instance pushforwardSectionStandardDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
-/-- The original installed derived pushforward commutes with the actual shifts. -/
-instance derivedPushforwardPlusCommShift {X Y : Scheme.{u}} (f : X ⟶ Y) :
-    (derivedPushforwardPlus f).CommShift ℤ := by
-  unfold derivedPushforwardPlus
-  infer_instance
 /-- The original installed derived pushforward preserves distinguished triangles. -/
 instance derivedPushforwardPlusTriangulated {X Y : Scheme.{u}} (f : X ⟶ Y) :
     (derivedPushforwardPlus f).IsTriangulated := by

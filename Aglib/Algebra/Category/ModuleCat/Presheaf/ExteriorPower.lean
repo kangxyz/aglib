@@ -89,13 +89,24 @@ theorem exteriorPower_obj (M : PresheafOfModulesOfCommRing.{v} R) (n : ℕ) (X :
     (exteriorPower M n).obj X = (M.obj X).exteriorPower n := rfl
 
 /-- The literal wedge formula for the original exterior-presheaf restriction. -/
-@[simp]
 theorem exteriorPower_map_mk (M : PresheafOfModulesOfCommRing.{v} R) (n : ℕ)
     {X Y : Cᵒᵖ} (f : X ⟶ Y) (s : Fin n → M.obj X) :
     (exteriorPower M n).map f
         (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
       ModuleCat.exteriorPower.mk (R := R.obj Y) (M := M.obj Y) (fun i => M.map f (s i)) :=
   exteriorPowerRestriction_mk M n f s
+
+/-- Canonical coercion form of `exteriorPower_map_mk`
+for simplification. -/
+@[simp]
+private theorem exteriorPower_map_mk' (M : PresheafOfModulesOfCommRing.{v} R) (n : ℕ)
+    {X Y : Cᵒᵖ} (f : X ⟶ Y) (s : Fin n → M.obj X) :
+    (show (M.obj X).exteriorPower n ⟶
+      (ModuleCat.restrictScalars (R.map f).hom).obj ((M.obj Y).exteriorPower n) from
+        (exteriorPower M n).map f)
+        (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
+      ModuleCat.exteriorPower.mk (R := R.obj Y) (M := M.obj Y) (fun i => M.map f (s i)) := by
+  exact exteriorPower_map_mk M n f s
 
 /-- A coefficient morphism acts through its original native exterior maps at every object. -/
 def exteriorPowerMap {M N : PresheafOfModulesOfCommRing.{v} R} (φ : M ⟶ N) (n : ℕ) :
@@ -118,13 +129,23 @@ def exteriorPowerMap {M N : PresheafOfModulesOfCommRing.{v} R} (φ : M ⟶ N) (n
     exact naturality_apply φ f (s i))
 
 /-- The coefficient formula is exactly the wedge of the original component maps. -/
-@[simp]
 theorem exteriorPowerMap_app_mk {M N : PresheafOfModulesOfCommRing.{v} R}
     (φ : M ⟶ N) (n : ℕ) (X : Cᵒᵖ) (s : Fin n → M.obj X) :
     (exteriorPowerMap φ n).app X
         (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
       ModuleCat.exteriorPower.mk (R := R.obj X) (M := N.obj X) (fun i => φ.app X (s i)) :=
   _root_.exteriorPower.map_apply_ιMulti (R := R.obj X) (φ.app' X).hom s
+
+/-- Canonical coercion form of `exteriorPowerMap_app_mk`
+for simplification. -/
+@[simp]
+private theorem exteriorPowerMap_app_mk' {M N : PresheafOfModulesOfCommRing.{v} R}
+    (φ : M ⟶ N) (n : ℕ) (X : Cᵒᵖ) (s : Fin n → M.obj X) :
+    (show (M.obj X).exteriorPower n ⟶ (N.obj X).exteriorPower n from
+      (exteriorPowerMap φ n).app' X)
+        (ModuleCat.exteriorPower.mk (R := R.obj X) (M := M.obj X) s) =
+      ModuleCat.exteriorPower.mk (R := R.obj X) (M := N.obj X) (fun i => φ.app X (s i)) := by
+  exact exteriorPowerMap_app_mk φ n X s
 
 /-- The original pointwise exterior-power functor on actual module presheaves. -/
 def exteriorPowerFunctor (R : Cᵒᵖ ⥤ CommRingCat.{u}) (n : ℕ) :

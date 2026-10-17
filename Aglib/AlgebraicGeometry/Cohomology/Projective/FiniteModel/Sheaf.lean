@@ -109,9 +109,11 @@ def sheafComparisonPlus (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M) :
     (D.resolutionSectionsComparison e I ≫
       (moduleSpecPushforwardGlobalSectionsComplexIso f (.up ℤ) I.cochainComplexPlus.obj).inv)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance sheafModelDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance sheafModelDerivedTarget : HasDerivedCategory.{u + 1} (Spec R).Modules :=
   HasDerivedCategory.standard _
 
@@ -140,7 +142,7 @@ theorem hasStrictSheafModel_of_counit (e : ι ≃ Fin (n + 1)) (I : InjectiveRes
 /-- Once the geometric counit has been proved a quasi-isomorphism, the
 same strict sheaf complex represents the installed original derived
 pushforward of the coefficient in degree zero. -/
-def derivedPushforwardIso_of_counit (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M)
+def derivedPushforwardIsoOfCounit (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M)
     (hcounit : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit R (.up ℤ)
       (((Scheme.Modules.pushforward f).mapCochainComplexPlus.obj I.cochainComplexPlus).obj))) :
     DerivedCategory.Plus.Q.obj D.strictSheafModelPlus ≅
@@ -155,12 +157,17 @@ def derivedPushforwardIso_of_counit (e : ι ≃ Fin (n + 1)) (I : InjectiveResol
         (moduleSpecPushforwardGlobalSectionsComplexIso f (.up ℤ) I.cochainComplexPlus.obj).inv) ≪≫
     InjectiveResolution.rightDerivedFunctorPlusIso (Scheme.Modules.pushforward f) I
 
+/-- Deprecated compatibility name for `derivedPushforwardIsoOfCounit`. -/
+-- Preserve the public data name as a transparent alias of the canonical construction.
+@[deprecated (since := "2026-10-17"), nolint defsWithUnderscore]
+alias derivedPushforwardIso_of_counit := derivedPushforwardIsoOfCounit
+
 /-- The native derived-pushforward comparison keeps the literal original
 strict-model arrow and the installed injective-resolution derived unit. -/
 theorem derivedPushforwardIso_of_counit_hom (e : ι ≃ Fin (n + 1)) (I : InjectiveResolution M)
     (hcounit : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit R (.up ℤ)
       (((Scheme.Modules.pushforward f).mapCochainComplexPlus.obj I.cochainComplexPlus).obj))) :
-    (D.derivedPushforwardIso_of_counit e I hcounit).hom =
+    (D.derivedPushforwardIsoOfCounit e I hcounit).hom =
       DerivedCategory.Plus.Q.map (D.sheafComparisonPlus e I) ≫
         (InjectiveResolution.rightDerivedFunctorPlusIso (Scheme.Modules.pushforward f) I).hom := rfl
 

@@ -27,14 +27,20 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance pushforwardShiftStandardDerived (X : Scheme.{u}) :
     HasDerivedCategory.{u + 1} X.Modules := HasDerivedCategory.standard _
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y)
 
 /-- The original derived pushforward uses its native right-derived shifts. -/
-instance derivedPushforwardPlus_commShift : (derivedPushforwardPlus f).CommShift ℤ :=
+instance derivedPushforwardPlusCommShift : (derivedPushforwardPlus f).CommShift ℤ :=
   inferInstanceAs ((pushforward f).rightDerivedFunctorPlus.CommShift ℤ)
+
+/-- Deprecated compatibility name for `derivedPushforwardPlusCommShift`. -/
+-- Preserve the public data name without registering a second shift instance.
+@[deprecated (since := "2026-10-17"), nolint defsWithUnderscore]
+alias derivedPushforwardPlus_commShift := derivedPushforwardPlusCommShift
 
 /-- The installed derived pushforward is triangulated for those same shifts. -/
 instance derivedPushforwardPlus_isTriangulated : (derivedPushforwardPlus f).IsTriangulated :=

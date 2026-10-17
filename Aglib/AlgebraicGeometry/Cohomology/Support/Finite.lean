@@ -345,9 +345,27 @@ def finiteClosedSupportH0Equiv (p : ι → X) (hp : Function.Injective p)
   (sheafCohomologyAddEquiv X (finiteClosedSupportIso X p hp hclosed A hA) 0).trans
     (finiteSkyscraperH0Equiv X p (fun i => (additiveStalkFunctor X (p i)).obj A))
 
-set_option maxHeartbeats 800000 in
--- Comparing the chosen sheaf biproduct with the original H⁰ map requires
--- extra definitional-equality normalization; the increase is local and finite.
+private theorem cohomology_lift_projection
+    (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
+    (C : ι → Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
+    (f : ∀ i, A ⟶ C i) (n : ℕ) (x : Sheaf.H.{u + 1} A n) (i : ι) :
+    Sheaf.H.map (biproduct.π C i) n (Sheaf.H.map (biproduct.lift f) n x) =
+      Sheaf.H.map (f i) n x := by
+  rw [← Sheaf.H.map_comp_apply, biproduct.lift_π]
+
+private theorem finiteSkyscraperH0Equiv_lift (p : ι → X) (A : ι → AddCommGrpCat.{u})
+    {B : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}}
+    (f : ∀ i, B ⟶ additiveSkyscraper X (p i) (A i))
+    (x : Sheaf.H.{u + 1} B 0) (i : ι) :
+    finiteSkyscraperH0Equiv X p A (Sheaf.H.map (biproduct.lift f) 0 x) i =
+      skyscraperH0Equiv X (p i) (A i) (Sheaf.H.map (f i) 0 x) := by
+  change skyscraperH0Equiv X (p i) (A i)
+    (finiteSkyscraperCohomologyEquiv X p A 0
+      (Sheaf.H.map (biproduct.lift f) 0 x) i) = _
+  rw [finiteSkyscraperCohomologyEquiv_apply]
+  exact congrArg (skyscraperH0Equiv X (p i) (A i))
+    (cohomology_lift_projection X B (fun j => additiveSkyscraper X (p j) (A j)) f 0 x i)
+
 theorem finiteClosedSupportH0Equiv_apply (p : ι → X) (hp : Function.Injective p)
     (hclosed : ∀ i, IsClosed ({p i} : Set X))
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
@@ -356,13 +374,10 @@ theorem finiteClosedSupportH0Equiv_apply (p : ι → X) (hp : Function.Injective
     finiteClosedSupportH0Equiv X p hp hclosed A hA x i =
       skyscraperH0Equiv X (p i) ((additiveStalkFunctor X (p i)).obj A)
         (Sheaf.H.map ((additiveStalkSkyscraperAdjunction X (p i)).unit.app A) 0 x) := by
-  change skyscraperH0Equiv X (p i) ((additiveStalkFunctor X (p i)).obj A)
-    (finiteSkyscraperCohomologyEquiv X p _ 0
-      (Sheaf.H.map (finiteStalkSkyscraperMap X p A) 0 x) i) = _
-  rw [finiteSkyscraperCohomologyEquiv_apply, ← Sheaf.H.map_comp_apply]
-  exact congrArg (fun g : A ⟶ additiveSkyscraper X (p i) ((additiveStalkFunctor X (p i)).obj A) =>
-    skyscraperH0Equiv X (p i) ((additiveStalkFunctor X (p i)).obj A) (Sheaf.H.map g 0 x))
-      (biproduct.lift_π (fun j => (additiveStalkSkyscraperAdjunction X (p j)).unit.app A) i)
+  change finiteSkyscraperH0Equiv X p _
+    (Sheaf.H.map (finiteStalkSkyscraperMap X p A) 0 x) i = _
+  exact finiteSkyscraperH0Equiv_lift X p _
+    (fun j => (additiveStalkSkyscraperAdjunction X (p j)).unit.app A) x i
 
 theorem finiteClosedSupportH0Equiv_naturality (p : ι → X) (hp : Function.Injective p)
     (hclosed : ∀ i, IsClosed ({p i} : Set X))

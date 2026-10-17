@@ -67,9 +67,11 @@ theorem hasStrictSheafModel : Scheme.Modules.Complex.HasStrictModel
     (((Scheme.Modules.pushforward f).mapCochainComplexPlus.obj I.cochainComplexPlus).obj) :=
   D.hasStrictSheafModel_of_counit e I (embeddingCounit_quasiIso i f e M I)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance perfectModelDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance perfectModelDerivedTarget : HasDerivedCategory.{u + 1} (Spec R).Modules :=
   HasDerivedCategory.standard _
 
@@ -79,7 +81,7 @@ def derivedPushforwardIso :
     DerivedCategory.Plus.Q.obj D.strictSheafModelPlus ≅
       (Scheme.Modules.pushforward f).rightDerivedFunctorPlus.obj
         ((DerivedCategory.Plus.singleFunctor X.Modules 0).obj M) :=
-  D.derivedPushforwardIso_of_counit e I (embeddingCounit_quasiIso i f e M I)
+  D.derivedPushforwardIsoOfCounit e I (embeddingCounit_quasiIso i f e M I)
 
 /-- The actual direct-image model retains the literal original sheaf
 comparison and the original injective-resolution derived unit. -/
