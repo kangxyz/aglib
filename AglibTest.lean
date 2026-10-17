@@ -13,6 +13,8 @@ public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 public import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
+public import AglibTest.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
+public import AglibTest.AlgebraicGeometry.IdealSheaf.Descent.Pullback
 public import AglibTest.AlgebraicGeometry.Modules.Descent.Zariski
 public import AglibTest.AlgebraicGeometry.Picard.Affine
 public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
@@ -40,6 +42,7 @@ public import AglibTest.FiniteLocallyFree
 public import AglibTest.FiniteTypePushforward
 public import AglibTest.MappingCone
 public import AglibTest.RingTheory.Descent.FinitePresentation
+public import AglibTest.RingTheory.Descent.Ideal
 public import AglibTest.RingTheory.Descent.Invertible
 public import AglibTest.SheafTensor
 public import AglibTest.TensorToUnit

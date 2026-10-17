@@ -347,6 +347,8 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Fibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
+public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
+public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.Pullback
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction

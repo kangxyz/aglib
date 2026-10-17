@@ -588,6 +588,8 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Fibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
+public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
+public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.Pullback
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
@@ -1082,6 +1084,7 @@ public import Aglib.RingTheory.Descent.Canonical
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Etale
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Presentation
 public import Aglib.RingTheory.Descent.FinitePresentation
+public import Aglib.RingTheory.Descent.Ideal
 public import Aglib.RingTheory.Descent.Invertible
 public import Aglib.RingTheory.Descent.Morphisms
 public import Aglib.RingTheory.Descent.Nilpotent
