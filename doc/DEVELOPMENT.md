@@ -15,7 +15,7 @@ The bootstrap mode accepts only that exact cache command. It retains the process
 
 Keep writable dependency build caches owned by this checkout. Before building with dependency links into another checkout, prepare private copies; ordinary Lake builds may compile missing dependency modules. Preserve the original sources and caches when making those copies.
 
-Build a changed leaf and its affected consumers with [build_serial.py](../scripts/build_serial.py):
+During proof authoring, complete a coherent mathematical obligation, using focused compilation and repair where they advance the proof. Build changed leaves and affected consumers with [build_serial.py](../scripts/build_serial.py) as needed:
 
 ```sh
 python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration \
@@ -24,9 +24,11 @@ python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration \
 
 The helper accepts `--root ROOT`, `--rehash`, optional native Lake `--outputs FILE` mappings and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
 
+An API smoke check answers a concrete interface question; it is not a required follow-up to every theorem. Do not interrupt authoring with mandatory per-helper or per-theorem smoke, axiom, lint, Python-test, diagnostic-probe or receipt chains. Reuse matching build and verification evidence. Run tooling regressions when tooling changes, selecting the affected test class where sufficient.
+
 ## Local verification and CI
 
-[check.sh](../scripts/check.sh) is the integration route. Source-only checks verify generated enrollment, occupied structure, import direction, public source policy, placeholders and the Python regression suite:
+[check.sh](../scripts/check.sh) is the broad integration route, selected deliberately at an integration/publication boundary, on explicit request or when a change actually invalidates broad coverage. Its `--source-only` mode scans the whole source tree for generated enrollment, occupied structure, import direction, public source policy and placeholders, and runs the entire Python tooling regression suite. It is a broad source/tooling integration check, not routine Lean iteration:
 
 ```sh
 bash scripts/check.sh --source-only
@@ -72,7 +74,9 @@ python3 scripts/check_kernel.py --root examples/downstream --client \
   --receipt-dir .lake/verification/client-kernel
 ```
 
-Run these after the corresponding build and audits, or use the full local route. `--only MODULE` and `--modules MODULE ...` are diagnostic probes and cannot establish complete coverage. Select the same explicit receipt directory to continue scoped work across small source changes. Matching evidence is reused by each module's actual compiled import closure, including dependency source, exported/server/private/IR artifacts, effective configuration, compiler/runtime and checker semantics. An unrelated edit or new enrollment does not discard unaffected evidence; an imported source/artifact change invalidates its dependents. A coherent relocation can reuse matching evidence without rewriting the original execution provenance.
+At the selected integration boundary, run these after the corresponding build and audits, or use the full local route. `--only MODULE` and `--modules MODULE ...` are diagnostic probes and cannot establish complete coverage. Select the same explicit receipt directory to continue scoped work across small source changes. Matching evidence is reused by each module's actual compiled import closure, including dependency source, exported/server/private/IR artifacts, effective configuration, compiler/runtime and checker semantics. An unrelated edit or new enrollment does not discard unaffected evidence; an imported source/artifact change invalidates its dependents. A coherent relocation can reuse matching evidence without rewriting the original execution provenance.
+
+On resumption, adopt the accepted operational tool revision separately from the frozen mathematical source snapshot, recording both identities. Continue the same explicit compatible kernel-receipt lineage; adopting operational guidance alone requires no new replay. Tool changes that affect the recorded compiler/runtime or checker semantics must satisfy the checker's compatibility rules before evidence can be reused.
 
 The checker captures full identities at start/end and guards exact inputs and search-resolution candidates between batches, including ctime to detect changed-and-restored files. Missing dependency source metadata prevents reuse; incomplete compiled metadata or corrupt selected evidence fails closed. Original bases, records, logs and resource profiles remain immutable; current coverage summaries reference the original evidence and distinguish reuse from fresh execution. Older receipts without dependency metadata require a new closure-bound replay. [Replay mechanics](../scripts/README.md#resource-limits-and-exact-kernel-replay) describe the evidence layout and configuration normalization.
 
@@ -104,7 +108,7 @@ Update the owning family README when an object, namespace, hypothesis, result or
 
 Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree status before writing and before staging or committing; coordinate overlapping edits and shared build outputs. Keep Git index and `HEAD` mutations serial. Do not push without an explicit current request.
 
-During development build changed leaves and affected clients. When a scoped replay is warranted, continue it through the explicit receipt lineage. At integration and publication use the full route above for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and complete required local replay coverage. Current matching per-closure evidence covers unchanged modules; diagnostic probes do not establish the full inventory. Build success does not discharge mathematical premises.
+Use the authoring rule above during development. At the deliberately selected integration and publication boundaries, retain the full route for enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and complete required local replay coverage. Continue warranted scoped replay through the explicit receipt lineage; current matching per-closure evidence covers unchanged modules, while diagnostic probes do not establish the full inventory. Build success does not discharge mathematical premises.
 
 A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.
 

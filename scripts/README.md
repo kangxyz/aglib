@@ -7,10 +7,15 @@ Run these tools from the package root. Production Lean modules do not depend on
 
 ## Check entry points
 
-`check.sh --source-only` verifies generated enrollment, source layout, proof-token
-policy, scoped heartbeat modifications with explanatory comments, and the Python regression suite. Run it
-on a settled source tree; implementation authors and import generation share a
-serial integration boundary.
+Follow the [authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
+
+`check.sh --source-only` is a broad source/tooling integration check: it scans the
+whole source tree for generated enrollment, source layout, proof-token policy and
+scoped heartbeat modifications with explanatory comments, and runs the entire
+Python tooling regression suite. It is not routine Lean iteration. Select broad
+checks deliberately at integration/publication, on explicit request or for actual
+broad invalidation; implementation authors and import generation share a serial
+integration boundary.
 
 `check.sh` additionally builds the production and positive test roots, replays
 linters and explicit origin audits, exercises isolated rejection controls, checks
@@ -167,9 +172,12 @@ evidence and execution profiles. Older receipts lack dependency metadata and
 require a new closure-bound replay before automatic reuse. Missing or corrupted
 selected records, original bases, logs or resource evidence fail closed.
 
-During development, build changed leaves and affected clients. When a scoped
-replay is warranted, continue it through the explicit lineage. Integration and publication retain
-full current library/client coverage and all other required checks. Matching
+On resumption, distinguish the accepted operational tool revision from the frozen
+mathematical source snapshot and record both identities. Continue warranted replay
+through the same explicit compatible receipt lineage; operational-guidance adoption
+alone requires no new replay. Changes affecting recorded compiler/runtime or checker
+semantics remain subject to the compatibility rules above. Integration and publication
+retain full current library/client coverage and all other required checks. Matching
 per-closure replay evidence discharges unchanged replay coverage; a probe alone
 cannot discharge the full-publication requirement.
 
