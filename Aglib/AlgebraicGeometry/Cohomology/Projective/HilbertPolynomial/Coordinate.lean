@@ -105,20 +105,6 @@ variable (R ι) in
 -- Frame coefficients of twist sections live in `Γ(ProjectiveSpace R ι, V)` only after
 -- unfolding the module presheaf; this needs the backward transparency rule.
 set_option backward.isDefEq.respectTransparency false in
-/-- Transport along an equality of degrees keeps the standard frame coefficient. -/
-theorem twistingSectionsEquiv_eqToHom {c c' : ℤ} (h : c = c') (i : ι)
-    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i)
-    (x : (twistingSheaf R ι c).val.obj (op V)) :
-    twistingSectionsEquiv R ι c' i hV
-        ((eqToHom (congrArg (twistingSheaf R ι) h)).val.app (op V) x) =
-      twistingSectionsEquiv R ι c i hV x := by
-  subst h
-  rfl
-
-variable (R ι) in
--- Frame coefficients of twist sections live in `Γ(ProjectiveSpace R ι, V)` only after
--- unfolding the module presheaf; this needs the backward transparency rule.
-set_option backward.isDefEq.respectTransparency false in
 /-- The coordinate `Xᵢ` has frame coefficient one on every subopen of its own chart. -/
 theorem coordinateSection_coefficient (i : ι) {V : (ProjectiveSpace R ι).Opens}
     (hV : V ≤ coordinateOpen R ι i) :

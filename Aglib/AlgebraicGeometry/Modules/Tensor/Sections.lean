@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Restriction
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/Sheaf/TensorSections.lean` at LOCAL Quillen
@@ -18,7 +19,9 @@ source ranges [[1, 66]]. Actual objects, maps and hypotheses are preserved.
 # Tensor sections on a scheme
 
 Original tensor sections detect morphisms and preserve literal coefficient,
-module and open-restriction maps.
+module and open-restriction maps. The original left and right tensor unitors
+send a pure section with a structure-sheaf factor to scalar multiplication
+(`tensorLeftUnitIso_hom_section`, `tensorRightUnitIso_hom_section`).
 -/
 
 @[expose] public section
@@ -73,5 +76,64 @@ theorem tensorRestrictionIso_section {X Y : Scheme.{u}} (j : X ⟶ Y) [IsOpenImm
       moduleTensorSection Y E M (j ''ᵁ U) e m := by
   exact SheafOfModulesOfCommRing.pushforwardTensorMap_tensorSection (restrictionRingHom j) E
       M (op U) e m
+
+-- Moved from the invertible-sheaf section leaf, whose file-wide type transparency rule this
+-- proof was written under; the rule is kept for this declaration only.
+set_option backward.isDefEq.respectTransparency.types false in
+/-- The original right tensor unitor sends its original pure section to scalar multiplication. -/
+theorem tensorRightUnitIso_hom_section (X : Scheme.{u}) (M : X.Modules) (U : X.Opens)
+    (m : Γ(M, U)) (a : Γ(X, U)) :
+    ((tensorRightUnitIso X.sheaf).hom.app M).val.app (op U)
+        (moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m a) = a • m := by
+  let P := (SheafOfModulesOfCommRing.toPresheaf X.sheaf).obj M
+  let adj := PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf) (𝟙 _)
+  have hunit : (associatedSheafUnit X.sheaf).app P ≫
+      (SheafOfModulesOfCommRing.toPresheaf X.sheaf).map (adj.counit.app M) = 𝟙 P := by
+    exact adj.right_triangle_components M
+  have hn := (associatedSheafUnit X.sheaf).naturality (ρ_ P).hom
+  have hfac : (associatedSheafUnit X.sheaf).app (P ⊗ 𝟙_ _) ≫
+      (SheafOfModulesOfCommRing.toPresheaf X.sheaf).map
+        ((tensorRightUnitIso X.sheaf).hom.app M) = (ρ_ P).hom := by
+    erw [tensorRightUnitIso_hom_app X.sheaf M, Functor.map_comp, ← Category.assoc, ← hn,
+      Category.assoc, hunit, Category.comp_id]
+    rfl
+  have hv := congrArg (fun q => q.app (op U) (m ⊗ₜ[Γ(X, U)] a)) hfac
+  change ((tensorRightUnitIso X.sheaf).hom.app M).val.app (op U)
+      (moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m a) =
+    (ρ_ P).hom.app (op U) (m ⊗ₜ[Γ(X, U)] a) at hv
+  have hρ : (ρ_ P).hom.app (op U) (m ⊗ₜ[Γ(X, U)] a) = a • m := by
+    let : CommRing (X.ringCatSheaf.obj.obj (op U)) := inferInstanceAs (CommRing Γ(X, U))
+    exact ModuleCat.MonoidalCategory.rightUnitor_hom_apply m a
+  exact hv.trans hρ
+
+-- Moved from the invertible-sheaf section leaf, whose file-wide type transparency rule this
+-- proof was written under; the rule is kept for this declaration only.
+set_option backward.isDefEq.respectTransparency.types false in
+/-- The original left tensor unitor sends its original pure section to scalar multiplication. -/
+theorem tensorLeftUnitIso_hom_section (X : Scheme.{u}) (M : X.Modules) (U : X.Opens)
+    (a : Γ(X, U)) (m : Γ(M, U)) :
+    ((tensorLeftUnitIso X.sheaf).hom.app M).val.app (op U)
+        (moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U a m) = a • m := by
+  let P := (SheafOfModulesOfCommRing.toPresheaf X.sheaf).obj M
+  let adj := PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf) (𝟙 _)
+  have hunit : (associatedSheafUnit X.sheaf).app P ≫
+      (SheafOfModulesOfCommRing.toPresheaf X.sheaf).map (adj.counit.app M) = 𝟙 P := by
+    exact adj.right_triangle_components M
+  have hn := (associatedSheafUnit X.sheaf).naturality (λ_ P).hom
+  have hfac : (associatedSheafUnit X.sheaf).app (𝟙_ _ ⊗ P) ≫
+      (SheafOfModulesOfCommRing.toPresheaf X.sheaf).map
+        ((tensorLeftUnitIso X.sheaf).hom.app M) = (λ_ P).hom := by
+    erw [tensorLeftUnitIso_hom_app X.sheaf M, Functor.map_comp, ← Category.assoc, ← hn,
+      Category.assoc, hunit, Category.comp_id]
+    rfl
+  have hv := congrArg (fun q => q.app (op U) (a ⊗ₜ[Γ(X, U)] m)) hfac
+  change ((tensorLeftUnitIso X.sheaf).hom.app M).val.app (op U)
+      (moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U a m) =
+    (λ_ P).hom.app (op U) (a ⊗ₜ[Γ(X, U)] m) at hv
+  have hleft : (λ_ P).hom.app (op U) (a ⊗ₜ[Γ(X, U)] m) = a • m := by
+    let : CommRing (X.ringCatSheaf.obj.obj (op U)) := inferInstanceAs (CommRing Γ(X, U))
+    exact ModuleCat.MonoidalCategory.leftUnitor_hom_apply a m
+  exact hv.trans hleft
+
 end AlgebraicGeometry.Scheme.Modules
 end

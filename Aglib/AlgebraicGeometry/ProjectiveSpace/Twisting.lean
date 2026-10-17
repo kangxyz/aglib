@@ -15,6 +15,8 @@ For every integer `n`, the standard transition units construct an actual locally
 sheaf `O(n)` on Mathlib's polynomial `Proj`. In the local frame `Xᵢ^n`, coefficient functions
 satisfy `sᵢ = (Xᵢ / Xⱼ)^(-n) sⱼ`. The construction works over every commutative ring and with
 every coordinate type. Finite presentation and quasicoherence follow from the same local bases.
+Transport along an equality of degrees keeps chart functions (`twistingSection_eqToHom_val`) and
+frame coefficients (`twistingSectionsEquiv_eqToHom`).
 -/
 
 @[expose] public section
@@ -146,5 +148,22 @@ theorem twistingSectionsEquiv_transition (n : ℤ) (i j : ι)
           twistingSectionsEquiv R ι n j hj s := by
   exact (((coordinateUnitCocycle R ι).zpow (-n)).localSectionsEquiv_transition i j hi hj s).trans
     (by rw [UnitCocycle.zpow_transitionOn, coordinateUnitCocycle_transitionOn]; rfl)
+
+/-- Transport along an equality of twist degrees keeps every matching chart function. -/
+theorem twistingSection_eqToHom_val {c c' : ℤ} (h : c = c') {U : (ProjectiveSpace R ι).Opens}
+    (x : Γ(twistingSheaf R ι c, U)) (i : ι) :
+    ((eqToHom (congrArg (twistingSheaf R ι) h)).val.app (Opposite.op U) x).val i = x.val i := by
+  subst h
+  rfl
+
+/-- Transport along an equality of degrees keeps the standard frame coefficient. -/
+theorem twistingSectionsEquiv_eqToHom {c c' : ℤ} (h : c = c') (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i)
+    (x : (twistingSheaf R ι c).val.obj (Opposite.op V)) :
+    twistingSectionsEquiv R ι c' i hV
+        ((eqToHom (congrArg (twistingSheaf R ι) h)).val.app (Opposite.op V) x) =
+      twistingSectionsEquiv R ι c i hV x := by
+  subst h
+  rfl
 
 end AlgebraicGeometry.ProjectiveSpace

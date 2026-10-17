@@ -8,16 +8,18 @@ module
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Equivalence.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting.Frames
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Sheafification
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiply
 
 /-!
 # Multiplication by global twist sections on tensor twists
 
 A global section `s` of `O(a)` multiplies the twist factor of `O(d) ⊗ F`, giving the natural
-transformation `twistingTensorMultiply` from tensoring by `O(d)` to tensoring by `O(a + d)`.
-Nested original pure tensors `l ⊗ (t ⊗ n)` determine morphisms out of `O(e) ⊗ (O(d) ⊗ F)`,
-because the line bundle `O(e)` preserves the sheafification unit
-(`isIso_line_tensor_sheafificationUnit`). Consequently, if multiplication by `s` kills
-`O(d) ⊗ F`, it kills every further twist `O(e) ⊗ (O(d) ⊗ F)`.
+transformation `twistingTensorMultiply` from tensoring by `O(d)` to tensoring by `O(a + d)`
+(`Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiply`). Nested original pure
+tensors `l ⊗ (t ⊗ n)` determine morphisms out of `O(e) ⊗ (O(d) ⊗ F)`, because the line bundle
+`O(e)` preserves the sheafification unit (`isIso_line_tensor_sheafificationUnit`).
+Consequently, if multiplication by `s` kills `O(d) ⊗ F`, it kills every further twist
+`O(e) ⊗ (O(d) ⊗ F)`.
 -/
 
 @[expose] public section
@@ -111,31 +113,6 @@ theorem exists_coordinateOpen_mem (x : ProjectiveSpace R ι) :
   obtain ⟨i, hi⟩ := TopologicalSpace.Opens.mem_iSup.mp
     (show x ∈ iSup (coordinateOpen R ι) by rw [iSup_coordinateOpen_eq_top]; trivial)
   exact ⟨i, ⟨x, hi⟩, rfl⟩
-
-/-- Multiplication by a global section `s` of `O(a)` on the twist factor: the natural
-transformation from tensoring by `O(d)` to tensoring by `O(a + d)`. -/
-def twistingTensorMultiply (a d : ℤ) (s : (twistingSheaf R ι a).val.obj (op ⊤)) :
-    moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι d) ⟶
-      moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι (a + d)) :=
-  moduleTensorCoefficientMap (ProjectiveSpace R ι) (twistingMultiplyGlobal R ι a d s)
-
-/-- On an original pure tensor, twist multiplication multiplies the twist factor. -/
-theorem twistingTensorMultiply_section (a d : ℤ) (s : (twistingSheaf R ι a).val.obj (op ⊤))
-    (F : (ProjectiveSpace R ι).Modules) (U : (ProjectiveSpace R ι).Opens)
-    (t : Γ(twistingSheaf R ι d, U)) (n : Γ(F, U)) :
-    ((twistingTensorMultiply R ι a d s).app F).val.app (op U)
-        (moduleTensorSection (ProjectiveSpace R ι) (twistingSheaf R ι d) F U t n) =
-      moduleTensorSection (ProjectiveSpace R ι) (twistingSheaf R ι (a + d)) F U
-        (twistingSectionMul R ι a d U
-          ((twistingSheaf R ι a).val.map (homOfLE le_top).op s) t) n :=
-  moduleTensorCoefficientMap_section (twistingMultiplyGlobal R ι a d s) F U t n
-
-/-- Transport along an equality of twist degrees keeps every matching chart function. -/
-theorem twistingSection_eqToHom_val {c c' : ℤ} (h : c = c') {U : (ProjectiveSpace R ι).Opens}
-    (x : Γ(twistingSheaf R ι c, U)) (i : ι) :
-    ((eqToHom (congrArg (twistingSheaf R ι) h)).val.app (op U) x).val i = x.val i := by
-  subst h
-  rfl
 
 /-- Moving a factor between the two sides of a product of twist sections, after transport
 along the corresponding equality of degrees. -/

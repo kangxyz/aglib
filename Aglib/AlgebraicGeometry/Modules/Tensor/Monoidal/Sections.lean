@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
+public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Symmetric
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Sections
 
 /-!
@@ -18,6 +18,12 @@ tensor products, morphisms out of a nested tensor product of arbitrary module sh
 determined by their values on nested pure section tensors, in either bracketing
 (`moduleTensor_nested_hom_ext`, `moduleTensor_nested_hom_ext_left`). No local-freeness or
 line-bundle hypothesis is needed.
+
+The whiskerings act on the corresponding factor of a pure section tensor
+(`whiskerRight_moduleTensorSection`, `whiskerLeft_moduleTensorSection`), the inverse unitors send
+a section `m` to `1 ⊗ m` and `m ⊗ 1` (`leftUnitor_inv_moduleTensorSection`,
+`rightUnitor_inv_moduleTensorSection`), and the braiding exchanges the two factors
+(`braiding_hom_moduleTensorSection`).
 -/
 
 @[expose] public section
@@ -26,7 +32,7 @@ noncomputable section
 
 universe u
 
-open CategoryTheory MonoidalCategory Opposite
+open CategoryTheory MonoidalCategory BraidedCategory Opposite
 
 namespace AlgebraicGeometry.Scheme.Modules
 
@@ -47,6 +53,65 @@ theorem associator_inv_moduleTensorSection (M N O : X.Modules) (U : X.Opens) (m 
         (moduleTensorSection X M (N ⊗ O) U m (moduleTensorSection X N O U n o)) =
       moduleTensorSection X (M ⊗ N) O U (moduleTensorSection X M N U m n) o :=
   tensorSheafAssociator_inv_tmul X M N O (op U) m n o
+
+/-- A right whiskering acts on the first factor of a pure section tensor. -/
+theorem whiskerRight_moduleTensorSection {M M' : X.Modules} (f : M ⟶ M') (N : X.Modules)
+    (U : X.Opens) (m : Γ(M, U)) (n : Γ(N, U)) :
+    (f ▷ N).val.app (op U) (moduleTensorSection X M N U m n) =
+      moduleTensorSection X M' N U (f.val.app (op U) m) n :=
+  moduleTensorCoefficientMap_section f N U m n
+
+/-- A left whiskering acts on the second factor of a pure section tensor. -/
+theorem whiskerLeft_moduleTensorSection (M : X.Modules) {N N' : X.Modules} (g : N ⟶ N')
+    (U : X.Opens) (m : Γ(M, U)) (n : Γ(N, U)) :
+    (M ◁ g).val.app (op U) (moduleTensorSection X M N U m n) =
+      moduleTensorSection X M N' U m (g.val.app (op U) n) :=
+  moduleTensorLeftFunctor_map_section M g U m n
+
+/-- The inverse left unitor sends a section `m` to the pure tensor `1 ⊗ m`. -/
+theorem leftUnitor_inv_moduleTensorSection (M : X.Modules) (U : X.Opens) (m : Γ(M, U)) :
+    (λ_ M).inv.val.app (op U) m =
+      moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U (1 : Γ(X, U)) m := by
+  have h : (λ_ M).hom.val.app (op U)
+      (moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U (1 : Γ(X, U)) m) = m :=
+    (tensorLeftUnitIso_hom_section X M U 1 m).trans (one_smul _ m)
+  calc (λ_ M).inv.val.app (op U) m
+      = (λ_ M).inv.val.app (op U) ((λ_ M).hom.val.app (op U)
+          (moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U (1 : Γ(X, U)) m)) :=
+        congrArg _ h.symm
+    _ = ((λ_ M).hom ≫ (λ_ M).inv).val.app (op U)
+          (moduleTensorSection X (SheafOfModules.unit X.ringCatSheaf) M U (1 : Γ(X, U)) m) :=
+        rfl
+    _ = _ := by rw [Iso.hom_inv_id]; rfl
+
+/-- The inverse right unitor sends a section `m` to the pure tensor `m ⊗ 1`. -/
+theorem rightUnitor_inv_moduleTensorSection (M : X.Modules) (U : X.Opens) (m : Γ(M, U)) :
+    (ρ_ M).inv.val.app (op U) m =
+      moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m (1 : Γ(X, U)) := by
+  have h : (ρ_ M).hom.val.app (op U)
+      (moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m (1 : Γ(X, U))) = m :=
+    (tensorRightUnitIso_hom_section X M U m 1).trans (one_smul _ m)
+  calc (ρ_ M).inv.val.app (op U) m
+      = (ρ_ M).inv.val.app (op U) ((ρ_ M).hom.val.app (op U)
+          (moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m (1 : Γ(X, U)))) :=
+        congrArg _ h.symm
+    _ = ((ρ_ M).hom ≫ (ρ_ M).inv).val.app (op U)
+          (moduleTensorSection X M (SheafOfModules.unit X.ringCatSheaf) U m (1 : Γ(X, U))) :=
+        rfl
+    _ = _ := by rw [Iso.hom_inv_id]; rfl
+
+-- The section modules of the presheaf tensor carry their `Γ(X, U)`-module structures only up
+-- to unfolding the structure-sheaf presheaf; this needs the transparency override.
+set_option backward.isDefEq.respectTransparency false in
+/-- The braiding of scheme modules exchanges the two factors of a pure section tensor. -/
+theorem braiding_hom_moduleTensorSection (M N : X.Modules) (U : X.Opens) (m : Γ(M, U))
+    (n : Γ(N, U)) :
+    (β_ M N).hom.val.app (op U) (moduleTensorSection X M N U m n) =
+      moduleTensorSection X N M U n m := by
+  have h := (SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf).naturality
+    (β_ ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).obj M)
+      ((SheafOfModulesOfCommRing.toPresheaf X.sheaf).obj N)).hom
+  exact (congrArg (fun q ↦ q.app (op U) (m ⊗ₜ[Γ(X, U)] n)) h).symm
 
 private theorem associatedSheaf_map_unit_apply {P Q : PresheafOfModulesOfCommRing.{u} X.sheaf.obj}
     (f : P ⟶ Q) (U : X.Opens) (x : P.obj (op U)) :

@@ -31,6 +31,9 @@ public import AglibTest.AlgebraicGeometry.Picard.Comparison.Injectivity
 public import AglibTest.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import AglibTest.AlgebraicGeometry.Picard.Functors
 public import AglibTest.AlgebraicGeometry.Picard.Interfaces
+public import AglibTest.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Functor
+public import AglibTest.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiplication
+public import AglibTest.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.TensorFunctors
 public import AglibTest.ArchiveBaseProductInterchange
 public import AglibTest.ArchiveEndpointTransport
 public import AglibTest.ArchiveExactFunctorPushout

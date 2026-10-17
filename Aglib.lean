@@ -998,6 +998,11 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Equivalence
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Equivalence.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Generators
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Isomorphism
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Braided
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Functor
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiplication
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiply
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.TensorFunctors
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Unit
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Transition
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.TwistPresentation.Coherent
@@ -1074,6 +1079,8 @@ public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
+public import Aglib.CategoryTheory.Monoidal.Discrete
+public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison

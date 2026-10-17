@@ -78,6 +78,11 @@ formula and its standard-frame coefficient formula are literal products.
 inverse and proves both inverse equations. Thus `twistingTensorIso` identifies
 the native tensor with `O(a+b)` for all integers over arbitrary commutative
 rings, with the original multiplication as its forward map.
+[Tensor/Monoidal](Tensor/Monoidal/README.md) makes the twisting sheaves a braided
+monoidal functor `Discrete ℤ ⥤ (ProjectiveSpace R ι).Modules` with these
+isomorphisms as structure maps, writes multiplication by global sections as
+whiskering, and proves the comparisons of composite twist multiplications by
+monoidal coherence.
 `Tensor.Coherent` retains the original finite-coproduct comparison and each
 summand's multiplication map. Applying exact tensor to the proved two-step
 presentation proves that twisting preserves actual coherent modules over

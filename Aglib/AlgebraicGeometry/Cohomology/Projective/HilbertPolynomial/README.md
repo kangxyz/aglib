@@ -36,9 +36,13 @@ polynomial forward difference forces a polynomial function. The antiderivative
 comes from Mathlib's `Polynomial.bernoulli_eval_one_add`. The leaf is pure
 algebra; its intended owner is a polynomial family under `Aglib.Algebra`.
 
-`TwistMultiplication` constructs `twistingTensorMultiply a d s`. This is
-multiplication by a global section `s` of `O(a)` on the twist factor, a natural
-transformation from tensoring by `O(d)` to tensoring by `O(a + d)`.
+`TwistMultiplication` uses `twistingTensorMultiply a d s`, defined with its
+pure-tensor formula `twistingTensorMultiply_section` in
+[ProjectiveSpace/Tensor/Monoidal/Multiply](../../../ProjectiveSpace/Tensor/Monoidal/Multiply.lean).
+This is multiplication by a global section `s` of `O(a)` on the twist factor, a natural
+transformation from tensoring by `O(d)` to tensoring by `O(a + d)`. The transport lemmas
+`twistingSection_eqToHom_val` and `twistingSectionsEquiv_eqToHom` used by this leaf and by
+`Coordinate` live in [ProjectiveSpace/Twisting](../../../ProjectiveSpace/Twisting.lean).
 `Scheme.Modules.moduleTensor_nested_hom_ext_of_line` proves that morphisms out of
 `L ⊗ (M ⊗ N)` are determined by nested pure tensors when `L` is a trivialized
 line bundle. `twistingTensorMultiply_app_tensor_eq_zero` proves that if `s` kills
@@ -59,8 +63,8 @@ at a time through the kernel and cokernel of multiplication by `Xⱼ`. It uses
 neither an infinite field, nor associated points, nor a hyperplane section. The
 intended owners of the reusable helpers are `Modules/Tensor` (nested section
 lemmas; the smul-left lemma `moduleTensorSection_smul_left` already lives in
-`Modules/Tensor/Stalk/Bilinear.lean`) and `ProjectiveSpace/Tensor` (twist multiplication and
-the killing class).
+`Modules/Tensor/Stalk/Bilinear.lean`) and `ProjectiveSpace/Tensor` (the killing class; twist
+multiplication `twistingTensorMultiply` already lives in `ProjectiveSpace/Tensor/Monoidal/Multiply`).
 
 Local constancy of the Hilbert polynomial in flat projective families is not
 proved here. The fibre over `p` is already identified with

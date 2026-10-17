@@ -507,8 +507,10 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
 - **Tensor layer (supports M4).** `Modules/Tensor/Monoidal` gives a symmetric
   monoidal structure on `X.Modules` whose data are Aglib's tensor maps, with a general
   associator; its input is that local isomorphisms of module presheaves are stable
-  under tensor (`presheafLocalIso_isMonoidal`). The twisting sheaves as a monoidal
-  functor `Discrete ℤ ⥤ P.Modules` are in progress.
+  under tensor (`presheafLocalIso_isMonoidal`). `ProjectiveSpace/Tensor/Monoidal`
+  makes the twisting sheaves a braided monoidal functor `Discrete ℤ ⥤ P.Modules`,
+  writes multiplication by sections as whiskering and proves the composite twist
+  comparisons by coherence.
 - **M3 in progress.**
   - Done for the free module `R^n` over `Spec R`:
     - Grassmannian charts, chart representability on `Over (Spec R)`, and the

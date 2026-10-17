@@ -7,3 +7,5 @@
 The principal categorical results are preservation/transport of actual conflations, abelian subcategory construction from explicit closure conditions, exact kernel sequences of a supplied resolution and split-cover Cech exactness. Restricted-open Cech comparisons belong to [topological Cech theory](../Topology/Sheaves/Cech/README.md). Their guides distinguish structures constructed from supplied data from separate existence assertions.
 
 [Triangulated](Triangulated/README.md), [Adjunction](Adjunction/README.md), [Limits](Limits/README.md) and [NatTrans](NatTrans/README.md) add the generic triangle, mate, coproduct and unit comparisons used by bounded derived/Godement calculations. Their hypotheses remain categorical until a scheme consumer supplies the geometric data.
+
+[Monoidal](Monoidal/README.md) adds the additive braided and symmetric structures on `Discrete M` and multiplication by a morphism out of the tensor unit, with its coherence for lax monoidal and lax braided functors. Its first consumer is the braided twisting functor of projective space.
