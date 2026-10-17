@@ -8,6 +8,7 @@ Authors: kangxyz
 module
 
 public import AglibTest.AffineCohomology
+public import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 public import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
@@ -34,6 +35,8 @@ public import AglibTest.FiniteEtale
 public import AglibTest.FiniteLocallyFree
 public import AglibTest.FiniteTypePushforward
 public import AglibTest.MappingCone
+public import AglibTest.RingTheory.Descent.FinitePresentation
+public import AglibTest.RingTheory.Descent.Invertible
 public import AglibTest.SheafTensor
 public import AglibTest.TensorToUnit
 public import AglibTest.UnramifiedRigidity

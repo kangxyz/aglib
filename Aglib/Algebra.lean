@@ -28,6 +28,8 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Flat
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Composition
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Forget
+public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
+public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
 public import Aglib.Algebra.Category.ModuleCat.FinitePresentation
 public import Aglib.Algebra.Category.ModuleCat.KernelBaseChange

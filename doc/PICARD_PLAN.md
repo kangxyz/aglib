@@ -135,7 +135,7 @@ commitments.
 | F2 | `PicardGroup (Spec A) ≃+ CommRing.Pic A`; local triviality; `Small.{u} (PicardGroup X)` | proved: `Modules/Invertible/Affine`, `LocalRing`, `ChartCocycle` | M |
 | F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | absent (line-bundle cocycles only) | M |
 | F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | proved: `Cohomology/Proper/StructureSheaf` | M |
-| F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | partial (comonadicity) | M |
+| F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | proved: `Algebra/Category/ModuleCat/Descent` (`isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, for Mathlib's descent data on `CommRingCatᵒᵖ`) and `RingTheory/Descent/FinitePresentation`, `Invertible` | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | absent | L |
 | F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | absent | M |
 | F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras) and `Grassmannian/FunctorOfPoints` (the extension to all test schemes); open: locally free `E`, the locally free quotient description, `P(E)`, Plücker | L |
@@ -187,9 +187,13 @@ Surjectivity with a section uses rigidified pairs without automorphisms (Lemmas
 
 ### Descent
 
-Prove effective faithfully flat descent of modules over rings directly from the
-equalizer description, or from Mathlib's comonadicity. State it as
-`Pseudofunctor.IsStackFor` for the singleton presieve of `Spec B → Spec A`.
+Effective faithfully flat descent of modules over rings is proved from Mathlib's
+comonadicity. Its form is `Pseudofunctor.IsStackFor` of Mathlib's
+extension-of-scalars pseudofunctor for the singleton presieve of `f.op` in
+`CommRingCatᵒᵖ` (F5). F6 still needs two things. First, a comparison of
+quasi-coherent sheaves on affine schemes with this `ModuleCat` pseudofunctor,
+through the tilde construction. Second, the transfer of `IsStackFor` from
+`CommRingCatᵒᵖ` to `Scheme`, where descent data range over all test schemes.
 Build the quasi-coherent pseudofunctor from `Scheme.Modules.pseudofunctor`, as
 R5Lab's `Picard.EtaleDescent.modules` already does for all module sheaves;
 first check whether Aglib already proves that pullback preserves
@@ -197,7 +201,8 @@ quasi-coherence. Prove `IsStack` for `Scheme.fppfTopology` with
 `IsStack.of_precoverage`, reducing an fppf family to Zariski gluing (F3) and one
 faithfully flat morphism of affine schemes (the argument of Vistoli 4.23 and
 Stacks 023T, without the fpqc quasi-compactness bookkeeping).
-Invertibility descends (Stacks 05B2), so line bundles form a substack. Closed
+Invertibility descends (`Module.Invertible.iff_invertible_tensorProduct_of_faithfullyFlat`;
+compare Vistoli Ex. 4.19 and Stacks 05B2), so line bundles form a substack. Closed
 subschemes descend as quasi-coherent quotients of `O` (Nitsure, Lemma 6.7); the
 quotient theorem uses this, so effective quasi-coherent descent, or a direct
 proof for ideals, is on the representability path. Open subschemes descend along
@@ -417,10 +422,12 @@ variety `Pic^0_red` remain later extensions.
   Lemma 2.1, Thm 2.3, Thms 3.3–3.7, Thms 4.2–4.3, Thms 5.2–5.3, Thm 6.1,
   Lemma 6.7, Thms 6.8–6.9.
 - A. Vistoli, *Notes on Grothendieck topologies, fibered categories and descent
-  theory*, arXiv:math/0412512v4: Thm 2.55, Ex. 4.19, Thm 4.23.
+  theory*, arXiv:math/0412512v4: Thm 2.55, Ex. 4.19, Thm 4.21, Thm 4.23.
 - [Stacks 023T](https://stacks.math.columbia.edu/tag/023T) (fpqc descent of
-  quasi-coherent sheaves), [05B2](https://stacks.math.columbia.edu/tag/05B2)
-  (descent of local freeness), [0B9N](https://stacks.math.columbia.edu/tag/0B9N)
+  quasi-coherent sheaves), [023N](https://stacks.math.columbia.edu/tag/023N)
+  (descent of modules along faithfully flat ring maps),
+  [03C4](https://stacks.math.columbia.edu/tag/03C4) (descent of finite presentation),
+  [05B2](https://stacks.math.columbia.edu/tag/05B2) (descent of local freeness), [0B9N](https://stacks.math.columbia.edu/tag/0B9N)
   (rigidified comparison), [089T](https://stacks.math.columbia.edu/tag/089T)
   (Grassmannian), [0D2C](https://stacks.math.columbia.edu/tag/0D2C) (the excluded
   algebraic-space route).
@@ -447,6 +454,12 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     representability adapter needs. Generic helpers to move to lower owners:
     `Split.quotientEquiv`, `Scheme.Modules.isIso_of_forall_bijective_app` and
     the module helpers of `StructureSheaf/Coefficient`.
+- **M2 in progress.**
+  - F5 done: effective descent of modules along faithfully flat ring maps for
+    Mathlib's descent data on `CommRingCatᵒᵖ`, plus descent of finite
+    presentation and invertibility. An independent statement review found it
+    corresponding; its documentation repairs are applied.
+  - F3 in progress: Zariski gluing of module sheaves.
 - **M3 in progress.**
   - Done for the free module `R^n` over `Spec R`:
     - Grassmannian charts, chart representability on `Over (Spec R)`, and the
@@ -469,7 +482,7 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     - `P(E)`;
     - the Plücker embedding (F9).
 - **Next.**
-  - M2: F3, F5, F6 and F7.
+  - M2: F3, F6 and F7.
   - The `Over S` Zariski-representability adapter: shrink the values, pass to
     the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
     then apply `Scheme.LocalRepresentability.isRepresentable`.
