@@ -110,7 +110,7 @@ instances (Stacks, Lemma 6.33.2, Tag 00AL, for the gluing of sections).
 The Zariski `IsStack` statements are therefore unconditional. `ProjectionSurjective` and the
 conditional theorems of OpenCoverGluing remain as the assembly step that these instances use. No
 quasi-coherence, finiteness or Noetherian hypothesis is used anywhere in this family. The fppf
-layer (plan row F6) is developed in the subdirectory `Fppf/`.
+layer (plan row F6) is developed in [Fppf](Fppf/README.md); its affine case is proved.
 
 The `backward.*` options are scoped to the declarations that need them, each with a comment:
 two lemmas in Pseudofunctor, one definition in Substack, four lemmas in Zariski,
