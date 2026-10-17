@@ -41,6 +41,16 @@ public import Aglib.RingTheory.Flat.PrincipalQuotient.Local
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Localization
 public import Aglib.RingTheory.Flat.Quotient
 public import Aglib.RingTheory.Flat.TorsionFreeBaseChange
+public import Aglib.RingTheory.Grassmannian.BaseChange
+public import Aglib.RingTheory.Grassmannian.BaseChangeFormula
+public import Aglib.RingTheory.Grassmannian.Chart
+public import Aglib.RingTheory.Grassmannian.ChartIntersection
+public import Aglib.RingTheory.Grassmannian.ChartLocus
+public import Aglib.RingTheory.Grassmannian.ChartRing
+public import Aglib.RingTheory.Grassmannian.Covering
+public import Aglib.RingTheory.Grassmannian.Descent
+public import Aglib.RingTheory.Grassmannian.Gluing
+public import Aglib.RingTheory.Grassmannian.Overlap
 public import Aglib.RingTheory.Ideal.MinimalPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.MinimalPrime.GoingDown
 public import Aglib.RingTheory.Ideal.RegularPrincipal

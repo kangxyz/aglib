@@ -24,6 +24,15 @@ APPLICATION_COMPONENTS = {'curve', 'curves', 'genus', 'p1', 'projectiveline', 'd
     'plus', 'plusconstruction', 'bass', 'spectra', 'prespectrum', 'prespectra',
     'perfectcomplex', 'k', 'g', 'q', 's'}
 
+# One-file exception to the public-import rule. Mathlib does not expose the body of
+# `Module.Grassmannian.baseChangeMkQ`; this leaf alone reads it to supply the
+# `BaseChangeMkQFormula` instance. Remove the entry and the file once Mathlib exposes
+# `baseChangeMkQ` or publishes `baseChangeMkQ_tmul`.
+PRIVATE_IMPORT_EXCEPTIONS = {
+    Path('Aglib/RingTheory/Grassmannian/BaseChangeFormula.lean'):
+        'import all Mathlib.RingTheory.Grassmannian',
+}
+
 
 def forbidden_domain_import(name: str) -> bool:
     raw_parts = [part.strip('«»') for part in name.split('.')]
@@ -115,6 +124,9 @@ def check_layout(root: Path) -> tuple[list[str], int]:
                     r'@\[\s*expose\s*\]\s*public\s+section\b', clean):
                 errors.append(f'Production implementation lacks exposed public section: {relative}')
             for match in re.finditer(r'^[ \t]*(?:(?:private|meta)[ \t]+)*import\b', clean, re.M):
+                line = clean[match.start():clean.find('\n', match.start())].strip()
+                if PRIVATE_IMPORT_EXCEPTIONS.get(relative) == line:
+                    continue
                 errors.append(f'Production import lacks public modifier: {relative}: '
                               f'line {source.count(chr(10), 0, match.start()) + 1}')
         for imported in sorted(imports):

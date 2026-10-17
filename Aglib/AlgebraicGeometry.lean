@@ -335,6 +335,9 @@ public import Aglib.AlgebraicGeometry.FunctionField.Normalization
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.CommonOverfield
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.GlobalSections
+public import Aglib.AlgebraicGeometry.Grassmannian.Chart
+public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
+public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Affine

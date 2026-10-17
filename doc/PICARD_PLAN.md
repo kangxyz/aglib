@@ -447,14 +447,16 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     representability adapter needs. Generic helpers to move to lower owners:
     `Split.quotientEquiv`, `Scheme.Modules.isIso_of_forall_bijective_app` and
     the module helpers of `StructureSheaf/Coefficient`.
-- **M3 in progress, uncommitted.**
+- **M3 in progress.**
   - Done: Grassmannian charts, chart representability on `Over (Spec R)`, and
     the chart gluing as a `Scheme.GlueData`.
+  - The values of Mathlib's `map` use the formula class `BaseChangeMkQFormula`,
+    because Mathlib does not expose `baseChangeMkQ`. Its instance is supplied by
+    `RingTheory/Grassmannian/BaseChangeFormula`, the only leaf allowed a private
+    `import all` (a one-file exception in `scripts/check_library_layout.py`).
+    Remove both once Mathlib exposes `baseChangeMkQ`.
   - Open: representability of Mathlib's `Module.Grassmannian.functor` on
     `R`-algebras.
-  - Pending decision: the ring-level base-change leaf needs a private
-    `import all` of Mathlib's Grassmannian, because `baseChangeMkQ` is not
-    exposed. That conflicts with the public-import policy.
 - **Next.**
   - M2: F3, F5, F6 and F7.
   - The M3 representability theorem.
