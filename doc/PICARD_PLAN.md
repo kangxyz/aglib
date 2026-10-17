@@ -133,7 +133,7 @@ commitments.
 | --- | --- | --- | --- |
 | F1 | Picard presheaves on `Over S` (migrated from R5Lab), group structure, base and family maps | proved: `Picard/Presheaf`, `Picard/Normalized`, `Picard/Fppf` (namespace `Scheme.RelativePicard`), including the sheafified-family comparison | S |
 | F2 | `PicardGroup (Spec A) ≃+ CommRing.Pic A`; local triviality; `Small.{u} (PicardGroup X)` | proved: `Modules/Invertible/Affine`, `LocalRing`, `ChartCocycle` | M |
-| F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | absent (line-bundle cocycles only) | M |
+| F3 | Zariski gluing of module sheaves with cocycle data (stack for `zariskiTopology`) | proved: `Modules/Descent` (`isStack_pullbackPseudofunctor_zariskiTopology`, `isStack_quasicoherentPseudofunctor_zariskiTopology`, `isStack_lineBundlePseudofunctor_zariskiTopology`) | M |
 | F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | proved: `Cohomology/Proper/StructureSheaf` | M |
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | proved: `Algebra/Category/ModuleCat/Descent` (`isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, for Mathlib's descent data on `CommRingCatᵒᵖ`) and `RingTheory/Descent/FinitePresentation`, `Invertible` | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | absent | L |
@@ -463,8 +463,10 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     Mathlib's descent data on `CommRingCatᵒᵖ`, plus descent of finite
     presentation and invertibility. An independent statement review found it
     corresponding; its documentation repairs are applied.
-  - F3 in progress: Zariski gluing of module sheaves. The prestacks are proved,
-    and the stacks are proved conditionally on the cocycle step.
+  - F3 done: module sheaves, quasi-coherent sheaves and line bundles form stacks
+    for `Scheme.zariskiTopology` (unconditional instances in `Modules/Descent`).
+    An independent statement review, which recompiled the frozen copy, found it
+    corresponding.
   - F7 first slice: rigidified pairs, Kleiman Lemmas 2.9 and 2.10, and the
     reduction of injectivity of `toFppfPicardSheaf` (Thm 2.5(1)) to an
     equivalent named premise.
@@ -500,7 +502,7 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
     - `P(E)`;
     - the Plücker embedding (F9).
 - **Next.**
-  - M2: F3, F6 and F7.
+  - M2: F6, then the remaining parts of F7 (Thm 2.5 via Stacks 0B9M and 0B9N).
   - The `Over S` Zariski-representability adapter: shrink the values, pass to
     the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
     then apply `Scheme.LocalRepresentability.isRepresentable`.

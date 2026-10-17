@@ -13,6 +13,7 @@ public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 public import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
+public import AglibTest.AlgebraicGeometry.Modules.Descent.Zariski
 public import AglibTest.AlgebraicGeometry.Picard.Affine
 public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
 public import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms
