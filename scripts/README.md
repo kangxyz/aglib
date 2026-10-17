@@ -7,10 +7,24 @@ Run these tools from the package root. Production Lean modules do not depend on
 
 ## Check entry points
 
-`check.sh --source-only` verifies generated enrollment, source layout, proof-token
-policy, scoped heartbeat modifications with explanatory comments, and the Python regression suite. Run it
-on a settled source tree; implementation authors and import generation share a
-serial integration boundary.
+Follow the [authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
+
+`check.sh --source-only` is a broad source/tooling integration check: it scans the
+whole source tree for generated enrollment, source layout, proof-token policy and
+scoped heartbeat modifications with explanatory comments, and runs the entire
+Python tooling regression suite. Comprehensive commands serve separately requested
+diagnostics and declared CI, not ordinary local acceptance. All normal workflows must
+use only incremental checks: authoring, maintenance, documentation, review, merge,
+integration and publication. Preserve trusted caches, reuse compatible evidence and
+reconcile exact identities and combined changes. Obtain matching caches before compiling
+genuinely missing or changed required targets and needed affected consumers. Merge,
+commit, handoff, relocation, release, a changed pin, a different checkout or absent local
+artifacts/receipts do not justify blanket rebuilding. Missing broad coverage alone is not
+a rebuild trigger. Literal explicit full rebuild/replay requests are separately scoped.
+Diagnosed incompatible, corrupt or untrustworthy artifacts across an actual closure with
+no usable matching cache permit fault recovery only in that invalidated owned scope,
+outside normal workflows.
+Shared builds remain serialized.
 
 `check.sh` additionally builds the production and positive test roots, replays
 linters and explicit origin audits, exercises isolated rejection controls, checks
@@ -26,8 +40,9 @@ RSS guard. Checkout/cache action revisions and the elan release follow the autho
 The hosted `bash scripts/check.sh --rehash --ci` route runs after cache setup.
 It omits only the two additional independent kernel replays. Production and test
 compilation, declaration/style lint, axiom audits, controls, inventory, and the
-independent downstream build and audit remain required. Default local `check.sh`
-also performs both independent kernel replays before publication.
+independent downstream build and audit remain in that pipeline. The selected CI
+coverage does not require a local agent to rerun it on merge. The explicitly
+selected local `check.sh` command also performs both independent kernel replays.
 
 CI invokes the configured Batteries declaration linter and Mathlib's Lean style
 driver through their native Lake interfaces, from the Aglib package root:
@@ -167,11 +182,15 @@ evidence and execution profiles. Older receipts lack dependency metadata and
 require a new closure-bound replay before automatic reuse. Missing or corrupted
 selected records, original bases, logs or resource evidence fail closed.
 
-During development, build changed leaves and affected clients. When a scoped
-replay is warranted, continue it through the explicit lineage. Integration and publication retain
-full current library/client coverage and all other required checks. Matching
-per-closure replay evidence discharges unchanged replay coverage; a probe alone
-cannot discharge the full-publication requirement.
+On resumption, distinguish the accepted operational tool revision from the frozen
+mathematical source snapshot and record both identities. Continue warranted replay
+through the same explicit compatible receipt lineage; operational-guidance adoption
+alone requires no new replay. Changes affecting recorded compiler/runtime or checker
+semantics remain subject to the compatibility rules above. Integration and publication
+retain required library/client and other check coverage through compatible evidence
+and narrow new checks, without rerunning unchanged checks. Matching per-closure replay
+evidence discharges unchanged replay coverage; a probe alone cannot discharge complete
+publication coverage.
 
 Do not run another Lean job concurrently with this serialized route. On restricted
 macOS hosts, process monitoring and owned-process signaling require the authorized
@@ -209,8 +228,8 @@ Package-version-independent hashing remains unchanged.
 The explicit project save uses `always()` but requires a primary key from
 the restore step and successful compiler/cache preparation. It can therefore
 preserve available build outputs after a later check fails. Restoration
-still validates compiler stamps and prunes obsolete modules before the current
-`--rehash --ci` checks; partial caches do not establish verification.
+still prunes obsolete modules before native Lake trace validation in the current
+`--rehash --ci` checks; advisory stamps and partial caches do not establish verification.
 Source changes can reuse unaffected compiled modules through Lake `--rehash`.
 
 The official proof-cache command uses `resource_guard.py --bootstrap-cache`,
@@ -219,18 +238,19 @@ cutoff and one worker thread while allowing the cache tool's compiler children.
 The CI runner and resource profile are defined in `.github/workflows/ci.yml`.
 Its explicit `check.sh --rehash --ci` mode retains
 compilation, linters, axiom audits, and downstream checks; the extra independent
-root/client kernel replays remain in the default full local check before publication.
+root/client kernel replays remain in the explicitly selected full local command.
 
-`prepare_build_cache.py` runs before any restored project olean is consumed.
-Each build root carries a `.aglib-cache.json` stamp with its actual `lean
---version` identity and semantic configuration digest. The root stamp uses root
+`prepare_build_cache.py` runs before restored project outputs enter the declared
+CI check. Each build root carries an advisory `.aglib-cache.json` provenance stamp
+recording the current `lean --version` identity and semantic configuration digest;
+it does not prove that every output matches that compiler. The root stamp uses root
 configuration; the client stamp includes both packages because it imports Aglib.
-Missing, malformed, or compiler/toolchain-incompatible stamps clear only that
-package's build root. Incompatible Lean binaries are discarded, never reused
-across compiler versions. Same-ABI dependency/option changes retain artifacts and
-traces for Lake `--rehash` to invalidate the affected imports and build arguments;
-the semantic configuration digest is refreshed in the stamp. A compatible stamp
-retains current module outputs and prunes obsolete facets in
+Missing, malformed, schema-mismatched or compiler/toolchain/configuration-mismatched
+wrapper metadata preserves outputs. Native Lake input/output traces bind compiler,
+source, imports and options; `--rehash` and matching artifact caches select reusable
+outputs and rebuild only the actual affected closure. Diagnosed corrupt or untrustworthy
+native data requires separate scoped fault recovery. The helper refreshes advisory
+provenance and prunes obsolete owned facets in
 `lib/lean` and `ir`, including old roots, deleted/renamed modules, auditor outputs,
 and negative controls excluded from the positive enrollment. Root enrollment uses
 `library_sources.py` production/positive lists plus `AglibTest/AuditSupport.lean`;
@@ -239,7 +259,7 @@ or symlinked build contents fail before cache mutation. Dependency sources and
 caches remain outside these owned build roots.
 
 `test_ci_cache.py` uses isolated temporary fixtures (`/private/tmp` on macOS) to cover configuration
-identity, compatible reuse, incompatible reset, enrollment pruning, path guards,
+identity, preservation across wrapper-metadata changes, enrollment pruning, path guards,
 and workflow ordering. Caches never replace audits, rejection controls, strict
 compiled inventory, or kernel replay: every trust stage still runs in the full
 `--rehash` checker.
@@ -254,7 +274,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_resource_guard.py` | Pure Python budget, fail-closed monitoring, exit propagation, and owned-PID termination regressions. |
 | `test_kernel.py` | Exact enrollment, bounded task barrier, failed-batch rejection, RSS backoff, immutable attempt logs, and basis-checked legacy adoption regressions. |
 | `test_build_serial.py` | Checks target validation, single-graph scheduling, strict cache-miss fallback, preserved probe logs, and compiler-wrapper argument caps using a small Python executable. |
-| `check.sh` | Serialized source/full integration entry point; accepts `--source-only` and `--rehash`. |
+| `check.sh` | Serialized comprehensive diagnostic/CI command; accepts `--source-only` and `--rehash`. Not ordinary local acceptance; CI retains its declared pipeline. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |

@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""Prepare only package-owned cached builds before the complete --rehash check.
+"""Prune obsolete package-owned outputs before native Lake --rehash validation.
 
-Unknown or compiler-incompatible stamps discard project outputs, never dependencies.
-Compatible caches retain current modules and let Lake --rehash check configuration.
+The auxiliary stamp records preparation inputs; it does not certify artifacts.
+Lake's module traces include the actual Lean commit and select matching cache
+artifacts. Missing or changed wrapper metadata must not discard those outputs.
 """
 import argparse
 import json
 from pathlib import Path
-import re
-import shutil
 import sys
 
 from cache_key import config_hash
@@ -72,6 +71,7 @@ def _prune(build: Path, modules: set[str]) -> int:
 
 
 def prepare(root: Path, compiler_id: str, downstream_compiler_id: str) -> list[str]:
+    """Preserve enrolled module outputs; callers must still run Lake --rehash."""
     if not compiler_id.strip() or not downstream_compiler_id.strip():
         raise ValueError('both actual compiler identities are required')
     root = root.resolve(strict=True)
@@ -86,24 +86,16 @@ def prepare(root: Path, compiler_id: str, downstream_compiler_id: str) -> list[s
         modules = _modules(root, package)
         expected = {'schema': SCHEMA, 'configuration': configuration, 'compiler': compiler,
                     'toolchain': (root / package / 'lean-toolchain').read_text()}
-        try:
-            previous = json.loads((build / STAMP).read_text())
-        except (OSError, ValueError):
-            previous = None
-        compatible = (isinstance(previous, dict) and previous.keys() == expected.keys()
-                      and isinstance(previous.get('configuration'), str)
-                      and re.fullmatch(r'[0-9a-f]{64}', previous['configuration']) is not None
-                      and all(previous.get(field) == expected[field]
-                              for field in ('schema', 'compiler', 'toolchain')))
-        if not compatible:
-            if build.exists():
-                shutil.rmtree(build)
-            removed = 'reset (unknown or changed compiler/toolchain)'
-        else:
-            removed = f'preserved; pruned {_prune(build, modules)} obsolete module facets'
+        # This stamp is diagnostic only, including when its compiler/toolchain
+        # fields differ. Native Lake module traces include leanGithash, source,
+        # imports and options; --rehash must validate inputs before outputs are
+        # reused or matching artifacts are selected. Do not erase that evidence
+        # because an auxiliary stamp is absent, malformed or from an old schema.
+        removed = _prune(build, modules)
         build.mkdir(parents=True, exist_ok=True)
         (build / STAMP).write_text(json.dumps(expected, sort_keys=True) + '\n')
-        result.append(f'{package / ".lake/build"}: {removed}')
+        result.append(f'{package / ".lake/build"}: preserved; pruned {removed} obsolete '
+                      'module facets; native Lake --rehash validation required')
     return result
 
 
