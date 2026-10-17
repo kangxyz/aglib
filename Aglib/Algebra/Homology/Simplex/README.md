@@ -48,7 +48,8 @@ ring universe. No field, Noetherian, or nontrivial-ring premise is imposed.
 - [Singleton](Relative/Singleton.lean) proves positive exactness for an omitted
   vertex even when `S` is empty; it identifies singleton full-support degree-zero
   homology with the scalar module through the native cycles quotient and tuple
-  evaluation, and proves singleton positive exactness.
+  evaluation via `homologyZeroLinearEquivOfUnique`, and proves singleton positive
+  exactness. `homologyZeroLinearEquiv_of_unique` remains a transparent deprecated alias.
 - [Finite](Relative/Finite.lean) proves
   `fullSupportTopLinearEquiv R n : (complex R (univ : Set (Fin (n + 1)))).homology n ≃ₗ[R] R`
   and `fullSupport_isZero_homology_of_ne n q hq` in every other degree. Its

@@ -13,6 +13,72 @@ import resource_guard as guard
 
 
 class ResourceGuardTests(unittest.TestCase):
+    def test_direct_capped_frontends_preserve_arguments(self):
+        environment = {'LEAN': '/owned overlay/bin/lean'}
+        tail = ['--setup', 'setup with spaces.json', '-DautoImplicit=false', 'File.lean']
+        cases = [(['lean', *tail], [environment['LEAN'], *tail]),
+                 (['lake', 'env', 'lean', *tail], ['lake', 'env', environment['LEAN'], *tail]),
+                 (['/pinned/bin/lake', 'env', 'lean', *tail],
+                  ['/pinned/bin/lake', 'env', environment['LEAN'], *tail]),
+                 (['/usr/bin/time', '-lp', 'lake', 'env', 'lean', *tail],
+                  ['/usr/bin/time', '-lp', 'lake', 'env', environment['LEAN'], *tail]),
+                 (['/usr/bin/time', '-lp', 'lean', *tail],
+                  ['/usr/bin/time', '-lp', environment['LEAN'], *tail])]
+        for command, expected in cases:
+            with self.subTest(command=command):
+                before = list(command)
+                self.assertEqual(guard.capped_command(command, environment), expected)
+                self.assertEqual(command, before)
+
+    def test_unsupported_direct_launch_forms_fail_closed(self):
+        commands = [['lake', 'env'], ['lake', 'env', '/native/bin/lean', 'File.lean'],
+                    ['lake', '--offline', 'env', 'lean', 'File.lean'],
+                    ['lake', 'env', 'python3', '-c', 'pass'],
+                    ['/native/bin/lean', 'File.lean'],
+                    ['/usr/bin/time', '-p', 'lake', 'env', 'lean'],
+                    ['/usr/bin/time', '-lp', 'python3', '-c', 'pass'],
+                    ['sh', '-c', 'lake env lean File.lean']]
+        for command in commands:
+            with self.subTest(command=command), self.assertRaises(ValueError):
+                guard.capped_command(command, {'LEAN': '/owned/lean'})
+
+    def test_non_frontend_commands_are_not_rewritten_as_nested_shell_syntax(self):
+        for command in [['lake', '--rehash', '--no-build', 'query', '+Aglib.Basic:setup'],
+                        ['python3', 'driver.py', 'lake', 'env', 'lean']]:
+            self.assertEqual(guard.capped_command(command, {'LEAN': '/owned/lean'}), command)
+
+    def test_capped_cli_selects_child_threads_and_preserves_parent_and_memory_limits(self):
+        chosen = guard.limits({'AGLIB_LEAN_MEMORY_MB': '4096', 'AGLIB_RSS_LIMIT_MB': '5120'},
+                              7 * 1024**3)
+        environment = {'LEAN': '/owned/lean', 'LEAN_NUM_THREADS': '1'}
+        argv = ['guard', '--receipt', '/unused/receipt.json', '--capped-toolchain', '--',
+                'lake', 'env', 'lean', '--setup', 'setup.json', 'File.lean']
+        with patch.object(sys, 'argv', argv), \
+                patch.dict(guard.os.environ, {'AGLIB_BUILD_THREADS': '4', 'LEAN_NUM_THREADS': '1'}, clear=True), \
+                patch('build_serial.os.cpu_count', return_value=8), \
+                patch.object(guard, 'limits', return_value=chosen), \
+                patch('build_serial.capped_toolchain', return_value=nullcontext(environment)) as capped, \
+                patch.object(guard, 'run', return_value=7) as run:
+            self.assertEqual(guard.main(), 7)
+        capped.assert_called_once_with(Path.cwd(), threads=4)
+        self.assertEqual(run.call_args.args[0],
+                         ['lake', 'env', '/owned/lean', '--setup', 'setup.json', 'File.lean'])
+        self.assertEqual(run.call_args.kwargs['env']['LEAN_NUM_THREADS'], '1')
+        budget = run.call_args.kwargs['budget']
+        self.assertEqual((budget['lean_threads'], budget['native_build_threads'], budget['max_active_lean']),
+                         (1, 4, 1))
+        self.assertEqual((budget['lean_memory_mb'], budget['rss_limit_mb']), (4096, 5120))
+
+    def test_invalid_selected_threads_prevent_capped_launch(self):
+        with patch.object(sys, 'argv', ['guard', '--receipt', '/unused/receipt.json',
+                                       '--capped-toolchain', '--', 'lean', 'File.lean']), \
+                patch.dict(guard.os.environ, {'AGLIB_BUILD_THREADS': '0'}), \
+                patch('build_serial.capped_toolchain') as capped, \
+                patch.object(guard, 'run') as run, redirect_stderr(io.StringIO()):
+            self.assertEqual(guard.main(), 125)
+        capped.assert_not_called()
+        run.assert_not_called()
+
     def test_cache_bootstrap_cannot_relax_other_commands(self):
         base = ['guard', '--receipt', '/unused/receipt.json', '--bootstrap-cache', '--']
         with patch.object(sys, 'argv', base + ['lake', 'build', 'Aglib']), \

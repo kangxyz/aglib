@@ -70,7 +70,7 @@ theorem finiteProductOverPullbackIso_inv_map_π (f : T ⟶ S) {n : ℕ} (X : Fin
   rw [← finiteProductOverPullbackIso_hom_π f X i, Iso.inv_hom_id_assoc]
 
 /-- The underlying scheme map commutes with the actual structure map to the new base. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem finiteProductOverPullbackIso_hom_base (f : T ⟶ S) {n : ℕ} (X : Fin n → Over S) :
     (finiteProductOverPullbackIso f X).hom.left ≫
         (finiteProductOver (fun i => (Over.pullback f).obj (X i))).hom =

@@ -50,7 +50,6 @@ theorem coordinateProductExponent_degree (s : Finset ι) :
   classical
   simp [coordinateProductExponent]
 
-@[simp]
 theorem coordinateDegree_product (s : Finset ι) :
     coordinateDegree s (coordinateExponentOfNat s (coordinateProductExponent s)) =
       (s.card : ℤ) := by

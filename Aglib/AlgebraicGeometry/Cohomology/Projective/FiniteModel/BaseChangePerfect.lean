@@ -177,6 +177,7 @@ theorem hasStrictBaseChangeSheafModel : Scheme.Modules.Complex.HasStrictModel
             (.up ℤ) I.cochainComplexPlus.obj).inv)
     0 (n : ℤ)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance changedPerfectDerived (Z : Scheme.{u}) : HasDerivedCategory.{u + 1} Z.Modules :=
   HasDerivedCategory.standard _
 

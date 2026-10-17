@@ -91,13 +91,28 @@ def desc (M : SheafOfModules.{u} Rᵣ)
     relativeDifferentials R φ ⟶ M := (relativeDifferentialsHomEquiv R φ M).symm d
 
 /-- Universal descent retains the exact original derivation values. -/
-@[simp]
 theorem desc_d (M : SheafOfModules.{u} Rᵣ)
     (d : PresheafOfModulesOfCommRing.Derivation M.val φ)
     (X : Dᵒᵖ) (a : R.obj.obj X) :
     (desc R φ M d).val.app X ((derivation R φ).d a) = d.d a :=
   PresheafOfModulesOfCommRing.Derivation.congr_d
     ((relativeDifferentialsHomEquiv R φ M).apply_symm_apply d) a
+
+/-- Canonical coercion form of `desc_d`
+for simplification. -/
+@[simp]
+private theorem desc_d' (M : SheafOfModules.{u} Rᵣ)
+    (d : PresheafOfModulesOfCommRing.Derivation M.val φ)
+    (X : Dᵒᵖ) (a : R.obj.obj X) :
+    let A : ModuleCat (R.obj.obj X) :=
+      PresheafOfModulesOfCommRing.obj (R := R.obj) (relativeDifferentials R φ).val X
+    let B : ModuleCat (R.obj.obj X) :=
+      PresheafOfModulesOfCommRing.obj (R := R.obj) M.val X
+    DFunLike.coe (F := A →ₗ[R.obj.obj X] B) (α := A) (β := fun _ => B)
+      (PresheafOfModules.Hom.app' (R := R.obj) (desc R φ M d).val X).hom
+      ((PresheafOfModulesOfCommRing.Derivation.d (R := R.obj) (X := X)
+        (derivation R φ)) a) = d.d a := by
+  exact desc_d R φ M d X a
 
 /-- Actual morphisms out of the relative differential sheaf are determined by their `d` values. -/
 @[ext]
@@ -140,7 +155,6 @@ def relativeDifferentialsIdIso : relativeDifferentials R (F := 𝟭 D) ψ ≅
     (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentialsIdIso ψ)
 
 /-- The identity comparison preserves the original sheafified differential. -/
-@[simp]
 theorem relativeDifferentialsIdIso_hom_d (X : Dᵒᵖ) (a : R.obj.obj X) :
     (relativeDifferentialsIdIso R ψ).hom.val.app X ((derivation R (F := 𝟭 D) ψ).d a) =
       (CategoryTheory.toSheafify J
@@ -159,8 +173,29 @@ theorem relativeDifferentialsIdIso_hom_d (X : Dᵒᵖ) (a : R.obj.obj X) :
         ψ).presheaf).app X)
     (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentialsIdIso_hom_d ψ X a))
 
-/-- The inverse identity comparison preserves the same original differential. -/
+/-- Canonical coercion form of `relativeDifferentialsIdIso_hom_d`
+for simplification. -/
 @[simp]
+private theorem relativeDifferentialsIdIso_hom_d' (X : Dᵒᵖ) (a : R.obj.obj X) :
+    let A : ModuleCat (R.obj.obj X) :=
+      PresheafOfModulesOfCommRing.obj (R := R.obj)
+        (relativeDifferentials R (F := 𝟭 D) ψ).val X
+    let B : ModuleCat (R.obj.obj X) :=
+      PresheafOfModulesOfCommRing.obj (R := R.obj)
+        ((PresheafOfModules.sheafification (𝟙 (Rᵣ).obj)).obj
+          (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials' ψ)).val X
+    DFunLike.coe (F := A →ₗ[R.obj.obj X] B) (α := A) (β := fun _ => B)
+        (PresheafOfModules.Hom.app' (R := R.obj)
+          (relativeDifferentialsIdIso R ψ).hom.val X).hom
+        ((PresheafOfModulesOfCommRing.Derivation.d (R := R.obj) (X := X)
+          (derivation R (F := 𝟭 D) ψ)) a) =
+      (CategoryTheory.toSheafify J
+        (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials'
+          ψ).presheaf).app X
+        ((PresheafOfModulesOfCommRing.DifferentialsConstruction.derivation' ψ).d a) := by
+  exact relativeDifferentialsIdIso_hom_d R ψ X a
+
+/-- The inverse identity comparison preserves the same original differential. -/
 theorem relativeDifferentialsIdIso_inv_d (X : Dᵒᵖ) (a : R.obj.obj X) :
     (relativeDifferentialsIdIso R ψ).inv.val.app X
         ((CategoryTheory.toSheafify J
@@ -179,6 +214,25 @@ theorem relativeDifferentialsIdIso_inv_d (X : Dᵒᵖ) (a : R.obj.obj X) :
       (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials
         (F := 𝟭 D) ψ).presheaf).app X)
     (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentialsIdIso_inv_d ψ X a))
+
+/-- Canonical coercion form of `relativeDifferentialsIdIso_inv_d`
+for simplification. -/
+@[simp]
+private theorem relativeDifferentialsIdIso_inv_d' (X : Dᵒᵖ) (a : R.obj.obj X) :
+    DFunLike.coe (F := _ →ₗ[R.obj.obj X] _)
+        (PresheafOfModules.Hom.app' (R := R.obj)
+          (relativeDifferentialsIdIso R ψ).inv.val X).hom
+        (DFunLike.coe (F :=
+          (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials' ψ).obj X →+
+            (CategoryTheory.sheafify J
+              (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials'
+                ψ).presheaf).obj X)
+          ((CategoryTheory.toSheafify J
+            (PresheafOfModulesOfCommRing.DifferentialsConstruction.relativeDifferentials'
+              ψ).presheaf).app X).hom
+          ((PresheafOfModulesOfCommRing.DifferentialsConstruction.derivation' ψ).d a)) =
+      (derivation R (F := 𝟭 D) ψ).d a := by
+  exact relativeDifferentialsIdIso_inv_d R ψ X a
 
 end Identity
 

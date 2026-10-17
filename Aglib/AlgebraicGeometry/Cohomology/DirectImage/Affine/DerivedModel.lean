@@ -42,12 +42,15 @@ namespace AlgebraicGeometry.Scheme.Cohomology
 variable {R : CommRingCat.{u}} {X : Scheme.{u}} (f : X ⟶ Spec R)
   {M : X.Modules} (I : InjectiveResolution M)
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance derivedModelSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance derivedModelModules : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance derivedModelTarget : HasDerivedCategory.{u + 1} (Spec R).Modules :=
   HasDerivedCategory.standard _
 

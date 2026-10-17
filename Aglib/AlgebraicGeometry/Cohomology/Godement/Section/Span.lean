@@ -73,22 +73,28 @@ def sectionTotalToRepeated :
 /-- The second arrow is the inverse actual section iso, followed by the pushed
 augmentation of the actual flasque section image of the source total. -/
 def sectionSourceTotalToRepeated :
-    godementTotalPlus X ⟶ sectionRepeatedTotalImage s p where
-  app K := (sectionComplexPlusIso s p h).inv.app ((godementTotalPlus X).obj K) ≫
-    (Scheme.Modules.pushforward p).mapCochainComplexPlus.map
-      ((godementTotalPlusUnit Y).app
-        ((Scheme.Modules.pushforward s).mapCochainComplexPlus.obj
-          ((godementTotalPlus X).obj K)))
-  naturality {K L} f := by
-    have hn := (godementTotalPlusUnit Y).naturality
-      ((Scheme.Modules.pushforward s).mapCochainComplexPlus.map
-        ((godementTotalPlus X).map f))
-    have hs := (sectionComplexPlusIso s p h).inv.naturality
-      ((godementTotalPlus X).map f)
-    dsimp only [Functor.id_map, Functor.comp_map] at hn hs
-    dsimp only [sectionRepeatedTotalImage, sectionTotalImage, Functor.comp_map] at ⊢
-    rw [← Category.assoc, hs, Category.assoc, ← Functor.map_comp]
-    rw [hn, Functor.map_comp, Category.assoc]
+    godementTotalPlus X ⟶ sectionRepeatedTotalImage s p := by
+  -- Check naturality before specializing the functors to the large Godement objects.
+  -- A local constructor keeps the original components available by beta/zeta reduction.
+  let build
+      (F : CochainComplex.Plus X.Modules ⥤ CochainComplex.Plus X.Modules)
+      (S : CochainComplex.Plus X.Modules ⥤ CochainComplex.Plus Y.Modules)
+      (T : CochainComplex.Plus Y.Modules ⥤ CochainComplex.Plus Y.Modules)
+      (P : CochainComplex.Plus Y.Modules ⥤ CochainComplex.Plus X.Modules)
+      (α : S ⋙ P ≅ 𝟭 (CochainComplex.Plus X.Modules))
+      (η : 𝟭 (CochainComplex.Plus Y.Modules) ⟶ T) : F ⟶ F ⋙ (S ⋙ T ⋙ P) :=
+    { app K := α.inv.app (F.obj K) ≫ P.map (η.app (S.obj (F.obj K)))
+      naturality {K L} f := by
+        have hn := η.naturality (S.map (F.map f))
+        have hs := α.inv.naturality (F.map f)
+        dsimp only [Functor.id_map, Functor.comp_map] at hn hs
+        dsimp only [Functor.comp_map]
+        rw [← Category.assoc, hs, Category.assoc, ← Functor.map_comp]
+        rw [hn, Functor.map_comp, Category.assoc] }
+  exact build (godementTotalPlus X)
+    (Scheme.Modules.pushforward s).mapCochainComplexPlus (godementTotalPlus Y)
+    (Scheme.Modules.pushforward p).mapCochainComplexPlus
+    (sectionComplexPlusIso s p h) (godementTotalPlusUnit Y)
 
 /-- Ordinary pushforward preserves the actual totalized weak arrow on its
 lower-bounded flasque totalizations. -/

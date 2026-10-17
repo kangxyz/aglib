@@ -92,7 +92,6 @@ def relativeDifferentialRestrictHom :
     (relativeDifferentialDesc f _
       (pushforwardRelativeDerivation f i _ (relativeDifferentialDerivation (i ≫ f))))
 
-@[simp]
 theorem relativeDifferentialRestrictHom_d (U : W.Opens) (a : Γ(X, i ''ᵁ U)) :
     (relativeDifferentialRestrictHom f i).val.app (op U)
       ((relativeDifferentialDerivation f).d a) =
@@ -112,6 +111,16 @@ theorem relativeDifferentialRestrictHom_d (U : W.Opens) (a : Γ(X, i ''ᵁ U)) :
     (eqToHom (i.preimage_image_eq U).symm).op (i.app (i ''ᵁ U) a)).symm.trans
       (congrArg (relativeDifferentialDerivation (i ≫ f)).d
         (ConcreteCategory.congr_hom (i.appIso_hom U) a).symm)
+
+/-- Canonical coercion form of `relativeDifferentialRestrictHom_d`
+for simplification. -/
+@[simp]
+private theorem relativeDifferentialRestrictHom_d' (U : W.Opens) (a : Γ(X, i ''ᵁ U)) :
+    DFunLike.coe (F := _ →ₗ[Γ(W, U)] _)
+      ((relativeDifferentialRestrictHom f i).val.app' (op U)).hom
+      ((relativeDifferentialDerivation f).d a) =
+        (relativeDifferentialDerivation (i ≫ f)).d ((i.appIso U).hom a) := by
+  exact relativeDifferentialRestrictHom_d f i U a
 
 
 /-- The actual relative differential sheaf commutes with source-open restriction. -/

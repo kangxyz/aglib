@@ -83,10 +83,18 @@ def complexReindexSmallIso (e : ι ≃ κ) :
     complex R (Set.univ : Set ι) ≅ complex R (Set.univ : Set κ) :=
   (alternatingCofaceMapComplex _).mapIso (cosimplicialReindexSmallIso e)
 
-@[simp]
 theorem complexReindexSmallIso_hom_f_apply (e : ι ≃ κ) (n : ℕ)
     (x : Cochains R (Set.univ : Set ι) n) (a : Tuple (Set.univ : Set κ) n) :
     (complexReindexSmallIso (R := R) e).hom.f n x a = x (tupleReindex e.symm a) := rfl
+
+/-- Canonical coercion form of `complexReindexSmallIso_hom_f_apply`
+for simplification. -/
+@[simp]
+private theorem complexReindexSmallIso_hom_f_apply' (e : ι ≃ κ) (n : ℕ)
+    (x : Cochains R (Set.univ : Set ι) n) (a : Tuple (Set.univ : Set κ) n) :
+    (show Cochains R (Set.univ : Set ι) n →ₗ[R] Cochains R (Set.univ : Set κ) n from
+      ((complexReindexSmallIso (R := R) e).hom.f n).hom) x a = x (tupleReindex e.symm a) := by
+  exact complexReindexSmallIso_hom_f_apply (R := R) e n x a
 
 /-- The native top scalar comparison for any geometric coordinate type
 equivalent to the `n + 1` small vertices, without lowering the ring universe. -/

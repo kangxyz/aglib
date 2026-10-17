@@ -351,7 +351,7 @@ theorem higherDirectImageOpenRestrictionIso_app_resolution (n : ℕ) :
       (J.isoRightDerivedObjCochain B n).inv = _
   simpa only [Category.assoc] using congrArg
     (fun k => Jb.map (I.isoRightDerivedObjCochain F n).hom ≫ d.inv ≫ k ≫
-      (J.isoRightDerivedObjCochain B n).inv) hn' 
+      (J.isoRightDerivedObjCochain B n).inv) hn'
 
 
 end AlgebraicGeometry.Scheme.Modules

@@ -84,11 +84,13 @@ abbrev upperBound (D : ProjectiveCohomologyModel R ι i f M n) :=
   FiniteCechCohomologyModel.upperBound D
 
 /-- Finiteness of the same original terms. -/
-abbrev finite_X (D : ProjectiveCohomologyModel R ι i f M n) :=
+theorem finite_X (D : ProjectiveCohomologyModel R ι i f M n) :
+    ∀ j, Module.Finite R (D.complex.X j) :=
   FiniteCechCohomologyModel.finite_X D
 
 /-- Projectivity of the same original terms. -/
-abbrev projective_X (D : ProjectiveCohomologyModel R ι i f M n) :=
+theorem projective_X (D : ProjectiveCohomologyModel R ι i f M n) :
+    ∀ j, Module.Projective R (D.complex.X j) :=
   FiniteCechCohomologyModel.projective_X D
 
 /-- The same actual map to the coordinate-cover Cech truncation. -/
@@ -100,7 +102,9 @@ abbrev quasiIso (D : ProjectiveCohomologyModel R ι i f M n) :=
   FiniteCechCohomologyModel.quasiIso D
 
 /-- Quasi-isomorphism of each literal scalar extension of the same map. -/
-abbrev baseChange_quasiIso (D : ProjectiveCohomologyModel R ι i f M n) :=
+theorem baseChange_quasiIso (D : ProjectiveCohomologyModel R ι i f M n) :
+    ∀ (B : Type u) [CommRing B] (σ : R →+* B),
+      QuasiIso (((ModuleCat.extendScalars σ).mapHomologicalComplex (.up ℤ)).map D.comparison) :=
   FiniteCechCohomologyModel.baseChange_quasiIso D
 
 end ProjectiveCohomologyModel
@@ -153,9 +157,11 @@ theorem toCechPlus_quasiIso (e : ι ≃ Fin (n + 1)) : QuasiIso D.toCechPlus.hom
     (fun j => (isAffineOpen_coordinateOpen R ι j).preimage i)
     (i.iSup_preimage_eq_top (iSup_coordinateOpen_eq_top R ι)) e
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance finiteModelDerivedSource : HasDerivedCategory.{u + 1} X.Modules :=
   HasDerivedCategory.standard _
 
+/-- The standard derived-category structure on the indicated module category. -/
 local instance finiteModelDerivedTarget : HasDerivedCategory.{u + 1} (ModuleCat.{u} R) :=
   HasDerivedCategory.standard _
 

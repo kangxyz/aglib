@@ -83,15 +83,23 @@ lemma godementTensorTotalUnit_app (X : Scheme.{u}) (E : X.Modules)
     (godementTotalPlus X) (moduleTensorLeftFunctor X E).mapCochainComplexPlus
     (godementTotalPlus X) (godementTotalPlusUnit X) (godementTensorTotalUnit X E) rfl C
 
+/-- Check the whiskered component before specializing its object-valued functors. -/
+private theorem total_whiskerRight_quasiIso {X : Scheme.{u}}
+    {F G : CochainComplex.Plus X.Modules ⥤ CochainComplex.Plus X.Modules}
+    (η : F ⟶ G)
+    (τ : F ⋙ godementTotalPlus X ⟶ G ⋙ godementTotalPlus X)
+    (hτ : τ = Functor.whiskerRight η (godementTotalPlus X))
+    (C : CochainComplex.Plus X.Modules) [QuasiIso (η.app C).hom] :
+    QuasiIso (τ.app C).hom := by
+  subst τ
+  exact godementTotalPlus_map_quasiIso (η.app C)
+
 theorem godementTensorTotalUnit_quasiIso {X : Scheme.{u}} (E : X.Modules)
     [IsFiniteLocallyFree X E] (C : CochainComplex.Plus X.Modules) :
     QuasiIso ((godementTensorTotalUnit X E).app C).hom := by
   let := godementTensorUnit_quasiIso E C
-  exact godementTotalPlus_map_quasiIso
-    (K := (moduleTensorLeftFunctor X E).mapCochainComplexPlus.obj C)
-    (L := (godementTotalPlus X ⋙
-      (moduleTensorLeftFunctor X E).mapCochainComplexPlus).obj C)
-    ((godementTensorUnit X E).app C)
+  exact total_whiskerRight_quasiIso
+    (godementTensorUnit X E) (godementTensorTotalUnit X E) rfl C
 
 theorem godementTotalPlus_sameLowerBound {X : Scheme.{u}}
     (C : CochainComplex.Plus X.Modules) (a : ℤ) [C.obj.IsStrictlyGE a] :

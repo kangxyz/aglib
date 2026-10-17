@@ -90,7 +90,7 @@ def seed_cached_namespaces(overlay: Path, plan: dict) -> None:
 def lake_environment(root: Path) -> dict:
     # Project only these nonsecret variables from Lake's pinned execution environment.
     query = ('import json,os,shutil; print(json.dumps({'
-             '"lean":shutil.which("lean"),"LEAN_PATH":os.environ.get("LEAN_PATH",""),'
+             '"lean":os.environ.get("LEAN") or shutil.which("lean"),"LEAN_PATH":os.environ.get("LEAN_PATH",""),'
              '"LEAN_SRC_PATH":os.environ.get("LEAN_SRC_PATH","")}))')
     result = subprocess.run(['lake', 'env', 'python3', '-c', query], cwd=root,
                             capture_output=True, text=True, check=True)

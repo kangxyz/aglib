@@ -66,21 +66,26 @@ theorem moduleHPrimeGeometricMap_smul (U : X.Opensᵒᵖ) (r : R)
 def moduleHPrimeRestrictionMap :
     moduleHPrimePresheaf X α M n ⟶
       ((Opens.map p.base).op ⋙ moduleHPrimePresheaf Y β N n) ⋙
-        ModuleCat.restrictScalars σ where
-  app U := by
-    letI := moduleHPrimeModuleOfHom X α M n U.unop
-    letI := moduleHPrimeModuleOfHom Y β N n (p ⁻¹ᵁ U.unop)
-    exact ModuleCat.ofHom
-      (X := (moduleHPrimePresheaf X α M n).obj U)
-      (Y := (ModuleCat.restrictScalars σ).obj
-        (((Opens.map p.base).op ⋙ moduleHPrimePresheaf Y β N n).obj U)) {
-      __ := ((zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
-        (moduleCoefficientPullback p φ) n).app U).hom
-      map_smul' := fun r x => moduleHPrimeGeometricMap_smul p σ α β h φ n U r x }
-  naturality U V i := by
-    apply (forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1}).map_injective
-    exact (zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
-      (moduleCoefficientPullback p φ) n).naturality i
+        ModuleCat.restrictScalars σ := by
+  -- Check naturality before the concrete cohomology functors enter the comparison.
+  -- The local constructor retains the original components by beta/zeta reduction.
+  let build (F G : X.Opensᵒᵖ ⥤ ModuleCat.{u + 1} R)
+      (η : F ⋙ forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1} ⟶
+        G ⋙ forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1})
+      (hη : ∀ (U : X.Opensᵒᵖ) (r : R) (x : F.obj U),
+        η.app U (r • x) = r • (show G.obj U from η.app U x)) : F ⟶ G :=
+    { app U := ModuleCat.ofHom (X := F.obj U) (Y := G.obj U) {
+        __ := (η.app U).hom
+        map_smul' := fun r x => hη U r x }
+      naturality U V i := by
+        apply (forget₂ (ModuleCat.{u + 1} R) AddCommGrpCat.{u + 1}).map_injective
+        exact η.naturality i }
+  exact build (moduleHPrimePresheaf X α M n)
+    (((Opens.map p.base).op ⋙ moduleHPrimePresheaf Y β N n) ⋙
+      ModuleCat.restrictScalars σ)
+    (zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N)
+      (moduleCoefficientPullback p φ) n)
+    (fun U r x => moduleHPrimeGeometricMap_smul p σ α β h φ n U r x)
 
 /-- The native scalar-adjunction transpose of the original geometric open-cohomology map. -/
 def moduleHPrimeTensorMap :

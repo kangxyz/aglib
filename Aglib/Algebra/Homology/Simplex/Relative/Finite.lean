@@ -52,7 +52,7 @@ def fullSupportTopLinearEquiv (R : Type u) [Ring R] :
     ∀ n : ℕ, (complex R (Set.univ : Set (Fin (n + 1)))).homology n ≃ₗ[R] R
   | 0 =>
     letI : Unique (Fin 1) := { default := 0, uniq := Fin.eq_zero }
-    homologyZeroLinearEquiv_of_unique
+    homologyZeroLinearEquivOfUnique
   | n + 1 =>
     (((homologyFunctor (ModuleCat.{u} R) (.up ℕ) (n + 1)).mapIso
       (complexReindexIso (finSuccEquiv' (0 : Fin (n + 2))))).toLinearEquiv.trans

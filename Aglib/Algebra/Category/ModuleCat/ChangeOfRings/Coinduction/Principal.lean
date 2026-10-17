@@ -61,7 +61,6 @@ def derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv
     (Ideal.span {a}) N J 1).trans (singleIdealExtOneQuotientLinearEquiv a ha N).symm
 
 /-- A literal representative retains its original transported Koszul Ext class. -/
-@[simp]
 theorem derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv_symm_mk
     (N : ModuleCat.{u} R) (J : InjectiveResolution N) (x : N) :
     letI := singleQuotientModule a N
@@ -75,6 +74,24 @@ theorem derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv_symm_mk
     singleIdealExtOneQuotientLinearEquiv_apply_mk]
   exact (derivedCoextendScalarsPlusHomologyExtQuotientLinearEquiv
     (Ideal.span {a}) N J 1).apply_symm_apply _
+
+/-- Canonical coercion form of `derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv_symm_mk`
+for simplification. -/
+@[simp]
+private theorem derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv_symm_mk'
+    (N : ModuleCat.{u} R) (J : InjectiveResolution N) (x : N) :
+    letI := singleQuotientModule a N
+    letI := Ext.quotientSourceModule (Ideal.span {a}) N 1
+    (show ((DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} (R ⧸ Ideal.span {a})) 1).obj
+        ((coextendScalars (Ideal.Quotient.mk (Ideal.span {a}))).rightDerivedFunctorPlus.obj
+          ((DerivedCategory.Plus.singleFunctor (ModuleCat.{u} R) 0).obj N))) ≃ₗ[R ⧸ Ideal.span {a}]
+        Ext.{w} (ModuleCat.of R (R ⧸ Ideal.span {a})) N 1 from
+      derivedCoextendScalarsPlusHomologyExtQuotientLinearEquiv (Ideal.span {a}) N J 1)
+      ((derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv a ha N J).symm
+        (Submodule.Quotient.mk x)) = singleIdealExtOneClass a ha N x := by
+  let := singleQuotientModule a N
+  let := Ext.quotientSourceModule (Ideal.span {a}) N 1
+  exact derivedCoextendScalarsPlusPrincipalHomologyLinearEquiv_symm_mk a ha N J x
 
 include ha in
 /-- Ring and coefficient regularity kill every other natural-degree homology group. -/
