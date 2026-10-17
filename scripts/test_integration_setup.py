@@ -1,5 +1,6 @@
 """Check isolated downstream setup and exact compiled source replay enrollment."""
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -7,7 +8,7 @@ from unittest.mock import patch
 
 from check_compiled_inventory import check_inventory
 from prepare_downstream import prepare
-from run_style_linter import plan_runtime, run as run_style_linter
+from run_style_linter import lake_environment, plan_runtime, run as run_style_linter
 import check_negative_controls
 
 
@@ -101,6 +102,30 @@ class IntegrationSetupTests(unittest.TestCase):
         (sysroot / 'lib/lean/Std/Data/TreeSet.olean').unlink()
         self.assertIn('Std.Data.TreeSet (optional-source prerequisite)',
                       plan_runtime(self.root, sysroot)['missing_prerequisites'])
+
+    def test_style_environment_prefers_explicit_cap_over_lake_path_and_keeps_fallback(self):
+        binary = self.root / 'bin'
+        binary.mkdir()
+        lake = binary / 'lake'
+        lake.write_text('#!/usr/bin/env python3\nimport os,sys\n'
+                        'assert sys.argv[1:3] == ["env", "python3"]\n'
+                        'os.execv(sys.executable, [sys.executable, *sys.argv[3:]])\n')
+        lake.chmod(0o755)
+        uncapped = binary / 'lean'
+        uncapped.write_text('#!/usr/bin/env python3\nraise SystemExit(97)\n')
+        uncapped.chmod(0o755)
+        capped = self.root / 'explicit-capped-lean'
+        capped.write_text('#!/usr/bin/env python3\nraise SystemExit(98)\n')
+        capped.chmod(0o755)
+        for explicit in [str(capped), '']:
+            with self.subTest(explicit_cap=bool(explicit)), patch.dict(os.environ, {
+                    'PATH': str(binary) + os.pathsep + os.environ.get('PATH', ''),
+                    'LEAN': explicit, 'LEAN_PATH': '/fixed/modules',
+                    'LEAN_SRC_PATH': '/fixed/sources'}):
+                environment = lake_environment(self.root)
+            self.assertEqual(environment['lean'], explicit or str(uncapped))
+            self.assertEqual(environment['LEAN_PATH'], '/fixed/modules')
+            self.assertEqual(environment['LEAN_SRC_PATH'], '/fixed/sources')
 
     def test_style_runtime_writes_only_temporary_optional_outputs_and_propagates_failure(self):
         import subprocess
