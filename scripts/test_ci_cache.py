@@ -147,6 +147,12 @@ class CacheKeyTests(CacheFixture):
 
 
 class CachePreparationTests(CacheFixture):
+    def build_state(self):
+        return {path.relative_to(self.root): (path.read_bytes(), path.stat().st_mtime_ns)
+                for package in ('', 'examples/downstream')
+                for path in (self.root / package / '.lake/build').rglob('*')
+                if path.is_file()}
+
     def test_compatible_source_and_version_changes_preserve_current_outputs(self):
         self.prepare()
         output = self.artifact('Aglib/Current')
@@ -159,22 +165,31 @@ class CachePreparationTests(CacheFixture):
         self.assertTrue(all('preserved' in line for line in self.prepare()))
         self.assertEqual((output.stat().st_mtime_ns, client.stat().st_mtime_ns), original)
 
-    def test_compiler_change_clears_only_incompatible_package_build(self):
+    def test_compiler_changes_preserve_outputs_and_native_traces_for_rehash(self):
         self.prepare()
         output = self.artifact('Aglib/Current')
         client = self.artifact('Consumer/Current', 'examples/downstream')
+        traces = [self.artifact('Aglib/Current', suffix='.trace'),
+                  self.artifact('Consumer/Current', 'examples/downstream', suffix='.trace')]
+        artifacts = [output, client, *traces]
+        original = [(path.read_bytes(), path.stat().st_mtime_ns) for path in artifacts]
         dependency = self.root / '.lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean'
         dependency.parent.mkdir(parents=True)
         dependency.write_bytes(b'dependency-owned')
         outside = self.root / 'unrelated'
         outside.write_bytes(b'foreign')
         self.prepare(compiler='Lean fixture compiler 2')
-        self.assertFalse(output.exists())
-        self.assertTrue(client.exists())
+        self.assertEqual([(path.read_bytes(), path.stat().st_mtime_ns) for path in artifacts],
+                         original)
         self.assertEqual(dependency.read_bytes(), b'dependency-owned')
         self.assertEqual(outside.read_bytes(), b'foreign')
         self.prepare(compiler='Lean fixture compiler 2', client='Lean fixture compiler 3')
-        self.assertFalse(client.exists())
+        self.assertEqual([(path.read_bytes(), path.stat().st_mtime_ns) for path in artifacts],
+                         original)
+        for package, compiler in [('', 'Lean fixture compiler 2'),
+                                  ('examples/downstream', 'Lean fixture compiler 3')]:
+            self.assertEqual(json.loads((self.root / package / '.lake/build' / STAMP).read_text())[
+                'compiler'], compiler)
 
     def test_abi_compatible_option_and_dependency_changes_preserve_outputs_for_rehash(self):
         self.prepare()
@@ -195,34 +210,58 @@ class CachePreparationTests(CacheFixture):
         self.assertEqual(json.loads((self.root / 'examples/downstream/.lake/build' / STAMP).read_text())[
             'configuration'], config_hash(self.root))
 
-    def test_toolchain_change_resets_before_using_foreign_olean_headers(self):
+    def test_toolchain_changes_preserve_outputs_for_native_trace_validation(self):
         self.prepare()
-        output = self.artifact('Aglib/Current')
-        (self.root / 'lean-toolchain').write_text('different ABI\n')
-        self.prepare()
-        self.assertFalse(output.exists())
-
-    def test_absent_malformed_and_old_schema_stamps_reset_cache(self):
-        for stamp in (None, '{broken', json.dumps({'schema': 'old'})):
-            with self.subTest(stamp=stamp):
-                output = self.artifact('Aglib/Current')
-                metadata = self.root / '.lake/build' / STAMP
-                if stamp is None:
-                    metadata.unlink(missing_ok=True)
-                else:
-                    metadata.write_text(stamp)
+        outputs = [self.artifact('Aglib/Current'),
+                   self.artifact('Consumer/Current', 'examples/downstream')]
+        original = [(path.read_bytes(), path.stat().st_mtime_ns) for path in outputs]
+        for package in ('', 'examples/downstream'):
+            with self.subTest(package=package):
+                (self.root / package / 'lean-toolchain').write_text('different toolchain\n')
                 self.prepare()
-                self.assertFalse(output.exists())
+                self.assertEqual([(path.read_bytes(), path.stat().st_mtime_ns)
+                                  for path in outputs], original)
+                self.assertEqual(json.loads((self.root / package / '.lake/build' / STAMP).read_text())[
+                    'toolchain'], 'different toolchain\n')
 
-    def test_incomplete_stamp_is_untrusted_even_with_matching_compiler_fields(self):
+    def test_absent_malformed_and_old_schema_stamps_preserve_native_evidence(self):
+        for package, module in [('', 'Aglib/Current'),
+                                ('examples/downstream', 'Consumer/Current')]:
+            for stamp in (None, '{broken', '[]', json.dumps({'schema': 'old'})):
+                with self.subTest(package=package, stamp=stamp):
+                    artifacts = [self.artifact(module, package, directory, suffix)
+                                 for directory, suffix in [('lib/lean', '.olean'),
+                                                           ('lib/lean', '.trace'),
+                                                           ('lib/lean', '.olean.hash'),
+                                                           ('ir', '.c.o')]]
+                    original = [(path.read_bytes(), path.stat().st_mtime_ns)
+                                for path in artifacts]
+                    metadata = self.root / package / '.lake/build' / STAMP
+                    if stamp is None:
+                        metadata.unlink(missing_ok=True)
+                    else:
+                        metadata.write_text(stamp)
+                    self.prepare()
+                    self.assertEqual([(path.read_bytes(), path.stat().st_mtime_ns)
+                                      for path in artifacts], original)
+                    self.assertEqual(json.loads(metadata.read_text())['configuration'],
+                                     config_hash(self.root, ('',)) if not package
+                                     else config_hash(self.root))
+
+    def test_incomplete_stamp_preserves_outputs_without_certifying_them(self):
         self.prepare()
         output = self.artifact('Aglib/Current')
+        original = (output.read_bytes(), output.stat().st_mtime_ns)
         metadata = self.root / '.lake/build' / STAMP
         previous = json.loads(metadata.read_text())
         previous.pop('configuration')
         metadata.write_text(json.dumps(previous))
         self.prepare()
-        self.assertFalse(output.exists())
+        self.assertEqual((output.read_bytes(), output.stat().st_mtime_ns), original)
+        # Preparation cannot supply missing native validation evidence. A fresh
+        # wrapper stamp alone must never stand in for the subsequent Lake check.
+        self.assertFalse(output.with_suffix('.trace').exists())
+        self.assertFalse(output.with_suffix('.olean.hash').exists())
 
     def test_prune_deleted_renamed_and_old_roots_and_all_module_facets(self):
         self.prepare()
@@ -267,7 +306,7 @@ class CachePreparationTests(CacheFixture):
         client_build.symlink_to(foreign, target_is_directory=True)
         with self.assertRaises(ValueError):
             self.prepare(compiler='changed')
-        self.assertTrue(output.exists())  # Validate both roots before any deletion.
+        self.assertTrue(output.exists())  # Validate both roots before any mutation.
         self.assertEqual(protected.read_bytes(), b'foreign output')
         client_build.unlink()
         client_build.mkdir()
@@ -276,15 +315,35 @@ class CachePreparationTests(CacheFixture):
             self.prepare()
         self.assertEqual(protected.read_bytes(), b'foreign output')
 
-    def test_missing_config_or_compiler_fails_before_mutating_outputs(self):
+    def test_invalid_required_inputs_fail_before_any_build_mutation(self):
         self.prepare()
-        output = self.artifact('Aglib/Current')
-        with self.assertRaises(ValueError):
-            self.prepare(compiler='')
-        (self.root / 'examples/downstream/lake-manifest.json').unlink()
-        with self.assertRaises(OSError):
-            self.prepare(compiler='changed')
-        self.assertTrue(output.exists())
+        for package, module in [('', 'Aglib/Current'),
+                                ('examples/downstream', 'Consumer/Current')]:
+            self.artifact(module, package)
+            self.artifact('Deleted', package)  # Must not be pruned on failure.
+        original = self.build_state()
+        for compiler, client in [('', 'compiler'), ('compiler', ' \n')]:
+            with self.subTest(compiler=compiler, client=client):
+                with self.assertRaises(ValueError):
+                    self.prepare(compiler=compiler, client=client)
+                self.assertEqual(self.build_state(), original)
+        for package in ('', 'examples/downstream'):
+            for name in ('lean-toolchain', 'lake-manifest.json', 'lakefile.toml'):
+                path = self.root / package / name
+                previous = path.read_bytes()
+                invalid = [None, b' ']
+                if name == 'lakefile.toml':
+                    invalid += [b'name = [', b'name="fixture"\nvalue=nan\n']
+                for content in invalid:
+                    with self.subTest(package=package, name=name, content=content):
+                        if content is None:
+                            path.unlink()
+                        else:
+                            path.write_bytes(content)
+                        with self.assertRaises((OSError, ValueError)):
+                            self.prepare(compiler='changed')
+                        self.assertEqual(self.build_state(), original)
+                        path.write_bytes(previous)
 
 
 class WorkflowTests(unittest.TestCase):
