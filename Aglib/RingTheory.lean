@@ -44,6 +44,9 @@ public import Aglib.RingTheory.Flat.PrincipalQuotient.Local
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Localization
 public import Aglib.RingTheory.Flat.Quotient
 public import Aglib.RingTheory.Flat.TorsionFreeBaseChange
+public import Aglib.RingTheory.GenericFreeness.Filtration
+public import Aglib.RingTheory.GenericFreeness.Localization
+public import Aglib.RingTheory.GenericFreeness.Noetherian
 public import Aglib.RingTheory.Grassmannian.BaseChange
 public import Aglib.RingTheory.Grassmannian.BaseChangeFormula
 public import Aglib.RingTheory.Grassmannian.Chart

@@ -473,6 +473,8 @@ public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Locality
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Noetherian
 public import Aglib.AlgebraicGeometry.Modules.Flat.Closure
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generators
+public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Integral
+public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Spec
 public import Aglib.AlgebraicGeometry.Modules.Flat.Locality
 public import Aglib.AlgebraicGeometry.Modules.Flat.ProjectivePresheaves
 public import Aglib.AlgebraicGeometry.Modules.Flat.Pullback

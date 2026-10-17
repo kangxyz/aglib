@@ -142,7 +142,7 @@ commitments.
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial (Euler local constancy) | M |
 | F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | absent | L |
-| F12 | Generic freeness (Nitsure, Thm 4.2) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | absent | L |
+| F12 | Generic freeness (Nitsure, Lemma 4.1, p. 18; Stacks 051R), generic flatness (Thm 4.2, p. 19) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | partial: generic freeness (`RingTheory/GenericFreeness`) and generic flatness (`Modules/Flat/Generic`) proved; flattening stratification open (needs Fitting ideals, Nitsure Lemmas 3.1–3.2, base change of `relativeFlat`, F10) | L |
 | F13 | Hilbert schemes on locally Noetherian test schemes: `Hilb^Φ` of closed subschemes of `P^n_A` represented by a locally closed subscheme of a Grassmannian (Nitsure, proof of Thm 5.2/5.3 up to the flattening step, pp. 24–26), and its open subfunctors for locally closed `X ⊂ P^N_A` (Thm 6.1 with trivial bundles, p. 28). Projectivity of `Hilb^Φ` uses the DVR valuative criterion (pp. 26–27), which Mathlib lists as future work (`AlgebraicGeometry/ValuativeCriterion.lean`, "Future projects"); the route does not need it | absent | XL |
 | F14 | Relative effective Cartier divisors, fibrewise criterion and `Div` open in `Hilb` (Kleiman, Lemma 3.4, Thm 3.7, pp. 22–24) | partial | M |
 | F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial (finite model) | M |
@@ -359,7 +359,9 @@ and can run in parallel. Write ownership is by family:
 for F3, F5 and F6, with `AlgebraicGeometry/IdealSheaf/Descent/` and
 `RingTheory/Descent/Ideal` for closed-subscheme descent; `AlgebraicGeometry/Grassmannian/` and
 `AlgebraicGeometry/ProjectiveSpace/` for F8 and F9; `AlgebraicGeometry/Hilbert/`
-for F10–F14 and F16. Paths are proposals relative to `Aglib/`; final names
+for F13, F14 and F16, with `RingTheory/GenericFreeness/` and
+`AlgebraicGeometry/Modules/Flat/Generic/` for F12 and new subfamilies of
+`AlgebraicGeometry/Cohomology/Projective/` for F10 and F11. Paths are proposals relative to `Aglib/`; final names
 follow [NAMING.md](NAMING.md) after inspecting neighbours. Only the integrator
 changes common facades, `doc/INTERFACES.md`, `doc/README.md` and this plan.
 
@@ -424,7 +426,7 @@ variety `Pic^0_red` remain later extensions.
   3.11, Thm 3.13), §4 (Thm 4.8, Lemma 4.9, Ex. 4.4, 4.14, 4.15, Prop. 4.17), §5
   (Lemma 5.1, Prop. 5.3, Thm 5.11, Cor. 5.13).
 - N. Nitsure, *Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1:
-  Lemma 2.1, Thm 2.3, Thms 3.3–3.7, Thms 4.2–4.3, Thms 5.2–5.3, Thm 6.1,
+  Lemma 2.1, Thm 2.3, Thms 3.3–3.7, Lemma 4.1, Thms 4.2–4.3, Thms 5.2–5.3, Thm 6.1,
   Lemma 6.7, Thms 6.8–6.9.
 - A. Vistoli, *Notes on Grothendieck topologies, fibered categories and descent
   theory*, arXiv:math/0412512v4: Thm 2.55, Ex. 4.19, Thm 4.21, Thm 4.23.
@@ -432,6 +434,7 @@ variety `Pic^0_red` remain later extensions.
   quasi-coherent sheaves), [023N](https://stacks.math.columbia.edu/tag/023N)
   (descent of modules along faithfully flat ring maps),
   [03C4](https://stacks.math.columbia.edu/tag/03C4) (descent of finite presentation),
+  [051R](https://stacks.math.columbia.edu/tag/051R) (generic freeness),
   [05B2](https://stacks.math.columbia.edu/tag/05B2) (descent of local freeness), [0B9N](https://stacks.math.columbia.edu/tag/0B9N)
   (rigidified comparison), [089T](https://stacks.math.columbia.edu/tag/089T)
   (Grassmannian), [0D2C](https://stacks.math.columbia.edu/tag/0D2C) (the excluded
@@ -485,6 +488,12 @@ Status on branch `claude/picard-scheme`, 2026-10-17.
       test scheme and F6 for line bundles on `X_T`, with full faithfulness of
       descent along the covering of `T`. Kleiman's own proof of Part 2 uses
       Part 1 instead.
+- **M4 in progress.**
+  - F12, first half, done: generic freeness (Nitsure Lemma 4.1, Stacks 051R) and
+    generic flatness (Thm 4.2). An independent statement review found it
+    corresponding.
+  - F10 and F11 in progress. The flattening stratification needs Fitting ideals,
+    a new foundation.
 - **M3 in progress.**
   - Done for the free module `R^n` over `Spec R`:
     - Grassmannian charts, chart representability on `Over (Spec R)`, and the

@@ -16,6 +16,8 @@ public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
 public import AglibTest.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
 public import AglibTest.AlgebraicGeometry.IdealSheaf.Descent.Pullback
 public import AglibTest.AlgebraicGeometry.Modules.Descent.Zariski
+public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Integral
+public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Spec
 public import AglibTest.AlgebraicGeometry.Picard.Affine
 public import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
 public import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms
@@ -44,6 +46,9 @@ public import AglibTest.MappingCone
 public import AglibTest.RingTheory.Descent.FinitePresentation
 public import AglibTest.RingTheory.Descent.Ideal
 public import AglibTest.RingTheory.Descent.Invertible
+public import AglibTest.RingTheory.GenericFreeness.Filtration
+public import AglibTest.RingTheory.GenericFreeness.Localization
+public import AglibTest.RingTheory.GenericFreeness.Noetherian
 public import AglibTest.SheafTensor
 public import AglibTest.TensorToUnit
 public import AglibTest.UnramifiedRigidity
