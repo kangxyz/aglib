@@ -435,6 +435,12 @@ public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Minus.PullbackComp
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Minus.ResolvedPullback
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.Restriction
 public import Aglib.AlgebraicGeometry.Modules.DerivedCategory.RestrictionHom
+public import Aglib.AlgebraicGeometry.Modules.Descent.OpenCoverGluing
+public import Aglib.AlgebraicGeometry.Modules.Descent.Pseudofunctor
+public import Aglib.AlgebraicGeometry.Modules.Descent.RestrictPullback
+public import Aglib.AlgebraicGeometry.Modules.Descent.Substack
+public import Aglib.AlgebraicGeometry.Modules.Descent.Zariski
+public import Aglib.AlgebraicGeometry.Modules.Descent.ZariskiStack
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Affine
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Basic
 public import Aglib.AlgebraicGeometry.Modules.Differentials.EtalePullback

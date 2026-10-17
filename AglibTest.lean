@@ -9,6 +9,7 @@ module
 
 public import AglibTest.AffineCohomology
 public import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
+public import AglibTest.AlgebraicGeometry.Modules.Descent.Zariski
 public import AglibTest.ArchiveBaseProductInterchange
 public import AglibTest.ArchiveEndpointTransport
 public import AglibTest.ArchiveExactFunctorPushout
