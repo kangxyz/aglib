@@ -5,6 +5,7 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | Subject | Interfaces and principal results |
 | --- | --- |
 | [Modules](Modules/README.md) | Actual stalks/functors/base-change maps, quasicoherent affine comparison, finite presentations, exact vector bundles, coherent specialization, ordinary Picard tensor groups and differential maps |
+| [Descent](Descent/README.md) | Zariski stacks of module sheaves, quasi-coherent sheaves and line bundles; faithfully flat descent of closed subschemes |
 | [Morphisms](Morphisms/README.md) | Etale stalk/neighborhood comparison, finite-surjective geometric-point lifting, closed-source Noetherianity and arbitrary-dimensional smooth regularity/normality/dimension |
 | [Properties](Properties/README.md) | Normal stalks and locally Noetherian open-component/integrality results |
 | [Stalk](Stalk/README.md) | Actual polynomial and generic-fibre local-ring comparisons |

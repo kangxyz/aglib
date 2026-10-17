@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.Pullback
+public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
 public import Aglib.RingTheory.Descent.Ideal
 
 /-!

@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.FaithfullyFlat
+public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 public import Mathlib.AlgebraicGeometry.Sites.Fpqc
 public import Mathlib.CategoryTheory.Limits.Shapes.RegularMono
 

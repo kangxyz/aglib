@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.IdealSheaf.Descent.Pullback
+public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
 
 /-! Focused consumer of the pullback properties of ideal sheaves used by faithfully flat descent of
 closed subschemes. Pullback is Mathlib's `Scheme.IdealSheafData.comap`.

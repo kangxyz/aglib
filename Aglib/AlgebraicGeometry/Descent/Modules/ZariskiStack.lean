@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Descent.OpenCoverGluing
+public import Aglib.AlgebraicGeometry.Descent.Modules.OpenCoverGluing
 
 /-!
 # Module sheaves form a Zariski stack

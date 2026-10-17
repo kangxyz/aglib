@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Descent.ZariskiStack
+public import Aglib.AlgebraicGeometry.Descent.Modules.ZariskiStack
 
 /-! Focused consumer of the module-sheaf descent layer. The pseudofunctor is Mathlib's
 `Scheme.Modules.pseudofunctor.comp Adj.forget₁`, with the actual pullback functors
