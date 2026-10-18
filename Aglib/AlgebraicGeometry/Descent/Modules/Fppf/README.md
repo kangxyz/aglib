@@ -1,8 +1,10 @@
 # Affine and fppf descent of quasi-coherent sheaves
 
-This subfamily works towards row F6 of [PICARD_PLAN.md](../../../../../doc/PICARD_PLAN.md):
+This subfamily proves the quasi-coherent part of row F6 of
+[PICARD_PLAN.md](../../../../../doc/PICARD_PLAN.md):
 `Pseudofunctor.IsStack Scheme.fppfTopology` for
-`Scheme.Modules.quasicoherentPseudofunctor` (from [Pseudofunctor](../Pseudofunctor.lean)).
+`Scheme.Modules.quasicoherentPseudofunctor` (from [Pseudofunctor](../Pseudofunctor.lean)), and the
+same for line bundles.
 The affine input is ring-level faithfully flat descent of modules
 (`CommRingCat.isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, in
 `Algebra/Category/ModuleCat/Descent`). The two sides are compared through Aglib's
@@ -97,16 +99,59 @@ derives only `IsStableUnderBaseChange` and `IsStableUnderComposition`; with the 
 Mathlib's `Pseudofunctor.IsStack.of_precoverage` and `IsPrestack.of_precoverage` apply to
 `Scheme.fppfTopology`. Its intended owner is Mathlib's `AlgebraicGeometry/Sites/Fpqc.lean`.
 
-What remains of row F6:
-- the fppf `IsStack` reduction: `Pseudofunctor.IsStack Scheme.fppfTopology` for
-  `quasicoherentPseudofunctor`, from Zariski descent (F3) and the affine theorem above, through
-  locality on the base, refinement of a covering by affines, quasi-compactness of an affine base,
-  and a finite affine family turned into one faithfully flat map `A ⟶ ∏ Bᵢ`, then
-  `IsStack.of_precoverage`;
-- the line-bundle substack (invertible sheaves);
-- the fppf stack form of closed subschemes (descent along one morphism is in
-  [Descent/IdealSheaf](../../IdealSheaf/README.md));
-- descent of open subschemes.
+[Prestack](Prestack.lean): `Scheme.isPrestack_fpqcTopology_of_isPrestackFor_specMap`, for an
+arbitrary pseudofunctor on schemes that is a Zariski prestack and a prestack for the singleton of
+`Spec.map f` for every faithfully flat `f`: it is an fpqc prestack. The presheaves
+`F.presheafHom M N` on `Over S` are turned into presheaves on schemes by `Presieve.overSigma`
+([OverSigma](../../../../CategoryTheory/Sites/Descent/OverSigma.lean)), to which Mathlib's
+`isSheaf_type_propQCTopology_iff` (Stacks, Tag 022H) applies. Instances
+`isPrestack_quasicoherentPseudofunctor_fpqcTopology` and `..._fppfTopology` (unconditional).
+
+[Stack](Stack.lean): quasi-coherent sheaves form fpqc and fppf stacks (row F6). The composition
+step is the generic `Pseudofunctor.IsStackFor.bind` of
+[Composition](../../../../CategoryTheory/Sites/Descent/Composition.lean) (effective descent along
+composites of covering presieves, for the fpqc prestack);
+`isStackFor_ofArrows_of_finite_of_isAffine_of_flat_of_union_range_eq_univ` (finite jointly
+surjective affine flat families over `Spec A`, through `(∐ X).isoSpec` and a faithfully flat
+`Spec.map φ`), `isStackFor_of_mem_fpqcPrecoverage_spec` (affine base, finite affine refinement
+by Mathlib's `QuasiCompactCover.exists_hom`),
+`isStackFor_of_mem_fpqcPrecoverage` (general base, through `affineOpenCover`), and the instances
+`isStack_quasicoherentPseudofunctor_fpqcTopology` (`IsStack.of_precoverage` for
+`fpqcPrecoverage`) and `isStack_quasicoherentPseudofunctor_fppfTopology`. Mathlib's instances
+stated for `Scheme.precoverage P` with a variable `P` are not found at `P := @Flat`; they are
+supplied by hand, or `backward.isDefEq.respectTransparency.types false` is set on the
+declaration (with an adjacent comment naming the missing instance), as in Mathlib's
+`Sites/Fpqc.lean`.
+
+[Locality](Locality.lean): `prop_of_mem_fpqcPrecoverage`, `prop_of_mem_fppfTopology`: a property of
+module sheaves that is invariant under isomorphisms, stable under pullback, Zariski-local and
+descends along faithfully flat morphisms of affine schemes (on quasi-coherent sheaves) descends
+along fpqc coverings and fppf covering sieves (no descent data involved).
+
+[LineBundleStack](LineBundleStack.lean): the affine descent of local rank one
+`isLocallyRankOne_of_pullback_specMap_of_faithfullyFlat` (through `tildePullbackIso`,
+`Invertible.invertible_globalSections` and
+`Module.Invertible.of_invertible_tensorProduct_of_faithfullyFlat`);
+`isLocallyRankOne_of_mem_fppfTopology` (local rank one is local for fppf covering sieves on
+quasi-coherent sheaves); and the instance `isStack_lineBundlePseudofunctor_fppfTopology` (line
+bundles form an fppf stack), through the nested substack criterion
+`ObjectProperty.isStack_fullsubcategory_of_le` of [Substack](../Substack.lean) (F3's criterion
+with the ambient stack `Q.fullsubcategory` for `P ≤ Q`).
+
+Row F6 outside this subfamily:
+- open subschemes, [Descent/Opens](../../Opens.lean) (focused consumer
+  [AglibTest/AlgebraicGeometry/Descent/Opens.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Opens.lean),
+  with axiom guards): `Scheme.opensPresheaf` (`X ↦ X.Opens`, preimages) is an fppf sheaf
+  (`isSheaf_opensPresheaf_fppfTopology`), from `existsUnique_preimage_eq_of_isOpenMap` (jointly
+  surjective families of open morphisms; the descended open is the union of the open images);
+  along one flat surjective morphism locally of finite presentation,
+  `existsUnique_preimage_eq_of_flat_of_surjective`;
+- closed subschemes: `X ↦ X.IdealSheafData` with `comap` is a sheaf for the Zariski, fpqc and
+  fppf topologies ([Descent/IdealSheaf/Fppf](../../IdealSheaf/Fppf.lean)), from descent along one
+  flat surjective quasi-compact morphism ([Descent/IdealSheaf](../../IdealSheaf/README.md)) and
+  the Zariski gluing of ideal sheaves ([IdealSheaf/Glue](../../../IdealSheaf/Glue.lean)).
+
+With these, every target of plan row F6 is proved.
 
 Kernel note: prove coherence lemmas for arbitrary morphisms of schemes and instantiate them, so
 that the kernel never compares two presentations of the same term at `Spec R`.
@@ -140,6 +185,9 @@ Focused consumers:
 [AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/AffineStack.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/AffineStack.lean),
 [CompTransCoherence.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/CompTransCoherence.lean)
 (including the axiom guard of the affine stack theorem) and
-[Precoverage.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/Precoverage.lean);
+[Precoverage.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/Precoverage.lean)
+and [Stack.lean](../../../../../AglibTest/AlgebraicGeometry/Descent/Modules/Fppf/Stack.lean)
+(prestack instances, locality, the stack instances and the nested substack criterion, with axiom
+guards);
 the coherence of `tildePullbackIso` has its consumer at
 [AglibTest/AlgebraicGeometry/Modules/QuasiCoherent/Affine/TildePullback.lean](../../../../../AglibTest/AlgebraicGeometry/Modules/QuasiCoherent/Affine/TildePullback.lean).
