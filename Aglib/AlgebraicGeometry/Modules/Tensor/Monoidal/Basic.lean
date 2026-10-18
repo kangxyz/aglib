@@ -178,7 +178,7 @@ instance monoidalCategory : MonoidalCategory X.Modules :=
 
 /-- The identity into the localized monoidal category is a monoidal functor, with tensor
 comparison `toLocalizedMonoidalμIso` and identity unit comparison. -/
-instance toLocalizedMonoidal_monoidal : (toLocalizedMonoidal X).Monoidal :=
+instance instMonoidalToLocalizedMonoidal : (toLocalizedMonoidal X).Monoidal :=
   Monoidal.fromInducedMonoidal (toLocalizedMonoidal X) (toLocalizedMonoidalInducingData X)
 
 end Construction

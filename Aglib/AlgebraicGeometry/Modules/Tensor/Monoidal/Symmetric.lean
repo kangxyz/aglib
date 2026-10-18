@@ -44,7 +44,7 @@ instance braidedCategory : BraidedCategory X.Modules :=
     (toLocalizedMonoidal_μ_comp_map_braiding X)
 
 /-- The identity into the localized monoidal category is a braided functor. -/
-instance toLocalizedMonoidal_braided : (toLocalizedMonoidal X).Braided where
+instance instBraidedToLocalizedMonoidal : (toLocalizedMonoidal X).Braided where
   braided := toLocalizedMonoidal_μ_comp_map_braiding X
 
 /-- Scheme modules form a symmetric monoidal category under the existing tensor maps and

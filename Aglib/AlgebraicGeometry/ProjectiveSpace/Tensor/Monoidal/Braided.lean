@@ -13,7 +13,7 @@ public import Aglib.CategoryTheory.Monoidal.Discrete
 
 For the braiding of `Discrete ℤ` by `add_comm` (`Discrete.addBraidedCategory`) and the symmetric
 structure of scheme modules, the monoidal twisting functor is braided
-(`twistingFunctor_braided`): twist multiplication followed by the transport along
+(`instBraidedTwistingFunctor`): twist multiplication followed by the transport along
 `a + b = b + a` is the braiding of `O(a) ⊗ O(b)` followed by twist multiplication
 (`twistingTensorMap_braiding`). The proof evaluates both sides on pure section tensors, using that
 the braiding of scheme modules exchanges the two factors (`braiding_hom_moduleTensorSection`, in
@@ -77,7 +77,7 @@ theorem twistingTensorMap_braiding (a b : ℤ) (h : a + b = b + a) :
     _ = _ := hR.symm
 
 /-- The twisting functor is braided, for the braiding of `Discrete ℤ` by `add_comm`. -/
-instance twistingFunctor_braided : (twistingFunctor R ι).Braided where
+instance instBraidedTwistingFunctor : (twistingFunctor R ι).Braided where
   braided m n := twistingTensorMap_braiding R ι m.as n.as (add_comm _ _)
 
 end AlgebraicGeometry.ProjectiveSpace

@@ -76,20 +76,20 @@ info: 'AlgebraicGeometry.Scheme.Modules.symmetricCategory' depends on axioms: [p
 #print axioms symmetricCategory
 
 /--
-info: 'AlgebraicGeometry.Scheme.Modules.toLocalizedMonoidal_monoidal' depends on axioms: [propext,
+info: 'AlgebraicGeometry.Scheme.Modules.instMonoidalToLocalizedMonoidal' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 -/
 #guard_msgs in
-#print axioms toLocalizedMonoidal_monoidal
+#print axioms instMonoidalToLocalizedMonoidal
 
 /--
-info: 'AlgebraicGeometry.Scheme.Modules.toLocalizedMonoidal_braided' depends on axioms: [propext,
+info: 'AlgebraicGeometry.Scheme.Modules.instBraidedToLocalizedMonoidal' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 -/
 #guard_msgs in
-#print axioms toLocalizedMonoidal_braided
+#print axioms instBraidedToLocalizedMonoidal
 
 /--
 info: 'AlgebraicGeometry.Scheme.Modules.tensorSheafAssociator' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -17,7 +17,7 @@ The twisting sheaves `O(n)` on polynomial projective space form a functor
 `twistingFunctor R ι : Discrete ℤ ⥤ (ProjectiveSpace R ι).Modules`, `n ↦ O(n)`, whose maps are
 the transports `eqToHom` along equalities of degrees. For the additive monoidal structure on
 `Discrete ℤ` and the monoidal structure on scheme modules, it is monoidal
-(`twistingFunctor_monoidal`): the tensorator is twist multiplication `twistingTensorIso a b :
+(`instMonoidalTwistingFunctor`): the tensorator is twist multiplication `twistingTensorIso a b :
 O(a) ⊗ O(b) ≅ O(a + b)` and the unit comparison is the inverse of `twistingZeroIso`.
 
 The three coherence equations are proved once, at variable degrees: associativity
@@ -204,7 +204,7 @@ def twistingFunctorCoreMonoidal : (twistingFunctor R ι).CoreMonoidal where
 
 /-- The twisting functor is monoidal, with tensorator `twistingTensorIso` and unit comparison
 `twistingZeroIso.symm`. -/
-instance twistingFunctor_monoidal : (twistingFunctor R ι).Monoidal :=
+instance instMonoidalTwistingFunctor : (twistingFunctor R ι).Monoidal :=
   (twistingFunctorCoreMonoidal R ι).toMonoidal
 
 theorem twistingFunctor_μ (m n : Discrete ℤ) :

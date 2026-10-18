@@ -128,13 +128,13 @@ info: 'AlgebraicGeometry.ProjectiveSpace.twistingFunctorCoreMonoidal' depends on
 #print axioms AlgebraicGeometry.ProjectiveSpace.twistingFunctorCoreMonoidal
 
 /--
-info: 'AlgebraicGeometry.ProjectiveSpace.twistingFunctor_monoidal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.ProjectiveSpace.instMonoidalTwistingFunctor' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms AlgebraicGeometry.ProjectiveSpace.twistingFunctor_monoidal
+#print axioms AlgebraicGeometry.ProjectiveSpace.instMonoidalTwistingFunctor
 
 /--
-info: 'AlgebraicGeometry.ProjectiveSpace.twistingFunctor_braided' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.ProjectiveSpace.instBraidedTwistingFunctor' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms AlgebraicGeometry.ProjectiveSpace.twistingFunctor_braided
+#print axioms AlgebraicGeometry.ProjectiveSpace.instBraidedTwistingFunctor
