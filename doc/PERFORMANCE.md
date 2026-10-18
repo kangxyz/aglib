@@ -461,6 +461,44 @@ original affine residue/unit laws; the final consumers already use those proved
 interfaces. The failed conversion probes are not recorded as successful remedies,
 and the expanded candidate declarations are not exported as proved theorems.
 
+## Nonflat base change: share the concrete coefficient constructor
+
+The original-map ring-equivalence transport in
+[Map/RingEquiv](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/Modules/Map/RingEquiv.lean)
+first exceeded both 200,000 and 800,000 kernel heartbeats when rewriting the
+concrete pullback-unit, composition and equality comparisons together. An
+abstract commuting-triangle lemma checked at the standard budget, but its
+five-line concrete specialization still exceeded 200,000 heartbeats: a short
+application retained an expensive conversion between separately presented
+coefficient composites.
+
+The retained source defines `ordinaryPullbackCoefficientMap` once, including
+the original unit and native comparison iso. Both the abstract triangle and
+the concrete fibre-product coefficient use that same definition head. The
+complete leaf then compiled at the standard 200,000-heartbeat policy in
+18.2 seconds, with 2.51 GB peak process-group RSS and no guard failure. Both
+public Epi and IsIso statements retain the original scalar base-change map
+and require no additional flatness, quasicoherence or Noetherian hypothesis.
+This establishes a successful proof boundary, not a controlled timing ratio
+or a diagnosis of a compiler defect. The general proper-descent consumers
+were still pending when this provider measurement was recorded.
+
+The affine sheaf composition in
+[Nonflat/AffineSheafComposition](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/HigherDirectImage/Nonflat/AffineSheafComposition.lean)
+exposed the same issue. Abstracting only its final categorical chain, and then
+its complete functor calculation, still left the concrete specialization above
+the fixed 25,600 MiB process-group limit. The retained
+[AffineFunctor](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/HigherDirectImage/Nonflat/AffineFunctor.lean)
+defines one generic arrow constructor used literally in both the abstract
+composition statement and the concrete `affineMapOfTilde`. The two native
+composition transformations are supplied separately. The generic provider,
+affine sheaf provider and composition provider then built in 1.6, 3.0 and
+3.0 seconds, respectively, at the standard heartbeat policy; their complete
+group peaked at 2.15 GB. The existing shared-iso definition of
+`affineMapFromTensor` and its sections formula were retained. This validates
+the composition providers; higher-image composition, refinement and global
+descent are separate consumers and were still pending at this measurement.
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks
@@ -569,3 +607,73 @@ targets can repeat a shared in-flight prerequisite before its cache entry exists
 The integration initially repeated `Relative.AffineTrace` in two full target
 graphs. It then restricted the second worker to the missing canonical
 `ModelCharts.Principal` branch while the trace/comparison graph continued.
+
+## Principal chart pasting at the CI memory budget
+
+CI runs [39102309068](https://github.com/kangxyz/aglib/actions/runs/39102309068)
+and [39108321624](https://github.com/kangxyz/aglib/actions/runs/39108321624)
+failed in `principalWholeChartPaste`, at the native 12,800 MiB limit. The
+previous local pass at a higher limit did not establish fit for CI.
+
+The retained [Principal](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical/ModelCharts/Principal.lean)
+uses one private `WholeChartPasteData` value and six typed supplier equations.
+The final categorical paste consumes those same projections instead of
+reconstructing the concrete chart endpoints together. The original public
+statement, chart arrows and supplier equations are unchanged.
+
+Fresh local macOS compiles at the unchanged 12,800 MiB native limit passed
+with one and four compiler threads. The four-thread check took 408.9 seconds
+and peaked at 12,918.8 MiB process-group RSS, below the 13,824 MiB guard.
+Its six comparable native artifacts matched the one-thread build exactly.
+Scoped declaration, text-style and source-policy checks passed. These are
+local budget checks, not a controlled speedup ratio or a remote Linux CI pass;
+the remote runs above used the original source.
+
+## Affine refinement through literal mate types
+
+The nonflat higher-image [affine refinement](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/HigherDirectImage/Nonflat/AffineRefinement.lean)
+originally completed its tactics but exceeded the kernel checking budget.
+Its retained proof uses the original composite pullback/restriction adjunction
+and global-section faithfulness on the original higher direct image.
+
+Give the pointwise helper private qcqs instance parameters instead of four
+proposition-valued lets inside its result. Fix the bundled ring and bare
+higher-image indices of its evaluators and mates explicitly, including the
+immediate section suppliers. The public theorem derives those instances from
+its given open pullback squares.
+
+A Type-valued datum constructor still exceeded its local 800,000-heartbeat
+budget after those changes. Removing that datum and applying the generic
+faithfulness and cancellation theorem directly to the literal native objects
+and arrows passed: 53 seconds for the Lean leaf, 56.71 seconds for the guarded
+build, and 3.07 GiB peak process-group RSS. The j1/M24576/RSS25600 profile and
+finite local bounds were unchanged.
+
+This establishes the combined interface and proof-encoding repair, without
+isolating one kernel conversion or preprocessing operation as its cause.
+The public proposition is byte-identical and adds no hypotheses or maps.
+
+The downstream local-refinement paste also exhausted kernel and elaboration
+budgets when local natural-isomorphism aliases were converted into component
+arrows at the final paste. Its retained proof gives the original component
+hom and inverse arrows explicit module-morphism types and proves the functor
+and cancellation algebra abstractly. The concrete application then checks at
+the standard 200,000-heartbeat budget. Keep the large functor-level types out
+of the concrete local context when only their component arrows are needed.
+
+The same typed-component and abstract-pasting approach checks the arbitrary-open
+composition leaf in 27 seconds (31.01 seconds for the guarded build), with
+3.43 GiB peak RSS. Its concrete private paste still exceeded 200,000 heartbeats
+during elaboration after the ordinary type-boundary repairs; a documented
+800,000 bound on that private declaration sufficed. Other declarations and the
+process limits stayed unchanged. This is a bounded elaboration cost, distinct
+from a failure of the kernel to accept a completed proof.
+
+Fresh checks at the CI profile (`-j4`, native 12,800 MiB, group 13,824 MiB)
+also passed. The flat affine comparison took 112.91 seconds at 7.92 GiB peak
+RSS; affine refinement took 43.40 seconds at 3.05 GiB; the proper endpoint
+module took 69.82 seconds at 3.94 GiB. A coherent 51-module check reused valid
+outputs and actually rebuilt affine normalization, global flat agreement,
+open composition, naturality and restriction in 136.35 seconds at 7.80 GiB.
+Each accepted run exited zero with no guard failure and its owned group gone.
+These are local CI-budget checks, separate from remote CI publication.

@@ -25,6 +25,7 @@ import AglibTest.AffineCohomology
 import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity
+import AglibTest.AlgebraicGeometry.Cohomology.Proper.BaseChange
 import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.Fppf

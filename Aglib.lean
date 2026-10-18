@@ -296,11 +296,79 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GlobalSections
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GodementUnit
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Affine
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.AffineSections
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Composition
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Homology
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Open
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Resolution
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Affine
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineComposition
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineCongruence
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineFunctor
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineNaturality
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineNormalization
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineRefinement
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheaf
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheafComposition
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Cartesian
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartAdjoint
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCoefficient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCoefficientNaturality
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCongruence
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCover
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartCriterion
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartNaturality
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartRefinement
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ChartRefinementMap
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Charts
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.CoefficientIso
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.HomLocality
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Isomorphism
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.LocalRefinement
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Matching
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Naturality
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.OpenRestriction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.OpenSquareComposition
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Presentation
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.RefinementPasting
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Restriction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.RestrictionIdentity
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.ScalarMate
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Uniqueness
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechComparison
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Composition
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Naturality
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Open
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.RingEquiv
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Spec
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.Gluing
@@ -376,6 +444,9 @@ public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Resolution
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Single
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.ClosedImmersion.Descent
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Finite.Coherent
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.BaseChange
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.BaseChange.Affine
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.BaseChange.Neighbourhood
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.Coherent
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Proper.Grauert
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent
@@ -500,8 +571,6 @@ public import
   Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.CommonSections
 public import
   Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.Compatibility
-public import
-  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.Sections
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Frames
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.ModelCore
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Pasting
@@ -1049,6 +1118,7 @@ public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafSource
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.Refinement
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
@@ -1856,4 +1926,4 @@ Use thematic facades or individual module imports for smaller dependencies.
 -/
 
 -- The import-only facade follows the discovered source graph.
-set_option linter.style.longFile 2000
+set_option linter.style.longFile 2100

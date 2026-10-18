@@ -550,9 +550,12 @@ first finiteness proof does not depend on them.
    arbitrary locally Noetherian targets. On reduced locally
    Noetherian targets, local constancy of that dimension gives finite local
    freeness of the literal higher direct image, without target
-   quasi-compactness. General nonflat sheaf-valued comparison is still a
-   separate descent consumer; neighbourhood freeness retains its
-   adjacent-degree condition.
+   quasi-compactness. The general nonflat sheaf-valued comparison is now
+   constructed by module-Hom descent. Its proper consumers prove arbitrary
+   base change under reduced-base local constancy, and the actual residue-map
+   epimorphism criterion with its neighbourhood and global consequences,
+   without reducedness in the latter two cases. Neighbourhood freeness retains
+   its adjacent-degree condition.
 3. Obtain the actual sheaf-valued perfect Rf through exact tilde transport
    and the proved original counit. The same model handles all ordinary
    pulled coefficients after arbitrary ring maps. Preserve actual chain
@@ -1066,8 +1069,22 @@ normalization has the sole lower owner `DirectImage/Restriction/Resolution`
 `1792150040061228000-33096`). The affine consumer imports that lower owner,
 with source `1792150061769229000-33227` and production-only public consumer
 `1792150222927379000-34988` (four standard-axiom lists, all q and degree zero).
-Generic open pasting, the actual affine nonflat beta and its global module-map
-gluing are the next consumers; this cell does not yet assert their conclusions.
+Generic open pasting and the actual affine nonflat comparison now supply
+`BaseChange/HigherDirectImage/Nonflat`. Internally proved common-refinement
+compatibility glues the original affine arrows; the actual chart formula
+gives uniqueness and coefficient naturality for qcqs `f`, QC coefficients,
+and arbitrary base change. The native affine normalization and original
+scalar criteria are proved. `DirectImage/Proper/BaseChange` supplies the three
+general-base proper endpoints: reduced-base local constancy implies all-base
+invertibility; one epic actual residue comparison gives an all-base-change
+open neighbourhood; everywhere epic residue comparisons imply all-base
+invertibility without reducedness. These proper endpoints retain a locally
+Noetherian original base, proper `f`, coherent and relatively flat coefficients;
+the new base has no flatness, Noetherianity or quasi-compactness condition.
+The comparison also satisfies the original arbitrary-open composition formula.
+For flat base change, its affine normalization and global uniqueness identify
+it with the original `higherDirectImageFlatBaseChangeMap` component, without
+coherence, Noetherianity or target quasi-compactness hypotheses.
 
 The sole closed right adjoint i! exists on all module sheaves. Its affine
 coinduction comparison and original unit/counit are proved, as are ordinary
