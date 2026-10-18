@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Coordinate
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.FreeDegree
 
 /-!
 # The coordinates generate the first twist of every module
@@ -14,10 +15,11 @@ For every module `F` on actual polynomial projective space with finitely many
 coordinates, the coordinate multiplications `Xᵢ : O(0) ⊗ F → O(1 + 0) ⊗ F` jointly give
 an epimorphism `∐ᵢ O(0) ⊗ F → O(1 + 0) ⊗ F`. Its cokernel is killed by every coordinate,
 hence zero. This is the last map of the Koszul complex of the coordinates tensored with
-`F`, the first step of a Koszul route to the regularity statements of Nitsure,
-arXiv:math/0504590v1, Lemma 2.1, and Stacks, Tag 08A6. Both sources prove them by
-hyperplane sections over an infinite field; the Koszul route planned here is a different
-proof of the same statements.
+`F`. It gives the syzygy sequence of the proof of Nitsure, arXiv:math/0504590v1,
+Lemma 2.1 (b) (`Regularity/Monotone`); the Koszul complex itself (`Regularity/Koszul`) is
+behind Lemma 2.1 (a) and (c). Twist multiplication with free target degrees,
+`twistingTensorMultiplyTo`, lives in `ProjectiveSpace/Tensor/Monoidal/FreeDegree`, which this
+leaf re-exports.
 -/
 
 @[expose] public section
@@ -57,52 +59,5 @@ instance epi_coordinateMultiplicationSum (F : (ProjectiveSpace R ι).Modules) :
       rw [Sigma.ι_comp_desc]
     rw [hι, Category.assoc, cokernel.condition, comp_zero]
   exact hk (-1)
-
-omit [Finite ι] in
-variable {ι} in
-/-- Multiplication by a global section `s` of `O(a)` from the twist `d` to a twist `d'` with
-`a + d = d'`. The free target degree avoids transports between Koszul terms. -/
-def twistingTensorMultiplyTo (a d d' : ℤ) (h : a + d = d')
-    (s : (twistingSheaf R ι a).val.obj (Opposite.op ⊤)) :
-    moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι d) ⟶
-      moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι d') :=
-  moduleTensorCoefficientMap (ProjectiveSpace R ι)
-    (twistingMultiplyGlobal R ι a d s ≫ eqToHom (congrArg (twistingSheaf R ι) h))
-
-omit [Finite ι] in
-variable {ι} in
-/-- With the canonical target degree it is `twistingTensorMultiply`. -/
-theorem twistingTensorMultiplyTo_rfl (a d : ℤ)
-    (s : (twistingSheaf R ι a).val.obj (Opposite.op ⊤)) :
-    twistingTensorMultiplyTo R a d (a + d) rfl s = twistingTensorMultiply R ι a d s := by
-  simp only [twistingTensorMultiplyTo, eqToHom_refl, Category.comp_id]
-  rfl
-
-omit [Finite ι] in
-variable {ι} in
--- Section types of twists agree only after unfolding the module presheaf.
-set_option backward.isDefEq.respectTransparency false in
-/-- Multiplications by two global twist sections commute, for arbitrary intermediate twists. -/
-theorem twistingTensorMultiplyTo_comm (a b d d₁ d₂ e₁ : ℤ) (h₁ : a + d = d₁)
-    (h₂ : b + d₁ = d₂) (h₃ : b + d = e₁) (h₄ : a + e₁ = d₂)
-    (s : (twistingSheaf R ι a).val.obj (Opposite.op ⊤))
-    (t : (twistingSheaf R ι b).val.obj (Opposite.op ⊤)) :
-    twistingTensorMultiplyTo R a d d₁ h₁ s ≫ twistingTensorMultiplyTo R b d₁ d₂ h₂ t =
-      twistingTensorMultiplyTo R b d e₁ h₃ t ≫ twistingTensorMultiplyTo R a e₁ d₂ h₄ s := by
-  subst h₁ h₂ h₃
-  simp only [twistingTensorMultiplyTo, eqToHom_refl, Category.comp_id,
-    ← moduleTensorCoefficientMap_comp]
-  congr 1
-  ext V x
-  apply Subtype.ext
-  funext i
-  change ((twistingMultiplyGlobal R ι b (a + d) t).val.app (Opposite.op V)
-      ((twistingMultiplyGlobal R ι a d s).val.app (Opposite.op V) x)).val i =
-    ((eqToHom (congrArg (twistingSheaf R ι) h₄)).val.app (Opposite.op V)
-      ((twistingMultiplyGlobal R ι a (b + d) s).val.app (Opposite.op V)
-        ((twistingMultiplyGlobal R ι b d t).val.app (Opposite.op V) x))).val i
-  rw [twistingSection_eqToHom_val R ι h₄]
-  simp only [twistingMultiplyGlobal_app, twistingSectionMul_apply]
-  ring
 
 end AlgebraicGeometry.ProjectiveSpace

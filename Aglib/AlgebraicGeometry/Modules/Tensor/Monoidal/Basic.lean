@@ -8,6 +8,7 @@ module
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Associator
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
+public import Mathlib.CategoryTheory.Monoidal.Preadditive
 public import Mathlib.CategoryTheory.Monoidal.Transport
 
 /-!
@@ -27,7 +28,8 @@ functor `toLocalizedMonoidal X : X.Modules ⥤ LocalizedMonoidal L W ε`, where 
 sheafification and `W = presheafLocalIso X`; Mathlib's localized monoidal structure serves only
 as the coherence source. Each data field agrees definitionally with its existing name
 (`tensorObj_eq_tensorSheaf` and the following lemmas), and
-`moduleTensorLeftFunctor X M = tensorLeft M`.
+`moduleTensorLeftFunctor X M = tensorLeft M`. The structure is preadditive
+(`monoidalPreadditive`), from the additivity of the left and right tensor functors.
 -/
 
 @[expose] public section
@@ -222,6 +224,14 @@ theorem moduleTensorRightFunctor_eq_tensorRight (M : X.Modules) :
 /-- The components of the existing coefficient map are right whiskerings. -/
 theorem moduleTensorCoefficientMap_app_eq_whiskerRight {M N : X.Modules} (f : M ⟶ N)
     (P : X.Modules) : (moduleTensorCoefficientMap X f).app P = f ▷ P := rfl
+
+/-- The monoidal structure of scheme modules is preadditive: whiskering is additive, since the
+left and right tensor functors are additive. -/
+instance monoidalPreadditive : MonoidalPreadditive X.Modules where
+  whiskerLeft_zero := (moduleTensorLeftFunctor X _).map_zero _ _
+  zero_whiskerRight := (moduleTensorRightFunctor X _).map_zero _ _
+  whiskerLeft_add _ _ := (moduleTensorLeftFunctor X _).map_add
+  add_whiskerRight _ _ := (moduleTensorRightFunctor X _).map_add
 
 /-- The associator on nested pure section tensors. -/
 theorem associator_hom_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)

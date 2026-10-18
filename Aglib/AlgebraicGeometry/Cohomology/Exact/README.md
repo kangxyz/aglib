@@ -8,6 +8,14 @@ exactness statements retain `moduleCohomologyMapOfHom`; naturality is with
 respect to an actual morphism of short exact module-sheaf sequences.
 `moduleH0MapOfHom_injective` applies to every coefficient monomorphism.
 These results require no quasicoherence, flatness or finiteness.
+The same leaf derives the vanishing consequences used by Castelnuovo–Mumford
+regularity: vanishing of `H^q` is invariant under isomorphism of coefficients
+(`moduleCohomology_subsingleton_of_iso`), holds for a finite coproduct after an
+additive functor when it holds summandwise (`moduleCohomology_subsingleton_coproduct`),
+and passes to the quotient and the subobject of a short exact sequence
+(`moduleCohomology_subsingleton_X₃`, `moduleCohomology_subsingleton_X₁`), also after
+tensoring the kernel sequence of an epimorphism with a finite locally free module
+(`moduleCohomology_subsingleton_tensor_target`, `_tensor_kernel`).
 
 [LongExact](LongExact.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact`, retains `Scheme.Cohomology.moduleCohomologyConnecting` and the existing field-linear APIs as specializations of [Modules](Modules.lean). Its underlying map is literally native `Sheaf.H.δ`. `moduleCohomologyMap_exact` and the connecting exactness results concern the original coefficient maps and actual short exact module-sheaf sequence. `moduleH0Map_injective` handles an arbitrary coefficient monomorphism; `moduleH0Map_injective_of_shortExact` is the distinct short-exact specialization. No finite-dimensional premise belongs to generic exactness.
 

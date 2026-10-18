@@ -141,7 +141,7 @@ commitments.
 | F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras) and `Grassmannian/FunctorOfPoints` (the extension to all test schemes); open: locally free `E`, the locally free quotient description, `P(E)`, Plücker | L |
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial: field case (`Cohomology/Projective/HilbertPolynomial`); local constancy in flat families open | M |
-| F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | partial: m-regularity, coordinate generation and commuting coordinate multiplications (`Cohomology/Projective/Regularity`) | L |
+| F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | partial: Nitsure Lemma 2.1 proved over any ring (`Cohomology/Projective/Regularity`): (a) in coordinate-multiplication form, (b), and (c) as vanishing plus finite global generation; open: Mumford's bound (Thm 2.3) and the literal tensor form of (a) | L |
 | F12 | Generic freeness (Nitsure, Lemma 4.1, p. 18; Stacks 051R), generic flatness (Thm 4.2, p. 19) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | partial: generic freeness (`RingTheory/GenericFreeness`) and generic flatness (`Modules/Flat/Generic`) proved; Fitting ideals with base change, stalkwise freeness criteria and fibre-rank strata (`RingTheory/FittingIdeal`) proved; flattening stratification open (needs the scheme-level Fitting strata, Nitsure Lemmas 3.1–3.2, base change of `relativeFlat`, F10) | L |
 | F13 | Hilbert schemes on locally Noetherian test schemes: `Hilb^Φ` of closed subschemes of `P^n_A` represented by a locally closed subscheme of a Grassmannian (Nitsure, proof of Thm 5.2/5.3 up to the flattening step, pp. 24–26), and its open subfunctors for locally closed `X ⊂ P^N_A` (Thm 6.1 with trivial bundles, p. 28). Projectivity of `Hilb^Φ` uses the DVR valuative criterion (pp. 26–27), which Mathlib lists as future work (`AlgebraicGeometry/ValuativeCriterion.lean`, "Future projects"); the route does not need it | absent | XL |
 | F14 | Relative effective Cartier divisors, fibrewise criterion and `Div` open in `Hilb` (Kleiman, Lemma 3.4, Thm 3.7, pp. 22–24) | partial | M |
@@ -509,10 +509,13 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     open: it needs the pullback formula for twisting sheaves, transport of
     cohomology dimensions along `ProjectiveSpace.baseChangeIso`, and relative
     flatness of twists.
-  - F11 started: the m-regularity predicate (Nitsure p. 9), the coordinate
-    epimorphism `∐ᵢ O(0) ⊗ F → O(1) ⊗ F` and commuting coordinate
-    multiplications. Nitsure Lemma 2.1 (a)–(c) and Thm 2.3 are open.
-  - The flattening stratification needs Fitting ideals, a new foundation.
+  - F11, Nitsure Lemma 2.1 done over any commutative ring: (b) by the syzygy of the
+    coordinate epimorphism, (a) and (c) by exactness of the Koszul complex of the
+    coordinates (`Regularity/{Monotone,Koszul,KoszulExact,Surjectivity,GlobalGeneration}`).
+    An independent statement review found it corresponding; its repairs are applied.
+    Open: Mumford's bound (Thm 2.3) and the literal `H⁰(O(1)) ⊗ H⁰` form of (a).
+  - The flattening stratification now needs the scheme-level Fitting strata; the
+    algebraic Fitting ideals are done (see the F12 entry above).
 - **Tensor layer (supports M4).** `Modules/Tensor/Monoidal` gives a symmetric
   monoidal structure on `X.Modules` whose data are Aglib's tensor maps, with a general
   associator; its input is that local isomorphisms of module presheaves are stable

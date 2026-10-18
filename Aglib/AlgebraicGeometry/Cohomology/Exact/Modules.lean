@@ -5,8 +5,11 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Cohomology.Modules.Functor
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Scalars
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.Basic
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact
+public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.ExactSequences
 
 /-!
@@ -17,6 +20,14 @@ connecting map. Naturality under multiplication by global functions makes
 this same map linear over any specified structural ring. All three adjacent
 exactness statements retain the existing coefficient maps on actual `Sheaf.H`.
 No quasicoherence, flatness or finiteness premise is required.
+
+The vanishing consequences come last: vanishing of `H^q` is invariant under isomorphism of
+coefficients and holds for finite coproducts summandwise
+(`moduleCohomology_subsingleton_of_iso`, `moduleCohomology_subsingleton_coproduct`); in a short
+exact sequence it passes to the quotient and to the subobject (`moduleCohomology_subsingleton_X₃`,
+`moduleCohomology_subsingleton_X₁`), also after tensoring the kernel sequence of an epimorphism
+with a finite locally free module (`moduleCohomology_subsingleton_tensor_target`,
+`moduleCohomology_subsingleton_tensor_kernel`).
 -/
 
 @[expose] public section
@@ -150,5 +161,95 @@ theorem moduleH0MapOfHom_injective {M N : X.Modules} (f : M ⟶ N) [Mono f] :
   apply (cancel_mono (F.map f)).mp
   change Sheaf.H.map (F.map f) 0 x = Sheaf.H.map (F.map f) 0 y at h
   simpa only [Sheaf.H.addEquiv₀_map] using congrArg (Ext.addEquiv₀.{u + 1}) h
+
+/-! ### Vanishing along short exact sequences -/
+
+section Vanishing
+
+variable {X}
+
+open AlgebraicGeometry.Scheme.Modules
+
+/-- Vanishing of original cohomology is invariant under isomorphism of coefficients. -/
+theorem moduleCohomology_subsingleton_of_iso {M N : X.Modules} (e : M ≅ N) (q : ℕ)
+    (h : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X M) q)) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X N) q) := by
+  let E := ((moduleCohomologyFunctorOfHom X (RingHom.id Γ(X, ⊤)) q).mapIso e).toLinearEquiv
+  exact ⟨fun x y => E.symm.injective (@Subsingleton.elim _ h _ _)⟩
+
+/-- Original cohomology of a finite coproduct, after an additive functor, vanishes when it
+vanishes for every summand. -/
+theorem moduleCohomology_subsingleton_coproduct (T : X.Modules ⥤ X.Modules) [T.Additive]
+    {J : Type u} [Finite J] (f : J → X.Modules) (q : ℕ)
+    (h : ∀ j, Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X (T.obj (f j))) q)) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X (T.obj (∐ f))) q) := by
+  let := Fintype.ofFinite J
+  let H := T ⋙ moduleCohomologyFunctorOfHom X (RingHom.id Γ(X, ⊤)) q
+  have hb : IsZero (H.obj (∐ f)) :=
+    isZero_obj_of_isBilimit H (biconeIsBilimitOfColimitCoconeOfIsColimit
+      (colimit.isColimit (Discrete.functor f)))
+      (fun j => ModuleCat.isZero_iff_subsingleton.mpr (h j))
+  exact ModuleCat.isZero_iff_subsingleton.mp hb
+
+/-- In a short exact sequence, `H^q` of the quotient vanishes when `H^q` of the middle term
+and `H^{q+1}` of the subobject vanish. -/
+theorem moduleCohomology_subsingleton_X₃ (S : ShortComplex X.Modules) (hS : S.ShortExact)
+    (q : ℕ) (h₂ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₂) q))
+    (h₁ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₁) (q + 1))) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₃) q) := by
+  let α := RingHom.id Γ(X, ⊤)
+  let := moduleCohomologyModuleOfHom X α S.X₂ q
+  let := moduleCohomologyModuleOfHom X α S.X₃ q
+  let := moduleCohomologyModuleOfHom X α S.X₁ (q + 1)
+  have hex := moduleCohomologyConnectingOfHom_exact_left X α S hS q
+  have hsurj : Function.Surjective (moduleCohomologyMapOfHom X α S.g q) :=
+    (LinearMap.surjective_iff_eq_zero_of_exact hex).mpr (Subsingleton.elim _ _)
+  exact hsurj.subsingleton
+
+/-- In a short exact sequence, `H^{q+1}` of the subobject vanishes when `H^q` of the quotient
+and `H^{q+1}` of the middle term vanish. -/
+theorem moduleCohomology_subsingleton_X₁ (S : ShortComplex X.Modules) (hS : S.ShortExact)
+    (q : ℕ) (h₃ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₃) q))
+    (h₂ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₂) (q + 1))) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X S.X₁) (q + 1)) := by
+  let α := RingHom.id Γ(X, ⊤)
+  let := moduleCohomologyModuleOfHom X α S.X₃ q
+  let := moduleCohomologyModuleOfHom X α S.X₁ (q + 1)
+  let := moduleCohomologyModuleOfHom X α S.X₂ (q + 1)
+  have hex := moduleCohomologyConnectingOfHom_exact_right X α S hS q
+  have hz (z : Sheaf.H.{u + 1} (moduleAddSheaf X S.X₁) (q + 1)) : z = 0 := by
+    obtain ⟨w, hw⟩ := (hex z).mp (Subsingleton.elim _ _)
+    rw [← hw, Subsingleton.elim w 0, map_zero]
+  exact ⟨fun x y => (hz x).trans (hz y).symm⟩
+
+/-- Cohomology vanishing along the tensor twist of a kernel sequence of an epimorphism:
+`H^q(L ⊗ B)` vanishes when `H^q(L ⊗ A)` and `H^{q+1}(L ⊗ ker π)` do. -/
+theorem moduleCohomology_subsingleton_tensor_target (L : X.Modules) [IsFiniteLocallyFree X L]
+    {A B : X.Modules} (π : A ⟶ B) [Epi π] (q : ℕ)
+    (h₂ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X
+      ((moduleTensorLeftFunctor X L).obj A)) q))
+    (h₁ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X
+      ((moduleTensorLeftFunctor X L).obj (kernel π))) (q + 1))) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X ((moduleTensorLeftFunctor X L).obj B)) q) :=
+  moduleCohomology_subsingleton_X₃ _ (tensor_shortExact_finiteLocallyFree L
+    (ShortComplex.kernelSequence π)
+    { exact := ShortComplex.kernelSequence_exact π, epi_g := inferInstanceAs (Epi π) }) q h₂ h₁
+
+/-- Cohomology vanishing along the tensor twist of a kernel sequence of an epimorphism:
+`H^{q+1}(L ⊗ ker π)` vanishes when `H^q(L ⊗ B)` and `H^{q+1}(L ⊗ A)` do. -/
+theorem moduleCohomology_subsingleton_tensor_kernel (L : X.Modules) [IsFiniteLocallyFree X L]
+    {A B : X.Modules} (π : A ⟶ B) [Epi π] (q : ℕ)
+    (h₃ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X
+      ((moduleTensorLeftFunctor X L).obj B)) q))
+    (h₂ : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X
+      ((moduleTensorLeftFunctor X L).obj A)) (q + 1))) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf X
+      ((moduleTensorLeftFunctor X L).obj (kernel π))) (q + 1)) :=
+  moduleCohomology_subsingleton_X₁ _ (tensor_shortExact_finiteLocallyFree L
+    (ShortComplex.kernelSequence π)
+    { exact := ShortComplex.kernelSequence_exact π, epi_g := inferInstanceAs (Epi π) }) q h₃ h₂
+
+
+end Vanishing
 
 end AlgebraicGeometry.Scheme.Cohomology

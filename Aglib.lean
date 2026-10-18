@@ -534,6 +534,11 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Derived
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Vanishing
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.CoordinateGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.GlobalGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Koszul
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.KoszulExact
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Monotone
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Surjectivity
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.RightExact
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Semicontinuity
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing
@@ -734,6 +739,7 @@ public import Aglib.AlgebraicGeometry.Modules.Flat.Relative
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Locality
 public import Aglib.AlgebraicGeometry.Modules.Flat.Resolution
+public import Aglib.AlgebraicGeometry.Modules.Generators.GlobalSections
 public import Aglib.AlgebraicGeometry.Modules.Generators.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeFunctor
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
@@ -1004,6 +1010,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Equivalence.Section
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Generators
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Isomorphism
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Braided
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.FreeDegree
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Functor
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiplication
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Multiply
@@ -1087,6 +1094,7 @@ public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.NatTrans.Unit
+public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality

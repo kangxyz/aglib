@@ -54,6 +54,7 @@ public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.NatTrans.Unit
+public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality

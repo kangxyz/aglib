@@ -17,8 +17,9 @@ native tensor `O(m - q) ⊗ F` and the cohomology is the unchanged `Sheaf.H`.
 
 Every coherent module over a Noetherian base is `m`-regular for some `m`: Serre vanishing
 handles the degrees `1 ≤ q ≤ n`, and the coordinate-cover bound handles `q > n`. The
-consequences of Nitsure, Lemma 2.1 (`(m + 1)`-regularity, global generation of `O(m) ⊗ F`
-and surjectivity of the multiplication maps) are not proved here.
+consequences of Nitsure, Lemma 2.1, are proved in the leaves `Regularity/Monotone` ((b), and
+the vanishing half of (c)), `Regularity/Surjectivity` ((a)) and `Regularity/GlobalGeneration`
+(the global-generation half of (c)).
 -/
 
 @[expose] public section
