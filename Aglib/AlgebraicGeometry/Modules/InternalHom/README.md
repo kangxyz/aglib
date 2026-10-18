@@ -35,6 +35,12 @@ and uniqueness equations. The index universe is independent of the scheme
 universe. Empty covers on empty schemes are included, with no inhabitedness,
 quasicoherence, finiteness, or field premise.
 
+[Refinement](Refinement.lean) retains the original native comparison between a
+refinement square of module arrows and restriction of its Hom-sheaf section.
+It also recovers native overlap compatibility from matching Hom sections.
+These general laws are shared by canonical-chart descent and nonflat
+higher-direct-image base change; they require no quasicoherence hypothesis.
+
 ## Module presheaf sources
 
 [PresheafSource](PresheafSource.lean) constructs

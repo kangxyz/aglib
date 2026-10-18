@@ -34,3 +34,27 @@ are retained. It is invertible for qcqs `f`, flat `j` and arbitrary QC
 coefficients, over arbitrary bases and in every natural degree. The
 [derived guide](Derived/README.md) records the complete D+ QC-homology
 endpoint and its affine-open descent.
+
+[HigherDirectImage/Nonflat](HigherDirectImage/Nonflat.lean) constructs
+`higherDirectImageBaseChangeMap` for qcqs `f`, quasicoherent `M`, and arbitrary
+Cartesian base change. The actual affine cohomology mates agree on common
+refinements; the ordinary module-Hom sheaf glues them. Compatibility is proved
+internally. The original chart formula uniquely determines the map, and
+coefficient naturality is retained.
+
+[FlatComparison](HigherDirectImage/FlatComparison.lean) proves equality with the
+original `higherDirectImageFlatBaseChangeMap` component for flat base change,
+under the same qcqs and quasicoherence hypotheses.
+[OpenRestriction](HigherDirectImage/Nonflat/OpenRestriction.lean) proves the
+composition identity for an arbitrary base map followed by an open immersion,
+through the original higher-image open and pullback-composition isomorphisms.
+
+[AffineNormalization](HigherDirectImage/Nonflat/AffineNormalization.lean)
+identifies its original affine map and unit pure-tensor formula through native
+source and target chart isomorphisms.
+[Isomorphism](HigherDirectImage/Nonflat/Isomorphism.lean) transfers the original
+scalar isomorphism and residue-section epimorphism criteria. None of these
+construction and normalization statements requires flatness or Noetherianity.
+The resulting [proper base-change theorems](../DirectImage/Proper/README.md)
+retain coherent, relatively flat coefficients over a locally Noetherian base
+and allow arbitrary new base schemes.

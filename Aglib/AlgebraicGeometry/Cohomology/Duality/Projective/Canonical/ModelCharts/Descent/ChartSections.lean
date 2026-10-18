@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Ambient
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Base
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.SameData
-public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.Sections
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.Refinement
 
 /-!
 # The original normalized arrows as ordinary Hom-sheaf sections

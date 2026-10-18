@@ -40,6 +40,7 @@ import AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity.Mumford.Arbi
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity.Mumford.InfiniteField
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.VanishingBaseChange
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.VanishingProjective
+import AglibTest.AlgebraicGeometry.Cohomology.Proper.BaseChange
 import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.Fppf

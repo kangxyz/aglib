@@ -34,3 +34,23 @@ followed by the actual quasicoherent counit, supplies finite local bases of
 the unchanged sheaf. The general-target conclusion descends along the
 original affine open cover, including an empty target. This theorem does not
 construct the separate nonflat higher-direct-image base-change sheaf map.
+
+[BaseChange](BaseChange.lean) proves three general-base proper base-change
+theorems for that actual [nonflat comparison](../../BaseChange/HigherDirectImage/Nonflat.lean).
+The common hypotheses are a locally Noetherian target, proper `f`, coherent
+coefficient `M` (`affineLocallyFiniteType X M`), and `relativeFlat f M`.
+
+- On a reduced target, locally constant intrinsic fibre-cohomology dimension
+  implies invertibility after every Cartesian base change.
+- Epimorphy of the actual global-section residue comparison at a point gives
+  a genuine open neighbourhood on which every base change has invertible
+  comparison. This does not require a reduced target.
+- Epimorphy of those actual residue comparisons at every point implies
+  invertibility after every Cartesian base change, also for nonreduced targets.
+
+The new base scheme is arbitrary: no flatness, Noetherianity, quasi-compactness
+or nonemptiness condition is added. The residue comparison is
+`higherDirectImageResidueBaseChangeMap`; its affine criterion retains the
+original scalar map and the actual residue-field isomorphism. The global
+comparison is glued from internally proved chart compatibility, using the
+ordinary module-Hom sheaf.
