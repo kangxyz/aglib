@@ -9,7 +9,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.No
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.AffineSheaf
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Spec
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PullbackSections
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Sections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Isomorphisms
 
 /-!
@@ -47,14 +47,6 @@ variable {R S : CommRingCat.{u}} {X Y : Scheme.{u}}
   (w : p ≫ f = b ≫ Spec.map σ)
   {M : X.Modules} {N : Y.Modules} [M.IsQuasicoherent] [N.IsQuasicoherent]
   (ψ : M ⟶ (pushforward p).obj N) (n : ℕ)
-
-/-- The installed affine pullback section comparison carries a unit pure tensor to the
-actual geometric pullback unit on global sections. -/
-theorem affinePullbackGlobalSectionsIso_one_tmul
-    (E : (Spec R).Modules) [E.IsQuasicoherent] (x : moduleSpecΓFunctor.obj E) :
-    (affinePullbackGlobalSectionsIso σ E).hom ((1 : S) ⊗ₜ[R,σ.hom] x) =
-      (((pullbackPushforwardAdjunction (Spec.map σ)).unit.app E).app ⊤) x := by
-  exact congrArg (fun t => t x) (affinePullbackGlobalSectionsIso_unit σ E)
 
 /-- The native small tensor mate of the original geometric cohomology arrow. -/
 def higherDirectImageAffineSectionsTensorMap :
