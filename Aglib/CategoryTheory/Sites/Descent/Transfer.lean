@@ -403,6 +403,67 @@ lemma isEquivalence_toDescentData [∀ X, (η.app X).IsEquivalence]
     Functor.isEquivalence_of_iso (η.toDescentDataIso f)
   exact Functor.isEquivalence_of_comp_left (η.app S) (F₂.toDescentData f)
 
+-- As for `CompTrans.essSurj_descentData`: the objects of `F.obj _` (a `Cat.of`) must be seen as
+-- objects of the underlying category, and `dsimp` must use the `simps` lemmas of the descent-data
+-- constructions.
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- **Lifting descent data along a transformation, on a class of objects.** Let `P` be a class of
+objects stable under the functors `F₁.map g`, such that `η.app Y` is bijective on morphisms with
+target in `P`. A descent datum `D₂` for `F₂` whose objects are isomorphic to `η.app (X i)` of
+objects `M i` in `P` is the image under `η.descentData f` of a descent datum for `F₁`. -/
+theorem exists_descentData_iso_of_bijective
+    (P : ∀ ⦃Y : C⦄, F₁.obj (.mk (op Y)) → Prop)
+    (hP : ∀ ⦃Y Y' : C⦄ (g : Y' ⟶ Y) (M : F₁.obj (.mk (op Y))), P M →
+      P ((F₁.map g.op.toLoc).toFunctor.obj M))
+    (hη : ∀ ⦃Y : C⦄ (N N' : F₁.obj (.mk (op Y))), P N' →
+      Function.Bijective (fun φ : N ⟶ N' ↦ (η.app Y).map φ))
+    (D₂ : F₂.DescentData f) (M : ∀ i, F₁.obj (.mk (op (X i)))) (hM : ∀ i, P (M i))
+    (e : ∀ i, (η.app (X i)).obj (M i) ≅ D₂.obj i) :
+    ∃ D₁ : F₁.DescentData f, Nonempty ((η.descentData f).obj D₁ ≅ D₂) := by
+  let D₂' := D₂.transport e
+  have hb : ∀ ⦃Y : C⦄ ⦃i₁ i₂ : ι⦄ (f₁ : Y ⟶ X i₁) (f₂ : Y ⟶ X i₂),
+      Function.Bijective (fun φ : (F₁.map f₁.op.toLoc).toFunctor.obj (M i₁) ⟶
+        (F₁.map f₂.op.toLoc).toFunctor.obj (M i₂) ↦ η.conj φ) := by
+    intro Y i₁ i₂ f₁ f₂
+    have h := hη ((F₁.map f₁.op.toLoc).toFunctor.obj (M i₁))
+      ((F₁.map f₂.op.toLoc).toFunctor.obj (M i₂)) (hP f₂ _ (hM i₂))
+    refine ⟨fun φ φ' hφ ↦ h.1 ?_, fun k ↦ ?_⟩
+    · have hφ' : η.conj φ = η.conj φ' := hφ
+      simp only [conj] at hφ'
+      exact (cancel_mono _).1 ((cancel_epi _).1 hφ')
+    · obtain ⟨φ, hφ⟩ := h.2 ((η.nat f₁).hom.app (M i₁) ≫ k ≫ (η.nat f₂).inv.app (M i₂))
+      refine ⟨φ, ?_⟩
+      change η.conj φ = k
+      simp only [conj]
+      change (η.nat f₁).inv.app (M i₁) ≫ (fun φ ↦ (η.app Y).map φ) φ ≫
+        (η.nat f₂).hom.app (M i₂) = k
+      rw [hφ]
+      simp
+  have hc : ∀ ⦃Y : C⦄ ⦃i₁ i₂ : ι⦄ (f₁ : Y ⟶ X i₁) (f₂ : Y ⟶ X i₂) k,
+      η.conj (Function.surjInv (hb f₁ f₂).2 k) = k :=
+    fun _ _ _ f₁ f₂ k ↦ Function.surjInv_eq (hb f₁ f₂).2 k
+  have hi : ∀ ⦃Y : C⦄ ⦃i₁ i₂ : ι⦄ (f₁ : Y ⟶ X i₁) (f₂ : Y ⟶ X i₂) φ φ',
+      η.conj φ = η.conj φ' → φ = φ' :=
+    fun _ _ _ f₁ f₂ φ φ' h ↦ (hb f₁ f₂).1 h
+  let D₁ : F₁.DescentData f :=
+    { obj := M
+      hom _ q _ _ f₁ f₂ hf₁ hf₂ := Function.surjInv (hb f₁ f₂).2 (D₂'.hom q f₁ f₂ hf₁ hf₂)
+      pullHom_hom _ _ g q q' hq _ _ f₁ f₂ hf₁ hf₂ gf₁ gf₂ hgf₁ hgf₂ := by
+        apply hi gf₁ gf₂
+        rw [← η.pullHom_conj, hc, hc, D₂'.pullHom_hom g q q' hq f₁ f₂ hf₁ hf₂ gf₁ gf₂ hgf₁ hgf₂]
+      hom_self _ q _ g hg := by
+        apply hi g g
+        rw [hc, conj_id, D₂'.hom_self q g hg]
+        rfl
+      hom_comp _ q _ _ _ f₁ f₂ f₃ hf₁ hf₂ hf₃ := by
+        apply hi f₁ f₃
+        rw [← conj_comp, hc, hc, hc, D₂'.hom_comp q f₁ f₂ f₃ hf₁ hf₂ hf₃] }
+  refine ⟨D₁, ⟨DescentData.isoMk e (fun Y q i₁ i₂ f₁ f₂ hf₁ hf₂ ↦ ?_)⟩⟩
+  have hk : η.conj (D₁.hom q f₁ f₂ hf₁ hf₂) = D₂'.hom q f₁ f₂ hf₁ hf₂ := hc f₁ f₂ _
+  simp only [descentData_obj, descentDataObj_hom, hk, D₂', DescentData.transport_hom,
+    Category.assoc, ← Functor.map_comp, Iso.inv_hom_id, Functor.map_id, Category.comp_id]
+
 end descentData
 
 /-- **Transfer of effective descent.** If the functors `app X` of `η : CompTrans F₁ F₂` are

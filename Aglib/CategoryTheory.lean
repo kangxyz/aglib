@@ -24,6 +24,7 @@ public import Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts
 public import Aglib.CategoryTheory.Abelian.Subcategory.Exact
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
 public import Aglib.CategoryTheory.Adjunction.Mates
+public import Aglib.CategoryTheory.Adjunction.Unit
 public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.BaseChange
 public import Aglib.CategoryTheory.ExactCategory.Basic
@@ -62,7 +63,9 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.Sites.Descent.Bind
 public import Aglib.CategoryTheory.Sites.Descent.Composition
+public import Aglib.CategoryTheory.Sites.Descent.OverForget
 public import Aglib.CategoryTheory.Sites.Descent.OverSigma
+public import Aglib.CategoryTheory.Sites.Descent.Rigidification
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent

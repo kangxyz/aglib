@@ -18,7 +18,7 @@ asserts that `toFppfPicardSheaf p : P_{X/S} ⟶ Pic_{X/S,(fppf)}` is injective o
 for `S` locally Noetherian and `p` proper, flat, with geometrically integral fibres
 (`isIso_c_pullback_snd_of_isProper_of_flat_of_geometricallyIntegral`). This file reduces
 that statement to a property of line bundles and proves the reduction is an equivalence; the
-property itself is not proved here.
+property itself is proved in [LocallyTrivial](LocallyTrivial.lean).
 
 `FppfLocallyTrivialMemBaseImage p` says: every class `a ∈ Pic(X ×_S T)` that vanishes on an
 fppf covering sieve of `T` in `Over S` lies in the image of `Pic(T)`. This is the content of
@@ -41,9 +41,12 @@ structure map `q.c` of `q : Y ⟶ T` is an isomorphism, so is the adjunction uni
 `O_T ⟶ q_* q^* O_T`; under the hypotheses of target 2 this holds for every base change
 (`isIso_unit_app_unit_pullback_snd_of_isProper_of_flat_of_geometricallyIntegral`).
 
-Not proved here: `FppfLocallyTrivialMemBaseImage p` under universal O-connectedness. Kleiman's
-argument shows that `f_{T*} L` is invertible and `f_T^* f_{T*} L ⟶ L` is an isomorphism after
-fppf base change, using flat base change of `f_{T*}` and descent along faithfully flat maps.
+`FppfLocallyTrivialMemBaseImage p` itself is proved in [LocallyTrivial](LocallyTrivial.lean)
+for `S` locally Noetherian and `p` proper, flat, with geometrically integral fibres
+(`fppfLocallyTrivialMemBaseImage_of_isProper_of_flat_of_geometricallyIntegral`), along Stacks 0B9M
+and without flat base change. Kleiman's own argument shows that `f_{T*} L` is invertible and
+`f_T^* f_{T*} L ⟶ L` is an isomorphism after fppf base change, using flat base change of
+`f_{T*}` and descent along faithfully flat maps.
 -/
 
 @[expose] public section

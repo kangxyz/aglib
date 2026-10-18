@@ -377,6 +377,32 @@ presentations (`natCompAlong_of_transport`), whose hypotheses are equations and
 `HEq`s between the variables; at `Spec` each is `rfl` or `HEq.rfl`, the kernel
 needs about 2 seconds, and the module builds in 22 seconds at 2.6 GB.
 
+**Composites in two presentations.** In the gluing of rigidified pairs in
+`Picard/Comparison/`, pulled-back line bundles have two presentations: Mathlib's
+`Scheme.Modules.pullback` and the pullback pseudofunctor restricted along
+`familyScheme p`. Single objects or morphisms compared across them checked in
+milliseconds, but comparing composites (`≫`) whose implicit arguments differed in
+presentation cost 7.4 to 15.3 seconds of kernel time per declaration in
+development versions of `GluingDescent.lean`; a wrapper definition applied to one
+side only gave no gain, and the diagnostics of one such check counted 491,372
+unfoldings of `DFunLike.coe` and 435,930 of `ContinuousMap.toFun`. Those
+development versions were not retained, so these figures rest on their build logs.
+Stating each compatibility on both sides through the regular definition
+`CategoryTheory.CompEq f g h := f ≫ g = h` (instances `CompTrans.RigCompat` and
+`RigidifiedPair.PairCompat`), and converting presentations once at single
+morphisms, brought every kernel check of the module below the 100 ms profiler
+threshold; it builds in about 7.5 seconds. In `Comparison/Gluing.lean` the same
+restatement cut `originPullback_nat_hom_app` from 21.9 to 12.2 seconds, but only
+once the arguments inside `mapComp'` were syntactically the same on both sides
+(22.4 seconds otherwise). Two lemmas whose cost appears to lie in their own
+`rw`/`simp` proofs barely moved (7.73 to 7.28 and 6.97 to 6.65 seconds). A
+candidate explanation, consistent with `lazy_delta_reduction_step` in the pinned
+kernel but not checked against a trace: the kernel compares arguments before
+unfolding only for constants with regular reducibility hints. `CategoryStruct.comp`
+and the projections beneath it (`NatTrans.app`, `Iso.hom`) are abbreviations and are
+unfolded down to the underlying data, whereas `CompEq` and `mapComp'` are regular,
+so a mismatch directly in their arguments is compared argument by argument.
+
 **Concrete degrees in a statement.** The twisting-functor authors reported that
 elaborating a composite written at concrete degrees such as `1 + 0` timed out in
 `isDefEq`, while the same composite at variable degrees and the instantiated
@@ -386,7 +412,10 @@ rather than a reproducible measurement.
 Practical rules from these cases: give each equation used inside `eqToHom`,
 `pullbackCongr` or `mapComp'` one named lemma with atomic arguments and reuse its
 proof term; state such lemmas at variable objects or degrees and instantiate last;
-state a structure field that compares badly through a named definition; and before
+state a structure field that compares badly through a named definition; compare an
+equation of composites across two presentations through one named regular definition
+stated on both sides, keeping the arguments beneath projections (such as `mapComp'`
+components) syntactically identical; and before
 restructuring, separate elaboration from kernel cost with
 `set_option debug.skipKernelTC true` in a scratch copy. A structural diff of the two
 compared terms (a scratch tactic printing both goals) located each mismatch above

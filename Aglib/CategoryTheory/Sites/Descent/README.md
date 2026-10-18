@@ -1,6 +1,6 @@
 # Generic descent: transfer, composition and sheaf conditions over `Over S`
 
-Five leaves extend Mathlib's effective-descent predicate `Pseudofunctor.IsStackFor` for
+Seven leaves extend Mathlib's effective-descent predicate `Pseudofunctor.IsStackFor` for
 pseudofunctors `LocallyDiscrete Cᵒᵖ ⥤ᵖ Cat`, for arbitrary categories, functors and morphisms.
 [Transfer](Transfer.lean) and [SiteChange](SiteChange.lean) transfer it between pseudofunctors;
 they are instantiated once, in
@@ -9,7 +9,10 @@ at `Spec : CommRingCatᵒᵖ ⥤ Scheme`. [Bind](Bind.lean) and [Composition](Co
 effective descent along composites of covering families and presieves, for prestacks, and
 monotonicity in the topology. [OverSigma](OverSigma.lean) turns sheaf conditions for presheaves on
 `Over S` into sheaf conditions for presheaves on `C`. The last three are used by the fpqc and fppf
-stacks of the same Fppf subfamily.
+stacks of the same Fppf subfamily. [OverForget](OverForget.lean) transfers stacks to
+`Over S₀` along the forgetful functor, and [Rigidification](Rigidification.lean) gives the
+pullback coherence of rigidifications along a transformation; both are used by the Picard
+comparison family ([Picard/Comparison](../../../AlgebraicGeometry/Picard/Comparison/README.md)).
 
 [Transfer](Transfer.lean): a `Pseudofunctor.CompTrans F₁ F₂` consists of functors
 `app X : F₁.obj ⟨op X⟩ ⥤ F₂.obj ⟨op X⟩`, pseudonaturality isomorphisms
@@ -26,6 +29,10 @@ strong transformation; the unit coherence is omitted because descent data do not
   `isEquivalence_toDescentData`;
 - `CompTrans.isStackFor_of_isStackFor`: if every `app X` is an equivalence, `F₂` is a stack for
   every presieve for which `F₁` is;
+- `CompTrans.exists_descentData_iso_of_bijective`: a descent datum for `F₂` whose objects are
+  images under `η.app` of objects in a pullback-stable class lifts along `η`, when `η.app Y` is
+  bijective on morphisms with target in that class (`essSurj_descentData` with weakened
+  hypotheses);
 - `DescentData.transport` (a descent datum transported along isomorphisms of its objects) and
   `LocallyDiscreteOpToCat.pullHom_map_comp_comp_map` (`pullHom` of a framed morphism); their
   intended owner is Mathlib's `Sites/Descent/DescentData.lean`.
@@ -54,6 +61,10 @@ strong transformation; the unit coherence is omitted because descent data do not
   (G.map (sq₃ i₁ i₂ i₃).chosenPullback.p₂) (G.map (sq i₁ i₂).p₂) (G.map (sq i₂ i₃).p₁))`). No
   other hypothesis on `G` or `F` is needed; in particular `C` need not have pullbacks and `G`
   need not preserve them;
+- `mapComp'_paste_app`, `CompTrans.ofNatTransNat`, `CompTrans.ofNatTrans F τ`: a natural
+  transformation `τ : G₁ ⟶ G₂` of functors `C ⥤ D` induces the transformation
+  `F.restrictAlong G₂ ⟶ F.restrictAlong G₁` with components `F.map (τ.app X)`; its `nat_comp` is
+  a pasting of Mathlib's `mapComp'` associativity lemmas;
 - `CompTransAlong G F F₁`: a `CompTrans F₁ (F.restrictAlong G)` stated with `F` and `G.map`
   directly (`CompTransAlong.toCompTrans`); `NatCompAlong G F F₁ app nat f g gf h M`, the
   proposition of its field `nat_comp` as a definition, and the constructor
@@ -78,7 +89,10 @@ cancellations of isomorphism components are done in term mode (`cancel_epi`, `ca
 
 - `LocallyDiscreteOpToCat.pullHom_comp`, `LocallyDiscreteOpToCat.pullHom_id'`: `pullHom` of a
   composite and of an identity morphism (the prime: Mathlib's `pullHom_id` is `pullHom` along an
-  identity);
+  identity); `LocallyDiscreteOpToCat.pullHom_congr_left`: `pullHom` along equal morphisms;
+- `toDescentData_comm_iff`: the compatibility of a family of morphisms between the descent data of
+  two objects is the equality of their `pullHom`s; intended owner Mathlib's
+  `Sites/Descent/DescentData.lean`;
 - `eq_of_pullHom_eq`, `exists_pullHom_eq`: morphisms between pullbacks over `W` are determined
   by, and glue from, compatible families of their `pullHom`s along a covering sieve of `W`;
 - `DescentData.restrictComp` (the restrictions along the families `g i : Y i j ⟶ X i` of a
@@ -131,3 +145,31 @@ Intended Mathlib owners of the last three leaves: `IsPrestack.of_le`, `IsStack.o
 Focused consumer:
 [AglibTest/CategoryTheory/Sites/Descent/Composition.lean](../../../../AglibTest/CategoryTheory/Sites/Descent/Composition.lean)
 (axiom guards).
+
+[OverForget](OverForget.lean): for a family `g i : U i ⟶ T.left` with `T : Over S₀`, the family
+`Over.homMkFamily g` of `Over S₀` (the morphisms `Over.homMk (g i)`), with the helpers
+`Over.homMkOf`, `Over.homMkLeft`, `Over.homMkOfComp`, `Over.homMkLift` and `Over.homMkMap` for
+morphisms of `Over S₀` with prescribed underlying morphisms.
+
+- `DescentData.hom_eq_hom_overMk`: a descent datum for `F.restrictAlong (Over.forget S₀)` along
+  `Over.homMkFamily g` depends only on the underlying morphisms;
+- `DescentData.ofOver`, the fully faithful functor `DescentData.ofOverFunctor` and
+  `DescentData.toDescentDataOfOverIso`: such data are descent data for `F` along `g`, compatibly
+  with `toDescentData`;
+- `isStackFor_restrictAlong_overForget`: if `F` is a stack for the presieve of `g`, then
+  `F.restrictAlong (Over.forget S₀)` is a stack for the presieve of `Over.homMkFamily g` (the
+  converse direction of `isStackFor_ofArrows_map_of_restrictAlong`). Consumer:
+  `Picard/Comparison/LocallyTrivial.lean`.
+
+[Rigidification](Rigidification.lean): for `η : CompTrans F₁ F₂`, objects `E Y` of `F₂` and
+morphisms `e y : y^* (E V) ⟶ E Y`:
+
+- `CompTrans.pullRig y α : η_Y (y^* M) ⟶ E Y`, the rigidification of a pulled-back object, for
+  `α : η_V M ⟶ E V`;
+- `pullRig_comp` and `rigCompat_pullHom`, under the hypothesis that the `e y` are compatible with
+  the composition isomorphisms of `F₂`: the rigidification along a composite, and the stability
+  of the compatibility `CompTrans.RigCompat` under Mathlib's `pullHom`;
+- `CompEq f g h := f ≫ g = h` (namespace `CategoryTheory`) and `CompEq.eq`: a regular definition,
+  so that two instances, possibly in different presentations of one category, are compared
+  argument by argument before unfolding. Consumers: `Picard/Comparison/{Gluing,GluingDescent}.lean`.
+

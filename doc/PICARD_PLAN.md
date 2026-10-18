@@ -137,7 +137,7 @@ commitments.
 | F4 | Target 2: universal `O_T ≅ f_{T*}O_{X_T}` from the local criterion, the constants theorem and flat base change | proved: `Cohomology/Proper/StructureSheaf` | M |
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | proved: `Algebra/Category/ModuleCat/Descent` (`isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, for Mathlib's descent data on `CommRingCatᵒᵖ`) and `RingTheory/Descent/FinitePresentation`, `Invertible` | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | proved: quasi-coherent sheaves and line bundles form fpqc and fppf stacks (`Descent/Modules/Fppf`); closed subschemes form Zariski, fpqc and fppf sheaves (`Descent/IdealSheaf/Fppf`, with the gluing `IdealSheaf/Glue`); open subschemes descend (`Descent/Opens`); composition of descent `IsStackFor.bind` (`CategoryTheory/Sites/Descent`) | L |
-| F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | absent | M |
+| F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | proved on the big fppf site of `Over S` (`Picard/Comparison`): Kleiman Thm 2.5(1), injectivity of the fppf comparison map under target 2 (Stacks 0B9M), and Thm 2.5(2) with a section, the rigidified and relative functors are fppf sheaves and the comparison maps are isomorphisms (Stacks 0B9N); generic descent lemmas in `CategoryTheory/Sites/Descent`; open: the Zariski and étale comparison maps and the restriction to locally Noetherian test schemes | M |
 | F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras) and `Grassmannian/FunctorOfPoints` (the extension to all test schemes); open: locally free `E`, the locally free quotient description, `P(E)`, Plücker | L |
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial: field case (`Cohomology/Projective/HilbertPolynomial`); local constancy in flat families open | M |
@@ -178,12 +178,14 @@ pass to Noetherian affine bases and arbitrary affine test schemes, and Zariski
 locality to all `T`. The retained `LocalFreeCohomologyBaseChange` family is not a
 premise of this route.
 
-Target 4 follows Kleiman's proof (pp. 18–20). Injectivity uses the projection
-formula (Lemma 2.7), flat base change and descent of properties only: if
-`L_{T'}` comes from `T'` after an fppf covering, then `f_*L` is invertible and
-`f^*f_*L → L` is an isomorphism, both checked after faithfully flat base change.
-Surjectivity with a section uses rigidified pairs without automorphisms (Lemmas
-2.9, 2.10) and effective descent of invertible sheaves.
+Target 4 follows Stacks 0B9M and 0B9N, which prove Kleiman's Thm 2.5
+(pp. 18–20) without the projection formula or flat base change. Injectivity:
+under target 2, global units of `X_T` come from `T` (F4), so a class on `X_T`
+that is trivial after an fppf covering of `T` descends to `T`, by full
+faithfulness of descent (Stacks 023T) and the fppf stack of line bundles (F6).
+Surjectivity with a section: rigidified pairs have no automorphisms (Lemmas 2.9,
+2.10), so a compatible family of rigidified classes is a descent datum, which
+the same stack makes effective.
 
 ### Descent
 
@@ -486,19 +488,12 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     Zariski, fpqc and fppf sheaves of closed subschemes, through the Zariski gluing of ideal
     sheaves; fppf descent of open subschemes (Stacks 03N0). Independent statement reviews
     found them corresponding; their repairs are applied.
-  - F7 first slice: rigidified pairs, Kleiman Lemmas 2.9 and 2.10, and the
-    reduction of injectivity of `toFppfPicardSheaf` (Thm 2.5(1)) to an
-    equivalent named premise.
-    - Kleiman's proof of that premise uses flat base change. Stacks 0B9M avoids
-      it, using O-connectedness on global units (F4), effective fppf descent of
-      invertible sheaves, and full faithfulness of descent (F6).
-    - The premise is not on the path of target 5 (step 6 above). The target-6
-      tangent-space step uses target-4 injectivity.
-    - With a section, Thm 2.5(2) follows by showing that the rigidified
-      functor is an fppf sheaf (Stacks 0B9N). This uses Lemma 2.10 at every
-      test scheme and F6 for line bundles on `X_T`, with full faithfulness of
-      descent along the covering of `T`. Kleiman's own proof of Part 2 uses
-      Part 1 instead.
+  - F7 done (target 4): Kleiman Thm 2.5(1) through Stacks 0B9M and Thm 2.5(2) with a
+    section through Stacks 0B9N, on the big fppf site of `Over S`. The gluing of
+    rigidified classes uses Lemma 2.10 at every test scheme and the F6 line-bundle
+    stack. Independent statement reviews found it corresponding; their repairs are
+    applied. Not formalized: the Zariski and étale maps, and the comparison with
+    Kleiman's locally Noetherian test schemes.
 - **M4 in progress.**
   - F12, first half, done: generic freeness (Nitsure Lemma 4.1, Stacks 051R) and
     generic flatness (Thm 4.2). An independent statement review found it
@@ -553,7 +548,8 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     - `P(E)`;
     - the Plücker embedding (F9).
 - **Next.**
-  - M2: F6, then the remaining parts of F7 (Thm 2.5 via Stacks 0B9M and 0B9N).
+  - M4: the universal property of the flattening stratification and its non-affine
+    base, then Hilbert schemes (F13).
   - The `Over S` Zariski-representability adapter: shrink the values, pass to
     the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
     then apply `Scheme.LocalRepresentability.isRepresentable`.

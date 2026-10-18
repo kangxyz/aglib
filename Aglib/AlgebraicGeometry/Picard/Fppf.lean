@@ -43,7 +43,11 @@ locally Noetherian `S`-schemes, whereas the sheaf here is formed on the big site
 fibre products are again locally Noetherian, so the two sheafifications agree on that
 subcategory; this comparison is not formalized here.
 
-Injectivity of the unit and its bijectivity with a section are not proved here.
+Injectivity of the unit (the fppf part of Kleiman's Thm 2.5(1)) and its bijectivity with a global
+section (the fppf part of Thm 2.5(2)) are proved in `Picard/Comparison`, for `S` locally Noetherian
+and `p` proper, flat, with geometrically integral fibres
+(`mono_toFppfPicardSheaf_of_isProper_of_flat_of_geometricallyIntegral`,
+`isIso_toFppfPicardSheaf_of_isSplitEpi_of_isProper_of_flat_of_geometricallyIntegral`).
 -/
 
 @[expose] public section

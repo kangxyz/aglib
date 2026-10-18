@@ -1448,8 +1448,13 @@ public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Dimension
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Finite
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Stalks
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
+public import Aglib.AlgebraicGeometry.Picard.Comparison.GluingDescent
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Injectivity
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Isomorphism
+public import Aglib.AlgebraicGeometry.Picard.Comparison.LocallyTrivial
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
+public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.Normalized
 public import Aglib.AlgebraicGeometry.Picard.Presheaf
@@ -1552,6 +1557,7 @@ public import Aglib.CategoryTheory.Abelian.SerreClass.FiniteProducts
 public import Aglib.CategoryTheory.Abelian.Subcategory.Exact
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
 public import Aglib.CategoryTheory.Adjunction.Mates
+public import Aglib.CategoryTheory.Adjunction.Unit
 public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.BaseChange
 public import Aglib.CategoryTheory.ExactCategory.Basic
@@ -1590,7 +1596,9 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.Sites.Descent.Bind
 public import Aglib.CategoryTheory.Sites.Descent.Composition
+public import Aglib.CategoryTheory.Sites.Descent.OverForget
 public import Aglib.CategoryTheory.Sites.Descent.OverSigma
+public import Aglib.CategoryTheory.Sites.Descent.Rigidification
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent

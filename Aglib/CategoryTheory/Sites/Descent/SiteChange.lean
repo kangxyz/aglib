@@ -506,3 +506,92 @@ end DescentData'
 end Pseudofunctor
 
 end CategoryTheory
+
+namespace CategoryTheory.Pseudofunctor
+
+open Opposite Bicategory LocallyDiscreteOpToCat
+
+section Paste
+
+variable {D : Type u₁} [Category.{v₁} D] (F : LocallyDiscrete Dᵒᵖ ⥤ᵖ Cat.{v', u'})
+
+-- The objects of `F.obj _` (a `Cat.of`) must be seen as objects of the underlying category, as
+-- in Mathlib's `DescentData.lean`.
+set_option backward.isDefEq.respectTransparency false in
+/-- The pasting of two commutative squares of composition isomorphisms: the identity behind the
+coherence of `CompTrans.ofNatTrans`. -/
+lemma mapComp'_paste_app {b₀ b₁ b₂ c₀ c₁ c₂ : LocallyDiscrete Dᵒᵖ}
+    (a : b₀ ⟶ b₁) (b : b₁ ⟶ b₂) (ab : b₀ ⟶ b₂) (t₀ : b₀ ⟶ c₀) (t₁ : b₁ ⟶ c₁) (t₂ : b₂ ⟶ c₂)
+    (c : c₀ ⟶ c₁) (d : c₁ ⟶ c₂) (cd : c₀ ⟶ c₂) (φ₁ : b₀ ⟶ c₁) (φ₂ : b₁ ⟶ c₂) (φ : b₀ ⟶ c₂)
+    (hab : a ≫ b = ab) (hcd : c ≫ d = cd) (h₁ : a ≫ t₁ = φ₁) (h₁' : t₀ ≫ c = φ₁)
+    (h₂ : b ≫ t₂ = φ₂) (h₂' : t₁ ≫ d = φ₂) (h : ab ≫ t₂ = φ) (h' : t₀ ≫ cd = φ)
+    (M : F.obj b₀) :
+    (F.mapComp' ab t₂ φ h).inv.toNatTrans.app M ≫ (F.mapComp' t₀ cd φ h').hom.toNatTrans.app M ≫
+        (F.mapComp' c d cd hcd).hom.toNatTrans.app ((F.map t₀).toFunctor.obj M) =
+      (F.map t₂).toFunctor.map ((F.mapComp' a b ab hab).hom.toNatTrans.app M) ≫
+        (F.mapComp' b t₂ φ₂ h₂).inv.toNatTrans.app ((F.map a).toFunctor.obj M) ≫
+        (F.mapComp' t₁ d φ₂ h₂').hom.toNatTrans.app ((F.map a).toFunctor.obj M) ≫
+        (F.map d).toFunctor.map ((F.mapComp' a t₁ φ₁ h₁).inv.toNatTrans.app M) ≫
+        (F.map d).toFunctor.map ((F.mapComp' t₀ c φ₁ h₁').hom.toNatTrans.app M) := by
+  have hφ₁ : φ₁ ≫ d = φ := by rw [← h₁', Category.assoc, hcd, h']
+  have hφ₂ : a ≫ φ₂ = φ := by rw [← h₂, ← Category.assoc, hab, h]
+  rw [F.mapComp'₀₁₃_hom_comp_whiskerLeft_mapComp'_hom_app t₀ c d φ₁ cd φ h₁' hcd h' M,
+    F.mapComp'₀₂₃_hom_app a t₁ d φ₁ φ₂ φ h₁ h₂' hφ₁ M]
+  simp only [Category.assoc]
+  rw [F.mapComp'₀₂₃_inv_comp_mapComp'₀₁₃_hom_app_assoc a b t₂ ab φ₂ φ hab h₂ h M]
+
+end Paste
+
+section Whisker
+
+variable {C : Type u} [Category.{v} C] {D : Type u₁} [Category.{v₁} D]
+  (F : LocallyDiscrete Dᵒᵖ ⥤ᵖ Cat.{v', u'}) {G₁ G₂ : C ⥤ D} (τ : G₁ ⟶ G₂)
+
+/-- The pseudonaturality isomorphism of `CompTrans.ofNatTrans` along `f : Y ⟶ X`: both sides are
+the pullback along `τ.app Y ≫ G₂.map f = G₁.map f ≫ τ.app X`. -/
+def CompTrans.ofNatTransNat {X Y : C} (f : Y ⟶ X) :
+    ((F.restrictAlong G₂).map f.op.toLoc).toFunctor ⋙ (F.map (τ.app Y).op.toLoc).toFunctor ≅
+      (F.map (τ.app X).op.toLoc).toFunctor ⋙ ((F.restrictAlong G₁).map f.op.toLoc).toFunctor :=
+  Cat.Hom.toNatIso ((F.mapComp' (G₂.map f).op.toLoc (τ.app Y).op.toLoc
+      (τ.app Y ≫ G₂.map f).op.toLoc rfl).symm ≪≫
+    F.mapComp' (τ.app X).op.toLoc (G₁.map f).op.toLoc (τ.app Y ≫ G₂.map f).op.toLoc
+      (by rw [← τ.naturality f]; rfl))
+
+theorem CompTrans.ofNatTransNat_hom_app {X Y : C} (f : Y ⟶ X) (M : F.obj (.mk (op (G₂.obj X)))) :
+    (CompTrans.ofNatTransNat F τ f).hom.app M =
+      (F.mapComp' (G₂.map f).op.toLoc (τ.app Y).op.toLoc
+          (τ.app Y ≫ G₂.map f).op.toLoc rfl).inv.toNatTrans.app M ≫
+        (F.mapComp' (τ.app X).op.toLoc (G₁.map f).op.toLoc (τ.app Y ≫ G₂.map f).op.toLoc
+          (by rw [← τ.naturality f]; rfl)).hom.toNatTrans.app M :=
+  rfl
+
+-- The objects of `F.obj _` (a `Cat.of`) must be seen as objects of the underlying category, as
+-- in `CompTransAlong.toCompTrans`.
+set_option backward.isDefEq.respectTransparency false in
+/-- **Whiskering by a natural transformation.** A natural transformation `τ : G₁ ⟶ G₂` induces
+the transformation `F.restrictAlong G₂ ⟶ F.restrictAlong G₁` with components the pullbacks
+`F.map (τ.app X)`. -/
+def CompTrans.ofNatTrans : CompTrans (F.restrictAlong G₂) (F.restrictAlong G₁) where
+  app X := (F.map (τ.app X).op.toLoc).toFunctor
+  nat f := ofNatTransNat F τ f
+  nat_comp {X Y Z} f g gf h M := by
+    subst h
+    rw [restrictAlong_mapComp'_hom_app f g (g ≫ f) rfl,
+      restrictAlong_mapComp'_hom_app f g (g ≫ f) rfl, ofNatTransNat_hom_app,
+      ofNatTransNat_hom_app, ofNatTransNat_hom_app, Category.assoc]
+    simp only [restrictAlong_map_toFunctor, Functor.map_comp, Category.assoc]
+    exact mapComp'_paste_app F (G₂.map f).op.toLoc (G₂.map g).op.toLoc (G₂.map (g ≫ f)).op.toLoc
+      (τ.app X).op.toLoc (τ.app Y).op.toLoc (τ.app Z).op.toLoc (G₁.map f).op.toLoc
+      (G₁.map g).op.toLoc (G₁.map (g ≫ f)).op.toLoc (τ.app Y ≫ G₂.map f).op.toLoc
+      (τ.app Z ≫ G₂.map g).op.toLoc (τ.app Z ≫ G₂.map (g ≫ f)).op.toLoc
+      (by rw [G₂.map_comp]; rfl) (by rw [G₁.map_comp]; rfl) rfl (by rw [← τ.naturality f]; rfl)
+      rfl (by rw [← τ.naturality g]; rfl) rfl
+      (by rw [← τ.naturality (g ≫ f)]; rfl) M
+
+theorem CompTrans.ofNatTrans_app (X : C) :
+    (CompTrans.ofNatTrans F τ).app X = (F.map (τ.app X).op.toLoc).toFunctor :=
+  rfl
+
+end Whisker
+
+end CategoryTheory.Pseudofunctor

@@ -74,6 +74,17 @@ lemma pullHom_id' ⦃X₁ : C⦄ ⦃M₁ : F.obj (.mk (op X₁))⦄ ⦃Y : C⦄ 
     pullHom (𝟙 ((F.map f₁.op.toLoc).toFunctor.obj M₁)) g gf₁ gf₁ hgf₁ hgf₁ = 𝟙 _ := by
   simp [pullHom]
 
+/-- `pullHom` along equal morphisms. -/
+lemma pullHom_congr_left ⦃X₁ X₂ : C⦄ ⦃M₁ : F.obj (.mk (op X₁))⦄ ⦃M₂ : F.obj (.mk (op X₂))⦄
+    ⦃Y : C⦄ ⦃f₁ : Y ⟶ X₁⦄ ⦃f₂ : Y ⟶ X₂⦄
+    (φ : (F.map f₁.op.toLoc).toFunctor.obj M₁ ⟶ (F.map f₂.op.toLoc).toFunctor.obj M₂)
+    ⦃Y' : C⦄ {g g' : Y' ⟶ Y} (hg : g = g') {gf₁ : Y' ⟶ X₁} {gf₂ : Y' ⟶ X₂}
+    (hgf₁ : g ≫ f₁ = gf₁) (hgf₂ : g ≫ f₂ = gf₂) (hgf₁' : g' ≫ f₁ = gf₁)
+    (hgf₂' : g' ≫ f₂ = gf₂) :
+    pullHom φ g gf₁ gf₂ hgf₁ hgf₂ = pullHom φ g' gf₁ gf₂ hgf₁' hgf₂' := by
+  subst hg
+  rfl
+
 end LocallyDiscreteOpToCat
 
 variable {J : GrothendieckTopology C} [F.IsPrestack J]
@@ -89,6 +100,37 @@ lemma toDescentData_obj_hom_eq {ι : Type t} {S : C} {X : ι → C} (f : ∀ i, 
         (F.mapComp' (f i₂).op.toLoc f₂.op.toLoc q.op.toLoc (by rw [← hf₂]; rfl)).hom.toNatTrans.app
           M :=
   rfl
+
+omit [F.IsPrestack J] in
+variable (F) in
+-- As for Mathlib's `pullHom`: the objects of `F.obj _` (a `Cat.of`) must be seen as objects of the
+-- underlying category.
+set_option backward.isDefEq.respectTransparency false in
+/-- The compatibility of a family of morphisms `ψ i` between the descent data of two objects, over
+`q : Y ⟶ S`, is the equality of their `pullHom`s to `Y`. -/
+theorem toDescentData_comm_iff {ι : Type t} {S : C} {X : ι → C} (f : ∀ i, X i ⟶ S)
+    {A B : F.obj (.mk (op S))} ⦃i₁ i₂ : ι⦄
+    (ψ₁ : ((F.toDescentData f).obj A).obj i₁ ⟶ ((F.toDescentData f).obj B).obj i₁)
+    (ψ₂ : ((F.toDescentData f).obj A).obj i₂ ⟶ ((F.toDescentData f).obj B).obj i₂)
+    ⦃Y : C⦄ (q : Y ⟶ S) (f₁ : Y ⟶ X i₁) (f₂ : Y ⟶ X i₂) (hf₁ : f₁ ≫ f i₁ = q)
+    (hf₂ : f₂ ≫ f i₂ = q) :
+    (F.map f₁.op.toLoc).toFunctor.map ψ₁ ≫ ((F.toDescentData f).obj B).hom q f₁ f₂ hf₁ hf₂ =
+        ((F.toDescentData f).obj A).hom q f₁ f₂ hf₁ hf₂ ≫ (F.map f₂.op.toLoc).toFunctor.map ψ₂ ↔
+      pullHom (M₁ := A) (M₂ := B) (f₁ := f i₁) (f₂ := f i₁) ψ₁ f₁ q q hf₁ hf₁ =
+        pullHom (M₁ := A) (M₂ := B) (f₁ := f i₂) (f₂ := f i₂) ψ₂ f₂ q q hf₂ hf₂ := by
+  rw [map_eq_pullHom ψ₁ f₁ q q hf₁ hf₁, map_eq_pullHom ψ₂ f₂ q q hf₂ hf₂,
+    toDescentData_obj_hom_eq f B q f₁ f₂ hf₁ hf₂, toDescentData_obj_hom_eq f A q f₁ f₂ hf₁ hf₂]
+  simp only [Category.assoc, Cat.Hom.hom_inv_id_toNatTrans_app_assoc]
+  constructor
+  · intro h
+    have h' := congrArg (fun k ↦ (F.mapComp' (f i₁).op.toLoc f₁.op.toLoc q.op.toLoc
+      (by rw [← hf₁]; rfl)).hom.toNatTrans.app A ≫ k ≫ (F.mapComp' (f i₂).op.toLoc
+        f₂.op.toLoc q.op.toLoc (by rw [← hf₂]; rfl)).inv.toNatTrans.app B) h
+    simpa only [Category.assoc, Cat.Hom.hom_inv_id_toNatTrans_app_assoc,
+      Cat.Hom.inv_hom_id_toNatTrans_app_assoc, Cat.Hom.hom_inv_id_toNatTrans_app,
+      Category.comp_id] using h'
+  · intro h
+    rw [h]
 
 include J in
 /-- Morphisms are determined by their `pullHom` along the arrows of a covering sieve. -/

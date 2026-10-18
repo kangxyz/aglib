@@ -53,8 +53,12 @@ import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.Sections
 import AglibTest.AlgebraicGeometry.Picard.Affine
 import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
 import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms
+import AglibTest.AlgebraicGeometry.Picard.Comparison.Gluing
 import AglibTest.AlgebraicGeometry.Picard.Comparison.Injectivity
+import AglibTest.AlgebraicGeometry.Picard.Comparison.Isomorphism
+import AglibTest.AlgebraicGeometry.Picard.Comparison.LocallyTrivial
 import AglibTest.AlgebraicGeometry.Picard.Comparison.Rigidified
+import AglibTest.AlgebraicGeometry.Picard.Comparison.Sheaf
 import AglibTest.AlgebraicGeometry.Picard.Functors
 import AglibTest.AlgebraicGeometry.Picard.Interfaces
 import AglibTest.AlgebraicGeometry.ProjectiveSpace.Tensor.Monoidal.Functor
@@ -72,7 +76,12 @@ import AglibTest.ArchivePerfectStructural
 import AglibTest.ArchiveSequentialSystemColimit
 import AglibTest.ArchiveSequentialSystemSignCorrection
 import AglibTest.AuditCoverage
+import AglibTest.CategoryTheory.Adjunction.Unit
+import AglibTest.CategoryTheory.Sites.Descent.Bind
 import AglibTest.CategoryTheory.Sites.Descent.Composition
+import AglibTest.CategoryTheory.Sites.Descent.OverForget
+import AglibTest.CategoryTheory.Sites.Descent.SiteChange
+import AglibTest.CategoryTheory.Sites.Descent.Transfer
 import AglibTest.CoefficientUnit
 import AglibTest.CompleteDVRExtension
 import AglibTest.DVRCartierLength
