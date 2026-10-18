@@ -16,6 +16,12 @@ then the original epimorphism onto that image. Projectivity of the source
 or kernel is not required. The pointwise homology/base-change criteria use
 this native splitting.
 
+[ExtensionPushout](ExtensionPushout.lean) constructs the actual pushout of a
+short exact sequence in an arbitrary abelian category and proves its exactness.
+Its Ext-class comparison identifies coefficient change with this pushout,
+retaining the displayed Ext and universe assumptions. This is a lower input
+to the finite-etale torsor and cohomology comparisons.
+
 `projective_kernel_iff_of_generalizedInverse` assumes a projective target
 and an actual generalized inverse. Projectivity of the original kernel is
 then equivalent to projectivity of the source, by the two actual

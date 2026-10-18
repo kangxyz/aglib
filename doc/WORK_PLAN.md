@@ -1,5 +1,38 @@
 # Migration work and validation boundaries
 
+## Fundamental groups and finite-coefficient etale H1 migration
+
+The [190-module R5 source selection](migration/r5-fundamental-groups.json)
+contains the complete local fundamental-group dependency closure and the
+selected general Galois/monodromy and etale-H1 comparison companions. Exact
+native module and declaration correspondence preserves canonical objects,
+all displayed hypotheses, universe bounds and explicit comparison inputs.
+Historical curve/elliptic namespace labels are routed by the actual general
+statements; specialized application consumers remain downstream.
+
+The frozen post-lint 190-module source closure and both focused public clients
+compiled. Native26 coverage is retained for 178 unchanged modules; native27
+covers the 12 affected by the final etale-cover description correction. The
+source record distinguishes 56 compiler-local interface exceptions from 114
+per-declaration environment-lint entries (59 unused-argument and 55 simp-normal-form
+entries on 112 declarations). These preserve the original inputs and registrations.
+
+Actual declaration/text-style checks and all 15 Batteries environment linters
+passed. Current standard-foundation coverage is 190 origins and 5,117 declarations:
+186 origins/5,026 declarations retain accepted preservation-bound evidence;
+four origins/91 declarations have fresh current-artifact audits. This supersedes
+the provisional 5,114 count without relabelling the retained evidence as a new
+whole-surface audit.
+
+Fresh independent kernel replay passed all 190 selected modules and 5,117
+nonvacuous declarations, reusing zero module results. Source/artifact/configuration
+end guards passed; all 54 current resource guards closed successfully. Both
+example modules have zero stored kernel declarations, so their successful 02
+compilation and bound artifacts provide client evidence without an extra replay
+claim. Commit/merge/publication and later R5 consumer adoption remain with the
+principal. No theorem-family input, downstream application or G017 obligation
+is declared closed.
+
 ## General Milnor K-theory migration
 
 The [source correspondence](migration/motivic-milnor-k.json) records 273 modules

@@ -116,3 +116,27 @@ Aglib owners. Two endpoint geometry/cycle consumers remain downstream. The
 record separates actual moves, native reuse and the small generic polynomial
 cut. Original source identities and the seven K₂ license exceptions are
 retained; see [third-party notices](../THIRD_PARTY_NOTICES.md).
+
+## Fundamental groups and finite-coefficient etale H1
+
+The [R5 source correspondence](migration/r5-fundamental-groups.json) records
+190 modules from `kangxyz/r5-lab` revision
+`c82abf3a72ce1e1cedf4a4f1fe08bea994ad4df5`, selected against Aglib
+`64374534558c80c2fec996ee06bf7727b6c7f3e4`. This source revision is a local R5
+checkpoint; it is not pushed as part of this Aglib migration. The selection
+contains the actual
+finite-etale fibre automorphism groups, functorial maps and sections, field
+restriction and absolute-Galois comparisons, geometric-kernel exactness,
+general Galois-category/monodromy companions and actual finite-coefficient
+small-etale H1 comparison endpoints with their required lower dependencies.
+Per-source and destination hashes and exact native correspondences retain the
+original hypotheses, universes and explicit inputs. Specialized curve,
+elliptic, Tate coefficient-sheaf, arithmetic and K/G/Q/S applications remain
+downstream; this selection adds no G017 work. The post-lint source record binds the compiled 190-module closure and two
+focused public clients, the final native name/kind correspondence, explanatory
+API comments and exact declaration-local lint exceptions. Actual style and
+15 environment linters and fresh selected 190 kernel replay passed, with 5,117
+nonvacuous declarations and zero reused replay modules. Standard-foundation
+coverage combines 186 retained origins with four freshly audited origins under
+the recorded preservation conditions. Publication and later R5 adoption remain
+pending. Earlier source and compiled receipts retain their own basis.

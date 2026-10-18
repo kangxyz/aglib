@@ -10,6 +10,7 @@ module
 public import Aglib.CategoryTheory.Abelian.Ext1.Equality
 public import Aglib.CategoryTheory.Abelian.Ext1.Extension
 public import Aglib.CategoryTheory.Abelian.Ext1.Representability
+public import Aglib.CategoryTheory.Abelian.ExtensionPushout
 public import Aglib.CategoryTheory.Abelian.FiniteCoproductFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctor
 public import Aglib.CategoryTheory.Abelian.Injective.MapAugmentation
@@ -36,7 +37,11 @@ public import Aglib.CategoryTheory.ExactCategory.MatrixDeflation
 public import Aglib.CategoryTheory.ExactCategory.Small
 public import Aglib.CategoryTheory.ExactCategory.Subcategory
 public import Aglib.CategoryTheory.Functor.Derived.RightDerivedCommShift
+public import Aglib.CategoryTheory.Functor.DiagramLift
+public import Aglib.CategoryTheory.Functor.Flat
 public import Aglib.CategoryTheory.Functor.KanExtension.ClosedImage
+public import Aglib.CategoryTheory.Functor.ModelAutomorphisms
+public import Aglib.CategoryTheory.Functor.NaturalityTransport
 public import Aglib.CategoryTheory.Functor.Sections.Initial
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
@@ -60,6 +65,7 @@ public import Aglib.CategoryTheory.Sites.Descent.Composition
 public import Aglib.CategoryTheory.Sites.Descent.OverSigma
 public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
+public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoefficientNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences
@@ -70,6 +76,7 @@ public import Aglib.CategoryTheory.SmallModel.Exact
 public import Aglib.CategoryTheory.SmallModel.Functor
 public import Aglib.CategoryTheory.SmallModel.Functoriality
 public import Aglib.CategoryTheory.SmallModel.Localization
+public import Aglib.CategoryTheory.TorsorAction.Basic
 public import Aglib.CategoryTheory.Triangulated.EndpointTransport
 public import Aglib.CategoryTheory.Triangulated.NatTransIso
 public import Aglib.CategoryTheory.Triangulated.Yoneda.Exact

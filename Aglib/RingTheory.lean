@@ -183,6 +183,7 @@ public import Aglib.RingTheory.RegularLocalRing.Normal
 public import Aglib.RingTheory.RegularLocalRing.ParameterQuotient
 public import Aglib.RingTheory.RegularLocalRing.Parameters
 public import Aglib.RingTheory.RootsOfUnity.Adjoin
+public import Aglib.RingTheory.RootsOfUnity.FiniteCharacter
 public import Aglib.RingTheory.ScalarHomology.BaseChange
 public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion

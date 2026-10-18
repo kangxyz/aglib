@@ -76,6 +76,7 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension.FirstVariable
 public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.Subgroup.Ker
 public import Aglib.Algebra.Homology.CochainComplex.Augmentation
 public import Aglib.Algebra.Homology.CochainComplex.BaseChangeCriterion

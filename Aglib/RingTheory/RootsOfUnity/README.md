@@ -5,3 +5,9 @@
 `rootAlgebra_finite` requires `n ≠ 0`. With both `n ≠ 0` and `IsUnit (n : R)`, `rootEtaleSurjection` is the actual standard-etale presentation map and `rootAlgebra_formallyUnramified` proves formal unramifiedness of this subalgebra. The root equation is retained throughout.
 
 The prerequisites are actual adjoining, integrality and standard-etale algebras. No valuation, local-ring, completeness or residue-field assumption is imposed. Original roots-extension applications remain external consumers of this generic constructed algebra.
+
+[FiniteCharacter](FiniteCharacter.lean) constructs the finite cyclotomic
+character of the actual absolute Galois group. Its chosen-root construction
+retains the supplied primitive root; the characteristic-zero, positive-level
+endpoint chooses that root and proves independence and continuity. It supplies
+the root-action comparison in the fundamental-group field family.

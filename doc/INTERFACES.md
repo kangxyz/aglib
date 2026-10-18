@@ -245,3 +245,36 @@ proved normalization/compatibility conditions. General finite-extension norms
 and their tower theorem currently require characteristic zero, the actual
 algebra structures and finite-dimensional/tower hypotheses. Motivic diagonal,
 Quillen and endpoint-cycle comparisons remain downstream.
+
+## Fundamental groups, monodromy and finite-coefficient etale H1
+
+The [selected R5 migration](migration/r5-fundamental-groups.json) uses the
+actual native finite-etale category and its specified field-valued fibre
+functor. `Scheme.EtaleFundamentalGroups` constructs fibre automorphism groups,
+evaluation topologies, scheme-induced maps and section retractions. The field
+absolute-Galois identification retains its displayed characteristic-zero
+hypothesis; individual forward constructions keep their original assumptions.
+The geometric-kernel endpoints retain qcqs, the actual rational section and
+its equation, with every additional wrapper hypothesis and named input kept
+where displayed. Namespace relocation does not supply a Galois-category,
+fibre-functor, descent or exactness premise accepted by another interface.
+
+General connected-scheme Galois dictionaries, finite-etale classification and
+marked-kernel/group-scheme monodromy use their actual objects and displayed
+conditions. `Scheme.EtaleH1` denotes the actual small-etale Ext H1 surface;
+finite-coefficient comparisons retain their `HasSheafify`/`HasExt` universes,
+positive globally invertible annihilating level, local trivializations,
+markings, point hypotheses and actual forward-map conventions. Generic GC/FF
+and theorem-family inputs remain explicit wherever present. Actual Tate
+coefficient sheaves and specialized curve, elliptic, arithmetic and K/G/Q/S
+applications remain downstream. The post-lint 190-module closure and both
+focused public clients compiled. The record separates 56 compiler-local
+exceptions from 114 environment-lint entries that preserve original input types,
+simp registrations and instance behavior. Actual style and 15 environment linters
+passed. Fresh independent replay covered all 190 selected native modules and
+5,117 nonvacuous declarations, with no replay reuse; current end-identity guards
+passed. The two compiled public examples contain zero stored kernel declarations
+and carry no additional replay claim. Standard-foundation audit coverage retains
+186 origins under the recorded preservation conditions and freshly checks four.
+Publication and separate R5 adoption remain pending. These checks discharge no
+theorem-family input and establish no new mathematical status.

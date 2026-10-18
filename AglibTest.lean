@@ -90,6 +90,7 @@ import AglibTest.FiniteExtensionNormInfinityBranches
 import AglibTest.FiniteExtensionNormRightProjection
 import AglibTest.FiniteLocallyFree
 import AglibTest.FiniteTypePushforward
+import AglibTest.FundamentalGroup
 import AglibTest.GeneralMilnorAffineEndpoint
 import AglibTest.GeneralMilnorAffineEndpointAllDegrees
 import AglibTest.GeneralMilnorAffineNormSpecialization

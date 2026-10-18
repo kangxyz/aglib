@@ -9,3 +9,4 @@ module
 public import Consumer.CoefficientUnit
 public import Consumer.SheafInterfaces
 public import Consumer.MilnorK
+public import Consumer.FundamentalGroup
