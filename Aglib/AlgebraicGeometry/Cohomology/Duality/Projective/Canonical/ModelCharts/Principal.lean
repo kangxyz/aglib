@@ -171,6 +171,43 @@ private theorem wholeChartPaste {C D : Type*} [Category C] [Category D] (F : C �
   rw [hc, hc'] at hw
   exact wholeSquareOfInverse rM rN (F.map c) c' hw
 
+/-- One typed diagram keeps every use of a chart factor on the same objects. -/
+private structure WholeChartPasteData {C D : Type*} [Category C] [Category D] (F : C ⥤ D) where
+  M : C
+  H : C
+  Q : C
+  N : C
+  M' : D
+  H' : D
+  H'' : D
+  Q' : D
+  N' : D
+  s : M ≅ H
+  s' : M' ≅ H'
+  u : N ≅ Q
+  u' : N' ≅ Q'
+  f : H ⟶ Q
+  f' : H' ⟶ Q'
+  f'' : H'' ⟶ Q'
+  rM : M' ≅ F.obj M
+  rN : N' ≅ F.obj N
+  T : F.obj H ⟶ H''
+  z : H' ⟶ H''
+  v : F.obj Q ⟶ Q'
+  c : M ⟶ N
+  c' : M' ⟶ N'
+
+private theorem WholeChartPasteData.paste {C D : Type*} [Category C] [Category D]
+    {F : C ⥤ D} (A : WholeChartPasteData F)
+    (hs : A.rM.inv ≫ A.s'.hom ≫ A.z = F.map A.s.hom ≫ A.T)
+    (hf : F.map A.f ≫ A.v = A.T ≫ A.f'') (hz : A.z ≫ A.f'' = A.f')
+    (hu : F.map A.u.hom ≫ A.v = A.rN.inv ≫ A.u'.hom)
+    (hc : A.s.hom ≫ A.f ≫ A.u.inv = A.c)
+    (hc' : A.s'.hom ≫ A.f' ≫ A.u'.inv = A.c') :
+    A.rM.hom ≫ F.map A.c = A.c' ≫ A.rN.hom :=
+  wholeChartPaste F A.s A.s' A.u A.u' A.f A.f' A.f'' A.rM A.rN A.T A.z A.v
+    hs hf hz hu A.c A.c' hc hc'
+
 private theorem modelSquareTransport {C D : Type*} [Category C] [Category D]
     (F : C ⥤ D) {H Q : C} {K Q' : D}
     (f f₀ : H ⟶ Q) (v : F.obj Q ⟶ Q') (T T₀ : F.obj H ⟶ K)
@@ -628,12 +665,10 @@ private theorem principalPrefactorSquare :
     Rₘ.inv ≫ Sd.hom ≫ z = (restrictFunctor g).map S.hom ≫ T := by
   exact canonicalPrincipalChart_prefactor i p n d J C r hr
 
-set_option maxHeartbeats 400000 in
--- The original principal chart getters use definitionally equal restriction and
--- quotient presentations; their combined conversions exceed the 200k default.
-/-- Paste the original chart factors before expanding the restriction composites. -/
-private theorem principalWholeChartPaste :
-    CanonicalPrincipalChartPastedSquare i p n d J C r hr := by
+/-- The original principal chart factors, with one shared set of typed endpoints. -/
+private def principalWholeChartData :
+    WholeChartPasteData
+      (restrictFunctor (Spec.map (regularListPrincipalLiteralQuotientMap C.regularList r))) := by
   let D := C.principalChart r hr
   let s := C.regularList
   let t := D.regularList
@@ -682,28 +717,78 @@ private theorem principalWholeChartPaste :
   let z := homologyMap (((closedImmersionRightAdjoint (Spec.map q')).mapHomologicalComplex
     (.up ℤ)).map (canonicalAmbientResolutionCompLift j k J).hom') (c : ℤ)
   let fi := principalIteratedCore i p n d J C r hr
-  have hf := principalCoreOpenSquare i p n d J C r hr
-  have hz := principalCoreResolutionSquare i p n d J C r hr
-  have hS := principalPrefactorSquare i p n d J C r hr
-  have hU := principalPostfactorSquare i p n d C r hr
-  have hC := canonicalChartModelCoreAtDegree_factor C J c rfl
-  have hD := canonicalChartModelCoreAtDegree_factor D J c hc
-  have hw := wholeChartPaste
-    (C := (Spec (regularListQuotientRing s)).Modules)
-    (D := (Spec (regularListQuotientRing t)).Modules)
-    (M := M.restrict a)
-    (H := regularListModelTopHomologyAt (Ideal.ofList s) J₀ c)
-    (Q := regularListTangentTopAt C.α (Ideal.ofList s) d)
-    (N := N.restrict a)
-    (M' := M.restrict a')
-    (H' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
-      (canonicalAmbientChartResolution J D.jP) c)
-    (H'' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
-      (canonicalAmbientChartResolution J₀ k) c)
-    (Q' := regularListTangentTopAt D.α (Ideal.ofList D.regularList) d)
-    (N' := N.restrict a')
-    (restrictFunctor g) S Sd U Ud f fd fi Rₘ Rₙ T z v hS hf hz hU _ _ hC hD
-  exact hw
+  exact
+    { M := M.restrict a
+      H := regularListModelTopHomologyAt (Ideal.ofList s) J₀ c
+      Q := regularListTangentTopAt C.α (Ideal.ofList s) d
+      N := N.restrict a
+      M' := M.restrict a'
+      H' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
+        (canonicalAmbientChartResolution J D.jP) c
+      H'' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
+        (canonicalAmbientChartResolution J₀ k) c
+      Q' := regularListTangentTopAt D.α (Ideal.ofList D.regularList) d
+      N' := N.restrict a'
+      s := S
+      s' := Sd
+      u := U
+      u' := Ud
+      f := f
+      f' := fd
+      f'' := fi
+      rM := Rₘ
+      rN := Rₙ
+      T := T
+      z := z
+      v := v
+      c := (canonicalCommonModelChartHomologyIso i p n d J C).hom
+      c' := (canonicalCommonModelChartHomologyIso i p n d J D).hom }
+
+private theorem principalWholeChartData_source :
+    let A := principalWholeChartData i p n d J C r hr
+    A.rM.inv ≫ A.s'.hom ≫ A.z =
+      (restrictFunctor (Spec.map (regularListPrincipalLiteralQuotientMap C.regularList r))).map
+        A.s.hom ≫ A.T := by
+  exact principalPrefactorSquare i p n d J C r hr
+
+private theorem principalWholeChartData_model :
+    let A := principalWholeChartData i p n d J C r hr
+    (restrictFunctor (Spec.map (regularListPrincipalLiteralQuotientMap C.regularList r))).map
+        A.f ≫ A.v = A.T ≫ A.f'' := by
+  exact principalCoreOpenSquare i p n d J C r hr
+
+private theorem principalWholeChartData_resolution :
+    let A := principalWholeChartData i p n d J C r hr
+    A.z ≫ A.f'' = A.f' := by
+  exact principalCoreResolutionSquare i p n d J C r hr
+
+private theorem principalWholeChartData_target :
+    let A := principalWholeChartData i p n d J C r hr
+    (restrictFunctor (Spec.map (regularListPrincipalLiteralQuotientMap C.regularList r))).map
+        A.u.hom ≫ A.v = A.rN.inv ≫ A.u'.hom := by
+  exact principalPostfactorSquare i p n d C r hr
+
+private theorem principalWholeChartData_factor :
+    let A := principalWholeChartData i p n d J C r hr
+    A.s.hom ≫ A.f ≫ A.u.inv = A.c := by
+  exact canonicalChartModelCoreAtDegree_factor C J C.regularList.length rfl
+
+private theorem principalWholeChartData_refinedFactor :
+    let A := principalWholeChartData i p n d J C r hr
+    A.s'.hom ≫ A.f' ≫ A.u'.inv = A.c' := by
+  exact canonicalChartModelCoreAtDegree_factor (C.principalChart r hr) J C.regularList.length
+    (canonicalPrincipalChart_length C r hr C.regularList.length rfl)
+
+/-- Paste the shared typed factors before expanding the restriction composites. -/
+private theorem principalWholeChartPaste :
+    CanonicalPrincipalChartPastedSquare i p n d J C r hr := by
+  exact WholeChartPasteData.paste (principalWholeChartData i p n d J C r hr)
+    (principalWholeChartData_source i p n d J C r hr)
+    (principalWholeChartData_model i p n d J C r hr)
+    (principalWholeChartData_resolution i p n d J C r hr)
+    (principalWholeChartData_target i p n d J C r hr)
+    (principalWholeChartData_factor i p n d J C r hr)
+    (principalWholeChartData_refinedFactor i p n d J C r hr)
 
 /-- The original whole chart arrows agree on the actual principal refinement. -/
 theorem canonicalCommonModelChartHomologyIso_principal :
