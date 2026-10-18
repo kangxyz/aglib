@@ -1449,7 +1449,7 @@
       "source_module": "Motivic.KTheory.MilnorK2.DegreeReduction",
       "source_sha256": "852b113d8975a971a7fe671d56b6c559b3fc2298bbae081113d523218b321683",
       "module": "Aglib.KTheory.MilnorK.K2.DegreeReduction",
-      "sha256": "c9f48f01c9a74e5574c4c801ecd6de33e33b5035160fcb22da3037bcd9fe4d95"
+      "sha256": "962558858e524756758ac11260f4b7de947c70c4259592a387e535acb0f8f246"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.Map",
@@ -2765,7 +2765,8 @@
     "Forty-two named lemmas retain their statements and proofs with redundant or non-normal-form simp registration removed.",
     "Six missing declaration docstrings and two public FinCases imports satisfy current source policies.",
     "Moved tests select declarations by their actual defining Aglib module independently from the mathematical declaration namespace; private-origin inventories are retained.",
-    "The seven third-party K2 license notices remain verbatim."
+    "The seven third-party K2 license notices remain verbatim.",
+    "The inherited DegreeReduction header now credits kangxyz; the first hosted run identified its missing Authors line. The mathematical body is exact."
   ],
   "validation": {
     "scope": "Incremental final validation of the migration; no whole-library replay or new mathematical status.",
