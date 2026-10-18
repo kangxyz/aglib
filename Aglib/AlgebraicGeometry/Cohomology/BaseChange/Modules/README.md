@@ -98,3 +98,28 @@ The intersection with each added affine is compact by quasi-separatedness
 and is separated because it is open in that affine. The
 [owning guide](Qcqs/README.md) records the exact restriction and gluing
 comparisons used to discharge all local invertibility statements.
+
+[Transitivity](Transitivity.lean) proves `moduleCohomologyBaseChangeMap_isIso_comp`: for
+`f : X ⟶ Spec A`, `σ : A →+* B` and `τ : B →+* C`, if the degree-`n` base-change maps of `M`
+along `σ` and of its pullback `M_B` along `τ` are isomorphisms, so is that of `M` along `τ ∘ σ`,
+in every degree. The comparison is `baseChangeTransIso`, `(X_B)_C ≅ X_C`, with the `C`-linear
+bijective transport `baseChangeTransCohomologyHom`; the unit-tensor identity is
+`moduleCohomologyPullback_pullbackSquare_apply`
+([Functoriality/Modules/PullbackComposition](../../Functoriality/Modules/PullbackComposition.lean)).
+This is the composition of base-change isomorphisms in Nitsure's (C) (arXiv:math/0504590v1, proof
+of Thm 4.3, p. 21).
+
+[Composite](Composite.lean) treats iterated base change through a commutative square of rings
+`τ ∘ σ = ψ ∘ π`. The lift `baseChangeCompLift : (X_B)_C ⟶ X_K` is cartesian over `Spec ψ`. For
+flat `ψ`, quasi-compact separated `f` and quasi-coherent `M`, the composite
+`C ⊗_B (B ⊗_A H) ⟶ C ⊗_B H(X_B) ⟶ H((X_B)_C)` of two base-change maps is an isomorphism when
+the base-change map along `π` is
+(`isIso_moduleCohomologyBaseChangeMap_comp_of_isIso`), and vanishing passes to `(X_B)_C`
+(`subsingleton_moduleCohomology_baseChangeComp`). The core is stated at variable data
+(`isIso_moduleCohomologyTensorMap_comp_of_square`). The residue-field forms take
+`κ(σ⁻¹ t) → κ(t)`, through `Ideal.ResidueField.mapComap`
+([RingTheory/LocalRing/ResidueFieldComap](../../../../RingTheory/LocalRing/ResidueFieldComap.lean)).
+Transitivity and Composite give opposite 2-of-3 conclusions of one commutative identity; the
+unit-pure-tensor manipulations of scalar extension they share are
+`ModuleCat.extendScalarsComp_hom_app_comp_map_comp_one_tmul` and `ModuleCat.extendScalarsCongrIso`
+([Algebra/Category/ModuleCat/ChangeOfRings/UnitTensor](../../../../Algebra/Category/ModuleCat/ChangeOfRings/UnitTensor.lean)).

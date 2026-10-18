@@ -28,6 +28,17 @@ A surjection from a finite free module is therefore bijective when source
 and target have equal original fibre dimensions everywhere. These statements
 preserve independent ring, source and target universes.
 
+[Bijectivity](Bijectivity.lean) shows that a linear map of finite modules with
+projective target is bijective once it is bijective on every residue-field
+fibre (`LinearMap.bijective_of_residueField_baseChange_bijective`). Its halves
+are `LinearMap.surjective_of_residueField_baseChange_surjective` (finite
+target; Nakayama at every prime) and
+`LinearMap.injective_of_surjective_of_residueField_baseChange_injective`
+(surjective map from a finite module onto a projective one). The latter has
+other conditions than `LinearMap.injective_of_residueField_baseChange_injective`
+of FiberInjectivity: no free source or reduced ring, but surjectivity, finite
+source and projective target. No Noetherian hypothesis is needed.
+
 [FiberDimension/Reduced](FiberDimension/Reduced.lean) proves freeness of a
 finite module over a reduced local ring from local constancy of its original
 fibre dimension, without flatness, finite presentation or Noetherianity.

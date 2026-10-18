@@ -31,7 +31,8 @@ pullback of ideal sheaves:
   `J.comap g = ⊤`.
 * `comap_iSup_eq_bot_iff`, `comap_mul_eq_top_iff`, `comap_finset_prod_eq_top_iff`: the pullback
   of a supremum vanishes iff every pullback does, and the pullback of a (finite) product is the unit
-  ideal sheaf iff the pullback of every factor is.
+  ideal sheaf iff the pullback of every factor is; `notMem_support_finset_prod_iff`: a point lies
+  outside the support of a finite product iff it lies outside the support of every factor.
 
 These are the scheme-level forms of the universal property of a locally closed subscheme cut out
 by a pair of quasi-coherent ideal sheaves; they are used for the Fitting strata of the flattening
@@ -293,6 +294,21 @@ lemma comap_finset_prod_eq_top_iff {ι : Type*} (s : Finset ι) (K : ι → X.Id
     exact ⟨fun _ j hj => absurd hj (Finset.notMem_empty j), fun _ => comap_top g⟩
   | insert a s ha ih =>
     rw [Finset.prod_insert ha, comap_mul_eq_top_iff, ih, Finset.forall_mem_insert]
+
+/-- A point lies outside the support of a finite product of ideal sheaves if and only if it lies
+outside the support of every factor. -/
+theorem notMem_support_finset_prod_iff {ι : Type*} (s : Finset ι) (K : ι → X.IdealSheafData)
+    (y : X) :
+    y ∉ (∏ j ∈ s, K j).support ↔ ∀ j ∈ s, y ∉ (K j).support := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+    simp only [Finset.prod_empty, one_eq_top, support_top,
+      Finset.notMem_empty, IsEmpty.forall_iff, implies_true, iff_true]
+    exact id
+  | insert a s ha ih =>
+    rw [Finset.prod_insert ha, support_mul, Finset.forall_mem_insert, ← ih]
+    exact not_or
 
 end Scheme.IdealSheafData
 

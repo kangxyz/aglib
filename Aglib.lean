@@ -32,6 +32,7 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Composition
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Forget
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Linear
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
@@ -269,6 +270,7 @@ public import Aglib.Algebra.Polynomial.Laurent.BaseChange
 public import Aglib.Algebra.Polynomial.Laurent.Square
 public import Aglib.Algebra.Polynomial.Laurent.UnderSquare
 public import Aglib.Algebra.Polynomial.MonicIrreducible
+public import Aglib.Algebra.Polynomial.RationalValues
 public import Aglib.AlgebraicGeometry
 public import Aglib.AlgebraicGeometry.BaseChange.Coefficients.Basic
 public import Aglib.AlgebraicGeometry.BaseChange.Coefficients.Naturality
@@ -366,6 +368,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.No
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechComparison
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport.DegreeZero
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Composite
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Naturality
@@ -387,6 +390,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Sections.Res
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Separated
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Separated.Cartesian
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.SeparatedPositive
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Transitivity
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.QuasiCompactSeparated
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Relative
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.AffineDegreeOne
@@ -820,7 +824,9 @@ public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Isomorphism
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Isomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.LinearAlong
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Open
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.PullbackComposition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pullback
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackPushforward
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.PullbackSingle
@@ -889,10 +895,13 @@ public import Aglib.AlgebraicGeometry.Cohomology.Modules.StalkScalars
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.StructureSheaf
 public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.TensorPushforward
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.BaseChangeComparison
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.BaseChangeTwistLinear
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Comparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Coproduct
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EulerCharacteristic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiberBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.BaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel.BaseChangeCriterion
@@ -921,6 +930,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Fi
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Finiteness
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.FlatFamily
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.GeneralHyperplane
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.NatDegree
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.TwistMultiplication
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LargeTwistBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LaurentComparison
@@ -965,6 +975,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.VanishingProjective
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.BaseChangeLocus
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Chow
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.EulerCharacteristic
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.FiberVanishing
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Field
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.FiniteModel
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Finiteness
@@ -1018,6 +1029,8 @@ public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Locality
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Finite
+public import Aglib.AlgebraicGeometry.FlatteningStratification.Flatness
+public import Aglib.AlgebraicGeometry.FlatteningStratification.HilbertPolynomial
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Rank
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Universal
 public import Aglib.AlgebraicGeometry.FunctionField.BaseChange
@@ -1082,6 +1095,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
 public import Aglib.AlgebraicGeometry.Limits.FiniteProducts
 public import Aglib.AlgebraicGeometry.Limits.FiniteProducts.BaseChange
+public import Aglib.AlgebraicGeometry.Limits.Monomorphisms
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.AllAffine
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.GlobalSections
@@ -1214,6 +1228,7 @@ public import Aglib.AlgebraicGeometry.Modules.Flat.Relative
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.BaseChange
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Coproduct
+public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocalOnBase
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Locality
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.OfSections
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Tensor
@@ -1261,6 +1276,7 @@ public import Aglib.AlgebraicGeometry.Modules.Locality.Sections
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.Flat
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.LocalBases
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.Projective
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.PullbackSpec
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Affine.Retract
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Basic
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Coherent
@@ -1569,6 +1585,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.ChartPullback
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Charts
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Map
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.ToSpec
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Twisting
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Basic
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Constants
@@ -2082,6 +2099,7 @@ public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance
 public import Aglib.RingTheory.LocalRing.ParameterQuotient
+public import Aglib.RingTheory.LocalRing.ResidueFieldComap
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.Localization.IteratedModuleLength
@@ -2134,6 +2152,7 @@ public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion
 public import Aglib.RingTheory.Smooth.Reduced
 public import Aglib.RingTheory.Smooth.RegularKernel
+public import Aglib.RingTheory.Spectrum.Prime.Bijectivity
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.BaseChange
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Flat
@@ -2178,4 +2197,4 @@ Use thematic facades or individual module imports for smaller dependencies.
 -/
 
 -- The import-only facade follows the discovered source graph.
-set_option linter.style.longFile 2300
+set_option linter.style.longFile 2400

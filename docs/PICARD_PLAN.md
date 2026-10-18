@@ -142,7 +142,7 @@ commitments.
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | absent | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial: field case (`Cohomology/Projective/HilbertPolynomial`); local constancy in flat families and finiteness of the fibre Hilbert polynomials (Nitsure's (A)) over an affine Noetherian base (`HilbertPolynomial/{Fiber,FlatFamily,Finiteness}`); open: non-affine base | M |
 | F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | partial: Nitsure Lemma 2.1 proved over any ring (`Cohomology/Projective/Regularity`): (a) in coordinate-multiplication form, (b), and (c) as vanishing plus finite global generation; Mumford's bound (Thm 2.3) proved over every field, for subsheaves of `O^p` and ideal sheaves, with integer binomial coefficients of Hilbert functions (`Regularity/Mumford`, `HilbertPolynomial/Basic`); open: the literal tensor form of (a) | L |
-| F12 | Generic freeness (Nitsure, Lemma 4.1, p. 18; Stacks 051R), generic flatness (Thm 4.2, p. 19) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | partial: generic freeness (`RingTheory/GenericFreeness`), generic flatness (`Modules/Flat/Generic`), Fitting ideals (`RingTheory/FittingIdeal`) and the case `n = 0` (`Modules/FittingIdeal`, `FlatteningStratification/{Rank,Universal}`) proved; over any base: the packaging `⊔ S_r ⟶ S` (Stacks 05P9, locally free form), the joint and refined strata, the closure (iii) for `n = 0`, and base change of `relativeFlat` (Stacks 01U8, global form) proved; over an affine Noetherian base: Nitsure Lemma 3.1 (with `r₀` depending on the base change), Lemma 3.2 (as an equivalence), cohomology and base change for flat families, and F10's local constancy and finiteness proved; open: the strata `S_f` and (i)–(iii) for general `n`, which need Nitsure's (B) and (C) for a non-flat `F`, and a non-affine base | L |
+| F12 | Generic freeness (Nitsure, Lemma 4.1, p. 18; Stacks 051R), generic flatness (Thm 4.2, p. 19) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | proved over an affine Noetherian base `Spec A`, for locally Noetherian test schemes: generic freeness (`RingTheory/GenericFreeness`), generic flatness (`Modules/Flat/Generic`), Fitting ideals (`RingTheory/FittingIdeal`) and the case `n = 0` (`Modules/FittingIdeal`, `FlatteningStratification/{Rank,Universal}`); over any base, the packaging `⊔ S_r ⟶ S` (Stacks 05P9, locally free form), the joint and refined strata and base change of `relativeFlat` (Stacks 01U8, global form); over `Spec A`, Nitsure Lemma 3.1 (with `r₀` depending on the base change), Lemma 3.2 (as an equivalence), (B) and (C) for any coherent `F` (`Cohomology/Projective/FiberBaseChange`), the strata `S_f` with Thm 4.3 (i)–(iii) and the universal property (ii) (`FlatteningStratification/{HilbertPolynomial,Flatness}`; "⇒" for every test scheme), and the monomorphism `∐ S_f ⟶ Spec A`, independent of the bound up to unique isomorphism; open: a non-affine base (needed by F13 over the Grassmannian), "⇐" for test schemes that are not locally Noetherian, and the independence of each `S_f` from the bound | L |
 | F13 | Hilbert schemes on locally Noetherian test schemes: `Hilb^Φ` of closed subschemes of `P^n_A` represented by a locally closed subscheme of a Grassmannian (Nitsure, proof of Thm 5.2/5.3 up to the flattening step, pp. 24–26), and its open subfunctors for locally closed `X ⊂ P^N_A` (Thm 6.1 with trivial bundles, p. 28). Projectivity of `Hilb^Φ` uses the DVR valuative criterion (pp. 26–27), which Mathlib lists as future work (`AlgebraicGeometry/ValuativeCriterion.lean`, "Future projects"); the route does not need it | absent | XL |
 | F14 | Relative effective Cartier divisors, fibrewise criterion and `Div` open in `Hilb` (Kleiman, Lemma 3.4, Thm 3.7, pp. 22–24) | partial | M |
 | F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial (finite model) | M |
@@ -537,11 +537,19 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     change: no bound is uniform even over Artinian bases (the blow-up of the origin of
     `k[s,t]`). Nitsure's four-term sequences on p. 14 are exact at `π_* F(r)` for every
     `r`, but at `π_* ⊕ O(b + r)` in general only for large `r`.
-    - Open: the strata `S_f` and (i)–(iii) for general `n`, which need Nitsure's (B) and
-      (C) for a non-flat `F`, and a non-affine base.
-    - The factorization through `S_f` needs `φ^* π_* F(m) ≅ π_{T*} F_T(m)` for every
-      `m ≥ N`. Lemma 3.1 on an affine open of `T` gives it only for `m ≥ r₀`; the rest
-      comes from (C) for `F`, cohomology and base change for the flat `F_T`, and Nakayama.
+  - F12, the flattening stratification done over an affine Noetherian base: (B) and (C)
+    for any coherent `F`, by Noetherian induction with generic flatness and Lemma 3.1 on
+    finitely many pieces (`Cohomology/Projective/FiberBaseChange`); the strata `S_f` with
+    Thm 4.3 (i)–(iii); and the universal property (ii) for locally Noetherian test schemes
+    (`FlatteningStratification/{HilbertPolynomial,Flatness}`). Independent statement
+    reviews found them corresponding; their repairs are applied.
+    - The printed proof omits, at the end of p. 22, the comparison
+      `φ^* π_* F(m) ≅ π_{T*} F_T(m)` for every `m ≥ N`. It is supplied on affine opens of
+      `T` from (C) for `F`, cohomology and base change for the flat `F_T`, and Nakayama
+      (`Cohomology/Projective/BaseChangeComparison`).
+    - Open: a non-affine base, needed by F13 over the Grassmannian, with the independence
+      of each `S_f` from the bound; and "⇐" for test schemes that are not locally
+      Noetherian.
 - **Tensor layer (supports M4).** `Modules/Tensor/Monoidal` gives a symmetric
   monoidal structure on `X.Modules` whose data are Aglib's tensor maps, with a general
   associator; its input is that local isomorphisms of module presheaves are stable
@@ -571,8 +579,8 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     - `P(E)`;
     - the Plücker embedding (F9).
 - **Next.**
-  - M4: the universal property of the flattening stratification and its non-affine
-    base, then Hilbert schemes (F13).
+  - M4: the flattening stratification over a non-affine base, then Hilbert schemes
+    (F13).
   - The `Over S` Zariski-representability adapter: shrink the values, pass to
     the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
     then apply `Scheme.LocalRepresentability.isRepresentable`.

@@ -25,3 +25,11 @@ empty-family map is exactly `pullback.snd (𝟙 S) f`. The forward and inverse
 projection equations, actual new-base structure equation, and original
 pullback-first-projection formula are public. No flatness, finiteness,
 Noetherianity or projectivity hypothesis is imposed on `f`.
+
+[Monomorphisms](Monomorphisms.lean): factorization through a monomorphism is
+local on the source (`Scheme.exists_lift_of_mono_of_forall_exists`); a point of
+a coproduct `∐ X` lies in the image of one component (`Scheme.exists_sigmaι_eq`);
+and `∐ X ⟶ S` induced by monomorphisms with pairwise disjoint images is a
+monomorphism (`Scheme.mono_sigmaDesc_of_pairwise_disjoint`). The statements use
+points, opens and covers of schemes. The flattening stratification
+(`FlatteningStratification/Flatness`) consumes them.

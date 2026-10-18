@@ -118,6 +118,12 @@ is the converse of `relativeFlat_of_comp_isOpenImmersion`. Quasicoherence is
 assumed, as in the Stacks statement; no finiteness, Noetherianity or flatness
 of a morphism is assumed.
 
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocalOnBase` (`LocalOnBase.lean`): for a pullback
+square of `p` along `g` and quasicoherent `M`, flatness of the pulled-back module restricts along
+any `j : U ⟶ T` (`relativeFlat_of_isPullback_comp`) and is local on `T` for open-immersion covers
+(`relativeFlat_of_isPullback_of_forall_exists`). It is a sibling leaf of `Locality`, which keeps
+its open-restriction statements.
+
 `Aglib.AlgebraicGeometry.Modules.Flat.Relative.Unit` treats the structure
 module. Its actual stalks are free of rank one (`unitStalkIso`, through
 `unitStalkCorepresentable`) and flat over the local rings (`unit_stalk_flat`,

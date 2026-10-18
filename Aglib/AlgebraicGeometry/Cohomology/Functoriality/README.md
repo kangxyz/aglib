@@ -34,6 +34,22 @@ equations preserve the specified module arrows and have no geometric
 flatness or quasicoherence premise. Consequently `moduleCohomologyPullback_map`:
 geometric module pullback on cohomology is natural in the coefficient module.
 
+[Modules/PullbackComposition](Modules/PullbackComposition.lean) proves module pullback on
+cohomology along composites (`moduleCohomologyPullback_comp_apply`, through Mathlib's
+`pullbackComp`), along equal morphisms (`moduleCohomologyPullback_congr_apply`) and through
+commutative squares `g ≫ pK = p' ≫ p` (`moduleCohomologyPullback_pullbackSquare_apply`, with
+`pullbackSquareCoefficientIso`). The `moduleCohomologyMapAlong` form of the square identity uses
+the coefficient arrow `pullbackSquareCoefficientArrow`, an isomorphism when `g` is
+(`moduleCohomologyMapAlong_pullbackSquareCoefficientArrow`). All are stated at variable
+morphisms, in every degree.
+
+[Modules/LinearAlong](Modules/LinearAlong.lean) gives `moduleCohomologyMapAlongLinearOfEq` and
+`moduleCohomologyPullbackLinearOfEq`: the maps of `moduleCohomologyMapAlongLinear` for a target
+action given by any ring map equal to `f.appTop ∘ α`, with `_apply` lemmas identifying the
+underlying maps. At `σ = id` the first overlaps `moduleCohomologyRestrictionMap`
+(`BaseChange/Modules/Map`) up to `restrictScalars id`; it is kept as a delegating adapter for
+target actions that are only propositionally equal to the structural one.
+
 [Pushforward](Pushforward.lean) defines the original `Scheme.Modules.derivedPushforwardPlus` and its unit. [PushforwardComposition](PushforwardComposition.lean) gives the actual D+ composition isomorphism for scheme morphisms and its original unit equation; [PushforwardSection](PushforwardSection.lean) gives the one-sided comparison for a supplied section/projection composite identity.
 
 [PullbackSingle](PullbackSingle.lean), [SingleComparison](SingleComparison.lean), [Contraction](../../Modules/Complex/Contraction.lean) and [PlusQuasiIso](../../Modules/Complex/PlusQuasiIso.lean) retain actual single objects, lower bounds, original units and supplied quasi-isomorphism/contraction data. Flat derived pullback and bounded comparison conditions are separate from ordinary structural pullback. No natural replacement/model choice is inferred.

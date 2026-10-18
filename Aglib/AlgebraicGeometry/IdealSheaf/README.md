@@ -16,5 +16,7 @@ For pullbacks of combinations of ideal sheaves, the same leaf proves
 `Scheme.IdealSheafData.comap_iSup_eq_bot_iff` (a supremum over any index type
 pulls back to zero iff every member does), `comap_mul_eq_top_iff` and
 `comap_finset_prod_eq_top_iff` (a finite product pulls back to the unit ideal
-sheaf iff every factor does). The refined joint rank strata of the
-flattening stratification consume them.
+sheaf iff every factor does), and `notMem_support_finset_prod_iff` (a point lies
+outside the support of a finite product iff it lies outside the support of
+every factor). The refined joint rank strata of the flattening stratification
+consume them.

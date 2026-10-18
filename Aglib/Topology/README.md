@@ -17,6 +17,10 @@ locally constant (`TopologicalSpace.NoetherianSpace.isLocallyConstant_pi`), and
 Noetherian induction for finite images
 (`TopologicalSpace.NoetherianSpace.finite_range_of_isIrreducible`): if every
 irreducible closed subset meets an open set with finite image, the function has
-finite range. Its present consumers are the fibre Hilbert polynomial leaves
+finite range. `TopologicalSpace.NoetherianSpace.exists_forall_le_of_isIrreducible`
+derives from it a uniform bound `N` for an eventual property `∀ d ≥ N, P x d`
+from bounds on a nonempty open part of every irreducible closed subset. Its
+present consumers are the fibre Hilbert polynomial leaves
 `Cohomology/Projective/HilbertPolynomial/FlatFamily` and
-`Cohomology/Projective/HilbertPolynomial/Finiteness`.
+`Cohomology/Projective/HilbertPolynomial/Finiteness`, and the large-twist fibre
+statements `Cohomology/Projective/FiberBaseChange`.

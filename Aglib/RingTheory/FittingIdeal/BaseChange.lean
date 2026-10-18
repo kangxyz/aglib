@@ -33,7 +33,7 @@ image vectors are the images of the minors.
 
 open Function TensorProduct
 
-universe u
+universe u v
 
 variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
 
@@ -125,10 +125,10 @@ theorem fittingIdeal_of_isLocalizedModule [Module.Finite R M] (p : Submonoid R)
     fittingIdeal Rₚ Mₚ k = (fittingIdeal R M k).map (algebraMap R Rₚ) :=
   fittingIdeal_of_isBaseChange (IsLocalizedModule.isBaseChange p Rₚ g) k
 
-/-- Fitting ideals of an extension of scalars of a finitely generated module (Stacks Project,
-Tag 07ZA (3)). -/
+/-- Fitting ideals of an extension of scalars of a finitely generated module, in any module
+universe (Stacks Project, Tag 07ZA (3)). -/
 theorem fittingIdeal_extendScalars {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S)
-    (N : ModuleCat.{u} R) [Module.Finite R N] (k : ℕ) :
+    (N : ModuleCat.{v} R) [Module.Finite R N] (k : ℕ) :
     Module.fittingIdeal S ((ModuleCat.extendScalars φ).obj N) k =
       (Module.fittingIdeal R N k).map φ := by
   let := φ.toAlgebra

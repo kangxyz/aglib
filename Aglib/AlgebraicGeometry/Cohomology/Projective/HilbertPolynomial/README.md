@@ -137,4 +137,14 @@ Nitsure Thm 4.3, first assertion, p. 19: (A) in the proof, pp. 20–21, over an 
 base). The proof is Noetherian induction
 (`TopologicalSpace.NoetherianSpace.finite_range_of_isIrreducible`) with generic flatness on
 `Spec (A ⧸ p)_a` (`exists_ne_zero_relativeFlat_pullback_away`, `[Finite ι]`; Stacks 052A). A
-non-affine Noetherian base needs the gluing G0.
+non-affine Noetherian base needs the gluing G0. `Finiteness` also proves the re-indexing of
+Nitsure's strata by polynomials (proof of Thm 4.3, p. 22): for every integer `N`,
+`f ↦ (f(N), …, f(N + n))` is injective on the fibre Hilbert polynomials
+(`injOn_eval_projectiveHilbertPolynomial_fiber`), from the degree bound and
+`Polynomial.eq_of_natDegree_le_of_eval_add_eq`
+([Algebra/Polynomial/RationalValues](../../../../Algebra/Polynomial/RationalValues.lean)).
+Surjectivity onto `ℤ^{n+1}` is not claimed.
+
+`NatDegree`: the Hilbert polynomial of a coherent `F` on `P^n_k` has degree at most `n`
+(`natDegree_projectiveHilbertPolynomial_le`), from `exists_projectiveHilbertFunction_eq_sum_choose`
+and `C(m, i) = descPochhammer i (m) / i!`.

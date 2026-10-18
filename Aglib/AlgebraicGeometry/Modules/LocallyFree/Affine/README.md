@@ -7,3 +7,5 @@
 These are object/retract properties, not a newly selected category equivalence with all projective modules. They supply finite-free reductions for [tensor injective preservation](../Tensor/README.md) and arbitrary-morphism projection formula. No Noetherian or globally free assumption is inserted.
 
 [Flat](Flat.lean) constructs finite local bases for an affine quasicoherent module whose actual section module is flat and finitely presented. Localization and basis comparisons use the existing tilde/pullback objects.
+
+[PullbackSpec](PullbackSpec.lean): `(Spec φ)^* E` is `(S ⊗_R Γ(E))~` for quasi-coherent `E` on `Spec R` (`pullbackSpecMapIsoTilde`, from `tildePullbackIso`); for Noetherian `S` and finite `Γ(E)` it is finite locally free iff `S ⊗_R Γ(E)` is projective (`isFiniteLocallyFree_pullback_specMap_iff_projective`).

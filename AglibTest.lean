@@ -25,6 +25,9 @@ import AglibTest.AffineCohomology
 import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 import AglibTest.Algebra.Homology.CochainComplex.ProjectiveCokernel
 import AglibTest.AlgebraicGeometry.Cohomology.BaseChange.Modules.Naturality
+import AglibTest.AlgebraicGeometry.Cohomology.BaseChange.Modules.Transitivity
+import AglibTest.AlgebraicGeometry.Cohomology.Projective.BaseChangeComparison
+import AglibTest.AlgebraicGeometry.Cohomology.Projective.FiberBaseChange
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.FlatOfSections
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.FlatTwist
 import AglibTest.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial
@@ -54,6 +57,8 @@ import AglibTest.AlgebraicGeometry.Descent.Opens
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Closed
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Coproduct
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Finite
+import AglibTest.AlgebraicGeometry.FlatteningStratification.Flatness
+import AglibTest.AlgebraicGeometry.FlatteningStratification.HilbertPolynomial
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Rank
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Universal
 import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
@@ -285,6 +290,7 @@ import AglibTest.RingTheory.GenericFreeness.Filtration
 import AglibTest.RingTheory.GenericFreeness.Localization
 import AglibTest.RingTheory.GenericFreeness.Noetherian
 import AglibTest.RingTheory.Regular.PrimeAvoidance
+import AglibTest.RingTheory.Spectrum.Prime.Bijectivity
 import AglibTest.SheafTensor
 import AglibTest.SylowFixedField
 import AglibTest.TensorCharpolyProduct

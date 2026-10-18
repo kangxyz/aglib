@@ -21,6 +21,11 @@ coordinate hypothesis.
   `isPullback_map`. The resulting `baseChangeIso` maps to Mathlib's native
   pullback by exactly `pullback.lift (map f ι) (toSpec S ι) (map_toSpec f ι)`.
   Both original projection equations are public.
+- `ToSpec` records that `baseChangeIso f ι` lies over the new base:
+  `ProjectiveSpace.baseChangeIso_inv_toSpec` (`(baseChangeIso f ι).inv ≫ toSpec S ι` is the second
+  projection) and its global-section form `ProjectiveSpace.baseChangeIso_hom_appTop_comp` for the
+  structural ring maps through `Scheme.ΓSpecIso`. It is a sibling leaf, so that the widely
+  imported `Cartesian` is unchanged.
 - The separate focused import `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine`
   identifies any supplied original Cartesian square over a spectrum
   with polynomial projective space over that spectrum's ring. The comparison

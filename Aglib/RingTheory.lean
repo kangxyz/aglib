@@ -141,6 +141,7 @@ public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance
 public import Aglib.RingTheory.LocalRing.ParameterQuotient
+public import Aglib.RingTheory.LocalRing.ResidueFieldComap
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.Localization.IteratedModuleLength
@@ -193,6 +194,7 @@ public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion
 public import Aglib.RingTheory.Smooth.Reduced
 public import Aglib.RingTheory.Smooth.RegularKernel
+public import Aglib.RingTheory.Spectrum.Prime.Bijectivity
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.BaseChange
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Flat

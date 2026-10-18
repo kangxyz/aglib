@@ -55,6 +55,9 @@ finite-presentation hypothesis enters the construction.
   `sheafRank G y` is at most `k` iff `y ∉ V(Fitt_k(G))` (Stacks, Tag 07ZC (1) ⇔ (2), through
   `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`); `sheafRank_eq_of_fittingIdealSheaf`;
   `sheafRank_pullback`: `sheafRank (f^* G) t = sheafRank G (f t)`.
+- `Scheme.Modules.sheafRank_le_iff_fittingIdeal_moduleSpecΓFunctor`: on `Spec A`, for finitely
+  presented `G` of finite type, `sheafRank G y ≤ k` iff `Fitt_k(Γ(G)) ⊄ y`, with `Γ(G)` the
+  `A`-module `moduleSpecΓFunctor.obj G`.
 - `Scheme.Modules.fittingIdealSheaf_eq_top_of_sheafRank_le` (`[F.IsFinitePresentation]`): if every
   fibre has dimension at most `k`, then `Fitt_k(F) = 𝒪_T`; `isClosed_setOf_le_sheafRank`: the
   points of fibre dimension at least `r` form a closed set (the support of `Fitt_{r-1}(F)`). The

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Finiteness
 public import Aglib.RingTheory.FittingIdeal.LocallyFree
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 public import Mathlib.RingTheory.Spectrum.Prime.Basic
@@ -17,7 +18,9 @@ Let `M` be a finitely generated module over a commutative ring `R`.
 * `Module.fittingIdeal_eq_top_iff_finrank_le`: over a field, `Fitt_k(V) = K` if and only if
   `dim V ≤ k` (Stacks Project, Tag 07ZB).
 * `Module.finrank_residueField_tensor_le_iff`: for a prime `p`, `dim_{κ(p)} κ(p) ⊗[R] M ≤ k` if
-  and only if `Fitt_k(M) ⊄ p` (Stacks, Tag 07ZC, (1) ⇔ (2)).
+  and only if `Fitt_k(M) ⊄ p` (Stacks, Tag 07ZC, (1) ⇔ (2));
+  `Module.finrank_extendScalars_residueField_le_iff` is the same for the fibre written as
+  `ModuleCat.extendScalars`, with the module in any universe.
 * `Module.setOf_finrank_residueField_tensor_eq_succ` and
   `Module.setOf_finrank_residueField_tensor_eq_zero`: the set of primes where the fibre
   `κ(p) ⊗[R] M` has dimension `r + 1` is `V(Fitt_r(M)) \ V(Fitt_{r+1}(M))`, and the set where it
@@ -44,6 +47,8 @@ rank `r` is described stalkwise by `Module.fittingIdeal_eq_bot_and_eq_top_iff_of
 @[expose] public section
 
 open TensorProduct
+
+universe v
 
 variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
 
@@ -75,6 +80,17 @@ theorem finrank_residueField_tensor_le_iff [Module.Finite R M] (p : Ideal R) [p.
     {k : ℕ} :
     Module.finrank p.ResidueField (p.ResidueField ⊗[R] M) ≤ k ↔ ¬fittingIdeal R M k ≤ p := by
   rw [← fittingIdeal_eq_top_iff_finrank_le, fittingIdeal_baseChange,
+    map_algebraMap_residueField_eq_top_iff]
+
+/-- Stacks Project, Tag 07ZC, (1) ⇔ (2), for the residue-field base change written as an
+extension of scalars: `dim κ(p) ⊗_R N ≤ k` if and only if `Fitt_k(N) ⊄ p`. -/
+theorem finrank_extendScalars_residueField_le_iff (p : Ideal R) [p.IsPrime]
+    (N : ModuleCat.{v} R) [Module.Finite R N] {k : ℕ} :
+    Module.finrank p.ResidueField
+        ((ModuleCat.extendScalars (algebraMap R p.ResidueField)).obj N) ≤ k ↔
+      ¬fittingIdeal R N k ≤ p := by
+  have := ModuleCat.finite_extendScalars (algebraMap R p.ResidueField) N
+  rw [← fittingIdeal_eq_top_iff_finrank_le, fittingIdeal_extendScalars,
     map_algebraMap_residueField_eq_top_iff]
 
 /-- The fibre-rank stratum of rank `r + 1` is `V(Fitt_r(M)) \ V(Fitt_{r+1}(M))`. -/
