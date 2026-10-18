@@ -36,6 +36,7 @@ base-change maps share this lower interface.
 | [FinitePresentation](FinitePresentation/README.md) | Actual finite generators/relations, transport and open-locality without a coherent-category dependency |
 | [Flat](Flat/README.md) | Genuine stalkwise-flat objects and arbitrary pullback exactness for flat quotients |
 | [LocallyFree](LocallyFree/README.md) | Canonical finite local bases, exact arbitrary pullback, proved fibre dimension and rank detection |
+| [FittingIdeal](FittingIdeal/README.md) | Fitting ideal sheaves of quasi-coherent sheaves of finite type, their pullback and the local freeness criterion |
 | [Coherent](Coherent/README.md) | Locally Noetherian abelian/exact specialization and coherent direct image |
 | [Invertible](Invertible/README.md) and [Differentials](Differentials/README.md) | Ordinary Picard tensor/dual/pullback and actual universal differentials/etale comparison |
 

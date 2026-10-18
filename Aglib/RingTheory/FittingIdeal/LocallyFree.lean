@@ -12,6 +12,9 @@ public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
 public import Mathlib.RingTheory.LocalProperties.Basic
 public import Mathlib.RingTheory.Localization.Finiteness
 public import Mathlib.RingTheory.Spectrum.Prime.FreeLocus
+public import Mathlib.RingTheory.Flat.Localization
+public import Mathlib.RingTheory.Flat.LocallyFree
+public import Mathlib.RingTheory.LocalProperties.FinitePresentation
 
 /-!
 # Fitting ideals and local freeness
@@ -31,12 +34,18 @@ public import Mathlib.RingTheory.Spectrum.Prime.FreeLocus
   (Stacks, Tag 07ZD, with (1) in stalkwise form);
   `Module.fittingIdeal_eq_bot_and_eq_top_iff_projective` is the form "projective of constant
   rank `r`" for finitely presented `M`.
+* `Module.finitePresentation_and_flat_of_forall_free`: a finitely generated module whose
+  localizations at all primes are free of one rank `r` is finitely presented and flat (Stacks,
+  Tag 00NX (Lemma 10.78.2), (8) ⇒ (1), at constant rank).
 
 Stacks, Tag 07ZD (1) asks that `M` be finite locally free of rank `r` in the Zariski sense: a
 cover by `D(f_i)` with `M_{f_i} ≅ R_{f_i}^r`. The statements here prove the stalkwise form (free
-of rank `r` at every prime). Passing from it to Zariski-local freeness, and deducing that `M` is
-finitely presented, needs Stacks, Tag 07ZC (4), which is not formalized; this is why the
-projective form assumes `[Module.FinitePresentation R M]`, a hypothesis Stacks does not need.
+of rank `r` at every prime). Stacks passes from it to Zariski-local freeness through Tag 07ZC (4),
+which is not formalized. Finite presentation and flatness follow instead from
+`Module.finitePresentation_and_flat_of_forall_free` (Stacks, Tag 00NX, with Mathlib's
+`Module.Free.away_of_finite_of_flat_of_rankAtStalk_constant` for the Zariski-local freeness). The
+projective form keeps `[Module.FinitePresentation R M]` as a hypothesis, which Stacks does not
+need.
 
 All statements are for finitely generated modules over arbitrary commutative rings; no
 Noetherian hypothesis is used. The convention `Fitt_{-1}(M) = 0` of Stacks, Tag 07Z9 is encoded
@@ -216,7 +225,8 @@ private theorem fittingIdeal_localizedModule_atPrime [Module.Finite R M] (p : Pr
 /-- Stacks Project, Tag 07ZD, (1) ⇔ (3), with (1) in stalkwise form: a finitely generated module
 `M` has free localizations `M_p` of rank `r` at all primes `p` if and only if `Fitt_k(M) = 0` for
 `k < r` and `Fitt_r(M) = R`. Zariski-local finite freeness of rank `r` (Stacks, Tag 07ZD (1)
-itself) would need Stacks, Tag 07ZC (4), which is not formalized. -/
+itself) is not stated here; `finitePresentation_and_flat_of_forall_free` gives finite presentation
+and flatness. -/
 theorem fittingIdeal_eq_bot_and_eq_top_iff [Module.Finite R M] {r : ℕ} :
     ((∀ k < r, fittingIdeal R M k = ⊥) ∧ fittingIdeal R M r = ⊤) ↔
       ∀ p : PrimeSpectrum R, p ∈ Module.freeLocus R M ∧ Module.rankAtStalk M p = r := by
@@ -253,7 +263,7 @@ theorem fittingIdeal_eq_bot_and_eq_top_iff [Module.Finite R M] {r : ℕ} :
 
 /-- Stacks Project, Tag 07ZD, (1) ⇔ (2) for rank `r + 1`, with (1) in stalkwise form: all
 localizations of `M` at primes are free of rank `r + 1` if and only if `Fitt_r(M) = 0` and
-`Fitt_{r+1}(M) = R`. Zariski-local finite freeness needs the unformalized Stacks, Tag 07ZC (4). -/
+`Fitt_{r+1}(M) = R`. Zariski-local finite freeness is not stated here. -/
 theorem fittingIdeal_eq_bot_and_eq_top_iff_succ [Module.Finite R M] {r : ℕ} :
     (fittingIdeal R M r = ⊥ ∧ fittingIdeal R M (r + 1) = ⊤) ↔
       ∀ p : PrimeSpectrum R, p ∈ Module.freeLocus R M ∧ Module.rankAtStalk M p = r + 1 := by
@@ -261,10 +271,34 @@ theorem fittingIdeal_eq_bot_and_eq_top_iff_succ [Module.Finite R M] {r : ℕ} :
   refine and_congr_left' ⟨fun h k hk => ?_, fun h => h r r.lt_succ_self⟩
   exact eq_bot_iff.2 (h ▸ fittingIdeal_mono (Nat.le_of_lt_succ hk))
 
+/-- A finite module all of whose localizations at primes are free of one rank `r` is finitely
+presented and flat (Stacks Project, Tag 00NX (Lemma 10.78.2), (8) ⇒ (1), at constant rank, with
+Mathlib's `Module.Free.away_of_finite_of_flat_of_rankAtStalk_constant` for the Zariski-local
+freeness). -/
+theorem finitePresentation_and_flat_of_forall_free [Module.Finite R M] {r : ℕ}
+    (h : ∀ p : PrimeSpectrum R, p ∈ Module.freeLocus R M ∧ Module.rankAtStalk M p = r) :
+    Module.FinitePresentation R M ∧ Module.Flat R M := by
+  have hflat : Module.Flat R M := by
+    refine Module.flat_of_localized_maximal M fun P _ => ?_
+    have : Module.Free (Localization.AtPrime P) (LocalizedModule P.primeCompl M) :=
+      (h ⟨P, inferInstance⟩).1
+    exact Module.Flat.trans R (Localization.AtPrime P) _
+  refine ⟨?_, hflat⟩
+  let s : Set R := {a | Module.Free (Localization.Away a) (LocalizedModule.Away a M)}
+  have hs : Ideal.span s = ⊤ := by
+    by_contra hne
+    obtain ⟨m, hm, hle⟩ := Ideal.exists_le_maximal _ hne
+    obtain ⟨a, ha, hfree⟩ := Module.Free.away_of_finite_of_flat_of_rankAtStalk_constant M m
+      fun m' _ => ((h ⟨m', inferInstance⟩).2).trans (h ⟨m, inferInstance⟩).2.symm
+    exact ha (hle (Ideal.subset_span hfree))
+  refine Module.FinitePresentation.of_localizationSpan s hs fun g => ?_
+  have : Module.Free (Localization.Away g.1) (LocalizedModule.Away g.1 M) := g.2
+  exact Module.finitePresentation_of_projective _ _
+
 /-- For a finitely presented module, `Fitt_k(M) = 0` for `k < r` and `Fitt_r(M) = R` if and only
-if `M` is projective of constant rank `r` (Stacks Project, Tag 07ZD). Finite presentation is
-assumed because the deduction of finite presentation from the Fitting conditions (through
-Stacks, Tag 07ZC (4)) is not formalized. -/
+if `M` is projective of constant rank `r` (Stacks Project, Tag 07ZD). Finite presentation is a
+hypothesis of this form; under the Fitting conditions it also follows from
+`finitePresentation_and_flat_of_forall_free`. -/
 theorem fittingIdeal_eq_bot_and_eq_top_iff_projective [Module.FinitePresentation R M] {r : ℕ} :
     ((∀ k < r, fittingIdeal R M k = ⊥) ∧ fittingIdeal R M r = ⊤) ↔
       Module.Projective R M ∧ ∀ p : PrimeSpectrum R, Module.rankAtStalk M p = r := by

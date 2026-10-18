@@ -114,3 +114,8 @@ example [Module.Finite R M] (S : Type*) [CommRing S] [Algebra R S] {r : ℕ} :
 [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms Module.fittingIdeal_map_eq_bot_and_eq_top_iff
+
+/-- info: 'Module.finitePresentation_and_flat_of_forall_free' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms Module.finitePresentation_and_flat_of_forall_free

@@ -81,6 +81,7 @@ public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
 public import Aglib.RingTheory.FiniteLength.Support
 public import Aglib.RingTheory.FiniteLocalResidue
 public import Aglib.RingTheory.FiniteTypeLocalResidue
+public import Aglib.RingTheory.Finiteness.CompHom
 public import Aglib.RingTheory.Finiteness.Exact
 public import Aglib.RingTheory.FittingIdeal.BaseChange
 public import Aglib.RingTheory.FittingIdeal.Basic

@@ -35,10 +35,14 @@ import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
 import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Stack
 import AglibTest.AlgebraicGeometry.Descent.Modules.Zariski
 import AglibTest.AlgebraicGeometry.Descent.Opens
+import AglibTest.AlgebraicGeometry.FlatteningStratification.Rank
+import AglibTest.AlgebraicGeometry.FlatteningStratification.Universal
 import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 import AglibTest.AlgebraicGeometry.Grassmannian.Representability
 import AglibTest.AlgebraicGeometry.IdealSheaf.Glue
+import AglibTest.AlgebraicGeometry.IdealSheaf.LocallyClosed
+import AglibTest.AlgebraicGeometry.Modules.FittingIdeal.Pullback
 import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Integral
 import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Spec
 import AglibTest.AlgebraicGeometry.Modules.InternalHom.PresheafTensor

@@ -10,12 +10,15 @@ statement names one.
 - Lower prerequisites: Mathlib (minors, adjugates, `Module.Finite.exists_fin'`, right exactness
   of the tensor product, `Module.freeLocus` and `Module.rankAtStalk`) and the Aglib leaf
   [`Aglib.LinearAlgebra.Multilinear.Span`](../../LinearAlgebra/Multilinear/Span.lean)
-  (`MultilinearMap.map_mem_span_of_forall_mem_span`).
-- Present consumers: the tests `AglibTest.RingTheory.FittingIdeal.Basic` and
-  `AglibTest.RingTheory.FittingIdeal.LocallyFree` only.
-- Planned consumer: the flattening stratification of plan row F12 (Nitsure, *Construction of
-  Hilbert and Quot schemes*, arXiv:math/0504590v1, Theorem 4.3, pp. 19–20), which is not yet
-  formalized.
+  (`MultilinearMap.map_mem_span_of_forall_mem_span`), and
+  [`Aglib.RingTheory.Finiteness.CompHom`](../Finiteness/CompHom.lean)
+  (`Module.Finite.compHom_of_surjective`).
+- Present consumers: the scheme-level
+  [Fitting ideal sheaves](../../AlgebraicGeometry/Modules/FittingIdeal/README.md) and, through
+  them, the [flattening stratification](../../AlgebraicGeometry/FlatteningStratification/README.md)
+  of plan row F12 in the case `n = 0` (Nitsure, *Construction of Hilbert and Quot schemes*,
+  arXiv:math/0504590v1, Theorem 4.3, pp. 19–20); the tests `AglibTest.RingTheory.FittingIdeal.Basic`
+  and `AglibTest.RingTheory.FittingIdeal.LocallyFree`.
 
 ## Objects
 
@@ -78,6 +81,11 @@ Import `Aglib.RingTheory.FittingIdeal.Stratification` for everything.
   `fittingIdeal S (S ⊗[R] M) k = (fittingIdeal R M k).map (algebraMap R S)` (07ZA (3)).
 - `Module.fittingIdeal_of_isBaseChange`, `Module.fittingIdeal_of_isLocalizedModule`
   (`[Module.Finite R M]`).
+- `Module.fittingIdeal_extendScalars` (`[Module.Finite R N]`): the same for
+  `ModuleCat.extendScalars φ`.
+- `Module.fittingIdeal_compHom_of_bijective` (`[Module.Finite R' M]`): for a bijective ring map
+  `e : R → R'`, the Fitting ideal over `R` (scalars through `Module.compHom`) is
+  `(fittingIdeal R' M k).comap e`.
 
 [LocallyFree](LocallyFree.lean):
 
@@ -97,10 +105,15 @@ Import `Aglib.RingTheory.FittingIdeal.Stratification` for everything.
   `r + 1`; `Module.fittingIdeal_eq_bot_and_eq_top_iff_projective`
   (`[Module.FinitePresentation R M]`): `↔ Module.Projective R M ∧ ∀ p, rankAtStalk M p = r`
   (07ZD).
+- `Module.finitePresentation_and_flat_of_forall_free` (`[Module.Finite R M]`): if every `M_p` is
+  free of one rank `r`, then `M` is finitely presented and flat (Stacks, Tag 00NX (Lemma 10.78.2),
+  (8) ⇒ (1), at constant rank, with Mathlib's
+  `Module.Free.away_of_finite_of_flat_of_rankAtStalk_constant`).
 - These prove 07ZD with (1) in stalkwise form: free of rank `r` at every prime, not the Zariski
-  cover by `D(f_i)` with `M_{f_i} ≅ R_{f_i}^r` of Stacks' Definition 10.78.1. The passage to the
-  Zariski-local form goes through 07ZC (4), which is not formalized; for the same reason the
-  projective form assumes finite presentation, which Stacks does not need.
+  cover by `D(f_i)` with `M_{f_i} ≅ R_{f_i}^r` of Stacks' Definition 10.78.1. Stacks passes to the
+  Zariski-local form through 07ZC (4), which is not formalized; finite presentation and flatness
+  come instead from `finitePresentation_and_flat_of_forall_free`. The projective form keeps
+  finite presentation as a hypothesis, which Stacks does not need.
 
 [Stratification](Stratification.lean):
 
@@ -130,10 +143,12 @@ The Stacks convention `Fitt_{-1} = 0` is encoded by the hypothesis `∀ k < r, F
   presented module) and (7) (`V(Fitt_0(M)) = Supp(M)`).
 - Stacks, Tag 0H73 (Example 15.8.6), beyond `Fitt_0(R ⧸ I) = I`.
 - Stacks, Tag 07Z7 (2)–(4).
-- Stacks, Tag 07ZC (4), hence Tag 07ZD (1) in the Zariski-local sense, and the deduction of finite
-  presentation from the Fitting conditions.
+- Stacks, Tag 07ZC (4), hence Tag 07ZD (1) in the Zariski-local sense as a statement of this
+  family.
 - Stacks, Tags 080Z and 0F7M.
-- Scheme-level Fitting ideal sheaves and Fitting strata.
+- Scheme-level Fitting ideal sheaves and Fitting strata: these are in
+  [Modules/FittingIdeal](../../AlgebraicGeometry/Modules/FittingIdeal/README.md) and
+  [FlatteningStratification](../../AlgebraicGeometry/FlatteningStratification/README.md).
 
 ## Proof route
 
