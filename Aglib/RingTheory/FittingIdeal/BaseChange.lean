@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.RingTheory.FittingIdeal.Basic
+public import Aglib.RingTheory.Finiteness.CompHom
+public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import Mathlib.RingTheory.Localization.BaseChange
@@ -21,12 +23,17 @@ image vectors are the images of the minors.
 
 * `Module.fittingIdeal_baseChange`: the statement for `S ⊗[R] M`;
 * `Module.fittingIdeal_of_isBaseChange`: the same for any `IsBaseChange S g`;
-* `Module.fittingIdeal_of_isLocalizedModule`: localizations, `Fitt_k(M_p) = Fitt_k(M) R_p`.
+* `Module.fittingIdeal_of_isLocalizedModule`: localizations, `Fitt_k(M_p) = Fitt_k(M) R_p`;
+* `Module.fittingIdeal_extendScalars`: the statement for `ModuleCat.extendScalars`;
+* `Module.fittingIdeal_compHom_of_bijective`: along a ring isomorphism `e : R → R'`, the Fitting
+  ideal over `R` of an `R'`-module is the preimage of its Fitting ideal over `R'`.
 -/
 
 @[expose] public section
 
 open Function TensorProduct
+
+universe u
 
 variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
 
@@ -117,5 +124,41 @@ theorem fittingIdeal_of_isLocalizedModule [Module.Finite R M] (p : Submonoid R)
     [IsLocalizedModule p g] (k : ℕ) :
     fittingIdeal Rₚ Mₚ k = (fittingIdeal R M k).map (algebraMap R Rₚ) :=
   fittingIdeal_of_isBaseChange (IsLocalizedModule.isBaseChange p Rₚ g) k
+
+/-- Fitting ideals of an extension of scalars of a finitely generated module (Stacks Project,
+Tag 07ZA (3)). -/
+theorem fittingIdeal_extendScalars {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S)
+    (N : ModuleCat.{u} R) [Module.Finite R N] (k : ℕ) :
+    Module.fittingIdeal S ((ModuleCat.extendScalars φ).obj N) k =
+      (Module.fittingIdeal R N k).map φ := by
+  let := φ.toAlgebra
+  change Module.fittingIdeal S (S ⊗[R] N) k = _
+  exact Module.fittingIdeal_baseChange S k
+
+/-- Fitting ideals along a ring isomorphism: for a bijective ring map `e : R → R'` and a finite
+`R'`-module `M`, viewed as an `R`-module through `e`, `Fitt_k^R(M) = e⁻¹ Fitt_k^{R'}(M)`. -/
+theorem fittingIdeal_compHom_of_bijective {R R' M : Type*} [CommRing R] [CommRing R']
+    [AddCommGroup M] [Module R' M] [Module.Finite R' M] (e : R →+* R') (he : Function.Bijective e)
+    (k : ℕ) :
+    letI := Module.compHom M e
+    Module.fittingIdeal R M k = (Module.fittingIdeal R' M k).comap e := by
+  let := Module.compHom M e
+  have := Module.Finite.compHom_of_surjective (M := M) e he.2
+  let := e.toAlgebra
+  have : IsScalarTower R R' M := IsScalarTower.of_algebraMap_smul fun _ _ => rfl
+  have hb : IsBaseChange R' (LinearMap.id : M →ₗ[R] M) := by
+    refine IsBaseChange.of_lift_unique _ fun Q _ _ _ _ g => ?_
+    refine ⟨{ toFun := g, map_add' := g.map_add, map_smul' := fun r' m => ?_ }, ?_, ?_⟩
+    · obtain ⟨r, rfl⟩ := he.2 r'
+      change g (r • m) = e r • g m
+      rw [g.map_smul]
+      exact (algebraMap_smul R' r (g m)).symm
+    · ext m
+      rfl
+    · intro g' hg'
+      ext m
+      exact congrArg (fun φ => φ m) hg'
+  rw [Module.fittingIdeal_of_isBaseChange hb k]
+  exact (Ideal.comap_map_of_bijective e he).symm
 
 end Module

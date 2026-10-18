@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Mathlib.AlgebraicGeometry.Normalization
 
 /-!
-# Generic-fibre maps from smooth schemes to integral schemes
+# Generic-fibre extensions from smooth schemes into integral morphisms
 
 For an integral scheme with integrally closed stalks, the normalization of its canonical
 generic inclusion is the original scheme. A generic map from a smooth scheme into an

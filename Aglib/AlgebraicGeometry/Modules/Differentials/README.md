@@ -15,8 +15,14 @@ The minimal direct selection from local Aglib main `40af743` is recorded in
 Each selected leaf and the independent public consumer passed at the default
 budgets. The standard-smooth basis supports independent ring and algebra
 universes. The global rank theorem retains the source universe and includes
-the empty scheme. Exterior powers, the canonical line, and its identification
-with the Serre dualizing coefficient remain separate proof obligations.
+the empty scheme. [ExteriorPower](../ExteriorPower/README.md) constructs the
+actual top exterior line from a specified rank witness.
+[Projective differentials](../../ProjectiveSpace/Differentials/README.md)
+prove the global Euler sequence and determinant/twist formula. The
+[canonical comparison](../../Cohomology/Duality/Projective/Canonical.lean)
+identifies the actual closed right-adjoint value with the top differential
+single for a closed immersion between schemes smooth of fixed dimensions
+over the same arbitrary base.
 
 [Affine](Affine.lean) is the sole arbitrary-ring owner of
 `affineRelativeConstants`, the native constant-base differential presheaf,
@@ -47,4 +53,8 @@ open restrictions. `Relative.SmoothRank` proves finite local freeness and
 the displayed rank for every smooth morphism of fixed relative dimension
 over arbitrary bases, using its native standard-smooth local frames.
 No field, Noetherianity, coefficient family or quasi-compactness premise
-is added. Determinant and Serre trace normalization remain separate.
+is added. The [relative Serre family](../../Cohomology/Duality/Projective/Relative/README.md)
+now supplies the normalized trace over separated bases and coherent duality
+over Noetherian separated bases, through the specified projective square
+and chosen closed embedding. General proper duality and embedding
+independence remain separate.

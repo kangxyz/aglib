@@ -47,7 +47,8 @@ extends this to quasi-compact quasi-separated `f` in every degree, and to
 an arbitrary supplied Cartesian square over the same ring map, with the
 original unit and tensor mate. `BaseChange/Derived/Locality` now proves
 invertibility of that installed derived comparison over arbitrary bases,
-for qcqs original morphisms and QC original homology on D+.
+for a Cartesian square with flat base-change morphism `j`, qcqs original
+morphism `f` and QC original homology on D+.
 `BaseChange/HigherDirectImage` gives the actual native higher-image map, its
 exact homology formula and QC isomorphism theorem.
 
@@ -122,7 +123,10 @@ actual Spec-map/tilde comparison retains the original principal-open
 differentials. Actual open-restriction comparisons and native
 standard-smooth charts prove finite local freeness and rank n for every
 smooth morphism of fixed relative dimension n over an arbitrary base.
-This does not yet identify its determinant with the Serre coefficient.
+The [global projective Euler and determinant family](../Aglib/AlgebraicGeometry/ProjectiveSpace/Differentials/README.md)
+identifies actual top differentials with `O(-n-1) ⊗ π*det(V)` and, after the
+displayed ordered degree-one coefficient frame, with `O(-n-1)`. Original
+chart maps, wedge formulas and order-change signs are retained.
 
 The [projective Serre duality family](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/README.md)
 proves full complementary-degree coherent Serre duality on polynomial
@@ -134,10 +138,30 @@ now identifies every nonnegative Ext group of a coherent module into the
 original dualizing twist with Hom from its actual RΓ to the shifted
 single-term base module, over every Noetherian commutative ring. The
 forward map is the original trace after the installed derived functor.
-There is no coefficient-flatness, perfectness or base-regularity premise;
-higher base-ring Ext is retained in dimension zero. Passage to general
-bases, smooth projective schemes and general proper dualizing complexes
-remains separate.
+The same affine theorem allows every native base module J, with target
+`J[i-n]` and no flatness, finiteness, projectivity or injectivity of J.
+There is no source-flatness, perfectness or base-regularity premise;
+higher base-ring Ext is retained in dimension zero.
+
+The [relative family](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/README.md)
+uses a supplied Cartesian projective-space square. Its derived differential
+trace exists over a separated scheme base for every quasicoherent coefficient
+N. The same comparison is a structural-scalar linear equivalence in every
+natural Ext degree for a coherent source over a Noetherian separated base;
+the projective presentation ring need not be Noetherian. Transfer through a
+chosen closed embedding retains the actual `Ri!((∧ⁿ Ω_p) ⊗ p*N)`.
+
+[Canonical](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical.lean)
+identifies `Ri!(∧ⁿ Ω_p)` with `single_(n-d)(∧ᵈ Ω_(i≫p))` for a closed
+immersion i with p smooth of relative dimension n and i≫p smooth of relative
+dimension d, over an arbitrary base without separation or Noetherianity.
+There is no global `d ≤ n` premise. The chosen smooth-embedding coherent
+duality over a Noetherian separated base has target the structure-module
+single shifted by `r-d`; its forward map is derived pushforward followed by
+one original trace. This is the unit-coefficient specialization. General
+coefficients retain the actual right-adjoint value; arbitrary-coefficient
+purity, embedding independence, internal RHom/coefficient complexes and
+general proper dualizing complexes remain separate.
 
 ## Retained theorem-family interfaces
 

@@ -1,21 +1,13 @@
 /-
-Extracted and mechanically adapted from the private, user-owned R5 source:
-https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/DVR/Basic.lean
-Original Git blob SHA-1: 982954b1c6d9be98609a0ef7178504641447f1a3
-Original SHA-256: c6d8cb601ec3a3a3e0beee5ae790e2014aba991545db33e8a125812b33312f37
-No upstream license is declared. This copied implementation is NOT covered by
-this standalone project's Apache license statement. This local source reuse
-provides no authorization for public redistribution. Original source comments
-and attribution are retained below. See THIRD_PARTY_NOTICES.md and LICENSE.
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
 public import Aglib.KTheory.MilnorK.K2.Specialization
 public import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
-
--- Preserve the original non-Apache provenance notice rather than invent a license.
-set_option linter.style.header false
 
 /-!
 # Residue data realized by an actual discrete valuation ring
@@ -48,6 +40,13 @@ Implementation basis: `ac804cb2f648f42380e612235b972786506d0b9f`;
 Lean `4.34.1`, mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
 Quillen comparison, cohomological residues, and arithmetic integrality have
 their separate mathematical premises and are outside this module's scope.
+
+## Implementation provenance
+
+Original R5 implementation:
+https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/DVR/Basic.lean
+Original Git blob SHA-1: `982954b1c6d9be98609a0ef7178504641447f1a3`.
+Original SHA-256: `c6d8cb601ec3a3a3e0beee5ae790e2014aba991545db33e8a125812b33312f37`.
 -/
 
 @[expose] public section

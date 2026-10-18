@@ -26,8 +26,6 @@
 
 [OpenImmersion/Pullback](OpenImmersion/Pullback.lean) proves that the existing restriction-adjunction isomorphism is exactly `cartesianBaseChangeMap` after the native `restrictFunctorIsoPullback` comparisons. `isIso_cartesianBaseChangeMap_of_isOpenImmersion` supplies invertibility of the original pullback mate for open base change and arbitrary module sheaves, without quasicoherence.
 
-[Cartesian](Cartesian.lean) constructs the actual comparison on a supplied cartesian square. [Coefficients](Coefficients/README.md) packages arbitrary over-scheme/algebra coefficient pullbacks and polynomial/Laurent naturality; [OpenImmersion](OpenImmersion/README.md) gives the actual generic open-base-change comparison and section formulas without quasicoherence or coherence. General cartesian comparison-map construction does not assert unconditional invertibility.
-
 The open comparison's adjunction-unit equation is named
 `restrictFunctorIsoPullback_inv_adjunction_unit`. The existing
 `restrictFunctorIsoPullback_inv_unit` in `Modules/Restriction/Unit` concerns

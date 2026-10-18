@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "Aglib",
   "root_module": "Aglib",
-  "status": "Partial accepted-source checkpoint after451aeda; focused LIVE source/export validation is recorded separately. Earlier full integration results retain their original basis.",
+  "status": "Historical partial accepted-source checkpoint after451aeda, with earlier full integration records preserved on their original bases. Later scoped producer/export acceptance is recorded in doc/migration/pointwise-cartier-coherent.json; current source and coverage boundaries are summarized in doc/WORK_PLAN.md.",
   "source_basis": {
     "R5Lab": "95a3772b895fbc19a81684be4ffd519d0fdcd6b3",
     "Quillen": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
@@ -269,7 +269,7 @@
     "full_default_status": "passed; exact current evidence is current_source_acceptance"
   },
   "current_surface": {
-    "status": "Selected accepted source subset; counts and hashes in checkpoint provenance",
+    "status": "Historical selected accepted-source subset at checkpoint-accepted-2026-10-16; its pending_excluded list is not a current exclusion inventory.",
     "pending_excluded": [
       "pointwise/affine supplier20",
       "Cartier/ideal39",
@@ -282,7 +282,7 @@
     "default_pipeline": "Initial complete default execution; current execution is current_source_acceptance."
   },
   "current_source_acceptance": {
-    "status": "Accepted producer subsets integrated; existing static checks pass. Current root export probe blocked by 37 stale targets; no dependent-artifact validation claimed.",
+    "status": "At this earlier partial checkpoint, accepted producer subsets were integrated and existing static checks passed; its root-export probe was blocked by 37 stale targets. This is a historical probe result, not the later export state or dependent-artifact acceptance.",
     "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
     "full_pipeline_replay_or_downstream_acceptance": false
   },
@@ -397,5 +397,12 @@
         "details": "The family migration fragments retain original identities and current destination correspondences."
       }
     }
-  ]
+  ],
+  "record_scope": {
+    "kind": "historical_partial_checkpoint_and_earlier_full_integration_records",
+    "partial_checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "later_scoped_projection": "doc/migration/pointwise-cartier-coherent.json#/current_LIVE_source_candidate",
+    "current_summary_owner": "doc/WORK_PLAN.md",
+    "boundary": "Counts, hashes, pending exclusions, blocked probes and pipeline behavior describe their identified historical snapshots. Later scoped export acceptance does not extend earlier full replay/downstream coverage. Use doc/DEVELOPMENT.md for current incremental validation and cache policy."
+  }
 }

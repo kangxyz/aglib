@@ -80,8 +80,9 @@ retained. The target ring need be neither flat nor Noetherian. Source
 the independent arbitrary-universe original-map/action consumer passed
 `1792127203628558000-96264`, with only the standard three axioms for all
 three inspected endpoints. The separate constant-dimension Grauert
-criterion retains reducedness, and a genuine open-neighbourhood statement
-still needs the native residue/free-locus normalization.
+criterion retains reducedness. [BaseChangeLocus](../BaseChangeLocus.lean),
+described below, supplies the basic-open original-map consequence without
+reducedness.
 
 [Semicontinuity](../Semicontinuity.lean) proves
 `upperSemicontinuous_moduleFiberCohomologyDimension_of_proper` in every

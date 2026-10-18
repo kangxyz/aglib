@@ -1,6 +1,6 @@
 # Scheme object properties
 
-[Normal](Normal/README.md) owns normal-stalk properties and their component consequences. [IrreducibleComponents](IrreducibleComponents.lean) owns the weaker domain-stalk/component separation results; openness of irreducible components retains local Noetherianity. The quasi-compact category and affine-induction principles below are separate general scheme interfaces. It uses actual domain/integrally closed stalks, proves reducedness from that condition, and derives open components and connected integrality under local Noetherianity.
+[Normal](Normal/README.md) owns normal-stalk properties and their reducedness consequence; connected integrality additionally retains local Noetherianity. [IrreducibleComponents](IrreducibleComponents.lean) owns the weaker domain-stalk/component separation results. When every stalk is a domain, irreducible components are open if there are finitely many components; a separate theorem proves openness under local Noetherianity without a global finite-component hypothesis. The quasi-compact category and affine-induction principles below are separate general scheme interfaces.
 
 This extends the object-property subject of Mathlib's native `AlgebraicGeometry/Properties.lean`. Morphism properties and their field-relative hypotheses have their own [Morphisms](../Morphisms/README.md) owner; the directory grouping does not change the types of the underlying Mathlib predicates.
 

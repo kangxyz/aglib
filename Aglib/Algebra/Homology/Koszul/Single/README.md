@@ -27,8 +27,13 @@ action is exactly original Yoneda precomposition with source multiplication;
 original cocycle representatives and coefficient postcomposition are retained.
 Degree-zero vanishing only needs coefficient regularity. The actual ring
 quotient has projective dimension at most one for source regularity, without
-an Ext-existence premise. Localization and determinant normalization remain
-further purity obligations. Source and independent public consumer passed with only
+an Ext-existence premise. The general-list
+[coefficient-localization](../Ext/Localization.lean) and
+[determinant-covariance](../Ext/GeneratorChange.lean) suppliers now retain
+the original top Koszul class under their actual localization and
+generator-change hypotheses. Their geometric consumers retain the actual
+local-model maps, determinant identifications and gluing conditions.
+Source and independent public consumer passed with only
 the standard three axioms.
 
 The actual-ideal Ext source and independent public consumer passed

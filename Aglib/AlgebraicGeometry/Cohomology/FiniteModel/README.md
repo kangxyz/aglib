@@ -70,9 +70,10 @@ the three standard axioms. Both the localized actual comparison and the
 original Cech/injective-resolution derived unit remain explicit.
 
 The existing actual chain-representative and tilde-counit comparison consumers remain separate
-and unchanged. A future direct-image object comparison through exact
-tilde's original derived units must not be conflated with the old chosen
-chain-normalized isomorphism before its normalization equality is proved.
+and unchanged. The direct-image object comparison in [Perfect](Perfect.lean)
+below uses exact tilde's original derived units. It must not be conflated
+with the old chosen chain-normalized isomorphism before their normalization
+equality is proved.
 Ordinary `p^*M` is not identified with `Lp^*M` from relative base flatness
 alone.
 
@@ -149,8 +150,9 @@ is supplied. They keep explicit surjectivity of the original maps; local
 constancy of fibre dimensions is not substituted for it. The generic leaf
 passed `1792127030339470000-94713` in 7.5 seconds; its arbitrary-universe
 public consumer passed `1792127067654411000-95174`, all three inspected
-declarations using only the standard axioms. The genuine geometric
-open-neighbourhood residue/free-locus normalization remains separate.
+declarations using only the standard axioms. The geometric basic-open
+residue/free-locus normalization is supplied by
+[BaseChangeLocus](BaseChangeLocus.lean), described below.
 
 [Semicontinuity](Semicontinuity.lean) owns the original fibre-dimension
 upper-semicontinuity proof for this same actual `D`. Native finite-complex
@@ -204,8 +206,10 @@ independent arbitrary-universe public consumer
 `1792128564293877000-10712`. All inspected declarations use only the
 standard three axioms. All six old numerical-owner extractions are now
 closed; their exact old theorem signatures and geometric endpoints are
-preserved. The genuine open-neighbourhood residue/free-locus step and the
-arbitrary-perfect-complex relative-Tor tier remain separate obligations.
+preserved. [BaseChangeLocus](BaseChangeLocus.lean) supplies the basic-open
+residue/free-locus step. Neighbourhood freeness with its adjacent-degree
+condition and the arbitrary-perfect-complex relative-Tor tier remain
+separate obligations.
 
 [BaseChangeLocus](BaseChangeLocus.lean) now supplies the previously separate
 basic-open original-map conclusion. For this same supplied `D`, surjectivity

@@ -21,8 +21,6 @@ scheme-specialized cohomological-dimension conclusion.
 
 Consumers are [scheme injective/affine/finite-support/Noetherian comparison](../../AlgebraicGeometry/Cohomology/README.md), actual module local detection and two-open cohomology. Generic Cech combinatorics remains in [site Cech](../../CategoryTheory/Sites/SheafCohomology/Cech/README.md), and actual open/presheaf specializations are in [topological Cech](Cech/README.md); generic closed-subspace dimension is in [Topology/KrullDimension](../KrullDimension/README.md).
 
-Consumers are [scheme injective/affine/finite-support/Noetherian comparison](../../AlgebraicGeometry/Cohomology/README.md), actual module local detection and two-open cohomology. Generic Cech combinatorics is below schemes in [site Cech](../../CategoryTheory/Sites/SheafCohomology/Cech/README.md); generic closed-subspace dimension is in [Topology/KrullDimension](../KrullDimension/README.md).
-
 [FreeAbelianPullback/Composition](FreeAbelianPullback/Composition.lean)
 constructs `abelianPullbackCompIso` from the original native inverse-image
 adjunctions and their literal direct-image composition. Its Hom normalization

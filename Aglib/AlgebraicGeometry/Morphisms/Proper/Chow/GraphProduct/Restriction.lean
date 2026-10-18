@@ -10,9 +10,11 @@ public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.GraphProduct
 /-!
 # The original graph-product projection over the common open
 
-Every open contained in all original graph domains is an isomorphism locus of
-the original graph-product projection. The proof uses native pullback pasting
-and the canonical base-change comparison of the same finite product.
+When every target is proper over the base and every graph domain is
+quasi-compact, each open contained in all original graph domains is an
+isomorphism locus of the original graph-product projection. The proof uses
+native pullback pasting and the canonical base-change comparison of the same
+finite product.
 -/
 
 @[expose] public section

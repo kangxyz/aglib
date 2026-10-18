@@ -10,8 +10,9 @@ Source and target object, morphism and Ext universes are independent. The stated
 mapped augmentation `I.mapAugmentation F`, with literal component
 `F.map (I.ι.f 0)`, the native single-comparison equation, and naturality for
 each supplied original resolution lift. Preservation of finite limits
-proves `mapAugmentation_quasiIsoAt_zero` for every coefficient. If the
-original `F.rightDerived (n + 1)` vanishes on the chosen coefficient for
+proves `mapAugmentation_quasiIsoAt_zero` for every coefficient. With
+`EnoughInjectives` in the source, if the original
+`F.rightDerived (n + 1)` vanishes on the chosen coefficient for
 every natural `n`, the same augmentation is a quasi-isomorphism, as is
 the literal `F.mapHomologicalComplex` image of `I.ι'`. The integer result
 uses the sole native extension comparison and introduces no second

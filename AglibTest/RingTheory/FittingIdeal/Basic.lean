@@ -180,3 +180,18 @@ example : Module.fittingIdeal ℤ (ℤ ⧸ Ideal.span {(6 : ℤ)}) 0 = Ideal.spa
 [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms Module.fittingIdeal_of_isLocalizedModule
+
+/-- info: 'Module.fittingIdeal_extendScalars' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms Module.fittingIdeal_extendScalars
+
+/-- info: 'Module.fittingIdeal_compHom_of_bijective' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms Module.fittingIdeal_compHom_of_bijective
+
+/-- info: 'Module.Finite.compHom_of_surjective' depends on axioms:
+[propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms Module.Finite.compHom_of_surjective

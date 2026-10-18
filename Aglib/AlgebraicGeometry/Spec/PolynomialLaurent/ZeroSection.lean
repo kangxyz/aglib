@@ -14,7 +14,7 @@ at LOCAL Quillen
 `189a8e779f0c68b2dfc6f8195daebb3e684a5905`.
 Source SHA-256: `0db622409af6393aa5dd691ccba71a7f4ea6809bac45fe9d1c4a24cfe15bc9d7`.
 Selected declaration ranges: [[141, 152]].
-Actual maps and premises are preserved; the generic truncation lift is recorded explicitly.
+Actual maps, universes and premises of the selected declaration are preserved.
 -/
 
 /-! # The zero section of the affine polynomial projection -/

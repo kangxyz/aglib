@@ -1,12 +1,7 @@
 /-
-Extracted and mechanically adapted from the private, user-owned R5 source:
-https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/Basic.lean
-Original Git blob SHA-1: 50f041a15e0cfb0272fb20a84a30a22ff236e951
-Original SHA-256: fe9037363f78ceaa75e33db45394bb76deae47cd9118d98d53050f7b40f2f331
-No upstream license is declared. This copied implementation is NOT covered by
-this standalone project's Apache license statement. This local source reuse
-provides no authorization for public redistribution. Original source comments
-and attribution are retained below. See THIRD_PARTY_NOTICES.md and LICENSE.
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
@@ -15,9 +10,6 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.Algebra.Field.Defs
 public import Mathlib.Algebra.Ring.Units
 public import Mathlib.Algebra.GroupWithZero.Units.Basic
-
--- Preserve the original non-Apache provenance notice rather than invent a license.
-set_option linter.style.header false
 
 /-!
 # Milnor K₂ of a field
@@ -45,6 +37,13 @@ with Quillen field K₂ requires Matsumoto as a separate background theorem;
 no Quillen group or Matsumoto comparison is defined here. This module makes
 no assertion about arithmetic model images, origin specialization, motivic
 comparison, or cohomological Bocksteins.
+
+## Implementation provenance
+
+Original R5 implementation:
+https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/Basic.lean
+Original Git blob SHA-1: `50f041a15e0cfb0272fb20a84a30a22ff236e951`.
+Original SHA-256: `fe9037363f78ceaa75e33db45394bb76deae47cd9118d98d53050f7b40f2f331`.
 -/
 
 @[expose] public section

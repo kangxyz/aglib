@@ -237,12 +237,13 @@ Ordinary pulled coefficients are not identified with derived coefficient
 pullback when the square is not Tor independent.
 
 The native derived-global-sections model and its actual all-base-change
-derived-object comparison are established here. A comparison to a globally
-installed left-derived scalar-extension functor is separate: the pinned
-Mathlib has no such bounded-above functor yet. Extension of the actual
-perfect-direct-image supplier from projective embeddings to all proper
-morphisms remains a separate required endpoint. The stronger arbitrary-base
-proper finite-presentation tier is not discharged by this Noetherian supplier.
+derived-object comparison are proved here. Comparison with an installed
+left-derived scalar-extension functor remains a separate interface.
+[Proper/FiniteModel](../../Proper/FiniteModel/README.md) extends the
+coherent relatively flat sheaf supplier to every proper morphism over a
+Noetherian affine base, using the same sole finite-cover model. Direct
+images of arbitrary perfect complexes and the stronger arbitrary-base
+proper finite-presentation tier are not discharged by these suppliers.
 
 ## Validation
 

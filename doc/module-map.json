@@ -350,7 +350,7 @@
     "source_correspondence": "migration/r5-fundamental-groups.json",
     "source_revision": "c82abf3a72ce1e1cedf4a4f1fe08bea994ad4df5",
     "provider_base": "64374534558c80c2fec996ee06bf7727b6c7f3e4",
-    "status": "native190-scoped-validation-passed; publication-and-R5-adoption-pending",
+    "status": "native190-scoped-validation-passed; downstream-adoption-separate",
     "source_module_to_native_module": {
       "R5Lab.Aglib.Algebra.Group.Action.TorsorAugmentation": "Aglib.Algebra.Group.Action.TorsorAugmentation",
       "R5Lab.Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Basic": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Basic",

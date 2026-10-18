@@ -15,7 +15,7 @@ at LOCAL Quillen
 `189a8e779f0c68b2dfc6f8195daebb3e684a5905`.
 Source SHA-256: `753edb4d726375560ba033777b732becd608e08ed46eed0408de42c90ba10b91`.
 Selected declaration ranges: [[44, 50]].
-Actual maps and premises are preserved; the generic truncation lift is recorded explicitly.
+Actual maps, universes and premises of the selected declaration are preserved.
 -/
 
 /-! # Open ranges in a cartesian scheme square -/

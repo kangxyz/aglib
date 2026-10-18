@@ -8,7 +8,8 @@
 | `ExactFunctor.map_inflation`, `map_deflation`, `map_isPullback` | An actual additive functor preserving the chosen conflations transports inflation/deflation and the stated exact pullback squares. |
 | `ExactFunctor.map_isPushout` | A displayed pushout `IsPushout i f g j` is preserved when its first input `i` is an inflation for the source exact structure. The admissibility premise is retained. |
 | `ExactStructure.ofEquivalence` | An actual equivalence transports the chosen exact structure; `equivalenceExactFunctor` and its inverse are the corresponding exact functors. |
-| `ExactSubcategory.exactStructure` / `exactInclusion` | Containing zero, repleteness and extension closure give the inherited exact subcategory and exact inclusion. Arbitrary ambient kernel/cokernel closure is not required. |
+| `ExactSubcategory.exactStructure` / `exactInclusion` | Containing zero, repleteness, extension closure and finite-product closure give the inherited exact subcategory and exact inclusion. Arbitrary ambient kernel/cokernel closure is not required. |
+| `ExactStructure.fullSubcategoryExactStructure` / `fullSubcategoryExactInclusion` | The same inherited structure and inclusion with finite-product closure derived from extension closure, containing zero and repleteness. No separate finite-product input is required by these wrappers. |
 
 All names in the table are under `CategoryTheory.ExactCategory`. Import `Aglib.CategoryTheory.ExactCategory.Basic` for objects, [Abelian](Abelian.lean) for the standard structure, [Functor](Functor.lean) for exact functors, [Equivalence](Equivalence.lean) for transport and [Subcategory](Subcategory.lean) for inheritance. [Isomorphisms](Isomorphisms.lean), [Composition](Composition.lean), [BaseChange](BaseChange.lean) and [MatrixDeflation](MatrixDeflation.lean) give the actual square/biproduct calculations.
 

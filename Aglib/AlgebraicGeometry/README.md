@@ -5,14 +5,33 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | Subject | Interfaces and principal results |
 | --- | --- |
 | [Modules](Modules/README.md) | Actual stalks/functors/base-change maps, quasicoherent affine comparison, finite presentations, exact vector bundles, coherent specialization, ordinary Picard tensor groups and differential maps |
-| [Descent](Descent/README.md) | Zariski stacks of module sheaves, quasi-coherent sheaves and line bundles; faithfully flat descent of closed subschemes |
-| [Morphisms](Morphisms/README.md) | Etale stalk/neighborhood comparison, finite-surjective geometric-point lifting, closed-source Noetherianity and arbitrary-dimensional smooth regularity/normality/dimension |
-| [Properties](Properties/README.md) | Normal stalks and locally Noetherian open-component/integrality results |
-| [Stalk](Stalk/README.md) | Actual polynomial and generic-fibre local-ring comparisons |
-| [Geometrically](Geometrically/README.md) | Geometric connectedness under arbitrary field extension and algebraic-closure detection |
+| [Descent](Descent/README.md) | Zariski module stacks, fpqc quasicoherent and fppf line-bundle stacks, and closed-subscheme descent along flat surjective quasi-compact maps |
+| [FlatteningStratification](FlatteningStratification/README.md) | Rank strata of a quasi-coherent sheaf of finite type, cut out by Fitting ideal sheaves, with their universal property (the case `n = 0` of the flattening stratification) |
+| [Morphisms](Morphisms/README.md) | Etale stalk/neighborhood comparison, finite field-valued lift sets, finite-etale objects and base change, section rigidity, smooth regularity/dimension and proper graph modifications |
+| [Properties](Properties/README.md) | Normal/domain stalks, component openness, connected integrality, qcqs affine induction and finite dense-affine covers |
+| [Stalk](Stalk/README.md) | Actual stalk-map, flat-base-change, polynomial, generic-fibre and dimension comparisons |
+| [Geometrically](Geometrically/README.md) | Geometric connectedness under field extension, algebraic-closure detection and proper geometrically integral constants |
 | [Group](Group/README.md) | Actual group-object pullback, canonical identity/composition and multiplicative point-fibre comparison |
-| [Cohomology](Cohomology/README.md) | Actual Zariski `Sheaf.H`, structural scalars, affine/finite-support/Noetherian vanishing, Cech comparison, canonical field base change and explicit finiteness/relative inputs |
+| [Grassmannian](Grassmannian/README.md) | Coordinate charts, overlaps and glued schemes representing the affine Grassmannian functor and its natural-transformation extension |
+| [Picard](Picard/README.md) | Relative group presheaves, normalized and rigidified comparisons, and fppf sheafification; Picard representability remains open |
+| [FunctionField](FunctionField/README.md) | Canonical generic inclusions, dominant field maps, generic-fibre isomorphisms and extension to targets integral over the base |
+| [Generic finite-etale normalization](Normalization/GenericFiniteEtale/README.md) | Actual relative normalization and generic recovery, with separate normal/locally Noetherian finiteness and stalk conclusions |
+| [BaseChange](BaseChange/README.md) | Scheme-valued coefficient pullbacks with original projections and naturality |
+| [Spec](Spec/README.md) and [Products](Products/README.md) | Polynomial/Laurent spectra, coordinates and zero section, localization squares and integer-base product diagrams |
+| [Limits](Limits/README.md) | Finite native over-products and arbitrary base-change comparisons |
+| [IdealSheaf](IdealSheaf/README.md) | Actual kernel ideal modules, restrictions and canonical quotient-flat base-change maps |
+| [EffectiveCartierDivisor](EffectiveCartierDivisor/README.md) | Finite presentation of invertible closed ideals and smooth relative-dimension-one Cartier criteria |
+| [ProjectiveSpace](ProjectiveSpace/README.md) | Actual polynomial Proj, charts, twists, finite presentations, affine immersions, base change and chartwise Euler sequences |
+| [Cohomology](Cohomology/README.md) | Actual Zariski `Sheaf.H`, structural scalars, Cech and derived comparisons, qcqs flat base change, proper coherent finiteness, [field Hilbert polynomials](Cohomology/Projective/HilbertPolynomial/README.md), projective regularity and [relative projective duality](Cohomology/Duality/Projective/Relative/README.md) with its stated base hypotheses |
 
-Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../doc/README.md) explain their interfaces. Curve/P1/genus/degree and K/G/Q/S applications remain external.
+Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../doc/README.md) explain their interfaces. Curve/P1/genus/degree and Quillen K/G/Q/S applications remain external.
 
-[Spec](Spec/README.md) and [Products](Products/README.md) add actual polynomial/Laurent and integer-base product diagrams. Scheme properties include the actual quasi-compact category and the affine-induction principle with explicit overlap/union premises. Latest Godement and derived interfaces retain their bounds and unit equations and do not discharge the older explicit rank/finiteness input families.
+The Grassmannian leaves retain `BaseChangeMkQFormula`; the focused
+[formula supplier](../RingTheory/Grassmannian/BaseChangeFormula.lean) proves it
+for every commutative ring and module. The interpretation on nonaffine tests
+as locally free module-sheaf quotients remains separate.
+
+Godement and derived interfaces retain their bounds and original unit equations.
+Proper coherent finiteness and smooth differential rank have proved suppliers;
+the full arbitrary-base `LocalFreeCohomologyBaseChange` family remains an explicit
+input, with the exact conditions recorded in [INTERFACES.md](../../doc/INTERFACES.md).

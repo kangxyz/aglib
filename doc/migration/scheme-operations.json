@@ -1349,7 +1349,7 @@
       ],
       "retention_scope": "selected declaration family from this original source, across its current owned destination splits; destination_explicit_public_names locates this specific file",
       "current_source_destinations": [
-        "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
+        "Aglib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent/Pushforward.lean",
         "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean"
       ],
       "destination_history": [
@@ -1360,7 +1360,8 @@
           },
           "boundary": "Original source fields and earlier validation basis unchanged."
         }
-      ]
+      ],
+      "current_destination_note": "The former finite-presentation transport cut now has its native site-sheaf owner in Sheaf/Quasicoherent/Pushforward.lean. Original destination paths, hashes and declaration names remain historical correspondence evidence."
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.VectorBundle.Exact",
@@ -2405,12 +2406,13 @@
         "AlgebraicGeometry.Scheme.Modules.localBasisPushforward_preservesColimits"
       ],
       "current_source_destinations": [
-        "Aglib/AlgebraicGeometry/Modules/FinitePresentation/Transport.lean",
+        "Aglib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent/Pushforward.lean",
         "Aglib/AlgebraicGeometry/Modules/LocallyFree/Restriction.lean"
       ],
       "current_destination_status": "superseded by accepted lower-owner split",
       "current_destination_checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json",
-      "original_destination_identity_preserved": true
+      "original_destination_identity_preserved": true,
+      "current_destination_note": "The former finite-presentation transport cut now has its native site-sheaf owner in Sheaf/Quasicoherent/Pushforward.lean. Original destination paths, hashes and declaration names remain historical correspondence evidence."
     },
     {
       "source_module": "Quillen.AlgebraicGeometry.Scheme.Coherent.Basic",

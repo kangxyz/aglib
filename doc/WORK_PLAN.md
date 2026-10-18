@@ -29,9 +29,72 @@ nonvacuous declarations, reusing zero module results. Source/artifact/configurat
 end guards passed; all 54 current resource guards closed successfully. Both
 example modules have zero stored kernel declarations, so their successful 02
 compilation and bound artifacts provide client evidence without an extra replay
-claim. Commit/merge/publication and later R5 consumer adoption remain with the
-principal. No theorem-family input, downstream application or G017 obligation
-is declared closed.
+claim. The merged upstream source preserves all selected modules and their
+native import closure; matching proof evidence is retained. Later R5 consumer
+adoption has its own final pin and source basis. No theorem-family input,
+downstream application or G017 obligation is declared closed.
+
+## Current source and open boundaries
+
+The documentation integration uses main revision
+`64374534558c80c2fec996ee06bf7727b6c7f3e4` together with audit commit
+`d0f2384ed2fbc315ec5aaf82e3d8c971a88dc07e`. The family guides and
+[INTERFACES.md](INTERFACES.md) describe the implemented mathematics; the
+checkpoints below retain their original source and validation bases. A source
+inventory, documentation correction or historical successful run does not
+establish fresh whole-library or downstream acceptance.
+
+| Area | Implemented source | Remaining boundary |
+| --- | --- | --- |
+| Base change | Canonical affine module mate; qcqs flat base change for original cohomology, D+ coefficients with QC homology and native higher direct images | General nonflat sheaf-valued comparison; the full arbitrary-base `LocalFreeCohomologyBaseChange` input family |
+| Proper cohomology | Noetherian proper finiteness; coherent higher direct images over locally Noetherian targets; universal finite-projective models for coherent relatively flat coefficients over Noetherian affine bases | Direct images of arbitrary perfect coefficients |
+| Differentials and duality | Relative differentials and fixed smooth rank; global projective Euler/determinant maps; purity of top differential lines for closed immersions between smooth schemes over arbitrary bases; relative Serre duality over Noetherian separated targets with coherent source and QC target coefficients and a chosen projective embedding | General proper duality, broader coefficient complexes and arbitrary-base relative Serre duality |
+| Downstream adoption | The [downstream guide](DOWNSTREAM.md) distinguishes inspected dependency pins from historical migration and validation records | Reconcile actual dependency checkouts and check affected consumers before claiming downstream acceptance |
+
+The [cohomology plan](COHOMOLOGY_PLAN.md) gives the exact source suppliers and
+remaining dependencies. Migration JSON files are records of identified source
+cuts and checks, not a complete live inventory of this revision. Original
+hashes and execution records remain fixed when later source changes.
+
+## Documentation correspondence audit, 2026-10-18
+
+The original audit reviewed all 293 Markdown documents and 20 documentation JSON
+files at `c8ef63f1f0ad26c8bca83f2bf2a8559fffdc356e`, comparing the family guides with Lean
+declarations, section hypotheses and source docstrings. Corrections distinguish
+proved suppliers from remaining inputs, retain missing mathematical hypotheses,
+repair source/import routes and separate historical acceptance from present
+interfaces. Original source, receipt and checker hashes and recorded numerical
+evidence remain unchanged in the repaired migration records.
+
+On that audit snapshot, all 1943 local Markdown links and heading anchors
+resolved; fenced examples were balanced and explicit Aglib imports named
+existing modules. All 20 JSON records parsed, and the repaired current-destination routes reach their actual source
+owners. These are source/link checks; no executable Lean example was changed.
+
+Source checks on that snapshot passed for generated enrollment, layout, source
+policy and placeholders: 1159 production modules and 23 positive test modules. The 53
+edited Lean files have identical noncomment tokens, including string literals;
+only their documentation changed. No definitions, proofs, imports, dependency
+pins or execution tooling were changed. This is documentation/source
+correspondence evidence, not a fresh mathematical proof review, compilation,
+whole-library replay or downstream acceptance.
+
+## Documentation integration with updated main
+
+The audit commit above is reconciled with main revision
+`64374534558c80c2fec996ee06bf7727b6c7f3e4`, retaining the incoming Milnor,
+descent, Grassmannian, tensor and relative-duality implementations and evidence.
+The touched guides now record the completed Euler, determinant, canonical-purity
+and relative coherent-duality endpoints under their actual hypotheses. This
+bounded merge reconciliation does not extend the original full documentation
+audit to every later upstream theorem or acceptance record.
+
+Combined source checks pass for generated enrollment, dependency layout,
+source policy and placeholders: 1763 production modules and 236 positive test
+modules. The same 53 Lean-file changes remain comment-only relative to that
+main revision. No executable implementation, proof, dependency pin or tooling
+change is introduced by this documentation merge; current proof/build evidence
+keeps its upstream scope.
 
 ## General Milnor K-theory migration
 
@@ -40,7 +103,7 @@ from Motivic, one generic polynomial extraction and 170 moved tests. General
 groups, products, residues and norms now belong to `Aglib.KTheory.MilnorK`;
 `MilnorK.K F n` is canonical, with tensor presentations nested under
 `MilnorK.K2` and `MilnorK.K3`. Two original endpoint-geometry applications remain
-in Motivic. Existing hypotheses and the seven source license exceptions remain.
+in Motivic. Existing mathematical hypotheses are retained.
 
 Selected production compilation, declaration and text-style lint, source guards,
 affected positive tests and the independent Milnor client pass. The final lint
@@ -92,8 +155,8 @@ transfer, recorded alongside its scoped net saving in PERFORMANCE.md. The
 finite-support formula also passes its actual Exact.Euler consumer at the
 default budget, with the recorded small RSS increase.
 
-The complete local native `bash scripts/check.sh --rehash --ci` route now passes
-on the subsequent source snapshot: 1159 production modules, 23 trust-test
+The subsequent performance checkpoint records a successful complete local native
+`bash scripts/check.sh --rehash --ci` route: 1159 production modules, 23 trust-test
 modules, 108 script tests, production/positive builds, declaration/style lint,
 axiom audits, negative controls, exact compiled inventory and the independent
 downstream build and audit. It uses the existing CI heap/RSS limits and current
@@ -127,8 +190,13 @@ the Euler characteristic use that model and its actual comparison maps.
 
 The integration also retains the quotient-linear principal Koszul Ext
 calculation and the native differential and exterior-power prerequisites.
-Relative Serre duality, its canonical-bundle identification and perfect direct
-image for general perfect coefficients remain explicit development targets.
+At that checkpoint, the original derived Serre comparison on polynomial
+projective space over a Noetherian ring was also proved, while wider relative
+duality and its canonical-bundle normalization remained targets. The later
+relative-duality integration supplies the precise Euler, canonical-purity and
+Noetherian separated-base/chosen-embedding endpoints recorded in
+[INTERFACES.md](INTERFACES.md). General proper duality and perfect direct image
+for arbitrary perfect coefficients retain their separate boundaries.
 These are not consequences merely of naming a dualizing sheaf or constructing
 a finite model for a relatively flat sheaf.
 
@@ -174,7 +242,7 @@ The coherent quotient equivalence retains `IsNoetherian X`; lower subobject and
 fullness results keep their locally Noetherian conditions. Cartier results keep
 their separate finite, flat and locally finitely presented hypotheses. On that earlier source basis, proper module-cohomology finiteness and
 relative locally free cohomology base change remained explicit inputs. The
-cohomology integration below supplies the former; the full arbitrary-base
+cohomology integration described above supplies the former; the full arbitrary-base
 locally free base-change family remains a separate boundary.
 
 The earlier checkpoints `f87a691813bc5f763dd7a119990c298b35c389f4` and `451aeda`
@@ -207,8 +275,11 @@ surface and requires current affected-module validation. Native build artifacts
 and valid prior evidence are preserved; the source review is not a claim of
 fresh compilation, whole-source migration completion or missing theorem proofs.
 
-## Dependency order for the remaining extraction
+## Dependency order for extraction
 
+This order describes dependencies, not a list of wholly unimplemented families.
+Several suppliers in the table are now implemented; their current interfaces
+are recorded in the family guides and the current-source table above.
 Migration includes existing proofs and constructions, their actual canonical
 maps and the necessary general prerequisite closure. A theorem-family input is
 not counted as its implementation. Exact upstream interfaces are reused;
@@ -265,15 +336,16 @@ original rank-one/Picard consumers. Its general maps live below those consumers.
 
 The twenty-one D-minus flat-model producers have accepted focused native
 compilation, declaration/style and origin/axiom checks, and independent ordinary
-review on their recorded final source guards. The next pointwise and geometric source waves are tracked in the current-status
-table above; their later native/review states do not retroactively alter these
-earlier accepted input identities. The coherent and Cartier source ownership and review states are tracked above;
-a native producer pass does not replace their pending independent reviews. These are
+review on their recorded final source guards. The subsequent pointwise, coherent
+and Cartier waves are recorded in the earlier migration checkpoint above;
+their later native/review states do not retroactively alter these earlier
+accepted input identities. A native producer pass alone does not supply
+independent review. These are
 successive closed groups, not a completion claim for the whole migration.
 
 ## TT and finite-etale snapshot before the complete review
 
-The current cuts admit general algebraic geometry and related algebraic, categorical and homological theory from the TT archive and R5 sources. Specialized curve, projective-line, Waldhausen and K-theory applications remain downstream. The current source-correspondence records are linked from the [documentation index](README.md); the historical extraction counts below are not an inventory or validation claim for these additions.
+The TT and finite-etale cuts admit general algebraic geometry and related algebraic, categorical and homological theory from the TT archive and R5 sources. Specialized curve, projective-line, Waldhausen and K-theory applications remain downstream. Their recorded source-correspondence snapshots are linked from the [documentation index](README.md); the historical extraction counts below are not an inventory or validation claim for later additions.
 
 The seven-leaf native structural perfect-complex core and the three homology leaves split among quasicoherent modules, ordinary complexes and perfect complexes have accepted independent review on their recorded inputs. They use actual cochain complexes and the standard native derived category. Strict perfection bounds finite locally free terms; local perfection supplies local derived strict models. Quasicoherent homology and local homology bounds hold on arbitrary schemes, while a single global homology interval retains `CompactSpace X`. No global strictification is asserted. The [perfect-complex guide](../Aglib/AlgebraicGeometry/Modules/PerfectComplexes/README.md) states these distinctions.
 
@@ -341,7 +413,7 @@ The subsequent documentation update makes `AGENTS.md` a short action guide, plac
 
 The earlier Quillen integration required the original general cone-map additivity law as a public interface. Its single implementation now lives in `MappingCone.Map` as `CochainComplex.mappingCone.map_add`, with the original preadditive and binary-biproduct assumptions; the identity-cone functor reuses it under its unchanged abelian assumptions. Independent ordinary source/mathematical review, actual narrow compilation and an external modern-module generic consumer pass. The public signature and its three allowed axioms are checked. The resulting enrollment contained 412 production modules, nine positive modules and audit support. At that recorded snapshot, the complete source default route exited zero: all 96 source regressions, compilation and positive tests, declaration/style lint, the 6384-declaration production axiom audit, rejection controls, compiled inventory, all 422 root replays and independent downstream build/audit/replay pass. The root replay inventories contain 6431 constants and 14 vacuous modules. The three downstream replay inventories are empty, so their additional replay is vacuous; their compilation and 337-declaration audit exercise the public interfaces. Completed current-basis receipts retain their original execution profiles, and all owned groups for that snapshot were closed. Dependency builds use owned cache copies.
 
-The public-hosted CI recovery addresses an actual three-hour timeout without a Lean compilation error. The workflow uses the public Ubuntu runner and explicit cache restore/save actions. Dependencies save after successful acquisition; immutable run/attempt project generations preserve eligible partial outputs after later check failures. Package version changes preserve incremental reuse, while compiler validation, pruning and `--rehash` remain required. These changes pass all 96 source regressions. Hosted execution is assessed from the actual workflow result.
+The public-hosted CI recovery addresses an actual three-hour timeout without a Lean compilation error. The workflow uses the public Ubuntu runner and explicit cache restore/save actions. Dependencies save after successful acquisition; immutable run/attempt project generations preserve eligible partial outputs after later check failures. Package version changes preserve incremental reuse. The current cache policy retains outputs despite advisory wrapper-stamp changes, prunes obsolete owned modules and lets native Lake `--rehash` validate actual traces; see [CACHING.md](CACHING.md). These changes pass all 96 source regressions. Hosted execution is assessed from the actual workflow result.
 
 Revision `419bd685cee21ac408756fbfe99565be19d186fd` passes both the [cold hosted run](https://github.com/kangxyz/aglib/actions/runs/38711518878) and a [second run of the same revision](https://github.com/kangxyz/aglib/actions/runs/38724351327). The second job completes in 270 seconds, restores both dependency and project caches, and reports that the library and independent client need no compilation. Both runs save their project-cache generations. Version-only reuse remains covered by the isolated local fixture; these hosted checks do not change the package version.
 

@@ -1,6 +1,6 @@
 # Properties and local comparisons of scheme morphisms
 
-This family uses the native Mathlib morphism properties. [Etale morphisms](Etale/README.md) give actual stalk comparisons and locally finitely presented etale-neighborhood detection. [Finite morphisms](Finite/README.md) lift algebraically closed field-valued points through finite surjective maps. [Closed immersions](ClosedImmersion/README.md) transport local/global Noetherianity from the target.
+This family uses the native Mathlib morphism properties. [Etale morphisms](Etale/README.md) give actual stalk comparisons and locally finitely presented etale-neighborhood detection. [Finite morphisms](Finite/README.md) give finite lift sets over arbitrary fields and lift algebraically closed field-valued points through finite surjective maps. [Closed immersions](ClosedImmersion/README.md) transport local/global Noetherianity from the target.
 
 [Smooth morphisms](Smooth/README.md) provides polynomial charts and field-scheme reducedness, regularity, normality and dimension. Closed-point/nonempty hypotheses distinguish dimension equalities from the all-stalk upper bound. Actual module pushforward/pullback and their coherent/exact specializations remain in [Modules](../Modules/README.md).
 
@@ -11,3 +11,11 @@ arbitrary base selected by finite etale structural morphisms, its fibres and
 actual base-change functors. Field-valued fibre finiteness holds over arbitrary
 fields; the geometric-point comparisons retain their separably closed field
 hypotheses. Surjectivity is not an object condition.
+
+[FormallyUnramified](FormallyUnramified/README.md) proves equality of lifts
+through separated, formally unramified, locally finite-type maps when they
+agree on a specified section of a geometrically connected family.
+[Proper](Proper/README.md) constructs graph closures and, over Noetherian
+affine bases, proper surjective modifications finite over finite projective
+products. The separate cohomology family consumes these actual maps to prove
+proper coherent finiteness.

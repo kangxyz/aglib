@@ -2562,7 +2562,7 @@
     "source_correspondence": "migration/r5-fundamental-groups.json",
     "source_revision": "c82abf3a72ce1e1cedf4a4f1fe08bea994ad4df5",
     "provider_base": "64374534558c80c2fec996ee06bf7727b6c7f3e4",
-    "status": "native190-scoped-validation-passed; publication-and-R5-adoption-pending",
+    "status": "native190-scoped-validation-passed; downstream-adoption-separate",
     "prefix_map": {
       "R5Lab.AlgebraicGeometry.EtaleFundamentalGroups": "AlgebraicGeometry.Scheme.EtaleFundamentalGroups",
       "R5Lab.AlgebraicGeometry.FiniteEtaleCovers": "AlgebraicGeometry.Scheme.FiniteEtale",
@@ -5212,7 +5212,7 @@
       "R5Lab.Galois.SplitExtension.continuous_coordinateInv": "TopologicalGroup.SplitExtension.continuous_coordinateInv",
       "R5Lab.Galois.SplitExtension.coordinateIsTopologicalGroup": "TopologicalGroup.SplitExtension.coordinateIsTopologicalGroup"
     },
-    "declaration_map_boundary": "Final post-lint lexical source/native names, kinds, lines and visibility; selected190 build, public clients, actual15 environment linters, conditional standard-foundation coverage and fresh selected190 kernel replay passed on their recorded scope. Publication and separate R5 adoption remain pending.",
+    "declaration_map_boundary": "Final post-lint lexical source/native names, kinds, lines and visibility; selected190 build, public clients, actual15 environment linters, conditional standard-foundation coverage and fresh selected190 kernel replay passed on their recorded scope. Separate R5 adoption is recorded downstream on its own pin and consumer basis.",
     "declaration_correspondence": [
       {
         "source_name": "R5Lab.Cohomology.EtaleH1.TorsorExtensionAlgebra.UniqueTransport",

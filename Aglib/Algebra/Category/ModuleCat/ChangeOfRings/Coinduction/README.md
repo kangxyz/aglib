@@ -58,9 +58,10 @@ This extension passed `1792149290569566000-26194`; the public noncommutative
 consumer passed `1792149367685045000-27013`, with independent Ext and derived
 sizes, six standard-axiom lists and no extra proof options.
 
-[Quotient](Quotient.lean) upgrades that unchanged additive comparison to an
-`R/I`-linear equivalence using `Ext.quotientSourceModule`. Its underlying
-additive equivalence is definitionally the original one. Arbitrary ideals,
+[Quotient](Quotient.lean) works over a commutative ring `R` and upgrades that
+unchanged additive comparison to an `R/I`-linear equivalence using
+`Ext.quotientSourceModule`. Its underlying additive equivalence is
+definitionally the original one. Arbitrary ideals,
 coefficients and natural degrees are allowed, with independent Ext and derived
 sizes and no regularity, flatness, finiteness or Noetherian premise. Original
 Yoneda coefficient naturality and resolution independence are retained.
@@ -70,8 +71,8 @@ proof options. Koszul-class normalization and concentration are supplied
 by the next leaf.
 
 [Principal](Principal.lean) computes the actual installed derived coinduction
-for a regular principal equation. Degree-one homology is the original
-coefficient quotient as an `R/(a)`-module; inverse quotient representatives
+for a regular principal equation over a commutative ring. Degree-one homology
+is the original coefficient quotient as an `R/(a)`-module; inverse quotient representatives
 retain the original transported Koszul class. Coefficient regularity alone
 gives the lower bound one, while ring regularity alone gives the upper bound
 one. With both, the actual D+ object is its coefficient quotient in degree one.
@@ -81,5 +82,22 @@ and homology-normalized native single map. All three comparisons are
 independent of the supplied resolution. No Noetherian, flatness or finiteness
 premise is added. The final source passed `1792149988379734000-32635`;
 the public consumer passed `1792150144251703000-34185` with thirteen
-standard-axiom lists and no extra proof options. Regular-list determinant
-normalization and geometric sheaf purity remain separate consumers.
+standard-axiom lists and no extra proof options.
+
+[RegularList](RegularList.lean) computes the installed derived coinduction of
+the ring coefficient for a finite weakly regular list `s` in a commutative
+ring `R`: its actual quotient-ring single lies in degree `s.length`.
+`regularListQuotientExtLinearEquiv` identifies the original top
+`Ext_R(R / Ideal.ofList s, R)` with that quotient line, and
+`regularListQuotientExt_eq_zero_of_ne_length` kills every other natural degree.
+The derived and homology comparisons retain independent Ext and derived sizes
+and are independent of the supplied injective resolution. Empty lists, zero
+rings and unit equations are included, without Noetherianity, flatness,
+module-finiteness or a proper-ideal premise.
+
+The [Koszul family](../../../../Homology/Koszul/README.md) now supplies original
+ordered top classes, coefficient quotients, localization and determinant
+covariance under its actual generator-change hypotheses. Those local algebraic
+interfaces and the displayed derived regular-list comparison feed geometric
+purity through the consumers' actual local models, determinant identifications
+and overlap/gluing conditions.

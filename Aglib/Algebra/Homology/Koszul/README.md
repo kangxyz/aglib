@@ -38,11 +38,12 @@ literal quotient and two-column tensor comparisons used in the induction.
 The elementwise homology criterion is owned lower by
 [ShortComplex/ModuleQuasiIso](../ShortComplex/ModuleQuasiIso.lean).
 
-The current tensor construction uses the native same-universe module monoidal
-category in the finite-list leaves; the independent universes of the single
-factor are retained. These results do not supply a canonical exterior basis,
-a determinant-valued top class, arbitrary change-of-generators compatibility,
-or geometric regular-immersion purity. Those remain separate Serre inputs.
+The tensor construction uses the native same-universe module monoidal category
+in the finite-list leaves; the independent universes of the single factor are
+retained. [Top](Top.lean) identifies the original ordered highest term with
+the ring module, including the empty list and without regularity. This is an
+ordered top frame, rather than an identification of the whole complex with
+exterior powers.
 
 [Ext](Ext.lean) is a native downstream calculation from the supplied
 resolution, not another imported source implementation. A weakly regular
@@ -50,7 +51,31 @@ list gives the actual quotient `R / Ideal.ofList s` projective dimension at
 most `s.length`. Every original Ext class above that bound vanishes for
 arbitrary coefficient modules and arbitrary supported Ext universes. The
 ring need not be Noetherian, the coefficient need not be finite, and the
-empty list is included. This supplies the upper bound for purity; the
-lower-degree vanishing and determinant-normalized top class for a general
-list remain separate proof obligations. The [single-factor Ext guide](Single/README.md)
-records the proved degree-one quotient class and concentration calculation.
+empty list is included. For ring coefficients, the
+[regular-list coinduction](../../Category/ModuleCat/ChangeOfRings/Coinduction/RegularList.lean)
+also proves vanishing in every degree different from the list length. Lower
+vanishing for arbitrary coefficients is a different assertion and needs its
+own coefficient hypotheses. The [single-factor Ext guide](Single/README.md)
+records the degree-one quotient class and its concentration conditions.
+
+[Ext/Top](Ext/Top.lean) constructs the original top Koszul cocycle for every
+coefficient and proves surjectivity onto native top Ext.
+[Ext/Quotient](Ext/Quotient.lean) identifies the ring-coefficient top line with
+`R / Ideal.ofList s`. [Ext/Coefficients](Ext/Coefficients.lean) identifies
+top Ext for arbitrary `N` with the actual quotient
+`N ⧸ ((Ideal.ofList s) • ⊤)`, linearly over `R ⧸ Ideal.ofList s`.
+These results assume weak regularity of `s` on the commutative ring `R` and
+the displayed `HasExt` size, without regularity, flatness or finiteness of
+`N`, Noetherianity or properness of the ideal. Literal quotient representatives
+retain the original top cocycles and native Yoneda coefficient maps.
+
+[Ext/GeneratorChange](Ext/GeneratorChange.lean) proves determinant covariance
+of the original ring-coefficient top class. Both lists must be weakly regular,
+the displayed matrix expresses the second ordered list in terms of the first,
+and their generated ideals agree. The matrix need not be invertible over `R`;
+the result uses the actual quotient map and the required length transport.
+[Ext/Localization](Ext/Localization.lean) proves that native Yoneda
+postcomposition by a supplied coefficient-localization map localizes this
+same top Ext. The base ring and quotient source stay fixed. These local
+suppliers do not themselves provide geometric gluing or a global
+regular-immersion purity theorem.

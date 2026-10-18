@@ -926,6 +926,8 @@ public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Fibre
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Field
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Ideal
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Locality
+public import Aglib.AlgebraicGeometry.FlatteningStratification.Rank
+public import Aglib.AlgebraicGeometry.FlatteningStratification.Universal
 public import Aglib.AlgebraicGeometry.FunctionField.BaseChange
 public import Aglib.AlgebraicGeometry.FunctionField.Basic
 public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
@@ -983,6 +985,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
 public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
+public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
 public import Aglib.AlgebraicGeometry.Limits.FiniteProducts
@@ -1105,6 +1108,9 @@ public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.AffineTransport
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Basic
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Locality
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Noetherian
+public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Basic
+public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.LocallyFree
+public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Pullback
 public import Aglib.AlgebraicGeometry.Modules.Flat.Closure
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generators
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Integral
@@ -1261,6 +1267,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction.Comparison
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Sections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Support
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FlatPullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology
@@ -1900,6 +1907,7 @@ public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
 public import Aglib.RingTheory.FiniteLength.Support
 public import Aglib.RingTheory.FiniteLocalResidue
 public import Aglib.RingTheory.FiniteTypeLocalResidue
+public import Aglib.RingTheory.Finiteness.CompHom
 public import Aglib.RingTheory.Finiteness.Exact
 public import Aglib.RingTheory.FittingIdeal.BaseChange
 public import Aglib.RingTheory.FittingIdeal.Basic

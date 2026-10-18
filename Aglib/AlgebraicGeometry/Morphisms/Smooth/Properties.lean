@@ -32,7 +32,8 @@ universe u
 /-- General smooth-field normality premise, Stacks 056T (33.25.4), using
 its ordinary normality consequence. Inspected 2026-10-09; the page has no
 correction comments. The proof passes through 056S and 0569. This statement
-is retained, not claimed to be proved in the pinned library. -/
+is retained as a family predicate; `smoothFieldNormality` in
+`Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality` supplies its proof. -/
 def SmoothFieldNormality : Prop :=
   ∀ (K : Type u) [Field K] (X : Scheme.{u}) (f : X ⟶ Spec (.of K)),
     Smooth f → NormalStalks X
@@ -45,8 +46,9 @@ def SmoothFieldRegularity : Prop :=
 
 /-- General relative-to-absolute dimension theorem for nonempty smooth field
 schemes. The standard-smooth convention is related to fibre dimension by
-Stacks 02G1/02G2 (29.35.12–13), via 10.137.6. Retained general premise,
-not a theorem of the pinned library. -/
+Stacks 02G1/02G2 (29.35.12–13), via 10.137.6. The retained family predicate
+is supplied by `smoothFieldDimension` in
+`Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension`. -/
 def SmoothFieldDimension : Prop :=
   ∀ (K : Type u) [Field K] (X : Scheme.{u}) (f : X ⟶ Spec (.of K)) (n : ℕ),
     SmoothOfRelativeDimension n f → Nonempty X → topologicalKrullDim X = n

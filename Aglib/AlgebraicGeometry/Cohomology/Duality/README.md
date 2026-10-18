@@ -75,9 +75,11 @@ linear duals. `coordinateLaurentResidueDuality` is the native `toPerfPair`
 equivalence, whose application is the same literal coefficient of the product.
 The opposite duality is the native `coordinateLaurentResiduePairing.flip.toPerfPair`.
 
-This is an algebraic monomial duality. Identifying it with the geometric
-projective cohomology pairing still requires the actual monomial/Cech and
-original `Sheaf.H` comparison. The independent
+This is an algebraic monomial duality.
+[Projective/MonomialTrace](Projective/MonomialTrace.lean) identifies it
+with the original geometric pairing through the actual monomial/Cech and
+`Sheaf.H` comparisons; [TwistDuality](Projective/TwistDuality.lean) proves
+perfectness of that same twist pairing. The independent
 `Algebra.Homology.Simplex.Relative.Trace` result already fixes the top
 full-support tuple class by evaluation on the increasing identity tuple.
 No general proper cohomology model or arbitrary-base local-freeness family

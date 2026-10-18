@@ -105,8 +105,9 @@ recovery of the ring-coefficient duality through its original unitor are
 proved. The final source/public gates are `1792174659383563000-52844` /
 `1792175796545791000-68922`, with nine exact standard-axiom checks and no
 extra options or warnings. This is polynomial projective space over an
-affine Noetherian base. Internal RHom, coefficient complexes, general-base
-descent and general projective schemes remain separate consumers.
+affine Noetherian base. The relative family below supplies the scheme-base
+and chosen closed-embedding endpoints with their stated hypotheses;
+internal RHom, coefficient complexes and embedding independence remain separate.
 
 [DifferentialTrace](DifferentialTrace.lean) now constructs an actual top-form
 Cech residue cycle on polynomial projective space and proves its literal
