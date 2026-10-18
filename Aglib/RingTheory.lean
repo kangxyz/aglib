@@ -25,6 +25,11 @@ public import Aglib.RingTheory.Etale.FormalProperties
 public import Aglib.RingTheory.Etale.Polynomial
 public import Aglib.RingTheory.FiniteLength.Support
 public import Aglib.RingTheory.Finiteness.Exact
+public import Aglib.RingTheory.FittingIdeal.BaseChange
+public import Aglib.RingTheory.FittingIdeal.Basic
+public import Aglib.RingTheory.FittingIdeal.LocallyFree
+public import Aglib.RingTheory.FittingIdeal.Minors
+public import Aglib.RingTheory.FittingIdeal.Stratification
 public import Aglib.RingTheory.Flat.Exact
 public import Aglib.RingTheory.Flat.FinitePresentation.FiniteStage
 public import Aglib.RingTheory.Flat.FinitePresentation.LocalModel

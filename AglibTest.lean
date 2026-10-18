@@ -59,6 +59,8 @@ public import AglibTest.MappingCone
 public import AglibTest.RingTheory.Descent.FinitePresentation
 public import AglibTest.RingTheory.Descent.Ideal
 public import AglibTest.RingTheory.Descent.Invertible
+public import AglibTest.RingTheory.FittingIdeal.Basic
+public import AglibTest.RingTheory.FittingIdeal.LocallyFree
 public import AglibTest.RingTheory.GenericFreeness.Filtration
 public import AglibTest.RingTheory.GenericFreeness.Localization
 public import AglibTest.RingTheory.GenericFreeness.Noetherian
