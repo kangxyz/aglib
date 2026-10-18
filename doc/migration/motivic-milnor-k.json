@@ -2788,12 +2788,13 @@
       "unaffected_prior_successes_retained": 23,
       "independent_client": "Consumer.MilnorK passed against final provider artifacts."
     },
-    "tooling": "33 source-guard fixtures passed, including exact general Milnor admission and copyright author credit while preserving third-party notices. The full 1771-file production/positive header inventory leaves no missing standard author credits. Existing layout, placeholder and changed-file text-style evidence remains applicable.",
+    "tooling": "34 source-guard fixtures passed, including exact general Milnor admission and copyright author credit while preserving third-party notices. The full 1771-file production/positive header inventory leaves no missing standard author credits. Existing layout, placeholder and changed-file text-style evidence remains applicable.",
     "evidence_sha256": {
       "repair-result.json": "4ef1b8df9e49839bacc60fe0628d170c8444598503c524e7e1e92187f1b0fec4",
       "declaration-audit-1.json": "ee3f33a60e85c8b9542c25877b915780e3941517204b79b7daa45452f1e6594d",
       "style-aglib-final-delta.json": "93605548b8465f729dda5c6831c7060da1d6ef05d4217483a2bf0e744740e3cc",
       "provider-current-rehashed-2.json": "3b69a41b824e6e31ed22928addb2575d32273cf80a465fc3617e91a84a51d960"
-    }
+    },
+    "test_umbrella": "The generated test-only root composes legacy audit leaves with ordinary imports; production facades remain modern. No leaf conversion or private-origin audit weakening was used."
   }
 }

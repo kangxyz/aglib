@@ -9,6 +9,7 @@ from check_placeholders import check_placeholders
 from check_source_policy import check_source_policy
 from generate_imports import GENERATED_MARKER, generated_files, generator_owned, stale_files
 from library_sources import lean_imports, module_path, test_modules as positive_modules
+from library_sources import uses_module_system
 
 HEADER = 'module\npublic import Mathlib.Data.Nat.Basic\n@[expose] public section\n'
 
@@ -43,6 +44,20 @@ class SourceGuards(unittest.TestCase):
         self.assertEqual(check_layout(self.root)[0], [])
         self.assertEqual(check_placeholders(self.root), [])
         self.assertEqual(check_source_policy(self.root), [])
+
+    def test_test_umbrella_composes_legacy_and_modern_fixtures(self):
+        legacy = 'import Aglib.Algebra.A\n'
+        self.write('AglibTest/Legacy.lean', legacy)
+        self.write('AglibTest/Modern.lean', HEADER)
+        self.generate()
+        umbrella = (self.root / 'AglibTest.lean').read_text()
+        self.assertFalse(uses_module_system(umbrella))
+        self.assertEqual(lean_imports(umbrella), ['AglibTest.Legacy', 'AglibTest.Modern'])
+        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual((self.root / 'AglibTest/Legacy.lean').read_text(), legacy)
+        self.write('AglibTest/Legacy.lean', HEADER)
+        self.generate()
+        self.assertTrue(uses_module_system((self.root / 'AglibTest.lean').read_text()))
 
     def test_copyright_headers_require_and_preserve_author_credit(self):
         header = ('/-\nCopyright (c) 2026 Test contributors. All rights reserved.\n'
