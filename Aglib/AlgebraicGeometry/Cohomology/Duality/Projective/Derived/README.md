@@ -54,8 +54,8 @@ arrow equality on degree-`n` homology. It needs no generic RF-linearity
 assumption or new global instance.
 
 The trace supplies the first input for affine-base relative Serre duality.
-The following comparison retains this original trace; bijectivity remains a
-separate mathematical step.
+The following comparison retains this original trace; its coherent
+Noetherian-base bijectivity is proved below.
 
 ## Canonical comparison into full derived Hom
 

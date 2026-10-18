@@ -4,11 +4,11 @@
 
 ## Package and repository identity
 
-The Lake package and main Lean module are `Aglib`; the positive test module is `AglibTest`. The repository directory is `aglib` (`tmp/aglib` in this workspace). Keep `algebraic-geometry` as the mathematical subject keyword. Original source repository names and native mathematical namespaces retain their identities.
+The Lake package and main Lean module are `Aglib`; the positive test module is `AglibTest`. The repository is `kangxyz/aglib`; its checkout directory is not fixed. Keep `algebraic-geometry` as the mathematical subject keyword. Original source repository names and native mathematical namespaces retain their identities.
 
 ## Use the parent context
 
-A source path should identify the mathematical subject with enough context to distinguish it. Repeated object endings are unnecessary when the parent already fixes that object. Approved examples include `Aglib.AlgebraicGeometry.Morphisms.Finite`, `.Smooth` and `.Etale`, and `Aglib.AlgebraicGeometry.Modules.Coherent`, `.QuasiCoherent`, `.LocallyFree`, `.Invertible`, `.Differentials` and `.Flat`.
+A source path should identify the mathematical subject with enough context to distinguish it. Repeated object endings are unnecessary when the parent already fixes that object. Approved family prefixes include `Aglib.AlgebraicGeometry.Morphisms.Finite`, `.Smooth` and `.Etale`, and `Aglib.AlgebraicGeometry.Modules.Coherent`, `.QuasiCoherent`, `.LocallyFree`, `.Invertible`, `.Differentials` and `.Flat`. These are family names; use an existing leaf named in its README for an exact import.
 
 This is a contextual rule. Preserve complete mathematical object names where they carry meaning: `StructureSheaf`, `ClosedImmersion`, `RegularLocalRing` and `RootsOfUnity` are examples. The actual type `AlgebraicGeometry.Scheme.CoherentSheaf` retains its name and its locally Noetherian guard. Shortening the source-family or helper namespace to `Modules.Coherent` does not change that type or remove the guard.
 

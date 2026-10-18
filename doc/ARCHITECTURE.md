@@ -107,7 +107,7 @@ Finite type, finite presentation, local freeness and coherence are distinct prop
 
 The selected exact-category functor preserves chosen conflations in `CategoryTheory.ExactCategory`. It remains distinct from other native exact-functor notions. A supplied injective resolution or essentially small model is different from a theorem of existence for arbitrary categories.
 
-Ordinary Godement totalization is categorically exact on complex objects. Augmentation/QI and D+ calculation retain bounded-below or explicit lower-bound premises; term comparison retains both term bounds. Flat cartesian comparison, flasque/local-QI computation and original-unit equations retain their own hypotheses. New canonical constructions do not discharge older explicit rank, proper-finiteness or relative-base-change input families.
+Ordinary Godement totalization is categorically exact on complex objects. Augmentation/QI and D+ calculation retain bounded-below or explicit lower-bound premises; the termwise comparison retains both term bounds. Flat cartesian comparison, flasque/local-QI computation and original-unit equations retain their own hypotheses. These generic constructions alone do not prove geometric rank, proper finiteness or relative base change. [INTERFACES.md](INTERFACES.md) distinguishes the proved geometric suppliers from the remaining explicit inputs.
 
 ## The smallest useful maintained family
 

@@ -1,6 +1,6 @@
 # Ordinary complexes of scheme module sheaves
 
-The object is the actual integer-indexed `CochainComplex X.Modules ℤ`. A complex here has no term bound unless a statement explicitly supplies `K.IsStrictlyGE a`; bounded-below and derived objects have their own interfaces.
+The object is the actual integer-indexed `CochainComplex X.Modules ℤ`. A complex here has no term bound unless a statement explicitly supplies one; bounded-below and derived objects have their own interfaces.
 
 [Basic](Basic.lean), imported as `Aglib.AlgebraicGeometry.Modules.Complex.Basic`, constructs `Scheme.Modules.Complex.restrict` for an actual open immersion and `pullback` for an arbitrary morphism. Restriction preserves finite limits, finite colimits, homology and actual quasi-isomorphisms. Pullback is additive; its finite-limit, homology and quasi-isomorphism preservation retain `Flat f`. `pullbackRestrictIso` compares actual pullback with restriction to an inverse-image open. This leaf also gives `Scheme.Modules.restrictModule_isFlasque` for an actual flasque module sheaf restricted along an open immersion. `Scheme.Modules.Complex.restrict_isStrictlyGE` transports a supplied strict lower term bound. `ordinaryOpenRestrictionIso` and its `ordinaryOpenRestrictionIso_hom_f` equation identify the actual component maps of ordinary direct image and open restriction, for an arbitrary morphism and the displayed target open.
 
@@ -47,12 +47,6 @@ sheafification counit, its literal component formula and its naturality on
 arbitrary complexes. It reuses generic module-sheafification additivity.
 The [flat family](Flat/README.md) imposes actual stalkwise flatness and strict
 upper term bounds for the appropriate replacements and pullback results.
-
-[Homology](Homology.lean) gives `homologyIsoOfDerivedIso` through the native
-derived homology factorization and `restrictHomologyIso` through the actual
-exact restriction comparison. The original homology sheaves are retained.
-The derived category has the standard morphism universe `u + 1` for
-`X : Scheme.{u}`. These results precede [local perfect models](../PerfectComplexes/README.md).
 
 [Sections](Sections.lean) detects actual `ExactAt` and acyclicity in any
 complex shape from original variable-ring sections on a topological basis.

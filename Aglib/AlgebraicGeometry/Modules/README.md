@@ -17,8 +17,6 @@ for a specified map to global functions; it remains explicit to distinguish
 different structural maps. Its sectionwise formulas retain the original
 restriction and module action. Ring and scheme universes may differ.
 
-[Stalk](Stalk/Basic.lean) constructs `moduleStalk`, `moduleStalkMap` and the actual stalk/skyscraper adjunction; `moduleStalkExactFunctor` is the genuine module-valued stalk exact functor. [Support](Support.lean) defines support through nonzero stalks, gives `isZero_iff_stalks` and compares support with actual open restriction. [Exact](Exact.lean) supplies `sheafExactStructure`, exact open restriction and the supported-away property. [Epimorphisms](Epimorphisms.lean) proves actual sheaf epimorphisms are locally surjective. [IsomorphismFunctors](IsomorphismFunctors.lean) gives pullback/direct-image equivalences for scheme isomorphisms.
-
 [InternalHom](InternalHom.lean) is the generic `Scheme.Modules.InternalHom` of actual structure-linear maps between restrictions. Its `sectionHomEquiv` identifies sections with the actual restricted module-sheaf morphisms. It lies below invertible sheaves and has no rank-one hypothesis. The
 [restriction and gluing guide](InternalHom/README.md) gives literal native
 open-restriction comparisons and unique global module morphisms from
@@ -37,7 +35,7 @@ base-change maps share this lower interface.
 | [QuasiCoherent](QuasiCoherent/README.md) | Affine module comparison, local/limit closure, finite-type objects and scalar-localization results |
 | [FinitePresentation](FinitePresentation/README.md) | Actual finite generators/relations, transport and open-locality without a coherent-category dependency |
 | [Flat](Flat/README.md) | Genuine stalkwise-flat objects and arbitrary pullback exactness for flat quotients |
-| [LocallyFree](LocallyFree/README.md) | Canonical finite-local-basis class, exact arbitrary pullback and conditional fibre/rank results |
+| [LocallyFree](LocallyFree/README.md) | Canonical finite local bases, exact arbitrary pullback, proved fibre dimension and rank detection |
 | [Coherent](Coherent/README.md) | Locally Noetherian abelian/exact specialization and coherent direct image |
 | [Invertible](Invertible/README.md) and [Differentials](Differentials/README.md) | Ordinary Picard tensor/dual/pullback and actual universal differentials/etale comparison |
 

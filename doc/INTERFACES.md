@@ -47,7 +47,8 @@ extends this to quasi-compact quasi-separated `f` in every degree, and to
 an arbitrary supplied Cartesian square over the same ring map, with the
 original unit and tensor mate. `BaseChange/Derived/Locality` now proves
 invertibility of that installed derived comparison over arbitrary bases,
-for qcqs original morphisms and QC original homology on D+.
+for a Cartesian square with flat base-change morphism `j`, qcqs original
+morphism `f` and QC original homology on D+.
 `BaseChange/HigherDirectImage` gives the actual native higher-image map, its
 exact homology formula and QC isomorphism theorem.
 

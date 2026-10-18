@@ -15,8 +15,10 @@ The minimal direct selection from local Aglib main `40af743` is recorded in
 Each selected leaf and the independent public consumer passed at the default
 budgets. The standard-smooth basis supports independent ring and algebra
 universes. The global rank theorem retains the source universe and includes
-the empty scheme. Exterior powers, the canonical line, and its identification
-with the Serre dualizing coefficient remain separate proof obligations.
+the empty scheme. [ExteriorPower](../ExteriorPower/README.md) constructs the
+actual top exterior line from a specified rank witness. The determinant
+sequence, projective top-form formula and identification with the Serre
+dualizing coefficient remain separate proof obligations.
 
 [Affine](Affine.lean) is the sole arbitrary-ring owner of
 `affineRelativeConstants`, the native constant-base differential presheaf,

@@ -25,8 +25,9 @@ interfaces, and the native `HomologicalComplex.homologyEulerChar`.
 Axiom inspection reports only `propext`, `Classical.choice` and `Quot.sound`.
 No aggregate library build was run.
 
-[Cohomology](Cohomology.lean) proves the native homological rank-support
-and finite-sum formulas under cohomological bounds alone. In particular,
+[Cohomology](Cohomology.lean) works over a nontrivial ring and proves the native
+homological rank-support and finite-sum formulas under cohomological bounds,
+without strict term bounds or finite terms. In particular,
 `CochainComplex.homologyEulerChar_eq_sum_range` identifies the existing
 integer-indexed Euler characteristic with the usual alternating sum of
 the original homology dimensions in degrees `0` through `n`. It neither

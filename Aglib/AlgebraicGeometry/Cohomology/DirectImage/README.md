@@ -139,8 +139,10 @@ original resolution comparison and tilde--Gamma counit. Actual higher
 direct images are quasicoherent in every nonnegative degree, over an
 arbitrary ring. The independent public consumer passed
 `1792108251788846000-25675` with only the standard three axioms. Passage
-to a general target and comparison with the installed derived flat
-base-change map remain further interfaces.
+to a general target is proved by [QuasiCoherent](QuasiCoherent.lean),
+and [derived flat base change](../BaseChange/Derived/README.md) is proved
+for qcqs morphisms, flat base change and bounded-below objects with
+quasicoherent homology.
 
 [Restriction](Restriction.lean) gives `Scheme.Modules.derivedOpenBaseChangeIso`
 on an actual cartesian square whose horizontal maps are open immersions.

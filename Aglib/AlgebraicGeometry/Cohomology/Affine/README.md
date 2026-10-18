@@ -6,7 +6,7 @@ For every commutative affine ring and actual quasicoherent module sheaf, positiv
 
 [FirstCohomologyPushforward](FirstCohomologyPushforward.lean) gives `Scheme.Cohomology.affinePushforwardModuleH1Equiv`: structural-field H1 of an actual quasicoherent module sheaf agrees with H1 of its affine direct image. It uses actual section cokernels, coefficient connecting maps and the direct-image resolution sequence; finiteness of the scheme morphism is not required.
 
-Focused imports are the six `Aglib.AlgebraicGeometry.Cohomology.Affine` leaves. Lower [affine scalar comparisons](../../Modules/QuasiCoherent/Affine/README.md), principal-cover Cech exactness and actual injective/flasque interfaces feed the proof route. Cech comparison and field base change consume the resulting vanishing statements.
+Focused imports are the named `Aglib.AlgebraicGeometry.Cohomology.Affine` leaves. Lower [affine scalar comparisons](../../Modules/QuasiCoherent/Affine/README.md), principal-cover Cech exactness and actual injective/flasque interfaces feed the proof route. Cech comparison and field base change consume the resulting vanishing statements.
 
 [InjectiveResolution](InjectiveResolution.lean) turns sections of every
 supplied actual sheaf injective resolution of a quasicoherent affine

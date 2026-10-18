@@ -15,8 +15,12 @@ git = "https://github.com/kangxyz/aglib.git"
 rev = "main"
 ```
 
-Run `lake update`, then `lake build`. Use a specific commit instead of `main`
-and retain `lake-manifest.json` for reproducible builds.
+Run `lake update` to resolve the dependency, then build the client modules that
+import it, for example `lake build MyProject.Main` for your own `MyProject.Main`
+module. Use a specific
+commit instead of `main` and retain `lake-manifest.json` for reproducible builds.
+Obtain matching dependency caches before compiling missing prerequisites; see
+[native caching](doc/CACHING.md) for artifact reuse.
 
 Import a focused module, such as `Aglib.RingTheory.TensorProduct.Domain`, or use
 `import Aglib` for the complete public library.
@@ -28,9 +32,10 @@ The [documentation index](doc/README.md) links the mathematical guides.
 hypotheses and conditional inputs; specialized curve and K-theory applications
 remain downstream.
 
-From the library checkout, run `bash scripts/check.sh --rehash`.
-The [development guide](doc/DEVELOPMENT.md) covers cache setup, focused builds,
-verification and contribution conventions.
+Use the [development guide](doc/DEVELOPMENT.md) to select focused builds and
+applicable final checks for the changed modules and their affected consumers.
+It also covers cache setup and contribution conventions. The comprehensive
+`scripts/check.sh` route serves separately requested diagnostics and declared CI.
 
 ## License
 

@@ -52,8 +52,11 @@ Degree zero uses the original sheaf augmentation and
 [CechTransport/DegreeZero](CechTransport/DegreeZero.lean); positive degrees use
 [SeparatedPositive](SeparatedPositive.lean). The endpoint has no field,
 Noetherianity, properness, finite-presentation or cohomological-finiteness
-assumption. The qcqs extension is supplied below; the higher-direct-image and
-derived formulations remain separate obligations.
+assumption. The qcqs extension is supplied below. The
+[derived D+ comparison](../Derived/README.md) and
+[native higher-direct-image comparison](../HigherDirectImage.lean) are
+proved over arbitrary bases under their qcqs, flat-base-change and
+quasicoherence hypotheses.
 
 [Separated/Cartesian](Separated/Cartesian.lean) proves
 `moduleCohomologyTensorMap_isIso_of_isPullback` for an actual supplied

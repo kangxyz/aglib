@@ -15,7 +15,7 @@ public import Mathlib.Topology.Connected.Clopen
 
 General declarations from `R5Lab.AlgebraicGeometry.Curves.Core` at revision
 `95a3772b895fbc19a81684be4ffd519d0fdcd6b3`.
-`NormalComponentsOpen` remains an explicit all-scheme theorem-family premise;
+`NormalComponentsOpen` is retained as an all-scheme theorem-family predicate;
 its proved supplier is in `Aglib.AlgebraicGeometry.Properties.Normal.Components`.
 -/
 
@@ -37,7 +37,8 @@ def NormalStalks (X : Scheme.{u}) : Prop :=
 to locally Noetherian schemes as in 033N (28.7.7). Inspected 2026-10-09.
 The 2018 correction removes an unjustified global finiteness claim; no such
 claim occurs here. This predicate records the general theorem interface;
-`NormalScheme.Components` supplies its proved term. -/
+`normalComponentsOpen` in
+`Aglib.AlgebraicGeometry.Properties.Normal.Components` supplies its proved term. -/
 def NormalComponentsOpen : Prop :=
   ∀ (X : Scheme.{u}), IsLocallyNoetherian X → NormalStalks X →
     ∀ Z ∈ irreducibleComponents X, IsOpen Z

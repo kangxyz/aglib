@@ -17,8 +17,9 @@ The unit-module/additive-sheaf cohomology comparison uses this criterion
 with the actual scalar-forgetting functor and its proved flasque injective
 images. No scheme or quasicoherence hypothesis occurs in this lower family.
 
-[Quotient](Quotient.lean) proves that original Ext from `R/I` is annihilated
-by I and constructs its native quotient-ring module action explicitly.
+[Quotient](Quotient.lean) works over a commutative ring `R` and proves that
+original Ext from `R/I` is annihilated by `I` and constructs its native
+quotient-ring module action explicitly.
 That action equals original Yoneda precomposition with multiplication on
 `R/I`, the action used by scalar coinduction. All degrees and arbitrary
 coefficients are included, without regularity, finiteness or Noetherianity.

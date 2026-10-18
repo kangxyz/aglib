@@ -1,15 +1,32 @@
 # Cohomology development plan
 
-The current development targets canonical affine module base change and flat
-base change with arbitrary quasicoherent coefficients, first for separated
-schemes and then for qcqs morphisms. Projective finiteness, Serre duality and
-proper cohomology and base change develop alongside that route, sharing the
-same native objects and lower prerequisites.
+Canonical affine module base change, qcqs flat base change, proper coherent
+finiteness and the Noetherian flat-coefficient finite-model suite are proved
+on the original native objects and maps. Projective-space Serre duality also
+has field-valued and affine Noetherian-base derived endpoints. The remaining
+work concerns general duality, its canonical-bundle normalization, nonflat
+sheaf-valued base change and the broader perfect-coefficient/relative tier.
 
-The starting source is Aglib `bdee1b16373d721dbec6f93fae39690c4f8c36ae`,
-Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
-Work is isolated on `codex/cohomology-foundations`. Existing theorem-family
-inputs remain explicit until the complete quantified statement has a proof.
+The investigation began at Aglib
+`bdee1b16373d721dbec6f93fae39690c4f8c36ae` on the historical
+`codex/cohomology-foundations` branch. Lean 4.34.1 and Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612` remain the pinned toolchain.
+Checkpoint hashes, branch names and receipt identifiers below record that
+investigation's provenance; they are not the current write assignment or a
+claim that every later revision was rebuilt.
+
+| Current source endpoint | Conditions and owner |
+| --- | --- |
+| Affine module base change | Affine `f`, quasicoherent `M`, arbitrary base change; original counit mate in [Modules/BaseChange](../Aglib/AlgebraicGeometry/Modules/BaseChange/README.md) |
+| Flat base change | Qcqs `f`, flat base change and QC coefficients; arbitrary-base D+ comparison for QC original homology in [BaseChange/Derived](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/Derived/README.md), with the actual higher-image map |
+| Proper coherent finiteness | Proper `f` and coherent coefficients over every locally Noetherian target; [DirectImage/Proper](../Aglib/AlgebraicGeometry/Cohomology/DirectImage/Proper/README.md) and the retained [field suppliers](../Aglib/AlgebraicGeometry/Cohomology/Proper/Field/README.md) |
+| Proper finite model and numerical criteria | Proper `f` over a Noetherian affine base, coherent relatively flat coefficient; one model for every ring base change in [Proper/FiniteModel](../Aglib/AlgebraicGeometry/Cohomology/Proper/FiniteModel/README.md), with reduced-base Grauert and separate residue-surjectivity criteria |
+| Projective-space Serre duality | Complementary-degree coherent duality over fields; all-degree coherent-module Ext-to-derived-Hom duality over Noetherian affine bases in [Duality/Projective](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/README.md) |
+| Differential rank and top exterior line | Arbitrary-base fixed-dimension smooth rank in [Differentials/Relative](../Aglib/AlgebraicGeometry/Modules/Differentials/Relative/README.md); top exterior line from the actual rank witness in [ExteriorPower](../Aglib/AlgebraicGeometry/Modules/ExteriorPower/README.md) |
+
+The full `LocalFreeCohomologyBaseChange` family is still an explicit input.
+The detailed [current status](#current-status) distinguishes the other live
+obligations from the completed proof routes recorded below.
 
 ## Mathematical targets and acceptance
 
@@ -106,8 +123,9 @@ endpoints are available on the original objects, with the following checks.
 | Compatibility | Coefficient maps, open restriction, composition of base changes, and comparison with the existing derived map |
 
 A lower finite-complex theorem is a prerequisite for this table, not a
-replacement for a geometric endpoint. The first implementation may use
-projective `f`; the extension from projective to proper remains explicit.
+replacement for a geometric endpoint. The implemented projective and proper
+flat-sheaf suppliers cover their stated Noetherian hypotheses; they do not
+replace the broader perfect-coefficient and arbitrary-base endpoints.
 
 ## Shared prerequisites and proof routes
 
@@ -140,39 +158,38 @@ Generic complex/perfectness lemmas belong below scheme cohomology.
 
 ## Derived-method review
 
-The review paused new proofs while comparing the alternatives. The current source already uses
+The architectural review compared the alternatives before further proofs. The current source uses
 native bounded-below derived categories, actual derived units and genuine
 finite-projective models. The recommended next architecture adds focused
 derived bridges to those constructions; a full unbounded duality theory
 has substantially more prerequisites in the pinned libraries.
 
-For flat base change, retain the proved affine injective-resolution
-producer. Assemble open locality using exact restriction, its preservation
-of injectives, the original ordinary restriction isomorphism and the native
-derived-composition isomorphisms. Use the installed
-`derivedFlatBaseChangeMap` as the sole canonical derived map. Its current
-source constructs the map and its unit equation, but does not prove it
-invertible. Its homology on quasicoherent single objects still needs
-identification with the proved scalar cohomology map. A later finite
-Postnikov argument can extend this to bounded-below complexes with
-quasicoherent cohomology. Injective or Godement terms must not be treated
-as quasicoherent merely from their acyclicity.
+Flat base change uses the proved affine injective-resolution producer,
+exact open restriction and native derived-composition comparisons.
+`BaseChange/Derived/Locality` proves invertibility of the installed
+`derivedFlatBaseChangeMap` for qcqs morphisms and D+ objects with
+quasicoherent original homology. Its affine resolution normalization and
+single-object comparison feed the proved shift/Postnikov extension; the
+actual higher-image map is exported by `BaseChange/HigherDirectImage`.
+Injective or Godement terms are not treated as quasicoherent merely from
+their acyclicity.
 
-For the perfect-direct-image object, exactness of tilde permits direct
-transport of the existing derived global-section isomorphism through
-`tilde.rightDerivedFunctorPlus`, using its invertible native units. This
-can remove K-projective representative selection from the object-level
-source and arbitrary-base-change constructions. Existing actual chain-map
-versions remain useful for their explicit normalization formulas. This is
-a proposed simplification; the present compiled implementation is retained.
+For the perfect-direct-image object, `DirectImage/Affine/DerivedModel` and
+`FiniteModel/Perfect` transport the derived global-section isomorphism
+through exact tilde and its invertible native units. This constructs the
+object-level source and all-ring base-change comparisons without selecting
+another chain representative. Existing chain-map versions retain their
+explicit normalization formulas; equality with the object-transport maps
+is a separate obligation.
 For arbitrary perfect coefficients, relative finite Tor amplitude,
 derived tensor and the corresponding projection formula still need
 integration with the actual coefficient and direct-image interfaces.
-The newly inspected local Aglib `f87a691` already constructs
+`Modules/DerivedCategory/Minus` constructs
 `Scheme.Modules.derivedPullbackMinus` for arbitrary morphisms using actual
-bounded-above flat replacements. This removes a proposed construction
-from the missing-interface list; its native ownership moves must be
-reconciled before admitting the larger dependency group here.
+bounded-above flat replacements, with native factorization and
+identity/composition comparisons. This is an implemented lower interface;
+its guide retains the separate pentagon, triangulatedness and
+perfectness-preservation obligations.
 General nonflat derived tensor does not preserve
 D+: it may have unbounded negative homology. A proposed interface must
 retain appropriate bounded-above, perfect or finite-Tor restrictions.
@@ -198,11 +215,13 @@ wrapper remains delayed until needed by another consumer. The current
 used for a merely left-exact right adjoint. Major additional geometric
 prerequisites are regular embeddings, Koszul calculations and the
 conormal/determinant identification with top differential forms.
-The actual fixed-dimension field-scheme smooth-rank theorem is now proved
-in `Modules/Differentials/SmoothRank`. The relative affine comparison already
-allows arbitrary commutative ring maps; the global general-base differential
-construction remains a separate missing interface. Smooth local-ring
-regularity and dimension are already proved and should be reused.
+The fixed-dimension field-scheme smooth-rank theorem is proved in
+`Modules/Differentials/SmoothRank`. The sole general relative differential
+sheaf, its affine/open comparisons and arbitrary-base fixed-dimension
+smooth rank are proved in `Modules/Differentials/Relative`. Actual top
+exterior lines are constructed in `Modules/ExteriorPower/LocallyFree`;
+the conormal determinant and trace-normalized canonical identification
+remain separate. Smooth local-ring regularity and dimension are also proved.
 See [closed-immersion duality](https://stacks.math.columbia.edu/tag/0A9X)
 and the [regular-immersion calculation](https://stacks.math.columbia.edu/tag/0BR0).
 
@@ -220,7 +239,7 @@ The full right-adjoint construction via unbounded D(QCoh), compact
 generation and representability is a larger separate project; see
 [Stacks 48.3.1](https://stacks.math.columbia.edu/tag/0A9E).
 
-## New source review and completed shared gates
+## Source-review provenance and completed shared gates
 
 During the initial source comparison, fetched `origin/main` was `e3f6c75`
 and local main advanced through `f87a691` to `40af743`. Those source
@@ -229,9 +248,11 @@ admitted and compiled individually: homological-complex and homotopy
 adjunctions, and native K-injective Hom, representatives, mapped Hom and
 pointwise derived Hom adjunction. The public independent-universe consumer
 retains their literal chain-adjoint maps. Exact bytes and provenance are
-recorded in `migration/upstream-derived.json`. The larger bounded-above flat
-replacement, derived pullback and perfect-object groups remain reviewed
-sources, pending their single-owner path reconciliation.
+recorded in `migration/upstream-derived.json`. The bounded-above flat
+replacement and derived-pullback groups now have their native owners in
+`Modules/Complex/Flat` and `Modules/DerivedCategory/Minus`. The canonical
+perfect-complex core is `Modules/PerfectComplexes`; the old `Modules/Perfect`
+paths reexport it and retain the unique affine model helpers.
 
 The additional `40af743` review supplies the actual field-scheme smooth
 rank gate: `differentialSheaf_hasRank_of_smooth` has no theorem-family
@@ -260,11 +281,11 @@ coordinate-complex comparison assumes every term quasicoherent. Neither
 replaces the existing arbitrary-complex affine counit quasi-isomorphism
 or proves general coherent-cohomology flat base change.
 
-The following shared gates now have focused source and public-consumer
-checks; this is not a claim that the final proper or general duality
-theorem is complete.
+The following shared gates have focused source and public-consumer checks.
+They do not discharge the broader perfect-coefficient direct-image or
+general duality endpoints.
 
-| Gate | Proved native interface | Remaining immediate consumer |
+| Gate | Proved native interface | Consumers |
 | --- | --- | --- |
 | U | `rightDerivedSingleHomologyIso`, original affine higher-image sections/H comparison and naturality | Normalize homology of the actual derived base-change map |
 | L | `derivedOpenBaseChangeIso` with original unit, `higherDirectImageOpenRestrictionIso`, actual qcqs higher-image quasicoherence | General-target base change and projective coherent images |
@@ -295,15 +316,19 @@ The projective-product cohomology suppliers and actual Chow modification
 now feed `Proper/Finiteness` without an IH or cohomology-family premise.
 `DirectImage/Proper/Coherent` is the corresponding arbitrary locally
 Noetherian-target theorem; it has no target quasi-compactness or relative-flat
-coefficient assumption. The finite-affine-cover model is being moved to its
-sole generic owner for proper relatively flat coefficients.
+coefficient assumption. `Cohomology/FiniteModel` is now the sole generic
+finite-affine-cover model owner, with proper relatively flat suppliers in
+`Proper/FiniteModel` and transparent projective specializations.
 
 Actual semilinear exterior maps, module-presheaf exterior powers and their
 compatible-alternating-family universal property, and the sheafified exterior
-functor/universal wedge have passed over general ringed sites with independent
-universes. Top-degree determinant frames, conormal comparison and relative
-Serre duality remain explicit consumers. The final general-base descent is
-kept as a short locality step once those affine relative theorems are proved.
+functor/universal wedge are proved over general ringed sites with independent
+universes. `Modules/ExteriorPower/LocallyFree` also constructs determinant
+frames and the top exterior line from the actual rank witness. Conormal
+determinant comparison and general relative Serre duality remain explicit
+consumers. General-base duality still needs an actual sheaf/derived-object
+or mapping-complex comparison; affine Hom-group equivalences alone do not
+complete descent.
 
 Coherent extension closure in the ambient category of all module sheaves
 now has proved lower suppliers. Actual affine sections exactness when the
@@ -317,8 +342,9 @@ of QC under arbitrary ambient subobjects or quotients.
 
 ## Unified implementation dependency graph
 
-Checkpoint `b0f205d` contains the proved affine/projective results above.
-The next work is one dependency graph with shared lower implementations.
+Checkpoint `b0f205d` contained the first affine/projective results.
+The graph records the shared dependencies of the completed flat/proper
+routes and the remaining duality/perfect-coefficient work.
 The derived and projective-to-proper routes must not introduce separate
 copies of restriction, homology-layer induction, closed descent or the
 canonical base-change map.
@@ -341,7 +367,7 @@ flowchart TD
   T --> F
   F --> M[General finite-cover model and proper flat-coefficient suite]
   A --> M
-  M --> N[Semicontinuity, Grauert, local freeness and perfect Rf]
+  M --> N[Semicontinuity, Grauert and strict-perfect Rf for relatively flat sheaves]
   K --> I[Closed-immersion right adjoint and derived adjunction]
   I --> SD[General smooth-projective Serre duality]
   R[Regular embeddings, Koszul calculation and canonical sheaf] --> SD
@@ -352,20 +378,24 @@ flowchart TD
 
 | ID | Sole provider / proposed focused leaves | Precise product and immediate consumers |
 | --- | --- | --- |
-| U | Affine worker: `DerivedCategory/RightDerivedFunctorPlus/SingleHomology`, `DirectImage/Affine/Cohomology` | Natural comparison of actual `R^n F` with homology of installed `RF(M[0])`, normalized on every supplied injective resolution. Identify actual affine higher-image sections with unchanged `Sheaf.H`. Arbitrary additive F is allowed; the additional `R^0 F = F` comparison retains left exactness. |
-| L | Affine worker: `Cohomology/DirectImage/Restriction` | Actual D+ open-restriction isomorphism for every morphism, with its original unit; actual higher-image restriction. Used by general-target flat base change, projective coherence and the proper modification cone. No QC assumption on a chosen injective term. |
-| T | Integrator: `DerivedCategory/RightDerivedFunctorPlus/TStructure`, `DerivedCategory/Plus/Postnikov` | Lower cohomological bounds for the installed right-derived functor; finite homology-layer induction for bounded objects, plus fixed-degree truncation for D+. Used by bounded coherent images, support cones and D+ QC base change. Reuse the existing term-bounded comparison where it applies. |
-| K | Proper worker: `Modules/ClosedImmersion/Killed`, `Modules/ClosedImmersion/Descent` | For the actual closed subscheme of an ideal sheaf, characterize invertibility of the original `M → i_*i^*M` by annihilation by that ideal. Work first with actual arbitrary module sheaves, then specialize QC/coherence. Used by support induction and the closed right adjoint. |
-| S | Proper worker: focused coherent support leaves below cohomology | A coherent module whose support lies in `V(J)` is killed by a finite power of `J`, on a Noetherian scheme; descend it to the actual `(J^m).subscheme`. This is not descent to the reduced closed set and does not require a global prime filtration. |
-| G | Geometry worker: `ProjectiveSpace/BaseChange` and focused chart helpers | Actual projective-space Cartesian square for an arbitrary base-ring map, with original chart maps and structural factorization. First prove the scheme comparison needed for projections; twist pullback formulas are a later consumer, not a finiteness premise. |
-| M | Proper worker: `Cohomology/FiniteModel`, specialized by `Proper/FiniteModel` | The sole generic model, original base-change comparisons, derived-object transport, strict-perfect model, fibers and local criteria are proved. Old projective names are transparent specializations/thin interfaces. Numerical methods are being moved one at a time with unchanged old consumers before proper specialization. |
+| U | `DerivedCategory/RightDerivedFunctorPlus/SingleHomology`, `DirectImage/Affine/Cohomology` | Natural comparison of actual `R^n F` with homology of installed `RF(M[0])`, normalized on every supplied injective resolution. Actual affine higher-image sections identify with unchanged `Sheaf.H`. Arbitrary additive F is allowed; the additional `R^0 F = F` comparison retains left exactness. |
+| L | `Cohomology/DirectImage/Restriction` | Actual D+ open-restriction isomorphism for every morphism, with its original unit; actual higher-image restriction. Used by general-target flat base change, projective coherence and the proper modification cone. No QC assumption on a chosen injective term. |
+| T | `DerivedCategory/RightDerivedFunctorPlus/TStructure`, `DerivedCategory/Plus/Postnikov` | Lower cohomological bounds for the installed right-derived functor; finite homology-layer induction for bounded objects, plus fixed-degree truncation for D+. Used by bounded coherent images, support cones and D+ QC base change. |
+| K | `Modules/ClosedImmersion/Killed`, `Modules/ClosedImmersion/Descent` | For the actual closed subscheme of an ideal sheaf, invertibility of the original `M → i_*i^*M` is characterized by annihilation by that ideal, first on all module sheaves and then under QC/coherence. Used by support induction and the closed right adjoint. |
+| S | `Modules/ClosedImmersion/CoherentSupport` | A coherent module whose support lies in `V(J)` is killed by a finite power of `J`, on a Noetherian scheme; it descends to the actual `(J^m).subscheme`. This is not descent to the reduced closed set and does not require a global prime filtration. |
+| G | `ProjectiveSpace/BaseChange` and focused chart helpers | Actual projective-space Cartesian square for an arbitrary base-ring map, with original chart maps and structural factorization. The scheme comparison supplies projections; twist pullback formulas are a separate consumer, not a finiteness premise. |
+| M | `Cohomology/FiniteModel`, specialized by `Proper/FiniteModel` | The sole generic model, original base-change comparisons, derived-object transport, strict-perfect model, fibres and numerical/local criteria are proved. Old projective names are transparent specializations/thin interfaces; proper suppliers construct the same model internally. |
 
 Paths omit their existing `Aglib/AlgebraicGeometry/` or
 `Aglib/Algebra/Homology/` prefix. A proposed leaf may be replaced by a
 better existing owner after inspection, but each shared declaration keeps
 one implementation and one assigned writer.
 
-### Flat base change and actual higher direct images
+### Implemented flat base-change route and actual higher direct images
+
+The following steps record the proof dependency order. The source endpoints
+are proved, as summarized above; the imperative formulations describe that
+route rather than pending assignments.
 
 1. **L1: derived open locality.** Start from the original
    `Complex.ordinaryOpenRestrictionIso`. Restriction is exact and preserves
@@ -391,14 +421,14 @@ one implementation and one assigned writer.
    for this statement. No infinite totalization or unproved generation
    family is admitted.
 
-L1 can unblock proper work before B2 is complete. Generic t-structure
-lemmas are supplied by T rather than re-proved in the geometric branch.
+L1 supplied proper work independently of B2. Generic t-structure lemmas have
+the sole T owners rather than separate proofs in the geometric branch.
 
 ### Projective-to-proper finiteness
 
-The first target is arbitrary coherent coefficients over a Noetherian
-affine base, without a relative-flatness premise. General locally
-Noetherian targets follow through L and affine coherent detection.
+The implemented route handles arbitrary coherent coefficients over a
+Noetherian affine base, without a relative-flatness premise. General
+locally Noetherian targets follow through L and affine coherent detection.
 
 1. **P1: projective projections.** Combine G, L2 and the proved original
    projective finiteness theorem to prove coherence of the actual higher
@@ -473,8 +503,8 @@ first finiteness proof does not depend on them.
 
 ### Proper base change and perfect direct image after finiteness
 
-1. Extract M while preserving the original projective public interfaces.
-   For proper X/Spec R, choose a finite affine cover and use the proved
+1. M is the sole generic model, with the original projective public interfaces
+   retained as specializations. For proper X/Spec R, choose a finite affine cover and use the proved
    bounded-flat truncation, universal tensor comparison and F2 finiteness.
    Apply the existing finite-projective replacement to construct the
    universal model internally for coherent relatively flat M.
@@ -494,8 +524,8 @@ first finiteness proof does not depend on them.
    quasi-compactness. General nonflat sheaf-valued comparison is still a
    separate descent consumer; neighbourhood freeness retains its
    adjacent-degree condition.
-3. Obtain the actual sheaf-valued perfect Rf through exact tilde transport
-   and the proved original counit. The same model handles all ordinary
+3. The actual sheaf-valued strict-perfect Rf is supplied through exact tilde
+   transport and the proved original counit. The same model handles all ordinary
    pulled coefficients after arbitrary ring maps. Preserve actual chain
    normalizations as separate consumers rather than choosing new
    representatives for every object-level endpoint.
@@ -514,7 +544,7 @@ acceptance sequence, including the user's smooth canonical-bundle request.
 | Step | Original object and theorem to prove | Dependency and normalization |
 | --- | --- | --- |
 | D1 | Native relative differential sheaf is finite locally free for a smooth morphism; its rank is the actual fixed relative dimension | Arbitrary-base fixed-dimension case now proved by `relativeDifferentialSheaf_hasRank_of_smooth`, using native standard-smooth charts and original open comparisons; no field, Noetherian or family premise. Variable-dimension components remain a separate interface |
-| D2 | Actual top exterior power is a line bundle and satisfies the determinant formula for the conormal sequence | Use the same differential sheaves, their original maps and the locally split exact sequence; track basis changes |
+| D2 | Actual top exterior line is constructed from a rank witness; the conormal-sequence determinant formula remains open | Use the same differential sheaves, their original maps and the locally split exact sequence; track basis changes |
 | D3 | On projective space, the top differential line is the actual `O(-N-1)` | Normalize through original affine polynomial coordinates and transition functions; preserve the coordinate orientation used by the existing trace |
 | D4 | The sole nonzero homology of `Ri!omega_P` is the determinant-normalized canonical line of a smooth regular closed source | Relate the actual Koszul top Ext class under change of regular equations to D2; use the shared normalized single-homology reconstruction |
 | D5 | Smooth Serre omega is naturally the canonical bundle, with the original pairing and trace | Consume D3/D4 and the original projective-space duality; include the relative fixed-dimension version as its own precise interface |
@@ -544,14 +574,15 @@ zero. The unchanged public entry now imports four precise owners:
 `Euler/Basic`, `PolynomialChart`, `MiddleFrame` and `LocalExact`.
 The final local closure and literal-fraction consumer passed
 `1792144773088804000-94914` and `1792145085352001000-97575`.
-Overlap compatibility and global gluing are the next cell. They share the
-actual InternalHom restriction/gluing adapters with general base change.
+`Euler/Overlap` now proves the original coordinate transition formulas.
+Native overlap-arrow equality and global gluing are the next cell. They
+share the proved InternalHom restriction/gluing adapters with general base change.
 Global Euler exactness and the determinant formula remain proof
 obligations, not new suppliers.
 
 None of D1--D5 is discharged by inserting a differential-rank or purity
-supplier as a new mathematical assumption. The rank, conormal, exterior,
-determinant and trace comparisons remain individually checked obligations.
+supplier as a new mathematical assumption. The proved rank and top-exterior
+suppliers do not discharge the conormal, determinant and trace comparisons.
 
 The general-base objective is not the field theorem with its scalars
 renamed. There are two precise later gates:
@@ -563,8 +594,9 @@ renamed. There are two precise later gates:
   for this full Noetherian statement. Smooth pure relative dimension identifies
   `f!M` with `Lf*M` tensor the actual top differential line shifted by `d`.
   The scope and shift are checked against [Stacks 0AU3](https://stacks.math.columbia.edu/tag/0AU3).
-- For arbitrary qcqs bases, construct the actual relative differential sheaf,
-  then its smooth local frames, determinant line, relative trace and descent.
+- For arbitrary qcqs bases, use the proved actual relative differential sheaf,
+  smooth fixed-dimension local frames and top exterior line; construct the
+  determinant comparisons, relative trace and actual comparison needed for descent.
   The proper flat finite-presentation relative-dualizing setup is checked
   against [Stacks 0E2Z](https://stacks.math.columbia.edu/tag/0E2Z). It is a
   separate general-base gate, not an inferred corollary of field duality.
@@ -593,10 +625,8 @@ proof obligations; their imported mathematical conclusions are not assumed.
    `Modules/Pushforward/ClosedImmersion/Colimits` and
    `Modules/ClosedImmersion/RightAdjoint`. The single selected right adjoint
    is additive, preserves limits and preserves injectives, without QC,
-   Noetherianity or finiteness. Its computation still needs the actual
-   ideal-annihilator local formula for later computation. Do not build
-   two right-adjoint implementations. Prove its original
-   adjunction, linearity and localization. The affine coinduction formula and
+   Noetherianity or finiteness. Local purity must use this sole adjoint and
+   its actual local formulas. The affine coinduction formula and
    original unit/counit/Hom-adjoint equations now have checked suppliers for
    arbitrary target sheaves. For ordinary open locality, use the existing
    extension-by-zero adjunction and its actual inside/off-image stalk formulas:
@@ -671,7 +701,9 @@ The first relative target uses actual Hom in D(R):
 `Ext_X^i(M, omega) = Hom_D(R)(RΓ(M), R[i-n])` for coherent M on Pn_R.
 No flatness or perfectness of M is imposed. This derived Hom target retains
 the higher base-ring Ext terms that an ordinary cohomology dual would lose.
-The first checkpoint does not require a full internal-RHom bifunctor.
+Steps 1--2 are proved in `Duality/Projective/Derived`; they require no full
+internal-RHom bifunctor. Steps 3--6 retain the independent normalization and
+broader coefficient/descent obligations.
 
 1. Construct the actual derived trace `RΓ(omega) -> R[-n]` by the shared
    concentrated-homology reconstruction. Prove that its Hn map is exactly
@@ -749,26 +781,26 @@ These native inputs shorten the bridge without being an already proved
 regular-embedding or purity supplier. The purity and relative-duality branches
 share the original Ext actions, finite models, determinant and trace.
 
-### Parallel batches and acceptance gates
+### Historical parallel batches
 
-The first batch has four disjoint write owners: affine worker on U and then L1;
+The first batch had four disjoint write owners: affine worker on U and then L1;
 proper worker on K; geometry worker on C1 and then C2; integrator on T
-and native K-injective adjunction integration. They exchange precise providers
-before writing shared consumers. G/P1 can begin when the geometry and
-affine suppliers are available. K/S and C1/C2 proceed independently, and
-F1 starts only after P2/C3, S and T have compiled suppliers. The numerical
-proper model and general smooth-projective duality then share those lower
-results without making either endpoint a premise of the other.
+and native K-injective adjunction integration. They exchanged precise providers
+before writing shared consumers. G/P1 depended on the geometry and affine
+suppliers; K/S and C1/C2 proceeded independently. F1 used P2/C3, S and T.
+The proper numerical model and general smooth-projective duality share
+those lower results without making either endpoint a premise of the other.
 
-Each leaf is edited, compiled and repaired before its owner advances.
-Every milestone has a focused external consumer for original-map
-normalization, coefficient naturality and exact hypotheses/universes, plus
-standard-axiom inspection. Refresh only affected leaf dependencies; keep
-one guarded frontend. Update family guides with proved results and
-remaining conditions. Generated enrollment and source checks run at
-checkpoints; an aggregate build is not part of this workflow.
+The focused consumers cited below record the checks used for those batches,
+including original-map normalization, naturality, hypotheses and universes.
+They do not impose a new consumer/axiom/replay chain at each handoff. Current
+validation follows the incremental rules below and the owning development
+guide, reusing compatible evidence.
 
-## Initial parallel ownership
+## Historical initial parallel ownership
+
+This table records the initial division of the investigation. Current writes
+follow the exact active assignment and the source family's owner.
 
 | Workstream | Initial write ownership | Immediate product |
 | --- | --- | --- |
@@ -778,26 +810,26 @@ checkpoints; an aggregate build is not part of this workflow.
 | Proper base change | New generic leaves under `Algebra/Homology/FiniteProjective/`, new `Cohomology/Proper/` leaves and their guides | Finite-complex algebra and relative-flat/base-change prerequisites, then the proper endpoints |
 
 Paths above are relative to `Aglib/AlgebraicGeometry/` unless a full family is
-given. Owners request additional existing files before modifying them. Only the
-integrator changes common facades, `doc/INTERFACES.md`, `doc/README.md` and this
-plan. No worker changes dependency pins or Git state. Small proved prerequisites
-are integrated as soon as they have their own precise statement and consumer;
-an intermediate result never changes an endpoint's completion status.
+given. The initial integrator owned the common facades and cross-family
+documentation. Small proved prerequisites were integrated with their precise
+statements and relevant consumers; an intermediate result does not change an
+endpoint's completion status.
 
 ## Incremental verification
 
 - Edit one Lean leaf, compile it, repair diagnostics, and only then advance to
   the next leaf. Preserve all compatible copied build artifacts.
-- Mathematical/source work runs in parallel; Lean frontends run through one
-  shared build lock. Each guarded invocation names one explicit module or probe.
+- Mathematical/source work may run in disjoint scopes; Lean frontends run through one
+  shared build lock. Each guarded invocation names the required changed module.
 - Use `scripts/build_serial.py` for the changed leaf and strictly necessary
   prerequisites. If a target unexpectedly expands into a broad rebuild, stop
   and inspect cache identity/imports instead of allowing it to continue.
 - Do not run `lake build Aglib`, `lake build AglibTest`, an unqualified build,
   the full integration script, cache cleaning, or a dependency upgrade.
-- Use meaningful focused consumers to check canonical-map normalization,
-  public visibility, generality and scalar compatibility. Run applicable
-  source/enrollment/style checks on settled files without a full library build.
+- Use focused consumers when needed for a concrete canonical-map,
+  public-visibility, generality or scalar-compatibility question. Run applicable
+  source/enrollment/style checks on settled files without a full library build;
+  documentation edits need only their affected links, claims and changed examples.
 - Update the owning family guide with proved declarations, exact conditions,
   canonical maps and remaining inputs. Record successful commands and relevant
   failures once; do not repeat a passed build without changed inputs.
@@ -821,11 +853,11 @@ an intermediate result never changes an endpoint's completion status.
 
 ## Current status
 
-Checkpoint `e04f09d` was fast-forwarded from `55b439b` to main and pushed.
-It includes all-degree derived Serre duality on polynomial projective space
+Historical checkpoint `e04f09d`, following `55b439b`, included all-degree
+derived Serre duality on polynomial projective space
 over Noetherian affine bases, proper Grauert and intrinsic numerical
 descent over locally Noetherian targets, and arbitrary-base smooth
-differential rank. This follow-on checkpoint contains local Euler exactness
+differential rank. The current source also contains local Euler exactness
 and coordinate transitions, unique gluing of actual module morphisms,
 affine higher-image restriction normalization, and native regular-principal
 purity with its original Ext action, coefficient maps and resolution

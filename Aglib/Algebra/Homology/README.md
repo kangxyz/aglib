@@ -18,7 +18,8 @@ commutes with tensor product.
 
 [EulerCharacteristic](EulerCharacteristic.lean) proves the native
 Euler–Poincare identity for a termwise bounded complex of finite-dimensional
-vector spaces. Its bounded-support result does not require finite terms.
+vector spaces. Its bounded-support result works over a nontrivial ring
+without requiring finite terms.
 The [fibre Euler-characteristic guide](EulerCharacteristic/README.md) records
 local constancy for the actual residue-field complexes of bounded finitely
 presented flat complexes. These numerical results are lower prerequisites;

@@ -18,8 +18,9 @@ then gives an actual chain comparison with any supplied injective resolution
 of the image coefficient. Its image under the original localization is
 specified exactly, and the original augmentations commute up to an actual
 chain homotopy. The image resolution terms need not be injective. The source
-needs no derived category and neither category needs enough injectives when
-the two actual resolutions are supplied.
+needs no derived category; the comparison retains `HasDerivedCategory B` for
+the target. Neither category needs enough injectives when the two actual
+resolutions are supplied.
 -/
 
 @[expose] public section

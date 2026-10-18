@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents
 /-!
 A term of the original `NormalComponentsOpen` interface. The mathematical
 supplier is the existing local-Noetherian component theorem in
-`Aglib.AlgebraicGeometry.Properties.Normal.StalkComponents`; no global finiteness
+`Aglib.AlgebraicGeometry.Properties.IrreducibleComponents`; no global finiteness
 hypothesis is added.
 
 Basis: project 1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e;

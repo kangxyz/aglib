@@ -14,13 +14,15 @@ ring action is handled by the general scalar family. Its complex is the
 existing full-tuple Cech complex, which remains unbounded even for a finite
 coordinate cover. The twist computation below uses its original monomial
 decomposition. General coherent finiteness on polynomial projective space
-and through actual projective embeddings is proved below. The extension to
-general proper morphisms remains separate.
+and through actual projective embeddings is proved below.
+[Proper/Finiteness](../Proper/Finiteness/README.md) supplies the general
+proper extension over Noetherian affine bases.
 
 The lower dependencies are the [native projective coordinate geometry](../../ProjectiveSpace/README.md)
 and the [general Cech comparison](../Cech/README.md). The immediate consumer
-is the projective twist computation. The projective endpoint is distinct
-from the retained proper-finiteness theorem family.
+is the projective twist computation. The projective endpoint feeds the
+proper proof; [Proper/Field](../Proper/Field/README.md) supplies the retained
+field-valued finiteness families.
 
 `Aglib.AlgebraicGeometry.Cohomology.Projective.TwistingCech` consumes the
 constructed actual `O(d)` for every integer `d`. Its all-degree
@@ -116,8 +118,10 @@ pushforward and the native Cech pushforward isomorphism. Its cohomology
 equivalence has the existing geometric cohomology map as its literal
 forward map; the structural scalar composition identity is explicit.
 This is the embedded projective endpoint over an affine Noetherian base.
-Coherence of higher direct images over general bases and the extension to
-general proper morphisms remain distinct targets.
+[Relative projective projections](Projection/README.md) and
+[proper coherent higher images](../DirectImage/Proper/README.md) provide
+the corresponding locally Noetherian-target results with their precise
+geometric hypotheses.
 
 `SerreVanishing` proves `projectiveSerreVanishing` for every actual coherent
 module on polynomial projective `n`-space over a Noetherian commutative ring.
@@ -166,8 +170,10 @@ all-base-change, native-derived and original-map consumer passed
 degreewise cohomology mate identification and actual perfect sheaf-valued
 `Rf_*` are now proved in the focused children recorded by the model guide.
 These perfect direct-image statements concern coherent relatively flat
-coefficients and their ordinary pullbacks. Arbitrary perfect coefficients
-and the general proper extension remain separate interfaces.
+coefficients and their ordinary pullbacks.
+[Proper/FiniteModel](../Proper/FiniteModel/README.md) proves that same
+sheaf-coefficient endpoint for every proper morphism over a Noetherian
+affine base. Arbitrary perfect coefficients remain a separate interface.
 
 `Semicontinuity` proves
 `upperSemicontinuous_moduleFiberCohomologyDimension_of_projectiveEmbedding`.
@@ -210,7 +216,9 @@ assumption is present. The public endpoints construct the universal model
 internally; their independent consumer passed `1792106107718572000-93988`,
 with only the three standard axioms. `Grauert` retains the stronger freeness
 conclusion over a local ring. Reducedness remains explicit in both versions.
-The pointwise open-neighbourhood passage is a separate subsequent interface.
+The [proper basic-open criterion](../Proper/BaseChangeLocus.lean) also
+applies to this projective case, retaining the original residue-map
+surjectivity premise and needing no reducedness.
 
 `LocalBaseChange` supplies the complementary criteria allowing nonreduced
 Noetherian local bases. Surjectivity of the original residue-field map in
@@ -245,5 +253,6 @@ equal to the actual base identity. Actual base-change and finite-embedding
 consumers now preserve the original product projection and displayed
 factorization. Finite maps into such products over a Noetherian affine
 base have finite unchanged cohomology in every degree. These results
-supply the two inputs for the proper-modification support argument;
-general proper finiteness remains its subsequent conclusion.
+supply the two inputs for the proper-modification support argument in
+[Proper/Finiteness](../Proper/Finiteness/README.md), which discharges the
+support-induction premise internally.

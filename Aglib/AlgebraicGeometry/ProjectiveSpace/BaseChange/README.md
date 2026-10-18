@@ -1,6 +1,6 @@
 # Base change of polynomial projective space
 
-The entry module is `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange`.
+The Cartesian entry module is `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange`.
 It proves that the actual polynomial `Proj` commutes with every coefficient
 ring homomorphism. The base rings and coordinate type lie in the common
 scheme universe; there is no finiteness, flatness, Noetherianity or nonempty
@@ -19,7 +19,8 @@ coordinate hypothesis.
   `isPullback_map`. The resulting `baseChangeIso` maps to Mathlib's native
   pullback by exactly `pullback.lift (map f ι) (toSpec S ι) (map_toSpec f ι)`.
   Both original projection equations are public.
-- `Affine` identifies any supplied original Cartesian square over a spectrum
+- The separate focused import `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine`
+  identifies any supplied original Cartesian square over a spectrum
   with polynomial projective space over that spectrum's ring. The comparison
   is the native uniqueness isomorphism of the two pullback squares, with
   both forward and inverse projection equations. No open-immersion premise

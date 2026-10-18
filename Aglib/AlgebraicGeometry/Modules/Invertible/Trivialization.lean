@@ -19,7 +19,8 @@ Existing proofs transferred from frozen dirty R5 revision
   `b1d35c6a55a09b4c5bbe7d5e391e85cb0afbbfaa5041df39d6e71808ece303ea`.
 
 Actual objects, maps, universes and stated conditions are retained.
-Native proof validation is pending the coordinated build.
+Native validation coverage is recorded separately in `doc/WORK_PLAN.md` and
+the migration records; the source hashes above identify extraction inputs.
 -/
 
 @[expose] public section

@@ -73,6 +73,16 @@ decomposition equations are proved as native sheaf-map equalities. This
 includes the one-coordinate case with an empty complementary basis, and uses
 no finiteness, field, Noetherian, nontriviality, or exactness-family premise.
 
-Compatibility and gluing of the chart arrows, and the global short exact
-Euler sequence, remain separate obligations. No determinant, canonical
-bundle, trace, or residue identification is asserted by this checkpoint.
+[Overlap](Euler/Overlap.lean), imported separately as
+`Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Overlap`, proves
+transition identities for the original ratios, inverse-twist and middle
+generators, relative differentials and kernel vectors. The latter two obey
+the same quotient-rule formula in the original transition unit.
+`eulerDifferentialOnPolynomialChart_d_ratio_open` extends the original
+differential/kernel-vector equation to every polynomial-chart open. These
+results retain arbitrary coordinate types and commutative base rings.
+The `Euler` entry reexports `LocalExact`; it does not import `Overlap`.
+
+Equality and gluing of the chart arrows, and the global short exact Euler
+sequence, remain separate obligations. No determinant, canonical bundle,
+trace, or residue identification is asserted by these results.

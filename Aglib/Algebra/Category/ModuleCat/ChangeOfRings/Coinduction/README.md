@@ -58,9 +58,10 @@ This extension passed `1792149290569566000-26194`; the public noncommutative
 consumer passed `1792149367685045000-27013`, with independent Ext and derived
 sizes, six standard-axiom lists and no extra proof options.
 
-[Quotient](Quotient.lean) upgrades that unchanged additive comparison to an
-`R/I`-linear equivalence using `Ext.quotientSourceModule`. Its underlying
-additive equivalence is definitionally the original one. Arbitrary ideals,
+[Quotient](Quotient.lean) works over a commutative ring `R` and upgrades that
+unchanged additive comparison to an `R/I`-linear equivalence using
+`Ext.quotientSourceModule`. Its underlying additive equivalence is
+definitionally the original one. Arbitrary ideals,
 coefficients and natural degrees are allowed, with independent Ext and derived
 sizes and no regularity, flatness, finiteness or Noetherian premise. Original
 Yoneda coefficient naturality and resolution independence are retained.
@@ -70,8 +71,8 @@ proof options. Koszul-class normalization and concentration are supplied
 by the next leaf.
 
 [Principal](Principal.lean) computes the actual installed derived coinduction
-for a regular principal equation. Degree-one homology is the original
-coefficient quotient as an `R/(a)`-module; inverse quotient representatives
+for a regular principal equation over a commutative ring. Degree-one homology
+is the original coefficient quotient as an `R/(a)`-module; inverse quotient representatives
 retain the original transported Koszul class. Coefficient regularity alone
 gives the lower bound one, while ring regularity alone gives the upper bound
 one. With both, the actual D+ object is its coefficient quotient in degree one.

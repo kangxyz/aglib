@@ -21,8 +21,9 @@ module sheaves. The scalar formulas keep the original restricted carriers
 and original comparison map.
 
 The first leaf passed alone through the shared guarded wrapper with receipt
-`1792109940210200000-46840`. General killed-image descent and its later
-quasicoherent/coherent specialization are the next interfaces. The ordinary
+`1792109940210200000-46840`. [Descent](Descent.lean) and
+[CoherentSupport](CoherentSupport.lean) supply the killed-image and coherent
+thickening interfaces described below. The ordinary
 closed right adjoint is owned by the shared duality workstream; this family
 does not introduce another implementation of it.
 
@@ -142,6 +143,9 @@ additivity, limit preservation and preservation of injective objects. These
 statements impose no quasicoherence, Noetherianity or finiteness hypothesis.
 [RightAdjoint/Affine](RightAdjoint/Affine.lean) now proves its actual affine
 coinduction formula, S-linearity, original unit/counit and Hom-adjoint
-compatibility for arbitrary target sheaves. General open restriction and
-localization remain explicit steps before local purity; ordinary existence
-alone does not establish purity or derived full faithfulness.
+compatibility for arbitrary target sheaves.
+[RightAdjoint/Restriction](RightAdjoint/Restriction.lean) proves ordinary
+open restriction with the original unit, counit and Hom-adjoint equations;
+[native D+ restriction](../../Cohomology/ClosedImmersion/README.md) derives
+that same comparison. Local purity and its determinant normalization remain
+separate; these comparisons do not establish derived full faithfulness.

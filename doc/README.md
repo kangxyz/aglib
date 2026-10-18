@@ -1,45 +1,53 @@
 # Documentation and reading routes
 
-The [source-family guides](../Aglib/README.md) record both reusable interfaces and main mathematical results, with focused imports, actual hypotheses and present consumers. This directory owns the package-wide reading routes and evidence boundary.
+The [source-family guides](../Aglib/README.md) describe the implemented objects,
+main results, focused imports and exact hypotheses. This directory coordinates
+package-wide conventions, reading routes and the scope of recorded evidence.
 
 | Guide | Purpose |
 | --- | --- |
-| [Architecture](ARCHITECTURE.md) | Overall design principles, mathematical ownership, dependency direction and extension admission |
-| [Naming](NAMING.md) | Concrete conventions, native owners, compound exceptions and examples for future extensions |
-| [Interfaces](INTERFACES.md) | Native owners, canonical maps, universe boundaries and explicit theorem-family inputs |
+| [Architecture](ARCHITECTURE.md) | Mathematical ownership, dependency direction and extension admission |
+| [Naming](NAMING.md) | Native owners, family names, precise leaf imports and naming exceptions |
+| [Interfaces](INTERFACES.md) | Canonical maps, universe boundaries, proved suppliers and remaining inputs |
 | [Scope](SCOPE.md) | General mathematics admitted here and deferred application layers |
-| [Development](DEVELOPMENT.md) | Setup, focused builds, integration checks, publication and [contribution conventions](DEVELOPMENT.md#contribution-conventions) |
-| [Performance](PERFORMANCE.md) | Measured kernel costs, source-based diagnostics and interface-preserving optimizations |
-| [Caching](CACHING.md) | Native Lake artifacts, cross-library reuse, shared CI transport and provenance |
-| [Downstream integration](DOWNSTREAM.md) | Quillen and R5Lab dependency order, compatibility boundaries and application verification |
+| [Development](DEVELOPMENT.md) | Setup, incremental validation, publication and contribution conventions |
+| [Performance](PERFORMANCE.md) | Measured costs, source-based diagnostics and limits of the measurements |
+| [Caching](CACHING.md) | Native Lake artifacts, CI transport, cross-library reuse and provenance |
+| [Downstream integration](DOWNSTREAM.md) | Dependency order, inspected pins and application verification boundaries |
 | [References](REFERENCES.md) | Exact source identities and inspected organization references |
-| [Work plan](WORK_PLAN.md) | Current source/integration coverage and remaining work |
+| [Work plan](WORK_PLAN.md) | Current source boundaries and identified historical acceptance checkpoints |
+| [Cohomology development](COHOMOLOGY_PLAN.md) | Implemented cohomology endpoints, remaining targets and proof dependencies |
 
-For affine module theory, start with [ModuleCat](../Aglib/Algebra/Category/ModuleCat/README.md), then [quasicoherent affine sheaves](../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md). Finite type and finite presentation are distinct object properties. [Coherent sheaves](../Aglib/AlgebraicGeometry/Modules/Coherent/README.md) supplies the locally Noetherian abelian/exact specialization. Finite and closed-immersion direct image uses the actual geometric functors and affine scalar comparisons.
+## Mathematical routes
 
-For vector bundles, start with [locally free sheaves](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md), its finite-local-basis class and local splitting. The pointwise fibre-dimension theorem supplies the rank interface. [Invertible sheaves](../Aglib/AlgebraicGeometry/Modules/Invertible/README.md) separately constructs the ordinary tensor Picard group and additive arbitrary pullback. [Differential sheaves](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md) gives actual universal derivations and etale pullback, with proved smooth rank and canonical etale differential pullback.
+| Task | Reading route and conditions |
+| --- | --- |
+| Affine modules and coherent sheaves | [ModuleCat](../Aglib/Algebra/Category/ModuleCat/README.md), [affine quasicoherent sheaves](../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md), then [coherent sheaves](../Aglib/AlgebraicGeometry/Modules/Coherent/README.md). Finite type and finite presentation are distinct; the coherent abelian/exact specialization keeps local Noetherianity. |
+| Vector bundles, Picard groups and differentials | [Locally free sheaves](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md), [invertible sheaves](../Aglib/AlgebraicGeometry/Modules/Invertible/README.md) and [differentials](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md). These include actual fibre rank, tensor Picard objects, universal derivations, smooth differential rank and etale pullback. |
+| Cohomology foundations | [Injective resolutions and Ext](../Aglib/CategoryTheory/Abelian/Injective/README.md), [total complexes](../Aglib/Algebra/Homology/TotalComplex/README.md), [site Cech maps](../Aglib/CategoryTheory/Sites/SheafCohomology/Cech/README.md), [topological sheaves](../Aglib/Topology/Sheaves/README.md), then [scheme cohomology](../Aglib/AlgebraicGeometry/Cohomology/README.md). The comparisons identify the original `Sheaf.H`, scalar action and maps. |
+| Base change, proper finiteness and duality | [Base change](../Aglib/AlgebraicGeometry/Cohomology/BaseChange/README.md), [proper finiteness](../Aglib/AlgebraicGeometry/Cohomology/Proper/Finiteness/README.md) and [projective-space duality](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/README.md). Keep flat base change, Noetherian proper models and projective-space duality distinct from arbitrary-base relative cohomology and general proper duality. |
+| Tensor and projection formulas | [Linear algebra](../Aglib/LinearAlgebra/README.md), [canonical site tensor](../Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/README.md), [scheme tensor](../Aglib/AlgebraicGeometry/Modules/Tensor/README.md), then [projection formula](../Aglib/AlgebraicGeometry/Modules/ProjectionFormula/README.md). The local guides distinguish arbitrary coefficients from finite-locally-free isomorphism results. |
+| Complexes and derived calculations | [Ordinary complexes](../Aglib/AlgebraicGeometry/Modules/Complex/README.md), [Godement](../Aglib/AlgebraicGeometry/Cohomology/Godement/README.md) and [good truncation](../Aglib/Algebra/Homology/Embedding/CochainComplex/README.md). Ordinary categorical exactness, bounded augmentation and original-unit derived computations have different premises. |
+| Perfect complexes | [Perfect-complex guide](../Aglib/AlgebraicGeometry/Modules/PerfectComplexes/README.md). Chain categories, native derived local models and strict exactness are distinct; local homology bounds do not require the compactness needed for one global interval. |
+| Smooth and normal geometry | [Regular-local algebra](../Aglib/RingTheory/RegularLocalRing/README.md), [stalks](../Aglib/AlgebraicGeometry/Stalk/README.md), [etale morphisms](../Aglib/AlgebraicGeometry/Morphisms/Etale/README.md), [smooth morphisms](../Aglib/AlgebraicGeometry/Morphisms/Smooth/README.md), [normal properties](../Aglib/AlgebraicGeometry/Properties/Normal/README.md) and [geometric connectedness](../Aglib/AlgebraicGeometry/Geometrically/Connected/README.md). Each retains its own scheme, morphism and base-field conditions. |
+| Finite-etale objects and rigidity | [Finite-etale objects](../Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/README.md), [finite-morphism lifts](../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md), [unramified algebra](../Aglib/RingTheory/Unramified/README.md) and [section rigidity](../Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/README.md). Empty covers and empty finite lift sets are allowed; geometric-point existence and rigidity retain separate hypotheses. |
+| Ideals, Cartier criteria and localization | [Ideal sheaves](../Aglib/AlgebraicGeometry/IdealSheaf/README.md), [effective Cartier ideals](../Aglib/AlgebraicGeometry/EffectiveCartierDivisor/README.md), [coherent extension](../Aglib/AlgebraicGeometry/Modules/Coherent/Extension/README.md) and [Serre localization](../Aglib/AlgebraicGeometry/Modules/Coherent/Localization/README.md). Arbitrary-base Cartier criteria and local/global Noetherian coherent hypotheses remain distinct. |
 
-For cohomology, read [generic resolution and exact-functor comparison](../Aglib/CategoryTheory/Abelian/Injective/README.md), [total complexes](../Aglib/Algebra/Homology/TotalComplex/README.md), [generic site Cech maps](../Aglib/CategoryTheory/Sites/SheafCohomology/Cech/README.md) and [topological sheaf sections](../Aglib/Topology/Sheaves/README.md). The [scheme cohomology](../Aglib/AlgebraicGeometry/Cohomology/README.md) route then constructs structural scalars, proves affine/finite-support comparisons, and identifies canonical Cech and field-base-change maps with the original `Sheaf.H`.
+## Source correspondence and evidence
 
-For geometry, read [regular-local algebra](../Aglib/RingTheory/RegularLocalRing/README.md), [scheme stalks](../Aglib/AlgebraicGeometry/Stalk/README.md), [etale morphisms](../Aglib/AlgebraicGeometry/Morphisms/Etale/README.md), then [smooth morphisms](../Aglib/AlgebraicGeometry/Morphisms/Smooth/README.md). [Normal scheme properties](../Aglib/AlgebraicGeometry/Properties/Normal/README.md) and [geometric connectedness](../Aglib/AlgebraicGeometry/Geometrically/Connected/README.md) preserve their distinct object/base-field conditions.
+[TT foundations](migration/tt-foundations.json) and
+[R5 general finite-etale theory](migration/r5-general-etale.json) identify their
+recorded source cuts. Earlier selections are retained in
+[latest-quillen](migration/latest-quillen.json),
+[latest-scheme](migration/latest-scheme.json),
+[latest-homology](migration/latest-homology.json) and
+[latest-general-cuts](migration/latest-general-cuts.json).
+[Module](module-map.json) and [namespace](namespace-map.json) maps record
+successive refinements and retirements, including intermediate names.
 
-The [canonical site tensor](../Aglib/Algebra/Category/ModuleCat/Sheaf/Tensor/README.md) feeds [scheme tensors](../Aglib/AlgebraicGeometry/Modules/Tensor/README.md), finite-free/projective affine reductions and actual [projection formula](../Aglib/AlgebraicGeometry/Modules/ProjectionFormula/README.md). The [ordinary module-complex route](../Aglib/AlgebraicGeometry/Modules/Complex/README.md) gives geometric restriction, flat pullback and acyclicity on specified opens. The [Godement route](../Aglib/AlgebraicGeometry/Cohomology/Godement/README.md) distinguishes ordinary-complex categorical exactness from bounded augmentation, original-unit D+ calculation and conditional local-unit descent. [Good truncation](../Aglib/Algebra/Homology/Embedding/CochainComplex/README.md), stupid layers and two-bound triangulated comparison provide the selected generic derived interfaces.
-
-For structural perfect complexes, continue from ordinary complexes to the [perfect-complex guide](../Aglib/AlgebraicGeometry/Modules/PerfectComplexes/README.md). It distinguishes the full chain categories, actual native derived local models and strict exactness; its homology results separate arbitrary-scheme local bounds from the global homology interval under `CompactSpace X`.
-
-For finite-etale objects and their canonical field-valued fibres/base change, read [FiniteEtale](../Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/README.md). The [finite-morphism point-lift guide](../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md) supplies the weaker finite-Hom result over arbitrary fields, with empty lift sets allowed. The [unramified algebra](../Aglib/RingTheory/Unramified/README.md) and [formally unramified section](../Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/README.md) rigidity guides state their separate map-equality interfaces and exact premises.
-
-Current source correspondence is recorded in [TT foundations](migration/tt-foundations.json) and [R5 general finite-etale theory](migration/r5-general-etale.json). The earlier source selections remain in [latest-quillen](migration/latest-quillen.json), [latest-scheme](migration/latest-scheme.json), [latest-homology](migration/latest-homology.json) and [latest-general-cuts](migration/latest-general-cuts.json). These provenance records identify source cuts and native destinations; the family guides retain the bounds and input families, and [WORK_PLAN.md](WORK_PLAN.md) distinguishes historical coverage from current integration.
-
-
-[Linear algebra](../Aglib/LinearAlgebra/README.md) owns the tensor-product map and
-injectivity comparison route. For actual ideal modules and arbitrary-base
-relative Cartier consequences, read [ideal sheaves](../Aglib/AlgebraicGeometry/IdealSheaf/README.md)
-then [effective Cartier ideals](../Aglib/AlgebraicGeometry/EffectiveCartierDivisor/README.md).
-[Coherent extension](../Aglib/AlgebraicGeometry/Modules/Coherent/Extension/README.md)
-and [Serre localization](../Aglib/AlgebraicGeometry/Modules/Coherent/Localization/README.md)
-retain their distinct local and global Noetherian hypotheses.
-
-The source authority and exact new selections are [latest-quillen](migration/latest-quillen.json), [latest-scheme](migration/latest-scheme.json), [latest-homology](migration/latest-homology.json) and [latest-general-cuts](migration/latest-general-cuts.json). These provenance records do not replace the source's bounds or input families.
-
-[Cohomology development](COHOMOLOGY_PLAN.md) records the current affine/flat base-change, projective finiteness, duality and proper-base-change targets and their exact proof boundaries.
+These records describe their identified source and validation snapshots. A
+historical `latest` filename or `current_identity_validation` field is not a
+live inventory or acceptance claim for every later checkout. Keep original
+hashes and evidence fixed; use the family guides for present interfaces and
+[WORK_PLAN.md](WORK_PLAN.md) for the scope of acceptance checkpoints. Source
+correspondence and successful checks do not supply an unproved theorem family.

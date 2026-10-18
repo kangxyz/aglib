@@ -7,9 +7,9 @@ replacement derived category, perfect-complex object, or cohomology theory.
 ## Finite-free covers of original homology
 
 [HomologyCover](HomologyCover.lean) proves
-`HomologicalComplex.exists_finiteFree_single_homology_epi`. For any complex
-shape and degree `i`, finite generation of the original `K.homology i`
-gives an actual finite-free module `P` and actual chain map
+`HomologicalComplex.exists_finiteFree_single_homology_epi`. Over a commutative
+ring, for any complex shape and degree `i`, finite generation of the original
+`K.homology i` gives an actual finite-free module `P` and actual chain map
 `single_i P ⟶ K` whose original native homology map in degree `i` is an
 epimorphism. The construction lifts a finite generating family through the
 original cycle-to-homology epimorphism by native projectivity and retains
@@ -45,8 +45,8 @@ form a Serre class over the Noetherian ring, giving actual cone-homology
 finiteness; native homology of the original truncation inclusion transfers
 it to `L`. Bounded-above flat cycle descent proves flatness of its actual
 boundary. No family asserting base-change computations or a desired model
-is assumed. Reassembly of these reductions into a finite-projective complex
-is a separate subsequent construction.
+is assumed. The following replacement theorem reassembles these reductions
+into a finite-projective complex.
 The leaf passed with receipt `1792097986485327000-47023`.
 The external `work/proper-validation/FiniteFreeConeReductionConsumer.lean`
 passed with receipt `1792098104796643000-49100`, checking actual top-homology
@@ -201,9 +201,9 @@ cokernel comparison and Mathlib's local module criterion.
 `HomologicalComplex.free_homology_of_residue_injective` uses exactly the actual
 predecessor and successor of the displayed degree in an arbitrary complex shape.
 
-This is the displayed two-term case of the bounded criterion below. Obtaining a
-bounded finite-projective model from proper coherent cohomology, and passing from
-geometric-fibre inputs to these residue-field calculations, remain separate steps.
+This is the displayed two-term case of the bounded criterion below. The
+geometric suppliers described below construct the proper coherent relatively
+flat model and compare its residue-field homology with original fibre cohomology.
 
 ## Native cancellation steps
 
@@ -265,21 +265,31 @@ invertible in every integer degree after every ring map, without flatness. Rings
 and module carriers retain their explicit native universe bounds, including target
 rings above the original ring universe.
 
-## Boundary toward proper cohomology
+## Geometric consumers and remaining boundary
 
-The consumer is the proper cohomology and base-change construction. The algebraic
-finite-projective replacement is proved above. The
+The algebraic finite-projective replacement is proved above. The
 [projective finite model](../../../AlgebraicGeometry/Cohomology/Projective/FiniteModel.lean)
 constructs the actual model for a closed projective embedding over a Noetherian base,
 with coherent relatively flat coefficient, its actual native derived-global-sections
 isomorphism, and computation of unchanged `Sheaf.H` after every ring base change.
 The chain representative retains the original integer Cech base-change map.
 
-Identifying the original degreewise cohomology base-change mate with the model's
-native homology mate, proving perfectness of the actual sheaf-valued `Rf_*`, and
-extending the projective geometric supplier to arbitrary proper morphisms remain
-separate obligations. No stronger arbitrary-base proper-finiteness or locally-free
-cohomology-base-change theorem-family input is discharged by the Noetherian supplier.
+The sole [finite-cover model](../../../AlgebraicGeometry/Cohomology/FiniteModel/README.md)
+also has the full original geometric degreewise base-change map/native homology-mate
+square. Its strict-perfect sheaf model represents installed `Rf_*(single M)`.
+The [proper supplier](../../../AlgebraicGeometry/Cohomology/Proper/FiniteModel/README.md)
+constructs the cover and model internally for a proper morphism to `Spec R`,
+Noetherian commutative `R`, coherent `M` and `Scheme.Modules.relativeFlat f M`.
+Flatness of `f` is not required. One actual finite-projective complex supplies
+the strict-perfect direct-image model both over `R` and after every ring base change,
+with the ordinary pulled coefficient. The new ring need be neither flat nor Noetherian.
+
+The model and map comparison do not make every degreewise cohomology base-change
+map invertible. The proper local residue-surjectivity criteria and reduced-base
+Grauert criteria retain their respective hypotheses. Arbitrary perfect-complex
+coefficients, general nonflat sheaf-valued base-change comparison and the full
+`LocalFreeCohomologyBaseChange` family remain separate boundaries; this Noetherian
+coherent relatively flat sheaf supplier does not discharge them.
 
 ## Focused validation
 
@@ -321,9 +331,9 @@ The historical probe files were moved out of the checkout to the external task
 directory `work/proper-validation/`; their receipts and original validation commands
 above remain the recorded evidence. No aggregate library build was run.
 
-The geometric target is a finite-projective model for the derived direct image
-`Rf_* M`, together with canonical base-change maps and Grauert/local-freeness criteria.
-Projective direct-image and base-change endpoints are the current geometric priority.
+The geometric consumers now include proper finite-projective direct-image models,
+the original canonical base-change map and Grauert/local-freeness criteria under
+the conditions above.
 Constant fibre dimensions on a nonreduced base do not supply local freeness by
 themselves; any constancy-based Grauert statement must retain its reduced-base or
 other sufficient hypotheses. The pointwise residue-concentration theorems above

@@ -40,9 +40,12 @@ Shared builds remain serialized.
 linters and explicit origin audits, exercises isolated rejection controls, checks
 the compiled inventory, kernel-replays current project modules, and builds the
 independent downstream client. `--rehash` is forwarded to the project build/test
-commands. Every failed stage stops dependent stages.
+commands and the native CI
+linter commands. `--ci` skips the two independent kernel replays. Every failed
+stage stops dependent stages.
 
-.github/workflows/ci.yml runs the source-only entry before installing the
+[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs the source-only entry
+and a separate native-cache transport regression suite before installing the
 `lean-toolchain` selection through pinned elan. It separately caches third-party
 `.lake/packages`, keyed by `lean-toolchain` and `lake-manifest.json`, and fetches
 matching Mathlib proof artifacts with `lake exe cache get` under the owned-group
@@ -106,7 +109,9 @@ commands above instead of this local overlay.
 
 Full checks serialize frontend processes. Normal builds can select internal
 parallelism through `AGLIB_BUILD_THREADS`; without it, they inherit
-`LEAN_NUM_THREADS` or use the conservative default. The count must be positive
+`LEAN_NUM_THREADS` or default to one. The comprehensive `check.sh` resets
+`LEAN_NUM_THREADS=1`; use `AGLIB_BUILD_THREADS` for its compiler parallelism.
+The count must be positive
 and fit the available logical CPUs. A temporary toolchain wrapper carries the
 same count to native `-j` and `LEAN_NUM_THREADS`, including Lake-spawned compilers,
 while retaining the memory limits and one compiler process.
@@ -137,8 +142,11 @@ The no-build probe writes its full output to `cached-check.log` and prints one
 cache-hit or cache-miss summary. Only pinned Lake's exit code 3 accompanied
 exclusively by its expected out-of-date errors permits a build fallback. Other
 probe errors are printed and stop the run. Compiler failures remain visible in
-the ordinary build output. Each receipt directory owns one probe log and refuses
-to overwrite prior evidence.
+the ordinary build output. Each build receipt directory owns one probe log and refuses
+to overwrite prior evidence. Use a fresh build receipt directory for each invocation;
+this differs from the explicitly resumable kernel-replay directory below.
+`AGLIB_VERIFY_DIR` selects the comprehensive checker's output root, not a resume
+mechanism for the entire checker.
 
 `AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` configure the native allocation
 limit and aggregate owned-group RSS cutoff in MiB. Defaults are conservative and
@@ -300,7 +308,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_resource_guard.py` | Pure Python budget, fail-closed monitoring, exit propagation, and owned-PID termination regressions. |
 | `test_kernel.py` | Exact enrollment, bounded task barrier, failed-batch rejection, RSS backoff, immutable attempt logs, and basis-checked legacy adoption regressions. |
 | `test_build_serial.py` | Checks target validation, single-graph scheduling, strict cache-miss fallback, preserved probe logs, and compiler-wrapper argument caps using a small Python executable. |
-| `check.sh` | Serialized comprehensive diagnostic/CI command; accepts `--source-only` and `--rehash`. Not ordinary local acceptance; CI retains its declared pipeline. |
+| `check.sh` | Serialized comprehensive diagnostic/CI command; accepts `--source-only`, `--rehash` and `--ci`. Not ordinary local acceptance; CI retains its declared pipeline. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |
@@ -325,8 +333,8 @@ mentions when enabled.
 
 The initial extraction helper has no implicit machine-path source checkout. To
 inspect a source, explicitly pass the directory containing its original `Quillen/`
-or `R5Lab/` tree and both expected identities to `read_source`. For current LOCAL
-Quillen work, the accepted revision is `189a8e779f0c68b2dfc6f8195daebb3e684a5905`;
+or `R5Lab/` tree and both expected identities to `read_source`. For the historical local
+Quillen selection recorded by this extraction, the accepted revision was `189a8e779f0c68b2dfc6f8195daebb3e684a5905`;
 the original `8362957` initial-extraction revision remains historical provenance.
 The caller selects the checkout location and exact file hash. Returned `source_*`
 fields describe those guarded original bytes. Existing provenance and current
@@ -351,6 +359,7 @@ The allowed axioms remain `propext`, `Classical.choice`, and `Quot.sound`.
 
 `check_kernel.py` performs exact-module kernel replay under the pinned implementation;
 source guards, linters, and axiom inventories are separate checks. None of them
-discharges explicit mathematical theorem premises. After a source move, remove or
-quarantine only this package's stale build view before kernel replay; dependency
-sources and caches retain their own ownership.
+discharges explicit mathematical theorem premises. After a source move, prune
+or quarantine obsolete owned module facets before
+kernel replay, preserving current compatible outputs. Dependency sources and
+caches retain their own ownership.

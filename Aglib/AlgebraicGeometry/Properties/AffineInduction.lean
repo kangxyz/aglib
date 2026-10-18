@@ -15,7 +15,7 @@ at LOCAL Quillen
 `189a8e779f0c68b2dfc6f8195daebb3e684a5905`.
 Source SHA-256: `fa0bd7ed0040404c3e091735082619a2a3bc7273caec266734ff959b53b854e0`.
 Selected declaration ranges: [[1, 113]].
-Actual maps and premises are preserved; the generic truncation lift is recorded explicitly.
+Actual maps, universes and premises of the selected declarations are preserved.
 -/
 
 /-! # Affine induction for scheme properties

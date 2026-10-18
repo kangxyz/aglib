@@ -25,16 +25,8 @@ through an exact short complex, with the original restriction equations. These
 statements do not assume that the sheaf is globally projective. They supply the
 finite local correction step for strict-perfect chain nullhomotopies.
 
-[FreeCover](FreeCover.lean) constructs actual local generating families from free presentations on an arbitrary open cover, retaining the cover and index types. Finite indices give finite local freeness; the fixed `ULift (Fin n)` basis gives `SheafHasRank`. Its isomorphism transport compares the same actual restricted/free objects.
+[FreeCover](FreeCover.lean) constructs actual local generating families from free presentations on an arbitrary open cover, retaining the cover and index types. Finite indices give finite local freeness; the fixed `ULift (Fin n)` basis gives `SheafHasRank`. Its isomorphism transport compares the same actual restricted/free objects. Smooth differential rank uses these constructions without a local-basis fibre-dimension assumption.
 
 [FiniteFlat](FiniteFlat.lean) proves `Scheme.Modules.finiteFlat_pushforwardStructureSheaf_isFiniteLocallyFree`: for finite flat locally finitely presented `f`, its actual structure-module direct image is finite locally free on the original target. It uses native affine bases and iso/open-cover descent and creates no rank/degree or morphism-wrapper predicate.
 
 [OpenImage](OpenImage.lean), imported as `Aglib.AlgebraicGeometry.Modules.LocallyFree.OpenImage`, transports an actual free presentation across an open immersion to the image open. Its generator index is arbitrary; no finiteness or rank-one hypothesis is imposed.
-
-[Tensor](Tensor/README.md) owns exact left/right tensor and `PreservesHomology` for finite locally free coefficients, with affine/injective restriction conditions retained. The actual pointwise fibre-dimension theorem is owned by [FibreDimension](FibreDimension.lean).
-
-[FreeCover](FreeCover.lean) constructs actual local bases from displayed free
-restrictions on an open cover, including the fixed-rank `SheafHasRank`
-interface. It also transports a displayed free presentation through an
-actual scheme isomorphism. The smooth differential rank theorem consumes
-these constructions; no local-basis fibre-dimension assumption enters them.

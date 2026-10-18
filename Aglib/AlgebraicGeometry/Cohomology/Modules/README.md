@@ -28,7 +28,7 @@ identify the existing field maps and module structures literally. No
 quasicoherence, flatness or finite-generation assumption is used.
 
 [Functor](Functor.lean) packages the same objects and coefficient maps as
-`moduleCohomologyFunctorOfHom X α n : X.Modules → ModuleCat R`, with
+`moduleCohomologyFunctorOfHom X α n : X.Modules ⥤ ModuleCat.{u + 1} R`, with
 cohomology carriers in universe `u+1`. Forgetting the specified scalars
 recovers the native additive sheaf-cohomology functor by `Iso.refl`.
 Faithful forgetting proves additivity, so native finite-biproduct

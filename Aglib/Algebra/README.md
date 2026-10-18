@@ -1,6 +1,6 @@
 # Algebraic categories and homology
 
-[ModuleCat](Category/ModuleCat/README.md) supplies actual finite modules, scalar restriction, localization, quotient-ring actions and canonical adjunction units. The finite-module abelian/exact structure uses Noetherianity; the objects and several scalar constructions are defined more generally.
+[ModuleCat](Category/ModuleCat/README.md) supplies scalar restriction, localization, quotient-ring actions and canonical adjunction units on arbitrary modules. [FGModuleCat](Category/FGModuleCat/README.md) owns the actual finitely generated module category. Its abelian/exact structure uses Noetherianity; the objects and several scalar constructions are defined more generally.
 
 [Homology](Homology/README.md) supplies quasi-isomorphism detection by an actual acyclic cone. [TotalComplex](Homology/TotalComplex/README.md) proves that rowwise quasi-isomorphisms of first-quadrant module bicomplexes induce a quasi-isomorphism of the native total complex, over an arbitrary ring and with independent module universe. Generic injective/Ext comparison belongs to [CategoryTheory/Abelian/Injective](../CategoryTheory/Abelian/Injective/README.md).
 

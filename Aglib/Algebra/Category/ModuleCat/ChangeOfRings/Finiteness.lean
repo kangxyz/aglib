@@ -13,7 +13,7 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 # Finite and projective native scalar extension
 
 The actual extension-of-scalars functor preserves finite modules and projective
-modules for every ring homomorphism. Scalar, coefficient-ring and module
+modules for every homomorphism of commutative rings. Scalar, coefficient-ring and module
 universes remain independent. No complex, derived or flatness hypothesis is
 involved.
 -/

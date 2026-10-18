@@ -7,7 +7,7 @@ retain each pure tensor, and the coefficient square uses the original
 `LinearMap.baseChange`. No flatness or finiteness premise is needed.
 
 [Finiteness](Finiteness.lean) owns `ModuleCat.finite_extendScalars` and
-`ModuleCat.projective_extendScalars` for arbitrary ring maps, with
+`ModuleCat.projective_extendScalars` for arbitrary maps of commutative rings, with
 independent ring and module universes. The finite-projective complex
 family consumes these native module statements by public import.
 
@@ -52,5 +52,6 @@ adjoints to scalar restriction. It supplies ordinary composition with its
 unit/counit equations, preservation of injectives, and composition of the
 installed D+ right-derived functors with their original units. The ring
 universes and supplied derived-category sizes remain independent; no
-commutativity or flatness premise is added. The homology/Ext and geometric
-purity identifications remain separate consumers.
+commutativity or flatness premise is added. Its Ext and regular-principal
+refinements identify original homology and compute principal-equation purity;
+geometric sheaf purity remains a separate consumer.

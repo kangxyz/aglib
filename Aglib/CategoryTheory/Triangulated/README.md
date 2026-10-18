@@ -12,6 +12,7 @@ Bounded homotopy/D+ term comparisons and the actual short-exact triangle constru
 rows as `Function.Exact` for the original triangle precomposition maps and
 `ShiftedHom.comp` by its actual unsigned connecting arrow. It also proves
 surjectivity of that same boundary when the displayed next-degree middle Hom
-group is subsingleton. The coefficient object and all integer degrees are
-arbitrary; only the native pretriangulated and additive-shift hypotheses
-are required. No replacement boundary or derived functor is defined.
+group is subsingleton. The displayed triangle must be distinguished, and
+the integer degrees satisfy `i + 1 = j`; the coefficient object is arbitrary.
+The ambient assumptions are the native pretriangulated and additive-shift
+structures. No replacement boundary or derived functor is defined.
