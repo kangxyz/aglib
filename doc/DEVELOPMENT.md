@@ -18,9 +18,12 @@ Keep writable dependency build caches owned by this checkout. Before building wi
 All normal workflows must use only incremental checks, including authoring, maintenance, documentation, review, merge, integration and publication. Preserve trusted caches, reuse compatible build and trust evidence, reconcile combined changes and fill actual coverage gaps. Reconcile exact source/toolchain/configuration identities and obtain matching caches before building genuinely missing or changed required targets and needed affected consumers. Complete coherent mathematical obligations using focused compilation and repair where they advance the proof, with [build_serial.py](../scripts/build_serial.py):
 
 ```sh
-python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration \
+python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration-001 \
   Aglib.CategoryTheory.ExactCategory.Basic
 ```
+
+Choose a fresh build receipt directory for each invocation; the helper refuses
+to overwrite its prior `cached-check.log`.
 
 The helper accepts `--root ROOT`, `--rehash`, optional native Lake `--outputs FILE` mappings and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
 
@@ -42,7 +45,9 @@ When that broad scope is warranted, the full local command includes independent 
 bash scripts/check.sh --rehash
 ```
 
-`--rehash` asks Lake to validate current source and build arguments while retaining unaffected outputs. Coordinate integrated checks with the integrator; they write shared build outputs and must not overlap another Lean proof job. `AGLIB_VERIFY_DIR` selects a verification root for resuming the same recorded basis.
+`--rehash` asks Lake to validate current source and build arguments while retaining unaffected outputs. Coordinate integrated checks with the integrator; they write shared build outputs and must not overlap another Lean proof job. `AGLIB_VERIFY_DIR` selects the comprehensive run's output root. Use a fresh root
+for each invocation: build probes refuse to overwrite prior logs. Resume exact
+kernel replay separately with its existing `--receipt-dir`, as described below.
 
 The [GitHub Actions workflow](../.github/workflows/ci.yml) records the CI runner, prerequisite tools and resource profile. After guarded cache setup and cache validation it runs:
 
@@ -64,7 +69,7 @@ CI uses the configured Batteries Lean linter through `lake lint -- --no-build`, 
 
 ## Memory and exact replay
 
-The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` selects its internal parallelism, otherwise inheriting `LEAN_NUM_THREADS` or using the conservative default. Exact kernel replay uses bounded batches in one monitored process; select their size with `AGLIB_KERNEL_BATCH_SIZE` or `--batch-size`. Batches that reach the RSS cutoff are retried at smaller sizes. A temporary toolchain wrapper applies the selected native `-j` and `-M` limits to direct and Lake-spawned frontends. The RSS watchdog sums the owned process group's memory, fails closed on monitoring, memory or concurrency failure, and signals only PIDs whose owned-group identity it rechecks. Native heap limits alone do not bound all mapped memory.
+The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` selects its internal parallelism, otherwise inheriting `LEAN_NUM_THREADS` or defaulting to one. The comprehensive `check.sh` sets `LEAN_NUM_THREADS=1`, so only `AGLIB_BUILD_THREADS` overrides its compiler-thread default. Exact kernel replay uses bounded batches in one monitored process; select their size with `AGLIB_KERNEL_BATCH_SIZE` or `--batch-size`. Batches that reach the RSS cutoff are retried at smaller sizes. A temporary toolchain wrapper applies the selected native `-j` and `-M` limits to direct and Lake-spawned frontends. The RSS watchdog sums the owned process group's memory, fails closed on monitoring, memory or concurrency failure, and signals only PIDs whose owned-group identity it rechecks. Native heap limits alone do not bound all mapped memory.
 
 `AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` are in MiB. Choose values appropriate to the host, keeping the native Lean limit below the owned-group RSS cutoff. The helpers validate their settings; the workflow is the authority for CI's configured profile. Do not run another Lean job alongside this route.
 
@@ -164,7 +169,7 @@ would compete with the actual dependency's `Aglib.*` module identities.
   the correct interface. Do not retain duplicate implementations or introduce
   a compatibility facade as the default migration route.
 
-The two subtrees currently document this convention; create mathematical
+The two paths specify the candidate convention; create mathematical
 subdirectories and source facades only when real candidate modules need them.
 A temporary location does not itself assert upstream acceptance or a completed
 migration.

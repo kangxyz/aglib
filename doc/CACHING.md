@@ -10,8 +10,10 @@ build trees between checkouts.
 
 Mathlib retains its standard `lake exe cache get` interface and existing
 resource-guard route. Native caching complements that service. Cache hits do not
-replace current builds, linters, axiom controls, inventories or kernel replay,
-and historical verification receipts do not become current evidence.
+establish current lint, axiom/control, inventory or replay
+coverage. Use incremental builds and checks for actual gaps, retaining matching
+evidence for unchanged closures; a historical receipt needs current-basis
+validation before reuse.
 
 ## Local reuse
 
@@ -111,8 +113,9 @@ for public download access. The native Actions cache is still saved after
 failed checks so partial progress can be resumed.
 
 The workflows encode publication; configuring them does not prove that a remote
-asset already exists or has been downloaded. The first successful producer run
-and downstream restore must establish remote transport operation.
+asset already exists or has been downloaded. Remote transport operation needs
+evidence from successful producer and
+downstream restore runs, such as the historical rollout recorded below.
 
 The manual [cache-client acceptance workflow](../.github/workflows/cache-client.yml)
 checks real Linux producer-to-Quillen delivery independently of full library CI.
@@ -126,11 +129,12 @@ actual producer and consumer revisions. The workflow is manual-only, has its own
 concurrency group and read-only repository permissions, uploads its evidence,
 and does not build Quillen mathematics or publish caches.
 
-### Verified initial rollout
+### Recorded initial rollout
 
 Aglib infrastructure commit `b7713c414aacaad13d07b83d6bab1f0216191595`
 passed [library and cache-publication CI](https://github.com/kangxyz/aglib/actions/runs/38772498398).
-Its current-source checks reused the existing compiled library, and the native
+Its checks on that recorded source basis reused the existing compiled library,
+and the native
 cache release was published successfully.
 
 The [real Quillen acceptance run](https://github.com/kangxyz/aglib/actions/runs/38775313932)

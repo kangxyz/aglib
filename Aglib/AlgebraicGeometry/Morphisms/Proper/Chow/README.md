@@ -1,4 +1,4 @@
-# Proper graph products toward Chow modification
+# Proper modifications over finite projective products
 
 [Basic](Basic.lean) supplies the unconditional theorem
 `Scheme.Chow.exists_finite_projective_product_modification`. For every actual
@@ -41,7 +41,8 @@ finite-product base-change comparison, with no alternative graph product.
 image of each `U i`. [FiniteProductMap](FiniteProductMap.lean) uses this equation
 and the literal closed pairing to prove that the original `toTarget` restricted
 to that open is an immersion whenever each original `h i` is an immersion.
-If the `U i` cover, `toTarget_locallyQuasiFinite` supplies local quasi-finiteness.
+These local results retain properness of the targets and quasi-compactness of
+each original `U i → X`. If the `U i` cover, `toTarget_locallyQuasiFinite` supplies local quasi-finiteness.
 If `f` is proper, `toTarget_isProper` supplies properness and
 `toTarget_isFinite` applies native Zariski's Main Theorem. These hypotheses
 still require neither reducedness nor Noetherianity.
@@ -56,5 +57,6 @@ finiteness. The
 now applies the proved projective-product suppliers to these original maps:
 the same modification, chosen independently of every coefficient, has both
 uniform bounded coherent derived images and finite original cohomology.
-General proper finiteness still needs the support-cone induction recorded
-by the owning [Proper guide](../README.md).
+The [proper-finiteness consumer](../../../Cohomology/Proper/Finiteness/README.md)
+now closes the support-cone induction over every Noetherian affine base,
+as recorded by the owning [Proper guide](../README.md).

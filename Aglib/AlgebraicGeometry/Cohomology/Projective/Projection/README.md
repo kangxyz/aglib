@@ -49,5 +49,6 @@ base. It is not a relative-flatness hypothesis or a condition on complex terms.
 
 The [finite native product](../Products/README.md) consumer now iterates this
 same theorem with the original derived composition and the sum of the
-displayed dimensions. The actual proper-modification cone remains a later
-consumer.
+displayed dimensions. The [proper Chow](../../Proper/Chow/README.md) and
+[support-induction](../../Proper/SupportInduction/README.md) consumers use
+these same bounded coherent images in the actual modification cone.

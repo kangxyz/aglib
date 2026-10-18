@@ -25,8 +25,6 @@ hypotheses.
 
 [KernelBaseChange](KernelBaseChange.lean), imported as `Aglib.Algebra.Category.ModuleCat.KernelBaseChange`, constructs the actual restricted and scalar-extended maps of ring kernels and their inclusion equation. Its canonical scalar-extension comparison is natural for actual module morphisms. Construction requires the displayed commutative square; flatness is reserved for the lower quotient-flat ideal theorem.
 
-The latest generic lower interfaces add [ChangeOfRings](ChangeOfRings/README.md), [Monoidal scalar restriction](Monoidal/README.md), [scalar-extension tensor](Tensor/README.md), [module presheaves](Presheaf/README.md) and [site module sheaves](Sheaf/README.md). The site tensor is canonical below scheme and invertible sheaves; finite-free/retract exactness and injective preservation are separate properties.
-
 [FinitePresentation](FinitePresentation.lean) proves finite presentation of
 the actual categorical cokernel of a map from a finite module to a
 finitely presented module. Ring and carrier universes remain independent.

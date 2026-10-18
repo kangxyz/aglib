@@ -139,8 +139,10 @@ original resolution comparison and tilde--Gamma counit. Actual higher
 direct images are quasicoherent in every nonnegative degree, over an
 arbitrary ring. The independent public consumer passed
 `1792108251788846000-25675` with only the standard three axioms. Passage
-to a general target and comparison with the installed derived flat
-base-change map remain further interfaces.
+to a general target is proved by [QuasiCoherent](QuasiCoherent.lean),
+and [derived flat base change](../BaseChange/Derived/README.md) is proved
+for qcqs morphisms, flat base change and bounded-below objects with
+quasicoherent homology.
 
 [Restriction](Restriction.lean) gives `Scheme.Modules.derivedOpenBaseChangeIso`
 on an actual cartesian square whose horizontal maps are open immersions.
@@ -163,6 +165,13 @@ exact-restriction comparison, computes the unchanged native higher-image
 open isomorphism. Its components retain the original ordinary cartesian
 mate. The statements apply to all module sheaves and natural degrees,
 without qcqs or quasicoherence assumptions.
+
+[Restriction/Composition](Restriction/Composition.lean) proves
+`higherDirectImageOpenRestrictionIso_comp`: successive original open
+comparisons paste through the actual restriction-composition maps. It
+applies to arbitrary module coefficients and every natural degree, with
+the supplied Cartesian open squares and no finiteness or quasicoherence
+premise. This does not construct a general nonflat base-change sheaf map.
 
 [QuasiCoherent](QuasiCoherent.lean) proves
 `moduleHigherDirectImage_isQuasicoherent`: for qcqs `f : X ⟶ Y` and any

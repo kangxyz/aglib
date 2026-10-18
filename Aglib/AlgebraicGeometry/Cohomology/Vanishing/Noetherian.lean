@@ -35,9 +35,11 @@ induction using the original long exact sequence.
 
 The general vanishing statement is Stacks 02UZ (Proposition 20.20.7), inspected
 2026-10-14. The filtered-colimit input follows the finite-cover argument of
-Stacks 009F. All load-bearing support and comparison statements are proved in
-this file and `R5Lab.CategoryTheory.Sheaves.NoetherianCohomology`, using Mathlib
-revision `d13f23b723b8a846827a245b89c10fc7d3f11612` and project snapshot
+Stacks 009F. The current general support and comparison owners are
+`Aglib.Topology.Sheaves` and `Aglib.Topology.KrullDimension.ClosedSubspace`,
+as selected by the imports above. The former source owner was
+`R5Lab.CategoryTheory.Sheaves.NoetherianCohomology`, at Mathlib revision
+`d13f23b723b8a846827a245b89c10fc7d3f11612` and R5 project snapshot
 `3397a339b6a52fbba586dae127aa729d873b771d`.
 
 Extraction source: `R5Lab.AlgebraicGeometry.Curves.Cohomology.NoetherianDimension` at R5Lab revision

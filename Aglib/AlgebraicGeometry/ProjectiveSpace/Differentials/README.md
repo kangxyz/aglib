@@ -73,6 +73,42 @@ decomposition equations are proved as native sheaf-map equalities. This
 includes the one-coordinate case with an empty complementary basis, and uses
 no finiteness, field, Noetherian, nontriviality, or exactness-family premise.
 
-Compatibility and gluing of the chart arrows, and the global short exact
-Euler sequence, remain separate obligations. No determinant, canonical
-bundle, trace, or residue identification is asserted by this checkpoint.
+[Overlap](Euler/Overlap.lean), imported separately as
+`Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Overlap`, proves
+transition identities for the original ratios, inverse-twist and middle
+generators, relative differentials and kernel vectors. The latter two obey
+the same quotient-rule formula in the original transition unit.
+`eulerDifferentialOnPolynomialChart_d_ratio_open` extends the original
+differential/kernel-vector equation to every polynomial-chart open. These
+results retain arbitrary coordinate types and commutative base rings.
+The `Euler` entry reexports `LocalExact`; it does not import `Overlap`.
+
+[Gluing](Euler/Gluing.lean) proves equality of the original chart arrows and
+glues them to `eulerDifferential`. Its restriction is exactly the original
+polynomial-chart differential. `eulerShortComplex_shortExact` proves the
+actual global sequence `0 → Ω → O(-1) ⊗ π*V → O → 0` short exact over every
+commutative ring and for arbitrary coordinate types, including the empty
+space and the one-coordinate case. This focused leaf is imported separately
+from the stable `Euler` entry.
+
+[Determinant/Gluing](Determinant/Gluing.lean) constructs the actual top-form
+isomorphism to `O(-n-1) ⊗ π*det(V)`, with original chart restrictions and
+signed ratio-wedge formulas. For `e : ι ≃ Fin (n+1)`,
+[Determinant/Twisting](Determinant/Twisting.lean) uses the corresponding
+ordered coefficient frame to give `differentialDeterminantTwistingIso` from
+the actual `∧ⁿ Ω` to `O(-n-1)`. Its order-change equations retain the
+determinant sign; the coefficient determinant is not discarded under a
+change of frame. The ring is arbitrary, and dimension zero is included.
+
+[DifferentialTrace](../../Cohomology/Duality/Projective/DifferentialTrace.lean)
+identifies the original top-form Cech residue class through that same
+determinant/twist isomorphism with the old Laurent class and trace.
+The [relative family](../../Cohomology/Duality/Projective/Relative/README.md)
+supplies the separated-base derived trace and Noetherian separated-base
+coherent comparison. [Canonical](../../Cohomology/Duality/Projective/Canonical.lean)
+identifies the installed closed right-adjoint value with the source's top
+differential single in integer degree `n-d`, for closed `i` with `p` and
+`i ≫ p` smooth of fixed relative dimensions `n,d`. It has no separation,
+Noetherianity or global `d ≤ n` premise. The smooth duality theorem uses a
+chosen projective square and closed embedding; general proper duality and
+embedding independence remain separate.

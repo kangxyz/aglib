@@ -11,16 +11,19 @@ public import Aglib.AlgebraicGeometry.Cohomology.Finiteness.ProperInputs
 # Structure-sheaf consequences of the explicit standard coherent-finiteness input
 
 Every theorem retains `hstandard : ProperModuleCohomologyFinite` as an explicit
-parameter. This is the user-accepted classical proper/coherent finiteness input
+parameter. This is the retained classical proper/coherent finiteness input
 on the actual module cohomology objects and their structural field actions.
 This file does not prove that standard input or introduce a Lean axiom for it.
+The proved supplier `properModuleCohomologyFinite` lives in
+`Aglib.AlgebraicGeometry.Cohomology.Proper.Field`; this lower specialization
+deliberately retains its argument.
 
 The actual structure module is finitely presented by its native free-on-one
 presentation. The scalar-compatible `structureModuleCohomologyEquiv` then
 transfers the supplied all-module finiteness to actual structure cohomology in
 all degrees, including H1, for arbitrary proper schemes over arbitrary fields.
 
-Input owners: `Properties`, `Modules`, and `GeneralProperties`;
+Historical source input-owner names: `Properties`, `Modules`, and `GeneralProperties`;
 Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
 
 Extraction source: `R5Lab.AlgebraicGeometry.Curves.Cohomology.StandardCoherentFiniteness` at

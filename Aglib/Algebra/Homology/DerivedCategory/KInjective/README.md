@@ -51,8 +51,10 @@ the actual mapped source augmentation followed by the original target
 augmentation. The map is a quasi-isomorphism, and its original augmentation
 square has the actual chain homotopy
 `mapCochainComparisonAugmentationHomotopy`. The former
-`mapCochainComparison_augmentationHomotopy` remains a transparent deprecated alias. The source needs no derived category;
-neither category needs enough injectives when both resolutions are supplied.
+`mapCochainComparison_augmentationHomotopy` remains a transparent deprecated alias.
+The source category needs no derived-category choice; the target retains
+`HasDerivedCategory`. Neither category needs enough injectives when both
+resolutions are supplied.
 Preservation of injective objects is not assumed. A subsequent nonexact functor
 must still be compared through its original derived unit; the source of this
 comparison need not be K-injective.

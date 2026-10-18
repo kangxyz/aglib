@@ -4,11 +4,11 @@
 
 ## Package and repository identity
 
-The Lake package and main Lean module are `Aglib`; the positive test module is `AglibTest`. The repository directory is `aglib` (`tmp/aglib` in this workspace). Keep `algebraic-geometry` as the mathematical subject keyword. Original source repository names and native mathematical namespaces retain their identities.
+The Lake package and main Lean module are `Aglib`; the positive test module is `AglibTest`. The repository is `kangxyz/aglib`; its checkout directory is not fixed. Keep `algebraic-geometry` as the mathematical subject keyword. Original source repository names and native mathematical namespaces retain their identities.
 
 ## Use the parent context
 
-A source path should identify the mathematical subject with enough context to distinguish it. Repeated object endings are unnecessary when the parent already fixes that object. Approved examples include `Aglib.AlgebraicGeometry.Morphisms.Finite`, `.Smooth` and `.Etale`, and `Aglib.AlgebraicGeometry.Modules.Coherent`, `.QuasiCoherent`, `.LocallyFree`, `.Invertible`, `.Differentials` and `.Flat`.
+A source path should identify the mathematical subject with enough context to distinguish it. Repeated object endings are unnecessary when the parent already fixes that object. Approved family prefixes include `Aglib.AlgebraicGeometry.Morphisms.Finite`, `.Smooth` and `.Etale`, and `Aglib.AlgebraicGeometry.Modules.Coherent`, `.QuasiCoherent`, `.LocallyFree`, `.Invertible`, `.Differentials` and `.Flat`. These are family names; use an existing leaf named in its README for an exact import.
 
 This is a contextual rule. Preserve complete mathematical object names where they carry meaning: `StructureSheaf`, `ClosedImmersion`, `RegularLocalRing` and `RootsOfUnity` are examples. The actual type `AlgebraicGeometry.Scheme.CoherentSheaf` retains its name and its locally Noetherian guard. Shortening the source-family or helper namespace to `Modules.Coherent` does not change that type or remove the guard.
 
@@ -56,13 +56,16 @@ Homological algebra, generic site/topological sheaves and scheme-specialized coh
 
 ## Milnor K-theory
 
-`Aglib.KTheory.MilnorK` owns the general symbol theory. All declarations belong
-to `MilnorK` or its native subobjects; there are no parallel top-level
+`Aglib.KTheory.MilnorK` owns the
+[general symbol theory](../Aglib/KTheory/MilnorK/README.md). All declarations
+belong to `MilnorK` or its native subobjects; there are no parallel top-level
 `MilnorK2` and `MilnorK3` namespaces. `MilnorK.K F n` is the uniform public
 group. The older tensor presentations live under `MilnorK.K2` and
 `MilnorK.K3`, with carrier name `Group`; `twoEquiv` and `threeEquiv` compare
 them with the uniform group. Norm and residue module directories separate
 optional dependencies without constructing replacement objects.
+The family guide retains the characteristic-zero condition on general
+finite-extension norms separately from arbitrary-characteristic symbol theory.
 
 ## Maintain the record
 

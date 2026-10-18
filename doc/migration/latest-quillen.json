@@ -22,21 +22,28 @@
     "M": 18
   },
   "new_scope_status": "Complete current extraction:111 new Scheme implementation leaves plus3 existing-category reuses;12 ordinary homology leaves;20 eligible general cut groups (91 source declarations) implemented in22 destinations with minimal application-independent prerequisites. Typed delta ledgers retain all exclusions.",
-  "acceptance_status": "The 411-production-module and 8-positive-client Aglib surface passed complete local integration, including all 420 root modules and the independent downstream package. Explicit mathematical premises remain unchanged.",
+  "acceptance_status": "The historical 411-production-module and 8-positive-client Aglib surface passed complete local integration, including all 420 root modules and the independent downstream package. These results retain their recorded source/artifact basis and are not acceptance of later source revisions. Explicit mathematical premises remain unchanged.",
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_source_correspondence": {
     "records_checked": 476,
     "unique_files": 378,
     "hash_mismatches": 0,
-    "boundary": "Actual source-byte identities, distinct from mathematical acceptance."
+    "boundary": "Historical actual source-byte comparison on the recorded extraction basis, distinct from mathematical acceptance and not rescanned for later revisions."
   },
   "current_identity_validation": {
     "package_name": "Aglib",
     "root_module": "Aglib",
     "repo_directory": "aglib",
-    "destination_identity": "Current destination paths and recorded hashes reconciled.",
-    "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-    "integration_record": "doc/migration/integration.json",
+    "destination_identity": "Destination paths and hashes were reconciled at the recorded historical integration snapshot; later source changes are outside that identity check.",
+    "status": "Historical full local integration passed on its recorded source/artifact basis: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay. No full acceptance of later revisions is claimed.",
+    "integration_record": "doc/migration/integration.json#/historical_checkpoint_records",
     "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
+  },
+  "record_scope": {
+    "kind": "historical_extraction_and_integration_evidence",
+    "basis": "The source revisions, per-entry hashes and execution identities recorded in this file.",
+    "historical_integration_owner": "doc/migration/integration.json#/historical_checkpoint_records",
+    "current_summary_owner": "doc/WORK_PLAN.md",
+    "boundary": "Fields named current or latest describe the recorded checkpoint, not arbitrary later checkouts. Original hashes and check results are fixed; this documentation audit supplies no new mathematical or build acceptance."
   }
 }

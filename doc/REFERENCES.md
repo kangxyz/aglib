@@ -4,7 +4,8 @@ The maintained interfaces extend Lean 4.34.1 and Mathlib `d13f23b723b8a846827a24
 
 ## Initial extraction basis
 
-The initial extraction basis was R5Lab `95a3772b895fbc19a81684be4ffd519d0fdcd6b3` and the then-selected local Quillen release `189a8e779f0c68b2dfc6f8195daebb3e684a5905` at `tmp/output/quillen-library-release/quillen-k-theory`. The initial 133 selected files from Quillen `83629578a3d70787d41ec631f5234af8758716af` are byte-identical in the local release; that is a bounded source comparison, not a claim about every file in the older tree. The package pins Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; the local Mathlib checkout's HEAD was checked against that pin. Contributor/license headers and exact source comments remain with the implementation.
+The initial extraction basis was R5Lab `95a3772b895fbc19a81684be4ffd519d0fdcd6b3` and the then-selected local Quillen release `189a8e779f0c68b2dfc6f8195daebb3e684a5905` at the historical checkout path `tmp/output/quillen-library-release/quillen-k-theory`.
+That temporary path is a provenance locator, not a required live source checkout. The initial 133 selected files from Quillen `83629578a3d70787d41ec631f5234af8758716af` are byte-identical in the local release; that is a bounded source comparison, not a claim about every file in the older tree. The package pins Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; the local Mathlib checkout's HEAD was checked against that pin. Contributor/license headers and exact source comments remain with the implementation.
 
 [Migration fragments](migration) record original file identities, selected source ranges and declaration correspondence for [ring theory](migration/ring-theory.json), [category/homology](migration/category-homology.json), [scheme operations](migration/scheme-operations.json), [general geometry](migration/general-geometry.json) and [cohomology](migration/cohomology.json). [module-map.json](module-map.json) anchors the initial path refactor; [namespace-map.json](namespace-map.json) records native-owner correspondence. Later substantive source cuts retain their own recorded locators. Original application/implementation snapshots are provenance, not proof claims for their complete source applications.
 
@@ -103,8 +104,12 @@ convention for projective bundles, and [Section 17.26](https://stacks.math.colum
 gives the determinant rule for an exact sequence of finite locally free
 sheaves. The coordinate-free det(V) factor in the cohomology plan is a
 mathematical deduction from these constructions. The actual Euler maps,
-exactness, determinant comparison and original residue trace still need
-native proofs; no source statement is inserted as a mathematical assumption.
+exactness, determinant comparison and trace normalization now have native
+suppliers in the [projective differential guide](../Aglib/AlgebraicGeometry/ProjectiveSpace/Differentials/README.md)
+and [canonical purity theorem](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical.lean).
+The [relative-duality guide](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/README.md)
+retains the Noetherian separated-base and chosen-embedding conditions; no
+external source statement is inserted as a mathematical assumption.
 
 ## General Milnor K-theory
 

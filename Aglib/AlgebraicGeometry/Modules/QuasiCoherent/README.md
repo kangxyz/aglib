@@ -8,11 +8,6 @@ Focused imports follow these three leaves and the subfamilies. Quasicoherence an
 
 [Homology](Homology.lean), imported as `Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Homology`, proves `quasicoherent_of_openNeighborhoods`: a module sheaf is quasicoherent if every point has an actual open neighborhood on which its restriction is quasicoherent. `quasicoherent_homology` proves that `K.homology i` is quasicoherent for every integer `i` when every term `K.X n` is quasicoherent. Both statements hold on arbitrary schemes; the homology result requires neither a term bound nor local Noetherianity. The [perfect-complex homology results](../PerfectComplexes/Homology.lean) combine these statements with the separate [ordinary-complex homology comparisons](../Complex/Homology.lean).
 
-[Homology](Homology.lean) proves `quasicoherent_of_openNeighborhoods` on
-actual scheme opens and `quasicoherent_homology` for every termwise
-quasicoherent integer complex. The latter retains the native homology
-sheaf and requires neither boundedness nor Noetherianity.
-
 [Tensor](Tensor.lean), imported as
 `Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor`, identifies the actual
 sheaf tensor of two native tilde modules with tilde of their module tensor.

@@ -14,5 +14,5 @@ The original polynomial homogeneous pieces and all-negative native Laurent
 pieces have complementary finite monomial bases. Their literal residue
 coefficient-of-product pairing is perfect over every commutative ring.
 See the owning guide `Duality/README.md` for hypotheses, native maps and the
-remaining geometric comparison.
+proved geometric comparisons with original projective-space cohomology.
 -/

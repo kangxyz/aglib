@@ -11,10 +11,12 @@ public import Mathlib.AlgebraicGeometry.ZariskisMainTheorem
 /-!
 # The finite target map of a proper graph product
 
-On the inverse image of each original graph domain, the original target map
-is an immersion. A covering family therefore makes it locally quasi-finite.
-For a proper original source it is also proper, hence finite by the native
-Zariski Main Theorem. No reducedness or Noetherian hypothesis enters this step.
+Assume each target is proper over the base, each graph domain is quasi-compact
+and each original local map is an immersion. On the inverse image of each
+graph domain, the original target map is then an immersion. A covering family
+therefore makes it locally quasi-finite. For a proper original source it is
+also proper, hence finite by the native Zariski Main Theorem. No reducedness
+or Noetherian hypothesis enters this step.
 -/
 
 @[expose] public section

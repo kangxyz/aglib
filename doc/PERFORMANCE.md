@@ -82,7 +82,7 @@ not whole-module speedup or CI resource measurements. The actual changed
 `FlasqueThirdSpan` subsequently compiled in a focused Lake run in 219 seconds,
 with only that leaf rebuilt. Its complete CI memory fit remains unmeasured.
 
-## Current measurements
+## Recorded follow-up measurements
 
 The first follow-up comparison starts from Aglib
 `55b439b7219f12ad6ff2645b32d9f8b073dd8b28` and changes only
@@ -120,7 +120,8 @@ but they do not certify propagation of explicit native thread/heap flags.
 The current guard binds the absolute wrapper; subsequent runs verify actual
 `-j` and `-M` arguments separately from parent and process-group limits.
 
-For reproduction after a focused Lake build, use the module's current owned
+For reproduction on macOS after a focused Lake build, use the module's current
+owned
 `.lake/build/ir/...setup.json`, a fresh receipt and a separate output path:
 
 ```sh
@@ -210,7 +211,8 @@ the Cartesian refactor below.
 These CI observations select the next isolated comparisons; they do not measure
 local improvements or complete cold-build time. Broader refactors must preserve
 the original scalar actions, base-change mates and component reductions, then
-repeat their affected consumers and aggregate validation.
+check their actual affected consumers and fill the integration coverage gaps
+using matching retained evidence and narrow new checks.
 
 The Cartesian proof now proves the top-open pasting law over abstract coefficient
 modules before supplying the original pullback/restriction units. The public
@@ -220,8 +222,10 @@ and the 13824 MiB process-group bound, the original source exits with a memory
 exception after 133.40 seconds, peaking at 13.15 GiB group RSS. The refactor
 passes in 71.55 seconds at 7.45 GiB with the default 200000-heartbeat budget.
 This establishes bounded compilation success; the failed baseline does not
-provide a successful timing ratio. Actual consumers and aggregate integration
-remain separate checks.
+provide a successful timing ratio. This isolated comparison does not establish
+consumer or aggregate integration;
+the later native CI-route checkpoint below supplies the recorded integration
+coverage.
 
 Two module-sheaf proofs also return to the default heartbeat budget. Global
 transport of free generating sections replaces the per-open construction in
@@ -305,7 +309,9 @@ sampled process/RSS receipts are unavailable from that run. Declaration lint
 then reports 91 errors across 51 files. Style, axiom, rejection-control,
 inventory and independent downstream stages are not reached.
 
-The subsequent source snapshot passes the complete local native
+The subsequent source snapshot recorded in
+[WORK_PLAN.md](WORK_PLAN.md#heartbeat-and-compilation-performance-checkpoint)
+passes the complete local native
 `bash scripts/check.sh --rehash --ci` route with four compiler threads, a
 12800 MiB native heap and the 13824 MiB group RSS cutoff. It covers 1159
 production modules, 23 trust-test modules and 108 script tests, followed by

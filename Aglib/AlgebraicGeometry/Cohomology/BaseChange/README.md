@@ -20,7 +20,9 @@ map to quasi-compact quasi-separated `f`, in every degree and for an
 arbitrary supplied Cartesian square over `A → B`. Its compact-open
 induction uses actual open-restriction and Mayer–Vietoris comparisons.
 No field, Noetherianity or finiteness premise is needed. The
-higher-direct-image and derived sheaf-level comparisons remain in progress.
+[derived comparison](Derived/README.md) is proved over arbitrary bases
+for qcqs `f`, flat base change and D+ objects with quasicoherent original
+homology. The higher-direct-image specialization is recorded below.
 
 [Flat](Flat.lean) constructs `Scheme.Modules.derivedFlatBaseChangeMap` on an actual cartesian square with the specified flat base map. [GodementUnit](GodementUnit.lean) compares that map with the bounded-below Godement construction under the actual `IsPullback`, `Flat j` and `Flat a` hypotheses. Its original-unit equation identifies the map; `isIso_baseChangeSourceUnit_of_flasque` additionally retains termwise flasqueness. These are constructed comparison/unit statements, not an unconditional base-change isomorphism for arbitrary coefficients and morphisms.
 

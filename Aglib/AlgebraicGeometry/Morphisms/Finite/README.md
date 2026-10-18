@@ -1,4 +1,4 @@
-# Finite surjective morphisms and geometric-point lifting
+# Finite morphisms and field-valued point lifts
 
 [GeometricPoints](GeometricPoints.lean), imported as `Aglib.AlgebraicGeometry.Morphisms.Finite.GeometricPoints`, gives `AlgebraicGeometry.Scheme.Finite.GeometricPoints.exists_lift`. For a finite surjective scheme map `f : X ⟶ Y` and an algebraically closed field-valued point `y : Spec K ⟶ Y`, there is an actual scheme map `x : Spec K ⟶ X` with `x ≫ f = y`.
 

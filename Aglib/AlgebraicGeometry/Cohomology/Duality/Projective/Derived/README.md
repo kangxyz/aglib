@@ -54,8 +54,8 @@ arrow equality on degree-`n` homology. It needs no generic RF-linearity
 assumption or new global instance.
 
 The trace supplies the first input for affine-base relative Serre duality.
-The following comparison retains this original trace; bijectivity remains a
-separate mathematical step.
+The following comparison retains this original trace; its coherent
+Noetherian-base bijectivity is proved below.
 
 ## Canonical comparison into full derived Hom
 
@@ -156,6 +156,25 @@ this induction.
 
 Dimension zero is included in every degree. No vanishing of Ext above `n`
 is claimed over a singular base: the literal target keeps higher base-ring
-Ext, including `R[1]` when `n = 0` and `i = 1`. General-base descent and
-extensions to complex coefficients remain beyond this coherent-module,
-affine-base endpoint.
+Ext, including `R[1]` when `n = 0` and `i = 1`. The following coefficient
+extension and relative family retain the same source and target conventions.
+
+## Arbitrary base-module coefficients
+
+[CoefficientsCoherent](CoefficientsCoherent.lean) proves
+`projectiveDerivedSerreDualityCoefficients` for every native
+`J : ModuleCat R`, coherent source `M`, Noetherian commutative `R` and
+`i : ℕ`. The source is the original Ext into
+`projectiveResidueTwistTensorCoefficients R ι J`; the target is actual
+derived Hom from RΓ(M) to `(single_n J)⟦i⟧`, or `J[i-n]`.
+No flatness, finiteness, projectivity or injectivity of `J` is required.
+Its forward map is the original coefficient trace comparison. Source and
+coefficient naturality, unsigned extension compatibility and recovery of
+the ring-coefficient map through the original unitor are proved.
+
+[Relative](../Relative/README.md) proves the scheme-base comparison for a
+supplied projective-space square: the trace requires a separated base and
+quasicoherent base coefficient; coherent bijectivity requires a Noetherian
+separated base and coherent source. The chosen closed-embedding comparison
+retains the actual right-adjoint coefficient. Internal RHom, coefficient
+complexes, embedding independence and general proper duality remain separate.

@@ -1,6 +1,7 @@
 # Actual finite projective-product geometry
 
-`BaseChange.productBaseChangeIso` is the existing
+The focused import is `Aglib.AlgebraicGeometry.ProjectiveSpace.Products.BaseChange`.
+`AlgebraicGeometry.ProjectiveSpace.productBaseChangeIso` is the existing
 `Scheme.finiteProductOverPullbackIso`, viewed through native pullback
 symmetry and the original forgetful functor from `Over S`.
 It identifies the base-first fibre product with the same native finite
