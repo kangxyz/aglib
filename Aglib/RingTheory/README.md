@@ -18,6 +18,11 @@ The objects are actual Mathlib rings, algebras, ideals, prime spectra, localizat
 | [GenericFreeness](GenericFreeness/README.md) | Free localizations from filtrations; generic freeness of finite modules over finite-type algebras over a Noetherian domain (Stacks 051R) |
 | [Grassmannian](Grassmannian/README.md) | Charts and Zariski descent of Mathlib's `Module.Grassmannian.functor`, with the base-change formula class `BaseChangeMkQFormula` |
 
+[Binomial](Binomial.lean) holds integer facts about Mathlib's `Ring.choose`: Pascal's rule in
+difference form, `0 ≤ C(y, i) ≤ yⁱ` for `y ≥ 0`, and the integration of a binomial forward
+difference (`Int.eq_sum_choose_of_fwdDiff`); the Hilbert-function and Mumford-bound leaves of
+`AlgebraicGeometry/Cohomology/Projective` consume them.
+
 [Generic exact-sequence length](Length/README.md), [scalar homology](ScalarHomology/README.md), fraction and filtration calculations belong to their lower object owners; the multiplicity proofs consume them. No Grayson cycle, principal-face, curve or K/G/Q/S application object is introduced. Scheme smooth/stalk/connectedness results consume the regular-local, polynomial and tensor-domain leaves; other admitted interfaces remain available as public standalone results.
 
 The Milnor norm prerequisites also include actual root-field branch/tensor

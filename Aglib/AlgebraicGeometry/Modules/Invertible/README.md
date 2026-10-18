@@ -60,6 +60,14 @@ and `homOfLocalSections_generator` sends the canonical local generator to
 the supplied target section. Neither a gluing-existence premise nor
 quasicoherence, finiteness or Noetherianity is required.
 
+[Gluing/Pullback](Gluing/Pullback.lean) pulls a glued line module back along a scheme
+morphism `f : X ⟶ Y`. Take cocycles `c` on a cover `U` of `Y` and `c'` on `U'` with
+`f⁻¹(U i) = U' i` and transition units `f^#(c_ij) = c'_ij` (`TransitionPullback`, stable
+under `zpow`). Then `pullbackIso` gives `f^* c.sheaf ≅ c'.sheaf` and sends the pulled-back
+chart generators to the chart generators. The forward map is adjoint to `toPushforward`,
+and the inverse is `toPullback`. Both composites are checked on generators
+(`hom_ext_generator`), so no local trivialization of the pullback is computed.
+
 [TensorFunctorAssociator/Sections](TensorFunctorAssociator/Sections.lean)
 records the original left/right tensor-unit and nested pure-section
 formulas. `moduleLineTensorAssociator_hom_section` and `_inv_section`

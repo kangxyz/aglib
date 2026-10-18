@@ -50,7 +50,8 @@ twist over arbitrary commutative rings and in arbitrary dimension.
 
 `Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting` uses the proved generic
 [rank-one gluing construction](../Modules/Invertible/Gluing.lean) to construct
-the actual module sheaf `twistingSheaf R ι n = O(n)` for every integer `n`.
+the actual module sheaf `twistingSheaf R ι n = O(n)` for every integer `n`; every twist is
+locally of rank one (`isLocallyRankOne_twistingSheaf`).
 Its local coordinates satisfy `sᵢ = (Xᵢ / Xⱼ)^(-n) sⱼ`, corresponding to
 the standard frames `Xᵢ^n`. `twistingLocalIso` and `twistingSectionsEquiv`
 are the canonical chart projections, and the transition theorem retains
@@ -193,7 +194,9 @@ uses the original `Proj.map`, standard charts and structural maps, and its
 forward map is exactly the native pullback lift of those original maps.
 No finite-coordinate, flatness, Noetherian or nonempty-coordinate hypothesis
 is imposed. Relative projective projections use this result on affine
-base opens; twisting-module pullback formulas remain a separate interface.
+base opens. `BaseChange/Twisting` proves `π^* O_R(d) ≅ O_S(d)` with its chart frames,
+and the twisted-module form `π^*(O_R(d) ⊗ M) ≅ O_S(d) ⊗ π^* M`; `BaseChange/Flat`
+proves that `π` is flat for a flat coefficient map.
 
 [Products.BaseChange](Products/README.md) retains the original base and
 component projections when the actual fibre product of a finite projective

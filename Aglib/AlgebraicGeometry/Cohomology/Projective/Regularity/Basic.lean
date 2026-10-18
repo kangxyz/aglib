@@ -60,4 +60,19 @@ theorem exists_isProjectiveRegular [IsNoetherianRing R] (n : ℕ) (e : ι ≃ Fi
     let : T.IsQuasicoherent := quasicoherent_of_affineCharts T (fun A j _ => (hT A j).1)
     exact projectiveCohomology_subsingleton_of_gt R ι n e T q (by omega)
 
+section Implicit
+
+variable {R ι}
+
+/-- A zero module is `m`-regular for every `m`. -/
+theorem IsProjectiveRegular.of_isZero {F : (ProjectiveSpace R ι).Modules} (hF : Limits.IsZero F)
+    (m : ℤ) : IsProjectiveRegular R ι F m := by
+  intro q _
+  have h := (moduleCohomologyFunctorOfHom (ProjectiveSpace R ι)
+    (RingHom.id Γ(ProjectiveSpace R ι, ⊤)) q).map_isZero
+    ((moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι (m - q))).map_isZero hF)
+  exact ModuleCat.isZero_iff_subsingleton.mp h
+
+end Implicit
+
 end AlgebraicGeometry.Scheme.Cohomology

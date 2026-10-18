@@ -334,7 +334,7 @@ Map and finite-support changes and their actual consumers.
 ## Equation proofs, presentations and structure fields
 
 These cases were measured on 2026-10-18 while developing the projective
-regularity and affine descent families on the Picard branch. They concern
+regularity, affine descent and Picard comparison families on the Picard branch. They concern
 kernel conversions created by how an equation or a field is written, not
 mathematical content.
 
@@ -403,6 +403,29 @@ and the projections beneath it (`NatTrans.app`, `Iso.hom`) are abbreviations and
 unfolded down to the underlying data, whereas `CompEq` and `mapComp'` are regular,
 so a mismatch directly in their arguments is compared argument by argument.
 
+**Dimension comparisons at variable modules.** `Regularity/Mumford/HyperplaneStep.lean`
+(then `Step.lean`) took 91 seconds to build, 77 of them in kernel checking:
+`hyperplane_dim_le` 35.3 s, `hyperplane_dim_zero_le` 16.8 s, a connecting-map lemma
+8.3 s, and three small `projectiveCohomologyDim` lemmas 3.7 to 5.2 s each. With the same
+statements it builds in 9.6 seconds (a standalone profile: 9.0 s wall, 4.6 s kernel)
+after four changes. Each dimension comparison is proved once, at variable modules, in
+the owner of `projectiveCohomologyDim` (`projectiveCohomologyDim_le_of_surjective`,
+`_le_of_injective` and `_eq_iff_injective` in `HilbertPolynomial/EulerCharacteristic`),
+for the original linear maps `moduleCohomologyMapOfHom`. Coherence of the first term
+`T.X₁ ≅ O(-1) ⊗ F` comes from `prop_of_iso` along the given isomorphism instead of a
+`LinearEquiv` between `ModuleCat` carriers. The connecting-map lemmas are stated with the
+linear maps. The cores of the two large lemmas are proved for a variable short exact
+sequence and instantiated last (`projectiveCohomologyDim_zero_le_of_shortExact`,
+`_one_le_of_shortExact`). The added lemmas cost in their owner what its existing small
+lemmas already cost (five of the eight take 3.2 to 6.4 s of kernel checking each), so the
+net saving is about 57 seconds: 81.4 s less for the step file (builds), and 21.1 s and
+3.2 s more for `EulerCharacteristic.lean` and `Exact/Modules.lean` (standalone
+profiles). A candidate explanation, not isolated: `projectiveCohomologyDim` is a
+`finrank` under the local instance `moduleCohomologyModuleOfHom … projectiveConstants`;
+each comparison makes the kernel unfold that instance to match the additive structure of
+`Sheaf.H`, and at concrete modules one proof repeats the unfolding for every module
+expression.
+
 **Concrete degrees in a statement.** The twisting-functor authors reported that
 elaborating a composite written at concrete degrees such as `1 + 0` timed out in
 `isDefEq`, while the same composite at variable degrees and the instantiated
@@ -412,7 +435,9 @@ rather than a reproducible measurement.
 Practical rules from these cases: give each equation used inside `eqToHom`,
 `pullbackCongr` or `mapComp'` one named lemma with atomic arguments and reuse its
 proof term; state such lemmas at variable objects or degrees and instantiate last;
-state a structure field that compares badly through a named definition; compare an
+state a structure field that compares badly through a named definition; prove the
+comparisons of a definition that carries a local instance once, at variable objects,
+in the definition's owner, so that consumers only instantiate them; compare an
 equation of composites across two presentations through one named regular definition
 stated on both sides, keeping the arguments beneath projections (such as `mapComp'`
 components) syntactically identical; and before

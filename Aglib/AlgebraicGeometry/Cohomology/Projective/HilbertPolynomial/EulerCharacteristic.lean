@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Finiteness
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Euler
 public import Mathlib.Algebra.BigOperators.Finprod
+public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.Hom
 
 /-!
 # Euler characteristics on projective space over a field
@@ -18,6 +19,15 @@ the original cohomology `Sheaf.H` of `M` on `ProjectiveSpace k ι`, with the str
 sum over the degrees `q ≤ n`. It is invariant under isomorphism, vanishes on zero modules
 and is additive on short exact sequences of coherent modules (Stacks, Tag 08AA): the
 original long exact sequence, H⁰-injectivity and rank-nullity give a telescoping sum.
+
+Dimension comparisons are stated once, at variable modules, for the original linear cohomology
+maps `moduleCohomologyMapOfHom` with the structural constants: vanishing cohomology has
+dimension zero, and for coherent modules the converse holds
+(`projectiveCohomologyDim_eq_zero_iff`); a map surjective (injective) on `Hᵠ` does not increase
+(decrease) `hᵠ` (`projectiveCohomologyDim_le_of_surjective`, `_le_of_injective`), and a
+surjective one keeps it iff it is injective (`projectiveCohomologyDim_eq_iff_injective`). A
+monomorphism does not decrease `h⁰` (`projectiveCohomologyDim_zero_le_of_mono`), and a module
+with `H⁰ = 0` has no nonzero global sections (`unitHom_eq_zero_of_subsingleton`).
 -/
 
 @[expose] public section
@@ -187,5 +197,112 @@ theorem projectiveEulerChar_add_of_shortExact (n : ℕ) (e : ι ≃ Fin (n + 1))
   rw [hrd, Nat.cast_zero, mul_zero, neg_zero] at key
   simp only [mul_sub, Finset.sum_sub_distrib] at key
   linarith
+
+/-! ### Dimension comparisons -/
+
+section Dimension
+
+variable {k ι}
+
+/-- Vanishing cohomology has dimension zero. -/
+theorem projectiveCohomologyDim_eq_zero_of_subsingleton {M : (ProjectiveSpace k ι).Modules}
+    {q : ℕ} (h : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace k ι) M) q)) :
+    projectiveCohomologyDim k ι M q = 0 := by
+  unfold projectiveCohomologyDim
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+  exact Module.finrank_zero_of_subsingleton
+
+/-- Coherent cohomology of dimension zero vanishes. -/
+theorem subsingleton_of_projectiveCohomologyDim_eq_zero (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M : (ProjectiveSpace k ι).Modules} (hM : affineLocallyFiniteType (ProjectiveSpace k ι) M)
+    {q : ℕ} (h : projectiveCohomologyDim k ι M q = 0) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace k ι) M) q) := by
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+  have := projectiveCohomology_finite k ι n e M hM q
+  exact Module.finrank_zero_iff.mp h
+
+/-- Coherent cohomology has dimension zero iff it vanishes. -/
+theorem projectiveCohomologyDim_eq_zero_iff (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M : (ProjectiveSpace k ι).Modules} (hM : affineLocallyFiniteType (ProjectiveSpace k ι) M)
+    (q : ℕ) : projectiveCohomologyDim k ι M q = 0 ↔
+      Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace k ι) M) q) :=
+  ⟨subsingleton_of_projectiveCohomologyDim_eq_zero n e hM,
+    projectiveCohomologyDim_eq_zero_of_subsingleton⟩
+
+/-- A map that is surjective on `Hᵠ` does not increase `hᵠ`, for a coherent source. -/
+theorem projectiveCohomologyDim_le_of_surjective (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M N : (ProjectiveSpace k ι).Modules} (f : M ⟶ N) (q : ℕ)
+    (hM : affineLocallyFiniteType (ProjectiveSpace k ι) M)
+    (hf : letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+      letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+      Function.Surjective
+        (moduleCohomologyMapOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) f q)) :
+    projectiveCohomologyDim k ι N q ≤ projectiveCohomologyDim k ι M q := by
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+  have := projectiveCohomology_finite k ι n e M hM q
+  exact LinearMap.finrank_le_finrank_of_surjective hf
+
+/-- A map that is injective on `Hᵠ` does not decrease `hᵠ`, for a coherent target. -/
+theorem projectiveCohomologyDim_le_of_injective (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M N : (ProjectiveSpace k ι).Modules} (f : M ⟶ N) (q : ℕ)
+    (hN : affineLocallyFiniteType (ProjectiveSpace k ι) N)
+    (hf : letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+      letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+      Function.Injective
+        (moduleCohomologyMapOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) f q)) :
+    projectiveCohomologyDim k ι M q ≤ projectiveCohomologyDim k ι N q := by
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+  have := projectiveCohomology_finite k ι n e N hN q
+  exact LinearMap.finrank_le_finrank_of_injective hf
+
+/-- A map that is surjective on `Hᵠ` between coherent modules keeps `hᵠ` iff it is injective on
+`Hᵠ`. -/
+theorem projectiveCohomologyDim_eq_iff_injective (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M N : (ProjectiveSpace k ι).Modules} (f : M ⟶ N) (q : ℕ)
+    (hM : affineLocallyFiniteType (ProjectiveSpace k ι) M)
+    (hN : affineLocallyFiniteType (ProjectiveSpace k ι) N)
+    (hf : letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+      letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+      Function.Surjective
+        (moduleCohomologyMapOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) f q)) :
+    letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+    letI := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+    projectiveCohomologyDim k ι N q = projectiveCohomologyDim k ι M q ↔
+      Function.Injective
+        (moduleCohomologyMapOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) f q) := by
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) M q
+  let := moduleCohomologyModuleOfHom (ProjectiveSpace k ι) (projectiveConstants k ι) N q
+  have := projectiveCohomology_finite k ι n e M hM q
+  have := projectiveCohomology_finite k ι n e N hN q
+  constructor
+  · intro h
+    exact (LinearMap.injective_iff_surjective_of_finrank_eq_finrank h.symm).mpr hf
+  · intro hinj
+    exact (LinearEquiv.ofBijective _ ⟨hinj, hf⟩).finrank_eq.symm
+
+/-- `h⁰` does not decrease along a monomorphism into a coherent module. -/
+theorem projectiveCohomologyDim_zero_le_of_mono (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {M N : (ProjectiveSpace k ι).Modules} (j : M ⟶ N) [Mono j]
+    (hN : affineLocallyFiniteType (ProjectiveSpace k ι) N) :
+    projectiveCohomologyDim k ι M 0 ≤ projectiveCohomologyDim k ι N 0 :=
+  projectiveCohomologyDim_le_of_injective n e j 0 hN
+    (moduleH0MapOfHom_injective (ProjectiveSpace k ι) (projectiveConstants k ι) j)
+
+-- Global sections of a module, as additive and as module sections, agree only after unfolding.
+set_option backward.isDefEq.respectTransparency false in
+/-- A module whose `H⁰` vanishes has no nonzero global sections. -/
+theorem unitHom_eq_zero_of_subsingleton {M : (ProjectiveSpace k ι).Modules}
+    (h : Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace k ι) M) 0))
+    (s : SheafOfModules.unit (ProjectiveSpace k ι).ringCatSheaf ⟶ M) : s = 0 := by
+  have hΓ : Subsingleton Γ(M, ⊤) :=
+    (Sheaf.H.equiv₀ (moduleAddSheaf (ProjectiveSpace k ι) M)
+      isTerminalTop).symm.injective.subsingleton
+  apply (Scheme.Modules.unitHomGlobalSectionsAddEquiv (ProjectiveSpace k ι) M).injective
+  rw [map_zero]
+  exact Subsingleton.elim _ _
+
+end Dimension
 
 end AlgebraicGeometry.Scheme.Cohomology

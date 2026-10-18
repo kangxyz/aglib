@@ -30,6 +30,11 @@ fit into short exact sequences `0 → Z_{p+1} → K_{p+1} → Z_p → 0`, and
 above the dimension, where the cohomology of the quasicoherent cycles vanishes, gives
 `H^1(Z_1) = 0`; the long exact sequence then makes `K_1 → K_0` surjective on global sections.
 Both sources prove the statement by hyperplane sections over an infinite field instead.
+
+`TwistSectionsOnto R ι g c` says that `O(c) ⊗ g` is surjective on global sections.
+`TwistSectionsOnto.succ` is Nitsure's Remark 2.2 (p. 11) for any morphism `g : F ⟶ G` with `G`
+quasicoherent and `m`-regular: surjectivity at a twist `r ≥ m` gives surjectivity at `1 + r`, by
+`exists_eq_sum_coordinateMul`, lifting and the naturality of the coordinate multiplications.
 -/
 
 @[expose] public section
@@ -297,5 +302,62 @@ theorem IsProjectiveRegular.exists_eq_sum_coordinateMul [Fintype ι] (n : ℕ)
   refine ⟨t, ?_⟩
   rw [← ha, ht, Preadditive.sum_comp]
   exact Finset.sum_congr rfl fun i _ => by rw [Category.assoc, Sigma.ι_comp_desc]
+
+/-! ### Surjectivity on twisted global sections propagates (Remark 2.2) -/
+
+section TwistSections
+
+/-- The twist `O(c) ⊗ g` of a morphism `g` is surjective on global sections. -/
+def TwistSectionsOnto {F G : (ProjectiveSpace R ι).Modules} (g : F ⟶ G) (c : ℤ) : Prop :=
+  Function.Surjective
+    (((moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι c)).map g).val.app (op ⊤))
+
+variable {R ι}
+
+/-- Surjectivity on twisted global sections depends only on the value of the twist. -/
+theorem TwistSectionsOnto.congr {F G : (ProjectiveSpace R ι).Modules} {g : F ⟶ G} {c c' : ℤ}
+    (h : c = c') (hg : TwistSectionsOnto R ι g c) : TwistSectionsOnto R ι g c' := by
+  subst h
+  exact hg
+
+-- Global sections of a module, as additive and as module sections, agree only after unfolding.
+set_option backward.isDefEq.respectTransparency false in
+/-- **Nitsure, Remark 2.2** (arXiv:math/0504590v1, p. 11): if `G` is quasicoherent and
+`m`-regular, `r ≥ m`, and `O(r) ⊗ g` is surjective on global sections, then so is
+`O(1 + r) ⊗ g`. Every global section of `O(1 + r) ⊗ G` is `∑ᵢ tᵢ ≫ Xᵢ` (Lemma 2.1 (a),
+`IsProjectiveRegular.exists_eq_sum_coordinateMul`); lift every `tᵢ` and use naturality of the
+coordinate multiplications. -/
+theorem TwistSectionsOnto.succ (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {F G : (ProjectiveSpace R ι).Modules} [G.IsQuasicoherent] (g : F ⟶ G) {m r : ℤ}
+    (hG : IsProjectiveRegular R ι G m) (hr : m ≤ r) (hg : TwistSectionsOnto R ι g r) :
+    TwistSectionsOnto R ι g (((1 : ℕ) : ℤ) + r) := by
+  let := Fintype.ofEquiv (Fin (n + 1)) e.symm
+  intro y
+  obtain ⟨t, ht⟩ := IsProjectiveRegular.exists_eq_sum_coordinateMul R ι n e hG hr
+    ((unitHomGlobalSectionsEquiv (ProjectiveSpace R ι) ((moduleTensorLeftFunctor
+      (ProjectiveSpace R ι) (twistingSheaf R ι (((1 : ℕ) : ℤ) + r))).obj G)).symm y)
+  have hlift (i : ι) : ∃ t' : 𝟙_ (ProjectiveSpace R ι).Modules ⟶
+      (moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι r)).obj F,
+      t' ≫ (moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι r)).map g = t i :=
+    exists_unitHom_factor_of_surjective _ hg (t i)
+  choose t' ht' using hlift
+  let s' : 𝟙_ (ProjectiveSpace R ι).Modules ⟶ (moduleTensorLeftFunctor (ProjectiveSpace R ι)
+      (twistingSheaf R ι (((1 : ℕ) : ℤ) + r))).obj F :=
+    ∑ i, t' i ≫ (twistingTensorMultiply R ι ((1 : ℕ) : ℤ) r (coordinateSection R ι i)).app F
+  have hsum : s' ≫ (moduleTensorLeftFunctor (ProjectiveSpace R ι)
+        (twistingSheaf R ι (((1 : ℕ) : ℤ) + r))).map g =
+      (unitHomGlobalSectionsEquiv (ProjectiveSpace R ι) ((moduleTensorLeftFunctor
+        (ProjectiveSpace R ι) (twistingSheaf R ι (((1 : ℕ) : ℤ) + r))).obj G)).symm y := by
+    rw [ht, Preadditive.sum_comp]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [Category.assoc, ← (twistingTensorMultiply R ι ((1 : ℕ) : ℤ) r
+      (coordinateSection R ι i)).naturality g, ← Category.assoc, ht' i]
+  refine ⟨unitHomGlobalSectionsEquiv (ProjectiveSpace R ι) _ s', ?_⟩
+  change unitHomGlobalSectionsEquiv (ProjectiveSpace R ι) _
+    (s' ≫ (moduleTensorLeftFunctor (ProjectiveSpace R ι)
+        (twistingSheaf R ι (((1 : ℕ) : ℤ) + r))).map g) = y
+  rw [hsum, Equiv.apply_symm_apply]
+
+end TwistSections
 
 end AlgebraicGeometry.Scheme.Cohomology

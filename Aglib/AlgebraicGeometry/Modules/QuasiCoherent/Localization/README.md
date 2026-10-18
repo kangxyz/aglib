@@ -14,6 +14,15 @@ extends after multiplication by a power of `f`; a section restricting
 to zero is annihilated by such a power. Quasicoherence is needed only on
 the canonical affine chart, with no finiteness or Noetherian hypothesis.
 
+[SMulRegular](SMulRegular.lean) restricts nonzerodivisors. For an affine open `U` and a
+module sheaf `M` quasicoherent on the canonical chart `Spec Γ(X, U) → X`, a nonzerodivisor
+`a` on `Γ(M, U)` restricts to a nonzerodivisor on `Γ(M, D(f))`
+(`AffineOpenSections.isSMulRegular_basicOpen`, from the two denominator facts above) and on
+`Γ(M, V)` for every open `V ≤ U` (`AffineOpenSections.isSMulRegular_restrict`, by
+separatedness over the basic opens `D(f) ≤ V`). No finiteness or Noetherian hypothesis is
+used. The general hyperplane of Mumford's bound
+(`Cohomology/Projective/Regularity/Mumford/InfiniteField`) consumes it.
+
 [AffineSectionsPushforward](AffineSectionsPushforward.lean) identifies actual open-immersion direct-image sections with the corresponding intersections with the open range. [AffineSectionsQuasicoherent](AffineSectionsQuasicoherent.lean) proves quasicoherence of the resulting direct image under its quasi-compact affine-open hypotheses; quasicoherence of the pushforward is a conclusion, not an input. [AffineSectionsGlobal](AffineSectionsGlobal.lean) extends the actual open-base-change argument to quasi-compact open immersions and supplies its locally Noetherian variant.
 
 The actual open immersion, compactness and coefficient hypotheses remain attached to each statement. Lower section/localization and geometric restriction maps feed these four leaves. Quasicoherent pullback/gluing, coherent homology and finite-type local comparison consume their results; lower [finite-presentation locality](../../FinitePresentation/README.md) is a separate interface.

@@ -120,6 +120,11 @@ instance twistingSheaf_isFiniteLocallyFree (n : ℤ) :
     Scheme.Modules.IsFiniteLocallyFree (ProjectiveSpace R ι) (twistingSheaf R ι n) :=
   ((coordinateUnitCocycle R ι).zpow (-n)).isFiniteLocallyFree (iSup_coordinateOpen_eq_top R ι)
 
+/-- Twisting sheaves are locally of rank one. -/
+theorem isLocallyRankOne_twistingSheaf (d : ℤ) :
+    IsLocallyRankOne (ProjectiveSpace R ι) (twistingSheaf R ι d) :=
+  ((coordinateUnitCocycle R ι).zpow (-d)).isLocallyRankOne (iSup_coordinateOpen_eq_top R ι)
+
 /-- The twisting sheaf as an actual line bundle, with its chosen standard-cover rank-one proof. -/
 def twistingLineBundle (n : ℤ) : LineBundle (ProjectiveSpace R ι) :=
   ((coordinateUnitCocycle R ι).zpow (-n)).lineBundle (iSup_coordinateOpen_eq_top R ι)

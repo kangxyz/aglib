@@ -145,3 +145,21 @@ coverage combines 186 retained origins with four freshly audited origins under
 the recorded preservation conditions. R5 adoption is recorded downstream on its
 own pin and consumer basis. Earlier source and compiled receipts retain their
 own basis.
+
+## Castelnuovo–Mumford regularity and Mumford's bound
+
+Nitin Nitsure's [*Construction of Hilbert and Quot Schemes*](https://arxiv.org/abs/math/0504590v1),
+arXiv:math/0504590v1 [math.AG], submitted 29 April 2005, 36 pages; the arXiv abstract page was
+inspected and lists no journal reference. Its §2 gives the definition of `m`-regularity (p. 9),
+the restriction to a general hyperplane (pp. 9–10), Lemma 2.1 (pp. 10–11), Remark 2.2 and
+Theorem 2.3 (p. 11) with its proof (pp. 12–13); `Cohomology/Projective/Regularity` cites these
+pages of the v1 PDF. The family README records where the formal route departs from p. 13.
+
+David Mumford's
+[*Lectures on Curves on an Algebraic Surface*](https://press.princeton.edu/books/paperback/9780691079936/lectures-on-curves-on-an-algebraic-surface),
+with a section by G. M. Bergman, Annals of Mathematics Studies 59, Princeton University Press,
+1966, xi + 200 pp.; the publisher page and the
+[CiNii record](https://ci.nii.ac.jp/ncid/BA0369913X) were inspected. It is Nitsure's source
+[M] (p. 36) for Theorem 2.3. No lecture or page of it was inspected, so no statement is
+attributed to a particular lecture.
+

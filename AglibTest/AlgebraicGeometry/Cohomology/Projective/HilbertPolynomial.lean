@@ -274,3 +274,37 @@ info: 'Polynomial.IsPolynomialOnInt.polynomialOnInt_eq' depends on axioms: [prop
 -/
 #guard_msgs (whitespace := lax) in
 #print axioms Polynomial.IsPolynomialOnInt.polynomialOnInt_eq
+
+/-- Integer binomial sums are polynomial on `ℤ`. -/
+example (N : ℕ) (a : Fin N → ℤ) :
+    Polynomial.IsPolynomialOnInt fun m => ∑ i : Fin N, a i * Ring.choose m i :=
+  Polynomial.IsPolynomialOnInt.sum_choose N a
+
+/-- The Hilbert function of a coherent module on `P^n` has integer coefficients `a₀, …, aₙ` in
+the binomial basis, the form of the hypothesis of Mumford's bound. -/
+example (k : Type u) [Field k] (ι : Type u) (n : ℕ) (e : ι ≃ Fin (n + 1))
+    (F : (ProjectiveSpace k ι).Modules) (hF : affineLocallyFiniteType (ProjectiveSpace k ι) F) :
+    ∃ a : Fin (n + 1) → ℤ, ∀ r : ℤ,
+      projectiveHilbertFunction k ι F r = ∑ i : Fin (n + 1), a i * Ring.choose r i :=
+  exists_projectiveHilbertFunction_eq_sum_choose k ι n e F hF
+
+/--
+info: 'Polynomial.IsPolynomialOnInt.sum_choose'
+  depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs (whitespace := lax) in
+#print axioms Polynomial.IsPolynomialOnInt.sum_choose
+
+/--
+info: 'AlgebraicGeometry.Scheme.Cohomology.exists_projectiveHilbertFunction_eq_sum_choose_of_killed'
+  depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs (whitespace := lax) in
+#print axioms exists_projectiveHilbertFunction_eq_sum_choose_of_killed
+
+/--
+info: 'AlgebraicGeometry.Scheme.Cohomology.exists_projectiveHilbertFunction_eq_sum_choose'
+  depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs (whitespace := lax) in
+#print axioms exists_projectiveHilbertFunction_eq_sum_choose

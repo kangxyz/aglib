@@ -124,9 +124,87 @@ descend from `O(1 + c) ⊗ F` to `O(c) ⊗ F` for `c ≥ m`
 epimorphisms (`epi_of_twisting_whiskerLeft`). The sources prove their (c) step the
 same way, from a large twist and (a).
 
+`Mumford/` proves Mumford's bound (Nitsure, Thm 2.3, p. 11; proof pp. 12-13) over every
+field. [Mumford/ArbitraryField](Mumford/ArbitraryField.lean) states it with no premise.
+`isProjectiveRegular_mumfordBound_free` takes a coherent `F` with a monomorphism
+`F ⟶ ∐_{i < p} O(0)` and Nitsure's normalization `χ(F(r)) = Σ_{i ≤ n} aᵢ C(r, i)` for all
+`r : ℤ`, and makes `F` `F_{p,n}(a)`-regular for `F_{p,n} = mumfordBound n p (n + 1)`, an integer
+polynomial that depends only on `n` and `p`; `isProjectiveRegular_mumfordBound_ideal` is the
+case `p = 1` of ideal sheaves `F ⟶ O(0)`. The coefficients always exist
+(`exists_projectiveHilbertFunction_eq_sum_choose`, in
+[HilbertPolynomial/Basic](../HilbertPolynomial/Basic.lean)), so
+`exists_isProjectiveRegular_mumfordBound_free` makes every coherent submodule of `O^p`
+`F_{p,n}(a)`-regular for its own Hilbert coefficients `a`. The induction never leaves `P^n`: the
+hyperplane section of `M` is `M_H = coker μ_M` for a nonzerodivisor `μ : O(-1) ⊗ - ⟶ 𝟭`, and the
+induction runs on the number of hyperplane sections cut, not on `n`.
+
+[Mumford/HyperplaneStep](Mumford/HyperplaneStep.lean) is the inductive step. For a short exact
+sequence `0 → S.X₁ → F → F_H → 0` of coherent modules with `S.X₁ ≅ O(-1) ⊗ F` and `F_H`
+`m₀`-regular, `IsProjectiveRegular.of_hyperplane_euler` shows that `F` is
+`(m₀ + h⁰(F(m₀ - 1)) - χ(F(m₀ - 1)))`-regular. Its parts are higher vanishing
+(`hyperplane_subsingleton_ge_two`), Remark 2.2 (`TwistSectionsOnto.succ`, in
+[Surjectivity](Surjectivity.lean)) and the strict decrease of `h¹(F(r))` for `r ≥ m₀ - 1`
+(`hyperplane_dim_lt_or_eq_zero`). The dimension steps are proved once for a variable short exact
+sequence (`projectiveCohomologyDim_zero_le_of_shortExact`, `_one_le_of_shortExact`), from the
+dimension comparisons of
+[HilbertPolynomial/EulerCharacteristic](../HilbertPolynomial/EulerCharacteristic.lean) and the
+connecting-map lemmas of [Cohomology/Exact/Modules](../../Exact/Modules.lean).
+`IsProjectiveRegular.of_hyperplane_restrict` is the converse direction (Nitsure, p. 10): `F`
+`m`-regular makes `F_H` `m`-regular.
+[Mumford/Hyperplane](Mumford/Hyperplane.lean) takes any natural transformation `μ`. For
+`F ⟶ G` mono with `μ` mono on `G` and on `G/F`, `mono_hyperplaneCokernelMap` gives
+`F_H ⟶ G_H` mono, by Mathlib's snake lemma; this replaces Nitsure's `Tor₁(O_H, O^p/F) = 0`. It
+also proves `χ(M_H(r)) = χ(M(r)) - χ(M(r - 1))` (`projectiveHilbertFunction_hyperplane`).
+[Mumford/Bound](Mumford/Bound.lean) writes the Hilbert function as `Σᵢ aᵢ C(r - s, i)` with a
+shift `s`. A hyperplane section shifts the coefficients (`hilbertSum_sub`); when they all
+vanish the module is zero (`isZero_of_projectiveHilbertFunction_eq_zero`). The ambient modules
+`IsMumfordAmbient n p G` (coherent, `0`-regular, `h⁰(G(r)) ≤ p (r + 1)^{n+1}`) replace `O_H^p`.
+Under the premise `HasHyperplaneSections k ι`,
+`isProjectiveRegular_mumfordBound_of_hasHyperplaneSections` bounds every submodule of an
+ambient module by `mumfordBound n p (n + 1)`. Nitsure (p. 13) bounds
+`h¹(F(m₀)) = h⁰(F(m₀)) - χ(F(m₀))` by `p C(n + m₀, n) - Σᵢ aᵢ C(m₀, i)`, which has rational
+coefficients; here the index is `m₀ - 1`, and the bound is dominated through `C(y, i) ≤ yⁱ` and
+upward closure of regularity.
+[Mumford/Ambient](Mumford/Ambient.lean) proves that `∐_{i : I} O(0)` is ambient, counting
+monomials for `h⁰(O(m))` (`MvPolynomial.finrank_homogeneousSubmodule_le`).
+`isProjectiveRegular_mumfordBound_free_of_hasHyperplaneSections` and
+`_ideal_of_hasHyperplaneSections` are Thm 2.3 under the premise.
+[Mumford/HyperplaneSections](Mumford/HyperplaneSections.lean) proves
+`HasHyperplaneSections.of_up`: the raising form `ν : 𝟭 ⟶ O(1 + 0) ⊗ -` gives the lowering form
+`μ` used by the induction. It also proves `hasHyperplaneSectionsUp_of_isSMulRegular`, the
+raising form from regular frame coefficients on the chart subopens; the frame coefficients and
+the chart criterion `mono_twistingTensorMultiply_of_isSMulRegular` live in
+[HilbertPolynomial/Coordinate](../HilbertPolynomial/Coordinate.lean).
+[Mumford/InfiniteField](Mumford/InfiniteField.lean) discharges the premise over an infinite
+field, from the general hyperplane `exists_forall_frameCoefficient_isSMulRegular`
+([HilbertPolynomial/GeneralHyperplane](../HilbertPolynomial/GeneralHyperplane.lean)): one section
+`s` of `O(1)` whose frame coefficients are nonzerodivisors on every `Γ(Fⱼ, V)`, `V ≤ D₊(Xᵢ)`, for
+finitely many coherent modules `Fⱼ` on `P_k`.
+`hasHyperplaneSections_of_infinite` is `HasHyperplaneSections k ι` for
+`[Field k] [Infinite k] [Finite ι]`, and `isProjectiveRegular_mumfordBound_of_infinite` is Thm 2.3
+over an infinite field for a submodule of an ambient module.
+[Mumford/FieldExtension](Mumford/FieldExtension.lean) performs Nitsure's reduction to an
+extension field (p. 12), with the base change of the twisting sheaves
+`ProjectiveSpace.twistingPullbackIso`, `π^* O_k(d) ≅ O_K(d)`, which holds for every extension:
+regularity descends (`IsProjectiveRegular.of_pullback_map`), using the cohomology dimensions of
+[HilbertPolynomial/FieldBaseChange](../HilbertPolynomial/FieldBaseChange.lean) and the flatness
+of `π` ([ProjectiveSpace/BaseChange/Flat](../../../ProjectiveSpace/BaseChange/Flat.lean)); the
+Hilbert functions agree (`projectiveHilbertFunction_pullback_map`, in `FieldBaseChange`);
+`isProjectiveRegular_mumfordBound_free_of_extension` then gives Thm 2.3 over `k` from
+`HasHyperplaneSections K ι`. The tests
+`AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity.Mumford` and
+`AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity.Mumford.{ArbitraryField,
+InfiniteField}` guard the axioms.
+
+Source note on Nitsure, p. 13. His last inference is off by one: from "`H¹(F(m)) = 0` for
+`m ≥ G + P`" he concludes that `F` is `(G + P)`-regular, which needs `H¹` at `G + P - 1`; for
+`P¹`, `F = O(-d)` and `m₀ = 0`, the index `m₀ + h¹(F(m₀))` is not a regularity index, and his
+theorem survives only through the slack in `P`. His `P` has rational, not integral,
+coefficients, and his bound `h⁰(F(r)) ≤ p C(n + r, n)` needs `r ≥ -n`. The Lean route (index
+`m₀ + h¹(F(m₀ - 1))`, `m₀ = B² + n + 2`, integer domination) inherits none of these.
+
 ## Open
 
-- Mumford's bound (Nitsure, Thm 2.3, p. 11) is not formalized.
 - Nitsure's literal form of (a), surjectivity of the multiplication map on the
   tensor product `H⁰(O(1)) ⊗ H⁰(O(r) ⊗ F)`, is not stated: Aglib has no bilinear
   global-section multiplication map. The coordinate forms above imply it.

@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.NumberTheory.BernoulliPolynomials
+public import Mathlib.RingTheory.Binomial
 
 /-!
 # Integer functions given by rational polynomials
@@ -16,7 +17,9 @@ difference `m ↦ f (m + 1) - f m` is given by a rational polynomial, so is `f`.
 antiderivative comes from Bernoulli polynomials, `B_{p+1}(1 + x) = B_{p+1}(x) + (p + 1) x ^ p`
 (`Polynomial.bernoulli_eval_one_add`).
 
-This is the numerical step of the Hilbert polynomial induction on projective space.
+This is the numerical step of the Hilbert polynomial induction on projective space. An integer
+combination `Σ_{i < N} aᵢ C(m, i)` of binomial coefficients `C = Ring.choose` is polynomial
+(`IsPolynomialOnInt.sum_choose`), by induction on `N` and Pascal's rule.
 -/
 
 @[expose] public section
@@ -110,6 +113,17 @@ theorem eq_of_eval {f : ℤ → ℤ} {Φ Ψ : ℚ[X]} (hΦ : ∀ m : ℤ, (f m :
   · rintro _ ⟨m, rfl⟩
     exact (hΦ m).symm.trans (hΨ m)
   · exact Set.infinite_range_of_injective Int.cast_injective
+
+/-- An integer combination `Σ_{i < N} aᵢ C(m, i)` of binomial coefficients is polynomial. -/
+theorem sum_choose : ∀ (N : ℕ) (a : Fin N → ℤ),
+    IsPolynomialOnInt fun m => ∑ i : Fin N, a i * Ring.choose m i
+  | 0, _ => (const 0).congr fun m => by simp
+  | N + 1, a => by
+    apply of_fwdDiff
+    refine (sum_choose N fun i => a i.succ).congr fun m => ?_
+    simp only [Fin.sum_univ_succ, Fin.val_zero, Fin.val_succ, Ring.choose_zero_right,
+      Ring.choose_succ_succ, mul_add, Finset.sum_add_distrib]
+    ring
 
 end IsPolynomialOnInt
 

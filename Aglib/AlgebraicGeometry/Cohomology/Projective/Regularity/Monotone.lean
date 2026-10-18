@@ -220,4 +220,21 @@ theorem IsProjectiveRegular.cohomology_subsingleton_of_le_of_coherent (n : ℕ)
   have : F.IsQuasicoherent := quasicoherent_of_affineCharts _ (fun A j _ => (hF A j).1)
   exact IsProjectiveRegular.cohomology_subsingleton_of_le R ι n e h hr hi
 
+section Implicit
+
+variable {R ι}
+
+omit [Finite ι] in
+/-- An `m`-regular affine-locally finite-type module has `H^q(O(s) ⊗ F) = 0` for every `q ≥ 1`
+and `s ≥ m - q`. -/
+theorem IsProjectiveRegular.subsingleton_of_le_add (n : ℕ) (e : ι ≃ Fin (n + 1))
+    {F : (ProjectiveSpace R ι).Modules} (hF : affineLocallyFiniteType (ProjectiveSpace R ι) F)
+    {m s : ℤ} {q : ℕ} (h : IsProjectiveRegular R ι F m) (hq : 0 < q) (hs : m ≤ s + q) :
+    Subsingleton (Sheaf.H.{u + 1} (moduleAddSheaf (ProjectiveSpace R ι)
+      ((moduleTensorLeftFunctor (ProjectiveSpace R ι) (twistingSheaf R ι s)).obj F)) q) := by
+  have h' := IsProjectiveRegular.of_le_of_coherent R ι n e hF hs h q hq
+  exact twistCohomology_subsingleton_congr R ι (add_sub_cancel_right s (q : ℤ)) h'
+
+end Implicit
+
 end AlgebraicGeometry.Scheme.Cohomology

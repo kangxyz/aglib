@@ -6,7 +6,10 @@ that multiplying every input variable by `c` multiplies the value of a
 degree-`n` homogeneous polynomial by `c ^ n`. It permits arbitrary
 commutative semirings, an arbitrary coefficient ring homomorphism and an
 arbitrary variable type. No invertibility, field or finiteness assumption
-is used.
+is used. `MvPolynomial.finrank_homogeneousSubmodule_le` bounds the dimension of
+the degree-`m` homogeneous polynomials in finitely many variables `σ` over a field
+by `(m + 1)^{|σ|}`, counting the monomials of degree `m`; Mumford's bound uses it for
+`h⁰(O(m))`.
 
 `Aglib.RingTheory.MvPolynomial.GradedMap` bundles the original
 `MvPolynomial.map f` as `gradedMap f` for the actual total-degree grading,

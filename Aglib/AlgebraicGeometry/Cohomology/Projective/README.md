@@ -236,11 +236,13 @@ the model internally; their independent consumer passed
 
 [HilbertPolynomial](HilbertPolynomial/README.md) proves that `m ↦ χ(O(m) ⊗ F)` is
 a polynomial function on all integers for every coherent module `F` on polynomial
-projective space over a field, and defines its Hilbert polynomial.
+projective space over a field, defines its Hilbert polynomial, and writes the Hilbert function
+as `Σ_{i ≤ n} aᵢ C(m, i)` with integers `aᵢ`.
 [Regularity](Regularity/README.md) defines Castelnuovo–Mumford regularity and
-proves the coordinate epimorphism `∐ᵢ O(0) ⊗ F → O(1) ⊗ F` and the commutation of
-coordinate multiplications over any base ring. Nitsure's Lemma 2.1, Mumford's
-bound and local constancy of the Hilbert polynomial in flat families remain open.
+proves Nitsure's Lemma 2.1 over any base ring. Its `Mumford/` family proves Mumford's
+bound (Nitsure, Thm 2.3) over every field: a coherent submodule of `O^p` on `P^n_k` is
+regular at an integer polynomial in its Hilbert coefficients that depends only on `n`
+and `p`. Local constancy of the Hilbert polynomial in flat families remains open.
 
 ## Relative projective projections
 

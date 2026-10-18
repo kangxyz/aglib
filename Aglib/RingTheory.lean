@@ -44,6 +44,7 @@ public import Aglib.RingTheory.AdjoinRootTensorBranchProduct
 public import Aglib.RingTheory.AdjoinRootTensorBranches
 public import Aglib.RingTheory.AdjoinRootTowerBranch
 public import Aglib.RingTheory.AdjoinRootTowerBranchChange
+public import Aglib.RingTheory.Binomial
 public import Aglib.RingTheory.CompleteDVRExtension
 public import Aglib.RingTheory.CompleteDVRIntegralClosureTower
 public import Aglib.RingTheory.DVRCartierLength
@@ -175,6 +176,7 @@ public import Aglib.RingTheory.PrimeFiltration.Length
 public import Aglib.RingTheory.PrimeFiltration.Multiplicity
 public import Aglib.RingTheory.PrimeFiltration.Primes
 public import Aglib.RingTheory.PrimeFiltration.Support
+public import Aglib.RingTheory.Regular.PrimeAvoidance
 public import Aglib.RingTheory.Regular.TensorProduct
 public import Aglib.RingTheory.RegularLocalRing.ArtinianQuotient
 public import Aglib.RingTheory.RegularLocalRing.DimensionZero

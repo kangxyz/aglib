@@ -21,6 +21,12 @@ this same map linear over any specified structural ring. All three adjacent
 exactness statements retain the existing coefficient maps on actual `Sheaf.H`.
 No quasicoherence, flatness or finiteness premise is required.
 
+The degree-zero connecting map vanishes exactly when the last map is surjective on global
+sections (`moduleCohomologyConnectingOfHom_zero_eq_zero_of_surjective`,
+`surjective_of_moduleCohomologyConnectingOfHom_zero_eq_zero`), and the connecting map in degree
+`n` vanishes exactly when `Hⁿ⁺¹` of the first map is injective
+(`moduleCohomologyConnectingOfHom_eq_zero_iff_injective`).
+
 The vanishing consequences come last: vanishing of `H^q` is invariant under isomorphism of
 coefficients and holds for finite coproducts summandwise
 (`moduleCohomology_subsingleton_of_iso`, `moduleCohomology_subsingleton_coproduct`); in a short
@@ -251,5 +257,76 @@ theorem moduleCohomology_subsingleton_tensor_kernel (L : X.Modules) [IsFiniteLoc
 
 
 end Vanishing
+
+/-! ### Degree-zero connecting maps and global sections -/
+
+section Connecting
+
+variable {X}
+
+/-- If `T.g` is surjective on global sections, the degree-zero connecting map of the short exact
+sequence `T` vanishes. -/
+theorem moduleCohomologyConnectingOfHom_zero_eq_zero_of_surjective (T : ShortComplex X.Modules)
+    (hT : T.ShortExact) (hg : Function.Surjective (T.g.val.app (op ⊤))) :
+    letI := moduleCohomologyModuleOfHom X α T.X₃ 0
+    letI := moduleCohomologyModuleOfHom X α T.X₁ (0 + 1)
+    moduleCohomologyConnectingOfHom X α T hT 0 = 0 := by
+  let := moduleCohomologyModuleOfHom X α T.X₂ 0
+  let := moduleCohomologyModuleOfHom X α T.X₃ 0
+  let := moduleCohomologyModuleOfHom X α T.X₁ (0 + 1)
+  have hex := moduleCohomologyConnectingOfHom_exact_left X α T hT 0
+  refine LinearMap.ext fun x => ?_
+  rw [LinearMap.zero_apply]
+  obtain ⟨y, hy⟩ := hg (Sheaf.H.equiv₀ (moduleAddSheaf X T.X₃) isTerminalTop x)
+  have hx : moduleCohomologyMapOfHom X α T.g 0
+      ((Sheaf.H.equiv₀ (moduleAddSheaf X T.X₂) isTerminalTop).symm y) = x := by
+    change Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map T.g) 0
+      ((Sheaf.H.equiv₀ (moduleAddSheaf X T.X₂) isTerminalTop).symm y) = x
+    rw [Sheaf.H.equiv₀_symm_naturality]
+    apply (Sheaf.H.equiv₀ (moduleAddSheaf X T.X₃) isTerminalTop).injective
+    rw [AddEquiv.apply_symm_apply]
+    exact hy
+  exact (hex x).mpr ⟨_, hx⟩
+
+/-- If the degree-zero connecting map of the short exact sequence `T` vanishes, `T.g` is
+surjective on global sections. -/
+theorem surjective_of_moduleCohomologyConnectingOfHom_zero_eq_zero (T : ShortComplex X.Modules)
+    (hT : T.ShortExact)
+    (hδ : letI := moduleCohomologyModuleOfHom X α T.X₃ 0
+      letI := moduleCohomologyModuleOfHom X α T.X₁ (0 + 1)
+      moduleCohomologyConnectingOfHom X α T hT 0 = 0) :
+    Function.Surjective (T.g.val.app (op ⊤)) := by
+  let := moduleCohomologyModuleOfHom X α T.X₃ 0
+  let := moduleCohomologyModuleOfHom X α T.X₁ (0 + 1)
+  intro y
+  obtain ⟨x, hx⟩ := Sheaf.H.longSequence_equiv₀_exact₃
+    (moduleCoefficientSequence_shortExact X T hT) isTerminalTop y (LinearMap.congr_fun hδ _)
+  exact ⟨x, hx⟩
+
+/-- The connecting map `Hⁿ(T.X₃) → Hⁿ⁺¹(T.X₁)` of a short exact sequence `T` vanishes iff
+`Hⁿ⁺¹(T.f)` is injective. -/
+theorem moduleCohomologyConnectingOfHom_eq_zero_iff_injective (T : ShortComplex X.Modules)
+    (hT : T.ShortExact) (n : ℕ) :
+    letI := moduleCohomologyModuleOfHom X α T.X₃ n
+    letI := moduleCohomologyModuleOfHom X α T.X₁ (n + 1)
+    letI := moduleCohomologyModuleOfHom X α T.X₂ (n + 1)
+    moduleCohomologyConnectingOfHom X α T hT n = 0 ↔
+      Function.Injective (moduleCohomologyMapOfHom X α T.f (n + 1)) := by
+  let := moduleCohomologyModuleOfHom X α T.X₃ n
+  let := moduleCohomologyModuleOfHom X α T.X₁ (n + 1)
+  let := moduleCohomologyModuleOfHom X α T.X₂ (n + 1)
+  have hex := moduleCohomologyConnectingOfHom_exact_right X α T hT n
+  constructor
+  · intro hδ
+    rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
+    intro z hz
+    obtain ⟨w, rfl⟩ := (hex z).mp hz
+    exact LinearMap.congr_fun hδ w
+  · intro hinj
+    refine LinearMap.ext fun x => ?_
+    rw [LinearMap.zero_apply]
+    exact hinj (((hex _).mpr ⟨x, rfl⟩).trans (map_zero _).symm)
+
+end Connecting
 
 end AlgebraicGeometry.Scheme.Cohomology

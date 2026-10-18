@@ -18,6 +18,15 @@ is closed under subobjects, quotients and twists. Multiplication by `s` at twist
 on the coordinate charts, where `O(a)` has an original generator and `s` is its coefficient
 times that generator. A module killed by every coordinate `Xᵢ` is zero, since `Xᵢ` is the
 generator of `O(1)` on its own chart.
+
+For a global section `s` of `O(1)`, `frameCoefficient R ι s i hV` is its frame coefficient
+`s / Xᵢ` on a subopen `V` of the chart `D₊(Xᵢ)`: it commutes with restriction
+(`frameCoefficient_eq_map`), is additive and linear over global functions, and is one for
+`s = Xᵢ`. If multiplication by `s` vanishes on `F`, the frame coefficients kill the sections of
+`F` (`frameCoefficient_smul_eq_zero`). Hence if every frame coefficient of `s` is a
+nonzerodivisor on the sections of `M` over the chart subopens, multiplication by `s`,
+`M ≅ O(0) ⊗ M → O(1 + 0) ⊗ M`, is a monomorphism
+(`mono_twistingTensorMultiply_of_isSMulRegular`): its kernel is killed by `s`.
 -/
 
 @[expose] public section
@@ -248,5 +257,137 @@ theorem of_cokernel {F C : (ProjectiveSpace R ι).Modules}
     moduleTensorSection_zero_right]
 
 end IsKilledByTwistSection
+
+/-! ### Frame coefficients and multiplication on the charts -/
+
+section FrameCoefficient
+
+variable (R ι)
+
+-- Frame coefficients of twist sections live in `Γ(ProjectiveSpace R ι, V)` only after
+-- unfolding the module presheaf; this needs the backward transparency rule.
+set_option backward.isDefEq.respectTransparency false in
+/-- The frame coefficient `s / Xᵢ` of a global section `s` of `O(1)` on a subopen `V` of the
+chart `D₊(Xᵢ)`. -/
+def frameCoefficient (s : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤)) (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i) :
+    Γ(ProjectiveSpace R ι, V) :=
+  twistingSectionsEquiv R ι ((1 : ℕ) : ℤ) i hV
+    ((twistingSheaf R ι ((1 : ℕ) : ℤ)).val.map (homOfLE (le_top : V ≤ ⊤)).op s)
+
+-- Frame coefficients live in `Γ(ProjectiveSpace R ι, V)` only after unfolding the module
+-- presheaf; this needs the backward transparency rule.
+set_option backward.isDefEq.respectTransparency false in
+/-- Frame coefficients commute with restriction to a smaller subopen of the chart. -/
+theorem frameCoefficient_eq_map (s : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤)) (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i) :
+    frameCoefficient R ι s i hV =
+      (ProjectiveSpace R ι).presheaf.map (homOfLE hV).op (frameCoefficient R ι s i le_rfl) := by
+  have hres : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.map (homOfLE (le_top : V ≤ ⊤)).op s =
+      (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.map (homOfLE hV).op
+        ((twistingSheaf R ι ((1 : ℕ) : ℤ)).val.map
+          (homOfLE (le_top : coordinateOpen R ι i ≤ ⊤)).op s) := by
+    rw [← PresheafOfModules.map_comp_apply]
+    exact (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.congr_map_apply (Subsingleton.elim _ _) _
+  unfold frameCoefficient
+  rw [hres, twistingSectionsEquiv_restrict R ι ((1 : ℕ) : ℤ) i hV le_rfl]
+
+-- Frame coefficients live in `Γ(ProjectiveSpace R ι, V)` only after unfolding the module
+-- presheaf; this needs the backward transparency rule.
+set_option backward.isDefEq.respectTransparency false in
+/-- Frame coefficients are additive. -/
+theorem frameCoefficient_add (s t : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤)) (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i) :
+    frameCoefficient R ι (s + t) i hV =
+      frameCoefficient R ι s i hV + frameCoefficient R ι t i hV := by
+  unfold frameCoefficient
+  rw [map_add, map_add]
+
+/-- The frame coefficient of `r • s`, for a global function `r`, is `r|_V` times that of `s`. -/
+theorem frameCoefficient_smul (r : (ProjectiveSpace R ι).ringCatSheaf.obj.obj (op ⊤))
+    (s : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤)) (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i) :
+    frameCoefficient R ι (r • s) i hV =
+      (ProjectiveSpace R ι).presheaf.map (homOfLE (le_top : V ≤ ⊤)).op r *
+        frameCoefficient R ι s i hV := by
+  unfold frameCoefficient
+  rw [PresheafOfModules.map_smul]
+  exact (twistingSectionsEquiv R ι ((1 : ℕ) : ℤ) i hV).map_smul
+    ((ProjectiveSpace R ι).presheaf.map (homOfLE (le_top : V ≤ ⊤)).op r) _
+
+/-- The coordinate `Xᵢ` has frame coefficient one on the subopens of its own chart. -/
+theorem frameCoefficient_coordinateSection (i : ι) {V : (ProjectiveSpace R ι).Opens}
+    (hV : V ≤ coordinateOpen R ι i) :
+    frameCoefficient R ι (coordinateSection R ι i) i hV = 1 :=
+  coordinateSection_coefficient R ι i hV
+
+-- Frame coefficients of twist sections live in `Γ(ProjectiveSpace R ι, V)` only after
+-- unfolding the module presheaf; this needs the backward transparency rule.
+set_option backward.isDefEq.respectTransparency false in
+/-- If multiplication by `s : Γ(O(1))` vanishes on `F` at twist `-1`, the frame coefficient of
+`s` on a subopen `V` of the chart `D₊(Xᵢ)` kills every section of `F` over `V`. -/
+theorem frameCoefficient_smul_eq_zero (s : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤))
+    (F : (ProjectiveSpace R ι).Modules)
+    (hF : (twistingTensorMultiply R ι ((1 : ℕ) : ℤ) (-1) s).app F = 0) (i : ι)
+    {V : (ProjectiveSpace R ι).Opens} (hV : V ≤ coordinateOpen R ι i) (n : Γ(F, V)) :
+    frameCoefficient R ι s i hV • n = 0 := by
+  let g := twistingGenerator R ι (-1) i hV
+  let sV := (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.map (homOfLE (le_top : V ≤ ⊤)).op s
+  have h1 : moduleTensorSection (ProjectiveSpace R ι) (twistingSheaf R ι (((1 : ℕ) : ℤ) + -1))
+      F V (twistingSectionMul R ι ((1 : ℕ) : ℤ) (-1) V sV g) n = 0 := by
+    rw [← twistingTensorMultiply_section, hF]
+    rfl
+  have h0 : ((1 : ℕ) : ℤ) + -1 = 0 := by norm_num
+  have h2 := moduleTensorSection_eqToHom_eq_zero R ι h0 F V _ n h1
+  have hcoef : (twistingZeroIso R ι).hom.val.app (op V)
+      ((eqToHom (congrArg (twistingSheaf R ι) h0)).val.app (op V)
+        (twistingSectionMul R ι ((1 : ℕ) : ℤ) (-1) V sV g)) =
+          twistingSectionsEquiv R ι ((1 : ℕ) : ℤ) i hV sV := by
+    change (twistingZeroToUnit R ι).val.app (op V) _ = _
+    rw [twistingZeroToUnit_app R ι i hV, twistingSectionsEquiv_eqToHom R ι h0 i hV,
+      twistingSectionsEquiv_mul, twistingSectionsEquiv_generator, mul_one]
+  have h3 := congrArg (((twistingTensorZeroIso R ι).hom.app F).val.app (op V)) h2
+  rw [twistingTensorZeroIso_hom_section, tensorLeftUnitIso_hom_section, map_zero, hcoef] at h3
+  exact h3
+
+-- Module sections and their scalar ring `Γ(ProjectiveSpace R ι, V)` agree with the presheaf
+-- of modules only after unfolding; this needs the backward transparency rule.
+set_option backward.isDefEq.respectTransparency false in
+/-- **Multiplication by a section of `O(1)` is mono on the charts' regular locus**: if on every
+subopen `V` of every chart `D₊(Xᵢ)` the frame coefficient of `s` is a nonzerodivisor on
+`Γ(M, V)`, then multiplication by `s`, `M ≅ O(0) ⊗ M → O(1 + 0) ⊗ M`, is a monomorphism. -/
+theorem mono_twistingTensorMultiply_of_isSMulRegular
+    (s : (twistingSheaf R ι ((1 : ℕ) : ℤ)).val.obj (op ⊤)) (M : (ProjectiveSpace R ι).Modules)
+    (hreg : ∀ (i : ι) (V : (ProjectiveSpace R ι).Opens) (hV : V ≤ coordinateOpen R ι i),
+      IsSMulRegular Γ(M, V) (frameCoefficient R ι s i hV)) :
+    Mono ((twistingTensorZeroIso R ι).inv.app M ≫
+      (twistingTensorMultiply R ι ((1 : ℕ) : ℤ) 0 s).app M) := by
+  let f := (twistingTensorZeroIso R ι).inv.app M ≫
+    (twistingTensorMultiply R ι ((1 : ℕ) : ℤ) 0 s).app M
+  apply Preadditive.mono_of_isZero_kernel
+  have hK : IsKilledByTwistSection R ι ((1 : ℕ) : ℤ) s (kernel f) :=
+    IsKilledByTwistSection.of_comp_eq_zero (kernel.ι f) (by
+      rw [← Category.assoc]
+      exact kernel.condition f)
+  have hsec (i : ι) (V : (ProjectiveSpace R ι).Opens) (hV : V ≤ coordinateOpen R ι i)
+      (n : Γ(kernel f, V)) : (kernel.ι f).val.app (op V) n = 0 := by
+    have h := frameCoefficient_smul_eq_zero R ι s (kernel f) (hK (-1)) i hV n
+    apply hreg i V hV
+    change frameCoefficient R ι s i hV • (kernel.ι f).val.app (op V) n =
+      frameCoefficient R ι s i hV • 0
+    calc frameCoefficient R ι s i hV • (kernel.ι f).val.app (op V) n
+        = (kernel.ι f).val.app (op V) (frameCoefficient R ι s i hV • n) :=
+          (_root_.map_smul _ _ _).symm
+      _ = 0 := by rw [h, map_zero]
+      _ = frameCoefficient R ι s i hV • 0 := (smul_zero _).symm
+  have hι : kernel.ι f = 0 := by
+    apply hom_ext_of_coordinateSubopens R ι
+    intro i V hV n
+    rw [hsec i V hV n]
+    rfl
+  rw [IsZero.iff_id_eq_zero]
+  rw [← cancel_mono (kernel.ι f), hι, comp_zero, zero_comp]
+
+end FrameCoefficient
 
 end AlgebraicGeometry.ProjectiveSpace

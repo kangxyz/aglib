@@ -25,10 +25,20 @@ coordinate hypothesis.
   is the native uniqueness isomorphism of the two pullback squares, with
   both forward and inverse projection equations. No open-immersion premise
   is needed for this geometric comparison.
+- `Twisting` proves that the twisting sheaves commute with every coefficient base change:
+  `twistingPullbackIso φ ι d : π^* O_R(d) ≅ O_S(d)` for `π = map φ ι`. It applies
+  `Modules/Invertible/Gluing/Pullback` to the coordinate cocycle. The inverse images of the
+  standard charts are the standard charts, and `appLE_coordinateTransitionOn` matches the
+  transition units. On every chart subopen the isomorphism sends the pulled-back frame `Xᵢ^d`
+  to the frame `Xᵢ^d` (`twistingPullbackIso_hom_generator`, `_inv_generator`, `_inv_app`).
+  `twistingTensorPullbackIso` gives `π^*(O_R(d) ⊗ M) ≅ O_S(d) ⊗ π^* M` from the canonical tensor
+  comparison.
+- `Flat` proves that `map f ι` is flat for a flat ring map `f` (`flat_map`): by `isPullback_map`
+  it is the base change of `Spec S → Spec R`. The projection of a field extension is flat as an
+  instance (`flat_map_algebraMap`), so pullback along it preserves monomorphisms.
 
 The lower algebraic owner is
 [`RingTheory/MvPolynomial/GradedMap`](../../../RingTheory/MvPolynomial/GradedMap.lean).
 Relative projective projections use this scheme comparison to apply the
 proved coherent cohomology theorem after restricting the base to an affine
-open. Pullback formulas for the twisting modules are a separate later
-interface and are not premises of the Cartesian theorem.
+open. The twisting pullback `Twisting` is not a premise of the Cartesian theorem.

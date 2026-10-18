@@ -16,6 +16,13 @@ and passes to the quotient and the subobject of a short exact sequence
 (`moduleCohomology_subsingleton_X₃`, `moduleCohomology_subsingleton_X₁`), also after
 tensoring the kernel sequence of an epimorphism with a finite locally free module
 (`moduleCohomology_subsingleton_tensor_target`, `_tensor_kernel`).
+It also compares connecting maps with the outer maps, as linear maps over `α`: the degree-zero
+connecting map vanishes exactly when the last map is surjective on global sections
+(`moduleCohomologyConnectingOfHom_zero_eq_zero_of_surjective`,
+`surjective_of_moduleCohomologyConnectingOfHom_zero_eq_zero`), and the degree-`n` one vanishes
+exactly when `Hⁿ⁺¹` of the first map is injective
+(`moduleCohomologyConnectingOfHom_eq_zero_iff_injective`). Mumford's bound
+(`Cohomology/Projective/Regularity/Mumford`) consumes them.
 
 [LongExact](LongExact.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact`, retains `Scheme.Cohomology.moduleCohomologyConnecting` and the existing field-linear APIs as specializations of [Modules](Modules.lean). Its underlying map is literally native `Sheaf.H.δ`. `moduleCohomologyMap_exact` and the connecting exactness results concern the original coefficient maps and actual short exact module-sheaf sequence. `moduleH0Map_injective` handles an arbitrary coefficient monomorphism; `moduleH0Map_injective_of_shortExact` is the distinct short-exact specialization. No finite-dimensional premise belongs to generic exactness.
 

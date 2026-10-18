@@ -11,6 +11,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Co
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Coherent
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Basic
+public import Aglib.RingTheory.Binomial
 
 /-!
 # The Hilbert polynomial of a coherent module on projective space over a field
@@ -25,6 +26,14 @@ The proof stays on projective space. If `F` is killed by the coordinates in `S` 
 multiplication by `Xⱼ` gives `F → O(1 + 0) ⊗ F` with kernel `K` and cokernel `C` killed by
 `S ∪ {j}`; additivity of `χ` gives `χ(F(m + 1)) - χ(F(m)) = χ(C(m)) - χ(K(m))`, and a module
 killed by every coordinate is zero. No infinite field or hyperplane section is used.
+
+The induction proves the sharper binomial form: a module killed by the coordinates in `S` has
+`χ(O(m) ⊗ F) = Σ_{i < N} aᵢ C(m, i)` with integers `aᵢ`, for `N` the number of coordinates outside
+`S` (`exists_projectiveHilbertFunction_eq_sum_choose_of_killed`; the step is
+`Int.eq_sum_choose_of_fwdDiff`). So for coherent `F` on `P^n` there are `a₀, …, aₙ` with
+`χ(O(r) ⊗ F) = Σ_{i ≤ n} aᵢ C(r, i)` (`exists_projectiveHilbertFunction_eq_sum_choose`), the form of
+the hypothesis of Mumford's bound (Nitsure, arXiv:math/0504590v1, Thm 2.3, p. 11), and the
+Hilbert function is polynomial because binomial sums are (`IsPolynomialOnInt.sum_choose`).
 -/
 
 @[expose] public section
@@ -53,14 +62,15 @@ def projectiveHilbertFunction (F : (ProjectiveSpace k ι).Modules) (m : ℤ) : �
   projectiveEulerChar k ι
     ((moduleTensorLeftFunctor (ProjectiveSpace k ι) (twistingSheaf k ι m)).obj F)
 
-/-- The Hilbert function of a coherent module killed by the coordinates in `S` is polynomial,
-by induction on the number of remaining coordinates. -/
-theorem isPolynomialOnInt_projectiveHilbertFunction_of_killed [Fintype ι] [DecidableEq ι]
+/-- If a coherent module `F` is killed by the coordinates in `S` and `N` coordinates lie outside
+`S`, then `χ(O(m) ⊗ F) = Σ_{i < N} aᵢ C(m, i)` for integers `aᵢ`. -/
+theorem exists_projectiveHilbertFunction_eq_sum_choose_of_killed [Fintype ι] [DecidableEq ι]
     (n : ℕ) (e : ι ≃ Fin (n + 1)) (N : ℕ) :
     ∀ (S : Finset ι) (F : (ProjectiveSpace k ι).Modules), (Finset.univ \ S).card = N →
       affineLocallyFiniteType (ProjectiveSpace k ι) F →
       (∀ i ∈ S, IsKilledByTwistSection k ι ((1 : ℕ) : ℤ) (coordinateSection k ι i) F) →
-      Polynomial.IsPolynomialOnInt (projectiveHilbertFunction k ι F) := by
+      ∃ a : Fin N → ℤ, ∀ m : ℤ,
+        projectiveHilbertFunction k ι F m = ∑ i : Fin N, a i * Ring.choose m i := by
   induction N with
   | zero =>
     intro S F hcard _ hkill
@@ -71,8 +81,9 @@ theorem isPolynomialOnInt_projectiveHilbertFunction_of_killed [Fintype ι] [Deci
       simp at hmem
     have hzero : IsZero F :=
       isZero_of_coordinate_eq_zero k ι F (fun i => hkill i (hS i) (-1))
-    refine (Polynomial.IsPolynomialOnInt.const 0).congr (fun m => ?_)
-    exact (projectiveEulerChar_of_isZero k ι (Functor.map_isZero _ hzero)).symm
+    refine ⟨Fin.elim0, fun m => ?_⟩
+    rw [Fin.sum_univ_zero]
+    exact projectiveEulerChar_of_isZero k ι (Functor.map_isZero _ hzero)
   | succ N ih =>
     intro S F hcard hF hkill
     obtain ⟨j, hj⟩ : (Finset.univ \ S).Nonempty := by
@@ -124,31 +135,49 @@ theorem isPolynomialOnInt_projectiveHilbertFunction_of_killed [Fintype ι] [Deci
         refine (congrArg (fun x => x ≫ cokernel.π i) hτ).trans ?_
         rw [Category.assoc, h, comp_zero]
       · exact ((hkill i' hi').tensor _).of_epi (cokernel.π i)
-    have hKpoly := ih (insert j S) (kernel p) hcard' hK hKkill
-    have hCpoly := ih (insert j S) (cokernel i) hcard' hC hCkill
-    apply Polynomial.IsPolynomialOnInt.of_fwdDiff
-    refine (hCpoly.sub hKpoly).congr (fun m => ?_)
-    have hfin := twistingSheaf_isFiniteLocallyFree k ι m
-    have h₁ := projectiveEulerChar_add_of_shortExact k ι n e _
-      (tensor_shortExact_finiteLocallyFree (twistingSheaf k ι m) _ hS₁)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hK)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hF)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hI)
-    have h₂ := projectiveEulerChar_add_of_shortExact k ι n e _
-      (tensor_shortExact_finiteLocallyFree (twistingSheaf k ι m) _ hS₂)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hI)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hG)
-      (twistingTensor_affineLocallyFiniteType k ι m _ hC)
-    have hcomp := projectiveEulerChar_congr k ι
-      ((twistingTensorCompIso k ι m (((1 : ℕ) : ℤ) + 0)).app F)
-    rw [show m + (((1 : ℕ) : ℤ) + 0) = m + 1 by push_cast; ring] at hcomp
-    simp only [Functor.comp_obj] at hcomp
-    simp only [ShortComplex.map_X₁, ShortComplex.map_X₂, ShortComplex.map_X₃,
-      ShortComplex.kernelSequence_X₁, ShortComplex.kernelSequence_X₂,
-      ShortComplex.kernelSequence_X₃, ShortComplex.cokernelSequence_X₁,
-      ShortComplex.cokernelSequence_X₂, ShortComplex.cokernelSequence_X₃] at h₁ h₂
-    unfold projectiveHilbertFunction
-    linarith
+    obtain ⟨aK, haK⟩ := ih (insert j S) (kernel p) hcard' hK hKkill
+    obtain ⟨aC, haC⟩ := ih (insert j S) (cokernel i) hcard' hC hCkill
+    have hdiff (m : ℤ) :
+        projectiveHilbertFunction k ι F (m + 1) - projectiveHilbertFunction k ι F m =
+          projectiveHilbertFunction k ι (cokernel i) m -
+            projectiveHilbertFunction k ι (kernel p) m := by
+      have hfin := twistingSheaf_isFiniteLocallyFree k ι m
+      have h₁ := projectiveEulerChar_add_of_shortExact k ι n e _
+        (tensor_shortExact_finiteLocallyFree (twistingSheaf k ι m) _ hS₁)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hK)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hF)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hI)
+      have h₂ := projectiveEulerChar_add_of_shortExact k ι n e _
+        (tensor_shortExact_finiteLocallyFree (twistingSheaf k ι m) _ hS₂)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hI)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hG)
+        (twistingTensor_affineLocallyFiniteType k ι m _ hC)
+      have hcomp := projectiveEulerChar_congr k ι
+        ((twistingTensorCompIso k ι m (((1 : ℕ) : ℤ) + 0)).app F)
+      rw [show m + (((1 : ℕ) : ℤ) + 0) = m + 1 by push_cast; ring] at hcomp
+      simp only [Functor.comp_obj] at hcomp
+      simp only [ShortComplex.map_X₁, ShortComplex.map_X₂, ShortComplex.map_X₃,
+        ShortComplex.kernelSequence_X₁, ShortComplex.kernelSequence_X₂,
+        ShortComplex.kernelSequence_X₃, ShortComplex.cokernelSequence_X₁,
+        ShortComplex.cokernelSequence_X₂, ShortComplex.cokernelSequence_X₃] at h₁ h₂
+      unfold projectiveHilbertFunction
+      linarith
+    refine ⟨_, Int.eq_sum_choose_of_fwdDiff (fun i' => aC i' - aK i') (fun m => ?_)⟩
+    rw [hdiff, haC, haK, ← Finset.sum_sub_distrib]
+    simp only [sub_mul]
+
+/-- The Hilbert function of a coherent module killed by the coordinates in `S` is polynomial:
+it is a binomial sum (`exists_projectiveHilbertFunction_eq_sum_choose_of_killed`). -/
+theorem isPolynomialOnInt_projectiveHilbertFunction_of_killed [Fintype ι] [DecidableEq ι]
+    (n : ℕ) (e : ι ≃ Fin (n + 1)) (N : ℕ) :
+    ∀ (S : Finset ι) (F : (ProjectiveSpace k ι).Modules), (Finset.univ \ S).card = N →
+      affineLocallyFiniteType (ProjectiveSpace k ι) F →
+      (∀ i ∈ S, IsKilledByTwistSection k ι ((1 : ℕ) : ℤ) (coordinateSection k ι i) F) →
+      Polynomial.IsPolynomialOnInt (projectiveHilbertFunction k ι F) := by
+  intro S F hcard hF hkill
+  obtain ⟨a, ha⟩ :=
+    exists_projectiveHilbertFunction_eq_sum_choose_of_killed k ι n e N S F hcard hF hkill
+  exact (Polynomial.IsPolynomialOnInt.sum_choose N a).congr fun m => (ha m).symm
 
 /-- **Hilbert polynomial.** For a coherent module `F` on projective `n`-space over a field,
 the function `m ↦ χ(O(m) ⊗ F)` agrees at every integer with a rational polynomial. -/
@@ -158,6 +187,18 @@ theorem isPolynomialOnInt_projectiveHilbertFunction (n : ℕ) (e : ι ≃ Fin (n
   classical
   let := Fintype.ofEquiv (Fin (n + 1)) e.symm
   exact isPolynomialOnInt_projectiveHilbertFunction_of_killed k ι n e _ ∅ F rfl hF
+    (fun i hi => absurd hi (Finset.notMem_empty i))
+
+/-- **Hilbert coefficients.** For a coherent module `F` on projective `n`-space over a field,
+there are integers `a₀, …, aₙ` with `χ(O(r) ⊗ F) = Σ_{i ≤ n} aᵢ C(r, i)` for every `r : ℤ`. -/
+theorem exists_projectiveHilbertFunction_eq_sum_choose (n : ℕ) (e : ι ≃ Fin (n + 1))
+    (F : (ProjectiveSpace k ι).Modules) (hF : affineLocallyFiniteType (ProjectiveSpace k ι) F) :
+    ∃ a : Fin (n + 1) → ℤ, ∀ r : ℤ,
+      projectiveHilbertFunction k ι F r = ∑ i : Fin (n + 1), a i * Ring.choose r i := by
+  classical
+  let := Fintype.ofEquiv (Fin (n + 1)) e.symm
+  exact exists_projectiveHilbertFunction_eq_sum_choose_of_killed k ι n e (n + 1) ∅ F
+    (by rw [Finset.sdiff_empty, Finset.card_univ, Fintype.card_congr e, Fintype.card_fin]) hF
     (fun i hi => absurd hi (Finset.notMem_empty i))
 
 /-- The Hilbert polynomial of a module on projective space over a field: the rational
