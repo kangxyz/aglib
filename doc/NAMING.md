@@ -54,6 +54,16 @@ Keep general finite-type quasicoherent interfaces in `Scheme.Modules.QuasiCohere
 
 Homological algebra, generic site/topological sheaves and scheme-specialized cohomology retain separate owners. Preserve the distinction between ordinary-complex categorical exactness, bounded augmentation/QI, two-bound comparison and original-unit derived calculation.
 
+## Milnor K-theory
+
+`Aglib.KTheory.MilnorK` owns the general symbol theory. All declarations belong
+to `MilnorK` or its native subobjects; there are no parallel top-level
+`MilnorK2` and `MilnorK3` namespaces. `MilnorK.K F n` is the uniform public
+group. The older tensor presentations live under `MilnorK.K2` and
+`MilnorK.K3`, with carrier name `Group`; `twoEquiv` and `threeEquiv` compare
+them with the uniform group. Norm and residue module directories separate
+optional dependencies without constructing replacement objects.
+
 ## Maintain the record
 
 Source modules use modern `module`, precise `public import` and the project's exposed public-interface policy. Family READMEs record reusable interfaces, main mathematical results, hypotheses, explicit inputs and present consumers. Root documentation owns cross-family routes and conventions. [REFERENCES.md](REFERENCES.md) records source identity; module and namespace correspondence are maintained by their assigned map owners.

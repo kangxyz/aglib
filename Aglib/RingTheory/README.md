@@ -19,3 +19,10 @@ The objects are actual Mathlib rings, algebras, ideals, prime spectra, localizat
 | [Grassmannian](Grassmannian/README.md) | Charts and Zariski descent of Mathlib's `Module.Grassmannian.functor`, with the base-change formula class `BaseChangeMkQFormula` |
 
 [Generic exact-sequence length](Length/README.md), [scalar homology](ScalarHomology/README.md), fraction and filtration calculations belong to their lower object owners; the multiplicity proofs consume them. No Grayson cycle, principal-face, curve or K/G/Q/S application object is introduced. Scheme smooth/stalk/connectedness results consume the regular-local, polynomial and tensor-domain leaves; other admitted interfaces remain available as public standalone results.
+
+The Milnor norm prerequisites also include actual root-field branch/tensor
+comparisons, complete DVR extensions, integral-closure towers and determinant
+norm/valuation formulas. They retain their native algebraic namespaces and
+explicit finite, flat, irreducible, ramification and scalar-tower hypotheses.
+[Adic completion](AdicCompletion/README.md) and
+[finite-algebra length](FiniteLength/README.md) describe the lower interfaces.

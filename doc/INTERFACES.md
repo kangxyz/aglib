@@ -232,3 +232,16 @@ retain smooth relative dimension one, a closed immersion and the separately
 stated finite, flat and locally finitely presented composite at their finite-flat
 root. Their bases can be nonreduced and non-Noetherian. The lower ideal-kernel
 comparisons keep their quotient-flatness and actual scalar-square conditions.
+
+## Milnor K-theory
+
+The [Milnor family](../Aglib/KTheory/MilnorK/README.md) owns `MilnorK.K F n`,
+the actual integer symbol quotient for every nonnegative degree. Field maps
+allow independent universes; concatenation, low-degree comparisons and tame
+residues use the same groups and original ordered symbols. The tensor models
+are nested under `MilnorK.K2` and `MilnorK.K3`; they are compared explicitly.
+Specialization retains a uniformizer, while residue independence has its own
+proved normalization/compatibility conditions. General finite-extension norms
+and their tower theorem currently require characteristic zero, the actual
+algebra structures and finite-dimensional/tower hypotheses. Motivic diagonal,
+Quillen and endpoint-cycle comparisons remain downstream.
