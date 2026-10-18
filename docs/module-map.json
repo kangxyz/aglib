@@ -343,7 +343,7 @@
       ],
       "relation": "Explicit split of actual smooth-rank and etale-pullback APIs; not a one-to-one module alias",
       "source_integration_sha256": "9e9e36faa2ff3b9ecadb5a9a37f90b558314f860a6e9c32e06b1e193cd94154c",
-      "projection": "doc/migration/pointwise-cartier-coherent.json"
+      "projection": "docs/migration/pointwise-cartier-coherent.json"
     }
   ],
   "r5_fundamental_groups_migration": {

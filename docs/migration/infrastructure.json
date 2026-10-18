@@ -2,7 +2,7 @@
   "package": "Aglib",
   "root_module": "Aglib",
   "test_root": "AglibTest",
-  "governing_namespace_map": "doc/namespace-map.json",
+  "governing_namespace_map": "docs/namespace-map.json",
   "lean": "4.34.1",
   "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
   "source_adaptations": [
@@ -221,7 +221,7 @@
   ],
   "historical_evidence": "The earlier 25-test pre-rename pass is not current AGLib acceptance.",
   "heartbeat_guard_boundary": "Pinned Mathlib convention: options with a maxHeartbeats name component, including synthInstance.maxHeartbeats, are declaration-local and followed by explanatory comments after in. Documented local 0 is permitted. Necessity and comment content remain author judgments. Lean default 200000 is inherited without a package-wide override.",
-  "status": "Historical full local integration passed on the exact evidence bases preserved in doc/migration/integration.json#/historical_checkpoint_records. Current source and coverage boundaries are summarized in doc/WORK_PLAN.md.",
+  "status": "Historical full local integration passed on the exact evidence bases preserved in docs/migration/integration.json#/historical_checkpoint_records. Current source and coverage boundaries are summarized in docs/WORK_PLAN.md.",
   "private_coverage_control": "Axioms.lean selects the actual origin-enumerated private constant ending hiddenDatum and requires it in the checked environment. The public rootDatum is independent, not a public alias for the private constant.",
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
   "current_identity_validation": {
@@ -230,7 +230,7 @@
     "repo_directory": "aglib",
     "destination_identity": "Destination paths and hashes were reconciled at the recorded historical integration snapshot; later source changes are outside that identity check.",
     "status": "Historical full local integration passed on its recorded source/artifact basis: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay. No full acceptance of later revisions is claimed.",
-    "integration_record": "doc/migration/integration.json#/historical_checkpoint_records",
+    "integration_record": "docs/migration/integration.json#/historical_checkpoint_records",
     "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
   },
   "source_inventory_script_sha256": "ee689f451773a40a7b39e207f409fc4ed47e13ec820a593d58a1d421b323f787",
@@ -245,8 +245,8 @@
   "record_scope": {
     "kind": "historical_extraction_and_integration_evidence",
     "basis": "The source revisions, per-entry hashes and execution identities recorded in this file.",
-    "historical_integration_owner": "doc/migration/integration.json#/historical_checkpoint_records",
-    "current_summary_owner": "doc/WORK_PLAN.md",
+    "historical_integration_owner": "docs/migration/integration.json#/historical_checkpoint_records",
+    "current_summary_owner": "docs/WORK_PLAN.md",
     "boundary": "Fields named current or latest describe the recorded checkpoint, not arbitrary later checkouts. Original hashes and check results are fixed; this documentation audit supplies no new mathematical or build acceptance.",
     "execution_hashes": "current_execution_implementation_sha256 retains its original execution-tool snapshot; it is not a live hash inventory."
   }

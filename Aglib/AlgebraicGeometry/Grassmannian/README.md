@@ -2,7 +2,7 @@
 
 This family will own the Grassmannian `Gr(E, k)` of rank-`k` locally free quotients of a finite
 locally free module and the projective bundle `P(E) := Gr(E, 1)`
-([Picard plan](../../../doc/PICARD_PLAN.md), rows F8 and F9). Its ring-level input is
+([Picard plan](../../../docs/PICARD_PLAN.md), rows F8 and F9). Its ring-level input is
 [RingTheory/Grassmannian](../../RingTheory/Grassmannian/README.md): charts of Mathlib's
 `Module.Grassmannian.functor`, their coordinate rings, overlaps, local covering, and Zariski
 separatedness and gluing.

@@ -684,7 +684,7 @@ follow the exact active assignment and the source family's owner.
 | Workstream | Initial write ownership | Immediate product |
 | --- | --- | --- |
 | Affine base change | `Modules/BaseChange/Affine.lean` and focused helper leaves under `Modules/BaseChange/Affine/`; that family's README | Canonical affine base-change theorem and its retained-family supplier |
-| Flat cohomology and integration | General-ring scalar/cohomology leaves; general-coefficient base-change leaves; `doc/`; aggregate enrollment and shared interface documentation | Separated, then qcqs flat base change; canonical-map integration |
+| Flat cohomology and integration | General-ring scalar/cohomology leaves; general-coefficient base-change leaves; `docs/`; aggregate enrollment and shared interface documentation | Separated, then qcqs flat base change; canonical-map integration |
 | Projective and duality | New leaves under `AlgebraicGeometry/ProjectiveSpace/`, `Cohomology/Projective/`, `Cohomology/Duality/`; their family guides | Actual projective/twist/Cech results, then finiteness and trace/duality |
 | Proper base change | New generic leaves under `Algebra/Homology/FiniteProjective/`, new `Cohomology/Proper/` leaves and their guides | Finite-complex algebra and relative-flat/base-change prerequisites, then the proper endpoints |
 

@@ -24,7 +24,7 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | [ProjectiveSpace](ProjectiveSpace/README.md) | Actual polynomial Proj, charts, twists, finite presentations, affine immersions, base change and chartwise Euler sequences |
 | [Cohomology](Cohomology/README.md) | Actual Zariski `Sheaf.H`, structural scalars, Cech and derived comparisons, qcqs flat base change, proper coherent finiteness, [field Hilbert polynomials](Cohomology/Projective/HilbertPolynomial/README.md), projective regularity and [relative projective duality](Cohomology/Duality/Projective/Relative/README.md) with its stated base hypotheses |
 
-Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../doc/README.md) explain their interfaces. Curve/P1/genus/degree and Quillen K/G/Q/S applications remain external.
+Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../docs/README.md) explain their interfaces. Curve/P1/genus/degree and Quillen K/G/Q/S applications remain external.
 
 The Grassmannian leaves retain `BaseChangeMkQFormula`; the focused
 [formula supplier](../RingTheory/Grassmannian/BaseChangeFormula.lean) proves it
@@ -34,4 +34,4 @@ as locally free module-sheaf quotients remains separate.
 Godement and derived interfaces retain their bounds and original unit equations.
 Proper coherent finiteness and smooth differential rank have proved suppliers;
 the full arbitrary-base `LocalFreeCohomologyBaseChange` family remains an explicit
-input, with the exact conditions recorded in [INTERFACES.md](../../doc/INTERFACES.md).
+input, with the exact conditions recorded in [INTERFACES.md](../../docs/INTERFACES.md).

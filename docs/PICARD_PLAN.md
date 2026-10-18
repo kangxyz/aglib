@@ -365,7 +365,7 @@ for F13, F14 and F16, with `RingTheory/GenericFreeness/` and
 `AlgebraicGeometry/Modules/Flat/Generic/` for F12 and new subfamilies of
 `AlgebraicGeometry/Cohomology/Projective/` for F10 and F11. Paths are proposals relative to `Aglib/`; final names
 follow [NAMING.md](NAMING.md) after inspecting neighbours. Only the integrator
-changes common facades, `doc/INTERFACES.md`, `doc/README.md` and this plan.
+changes common facades, `docs/INTERFACES.md`, `docs/README.md` and this plan.
 
 Verification follows the cohomology plan's incremental rules. Build one leaf at a
 time with its strictly necessary prerequisites. Give each milestone a focused

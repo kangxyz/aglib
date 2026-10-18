@@ -6,7 +6,7 @@ The objects are Mathlib's actual `X.Modules` with Mathlib's pullback functors
 Stack statements use Mathlib's `Pseudofunctor.IsPrestack` and `Pseudofunctor.IsStack`
 (`Mathlib/CategoryTheory/Sites/Descent/`) and Mathlib's `Scheme.zariskiTopology`. This family
 is the Zariski part (row F3) of the fppf stacks of row F6 in
-[PICARD_PLAN.md](../../../../doc/PICARD_PLAN.md).
+[PICARD_PLAN.md](../../../../docs/PICARD_PLAN.md).
 
 [Pseudofunctor](Pseudofunctor.lean):
 

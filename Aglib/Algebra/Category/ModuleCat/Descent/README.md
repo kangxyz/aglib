@@ -54,7 +54,7 @@ unchanged.
 
 ## Consumers
 
-Plan row F6 (`doc/PICARD_PLAN.md`) is the intended consumer: fppf stacks of quasi-coherent
+Plan row F6 (`docs/PICARD_PLAN.md`) is the intended consumer: fppf stacks of quasi-coherent
 sheaves reduce one faithfully flat morphism of affine schemes to this statement. Two inputs
 remain open for F6 and are not in this family:
 

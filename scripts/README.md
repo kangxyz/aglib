@@ -14,10 +14,10 @@ compatible evidence. Develop with incremental compilation and its diagnostics;
 independent lint and tests run only at final validation, not after each
 helper return, internal commit or merge. After repairs, rerun only failed or
 newly affected checks. Compilation alone does not supply separate lint or test coverage. The
-[authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds) owns that selection
+[authoring rule](../docs/DEVELOPMENT.md#setup-and-focused-builds) owns that selection
 and timing. Check scope is incremental across these categories.
 
-Follow the [authoring rule](../doc/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
+Follow the [authoring rule](../docs/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
 
 `check.sh --source-only` is a broad source/tooling integration check: it scans the
 whole source tree for generated enrollment, source layout, proof-token policy and
@@ -232,7 +232,7 @@ unsandboxed execution route; monitoring failure cannot count as success.
 
 ## Incremental CI build cache
 
-[Native caching](../doc/CACHING.md) owns the canonical `.github/actions/lake-cache` action and adjacent adapter. Its native toolchain cache retains artifacts and input mappings across manifest/option changes; public cache prerelease assets deliver upstream builds without cross-repository credentials. `build_serial.py --outputs FILE` forwards native Lake `-o` on both its no-build probe and ordinary build. Existing checkout cache behavior below remains additional incremental storage.
+[Native caching](../docs/CACHING.md) owns the canonical `.github/actions/lake-cache` action and adjacent adapter. Its native toolchain cache retains artifacts and input mappings across manifest/option changes; public cache prerelease assets deliver upstream builds without cross-repository credentials. `build_serial.py --outputs FILE` forwards native Lake `-o` on both its no-build probe and ordinary build. Existing checkout cache behavior below remains additional incremental storage.
 
 `cache_key.py` adapts the typed TOML normalization from Quillen's
 `scripts/cache_key.py`. It hashes root and downstream toolchains, manifests,

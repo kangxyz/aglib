@@ -2,7 +2,7 @@
 
 This family compares the Picard functors of [Picard](../README.md) with the rigidified functor
 and with the fppf sheafification (plan row F7, target 4 of
-[PICARD_PLAN.md](../../../../doc/PICARD_PLAN.md)). It follows Kleiman, *The Picard scheme*,
+[PICARD_PLAN.md](../../../../docs/PICARD_PLAN.md)). It follows Kleiman, *The Picard scheme*,
 arXiv:math/0504020v1, Thm 2.5 with Def. 2.8 and Lemmas 2.9, 2.10 (pp. 18–20), and
 [Stacks 0B9N](https://stacks.math.columbia.edu/tag/0B9N). The Picard-specific declarations live
 in `AlgebraicGeometry.Scheme.RelativePicard`; the module-sheaf facts of Endomorphisms and the
@@ -159,7 +159,7 @@ has abbreviation hints, and was measured at several seconds of kernel time per d
 
 ## Not yet proved
 
-Target 4 of [PICARD_PLAN.md](../../../../doc/PICARD_PLAN.md) is closed. Not formalized:
+Target 4 of [PICARD_PLAN.md](../../../../docs/PICARD_PLAN.md) is closed. Not formalized:
 
 - the Zariski and étale comparison maps and Kleiman's local-section clauses of Thm 2.5;
 - the corollaries under Kleiman's hypothesis "`O_S ≅ f_*O_X` universally": only the gluing step

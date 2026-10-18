@@ -62,7 +62,7 @@ multiplication, transport or summand inclusion carry the same proof terms. With
 inline proofs instead, the kernel unfolded the module-sheaf compositions when
 comparing such terms: the leaf took about six minutes, and a restated lemma of the
 exactness step took 114 s and 25 GB in the kernel. It now compiles in 6.4 s at a
-peak of 2.5 GB ([performance notes](../../../../../doc/PERFORMANCE.md)).
+peak of 2.5 GB ([performance notes](../../../../../docs/PERFORMANCE.md)).
 
 `KoszulExact` proves that the Koszul complex is exact, for every module over
 every commutative base: `epi_koszul_kernelLift` (`K_{p+2}` maps onto the kernel of

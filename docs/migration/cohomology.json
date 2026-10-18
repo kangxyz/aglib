@@ -1145,7 +1145,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Topology.Sheaves.Cech.Restriction",
@@ -1168,7 +1168,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "contextual_naming_validation": "Prior successful emissions use earlier names. Current hashes are reconciled; fresh full package acceptance is pending this naming pass.",
@@ -1471,7 +1471,7 @@
   },
   "current_identity_validation": {
     "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
-    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "integration_record": "docs/migration/checkpoint-accepted-2026-10-16.json",
     "boundary": "No whole-library/default-CI/replay acceptance is inferred."
   },
   "current_identity_validation_history": [
@@ -1481,7 +1481,7 @@
       "repo_directory": "aglib",
       "destination_identity": "Current destination paths and recorded hashes reconciled.",
       "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-      "integration_record": "doc/migration/integration.json",
+      "integration_record": "docs/migration/integration.json",
       "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
     }
   ]

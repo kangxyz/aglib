@@ -6,7 +6,7 @@
 
 [ExactDerivedContraction](ExactDerivedContraction.lean) gives `DerivedCategory.Plus.exactDerivedContractionIso` and its unit equation. It assumes an abelian category with enough injectives and a derived category, additive endofunctors `F,G`, `G.PreservesHomology`, and an actual `F ⋙ G ≅ Id`. The conclusion is the one-sided `RF ⋙ RG ≅ Id` with the installed unit compatibility. No opposite-composition isomorphism or two-sided equivalence is supplied.
 
-The lower subjects are [distinguished-triangle comparison](../../../../CategoryTheory/Triangulated/README.md), [actual truncation layers](../../Embedding/StupidTrunc/README.md) and [right-derived unit comparisons](../RightDerivedFunctorPlus/README.md). Godement contraction and original scheme D+ comparison are the current consumers. Source correspondence is recorded in [latest-homology](../../../../../doc/migration/latest-homology.json).
+The lower subjects are [distinguished-triangle comparison](../../../../CategoryTheory/Triangulated/README.md), [actual truncation layers](../../Embedding/StupidTrunc/README.md) and [right-derived unit comparisons](../RightDerivedFunctorPlus/README.md). Godement contraction and original scheme D+ comparison are the current consumers. Source correspondence is recorded in [latest-homology](../../../../../docs/migration/latest-homology.json).
 
 [Postnikov](Postnikov/README.md) gives the complementary cohomological
 interface: native truncation homology, normalized single layers, and one

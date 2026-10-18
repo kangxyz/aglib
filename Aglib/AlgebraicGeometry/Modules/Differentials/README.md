@@ -11,7 +11,7 @@
 Lower actual module pullback, structural maps and [rank/class](../LocallyFree/README.md) interfaces feed the maps. General differential consumers use them without a canonical-bundle degree, genus or curve Riemann–Roch assertion.
 
 The minimal direct selection from local Aglib main `40af743` is recorded in
-[the migration manifest](../../../../doc/migration/upstream-smooth-differentials.json).
+[the migration manifest](../../../../docs/migration/upstream-smooth-differentials.json).
 Each selected leaf and the independent public consumer passed at the default
 budgets. The standard-smooth basis supports independent ring and algebra
 universes. The global rank theorem retains the source universe and includes

@@ -20,19 +20,19 @@ import it, for example `lake build MyProject.Main` for your own `MyProject.Main`
 module. Use a specific
 commit instead of `main` and retain `lake-manifest.json` for reproducible builds.
 Obtain matching dependency caches before compiling missing prerequisites; see
-[native caching](doc/CACHING.md) for artifact reuse.
+[native caching](docs/CACHING.md) for artifact reuse.
 
 Import a focused module, such as `Aglib.RingTheory.TensorProduct.Domain`, or use
 `import Aglib` for the complete public library.
 
 ## Documentation and checks
 
-The [documentation index](doc/README.md) links the mathematical guides.
-[Scope](doc/SCOPE.md) and [interface boundaries](doc/INTERFACES.md) record coverage,
+The [documentation index](docs/README.md) links the mathematical guides.
+[Scope](docs/SCOPE.md) and [interface boundaries](docs/INTERFACES.md) record coverage,
 hypotheses and conditional inputs; specialized curve and K-theory applications
 remain downstream.
 
-Use the [development guide](doc/DEVELOPMENT.md) to select focused builds and
+Use the [development guide](docs/DEVELOPMENT.md) to select focused builds and
 applicable final checks for the changed modules and their affected consumers.
 It also covers cache setup and contribution conventions. The comprehensive
 `scripts/check.sh` route serves separately requested diagnostics and declared CI.

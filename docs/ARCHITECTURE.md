@@ -113,7 +113,7 @@ Ordinary Godement totalization is categorically exact on complex objects. Augmen
 
 Create occupied structure for an admitted object/result and a current consumer. A family may own its basic object, local properties and comparisons without acquiring empty future layers. Split a mixed file when its subjects, conditions or dependency directions differ; do not relocate it wholesale under whichever application used it first.
 
-Each family README is the authority for objects, focused imports, canonical interfaces, principal mathematical results, exact conditions and remaining explicit inputs. It names lower prerequisites and present consumers. Root `doc/` coordinates the overview, reading routes, design/naming, development and source provenance instead of duplicating every local API.
+Each family README is the authority for objects, focused imports, canonical interfaces, principal mathematical results, exact conditions and remaining explicit inputs. It names lower prerequisites and present consumers. Root `docs/` coordinates the overview, reading routes, design/naming, development and source provenance instead of duplicating every local API.
 
 Keep maintained text and identifiers in English, preserve exact source locators and copyright/license notices, and avoid unrelated cleanup. Credit actual contributors under the [contribution conventions](DEVELOPMENT.md#contribution-conventions). Earlier source names remain provenance; adapters for original application packages belong to those packages.
 

@@ -50,7 +50,7 @@ Motivic consumes these objects for diagonal and weight-two comparisons. Its
 `AffineEndpointGeometry` and `NormalizedAffineEndpointNorm` applications stay
 downstream with the original geometric cycle objects.
 
-[Source correspondence](../../../doc/migration/motivic-milnor-k.json) records
+[Source correspondence](../../../docs/migration/motivic-milnor-k.json) records
 the admitted modules and reused native interfaces.
 Original identifiers in retained source comments refer to that source snapshot;
 the declarations and import table above give the current API. This relocation

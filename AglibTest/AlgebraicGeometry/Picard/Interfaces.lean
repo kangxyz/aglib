@@ -16,7 +16,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Pullback
 public import Mathlib.AlgebraicGeometry.Sites.Representability
 public import Mathlib.CategoryTheory.Comma.Presheaf.Basic
 
-/-! Interface probes for the Picard functor layer (milestone M0 of `doc/PICARD_PLAN.md`).
+/-! Interface probes for the Picard functor layer (milestone M0 of `docs/PICARD_PLAN.md`).
 Mathlib's plus-plus sheafification applies to the fppf topology induced on `Over S`
 with values in `Type (u + 1)` and in `AddCommGrpCat.{u + 1}`; `Functor.RepresentableBy`
 accepts `Type (u + 1)`-valued presheaves on `Over S`; the Aglib Picard group of a

@@ -57,7 +57,7 @@ class MigrationHelperTests(unittest.TestCase):
         destination = self.root / 'Aglib/Example.lean'
         destination.parent.mkdir()
         destination.write_text('maintained redesigned source\n')
-        provenance = self.root / 'doc/migration/example.json'
+        provenance = self.root / 'docs/migration/example.json'
         provenance.parent.mkdir(parents=True)
         provenance.write_text('{"source_revision":"immutable"}\n')
         before = {path: path.read_bytes() for path in [destination, provenance]}

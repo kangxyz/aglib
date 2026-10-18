@@ -1,7 +1,7 @@
 # Affine and fppf descent of quasi-coherent sheaves
 
 This subfamily proves the quasi-coherent part of row F6 of
-[PICARD_PLAN.md](../../../../../doc/PICARD_PLAN.md):
+[PICARD_PLAN.md](../../../../../docs/PICARD_PLAN.md):
 `Pseudofunctor.IsStack Scheme.fppfTopology` for
 `Scheme.Modules.quasicoherentPseudofunctor` (from [Pseudofunctor](../Pseudofunctor.lean)), and the
 same for line bundles.

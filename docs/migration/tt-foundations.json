@@ -1593,7 +1593,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.DerivedCategory.KInjective.Hom",
@@ -1786,7 +1786,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.DerivedCategory.KInjective.Map",
@@ -2014,7 +2014,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.DerivedCategory.KInjective.Representatives",
@@ -2207,7 +2207,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.HomologicalComplex.Adjunction",
@@ -2256,7 +2256,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.HomotopyCategory.Adjunction",
@@ -2517,7 +2517,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.MappingCone.NullHomotopy",
@@ -2565,7 +2565,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.Algebra.Homology.ShortComplex.Subcategory",
@@ -2674,7 +2674,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Complex.LocalHomotopy",
@@ -2833,7 +2833,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.DerivedCategory.LiftedHom",
@@ -2982,7 +2982,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.DerivedCategory.RestrictionHom",
@@ -3403,7 +3403,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.Flat.Resolution",
@@ -3562,7 +3562,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalLifting",
@@ -3696,7 +3696,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.DerivedMorphisms",
@@ -3759,7 +3759,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.DerivedPerfect",
@@ -4413,7 +4413,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.DerivedRepresentativeNaturality",
@@ -4472,7 +4472,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalClosure",
@@ -4574,7 +4574,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalHomotopyStep",
@@ -4668,7 +4668,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalNullHomotopy",
@@ -4750,7 +4750,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalQuasiIsoLifting",
@@ -4798,7 +4798,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.AlgebraicGeometry.Modules.PerfectComplexes.LocalTriangles",
@@ -4859,7 +4859,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "accepted partial checkpoint: Aglib.CategoryTheory.ExactCategory.Small",
@@ -4930,7 +4930,7 @@
         }
       ],
       "evidence_boundary": "Accepted scoped producer native checks and ordinary review; source identities retain original paths/revisions/hashes. No whole-library or downstream acceptance is claimed.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     },
     {
       "family": "bounded-above flat models and native derived-minus pullback",
@@ -6904,7 +6904,7 @@
       "native_source_freeze_sha256": "049f7cd3a6c8e07f836441fba56336e909f3de78480f7c848993e9b62998c94e",
       "ordinary_review_sha256": "53a08cafddb3fbe48f6efb9e21ed416f488884b7466f1ea2413b6ef668c40f47",
       "evidence_boundary": "21 final producers and six guides accepted by scoped native checks and independent ordinary review. Earlier draft source hashes remain original history; affected LIVE exports are a separate check.",
-      "checkpoint": "doc/migration/checkpoint-accepted-2026-10-16.json"
+      "checkpoint": "docs/migration/checkpoint-accepted-2026-10-16.json"
     }
   ],
   "unchanged_correspondences": {

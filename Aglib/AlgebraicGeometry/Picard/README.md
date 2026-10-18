@@ -7,7 +7,7 @@ is an actual `Scheme.Modules.Invertible.PicardGroup`, and every map is the prove
 additive pullback `Scheme.Modules.Invertible.PullbackTensor.Local.pullbackHom`; no
 tensor-pullback or other theorem-family parameter is used. The functors are defined on
 all of `Over S`, nonreduced and non-Noetherian test schemes included. The plan in
-[PICARD_PLAN.md](../../../doc/PICARD_PLAN.md) restricts later representability
+[PICARD_PLAN.md](../../../docs/PICARD_PLAN.md) restricts later representability
 statements, not these definitions.
 
 [Presheaf](Presheaf.lean), imported as `Aglib.AlgebraicGeometry.Picard.Presheaf`,

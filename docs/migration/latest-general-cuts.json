@@ -2,7 +2,7 @@
   "phase": "Authorized general cuts authoring; four independent roots principal stage17 exit 0; coupled accepted leaves individually checked with exact current hashes.",
   "source_revision": "189a8e779f0c68b2dfc6f8195daebb3e684a5905",
   "source_authority": "/Users/kang/Documents/New project/tmp/output/quillen-library-release/quillen-k-theory",
-  "destination_head": "Initial Aglib source snapshot; exact current source identities and integration evidence are recorded in doc/migration/integration.json.",
+  "destination_head": "Initial Aglib source snapshot; exact current source identities and integration evidence are recorded in docs/migration/integration.json.",
   "entries": [
     {
       "path": "Aglib/AlgebraicGeometry/Properties/AffineInduction.lean",
@@ -2429,7 +2429,7 @@
     "Aglib/AlgebraicGeometry/AffineSpace/PolynomialLaurent/ZeroSection.lean",
     "Aglib/Algebra/Homology/Embedding/CochainComplex/TruncGE.lean",
     "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/Cartesian.lean",
-    "doc/migration/latest-general-cuts.json"
+    "docs/migration/latest-general-cuts.json"
   ],
   "evidence_boundary": "Exact source applicability/migration correspondence and author Lean elaboration/lint evidence. No independent review, established-status assignment, whole-library completion or proof of newly supplied local-QI/unit-isomorphism/flatness/finite-local-freeness premises is asserted.",
   "group": "latest-general-cuts",
@@ -4363,7 +4363,7 @@
   "source_phase": "Completed assigned 22-path general-cut source authoring; principal whole-library integration is separate and ongoing.",
   "current_identity_validation": {
     "status": "Partial accepted source checkpoint; historical full-integration results retain their original snapshot.",
-    "integration_record": "doc/migration/checkpoint-accepted-2026-10-16.json",
+    "integration_record": "docs/migration/checkpoint-accepted-2026-10-16.json",
     "boundary": "No whole-library/default-CI/replay acceptance is inferred."
   },
   "current_identity_validation_history": [
@@ -4373,7 +4373,7 @@
       "repo_directory": "aglib",
       "destination_identity": "Current destination paths and recorded hashes reconciled.",
       "status": "Full local integration passed: build, tests, declaration/style lint, axiom audits, rejection controls, inventory, exact root replay and independent downstream build/audit/replay.",
-      "integration_record": "doc/migration/integration.json",
+      "integration_record": "docs/migration/integration.json",
       "prior_evidence_boundary": "Earlier author and naming-stage observations retain their original source and execution basis; current acceptance is recorded separately."
     }
   ]

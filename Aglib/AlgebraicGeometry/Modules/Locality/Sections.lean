@@ -22,7 +22,7 @@ Existing proofs transferred from frozen dirty R5 revision
   `965a9542a747894891b7cc04c235143b80984b77c931144b0b17f93d36a2c820`.
 
 Actual objects, maps, universes and stated conditions are retained.
-Native validation coverage is recorded separately in `doc/WORK_PLAN.md` and
+Native validation coverage is recorded separately in `docs/WORK_PLAN.md` and
 the migration records; the source hashes above identify extraction inputs.
 -/
 

@@ -13,4 +13,4 @@
 | [Topology](Topology/README.md) | Actual sheaf sections, basis detection, Mayer–Vietoris and Noetherian topological support |
 | [AlgebraicGeometry](AlgebraicGeometry/README.md) | Scheme modules and descent, symmetric monoidal tensor, braided projective twists, ordinary Picard objects, qcqs flat base change, Noetherian proper finiteness/models and projective-space duality |
 
-Each occupied subfamily records its objects, focused imports, canonical maps, main results and exact conditions. [Root documentation](../doc/README.md) coordinates reading routes, scope and evidence. Use `import Aglib` for the aggregate; implementations import precise lower leaves.
+Each occupied subfamily records its objects, focused imports, canonical maps, main results and exact conditions. [Root documentation](../docs/README.md) coordinates reading routes, scope and evidence. Use `import Aglib` for the aggregate; implementations import precise lower leaves.

@@ -3,7 +3,7 @@
 This family extends `ChainComplex.Koszul` on mathlib's actual nonnegative
 chain complexes of module categories. Its present consumer is the local
 regular-immersion calculation for Serre duality. The source selection and
-hashes are recorded in [the migration record](../../../../doc/migration/motivic-koszul.json).
+hashes are recorded in [the migration record](../../../../docs/migration/motivic-koszul.json).
 The supplied Motivic archive has the same Lean and Mathlib pins; contributor
 and license headers are retained. Only these generic lower results are
 admitted, with one implementation and native namespaces.
