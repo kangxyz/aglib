@@ -13,14 +13,18 @@ public import AglibTest.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomia
 public import AglibTest.AlgebraicGeometry.Cohomology.Projective.Regularity
 public import AglibTest.AlgebraicGeometry.Cohomology.Proper.StructureSheaf
 public import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
+public import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.Fppf
 public import AglibTest.AlgebraicGeometry.Descent.IdealSheaf.Pullback
 public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.AffineStack
 public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.CompTransCoherence
 public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
+public import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Stack
 public import AglibTest.AlgebraicGeometry.Descent.Modules.Zariski
+public import AglibTest.AlgebraicGeometry.Descent.Opens
 public import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 public import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 public import AglibTest.AlgebraicGeometry.Grassmannian.Representability
+public import AglibTest.AlgebraicGeometry.IdealSheaf.Glue
 public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Integral
 public import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Spec
 public import AglibTest.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
@@ -50,6 +54,7 @@ public import AglibTest.ArchivePerfectStructural
 public import AglibTest.ArchiveSequentialSystemColimit
 public import AglibTest.ArchiveSequentialSystemSignCorrection
 public import AglibTest.AuditCoverage
+public import AglibTest.CategoryTheory.Sites.Descent.Composition
 public import AglibTest.CoefficientUnit
 public import AglibTest.ExactFunctor
 public import AglibTest.FiniteEtale

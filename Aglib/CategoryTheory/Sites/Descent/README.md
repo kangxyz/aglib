@@ -1,10 +1,15 @@
-# Generic descent transfer
+# Generic descent: transfer, composition and sheaf conditions over `Over S`
 
-Two leaves transfer Mathlib's effective-descent predicate `Pseudofunctor.IsStackFor` between
+Five leaves extend Mathlib's effective-descent predicate `Pseudofunctor.IsStackFor` for
 pseudofunctors `LocallyDiscrete Cᵒᵖ ⥤ᵖ Cat`, for arbitrary categories, functors and morphisms.
-They are instantiated once, in
+[Transfer](Transfer.lean) and [SiteChange](SiteChange.lean) transfer it between pseudofunctors;
+they are instantiated once, in
 [AlgebraicGeometry/Descent/Modules/Fppf](../../../AlgebraicGeometry/Descent/Modules/Fppf/README.md),
-at `Spec : CommRingCatᵒᵖ ⥤ Scheme`.
+at `Spec : CommRingCatᵒᵖ ⥤ Scheme`. [Bind](Bind.lean) and [Composition](Composition.lean) give
+effective descent along composites of covering families and presieves, for prestacks, and
+monotonicity in the topology. [OverSigma](OverSigma.lean) turns sheaf conditions for presheaves on
+`Over S` into sheaf conditions for presheaves on `C`. The last three are used by the fpqc and fppf
+stacks of the same Fppf subfamily.
 
 [Transfer](Transfer.lean): a `Pseudofunctor.CompTrans F₁ F₂` consists of functors
 `app X : F₁.obj ⟨op X⟩ ⥤ F₂.obj ⟨op X⟩`, pseudonaturality isomorphisms
@@ -59,8 +64,70 @@ strong transformation; the unit coherence is omitted because descent data do not
   two applications of a definition such as `NatCompAlong`, and so need not unfold the
   composites of the field.
 
-Both leaves use `set_option backward.isDefEq.respectTransparency false` (and
+Transfer and SiteChange use `set_option backward.isDefEq.respectTransparency false` (and
 `backward.defeqAttrib.useBackward true`) on the declarations whose goals must see the objects of
-`F.obj _` (a `Cat.of`) as objects of the underlying category, as Mathlib's descent files do.
+`F.obj _` (a `Cat.of`) as objects of the underlying category, as Mathlib's descent files do. Bind
+uses `backward.isDefEq.respectTransparency false` on three declarations (`pullHom_conj`,
+`exists_pullHom_eq`, `CompDescent.pullHom_comparisonIso_hom`), each with an adjacent comment: the
+`mapComp'` and `pullHom` coherence lemmas of Mathlib are stated with objects that agree with those
+of the goals only up to unfolding. Composition and OverSigma use no options.
 Implicit objects of composites are normalized with `Functor.comp_obj` inside `simp only` sets;
 cancellations of isomorphism components are done in term mode (`cancel_epi`, `cancel_mono`).
+
+[Bind](Bind.lean): effective descent along composites of families, for a `J`-prestack `F`.
+
+- `LocallyDiscreteOpToCat.pullHom_comp`, `LocallyDiscreteOpToCat.pullHom_id'`: `pullHom` of a
+  composite and of an identity morphism (the prime: Mathlib's `pullHom_id` is `pullHom` along an
+  identity);
+- `eq_of_pullHom_eq`, `exists_pullHom_eq`: morphisms between pullbacks over `W` are determined
+  by, and glue from, compatible families of their `pullHom`s along a covering sieve of `W`;
+- `DescentData.restrictComp` (the restrictions along the families `g i : Y i j ⟶ X i` of a
+  descent datum `E` along the composite family `g i j ≫ f i`) and `DescentData.hom_congr_base`;
+- the construction, in the namespace `Pseudofunctor.CompDescent`: `descendedObj` (the object over
+  `X i` descended from `E` along `g i`), `objIso` and its components `objIsoHom`, `objIsoInv`,
+  `objIsoApp` (stated with explicit source and target, see below), `comparisonIso` (the
+  comparison of `descendedObj` with `E` over an arrow through `g i j`), `localHom` (the descended
+  morphism over a test object, before gluing), `factorSieve` (the covering sieve of the arrows
+  along which two test morphisms factor through the families `g i₁`, `g i₂`), `chosenLocalHom`,
+  `gluedHom` (the glued descent morphisms), `gluedDescentData` (a descent datum along `f`) and
+  `pullIso` (its pullback to the composite family is isomorphic to `E`);
+- `isEquivalence_toDescentData_comp`: if `f` and every `g i` are `J`-covering and
+  `F.toDescentData f`, `F.toDescentData (g i)` are equivalences, so is `F.toDescentData` of the
+  composite family.
+
+Development observation: the component `(objIso f g E i).hom.hom j` has source
+`((F.toDescentData (g i)).obj _).obj j` and target `(E.restrictComp f g i).obj j`, which agree
+with `(F.map (g i j).op.toLoc).toFunctor.obj _` and `E.obj ⟨i, j⟩` only after unfolding; rewriting
+with `Category.comp_id` and `Functor.map_comp` then failed to match. Restating the components
+through definitions with the explicit source and target (`objIsoHom`, `objIsoInv`), and the
+`comm` goal of `pullIso` as a lemma with explicit types (`pullIso_comm`), removed the failures;
+the module builds in about 6 seconds.
+
+[Composition](Composition.lean): `Pseudofunctor.IsPrestack.of_le`, `Pseudofunctor.IsStack.of_le`
+(a (pre)stack for a finer topology is one for a coarser topology), and
+`Pseudofunctor.IsStackFor.bind`: for a `J`-prestack `F`, a `J`-covering presieve `R` for which `F`
+is a stack and `J`-covering presieves `R' f` for which `F` is a stack, `F` is a stack for
+`R.bind R'` (the presieve form of `isEquivalence_toDescentData_comp`, for families indexed by
+`R.category`). Consumers: [Fppf/Prestack](../../../AlgebraicGeometry/Descent/Modules/Fppf/Prestack.lean)
+(`IsPrestack.of_le`) and [Fppf/Stack](../../../AlgebraicGeometry/Descent/Modules/Fppf/Stack.lean).
+A locator for the composition statement for stacks is `citation needed` (Giraud, *Cohomologie non
+abélienne*, Chapter II, expected, not inspected).
+
+[OverSigma](OverSigma.lean): `Presieve.overSigma P`, the presheaf on `C` of pairs of a morphism
+`g : Y ⟶ S` and a section of a presheaf `P` on `Over S` over `Over.mk g`; `overSigma_map_apply`;
+`isSheafFor_of_isSheafFor_overSigma` (a sheaf condition for `overSigma P` gives one for `P` at
+`Over.mk (𝟙 S)` when `yoneda.obj S` is separated) and `isSheafFor_overSigma` (the converse
+direction, sieve by sieve). The helpers about restriction along morphisms of `Over S` are private.
+Consumer: [Fppf/Prestack](../../../AlgebraicGeometry/Descent/Modules/Fppf/Prestack.lean), where
+Mathlib's `isSheaf_type_propQCTopology_iff` is applied to `overSigma (F.presheafHom M N)`.
+
+Intended Mathlib owners of the last three leaves: `IsPrestack.of_le`, `IsStack.of_le`,
+`IsStackFor.bind` and `isEquivalence_toDescentData_comp` next to `IsStackFor.of_le` in
+`Mathlib/CategoryTheory/Sites/Descent/Precoverage.lean`; `pullHom_comp`, `eq_of_pullHom_eq` and
+`exists_pullHom_eq` next to `pullHom` in `Mathlib/CategoryTheory/Sites/Descent/IsPrestack.lean`;
+`DescentData.hom_congr_base` in `Mathlib/CategoryTheory/Sites/Descent/DescentData.lean`; and the
+`overSigma` correspondence in `Mathlib/CategoryTheory/Sites/Over.lean`.
+
+Focused consumer:
+[AglibTest/CategoryTheory/Sites/Descent/Composition.lean](../../../../AglibTest/CategoryTheory/Sites/Descent/Composition.lean)
+(axiom guards).

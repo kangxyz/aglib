@@ -23,6 +23,20 @@ transfers without locality (`ObjectProperty.isPrestack_fullsubcategory`). Conseq
 `F` is a stack for a Grothendieck topology `J` and `P` is local for the covering sieves of
 `J`, then `P.fullsubcategory` is a stack for `J` (`ObjectProperty.isStack_fullsubcategory`).
 
+**Nested substacks.** Let `P ≤ Q` be object properties of `F`, closed under the functors `F.map`.
+`isStack_fullsubcategory` needs the ambient `F` to be a stack; the following variants only need
+the ambient stack `Q.fullsubcategory`:
+
+* `ObjectProperty.descentDataLift`: a descent datum for `F` whose objects satisfy `Q` is a descent
+  datum for `Q.fullsubcategory` (with the same objects and morphisms);
+* `ObjectProperty.isEquivalence_toDescentData_fullsubcategory_of_le`: if
+  `Q.fullsubcategory.toDescentData f` is an equivalence and `P` is closed under isomorphisms and
+  local along `f` for objects satisfying `Q`, then `P.fullsubcategory.toDescentData f` is an
+  equivalence;
+* `ObjectProperty.isStack_fullsubcategory_of_le`: the same for all covering sieves of a topology
+  `J`. Consumer: line bundles inside quasi-coherent sheaves
+  (`Descent/Modules/Fppf/LineBundleStack.lean`).
+
 This is the statement recorded as a TODO in Mathlib's
 `Mathlib/CategoryTheory/Bicategory/Functor/Cat/ObjectProperty.lean` (module docstring, "TODO");
 locality is passed as an explicit hypothesis rather than a new typeclass. It is the formal step
@@ -183,5 +197,100 @@ theorem isStack_fullsubcategory {J : GrothendieckTopology C} [F.IsStack J]
     have := (F.isStackFor' R hR).isEquivalence
     exact ⟨isEquivalence_toDescentData_fullsubcategory P
       (fun M hM ↦ hP R hR M (fun Y g hg ↦ hM ⟨Over.mk g, hg⟩))⟩
+
+end CategoryTheory.Pseudofunctor.ObjectProperty
+
+/-! ### Nested substacks: the ambient stack is `Q.fullsubcategory` for `P ≤ Q` -/
+
+namespace CategoryTheory.Pseudofunctor.ObjectProperty
+
+open Opposite Bicategory LocallyDiscreteOpToCat
+
+variable {C : Type u} [Category.{v} C] {F : LocallyDiscrete Cᵒᵖ ⥤ᵖ Cat.{v', u'}}
+
+section Lift
+
+variable (P : F.ObjectProperty) [P.IsClosedUnderMapObj]
+  {ι : Type t} {S : C} {X : ι → C} {f : ∀ i, X i ⟶ S}
+
+-- The objects of `P.fullsubcategory.obj _` (a `Cat.of`) must be seen as objects of `P.Obj _`.
+set_option backward.isDefEq.respectTransparency false in
+/-- A descent datum for `F` whose objects satisfy `P` is a descent datum for
+`P.fullsubcategory`, with the same objects and morphisms. -/
+def descentDataLift (D : F.DescentData f) (hD : ∀ i, P.prop _ (D.obj i)) :
+    P.fullsubcategory.DescentData f where
+  obj i := ⟨D.obj i, hD i⟩
+  hom Y q i₁ i₂ f₁ f₂ hf₁ hf₂ := ObjectProperty.homMk (D.hom q f₁ f₂ hf₁ hf₂)
+  pullHom_hom Y' Y g q q' hq i₁ i₂ f₁ f₂ hf₁ hf₂ gf₁ gf₂ hgf₁ hgf₂ := by
+    apply InducedCategory.hom_ext
+    exact (fullsubcategory_pullHom_hom P _ g gf₁ gf₂ hgf₁ hgf₂).trans
+      (D.pullHom_hom g q q' hq f₁ f₂ hf₁ hf₂ gf₁ gf₂ hgf₁ hgf₂)
+  hom_self Y q i g hg := by
+    apply InducedCategory.hom_ext
+    exact D.hom_self q g hg
+  hom_comp Y q i₁ i₂ i₃ f₁ f₂ f₃ hf₁ hf₂ hf₃ := by
+    apply InducedCategory.hom_ext
+    exact D.hom_comp q f₁ f₂ f₃ hf₁ hf₂ hf₃
+
+end Lift
+
+variable (P Q : F.ObjectProperty) [P.IsClosedUnderMapObj] [Q.IsClosedUnderMapObj]
+
+-- As in `toDescentDataCompDescentDataForgetIso`, the objects of `P.fullsubcategory.obj _` (a
+-- `Cat.of`) must be seen as objects of `P.Obj _`.
+set_option backward.isDefEq.respectTransparency false in
+/-- If `Q.fullsubcategory.toDescentData f` is an equivalence, `P ≤ Q`, and `P` is closed under
+isomorphisms and local along `f` for objects satisfying `Q`, then
+`P.fullsubcategory.toDescentData f` is an equivalence. -/
+lemma isEquivalence_toDescentData_fullsubcategory_of_le [P.IsClosedUnderIsomorphisms]
+    {ι : Type t} {S : C} {X : ι → C} {f : ∀ i, X i ⟶ S}
+    [(Q.fullsubcategory.toDescentData f).IsEquivalence]
+    (hPQ : ∀ X M, P.prop X M → Q.prop X M)
+    (hP : ∀ M : F.obj (.mk (op S)), Q.prop _ M →
+      (∀ i, P.prop _ ((F.map (f i).op.toLoc).toFunctor.obj M)) → P.prop _ M) :
+    (P.fullsubcategory.toDescentData f).IsEquivalence := by
+  let eP := toDescentDataCompDescentDataForgetIso P f
+  let eQ := toDescentDataCompDescentDataForgetIso Q f
+  have hle : P.prop (.mk (op S)) ≤ Q.prop (.mk (op S)) := fun M hM ↦ hPQ _ M hM
+  have hQ : (Q.fullsubcategory.toDescentData f ⋙ descentDataForget Q f).FullyFaithful :=
+    (Functor.FullyFaithful.ofFullyFaithful _).comp (fullyFaithfulDescentDataForget Q f)
+  have hF : ((P.prop (.mk (op S))).ι ⋙ F.toDescentData f).FullyFaithful :=
+    ((ObjectProperty.fullyFaithfulιOfLE hle).comp (hQ.ofIso eQ)).ofIso (Iso.refl _)
+  have hff' := Functor.FullyFaithful.ofCompFaithful (G := descentDataForget P f) (hF.ofIso eP.symm)
+  have := hff'.full
+  have := hff'.faithful
+  have : (P.fullsubcategory.toDescentData f).EssSurj := ⟨fun D ↦ by
+    let D₀ := (descentDataForget P f).obj D
+    let DQ := descentDataLift Q D₀ (fun i ↦ hPQ _ _ (D.obj i).property)
+    let MQ := (Q.fullsubcategory.toDescentData f).objPreimage DQ
+    let α : (Q.fullsubcategory.toDescentData f).obj MQ ≅ DQ :=
+      (Q.fullsubcategory.toDescentData f).objObjPreimageIso DQ
+    let β : (F.toDescentData f).obj MQ.obj ≅ D₀ :=
+      (eQ.app MQ).symm ≪≫ (descentDataForget Q f).mapIso α ≪≫
+        (Iso.refl _ : (descentDataForget Q f).obj DQ ≅ D₀)
+    have hM : P.prop _ MQ.obj := hP MQ.obj MQ.property (fun i ↦
+      (P.prop _).prop_of_iso
+        { hom := β.inv.hom i
+          inv := β.hom.hom i
+          hom_inv_id := congrArg (fun φ ↦ DescentData.Hom.hom φ i) β.inv_hom_id
+          inv_hom_id := congrArg (fun φ ↦ DescentData.Hom.hom φ i) β.hom_inv_id }
+        (by exact (D.obj i).property))
+    exact ⟨⟨MQ.obj, hM⟩, ⟨(fullyFaithfulDescentDataForget P f).preimageIso
+      (eP.app ⟨MQ.obj, hM⟩ ≪≫ β)⟩⟩⟩
+  exact { }
+
+/-- **Nested substacks.** If `P ≤ Q`, `Q.fullsubcategory` is a stack for `J`, and `P` is closed
+under isomorphisms and local for the covering sieves of `J` on objects satisfying `Q`, then
+`P.fullsubcategory` is a stack for `J`. -/
+theorem isStack_fullsubcategory_of_le {J : GrothendieckTopology C} [P.IsClosedUnderIsomorphisms]
+    [Q.fullsubcategory.IsStack J] (hPQ : ∀ X M, P.prop X M → Q.prop X M)
+    (hP : ∀ ⦃S : C⦄ (R : Sieve S), R ∈ J S → ∀ M : F.obj (.mk (op S)), Q.prop _ M →
+      (∀ ⦃Y : C⦄ (g : Y ⟶ S), R g → P.prop _ ((F.map g.op.toLoc).toFunctor.obj M)) →
+        P.prop _ M) :
+    P.fullsubcategory.IsStack J :=
+  IsStack.of_isStackFor fun S R hR ↦ by
+    have := (Q.fullsubcategory.isStackFor' R hR).isEquivalence
+    exact ⟨isEquivalence_toDescentData_fullsubcategory_of_le P Q hPQ
+      (fun M hQM hM ↦ hP R hR M hQM (fun Y g hg ↦ hM ⟨Over.mk g, hg⟩))⟩
 
 end CategoryTheory.Pseudofunctor.ObjectProperty

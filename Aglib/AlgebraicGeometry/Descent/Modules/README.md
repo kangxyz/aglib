@@ -28,8 +28,12 @@ transfers effectivity along a family `f` when `P` is local along `f`, and
 `isStack_fullsubcategory` transfers `IsStack J` when `P` is local for the covering sieves of
 `J`. It proves the statement of the TODO in Mathlib's
 `Bicategory/Functor/Cat/ObjectProperty.lean`, with locality as an explicit hypothesis instead of
-an `IsLocal` class, and with closure under isomorphisms added. Its intended owner is a
-categorical descent family (Aglib `CategoryTheory/Sites/Descent/` or Mathlib).
+an `IsLocal` class, and with closure under isomorphisms added. Nested substacks: for `P ≤ Q`,
+`descentDataLift`, `isEquivalence_toDescentData_fullsubcategory_of_le` and
+`isStack_fullsubcategory_of_le` need only the ambient stack `Q.fullsubcategory`, with `P` local
+on `Q`-objects (consumer: line bundles in
+[Fppf/LineBundleStack](Fppf/LineBundleStack.lean)). Its intended owner is a categorical descent
+family (Aglib `CategoryTheory/Sites/Descent/` or Mathlib).
 
 [RestrictPullback](RestrictPullback.lean) proves that Mathlib's
 `restrictFunctorIsoPullback` is compatible with `restrictFunctorComp`/`pullbackComp`
@@ -109,11 +113,14 @@ instances (Stacks, Lemma 6.33.2, Tag 00AL, for the gluing of sections).
 
 The Zariski `IsStack` statements are therefore unconditional. `ProjectionSurjective` and the
 conditional theorems of OpenCoverGluing remain as the assembly step that these instances use. No
-quasi-coherence, finiteness or Noetherian hypothesis is used anywhere in this family. The fppf
-layer (plan row F6) is developed in [Fppf](Fppf/README.md); its affine case is proved.
+finiteness or Noetherian hypothesis is used in this family, and the Zariski layer uses no
+quasi-coherence hypothesis. The fppf layer (plan row F6) is in [Fppf](Fppf/README.md): the
+affine case and the fpqc and fppf stacks of quasi-coherent sheaves and of line bundles. Unlike
+the Zariski instances, these hold only for the quasi-coherent and line-bundle pseudofunctors:
+the affine faithfully flat inputs are about quasi-coherent sheaves.
 
 The `backward.*` options are scoped to the declarations that need them, each with a comment:
-two lemmas in Pseudofunctor, one definition in Substack, four lemmas in Zariski,
+two lemmas in Pseudofunctor, two definitions and one lemma in Substack, four lemmas in Zariski,
 `hom_eq_transition` and `comparisonIso` in OpenCoverGluing, and five lemmas in ZariskiStack
 (`cocycle_restrict`, `hom_of_eq`, `first_app_restrict`, `comp_restrict`,
 `comp_first_restrict_eq`). RestrictPullback needs none.
