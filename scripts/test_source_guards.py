@@ -1,3 +1,4 @@
+# Authors: kangxyz
 """Fixed behavioral regressions for portable source discovery and policy guards."""
 from pathlib import Path
 import tempfile
@@ -42,6 +43,25 @@ class SourceGuards(unittest.TestCase):
         self.assertEqual(check_layout(self.root)[0], [])
         self.assertEqual(check_placeholders(self.root), [])
         self.assertEqual(check_source_policy(self.root), [])
+
+    def test_copyright_headers_require_and_preserve_author_credit(self):
+        header = ('/-\nCopyright (c) 2026 Test contributors. All rights reserved.\n'
+                  'Released under Apache 2.0 license as described in the file LICENSE.\n')
+        for credit in ['', 'Authors: \n']:
+            self.write('Aglib/Algebra/A.lean', header + credit + '-/\n' + HEADER)
+            self.assertTrue(any('Authors credit' in error
+                                for error in check_source_policy(self.root)))
+        source = header + 'Authors: Upstream contributor\n-/\n' + HEADER
+        self.write('Aglib/Algebra/A.lean', source)
+        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual((self.root / 'Aglib/Algebra/A.lean').read_text(), source)
+
+    def test_extraction_notice_is_not_replaced_with_a_copyright_header(self):
+        source = ('/-\nExtracted source; no upstream license is declared.\n'
+                  'Original attribution is retained below.\n-/\n' + HEADER)
+        self.write('Aglib/Algebra/A.lean', source)
+        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual((self.root / 'Aglib/Algebra/A.lean').read_text(), source)
 
     def test_parser_nested_comments_strings_quoted_roots_import_all(self):
         text = '''/- import R5Lab.Fake /- nested -/ -/
