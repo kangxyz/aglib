@@ -69,7 +69,7 @@ from Motivic, one generic polynomial extraction and 170 moved tests. General
 groups, products, residues and norms now belong to `Aglib.KTheory.MilnorK`;
 `MilnorK.K F n` is canonical, with tensor presentations nested under
 `MilnorK.K2` and `MilnorK.K3`. Two original endpoint-geometry applications remain
-in Motivic. Existing hypotheses and the seven source license exceptions remain.
+in Motivic. Existing mathematical hypotheses are retained.
 
 Selected production compilation, declaration and text-style lint, source guards,
 affected positive tests and the independent Milnor client pass. The final lint

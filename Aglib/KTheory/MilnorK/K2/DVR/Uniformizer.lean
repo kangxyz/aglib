@@ -1,19 +1,11 @@
 /-
-Extracted and mechanically adapted from the private, user-owned R5 source:
-https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/DVR/Uniformizer.lean
-Original Git blob SHA-1: e67b46fca44619f52849f94eb2f671747b6a46ec
-Original SHA-256: 2afdfc3041049ea4ef56d419e8483e122b14982fd4ca6ec1220bb12ca9c567c9
-No upstream license is declared. This copied implementation is NOT covered by
-this standalone project's Apache license statement. This local source reuse
-provides no authorization for public redistribution. Original source comments
-and attribution are retained below. See THIRD_PARTY_NOTICES.md and LICENSE.
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
 public import Aglib.KTheory.MilnorK.K2.DVR.Basic
-
--- Preserve the original non-Apache provenance notice rather than invent a license.
-set_option linter.style.header false
 
 /-!
 # Uniformizer-independent Milnor specialization for an actual DVR
@@ -40,6 +32,13 @@ Implementation basis: `DVRRealization.lean` SHA256
 `Specialization.lean` and `Residue.lean` at
 `ac804cb2f648f42380e612235b972786506d0b9f`; Lean `4.34.1`, mathlib
 `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+
+## Implementation provenance
+
+Original R5 implementation:
+https://github.com/kangxyz/r5-lab/blob/1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e/lean/R5Lab/KTheory/MilnorK2/DVR/Uniformizer.lean
+Original Git blob SHA-1: `e67b46fca44619f52849f94eb2f671747b6a46ec`.
+Original SHA-256: `2afdfc3041049ea4ef56d419e8483e122b14982fd4ca6ec1220bb12ca9c567c9`.
 -/
 
 noncomputable section

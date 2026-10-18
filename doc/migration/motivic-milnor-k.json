@@ -1419,13 +1419,15 @@
       "source_module": "Motivic.KTheory.MilnorK2.Basic",
       "source_sha256": "27334e06277b636340ad1c7162dca4f43f07bbfbb334ee1eeeb5edcad5d499c3",
       "module": "Aglib.KTheory.MilnorK.K2.Basic",
-      "sha256": "fe1315fba06e516a0605852d11847a6a197e71268a9eabb1696a459306599b86"
+      "sha256": "a002d27475728cba65dcb6d4fe88387361e658c27b70807d9a11967ccbd4d2da",
+      "previous_destination_sha256": "fe1315fba06e516a0605852d11847a6a197e71268a9eabb1696a459306599b86"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.DVR.Basic",
       "source_sha256": "79129ff407c1b2fa5d2d77ff770e7a5029668788b6549de5b9f8b86d8e87f401",
       "module": "Aglib.KTheory.MilnorK.K2.DVR.Basic",
-      "sha256": "7616225024e13dee833a852194e04b22377971109a967c1d6f42fb8859dfa91a"
+      "sha256": "ac052905f51923cec472d95886725f4eacfefec4cc3ba1b98a2af3ce28bd31e4",
+      "previous_destination_sha256": "7616225024e13dee833a852194e04b22377971109a967c1d6f42fb8859dfa91a"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.DVR.RamifiedRestriction",
@@ -1437,7 +1439,8 @@
       "source_module": "Motivic.KTheory.MilnorK2.DVR.Uniformizer",
       "source_sha256": "bf7eba9915c707045c33bc6ea94b56ca48523e0810f39a96491d8acbf091f32c",
       "module": "Aglib.KTheory.MilnorK.K2.DVR.Uniformizer",
-      "sha256": "33d8a0d1c7eeaf2934c510616e2d8e8851eda1e4765883143a8c8094be2a0a4c"
+      "sha256": "7730954d43513beae88d32f58a0b4179a84a77699528311c34f16b6763222551",
+      "previous_destination_sha256": "33d8a0d1c7eeaf2934c510616e2d8e8851eda1e4765883143a8c8094be2a0a4c"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.DegreeBound",
@@ -1455,25 +1458,29 @@
       "source_module": "Motivic.KTheory.MilnorK2.Map",
       "source_sha256": "6cb9c8f3c71a3f9f9439bdd8b05e864612dfd4dc667a57b1eec71d41abd3c949",
       "module": "Aglib.KTheory.MilnorK.K2.Map",
-      "sha256": "7dcebafc05fe91892583bec54d71969ce43645a56a9f71ce488576bb7b2cd016"
+      "sha256": "3ccfef2462abd4057181fe5a0b3efbdc109aeebd666e6301f6cdfb9cfe949bea",
+      "previous_destination_sha256": "7dcebafc05fe91892583bec54d71969ce43645a56a9f71ce488576bb7b2cd016"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.Residue",
       "source_sha256": "d2e68a8419aeb96cfeab99ed7b799656a900ca3544d465c86123a07205818077",
       "module": "Aglib.KTheory.MilnorK.K2.Residue",
-      "sha256": "c64bdeb41d4975bf68b008233e09f4a1c3e0985eca678afd96919eb91fccb5c1"
+      "sha256": "ba8eff79bc211218fe051b2e2d23ac2de819f1eed7c396ee2871a7e1765bd556",
+      "previous_destination_sha256": "c64bdeb41d4975bf68b008233e09f4a1c3e0985eca678afd96919eb91fccb5c1"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.Specialization",
       "source_sha256": "205b414d9eb24920ae8d117d250391951ff4eb2f1dbd6cb417462051099123f4",
       "module": "Aglib.KTheory.MilnorK.K2.Specialization",
-      "sha256": "2ee3fa8f72d7bb7c27ed2dc5f997a3da855856b76a949d3d95b231833f94ede2"
+      "sha256": "a61e6a943bf5024d6e1a4eca485b2b3f2ab54b7e3527a8914d6f4f145d2f8434",
+      "previous_destination_sha256": "2ee3fa8f72d7bb7c27ed2dc5f997a3da855856b76a949d3d95b231833f94ede2"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK2.Symbols",
       "source_sha256": "07f750ebe7c9bdb3a5b9cd87f6d2d9818582ebe22c398271e76dde873ea7ffae",
       "module": "Aglib.KTheory.MilnorK.K2.Symbols",
-      "sha256": "ba83b4bd19170d03b53dbf9de663e53515c2339cab7f806b8feebb2e9c242e13"
+      "sha256": "b6de78a312d19582db447e2ba50b64b09f843b989f5f5a481de0a664ea8340e5",
+      "previous_destination_sha256": "ba83b4bd19170d03b53dbf9de663e53515c2339cab7f806b8feebb2e9c242e13"
     },
     {
       "source_module": "Motivic.KTheory.MilnorK3.DVR",
@@ -1675,7 +1682,7 @@
     "purpose": "Remove the Milnor dependency of the generic power-series constant-closure construction.",
     "sha256": "b4923b29ab11f9b4c06ed9a1ebb0851ef2d2578e7a36d79f966c05c54b92a649"
   },
-  "license_exceptions": "Seven degree-two source leaves retain the original no-declared-license notices; see THIRD_PARTY_NOTICES.md.",
+  "license": "Apache-2.0",
   "acceptance_boundary": "Source relocation and namespace correspondence; no new mathematical theorem or strengthened hypothesis is asserted.",
   "tests": [
     {
@@ -2765,8 +2772,8 @@
     "Forty-two named lemmas retain their statements and proofs with redundant or non-normal-form simp registration removed.",
     "Six missing declaration docstrings and two public FinCases imports satisfy current source policies.",
     "Moved tests select declarations by their actual defining Aglib module independently from the mathematical declaration namespace; private-origin inventories are retained.",
-    "The seven third-party K2 license notices remain verbatim.",
-    "The inherited DegreeReduction and DegreeBound headers now credit kangxyz. Their mathematical bodies are exact; the seven original extraction/license notices are unchanged."
+    "Original R5 source URLs, Git blobs and source hashes are retained in the module documentation.",
+    "The inherited DegreeReduction and DegreeBound headers credit kangxyz, and their mathematical bodies are exact. The seven K2 implementation headers use the standard Apache-2.0 license and kangxyz author credit."
   ],
   "validation": {
     "scope": "Incremental final validation of the migration; no whole-library replay or new mathematical status.",
@@ -2788,7 +2795,7 @@
       "unaffected_prior_successes_retained": 23,
       "independent_client": "Consumer.MilnorK passed against final provider artifacts."
     },
-    "tooling": "34 source-guard fixtures passed, including exact general Milnor admission and copyright author credit while preserving third-party notices. The full 1771-file production/positive header inventory leaves no missing standard author credits. Existing layout, placeholder and changed-file text-style evidence remains applicable.",
+    "tooling": "34 source-guard fixtures passed, including exact general Milnor admission and copyright author credit. The full 1771-file production/positive header inventory leaves no missing standard author credits. The layout, placeholder and changed-file text-style results retain their original migration source basis.",
     "evidence_sha256": {
       "repair-result.json": "4ef1b8df9e49839bacc60fe0628d170c8444598503c524e7e1e92187f1b0fec4",
       "declaration-audit-1.json": "ee3f33a60e85c8b9542c25877b915780e3941517204b79b7daa45452f1e6594d",

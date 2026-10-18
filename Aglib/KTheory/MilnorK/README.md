@@ -51,8 +51,7 @@ Motivic consumes these objects for diagonal and weight-two comparisons. Its
 downstream with the original geometric cycle objects.
 
 [Source correspondence](../../../doc/migration/motivic-milnor-k.json) records
-the admitted modules and reused native interfaces. The seven inherited K₂
-source exceptions retain the [original notices](../../../THIRD_PARTY_NOTICES.md).
+the admitted modules and reused native interfaces.
 Original identifiers in retained source comments refer to that source snapshot;
 the declarations and import table above give the current API. This relocation
 changes ownership and names, not mathematical hypotheses.
