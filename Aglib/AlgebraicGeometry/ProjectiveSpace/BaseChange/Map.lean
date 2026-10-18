@@ -13,7 +13,8 @@ public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Functor
 
 The morphism is Mathlib's `Proj.map` of the native graded polynomial coefficient
 map. Its identity, composition and exact inverse images of standard coordinate
-opens are proved over arbitrary commutative rings.
+opens are proved over arbitrary commutative rings. Two factorizations of one ring
+map give the same composite (`map_comp_map_eq_of_comp_eq`).
 -/
 
 @[expose] public section
@@ -48,6 +49,14 @@ theorem map_comp (g : S →+* T) (f : R →+* S) (ι : Type u) :
   simpa only [map, MvPolynomial.gradedMap_comp] using
     (Proj.map_comp (MvPolynomial.gradedMap (ι := ι) f) (MvPolynomial.gradedMap g)
       (MvPolynomial.irrelevant_map_gradedMap f).ge (MvPolynomial.irrelevant_map_gradedMap g).ge)
+
+/-- Projective coefficient maps of two factorizations of one ring map agree:
+`g.comp f = g'.comp f'` gives `map g ι ≫ map f ι = map g' ι ≫ map f' ι`. -/
+theorem map_comp_map_eq_of_comp_eq {A : Type u} [CommRing A] (ι : Type u)
+    {B B' C : Type u} [CommRing B] [CommRing B'] [CommRing C] {f : A →+* B} {g : B →+* C}
+    {f' : A →+* B'} {g' : B' →+* C} (h : g.comp f = g'.comp f') :
+    map g ι ≫ map f ι = map g' ι ≫ map f' ι := by
+  rw [← map_comp, h, map_comp]
 
 /-- The inverse image of an original standard coordinate chart is exactly the same chart
 over the new coefficient ring. -/

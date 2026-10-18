@@ -26,3 +26,11 @@ its complementary projection, while `sourceRetractOfGeneralizedInverse`
 expresses the source as a retract of the kernel plus the target. The
 kernel-preservation proof uses this same implementation. These actual
 retractions also supply the projectivity criterion in the abelian family.
+
+[WidePullbacks](WidePullbacks.lean) proves
+`CategoryTheory.Limits.WidePullback.exists_lift_base_iff`: a morphism to the
+base factors through the wide pullback of a family of arrows if and only if it
+factors through every member, and `WidePullback.mono_base`: the base of a wide
+pullback of monomorphisms is a monomorphism. Only existence of the wide
+pullback is assumed. The consumer is the joint rank stratification of the
+[flattening stratification](../../../AlgebraicGeometry/FlatteningStratification/README.md).

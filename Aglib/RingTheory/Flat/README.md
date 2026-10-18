@@ -26,3 +26,12 @@ The external `work/proper-validation/FlatExactConsumer.lean` checks both native
 interfaces in independent scalar/source/target universes and passed with receipt
 `1792086931469921000-29690`. The inspected proofs use only `propext`,
 `Classical.choice` and `Quot.sound`.
+
+[EquationalCriterion](EquationalCriterion.lean), imported as
+`Aglib.RingTheory.Flat.EquationalCriterion`, proves
+`Module.Flat.of_forall_exists_lift_relation`: a module is flat if every finite
+relation `∑ fᵢ xᵢ = 0` lifts, through a linear map from one module of a family
+of flat modules, to a relation among preimages of the `xᵢ`. The proof is a
+corollary of Mathlib's equational criterion (Stacks Project, Tag 00HK). The
+consumer is the flatness of chart sections in Nitsure's Lemma 3.2,
+`AlgebraicGeometry/Cohomology/Projective/FlatOfSections`.

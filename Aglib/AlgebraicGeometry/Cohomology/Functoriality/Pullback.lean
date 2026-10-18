@@ -118,7 +118,26 @@ def structureCohomologyPullback (n : ℕ) :
     Sheaf.H.{u + 1} (structureAddSheaf Y) n →+ Sheaf.H.{u + 1} (structureAddSheaf X) n :=
   zariskiCohomologyMap f _ _ (structurePullbackMap f) n
 
-/-- Naturality in the coefficient morphisms of the actual inverse-image map. -/
+/-- The actual inverse-image cohomology map is natural in its coefficient sheaves: a commuting
+coefficient square gives a commuting square on cohomology. -/
+theorem zariskiCohomologyMap_map
+    {A A' : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u}}
+    {B B' : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}}
+    (a : (zariskiPullback f).obj A ⟶ B) (a' : (zariskiPullback f).obj A' ⟶ B')
+    (α : A ⟶ A') (β : B ⟶ B') (h : (zariskiPullback f).map α ≫ a' = a ≫ β)
+    (n : ℕ) (x : Sheaf.H.{u + 1} A n) :
+    zariskiCohomologyMap f A' B' a' n (Sheaf.H.map α n x) =
+      Sheaf.H.map β n (zariskiCohomologyMap f A B a n x) := by
+  change ((Abelian.Ext.mk₀ _).comp
+      ((x.comp (Abelian.Ext.mk₀ α) (Nat.add_zero n)).mapExactFunctor (zariskiPullback f))
+        (Nat.zero_add n)).comp (Abelian.Ext.mk₀ a') (Nat.add_zero n) =
+    (((Abelian.Ext.mk₀ _).comp (x.mapExactFunctor (zariskiPullback f)) (Nat.zero_add n)).comp
+      (Abelian.Ext.mk₀ a) (Nat.add_zero n)).comp (Abelian.Ext.mk₀ β) (Nat.add_zero n)
+  simp only [Abelian.Ext.mapExactFunctor_comp, Abelian.Ext.mapExactFunctor_mk₀,
+    Abelian.Ext.comp_assoc_of_third_deg_zero, Abelian.Ext.mk₀_comp_mk₀, h]
+
+/-- Naturality in the coefficient morphisms of the actual inverse-image map; the endomorphism
+case of `zariskiCohomologyMap_map`. -/
 theorem zariskiCohomologyMap_naturality
     (A : Sheaf (Opens.grothendieckTopology Y) AddCommGrpCat.{u})
     (B : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
@@ -126,14 +145,8 @@ theorem zariskiCohomologyMap_naturality
     (h : (zariskiPullback f).map α ≫ a = a ≫ β)
     (n : ℕ) (x : Sheaf.H.{u + 1} A n) :
     zariskiCohomologyMap f A B a n (Sheaf.H.map α n x) =
-      Sheaf.H.map β n (zariskiCohomologyMap f A B a n x) := by
-  change ((Abelian.Ext.mk₀ _).comp
-      ((x.comp (Abelian.Ext.mk₀ α) (Nat.add_zero n)).mapExactFunctor (zariskiPullback f))
-        (Nat.zero_add n)).comp (Abelian.Ext.mk₀ a) (Nat.add_zero n) =
-    (((Abelian.Ext.mk₀ _).comp (x.mapExactFunctor (zariskiPullback f)) (Nat.zero_add n)).comp
-      (Abelian.Ext.mk₀ a) (Nat.add_zero n)).comp (Abelian.Ext.mk₀ β) (Nat.add_zero n)
-  simp only [Abelian.Ext.mapExactFunctor_comp, Abelian.Ext.mapExactFunctor_mk₀,
-    Abelian.Ext.comp_assoc_of_third_deg_zero, Abelian.Ext.mk₀_comp_mk₀, h]
+      Sheaf.H.map β n (zariskiCohomologyMap f A B a n x) :=
+  zariskiCohomologyMap_map f a a α β h n x
 end AlgebraicGeometry.Scheme.Cohomology
 namespace AlgebraicGeometry.Scheme.Cohomology
 open AlgebraicGeometry.Scheme.OverField

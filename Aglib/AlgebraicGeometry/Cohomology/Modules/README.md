@@ -40,6 +40,8 @@ Its forward and inverse maps are exactly the existing
 `moduleCohomologyMapOfHom` applied to the original coefficient isomorphism
 and its inverse. The application formulas are literal identities on the
 unchanged additive `Sheaf.H`; no extra hypothesis is needed.
+`bijective_sheafH_map_of_iso` records that the additive coefficient map of a
+module-sheaf isomorphism is bijective in every degree.
 
 [Sections](Sections.lean) owns `moduleSectionsPresheaf` and its coefficient
 functor before any Cech or cohomology comparison. These are the native section

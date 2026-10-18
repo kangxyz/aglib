@@ -16,6 +16,11 @@ each open. On the structure module this is the original `unitMul`.
 for a specified map to global functions; it remains explicit to distinguish
 different structural maps. Its sectionwise formulas retain the original
 restriction and module action. Ring and scheme universes may differ.
+`unitHomGlobalSectionsLinearEquivOfHom X α M` identifies morphisms from the
+structure module with the global sections `M(⊤)`, linearly over `α` (with
+`Module.compHom` on `M(⊤)`); the forward map is evaluation on one. Its
+consumer is Nitsure's Lemma 3.2 through
+[ProjectiveSpace/Tensor/Equivalence/Hom](../ProjectiveSpace/Tensor/Equivalence/Hom.lean).
 
 [InternalHom](InternalHom.lean) is the generic `Scheme.Modules.InternalHom` of actual structure-linear maps between restrictions. Its `sectionHomEquiv` identifies sections with the actual restricted module-sheaf morphisms. It lies below invertible sheaves and has no rank-one hypothesis. The
 [restriction and gluing guide](InternalHom/README.md) gives literal native

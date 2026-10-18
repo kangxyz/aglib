@@ -54,6 +54,7 @@ public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.EventuallyIsoC
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.IsoColimit
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit
+public import Aglib.CategoryTheory.Limits.Shapes.WidePullbacks
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced

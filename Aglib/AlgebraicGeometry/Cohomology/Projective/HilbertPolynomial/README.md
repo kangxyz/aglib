@@ -107,11 +107,34 @@ lemmas; the smul-left lemma `moduleTensorSection_smul_left` already lives in
 `Modules/Tensor/Stalk/Bilinear.lean`) and `ProjectiveSpace/Tensor` (the killing class; twist
 multiplication `twistingTensorMultiply` already lives in `ProjectiveSpace/Tensor/Monoidal/Multiply`).
 
-Local constancy of the Hilbert polynomial in flat projective families is not
-proved here. The fibre over `p` is already identified with
-`ProjectiveSpace κ(p) ι` by `ProjectiveSpace.baseChangeIso`
-(`ProjectiveSpace/BaseChange/Cartesian.lean`), and the twisting sheaves pull back to the
-twisting sheaves along every coefficient base change (`ProjectiveSpace.twistingPullbackIso`,
-`ProjectiveSpace/BaseChange/Twisting.lean`). `FieldBaseChange` transports cohomology dimensions
-along field extensions only. Still missing here are the transport of cohomology dimensions
-along `R → κ(p)` and the relative flatness of the twists.
+`Fiber` identifies the fibre cohomology dimensions of `P_A → Spec A` over a prime `p`, computed
+on the native fibre product, with the dimensions of the cohomology of `π^* M` on
+`ProjectiveSpace κ(p) ι`, for `π = ProjectiveSpace.map (algebraMap A κ(p)) ι`
+(`moduleFiberCohomologyDimension_toSpec`, an equality of `finrank`s;
+`moduleFiberEulerChar_toSpec`). No hypothesis on `A`, `ι` or `M` is needed. The transport is
+`finrank_moduleCohomology_eq_of_isIso` (`Cohomology/Functoriality/Modules/Isomorphism`) along
+`baseChangeIso`, with the coefficient comparison `toSpecFiberCoefficientIso`. For twists the
+fibre Euler characteristic is the fibre Hilbert function
+(`moduleFiberEulerChar_twistingTensor_toSpec`, via `twistingTensorPullbackIso`). For
+`[Finite ι]` and quasicoherent `F`, fibre Hilbert polynomials are unchanged by base change
+(`projectiveHilbertPolynomial_fiber_pullback_map`), from `projectiveHilbertFunction_pullback_map`
+of `FieldBaseChange` (same conditions) and `ProjectiveSpace.map_comp_map_eq_of_comp_eq`.
+
+`FlatFamily`: let `A` be Noetherian, `ι ≃ Fin (n + 1)`, and `F` coherent and `relativeFlat` over
+`Spec A`. Then:
+- `s ↦ χ(F_s(m))` is locally constant for every `m`
+  (`isLocallyConstant_projectiveHilbertFunction_fiber`; Nitsure Thm 3.7 (2), p. 17; Stacks 0B9T);
+- `s ↦ projectiveHilbertPolynomial κ(s) ι F_s` is locally constant
+  (`isLocallyConstant_projectiveHilbertPolynomial_fiber`), by
+  `TopologicalSpace.NoetherianSpace.isLocallyConstant_pi` (`Topology/NoetherianSpace`);
+- on a preconnected `Spec A` (`PreconnectedSpace (PrimeSpectrum A)`) one `Φ` serves every fibre
+  (`projectiveHilbertPolynomial_fiber_eq_of_preconnectedSpace`,
+  `exists_projectiveHilbertPolynomial_fiber_eq_of_preconnectedSpace`).
+
+`Finiteness`: for `A` Noetherian, `ι ≃ Fin (n + 1)` and any coherent `F`, flat or not, only
+finitely many fibre Hilbert polynomials occur (`finite_range_projectiveHilbertPolynomial_fiber`;
+Nitsure Thm 4.3, first assertion, p. 19: (A) in the proof, pp. 20–21, over an affine Noetherian
+base). The proof is Noetherian induction
+(`TopologicalSpace.NoetherianSpace.finite_range_of_isIrreducible`) with generic flatness on
+`Spec (A ⧸ p)_a` (`exists_ne_zero_relativeFlat_pullback_away`, `[Finite ι]`; Stacks 052A). A
+non-affine Noetherian base needs the gluing G0.

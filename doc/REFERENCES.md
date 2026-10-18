@@ -154,6 +154,11 @@ inspected and lists no journal reference. Its §2 gives the definition of `m`-re
 the restriction to a general hyperplane (pp. 9–10), Lemma 2.1 (pp. 10–11), Remark 2.2 and
 Theorem 2.3 (p. 11) with its proof (pp. 12–13); `Cohomology/Projective/Regularity` cites these
 pages of the v1 PDF. The family README records where the formal route departs from p. 13.
+Its §3, Lemmas 3.1 and 3.2 (pp. 13–15) with Theorem 3.7 (pp. 17–18), and §4, Lemma 4.1 to
+Theorem 4.3 (pp. 18–23), are cited by `Cohomology/Projective`, `FlatteningStratification`,
+`Modules/Flat/Generic` and `Modules/Flat/Relative`, `RingTheory/GenericFreeness`,
+`RingTheory/FittingIdeal` and `Topology/NoetherianSpace`; the module documentation of
+`LargeTwistBaseChange` records the gap and misprints on p. 14.
 
 David Mumford's
 [*Lectures on Curves on an Algebraic Surface*](https://press.princeton.edu/books/paperback/9780691079936/lectures-on-curves-on-an-algebraic-surface),

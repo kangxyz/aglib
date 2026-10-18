@@ -18,7 +18,9 @@ isomorphism and an invertible module coefficient arrow. Consequently the
 original `moduleCohomologyMapAlong` and ordinary module-pullback maps are
 bijective. The proofs use the existing additive cohomology theorem and
 the native module adjunction unit, with no quasicoherence or finiteness
-hypothesis and no new cohomology map.
+hypothesis and no new cohomology map. Over a field, cohomology dimensions
+transport along a scheme isomorphism over `Spec k`
+(`finrank_moduleCohomology_eq_of_isIso`).
 -/
 
 @[expose] public section
@@ -104,5 +106,36 @@ theorem moduleCohomologyRestrictionIsoOfPullbackIso_hom_apply
       moduleCohomologyMapAlong f
         ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.app M ≫
           (Scheme.Modules.pushforward f).map C.hom) q x := rfl
+
+end AlgebraicGeometry.Scheme.Cohomology
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+/-- **Cohomology dimensions transport along an isomorphism over a field.** Let `e : P ⟶ Y` be an
+isomorphism of schemes over `Spec k` (`e ≫ b = t`) and `C : e^* M ≅ N`. The original cohomology
+of `M` on `Y` and of `N` on `P`, with the structural `k`-actions through `b` and `t`, have the
+same dimension in every degree. -/
+theorem finrank_moduleCohomology_eq_of_isIso {k : Type u} [Field k] {P Y : Scheme.{u}}
+    (e : P ⟶ Y) [IsIso e] (b : Y ⟶ Spec (CommRingCat.of k)) (t : P ⟶ Spec (CommRingCat.of k))
+    (w : e ≫ b = t) (M : Y.Modules) {N : P.Modules}
+    (C : (Scheme.Modules.pullback e).obj M ≅ N) (q : ℕ) :
+    @Module.finrank k (Sheaf.H.{u + 1} (moduleAddSheaf Y M) q) _ _
+        (moduleCohomologyModuleOfHom Y
+          (b.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom) M q) =
+      @Module.finrank k (Sheaf.H.{u + 1} (moduleAddSheaf P N) q) _ _
+        (moduleCohomologyModuleOfHom P
+          (t.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom) N q) := by
+  have h : e.appTop.hom.comp
+        (b.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom) =
+      (t.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom).comp (RingHom.id k) := by
+    subst w
+    rw [Scheme.Hom.comp_appTop]
+    rfl
+  let := moduleCohomologyModuleOfHom Y
+    (b.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom) M q
+  let := moduleCohomologyModuleOfHom P
+    (t.appTop.hom.comp (Scheme.ΓSpecIso (CommRingCat.of k)).inv.hom) N q
+  exact (moduleCohomologyRestrictionIsoOfPullbackIso e (RingHom.id k) _ _ h M C q ≪≫
+    ModuleCat.restrictScalarsId'App (RingHom.id k) rfl _).toLinearEquiv.finrank_eq
 
 end AlgebraicGeometry.Scheme.Cohomology

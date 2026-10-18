@@ -2,6 +2,10 @@
 
 [Pullback](Pullback.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Functoriality.Pullback`, constructs `AlgebraicGeometry.Scheme.Cohomology.zariskiCohomologyMap` using exact inverse image and an actual coefficient map. It proves coefficient naturality on the original additive `Sheaf.H`.
 
+`zariskiCohomologyMap_map` states this naturality for any commuting
+coefficient square; `zariskiCohomologyMap_naturality` is its endomorphism
+case.
+
 `structureCohomologyPullbackLinear` is linear for a morphism over the structural field. `structureCohomologyPullbackSemilinear` retains the actual compatible field-change square and gives the corresponding semilinear map. Constant-section and scalar compatibility identify the field action; no new general theorem-family premise is used.
 
 [Isomorphism](Isomorphism.lean) gives bijectivity for an actual scheme isomorphism and the native `structureCohomologyIso`. The maps are the original cohomology pullback maps, with H0 normalization supplied by the coefficient/H0 and base-change comparisons.
@@ -27,7 +31,8 @@ coefficient mate's Hom-adjunction formula, coefficient pre/postcomposition,
 composition through the native inverse-image comparison, and transport
 along equal scheme morphisms with the actual direct-image comparison. These
 equations preserve the specified module arrows and have no geometric
-flatness or quasicoherence premise.
+flatness or quasicoherence premise. Consequently `moduleCohomologyPullback_map`:
+geometric module pullback on cohomology is natural in the coefficient module.
 
 [Pushforward](Pushforward.lean) defines the original `Scheme.Modules.derivedPushforwardPlus` and its unit. [PushforwardComposition](PushforwardComposition.lean) gives the actual D+ composition isomorphism for scheme morphisms and its original unit equation; [PushforwardSection](PushforwardSection.lean) gives the one-sided comparison for a supplied section/projection composite identity.
 
@@ -48,4 +53,7 @@ invertible coefficient arrow, including the original module-pullback unit.
 scalars and an actual ordinary pullback-coefficient isomorphism; its forward
 arrow is the same original geometric map. No quasicoherence, Noetherianity
 or finiteness is assumed. The [point-fibre coordinate comparison](../Fibers/Affine.lean)
-uses this interface.
+uses this interface. Over a field `k`, `finrank_moduleCohomology_eq_of_isIso`
+transports cohomology dimensions along a scheme isomorphism over `Spec k` and a
+coefficient isomorphism `e^* M ≅ N`; the fibre Hilbert polynomials of projective
+space consume it.

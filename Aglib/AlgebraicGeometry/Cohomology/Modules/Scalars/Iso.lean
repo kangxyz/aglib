@@ -11,7 +11,8 @@ public import Aglib.AlgebraicGeometry.Cohomology.Modules.Scalars
 
 An actual module-sheaf isomorphism induces the original coefficient maps in
 both directions on unchanged `Sheaf.H`. Their structural linearity is the
-existing coefficient linearity; functoriality proves the inverse equations.
+existing coefficient linearity; functoriality proves the inverse equations. In particular the
+additive coefficient map of an isomorphism is bijective (`bijective_sheafH_map_of_iso`).
 -/
 
 @[expose] public section
@@ -72,5 +73,14 @@ theorem moduleCohomologyIsoOfHom_inv_apply (e : M ≅ N) (n : ℕ)
     letI := moduleCohomologyModuleOfHom X α N n
     (moduleCohomologyIsoOfHom X α e n).inv x =
       Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map e.inv) n x := rfl
+
+end AlgebraicGeometry.Scheme.Cohomology
+
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+/-- An isomorphism of modules induces bijections on sheaf cohomology. -/
+theorem bijective_sheafH_map_of_iso {X : Scheme.{u}} {M N : X.Modules} (e : M ≅ N) (q : ℕ) :
+    Function.Bijective (Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map e.hom) q) :=
+  (moduleCohomologyIsoOfHom X (RingHom.id Γ(X, ⊤)) e q).toLinearEquiv.bijective
 
 end AlgebraicGeometry.Scheme.Cohomology

@@ -110,3 +110,9 @@ info: 'AlgebraicGeometry.ProjectiveSpace.twistingTensorPullbackIso'
 -/
 #guard_msgs (whitespace := lax) in
 #print axioms AlgebraicGeometry.ProjectiveSpace.twistingTensorPullbackIso
+
+/--
+info: 'AlgebraicGeometry.ProjectiveSpace.twistingTensorPullbackIso_hom_naturality' depends on axioms: [propext, Classical.choice, Quot.sound]
+-/
+#guard_msgs (whitespace := lax) in
+#print axioms AlgebraicGeometry.ProjectiveSpace.twistingTensorPullbackIso_hom_naturality

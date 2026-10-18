@@ -10,3 +10,13 @@ These subjects precede scheme-specialized module and cohomological-dimension arg
 natural-valued functions with locally constant sum are individually locally
 constant. It is the pure numerical input for the reduced local Grauert
 criterion on original module-complex homology.
+
+[NoetherianSpace](NoetherianSpace.lean) proves that on a Noetherian space any
+family of locally constant functions, indexed by an arbitrary type, is jointly
+locally constant (`TopologicalSpace.NoetherianSpace.isLocallyConstant_pi`), and
+Noetherian induction for finite images
+(`TopologicalSpace.NoetherianSpace.finite_range_of_isIrreducible`): if every
+irreducible closed subset meets an open set with finite image, the function has
+finite range. Its present consumers are the fibre Hilbert polynomial leaves
+`Cohomology/Projective/HilbertPolynomial/FlatFamily` and
+`Cohomology/Projective/HilbertPolynomial/Finiteness`.

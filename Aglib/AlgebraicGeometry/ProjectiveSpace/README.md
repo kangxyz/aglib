@@ -90,6 +90,24 @@ summand's multiplication map. Applying exact tensor to the proved two-step
 presentation proves that twisting preserves actual coherent modules over
 Noetherian bases.
 
+`Tensor.Flat` proves that twisting preserves relative flatness over any base
+(`twistingTensor_relativeFlat`; `𝒪(d)` is trivial on every standard chart), and that every
+twisting sheaf and every sum of twisting sheaves is relatively flat over `Spec R`
+(`twistingSheaf_relativeFlat`, `twistingCoproduct_relativeFlat`), from `flat_toSpec` and
+`Scheme.Modules.relativeFlat_unit_of_flat` (`Modules/Flat/Relative/Unit`).
+`Tensor.Equivalence.Hom` identifies morphisms `𝒪(-d) ⟶ M` with the global sections of
+`𝒪(d) ⊗ M`, linearly over any structural ring map (`negativeTwistHomLinearEquivSections`),
+through `twistingTensorNegIso : 𝒪(d) ⊗ 𝒪(-d) ≅ 𝒪` and
+`Scheme.Modules.unitHomGlobalSectionsLinearEquivOfHom`. It is a different map from
+`twistingGlobalSectionsHomLinearEquivOfHom` of `Hom.Linear`, which identifies morphisms between
+twists with sections by multiplication; it is not a duplicate.
+
+[Flat](Flat.lean): `toSpec R ι` is flat (`flat_toSpec`, an instance) for every ring and
+coordinate type. On each standard chart it is the spectrum of the chart coefficient map, which
+is flat (`flat_coordinateRingCoefficient`), being the inclusion of `R` into a polynomial ring.
+Coefficient base change along a flat ring map is flat by `BaseChange/Flat` (`flat_map`); the
+two leaves are independent.
+
 `Aglib.AlgebraicGeometry.ProjectiveSpace.GlobalGeneration` proves that the
 original global sections `Xᵢ^n` define an epimorphism from the free structure
 module on `ι` onto `O(n)` for every `n ≥ 0`. Its evaluation on each original
@@ -116,6 +134,20 @@ coordinates are required. Finite twist presentations use this extension
 for finite local generating families. `SectionExtension.Bounds` composes
 with multiplication by `Xᵢ^(N-N₀)` to extend the same generator from every
 `O(-N)` with `N ≥ N₀`; the selected-chart coefficient remains exactly `1`.
+
+`SectionExtension.Colimit` proves the other half of the chart colimit
+([Stacks 01PW](https://stacks.math.columbia.edu/tag/01PW), Hartshorne II.5.14). Suppose a
+morphism `O(-r) → M` vanishes on the generator of the selected chart. Then its precomposition
+with `Xᵢ^(N-r)` is zero for all large `N` (`exists_negativeTwistCoordinatePowerMap_comp_eq_zero`;
+`twistingGenerator_eq_zero_iff_exists_comp_eq_zero` is the iff form, for some `N`). The proof
+applies the chart annihilation on every chart and uses one exponent for all charts. On another
+chart `j`, the coordinate-power map multiplies the frame coefficient by `(Xᵢ/Xⱼ)^(N-r)`. These
+maps compose (`negativeTwistCoordinatePowerMap_comp`, `_self`), so the groups `Hom(O(-r), M)`
+form a directed system, linear over any structural ring map.
+`negativeTwistHomDirectLimitLinearEquiv` identifies its `Module.DirectLimit` with
+`Γ(D₊(Xᵢ), M)` by chart evaluation. Only quasicoherence and finite coordinates are required. The
+transport to the direct limit of `Γ(P, M(r))` under multiplication by `Xᵢ`, through
+`negativeTwistHomLinearEquivSections`, is not formalized.
 
 `TwistPresentation.Sections` proves that every affine-locally finite-type
 module on finite-coordinate projective space admits finitely many actual

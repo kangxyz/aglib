@@ -19,7 +19,8 @@ sheaf `O(d)` on `P_R` pulls back along `π = ProjectiveSpace.map φ ι : P_S ⟶
 pulled-back frame `Xᵢ^d` to the frame `Xᵢ^d` (`twistingPullbackIso_hom_generator`); on sections,
 its inverse multiplies the frame coefficient by the pulled-back frame
 (`twistingPullbackIso_inv_app`). Consequently pullback commutes with twisting,
-`π^*(O_R(d) ⊗ M) ≅ O_S(d) ⊗ π^* M` (`twistingTensorPullbackIso`).
+`π^*(O_R(d) ⊗ M) ≅ O_S(d) ⊗ π^* M` (`twistingTensorPullbackIso`), naturally in `M`
+(`twistingTensorPullbackIso_hom_naturality`).
 
 The proof applies the gluing pullback `UnitCocycle.pullbackIso`. The inverse images of the
 standard charts are the standard charts (`map_preimage_coordinateOpen`), and the transition unit
@@ -211,5 +212,40 @@ theorem twistingTensorPullbackIso_hom (φ : R →+* S) (ι : Type u) (d : ℤ)
         (moduleTensorCoefficientMap (ProjectiveSpace S ι) (twistingPullbackIso φ ι d).hom).app
           ((Scheme.Modules.pullback (map φ ι)).obj M) :=
   rfl
+
+section Naturality
+
+variable {A B : Type u} [CommRing A] [CommRing B]
+
+-- `X.Modules` is `SheafOfModules X.ringCatSheaf` with a `TopCat.Sheaf` of rings; rewriting in it
+-- needs the Grothendieck-topology presentation of that sheaf, which is not reducible.
+set_option backward.isDefEq.respectTransparency false in
+/-- Twisting commutes with base change, naturally in the module (`twistingTensorPullbackIso`). -/
+@[reassoc]
+theorem twistingTensorPullbackIso_hom_naturality (σ : A →+* B) (ι : Type u) (d : ℤ)
+    {M M' : (ProjectiveSpace A ι).Modules} (u : M ⟶ M') :
+    (Scheme.Modules.pullback (map σ ι)).map
+        ((moduleTensorLeftFunctor (ProjectiveSpace A ι) (twistingSheaf A ι d)).map u) ≫
+      (twistingTensorPullbackIso σ ι d M').hom =
+    (twistingTensorPullbackIso σ ι d M).hom ≫
+      (moduleTensorLeftFunctor (ProjectiveSpace B ι) (twistingSheaf B ι d)).map
+        ((Scheme.Modules.pullback (map σ ι)).map u) := by
+  rw [twistingTensorPullbackIso_hom, twistingTensorPullbackIso_hom]
+  have h₁ : (moduleTensorLeftFunctor (ProjectiveSpace A ι) (twistingSheaf A ι d)).map u =
+      tensorSheafMap (ProjectiveSpace A ι) (𝟙 (twistingSheaf A ι d)) u := rfl
+  have h₂ : tensorSheafMap (ProjectiveSpace B ι)
+        ((Scheme.Modules.pullback (map σ ι)).map (𝟙 (twistingSheaf A ι d)))
+        ((Scheme.Modules.pullback (map σ ι)).map u) =
+      (moduleTensorLeftFunctor (ProjectiveSpace B ι)
+        ((Scheme.Modules.pullback (map σ ι)).obj (twistingSheaf A ι d))).map
+        ((Scheme.Modules.pullback (map σ ι)).map u) := by
+    rw [CategoryTheory.Functor.map_id]
+    rfl
+  rw [h₁, pullbackTensorMap_naturality_assoc, h₂]
+  exact congrArg (fun k => pullbackTensorMap (map σ ι) (twistingSheaf A ι d) M ≫ k)
+    ((moduleTensorCoefficientMap (ProjectiveSpace B ι)
+      (twistingPullbackIso σ ι d).hom).naturality ((Scheme.Modules.pullback (map σ ι)).map u))
+
+end Naturality
 
 end AlgebraicGeometry.ProjectiveSpace

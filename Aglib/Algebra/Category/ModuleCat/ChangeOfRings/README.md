@@ -13,6 +13,12 @@ family consumes these native module statements by public import.
 
 [Exactness](Exactness.lean), imported as `Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness`, gives `ModuleCat.shortExact_of_restrictScalars`. An actual module short complex is short exact when its restriction along the supplied ring homomorphism is short exact. Source and target are rings; this lower statement has no scheme or commutativity premise merely from its geometric consumers.
 
+`ModuleCat.extendScalars_map_exact_of_surjective`, in the same leaf, proves
+right exactness of scalar extension along a map of commutative rings: it
+preserves exactness of `M₁ → M₂ → M₃ → 0`, as left tensoring through
+`φ.toAlgebra`. Nitsure's Lemma 3.1
+(`AlgebraicGeometry/Cohomology/Projective/LargeTwistBaseChange`) consumes it.
+
 The underlying maps are the original module maps. Tensor/direct-image and scalar comparison arguments use this reflection after constructing their actual coefficient action. Restriction does not supply an unstated finite-generation or Noetherian property.
 
 [Additive](Additive.lean) proves additivity of the native `extendScalars` functor
@@ -37,6 +43,12 @@ commutative square, is shared by geometric Cech base change. Exactness is used
 only in the homology formulas; the original unit itself needs no flatness.
 
 [BaseChange](BaseChange.lean), imported as `Aglib.Algebra.Category.ModuleCat.ChangeOfRings.BaseChange`, defines `ModuleCat.scalarBaseChangeMap` for a commuting square of commutative-ring maps `R → S`, `R → T`, `S → P`, `T → P`. For an arbitrary `S`-module `M`, this is the original scalar-adjunction mate from `T ⊗[R] M` to `P ⊗[S] M`, with the displayed scalar restrictions. `scalarBaseChangeMap_unit` and `scalarBaseChangeMap_one_tmul` retain its original units and the literal unit-tensor formula. `scalarBaseChangeMap_isIso_of_isPushout` identifies the actual map with the inverse native `Algebra.IsPushout.cancelBaseChange` equivalence and proves invertibility on every module over a commutative-ring pushout. No flatness, Noetherianity or finite-generation hypothesis is used. The [affine geometric comparison](../../../../AlgebraicGeometry/Modules/BaseChange/README.md) consumes this exact map.
+
+The same cancellation gives `ModuleCat.flat_extendScalars_of_isPushout`
+(Stacks Project, Tag 00HI): for a pushout square of commutative rings and a
+module flat over the base, its scalar extension is flat over the other corner.
+Base change of relative flatness (`AlgebraicGeometry/Modules/Flat/Relative/BaseChange`)
+consumes it.
 
 [Homology/Composition](Homology/Composition.lean) proves composition of
 the original homology mates through the native scalar-extension

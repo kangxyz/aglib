@@ -14,7 +14,9 @@ public import Aglib.Topology.Sheaves.FreeAbelianPullback.Composition
 The native inverse-image coefficient adjoint to a module direct-image arrow
 commutes with coefficient maps and composition. All comparisons use the
 original module direct-image composition and the native additive pullback
-adjunction. There is no flatness or quasicoherence premise.
+adjunction. Consequently geometric module pullback on cohomology is natural in
+the coefficient module (`moduleCohomologyPullback_map`). There is no flatness or
+quasicoherence premise.
 -/
 
 @[expose] public section
@@ -177,5 +179,18 @@ theorem moduleCohomologyMapAlong_naturality (p : Y ⟶ X)
       Sheaf.H.map ((SheafOfModules.toSheaf Y.ringCatSheaf).map ν) n
         (moduleCohomologyMapAlong p φ n x) := by
   rw [← moduleCohomologyMapAlong_precomp, h, moduleCohomologyMapAlong_postcomp]
+
+/-- **Geometric pullback on module cohomology is natural in the coefficient module.** -/
+theorem moduleCohomologyPullback_map (f : X ⟶ Y) {M M' : Y.Modules}
+    (φ : M ⟶ M') (n : ℕ) (x : Sheaf.H.{u + 1} (moduleAddSheaf Y M) n) :
+    moduleCohomologyPullback f M' n
+        (Sheaf.H.map ((SheafOfModules.toSheaf Y.ringCatSheaf).map φ) n x) =
+      Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map
+        ((Scheme.Modules.pullback f).map φ)) n (moduleCohomologyPullback f M n x) := by
+  refine zariskiCohomologyMap_map f _ _ _ _ ?_ n x
+  rw [← moduleCoefficientPullback_precomp f φ,
+    ← moduleCoefficientPullback_postcomp f _ ((Scheme.Modules.pullback f).map φ)]
+  exact congrArg (moduleCoefficientPullback f)
+    ((Scheme.Modules.pullbackPushforwardAdjunction f).unit.naturality φ)
 
 end AlgebraicGeometry.Scheme.Cohomology

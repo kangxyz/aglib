@@ -8,6 +8,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Topology.KrullDimension.ClosedSubspace
+public import Aglib.Topology.NoetherianSpace
 public import Aglib.Topology.Semicontinuity
 public import Aglib.Topology.Sheaves.BasisExactness
 public import Aglib.Topology.Sheaves.Cech.Cocycles

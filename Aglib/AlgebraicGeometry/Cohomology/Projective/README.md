@@ -230,6 +230,57 @@ by the actual model's lower bound. The three geometric endpoints construct
 the model internally; their independent consumer passed
 `1792104773395115000-70510`, with only the three standard axioms.
 
+`VanishingProjective` treats a coherent coefficient `M`, relatively flat over a Noetherian ring
+`R`, on a closed subscheme `X` of `P^n_R`, with vanishing positive cohomology. For every ring map
+`σ : R →+* B` the base-change map `B ⊗_R H^q(X, M) ⟶ H^q(X_B, M_B)` is an isomorphism in every
+degree (`moduleCohomologyBaseChangeMap_isIso_of_vanishing_of_projectiveEmbedding`). `H^0` is
+projective (`moduleCohomology_zero_projective_of_vanishing_of_projectiveEmbedding`), and
+positive-degree cohomology vanishes after every base change
+(`subsingleton_moduleCohomology_pullback_of_vanishing_of_projectiveEmbedding`). The algebra is
+`Algebra/Homology/CochainComplex/ProjectiveCokernel`, applied to the finite-projective model.
+`VanishingBaseChange` is the local form: over a Noetherian local ring the residue-field maps are
+surjective in every degree, and `H^0` is free.
+
+`FlatTwist` applies both to `F(d)`, for `d` at least the Serre bound of a coherent, relatively
+flat `F` on `P^n_R` (`exists_twist_baseChange_isIso_and_projective_of_relativeFlat`,
+`…_and_free_of_relativeFlat`, `exists_twist_subsingleton_cohomology_pullback_of_relativeFlat`).
+This is the exercise after Nitsure's Lemma 3.2 (arXiv:math/0504590v1, p. 15). It also gives
+statements (B) and (C) of the proof of Theorem 4.3 for a flat family: the input applied to each
+flat `F_{V_i}` in Nitsure's proof, p. 21, over an affine Noetherian base. Nitsure's (B) and (C)
+for a non-flat `F` are not proved. The relative flatness of the twists is
+`ProjectiveSpace.twistingTensor_relativeFlat`.
+
+`FlatOfSections` proves Nitsure's Lemma 3.2 (p. 15) over an affine base. Let `R` be any
+commutative ring and `F` a quasicoherent module on `P^n_R` with finitely many coordinates. If
+`H^0(P^n_R, O(d) ⊗ F)` is flat (or projective) over `R` for every `d ≥ N`, then `F` is
+relatively flat over `Spec R` (`relativeFlat_of_flat_twistedSections`,
+`relativeFlat_of_projective_twistedSections`). Morphisms `O(-d) ⟶ F` are identified linearly
+with `H^0(O(d) ⊗ F)` (`negativeTwistHomLinearEquivH0`, through
+`ProjectiveSpace.negativeTwistHomLinearEquivSections`). The chart colimit of
+`ProjectiveSpace.SectionExtension.Colimit` lifts every finite relation among chart sections to
+one flat `Hom(O(-d), F)`. The equational criterion `Module.Flat.of_forall_exists_lift_relation`
+(`RingTheory/Flat/EquationalCriterion`) then makes the chart sections flat
+(`flat_coordinateOpen_sections_of_flat_negativeTwistHom`). With `FlatTwist`,
+`relativeFlat_iff_exists_projective_twistedSections` states Lemma 3.2 as an equivalence for
+coherent `F` over a Noetherian ring. A non-affine base needs the gluing G0.
+
+[LargeTwistBaseChange](LargeTwistBaseChange.lean) proves Nitsure's Lemma 3.1 (p. 13) over affine
+Noetherian `S = Spec A`, `T = Spec B`. `exists_twist_baseChange_isIso_of_isNoetherianRing`: for
+`F` coherent on `P^n_A` and `σ : A →+* B` with `B` Noetherian, there is `N` such that for
+`d ≥ N` the positive cohomology of `F(d)` vanishes, on `P^n_A` and on
+`P^n_A ×_{Spec A} Spec B`, and `moduleCohomologyBaseChangeMap (toSpec A ι) σ (F(d)) 0` is an
+isomorphism. No flatness is assumed, and `N` depends on `σ`.
+`exists_twist_baseChange_bijective_projectiveSpace` has target `H^0(P^n_B, 𝒪_B(d) ⊗ π^* F)`,
+reached through `baseChangeTwistCohomologyHom`; its composite is not identified with the
+canonical mate. The inputs are right exactness of `H^0` of large twists
+(`exists_twist_H0_exact_of_exact`, by Serre vanishing for two kernels), `FlatTwist` for sums of
+twists (`ProjectiveSpace.twistingCoproduct_relativeFlat`), the naturality
+`moduleCohomologyBaseChangeMap_naturality` and
+`ProjectiveSpace.twistingTensorPullbackIso_hom_naturality`, and Mathlib's five lemma
+(`baseChangeMap_twist_isIso_of_exact`). The bound cannot be uniform in `B`, and `B` cannot be an
+arbitrary ring; the module docstring gives the blow-up counterexamples, which are not
+formalized.
+
 [Coherent higher Serre duality](../Duality/Projective/Higher.lean) is now proved for every field, arbitrary projective dimension and every complementary pair `i+j=n`. The original Yoneda/residue pairing is perfect, giving both `Extʲ(M,O(-n-1)) ≃ Hⁱ(M)ᵛ` and `Hⁱ(M) ≃ Extʲ(M,O(-n-1))ᵛ`, with exact original coefficient naturality and dimension zero retained. Its [owning guide](../Duality/Projective/README.md) records the actual presentation proof, field hypothesis, map formulas and public verification.
 
 ## Hilbert polynomials and regularity
@@ -242,7 +293,8 @@ as `Σ_{i ≤ n} aᵢ C(m, i)` with integers `aᵢ`.
 proves Nitsure's Lemma 2.1 over any base ring. Its `Mumford/` family proves Mumford's
 bound (Nitsure, Thm 2.3) over every field: a coherent submodule of `O^p` on `P^n_k` is
 regular at an integer polynomial in its Hilbert coefficients that depends only on `n`
-and `p`. Local constancy of the Hilbert polynomial in flat families remains open.
+and `p`. Over an affine Noetherian base the fibre Hilbert polynomials are locally constant in
+flat families and take finitely many values (`HilbertPolynomial/FlatFamily`, `Finiteness`).
 
 ## Relative projective projections
 

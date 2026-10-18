@@ -90,3 +90,16 @@ mate invertible after every ring map. Only the present term is finite and
 the next term finite flat; no bound or Noetherianity is required. The
 independent all-universe consumer passed `1792103699120087000-50220`,
 with only the three standard axioms.
+
+[ProjectiveCokernel](ProjectiveCokernel.lean), imported as
+`Aglib.Algebra.Homology.CochainComplex.ProjectiveCokernel`, treats a cochain
+complex `K` of projective modules over a commutative ring, strictly in degrees
+`≤ n`, with vanishing homology in every positive degree. Descending induction
+(`CochainComplex.projective_cokernel_d_pred`,
+`projective_cokernel_d_sub_of_vanishing`) makes every cokernel `coker(d^q)`,
+`q ≥ 0`, projective (`projective_cokernel_d_of_vanishing`). Hence scalar
+extension along any ring map commutes with homology in every degree `q ≥ 0`
+(`extendScalarsHomologyMap_isIso_of_vanishing`), and `H^0` is projective when
+`K` is also strictly in degrees `≥ 0` (`projective_homology_zero_of_vanishing`).
+The rings and modules share one universe. The consumer is cohomology and base
+change in the vanishing case, `AlgebraicGeometry/Cohomology/Projective/VanishingProjective`.

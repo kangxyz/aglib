@@ -7,12 +7,15 @@ module
 
 public import Aglib.Algebra.Category.ModuleCat.ScalarExtensionUnit
 public import Mathlib.Algebra.Category.Ring.Constructions
+public import Mathlib.RingTheory.Flat.Basic
 
 /-! # The canonical scalar base-change map
 
 For a commutative square of rings the map is the original scalar-adjunction mate.
 For a pushout square its invertibility follows from the native tensor cancellation
-equivalence, with no flatness or finite-generation hypothesis.
+equivalence, with no flatness or finite-generation hypothesis. The same cancellation shows that
+scalar extension along a pushout preserves flatness over the base
+(`flat_extendScalars_of_isPushout`, Stacks Project, Tag 00HI).
 -/
 
 @[expose] public section
@@ -84,5 +87,29 @@ theorem scalarBaseChangeMap_isIso_of_isPushout (hpush : IsPushout i j k l)
     simp only [map_one]
   rw [he]
   infer_instance
+
+/-- **Flatness of a scalar extension along a pushout** (Stacks Project, Tag 00HI). For a pushout
+square of commutative rings `σ ≫ β = φ ≫ α` (`C = B ⊗_A A'`) and a `B`-module `E` that is flat
+over `A` through `φ`, the `B`-module scalar extension `C ⊗_B E` is flat over `A'` through `β`. -/
+theorem flat_extendScalars_of_isPushout {A A' B C : CommRingCat.{u}} (φ : A ⟶ B) (σ : A ⟶ A')
+    (α : B ⟶ C) (β : A' ⟶ C) (h : IsPushout σ φ β α) (E : ModuleCat.{u} B)
+    (hE : Module.Flat A ((ModuleCat.restrictScalars φ.hom).obj E)) :
+    Module.Flat A' ((ModuleCat.restrictScalars β.hom).obj
+      ((ModuleCat.extendScalars α.hom).obj E)) := by
+  let := φ.hom.toAlgebra
+  let := σ.hom.toAlgebra
+  let := α.hom.toAlgebra
+  let := β.hom.toAlgebra
+  let : Algebra A C := (φ ≫ α).hom.toAlgebra
+  have : IsScalarTower A B C := IsScalarTower.of_algebraMap_eq fun _ => rfl
+  have : IsScalarTower A A' C := IsScalarTower.of_algebraMap_eq fun a =>
+    (congrArg (fun k : A ⟶ C => k.hom a) h.w).symm
+  have hp : Algebra.IsPushout A A' B C := CommRingCat.isPushout_iff_isPushout.mp h
+  let : Module A E := Module.compHom E φ.hom
+  have : IsScalarTower A B E := IsScalarTower.of_algebraMap_smul fun _ _ => rfl
+  have : Module.Flat A E := hE
+  let e := Algebra.IsPushout.cancelBaseChange A A' B C E
+  have : Module.Flat A' (C ⊗[B] E) := Module.Flat.of_linearEquiv e
+  exact this
 
 end ModuleCat

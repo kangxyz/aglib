@@ -24,7 +24,9 @@ presentation (`[G.IsFinitePresentation]`); see each statement.
 * `Scheme.Modules.sheafRank_le_iff_notMem_support`: the fibre rank `sheafRank G y` (the dimension of
   the fibre of `G` over the residue field at `y`) is at most `k` if and only if `y` lies outside
   `V(Fitt_k(G))` (Stacks Project, Tag 07ZC, (1) ⇔ (2), through the pullback
-  `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`).
+  `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`). Consequently `Fitt_k(G) = 𝒪_T` when every
+  fibre has dimension at most `k` (`fittingIdealSheaf_eq_top_of_sheafRank_le`), and the points of
+  fibre dimension at least `r` form a closed set (`isClosed_setOf_le_sheafRank`).
 * `Scheme.Modules.sheafRank_eq_of_fittingIdealSheaf`: if `Fitt_k(G) = 0` for `k < r` and
   `Fitt_r(G) = 𝒪_T`, every fibre has dimension `r`; `sheafRank_pullback`: fibre ranks are
   compatible with arbitrary pullback.
@@ -203,5 +205,28 @@ theorem fittingIdealSheaf_eq_bot_and_eq_top_iff_sheafHasRank
   refine ⟨fun ⟨h0, h1⟩ => ?_, fittingIdealSheaf_eq_of_sheafHasRank G hG⟩
   have := isFiniteLocallyFree_of_fittingIdealSheaf G hG h0 h1
   exact (sheafHasRank_iff_rank_eq G r).mpr (sheafRank_eq_of_fittingIdealSheaf G hG h0 h1)
+
+/-- If every fibre of `F` has dimension at most `k`, the Fitting ideal sheaf `Fitt_k(F)` is the unit
+ideal sheaf. -/
+theorem fittingIdealSheaf_eq_top_of_sheafRank_le (F : T.Modules)
+    (hF : QuasiCoherent.affineLocallyFiniteType T F) [F.IsFinitePresentation] (k : ℕ)
+    (h : ∀ y, sheafRank F y ≤ k) : fittingIdealSheaf F hF k = ⊤ := by
+  rw [← IdealSheafData.support_eq_bot_iff]
+  exact eq_bot_iff.mpr fun y hy => absurd hy ((sheafRank_le_iff_notMem_support F hF y k).mp (h y))
+
+/-- The points of fibre dimension at least `r` form a closed set. -/
+theorem isClosed_setOf_le_sheafRank (F : T.Modules)
+    (hF : QuasiCoherent.affineLocallyFiniteType T F) [F.IsFinitePresentation] (r : ℕ) :
+    IsClosed {y : T | r ≤ sheafRank F y} := by
+  cases r with
+  | zero => simp
+  | succ k =>
+    have : {y : T | k + 1 ≤ sheafRank F y} = (fittingIdealSheaf F hF k).support := by
+      ext y
+      simp only [Set.mem_ofPred_eq, SetLike.mem_coe]
+      rw [← not_iff_not, not_le, Nat.lt_succ_iff]
+      exact sheafRank_le_iff_notMem_support F hF y k
+    rw [this]
+    exact (fittingIdealSheaf F hF k).support.isClosed
 
 end AlgebraicGeometry.Scheme.Modules

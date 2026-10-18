@@ -19,7 +19,7 @@ retained, and the retained `LocalFreeCohomologyBaseChange` family is not used.
 
 | Leaf | Content |
 | --- | --- |
-| [Coefficient](Coefficient.lean) | `Scheme.Modules.unit_isFinitePresentation`, `affineLocallyFiniteType_unit` (every scheme), `unitStalkIso` and `unit_stalk_flat` (the actual stalk is free of rank one), `relativeFlat_unit_of_flat` (`[Flat f]`). |
+| [Coefficient](Coefficient.lean) | `Scheme.Modules.unit_isFinitePresentation`, `affineLocallyFiniteType_unit` (every scheme); re-exports `unitStalkIso`, `unit_stalk_flat` and `relativeFlat_unit_of_flat` (`[Flat f]`) from [Modules/Flat/Relative/Unit](../../../Modules/Flat/Relative/Unit.lean). |
 | [Sections](Sections.lean) | `Scheme.Cohomology.unitSections`, `pullbackUnitSections` (via `Sheaf.H.equiv₀` and `pullbackUnitIso`), `pullbackUnitSections_moduleCohomologyPullback` and `pullbackUnitSections_moduleCohomologyTensorMap_tmul`: on any commutative square `p ≫ f = q ≫ Spec.map σ`, the original degree-zero tensor map of the structure module sends `b ⊗ x` to `β b * p.appTop x`. |
 | [LocalBase](LocalBase.lean) | Over a local Noetherian ring `R`, with `f : X ⟶ Spec R` proper and flat and `[GeometricallyIntegral (closedFibreMap f)]`: `epi_moduleCohomologyBaseChangeMap_residue_unit` (constants theorem), `bijective_structureMap_of_proper_geometricallyIntegral_closedFibre` (`R → Γ(X, ⊤)`), and, for every `σ : R →+* B`, `bijective_structureMap_pullback_of_proper_geometricallyIntegral_closedFibre` (actual fibre product) and `bijective_appTop_of_isPullback_of_proper_geometricallyIntegral_closedFibre` (every supplied cartesian square). Also `IsLocalRing.bijective_smul_of_bijective_residueField_tmul` (finite flat module with one-dimensional residue tensor). |
 | [Localization](Localization.lean) | `CommRingCat.bijective_localizedModuleMap_of_isPushout` (pushout along a localization at a prime) and the instance `Scheme.flat_fromSpecStalk`. |
@@ -47,7 +47,7 @@ Noetherian base. Mathlib's flat base change of sections
 The coefficient and section statements need no properness, flatness of `f` or
 Noetherianity except where displayed. The local-base statements assume only the
 closed fibre geometrically integral. Intended owners of the general helpers:
-`Coefficient` with `Modules/QuasiCoherent/FiniteType` and `Modules/Flat`,
+`Coefficient` with `Modules/QuasiCoherent/FiniteType`,
 `Sections` with `Cohomology/BaseChange/Modules`, and the ring lemmas with
 `RingTheory` localization and local-ring modules. Planned consumers are the
 Picard comparison (plan row F7) and `Q`/linear systems (row F15).

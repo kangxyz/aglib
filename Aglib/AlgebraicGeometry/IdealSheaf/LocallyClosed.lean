@@ -29,6 +29,9 @@ pullback of ideal sheaves:
 * `locallyClosedι I J`: the immersion of the open subscheme of `V(I)` complementary to `V(J)`,
   and `exists_lift_locallyClosedι_iff`: `g` factors through it if and only if `I.comap g = ⊥` and
   `J.comap g = ⊤`.
+* `comap_iSup_eq_bot_iff`, `comap_mul_eq_top_iff`, `comap_finset_prod_eq_top_iff`: the pullback
+  of a supremum vanishes iff every pullback does, and the pullback of a (finite) product is the unit
+  ideal sheaf iff the pullback of every factor is.
 
 These are the scheme-level forms of the universal property of a locally closed subscheme cut out
 by a pair of quasi-coherent ideal sheaves; they are used for the Fitting strata of the flattening
@@ -262,6 +265,34 @@ lemma range_locallyClosedι (I J : X.IdealSheafData) :
       rw [Scheme.Opens.range_ι]
       exact hz
     exact ⟨w, by rw [locallyClosedι, Scheme.Hom.comp_apply, hw]⟩
+
+/-- The pullback of a supremum of ideal sheaves vanishes exactly when every pullback does. -/
+lemma comap_iSup_eq_bot_iff {ι : Sort*} (J : ι → X.IdealSheafData) (g : Y ⟶ X) :
+    (⨆ i, J i).comap g = ⊥ ↔ ∀ i, (J i).comap g = ⊥ := by
+  have key : ∀ K : X.IdealSheafData, K.comap g = ⊥ ↔ K ≤ (⊥ : Y.IdealSheafData).map g :=
+    fun K => le_bot_iff.symm.trans (map_gc g K ⊥)
+  rw [key, iSup_le_iff]
+  exact forall_congr' fun i => (key (J i)).symm
+
+/-- The pullback of a product of two ideal sheaves is the unit ideal sheaf exactly when both
+pullbacks are. -/
+lemma comap_mul_eq_top_iff (K L : X.IdealSheafData) (g : Y ⟶ X) :
+    (K * L).comap g = ⊤ ↔ K.comap g = ⊤ ∧ L.comap g = ⊤ := by
+  rw [← range_subset_compl_support_iff, ← range_subset_compl_support_iff,
+    ← range_subset_compl_support_iff, support_mul, Closeds.coe_compl, Closeds.coe_compl,
+    Closeds.coe_compl, Closeds.coe_sup, Set.compl_union, Set.subset_inter_iff]
+
+/-- The pullback of a finite product of ideal sheaves is the unit ideal sheaf exactly when every
+factor pulls back to the unit ideal sheaf. -/
+lemma comap_finset_prod_eq_top_iff {ι : Type*} (s : Finset ι) (K : ι → X.IdealSheafData)
+    (g : Y ⟶ X) : (∏ j ∈ s, K j).comap g = ⊤ ↔ ∀ j ∈ s, (K j).comap g = ⊤ := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+    rw [Finset.prod_empty]
+    exact ⟨fun _ j hj => absurd hj (Finset.notMem_empty j), fun _ => comap_top g⟩
+  | insert a s ha ih =>
+    rw [Finset.prod_insert ha, comap_mul_eq_top_iff, ih, Finset.forall_mem_insert]
 
 end Scheme.IdealSheafData
 

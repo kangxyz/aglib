@@ -91,6 +91,7 @@ public import Aglib.Algebra.Homology.CochainComplex.HomologyZero
 public import Aglib.Algebra.Homology.CochainComplex.KernelSequence
 public import Aglib.Algebra.Homology.CochainComplex.MapTruncation
 public import Aglib.Algebra.Homology.CochainComplex.OppositeQuasiIso
+public import Aglib.Algebra.Homology.CochainComplex.ProjectiveCokernel
 public import Aglib.Algebra.Homology.CochainComplex.SingleShift
 public import Aglib.Algebra.Homology.CochainComplex.TopHomology
 public import Aglib.Algebra.Homology.CochainComplexPlus.Functoriality

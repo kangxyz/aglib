@@ -55,6 +55,10 @@ finite-presentation hypothesis enters the construction.
   `sheafRank G y` is at most `k` iff `y ∉ V(Fitt_k(G))` (Stacks, Tag 07ZC (1) ⇔ (2), through
   `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`); `sheafRank_eq_of_fittingIdealSheaf`;
   `sheafRank_pullback`: `sheafRank (f^* G) t = sheafRank G (f t)`.
+- `Scheme.Modules.fittingIdealSheaf_eq_top_of_sheafRank_le` (`[F.IsFinitePresentation]`): if every
+  fibre has dimension at most `k`, then `Fitt_k(F) = 𝒪_T`; `isClosed_setOf_le_sheafRank`: the
+  points of fibre dimension at least `r` form a closed set (the support of `Fitt_{r-1}(F)`). The
+  [flattening stratification](../../FlatteningStratification/README.md) consumes both.
 - `Scheme.Modules.isFiniteLocallyFree_of_fittingIdealSheaf` (finite type only): the Fitting
   conditions `Fitt_k(G) = 0` (`k < r`), `Fitt_r(G) = 𝒪_T` give finite local freeness; on affine
   charts the sections are stalkwise free of rank `r`, hence finitely presented and flat

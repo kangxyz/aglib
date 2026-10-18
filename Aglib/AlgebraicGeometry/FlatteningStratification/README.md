@@ -1,18 +1,26 @@
 # Flattening stratification
 
 Plan row F12: the flattening stratification of Nitsure, *Construction of Hilbert and Quot schemes*,
-arXiv:math/0504590v1, Theorem 4.3 (pp. 19–20). This family presently covers the case `n = 0`, the
+arXiv:math/0504590v1, Theorem 4.3 (pp. 19–23). This family covers the case `n = 0`, the
 stratification of a scheme by the local rank of a quasi-coherent sheaf of finite type, with the
-strata cut out by Fitting ideal sheaves instead of Nitsure's local minimal presentations.
+strata cut out by Fitting ideal sheaves instead of Nitsure's local minimal presentations, and the
+rank strata of families of sheaves used in the general case: the joint strata `W_{e_0, …, e_n}`
+and the refined strata `S_f` of pp. 21–22, in the form of universal properties for the ranks of
+given sheaves `E_i`. The general case `n > 0` itself is not assembled here.
 
 ## Prerequisites and consumers
 
-- Lower prerequisites: [Fitting ideal sheaves](../Modules/FittingIdeal/README.md), the locally
-  closed subschemes of [IdealSheaf/LocallyClosed](../IdealSheaf/LocallyClosed.lean) and the
+- Lower prerequisites: [Fitting ideal sheaves](../Modules/FittingIdeal/README.md) (including
+  `Scheme.Modules.fittingIdealSheaf_eq_top_of_sheafRank_le` and
+  `Scheme.Modules.isClosed_setOf_le_sheafRank`), the locally closed subschemes and pullback
+  criteria of [IdealSheaf/LocallyClosed](../IdealSheaf/LocallyClosed.lean)
+  (`Scheme.IdealSheafData.comap_iSup_eq_bot_iff`,
+  `Scheme.IdealSheafData.comap_finset_prod_eq_top_iff`), the wide-pullback factorizations of
+  [Limits/Shapes/WidePullbacks](../../CategoryTheory/Limits/Shapes/WidePullbacks.lean) and the
   algebraic criterion `Module.fittingIdeal_map_eq_bot_and_eq_top_iff` of
   [RingTheory/FittingIdeal/Stratification](../../RingTheory/FittingIdeal/Stratification.lean).
-- Present consumers: the tests `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank` and
-  `AglibTest.AlgebraicGeometry.FlatteningStratification.Universal`.
+- Present consumers: the tests `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank`,
+  `.Universal`, `.Coproduct`, `.Finite` and `.Closed`.
 
 ## Main results
 
@@ -48,9 +56,49 @@ type is of finite type. They are not mathematical conditions of the statements.
   Tag 05P9, and of Nitsure's Theorem 4.3 for `n = 0`). That a finitely presented `g^* F` is
   finite locally free exactly when it is flat (Stacks, Tag 05P2) is not formalized here.
 
+[Coproduct](Coproduct.lean), for `F` of finite presentation:
+
+- `rankStrataι F hF : ∐ r, S_r ⟶ S` packages the strata as one morphism. It is a monomorphism
+  (`rankStrataι_mono`, an instance), and `g : T ⟶ S` factors through it iff `g^* F` is finite
+  locally free (`exists_lift_rankStrataι_iff`). This is Stacks, Tag 05P9, and Nitsure's
+  Theorem 4.3 (ii) for `n = 0`, in the locally free form: Stacks represents the flatness functor,
+  and flat ⇔ finite locally free for finitely presented sheaves (Tag 05P2) is not formalized.
+  `rankStrataι F hF` is in general not an immersion; the source carries the disjoint union
+  topology.
+
+[Finite](Finite.lean), for finitely many finitely presented `E_j`, `j ∈ J`:
+
+- `jointRankStratum E hE e`, the wide pullback over `S` of the strata `rankStratum (E j) _ (e j)`,
+  is Nitsure's `W_{e_0, …, e_n}` (pp. 21–22, built there by iterating the case `n = 0`):
+  `exists_lift_jointRankStratumι_iff` says `g` factors through it iff every `g^* E_j` is finite
+  locally free of constant rank `e j`.
+- `jointRankStrataι E hE`, the wide pullback of the morphisms `rankStrataι (E j) _`, is a
+  monomorphism (`jointRankStrataι_mono`, an instance) along which `g` factors iff every `g^* E_j`
+  is finite locally free (`exists_lift_jointRankStrataι_iff`).
+
+[Closed](Closed.lean), for a family `E_i`, `i ∈ I` of any size, of finitely presented sheaves:
+
+- `exists_lift_closedJointRankStratumι_iff`: if the fibre dimensions of `E_i` are bounded by `e_i`,
+  the closed subscheme `V(⨆_i Fitt_{e_i - 1}(E_i))` represents the morphisms `g` along which every
+  `g^* E_i` is finite locally free of rank `e_i`.
+- `exists_lift_refinedJointRankStratumι_iff`: the refined stratum, the closed condition
+  `⨆_i Fitt_{e_i - 1}(E_i)` on the open complement of `⋃_{j ∈ J₀} V(Fitt_{e_j}(E_j))` for a finite
+  `J₀`, represents the same condition under the hypothesis that every point at which the `E_j`,
+  `j ∈ J₀`, have fibre dimensions `e_j` has fibre dimensions `≤ e_i` for all `i`. This is Nitsure's
+  `S_f` (p. 22) with `E_i = π_* F(N + i)` and `J₀ = {0, …, n}`; the hypothesis is the consequence
+  of (B), (C) and `deg P_s ≤ n` derived on p. 22, with `=` weakened to `≤`, and is not statement
+  (C) itself. Its discharge for Nitsure's `F` is open.
+- `closure_range_rankStratumι_subset`: the closure of the image of `S_r` lies in the union of the
+  images of the `S_{r'}`, `r' ≥ r`; this is Nitsure's Theorem 4.3 (iii) for `n = 0`.
+
 ## Not covered
 
-- The packaging of the strata as one morphism `⊔_r S_r ⟶ S` (a monomorphism representing the
-  flatness functor of a finitely presented `F`, Stacks, Tag 05P9; false for finite type modules,
-  Tag 0FJ0), and the general case `n > 0` (Nitsure, Lemmas 3.1–3.2 and pp. 19–21).
-- Nitsure, Theorem 4.3 (iii), the closure of the strata.
+- The flatness form of the universal property: flat ⇔ finite locally free for finitely presented
+  sheaves (Stacks, Tag 05P2) is not formalized, so the results above are stated for finite local
+  freeness. For modules of finite type only, `⊔_r S_r ⟶ S` does not represent flatness (Stacks,
+  Tag 0FJ0).
+- The general case `n > 0` of Theorem 4.3 (Nitsure, pp. 20–23): the strata `S_f` for Nitsure's
+  `E_i = π_* F(N + i)` on a non-affine base, the discharge of the hypothesis of
+  `exists_lift_refinedJointRankStratumι_iff`, the universal property (ii) and the closure
+  property (iii) for `n > 0`, and the finiteness of the set of Hilbert polynomials as part of the
+  stratification.

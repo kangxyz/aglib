@@ -77,3 +77,52 @@ actual fibre product over an open target. Both helpers require no
 quasicoherence, Noetherianity or flatness of the original morphism. The
 [general-target proper Grauert descent](../../../Cohomology/DirectImage/Proper/Grauert.lean)
 uses this target-open transport.
+
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.OfSections` proves the converse
+of `flat_affineOpen_sections_of_relativeFlat`. For `f : X ⟶ Spec A` and a
+quasicoherent `M`, `relativeFlat_of_flat_affineOpen_sections` derives
+`relativeFlat f M` from flat sections on an affine open neighbourhood of every
+point, and `relativeFlat_iff_flat_affineOpen_sections` says that relative
+flatness over an affine base is flatness of all affine sections (Stacks
+Project, Tag 01U4). `relativeFlat_specMap_of_flat` is the case of
+`Spec B ⟶ Spec A`. This is the last step of Nitsure's Lemma 3.2.
+
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.Tensor` proves
+`relativeFlat_tensor_of_locallyTrivial`: tensoring with a sheaf that is
+locally isomorphic to the structure module preserves relative flatness. No
+quasicoherence is assumed.
+
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.Coproduct` proves
+`relativeFlat_coproduct`: a coproduct of relatively flat modules, over any
+index type, is relatively flat.
+
+Import `Aglib.AlgebraicGeometry.Modules.Flat.Relative.BaseChange` for base
+change of relative flatness, the global ("in particular") statement of Stacks
+Project, Tag 01U8; the pointwise form is not formalized. For a pullback
+square `h : IsPullback g q p f` and a quasicoherent `M` with
+`relativeFlat p M`, `relativeFlat_pullback_of_isPullback h M hM` proves
+`relativeFlat q ((pullback g).obj M)`; `relativeFlat_pullback_snd` is the
+canonical-pullback form, which for `f = Spec.map σ` is the affine base change
+along `σ : A ⟶ A'`. The proof restricts the square to affine opens with
+Mathlib's `Scheme.Hom.isPullback_resLE` and uses only `appTop` maps: the ring
+pushout `isPushout_appTop_of_isPullback`, the section comparison
+`affinePullbackSectionsIso`, the open-restriction square `pullbackOpenSquare`
+and the algebraic core `ModuleCat.flat_extendScalars_of_isPushout` of
+[ChangeOfRings/BaseChange](../../../../Algebra/Category/ModuleCat/ChangeOfRings/BaseChange.lean)
+(Stacks Project, Tag 00HI). Between affine schemes,
+`relativeFlat_iff_flat_affineΓFunctor` identifies relative flatness of a
+quasicoherent module with flatness of its `affineΓFunctor` sections over the
+target sections through `appTop`; with `flat_affineOpen_sections_of_relativeFlat`
+it is the affine case of Stacks, Tag 01U4. `relativeFlat_comp_of_isOpenImmersion`
+is the converse of `relativeFlat_of_comp_isOpenImmersion`. Quasicoherence is
+assumed, as in the Stacks statement; no finiteness, Noetherianity or flatness
+of a morphism is assumed.
+
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.Unit` treats the structure
+module. Its actual stalks are free of rank one (`unitStalkIso`, through
+`unitStalkCorepresentable`) and flat over the local rings (`unit_stalk_flat`,
+an instance). For a flat morphism `f`, `relativeFlat_unit_of_flat f` proves
+relative flatness of the structure module over the target, by transitivity of
+flatness along `f.stalkMap x`. No Noetherianity, quasicompactness or properness
+is assumed. The consumers are the proper local criterion for the structure
+sheaf and `ProjectiveSpace/Tensor/Flat`.

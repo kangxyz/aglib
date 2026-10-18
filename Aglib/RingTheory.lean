@@ -89,6 +89,7 @@ public import Aglib.RingTheory.FittingIdeal.Basic
 public import Aglib.RingTheory.FittingIdeal.LocallyFree
 public import Aglib.RingTheory.FittingIdeal.Minors
 public import Aglib.RingTheory.FittingIdeal.Stratification
+public import Aglib.RingTheory.Flat.EquationalCriterion
 public import Aglib.RingTheory.Flat.Exact
 public import Aglib.RingTheory.Flat.FinitePresentation.FiniteStage
 public import Aglib.RingTheory.Flat.FinitePresentation.LocalModel

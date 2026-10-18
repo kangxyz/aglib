@@ -43,6 +43,11 @@ abbreviation of that same map, with the original `ΓSpecIso` structural actions
 and module pullback unit. Its unit-pure-tensor formula is the actual geometric
 module cohomology pullback.
 
+[Naturality](Naturality.lean): `moduleCohomologyBaseChangeMap_naturality`, the
+base-change map over spectra, is natural in the coefficient module. Its inputs
+are `moduleCohomologyPullback_map` (`Cohomology/Functoriality/Modules/Composition`)
+and `zariskiCohomologyMap_map` (`Cohomology/Functoriality/Pullback`).
+
 [Separated](Separated.lean) proves
 `moduleCohomologyBaseChangeMap_isIso_of_isSeparated`: for
 `f : X ⟶ Spec A` quasi-compact and separated, a flat map `σ : A →+* B` and any

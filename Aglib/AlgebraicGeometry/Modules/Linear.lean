@@ -17,6 +17,8 @@ specified structural ring map. Its morphism scalars are the original sectionwise
 and its structure-module endomorphism is exactly the existing `unitMul`.
 No quasicoherence, finiteness or Noetherianity is needed. The structural ring and scheme
 universes are independent, and the ring map remains an explicit parameter.
+Morphisms from the structure module are the global sections, linearly over any specified
+structural ring map (`unitHomGlobalSectionsLinearEquivOfHom`).
 -/
 
 @[expose] public section
@@ -93,5 +95,30 @@ theorem moduleCategoryLinearOfHom_smul_id (M : X.Modules) (r : R) :
   let := moduleCategoryLinearOfHom X α
   change globalScalarEndomorphism X M (α r) ≫ 𝟙 M = _
   exact Category.comp_id _
+
+end AlgebraicGeometry.Scheme.Modules
+
+namespace AlgebraicGeometry.Scheme.Modules
+
+/-- Morphisms from the structure module are the global sections, linearly over any specified
+structural ring map; the forward map is evaluation on one (`unitHomGlobalSectionsAddEquiv`). -/
+def unitHomGlobalSectionsLinearEquivOfHom (X : Scheme.{u}) {A : Type v} [CommRing A]
+    (α : A →+* Γ(X, ⊤)) (M : X.Modules) :
+    letI := moduleCategoryLinearOfHom X α
+    letI : Module A (M.val.obj (op ⊤)) := Module.compHom _ α
+    @Quiver.Hom X.Modules _ (SheafOfModules.unit X.ringCatSheaf) M ≃ₗ[A] M.val.obj (op ⊤) := by
+  letI := moduleCategoryLinearOfHom X α
+  letI : Module A (M.val.obj (op ⊤)) := Module.compHom _ α
+  refine { __ := unitHomGlobalSectionsAddEquiv X M, map_smul' := fun a f => ?_ }
+  change (a • f).val.app (op ⊤) (1 : Γ(X, ⊤)) = α a • f.val.app (op ⊤) (1 : Γ(X, ⊤))
+  rw [moduleCategoryLinearOfHom_smul_app]
+  have h : (homOfLE (le_top : (⊤ : X.Opens) ≤ ⊤)).op = 𝟙 (op ⊤) := rfl
+  rw [h, X.presheaf.map_id]
+  rfl
+
+theorem unitHomGlobalSectionsLinearEquivOfHom_apply (X : Scheme.{u}) {A : Type v} [CommRing A]
+    (α : A →+* Γ(X, ⊤)) (M : X.Modules)
+    (f : @Quiver.Hom X.Modules _ (SheafOfModules.unit X.ringCatSheaf) M) :
+    unitHomGlobalSectionsLinearEquivOfHom X α M f = f.val.app (op ⊤) (1 : Γ(X, ⊤)) := rfl
 
 end AlgebraicGeometry.Scheme.Modules
