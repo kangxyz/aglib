@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Authors: kangxyz
 """Reject unlimited or global heartbeat overrides and weakened Lean source policy."""
 import argparse
 from pathlib import Path
@@ -13,6 +14,11 @@ def check_source_policy(root: Path) -> list[str]:
     errors = []
     for relative in sorted(source_modules(root)):
         source = (root / relative).read_text()
+        header = source.split('-/', 1)[0]
+        if header.startswith('/-\nCopyright (c) ') and not any(
+                line.startswith('Authors: ') and line.removeprefix('Authors: ').strip()
+                for line in header.splitlines()):
+            errors.append(f'{relative}:1: copyright header needs nonempty Authors credit')
         clean = strip_comments_and_strings(source)
         # Consume whole identifiers first, including quoted names containing spaces,
         # so apparent commands inside quoted identifiers are never inspected.
