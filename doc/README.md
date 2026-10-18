@@ -15,6 +15,8 @@ The [source-family guides](../Aglib/README.md) record both reusable interfaces a
 | [References](REFERENCES.md) | Exact source identities and inspected organization references |
 | [Work plan](WORK_PLAN.md) | Current source/integration coverage and remaining work |
 
+For general Milnor K-theory, start at the [symbol-family guide](../Aglib/KTheory/MilnorK/README.md). It separates the all-degree group from low-degree tensor presentations, residue hypotheses and characteristic-zero norm interfaces. Motivic comparisons consume this family downstream.
+
 For affine module theory, start with [ModuleCat](../Aglib/Algebra/Category/ModuleCat/README.md), then [quasicoherent affine sheaves](../Aglib/AlgebraicGeometry/Modules/QuasiCoherent/Affine/README.md). Finite type and finite presentation are distinct object properties. [Coherent sheaves](../Aglib/AlgebraicGeometry/Modules/Coherent/README.md) supplies the locally Noetherian abelian/exact specialization. Finite and closed-immersion direct image uses the actual geometric functors and affine scalar comparisons.
 
 For vector bundles, start with [locally free sheaves](../Aglib/AlgebraicGeometry/Modules/LocallyFree/README.md), its finite-local-basis class and local splitting. The pointwise fibre-dimension theorem supplies the rank interface. [Invertible sheaves](../Aglib/AlgebraicGeometry/Modules/Invertible/README.md) separately constructs the ordinary tensor Picard group and additive arbitrary pullback. [Differential sheaves](../Aglib/AlgebraicGeometry/Modules/Differentials/README.md) gives actual universal derivations and etale pullback, with proved smooth rank and canonical etale differential pullback.

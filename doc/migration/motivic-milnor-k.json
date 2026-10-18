@@ -1,0 +1,2798 @@
+{
+  "source": {
+    "repository": "https://github.com/kangxyz/motivic",
+    "revision": "b368f6965228e63643380033ec224335bcd24a2c"
+  },
+  "provider_base": "383abca15be0cb6da1f49acb2bc892365d382a98",
+  "scope": "General Milnor groups, products, residues, norms and their dependency-closed algebraic prerequisites.",
+  "declaration_namespace": "MilnorK",
+  "low_degree_carriers": {
+    "Motivic.KTheory.MilnorK2.K2": "MilnorK.K2.Group",
+    "Motivic.KTheory.MilnorK3.K3": "MilnorK.K3.Group"
+  },
+  "modules": [
+    {
+      "source_module": "Motivic.Aglib.AlgebraicGeometry.DedekindPointStalk",
+      "source_sha256": "d42091358451d8782d925c739e12434a8d55648661585583e2cb0ebd3869c80a",
+      "module": "Aglib.AlgebraicGeometry.DedekindPointStalk",
+      "sha256": "d42091358451d8782d925c739e12434a8d55648661585583e2cb0ebd3869c80a"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.AdjoinRootMinpolyDegree",
+      "source_sha256": "d80a2d0b9e5337d841c320c0075b0882a6b86285ebd04ef456b42f35c06d93db",
+      "module": "Aglib.FieldTheory.AdjoinRootMinpolyDegree",
+      "sha256": "d80a2d0b9e5337d841c320c0075b0882a6b86285ebd04ef456b42f35c06d93db"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.AdjoinRootNormalScalarBranch",
+      "source_sha256": "e1b635ab62f3bb50217953cbc9ec17fe47b9cbb6c9693232b335be1325d1dca1",
+      "module": "Aglib.FieldTheory.AdjoinRootNormalScalarBranch",
+      "sha256": "e1b635ab62f3bb50217953cbc9ec17fe47b9cbb6c9693232b335be1325d1dca1"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.AdjoinRootSplitBranchEmbedding",
+      "source_sha256": "cc36d739cf2ab8a1013c5ab476887a3f1b01d994f8d257ddeeba72613687d382",
+      "module": "Aglib.FieldTheory.AdjoinRootSplitBranchEmbedding",
+      "sha256": "bb4d37cdc0f403abc699ec0e1b6787ad18d88ffe403ee27e87923685b074ca4e"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.CoprimeIrreducibility",
+      "source_sha256": "9b3642a16b2cdcea15fb6e61fc726ef4bffb6b3f6180f84a4f69cb5b923fc147",
+      "module": "Aglib.FieldTheory.CoprimeIrreducibility",
+      "sha256": "9b3642a16b2cdcea15fb6e61fc726ef4bffb6b3f6180f84a4f69cb5b923fc147"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.FieldCharpolyPower",
+      "source_sha256": "e737f131c4bcc5ae458a4e4c7c61eb2da9755ee5dca2fceddca2ff6a499d01dd",
+      "module": "Aglib.FieldTheory.FieldCharpolyPower",
+      "sha256": "e737f131c4bcc5ae458a4e4c7c61eb2da9755ee5dca2fceddca2ff6a499d01dd"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.FiniteCoprimeSplitting",
+      "source_sha256": "27691a53c1ff772fad664c76bc8a1da5677dfa9ff1010e9268e07438e81b2e8c",
+      "module": "Aglib.FieldTheory.FiniteCoprimeSplitting",
+      "sha256": "2f792a4125aadc7dabb5fb0e75d42050687bacb579eaa1718abf3ca7c5ad50be"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.PGroupNormalSubfield",
+      "source_sha256": "cc5d4ebed168feadf661310f3804b6ab84ee47ae8d88ac2706c714ffcdccbdd1",
+      "module": "Aglib.FieldTheory.PGroupNormalSubfield",
+      "sha256": "cc5d4ebed168feadf661310f3804b6ab84ee47ae8d88ac2706c714ffcdccbdd1"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.PGroupNormalSubfieldEmbedding",
+      "source_sha256": "2326cb328beb78d7c63a8ff68dc8aea26f1f279dddc779ab09af0ef57a10f4f7",
+      "module": "Aglib.FieldTheory.PGroupNormalSubfieldEmbedding",
+      "sha256": "8b86cdb886d3ad7b7faec539807ae82f7b0d30ceab068142c4ec57b3c28533b6"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.PrimeNormalScalarDichotomy",
+      "source_sha256": "275f84f1136afeff75d6823ad1beb966b5ca2a6f0841c71001f279a8ceddd5b3",
+      "module": "Aglib.FieldTheory.PrimeNormalScalarDichotomy",
+      "sha256": "275f84f1136afeff75d6823ad1beb966b5ca2a6f0841c71001f279a8ceddd5b3"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RatFuncCoefficientEquiv",
+      "source_sha256": "b0d1307ff762cc2198633a2fe885658d2b699593ea9a87518997825429cec562",
+      "module": "Aglib.FieldTheory.RatFuncCoefficientEquiv",
+      "sha256": "1c3148b15d431b136cdd8c133e1c8c5e0259c7ec5c4f1b0a1782dd0affb6fa0b"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RatFuncCoefficientMap",
+      "source_sha256": "afda9ef83dd1274ab04a932553b22a0092b827e6a7a49e72d44b213163ca131f",
+      "module": "Aglib.FieldTheory.RatFuncCoefficientMap",
+      "sha256": "baae11c74d1b9eccea493aae875153126f09fb0f366945f304befbb2e4a7102e"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RatFuncInversion",
+      "source_sha256": "1f64b58859ef5b4265009f1d1918b3230e42cc6a1d6c39341451aca6d1d89cf7",
+      "module": "Aglib.FieldTheory.RatFuncInversion",
+      "sha256": "868b1b6489de4354df339ab4ffa5db44494315103b45206099ef887053756a43"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RatFuncReverse",
+      "source_sha256": "d680d0cf2e6df266ab42dd398aa52ef706a12790ce8dd3225c93f6e1afce6cad",
+      "module": "Aglib.FieldTheory.RatFuncReverse",
+      "sha256": "1a529153a86ff74dbc673eac57daccb4e680ef42c87e9452450b49ba6e4e8037"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RatFuncTranslation",
+      "source_sha256": "7f5956683278792af09876a82909fc4b2ddceb13b28d688da693c0338b300357",
+      "module": "Aglib.FieldTheory.RatFuncTranslation",
+      "sha256": "3cf73b2a1f6da8952c04ddc11ee51613c1541b581c540a384f9ff002f4d2cd7b"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.RationalCoefficientRoot",
+      "source_sha256": "c6c8c53a6af2221c3c68218789d6ff70a9ca2a2c6162f255e50f50c79294e5c8",
+      "module": "Aglib.FieldTheory.RationalCoefficientRoot",
+      "sha256": "fb0eaef3c8116ed48f8985f0216ebd9d3b5d41d44f4586d06e2717e0eaf63c2d"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.ResidueMinpolyBranch",
+      "source_sha256": "bb0f49865ca22ddfa11d151160249f8cda53794f3fb8934dc4f95ef7ef78f7a5",
+      "module": "Aglib.FieldTheory.ResidueMinpolyBranch",
+      "sha256": "cead4744e9b84e41da9f4023a40bc2ccdbb2dad67d64e77fda00aec32a795ea6"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.SylowFixedField",
+      "source_sha256": "bf950d2f469bf997d1b6c18038161dfaa3d7176f5382299627caf7ec2bd57a74",
+      "module": "Aglib.FieldTheory.SylowFixedField",
+      "sha256": "bf950d2f469bf997d1b6c18038161dfaa3d7176f5382299627caf7ec2bd57a74"
+    },
+    {
+      "source_module": "Motivic.Aglib.FieldTheory.TensorCharpolyProduct",
+      "source_sha256": "345a7a58eabf621ee55656bb830c1a4bd898d6f776b24bdee6bf86384ccc6fc3",
+      "module": "Aglib.FieldTheory.TensorCharpolyProduct",
+      "sha256": "345a7a58eabf621ee55656bb830c1a4bd898d6f776b24bdee6bf86384ccc6fc3"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.BranchBaseLocal",
+      "source_sha256": "aad37a94304248d9108ff66d75a60d903480921968c0330e85eecbafaf9520ec",
+      "module": "Aglib.RingTheory.AdicCompletion.BranchBaseLocal",
+      "sha256": "c1ec7fa866859836bda0c0a4bd6e8e48d1f09c1626dc5584679769fa7e5eb174"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.BranchFractionAlgebra",
+      "source_sha256": "ecb632ab44d3250715198a01a7f9ae13bf45f70a9e20c796eaf32fe1fa1f12be",
+      "module": "Aglib.RingTheory.AdicCompletion.BranchFractionAlgebra",
+      "sha256": "7fd4f17676a5a4c5ce5ec720ec24554b7198f16ce1d20c91350ea66a0dba7338"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.BranchFractionFinite",
+      "source_sha256": "1ba532e232fb32eee21522c4b25f5203e92caa859f0adadf6a33c61b3a46b1b8",
+      "module": "Aglib.RingTheory.AdicCompletion.BranchFractionFinite",
+      "sha256": "6e81c94c7be2dc72bfe0a4654e6c3bebd144ff2e018ecbe62c576e73eaf3c905"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.BranchUniformizer",
+      "source_sha256": "c72f25180ad60aefcc94c048f55d252379ef4c5e8a2ed9fb080ad8d5fcc05298",
+      "module": "Aglib.RingTheory.AdicCompletion.BranchUniformizer",
+      "sha256": "384bd3872d19d756ff69c18e347e3f80f6e54cd1c138873a09f0ba4d68c9202d"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.ChineseRemainder",
+      "source_sha256": "3b3d966cde1519af3bd3d141c9935baf3bdb3940c6c84ed9e9c5744bcbe3b82e",
+      "module": "Aglib.RingTheory.AdicCompletion.ChineseRemainder",
+      "sha256": "2629f20c4fc645f9015b33d6250ea2fc94160b1bd4edc8ae5fc25464110863ce"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.DedekindBranches",
+      "source_sha256": "cb369643a5e2f6c454d5bbfd89e499a72b92bbae59ecc8be86fa7bd5d30ff3c4",
+      "module": "Aglib.RingTheory.AdicCompletion.DedekindBranches",
+      "sha256": "d84493fd64a5ab0a3a371a7f0c1964851338fec4f0186dede325fa516d081f16"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.FiniteAlgebra",
+      "source_sha256": "5fcb92415951d292b85e3d2bbb8e5422b4389f45580edba62955fbd0d8d95649",
+      "module": "Aglib.RingTheory.AdicCompletion.FiniteAlgebra",
+      "sha256": "26e77744fd7d6f7f851523806a90df335c94bc7db607680bfbd73c684b1641df"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.FiniteDedekindBranches",
+      "source_sha256": "bbb4994ad41ec4d3bc03ec0315a62073aae7f461fa73b8b4cb2cb418e716ee7f",
+      "module": "Aglib.RingTheory.AdicCompletion.FiniteDedekindBranches",
+      "sha256": "c982c2ae6ede2920de9e72a39af2ba80718918ff97aab5328a3fa84488b0cbb6"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.FractionBaseChange",
+      "source_sha256": "4f1d73c84d832955c27afc42dbd423d3827ece43db536234179ac4f5c2fe2194",
+      "module": "Aglib.RingTheory.AdicCompletion.FractionBaseChange",
+      "sha256": "35fb90c10e92d11a34f719e1ab9645b9787c17a9ee19641fd7b34ca5ce8cef15"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.FractionBranches",
+      "source_sha256": "96ee3954eb492c3db9ca325361903004cf5df4e2fcf947be00eb1cf711520275",
+      "module": "Aglib.RingTheory.AdicCompletion.FractionBranches",
+      "sha256": "4f343111392a985f767968790c315d9b6fcfc4dd8820249d3310ef58e27393c6"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.FractionTensorBranches",
+      "source_sha256": "d5ed627957f7656a85115fc453950393aed36b348da5e4e3bd25294061ebd9d3",
+      "module": "Aglib.RingTheory.AdicCompletion.FractionTensorBranches",
+      "sha256": "8c7d0c35e5d08705514bf562a827427eb731232fbb062ee116a4678e5a577e73"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.LocalCompletionsBase",
+      "source_sha256": "84680746a510749b23d1765ef75c79b01c78d07c30b01e3e0d19abbb43136a20",
+      "module": "Aglib.RingTheory.AdicCompletion.LocalCompletionsBase",
+      "sha256": "1ce6ec3e62cbbe68029d2a5c942012212e44b35f815b814fa11e1b23a75e52c1"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.Localization",
+      "source_sha256": "542db96b480a30c3341ce6009439ee9d40a56291eb19d8f7a09f7b0e1c53fb55",
+      "module": "Aglib.RingTheory.AdicCompletion.Localization",
+      "sha256": "bff6bf846cd127d9cdfabac82fadb44f28f2ddcabe5e9e36ea59538781764308"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.OriginalBranchFractions",
+      "source_sha256": "57ed516ec0d582d15551f1b191bffd37772555e7d52466ed190860010e7130ad",
+      "module": "Aglib.RingTheory.AdicCompletion.OriginalBranchFractions",
+      "sha256": "7eb0778618a978f323f821f0430904c47001f38d492e7e3114dac1c92cc96ed8"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.OriginalBranchResidues",
+      "source_sha256": "6eb24966ef03fb7729f7fa38a176279f55c31bebb43aa273d89da07da670a7c8",
+      "module": "Aglib.RingTheory.AdicCompletion.OriginalBranchResidues",
+      "sha256": "92cee765f5c6eedf00eec61888f2db27338eb55ecc9e78ee277ebbcc6e7d5880"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.Powers",
+      "source_sha256": "996f07147ced098284ff0e2add7e6fb3f8cfb1f998195ff649ea677f4465dc97",
+      "module": "Aglib.RingTheory.AdicCompletion.Powers",
+      "sha256": "78ae51adee49543112554627f5ac1bfe3b97d2786291be59e70a384bbe7e5ffc"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.ScalarExtension",
+      "source_sha256": "10eb7ca7c7b4e4a4842605c4e92765ed868c22ef58e5c86c6fe63afaf072ec98",
+      "module": "Aglib.RingTheory.AdicCompletion.ScalarExtension",
+      "sha256": "10eb7ca7c7b4e4a4842605c4e92765ed868c22ef58e5c86c6fe63afaf072ec98"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdicCompletion.SemilocalBranches",
+      "source_sha256": "0e0df0d16dc4453219c137115ead3794fd17aa13895d0ed97093d82ebd5fd6a2",
+      "module": "Aglib.RingTheory.AdicCompletion.SemilocalBranches",
+      "sha256": "98eaa0bef5552a8af6b1a130cf38d77d2ccbe5511631daad9975f0442eb5418c"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootBalancedFractions",
+      "source_sha256": "2e675af22e66f64cda2d7730e3342774b2d0e08607fa33a19fba08214a37a5c0",
+      "module": "Aglib.RingTheory.AdjoinRootBalancedFractions",
+      "sha256": "2e675af22e66f64cda2d7730e3342774b2d0e08607fa33a19fba08214a37a5c0"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootBranchProduct",
+      "source_sha256": "95007968d4a88eccbb3db2fe53ed6624f662d966438d66b2c42271af7d0e1230",
+      "module": "Aglib.RingTheory.AdjoinRootBranchProduct",
+      "sha256": "041c65cca49a6589f66318a445fedc2e6678423117c7e0ca789b4a440c4e7a7d"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootCoefficientEquiv",
+      "source_sha256": "f772ebc001c23ed5d8460e9d3ab9b77a7f062a4252df73cf77019b813f35903b",
+      "module": "Aglib.RingTheory.AdjoinRootCoefficientEquiv",
+      "sha256": "f772ebc001c23ed5d8460e9d3ab9b77a7f062a4252df73cf77019b813f35903b"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootCoefficientTowerBranches",
+      "source_sha256": "34aa25e0dd41548627b4f2f485acb32ca33aa036559f72bccb526fcf49462ccf",
+      "module": "Aglib.RingTheory.AdjoinRootCoefficientTowerBranches",
+      "sha256": "7d84f49678a4d3301aeef8b7812beca07e3bc51ee4dedd2f89b8ed37a60434b0"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootFieldProductBranches",
+      "source_sha256": "342e4d32e2ae2dae87e0dadb4825969f8df0514171b45cf20165837405aa93a9",
+      "module": "Aglib.RingTheory.AdjoinRootFieldProductBranches",
+      "sha256": "1296fcdf493ba5169d6f902b89c67c78dc8a70574ccdabf1dee25e935f1d8fa0"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootNestedBaseChange",
+      "source_sha256": "e487d215cf0dd3522f67260fa17712967b5b071fc3b3af2fc31f1ae62c0413e7",
+      "module": "Aglib.RingTheory.AdjoinRootNestedBaseChange",
+      "sha256": "794d04dd1a8350c2b9b895be74aa14ef567dde3d3d3f0fb4941abe93fec8d3e8"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootNestedBranches",
+      "source_sha256": "6f8442c6a8d4fde3989d41372e3b6ce15039fa381776f89bf302671ffa9f0762",
+      "module": "Aglib.RingTheory.AdjoinRootNestedBranches",
+      "sha256": "edaebc91203d3ca460bb88f03ceaa3034419397396280596153a3ed80ff8286c"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootNormEvaluation",
+      "source_sha256": "c12a7af7928921e79bee44a8bf1921a40aef0a1ce8ac0816c588d7ce0572e911",
+      "module": "Aglib.RingTheory.AdjoinRootNormEvaluation",
+      "sha256": "c12a7af7928921e79bee44a8bf1921a40aef0a1ce8ac0816c588d7ce0572e911"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootNormResultant",
+      "source_sha256": "da39af97c777422d625c08496da6173e9d68f0585a2dc8b2ccaeae2819f63911",
+      "module": "Aglib.RingTheory.AdjoinRootNormResultant",
+      "sha256": "6ce557b5fb0b28566897a6cdc9d5600cf4c2cbdeab89e570218a5eaf778ad32f"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootNormRoot",
+      "source_sha256": "836210a15645ffad57dc230d89c624efa642583e5bf7f224119a698dbe2c790f",
+      "module": "Aglib.RingTheory.AdjoinRootNormRoot",
+      "sha256": "d85f06ac4c30f55b427aade15c68690d5309753273ac3e7512cc2abb9cede042"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootPiBranches",
+      "source_sha256": "eb430210de4a2cc7c19b4df188af520aea735415f3f8aaeaafd01ae75bc0c843",
+      "module": "Aglib.RingTheory.AdjoinRootPiBranches",
+      "sha256": "ede956afe8db4b036e3cd96a4e9611135648a012c8848b52d295104b458dceaa"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootScalarBranchCoefficientEquiv",
+      "source_sha256": "4315112587dd53e15d757ee11872bcc33bb1fe74771a481d1faaf9bacfab2321",
+      "module": "Aglib.RingTheory.AdjoinRootScalarBranchCoefficientEquiv",
+      "sha256": "05a9ce824a95b95c1a92fa66f5ebbc238a0c55d9ef30998478486c4c7fec52e3"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootScalarBranches",
+      "source_sha256": "ab5cf9a7c360ed88e3f433fdd3d2dab341eb44cf1feaa2915fd6ffe0e6d6129a",
+      "module": "Aglib.RingTheory.AdjoinRootScalarBranches",
+      "sha256": "651b83c3a95c572d98cd0fa68df32e46e8ca1fbae1ec6bcd47798578df4e012f"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootTensorBranchProduct",
+      "source_sha256": "d3c095f673ebd65b592fdb10d26d87001f76e8d63491be9e0053b3fcd73e308a",
+      "module": "Aglib.RingTheory.AdjoinRootTensorBranchProduct",
+      "sha256": "4745be38d7b8eebb80ef85438d01531056badcff3ea8750ddaa406060f0edc4e"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootTensorBranches",
+      "source_sha256": "e27f00624e8645a6d64e20fde6be374a9ea09f897f060907050b2eabd3b615eb",
+      "module": "Aglib.RingTheory.AdjoinRootTensorBranches",
+      "sha256": "5c1a621654cde6b1eb5477e426b8caaeb52bf2c80745f8dace31e57bed861142"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootTowerBranch",
+      "source_sha256": "5d859266f3316559a984479cb4980090ef95468836176617d3122ae5b3814b3f",
+      "module": "Aglib.RingTheory.AdjoinRootTowerBranch",
+      "sha256": "2345ccf3e0628d526d9f29fd951010194df4fc15f165c6141a151f7ee88edf2b"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.AdjoinRootTowerBranchChange",
+      "source_sha256": "6ee97f73f2caa6e8f6fa6c615a65528b934cb788d5a13a8339e0093ebd17408f",
+      "module": "Aglib.RingTheory.AdjoinRootTowerBranchChange",
+      "sha256": "4a019157d87f308a4c235f9aba4d9b49364af58b64fea7ed6e0fd051392de4c3"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.CompleteDVRExtension",
+      "source_sha256": "95effc7e8fa1a553a630af1b8daaa1fd6a4470874ee1ff739a330e17f108045f",
+      "module": "Aglib.RingTheory.CompleteDVRExtension",
+      "sha256": "fa51fe7c44acb58d7246b2e6f7f0b48312db19f3ea9d0877a08eee0f57ceffdb"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.CompleteDVRIntegralClosureTower",
+      "source_sha256": "388ec4e897127be89b50f540e8f46ab8428010c7311ba8538ae662bf8358b8d0",
+      "module": "Aglib.RingTheory.CompleteDVRIntegralClosureTower",
+      "sha256": "a3b5ef07462ab6ac7fb12663705c9063cc7e6c78e9aa92006e843e2f89beb2e3"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRCartierLength",
+      "source_sha256": "3e9c32b63d6e406c8d68e3f176e262adcc1713211681c33baacc6ea459b475c4",
+      "module": "Aglib.RingTheory.DVRCartierLength",
+      "sha256": "3e9c32b63d6e406c8d68e3f176e262adcc1713211681c33baacc6ea459b475c4"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRCharpolyBranchCount",
+      "source_sha256": "69e9289e0eb47b2a877999cb674a92a3ad98736aae3e9e83a9530043ebc9fc7a",
+      "module": "Aglib.RingTheory.DVRCharpolyBranchCount",
+      "sha256": "ae49dc11bc992fbf0139adb1d95cca5d7bed6c48328e873bcd350c3dff827858"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRCharpolyResidue",
+      "source_sha256": "97a5da150ae4356fd86501570a7528ab11264b336c2fb91138f82982490d0e5d",
+      "module": "Aglib.RingTheory.DVRCharpolyResidue",
+      "sha256": "6566e43e16a277524565d4e71203ee77fdb85497dae643b94ce2c68530846370"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRNormResidueUnit",
+      "source_sha256": "642b092482d3dbba6fad1c43554de5885caff56a037f26c76c5ede3a6817822f",
+      "module": "Aglib.RingTheory.DVRNormResidueUnit",
+      "sha256": "9f06fc047a51a8d312fb8e48aa26babbb023c8db4b8b0e964f2cd2776c1bdab5"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRNormValuation",
+      "source_sha256": "7e08e6503d336988192dfe1bf904f8a2f523f9479c316a8bdb66d2ddb28a87e7",
+      "module": "Aglib.RingTheory.DVRNormValuation",
+      "sha256": "af15a6a5c883bdbc7a94075e5380ddd41467e9926ebd24d858c56368fdc35da7"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRPrimeUniformizerNorm",
+      "source_sha256": "8a5fe1563cd9fc32767cd8dce5b2815043cd8edc59cb9a16324caaac88b19d98",
+      "module": "Aglib.RingTheory.DVRPrimeUniformizerNorm",
+      "sha256": "2c9e1e98145e9ca28d2b9726eeb13e1af312ad0f1271e32c36c7604731b8e898"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRRamificationDegree",
+      "source_sha256": "0989e962d932824371e840d85385c29e423b63aa12cb44cf3b56c76eb67c4b40",
+      "module": "Aglib.RingTheory.DVRRamificationDegree",
+      "sha256": "7e773818e89786db19bafa4fa0633763fb8d92b2d774319286a446da893f82bd"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRUniformizerBinomial",
+      "source_sha256": "19bd4e670f65d4acd28ef6bb5e7ca8bc9538d827b51da36b734645078b5af9a9",
+      "module": "Aglib.RingTheory.DVRUniformizerBinomial",
+      "sha256": "19bd4e670f65d4acd28ef6bb5e7ca8bc9538d827b51da36b734645078b5af9a9"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DVRUniformizerNorm",
+      "source_sha256": "719efebb658cc2cdf1d497f7189d796be0d1caf4066a89ffa093a104d5da6a77",
+      "module": "Aglib.RingTheory.DVRUniformizerNorm",
+      "sha256": "bd0ff0ea712be6174a592fec522b23e42e6788922f3cd3bcfe807ecd3b45ed64"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DiscreteValuationRing.FractionAway",
+      "source_sha256": "df1ffba5e084ee9ef59714453f2eb6ffa1fb8fb3493c5b06de2a69b246db574a",
+      "module": "Aglib.RingTheory.DiscreteValuationRing.FractionAway",
+      "sha256": "df1ffba5e084ee9ef59714453f2eb6ffa1fb8fb3493c5b06de2a69b246db574a"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DiscreteValuationRing.FractionBaseChange",
+      "source_sha256": "931a5ac8cad0a83d584c276489036e48eb452069f15694d3fe3fc2e6a6e90061",
+      "module": "Aglib.RingTheory.DiscreteValuationRing.FractionBaseChange",
+      "sha256": "ff38de8cb0da3776487b87fe2be62736c57fa2332d3cf43e307a755be62f6f61"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DiscreteValuationRing.FractionPi",
+      "source_sha256": "48f8b4b82caff79d9f4304a4a8784fe808a5c7c70204da17b5a93470e91c0e55",
+      "module": "Aglib.RingTheory.DiscreteValuationRing.FractionPi",
+      "sha256": "f0d2448043524452a0a3ae408f56edd09ae6aff5c2327173a3ca70edda43cd52"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.DiscreteValuationRing.IntegralFractionAway",
+      "source_sha256": "76184c280e433996b18ff9f19a1e730bad96f95d16fee33970b087ad4fa1a53e",
+      "module": "Aglib.RingTheory.DiscreteValuationRing.IntegralFractionAway",
+      "sha256": "62d2a996b1c7ddda39b69c96a20676efd64b1a090c5b04e0e05955dfd8abc50e"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.FiniteAlgebraNormLength",
+      "source_sha256": "af17c54deab9f52fa68e67529f965546ff2d81779b1d65e79ddc035f12529507",
+      "module": "Aglib.RingTheory.FiniteAlgebraNormLength",
+      "sha256": "f7f2ad2d3b448b8702d855fb1cd40d744aeecafdb311603f23dde9a484d22899"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.FiniteLocalResidue",
+      "source_sha256": "4ecdc9a0862e47a470fb1fbc17ca70ba7b0d04890e861bd45b59e56e64d33a34",
+      "module": "Aglib.RingTheory.FiniteLocalResidue",
+      "sha256": "02c412e25337d609b04bc7ddaf5815687ab310215de4949cfc98a1494151aec8"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.FiniteTypeLocalResidue",
+      "source_sha256": "b20fdff13e46b69dbf10caa7d8613db6402436b087ce3317855136b0206ea565",
+      "module": "Aglib.RingTheory.FiniteTypeLocalResidue",
+      "sha256": "b20fdff13e46b69dbf10caa7d8613db6402436b087ce3317855136b0206ea565"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.HenselianPrincipalRoots",
+      "source_sha256": "9badf58282a434272b448f648f70f2e70793a82794512653469493d5a3558dd6",
+      "module": "Aglib.RingTheory.HenselianPrincipalRoots",
+      "sha256": "da04dd6697c40e816b91615ca92adfbcf037596c07215f597a420dd2294d4c11"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.HenselianUniformizerNormalization",
+      "source_sha256": "db64034350587ee40affd3058a5e4eb70dbe8675006f5a3aee345f2c18d39747",
+      "module": "Aglib.RingTheory.HenselianUniformizerNormalization",
+      "sha256": "c09d94d2f0b7729a01645aa505d293779ffdc3142713a3744e3ced7558057e93"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.IntegralTensorCharpolyProduct",
+      "source_sha256": "e14a5a48af0744f88a5d253dbe85900e2ef4dd8e276f5c54eae58ce56916907c",
+      "module": "Aglib.RingTheory.IntegralTensorCharpolyProduct",
+      "sha256": "316b3833f73d8e50a3b472b791189475a9ee8323d19e437f002a449d02874acd"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.IntermediateIntegralClosureTower",
+      "source_sha256": "812cfc74f0521afc650058332770d3b75d504faddc6891ae68090a6d9f091736",
+      "module": "Aglib.RingTheory.IntermediateIntegralClosureTower",
+      "sha256": "4871e92a3ee55fc88f603bf69c4ab776249429741b131eff33fdb4f8f243b830"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.LocalizedDedekindBranches",
+      "source_sha256": "53f4591572c8827d6468fb598aada5ae60f8a29fa4df496d3186f1962c3b5efe",
+      "module": "Aglib.RingTheory.LocalizedDedekindBranches",
+      "sha256": "23a7f69765036de3724fc1a959bc862171f0b22c4bd70289c2fd6ceb0190c6ae"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.LocalizedDedekindFractions",
+      "source_sha256": "888625e5921b7fed06694f287a978bdfca5050cf52d47f8b6a698bda60b3dc27",
+      "module": "Aglib.RingTheory.LocalizedDedekindFractions",
+      "sha256": "ddcb2e47cde7f8a46e260096481faf760ee85cf0bd8c92eab848b02ce6157c87"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.LocalizedPrimeBranches",
+      "source_sha256": "ff0db029dd3360bb092a9ffd6721297771671be96182c9c20224efcbd2b6e51f",
+      "module": "Aglib.RingTheory.LocalizedPrimeBranches",
+      "sha256": "b48a6640443d5f5b2e302bdb4862cd9364cdcc947e64ef1c8f438a76ee4d8d68"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PolynomialFiberNorm",
+      "source_sha256": "f5960a7f9e0884e681915add179aa01795f442c9fb3881b41bcb4369f7101785",
+      "module": "Aglib.RingTheory.PolynomialFiberNorm",
+      "sha256": "bb00fca90033628db4475e0030ec0d6e2a43cde6a4c074318f1b0ea37decfa13"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PolynomialLocalResidue",
+      "source_sha256": "2e7f07aed7c2a8cf6f165d2ff143958d5c3f752d45c658ac4efa9c664b621bba",
+      "module": "Aglib.RingTheory.PolynomialLocalResidue",
+      "sha256": "2e7f07aed7c2a8cf6f165d2ff143958d5c3f752d45c658ac4efa9c664b621bba"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PolynomialPlaceContraction",
+      "source_sha256": "0605019889b60381f6f6a3579bf3e763d1b00b0a662b392f149840afaaf689da",
+      "module": "Aglib.RingTheory.PolynomialPlaceContraction",
+      "sha256": "e784a2183c52b606a7023a1f4d5d7ee77744e32da101e2b53672d2a1d38a6d3b"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PolynomialPowerFactorCount",
+      "source_sha256": "55bf93aead8994e62fd83a00f93e9cddea70d66e2818524959b4f79093275c8b",
+      "module": "Aglib.RingTheory.PolynomialPowerFactorCount",
+      "sha256": "032cedec6e97b67bb0ccc42893d9e89106a539095a0edbfcfaaebbdff37202aa"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PolynomialResidueBaseChange",
+      "source_sha256": "a402fa43e1aa40545a94739a3474a240de9d32850e665c1f78c7ac8dd190c099",
+      "module": "Aglib.RingTheory.PolynomialResidueBaseChange",
+      "sha256": "dc60b2bc86cea7339a9463e5a53fdc4c350f55ae668c037b9e9fe09c9e47d2cb"
+    },
+    {
+      "source_module": "Motivic.Aglib.RingTheory.PowerSeriesConstantClosure",
+      "source_sha256": "cd65c8189e89d5f75665bee6f878ac65f1e6d37c414378d99e81bcf9af06b722",
+      "module": "Aglib.RingTheory.PowerSeriesConstantClosure",
+      "sha256": "758e375d7bccef306c36049585fffd7ce2e5e385b00661d7a396631482da0547"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK",
+      "source_sha256": "3306659ef1b291458ede7c7f3936604772671b952fc665d2abbc6a11d66f9096",
+      "module": "Aglib.KTheory.MilnorK",
+      "sha256": "c5068ac72b49274e1399c0df9cff3695ec5ba2a32a074e72c59c1d3a870cecdf"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineCurveNormedReciprocity",
+      "source_sha256": "a22a25cf48a9b843fe8aa432677de873ff56c4a51369771761982774dd7a154f",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineCurveNormedReciprocity",
+      "sha256": "0a2246685b2e1ae620ff67babcd65f45f5de71f2eb4f67192b5337ed2e8112ec"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineEndpointBaseNorm",
+      "source_sha256": "eb467a991948016e12698a906fa19467b5de415cb0691e576d603a51f6ce8dae",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineEndpointBaseNorm",
+      "sha256": "e1d5995bd2b25249f616fc284626be640b6f2f717077fecdbf6e758094d6a20b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineEndpointNormAllDegrees",
+      "source_sha256": "0ee7e57c20fd77d604133589c05e02e0d9362128f7fce7b3882494f53efb197b",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormAllDegrees",
+      "sha256": "3feccd4d1f16141a3b2477562b2e7bfb0c2ba324cb065baae898678d6e19594e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineEndpointNormEquality",
+      "source_sha256": "1e67818e129b3f9214daa8fb9577ce288d3b06e8e75b2f3fd79d821f69dbb3f4",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormEquality",
+      "sha256": "7df4a121cabaa047c880cc6e70316d78b2d6b34336a130996f07411dd4c343c0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineEndpointResidues",
+      "source_sha256": "79d64fda78b9e26a4be986aa09769bb87576dd860ab4b5f97108bef8f8ced7e4",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineEndpointResidues",
+      "sha256": "a7a42b941370f62dc0ac6800754760897a4198a47587f9c79ec250ba07e8555e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineNormSpecialization",
+      "source_sha256": "f5d7c5dc32da5beaa160db0be8b034402c7b26ad0cda2a4b114e5642633021b2",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineNormSpecialization",
+      "sha256": "473cea3e2a14c0d9d25b71372165bdbd67c8ed32b79a62a82c2b025c4b29d019"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineUnitSymbolResidues",
+      "source_sha256": "392047358f74c0922521c009dd26f2eea44a3461505d53efabbc01011020c0ad",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineUnitSymbolResidues",
+      "sha256": "13bb1c7f82b992acae3aa7f8155722eb04dd6d71107a8eb9832124395145d3ce"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.AffineUnramifiedNorm",
+      "source_sha256": "95346c666b9d8e03cc15017f70a9f2a6338b4a1bfc34b008555305c129f30056",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.AffineUnramifiedNorm",
+      "sha256": "9a7e24b17252675f853a9973492e28e61b70f8e789fd1714d5aa429aca0b2cf9"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Basic",
+      "source_sha256": "a12f798e250ba51a535e8378ca1f38309d6adeb5711d62e3d5e7cd14096e973e",
+      "module": "Aglib.KTheory.MilnorK.Basic",
+      "sha256": "4297c2658506883d5ec2f6c64643ab739ba268b4be86127e785c9b7c201bd7ff"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.CompatibilityK2",
+      "source_sha256": "6e48a40166b694c2312a4afbe2e712d019ccf79951cdc48ed40d016b0c334453",
+      "module": "Aglib.KTheory.MilnorK.CompatibilityK2",
+      "sha256": "c126e558fbbb14a6b04264ef28759f08bd8b6535b7cb933369ff98e0119e1947"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.CompatibilityK3",
+      "source_sha256": "1e7122e78307ff9ab03f79e2f47e7610655026fd0ab377bacda39aef3a8296dc",
+      "module": "Aglib.KTheory.MilnorK.CompatibilityK3",
+      "sha256": "a91deeb4899bacec48bb264e5565d627dd119dc36ef870eb8ca582eec0f6cac7"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.CompleteDVRResidueEquiv",
+      "source_sha256": "4ec5131f1f995ecebb9ae25599d4b929bc2e70a26c9c4d00dcfd445955241d1a",
+      "module": "Aglib.KTheory.MilnorK.CompleteDVRResidueEquiv",
+      "sha256": "a8817f4ee8cda2c0135f55d34d10f3539a37005c9196873684ec1738b1795475"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ConstantRestriction",
+      "source_sha256": "2f90307e0513ea1bb168e3dd626275d6a238323b35c76bb99dc5c877533629e4",
+      "module": "Aglib.KTheory.MilnorK.ConstantRestriction",
+      "sha256": "d9865b76e21a8203fda9954951aa6cb25c4ffe52e1c2cf055740871387ddcad7"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DVRValueCartierLength",
+      "source_sha256": "1476b1e18e9402fa59c312349f99cf035b56496dab0b7cf4eb5a7cb6e3de7dc5",
+      "module": "Aglib.KTheory.MilnorK.DVRValueCartierLength",
+      "sha256": "8e7cef36ad6952b05a0a46a1d2f37c2ec4b864390d3f1119d21db7bad2bb99d6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindResidueDirectSum",
+      "source_sha256": "a92ff0280b2c592dd499c529d0fb62ed1b5fc16e6fde1d42ffd3808552318165",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.ResidueDirectSum",
+      "sha256": "c0f5eaaf02daff0bb54a1158104a08366af4b2b4665fa3fc64012c6aa6d3699c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindResidueNormPushforward",
+      "source_sha256": "a8576cdcf9b9ea06ffb7e930dde7391ee1543bdfe7a10a4235cf96c61c1064e8",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.ResidueNormPushforward",
+      "sha256": "47754a7e702d6216b5a5b5ee9b57d98b4f0d93e0181781b0ade9e38fec41a326"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindResiduePushforward",
+      "source_sha256": "baee4faa81506628a72700bd940d8d4f297a3c0bb513bc2cf655d12790dbff48",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.ResiduePushforward",
+      "sha256": "187f1149ecfdca501eda5b8644e4bcff02c7fb7124cb9b107488a67cc431bb5e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindResidueSupport",
+      "source_sha256": "a339f6f2b17d8731dce16295ff3b4bf4d0da3e0a713af8d9e0e0013db35cf2d7",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.ResidueSupport",
+      "sha256": "2e82227130154bfb323f4862efa39fcc06973de0a5057fd45bc44353571b56e4"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindResidueTotalNorm",
+      "source_sha256": "a34af0cf362a3cf135255506d50faae907487e6d6a484d0b611b76dcf519b1e8",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.ResidueTotalNorm",
+      "sha256": "2f2cac9dfdfc03247bf7cd169870028bab6d963da103f195a4dd16506365bb56"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DedekindStalkResidue",
+      "source_sha256": "b3277f95706bf881d9e3f7364d850ae6ae3cd7fc4e3ed04ce907c30c3583092d",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.StalkResidue",
+      "sha256": "e10789de9a4ac89b84c1be21ef9b3954770aa42c7055ff229bee215122e13b19"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DegreeFiltration",
+      "source_sha256": "f2bb05783b81a52fef0902a5c40e86f5f74445b91935d0386b7cf082d0a7e4ed",
+      "module": "Aglib.KTheory.MilnorK.DegreeFiltration",
+      "sha256": "f29f642bf91e360c3e93b4a162db5d8d7d6a4e4981dcdcbd207b27b81925d8d6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.DegreeGeneration",
+      "source_sha256": "46e0f1c8081a213f0af38ed040bd42a570425a2bc39dd6d34998fae1be431693",
+      "module": "Aglib.KTheory.MilnorK.DegreeGeneration",
+      "sha256": "f1e1c5770e988de55e60c119018593a94c91dd124916c81443a41ba9ce1d8917"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNorm",
+      "source_sha256": "115c068e492699b329b2e4b58e71cc9299df086f171c236c7b87361a68dffffa",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.Basic",
+      "sha256": "bdb81ae4efe4c92016ef6417f0174c99ce2920777b83abed60b03027d116cb72"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormBaseChange",
+      "source_sha256": "2eeb3b49cfa644fff300e49636c486f59adcd246f1b8d65fe9642f8d34ac402f",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.BaseChange",
+      "sha256": "25427a2f40ae0c6e4cd02bc7be47d3d22030ca8e53fbbed29540e602ff2e58f1"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormComplete",
+      "source_sha256": "7f48dc13aeeb040c821207a5bd39ccb1b9ab74b25d3b3a99b3b8e837be19f027",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.Complete",
+      "sha256": "bef849c7a4e1eee2bf6185cc9d89833ade50bb785ccb9aa8d96de0651bce7faa"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompleteDegreeOne",
+      "source_sha256": "a83d6b7e249aee556bbe64579976dc8a992b86b631b754d420ebeb4700433d62",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompleteDegreeOne",
+      "sha256": "795d1c997d20e11e1f0ac46ddf5ff93ee0f4cb996db4fd39654ad3ad0c2e5c0b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompletePGroup",
+      "source_sha256": "29f006552b7ff90477914b6e4d256cbf0a3303f4a3dcc98c83e728e7daa819c4",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompletePGroup",
+      "sha256": "6b508a77f9c32bcc02da79bfc213232e38060d1066c38e9dade8537eddfc70a7"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompletePrime",
+      "source_sha256": "4e4d62ca53fcff2307633dd540767ea085db5fab7fe508dd7da310a470c837a7",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompletePrime",
+      "sha256": "3dfbc151e2f6abf8e3eaf1541a87f130815877cd0cafd88890a769de8297efc7"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompleteRamifiedBranch",
+      "source_sha256": "e649caddf419612157a91a0684d6a285d7a0ce423341a5e5b180ae90d749f966",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompleteRamifiedBranch",
+      "sha256": "b2aa8111f4a4cf82a88f1ac7924ebfa77587cccb68a9ee6c8d737d39ce79f2c9"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompletionBranch",
+      "source_sha256": "61977521335029231ebe443ec343fa09ce3b148e1475bee455c79f7556c0cd1e",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompletionBranch",
+      "sha256": "d4561cef762f41def2dfcd706807576bf220b46151190f2c5692856339d63bc4"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormCompletionResidues",
+      "source_sha256": "9226ef84370d63fc4b2ad237b8f423104a69b2fb7e0bcdb306e6d412f67f6d9f",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.CompletionResidues",
+      "sha256": "c01ed2f7a2af24c2362983869929e5f60284176eb39129facfeb7def62972952"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormDVR",
+      "source_sha256": "aad2107b02571ceeded37bbeb8d8ec4a10de4c6221b9318433d4d0b6ba8f3529",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.DVR",
+      "sha256": "a046050036096d06327b5477fceebcc8265e587896ec17e639fe43e4aded392d"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormDVRResidueEquiv",
+      "source_sha256": "0d73b6d118c9e342a8f9a6fe7fb0c746ddaa1905cd379a197a8086dc20035320",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.DVRResidueEquiv",
+      "sha256": "8ade5fc8c014c1daad94e2fcfe6f2756ebd62d9f41ff52ec4dd5da4e9eef6e34"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormDVRResidueTower",
+      "source_sha256": "f88c67fa0d0fb3906e029b8fd0832efd115df2657ef9ea2566bbd421a6aca96d",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.DVRResidueTower",
+      "sha256": "8f6cc763b2c793261407f1008ca5c9372c94096f221e84b57d3131f3c5fa4bf7"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormDVRRestrictionKernel",
+      "source_sha256": "0ba2da5610cfdf1d325ea58bce294a929d524012207695d80b103b50ac3d41de",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.DVRRestrictionKernel",
+      "sha256": "dcf588df30ce2bc56d62c0aa71895fffe231b44d01cd858bc671697db5f857fd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormDVRWeightedBaseChange",
+      "source_sha256": "c3f70264c9c7640087d51ef3f25d8666fc0a3210600417f551611e9a19d8d325",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.DVRWeightedBaseChange",
+      "sha256": "1b8fb372b4184c6917bff2b493e1aad149e03d9f68e47c8888164d5be77d1c29"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormEquiv",
+      "source_sha256": "15451240c6b856e6deee0e5f403fe7c6e09812fbd4951cce479e42e46cef55a5",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.Equiv",
+      "sha256": "9071292151c2a238ffb0833971d438d3b7e4354a95f4e4fa30b6512d450f0079"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormInfinityBranches",
+      "source_sha256": "519ff9be7de63e1673f080cbf980142dab1241a168df93024162983d870305a2",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.InfinityBranches",
+      "sha256": "30e861c4ecc3ffcb2b32397df38735dc4355a1a5e6127a2fbf7289d0b1d8529e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormInfinityTwist",
+      "source_sha256": "ed3bd4b71d72b0cebd0ca1fd50ab5edbaac072591eea47d771cd2bdf8c018747",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.InfinityTwist",
+      "sha256": "8103d52c31a5f1f695398d9456d60a50ffe44d0247d91a15caf7c68ef45dadcf"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormNestedDescent",
+      "source_sha256": "a886b4eecb474093a0b5655aa42191a54e28b12ff3dd860bd85ec8e3bc69f567",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.NestedDescent",
+      "sha256": "b6c1686ac43ef14429dde38e78db117f597de7f367e1929f6935b96f5f066276"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormNestedSum",
+      "source_sha256": "ab262af08421dba334e726175a05e12fa412a0b2e0268cc1c5b0ee43447087c1",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.NestedSum",
+      "sha256": "d50c893726fa16c65de4b5ba98de3ea7b6fce592b8d724629fea1deafc4415be"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormOne",
+      "source_sha256": "af631f0bdda63291374057b0e2b55413b356b7b38c4f3637d7ade8f316be09b3",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.One",
+      "sha256": "38b7b133cabe1f911b7a8e6e0200aafe83fb7f95ac1a2b532322f911807e58ac"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormPGroupTower",
+      "source_sha256": "12e1a6ffb36911e5fab96662fd8405efcad4595cc1da8919d8f592f90e9d3363",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.PGroupTower",
+      "sha256": "45484117d27316a7ed7bccdfa724c0f6c6bd2ca553b6893af51a4dfd477f5768"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormPrimeTower",
+      "source_sha256": "6c4a7b05950c2e4d6c8860b56234de96201393bc548d73e8a640fa812dc63a61",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.PrimeTower",
+      "sha256": "a93e9ed8190c480228f6ce171ab80526c7d99302485c3a90cd83bc9cd56b9f5c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormProductBaseChange",
+      "source_sha256": "3e0630c3e3cb7fde8620f1b6fa8080b87e1c6949fae53b869087fea6479578ec",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.ProductBaseChange",
+      "sha256": "78ca1f0c524625761f9a96b85def5f3487931f4c5bfd379477d7b50d84d2c0c5"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalResidue",
+      "source_sha256": "03c380eb8c9bbd2ab46a37401579f70a31359cadfa46779b4fdc7f9b98013905",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalResidue",
+      "sha256": "3e5233601b84e21db2e9644fc4e705f799a10c884cb1e812e71de342d9b9c12c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalResiduePrime",
+      "source_sha256": "74d345fe1e76115d28a667892bf7d8fa111cb9745bd98edda06cc620820fd235",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalResiduePrime",
+      "sha256": "4f6df2ad91aff25d695c02f5b4c098de5fcd228c4975f9f461bfe6f45ea397d2"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalResidueTower",
+      "source_sha256": "efc59d913e428d3861e1ef07ca05cb9d38c7060ea6c55c84b287a0280fde4e2e",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalResidueTower",
+      "sha256": "05c52d5c37085a9807f41db3aa60966f4ee25122b904b1877b6c0777b4ba6a1f"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalTower",
+      "source_sha256": "064edd0282f35fee6770e8cc01a34dfb4762dd64b24dcf14914a39c6523f633d",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalTower",
+      "sha256": "60dfadb11d45cf3f10673ffa7b9ad06876d929dda1baad37aa0301347807848b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalZeroResiduePGroup",
+      "source_sha256": "792369fc27335979f797a2135b7a72f560edd076bdbe1bec7283e48b52a2885b",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalZeroResiduePGroup",
+      "sha256": "4da7fb4aac624b51c00e84df9e47a4cd0af4de935c7a5331395fc9b12df5d073"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRationalZeroResiduePrime",
+      "source_sha256": "2a5af8c7d6cda0af72bb34d156701af8f4455ed984184c85fea017dfb0256f13",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RationalZeroResiduePrime",
+      "sha256": "05fada3b49ecd6ba51a5bed38f64527a1e2d402fa4e9d05be938c96e0db72439"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormResidueMinpoly",
+      "source_sha256": "2e77595ccb5b38d68efd2fd9c659c5e1514010d59f9a1a78b429cca75cf8b881",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.ResidueMinpoly",
+      "sha256": "7888d1a0a3bc310116ef587a7bae82548d5beb782d432bca3d00fa8e49a4c72a"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormRightProjection",
+      "source_sha256": "c8f522698c72f4d6fbd2af3e01cb22a9647c45e733834e9a7b9013be497342f0",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.RightProjection",
+      "sha256": "b9f9887e8b9183e36dba6bb787fd6ae245dea3537a0981991e7df0c4fed2e652"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormTower",
+      "source_sha256": "fde8d2e9c75d9ee55b550c5d31634999a46d2d14118b9fe22633b34722317470",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.Tower",
+      "sha256": "6df5eaf9e4f8845929f58e363696e3f32ef1c7aee0407fb6b432464b9cf8438e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteExtensionNormWeightedBranches",
+      "source_sha256": "6197816f08a144de594cd80b18397487d36cda2e03c3ffff889f83dbea6e45f1",
+      "module": "Aglib.KTheory.MilnorK.Norm.FiniteExtension.WeightedBranches",
+      "sha256": "58b757a13e17d9de194a720424e17055b9ca12989e24e22d3486a17fff2a6760"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteMixedGeneration",
+      "source_sha256": "b0d6135f3a7bfc737605d1fb345e5406ddfa2b74293d84b35e0b28e735b8f19f",
+      "module": "Aglib.KTheory.MilnorK.FiniteMixedGeneration",
+      "sha256": "b727964df4774760000fb57e4c14e7d75d1d76370786e2d5c458d3a3d11aef46"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.FiniteRelationDescent",
+      "source_sha256": "8264abbbbaed0c7f36ceff599d84fbf0491bd0e2ad41bb04edee841788e9feba",
+      "module": "Aglib.KTheory.MilnorK.FiniteRelationDescent",
+      "sha256": "973454fca1e7757dd53918e0c61b7080ebbede279e182b1bc6dde0c6216a8dd1"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.InfinityDegree",
+      "source_sha256": "f1299cce5cc56f6813262b3596de9b4535f0fe3365cc689686549dde95369475",
+      "module": "Aglib.KTheory.MilnorK.InfinityDegree",
+      "sha256": "326dcfa9ca30261043011aa2fa37a63a77c26f6b768a8685b80e314e1e5e4b95"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.InfinityResidue",
+      "source_sha256": "ccfe94d1c9b9fb79c2fb05064c02368152b31da998415ffbbb66019a3b674a0a",
+      "module": "Aglib.KTheory.MilnorK.InfinityResidue",
+      "sha256": "0b9a724ffa1383cfa15d476f5bff282dd3937f09d6cc3db73df0b4595833e3ae"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.LowDegree",
+      "source_sha256": "59c1b540251b3ed16c0f8e630b8e303c10bd8f478e9d565eba0a4e0f89810914",
+      "module": "Aglib.KTheory.MilnorK.LowDegree",
+      "sha256": "14106fea1ba3fc41f6ffa57260415ca0eacc7773aa7ffbc2a76879c64ad7234b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Map",
+      "source_sha256": "23cd8a61a7efa88c4e77ec7b8e9f62e2d0ac7ddeab503a89a8d0a3457d7cac07",
+      "module": "Aglib.KTheory.MilnorK.Map",
+      "sha256": "50b66c05062b5d9fc512fe7d63be4aa09a5a7d2455d8fdfbc3d1135648bbd0d2"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.MixedGeneration",
+      "source_sha256": "0fa3b74800ae13216c89d7596f79b9f93edf8cea782afae20633a6c0e80a48cc",
+      "module": "Aglib.KTheory.MilnorK.MixedGeneration",
+      "sha256": "f832febebade040566f98deeeb3ec2c69fa36419dd04435585d1f3ac7b54a3b2"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.NormalizedCurveReciprocity",
+      "source_sha256": "a48f19a1f6788d0e0054c3e4470a9c9944c93bf1961c395cbfa66c94b212778d",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.NormalizedCurveReciprocity",
+      "sha256": "514eb41c6fb300c7e7ef18533ae3d72664166dd72d1f2f3cffd8c7f11a6db3bd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Norms",
+      "source_sha256": "1db8545e0392b11df4f9d53101aefcb7923d9b823bb583a23bc9cce68c0efb33",
+      "module": "Aglib.KTheory.MilnorK.Norms",
+      "sha256": "bee7ccd44cf9ebadec997304e5e0d6e83d9f55eb170878f81b118882228115a5"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PGroupNormalPrimePresentation",
+      "source_sha256": "878592f39ab24e2ade845e46f0a6093889d003772e8be92605680f5e513eeb8d",
+      "module": "Aglib.KTheory.MilnorK.PGroupNormalPrimePresentation",
+      "sha256": "d2fb795ec94720e75270c9a4da7b1b5195298973777a6f7b19a120190c4c17f4"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialDedekindResidue",
+      "source_sha256": "5984cd6e4e9dd841222ee0b06ca90695b0c8c41eafe67b869cbe4750567cc11e",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.PolynomialResidue",
+      "sha256": "c8ca681d6746b5120cce4a6d96f2580717a84272d09ef262ae33d7c1d7187661"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialDedekindTotalNorm",
+      "source_sha256": "3af26bcf0f9994413385f460bc3527a15c2be3cd941bddf33f9bc27d4c7c9fd1",
+      "module": "Aglib.KTheory.MilnorK.Dedekind.PolynomialTotalNorm",
+      "sha256": "ee294d50724cef57e0a90674ae16ca985cdb7c709931bbace5b1589ea88da76b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNorm",
+      "source_sha256": "6fda2608761c0f52764f8c2252801f76b3504733764a03363634274c1e5fec19",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Basic",
+      "sha256": "8477201115c0b9f8ffa44aba155501269ab6e35063e0c3adcae9e9764d74d267"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormBaseChange",
+      "source_sha256": "e506739ee78049805fd494580e5d3d98f1e7f91bcf58f2d0cf98d2a101a2d99d",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.BaseChange",
+      "sha256": "7a1a95cab724cf67b89c39d8fd383a137f55ec48c7b3b2f2733154983996f9dc"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormBranches",
+      "source_sha256": "127357fa4bb2277b4eae315516907a819bdaaf4cc5ed77d22d70cb1b5c0ea1a1",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Branches",
+      "sha256": "eaef2642941252f65c315156ad60be1f2f8c144b18bdc3e5c2d9f4ab2e6b7509"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompatibility",
+      "source_sha256": "daf90f60d2e66e21ab1c5823f3e8a7cc1e2d3327f832ac9d9e1b7f741d450a69",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Compatibility",
+      "sha256": "c9fd13c6e046c8fa37375189cbef2f87cbbe6cdf8ee7dd88c58e6399d70769c4"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormComplete",
+      "source_sha256": "3a32c9d277898fb0af2ba1cce1c2dc8e5569c5f8ad95ed97b1fff724f24f7f4f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Complete",
+      "sha256": "265e4a1133dda89c4fc7c318bd63aad32b895cd40e8854cb9a30f912d7679941"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompleteBranchSum",
+      "source_sha256": "352d1a36c419a114acff6c59dde6e5a8c0e334483f33528bea758a4af5176f0f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompleteBranchSum",
+      "sha256": "1c3d497ab0124a3ebc1bcda74d59a81482b6304a92c8188785fa4642ad2680c3"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompleteCoefficientDiagram",
+      "source_sha256": "0f3750c9afa075cd94431f867c7cb070083210e9d3774f1445a270aca408837f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompleteCoefficientDiagram",
+      "sha256": "3362ff0c85779983c8e7d7054cc1ef6ab39ede3097bf001a8fdb705bd929c307"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompleteCoprimeDescent",
+      "source_sha256": "b426c065ca08bcdb2e063afd27847dc3655bf8a4cf6dff31b47009211c767afa",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompleteCoprimeDescent",
+      "sha256": "7677651e9e994b3d45012bbede88631a493e5d4fd7d5f6a21914caaa4e1ebfc6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompletePGroupDescent",
+      "source_sha256": "560241da70c34b357cdaeffc8502956f5346fc308e9b59fb87c88b07e1344972",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompletePGroupDescent",
+      "sha256": "98e5e9b2791f05354ff21cc3dad00f44689e48639ddad7b0e8cc5e690e47822c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompletePrime",
+      "source_sha256": "b90ac6594b7d5c23f082ce9aaac14d1ccca013eabd1bb2117cf7e1dee9f53296",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompletePrime",
+      "sha256": "c46f3c4b922939846c1e88955b6b540534d42f66cf2427bdf3be7c30d4cd3a34"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompleteScalarBranch",
+      "source_sha256": "f80b89e1fecc62d964a44320dbc95626e4717889ae0aa87e38b9776f12e31141",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompleteScalarBranch",
+      "sha256": "9b5ac0a2244fee85df0d595510b933cae14e776576b590233b5f6ba2fb2b2ffb"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCompletedBranches",
+      "source_sha256": "c9d5899b25b36710982d881330b54513e715b6ba7e497ff1f9507403b84e0039",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CompletedBranches",
+      "sha256": "2f0de5f65f110c6b253ce5e7d542a06a54342f8fc045e7c0407a5ed1b9b003ce"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormCoprimeRootSquare",
+      "source_sha256": "42cc0062700b0fb46aba99693b2107aca41b9e6cbedc2d67c6768c586cbd4826",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.CoprimeRootSquare",
+      "sha256": "2f75a30ea600af314ea33ecda10bf10f9ac1c6e28ee0809da3d0f5c6c5eddd21"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRCoprimeBaseChange",
+      "source_sha256": "8c9b49dbf9dc72e0ca86975177e3ccb34449454403c13dedec8b7bd3c9330342",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRCoprimeBaseChange",
+      "sha256": "e4c3cd97e4806855b7df7a95660855bacb718cd72c424595642f5a8e1586f346"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRCoprimeDescent",
+      "source_sha256": "5bdec7c97dfa32c1495fc75b5196f08a5d58b82ad4e03875c06ab557e8320ee2",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRCoprimeDescent",
+      "sha256": "f9403a4e97018da802dc1abc242c2bc03b2953bd26ef74b6fb1149e5c0d83401"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRDefect",
+      "source_sha256": "0e6e6ded1433613f8fcd7cd82714ca0e4e76ffe684045dbef8652b9f8a0a3598",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRDefect",
+      "sha256": "a79b762126b7c97096a799b7de42df9d9493d549e14d02c793964c262d30d645"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRInertia",
+      "source_sha256": "52360df50ba72edbe76d0c24255200e266f43e16644df8804af0e5e40c36817d",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRInertia",
+      "sha256": "57bea48053647843038b62d872b7c218d69110804ca91bf27da8c8d38069db19"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRPGroupDescent",
+      "source_sha256": "b3ada8c332694d5085e1fd0d4ae733b3d6f28be680ab7f4b34880c47a93b61e1",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRPGroupDescent",
+      "sha256": "8639e6df73f5f9a6af1eb7488240bf2c6cd27d27f01849a188e1c477b377a751"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRQuadratic",
+      "source_sha256": "0994b422f4fe9302f1ffba8d1be4005ec39b6f84ee4c58acc87329dcde283d15",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRQuadratic",
+      "sha256": "1435c8091681d95b559e2ee17cf6a9848e49c4522c2fa878804583dc0b691bcf"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRRingUnit",
+      "source_sha256": "d36e3d153e51391361107a6cf9dffc81d74e1f63d7138176451d477b8d3b3cf9",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRRingUnit",
+      "sha256": "8c38e35567f967ee8f269bae32efe1d84bd3d1fc57e64f3504c645f85f2d5355"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRTrace",
+      "source_sha256": "43dcaf20ff800be2039a2c874d1849967885f2158fd9d90829c6e95dd591f6a7",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRTrace",
+      "sha256": "7e5247776596e3014f7a84afb2fb8efd4c1f3b30fa2062c85d0e406911fbe240"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRUniformizer",
+      "source_sha256": "9a2bad576419d00f49d7b0a60c61017222cab4f5b53c6402823eb940741a5a34",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRUniformizer",
+      "sha256": "46c89c0a5fd53571df249c5370dbcb5b1dbb7475b8f336ce0a3ba1851a0c76bd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormDVRUnits",
+      "source_sha256": "f775a9b38840d71a66493fe8e3c43739295c71230f76d274693aa63b7b57bdd5",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRUnits",
+      "sha256": "45d9ee98d4841ae696f8a311fc4d4ae1b13738ddda69ea293849fdc1a88e2d9e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormFiniteComparison",
+      "source_sha256": "81c445df03dc8c5a628b2f6020cc9ad61092cc765c3adc55342622a47317778e",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.FiniteComparison",
+      "sha256": "4cbb4f5533b6dcd715496faae970038d728809ba734e01e19ed702332826b627"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormIndependence",
+      "source_sha256": "c7a879b26ae580550816643fffccacc9b74f76c3a3865618f0eee03084c60b9f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Independence",
+      "sha256": "828e0105f72db380a45220b5ab698729855f15a5313bb3309a9fc97c40118309"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormLaurentConstant",
+      "source_sha256": "8649ee96b9f3e4f5ac921b590725f523f4d8140693498c06c58209350d0ab257",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.LaurentConstant",
+      "sha256": "bbed91cf83d307a8cf2c79a754f9da913fcfd369ca1ea16cdac611f923e143f6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormLinearPlace",
+      "source_sha256": "8f4a11df44015a0cbaf10cd54e6e05744f525e9c3c0507873671974bcdb19a9c",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.LinearPlace",
+      "sha256": "fa65e4cc5ac3280312aa9626fe0b2efd41719ae91e110928c245b6f44ba6d25d"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormOne",
+      "source_sha256": "48883cbc40ca62bf6217d606c85278228befef1d31ba58d1bd8f3834462d9d17",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.One",
+      "sha256": "050eb9064a0998660fe36dace5a37180e65dbfc64c2f0c65e389fb94abd1bcd9"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPGroupInduction",
+      "source_sha256": "c3908dec98b391851641b258b4aa5c094ddc8c1c92b23dfc2d23402e26741695",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PGroupInduction",
+      "sha256": "6e48d28734dfcf21cee79331d5e09beecd7679f94e654e582e7764dc0d2aeaba"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPrimeDiamond",
+      "source_sha256": "d99b1c4d7830d24ab065d7ab4fe69dc3489e9ba6db2d6fa7358c29930dd8745c",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeDiamond",
+      "sha256": "06653d9be436b9868292e15ee4dc92f277a162383307876b9b5938825d62fa6c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPrimeInduction",
+      "source_sha256": "56cadb5acdbef2072bc3e3ea6144fbd908bcbeffea950d8cbbc35b0b8062e533",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeInduction",
+      "sha256": "fbf54fc3f56002267ae04ad5ffad2a3539de8f746d88cb89a2e41ca99c1f9255"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPrimeNormal",
+      "source_sha256": "64b9c6a66b77ed93055a23217bb8a91b31d2930628e4113f62fd82ed3df3d038",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeNormal",
+      "sha256": "8e1030b55bae5e4176cad66790c31834c54a0b152132cdd71eb696a24bbe554b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPrimeSubfieldInduction",
+      "source_sha256": "36a4b10907149c87b4c2feff0011c2f37df5951c608b7c34a2cbc5fb78146b0a",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeSubfieldInduction",
+      "sha256": "ca29b83e3e589ba833517d6ea294074a39cce0e3865d083bedbfbc2560a6dccd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormPrimeTower",
+      "source_sha256": "c1a8c19bc4382ba12d4b81ea6164e0ace4161f9689964f5c56abee3aab6f513f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeTower",
+      "sha256": "0a69ffbf868a0ae00905a3f79db8684642ffea8f95e1b7fbbb5d69e83e7a89c9"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalBaseChange",
+      "source_sha256": "7a67c28e123819c7a8f6059edea4d1ceca2b88952d012b9d77d7891dcb70fb96",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalBaseChange",
+      "sha256": "75eb6a9686a474e01be999be8e284c11526f8838c8571fadb469911e249b03b8"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalBranchLinear",
+      "source_sha256": "f01552be7b74a240cb524985070e8a7d39febfceae06d2d658c7d545e42eadbb",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalBranchLinear",
+      "sha256": "dba8070aae588f034487500e9bd5536d04bec3bb662be723ac1c606bc861e7a0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalCompletion",
+      "source_sha256": "8c7bee08aef1f1efa4d080427d2570301933b912da5424dea0ad05c66d9657e0",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalCompletion",
+      "sha256": "d620d8b46bc4ead38ce41aa99e93599a272f1ce12142d5ec1eec47d63ec25c78"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalFinite",
+      "source_sha256": "e219f8089210851f1e1ccc9935502ab765769cce767e62f01dbadd228fa3dc0b",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalFinite",
+      "sha256": "d3376f5283250e814ffe3c66628f384f84404fd219a8644a726b29e304baceab"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalFinitePrime",
+      "source_sha256": "6923061e881aaa3ec5b017f62dd6b7f8ab1e567677476213648e6acd326a3f84",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalFinitePrime",
+      "sha256": "da61415217c1a11ad22f0db4e352f720b7da73c85bfedcff352111f430ab9e4e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalFunction",
+      "source_sha256": "4e252222f6179efdb3be6dcde930d0dbaa1318e2641c02f51eedd6042fb01861",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalFunction",
+      "sha256": "d8f0143adcdab691b0b11a2209c4251d922ecdcbf2d0424c53afec85d2f4458c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalGeneralLinear",
+      "source_sha256": "c76cde97d8fcddc7b86a8f789b1ff14fcd5b3ea014301b9db2f844a4282f138f",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalGeneralLinear",
+      "sha256": "48f294d77df93078e1332a053837eceacc6bdd250968a0f5ce73cdbebe84b0f0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalInfinity",
+      "source_sha256": "67721235d405b3d04c87360dc0d12e369ec4e2846dd06b99445cb6476d8e1553",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalInfinity",
+      "sha256": "f9e34ee6639eb09450755afed4b098705e9fcf06b85d4af756394750b7203a38"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalInfinityPrime",
+      "source_sha256": "5625b9b0d68783405101d03d2e39540da956c135e6da68355432b105649d5b83",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalInfinityPrime",
+      "sha256": "3a4f043891259526e6b9b9ec70e13b8840bbca51cc2f936ce45b47a058e17f07"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalInversion",
+      "source_sha256": "31e32efce52c7b92d52cee64269e764a41146a3df4e3a4ab86802af9e3d0d91b",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalInversion",
+      "sha256": "54155084c26b6a4bdcc0cf49fbb57a8aa01d79561065d3a493903cd05c52ac79"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalLinear",
+      "source_sha256": "b391613862c98754fceac1e631b29b982b769fdb72084745ebeae35f8cbddb54",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalLinear",
+      "sha256": "41738ac09c7478922ff40d5bde3adc60b0b78be4302f3374599e9b10809a0584"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalPrime",
+      "source_sha256": "59fefe070c6ddb3f396ae9a5084d912a3dcf516741b47eae03c2763b1d432f1a",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalPrime",
+      "sha256": "5dcac364fd2b367949f5a966bdaef3a6045ee2f642559b5d62a8ac14f7dc41b8"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalTranslation",
+      "source_sha256": "23fdf2af472e942ad7447ac19501d59b550a4d62c85fff9e90e1c728b8efcea3",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalTranslation",
+      "sha256": "d2f01a6249a1372319712ac909cf52d8175ca6b79144a1f68f0865a018b6c395"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormRationalZeroResidue",
+      "source_sha256": "f31a0475feb2f68ee610dbf3a7264402af8146c48ab849031de11d50711171ae",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.RationalZeroResidue",
+      "sha256": "5dd3a36d02bad4c40530fbd86198d45883d66cd9b12225e06951939244f59f5f"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormSplit",
+      "source_sha256": "f9ef4ab48c464bd7749d217a4a3146e4f0dbba995759985d0673f0f540d60ab0",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.Split",
+      "sha256": "0417b25f11ac6fdc4ef5010a48ffa6423ecd1bdbcc3fe9e5216604c97b54453c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialNormSylowInduction",
+      "source_sha256": "9373e2af3815fdbfed9c6ad5f6bbb7def8e220a277f638fe79e2d53c81774960",
+      "module": "Aglib.KTheory.MilnorK.Norm.Polynomial.SylowInduction",
+      "sha256": "ab6b7224b0e8b8485f5ee3500c8a515cdfc79aa31d5287477b57e881a95a419b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidue",
+      "source_sha256": "0584a2cc8df1bc5e7bbaaecb0db6f061831b68dcc7fa4e7d8ca16cdbeb575bf0",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.Basic",
+      "sha256": "3478db3392fc97091d1c163078802777c88c7f06d5bdabb752fff719789f461f"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueCoefficientEquiv",
+      "source_sha256": "58ea1346fa9278bca9d2194c79dec347c5e0d9e69b3648754eaf5cd10f88ef47",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.CoefficientEquiv",
+      "sha256": "7cda94e97cfb1123a040d30d7271d8cf909f604a00e6c695fd12e09c0131e18f"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueCompleteCoefficient",
+      "source_sha256": "019ba8679bfd040eb9898f1e717e835791e54ac242ccc50df9274e344505f214",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.CompleteCoefficient",
+      "sha256": "124a5d3657de3084cd0ec385ddd14c3cb29c15727238bb7f0746af367262196e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueCompleteRoot",
+      "source_sha256": "c0f4f0e7adee3dccc1e96e3b74648865b754676940eb97f23ca69b87f2e1b32e",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.CompleteRoot",
+      "sha256": "070c2b5a59494e739e8db10c5900bb97424b27982daa0ff38db0857630556cca"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueLaurentSeries",
+      "source_sha256": "641a3f4c4448b61ab4081a4cf8f0dfa5be7e2822064166cbbf522022d592989b",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.LaurentSeries",
+      "sha256": "86bdbd8c0f1d0a49afa4e9a61313e3157949e404b2c827f7cc6f8cbbe8cf82d5"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueLinearLaurentSeries",
+      "source_sha256": "bec33a9b7c1c9124ece4152319583475532521cac9300cd4a7aad52285485557",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.LinearLaurentSeries",
+      "sha256": "9ffe09692db9ed03e418c9c306057a6de5f2a4281cc30d649e87ce51e8b03dd0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueLinearPlace",
+      "source_sha256": "58739ed1323d77b1d2e518ba0d5119c44fb17021c2651bed73dc1f772134ed09",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.LinearPlace",
+      "sha256": "d997550a2cfe59cb245e78ca932d376ac7d38e12dd81ae21f25f075119fc9241"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueRestriction",
+      "source_sha256": "0a370942ecbcac5db32a082cbf2bd5449ca540b08da2bb59c4012dcedf93db68",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.Restriction",
+      "sha256": "45d7993843eec7849f504b68c0f49f9232194191b2d2062f8608d1335a8d68b9"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.PolynomialResidueTensorBranches",
+      "source_sha256": "8d20670736542e6325a5abab8d74f848d7ea7f7f40273192e6ee8d048d2d038e",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.TensorBranches",
+      "sha256": "f19a1e1cf9f4dc6f40b233a5609804386d7922778d62df29a62434f98a368408"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Product",
+      "source_sha256": "291fc0c02940738cce65c7b5cfca482772d6c226b1a59ee06054a56c165cf347",
+      "module": "Aglib.KTheory.MilnorK.Product",
+      "sha256": "104cd452dba0fb72c64abd46ab500bb6f91f9c02f15d23b38c83b4e3412edcee"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.RationalExactness",
+      "source_sha256": "b8990775740a8e84d2544f8e8c0480169aa106b8e26fa314eeebd74f05fd1b47",
+      "module": "Aglib.KTheory.MilnorK.RationalExactness",
+      "sha256": "2b32d7c8ab3bc426a78b83fece3b93e1d0e1c1d6f6ef462181e7a06dc8f493d0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Residue",
+      "source_sha256": "2cedd53e03efcdcde466994092e87d1aa132737207cf0e8e00d56d5711afd5ab",
+      "module": "Aglib.KTheory.MilnorK.Residue.Basic",
+      "sha256": "e95f7b23ce0a17d80e05de4c8994b3762874d44f9d0363b342c715d37cf1fa94"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueAdicCompletion",
+      "source_sha256": "4510c65ed1577b8244f0745e630ed53f4f50e1ce4fc965041c9906e616baf32f",
+      "module": "Aglib.KTheory.MilnorK.Residue.AdicCompletion",
+      "sha256": "8efe2b9459396edf954db0d053f81504949a3b4c3ae0ed4171959b309bfbff9e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueAlgebra",
+      "source_sha256": "8b5646de1e30de6f67fd3ed9fb610d8d6fc9fb69f6d16716d248a99a2b5571ce",
+      "module": "Aglib.KTheory.MilnorK.Residue.Algebra",
+      "sha256": "30face7d044eb67b5a63c0360104ab7da2664d04744511a95ad5d710bb1c86f0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueBaseChangeSupport",
+      "source_sha256": "f434789df62f52ea170bf528dc5bac6ba8ba5907408406e05837db259f458609",
+      "module": "Aglib.KTheory.MilnorK.Residue.BaseChangeSupport",
+      "sha256": "05c9e1f0dbf135cdd38580a08257875c7627d6106bdcb5890567f4189ca3f9b3"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueChange",
+      "source_sha256": "99c59c929dc4663104a3f1dd33513cab61d52536e0e5a0dfa626671b662bf28d",
+      "module": "Aglib.KTheory.MilnorK.Residue.Change",
+      "sha256": "e8eff06ab3fe58bb634fe4b27e4db24d1831c726552966b0aa74f0ee083f0fd5"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueCompatibility",
+      "source_sha256": "a7b5b0764b89701535381f91ec9385eef6b45c37e100a6405463c929e43a7ad8",
+      "module": "Aglib.KTheory.MilnorK.Residue.Compatibility",
+      "sha256": "cef8e03bef436a35f29a8d45f978f7d66def14f003b8cba16463fb49655fde7e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueDVR",
+      "source_sha256": "0d5e6288f6567e5f2b5a035ec9820cd59954d4ab875268fec16c9d8ee9a1667b",
+      "module": "Aglib.KTheory.MilnorK.Residue.DVR",
+      "sha256": "75ae5f7cceeab0d9e00d53d121cf396bc7707642eab18b2c28e2ca12b5f06e3b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueProduct",
+      "source_sha256": "fed8fd9d039f0caec43595cdfd5d4c2d25bb00af1d7ee7c82949243ab4c0da30",
+      "module": "Aglib.KTheory.MilnorK.Residue.Product",
+      "sha256": "6513cc434212c2cf539bdc9f89dd33837d6a1a99fdbfb91be7d6bf71c9b18bf3"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueRamifiedRestriction",
+      "source_sha256": "6ab0cf9c522a751a0d9b63300b36ce41bbc21f2e76b195b13b19af37855a0544",
+      "module": "Aglib.KTheory.MilnorK.Residue.RamifiedRestriction",
+      "sha256": "fd3310c6f29d713d7bc8f0d658e88f64de38067c8cf603fd38aa7313e5cae396"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueRestriction",
+      "source_sha256": "1d4d71542a5a09919795c1fc51b5ca12412f8b6277d1c3b68a7a1555e744c3c2",
+      "module": "Aglib.KTheory.MilnorK.Residue.Restriction",
+      "sha256": "1f2e563eeddde99d5f849f3b8bb073c7ca7b611f90194a7fc98fe186dc40c542"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueSpecialization",
+      "source_sha256": "c646f3a70413ea01e8d6eb9f6db06e203fd8ed13a411b5b6b4663c99985e58d8",
+      "module": "Aglib.KTheory.MilnorK.Residue.Specialization",
+      "sha256": "66b82775d5a8fb931b13293d337dd2c82df616d78fa92e937b89e582fb57e751"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.ResidueSupport",
+      "source_sha256": "1d06192aa17c33f0e389c5f287fe474dc99b2bf8e90d509e7016d908629ff5d5",
+      "module": "Aglib.KTheory.MilnorK.Residue.Polynomial.Support",
+      "sha256": "cdfbe0e7f3a9206d019d3ff7f61f8d1c8f35c323929d5108e5ca30c7f3ed9f47"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.RestrictionKernel",
+      "source_sha256": "f17839f123bfea88ac59846d8909e0ea1c1d9727ce4603d83d48c05d7e2f2db3",
+      "module": "Aglib.KTheory.MilnorK.RestrictionKernel",
+      "sha256": "56b6790dbe6e5afd43be3f3911b5f51ce26af4670b315d93a5829d9f3b0299c6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.RestrictionSylow",
+      "source_sha256": "51d909a8fee78ecefd6cd138ccba895fd49784db074d43ee823f6a9b46cd049c",
+      "module": "Aglib.KTheory.MilnorK.RestrictionSylow",
+      "sha256": "795ebbe523bb0940e4b9074a548510fd24aa98356bbc6f30ee359a5ea3d11f34"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.SplitPolynomialGeneration",
+      "source_sha256": "d6ae80cd0ddfac1e2505f44af4f57bcecf96f86ef7bafcfe365205184de6160b",
+      "module": "Aglib.KTheory.MilnorK.SplitPolynomialGeneration",
+      "sha256": "91ff8dbf042d183cf4a48e4b2e2130e2d3795bb563953de7851fa6c9339e8130"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.StageEquivalence",
+      "source_sha256": "d40c1d792df05e722c38527332d59f643252a134ca18d8aa204dcd172f4aa994",
+      "module": "Aglib.KTheory.MilnorK.StageEquivalence",
+      "sha256": "6d7c12abd3ada81379dd97363a5783e79735aa6d7919098d0249f4b477ba0809"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.StageLift",
+      "source_sha256": "7ab67e64422f33f83966c01493977e0e234370d655108af6468c082950d6d6a5",
+      "module": "Aglib.KTheory.MilnorK.StageLift",
+      "sha256": "1521a90868d33e93ba0447fdd8f5edea5b23f5c77158f651360f5d227520b8b3"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.Symbols",
+      "source_sha256": "50c39ee8ed779268f5e809baae13cd75301b1495d2ff4199495d66561c055b91",
+      "module": "Aglib.KTheory.MilnorK.Symbols",
+      "sha256": "796a030618a25aa3df0abd4249b6c35742d52c5ffef978d42608de0d25db7356"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK.TupleSymbols",
+      "source_sha256": "011f6241c0b1d6221c373073d1785b79cba0decfdf1a04f2e5f7ad9b0c31a0cb",
+      "module": "Aglib.KTheory.MilnorK.TupleSymbols",
+      "sha256": "a98469f5f96486f49797ae15123d596c0edb9071107c557e6d415cf6548c8f5e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.BalancedRepresentatives",
+      "source_sha256": "b0609142900885e7fab2e82b85310350328e663d09cea7c6d54c5064d031f4d7",
+      "module": "Aglib.KTheory.MilnorK.K2.BalancedRepresentatives",
+      "sha256": "7409ce8783cc7cf18848596216cbed5be9c287138fe266bd01027e9715a22d4d"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.Basic",
+      "source_sha256": "27334e06277b636340ad1c7162dca4f43f07bbfbb334ee1eeeb5edcad5d499c3",
+      "module": "Aglib.KTheory.MilnorK.K2.Basic",
+      "sha256": "fe1315fba06e516a0605852d11847a6a197e71268a9eabb1696a459306599b86"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.DVR.Basic",
+      "source_sha256": "79129ff407c1b2fa5d2d77ff770e7a5029668788b6549de5b9f8b86d8e87f401",
+      "module": "Aglib.KTheory.MilnorK.K2.DVR.Basic",
+      "sha256": "7616225024e13dee833a852194e04b22377971109a967c1d6f42fb8859dfa91a"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.DVR.RamifiedRestriction",
+      "source_sha256": "ec335297b2c92702e69defc878708e50a05da4f42764e2212eb20230cd0cb189",
+      "module": "Aglib.KTheory.MilnorK.K2.DVR.RamifiedRestriction",
+      "sha256": "1b9de0a49380ddb36292fee53fdb8bac6d2d2edc3b6fb504e3de19a36bb1b99c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.DVR.Uniformizer",
+      "source_sha256": "bf7eba9915c707045c33bc6ea94b56ca48523e0810f39a96491d8acbf091f32c",
+      "module": "Aglib.KTheory.MilnorK.K2.DVR.Uniformizer",
+      "sha256": "33d8a0d1c7eeaf2934c510616e2d8e8851eda1e4765883143a8c8094be2a0a4c"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.DegreeBound",
+      "source_sha256": "b97342c094c1c994cd08141a83f15a5797d90f310a49c336b886f93b7d9a7e4c",
+      "module": "Aglib.KTheory.MilnorK.K2.DegreeBound",
+      "sha256": "8acb56c7549d7f105fcd5ff47d8d0536f02037262e02e4bd64b7f337aa88964e"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.DegreeReduction",
+      "source_sha256": "852b113d8975a971a7fe671d56b6c559b3fc2298bbae081113d523218b321683",
+      "module": "Aglib.KTheory.MilnorK.K2.DegreeReduction",
+      "sha256": "c9f48f01c9a74e5574c4c801ecd6de33e33b5035160fcb22da3037bcd9fe4d95"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.Map",
+      "source_sha256": "6cb9c8f3c71a3f9f9439bdd8b05e864612dfd4dc667a57b1eec71d41abd3c949",
+      "module": "Aglib.KTheory.MilnorK.K2.Map",
+      "sha256": "7dcebafc05fe91892583bec54d71969ce43645a56a9f71ce488576bb7b2cd016"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.Residue",
+      "source_sha256": "d2e68a8419aeb96cfeab99ed7b799656a900ca3544d465c86123a07205818077",
+      "module": "Aglib.KTheory.MilnorK.K2.Residue",
+      "sha256": "c64bdeb41d4975bf68b008233e09f4a1c3e0985eca678afd96919eb91fccb5c1"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.Specialization",
+      "source_sha256": "205b414d9eb24920ae8d117d250391951ff4eb2f1dbd6cb417462051099123f4",
+      "module": "Aglib.KTheory.MilnorK.K2.Specialization",
+      "sha256": "2ee3fa8f72d7bb7c27ed2dc5f997a3da855856b76a949d3d95b231833f94ede2"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK2.Symbols",
+      "source_sha256": "07f750ebe7c9bdb3a5b9cd87f6d2d9818582ebe22c398271e76dde873ea7ffae",
+      "module": "Aglib.KTheory.MilnorK.K2.Symbols",
+      "sha256": "ba83b4bd19170d03b53dbf9de663e53515c2339cab7f806b8feebb2e9c242e13"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.DVR",
+      "source_sha256": "88b8a8d9199a3dc0f952a6be021d8d444ef5ed3fe9e2be8f2bfdc13c08fe1c67",
+      "module": "Aglib.KTheory.MilnorK.K3.DVR",
+      "sha256": "f173104ee9426382a3ee9c84c85821a40f493e03580539653efcae0f2da4b461"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.DVRRestriction",
+      "source_sha256": "6647609b725791cb9436873be1dba2d984748b6e6261c20126e07f14ad50423f",
+      "module": "Aglib.KTheory.MilnorK.K3.DVRRestriction",
+      "sha256": "051c960e9cb08df663b118f5ce8b521258ac2583bca8bd320226b1711ad11ddd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.DegreeFiltration",
+      "source_sha256": "d6408eae4e06be840faa09443c1918cb5d05610cd7194f0fcb7e26664efacca8",
+      "module": "Aglib.KTheory.MilnorK.K3.DegreeFiltration",
+      "sha256": "929a54662ef672dd4b9707e68048ad04c661c04079acde1d543987c088b8dd83"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.DegreeGeneration",
+      "source_sha256": "dbee78914f79cb7f68e82740d1352cbe9a1a6ae4de2a4124d265394afaf43a57",
+      "module": "Aglib.KTheory.MilnorK.K3.DegreeGeneration",
+      "sha256": "f0b936a18f06df47aa031cc39b2eef9e7d66b3c2316890f9cd648bb6f36b35f0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.InfinityDegree",
+      "source_sha256": "7ef9060dc62c0ac9a276ff5013c2b189f26e4a514e942d5f5bbe32ddfd76e927",
+      "module": "Aglib.KTheory.MilnorK.K3.InfinityDegree",
+      "sha256": "3881bee7a339650f74f9c65d5d16a1a619cf44fd23e3aa8ef1559b3e0359aecd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.InfinityResidue",
+      "source_sha256": "76ccb64de2e4effe7b9a921d7e9d11751ee30833ab346a5b06acf016f7761d58",
+      "module": "Aglib.KTheory.MilnorK.K3.InfinityResidue",
+      "sha256": "1d69f6703e99488c3dee6afabe126e11ebfbfeb3461d0b3d1ae2b78b3d8d7167"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.Map",
+      "source_sha256": "d50cb1eba54689b2028bef3097216df08a827388576e2bbb337abb87bfa7c080",
+      "module": "Aglib.KTheory.MilnorK.K3.Map",
+      "sha256": "705c7e6405149c439d120ee4a1837652166f9168942e81acad5071e0e1b14612"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNorm",
+      "source_sha256": "e0a77fb59a6388cdeb2c27268964b068bc96018eb7c2e5699ee20fd2af14aae4",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNorm",
+      "sha256": "5764b7ebd2d5b8dcaff2a585bd35d4df521bc5f35e5d19ac46bb059f64d53fb4"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormBaseChange",
+      "source_sha256": "2ff8846e9990d807fd86c44b62acc27dfddec2ca1c76933000f013c3d22b5b9a",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormBaseChange",
+      "sha256": "e32f3279dd361c808a49a45eadc67e6208259f0cc65eaabaa3e03e7aa135d86b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormDeformation",
+      "source_sha256": "64abdff94d3ca0ea534e5d64fa0baf512577c5f7d53b4cfc6dad2b5033cd950f",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormDeformation",
+      "sha256": "4898455e69f49dd990b7069dab7df542e6cb93be851c5000dcc070406b0d125d"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormPrincipalUnit",
+      "source_sha256": "d73caf60cdc001858b6ea5e7974ae58914965bb347d1f094da5be4ab1a3960fc",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormPrincipalUnit",
+      "sha256": "c25ef38261329601daf6030c7b13cb2f6ba78e923f8ab406c59f7eb38fce9549"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormProjection",
+      "source_sha256": "cd14349c3bf2a1f87534c2dfc8345353978a1b0c15e83b7516ec1afd79f8ee1d",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormProjection",
+      "sha256": "5ca3b917903ca0c22a4a46f2fa71c242488551618bf059cc2f7b218ff7188af0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormRestrictionKernel",
+      "source_sha256": "44ce90718e71a81b540b3895b01687e26191b118708a27376302a7d675fac2d9",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormRestrictionKernel",
+      "sha256": "3db0fd9e3f7727e7de6a4837a4ec0944600c7ef57758070a7fdf7342bba7d8f3"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormRoot",
+      "source_sha256": "50ca40efccd7768232918fd786fdd8f5d4cd9494de9eddfeda1d284fb817f62a",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormRoot",
+      "sha256": "78a4fa395628ded6fa2670e2122c322b2e1c09544d9c98a2b7bcbc87352a7c85"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormRootRecurrence",
+      "source_sha256": "41c0adf83e416d5490063c5112e5c2760a9fd130a902dd27809fa41fc90b4e22",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormRootRecurrence",
+      "sha256": "77ff6f878845eab0f3108c05115efdecb79ac4aae2e830da47fc933d9e4a8fff"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialNormSplit",
+      "source_sha256": "029b9844e3de3ed30349c0daf76ee52c03bcf04a80dafbdd5b9161066b4bd956",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialNormSplit",
+      "sha256": "c7ea196fef6fe0d86705a817e0890ec877585e34aa72558998636b7138c95e19"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialResidue",
+      "source_sha256": "8ab5a2a25a2d7fb7b65d68ad7507e392737d07a028adccbf82899eb55aec666a",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialResidue",
+      "sha256": "4d6ddaa24a52163784771c9e4cccba5d75216c46bf9fedf82d9ae2a7bf4838bd"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PolynomialResidueRestriction",
+      "source_sha256": "df9eaeb214f2380f947f5e34a9ee3a66170bcccd04b54ee1ca523820b2984c12",
+      "module": "Aglib.KTheory.MilnorK.K3.PolynomialResidueRestriction",
+      "sha256": "89c2dbf773d041aafb5ca60f4844f885c6f95a92d5801cfe710ce821aba93247"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.PrincipalUnitResidue",
+      "source_sha256": "843d6e5d3c66a8974af36885e76efe27b797988e2327342d47f2a097c5426b4b",
+      "module": "Aglib.KTheory.MilnorK.K3.PrincipalUnitResidue",
+      "sha256": "7c1348494b77189739e7350ea922b718ed61b3531a45779a891f1bf22e3545a0"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.RationalExactness",
+      "source_sha256": "a417a397aa670e9d1af8bcb078b42d6a3256c2d02c8d9f5b11095d1679de25b2",
+      "module": "Aglib.KTheory.MilnorK.K3.RationalExactness",
+      "sha256": "29a703e171ee6888b6681478569448b1fb142ab8b5f77d37cd9f2d601c28796f"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.Residue",
+      "source_sha256": "fbf43f4c942a4c251729b256cb397998c4ff81a49fc509655374b280682a4502",
+      "module": "Aglib.KTheory.MilnorK.K3.Residue",
+      "sha256": "ff9c556ea9352153a23e35b88d5c21c19dce1f7e029a577cac010da23afaffaf"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.ResidueBaseChangeSupport",
+      "source_sha256": "03f6074f8be2aae3b84098f757bdc9f47c207a8726ed8279667736b065626e06",
+      "module": "Aglib.KTheory.MilnorK.K3.ResidueBaseChangeSupport",
+      "sha256": "9538d4bcd6782c1e361c1b307b9ed864483d2b9e1e10fe001e9ea21b14ea3966"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.ResidueChange",
+      "source_sha256": "7f4768eb4891b612e5ad1eb22090cad96f01b96a8925391661f5dabcf5fa1319",
+      "module": "Aglib.KTheory.MilnorK.K3.ResidueChange",
+      "sha256": "4dd76536d256af1cac0e77058419d7f6b7ff3f7312f5f1c393008af061b2d92b"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.ResidueSupport",
+      "source_sha256": "109a77708326446af2fa283bf36f3333e259d8d62b37dcb2e7d28379a69cc167",
+      "module": "Aglib.KTheory.MilnorK.K3.ResidueSupport",
+      "sha256": "dd95591b759b712f66993a7d84ab84aef7b785567ab714161276907eaf0cc3ae"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.StageEquivalence",
+      "source_sha256": "0fe35c140cd79dc604a3ad1b4a55975742a2db1b858f17bbd0691302e6908e60",
+      "module": "Aglib.KTheory.MilnorK.K3.StageEquivalence",
+      "sha256": "aa63ad5de394b391b88769a052144e09cce1e9757b31e9699e5ee529d37cb6c6"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.StageLift",
+      "source_sha256": "6e5c61a1620ad65300543c163d8cc9f6cd439f603c34efa64a8c1fa99686ff55",
+      "module": "Aglib.KTheory.MilnorK.K3.StageLift",
+      "sha256": "52c15050d5f68f264c3cdbccb1c13c91e795070724081ffa4c81c5f9d1268f11"
+    },
+    {
+      "source_module": "Motivic.KTheory.MilnorK3.Symbols",
+      "source_sha256": "4b480e0303fb7b8eface454e63ac1eb90218c5d47e3ade388702a8171a5474f2",
+      "module": "Aglib.KTheory.MilnorK.K3.Symbols",
+      "sha256": "941d3443d91509a33382dfbdb2700b99200e12ef75e86ee0f8c7fffe1509e6ce"
+    },
+    {
+      "source_module": "Motivic.RingTheory.LocalLength.FiniteAlgebraFiber",
+      "source_sha256": "31342dd74dfa6bfd28d1adf88cf59a2140f7fc286753e1f1107885a9229e8506",
+      "module": "Aglib.RingTheory.FiniteLength.FiniteAlgebraFiber",
+      "sha256": "bd8b10a57abedbbd23c988cbf017f65c9b72ffcfd8c092fc9783b5946bad33b6"
+    },
+    {
+      "source_module": "Motivic.RingTheory.LocalLength.FiniteAlgebraLength",
+      "source_sha256": "f10ff2aba68d039f0ff06b25d9253377aa5c2a654baa73ed094dff2f25a7782a",
+      "module": "Aglib.RingTheory.FiniteLength.FiniteAlgebraLength",
+      "sha256": "f0b180d641ffe8500c461ab435479748e3b4e9aa5007960101ebafc1d8bc363d"
+    }
+  ],
+  "native_reuse": {
+    "Motivic.RingTheory.LocalLength.PrimeFiltration": "Aglib.RingTheory.PrimeFiltration.Basic",
+    "Motivic.RingTheory.LocalLength.PrimeFiltrationMultiplicity": "Aglib.RingTheory.PrimeFiltration.Multiplicity",
+    "Motivic.RingTheory.LocalLength.PrincipalEuler": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Basic",
+    "Motivic.RingTheory.LocalLength.PrincipalEulerAdditivity": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Additivity",
+    "Motivic.RingTheory.LocalLength.PrincipalEulerFiltration": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Filtration",
+    "Motivic.RingTheory.LocalLength.PrincipalEulerSupport": "Aglib.RingTheory.Multiplicity.PrincipalEuler.Support"
+  },
+  "retained_downstream": {
+    "Motivic.KTheory.MilnorK.AffineEndpointGeometry": "Uses original Motivic endpoint geometry and cycle coefficients.",
+    "Motivic.KTheory.MilnorK.NormalizedAffineEndpointNorm": "Uses original normalized curve-branch geometry."
+  },
+  "generic_cut": {
+    "source_module": "Motivic.KTheory.MilnorK.ResidueSupport",
+    "source_declarations": [
+      "MonicIrreducible",
+      "instIrreducible",
+      "finite_monicIrreducible_divisors"
+    ],
+    "module": "Aglib.Algebra.Polynomial.MonicIrreducible",
+    "declaration_owner": "Polynomial",
+    "consumer_compatibility": "MilnorK.PolynomialResidue exports the same subtype and finite-divisor theorem.",
+    "purpose": "Remove the Milnor dependency of the generic power-series constant-closure construction.",
+    "sha256": "b4923b29ab11f9b4c06ed9a1ebb0851ef2d2578e7a36d79f966c05c54b92a649"
+  },
+  "license_exceptions": "Seven degree-two source leaves retain the original no-declared-license notices; see THIRD_PARTY_NOTICES.md.",
+  "acceptance_boundary": "Source relocation and namespace correspondence; no new mathematical theorem or strengthened hypothesis is asserted.",
+  "tests": [
+    {
+      "source_module": "MotivicTest.AdicCompletionChineseRemainder",
+      "source_sha256": "abbeb9cce035cfa9b4974e971b6950f7c5c3d18416667c270043f3a9de7821d8",
+      "module": "AglibTest.AdicCompletionChineseRemainder",
+      "sha256": "fc6cddadbda9540f8e51399dce84f81a84dd218abdad95727015309e0df3b1ca"
+    },
+    {
+      "source_module": "MotivicTest.AdicCompletionFiniteDedekindBranches",
+      "source_sha256": "27c74ef934cea82196e86606b312a71ac43c7746f8d12e4d96efcebfc29a9a4b",
+      "module": "AglibTest.AdicCompletionFiniteDedekindBranches",
+      "sha256": "63d4fdf7393bde0470c673f2704414186002569f59532602303147a229f8fe2e"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootBalancedFractions",
+      "source_sha256": "67a9c3400d3d1f2a1fced1710c9a52a0d092221b3d53cffcda92e2d045773326",
+      "module": "AglibTest.AdjoinRootBalancedFractions",
+      "sha256": "c59d6cc49063e162a531034ab159fd6c49e6310059c9c2085c3e7c269f3eb473"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootCoefficientEquiv",
+      "source_sha256": "78df2fa690ae69af61be2db9e28c3d4f6b6642554b28f716151f1a7021f08a02",
+      "module": "AglibTest.AdjoinRootCoefficientEquiv",
+      "sha256": "e596063b98e9909ef8d121e364587ce79da7963ad97ca901b2220a32aa1ff03e"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootCoefficientTowerBranches",
+      "source_sha256": "26bc0d8f6312b6e570207699535eda318623bf8a1177ecf2995fb3a9625e1c24",
+      "module": "AglibTest.AdjoinRootCoefficientTowerBranches",
+      "sha256": "8839a0f8a879774f63f9ea20af712035706c5473b7508922c779d1cfa20a6f2e"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootMinpolyDegree",
+      "source_sha256": "88e11a8ecd71ba8caa003ab60a544f815e22359bdd7f179f88c581132ee380d7",
+      "module": "AglibTest.AdjoinRootMinpolyDegree",
+      "sha256": "293c9ba0c766636213b804cd3f376d32df541a3bc12c87b908b498b04d551661"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootNestedBranches",
+      "source_sha256": "29284667d94b2b8405b6e00154c68077646d4745bebee5fced2da04b91fcfb97",
+      "module": "AglibTest.AdjoinRootNestedBranches",
+      "sha256": "fa2647e997573d67e24ca550cbe9ce93814129ec548f0af6d115cdcc1d792ec4"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootNormEvaluation",
+      "source_sha256": "96a07ea5e5671c59b7a5fb513bf2c8c59c5263d610d01e2260eb17844298e8ab",
+      "module": "AglibTest.AdjoinRootNormEvaluation",
+      "sha256": "204f9666dc79b96ddf43580c7d4927f5538bbd350739fd095d46326796f247f7"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootNormResultant",
+      "source_sha256": "7f2e5aab47a6f8e1dcf2d2c61c00e896029f5fe4829cc5f21871c66cc17909e3",
+      "module": "AglibTest.AdjoinRootNormResultant",
+      "sha256": "c5d89337152d67287937474e30f49bcd8c5aa19d94d9bcfa5da64f5b15e64272"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootNormalScalarBranch",
+      "source_sha256": "79e473daba8d4502fd9512aa1819d2cea2f69bb9a1d187f7bd8b240dcaa0ad6a",
+      "module": "AglibTest.AdjoinRootNormalScalarBranch",
+      "sha256": "4b87819850fa47efa975a9e2273b10ddd9739d69c1391a965433fe4f48bf8ac7"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootScalarBranchCoefficientEquiv",
+      "source_sha256": "c9b8476dcb94a21c59dea9bdddb70f68bcb47aa5a65f2a6b937015604c4fcda1",
+      "module": "AglibTest.AdjoinRootScalarBranchCoefficientEquiv",
+      "sha256": "e874d2804db1faaeafca85e6310c8dc1f8468d7d2de69778792b078e82a82f40"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootScalarBranches",
+      "source_sha256": "7692e45faeed9225a2000bdb9a0bc5062b3e74efe5192d708093f59ab8ac5679",
+      "module": "AglibTest.AdjoinRootScalarBranches",
+      "sha256": "bfe8504c6e59d981423a454ef73224e8af2de34b023867ed0422f8bdad7fd04f"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootSplitBranchEmbedding",
+      "source_sha256": "7d77cc6c715adfe17dd97f4e77e12d8bf7b365e884f5fd78e7006927d950d03a",
+      "module": "AglibTest.AdjoinRootSplitBranchEmbedding",
+      "sha256": "d3e84fdb27a759bb43578ea610aba0f312417dc254d1b4517bcf463e322769ad"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootTensorBranches",
+      "source_sha256": "ffcfa70e23a6528010cbc2982d677e30c8d2a134dabe186587858dc2ea53db0f",
+      "module": "AglibTest.AdjoinRootTensorBranches",
+      "sha256": "45b1f04d7c4ff557b1ba32e9b21405471bde2a5749012ca197ffe3122ec0b6b9"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootTowerBranch",
+      "source_sha256": "33542d7438e7f6d9d6efc6ecdcb9bd12d2fe11d578383463c3e710c48cb0879e",
+      "module": "AglibTest.AdjoinRootTowerBranch",
+      "sha256": "447739761163fd2ecea3349974c102812da9bafb24b6966a54ec945cf0288db2"
+    },
+    {
+      "source_module": "MotivicTest.AdjoinRootTowerBranchChange",
+      "source_sha256": "925d21934272486a3cff358c01121d219995d34f0d8f5ac7ec9da559beabe42e",
+      "module": "AglibTest.AdjoinRootTowerBranchChange",
+      "sha256": "b524637d7333800e41f82a281dfacb13841756e0c11f91e35f0b35fc5837f0ab"
+    },
+    {
+      "source_module": "MotivicTest.CompleteDVRExtension",
+      "source_sha256": "533827cbe8d2b0a0d65e2e39b5c102f2af6e43281f8f192ff2e962c85e4845b1",
+      "module": "AglibTest.CompleteDVRExtension",
+      "sha256": "9120a91f4e6d782685d3853b3468b3ad01de8144ad9f65e25334088c4412b148"
+    },
+    {
+      "source_module": "MotivicTest.DVRCartierLength",
+      "source_sha256": "f50d6288b353a5f66a1421283e275449e542e639f0ccd5ab2353a8483de68ee0",
+      "module": "AglibTest.DVRCartierLength",
+      "sha256": "b78567c9607e21702a57857ccaf402c7e3c9dd6055d2a632806a17e8bd36d7c9"
+    },
+    {
+      "source_module": "MotivicTest.DVRCharpolyBranchCount",
+      "source_sha256": "109dd5f18079aeae5408ddea6726967c6a59bcfdc1f5064d0d706e430f54dad3",
+      "module": "AglibTest.DVRCharpolyBranchCount",
+      "sha256": "11fc02a94821d0ced79ef2cf00f4de830a87d9588db7e5f5ce8e46cb551482ff"
+    },
+    {
+      "source_module": "MotivicTest.DVRCharpolyResidue",
+      "source_sha256": "af875a46dff6cbec35cabc08ad3c37c051afd33e55d3b6d3020e06b215acf1c3",
+      "module": "AglibTest.DVRCharpolyResidue",
+      "sha256": "a238b888170aae9f7e313a60d23a3c5d3622601556b28571f5b4923aacd9a463"
+    },
+    {
+      "source_module": "MotivicTest.DVRNormResidueUnit",
+      "source_sha256": "f2d1c7d4ff549eb95ce65542f69c3faa9785ea886550535d0350815dd73962da",
+      "module": "AglibTest.DVRNormResidueUnit",
+      "sha256": "3586947862afb39d59b96bd5cfe7b5a41e558dce63d3a7bafd894a6ac3935338"
+    },
+    {
+      "source_module": "MotivicTest.DVRNormValuation",
+      "source_sha256": "109fcdc271193a48cf1b4479e0004c6e9b7611078db8d1748796bbff02b70eeb",
+      "module": "AglibTest.DVRNormValuation",
+      "sha256": "285588b242d7867cd4779f3b246f2808742a4579e991bcd6f9f5736228ca597d"
+    },
+    {
+      "source_module": "MotivicTest.DVRPrimeUniformizerNorm",
+      "source_sha256": "968ed666196e685fb6bfe9192637355115210b3a22845cf6b78923ad937e157a",
+      "module": "AglibTest.DVRPrimeUniformizerNorm",
+      "sha256": "11757ebadf7bd966a73fff33ae1a2d8bc06fdccd2d69c1442e77b040dcaf9a56"
+    },
+    {
+      "source_module": "MotivicTest.DVRRamificationDegree",
+      "source_sha256": "2a5ebae613f1d2653c3402fd24b84a0c17b107abbe25cef4f7ad4d8e48142df4",
+      "module": "AglibTest.DVRRamificationDegree",
+      "sha256": "3d4ee59361ff8ba65d4d2a3094fff786c6214d7ba62b1880ca62050e1c481761"
+    },
+    {
+      "source_module": "MotivicTest.DVRUniformizerBinomial",
+      "source_sha256": "8b915951a86b883c7203ce997124355b6a41e65de63f7857445d89ae3b5452d4",
+      "module": "AglibTest.DVRUniformizerBinomial",
+      "sha256": "00fdb34c6442c65e361309903ddea3eac78de801808535cec4c62dc6c352c909"
+    },
+    {
+      "source_module": "MotivicTest.DVRUniformizerNorm",
+      "source_sha256": "ff531aad4f227e20ab22d412ab0d44cd58a9e199c0787ee04969ff51d6637c71",
+      "module": "AglibTest.DVRUniformizerNorm",
+      "sha256": "1f2bc9aeae6d74d1222347d275beb1dc6a1bdbfda18a4815b6971d429ac7257e"
+    },
+    {
+      "source_module": "MotivicTest.FieldCharpolyPower",
+      "source_sha256": "72a7dce3293be0ad21e6c92287a445be2f18b66938e09570fb9ac0d3ca834a10",
+      "module": "AglibTest.FieldCharpolyPower",
+      "sha256": "d220b4499e6593bfd87a338dfe721e311c16174edc14895602d18403eaf70467"
+    },
+    {
+      "source_module": "MotivicTest.FiniteAlgebraLength",
+      "source_sha256": "4fb0da04c791dff884ce85b18c70e02a522512ee8cd8b5a0f3153de01143a10b",
+      "module": "AglibTest.FiniteAlgebraLength",
+      "sha256": "c2d63f4abe491723195aab02e9b4c3494e0252ac90c4a50b21d299551d15e58a"
+    },
+    {
+      "source_module": "MotivicTest.FiniteAlgebraNormLength",
+      "source_sha256": "e337e18a7c9e3726e7df67c0c9e7246ab9f8dbad138e846ad506dd733aa3110c",
+      "module": "AglibTest.FiniteAlgebraNormLength",
+      "sha256": "c5dedf0be67dbf9245d8e583cdbb91ade1683d1f5dc3c5bf8ebbdf7f2302b2bf"
+    },
+    {
+      "source_module": "MotivicTest.FiniteCoprimeSplitting",
+      "source_sha256": "b02d1f18008e8bbcded75bd2aef1c56b2bcb7eed487e36431cce8267b91712e6",
+      "module": "AglibTest.FiniteCoprimeSplitting",
+      "sha256": "75f8da585a0830fc67c6556a21e42c6f825f2de183226380a4f45f9159f743a5"
+    },
+    {
+      "source_module": "MotivicTest.FiniteExtensionNormInfinityBranches",
+      "source_sha256": "2183a8f0e27d55fca8e505543bfd128e1073eacfd5cc4a1a1f909476bd3b7544",
+      "module": "AglibTest.FiniteExtensionNormInfinityBranches",
+      "sha256": "52d983925a95ab5423c1eabe42b9ae982f59b1c8804118e12a51f790297a6288"
+    },
+    {
+      "source_module": "MotivicTest.FiniteExtensionNormRightProjection",
+      "source_sha256": "2a9462c05f7a598cf5e8c9b4b0de4b3d173e78596a983f3c585dd6ebe8e9e30b",
+      "module": "AglibTest.FiniteExtensionNormRightProjection",
+      "sha256": "cebd5e57d7f42fa6559799907d089f778af88b0fbca894f567fb95e0ba6624c8"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorAffineEndpoint",
+      "source_sha256": "28772a5d6b81b12116e271a66fd207697a95e30dc68f2d438c5501f372ec6d48",
+      "module": "AglibTest.GeneralMilnorAffineEndpoint",
+      "sha256": "5fb8ef71ab4996dd4837e8a4d85c4981481e3d15e368598dd98c5238e4049f32"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorAffineEndpointAllDegrees",
+      "source_sha256": "e45070c1b9a14ca4613c5bc925f6fc29fa15a3bb6607ea5275089e9d50c6744d",
+      "module": "AglibTest.GeneralMilnorAffineEndpointAllDegrees",
+      "sha256": "5b5f6b2d14a9892e207eba0de258d22d5e4e1bee8540166f7f209efa98cb09c7"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorAffineNormSpecialization",
+      "source_sha256": "0372deb305057e22bfbb3b12663445fc115cc9f8670dd38a722f112cf89db193",
+      "module": "AglibTest.GeneralMilnorAffineNormSpecialization",
+      "sha256": "accdfcc8cc0e443d74d56fe6d470398b768b636357881e2fb19641faa6bd0652"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorBasic",
+      "source_sha256": "c52500ca4db76ecd4ef9a1adb3e25baaab3d696407f2a5f5a4842e9583563bf3",
+      "module": "AglibTest.GeneralMilnorBasic",
+      "sha256": "cdc533a9ffa75fd81a318974cf194ef4167a99a13a21f38c0c01b1657eff88c6"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompatibility",
+      "source_sha256": "dda2d0e6c5e574cf1b8d5250add7e8e583bcaa5306afd52a5f406ef19846b31d",
+      "module": "AglibTest.GeneralMilnorCompatibility",
+      "sha256": "f83b195032df85ef8a8c8ca6509c91a26a1a59283a4358ee8066ed998b801573"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompleteCoefficientDiagram",
+      "source_sha256": "c93a6a6f6b59960e54b340de99a0c8e8df178963318fdecd98894069ab522240",
+      "module": "AglibTest.GeneralMilnorCompleteCoefficientDiagram",
+      "sha256": "c72171c91e7633e0b8b86d38fbf8f9a8f19e8458dcbddd8ae6cf52eed36e5569"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompleteDVRResidueEquiv",
+      "source_sha256": "5559bde27615ec7a9a3d49582753f82f01525ae355cae9beb9413100bc091b53",
+      "module": "AglibTest.GeneralMilnorCompleteDVRResidueEquiv",
+      "sha256": "9ba80ee6dd00cb4615d1c8ee6515b810168eab2c69e6c52d4b5fa7bb94cc60ea"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompleteDegreeOne",
+      "source_sha256": "62c0d6a5193847b62fa2e5818809e4c3a6238187e7e8d8dd902610bbe195ce02",
+      "module": "AglibTest.GeneralMilnorCompleteDegreeOne",
+      "sha256": "1db17bf01cdd794f872c839fcc2ace9c55a64feac7f6e60133f8824d73ab23a9"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompleteScalarBranch",
+      "source_sha256": "4a8a695211775ce767d21aa07935e4c624e6de285550e6b49c0901d7db5fd580",
+      "module": "AglibTest.GeneralMilnorCompleteScalarBranch",
+      "sha256": "343f944d8172029ff9caad45a2358466e2da3dd6dfdede56a6dc11ad1592b02c"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCompletedBranches",
+      "source_sha256": "e46eb7daed95a5d614812da4b670a1765a4d7ee975243010160e42a500c4d60b",
+      "module": "AglibTest.GeneralMilnorCompletedBranches",
+      "sha256": "4c6b2ebd6bcacffcf957a421074513a079aea811aa1f05ffa93a0476396c61f3"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorConstantRestriction",
+      "source_sha256": "30b86d6397ae221d754e1286922534f942bdcae05c76caf6ce44ca211ceeafa9",
+      "module": "AglibTest.GeneralMilnorConstantRestriction",
+      "sha256": "123eda4257bc48f2791c18fc7de1a827350980ae539cafabaaa89e6e1f857ba7"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorCurveReciprocity",
+      "source_sha256": "4174217a753ca4f9f69824813e9e50668492746b68cf8c1f13e4f5bfe4f6199d",
+      "module": "AglibTest.GeneralMilnorCurveReciprocity",
+      "sha256": "dd413fd6504f273b5f9b8ad7c4e18ade338383ce6bad6e8eee5ac3281c991761"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorDVRNorm",
+      "source_sha256": "9cb0e43b5c3c41163b3f19cbebcb54aad4c3c7f1f50b5e320279b666d82001bf",
+      "module": "AglibTest.GeneralMilnorDVRNorm",
+      "sha256": "03b34d0f8d64da91533d56747447981bf47ded63b203539776f70bf6f5801abe"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorDVRWeightedDescent",
+      "source_sha256": "5b98b665d1ddc14ce22a0f2495ae7a9ec81b516ba04c647c2d5adca87199ea94",
+      "module": "AglibTest.GeneralMilnorDVRWeightedDescent",
+      "sha256": "145bb7e800bd594a2bb5cbb774d8fce5d84bf38a47e338662549004149cc5f11"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorDedekindPushforward",
+      "source_sha256": "edeac5af72055464eba762b0f5a81e077f81e9cfa46b5883de0c13bdd5dc197e",
+      "module": "AglibTest.GeneralMilnorDedekindPushforward",
+      "sha256": "0e317e4998c2d3158a27fbdc20dbb2ac7c5d332eb769d715f8915e5d92928f68"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorDegreeFiltration",
+      "source_sha256": "45646194381d3dd20bf34757ec56b7b9db6091cdff457e48291b7ebca0f96b52",
+      "module": "AglibTest.GeneralMilnorDegreeFiltration",
+      "sha256": "7d77bb6098a210b5b72a28a22de0330294b441aaf95a2a8d46037f01073a2970"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorDegreeGeneration",
+      "source_sha256": "79ecaba29fb1286f0a9138fb12b3779c6bed1049f3a7db53241ef21db80063c7",
+      "module": "AglibTest.GeneralMilnorDegreeGeneration",
+      "sha256": "0c203ed4093a6aadfb7edda8448621c960926a2d4157409384ee18dcdf164878"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNorm",
+      "source_sha256": "d6212f19df9b95fd2cdd3d810a7e898ffb5543a9ecb6b730e9dcb9a30e122f21",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNorm",
+      "sha256": "f86496f6f51c3f28bf6c18fdd8269a03ff198b370804c4ac4a0a31bb045cb694"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormBaseChange",
+      "source_sha256": "2950abc5ba90d1578db8c2c4185c786a3d3166a3b14f69346ac484830d29dfed",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormBaseChange",
+      "sha256": "96c00fb8eb541fe90a9a56b8ba72165f536ed69bd15f5bb8919892f82e14c58f"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormComplete",
+      "source_sha256": "5ea9173119705fa32c03663b4f54f651ff9b29fa358b73ecfcdd821d42235dbc",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormComplete",
+      "sha256": "5646a1b7640aea7cdcf22c9a192f405d458feb23346db8fa721ec101dd11646d"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormCompletePGroup",
+      "source_sha256": "18eb5d94d34eaa8cc277acefbe5d7a48ab5b65beef6c75311e2b7e2f289c6a39",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormCompletePGroup",
+      "sha256": "d246f612644d7d020ea24377829f43ccf5e384a10ae4099735337d81af9e8cd3"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormCompletePrime",
+      "source_sha256": "793ececcdd0365e00ef36e0c9059c1089ace57ae617b018da724bab249fd80a6",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormCompletePrime",
+      "sha256": "e403f349156362377493765a4a87bf16e6c5751ffa98bd96e5a8333bb75999de"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormNestedSum",
+      "source_sha256": "0a21c8d82aa69f5e5e7e3330f1cdb505ea0d55bbd97fd47f89003f0e901f54d5",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormNestedSum",
+      "sha256": "19d3151aff9a5dc2279d0cb09b01ab6eee90b8e70a93d1bb3c781de3d16281d7"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormPGroupTower",
+      "source_sha256": "0ac3cfd181ce352f2aec21aa064b83042cd4125c564c4ab1a899dccb6dc0488a",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormPGroupTower",
+      "sha256": "30f8e95f23c23f959da153a7070cc001661eebe76f4061348ffc3506ffee2184"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormPrimeTower",
+      "source_sha256": "ad49d14364063eb8d965cd218b390c8c00f9f438ee196b057dae69db5708cd2c",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormPrimeTower",
+      "sha256": "9a639e051e4771b3a81102812e211a766c1476e5ef26a6192cb2b943293ac560"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormRationalResidue",
+      "source_sha256": "f7c627a4b5af03b60fb2a6c81eaf1d33061ba70371bf9893e92d7450b329bdd4",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormRationalResidue",
+      "sha256": "5e94c66ac930c84a5b955dcdf5b2268011d89a3a938083810263a07a235aa88b"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormRationalResiduePrime",
+      "source_sha256": "5e2e6f6b41cca4bc98c52acb4355c4270aafe5e01ad673895ba9aebeb07ea75e",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormRationalResiduePrime",
+      "sha256": "e236fff5e33f8fe4fcf27276eb5fad831862ac04e50026f5e74e9512cceebb34"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormRationalResidueTower",
+      "source_sha256": "43dc5f3c3b8d1c498ba45ba9053d0991435a12e98a776834cf72a5ba1587ce4c",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormRationalResidueTower",
+      "sha256": "89d1101c92d78ac8352bc27a1d9888e988a3b02c9276c5eafdb6ea3ffae441aa"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormRationalZeroResiduePrime",
+      "source_sha256": "1867b8864dde1aa04da3f33b37ae9119254aafe18135c2c2e2a7da0ae5502ad9",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormRationalZeroResiduePrime",
+      "sha256": "d8125843f41995ed3abe6adbc6923ee6139c1a5c7866538d87859d53f32eb3fc"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteExtensionNormTower",
+      "source_sha256": "6c81bac22dc983d0e69ddbe56e907ed31d9ae2a12d9ddf92ff56e3d550235e34",
+      "module": "AglibTest.GeneralMilnorFiniteExtensionNormTower",
+      "sha256": "766c8aed81d77ce4f5b9307150fb084532e7bcd5b904420c45ec27e261f8a423"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteMixedGeneration",
+      "source_sha256": "7017b5d8a3d9f20b772a1165a94cf226b677614324c374d945eeb6067bbf0668",
+      "module": "AglibTest.GeneralMilnorFiniteMixedGeneration",
+      "sha256": "6e5bfa62eb7df435c9c59b956c86d032a83c8ebddc96acda01fcba9397bb4326"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorFiniteRelationDescent",
+      "source_sha256": "6689e2ee440cbf8e6a6c4617075049b8abf0388f8236dd3e266428952a7194c9",
+      "module": "AglibTest.GeneralMilnorFiniteRelationDescent",
+      "sha256": "43f94d14bbeceb95f29c7fb6a77011176ed3d435063bf27a80da7b0c14f48900"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorMixedGeneration",
+      "source_sha256": "133f6bb73be71bb95b70705dd2babb31c4125ec5f5789a9e96652b0429a9bc64",
+      "module": "AglibTest.GeneralMilnorMixedGeneration",
+      "sha256": "bfe221aad5598c49edd0f66bb812c5f315e38f6fdce72a30aea5596017ed47ec"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorNormProductBaseChange",
+      "source_sha256": "a4ad60dcbb3be8cf44b1212a24d55f98129c5eb96b12b6b50cce6e67887404f0",
+      "module": "AglibTest.GeneralMilnorNormProductBaseChange",
+      "sha256": "3edbf2ac77c795b5526f878571648d39b47a68416ed431200557110cbdae0ebd"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPGroupNormalPrimePresentation",
+      "source_sha256": "946bbb3ac8260b1eabfe8207e47f37496e9ebed8def01ebad782d044d9d1c7ec",
+      "module": "AglibTest.GeneralMilnorPGroupNormalPrimePresentation",
+      "sha256": "d776b2a45618071f7217ae7b9ffdc33527002bacd5f2f01d99ac56b36c29da57"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialDedekindResidue",
+      "source_sha256": "3272a751df1f37060be36e7c17d1210ba208386715542821202bb55745e3d6bb",
+      "module": "AglibTest.GeneralMilnorPolynomialDedekindResidue",
+      "sha256": "496b2fc25b243e46b399e0e7308e4dadb778f0b53f006c61824975d1f338a3a5"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNorm",
+      "source_sha256": "e27d47781f57affd416a417e18bee9cb797720d266deb2bcc6c849bb3ac2dcbc",
+      "module": "AglibTest.GeneralMilnorPolynomialNorm",
+      "sha256": "8938e1d56bce3ad28c7512fd5b350fe4dc14eb270d4d9ced2d906b1f70963bb2"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormBaseChange",
+      "source_sha256": "5060c539cb6d81d1b8bb0c65a493cdec99739f4cd1f228c063b8341d65e53198",
+      "module": "AglibTest.GeneralMilnorPolynomialNormBaseChange",
+      "sha256": "a1ecd2435204f6a868e358c4b5ac217b0bdb23a5149e21ee7dae25ee7b7c118f"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormBranches",
+      "source_sha256": "9651cff2d40d4c30a1bbc0a4f612a77b078c4a59ba0300f18752dd521e3f8513",
+      "module": "AglibTest.GeneralMilnorPolynomialNormBranches",
+      "sha256": "d3e25ee90621aa57d1b0fda7c9142f4b607c1cafe26e6544d7f20d28f4d0f344"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormCompletePrime",
+      "source_sha256": "9d4a33c9b718dbdf8c3f4f9c478fad7baa9140c3e1517d50b8a6ad031d27dae1",
+      "module": "AglibTest.GeneralMilnorPolynomialNormCompletePrime",
+      "sha256": "ca82949a94a91cab7426053447a328b9613777cbdc83c0a579357d092164885b"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRCoprimeDescent",
+      "source_sha256": "5818f866b933cd65bb253bc4be79256491f1d364e23f93996630c8cf200b7afa",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRCoprimeDescent",
+      "sha256": "bcc1dc4f42ffd25ebafa0810072a49ffecaf805a89ad179f0eab8aed5f5bac3b"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRDefect",
+      "source_sha256": "acb8a38531d5e775ef59114ca43d9eb0983214c6ecccfd3fab6306a48517866b",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRDefect",
+      "sha256": "8a22f5ea31bf8ac5e690f0951bbcd3c0aad2d11190f4d2b2e7e30a515834d78a"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRQuadratic",
+      "source_sha256": "b4c744d203f234ca8d9d11e9b895b8f546e672ea310e2c669ddbd3bb0f29dbb1",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRQuadratic",
+      "sha256": "8c46d8cb18eeec4eecc45718f7a2842109966f962154814370c3a38c526e6942"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRRingUnit",
+      "source_sha256": "69687943ac70d374ff63f3793880b39321bebe7e877f230a9db6c81ae68c4412",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRRingUnit",
+      "sha256": "17707c3818968840c15e053853240ad8dfd1fb470f39df3d2870d935d737d4a2"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRTrace",
+      "source_sha256": "f6a3f6b65aa10a6417a2c3117f676ac39cdc15480e9c09b0fb6741f3b3665888",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRTrace",
+      "sha256": "990253f9893ed702aac87b0aea6a79b282e61d6c6b64180242bc2618b8e59e01"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRUniformizer",
+      "source_sha256": "a620087f95c6f9bd6734898b3895d795d7f6657d1e3e282e10784fa4b199d4dc",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRUniformizer",
+      "sha256": "3cc5108f87ece05f22736e90d3fbe768808221da7074d7120cb93b42f9448d93"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormDVRUnits",
+      "source_sha256": "6096c651e81ee15aa6efe1ca25f937f3ab144185639e280026180393d6675a1d",
+      "module": "AglibTest.GeneralMilnorPolynomialNormDVRUnits",
+      "sha256": "3b4e943440f4f7dbb079f6675ec93f2469be48081e36d783fe70ef85a3c70e85"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormFiniteComparison",
+      "source_sha256": "ac5def2c9f46075b7a84e2fdbd7799d30fd27df7598f5087f6499ba2f60a3293",
+      "module": "AglibTest.GeneralMilnorPolynomialNormFiniteComparison",
+      "sha256": "b84b317fd9ccd8573423386e988efb96bc7f6801253fe12067f2ff9d930d605a"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormIndependence",
+      "source_sha256": "6038cb6e9b14043120421c1134eae950a7f21e391e4935502daec51d607cd446",
+      "module": "AglibTest.GeneralMilnorPolynomialNormIndependence",
+      "sha256": "a4fc4af92ca8ae9d4721cdc9e9bc8aeb3a603996a94bf9b0eab378948ce749ea"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormLinearPlace",
+      "source_sha256": "4a1f3edf4dbbc5a6ee2e69175538a28672c81434be82ee3160ca49b25fe39d87",
+      "module": "AglibTest.GeneralMilnorPolynomialNormLinearPlace",
+      "sha256": "19d20fcd8fedcb709ba5c07efb733f78a2d72f28e77a10dd4bbaba6838934ed0"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormOne",
+      "source_sha256": "fe1d01cc227785ec71f822fcd08937c30f28e4a75c662eb39206778e8cd13069",
+      "module": "AglibTest.GeneralMilnorPolynomialNormOne",
+      "sha256": "f93fa202aab76a8804f5e669789bfa0b86dce6bea9f7eab8b799c9b26c4f3ac6"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormPrimeInduction",
+      "source_sha256": "2a9cc9013c7524c0037c472be85d6418fc15467402803951bcc3f11dea26bf53",
+      "module": "AglibTest.GeneralMilnorPolynomialNormPrimeInduction",
+      "sha256": "e6effb38073bd5a3f7ae1f3123a7fe8653117411fbefcf649c9f80f67ca3e2b0"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormPrimeNormal",
+      "source_sha256": "9352bee831145c9b37d39498601af4ba8ac3089053653c133400f7e4f7076369",
+      "module": "AglibTest.GeneralMilnorPolynomialNormPrimeNormal",
+      "sha256": "c86e5343d86d7f9c238b22742fea6857cdd905cca15469aa66d5073f1698d127"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormPrimeTower",
+      "source_sha256": "307dbbd152833b360a85582055d49230dd3e226016857e3900aa8f2854101e3d",
+      "module": "AglibTest.GeneralMilnorPolynomialNormPrimeTower",
+      "sha256": "b11537b95593c42fd84a9c729e965fa7f29d155670007119f2637dea30c1dec8"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalBaseChange",
+      "source_sha256": "03a417afc47753e40ad6dd990d53624e2d1c9dcfe55fa64d62313e8b63de735e",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalBaseChange",
+      "sha256": "45c0e217670b5d0e80b10b908bcb72795179fd256c338dd56fa5629a2bf95316"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalBranchLinear",
+      "source_sha256": "d7b8ead751f2aebf2d7829bbf74e514265f0355430949da23762aae4fc1fb201",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalBranchLinear",
+      "sha256": "c9c5bb207d59a69a0aaefd4cc3bc9e55afd1b7c5150516ae06e0b6a3680813da"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalCompletion",
+      "source_sha256": "ceaae4cf4b991871fde0511f34941312ab0cc78caf9bd278e0801986e2a4b570",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalCompletion",
+      "sha256": "f0852fe619a8efa0b88e7bb8fa3124b7333581da35d52a7a3e50044147160b91"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalFinitePrime",
+      "source_sha256": "fae3a528246969a0a31c41f4cbd99ea0330f0ab64840de169c33552238dacf8a",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalFinitePrime",
+      "sha256": "6665cadd7ae99831469276123b752b7d44af1384de44d2411b0ee5ed2f96feaf"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalFunction",
+      "source_sha256": "18aa8d0331ce7426d250ae88af8c8d525560c0c70ae5bb6e756eaa2bb4ffe6c2",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalFunction",
+      "sha256": "2bed002a471afde80ea2fee01ac5c5354d24f9ab6c5a3916a9c0ff95a95c1364"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalInversion",
+      "source_sha256": "1fe772b5cca011c020ad757376da06a72234e1e3369e3500ee31eade872220ad",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalInversion",
+      "sha256": "514cc35beab6e1d0dd4d40b5642f74525fc918675f56eb69375747f76ba61956"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalLinear",
+      "source_sha256": "5afbedce8016b12bad9589dce8ba9695ef530f2da85a5af52d5827e82700123f",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalLinear",
+      "sha256": "8debb0252abdf8a421acac451d7ad6cc3abc24d3c5d87fda12f00ab9108210cb"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalPrime",
+      "source_sha256": "a912733836e3c8d6571da5257e574d3a5d65fc1d1032fb8dcb04a639a67553b1",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalPrime",
+      "sha256": "ca73fd8a2e05a74fe3da87655dcbd406ba58f595beafc7ba66cc3016480fa604"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialNormRationalTranslation",
+      "source_sha256": "649fb1b83324ddac6884cd6eb5f172e7e70de507f8a9558512a9dc3e7f75ab24",
+      "module": "AglibTest.GeneralMilnorPolynomialNormRationalTranslation",
+      "sha256": "4b70ea44c37ab2e37fa9c54e0d1f7d2ce1927550ea09e89a9f1199166cfb660d"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidue",
+      "source_sha256": "9344565d8cdd1009cbfdb64cbbbdbe64c57322f3cedad8ec59014b0faa3cc14b",
+      "module": "AglibTest.GeneralMilnorPolynomialResidue",
+      "sha256": "33f22856dc0ac78e49868db24188077b0e4fd801d04ed601b4300f21ce6b1a80"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueCoefficientEquiv",
+      "source_sha256": "3e708fa1da7607ce7140c6f8f435be0b00be0375d73bbb5620d72845a5ecd8e1",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueCoefficientEquiv",
+      "sha256": "bfdb3f6df29bc9b224fd514ef23a5c6375c7fec066f52a8575fa518267924791"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueCompleteCoefficient",
+      "source_sha256": "de4427412a218cf40f6bfbb0e93ac4735f9091f38531a5dd9dbd259dc152d46f",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueCompleteCoefficient",
+      "sha256": "311a664da814a10009ddbac5bdb3796f80f8b60ac55f66f042d51ca8f19cb88c"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueLaurentSeries",
+      "source_sha256": "855f3b1ebb7facfc74d51368e83358241189fb566b6c7992a522b98fedb84f71",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueLaurentSeries",
+      "sha256": "358456f6f759e7da28c264e3de868542e48e3905bc8b78868cf32775ebd5ac31"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueLinearLaurentSeries",
+      "source_sha256": "37717abe8d8855c26cf168cdc353dc120cf3cd1628308ce1e08efdb2517c95fd",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueLinearLaurentSeries",
+      "sha256": "771df54fb8b15b8ba74a31ee7be547c0e4850e82b3983b13106694a6cbde1b9c"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueLinearPlace",
+      "source_sha256": "0de2024893d190e96451609e4d24125c64880902872f38ee3f6e5a4810204287",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueLinearPlace",
+      "sha256": "41d6bbe8c6e75a4c3e1d9c332fe3ad21fe1db33f5c9e2db56f90127f3541e1fa"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueRestriction",
+      "source_sha256": "42a191a27d86a5c267e4aef70f484cb280bd6364021133b62e57f11bc5ea2d5e",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueRestriction",
+      "sha256": "ea86d42747aa98f6eb0055595613ce214694536fcf8d49f96e1506a17d79e667"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPolynomialResidueTensorBranches",
+      "source_sha256": "ee58615a293ea90f545f4e60b79f69f4d823895901e56107ebc3d0d6f97545f3",
+      "module": "AglibTest.GeneralMilnorPolynomialResidueTensorBranches",
+      "sha256": "13f15cc5e836bb0180cc2da19dc12a88eb92eb3fa1bbb44dde95c9091acd4503"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPrimeDiamond",
+      "source_sha256": "3f459495d4cdd2e0b86956f46d42694de612ebdcb1c8cc8bdfbf93159055c1ac",
+      "module": "AglibTest.GeneralMilnorPrimeDiamond",
+      "sha256": "c780b24b41de720b2bb555c3040da39a9d10a2d8254d4999006831e2fb65c227"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorPrimeSubfieldInduction",
+      "source_sha256": "ae244e364ca4b12bd92a79433468aad67e3aef78957de4b3503b9c6286732f72",
+      "module": "AglibTest.GeneralMilnorPrimeSubfieldInduction",
+      "sha256": "997aa418ba92a0de88b2842c1abfede12ee2ba0c4b8da34bc83307166928893c"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorProduct",
+      "source_sha256": "a2169aa717ef24babd00e264a440c7b2d7b5e178a0b7948403fb61eef82263bc",
+      "module": "AglibTest.GeneralMilnorProduct",
+      "sha256": "be70ce9b27b08423a9d203b5972b7a0b5470e14b15c899b5c2a7b8a8b95ea045"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorRationalExactness",
+      "source_sha256": "fa105cb228cc5b3d4866da9936b7dfaa9cceac8d8dcbcc904339e4221d869702",
+      "module": "AglibTest.GeneralMilnorRationalExactness",
+      "sha256": "fb7a962e75251ae65984a22ba53175e6a495a4fec6448c5e5849b5a6da371cbe"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorRationalInfinityPrime",
+      "source_sha256": "a2dae672090887a76fc3b72e6d3446a058e391dd3e0858b6dc21289add043a32",
+      "module": "AglibTest.GeneralMilnorRationalInfinityPrime",
+      "sha256": "d0a2f208e7ab9192e8426d0674946a6952a765f732b96284e0a1a79ac30723c9"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorRationalNormResidues",
+      "source_sha256": "e1f92acb175f7a0c7206cff503701fd8e0f286b09380a978cb609ff953095d7f",
+      "module": "AglibTest.GeneralMilnorRationalNormResidues",
+      "sha256": "e84d0911f07aafb53e204eb2c2ed6c4d6a7b3d49b1f96ce18463f48835b39ec2"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidue",
+      "source_sha256": "a38caf485b02e46cb8cb43680d409997951ad1c691e4a976f6d78f8724779dc2",
+      "module": "AglibTest.GeneralMilnorResidue",
+      "sha256": "65aaa0ad39178ed6b0a1bc47a09026f8847fbe7c7db5a91fdb94b31fa36517b1"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueBaseChangeSupport",
+      "source_sha256": "ee95618e265d29507cd9749bdf483d1b452b4663f4d8c3620c352dd438ade994",
+      "module": "AglibTest.GeneralMilnorResidueBaseChangeSupport",
+      "sha256": "1aa5205c5d05e75819733fdf1707e57e8561a6498e4b0ed5ed3fd2cf9a790554"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueChange",
+      "source_sha256": "73ed58f7975964472e4e3b9a8c70524df65005fd954995a3c99b3da15f7238be",
+      "module": "AglibTest.GeneralMilnorResidueChange",
+      "sha256": "fbca13e7075e663df9df0967ca73fa18c4d5b1c3ca051d50dcc468dbaea30813"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueDVR",
+      "source_sha256": "e9e83fbdb0bef4f9a4172281ea1877c7ff4c79c1aa1009b9002cac58034730b3",
+      "module": "AglibTest.GeneralMilnorResidueDVR",
+      "sha256": "ad161145b1ce85390f0714342e62dc591f89c8fe52e038a6bdb2ba52b15b1b63"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueProduct",
+      "source_sha256": "26b32350dcd460adcfbc138e09570d661b53c5507dd6d1bf1cc80713773a3624",
+      "module": "AglibTest.GeneralMilnorResidueProduct",
+      "sha256": "9874181d04baf2112f00c568faf6c8cd815661e076ac17fc8f947260f7e2d35f"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueRamifiedRestriction",
+      "source_sha256": "02309ab558bd3736feebfa1ddcdde1369212c68dc0efbd6ea3b5215cf009724e",
+      "module": "AglibTest.GeneralMilnorResidueRamifiedRestriction",
+      "sha256": "02c4979427957758e0b233d9a0781103e57a328402d81adfd518b736ca3eee1b"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueRestriction",
+      "source_sha256": "3b0d99fbb6468a4f2863925d1ac4fee459f9d6e59b78d0768a91d319903976da",
+      "module": "AglibTest.GeneralMilnorResidueRestriction",
+      "sha256": "af01b72041a620cc25d77131013fb0fefb693b6d91fac3b5be7a18e3c0393339"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorResidueSpecialization",
+      "source_sha256": "c063b254010a537a11a2f6ed375a385ddb9820c11c2e08b02b4619e4f6edaca0",
+      "module": "AglibTest.GeneralMilnorResidueSpecialization",
+      "sha256": "c0d2965d33f3a52de8104bdc2318fb1696429830fb93a83005834ac5001d5713"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorRestrictionKernel",
+      "source_sha256": "bf4dd38633a9ab1d1595880810ace8d58ca688686920b0be0e1d9081486d5901",
+      "module": "AglibTest.GeneralMilnorRestrictionKernel",
+      "sha256": "5181b368791e6ddfca7d0a9e34c6bbe85fee5d9fc7ab8ad4cd8e2f654a79e329"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorRestrictionSylow",
+      "source_sha256": "264c905f23a1f70a790da7226b8d86e8db04f8b96a6a66f0195e2cae494c37b3",
+      "module": "AglibTest.GeneralMilnorRestrictionSylow",
+      "sha256": "1e602f8dec50275e7d2b77dfb76441f35cecc0b6f567a61435ec67bb60ed4dfc"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorSplitPolynomialGeneration",
+      "source_sha256": "a2857f87cf4006733d1e3c4bd0fa3bb8052b3956b143ed23b2886798781bf559",
+      "module": "AglibTest.GeneralMilnorSplitPolynomialGeneration",
+      "sha256": "5b45ccf83606f60aab8b0af97ee871835115674db8a7bb354f14f7b497d64b48"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorStageLift",
+      "source_sha256": "f8c3f710f2a804e415e7499f3f293caa139be71b8fa1e5d6b9166e587b9977f7",
+      "module": "AglibTest.GeneralMilnorStageLift",
+      "sha256": "67d66aa5cd44b91a1d4adedc48315784918ceb2274f20a0d5851744c1825a006"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorTupleSymbols",
+      "source_sha256": "de3f9691f6e672379253b9b4873269d4670e45a42b5d808fcfad6f5dbf6fb3e7",
+      "module": "AglibTest.GeneralMilnorTupleSymbols",
+      "sha256": "b6eeeb92e06db275e1124c25074d35bc6883b3e57333747773a9af3de79a9ce9"
+    },
+    {
+      "source_module": "MotivicTest.GeneralMilnorWeightedNormBranches",
+      "source_sha256": "30d9f9b6c434669782e7e93b19b7e19a38a04b66a5c7a4674101056fe5ddfc76",
+      "module": "AglibTest.GeneralMilnorWeightedNormBranches",
+      "sha256": "c8574453bf7f862e1fafe30bade37d9e57e2a1cae57ef5fea77f2eb05c643393"
+    },
+    {
+      "source_module": "MotivicTest.HenselianPrincipalRoots",
+      "source_sha256": "5a2888db41dffdc55084616d56273e4f5811f3a9566ac74b8a6605d45ebb36ee",
+      "module": "AglibTest.HenselianPrincipalRoots",
+      "sha256": "eed9a52fed91fdd40fcdc218738e3a1799f9794a46c569abf0719a73e03d3a61"
+    },
+    {
+      "source_module": "MotivicTest.HenselianUniformizerNormalization",
+      "source_sha256": "0646c58f83bdad6b943bae118909138868a367f855577ef0eed424580e15eec4",
+      "module": "AglibTest.HenselianUniformizerNormalization",
+      "sha256": "26407334d93c7a5d3c305d78d9aef3f0dd3a0254ae296935a38b1392d715b51f"
+    },
+    {
+      "source_module": "MotivicTest.IntegralTensorCharpolyProduct",
+      "source_sha256": "9b17dd4668bd16f05ed34b97b59f4062a8b6878480438aa1b8dccd982d8abb3b",
+      "module": "AglibTest.IntegralTensorCharpolyProduct",
+      "sha256": "592b714ff6b4efd4e73ed6ce974744cacf374211f979e0faf70367c77151c31d"
+    },
+    {
+      "source_module": "MotivicTest.LocalizedDedekindBranches",
+      "source_sha256": "8a5291067300524de04190a96a742c7aff2f5dbcba91c71c1f47f9ee1cf8e0cf",
+      "module": "AglibTest.LocalizedDedekindBranches",
+      "sha256": "6f3029a00339e3b453ef60f09d439be934092e0f1ae1f7757d5227fc3ee1de74"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK2",
+      "source_sha256": "a5feb742c6afb717b45a921182628cec1ff2aa0ef2b9d2fc59308219be16da4f",
+      "module": "AglibTest.MilnorK2",
+      "sha256": "5eb82a6c4bf046a1a600ce5e39cc388444ffc531e9aac51d07b5bda3df2b1aa0"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK2BalancedRepresentatives",
+      "source_sha256": "8b01404e36a14497bbbc17a3fe90381b1643035ca21a73f5f5848b1f60aefbce",
+      "module": "AglibTest.MilnorK2BalancedRepresentatives",
+      "sha256": "282b912d29c96f812876d1817c05eb8dba29d27f52c2ce318c7fab8153cb8039"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK2DVR",
+      "source_sha256": "fc25206621248bfa5ea019dd728420109bc060cf372da1a5a48c81feed818cd9",
+      "module": "AglibTest.MilnorK2DVR",
+      "sha256": "bf24c6353501ff06bf2e599f67a7622c4ceefb3bbf6e5d103d2bb41a3f7c0577"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK2RamifiedRestriction",
+      "source_sha256": "1d463069c749c604093444b46a011e9e0bf7376975a7b9beb409a095cb8ab334",
+      "module": "AglibTest.MilnorK2RamifiedRestriction",
+      "sha256": "37ad1879e42cfb74c1b55effe047755e63d68d53060af6fca4e932a447e38cd8"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK2Residue",
+      "source_sha256": "4597fecd1b2c5875a6c6604fc55aa1fd6391ec1b63c77c2fd2cef528d25ee8b5",
+      "module": "AglibTest.MilnorK2Residue",
+      "sha256": "f0e7a1e7508da9c6b9a4602b36ab4323a14792258a6e58c9703ae5ca02447f0b"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3DVR",
+      "source_sha256": "ae4f0453f3dc132c6e257c43b6d64ac95af02e03d293f730b0b73318aa80dd25",
+      "module": "AglibTest.MilnorK3DVR",
+      "sha256": "5d534d58ccbb8bfdf746383b9a142d5b5e8bc2ad24bc7043c245f14cf73f2c4a"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3DVRRestriction",
+      "source_sha256": "550c2ff51ef43bb6367e20f155f73196410d80446f54fc98f92549a69cdf122e",
+      "module": "AglibTest.MilnorK3DVRRestriction",
+      "sha256": "26420e778d11429d36be69a2bb05e5912a6e03e1e15545b9f138b1d890242db2"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3DegreeFiltration",
+      "source_sha256": "3a2bdc463c1e21fc88d49e6844a6bac547bbbda65aacf02b14f2fbf24c82b8ac",
+      "module": "AglibTest.MilnorK3DegreeFiltration",
+      "sha256": "843cd1c2f6244acddec0a3c3986aa719f40e7003907e00d55ed193e276821d2b"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3DegreeGeneration",
+      "source_sha256": "c1fa608ae4b82334b424840458a2b841a6784697e9bab90ae9f5bbfba614ae96",
+      "module": "AglibTest.MilnorK3DegreeGeneration",
+      "sha256": "dc81ea23d27cebfe75bc5e8c5948acfa2e267c408972f16bed7c3ca45e503dc8"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3InfinityDegree",
+      "source_sha256": "38f2f2d7c994ec2103cd89b91b32bf1e2e29b28adafd7029e62d7d31c88268a7",
+      "module": "AglibTest.MilnorK3InfinityDegree",
+      "sha256": "264a193923361596c6af19c705784abadaff5dd4593c2724c326aefdc16256c2"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3InfinityResidue",
+      "source_sha256": "e4a78ffa2992b9db3f4d42dc945de8efb03a09bbcd825ab92a715bb89884c0a6",
+      "module": "AglibTest.MilnorK3InfinityResidue",
+      "sha256": "4794fc57319d03d11f2ebcf3289228329bee478ec67ffb486526a4619c8ecf5e"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialNorm",
+      "source_sha256": "a14dd437bff966a369896efbdb7540b1a618c5c70ae33217eff602cc428cdfe1",
+      "module": "AglibTest.MilnorK3PolynomialNorm",
+      "sha256": "0e1ac2c747938d78d8f3b1dd86f845568cb1750e29711d4e3e00eb280cb69396"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialNormBaseChange",
+      "source_sha256": "6c7e8efcfb948880444e24b3126f98816b131c0422985680f91be2236e437c1d",
+      "module": "AglibTest.MilnorK3PolynomialNormBaseChange",
+      "sha256": "9536d132cd68d04c8bbbcb508d44873dc8fde02b22d40341cafba80028ac7af0"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialNormProjection",
+      "source_sha256": "e5f49fda8fcf611d624cbd24ef3cf579e5702442b3bc09409b4eaaba415f2c48",
+      "module": "AglibTest.MilnorK3PolynomialNormProjection",
+      "sha256": "e9bacae60c01fb196bc6934036a32f6ca371b2a34e5c3a60044af4d053ba2053"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialNormRoot",
+      "source_sha256": "17f3324b5a76269db32fbb4f5de0332667f77b7b2daca7e7e0317f0da14030e1",
+      "module": "AglibTest.MilnorK3PolynomialNormRoot",
+      "sha256": "2feef354e8a5e0b23a05ca162ae8039d41c1f3c96c992c2a06b3731c0403b949"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialResidue",
+      "source_sha256": "4c547db011e56d3575a6b8e415bbbf2230de7402db89c24b8fe26657c64dc86b",
+      "module": "AglibTest.MilnorK3PolynomialResidue",
+      "sha256": "04595b1cbeb7b2e87300e51739696e4711f6e94e4cd75b2a7c7f48ac25e3682b"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PolynomialResidueRestriction",
+      "source_sha256": "c23d30712f7367edf8209ac699b79c1e2c41af0fddcb758a8037199367a6c323",
+      "module": "AglibTest.MilnorK3PolynomialResidueRestriction",
+      "sha256": "d828278b59f0ceae0ad1ae8c03714de828cd46e743a5879139f7fd3c573ab013"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3PrincipalUnitResidue",
+      "source_sha256": "b4d1facc556afcb599500f0db5920e8d95aeaba659e8c8e63c8de5a2f6533fb7",
+      "module": "AglibTest.MilnorK3PrincipalUnitResidue",
+      "sha256": "959b3362cbd36a44f3fed4c317b6622c47634be4b6cfe971dcc66f2f1ecc8a03"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3RationalExactness",
+      "source_sha256": "51ec5dd7bc99082a1e0964f1690153cb54d945873851313a6546b872001f9e0e",
+      "module": "AglibTest.MilnorK3RationalExactness",
+      "sha256": "82b81323e685abc09177edaa49cd5fcd5a6e89ec49075bdbc3f6bc3ec4b7ce62"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3Residue",
+      "source_sha256": "128a82e02a79d5ab462bb9790da39e9fe2a42dd489a138fc3158a8bc7640b92b",
+      "module": "AglibTest.MilnorK3Residue",
+      "sha256": "a2bb2cb3cc16482c06e0a306b495257b50529ea02d1a8bb65b03a0a6c416de9f"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3ResidueBaseChangeSupport",
+      "source_sha256": "001269088dcdd66c8e563b2bf4a7f42aee46bf1b0e6c55dbca7eace3e27d661d",
+      "module": "AglibTest.MilnorK3ResidueBaseChangeSupport",
+      "sha256": "d1ab5b2fd0063007a5429033efb7783f872513aa8ee146f93b226994feaf7018"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3ResidueChange",
+      "source_sha256": "1d71404341090aa9ab3d7fa1debad1ebbc5b93864145a6b1db00a9519debf12f",
+      "module": "AglibTest.MilnorK3ResidueChange",
+      "sha256": "91d677f34ec1067b6bcb90a9d20320fb582006d8e5fb6311484cb7026369dbf4"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3ResidueSupport",
+      "source_sha256": "f021bf6c9da009fecac4d2962ff9e3e9fa734562db67949ffef699d217f65d05",
+      "module": "AglibTest.MilnorK3ResidueSupport",
+      "sha256": "0918bd9b723c1c9a7693b9e900af903352b3ae15c1cd11aab2a0337a48d9d172"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3StageEquivalence",
+      "source_sha256": "95f26e6a8609b8e0b32eb00911db4fc358dc369a991800dd57d21f305ad946bb",
+      "module": "AglibTest.MilnorK3StageEquivalence",
+      "sha256": "4984150f0035c99769bb3f6ba6ae10c8c89a0d54ec126ae71c9a4aa991de9ff7"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3StageLift",
+      "source_sha256": "2ee96bbd5c7ae1a341fabb214ce6a5a632d6ecbc5865091ade7ba584b0f9344e",
+      "module": "AglibTest.MilnorK3StageLift",
+      "sha256": "0497485bf01793a48c2c803283481ebf3b6e53d189c0da8b4d9d8c133b1c38b9"
+    },
+    {
+      "source_module": "MotivicTest.MilnorK3Symbols",
+      "source_sha256": "644b249cc3fa53f378efbcf93476864af975af5a3d4b3b1f75089b52679a844a",
+      "module": "AglibTest.MilnorK3Symbols",
+      "sha256": "6910d0cea9bc2de76fc1511a9cbf9e86ab8854d3224ecefceff0b828d1fe2f9b"
+    },
+    {
+      "source_module": "MotivicTest.MilnorKDedekindResidueDirectSum",
+      "source_sha256": "dfe0af0e81f1cdd628488a0af7ade1bb46beb334559ee65058881606b6de75b1",
+      "module": "AglibTest.MilnorKDedekindResidueDirectSum",
+      "sha256": "78f6eb9bb778e80f644d2e9fa453274cdfad0ee36aa3aeedf8ea8c1c9874bdbf"
+    },
+    {
+      "source_module": "MotivicTest.MilnorKDedekindResidueSupport",
+      "source_sha256": "609d10e6138d855726aeb722e1df5f457ed79e4e3c737ed6a1cde04aa03052a7",
+      "module": "AglibTest.MilnorKDedekindResidueSupport",
+      "sha256": "45bafca01f45e1c4a026b573cea3cc3bcddb427da5b8e1216ab06b684352e307"
+    },
+    {
+      "source_module": "MotivicTest.MilnorKPolynomialNormCompatibility",
+      "source_sha256": "55fa384b41e0146e620ea772e21e2070fdb4e8f22ca7b592948d2efaf5cc61b9",
+      "module": "AglibTest.MilnorKPolynomialNormCompatibility",
+      "sha256": "794149adae12c830645fa17fc561e6e7d3ed545fe65c5ffdd4413d71171347d4"
+    },
+    {
+      "source_module": "MotivicTest.PGroupNormalSubfield",
+      "source_sha256": "2724421bc307267bb7aaa9d575242a66a083aeac52963a1505377b7d741b2cf2",
+      "module": "AglibTest.PGroupNormalSubfield",
+      "sha256": "d2d604bce25585f4619244622ea40063b59d3708732328582b6fec62280adb4f"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialLocalResidue",
+      "source_sha256": "a4258d53d6d621125d9c6578b476fb453c08e881beec285f9395366b0adb2712",
+      "module": "AglibTest.PolynomialLocalResidue",
+      "sha256": "b3e809ae48bfe3d8caf6e20fe06892d71d8f37ecfcb89c9e64f51dcd16056325"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialNormDeformation",
+      "source_sha256": "6e68a1a9a639c1c3a819b1062506d107a3ab7b872dfe83e9766913fc9343b491",
+      "module": "AglibTest.PolynomialNormDeformation",
+      "sha256": "efd9f5b713a957ca39f5d1130bf6d464d96b79dcf9161de4324e8510b79dcd9d"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialNormPrincipalUnit",
+      "source_sha256": "98c1f9e407338eaa21f9c4e36f6a2b95b3e78a016262bd8e637252cbb58a8f6a",
+      "module": "AglibTest.PolynomialNormPrincipalUnit",
+      "sha256": "537dd6a87d341aa7273b05187ed11e7105d5fbdd4dd35cf22e5e606860a0928f"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialNormRestrictionKernel",
+      "source_sha256": "f6660fe5439a46fc4e2c4a1fc9590ea6e861d38038fff488a1dea9619eceb39e",
+      "module": "AglibTest.PolynomialNormRestrictionKernel",
+      "sha256": "c608d45a4594f763228deb284ea1c953205c782171c071f1f635ab75f172fcda"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialNormRootRecurrence",
+      "source_sha256": "5178b81a2669a0b6f6dfc26f8bb041ff26866dfd20879592ede181cbdc85a132",
+      "module": "AglibTest.PolynomialNormRootRecurrence",
+      "sha256": "051b795e8514be8fbedc6c69eeb936140a83e9bc8e592c2d5ad94af4db2ebe66"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialNormSplit",
+      "source_sha256": "ea36f51d92346efd7b509b5f822befd52659423e5dd4b78b73d29e2584512d5e",
+      "module": "AglibTest.PolynomialNormSplit",
+      "sha256": "61b737634d0351ec89fa7be8d8dc3beee8de3861028932cb23829e938d7b5ce6"
+    },
+    {
+      "source_module": "MotivicTest.PolynomialResidueBaseChange",
+      "source_sha256": "c6ebca4d3297084f1f1bd635964acb338872a4c0cc08a12833a928e7818617c9",
+      "module": "AglibTest.PolynomialResidueBaseChange",
+      "sha256": "dc09a0d252f84d8821e4f40d88c8ac57d87c3cd91c13f78afa468fb19fa7e9e3"
+    },
+    {
+      "source_module": "MotivicTest.PowerSeriesConstantClosure",
+      "source_sha256": "2178da89070bed154c89cdcb6a312b2bf31bf3001c52405f94fffda89c79bfc3",
+      "module": "AglibTest.PowerSeriesConstantClosure",
+      "sha256": "994a27d29b6b4e63aa0b06f7f93a291a9d8bd3f6db3c9bcde2699510ceafc63f"
+    },
+    {
+      "source_module": "MotivicTest.PrimeNormalScalarDichotomy",
+      "source_sha256": "d6c696a80f41e1ffa5845c58c2f70fafe5d8c2effce5db8c2b1c7b74c74aa444",
+      "module": "AglibTest.PrimeNormalScalarDichotomy",
+      "sha256": "cee6deba6f0bac121fbf902a97ebb2665bd4903656f64f0c96e082d97667e988"
+    },
+    {
+      "source_module": "MotivicTest.RationalCoefficientRoot",
+      "source_sha256": "f50c37390cb23c87d3bf6423aee2517531d2c505120b68de3cba15995b9db3bb",
+      "module": "AglibTest.RationalCoefficientRoot",
+      "sha256": "1bbab22438bc2e251ebeef07cc5ae10e137b276c43d10ea874450cfb243a98da"
+    },
+    {
+      "source_module": "MotivicTest.ResidueMinpolyBranch",
+      "source_sha256": "309fad4452be2820f54e440fba0e2fcb3c5140f3f30b2cc7fef55bb941466a49",
+      "module": "AglibTest.ResidueMinpolyBranch",
+      "sha256": "eabba731636037986e487e8fcbf337fea65f0688b0fc65b6edb8fc433460f8d0"
+    },
+    {
+      "source_module": "MotivicTest.SylowFixedField",
+      "source_sha256": "457c6dfa58b98426aaaccaf35faf3091f1fabd65bb84c728b4d8e88aa244565b",
+      "module": "AglibTest.SylowFixedField",
+      "sha256": "beaafe1085aa3048edac24c98d549345c7587b81bb2a9eff29fd62d44fbe934b"
+    },
+    {
+      "source_module": "MotivicTest.TensorCharpolyProduct",
+      "source_sha256": "030494455e98f252ff7b1f71e0f3f44573fcbd3070fb59470500906e23b47796",
+      "module": "AglibTest.TensorCharpolyProduct",
+      "sha256": "a18d9ab84f7bdfb1495e9543d81d8182ba8049ea647c072e6d10922b1b0a1875"
+    }
+  ],
+  "retained_test_fixture": {
+    "MotivicTest.PolynomialFiberNorm": "The actual downstream weight-two coordinate-evaluation fixture remains in MotivicTest."
+  },
+  "declaration_name_map": {
+    "Localization.atPrime_basePrimeCompl_equiv": "Localization.atPrimeBasePrimeComplEquiv",
+    "PowerSeries.ConstantClosure.closure_coefficientAlgebra": "PowerSeries.ConstantClosure.closureCoefficientAlgebra"
+  },
+  "declaration_lint_adaptations": {
+    "removed_redundant_simp_attributes": [
+      "Polynomial.LocalResidue.fractionMapRingEquiv_toRingHom",
+      "Polynomial.LocalResidue.fractionMapRingEquiv_symm_toRingHom",
+      "Polynomial.LocalResidue.fractionMapAlgEquiv_toRingHom",
+      "Polynomial.LocalResidue.fractionMapAlgEquiv_symm_toRingHom",
+      "RatFunc.inversionHom_inv_X",
+      "RatFunc.inversion_inv_X",
+      "AdjoinRoot.minpolyScalarBranchLift_root",
+      "AdjoinRoot.minpolyScalarBranchLift_algebraMap",
+      "MilnorK.CompleteDVRResidueEquiv.closureEquiv_apply",
+      "MilnorK.InfinityResidue.inversion_variableUnit",
+      "MilnorK.InfinityResidue.inversion_constantUnit",
+      "MilnorK.K2.DVR.valuation_ne_zero",
+      "MilnorK.K2.DVR.valuation_neg_one",
+      "MilnorK.K3.InfinityResidue.inversion_variableUnit",
+      "MilnorK.K3.InfinityResidue.inversion_constantUnit",
+      "MilnorK.K3.PolynomialNorm.rootEvaluation_algebraMap",
+      "MilnorK.K3.PolynomialNorm.rootEvaluationEquiv_toRingHom",
+      "MilnorK.K3.PolynomialNorm.rootEvaluationEquiv_symm_toRingHom",
+      "MilnorK.K3.PolynomialNorm.splitBranchMap_algebraMap",
+      "MilnorK.K3.DegreeFiltration.quotientDegreeResidues_mkQ",
+      "MilnorK.K3.DegreeFiltration.actualStageEquiv_mkQ_apply",
+      "MilnorK.K3.DegreeFiltration.stageResidue_mkQ",
+      "MilnorK.PolynomialNorm.residueGaloisHom_toRingHom",
+      "MilnorK.productUnit_empty",
+      "Polynomial.LocalResidue.coefficientDVRLocalMap_X",
+      "Polynomial.LocalResidue.xPlacePowerSeriesMap_X",
+      "Polynomial.LocalResidue.linearPlacePowerSeriesMap_uniformizer",
+      "MilnorK.DegreeFiltration.quotientDegreeResidues_mkQ",
+      "MilnorK.DegreeFiltration.actualStageEquiv_mkQ_apply",
+      "MilnorK.DegreeFiltration.stageResidue_mkQ",
+      "AdicCompletion.localizationAlgEquiv_algebraMap",
+      "AdicCompletion.powAlgEquiv_algebraMap",
+      "AdjoinRoot.scalarBranchCoefficientAlgEquiv_root",
+      "AdjoinRoot.scalarBranchCoefficientAlgEquiv_algebraMap",
+      "AdjoinRoot.towerBranchTargetEquiv_mk",
+      "AdjoinRoot.towerBranchTargetEquiv_root",
+      "AdjoinRoot.towerBranchRingEquiv_algebraMap",
+      "AdjoinRoot.towerBranchRingEquiv_adjoinRootMap",
+      "IsDiscreteValuationRing.NormValuation.order_ringUnit",
+      "IsDiscreteValuationRing.NormValuation.order_norm_ringUnit",
+      "Polynomial.LocalResidue.adjoinRootMap_algebraMap",
+      "PowerSeries.ConstantClosure.constantMap_apply"
+    ],
+    "retained_unused_conditions": {
+      "MilnorK.finiteExtensionNorm_minpolyScalarBranch": "Keep the characteristic-zero base field as part of the finite-extension norm family API.",
+      "IsDiscreteValuationRing.CompleteExtension.exists_positive_ramification": "Keep the source DVR condition in this local-DVR ramification API.",
+      "IsIntegralClosure.IntermediateTower.upper_isLocalHom": "Keep the upper-ring locality condition in the integral-closure tower API."
+    }
+  },
+  "adaptations": [
+    "Module imports and nine native declaration namespace prefixes are relocated to the owning Aglib families.",
+    "The low-degree tensor carriers are MilnorK.K2.Group and MilnorK.K3.Group; all-degree MilnorK.K stays canonical.",
+    "Native root Finite, local-ring maximal ideals and polynomial map lemmas are explicitly qualified where parent namespaces would shadow them.",
+    "Two legacy definition names use lowerCamelCase; theorem statements and proof bodies remain unchanged modulo namespace qualification.",
+    "Forty-two named lemmas retain their statements and proofs with redundant or non-normal-form simp registration removed.",
+    "Six missing declaration docstrings and two public FinCases imports satisfy current source policies.",
+    "Moved tests select declarations by their actual defining Aglib module independently from the mathematical declaration namespace; private-origin inventories are retained.",
+    "The seven third-party K2 license notices remain verbatim."
+  ],
+  "validation": {
+    "scope": "Incremental final validation of the migration; no whole-library replay or new mathematical status.",
+    "production": {
+      "migrated_modules": 273,
+      "generic_extractions": 1,
+      "result": "All selected production modules compiled. The 31 final lint repairs rebuilt only their 230-module affected closure via 18 frontier targets."
+    },
+    "declaration_checks": {
+      "original_standard_foundations_audit_kernel_declarations": 3372,
+      "final_four_linter_declarations": 3371,
+      "final_four_linter_findings": 0,
+      "other_eleven_linters": "Applicable prior successful evidence retained; statements and proof bodies unchanged modulo two definition names and qualifications.",
+      "retained_hypotheses": "Three declaration-local unusedArguments exceptions preserve original API hypotheses."
+    },
+    "tests": {
+      "moved": 170,
+      "affected_final_rebuilds": 147,
+      "unaffected_prior_successes_retained": 23,
+      "independent_client": "Consumer.MilnorK passed against final provider artifacts."
+    },
+    "tooling": "31 source-guard fixtures passed, including exact admission of the general Milnor family. Layout, source policy and placeholder checks passed. Final changed-file text-style checks passed.",
+    "evidence_sha256": {
+      "repair-result.json": "4ef1b8df9e49839bacc60fe0628d170c8444598503c524e7e1e92187f1b0fec4",
+      "declaration-audit-1.json": "ee3f33a60e85c8b9542c25877b915780e3941517204b79b7daa45452f1e6594d",
+      "style-aglib-final-delta.json": "93605548b8465f729dda5c6831c7060da1d6ef05d4217483a2bf0e744740e3cc",
+      "provider-current-rehashed-2.json": "3b69a41b824e6e31ed22928addb2575d32273cf80a465fc3617e91a84a51d960"
+    }
+  }
+}

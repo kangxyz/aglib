@@ -246,6 +246,7 @@ public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule
 public import Aglib.Algebra.Polynomial.Laurent.BaseChange
 public import Aglib.Algebra.Polynomial.Laurent.Square
 public import Aglib.Algebra.Polynomial.Laurent.UnderSquare
+public import Aglib.Algebra.Polynomial.MonicIrreducible
 
 /-!
 # Algebra

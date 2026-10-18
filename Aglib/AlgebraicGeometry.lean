@@ -334,6 +334,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Support.Finite
 public import Aglib.AlgebraicGeometry.Cohomology.Support.Skyscraper
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Noetherian
+public import Aglib.AlgebraicGeometry.DedekindPointStalk
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
 public import Aglib.AlgebraicGeometry.Descent.Modules.Fppf.AffineStack

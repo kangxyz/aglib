@@ -4,6 +4,8 @@
 
 | Family | Objects and principal results |
 | --- | --- |
+| [KTheory/MilnorK](KTheory/MilnorK/README.md) | All-degree Milnor symbol groups, low-degree comparisons, products, residues and norms |
+| [FieldTheory](FieldTheory/README.md) | Finite-extension, rational-function, root-field and Galois prerequisites |
 | [RingTheory](RingTheory/README.md) | Effective algebra descent, regular-local domain/normality, tensor domains, support, filtration and localized-length/Euler results |
 | [Algebra](Algebra/README.md) | Finite-module scalar/localization interfaces, localized exactness, cones and first-quadrant total-complex comparison |
 | [LinearAlgebra](LinearAlgebra/README.md) | Tensor-product maps and transported injectivity |

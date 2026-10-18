@@ -34,4 +34,5 @@ verification and contribution conventions.
 
 ## License
 
-[Apache-2.0](LICENSE).
+[Apache-2.0](LICENSE), with the retained source exceptions in
+[third-party notices](THIRD_PARTY_NOTICES.md).

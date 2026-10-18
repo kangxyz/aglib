@@ -129,6 +129,22 @@ private import Mathlib.Data.Nat.Basic
                     'module\npublic import Aglib.' + name + '.Bad\n')
                 self.rejected('Forbidden domain import')
 
+    def test_exposed_public_noncomputable_section_is_an_implementation(self):
+        self.write('Aglib/Algebra/A.lean', HEADER.replace(
+            '@[expose] public section', '@[expose] public noncomputable section') +
+            'def datum : Nat := 1\n')
+        self.assertEqual(check_layout(self.root)[0], [])
+
+    def test_general_milnor_owner_keeps_other_k_applications_out(self):
+        for name in ['Aglib.KTheory', 'Aglib.KTheory.MilnorK',
+                     'Aglib.KTheory.MilnorK.K2.Basic',
+                     'Aglib.KTheory.MilnorK.Norm.FiniteExtension.Tower']:
+            self.assertFalse(forbidden_domain_import(name))
+        for name in ['Aglib.KTheory.Quillen.Basic',
+                     'Aglib.KTheory.MilnorK.SConstruction.Basic',
+                     'Aglib.Other.KTheory.MilnorK.Basic']:
+            self.assertTrue(forbidden_domain_import(name))
+
     def test_retained_namespaces_and_comments_are_allowed(self):
         self.write('Aglib/Algebra/A.lean', HEADER +
             '/- Quillen.KTheory and R5Lab.Curves are source provenance. -/\n'

@@ -105,3 +105,14 @@ sheaves. The coordinate-free det(V) factor in the cohomology plan is a
 mathematical deduction from these constructions. The actual Euler maps,
 exactness, determinant comparison and original residue trace still need
 native proofs; no source statement is inserted as a mathematical assumption.
+
+## General Milnor K-theory
+
+[motivic-milnor-k](migration/motivic-milnor-k.json) records the source-preserving
+migration from `kangxyz/motivic` revision
+`b368f6965228e63643380033ec224335bcd24a2c`. The general symbol, residue and
+norm implementations and their necessary algebraic prerequisites have native
+Aglib owners. Two endpoint geometry/cycle consumers remain downstream. The
+record separates actual moves, native reuse and the small generic polynomial
+cut. Original source identities and the seven K₂ license exceptions are
+retained; see [third-party notices](../THIRD_PARTY_NOTICES.md).

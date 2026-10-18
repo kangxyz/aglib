@@ -50,7 +50,11 @@ def forbidden_domain_import(name: str) -> bool:
             [PROJECT.casefold(), 'algebra', 'homology', 'derivedcategory'],
             [PROJECT.casefold(), 'algebra', 'homology', 'homotopycategory'],
             [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'cech', 'resolution']]
-        if part in APPLICATION_COMPONENTS and not bounded_below:
+        # General Milnor symbols/residues/norms have an explicit upstream owner.
+        milnor_owner = (part == 'ktheory' and index == 1 and
+            (parts == [PROJECT.casefold(), 'ktheory'] or
+             parts[:3] == [PROJECT.casefold(), 'ktheory', 'milnork']))
+        if part in APPLICATION_COMPONENTS and not bounded_below and not milnor_owner:
             return True
     return False
 
@@ -121,7 +125,7 @@ def check_layout(root: Path) -> tuple[list[str], int]:
             if not uses_module_system(source):
                 errors.append(f'Production source lacks modern module header: {relative}')
             if not is_import_surface(source) and not re.search(
-                    r'@\[\s*expose\s*\]\s*public\s+section\b', clean):
+                    r'@\[\s*expose\s*\]\s*public\s+(?:noncomputable\s+)?section\b', clean):
                 errors.append(f'Production implementation lacks exposed public section: {relative}')
             for match in re.finditer(r'^[ \t]*(?:(?:private|meta)[ \t]+)*import\b', clean, re.M):
                 line = clean[match.start():clean.find('\n', match.start())].strip()

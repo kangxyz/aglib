@@ -1,5 +1,20 @@
 # Migration work and validation boundaries
 
+## General Milnor K-theory migration
+
+The [source correspondence](migration/motivic-milnor-k.json) records 273 modules
+from Motivic, one generic polynomial extraction and 170 moved tests. General
+groups, products, residues and norms now belong to `Aglib.KTheory.MilnorK`;
+`MilnorK.K F n` is canonical, with tensor presentations nested under
+`MilnorK.K2` and `MilnorK.K3`. Two original endpoint-geometry applications remain
+in Motivic. Existing hypotheses and the seven source license exceptions remain.
+
+Selected production compilation, declaration and text-style lint, source guards,
+affected positive tests and the independent Milnor client pass. The final lint
+repairs rebuilt only their affected closure and 147 tests; 23 unaffected moved
+tests retain their earlier success. These checks record source/API migration,
+not a new mathematical proof status or a whole-library replay.
+
 ## Heartbeat and compilation-performance checkpoint
 
 The performance batch starts from `55b439b7219f12ad6ff2645b32d9f8b073dd8b28`.

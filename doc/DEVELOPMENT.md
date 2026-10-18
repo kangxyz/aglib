@@ -131,7 +131,9 @@ would compete with the actual dependency's `Aglib.*` module identities.
 - Search Mathlib and the pinned Aglib API first. Reuse or extend their actual
   objects and maps. A candidate must state general algebraic geometry or related
   mathematical theory under its full hypotheses. Curve, projective-line,
-  arithmetic and K-theory applications keep their downstream owners; being
+  arithmetic and K-theory applications keep their downstream owners. General
+  Milnor K-theory is an admitted algebraic family; its application comparisons
+  remain downstream. Being
   useful in two applications alone does not select Aglib ownership.
 - Mirror Aglib's mathematical hierarchy below the temporary prefix, following
   [architecture](ARCHITECTURE.md) and [naming](NAMING.md). Use native mathematical
