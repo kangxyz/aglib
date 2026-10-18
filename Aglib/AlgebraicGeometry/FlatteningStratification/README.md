@@ -6,9 +6,13 @@ stratification of a scheme by the local rank of a quasi-coherent sheaf of finite
 strata cut out by Fitting ideal sheaves instead of Nitsure's local minimal presentations, and the
 rank strata of families of sheaves used in the general case: the joint strata `W_{e_0, …, e_n}`
 and the refined strata `S_f` of pp. 21–22, in the form of universal properties for the ranks of
-given sheaves `E_i`. Over an affine Noetherian base `Spec A`, [HilbertPolynomial](HilbertPolynomial.lean)
-and [Flatness](Flatness.lean) assemble the general case: the strata `S_f` and Theorem 4.3 (i),
-(ii) for locally Noetherian test schemes, and (iii).
+given sheaves `E_i`. Over an affine Noetherian base `Spec A`, [HilbertPolynomial](HilbertPolynomial.lean),
+[Flatness](Flatness.lean) and [StratumFlatness](StratumFlatness.lean) assemble the general case: the
+strata `S_f` and Theorem 4.3 (i), (ii) for locally Noetherian test schemes, and (iii). Over a
+locally Noetherian base `S ⟶ Spec A`, for `F` coherent on `P^n_A ×_{Spec A} S`,
+[AffineBase](AffineBase.lean) and [Global](Global.lean) glue the affine strata over the affine opens
+of `S` and prove Theorem 4.3 (i)–(iii) there, with (ii) for locally Noetherian test schemes; for
+quasi-compact `S` only finitely many fibre Hilbert polynomials occur.
 
 ## Prerequisites and consumers
 
@@ -30,8 +34,17 @@ and [Flatness](Flatness.lean) assemble the general case: the strata `S_f` and Th
   Lemma 3.1 (`LargeTwistBaseChange`) and Lemma 3.2 (`FlatOfSections`), flatness local on the base
   ([Modules/Flat/Relative/LocalOnBase](../Modules/Flat/Relative/LocalOnBase.lean)) and
   factorization through monomorphisms ([Limits/Monomorphisms](../Limits/Monomorphisms.lean)).
+- Prerequisites of the non-affine base: the gluing of immersions representing a Zariski-local
+  condition ([IdealSheaf/GlueImmersion](../IdealSheaf/GlueImmersion.lean)), the restriction of
+  `P^n_A ×_{Spec A} S` over the affine opens of `S` and its base change along `T ⟶ S`
+  ([ProjectiveSpace/BaseChange/AffineOpen](../ProjectiveSpace/BaseChange/AffineOpen.lean)),
+  flatness of base changes through pullback squares
+  ([Modules/Flat/Relative/PullbackSquare](../Modules/Flat/Relative/PullbackSquare.lean)) and the
+  base change of fibre Hilbert polynomials (`projectiveHilbertPolynomial_fiber_pullback_map`, in
+  [Cohomology/Projective/HilbertPolynomial](../Cohomology/Projective/HilbertPolynomial/README.md)).
 - Present consumers: the tests `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank`,
-  `.Universal`, `.Coproduct`, `.Finite`, `.Closed`, `.HilbertPolynomial` and `.Flatness`.
+  `.Universal`, `.Coproduct`, `.Finite`, `.Closed`, `.HilbertPolynomial`, `.Flatness`,
+  `.StratumFlatness`, `.AffineBase` and `.Global`.
 
 ## Main results
 
@@ -137,12 +150,62 @@ and (C):
   (`relativeFlat_of_exists_lift_hilbertPolynomialStrataι`); flatness over each `S_f` and over
   `∐ S_f` is `relativeFlat_hilbertPolynomialStratum` and `relativeFlat_hilbertPolynomialStrata`.
 - `exists_iso_hilbertPolynomialStrata`: the coproducts for two such bounds are isomorphic over
-  `Spec A`. The componentwise independence of each `S_f` from `N` is not stated.
+  `Spec A`; so is each stratum `S_f` ([StratumFlatness](StratumFlatness.lean),
+  `exists_iso_hilbertPolynomialStratum`).
 - The proof makes explicit two steps of Nitsure's printed proof: the comparison
   `φ^* π_* F(m) ≅ π_{T*} F_T(m)` for `m ≥ N`, proved affine-locally on locally Noetherian `T`
   (`moduleCohomologyBaseChangeMap_twist_isIso_and_projective_of_isFiberBaseChangeBound`, uniform
   in the test ring), and local constancy of the ranks of the locally free `g^* π_* F(N + j)`,
   `j ≤ n`, in place of local constancy of the Hilbert polynomial over `T`.
+
+[StratumFlatness](StratumFlatness.lean), in the same setting:
+
+- `exists_lift_hilbertPolynomialStratumι_iff_relativeFlat`: for `f` that occurs and a locally
+  Noetherian `T`, `g : T ⟶ Spec A` factors through one stratum `S_f` iff the pullback of `F` to
+  `P^n_A ×_{Spec A} T` is flat over `T` and every fibre Hilbert polynomial `P_{g t}` is `f`.
+- `exists_iso_hilbertPolynomialStratum`: each `S_f` is independent of the bound `N`, up to
+  isomorphism over `Spec A`.
+
+[AffineBase](AffineBase.lean), for a ring `A`, `s : S ⟶ Spec A`, `X_S = P^n_A ×_{Spec A} S` and a
+module `F` on `X_S`:
+
+- `affineBaseModule ι s F hU`: the pullback of `F` along `ProjectiveSpace.affineBaseMap ι s hU`
+  to `P^n_{Γ(S, U)}`, for an affine open `U`, coherent when `F` is and `S` is locally Noetherian
+  (`affineLocallyFiniteType_affineBaseModule`); flatness over test schemes of `U` is read there
+  (`relativeFlat_pullback_affineBaseMap_iff`).
+- `fiberHilbertPolynomialAt ι s F y`, the fibre Hilbert polynomial `P_y` at `y ∈ S`, computed in a
+  chosen affine chart; for quasi-coherent `F` any affine open around `y` computes it
+  (`fiberHilbertPolynomialAt_eq`, `fiberHilbertPolynomialAt_fromSpec`). For coherent `F` over a
+  quasi-compact, locally Noetherian `S` only finitely many occur
+  (`finite_range_fiberHilbertPolynomialAt`).
+- **Base change of the base** along `g : T ⟶ S`: for the pullback `F_T` of `F` to
+  `P^n_A ×_{Spec A} T` along `ProjectiveSpace.pullbackBaseChange ι s g`, the fibre Hilbert
+  polynomial of `F_T` at `t` is that of `F` at `g t`
+  (`fiberHilbertPolynomialAt_pullbackBaseChange`), and `F_T` is flat over `T` iff the pullback of
+  `F` to `X_S ×_S T` is (`relativeFlat_pullbackBaseChange_iff`).
+
+[Global](Global.lean), for `S` locally Noetherian, `e : ι ≃ Fin (n + 1)` and `F` coherent on
+`X_S`, proves Nitsure's Theorem 4.3 over `S` for locally Noetherian test schemes:
+
+- `flatteningStratum ι s n e hF f`, for every polynomial `f`, with the immersion
+  `flatteningStratumι`: `g : T ⟶ S` from a locally Noetherian `T` factors through it iff the
+  pullback of `F` to `X_S ×_S T` is flat over `T` with all `P_{g t} = f`
+  (`exists_lift_flatteningStratumι_iff`), equivalently iff `F_T` on `P^n_A ×_{Spec A} T` is flat
+  with all fibre Hilbert polynomials `f` (`exists_lift_flatteningStratumι_iff_pullbackBaseChange`).
+  It is glued by `Scheme.exists_isImmersion_forall_exists_lift_iff` from the affine strata of the
+  restrictions of `F`, with any bound over each affine open and no common bound; it is unique up
+  to unique isomorphism (`exists_iso_flatteningStratum`), and over an affine open `U` the base
+  change `S_f ×_S U` is the affine stratum (`exists_iso_pullback_flatteningStratumι`).
+- Theorem 4.3 (i), `range_flatteningStratumι`: `|S_f| = {y | P_y = f}` for every `f`, with
+  disjointness and covering.
+- Theorem 4.3 (ii): `flatteningStrataι : ∐ S_f ⟶ S`, `f` over the polynomials that occur, is a
+  monomorphism (`mono_flatteningStrataι`), and a morphism from a locally Noetherian `T` factors
+  through it iff the pullback of `F` is flat over `T` (`exists_lift_flatteningStrataι_iff`,
+  `exists_lift_flatteningStrataι_iff_pullbackBaseChange`); "⇒" holds for every `T`
+  (`relativeFlat_of_exists_lift_flatteningStrataι`), and `F` is flat over `∐ S_f`
+  (`relativeFlat_flatteningStrata`).
+- Theorem 4.3 (iii), `closure_range_flatteningStratumι_subset`, with Nitsure's order `f ≤ g` as
+  "`f(m) ≤ g(m)` for `m ≫ 0`".
 
 ## Not covered
 
@@ -150,8 +213,10 @@ and (C):
   sheaves (Stacks, Tag 05P2) is not formalized, so the results above are stated for finite local
   freeness. For modules of finite type only, `⊔_r S_r ⟶ S` does not represent flatness (Stacks,
   Tag 0FJ0).
-- The general case `n > 0` of Theorem 4.3 (Nitsure, pp. 20–23) over a non-affine base: the strata
-  `S_f` and statements (i)–(iii) are proved here over an affine Noetherian base only.
+- The fibre Hilbert polynomial `P_y` at `y ∈ S` is defined through affine charts
+  (`fiberHilbertPolynomialAt`); it is not compared with a definition through
+  `Spec κ(y) ⟶ S`. The strata over a non-affine base are obtained by choice from their universal
+  property, without a global Fitting-ideal formula.
 - The converse direction of the universal property (ii) for test schemes that are not locally
   Noetherian, as Nitsure prints it; it needs cohomology and base change for flat families over
   arbitrary bases (citation needed).

@@ -32,6 +32,19 @@ coordinate hypothesis.
   is the native uniqueness isomorphism of the two pullback squares, with
   both forward and inverse projection equations. No open-immersion premise
   is needed for this geometric comparison.
+- The separate focused import `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.AffineOpen`
+  treats `X_S = P^n_A ×_{Spec A} S` (`pullback (toSpec A ι) s`) for a scheme `s : S ⟶ Spec A`.
+  Over an affine open `U` of `S`, `affineBaseMap ι s hU : P^n_{Γ(S, U)} ⟶ X_S` exhibits
+  `P^n_{Γ(S, U)}` as the base change of `X_S ⟶ S` along `hU.fromSpec`
+  (`isPullback_affineBaseMap`, with the ring map `affineBaseRingHom s hU : A →+* Γ(S, U)`), and
+  for `W ≤ U` the restriction is the base change along `Γ(S, U) → Γ(S, W)`
+  (`affineBaseMap_restrict`). For `g : T ⟶ S`, `pullbackBaseChange ι s g` exhibits
+  `P^n_A ×_{Spec A} T` as the base change of `X_S ⟶ S` along `g`
+  (`isPullback_pullbackBaseChange`); over affine opens `V ≤ g ⁻¹ U` it is the base change along
+  `g.appLE U V` (`affineBaseMap_pullbackBaseChange`). `X_S` is locally Noetherian for finitely
+  many coordinates and locally Noetherian `S` (`isLocallyNoetherian_pullback_toSpec`). It is a
+  sibling leaf, so that the widely imported `Cartesian` is unchanged; the flattening
+  stratification over a locally Noetherian base consumes it.
 - `Twisting` proves that the twisting sheaves commute with every coefficient base change:
   `twistingPullbackIso φ ι d : π^* O_R(d) ≅ O_S(d)` for `π = map φ ι`. It applies
   `Modules/Invertible/Gluing/Pullback` to the coordinate cocycle. The inverse images of the

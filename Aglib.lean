@@ -1026,12 +1026,15 @@ public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Fibre
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Field
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Ideal
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.Locality
+public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Finite
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Flatness
+public import Aglib.AlgebraicGeometry.FlatteningStratification.Global
 public import Aglib.AlgebraicGeometry.FlatteningStratification.HilbertPolynomial
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Rank
+public import Aglib.AlgebraicGeometry.FlatteningStratification.StratumFlatness
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Universal
 public import Aglib.AlgebraicGeometry.FunctionField.BaseChange
 public import Aglib.AlgebraicGeometry.FunctionField.Basic
@@ -1089,6 +1092,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
 public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
+public import Aglib.AlgebraicGeometry.IdealSheaf.GlueImmersion
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
@@ -1231,6 +1235,7 @@ public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Coproduct
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocalOnBase
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Locality
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.OfSections
+public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.PullbackSquare
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.Unit
 public import Aglib.AlgebraicGeometry.Modules.Flat.Resolution
@@ -1580,6 +1585,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.Open
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.AffineOpen
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Cartesian
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.ChartPullback
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Charts

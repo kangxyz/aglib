@@ -54,17 +54,21 @@ import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
 import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Stack
 import AglibTest.AlgebraicGeometry.Descent.Modules.Zariski
 import AglibTest.AlgebraicGeometry.Descent.Opens
+import AglibTest.AlgebraicGeometry.FlatteningStratification.AffineBase
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Closed
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Coproduct
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Finite
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Flatness
+import AglibTest.AlgebraicGeometry.FlatteningStratification.Global
 import AglibTest.AlgebraicGeometry.FlatteningStratification.HilbertPolynomial
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Rank
+import AglibTest.AlgebraicGeometry.FlatteningStratification.StratumFlatness
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Universal
 import AglibTest.AlgebraicGeometry.Grassmannian.BaseChangeFormula
 import AglibTest.AlgebraicGeometry.Grassmannian.Chart
 import AglibTest.AlgebraicGeometry.Grassmannian.Representability
 import AglibTest.AlgebraicGeometry.IdealSheaf.Glue
+import AglibTest.AlgebraicGeometry.IdealSheaf.GlueImmersion
 import AglibTest.AlgebraicGeometry.IdealSheaf.LocallyClosed
 import AglibTest.AlgebraicGeometry.Modules.FittingIdeal.Pullback
 import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Integral
@@ -72,6 +76,7 @@ import AglibTest.AlgebraicGeometry.Modules.Flat.Generic.Spec
 import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.BaseChange
 import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.Coproduct
 import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.OfSections
+import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.PullbackSquare
 import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.Tensor
 import AglibTest.AlgebraicGeometry.Modules.Flat.Relative.Unit
 import AglibTest.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
@@ -92,6 +97,7 @@ import AglibTest.AlgebraicGeometry.Picard.Comparison.Rigidified
 import AglibTest.AlgebraicGeometry.Picard.Comparison.Sheaf
 import AglibTest.AlgebraicGeometry.Picard.Functors
 import AglibTest.AlgebraicGeometry.Picard.Interfaces
+import AglibTest.AlgebraicGeometry.ProjectiveSpace.BaseChange.AffineOpen
 import AglibTest.AlgebraicGeometry.ProjectiveSpace.BaseChange.Flat
 import AglibTest.AlgebraicGeometry.ProjectiveSpace.BaseChange.Twisting
 import AglibTest.AlgebraicGeometry.ProjectiveSpace.Flat
