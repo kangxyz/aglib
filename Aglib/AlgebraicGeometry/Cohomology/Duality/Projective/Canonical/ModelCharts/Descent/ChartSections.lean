@@ -37,6 +37,15 @@ private theorem refinementRange_le {V W X : Scheme.{u}}
   rintro z ⟨w, rfl⟩
   exact ⟨g w, (congrArg (fun f : W ⟶ X => f w) h).symm⟩
 
+private theorem arrowsEqualOfSameFactors {V : Type*} [Category V] {A B P Q : V}
+    (s s' : A ≅ P) (f f' : P ⟶ Q) (t t' : B ≅ Q) (a b : A ⟶ B)
+    (hs : s = s') (hf : f = f') (ht : t = t')
+    (ha : s.hom ≫ f ≫ t.inv = a) (hb : s'.hom ≫ f' ≫ t'.inv = b) : a = b := by
+  cases hs
+  cases hf
+  cases ht
+  exact ha.symm.trans hb
+
 /-- The standard derived-category model for modules on `Z`, used locally. -/
 local instance chartSectionsStandardDerived (Z : Scheme.{u}) :
     HasDerivedCategory.{u + 1} Z.Modules := HasDerivedCategory.standard _
@@ -118,19 +127,55 @@ theorem canonicalChartHomSection_ambientIso {A' : CommRingCat.{u}} (eA : C.A ≅
   simpa only [CanonicalAmbientChartArrowSquare, Iso.trans_hom, Iso.app_hom,
     Category.assoc] using canonicalCommonModelChartHomologyIso_ambientIso i p n d J C eA
 
-set_option maxHeartbeats 400000 in
--- Comparing the opaque original arrows through their exposed factors reduces
--- unchanged point-indexed chart presentations beyond the 200k default.
+private theorem canonicalChartPrefactor_repoint (y : X) (q : PrimeSpectrum C.B)
+    (hq : C.jX q = y) :
+    canonicalChartModelPrefactorAtIdeal C J (Ideal.ofList C.regularList) rfl
+        C.regularList.length rfl =
+      canonicalChartModelPrefactorAtIdeal (C.repoint y q hq) J
+        (Ideal.ofList (C.repoint y q hq).regularList) rfl C.regularList.length rfl := rfl
+
+omit [IsClosedImmersion i] in
+private theorem canonicalChartCore_repoint (y : X) (q : PrimeSpectrum C.B)
+    (hq : C.jX q = y) :
+    canonicalChartModelCoreAtDegree C J C.regularList.length rfl =
+      canonicalChartModelCoreAtDegree (C.repoint y q hq) J C.regularList.length rfl := rfl
+
+omit [IsClosedImmersion i] in
+private theorem canonicalChartSourceTop_repoint (y : X) (q : PrimeSpectrum C.B)
+    (hq : C.jX q = y) :
+    canonicalChartSourceTopIsoAtIdeal C (Ideal.ofList C.regularList) rfl =
+      canonicalChartSourceTopIsoAtIdeal (C.repoint y q hq)
+        (Ideal.ofList (C.repoint y q hq).regularList) rfl := rfl
+
+/-- Compare the original arrows through typed factor equalities before taking Hom sections. -/
+private theorem canonicalChartHomologyMap_repoint (y : X) (q : PrimeSpectrum C.B)
+    (hq : C.jX q = y) :
+    (canonicalCommonModelChartHomologyIso i p n d J C).hom =
+      (canonicalCommonModelChartHomologyIso i p n d J (C.repoint y q hq)).hom := by
+  exact arrowsEqualOfSameFactors
+    (canonicalChartModelPrefactorAtIdeal C J (Ideal.ofList C.regularList) rfl
+      C.regularList.length rfl)
+    (canonicalChartModelPrefactorAtIdeal (C.repoint y q hq) J
+      (Ideal.ofList (C.repoint y q hq).regularList) rfl C.regularList.length rfl)
+    (canonicalChartModelCoreAtDegree C J C.regularList.length rfl)
+    (canonicalChartModelCoreAtDegree (C.repoint y q hq) J C.regularList.length rfl)
+    (canonicalChartSourceTopIsoAtIdeal C (Ideal.ofList C.regularList) rfl)
+    (canonicalChartSourceTopIsoAtIdeal (C.repoint y q hq)
+      (Ideal.ofList (C.repoint y q hq).regularList) rfl)
+    (canonicalCommonModelChartHomologyIso i p n d J C).hom
+    (canonicalCommonModelChartHomologyIso i p n d J (C.repoint y q hq)).hom
+    (canonicalChartPrefactor_repoint C J y q hq)
+    (canonicalChartCore_repoint C J y q hq)
+    (canonicalChartSourceTop_repoint C y q hq)
+    (canonicalChartModelCoreAtDegree_factor C J C.regularList.length rfl)
+    (canonicalChartModelCoreAtDegree_factor (C.repoint y q hq) J C.regularList.length rfl)
+
 /-- Retaining the same chart at a new actual source point retains its original Hom section. -/
 theorem canonicalChartHomSection_repoint (y : X) (q : PrimeSpectrum C.B)
     (hq : C.jX q = y) :
     canonicalChartHomSection C J = canonicalChartHomSection (C.repoint y q hq) J := by
-  have hMap : (canonicalCommonModelChartHomologyIso i p n d J C).hom =
-      (canonicalCommonModelChartHomologyIso i p n d J (C.repoint y q hq)).hom := by
-    rw [← canonicalChartModelCoreAtDegree_factor C J C.regularList.length rfl,
-      ← canonicalChartModelCoreAtDegree_factor (C.repoint y q hq) J C.regularList.length rfl]
-    rfl
-  exact congrArg (restrictionHomEquiv C.quotientSource M N) hMap
+  exact congrArg (restrictionHomEquiv C.quotientSource M N)
+    (canonicalChartHomologyMap_repoint C J y q hq)
 
 /-- The genuine same-data comparison gives a common restriction of original Hom sections. -/
 theorem canonicalChartHomSection_sameData (D : SmoothClosedImmersionLocalChart i p n d x)

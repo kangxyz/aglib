@@ -81,6 +81,43 @@ private theorem wholeChartPaste {C D : Type*} [Category C] [Category D] (F : C �
   rw [hc, hc'] at hw
   exact wholeSquareOfInverse rM rN (F.map c) c' hw
 
+/-- One typed diagram keeps every use of a chart factor on the same objects. -/
+private structure WholeChartPasteData {C D : Type*} [Category C] [Category D] (F : C ⥤ D) where
+  M : C
+  H : C
+  Q : C
+  N : C
+  M' : D
+  H' : D
+  H'' : D
+  Q' : D
+  N' : D
+  s : M ≅ H
+  s' : M' ≅ H'
+  u : N ≅ Q
+  u' : N' ≅ Q'
+  f : H ⟶ Q
+  f' : H' ⟶ Q'
+  f'' : H'' ⟶ Q'
+  rM : M' ≅ F.obj M
+  rN : N' ≅ F.obj N
+  T : F.obj H ⟶ H''
+  z : H' ⟶ H''
+  v : F.obj Q ⟶ Q'
+  c : M ⟶ N
+  c' : M' ⟶ N'
+
+private theorem WholeChartPasteData.paste {C D : Type*} [Category C] [Category D]
+    {F : C ⥤ D} (A : WholeChartPasteData F)
+    (hs : A.rM.inv ≫ A.s'.hom ≫ A.z = F.map A.s.hom ≫ A.T)
+    (hf : F.map A.f ≫ A.v = A.T ≫ A.f'') (hz : A.z ≫ A.f'' = A.f')
+    (hu : F.map A.u.hom ≫ A.v = A.rN.inv ≫ A.u'.hom)
+    (hc : A.s.hom ≫ A.f ≫ A.u.inv = A.c)
+    (hc' : A.s'.hom ≫ A.f' ≫ A.u'.inv = A.c') :
+    A.rM.hom ≫ F.map A.c = A.c' ≫ A.rN.hom :=
+  wholeChartPaste F A.s A.s' A.u A.u' A.f A.f' A.f'' A.rM A.rN A.T A.z A.v
+    hs hf hz hu A.c A.c' hc hc'
+
 private theorem modelSquareTransport {C D : Type*} [Category C] [Category D]
     (F : C ⥤ D) {H Q : C} {K Q' : D}
     (f f₀ : H ⟶ Q) (v : F.obj Q ⟶ Q') (T T₀ : F.obj H ⟶ K)
@@ -605,12 +642,10 @@ private theorem ambientPrefactorSquare :
   exact sourceSquareTransport (restrictFunctor g) S S₀ Sd Sd₀ Rₘ.inv T z
     hSData hSdData hNative
 
-set_option maxHeartbeats 400000 in
--- The original ambient chart getters have several equal restriction and quotient
--- presentations; their combined conversions in this paste exceed the 200k default.
-/-- Paste the original chart factors before expanding the restriction composites. -/
-private theorem ambientWholeChartPaste :
-    CanonicalAmbientChartPastedSquare i p n d J C eA := by
+/-- The original ambient chart factors, with one shared set of typed endpoints. -/
+private def ambientWholeChartData :
+    WholeChartPasteData
+      (restrictFunctor (Spec.map (canonicalAmbientIsoChartQuotientMap C eA))) := by
   let D := C.ambientIsoChart eA
   let s := C.regularList
   let t := D.regularList
@@ -657,28 +692,78 @@ private theorem ambientWholeChartPaste :
   let z := homologyMap (((closedImmersionRightAdjoint (Spec.map q')).mapHomologicalComplex
     (.up ℤ)).map (canonicalAmbientResolutionCompLift j k J).hom') (c : ℤ)
   let fi := ambientIteratedCore i p n d J C eA
-  have hf := ambientCoreOpenSquare i p n d J C eA
-  have hz := ambientCoreResolutionSquare i p n d J C eA
-  have hS := ambientPrefactorSquare i p n d J C eA
-  have hU := ambientPostfactorSquare i p n d C eA
-  have hC := canonicalChartModelCoreAtDegree_factor C J c rfl
-  have hD := canonicalChartModelCoreAtDegree_factor D J c hc
-  have hw := wholeChartPaste
-    (C := (Spec (regularListQuotientRing s)).Modules)
-    (D := (Spec (regularListQuotientRing t)).Modules)
-    (M := M.restrict a)
-    (H := regularListModelTopHomologyAt (Ideal.ofList s) J₀ c)
-    (Q := regularListTangentTopAt C.α (Ideal.ofList s) d)
-    (N := N.restrict a)
-    (M' := M.restrict a')
-    (H' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
-      (canonicalAmbientChartResolution J D.jP) c)
-    (H'' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
-      (canonicalAmbientChartResolution J₀ k) c)
-    (Q' := regularListTangentTopAt D.α (Ideal.ofList D.regularList) d)
-    (N' := N.restrict a')
-    (restrictFunctor g) S Sd U Ud f fd fi Rₘ Rₙ T z v hS hf hz hU _ _ hC hD
-  exact hw
+  exact
+    { M := M.restrict a
+      H := regularListModelTopHomologyAt (Ideal.ofList s) J₀ c
+      Q := regularListTangentTopAt C.α (Ideal.ofList s) d
+      N := N.restrict a
+      M' := M.restrict a'
+      H' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
+        (canonicalAmbientChartResolution J D.jP) c
+      H'' := regularListModelTopHomologyAt (Ideal.ofList D.regularList)
+        (canonicalAmbientChartResolution J₀ k) c
+      Q' := regularListTangentTopAt D.α (Ideal.ofList D.regularList) d
+      N' := N.restrict a'
+      s := S
+      s' := Sd
+      u := U
+      u' := Ud
+      f := f
+      f' := fd
+      f'' := fi
+      rM := Rₘ
+      rN := Rₙ
+      T := T
+      z := z
+      v := v
+      c := (canonicalCommonModelChartHomologyIso i p n d J C).hom
+      c' := (canonicalCommonModelChartHomologyIso i p n d J D).hom }
+
+private theorem ambientWholeChartData_source :
+    let A := ambientWholeChartData i p n d J C eA
+    A.rM.inv ≫ A.s'.hom ≫ A.z =
+      (restrictFunctor (Spec.map (canonicalAmbientIsoChartQuotientMap C eA))).map
+        A.s.hom ≫ A.T := by
+  exact ambientPrefactorSquare i p n d J C eA
+
+private theorem ambientWholeChartData_model :
+    let A := ambientWholeChartData i p n d J C eA
+    (restrictFunctor (Spec.map (canonicalAmbientIsoChartQuotientMap C eA))).map
+        A.f ≫ A.v = A.T ≫ A.f'' := by
+  exact ambientCoreOpenSquare i p n d J C eA
+
+private theorem ambientWholeChartData_resolution :
+    let A := ambientWholeChartData i p n d J C eA
+    A.z ≫ A.f'' = A.f' := by
+  exact ambientCoreResolutionSquare i p n d J C eA
+
+private theorem ambientWholeChartData_target :
+    let A := ambientWholeChartData i p n d J C eA
+    (restrictFunctor (Spec.map (canonicalAmbientIsoChartQuotientMap C eA))).map
+        A.u.hom ≫ A.v = A.rN.inv ≫ A.u'.hom := by
+  exact ambientPostfactorSquare i p n d C eA
+
+private theorem ambientWholeChartData_factor :
+    let A := ambientWholeChartData i p n d J C eA
+    A.s.hom ≫ A.f ≫ A.u.inv = A.c := by
+  exact canonicalChartModelCoreAtDegree_factor C J C.regularList.length rfl
+
+private theorem ambientWholeChartData_refinedFactor :
+    let A := ambientWholeChartData i p n d J C eA
+    A.s'.hom ≫ A.f' ≫ A.u'.inv = A.c' := by
+  exact canonicalChartModelCoreAtDegree_factor (C.ambientIsoChart eA) J C.regularList.length
+    (C.ambientIsoChart_regularList_length eA)
+
+/-- Paste the shared typed factors before expanding the restriction composites. -/
+private theorem ambientWholeChartPaste :
+    CanonicalAmbientChartPastedSquare i p n d J C eA := by
+  exact WholeChartPasteData.paste (ambientWholeChartData i p n d J C eA)
+    (ambientWholeChartData_source i p n d J C eA)
+    (ambientWholeChartData_model i p n d J C eA)
+    (ambientWholeChartData_resolution i p n d J C eA)
+    (ambientWholeChartData_target i p n d J C eA)
+    (ambientWholeChartData_factor i p n d J C eA)
+    (ambientWholeChartData_refinedFactor i p n d J C eA)
 
 /-- The original whole chart arrows agree on the actual ambient isomorphism. -/
 theorem canonicalCommonModelChartHomologyIso_ambientIso :
