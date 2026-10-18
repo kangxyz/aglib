@@ -119,4 +119,63 @@ theorem moduleCoefficientPullback_congr (p q : Y ⟶ X) (h : p = q)
   change 𝟙 _ ≫ moduleCoefficientPullback p φ = _
   exact Category.id_comp _
 
+/-- Postcomposing the actual module coefficient arrow gives the original coefficient
+map on unchanged module cohomology. -/
+theorem moduleCohomologyMapAlong_postcomp (p : Y ⟶ X)
+    {M : X.Modules} {N P : Y.Modules}
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N) (ψ : N ⟶ P)
+    (n : ℕ) (x : Sheaf.H.{u + 1} (moduleAddSheaf X M) n) :
+    moduleCohomologyMapAlong p (φ ≫ (Scheme.Modules.pushforward p).map ψ) n x =
+      Sheaf.H.map ((SheafOfModules.toSheaf Y.ringCatSheaf).map ψ) n
+        (moduleCohomologyMapAlong p φ n x) := by
+  dsimp only [moduleCohomologyMapAlong]
+  rw [moduleCoefficientPullback_postcomp]
+  change ((Abelian.Ext.mk₀ _).comp
+      (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
+        (Abelian.Ext.mk₀ (moduleCoefficientPullback p φ ≫
+          (SheafOfModules.toSheaf Y.ringCatSheaf).map ψ)) (Nat.add_zero n) =
+    (((Abelian.Ext.mk₀ _).comp
+      (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
+        (Abelian.Ext.mk₀ (moduleCoefficientPullback p φ)) (Nat.add_zero n)).comp
+          (Abelian.Ext.mk₀ ((SheafOfModules.toSheaf Y.ringCatSheaf).map ψ)) (Nat.add_zero n)
+  simp only [Abelian.Ext.comp_assoc_of_third_deg_zero, Abelian.Ext.mk₀_comp_mk₀]
+
+/-- Precomposing the actual module coefficient arrow gives the original coefficient
+map before the original geometric cohomology map. -/
+theorem moduleCohomologyMapAlong_precomp (p : Y ⟶ X)
+    {M P : X.Modules} {N : Y.Modules} (μ : P ⟶ M)
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N)
+    (n : ℕ) (x : Sheaf.H.{u + 1} (moduleAddSheaf X P) n) :
+    moduleCohomologyMapAlong p (μ ≫ φ) n x =
+      moduleCohomologyMapAlong p φ n
+        (Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map μ) n x) := by
+  dsimp only [moduleCohomologyMapAlong]
+  rw [moduleCoefficientPullback_precomp]
+  change ((Abelian.Ext.mk₀ _).comp
+      (x.mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
+        (Abelian.Ext.mk₀ ((zariskiPullback p).map
+          ((SheafOfModules.toSheaf X.ringCatSheaf).map μ) ≫
+          moduleCoefficientPullback p φ)) (Nat.add_zero n) =
+    ((Abelian.Ext.mk₀ _).comp
+      ((x.comp (Abelian.Ext.mk₀ ((SheafOfModules.toSheaf X.ringCatSheaf).map μ))
+        (Nat.add_zero n)).mapExactFunctor (zariskiPullback p)) (Nat.zero_add n)).comp
+          (Abelian.Ext.mk₀ (moduleCoefficientPullback p φ)) (Nat.add_zero n)
+  simp only [Abelian.Ext.mapExactFunctor_comp, Abelian.Ext.mapExactFunctor_mk₀,
+    Abelian.Ext.comp_assoc_of_third_deg_zero, Abelian.Ext.mk₀_comp_mk₀]
+
+/-- An original square of arbitrary module coefficient arrows gives the original
+naturality square on unchanged additive cohomology. -/
+theorem moduleCohomologyMapAlong_naturality (p : Y ⟶ X)
+    {M M' : X.Modules} {N N' : Y.Modules}
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N)
+    (φ' : M' ⟶ (Scheme.Modules.pushforward p).obj N')
+    (μ : M ⟶ M') (ν : N ⟶ N')
+    (h : μ ≫ φ' = φ ≫ (Scheme.Modules.pushforward p).map ν)
+    (n : ℕ) (x : Sheaf.H.{u + 1} (moduleAddSheaf X M) n) :
+    moduleCohomologyMapAlong p φ' n
+        (Sheaf.H.map ((SheafOfModules.toSheaf X.ringCatSheaf).map μ) n x) =
+      Sheaf.H.map ((SheafOfModules.toSheaf Y.ringCatSheaf).map ν) n
+        (moduleCohomologyMapAlong p φ n x) := by
+  rw [← moduleCohomologyMapAlong_precomp, h, moduleCohomologyMapAlong_postcomp]
+
 end AlgebraicGeometry.Scheme.Cohomology

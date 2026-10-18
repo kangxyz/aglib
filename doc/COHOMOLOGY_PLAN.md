@@ -11,6 +11,65 @@ Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
 Work is isolated on `codex/cohomology-foundations`. Existing theorem-family
 inputs remain explicit until the complete quantified statement has a proof.
 
+## Relative duality and canonical bundle checkpoint
+
+The current sources complete the relative projective and chosen smooth-embedding
+duality route below. Their actual maps, hypotheses and proof dependencies are
+recorded in the [relative family](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/README.md).
+The broader base-change and proper-direct-image targets in this plan remain
+separate.
+
+1. [Trace](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Trace.lean)
+   glues the original affine differential trace over a separated base for every
+   quasicoherent coefficient N, then reconstructs the arrow from the installed
+   derived pushforward to single_n N. Its checked affine formula and the
+   original affine residue, unit and coefficient-naturality laws give the
+   prescribed normalization. Neither Noetherianity nor coefficient flatness
+   is used in this construction.
+2. [Coherent](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Coherent.lean)
+   proves bijectivity and structural-scalar linearity of that same comparison
+   for all natural Ext degrees over a Noetherian separated base, with a native
+   affineLocallyFiniteType source and arbitrary quasicoherent N. The proof
+   transports the actual affine map to open direct images, uses a finite affine
+   cover and its locally split coefficient sequence, and applies the signed
+   long exact rows. Each induction step proves injectivity uniformly in N
+   before surjectivity. The projective presentation ring need not be Noetherian.
+3. [ClosedEmbedding/Linear](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/ClosedEmbedding/Linear.lean)
+   transfers this linear equivalence through the installed closed-immersion
+   right adjoint and native derived-pushforward composition. Its coefficient
+   object is the actual Ri!W(N); its forward map is the original comparison.
+4. [Canonical](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Canonical.lean)
+   identifies the actual ambient canonical right-adjoint value with the single
+   in integer degree n-d of the smooth source's top differential module.
+   The proof uses the original regular-sequence class, normal-first determinant,
+   generator/frame changes, common refinements and ordinary Hom descent.
+   It works over arbitrary bases without separation or Noetherianity and
+   includes zero rings, empty sources and dimension zero.
+5. [Smooth/Trace](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Smooth/Trace.lean)
+   transports the original unit-coefficient comparison through that actual
+   canonical isomorphism and proves its all-degree single-trace formula.
+   [Smooth](../Aglib/AlgebraicGeometry/Cohomology/Duality/Projective/Relative/Smooth.lean)
+   gives the coherent linear equivalence over a Noetherian separated base:
+   its forward arrow is derived pushforward followed by that one trace.
+   Native shift transport handles integer target degrees, and the actual local
+   dimension equation proves the source empty when n<d; no global d<=n premise
+   is added.
+
+Singular bases retain higher Ext; there is no general Ext>n vanishing claim.
+Arbitrary coefficients retain Ri!W(N), without arbitrary-coefficient purity.
+General proper f!, embedding independence and perfect direct images remain
+separate targets. Compilation experience from this route is recorded in
+[PERFORMANCE](PERFORMANCE.md).
+
+Final incremental validation passed for the six public roots, `AuditSupport`
+and the three affected `AglibTest` consumers. Declaration and text-style lint
+passed. The scoped axiom audit loaded all 235 implementation-module origins
+and checked 6,140 declarations against `propext`, `Classical.choice` and
+`Quot.sound`; the three consumer modules contain anonymous examples rather
+than retained kernel declarations. Generated imports, layout, source policy
+and placeholder checks passed. No aggregate library build or full dependency
+replay is claimed.
+
 ## Mathematical targets and acceptance
 
 1. **Affine module base change.** For affine `f : X ⟶ S`, quasicoherent

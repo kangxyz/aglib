@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric.Composition
+public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.GeometricTop
 
 /-! # Original module coefficient arrows on native geometric open cohomology
 
@@ -96,5 +97,24 @@ theorem zariskiCohomologyOpenMap_module_congr_app (p q : Y ⟶ X) (h : p = q)
   erw [CategoryTheory.Functor.map_id, Category.comp_id]
   exact congrArg (fun a =>
     (zariskiCohomologyOpenMap p (moduleAddSheaf X M) (moduleAddSheaf Y N) a n).app U) ha.symm
+
+/-- Successive original geometric maps on unchanged module cohomology compose with
+actual coefficient arrows and the native direct-image composition comparison. -/
+theorem moduleCohomologyMapAlong_comp (p : Y ⟶ X) (q : Z ⟶ Y)
+    {M : X.Modules} {N : Y.Modules} {P : Z.Modules}
+    (φ : M ⟶ (Scheme.Modules.pushforward p).obj N)
+    (ψ : N ⟶ (Scheme.Modules.pushforward q).obj P)
+    (n : ℕ) (x : Sheaf.H.{u + 1} (moduleAddSheaf X M) n) :
+    moduleCohomologyMapAlong q ψ n (moduleCohomologyMapAlong p φ n x) =
+      moduleCohomologyMapAlong (q ≫ p)
+        (φ ≫ (Scheme.Modules.pushforward p).map ψ ≫
+          (Scheme.Modules.pushforwardComp q p).hom.app P) n x := by
+  obtain ⟨y, rfl⟩ := (sheafHPrimeTopAddEquiv X (moduleAddSheaf X M) n).surjective x
+  dsimp only [moduleCohomologyMapAlong]
+  rw [← sheafHPrimeTopAddEquiv_geometric p, ← sheafHPrimeTopAddEquiv_geometric q,
+    ← sheafHPrimeTopAddEquiv_geometric (q ≫ p)]
+  exact congrArg (sheafHPrimeTopAddEquiv Z (moduleAddSheaf Z P) n)
+    (ConcreteCategory.congr_hom
+      (zariskiCohomologyOpenMap_module_comp_app p q φ ψ n (op ⊤)) y)
 
 end AlgebraicGeometry.Scheme.Cohomology

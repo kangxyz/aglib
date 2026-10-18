@@ -95,4 +95,48 @@ theorem derivedCoextendScalarsPlusHomologyExtQuotientLinearEquiv_independent
   exact DFunLike.congr_fun (derivedCoextendScalarsPlusHomologyExtAddEquiv_independent
     (Ideal.Quotient.mk I) M J K n) x
 
+
+private theorem derivedCoextendScalarsPlusQuotientHomology_map_smul_id_apply
+    (N : ModuleCat.{u} R) (J : InjectiveResolution N) (n : ℕ) (r : R)
+    (x : (DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} (R ⧸ I)) (n : ℤ)).obj
+      ((coextendScalars (Ideal.Quotient.mk I)).rightDerivedFunctorPlus.obj
+        ((DerivedCategory.Plus.singleFunctor (ModuleCat.{u} R) 0).obj N))) :
+    (DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} (R ⧸ I)) (n : ℤ)).map
+      ((coextendScalars (Ideal.Quotient.mk I)).rightDerivedFunctorPlus.map
+        ((DerivedCategory.Plus.singleFunctor (ModuleCat.{u} R) 0).map (r • 𝟙 N))) x =
+      Ideal.Quotient.mk I r • x := by
+  let := Ext.quotientSourceModule.{u,w} I N n
+  let E := derivedCoextendScalarsPlusHomologyExtQuotientLinearEquiv.{u,w,a,b} I N J n
+  apply E.injective
+  have h := derivedCoextendScalarsPlusHomologyExtQuotientLinearEquiv_naturality
+    I J J (r • 𝟙 N) n x
+  change E _ = (E x).comp (Ext.mk₀ (r • 𝟙 N)) (add_zero n) at h
+  calc
+    E _ = (E x).comp (Ext.mk₀ (r • 𝟙 N)) (add_zero n) := h
+    _ = r • E x := (Ext.smul_eq_comp_mk₀ (E x) r).symm
+    _ = Ideal.Quotient.mk I r • E x :=
+      (Ext.quotientSourceModule_mk_smul I N n r (E x)).symm
+    _ = E (Ideal.Quotient.mk I r • x) :=
+      (E.map_smul (Ideal.Quotient.mk I r) x).symm
+
+omit [HasExt.{w} (ModuleCat.{u} R)] in
+/-- Multiplication on the original coefficient induces quotient multiplication on actual homology.
+
+This identity needs no chosen Ext size or injective resolution in its public interface. -/
+theorem derivedCoextendScalarsPlusQuotientHomology_map_smul_id
+    (N : ModuleCat.{u} R) (n : ℕ) (r : R) :
+    (DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} (R ⧸ I)) (n : ℤ)).map
+      ((coextendScalars (Ideal.Quotient.mk I)).rightDerivedFunctorPlus.map
+        ((DerivedCategory.Plus.singleFunctor (ModuleCat.{u} R) 0).map (r • 𝟙 N))) =
+      Ideal.Quotient.mk I r • 𝟙
+        ((DerivedCategory.Plus.homologyFunctor (ModuleCat.{u} (R ⧸ I)) (n : ℤ)).obj
+          ((coextendScalars (Ideal.Quotient.mk I)).rightDerivedFunctorPlus.obj
+            ((DerivedCategory.Plus.singleFunctor (ModuleCat.{u} R) 0).obj N))) := by
+  let : HasExt.{a} (ModuleCat.{u} R) := hasExt_of_hasDerivedCategory _
+  apply ModuleCat.hom_ext
+  apply LinearMap.ext
+  intro x
+  exact derivedCoextendScalarsPlusQuotientHomology_map_smul_id_apply.{u,a,a,b}
+    I N (injectiveResolution N) n r x
+
 end ModuleCat

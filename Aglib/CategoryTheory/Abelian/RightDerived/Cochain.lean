@@ -105,4 +105,61 @@ theorem isoRightDerivedObjCochain_hom_naturality
   simp only [Iso.inv_hom_id_assoc, Iso.inv_hom_id, Category.comp_id]
   exact InjectiveResolution.isoRightDerivedObj_hom_naturality f I J φ.hom hc F n
 
+omit [EnoughInjectives C] in
+/-- The original resolution's zero cycles after mapping and extending by zero to integer
+cochains. A supplied resolution suffices; no global enough-injectives assumption is used. -/
+def toRightDerivedZeroCochainCycles (I : InjectiveResolution M) : F.obj M ⟶
+    (((F.mapHomologicalComplex (.up ℤ)).obj I.cochainComplex).cycles 0) :=
+  I.toRightDerivedZero' F ≫
+    ((((F.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).extendCyclesIso
+      ComplexShape.embeddingUpNat (j := 0) (j' := 0) rfl).inv) ≫
+    cyclesMap (I.cocomplex.mapExtendIso F ComplexShape.embeddingUpNat).inv 0
+
+omit [EnoughInjectives C] in
+/-- The zero-cycle arrow retains the original augmentation and integer-term comparison. -/
+@[reassoc]
+theorem toRightDerivedZeroCochainCycles_comp_iCycles (I : InjectiveResolution M) :
+    toRightDerivedZeroCochainCycles F I ≫
+        ((F.mapHomologicalComplex (.up ℤ)).obj I.cochainComplex).iCycles 0 =
+      F.map (I.ι.f 0) ≫ F.map (I.cochainComplexXIso 0 0 rfl).inv := by
+  dsimp only [toRightDerivedZeroCochainCycles]
+  simp only [Category.assoc]
+  erw [cyclesMap_i, extendCyclesIso_inv_iCycles_assoc,
+    InjectiveResolution.toRightDerivedZero'_comp_iCycles_assoc]
+  let e := I.cocomplex.mapExtendIso F ComplexShape.embeddingUpNat
+  have he := I.cocomplex.mapExtendIso_hom_f_extendXIso F ComplexShape.embeddingUpNat
+    (i := 0) (j := 0) rfl
+  have hi := congrArg (fun k => k.f 0) e.inv_hom_id
+  change e.inv.f 0 ≫ e.hom.f 0 = 𝟙 _ at hi
+  have hc : e.inv.f 0 ≫ F.map (I.cochainComplexXIso 0 0 rfl).hom =
+      (((F.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).extendXIso
+        ComplexShape.embeddingUpNat (i := 0) (i' := 0) rfl).hom := by
+    erw [← he, ← Category.assoc, hi, Category.id_comp]
+  have h :
+      (((F.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).extendXIso
+        ComplexShape.embeddingUpNat (i := 0) (i' := 0) rfl).inv ≫ e.inv.f 0 =
+      F.map (I.cochainComplexXIso 0 0 rfl).inv := by
+    apply (cancel_mono (F.map (I.cochainComplexXIso 0 0 rfl).hom)).mp
+    rw [Category.assoc, hc, Iso.inv_hom_id, ← F.map_comp, Iso.inv_hom_id, F.map_id]
+    rfl
+  rw [h]
+
+/-- The original transformation to the zeroth right-derived object becomes the original
+zero-cycle projection under the same integer-cochain comparison. -/
+@[reassoc]
+theorem toRightDerivedZero_comp_isoRightDerivedObjCochain (I : InjectiveResolution M) :
+    F.toRightDerivedZero.app M ≫ (I.isoRightDerivedObjCochain F 0).hom =
+      toRightDerivedZeroCochainCycles F I ≫
+        ((F.mapHomologicalComplex (.up ℤ)).obj I.cochainComplex).homologyπ 0 := by
+  rw [I.toRightDerivedZero_eq F, InjectiveResolution.isoRightDerivedObjCochain_hom]
+  simp only [Category.assoc, Iso.inv_hom_id_assoc]
+  change I.toRightDerivedZero' F ≫
+      ((F.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).homologyπ 0 ≫
+        (((F.mapHomologicalComplex (.up ℕ)).obj I.cocomplex).extendHomologyIso
+          ComplexShape.embeddingUpNat (j := 0) (j' := 0) rfl).inv ≫
+        homologyMap (I.cocomplex.mapExtendIso F ComplexShape.embeddingUpNat).inv 0 = _
+  rw [homologyπ_extendHomologyIso_inv_assoc, homologyπ_naturality]
+  simp only [toRightDerivedZeroCochainCycles, Category.assoc]
+  rfl
+
 end CategoryTheory.InjectiveResolution

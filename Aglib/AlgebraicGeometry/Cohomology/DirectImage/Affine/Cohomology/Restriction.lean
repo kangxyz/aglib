@@ -266,35 +266,17 @@ private def affineHomologyClass :
       ((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
         (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
           I.cochainComplex)).homology (n : ℤ) :=
-  moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso f M I n).hom ≫
-    (tilde.toTildeΓNatIso (R := CommRingCat.of R)).inv.app
-      (((moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj
-        (((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj
-          I.cochainComplex)).homology (n : ℤ))
+  moduleHigherDirectImageAffineSectionsHomologyMap f M I n
 
 private theorem affineHomologyClass_isIso : IsIso (affineHomologyClass f M I n) := by
-  dsimp only [affineHomologyClass]
-  infer_instance
+  exact moduleHigherDirectImageAffineSectionsHomologyMap_isIso f M I n
 
 private theorem affineHomologyClass_counit :
     let K := ((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex
     affineHomologyClass f M I n ≫ affineCounitUnit (CommRingCat.of R) K n =
       moduleSpecΓFunctor.map
         (I.isoRightDerivedObjCochain (Scheme.Modules.pushforward f) n).hom := by
-  let K := ((Scheme.Modules.pushforward f).mapHomologicalComplex (.up ℤ)).obj I.cochainComplex
-  let C := (moduleSpecΓFunctor.mapHomologicalComplex (.up ℤ)).obj K
-  let : QuasiIso (Scheme.Modules.Complex.tildeGlobalSectionsCounit
-      (CommRingCat.of R) (.up ℤ) K) := moduleResolutionPushforwardTildeCounit_quasiIso f M I
-  change moduleSpecΓFunctor.map (moduleHigherDirectImageAffineIso f M I n).hom ≫
-      (tilde.toTildeΓNatIso (R := CommRingCat.of R)).inv.app (C.homology (n : ℤ)) ≫
-      (tilde.toTildeΓNatIso (R := CommRingCat.of R)).hom.app (C.homology (n : ℤ)) ≫
-      moduleSpecΓFunctor.map
-        (Scheme.Modules.Complex.tildeGlobalSectionsHomologyIso
-          (CommRingCat.of R) (.up ℤ) K (n : ℤ)).hom = _
-  simp only [Iso.inv_hom_id_app_assoc]
-  rw [← Functor.map_comp]
-  exact congrArg moduleSpecΓFunctor.map
-    (moduleHigherDirectImageAffineIso_hom_comp f M I n)
+  exact moduleHigherDirectImageAffineSectionsHomologyMap_counit f M I n
 
 private theorem sectionsEquiv_eq_resolutionClass
     (x : moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).rightDerived n).obj M)) :

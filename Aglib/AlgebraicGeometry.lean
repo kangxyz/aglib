@@ -66,6 +66,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Cech.DegreeZero.Forget
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.DegreeZero.Geometric
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.FieldBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite
+public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.Derived
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.FlatModel
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.FlatTerms
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.Geometric
@@ -88,11 +89,24 @@ public import Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Derived
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Exact
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Cech.TensorCoefficients
 public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.Affine
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.Affine.OpenSections
+public import
+  Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.Affine.SourceIsomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Conormal
+public import Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf
+public import
+  Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Counit
+public import
+  Aglib.AlgebraicGeometry.Cohomology.ClosedImmersion.RightAdjoint.RegularList.Sheaf.Localization
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Naturality
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.DerivedHom
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.DerivedModel
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.Open
@@ -118,17 +132,214 @@ public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Pushforward
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Pushforward.Spec
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Restriction.Resolution
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.LaurentPairing
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.LaurentPairing.Exponents
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.LaurentPairing.Pairing
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.LaurentPairing.Pieces
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Boundary
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.AffineDeterminant
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Charts
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Concentration
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction.Insertion
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction.Insertion.ChangeNormal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction.Insertion.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Contraction.Naturality
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.GeneratorCancellation
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.GeneratorOverlap
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Gluing
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalCharts
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalCharts.Quotient
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Composition
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Congruence
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Degree
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Open
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.OpenTop
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Principal
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Class.Principal.Quotient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.CoefficientLine
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.CoefficientOpen
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Coefficients
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.GeneratorOverlap
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.GeneratorOverlap.NormalDegree
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.Degree
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.OpenComparison
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.Insertion.OpenNormal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenComparison
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenComparison.Ambient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenComparison.Geometry
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenComparison.Principal
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Homology
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Sections
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenCounit.Transport
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.OpenTopClass.Source
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel.SourceIsomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalPurity
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.Naturality
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.OpenComposition
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.OpenComposition.Complex
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.OpenComposition.Homology
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Model.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Ambient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientGeometry
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AmbientModel
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Data
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Reflexive
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.AtIdeal.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Base
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.BaseComparison
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.BaseDifferentials
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.CoefficientTransport
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.ChartSections
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.CommonSections
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.Compatibility
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Descent.Sections
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Frames
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.ModelCore
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Pasting
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Prefactor
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Prefactor.Congruence
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.Principal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.PrincipalDifferentials
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.PrincipalGeometry
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.PrincipalModel
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.PrincipalPrefactor
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.SameData
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.SourceIdeal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.ModelCharts.TopRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism.Classes
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.AmbientIsomorphism.Model
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Class
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Derived
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.HomologyClass
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.NormalizedClass
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Principal.Source
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Purity
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Arrows
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Coefficient
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Complex
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Determinant
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Maps
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientConormal.Positive
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientDifferentials
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientDifferentials.Geometry
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.AmbientNormal
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseChart
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseCoefficient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDeterminant
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDeterminant.Coefficient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDifferentials
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseDifferentials.Geometry
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.BaseModel
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.CommonAmbient
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.CommonBase
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.CommonData
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare.Definition
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare.Literal
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.DeterminantSquare.Literal.OpenSquare
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.GeneratorMatrix
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.IsomorphicCharts
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.NormalBase
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.NormalFrame
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenCoefficient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenCoefficient.Units
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenPullback
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.OpenTensor
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.PrincipalChart
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.PrincipalNeighborhood
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.Refinements.Repoint
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.SerreTransport
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Coproduct
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Coefficients
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.CoefficientsCoherent
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.CoefficientsComparison
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.CoefficientsTopHom
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Coherent
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Comparison
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.TopHom
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Trace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.DifferentialTrace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.DifferentialTrace.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Effacement
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.ExtVanishing
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Higher
@@ -138,12 +349,66 @@ public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.NegativeTwis
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Pairing
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.PolynomialTrace
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Presentation
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.AffineTrace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Boundary
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Boundary.Shift
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.ClosedEmbedding
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.ClosedEmbedding.Linear
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.ClosedEmbedding.Structural
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.AffineCover
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.Biproduct
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.BiproductCore
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.Boundary
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.Connecting
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.Devissage
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.Induction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Coherent.TargetRow
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.Affine
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.AffineComparison
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.AffineModel
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.AffineRaw
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.CompositionShift
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.Isomorphism
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.Open
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenAdjunction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenCoefficients
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenMap
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenShift
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenSingle
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.OpenTrace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Comparison.Scalar
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.CoverSequence
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.OpenPushforward
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Smooth.Trace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel
+public import
+  Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.AffineModel.Identity
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.CoefficientMap
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Core
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Descent
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Gluing
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Local
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Pullback
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Residue
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Restriction
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Relative.Trace.Sections
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.SignedBoundary
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Top
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TopMapLift
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Trace
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistDuality
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt
+public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Linear
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistMaps
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Euler
@@ -177,6 +442,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Flasque.LocalDerivedPushforward
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.Pushforward
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.PushforwardExactness
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.DegreeZero
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.GlobalSectionsComposition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Identity
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Isomorphism
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules
@@ -302,6 +568,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.RightExact
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Semicontinuity
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Flat
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistingCech
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Vanishing
@@ -407,6 +674,7 @@ public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Locality
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Affine
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction.Counit
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Stalk
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Support
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Basic
@@ -482,6 +750,11 @@ public import Aglib.AlgebraicGeometry.Modules.Differentials.EtalePullback
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Affine
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.AffineBase
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Basic
+public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Conormal.Affine
+public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Conormal.Determinant.Affine
+public import
+  Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Conormal.Determinant.Localization
+public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Conormal.Frames
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Differentials.Relative.SmoothRank
 public import Aglib.AlgebraicGeometry.Modules.Differentials.SmoothRank
@@ -489,6 +762,7 @@ public import Aglib.AlgebraicGeometry.Modules.Epimorphisms
 public import Aglib.AlgebraicGeometry.Modules.Exact
 public import Aglib.AlgebraicGeometry.Modules.Ext
 public import Aglib.AlgebraicGeometry.Modules.ExteriorPower.LocallyFree
+public import Aglib.AlgebraicGeometry.Modules.ExteriorPower.OpenRestriction
 public import Aglib.AlgebraicGeometry.Modules.ExteriorPower.Restriction
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.AffineTransport
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Basic
@@ -553,6 +827,7 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FibreDimension
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FiniteFlat
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FiniteType
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FreeCover
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FreeCover.Sections
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalBases
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalSplitting
@@ -750,8 +1025,13 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Map
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Basic
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Constants
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.CoordinateRing
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Determinant.Frames
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Determinant.Gluing
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Determinant.Overlap
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Determinant.Twisting
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Basic
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Gluing
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.LocalExact
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.MiddleFrame
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Overlap
@@ -768,6 +1048,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension.Bounds
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension.Global
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension.Overlap
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Smooth
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Structure
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Coherent

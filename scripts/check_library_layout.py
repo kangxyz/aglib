@@ -50,7 +50,14 @@ def forbidden_domain_import(name: str) -> bool:
             [PROJECT.casefold(), 'algebra', 'homology', 'derivedcategory'],
             [PROJECT.casefold(), 'algebra', 'homology', 'homotopycategory'],
             [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'cech', 'resolution']]
-        if part in APPLICATION_COMPONENTS and not bounded_below:
+        # These two leaves transport homology/exterior degrees in regular-list
+        # purity; they do not belong to the downstream degree application family.
+        canonical_degree = part == 'degree' and index == len(parts) - 1 and parts[:index] in [
+            [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'duality',
+             'projective', 'canonical', 'localmodel', 'class'],
+            [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'duality',
+             'projective', 'canonical', 'localmodel', 'insertion']]
+        if part in APPLICATION_COMPONENTS and not (bounded_below or canonical_degree):
             return True
     return False
 

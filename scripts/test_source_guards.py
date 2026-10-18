@@ -277,6 +277,18 @@ def datum := 1
                 self.write('Aglib/Algebra/A.lean', HEADER + f'set_option {option} 0\n')
                 self.assertEqual(check_source_policy(self.root), [])
 
+    def test_canonical_degree_leaves_are_not_degree_applications(self):
+        prefix = 'Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel'
+        for owner in ['Class', 'Insertion']:
+            with self.subTest(owner=owner):
+                self.assertFalse(forbidden_domain_import(f'{prefix}.{owner}.Degree'))
+                self.assertTrue(forbidden_domain_import(f'{prefix}.{owner}.Degree.Curves'))
+                self.assertTrue(forbidden_domain_import(f'{prefix}.{owner}.Degree.Future'))
+        for name in [f'{prefix}.Other.Degree', 'Aglib.AlgebraicGeometry.Curves.Degree',
+                     'Aglib.Other.Degree', 'Aglib.Degree.Basic']:
+            with self.subTest(name=name):
+                self.assertTrue(forbidden_domain_import(name))
+
     def test_bounded_below_plus_marker_is_distinct_from_application_plus(self):
         for name in ['Aglib.Algebra.Homology.DerivedCategory.Plus.SingleTriangle',
                      'Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison',

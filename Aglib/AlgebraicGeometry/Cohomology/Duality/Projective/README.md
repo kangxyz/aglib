@@ -96,6 +96,59 @@ native derived category. Its forward map is the canonical derived trace
 comparison, and its degree-zero homology formula is the original
 `projectiveTopSerreMap`. No flatness or perfectness of M, regularity of R,
 or field assumption is added. Dimension zero retains higher base-ring Ext.
-General coefficient modules in the dualizing target, internal RHom,
-general-base descent and the smooth canonical-bundle identification remain
-separate consumers.
+The same [Derived](Derived/README.md) family now proves
+`projectiveDerivedSerreDualityCoefficients` for every native base module J,
+with literal target `(single_n J)[i]` and the original coefficient trace as
+forward map. No flatness, finiteness, projectivity or injectivity of J is
+required. Original source/coefficient naturality, unsigned boundary and
+recovery of the ring-coefficient duality through its original unitor are
+proved. The final source/public gates are `1792174659383563000-52844` /
+`1792175796545791000-68922`, with nine exact standard-axiom checks and no
+extra options or warnings. This is polynomial projective space over an
+affine Noetherian base. Internal RHom, coefficient complexes, general-base
+descent and general projective schemes remain separate consumers.
+
+[DifferentialTrace](DifferentialTrace.lean) now constructs an actual top-form
+Cech residue cycle on polynomial projective space and proves its literal
+component formula: the restricted coefficient times the product of original
+inverse coordinate ratios times the original differential wedge. Transport
+through the SAME top-differential/twisting isomorphism gives the original
+all-minus-one Laurent cycle; `differentialResidueCohomologyClass_trace` states
+that the OLD projective trace of its actual ordinary cohomology class is
+the original coefficient. Source `1792175490728435000-64106` and no-options
+public `1792175938121194000-71706` passed nine standard-axiom checks,
+including n=0 and the zero ring, without field, Noetherian, nontrivial-ring
+or public Fintype assumptions. The relative family below supplies the derived
+differential trace. The chosen smooth closed-embedding canonical
+identification is supplied independently by [Canonical](Canonical.lean).
+
+[Relative affine trace](Relative/README.md) extends the same normalized trace
+to the actual coefficient `(∧ⁿ Ω¹) ⊗ p* N`, for every quasicoherent module
+sheaf `N` on an arbitrary affine base. Its top-cohomology equivalence retains
+the original coefficient/unit/residue maps and commutes with affine open
+restriction. No Noetherianity or flatness of `N` is assumed. The single
+canonical open coefficient map has an explicit equation identifying it with
+the original restriction adjunct. [Trace/Core](Relative/Trace/Core.lean)
+now constructs the actual derived trace over a separated scheme base, with its
+coefficient naturality and affine differential formula.
+[OpenTrace](Relative/Comparison/OpenTrace.lean) proves its derived open-restriction equation.
+The all-degree coherent comparison over a Noetherian separated base, and its
+linear transfer through a chosen closed embedding, are also proved for arbitrary
+quasicoherent coefficients. Their forward maps retain the same actual trace.
+The checked affine formula, original coefficient residue and affine unit laws
+supply its normalization, as recorded in the relative family owner.
+
+[Canonical](Canonical.lean) identifies the installed closed-immersion right
+adjoint applied to the ambient top differential module with the actual single
+in integer degree `n - d` of the smooth source's top differential module.
+The normalized local class, generator and frame changes, common refinements,
+and ordinary Hom descent determine this isomorphism. It is available over
+arbitrary commutative bases, without separation or Noetherianity, and includes
+zero rings, empty sources and dimension zero. No global `d ≤ n` premise is
+added. [Smooth/Trace](Relative/Smooth/Trace.lean) identifies its transported
+comparison with derived pushforward followed by one original trace in every
+natural Ext degree. [Smooth](Relative/Smooth.lean) gives the coherent linear
+duality over a Noetherian separated base and retains that exact forward formula.
+Arbitrary coefficients in the general closed-embedding result retain the actual
+right-adjoint object; no arbitrary-coefficient purity or embedding-independence
+claim is added.
