@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Authors: kangxyz
 """Generate the exhaustive library root and optional thematic import facades."""
 import argparse
 from pathlib import Path
@@ -121,11 +122,14 @@ def generated_files(root: Path, modern_library: bool | None = None) -> dict[Path
                              + ', '.join(map(str, legacy)))
     tests = test_modules(root) - {Path('AglibTest.lean')}
     if test_modules(root):
+        # A legacy test umbrella can consume both modern and legacy audit fixtures.
+        # Keep their existing visibility and private-origin checks unchanged.
+        modern_tests = all(uses_module_system((root / path).read_text()) for path in tests)
         outputs[Path('AglibTest.lean')] = render_imports(
             [module_name(path) for path in tests],
             '# Aglib trust tests\n\nAll positive trust tests for the production library.\n'
             'Positive fixtures are compiled separately; auditors and negative controls are replayed explicitly.',
-            modern=True, authors={name for path in tests
+            modern=modern_tests, authors={name for path in tests
                      if not generator_owned(source := (root / path).read_text())
                      for name in source_authors(source)})
     return outputs
