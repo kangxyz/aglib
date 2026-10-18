@@ -325,6 +325,67 @@ four data providers; all 22 registered private simp helpers pass the pinned
 simp-normal-form checker. These checks include the subsequent Restriction,
 Map and finite-support changes and their actual consumers.
 
+## Equation proofs, presentations and structure fields
+
+These cases were measured on 2026-10-18 while developing the projective
+regularity and affine descent families on the Picard branch. They concern
+kernel conversions created by how an equation or a field is written, not
+mathematical content.
+
+**Differing proof terms of one equation.** In the Koszul exactness leaves of
+`Cohomology/Projective/Regularity/`, three identities elaborated but hit kernel
+deterministic timeouts at the default budget; with a local budget of 1000000 the
+process aborted at the memory cap, and diagnostic builds reached 25.7 GB.
+Profiling isolated the trigger: two occurrences of one coordinate multiplication
+or transport carried distinct proof terms of the same degree equation. One
+proof was written inline as `by …` in a statement; the other came from another
+statement, or was abstracted from a definition body into an auxiliary lemma.
+One restated lemma at variable degrees took 114 seconds and 25 GB; the same
+statement with a named degree lemma took 2 milliseconds. After every degree
+equation became a named lemma with atomic arguments (`koszulDeg_contraction`,
+`koszulDeg_shift`, `koszulDeg_wedge`, `koszulWedgeEq`), and spelling conversions
+were concentrated in `twistMerge`/`twistMergeInv` stated once at variable
+degrees, `Regularity/Koszul.lean` dropped from about six minutes to 6.4 seconds
+at a 2.5 GB peak. A candidate explanation, consistent with the next section but
+not checked against a kernel trace: the two proofs have differently presented
+types, so proof irrelevance still requires converting those types, and that
+conversion reaches the twisting sheaves.
+
+**A structure field compared through its unfolded statement.** In the affine
+quasi-coherent descent of `Descent/Modules/Fppf/`, the kernel check of the
+coherence field `nat_comp` of `specCompTransAlong` against a correct term
+exhausted 9 GB even with the inner identity replaced by `sorry`. Stating the
+field's proposition as a named definition (`Pseudofunctor.NatCompAlong`) and
+building the structure with `CompTransAlong.mk'` made the kernel compare that
+definition's arguments; the same check then took about 24 milliseconds in a
+scratch probe. The earlier timeouts of the same family came from differing
+proof terms inside `mapComp'` (`restrictAlong_mapComp'_hom._proof_*` against new
+auxiliary proofs), the pattern of the previous case.
+
+**Two presentations of one object.** In the same family, every comparison that
+reached a component of `pullbackCongr` whose arguments were written in two ways
+(`Scheme.Spec.map f` against `Spec.map f.unop`; `((specTransApp X).obj M).obj`
+against `(tilde.functor _).obj M`) timed out, while each leaf identification
+alone checked in seconds. The fix was a transport lemma generic in all of these
+presentations (`natCompAlong_of_transport`), whose hypotheses are equations and
+`HEq`s between the variables; at `Spec` each is `rfl` or `HEq.rfl`, the kernel
+needs about 2 seconds, and the module builds in 22 seconds at 2.6 GB.
+
+**Concrete degrees in a statement.** The twisting-functor authors reported that
+elaborating a composite written at concrete degrees such as `1 + 0` timed out in
+`isDefEq`, while the same composite at variable degrees and the instantiated
+lemma elaborated at once. That probe was not retained, so this is an observation
+rather than a reproducible measurement.
+
+Practical rules from these cases: give each equation used inside `eqToHom`,
+`pullbackCongr` or `mapComp'` one named lemma with atomic arguments and reuse its
+proof term; state such lemmas at variable objects or degrees and instantiate last;
+state a structure field that compares badly through a named definition; and before
+restructuring, separate elaboration from kernel cost with
+`set_option debug.skipKernelTC true` in a scratch copy. A structural diff of the two
+compared terms (a scratch tactic printing both goals) located each mismatch above
+in seconds.
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks
