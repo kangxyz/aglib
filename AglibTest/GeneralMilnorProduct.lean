@@ -30,7 +30,7 @@ universe u v
 variable (F : Type u) [Field F] (m n p : ℕ)
 
 /-- The product is bilinear on the actual quotient groups. -/
-noncomputable def actual_product : K F m →ₗ[ℤ] K F n →ₗ[ℤ] K F (m + n) := product m n
+noncomputable def actualProduct : K F m →ₗ[ℤ] K F n →ₗ[ℤ] K F (m + n) := product m n
 
 /-- Ordered tuple concatenation is the product normalization in every degree. -/
 theorem concatenate_symbols (a : SymbolTuple F m) (b : SymbolTuple F n) :

@@ -22,7 +22,7 @@ variable {L : Type u} {κ : Type v} [Field L] [Field κ]
 variable (d : MilnorK.K2.DiscreteResidueData L κ) (hd : MilnorK.K2.UnitReductionCompatible d)
 
 /-- A genuine map on the actual quotient exists in every positive source degree. -/
-noncomputable def actual_residue (n : ℕ) : K L (n + 1) →ₗ[ℤ] K κ n := residue d hd n
+noncomputable def actualResidue (n : ℕ) : K L (n + 1) →ₗ[ℤ] K κ n := residue d hd n
 
 /-- The entire recursion kills the multiplicativity relation at any coordinate. -/
 theorem multilinear_descent (n : ℕ) (a : SymbolTuple L (n + 1))

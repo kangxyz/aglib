@@ -25,8 +25,9 @@ theorem actual_irreducible (e : ℕ) (he : 0 < e) :
     Irreducible (X ^ e - C (algebraMap R F c)) :=
   IsDiscreteValuationRing.uniformizer_binomial_irreducible_fraction F hc e he
 
-/-- A characteristic-p exponent is included; no separability assumption occurs. -/
-theorem inseparable_exponent (p : ℕ) (hp : Nat.Prime p) [CharP F p] :
+/-- A characteristic-p exponent is included; no separability assumption occurs.
+The explicitly unused instance fixes this regression's characteristic. -/
+theorem inseparable_exponent (p : ℕ) (hp : Nat.Prime p) [_characteristicP : CharP F p] :
     Irreducible (X ^ p - C (algebraMap R F c)) :=
   actual_irreducible F hc p hp.pos
 

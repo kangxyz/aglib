@@ -125,6 +125,32 @@ REVIEWED_CORE_RECIPES = frozenset({
         '90f4ec5174d6d8e4d4e64d6f9d818b9d192da5bd230a3cb93f991f9a013fca7a',  # ci/lean_ci/build.py
         '35d89f7bfeb1a510828a4fbaaf3561217ef39763f77b56f0c2cd63b17e2ac657',  # ci/lean_ci/cli.py
     ),
+    # Independently reviewed test-lint cleanup and audit-fixture documentation.
+    (
+        '0b07348555099dbafaf067d866e7eedc3620a94fc0cdcf9c7404783069bc18b0',  # scripts/ci_pipeline.py
+        '46bd04a0663879683fcde54386b98101610f50a405677e128fbebef8f6d04fb4',  # scripts/ci_state.py
+        'b4e645e03288f6327dd9e0f49be63ad1ea1461142304823d6067c666791cd1f4',  # scripts/affected_scope.py
+        '820d0e9ce49d1907d6bbebbe86fe27abf8bdde0c5ddf873e934c618f43b53969',  # scripts/check_affected.py
+        '90a59c54d6a62d728006ea230b3200e97e605571c827b0c55acd934c0ad2044b',  # scripts/library_sources.py
+        'ec0e06f4f3a37a2fce6febef22ddc79b9fd9610c80f06b5f42897196bead2ab6',  # scripts/prepare_downstream.py
+        'b7e85596f59a2627424eeaf30a0367da1aff89ffe8ef5a2847ad2b9a3cd7f6c0',  # scripts/resource_guard.py
+        '66fdc8dc202a54d568e52fc94651a9c47789cc16009bdd069812b1c9616d0413',  # scripts/build_serial.py
+        '615ae732055d58454ffce066b9ccbb0b84786c67b55e9b6746a5b01387ade1b5',  # scripts/run_declaration_linter.py
+        '0eec427d1c94ec97cf9ef68f38e2ad3e6df372bc24138b8805c2db5ff44437ae',  # scripts/run_style_linter.py
+        'b3d3b065d741428958a7f53872d6f00aaedced80d666a3812549c7ca85b32818',  # scripts/check_negative_controls.py
+        'f092bbb6c3fcb45deb14cc74b01863f7a790cc203fff4bbc8da12f21b93fb518',  # scripts/check_compiled_inventory.py
+        '75aa6dcdbf05b8cc2e8e747371e4b822771756fc676204db6b5ce7154f15cf15',  # ci/native_test.py
+        '3868ebea3761908a46678490847815974425b323a86690885c6b7c2a3804f73d',  # ci/lean_ci/__init__.py
+        'd240a28939151c947f5cfc64a569d6e8ad8132dcd747cb61844c62fb517cc4f5',  # ci/lean_ci/__main__.py
+        'aca3ae29f06f436895af36adc6f048f70985f7b3e6305d585bed09fa0515f50b',  # ci/lean_ci/source.py
+        '1ffc0711ad70a652645e8ed288f3ad196b25452467d11af0b1c8d05b90d76bf2',  # ci/lean_ci/state.py
+        '0595f57a196b3a5b73de0e7e896fe2e6029125d732a94c65a4872f247d20b66a',  # ci/lean_ci/github.py
+        'd8aeb9eb510507360460c4acaa9a6c6585de971524032323fad9bf3d1ac2c309',  # ci/lean_ci/engine.py
+        '030acf0422e65334863150c7b0abc25ad8047982ede76f465e499742dee37623',  # ci/lean_ci/runtime.py
+        '5fc841c4da719be2e10f0178633693ff5d13177422ef42257f6c03a320f709b1',  # ci/lean_ci/resources.py
+        '90f4ec5174d6d8e4d4e64d6f9d818b9d192da5bd230a3cb93f991f9a013fca7a',  # ci/lean_ci/build.py
+        '35d89f7bfeb1a510828a4fbaaf3561217ef39763f77b56f0c2cd63b17e2ac657',  # ci/lean_ci/cli.py
+    ),
 })
 
 

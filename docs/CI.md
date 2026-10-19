@@ -58,9 +58,11 @@ number of necessary builds. See [upgrade/cache semantics](CACHING.md#upstream-an
 
 Production declaration lint uses the unchanged Batteries driver on the complete
 `Aglib` umbrella environment. It runs as one guarded command, rather than once
-per production leaf. Affected test origins retain their existing exact-origin
-checks, and selected `AuditSupport` is checked separately. These environment predicates are explicit in
-the plan and summary; no equivalence to per-leaf lint is asserted.
+per production leaf. Test declaration lint likewise runs once on the complete
+`AglibTest` umbrella environment, and selected `AuditSupport` is checked separately.
+These environment predicates are explicit in
+the plan and summary; no equivalence to per-leaf lint is asserted, and old
+exact-origin successes are not re-keyed as umbrella successes.
 
 Builtin lint runs once for each production/test root, text style runs once for
 its selected sources, and the fixed axiom auditor

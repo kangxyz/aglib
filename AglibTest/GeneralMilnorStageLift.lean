@@ -23,7 +23,7 @@ variable {F : Type u} [Field F] (p : F[X]) [Fact (Irreducible p)]
 variable (hp : p.Monic) (n : ℕ)
 
 /-- The lift is a linear map between the original actual quotients. -/
-noncomputable def actual_lift :
+noncomputable def actualLift :
     K (AdjoinRoot p) n →ₗ[ℤ] K (RatFunc F) (n + 1) ⧸ lower F (n + 1) p.natDegree :=
   stageLift p hp n
 

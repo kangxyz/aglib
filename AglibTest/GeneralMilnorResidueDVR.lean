@@ -19,7 +19,7 @@ variable (R L : Type*) [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]
   [Field L] [Algebra R L] [IsFractionRing R L]
 
 /-- The actual all-degree map requires only a DVR and its fraction field. -/
-noncomputable def actual_residue (n : ℕ) :
+noncomputable def actualResidue (n : ℕ) :
     K L (n + 1) →ₗ[ℤ] K (IsLocalRing.ResidueField R) n := DVR.residue R L n
 
 /-- Uniformizer independence is proved for every actual quotient class. -/

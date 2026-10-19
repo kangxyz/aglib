@@ -28,7 +28,7 @@ namespace AglibTest.MilnorK3StageEquivalence
 variable {k : Type*} [Field k]
 
 /-- No formal replacement for either the actual stage or original residue groups occurs. -/
-def literal_integer_linear_equivalence (d : ℕ) (hd : 0 < d) :
+def literalIntegerLinearEquivalence (d : ℕ) (hd : 0 < d) :
     ((lower k (d + 1)).map (lower k d).mkQ) ≃ₗ[ℤ]
       Π₀ p : {p : MonicIrreducible k // p.val.natDegree = d}, MilnorK.K2.Group (AdjoinRoot p.val.val) :=
   actualStageEquiv d hd

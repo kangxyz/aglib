@@ -15,11 +15,13 @@ is intentionally unrelated to Aglib and retained R5Lab/Quillen APIs. -/
 
 namespace AuditForeign
 
+/-- Positive data whose generated declarations must appear in origin inventories. -/
 inductive GeneratedDatum where
   | mk : Nat → GeneratedDatum
 
 private def hiddenDatum : Nat := 7
 
+/-- Public data in a foreign namespace, used to check defining-module selection. -/
 def rootDatum : Nat := 7
 
 example : rootDatum = 7 := rfl

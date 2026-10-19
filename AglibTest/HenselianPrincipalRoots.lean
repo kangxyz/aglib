@@ -43,8 +43,9 @@ theorem exponent_one (h : Rˣ) (hh : residue R (h : R) = 1) :
     ∃ y : Rˣ, residue R (y : R) = 1 ∧ y = h := by
   simpa only [pow_one] using exists_pow_eq 1 (by decide) (by simp) h hh
 
-/-- Mixed characteristic is allowed: the exponent `p + 1` reduces to `1`. -/
-theorem mixed_characteristic_root [CharZero R] (p : ℕ)
+/-- Mixed characteristic is allowed: the exponent `p + 1` reduces to `1`.
+The explicitly unused instance keeps this regression in characteristic zero. -/
+theorem mixed_characteristic_root [_mixedCharacteristicZero : CharZero R] (p : ℕ)
     [CharP (ResidueField R) p] (hp : 0 < p)
     (h : Rˣ) (hh : residue R (h : R) = 1) :
     ∃ y : Rˣ, residue R (y : R) = 1 ∧ y ^ (p + 1) = h := by

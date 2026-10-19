@@ -69,8 +69,9 @@ theorem actual_units (b : Sˣ) :
         (Units.map (residue S).toMonoidHom b) ^ e :=
   Algebra.residueUnits_intNorm_eq_norm_pow R S hπ hϖ u e he b
 
-/-- The same unit formula is valid in residue characteristic two. -/
-theorem residue_characteristic_two [CharP (ResidueField R) 2] (b : Sˣ) :
+/-- The same unit formula is valid in residue characteristic two.
+The explicitly unused instance fixes this regression's characteristic. -/
+theorem residue_characteristic_two [_residueCharacteristicTwo : CharP (ResidueField R) 2] (b : Sˣ) :
     Units.map (residue R).toMonoidHom (Units.map (Algebra.intNorm R S) b) =
       Units.map (Algebra.norm (ResidueField R))
         (Units.map (residue S).toMonoidHom b) ^ e :=

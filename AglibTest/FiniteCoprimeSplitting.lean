@@ -46,8 +46,9 @@ theorem prime_degree (p : k[X]) (hp : p.Monic) (hirr : Irreducible p)
   hp.irreducible_map_of_natDegree_coprime hirr (hprime.coprime_iff_not_dvd.mpr hdegree)
 
 /-- Arbitrary purely inseparable finite extensions are allowed in the leaf.
-No perfect-base hypothesis or separability instance is present. -/
-theorem purely_inseparable_coefficients [IsPurelyInseparable k L]
+No perfect-base hypothesis or separability instance is present. The explicitly
+unused instance selects the purely inseparable regression context. -/
+theorem purely_inseparable_coefficients [_purelyInseparable : IsPurelyInseparable k L]
     (p : k[X]) (hp : p.Monic) (hirr : Irreducible p)
     (hcop : p.natDegree.Coprime (Module.finrank k L)) :
     Irreducible (p.map (algebraMap k L)) :=

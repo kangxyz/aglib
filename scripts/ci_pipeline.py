@@ -39,6 +39,10 @@ OLD_AUDIT_SOURCE_BLOBS = {
     'AglibTest/AuditSupport.lean': 'cfd2df7050a8c4388f1626bda2e5085df3c52e58',
     'AglibTest/AuditCoverage.lean': '675bbb041fa7148aea8331afc03cc78b527cf6a3',
 }
+AUDIT_COVERAGE_DOCUMENTATION = {
+    'before': '675bbb041fa7148aea8331afc03cc78b527cf6a3',
+    'after': 'd8d7f048a2a3eeed6f1193ba2be976f248ce6221',
+}
 POLICY = ['scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/resource_guard.py',
           'scripts/build_serial.py', 'scripts/library_sources.py',
           'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
@@ -108,6 +112,16 @@ def native_policy(root, baseline, scope, before, current):
     if not changed:
         return {'mode': 'unchanged-semantic-check-policy',
                 'inputs': {p: new.get(p) for p in SEMANTIC_POLICY}}
+    coverage_path = 'AglibTest/AuditCoverage.lean'
+    if (changed == [coverage_path]
+            and old.get(coverage_path) == {'mode': '100644', 'blob': AUDIT_COVERAGE_DOCUMENTATION['before']}
+            and new.get(coverage_path) == {'mode': '100644', 'blob': AUDIT_COVERAGE_DOCUMENTATION['after']}):
+        return {'mode': 'reviewed-audit-coverage-documentation',
+                'witness_commit': baseline['verified_base'], 'witness_run': baseline['run_id'],
+                'source_blobs': AUDIT_COVERAGE_DOCUMENTATION,
+                'equivalence': 'two docstrings only; declaration types, values, origin names and '
+                               'axiom/private/generated controls unchanged',
+                'current_checks': 'full origin audit and fresh rejection controls remain required'}
     fixed_audit_migration = (
         set(changed) == set(FIXED_AUDIT_SOURCES)
         and old.get('scripts/ci_pipeline.py', {}).get('blob') == OLD_AUDIT_GENERATOR_BLOB
@@ -217,7 +231,7 @@ def runtime_imports(root):
 
 def declaration_policy(scope):
     return {'production': 'full Aglib umbrella environment',
-            'tests': 'exact selected defining-module origins',
+            'tests': 'full AglibTest umbrella environment',
             'support': 'exact AuditSupport origin when selected',
             'equivalence': 'umbrella and exact-origin environments are distinct predicates'}
 
@@ -308,7 +322,7 @@ def tasks(root, plan, phase, directory):
     for module in ('Aglib', 'AglibTest'):
         full_lint(module + '/builtin', module, 'builtin')
     full_lint('Aglib/declaration', 'Aglib', 'declaration')
-    lint('tests', [name for name in scope['tests'] if name not in scope['facades']])
+    full_lint('AglibTest/declaration', 'AglibTest', 'declaration')
     other = [name for name in all_lint
              if not any(name == prefix or name.startswith(prefix + '.')
                         for prefix in ('Aglib', 'AglibTest'))]

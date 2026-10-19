@@ -65,7 +65,7 @@ theorem constants_have_zero_residues (c : MilnorK.K3.Group k) :
   totalResidue_map_constant c
 
 /-- The quotient equivalence has literal original source and target modules. -/
-def literal_quotient_equivalence :
+def literalQuotientEquivalence :
     (MilnorK.K3.Group (RatFunc k) ⧸
       LinearMap.range (MilnorK.K3.map (RatFunc.C : k →+* RatFunc k))) ≃ₗ[ℤ]
       Π₀ p : MonicIrreducible k, MilnorK.K2.Group (AdjoinRoot p.val) :=

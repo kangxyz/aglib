@@ -31,7 +31,7 @@ variable {k : Type*} [Field k]
 variable (p : k[X]) [Fact (Irreducible p)]
 
 /-- The lift uses the original residue-field K₂ and the actual lower-stage quotient. -/
-def actual_integer_linear_section (hp : p.Monic) :
+def actualIntegerLinearSection (hp : p.Monic) :
     MilnorK.K2.Group (AdjoinRoot p) →ₗ[ℤ] MilnorK.K3.Group (RatFunc k) ⧸ lower k p.natDegree := stageLift p hp
 
 /-- Representatives come directly from the pinned canonical polynomial reduction map. -/

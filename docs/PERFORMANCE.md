@@ -757,11 +757,17 @@ in 15.62 seconds at 5.72 GiB, including its 16 private/generated controls. The
 positive-test cache-only graph check took 6.42 seconds. These measurements
 support batching and separate processes rather than a new result-cache system.
 
-An exploratory whole-`AglibTest` Batteries declaration pass took 15.71 seconds
-at 5.47 GiB and failed on existing test naming, documentation and intentionally
-specialized unused hypotheses. It is not acceptance evidence and is not a
-substitute for the existing selected test-origin predicate. Production lint and
-test validation retain their explicit, different scopes.
+An initial whole-`AglibTest` Batteries declaration pass took 15.71 seconds
+at 5.47 GiB and exposed 30 existing issues: 21 definition names, five missing
+docstrings and four deliberately specialized unused instance arguments. The
+cleanup renamed the definitions, added the documentation and explicitly named
+the intentionally unused regression instances with leading underscores, as the
+pinned linter permits. Statement types, hypotheses and proof bodies were
+preserved. Only the 18 changed test leaves and their umbrella were recompiled.
+The complete test declaration pass then succeeded in 15.86 seconds at 5.46 GiB;
+changed-source style, test builtin lint, the full origin audit and rejection
+controls also passed. CI now runs this test umbrella pass once alongside the
+production declaration pass, with their separate environment predicates.
 
 ## Principal chart pasting at the CI memory budget
 

@@ -18,11 +18,13 @@ namespace AglibTest.GeneralMilnorRationalExactness
 
 variable {F : Type*} [Field F]
 
-def actual_stage_equivalence (n d : ℕ) (hd : 0 < d) :
+/-- Identifies the actual stage with its degree-restricted residue data. -/
+def actualStageEquivalence (n d : ℕ) (hd : 0 < d) :
     actualStage F n d ≃ₗ[ℤ] DegreeResidues F n d :=
   actualStageEquiv n d hd
 
-def zero_degree_stage_equivalence (d : ℕ) (hd : 0 < d) :
+/-- Specializes the actual stage equivalence to degree zero. -/
+def zeroDegreeStageEquivalence (d : ℕ) (hd : 0 < d) :
     actualStage F 0 d ≃ₗ[ℤ] DegreeResidues F 0 d :=
   actualStageEquiv 0 d hd
 
@@ -47,7 +49,8 @@ theorem actual_constant_kernel (n : ℕ) (x : K (RatFunc F) (n + 1)) :
       x ∈ LinearMap.range (MilnorK.map (n + 1) (RatFunc.C : F →+* RatFunc F)) :=
   totalResidue_eq_zero_iff_mem_constant_range n x
 
-def actual_quotient_equivalence (n : ℕ) :
+/-- Identifies the quotient by the constant image with the finite residue sum. -/
+def actualQuotientEquivalence (n : ℕ) :
     (K (RatFunc F) (n + 1) ⧸
       LinearMap.range (MilnorK.map (n + 1) (RatFunc.C : F →+* RatFunc F))) ≃ₗ[ℤ]
         Π₀ p : MonicIrreducible F, K (AdjoinRoot p.val) n :=

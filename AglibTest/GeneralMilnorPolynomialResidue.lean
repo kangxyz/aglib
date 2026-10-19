@@ -58,12 +58,12 @@ theorem actual_support (n : ℕ) (a : SymbolTuple (RatFunc k) (n + 1)) :
   residueAt_symbol_support_subset n a
 
 /-- The total residue is an actual dependent finitely supported quotient map. -/
-noncomputable def actual_total (n : ℕ) : K (RatFunc k) (n + 1) →ₗ[ℤ]
+noncomputable def actualTotal (n : ℕ) : K (RatFunc k) (n + 1) →ₗ[ℤ]
     Π₀ p : MonicIrreducible k, K (AdjoinRoot p.val) n := totalResidue n
 
 /-- Its coordinates are the finite residue maps on every class. -/
 theorem actual_total_coordinate (n : ℕ) (x : K (RatFunc k) (n + 1))
-    (p : MonicIrreducible k) : actual_total k n x p = residueAt p.val n x := rfl
+    (p : MonicIrreducible k) : actualTotal k n x p = residueAt p.val n x := rfl
 
 /-- The sign is negative in target degree one, where a first-slot convention would differ. -/
 theorem infinity_odd_one (a : SymbolTuple k 1) :

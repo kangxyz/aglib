@@ -25,21 +25,21 @@ theorem all_direct_branches (φ : k →+* L) (ψ : L →+* E) (h : k[X]) (hh : h
   (coefficientTowerBranchEquiv φ ψ h hh).apply_symm_apply q
 
 /-- Reindexing preserves the upper quotient type definitionally. -/
-def actual_upper_field (φ : k →+* L) (ψ : L →+* E) (h : k[X]) (hh : h ≠ 0)
+def actualUpperField (φ : k →+* L) (ψ : L →+* E) (h : k[X]) (hh : h ≠ 0)
     (u : CoefficientTowerBranch φ ψ h) :
     AdjoinRoot (coefficientTowerBranchEquiv φ ψ h hh u).val.val ≃+*
       AdjoinRoot u.2.val.val :=
   RingEquiv.refl _
 
 /-- The native direct coefficient map is recovered for an actual algebra tower. -/
-def actual_algebra_tower_branches [Algebra k L] [Algebra L E] [Algebra k E]
+def actualAlgebraTowerBranches [Algebra k L] [Algebra L E] [Algebra k E]
     [IsScalarTower k L E] (h : k[X]) (hh : h ≠ 0) :
     CoefficientTowerBranch (algebraMap k L) (algebraMap L E) h ≃
       IrreducibleBranch (h.map (algebraMap k E)) :=
   coefficientTowerBranchEquivOfAlgebra (L := L) h hh
 
 /-- Even with the native direct algebra map, the original upper residue field is literal. -/
-def actual_native_upper_field [Algebra k L] [Algebra L E] [Algebra k E]
+def actualNativeUpperField [Algebra k L] [Algebra L E] [Algebra k E]
     [IsScalarTower k L E] (h : k[X]) (hh : h ≠ 0)
     (u : CoefficientTowerBranch (algebraMap k L) (algebraMap L E) h) :
     AdjoinRoot (coefficientTowerBranchEquivOfAlgebra (L := L) h hh u).val.val ≃+*

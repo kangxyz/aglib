@@ -36,12 +36,12 @@ theorem actual_prime_contraction :
   primeIdeal_eq_comap φ p q hq
 
 /-- The actual localizations admit the required local homomorphism. -/
-def actual_local_map :
+def actualLocalMap :
     Localization.AtPrime (Ideal.span {p}) →+* Localization.AtPrime (Ideal.span {q}) :=
   localRingMap φ p q hq
 
 /-- The map has the localness property used to construct the actual residue map. -/
-theorem actual_local_map_isLocalHom : IsLocalHom (actual_local_map φ p q hq) :=
+theorem actual_local_map_isLocalHom : IsLocalHom (actualLocalMap φ p q hq) :=
   inferInstanceAs (IsLocalHom (localRingMap φ p q hq))
 
 /-- Polynomial classes map by literal coefficient extension. -/

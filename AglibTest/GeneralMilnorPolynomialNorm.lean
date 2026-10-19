@@ -28,17 +28,17 @@ namespace AglibTest.GeneralMilnorPolynomialNorm
 variable {F : Type*} [Field F]
 
 /-- Source and target are the original all-degree Milnor presentations. -/
-def original_polynomial_norm (n : ℕ) (p : MonicIrreducible F) :
+def originalPolynomialNorm (n : ℕ) (p : MonicIrreducible F) :
     K (AdjoinRoot p.val) n →ₗ[ℤ] K F n := polynomialNorm n p
 
 /-- The actual quotient is by the constant image in degree `n+1`. -/
-def actual_constant_quotient_norm (n : ℕ) :
+def actualConstantQuotientNorm (n : ℕ) :
     (K (RatFunc F) (n + 1) ⧸
       LinearMap.range (MilnorK.map (n + 1) (RatFunc.C : F →+* RatFunc F))) →ₗ[ℤ] K F n :=
   quotientNorm n
 
 /-- The total norm has the actual dependent finite residue sum as domain. -/
-def original_total_norm (n : ℕ) :
+def originalTotalNorm (n : ℕ) :
     (Π₀ p : MonicIrreducible F, K (AdjoinRoot p.val) n) →ₗ[ℤ] K F n := totalNorm n
 
 /-- Each representative computes the negative actual infinity residue. -/

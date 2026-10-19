@@ -27,7 +27,7 @@ namespace AglibTest.MilnorK3PolynomialNorm
 variable {k : Type*} [Field k]
 
 /-- The finite-place norm has exactly the original source and target groups. -/
-def original_polynomial_norm (p : MonicIrreducible k) :
+def originalPolynomialNorm (p : MonicIrreducible k) :
     MilnorK.K2.Group (AdjoinRoot p.val) →ₗ[ℤ] MilnorK.K2.Group k := polynomialNorm p
 
 /-- The polynomial norm target is literally the original tensor/Steinberg quotient. -/
@@ -41,13 +41,13 @@ theorem original_source (p : MonicIrreducible k) :
         steinbergSpan (AdjoinRoot p.val)) := rfl
 
 /-- The quotient used for descent is by the constant image, without injectivity. -/
-def actual_quotient_descent :
+def actualQuotientDescent :
     (MilnorK.K3.Group (RatFunc k) ⧸
       LinearMap.range (MilnorK.K3.map (RatFunc.C : k →+* RatFunc k)))
         →ₗ[ℤ] MilnorK.K2.Group k := quotientNorm
 
 /-- The actual total norm has the original dependent finite sum as its domain. -/
-def original_total_norm :
+def originalTotalNorm :
     (Π₀ p : MonicIrreducible k, MilnorK.K2.Group (AdjoinRoot p.val)) →ₗ[ℤ] MilnorK.K2.Group k := totalNorm
 
 /-- The quotient descent computes the actual negative infinity residue. -/
