@@ -64,13 +64,39 @@ Markdown and documentation-evidence JSON changes run static source and local-lin
 checks only. They do not install Lean, compile, lint, run tests or publish caches.
 Tooling changes run their Python fixture regressions without requiring Lean.
 
-The final native phase compiles changed providers, runs their pinned declaration
+The [standalone CI core](CI.md) owns its plan, execution records and mandatory
+final coverage decision. It chooses an ancestor with completed native validation through
+[`ci_baseline.py`](../scripts/ci_baseline.py), rather than the previous push.
+Failed or cancelled runs and green source-only runs do not advance this
+baseline. Unverified proof changes therefore remain in the next affected plan,
+including after a scripts-only repair. The selector rejects the earlier unsafe
+incremental workflow and unavailable validation history; it never silently
+substitutes the previous push or a full build. A manual comparison may move the
+verified baseline earlier, but cannot skip forward over unchecked changes.
+
+This comparison baseline does not discard partial build progress. Matching
+compiled outputs from failed runs remain eligible for the existing native and
+project cache restoration, and Lake validates them before reuse. Individual
+builtin/declaration lint and selected audit successes have separate progress
+records bound to their validated native inputs, outputs and checker policy.
+Those records never authorize skipping current native graph validation.
+
+The local final native phase compiles changed providers, runs their pinned declaration
 and text/style linters, then builds affected consumers, positive tests and the
 independent client. Import-only facades remain compiled consumers when affected.
 Their unrelated imports must pass a cache-only check before the facade build:
 recover compatible cached outputs if that check fails. A broad import facade
 never silently starts compiling unrelated cold siblings. Unchanged facades and
 unrelated proof modules are not selected merely for convenience.
+
+Native CI uses a shared guarded Lake `--rehash` build for the complete current
+library and positive-test root graph after cache preparation, then consumes its
+validated identities for selected independent checks. A cache-only preflight
+prevents unrelated cold imports from silently triggering broad recovery. A final
+current-root barrier and the core finalizer reject missing graph or check coverage.
+Lake decides which compilation work is stale; a Git difference cannot replace
+that decision. Successful partial checks remain reusable under their exact input
+bindings, while failed or incompatible records select real execution.
 
 Selected-origin axiom auditing reuses `AglibTest.AuditSupport`, including its
 private/generated-declaration inventory and fixed allowed axioms. Negative
@@ -129,10 +155,11 @@ kernel replay. They are separately requested diagnostics, never an automatic
 fallback for missing caches or coverage. Coordinate all native checks with other
 Lean jobs; they write shared build outputs and remain serialized.
 
-The [workflow](../.github/workflows/ci.yml) selects the affected plan before native
-setup. It restores matching caches for native scopes only, then runs
-`check.sh --rehash --ci --native-only --plan FILE --outputs FILE`. Manual dispatch
-requires a comparison commit. Native exports concatenate mappings emitted by
+The [workflow](../.github/workflows/ci.yml) invokes the core's `plan`, `source`,
+`native` and `finalize` operations. The plan precedes native setup; the finalizer
+is required even for source-only coverage. Matching caches are restored for
+native scopes, including compatible individual-check progress. An optional manual
+comparison can only move the automatically verified baseline earlier. Native exports use mappings emitted by
 successfully completed selected build phases; export schedules no new build.
 The adjacent `.coverage.json` records affected-only coverage and selected target
 identities. CI logs and retained evidence distinguish this from whole-library

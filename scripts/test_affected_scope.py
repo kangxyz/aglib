@@ -81,6 +81,23 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(plan['providers'], [])
         self.assertTrue(plan['native'])
 
+    def test_verified_base_keeps_proof_changes_after_later_tooling_commit(self):
+        self.write('Aglib/Base.lean', 'module\ndef base := 2\n')
+        self.git('add', 'Aglib/Base.lean')
+        self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                 'commit', '-qm', 'proof with unfinished CI')
+        previous_push = self.git('rev-parse', 'HEAD').strip()
+        self.write('scripts/cache_ci.py', '# repair tooling after failed proof CI\n')
+        self.git('add', 'scripts/cache_ci.py')
+        self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                 'commit', '-qm', 'tooling repair')
+        pending = select(self.root, self.base, head='HEAD')
+        self.assertIn('Aglib.Base', pending['providers'])
+        self.assertTrue(pending['native'])
+        self.assertTrue(pending['trust'])
+        self.assertIn('AglibTest.Focused', pending['tests'])
+        self.assertFalse(select(self.root, previous_push, head='HEAD')['native'])
+
     def test_deleted_and_renamed_provider_retain_old_dependents(self):
         (self.root / 'Aglib/Base.lean').rename(self.root / 'Aglib/New.lean')
         plan = select(self.root, self.base)
@@ -448,8 +465,23 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertNotIn('Aglib AglibTest', workflow)
         self.assertIn('native-outputs.jsonl.coverage.json', workflow)
         self.assertIn('validation-coverage.json', workflow)
-        self.assertIn('--default-base "origin/$DEFAULT_BRANCH"', workflow)
-        self.assertIn('Exact comparison commit', workflow)
+        commands = [workflow.index('python3 scripts/ci_pipeline.py ' + phase)
+                    for phase in ('plan', 'source', 'native', 'finalize')]
+        self.assertEqual(commands, sorted(commands))
+        self.assertLess(commands[1], install)
+        self.assertIn('--head "$GITHUB_SHA"', workflow)
+        self.assertIn('--requested-base "$REQUESTED_BASE"', workflow)
+        self.assertIn('Optional older comparison commit', workflow)
+        self.assertNotIn('github.event.before', workflow)
+        finalizer = workflow.split('- name: Finalize complete CI coverage', 1)[1].split('      - name:', 1)[0]
+        self.assertIn("always() && steps.scope.outcome == 'success'", finalizer)
+        self.assertNotIn('steps.scope.outputs.native', finalizer)
+        self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', finalizer)
+        publication = workflow.split('- name: Publish native artifacts for downstream dependencies', 1)[1].split('      - name:', 1)[0]
+        self.assertIn("steps.finalize.outcome == 'success'", publication)
+        self.assertIn("steps.scope.outputs.publish == 'true'", publication)
+        self.assertIn("github.event_name == 'push'", publication)
+        self.assertIn("github.ref == 'refs/heads/main'", publication)
 
 
 if __name__ == '__main__':

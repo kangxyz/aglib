@@ -79,8 +79,20 @@ unknown path or changed pin implicitly selects the comprehensive command. All-ze
 new-branch event bases use an available trusted default-branch merge-base or a
 genuine parentless initial-tree diff; unavailable Git metadata fails actionably.
 
-[CI](../.github/workflows/ci.yml) computes the affected plan before installing Lean
-or restoring caches. Markdown/evidence-only plans never enter native or cache
+[CI](../.github/workflows/ci.yml) calls the standalone `ci_pipeline.py` core for
+planning, source/native execution and mandatory finalization; see its
+[acceptance contract](../docs/CI.md). Planning precedes Lean installation and
+cache restoration. `ci_baseline.py` selects an ancestor whose native validation
+completed under either the whole-library predecessor or the repaired baseline
+protocol. A failed run, a source-only green run and the former previous-push
+incremental protocol cannot advance this baseline. Missing history fails closed.
+The selector records the source commit and supporting run; affected selection
+prints its base, head and module counts. A manual comparison may only select an
+ancestor of the verified baseline. Failed-run compiled caches retain their
+existing reuse path. `ci_state.py` separately retains input-bound individual
+check successes; compiled-artifact reuse alone never supplies that evidence.
+
+Markdown/evidence-only plans never enter native or cache
 steps. Native CI runs selected checks with `--outputs FILE`; successful build-phase
 mappings are concatenated only after all selected checks succeed. No export build
 or implicit root target is added. The adjacent `.coverage.json` records the base,
@@ -385,6 +397,13 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_affected_scope.py` | Small import/Git fixtures and mocked commands for changed providers, consumers, renames/deletes, fail-closed scope, lint ordering, documentation skips and export coverage. |
 | `cache_ci.py` | Resolves validated affected-plan Mathlib roots and fetches their proof caches through the serialized capped toolchain and resource guard; source-only plans skip dependency and cache work. |
 | `test_cache_ci.py` | Mocked checks for exact cache-root forwarding, source-only skips, and fail-closed rejection of missing scope or dependency inputs. |
+| `ci_baseline.py` | Selects an ancestor with completed native CI validation, rejecting source-only greens and unsafe prior incremental runs; records the supporting run and constrains optional older manual bases. |
+| `test_ci_baseline.py` | Checks failed/partial/static-only histories, versioned workflow eligibility, ancestry, manual-base safety, pagination and unavailable verification evidence without Lean or cache mutation. |
+| `ci_pipeline.py` | Owns the CI plan, source/native execution records and mandatory final coverage decision; the workflow supplies environment and cache transport. |
+| `test_ci_pipeline.py` | Regressions for verified scope, complete current graph coverage, skipped/incomplete phases, source drift and final-result integrity. |
+| `test_ci_integration.py` | Exercises real failed-proof/repair commit histories and public plan/source/finalize entry points, including missing native work, wrong-plan records and source drift, without running Lean. |
+| `ci_state.py` | Stores compatible individual check successes bound to validated native inputs/outputs, checker policies and actual command receipts. |
+| `test_ci_state.py` | Checks partial-progress reuse, input/checker changes, stale outputs, failed receipts and incompatible records. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. The test-only umbrella uses legacy imports when composing legacy audit fixtures; production facades remain modern. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |

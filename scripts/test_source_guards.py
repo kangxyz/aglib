@@ -81,9 +81,10 @@ class SourceGuards(unittest.TestCase):
     def test_parser_nested_comments_strings_quoted_roots_import_all(self):
         text = '''/- import R5Lab.Fake /- nested -/ -/
 module
-public meta import /- between -/ all «Aglib».Algebra.A
+meta import /- between -/ all «Aglib».Algebra.A
+public import
   Aglib.Algebra.B
-private import Mathlib.Data.Nat.Basic
+import Mathlib.Data.Nat.Basic
 #check "import Quillen.Fake"
 '''
         self.assertEqual(lean_imports(text), ['Aglib.Algebra.A',
@@ -99,6 +100,17 @@ private import Mathlib.Data.Nat.Basic
                          ['AglibTest.AuditSupport',
                           'AglibTest.NegativeControls.ImportedFixture'])
         self.assertFalse(is_import_surface(source))
+
+    def test_one_module_directives_stop_at_unknown_command_without_keyword_list(self):
+        source = ('module\npublic import Aglib.Algebra.A\n'
+                  'generate_audit_declarations\n')
+        self.assertEqual(lean_imports(source), ['Aglib.Algebra.A'])
+        self.assertFalse(is_import_surface(source))
+
+    def test_header_imports_can_share_a_line_and_do_not_scan_body_quotations(self):
+        source = ('import Aglib.Algebra.A import Aglib.Algebra.B\n'
+                  'def syntaxValue := `(command|\n import Quillen.Fake\n)\n')
+        self.assertEqual(lean_imports(source), ['Aglib.Algebra.A', 'Aglib.Algebra.B'])
 
     def test_root_enrolls_even_orphan_leaves(self):
         self.write('Aglib/New/Orphan.lean', HEADER + 'def orphan : Nat := 2\n')

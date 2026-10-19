@@ -347,11 +347,22 @@ class CachePreparationTests(CacheFixture):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_scope_uses_completed_native_baseline_instead_of_previous_push(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        scope = workflow.index('id: scope')
+        source = workflow.index('run: python3 scripts/ci_pipeline.py source')
+        self.assertIn('python3 scripts/ci_pipeline.py plan', workflow[scope:source])
+        self.assertIn('--head "$GITHUB_SHA"', workflow[scope:source])
+        self.assertIn('--state "$RUNNER_TEMP/aglib-ci"', workflow[scope:source])
+        self.assertIn('GH_TOKEN: ${{ github.token }}', workflow[scope:source])
+        self.assertNotIn('github.event.before', workflow)
+        self.assertNotIn('github.event.pull_request.base.sha', workflow)
+
     def test_python_is_selected_before_source_only_checks(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
         checkout = workflow.index('uses: actions/checkout@')
         setup = workflow.index('uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97')
-        source_only = workflow.index('run: bash scripts/check.sh --source-only --plan')
+        source_only = workflow.index('run: python3 scripts/ci_pipeline.py source')
         self.assertLess(checkout, setup)
         self.assertLess(setup, source_only)
         self.assertIn("python-version: '3.13'", workflow[setup:source_only])
@@ -379,13 +390,44 @@ class WorkflowTests(unittest.TestCase):
         save = workflow.index('- name: Save incremental project builds, including partial progress')
         self.assertLess(check, save)
         self.assertIn("if: ${{ steps.scope.outputs.native == 'true' }}", workflow[check:save])
-        self.assertIn('bash scripts/check.sh --rehash --ci', workflow[check:save])
-        self.assertIn('--native-only', workflow[check:save])
+        self.assertIn('python3 scripts/ci_pipeline.py native', workflow[check:save])
+        self.assertIn('--progress "$RUNNER_TEMP/aglib-check-progress"', workflow[check:save])
+        self.assertIn('python3 scripts/ci_pipeline.py finalize', workflow[check:save])
         self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', workflow[check:save])
         self.assertIn('LEAN_NUM_THREADS: 1', workflow)
-        self.assertIn('scripts/cache_ci.py --plan "$RUNNER_TEMP/aglib-scope.json" '
+        self.assertIn('scripts/cache_ci.py --plan "$RUNNER_TEMP/aglib-ci/scope.json" '
                       '--receipt "$RUNNER_TEMP/mathlib-cache-resource.json"', workflow)
         self.assertNotIn('-- lake exe cache get', workflow)
+
+    def test_finalizer_runs_after_failure_and_publication_requires_it(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        start = workflow.index('- name: Finalize complete CI coverage')
+        finish = workflow[start:].split('      - name:', 1)[0]
+        self.assertIn("always() && steps.scope.outcome == 'success'", finish)
+        self.assertIn('python3 scripts/ci_pipeline.py finalize', finish)
+        self.assertNotIn('continue-on-error:', workflow)
+        publish = workflow[workflow.index('- name: Publish native artifacts for downstream dependencies'):]
+        condition = next(line.strip() for line in publish.splitlines() if line.strip().startswith('if:'))
+        self.assertIn("steps.finalize.outcome == 'success'", condition)
+
+    def test_individual_check_progress_survives_failed_validation(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        restore = workflow.index('- name: Restore compatible individual check progress')
+        native = workflow.index('- name: Run CI checks for the library and independent client')
+        save = workflow.index('- name: Save individual check progress, including partial validation')
+        self.assertLess(restore, native)
+        self.assertLess(native, save)
+        restored = workflow[restore:native]
+        self.assertIn('path: ${{ runner.temp }}/aglib-check-progress', restored)
+        key = next(line.strip() for line in restored.splitlines() if line.strip().startswith('key:'))
+        self.assertIn('${{ github.run_id }}-${{ github.run_attempt }}', key)
+        self.assertNotIn('hashFiles', key)
+        saved = workflow[save:].split('      - name:', 1)[0]
+        condition = next(line.strip() for line in saved.splitlines() if line.strip().startswith('if:'))
+        self.assertIn('always()', condition)
+        self.assertIn("steps.check-progress.outputs.cache-primary-key != ''", condition)
+        self.assertNotIn('success()', condition)
+        self.assertIn('key: ${{ steps.check-progress.outputs.cache-primary-key }}', saved)
 
     def test_public_runner_profile_leaves_time_to_save_after_check_timeout(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()

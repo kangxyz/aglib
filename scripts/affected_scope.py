@@ -20,11 +20,15 @@ CONTROL_INPUTS = CONFIG | {
 }
 TOOL_TESTS = {
     'affected_scope.py': ['test_affected_scope'],
-    'check_affected.py': ['test_affected_scope'],
+    'check_affected.py': ['test_affected_scope', 'test_ci_pipeline', 'test_ci_state'],
     'check.sh': ['test_check_script', 'test_affected_scope'],
     'build_serial.py': ['test_build_serial', 'test_check_script', 'test_affected_scope'],
     'resource_guard.py': ['test_resource_guard', 'test_build_serial'],
     'cache_ci.py': ['test_cache_ci', 'test_affected_scope'],
+    'ci_baseline.py': ['test_ci_baseline', 'test_ci_pipeline', 'test_ci_cache', 'test_affected_scope'],
+    'ci_pipeline.py': ['test_ci_pipeline', 'test_ci_integration', 'test_ci_state', 'test_ci_baseline',
+                       'test_ci_cache', 'test_affected_scope', 'test_integration_setup'],
+    'ci_state.py': ['test_ci_state', 'test_ci_pipeline', 'test_affected_scope'],
     'check_kernel.py': ['test_kernel'],
     'check_compiled_inventory.py': ['test_integration_setup', 'test_kernel'],
     'run_style_linter.py': ['test_integration_setup', 'test_affected_scope'],
@@ -193,7 +197,8 @@ def select(root, base=None, head=None, full=False, default_base=None):
                 tooling.add('native-cache')
                 tooling.add('test_ci_cache')
             elif path.startswith('.github/workflows/'):
-                tooling.update(['test_ci_cache', 'test_affected_scope', 'native-cache'])
+                tooling.update(['test_ci_baseline', 'test_ci_pipeline', 'test_ci_integration', 'test_ci_state',
+                                'test_ci_cache', 'test_affected_scope', 'test_integration_setup', 'native-cache'])
             elif Path(path).parent == Path('scripts') and Path(path).name in TOOL_TESTS:
                 tooling.update(TOOL_TESTS[Path(path).name])
             else:
@@ -289,6 +294,10 @@ def main():
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(text)
+            print(f"Affected scope: base={plan['base']} head={plan['head']} "
+                  f"providers={len(plan['providers'])} consumers={len(plan['consumers'])} "
+                  f"tests={len(plan['tests'])} client={len(plan['client'])} "
+                  f"native={str(plan['native']).lower()}")
         else:
             print(text, end='')
         if args.github_output:

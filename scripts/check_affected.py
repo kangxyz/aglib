@@ -49,7 +49,10 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
             else:
                 run(root, ['python3', '-m', 'unittest', 'discover', '-s', 'scripts', '-p', test + '.py'])
     if source_only or not plan['native']:
-        print('Static/source coverage only; no Lean, native cache or cache publication required.')
+        if plan['native']:
+            print('Source/tooling phase completed; selected Lean checks remain required.')
+        else:
+            print('Source/tooling scope only; this invocation performs no Lean validation.')
         return
     directory.mkdir(parents=True, exist_ok=True)
     mappings = []

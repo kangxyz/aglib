@@ -59,27 +59,43 @@ def strip_comments_and_strings(source: str) -> str:
 
 
 def lean_imports(source: str) -> list[str]:
-    """Read single/multiple/multiline imports with optional Lean modifiers."""
-    clean = strip_comments_and_strings(source)
+    """Read the header's one-module import directives from pinned Lean 4 syntax."""
+    return import_header(strip_comments_and_strings(source))[0]
+
+
+def import_header(clean: str) -> tuple[list[str], int]:
+    """Return imports and the start of the body, without guessing command keywords.
+
+    Lean/Parser/Module/Syntax.lean gives each import exactly one module name.
+    Whitespace can separate a directive from its name or successive directives.
+    """
+    def whitespace(position):
+        while position < len(clean) and clean[position].isspace():
+            position += 1
+        return position
+
+    position = whitespace(0)
+    for keyword in ('module', 'prelude'):
+        match = re.match(keyword + r'\b', clean[position:])
+        if match:
+            position = whitespace(position + match.end())
     imports = []
-    for start in IMPORT_START.finditer(clean):
-        position = start.end()
+    directive = re.compile(r'(?:public\s+)?(?:meta\s+)?import\b')
+    while start := directive.match(clean, position):
+        after = whitespace(start.end())
         # `all` modifies the import; it is not a module named `all`.
-        modifier = re.match(r'\s+all\b', clean[position:])
+        modifier = re.match(r'all\b', clean[after:])
         if modifier:
-            position += modifier.end()
-        while position < len(clean):
-            while position < len(clean) and clean[position].isspace():
-                position += 1
-            match = MODULE.match(clean, position)
-            if not match or match.group() in KEYWORDS:
-                break
-            # Normalize quoted ordinary identifiers to prevent namespace bypasses.
-            token = re.sub(r'«([^»]+)»', lambda m: m[1] if
-                           re.fullmatch(r'[^\W\d]\w*', m[1]) else m[0], match.group())
-            imports.append(token)
-            position = match.end()
-    return imports
+            after = whitespace(after + modifier.end())
+        match = MODULE.match(clean, after)
+        if not match or match.group() in KEYWORDS:
+            break
+        # Normalize quoted ordinary identifiers to prevent namespace bypasses.
+        token = re.sub(r'«([^»]+)»', lambda m: m[1] if
+                       re.fullmatch(r'[^\W\d]\w*', m[1]) else m[0], match.group())
+        imports.append(token)
+        position = whitespace(match.end())
+    return imports, position
 
 
 def uses_module_system(source: str) -> bool:
@@ -93,22 +109,9 @@ def is_import_surface(source: str) -> bool:
     Empty public sections added by a module migration do not add declarations.
     Other commands conservatively keep the source classified as implementation.
     """
-    remaining = strip_comments_and_strings(source).lstrip()
-    remaining = re.sub(r'^module\b\s*', '', remaining)
-    remaining = re.sub(r'^prelude\b\s*', '', remaining)
-    while match := IMPORT_START.match(remaining):
-        position = match.end()
-        modifier = re.match(r'\s+all\b', remaining[position:])
-        if modifier:
-            position += modifier.end()
-        while position < len(remaining):
-            while position < len(remaining) and remaining[position].isspace():
-                position += 1
-            token = MODULE.match(remaining, position)
-            if not token or token.group() in KEYWORDS:
-                break
-            position = token.end()
-        remaining = remaining[position:].lstrip()
+    clean = strip_comments_and_strings(source)
+    _, position = import_header(clean)
+    remaining = clean[position:].lstrip()
     # Generated import surfaces can exceed the proof-file size bound. This
     # metadata does not turn a facade into a mathematical implementation.
     remaining = re.sub(r'^set_option\s+linter\.style\.longFile\s+\d+\s*', '', remaining)
