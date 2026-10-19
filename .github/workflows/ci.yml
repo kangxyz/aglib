@@ -4,6 +4,11 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      base:
+        description: Exact comparison commit (no implicit full validation)
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -27,15 +32,25 @@ jobs:
       AGLIB_RSS_LIMIT_MB: 13824
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - name: Set up Python 3.13
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.13'
-      - name: Check source organization
-        run: bash scripts/check.sh --source-only
-      - name: Test native cache transport
-        run: python3 -m unittest discover -s .github/actions/lake-cache -p 'test_*.py'
+      - name: Select affected providers and consumers before native setup
+        id: scope
+        env:
+          BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before || inputs.base }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          python3 scripts/affected_scope.py --base "$BASE_REVISION" --head "$GITHUB_SHA" \
+            --default-base "origin/$DEFAULT_BRANCH" \
+            --output "$RUNNER_TEMP/aglib-scope.json" --github-output "$GITHUB_OUTPUT"
+      - name: Check source organization and affected tooling
+        run: bash scripts/check.sh --source-only --plan "$RUNNER_TEMP/aglib-scope.json"
       - name: Install the pinned Lean toolchain
+        if: ${{ steps.scope.outputs.native == 'true' }}
         env:
           ELAN_HOME: ${{ runner.temp }}/elan
         run: |
@@ -46,14 +61,16 @@ jobs:
           echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
           "$ELAN_HOME/bin/elan" toolchain install "$(cat lean-toolchain)"
       - name: Restore third-party proof cache
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: third-party-cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/packages
           key: third-party-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
       - name: Fetch matching Mathlib proof cache
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: mathlib-cache-fetch
-        run: python3 scripts/resource_guard.py --bootstrap-cache --receipt "$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get
+        run: python3 scripts/cache_ci.py --plan "$RUNNER_TEMP/aglib-scope.json" --receipt "$RUNNER_TEMP/mathlib-cache-resource.json"
       - name: Save matching third-party proof cache
         if: ${{ steps.mathlib-cache-fetch.outcome == 'success' && steps.third-party-cache.outputs.cache-primary-key != '' && steps.third-party-cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -61,16 +78,19 @@ jobs:
           path: .lake/packages
           key: ${{ steps.third-party-cache.outputs.cache-primary-key }}
       - name: Compute version-independent project cache configuration
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: project-cache-config
         run: |
           config_hash=$(python3 scripts/cache_key.py)
           echo "hash=$config_hash" >> "$GITHUB_OUTPUT"
       - name: Restore shared native Lake artifacts
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: native-cache
         uses: ./.github/actions/lake-cache
         with:
           mode: restore
       - name: Restore incremental project builds
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: project-build-cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -84,6 +104,7 @@ jobs:
             project-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.project-cache-config.outputs.hash }}-
             project-build-v1-${{ runner.os }}-${{ runner.arch }}-
       - name: Validate cached compilers and prune obsolete project modules
+        if: ${{ steps.scope.outputs.native == 'true' }}
         id: prepare-project-cache
         run: |
           set -euo pipefail
@@ -93,11 +114,13 @@ jobs:
             --compiler-id "$compiler_id" \
             --downstream-compiler-id "$downstream_compiler_id"
       - name: Run CI checks for the library and independent client
+        if: ${{ steps.scope.outputs.native == 'true' }}
         timeout-minutes: 300
         run: |
           set -euo pipefail
           lean --version
-          bash scripts/check.sh --rehash --ci
+          bash scripts/check.sh --rehash --ci --native-only \
+            --plan "$RUNNER_TEMP/aglib-scope.json" --outputs "$RUNNER_TEMP/native-outputs.jsonl"
       - name: Save incremental project builds, including partial progress
         if: ${{ always() && steps.project-build-cache.outputs.cache-primary-key != '' && steps.prepare-project-cache.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -106,18 +129,24 @@ jobs:
             .lake/build
             examples/downstream/.lake/build
           key: ${{ steps.project-build-cache.outputs.cache-primary-key }}
-      - name: Export checked native Lake mappings
-        run: |
-          python3 scripts/build_serial.py --rehash \
-            --receipt-dir "$RUNNER_TEMP/native-cache-export" \
-            --outputs "$RUNNER_TEMP/native-outputs.jsonl" Aglib AglibTest
       - name: Publish native artifacts for downstream dependencies
         id: native-stage
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        uses: ./.github/actions/lake-cache
+        if: ${{ steps.scope.outputs.native == 'true' && steps.scope.outputs.publish == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: |
+          python3 .github/actions/lake-cache/cache.py stage \
+            --mappings "$RUNNER_TEMP/native-outputs.jsonl" \
+            --repository "$GITHUB_REPOSITORY" --destination "$RUNNER_TEMP/lake-native-stage"
+          cp "$RUNNER_TEMP/native-outputs.jsonl.coverage.json" \
+            "$RUNNER_TEMP/lake-native-stage/validation-coverage.json"
+      - name: Upload selected native artifacts and coverage
+        if: ${{ steps.native-stage.outputs.artifact-name != '' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          mode: publish
-          mappings: ${{ runner.temp }}/native-outputs.jsonl
+          name: ${{ steps.native-stage.outputs.artifact-name }}
+          path: ${{ steps.native-stage.outputs.artifact-path }}
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
       - name: Save native artifacts, including partial build progress
         if: ${{ always() && steps.native-cache.outputs.cache-key != '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -126,7 +155,7 @@ jobs:
           key: ${{ steps.native-cache.outputs.cache-key }}
   publish-cache:
     needs: library
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.library.outputs.native-artifact != '' }}
     runs-on: ubuntu-24.04
     permissions:
       contents: write

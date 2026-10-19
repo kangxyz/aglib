@@ -9,7 +9,7 @@ SCRIPT = Path(__file__).with_name('check.sh')
 
 
 class CheckScriptTests(unittest.TestCase):
-    def run_script(self, failure='', *args):
+    def run_script(self, failure='', *args, full=True):
         with tempfile.TemporaryDirectory(prefix='ag-check-script-') as temp:
             root = Path(temp)
             scripts = root / 'scripts'
@@ -28,9 +28,16 @@ class CheckScriptTests(unittest.TestCase):
                 executable.chmod(0o755)
             env = dict(os.environ, PATH=str(binary) + os.pathsep + os.environ['PATH'],
                        CHECK_TEST_LOG=str(log), CHECK_TEST_FAILURE=failure)
-            result = subprocess.run(['bash', str(scripts / 'check.sh'), *args], env=env,
+            result = subprocess.run(['bash', str(scripts / 'check.sh'), *(['--full'] if full else []), *args], env=env,
                                     capture_output=True, text=True)
             return result.returncode, log.read_text() if log.exists() else ''
+
+    def test_default_routes_to_incremental_adapter_with_explicit_baseline(self):
+        code, log = self.run_script('', '--base', 'accepted', '--ci', full=False)
+        self.assertEqual(code, 0)
+        self.assertIn('scripts/check_affected.py --base accepted --ci', log)
+        self.assertNotIn('generate_imports.py', log)
+        self.assertNotIn('Aglib AglibTest', log)
 
     def test_source_only_never_builds(self):
         code, log = self.run_script('', '--source-only')

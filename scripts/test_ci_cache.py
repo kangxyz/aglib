@@ -351,12 +351,12 @@ class WorkflowTests(unittest.TestCase):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
         checkout = workflow.index('uses: actions/checkout@')
         setup = workflow.index('uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97')
-        source_only = workflow.index('run: bash scripts/check.sh --source-only')
+        source_only = workflow.index('run: bash scripts/check.sh --source-only --plan')
         self.assertLess(checkout, setup)
         self.assertLess(setup, source_only)
         self.assertIn("python-version: '3.13'", workflow[setup:source_only])
 
-    def test_cache_order_keys_and_unconditional_ci_rehash_route(self):
+    def test_cache_order_keys_and_scoped_ci_rehash_route(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
         compute = workflow.index('id: project-cache-config')
         restore = workflow.index('- name: Restore incremental project builds')
@@ -378,11 +378,14 @@ class WorkflowTests(unittest.TestCase):
         self.assertNotIn('version', cache)
         save = workflow.index('- name: Save incremental project builds, including partial progress')
         self.assertLess(check, save)
-        self.assertNotIn('if:', workflow[check:save])
+        self.assertIn("if: ${{ steps.scope.outputs.native == 'true' }}", workflow[check:save])
         self.assertIn('bash scripts/check.sh --rehash --ci', workflow[check:save])
+        self.assertIn('--native-only', workflow[check:save])
+        self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', workflow[check:save])
         self.assertIn('LEAN_NUM_THREADS: 1', workflow)
-        self.assertIn('scripts/resource_guard.py --bootstrap-cache --receipt '
-                      '"$RUNNER_TEMP/mathlib-cache-resource.json" -- lake exe cache get', workflow)
+        self.assertIn('scripts/cache_ci.py --plan "$RUNNER_TEMP/aglib-scope.json" '
+                      '--receipt "$RUNNER_TEMP/mathlib-cache-resource.json"', workflow)
+        self.assertNotIn('-- lake exe cache get', workflow)
 
     def test_public_runner_profile_leaves_time_to_save_after_check_timeout(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()

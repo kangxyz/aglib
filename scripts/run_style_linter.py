@@ -89,18 +89,30 @@ def seed_cached_namespaces(overlay: Path, plan: dict) -> None:
 
 def lake_environment(root: Path) -> dict:
     # Project only these nonsecret variables from Lake's pinned execution environment.
+    selected_lean = os.environ.get('LEAN')
     query = ('import json,os,shutil; print(json.dumps({'
              '"lean":os.environ.get("LEAN") or shutil.which("lean"),"LEAN_PATH":os.environ.get("LEAN_PATH",""),'
              '"LEAN_SRC_PATH":os.environ.get("LEAN_SRC_PATH","")}))')
     result = subprocess.run(['lake', 'env', 'python3', '-c', query], cwd=root,
                             capture_output=True, text=True, check=True)
     environment = json.loads(result.stdout)
+    # Lake can replace LEAN while constructing its environment. Keep the outer
+    # owned compiler wrapper, including its native memory/thread caps.
+    if selected_lean:
+        environment['lean'] = selected_lean
     if not environment['lean']:
         raise RuntimeError('Lake environment did not identify the pinned Lean executable')
     return environment
 
 
-def run(root: Path) -> int:
+def selected_driver(source: str) -> str:
+    """Retain pinned options/checks; replace only the umbrella import enumeration."""
+    start = source.index('  -- Get all the imports, but only those in the same package.')
+    end = source.index('  -- Read the `nolints` file', start)
+    return source[:start] + '  Lean.initSearchPath (← Lean.findSysroot)\n  let allModuleNames := originModules\n\n' + source[end:]
+
+
+def run(root: Path, modules: list[str] | None = None) -> int:
     environment = lake_environment(root)
     lean = environment.pop('lean')
     prefix = subprocess.run([lean, '--print-prefix'], cwd=root, capture_output=True,
@@ -129,7 +141,8 @@ def run(root: Path) -> int:
         # Importing the compiled driver initializes its option declarations before main.
         # Running its source directly cannot evaluate a same-module [init] declaration.
         driver = overlay / 'AglibStyleDriver.lean'
-        driver.write_bytes((root / DRIVER).read_bytes())
+        source = (root / DRIVER).read_text()
+        driver.write_text(selected_driver(source) if modules else source)
         result = subprocess.run([lean, '-o', str(driver.with_suffix('.olean')), driver.name],
                                 cwd=overlay, env=env)
         if result.returncode:
@@ -138,7 +151,7 @@ def run(root: Path) -> int:
         shim.write_text('import AglibStyleDriver\n')
         # These are the exact pinned driver bytes and arguments. --fix is absent.
         return subprocess.run([lean, '--load-dynlib', plan['lake_shared_library'],
-                               '--run', str(shim), 'Aglib', 'AglibTest'],
+                               '--run', str(shim), *(modules or ['Aglib', 'AglibTest'])],
                               cwd=root, env=env).returncode
 
 
@@ -148,6 +161,7 @@ def main() -> int:
                         help='read-only readiness inspection; does not invoke Lake or compile')
     parser.add_argument('--sysroot', type=Path,
                         help='installed pinned Lean prefix for read-only inspection')
+    parser.add_argument('--modules', nargs='+', help='exact source modules; preserves all pinned style checks')
     args = parser.parse_args()
     try:
         if args.check_prerequisites:
@@ -158,8 +172,8 @@ def main() -> int:
             return 1 if plan['missing_prerequisites'] else 0
         if args.sysroot is not None:
             parser.error('--sysroot is only used with --check-prerequisites')
-        return run(ROOT)
-    except (OSError, RuntimeError, subprocess.CalledProcessError) as error:
+        return run(ROOT, args.modules)
+    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as error:
         print(f'Style runtime failed: {error}', file=sys.stderr)
         return 1
 

@@ -7,12 +7,12 @@ must also preserve exact package-prefix search-path ownership for leanchecker.
 import argparse
 from pathlib import Path
 import sys
-from library_sources import audit_sources, source_modules, test_modules
+from library_sources import audit_sources, source_modules, test_modules, module_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def check_inventory(root: Path) -> list[str]:
+def check_inventory(root: Path, modules: list[str] | None = None) -> list[str]:
     library = root / '.lake/build/lib/lean'
     expected = source_modules(root) | test_modules(root) | {
         path for path in audit_sources(root) if path == Path('AglibTest/AuditSupport.lean')}
@@ -37,7 +37,10 @@ def check_inventory(root: Path) -> list[str]:
     if negatives:
         errors.append('Negative control oleans occupy the kernel replay view: '
                       + ', '.join(map(str, sorted(negatives))))
-    if missing := expected - actual:
+    required = expected if modules is None else {module_path(name) for name in modules}
+    if unknown := required - expected:
+        errors.append('Unenrolled selected source: ' + ', '.join(map(str, sorted(unknown))))
+    if missing := required - actual:
         errors.append('Missing compiled project source: ' + ', '.join(map(str, sorted(missing))))
     if stale := actual - expected - negatives:
         errors.append('Stale compiled project source: ' + ', '.join(map(str, sorted(stale))))
@@ -47,12 +50,14 @@ def check_inventory(root: Path) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--modules', nargs='+', help='require only selected enrollment; still reject stale/negative outputs')
     args = parser.parse_args()
-    errors = check_inventory(args.root)
+    errors = check_inventory(args.root, args.modules)
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1
-    print('Compiled project inventory matches current positive source and audit support.')
+    print('Compiled project inventory matches ' + ('selected' if args.modules else 'current')
+          + ' positive source and audit support; unrelated coverage is not implied.')
     return 0
 
 

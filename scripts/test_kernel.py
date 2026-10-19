@@ -110,18 +110,20 @@ class KernelTests(unittest.TestCase):
             calls = []
             with self.patched(prefix, sources), patch.object(kernel, 'run', side_effect=self.guarded(calls)):
                 kernel.replay(root, directory, only='Aglib.One', batch_size=1)
-                original = kernel.record_path(directory, sorted(map(kernel.module_name, sources)), 'Aglib.One').read_bytes()
+                probe = json.loads((directory / 'probe.json').read_text())
+                original_path = directory / probe['module_records']['Aglib.One']
+                original = original_path.read_bytes()
                 kernel.replay(root, directory, batch_size=2)
                 self.assertEqual(calls, [['Aglib.One'], ['Aglib', 'AglibTest']])
                 self.assertEqual(json.loads((directory / 'coverage.json').read_text())['covered_modules'], 3)
-                self.assertEqual(kernel.record_path(directory, sorted(map(kernel.module_name, sources)), 'Aglib.One').read_bytes(), original)
+                self.assertEqual(original_path.read_bytes(), original)
                 self.assertNotIn('limits', json.loads((directory / 'basis.json').read_text()))
                 (root / 'Aglib/One.lean').write_text('changed source')
                 basis_before = (directory / 'basis.json').read_bytes()
                 kernel.replay(root, directory, batch_size=4)
                 self.assertEqual(calls[-1], ['Aglib.One'])
                 self.assertEqual((directory / 'basis.json').read_bytes(), basis_before)
-                self.assertEqual(kernel.record_path(directory, sorted(map(kernel.module_name, sources)), 'Aglib.One').read_bytes(), original)
+                self.assertEqual(original_path.read_bytes(), original)
                 self.assertNotEqual(self.record(directory, 'Aglib.One').read_bytes(), original)
 
     def test_resource_failure_accepts_none_of_failed_batch_then_retries_smaller(self):
@@ -375,6 +377,39 @@ class KernelTests(unittest.TestCase):
             (library / 'Consumer/Deleted.olean').write_bytes(b'stale')
             with self.assertRaisesRegex(RuntimeError, 'inventory'):
                 kernel.proof_basis(root, root, client=True)
+
+    def test_selected_replay_ignores_unrelated_missing_artifact(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root, prefix, sources = self.fixture(temporary)
+            (root / '.lake/build/lib/lean/AglibTest.olean').unlink()
+            calls = []
+            with self.patched(prefix, sources), patch.object(kernel, 'run', side_effect=self.guarded(calls)):
+                kernel.replay(root, Path(temporary) / 'receipts', selected=['Aglib.One'], batch_size=1)
+            self.assertEqual(calls, [['Aglib.One']])
+            basis = json.loads((Path(temporary) / 'receipts/basis.json').read_text())
+            self.assertEqual(basis['modules'], ['Aglib.One'])
+            self.assertEqual(set(basis['source_hashes']), {'Aglib/One.lean'})
+            summary = json.loads((Path(temporary) / 'receipts/probe.json').read_text())
+            self.assertEqual(summary['status'], 'probe passed')
+            self.assertEqual(summary['expected_modules'], 3)
+            self.assertEqual(summary['covered_modules'], 1)
+
+    def test_selected_replay_requires_imported_artifact_and_checks_its_drift(self):
+        for mode in ['missing', 'changed']:
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as temporary:
+                root, prefix, sources = self.fixture(temporary)
+                self.imports['Aglib.One'] = ['AglibTest']
+                artifact = root / '.lake/build/lib/lean/AglibTest.olean'
+                if mode == 'missing':
+                    artifact.unlink()
+                base = self.guarded([])
+                def mutate(command, **kwargs):
+                    result = base(command, **kwargs)
+                    artifact.write_bytes(b'changed imported artifact')
+                    return result
+                with self.patched(prefix, sources), patch.object(kernel, 'run', side_effect=mutate):
+                    with self.assertRaises((RuntimeError, OSError, IndexError)):
+                        kernel.replay(root, Path(temporary) / 'receipts', selected=['Aglib.One'], batch_size=1)
 
     def test_reviewed_legacy_adoption_preserves_raw_records_and_profile(self):
         with tempfile.TemporaryDirectory() as temporary:

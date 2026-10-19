@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
-# Separately requested comprehensive diagnostics and declared CI only; normal local checks must be incremental. Source-only is read-only.
+# Incremental by default. Whole-library diagnostics require literal --full.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+full=0
+forward=()
+for argument in "$@"; do
+  if [[ "$argument" == --full ]]; then full=1; else forward+=("$argument"); fi
+done
+if (( ! full )); then
+  exec python3 scripts/check_affected.py "$@"
+fi
+set -- ${forward[@]+"${forward[@]}"}
 source_only=0
 ci_mode=0
 lake_args=()
@@ -10,7 +19,7 @@ for argument in "$@"; do
     --source-only) source_only=1 ;;
     --rehash) lake_args+=(--rehash) ;;
     --ci) ci_mode=1 ;;
-    *) echo "Usage: $0 [--source-only] [--rehash] [--ci]" >&2; exit 2 ;;
+    *) echo "Usage: $0 --base BASE [--head HEAD] [--source-only] [--rehash] [--ci]; or --full diagnostics" >&2; exit 2 ;;
   esac
 done
 python3 scripts/generate_imports.py --check

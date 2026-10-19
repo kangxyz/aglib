@@ -10,6 +10,7 @@ from check_compiled_inventory import check_inventory
 from prepare_downstream import prepare
 from run_style_linter import lake_environment, plan_runtime, run as run_style_linter
 import check_negative_controls
+import run_declaration_linter
 
 
 class IntegrationSetupTests(unittest.TestCase):
@@ -33,6 +34,13 @@ class IntegrationSetupTests(unittest.TestCase):
         self.assertTrue(any('Missing compiled' in error for error in check_inventory(self.root)))
         self.compiled('Aglib/A')
         self.assertEqual(check_inventory(self.root), [])
+
+    def test_selected_inventory_does_not_require_unselected_artifacts(self):
+        self.compiled('Aglib/A')
+        self.assertEqual(check_inventory(self.root, ['Aglib.A']), [])
+        self.assertTrue(check_inventory(self.root))
+        self.compiled('Aglib/Deleted')
+        self.assertTrue(any('Stale compiled' in error for error in check_inventory(self.root, ['Aglib.A'])))
 
     def test_compiled_inventory_rejects_deleted_and_negative_sources(self):
         self.compiled('Aglib')
@@ -109,6 +117,7 @@ class IntegrationSetupTests(unittest.TestCase):
         lake = binary / 'lake'
         lake.write_text('#!/usr/bin/env python3\nimport os,sys\n'
                         'assert sys.argv[1:3] == ["env", "python3"]\n'
+                        'os.environ["LEAN"] = os.environ["NATIVE_TEST_LEAN"]\n'
                         'os.execv(sys.executable, [sys.executable, *sys.argv[3:]])\n')
         lake.chmod(0o755)
         uncapped = binary / 'lean'
@@ -121,11 +130,25 @@ class IntegrationSetupTests(unittest.TestCase):
             with self.subTest(explicit_cap=bool(explicit)), patch.dict(os.environ, {
                     'PATH': str(binary) + os.pathsep + os.environ.get('PATH', ''),
                     'LEAN': explicit, 'LEAN_PATH': '/fixed/modules',
+                    'NATIVE_TEST_LEAN': str(uncapped),
                     'LEAN_SRC_PATH': '/fixed/sources'}):
                 environment = lake_environment(self.root)
             self.assertEqual(environment['lean'], explicit or str(uncapped))
             self.assertEqual(environment['LEAN_PATH'], '/fixed/modules')
             self.assertEqual(environment['LEAN_SRC_PATH'], '/fixed/sources')
+
+    def test_declaration_launcher_preserves_explicit_outer_lean_wrapper(self):
+        import subprocess
+        driver = self.root / run_declaration_linter.DRIVER
+        driver.parent.mkdir(parents=True)
+        driver.write_text(run_declaration_linter.MARKER)
+        for explicit in ['/owned/capped/bin/lean', '']:
+            with self.subTest(explicit=explicit), patch.dict(os.environ, {'LEAN': explicit}), \
+                    patch.object(run_declaration_linter.subprocess, 'run',
+                                 return_value=subprocess.CompletedProcess([], 0)) as process:
+                self.assertEqual(run_declaration_linter.run(self.root, ['Aglib.Selected']), 0)
+                self.assertEqual(process.call_args.args[0][:4],
+                                 ['lake', 'env', explicit or 'lean', '--run'])
 
     def test_style_runtime_writes_only_temporary_optional_outputs_and_propagates_failure(self):
         import subprocess

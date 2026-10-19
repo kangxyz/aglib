@@ -150,22 +150,28 @@ def artifact_hashes(root, module, file_digest=digest):
             if path.is_file()}
 
 
-def proof_basis(root, prefix, client=False, file_digest=digest):
+def proof_basis(root, prefix, client=False, file_digest=digest, selected=None):
     enrolled = expected_sources(root, client)
+    allowed = enrolled
+    if selected is not None:
+        requested = {module_path(name) for name in selected}
+        if not requested or not requested <= enrolled:
+            raise RuntimeError('Probe contains duplicate or unenrolled exact module')
+        enrolled = requested
     if client:
         library = root / '.lake/build/lib/lean'
         actual = {path.relative_to(library).with_suffix('.lean')
                   for path in (library / 'Consumer').rglob('*.olean')}
         if (library / 'Consumer.olean').is_file():
             actual.add(Path('Consumer.lean'))
-        if actual != enrolled:
+        if (actual != enrolled if selected is None else not enrolled <= actual or bool(actual - allowed)):
             raise RuntimeError('Independent client compiled inventory differs from current source')
-        sources = enrolled | ({Path('Audit.lean')} if (root / 'Audit.lean').is_file() else set())
+        sources = enrolled | ({Path('Audit.lean')} if selected is None and (root / 'Audit.lean').is_file() else set())
     else:
-        errors = check_inventory(root)
+        errors = check_inventory(root, selected) if selected is not None else check_inventory(root)
         if errors:
             raise RuntimeError('\n'.join(errors))
-        sources = source_modules(root) | test_modules(root) | audit_sources(root)
+        sources = enrolled if selected is not None else source_modules(root) | test_modules(root) | audit_sources(root)
     modules = sorted(module_name(path) for path in enrolled)
     if len(set(modules)) != len(enrolled):
         raise RuntimeError('Nonunique exact-module enrollment')
@@ -236,8 +242,9 @@ def metadata_fence(root, prefix, lean, environment):
     return {path.resolve(): file_stamp(path) for path in paths}
 
 
-def input_paths(root, prefix, lean, environment, client, graph):
-    paths = {root / path for path in (expected_sources(root, client) | audit_sources(root))}
+def input_paths(root, prefix, lean, environment, client, graph, selected=None):
+    sources = {module_path(name) for name in selected} if selected is not None else expected_sources(root, client) | audit_sources(root)
+    paths = {root / path for path in sources}
     paths.update(root / name for name in ['lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json'])
     paths.update(runtime_paths(prefix, lean))
     compiled = set()
@@ -308,14 +315,14 @@ def import_graph(root, prefix, lean, environment, directory, modules):
     return graph
 
 
-def closure_basis(root, prefix, lean, environment, client, graph):
+def closure_basis(root, prefix, lean, environment, client, graph, selected=None):
     hashes = {}
     def once(path):
         path = Path(path).resolve()
         if path not in hashes:
             hashes[path] = digest(path)
         return hashes[path]
-    basis = proof_basis(root, prefix, client, file_digest=once)
+    basis = proof_basis(root, prefix, client, file_digest=once, selected=selected)
     files = {}
     def identity(path):
         path = Path(path)
@@ -551,14 +558,19 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
     if Path(lean).resolve() != (prefix / 'bin/lean').resolve():
         raise RuntimeError('Lake executable differs from installed pinned compiler')
     fence = metadata_fence(root, prefix, lean, environment)
-    modules = sorted(module_name(path) for path in expected_sources(root, client))
+    enrolled = sorted(module_name(path) for path in expected_sources(root, client))
+    requested = [only] if only is not None else (list(selected) if selected is not None else None)
+    if requested is not None and (not requested or len(set(requested)) != len(requested)
+                                  or not set(requested) <= set(enrolled)):
+        raise RuntimeError('Probe contains duplicate or unenrolled exact module')
+    modules = requested if requested is not None else enrolled
     graph = import_graph(root, prefix, lean, environment, directory, modules)
-    watched, compiled = input_paths(root, prefix, lean, environment, client, graph)
+    watched, compiled = input_paths(root, prefix, lean, environment, client, graph, requested)
     before = drift_snapshot(watched)
     if any(before[path] != fence.get(path.resolve()) for path in watched
            if path.resolve() in fence or path in compiled):
         raise RuntimeError('Compiled metadata inputs changed during extraction')
-    basis = closure_basis(root, prefix, lean, environment, client, graph)
+    basis = closure_basis(root, prefix, lean, environment, client, graph, requested)
     def stable():
         if drift_snapshot(watched) != before:
             raise RuntimeError('Source/artifact/checker/config basis changed during replay')
@@ -640,11 +652,11 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
     final_environment = dict(lake_environment(root))
     final_lean = final_environment.pop('lean')
     if final_lean != lean or final_environment != environment or \
-            closure_basis(root, prefix, lean, environment, client, graph) != basis:
+            closure_basis(root, prefix, lean, environment, client, graph, requested) != basis:
         raise RuntimeError('Source/artifact/checker/config basis changed after replay')
     stable()
     summary = {'status': 'probe passed' if only is not None or selected is not None else 'passed',
-               'expected_modules': len(modules), 'covered_modules': len(completed),
+               'expected_modules': len(enrolled), 'selected_modules': len(wanted), 'covered_modules': len(completed),
                'new_constants': sum(x['new_constants'] for x in completed.values()),
                'vacuous_modules': sum(x['new_constants'] == 0 for x in completed.values()),
                'proof_basis_sha256': json_hash(basis), 'basis': str(basis_file),

@@ -7,103 +7,75 @@ Run these tools from the package root. Production Lean modules do not depend on
 
 ## Check entry points
 
-Incremental checking includes applicable compilation, declaration/text-style lint,
-affected `AglibTest` and client tests, and affected source/trust checks. Cover the
-relevant categories in the task's final validation before delivery, reusing
-compatible evidence. Develop with incremental compilation and its diagnostics;
-independent lint and tests run only at final validation, not after each
-helper return, internal commit or merge. After repairs, rerun only failed or
-newly affected checks. Compilation alone does not supply separate lint or test coverage. The
-[authoring rule](../docs/DEVELOPMENT.md#setup-and-focused-builds) owns that selection
-and timing. Check scope is incremental across these categories.
+Normal final validation uses `bash scripts/check.sh --base ACCEPTED_COMMIT --rehash`.
+The default includes working-tree changes; `--head HEAD` requires a clean committed
+snapshot. `affected_scope.py` selects changed providers and affected consumers
+using the existing Lean import scanner, with old changed/deleted imports retained
+for rename/delete closure. The JSON plan binds the Git baseline, checked HEAD,
+selected sources and configuration bytes. Missing bases, pin/configuration changes
+and unknown paths fail closed instead of selecting full roots.
 
-Follow the [authoring rule](../docs/DEVELOPMENT.md#setup-and-focused-builds): complete a coherent mathematical obligation with useful focused compilation and repair. API smoke checks serve concrete interface questions; no per-helper or per-theorem smoke/axiom/lint/Python-test/probe/receipt chain is required. Reuse matching evidence. Tooling changes warrant their affected regressions, using a focused test class where sufficient.
+`check_affected.py` executes cheap source/link checks and affected Python fixtures,
+then provider compilation, provider declaration/style lint, affected consumer/test
+compilation and lint, origin/negative/inventory checks, and affected client checks.
+Markdown and documentation-evidence JSON changes stop after static checks. Native
+setup and cache publication are skipped entirely for those changes. Affected
+import-only facades remain compiled consumers: their unrelated imports must
+already be cached, or their cache-only prerequisite check fails without fallback.
+Whole roots are selected only when the graph actually makes them consumers.
 
-`check.sh --source-only` is a broad source/tooling integration check: it scans the
-whole source tree for generated enrollment, source layout, proof-token policy and
-positive finite scoped heartbeat budgets with explanatory comments, and runs the entire
-Python tooling regression suite. Comprehensive commands serve separately requested
-diagnostics and declared CI, not ordinary local acceptance. All normal workflows must
-use only incremental checks: authoring, maintenance, documentation, review, merge,
-integration and publication. Preserve trusted caches, reuse compatible evidence and
-reconcile exact identities and combined changes. Obtain matching caches before compiling
-genuinely missing or changed required targets and needed affected consumers. Merge,
-commit, handoff, relocation, release, a changed pin, a different checkout or absent local
-artifacts/receipts do not justify blanket rebuilding. Missing broad coverage alone is not
-a rebuild trigger. Literal explicit full rebuild/replay requests are separately scoped.
-Diagnosed incompatible, corrupt or untrustworthy artifacts across an actual closure with
-no usable matching cache permit fault recovery only in that invalidated owned scope,
-outside normal workflows.
-Shared builds remain serialized.
+Lake builtin lint runs on selected compiled implementation modules with explicit
+`--no-build lint --builtin-only` targets; facades retain compile/source-style
+coverage. CI prepares only named pinned linter-runtime imports in its owned
+dependency caches; local helpers preserve shared dependency caches.
 
-`check.sh` additionally builds the production and positive test roots, replays
-linters and explicit origin audits, exercises isolated rejection controls, checks
-the compiled inventory, kernel-replays current project modules, and builds the
-independent downstream client. `--rehash` is forwarded to the project build/test
-commands and the native CI
-linter commands. `--ci` skips the two independent kernel replays. Every failed
-stage stops dependent stages.
+The declaration linter uses `run_declaration_linter.py` to adapt the pinned
+Batteries source with explicit module arguments and `--no-build`. It retains every
+enabled check, nolints handling and failure semantics, filtering only the original
+declaration enumeration to exact defining-module origins. Consumers are linted
+after compilation when their imported environment changes, without repeating
+completed provider lint or unrelated imported origins. Text/style lint selects
+changed files only. Both enumeration adapters fail on unrecognized driver text. `run_style_linter.py --modules MODULE ...` runs the
+pinned Mathlib options, `lintModules`, naming and script-documentation checks with
+exact module enumeration. Its isolated driver adapter replaces only the pinned
+umbrella-import enumeration block and fails if that block is unrecognized. The
+no-argument style helper retains the original comprehensive driver behavior.
+No dependency cache is overwritten by either helper.
 
-[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs the source-only entry
-and a separate native-cache transport regression suite before installing the
-`lean-toolchain` selection through pinned elan. It separately caches third-party
-`.lake/packages`, keyed by `lean-toolchain` and `lake-manifest.json`, and fetches
-matching Mathlib proof artifacts with `lake exe cache get` under the owned-group
-RSS guard. Checkout/cache action revisions and the elan release follow the authoritative Quillen CI framework.
-The hosted `bash scripts/check.sh --rehash --ci` route runs after cache setup.
-It omits only the two additional independent kernel replays. Production and test
-compilation, declaration/style lint, axiom audits, controls, inventory, and the
-independent downstream build and audit remain in that pipeline. The selected CI
-coverage does not require a local agent to rerun it on merge. The explicitly
-selected local `check.sh` command also performs both independent kernel replays.
+The selected trust audit imports exact selected implementations plus the maintained
+`AglibTest.AuditSupport` and uses its existing defining-module origin policy.
+Private/generated declarations, allowed axioms, rejection controls and stale/negative
+compiled-output checks are retained. `check_compiled_inventory.py --modules MODULE ...`
+requires only selected enrollment while still rejecting stale and negative outputs.
+Local `check_kernel.py --modules MODULE ...` checks selected compiled import closures;
+it does not require or hash unrelated enrolled module artifacts. Its output stays
+labelled a probe, with no whole-library coverage claim. `--ci` omits extra independent
+kernel replay, as before; retained complete publication evidence is still required.
 
-CI invokes the configured Batteries declaration linter and Mathlib's Lean style
-driver through their native Lake interfaces, from the Aglib package root:
+After final-check repairs use `--phase providers`, `--phase provider-lint`,
+`--phase consumers`, `--phase trust` or `--phase client` (repeatable), optionally
+`--native-only`, for only failed or newly invalidated categories. Use a fresh
+`AGLIB_VERIFY_DIR` for each build invocation; preserve matching prior receipts.
+Compilation alone does not discharge independent lint/test/trust coverage.
 
-```sh
-lake lint -- --no-build
-lake exe mathlib/lint-style Aglib AglibTest
-```
+`check.sh --full [--source-only] [--rehash] [--ci]` retains separately requested
+whole-library diagnostics. Without literal `--full`, `check.sh` requires an
+incremental baseline or guarded `--plan FILE`; no absent cache, manual dispatch,
+unknown path or changed pin implicitly selects the comprehensive command. All-zero
+new-branch event bases use an available trusted default-branch merge-base or a
+genuine parentless initial-tree diff; unavailable Git metadata fails actionably.
 
-The first command includes Lake's configured builtin phase and then runs the
-Batteries driver selected in `lakefile.toml`. The driver selects declarations by
-defining-module origin, so native mathematical namespaces do not reduce package
-coverage. Its `--no-build` rejects missing imported library artifacts; Lake can
-still build the executable's tool prerequisites. The style driver reads Aglib's
-current-root configuration and receives the explicit `Aglib AglibTest` selection.
-Neither command replaces the separate Lean axiom/origin audit. Python checks
-package structure, import enrollment and execution; it does not implement these
-Lean declaration or text-style rules.
-
-The local route preserves shared dependency caches by running the same pinned
-Batteries source directly:
-
-```sh
-python3 scripts/resource_guard.py --capped-toolchain --receipt .lake/verification/declaration-lint.json -- lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
-```
-
-`--no-build` rejects missing project or linter oleans instead of rebuilding
-dependency caches.
-
-`run_style_linter.py` executes the pinned Mathlib
-`scripts/lint-style.lean` with the arguments `Aglib AglibTest`:
-
-```sh
-python3 scripts/resource_guard.py --capped-toolchain --receipt .lake/verification/style.json -- python3 scripts/run_style_linter.py
-```
-
-If `Cli.Basic` or `ImportGraph.Imports.FromSource` is absent, the helper compiles
-only those exact source modules into a temporary runtime overlay. Their imported
-prerequisites must already be cached. The overlay is removed afterward; no
-cached namespace sibling is hidden: its artifacts are linked read-only into the
-overlay, and compilation refuses to overwrite a cached artifact. No
-executable or output is built in an immutable dependency checkout. The helper
-also compiles the byte-identical driver into the overlay, then runs an import-only
-shim with the pinned Lake shared library loaded. This initializes driver options
-before evaluation and makes Lake's native workspace loader available.
-The actual checks and arguments remain those of the pinned driver. The helper
-does not pass `--fix`. CI owns writable dependency caches and uses the native
-commands above instead of this local overlay.
+[CI](../.github/workflows/ci.yml) computes the affected plan before installing Lean
+or restoring caches. Markdown/evidence-only plans never enter native or cache
+steps. Native CI runs selected checks with `--outputs FILE`; successful build-phase
+mappings are concatenated only after all selected checks succeed. No export build
+or implicit root target is added. The adjacent `.coverage.json` records the base,
+HEAD, actual selected targets and affected-only coverage. CI packages it as
+`validation-coverage.json`; client-only changes do not publish root-package mappings. Single-phase repairs do
+not export a complete selected-validation mapping. Cache misses preserve native
+outputs and fill only required selected work; cold broad-facade siblings require
+matching-cache recovery. The pinned toolchain, manifests and resource limits stay
+under their existing owners.
 
 ## Resource limits and exact kernel replay
 
@@ -266,13 +238,19 @@ still prunes obsolete modules before native Lake trace validation in the current
 `--rehash --ci` checks; advisory stamps and partial caches do not establish verification.
 Source changes can reuse unaffected compiled modules through Lake `--rehash`.
 
-The official proof-cache command uses `resource_guard.py --bootstrap-cache`,
-which accepts only `lake exe cache get`. This bootstrap mode keeps the same RSS
-cutoff and one worker thread while allowing the cache tool's compiler children.
+The selected proof-cache command is `python3 scripts/cache_ci.py --plan PLAN
+--receipt RECEIPT`. It resolves the pinned dependencies, projects the existing
+scope graph's actual provider/consumer/test/client imports (including required
+broad facades) and named lint/trust tooling to explicit Mathlib roots, then uses
+the existing capped toolchain and RSS guard with serialized compiler launches
+and exact cached compiler metadata queries. `affected_scope.py --cache-roots PLAN`
+prints the same validated roots after dependency resolution. Markdown-only plans
+skip dependency resolution and cache work; missing sources or basis fail without
+an unscoped fetch. The stricter original `--bootstrap-cache` gate remains unchanged.
 The CI runner and resource profile are defined in `.github/workflows/ci.yml`.
-Its explicit `check.sh --rehash --ci` mode retains
-compilation, linters, axiom audits, and downstream checks; the extra independent
-root/client kernel replays remain in the explicitly selected full local command.
+Its incremental `check.sh --base BASE --rehash --ci` mode retains selected
+compilation, linters, axiom audits and affected client checks. Extra independent
+kernel replay remains in the local route; whole-library diagnostics require `--full`.
 
 `prepare_build_cache.py` runs before restored project outputs enter the declared
 CI check. Each build root carries an advisory `.aglib-cache.json` provenance stamp
@@ -308,7 +286,10 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_resource_guard.py` | Pure Python budget, fail-closed monitoring, exit propagation, and owned-PID termination regressions. |
 | `test_kernel.py` | Exact enrollment, bounded task barrier, failed-batch rejection, RSS backoff, immutable attempt logs, and basis-checked legacy adoption regressions. |
 | `test_build_serial.py` | Checks target validation, single-graph scheduling, strict cache-miss fallback, preserved probe logs, and compiler-wrapper argument caps using a small Python executable. |
-| `check.sh` | Serialized comprehensive diagnostic/CI command; accepts `--source-only`, `--rehash` and `--ci`. Not ordinary local acceptance; CI retains its declared pipeline. |
+| `check.sh` | Incremental final-check adapter; accepts `--base`/`--head`, guarded `--plan`, `--source-only`, `--native-only`, `--phase`, `--outputs`, `--rehash` and `--ci`. Comprehensive diagnostics require literal `--full`. |
+| `affected_scope.py` | Pure-source Git/import-graph selector; accepts `--base`/`--head` or explicit `--full`, `--output` and `--github-output`. |
+| `check_affected.py` | Executes guarded selected final checks and success-only native mapping export without broad-root fallback. |
+| `test_affected_scope.py` | Small import/Git fixtures and mocked commands for changed providers, consumers, renames/deletes, fail-closed scope, lint ordering, documentation skips and export coverage. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. The test-only umbrella uses legacy imports when composing legacy audit fixtures; production facades remain modern. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |
@@ -316,6 +297,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `check_source_policy.py` | Any option with an exact `maxHeartbeats` name component, including `synthInstance.maxHeartbeats`, must use a positive finite budget scoped to one declaration with an explanatory comment after `in`. Aglib rejects `0` (unlimited), including documented local zero budgets; this is stricter than pinned Mathlib. Copyright headers require nonempty author credits while original extraction notices are preserved. Other fixed source safety remains enforced; comment quality and budget necessity remain author judgments. Accepts `--root PATH`. |
 | `check_compiled_inventory.py` | Matches the root-owned compiled replay view to current source; rejects deleted/old-prefix artifacts and negative controls in the positive view. Accepts `--root PATH`. |
 | `check_negative_controls.py` | Compiles isolated control data in a temporary overlay and requires the specific imported/current-module axiom rejection. Setup errors cannot count as rejection. |
+| `run_declaration_linter.py` | Executes all pinned Batteries checks on exact defining-module origins through an isolated enumeration adapter; never builds project or dependency modules. |
 | `run_style_linter.py` | Runs the exact pinned style driver through a temporary optional-module overlay. `--check-prerequisites --sysroot PATH` inspects direct driver/source prerequisites without Lake, compilation, or writes. |
 | `prepare_downstream.py` | Prepares the independently configured client's manifest and dependency-cache link from the pinned root manifest. It preserves the root manifest and existing dependency sources. |
 | `migration_helpers.py` | Read-only transitional inspection of initial-extraction routing and namespace maps. `read_source` requires an explicit source root, exact Git revision, and exact source SHA-256; `write_source` and `record` are retired and always fail before writes. It is not the redesigned-source authoring pipeline or a production dependency. |
