@@ -68,6 +68,20 @@ class ResourceTests(unittest.TestCase):
                 resources.run([sys.executable, '-c', 'pass'], env={}, sampler=unavailable)
             launch.assert_not_called()
 
+    def test_managed_memory_and_job_caps_do_not_reserve_their_product(self):
+        with tempfile.TemporaryDirectory() as directory:
+            environment = self.managed(directory)
+            profile = json.loads(environment['PARENT_PROFILE'])
+            profile.update(jobs=8, threads=4, lean_memory_mib=24576, rss_limit_mib=110592)
+            environment['PARENT_PROFILE'] = json.dumps(profile)
+            config = resources.ResourceConfig(profile_keys=('PARENT_PROFILE',))
+            budget = resources.limits(environment, 128 * 1024**3, config)
+            self.assertEqual((budget['lean_memory_mb'], budget['max_active_lean']), (24576, 8))
+            profile['lean_memory_mib'] = profile['rss_limit_mib']
+            environment['PARENT_PROFILE'] = json.dumps(profile)
+            with self.assertRaisesRegex(ValueError, 'Invalid managed resource profile'):
+                resources.limits(environment, 128 * 1024**3, config)
+
     def test_owned_group_rss_and_concurrency_cutoffs_are_preserved(self):
         for reason, members, expected in (
                 ('rss', [{'pid': 42, 'rss_bytes': 513 * resources.MIB, 'executable': 'python'}], 137),
