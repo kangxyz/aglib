@@ -228,7 +228,38 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(plan['baseline_math'], plan['head_math'])
         self.assertEqual(plan['native_policy']['mode'], 'reviewed-fixed-audit-entrypoint-migration')
         self.assertEqual(plan['native_policy']['old_generator_blob'], core.OLD_AUDIT_GENERATOR_BLOB)
+        self.assertEqual(plan['native_policy']['old_audit_source_blobs'], core.OLD_AUDIT_SOURCE_BLOBS)
         self.assertTrue(plan['scope']['native'] and plan['scope']['controls'])
+
+    def test_other_predecessor_audit_sources_cannot_inherit_the_fixed_migration(self):
+        old_pipeline = subprocess.check_output(
+            ['git', 'show', 'f0ff076:scripts/ci_pipeline.py'], cwd=core.ROOT, text=True)
+        reviewed = {path: (core.ROOT / path).read_text() for path in core.OLD_AUDIT_SOURCE_BLOBS}
+        for index, path in enumerate(reviewed):
+            with self.subTest(path=path):
+                for fixed in core.FIXED_AUDIT_SOURCES:
+                    (self.root / fixed).unlink()
+                for source, text in reviewed.items():
+                    self.write(source, text)
+                changed = (reviewed[path].replace('hidden.size == 1', 'hidden.size ≤ 1')
+                           if path == 'AglibTest/Axioms.lean' else
+                           reviewed[path] + '\n-- Different previously adopted audit source.\n')
+                self.assertNotEqual(changed, reviewed[path])
+                self.write(path, changed)
+                self.write('scripts/ci_pipeline.py', old_pipeline)
+                anchor = self.commit('same generator with different predecessor audit source')
+                self.api.runs[0]['head_sha'] = anchor
+                for fixed in core.FIXED_AUDIT_SOURCES:
+                    self.write(fixed, (core.ROOT / fixed).read_text())
+                self.write('scripts/ci_pipeline.py', (core.ROOT / 'scripts/ci_pipeline.py').read_text())
+                head = self.commit('fixed entrypoint after different predecessor audit source')
+                self.assertEqual(self.git('show', anchor + ':' + path),
+                                 self.git('show', head + ':' + path))
+                state = self.state / str(index)
+                with patch.object(core.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({anchor})), \
+                        self.assertRaisesRegex(ValueError, 'Native semantic policy changed'):
+                    core.create_plan(self.root, REPOSITORY, 'main', head, state, api=self.api)
+                self.assertFalse((state / 'plan.json').exists())
 
     def test_unknown_generator_cannot_inherit_the_fixed_audit_migration(self):
         for path in core.FIXED_AUDIT_SOURCES:

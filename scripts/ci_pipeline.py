@@ -34,6 +34,11 @@ FIXED_AUDIT_SOURCES = {
     AUDIT_DRIVER: AUDIT_DRIVER_SHA256,
 }
 OLD_AUDIT_GENERATOR_BLOB = '682dedef7a8286e327360a39d8d86b6ce3828188'
+OLD_AUDIT_SOURCE_BLOBS = {
+    'AglibTest/Axioms.lean': 'd5386546e73bea1d24a81b66836aa5a074db65e9',
+    'AglibTest/AuditSupport.lean': 'cfd2df7050a8c4388f1626bda2e5085df3c52e58',
+    'AglibTest/AuditCoverage.lean': '675bbb041fa7148aea8331afc03cc78b527cf6a3',
+}
 POLICY = ['scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/resource_guard.py',
           'scripts/build_serial.py', 'scripts/library_sources.py',
           'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
@@ -106,12 +111,15 @@ def native_policy(root, baseline, scope, before, current):
     fixed_audit_migration = (
         set(changed) == set(FIXED_AUDIT_SOURCES)
         and old.get('scripts/ci_pipeline.py', {}).get('blob') == OLD_AUDIT_GENERATOR_BLOB
+        and all(old.get(path) == {'mode': '100644', 'blob': expected}
+                for path, expected in OLD_AUDIT_SOURCE_BLOBS.items())
         and all(old.get(path) is None and new.get(path, {}).get('mode') == '100644'
                 for path in FIXED_AUDIT_SOURCES))
     if fixed_audit_migration:
         return {'mode': 'reviewed-fixed-audit-entrypoint-migration',
                 'witness_commit': baseline['verified_base'], 'witness_run': baseline['run_id'],
                 'old_generator_blob': OLD_AUDIT_GENERATOR_BLOB,
+                'old_audit_source_blobs': OLD_AUDIT_SOURCE_BLOBS,
                 'fixed_audit_sources': FIXED_AUDIT_SOURCES,
                 'equivalence': 'same selected import sequence, visibility, frontend options/trust, '
                                'origin audit and private/generated controls; selection is data',

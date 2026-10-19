@@ -141,7 +141,8 @@ portability or `--error=kind` diagnostic modes.
 
 The helper and driver hashes are pinned through the existing CI adapter recipe
 owner and included in check inputs. Their first introduction has an explicit
-reviewed migration from the exact prior generator; later semantic changes cannot
+reviewed migration from the exact prior generator and the exact prior audit
+support, coverage and control sources; later semantic changes cannot
 inherit this exception. The real cache test copies fixed
 [Quartz fixture sources](../ci/fixtures/quartz) into its isolated producer and
 consumer trees, verifying their reviewed content hashes before use. Temporary

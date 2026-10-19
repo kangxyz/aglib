@@ -427,6 +427,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_ci_baseline.py` | Checks failed/partial/static-only histories, versioned workflow eligibility, ancestry, manual-base safety, pagination and unavailable verification evidence without Lean or cache mutation. |
 | `ci_pipeline.py` | Owns the CI plan, source/native execution records and mandatory final coverage decision; the workflow supplies environment and cache transport. |
 | `test_ci_pipeline.py` | Regressions for verified scope, complete current graph coverage, skipped/incomplete phases, source drift and final-result integrity. |
+| `test_ci_audit.py` | Fixed audit source admission and structured module-name argument validation, without running Lean. |
 | `test_ci_integration.py` | Exercises real failed-proof/repair commit histories and public plan/source/finalize entry points, including missing native work, wrong-plan records and source drift, without running Lean. |
 | `ci_state.py` | Stores compatible individual check successes bound to validated native inputs/outputs, checker policies and actual command receipts. |
 | `test_ci_state.py` | Checks partial-progress reuse, input/checker changes, stale outputs, failed receipts and incompatible records. |
