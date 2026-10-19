@@ -57,16 +57,20 @@ independent downstream build and audit remain in that pipeline. The selected CI
 coverage does not require a local agent to rerun it on merge. The explicitly
 selected local `check.sh` command also performs both independent kernel replays.
 
-CI invokes the configured Batteries declaration linter and Mathlib's Lean style
-driver through their native Lake interfaces, from the Aglib package root:
+CI runs Lake's configured builtin lint phase and Mathlib's Lean style driver
+through their native Lake interfaces, and the Batteries declaration linter from
+its pinned source, from the Aglib package root, each as its own guarded process:
 
 ```sh
-lake lint -- --no-build
+lake lint --builtin-only
+lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
 lake exe mathlib/lint-style Aglib AglibTest
 ```
 
-The first command includes Lake's configured builtin phase and then runs the
-Batteries driver selected in `lakefile.toml`. The driver selects declarations by
+A single `lake lint -- --no-build` would run the builtin phase and then the
+Batteries driver selected in `lakefile.toml` while the builtin phase's environment
+stays mapped; their combined resident memory exceeds the CI budget
+([performance guide](../docs/PERFORMANCE.md#declaration-lint-memory-in-ci)). The driver selects declarations by
 defining-module origin, so native mathematical namespaces do not reduce package
 coverage. Its `--no-build` rejects missing imported library artifacts; Lake can
 still build the executable's tool prerequisites. The style driver reads Aglib's

@@ -722,6 +722,20 @@ definitions at `Spec (CommRingCat.of A)` few, and state helpers at variable data
 `PullbackComposition`. Before attributing a cost to a fibre product, separate statement
 formation from proof checking with a theorem-binder probe.
 
+## Declaration lint memory in CI
+
+On 2026-10-19 the CI job for `c6bddf7` was killed by the resource guard (exit 137, RSS cutoff
+13,824 MB) about six seconds into the Batteries declaration linter, after Lake's builtin lint
+phase had finished. The previous push, `9645827`, passed the same step. CI ran both phases as one
+guarded `lake lint -- --no-build`. Measured separately on the remote Linux builder at `df4680e`,
+the builtin phase (`lake lint --builtin-only`, which loads the `Aglib` and `AglibTest`
+environments in the Lake process) peaked at 8.7 GB and the driver (`runLinter --no-build Aglib`)
+at 6.4 GB. A candidate explanation, consistent with these numbers: the Lake process keeps the
+builtin phase's imported environment mapped while it runs the driver, and the guard sums the
+resident memory of its process group, so the library's growth by a few dozen modules moved the
+sum past the cutoff. CI now runs the builtin phase and the driver as separate guarded processes.
+Keep separately guarded commands for phases that each load the whole library.
+
 ## Principal chart pasting at the CI memory budget
 
 CI runs [39102309068](https://github.com/kangxyz/aglib/actions/runs/39102309068)

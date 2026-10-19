@@ -38,7 +38,11 @@ python3 scripts/build_serial.py --receipt-dir "$verification_dir/build" \
 safe test lake ${lake_args[@]+"${lake_args[@]}"} test
 if (( ci_mode )); then
   # CI owns writable dependency caches, so use Mathlib's native Lake entry points.
-  safe declaration-lint lake ${lake_args[@]+"${lake_args[@]}"} lint -- --no-build
+  # A single `lake lint` keeps its builtin phase's environment mapped while the
+  # Batteries driver runs, and the two together exceed the CI memory budget, so
+  # the builtin phase and the driver run as separate guarded processes.
+  safe builtin-lint lake ${lake_args[@]+"${lake_args[@]}"} lint --builtin-only
+  safe declaration-lint lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
   safe style lake ${lake_args[@]+"${lake_args[@]}"} exe mathlib/lint-style Aglib AglibTest
 else
   # Execute the same pinned Lean linters without changing shared dependency caches.
