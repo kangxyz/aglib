@@ -1,11 +1,12 @@
 """Small-process and injected-sample tests; never launch Lean."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from contextlib import nullcontext, redirect_stderr
 import io
 
@@ -13,6 +14,131 @@ import resource_guard as guard
 
 
 class ResourceGuardTests(unittest.TestCase):
+    def remote_environment(self, directory, **changes):
+        root = Path(directory) / 'managed'
+        (root / 'bin').mkdir(parents=True)
+        lean = root / 'bin/lean'
+        lean.write_text('#!/usr/bin/env python3\nimport json,os,sys\n'
+                        'print(json.dumps({"args":sys.argv[1:],"jobs":os.environ["LEAN_NUM_THREADS"]}))\n')
+        lean.chmod(0o755)
+        profile = {'schema_version': 1, 'jobs': 2, 'threads': 3,
+                   'lean_memory_mib': 64, 'rss_limit_mib': 512, 'lean': str(lean)}
+        profile.update(changes)
+        return {'R5_LEAN_REMOTE_PROFILE': json.dumps(profile), 'LEAN': str(lean),
+                'LEAN_SYSROOT': str(root), 'LEAN_NUM_THREADS': '1', 'PATH': os.environ.get('PATH', '')}
+
+    def test_explicit_remote_profile_preserves_selected_budgets_and_attribution(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory, jobs=8, threads=4,
+                                          lean_memory_mib=12800, rss_limit_mib=110592)
+            env.update(AGLIB_LEAN_MEMORY_MB='4096', AGLIB_RSS_LIMIT_MB='5120')
+            budget = guard.limits(env, 128 * 1024**3)
+            self.assertEqual((budget['lean_memory_mb'], budget['rss_limit_mb'], budget['lean_threads'],
+                              budget['lake_jobs'], budget['max_active_lean']), (12800, 110592, 4, 8, 8))
+            self.assertEqual(budget['remote_profile']['lean'], env['LEAN'])
+            self.assertEqual(len(budget['tooling_sha256']), 3)
+            self.assertTrue(all(len(value) == 64 for value in budget['tooling_sha256'].values()))
+
+    def test_remote_profile_rejects_malformed_inconsistent_or_stale_opt_in(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory)
+            original = json.loads(env['R5_LEAN_REMOTE_PROFILE'])
+            invalid = [None, '{', 'null', '[]', json.dumps(dict(original, schema_version=True)),
+                       env['R5_LEAN_REMOTE_PROFILE'][:-1] + ',"jobs":2}',
+                       json.dumps(dict(original, jobs=0)), json.dumps(dict(original, threads=True)),
+                       json.dumps(dict(original, lean_memory_mib=256)),
+                       json.dumps(dict(original, lean='relative/bin/lean')),
+                       json.dumps(dict(original, extra=1)), json.dumps({k: v for k, v in original.items() if k != 'jobs'})]
+            for value in invalid:
+                with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'R5_LEAN_REMOTE_PROFILE'):
+                    guard.remote_profile(dict(env, R5_LEAN_REMOTE_PROFILE=value))
+            for change in ({'LEAN': '/different/bin/lean'}, {'LEAN_SYSROOT': '/different'}, {'LEAN': ''}):
+                with self.subTest(change=change), self.assertRaises(ValueError):
+                    guard.remote_profile(dict(env, **change))
+            Path(env['LEAN']).unlink()
+            with self.assertRaises(ValueError):
+                guard.remote_profile(env)
+
+    def test_malformed_remote_cli_profile_prevents_toolchain_or_child_launch(self):
+        with patch.object(sys, 'argv', ['guard', '--receipt', '/unused/receipt.json',
+                                       '--capped-toolchain', '--', 'lean', 'File.lean']), \
+                patch.dict(os.environ, {'R5_LEAN_REMOTE_PROFILE': '{'}, clear=True), \
+                patch('build_serial.capped_toolchain') as capped, \
+                patch.object(guard, 'run') as run, redirect_stderr(io.StringIO()) as errors:
+            self.assertEqual(guard.main(), 125)
+        capped.assert_not_called()
+        run.assert_not_called()
+        self.assertIn('R5_LEAN_REMOTE_PROFILE', errors.getvalue())
+
+    def test_remote_cache_bootstrap_keeps_selected_frontend_cap(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory)
+            argv = ['guard', '--receipt', '/unused/receipt.json', '--bootstrap-cache', '--',
+                    'lake', 'exe', 'cache', 'get']
+            with patch.dict(os.environ, env, clear=True), patch.object(sys, 'argv', argv), \
+                    patch.object(guard, 'run', return_value=0) as run, \
+                    patch('build_serial.subprocess.check_output') as elan:
+                self.assertEqual(guard.main(), 0)
+            budget = run.call_args.kwargs['budget']
+            self.assertEqual((budget['max_active_lean'], budget['lean_threads'], budget['lake_jobs']),
+                             (2, 3, 2))
+            self.assertEqual(run.call_args.kwargs['env']['LEAN'], env['LEAN'])
+            elan.assert_not_called()
+
+    def test_remote_run_restores_jobs_and_replaces_stale_local_budget(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory)
+            old = guard.limits({}, 64 * 1024**3)
+            receipt = Path(directory) / 'run.json'
+            child = ('import os,json; p=json.loads(os.environ["R5_LEAN_REMOTE_PROFILE"]); '
+                     'assert os.environ["LEAN_NUM_THREADS"]==str(p["jobs"]); '
+                     'assert os.environ["LEAN"]==p["lean"]; '
+                     'assert os.environ["PATH"].split(os.pathsep)[0]==os.path.dirname(p["lean"])')
+            self.assertEqual(guard.run([sys.executable, '-c', child], env=env, budget=old,
+                                       receipt=receipt, sampler=lambda _: []), 0)
+            selected = json.loads(receipt.read_text())['limits']
+            self.assertEqual((selected['lake_jobs'], selected['lean_threads'], selected['max_active_lean']),
+                             (2, 3, 2))
+            self.assertEqual(selected['rss_limit_mb'], 512)
+            self.assertEqual(env['LEAN_NUM_THREADS'], '1')  # Caller state is preserved.
+
+    def test_remote_guard_accepts_selected_concurrency_and_rejects_excess_or_rss(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory)
+            for count, rss, expected in ((2, 1, 0), (3, 1, 125), (1, 512 * guard.MIB, 137)):
+                calls = 0
+                def sampler(group):
+                    nonlocal calls
+                    calls += 1
+                    return [{'pid': 111 + i, 'rss_bytes': rss, 'executable': 'lean'}
+                            for i in range(count)] if calls == 2 else []
+                child = Mock(pid=123456789)
+                child.poll.return_value = 0
+                child.wait.return_value = 0 if expected == 0 else -15
+                out = io.StringIO()
+                with patch.object(guard.subprocess, 'Popen', return_value=child), \
+                        patch.object(guard, 'terminate_group') as terminate, \
+                        patch.object(guard, 'metadata_process', return_value=False), \
+                        redirect_stderr(out):
+                    self.assertEqual(guard.run(['fake-compiler-graph'], env=env, sampler=sampler), expected)
+                if expected:
+                    terminate.assert_called_once()
+                    self.assertEqual(terminate.call_args.args[0], child.pid)
+                else:
+                    terminate.assert_not_called()
+                if count == 3:
+                    self.assertIn('more than 2 active Lean processes', out.getvalue())
+
+    def test_remote_capped_commands_accept_only_the_provided_explicit_wrapper(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory)
+            for command in ([env['LEAN'], 'File.lean'], ['lake', 'env', env['LEAN'], 'File.lean']):
+                self.assertEqual(guard.capped_command(command, env), command)
+            with patch.dict(os.environ, env, clear=True):
+                self.assertEqual(guard.frontend_args(), [env['LEAN'], '-j3', '-M64'])
+            with self.assertRaises(ValueError):
+                guard.capped_command(['/different/bin/lean', 'File.lean'], env)
+
     def test_direct_capped_frontends_preserve_arguments(self):
         environment = {'LEAN': '/owned overlay/bin/lean'}
         tail = ['--setup', 'setup with spaces.json', '-DautoImplicit=false', 'File.lean']
