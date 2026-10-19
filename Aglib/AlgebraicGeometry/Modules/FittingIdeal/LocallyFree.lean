@@ -27,6 +27,9 @@ presentation (`[G.IsFinitePresentation]`); see each statement.
   `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`). Consequently `Fitt_k(G) = 𝒪_T` when every
   fibre has dimension at most `k` (`fittingIdealSheaf_eq_top_of_sheafRank_le`), and the points of
   fibre dimension at least `r` form a closed set (`isClosed_setOf_le_sheafRank`).
+  On `Spec A` the criterion reads off the global sections:
+  `sheafRank_le_iff_fittingIdeal_moduleSpecΓFunctor`, `sheafRank G y ≤ k` if and only if
+  `Fitt_k(Γ(G)) ⊄ y`.
 * `Scheme.Modules.sheafRank_eq_of_fittingIdealSheaf`: if `Fitt_k(G) = 0` for `k < r` and
   `Fitt_r(G) = 𝒪_T`, every fibre has dimension `r`; `sheafRank_pullback`: fibre ranks are
   compatible with arbitrary pullback.
@@ -228,5 +231,51 @@ theorem isClosed_setOf_le_sheafRank (F : T.Modules)
       exact sheafRank_le_iff_notMem_support F hF y k
     rw [this]
     exact (fittingIdealSheaf F hF k).support.isClosed
+
+/-- **Fibre ranks on an affine scheme through the Fitting ideals of global sections**: for a
+finitely presented `G` on `Spec A` and a point `y`, the fibre of `G` at `y` has dimension at most
+`k` if and only if `Fitt_k(Γ(G)) ⊄ y`, with `Γ(G)` the `A`-module `moduleSpecΓFunctor.obj G`. -/
+theorem sheafRank_le_iff_fittingIdeal_moduleSpecΓFunctor {A : Type u} [CommRing A]
+    (G : (Spec (CommRingCat.of A)).Modules) [G.IsFinitePresentation]
+    (hG : QuasiCoherent.affineLocallyFiniteType _ G) (y : PrimeSpectrum A) (k : ℕ) :
+    sheafRank G y ≤ k ↔ ¬Module.fittingIdeal A (moduleSpecΓFunctor.obj G) k ≤ y.asIdeal := by
+  let V : (Spec (CommRingCat.of A)).affineOpens := ⟨⊤, isAffineOpen_top _⟩
+  have htop : (⊤ : (Spec (CommRingCat.of A)).Opens).leTop = 𝟙 _ := Subsingleton.elim _ _
+  let ψ : A →+* Γ(Spec (CommRingCat.of A), ⊤) :=
+    ((Spec (CommRingCat.of A)).presheaf.map (⊤ : (Spec (CommRingCat.of A)).Opens).leTop.op).hom.comp
+      (Scheme.ΓSpecIso (CommRingCat.of A)).inv.hom
+  have hψ : ψ = (Scheme.ΓSpecIso (CommRingCat.of A)).inv.hom := by
+    simp only [ψ, htop, op_id, CategoryTheory.Functor.map_id]
+    rfl
+  have hψb : Function.Bijective ψ := by
+    rw [hψ]
+    exact ConcreteCategory.bijective_of_isIso _
+  have hfin : Module.Finite Γ(Spec (CommRingCat.of A), ⊤) Γ(G, ⊤) :=
+    QuasiCoherent.finite_sections_of_affineLocallyFiniteType G hG V
+  have hfit : Module.fittingIdeal A (moduleSpecΓFunctor.obj G) k =
+      (Module.fittingIdeal Γ(Spec (CommRingCat.of A), ⊤) Γ(G, ⊤) k).comap ψ :=
+    Module.fittingIdeal_compHom_of_bijective (M := Γ(G, ⊤)) ψ hψb k
+  let p : PrimeSpectrum Γ(Spec (CommRingCat.of A), ⊤) :=
+    PrimeSpectrum.comap (Scheme.ΓSpecIso (CommRingCat.of A)).hom.hom y
+  have hy : (show IsAffineOpen V.1 from V.2).fromSpec p = y := by
+    change (isAffineOpen_top (Spec (CommRingCat.of A))).fromSpec p = y
+    rw [IsAffineOpen.fromSpec_top, Scheme.isoSpec_Spec_inv]
+    change PrimeSpectrum.comap (Scheme.ΓSpecIso (CommRingCat.of A)).inv.hom p = y
+    ext1
+    change Ideal.comap _ (Ideal.comap _ y.asIdeal) = y.asIdeal
+    rw [Ideal.comap_comap, ← CommRingCat.hom_comp, Iso.inv_hom_id, CommRingCat.hom_id,
+      Ideal.comap_id]
+  have hp : y.asIdeal = p.asIdeal.comap ψ := by
+    rw [hψ]
+    change y.asIdeal = Ideal.comap _ (Ideal.comap _ y.asIdeal)
+    rw [Ideal.comap_comap, ← CommRingCat.hom_comp, Iso.inv_hom_id, CommRingCat.hom_id,
+      Ideal.comap_id]
+  have key : y ∈ (fittingIdealSheaf G hG k).support ↔
+      Module.fittingIdeal Γ(Spec (CommRingCat.of A), ⊤) Γ(G, ⊤) k ≤ p.asIdeal := by
+    rw [← hy]
+    exact IdealSheafData.fromSpec_mem_support_iff _ V p
+  rw [sheafRank_le_iff_notMem_support G hG y k]
+  refine not_congr (key.trans ?_)
+  rw [hfit, hp, Ideal.comap_le_comap_iff_of_surjective ψ hψb.2]
 
 end AlgebraicGeometry.Scheme.Modules

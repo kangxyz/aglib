@@ -117,6 +117,12 @@ through definitions with the explicit source and target (`objIsoHom`, `objIsoInv
 `comm` goal of `pullIso` as a lemma with explicit types (`pullIso_comm`), removed the failures;
 the module builds in about 6 seconds.
 
+[OfEpi](OfEpi.lean): `Pseudofunctor.DescentData.ofEpi`, the descent datum on quotients of a
+descent datum `D` along morphisms `p i : D.obj i ⟶ obj i` that stay epimorphisms after every
+pullback, from morphisms compatible with `p` and `D.hom` (the axioms are checked after the
+epimorphisms), with `toOfEpi : D ⟶ ofEpi …`; `LocallyDiscreteOpToCat.pullHom_map`. Consumer:
+[Grassmannian/Quotient/Surjectivity](../../../AlgebraicGeometry/Grassmannian/Quotient/Surjectivity.lean).
+
 [Composition](Composition.lean): `Pseudofunctor.IsPrestack.of_le`, `Pseudofunctor.IsStack.of_le`
 (a (pre)stack for a finer topology is one for a coarser topology), and
 `Pseudofunctor.IsStackFor.bind`: for a `J`-prestack `F`, a `J`-covering presieve `R` for which `F`

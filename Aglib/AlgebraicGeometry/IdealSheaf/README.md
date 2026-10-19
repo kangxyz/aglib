@@ -6,6 +6,8 @@
 
 [Glue](Glue.lean) glues ideal sheaves along open covers. For a jointly surjective family of open immersions `f i : U i ⟶ X` and ideal sheaves `I i` on the `U i` whose pullbacks to the overlaps `pullback (f i) (f j)` agree, `Scheme.IdealSheafData.glue f I hf hI` is an ideal sheaf on `X` with `(glue f I hf hI).comap (f i) = I i` (`comap_glue`). Its ideal on an affine open `V` is `glueIdeal f I V`, the sections whose restrictions to all affine opens of the `U i` over `V` lie in the `I i`; the basic-open condition uses a finite subcover of `V` and the localization of sections at basic opens. Mathlib's pushforward `IdealSheafData.map` does not give this gluing directly, because `(I.map j).comap j = I` can fail for an open immersion `j` that is not quasi-compact (example in the module docstring, checked by hand, not formalized). The Zariski sheaf property of closed subschemes in [Descent/IdealSheaf/Fppf](../Descent/IdealSheaf/Fppf.lean) uses this construction.
 
+[GlueImmersion](GlueImmersion.lean) glues immersions that represent a Zariski-local condition. For a locally Noetherian `X` and a condition `P` on morphisms from locally Noetherian schemes, stable under restriction to opens and local on the source, suppose every point of `X` has an open neighbourhood `U` and an immersion `m : Z ⟶ X` with image in `U` such that a morphism with image in `U` satisfies `P` exactly when it factors through `m`. Then one immersion represents `P` (`Scheme.exists_isImmersion_forall_exists_lift_iff`). Each local immersion is closed in `coborder (range m) ∩ U` (`glueImmersionLift`); the kernels of these closed immersions agree on the overlaps (`comap_ker_glueImmersionLift_eq`), because two closed subschemes of an overlap that represent `P` factor through each other; they glue by `IdealSheafData.glue`. `Scheme.exists_lift_iff_comap_ker_eq_bot` is the factorization criterion through a closed immersion used throughout. The [flattening stratification](../FlatteningStratification/README.md) over a locally Noetherian base consumes it.
+
 [Descent](../Descent/IdealSheaf/README.md) proves faithfully flat descent of closed subschemes (Nitsure, Lemma 6.7(2)) along flat, surjective, quasi-compact morphisms.
 
 [Invertible/Affine](Invertible/Affine.lean) relates actual local ideal bases to regular principal generators. [Effective Cartier consequences](../EffectiveCartierDivisor/README.md) use local rank one of these actual ideals with their stated closed-immersion and smoothness hypotheses. No replacement ideal-sheaf predicate is introduced.
@@ -16,5 +18,7 @@ For pullbacks of combinations of ideal sheaves, the same leaf proves
 `Scheme.IdealSheafData.comap_iSup_eq_bot_iff` (a supremum over any index type
 pulls back to zero iff every member does), `comap_mul_eq_top_iff` and
 `comap_finset_prod_eq_top_iff` (a finite product pulls back to the unit ideal
-sheaf iff every factor does). The refined joint rank strata of the
-flattening stratification consume them.
+sheaf iff every factor does), and `notMem_support_finset_prod_iff` (a point lies
+outside the support of a finite product iff it lies outside the support of
+every factor). The refined joint rank strata of the flattening stratification
+consume them.

@@ -90,8 +90,35 @@ restates both with the instance from `BaseChangeFormula` and guards their axioms
   this comparison uses `uliftFunctor`, while Mathlib's `RepresentableBy` allows the larger value
   universe.
 
-The description of maps `T ⟶ schemeOver R k n` as rank-`k` locally free quotients of
-`O_T ⊗ R^n` (Stacks, Tag 089T) needs sheaves of modules and is not yet proved.
+[Quotient](Quotient/) proves the description of the Grassmannian by locally free quotients
+(Stacks, Tags 089S and 089T, TeX snapshot `a04446e5`; Nitsure, arXiv:math/0504590v1, §1,
+Exercises (2), p. 5). A `LocallyFreeQuotient X k n` is an epimorphism `O_X^n ⟶ Q`, with
+`O_X^n = SheafOfModules.free (ULift (Fin n))` and `Q` of constant rank `k` (`SheafHasRank`);
+isomorphism classes under `O_X^n` (`LocallyFreeQuotient.IsoUnder`) form
+`quotFunctor R k n : (Over (Spec R))ᵒᵖ ⥤ Type (u + 1)`, with pullback through `pullbackFreeIso`
+([Basic](Quotient/Basic.lean)). Convention: `k` is the rank of the quotient, so this is Stacks'
+`G(n − k, n)` and Nitsure's `Grass(n, k)`, for all `k` and `n`. On `Spec A`, such quotients are
+the points of `G(k, A ⊗[R] R^n; A)`, compatibly with base change (`affinePoint_bijective`,
+`affinePoint_pullback`; [Affine](Quotient/Affine.lean), [BaseChange](Quotient/BaseChange.lean),
+[Points](Quotient/Points.lean)). The natural transformation
+`toLocalFunctor R k n : quotFunctor R k n ⟶ localFunctor R k n` is injective on every `T`,
+because local isomorphisms under the quotient maps glue
+([Injectivity](Quotient/Injectivity.lean)), and surjective, because the chart quotients of a point
+form a Zariski descent datum (`Pseudofunctor.DescentData.ofEpi`) and glue
+([Surjectivity](Quotient/Surjectivity.lean)). Hence
+`quotFunctorIso R k n : quotFunctor R k n ≅ localFunctor R k n`, and `schemeOver R k n`
+represents `Quot_k(O^n)` on all schemes over `Spec R` (`quotFunctorRepresentableBy`), with
+universal quotient `universalQuotient R k n` and a representative `universalQuotientRep R k n`
+([Representability](Quotient/Representability.lean)); the identification of the universal
+quotient with the chart quotients is not stated. Like the rest of the family, the Quotient leaves
+that use values of Mathlib's `map` keep the named premise `BaseChangeMkQFormula` as an instance
+argument (`quotFunctor` itself does not need it). The focused test
+[Quotient](../../../AglibTest/AlgebraicGeometry/Grassmannian/Quotient.lean) restates the results
+with the instance from `BaseChangeFormula` and guards their axioms. The general lemmas used here are
+in sibling leaves of their owners: `Modules/Pullback/FreeComp`, `Modules/FittingIdeal/ConstantRank`,
+`Descent/Modules/ZariskiEpi`, `CategoryTheory/Sites/Descent/OfEpi` and
+`Algebra/Category/ModuleCat/ChangeOfRings/SpanSingleton`. `AlgSpecPoints.isOpenImmersion_coverPt`
+and `AlgSpecPoints.exists_coverPt_apply_eq` are in [Injectivity](Quotient/Injectivity.lean).
 
 Relocation candidates (general, not specific to the Grassmannian): `algSpecPoints`,
 `algSpecPointsEquiv` and `AlgebraicGeometry.AlgSpecPoints.*` in
@@ -99,3 +126,48 @@ Relocation candidates (general, not specific to the Grassmannian): `algSpecPoint
 `Grassmannian.span_range_eq_top_of_forall_notMem` in [Representability](Representability.lean),
 belong to a lower owner for schemes over `Spec R`. After such a move, `exists_chartLocal` can be
 derived from `AlgSpecPoints.exists_locAway_comp_eq`.
+
+## Projective space as `Gr(R^m, 1)`
+
+The leaves in `ProjectiveSpace/` compare the Grassmannian of rank-one quotients with Aglib's
+polynomial projective space (part of plan row F9; quasi-projective morphisms remain open). Fix a
+labeling `e : ι ≃ Fin m` of the homogeneous coordinates.
+
+[Charts](ProjectiveSpace/Charts.lean) identifies the chart ring at `e_{e i}` with the standard chart
+ring `B_i = coordinateRing R ι i`, by `Φ_{0j} ↦ X_{e⁻¹ j}/X_i` (`chartToCoordinate`,
+`coordinateToChart`, `chartCoordinateEquiv`). Over `B_{il} = Away(X_i X_l)` the chart sections from
+`i` and `l` differ by the unit `X_i/X_l`, so their chart points agree (`ofChartSection_overlap`),
+and the Grassmannian overlap `Away(det_IJ)` is `B_{il}` (`overlapChartEquiv`). The `R`-algebra
+structure on `B_i` is `awayAlgebra`
+([ProjectiveSpace/AwayAlgebra](../ProjectiveSpace/AwayAlgebra.lean)); the general chart facts used
+here are in
+[RingTheory/Grassmannian/CoordinateChart](../../RingTheory/Grassmannian/CoordinateChart.lean).
+
+[Comparison](ProjectiveSpace/Comparison.lean) glues `toGrassmannian` on the standard cover and
+`ofGrassmannian` on the Grassmannian charts and proves both inverse laws:
+`grassmannianIso e : scheme R 1 m ≅ ProjectiveSpace R ι` and, over `Spec R`,
+`grassmannianOverIso e : schemeOver R 1 m ≅ ProjectiveSpace.schemeOver R ι`. This is Stacks,
+Tag 089V (Lemma 27.22.3), over any base ring and for every `m`, proved by chart gluing.
+
+[FunctorOfPoints](ProjectiveSpace/FunctorOfPoints.lean) transports the functor of points. Maps
+`Spec A ⟶ P` over `Spec R` are the points of `G(1, A ⊗[R] R^m; A)` (`representableEquiv`,
+`representableIso`). Maps `T ⟶ P` over `Spec R` are the natural transformations
+`algSpecPoints T ⟶ Module.Grassmannian.functor 1` (`homEquivNatTrans`), so `P` represents
+`localFunctor R 1 m` (`localFunctorRepresentableBy`). The identity classifies the coordinate
+quotient on each `D₊(Xᵢ)` (`homEquivNatTrans_id_app_chartOver`), and these chart values
+characterize it (`natTrans_ext_of_chartOver`, `eq_id_of_representableEquiv_chartOver`). Chart
+sections give maps through `D₊(Xᵢ)` (`representableEquiv_symm_ofChartSection`).
+
+[UniversalQuotient](ProjectiveSpace/UniversalQuotient.lean) shows that the chart quotients of the
+universal point are the frame coefficients, in the frame `Xᵢ`, of the quotient map
+`coordinatePowerGeneratingMap R ι 1 : O^ι ↠ O(1)` given by the coordinate sections
+(`awayToSection_chartRatioSection`), and that the chart sections transform by the twisting
+transition unit `coordinateTransitionUnit` (`overlapRight_chartRatioSection`).
+
+[Quotient](ProjectiveSpace/Quotient.lean) gives the description of maps `T ⟶ P` by rank-one
+locally free quotients (Stacks, Tags 089V and 01NE): `ProjectiveSpace.quotFunctorRepresentableBy R e
+: (quotFunctor R 1 m).RepresentableBy (ProjectiveSpace.schemeOver R ι)` composes
+`localFunctorRepresentableBy` with `localFunctorIsoQuotFunctor R 1 m`. It covers quotients of
+`O^m = SheafOfModules.free (ULift (Fin m))`; the form with `O^ι` needs reindexing along `e`, and
+the identification of the universal quotient with `coordinatePowerGeneratingMap R ι 1 : O^ι ↠ O(1)`
+is open.

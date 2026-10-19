@@ -64,6 +64,7 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.Sites.Descent.Bind
 public import Aglib.CategoryTheory.Sites.Descent.Composition
+public import Aglib.CategoryTheory.Sites.Descent.OfEpi
 public import Aglib.CategoryTheory.Sites.Descent.OverForget
 public import Aglib.CategoryTheory.Sites.Descent.OverSigma
 public import Aglib.CategoryTheory.Sites.Descent.Rigidification

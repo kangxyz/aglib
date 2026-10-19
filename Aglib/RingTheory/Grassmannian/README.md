@@ -13,6 +13,7 @@ Grassmannian", pp. 7–8.
 | [BaseChange](BaseChange.lean) | `BaseChangeMkQFormula` (named premise), `baseChangeMkQ_tmul`, `baseChangeMkQQuotEquiv` | `baseChangeMkQ_tmul` assumes `BaseChangeMkQFormula`; the class and `baseChangeMkQQuotEquiv` assume nothing |
 | [Chart](Chart.lean) | `chart`, `chartFunctor`, `map_mem_chart`, `mem_chart_map_iff`, `chartEquiv`, `map_ofChartSection`, `chartEquiv_map` | arbitrary `M` |
 | [ChartRing](ChartRing.lean) | `ChartRing`, `chartSectionsEquivAlgHom`, `chartFunctorCorepresentableBy` | `M = Fin n → R`, algebras in the universe of `R` |
+| [CoordinateChart](CoordinateChart.lean) | `ofChartSection_eq_of_smul`, `chartRing_algHom_ext`, `chartCoordinate_coordinateTuple_self`, `chartTransitionDet_coordinateTuple` | `ofChartSection_eq_of_smul`: arbitrary `M`; `chartRing_algHom_ext`: `M = Fin n → R`, any `k`; the two `coordinateTuple` lemmas: `M = Fin n → R`, `k = 1` |
 | [Overlap](Overlap.lean) | `transitionMatrix`, `mem_chart_iff_isUnit_det` | arbitrary `M` |
 | [ChartIntersection](ChartIntersection.lean) | `chartTransitionDet`, `chartInterCorepresentableBy`, `chartTransitionIso`, `chartFamilyInterCorepresentableBy` | `M = Fin n → R`, finite families |
 | [Covering](Covering.lean) | `exists_localizedModule_bijective`, `exists_mem_chart_map`, `baseChange_localization_bijective_iff` | `M = Fin n → R` |

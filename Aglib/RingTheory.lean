@@ -102,6 +102,7 @@ public import Aglib.RingTheory.Flat.LocalCriterion.Adic
 public import Aglib.RingTheory.Flat.LocalCriterion.Residue
 public import Aglib.RingTheory.Flat.LocalCriterion.ResidueSyzygies
 public import Aglib.RingTheory.Flat.LocalCriterion.Tensor
+public import Aglib.RingTheory.Flat.PrincipalQuotient.AtPrime
 public import Aglib.RingTheory.Flat.PrincipalQuotient.BaseChange
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Basic
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise
@@ -118,12 +119,14 @@ public import Aglib.RingTheory.Grassmannian.Chart
 public import Aglib.RingTheory.Grassmannian.ChartIntersection
 public import Aglib.RingTheory.Grassmannian.ChartLocus
 public import Aglib.RingTheory.Grassmannian.ChartRing
+public import Aglib.RingTheory.Grassmannian.CoordinateChart
 public import Aglib.RingTheory.Grassmannian.Covering
 public import Aglib.RingTheory.Grassmannian.Descent
 public import Aglib.RingTheory.Grassmannian.Gluing
 public import Aglib.RingTheory.Grassmannian.Overlap
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
+public import Aglib.RingTheory.Ideal.InvertiblePrincipal
 public import Aglib.RingTheory.Ideal.MinimalPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.MinimalPrime.GoingDown
 public import Aglib.RingTheory.Ideal.RegularPrincipal
@@ -141,6 +144,7 @@ public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance
 public import Aglib.RingTheory.LocalRing.ParameterQuotient
+public import Aglib.RingTheory.LocalRing.ResidueFieldComap
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.Localization.IteratedModuleLength
@@ -177,6 +181,7 @@ public import Aglib.RingTheory.PrimeFiltration.Length
 public import Aglib.RingTheory.PrimeFiltration.Multiplicity
 public import Aglib.RingTheory.PrimeFiltration.Primes
 public import Aglib.RingTheory.PrimeFiltration.Support
+public import Aglib.RingTheory.Regular.Localization
 public import Aglib.RingTheory.Regular.PrimeAvoidance
 public import Aglib.RingTheory.Regular.TensorProduct
 public import Aglib.RingTheory.RegularLocalRing.ArtinianQuotient
@@ -196,6 +201,7 @@ public import Aglib.RingTheory.Smooth.GeometricRegularity.LocalCriterion
 public import Aglib.RingTheory.Smooth.GeometricRegularity.RegularLocalKernel
 public import Aglib.RingTheory.Smooth.Reduced
 public import Aglib.RingTheory.Smooth.RegularKernel
+public import Aglib.RingTheory.Spectrum.Prime.Bijectivity
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.BaseChange
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension.Flat

@@ -55,6 +55,9 @@ finite-presentation hypothesis enters the construction.
   `sheafRank G y` is at most `k` iff `y ∉ V(Fitt_k(G))` (Stacks, Tag 07ZC (1) ⇔ (2), through
   `fittingIdealSheaf_comap` along `Spec κ(y) ⟶ T`); `sheafRank_eq_of_fittingIdealSheaf`;
   `sheafRank_pullback`: `sheafRank (f^* G) t = sheafRank G (f t)`.
+- `Scheme.Modules.sheafRank_le_iff_fittingIdeal_moduleSpecΓFunctor`: on `Spec A`, for finitely
+  presented `G` of finite type, `sheafRank G y ≤ k` iff `Fitt_k(Γ(G)) ⊄ y`, with `Γ(G)` the
+  `A`-module `moduleSpecΓFunctor.obj G`.
 - `Scheme.Modules.fittingIdealSheaf_eq_top_of_sheafRank_le` (`[F.IsFinitePresentation]`): if every
   fibre has dimension at most `k`, then `Fitt_k(F) = 𝒪_T`; `isClosed_setOf_le_sheafRank`: the
   points of fibre dimension at least `r` form a closed set (the support of `Fitt_{r-1}(F)`). The
@@ -71,6 +74,12 @@ finite-presentation hypothesis enters the construction.
   `Module.Finite.compHom_of_surjective` in
   [RingTheory/Finiteness/CompHom](../../../RingTheory/Finiteness/CompHom.lean), and Mathlib's
   `Module.rankAtStalk_eq` for the stalk rank as a fibre dimension.
+
+[ConstantRank](ConstantRank.lean): `Scheme.Modules.sheafHasRank_pullback` (constant rank is stable
+under every pullback) and `sheafHasRank_of_iso`; on `Spec A`, `sheafRank_eq_rankAtStalk` (the fibre
+rank of a finitely presented sheaf whose module of global sections is finite and flat is the stalk
+rank of its global sections), `sheafHasRank_tilde` and `rankAtStalk_globalSections`. Consumer:
+[Grassmannian/Quotient](../../Grassmannian/README.md).
 
 ## Not covered
 

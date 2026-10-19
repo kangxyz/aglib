@@ -168,3 +168,16 @@ with a section by G. M. Bergman, Annals of Mathematics Studies 59, Princeton Uni
 [M] (p. 36) for Theorem 2.3. No lecture or page of it was inspected, so no statement is
 attributed to a particular lecture.
 
+
+## The Picard scheme
+
+Steven L. Kleiman's [*The Picard scheme*](https://arxiv.org/abs/math/0504020v1),
+arXiv:math/0504020v1 [math.AG], submitted 1 April 2005, 83 pages; the arXiv abstract page was
+inspected. Its comments describe the paper as expanded notes on the author's lectures at the
+ICTP Advanced School in Basic Algebraic Geometry, 7–18 July 2003, and it lists no journal
+reference. Page numbers are those of the v1 PDF. The standing conventions (p. 15: locally
+Noetherian schemes, a fixed separated map of finite type), 3.1 and Definition 3.3 (p. 22),
+Lemma 3.4 with its proof (pp. 22–23), Definition 3.6 with its functoriality remark (p. 23) and the
+proof of Theorem 3.7 (p. 24) are cited by `EffectiveCartierDivisor/Relative`. The families
+`Picard`, `Picard/Comparison`, `Cohomology/Proper/StructureSheaf` and
+`CategoryTheory/Sites/Descent` cite other sections at their own locators.

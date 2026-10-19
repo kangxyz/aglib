@@ -32,6 +32,8 @@ complementary to `V(Fitt_r(F))`. Its immersion is `rankStratumι F hF r`.
   Tag 05P8 (Lemma 31.9.6) (3), the stratum `Z_{r-1} \ Z_r` representing local freeness of rank
   `r`. Finite presentation stands in for the finite type of `g^* F`, which Aglib does not yet
   derive from finite type of `F`.
+* `mem_support_fittingIdealSheafPred_iff`: a point lies in the support of `Fitt_{r-1}(F)` if and
+  only if the fibre of `F` there has dimension at least `r`.
 
 This is the case `n = 0` of the flattening stratification (Nitsure, *Construction of Hilbert and
 Quot schemes*, arXiv:math/0504590v1, Theorem 4.3, pp. 19–20), where the stratum is cut out by
@@ -159,5 +161,17 @@ theorem exists_lift_rankStratumι_iff_sheafHasRank [F.IsFinitePresentation] (g :
   rw [exists_lift_rankStratumι_iff_fittingIdealSheaf F hF g
     (QuasiCoherent.affineLocallyFiniteType_pullback_of_finitePresentation g F) r]
   exact fittingIdealSheaf_eq_bot_and_eq_top_iff_sheafHasRank _ _ r
+
+/-- A point lies in the support of `Fitt_{r-1}(F)` (with `Fitt_{-1} = 0`) if and only if the fibre
+of `F` there has dimension at least `r`. -/
+theorem mem_support_fittingIdealSheafPred_iff {S : Scheme.{u}} (F : S.Modules)
+    [F.IsFinitePresentation] (hF : QuasiCoherent.affineLocallyFiniteType S F) (y : S) (r : ℕ) :
+    y ∈ (fittingIdealSheafPred F hF r).support ↔ r ≤ sheafRank F y := by
+  cases r with
+  | zero => exact iff_of_true (Set.mem_univ y) (Nat.zero_le _)
+  | succ r =>
+    change y ∈ (fittingIdealSheaf F hF r).support ↔ _
+    rw [← not_iff_not, ← sheafRank_le_iff_notMem_support F hF y r, not_le]
+    exact Nat.lt_succ_iff.symm
 
 end AlgebraicGeometry.Scheme.Modules

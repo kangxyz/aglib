@@ -62,6 +62,13 @@ Its intended owner is [Pullback](../../Modules/Pullback/README.md) (`OpenRestric
 - `isStack_quasicoherentPseudofunctor_of_isStack`, `isStack_lineBundlePseudofunctor_of_isStack`:
   the module stack property gives the quasi-coherent and line-bundle stack properties.
 
+[ZariskiEpi](ZariskiEpi.lean): for a jointly surjective family of open immersions and an
+epimorphism `π : F ⟶ Q`, local morphisms `e i` with `(f i)^* π ≫ e i = (f i)^* π'` glue to `g` with
+`π ≫ g = π'` (`exists_comp_eq_of_openImmersion`; the descent compatibility is checked after the
+pulled-back epimorphism), and compatible local isomorphisms between two epimorphisms glue to an
+isomorphism (`exists_iso_of_openImmersion`); `toDescentData_obj_free_hom` compares the descent datum
+of a free sheaf with `pullbackFreeIso`. Consumer: [Grassmannian/Quotient](../../Grassmannian/README.md).
+
 [OpenCoverGluing](OpenCoverGluing.lean) (namespace `Scheme.Modules.OpenCoverGluing`) carries
 out the effective gluing for a family of open immersions `f : ∀ i, X i ⟶ S` (`ι : Type u`)
 and a descent datum `D` for `f`, with overlaps `Limits.pullback (f i) (f k)` (Stacks, Section 6.33,

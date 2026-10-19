@@ -118,6 +118,22 @@ is the converse of `relativeFlat_of_comp_isOpenImmersion`. Quasicoherence is
 assumed, as in the Stacks statement; no finiteness, Noetherianity or flatness
 of a morphism is assumed.
 
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocalOnBase` (`LocalOnBase.lean`): for a pullback
+square of `p` along `g` and quasicoherent `M`, flatness of the pulled-back module restricts along
+any `j : U ⟶ T` (`relativeFlat_of_isPullback_comp`) and is local on `T` for open-immersion covers
+(`relativeFlat_of_isPullback_of_forall_exists`). It is a sibling leaf of `Locality`, which keeps
+its open-restriction statements.
+
+`Aglib.AlgebraicGeometry.Modules.Flat.Relative.PullbackSquare` (`PullbackSquare.lean`): for a
+pullback square `IsPullback a b p j`, quasi-coherent `M` and `g' : T ⟶ Y`, the base change of `M`
+along `g' ≫ j` is flat over `T` iff the base change of `a^* M` along `g'` is
+(`relativeFlat_pullback_comp_iff_of_isPullback`); for two pullback squares of `p` along the same
+`g`, the pulled-back modules are flat together (`relativeFlat_iff_of_isPullback`); and, for the
+chosen pullbacks, restriction to opens of `T` and locality on `T`
+(`relativeFlat_pullback_snd_opensι`, `relativeFlat_pullback_snd_of_forall_opens`, restating
+`LocalOnBase`). The flattening stratification over a locally Noetherian base consumes it. It is a
+sibling leaf of `LocalOnBase`.
+
 `Aglib.AlgebraicGeometry.Modules.Flat.Relative.Unit` treats the structure
 module. Its actual stalks are free of rank one (`unitStalkIso`, through
 `unitStalkCorepresentable`) and flat over the local rings (`unit_stalk_flat`,

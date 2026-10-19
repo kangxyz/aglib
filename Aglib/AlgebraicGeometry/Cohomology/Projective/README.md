@@ -281,6 +281,41 @@ twists (`ProjectiveSpace.twistingCoproduct_relativeFlat`), the naturality
 arbitrary ring; the module docstring gives the blow-up counterexamples, which are not
 formalized.
 
+[BaseChangeTwistLinear](BaseChangeTwistLinear.lean) upgrades the transport
+`baseChangeTwistCohomologyHom` to a `B`-linear equivalence `baseChangeTwistCohomologyLinearEquiv`,
+for the action of `B` through `P^n_A ×_{Spec A} Spec B ⟶ Spec B` on the source and through
+`toSpec B ι` on the target. Its underlying map agrees pointwise with
+`baseChangeTwistCohomologyHom`, through `moduleCohomologyPullbackLinearOfEq_apply`; the two
+structural ring maps agree by `ProjectiveSpace.baseChangeIso_hom_appTop_comp`
+([ProjectiveSpace/BaseChange/ToSpec](../../ProjectiveSpace/BaseChange/ToSpec.lean)).
+
+[FiberBaseChange](FiberBaseChange.lean) proves Nitsure's (B) and (C) (arXiv:math/0504590v1, proof
+of Thm 4.3, p. 21) for a coherent `F` on `P^n_A` over a Noetherian ring, flat or not. Beyond one
+bound, the positive cohomology of `F(m)` and of all its fibres vanishes, and every fibre map
+`κ(s) ⊗ H^0(F(m)) → H^0(P^n_s, F_s(m))` is an isomorphism
+(`exists_twist_vanishing_and_fiber_baseChange_isIso`; on `P^n_{κ(s)}`:
+`exists_twist_fiber_vanishing_and_bijective_projectiveSpace`). Noetherian induction on `Spec A`
+(`TopologicalSpace.NoetherianSpace.exists_forall_le_of_isIrreducible`) with generic flatness
+replaces Nitsure's stratification; on each flat piece, Lemma 3.1 and `VanishingProjective` are
+composed by `moduleCohomologyBaseChangeMap_isIso_comp` (`BaseChange/Modules/Transitivity`). Only
+finitely many bounds of Lemma 3.1 enter, never one uniform in infinitely many `σ`.
+
+[BaseChangeComparison](BaseChangeComparison.lean) proves the comparison that the converse half of
+the universal property of the flattening stratification needs (Nitsure, Thm 4.3 (ii), proof
+pp. 22–23), over affine Noetherian `S = Spec A`, `T = Spec B`. For `G` coherent on `P^n_A` and
+`σ : A →+* B`, assume that at every point `s = σ⁻¹ t` the fibre map
+`κ(s) ⊗_A H^0(P^n_A, G) ⟶ H^0(X_s, G_s)` is an isomorphism and `H^q(X_s, G_s) = 0` for `q ≥ 1`,
+and that `G_B` is flat over `B`. Then `B ⊗_A H^0(P^n_A, G) ⟶ H^0(X_B, G_B)` is an isomorphism
+with projective target (`moduleCohomologyBaseChangeMap_isIso_and_projective_of_fiberwise`).
+`moduleCohomologyBaseChangeMap_twist_isIso_and_projective_of_fiberwise` takes `G = F(m)` with
+`F_B` flat on `P^n_B`, and `bijective_baseChangeTwist_and_projective_of_fiberwise_projectiveSpace`
+writes the fibres and the target on `P^n_{κ(s)}` and `P^n_B`. The inputs are flat base change
+through the residue square (`BaseChange/Modules/Composite`), vanishing from the fibres
+(`Proper/FiberVanishing`), `VanishingProjective` on `X_B ≅ P^n_B`, and the Nakayama step
+`LinearMap.bijective_of_residueField_baseChange_bijective`
+([RingTheory/Spectrum/Prime/Bijectivity](../../../RingTheory/Spectrum/Prime/Bijectivity.lean)).
+The hypotheses are used only at the points `σ⁻¹ t`, and (B) in every degree `q ≥ 1`.
+
 [Coherent higher Serre duality](../Duality/Projective/Higher.lean) is now proved for every field, arbitrary projective dimension and every complementary pair `i+j=n`. The original Yoneda/residue pairing is perfect, giving both `Extʲ(M,O(-n-1)) ≃ Hⁱ(M)ᵛ` and `Hⁱ(M) ≃ Extʲ(M,O(-n-1))ᵛ`, with exact original coefficient naturality and dimension zero retained. Its [owning guide](../Duality/Projective/README.md) records the actual presentation proof, field hypothesis, map formulas and public verification.
 
 ## Hilbert polynomials and regularity
@@ -294,7 +329,9 @@ proves Nitsure's Lemma 2.1 over any base ring. Its `Mumford/` family proves Mumf
 bound (Nitsure, Thm 2.3) over every field: a coherent submodule of `O^p` on `P^n_k` is
 regular at an integer polynomial in its Hilbert coefficients that depends only on `n`
 and `p`. Over an affine Noetherian base the fibre Hilbert polynomials are locally constant in
-flat families and take finitely many values (`HilbertPolynomial/FlatFamily`, `Finiteness`).
+flat families and take finitely many values (`HilbertPolynomial/FlatFamily`, `Finiteness`); they
+have degree `≤ n` (`HilbertPolynomial/NatDegree`) and are determined by `n + 1` consecutive values
+(`injOn_eval_projectiveHilbertPolynomial_fiber`, in `Finiteness`).
 
 ## Relative projective projections
 

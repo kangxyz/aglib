@@ -82,7 +82,7 @@ Import `Aglib.RingTheory.FittingIdeal.Stratification` for everything.
 - `Module.fittingIdeal_of_isBaseChange`, `Module.fittingIdeal_of_isLocalizedModule`
   (`[Module.Finite R M]`).
 - `Module.fittingIdeal_extendScalars` (`[Module.Finite R N]`): the same for
-  `ModuleCat.extendScalars φ`.
+  `ModuleCat.extendScalars φ`, with `N : ModuleCat.{v} R` in any module universe.
 - `Module.fittingIdeal_compHom_of_bijective` (`[Module.Finite R' M]`): for a bijective ring map
   `e : R → R'`, the Fitting ideal over `R` (scalars through `Module.compHom`) is
   `(fittingIdeal R' M k).comap e`.
@@ -120,7 +120,9 @@ Import `Aglib.RingTheory.FittingIdeal.Stratification` for everything.
 - `Module.fittingIdeal_eq_top_iff_finrank_le` (`[Module.Finite K V]`): over a field,
   `Fitt_k(V) = ⊤ ↔ finrank ≤ k`.
 - `Module.finrank_residueField_tensor_le_iff` (`[Module.Finite R M]`, `p` prime):
-  `finrank κ(p) (κ(p) ⊗[R] M) ≤ k ↔ ¬ Fitt_k ≤ p` (07ZC (1) ⇔ (2)).
+  `finrank κ(p) (κ(p) ⊗[R] M) ≤ k ↔ ¬ Fitt_k ≤ p` (07ZC (1) ⇔ (2));
+  `Module.finrank_extendScalars_residueField_le_iff` is the same for the fibre written as
+  `(ModuleCat.extendScalars (algebraMap R κ(p))).obj N`, in any module universe.
 - `Module.setOf_finrank_residueField_tensor_eq_succ` (`[Module.Finite R M]`):
   `{p | finrank κ(p) (κ(p) ⊗[R] M) = r + 1} = zeroLocus Fitt_r \ zeroLocus Fitt_{r+1}`;
   `Module.setOf_finrank_residueField_tensor_eq_zero` (same hypothesis): the rank-`0` locus is

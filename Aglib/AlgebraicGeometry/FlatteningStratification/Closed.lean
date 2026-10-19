@@ -27,7 +27,8 @@ Theorem 4.3 and its proof, pp. 19–23).
   `g^* E_i` is finite locally free of rank `e i`, provided every point where the `E_j`, `j ∈ J₀`,
   have fibre dimensions `e j` has all fibre dimensions `≤ e i`
   (`exists_lift_refinedJointRankStratumι_iff`). In Nitsure's proof, `E_i = π_* F(N + i)` and
-  `J₀ = {0, …, n}`. The hypothesis is not statement (C) itself: it is the consequence of
+  `J₀ = {0, …, n}`. Its points are described by `mem_range_refinedJointRankStratumι_iff`. The
+  hypothesis is not statement (C) itself: it is the consequence of
   statements (B) and (C) and of `deg P_s ≤ n` derived on p. 22 ("each `π_* F(N + i)` has fibres
   of constant rank `f(N + i)` on the subscheme `W_f`"), with `=` weakened to `≤`.
 * **Closure of strata** (Theorem 4.3 (iii), case `n = 0`, p. 20): the closure of the image of the
@@ -153,6 +154,21 @@ theorem exists_lift_refinedJointRankStratumι_iff [∀ i, (E i).IsFinitePresenta
     exact (sheafRank_le_iff_notMem_support (E i) (hE i) (g t) (e i)).mp (H (g t) hJ i)
   · intro h
     exact ⟨fun i => ((hrank i).mp (h i)).1, fun j _ => ((hrank j).mp (h j)).2⟩
+
+/-- **The points of the refined joint rank stratum**: `y` lies in the image of the refined joint
+stratum of the `E_i` for the ranks `e` and the finite set `J₀` if and only if `e i ≤ rank (E i) y`
+for every `i` and `rank (E j) y ≤ e j` for `j ∈ J₀`. -/
+theorem mem_range_refinedJointRankStratumι_iff {S : Scheme.{u}} {I : Type*} (E : I → S.Modules)
+    (hE : ∀ i, QuasiCoherent.affineLocallyFiniteType S (E i)) [∀ i, (E i).IsFinitePresentation]
+    (e : I → ℕ) (J₀ : Finset I) (y : S) :
+    y ∈ Set.range (refinedJointRankStratumι E hE e J₀) ↔
+      (∀ i, e i ≤ sheafRank (E i) y) ∧ ∀ j ∈ J₀, sheafRank (E j) y ≤ e j := by
+  rw [refinedJointRankStratumι, IdealSheafData.range_locallyClosedι, Set.mem_sdiff,
+    SetLike.mem_coe, SetLike.mem_coe, closedJointRankIdeal, IdealSheafData.support_iSup,
+    refinedJointRankOpenIdeal, IdealSheafData.notMem_support_finset_prod_iff]
+  refine and_congr ?_ (forall₂_congr fun j _ => (sheafRank_le_iff_notMem_support _ _ y _).symm)
+  rw [← SetLike.mem_coe, TopologicalSpace.Closeds.coe_iInf, Set.mem_iInter]
+  exact forall_congr' fun i => mem_support_fittingIdealSheafPred_iff (E i) (hE i) y (e i)
 
 end Refined
 

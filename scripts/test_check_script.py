@@ -77,19 +77,28 @@ class CheckScriptTests(unittest.TestCase):
         code, log = self.run_script('', '--rehash', '--ci')
         self.assertEqual(code, 0)
         for stage in ['build_serial.py', '--rehash Aglib AglibTest', 'lake --rehash test',
-                      'lake --rehash lint -- --no-build',
+                      'lake --rehash lint --builtin-only',
+                      'batteries/scripts/runLinter.lean --no-build Aglib',
                       'lake --rehash exe mathlib/lint-style Aglib AglibTest',
                       'AglibTest/Axioms.lean', 'check_negative_controls.py',
                       'check_compiled_inventory.py', 'prepare_downstream.py',
                       '--rehash Consumer', 'Audit.lean']:
             self.assertIn(stage, log)
         self.assertNotIn('check_kernel.py', log)
-        self.assertNotIn('batteries/scripts/runLinter.lean', log)
+        self.assertNotIn('lint -- --no-build', log)
         self.assertNotIn('run_style_linter.py', log)
 
-    def test_ci_native_declaration_linter_failure_stops_dependents(self):
-        code, log = self.run_script('lint -- --no-build', '--ci')
+    def test_ci_builtin_lint_failure_stops_dependents(self):
+        code, log = self.run_script('lint --builtin-only', '--ci')
         self.assertEqual(code, 19)
+        self.assertNotIn('batteries/scripts/runLinter.lean', log)
+        self.assertNotIn('exe mathlib/lint-style', log)
+        self.assertNotIn('AglibTest/Axioms.lean', log)
+
+    def test_ci_declaration_linter_failure_stops_dependents(self):
+        code, log = self.run_script('batteries/scripts/runLinter.lean', '--ci')
+        self.assertEqual(code, 19)
+        self.assertIn('lint --builtin-only', log)
         self.assertNotIn('exe mathlib/lint-style', log)
         self.assertNotIn('AglibTest/Axioms.lean', log)
 

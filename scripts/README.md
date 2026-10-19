@@ -77,6 +77,68 @@ outputs and fill only required selected work; cold broad-facade siblings require
 matching-cache recovery. The pinned toolchain, manifests and resource limits stay
 under their existing owners.
 
+Selected builtin lints run in a fresh guarded process per module. The declaration
+wrapper likewise uses a separate Lean interpreter per exact defining-module origin,
+so imported environments do not accumulate across targets. Successful provider
+compilation is reused when rerunning a failed lint category.
+
+### Separately requested whole-library diagnostics
+
+The following commands describe `check.sh --full`; normal local and CI checks
+continue to use the affected plan above.
+
+Separately requested whole-library CI diagnostics run Lake's configured builtin lint phase and Mathlib's Lean style driver
+through their native Lake interfaces, and the Batteries declaration linter from
+its pinned source, from the Aglib package root, each as its own guarded process:
+
+```sh
+lake lint --builtin-only
+lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
+lake exe mathlib/lint-style Aglib AglibTest
+```
+
+A single `lake lint -- --no-build` would run the builtin phase and then the
+Batteries driver selected in `lakefile.toml` while the builtin phase's environment
+stays mapped; their combined resident memory exceeds the CI budget
+([performance guide](../docs/PERFORMANCE.md#declaration-lint-memory-in-ci)). The driver selects declarations by
+defining-module origin, so native mathematical namespaces do not reduce package
+coverage. Its `--no-build` rejects missing imported library artifacts; Lake can
+still build the executable's tool prerequisites. The style driver reads Aglib's
+current-root configuration and receives the explicit `Aglib AglibTest` selection.
+Neither command replaces the separate Lean axiom/origin audit. Python checks
+package structure, import enrollment and execution; it does not implement these
+Lean declaration or text-style rules.
+
+The local route preserves shared dependency caches by running the same pinned
+Batteries source directly:
+
+```sh
+python3 scripts/resource_guard.py --capped-toolchain --receipt .lake/verification/declaration-lint.json -- lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib
+```
+
+`--no-build` rejects missing project or linter oleans instead of rebuilding
+dependency caches.
+
+`run_style_linter.py` executes the pinned Mathlib
+`scripts/lint-style.lean` with the arguments `Aglib AglibTest`:
+
+```sh
+python3 scripts/resource_guard.py --capped-toolchain --receipt .lake/verification/style.json -- python3 scripts/run_style_linter.py
+```
+
+If `Cli.Basic` or `ImportGraph.Imports.FromSource` is absent, the helper compiles
+only those exact source modules into a temporary runtime overlay. Their imported
+prerequisites must already be cached. The overlay is removed afterward; no
+cached namespace sibling is hidden: its artifacts are linked read-only into the
+overlay, and compilation refuses to overwrite a cached artifact. No
+executable or output is built in an immutable dependency checkout. The helper
+also compiles the byte-identical driver into the overlay, then runs an import-only
+shim with the pinned Lake shared library loaded. This initializes driver options
+before evaluation and makes Lake's native workspace loader available.
+The actual checks and arguments remain those of the pinned driver. The helper
+does not pass `--fix`. CI owns writable dependency caches and uses the native
+commands above instead of this local overlay.
+
 ## Resource limits and exact kernel replay
 
 Full checks serialize frontend processes. Normal builds can select internal
@@ -290,6 +352,8 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `affected_scope.py` | Pure-source Git/import-graph selector; accepts `--base`/`--head` or explicit `--full`, `--output` and `--github-output`. |
 | `check_affected.py` | Executes guarded selected final checks and success-only native mapping export without broad-root fallback. |
 | `test_affected_scope.py` | Small import/Git fixtures and mocked commands for changed providers, consumers, renames/deletes, fail-closed scope, lint ordering, documentation skips and export coverage. |
+| `cache_ci.py` | Resolves validated affected-plan Mathlib roots and fetches their proof caches through the serialized capped toolchain and resource guard; source-only plans skip dependency and cache work. |
+| `test_cache_ci.py` | Mocked checks for exact cache-root forwarding, source-only skips, and fail-closed rejection of missing scope or dependency inputs. |
 | `library_sources.py` | Shared Lean lexical/import scanner and production, positive, audit, and downstream source inventories. `--style-sources --root PATH` prints module/path pairs. |
 | `generate_imports.py` | Discovers occupied implementations and generates enrolled root/family facades. `--check` reports drift without writing; `--root PATH` selects a checkout. Exact generated markers control facade ownership. The test-only umbrella uses legacy imports when composing legacy audit fixtures; production facades remain modern. |
 | `check_library_layout.py` | Checks enrollment, modern exports, exact local import resolution, forbidden application imports, and cycles. The exact generic DerivedCategory/HomotopyCategory `Plus` paths denote bounded-below categories and retain admission; plus-construction application families remain forbidden. Accepts `--root PATH`. |

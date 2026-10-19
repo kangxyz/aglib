@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Polynomial.RationalValues
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.NatDegree
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.FlatFamily
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Integral
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Spec
@@ -33,6 +35,11 @@ over `V(p) ∩ D(g)`, `g` a lift of `a`, by `projectiveHilbertPolynomial_fiber_p
 Nitsure first stratifies `S` into finitely many reduced locally closed subschemes over which `F`
 is flat; the induction here uses only the integral closed subschemes `Spec (A ⧸ p)` and their
 basic opens, one at a time, and only their points enter the conclusion.
+
+The re-indexing of Nitsure's strata by polynomials (proof of Thm 4.3, p. 22) is
+`injOn_eval_projectiveHilbertPolynomial_fiber`: since the fibre Hilbert polynomials have degree
+`≤ n` (`natDegree_projectiveHilbertPolynomial_le`, in `NatDegree`), for every integer `N` the map
+`f ↦ (f(N), …, f(N + n))` is injective on the polynomials that occur.
 -/
 
 @[expose] public section
@@ -148,5 +155,22 @@ theorem finite_range_projectiveHilbertPolynomial_fiber :
     dsimp only
     rw [projectiveHilbertPolynomial_fiber_pullback_map ι,
       projectiveHilbertPolynomial_fiber_pullback_map ι]
+
+include e hF in
+/-- **The polynomials that occur are determined by `n + 1` consecutive values** (Nitsure,
+arXiv:math/0504590v1, proof of Thm 4.3, p. 22): for every integer `N`,
+`f ↦ (f(N), …, f(N + n))` is injective on the fibre Hilbert polynomials of a coherent `F` on
+`P^n_A`. -/
+theorem injOn_eval_projectiveHilbertPolynomial_fiber (N : ℤ) :
+    Set.InjOn (fun f : Polynomial ℚ => fun j : Fin (n + 1) => f.eval ((N + j : ℤ) : ℚ))
+      (Set.range fun s : PrimeSpectrum A =>
+        projectiveHilbertPolynomial s.asIdeal.ResidueField ι
+          ((Scheme.Modules.pullback (map (algebraMap A s.asIdeal.ResidueField) ι)).obj F)) := by
+  have : Finite ι := Finite.of_equiv _ e.symm
+  rintro _ ⟨s, rfl⟩ _ ⟨t, rfl⟩ h
+  exact Polynomial.eq_of_natDegree_le_of_eval_add_eq
+    (natDegree_projectiveHilbertPolynomial_le n e _ (affineLocallyFiniteType_pullback _ hF))
+    (natDegree_projectiveHilbertPolynomial_le n e _ (affineLocallyFiniteType_pullback _ hF)) N
+    fun j hj => congrFun h ⟨j, Nat.lt_succ_iff.mpr hj⟩
 
 end AlgebraicGeometry.Scheme.Cohomology

@@ -690,6 +690,52 @@ actual consumers then depend on it. Before editing an existing module, count its
 importers, and edit a widely imported module only for a required change, batching such
 edits. Docstring-only edits invalidate importers in the same way.
 
+## Values at concrete fibre products over `Spec (CommRingCat.of A)`
+
+In the flattening-stratification work of 2026-10-19, kernel checking was slow for declarations
+whose values or proofs involve a fibre product over `Spec (CommRingCat.of A)`, such as
+`pullback (toSpec A ι) (Spec.map (CommRingCat.ofHom σ))`. Retained probes on the pinned toolchain
+against compiled dependencies, at profiler threshold 50 ms, measured the following.
+
+- The definition `moduleCohomologyGlobalScalars (pullback p (Spec.map (CommRingCat.ofHom σ))) N q`,
+  at its inferred type, took 3.2 seconds of kernel type checking. The same definition over
+  `pullback p g`, with `g : Z ⟶ W` variable, stayed below 50 ms.
+- The same terms inside theorem binders (`theorem probe (_h : P) : True`) checked in about 13 ms
+  together for `pullback p (Spec.map _)`, `pullback p g` and `P^n_A ×_{Spec A} Spec B`, including
+  `Module.Projective B` of `H^q` with its structural action.
+- Restating the base-change part of `IsFiberBaseChangeBound` at one point and proving it by
+  projection from the bound took 16 seconds; the vanishing part took 12 seconds. The same
+  proposition as a theorem binder stayed below 50 ms.
+- In `FlatteningStratification/Flatness`, the uniform comparison lemma took 28.6 seconds and
+  `directImageTwistSectionsLinearEquiv` 8.1 seconds.
+
+The diagnostics counters for such declarations are dominated by additive-structure projections
+(`Functor.obj`, `AddCommGrpCat.str`, `AddGroup.toSubNegMonoid`, `DFunLike.coe`) and include
+`Function.Injective.addCommGroup` several thousand times; Mathlib transports the group structure
+of `Ext` along `homEquiv`. The conversion pair has not been identified. A candidate mechanism,
+unverified: the kernel compares two presentations of the additive structure on `Sheaf.H`, and
+with a concrete base the delta order unfolds `Spec` and fibre-product data.
+
+Forming statements over concrete fibre products is cheap; checking values and restated proofs
+over them is not. Let one theorem consume the defining hypothesis directly, keep restatements and
+definitions at `Spec (CommRingCat.of A)` few, and state helpers at variable data, as in
+`PullbackComposition`. Before attributing a cost to a fibre product, separate statement
+formation from proof checking with a theorem-binder probe.
+
+## Declaration lint memory in CI
+
+On 2026-10-19 the CI job for `c6bddf7` was killed by the resource guard (exit 137, RSS cutoff
+13,824 MB) about six seconds into the Batteries declaration linter, after Lake's builtin lint
+phase had finished. The previous push, `9645827`, passed the same step. CI ran both phases as one
+guarded `lake lint -- --no-build`. Measured separately on the remote Linux builder at `df4680e`,
+the builtin phase (`lake lint --builtin-only`, which loads the `Aglib` and `AglibTest`
+environments in the Lake process) peaked at 8.7 GB and the driver (`runLinter --no-build Aglib`)
+at 6.4 GB. A candidate explanation, consistent with these numbers: the Lake process keeps the
+builtin phase's imported environment mapped while it runs the driver, and the guard sums the
+resident memory of its process group, so the library's growth by a few dozen modules moved the
+sum past the cutoff. CI now runs the builtin phase and the driver as separate guarded processes.
+Keep separately guarded commands for phases that each load the whole library.
+
 ## Principal chart pasting at the CI memory budget
 
 CI runs [39102309068](https://github.com/kangxyz/aglib/actions/runs/39102309068)

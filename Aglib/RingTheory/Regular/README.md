@@ -12,3 +12,5 @@ finitely many `k`-linear maps `λⱼ : V → Aⱼ` into Noetherian `k`-algebras 
 description of zero divisors as their union, and the fact that a vector space over an infinite
 field is not a finite union of proper subspaces. The general hyperplane of Mumford's bound
 (`Cohomology/Projective/Regularity/Mumford/InfiniteField`) consumes it.
+
+[Localization](Localization.lean), imported as `Aglib.RingTheory.Regular.Localization`, supplies `IsNoetherianRing.exists_away_isSMulRegular_of_atPrime`: over a Noetherian ring, an element regular in the local ring at a prime is regular after inverting one element outside the prime. The kernel of multiplication is a finite module (`LocalizedModule.exists_subsingleton_away`). The pointwise fiber criterion for relative effective Cartier divisors consumes it.

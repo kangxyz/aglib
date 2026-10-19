@@ -145,6 +145,13 @@ the original degreewise-map endpoint. General-target sheaf descent and a
 neighbourhood-freeness conclusion with its adjacent-degree condition remain
 further steps.
 
+[FiberVanishing](../FiberVanishing.lean): for `f : X ⟶ Spec R` proper over a
+Noetherian ring and `M` coherent and relatively flat, vanishing of `H^q` on
+every fibre gives `H^q(X, M) = 0`
+(`subsingleton_moduleCohomology_of_subsingleton_fiber_of_proper`), from
+BaseChangeLocus and Nakayama. The base-change comparison of the flattening
+stratification (`Cohomology/Projective/BaseChangeComparison`) consumes it.
+
 The existing [Semicontinuity](../Semicontinuity.lean) and
 [EulerCharacteristic](../EulerCharacteristic.lean) owners also give the
 general-target numerical endpoints. For any locally Noetherian `Y`, proper

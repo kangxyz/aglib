@@ -26,6 +26,9 @@ schemes*, arXiv:math/0504590v1, proof of Thm 4.3, (A), pp. 20–21).
 the same proof: if every irreducible closed subset `Z` meets an open `U` with `h '' (U ∩ Z)`
 finite, then `h` has finite range. A minimal closed `Z` with infinite image would be irreducible,
 and `Z \ U` is a smaller closed subset.
+`TopologicalSpace.NoetherianSpace.exists_forall_le_of_isIrreducible` derives from it the
+uniform bound of an eventual property `∀ d ≥ N, P x d`, from bounds on a nonempty open part of
+every irreducible closed subset: the least pointwise bounds have finite range.
 -/
 
 @[expose] public section
@@ -87,5 +90,31 @@ theorem finite_range_of_isIrreducible {β : Type*} (h : X → β)
     rcases hsub hx with hx₁ | hx₂
     · exact Or.inl ⟨x, ⟨hx, hx₁⟩, rfl⟩
     · exact Or.inr ⟨x, ⟨hx, hx₂⟩, rfl⟩
+
+/-- **Noetherian induction for eventual properties**: if every irreducible closed subset `Z`
+meets an open `U` on which `P x d` holds for all `d` beyond one bound, then one bound works for
+every point. -/
+theorem exists_forall_le_of_isIrreducible (P : X → ℤ → Prop)
+    (H : ∀ Z : Set X, IsClosed Z → IsIrreducible Z → ∃ U : Set X, IsOpen U ∧ (U ∩ Z).Nonempty ∧
+      ∃ N : ℕ, ∀ x ∈ U ∩ Z, ∀ d : ℤ, (N : ℤ) ≤ d → P x d) :
+    ∃ N : ℕ, ∀ x : X, ∀ d : ℤ, (N : ℤ) ≤ d → P x d := by
+  classical
+  have hex : ∀ x : X, ∃ N : ℕ, ∀ d : ℤ, (N : ℤ) ≤ d → P x d := by
+    intro x
+    obtain ⟨U, hU, ⟨y, hyU, hyZ⟩, N, hN⟩ :=
+      H (closure {x}) isClosed_closure isIrreducible_singleton.closure
+    obtain ⟨z, hzU, hz⟩ := mem_closure_iff.mp hyZ U hU hyU
+    rw [Set.mem_singleton_iff] at hz
+    subst hz
+    exact ⟨N, hN z ⟨hzU, subset_closure rfl⟩⟩
+  obtain ⟨N₀, hN₀⟩ := (finite_range_of_isIrreducible (fun x => Nat.find (hex x))
+    fun Z hZ hZi => by
+      obtain ⟨U, hU, hne, N, hN⟩ := H Z hZ hZi
+      refine ⟨U, hU, hne, (Set.finite_Iic N).subset ?_⟩
+      rintro _ ⟨x, hx, rfl⟩
+      exact Nat.find_min' (hex x) (hN x hx)).bddAbove
+  refine ⟨N₀, fun x d hd => Nat.find_spec (hex x) d ?_⟩
+  have : Nat.find (hex x) ≤ N₀ := hN₀ ⟨x, rfl⟩
+  omega
 
 end TopologicalSpace.NoetherianSpace

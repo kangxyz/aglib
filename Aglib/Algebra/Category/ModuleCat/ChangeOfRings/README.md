@@ -11,6 +11,20 @@ retain each pure tensor, and the coefficient square uses the original
 independent ring and module universes. The finite-projective complex
 family consumes these native module statements by public import.
 
+[SpanSingleton](SpanSingleton.lean) gives `ModuleCat.extendScalars_map_toSpanSingleton_comp`:
+extension of scalars of `a ↦ a • x`, followed by `e` with `e (1 ⊗ x) = y`, is `b ↦ b • y` after
+`scalarExtensionUnit`, with the hypothesis stated through the scalar-extension adjunction. Its
+consumer is the affine base change of
+[Grassmannian/Quotient](../../../../AlgebraicGeometry/Grassmannian/README.md).
+
+[UnitTensor](UnitTensor.lean) evaluates scalar extension on unit pure tensors
+through composites and congruences: `ModuleCat.extendScalarsComp_hom_app_comp_map_comp_one_tmul`
+computes `C ⊗_A M ≅ C ⊗_B (B ⊗_A M) ⟶ C ⊗_B N ⟶ P` on `1 ⊗ m` for maps given
+on unit pure tensors, and `ModuleCat.extendScalarsCongrIso` is extension along
+equal ring maps, with `_hom_one_tmul`. The rings share one universe and the
+modules live in the next one, as in Mathlib's `extendScalarsComp`; the
+cohomology base-change leaves `Transitivity` and `Composite` consume them.
+
 [Exactness](Exactness.lean), imported as `Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Exactness`, gives `ModuleCat.shortExact_of_restrictScalars`. An actual module short complex is short exact when its restriction along the supplied ring homomorphism is short exact. Source and target are rings; this lower statement has no scheme or commutativity premise merely from its geometric consumers.
 
 `ModuleCat.extendScalars_map_exact_of_surjective`, in the same leaf, proves
