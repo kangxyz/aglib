@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run one owned process group with sampled RSS and Lean concurrency limits."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -13,12 +14,63 @@ import time
 MIB = 1024 * 1024
 
 
+def remote_profile(environment=None):
+    """Validate the explicit parent-managed profile; absence keeps local policy."""
+    environment = os.environ if environment is None else environment
+    if 'R5_LEAN_REMOTE_PROFILE' not in environment:
+        return None
+    value = environment['R5_LEAN_REMOTE_PROFILE']
+    try:
+        def unique_fields(pairs):
+            result = {}
+            for key, value in pairs:
+                if key in result:
+                    raise ValueError('duplicate profile field: ' + key)
+                result[key] = value
+            return result
+        profile = json.loads(value, object_pairs_hook=unique_fields)
+        fields = {'schema_version', 'jobs', 'threads', 'lean_memory_mib', 'rss_limit_mib', 'lean'}
+        if not isinstance(profile, dict) or set(profile) != fields or \
+                type(profile['schema_version']) is not int or profile['schema_version'] != 1:
+            raise ValueError('expected the complete schema_version 1 object')
+        for key in ('jobs', 'threads', 'lean_memory_mib', 'rss_limit_mib'):
+            if type(profile[key]) is not int or profile[key] <= 0:
+                raise ValueError(key + ' must be a positive integer')
+        if profile['lean_memory_mib'] < 64 or \
+                profile['lean_memory_mib'] * profile['jobs'] >= profile['rss_limit_mib']:
+            raise ValueError('require 64 <= native Lean MiB and native MiB * jobs < tree RSS MiB')
+        if not isinstance(profile['lean'], str):
+            raise ValueError('lean must be an absolute executable path')
+        lean = Path(profile['lean'])
+        selected = Path(environment.get('LEAN', ''))
+        sysroot = Path(environment.get('LEAN_SYSROOT', ''))
+        if not all(path.is_absolute() for path in (lean, selected, sysroot)) or \
+                not lean.is_file() or not os.access(lean, os.X_OK) or not sysroot.is_dir() or \
+                lean.resolve() != selected.resolve() or lean.resolve() != (sysroot / 'bin/lean').resolve():
+            raise ValueError('lean, LEAN and LEAN_SYSROOT must identify the same managed executable')
+        return profile
+    except (OSError, TypeError, ValueError) as error:
+        raise ValueError('Invalid R5_LEAN_REMOTE_PROFILE: ' + str(error)) from error
+
+
 def limits(environment=None, physical_bytes=None):
     environment = os.environ if environment is None else environment
     if physical_bytes is None:
         physical_bytes = os.sysconf('SC_PHYS_PAGES') * os.sysconf('SC_PAGE_SIZE')
     physical_mb = physical_bytes // MIB
     ceiling = physical_mb - 2048
+    profile = remote_profile(environment)
+    if profile is not None:
+        if profile['rss_limit_mib'] > ceiling:
+            raise ValueError('Remote tree RSS must stay below physical RAM minus 2048 MiB')
+        files = [Path(__file__).resolve(), Path(__file__).with_name('build_serial.py').resolve(),
+                 Path(profile['lean'])]
+        return {'lean_memory_mb': profile['lean_memory_mib'], 'rss_limit_mb': profile['rss_limit_mib'],
+                'sample_seconds': 0.1, 'physical_memory_bytes': physical_bytes,
+                'lean_threads': profile['threads'], 'lake_jobs': profile['jobs'],
+                'native_build_threads': profile['threads'],
+                'max_active_lean': profile['jobs'], 'remote_profile': profile,
+                'tooling_sha256': {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in files}}
     default_rss = min(25600, ceiling, physical_mb * 3 // 4)
     default_native = min(24576, physical_mb // 2, default_rss - 64)
     native = int(environment.get('AGLIB_LEAN_MEMORY_MB', default_native))
@@ -30,12 +82,19 @@ def limits(environment=None, physical_bytes=None):
 
 
 def frontend_args(lean='lean'):
-    return [lean, '-j1', '-M' + str(limits()['lean_memory_mb'])]
+    budget = limits()
+    if budget.get('remote_profile'):
+        selected = budget['remote_profile']['lean']
+        if lean != 'lean' and Path(lean).resolve() != Path(selected).resolve():
+            raise ValueError('Explicit frontend differs from the managed remote compiler')
+        lean = selected
+    return [lean, '-j' + str(budget['lean_threads']), '-M' + str(budget['lean_memory_mb'])]
 
 
 def capped_command(command, environment):
     """Bind supported direct frontends; Lake's augmented PATH can bypass our wrapper."""
     command = list(command)
+    profile = remote_profile(environment)
     executable = Path(command[0]).name
     if executable == 'time':
         if command[:2] != ['/usr/bin/time', '-lp'] or len(command) < 3:
@@ -46,11 +105,14 @@ def capped_command(command, environment):
     if executable in {'sh', 'bash', 'zsh', 'dash', 'fish', 'env'}:
         raise ValueError('Capped frontends require a direct command, not a shell or env wrapper')
     if executable == 'lean':
-        if command[0] != 'lean':
+        if command[0] != 'lean' and not (profile and
+                Path(command[0]).resolve() == Path(profile['lean']).resolve()):
             raise ValueError('Use bare lean to select the capped pinned compiler')
         return [environment['LEAN'], *command[1:]]
     if executable == 'lake' and 'env' in command[1:]:
-        if command[1:3] != ['env', 'lean']:
+        managed = len(command) > 2 and profile and \
+            Path(command[2]).resolve() == Path(profile['lean']).resolve()
+        if command[1:2] != ['env'] or (command[2:3] != ['lean'] and not managed):
             raise ValueError('Capped Lake env supports only lake env lean ARGUMENTS')
         return command[:2] + [environment['LEAN']] + command[3:]
     return command
@@ -116,9 +178,18 @@ def terminate_group(group, known=()):
 
 def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, budget=None,
         stdout=None, stderr=None):
-    budget = limits() if budget is None else budget
-    environment = dict(os.environ if env is None else env,
-                       LEAN_NUM_THREADS=str(budget['lean_threads']))
+    environment = dict(os.environ if env is None else env)
+    profile = remote_profile(environment)
+    if profile is not None:
+        # Restore the managed contract at the actual launch, even if a caller
+        # previously selected its laptop/CI scheduler or constructed a stale budget.
+        budget = dict(budget or {}, **limits(environment))
+        environment.update(LEAN=profile['lean'], LAKE_OVERRIDE_LEAN='true',
+                           LEAN_NUM_THREADS=str(profile['jobs']),
+                           PATH=str(Path(profile['lean']).parent) + os.pathsep + environment.get('PATH', ''))
+    else:
+        budget = limits() if budget is None else budget
+        environment['LEAN_NUM_THREADS'] = str(budget['lean_threads'])
     started = time.monotonic()
     # Probe monitoring permission before starting any potentially expensive work.
     sampler(os.getpgrp())
@@ -144,7 +215,8 @@ def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, b
             if rss >= budget['rss_limit_mb'] * MIB:
                 reason = 'owned process group exceeded RSS cutoff'
             elif budget['max_active_lean'] is not None and lean_count > budget['max_active_lean']:
-                reason = 'more than one active Lean process'
+                reason = ('more than one active Lean process' if budget['max_active_lean'] == 1 else
+                          f"more than {budget['max_active_lean']} active Lean processes")
             if reason:
                 terminate_group(group, members)
                 break
@@ -190,15 +262,16 @@ def main():
     command = args.command[1:] if args.command[:1] == ['--'] else args.command
     if not command:
         parser.error('a command after -- is required')
-    budget = limits()
     if args.bootstrap_cache:
         if command != ['lake', 'exe', 'cache', 'get']:
             parser.error('--bootstrap-cache permits only exact lake exe cache get')
-        budget['max_active_lean'] = None
     try:
+        budget = limits()
+        if args.bootstrap_cache and not budget.get('remote_profile'):
+            budget['max_active_lean'] = None
         if args.bootstrap_cache or args.capped_toolchain:
             from build_serial import build_threads, capped_toolchain
-            threads = 1 if args.bootstrap_cache else build_threads()
+            threads = 1 if args.bootstrap_cache and not budget.get('remote_profile') else build_threads()
             budget['native_build_threads'] = threads
             with capped_toolchain(Path.cwd(), threads=threads) as env:
                 bounded = command if args.bootstrap_cache else capped_command(command, env)

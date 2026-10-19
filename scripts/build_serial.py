@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build local targets in dependency order, with one capped compiler at a time."""
+"""Build an incremental target graph under local or explicit managed resources."""
 import argparse
 from contextlib import contextmanager
 import json
@@ -10,11 +10,14 @@ import sys
 import tempfile
 
 from library_sources import lean_imports, module_path
-from resource_guard import limits, run
+from resource_guard import limits, remote_profile, run
 
 
 def build_threads(environment=None):
     environment = os.environ if environment is None else environment
+    profile = remote_profile(environment)
+    if profile is not None:
+        return profile['threads']
     threads = int(environment.get('AGLIB_BUILD_THREADS', environment.get('LEAN_NUM_THREADS', '1')))
     available = os.cpu_count() or 1
     if not 1 <= threads <= available:
@@ -24,6 +27,14 @@ def build_threads(environment=None):
 
 @contextmanager
 def capped_toolchain(root, threads=1):
+    profile = remote_profile()
+    if profile is not None:
+        # The parent wrapper already owns admission, compiler caps and source
+        # identity. Selecting Elan here would silently bypass that wrapper.
+        yield dict(os.environ, LEAN=profile['lean'], LAKE_OVERRIDE_LEAN='true',
+                   LEAN_NUM_THREADS=str(profile['jobs']),
+                   PATH=str(Path(profile['lean']).parent) + os.pathsep + os.environ.get('PATH', ''))
+        return
     # Elan's read-only locator does not launch an unguarded Lean frontend.
     lean = subprocess.check_output(['elan', 'which', 'lean'], cwd=root, text=True).strip()
     prefix = Path(lean).parent.parent
@@ -92,9 +103,8 @@ def build(root, targets, directory, rehash=False, outputs=None):
     if outputs is not None:
         outputs.parent.mkdir(parents=True, exist_ok=True)
     budget = limits()
-    # Lake's one worker admits one external frontend at a time. Its compiler
-    # wrapper supplies the requested native parallelism only to that child.
-    # The strict guard remains a fail-closed check on actual process concurrency.
+    # Local policy admits one compiler; an explicit parent profile selects the
+    # shared remote wrapper and its scheduler/frontend concurrency separately.
     budget['native_build_threads'] = build_threads()
     with capped_toolchain(root, threads=budget['native_build_threads']) as env:
         log = directory / 'cached-check.log'

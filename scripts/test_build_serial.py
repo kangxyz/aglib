@@ -13,6 +13,65 @@ import build_serial
 
 
 class SerialBuildTests(unittest.TestCase):
+    def managed_environment(self, directory):
+        prefix = Path(directory) / 'provided-toolchain'
+        (prefix / 'bin').mkdir(parents=True)
+        lean = prefix / 'bin/lean'
+        lean.write_text('#!/usr/bin/env python3\nimport json,os,sys\n'
+                        'p=json.loads(os.environ["R5_LEAN_REMOTE_PROFILE"])\n'
+                        'print(json.dumps({"args":sys.argv[1:],"jobs":os.environ["LEAN_NUM_THREADS"],'
+                        '"threads":p["threads"],"memory":p["lean_memory_mib"]}))\n')
+        lean.chmod(0o755)
+        profile = {'schema_version': 1, 'jobs': 3, 'threads': 2, 'lean_memory_mib': 64,
+                   'rss_limit_mib': 512, 'lean': str(lean)}
+        return {'R5_LEAN_REMOTE_PROFILE': json.dumps(profile), 'LEAN': str(lean),
+                'LEAN_SYSROOT': str(prefix), 'LEAN_NUM_THREADS': '1', 'AGLIB_BUILD_THREADS': '1',
+                'PATH': os.environ.get('PATH', '')}
+
+    def test_remote_capped_toolchain_reuses_managed_wrapper_without_elan_or_temp_overlay(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.managed_environment(directory)
+            before = Path(env['LEAN']).read_bytes()
+            with patch.dict(os.environ, env, clear=True), \
+                    patch.object(build_serial.subprocess, 'check_output') as elan, \
+                    patch.object(build_serial.tempfile, 'TemporaryDirectory') as temporary:
+                self.assertEqual(build_serial.build_threads(), 2)
+                with build_serial.capped_toolchain(Path(directory), threads=1) as selected:
+                    self.assertEqual((selected['LEAN'], selected['LEAN_SYSROOT']),
+                                     (env['LEAN'], env['LEAN_SYSROOT']))
+                    self.assertEqual(selected['LEAN_NUM_THREADS'], '3')
+                    result = subprocess.run(['lean', 'File.lean'], env=selected,
+                                            capture_output=True, text=True, check=True)
+                    self.assertEqual(json.loads(result.stdout),
+                                     {'args': ['File.lean'], 'jobs': '3', 'threads': 2, 'memory': 64})
+                elan.assert_not_called()
+                temporary.assert_not_called()
+            self.assertEqual(Path(env['LEAN']).read_bytes(), before)
+            self.assertEqual(env['LEAN_NUM_THREADS'], '1')
+
+    def test_remote_build_keeps_incremental_probe_and_compiles_only_expected_miss(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            env = self.managed_environment(directory)
+            (root / 'A.lean').write_text('module\n')
+            calls = []
+            def fake_run(command, **kwargs):
+                calls.append(command)
+                self.assertEqual(kwargs['env']['LEAN'], env['LEAN'])
+                self.assertEqual(kwargs['env']['LEAN_NUM_THREADS'], '3')
+                self.assertEqual((kwargs['budget']['max_active_lean'], kwargs['budget']['lean_threads'],
+                                  kwargs['budget']['rss_limit_mb']), (3, 2, 512))
+                if '--no-build' in command:
+                    kwargs['stderr'].write('error: target is out-of-date and needs to be rebuilt\n')
+                    return 3
+                return 0
+            with patch.dict(os.environ, env, clear=True), \
+                    patch.object(build_serial.subprocess, 'check_output') as elan, \
+                    patch.object(build_serial, 'run', side_effect=fake_run), redirect_stdout(io.StringIO()):
+                self.assertEqual(build_serial.build(root, ['A'], root / 'receipts'), 0)
+                elan.assert_not_called()
+            self.assertEqual(calls, [['lake', '--no-build', 'build', 'A'], ['lake', 'build', 'A']])
+
     def test_build_threads_are_configurable_but_kernel_profile_stays_separate(self):
         with patch.object(build_serial.os, 'cpu_count', return_value=8):
             self.assertEqual(build_serial.build_threads({}), 1)
