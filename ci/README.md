@@ -83,6 +83,13 @@ adoption. A repository must retain review of its adapter and supporting sources.
 provides guarded native execution. `ResourceConfig` uses `LEAN_CI_*` names by
 default; optional variable aliases and parent-managed profiles are explicit
 per-instance configuration, rather than global package state.
+All native task working directories must resolve the same compiler and physical
+runtime as the application root. The package checks those actual identities
+before execution or check reuse and before saving a performed success; mixed
+root/client installations are unsupported and rejected before acceptance.
+Toolchain installation and Elan's selection configuration must remain immutable
+during an attempt. A launcher performs its own read-only Elan lookup; observing
+compiler files does not monitor arbitrary changes to external Elan overrides.
 
 The adapter supplies these required methods:
 

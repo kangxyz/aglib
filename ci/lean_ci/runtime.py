@@ -71,8 +71,9 @@ class NativeRuntime:
         self.resource_config = resource_config or resources.ResourceConfig()
         self.environment = dict(os.environ if environment is None else environment)
 
-    def compiler_identity(self, hash_file=file_hash):
-        return compiler_identity(self.root, hash_file, environment=self.environment,
+    def compiler_identity(self, hash_file=file_hash, *, cwd=None):
+        return compiler_identity(self.root if cwd is None else Path(cwd), hash_file,
+                                 environment=self.environment,
                                  resource_config=self.resource_config)
 
     def run(self, task, directory):

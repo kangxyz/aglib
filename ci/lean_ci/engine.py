@@ -201,6 +201,12 @@ class Application:
         except ReflectionUnavailable:
             return None
 
+    def _task_toolchain(self, task, expected, observations):
+        actual = self.runtime.compiler_identity(observations.hash_file, cwd=task['cwd'])
+        if actual != expected:
+            raise ValueError('Mixed native compiler/runtime identities are unsupported: ' + task['cwd'])
+        observations.assert_stable()
+
     def verify_task(self, plan, task, result, toolchain, reflection, observations):
         if not isinstance(result, dict):
             raise ValueError('Missing structured command evidence: ' + task['id'])
@@ -277,6 +283,8 @@ class Application:
             for index, task in enumerate(required):
                 task_directory = directory / f'task-{index:04d}'
                 kind = task['kind']
+                if observe_toolchain:
+                    self._task_toolchain(task, toolchain, observations)
                 if kind not in STANDARD_KINDS:
                     handler = getattr(self.adapter, 'custom_task', None)
                     if handler is None:
@@ -285,6 +293,8 @@ class Application:
                 elif kind == 'check':
                     def execute(task=task, task_directory=task_directory):
                         evidence = executor.run(task, task_directory)
+                        if observe_toolchain:
+                            self._task_toolchain(task, toolchain, observations)
                         if (not isinstance(evidence, dict)
                                 or not valid_receipt(evidence.get('receipt'), cwd=task['cwd'])
                                 or not command_matches(task['command'], evidence['receipt']['command'])):
@@ -297,6 +307,8 @@ class Application:
                         execute, reuse=current.get('reflective_imports') is not None)
                 else:
                     result = executor.run(task, task_directory)
+                if observe_toolchain:
+                    self._task_toolchain(task, toolchain, observations)
                 self.verify_task(plan, task, result, toolchain, reflection, observations)
                 self._observe_inputs(task, observations)
                 if kind == 'environment':
@@ -313,7 +325,7 @@ class Application:
             write_json(state / (phase + '.json'), record)
             return record
 
-    def verify_phase(self, state, plan, phase, toolchain, observations=None):
+    def verify_phase(self, state, plan, phase, toolchain, observations=None, *, observe_toolchain=False):
         state = self._external(state)
         record = read_json(state / (phase + '.json'))
         if (not isinstance(record, dict) or record.get('schema') != SCHEMA
@@ -335,6 +347,8 @@ class Application:
             if (not isinstance(item, dict) or item.get('id') != task['id']
                     or item.get('specification') != digest(task)):
                 raise ValueError('Wrong/forged phase task specification: ' + task['id'])
+            if phase == 'native' and observe_toolchain:
+                self._task_toolchain(task, toolchain, observations)
             self.verify_task(plan, task, item.get('result'), toolchain, reflection, observations)
             self._observe_inputs(task, observations)
             if task['kind'] == 'environment':
@@ -353,10 +367,12 @@ class Application:
             plan = read_json(state / 'plan.json')
             self.validate_plan(plan)
             observations = self._source_observer(plan)
-            if toolchain is None and 'native' in plan['required_phases']:
+            observe_toolchain = toolchain is None and 'native' in plan['required_phases']
+            if observe_toolchain:
                 toolchain = self.runtime.compiler_identity(observations.hash_file)
             records = [self.verify_phase(state, plan, phase, toolchain if phase == 'native' else None,
-                                         observations) for phase in plan['required_phases']]
+                                         observations, observe_toolchain=observe_toolchain)
+                       for phase in plan['required_phases']]
             self.validate_plan(plan)
             outcomes = [item for record in records for item in record['tasks']]
             checks = []

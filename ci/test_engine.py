@@ -373,6 +373,72 @@ class EngineTests(unittest.TestCase):
                 self.native(FixtureExecutor(self.root, callback=mutate), toolchain=None)
         self.assertFalse(list((self.state / 'check-progress').glob('*.json')))
 
+    def client_runtime_fixture(self):
+        """Actual runtime identity over byte fixtures, not a Lean execution."""
+        client = self.root / 'client'
+        client.mkdir()
+        (client / 'lean-toolchain').write_text('fixture-client\n')
+        self.commit()
+        tasks = self.adapter.tasks
+        def with_client(root, plan, phase, directory):
+            result = tasks(root, plan, phase, directory)
+            if phase == 'native':
+                for task in result:
+                    if task['id'] == 'builtin':
+                        task['cwd'] = str(client)
+            return result
+        self.adapter.tasks = with_client
+        prefixes = []
+        for name in ('root-runtime', 'client-runtime'):
+            prefix = self.scratch / name
+            (prefix / 'bin').mkdir(parents=True)
+            (prefix / 'lib/lean').mkdir(parents=True)
+            for relative in ('bin/lean', 'bin/lake', 'lib/lean/libleanshared.so'):
+                (prefix / relative).write_bytes(name.encode())
+            prefixes.append(prefix)
+        selection = {'different': False}
+        original = subprocess.check_output
+        def locate(command, *arguments, **keywords):
+            if command[:2] == ['elan', 'which']:
+                index = int(selection['different'] and Path(keywords['cwd']) == client)
+                return str(prefixes[index] / 'bin' / command[-1]) + '\n'
+            return original(command, *arguments, **keywords)
+        return selection, locate
+
+    def test_mixed_client_runtime_is_rejected_before_check_execution_or_reuse(self):
+        selection, locate = self.client_runtime_fixture()
+        self.plan(); self.source()
+        selection['different'] = True
+        commands = FixtureExecutor(self.root)
+        with patch('lean_ci.runtime.subprocess.check_output', side_effect=locate):
+            with self.assertRaisesRegex(ValueError, 'Mixed native compiler/runtime'):
+                self.native(commands, toolchain=None)
+        self.assertNotIn('builtin', commands.calls)
+        self.assertFalse(list((self.state / 'check-progress').glob('*.json')))
+
+    def test_client_runtime_switch_during_check_cannot_save_success(self):
+        selection, locate = self.client_runtime_fixture()
+        self.adapter.reflective = False
+        self.plan(); self.source()
+        def switch(task):
+            if task['id'] == 'builtin':
+                selection['different'] = True
+        with patch('lean_ci.runtime.subprocess.check_output', side_effect=locate):
+            with self.assertRaisesRegex(ValueError, 'Mixed native compiler/runtime'):
+                self.native(FixtureExecutor(self.root, callback=switch), toolchain=None)
+        self.assertFalse(list((self.state / 'check-progress').glob('*.json')))
+
+    def test_finalizer_rechecks_actual_client_runtime(self):
+        selection, locate = self.client_runtime_fixture()
+        self.plan(); self.source()
+        with patch('lean_ci.runtime.subprocess.check_output', side_effect=locate):
+            self.native(toolchain=None)
+            self.assertEqual(self.application.finalize(self.state)['status'], 'complete')
+            selection['different'] = True
+            with self.assertRaisesRegex(ValueError, 'Mixed native compiler/runtime'):
+                self.application.finalize(self.state)
+        self.assertFalse((self.state / 'complete.json').exists())
+
     def test_source_only_policy_requires_source_receipt(self):
         self.adapter.native = False
         self.plan()

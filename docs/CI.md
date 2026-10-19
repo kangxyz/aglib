@@ -67,6 +67,12 @@ RSS and concurrency bounds. An explicitly admitted parent-managed resource
 profile retains its actual wrapper and physical runtime identities. Unsupported
 custom compiler identity overrides are rejected. The package does not promise
 arbitrary cross-version import compatibility.
+Each native task's working directory must resolve the root's same compiler and
+physical runtime; a distinct downstream toolchain is rejected before execution
+or reuse. Update coordinated root/client pins together.
+The prepared toolchain installation and Elan selection configuration remain
+immutable during the attempt; compiler-file guards do not monitor arbitrary
+external Elan override changes between launcher lookups.
 
 ## Independent check progress
 
@@ -121,7 +127,10 @@ Lake hashes describe build identity; they are not adversarial provenance proofs.
 Partial cache availability does not mean CI passed. The workflow saves partial
 progress after failures and publishes accepted coverage only after finalization.
 This follows Mathlib's separation of build progress, lint/test gates and cache
-publication, while retaining Aglib's own stricter finalizer policy.
+publication, while retaining Aglib's own stricter finalizer policy. See its
+[native build and no-build barrier](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/scripts/lake-build-with-retry.sh#L27-L52),
+[partial-cache staging](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml#L285-L340)
+and [native-cache producer/consumer integration](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/lake_cache_shadow.yml#L551-L606).
 
 Package unit tests use a separate library/protocol. The bounded real
 [cache integration](../ci/native_test.py) uses two copies of a two-module Lean
