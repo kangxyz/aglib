@@ -47,7 +47,7 @@ CORE_ENTRYPOINT_PATHS = (
 # Supporting-source correctness retains the repository's independent-review and
 # trusted-producer premise; this does not authenticate arbitrary dependencies.
 REVIEWED_CORE_RECIPES = frozenset({
-    # Independently reviewed source: 9628b18ddd3ad5b382dd41604e28d8b21d784787.
+    # Independently reviewed source: fd73486f3b9d2caaee5da270262ec3835f12b17d.
     (
         'e5a9c10f660ee40d042f53452849b1f698e35f3131a0134e7ab34f664c7d65ab',  # scripts/ci_pipeline.py
         '46bd04a0663879683fcde54386b98101610f50a405677e128fbebef8f6d04fb4',  # scripts/ci_state.py
@@ -55,7 +55,7 @@ REVIEWED_CORE_RECIPES = frozenset({
         '33a603f1bc8478ceb83d5c6a4a68fad7062e08f0e9eb567514e54c232f76413a',  # scripts/check_affected.py
         '90a59c54d6a62d728006ea230b3200e97e605571c827b0c55acd934c0ad2044b',  # scripts/library_sources.py
         'ec0e06f4f3a37a2fce6febef22ddc79b9fd9610c80f06b5f42897196bead2ab6',  # scripts/prepare_downstream.py
-        '97c396e48d952582a4a525e1fc17551e16193e32e06fe73cb7785c9a33dc6b40',  # scripts/resource_guard.py
+        'b7e85596f59a2627424eeaf30a0367da1aff89ffe8ef5a2847ad2b9a3cd7f6c0',  # scripts/resource_guard.py
         '66fdc8dc202a54d568e52fc94651a9c47789cc16009bdd069812b1c9616d0413',  # scripts/build_serial.py
         '615ae732055d58454ffce066b9ccbb0b84786c67b55e9b6746a5b01387ade1b5',  # scripts/run_declaration_linter.py
         '0eec427d1c94ec97cf9ef68f38e2ad3e6df372bc24138b8805c2db5ff44437ae',  # scripts/run_style_linter.py
@@ -69,7 +69,7 @@ REVIEWED_CORE_RECIPES = frozenset({
         '0595f57a196b3a5b73de0e7e896fe2e6029125d732a94c65a4872f247d20b66a',  # ci/lean_ci/github.py
         'd8aeb9eb510507360460c4acaa9a6c6585de971524032323fad9bf3d1ac2c309',  # ci/lean_ci/engine.py
         '030acf0422e65334863150c7b0abc25ad8047982ede76f465e499742dee37623',  # ci/lean_ci/runtime.py
-        '005c390479b464d9bfcdd9232982d1c5c3b92379a89aeb3bc9009d021ad26431',  # ci/lean_ci/resources.py
+        '5fc841c4da719be2e10f0178633693ff5d13177422ef42257f6c03a320f709b1',  # ci/lean_ci/resources.py
         '90f4ec5174d6d8e4d4e64d6f9d818b9d192da5bd230a3cb93f991f9a013fca7a',  # ci/lean_ci/build.py
         '35d89f7bfeb1a510828a4fbaaf3561217ef39763f77b56f0c2cd63b17e2ac657',  # ci/lean_ci/cli.py
     ),
