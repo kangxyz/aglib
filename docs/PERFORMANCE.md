@@ -736,6 +736,33 @@ resident memory of its process group, so the library's growth by a few dozen mod
 sum past the cutoff. CI now runs the builtin phase and the driver as separate guarded processes.
 Keep separately guarded commands for phases that each load the whole library.
 
+A standalone full-library timing on 2026-10-20 used source `4282748`, Lean 4.34.1,
+and existing local macOS artifacts for 2,128 production files plus the `Aglib`
+root. `lake --no-cache --rehash --no-build build Aglib` first verified the native
+graph in 13.17 seconds without compilation. Running Batteries separately as
+`lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib`
+then passed in 144.34 seconds, with 6.32 GiB peak owned-process-group RSS, one
+Lean thread, a 12,800 MiB frontend cap and a 13,824 MiB group cutoff. Both guards
+reported successful process-group closure. This measures the declaration pass;
+builtin lint, standalone text style and axiom audits are separate costs. A
+seven-origin isolated declaration run had taken 44.72 seconds at 4.51 GiB;
+repeated environment loading means its per-origin average does not predict a
+single full-library pass. Whole-environment and exact-origin lint coverage also
+retain their distinct environment/policy premises.
+
+Under the same cached source and limits, full builtin lint took 17.39 seconds
+at 3.55 GiB for `Aglib` and 13.63 seconds at 4.49 GiB for `AglibTest`. The fixed
+auditor over origin prefixes `Aglib` and `AglibTest` passed for 35,401 declarations
+in 15.62 seconds at 5.72 GiB, including its 16 private/generated controls. The
+positive-test cache-only graph check took 6.42 seconds. These measurements
+support batching and separate processes rather than a new result-cache system.
+
+An exploratory whole-`AglibTest` Batteries declaration pass took 15.71 seconds
+at 5.47 GiB and failed on existing test naming, documentation and intentionally
+specialized unused hypotheses. It is not acceptance evidence and is not a
+substitute for the existing selected test-origin predicate. Production lint and
+test validation retain their explicit, different scopes.
+
 ## Principal chart pasting at the CI memory budget
 
 CI runs [39102309068](https://github.com/kangxyz/aglib/actions/runs/39102309068)

@@ -211,6 +211,19 @@ class PipelineTests(unittest.TestCase):
         self.native()
         self.assertEqual(self.finalize()['status'], 'complete')
 
+    def test_selected_test_declaration_keeps_exact_wrapper_scope(self):
+        self.write('Aglib/Base.lean', 'module\ndef x := 2\n')
+        head = self.commit('proof change')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        test_decl = next(task for task in required if task.get('check_kind') == 'declaration'
+                         and task['command'][-1] == 'AglibTest.Positive')
+        self.assertEqual(test_decl['id'], 'tests/declaration/0')
+        self.assertEqual(test_decl['command'], ['python3', 'scripts/run_declaration_linter.py',
+                                                'AglibTest.Positive'])
+        self.assertEqual(next(task for task in required if task['id'] == 'Aglib/declaration')['command'][-1],
+                         'Aglib')
+
     def test_exact_generated_audit_predecessor_has_a_bounded_static_migration(self):
         old_pipeline = subprocess.check_output(
             ['git', 'show', 'f0ff076:scripts/ci_pipeline.py'], cwd=core.ROOT, text=True)
@@ -305,6 +318,15 @@ class PipelineTests(unittest.TestCase):
         self.assertFalse((self.state / 'complete.json').exists())
 
     def test_dependency_pin_update_assigns_current_checks_and_prepared_client(self):
+        # A configuration transition uses a bounded number of full-environment
+        # declarations even when the production library has many leaf modules.
+        extra = []
+        for index in range(32):
+            name = f'Aglib/Generated{index:02d}.lean'
+            self.write(name, f'module\ndef generated{index} := {index}\n')
+            extra.append('public import Aglib.Generated' + f'{index:02d}')
+        self.write('Aglib.lean', 'module\npublic import Aglib.Base\npublic import Aglib.Cold\n'
+                   + '\n'.join(extra) + '\n')
         manifest = json.loads((self.root / 'lake-manifest.json').read_text())
         manifest['packages'] = [{'name': 'upstream', 'rev': 'new-revision', 'inherited': False}]
         self.write('lake-manifest.json', json.dumps(manifest))
@@ -318,9 +340,54 @@ class PipelineTests(unittest.TestCase):
         self.assertIn('AglibTest.Positive', scope['tests'])
         self.assertIn('Consumer.Use', scope['client'])
         self.assertEqual(plan['native_policy']['mode'], 'fresh-current-checks-after-configuration-update')
+        self.assertEqual(plan['declaration_policy'], core.declaration_policy(scope))
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        full_builtins = [task for task in required if task.get('check_kind') == 'builtin'
+                         and task['id'] in {'Aglib/builtin', 'AglibTest/builtin'}]
+        self.assertEqual([task['id'] for task in full_builtins], ['Aglib/builtin', 'AglibTest/builtin'])
+        full_declarations = [task for task in required if task.get('check_kind') == 'declaration'
+                             and task['id'] in {'Aglib/declaration', 'AglibTest/declaration'}]
+        self.assertEqual([task['id'] for task in full_declarations], ['Aglib/declaration'])
+        self.assertEqual(plan['declaration_policy']['tests'], 'exact selected defining-module origins')
+        test_declarations = [task for task in required if task['id'].startswith('tests/declaration/')]
+        self.assertEqual([task['command'][-1] for task in test_declarations],
+                         ['AglibTest.AuditCoverage', 'AglibTest.Positive'])
+        self.assertEqual(len([task for task in required if task['id'] == 'all/style']), 1)
+        self.assertEqual(len([task for task in required if task.get('check_kind') == 'audit']), 1)
+        audit = next(task for task in required if task.get('check_kind') == 'audit')
+        self.assertEqual(audit['id'], 'audit/all')
+        self.assertEqual(audit['selection'], ['Aglib', 'AglibTest'])
+        # AuditSupport retains its exact-origin wrapper checks alongside the
+        # full Aglib/AglibTest declarations.
+        self.assertIn('audit-support/builtin/0', [task['id'] for task in required])
+        support_decl = next(task for task in required if task['id'] == 'audit-support/declaration/0')
+        self.assertIn('scripts/run_declaration_linter.py', support_decl['command'])
+        self.assertEqual(support_decl['command'][-1], 'AglibTest.AuditSupport')
+        self.assertFalse(any(task['command'][:2] == ['python3', 'scripts/run_declaration_linter.py']
+                             and task['command'][-1].startswith('Aglib.Generated')
+                             for task in required))
         self.source()
         self.native()
         self.assertEqual(self.finalize()['status'], 'complete')
+
+    def test_control_only_native_change_still_runs_full_production_declaration_lint(self):
+        self.write('ci/fixtures/quartz/Check.lean', 'example : True := trivial\n')
+        head = self.commit('control-only CI source change')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertEqual(plan['scope']['providers'] + plan['scope']['consumers'] + plan['scope']['tests'], [])
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        production = next(task for task in required if task['id'] == 'Aglib/declaration')
+        self.assertEqual(production['check_kind'], 'declaration')
+        self.assertEqual(production['command'], ['lake', 'env', 'lean', '--run', core.DRIVERS[0],
+                                                  '--no-build', 'Aglib'])
+
+    def test_declaration_policy_tampering_is_rejected(self):
+        plan = self.plan()
+        plan['declaration_policy']['production'] = 'exact selected defining-module origins'
+        plan['id'] = core.digest({key: value for key, value in plan.items() if key != 'id'})
+        write_json(self.state / 'plan.json', plan)
+        with self.assertRaisesRegex(ValueError, 'Declaration environment coverage differs'):
+            core.validate_plan(self.root, plan)
 
     def test_stale_tracked_client_manifest_rejects_before_native_work(self):
         manifest = json.loads((self.root / 'lake-manifest.json').read_text())
@@ -429,14 +496,60 @@ class PipelineTests(unittest.TestCase):
         builtin = [t for t in commands.calls if t.get('check_kind') == 'builtin']
         self.assertTrue(builtin)
         self.assertTrue(all('--rehash' not in t['command'] for t in builtin))
+        declaration_wrappers = [task for task in commands.calls
+                                if task['command'][:2] == ['python3', 'scripts/run_declaration_linter.py']]
+        self.assertEqual([task['command'][-1] for task in declaration_wrappers], ['AglibTest.Positive'])
         self.assertEqual(commands.calls[-1]['id'], 'root-graph')
         self.assertEqual(commands.calls[-1]['command'][:4], ['lake', '--rehash', '--no-build', 'build'])
+        root_origins = ['Aglib', 'AglibTest']
+        if plan['scope']['trust']:
+            root_origins += ['AglibTest.AuditSupport', 'AglibTest.AuditCoverage']
+        expected_root = core.source_order(self.root, root_origins)
+        self.assertEqual(commands.calls[-1]['identity_modules'], expected_root)
+        native_record = read_json(self.state / 'native.json')
+        production_check = next(item for item in native_record['tasks']
+                                if item['id'] == 'Aglib/declaration')
+        binding = production_check['result']['success']['binding']
+        self.assertEqual(binding['modules'], ['Aglib'])
+        self.assertIn('Aglib', binding['reflective_imports']['roots'])
         self.assertEqual(result['baseline']['run_id'], 12)
+        self.assertEqual(result['declaration_policy'], plan['declaration_policy'])
+
+    def test_full_production_declaration_failure_stops_audit_and_client_then_reuses_prior_checks(self):
+        plan = self.plan()
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        failing_index = next(index for index, task in enumerate(required) if task['id'] == 'Aglib/declaration')
+        prior_check = next(task['id'] for task in required[:failing_index] if task['kind'] == 'check')
+        audit_ids = {task['id'] for task in required if task.get('check_kind') == 'audit'}
+        self.source()
+        failed = Commands(self.root, fail='Aglib/declaration')
+        with self.assertRaisesRegex(ValueError, 'Actual command failed: Aglib/declaration'):
+            self.native(failed)
+        failed_ids = [task['id'] for task in failed.calls]
+        self.assertIn(prior_check, failed_ids)
+        self.assertFalse(audit_ids.intersection(failed_ids))
+        self.assertNotIn('client-graph', failed_ids)
+        with self.assertRaisesRegex(ValueError, 'incomplete'):
+            self.finalize()
+
+        retry = Commands(self.root)
+        self.native(retry)
+        result = self.finalize()
+        self.assertIn(prior_check, result['reused_checks'])
+        self.assertNotIn(prior_check, [task['id'] for task in retry.calls])
+        self.assertIn('Aglib/declaration', [task['id'] for task in retry.calls])
+        self.assertTrue(audit_ids.intersection(task['id'] for task in retry.calls))
+        self.assertEqual(result['status'], 'complete')
 
     def test_late_failure_keeps_successes_then_reuses_checks_with_full_import_binding(self):
-        self.plan()
+        plan = self.plan()
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        failed_task = next(task for task in required if task.get('check_kind') == 'declaration'
+                           and task['command'][-1] == 'AglibTest.Positive')
+        failure_index = required.index(failed_task)
+        prior_check = next(task['id'] for task in required[:failure_index] if task['kind'] == 'check')
         self.source()
-        failed = Commands(self.root, fail='consumers/declaration/0')
+        failed = Commands(self.root, fail=failed_task['id'])
         with self.assertRaisesRegex(ValueError, 'Actual command failed'):
             self.native(failed)
         self.assertTrue(list(self.progress.glob('*.json')))
@@ -445,10 +558,10 @@ class PipelineTests(unittest.TestCase):
         again = Commands(self.root)
         self.native(again)
         result = self.finalize()
-        self.assertIn('providers/builtin/0', result['reused_checks'])
-        self.assertIn('providers/declaration/0', result['reused_checks'])
+        self.assertIn(prior_check, result['reused_checks'])
+        self.assertIn('Aglib/declaration', result['reused_checks'])
         self.assertIn('shared-root-build', [t['id'] for t in again.calls])
-        self.assertNotIn('providers/builtin/0', [t['id'] for t in again.calls])
+        self.assertNotIn(prior_check, [t['id'] for t in again.calls])
 
     def test_cold_unrelated_gap_stops_before_any_build(self):
         self.plan()
@@ -486,11 +599,12 @@ class PipelineTests(unittest.TestCase):
         self.source()
         self.native()
         output = self.root / '.lake/build/lib/lean/Aglib/Cold.olean'
-        output.write_bytes(b'corrupt unrelated output after final barrier')
-        with self.assertRaisesRegex(ValueError, 'graph outputs drifted'):
-            self.finalize()
         self.write('Aglib/Base.lean', 'module\ndef x := 3\n')
         with self.assertRaisesRegex(ValueError, 'working-tree changes'):
+            self.finalize()
+        self.write('Aglib/Base.lean', 'module\ndef x := 2\n')
+        output.write_bytes(b'corrupt unrelated output after final barrier')
+        with self.assertRaises(ValueError):
             self.finalize()
 
     def test_failed_retry_retracts_previous_completion_artifacts(self):

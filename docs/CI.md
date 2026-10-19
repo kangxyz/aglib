@@ -56,6 +56,19 @@ Lake then decides which targets need compilation. A missing matching artifact
 can require compilation, but a version label alone does not establish the
 number of necessary builds. See [upgrade/cache semantics](CACHING.md#upstream-and-toolchain-updates).
 
+Production declaration lint uses the unchanged Batteries driver on the complete
+`Aglib` umbrella environment. It runs as one guarded command, rather than once
+per production leaf. Affected test origins retain their existing exact-origin
+checks, and selected `AuditSupport` is checked separately. These environment predicates are explicit in
+the plan and summary; no equivalence to per-leaf lint is asserted.
+
+Builtin lint runs once for each production/test root, text style runs once for
+its selected sources, and the fixed axiom auditor
+checks the `Aglib`/`AglibTest` origin prefixes in one invocation. Extra tool
+origins remain explicitly selected. Builtin, declaration and audit commands use
+separate guarded processes, releasing one environment before the next. No extra input
+ledger or cross-version check-compatibility protocol is required.
+
 Aglib tracks its deterministic downstream manifest. Regenerate it with
 `python3 scripts/prepare_downstream.py` and commit it with a root pin update.
 Planning rejects stale tracked client metadata before expensive native work.

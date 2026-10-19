@@ -215,6 +215,13 @@ def runtime_imports(root):
     return sorted(imports)
 
 
+def declaration_policy(scope):
+    return {'production': 'full Aglib umbrella environment',
+            'tests': 'exact selected defining-module origins',
+            'support': 'exact AuditSupport origin when selected',
+            'equivalence': 'umbrella and exact-origin environments are distinct predicates'}
+
+
 def tasks(root, plan, phase, directory):
     """Reconstruct the required commands; phase records cannot waive any task."""
     scope, result = plan['scope'], []
@@ -264,7 +271,8 @@ def tasks(root, plan, phase, directory):
     all_lint = scope['providers'] + [n for n in scope['consumers'] + scope['tests'] if n not in scope['facades']]
     if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
         all_lint.append('AglibTest.AuditSupport')
-    imports = runtime_imports(root) if all_lint or scope['style'] else []
+    # The full production declaration pass always needs its cached driver imports.
+    imports = runtime_imports(root)
     graph_roots = list(dict.fromkeys(['Aglib', 'AglibTest',
                         *scope['providers'], *scope['consumers'], *scope['tests'],
                         *(['AglibTest.AuditSupport', 'AglibTest.AuditCoverage'] if scope['trust'] else [])]))
@@ -282,28 +290,43 @@ def tasks(root, plan, phase, directory):
     # Consume traces from that successful shared graph. Lint does not repeatedly
     # rehash or query every module's transitive graph.
     lint_lake = ['lake', '--no-build']
-    def lint(prefix, names, styles=()):
+    def full_lint(name, module, category):
+        command = (lint_lake + ['lint', '--builtin-only', module] if category == 'builtin' else
+                   ['lake', 'env', 'lean', '--run', DRIVERS[0], '--no-build', module])
+        safe(name, command, kind='check', check_kind=category, modules=[module], selection=[module])
+
+    def lint(prefix, names, *, builtin=False):
         for index, name in enumerate(names):
-            for category, command in [('builtin', lint_lake + ['lint', '--builtin-only', name]),
-                                      ('declaration', ['python3', 'scripts/run_declaration_linter.py', name])]:
+            commands = [('declaration', ['python3', 'scripts/run_declaration_linter.py', name])]
+            if builtin:
+                commands.insert(0, ('builtin', lint_lake + ['lint', '--builtin-only', name]))
+            for category, command in commands:
                 safe(f'{prefix}/{category}/{index}', command, kind='check',
                      check_kind=category, modules=[name], selection=[name])
-        if styles:
-            safe(prefix + '/style', ['python3', 'scripts/run_style_linter.py', '--modules', *styles])
-    lint('providers', scope['providers'], scope['providers'])
-    lint('consumers', [n for n in scope['consumers'] + scope['tests'] if n not in scope['facades']],
-         sorted(set(scope['style']) - set(scope['providers'])))
+    # Release each complete environment before loading the next. Compilation
+    # remains Lake-incremental; these inexpensive full checks need no new cache.
+    for module in ('Aglib', 'AglibTest'):
+        full_lint(module + '/builtin', module, 'builtin')
+    full_lint('Aglib/declaration', 'Aglib', 'declaration')
+    lint('tests', [name for name in scope['tests'] if name not in scope['facades']])
+    other = [name for name in all_lint
+             if not any(name == prefix or name.startswith(prefix + '.')
+                        for prefix in ('Aglib', 'AglibTest'))]
+    lint('other', other, builtin=True)
+    if scope['style']:
+        safe('all/style', ['python3', 'scripts/run_style_linter.py', '--modules', *scope['style']])
     if scope['trust']:
         support = ['AglibTest.AuditSupport', 'AglibTest.AuditCoverage']
         if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
-            lint('audit-support', ['AglibTest.AuditSupport'])
+            lint('audit-support', ['AglibTest.AuditSupport'], builtin=True)
         selected = sorted(set(n for n in scope['providers'] + scope['consumers'] + scope['tests']
                               if n not in scope['facades']))
         if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
             selected.append('AglibTest.AuditSupport')
-        for index, name in enumerate(selected or ['AglibTest.AuditCoverage']):
-            safe(f'audit/{index}', audit_command(root, [name]), kind='check',
-                 check_kind='audit', modules=sorted(set([name, *support])), selection=[name])
+        names = list(dict.fromkeys(['Aglib', 'AglibTest', *[name for name in selected
+                    if not name.startswith(('Aglib.', 'AglibTest.'))]]))
+        safe('audit/all', audit_command(root, names), kind='check',
+             check_kind='audit', modules=sorted(set([*names, *support])), selection=names)
         if 'AglibTest/Axioms.lean' in scope['changed']:
             safe('legacy-audit-cached-imports', lake + ['--no-build', 'build', 'Aglib', *support])
             safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'AglibTest/Axioms.lean'])
@@ -363,7 +386,8 @@ class AglibAdapter:
         current = mathematical_tree(root, head)
         assert_native_scope(root, scope, before, current, scope['changed'])
         return {'baseline': baseline, 'scope': scope, 'baseline_math': before,
-                'head_math': current, 'native_policy': native_policy(root, baseline, scope, before, current)}
+                'head_math': current, 'native_policy': native_policy(root, baseline, scope, before, current),
+                'declaration_policy': declaration_policy(scope)}
 
     def required_phases(self, root, plan):
         return ['source', 'native'] if plan['scope']['native'] else ['source']
@@ -391,6 +415,8 @@ class AglibAdapter:
         assert_native_scope(root, scope, before, current, scope['changed'])
         if plan.get('native_policy') != native_policy(root, baseline, scope, before, current):
             raise ValueError('Native semantic policy coverage differs from its explicit contract')
+        if plan.get('declaration_policy') != declaration_policy(scope):
+            raise ValueError('Declaration environment coverage differs from its explicit contract')
 
     tasks = staticmethod(tasks)
     binding = staticmethod(binding)
@@ -421,6 +447,7 @@ class AglibAdapter:
                 'coverage': 'complete-current-root-graph-and-selected-checks' if scope['native'] else 'inherited-unchanged-mathematical-snapshot',
                 'check_reuse': 'per-check full native import closure; unsupported metadata reruns actual check',
                 'native_check_policy': policy,
+                'declaration_policy': plan['declaration_policy'],
                 'build_identity': 'fresh Lake --rehash; refreshed trace observations are diagnostic, not a Python build key',
                 'inherited_coverage': ([] if scope['native'] else ['unchanged mathematical source and pins'])
                     + ['unchanged origins retain the verified ancestor policy; no fresh per-leaf lint claim']
