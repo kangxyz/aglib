@@ -823,6 +823,10 @@ public import Aglib.AlgebraicGeometry.Grassmannian.Chart
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
+public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Charts
+public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Comparison
+public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.FunctorOfPoints
+public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.UniversalQuotient
 public import Aglib.AlgebraicGeometry.Grassmannian.Representability
 public import Aglib.AlgebraicGeometry.Group.BaseChange.MarkedKernel
 public import Aglib.AlgebraicGeometry.Group.Monodromy
@@ -1328,6 +1332,7 @@ public import Aglib.AlgebraicGeometry.Products.IntegerBase
 public import Aglib.AlgebraicGeometry.Products.IntegerBaseInterchange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.Open
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.AwayAlgebra
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.AffineOpen
@@ -1361,6 +1366,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.HomogeneousSections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Multiplication
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.PrincipalOpen
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Products.BaseChange
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.SchemeOver
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension.Bounds
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension.Colimit

@@ -118,6 +118,21 @@ generation of the nonnegative twists themselves. `TwistPresentation` below
 supplies finite negative-twist presentations for arbitrary affine-locally
 finite-type coefficients.
 
+[AwayAlgebra](AwayAlgebra.lean) makes every degree-zero localization
+`HomogeneousLocalization.Away (homogeneousSubmodule ι R) f` an `R`-algebra (`awayAlgebra`: the
+algebra map is the coefficient map, the scalar action is Mathlib's), with `awayMapAlgHom`,
+`coordinateRing_algHom_ext` and the overlap restrictions `overlapLeft`, `overlapRight`. Its scalar
+action agrees with Mathlib's `HomogeneousLocalization.instSMul` only at instances transparency:
+`rw`/`simp` with `zero_smul`, `Algebra.smul_def` or `add_smul` fail on `•` goals over these rings,
+while term-mode applications work (rewrite with `smul_eq_algebraMap_mul`). Over `ℤ` it forms the standard
+`ℤ`-algebra diamond with `Ring.toIntAlgebra`. [SchemeOver](SchemeOver.lean) gives
+`schemeOver R ι`, projective space as an object of `Over (Spec R)`.
+
+The functor of points of projective space, in `Grassmannian.localFunctor` form, comes from the
+comparison with the Grassmannian of rank-one quotients described in the
+[Grassmannian README](../Grassmannian/README.md). This family keeps the twisting sheaves: the chart
+quotients of the universal point are the frame coefficients of `coordinatePowerGeneratingMap R ι 1`.
+
 `Aglib.AlgebraicGeometry.ProjectiveSpace.PrincipalOpen` proves that the
 actual nonvanishing open of `Xⱼ/Xᵢ` is exactly the original chart
 intersection. `SectionExtension` applies native affine localization to

@@ -119,6 +119,7 @@ public import Aglib.RingTheory.Grassmannian.Chart
 public import Aglib.RingTheory.Grassmannian.ChartIntersection
 public import Aglib.RingTheory.Grassmannian.ChartLocus
 public import Aglib.RingTheory.Grassmannian.ChartRing
+public import Aglib.RingTheory.Grassmannian.CoordinateChart
 public import Aglib.RingTheory.Grassmannian.Covering
 public import Aglib.RingTheory.Grassmannian.Descent
 public import Aglib.RingTheory.Grassmannian.Gluing
