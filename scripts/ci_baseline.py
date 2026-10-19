@@ -43,10 +43,36 @@ CORE_ENTRYPOINT_PATHS = (
       ('__init__', '__main__', 'source', 'state', 'github', 'engine', 'runtime', 'resources', 'build', 'cli')),
 )
 # Ordered implementation-owner SHA256 tuples. The unsafe 7e6 recipe is absent.
-# Enroll a complete repaired source tuple after independent source review.
+# Changes require independent review of their affected source owners.
 # Supporting-source correctness retains the repository's independent-review and
 # trusted-producer premise; this does not authenticate arbitrary dependencies.
 REVIEWED_CORE_RECIPES = frozenset({
+    # Independently reviewed source: 9628b18ddd3ad5b382dd41604e28d8b21d784787.
+    (
+        'e5a9c10f660ee40d042f53452849b1f698e35f3131a0134e7ab34f664c7d65ab',  # scripts/ci_pipeline.py
+        '46bd04a0663879683fcde54386b98101610f50a405677e128fbebef8f6d04fb4',  # scripts/ci_state.py
+        '0669fbbf147e2489db699f4dc7a775c4718261568593552d48676b071ef4658f',  # scripts/affected_scope.py
+        '33a603f1bc8478ceb83d5c6a4a68fad7062e08f0e9eb567514e54c232f76413a',  # scripts/check_affected.py
+        '90a59c54d6a62d728006ea230b3200e97e605571c827b0c55acd934c0ad2044b',  # scripts/library_sources.py
+        'ec0e06f4f3a37a2fce6febef22ddc79b9fd9610c80f06b5f42897196bead2ab6',  # scripts/prepare_downstream.py
+        '97c396e48d952582a4a525e1fc17551e16193e32e06fe73cb7785c9a33dc6b40',  # scripts/resource_guard.py
+        '66fdc8dc202a54d568e52fc94651a9c47789cc16009bdd069812b1c9616d0413',  # scripts/build_serial.py
+        '615ae732055d58454ffce066b9ccbb0b84786c67b55e9b6746a5b01387ade1b5',  # scripts/run_declaration_linter.py
+        '0eec427d1c94ec97cf9ef68f38e2ad3e6df372bc24138b8805c2db5ff44437ae',  # scripts/run_style_linter.py
+        'b3d3b065d741428958a7f53872d6f00aaedced80d666a3812549c7ca85b32818',  # scripts/check_negative_controls.py
+        'f092bbb6c3fcb45deb14cc74b01863f7a790cc203fff4bbc8da12f21b93fb518',  # scripts/check_compiled_inventory.py
+        'a81966955fae15d248fbd8f789a336d8d75fd0871dc154b15aa26d4667b537d8',  # ci/native_test.py
+        '3868ebea3761908a46678490847815974425b323a86690885c6b7c2a3804f73d',  # ci/lean_ci/__init__.py
+        'd240a28939151c947f5cfc64a569d6e8ad8132dcd747cb61844c62fb517cc4f5',  # ci/lean_ci/__main__.py
+        'aca3ae29f06f436895af36adc6f048f70985f7b3e6305d585bed09fa0515f50b',  # ci/lean_ci/source.py
+        '1ffc0711ad70a652645e8ed288f3ad196b25452467d11af0b1c8d05b90d76bf2',  # ci/lean_ci/state.py
+        '0595f57a196b3a5b73de0e7e896fe2e6029125d732a94c65a4872f247d20b66a',  # ci/lean_ci/github.py
+        'd8aeb9eb510507360460c4acaa9a6c6585de971524032323fad9bf3d1ac2c309',  # ci/lean_ci/engine.py
+        '030acf0422e65334863150c7b0abc25ad8047982ede76f465e499742dee37623',  # ci/lean_ci/runtime.py
+        '005c390479b464d9bfcdd9232982d1c5c3b92379a89aeb3bc9009d021ad26431',  # ci/lean_ci/resources.py
+        '90f4ec5174d6d8e4d4e64d6f9d818b9d192da5bd230a3cb93f991f9a013fca7a',  # ci/lean_ci/build.py
+        '35d89f7bfeb1a510828a4fbaaf3561217ef39763f77b56f0c2cd63b17e2ac657',  # ci/lean_ci/cli.py
+    ),
 })
 
 
