@@ -972,10 +972,16 @@ process checking the final criterion, whose imports include all seven providers,
 passed at 2,876,129,280 bytes. Separate builtin invocations for all seven passed
 with a maximum of 2,867,855,360 bytes (about 2.67 GiB).
 
-The [selected checker](../scripts/check_affected.py) now starts a fresh guarded
+That historical [selected-checker](../scripts/check_affected.py) implementation started a fresh guarded
 builtin-lint process for each selected module, and the
 [declaration wrapper](../scripts/run_declaration_linter.py) starts a separate
 Lean interpreter for each exact origin. The module selection, linter options,
 exception handling and resource limits retain their existing meanings. Reuse
 successful provider compilation when repairing this scheduling issue; the
 failed lint does not require another proof build.
+The later shared final-check recipe adopts the already accepted production and
+test umbrella checks, keeping each whole environment in a separate guarded
+process. The exact-origin wrapper remains required for selected AuditSupport
+and extra Tools origins; diagnostic production/test leaf passes do not replace
+their umbrella check. Historical per-origin and current umbrella results retain their distinct input
+and predicate bases; this code migration does not itself measure a speedup.

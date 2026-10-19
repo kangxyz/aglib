@@ -13,6 +13,9 @@ inputs:
   mappings:
     description: Native lake build -o mappings (publish only)
     default: ''
+  coverage:
+    description: Committed CI finalizer coverage sidecar from a clean HEAD (publish only, required for multiple groups)
+    default: ''
   artifact:
     description: Same-run staging artifact name (release only)
     default: ''
@@ -71,10 +74,13 @@ runs:
       env:
         PACKAGE_ROOT: ${{ inputs.root }}
         MAPPINGS: ${{ inputs.mappings }}
+        COVERAGE: ${{ inputs.coverage }}
         REPOSITORY: ${{ github.repository }}
       run: |
         set -euo pipefail
-        python3 "$GITHUB_ACTION_PATH/cache.py" --root "$PACKAGE_ROOT" stage \
+        coverage=()
+        if [[ -n "$COVERAGE" ]]; then coverage=(--coverage "$COVERAGE"); fi
+        python3 "$GITHUB_ACTION_PATH/cache.py" --root "$PACKAGE_ROOT" stage "${coverage[@]}" \
           --mappings "$MAPPINGS" --repository "$REPOSITORY" \
           --destination '${{ runner.temp }}/lake-native-stage'
     - name: Publish immutable native Lake staging directory

@@ -33,6 +33,29 @@ def _relative_path(path):
 
 
 @dataclass(frozen=True)
+class CoreRecipeVersion:
+    """One explicitly reviewed historical owner set; no prefix inference."""
+    paths: tuple[str, ...]
+    recipes: frozenset[tuple[str, ...]]
+    heads: frozenset[str]
+
+    def __post_init__(self):
+        paths = tuple(self.paths)
+        recipes = frozenset(tuple(row) for row in self.recipes)
+        heads = frozenset(self.heads or ())
+        if (not paths or len(set(paths)) != len(paths) or not recipes
+                or any(not _relative_path(path) for path in paths)
+                or any(len(row) != len(paths) or any(not isinstance(value, str)
+                    or re.fullmatch('[0-9a-f]{64}', value) is None for value in row) for row in recipes)
+                or not heads or any(not isinstance(value, str)
+                    or re.fullmatch('[0-9a-f]{40}', value) is None for value in heads)):
+            raise BaselineError('Historical core recipes require exact nonempty frozen source heads')
+        object.__setattr__(self, 'paths', paths)
+        object.__setattr__(self, 'recipes', recipes)
+        object.__setattr__(self, 'heads', heads)
+
+
+@dataclass(frozen=True)
 class EvidenceProtocol:
     """Exact reviewed workflow/recipe identities supplied by a repository owner.
 
@@ -49,10 +72,14 @@ class EvidenceProtocol:
     core_entrypoint_paths: tuple[str, ...] = ()
     core_recipes: frozenset[tuple[str, ...]] = frozenset()
     legacy_heads: frozenset[str] | None = None
+    historical_core_recipes: tuple[CoreRecipeVersion, ...] = ()
 
     def __post_init__(self):
         workflows, legacy = dict(self.workflows), dict(self.legacy_recipes)
         heads = None if self.legacy_heads is None else frozenset(self.legacy_heads)
+        historical = tuple(self.historical_core_recipes)
+        if any(not isinstance(version, CoreRecipeVersion) for version in historical):
+            raise BaselineError('Historical core recipes require explicit reviewed versions')
         paths = tuple(self.core_entrypoint_paths)
         recipes = frozenset(tuple(row) for row in self.core_recipes)
         sha = lambda value: isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) is not None
@@ -75,6 +102,7 @@ class EvidenceProtocol:
         object.__setattr__(self, 'legacy_heads', heads)
         object.__setattr__(self, 'core_entrypoint_paths', paths)
         object.__setattr__(self, 'core_recipes', recipes)
+        object.__setattr__(self, 'historical_core_recipes', historical)
 
 
 class GitHubAPI:
@@ -166,14 +194,36 @@ def git_file(root, revision, path):
 def reviewed_recipe(root, revision, kind, protocol):
     if kind not in KIND_LABELS:
         return None
-    paths = tuple(protocol.legacy_recipes) if kind == 'legacy' else protocol.core_entrypoint_paths
-    contents = {path: git_file(root, revision, path) for path in paths}
-    if not paths or any(value is None for value in contents.values()):
-        return None
-    identities = {path: hashlib.sha256(value).hexdigest() for path, value in contents.items()}
     if kind == 'legacy':
+        paths = tuple(protocol.legacy_recipes)
+        contents = {path: git_file(root, revision, path) for path in paths}
+        if not paths or any(value is None for value in contents.values()):
+            return None
+        identities = {path: hashlib.sha256(value).hexdigest() for path, value in contents.items()}
         return identities if identities == dict(protocol.legacy_recipes) else None
-    return identities if tuple(identities[p] for p in paths) in protocol.core_recipes else None
+    versions = [(protocol.core_entrypoint_paths, protocol.core_recipes, None)]
+    versions.extend((version.paths, version.recipes, version.heads)
+                    for version in protocol.historical_core_recipes)
+    contents = {}
+    for paths, recipes, heads in versions:
+        if not paths:
+            continue
+        if heads is not None:
+            try:
+                candidate = commit(root, revision)
+            except BaselineError:
+                continue
+            if candidate not in heads:
+                continue
+        for path in paths:
+            if path not in contents:
+                contents[path] = git_file(root, revision, path)
+        if any(contents[path] is None for path in paths):
+            continue
+        identities = {path: hashlib.sha256(contents[path]).hexdigest() for path in paths}
+        if tuple(identities[path] for path in paths) in recipes:
+            return identities
+    return None
 
 
 def native_success(api, run, require_finalization=False, evidence=None, *, protocol):

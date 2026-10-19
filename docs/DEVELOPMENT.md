@@ -98,22 +98,35 @@ builtin/declaration lint and selected audit successes have separate progress
 records bound to their validated native inputs, outputs and checker policy.
 Those records never authorize skipping current native graph validation.
 
-The local final native phase compiles changed providers, runs their pinned declaration
-and text/style linters, then builds affected consumers, positive tests and the
-independent client. Import-only facades remain compiled consumers when affected.
-Their unrelated imports must pass a cache-only check before the facade build:
-recover compatible cached outputs if that check fails. A broad import facade
-never silently starts compiling unrelated cold siblings. Unchanged facades and
-unrelated proof modules are not selected merely for convenience.
+Local final checks and committed CI consume the same library task recipe through
+`lean_ci.recipe` and its guarded executor. The local entry observes source,
+configuration and enrollment inputs before selecting the dirty-worktree scope;
+it does not require a commit or query GitHub. CI retains its clean-HEAD,
+verified-ancestor and finalization guards. Local success is never a CI receipt.
 
-Native CI uses a shared guarded Lake `--rehash` build for the complete current
-library and positive-test root graph after cache preparation, then consumes its
-validated identities for selected independent checks. A cache-only preflight
-prevents unrelated cold imports from silently triggering broad recovery. A final
-current-root barrier and the core finalizer reject missing graph or check coverage.
-Lake decides which compilation work is stale; a Git difference cannot replace
-that decision. Successful partial checks remain reusable under their exact input
-bindings, while failed or incompatible records select real execution.
+The shared native recipe uses one guarded Lake `--rehash` graph for the current
+library/test roots and required checker imports. Before that graph, unrelated
+imports must pass a cache-only check; recover matching artifacts if it fails.
+This guard prevents an affected facade or umbrella check from compiling unrelated
+cold siblings. Lake decides which selected/imported artifacts actually need work.
+The final root barrier is cache-only and exports verified mappings without a
+second proof build.
+
+The adopted declaration predicates are the complete `Aglib` and `AglibTest`
+umbrella environments, each checked once in a separate guarded process. Builtin
+lint likewise runs once per root; selected source style runs once, and the fixed
+origin auditor handles production/test prefixes together. These are the existing
+CI predicates, now also used by local final checks. Earlier exact-origin lint
+receipts remain evidence for their original environments and are not re-keyed as
+umbrella successes. The exact-origin wrapper is still required for selected
+`AglibTest.AuditSupport` and extra `Tools.*` origins. A diagnostic leaf pass has
+its distinct predicate and does not discharge a required umbrella check.
+
+Native local final checks require prepared matching dependencies and idempotent
+client setup. Run `python3 scripts/prepare_downstream.py` during operating setup
+before final validation; preserve the intended tracked manifest and pins. A cold
+or stale client setup fails with that command, without resetting source guards.
+Source-only checks do not initialize dependency or client caches.
 
 Selected-origin axiom auditing reuses `AglibTest.AuditSupport`, including its
 private/generated-declaration inventory and fixed allowed axioms. Negative
@@ -131,30 +144,35 @@ uses the [incremental replay recipe](#kernel-replay-at-mathematical-adoption).
 A normal cache export records replay as not requested and externally tracked;
 it does not claim formal mathematical acceptance or full inventory coverage.
 
-Use `AGLIB_VERIFY_DIR` for a fresh run directory. After a repair, rerun only failed
+Use `AGLIB_VERIFY_DIR` for a state directory outside the checkout. Reuse that state
+after a later failure to retain compatible check successes. After a repair, rerun only failed
 or newly affected categories with `--phase providers`, `--phase provider-lint`,
 `--phase consumers`, `--phase trust` or `--phase client`; repeat `--phase` to combine
-categories. A `--native-only` repair reuses already completed static/tooling
+categories. `provider-lint` now selects the declared umbrella check group; it does
+not assert equivalence to the older per-provider lint policy. A `--native-only` repair reuses already completed static/tooling
 checks. These repair runs do not export a complete selected-validation mapping.
 Retain their compatible prior coverage rather than rerunning unchanged checks.
+Compatible client audit successes also survive a later failure, under the actual
+client search path and its source/import/policy bindings. The cheap compiled
+inventory is checked again; no claim of cached inventory coverage is made.
 
-For a single failed module, existing direct commands narrow the repair further
-(replace `MODULE` and use a fresh build `DIR`):
+After repairing a final-check failure, retry the appropriate shared group
+with the same external state directory (replace `BASE` and `DIR`):
 
 ```sh
-# Provider lint failure, after compiling any repaired source:
-lake --no-build lint --builtin-only MODULE
-python3 scripts/run_declaration_linter.py MODULE
-python3 scripts/run_style_linter.py --modules MODULE
-# Late test failure: build just that test, then use its name in the lint commands above.
-python3 scripts/build_serial.py --receipt-dir DIR AglibTest.MODULE
-# Late client failure:
-python3 scripts/build_serial.py --root examples/downstream --receipt-dir DIR Consumer.MODULE
-# From examples/downstream, preserve the client's existing audit boundary:
-cd examples/downstream
-lake --no-build build Consumer
-lake env lean -j1 Audit.lean
+# Retry required umbrella/style checks after the repaired graph is current:
+AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase provider-lint
+# A late test or consumer repair: validate its affected graph and required check groups:
+AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase consumers
+# A late independent-client repair:
+AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase client
 ```
+
+Ordinary incremental module compilation remains available while making the
+repair. Passing exact-origin leaf lint is diagnostic for the adopted production/
+test umbrella predicates; it does not replace the shared final-check group.
+Selected AuditSupport and extra Tools origins retain their separately required
+exact-origin checks through the trust/extra-origin groups.
 
 Complete still-affected selected trust checks with the existing `--phase trust`
 command; completed provider lint need not repeat. Reselect if the actual import
@@ -183,11 +201,9 @@ The adjacent `.coverage.json` records affected-only coverage and selected target
 identities. CI logs and retained evidence distinguish this from whole-library
 validation. Pinned declaration/style implementations, Lake builtin lint, compiler-integrated
 linters, source policy, origin audits and rejection controls remain enabled.
-Batteries declaration lint filters the pinned driver enumeration to exact selected
-defining-module origins, preserving all enabled checks. Affected consumers are
-linted after compilation, without repeating provider or unrelated imported-origin
-coverage; text/style lint selects changed files only. Builtin lint uses explicit
-compiled implementation modules and `--no-build`;
+Batteries declaration lint uses the accepted production/test umbrella environments,
+with selected support origins checked separately; text/style lint selects changed
+files only. Builtin lint uses the two compiled roots and `--no-build`;
 import-only facades receive compilation and exact source-style checks. CI prepares
 only the named imports of the pinned linter runtimes in its writable dependency
 caches when needed. Local runtime execution preserves shared dependency caches.

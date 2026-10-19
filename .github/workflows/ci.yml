@@ -162,6 +162,7 @@ jobs:
         run: |
           python3 .github/actions/lake-cache/cache.py stage \
             --mappings "$RUNNER_TEMP/native-outputs.jsonl" \
+            --coverage "$RUNNER_TEMP/native-outputs.jsonl.coverage.json" \
             --repository "$GITHUB_REPOSITORY" --destination "$RUNNER_TEMP/lake-native-stage"
           cp "$RUNNER_TEMP/native-outputs.jsonl.coverage.json" \
             "$RUNNER_TEMP/lake-native-stage/validation-coverage.json"

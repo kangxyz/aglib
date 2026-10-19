@@ -5,6 +5,7 @@ Lake owns the hashes, mappings and staging format. A standard tar.gz is only
 transport packaging. Normal current-source Lake builds decide artifact reuse.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -116,7 +117,11 @@ def import_candidate(root, package, selector, repository, configured_revision, p
         expected = dict(basis, package=package, repository=repository, revision=producer_revision)
         if provenance != expected:
             raise ValueError('incompatible producer artifact provenance')
+        retained = validate_staged_groups(staged, package)
         subprocess.run(['lake', 'cache', 'unstage', str(staged), selector], cwd=root, check=True)
+        if retained:
+            print(f'{package}: retained {retained} client mapping groups; not registered '
+                  'without an explicit matching workspace/package request', flush=True)
         print(f'{package}: imported producer {producer_revision} for configured pin '
               f'{configured_revision}; current Lake input checks decide reuse ({url})', flush=True)
 
@@ -150,14 +155,302 @@ def restore(root, repositories):
             print(f'{package}: no compatible cache seed; ordinary build fallback', flush=True)
 
 
-def stage(root, mappings, destination, repository):
-    basis = identity(root)
+
+SUPPORTED_HEADER = '2026-03-17'
+MAX_MAPPING_GROUPS = 64
+
+
+def regular_file(path):
+    path = Path(path)
+    if path.is_symlink() or not path.is_file():
+        raise ValueError('Expected a regular native cache file: ' + str(path))
+    return path
+
+
+def file_hash(path):
+    return hashlib.sha256(regular_file(path).read_bytes()).hexdigest()
+
+
+def output_artifacts(value):
+    """Pinned Lake collectOutputDescrs semantics, restricted to safe flat names."""
+    if value is None or isinstance(value, bool):
+        return set()
+    if isinstance(value, int) and 0 <= value < 2 ** 64:
+        return {f'{value:016x}.art'}
+    if isinstance(value, str):
+        if re.fullmatch(r'[0-9a-fA-F]{16}(?:\.[A-Za-z0-9_.+-]*)?', value) is None:
+            raise ValueError('Unsafe/invalid native artifact descriptor')
+        name, dot, extension = value.partition('.')
+        return {name.lower() + (dot + extension if extension else '')}
+    if isinstance(value, (list, dict)):
+        parts = value.values() if isinstance(value, dict) else value
+        return set().union(*(output_artifacts(item) for item in parts))
+    raise ValueError('Unsupported native output descriptor')
+
+
+def read_mapping(path):
+    """Validate native JSONL before Lake's deliberately permissive loader."""
+    lines = regular_file(path).read_text().splitlines()
+    if not lines or json.loads(lines[0]) != SUPPORTED_HEADER:
+        raise ValueError('Unsupported native mapping header')
+    entries = {}
+    for line in lines[1:]:
+        row = json.loads(line)
+        if (not isinstance(row, list) or len(row) != 2 or not isinstance(row[0], str)
+                or re.fullmatch('[0-9a-f]{16}', row[0]) is None):
+            raise ValueError('Malformed native mapping row')
+        key, value = row
+        if key in entries and entries[key] != value:
+            raise ValueError('Conflicting duplicate native mapping input: ' + key)
+        output_artifacts(value)
+        entries[key] = value
+    return entries
+
+
+def committed_coverage(summary, revision, *, required_owners=('engine.py', 'mappings.py', 'runtime.py', 'state.py')):
+    """Recognize the committed CI finalizer, never a local/frozen completion.
+
+    This checks the trusted producer's envelope; it does not authenticate a
+    signature or independently replay the core's source/receipt acceptance.
+    """
+    if (not isinstance(summary, dict) or summary.get('schema') != 1
+            or summary.get('status') != 'complete' or summary.get('head') != revision
+            or 'source_basis' in summary
+            or not isinstance(summary.get('plan_id'), str)
+            or re.fullmatch('[0-9a-f]{64}', summary['plan_id']) is None
+            or summary.get('required_phases') != ['source', 'native']
+            or summary.get('performed_phases') != summary['required_phases']):
+        raise ValueError('Coverage requires the completed committed CI finalizer envelope')
+    implementation = summary.get('implementation')
+    if (not isinstance(implementation, dict)
+            or not set(required_owners) <= implementation.keys()
+            or any(not isinstance(name, str) or Path(name).name != name
+                   or not isinstance(value, str) or re.fullmatch('[0-9a-f]{64}', value) is None
+                   for name, value in implementation.items())):
+        raise ValueError('Coverage requires the committed CI implementation identity')
+    for field in ('performed_checks', 'reused_checks', 'compiled_or_refreshed_targets',
+                  'reused_build_targets'):
+        if not isinstance(summary.get(field), list) or not all(
+                isinstance(item, str) for item in summary[field]):
+            raise ValueError('Coverage requires complete committed CI outcome fields')
+
+
+def clean_publication_source(root):
+    if command(root, 'git', 'status', '--porcelain', '--untracked-files=all'):
+        raise ValueError('Committed CI publication requires a clean HEAD source checkout')
+
+
+def mapping_groups(root, mappings, coverage, revision):
+    """Admit only the exact side files exported by the trusted core finalizer.
+
+    This is transport validation, not independent proof/receipt verification.
+    The core's completed coverage remains the producer acceptance boundary.
+    """
+    root, mappings = root.resolve(), Path(mappings).absolute()
+    if mappings.resolve() != mappings:
+        raise ValueError('Mapping path must not contain symlink aliases')
+    if coverage is None:
+        read_mapping(mappings)
+        if mappings.with_name(mappings.name + '.groups').exists():
+            raise ValueError('Mapping side groups require their coverage summary')
+        return [(root, mappings)]
+    coverage = Path(coverage).absolute()
+    if coverage != mappings.with_suffix(mappings.suffix + '.coverage.json'):
+        raise ValueError('Expected the primary mapping coverage sidecar')
+    summary = json.loads(regular_file(coverage).read_text())
+    committed_coverage(summary, revision)
+    clean_publication_source(root)
+    groups = summary.get('mapping_groups')
+    if not isinstance(groups, list) or not 1 <= len(groups) <= MAX_MAPPING_GROUPS:
+        raise ValueError('Expected bounded complete mapping groups')
+    repository = Path(command(root, 'git', 'rev-parse', '--show-toplevel')).resolve()
+    side = mappings.with_name(mappings.name + '.groups')
+    expected_sides, result, domains = set(), [], []
+    toolchain = None
+    for index, group in enumerate(groups):
+        if not isinstance(group, dict):
+            raise ValueError('Malformed mapping group')
+        expected = mappings if index == 0 else side / f'{index:04d}.jsonl'
+        if group.get('path') != str(expected) or group.get('primary') is not (index == 0):
+            raise ValueError('Unexpected mapping group path/order')
+        if not isinstance(group.get('sha256'), str) or group['sha256'] != file_hash(expected):
+            raise ValueError('Missing/corrupt native mapping group')
+        if expected.resolve() != expected:
+            raise ValueError('Mapping group path must not contain symlink aliases')
+        read_mapping(expected)
+        domain = group.get('domain')
+        if (not isinstance(domain, dict) or domain.get('format') != SUPPORTED_HEADER
+                or domain.get('layout') != 'native-lake'
+                or domain.get('platform') != [platform.system(), platform.machine()]
+                or not isinstance(domain.get('workspace'), str)
+                or not isinstance(domain.get('toolchain'), dict) or not domain['toolchain']):
+            raise ValueError('Incompatible native mapping domain')
+        cwd = Path(domain['workspace'])
+        if (not cwd.is_absolute() or str(cwd.resolve()) != domain['workspace']
+                or not cwd.is_dir() or not cwd.is_relative_to(repository)
+                or (index == 0 and cwd != root)
+                or not (cwd / 'lakefile.toml').is_file()):
+            raise ValueError('Unexpected native producer workspace')
+        if domain in domains:
+            raise ValueError('Duplicate native mapping domain')
+        domains.append(domain)
+        if toolchain is None:
+            toolchain = domain['toolchain']
+        elif domain['toolchain'] != toolchain:
+            raise ValueError('Incompatible native producer toolchains')
+        if index:
+            expected_sides.add(expected.name)
+        result.append((cwd, expected))
+    if side.is_symlink() or (side.exists() and not side.is_dir()):
+        raise ValueError('Unexpected mapping side directory')
+    actual_sides = {path.name for path in side.iterdir()} if side.exists() else set()
+    if actual_sides != expected_sides:
+        raise ValueError('Missing/unexpected native mapping side paths')
+    return result
+
+
+def producer_package(cwd):
+    name = tomllib.loads(regular_file(cwd / 'lakefile.toml').read_text())['name']
+    if not isinstance(name, str) or not name:
+        raise ValueError('Expected a declared native producer package')
+    return package_identity(name)
+
+
+def mapping_artifacts(path):
+    return set().union(*(output_artifacts(value) for value in read_mapping(path).values()))
+
+
+def retained_coverage(staged, *, expected_hash=None, legacy=False):
+    """Admit only the workflow's exact existing diagnostic coverage filename."""
+    path = staged / 'validation-coverage.json'
+    if not path.exists():
+        return set()
+    summary = json.loads(regular_file(path).read_text())
+    provenance = json.loads(regular_file(staged / 'provenance.json').read_text())
+    if legacy:
+        # Historical core finalizers predate the extracted mappings.py owner.
+        committed_coverage(summary, provenance['revision'],
+                           required_owners=('engine.py', 'runtime.py', 'state.py'))
+    else:
+        committed_coverage(summary, provenance['revision'])
+        if expected_hash is None or file_hash(path) != expected_hash:
+            raise ValueError('Retained validation coverage differs from staged producer coverage')
+    return {path.name}
+
+
+def validate_staged_groups(staged, package):
+    """Keep client namespaces in transport; only primary is registered remotely.
+
+    The existing restore API selects one dependency package, not a producer's
+    client workspace. Registering side maps there would change their namespace.
+    """
+    metadata = staged / 'mapping-groups.json'
+    if not metadata.exists():
+        # Original single-map public assets remain native-compatible.
+        expected = (mapping_artifacts(staged / 'outputs.jsonl')
+                    | {'outputs.jsonl', 'provenance.json'} | retained_coverage(staged, legacy=True))
+        if {path.name for path in staged.iterdir()} != expected:
+            raise ValueError('Missing/unexpected legacy native staging files')
+        for name in expected:
+            regular_file(staged / name)
+        return 0
+    document = json.loads(regular_file(metadata).read_text())
+    if not isinstance(document, dict) or document.get('schema') != 1:
+        raise ValueError('Invalid staged mapping group metadata')
+    groups = document.get('groups')
+    if not isinstance(groups, list) or not 1 <= len(groups) <= MAX_MAPPING_GROUPS:
+        raise ValueError('Invalid staged mapping group count')
+    expected = {'provenance.json', metadata.name} | retained_coverage(
+        staged, expected_hash=document.get('coverage_sha256'))
+    workspaces = set()
+    for index, group in enumerate(groups):
+        name = 'outputs.jsonl' if index == 0 else f'outputs.{index:04d}.jsonl'
+        if (not isinstance(group, dict) or set(group) != {'mapping', 'sha256', 'package', 'workspace'}
+                or group['mapping'] != name or not isinstance(group['package'], str)
+                or not group['package'] or not isinstance(group['workspace'], str)):
+            raise ValueError('Invalid staged mapping group identity')
+        workspace = Path(group['workspace'])
+        if (workspace.is_absolute() or '..' in workspace.parts
+                or str(workspace) != group['workspace'] or group['workspace'] in workspaces):
+            raise ValueError('Invalid staged relative producer workspace')
+        workspaces.add(group['workspace'])
+        if index == 0 and group['package'] != package:
+            raise ValueError('Primary staged mapping package does not match provenance')
+        path = staged / name
+        if group['sha256'] != file_hash(path):
+            raise ValueError('Corrupt staged mapping group')
+        expected.add(name)
+        expected.update(mapping_artifacts(path))
+    if {path.name for path in staged.iterdir()} != expected:
+        raise ValueError('Missing/unexpected staged native files')
+    for name in expected:
+        regular_file(staged / name)
+    return len(groups) - 1
+
+
+def stage(root, mappings, destination, repository, coverage=None):
+    root, destination = root.resolve(), Path(destination).absolute()
     revision = command(root, 'git', 'rev-parse', 'HEAD')
-    package = package_identity(tomllib.loads((root / 'lakefile.toml').read_text())['name'])
-    subprocess.run(['lake', 'cache', 'stage', str(mappings.resolve()), str(destination.resolve())],
-                   cwd=root, check=True)
-    provenance = dict(basis, package=package, repository=repository, revision=revision)
-    (destination / 'provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
+    coverage_snapshot = file_hash(coverage) if coverage is not None else None
+    groups = mapping_groups(root, mappings, coverage, revision)
+    repository_root = Path(command(root, 'git', 'rev-parse', '--show-toplevel')).resolve()
+    if (destination.resolve() != destination or destination.is_relative_to(repository_root)
+            or (destination.exists() and (not destination.is_dir() or any(destination.iterdir())))):
+        raise ValueError('Expected an empty external native staging destination')
+    # Parse all producer identities before any native command or destination write.
+    packages = [producer_package(cwd) for cwd, _ in groups]
+    snapshots = [file_hash(path) for _, path in groups]
+    configurations = [file_hash(cwd / 'lakefile.toml') for cwd, _ in groups]
+    for cwd, _ in groups:
+        relative = str((cwd / 'lakefile.toml').relative_to(repository_root))
+        committed = command(repository_root, 'git', 'show', f'{revision}:{relative}')
+        if committed != (cwd / 'lakefile.toml').read_text().strip():
+            raise ValueError('Native producer package configuration differs from checked source')
+    basis = identity(root)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='lake-native-groups-', dir=destination.parent) as temporary:
+        directory = Path(temporary)
+        combined = directory / 'combined'
+        combined.mkdir()
+        metadata = []
+        for index, ((cwd, path), package, snapshot) in enumerate(zip(groups, packages, snapshots)):
+            native = directory / f'{index:04d}'
+            subprocess.run(['lake', 'cache', 'stage', str(path.resolve()), str(native)],
+                           cwd=cwd, check=True)
+            if file_hash(path) != snapshot or file_hash(native / 'outputs.jsonl') != snapshot:
+                raise ValueError('Native mapping changed during staging')
+            expected = mapping_artifacts(path) | {'outputs.jsonl'}
+            if {item.name for item in native.iterdir()} != expected:
+                raise ValueError('Missing/unexpected native staged files')
+            output_name = 'outputs.jsonl' if index == 0 else f'outputs.{index:04d}.jsonl'
+            for item in native.iterdir():
+                regular_file(item)
+                target = combined / (output_name if item.name == 'outputs.jsonl' else item.name)
+                if target.exists():
+                    if file_hash(target) != file_hash(item):
+                        raise ValueError('Conflicting native staged artifact: ' + item.name)
+                else:
+                    shutil.copyfile(item, target)
+            metadata.append({'mapping': output_name, 'sha256': snapshot, 'package': package,
+                             'workspace': str(cwd.relative_to(repository_root))})
+        provenance = dict(basis, package=packages[0], repository=repository, revision=revision)
+        (combined / 'provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
+        if coverage is not None:
+            (combined / 'mapping-groups.json').write_text(json.dumps(
+                {'schema': 1, 'groups': metadata, 'coverage_sha256': coverage_snapshot}, indent=2) + '\n')
+            validate_staged_groups(combined, packages[0])
+        if (snapshots != [file_hash(path) for _, path in groups]
+                or configurations != [file_hash(cwd / 'lakefile.toml') for cwd, _ in groups]):
+            raise ValueError('Native producer input changed during staging')
+        if coverage is not None:
+            if file_hash(coverage) != coverage_snapshot:
+                raise ValueError('Producer coverage changed during staging')
+            clean_publication_source(root)
+        if command(root, 'git', 'rev-parse', 'HEAD') != revision:
+            raise ValueError('Checked source revision changed during staging')
+        if destination.exists():
+            destination.rmdir()
+        combined.rename(destination)
     name = artifact_prefix(basis, revision) + '-' + os.environ.get('GITHUB_RUN_ID', 'local')
     name += '-' + os.environ.get('GITHUB_RUN_ATTEMPT', '1')
     if output := os.environ.get('GITHUB_OUTPUT'):
@@ -177,6 +470,9 @@ def release(root, repository, revision, artifact):
         provenance = json.loads((staged / 'provenance.json').read_text())
         if provenance['repository'] != repository or provenance['revision'] != revision:
             raise ValueError('Staging artifact does not match the checked source revision')
+        if ((staged / 'mapping-groups.json').exists()
+                or (staged / 'validation-coverage.json').exists()):
+            validate_staged_groups(staged, provenance['package'])
         archive = directory / asset_name(provenance, revision)
         with tarfile.open(archive, 'w:gz', compresslevel=1) as transport:
             for path in sorted(staged.iterdir()):
@@ -213,6 +509,7 @@ def main():
     download.add_argument('--repositories', nargs='*', default=[])
     upload = actions.add_parser('stage')
     upload.add_argument('--mappings', type=Path, required=True)
+    upload.add_argument('--coverage', type=Path, help='Exact core mapping coverage sidecar')
     upload.add_argument('--destination', type=Path, required=True)
     upload.add_argument('--repository', required=True)
     publish = actions.add_parser('release')
@@ -224,7 +521,7 @@ def main():
     if args.mode == 'restore':
         restore(root, args.repositories)
     elif args.mode == 'stage':
-        stage(root, args.mappings, args.destination, args.repository)
+        stage(root, args.mappings, args.destination, args.repository, args.coverage)
     else:
         release(root, args.repository, args.revision, args.artifact)
 

@@ -45,9 +45,9 @@ class Commands:
                     native_fixture(package, name)
         value = {'receipt': receipt(task['command'], cwd)}
         if task['kind'] == 'environment':
-            paths = [str(self.root / '.lake/build/lib/lean'),
+            paths = list(dict.fromkeys([str(cwd / '.lake/build/lib/lean'), str(self.root / '.lake/build/lib/lean'),
                      str(self.root / '.lake/packages/batteries/.lake/build/lib/lean'),
-                     str(self.root / '.lake/packages/Cli/.lake/build/lib/lean')]
+                     str(self.root / '.lake/packages/Cli/.lake/build/lib/lean')]))
             Path(task['environment_output']).write_text(':'.join(paths) + '\n')
             value['search_path'] = paths
             value['output_sha256'] = file_hash(task['environment_output'])
@@ -58,7 +58,7 @@ class Commands:
                     native_fixture(cwd, name)
             value['native_modules'] = {n: module_identity(cwd, n) for n in task['identity_modules']}
         if task.get('mapping'):
-            Path(task['mapping']).write_text('{"native":"Lake-generated mapping fixture"}\n')
+            Path(task['mapping']).write_text('"2026-03-17"\n' + json.dumps(['0123456789abcdef', {'fixture': 'Lake-generated mapping'}]) + '\n')
             value['mapping_sha256'] = file_hash(task['mapping'])
         return value
 
@@ -497,7 +497,7 @@ class PipelineTests(unittest.TestCase):
         commands = Commands(self.root)
         self.native(commands)
         ids = [t['id'] for t in commands.calls]
-        self.assertLess(ids.index('prepare-client'), ids.index('reflection-environment'))
+        self.assertLess(ids.index('prepare-client'), ids.index('root/environment'))
         self.assertEqual(core.ReflectionGraph.stamp(manifest), stamp)
 
     def test_real_pending_math_cannot_finalize_after_only_source_or_empty_native_record(self):

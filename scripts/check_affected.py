@@ -7,17 +7,12 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-import tempfile
 from urllib.parse import unquote
 
-from affected_scope import ROOT, select, validate
-from ci_audit import audit_command
-from library_sources import lean_imports, module_path
-
-
-def run(root, command):
-    print('+ ' + ' '.join(map(str, command)), flush=True)
-    subprocess.run(list(map(str, command)), cwd=root, check=True)
+from affected_scope import ROOT
+from lean_ci.engine import Application
+from lean_ci.resources import ResourceConfig
+from lean_ci.runtime import NativeRuntime
 
 
 def check_links(root, paths):
@@ -36,140 +31,16 @@ def check_links(root, paths):
 
 
 def execute(root, plan, directory, source_only=False, native_only=False, rehash=False,
-            ci=False, outputs=None, phases=None):
-    validate(root, plan)
-    phases = set(phases or ['providers', 'provider-lint', 'consumers', 'trust', 'client'])
-    if not native_only:
-        for script in ['generate_imports.py', 'check_library_layout.py',
-                       'check_placeholders.py', 'check_source_policy.py']:
-            run(root, ['python3', 'scripts/' + script] + (['--check'] if script == 'generate_imports.py' else []))
-        check_links(root, plan['changed'])
-        for test in plan['tooling_tests']:
-            if test == 'native-cache':
-                run(root, ['python3', '-m', 'unittest', 'discover', '-s', '.github/actions/lake-cache', '-p', 'test_*.py'])
-            else:
-                run(root, ['python3', '-m', 'unittest', 'discover', '-s', 'scripts', '-p', test + '.py'])
-    if source_only or not plan['native']:
-        if plan['native']:
-            print('Source/tooling phase completed; selected Lean checks remain required.')
-        else:
-            print('Source/tooling scope only; this invocation performs no Lean validation.')
-        return
-    directory.mkdir(parents=True, exist_ok=True)
-    mappings = []
-    audit_targets = []
-    lake = ['lake'] + (['--rehash'] if rehash else [])
-    env = os.environ
-    env['LEAN_NUM_THREADS'] = '1'
-
-    def safe(phase, command, cwd=root):
-        run(cwd, ['python3', root / 'scripts/resource_guard.py', '--capped-toolchain',
-                  '--receipt', directory / (phase + '.json'), '--', *command])
-
-    def build(phase, names, cwd=root):
-        if not names:
-            return
-        facades = {n.removeprefix('client:') for n in plan['facades']
-                   if n.startswith('client:') == (cwd != root)}
-        # Import-only consumers may be very broad. Never fill their unrelated cold
-        # imports by accident: recover the matching cache, then retry this phase.
-        unrelated = set()
-        for target in set(names) & facades:
-            key = ('client:' if cwd != root else '') + target
-            unrelated.update(n.removeprefix('client:') for n in plan['imports'][key]
-                             if n.removeprefix('client:') not in names)
-        if unrelated:
-            safe(phase + '-cached-imports', lake + ['--no-build', 'build', *sorted(unrelated)], cwd)
-        mapping = directory / (phase + '-outputs.jsonl')
-        command = ['python3', root / 'scripts/build_serial.py', '--receipt-dir',
-                   directory / phase] + (['--rehash'] if rehash else [])
-        if cwd == root:
-            command += ['--outputs', mapping]
-            mappings.append(mapping)
-        run(cwd, command + names)
-
-    def lint(phase, names, styles=None):
-        nonlocal runtime_prepared
-        if ci and not runtime_prepared and (names or styles):
-            modules = set()
-            for driver in ['.lake/packages/batteries/scripts/runLinter.lean',
-                           '.lake/packages/mathlib/scripts/lint-style.lean']:
-                modules.update(n for n in lean_imports((root / driver).read_text())
-                               if n.startswith(('Batteries.', 'Mathlib.', 'Cli.', 'ImportGraph.')))
-            if modules:
-                safe(phase + '-linter-runtime', lake + ['build', *('+' + n for n in sorted(modules))])
-            runtime_prepared = True
-        if names:
-            # Imported server environments retain regions until process exit.
-            # Numeric receipt suffixes stay safe for every exact module name.
-            for index, name in enumerate(names, 1):
-                safe(f'{phase}-builtin-{index:04d}',
-                     lake + ['--no-build', 'lint', '--builtin-only', name])
-            safe(phase + '-declarations', ['python3', 'scripts/run_declaration_linter.py', *names])
-        if styles:
-            safe(phase + '-style', ['python3', 'scripts/run_style_linter.py', '--modules', *styles])
-
-    runtime_prepared = False
-    if 'providers' in phases:
-        build('providers', plan['providers'])
-    if 'provider-lint' in phases:
-        lint('providers', plan['providers'], plan['providers'])
-    if 'consumers' in phases:
-        # Build implementations before import-only facades; test roots follow tests.
-        build('consumers', plan['consumers'])
-        build('tests', plan['tests'])
-        rest = sorted(set(plan['style']) - set(plan['providers']))
-        lint('consumers', [n for n in plan['consumers'] + plan['tests'] if n not in plan['facades']], rest)
-    if 'trust' in phases and plan['trust']:
-        audit_targets = ['AglibTest.AuditSupport']
-        if 'AglibTest.AuditCoverage' not in plan['tests']:
-            audit_targets.append('AglibTest.AuditCoverage')
-        build('audit-support', audit_targets)
-        if 'AglibTest/AuditSupport.lean' in plan['changed']:
-            lint('audit-support', ['AglibTest.AuditSupport'])
-        selected = [n for n in plan['providers'] + plan['consumers'] + plan['tests'] if n not in plan['facades']]
-        if 'AglibTest/AuditSupport.lean' in plan['changed']:
-            selected.append('AglibTest.AuditSupport')
-        # Reuse the maintained origin auditor, including private/generated names.
-        # No production root is imported just to discover its unrelated modules.
-        safe('axioms', audit_command(root, selected or ['AglibTest.AuditCoverage']))
-        if 'AglibTest/Axioms.lean' in plan['changed']:
-            safe('legacy-audit-cached-imports', lake + ['--no-build', 'build',
-                 'Aglib', 'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'])
-            safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'AglibTest/Axioms.lean'])
-        if plan.get('controls', True):
-            safe('negative-controls', ['python3', 'scripts/check_negative_controls.py'])
-        else:
-            print('Negative-control inputs unchanged; not rerun in this invocation. Reuse prior compatible '
-                  'coverage, or run python3 scripts/check_negative_controls.py if that coverage is absent.')
-        required = [*plan['providers'], *plan['consumers'], *plan['tests'], *audit_targets]
-        run(root, ['python3', 'scripts/check_compiled_inventory.py', '--modules', *required])
-    if 'client' in phases and plan['client_audit']:
-        run(root, ['python3', 'scripts/prepare_downstream.py'])
-        client = root / 'examples/downstream'
-        build('client', plan['client'], client)
-        # The existing independent audit requires Consumer. Its imports must be
-        # cached before that aggregate is built, just like other broad facades.
-        safe('client-cached-audit-import', lake + ['--no-build', 'build', 'Consumer'], client)
-        safe('client-audit', ['lake', 'env', 'lean', '-j1', 'Audit.lean'], client)
-    validate(root, plan)
-    if outputs and mappings:
-        if phases != {'providers', 'provider-lint', 'consumers', 'trust', 'client'}:
-            raise ValueError('Export requires the complete selected validation, not a single-phase repair')
-        # Consume successful build mappings; export never schedules another build.
-        outputs.parent.mkdir(parents=True, exist_ok=True)
-        with outputs.open('x') as stream:
-            for mapping in mappings:
-                stream.write(mapping.read_text())
-        outputs.with_suffix(outputs.suffix + '.coverage.json').write_text(json.dumps({
-            'coverage': plan['coverage'], 'base': plan['base'], 'head': plan['head'],
-            'selected_targets': plan['providers'] + plan['consumers'] + plan['tests']
-                                + audit_targets,
-            'kernel_replay': 'not-requested; formal-acceptance evidence tracked externally',
-            'negative_controls': ('executed' if plan['trust'] and plan.get('controls', True) else
-                                  'unchanged-inputs; prior-compatible-coverage-required' if plan['trust'] else
-                                  'not-selected'),
-        }, indent=2) + '\n')
+            ci=False, outputs=None, phases=None, *, executor=None, toolchain=None):
+    """Compatibility entry; shared execution always guards native work with --rehash."""
+    from ci_pipeline import AglibLocalAdapter
+    if outputs and phases and set(phases) != {'providers', 'provider-lint', 'consumers', 'trust', 'client'}:
+        raise ValueError('Export requires the complete selected validation, not a single-phase repair')
+    adapter = AglibLocalAdapter(plan, source_only=source_only, native_only=native_only, phases=phases)
+    config = ResourceConfig(prefix='AGLIB', profile_keys=('R5_LEAN_REMOTE_PROFILE',))
+    application = Application(root, adapter, NativeRuntime(root, resource_config=config))
+    return application.check(directory, progress=(directory / 'check-progress') if directory else None,
+                             outputs=outputs, executor=executor, toolchain=toolchain)
 
 
 def main():
@@ -189,12 +60,23 @@ def main():
             raise ValueError('Use either a guarded --plan or --base/--head')
         if args.source_only and args.native_only:
             raise ValueError('--source-only and --native-only are mutually exclusive')
-        plan = json.loads(args.plan.read_text()) if args.plan else select(ROOT, args.base, args.head)
+        plan = json.loads(args.plan.read_text()) if args.plan else None
         directory = Path(os.environ['AGLIB_VERIFY_DIR']).resolve() if 'AGLIB_VERIFY_DIR' in os.environ else None
-        if directory is None and plan['native'] and not args.source_only:
-            directory = Path(tempfile.mkdtemp(prefix='aglib-affected-'))
-        execute(ROOT, plan, directory, args.source_only, args.native_only,
-                args.rehash, args.ci, args.outputs, args.phase)
+        if plan is not None:
+            execute(ROOT, plan, directory, args.source_only, args.native_only,
+                    args.rehash, args.ci, args.outputs, args.phase)
+        else:
+            from ci_pipeline import AglibLocalAdapter
+            from lean_ci.engine import Application
+            from lean_ci.resources import ResourceConfig
+            from lean_ci.runtime import NativeRuntime
+            if args.outputs and args.phase and set(args.phase) != {'providers', 'provider-lint', 'consumers', 'trust', 'client'}:
+                raise ValueError('Export requires complete selected validation')
+            adapter = AglibLocalAdapter(head=args.head, source_only=args.source_only,
+                                       native_only=args.native_only, phases=args.phase)
+            config = ResourceConfig(prefix='AGLIB', profile_keys=('R5_LEAN_REMOTE_PROFILE',))
+            Application(ROOT, adapter, NativeRuntime(ROOT, resource_config=config)).check(
+                directory, requested_base=args.base, outputs=args.outputs)
         return 0
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print('Affected check failed: ' + str(error), file=sys.stderr)

@@ -149,7 +149,7 @@ class ResourceTests(unittest.TestCase):
                     result = build.build(root, ['Quartz.Base'], Path(run_directory), rehash=True,
                                          environment={}, config=config)
                 self.assertEqual(len(attempts), launches)
-                self.assertEqual(attempts[0], ['lake', '--rehash', '--no-build', 'build', 'Quartz.Base'])
+                self.assertEqual(attempts[0], ['lake', '--rehash', '--no-build', 'build', '+Quartz.Base'])
                 self.assertEqual(result, 0 if launches == 2 else code)
 
     def test_managed_identity_binds_wrapper_physical_runtime_and_json_stable_config(self):

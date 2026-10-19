@@ -15,35 +15,35 @@ for rename/delete closure. The JSON plan binds the Git baseline, checked HEAD,
 selected sources and configuration bytes. Missing bases, pin/configuration changes
 and unknown paths fail closed instead of selecting full roots.
 
-`check_affected.py` executes cheap source/link checks and affected Python fixtures,
-then provider compilation, provider declaration/style lint, affected consumer/test
-compilation and lint, origin/negative/inventory checks, and affected client checks.
-Markdown and documentation-evidence JSON changes stop after static checks. Native
-setup and cache publication are skipped entirely for those changes. Affected
-import-only facades remain compiled consumers: their unrelated imports must
-already be cached, or their cache-only prerequisite check fails without fallback.
-Whole roots are selected only when the graph actually makes them consumers.
+`check_affected.py` is the local entry to Aglib's shared recipe and executor.
+It selects observed working-tree inputs, runs cheap source/link checks and
+applicable Python fixtures, validates one native graph, then runs the declared
+lint, trust and client groups. Markdown and documentation-evidence JSON changes
+stop after static checks, without native setup or publication. Unrelated imports
+must pass a cache-only preflight before affected facades or umbrella checks can
+consume them; a missing cache does not authorize unrelated cold compilation.
 
-Lake builtin lint runs on selected compiled implementation modules with explicit
-`--no-build lint --builtin-only` targets; facades retain compile/source-style
-coverage. CI prepares only named pinned linter-runtime imports in its owned
-dependency caches; local helpers preserve shared dependency caches.
+Builtin lint and the unchanged Batteries driver run separately on the complete
+`Aglib` and `AglibTest` environments. These are the accepted ordinary final-check
+predicates. Selected text/style checks run once through `run_style_linter.py`.
 
-The declaration linter uses `run_declaration_linter.py` to adapt the pinned
-Batteries source with explicit module arguments and `--no-build`. It retains every
-enabled check, nolints handling and failure semantics, filtering only the original
-declaration enumeration to exact defining-module origins. Consumers are linted
-after compilation when their imported environment changes, without repeating
-completed provider lint or unrelated imported origins. Text/style lint selects
-changed files only. Both enumeration adapters fail on unrecognized driver text. `run_style_linter.py --modules MODULE ...` runs the
-pinned Mathlib options, `lintModules`, naming and script-documentation checks with
-exact module enumeration. Its isolated driver adapter replaces only the pinned
-umbrella-import enumeration block and fails if that block is unrecognized. The
-no-argument style helper retains the original comprehensive driver behavior.
-No dependency cache is overwritten by either helper.
+`run_declaration_linter.py` remains a required adapter for the selected
+`AglibTest.AuditSupport` exact-origin check and selected `Tools.*` origins outside
+the two library umbrellas. It preserves every enabled Batteries check, nolints
+handling and failure behavior while filtering the declaration enumeration by
+origin. It is not the ordinary production/test leaf-lint path. A diagnostic
+exact-origin pass on an `Aglib.*` or `AglibTest.*` leaf cannot discharge that
+library's required umbrella check.
 
-The selected trust audit imports exact selected implementations plus the maintained
-`AglibTest.AuditSupport` and uses its existing defining-module origin policy.
+`run_style_linter.py --modules MODULE ...` retains the pinned Mathlib options,
+`lintModules`, naming and script-documentation checks with exact source
+selection. Its enumeration adapter fails on unrecognized driver text; the
+no-argument helper retains comprehensive driver behavior. Neither helper
+overwrites dependency caches.
+
+The trust group imports the accepted production/test umbrellas plus selected
+extra origins and the maintained `AglibTest.AuditSupport`, retaining its existing
+defining-module origin policy.
 Both local and CI routes execute the committed
 [SelectedAudit.lean](../ci/lean/SelectedAudit.lean) program through `ci_audit.py`,
 passing validated module-name components as JSON data. Neither route generates
@@ -69,12 +69,12 @@ runtime basis of that check.
 
 After final-check repairs use `--phase providers`, `--phase provider-lint`,
 `--phase consumers`, `--phase trust` or `--phase client` (repeatable), optionally
-`--native-only`, for only failed or newly invalidated categories. Use a fresh
-`AGLIB_VERIFY_DIR` for each build invocation; preserve matching prior receipts.
+`--native-only`, for only failed or newly invalidated categories. Reuse the same
+external `AGLIB_VERIFY_DIR` to retain compatible completed check successes.
 Compilation alone does not discharge independent lint/test/trust coverage.
-The [direct module repair commands](../docs/DEVELOPMENT.md#local-verification-and-ci)
-cover provider lint, a late test and a late client without repeating completed
-categories.
+The [shared repair commands](../docs/DEVELOPMENT.md#local-verification-and-ci)
+retain the required umbrella and client predicates without repeating compatible
+completed categories.
 
 `check.sh --full [--source-only] [--rehash] [--ci]` retains separately requested
 whole-library diagnostics. Without literal `--full`, `check.sh` requires an
@@ -377,6 +377,13 @@ prints the same validated roots after dependency resolution. Markdown-only plans
 skip dependency resolution and cache work; missing sources or basis fail without
 an unscoped fetch. The stricter original `--bootstrap-cache` gate remains unchanged.
 The CI runner and resource profile are defined in `.github/workflows/ci.yml`.
+Local final checks require matching prepared dependencies and
+`python3 scripts/prepare_downstream.py` before validation. Use an external
+`AGLIB_VERIFY_DIR`; retries in that state reuse compatible completed checks.
+The local entry and committed CI use the same `lean_ci.recipe` and task runner,
+with different source/CI admission boundaries. Production and test declaration
+lint use their accepted umbrella environments; old exact-origin successes do
+not become umbrella coverage. A source-only scope performs no cache setup.
 Its incremental `check.sh --base BASE --rehash --ci` mode retains selected
 compilation, linters, axiom audits and affected client checks. Selected local and
 CI code checks do not request extra kernel replay. Mathematical adoption uses
@@ -419,7 +426,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `test_build_serial.py` | Checks target validation, single-graph scheduling, strict cache-miss fallback, preserved probe logs, and compiler-wrapper argument caps using a small Python executable. |
 | `check.sh` | Incremental final-check adapter; accepts `--base`/`--head`, guarded `--plan`, `--source-only`, `--native-only`, `--phase`, `--outputs`, `--rehash` and `--ci`. Comprehensive diagnostics require literal `--full`. |
 | `affected_scope.py` | Pure-source Git/import-graph selector; accepts `--base`/`--head` or explicit `--full`, `--output` and `--github-output`. |
-| `check_affected.py` | Executes guarded selected final checks and success-only native mapping export without broad-root fallback. |
+| `check_affected.py` | Thin dirty-worktree entry over the shared Aglib native recipe/executor; observes inputs before selection and preserves successful checks after later failures. |
 | `test_affected_scope.py` | Small import/Git fixtures and mocked commands for changed providers, consumers, renames/deletes, fail-closed scope, lint ordering, documentation skips and export coverage. |
 | `cache_ci.py` | Resolves validated affected-plan Mathlib roots and fetches their proof caches through the serialized capped toolchain and resource guard; source-only plans skip dependency and cache work. |
 | `test_cache_ci.py` | Mocked checks for exact cache-root forwarding, source-only skips, and fail-closed rejection of missing scope or dependency inputs. |
@@ -438,7 +445,7 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `check_source_policy.py` | Any option with an exact `maxHeartbeats` name component, including `synthInstance.maxHeartbeats`, must use a positive finite budget scoped to one declaration with an explanatory comment after `in`. Aglib rejects `0` (unlimited), including documented local zero budgets; this is stricter than pinned Mathlib. Copyright headers require nonempty author credits while original extraction notices are preserved. Other fixed source safety remains enforced; comment quality and budget necessity remain author judgments. Accepts `--root PATH`. |
 | `check_compiled_inventory.py` | Matches the root-owned compiled replay view to current source; rejects deleted/old-prefix artifacts and negative controls in the positive view. Accepts `--root PATH`. |
 | `check_negative_controls.py` | Compiles isolated control data in a temporary overlay and requires the specific imported/current-module axiom rejection. Setup errors cannot count as rejection. |
-| `run_declaration_linter.py` | Executes all pinned Batteries checks on exact defining-module origins through an isolated enumeration adapter; never builds project or dependency modules. |
+| `run_declaration_linter.py` | Required exact-origin Batteries adapter for selected AuditSupport and Tools origins; leaf diagnostics do not replace ordinary umbrella validation. Never builds project or dependency modules. |
 | `run_style_linter.py` | Runs the exact pinned style driver through a temporary optional-module overlay. `--check-prerequisites --sysroot PATH` inspects direct driver/source prerequisites without Lake, compilation, or writes. |
 | `prepare_downstream.py` | Prepares the independently configured client's manifest and dependency-cache link from the pinned root manifest. It preserves the root manifest and existing dependency sources. |
 | `migration_helpers.py` | Read-only transitional inspection of initial-extraction routing and namespace maps. `read_source` requires an explicit source root, exact Git revision, and exact source SHA-256; `write_source` and `record` are retired and always fail before writes. It is not the redesigned-source authoring pipeline or a production dependency. |

@@ -97,9 +97,21 @@ def expected_cache_miss(code, output):
         error == 'target is out-of-date and needs to be rebuilt' for error in errors)
 
 
-def build(root, targets, directory, rehash=False, outputs=None, *, environment=None, config=None):
+def native_targets(targets, selection='module'):
+    """Render Lake selectors only here; callers and source queries use bare names."""
+    if selection not in ('module', 'library'):
+        raise ValueError('Build selection must be module or library')
+    names = list(targets)
+    for name in names:
+        module_path(name)  # Reject already-rendered selectors and malformed names.
+    return [('+' + name) if selection == 'module' else name for name in names]
+
+
+def build(root, targets, directory, rehash=False, outputs=None, *, environment=None, config=None, selection='module'):
     directory.mkdir(parents=True, exist_ok=True)
-    source_order(root, targets)
+    selectors = native_targets(targets, selection)
+    if selection == 'module':
+        source_order(root, targets)
     lake = ['lake'] + (['--rehash'] if rehash else [])
     output_args = ['-o', str(outputs.resolve())] if outputs is not None else []
     if outputs is not None:
@@ -113,7 +125,7 @@ def build(root, targets, directory, rehash=False, outputs=None, *, environment=N
         # Each receipt directory owns one probe. Preserve earlier evidence rather
         # than silently overwriting it when a caller accidentally reuses a path.
         with log.open('x') as output:
-            code = run(lake + ['--no-build', 'build', *targets, *output_args], cwd=root, env=env,
+            code = run(lake + ['--no-build', 'build', *selectors, *output_args], cwd=root, env=env,
                        receipt=directory / 'cached-check.json', budget=budget, config=config,
                        stdout=output, stderr=output)
         if code == 0:
@@ -125,6 +137,6 @@ def build(root, targets, directory, rehash=False, outputs=None, *, environment=N
             print(diagnostics, file=sys.stderr, end='' if diagnostics.endswith('\n') else '\n')
             return code
         print(f'Build cache miss; building requested targets (probe log: {log}).', flush=True)
-        return run(lake + ['build', *targets, *output_args], cwd=root, env=env,
+        return run(lake + ['build', *selectors, *output_args], cwd=root, env=env,
                    receipt=directory / 'graph-build.json', budget=budget, config=config)
 

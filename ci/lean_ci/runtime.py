@@ -80,16 +80,36 @@ class NativeRuntime:
         directory.mkdir(parents=True, exist_ok=True)
         cwd, command = Path(task['cwd']), task['command']
         generated_stamp = None
+        generated_path = None
         if task.get('generated'):
-            Path(command[-1]).write_text(task['generated'])
-            generated_stamp = ReflectionGraph.stamp(Path(command[-1]))
+            index = task.get('generated_argument_index', -1)
+            generated_path = Path(task.get('generated_path', command[index]))
+            if not generated_path.is_absolute():
+                generated_path = cwd / generated_path
+            argument_path = Path(command[index])
+            if not argument_path.is_absolute():
+                argument_path = cwd / argument_path
+            if argument_path.resolve() != generated_path.resolve():
+                raise ValueError('Generated input path does not match its actual command argument')
+            generated_path.parent.mkdir(parents=True, exist_ok=True)
+            generated_path.write_text(task['generated'])
+            generated_stamp = ReflectionGraph.stamp(generated_path)
         if task['kind'] == 'build':
             before = {n: self.trace_stamp(cwd, n) for n in task['modules']}
-            code = build.build(cwd, task['modules'], directory, rehash=True, environment=self.environment, config=self.resource_config)
+            selection = task.get('build_selection', 'library')
+            selectors = build.native_targets(task['modules'], selection)
+            mapping = Path(task['mapping']) if task.get('mapping') else None
+            expected = ['lake', '--rehash', 'build', *selectors]
+            if mapping is not None:
+                expected += ['-o', str(mapping.resolve())]
+            if command != expected:
+                raise ValueError('Build task command disagrees with semantic targets/selection')
+            code = build.build(cwd, task['modules'], directory, rehash=True, outputs=mapping,
+                               environment=self.environment, config=self.resource_config, selection=selection)
             if code:
                 raise ValueError(f'Selected build failed ({code}): {task["id"]}')
             cached = read_json(directory / 'cached-check.json')
-            if valid_receipt(cached, ['lake', '--rehash', '--no-build', 'build', *task['modules']], cwd):
+            if valid_receipt(cached, expected[:2] + ['--no-build'] + expected[2:], cwd):
                 receipt, performed = cached, False
             else:
                 if (cached.get('exit_code') != 3 or cached.get('guard_failure', 'missing') is not None
@@ -100,8 +120,9 @@ class NativeRuntime:
                 if not valid_receipt(receipt, command, cwd):
                     raise ValueError('Selected build has no successful guarded native graph receipt')
             compiled = [n for n in task['modules'] if performed and self.trace_stamp(cwd, n) != before[n]]
-            return {'receipt': receipt, 'compiled_or_refreshed': compiled,
-                    'reused_build_targets': [] if performed else task['modules']}
+            result = {'receipt': receipt, 'compiled_or_refreshed': compiled,
+                      'reused_build_targets': [] if performed else task['modules']}
+            return self._outputs(task, result)
         before = {n: self.trace_stamp(cwd, n) for n in task.get('modules', [])}
         budget = resources.limits(self.environment, config=self.resource_config)
         receipt_path = directory / 'resource.json'
@@ -117,8 +138,8 @@ class NativeRuntime:
         else:
             code = resources.run(command, cwd=cwd, env=self.environment, receipt=receipt_path, budget=budget, config=self.resource_config)
         receipt = read_json(receipt_path)
-        if task.get('generated') and (Path(command[-1]).read_text() != task['generated']
-                                     or ReflectionGraph.stamp(Path(command[-1])) != generated_stamp):
+        if generated_path is not None and (generated_path.read_text() != task['generated']
+                                           or ReflectionGraph.stamp(generated_path) != generated_stamp):
             raise ValueError('Generated audit input drifted during execution')
         if code or not valid_receipt(receipt, cwd=cwd) or not command_matches(command, receipt['command']):
             diagnostic = '; recover matching caches for the missing scope; no cold-build fallback' if task['id'].endswith(('cached-imports', 'graph')) else ''
@@ -130,6 +151,10 @@ class NativeRuntime:
         if task['kind'] == 'graph-build':
             result['compiled_or_refreshed'] = [n for n in task['modules'] if self.trace_stamp(cwd, n) != before[n]]
             result['reused_build_targets'] = [n for n in task['modules'] if self.trace_stamp(cwd, n) == before[n]]
+        return self._outputs(task, result)
+
+    def _outputs(self, task, result):
+        cwd = Path(task['cwd'])
         if task.get('mapping'):
             path = Path(task['mapping'])
             if not path.is_file() or not path.stat().st_size:

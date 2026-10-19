@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import unittest
 
-from lean_ci.github import BaselineError, EvidenceProtocol, select
+from lean_ci.github import BaselineError, CoreRecipeVersion, EvidenceProtocol, reviewed_recipe, select
 
 
 def sha(value):
@@ -129,6 +129,43 @@ class ForeignProtocolTests(unittest.TestCase):
             self.choose(protocol=replace(legacy, legacy_heads=frozenset()))
         with self.assertRaises(BaselineError):
             replace(legacy, legacy_heads={'trunk'})
+
+    def test_current_owner_set_binds_every_new_helper(self):
+        self.write('tools/new_helper.py', b'new reviewed helper\n')
+        current = self.commit('new owner set')
+        paths = (*self.recipes, 'tools/new_helper.py')
+        values = (*[sha(value) for value in self.recipes.values()], sha(b'new reviewed helper\n'))
+        protocol = replace(self.protocol, core_entrypoint_paths=paths, core_recipes={values})
+        self.assertIsNotNone(reviewed_recipe(self.root, current, 'core', protocol))
+        self.write('tools/new_helper.py', b'unreviewed helper change\n')
+        changed = self.commit('changed helper')
+        self.assertIsNone(reviewed_recipe(self.root, changed, 'core', protocol))
+
+    def test_historical_explicit_owner_set_survives_absent_new_helpers(self):
+        version = CoreRecipeVersion(tuple(self.recipes), self.protocol.core_recipes, {self.anchor})
+        protocol = replace(self.protocol,
+            core_entrypoint_paths=(*self.recipes, 'tools/not-yet-existing.py'), core_recipes=frozenset(),
+            historical_core_recipes=(version,))
+        identity = reviewed_recipe(self.root, self.anchor, 'core', protocol)
+        self.assertEqual(identity, {path: sha(value) for path, value in self.recipes.items()})
+        self.assertIsNone(reviewed_recipe(self.root, self.head, 'core', protocol))
+        self.assertIsNone(reviewed_recipe(self.root, self.anchor, 'core',
+                                        replace(protocol, historical_core_recipes=())))
+
+    def test_historical_layout_and_protocol_shape_are_exact(self):
+        version = CoreRecipeVersion(('tools/other_layout.py',), {(sha(b'wrong layout'),)}, {self.anchor})
+        protocol = replace(self.protocol, core_entrypoint_paths=('tools/new.py',), core_recipes=frozenset(),
+                           historical_core_recipes=(version,))
+        self.assertIsNone(reviewed_recipe(self.root, self.anchor, 'core', protocol))
+        with self.assertRaises(BaselineError):
+            CoreRecipeVersion(tuple(self.recipes), {(sha(b'short tuple'),)}, {self.anchor})
+        with self.assertRaises(BaselineError):
+            CoreRecipeVersion(tuple(self.recipes), self.protocol.core_recipes, {'trunk'})
+        for heads in (None, frozenset()):
+            with self.assertRaises(BaselineError):
+                CoreRecipeVersion(tuple(self.recipes), self.protocol.core_recipes, heads)
+        with self.assertRaises(BaselineError):
+            replace(self.protocol, historical_core_recipes=({'paths': tuple(self.recipes)},))
 
     def test_selector_does_not_mutate_project_build_progress_or_source(self):
         cached = self.root / '.lake/build/partial.olean'

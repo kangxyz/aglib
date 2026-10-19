@@ -150,6 +150,7 @@ class TemporalInputs:
         self.files, self.missing, self.components = {}, set(), {}
         self.resolution = {}
         self.hash_count = 0
+        self.directories = {}
 
     @staticmethod
     def stat_identity(value):
@@ -215,6 +216,31 @@ class TemporalInputs:
                 parent = parent.parent
         return state
 
+    def observe_directory(self, path, excluded=()):
+        """Watch source enrollment names, excluding explicit ignored setup entries.
+
+        File bytes and absent/shadow candidates are separately observed. Unlike
+        an absent candidate guard, this inventory does not certify transient
+        create/remove events for names absent at both observations.
+        """
+        path = Path(path).absolute()
+        self.observe_components(path)
+        excluded = tuple(sorted(set(excluded)))
+        if any('/' in name or name in ('', '.', '..') for name in excluded):
+            raise ValueError('Directory exclusions must be immediate entry names')
+        value = self.directory_state(path, excluded)
+        key = (path, excluded)
+        if key in self.directories and self.directories[key] != value:
+            raise InputDrift('Source enrollment directory changed: ' + str(path))
+        self.directories[key] = value
+        return value
+
+    @classmethod
+    def directory_state(cls, path, excluded):
+        return (cls.component_state(path), sorted(
+            (entry.name, stat.S_IFMT(entry.lstat().st_mode)) for entry in path.iterdir()
+            if entry.name not in excluded))
+
     def hash_file(self, path):
         path = Path(path).absolute()
         self.observe_components(path)
@@ -234,6 +260,9 @@ class TemporalInputs:
         return value
 
     def assert_stable(self):
+        for (path, excluded), value in self.directories.items():
+            if self.directory_state(path, excluded) != value:
+                raise InputDrift('Source enrollment directory changed: ' + str(path))
         for path, (stamp, _) in self.files.items():
             if self.stamp(path) != stamp:
                 raise InputDrift('Reflective input changed during this attempt: ' + str(path))
@@ -408,6 +437,12 @@ def arguments_match(expected, actual):
         if Path(actual[2]).name != 'lean':
             return False
         actual[2] = 'lean'
+    if len(actual) == len(expected):
+        for index, argument in enumerate(expected):
+            if argument == '<generated-input>':
+                if not str(actual[index]).endswith('.lean'):
+                    return False
+                actual[index] = argument
     if expected and expected[-1] == '<selected-origin-audit>' and len(actual) == len(expected):
         if not str(actual[-1]).endswith('.lean'):
             return False

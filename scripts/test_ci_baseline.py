@@ -186,6 +186,19 @@ class BaselineTests(unittest.TestCase):
         with patch('ci_baseline.REVIEWED_CORE_RECIPES', baseline.REVIEWED_CORE_RECIPES | {identity}):
             self.assertEqual(self.choose(api())['base'], self.head)
 
+    def test_historical_owner_bytes_cannot_admit_an_unfrozen_source_head(self):
+        version = baseline.HISTORICAL_CORE_RECIPES[-1]
+        head = next(iter(version.heads))
+        for path in version.paths:
+            self.write(path, subprocess.check_output(['git', 'show', head + ':' + path], cwd=SOURCE_ROOT))
+        historical_workflow = subprocess.check_output(['git', 'show', head + ':' + baseline.WORKFLOW],
+                                                       cwd=SOURCE_ROOT, text=True)
+        self.head = self.save(historical_workflow, 'same historical owner bytes at an unreviewed head')
+        self.assertNotIn(self.head, version.heads)
+        self.assertIsNone(baseline.reviewed_recipe(self.root, self.head, 'core'))
+        result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
+        self.assertEqual(result['base'], self.anchor)
+
     def test_unsafe_7e6_core_recipe_is_not_enrolled(self):
         # The rejected prototype predates the package owners. Missing owners
         # must reject it as well as an unknown complete implementation tuple.
@@ -421,6 +434,48 @@ class APITransportTests(unittest.TestCase):
                 sent.full_url, 403, 'rate limited', {}, None)):
             with self.assertRaisesRegex(BaselineError, 'API evidence unavailable'):
                 api.get('')
+
+
+class HistoricalCoreCorrespondenceTests(unittest.TestCase):
+    def test_all_four_literal_historical_vectors_match_exact_git_heads(self):
+        import ast
+        old_source = subprocess.check_output(['git', 'show', '342cd1d:scripts/ci_baseline.py'],
+                                            cwd=SOURCE_ROOT, text=True)
+        assignment = next(node for node in ast.parse(old_source).body if isinstance(node, ast.Assign)
+                          and any(isinstance(target, ast.Name) and target.id == 'REVIEWED_CORE_RECIPES'
+                                  for target in node.targets))
+        original_vectors = ast.literal_eval(assignment.value.args[0])
+        versions = baseline.HISTORICAL_CORE_RECIPES
+        self.assertEqual(len(versions), 4)
+        self.assertEqual({recipe for version in versions for recipe in version.recipes}, original_vectors)
+        self.assertEqual({head for version in versions for head in version.heads}, {
+            'fd73486f3b9d2caaee5da270262ec3835f12b17d',
+            '57c4890c4cee91a08c8808113ea0743725db741d',
+            'b64c2df629c330a117c1ca84affd6dfd8a661ee1',
+            '342cd1db043808e2a45ff60f6bdc728ef3058ed1'})
+        for version in versions:
+            self.assertEqual(len(version.paths), 23)
+            self.assertEqual(len(version.heads), 1)
+            identity = baseline.reviewed_recipe(SOURCE_ROOT, next(iter(version.heads)), 'core')
+            self.assertIsNotNone(identity)
+            self.assertIn(tuple(identity[path] for path in version.paths), version.recipes)
+
+    def test_current_full_owner_vector_and_coverage_workflow_match_actual_reviewed_bytes(self):
+        paths = baseline.CORE_ENTRYPOINT_PATHS
+        self.assertEqual(len(paths), 28)
+        self.assertEqual(paths[:23], baseline.HISTORICAL_CORE_ENTRYPOINT_PATHS)
+        self.assertEqual(paths[23:], tuple('ci/lean_ci/' + name + '.py'
+                         for name in ('execution', 'local', 'recipe', 'mappings', 'frozen')))
+        actual = tuple(hashlib.sha256((SOURCE_ROOT / path).read_bytes()).hexdigest() for path in paths)
+        self.assertEqual(baseline.REVIEWED_CORE_RECIPES, frozenset({actual}))
+        self.assertEqual(actual[-1], '80806de1992ace1d0538ed97ac67796ed5e0f85c5b769553be749f07b6d9af1e')
+        workflow_hash = hashlib.sha256((SOURCE_ROOT / baseline.WORKFLOW).read_bytes()).hexdigest()
+        self.assertEqual(workflow_hash, 'e98acc7b5268361080b1e71642db9c6791dadb8a5e90d9d44258fe00f4f08a1c')
+        self.assertEqual(baseline.REVIEWED_WORKFLOWS[workflow_hash], 'verified CI-core workflow')
+        self.assertEqual(baseline.REVIEWED_WORKFLOWS['3dca194bb4d22a3569c6dc77bc2e609d30390feb3e40bcdfa03c112acc445407'],
+                         'verified CI-core workflow')
+        self.assertEqual(baseline.REVIEWED_LEGACY_HEADS, frozenset({'cc17eecf0344f15c89ffc04cade60b1b09cf9f43'}))
+        self.assertEqual(baseline.LEGACY_RECIPE_SHA256, '441bb18419661c8dff622f6b23b75332d2c0e58eba26f0b47e751be003fc5ad2')
 
 
 if __name__ == '__main__':

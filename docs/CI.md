@@ -6,6 +6,11 @@ owns its mathematical source inventory, check predicates, affected scope and
 historical coverage policy. The workflow owns prepared toolchains, cache
 transport and publication authority. A skipped workflow step cannot waive a
 required core phase or task.
+The local `check_affected.py` entry and committed adapter construct that same
+native recipe and call the shared executor. Local selection observes working-tree
+inputs before reading them; its state and summaries remain distinct from committed
+CI admission. Category repairs retain their declared environment groups and reuse
+compatible successes without weakening CI finalization.
 
 ## Committed source and verified coverage
 
@@ -70,6 +75,15 @@ checks the `Aglib`/`AglibTest` origin prefixes in one invocation. Extra tool
 origins remain explicitly selected. Builtin, declaration and audit commands use
 separate guarded processes, releasing one environment before the next. No extra input
 ledger or cross-version check-compatibility protocol is required.
+Selected style and rejection controls also use individual check records with their
+actual source/runtime input boundaries. A style record binds source text and the
+style-driver imports, not nonexistent compiled audit-source outputs. Unsupported
+reflection runs the actual check rather than inventing a reusable import closure.
+The independent client audit binds its own working directory, actual client
+search path, `Audit.lean` source, manifest and Consumer import closure, together
+with root checker policy. A later failure can reuse that compatible client
+success; a root import environment never substitutes for the client environment.
+The inexpensive compiled-inventory check remains a fresh process.
 
 Aglib tracks its deterministic downstream manifest. Regenerate it with
 `python3 scripts/prepare_downstream.py` and commit it with a root pin update.

@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from affected_scope import cache_roots, select, validate
@@ -13,6 +14,9 @@ from run_style_linter import selected_driver
 from run_declaration_linter import (MARKER, run as run_selected_declaration_linter,
                                     selected_driver as selected_declaration_driver)
 from ci_audit import AUDIT_DRIVER
+import ci_pipeline as core
+import prepare_downstream
+from test_ci_state import native_fixture, receipt
 
 
 class AffectedScopeTests(unittest.TestCase):
@@ -39,10 +43,22 @@ class AffectedScopeTests(unittest.TestCase):
         self.write(AUDIT_DRIVER, (Path(__file__).resolve().parents[1] / AUDIT_DRIVER).read_text())
         self.write('lean-toolchain', 'fixed\n')
         self.write('lakefile.toml', 'name = "Aglib"\n')
-        self.write('lake-manifest.json', '{"packages": []}\n')
-        self.write('.gitignore', '.lake/\n')
+        self.write('lake-manifest.json', '{"name": "Aglib", "packages": []}\n')
+        self.write('.gitignore', '.lake/\nInit.lean\nLean.lean\nLake.lean\nLake/\n')
         self.write('.lake/packages/batteries/scripts/runLinter.lean', 'import Batteries.Tactic.Lint\nimport Lake.CLI.Main\n')
         self.write('.lake/packages/mathlib/scripts/lint-style.lean', 'import Mathlib.Tactic.Linter.TextBased\nimport Cli.Basic\n')
+        for name in ('Init', 'Lean', 'Lake', 'Lake.CLI.Main'):
+            self.write(str(Path(*name.split('.')).with_suffix('.lean')), 'module\n')
+            native_fixture(self.root, name)
+        for package, name in [('batteries', 'Batteries.Tactic.Lint'),
+                              ('Cli', 'Cli.Basic'), ('mathlib', 'Mathlib.Tactic.Linter.TextBased')]:
+            owner = self.root / '.lake/packages' / package
+            self.write(str((owner / Path(*name.split('.')).with_suffix('.lean')).relative_to(self.root)), 'import Lean\n')
+            native_fixture(owner, name)
+        for name in ['Aglib.Base', 'Aglib.Dep', 'Aglib.Cold', 'Aglib', 'AglibTest.Focused',
+                     'AglibTest', 'AglibTest.AuditSupport', 'AglibTest.AuditCoverage']:
+            native_fixture(self.root, name)
+        prepare_downstream.prepare(self.root)
         self.git('init', '-q')
         self.git('add', '.')
         self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
@@ -135,16 +151,16 @@ class AffectedScopeTests(unittest.TestCase):
         self.write('scripts/README.md', 'Changed script documentation.\n')
         plan = select(self.root, self.base)
         self.assertFalse(plan['native'])
-        self.assertEqual(plan['tooling_tests'], [])
         calls = []
         output = Path(self.temp.name) / 'no-export.jsonl'
-        with patch('check_affected.run', side_effect=lambda root, cmd: calls.append(cmd)):
-            execute(self.root, plan, None, outputs=output)
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            summary = execute(self.root, plan, None, outputs=output)
         self.assertEqual(len(calls), 4)
+        self.assertEqual(summary['native_validation'], 'not-performed')
         self.assertFalse(output.exists())
-        self.assertFalse(any('lake' in list(map(str, cmd)) for cmd in calls))
-        self.assertEqual(plan['cache_imports'], [])
+        self.assertFalse(any('lake' in command for command in calls))
         self.assertEqual(cache_roots(self.root, plan), [])
+
 
     def test_cache_projection_follows_actual_local_client_trust_and_tooling_imports(self):
         self.write('Aglib/Base.lean', 'module\npublic import Mathlib.Provider\ndef base := 1\n')
@@ -230,109 +246,200 @@ class AffectedScopeTests(unittest.TestCase):
             validate(self.root, plan)
 
     def native_mock(self, calls, failure=None):
-        def command(root, args):
-            args = list(map(str, args))
-            calls.append(args)
-            if failure and any(failure in a for a in args):
+        def command(task, directory):
+            args = list(map(str, task['command']))
+            calls.append([task['id'], *args])
+            if failure and (failure in task['id'] or any(failure in arg for arg in args)):
                 raise subprocess.CalledProcessError(19, args)
-            if 'scripts/build_serial.py' in ' '.join(args) and '--outputs' in args:
-                index = args.index('--outputs')
-                path = Path(args[index + 1])
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(json.dumps({'checked_targets': args[index + 2:]}) + '\n')
-        return command
+            directory.mkdir(parents=True, exist_ok=True)
+            cwd = Path(task['cwd'])
+            if task['id'] == 'prepare-client':
+                prepare_downstream.prepare(self.root)
+            if task['kind'] in ('build', 'graph-build'):
+                for name in task['modules']:
+                    native_fixture(cwd, name)
+            value = {'receipt': receipt(args, cwd)}
+            if task['kind'] == 'environment':
+                paths = list(dict.fromkeys([str(cwd / '.lake/build/lib/lean'), str(self.root / '.lake/build/lib/lean'), *[
+                    str(self.root / '.lake/packages' / name / '.lake/build/lib/lean')
+                    for name in ('batteries', 'Cli', 'mathlib')]]))
+                Path(task['environment_output']).write_text(':'.join(paths) + '\n')
+                value.update(search_path=paths, output_sha256=core.file_hash(task['environment_output']))
+            if task.get('identity_modules'):
+                value['native_modules'] = {name: core.module_identity(cwd, name)
+                                           for name in task['identity_modules']}
+            if task.get('mapping'):
+                Path(task['mapping']).write_text('"2026-03-17"\n' +
+                    json.dumps(['0123456789abcdef', {'fixture': 'native mapping'}]) + '\n')
+                value['mapping_sha256'] = core.file_hash(task['mapping'])
+            return value
+        identity = {'lean': 'fixture', 'lake': 'fixture', 'installation': '/fixture/runtime'}
+        return SimpleNamespace(root=self.root, run=command, compiler_identity=lambda *a, **k: identity)
 
-    def test_providers_linted_before_consumers_and_export_reuses_actual_mappings(self):
+
+    def test_local_final_uses_one_graph_accepted_umbrellas_and_no_build_export(self):
         plan, calls = self.changed_plan(), []
         directory = Path(self.temp.name) / 'run'
         output = directory / 'selected.jsonl'
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
-            execute(self.root, plan, directory, native_only=True, ci=True, outputs=output)
-        text = [' '.join(command) for command in calls]
-        compile_provider = next(i for i, cmd in enumerate(text) if 'build_serial.py' in cmd and '/providers ' in cmd)
-        provider_lint = next(i for i, cmd in enumerate(text) if 'providers-declarations' in cmd)
-        provider_style = next(i for i, cmd in enumerate(text) if 'providers-style' in cmd)
-        heavy = next(i for i, cmd in enumerate(text) if 'build_serial.py' in cmd and '/consumers ' in cmd)
-        self.assertLess(compile_provider, provider_lint)
-        self.assertLess(provider_lint, provider_style)
-        self.assertLess(provider_style, heavy)
-        self.assertTrue(any('--no-build lint --builtin-only Aglib.Base' in cmd for cmd in text))
-        consumer_lint = next(i for i, cmd in enumerate(text) if 'consumers-declarations' in cmd)
-        test_compile = next(i for i, cmd in enumerate(text) if 'build_serial.py' in cmd and '/tests ' in cmd)
-        self.assertLess(test_compile, consumer_lint)
-        self.assertIn('run_declaration_linter.py Aglib.Dep AglibTest.Focused', text[consumer_lint])
-        self.assertNotIn('Aglib.Base', text[consumer_lint])
-        self.assertNotIn('Aglib.Cold', text[consumer_lint])
-        self.assertFalse(any('consumers-style' in cmd for cmd in text))
-        guard = next(cmd for cmd in text if 'consumers-cached-imports' in cmd)
-        self.assertIn('--no-build build Aglib.Cold', guard)
-        exported = [json.loads(line)['checked_targets'] for line in output.read_text().splitlines()]
-        self.assertEqual(exported, [plan['providers'], plan['consumers'], plan['tests'],
-                                    ['AglibTest.AuditSupport', 'AglibTest.AuditCoverage']])
-        self.assertFalse(any('native-cache-export' in cmd for cmd in text))
-        coverage = json.loads(output.with_suffix('.jsonl.coverage.json').read_text())
-        self.assertEqual(coverage['coverage'], 'affected-only')
-        self.assertNotIn('Aglib.Cold', coverage['selected_targets'])
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            summary = execute(self.root, plan, directory, native_only=True, ci=True, outputs=output)
+        ids = [command[0] for command in calls]
+        self.assertEqual(ids.count('shared-root-build'), 1)
+        self.assertLess(ids.index('shared-root-build'), ids.index('Aglib/declaration'))
+        self.assertLess(ids.index('Aglib/declaration'), ids.index('AglibTest/declaration'))
+        self.assertLess(ids.index('AglibTest/declaration'), ids.index('audit/all'))
+        self.assertLess(ids.index('audit/all'), ids.index('client/build'))
+        self.assertEqual(ids[-1], 'root-graph')
+        self.assertEqual(calls[-1][1:5], ['lake', '--rehash', '--no-build', 'build'])
+        self.assertTrue(any('Aglib.Cold' in command and command[0] == 'unrelated-cached-imports' for command in calls))
+        self.assertEqual(summary['declaration_policy']['tests'], 'full AglibTest umbrella environment')
+        self.assertEqual(json.loads(output.read_text().splitlines()[0]), '2026-03-17')
+        self.assertNotIn('Aglib.Cold', summary['selected_targets'])
 
-    def test_provider_lint_failure_stops_heavy_work_and_export(self):
+
+    def test_umbrella_lint_failure_stops_audit_client_and_export(self):
         plan, calls = self.changed_plan(), []
         directory = Path(self.temp.name) / 'run'
         output = directory / 'selected.jsonl'
-        with patch('check_affected.run', side_effect=self.native_mock(calls, 'providers-declarations')):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'Aglib/declaration')):
             with self.assertRaises(subprocess.CalledProcessError):
                 execute(self.root, plan, directory, native_only=True, ci=True, outputs=output)
         self.assertFalse(output.exists())
-        self.assertFalse(any('/consumers' in ' '.join(c) for c in calls))
+        self.assertFalse(any(command[0] in ('audit/all', 'client/build', 'root-graph') for command in calls))
 
-    def test_builtin_lint_isolates_exact_modules_with_distinct_guard_receipts(self):
-        self.write('Aglib/Cold.lean', 'module\ndef cold := 2\n')
+
+    def test_local_category_repair_keeps_umbrella_predicates_without_proof_builds(self):
         plan, calls = self.changed_plan(), []
-        directory = Path(self.temp.name) / 'run'
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
-            execute(self.root, plan, directory, native_only=True, rehash=True,
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True,
                     ci=True, phases=['provider-lint'])
-        builtin = [c for c in calls if '--builtin-only' in c]
-        self.assertEqual(plan['providers'], ['Aglib.Base', 'Aglib.Cold'])
-        self.assertEqual(len(builtin), 2)
-        for index, (command, module) in enumerate(zip(builtin, plan['providers']), 1):
-            self.assertEqual(command[:4], ['python3', str(self.root / 'scripts/resource_guard.py'),
-                                          '--capped-toolchain', '--receipt'])
-            self.assertEqual(command[4], str(directory / f'providers-builtin-{index:04d}.json'))
-            self.assertEqual(command[5:], ['--', 'lake', '--rehash', '--no-build',
-                                           'lint', '--builtin-only', module])
-        declarations = next(i for i, c in enumerate(calls) if 'scripts/run_declaration_linter.py' in c)
-        self.assertGreater(declarations, max(calls.index(c) for c in builtin))
-        self.assertEqual(calls[declarations][-2:], plan['providers'])
+        builtin = [command for command in calls if '--builtin-only' in command]
+        self.assertEqual([command[-1] for command in builtin], ['Aglib', 'AglibTest'])
+        self.assertFalse(any(command[0] in ('shared-root-build', 'client/build', 'audit/all') for command in calls))
+        declarations = [command for command in calls if '--run' in command]
+        self.assertEqual([command[-1] for command in declarations], ['Aglib', 'AglibTest'])
+        self.assertTrue(any(command[0] == 'shared-root-cached' and '--no-build' in command for command in calls))
 
-    def test_builtin_lint_failure_stops_remaining_modules_and_lint_categories(self):
-        self.write('Aglib/Cold.lean', 'module\ndef cold := 2\n')
-        self.write('Aglib/Dep.lean', 'module\npublic import Aglib.Base\ndef dependent := 2\n')
+
+    def test_local_builtin_failure_stops_remaining_umbrella_categories(self):
         plan, calls = self.changed_plan(), []
-        with patch('check_affected.run',
-                   side_effect=self.native_mock(calls, 'providers-builtin-0002.json')):
-            with self.assertRaises(subprocess.CalledProcessError) as failure:
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'AglibTest/builtin')):
+            with self.assertRaises(subprocess.CalledProcessError):
                 execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True,
                         ci=True, phases=['provider-lint'])
-        self.assertEqual(failure.exception.returncode, 19)
-        self.assertEqual(plan['providers'], ['Aglib.Base', 'Aglib.Cold', 'Aglib.Dep'])
-        self.assertEqual([c[-1] for c in calls if '--builtin-only' in c], plan['providers'][:2])
-        self.assertFalse(any('scripts/run_declaration_linter.py' in c for c in calls))
-        self.assertFalse(any('scripts/run_style_linter.py' in c for c in calls))
+        self.assertEqual([command[-1] for command in calls if '--builtin-only' in command], ['Aglib', 'AglibTest'])
+        self.assertFalse(any('--run' in command for command in calls))
+
 
     def test_cold_facade_import_fails_without_build_fallback(self):
         plan, calls = self.changed_plan(), []
-        with patch('check_affected.run', side_effect=self.native_mock(calls, 'consumers-cached-imports')):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'unrelated-cached-imports')):
             with self.assertRaises(subprocess.CalledProcessError):
                 execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, ci=True)
-        self.assertFalse(any('build_serial.py' in ' '.join(c) and '/consumers ' in ' '.join(c) for c in calls))
+        self.assertFalse(any(command[0] == 'shared-root-build' for command in calls))
 
-    def test_single_phase_repair_does_not_repeat_provider_checks(self):
+
+    def test_provider_build_repair_does_not_run_check_or_client_groups(self):
         plan, calls = self.changed_plan(), []
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
             execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True,
-                    ci=True, phases=['provider-lint'])
-        self.assertEqual(len(calls), 4)
-        self.assertTrue(all('providers-' in ' '.join(c) for c in calls))
+                    ci=True, phases=['providers'])
+        graphs = [command for command in calls if command[0] == 'shared-root-build']
+        self.assertEqual(len(graphs), 1)
+        self.assertNotIn('Aglib', graphs[0][1:])
+        self.assertFalse(any('--run' in command or command[0] == 'client/build' for command in calls))
+
+
+    def test_native_local_check_requires_prepared_client_without_running_tasks(self):
+        plan, calls = self.changed_plan(), []
+        (self.root / 'examples/downstream/.lake/packages').unlink()
+        (self.root / 'examples/downstream/.lake').rmdir()
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            with self.assertRaisesRegex(ValueError, 'prepare_downstream.py before local final checks'):
+                execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True)
+        self.assertEqual(calls, [])
+
+    def test_source_policy_only_check_does_not_discover_a_native_toolchain(self):
+        self.write('scripts/check_source_policy.py', '# changed static source policy\n')
+        plan, calls = select(self.root, self.base), []
+        self.assertFalse(plan['native'])
+        runtime = self.native_mock(calls)
+        with patch('check_affected.NativeRuntime', return_value=runtime), \
+                patch.object(runtime, 'compiler_identity') as compiler:
+            summary = execute(self.root, plan, Path(self.temp.name) / 'source')
+        compiler.assert_not_called()
+        self.assertEqual(summary['native_validation'], 'not-performed')
+        self.assertFalse(any('lake' in command for command in calls))
+
+    def test_local_retry_reuses_completed_umbrella_checks_after_later_failure(self):
+        plan, calls = self.changed_plan(), []
+        state = Path(self.temp.name) / 'retry'
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'AglibTest/declaration')):
+            with self.assertRaises(subprocess.CalledProcessError):
+                execute(self.root, plan, state, native_only=True)
+        self.assertFalse((state / 'complete.json').exists())
+        calls.clear()
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            summary = execute(self.root, plan, state, native_only=True)
+        self.assertIn('Aglib/declaration', summary['reused_checks'])
+        self.assertNotIn('Aglib/declaration', [command[0] for command in calls])
+        self.assertIn('AglibTest/declaration', [command[0] for command in calls])
+
+    def test_client_audit_uses_client_environment_and_reuses_after_later_failure(self):
+        plan, calls = self.changed_plan(), []
+        state = Path(self.temp.name) / 'client-retry'
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'root-graph')):
+            with self.assertRaises(subprocess.CalledProcessError):
+                execute(self.root, plan, state, native_only=True)
+        record = json.loads((state / 'local.json').read_text())
+        checked = next(item for item in record['tasks'] if item['id'] == 'client-audit')
+        binding = checked['result']['success']['binding']
+        self.assertIn('Consumer', binding['native'])
+        self.assertIn('Audit.lean', binding['raw_inputs'])
+        self.assertIn('Consumer', binding['reflective_imports']['roots'])
+        self.assertEqual(binding['execution']['cwd'], 'examples/downstream')
+        calls.clear()
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            summary = execute(self.root, plan, state, native_only=True)
+        self.assertIn('client-audit', summary['reused_checks'])
+        self.assertNotIn('client-audit', [command[0] for command in calls])
+
+    def test_changed_client_audit_source_invalidates_its_success(self):
+        plan, calls = self.changed_plan(), []
+        state = Path(self.temp.name) / 'client-source'
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            execute(self.root, plan, state, native_only=True)
+        self.write('examples/downstream/Audit.lean', 'import Consumer\n-- changed audit input\n')
+        current = select(self.root, self.base)
+        calls.clear()
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
+            summary = execute(self.root, current, state, native_only=True)
+        self.assertIn('client-audit', summary['performed_checks'])
+        self.assertIn('client-audit', [command[0] for command in calls])
+
+    def test_selector_reads_observed_source_even_when_bytes_are_restored(self):
+        plan, calls = self.changed_plan(), []
+        original = core.AglibLocalAdapter.select_scope
+        def mutate(adapter, root, **kwargs):
+            path = root / 'Aglib/Cold.lean'
+            content = path.read_bytes()
+            path.write_bytes(content + b'\n')
+            path.write_bytes(content)
+            return original(adapter, root, **kwargs)
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)), \
+                patch.object(core.AglibLocalAdapter, 'select_scope', mutate):
+            with self.assertRaises(core.InputDrift if hasattr(core, 'InputDrift') else ValueError):
+                execute(self.root, plan, Path(self.temp.name) / 'drift', native_only=True)
+        self.assertEqual(calls, [])
+
+    def test_local_and_ci_construct_the_same_native_policy_recipe(self):
+        plan = {'scope': self.changed_plan()}
+        directory = Path(self.temp.name) / 'recipe'
+        local = core.tasks(self.root, plan, 'check', directory)
+        native = core.tasks(self.root, plan, 'native', directory)
+        self.assertEqual([task for task in local if task.get('native') is not False], native)
+        self.assertEqual([task['modules'] for task in native if task.get('check_kind') == 'declaration'],
+                         [['Aglib'], ['AglibTest']])
 
     def test_style_adapter_preserves_checks_options_and_exact_module_enumeration(self):
         source = ('options\n  -- Get all the imports, but only those in the same package.\n'
@@ -409,13 +516,13 @@ class AffectedScopeTests(unittest.TestCase):
         self.write('AglibTest/AuditSupport.lean', 'import Lean\ndef support := 2\n')
         plan, calls = select(self.root, self.base), []
         directory = Path(self.temp.name) / 'run'
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
             execute(self.root, plan, directory, native_only=True, phases=['trust'])
         self.assertFalse((directory / 'SelectedAudit.lean').exists())
         audit = (self.root / AUDIT_DRIVER).read_text()
         self.assertEqual(audit.count('import AglibTest.AuditSupport'), 1)
         audit_call = next(command for command in calls if AUDIT_DRIVER in command)
-        self.assertEqual(json.loads(audit_call[-1]), [['AglibTest', 'AuditSupport']])
+        self.assertEqual(json.loads(audit_call[-1]), [['Aglib'], ['AglibTest']])
         self.assertIn('AglibAudit.auditModules selected', audit)
         self.assertIn('coverage.contains `AuditForeign.GeneratedDatum.rec', audit)
         self.assertIn('unless hidden.size == 1', audit)
@@ -427,7 +534,7 @@ class AffectedScopeTests(unittest.TestCase):
         plan, calls = self.changed_plan(), []
         self.assertTrue(plan['trust'])
         self.assertFalse(plan['controls'])
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
             execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, phases=['trust'])
         text = [' '.join(command) for command in calls]
         self.assertTrue(any('/SelectedAudit.lean' in command for command in text))
@@ -439,7 +546,7 @@ class AffectedScopeTests(unittest.TestCase):
         plan, calls = self.changed_plan(), []
         directory = Path(self.temp.name) / 'run'
         output = directory / 'outputs.jsonl'
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
             execute(self.root, plan, directory, native_only=True, outputs=output)
         text = [' '.join(command) for command in calls]
         self.assertFalse(any('check_kernel.py' in command for command in text))
@@ -472,7 +579,7 @@ class AffectedScopeTests(unittest.TestCase):
                     target.write_text(previous)
         self.write('scripts/check_negative_controls.py', '# changed checker\n')
         plan, calls = select(self.root, self.base), []
-        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+        with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
             execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, ci=True, phases=['trust'])
         self.assertTrue(any('scripts/check_negative_controls.py' in command for command in calls))
 
