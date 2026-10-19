@@ -877,3 +877,26 @@ cannot explain all three sites. Use the focused procedure above to locate the
 named kernel task on the next otherwise-needed replay. A narrowly explicit
 equality certificate or abstract component calculation needs its own kernel
 check, component consumers and timed comparison before adoption.
+
+
+## Isolate lint processes when checking several module origins
+
+Lean 4.34.1's builtin lint driver imports a server-level environment for each
+selected module. The pinned Batteries driver also imports an environment per
+module. Import regions can remain mapped across these iterations, so a batch
+can exceed the memory limit even when each module fits comfortably by itself.
+
+On 2026-10-19, the seven geometric-regularity providers compiled successfully,
+but one builtin-lint invocation over all seven was stopped at an observed
+14,527,889,408 bytes RSS under the 13,824 MiB process-group cutoff. A fresh
+process checking the final criterion, whose imports include all seven providers,
+passed at 2,876,129,280 bytes. Separate builtin invocations for all seven passed
+with a maximum of 2,867,855,360 bytes (about 2.67 GiB).
+
+The [selected checker](../scripts/check_affected.py) now starts a fresh guarded
+builtin-lint process for each selected module, and the
+[declaration wrapper](../scripts/run_declaration_linter.py) starts a separate
+Lean interpreter for each exact origin. The module selection, linter options,
+exception handling and resource limits retain their existing meanings. Reuse
+successful provider compilation when repairing this scheduling issue; the
+failed lint does not require another proof build.

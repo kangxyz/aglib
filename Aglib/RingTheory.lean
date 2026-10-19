@@ -191,6 +191,9 @@ public import Aglib.RingTheory.RootsOfUnity.FiniteCharacter
 public import Aglib.RingTheory.ScalarHomology.BaseChange
 public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion
+public import Aglib.RingTheory.Smooth.GeometricRegularity
+public import Aglib.RingTheory.Smooth.GeometricRegularity.LocalCriterion
+public import Aglib.RingTheory.Smooth.GeometricRegularity.RegularLocalKernel
 public import Aglib.RingTheory.Smooth.Reduced
 public import Aglib.RingTheory.Smooth.RegularKernel
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension

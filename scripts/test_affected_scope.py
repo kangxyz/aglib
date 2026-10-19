@@ -10,7 +10,8 @@ from unittest.mock import patch
 from affected_scope import cache_roots, select, validate
 from check_affected import execute
 from run_style_linter import selected_driver
-from run_declaration_linter import MARKER, selected_driver as selected_declaration_driver
+from run_declaration_linter import (MARKER, run as run_selected_declaration_linter,
+                                    selected_driver as selected_declaration_driver)
 
 
 class AffectedScopeTests(unittest.TestCase):
@@ -231,6 +232,41 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertFalse(output.exists())
         self.assertFalse(any('/consumers' in ' '.join(c) for c in calls))
 
+    def test_builtin_lint_isolates_exact_modules_with_distinct_guard_receipts(self):
+        self.write('Aglib/Cold.lean', 'module\ndef cold := 2\n')
+        plan, calls = self.changed_plan(), []
+        directory = Path(self.temp.name) / 'run'
+        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+            execute(self.root, plan, directory, native_only=True, rehash=True,
+                    ci=True, phases=['provider-lint'])
+        builtin = [c for c in calls if '--builtin-only' in c]
+        self.assertEqual(plan['providers'], ['Aglib.Base', 'Aglib.Cold'])
+        self.assertEqual(len(builtin), 2)
+        for index, (command, module) in enumerate(zip(builtin, plan['providers']), 1):
+            self.assertEqual(command[:4], ['python3', str(self.root / 'scripts/resource_guard.py'),
+                                          '--capped-toolchain', '--receipt'])
+            self.assertEqual(command[4], str(directory / f'providers-builtin-{index:04d}.json'))
+            self.assertEqual(command[5:], ['--', 'lake', '--rehash', '--no-build',
+                                           'lint', '--builtin-only', module])
+        declarations = next(i for i, c in enumerate(calls) if 'scripts/run_declaration_linter.py' in c)
+        self.assertGreater(declarations, max(calls.index(c) for c in builtin))
+        self.assertEqual(calls[declarations][-2:], plan['providers'])
+
+    def test_builtin_lint_failure_stops_remaining_modules_and_lint_categories(self):
+        self.write('Aglib/Cold.lean', 'module\ndef cold := 2\n')
+        self.write('Aglib/Dep.lean', 'module\npublic import Aglib.Base\ndef dependent := 2\n')
+        plan, calls = self.changed_plan(), []
+        with patch('check_affected.run',
+                   side_effect=self.native_mock(calls, 'providers-builtin-0002.json')):
+            with self.assertRaises(subprocess.CalledProcessError) as failure:
+                execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True,
+                        ci=True, phases=['provider-lint'])
+        self.assertEqual(failure.exception.returncode, 19)
+        self.assertEqual(plan['providers'], ['Aglib.Base', 'Aglib.Cold', 'Aglib.Dep'])
+        self.assertEqual([c[-1] for c in calls if '--builtin-only' in c], plan['providers'][:2])
+        self.assertFalse(any('scripts/run_declaration_linter.py' in c for c in calls))
+        self.assertFalse(any('scripts/run_style_linter.py' in c for c in calls))
+
     def test_cold_facade_import_fails_without_build_fallback(self):
         plan, calls = self.changed_plan(), []
         with patch('check_affected.run', side_effect=self.native_mock(calls, 'consumers-cached-imports')):
@@ -271,6 +307,43 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertIn('if failed then IO.Process.exit 1', selected)
         with self.assertRaises(ValueError):
             selected_declaration_driver('unrecognized driver')
+
+    def test_declaration_lint_runs_each_exact_origin_sequentially(self):
+        source = 'preamble\n' + MARKER + '    let linters ← getChecks\n'
+        self.write('.lake/packages/batteries/scripts/runLinter.lean', source)
+        modules = ['Aglib.Dep', 'Aglib.Base']
+        calls = []
+
+        def command(args, cwd):
+            self.assertEqual(cwd, self.root)
+            self.assertEqual(args[:4], ['lake', 'env', 'fixture-lean', '--run'])
+            self.assertEqual(Path(args[4]).read_text(), selected_declaration_driver(source))
+            self.assertEqual(args[5:], ['--no-build', modules[len(calls)]])
+            calls.append(args)
+            return subprocess.CompletedProcess(args, 0)
+
+        with patch.dict(os.environ, {'LEAN': 'fixture-lean'}), \
+                patch('run_declaration_linter.subprocess.run', side_effect=command):
+            self.assertEqual(run_selected_declaration_linter(self.root, modules), 0)
+        self.assertEqual(len(calls), len(modules))
+        self.assertEqual(calls[0][4], calls[1][4])
+        self.assertFalse(Path(calls[0][4]).exists())
+
+    def test_declaration_lint_failure_stops_at_first_failed_origin(self):
+        self.write('.lake/packages/batteries/scripts/runLinter.lean', 'preamble\n' + MARKER)
+        modules = ['Aglib.Base', 'Aglib.Dep', 'Aglib.Cold']
+        for failed_index in (0, 1):
+            with self.subTest(failed_index=failed_index):
+                calls = []
+
+                def command(args, cwd):
+                    calls.append(args)
+                    return subprocess.CompletedProcess(args, 19 if len(calls) > failed_index else 0)
+
+                with patch('run_declaration_linter.subprocess.run', side_effect=command):
+                    self.assertEqual(run_selected_declaration_linter(self.root, modules), 19)
+                self.assertEqual([c[5:] for c in calls],
+                                 [['--no-build', module] for module in modules[:failed_index + 1]])
 
     def test_client_only_changes_have_no_root_publication(self):
         self.write('examples/downstream/Consumer/Use.lean',

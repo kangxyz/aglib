@@ -96,7 +96,11 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
                 safe(phase + '-linter-runtime', lake + ['build', *('+' + n for n in sorted(modules))])
             runtime_prepared = True
         if names:
-            safe(phase + '-builtin', lake + ['--no-build', 'lint', '--builtin-only', *names])
+            # Imported server environments retain regions until process exit.
+            # Numeric receipt suffixes stay safe for every exact module name.
+            for index, name in enumerate(names, 1):
+                safe(f'{phase}-builtin-{index:04d}',
+                     lake + ['--no-build', 'lint', '--builtin-only', name])
             safe(phase + '-declarations', ['python3', 'scripts/run_declaration_linter.py', *names])
         if styles:
             safe(phase + '-style', ['python3', 'scripts/run_style_linter.py', '--modules', *styles])

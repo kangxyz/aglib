@@ -1061,6 +1061,7 @@ public import Aglib.AlgebraicGeometry.FundamentalGroup.StageModelNaturality
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.CommonOverfield
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.GlobalSections
+public import Aglib.AlgebraicGeometry.Geometrically.Regular
 public import Aglib.AlgebraicGeometry.Grassmannian.Chart
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
@@ -1539,6 +1540,8 @@ public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.GraphProduct.Restric
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity.Field
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced
@@ -1629,6 +1632,7 @@ public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
 public import Aglib.AlgebraicGeometry.Properties.Normal.Components
 public import Aglib.AlgebraicGeometry.Properties.QuasiCompactCategory
+public import Aglib.AlgebraicGeometry.Properties.Regular.Basic
 public import Aglib.AlgebraicGeometry.SchemeOverField
 public import Aglib.AlgebraicGeometry.Spec.Localization
 public import Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.BaseChange
@@ -2132,6 +2136,9 @@ public import Aglib.RingTheory.RootsOfUnity.FiniteCharacter
 public import Aglib.RingTheory.ScalarHomology.BaseChange
 public import Aglib.RingTheory.ScalarHomology.Basic
 public import Aglib.RingTheory.Smooth.AdicCompletion
+public import Aglib.RingTheory.Smooth.GeometricRegularity
+public import Aglib.RingTheory.Smooth.GeometricRegularity.LocalCriterion
+public import Aglib.RingTheory.Smooth.GeometricRegularity.RegularLocalKernel
 public import Aglib.RingTheory.Smooth.Reduced
 public import Aglib.RingTheory.Smooth.RegularKernel
 public import Aglib.RingTheory.Spectrum.Prime.FiberDimension

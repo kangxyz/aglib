@@ -34,8 +34,13 @@ def run(root, modules):
     with tempfile.TemporaryDirectory(prefix='aglib-declaration-runtime-') as temporary:
         driver = Path(temporary) / 'SelectedLinter.lean'
         driver.write_text(source)
-        return subprocess.run(['lake', 'env', os.environ.get('LEAN') or 'lean', '--run', str(driver),
-                               '--no-build', *modules], cwd=root).returncode
+        # Release each imported environment before checking the next origin.
+        for module in modules:
+            result = subprocess.run(['lake', 'env', os.environ.get('LEAN') or 'lean',
+                                     '--run', str(driver), '--no-build', module], cwd=root)
+            if result.returncode:
+                return result.returncode
+        return 0
 
 
 def main():

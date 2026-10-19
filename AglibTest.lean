@@ -76,6 +76,7 @@ import AglibTest.AlgebraicGeometry.Modules.QuasiCoherent.Localization.SMulRegula
 import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
 import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.LocalIso
 import AglibTest.AlgebraicGeometry.Modules.Tensor.Monoidal.Sections
+import AglibTest.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
 import AglibTest.AlgebraicGeometry.Picard.Affine
 import AglibTest.AlgebraicGeometry.Picard.ChartCocycle
 import AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphisms

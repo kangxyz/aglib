@@ -1,5 +1,13 @@
 # Geometric field-extension properties
 
+[Regular](Regular.lean) defines `GeometricallyRegular f` by regularity of all
+actual stalks after every field base change. It proves stability under base
+change and restriction to a source open, and equivalence with the same property
+on every residue-field fiber. Flatness is a separate condition. For a locally
+finite-type morphism, these field base changes are locally Noetherian, so this
+stalk formulation gives the usual geometric regularity of the fibers. Its
+consumer is the [smoothness criterion](../Morphisms/Smooth/GeometricRegularity.lean).
+
 [Connected](Connected/README.md) treats the actual field-base-change projections and common-overfield maps. Over an algebraically closed field, arbitrary field extension preserves connectedness of an arbitrary connected scheme; connectedness after the chosen algebraic closure detects geometric connectedness over an arbitrary original field.
 
 The connectedness sources extend native Mathlib geometric predicates and pullbacks, preserving field, scheme and universe conditions. These results add no finite type, properness or fixed dimension premise.

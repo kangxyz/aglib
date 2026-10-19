@@ -1,4 +1,19 @@
-# Smooth field schemes and dimension
+# Smooth morphisms, geometric regularity and dimension
+
+[GeometricRegularity](GeometricRegularity.lean) proves
+`smooth_iff_flat_and_geometricallyRegular` for locally finitely presented
+morphisms over an arbitrary base. For a locally Noetherian target,
+`smooth_iff_locallyOfFiniteType_and_flat_and_geometricallyRegular` characterizes
+smoothness by local finite type, flatness and geometrically regular fibers.
+No affine, quasi-compact or fixed-dimension hypothesis is imposed.
+
+[Field](GeometricRegularity/Field.lean) proves smoothness from geometric
+regularity for any locally finite-type scheme over any field. Its converse
+uses `smoothFieldRegularity` after base change. The algebraic supplier is
+[the arbitrary-field regularity criterion](../../../RingTheory/Smooth/GeometricRegularity.lean).
+The geometric predicate records actual stalk regularity after every field
+base change; the stated finiteness hypotheses ensure those schemes are locally
+Noetherian. Flatness remains explicit in the relative equivalences.
 
 The native owner is `AlgebraicGeometry.Scheme`. [Properties](Properties.lean) states `SmoothFieldRegularity`, `SmoothFieldNormality`, `SmoothFieldDimension` and `SmoothClosedPointDimension` over every field and in every relative dimension.
 

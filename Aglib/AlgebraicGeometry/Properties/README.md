@@ -1,5 +1,11 @@
 # Scheme object properties
 
+[Regular stalks](Regular/README.md) records regularity of the actual local rings,
+its invariance under scheme isomorphisms and restriction to a source open, and
+its affine comparison with regular rings. The
+[geometric regularity](../Geometrically/Regular.lean) and smoothness criteria
+consume this interface with their stated finiteness hypotheses.
+
 [Normal](Normal/README.md) owns normal-stalk properties and their reducedness consequence; connected integrality additionally retains local Noetherianity. [IrreducibleComponents](IrreducibleComponents.lean) owns the weaker domain-stalk/component separation results. When every stalk is a domain, irreducible components are open if there are finitely many components; a separate theorem proves openness under local Noetherianity without a global finite-component hypothesis. The quasi-compact category and affine-induction principles below are separate general scheme interfaces.
 
 This extends the object-property subject of Mathlib's native `AlgebraicGeometry/Properties.lean`. Morphism properties and their field-relative hypotheses have their own [Morphisms](../Morphisms/README.md) owner; the directory grouping does not change the types of the underlying Mathlib predicates.
