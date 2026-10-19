@@ -31,6 +31,7 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Composition
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Homology.Forget
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Linear
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.SpanSingleton
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat

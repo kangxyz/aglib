@@ -90,8 +90,35 @@ restates both with the instance from `BaseChangeFormula` and guards their axioms
   this comparison uses `uliftFunctor`, while Mathlib's `RepresentableBy` allows the larger value
   universe.
 
-The description of maps `T ⟶ schemeOver R k n` as rank-`k` locally free quotients of
-`O_T ⊗ R^n` (Stacks, Tag 089T) needs sheaves of modules and is not yet proved.
+[Quotient](Quotient/) proves the description of the Grassmannian by locally free quotients
+(Stacks, Tags 089S and 089T, TeX snapshot `a04446e5`; Nitsure, arXiv:math/0504590v1, §1,
+Exercises (2), p. 5). A `LocallyFreeQuotient X k n` is an epimorphism `O_X^n ⟶ Q`, with
+`O_X^n = SheafOfModules.free (ULift (Fin n))` and `Q` of constant rank `k` (`SheafHasRank`);
+isomorphism classes under `O_X^n` (`LocallyFreeQuotient.IsoUnder`) form
+`quotFunctor R k n : (Over (Spec R))ᵒᵖ ⥤ Type (u + 1)`, with pullback through `pullbackFreeIso`
+([Basic](Quotient/Basic.lean)). Convention: `k` is the rank of the quotient, so this is Stacks'
+`G(n − k, n)` and Nitsure's `Grass(n, k)`, for all `k` and `n`. On `Spec A`, such quotients are
+the points of `G(k, A ⊗[R] R^n; A)`, compatibly with base change (`affinePoint_bijective`,
+`affinePoint_pullback`; [Affine](Quotient/Affine.lean), [BaseChange](Quotient/BaseChange.lean),
+[Points](Quotient/Points.lean)). The natural transformation
+`toLocalFunctor R k n : quotFunctor R k n ⟶ localFunctor R k n` is injective on every `T`,
+because local isomorphisms under the quotient maps glue
+([Injectivity](Quotient/Injectivity.lean)), and surjective, because the chart quotients of a point
+form a Zariski descent datum (`Pseudofunctor.DescentData.ofEpi`) and glue
+([Surjectivity](Quotient/Surjectivity.lean)). Hence
+`quotFunctorIso R k n : quotFunctor R k n ≅ localFunctor R k n`, and `schemeOver R k n`
+represents `Quot_k(O^n)` on all schemes over `Spec R` (`quotFunctorRepresentableBy`), with
+universal quotient `universalQuotient R k n` and a representative `universalQuotientRep R k n`
+([Representability](Quotient/Representability.lean)); the identification of the universal
+quotient with the chart quotients is not stated. Like the rest of the family, the Quotient leaves
+that use values of Mathlib's `map` keep the named premise `BaseChangeMkQFormula` as an instance
+argument (`quotFunctor` itself does not need it). The focused test
+[Quotient](../../../AglibTest/AlgebraicGeometry/Grassmannian/Quotient.lean) restates the results
+with the instance from `BaseChangeFormula` and guards their axioms. The general lemmas used here are
+in sibling leaves of their owners: `Modules/Pullback/FreeComp`, `Modules/FittingIdeal/ConstantRank`,
+`Descent/Modules/ZariskiEpi`, `CategoryTheory/Sites/Descent/OfEpi` and
+`Algebra/Category/ModuleCat/ChangeOfRings/SpanSingleton`. `AlgSpecPoints.isOpenImmersion_coverPt`
+and `AlgSpecPoints.exists_coverPt_apply_eq` are in [Injectivity](Quotient/Injectivity.lean).
 
 Relocation candidates (general, not specific to the Grassmannian): `algSpecPoints`,
 `algSpecPointsEquiv` and `AlgebraicGeometry.AlgSpecPoints.*` in
@@ -137,5 +164,10 @@ universal point are the frame coefficients, in the frame `Xᵢ`, of the quotient
 (`awayToSection_chartRatioSection`), and that the chart sections transform by the twisting
 transition unit `coordinateTransitionUnit` (`overlapRight_chartRatioSection`).
 
-The description of maps `T ⟶ P` by rank-one locally free quotients of `O_T^m` (Stacks, Tags 089V
-and 01NE) waits for the rank-`k` quotient description of the Grassmannian above.
+[Quotient](ProjectiveSpace/Quotient.lean) gives the description of maps `T ⟶ P` by rank-one
+locally free quotients (Stacks, Tags 089V and 01NE): `ProjectiveSpace.quotFunctorRepresentableBy R e
+: (quotFunctor R 1 m).RepresentableBy (ProjectiveSpace.schemeOver R ι)` composes
+`localFunctorRepresentableBy` with `localFunctorIsoQuotFunctor R 1 m`. It covers quotients of
+`O^m = SheafOfModules.free (ULift (Fin m))`; the form with `O^ι` needs reindexing along `e`, and
+the identification of the universal quotient with `coordinatePowerGeneratingMap R ι 1 : O^ι ↠ O(1)`
+is open.

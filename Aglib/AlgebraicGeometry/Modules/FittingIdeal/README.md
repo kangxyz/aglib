@@ -75,6 +75,12 @@ finite-presentation hypothesis enters the construction.
   [RingTheory/Finiteness/CompHom](../../../RingTheory/Finiteness/CompHom.lean), and Mathlib's
   `Module.rankAtStalk_eq` for the stalk rank as a fibre dimension.
 
+[ConstantRank](ConstantRank.lean): `Scheme.Modules.sheafHasRank_pullback` (constant rank is stable
+under every pullback) and `sheafHasRank_of_iso`; on `Spec A`, `sheafRank_eq_rankAtStalk` (the fibre
+rank of a finitely presented sheaf whose module of global sections is finite and flat is the stalk
+rank of its global sections), `sheafHasRank_tilde` and `rankAtStalk_globalSections`. Consumer:
+[Grassmannian/Quotient](../../Grassmannian/README.md).
+
 ## Not covered
 
 - Stacks, Tags 0C3E (finite type of the Fitting ideals of a finitely presented module) and 0CYX

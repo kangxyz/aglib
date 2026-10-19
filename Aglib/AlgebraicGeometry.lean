@@ -754,6 +754,7 @@ public import Aglib.AlgebraicGeometry.Descent.Modules.Pseudofunctor
 public import Aglib.AlgebraicGeometry.Descent.Modules.RestrictPullback
 public import Aglib.AlgebraicGeometry.Descent.Modules.Substack
 public import Aglib.AlgebraicGeometry.Descent.Modules.Zariski
+public import Aglib.AlgebraicGeometry.Descent.Modules.ZariskiEpi
 public import Aglib.AlgebraicGeometry.Descent.Modules.ZariskiStack
 public import Aglib.AlgebraicGeometry.Descent.Opens
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.FinitePresentation
@@ -826,7 +827,15 @@ public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Charts
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Comparison
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.FunctorOfPoints
+public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Quotient
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.UniversalQuotient
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Affine
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.BaseChange
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Basic
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Injectivity
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Points
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Representability
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Surjectivity
 public import Aglib.AlgebraicGeometry.Grassmannian.Representability
 public import Aglib.AlgebraicGeometry.Group.BaseChange.MarkedKernel
 public import Aglib.AlgebraicGeometry.Group.Monodromy
@@ -966,6 +975,7 @@ public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Basic
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Locality
 public import Aglib.AlgebraicGeometry.Modules.FinitePresentation.Noetherian
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Basic
+public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.ConstantRank
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.LocallyFree
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Pullback
 public import Aglib.AlgebraicGeometry.Modules.Flat.Closure
@@ -1085,6 +1095,7 @@ public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.OpenBaseChange
 public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.Stalk
 public import Aglib.AlgebraicGeometry.Modules.Pullback.FlatMorphism
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Free
+public import Aglib.AlgebraicGeometry.Modules.Pullback.FreeComp
 public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.SectionStalk
 public import Aglib.AlgebraicGeometry.Modules.Pullback.StalkUnit

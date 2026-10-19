@@ -11,6 +11,12 @@ retain each pure tensor, and the coefficient square uses the original
 independent ring and module universes. The finite-projective complex
 family consumes these native module statements by public import.
 
+[SpanSingleton](SpanSingleton.lean) gives `ModuleCat.extendScalars_map_toSpanSingleton_comp`:
+extension of scalars of `a ↦ a • x`, followed by `e` with `e (1 ⊗ x) = y`, is `b ↦ b • y` after
+`scalarExtensionUnit`, with the hypothesis stated through the scalar-extension adjunction. Its
+consumer is the affine base change of
+[Grassmannian/Quotient](../../../../AlgebraicGeometry/Grassmannian/README.md).
+
 [UnitTensor](UnitTensor.lean) evaluates scalar extension on unit pure tensors
 through composites and congruences: `ModuleCat.extendScalarsComp_hom_app_comp_map_comp_one_tmul`
 computes `C ⊗_A M ≅ C ⊗_B (B ⊗_A M) ⟶ C ⊗_B N ⟶ P` on `1 ⊗ m` for maps given
