@@ -77,3 +77,5 @@ No new tensor, associator or compatibility assumption is introduced.
 The cover and scheme universes remain independent. The source passed
 `1792125344557185000-79728` at default budgets; the raw native-map
 consumer passed `1792125406028387000-80022`, using the three standard axioms.
+
+[Locus](Locus.lean) defines `IsLocallyRankOneAt M x`: the pullback of `M` along some open immersion through `x` is locally rank one. Its locus is open, `M` is locally rank one iff the condition holds at every point, and a pullback is locally rank one when the image of the morphism lies in the locus. [Tilde](Tilde.lean) proves the converse `invertible_of_tilde_isLocallyRankOne` of `tilde_isLocallyRankOne` and the equivalence `tilde_isLocallyRankOne_iff`. Neither uses a finiteness or Noetherian hypothesis. The consumer is [relative effective Cartier divisors](../../EffectiveCartierDivisor/Relative/README.md).

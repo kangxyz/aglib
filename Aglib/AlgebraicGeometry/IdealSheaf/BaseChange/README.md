@@ -7,3 +7,5 @@
 [Flat](Flat.lean) supplies `Scheme.Hom.flatQuotient_idealPullbackMap_isIso`. Its two actual cartesian squares, `IsClosedImmersion i` and `Flat (i ≫ p)` imply invertibility of the specified ideal map. Neither the ambient family nor the base-change morphism needs to be flat; an invertible ideal is also not a premise of this root. The source Cartier specialization retains its original extra rank-one hypothesis as a pointwise corollary.
 
 [Fibre](Fibre.lean) constructs the actual fibre inclusion and cartesian square. Its conditional ideal isomorphism and line-bundle construction retain the explicitly displayed pointwise base-change supplier, closed-immersion, quotient-flatness and rank-one inputs from the source. These conditional interfaces are supplied by the proved `Flat` root in their final consumers; they are not new global theorem-family predicates.
+
+[OpenImmersion](OpenImmersion.lean) proves `Scheme.Hom.idealPullbackMap_isIso_of_isOpenImmersion`: along a cartesian square whose base-change morphism is an open immersion, the canonical ideal map is an isomorphism, with no flatness or closed-immersion hypothesis.

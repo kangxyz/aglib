@@ -54,6 +54,7 @@ import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Precoverage
 import AglibTest.AlgebraicGeometry.Descent.Modules.Fppf.Stack
 import AglibTest.AlgebraicGeometry.Descent.Modules.Zariski
 import AglibTest.AlgebraicGeometry.Descent.Opens
+import AglibTest.AlgebraicGeometry.EffectiveCartierDivisor.Relative
 import AglibTest.AlgebraicGeometry.FlatteningStratification.AffineBase
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Closed
 import AglibTest.AlgebraicGeometry.FlatteningStratification.Coproduct

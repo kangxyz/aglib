@@ -5,3 +5,5 @@
 The objects remain Mathlib ideals and prime spectra. Normality/integrality supplies going down only through the precisely stated variant; it is not an automatic property of an arbitrary algebra.
 
 [RegularPrincipal](RegularPrincipal.lean), imported as `Aglib.RingTheory.Ideal.RegularPrincipal`, relates actual singleton ideal bases and regular principal generators over arbitrary commutative rings. Its nonzero-ideal principal-domain variant retains its domain and principal-ideal-ring hypotheses.
+
+[InvertiblePrincipal](InvertiblePrincipal.lean), imported as `Aglib.RingTheory.Ideal.InvertiblePrincipal`, proves `Ideal.isSMulRegular_of_invertible_span_singleton`: a generator of a principal ideal that is an invertible module is regular. No Noetherian or domain hypothesis is used.

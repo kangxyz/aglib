@@ -1,6 +1,6 @@
 # Regular equations and flat principal quotients
 
-The public supplier is `Algebra.regular_and_flat_of_fibre_regular`, imported from `Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise`. For commutative rings `R`, `S`, an `R`-algebra structure on `S`, `[Algebra.FinitePresentation R S]` and `[Module.Flat R S]`, it proves
+The main public supplier is `Algebra.regular_and_flat_of_fibre_regular`, imported from `Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise`. For commutative rings `R`, `S`, an `R`-algebra structure on `S`, `[Algebra.FinitePresentation R S]` and `[Module.Flat R S]`, it proves
 
 ```lean
 (∀ (p : Ideal R) [p.IsPrime],
@@ -17,6 +17,7 @@ There is no Noetherian, reducedness, local-base, domain or characteristic hypoth
 | `Aglib.RingTheory.Flat.PrincipalQuotient.Local` | `Algebra.regular_and_flat_of_residue_regular_noetherian` assumes local `R`, local Noetherian `S`, a local structure map and `R`-flat `S`. It proves regularity and quotient flatness from residue injectivity, without adding a separate Noetherian hypothesis on `R`. |
 | `Aglib.RingTheory.Flat.PrincipalQuotient.Localization` | Canonical quotient/localization scalar comparisons, transport of regularity and flat principal quotients, and local-to-global criteria using every actual maximal localization of `S`. |
 | `Aglib.RingTheory.Flat.PrincipalQuotient.Fibrewise` | Transports the local residue result through localization of the base and supplies the unrestricted theorem above. |
+| `Aglib.RingTheory.Flat.PrincipalQuotient.AtPrime` | `Algebra.isSMulRegular_atPrime_of_fiber_regular`, a second public supplier: for flat finitely presented `S` over an arbitrary `R`, regularity of `1 ⊗ a` on the one fiber `(q.under R).Fiber S` gives regularity of `a` at `q`. |
 
 The lower module criteria are in [LocalCriterion](../LocalCriterion/README.md). Scheme chart transports and line-bundle/zero-scheme endpoints remain downstream consumers of these ring/module results.
 
