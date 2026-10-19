@@ -146,11 +146,13 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
             safe('legacy-audit-cached-imports', lake + ['--no-build', 'build',
                  'Aglib', 'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'])
             safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'AglibTest/Axioms.lean'])
-        safe('negative-controls', ['python3', 'scripts/check_negative_controls.py'])
+        if plan.get('controls', True):
+            safe('negative-controls', ['python3', 'scripts/check_negative_controls.py'])
+        else:
+            print('Negative-control inputs unchanged; not rerun in this invocation. Reuse prior compatible '
+                  'coverage, or run python3 scripts/check_negative_controls.py if that coverage is absent.')
         required = [*plan['providers'], *plan['consumers'], *plan['tests'], *audit_targets]
         run(root, ['python3', 'scripts/check_compiled_inventory.py', '--modules', *required])
-        if not ci and selected:
-            run(root, ['python3', 'scripts/check_kernel.py', '--receipt-dir', directory / 'kernel', '--modules', *selected])
     if 'client' in phases and plan['client_audit']:
         run(root, ['python3', 'scripts/prepare_downstream.py'])
         client = root / 'examples/downstream'
@@ -159,9 +161,6 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
         # cached before that aggregate is built, just like other broad facades.
         safe('client-cached-audit-import', lake + ['--no-build', 'build', 'Consumer'], client)
         safe('client-audit', ['lake', 'env', 'lean', '-j1', 'Audit.lean'], client)
-        if not ci and plan['client']:
-            run(root, ['python3', 'scripts/check_kernel.py', '--root', client, '--client',
-                       '--receipt-dir', directory / 'client-kernel', '--modules', *plan['client']])
     validate(root, plan)
     if outputs and mappings:
         if phases != {'providers', 'provider-lint', 'consumers', 'trust', 'client'}:
@@ -175,7 +174,10 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
             'coverage': plan['coverage'], 'base': plan['base'], 'head': plan['head'],
             'selected_targets': plan['providers'] + plan['consumers'] + plan['tests']
                                 + audit_targets,
-            'independent_replay': 'selected-modules' if not ci else 'retained-evidence-required',
+            'kernel_replay': 'not-requested; formal-acceptance evidence tracked externally',
+            'negative_controls': ('executed' if plan['trust'] and plan.get('controls', True) else
+                                  'unchanged-inputs; prior-compatible-coverage-required' if plan['trust'] else
+                                  'not-selected'),
         }, indent=2) + '\n')
 
 

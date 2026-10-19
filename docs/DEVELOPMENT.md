@@ -2,9 +2,29 @@
 
 Run commands from the package root. [lean-toolchain](../lean-toolchain) pins Lean 4.34.1; [lakefile.toml](../lakefile.toml) pins Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` and declares `Aglib` and `AglibTest`. Keep the pinned [lake-manifest.json](../lake-manifest.json). Production imports use Mathlib and precise lower `Aglib` leaves.
 
+## Normal task
+
+Use the prepared workspace: encode/prove, compile the exact changed leaf, and
+repair from its diagnostics. For example:
+
+```sh
+python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration-001 \
+  Aglib.CategoryTheory.ExactCategory.Basic
+```
+
+At meaningful final code delivery, run the selected check once:
+`bash scripts/check.sh --base ACCEPTED_COMMIT --rehash`. Reuse completed
+categories after a failure through the [direct repair commands](#local-verification-and-ci).
+Use a consumer only for a concrete interface question. Look up setup, cache or
+environment details below only when a required input is missing or invalid.
+Mathematical adoption uses the separate [scoped replay recipe](#kernel-replay-at-mathematical-adoption).
+
 ## Setup and focused builds
 
-Fetch matching official Mathlib artifacts through the maintained resource guard:
+Consult this section only for an actual setup or artifact gap. Prefer the
+[selected cache route](../scripts/README.md#incremental-ci-build-cache) for required
+imports. The retained comprehensive bootstrap is for explicitly assigned broad
+dependency-cache recovery:
 
 ```sh
 python3 scripts/resource_guard.py --bootstrap-cache \
@@ -17,10 +37,7 @@ Keep writable dependency build caches owned by this checkout. Before building wi
 
 All normal workflows must use only incremental checks, including authoring, maintenance, documentation, review, merge, integration and publication. Preserve trusted caches, reuse compatible build and trust evidence, reconcile combined changes and fill actual coverage gaps. Reconcile exact source/toolchain/configuration identities and obtain matching caches before building genuinely missing or changed required targets and needed affected consumers. Complete coherent mathematical obligations using focused compilation and repair where they advance the proof, with [build_serial.py](../scripts/build_serial.py):
 
-```sh
-python3 scripts/build_serial.py --receipt-dir .lake/verification/iteration-001 \
-  Aglib.CategoryTheory.ExactCategory.Basic
-```
+See the exact-leaf command in the [normal task recipe](#normal-task).
 
 Choose a fresh build receipt directory for each invocation; the helper refuses
 to overwrite its prior `cached-check.log`.
@@ -59,10 +76,17 @@ Selected-origin axiom auditing reuses `AglibTest.AuditSupport`, including its
 private/generated-declaration inventory and fixed allowed axioms. Negative
 controls and selected compiled enrollment remain separate checks; stale or negative
 outputs still fail. The existing client origin audit runs for affected clients.
-The local route kernel-replays selected modules and their actual compiled import
-closures; `--ci` omits these extra independent replays, as before. Selected
-coverage does not establish complete inventory or publication replay coverage.
-Retain compatible evidence and fill actual gaps before a publication claim.
+Proof-only edits retain matching rejection-control evidence from the accepted
+baseline. Controls rerun when their fixtures, auditor/support policy, pinned
+configuration or compiler-wrapper runtime change, or for explicit `--full`
+diagnostics. If matching baseline control coverage is unavailable, run
+`python3 scripts/check_negative_controls.py` for that actual gap. Selected-origin
+axiom auditing still covers changed proofs independently of this reuse.
+Ordinary selected final checks, commits and merges do not request extra kernel
+replay. They report their applicable code/trust evidence; mathematical adoption
+uses the [incremental replay recipe](#kernel-replay-at-mathematical-adoption).
+A normal cache export records replay as not requested and externally tracked;
+it does not claim formal mathematical acceptance or full inventory coverage.
 
 Use `AGLIB_VERIFY_DIR` for a fresh run directory. After a repair, rerun only failed
 or newly affected categories with `--phase providers`, `--phase provider-lint`,
@@ -70,6 +94,28 @@ or newly affected categories with `--phase providers`, `--phase provider-lint`,
 categories. A `--native-only` repair reuses already completed static/tooling
 checks. These repair runs do not export a complete selected-validation mapping.
 Retain their compatible prior coverage rather than rerunning unchanged checks.
+
+For a single failed module, existing direct commands narrow the repair further
+(replace `MODULE` and use a fresh build `DIR`):
+
+```sh
+# Provider lint failure, after compiling any repaired source:
+lake --no-build lint --builtin-only MODULE
+python3 scripts/run_declaration_linter.py MODULE
+python3 scripts/run_style_linter.py --modules MODULE
+# Late test failure: build just that test, then use its name in the lint commands above.
+python3 scripts/build_serial.py --receipt-dir DIR AglibTest.MODULE
+# Late client failure:
+python3 scripts/build_serial.py --root examples/downstream --receipt-dir DIR Consumer.MODULE
+# From examples/downstream, preserve the client's existing audit boundary:
+cd examples/downstream
+lake --no-build build Consumer
+lake env lean -j1 Audit.lean
+```
+
+Complete still-affected selected trust checks with the existing `--phase trust`
+command; completed provider lint need not repeat. Reselect if the actual import
+closure changes.
 
 Whole-library diagnostics require an explicit `--full`:
 
@@ -111,15 +157,42 @@ The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` sele
 
 `AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` are in MiB. Choose values appropriate to the host, keeping the native Lean limit below the owned-group RSS cutoff. The helpers validate their settings; the workflow is the authority for CI's configured profile. Do not run another Lean job alongside this route.
 
-Use [check_kernel.py](../scripts/check_kernel.py) for exact current-module replay, including server/private artifacts. It reuses the pinned installed `LeanChecker.replayFromImports` concurrently for a bounded set of exact enrolled modules. The default `leanchecker` CLI expands module prefixes and fans out concurrent jobs; use the maintained exact checker for whole-library replay.
+### Kernel replay at mathematical adoption
+
+Formal mathematical acceptance here means the existing substantive adoption
+milestone for claimed formalized results. It is not a new workflow state and
+is not triggered by a commit, merge, ordinary code final check, cache publication,
+writing review or exposé status review by itself. Keep the mathematical review
+and status obligations appropriate to the actual product.
+
+At that adoption, use [check_kernel.py](../scripts/check_kernel.py) incrementally
+for the accepted modules and required uncovered dependencies, retaining compatible
+module-bound replay evidence from the stable root/client lineages. For example:
 
 ```sh
-python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
+python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel \
+  --modules Aglib.CategoryTheory.ExactCategory.Basic
 python3 scripts/check_kernel.py --root examples/downstream --client \
-  --receipt-dir .lake/verification/client-kernel
+  --receipt-dir .lake/verification/client-kernel --modules Consumer.FundamentalGroup
 ```
 
-Run these broad replay commands only when their scope is warranted by the rule above, after the corresponding build and audits. `--only MODULE` and `--modules MODULE ...` are diagnostic probes and cannot alone establish complete coverage. Select the same explicit receipt directory to continue scoped work across source changes. Matching evidence is reused by each module's actual compiled import closure, including dependency source, exported/server/private/IR artifacts, effective configuration, compiler/runtime and checker semantics. An unrelated edit or new enrollment does not discard unaffected evidence; an imported source/artifact change invalidates its dependents. A coherent relocation can reuse matching evidence without rewriting the original execution provenance.
+Choose actual adopted modules; a scoped result does not establish whole-library
+coverage. The checker labels `--modules` output as a probe and does not freshly
+replay imported proofs. Combine its exact module evidence with compatible prior
+coverage, filling the actual missing dependency coverage rather than replaying
+unchanged accepted libraries. Use the same receipt directories across related
+source changes so matching compiled-import evidence can be reused.
+
+Replay supplies an additional kernel/environment check on recorded compiled
+terms and artifacts. For unreviewed generated source or uncertain environments
+and artifacts, resolve the source, options and trust basis and include the needed
+scoped replay before adopting the mathematical result; an ordinary successful
+compile or cached artifact alone is insufficient adoption evidence. Replay does
+not replace mathematical correspondence/review or explicit theorem premises.
+The pinned installed `LeanChecker.replayFromImports` implementation, resource
+bounds and fail-closed compatibility checks remain unchanged. Whole-library
+replay belongs only to explicitly requested diagnostics or warranted fault
+recovery, through the existing comprehensive route.
 
 On resumption, adopt the accepted operational tool revision separately from the frozen mathematical source snapshot, recording both identities. Continue the same explicit compatible kernel-receipt lineage; adopting operational guidance alone requires no new replay. Tool changes that affect the recorded compiler/runtime or checker semantics must satisfy the checker's compatibility rules before evidence can be reused.
 
@@ -135,9 +208,9 @@ CI uses explicit cache restore and save steps. Newly acquired dependency proof c
 
 Main-branch CI runs serialize without cancelling the active run, allowing eligible build progress to be saved before the next snapshot starts. GitHub keeps the latest pending snapshot in that group. Other branches and pull-request refs cancel superseded active runs. See [workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).
 
-A build-cache hit alone does not establish tests, audits, inventory checks or required local replay coverage. Retain compatible evidence for each required check and fill only actual gaps. The replay controller can discharge unchanged modules with validated matching per-closure evidence from the explicitly selected lineage; a historical receipt alone supplies no current coverage. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
+A build-cache hit alone does not establish tests, audits, inventory checks or replay required at mathematical acceptance. Retain compatible evidence for each required check and fill only actual gaps. The replay controller can discharge unchanged modules with validated matching per-closure evidence from the explicitly selected lineage; a historical receipt alone supplies no current coverage. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
 
-The publication target is the public repository [`kangxyz/aglib`](https://github.com/kangxyz/aglib). Before publishing, reconcile complete required coverage for the combined source snapshot, including library/client independent replay and the downstream audit, using compatible retained evidence and narrow new checks. Publication does not require reexecuting unchanged checks or the full local command. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
+The publication target is the public repository [`kangxyz/aglib`](https://github.com/kangxyz/aglib). Before publishing, reconcile applicable code-check and downstream-audit coverage for the combined source snapshot, using compatible retained evidence and narrow new checks. Publication of code or cache artifacts alone does not trigger replay. When publication also adopts a substantive mathematical result, complete its [mathematical acceptance](#memory-and-exact-replay), including scoped library/client replay where applicable. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
 
 [generate_imports.py](../scripts/generate_imports.py) owns aggregate imports. The generator owner updates enrollment; `python3 scripts/generate_imports.py --check` detects drift. Modern `module` headers, precise `public import` and exposed public sections define the consumer/reduction boundary. [AglibTest](../AglibTest) and [examples/downstream](../examples/downstream) remain consumers, with rejection controls outside production imports.
 
@@ -153,7 +226,7 @@ Update the owning family README when an object, namespace, hypothesis, result or
 
 Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree status before writing and before staging or committing; coordinate overlapping edits and shared build outputs. Keep Git index and `HEAD` mutations serial. Do not push without an explicit current request.
 
-Use the incremental rule above during development, integration and publication. Preserve required enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, compiled inventory, downstream checks and local replay coverage through compatible retained evidence and checks of actual gaps. Continue warranted scoped replay through the explicit receipt lineage; current matching per-closure evidence covers unchanged modules, while diagnostic probes alone do not establish the full inventory. Build success does not discharge mathematical premises.
+Use incremental checks during development, integration and publication. Preserve applicable enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, inventory and downstream coverage through compatible evidence and actual gap checks. At a mathematical-adoption milestone, reuse the explicit replay lineage and cover its affected modules; a narrow probe does not claim whole-library coverage. Build success does not discharge mathematical premises.
 
 A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.
 

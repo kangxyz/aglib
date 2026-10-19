@@ -47,16 +47,30 @@ The selected trust audit imports exact selected implementations plus the maintai
 Private/generated declarations, allowed axioms, rejection controls and stale/negative
 compiled-output checks are retained. `check_compiled_inventory.py --modules MODULE ...`
 requires only selected enrollment while still rejecting stale and negative outputs.
-Local `check_kernel.py --modules MODULE ...` checks selected compiled import closures;
-it does not require or hash unrelated enrolled module artifacts. Its output stays
-labelled a probe, with no whole-library coverage claim. `--ci` omits extra independent
-kernel replay, as before; retained complete publication evidence is still required.
+Formal mathematical adoption explicitly uses `check_kernel.py --modules MODULE ...`
+with compatible retained root/client evidence. Its output stays labelled a probe
+for the selected compiled-import basis, with no whole-library coverage claim.
+Ordinary selected code final checks and cache publication do not request extra
+kernel replay or claim mathematical acceptance; their metadata records replay
+as not requested and externally tracked. See the
+[adoption recipe](../docs/DEVELOPMENT.md#kernel-replay-at-mathematical-adoption).
+
+Changed-proof trust and rejection-control validation are separate plan decisions.
+Origin/axiom coverage still follows changed proofs. Unchanged control fixtures,
+auditor/support policy and pinned compiler-wrapper runtime reuse compatible
+accepted-baseline evidence; their changes and explicit full diagnostics select
+the controls. Missing compatible control coverage calls for the direct
+`python3 scripts/check_negative_controls.py` command, preserving the source and
+runtime basis of that check.
 
 After final-check repairs use `--phase providers`, `--phase provider-lint`,
 `--phase consumers`, `--phase trust` or `--phase client` (repeatable), optionally
 `--native-only`, for only failed or newly invalidated categories. Use a fresh
 `AGLIB_VERIFY_DIR` for each build invocation; preserve matching prior receipts.
 Compilation alone does not discharge independent lint/test/trust coverage.
+The [direct module repair commands](../docs/DEVELOPMENT.md#local-verification-and-ci)
+cover provider lint, a late test and a late client without repeating completed
+categories.
 
 `check.sh --full [--source-only] [--rehash] [--ci]` retains separately requested
 whole-library diagnostics. Without literal `--full`, `check.sh` requires an
@@ -224,11 +238,24 @@ compiled metadata fails closed. Configuration uses the existing typed cache
 normalization (ignoring only package version and storage-policy fields); raw
 configuration hashes remain in the full provenance. No historical-directory
 search is performed. The default full-check timestamp directories remain fresh;
-select a stable directory explicitly for incremental replay:
+select a stable directory explicitly for incremental replay at mathematical adoption:
 
 ```sh
-python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel
+python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel \
+  --modules Aglib.CategoryTheory.ExactCategory.Basic
+python3 scripts/check_kernel.py --root examples/downstream --client \
+  --receipt-dir .lake/verification/client-kernel --modules Consumer.FundamentalGroup
 ```
+
+This is the existing substantive adoption milestone for claimed formalized
+results, not a new state or a consequence of an ordinary code check, commit,
+merge or status/writing review alone. Scope the modules and uncovered dependencies
+to the adopted result and reuse matching evidence for the rest. Unreviewed
+generated source or uncertain source/options/environment/artifact provenance
+requires resolving that trust basis and the needed scoped replay before
+mathematical adoption; a successful ordinary compile alone does not establish it.
+Replay adds a recorded kernel/environment check and does not replace mathematical
+review or explicit premises.
 
 The pinned replay core checks each module's declarations sequentially; bounded
 module tasks provide replay parallelism. Normal-build thread settings remain
@@ -257,8 +284,10 @@ alone requires no new replay. Changes affecting recorded compiler/runtime or che
 semantics remain subject to the compatibility rules above. Integration and publication
 retain required library/client and other check coverage through compatible evidence
 and narrow new checks, without rerunning unchanged checks. Matching per-closure replay
-evidence discharges unchanged replay coverage; a probe alone cannot discharge complete
-publication coverage.
+evidence discharges unchanged replay coverage. A scoped probe does not claim
+complete library replay or mathematical acceptance; adoption evaluates the actual
+accepted target and its required coverage. Cache publication reports its narrow
+build/check basis separately.
 
 Do not run another Lean job concurrently with this serialized route. On restricted
 macOS hosts, process monitoring and owned-process signaling require the authorized
@@ -311,8 +340,10 @@ skip dependency resolution and cache work; missing sources or basis fail without
 an unscoped fetch. The stricter original `--bootstrap-cache` gate remains unchanged.
 The CI runner and resource profile are defined in `.github/workflows/ci.yml`.
 Its incremental `check.sh --base BASE --rehash --ci` mode retains selected
-compilation, linters, axiom audits and affected client checks. Extra independent
-kernel replay remains in the local route; whole-library diagnostics require `--full`.
+compilation, linters, axiom audits and affected client checks. Selected local and
+CI code checks do not request extra kernel replay. Mathematical adoption uses
+the explicit scoped checker commands above; whole-library diagnostics retain
+`--full` and their existing replay behavior.
 
 `prepare_build_cache.py` runs before restored project outputs enter the declared
 CI check. Each build root carries an advisory `.aglib-cache.json` provenance stamp

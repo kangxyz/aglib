@@ -14,6 +14,10 @@ CONFIG = {'lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.jso
           'examples/downstream/lean-toolchain', 'examples/downstream/lakefile.toml',
           'examples/downstream/lakefile.lean', 'examples/downstream/lake-manifest.json'}
 AUDIT = {'AglibTest.Axioms', 'AglibTest.AuditSupport'}
+CONTROL_INPUTS = CONFIG | {
+    'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
+    'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py',
+}
 TOOL_TESTS = {
     'affected_scope.py': ['test_affected_scope'],
     'check_affected.py': ['test_affected_scope'],
@@ -183,14 +187,14 @@ def select(root, base=None, head=None, full=False, default_base=None):
         elif path.endswith('.md') or (path.startswith('docs/') and path.endswith('.json')):
             continue
         elif path.startswith('scripts/') or path.startswith('.github/'):
-            if path.startswith('scripts/test_') and path.endswith('.py'):
+            if Path(path).parent == Path('scripts') and path.startswith('scripts/test_') and path.endswith('.py'):
                 tooling.add(Path(path).stem)
             elif path.startswith('.github/actions/lake-cache/'):
                 tooling.add('native-cache')
                 tooling.add('test_ci_cache')
             elif path.startswith('.github/workflows/'):
                 tooling.update(['test_ci_cache', 'test_affected_scope', 'native-cache'])
-            elif path.startswith('scripts/') and Path(path).name in TOOL_TESTS:
+            elif Path(path).parent == Path('scripts') and Path(path).name in TOOL_TESTS:
                 tooling.update(TOOL_TESTS[Path(path).name])
             else:
                 raise ValueError('Unrecognized tooling path; assign its regression scope explicitly: ' + path)
@@ -211,14 +215,17 @@ def select(root, base=None, head=None, full=False, default_base=None):
     consumers = sorted(n for n in executable - set(providers) if n == 'Aglib' or n.startswith(('Aglib.', 'Tools.')))
     tests = sorted(n for n in executable if (n == 'AglibTest' or n.startswith('AglibTest.')) and n != 'AglibTest.AuditSupport')
     client = sorted(n.removeprefix('client:') for n in executable if n.startswith('client:'))
+    controls = bool(full or CONTROL_INPUTS.intersection(changed) or
+                    any(path.startswith('AglibTest/NegativeControls/') for path in changed))
     trust = bool((executable - {n for n in executable if n.startswith('client:')})
-                 or seeds & AUDIT or any('NegativeControls' in n for n in seeds))
+                 or seeds & AUDIT or controls)
     client_audit = bool(client or 'client:Audit' in seeds)
     native = bool(providers or consumers or tests or client_audit or trust)
     cache_targets = providers + consumers + tests + ['client:' + name for name in client]
     if trust:
-        cache_targets += [name for name in graph if name in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'}
-                          or name.startswith('AglibTest.NegativeControls.')]
+        cache_targets += [name for name in graph if name in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'}]
+        if controls:
+            cache_targets += [name for name in graph if name.startswith('AglibTest.NegativeControls.')]
         if 'AglibTest/Axioms.lean' in changed:
             cache_targets.append('AglibTest.Axioms')
     if client_audit:
@@ -235,7 +242,7 @@ def select(root, base=None, head=None, full=False, default_base=None):
             'imports': {n: sorted(graph[n]) for n in facades & affected},
             'style': sorted(n for n in affected & sources.keys() if sources[n] in changed and not n.startswith('client:')
                             and 'NegativeControls' not in n),
-            'trust': trust, 'client_audit': client_audit, 'native': native,
+            'trust': trust, 'controls': controls, 'client_audit': client_audit, 'native': native,
             'publish': bool(providers or consumers or tests or trust), 'tooling_tests': sorted(tooling),
             'identity': {p: digest(root / p) for p in sorted(identity_paths)}}
 

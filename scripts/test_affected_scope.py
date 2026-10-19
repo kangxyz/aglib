@@ -138,6 +138,14 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertFalse(plan['native'])
         self.assertEqual(plan['tooling_tests'], ['test_affected_scope'])
 
+    def test_new_tooling_paths_require_explicit_regression_selection(self):
+        for path in ('scripts/new_helper.py', 'scripts/nested/check_kernel.py'):
+            with self.subTest(path=path):
+                self.write(path, '# unassigned helper\n')
+                with self.assertRaisesRegex(ValueError, 'assign its regression scope explicitly'):
+                    select(self.root, self.base)
+                (self.root / path).unlink()
+
     def test_missing_base_unknown_path_and_pin_fail_closed(self):
         with self.assertRaises(ValueError):
             select(self.root)
@@ -353,7 +361,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertFalse(plan['publish'])
         self.assertFalse(plan['trust'])
 
-    def test_changed_audit_support_retains_its_selected_replay_and_origin_audit(self):
+    def test_changed_audit_support_retains_origin_audit_without_automatic_kernel_replay(self):
         self.write('AglibTest/AuditSupport.lean', 'import Lean\ndef support := 2\n')
         plan, calls = select(self.root, self.base), []
         directory = Path(self.temp.name) / 'run'
@@ -365,8 +373,61 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertIn('coverage.contains `AuditForeign.GeneratedDatum.rec', audit)
         self.assertIn('unless hidden.size == 1', audit)
         self.assertIn('(env.checked.get.find? hidden[0]!).isSome', audit)
-        replay = next(' '.join(c) for c in calls if 'scripts/check_kernel.py' in ' '.join(c))
-        self.assertIn('--modules AglibTest.AuditSupport', replay)
+        self.assertFalse(any('scripts/check_kernel.py' in ' '.join(c) for c in calls))
+        self.assertTrue(any('scripts/check_compiled_inventory.py' in ' '.join(c) for c in calls))
+
+    def test_changed_proof_reuses_controls_but_keeps_selected_trust_coverage(self):
+        plan, calls = self.changed_plan(), []
+        self.assertTrue(plan['trust'])
+        self.assertFalse(plan['controls'])
+        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+            execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, phases=['trust'])
+        text = [' '.join(command) for command in calls]
+        self.assertTrue(any('/SelectedAudit.lean' in command for command in text))
+        self.assertTrue(any('check_compiled_inventory.py --modules Aglib.Base' in command for command in text))
+        self.assertFalse(any('check_kernel.py' in command for command in text))
+        self.assertFalse(any('check_negative_controls.py' in command for command in text))
+
+    def test_ordinary_local_final_checks_keep_trust_and_export_without_replay_claims(self):
+        plan, calls = self.changed_plan(), []
+        directory = Path(self.temp.name) / 'run'
+        output = directory / 'outputs.jsonl'
+        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+            execute(self.root, plan, directory, native_only=True, outputs=output)
+        text = [' '.join(command) for command in calls]
+        self.assertFalse(any('check_kernel.py' in command for command in text))
+        self.assertTrue(any('SelectedAudit.lean' in command for command in text))
+        self.assertTrue(any('check_compiled_inventory.py' in command for command in text))
+        self.assertTrue(any('Audit.lean' in command and 'client-audit' in command for command in text))
+        coverage = json.loads(output.with_suffix('.jsonl.coverage.json').read_text())
+        self.assertEqual(coverage['kernel_replay'],
+                         'not-requested; formal-acceptance evidence tracked externally')
+        self.assertEqual(coverage['negative_controls'],
+                         'unchanged-inputs; prior-compatible-coverage-required')
+        self.assertNotIn('independent_replay', coverage)
+
+    def test_auditor_controls_and_runtime_changes_trigger_rejection_controls(self):
+        inputs = ['AglibTest/AuditSupport.lean', 'AglibTest/Axioms.lean',
+                  'AglibTest/AuditCoverage.lean', 'AglibTest/NegativeControls/ImportedFixture.lean',
+                  'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py']
+        for path in inputs:
+            with self.subTest(path=path):
+                target = self.root / path
+                previous = target.read_text() if target.exists() else None
+                self.write(path, (previous or '') + '\n-- changed control input\n')
+                plan = select(self.root, self.base)
+                self.assertTrue(plan['controls'])
+                self.assertTrue(plan['trust'])
+                self.assertTrue(plan['native'])
+                if previous is None:
+                    target.unlink()
+                else:
+                    target.write_text(previous)
+        self.write('scripts/check_negative_controls.py', '# changed checker\n')
+        plan, calls = select(self.root, self.base), []
+        with patch('check_affected.run', side_effect=self.native_mock(calls)):
+            execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, ci=True, phases=['trust'])
+        self.assertTrue(any('scripts/check_negative_controls.py' in command for command in calls))
 
     def test_workflow_gates_native_setup_and_never_rebuilds_for_export(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
