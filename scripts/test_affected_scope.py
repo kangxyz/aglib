@@ -112,6 +112,9 @@ class AffectedScopeTests(unittest.TestCase):
         self.write('examples/downstream/Consumer/Use.lean',
                    'import Aglib.Dep\nimport Mathlib.Client\ndef use := 1\n')
         self.write('AglibTest/AuditCoverage.lean', 'import Mathlib.Trust\n')
+        self.write('AglibTest/NegativeControls/ImportedAudit.lean',
+                   'import AglibTest.AuditSupport\nimport Mathlib.Trust\n\n'
+                   'run_cmd do\n  let count ← IO.pure 0\n')
         self.write('.lake/packages/batteries/Batteries/Tactic/Lint.lean', 'import Mathlib.ToolDependency\n')
         self.write('.lake/packages/Cli/Cli/Basic.lean', 'import Init\n')
         for name in ('Provider', 'FacadeDependency', 'Client', 'Trust', 'ToolDependency',
@@ -119,6 +122,7 @@ class AffectedScopeTests(unittest.TestCase):
             self.write('.lake/packages/mathlib/Mathlib/' + name + '.lean', 'import Init\n')
         self.write('.lake/packages/mathlib/Mathlib/Unrelated.lean', 'import Init\n')
         plan = select(self.root, self.base)
+        self.assertTrue(plan['controls'])
         self.assertEqual(cache_roots(self.root, plan),
                          ['Mathlib.Client', 'Mathlib.FacadeDependency', 'Mathlib.Provider',
                           'Mathlib.Tactic.Linter.TextBased', 'Mathlib.ToolDependency', 'Mathlib.Trust'])

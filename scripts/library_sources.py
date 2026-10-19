@@ -10,7 +10,7 @@ KEYWORDS = {'import', 'all', 'public', 'private', 'meta', 'prelude', 'module', '
             'section', 'end', 'open', 'set_option', 'noncomputable', 'universe',
             'variable', 'def', 'theorem', 'lemma', 'example', 'instance', 'abbrev',
             'axiom', 'constant', 'class', 'structure', 'inductive', 'attribute',
-            'export', 'initialize', 'mutual', 'syntax', 'macro', 'elab'}
+            'export', 'initialize', 'mutual', 'syntax', 'macro', 'elab', 'run_cmd'}
 
 
 def strip_comments_and_strings(source: str) -> str:

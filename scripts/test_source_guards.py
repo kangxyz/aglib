@@ -9,7 +9,7 @@ from check_placeholders import check_placeholders
 from check_source_policy import check_source_policy
 from generate_imports import GENERATED_MARKER, generated_files, generator_owned, stale_files
 from library_sources import lean_imports, module_path, test_modules as positive_modules
-from library_sources import uses_module_system
+from library_sources import is_import_surface, uses_module_system
 
 HEADER = 'module\npublic import Mathlib.Data.Nat.Basic\n@[expose] public section\n'
 
@@ -90,6 +90,15 @@ private import Mathlib.Data.Nat.Basic
                          'Aglib.Algebra.B', 'Mathlib.Data.Nat.Basic'])
         self.assertEqual(module_path('Aglib.«A.B»'),
                          Path('Aglib/A.B.lean'))
+
+    def test_import_header_stops_before_run_cmd_negative_control(self):
+        source = ('import AglibTest.AuditSupport\n'
+                  'import AglibTest.NegativeControls.ImportedFixture\n\n'
+                  'run_cmd do\n  let count ← AglibAudit.auditModules #[]\n')
+        self.assertEqual(lean_imports(source),
+                         ['AglibTest.AuditSupport',
+                          'AglibTest.NegativeControls.ImportedFixture'])
+        self.assertFalse(is_import_surface(source))
 
     def test_root_enrolls_even_orphan_leaves(self):
         self.write('Aglib/New/Orphan.lean', HEADER + 'def orphan : Nat := 2\n')
