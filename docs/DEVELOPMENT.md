@@ -64,8 +64,10 @@ Markdown and documentation-evidence JSON changes run static source and local-lin
 checks only. They do not install Lean, compile, lint, run tests or publish caches.
 Tooling changes run their Python fixture regressions without requiring Lean.
 
-The [standalone CI core](CI.md) owns its plan, execution records and mandatory
-final coverage decision. It chooses an ancestor with completed native validation through
+The installable [lean-incremental-ci package](../ci/README.md) owns plans,
+execution records, individual-check progress and the mandatory final coverage
+decision. Aglib's adapter supplies its source inventory, predicates and scope.
+It chooses an ancestor with completed native validation through
 [`ci_baseline.py`](../scripts/ci_baseline.py), rather than the previous push.
 Failed or cancelled runs and green source-only runs do not advance this
 baseline. Unverified proof changes therefore remain in the next affected plan,
@@ -73,6 +75,21 @@ including after a scripts-only repair. The selector rejects the earlier unsafe
 incremental workflow and unavailable validation history; it never silently
 substitutes the previous push or a full build. A manual comparison may move the
 verified baseline earlier, but cannot skip forward over unchecked changes.
+
+The protocol admits exact reviewed workflow and implementation identities,
+including the actual package modules. Its initial legacy witness is restricted
+to the reviewed whole-native source commit. The [cutover policy](CI.md#initial-policy-cutover)
+distinguishes retained legacy predicates for unchanged origins from current
+checks for changed and affected origins; it does not assert that the former
+umbrella linter environment equals a per-origin environment.
+
+The CI adapter separately handles dependency, compiler and build-configuration
+transitions by assigning complete current check coverage. Commit a regenerated
+tracked downstream manifest with a pin update. Cache restoration still precedes
+Lake's native trace validation; assigning checks does not force recompilation of
+every target. See [upgrade semantics](CACHING.md#upstream-and-toolchain-updates).
+The local affected checker continues to require an explicit scope decision for
+these changes.
 
 This comparison baseline does not discard partial build progress. Matching
 compiled outputs from failed runs remain eligible for the existing native and
@@ -155,7 +172,8 @@ kernel replay. They are separately requested diagnostics, never an automatic
 fallback for missing caches or coverage. Coordinate all native checks with other
 Lean jobs; they write shared build outputs and remain serialized.
 
-The [workflow](../.github/workflows/ci.yml) invokes the core's `plan`, `source`,
+The [workflow](../.github/workflows/ci.yml) invokes Aglib's thin package adapter
+through `ci_pipeline.py plan`, `source`,
 `native` and `finalize` operations. The plan precedes native setup; the finalizer
 is required even for source-only coverage. Matching caches are restored for
 native scopes, including compatible individual-check progress. An optional manual
@@ -173,6 +191,10 @@ compiled implementation modules and `--no-build`;
 import-only facades receive compilation and exact source-style checks. CI prepares
 only the named imports of the pinned linter runtimes in its writable dependency
 caches when needed. Local runtime execution preserves shared dependency caches.
+Core/toolchain changes also run the bounded two-module native cache integration:
+partial success survives a later failure, current-input artifacts restore under
+`--no-build`, and old-only artifacts cannot cover an upstream change. This test
+uses isolated local caches and the installed compiler, without dependency updates.
 The uploaded native staging tree includes `validation-coverage.json`; client-only
 changes produce no new root-package native publication. New-branch push events
 use an available default-branch merge-base, or the empty tree for a genuinely

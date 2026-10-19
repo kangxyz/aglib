@@ -44,6 +44,55 @@ identity, decide applicability. Different upstream pins can reuse unchanged
 leaves while invalidating changed consumers. Lake owns all hashes and staging
 files; the adapter does not implement a separate cache format.
 
+## Upstream and toolchain updates
+
+An upstream or compiler upgrade changes the required inputs; it does not itself
+require local compilation. Keep compatible build trees and native cache entries,
+obtain artifacts for the intended new inputs, then let the pinned Lake evaluate
+the current graph with `--rehash`. A matching native cache can restore missing
+ordinary outputs even under `--no-build`; that flag forbids the compilation
+action, not matching artifact restoration.
+
+Lake 4.34.1 traces the compiler Git identity and imported artifact hashes, along
+with source, effective options, dependencies and platform inputs. It does not
+identify a compiler merely by the `lean-toolchain` label, nor attest the bytes of
+an arbitrary custom binary. A different compiler Git identity normally changes
+required native keys. Matching artifacts produced for that new identity can
+still avoid local builds. Successful loading of an old `.olean` is not an
+independent cross-version compatibility guarantee: format/flags and compiler
+build options affect the import checks. See the
+[fixed native trace implementation](https://github.com/leanprover/lean4/blob/v4.34.1/src/lake/Lake/Build/Module.lean#L580-L628)
+and [fixed import reader](https://github.com/leanprover/lean4/blob/v4.34.1/src/library/module.cpp#L98-L136).
+
+With Lean unchanged, a Mathlib change can preserve some downstream native import
+hashes and change others. The actual compiled artifacts determine the result;
+neither the upstream Git diff nor a description such as "private edit" proves a
+particular reuse count. Mathlib's `lake exe cache get` uses a different source
+hash system, including global root-configuration inputs. A global Mathlib cache
+key change must not be confused with a proof that every downstream module needs
+compilation. The [pinned Mathlib implementation](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Cache/Hashing.lean#L88-L149)
+is the authority for its download keys.
+
+Prepare the intended dependency revisions and matching toolchain before
+validation. `lake update` and Mathlib's post-update cache hook are mutating
+preparation operations; ordinary validation does not silently advance pins. If
+the hook defers or is disabled, obtain matching cache with the intended toolchain
+before the build. Aglib's tracked downstream manifest is derived from the root
+manifest: run `python3 scripts/prepare_downstream.py` and commit the result with
+an upstream pin update. The CI adapter rejects a stale tracked copy early.
+
+The [CI contract](CI.md) assigns complete current check scope for a dependency,
+compiler or build-configuration transition. Compilation remains incremental and
+cache-driven. Lint/axiom records have separate current-input keys; a build cache
+hit is not their success evidence. Unknown unbounded checker-policy changes
+require explicit current coverage or a validated migration.
+
+The reusable package's [native fixture](../ci/native_test.py) exercises local
+producer/consumer staging, recovery after a later failure, stale-input rejection
+and new-input restoration under `--no-build`. Its caches are isolated with a
+nonempty `LAKE_CACHE_DIR`; no remote service metadata is imported. Its same-
+compiler result does not assert arbitrary Lean-version compatibility.
+
 ## Shared CI protocol
 
 [The composite action](../.github/actions/lake-cache/action.yml) and its adjacent

@@ -6,18 +6,15 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import ci_pipeline
 from ci_state import digest
+from test_ci_baseline import FULL, FULL_RECIPE
 
 
 REPOSITORY = 'fixture/aglib'
-LEGACY_WORKFLOW = '''jobs:
-  library:
-    steps:
-      - name: Run CI checks for the library and independent client
-        run: bash scripts/check.sh --rehash --ci
-'''
+LEGACY_WORKFLOW = FULL
 UNSAFE_WORKFLOW = '''jobs:
   library:
     steps:
@@ -80,7 +77,13 @@ class CIIntegrationTests(unittest.TestCase):
         self.write('AglibTest/AuditCoverage.lean', 'module\ndef coverage := 1\n')
         self.write('README.md', 'CI integration fixture.\n')
         self.write('.github/workflows/ci.yml', LEGACY_WORKFLOW)
+        self.write('scripts/check.sh', FULL_RECIPE)
+        for path in ci_pipeline.PACKAGE_SOURCES:
+            self.write(path, (ci_pipeline.ROOT / path).read_text())
         self.base = self.commit('verified native baseline')
+        legacy_heads = patch.object(ci_pipeline.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({self.base}))
+        legacy_heads.start()
+        self.addCleanup(legacy_heads.stop)
 
     def git(self, *arguments):
         return subprocess.check_output(['git', *arguments], cwd=self.root, text=True).strip()

@@ -5,13 +5,13 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from ci_state import (Progress, check_binding, digest, module_identity, read_json,
-                      InputDrift, ReflectionGraph, valid_receipt, write_json)
+from ci_state import (Progress, check_binding, digest, file_hash, module_identity, read_json,
+                      InputDrift, ReflectionGraph, TemporalInputs, valid_receipt, write_json)
 from library_sources import lean_imports, module_path
 
 
 def native_fixture(root, name, dep_hash='0123456789abcdef', payload=b'compiled'):
-    relative = Path(*name.split('.'))
+    relative = module_path(name).with_suffix('')
     outputs = {'o': ['0' * 16 + suffix for suffix in ('.olean', '.olean.server', '.olean.private')],
                'i': '0' * 16 + '.ilean', 'r': '0' * 16 + '.ir',
                'rs': '0' * 16 + '.ir.sig', 'c': '0' * 16 + '.c', 'm': True}
@@ -59,6 +59,11 @@ class ProgressTests(unittest.TestCase):
         self.calls += 1
         command = self.binding()['arguments']
         return receipt(command, self.root), command
+
+    def test_repository_compatibility_import_is_the_generic_state_module(self):
+        import ci_state
+        from lean_ci import state
+        self.assertIs(ci_state, state)
 
     def test_build_trace_alone_is_not_lint_success_and_matching_success_reuses(self):
         self.assertEqual(self.progress.run(self.binding, self.execute)['mode'], 'performed')
@@ -175,8 +180,18 @@ class ReflectionTests(unittest.TestCase):
         self.progress = Progress(Path(self.temp.name) / 'progress')
         self.calls = 0
 
-    def graph(self):
-        return ReflectionGraph(self.root, [str(self.root / '.lake/build/lib/lean')], self.toolchain)
+    def graph(self, paths=None):
+        return ReflectionGraph(self.root, paths or [str(self.root / '.lake/build/lib/lean')], self.toolchain)
+
+    def namespace_fixture(self, name='Dep.Child'):
+        dependency = self.root / '.lake/packages/dependency'
+        source = dependency / module_path(name)
+        source.parent.mkdir(parents=True, exist_ok=True)
+        source.write_text('module\ndef imported := 1\n')
+        native_fixture(dependency, name)
+        (self.root / 'Aglib/Base.lean').write_text('module\nimport ' + name + '\ndef x := 1\n')
+        native_fixture(self.root, 'Aglib.Base')
+        return self.root / '.lake/build/lib/lean', dependency / '.lake/build/lib/lean'
 
     def bound(self, graph):
         return {'schema': 1, 'kind': 'audit', 'arguments': ['audit', 'Aglib.Base'],
@@ -254,6 +269,204 @@ class ReflectionTests(unittest.TestCase):
         with self.assertRaises(InputDrift):
             self.progress.run(lambda: self.bound(graph), execute)
         self.assertEqual(list(self.progress.directory.iterdir()), [])
+
+    def test_first_namespace_directory_or_root_file_blocks_later_complete_module(self):
+        high, low = self.namespace_fixture()
+        first_graph = self.graph([high, low])
+        first = self.progress.run(lambda: self.bound(first_graph), self.execute)
+        self.assertEqual(first['mode'], 'performed')
+        for shadow in ('directory', 'root-file'):
+            path = high / ('Dep' if shadow == 'directory' else 'Dep.olean')
+            path.mkdir() if shadow == 'directory' else path.write_bytes(b'namespace marker')
+            graph = self.graph([high, low])
+            with self.subTest(shadow=shadow):
+                self.assertIsNone(graph.closure(['Aglib.Base']))
+                self.assertNotIn('Dep.Child', graph.nodes)
+                def checker():
+                    raise RuntimeError('Native checker cannot read the selected first-root child')
+                with self.assertRaises(RuntimeError):
+                    self.progress.run(lambda: self.bound(graph), checker, reuse=False)
+            path.rmdir() if shadow == 'directory' else path.unlink()
+        self.assertEqual(len(list(self.progress.directory.glob('*.json'))), 1)
+
+    def test_plain_namespace_file_without_olean_does_not_shadow_later_module(self):
+        high, low = self.namespace_fixture()
+        (high / 'Dep').write_bytes(b'not a namespace directory')
+        graph = self.graph([high, low])
+        self.assertIsNotNone(graph.closure(['Aglib.Base']))
+        self.assertIn('.lake/packages/dependency', graph.nodes['Dep.Child']['owner'])
+
+    def test_quoted_root_component_is_one_native_namespace(self):
+        high, low = self.namespace_fixture('«Dep.Root».Child')
+        self.assertIsNotNone(self.graph([high, low]).closure(['Aglib.Base']))
+        (high / 'Dep.Root').mkdir()
+        self.assertIsNone(self.graph([high, low]).closure(['Aglib.Base']))
+
+    def test_transient_shadow_in_every_preceding_entry_cannot_save_success(self):
+        high, low = self.namespace_fixture()
+        middle = self.root / '.lake/middle/lib/lean'
+        middle.mkdir(parents=True)
+        for index, (library, kind) in enumerate(((high, 'directory'), (middle, 'directory'),
+                                                (high, 'root-file'), (middle, 'root-file'))):
+            graph = self.graph([high, middle, low])
+            progress = Progress(self.progress.directory / str(index))
+            def execute(library=library, kind=kind):
+                path = library / ('Dep' if kind == 'directory' else 'Dep.olean')
+                if kind == 'directory':
+                    path.mkdir()
+                    (path / 'Child.olean').write_bytes(b'temporary alternative proof')
+                    (path / 'Child.olean').unlink()
+                    path.rmdir()
+                else:
+                    path.write_bytes(b'temporary namespace marker')
+                    path.unlink()
+                return self.execute()
+            with self.subTest(library=library, kind=kind), self.assertRaises(InputDrift):
+                progress.run(lambda: self.bound(graph), execute)
+            self.assertEqual(list(progress.directory.glob('*.json')), [])
+
+    def test_removing_and_restoring_an_earlier_complete_namespace_cannot_save_success(self):
+        high, low = self.namespace_fixture()
+        source = self.root / 'Dep/Child.lean'
+        source.parent.mkdir()
+        source.write_text('module\ndef earlier := 2\n')
+        native_fixture(self.root, 'Dep.Child')
+        graph = self.graph([high, low])
+        self.assertIsNotNone(graph.closure(['Aglib.Base']))
+        self.assertEqual(graph.nodes['Dep.Child']['owner'], 'workspace:.lake/build/lib/lean')
+        def execute():
+            namespace = high / 'Dep'
+            moved = high.parent / 'temporarily-removed-Dep'
+            namespace.rename(moved)
+            moved.rename(namespace)
+            return self.execute()
+        with self.assertRaises(InputDrift):
+            self.progress.run(lambda: self.bound(graph), execute)
+        self.assertEqual(list(self.progress.directory.glob('*.json')), [])
+
+    def test_transient_creation_of_a_previously_missing_search_entry_is_observed(self):
+        high, low = self.namespace_fixture()
+        missing = self.root / '.lake/new-entry/lib/lean'
+        graph = self.graph([missing, high, low])
+        def execute():
+            namespace = missing / 'Dep'
+            namespace.mkdir(parents=True)
+            namespace.rmdir()
+            missing.rmdir()
+            missing.parent.rmdir()
+            missing.parent.parent.rmdir()
+            return self.execute()
+        with self.assertRaises(InputDrift):
+            self.progress.run(lambda: self.bound(graph), execute)
+        self.assertEqual(list(self.progress.directory.glob('*.json')), [])
+
+    def policy_binding(self, graph):
+        value = check_binding(self.root, 'declaration', ['Aglib.Base'], ['audit', 'Aglib.Base'],
+                              ['scripts/nolints.json'], hash_file=graph.hash_file)
+        value['reflective_imports'] = graph.closure(['Aglib.Base'])
+        return value
+
+    def test_transient_optional_policy_appearance_and_removal_never_records_success(self):
+        (self.root / 'scripts').mkdir()
+        graph = self.graph()
+        def execute():
+            policy = self.root / 'scripts/nolints.json'
+            policy.write_text('[["docBlame", "Aglib.badDefinition"]]\n')
+            policy.unlink()
+            return self.execute()
+        with self.assertRaises(InputDrift):
+            self.progress.run(lambda: self.policy_binding(graph), execute)
+        self.assertEqual(list(self.progress.directory.glob('*.json')), [])
+
+    def test_absent_policy_compatibility_key_survives_unrelated_parent_changes_between_runs(self):
+        scripts = self.root / 'scripts'
+        scripts.mkdir()
+        graph = self.graph()
+        first = self.progress.run(lambda: self.policy_binding(graph), self.execute)
+        self.assertEqual(first['success']['binding']['raw_inputs'], {'scripts/nolints.json': None})
+        (scripts / 'unrelated.txt').write_text('unrelated repair\n')
+        (scripts / 'unrelated.txt').unlink()
+        again = self.graph()
+        second = self.progress.run(lambda: self.policy_binding(again), self.execute)
+        self.assertEqual(second['mode'], 'reused')
+        self.assertEqual(first['success']['key'], second['success']['key'])
+
+    def test_compiler_runtime_observations_are_shared_with_reflection_check_success(self):
+        compiler = Path(self.temp.name) / 'compiler-runtime'
+        compiler.write_bytes(b'original compiler')
+        observations = TemporalInputs()
+        original = observations.hash_file(compiler)
+        graph = ReflectionGraph(self.root, [str(self.root / '.lake/build/lib/lean')],
+                                self.toolchain, observations=observations)
+        def execute():
+            compiler.write_bytes(b'transient compiler')
+            compiler.write_bytes(b'original compiler')
+            return self.execute()
+        with self.assertRaises(InputDrift):
+            self.progress.run(lambda: self.bound(graph), execute)
+        self.assertEqual(list(self.progress.directory.glob('*.json')), [])
+        self.assertEqual(file_hash(compiler), original)
+        self.assertIs(graph.observations, observations)
+
+    def test_retargeted_and_restored_search_path_symlink_cannot_save_success(self):
+        high, low = self.namespace_fixture()
+        dependency = low.parents[3]
+        alias = self.root / '.lake/packages/alias'
+        alias.symlink_to(dependency, target_is_directory=True)
+        alternative = self.root / '.lake/packages/alternative'
+        alternative.mkdir()
+        graph = self.graph([high, alias / '.lake/build/lib/lean'])
+        def execute():
+            alias.unlink()
+            alias.symlink_to(alternative, target_is_directory=True)
+            alias.unlink()
+            alias.symlink_to(dependency, target_is_directory=True)
+            return self.execute()
+        with self.assertRaises(InputDrift):
+            self.progress.run(lambda: self.bound(graph), execute)
+        self.assertEqual(list(self.progress.directory.glob('*.json')), [])
+
+
+class TemporalInputTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix='aglib-temporal-inputs-')
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+
+    def test_present_file_parent_cache_writes_do_not_invalidate_observed_file(self):
+        source = self.root / 'input'
+        source.write_bytes(b'actual input')
+        observations = TemporalInputs()
+        first = observations.hash_file(source)
+        (self.root / 'unrelated.hash').write_bytes(b'normal cache sidecar')
+        (self.root / 'unrelated.hash').unlink()
+        observations.assert_stable()
+        self.assertEqual(observations.hash_file(source), first)
+        self.assertEqual(observations.hash_count, 1)
+
+    def test_retargeted_and_restored_input_symlink_is_observed(self):
+        source, alternative, link = (self.root / n for n in ('source', 'alternative', 'link'))
+        source.write_bytes(b'original input')
+        alternative.write_bytes(b'alternative input')
+        link.symlink_to(source)
+        observations = TemporalInputs()
+        observations.hash_file(link)
+        link.unlink()
+        link.symlink_to(alternative)
+        link.unlink()
+        link.symlink_to(source)
+        with self.assertRaises(InputDrift):
+            observations.assert_stable()
+
+    def test_absent_input_observer_preserves_none_key_but_catches_transient_appearance(self):
+        source = self.root / 'optional-policy.json'
+        observations = TemporalInputs()
+        self.assertIsNone(observations.optional_hash(source))
+        source.write_text('temporary suppression')
+        source.unlink()
+        with self.assertRaises(InputDrift):
+            observations.assert_stable()
+        self.assertIsNone(TemporalInputs().optional_hash(source))
 
 
 if __name__ == '__main__':

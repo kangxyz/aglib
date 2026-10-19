@@ -17,6 +17,10 @@ AUDIT = {'AglibTest.Axioms', 'AglibTest.AuditSupport'}
 CONTROL_INPUTS = CONFIG | {
     'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
     'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py',
+    'scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/ci_baseline.py',
+    'scripts/library_sources.py', 'scripts/check_affected.py', 'scripts/prepare_downstream.py',
+    'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
+    'scripts/check_compiled_inventory.py',
 }
 TOOL_TESTS = {
     'affected_scope.py': ['test_affected_scope'],
@@ -33,6 +37,8 @@ TOOL_TESTS = {
     'check_compiled_inventory.py': ['test_integration_setup', 'test_kernel'],
     'run_style_linter.py': ['test_integration_setup', 'test_affected_scope'],
     'run_declaration_linter.py': ['test_affected_scope'],
+    'nolints.json': ['test_ci_pipeline', 'test_ci_state'],
+    'nolints-style.txt': ['test_ci_pipeline', 'test_integration_setup'],
     'check_negative_controls.py': ['test_integration_setup', 'test_check_script', 'test_affected_scope'],
     'prepare_downstream.py': ['test_integration_setup', 'test_affected_scope'],
     'prepare_build_cache.py': ['test_ci_cache'],
@@ -58,6 +64,12 @@ def node(path):
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+
+
+def controls_changed(changed):
+    return bool(CONTROL_INPUTS.intersection(changed) or
+                any(p.startswith('AglibTest/NegativeControls/') or
+                    (p.startswith('ci/') and p.endswith(('.py', '.toml'))) for p in changed))
 
 
 def cache_imports(graph, targets):
@@ -113,8 +125,9 @@ def cache_roots(root, plan):
     return sorted(roots)
 
 
-def select(root, base=None, head=None, full=False, default_base=None):
+def select(root, base=None, head=None, full=False, default_base=None, *, allow_configuration_update=False):
     live_head = git(root, 'rev-parse', 'HEAD').decode().strip()
+    configuration_update = False
     if full:
         if base or head:
             raise ValueError('--full cannot be combined with --base/--head')
@@ -162,7 +175,9 @@ def select(root, base=None, head=None, full=False, default_base=None):
             changed += git(root, 'ls-files', '--others', '--exclude-standard', '-z').decode().rstrip('\0').split('\0')
         changed = sorted(set(filter(None, changed)))
         if (invalid := CONFIG.intersection(changed)) and not initial:
-            raise ValueError('Configuration/pin changes need an explicitly assigned scope: ' + ', '.join(sorted(invalid)))
+            if not allow_configuration_update:
+                raise ValueError('Configuration/pin changes need an explicitly assigned scope: ' + ', '.join(sorted(invalid)))
+            configuration_update = True
     reverse = {}
     for name, imports in graph.items():
         for imported in imports:
@@ -181,7 +196,7 @@ def select(root, base=None, head=None, full=False, default_base=None):
     seeds = set()
     tooling = set()
     for path in changed:
-        if path in CONFIG and (full or initial):
+        if path in CONFIG and (full or initial or configuration_update):
             continue
         if path.endswith('.lean'):
             if not (path.startswith(('Aglib/', 'AglibTest/', 'Tools/', 'examples/downstream/'))
@@ -190,6 +205,10 @@ def select(root, base=None, head=None, full=False, default_base=None):
             seeds.add(node(path))
         elif path.endswith('.md') or (path.startswith('docs/') and path.endswith('.json')):
             continue
+        elif path.startswith('ci/'):
+            tooling.update(['lean-ci', 'test_ci_pipeline', 'test_ci_integration', 'test_ci_state',
+                            'test_ci_baseline', 'test_affected_scope', 'test_source_guards',
+                            'test_integration_setup', 'test_ci_cache'])
         elif path.startswith('scripts/') or path.startswith('.github/'):
             if Path(path).parent == Path('scripts') and path.startswith('scripts/test_') and path.endswith('.py'):
                 tooling.add(Path(path).stem)
@@ -212,6 +231,12 @@ def select(root, base=None, head=None, full=False, default_base=None):
         for consumer in reverse.get(pending.pop(), set()) - affected:
             affected.add(consumer)
             pending.append(consumer)
+    if configuration_update:
+        # A dependency/compiler/configuration transition assigns complete current
+        # check coverage. Lake still decides which compiler outputs need work.
+        seeds.update(sources)
+        affected.update(sources)
+        tooling.update(['test_ci_pipeline', 'test_ci_cache', 'test_cache_ci', 'test_integration_setup'])
     executable = affected & sources.keys()
     # The legacy whole-library audit is replaced by a selected-origin audit.
     executable -= {'AglibTest.Axioms', 'client:Audit'}
@@ -220,8 +245,7 @@ def select(root, base=None, head=None, full=False, default_base=None):
     consumers = sorted(n for n in executable - set(providers) if n == 'Aglib' or n.startswith(('Aglib.', 'Tools.')))
     tests = sorted(n for n in executable if (n == 'AglibTest' or n.startswith('AglibTest.')) and n != 'AglibTest.AuditSupport')
     client = sorted(n.removeprefix('client:') for n in executable if n.startswith('client:'))
-    controls = bool(full or CONTROL_INPUTS.intersection(changed) or
-                    any(path.startswith('AglibTest/NegativeControls/') for path in changed))
+    controls = bool(full or controls_changed(changed))
     trust = bool((executable - {n for n in executable if n.startswith('client:')})
                  or seeds & AUDIT or controls)
     client_audit = bool(client or 'client:Audit' in seeds)
@@ -241,11 +265,12 @@ def select(root, base=None, head=None, full=False, default_base=None):
                                'AglibTest/AuditCoverage.lean'])
     return {'schema': 1, 'coverage': 'explicit-full' if full else 'affected-only',
             'base': base_id, 'head': live_head, 'working_tree': not bool(head), 'changed': changed,
+            'configuration_update': configuration_update,
             'providers': providers, 'consumers': consumers, 'tests': tests, 'client': client,
             'cache_imports': cache_imports(graph, cache_targets) if native else [],
             'facades': sorted(facades & affected),
             'imports': {n: sorted(graph[n]) for n in facades & affected},
-            'style': sorted(n for n in affected & sources.keys() if sources[n] in changed and not n.startswith('client:')
+            'style': sorted(n for n in affected & sources.keys() if (configuration_update or sources[n] in changed) and not n.startswith('client:')
                             and 'NegativeControls' not in n),
             'trust': trust, 'controls': controls, 'client_audit': client_audit, 'native': native,
             'publish': bool(providers or consumers or tests or trust), 'tooling_tests': sorted(tooling),

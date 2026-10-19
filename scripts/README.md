@@ -79,18 +79,40 @@ unknown path or changed pin implicitly selects the comprehensive command. All-ze
 new-branch event bases use an available trusted default-branch merge-base or a
 genuine parentless initial-tree diff; unavailable Git metadata fails actionably.
 
-[CI](../.github/workflows/ci.yml) calls the standalone `ci_pipeline.py` core for
-planning, source/native execution and mandatory finalization; see its
+[CI](../.github/workflows/ci.yml) calls the Aglib adapter `ci_pipeline.py` for
+planning, source/native execution and mandatory finalization through the
+installable [lean-incremental-ci package](../ci/README.md); see its
 [acceptance contract](../docs/CI.md). Planning precedes Lean installation and
 cache restoration. `ci_baseline.py` selects an ancestor whose native validation
-completed under either the whole-library predecessor or the repaired baseline
-protocol. A failed run, a source-only green run and the former previous-push
+completed under an exact reviewed workflow and implementation recipe. The legacy
+whole-library witness is restricted to its reviewed source commit. A failed run,
+a source-only green run and the former previous-push
 incremental protocol cannot advance this baseline. Missing history fails closed.
 The selector records the source commit and supporting run; affected selection
 prints its base, head and module counts. A manual comparison may only select an
 ancestor of the verified baseline. Failed-run compiled caches retain their
 existing reuse path. `ci_state.py` separately retains input-bound individual
-check successes; compiled-artifact reuse alone never supplies that evidence.
+check successes through `lean_ci.state`; compiled-artifact reuse alone never
+supplies that evidence. `library_sources.py` retains Aglib inventory policy and
+re-exports the shared `lean_ci.source` parser. Generic package code has no Aglib
+imports or fixed resource-variable names.
+
+The CI adapter explicitly assigns complete current check coverage for pin,
+compiler and build-configuration changes. The local affected checker still
+requires its caller's explicit scope decision for those changes. Regenerate and
+commit the deterministic downstream manifest with a root pin update; preparation
+preserves identical tracked bytes. Restoring artifacts for the new inputs before
+Lake's `--rehash`/`--no-build` validation can avoid target recompilation. This does
+not assume cross-compiler compatibility; [caching](../docs/CACHING.md#upstream-and-toolchain-updates)
+describes the supported boundary.
+
+Core/toolchain changes run `ci/native_test.py` as a required native task. Its
+isolated two-module producer/consumer fixture exercises partial success,
+matching native cache restoration and rejection of stale upstream inputs.
+The [initial policy cutover](../docs/CI.md#initial-policy-cutover) records the
+actual legacy predicates retained for unchanged origins separately from current
+selected checks. Semantic predicate changes need assigned coverage and cannot
+inherit arbitrary earlier lint successes.
 
 Markdown/evidence-only plans never enter native or cache
 steps. Native CI runs selected checks with `--outputs FILE`; successful build-phase

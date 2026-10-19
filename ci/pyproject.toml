@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lean-incremental-ci"
+version = "0.1.0"
+description = "Incremental Lean CI execution and explicitly configured evidence"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+lean-ci = "lean_ci.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lean_ci*"]

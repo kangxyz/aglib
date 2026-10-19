@@ -7,7 +7,8 @@ import unittest
 from unittest.mock import patch
 
 from check_compiled_inventory import check_inventory
-from prepare_downstream import prepare
+from ci_state import ReflectionGraph
+from prepare_downstream import manifest_bytes, prepare
 from run_style_linter import lake_environment, plan_runtime, run as run_style_linter
 import check_negative_controls
 import run_declaration_linter
@@ -82,8 +83,103 @@ class IntegrationSetupTests(unittest.TestCase):
         self.assertEqual(prepared['packages'][-1]['dir'], '../..')
         self.assertEqual((client / '.lake/packages').resolve(), packages.resolve())
         self.assertEqual((self.root / 'lake-manifest.json').read_text(), original)
+        before = ReflectionGraph.stamp(client / 'lake-manifest.json')
+        link_before = ReflectionGraph.stat_identity((client / '.lake/packages').lstat())
         prepare(self.root)
         self.assertEqual(json.loads((client / 'lake-manifest.json').read_text()), prepared)
+        self.assertEqual(ReflectionGraph.stamp(client / 'lake-manifest.json'), before)
+        self.assertEqual(ReflectionGraph.stat_identity((client / '.lake/packages').lstat()), link_before)
+
+    def test_client_manifest_bytes_is_pure_and_shared_with_preparation(self):
+        client = self.root / 'examples/downstream'
+        client.mkdir(parents=True)
+        source = self.root / 'lake-manifest.json'
+        source.write_text(json.dumps({'name': 'Aglib', 'packages': [
+            {'name': 'mathlib', 'rev': 'fixed-pin', 'inherited': False}]}))
+        target = client / 'lake-manifest.json'
+        target.write_bytes(b'stale tracked downstream metadata\n')
+        before = {p.relative_to(self.root): (p.read_bytes(), ReflectionGraph.stamp(p))
+                  for p in self.root.rglob('*') if p.is_file()}
+        expected = manifest_bytes(self.root)
+        self.assertEqual({p.relative_to(self.root): (p.read_bytes(), ReflectionGraph.stamp(p))
+                          for p in self.root.rglob('*') if p.is_file()}, before)
+        self.assertFalse((client / '.lake').exists())
+        self.assertTrue(json.loads(expected)['packages'][0]['inherited'])
+        prepare(self.root)
+        self.assertEqual(target.read_bytes(), expected)
+        stamp = ReflectionGraph.stamp(target)
+        self.assertEqual(manifest_bytes(self.root), expected)
+        prepare(self.root)
+        self.assertEqual(ReflectionGraph.stamp(target), stamp)
+
+    def test_client_preparation_preserves_actual_tracked_manifest_temporal_identity(self):
+        source_root = Path(__file__).resolve().parents[1]
+        for relative in ('lake-manifest.json', 'examples/downstream/lake-manifest.json'):
+            target = self.root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((source_root / relative).read_bytes())
+        cache = self.root / '.lake/packages'
+        cache.mkdir(parents=True)
+        partial = cache / 'keep-partial-progress'
+        partial.write_bytes(b'compatible dependency progress')
+        tracked = [self.root / p for p in ('lake-manifest.json', 'examples/downstream/lake-manifest.json')]
+        before = {p: (p.read_bytes(), ReflectionGraph.stamp(p)) for p in tracked}
+        prepare(self.root)
+        prepare(self.root)
+        self.assertEqual({p: (p.read_bytes(), ReflectionGraph.stamp(p)) for p in tracked}, before)
+        link = self.root / 'examples/downstream/.lake/packages'
+        self.assertTrue(link.is_symlink())
+        self.assertEqual(os.readlink(link), '../../../.lake/packages')
+        self.assertEqual(link.resolve(), cache.resolve())
+        self.assertEqual(partial.read_bytes(), b'compatible dependency progress')
+
+    def test_client_preparation_updates_changed_pins_but_skips_only_exact_equal_bytes(self):
+        client = self.root / 'examples/downstream'
+        client.mkdir(parents=True)
+        root_manifest = self.root / 'lake-manifest.json'
+        root_manifest.write_text(json.dumps({'name': 'Aglib', 'packages': [
+            {'name': 'mathlib', 'rev': 'first-pin', 'inherited': False}]}))
+        prepare(self.root)
+        manifest = client / 'lake-manifest.json'
+        original = manifest.read_bytes()
+        before = ReflectionGraph.stamp(manifest)
+        changed = json.loads(root_manifest.read_text())
+        changed['packages'][0]['rev'] = 'repaired-pin'
+        root_manifest.write_text(json.dumps(changed))
+        prepare(self.root)
+        self.assertNotEqual(manifest.read_bytes(), original)
+        self.assertNotEqual(ReflectionGraph.stamp(manifest), before)
+        self.assertEqual(json.loads(manifest.read_text())['packages'][0]['rev'], 'repaired-pin')
+        canonical = manifest.read_bytes()
+        # Semantic JSON equality alone must not hide an actual tracked-text rewrite.
+        manifest.write_bytes(canonical + b'\n')
+        before = ReflectionGraph.stamp(manifest)
+        prepare(self.root)
+        self.assertEqual(manifest.read_bytes(), canonical)
+        self.assertNotEqual(ReflectionGraph.stamp(manifest), before)
+        before = ReflectionGraph.stamp(manifest)
+        prepare(self.root)
+        self.assertEqual(ReflectionGraph.stamp(manifest), before)
+
+    def test_client_preparation_preserves_existing_cache_directory_and_dangling_link(self):
+        client = self.root / 'examples/downstream'
+        client.mkdir(parents=True)
+        (self.root / 'lake-manifest.json').write_text('{"name":"Aglib","packages":[]}\n')
+        link = client / '.lake/packages'
+        link.parent.mkdir()
+        link.mkdir()
+        keep = link / 'partial-output'
+        keep.write_bytes(b'owned existing cache')
+        prepare(self.root)
+        self.assertFalse(link.is_symlink())
+        self.assertEqual(keep.read_bytes(), b'owned existing cache')
+        keep.unlink()
+        link.rmdir()
+        link.symlink_to('existing-missing-target', target_is_directory=True)
+        before = ReflectionGraph.stat_identity(link.lstat())
+        prepare(self.root)
+        self.assertEqual(os.readlink(link), 'existing-missing-target')
+        self.assertEqual(ReflectionGraph.stat_identity(link.lstat()), before)
 
     def test_optional_linter_dependencies_are_planned_without_cache_writes(self):
         driver = self.root / '.lake/packages/mathlib/scripts/lint-style.lean'

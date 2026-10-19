@@ -9,8 +9,9 @@ import unittest
 from unittest.mock import patch
 
 import ci_pipeline as core
-from ci_state import file_hash, locate_module, module_identity, read_json, write_json
-from test_ci_baseline import FixtureAPI, FULL, REPOSITORY
+from ci_state import InputDrift, Progress, TemporalInputs, file_hash, locate_module, module_identity, read_json, write_json
+import prepare_downstream
+from test_ci_baseline import FixtureAPI, FULL, FULL_RECIPE, REPOSITORY
 from test_ci_state import native_fixture, receipt
 
 
@@ -31,6 +32,8 @@ class Commands:
             return {}
         directory.mkdir(parents=True, exist_ok=True)
         cwd = Path(task['cwd'])
+        if task['id'] == 'prepare-client':
+            prepare_downstream.prepare(self.root)
         if task.get('generated'):
             Path(task['command'][-1]).write_text(task['generated'])
         if task['kind'] in ('graph-build', 'build'):
@@ -68,7 +71,7 @@ class PipelineTests(unittest.TestCase):
         self.root.mkdir()
         self.state = Path(self.temp.name) / 'state'
         self.progress = Path(self.temp.name) / 'check-progress'
-        self.write('.gitignore', '.lake/\nexamples/downstream/.lake/\nexamples/downstream/lake-manifest.json\n')
+        self.write('.gitignore', '.lake/\nexamples/downstream/.lake/\n')
         self.write('Aglib/Base.lean', 'module\ndef x := 1\n')
         for name in ('Init', 'Lean', 'Lake'):
             self.write(name + '.lean', 'module\n')
@@ -84,20 +87,28 @@ class PipelineTests(unittest.TestCase):
         self.write('examples/downstream/Audit.lean', 'import Consumer\n')
         self.write('lean-toolchain', 'pinned\n')
         self.write('lakefile.toml', 'name = "Aglib"\n')
-        self.write('lake-manifest.json', '{"packages": []}\n')
+        self.write('lake-manifest.json', '{"name": "aglib", "packages": []}\n')
         self.write('README.md', 'Initial documentation.\n')
         self.write('.github/workflows/ci.yml', FULL)
         for path in core.POLICY:
             if path.startswith('scripts/'):
                 self.write(path, '# fixed checker fixture\n')
+        for path in core.PACKAGE_SOURCES:
+            self.write(path, (core.ROOT / path).read_text())
+        self.write('scripts/check.sh', FULL_RECIPE)
+        self.write('scripts/check_compiled_inventory.py', '# fixed inventory checker fixture\n')
         self.write(core.DRIVERS[0], 'import Batteries.Tactic.Lint\n')
         self.write(core.DRIVERS[1], 'import Cli.Basic\n')
         self.write('.lake/packages/batteries/Batteries/Tactic/Lint.lean', 'import Lean\n')
         self.write('.lake/packages/Cli/Cli/Basic.lean', 'import Lean\n')
+        prepare_downstream.prepare(self.root)
         self.git('init', '-q')
         self.git('config', 'user.name', 'Fixture')
         self.git('config', 'user.email', 'fixture@example.invalid')
         self.anchor = self.commit('whole-native anchor')
+        legacy_heads = patch.object(core.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({self.anchor}))
+        legacy_heads.start()
+        self.addCleanup(legacy_heads.stop)
         run = {'id': 12, 'run_attempt': 1, 'head_sha': self.anchor,
                'status': 'completed', 'conclusion': 'success', 'head_branch': 'main',
                'event': 'push', 'head_repository': {'full_name': REPOSITORY},
@@ -146,6 +157,126 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result['required_phases'], ['source'])
         self.assertFalse(any('lake' in t['command'] for t in commands.calls))
         self.assertFalse((Path(self.temp.name) / 'outputs.jsonl').exists())
+
+    def test_unbounded_native_policy_changes_fail_even_with_pending_math(self):
+        original = {p: (self.root / p).read_text() for p in core.SEMANTIC_POLICY}
+        for index, path in enumerate(core.SEMANTIC_POLICY):
+            with self.subTest(policy=path):
+                for other, text in original.items():
+                    self.write(other, text)
+                self.write(path, original[path] + '\n-- changed native predicate\n')
+                if index % 2:
+                    self.write('Aglib/Base.lean', 'module\ndef x := 3\n')
+                head = self.commit('unbounded native check policy change')
+                with self.assertRaisesRegex(ValueError, 'Native semantic policy changed'):
+                    core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+                self.assertFalse((self.state / 'plan.json').exists())
+
+    def test_executor_only_change_requires_native_controls(self):
+        self.write('scripts/ci_pipeline.py', '# changed native executor\n')
+        head = self.commit('executor integration change')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertTrue(plan['scope']['native'])
+        self.assertTrue(plan['scope']['controls'])
+        self.assertEqual(plan['required_phases'], ['source', 'native'])
+
+    def test_core_integration_failure_prevents_completion_with_unchanged_math(self):
+        self.write('scripts/ci_pipeline.py', '# changed native executor\n')
+        head = self.commit('core integration change')
+        core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.source()
+        commands = Commands(self.root, fail='core-native-cache')
+        with self.assertRaisesRegex(ValueError, 'core-native-cache'):
+            self.native(commands)
+        with self.assertRaises(ValueError):
+            self.finalize()
+        self.assertFalse((self.state / 'complete.json').exists())
+
+    def test_dependency_pin_update_assigns_current_checks_and_prepared_client(self):
+        manifest = json.loads((self.root / 'lake-manifest.json').read_text())
+        manifest['packages'] = [{'name': 'upstream', 'rev': 'new-revision', 'inherited': False}]
+        self.write('lake-manifest.json', json.dumps(manifest))
+        prepare_downstream.prepare(self.root)
+        head = self.commit('upstream dependency transition')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        scope = plan['scope']
+        self.assertTrue(scope['configuration_update'])
+        self.assertTrue(scope['controls'] and scope['client_audit'])
+        self.assertIn('Aglib.Cold', scope['providers'])
+        self.assertIn('AglibTest.Positive', scope['tests'])
+        self.assertIn('Consumer.Use', scope['client'])
+        self.assertEqual(plan['native_policy']['mode'], 'fresh-current-checks-after-configuration-update')
+        self.source()
+        self.native()
+        self.assertEqual(self.finalize()['status'], 'complete')
+
+    def test_stale_tracked_client_manifest_rejects_before_native_work(self):
+        manifest = json.loads((self.root / 'lake-manifest.json').read_text())
+        manifest['packages'] = [{'name': 'upstream', 'rev': 'new-revision', 'inherited': False}]
+        self.write('lake-manifest.json', json.dumps(manifest))
+        head = self.commit('unprepared upstream update')
+        with self.assertRaisesRegex(ValueError, 'Tracked downstream manifest is stale'):
+            core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertFalse((self.state / 'plan.json').exists())
+
+    def test_toolchain_update_cannot_become_empty_native_scope(self):
+        self.write('lean-toolchain', 'new-toolchain\n')
+        head = self.commit('compiler transition')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertTrue(plan['scope']['configuration_update'])
+        self.assertEqual(plan['required_phases'], ['source', 'native'])
+        scope = json.loads(json.dumps(plan['scope']))
+        scope['providers'].remove('Aglib.Cold')
+        with self.assertRaisesRegex(ValueError, 'complete current check scope'):
+            core.assert_native_scope(self.root, scope, plan['baseline_math'], plan['head_math'], scope['changed'])
+
+    def _runtime_mutation(self, restored):
+        self.plan()
+        self.source()
+        prefix = Path(self.temp.name) / 'compiler'
+        (prefix / 'bin').mkdir(parents=True)
+        (prefix / 'lib/lean').mkdir(parents=True)
+        for path in ('bin/lean', 'bin/lake', 'lib/lean/libleanshared.so'):
+            (prefix / path).write_bytes(b'original runtime')
+        shared = prefix / 'lib/lean/libleanshared.so'
+        original_check_output = subprocess.check_output
+        def locate(command, *args, **kwargs):
+            if command[:2] == ['elan', 'which']:
+                return str(prefix / 'bin' / command[-1]) + '\n'
+            return original_check_output(command, *args, **kwargs)
+        commands = Commands(self.root)
+        run = commands.run
+        def mutate(task, directory):
+            value = run(task, directory)
+            if task['kind'] == 'check':
+                shared.write_bytes(b'incompatible runtime')
+                if restored:
+                    shared.write_bytes(b'original runtime')
+            return value
+        commands.run = mutate
+        with patch('ci_pipeline.subprocess.check_output', side_effect=locate):
+            with self.assertRaises(InputDrift):
+                core.run_phase(self.root, self.state, 'native', self.progress, commands)
+        self.assertEqual(list(self.progress.glob('*.json')), [])
+        self.assertNotEqual(read_json(self.state / 'native.json')['status'], 'completed')
+
+    def test_changed_runtime_cannot_save_check_before_phase_failure(self):
+        self._runtime_mutation(False)
+
+    def test_restored_runtime_cannot_save_check_before_phase_failure(self):
+        self._runtime_mutation(True)
+
+    def test_native_client_setup_precedes_reflective_checks_and_keeps_tracked_bytes(self):
+        plan = self.plan()
+        manifest = self.root / core.GENERATED_MANIFEST
+        self.assertIn(core.GENERATED_MANIFEST, plan['source_files'])
+        stamp = core.ReflectionGraph.stamp(manifest)
+        self.source()
+        commands = Commands(self.root)
+        self.native(commands)
+        ids = [t['id'] for t in commands.calls]
+        self.assertLess(ids.index('prepare-client'), ids.index('reflection-environment'))
+        self.assertEqual(core.ReflectionGraph.stamp(manifest), stamp)
 
     def test_real_pending_math_cannot_finalize_after_only_source_or_empty_native_record(self):
         self.plan()
@@ -213,7 +344,7 @@ class PipelineTests(unittest.TestCase):
         commands = Commands(self.root, fail='unrelated-cached-imports')
         with self.assertRaises(ValueError):
             self.native(commands)
-        self.assertEqual([t['id'] for t in commands.calls], ['unrelated-cached-imports'])
+        self.assertEqual([t['id'] for t in commands.calls], ['prepare-client', 'unrelated-cached-imports'])
 
     def test_zero_exit_empty_adapter_does_not_cover_required_work(self):
         self.plan()

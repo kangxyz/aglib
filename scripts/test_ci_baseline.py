@@ -1,5 +1,6 @@
 """Git/API fixtures for verified baseline selection; no Lean or cache operations."""
 import contextlib
+import hashlib
 import io
 import json
 import os
@@ -11,30 +12,24 @@ import unittest
 import urllib.error
 from unittest.mock import patch
 
+import ci_baseline as baseline
 from ci_baseline import (APIUnavailable, BaselineError, FINALIZE_STEP, GitHubAPI,
                          NATIVE_STEP, main, select, workflow_kind)
 
 
 REPOSITORY = 'fixture/aglib'
-FULL = '''name: Aglib CI
-jobs:
-  library:
-    steps:
-      - name: Run CI checks for the library and independent client
-        run: |
-          set -euo pipefail
-          lean --version
-          bash scripts/check.sh --rehash --ci
-'''
+SOURCE_ROOT = Path(__file__).resolve().parents[1]
+# Real reviewed legacy bytes, including final newlines. Tiny shell placeholders
+# must not be treated as evidence of the actual historical validation recipe.
+FULL = subprocess.check_output(['git', 'show', 'cc17eec:.github/workflows/ci.yml'],
+                               cwd=SOURCE_ROOT, text=True)
+FULL_RECIPE = subprocess.check_output(['git', 'show', 'cc17eec:scripts/check.sh'],
+                                      cwd=SOURCE_ROOT, text=True)
+SAFE = (SOURCE_ROOT / '.github/workflows/ci.yml').read_text()
+CORE_ENTRYPOINTS = {path: (SOURCE_ROOT / path).read_bytes() for path in baseline.CORE_ENTRYPOINT_PATHS}
 UNSAFE = FULL.replace('bash scripts/check.sh --rehash --ci',
                       'python3 scripts/affected_scope.py --base "$BEFORE"\n'
                       '          bash scripts/check.sh --rehash --ci --native-only --plan plan.json')
-SAFE = UNSAFE.replace('python3 scripts/affected_scope.py --base "$BEFORE"',
-                      'python3 scripts/ci_pipeline.py plan --head "$GITHUB_SHA" \\\n'
-                      '            --repository "$GITHUB_REPOSITORY" --state "$RUNNER_TEMP/state"\n'
-                      '          python3 scripts/ci_pipeline.py source --state "$RUNNER_TEMP/state"\n'
-                      '          python3 scripts/ci_pipeline.py native --state "$RUNNER_TEMP/state"\n'
-                      '          python3 scripts/ci_pipeline.py finalize --state "$RUNNER_TEMP/state"')
 
 
 class FixtureAPI(GitHubAPI):
@@ -66,9 +61,21 @@ class BaselineTests(unittest.TestCase):
         self.git('init', '-q')
         self.git('config', 'user.name', 'Fixture')
         self.git('config', 'user.email', 'fixture@example.invalid')
+        # Explicit TEST-ONLY enrollment of the actual source snapshot. Production
+        # admission remains empty until the principal freezes/reviews the repair.
+        self.core_identity = tuple(hashlib.sha256(CORE_ENTRYPOINTS[p]).hexdigest()
+                                   for p in baseline.CORE_ENTRYPOINT_PATHS)
+        patch('ci_baseline.REVIEWED_CORE_RECIPES',
+              baseline.REVIEWED_CORE_RECIPES | {self.core_identity}).start()
+        self.write('scripts/check.sh', FULL_RECIPE.encode())
         self.older = self.save(FULL, 'older full-native')
         self.anchor = self.save(FULL, 'last full-native anchor')
+        # Fixture commits are test witnesses only, never production admission.
+        patch('ci_baseline.REVIEWED_LEGACY_HEADS',
+              baseline.REVIEWED_LEGACY_HEADS | {self.older, self.anchor}).start()
         self.unsafe = self.save(UNSAFE, 'unsafe incremental')
+        for path, contents in CORE_ENTRYPOINTS.items():
+            self.write(path, contents)
         self.safe = self.save(SAFE, 'verified incremental')
         self.head = self.save(SAFE, 'pending changes')
         self.addCleanup(patch.stopall)
@@ -76,6 +83,11 @@ class BaselineTests(unittest.TestCase):
 
     def git(self, *args):
         return subprocess.check_output(['git', *args], cwd=self.root, text=True).strip()
+
+    def write(self, path, contents):
+        target = self.root / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(contents)
 
     def save(self, workflow, label):
         target = self.root / '.github/workflows/ci.yml'
@@ -125,6 +137,60 @@ class BaselineTests(unittest.TestCase):
     def test_unsafe_old_incremental_success_is_not_verified(self):
         result = self.choose(self.api([self.run_record(self.unsafe, 2), self.run_record(self.anchor)]))
         self.assertEqual(result['base'], self.anchor)
+
+    def test_real_legacy_recipe_is_required_despite_identical_approved_workflow(self):
+        self.write('scripts/check.sh', b'#!/usr/bin/env bash\nexit 0\n')
+        self.head = self.save(FULL, 'same workflow with unchecked replacement recipe')
+        with patch('ci_baseline.REVIEWED_LEGACY_HEADS', baseline.REVIEWED_LEGACY_HEADS | {self.head}):
+            result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
+        self.assertEqual(result['base'], self.anchor)
+        self.assertEqual(result['recipe_sha256'], {'scripts/check.sh': baseline.LEGACY_RECIPE_SHA256})
+
+    def test_legacy_same_workflow_and_recipe_cannot_promote_a_different_helper_source_commit(self):
+        self.write('scripts/generate_imports.py', b'print("changed legacy helper")\n')
+        self.head = self.save(FULL, 'same approved recipe with different helper source')
+        api = self.api([self.run_record(self.head, 2), self.run_record(self.anchor)])
+        result = self.choose(api)
+        self.assertEqual(result['base'], self.anchor)
+        self.assertEqual(result['rejected_runs'], 1)
+        self.assertFalse(any('/runs/2/' in path for path, _ in api.calls))
+        with patch('ci_baseline.REVIEWED_LEGACY_HEADS', baseline.REVIEWED_LEGACY_HEADS | {self.head}):
+            enrolled = self.choose(self.api([self.run_record(self.head, 2)]))
+        self.assertEqual(enrolled['base'], self.head)
+        self.assertIn('exact reviewed legacy source commit', enrolled['selection_reason'])
+
+    def test_missing_placeholder_or_unknown_core_entrypoint_pair_is_not_promoted(self):
+        for change in ('missing', 'placeholder', 'unknown'):
+            for path, contents in CORE_ENTRYPOINTS.items():
+                self.write(path, contents)
+            target = 'scripts/ci_state.py'
+            if change == 'missing':
+                (self.root / target).unlink()
+            elif change == 'placeholder':
+                self.write(target, b'# no-op placeholder\n')
+            else:
+                self.write(target, CORE_ENTRYPOINTS[target] + b'\n# unenrolled recipe revision\n')
+            self.head = self.save(SAFE, 'unaccepted core recipe ' + change)
+            with self.subTest(change=change):
+                result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
+                self.assertEqual(result['base'], self.anchor)
+
+    def test_new_core_recipe_requires_intentional_exact_identity_enrollment(self):
+        changed = CORE_ENTRYPOINTS['scripts/ci_state.py'] + b'\n# deliberate test-only enrollment\n'
+        self.write('scripts/ci_state.py', changed)
+        self.head = self.save(SAFE, 'new core recipe identity')
+        api = lambda: self.api([self.run_record(self.head, 2), self.run_record(self.anchor)])
+        self.assertEqual(self.choose(api())['base'], self.anchor)
+        identity = tuple(hashlib.sha256(changed if p == 'scripts/ci_state.py' else CORE_ENTRYPOINTS[p]).hexdigest()
+                         for p in baseline.CORE_ENTRYPOINT_PATHS)
+        with patch('ci_baseline.REVIEWED_CORE_RECIPES', baseline.REVIEWED_CORE_RECIPES | {identity}):
+            self.assertEqual(self.choose(api())['base'], self.head)
+
+    def test_unsafe_7e6_core_recipe_is_not_enrolled(self):
+        # The rejected prototype predates the package owners. Missing owners
+        # must reject it as well as an unknown complete implementation tuple.
+        self.assertIsNone(baseline.reviewed_recipe(
+            SOURCE_ROOT, '7e6e146e7848c713f61d93167f215230bf386124', 'core'))
 
     def test_valid_new_native_success_can_advance_baseline(self):
         result = self.choose(self.api([self.run_record(self.safe, 2), self.run_record(self.anchor)]))
@@ -259,6 +325,28 @@ class BaselineTests(unittest.TestCase):
                          FULL.replace('bash scripts/check.sh --rehash --ci', '# bash scripts/check.sh --rehash --ci')):
             with self.subTest(workflow=workflow):
                 self.assertIsNone(workflow_kind(workflow))
+
+    def test_exact_reviewed_workflow_content_is_required_including_shell_control_flow(self):
+        self.assertEqual(workflow_kind(FULL), 'legacy whole-native workflow')
+        self.assertEqual(workflow_kind(SAFE), 'verified CI-core workflow')
+        self.assertIsNone(workflow_kind(FULL.rstrip('\n')))
+        command = 'bash scripts/check.sh --rehash --ci'
+        candidates = {
+            'hidden conditional': FULL.replace(command, 'if false; then\n          ' + command + '\n          fi'),
+            'early exit': FULL.replace(command, 'exit 0\n          ' + command),
+            'suppressed error': FULL.replace(command, 'set +e\n          ' + command + '\n          true'),
+            'unrelated step': FULL.replace(command, 'true').replace(
+                'run: bash scripts/check.sh --source-only',
+                'run: |\n          if false; then\n          ' + command + '\n          fi'),
+            'unreviewed comment': SAFE + '\n# changed workflow content\n',
+            'missing core phase': SAFE.replace('ci_pipeline.py finalize', 'echo finalize'),
+        }
+        for label, workflow in candidates.items():
+            with self.subTest(label=label):
+                self.assertIsNone(workflow_kind(workflow))
+                self.head = self.save(workflow, label)
+                result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
+                self.assertEqual(result['base'], self.anchor)
 
     def test_cli_outputs_evidence_and_base_without_changing_builds_caches_or_git(self):
         for path in ('.lake/build/keep.olean', '.lake/packages/keep', 'examples/downstream/.lake/build/keep'):
