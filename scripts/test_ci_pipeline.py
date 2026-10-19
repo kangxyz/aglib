@@ -192,6 +192,23 @@ class PipelineTests(unittest.TestCase):
             self.finalize()
         self.assertFalse((self.state / 'complete.json').exists())
 
+    def test_workflow_only_change_requires_native_cache_integration_and_completion(self):
+        self.write('.github/workflows/ci.yml', FULL + '\n# workflow integration change\n')
+        head = self.commit('workflow-only integration change')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertEqual(plan['baseline_math'], plan['head_math'])
+        self.assertTrue(plan['scope']['native'] and plan['scope']['controls'])
+        self.assertEqual(plan['required_phases'], ['source', 'native'])
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        self.assertIn('core-native-cache', [task['id'] for task in required])
+        self.source()
+        commands = Commands(self.root, fail='core-native-cache')
+        with self.assertRaisesRegex(ValueError, 'core-native-cache'):
+            self.native(commands)
+        with self.assertRaises(ValueError):
+            self.finalize()
+        self.assertFalse((self.state / 'complete.json').exists())
+
     def test_dependency_pin_update_assigns_current_checks_and_prepared_client(self):
         manifest = json.loads((self.root / 'lake-manifest.json').read_text())
         manifest['packages'] = [{'name': 'upstream', 'rev': 'new-revision', 'inherited': False}]

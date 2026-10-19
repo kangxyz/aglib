@@ -15,6 +15,7 @@ CONFIG = {'lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.jso
           'examples/downstream/lakefile.lean', 'examples/downstream/lake-manifest.json'}
 AUDIT = {'AglibTest.Axioms', 'AglibTest.AuditSupport'}
 CONTROL_INPUTS = CONFIG | {
+    '.github/workflows/ci.yml',
     'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
     'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py',
     'scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/ci_baseline.py',
