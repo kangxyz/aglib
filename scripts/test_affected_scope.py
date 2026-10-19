@@ -12,6 +12,7 @@ from check_affected import execute
 from run_style_linter import selected_driver
 from run_declaration_linter import (MARKER, run as run_selected_declaration_linter,
                                     selected_driver as selected_declaration_driver)
+from ci_audit import AUDIT_DRIVER
 
 
 class AffectedScopeTests(unittest.TestCase):
@@ -35,6 +36,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.write('README.md', 'Fixture.\n')
         self.write('scripts/README.md', 'Fixture scripts.\n')
         self.write('docs/evidence.json', '{}\n')
+        self.write(AUDIT_DRIVER, (Path(__file__).resolve().parents[1] / AUDIT_DRIVER).read_text())
         self.write('lean-toolchain', 'fixed\n')
         self.write('lakefile.toml', 'name = "Aglib"\n')
         self.write('lake-manifest.json', '{"packages": []}\n')
@@ -80,6 +82,27 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(plan['consumers'], ['Aglib'])
         self.assertEqual(plan['providers'], [])
         self.assertTrue(plan['native'])
+
+    def test_ci_lean_files_select_native_tooling_without_production_enrollment(self):
+        for path in ('ci/lean/SelectedAudit.lean', 'ci/fixtures/quartz/Check.lean'):
+            with self.subTest(path=path):
+                self.write(path, 'import Lean\n')
+                plan = select(self.root, self.base)
+                self.assertTrue(plan['native'] and plan['trust'] and plan['controls'])
+                self.assertIn('lean-ci', plan['tooling_tests'])
+                self.assertEqual(plan['providers'] + plan['consumers'] + plan['tests'], [])
+
+    def test_deleted_ci_lean_file_remains_a_native_tooling_change(self):
+        path = 'ci/fixtures/quartz/Check.lean'
+        self.write(path, 'import Aglib.Base\n')
+        self.git('add', '--', path)
+        self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                 'commit', '-qm', 'fixed CI fixture')
+        base = self.git('rev-parse', 'HEAD').strip()
+        (self.root / path).unlink()
+        plan = select(self.root, base)
+        self.assertTrue(plan['native'] and plan['controls'])
+        self.assertEqual(plan['providers'] + plan['consumers'] + plan['tests'], [])
 
     def test_verified_base_keeps_proof_changes_after_later_tooling_commit(self):
         self.write('Aglib/Base.lean', 'module\ndef base := 2\n')
@@ -388,9 +411,12 @@ class AffectedScopeTests(unittest.TestCase):
         directory = Path(self.temp.name) / 'run'
         with patch('check_affected.run', side_effect=self.native_mock(calls)):
             execute(self.root, plan, directory, native_only=True, phases=['trust'])
-        audit = (directory / 'SelectedAudit.lean').read_text()
+        self.assertFalse((directory / 'SelectedAudit.lean').exists())
+        audit = (self.root / AUDIT_DRIVER).read_text()
         self.assertEqual(audit.count('import AglibTest.AuditSupport'), 1)
-        self.assertIn('AglibAudit.auditModules #[`AglibTest.AuditSupport]', audit)
+        audit_call = next(command for command in calls if AUDIT_DRIVER in command)
+        self.assertEqual(json.loads(audit_call[-1]), [['AglibTest', 'AuditSupport']])
+        self.assertIn('AglibAudit.auditModules selected', audit)
         self.assertIn('coverage.contains `AuditForeign.GeneratedDatum.rec', audit)
         self.assertIn('unless hidden.size == 1', audit)
         self.assertIn('(env.checked.get.find? hidden[0]!).isSome', audit)

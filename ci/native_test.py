@@ -7,6 +7,7 @@ explicit-full local fixture, never a verified GitHub baseline enrollment.
 import argparse
 from contextlib import contextmanager
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -21,13 +22,25 @@ from lean_ci.state import check_binding, file_hash, read_json, write_json
 
 MODULES = ['Quartz.Upstream', 'Quartz']
 SOURCE_POLICY = ['lean-toolchain', 'lakefile.toml', 'lake-manifest.json', 'Check.lean']
-UPSTREAM = 'module\nnamespace Quartz\npublic def upstream : Nat := {value}\nend Quartz\n'
-ROOT_SOURCE = ('module\npublic import Quartz.Upstream\nnamespace Quartz\n'
-               'public theorem nonnegative : 0 ≤ upstream := Nat.zero_le upstream\nend Quartz\n')
-CHECK_SOURCE = 'import Quartz\nexample : 0 ≤ Quartz.upstream := Quartz.nonnegative\n'
-PACKAGE = ('name = "quartzFixture"\nversion = "0.1.0"\ndefaultTargets = ["Quartz"]\n'
-           'moreLeanArgs = ["-DwarningAsError=true"]\nenableArtifactCache = true\n'
-           'restoreAllArtifacts = true\n\n[[lean_lib]]\nname = "Quartz"\n')
+FIXTURE_DIRECTORY = Path(__file__).resolve().parent / 'fixtures/quartz'
+# These source identities are reviewed with this harness, which is a core recipe owner.
+FIXTURE_SOURCES = {
+    'Check.lean': 'b5d3bb6448678855a270928f3ad34653c184400bb8c40bd8ff2591de69544512',
+    'Quartz.lean': 'ad4a4861abc5a3a1788ad28abe8af19e192a3029fc0cde5af2f7601d7b0037c8',
+    'lakefile.toml': '8534c3930fc42a767f7b682f117b2b2266d477e2167dfbfc5172f33a456cef14',
+    'upstream7.lean': '84827d811f945dc1dbf097fa80fa86175cbc1f90d43f55f60e08073cd43a7e18',
+    'upstream9.lean': 'c5f82099003ffedbc5f171857505424c0a3e3df573f6907ba4741f0da05d1499',
+}
+
+
+def fixture_source(name):
+    source = (FIXTURE_DIRECTORY / name).read_bytes()
+    if hashlib.sha256(source).hexdigest() != FIXTURE_SOURCES[name]:
+        raise ValueError('Unreviewed native fixture source: ' + name)
+    return source.decode('utf-8')
+
+
+PACKAGE = fixture_source('lakefile.toml')
 
 
 def require(condition, message):
@@ -69,8 +82,9 @@ def create_fixture(root, toolchain):
     (root / 'Quartz').mkdir()
     (root / '.lake/packages').mkdir(parents=True)
     files = {'.gitignore': '.lake/\n', 'lean-toolchain': toolchain + '\n',
-             'lakefile.toml': PACKAGE, 'Quartz/Upstream.lean': UPSTREAM.format(value=7),
-             'Quartz.lean': ROOT_SOURCE, 'Check.lean': CHECK_SOURCE,
+             'lakefile.toml': fixture_source('lakefile.toml'),
+             'Quartz/Upstream.lean': fixture_source('upstream7.lean'),
+             'Quartz.lean': fixture_source('Quartz.lean'), 'Check.lean': fixture_source('Check.lean'),
              'lake-manifest.json': json.dumps({'version': '1.2.0', 'packagesDir': '.lake/packages',
                                                'packages': [], 'name': 'quartzFixture', 'lakeDir': '.lake',
                                                'fixedToolchain': False}, indent=2) + '\n'}
@@ -82,7 +96,7 @@ def create_fixture(root, toolchain):
 
 def change_upstream(root):
     before = file_hash(root / 'Quartz.lean')
-    (root / 'Quartz/Upstream.lean').write_text(UPSTREAM.format(value=9))
+    (root / 'Quartz/Upstream.lean').write_text(fixture_source('upstream9.lean'))
     require(git(root, 'diff', '--name-only') == 'Quartz/Upstream.lean', 'Unexpected changed fixture inputs')
     head = commit(root, 'upstream nine, root theorem source unchanged')
     require(file_hash(root / 'Quartz.lean') == before, 'Root source changed during upstream-only scenario')
@@ -154,6 +168,7 @@ class Harness:
         self.check_receipts = {}
         self.report = {'schema': 1, 'status': 'running', 'toolchain': toolchain,
                        'implementation': implementation_identity(), 'harness_sha256': file_hash(__file__),
+                       'fixture_sources': FIXTURE_SOURCES,
                        'lease': str(lease) if lease else None, 'source_heads': {}, 'attempts': {},
                        'transfers': [], 'limitations': [
                            'Same installed compiler in every scenario; no arbitrary cross-version import claim.',

@@ -19,6 +19,7 @@ CONTROL_INPUTS = CONFIG | {
     'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
     'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py',
     'scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/ci_baseline.py',
+    'scripts/ci_audit.py',
     'scripts/library_sources.py', 'scripts/check_affected.py', 'scripts/prepare_downstream.py',
     'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
     'scripts/check_compiled_inventory.py',
@@ -32,7 +33,8 @@ TOOL_TESTS = {
     'cache_ci.py': ['test_cache_ci', 'test_affected_scope'],
     'ci_baseline.py': ['test_ci_baseline', 'test_ci_pipeline', 'test_ci_cache', 'test_affected_scope'],
     'ci_pipeline.py': ['test_ci_pipeline', 'test_ci_integration', 'test_ci_state', 'test_ci_baseline',
-                       'test_ci_cache', 'test_affected_scope', 'test_integration_setup'],
+                       'test_ci_cache', 'test_affected_scope', 'test_integration_setup', 'test_ci_audit'],
+    'ci_audit.py': ['test_ci_audit', 'test_ci_pipeline', 'test_affected_scope', 'test_integration_setup'],
     'ci_state.py': ['test_ci_state', 'test_ci_pipeline', 'test_affected_scope'],
     'check_kernel.py': ['test_kernel'],
     'check_compiled_inventory.py': ['test_integration_setup', 'test_kernel'],
@@ -70,7 +72,7 @@ def digest(path):
 def controls_changed(changed):
     return bool(CONTROL_INPUTS.intersection(changed) or
                 any(p.startswith('AglibTest/NegativeControls/') or
-                    (p.startswith('ci/') and p.endswith(('.py', '.toml'))) for p in changed))
+                    (p.startswith('ci/') and not p.endswith('.md')) for p in changed))
 
 
 def cache_imports(graph, targets):
@@ -186,7 +188,7 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
     # Changed/deleted old imports are necessary for removals and import rewrites.
     if not full:
         for path in changed:
-            if not path.endswith('.lean'):
+            if not path.endswith('.lean') or path.startswith('ci/'):
                 continue
             old = subprocess.run(['git', 'show', base_id + ':' + path], cwd=root, capture_output=True)
             if old.returncode == 0:
@@ -199,17 +201,17 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
     for path in changed:
         if path in CONFIG and (full or initial or configuration_update):
             continue
-        if path.endswith('.lean'):
+        if path.startswith('ci/') and not path.endswith('.md'):
+            tooling.update(['lean-ci', 'test_ci_pipeline', 'test_ci_integration', 'test_ci_state',
+                            'test_ci_baseline', 'test_affected_scope', 'test_source_guards',
+                            'test_integration_setup', 'test_ci_cache', 'test_ci_audit'])
+        elif path.endswith('.lean'):
             if not (path.startswith(('Aglib/', 'AglibTest/', 'Tools/', 'examples/downstream/'))
                     or path in {'Aglib.lean', 'AglibTest.lean'}):
                 raise ValueError('Unrecognized Lean source: ' + path)
             seeds.add(node(path))
         elif path.endswith('.md') or (path.startswith('docs/') and path.endswith('.json')):
             continue
-        elif path.startswith('ci/'):
-            tooling.update(['lean-ci', 'test_ci_pipeline', 'test_ci_integration', 'test_ci_state',
-                            'test_ci_baseline', 'test_affected_scope', 'test_source_guards',
-                            'test_integration_setup', 'test_ci_cache'])
         elif path.startswith('scripts/') or path.startswith('.github/'):
             if Path(path).parent == Path('scripts') and path.startswith('scripts/test_') and path.endswith('.py'):
                 tooling.add(Path(path).stem)

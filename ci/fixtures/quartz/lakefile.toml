@@ -1,0 +1,9 @@
+name = "quartzFixture"
+version = "0.1.0"
+defaultTargets = ["Quartz"]
+moreLeanArgs = ["-DwarningAsError=true"]
+enableArtifactCache = true
+restoreAllArtifacts = true
+
+[[lean_lib]]
+name = "Quartz"

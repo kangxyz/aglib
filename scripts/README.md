@@ -44,6 +44,10 @@ No dependency cache is overwritten by either helper.
 
 The selected trust audit imports exact selected implementations plus the maintained
 `AglibTest.AuditSupport` and uses its existing defining-module origin policy.
+Both local and CI routes execute the committed
+[SelectedAudit.lean](../ci/lean/SelectedAudit.lean) program through `ci_audit.py`,
+passing validated module-name components as JSON data. Neither route generates
+an audit source file or extracts executable blocks from `Axioms.lean`.
 Private/generated declarations, allowed axioms, rejection controls and stale/negative
 compiled-output checks are retained. `check_compiled_inventory.py --modules MODULE ...`
 requires only selected enrollment while still rejecting stale and negative outputs.

@@ -120,6 +120,34 @@ It needs assigned current category coverage or an explicitly validated migration
 configuration transitions execute complete current categories. Mathematical
 source equality alone is insufficient.
 
+## Fixed Lean audit and fixture sources
+
+The selected-origin auditor is the committed
+[SelectedAudit.lean](../ci/lean/SelectedAudit.lean) program. The shared
+[Python adapter](../scripts/ci_audit.py) passes one JSON argument containing
+arrays of module-name components. It validates the identifier grammar and
+rejects empty selections, path aliases, separators and control characters.
+Selection is decoded as names, never parsed or evaluated as Lean source.
+
+The fixed program builds the same legacy import sequence in a fresh private
+environment and preserves the source frontend's actual options and trust level.
+Its own helper declarations and additional API imports do not enter the audited
+environment. The existing origin, root-namespace, private and generated-declaration
+controls remain enabled, and logged errors fail the invocation. Unsupported
+syntax-valued frontend options fail closed.
+The migration covers the adapter's fixed audit invocation and its audit
+predicates. It is not a replacement for arbitrary frontend deprecation,
+portability or `--error=kind` diagnostic modes.
+
+The helper and driver hashes are pinned through the existing CI adapter recipe
+owner and included in check inputs. Their first introduction has an explicit
+reviewed migration from the exact prior generator; later semantic changes cannot
+inherit this exception. The real cache test copies fixed
+[Quartz fixture sources](../ci/fixtures/quartz) into its isolated producer and
+consumer trees, verifying their reviewed content hashes before use. Temporary
+working directories contain copies and build outputs; the maintained Lean source
+is directly reviewable in Git.
+
 ## Cache trust, tests and result
 
 Native/build/check caches retain a reviewed trusted-producer boundary. Native

@@ -17,6 +17,7 @@ from lean_ci.runtime import NativeRuntime, parse_search_path
 
 import affected_scope
 import ci_baseline
+from ci_audit import AUDIT_DRIVER, AUDIT_DRIVER_SHA256, audit_command
 from check_affected import check_links
 from ci_state import (Progress, ReflectionGraph, ReflectionUnavailable, TemporalInputs, check_binding, digest, file_hash, read_json,
                       module_identity, valid_receipt, valid_success, write_json)
@@ -26,19 +27,27 @@ from prepare_downstream import manifest_bytes
 
 PACKAGE_SOURCES = ['ci/lean_ci/' + name + '.py' for name in
                    ('__init__', '__main__', 'source', 'state', 'github', 'engine', 'runtime', 'resources', 'build', 'cli')]
+# These reviewed dependencies remain bound through this existing recipe owner.
+# Historical core recipes retain their original ordered owner list.
+FIXED_AUDIT_SOURCES = {
+    'scripts/ci_audit.py': '9fecbd4d662923288fe3722356c75d4835e2feff40c3a860af41ee97470bb8c3',
+    AUDIT_DRIVER: AUDIT_DRIVER_SHA256,
+}
+OLD_AUDIT_GENERATOR_BLOB = '682dedef7a8286e327360a39d8d86b6ce3828188'
 POLICY = ['scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/resource_guard.py',
           'scripts/build_serial.py', 'scripts/library_sources.py',
           'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
           'scripts/check_negative_controls.py', 'scripts/nolints.json', 'scripts/nolints-style.txt', 'AglibTest/AuditSupport.lean',
           'AglibTest/AuditCoverage.lean', 'AglibTest/Axioms.lean',
-          *PACKAGE_SOURCES, *sorted(affected_scope.CONFIG)]
+          *FIXED_AUDIT_SOURCES, *PACKAGE_SOURCES, *sorted(affected_scope.CONFIG)]
 DRIVERS = ['.lake/packages/batteries/scripts/runLinter.lean',
            '.lake/packages/mathlib/scripts/lint-style.lean']
 GENERATED_MANIFEST = 'examples/downstream/lake-manifest.json'
 SEMANTIC_POLICY = ('scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
                    'scripts/check_compiled_inventory.py', 'scripts/nolints.json',
                    'scripts/nolints-style.txt', 'AglibTest/Axioms.lean',
-                   'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean')
+                   'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
+                   *FIXED_AUDIT_SOURCES)
 LEGACY_CUTOVER = 'cc17eecf0344f15c89ffc04cade60b1b09cf9f43'
 # This is a retained-legacy-policy contract, NOT per-leaf linter equivalence.
 # The exact old recipe checked production declarations in the Aglib umbrella
@@ -67,7 +76,13 @@ def tree(root, revision):
 
 def mathematical_tree(root, revision):
     return {p: value for p, value in tree(root, revision).items()
-            if p.endswith('.lean') or p in affected_scope.CONFIG}
+            if (p.endswith('.lean') and not p.startswith('ci/')) or p in affected_scope.CONFIG}
+
+
+def validate_fixed_audit_sources(root):
+    for path, expected in FIXED_AUDIT_SOURCES.items():
+        if file_hash(root / path) != expected:
+            raise ValueError('Native semantic policy changed: unreviewed fixed audit source ' + path)
 
 
 def native_policy(root, baseline, scope, before, current):
@@ -77,6 +92,7 @@ def native_policy(root, baseline, scope, before, current):
     than a guessed small selection or an implicit whole-library rebuild.
     """
     old, new = tree(root, baseline['verified_base']), tree(root, scope['head'])
+    validate_fixed_audit_sources(root)
     changed = [p for p in SEMANTIC_POLICY if old.get(p) != new.get(p)]
     if scope.get('configuration_update'):
         return {'mode': 'fresh-current-checks-after-configuration-update',
@@ -87,6 +103,19 @@ def native_policy(root, baseline, scope, before, current):
     if not changed:
         return {'mode': 'unchanged-semantic-check-policy',
                 'inputs': {p: new.get(p) for p in SEMANTIC_POLICY}}
+    fixed_audit_migration = (
+        set(changed) == set(FIXED_AUDIT_SOURCES)
+        and old.get('scripts/ci_pipeline.py', {}).get('blob') == OLD_AUDIT_GENERATOR_BLOB
+        and all(old.get(path) is None and new.get(path, {}).get('mode') == '100644'
+                for path in FIXED_AUDIT_SOURCES))
+    if fixed_audit_migration:
+        return {'mode': 'reviewed-fixed-audit-entrypoint-migration',
+                'witness_commit': baseline['verified_base'], 'witness_run': baseline['run_id'],
+                'old_generator_blob': OLD_AUDIT_GENERATOR_BLOB,
+                'fixed_audit_sources': FIXED_AUDIT_SOURCES,
+                'equivalence': 'same selected import sequence, visibility, frontend options/trust, '
+                               'origin audit and private/generated controls; selection is data',
+                'inherited_coverage': 'unchanged audit predicate under the verified ancestor policy'}
     def blob(entries, path):
         entry = entries.get(path)
         if entry is not None and entry['mode'] != '100644':
@@ -178,19 +207,6 @@ def runtime_imports(root):
     return sorted(imports)
 
 
-def audit_source(root, selected):
-    legacy = (root / 'AglibTest/Axioms.lean').read_text()
-    start = legacy.index('  let env ← getEnv\n')
-    end = legacy.index('  logInfo m!"Audited ', start)
-    return ('import AglibTest.AuditSupport\nimport AglibTest.AuditCoverage\n'
-            + ''.join('import ' + n + '\n' for n in selected
-                      if n not in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'})
-            + '\nopen Lean in\nrun_cmd do\n  let count ← AglibAudit.auditModules #['
-            + ', '.join('`' + n for n in selected) + ']\n' + legacy[start:end]
-            + '  logInfo m!"Selected-origin axiom audit: {count} declarations; '
-              'private/generated origin control: {coverageCount}."\n')
-
-
 def tasks(root, plan, phase, directory):
     """Reconstruct the required commands; phase records cannot waive any task."""
     scope, result = plan['scope'], []
@@ -278,10 +294,8 @@ def tasks(root, plan, phase, directory):
         if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
             selected.append('AglibTest.AuditSupport')
         for index, name in enumerate(selected or ['AglibTest.AuditCoverage']):
-            audit = directory / f'SelectedAudit-{index:04d}.lean'
-            safe(f'audit/{index}', ['lake', 'env', 'lean', '-j1', audit], kind='check',
-                 check_kind='audit', modules=sorted(set([name, *support])), selection=[name],
-                 generated=audit_source(root, [name]))
+            safe(f'audit/{index}', audit_command(root, [name]), kind='check',
+                 check_kind='audit', modules=sorted(set([name, *support])), selection=[name])
         if 'AglibTest/Axioms.lean' in scope['changed']:
             safe('legacy-audit-cached-imports', lake + ['--no-build', 'build', 'Aglib', *support])
             safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'AglibTest/Axioms.lean'])
@@ -305,6 +319,8 @@ def reflection_roots(root, task):
     roots = list(task['modules']) + ['Lean', 'Lake']
     if task['check_kind'] == 'declaration':
         roots += lean_imports((root / DRIVERS[0]).read_text())
+    elif task['check_kind'] == 'audit':
+        roots += lean_imports((root / AUDIT_DRIVER).read_text())
     return roots
 
 

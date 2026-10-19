@@ -80,6 +80,8 @@ class CIIntegrationTests(unittest.TestCase):
         self.write('scripts/check.sh', FULL_RECIPE)
         for path in ci_pipeline.PACKAGE_SOURCES:
             self.write(path, (ci_pipeline.ROOT / path).read_text())
+        for path in ci_pipeline.FIXED_AUDIT_SOURCES:
+            self.write(path, (ci_pipeline.ROOT / path).read_text())
         self.base = self.commit('verified native baseline')
         legacy_heads = patch.object(ci_pipeline.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({self.base}))
         legacy_heads.start()

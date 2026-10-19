@@ -76,6 +76,8 @@ class PipelineTests(unittest.TestCase):
         for name in ('Init', 'Lean', 'Lake'):
             self.write(name + '.lean', 'module\n')
             native_fixture(self.root, name)
+        self.write('Lean/Data/Json/Parser.lean', 'module\nimport Init\n')
+        native_fixture(self.root, 'Lean.Data.Json.Parser')
         self.write('Aglib/Cold.lean', 'module\ndef cold := 1\n')
         self.write('Aglib.lean', 'module\npublic import Aglib.Base\npublic import Aglib.Cold\n')
         self.write('AglibTest/Positive.lean', 'module\nimport Aglib.Base\nexample : True := trivial\n')
@@ -91,7 +93,9 @@ class PipelineTests(unittest.TestCase):
         self.write('README.md', 'Initial documentation.\n')
         self.write('.github/workflows/ci.yml', FULL)
         for path in core.POLICY:
-            if path.startswith('scripts/'):
+            if path in core.FIXED_AUDIT_SOURCES:
+                self.write(path, (core.ROOT / path).read_text())
+            elif path.startswith('scripts/'):
                 self.write(path, '# fixed checker fixture\n')
         for path in core.PACKAGE_SOURCES:
             self.write(path, (core.ROOT / path).read_text())
@@ -179,6 +183,66 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(plan['scope']['native'])
         self.assertTrue(plan['scope']['controls'])
         self.assertEqual(plan['required_phases'], ['source', 'native'])
+
+    def test_fixed_ci_lean_source_requires_native_integration_without_math_scope(self):
+        self.write('ci/fixtures/quartz/Check.lean', 'example : True := trivial\n')
+        head = self.commit('fixed CI Lean fixture')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertEqual(plan['baseline_math'], plan['head_math'])
+        self.assertEqual(plan['scope']['providers'] + plan['scope']['consumers'] + plan['scope']['tests'], [])
+        self.assertTrue(plan['scope']['controls'] and plan['scope']['native'])
+        self.assertEqual(plan['required_phases'], ['source', 'native'])
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        self.assertIn('core-native-cache', [task['id'] for task in required])
+
+    def test_audit_uses_fixed_source_and_binds_its_actual_imports(self):
+        plan = self.plan()
+        audits = [task for task in core.tasks(self.root, plan, 'native', self.state / 'required-native')
+                  if task.get('check_kind') == 'audit']
+        self.assertTrue(audits)
+        for task in audits:
+            self.assertNotIn('generated', task)
+            self.assertIn('--run', task['command'])
+            self.assertIn(core.AUDIT_DRIVER, task['command'])
+            self.assertEqual(json.loads(task['command'][-1]),
+                             [name.split('.') for name in task['selection']])
+            self.assertIn('Lean.Data.Json.Parser', core.reflection_roots(self.root, task))
+        self.source()
+        self.native()
+        self.assertEqual(self.finalize()['status'], 'complete')
+
+    def test_exact_generated_audit_predecessor_has_a_bounded_static_migration(self):
+        old_pipeline = subprocess.check_output(
+            ['git', 'show', 'f0ff076:scripts/ci_pipeline.py'], cwd=core.ROOT, text=True)
+        for path in core.FIXED_AUDIT_SOURCES:
+            (self.root / path).unlink()
+        self.write('scripts/ci_pipeline.py', old_pipeline)
+        anchor = self.commit('exact former audit generator')
+        self.api.runs[0]['head_sha'] = anchor
+        for path in core.FIXED_AUDIT_SOURCES:
+            self.write(path, (core.ROOT / path).read_text())
+        self.write('scripts/ci_pipeline.py', (core.ROOT / 'scripts/ci_pipeline.py').read_text())
+        head = self.commit('fixed audit entrypoint')
+        with patch.object(core.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({anchor})):
+            plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertEqual(plan['baseline_math'], plan['head_math'])
+        self.assertEqual(plan['native_policy']['mode'], 'reviewed-fixed-audit-entrypoint-migration')
+        self.assertEqual(plan['native_policy']['old_generator_blob'], core.OLD_AUDIT_GENERATOR_BLOB)
+        self.assertTrue(plan['scope']['native'] and plan['scope']['controls'])
+
+    def test_unknown_generator_cannot_inherit_the_fixed_audit_migration(self):
+        for path in core.FIXED_AUDIT_SOURCES:
+            (self.root / path).unlink()
+        self.write('scripts/ci_pipeline.py', '# unreviewed audit generator\n')
+        anchor = self.commit('unknown audit generator')
+        self.api.runs[0]['head_sha'] = anchor
+        for path in core.FIXED_AUDIT_SOURCES:
+            self.write(path, (core.ROOT / path).read_text())
+        head = self.commit('fixed auditor after unknown policy')
+        with patch.object(core.ci_baseline, 'REVIEWED_LEGACY_HEADS', frozenset({anchor})), \
+                self.assertRaisesRegex(ValueError, 'Native semantic policy changed'):
+            core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertFalse((self.state / 'plan.json').exists())
 
     def test_core_integration_failure_prevents_completion_with_unchanged_math(self):
         self.write('scripts/ci_pipeline.py', '# changed native executor\n')

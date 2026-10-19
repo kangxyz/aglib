@@ -11,6 +11,7 @@ import tempfile
 from urllib.parse import unquote
 
 from affected_scope import ROOT, select, validate
+from ci_audit import audit_command
 from library_sources import lean_imports, module_path
 
 
@@ -131,20 +132,7 @@ def execute(root, plan, directory, source_only=False, native_only=False, rehash=
             selected.append('AglibTest.AuditSupport')
         # Reuse the maintained origin auditor, including private/generated names.
         # No production root is imported just to discover its unrelated modules.
-        audit = directory / 'SelectedAudit.lean'
-        legacy = (root / 'AglibTest/Axioms.lean').read_text()
-        start = legacy.index('  let env ← getEnv\n')
-        end = legacy.index('  logInfo m!"Audited ', start)
-        origin_controls = legacy[start:end]
-        audit.write_text('import AglibTest.AuditSupport\nimport AglibTest.AuditCoverage\n'
-                         + ''.join('import ' + n + '\n' for n in selected if n not in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'})
-                         + '\nopen Lean in\nrun_cmd do\n'
-                         + '  let count ← AglibAudit.auditModules #['
-                         + ', '.join('`' + n for n in selected) + ']\n'
-                         + origin_controls
-                         + '  logInfo m!"Selected-origin axiom audit: {count} declarations; '
-                         + 'private/generated origin control: {coverageCount}."\n')
-        safe('axioms', ['lake', 'env', 'lean', '-j1', audit])
+        safe('axioms', audit_command(root, selected or ['AglibTest.AuditCoverage']))
         if 'AglibTest/Axioms.lean' in plan['changed']:
             safe('legacy-audit-cached-imports', lake + ['--no-build', 'build',
                  'Aglib', 'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'])

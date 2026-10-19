@@ -137,6 +137,14 @@ verified GitHub baseline selection in an incremental production repository.
 
 ## Bounded native integration
 
+The reviewed Lean fixture files live in [fixtures/quartz](fixtures/quartz).
+The harness verifies their content identities and copies them into each isolated
+checkout; it does not construct Lean programs from Python strings. The upstream
+transition copies the separate fixed `upstream9.lean` file over the fixture's
+`Quartz/Upstream.lean`. The ordinary Aglib adapter also uses a fixed
+[Lean audit entrypoint](lean/SelectedAudit.lean) with JSON name arguments; see the
+[audit contract](../docs/CI.md#fixed-lean-audit-and-fixture-sources).
+
 Run `python3 ci/native_test.py --state /absolute/fresh-fixture` with the prepared
 pinned toolchain. Optional `--lease /absolute/native.lock` acquires a nonblocking
 POSIX compiler lease; it never queues. `--resource-prefix` and repeatable
