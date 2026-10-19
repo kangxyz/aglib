@@ -37,8 +37,8 @@ def remote_profile(environment=None):
             if type(profile[key]) is not int or profile[key] <= 0:
                 raise ValueError(key + ' must be a positive integer')
         if profile['lean_memory_mib'] < 64 or \
-                profile['lean_memory_mib'] * profile['jobs'] >= profile['rss_limit_mib']:
-            raise ValueError('require 64 <= native Lean MiB and native MiB * jobs < tree RSS MiB')
+                profile['lean_memory_mib'] >= profile['rss_limit_mib']:
+            raise ValueError('require 64 <= native Lean MiB < tree RSS MiB; job count is a concurrency ceiling')
         if not isinstance(profile['lean'], str):
             raise ValueError('lean must be an absolute executable path')
         lean = Path(profile['lean'])

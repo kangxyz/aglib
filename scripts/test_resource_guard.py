@@ -39,6 +39,13 @@ class ResourceGuardTests(unittest.TestCase):
             self.assertEqual(len(budget['tooling_sha256']), 3)
             self.assertTrue(all(len(value) == 64 for value in budget['tooling_sha256'].values()))
 
+    def test_remote_memory_and_job_ceilings_do_not_reserve_their_product(self):
+        with tempfile.TemporaryDirectory() as directory:
+            env = self.remote_environment(directory, jobs=8, threads=4,
+                                          lean_memory_mib=24576, rss_limit_mib=110592)
+            budget = guard.limits(env, 128 * 1024**3)
+            self.assertEqual((budget['lean_memory_mb'], budget['max_active_lean']), (24576, 8))
+
     def test_remote_profile_rejects_malformed_inconsistent_or_stale_opt_in(self):
         with tempfile.TemporaryDirectory() as directory:
             env = self.remote_environment(directory)
@@ -46,7 +53,7 @@ class ResourceGuardTests(unittest.TestCase):
             invalid = [None, '{', 'null', '[]', json.dumps(dict(original, schema_version=True)),
                        env['R5_LEAN_REMOTE_PROFILE'][:-1] + ',"jobs":2}',
                        json.dumps(dict(original, jobs=0)), json.dumps(dict(original, threads=True)),
-                       json.dumps(dict(original, lean_memory_mib=256)),
+                       json.dumps(dict(original, lean_memory_mib=512)),
                        json.dumps(dict(original, lean='relative/bin/lean')),
                        json.dumps(dict(original, extra=1)), json.dumps({k: v for k, v in original.items() if k != 'jobs'})]
             for value in invalid:
