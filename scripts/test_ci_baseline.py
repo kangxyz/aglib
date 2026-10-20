@@ -199,6 +199,13 @@ class BaselineTests(unittest.TestCase):
         result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
         self.assertEqual(result['base'], self.anchor)
 
+    def test_current_recipe_requires_the_new_batch_owner(self):
+        (self.root / 'ci/lean_ci/batch.py').unlink()
+        self.head = self.save(SAFE, 'current recipe missing batch owner')
+        self.assertIsNone(baseline.reviewed_recipe(self.root, self.head, 'core'))
+        result = self.choose(self.api([self.run_record(self.head, 2), self.run_record(self.anchor)]))
+        self.assertEqual(result['base'], self.anchor)
+
     def test_unsafe_7e6_core_recipe_is_not_enrolled(self):
         # The rejected prototype predates the package owners. Missing owners
         # must reject it as well as an unknown complete implementation tuple.
@@ -437,7 +444,7 @@ class APITransportTests(unittest.TestCase):
 
 
 class HistoricalCoreCorrespondenceTests(unittest.TestCase):
-    def test_all_four_literal_historical_vectors_match_exact_git_heads(self):
+    def test_all_five_literal_historical_vectors_match_exact_git_heads(self):
         import ast
         old_source = subprocess.check_output(['git', 'show', '342cd1d:scripts/ci_baseline.py'],
                                             cwd=SOURCE_ROOT, text=True)
@@ -446,15 +453,24 @@ class HistoricalCoreCorrespondenceTests(unittest.TestCase):
                                   for target in node.targets))
         original_vectors = ast.literal_eval(assignment.value.args[0])
         versions = baseline.HISTORICAL_CORE_RECIPES
-        self.assertEqual(len(versions), 4)
-        self.assertEqual({recipe for version in versions for recipe in version.recipes}, original_vectors)
+        self.assertEqual(len(versions), 5)
+        self.assertEqual({recipe for version in versions[:4] for recipe in version.recipes}, original_vectors)
         self.assertEqual({head for version in versions for head in version.heads}, {
             'fd73486f3b9d2caaee5da270262ec3835f12b17d',
             '57c4890c4cee91a08c8808113ea0743725db741d',
             'b64c2df629c330a117c1ca84affd6dfd8a661ee1',
-            '342cd1db043808e2a45ff60f6bdc728ef3058ed1'})
-        for version in versions:
-            self.assertEqual(len(version.paths), 23)
+            '342cd1db043808e2a45ff60f6bdc728ef3058ed1',
+            '3a4d549981ced306d89d3ed55418c9e6a25f86c4'})
+        old_full_source = subprocess.check_output(['git', 'show',
+            '3a4d549981ced306d89d3ed55418c9e6a25f86c4:scripts/ci_baseline.py'],
+            cwd=SOURCE_ROOT, text=True)
+        old_full_assignment = next(node for node in ast.parse(old_full_source).body
+            if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name)
+            and target.id == 'REVIEWED_CORE_RECIPES' for target in node.targets))
+        self.assertEqual(versions[-1].recipes, frozenset(ast.literal_eval(old_full_assignment.value.args[0])))
+        self.assertEqual(versions[-1].paths, baseline.HISTORICAL_FULL_CORE_ENTRYPOINT_PATHS)
+        for index, version in enumerate(versions):
+            self.assertEqual(len(version.paths), 23 if index < 4 else 28)
             self.assertEqual(len(version.heads), 1)
             identity = baseline.reviewed_recipe(SOURCE_ROOT, next(iter(version.heads)), 'core')
             self.assertIsNotNone(identity)
@@ -462,13 +478,14 @@ class HistoricalCoreCorrespondenceTests(unittest.TestCase):
 
     def test_current_full_owner_vector_and_coverage_workflow_match_actual_reviewed_bytes(self):
         paths = baseline.CORE_ENTRYPOINT_PATHS
-        self.assertEqual(len(paths), 28)
+        self.assertEqual(len(paths), 29)
         self.assertEqual(paths[:23], baseline.HISTORICAL_CORE_ENTRYPOINT_PATHS)
         self.assertEqual(paths[23:], tuple('ci/lean_ci/' + name + '.py'
-                         for name in ('execution', 'local', 'recipe', 'mappings', 'frozen')))
+                         for name in ('execution', 'local', 'recipe', 'mappings', 'frozen', 'batch')))
         actual = tuple(hashlib.sha256((SOURCE_ROOT / path).read_bytes()).hexdigest() for path in paths)
         self.assertEqual(baseline.REVIEWED_CORE_RECIPES, frozenset({actual}))
-        self.assertEqual(actual[-1], '80806de1992ace1d0538ed97ac67796ed5e0f85c5b769553be749f07b6d9af1e')
+        self.assertEqual(actual[-2], '0347d8d6147e71c6b5db3051620eea418158fe1137663f44d1f982bca0949bf9')
+        self.assertEqual(actual[-1], 'ea96e37d64e21719ec4f20ae81dd2a47316f037043e95b5c8c03044c6c6398ce')
         workflow_hash = hashlib.sha256((SOURCE_ROOT / baseline.WORKFLOW).read_bytes()).hexdigest()
         self.assertEqual(workflow_hash, 'e98acc7b5268361080b1e71642db9c6791dadb8a5e90d9d44258fe00f4f08a1c')
         self.assertEqual(baseline.REVIEWED_WORKFLOWS[workflow_hash], 'verified CI-core workflow')

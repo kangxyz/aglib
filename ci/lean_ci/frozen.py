@@ -21,6 +21,7 @@ import uuid
 from . import resources
 from .engine import Application, implementation_identity, implementation_sources, locked
 from .mappings import export_mappings
+from .runtime import semantic_toolchain
 from .state import TemporalInputs, digest, write_json
 
 HASH = re.compile('[0-9a-f]{64}')
@@ -234,7 +235,7 @@ def policy_loading(admitted, workspace, observations, directory):
 
 
 def execute(request_path, *, source_manifest=None, expected_source=None, state=None,
-            progress=None, outputs=None):
+            progress=None, outputs=None, verify_only=False):
     """Execute native-only selected policy; outer worker receipt remains required."""
     parent_manifest = os.environ.get('LEAN_CI_SOURCE_MANIFEST')
     parent_expected = os.environ.get('LEAN_CI_EXPECTED_SOURCE')
@@ -250,6 +251,8 @@ def execute(request_path, *, source_manifest=None, expected_source=None, state=N
     observations = TemporalInputs()
     manifest_path, manifest, request, adapter, root, package, admitted = admit(
         request_path, source_manifest, expected_source, observations)
+    if verify_only and state is None:
+        raise ValueError('Receipt-only verification requires the original --state')
     state = Path(state).resolve() if state is not None else Path(tempfile.mkdtemp(prefix='lean-ci-native-')).resolve()
     if state.is_relative_to(root):
         raise ValueError('Native request evidence must stay outside its source root')
@@ -289,22 +292,44 @@ def execute(request_path, *, source_manifest=None, expected_source=None, state=N
                     repository=str(root), implementation=request['implementation'],
                     source_files=manifest['files'], source_basis=basis)
         plan['id'] = digest(plan)
-        directory = state / 'runs' / ('native-' + plan['invocation'])
-        directory.mkdir(parents=True)
+        if verify_only:
+            path = state / 'native.json'
+            if path.is_symlink() or not path.is_file():
+                raise ValueError('Receipt-only verification requires the original regular native record')
+            record = read_observed(path, observations)
+            if (record.get('schema') != 1 or record.get('status') not in ('running', 'completed')
+                    or record.get('implementation') != request['implementation']
+                    or record.get('request_sha256') != observations.hash_file(Path(request_path).absolute())
+                    or record.get('source_basis', {}).get('content_sha256') != expected_source
+                    or record.get('source_basis', {}).get('workspace') != manifest['workspace']
+                    or not isinstance(record.get('directory'), str)
+                    or not isinstance(record.get('toolchain'), dict)):
+                raise ValueError('Retained native record differs from the admitted request/source/implementation')
+            directory = Path(record['directory']).resolve()
+            if not directory.is_relative_to(state / 'runs') or not directory.is_dir():
+                raise ValueError('Retained native evidence escaped its invocation')
+        else:
+            directory = state / 'runs' / ('native-' + plan['invocation'])
+            directory.mkdir(parents=True)
         required = application._tasks(plan, 'native', directory)
         if any(task.get('native') is False for task in required):
             raise ValueError('Frozen native requests cannot execute source-only tasks')
         observations.assert_stable()
         toolchain = runtime.compiler_identity(observations.hash_file, cwd=package)
-        record = {'schema': 1, 'status': 'running', 'source_basis': basis,
-                  'request_sha256': observations.hash_file(Path(request_path).absolute()),
-                  'implementation': request['implementation'], 'tasks': [], 'directory': str(directory)}
-        def save(item):
-            record['tasks'].append(item)
+        if verify_only:
+            if semantic_toolchain(record['toolchain']) != semantic_toolchain(toolchain):
+                raise ValueError('Retained native compiler/runtime differs from current admission')
+        else:
+            record = {'schema': 1, 'status': 'running', 'source_basis': basis,
+                      'request_sha256': observations.hash_file(Path(request_path).absolute()),
+                      'implementation': request['implementation'], 'tasks': [],
+                      'toolchain': toolchain, 'directory': str(directory)}
+            def save(item):
+                record['tasks'].append(item)
+                write_json(state / 'native.json', record)
             write_json(state / 'native.json', record)
-        write_json(state / 'native.json', record)
-        application.run_tasks(plan, required, directory, progress, toolchain, observations,
-                              observe_toolchain=True, record_task=save)
+            application.run_tasks(plan, required, directory, progress, toolchain, observations,
+                                  observe_toolchain=True, record_task=save)
         reconstructed = application._tasks(plan, 'native', directory)
         if any(task.get('native') is False for task in reconstructed):
             raise ValueError('Frozen native requests cannot verify source-only tasks')
@@ -321,20 +346,31 @@ def execute(request_path, *, source_manifest=None, expected_source=None, state=N
                   'source_checks': 'not-executed-by-native-request; local/source coverage remains separate',
                   'outer_receipt_join': {'expected_source': expected_source,
                                          'workspace_phase_ownership': 'outer-worker-receipt-required'},
-                  'performed_checks': [item['id'] for item in checks if item['result']['mode'] == 'performed'],
-                  'reused_checks': [item['id'] for item in checks if item['result']['mode'] == 'reused'],
-                  'compiled_or_refreshed_targets': sorted({name for item in record['tasks']
-                      for name in item['result'].get('compiled_or_refreshed', ())}),
+                  'verification_only': bool(verify_only),
+                  'performed_checks': ([] if verify_only else
+                      [item['id'] for item in checks if item['result']['mode'] == 'performed']),
+                  'reused_checks': [item['id'] for item in checks
+                      if verify_only or item['result']['mode'] == 'reused'],
+                  'compiled_or_refreshed_targets': ([] if verify_only else sorted({name for item in record['tasks']
+                      for name in item['result'].get('compiled_or_refreshed', ())})),
                   'reused_build_targets': sorted({name for item in record['tasks']
-                      for name in item['result'].get('reused_build_targets', ())})}
+                      for name in [*item['result'].get('reused_build_targets', ()),
+                                   *(item['result'].get('compiled_or_refreshed', ()) if verify_only else ())]}),
+                  'execution_diagnostics': application.execution_diagnostics()}
         if outputs is not None:
             producers = [(task, item['result']) for task, item in zip(required, record['tasks']) if task.get('mapping')]
             result['mapping_groups'] = export_mappings(producers, outputs, toolchain, observations,
                                                        repository_root=root)
             write_json(outputs.with_suffix(outputs.suffix + '.coverage.json'), result)
-        observations.assert_stable()
-        record.update(status='completed', toolchain=toolchain)
-        write_json(state / 'native.json', record)
+        application.assert_verified_inputs(observations)
+        if verify_only:
+            write_json(state / 'native-verification.json',
+                       {'status': 'completed', 'original_record_sha256': observations.hash_file(state / 'native.json'),
+                        'source_basis': basis, 'toolchain': toolchain,
+                        'request_sha256': result['request_sha256']})
+        else:
+            record.update(status='completed', toolchain=toolchain)
+            write_json(state / 'native.json', record)
         write_json(state / 'native-result.json', result)
         return result
 
@@ -347,11 +383,13 @@ def main(argv=None):
     parser.add_argument('--state', type=Path)
     parser.add_argument('--progress', type=Path)
     parser.add_argument('--outputs', type=Path)
+    parser.add_argument('--verify-only', action='store_true',
+                        help='reconstruct retained native receipts without executing tasks; requires original --state')
     args = parser.parse_args(argv)
     try:
         print(json.dumps(execute(args.request, source_manifest=args.source_manifest,
                                  expected_source=args.expected_source, state=args.state,
-                                 progress=args.progress, outputs=args.outputs), indent=2))
+                                 progress=args.progress, outputs=args.outputs, verify_only=args.verify_only), indent=2))
         return 0
     except (OSError, ValueError, KeyError, TypeError, AttributeError, subprocess.SubprocessError) as error:
         print('Frozen native execution failed closed: ' + str(error), file=sys.stderr)

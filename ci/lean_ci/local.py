@@ -130,7 +130,8 @@ def check(application, state=None, requested_base=None, targets=(), progress=Non
                    'compiled_or_refreshed_targets': sorted({n for item in record['tasks']
                         for n in item['result'].get('compiled_or_refreshed', ())}),
                    'reused_build_targets': sorted({n for item in record['tasks']
-                        for n in item['result'].get('reused_build_targets', ())})}
+                        for n in item['result'].get('reused_build_targets', ())}),
+                   'execution_diagnostics': application.execution_diagnostics()}
         hook = getattr(adapter, 'local_summary', None)
         if hook:
             extra = hook(root, plan, record)
@@ -143,7 +144,7 @@ def check(application, state=None, requested_base=None, targets=(), progress=Non
             summary['mapping_groups'] = export_mappings(producers, outputs, toolchain, observations,
                     repository_root=root)
             write_json(outputs.with_suffix(outputs.suffix + '.coverage.json'), summary)
-        observations.assert_stable()
+        application.assert_verified_inputs(observations)
         record.update(status='completed', toolchain=toolchain)
         write_json(receipt_path, record)
         write_json(state / 'complete.json', summary)

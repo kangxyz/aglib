@@ -49,6 +49,10 @@ HISTORICAL_CORE_ENTRYPOINT_PATHS = (
 # trusted-producer premise; this does not authenticate arbitrary dependencies.
 # Explicit historical owner sets retain their original literal vectors. Each
 # version is admitted only at its already reviewed exact source commit.
+HISTORICAL_FULL_CORE_ENTRYPOINT_PATHS = (*HISTORICAL_CORE_ENTRYPOINT_PATHS,
+    'ci/lean_ci/execution.py', 'ci/lean_ci/local.py', 'ci/lean_ci/recipe.py',
+    'ci/lean_ci/mappings.py', 'ci/lean_ci/frozen.py')
+
 HISTORICAL_CORE_RECIPES = (
     _generic.CoreRecipeVersion(
         paths=HISTORICAL_CORE_ENTRYPOINT_PATHS,
@@ -166,15 +170,49 @@ HISTORICAL_CORE_RECIPES = (
         )}),
         heads=frozenset({'342cd1db043808e2a45ff60f6bdc728ef3058ed1'}),
     ),
+    _generic.CoreRecipeVersion(
+        paths=HISTORICAL_FULL_CORE_ENTRYPOINT_PATHS,
+        recipes=frozenset({(
+            '408ac24aef0944356d36385babca4f151c9a44c3dc7ba5bdcfbb11e7f1341ca3',  # scripts/ci_pipeline.py
+            '46bd04a0663879683fcde54386b98101610f50a405677e128fbebef8f6d04fb4',  # scripts/ci_state.py
+            'b4e645e03288f6327dd9e0f49be63ad1ea1461142304823d6067c666791cd1f4',  # scripts/affected_scope.py
+            '77236a4400e777ffa851290bbd0a18222226523ad2abf8ddd81f6d9e54c2d7a9',  # scripts/check_affected.py
+            '90a59c54d6a62d728006ea230b3200e97e605571c827b0c55acd934c0ad2044b',  # scripts/library_sources.py
+            'ec0e06f4f3a37a2fce6febef22ddc79b9fd9610c80f06b5f42897196bead2ab6',  # scripts/prepare_downstream.py
+            'b7e85596f59a2627424eeaf30a0367da1aff89ffe8ef5a2847ad2b9a3cd7f6c0',  # scripts/resource_guard.py
+            '66fdc8dc202a54d568e52fc94651a9c47789cc16009bdd069812b1c9616d0413',  # scripts/build_serial.py
+            '615ae732055d58454ffce066b9ccbb0b84786c67b55e9b6746a5b01387ade1b5',  # scripts/run_declaration_linter.py
+            '0eec427d1c94ec97cf9ef68f38e2ad3e6df372bc24138b8805c2db5ff44437ae',  # scripts/run_style_linter.py
+            'b3d3b065d741428958a7f53872d6f00aaedced80d666a3812549c7ca85b32818',  # scripts/check_negative_controls.py
+            'f092bbb6c3fcb45deb14cc74b01863f7a790cc203fff4bbc8da12f21b93fb518',  # scripts/check_compiled_inventory.py
+            '75aa6dcdbf05b8cc2e8e747371e4b822771756fc676204db6b5ce7154f15cf15',  # ci/native_test.py
+            '3868ebea3761908a46678490847815974425b323a86690885c6b7c2a3804f73d',  # ci/lean_ci/__init__.py
+            'd240a28939151c947f5cfc64a569d6e8ad8132dcd747cb61844c62fb517cc4f5',  # ci/lean_ci/__main__.py
+            'aca3ae29f06f436895af36adc6f048f70985f7b3e6305d585bed09fa0515f50b',  # ci/lean_ci/source.py
+            'cf2ad5b5bec7a106efdbcfb0148f47db2d68ce2ae6ea5dad74165654315dcdb8',  # ci/lean_ci/state.py
+            '51876eadb7d891c902b376e25c7cd4accd9653b2853f99d3df3256cfd3c22df9',  # ci/lean_ci/github.py
+            'c01c6b46c9c058a03a9e364e9df1db2c9a3dd7cfe7ff3eabbb7486dba53fbfd5',  # ci/lean_ci/engine.py
+            'c68d2ff3cbd81cd8bbd496ba51fa07ecb063933649da455f7d5eebb6f018c108',  # ci/lean_ci/runtime.py
+            '5fc841c4da719be2e10f0178633693ff5d13177422ef42257f6c03a320f709b1',  # ci/lean_ci/resources.py
+            '403052b5e19f7c77a6a689da6e649e34fd378d0c8cb3abec782e3d9eb08af0b2',  # ci/lean_ci/build.py
+            'fa977da14cde20245a029a60c737c2c9ad68c93042d6a3c688981c1e40d59a2a',  # ci/lean_ci/cli.py
+            'c18840573faee23b878f0bf12952337e22883216437da8adbe8d6f1bb7d6ae35',  # ci/lean_ci/execution.py
+            '0aa804ec79887b02d2ae98f33248c3fcbaddb68dc725c0950df48380216efe8b',  # ci/lean_ci/local.py
+            '4afc568b4c5508c3221616bba1e47521ecf1d570d8ed873a3dc1de95432d6ae3',  # ci/lean_ci/recipe.py
+            'cf55d2c89235fd128e98791fd2868e40761d01c40dbe54a2ca6eab1d502a9594',  # ci/lean_ci/mappings.py
+            '80806de1992ace1d0538ed97ac67796ed5e0f85c5b769553be749f07b6d9af1e',  # ci/lean_ci/frozen.py
+        )}),
+        heads=frozenset({'3a4d549981ced306d89d3ed55418c9e6a25f86c4'}),
+    ),
 )
 
-CORE_ENTRYPOINT_PATHS = (*HISTORICAL_CORE_ENTRYPOINT_PATHS,
-    'ci/lean_ci/execution.py', 'ci/lean_ci/local.py', 'ci/lean_ci/recipe.py',
-    'ci/lean_ci/mappings.py', 'ci/lean_ci/frozen.py')
-# Astra SOURCE PASS, 2026-10-20; exact current full owner vector.
+CORE_ENTRYPOINT_PATHS = (*HISTORICAL_FULL_CORE_ENTRYPOINT_PATHS, 'ci/lean_ci/batch.py')
+# Astra SOURCE PASS, 2026-10-21; exact current full owner vector.
+# source-review.json caa886e43465dda8917097a35a694523b997842c1a9b1d484611288d919a3a4d
+# repair-review.json 3a3de91d9aadaac09aa36ba1325b7327eed3bb37d481181b3255e957d934dc82
 # Supporting-source correctness retains the reviewed trusted-producer premise.
 REVIEWED_CORE_RECIPES = frozenset({(
-    '408ac24aef0944356d36385babca4f151c9a44c3dc7ba5bdcfbb11e7f1341ca3',  # scripts/ci_pipeline.py
+    'cc3fe9518f79afdc7ab93717844a52d977bc841131a23b7fbfcb0f94d9e10bd3',  # scripts/ci_pipeline.py
     '46bd04a0663879683fcde54386b98101610f50a405677e128fbebef8f6d04fb4',  # scripts/ci_state.py
     'b4e645e03288f6327dd9e0f49be63ad1ea1461142304823d6067c666791cd1f4',  # scripts/affected_scope.py
     '77236a4400e777ffa851290bbd0a18222226523ad2abf8ddd81f6d9e54c2d7a9',  # scripts/check_affected.py
@@ -190,18 +228,19 @@ REVIEWED_CORE_RECIPES = frozenset({(
     '3868ebea3761908a46678490847815974425b323a86690885c6b7c2a3804f73d',  # ci/lean_ci/__init__.py
     'd240a28939151c947f5cfc64a569d6e8ad8132dcd747cb61844c62fb517cc4f5',  # ci/lean_ci/__main__.py
     'aca3ae29f06f436895af36adc6f048f70985f7b3e6305d585bed09fa0515f50b',  # ci/lean_ci/source.py
-    'cf2ad5b5bec7a106efdbcfb0148f47db2d68ce2ae6ea5dad74165654315dcdb8',  # ci/lean_ci/state.py
+    '099581bb2366abc80d1e3559d7c8cc3678ce7cc6c9fe1e435011b7b245c8f5bd',  # ci/lean_ci/state.py
     '51876eadb7d891c902b376e25c7cd4accd9653b2853f99d3df3256cfd3c22df9',  # ci/lean_ci/github.py
-    'c01c6b46c9c058a03a9e364e9df1db2c9a3dd7cfe7ff3eabbb7486dba53fbfd5',  # ci/lean_ci/engine.py
-    'c68d2ff3cbd81cd8bbd496ba51fa07ecb063933649da455f7d5eebb6f018c108',  # ci/lean_ci/runtime.py
-    '5fc841c4da719be2e10f0178633693ff5d13177422ef42257f6c03a320f709b1',  # ci/lean_ci/resources.py
+    '6d69c3d5680b3daabc7b7834c9b30b5de2a6d683d438a18e5627b1d3cc0c6f77',  # ci/lean_ci/engine.py
+    '43454be372e5683a11a2dec2cb0f7a1e2084afa8ebf28191b527b8450ae9f8da',  # ci/lean_ci/runtime.py
+    '169381119ff1b7e7fb5dc18ed88ac8a1ad47ee11c589f467766fb1a2616a4338',  # ci/lean_ci/resources.py
     '403052b5e19f7c77a6a689da6e649e34fd378d0c8cb3abec782e3d9eb08af0b2',  # ci/lean_ci/build.py
     'fa977da14cde20245a029a60c737c2c9ad68c93042d6a3c688981c1e40d59a2a',  # ci/lean_ci/cli.py
-    'c18840573faee23b878f0bf12952337e22883216437da8adbe8d6f1bb7d6ae35',  # ci/lean_ci/execution.py
-    '0aa804ec79887b02d2ae98f33248c3fcbaddb68dc725c0950df48380216efe8b',  # ci/lean_ci/local.py
+    '9145cff08a97371e0b8541e6568e6fb6c6186dc6b8e72031166040d07ae6965d',  # ci/lean_ci/execution.py
+    'ea064cecb4efd86bdb1a07ecd34f7b8a9eff7b24af118a2640d430beb2ac59c5',  # ci/lean_ci/local.py
     '4afc568b4c5508c3221616bba1e47521ecf1d570d8ed873a3dc1de95432d6ae3',  # ci/lean_ci/recipe.py
     'cf55d2c89235fd128e98791fd2868e40761d01c40dbe54a2ca6eab1d502a9594',  # ci/lean_ci/mappings.py
-    '80806de1992ace1d0538ed97ac67796ed5e0f85c5b769553be749f07b6d9af1e',  # ci/lean_ci/frozen.py
+    '0347d8d6147e71c6b5db3051620eea418158fe1137663f44d1f982bca0949bf9',  # ci/lean_ci/frozen.py
+    'ea96e37d64e21719ec4f20ae81dd2a47316f037043e95b5c8c03044c6c6398ce',  # ci/lean_ci/batch.py
 )})
 
 

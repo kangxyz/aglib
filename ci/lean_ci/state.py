@@ -4,12 +4,14 @@ Callers must validate the native graph with Lake --rehash before consuming
 module identities. These records do not authorize skipping a graph validation.
 They are compatibility records, not adversarially authenticated certificates.
 """
+from contextlib import contextmanager
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
 import stat
+import time
 import uuid
 
 from .source import IDENT, MODULE, module_path
@@ -112,12 +114,13 @@ def check_binding(root, kind, modules, arguments, policy_paths, runtime_modules=
     # The content key stays None for an absent optional input across runs.
     raw = {path: (observer(root / path) if callable(observer) else
                   hash_file(root / path) if (root / path).is_file() else None) for path in paths}
-    native = {name: module_identity(root, name, hash_file) for name in sorted(set(modules))}
+    native_hash = getattr(context, 'native_hash_file', hash_file)
+    native = {name: module_identity(root, name, native_hash) for name in sorted(set(modules))}
     runtime = {}
     for name in sorted(set(runtime_modules)):
         owner = locate_module(root, name)
         runtime[name] = {'source': hash_file(owner / module_path(name)),
-                         'native': module_identity(owner, name, hash_file)}
+                         'native': module_identity(owner, name, native_hash)}
     value = {'schema': SCHEMA, 'kind': kind, 'modules': sorted(set(modules)),
             'arguments': list(arguments), 'raw_inputs': raw, 'native': native,
             'checker_runtime': runtime, 'toolchain': toolchain,
@@ -140,13 +143,16 @@ class ReflectionUnavailable(ValueError):
 
 
 class TemporalInputs:
-    """One attempt's shared content hashes and temporal filesystem observations.
+    """One guard lifetime's content hashes and temporal filesystem observations.
 
     Temporal stamps never enter compatibility keys. Ordinary present-file
     parents retain no directory timestamps; absent names require their nearest
     existing parent's timestamp to detect transient creation/removal.
     """
-    def __init__(self):
+    def __init__(self, *, hash_cache=None):
+        self.hash_cache = hash_cache if hash_cache is not None else {}
+        self._inspection_depth = 0
+        self.scan_count, self.scan_seconds = 0, 0.0
         self.files, self.missing, self.components = {}, set(), {}
         self.resolution = {}
         self.hash_count = 0
@@ -252,14 +258,47 @@ class TemporalInputs:
             if old_stamp != stamp:
                 raise InputDrift('Reflective input changed during this attempt: ' + str(path))
             return value
-        value = file_hash(path)
+        cached = self.hash_cache.get(path)
+        if cached is not None and cached[0] == stamp:
+            value = cached[1]
+        else:
+            value = file_hash(path)
+            self.hash_count += 1
         if self.stamp(path) != stamp:
             raise InputDrift('Reflective input changed while hashing: ' + str(path))
         self.files[path] = (stamp, value)
-        self.hash_count += 1
+        self.hash_cache[path] = (stamp, value)
         return value
 
+    @contextmanager
+    def inspection(self):
+        """Coalesce pure binding scans; never enclose execution or external use.
+
+        Each file access still checks its own stamp. The outer exit checks all
+        observations before a computed binding can escape to its consumer.
+        """
+        outer = self._inspection_depth == 0
+        if outer:
+            self.assert_stable()
+        self._inspection_depth += 1
+        try:
+            yield self
+        finally:
+            self._inspection_depth -= 1
+            if outer:
+                self.assert_stable()
+
     def assert_stable(self):
+        if self._inspection_depth:
+            return
+        started = time.perf_counter()
+        self.scan_count += 1
+        try:
+            self._scan_stable()
+        finally:
+            self.scan_seconds += time.perf_counter() - started
+
+    def _scan_stable(self):
         for (path, excluded), value in self.directories.items():
             if self.directory_state(path, excluded) != value:
                 raise InputDrift('Source enrollment directory changed: ' + str(path))
@@ -289,8 +328,59 @@ class TemporalInputs:
         return None
 
 
+class CheckInputs:
+    """Whole-attempt sources plus one consuming interval's native observations.
+
+    Create a fresh instance for each check and for final aggregate verification.
+    Shared hash/metadata caches are content-work optimizations, not observations.
+    """
+    def __init__(self, whole, *, hash_cache=None, metadata_cache=None):
+        self.whole = whole
+        self.native = TemporalInputs(hash_cache=hash_cache)
+        self.metadata_cache = metadata_cache if metadata_cache is not None else {}
+
+    @property
+    def hash_count(self):
+        return self.whole.hash_count + self.native.hash_count
+
+    @property
+    def scan_count(self):
+        return self.whole.scan_count + self.native.scan_count
+
+    @property
+    def scan_seconds(self):
+        return self.whole.scan_seconds + self.native.scan_seconds
+
+    def hash_file(self, path):
+        return self.whole.hash_file(path)
+
+    def optional_hash(self, path):
+        return self.whole.optional_hash(path)
+
+    def native_hash_file(self, path):
+        return self.native.hash_file(path)
+
+    def native_optional_hash(self, path):
+        return self.native.optional_hash(path)
+
+    def observe_resolution(self, path):
+        return self.native.observe_resolution(path)
+
+    def observe_directory(self, path, excluded=()):
+        return self.whole.observe_directory(path, excluded)
+
+    def assert_stable(self):
+        self.whole.assert_stable()
+        self.native.assert_stable()
+
+    @contextmanager
+    def inspection(self):
+        with self.whole.inspection(), self.native.inspection():
+            yield self
+
+
 class ReflectionGraph:
-    """Standard-Lake .ilean v5 import closure sharing one temporal observer.
+    """Standard-Lake .ilean v5 import closure with scoped native observations.
 
     Follow all explicit imports, regardless of flags. Custom ModuleSetup.imports
     overrides are outside this interface. Resolve implicit Init on the same
@@ -320,10 +410,12 @@ class ReflectionGraph:
         return self.observations.hash_count
 
     def hash_file(self, path):
-        return self.observations.hash_file(path)
+        hasher = getattr(self.observations, 'native_hash_file', self.observations.hash_file)
+        return hasher(path)
 
     def optional_hash(self, path):
-        return self.observations.optional_hash(path)
+        hasher = getattr(self.observations, 'native_optional_hash', self.observations.optional_hash)
+        return hasher(path)
 
     def assert_stable(self):
         self.observations.assert_stable()
@@ -356,8 +448,14 @@ class ReflectionGraph:
                 raise ReflectionUnavailable('Selected native namespace has no module artifact: ' + name)
             metadata_path = library / (str(relative) + '.ilean')
             metadata_hash = self.hash_file(metadata_path)
-            metadata = read_json(metadata_path)
+            metadata_cache = getattr(self.observations, 'metadata_cache', None)
+            if metadata_cache is not None and metadata_hash in metadata_cache:
+                metadata = metadata_cache[metadata_hash]
+            else:
+                metadata = read_json(metadata_path)
             self.hash_file(metadata_path)  # Parsing must observe the same file.
+            if metadata_cache is not None:
+                metadata_cache[metadata_hash] = metadata
             if (not isinstance(metadata, dict) or type(metadata.get('version')) is not int
                     or metadata['version'] != 5 or metadata.get('module') != name
                     or not isinstance(metadata.get('directImports'), list)):
@@ -388,7 +486,7 @@ class ReflectionGraph:
                 if not source.is_file():
                     raise ReflectionUnavailable('Missing native import source provenance: ' + name)
             value = {'owner': owner, 'native': native, 'metadata': metadata_hash,
-                     'source': self.hash_file(source) if source else None,
+                     'source': self.observations.hash_file(source) if source else None,
                      'imports': sorted(set(row[0] for row in imports))}
             self.nodes[name] = value
             return value
@@ -476,7 +574,8 @@ class Progress:
     def run(self, binding_function, execute, reuse=True):
         """Only compatible successes reuse; failed/stale/partial inputs rerun."""
         before = binding_function()
-        record = self.lookup(before) if reuse else None
+        eligible = reuse(before) if callable(reuse) else reuse
+        record = self.lookup(before) if eligible else None
         if record is not None:
             # Even a lookup is bounded by the same before/after input check.
             if binding_function() != before:

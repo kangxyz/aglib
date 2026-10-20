@@ -28,7 +28,7 @@ from prepare_downstream import manifest_bytes
 
 PACKAGE_SOURCES = ['ci/lean_ci/' + name + '.py' for name in
                    ('__init__', '__main__', 'source', 'state', 'github', 'engine', 'runtime', 'resources', 'build', 'cli',
-                    'execution', 'local', 'recipe', 'mappings', 'frozen')]
+                    'execution', 'local', 'recipe', 'mappings', 'frozen', 'batch')]
 # These reviewed dependencies remain bound through this existing recipe owner.
 # Historical core recipes retain their original ordered owner list.
 FIXED_AUDIT_SOURCES = {

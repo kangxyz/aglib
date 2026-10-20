@@ -210,7 +210,7 @@ def terminate_group(group, known=()):
 
 
 def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, budget=None,
-        stdout=None, stderr=None, config=None):
+        stdout=None, stderr=None, config=None, cancelled=None):
     environment = dict(os.environ if env is None else env)
     profile = remote_profile(environment, config)
     if profile is not None:
@@ -226,6 +226,8 @@ def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, b
     started = time.monotonic()
     # Probe monitoring permission before starting any potentially expensive work.
     sampler(os.getpgrp())
+    if cancelled is not None and cancelled():
+        raise InterruptedError('Native command cancelled before launch')
     child = subprocess.Popen(command, cwd=cwd, env=environment, start_new_session=True,
                              stdout=stdout, stderr=stderr)
     group = child.pid
@@ -238,6 +240,10 @@ def run(command, *, cwd=None, env=None, receipt=None, sampler=group_processes, b
                                         'command': list(command), 'limits': budget}, indent=2) + '\n')
         while True:
             members = sampler(group)
+            if cancelled is not None and cancelled():
+                reason = 'owned process group cancelled'
+                terminate_group(group, members)
+                break
             rss = sum(member['rss_bytes'] for member in members)
             peak = max(peak, rss)
             lean_members = [member for member in members

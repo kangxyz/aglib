@@ -28,10 +28,14 @@ body commands and quotations do not extend the header.
 `lean_ci.state` exports `TemporalInputs`, `ReflectionGraph`, `Progress`, native
 module identities, JSON helpers and receipt validation. One phase observer can
 hash compiler binaries, libraries, raw optional policy inputs and native module
-artifacts. Pass it as `ReflectionGraph(..., observations=observer)` to share
-hashes and temporal guards. Content compatibility keys exclude temporal stamps;
-mutation during a check, including changed-and-restored inputs, cannot create a
-success record. Missing optional names and earlier import-resolution candidates
+artifacts. The shared runner keeps source, policy and compiler/runtime guards for
+the invocation, with a separate native-artifact observer for each consuming
+check. Content compatibility keys exclude temporal stamps; mutation during a
+check, including changed-and-restored inputs, cannot create a success record.
+Cache restoration or hardlink bookkeeping between completed checks can change
+native metadata without changing their compatible content. Fresh reconstructed
+verification observes the current native closure through final publication.
+Missing optional names and earlier import-resolution candidates
 retain absence observations. A matching compilation trace alone does not prove
 that a lint or audit succeeded.
 
@@ -106,6 +110,19 @@ checks. A task with `establishes_inputs=True` invokes optional `observe_inputs`
 after deterministic setup. Optional `summary` adds coverage qualifiers, but
 cannot overwrite core completion fields. Native records require successful
 actual receipts; an adapter decides what its mathematical checks mean.
+
+`execution_diagnostics` reports measured binding, command, record-write and
+reconstruction costs, plus observed source/native scan counts and times. Operation
+times are inclusive; parallel command times are sums, so they must not be added
+to enclosing wall times. These fields are diagnostics, not coverage evidence.
+Pure binding `inspection()` coalesces nested full scans at entry/exit; individual
+file reads retain their own stamp checks. It must not enclose command execution.
+Managed cache identity normalizes invocation coordinates only after recognizing
+the canonical wrapper and its content-addressed worker/sidecar. Their producer
+hashes, Python runtime and semantic configuration remain in the key; unknown
+wrappers retain their complete identities. Physical compiler/library hashes,
+options and other search paths still bind reuse. Actual wrapper, configuration
+and resource identities remain guarded within each run.
 
 The package binds its actual executing implementation, including installed
 `site-packages` sources. The canonical content fingerprint is independent of its
@@ -296,6 +313,36 @@ hosted CI completion. Acceptance must join it to the outer worker's successful
 receipt with the same `expected_source`, workspace and owned phase command. The
 entry does not reacquire the worker's workspace lock. `--state`, `--progress`,
 and `--outputs` retain their external evidence/output roles; state is optional.
+
+If all required individual receipts exist but final sealing failed, use
+`lean-ci execute REQUEST.json --state ORIGINAL_STATE --verify-only` under a new
+owned phase. It admits the same source, request, implementation and semantic
+compiler/runtime, reconstructs every required task, and verifies retained
+receipts without executing tasks or rebuilding. Incomplete or changed coverage
+fails. The original `native.json` and failed outer receipt remain unchanged;
+`native-verification.json` records the fresh verification. Its result marks
+`verification_only`, no newly performed checks/compilation, and retained reuse.
+It still needs the matching new outer receipt and cannot finalize hosted CI.
+
+## Independent read-only check batches
+
+Adjacent native check tasks can explicitly declare a common
+`check_batch={'id': 'providers/declarations', 'jobs': 8, 'read_only': True,
+'single_process': True}`. The last field promises at most one active compiler
+per task. Local adapters select one job; remote jobs must fit the validated
+parent profile. The runtime retains that profile and its compiler admission.
+Only capped checks qualify; builds, setup, generated programs and native-output
+producers cannot join the group. Changing import environments or linter
+predicates still requires the library's accepted scope decision.
+
+The coordinator performs bindings, cache lookups, receipt verification and
+Progress writes. Only native command execution overlaps. Each compatible
+success survives a peer failure; a retry executes missing/changed items.
+Failure stops new admission and settles active checks. Interruption requests
+cancellation through each existing owned process-group monitor before returning.
+Libraries declare individual checks rather than implementing another process,
+result or retry loop. A source graph may be memoized only behind complete
+source-byte and enrollment observations for its actual parser domain.
 
 Historical GitHub CI witnesses can retain an explicitly reviewed older owner set
 through `EvidenceProtocol.historical_core_recipes`, a tuple of

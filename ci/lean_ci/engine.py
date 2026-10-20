@@ -21,12 +21,12 @@ SCHEMA = 1
 PLAN_FIELDS = {'schema', 'id', 'invocation', 'head', 'repository', 'source_files', 'required_phases', 'implementation'}
 SUMMARY_FIELDS = {'mapping_groups', 'implementation', 'schema', 'status', 'plan_id', 'head', 'baseline', 'required_phases',
                   'performed_phases', 'performed_checks', 'reused_checks',
-                  'compiled_or_refreshed_targets', 'reused_build_targets'}
+                  'compiled_or_refreshed_targets', 'reused_build_targets', 'execution_diagnostics'}
 
 
 IMPLEMENTATION_OWNERS = ('__init__.py', '__main__.py', 'build.py', 'cli.py', 'engine.py',
                          'github.py', 'resources.py', 'runtime.py', 'source.py', 'state.py',
-                         'execution.py', 'local.py', 'recipe.py', 'mappings.py', 'frozen.py')
+                         'execution.py', 'local.py', 'recipe.py', 'mappings.py', 'frozen.py', 'batch.py')
 
 
 def implementation_sources():
@@ -42,7 +42,8 @@ def implementation_identity(observations=None):
 
 
 def git(root, *arguments):
-    return subprocess.check_output(['git', *arguments], cwd=root)
+    return subprocess.check_output(['git', *arguments], cwd=root,
+                                   env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
 
 
 def source_files(root):
@@ -188,7 +189,8 @@ class Application(TaskRunner):
             observations.assert_stable()
             if observe_toolchain and self.runtime.compiler_identity(observations.hash_file, cwd=self.package_cwd) != toolchain:
                 raise ValueError('Native toolchain changed during phase execution')
-            record.update(status='completed', toolchain=toolchain)
+            record.update(status='completed', toolchain=toolchain,
+                          execution_diagnostics=self.execution_diagnostics())
             write_json(state / (phase + '.json'), record)
             return record
 
@@ -246,14 +248,15 @@ class Application(TaskRunner):
                        'compiled_or_refreshed_targets': sorted({name for item in outcomes
                            for name in item['result'].get('compiled_or_refreshed', [])}),
                        'reused_build_targets': sorted({name for item in outcomes
-                           for name in item['result'].get('reused_build_targets', [])})}
+                           for name in item['result'].get('reused_build_targets', [])}),
+                       'execution_diagnostics': self.execution_diagnostics()}
             hook = getattr(self.adapter, 'summary', None)
             if hook:
                 extra = hook(self.root, plan, records)
                 if not isinstance(extra, dict) or SUMMARY_FIELDS.intersection(extra):
                     raise ValueError('Adapter summary attempted to override core completion fields')
                 summary.update(extra)
-            observations.assert_stable()
+            self.assert_verified_inputs(observations)
             if outputs and 'native' in plan['required_phases']:
                 native = next(record for record in records if record['phase'] == 'native')
                 from .mappings import export_mappings
@@ -263,6 +266,6 @@ class Application(TaskRunner):
                 summary['mapping_groups'] = export_mappings(producers, outputs, toolchain, observations,
                     repository_root=self.root)
                 write_json(outputs.with_suffix(outputs.suffix + '.coverage.json'), summary)
-            observations.assert_stable()
+            self.assert_verified_inputs(observations)
             write_json(state / 'complete.json', summary)
             return summary
