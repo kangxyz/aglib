@@ -15,3 +15,10 @@ functors. Principal-open support is obtained by applying these same construction
 The generic [small-model interfaces](../../../../CategoryTheory/SmallModel/README.md)
 own transported functors and the abelian exact comparison. The
 [localization family](../Localization/README.md) owns the ordinary support-quotient theorem.
+
+The incoming [stalk filtration](StalkFiltration.lean),
+[finite-length](FiniteLength.lean), [closed residue](ClosedResidue.lean) and
+[finite-pushforward](FinitePushforward.lean) leaves use the actual supported
+module and its stalks. They retain the stated closed-point, Noetherian,
+dimension and finite-length hypotheses; passing to natural or integer lengths
+does not supply a missing finiteness premise.

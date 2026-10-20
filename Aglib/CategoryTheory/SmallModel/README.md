@@ -14,3 +14,10 @@ transports the ordinary Serre localization. The same [Abelian](Abelian.lean) own
 its existing exact-structure comparison with `SmallModel.abelianExactComparison`,
 `abelianExactComparison_isEquivalence` and `mapAbelianExactFunctor`, using the original
 identity and conjugated functors.
+
+[FunctorComparison](FunctorComparison.lean) adds `ExactCategory.ExactFunctor.smallModelSourceIso` for the
+native exact-functor small model. It works for the original preadditive categories
+with finite biproducts, retains `EssentiallySmall` in the specified target
+universe, and compares the source presentations through the actual chosen
+equivalence unit. The existing abelian `SmallModel.comparison` remains its own
+interface.

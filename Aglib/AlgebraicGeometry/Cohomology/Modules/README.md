@@ -76,3 +76,8 @@ sum of these original fibre dimensions. A genuine vanishing bound gives
 `moduleFiberEulerChar_eq_sum_range`; the definition uses no embedding or
 chosen model. Projective local constancy is proved by the actual universal
 model in `Cohomology.Projective.EulerCharacteristic`.
+
+[StructuralH0](StructuralH0.lean) compares the actual degree-zero cohomology
+and native sections linearly for the original structural field action. Its
+naturality and cokernel comparisons keep the original coefficient morphism;
+finite cokernel transfer retains its finite-dimensionality premise.

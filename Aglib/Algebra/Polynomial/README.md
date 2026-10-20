@@ -17,3 +17,7 @@ degree at most `n` that agree at `n + 1` consecutive integers are equal
 nonnegative or eventually negative on `ℕ`
 (`Polynomial.eventually_nonneg_or_eventually_neg`); and one value `p ≥ N` orders
 finitely many polynomials eventually (`Polynomial.exists_eval_le_imp_eventually_le`).
+
+[Evaluation](Eval/README.md) contains `Polynomial.linearInterpolate` and the
+actual pair-evaluation interfaces. Field, distinct-point and evaluation-map
+hypotheses remain as displayed in the focused leaves.

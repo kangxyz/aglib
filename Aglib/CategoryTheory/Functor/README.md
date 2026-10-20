@@ -16,3 +16,7 @@ object and morphism universes and representable-flatness hypothesis.
 and [NaturalityTransport](NaturalityTransport.lean) transport actual diagrams,
 natural automorphisms and their comparison maps through the displayed model
 functors. Their finite-etale consumers supply the required model data.
+
+[AutomorphismTransport](AutomorphismTransport.lean) gives `Functor.mapIso_conjugate` and
+`NatIso.mapAut_conjugate`, using the original functor maps, natural-isomorphism
+components and `Aut.autMulEquivOfIso`.

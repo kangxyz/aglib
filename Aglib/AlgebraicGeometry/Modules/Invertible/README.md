@@ -79,3 +79,12 @@ The cover and scheme universes remain independent. The source passed
 consumer passed `1792125406028387000-80022`, using the three standard axioms.
 
 [Locus](Locus.lean) defines `IsLocallyRankOneAt M x`: the pullback of `M` along some open immersion through `x` is locally rank one. Its locus is open, `M` is locally rank one iff the condition holds at every point, and a pullback is locally rank one when the image of the morphism lies in the locus. [Tilde](Tilde.lean) proves the converse `invertible_of_tilde_isLocallyRankOne` of `tilde_isLocallyRankOne` and the equivalence `tilde_isLocallyRankOne_iff`. Neither uses a finiteness or Noetherian hypothesis. The consumer is [relative effective Cartier divisors](../../EffectiveCartierDivisor/Relative/README.md).
+
+[DualTensorEquivalence](DualTensorEquivalence.lean) defines
+`Scheme.Modules.Invertible.lineBundleDualTensorEquivalence`: tensoring by the
+actual dual line bundle is an equivalence of the original module-sheaf category
+on every scheme, with tensoring by the original bundle as inverse. Its
+cancellation maps use the actual evaluation, associator, braiding and units.
+[Power](Power/README.md) documents coherent powers and their pullbacks;
+[FinitePresentation](FinitePresentation.lean), [Bidual](Bidual.lean) and
+[TensorFaithful](TensorFaithful.lean) retain the original line-bundle objects.

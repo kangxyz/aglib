@@ -16,3 +16,7 @@ finite over `R` when its scalars are restricted along a surjective ring map `R â
 (`Module.compHom`). Mathlib has only the submodule analogue
 `Submodule.FG.restrictScalars_of_surjective`. The
 [Fitting ideals](../FittingIdeal/README.md) along a ring isomorphism consume it.
+
+[ClosedSupport](ClosedSupport.lean) supplies the finiteness interface used by
+actual Laurent-action support and local multiplicity constructions in
+[CommutingAutomorphisms](../../Algebra/Module/CommutingAutomorphisms/README.md).

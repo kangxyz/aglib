@@ -1,0 +1,252 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.RingTheory.Localization.Away.SaturatedChart
+public import Aglib.RingTheory.PlaneNode.Basic
+public import Mathlib.Tactic.ComputeDegree
+public import Mathlib.RingTheory.Polynomial.UniqueFactorization
+
+/-!
+Source: `R5Lab.AlgebraicGeometry.Curves.LocalModels.PointedResolution.Rees.Saturated`.
+R5 packet revision: `f8a3314ddecffcada2ec721d26d56a937bed9690`.
+Source SHA-256:
+`bf99f8eb340ffcce789f25f110b61d76677137bfd562e84e59e9de288d463144`.
+The actual localization subalgebras, maps and original domain/UFD/nonzero-scalar
+conditions are retained. These algebraic calculations do not supply a global
+blowup or a geometric atlas. This leaf has no scheme-level dependency.
+-/
+
+@[expose] public section
+
+/-!
+# The power-node domain, saturated Rees chart inside a localization and injective left-chart
+coordinate map.
+
+The declarations retain their original qualified interfaces and mathematical
+inputs; the source-coverage comments below retain their original boundaries.
+-/
+
+open Polynomial
+open scoped Polynomial
+universe u
+
+section NodeDomain
+
+
+noncomputable section
+open Polynomial
+open scoped Polynomial.Bivariate
+namespace PowerNode.Rees
+variable {R : Type u} [CommRing R] [IsDomain R]
+
+lemma nodePoly_irreducible (c : R) (hc : c ≠ 0) : Irreducible (PlaneNode.poly c) := by
+  have hrel : IsRelPrime (X : R[X]) (C (-c)) :=
+    irreducible_X.isRelPrime_iff_not_dvd.mpr (by simpa [X_dvd_iff] using neg_ne_zero.mpr hc)
+  simpa [PlaneNode.poly, sub_eq_add_neg] using
+    (irreducible_C_mul_X_add_C (X_ne_zero : (X : R[X]) ≠ 0) hrel)
+
+lemma nodePoly_degree (c : R) : (PlaneNode.poly c).degree = 1 := by
+  dsimp [PlaneNode.poly]
+  compute_degree!
+
+lemma nodeU_ne_zero (c : R) : PlaneNode.U c ≠ 0 := by
+  have h := (AdjoinRoot.of.injective_of_degree_ne_zero (f := PlaneNode.poly c)
+    (by rw [nodePoly_degree]; decide)).ne (X_ne_zero : (X : R[X]) ≠ 0)
+  simpa [PlaneNode.U, AdjoinRoot.algebraMap_eq] using h
+
+lemma node_algebraMap_injective (c : R) : Function.Injective (algebraMap R (PlaneNode.Ring c)) := by
+  rw [IsScalarTower.algebraMap_eq R R[X] (PlaneNode.Ring c)]
+  exact (AdjoinRoot.of.injective_of_degree_ne_zero (by rw [nodePoly_degree]; decide)).comp
+    C_injective
+
+lemma node_isDomain [UniqueFactorizationMonoid R] (c : R) (hc : c ≠ 0) :
+    IsDomain (PlaneNode.Ring c) :=
+  AdjoinRoot.isDomain_of_prime (UniqueFactorizationMonoid.irreducible_iff_prime.mp
+    (nodePoly_irreducible c hc))
+
+lemma node_away_injective [UniqueFactorizationMonoid R] (c : R) (hc : c ≠ 0)
+    (a : PlaneNode.Ring c) (ha : a ≠ 0) :
+    Function.Injective (algebraMap (PlaneNode.Ring c) (Localization.Away a)) := by
+  let := node_isDomain c hc
+  apply IsLocalization.injective (Localization.Away a) (M := Submonoid.powers a)
+  exact Submonoid.powers_le.mpr (mem_nonZeroDivisors_iff_ne_zero.mpr ha)
+
+end PowerNode.Rees
+
+end
+end NodeDomain
+
+section SaturatedChart
+
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+namespace PowerNode.Rees
+universe v w
+variable {R : Type u} [CommRing R]
+
+
+lemma nodeLift_range_le {S : Type v} [CommRing S] [Algebra R S]
+    (c : R) (x y : S) (h : x * y = algebraMap R S c)
+    (T : Subalgebra R S) (hx : x ∈ T) (hy : y ∈ T) :
+    (PlaneNode.lift c x y h).range ≤ T := by
+  let f : PlaneNode.Ring c →ₐ[R] T := PlaneNode.lift c ⟨x, hx⟩ ⟨y, hy⟩ (Subtype.ext h)
+  have hf : T.val.comp f = PlaneNode.lift c x y h := by
+    apply PlaneNode.hom_ext <;> simp [f]
+  rintro z ⟨b, rfl⟩
+  rw [← hf]
+  exact (f b).property
+
+end PowerNode.Rees
+
+end
+end SaturatedChart
+
+section NodeChartMaps
+
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+namespace PowerNode.Rees
+variable {R : Type u} [CommRing R]
+
+abbrev node (π : R) (n : ℕ) := PlaneNode.Ring (π ^ n)
+def centerIdeal (π : R) (n : ℕ) : Ideal (node π n) :=
+  Ideal.span {PlaneNode.U (π ^ n), PlaneNode.V (π ^ n), algebraMap R _ π}
+
+/-- The actual blowdown map for the outer u-chart. -/
+def leftBase (π : R) (m : ℕ) : node π (m + 2) →ₐ[R] PlaneNode.Ring π :=
+  PlaneNode.lift _ (PlaneNode.U π) (algebraMap R _ (π ^ (m + 1)) * PlaneNode.V π) (by
+    calc
+      PlaneNode.U π * (algebraMap R _ (π ^ (m + 1)) * PlaneNode.V π) =
+          algebraMap R _ (π ^ (m + 1)) * (PlaneNode.U π * PlaneNode.V π) := by ring
+      _ = algebraMap R _ (π ^ (m + 1)) * algebraMap R _ π := by rw [PlaneNode.relation]
+      _ = algebraMap R _ (π ^ (m + 2)) := by rw [← map_mul, ← pow_succ])
+
+/-- The actual blowdown map for the middle chart. -/
+def middleBase (π : R) (m : ℕ) : node π (m + 2) →ₐ[R] node π m :=
+  PlaneNode.lift _ (algebraMap R _ π * PlaneNode.U (π ^ m))
+    (algebraMap R _ π * PlaneNode.V (π ^ m)) (by
+      calc
+        (algebraMap R _ π * PlaneNode.U (π ^ m)) *
+            (algebraMap R _ π * PlaneNode.V (π ^ m)) =
+            algebraMap R _ (π ^ 2) * (PlaneNode.U (π ^ m) * PlaneNode.V (π ^ m)) := by
+              simp only [map_pow]; ring
+        _ = algebraMap R _ (π ^ 2) * algebraMap R _ (π ^ m) := by rw [PlaneNode.relation]
+        _ = algebraMap R _ (π ^ (m + 2)) := by rw [← map_mul, ← pow_add, Nat.add_comm 2 m])
+
+abbrev leftLocalization (π : R) (m : ℕ) := Localization.Away (PlaneNode.U (π ^ (m + 2)))
+abbrev leftDenominator (π : R) (m : ℕ) : leftLocalization π m :=
+  IsLocalization.Away.invSelf (PlaneNode.U (π ^ (m + 2)))
+abbrev leftParameter (π : R) (m : ℕ) : leftLocalization π m :=
+  algebraMap R _ π * leftDenominator π m
+
+lemma leftParameter_relation (π : R) (m : ℕ) :
+    algebraMap (node π (m+2)) (leftLocalization π m) (PlaneNode.U (π^(m+2))) *
+      leftParameter π m = algebraMap R _ π := by
+  calc
+    _ = algebraMap R _ π *
+        (algebraMap (node π (m+2)) _ (PlaneNode.U (π^(m+2))) * leftDenominator π m) := by ring
+    _ = _ := by rw [IsLocalization.Away.mul_invSelf, mul_one]
+
+/-- The literal p = pi/u map into the actual u-localization. -/
+def leftToLocalization (π : R) (m : ℕ) : PlaneNode.Ring π →ₐ[R] leftLocalization π m :=
+  PlaneNode.lift π (algebraMap (node π (m+2)) _ (PlaneNode.U (π^(m+2))))
+    (leftParameter π m) (leftParameter_relation π m)
+
+@[simp] lemma leftToLocalization_u (π : R) (m : ℕ) :
+    leftToLocalization π m (PlaneNode.U π) =
+      algebraMap (node π (m+2)) _ (PlaneNode.U (π^(m+2))) := by simp [leftToLocalization]
+@[simp] lemma leftToLocalization_v (π : R) (m : ℕ) :
+    leftToLocalization π m (PlaneNode.V π) = leftParameter π m := by simp [leftToLocalization]
+
+lemma left_original_v (π : R) (m : ℕ) :
+    algebraMap (node π (m+2)) (leftLocalization π m) (PlaneNode.V (π^(m+2))) =
+      algebraMap R _ (π^(m+1)) * leftParameter π m := by
+  let U := algebraMap (node π (m+2)) (leftLocalization π m) (PlaneNode.U (π^(m+2)))
+  let V := algebraMap (node π (m+2)) (leftLocalization π m) (PlaneNode.V (π^(m+2)))
+  have huv : U * V = algebraMap R (leftLocalization π m) (π^(m+2)) := by
+    rw [← map_mul, PlaneNode.relation, ← IsScalarTower.algebraMap_apply R (node π (m+2))]
+  calc
+    _ = (U * V) * leftDenominator π m := by
+      rw [mul_right_comm, IsLocalization.Away.mul_invSelf, one_mul]
+    _ = algebraMap R _ (π^(m+2)) * leftDenominator π m := by rw [huv]
+    _ = _ := by
+      have hp : algebraMap R (leftLocalization π m) (π^(m+2)) =
+          algebraMap R _ (π^(m+1)) * algebraMap R _ π := by
+        simpa only [map_mul] using congrArg (algebraMap R (leftLocalization π m)) (pow_succ π (m+1))
+      rw [hp]
+      ring
+
+lemma left_base_triangle (π : R) (m : ℕ) :
+    (leftToLocalization π m).comp (leftBase π m) =
+      IsScalarTower.toAlgHom R (node π (m+2)) (leftLocalization π m) := by
+  apply PlaneNode.hom_ext
+  · simp [leftBase]
+  · simpa [leftBase] using (left_original_v π m).symm
+
+lemma left_ratio_v (π : R) (m : ℕ) :
+    Localization.Away.fraction (PlaneNode.U (π^(m+2))) (PlaneNode.V (π^(m+2))) =
+      algebraMap R (leftLocalization π m) (π^m) * leftParameter π m ^ 2 := by
+  rw [Localization.Away.fraction, left_original_v]
+  have hp : algebraMap R (leftLocalization π m) (π^(m+1)) =
+      algebraMap R _ (π^m) * algebraMap R _ π := by
+    simpa only [map_mul] using congrArg (algebraMap R (leftLocalization π m)) (pow_succ π m)
+  rw [hp]
+  ring
+
+/-- Map back to the outer node ring after inverting its u-coordinate. -/
+def leftLocalizationBack (π : R) (m : ℕ) :
+    leftLocalization π m →ₐ[R] Localization.Away (PlaneNode.U π) :=
+  IsLocalization.Away.liftAlgHom (PlaneNode.U (π^(m+2)))
+    (f := (IsScalarTower.toAlgHom R (PlaneNode.Ring π) _).comp (leftBase π m)) (by
+      simpa [leftBase] using
+        (IsLocalization.Away.algebraMap_isUnit (S := Localization.Away (PlaneNode.U π))
+          (PlaneNode.U π)))
+
+@[simp] lemma leftLocalizationBack_base (π : R) (m : ℕ) (z : node π (m + 2)) :
+    leftLocalizationBack π m (algebraMap (node π (m+2)) _ z) =
+      algebraMap (PlaneNode.Ring π) _ (leftBase π m z) := by
+  simp [leftLocalizationBack]
+
+lemma leftLocalizationBack_inverse (π : R) (m : ℕ) :
+    leftLocalizationBack π m (leftDenominator π m) =
+      IsLocalization.Away.invSelf (S := Localization.Away (PlaneNode.U π)) (PlaneNode.U π) := by
+  apply Localization.Away.map_invSelf_of_mul
+  simp [leftBase]
+
+lemma left_localized_retraction (π : R) (m : ℕ) :
+    (leftLocalizationBack π m).comp (leftToLocalization π m) =
+      IsScalarTower.toAlgHom R (PlaneNode.Ring π) (Localization.Away (PlaneNode.U π)) := by
+  apply PlaneNode.hom_ext
+  · simp [leftBase]
+  · simp only [AlgHom.comp_apply, leftToLocalization_v, leftParameter, map_mul,
+      AlgHom.commutes, leftLocalizationBack_inverse]
+    calc
+      _ = (algebraMap (PlaneNode.Ring π) _ (PlaneNode.U π) * algebraMap (PlaneNode.Ring π) _
+        (PlaneNode.V π)) *
+        IsLocalization.Away.invSelf (PlaneNode.U π) := by
+          rw [← map_mul, PlaneNode.relation, ← IsScalarTower.algebraMap_apply R (PlaneNode.Ring π)]
+      _ = _ := by rw [mul_right_comm, IsLocalization.Away.mul_invSelf, one_mul]; rfl
+
+lemma leftToLocalization_injective [IsDomain R] [UniqueFactorizationMonoid R]
+    (π : R) (hπ : π ≠ 0) (m : ℕ) : Function.Injective (leftToLocalization π m) := by
+  have h := node_away_injective π hπ (PlaneNode.U π) (nodeU_ne_zero π)
+  intro x y hxy
+  apply h
+  have hback := congrArg (leftLocalizationBack π m) hxy
+  change ((leftLocalizationBack π m).comp (leftToLocalization π m)) x =
+    ((leftLocalizationBack π m).comp (leftToLocalization π m)) y at hback
+  rw [left_localized_retraction] at hback
+  exact hback
+
+end PowerNode.Rees
+
+end
+end NodeChartMaps

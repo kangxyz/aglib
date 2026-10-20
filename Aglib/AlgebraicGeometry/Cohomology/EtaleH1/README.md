@@ -25,3 +25,10 @@ Generic Kan extension and extension-pushout algebra live below this family in
 `Scheme.FiniteEtale.SheafDescent`. Current consumers are the fundamental-group
 comparison endpoints and downstream finite-coefficient applications. Tate
 coefficient sheaves, elliptic and arithmetic applications are not admitted here.
+
+[FiniteEtaleRigidity](FiniteEtaleRigidity.lean) detects actual finite-coefficient
+H1 classes under fullness of the specified finite-etale pullback functor; that
+fullness and the represented-coefficient comparisons remain inputs.
+[Kummer/PowerFiber](Kummer/PowerFiber.lean) constructs the actual fibre torsor
+of a supplied power-equivariant multiplicative-torsor map. It retains positive
+level and invertibility of that level in the global sections.

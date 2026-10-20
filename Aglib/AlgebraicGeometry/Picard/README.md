@@ -101,3 +101,13 @@ The present consumer is the focused test `AglibTest.AlgebraicGeometry.Picard.Fun
 `AglibTest.AlgebraicGeometry.Picard.Interfaces` records the M0 interface probes.
 Planned consumers are the comparison and rigidification layer (plan F7), the
 representability assembly (F17) and the R5Lab `Curves.RelativePicard` retargeting.
+
+The [Relative compatibility guide](Relative/README.md) identifies the incoming
+class/group functors and their actual transition maps with the native Picard
+presheaves. Original schemes and test schemes may be arbitrary, including
+nonreduced and non-Noetherian tests. The proper-flat sheaf comparison separately
+keeps its locally Noetherian original base and geometrically integral fibres.
+The [curve representability interface](../Curves/RelativePicard/Representability.lean)
+remains an input to the prescribed-origin genus-one construction.
+[PowerRoot](PowerRoot.lean), [PowerDescent](PowerDescent.lean) and
+[FrameTorsor](FrameTorsor.lean) describe actual root, descent and frame objects.

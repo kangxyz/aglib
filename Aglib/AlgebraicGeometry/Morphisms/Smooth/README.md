@@ -29,3 +29,11 @@ The native owner is `AlgebraicGeometry.Scheme`. [Properties](Properties.lean) st
 [Charts](Charts.lean) constructs actual etale polynomial charts under the stated smooth-field hypotheses. The weaker affine etale-chart regularity and dimension results live in [Stalk/EtalePolynomial](../../Stalk/EtalePolynomial.lean); the arbitrary-scheme dimension equality lives in [Stalk/Dimension](../../Stalk/Dimension.lean). Focused imports are `Aglib.AlgebraicGeometry.Morphisms.Smooth.{Charts,Regularity,Normality,Dimension,Reduced}`. [Regular-local algebra](../../../RingTheory/RegularLocalRing/README.md), [polynomial dimension](../../../RingTheory/KrullDimension/README.md) and [actual stalk comparisons](../../Stalk/README.md) supply the lower results.
 
 [Normal component theory](../../Properties/Normal/README.md) keeps the stated component, local Noetherian and connectedness hypotheses for its own conclusions. [Smooth differential rank](../../Modules/Differentials/README.md) is supplied separately by `Scheme.Modules.Differentials.differentialSheaf_hasRank_of_smooth`; its [relative counterpart](../../Modules/Differentials/Relative/README.md) proves rank `n` for every smooth morphism of fixed relative dimension `n` over an arbitrary base. Neither theorem requires a supplied rank family. No fixed dimension-one, curve-property or DVR record is part of this family.
+
+[RegularScheme](RegularScheme.lean) proves
+`Smooth.of_regularStalks_of_perfectField` for the actual structural map to a
+perfect field: local finite type, local Noetherianity of the original scheme
+and `Scheme.RegularStalks` are the stated hypotheses. This is a regular-to-smooth
+supplier; it does not assert the remaining curve-construction inputs.
+
+[StandardEtaleChart](StandardEtaleChart.lean) supplies `Scheme.StandardSmoothEtaleChart.coordinateMap` from the native standard-smooth theorem. The chart is exactly `Spec.map` of that chosen ring map, with its original algebra-map compatibility triangle. Over a regular base ring, `regularStalks` uses the native actual-stalk etale theorem and `Scheme.regularStalks_spec`; the relative dimension, algebra structures and common universe remain explicit.

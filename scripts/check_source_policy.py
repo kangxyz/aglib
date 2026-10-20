@@ -52,9 +52,20 @@ def check_source_policy(root: Path) -> list[str]:
                     if not following.startswith(('--', '/-')):
                         errors.append(f'{relative}:{line}: local heartbeat modification needs '
                                       'an explanatory comment after in')
-        for match in re.finditer(r'\b(?:constant|unsafe\s+(?:def|opaque))\b', clean):
-            errors.append(f'{relative}:{source.count(chr(10), 0, match.start()) + 1}: '
-                          'unsupported source assumption or unsafe implementation')
+        # Qualified/quoted identifiers are whole MODULE tokens, not commands.
+        # Declaration introducers consume a name: `abbrev constant` defines an
+        # ordinary identifier, whereas `constant datum : T` is an assumption.
+        name_introducers = {'def', 'abbrev', 'theorem', 'lemma', 'opaque',
+                            'structure', 'class', 'inductive', 'constant', 'namespace'}
+        declaration_names = {index + 1 for index, match in enumerate(tokens[:-1])
+                             if match.group() in name_introducers}
+        for index, match in enumerate(tokens):
+            assumption = match.group() == 'constant' and index not in declaration_names
+            unsafe = (match.group() == 'unsafe' and index + 1 < len(tokens)
+                      and tokens[index + 1].group() in {'def', 'opaque'})
+            if assumption or unsafe:
+                errors.append(f'{relative}:{source.count(chr(10), 0, match.start()) + 1}: '
+                              'unsupported source assumption or unsafe implementation')
     return errors
 
 

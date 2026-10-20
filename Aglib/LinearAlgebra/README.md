@@ -16,3 +16,9 @@ by semilinear maps and top-degree basis/determinant comparisons over arbitrary
 commutative rings. [Dependent sums](DFinsupp/README.md) retain the native
 subtype restriction and identify it as a linear equivalence when every omitted
 fiber is subsingleton, over an arbitrary semiring.
+
+[FreeModule](FreeModule/README.md) supplies the actual ZMod torsion-module
+interfaces; [Matrix](Matrix/README.md) supplies scalar restriction matrices and
+determinants for the chosen basis. The latter is consumed by
+[FGModuleCat/ScalarMatrices](../Algebra/Category/FGModuleCat/ScalarMatrices.lean),
+with no separability hypothesis.

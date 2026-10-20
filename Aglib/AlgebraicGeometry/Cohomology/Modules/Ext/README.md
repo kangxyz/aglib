@@ -82,3 +82,10 @@ map with that unit. It applies to every module coefficient and every natural
 degree, with the original Ext/cohomology universe; no quasicoherence,
 Noetherianity or finiteness is assumed. This comparison supplies the actual
 coefficient map used by derived flat base change.
+
+[Invertible](Invertible.lean) gives
+`Scheme.Cohomology.lineBundleHomSectionsEquiv` and `lineBundleExtZeroEquivH0`
+for an actual line bundle on a field scheme. The equivalence
+`Ext⁰(L, M) ≃ₗ[K] H⁰(M tensor L.dual)` uses the original structural field
+scalar action. Its lower tensor equivalence works on arbitrary schemes in
+[DualTensorEquivalence](../../../Modules/Invertible/DualTensorEquivalence.lean).

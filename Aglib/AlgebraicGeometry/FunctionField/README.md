@@ -9,3 +9,10 @@ Source correspondence and native validation have separate evidence boundaries;
 see the [recorded checkpoints](../../../docs/WORK_PLAN.md).
 
 [Map](Map.lean) constructs actual dominant pullback and structural field constants from generic stalks and global germs, with their original naturality equations. [BaseChange](BaseChange.lean) transports that same map along field base change when the actual pullback remains integral. [GenericFiber](GenericFiber.lean) constructs the actual generic-fibre lift and proves it invertible for a finite dominant map of integral schemes, without Noetherianity, normality, separability or dimension assumptions. No second generic inclusion or finite-generic-fibre family predicate is defined.
+
+[StalkMap](StalkMap.lean) extends the existing native [Map](Map.lean) with
+`Scheme.functionFieldMap_stalk` and `Scheme.functionFieldUnitMap`. They use the
+same actual generic stalk map, require integral source/target and dominance,
+and impose no finite, smooth, Noetherian or dimension condition. The incoming
+`FunctionField.Constants` and `.BaseChange` families reuse native [Map](Map.lean) and
+[BaseChange](BaseChange.lean) directly; no second implementation or old namespace is created.

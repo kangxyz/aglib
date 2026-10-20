@@ -49,3 +49,12 @@ Galois, descent and application modules remain downstream. The isolated
 field-only finiteness and fibre/base-change equations.
 
 [GenericFiber](GenericFiber.lean) proves full faithfulness of actual generic base change on the supplied finite etale schemes over an integral scheme with integrally closed actual stalks. Its extension uses the broader [smooth-source/integral-target extension](../../FunctionField/Normalization.lean). No Noetherian or dimension hypothesis is used, and no new cover-existence claim is made. The generic finite-etale normalization construction and its separately guarded finiteness/stalk conclusions belong to [Normalization/GenericFiniteEtale](../../Normalization/GenericFiniteEtale/README.md).
+
+GenericRestriction applies the smooth-algebra generic-connectedness theorem to
+actual finite-etale covers of a normal affine domain. It proves surjectivity of
+the displayed generic pointed fibre-group map and injectivity of its continuous
+H1 restriction. The represented etale-H1 endpoint retains the Galois-category,
+fibre-functor, Ext, Stacks03AJ/03RV, finite-coefficient and equivariant-marking
+inputs. The original normalization-coefficient-specific final theorem remains
+pending the separate normalization producer assemblies; it is not part of this
+proved generic prefix.

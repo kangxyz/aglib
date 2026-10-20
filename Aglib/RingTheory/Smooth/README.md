@@ -18,3 +18,12 @@ to the actual cotangent map. The scheme consumer is the
 The etale result uses actual flat injection into the generic fibre, whose unramified field algebra is reduced. Polynomial presentation/localization gives the smooth result. No field or characteristic assumption is placed on the base domain. [Smooth scheme reducedness](../../AlgebraicGeometry/Morphisms/Smooth/Reduced.lean) is the concrete consumer.
 
 [AdicCompletion](AdicCompletion.lean), imported as `Aglib.RingTheory.Smooth.AdicCompletion`, lifts quotient-valued maps from a formally smooth algebra to a finite target algebra over a Noetherian ideal-adically complete base. It also proves surjectivity of the actual quotient tensor-base-change map on algebra homomorphisms. The [finite-module completeness input](../AdicCompletion/FiniteModule.lean) uses the given ideal and extended ideal; neither result requires a local-ring hypothesis.
+
+GenericConnectedness owns `Algebra.Smooth.generic_primeSpectrum_preconnected`
+and `generic_primeSpectrum_connected`. A connected smooth algebra over an
+integrally closed domain stays connected after extension to the supplied
+fraction field. The proof lifts generic integral elements and idempotents
+and uses the actual idempotent/clopen correspondence. The normal-domain,
+smoothness, fraction-field and connectedness conditions remain explicit on
+the main results; lower helpers use their stated weaker hypotheses. The
+consumer is finite-etale GenericRestriction.

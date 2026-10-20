@@ -19,3 +19,9 @@ agree on a specified section of a geometrically connected family.
 affine bases, proper surjective modifications finite over finite projective
 products. The separate cohomology family consumes these actual maps to prove
 proper coherent finiteness.
+
+Focused guides for [finite flat morphisms](FiniteFlat/README.md),
+[flat morphisms](Flat/README.md), [isomorphisms](IsIso/README.md) and
+[surjectivity](Surjective/README.md) document the incoming affine/stalk and
+generic-point comparisons. Rank, length and fibre-cardinality statements keep
+their displayed finite-flat, local and coefficient hypotheses.

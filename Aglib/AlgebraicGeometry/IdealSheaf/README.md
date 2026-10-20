@@ -22,3 +22,10 @@ sheaf iff every factor does), and `notMem_support_finset_prod_iff` (a point lies
 outside the support of a finite product iff it lies outside the support of
 every factor). The refined joint rank strata of the flattening stratification
 consume them.
+
+[Cartier interfaces](Cartier/README.md) and
+[closed-subscheme constructions](Closed/README.md) organize the incoming
+ideal-sheaf comparisons. [ReducedClosedUnion](Closed/ReducedClosedUnion.lean),
+[IntersectionComparison](Closed/IntersectionComparison.lean) and
+[SpecKernel](Closed/SpecKernel.lean) keep the original ideals, maps and reducedness
+hypotheses.

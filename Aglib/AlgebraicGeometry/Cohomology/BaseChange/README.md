@@ -58,3 +58,12 @@ construction and normalization statements requires flatness or Noetherianity.
 The resulting [proper base-change theorems](../DirectImage/Proper/README.md)
 retain coherent, relatively flat coefficients over a locally Noetherian base
 and allow arbitrary new base schemes.
+
+[NoetherianPushforward](NoetherianPushforward.lean) uses geometric-fibre
+concentration to produce finite local rank and invertibility of the original
+ordinary `moduleBaseChangeMap`. The original base is locally Noetherian and
+may be nonreduced; changes to a new base are arbitrary.
+[LineBundleEvaluation](LineBundleEvaluation.lean) constructs the actual
+adjunction-counit/dual-evaluation contraction. Its curve application retains
+the general Riemann–Roch, high-degree vanishing and cohomological-dimension
+inputs, together with the stated fibre genus and degree conditions.

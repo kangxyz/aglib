@@ -31,3 +31,10 @@ norm/valuation formulas. They retain their native algebraic namespaces and
 explicit finite, flat, irreducible, ramification and scalar-tower hypotheses.
 [Adic completion](AdicCompletion/README.md) and
 [finite-algebra length](FiniteLength/README.md) describe the lower interfaces.
+
+Focused incoming algebra guides are [AdjoinRoot](AdjoinRoot/README.md),
+[FiniteType](FiniteType/README.md), [Polynomial](Polynomial/README.md),
+[DiscreteValuationRing](DiscreteValuationRing/README.md) and
+[localization away from an element](Localization/Away/README.md).
+Their ring maps, chosen fraction fields, finite-type and local hypotheses remain
+explicit; the guides do not replace those inputs by geometric assumptions.

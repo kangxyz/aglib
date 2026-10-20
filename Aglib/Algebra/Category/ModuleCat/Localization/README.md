@@ -38,3 +38,11 @@ to the basic-open ring projective. The native localized-module/tensor and
 scalar-extension/tensor comparisons retain the actual module objects.
 This supplies the basic-open neighbourhood criterion for homology base
 change.
+
+[Counit](Counit.lean) uses the existing scalar-action comparison
+`ModuleCat.extendScalarsAlgebraIso`. Its localization isomorphism has the original
+`extendRestrictScalarsAdj` counit as its forward map, with the same unit-pure-tensor
+formula. `restrictThenLocalizeIso` keeps the specified coefficient homomorphism.
+[BaseChange](BaseChange.lean) supplies the natural isomorphism between literal tensor scalar
+extension and the actual localized-module functor over an arbitrary commutative
+base ring. Both leaves reuse the existing native scalar/tensor models.

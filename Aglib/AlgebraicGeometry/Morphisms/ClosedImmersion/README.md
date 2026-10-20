@@ -1,4 +1,4 @@
-# Noetherianity of closed sources
+# Closed immersions and source stalks
 
 [Noetherian](Noetherian.lean), imported as `Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.Noetherian`, proves that the source of an actual closed immersion is locally Noetherian when the target is, and Noetherian when the target is. The local and global hypotheses are separate statements; no regular-immersion or finite-dimensional assumption is added.
 
@@ -7,3 +7,10 @@ The actual geometric source/property transport supplies the scheme hypotheses us
 The Noetherian source lemmas depend directly on native Mathlib Noetherian and closed-immersion theory, below the module-sheaf direct-image construction.
 
 [Spec](Spec.lean), imported as `Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.Spec`, proves `IsClosedImmersion.surjective_of_specMap` for the actual ring map of a closed spectral morphism. No Noetherian, ideal-module or smoothness premise is added.
+
+[ComponentStalk](ComponentStalk.lean) proves
+`Scheme.Hom.ker_stalkMap_mem_minimalPrimes_of_irreducibleComponent`.
+For a closed immersion from an integral scheme whose image is an irreducible
+component, the kernel of its original stalk map is a minimal prime at every
+point of the source. The proof uses the canonical spectrum-of-stalk maps and
+generic points. Neither Noetherianity nor flatness is required.

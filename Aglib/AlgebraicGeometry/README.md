@@ -12,6 +12,8 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | [Stalk](Stalk/README.md) | Actual stalk-map, flat-base-change, polynomial, generic-fibre and dimension comparisons |
 | [Geometrically](Geometrically/README.md) | Geometric connectedness under field extension, algebraic-closure detection and proper geometrically integral constants |
 | [Group](Group/README.md) | Actual group-object pullback, canonical identity/composition and multiplicative point-fibre comparison |
+| [Curves](Curves/README.md) | Native field curves, divisors, degree, Riemann--Roch and projective-line comparisons, with explicit hypotheses and remaining representability inputs |
+| [AlgebraicSimplex](AlgebraicSimplex/README.md) | Literal coordinate quotients, face maps, field coefficient extension and finite scalar dependence |
 | [Grassmannian](Grassmannian/README.md) | Coordinate charts, overlaps and glued schemes representing the affine Grassmannian functor and its natural-transformation extension |
 | [Picard](Picard/README.md) | Relative group presheaves, normalized and rigidified comparisons, and fppf sheafification; Picard representability remains open |
 | [FunctionField](FunctionField/README.md) | Canonical generic inclusions, dominant field maps, generic-fibre isomorphisms and extension to targets integral over the base |
@@ -24,7 +26,12 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | [ProjectiveSpace](ProjectiveSpace/README.md) | Actual polynomial Proj, charts, twists, finite presentations, affine immersions, base change and chartwise Euler sequences |
 | [Cohomology](Cohomology/README.md) | Actual Zariski `Sheaf.H`, structural scalars, Cech and derived comparisons, qcqs flat base change, proper coherent finiteness, [field Hilbert polynomials](Cohomology/Projective/HilbertPolynomial/README.md), projective regularity and [relative projective duality](Cohomology/Duality/Projective/Relative/README.md) with its stated base hypotheses |
 
-Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../docs/README.md) explain their interfaces. Curve/P1/genus/degree and Quillen K/G/Q/S applications remain external.
+Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../docs/README.md) explain their interfaces. Reusable curve, projective-line, genus and degree theory is admitted by the full R5 migration; arithmetic markings, literal Tate analytic realization and Quillen K/G/Q/S applications retain downstream owners.
+
+The [closed-immersion](Morphisms/ClosedImmersion/ComponentStalk.lean) and
+[principal base-change](Stalk/PrincipalBaseChange.lean) leaves concern actual
+stalk kernels. Their component and uniformizer applications keep the literal
+closed immersion, pullback projection and structural scalar map.
 
 The Grassmannian leaves retain `BaseChangeMkQFormula`; the focused
 [formula supplier](../RingTheory/Grassmannian/BaseChangeFormula.lean) proves it

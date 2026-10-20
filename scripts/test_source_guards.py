@@ -177,8 +177,7 @@ import Mathlib.Data.Nat.Basic
                 self.rejected('Forbidden')
 
     def test_prohibited_application_families(self):
-        for name in ['Curves', 'P1', 'Genus', 'Degree', 'RiemannRoch', 'KTheory',
-                     'GTheory', 'QConstruction', 'SConstruction', 'Plus', 'Bass',
+        for name in ['KTheory', 'GTheory', 'QConstruction', 'SConstruction', 'Plus', 'Bass',
                      'Spectra']:
             with self.subTest(name=name):
                 self.write('Aglib/Algebra/A.lean',
@@ -324,6 +323,35 @@ def datum := 1
         self.assertEqual(len(errors), 1, errors)
         self.assertIn(':5: heartbeat budgets must be positive and finite', errors[0])
 
+    def test_constant_identifier_is_not_a_source_assumption(self):
+        self.write('Aglib/Algebra/A.lean', HEADER + '''
+namespace Field.DivisorData
+abbrev constant (d : Data) (a : C) : K := d.constants a
+theorem constant_one : d.constant 1 = 1 := d.map_one
+def useConstant := Field.DivisorData.constant d a
+def «constant» : Nat := 1
+def «unsafe def» : Nat := 2
+def text := "constant bad : False; unsafe opaque bad : Nat"
+/- constant bad : False /- unsafe def bad := 0 -/ -/
+end Field.DivisorData
+''')
+        self.assertEqual(check_source_policy(self.root), [])
+
+    def test_actual_constant_and_unsafe_commands_remain_rejected(self):
+        for source in [
+                'constant bad : False\n',
+                'public constant /- name -/ «quoted name» : False\n',
+                'namespace N\nprivate constant bad : False\nend N\n',
+                'constant constant : False\n',
+                'unsafe def bad : Nat := 0\n',
+                'private unsafe /- nested /- comment -/ -/ opaque «constant» : Nat := 0\n',
+                'noncomputable unsafe\ndef bad : Nat := 0\n']:
+            with self.subTest(source=source):
+                self.write('Aglib/Algebra/A.lean', HEADER + source)
+                errors = check_source_policy(self.root)
+                self.assertEqual(len(errors), 1, errors)
+                self.assertIn('unsupported source assumption or unsafe implementation', errors[0])
+
     def test_heartbeat_option_next_to_term_punctuation(self):
         for value in ['0', '400000']:
             with self.subTest(value=value):
@@ -349,15 +377,19 @@ def datum := 1
                 self.write('Aglib/Algebra/A.lean', HEADER + f'set_option {option} 0\n')
                 self.assertEqual(check_source_policy(self.root), [])
 
-    def test_canonical_degree_leaves_are_not_degree_applications(self):
-        prefix = 'Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Canonical.LocalModel'
-        for owner in ['Class', 'Insertion']:
-            with self.subTest(owner=owner):
-                self.assertFalse(forbidden_domain_import(f'{prefix}.{owner}.Degree'))
-                self.assertTrue(forbidden_domain_import(f'{prefix}.{owner}.Degree.Curves'))
-                self.assertTrue(forbidden_domain_import(f'{prefix}.{owner}.Degree.Future'))
-        for name in [f'{prefix}.Other.Degree', 'Aglib.AlgebraicGeometry.Curves.Degree',
-                     'Aglib.Other.Degree', 'Aglib.Degree.Basic']:
+    def test_reusable_curve_and_surface_geometry_is_admitted(self):
+        for name in ['Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle',
+                     'Aglib.AlgebraicGeometry.Curves.Picard.Degree',
+                     'Aglib.AlgebraicGeometry.Curves.Genus',
+                     'Aglib.AlgebraicGeometry.ProjectiveLine.Charts',
+                     'Aglib.AlgebraicGeometry.Divisors.Relative.Basic',
+                     'Aglib.AlgebraicGeometry.Stalk.FlatDVR.Component']:
+            with self.subTest(name=name):
+                self.assertFalse(forbidden_domain_import(name))
+        for name in ['R5Lab.AlgebraicGeometry.Curves.Basic',
+                     'Quillen.AlgebraicGeometry.Curves.Basic',
+                     'Aglib.AlgebraicGeometry.Curves.KTheory.Basic',
+                     'Aglib.AlgebraicGeometry.Curves.SConstruction.Basic']:
             with self.subTest(name=name):
                 self.assertTrue(forbidden_domain_import(name))
 

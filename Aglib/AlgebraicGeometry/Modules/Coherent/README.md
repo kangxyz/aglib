@@ -15,3 +15,8 @@ open-cover and overlap equations. [Extension](Extension/README.md),
 extension, the ordinary Serre quotient and its chosen small presentations. Local
 Noetherianity supplies coherent subobject extension and quotient fullness; the proved
 essential-surjectivity/localization specialization assumes `IsNoetherian X`.
+
+[StalkFinite](StalkFinite.lean) proves finite generation for the actual coherent
+stalk module and its original structure-sheaf action. Its global coherent-stalk
+statement retains `IsNoetherian X`; the affine and tilde statements retain their
+displayed ring and module hypotheses.

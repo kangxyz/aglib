@@ -31,3 +31,10 @@ finitely presented module. Ring and carrier universes remain independent.
 The proof transfers the native quotient presentation through the original
 cokernel/range-quotient isomorphism. Free-locus and Grauert arguments use
 this lower result without imposing Noetherianity.
+
+[FiniteLength.Restriction](FiniteLength/Restriction.lean) separates surjectivity of module localization at units
+from finite-length restriction along a surjective ring map. [FiniteLengthFamilies](FiniteLengthFamilies.lean)
+constructs the actual finite-support, coordinatewise finite-length Serre
+subcategory of dependent module families and its exact coordinate functors. The
+finite-support property delegates to `CategoryTheory.Pi.FiniteSupport`; no
+semisimple or residue-field category replaces the given module actions.

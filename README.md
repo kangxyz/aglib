@@ -29,8 +29,10 @@ Import a focused module, such as `Aglib.RingTheory.TensorProduct.Domain`, or use
 
 The [documentation index](docs/README.md) links the mathematical guides.
 [Scope](docs/SCOPE.md) and [interface boundaries](docs/INTERFACES.md) record coverage,
-hypotheses and conditional inputs; specialized curve and K-theory applications
-remain downstream.
+hypotheses and conditional inputs, including those of the reusable curve, degree,
+Riemann--Roch, Picard and surface interfaces. Arithmetic markings, selected
+arithmetic models, literal Tate analytic endpoints and K/G/Q/S applications remain
+downstream.
 
 Use the [development guide](docs/DEVELOPMENT.md) to select focused builds and
 applicable final checks for the changed modules and their affected consumers.

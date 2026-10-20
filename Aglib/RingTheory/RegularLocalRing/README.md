@@ -9,3 +9,7 @@
 Focused imports are `Aglib.RingTheory.RegularLocalRing.Domain`, `.Normal`, `.Parameters` and `.Etale`. [Smooth scheme regularity/normality](../../AlgebraicGeometry/Morphisms/Smooth/README.md) uses the actual ring theorems at scheme stalks. The general domain and normality endpoints impose no dimension-one hypothesis; the following leaf separately handles dimension-one and Artinian quotients.
 
 [ArtinianQuotient](ArtinianQuotient.lean), imported as `Aglib.RingTheory.RegularLocalRing.ArtinianQuotient`, supplies the existing dimension-one DVR, actual Artinian kernel-basis and regular principal-kernel results. The localized-basis supplier retains global Noetherianity; the principal-kernel regularity result retains only its stated maximal-local-ring conditions.
+
+[Localization](Localization.lean) supplies the localized regular-local-ring
+interfaces used by the operator and stalk families; their displayed regularity
+and localization hypotheses remain explicit.

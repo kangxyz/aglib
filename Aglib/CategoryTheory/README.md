@@ -11,3 +11,12 @@ The principal categorical results are preservation/transport of actual conflatio
 [Monoidal](Monoidal/README.md) adds the additive braided and symmetric structures on `Discrete M` and multiplication by a morphism out of the tensor unit, with its coherence for lax monoidal and lax braided functors. Its first consumer is the braided twisting functor of projective space.
 
 [Preadditive](Preadditive/README.md) collects coproduct facts in preadditive categories: sums of projection–inclusion composites, decomposition of morphisms out of a coproduct and zero objects of bilimits.
+
+The [Pi family](Pi/README.md) contains dependent pointwise abelian structures and the
+generic finite-object-support Serre subcategory. [PresentationColimit](PresentationColimit.lean) constructs
+functorial colimits over the actual costructured presentation category and their
+universal natural comparison; it asserts no comparison-isomorphism theorem.
+[Galois.Connected](Galois/Connected.lean) transports connected objects under equivalences.
+[Grp](Grp.lean) provides an explicit underlying-object composition formula. [Iso.Composite](Iso/Composite.lean)
+provides endpoint equality transport, while cancellation and reassociation use
+the existing Mathlib API.

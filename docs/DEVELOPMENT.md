@@ -261,6 +261,16 @@ recovery, through the existing comprehensive route.
 
 On resumption, adopt the accepted operational tool revision separately from the frozen mathematical source snapshot, recording both identities. Continue the same explicit compatible kernel-receipt lineage; adopting operational guidance alone requires no new replay. Tool changes that affect the recorded compiler/runtime or checker semantics must satisfy the checker's compatibility rules before evidence can be reused.
 
+Managed remote replay retains the admitted `R5_LEAN_REMOTE_PROFILE` wrapper and
+its `LEAN_SYSROOT` overlay for import metadata extraction and replay. The checker
+independently resolves the source `lean-toolchain` pin through Elan and requires
+the reported physical prefix and overlay library to identify that same backend.
+Managed evidence binds the backend, wrapper, profile and Elan locator. Changes
+to those inputs require compatible fresh scoped evidence. Unmanaged execution
+retains its strict executable/prefix identity check and existing closure keys.
+Keep the owned phase's wrapper and resource profile set throughout the check;
+selecting its physical backend directly would bypass the admitted resource guard.
+
 The checker captures full identities at start/end and guards exact inputs and search-resolution candidates between batches, including ctime to detect changed-and-restored files. Missing dependency source metadata prevents reuse; incomplete compiled metadata or corrupt selected evidence fails closed. Original bases, records, logs and resource profiles remain immutable; current coverage summaries reference the original evidence and distinguish reuse from fresh execution. Older receipts without dependency metadata require a new closure-bound replay. [Replay mechanics](../scripts/README.md#resource-limits-and-exact-kernel-replay) describe the evidence layout and configuration normalization.
 
 ## Incremental cache and publication

@@ -19,3 +19,13 @@ requires no module-cohomology finiteness family. The existing
 `ProperGeometricallyIntegralConstants` predicate remains defined in its historical
 [constants-input owner](../Cohomology/Finiteness/Constants.lean); the direct theorem
 is now an actual supplier.
+
+`SmoothCurve` supplies `Scheme.isDomain_stalk_of_smoothOfRelativeDimension_one`,
+`isIntegral_of_connected_of_smoothOfRelativeDimension_one` and
+`geometricallyIntegral_of_smoothOfRelativeDimension_one_of_geometricallyConnected`.
+Smooth relative dimension one over an arbitrary field gives domain stalks;
+connectedness then gives integrality. Geometric connectedness gives geometric
+integrality after arbitrary field base change. Properness, perfectness and
+characteristic restrictions are absent. The rational-point cotangent supplier
+is [RationalPoint/SmoothCurve](../RationalPoint/SmoothCurve.lean);
+principal-maximal-ideal algebra reuses the existing native `IsLocalRing` provider.

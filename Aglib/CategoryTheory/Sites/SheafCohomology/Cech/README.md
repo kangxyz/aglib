@@ -1,4 +1,29 @@
-# Generic Cech exactness and coefficient comparison
+# Generic Cech resolutions, exactness and coefficient comparison
+
+
+[CoverResolution](CoverResolution.lean), imported as
+`Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoverResolution`, constructs
+`CategoryTheory.Presheaf.Cech.resolution` from a map of set-valued presheaves:
+the degree `-n` term is the sheafification of the free abelian presheaf on
+ordered `(n + 1)`-tuples of lifts with their original target section. It requires
+no limits in the site category. The pointwise-image augmentation is a
+quasi-isomorphism for every presheaf map. For locally surjective maps in the
+stated `Type (max u v)` universe, `resolutionAugmentation_quasiIso` proves the
+augmentation to the original free target sheaf is a quasi-isomorphism.
+`degreeTwoClass` is the literal derived roof obtained by inverting this
+augmentation; an actual primitive supplies a null-homotopy and zero class.
+Sheafification and the derived-category existence hypotheses stay explicit.
+
+[CoverResolutionNaturality](CoverResolutionNaturality.lean) maps these same
+tuples and resolutions along a commuting square of presheaf maps.
+`resolutionAugmentation_naturality` retains the original augmentation and
+free target map. `resolutionTupleLift_precomp` identifies precomposition under
+the free/sheafification adjunctions, and `degreeTwoClass_precomp` identifies
+the resulting derived roofs when both maps are locally surjective.
+`resolutionMap_precomp_differential_eq` preserves literal primitives;
+`degreeTwoCocycle_nullHomotopy_precomp` pulls back actual null-homotopies.
+The alternating tuple differential and the cochain extension have the same
+signs. No natural global splitting or enough-points hypothesis is introduced.
 
 [Exactness](Exactness.lean), imported as
 `Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness`, works over an

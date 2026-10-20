@@ -8,3 +8,7 @@ cardinality, cyclicity and surjectivity hypotheses stay where required.
 The module consumes generic equivariant quotient algebra and Mathlib's native
 additive homomorphisms. Current consumers are primitive continuous characters,
 pointed finite-etale coefficient covers and finite cyclotomic characters.
+
+[CharacterFactorization](CharacterFactorization.lean) factors actual cyclic
+characters through the specified coefficient maps. Its lower reduction and
+insertion maps are documented in [Data/ZMod](../../Data/ZMod/README.md).

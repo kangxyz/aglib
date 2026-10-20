@@ -5,3 +5,9 @@
 `scalarKernelEquiv` and `scalarCokernelEquiv` transport the actual homology through compatible module equivalences. [BaseChange](BaseChange.lean) gives `scalarKernelBaseChangeEquiv` under flat scalar extension; `principalCokernelBaseChangeEquiv` requires only the commutative scalar rings and algebra structure, on an arbitrary coefficient module. Restriction equivalences require both module actions and their `IsScalarTower`.
 
 [Principal Euler](../Multiplicity/PrincipalEuler/README.md) consumes these maps after supplying finite scalar lengths where integer Euler identities need them. Its localization leaf imports the lower base-change interface directly and has no interchange/associativity dependency. The lower cokernel construction retains its exact source ranges without importing the original principal-face application.
+
+[SurjectiveSpecialization](SurjectiveSpecialization.lean) compares the actual
+local scalar cokernel with tensor specialization along a surjective structural
+map having the stated principal kernel. The extended-natural length comparison
+keeps infinity and does not require flatness; the Euler consequences separately
+retain their regularity and finiteness hypotheses.

@@ -30,3 +30,8 @@ with that of the displayed complex.
 their original signed differential and actual quotient augmentation, and the
 regular-sequence projective resolution. Its generic proofs are selected from
 the supplied Motivic library; geometric purity remains a separate consumer.
+
+[ModuleCat](ModuleCat/README.md) and
+[MultiplicationCone](MultiplicationCone/README.md) document finite module
+homology and the actual multiplication-cone quotient/transport maps. Their
+finite-length and scalar regularity conditions remain explicit.

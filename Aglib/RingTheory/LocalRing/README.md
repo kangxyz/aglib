@@ -11,3 +11,7 @@ Native owners follow the actual local/regular-local mathematical subject. These 
 [ResidueTensor](ResidueTensor.lean), imported as `Aglib.RingTheory.LocalRing.ResidueTensor`, gives closed-base-fibre Nakayama, surjectivity and finite-kernel injectivity tests over a local algebra. The original local structure-map, finite-module and quotient-flatness premises are explicit; no Noetherian assumption is introduced.
 
 [ResidueFieldComap](ResidueFieldComap.lean): for a ring map `σ : A →+* B` and `t ∈ Spec B` over `s = σ⁻¹ t`, `Ideal.ResidueField.mapComap σ t : κ(s) →+* κ(t)` is `Ideal.ResidueField.map` over `σ`; the square `A → B → κ(t)`, `A → κ(s) → κ(t)` commutes (`Ideal.ResidueField.algebraMap_comp_eq_mapComap_comp`), and `κ(s) → κ(t)` is flat (`Ideal.ResidueField.flat_mapComap`). The fibre comparison of cohomology base change (`Cohomology/BaseChange/Modules/Composite`) consumes them.
+
+[PrincipalMaximalIdeal](PrincipalMaximalIdeal.lean) is the lower native
+principal-maximal-ideal provider used by the smooth-curve stalk constructions.
+The geometric consumers keep their own field, smoothness and dimension inputs.

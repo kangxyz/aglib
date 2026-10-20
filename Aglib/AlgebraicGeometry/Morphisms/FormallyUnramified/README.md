@@ -21,3 +21,5 @@ category or a pointed model. The original R5 pointed all-test-object adapter
 remains downstream and consumes this general theorem. The isolated
 `AglibTest.UnramifiedRigidity` client checks the same weak premises and full
 scheme-map equations.
+
+[ConnectedRigidity](ConnectedRigidity.lean) adds `Scheme.Hom.eq_of_comp_eq_of_nonempty`: for a connected source, lifts through a separated, formally unramified, locally finite-type map agree if they agree after a supplied nonempty test scheme. The clopen equalizer yields equality of the actual scheme morphisms. [Immersions](Immersions.lean) proves the finite, formally unramified, universally injective closed-immersion criterion, and that a map is an open immersion when its composite with a locally finite-type formally unramified following map is an open immersion. The exact-section case uses the same criterion; universal injectivity remains explicit.

@@ -7,3 +7,9 @@ The objects remain Mathlib ideals and prime spectra. Normality/integrality suppl
 [RegularPrincipal](RegularPrincipal.lean), imported as `Aglib.RingTheory.Ideal.RegularPrincipal`, relates actual singleton ideal bases and regular principal generators over arbitrary commutative rings. Its nonzero-ideal principal-domain variant retains its domain and principal-ideal-ring hypotheses.
 
 [InvertiblePrincipal](InvertiblePrincipal.lean), imported as `Aglib.RingTheory.Ideal.InvertiblePrincipal`, proves `Ideal.isSMulRegular_of_invertible_span_singleton`: a generator of a principal ideal that is an invertible module is regular. No Noetherian or domain hypothesis is used.
+
+[CoordinateDisplacement](CoordinateDisplacement.lean) and
+[HeightOne](HeightOne.lean) supply coordinate-ideal and minimal-prime height
+interfaces. The latter is consumed by the conditional
+[FlatDVR component construction](../../AlgebraicGeometry/Stalk/FlatDVR/README.md),
+which still requires its actual special-fibre kernel input.

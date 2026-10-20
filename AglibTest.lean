@@ -21,7 +21,9 @@ import AglibTest.AdjoinRootSplitBranchEmbedding
 import AglibTest.AdjoinRootTensorBranches
 import AglibTest.AdjoinRootTowerBranch
 import AglibTest.AdjoinRootTowerBranchChange
+import AglibTest.AffineBlowup
 import AglibTest.AffineCohomology
+import AglibTest.AffineEtaleGeometry
 import AglibTest.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 import AglibTest.Algebra.Homology.CochainComplex.ProjectiveCokernel
 import AglibTest.AlgebraicGeometry.Cohomology.BaseChange.Modules.Naturality
@@ -123,6 +125,7 @@ import AglibTest.ArchivePerfectStructural
 import AglibTest.ArchiveSequentialSystemColimit
 import AglibTest.ArchiveSequentialSystemSignCorrection
 import AglibTest.AuditCoverage
+import AglibTest.BlowupNodeAlgebra
 import AglibTest.CategoryTheory.Adjunction.Unit
 import AglibTest.CategoryTheory.Limits.Shapes.WidePullbacks
 import AglibTest.CategoryTheory.Sites.Descent.Bind
@@ -132,6 +135,9 @@ import AglibTest.CategoryTheory.Sites.Descent.SiteChange
 import AglibTest.CategoryTheory.Sites.Descent.Transfer
 import AglibTest.CoefficientUnit
 import AglibTest.CompleteDVRExtension
+import AglibTest.ContinuousCohomology
+import AglibTest.CoverResolution
+import AglibTest.CurveCore
 import AglibTest.DVRCartierLength
 import AglibTest.DVRCharpolyBranchCount
 import AglibTest.DVRCharpolyResidue
@@ -141,8 +147,13 @@ import AglibTest.DVRPrimeUniformizerNorm
 import AglibTest.DVRRamificationDegree
 import AglibTest.DVRUniformizerBinomial
 import AglibTest.DVRUniformizerNorm
+import AglibTest.DenseOpenNormalization
+import AglibTest.ElementaryAlgebra
+import AglibTest.EtalePatching
+import AglibTest.EtalePatchingUnramified
 import AglibTest.ExactFunctor
 import AglibTest.FieldCharpolyPower
+import AglibTest.FieldRoots
 import AglibTest.FiniteAlgebraLength
 import AglibTest.FiniteAlgebraNormLength
 import AglibTest.FiniteCoprimeSplitting
@@ -243,9 +254,11 @@ import AglibTest.GeneralMilnorSplitPolynomialGeneration
 import AglibTest.GeneralMilnorStageLift
 import AglibTest.GeneralMilnorTupleSymbols
 import AglibTest.GeneralMilnorWeightedNormBranches
+import AglibTest.GroupBaseChange
 import AglibTest.HenselianPrincipalRoots
 import AglibTest.HenselianUniformizerNormalization
 import AglibTest.IntegralTensorCharpolyProduct
+import AglibTest.LaurentAnalysis
 import AglibTest.LocalizedDedekindBranches
 import AglibTest.MappingCone
 import AglibTest.MilnorK2
@@ -277,6 +290,8 @@ import AglibTest.MilnorK3Symbols
 import AglibTest.MilnorKDedekindResidueDirectSum
 import AglibTest.MilnorKDedekindResidueSupport
 import AglibTest.MilnorKPolynomialNormCompatibility
+import AglibTest.NormalizationInertia
+import AglibTest.NormalizationInertiaScheme
 import AglibTest.PGroupNormalSubfield
 import AglibTest.PolynomialLocalResidue
 import AglibTest.PolynomialNormDeformation
@@ -288,6 +303,7 @@ import AglibTest.PolynomialResidueBaseChange
 import AglibTest.PowerSeriesConstantClosure
 import AglibTest.PrimeNormalScalarDichotomy
 import AglibTest.RationalCoefficientRoot
+import AglibTest.RelativeCurveFoundations
 import AglibTest.ResidueMinpolyBranch
 import AglibTest.RingTheory.Binomial
 import AglibTest.RingTheory.Descent.FinitePresentation
@@ -301,12 +317,14 @@ import AglibTest.RingTheory.GenericFreeness.Localization
 import AglibTest.RingTheory.GenericFreeness.Noetherian
 import AglibTest.RingTheory.Regular.PrimeAvoidance
 import AglibTest.RingTheory.Spectrum.Prime.Bijectivity
+import AglibTest.RootGroupGeometry
 import AglibTest.SheafTensor
 import AglibTest.SylowFixedField
 import AglibTest.TensorCharpolyProduct
 import AglibTest.TensorToUnit
 import AglibTest.Topology.NoetherianSpace
 import AglibTest.UnramifiedRigidity
+import AglibTest.WeierstrassGeometry
 
 /-!
 # Aglib trust tests

@@ -19,8 +19,7 @@ TEST = 'AglibTest'
 # These are module identities, never declaration namespace restrictions.
 OLD_ROOTS = {'r5lab', 'quillen', 'essays', 'tests', 'oldtests', 'quillentest',
              'r5labtest', 'tools', 'scripts', 'audit', 'audits'}
-APPLICATION_COMPONENTS = {'curve', 'curves', 'genus', 'p1', 'projectiveline', 'degree',
-    'riemannroch', 'rr', 'ktheory', 'gtheory', 'qconstruction', 'sconstruction',
+APPLICATION_COMPONENTS = {'ktheory', 'gtheory', 'qconstruction', 'sconstruction',
     'plus', 'plusconstruction', 'bass', 'spectra', 'prespectrum', 'prespectra',
     'perfectcomplex', 'k', 'g', 'q', 's'}
 
@@ -50,18 +49,11 @@ def forbidden_domain_import(name: str) -> bool:
             [PROJECT.casefold(), 'algebra', 'homology', 'derivedcategory'],
             [PROJECT.casefold(), 'algebra', 'homology', 'homotopycategory'],
             [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'cech', 'resolution']]
-        # These two leaves transport homology/exterior degrees in regular-list
-        # purity; they do not belong to the downstream degree application family.
-        canonical_degree = part == 'degree' and index == len(parts) - 1 and parts[:index] in [
-            [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'duality',
-             'projective', 'canonical', 'localmodel', 'class'],
-            [PROJECT.casefold(), 'algebraicgeometry', 'cohomology', 'duality',
-             'projective', 'canonical', 'localmodel', 'insertion']]
         # General Milnor symbols/residues/norms have an explicit upstream owner.
         milnor_owner = (part == 'ktheory' and index == 1 and
             (parts == [PROJECT.casefold(), 'ktheory'] or
              parts[:3] == [PROJECT.casefold(), 'ktheory', 'milnork']))
-        if part in APPLICATION_COMPONENTS and not (bounded_below or canonical_degree or milnor_owner):
+        if part in APPLICATION_COMPONENTS and not (bounded_below or milnor_owner):
             return True
     return False
 

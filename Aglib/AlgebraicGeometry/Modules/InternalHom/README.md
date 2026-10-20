@@ -86,3 +86,7 @@ first factor and takes the Hom out of the second. The presheaf-level
 `InternalHom.PresheafSource.tensorHomEquiv X P Q N` keeps the second factor
 `Q` and takes the Hom out of the first factor `P`, following Mathlib's
 closed-monoidal convention `tensorLeft P ⊣ ihom P`.
+
+[HomFunctor](HomFunctor.lean) and [HomSection](HomSection.lean) expose the
+actual internal-Hom functor and section interfaces used by line-bundle and
+relative-evaluation constructions.

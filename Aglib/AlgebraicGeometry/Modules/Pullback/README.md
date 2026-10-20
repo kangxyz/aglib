@@ -11,3 +11,8 @@
 Consumers are finite-presentation/quasicoherent transport, [arbitrary vector-bundle pullback](../LocallyFree/README.md), invertible tensor pullback and cohomological base change. Exactness for all module sheaves under a flat morphism and exactness for locally split vector-bundle sequences under arbitrary morphisms are separate results.
 
 [Unit](Unit.lean), [StalkUnit](StalkUnit.lean) and [SectionStalk](SectionStalk.lean) fix the original pullback unit and its actual section/germ and stalk scalar-extension formulas. They are lower maps used by canonical projection and base-change comparisons, not additional curve/coherent interfaces.
+
+[TensorAdjunction](TensorAdjunction.lean) and [LocalBases](LocalBases.lean)
+compare the actual pullback/tensor adjunction and transported local bases.
+Their maps are the original pullback maps, with the displayed scheme and
+module hypotheses.

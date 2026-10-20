@@ -7,3 +7,8 @@
 The three length-comparison imports are `Aglib.RingTheory.Localization.LengthSurjective`, `.IteratedModuleLength` and `.LengthFlatBaseChange`. Principal scalar-homology transport and prime-filtration/local multiplicity calculations are concrete consumers. Equality of extended-natural lengths must not be replaced by an unstated finite-length conclusion.
 
 [ModulePresentation](ModulePresentation.lean), imported as `Aglib.RingTheory.Localization.ModulePresentation`, transports actual linear equivalences and cyclic presentations to principal neighbourhoods and identifies the literal localized principal ideal. It retains the source module-finiteness premise where used.
+
+[PrincipalQuotientLength](PrincipalQuotientLength.lean) owns the generic
+prime-quotient factor comparison in namespace `Module`. The source ideal may be
+arbitrary where stated, while the target ideal is prime. See also the focused
+[away-localization guide](Away/README.md).

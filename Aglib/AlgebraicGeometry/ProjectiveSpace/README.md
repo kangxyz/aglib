@@ -279,3 +279,12 @@ uses the same differential trace over separated bases and proves coherent
 duality over Noetherian separated bases. Its chosen smooth closed-embedding
 specialization retains the actual canonical isomorphism and one original
 trace; general proper duality and embedding independence remain separate.
+
+[FiniteEmbedding](FiniteEmbedding.lean) and its
+[chart data](FiniteEmbedding/ChartData.lean),
+[coefficients](FiniteEmbedding/Coefficients.lean) and
+[map](FiniteEmbedding/Map.lean) retain the actual projective embedding data.
+[PrincipalPencil](PrincipalPencil.lean) and [Reindex](Reindex.lean) supply its
+pencil and coordinate interfaces. The consumers are the
+[curve projectivity family](../Curves/README.md), whose structure maps and
+original chart arrows remain explicit.

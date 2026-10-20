@@ -14,3 +14,10 @@
 Not included: the instantiation with the Hilbert scheme (`Div` open in `Hilb`), Kleiman's Lemma 3.4 with hypotheses only at one point (including flatness of `X` derived from (i)), the pointwise criterion over non-Noetherian bases (Stacks Project, Tag 062Y (1)–(3)), and the weakening of universal closedness of `p` to closedness of `i ≫ p`.
 
 General inputs live with their owners: [Modules/Invertible/Locus](../../Modules/Invertible/Locus.lean) and [Tilde](../../Modules/Invertible/Tilde.lean), [IdealSheaf/BaseChange/OpenImmersion](../../IdealSheaf/BaseChange/OpenImmersion.lean), [Spec/ResidueField](../../Spec/ResidueField.lean), [RingTheory/Flat/PrincipalQuotient/AtPrime](../../../RingTheory/Flat/PrincipalQuotient/AtPrime.lean), [RingTheory/Regular/Localization](../../../RingTheory/Regular/Localization.lean) and [RingTheory/Ideal/InvertiblePrincipal](../../../RingTheory/Ideal/InvertiblePrincipal.lean). The focused consumer is `AglibTest.AlgebraicGeometry.EffectiveCartierDivisor.Relative`.
+
+[Graph](Graph.lean) constructs the actual section and graph isomorphism when
+the given divisor projection is an isomorphism. [GraphIdeal](GraphIdeal.lean),
+[EvaluationSection](EvaluationSection.lean) and
+[PositiveSectionUniqueness](PositiveSectionUniqueness.lean) retain the actual
+ideal and evaluation maps. The projection-isomorphism input is separate from
+this graph construction.

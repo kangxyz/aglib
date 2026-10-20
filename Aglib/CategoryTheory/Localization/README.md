@@ -33,3 +33,8 @@ equations of `Monoidal.InducingFunctorData` and of the braiding condition of
 `BraidedCategory.ofFaithful`. Objects, morphisms and isomorphisms are
 arbitrary, and the file imports only Mathlib. Its consumer is the
 [monoidal structure on scheme modules](../../AlgebraicGeometry/Modules/Tensor/Monoidal/README.md).
+
+[SerreKernel](SerreKernel.lean) supplies `CategoryTheory.Functor.isLocalization_comp_kernel` and
+transport along actual equivalences and natural isomorphisms. Composition retains
+the original exactness and kernel-Serre-localization hypotheses on both functors;
+no localization premise is discharged by renaming an arbitrary functor.

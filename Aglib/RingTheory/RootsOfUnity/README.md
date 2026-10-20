@@ -11,3 +11,13 @@ character of the actual absolute Galois group. Its chosen-root construction
 retains the supplied primitive root; the characteristic-zero, positive-level
 endpoint chooses that root and proves independence and continuity. It supplies
 the root-action comparison in the fundamental-group field family.
+
+The Galois, BaseField, PrimitiveCoordinates, Reduction, Inclusion and Exactness
+leaves use `Field.absoluteGaloisGroup.RootsOfUnity.Mu`, the additive form of the
+actual roots in the fixed algebraic closure, with their discrete continuous
+Galois action. Power reduction, literal inclusion and compatible field embeddings
+act on that same carrier. Coordinates and CyclotomicCoordinates use the existing
+finite cyclotomic character and retain characteristic zero and positive levels
+at their chosen-root endpoints; CoordinateLevels keeps actual compatible roots
+and canonical ZMod reduction. FieldEmbedding delegates to the native field
+fundamental-group root embedding. No second root module or H1 quotient is defined.

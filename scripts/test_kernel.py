@@ -14,7 +14,8 @@ import check_kernel as kernel
 
 class KernelTests(unittest.TestCase):
     def fixture(self, temporary):
-        root, prefix = Path(temporary) / 'root', Path(temporary) / 'toolchain'
+        temporary = Path(temporary).resolve()
+        root, prefix = temporary / 'root', temporary / 'toolchain'
         sources = {Path('Aglib.lean'), Path('Aglib/One.lean'), Path('AglibTest.lean')}
         for source in sources:
             (root / source).parent.mkdir(parents=True, exist_ok=True)
@@ -90,6 +91,178 @@ class KernelTests(unittest.TestCase):
                 'exit_code': -15 if reason else 0, 'guard_failure': reason, 'owned_group_gone': True})
             return code
         return fake
+
+    def managed_fixture(self, temporary, prefix):
+        temporary = Path(temporary).resolve()
+        overlay = temporary / 'managed'
+        wrapper = overlay / 'bin/lean'
+        wrapper.parent.mkdir(parents=True)
+        wrapper.write_text('parent-owned compiler wrapper')
+        wrapper.chmod(0o700)
+        (overlay / 'lib').symlink_to(prefix / 'lib', target_is_directory=True)
+        (prefix / 'bin/lean').chmod(0o700)
+        locator = temporary / 'elan/bin/elan'
+        locator.parent.mkdir(parents=True)
+        locator.write_text('pinned locator fixture')
+        profile = {'schema_version': 1, 'jobs': 3, 'threads': 2,
+                   'lean_memory_mib': 64, 'rss_limit_mib': 256, 'lean': str(wrapper)}
+        environment = {'R5_LEAN_REMOTE_PROFILE': json.dumps(profile), 'LEAN': str(wrapper),
+                       'LEAN_SYSROOT': str(overlay), 'ELAN_HOME': str(locator.parent.parent)}
+        return wrapper, locator, profile, environment
+
+    def managed_locator(self, root, prefix, wrapper, locator, backend=None):
+        def locate(command, **kwargs):
+            self.assertEqual(kwargs['cwd'], root)
+            if command == [str(wrapper), '--print-prefix']:
+                return str(prefix)
+            self.assertEqual(command, [str(locator), 'which', 'lean'])
+            self.assertEqual(kwargs['env']['ELAN_TOOLCHAIN'], (root / 'lean-toolchain').read_text().strip())
+            self.assertEqual(kwargs['env']['LEAN'], str(wrapper))
+            self.assertIn('R5_LEAN_REMOTE_PROFILE', kwargs['env'])
+            return str(backend or prefix / 'bin/lean')
+        return locate
+
+    def test_unmanaged_executable_mismatch_still_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary, patch.dict(os.environ, {}, clear=True):
+            root, prefix, _ = self.fixture(temporary)
+            wrapper = Path(temporary) / 'unmanaged-wrapper'
+            wrapper.write_text('untrusted metadata is not an admission')
+            with patch.object(kernel.subprocess, 'check_output', return_value=str(prefix)):
+                with self.assertRaisesRegex(RuntimeError, 'differs from installed pinned compiler'):
+                    kernel.installed_runtime(root, str(wrapper))
+                self.assertEqual(kernel.installed_runtime(root, str(prefix / 'bin/lean')), (prefix, None))
+
+    def test_managed_admission_requires_matching_profile_backend_and_overlay(self):
+        for failure in ['selected-executable', 'profile-executable', 'pinned-backend', 'overlay-library']:
+            with self.subTest(failure=failure), tempfile.TemporaryDirectory() as temporary:
+                root, prefix, _ = self.fixture(temporary)
+                wrapper, locator, profile, environment = self.managed_fixture(temporary, prefix)
+                other = Path(temporary) / 'other/bin/lean'
+                other.parent.mkdir(parents=True); other.write_text('different executable')
+                selected, backend = str(wrapper), None
+                if failure == 'selected-executable':
+                    selected = str(other)
+                elif failure == 'profile-executable':
+                    profile['lean'] = str(other)
+                    environment['R5_LEAN_REMOTE_PROFILE'] = json.dumps(profile)
+                elif failure == 'pinned-backend':
+                    backend = other
+                else:
+                    library = wrapper.parent.parent / 'lib'
+                    library.unlink(); library.mkdir(); (library / 'lean').mkdir()
+                with patch.dict(os.environ, environment), patch.object(kernel.subprocess, 'check_output',
+                        side_effect=self.managed_locator(root, prefix, wrapper, locator, backend)):
+                    with self.assertRaises((RuntimeError, ValueError)):
+                        kernel.installed_runtime(root, selected)
+
+    def test_managed_import_metadata_keeps_wrapper_overlay_and_resource_profile(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root, prefix, _ = self.fixture(temporary)
+            wrapper, _, profile, environment = self.managed_fixture(temporary, prefix)
+            directory = Path(temporary) / 'metadata'; directory.mkdir()
+            calls = []
+            def emit(command, **kwargs):
+                calls.append(command)
+                self.assertEqual(command[0], str(wrapper))
+                self.assertIn('-j2', command)
+                self.assertIn('-M64', command)
+                self.assertEqual(kwargs['env']['LEAN_SYSROOT'], environment['LEAN_SYSROOT'])
+                self.assertEqual(kernel.remote_profile(kwargs['env']), profile)
+                self.assertEqual(kwargs['budget']['lean_threads'], profile['threads'])
+                for name in ['Aglib.One', 'LeanChecker']:
+                    kwargs['stdout'].write('AGLIB_KERNEL_IMPORTS ' + json.dumps({
+                        'module': name, 'artifacts': [name + '.olean'], 'source': name + '.lean',
+                        'imports': []}) + '\n')
+                kernel.write_json(kwargs['receipt'], {'exit_code': 0, 'guard_failure': None,
+                                                      'owned_group_gone': True})
+                return 0
+            with patch.dict(os.environ, environment), patch.object(kernel, 'run', side_effect=emit):
+                graph = kernel.import_graph(root, prefix, str(wrapper), {}, directory, ['Aglib.One'])
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(set(graph), {'Aglib.One', 'LeanChecker'})
+
+    def test_managed_replay_binds_backend_profile_and_retains_wrapper(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root, prefix, sources = self.fixture(temporary)
+            wrapper, locator, profile, environment = self.managed_fixture(temporary, prefix)
+            directory = Path(temporary) / 'receipts'
+            driver_directory = tempfile.TemporaryDirectory
+            def scratch(*args, **kwargs):
+                # Driver creation/removal changes a shared ancestor of the
+                # source, toolchain and wrapper, outside their fixed owners.
+                return driver_directory(*args, dir=Path(temporary).resolve(), **kwargs)
+            calls = []
+            def emit(command, **kwargs):
+                calls.append(command)
+                self.assertEqual(command[0], str(wrapper))
+                self.assertIn('-j' + str(profile['threads']), command)
+                self.assertIn('-M64', command)
+                self.assertEqual(kwargs['env']['LEAN_SYSROOT'], environment['LEAN_SYSROOT'])
+                self.assertEqual(kwargs['env']['LEAN_NUM_THREADS'], str(profile['jobs']))
+                self.assertEqual(kernel.remote_profile(kwargs['env']), profile)
+                for name in kwargs['env']['AGLIB_KERNEL_MODULES'].split('\n'):
+                    kwargs['stdout'].write(f'AGLIB_KERNEL_CHECKED {name} 0\n')
+                kernel.write_json(kwargs['receipt'], {'command': command, 'limits': kwargs['budget'],
+                    'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True})
+                return 0
+            with self.patched(prefix, sources), patch.dict(os.environ, environment), \
+                    patch.object(kernel, 'lake_environment', return_value={'lean': str(wrapper)}), \
+                    patch.object(kernel.subprocess, 'check_output',
+                                 side_effect=self.managed_locator(root, prefix, wrapper, locator)), \
+                    patch.object(kernel.tempfile, 'TemporaryDirectory', side_effect=scratch), \
+                    patch.object(kernel, 'run', side_effect=emit):
+                kernel.replay(root, directory, selected=['Aglib.One'], batch_size=1)
+                basis = json.loads((directory / 'basis.json').read_text())
+                managed = basis['replay_inputs']['managed_runtime']
+                watched, _ = kernel.input_paths(root, prefix, str(wrapper), {}, False,
+                    self.metadata(root, prefix, str(wrapper), {}, directory, ['Aglib.One']),
+                    ['Aglib.One'], managed_runtime=managed)
+                self.assertIn(wrapper, watched)
+                self.assertIn(wrapper.parent, watched)
+                self.assertNotIn(Path(temporary).resolve(), watched)
+                self.assertEqual(managed['profile'], profile)
+                self.assertEqual(managed['backend_sha256'], kernel.digest(prefix / 'bin/lean'))
+                self.assertEqual(managed['wrapper_sha256'], kernel.digest(wrapper))
+                self.assertIn('toolchain:bin/lean', basis['replay_inputs']['runtime'])
+                probe = json.loads((directory / 'probe.json').read_text())
+                original = (directory / probe['module_records']['Aglib.One']).read_bytes()
+                kernel.replay(root, directory, selected=['Aglib.One'], batch_size=1)
+                self.assertEqual(len(calls), 1)
+                (prefix / 'bin/lean').write_text('changed physical backend')
+                kernel.replay(root, directory, selected=['Aglib.One'], batch_size=1)
+                self.assertEqual(len(calls), 2)
+                self.assertEqual((directory / 'module-0000.json').read_bytes(), original)
+                profile['threads'] = 1
+                os.environ['R5_LEAN_REMOTE_PROFILE'] = json.dumps(profile)
+                kernel.replay(root, directory, selected=['Aglib.One'], batch_size=1)
+                self.assertEqual(len(calls), 3)
+
+    def test_managed_runtime_drift_after_zero_exit_prevents_acceptance(self):
+        for changed in ['backend', 'wrapper', 'locator', 'profile']:
+            with self.subTest(changed=changed), tempfile.TemporaryDirectory() as temporary:
+                root, prefix, sources = self.fixture(temporary)
+                wrapper, locator, profile, environment = self.managed_fixture(temporary, prefix)
+                directory = Path(temporary) / 'receipts'
+                def mutate(command, **kwargs):
+                    kwargs['stdout'].write('AGLIB_KERNEL_CHECKED Aglib.One 0\n')
+                    kernel.write_json(kwargs['receipt'], {'command': command, 'limits': kwargs['budget'],
+                        'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True})
+                    if changed == 'profile':
+                        profile['threads'] = 1
+                        os.environ['R5_LEAN_REMOTE_PROFILE'] = json.dumps(profile)
+                    else:
+                        target = {'backend': prefix / 'bin/lean', 'wrapper': wrapper, 'locator': locator}[changed]
+                        target.write_text('changed during replay')
+                    return 0
+                with self.patched(prefix, sources), patch.dict(os.environ, environment), \
+                        patch.object(kernel, 'lake_environment', return_value={'lean': str(wrapper)}), \
+                        patch.object(kernel.subprocess, 'check_output',
+                                     side_effect=self.managed_locator(root, prefix, wrapper, locator)), \
+                        patch.object(kernel, 'run', side_effect=mutate):
+                    with self.assertRaisesRegex(RuntimeError, 'basis changed during replay'):
+                        kernel.replay(root, directory, selected=['Aglib.One'], batch_size=1)
+                self.assertFalse(list(directory.glob('module-*.json')))
+                self.assertFalse((directory / 'probe.json').exists())
 
     def test_driver_exact_tasks_join_before_markers_without_upstream_main(self):
         self.assertIn('import LeanChecker', kernel.DRIVER)

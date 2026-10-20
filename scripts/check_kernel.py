@@ -13,7 +13,7 @@ import tempfile
 from cache_key import config_hash
 from check_compiled_inventory import check_inventory
 from library_sources import audit_sources, source_modules, test_modules, module_name, module_path
-from resource_guard import run, limits
+from resource_guard import run, limits, remote_profile
 from run_style_linter import lake_environment
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -219,8 +219,50 @@ def search_paths(root, prefix, environment, source=False):
 
 
 def runtime_paths(prefix, lean):
-    return [Path(lean)] + sorted(path for path in (prefix / 'lib').rglob('*')
+    executables = [Path(lean)]
+    backend = prefix / 'bin/lean'
+    if backend.resolve() != Path(lean).resolve():
+        executables.append(backend)
+    return executables + sorted(path for path in (prefix / 'lib').rglob('*')
                                if path.is_file() and path.suffix in {'.so', '.dylib', '.dll'})
+
+
+def installed_runtime(root, lean):
+    """Admit only the default executable or the parent's pinned managed wrapper."""
+    profile = remote_profile()
+    if profile is not None and Path(lean).resolve() != Path(profile['lean']).resolve():
+        raise RuntimeError('Lake executable differs from the admitted managed compiler')
+    reported = Path(subprocess.check_output([lean, '--print-prefix'], cwd=root, text=True).strip())
+    prefix = reported.resolve()
+    backend = prefix / 'bin/lean'
+    if profile is None:
+        if Path(lean).resolve() != backend.resolve():
+            raise RuntimeError('Lake executable differs from installed pinned compiler')
+        return prefix, None
+    # Wrapper metadata alone cannot select a backend. Elan resolves the explicit
+    # source pin independently, without launching a compiler or replacing LEAN.
+    pin = (root / 'lean-toolchain').read_text().strip()
+    if not reported.is_absolute() or not pin or '\n' in pin:
+        raise RuntimeError('Managed replay requires an absolute prefix and one declared toolchain pin')
+    home = os.environ.get('ELAN_HOME')
+    locator = Path(home) / 'bin/elan' if home else None
+    if locator is None or not locator.is_file():
+        found = shutil.which('elan')
+        if found is None:
+            raise RuntimeError('Cannot locate Elan for the managed pinned compiler')
+        locator = Path(found)
+    locator = locator.resolve(strict=True)
+    located = Path(subprocess.check_output([str(locator), 'which', 'lean'], cwd=root,
+                   env=dict(os.environ, ELAN_TOOLCHAIN=pin), text=True).strip())
+    if (not located.is_absolute() or not backend.is_file() or not os.access(backend, os.X_OK)
+            or located.resolve(strict=True) != backend.resolve(strict=True)
+            or (Path(os.environ['LEAN_SYSROOT']) / 'lib/lean').resolve(strict=True)
+               != (prefix / 'lib/lean').resolve(strict=True)):
+        raise RuntimeError('Managed compiler backend differs from the declared pinned toolchain')
+    return prefix, {'profile': profile, 'backend': str(backend.resolve()),
+                    'backend_sha256': digest(backend), 'wrapper_sha256': digest(lean),
+                    'declared_toolchain': pin, 'locator': str(locator.resolve()),
+                    'locator_sha256': digest(locator)}
 
 
 def module_facets(base):
@@ -242,7 +284,7 @@ def metadata_fence(root, prefix, lean, environment):
     return {path.resolve(): file_stamp(path) for path in paths}
 
 
-def input_paths(root, prefix, lean, environment, client, graph, selected=None):
+def input_paths(root, prefix, lean, environment, client, graph, selected=None, *, managed_runtime=None):
     sources = {module_path(name) for name in selected} if selected is not None else expected_sources(root, client) | audit_sources(root)
     paths = {root / path for path in sources}
     paths.update(root / name for name in ['lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json'])
@@ -263,6 +305,10 @@ def input_paths(root, prefix, lean, environment, client, graph, selected=None):
             paths.update(search / (name + suffix) for name in namespaces
                          for suffix in ['', '.lean' if source else '.olean'])
     stops = {path.resolve() for path in roots | {root, prefix}}
+    if managed_runtime is not None:
+        # The admitted wrapper has a fixed bin owner. Its file/owner identities
+        # are inputs; shared run/log/temp ancestors are not compiler inputs.
+        stops.add(Path(lean).absolute().parent.resolve())
     for path in list(paths):
         parent = path.parent
         while parent != parent.parent:
@@ -284,14 +330,16 @@ def import_graph(root, prefix, lean, environment, directory, modules):
         number += 1
     stem = f'imports-{number:04}'
     output, resource = directory / (stem + '.log'), directory / (stem + '.resource.json')
-    budget = dict(limits(), lean_threads=1)
+    managed = remote_profile()
+    budget = limits() if managed is not None else dict(limits(), lean_threads=1)
     with tempfile.TemporaryDirectory(prefix='aglib-imports-') as temporary:
         driver = Path(temporary) / 'Imports.lean'
         driver.write_text(IMPORT_DRIVER)
-        env = dict(os.environ, **environment, LEAN_SYSROOT=str(prefix),
+        env = dict(os.environ, **environment,
+                   LEAN_SYSROOT=os.environ['LEAN_SYSROOT'] if managed is not None else str(prefix),
                    AGLIB_KERNEL_MODULES='\n'.join(sorted(set(modules) | {'LeanChecker'})))
         with output.open('x') as log:
-            code = run([lean, '-j1', '-M' + str(budget['lean_memory_mb']), str(driver)],
+            code = run([lean, '-j' + str(budget['lean_threads']), '-M' + str(budget['lean_memory_mb']), str(driver)],
                        cwd=root, env=env, receipt=resource, budget=budget,
                        stdout=log, stderr=subprocess.STDOUT)
     guard = json.loads(resource.read_text())
@@ -315,7 +363,7 @@ def import_graph(root, prefix, lean, environment, directory, modules):
     return graph
 
 
-def closure_basis(root, prefix, lean, environment, client, graph, selected=None):
+def closure_basis(root, prefix, lean, environment, client, graph, selected=None, *, managed_runtime=None):
     hashes = {}
     def once(path):
         path = Path(path).resolve()
@@ -368,6 +416,8 @@ def closure_basis(root, prefix, lean, environment, client, graph, selected=None)
                  'runtime': runtime_hashes, 'checker_closure': keys['LeanChecker'],
                  'check_one_sha256': basis['check_one_sha256'],
                  'driver_sha256': basis['driver_sha256'], 'semantics': basis['semantics']}
+    if managed_runtime is not None:
+        semantics['managed_runtime'] = managed_runtime
     basis.update(format_version=3, dependency_graph=nodes, dependency_file_hashes=files,
                  replay_inputs=semantics,
                  module_inputs={name: json_hash([semantics, keys[name]])
@@ -553,11 +603,12 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
         raise RuntimeError('Batch size must be positive and fit available logical CPUs')
     environment = dict(lake_environment(root))
     lean = environment.pop('lean')
-    prefix = Path(subprocess.check_output([lean, '--print-prefix'], text=True).strip())
-    prefix = prefix.resolve()
-    if Path(lean).resolve() != (prefix / 'bin/lean').resolve():
-        raise RuntimeError('Lake executable differs from installed pinned compiler')
+    prefix, managed = installed_runtime(root, lean)
+    managed_environment = {name: os.environ.get(name) for name in
+                           ('R5_LEAN_REMOTE_PROFILE', 'LEAN', 'LEAN_SYSROOT', 'ELAN_HOME')} if managed else None
     fence = metadata_fence(root, prefix, lean, environment)
+    if managed is not None:
+        fence[Path(managed['locator'])] = file_stamp(Path(managed['locator']))
     enrolled = sorted(module_name(path) for path in expected_sources(root, client))
     requested = [only] if only is not None else (list(selected) if selected is not None else None)
     if requested is not None and (not requested or len(set(requested)) != len(requested)
@@ -565,14 +616,18 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
         raise RuntimeError('Probe contains duplicate or unenrolled exact module')
     modules = requested if requested is not None else enrolled
     graph = import_graph(root, prefix, lean, environment, directory, modules)
-    watched, compiled = input_paths(root, prefix, lean, environment, client, graph, requested)
+    watched, compiled = input_paths(root, prefix, lean, environment, client, graph, requested,
+                                    managed_runtime=managed)
+    if managed is not None:
+        watched.add(Path(managed['locator']))
     before = drift_snapshot(watched)
     if any(before[path] != fence.get(path.resolve()) for path in watched
            if path.resolve() in fence or path in compiled):
         raise RuntimeError('Compiled metadata inputs changed during extraction')
-    basis = closure_basis(root, prefix, lean, environment, client, graph, requested)
+    basis = closure_basis(root, prefix, lean, environment, client, graph, requested, managed_runtime=managed)
     def stable():
-        if drift_snapshot(watched) != before:
+        if (drift_snapshot(watched) != before or (managed_environment is not None and
+                {name: os.environ.get(name) for name in managed_environment} != managed_environment)):
             raise RuntimeError('Source/artifact/checker/config basis changed during replay')
     stable()
     modules = basis['modules']
@@ -603,12 +658,13 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
                 attempt += 1
             number = attempt; attempt += 1
             stem = 'batch-' + str(number).zfill(4)
-            budget = dict(limits(), lean_threads=len(names))
+            budget = limits() if managed is not None else dict(limits(), lean_threads=len(names))
             env = dict(os.environ, **environment, AGLIB_KERNEL_MODULES='\n'.join(names),
-                       AGLIB_KERNEL_MAX_TASKS=str(len(names)), LEAN_NUM_THREADS=str(len(names)),
-                       LEAN_SYSROOT=str(prefix))
+                       AGLIB_KERNEL_MAX_TASKS=str(len(names)),
+                       LEAN_NUM_THREADS=str(managed['profile']['jobs'] if managed else len(names)),
+                       LEAN_SYSROOT=os.environ['LEAN_SYSROOT'] if managed else str(prefix))
             output, resource_file = directory / (stem + '.log'), directory / (stem + '.resource.json')
-            command = [lean, '-j' + str(len(names)), '-M' + str(budget['lean_memory_mb']), str(driver)]
+            command = [lean, '-j' + str(budget['lean_threads']), '-M' + str(budget['lean_memory_mb']), str(driver)]
             with output.open('x') as log:
                 code = run(command, cwd=root, env=env, receipt=resource_file,
                            budget=budget, stdout=log, stderr=subprocess.STDOUT)
@@ -651,8 +707,9 @@ def replay(root, directory, only=None, client=False, *, selected=None, batch_siz
     stable()
     final_environment = dict(lake_environment(root))
     final_lean = final_environment.pop('lean')
-    if final_lean != lean or final_environment != environment or \
-            closure_basis(root, prefix, lean, environment, client, graph, requested) != basis:
+    final_prefix, final_managed = installed_runtime(root, final_lean)
+    if final_lean != lean or final_environment != environment or final_prefix != prefix or final_managed != managed or \
+            closure_basis(root, prefix, lean, environment, client, graph, requested, managed_runtime=final_managed) != basis:
         raise RuntimeError('Source/artifact/checker/config basis changed after replay')
     stable()
     summary = {'status': 'probe passed' if only is not None or selected is not None else 'passed',

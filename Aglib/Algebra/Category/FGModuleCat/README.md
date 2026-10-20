@@ -30,3 +30,22 @@ and site constructions remain in [ModuleCat](../ModuleCat/README.md).
 The [localization family](Localization/README.md) adds arbitrary-ring essential
 surjectivity and the Noetherian torsion Serre quotient equivalence for the actual
 finite-module localization functor.
+
+[ScalarExtension](ScalarExtension.lean) defines `FGModuleCat.finiteModuleExtension` using the literal
+`ModuleCat.extendScalars` on the existing finite-module category. Its finite-limit
+and exact interfaces retain flatness and the displayed Noetherian source and
+target hypotheses. `fieldModuleExtensionExact` uses flatness over a field and
+requires no finiteness condition on that field extension.
+
+[PrincipalMultiplication](PrincipalMultiplication.lean) constructs the original multiplication/quotient short
+complex. In a Noetherian domain, a nonzero scalar gives its actual short exact
+sequence; its quotient is killed by principal localization. [ScalarAutomorphisms](ScalarAutomorphisms.lean)
+compares unit multiplication through the canonical rank-one tensor and
+localization isomorphisms. The specified scalar map and localized-unit equality
+remain explicit.
+
+[ScalarMatrices](ScalarMatrices.lean) identifies actual matrix automorphisms with the native finite
+module maps. For a finite-dimensional field algebra and a supplied basis it proves
+the restriction-of-scalars square and conjugacy using the existing
+`FiniteRestrictionScalars.moduleRestriction`. This has no separability premise.
+Its matrices and determinants come from `LinearAlgebra.Matrix.ScalarRestriction`.
