@@ -35,11 +35,15 @@ open AlgebraicGeometry.Scheme.Modules.Coherent.Support
     AlgebraicGeometry.Scheme.Modules.Coherent.Support
 variable (X : Scheme.{u}) [IsIntegral X] [IsNoetherian X]
 
+/-- The full category of coherent sheaves supported at the closed point of the specified
+codimension-one local spectrum. -/
 abbrev localSupportedCategories (x : CodimensionOnePoint X) := (localSupport X x).FullSubcategory
 
-instance localSupportedCategories_abelian : ∀ x, Abelian (localSupportedCategories X x) :=
+instance instAbelianLocalSupportedCategories : ∀ x, Abelian (localSupportedCategories X x) :=
   fun x => inferInstanceAs (Abelian (localSupport X x).FullSubcategory)
 
+/-- The exact functor taking a coherent sheaf in the support stratum to all its supported
+codimension-one stalks. -/
 def allSupportedStalks : _root_.CategoryTheory.ExactCategory.ExactFunctor
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (CohOne X))
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (∀ x : CodimensionOnePoint X,
@@ -48,6 +52,7 @@ def allSupportedStalks : _root_.CategoryTheory.ExactCategory.ExactFunctor
   additive := {map_add := by intros; funext x; exact (supportedStalk X x).toFunctor.map_add}
   map_conflation S h := shortExact_pi_of _ _ (fun x => (supportedStalk X x).map_conflation S h)
 
+/-- The exact functor assembling supported codimension-one stalks as a finitely supported family. -/
 def supportedStalkFamily : _root_.CategoryTheory.ExactCategory.ExactFunctor
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (CohOne X))
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (FiniteCategoryFamily

@@ -25,12 +25,15 @@ namespace Module.Automorphism
 
 universe u v
 
+/-- A finite projective module equipped with a linear automorphism. -/
 structure Object (R : Type u) [CommRing R] where
+  /-- The underlying finite projective module type. -/
   carrier : Type u
   [instAddCommGroup : AddCommGroup carrier]
   [instModule : Module R carrier]
   [instFinite : Module.Finite R carrier]
   [instProjective : Module.Projective R carrier]
+  /-- The distinguished linear automorphism of the module. -/
   a : carrier ≃ₗ[R] carrier
 
 attribute [instance] Object.instAddCommGroup Object.instModule
@@ -42,6 +45,7 @@ namespace Object
 
 /-- An isomorphism intertwining the automorphism. -/
 structure Iso (X Y : Object R) where
+  /-- The underlying linear equivalence intertwining the distinguished automorphisms. -/
   linearEquiv : X.carrier ≃ₗ[R] Y.carrier
   commute_a : ∀ x, linearEquiv (X.a x) = Y.a (linearEquiv x)
 

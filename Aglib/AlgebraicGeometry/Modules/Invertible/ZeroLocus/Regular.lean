@@ -150,6 +150,8 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 variable {X S : Scheme.{u}} (f : X ⟶ S) (L : LineBundle X)
 variable (φ : (show X.Modules from L.val) ⟶ (show X.Modules from SheafOfModules.unit
     X.ringCatSheaf))
+/-- The theorem-family input asserting that geometric-fibre regularity of a line-bundle map
+over a flat locally finitely presented family gives a monomorphism and a flat zero scheme. -/
 def FibrewiseRegularLineBundle : Prop :=
   ∀ (X S : Scheme.{u}) (f : X ⟶ S) (L : LineBundle X)
     (φ : (show X.Modules from L.val) ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)),
@@ -157,6 +159,7 @@ def FibrewiseRegularLineBundle : Prop :=
       Mono φ ∧ Flat (zeroInclusion φ ≫ f)
 
 variable {f}
+/-- The identification of a line bundle embedded in the unit module with its zero-scheme ideal. -/
 def zeroIdealLineBundleIso [Mono φ] : L.val ≅ idealModule (zeroInclusion φ) := by
   let := lineBundle_isLocallyFree X L
   let : L.val.IsQuasicoherent := inferInstance
@@ -165,6 +168,7 @@ def zeroIdealLineBundleIso [Mono φ] : L.val ≅ idealModule (zeroInclusion φ) 
   let e := asIso (zeroIdealFactor φ h)
   exact ⟨e.hom, e.inv, e.hom_inv_id, e.inv_hom_id⟩
 
+/-- The zero-scheme ideal as a line bundle, when the given line-bundle map is monic. -/
 def zeroIdealLineBundle [Mono φ] : LineBundle X :=
   ⟨idealModule (zeroInclusion φ), isLocallyRankOne_of_iso X (zeroIdealLineBundleIso L φ) L.property⟩
 
@@ -177,6 +181,8 @@ end AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 open AlgebraicGeometry.Scheme.Modules.Invertible
+/-- The theorem-family input asserting local quasi-finiteness and local finite presentation
+for a relative flat Cartier subscheme of a smooth relative curve. -/
 def SmoothRelativeCartierLocality : Prop :=
   ∀ (S X D : Scheme.{u}) (p : X ⟶ S) (i : D ⟶ X),
     SmoothOfRelativeDimension 1 p → IsClosedImmersion i →

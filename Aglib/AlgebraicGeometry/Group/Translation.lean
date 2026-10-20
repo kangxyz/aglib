@@ -49,7 +49,7 @@ def translation (a : 𝟙_ (Over S) ⟶ G.X) : End G.X :=
   simp [translation, MonObj.comp_mul]
 
 /-- Evaluation at the actual origin recovers the translating point. -/
-@[simp] theorem origin_translation (a : 𝟙_ (Over S) ⟶ G.X) :
+theorem origin_translation (a : 𝟙_ (Over S) ⟶ G.X) :
     η[G.X] ≫ translation a = a := by
   simp only [comp_translation, toUnit_unit, Category.id_comp]
   rw [MonObj.one_eq_one]

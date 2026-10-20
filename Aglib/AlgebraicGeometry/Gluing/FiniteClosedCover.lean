@@ -42,9 +42,14 @@ open Scheme.IdealSheafData
 variable {ι : Type v} [DecidableEq ι] {X : Scheme.{u}} {Y : ι → Scheme.{u}}
   (i : ∀ a, Y a ⟶ X) [∀ a, IsClosedImmersion (i a)] [∀ a, IsReduced (Y a)]
 
+/-- The intersection of the actual kernel ideal sheaves for the components indexed by S. -/
 def unionIdeal (S : Finset ι) : X.IdealSheafData :=
   ⨅ a : {a : ι // a ∈ S}, (i a.val).ker
+
+/-- The closed subscheme defined by the finite intersection of the component kernels. -/
 abbrev unionScheme (S : Finset ι) : Scheme.{u} := (unionIdeal i S).subscheme
+
+/-- The canonical closed-subscheme morphism from the selected finite union into X. -/
 abbrev unionMap (S : Finset ι) : unionScheme i S ⟶ X := (unionIdeal i S).subschemeι
 
 omit [DecidableEq ι] in
@@ -106,7 +111,9 @@ lemma unionMap_range (S : Finset ι) :
 omit [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)] in
 omit [DecidableEq ι] in
-@[simp] lemma unionIdeal_empty
+-- Retain reduced closed components in the finite closed-union interface; the empty indexed
+-- intersection is top independently of those component conditions.
+@[nolint unusedArguments, simp] lemma unionIdeal_empty
     [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)]
     : unionIdeal i ∅ = ⊤ := by
@@ -119,11 +126,16 @@ instance unionScheme_empty : IsEmpty (unionScheme i ∅) := by
   rw [unionIdeal_empty]
   infer_instance
 
+/-- The initial-object structure on the empty closed union, obtained from its proved
+emptiness. -/
 def emptyUnionIsInitial : IsInitial (unionScheme i ∅) := AlgebraicGeometry.isInitialOfIsEmpty
 
 omit [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)] in
 omit [DecidableEq ι] in
+-- Retain reduced closed components in the finite closed-union interface; antitonicity is an
+-- order-theoretic property of the indexed intersection.
+@[nolint unusedArguments]
 lemma unionIdeal_antitone
     [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)]
@@ -132,6 +144,7 @@ lemma unionIdeal_antitone
   intro a
   exact iInf_le_of_le ⟨a.val, h a.property⟩ le_rfl
 
+/-- The closed-subscheme inclusion of the union indexed by S into the union indexed by T. -/
 def unionInclusion {S T : Finset ι} (h : S ⊆ T) : unionScheme i S ⟶ unionScheme i T :=
   Scheme.IdealSheafData.inclusion (unionIdeal_antitone i h)
 
@@ -157,6 +170,9 @@ omit [DecidableEq ι] in
 omit [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)] in
 omit [DecidableEq ι] in
+-- Retain reduced closed components in the finite closed-union interface; this bound is the
+-- individual projection from the indexed intersection.
+@[nolint unusedArguments]
 lemma unionIdeal_le_component
     [∀ a, IsClosedImmersion (i a)]
     [∀ a, IsReduced (Y a)]
@@ -266,6 +282,8 @@ lemma fullUnionMap_isIso [IsReduced X] (S : Finset ι)
     exact hcover⟩
   exact isIso_of_isClosedImmersion_of_surjective (unionMap i S)
 
+/-- Identify a covering finite closed union with the reduced ambient scheme by its original
+inclusion. -/
 def fullUnionIso [IsReduced X] (S : Finset ι)
     (hcover : (⋃ a : {a : ι // a ∈ S}, Set.range (i a.val)) = Set.univ) :
     unionScheme i S ≅ X := by
@@ -684,7 +702,9 @@ def backward : Z ⟶ X := by
 omit [IsReduced Z]
     [∀ a, IsClosedImmersion (j a)] in
 omit [DecidableEq ι] in
-@[reassoc] lemma inclusion_forward
+-- Retain reducedness of Z and the closed target component maps for the two-sided finite-cover
+-- comparison; this forward restriction is the source descent triangle.
+@[nolint unusedArguments, reassoc] lemma inclusion_forward
     [IsReduced Z]
     [∀ a, IsClosedImmersion (j a)]
     (a : ι) (ha : a ∈ S) :
@@ -694,7 +714,9 @@ omit [DecidableEq ι] in
 omit [IsReduced X]
     [∀ a, IsClosedImmersion (i a)] in
 omit [DecidableEq ι] in
-@[reassoc] lemma inclusion_backward
+-- Retain reducedness of X and the closed source component maps for the two-sided finite-cover
+-- comparison; this backward restriction is the target descent triangle.
+@[nolint unusedArguments, reassoc] lemma inclusion_backward
     [IsReduced X]
     [∀ a, IsClosedImmersion (i a)]
     (a : ι) (ha : a ∈ S) :
@@ -753,8 +775,11 @@ omit [IsReduced X]
     [∀ a, IsClosedImmersion (j a)]
     [∀ a, IsReduced (Y a)] in
 omit [DecidableEq ι] in
+-- Retain the reduced closed-cover conditions in the comparison-over-base interface; this
+-- individual reverse base triangle follows solely by composing the component isomorphism with its
+-- inverse.
 /-- One component base triangle suffices; the reverse one is proved. -/
-@[reassoc] lemma component_inverse_over
+@[nolint unusedArguments, reassoc] lemma component_inverse_over
     [IsReduced X]
     [IsReduced Z]
     [∀ a, IsClosedImmersion (i a)]
@@ -769,7 +794,9 @@ include hbase in
 omit [IsReduced Z]
     [∀ a, IsClosedImmersion (j a)] in
 omit [DecidableEq ι] in
-@[reassoc] lemma forward_over
+-- Retain the target reduced closed-cover conditions in the isomorphism-over-base interface; this
+-- forward base triangle is proved by descent on the source cover.
+@[nolint unusedArguments, reassoc] lemma forward_over
     [IsReduced Z]
     [∀ a, IsClosedImmersion (j a)]
     :

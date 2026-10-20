@@ -101,6 +101,8 @@ theorem coordinate_fractional (V : X.Opens) [Nonempty V] (s : M.val.obj (op V)) 
   change X.ord _ x.val ≤ X.ord (X.germToFunctionField W a * _) x.val at hh
   linarith
 
+/-- The section map from a locally rank-one sheaf to the divisor sheaf determined by its chosen
+rational trivialization. -/
 def toDivisorSection (V : X.Opens) :
     M.val.obj (op V) →ₗ[Γ(X, V)] (divisorSheaf X (divisor X M U₀ e hM)).val.obj (op V) :=
   (embeddingSection X M U₀ e V).codRestrict _ (by
@@ -116,6 +118,7 @@ def toDivisorSection (V : X.Opens) :
     · change _ ∈ (fractionalPresheaf X (divisor X M U₀ e hM)).obj (op V)
       simp only [fractionalPresheaf, dite_eq_right hV, Submodule.mem_top])
 
+/-- The sheaf morphism into the divisor sheaf induced by the chosen rational trivialization. -/
 def toDivisorSheaf : M ⟶ divisorSheaf X (divisor X M U₀ e hM) where
   val := PresheafOfModulesOfCommRing.homMk (R := X.presheaf)
     (fun V => ConcreteCategory.ofHom (C := ModuleCat Γ(X, V.unop))
@@ -125,6 +128,8 @@ def toDivisorSheaf : M ⟶ divisorSheaf X (divisor X M U₀ e hM) where
       apply Subtype.ext
       exact PresheafOfModules.naturality_apply (embedding X M U₀ e).val i s)
 
+/-- The rational unit given by the coordinate of a local generator in the chosen rational
+trivialization. -/
 def generatorUnit (W : X.Opens) [Nonempty W]
     (d : M.over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W)) : X.functionFieldˣ :=
   Units.mk0 _ (coordinate_generator_ne_zero X M U₀ e hM W d)
@@ -137,6 +142,8 @@ theorem generatorUnit_order (W : X.Opens) [Nonempty W]
   rw [divisor_apply, divisorCoefficient_chart X M U₀ e hM W d x hx]
   exact add_neg_cancel _
 
+/-- The local isomorphism from the line bundle to its associated divisor sheaf on a nonempty
+trivializing open, in dimension at most one. -/
 def toDivisorLocalIso (hdim : topologicalKrullDim X ≤ 1) (W : X.Opens) [Nonempty W]
     (d : M.over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W)) :
     M.over W ≅ (divisorSheaf X (divisor X M U₀ e hM)).over W :=

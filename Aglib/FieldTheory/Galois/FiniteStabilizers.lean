@@ -26,11 +26,15 @@ namespace Field.absoluteGaloisGroup
 universe u
 variable (K : Type u) [Field K]
 
+/-- The action of the absolute Galois group on the algebraic closure by `K`-algebra
+automorphisms. -/
 local instance closureFieldAction :
     MulSemiringAction (Field.absoluteGaloisGroup K) (AlgebraicClosure K) :=
   inferInstanceAs (MulSemiringAction
     (AlgebraicClosure K ≃ₐ[K] AlgebraicClosure K) (AlgebraicClosure K))
 
+/-- The subgroup of the absolute Galois group fixing every element of the finite coefficient
+set. -/
 def fixingCoefficients (s : Finset (AlgebraicClosure K)) : Subgroup (Field.absoluteGaloisGroup K) :=
   ⨅ a ∈ s, MulAction.stabilizer (Field.absoluteGaloisGroup K) a
 

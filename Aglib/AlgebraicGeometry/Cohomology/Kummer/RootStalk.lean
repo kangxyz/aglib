@@ -65,9 +65,11 @@ open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois
 namespace GroupCohomology.Kummer.RootStalk
 universe u
 variable (K : Type u) [Field K] (n : ℕ)
+/-- The commutative group structure on the root scheme over `Spec K`. -/
 local instance : CommGrpObj (MultiplicativeGroup.rootsScheme (Spec (.of K)) n) :=
   MultiplicativeGroup.rootsCommGroup (Spec (.of K)) n
 
+/-- Geometric sections of the root group scheme as roots of unity in the algebraic closure. -/
 def sectionRootsEquiv :
     RepresentedSections (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) (Over.mk
         (geometricPoint K)) ≃+
@@ -116,10 +118,12 @@ theorem levelInvertible : IsUnit (n : Γ(Spec (.of K), ⊤)) := by
 local instance rootsEtale : Etale (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X.hom :=
   RootsFiniteEtale.rootsScheme_etale _ n (NeZero.pos n) (levelInvertible K n)
 
+/-- The geometric stalk of the `n`th-root coefficient sheaf at the algebraic-closure point. -/
 abbrev stalk := ((Scheme.pointSmallEtale (geometricPoint K)).sheafFiber
   (A := AddCommGrpCat.{u + 1})).obj (GroupCohomology.Kummer.Coefficients.mu
       (Spec (.of K)) n)
 
+/-- The additive marking of the geometric root stalk by roots of unity in the algebraic closure. -/
 def stalkMarking : stalk K n ≃+ Field.absoluteGaloisGroup.RootsOfUnity.Mu K n :=
   (representedFiberIso (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K))
       n)).addCommGroupIsoToAddEquiv.trans
@@ -163,6 +167,7 @@ local instance rootsFinite : IsFinite (MultiplicativeGroup.rootsGroupScheme (Spe
     n).X.hom :=
   RootsFiniteEtale.rootsScheme_finite _ n (NeZero.pos n)
 
+/-- The finite etale roots-of-unity scheme over a characteristic-zero field at nonzero level. -/
 def rootsCover : Scheme.FiniteEtale (Spec (.of K)) :=
   ⟨(MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X, by constructor <;> infer_instance⟩
 
@@ -181,6 +186,7 @@ theorem stalkGaloisAction_fiberAut (σ : Field.absoluteGaloisGroup K) (a : stalk
 instance stalkTopology : TopologicalSpace (stalk K n) := ⊥
 instance stalkDiscreteTopology : DiscreteTopology (stalk K n) := ⟨rfl⟩
 
+/-- The Galois action on the root stalk transported through its root-evaluation marking. -/
 local instance : DistribMulAction (Field.absoluteGaloisGroup K) (stalk K n) := stalkGaloisAction K n
 
 instance stalkContinuousSMul : ContinuousSMul (Field.absoluteGaloisGroup K) (stalk K n) where

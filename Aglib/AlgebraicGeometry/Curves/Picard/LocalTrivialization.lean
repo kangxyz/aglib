@@ -47,6 +47,8 @@ universe u
 variable (X : Scheme.{u}) [IsIntegral X] [hNoeth : IsNoetherian X]
 variable [hDVR : ∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
 
+/-- Send a regular section on a nonempty open to its rational value in the zero-divisor
+fractional module. -/
 def regularToFractionalZero (U : X.Opens) [Nonempty U] :
     Γ(X, U) →ₗ[Γ(X, U)] fractionalSections X 0 U where
   toFun a := ⟨X.germToFunctionField U a, Or.inr (by
@@ -63,6 +65,8 @@ def regularToFractionalZero (U : X.Opens) [Nonempty U] :
       X.germToFunctionField U a * X.germToFunctionField U b
     exact (X.germToFunctionField U).hom.map_mul a b
 
+/-- Identify regular sections with fractional sections of the zero divisor when the curve has
+dimension at most one. -/
 def fractionalZeroEquiv (hdim : topologicalKrullDim X ≤ 1) (U : X.Opens) [Nonempty U] :
     Γ(X, U) ≃ₗ[Γ(X, U)] fractionalSections X 0 U :=
   LinearEquiv.ofBijective (regularToFractionalZero X U) ⟨by
@@ -78,12 +82,17 @@ def fractionalZeroEquiv (hdim : topologicalKrullDim X ≤ 1) (U : X.Opens) [None
     exact ⟨a, Subtype.ext ha⟩⟩
 
 omit hDVR in
+-- Retain the DVR-stalk condition in the fractional-divisor trivialization interface; inversion
+-- here follows from the local order homomorphism.
+@[nolint unusedArguments]
 theorem order_inv [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (x : ClosedPoint X) (g : X.functionFieldˣ) :
     X.ord ((g⁻¹ : X.functionFieldˣ) : X.functionField) x.val =
       -X.ord (g : X.functionField) x.val :=
   (localOrder X x).map_neg (Additive.ofMul g)
 
+/-- Multiply fractional sections by g when its local orders carry the bound for D to the bound
+for E. -/
 def multiplyFractionalEquiv (D E : Divisor X) (U : X.Opens) [Nonempty U]
     (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + E x = D x) :
@@ -115,6 +124,7 @@ def multiplyFractionalEquiv (D E : Divisor X) (U : X.Opens) [Nonempty U]
       algebraMap Γ(X, U) X.functionField a * ((g : X.functionField) * f.val)
     exact mul_left_comm _ _ _
 
+/-- Trivialize the fractional sections of D on an open where the orders of g cancel D. -/
 def locallyPrincipalSectionsEquiv (hdim : topologicalKrullDim X ≤ 1)
     (D : Divisor X) (U : X.Opens) [Nonempty U] (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + D x = 0) :
@@ -123,6 +133,8 @@ def locallyPrincipalSectionsEquiv (hdim : topologicalKrullDim X ≤ 1)
     (multiplyFractionalEquiv X 0 D U g (by simpa using hg))
 
 
+/-- Identify sections of the constructed divisor sheaf with their literal fractional rational
+values. -/
 def explicitSheafSectionsEquiv (D : Divisor X) (U : X.Opens) [hU : Nonempty U] :
     (divisorSheaf X D).val.obj (op U) ≃ₗ[Γ(X, U)] fractionalSections X D U where
   toFun s := ⟨rationalValue X U s.val, by
@@ -143,6 +155,8 @@ def explicitSheafSectionsEquiv (D : Divisor X) (U : X.Opens) [hU : Nonempty U] :
   map_add' s t := by apply Subtype.ext; exact (rationalValue X U).map_add _ _
   map_smul' a s := by apply Subtype.ext; exact (rationalValue X U).map_smul _ _
 
+/-- The section trivialization on a nonempty open, given by multiplying regular rational
+values by g. -/
 def nonemptyTrivialization (hdim : topologicalKrullDim X ≤ 1)
     (D : Divisor X) (U : X.Opens) [Nonempty U] (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + D x = 0) :
@@ -160,6 +174,8 @@ theorem nonemptyTrivialization_value (hdim : topologicalKrullDim X ≤ 1)
     (locallyPrincipalSectionsEquiv X hdim D U g hg a)
   exact congrArg Subtype.val h
 
+/-- The regular-section trivialization determined by g, including the unique map on an empty
+open. -/
 def sectionTrivialization (hdim : topologicalKrullDim X ≤ 1)
     (D : Divisor X) (U : X.Opens) (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + D x = 0) :
@@ -217,6 +233,8 @@ theorem sectionTrivialization_naturality (hdim : topologicalKrullDim X ≤ 1)
     exact @Subsingleton.elim ((divisorSheaf X D).val.obj (op ⊥))
       (divisorSheaf_empty_subsingleton X D) _ _
 
+/-- The sheaf isomorphism on U induced by the compatible section trivializations determined by
+g. -/
 def divisorSheafLocalIso (hdim : topologicalKrullDim X ≤ 1)
     (D : Divisor X) (U : X.Opens) (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + D x = 0) :
@@ -235,6 +253,9 @@ def divisorSheafLocalIso (hdim : topologicalKrullDim X ≤ 1)
 
 
 omit hNoeth hDVR in
+-- Retain the noetherian DVR-curve conditions used by divisor-sheaf trivialization; this
+-- neighborhood is obtained directly by removing the finite closed support.
+@[nolint unusedArguments]
 theorem exists_open_divisor_zero [IsNoetherian X]
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] (D : Divisor X) (x : X)
     (hx : ∀ y : ClosedPoint X, y.val = x → D y = 0) :
@@ -319,9 +340,13 @@ theorem divisorSheaf_locallyRankOne (hdim : topologicalKrullDim X ≤ 1) (D : Di
     SheafOfModules.free.generatingSections_π]
   infer_instance
 
+/-- The divisor sheaf equipped with the proved local rank-one structure on a curve of
+dimension at most one. -/
 def divisorLineBundle (hdim : topologicalKrullDim X ≤ 1) (D : Divisor X) : LineBundle X :=
   ⟨divisorSheaf X D, divisorSheaf_locallyRankOne X hdim D⟩
 
+/-- Trivialize the divisor sheaf by a rational unit whose orders cancel D at every closed
+point. -/
 def globalTrivialization (hdim : topologicalKrullDim X ≤ 1) (D : Divisor X)
     (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, X.ord (g : X.functionField) x.val + D x = 0) :

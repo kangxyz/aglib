@@ -121,6 +121,8 @@ theorem restrict_injective (hM : IsLocallyRankOne X M) {U V : X.Opens} [Nonempty
 variable (U₀ : X.Opens) [Nonempty U₀]
 variable (e : M.over U₀ ≅ SheafOfModules.unit (X.ringCatSheaf.over U₀))
 
+/-- Evaluate a section as a rational function by restricting it to the intersection with
+the chosen trivializing open and applying the given trivialization. -/
 def coordinate (V : X.Opens) [Nonempty V] (s : M.val.obj (op V)) : X.functionField :=
   let := nonempty_inf X V U₀
   X.germToFunctionField (V ⊓ U₀)
@@ -165,6 +167,8 @@ theorem coordinate_naturality {U V : X.Opens} [Nonempty U] [Nonempty V]
   dsimp only [coordinate]
   rw [← hc, he, germ_restrict]
 
+/-- The section-coordinate map to the function field as a linear map over sections of
+the nonempty open. -/
 def coordinateLinear (V : X.Opens) [Nonempty V] : M.val.obj (op V) →ₗ[Γ(X, V)] X.functionField where
   toFun := coordinate X M U₀ e V
   map_add' := coordinate_add X M U₀ e V
@@ -222,6 +226,8 @@ theorem rational_empty_subsingleton : Subsingleton ((rationalFunctions X).val.ob
   rw [Scheme.Hom.preimage_bot]
   infer_instance
 
+/-- Embed sections into rational-function sections using their chosen rational coordinates;
+on an empty open use the zero map. -/
 def embeddingSection (V : X.Opens) : M.val.obj (op V) →ₗ[Γ(X, V)] (rationalFunctions X).val.obj
     (op V) := by
   classical
@@ -231,6 +237,8 @@ def embeddingSection (V : X.Opens) : M.val.obj (op V) →ₗ[Γ(X, V)] (rational
   else 0
 
 omit hDVR in
+-- Retain the original DVR condition at every closed-point stalk in the rational embedding API.
+@[nolint unusedArguments]
 theorem embeddingSection_value
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (V : X.Opens) [hV : Nonempty V] (s : M.val.obj (op V)) :
@@ -238,6 +246,8 @@ theorem embeddingSection_value
   simp only [embeddingSection, dite_eq_left hV, LinearMap.comp_apply, LinearEquiv.coe_coe]
   exact (rationalValueEquiv X V).apply_symm_apply _
 
+/-- The module-sheaf morphism to rational functions assembled from the compatible
+section-coordinate maps. -/
 def embedding : M ⟶ rationalFunctions X where
   val := PresheafOfModulesOfCommRing.homMk (R := X.presheaf)
     (fun V => ConcreteCategory.ofHom (C := ModuleCat Γ(X, V.unop))

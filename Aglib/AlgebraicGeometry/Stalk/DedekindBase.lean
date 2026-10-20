@@ -123,7 +123,8 @@ omit [IsDedekindDomain A] [IsIntegral X] in
 variable (K : Type v) [Field K] [Algebra A K] [IsFractionRing A K]
 
 -- Expose the affine generic-germ algebra to typeclass search through `Spec`.
-local instance : Algebra A (Spec (CommRingCat.of A)).functionField :=
+/-- The base algebra on the actual generic stalk of Spec A, given by its generic germ. -/
+local instance instAlgebraFunctionFieldSpec : Algebra A (Spec (CommRingCat.of A)).functionField :=
   (StructureSheaf.toStalk A (genericPoint (Spec (CommRingCat.of A)))).hom.toAlgebra
 
 local instance : IsFractionRing A (Spec (CommRingCat.of A)).functionField :=
@@ -147,7 +148,7 @@ theorem affine_generic_germ (y : Spec (CommRingCat.of A)) (a : A) :
     (StructureSheaf.toStalk_stalkSpecializes (genericPoint_specializes y)) a
 
 /-- The constant-field embedding and every actual base-to-stalk map agree in the function field. -/
-@[simp] theorem constantToFunctionField_algebraMap
+theorem constantToFunctionField_algebraMap
     (f : X ⟶ Spec (CommRingCat.of A)) [IsDominant f] (x : X) (a : A) :
     constantToFunctionField K f (algebraMap A K a) =
       algebraMap (X.presheaf.stalk x) X.functionField (baseToStalk f x a) := by

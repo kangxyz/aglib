@@ -39,7 +39,11 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace ProjectiveLine
 variable (k : Type u) [CommRing k]
 attribute [local instance] MvPolynomial.gradedAlgebra
+
+/-- The standard total-degree grading on the polynomial ring in two homogeneous coordinates. -/
 abbrev grading := MvPolynomial.homogeneousSubmodule (Fin 2) k
+
+/-- The projective line defined as Proj of the standard two-variable graded polynomial ring. -/
 abbrev projectiveP1 : Scheme := Proj (grading k)
 instance scalarTower : IsScalarTower k (grading k 0) (MvPolynomial (Fin 2) k) :=
   IsScalarTower.of_algebraMap_eq (R := k) (S := grading k 0) (A := MvPolynomial (Fin 2) k) fun _
@@ -47,6 +51,7 @@ instance scalarTower : IsScalarTower k (grading k 0) (MvPolynomial (Fin 2) k) :=
 instance finiteTypeGradeZero : Algebra.FiniteType (grading k 0) (MvPolynomial (Fin 2) k) :=
   Algebra.FiniteType.of_restrictScalars_finiteType k _ _
 
+/-- The canonical map identifying coefficients with homogeneous polynomials of degree zero. -/
 def constToGradeZero : k →+* grading k 0 := algebraMap k (grading k 0)
 lemma constToGradeZero_bijective : Function.Bijective (constToGradeZero k) := by
   constructor
@@ -62,9 +67,12 @@ lemma constToGradeZero_bijective : Function.Bijective (constToGradeZero k) := by
     exact MvPolynomial.totalDegree_eq_zero_iff_eq_C.mp
       ((MvPolynomial.totalDegree_zero_iff_isHomogeneous (Fin 2)).mpr x.property)
 
+/-- The ring equivalence between the coefficient ring and the degree-zero part of the
+homogeneous coordinate ring. -/
 def gradeZeroIso : k ≃+* grading k 0 :=
   RingEquiv.ofBijective (constToGradeZero k) (constToGradeZero_bijective k)
 
+/-- The projective line structure morphism, using the canonical degree-zero coefficient map. -/
 def structureMap : projectiveP1 k ⟶ Spec (.of k) :=
   Proj.toSpecZero (grading k) ≫ Spec.map (CommRingCat.ofHom (constToGradeZero k))
 instance structureMap_proper : IsProper (structureMap k) := by
@@ -74,9 +82,12 @@ instance structureMap_proper : IsProper (structureMap k) := by
   unfold structureMap
   infer_instance
 
+/-- The degree-zero homogeneous localization at the coordinate indexed by i. -/
 abbrev chartRing (i : Fin 2) :=
   HomogeneousLocalization.Away (grading k) (MvPolynomial.X i)
 
+/-- Set the selected homogeneous coordinate to 1 and the other coordinate to the polynomial
+variable. -/
 def dehomogenizePolynomial (i : Fin 2) : MvPolynomial (Fin 2) k →+* k[X] :=
   MvPolynomial.eval₂Hom Polynomial.C (fun j => if j = i then 1 else Polynomial.X)
 
@@ -84,6 +95,7 @@ def dehomogenizePolynomial (i : Fin 2) : MvPolynomial (Fin 2) k →+* k[X] :=
     dehomogenizePolynomial k i (MvPolynomial.X i) = 1 := by
   simp [dehomogenizePolynomial]
 
+/-- The chart-ring map to k[X] induced by setting the selected homogeneous coordinate to 1. -/
 def dehomogenize (i : Fin 2) : chartRing k i →+* k[X] :=
   (Localization.awayLift (dehomogenizePolynomial k i) (MvPolynomial.X i)
     (by simp)).comp (algebraMap (chartRing k i)
@@ -96,6 +108,7 @@ not an independent premise of the actual properness results. -/
 class StandardChartBijection : Prop where
   bijective : ∀ i : Fin 2, Function.Bijective (dehomogenize k i)
 
+/-- The standard polynomial affine chart included in the fixed projective line. -/
 def chart (i : Fin 2) : Spec (.of k[X]) ⟶ projectiveP1 k :=
   Spec.map (CommRingCat.ofHom (dehomogenize k i)) ≫
     Proj.awayι (grading k) (MvPolynomial.X i) (MvPolynomial.isHomogeneous_X k i) (by decide)
@@ -170,10 +183,12 @@ lemma dehomogenize_constant (i : Fin 2) (r : k) :
   exact dehomogenize_constant k i r
 
 
+/-- The coefficient map into the selected homogeneous chart ring through its degree-zero part. -/
 def chartConstant (i : Fin 2) : k →+* chartRing k i :=
   (HomogeneousLocalization.fromZeroRingHom (grading k)
     (Submonoid.powers (MvPolynomial.X i))).comp (constToGradeZero k)
 
+/-- The ratio of the other homogeneous coordinate to the selected coordinate. -/
 def chartRatio (i : Fin 2) : chartRing k i :=
   HomogeneousLocalization.Away.mk (grading k) (MvPolynomial.isHomogeneous_X k i) 1
     (MvPolynomial.X i.rev) (by simpa using MvPolynomial.isHomogeneous_X k i.rev)
@@ -188,6 +203,8 @@ def chartRatio (i : Fin 2) : chartRing k i :=
   have hi : i.rev ≠ i := by fin_cases i <;> decide
   simp [dehomogenizePolynomial, hi]
 
+/-- Evaluate a polynomial in the homogeneous chart at its coordinate ratio, retaining the
+original coefficients. -/
 def rehomogenize (i : Fin 2) : k[X] →+* chartRing k i :=
   Polynomial.eval₂RingHom (chartConstant k i) (chartRatio k i)
 
@@ -198,6 +215,7 @@ lemma dehomogenize_rehomogenize (i : Fin 2) :
     simp [rehomogenize]
   · simp [rehomogenize]
 
+/-- Dehomogenize and rehomogenize as an endomorphism over the degree-zero coefficient ring. -/
 def rehomogenizeEnd (i : Fin 2) : chartRing k i →ₐ[grading k 0] chartRing k i where
   __ := (rehomogenize k i).comp (dehomogenize k i)
   commutes' r := by
@@ -268,12 +286,15 @@ lemma chartRing_hom_ext [StandardChartBijection k] (i : Fin 2)
   simpa only [RingHom.comp_apply, rehomogenize_dehomogenize] using
     DFunLike.congr_fun h (dehomogenize k i x)
 
+/-- The homogeneous localization where both projective coordinates are invertible. -/
 abbrev chartOverlapRing := HomogeneousLocalization.Away (grading k)
   (MvPolynomial.X 0 * MvPolynomial.X 1)
 
+/-- The localization map from the zeroth standard chart to the common coordinate overlap. -/
 def overlapMap0 : chartRing k 0 →+* chartOverlapRing k :=
   HomogeneousLocalization.awayMap (grading k) (MvPolynomial.isHomogeneous_X k 1) rfl
 
+/-- The localization map from the first standard chart to the common coordinate overlap. -/
 def overlapMap1 : chartRing k 1 →+* chartOverlapRing k :=
   HomogeneousLocalization.awayMap (grading k) (MvPolynomial.isHomogeneous_X k 0) (mul_comm _ _)
 
@@ -289,13 +310,13 @@ lemma overlap_ratio_mul : overlapMap0 k (chartRatio k 0) * overlapMap1 k (chartR
   ring
 
 
-instance overlapMap0_algebra : Algebra (chartRing k 0) (chartOverlapRing k) :=
+instance instAlgebraChartOverlapRing : Algebra (chartRing k 0) (chartOverlapRing k) :=
   (overlapMap0 k).toAlgebra
 
 instance overlapMap0_localization :
     IsLocalization.Away (chartRatio k 0) (chartOverlapRing k) := by
   simpa only [HomogeneousLocalization.Away.isLocalizationElem, chartRatio, pow_one,
-    show (0 : Fin 2).rev = 1 from rfl, overlapMap0_algebra, overlapMap0] using
+    show (0 : Fin 2).rev = 1 from rfl, instAlgebraChartOverlapRing, overlapMap0] using
     (HomogeneousLocalization.Away.isLocalization_mul (𝒜 := grading k)
       (f := MvPolynomial.X (0 : Fin 2)) (g := MvPolynomial.X (1 : Fin 2))
       (x := MvPolynomial.X 0 * MvPolynomial.X 1)
@@ -304,6 +325,7 @@ instance overlapMap0_localization :
 
 variable (S : Type u) [CommRing S] [Algebra k S]
 
+/-- Evaluate the polynomial coordinate of chart i at s in a k-algebra S. -/
 def chartValue (i : Fin 2) (s : S) : chartRing k i →+* S :=
   (Polynomial.aeval s).toRingHom.comp (dehomogenize k i)
 
@@ -315,6 +337,8 @@ def chartValue (i : Fin 2) (s : S) : chartRing k i →+* S :=
     chartValue k S i s (chartRatio k i) = s := by
   simp [chartValue]
 
+/-- Evaluate the common chart overlap at a unit u, so the opposite chart coordinate is u
+inverse. -/
 def overlapValue (u : Sˣ) : chartOverlapRing k →+* S :=
   IsLocalization.Away.lift (chartRatio k 0)
     (g := chartValue k S 0 (u : S)) (by simp)
@@ -381,6 +405,9 @@ variable {W U V Z : Scheme.{u}} (f : W ⟶ U) (g : W ⟶ V)
 include comm preimage
 
 omit hjU in
+-- Retain the open-immersion condition on jU for the symmetric two-chart comparison interface;
+-- this direction only needs injectivity of jV.
+@[nolint unusedArguments]
 lemma cross_eq [IsOpenImmersion jU] {a : U} {b : V} (h : jU a = jV b) :
     pushout.inl f g a = pushout.inr f g b := by
   have ha : a ∈ jU ⁻¹ᵁ jV.opensRange := ⟨b, h.symm⟩

@@ -66,6 +66,7 @@ def closureValuation : Valuation (AlgebraicClosure K) ℝ≥0 where
     exact spectralAlgNorm_mul x y
   map_add_le_max' x y := isNonarchimedean_spectralNorm x y
 
+/-- The valuation ring in the algebraic closure defined by the extended spectral norm. -/
 abbrev ClosureIntegers := (closureValuation K).valuationSubring
 
 @[simp] theorem closureValuation_algebraMap (x : K) :
@@ -280,6 +281,7 @@ def absoluteResidueHom : Field.absoluteGaloisGroup K →*
   rw [AlgEquiv.symm_apply_apply]
   rfl
 
+/-- The homomorphism restricting algebraic-closure automorphisms to the closure valuation ring. -/
 def integerAutHom : (AlgebraicClosure K ≃ₐ[K] AlgebraicClosure K) →*
     (ClosureIntegers K ≃ₐ[V] ClosureIntegers K) where
   toFun := integerAut K V
@@ -315,6 +317,7 @@ instance closureIntegersInvariant [PerfectField K] :
 
 section Surjectivity
 
+/-- The discrete topology on the closure integer ring used in the residue-surjectivity argument. -/
 local instance : TopologicalSpace (ClosureIntegers K) := ⊥
 local instance : DiscreteTopology (ClosureIntegers K) := ⟨rfl⟩
 

@@ -37,6 +37,7 @@ variable {I : Type u} (C : I → Type v) [∀ i, Category.{w} (C i)] [∀ i, Abe
 def finiteObjectSupport : ObjectProperty (∀ i, C i) :=
   fun M => {i | ¬ IsZero (M i)}.Finite
 
+/-- The full subcategory of families with finitely many nonzero components. -/
 abbrev FiniteCategoryFamily := (finiteObjectSupport C).FullSubcategory
 
 instance finiteObjectSupport_serre : (finiteObjectSupport C).IsSerreClass where
@@ -67,8 +68,9 @@ instance finiteObjectSupport_serre : (finiteObjectSupport C).IsSerreClass where
     simp only [Set.mem_union, Set.mem_ofPred_eq, not_or, not_not] at hn
     exact hi ((h.map_of_exact (Pi.eval C i)).exact.isZero_of_both_isZero hn.1 hn.2)
 
-instance finiteCategoryFamily_abelian : Abelian (FiniteCategoryFamily C) := inferInstance
+instance instAbelianFiniteCategoryFamily : Abelian (FiniteCategoryFamily C) := inferInstance
 
+/-- Evaluation at a coordinate as an exact functor on finitely supported families. -/
 def finiteCategoryEvaluation (i : I) : CategoryTheory.ExactCategory.ExactFunctor
     (abelianExactStructure (FiniteCategoryFamily C)) (abelianExactStructure (C i)) where
   toFunctor := (finiteObjectSupport C).ι ⋙ Pi.eval C i

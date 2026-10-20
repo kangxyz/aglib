@@ -35,6 +35,7 @@ namespace ModuleCat.FiniteLengthFamilies
 universe u v w
 section Families
 variable {I : Type u} (R : I → Type v) [∀ i, Ring (R i)]
+/-- The category of families of modules over the rings `R i`. -/
 abbrev AllFamilies := ∀ i, ModuleCat.{v} (R i)
 
 /-- The generic finite-object-support property on the native module family. -/
@@ -50,8 +51,10 @@ in every coordinate. Nilpotent ring actions are retained. -/
 def familyProperty : ObjectProperty (AllFamilies R) := fun M =>
   (∀ i, IsFiniteLength (R i) (M i)) ∧ {i | ¬ IsZero (M i)}.Finite
 
+/-- The full subcategory of finite-length module families with finite nonzero support. -/
 abbrev Family := (familyProperty R).FullSubcategory
 
+/-- The chosen zero object of the category of module families. -/
 local instance : Zero (AllFamilies R) := HasZeroObject.zero' (AllFamilies R)
 
 instance familyProperty_serre : (familyProperty R).IsSerreClass where

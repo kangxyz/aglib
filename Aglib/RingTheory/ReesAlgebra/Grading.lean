@@ -155,7 +155,7 @@ def degreeZeroEquiv (I : Ideal A) : grading I 0 ≃+* A where
 @[simp] lemma degreeZeroEquiv_apply (I : Ideal A) (p : grading I 0) :
     degreeZeroEquiv I p = ((p : reesAlgebra I) : A[X]).coeff 0 := rfl
 
-@[simp] lemma degreeZeroEquiv_projZero (I : Ideal A) (p : reesAlgebra I) :
+lemma degreeZeroEquiv_projZero (I : Ideal A) (p : reesAlgebra I) :
     degreeZeroEquiv I (GradedRing.projZeroRingHom' (grading I) p) =
       (p : A[X]).coeff 0 := by
   exact decompose_coeff I p 0

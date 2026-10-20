@@ -42,6 +42,7 @@ open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent (finiteTypeSheavesRes
 section PrincipalDictionary
 variable [∀ x : X, IsIntegrallyClosed (X.presheaf.stalk x)]
 
+/-- A chosen uniformizer of the codimension-one discrete valuation local ring. -/
 def uniformizer (x : CodimensionOnePoint X) : x.localRing :=
   (IsDiscreteValuationRing.exists_irreducible x.localRing).choose
 
@@ -105,6 +106,8 @@ instance localToPrincipalEquivalence_additive (x : CodimensionOnePoint X) :
     (localToPrincipalEquivalence X x).functor
   exact Functor.additive_of_preservesBinaryBiproducts _
 
+/-- The exact equivalence functor identifying local fraction support with support
+outside the principal open of the chosen uniformizer. -/
 def localToPrincipalExact (x : CodimensionOnePoint X) :
     _root_.CategoryTheory.ExactCategory.ExactFunctor
     (_root_.CategoryTheory.ObjectProperty.subcategoryExactStructure (localSupport X x))

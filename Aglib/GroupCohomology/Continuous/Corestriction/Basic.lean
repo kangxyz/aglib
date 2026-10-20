@@ -78,6 +78,7 @@ theorem continuous_factor : Continuous (fun p : G × (G ⧸ H) => factor G H p.1
 variable (A : Type*) [AddCommGroup A] [TopologicalSpace A] [IsTopologicalAddGroup A]
   [DistribMulAction G A] [ContinuousSMul G A]
 variable [H.FiniteIndex]
+/-- The finite coset enumeration used by transfer for the chosen section. -/
 local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 
 omit [TopologicalSpace G] [IsTopologicalGroup G] [TopologicalSpace A]
@@ -104,7 +105,7 @@ abbrev transfer₀ : A →+ A :=
 abbrev transfer₁ : C(H, A) →+ C(G, A) :=
   CosetSection.transfer₁ (CosetSection.chosen (G := G) (H := H)) hH A
 
-@[simp] theorem transfer₁_apply (b : C(H, A)) (g : G) :
+theorem transfer₁_apply (b : C(H, A)) (g : G) :
     transfer₁ G H hH A b g =
       ∑ x : G ⧸ H, representative G H x • b (factor G H g x) := rfl
 
@@ -112,7 +113,7 @@ abbrev transfer₁ : C(H, A) →+ C(G, A) :=
 abbrev transfer₂ : C(H × H, A) →+ C(G × G, A) :=
   CosetSection.transfer₂ (CosetSection.chosen (G := G) (H := H)) hH A
 
-@[simp] theorem transfer₂_apply (c : C(H × H, A)) (g h : G) :
+theorem transfer₂_apply (c : C(H × H, A)) (g h : G) :
     transfer₂ G H hH A c (g, h) =
       ∑ x : G ⧸ H, representative G H x •
         c (factor G H g x, factor G H h (shift G H g x)) := rfl

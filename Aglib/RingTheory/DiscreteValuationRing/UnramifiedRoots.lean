@@ -201,7 +201,7 @@ def fractionEmbedding : K →+* ExtensionField R K n hnR :=
       algebraMap R (ExtensionField R K n hnR) r :=
   IsFractionRing.lift_algebraMap _ r
 
-instance extensionField_algebra : Algebra K (ExtensionField R K n hnR) :=
+instance instAlgebraExtensionField : Algebra K (ExtensionField R K n hnR) :=
   (fractionEmbedding R K n hnR).toAlgebra
 
 instance extensionField_scalarTower : IsScalarTower R K (ExtensionField R K n hnR) :=

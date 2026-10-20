@@ -33,6 +33,7 @@ universe u
 attribute [local instance] Over.cartesianMonoidalCategory
 variable {k : Type u} [Field k]
 
+/-- Evaluation of the affine Weierstrass coordinate ring at coordinates satisfying its equation. -/
 def affinePointEval (W : WeierstrassCurve k) (x y : k) (h : W.toAffine.Equation x y) :
     affineRing W →+* k :=
   AdjoinRoot.lift (Polynomial.evalRingHom x) y (by

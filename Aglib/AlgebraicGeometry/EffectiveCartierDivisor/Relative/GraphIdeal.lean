@@ -71,6 +71,7 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Hom
 universe u
 variable {X Y S T T' : Scheme.{u}}
+/-- The graph of the morphism `s` over `S`, as a section of the base-changed family. -/
 def graph (p : X ⟶ S) (t : T ⟶ S) (s : T ⟶ X) (hs : s ≫ p = t) :
     T ⟶ pullback p t := pullback.lift s (𝟙 T) (by simpa using hs)
 @[reassoc (attr := simp)] theorem graph_fst (p : X ⟶ S) (t : T ⟶ S)
@@ -85,6 +86,7 @@ instance graph_isClosedImmersion (p : X ⟶ S) [IsSeparated p] (t : T ⟶ S)
     rw [graph_snd]; infer_instance
   exact IsClosedImmersion.of_comp _ (pullback.snd p t)
 
+/-- The map between base-changed families induced by the base morphism `a` over `S`. -/
 def familyMap (p : X ⟶ S) (t : T ⟶ S) (t' : T' ⟶ S)
     (a : T' ⟶ T) (ha : a ≫ t = t') : pullback p t' ⟶ pullback p t :=
   pullback.lift (pullback.fst p t') (pullback.snd p t' ≫ a)
@@ -127,6 +129,8 @@ theorem graph_isPullback (p : X ⟶ S) (t : T ⟶ S) (t' : T' ⟶ S)
     (v₁₃ := a) _ (graph_naturality p t t' s hs a ha) (familyMap_isPullback p t t' a ha).flip
   simpa using (IsPullback.of_id_fst (f := a))
 
+/-- The theorem-family input asserting invertibility of the ideal of a closed subscheme
+finite, flat and locally finitely presented over the base of a smooth relative curve. -/
 def SmoothRelativeDivisorIdeal : Prop :=
   ∀ (S X D : Scheme.{u}) (p : X ⟶ S) (i : D ⟶ X),
     SmoothOfRelativeDimension 1 p → IsClosedImmersion i →
@@ -151,6 +155,8 @@ theorem graphIdeal_isLocallyRankOne (hstandard : SmoothRelativeDivisorIdeal.{u})
     MorphismProperty.pullback_snd p t inferInstance
   exact sectionIdeal_isLocallyRankOne hstandard (pullback.snd p t) _ (graph_snd p t s hs)
 
+/-- The graph ideal as a line bundle for a separated smooth relative curve,
+using the supplied relative-divisor ideal input. -/
 def graphIdealLineBundle (hstandard : SmoothRelativeDivisorIdeal.{u})
     (p : X ⟶ S) [SmoothOfRelativeDimension 1 p] [IsSeparated p]
     (t : T ⟶ S) (s : T ⟶ X) (hs : s ≫ p = t) :
@@ -162,6 +168,8 @@ def graphIdealLineBundle (hstandard : SmoothRelativeDivisorIdeal.{u})
     (t : T ⟶ S) (s : T ⟶ X) (hs : s ≫ p = t) :
     (graphIdealLineBundle hstandard p t s hs).val = idealModule (graph p t s hs) := rfl
 
+/-- The diagonal ideal as a line bundle for a separated smooth relative curve,
+using the supplied relative-divisor ideal input. -/
 def diagonalIdealLineBundle (hstandard : SmoothRelativeDivisorIdeal.{u})
     (p : X ⟶ S) [SmoothOfRelativeDimension 1 p] [IsSeparated p] :
     Scheme.Modules.Invertible.LineBundle (pullback p p) :=

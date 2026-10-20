@@ -34,6 +34,7 @@ attribute [local instance] Abelian.hasFiniteBiproducts
 attribute [local instance] Scheme.fromSpecStalk_flat
 namespace AlgebraicGeometry.Scheme.Modules.Coherent.Support
 universe u
+/-- The abelian structure on the canonical quotient by a Serre class. -/
 local instance canonicalQuotientAbelian {C : Type u} [Category.{u} C] [Abelian C]
     (P : ObjectProperty C) [P.IsSerreClass] : Abelian P.isoModSerre.Localization :=
   ObjectProperty.SerreClassLocalization.abelian P.isoModSerre.Q P
@@ -46,13 +47,16 @@ local instance (x : CodimensionOnePoint X) :
   exact RingHom.flat_algebraMap_iff.mpr
     (IsLocalization.flat X.functionField (nonZeroDivisors x.localRing))
 
+/-- Exact coherent pullback from the codimension-one local spectrum to the function field. -/
 abbrev localFraction (x : CodimensionOnePoint X) :=
   coherentExactPullback
     (Spec.map (CommRingCat.ofHom (algebraMap x.localRing X.functionField)))
 
+/-- The induced exact pullback to the function field on the chosen small coherent models. -/
 abbrev smallLocalFraction (x : CodimensionOnePoint X) :=
   _root_.CategoryTheory.SmallModel.mapAbelianExactFunctor.{u + 1} (localFraction X x)
 
+/-- The coherent objects on the local spectrum whose function-field pullback is zero. -/
 def localSupport (x : CodimensionOnePoint X) : ObjectProperty (Coh (Spec x.localRing)) :=
   (smallLocalFraction X x).toFunctor.kernel
 
@@ -154,6 +158,8 @@ instance quotientSupportedStalk_preservesFiniteColimits (x : CodimensionOnePoint
   rw [quotientSupportedStalk_fac]
   infer_instance
 
+/-- The exact codimension-one stalk functor from the quotient by second support
+to coherent local objects with zero function-field pullback. -/
 def quotientSupportedStalkExact (x : CodimensionOnePoint X) :
     _root_.CategoryTheory.ExactCategory.ExactFunctor
     ((_root_.CategoryTheory.ExactCategory.abelianExactStructure

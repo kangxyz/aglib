@@ -35,6 +35,8 @@ def rationalFunctions : X.Modules :=
     (SheafOfModules.unit (Spec X.functionField).ringCatSheaf)
 
 omit hNoeth in
+-- Retain the original Noetherian integral-scheme interface for rational sections.
+@[nolint unusedArguments]
 theorem generic_preimage_eq_top [IsNoetherian X] (U : X.Opens) [hU : Nonempty U] :
     ((X.fromSpecStalk (genericPoint X))) ⁻¹ᵁ U = ⊤ := by
   apply le_antisymm le_top
@@ -52,6 +54,8 @@ def rationalSectionIso (U : X.Opens) [Nonempty U] :
   (eqToIso (by rw [generic_preimage_eq_top X U])) ≪≫ Scheme.ΓSpecIso X.functionField
 
 omit hNoeth in
+-- Retain the original Noetherian and nonempty-open guards of the rational-section formula.
+@[nolint unusedArguments]
 theorem rationalFunctions_obj [IsNoetherian X] (U : X.Opens) [Nonempty U] :
     (rationalFunctions X).val.obj (op U) =
       (ModuleCat.restrictScalars (((X.fromSpecStalk (genericPoint X))).app U).hom).obj
@@ -81,6 +85,8 @@ theorem generic_app_rationalSectionIso [IsNoetherian X] (U : X.Opens) [hU : None
   rw [← Category.assoc _ (eqToHom _), hr]
   simp
 
+/-- The linear value map from rational-function sections on a nonempty open to the
+function field, with the actual section scalar action. -/
 def rationalValue (U : X.Opens) [Nonempty U] :
     (rationalFunctions X).val.obj (op U) →ₗ[Γ(X, U)] X.functionField where
   toFun := (rationalSectionIso X U).hom
@@ -121,6 +127,8 @@ theorem rationalValue_restrict [IsNoetherian X] {U V : X.Opens} [Nonempty U] [No
 
 
 
+/-- Identify rational-function sections on a nonempty open with the function field by
+their actual value map. -/
 def rationalValueEquiv (U : X.Opens) [Nonempty U] :
     (rationalFunctions X).val.obj (op U) ≃ₗ[Γ(X, U)] X.functionField :=
   LinearEquiv.ofBijective (rationalValue X U)

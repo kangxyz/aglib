@@ -61,6 +61,9 @@ theorem represented_mono : Mono (representedSheafMap j) := by
   exact Sheaf.mono_of_isLocallyInjective _
 
 omit [Mono j.hom.hom] in
+-- Retain monicity of the original kernel insertion in this public represented-kernel interface;
+-- the zero-composition calculation itself uses only j ≫ q = 0.
+@[nolint unusedArguments]
 theorem represented_composition_zero [Mono j.hom.hom] (h : j ≫ q = 0) :
     representedSheafMap j ≫ representedSheafMap q = 0 := by
   rw [← representedSheafMap_comp, h]
@@ -76,19 +79,27 @@ variable (liftOver : ∀ {V : Over S} (x : V ⟶ B.X), x ≫ q.hom.hom = 1 → (
 variable (lift_fac : ∀ {V : Over S} (x : V ⟶ B.X) (h : x ≫ q.hom.hom = 1),
   liftOver x h ≫ j.hom.hom = x)
 
+/-- Apply the supplied actual Over-section lift to a section in the represented kernel, on the
+same test object. -/
 def representedKernelSection (U : S.Etaleᵒᵖ) (a : (representedSheaf B).obj.obj U)
     (ha : (representedSheafMap q).hom.app U a = 0) : (representedSheaf A).obj.obj U :=
   ULift.up (Additive.ofMul (liftOver a.down.toMul (congrArg (fun z => z.down.toMul) ha)))
 
 include lift_fac in
 omit [Mono j.hom.hom] in
-@[simp] theorem representedKernelSection_fac [Mono j.hom.hom] (U : S.Etaleᵒᵖ)
+-- Retain the same monomorphic insertion as the public kernel-section lifting interface; this
+-- factorization calculation uses the supplied lift_fac equation.
+@[nolint unusedArguments]
+theorem representedKernelSection_fac [Mono j.hom.hom] (U : S.Etaleᵒᵖ)
     (a : (representedSheaf B).obj.obj U) (ha : (representedSheafMap q).hom.app U a = 0) :
     (representedSheafMap j).hom.app U (representedKernelSection q liftOver U a ha) = a := by
   apply ULift.ext
   exact congrArg Additive.ofMul (lift_fac a.down.toMul (congrArg (fun z => z.down.toMul) ha))
 
 omit [Mono j.hom.hom] in
+-- Retain the original monomorphic kernel insertion shared by the represented-kernel API,
+-- although this component equality follows from functorial naturality.
+@[nolint unusedArguments]
 theorem represented_insertion_naturality [Mono j.hom.hom]
     {U V : S.Etaleᵒᵖ} (f : U ⟶ V)
     (a : (representedSheaf A).obj.obj U) :
@@ -102,6 +113,8 @@ theorem represented_kernel_condition {P : AbelianSheaf.{u, u + 1} S}
     (representedSheafMap q).hom.app U (φ.hom.app U a) = 0 :=
   ConcreteCategory.congr_hom (congrArg (fun t => t.hom.app U) h) a
 
+/-- The sheaf map obtained by lifting kernel sections; the given monomorphic insertion and
+factorization equation ensure additivity and naturality. -/
 def representedKernelLift {P : AbelianSheaf.{u, u + 1} S}
     (φ : P ⟶ representedSheaf B) (h : φ ≫ representedSheafMap q = 0) :
     P ⟶ representedSheaf A where

@@ -65,8 +65,10 @@ open AlgebraicGeometry.Scheme.Group
 open AlgebraicGeometry.Scheme.EtaleH1 Kummer.Coefficients
 universe u
 variable {X S : Scheme.{u}} (f : S ⟶ X) (n : ℕ)
+/-- The commutative group-object structure on the scheme of `n`th roots of unity over `Y`. -/
 local instance (Y : Scheme.{u}) : CommGrpObj (MultiplicativeGroup.rootsGroupScheme Y n).X :=
   MultiplicativeGroup.rootsCommGroup Y n
+/-- The commutative group-object structure on the multiplicative group scheme over `Y`. -/
 local instance (Y : Scheme.{u}) : CommGrpObj (MultiplicativeGroup.groupScheme Y).X :=
   MultiplicativeGroup.commGroup Y
 

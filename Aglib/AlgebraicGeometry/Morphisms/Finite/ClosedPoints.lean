@@ -26,6 +26,7 @@ variable (f : X ⟶ Y) [IsDominant f]
 variable [AlgebraicGeometry.IsNoetherian X] [AlgebraicGeometry.IsNoetherian Y]
 variable [IsFinite f]
 
+/-- The map on closed points induced by a finite scheme morphism. -/
 def closedPointMap (x : ClosedPoint X) : ClosedPoint Y :=
   ⟨f x.val, by simpa only [Set.image_singleton] using f.isClosedMap _ x.property⟩
 

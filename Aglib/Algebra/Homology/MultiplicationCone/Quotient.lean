@@ -32,9 +32,12 @@ universe u v
 namespace ModTerm
 variable (A : Type u) [AddCommGroup A]
 
+/-- The subgroup of multiples `n • a` in the additive group `A`. -/
 def multiples (n : ℕ) : AddSubgroup A := (n • AddMonoidHom.id A).range
+/-- The additive quotient of `A` by its subgroup of `n`-multiples. -/
 abbrev Quotient (n : ℕ) := A ⧸ multiples A n
 
+/-- The quotient homomorphism from `A` to its quotient by `n`-multiples. -/
 def mk (n : ℕ) : A →+ Quotient A n := QuotientAddGroup.mk' _
 
 @[simp] theorem mk_nsmul (n : ℕ) (a : A) : mk A n (n • a) = 0 := by
@@ -47,6 +50,7 @@ theorem mk_eq_zero_iff (n : ℕ) (a : A) :
 
 variable {A} {B : Type v} [AddCommGroup B]
 
+/-- The homomorphism on quotients by `n`-multiples induced by an additive homomorphism. -/
 def map (f : A →+ B) (n : ℕ) : Quotient A n →+ Quotient B n :=
   QuotientAddGroup.map _ _ f (by
     rintro _ ⟨a, rfl⟩

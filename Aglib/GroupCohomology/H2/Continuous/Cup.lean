@@ -41,6 +41,7 @@ variable (A B C : Type*)
 /-- A continuous equivariant bilinear coefficient pairing. The transfer and
 projection identities below are proved from this data, rather than assumed. -/
 structure Pairing where
+  /-- The coefficient pairing, additive in each argument. -/
   bilinear : A →+ B →+ C
   continuous : Continuous (fun p : A × B => bilinear p.1 p.2)
   equivariant : ∀ (g : G) (a : A) (b : B),
@@ -78,6 +79,7 @@ abbrev restrictCocycle (a : ContinuousH1.Cocycle G A) :
     { toMonoidHom := H.subtype, continuous_toFun := continuous_subtype_val } a
 
 
+/-- The coefficient pairing with equivariance restricted from `G` to the subgroup `H`. -/
 def restrictPairing : Pairing H A B C where
   bilinear := p.bilinear
   continuous := p.continuous

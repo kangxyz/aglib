@@ -39,6 +39,8 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace PowerNode.Rees
 variable {R : Type u} [CommRing R]
 
+/-- The saturated Rees subalgebra in the localization of `UV = π^(m+2)` at `U`, with scalars
+restricted to `R`. -/
 def leftChart (π : R) (m : ℕ) : Subalgebra R (leftLocalization π m) :=
   (Localization.Away.saturatedChart (node π (m+2)) (centerIdeal π (m+2)) (PlaneNode.U
     (π^(m+2)))).restrictScalars R
@@ -103,6 +105,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace PowerNode.Rees
 variable {R : Type u} [CommRing R]
 
+/-- The node-algebra endomorphism exchanging the coordinates `U` and `V`. -/
 def nodeSwap (c : R) : PlaneNode.Ring c →ₐ[R] PlaneNode.Ring c :=
   PlaneNode.lift c (PlaneNode.V c) (PlaneNode.U c) (by rw [mul_comm, PlaneNode.relation])
 @[simp] lemma nodeSwap_u (c : R) : nodeSwap c (PlaneNode.U c) = PlaneNode.V c := by simp [nodeSwap]
@@ -112,12 +115,16 @@ lemma nodeSwap_comp (c : R) : (nodeSwap c).comp (nodeSwap c) = AlgHom.id R _ := 
 @[simp] lemma nodeSwap_twice (c : R) (z : PlaneNode.Ring c) : nodeSwap c (nodeSwap c z) = z :=
   congrArg (fun f : PlaneNode.Ring c →ₐ[R] PlaneNode.Ring c => f z) (nodeSwap_comp c)
 
+/-- The algebra map from the `U`-localization to the `V`-localization induced by exchanging node
+coordinates. -/
 def swapAwayUV (c : R) : Localization.Away (PlaneNode.U c) →ₐ[R] Localization.Away (PlaneNode.V c)
   :=
   IsLocalization.Away.liftAlgHom (PlaneNode.U c)
     (f := (IsScalarTower.toAlgHom R (PlaneNode.Ring c) _).comp (nodeSwap c)) (by
       simpa using (IsLocalization.Away.algebraMap_isUnit
         (S := Localization.Away (PlaneNode.V c)) (PlaneNode.V c)))
+/-- The algebra map from the `V`-localization to the `U`-localization induced by exchanging node
+coordinates. -/
 def swapAwayVU (c : R) : Localization.Away (PlaneNode.V c) →ₐ[R] Localization.Away (PlaneNode.U c)
   :=
   IsLocalization.Away.liftAlgHom (PlaneNode.V c)
@@ -173,10 +180,13 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace PowerNode.Rees
 variable {R : Type u} [CommRing R]
 
+/-- The localization of the power-node ring `UV = π^(m+2)` at `V`. -/
 abbrev rightLocalization (π : R) (m : ℕ) := Localization.Away (PlaneNode.V (π^(m+2)))
+/-- The element `π/V` in the `V`-localization of the power-node ring. -/
 abbrev rightParameter (π : R) (m : ℕ) : rightLocalization π m :=
   algebraMap R _ π * IsLocalization.Away.invSelf (PlaneNode.V (π^(m+2)))
 
+/-- The right-chart blowdown map, sending the source coordinates to `π^(m+1) * V` and `U`. -/
 def rightBase (π : R) (m : ℕ) : node π (m+2) →ₐ[R] PlaneNode.Ring π :=
   (leftBase π m).comp (nodeSwap (π^(m+2)))
 @[simp] lemma rightBase_u (π : R) (m : ℕ) :
@@ -185,6 +195,7 @@ def rightBase (π : R) (m : ℕ) : node π (m+2) →ₐ[R] PlaneNode.Ring π :=
 @[simp] lemma rightBase_v (π : R) (m : ℕ) :
     rightBase π m (PlaneNode.V (π^(m+2))) = PlaneNode.U π := by simp [rightBase, leftBase]
 
+/-- The map from `UV = π` to the right localization, sending its coordinates to `V` and `π/V`. -/
 def rightToLocalization (π : R) (m : ℕ) : PlaneNode.Ring π →ₐ[R] rightLocalization π m :=
   (swapAwayUV (π^(m+2))).comp (leftToLocalization π m)
 @[simp] lemma rightToLocalization_u (π : R) (m : ℕ) :
@@ -217,6 +228,8 @@ lemma rightToLocalization_injective [IsDomain R] [UniqueFactorizationMonoid R]
     (π : R) (hπ : π ≠ 0) (m : ℕ) : Function.Injective (rightToLocalization π m) :=
   (nodeSwapAway (π^(m+2))).injective.comp (leftToLocalization_injective π hπ m)
 
+/-- The saturated Rees subalgebra in the localization of `UV = π^(m+2)` at `V`, with scalars
+restricted to `R`. -/
 def rightChart (π : R) (m : ℕ) : Subalgebra R (rightLocalization π m) :=
   (Localization.Away.saturatedChart (node π (m+2)) (centerIdeal π (m+2)) (PlaneNode.V
     (π^(m+2)))).restrictScalars R
@@ -286,12 +299,18 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace PowerNode.Rees
 variable {R : Type u} [CommRing R]
 
+/-- The image of `π` in the power-node ring `UV = π^(m+2)`, used as the middle-chart
+denominator. -/
 abbrev middleDen (π : R) (m : ℕ) : node π (m+2) := algebraMap R _ π
+/-- The localization of the power-node ring `UV = π^(m+2)` at the scalar `π`. -/
 abbrev middleLocalization (π : R) (m : ℕ) := Localization.Away (middleDen π m)
+/-- The inverse of the image of `π` in the middle localization. -/
 abbrev middleInv (π : R) (m : ℕ) : middleLocalization π m :=
   IsLocalization.Away.invSelf (middleDen π m)
+/-- The element `U/π` in the middle localization. -/
 abbrev middleU (π : R) (m : ℕ) : middleLocalization π m :=
   Localization.Away.fraction (middleDen π m) (PlaneNode.U (π^(m+2)))
+/-- The element `V/π` in the middle localization. -/
 abbrev middleV (π : R) (m : ℕ) : middleLocalization π m :=
   Localization.Away.fraction (middleDen π m) (PlaneNode.V (π^(m+2)))
 
@@ -341,9 +360,13 @@ lemma middle_base_triangle (π : R) (m : ℕ) :
     rw [mul_left_comm, middleInv_relation, mul_one]
     rfl
 
+/-- The image of `π` in the lower-exponent node ring `UV = π^m`. -/
 abbrev middleTargetDen (π : R) (m : ℕ) : node π m := algebraMap R _ π
+/-- The localization of the lower-exponent node ring `UV = π^m` at the scalar `π`. -/
 abbrev middleTargetLocalization (π : R) (m : ℕ) := Localization.Away (middleTargetDen π m)
 
+/-- The localized middle-chart blowdown map from the exponent-`m+2` node to the exponent-`m`
+node. -/
 def middleLocalizationBack (π : R) (m : ℕ) :
     middleLocalization π m →ₐ[R] middleTargetLocalization π m :=
   IsLocalization.Away.liftAlgHom (middleDen π m)
@@ -391,6 +414,7 @@ lemma middleToLocalization_injective [IsDomain R] [UniqueFactorizationMonoid R]
   rw [middle_localized_retraction] at hback
   exact hback
 
+/-- The saturated Rees subalgebra in the localization at `π`, with scalars restricted to `R`. -/
 def middleChart (π : R) (m : ℕ) : Subalgebra R (middleLocalization π m) :=
   (Localization.Away.saturatedChart (node π (m+2)) (centerIdeal π (m+2)) (middleDen π
     m)).restrictScalars R

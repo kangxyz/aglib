@@ -44,9 +44,12 @@ def pointComponentOpen (x : X.left) : X.left.Opens :=
   ⟨irreducibleComponent x, hcomp X.left (LocallyOfFiniteType.isLocallyNoetherian X.hom)
     (hnormal F X.left X.hom inferInstance) _ (irreducibleComponent_mem_irreducibleComponents x)⟩
 
+/-- The irreducible component through `x`, viewed as an open subscheme over `F` using the
+supplied normality and component-openness inputs. -/
 abbrev pointComponent (x : X.left) : FScheme F :=
   Over.mk ((pointComponentOpen hnormal hcomp X x).ι ≫ X.hom)
 
+/-- The inclusion over `F` of the irreducible component through `x`. -/
 def pointComponentMap (x : X.left) : pointComponent hnormal hcomp X x ⟶ X :=
   Over.homMk (pointComponentOpen hnormal hcomp X x).ι rfl
 

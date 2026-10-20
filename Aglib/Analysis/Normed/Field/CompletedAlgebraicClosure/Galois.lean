@@ -81,7 +81,7 @@ instance completedAutomorphism_isometric (σ : Algebraic F ≃ₐ[F] Algebraic F
   rfl
 
 /-- In particular it fixes every original-field unit as an actual unit. -/
-@[simp] theorem completedAutomorphism_unit (σ : Algebraic F ≃ₐ[F] Algebraic F)
+theorem completedAutomorphism_unit (σ : Algebraic F ≃ₐ[F] Algebraic F)
     (q : Fˣ) :
     Units.map (completedAutomorphism F σ).toMonoidHom
       (Units.map (embedding F).toMonoidHom q) = Units.map (embedding F).toMonoidHom q := by

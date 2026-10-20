@@ -68,7 +68,10 @@ variable {R : Type u} [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]
 include hi hXintegral
 
 omit hXintegral in
+-- Retain integrality of the total space in the flat-DVR component interface; this dimension
+-- calculation is supplied by the stated local fibre-component kernel input.
 /-- The dimension-one stalk is the actual image of the component's generic point. -/
+@[nolint unusedArguments]
 theorem componentGeneric_stalk_dimension_one [IsIntegral X]
     (H : FlatDVRFibreComponentKernel.{u}) :
     ringKrullDim (X.presheaf.stalk

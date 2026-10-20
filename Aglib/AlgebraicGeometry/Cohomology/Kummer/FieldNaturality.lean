@@ -76,6 +76,8 @@ variable {K L : Type u} [Field K] [Field L] [Algebra K L]
   (i : Field.absoluteGaloisGroup.RootsOfUnity.FieldPullbackIndependence.Embedding (K := K) (L
       := L)) (n : ℕ)
 
+/-- The continuous equivariant map on root coordinates induced by the supplied closure embedding
+and its Galois restriction map. -/
 def muPullback : PullbackMap (A := Mu K n) (B := Mu L n)
     (Field.absoluteGaloisGroup.RootsOfUnity.FieldPullbackIndependence.restriction i) where
   toFun := Field.absoluteGaloisGroup.RootsOfUnity.FieldPullbackIndependence.muMap i n
@@ -86,6 +88,7 @@ def muPullback : PullbackMap (A := Mu K n) (B := Mu L n)
     letI := i.toAlgebra
     exact Field.absoluteGaloisGroup.RootsOfUnity.FieldPullback.muMap_smul K L n g x
 
+/-- Map nth roots of unity along the given base-field algebra homomorphism. -/
 def rootMap : rootsOfUnity n K →* rootsOfUnity n L :=
   restrictRootsOfUnity (algebraMap K L) n
 
@@ -96,8 +99,10 @@ theorem muMap_baseRoot (ζ : rootsOfUnity n K) :
   ext
   exact i.commutes ((ζ : Kˣ) : K)
 
+/-- Map base-field units along the given algebra homomorphism. -/
 def unitMap : Kˣ →* Lˣ := Units.map (algebraMap K L).toMonoidHom
 
+/-- Map algebraic-closure units along the supplied closure embedding. -/
 def closureUnitMap : (AlgebraicClosure K)ˣ →* (AlgebraicClosure L)ˣ :=
   Units.map i.toRingHom.toMonoidHom
 
@@ -151,6 +156,8 @@ open _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber baseChange fiberToFinite
 open AlgebraicGeometry.Scheme.EtaleH1
 open AlgebraicGeometry.Scheme.Group
 
+/-- The spectrum map of the given base-field algebra homomorphism, reused from the canonical
+closure-embedding interface. -/
 abbrev fieldMorphism : Spec (.of L) ⟶ Spec (.of K) :=
   Scheme.FiniteEtale.FieldGalois.ClosureEmbedding.fieldMorphism
 
@@ -192,6 +199,7 @@ open _root_.CategoryTheory
 open scoped CategoryTheory.MonObj
 attribute [local instance] Over.cartesianMonoidalCategory
 
+/-- The group scheme of nth roots of unity over the given field spectrum. -/
 abbrev rootsGroup (F : Type u) [Field F] := MultiplicativeGroup.rootsGroupScheme (Spec (.of F)) n
 
 /-- The canonical coefficient-point equivalence on arbitrary test schemes. -/
@@ -230,6 +238,8 @@ def pullbackRootAction (Y : Scheme.FiniteEtale (Spec (.of K)))
       exact ((rootSections (K := K) n U).symm.injective
         (by simpa only [MulEquiv.symm_apply_apply] using hu _ hb))
 
+/-- Extend the specified geometric coefficient point along the closure embedding and compare it
+with the actual roots group over the extended field. -/
 def pullbackCoefficientPoint
     (a : Over.mk (geometricPoint K) ⟶ (rootsGroup n K).X) :
     Over.mk (geometricPoint L) ⟶ (rootsGroup n L).X :=
@@ -270,6 +280,8 @@ theorem pullbackRootAction_point (Y : Scheme.FiniteEtale (Spec (.of K)))
 variable [CharZero K] [CharZero L] [NeZero n]
 
 omit [CharZero K] [CharZero L] [NeZero n] in
+-- Retain the original characteristic-zero fields and nonzero Kummer level.
+@[nolint unusedArguments]
 theorem pullbackCoefficientPoint_mark [CharZero K] [CharZero L] [NeZero n]
     (a : Over.mk (geometricPoint K) ⟶ (rootsGroup n K).X) :
     (GroupCohomology.Kummer.Field.pointMark L n (pullbackCoefficientPoint i n
@@ -314,6 +326,7 @@ variable [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
   [GaloisCategory (Scheme.FiniteEtale (Spec (.of L)))]
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))]
 
+/-- The native commutative group law on the roots group over each field spectrum. -/
 local instance (F : Type u) [Field F] : CommGrpObj (rootsGroup n F).X :=
   MultiplicativeGroup.rootsCommGroup (Spec (.of F)) n
 local instance (F : Type u) [Field F] : IsFinite (rootsGroup n F).X.hom :=
@@ -330,6 +343,8 @@ omit [CharZero K] [CharZero L] [NeZero n]
     [GaloisCategory (Scheme.FiniteEtale (Spec (.of L)))]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))] in
 /-- Unique positive transport commutes with actual point extension and pullback. -/
+-- Retain the original field, level, fibre-functor and two Ext-universe transport inputs.
+@[nolint unusedArguments]
 theorem transport_pullback [CharZero K] [CharZero L] [NeZero n]
     [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]
     [HasExt.{w'} (AbelianSheaf.{u, u + 1} (Spec (.of L)))]
@@ -371,6 +386,7 @@ theorem fieldCocycle_pullback (Y : Scheme.FiniteEtale (Spec (.of K)))
       GroupCohomology.Kummer.Field.fieldCocycle_value,
     ← transport_pullback, pullbackCoefficientPoint_mark]
 
+/-- The small-etale sheaf of nth roots of unity on the given field spectrum. -/
 abbrev muSheaf (F : Type u) [Field F] :=
   GroupCohomology.Kummer.Coefficients.mu (Spec (.of F)) n
 
@@ -431,6 +447,8 @@ omit [CharZero L]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]
     [GaloisCategory (Scheme.FiniteEtale (Spec (.of L)))]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))] in
+-- Retain the original extended-field characteristic and both chosen geometric fibre functors.
+@[nolint unusedArguments]
 theorem schemePullback_torsor [CharZero L]
     [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]

@@ -64,9 +64,12 @@ namespace AlgebraicGeometry.Scheme.Modules.Invertible
 
 /-- Two opens and a locally regular section which is a unit on their intersection. -/
 structure PrincipalChain (X : Scheme.{u}) where
+  /-- The first open of the two-open cover. -/
   U : X.Opens
+  /-- The second open of the two-open cover. -/
   W : X.Opens
   covers : U ⊔ W = ⊤
+  /-- The section on `U` that is regular on subopens and invertible on the overlap. -/
   f : Γ(X, U)
   unit_overlap : IsUnit (sectionRestrict X (inf_le_left : U ⊓ W ≤ U) f)
   regular : ∀ (V : X.Opens) (hV : V ≤ U),
@@ -76,8 +79,10 @@ namespace PrincipalChain
 
 variable {X : Scheme.{u}} (d : PrincipalChain X)
 
+/-- The two-element index type for the cover by `U` and `W`. -/
 abbrev Index := ULift.{u} Bool
 
+/-- The cover assigning `U` to `true` and `W` to `false`. -/
 abbrev cover : Index.{u} → X.Opens
   | ⟨true⟩ => d.U
   | ⟨false⟩ => d.W
@@ -87,11 +92,14 @@ theorem iSup_cover : iSup d.cover = ⊤ := by
   rw [← d.covers]
   exact sup_le (le_iSup d.cover ⟨true⟩) (le_iSup d.cover ⟨false⟩)
 
+/-- The unit on the overlap represented by the restriction of `f`. -/
 def overlapUnit : (Γ(X, d.U ⊓ d.W))ˣ := d.unit_overlap.unit
 
 @[simp] theorem overlapUnit_val : (d.overlapUnit : Γ(X, d.U ⊓ d.W)) =
     sectionRestrict X inf_le_left d.f := d.unit_overlap.unit_spec
 
+/-- The transition units given by `f` on `U ∩ W`, its inverse in the reverse direction,
+and one on equal charts. -/
 def transition : (i j : Index.{u}) → (Γ(X, d.cover i ⊓ d.cover j))ˣ
   | ⟨true⟩, ⟨true⟩ => 1
   | ⟨false⟩, ⟨false⟩ => 1
@@ -122,6 +130,7 @@ theorem transition_cocycle (i j k : Index.{u}) (V : X.Opens)
     | rw [hm (le_inf hi hj)]; exact inv_mul_cancel _
     | rw [hm (le_inf hj hk)]; exact mul_inv_cancel _
 
+/-- The unit cocycle on the two-open cover determined by the overlap section `f`. -/
 def cocycle : UnitCocycle d.cover where
   transition := d.transition
   cocycle := d.transition_cocycle
@@ -145,6 +154,7 @@ def frame (n : ℕ) (i : Index.{u}) {V : X.Opens} (hi : V ≤ d.cover i) :
     (hi : V ≤ d.cover i) : d.coefficients n i hi (d.frame n i hi) = 1 :=
   LinearEquiv.apply_symm_apply _ _
 
+/-- The global section of the first cocycle line with coefficient `f` on `U` and one on `W`. -/
 def baseSection : d.cocycle.Sections ⊤ :=
   ⟨fun i => match i with
     | ⟨true⟩ => sectionRestrict X inf_le_right d.f
@@ -174,6 +184,8 @@ def baseSection : d.cocycle.Sections ⊤ :=
       rw [overlapUnit_val, sectionRestrict_comp]
       ⟩
 
+/-- The componentwise product of a section of the first cocycle line with a section of its `n`th
+power. -/
 def multiplySections (n : ℕ) {V : X.Opens} (a : d.cocycle.Sections V)
     (b : (d.cocycle.zpow (n : ℤ)).Sections V) :
     (d.cocycle.zpow ((n+1 : ℕ) : ℤ)).Sections V :=
@@ -184,6 +196,8 @@ def multiplySections (n : ℕ) {V : X.Opens} (a : d.cocycle.Sections V)
     simp only [UnitCocycle.zpow_transitionOn, zpow_natCast, pow_succ, Units.val_mul]
     ring⟩
 
+/-- The section map from the `n`th line to the next line given by multiplication by the base
+section. -/
 def stepSections (n : ℕ) (V : X.Opens) :
     Γ(d.line n,V) →ₗ[Γ(X,V)] Γ(d.line (n+1),V) where
   toFun s := d.multiplySections n (d.cocycle.restrictSections le_top d.baseSection) s
@@ -359,6 +373,7 @@ theorem quotient_finiteSupport (n : ℕ) (hW : ((d.W : Set X)ᶜ).Finite) :
     (Scheme.Modules.support (d.quotient n)).Finite :=
   hW.subset (d.quotient_support_subset n)
 
+/-- The local quotient sections given by the image of the frame on `U` and zero on `W`. -/
 def quotientLocalSection (n : ℕ) : (i : Index.{u}) → Γ(d.quotient n,d.cover i)
   | ⟨true⟩ => (d.quotientMap n).val.app (op d.U) (d.frame (n+1) ⟨true⟩ le_rfl)
   | ⟨false⟩ => 0

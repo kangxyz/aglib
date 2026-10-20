@@ -29,6 +29,7 @@ open scoped _root_.TensorProduct
 universe u
 variable {R S : Type u} [CommRing R] [CommRing S]
 
+/-- The upper unipotent automorphism sending `(x, y)` to `(x + c * y, y)`. -/
 def upper (c : R) : (R × R) ≃ₗ[R] (R × R) where
   toFun v := (v.1 + c * v.2, v.2)
   invFun v := (v.1 - c * v.2, v.2)
@@ -46,6 +47,7 @@ def upper (c : R) : (R × R) ≃ₗ[R] (R × R) where
       ring
     · rfl
 
+/-- The lower unipotent automorphism sending `(x, y)` to `(x, y + c * x)`. -/
 def lower (c : R) : (R × R) ≃ₗ[R] (R × R) where
   toFun v := (v.1, v.2 + c * v.1)
   invFun v := (v.1, v.2 - c * v.1)
@@ -104,6 +106,7 @@ theorem pairPath_one (a b : Rˣ) : pairPath a b 1 =
   rw [pairPath, specialPath_one]
   ext v <;> simp [Object.unit, mul_assoc]
 
+/-- The free rank-two module with the automorphism at parameter `t` on the unit-pair path. -/
 def pathObject (a b : Rˣ) (t : R) : Object R where
   carrier := R × R
   a := pairPath a b t

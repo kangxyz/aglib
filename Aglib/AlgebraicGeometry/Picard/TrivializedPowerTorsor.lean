@@ -399,6 +399,8 @@ theorem framePowerValue_naturality (h :
 open _root_.AlgebraicGeometry.Scheme.EtaleH1
 open _root_.GroupCohomology.Kummer.Coefficients
 
+/-- The multiplicative-sheaf section recording the positive power value of a local frame
+relative to the chosen trivialization of the line-bundle power. -/
 def framePowerSection (h :
     AlgebraicGeometry.Scheme.Modules.Invertible.EtaleDescent.EtaleLineBundleDescent.{u}) (X :
     Scheme.{u})

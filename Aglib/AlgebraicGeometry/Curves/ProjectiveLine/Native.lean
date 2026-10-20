@@ -35,6 +35,7 @@ open AlgebraicGeometry.Scheme
 
 variable (k : Type u) [Field k]
 
+/-- The polynomial projective line regarded as a scheme over its ground field. -/
 abbrev projectiveLineOver : FScheme k := Over.mk (ProjectiveLine.structureMap k)
 
 /-- Literal polynomial P¹ and native lifted-coordinate P¹, over the original field. -/

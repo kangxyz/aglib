@@ -91,6 +91,9 @@ theorem generator_order_le (hM : IsLocallyRankOne X M)
   exact Scheme.ord_le_smul (show x.val ∈ A from ⟨hxW, hxZ⟩) ha _
 
 omit hDVR in
+-- Retain the DVR-stalk condition for compatibility with the divisor extracted from a line bundle;
+-- equality of generator orders here follows from the two order inequalities.
+@[nolint unusedArguments]
 theorem generator_order_eq
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (hM : IsLocallyRankOne X M)
@@ -103,11 +106,15 @@ theorem generator_order_eq
   le_antisymm (generator_order_le X M U₀ e hM W Z d c x hxW hxZ)
     (generator_order_le X M U₀ e hM Z W c d x hxZ hxW)
 
+/-- Choose a neighborhood of x and a trivialization from the supplied local rank-one property
+of M. -/
 def localChart (hM : IsLocallyRankOne X M) (x : X) :
     Σ W : X.Opens, {_d : M.over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W) // x ∈ W} := by
   let h := (isLocallyRankOne_iff_local_unit X M).mp hM x
   exact ⟨h.choose, h.choose_spec.2.some, h.choose_spec.1⟩
 
+/-- The negative local order of a chart generator measured in the fixed rational
+trivialization. -/
 def divisorCoefficient (hM : IsLocallyRankOne X M) (x : ClosedPoint X) : ℤ :=
   let c := localChart X M hM x.val
   letI : Nonempty c.1 := ⟨⟨x.val, c.2.property⟩⟩;

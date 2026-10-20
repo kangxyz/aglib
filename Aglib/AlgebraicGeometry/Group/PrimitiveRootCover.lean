@@ -36,6 +36,7 @@ variable (R : Type u) [CommRing R] (n : ℕ) [NeZero n]
 
 /-- The actual primitive-root-adjoining algebra, not the entire roots algebra. -/
 abbrev Cover := AdjoinRoot (cyclotomic n R)
+/-- The image of the polynomial variable in the cyclotomic quotient algebra. -/
 abbrev root : Cover R n := AdjoinRoot.root (cyclotomic n R)
 
 instance finite : Module.Finite R (Cover R n) :=
@@ -180,6 +181,7 @@ variable (K : Type u) [Field K] [Algebra R K]
 /-- This is the original generic fibre of the actual cover, retaining its
 literal scalar-extension map. It need not be a field. -/
 abbrev GenericFibre := K ⊗[R] Cover R n
+/-- The scalar extension of the universal cyclotomic root to the generic fibre. -/
 abbrev genericRoot : GenericFibre R n K := (1 : K) ⊗ₜ[R] root R n
 
 omit [NeZero n] in

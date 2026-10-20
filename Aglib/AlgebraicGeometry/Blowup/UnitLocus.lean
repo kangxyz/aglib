@@ -60,6 +60,7 @@ theorem awayChartIsLocalization : IsLocalization.Away
     have hxy : x = y := Subtype.ext h
     exact ⟨0, by simp [hxy]⟩
 
+/-- The localization equivalence identifying the blowup chart over `D(a)` with `A[1/a]`. -/
 def awayChartEquiv : Localization.Away (algebraMap A (affineBlowupAlgebra A I a) a) ≃ₐ[
     affineBlowupAlgebra A I a] Localization.Away (a : A) := by
   let := awayChartIsLocalization I a

@@ -35,6 +35,7 @@ theorem primary_power_exists (p : ℕ) (x : Ideal.primaryComponent T (Ideal.span
   exact ⟨r, by simpa only [← Int.natCast_pow, natCast_zsmul] using hz⟩
 
 variable (T : Type*) [AddCommGroup T]
+/-- Multiplication by `a` from the `(a * b)`-torsion subgroup to the `b`-torsion subgroup. -/
 def torsionByMulMap (a b : ℕ) : torsionBy T ((a * b : ℕ) : ℤ) →+ torsionBy T b where
   toFun x := ⟨a • (x : T), by
     apply torsionBy.nsmul_iff.mpr

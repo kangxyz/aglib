@@ -64,10 +64,12 @@ namespace GroupCohomology.Kummer.Torsor
 open AlgebraicGeometry.Scheme.EtaleH1 GroupCohomology.Kummer.Coefficients
 universe u
 
+/-- The section of the multiplicative coefficient sheaf corresponding to the global unit `f`. -/
 def unitSection (X : Scheme.{u}) (f : Γ(X, ⊤)ˣ) :
     (gm X).obj.obj (op (etaleTerminal X)) :=
   (unitsSections X _).symm (Additive.ofMul f)
 
+/-- The restriction of the global unit `f` to the etale test scheme `U`. -/
 def unitRestriction (X : Scheme.{u}) (f : Γ(X, ⊤)ˣ) (U : X.Etaleᵒᵖ) : Γ(U.unop.left, ⊤)ˣ :=
   Units.map U.unop.hom.appTop.hom.toMonoidHom f
 
@@ -83,6 +85,8 @@ def rootTorsor (h : EtalePowerSurjectivity.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (f : Γ(X, ⊤)ˣ) : Torsor (mu X n) :=
   extensionFiberTorsor (sequence X n) (unitSection X f) (sequence_shortExact h X n hn hinv)
 
+/-- Sections of the root torsor as units whose `n`th power is the restriction of `f`,
+using the supplied power-surjectivity input at positive invertible level. -/
 def rootSectionsEquiv (h : EtalePowerSurjectivity.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (f : Γ(X, ⊤)ˣ) (U : X.Etaleᵒᵖ) :
     (rootTorsor h X n hn hinv f).carrier.obj.obj U ≃

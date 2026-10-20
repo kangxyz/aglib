@@ -42,6 +42,8 @@ variable {X Y Z : Scheme.{u}}
 instance opensMap_final (f : X ⟶ Y) : (Opens.map f.base).Final :=
   final_of_representablyFlat _
 
+/-- The natural comparison between restriction followed by pullback and pullback followed by
+restriction. -/
 def pullbackRestrictIso (f : X ⟶ Y) (U : Y.Opens) :
     Scheme.Modules.restrictFunctor U.ι ⋙ Scheme.Modules.pullback (f ∣_ U) ≅
       Scheme.Modules.pullback f ⋙ Scheme.Modules.restrictFunctor (f ⁻¹ᵁ U).ι :=
@@ -64,6 +66,8 @@ instance localPullback_preservesColimits (f : X ⟶ Y) (U : Y.Opens) :
   dsimp [localPullback]
   infer_instance
 
+/-- The comparison from the unit module on the inverse-image open to the local pullback of the
+unit. -/
 def localPullbackUnitIso (f : X ⟶ Y) (U : Y.Opens) :
     SheafOfModules.unit (X.ringCatSheaf.over (f ⁻¹ᵁ U)) ≅
       (localPullback f U).obj (SheafOfModules.unit (Y.ringCatSheaf.over U)) :=

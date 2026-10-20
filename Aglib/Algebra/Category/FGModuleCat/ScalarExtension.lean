@@ -66,6 +66,9 @@ instance finiteModuleExtension_additive : (finiteModuleExtension φ).Additive wh
 
 variable [IsNoetherianRing R]
 
+-- Retain the original target-Noetherian interface used by the exact finite-module extension;
+-- finite-limit preservation itself uses source Noetherianity and flatness.
+@[nolint unusedArguments]
 theorem finiteModuleExtension_preservesFiniteLimits [IsNoetherianRing S]
     (hφ : φ.hom.Flat) :
     PreservesFiniteLimits (finiteModuleExtension φ) := by

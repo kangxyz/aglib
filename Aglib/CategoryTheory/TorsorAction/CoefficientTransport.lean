@@ -37,6 +37,8 @@ variable {C : Type u} [Category.{v} C] [CartesianMonoidalCategory C]
   {A A' G H : Grp C} {p : G ⟶ H}
   (m : KernelMarking A G H p) (e : A ≅ A')
 
+/-- The kernel marking transported along a coefficient-group isomorphism, with inclusion given
+by its inverse followed by the original inclusion. -/
 def transportCoefficient : KernelMarking A' G H p where
   inclusion := e.inv ≫ m.inclusion
   over := by

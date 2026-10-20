@@ -261,19 +261,21 @@ variable {R S T : Type (max u v)} [CommRing R] [CommRing S] [CommRing T]
   (e : (ι → T) ≃ₐ[T] (ι → T))
 
 local notation "P" => fiberRing f g
-local notation "Q" => fiberRing (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))
+local notation "Q" => fiberRing (f.compLeft ι)
+  (RingHom.comp (e : (ι → T) →+* (ι → T)) (g.compLeft ι))
 
 attribute [local instance] fstAlgebra sndAlgebra
+/-- The glued algebra structure induced by the canonical map from the base fibre ring. -/
 local instance algebraOfMap : Algebra P Q := (map f g e).toAlgebra
 
 /-- The actual normalization projection, with its fibre-base algebra map. -/
 def fstAlgHom : Q →ₐ[P] (ι → R) where
-  __ := RingHom.pullbackFst (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))
+  __ := RingHom.pullbackFst (f.compLeft ι) (RingHom.comp (e : (ι → T) →+* (ι → T)) (g.compLeft ι))
   commutes' _ := rfl
 
 /-- The actual node projection, with its fibre-base algebra map. -/
 def sndAlgHom : Q →ₐ[P] (ι → S) where
-  __ := RingHom.pullbackSnd (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))
+  __ := RingHom.pullbackSnd (f.compLeft ι) (RingHom.comp (e : (ι → T) →+* (ι → T)) (g.compLeft ι))
   commutes' _ := rfl
 
 /-- The canonical normalization tensor map is multiplication after the actual

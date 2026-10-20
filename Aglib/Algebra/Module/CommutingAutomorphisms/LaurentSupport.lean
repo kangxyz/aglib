@@ -40,13 +40,18 @@ namespace Module.CommutingAutomorphisms.LaurentSupport
 universe u
 variable {R S : Type u} [CommRing R] [CommRing S]
 
+/-- The rank-two character lattice, written multiplicatively. -/
 abbrev Character := Multiplicative (ℤ × ℤ)
+/-- The two-variable Laurent polynomial algebra over `R`. -/
 abbrev Laurent (R : Type u) [CommRing R] := MonoidAlgebra R Character
 
+/-- The Laurent monomial with exponent pair `m` and coefficient one. -/
 def monomial (R : Type u) [CommRing R] (m : ℤ × ℤ) : Laurent R :=
   MonoidAlgebra.single (Multiplicative.ofAdd m) 1
 
+/-- The first Laurent coordinate, with exponent pair `(1, 0)`. -/
 def firstCoordinate (R : Type u) [CommRing R] : Laurent R := monomial R (1, 0)
+/-- The second Laurent coordinate, with exponent pair `(0, 1)`. -/
 def secondCoordinate (R : Type u) [CommRing R] : Laurent R := monomial R (0, 1)
 
 theorem automorphisms_commute (X : Object R) : Commute X.a X.b := by
@@ -85,8 +90,10 @@ def representation (X : Object R) : Laurent R →ₐ[R] Module.End R X.carrier :
 
 /-- The support is the quotient by the actual annihilator action ideal. -/
 def supportIdeal (X : Object R) : Ideal (Laurent R) := RingHom.ker (representation X)
+/-- The Laurent algebra modulo the annihilator of its action on the original module. -/
 abbrev Support (X : Object R) := Laurent R ⧸ supportIdeal X
 
+/-- The induced faithful action of the support algebra on the original module. -/
 def supportRepresentation (X : Object R) : Support X →ₐ[R] Module.End R X.carrier :=
   Ideal.kerLiftAlg (representation X)
 

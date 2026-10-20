@@ -49,6 +49,8 @@ def pullbackTensorIso (_h : ModuleTensorPullback.{u}) (f : X ⟶ Y) (M N : Y.Mod
     (f : X ⟶ Y) (M N : Y.Modules) :
     (pullbackTensorIso h f M N).hom = pullbackTensorMap f M N := rfl
 
+/-- The canonical tensor-pullback comparison for the given line bundles, retaining the
+original tensor-pullback interface input. -/
 abbrev pullbackLineBundleTensorIso (_h : ModuleTensorPullback.{u})
     (f : X ⟶ Y) (L M : LineBundle Y) :=
   PullbackTensor.Local.pullbackLineBundleTensorIso f L M
@@ -57,6 +59,8 @@ theorem pullbackClass_add (_h : ModuleTensorPullback.{u}) (f : X ⟶ Y)
     (a b : PicardGroup Y) : pullbackClass f (a + b) = pullbackClass f a + pullbackClass f b :=
   PullbackTensor.Local.pullbackClass_add f a b
 
+/-- The additive pullback map on ordinary Picard groups, retaining the original
+tensor-pullback interface input. -/
 abbrev pullbackHom (_h : ModuleTensorPullback.{u}) (f : X ⟶ Y) :=
   PullbackTensor.Local.pullbackHom f
 
@@ -67,12 +71,12 @@ theorem pullbackClass_neg (_h : ModuleTensorPullback.{u}) (f : X ⟶ Y)
     (a : PicardGroup Y) : pullbackClass f (-a) = -pullbackClass f a :=
   PullbackTensor.Local.pullbackClass_neg f a
 
-@[simp] theorem pullbackHom_id (h : ModuleTensorPullback.{u}) :
+theorem pullbackHom_id (h : ModuleTensorPullback.{u}) :
     pullbackHom h (𝟙 X) = AddMonoidHom.id (PicardGroup X) := by
   ext a
   exact pullbackClass_id a
 
-@[simp] theorem pullbackHom_comp (h : ModuleTensorPullback.{u})
+theorem pullbackHom_comp (h : ModuleTensorPullback.{u})
     {Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
     pullbackHom h (f ≫ g) = (pullbackHom h f).comp (pullbackHom h g) := by
   ext a

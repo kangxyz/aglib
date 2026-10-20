@@ -90,6 +90,7 @@ namespace AlgebraicGeometry.Scheme.Pullback.OpenIntersection
 def finitePiFan {n : ℕ} (R : Fin n → CommRingCat.{u}) : Fan R :=
   Fan.mk (.of (∀ i, R i)) (fun i => CommRingCat.ofHom (Pi.evalRingHom (fun j => R j) i))
 
+/-- The universal property of the finite product ring with its coordinate projections. -/
 def finitePiFanIsLimit {n : ℕ} (R : Fin n → CommRingCat.{u}) : IsLimit (finitePiFan R) where
   lift s := CommRingCat.ofHom (RingHom.pi fun i => (s.π.app ⟨i⟩).hom)
   fac s j := by

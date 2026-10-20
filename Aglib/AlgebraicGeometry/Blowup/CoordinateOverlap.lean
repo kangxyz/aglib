@@ -46,15 +46,18 @@ namespace AlgebraicGeometry.Scheme.Blowup.Coordinates
 
 variable {C D : Type u} [CommRing C] [CommRing D]
 
+/-- The isomorphism of affine schemes induced contravariantly by a ring equivalence. -/
 def specIso (e : C ≃+* D) : Spec (.of C) ≅ Spec (.of D) :=
   Scheme.Spec.mapIso e.symm.toCommRingCatIso.op
 
+/-- The principal-open morphism from `Spec C[1/r]` to `Spec C`. -/
 def awayMap (r : C) : Spec (.of (Localization.Away r)) ⟶ Spec (.of C) :=
   Spec.map (CommRingCat.ofHom (algebraMap C (Localization.Away r)))
 
 instance awayMap_isOpenImmersion (r : C) : IsOpenImmersion (awayMap r) := by
   dsimp [awayMap]; infer_instance
 
+/-- The equivalence of localizations induced by a ring equivalence carrying `r` to `s`. -/
 def awayEquiv (e : C ≃+* D) (r : C) (s : D) (h : e r = s) :
     Localization.Away r ≃+* Localization.Away s :=
   IsLocalization.ringEquivOfRingEquiv (M := Submonoid.powers r)

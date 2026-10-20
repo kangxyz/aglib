@@ -51,13 +51,17 @@ universe u
 /-- Actual two-open principal data and finite closed support on the original
 scheme. Its regularity and overlap fields are the native line-gluing inputs. -/
 structure PrincipalBoundary (X : Scheme.{u}) where
+  /-- The affine open carrying the principal section. -/
   U : X.Opens
+  /-- The open complement of the finite zero set, together with `U` covering `X`. -/
   W : X.Opens
   affine : IsAffineOpen U
   covers : U ⊔ W = ⊤
+  /-- The nonzero nonunit section on `U` defining the principal boundary. -/
   f : Γ(X, U)
   f_ne_zero : f ≠ 0
   f_nonunit : ¬ IsUnit f
+  /-- The underlying finite closed zero set of `f` inside `U`. -/
   Z : Set X
   zeroSet : Z = (U : Set X) \ (X.basicOpen f : Set X)
   Z_finite : Z.Finite

@@ -62,6 +62,8 @@ variable {X Y Z : Scheme.{u}}
   ext a
   rfl
 
+/-- The ideal-module isomorphism induced by replacing the source of a morphism by an isomorphic
+scheme. -/
 def idealSourceIso (e : X ≅ Y) (i : Y ⟶ Z) :
     idealModule i ≅ idealModule (e.hom ≫ i) :=
   kernel.mapIso (AlgebraicGeometry.Scheme.Hom.structureModuleMap i)
@@ -71,12 +73,14 @@ def idealSourceIso (e : X ≅ Y) (i : Y ⟶ Z) :
 
 variable {S T D : Scheme.{u}} (p : X ⟶ S) (t : T ⟶ S) (i : D ⟶ pullback p t)
 variable [IsIso (i ≫ pullback.snd p t)]
+/-- The section recovered from `i` when its projection to the parameter scheme is an isomorphism. -/
 def divisorSection : T ⟶ X := inv (i ≫ pullback.snd p t) ≫ i ≫ pullback.fst p t
 
 @[reassoc (attr := simp)] theorem divisorSection_over : divisorSection p t i ≫ p = t := by
   simp only [divisorSection, Category.assoc, pullback.condition]
   rw [← Category.assoc i, ← Category.assoc, IsIso.inv_hom_id, Category.id_comp]
 
+/-- The isomorphism from the source of `i` to the parameter scheme given by its projection. -/
 def divisorGraphIso : D ≅ T := asIso (i ≫ pullback.snd p t)
 
 @[reassoc (attr := simp)] theorem divisorGraphIso_graph :
@@ -87,6 +91,8 @@ def divisorGraphIso : D ≅ T := asIso (i ≫ pullback.snd p t)
     simp [divisorGraphIso, divisorSection, ← Category.assoc]
   · simp [divisorGraphIso]
 
+/-- The ideal-module comparison between `i` and the graph of its recovered section,
+assuming the projection of `i` is an isomorphism. -/
 def divisorGraphIdealIso :
     idealModule (graph p t (divisorSection p t i) (divisorSection_over p t i)) ≅ idealModule i :=
   idealSourceIso (divisorGraphIso p t i) _ ≪≫

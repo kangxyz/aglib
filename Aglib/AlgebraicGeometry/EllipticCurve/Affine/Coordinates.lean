@@ -33,7 +33,9 @@ universe u
 namespace WeierstrassCurve
 variable {R : Type u} [CommRing R]
 
+/-- The `x` coordinate in the affine Weierstrass coordinate ring. -/
 abbrev affineX (W : WeierstrassCurve R) : W.toAffine.CoordinateRing := algebraMap R[X] _ X
+/-- The `y` coordinate in the affine Weierstrass coordinate ring. -/
 abbrev affineY (W : WeierstrassCurve R) : W.toAffine.CoordinateRing :=
   AdjoinRoot.root W.toAffine.polynomial
 
@@ -53,6 +55,8 @@ lemma affine_relation (W : WeierstrassCurve R) :
 
 variable {S : Type*} [CommRing S] [Algebra R S]
 
+/-- The algebra map from the affine Weierstrass coordinate ring determined by coordinates `x`
+and `y` satisfying the Weierstrass equation. -/
 def affineLift (W : WeierstrassCurve R) (x y : S)
     (h : y ^ 2 + algebraMap R S W.a₁ * x * y + algebraMap R S W.a₃ * y -
       (x ^ 3 + algebraMap R S W.a₂ * x ^ 2 + algebraMap R S W.a₄ * x +

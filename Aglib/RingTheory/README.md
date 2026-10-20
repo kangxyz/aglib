@@ -38,3 +38,5 @@ Focused incoming algebra guides are [AdjoinRoot](AdjoinRoot/README.md),
 [localization away from an element](Localization/Away/README.md).
 Their ring maps, chosen fraction fields, finite-type and local hypotheses remain
 explicit; the guides do not replace those inputs by geometric assumptions.
+
+Focused interface guides: [Derivations on actual fraction fields](Derivation/README.md).

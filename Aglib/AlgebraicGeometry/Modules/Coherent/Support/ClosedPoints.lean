@@ -45,6 +45,7 @@ instance supportOn_serre (S : Set X) : (supportOn X S).IsSerreClass := by
     fun x => CategoryTheory.ObjectProperty.exactKernelSerre (stalkPullback X x.1)
   exact CategoryTheory.ObjectProperty.forallSerre _
 
+/-- The full subcategory of the small coherent model with support contained in `S`. -/
 abbrev CohSupportOn (S : Set X) := (supportOn X S).FullSubcategory
 /-- This fixed full subcategory is exactly the geometric support category,
 not an arbitrary exact category with a selected K-group isomorphism. -/
@@ -64,12 +65,16 @@ theorem supportOn_iff (S : Set X) (N : Coh X) :
 geometric data only; no K-theory statement is stored here. Each field is
 the residue field of its image because its map is a closed immersion. -/
 structure ClosedFieldFamily where
+  /-- The index type of the distinct closed points in the family. -/
   Index : Type u
+  /-- The field attached to each indexed closed point. -/
   field : Index → Type u
   fieldInstance : ∀ i, Field (field i)
+  /-- The indexed closed points of `X`. -/
   point : Index → X
   point_injective : Function.Injective point
   point_closed : ∀ i, IsClosed ({point i} : Set X)
+  /-- The closed immersion from each specified field spectrum into `X`. -/
   immersion : ∀ i, Spec (CommRingCat.of (field i)) ⟶ X
   closedImmersion : ∀ i, IsClosedImmersion (immersion i)
   immersion_apply : ∀ i y, immersion i y = point i

@@ -45,9 +45,11 @@ instance oneRealizationModule (X : Object R) :
     Module (OneLaurent R) (OneRealization X) :=
   Module.compHom X.carrier (oneRepresentation X).toRingHom
 
+/-- The original one-variable realization localized at the prime ideal `q`. -/
 abbrev OneLocalRealization (X : Object R) (q : Ideal (OneLaurent R)) [q.IsPrime] :=
   Localization.AtPrime q ⊗[OneLaurent R] OneRealization X
 
+/-- The module length of the one-variable realization at the prime ideal `q`. -/
 def oneAmbientLength (X : Object R) (q : Ideal (OneLaurent R)) [q.IsPrime] : ℕ∞ :=
   Module.length (Localization.AtPrime q) (OneLocalRealization X q)
 
@@ -57,6 +59,7 @@ def graphRealizationOneModule (X : Object R) (f : Rˣ) :
     Module (OneLaurent R) (CommutingAutomorphisms.Realization (graphObject X f)) :=
   Module.compHom X.carrier (oneRepresentation X).toRingHom
 
+/-- The identity equivalence between the graph carrier and its one-variable realization. -/
 def graphRealizationOneEquiv (X : Object R) (f : Rˣ) :
     letI := graphRealizationOneModule X f
     CommutingAutomorphisms.Realization (graphObject X f) ≃ₗ[OneLaurent R] OneRealization X := by

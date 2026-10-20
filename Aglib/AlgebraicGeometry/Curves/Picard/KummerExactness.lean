@@ -79,6 +79,8 @@ def globalUnitMap : Additive Γ(X, ⊤)ˣ →+ Additive X.functionFieldˣ :=
   (Units.map (X.germToFunctionField ⊤).hom.toMonoidHom).toAdditive
 
 omit [IsNoetherian X] in
+-- Retain the Noetherian guard of the original regular-curve global-unit map.
+@[nolint unusedArguments]
 theorem globalUnitMap_injective [IsNoetherian X] : Function.Injective (globalUnitMap X) := by
   intro a b h
   apply Additive.toMul.injective
@@ -91,6 +93,7 @@ theorem globalUnitMap_principal (a : Additive Γ(X, ⊤)ˣ) : principal X (globa
   exact Scheme.ord_of_isUnit a.toMul.isUnit (show x.val ∈ (⊤ : X.Opens) from trivial)
 
 variable (n : ℕ)
+/-- The Kummer pair with zero divisor and the rational function determined by the global unit. -/
 def globalUnitPair : Additive Γ(X, ⊤)ˣ →+ pairs X n where
   toFun a := ⟨(0, globalUnitMap X a), by
     change principal X (globalUnitMap X a) = n • (0 : Divisor X)
@@ -98,6 +101,7 @@ def globalUnitPair : Additive Γ(X, ⊤)ˣ →+ pairs X n where
   map_zero' := by apply Subtype.ext; simp
   map_add' a b := by apply Subtype.ext; simp
 
+/-- The class of the zero-divisor global-unit pair in the quotient of Kummer pairs. -/
 def globalUnitsToT : Additive Γ(X, ⊤)ˣ →+ T X n :=
   (QuotientAddGroup.mk' (relation X n).range).comp (globalUnitPair X n)
 
@@ -138,6 +142,7 @@ theorem globalUnitsToT_eq_zero_iff (a : Additive Γ(X, ⊤)ˣ) :
 abbrev globalUnitsModuloPowers := Additive Γ(X, ⊤)ˣ ⧸ (nsmulAddMonoidHom (α := Additive Γ(X,
     ⊤)ˣ) n).range
 
+/-- Send global units modulo nth powers to the quotient of Kummer pairs. -/
 def unitsModuloToT : globalUnitsModuloPowers X n →+ T X n :=
   QuotientAddGroup.lift _ (globalUnitsToT X n) (by
     rintro a ⟨b, rfl⟩
@@ -224,6 +229,8 @@ def toPicard : T X n →+ PicardGroup X :=
   (AlgebraicGeometry.Scheme.OverField.Curve.Picard.DivisorClass.divisorPicardEquiv X
       hdim).toAddMonoidHom.comp (toClass X n)
 
+/-- Map Kummer-pair classes to ordinary Picard n-torsion through the proved divisor-class
+equivalence. -/
 def toPicardTorsion : T X n →+ picardTorsion X n :=
   (divisorTorsionPicardEquiv X n hdim).toAddMonoidHom.comp (toTorsionClasses X n)
 

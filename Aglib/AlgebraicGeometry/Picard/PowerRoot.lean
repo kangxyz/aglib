@@ -157,6 +157,8 @@ def compatibleFramePrecomp (X : Scheme.{u}) {n : ℕ} (P Q : Pair X n)
       (unitPowerIso X n).hom = P.trivialization.hom
     rw [φ.property, he]⟩
 
+/-- Transport compatible frames along the specified line-bundle isomorphism that preserves
+the chosen nth-power trivializations. -/
 def compatibleFrameEquiv (X : Scheme.{u}) {n : ℕ} (P Q : Pair X n)
     (e : P.lineBundle.val ≅ Q.lineBundle.val)
     (he : (powerIso X e n).hom ≫ Q.trivialization.hom = P.trivialization.hom) :
@@ -193,7 +195,9 @@ def rootSectionEquiv (h :
       (pullbackUnitIso U.unop.hom) (unitPair_pullback U.unop.hom n f)).trans
         (unitCompatibleEquiv U.unop.left n (Units.map U.unop.hom.appTop.hom.toMonoidHom f)))
 
-@[simp] theorem rootSectionEquiv_value (h :
+-- Keep the root-coordinate value rule; simpNF only normalizes implicit coefficient-map
+-- coercions.
+@[nolint simpNF, simp] theorem rootSectionEquiv_value (h :
     AlgebraicGeometry.Scheme.Modules.Invertible.EtaleDescent.EtaleLineBundleDescent.{u}) (X :
     Scheme.{u})
     (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (f : Γ(X, ⊤)ˣ)

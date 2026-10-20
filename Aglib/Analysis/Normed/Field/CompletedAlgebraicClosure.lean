@@ -30,6 +30,7 @@ namespace AlgebraicClosure.SpectralCompletion
 variable (F : Type u) [NontriviallyNormedField F] [CompleteSpace F]
   [CharZero F] [IsUltrametricDist F]
 
+/-- The algebraic closure of `F` on which the spectral norm is installed. -/
 abbrev Algebraic := AlgebraicClosure F
 instance algebraicNormedField : NormedField (Algebraic F) :=
   spectralNorm.normedField F (Algebraic F)
@@ -42,6 +43,7 @@ instance algebraicUltrametric : IsUltrametricDist (Algebraic F) :=
 /-- The existing algebraic closure has its native characteristic-zero instance. -/
 abbrev algebraicCharZero : CharZero (Algebraic F) := inferInstance
 
+/-- The completion of the algebraic closure of `F` with its spectral norm. -/
 abbrev Completed := UniformSpace.Completion (Algebraic F)
 instance completedCharZero : CharZero (Completed F) :=
   (RingHom.charZero_iff (algebraMap (Algebraic F) (Completed F)).injective).mp inferInstance
@@ -55,6 +57,8 @@ instance completedNontrivial : NontriviallyNormedField (Completed F) where
 instance completedAlgClosed : IsAlgClosed (Completed F) :=
   IsAlgClosed.of_denseRange UniformSpace.Completion.denseRange_coe
 
+/-- The canonical ring embedding of `F` into the spectral-norm completion of its algebraic
+closure. -/
 def embedding : F →+* Completed F :=
   (algebraMap (Algebraic F) (Completed F)).comp (algebraMap F (Algebraic F))
 instance embeddingIsometric : RingHomIsometric (embedding F) where

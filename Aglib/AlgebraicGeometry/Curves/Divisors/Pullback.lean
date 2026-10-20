@@ -59,14 +59,19 @@ variable [hFinite : IsFinite f]
 variable [hDVRX : ∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
 variable [hDVRY : ∀ y : ClosedPoint Y, IsDiscreteValuationRing (Y.presheaf.stalk y.val)]
 
+/-- A chosen irreducible element in the DVR stalk at the specified closed point. -/
 def uniformizer (y : ClosedPoint Y) : Y.presheaf.stalk y.val :=
   (IsDiscreteValuationRing.exists_irreducible (Y.presheaf.stalk y.val)).choose
 
 omit hNoethY in
+-- Retain noetherianity of Y in the closed-point divisor pullback interface; choosing an
+-- irreducible uniformizer only uses the specified DVR stalk.
+@[nolint unusedArguments]
 theorem uniformizer_irreducible [IsNoetherian Y] (y : ClosedPoint Y) :
     Irreducible (uniformizer y) :=
   (IsDiscreteValuationRing.exists_irreducible (Y.presheaf.stalk y.val)).choose_spec
 
+/-- The chosen stalk uniformizer, viewed as a nonzero unit of the target function field. -/
 def uniformizerUnit (y : ClosedPoint Y) : Y.functionFieldˣ :=
   Units.mk0 (algebraMap (Y.presheaf.stalk y.val) Y.functionField (uniformizer y))
     (by
@@ -79,6 +84,9 @@ def ramification (x : ClosedPoint X) : ℤ :=
     x.val
 
 omit hNoethY hFinite hDVRY in
+-- Retain the finite-map, target-noetherian and target-DVR conditions of divisor pullback; the
+-- order-zero calculation only uses that stalk units map to stalk units.
+@[nolint unusedArguments]
 theorem mapped_stalk_unit_order [IsNoetherian Y] [IsFinite f]
     [∀ y : ClosedPoint Y, IsDiscreteValuationRing (Y.presheaf.stalk y.val)]
     (x : ClosedPoint X) (a : (Y.presheaf.stalk (f x.val))ˣ) :
@@ -126,6 +134,9 @@ theorem ramification_nonneg (x : ClosedPoint X) : 0 ≤ ramification f x := by
     f x)), rfl⟩
 
 omit hDVRX in
+-- Retain the source-DVR condition in the ramification-weighted divisor pullback interface; the
+-- support bound itself follows from finite fibres and the target divisor support.
+@[nolint unusedArguments]
 theorem finite_preimage_support
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] (D : Divisor Y) :
     (Function.support fun x : ClosedPoint X => ramification f x * D (closedPointMap f x)).Finite

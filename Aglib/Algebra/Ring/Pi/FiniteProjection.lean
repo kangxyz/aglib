@@ -34,7 +34,7 @@ variable (m n : ℕ) [NeZero m]
 /-- Actual component index reduction from the mn-cycle to the m-cycle. -/
 def mulIndex (i : Fin (m * n)) : Fin m := ⟨i.val % m, Nat.mod_lt _ (NeZero.pos m)⟩
 
-@[simp] theorem mulIndex_rotate (i : Fin (m * n)) :
+theorem mulIndex_rotate (i : Fin (m * n)) :
     mulIndex m n (finRotate (m * n) i) = finRotate m (mulIndex m n i) := by
   let := i.neZero
   apply Fin.ext

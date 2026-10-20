@@ -33,6 +33,9 @@ universe u
 /-- An inertia automorphism of a normal subfield lifts through a purely
 inseparable ambient extension while preserving the original prime's literal
 residue conditions. No separability of the ambient extension is assumed. -/
+-- Retain normality of the original intermediate field S in the inertia-lifting interface; the
+-- actual lift and residue calculation use ambient normality and pure inseparability.
+@[nolint unusedArguments]
 theorem liftNormal_mem_inertia
     (R K S Ω : Type u) [CommRing R] [Field K] [Field S] [Field Ω]
     [Algebra R K] [Algebra K S] [Algebra K Ω] [Algebra S Ω]

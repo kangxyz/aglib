@@ -30,6 +30,7 @@ variable (R : Type u) [CommRing R]
 instance cover_affine (Y : Scheme.FiniteEtale (Spec (.of R))) : IsAffine Y.obj.left :=
   isAffine_of_isAffineHom Y.obj.hom
 
+/-- The global-section ring of a finite étale scheme over `Spec R`. -/
 abbrev sections (Y : Scheme.FiniteEtale (Spec (.of R))) : CommRingCat := Γ(Y.obj.left, ⊤)
 
 /-- The actual structural morphism gives the coordinate algebra over the base. -/
@@ -37,6 +38,8 @@ abbrev sections (Y : Scheme.FiniteEtale (Spec (.of R))) : CommRingCat := Γ(Y.ob
     Algebra R (sections R Y) :=
   (Spec.preimage (Y.obj.left.isoSpec.inv ≫ Y.obj.hom)).hom.toAlgebra
 
+/-- The base `R`-algebra structure on the section ring induced by the finite étale structure
+morphism. -/
 local instance (Y : Scheme.FiniteEtale (Spec (.of R))) : Algebra R (sections R Y)
   := sectionsAlgebra R Y
 

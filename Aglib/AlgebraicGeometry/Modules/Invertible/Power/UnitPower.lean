@@ -191,7 +191,7 @@ theorem tensorSheafIso_trans {M M' M'' N N' N'' : SheafOfModules.{u} X.ringCatSh
   intro m n
   rfl
 
-@[simp] theorem powerIso_refl (L : LineBundle X) (n : ℕ) :
+theorem powerIso_refl (L : LineBundle X) (n : ℕ) :
     powerIso X (Iso.refl L.val) n = Iso.refl _ := by
   induction n with
   | zero => rfl
@@ -199,7 +199,7 @@ theorem tensorSheafIso_trans {M M' M'' N N' N'' : SheafOfModules.{u} X.ringCatSh
     exact (congrArg (tensorSheafIso X (Iso.refl L.val)) ih).trans
       (tensorSheafIso_refl X _ _)
 
-@[simp] theorem powerIso_trans {L M N : LineBundle X} (e : L.val ≅ M.val) (g : M.val ≅ N.val)
+theorem powerIso_trans {L M N : LineBundle X} (e : L.val ≅ M.val) (g : M.val ≅ N.val)
     (n : ℕ) :
     powerIso X (e ≪≫ g) n = powerIso X e n ≪≫ powerIso X g n := by
   induction n with
@@ -209,7 +209,7 @@ theorem tensorSheafIso_trans {M M' M'' N N' N'' : SheafOfModules.{u} X.ringCatSh
     rw [ih, tensorSheafIso_trans]
     rfl
 
-@[simp] theorem powerIso_symm {L M : LineBundle X} (e : L.val ≅ M.val) (n : ℕ) :
+theorem powerIso_symm {L M : LineBundle X} (e : L.val ≅ M.val) (n : ℕ) :
     powerIso X e.symm n = (powerIso X e n).symm := by
   apply Iso.ext
   apply (cancel_mono (powerIso X e n).hom).mp

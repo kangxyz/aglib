@@ -344,7 +344,7 @@ def picardH1Equiv (hAJ : Stacks03AJ.{u, w} X) : PicardGroup X ≃+ H1Etale X (gm
 @[simp] theorem picardH1Equiv_apply (hAJ : Stacks03AJ.{u, w} X) (c : PicardGroup X) :
     picardH1Equiv h X hAJ c = classMap h X c := rfl
 
-@[simp] theorem picardH1Equiv_toAddMonoidHom (hAJ : Stacks03AJ.{u, w} X) :
+theorem picardH1Equiv_toAddMonoidHom (hAJ : Stacks03AJ.{u, w} X) :
     (picardH1Equiv h X hAJ).toAddMonoidHom = toH1 h X := rfl
 
 theorem toH1_injective (hAJ : Stacks03AJ.{u, w} X) : Function.Injective (toH1 h X) :=

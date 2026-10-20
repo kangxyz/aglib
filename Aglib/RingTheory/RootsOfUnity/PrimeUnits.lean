@@ -33,7 +33,7 @@ def liftUnitOfRange
   inv_val := hι (by rw [map_mul, Classical.choose_spec hzi, Classical.choose_spec hz,
     ← Units.val_mul, inv_mul_cancel, Units.val_one, map_one])
 
-@[simp] theorem map_liftUnitOfRange
+theorem map_liftUnitOfRange
     {A K : Type u} [CommRing A] [Field K] (ι : A →+* K) (hι : Function.Injective ι)
     (z : Kˣ) (hz : (z : K) ∈ ι.range) (hzi : ((z⁻¹ : Kˣ) : K) ∈ ι.range) :
     Units.map ι.toMonoidHom (liftUnitOfRange ι hι z hz hzi) = z := by
@@ -44,10 +44,13 @@ def liftUnitOfRange
 It contains the units that exclude collapse to one and characteristic q. -/
 structure PrimeRootUnits (q : ℕ) (A : Type u) [CommRing A] where
   prime : q.Prime
+  /-- The supplied root unit; its q-th power equation is recorded separately. -/
   root : Aˣ
   root_pow_eq_one : root ^ q = 1
+  /-- The supplied unit whose value is the root minus one. -/
   rootMinusOne : Aˣ
   rootMinusOne_val : (rootMinusOne : A) = (root : A) - 1
+  /-- The supplied unit that records invertibility of the natural number q. -/
   primeUnit : Aˣ
   primeUnit_val : (primeUnit : A) = q
 
@@ -113,7 +116,8 @@ theorem PrimeRootUnits.specialize
 
 section
 
-local instance (L : Type u) : DecidableEq L := Classical.decEq L
+/-- Classical equality for the local transport and primitivity proofs of the supplied units. -/
+local instance instDecidableEq (L : Type u) : DecidableEq L := Classical.decEq L
 
 /-- The same prescribed unit data can be mapped to a non-field fibre ring. -/
 def PrimeRootUnits.map

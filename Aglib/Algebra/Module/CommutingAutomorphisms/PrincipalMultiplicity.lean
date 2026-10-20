@@ -77,6 +77,9 @@ def originalPrincipalFaceTerm (X : Object R) (q : Ideal (Laurent S)) [q.IsPrime]
           (Laurent S ⧸ P.map (coefficientMap (algebraMap R S))))).toNat : ℤ)
   else 0
 
+-- Retain the original prime-indexed interface used by localized multiplicity transport;
+-- the minimal-prime equivalence itself already forces primality when either side holds.
+@[nolint unusedArguments]
 theorem localOriginal_minimalSupport_iff (X : Object R)
     (Q : Ideal (Laurent R)) [Q.IsPrime]
     (p : Ideal (Localization.AtPrime Q)) [p.IsPrime] :

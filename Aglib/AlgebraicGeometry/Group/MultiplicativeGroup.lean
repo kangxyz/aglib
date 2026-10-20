@@ -53,12 +53,14 @@ universe u
 /-- The actual universal Laurent coordinate ring, in the scheme universe. -/
 abbrev CoordinateRing := LaurentPolynomial (ULift.{u} ℤ)
 
+/-- The universal Laurent coordinate `T`, regarded as a unit with inverse `T⁻¹`. -/
 def coordinateUnit : CoordinateRing.{u}ˣ where
   val := LaurentPolynomial.T 1
   inv := LaurentPolynomial.T (-1)
   val_inv := by rw [← LaurentPolynomial.T_add]; norm_num
   inv_val := by rw [← LaurentPolynomial.T_add]; norm_num
 
+/-- The canonical ring homomorphism from universe-lifted integers to a commutative ring. -/
 def integerMap (R : Type u) [CommRing R] : ULift.{u} ℤ →+* R :=
   (Int.castRingHom R).comp ULift.ringEquiv.toRingHom
 
@@ -119,6 +121,8 @@ def unitsFunctor : CommRingCat.{u} ⥤ CommGrpCat.{u} where
 /-- Actual global invertible functions, contravariant in the test scheme. -/
 def globalUnitsFunctor : Scheme.{u}ᵒᵖ ⥤ CommGrpCat.{u} := Scheme.Γ ⋙ unitsFunctor
 
+/-- The equivalence between morphisms in the opposite ring category and ring homomorphisms in
+the reversed direction. -/
 def opRingHomEquiv (R S : CommRingCat.{u}) : (op S ⟶ op R) ≃ (R →+* S) where
   toFun f := f.unop.hom
   invFun f := (CommRingCat.ofHom f).op
@@ -149,6 +153,8 @@ theorem affineHomUnits_comp {U V : Scheme.{u}} (f : U ⟶ V) (g : V ⟶ affineSc
 /-- The actual relative multiplicative-group scheme is the product projection. -/
 def scheme (X : Scheme.{u}) : Over X := Over.mk (Limits.prod.fst : X ⨯ affineScheme.{u} ⟶ X)
 
+/-- The equivalence identifying a morphism to the relative multiplicative scheme with its
+component in the absolute Laurent affine scheme. -/
 def overHomAffineEquiv (X : Scheme.{u}) (U : Over X) : (U ⟶ scheme X) ≃ (U.left ⟶ affineScheme.{u})
   where
   toFun f := f.left ≫ Limits.prod.snd
@@ -160,9 +166,12 @@ def overHomAffineEquiv (X : Scheme.{u}) (U : Over X) : (U ⟶ scheme X) ≃ (U.l
     · simp
   right_inv g := by simp
 
+/-- The equivalence identifying relative multiplicative-scheme sections with invertible global
+functions on the test scheme. -/
 def sectionsUnitsEquiv (X : Scheme.{u}) (U : Over X) : (U ⟶ scheme X) ≃ Γ(U.left, ⊤)ˣ :=
   (overHomAffineEquiv X U).trans (affineHomUnits U.left)
 
+/-- The contravariant functor of invertible global functions on schemes over `X`. -/
 def overUnitsFunctor (X : Scheme.{u}) : (Over X)ᵒᵖ ⥤ CommGrpCat.{u} :=
   (Over.forget X).op ⋙ globalUnitsFunctor
 
@@ -175,6 +184,7 @@ def unitsRepresentable (X : Scheme.{u}) :
       Units.map f.left.appTop.hom.toMonoidHom (affineHomUnits _ (g.left ≫ Limits.prod.snd))
     rw [Category.assoc, affineHomUnits_comp]
 
+/-- The commutative group-object structure obtained from representability of global units. -/
 @[instance_reducible] def commGroup (X : Scheme.{u}) : CommGrpObj (scheme X) :=
   CommGrpObj.ofRepresentableBy _ (overUnitsFunctor X) (unitsRepresentable X)
 
@@ -224,6 +234,7 @@ theorem oneMap_comp (X : Scheme.{u}) (U : Over X) (a : U ⟶ scheme X) :
 /-- The actual nth-power kernel scheme, before any finiteness/etaleness theorem. -/
 def rootsScheme (X : Scheme.{u}) (n : ℕ) : Over X := equalizer (powerMap X n) (oneMap X)
 
+/-- The equalizer inclusion of the roots-of-unity scheme into the multiplicative scheme. -/
 def rootsInclusion (X : Scheme.{u}) (n : ℕ) : rootsScheme X n ⟶ scheme X :=
   equalizer.ι _ _
 
@@ -287,9 +298,12 @@ def rootsRepresentable (X : Scheme.{u}) (n : ℕ) :
     rw [Category.assoc]
     exact (unitsRepresentable X).homEquiv_comp f (g ≫ rootsInclusion X n)
 
+/-- The commutative group-object structure obtained from representability of `n`th roots of
+unity. -/
 @[instance_reducible] def rootsCommGroup (X : Scheme.{u}) (n : ℕ) : CommGrpObj (rootsScheme X n) :=
   CommGrpObj.ofRepresentableBy _ (rootsFunctor X n) (rootsRepresentable X n)
 
+/-- The group object of `n`th roots of unity over `X`. -/
 def rootsGroupScheme (X : Scheme.{u}) (n : ℕ) : Grp (Over X) :=
   letI := rootsCommGroup X n
   Grp.mk (rootsScheme X n)

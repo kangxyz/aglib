@@ -178,6 +178,44 @@ proved suppliers below can now discharge the proper-finiteness inputs.
 
 Predicate definitions and theorem suppliers are separate interfaces. Current suppliers include proper coherent finiteness, actual arbitrary-base fixed relative differential rank, smooth regularity/normality/dimension, normal-component openness, etale differential pullback, Noetherian Zariski dimension vanishing, affine module base change and qcqs flat base change over arbitrary bases. The former `SmoothDifferentialRank` input is retired: `differentialSheaf_hasRank_of_smooth` and `relativeDifferentialSheaf_hasRank_of_smooth` prove the actual rank without a supplied family. The empty `Properties` entry is retired; its actual successors are `SmoothRank`, `EtalePullback` and the general relative differential family. The local guides name these results and retain their exact conditions. Current elaboration/audit coverage remains in [WORK_PLAN.md](WORK_PLAN.md) and the focused [cohomology plan](COHOMOLOGY_PLAN.md).
 
+The [blowup family](../Aglib/AlgebraicGeometry/Blowup/README.md) now constructs
+the actual affine Rees Proj with its Cartier image ideal and full universal
+property over every commutative ring. `blowupDatum I` glues these datums over
+affine opens to give the global universal object on arbitrary tests.
+`noetherianBlowupExistence`, `noetherianBlowupProper` and `blowupAffineAtlas`
+supply the original retained families, with properness for any given universal
+representative over a locally Noetherian base. `blowupFlatBaseChange` proves
+the original flat-base-change family for given universal blowups, using the
+literal pullback and canonical comparison map.
+
+[Henselian residue sections](../Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/HenselianResidue.md)
+lift each specified residue point of a finite etale scheme uniquely to a section
+over any Henselian local ring. Both structural and residue triangles use the
+original scheme maps. This section theorem assumes no comparison equivalence;
+it does not supply the full finite-etale residue-category equivalence or the
+proper-Henselian comparison family.
+
+[Pointed proper smooth curves](../Aglib/AlgebraicGeometry/Geometrically/Connected/PointedCurve.md)
+are geometrically connected when their actual source is Noetherian and
+connected and their structure map has an actual rational section. Smooth
+relative dimension one and properness are retained. The legacy assertion for
+arbitrary connected pointed field schemes remains conditional.
+
+[Characteristic-zero curve isogenies](../Aglib/AlgebraicGeometry/Curves/Isogeny/Etale.md)
+give `Curve.charZeroFiniteCurveGroupHomEtale` for native field-scheme group
+objects. Both groups retain their smooth proper geometrically connected
+dimension-one properties; the actual group homomorphism is finite and
+surjective. The theorem proves etaleness of that same scheme morphism, and its
+pointed adapter supplies the pre-existing conditional consumer. It has no Tate
+parameter or supplied generic-etaleness premise.
+
+[Projective coherent presentations](../Aglib/AlgebraicGeometry/Modules/Coherent/Projective/README.md)
+transport the native negative-twist epimorphism through an actual finite-coordinate
+closed projective embedding. The finite-type quasicoherent version works over
+an arbitrary commutative ring; the coherent version derives its local
+Noetherianity from a Noetherian base. The same source is finite locally free,
+and the quotient map uses the original pullback/pushforward counit.
+
 For proper geometrically integral field schemes,
 `Scheme.constants_bijective_of_proper_geometricallyIntegral` proves bijectivity
 of the original constants map and supplies the retained

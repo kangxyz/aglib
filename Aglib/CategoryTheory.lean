@@ -27,6 +27,7 @@ public import Aglib.CategoryTheory.Abelian.Subcategory.Exact
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
 public import Aglib.CategoryTheory.Adjunction.Mates
 public import Aglib.CategoryTheory.Adjunction.Unit
+public import Aglib.CategoryTheory.EffectiveEpi.Over
 public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.BaseChange
 public import Aglib.CategoryTheory.ExactCategory.Basic

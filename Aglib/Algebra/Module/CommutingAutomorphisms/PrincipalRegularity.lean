@@ -61,6 +61,7 @@ theorem originalScalarEnd_injective (X : Object R) (r : R) (hr : IsRegular r) :
   change algebraMap R (Laurent R) r • x = algebraMap R (Laurent R) r • y at hxy
   simpa only [IsScalarTower.algebraMap_smul] using hxy
 
+/-- Multiplication by the base scalar `r` on the original realization localized at `q`. -/
 def localizedOriginalScalarEnd (X : Object R) (r : R)
     (q : Ideal (Laurent R)) [q.IsPrime] :
     LocalRealization X q →ₗ[Localization.AtPrime q] LocalRealization X q :=

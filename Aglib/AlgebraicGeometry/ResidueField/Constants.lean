@@ -25,6 +25,8 @@ variable {k : Type u} [Field k] (X : Scheme.{u}) (p : X ⟶ Spec (.of k))
 def residueConstants (x : X) : k →+* X.residueField x :=
   (Spec.preimage (X.fromSpecResidueField x ≫ p)).hom
 
+/-- The base-field algebra structure on a residue field induced by the scheme structure
+morphism. -/
 @[instance_reducible] def residueAlgebra (x : X) : Algebra k (X.residueField x) :=
   (residueConstants X p x).toAlgebra
 

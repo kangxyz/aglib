@@ -1,4 +1,4 @@
-# Blowup data, actual saturated charts and conditional geometric interfaces
+# Universal blowups and saturated affine charts
 
 [UniversalProperty](UniversalProperty.lean), in `Scheme.Blowup`, uses the existing
 `Localization.Away.saturatedChart A I a` as the literal algebra A[I/a] inside
@@ -8,19 +8,44 @@ A[1/a]. Denominator torsion is killed; a polynomial quotient is not substituted.
 predicate on that actual closed subscheme is proved directly. The module and
 its inclusion are the existing `Scheme.Hom.idealModule` and canonical maps.
 
-`BlowupDatum I` supplies a scheme, its structure map, Cartierness and the actual
-final-object universal property. Unique lifts, comparison isomorphisms,
-properness transfer and isomorphisms away from the centre are proved from those
-inputs. These consequences do not construct a blowup. The four families
-`NoetherianBlowupExistence`, `NoetherianBlowupProper`, `BlowupFlatBaseChange` and
-`BlowupAffineAtlas` remain explicit unsupplied propositions. Their original
-local-Noetherian, Noetherian-ring and actual-flat-map hypotheses are retained.
+`BlowupDatum I` consists of a scheme, its structure map, Cartierness and the
+final-object universal property for the actual inverse-image ideal. Unique
+lifts, comparison isomorphisms and isomorphisms away from the centre use these
+same objects and maps.
+
+[AffineConstruction](AffineConstruction.lean) constructs the original Rees Proj
+over an arbitrary commutative ring, its saturated charts, and Cartierness of
+the actual inverse-image centre. Its blowdown is proper over a Noetherian ring.
+[AffineLiftingCover](AffineLiftingCover.md) produces affine pivot neighborhoods
+from a Cartier image ideal on an arbitrary test scheme.
+[AffineUniversalProperty](AffineUniversalProperty.md) then proves the full
+universal property of that same Proj and constructs `affineProjBlowupDatum`.
+Neither the affine construction nor its universal property needs a domain,
+reducedness, finite generation or Noetherianity.
+
+[FlatBaseChange](FlatBaseChange.md) supplies the exact `BlowupFlatBaseChange`
+family. For a flat map and given universal blowups, the pre-existing canonical
+comparison map is cartesian. The constructed datum uses the literal pullback;
+its comparison isomorphism has both original projection equations. The lower
+[Cartier comap theorem](../IdealSheaf/Cartier/FlatComap.lean) proves local rank
+one of the actual inverse-image ideal under arbitrary flat morphisms.
+
+[Construction](Construction.md) glues the actual affine datums by their canonical
+open maps and constructs `blowupDatum I` for every scheme and ideal sheaf. The
+constructed datum has the full universal property on arbitrary test schemes.
+Its `noetherianBlowupExistence` corollary supplies the original retained family.
+[Properness](Properness.md) proves `noetherianBlowupProper` for every given
+universal representative over a locally Noetherian base, using target locality
+and its actual affine pullbacks. [AffineAtlas](AffineAtlas.md) proves
+`blowupAffineAtlas` with the original saturated chart rings and projection maps.
+All four retained theorem-family interfaces therefore have proved suppliers.
 
 [AffineCenter](AffineCenter.lean) identifies the actual kernel centre of a
 surjective ring map. [BaseChange](BaseChange.lean), in `Scheme.Blowup.BaseChange`,
 constructs the canonical map for an equality of actual centre ideals and proves
-its identity/composition laws. Cartesianness uses the explicit flat-base-change
-family. Its flat and etale corollaries concern the comparison map, and its
+its identity/composition laws. Its parameterized cartesianness interface accepts
+the proved `blowupFlatBaseChange` supplier. Its flat and etale corollaries concern
+the comparison map, and its
 properness corollary retains properness of the original blowdown. No arbitrary
 nonflat base-change theorem or universal flatness of a blowdown is asserted.
 

@@ -58,3 +58,5 @@ fibre-functor, Ext, Stacks03AJ/03RV, finite-coefficient and equivariant-marking
 inputs. The original normalization-coefficient-specific final theorem remains
 pending the separate normalization producer assemblies; it is not part of this
 proved generic prefix.
+
+Focused interface guides: [Henselian residue sections](HenselianResidue.md), [Actual cover comparison, sections and deck maps](Lifting.md).

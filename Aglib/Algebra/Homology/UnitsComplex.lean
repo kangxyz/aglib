@@ -36,7 +36,9 @@ def lowDegree : AddCommGrpCat.MultiplicationCone.Complex
   d₁_d₀ _ := rfl
   d₂_d₁ _ := rfl
 
+/-- Degree-two integral cohomology of the zero-differential units complex. -/
 abbrev H2 := (lowDegree K).H₂
+/-- Degree-one cohomology of the units complex with coefficient cone for multiplication by `n`. -/
 abbrev H1mod (n : ℕ) := (lowDegree K).H₁mod n
 
 /-- The inclusion of actual field units as integral cohomology classes. -/
@@ -76,6 +78,7 @@ def rootCocycle (n : ℕ) (z : rootsOfUnity n K) : (lowDegree K).Cocycles n :=
       exact z.property.symm
     · rfl⟩
 
+/-- The coefficient-cone cohomology class represented by an `n`th root of unity. -/
 def rootClass (n : ℕ) (z : rootsOfUnity n K) : H1mod K n :=
   (lowDegree K).classMod n (rootCocycle K n z)
 

@@ -70,7 +70,7 @@ open _root_.AlgebraicGeometry.Scheme.Modules.Invertible.TrivializedPower
     (U : X.Opensᵒᵖ) (m : M.val.obj U) :
     (scalarMap X M a).val.app U m = X.presheaf.map (homOfLE le_top : U.unop ⟶ ⊤).op a • m := rfl
 
-@[simp] theorem scalarMap_one (M : SheafOfModules.{u} X.ringCatSheaf) : scalarMap X M 1 = 𝟙 M := by
+theorem scalarMap_one (M : SheafOfModules.{u} X.ringCatSheaf) : scalarMap X M 1 = 𝟙 M := by
   ext U m
   simp only [scalarMap_app, map_one, one_smul]
   rfl
@@ -120,7 +120,7 @@ theorem unit_hom_eq_scalar (φ : SheafOfModules.unit X.ringCatSheaf ⟶ SheafOfM
   rw [mul_one, hnat, mul_comm] at hlin
   exact hlin
 
-@[simp] theorem unitOfIso_hom (e : SheafOfModules.unit X.ringCatSheaf ≅ SheafOfModules.unit
+theorem unitOfIso_hom (e : SheafOfModules.unit X.ringCatSheaf ≅ SheafOfModules.unit
     X.ringCatSheaf) :
     e.hom = scalarMap X (SheafOfModules.unit X.ringCatSheaf) (unitOfIso X e) :=
   unit_hom_eq_scalar X e.hom

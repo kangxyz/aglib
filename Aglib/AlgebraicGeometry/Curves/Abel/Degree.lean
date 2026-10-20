@@ -77,6 +77,8 @@ namespace AlgebraicGeometry.Scheme.OverField.Curve.Abel
 universe u
 open AlgebraicGeometry.Scheme.Hom Divisors
 
+/-- The degree-formula input for the dual of a locally rank-one finite Cartier ideal on a proper
+integral Noetherian curve, under the displayed valuation and product-formula hypotheses. -/
 def FiniteCartierIdealDegree : Prop :=
   ∀ (K : Type u) [Field K] (X D : Scheme.{u}) [IsIntegral X] [IsNoetherian X]
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
@@ -201,6 +203,8 @@ theorem normalizedAbelClass_degree_zero (T : FScheme F) (s : T ⟶ X) :
     fibreDegree_basePullback, sub_self]
 end
 
+/-- The normalized Abel class of a test-scheme section, regarded as an element of the
+degree-zero subgroup under the supplied geometric and degree hypotheses. -/
 def degreeZeroAbelClass (T : FScheme F) (s : T ⟶ X) :
     degreeZeroGroup hnormal hcomp hreg hclosed hdim hprod htensor X hX o ho T := by
   letI := hX.smooth
@@ -209,6 +213,8 @@ def degreeZeroAbelClass (T : FScheme F) (s : T ⟶ X) :
     normalizedAbelClass_degree_zero hnormal hcomp hreg hclosed hdim hprod htensor X hX
       hcartier hdivisor hbase o ho T s⟩
 
+/-- The natural transformation assigning each test-scheme section its degree-zero normalized
+Abel class, under the supplied geometric and degree hypotheses. -/
 def degreeZeroAbelTransformation : uliftYoneda.{u+1}.obj X ⟶
     degreeZeroGroupFunctor hnormal hcomp hreg hclosed hdim hprod htensor X hX o ho ⋙
       CategoryTheory.forget AddCommGrpCat := by

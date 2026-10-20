@@ -108,6 +108,8 @@ theorem abelClass_baseChange :
     graphIdealClass_baseChange hdivisor hbase, originIdealClass_baseChange hdivisor hbase]
   rfl
 
+/-- The natural transformation assigning a section the relative Picard class of its graph
+divisor minus the origin graph. -/
 def abelClassTransformation : uliftYoneda.{u+1}.obj (Over.mk p) ⟶ familyPicardFunctor p where
   app T := ↾fun s ↦ abelClass hdivisor p o ho T.unop.hom s.down.left (Over.w s.down)
   naturality {T T'} f := by
@@ -115,11 +117,15 @@ def abelClassTransformation : uliftYoneda.{u+1}.obj (Over.mk p) ⟶ familyPicard
     exact (abelClass_baseChange hdivisor hbase htensor p o ho T.unop.hom T'.unop.hom
       s.down.left (Over.w s.down) f.unop.left (Over.w f.unop)).symm
 
+/-- The Abel class of a test-scheme section after projection to the origin-normalized Picard
+subgroup. -/
 def normalizedAbelClass (T : Over S) (s : T ⟶ Over.mk p) :
     normalizedGroup htensor p o ho T :=
   normalizeHom htensor p o ho T (abelClass hdivisor p o ho T.hom s.left (Over.w s))
 
 set_option backward.isDefEq.respectTransparency false in
+/-- The natural transformation assigning each test-scheme section its origin-normalized Abel
+class. -/
 def normalizedAbelTransformation : uliftYoneda.{u+1}.obj (Over.mk p) ⟶ normalizedClassFunctor p o
   ho where
   app T := ↾fun s ↦ normalizedAbelClass hdivisor htensor p o ho T.unop s.down
@@ -132,6 +138,8 @@ def normalizedAbelTransformation : uliftYoneda.{u+1}.obj (Over.mk p) ⟶ normali
       (abelClass_baseChange hdivisor hbase htensor p o ho T.unop.hom T'.unop.hom
         s.down.left (Over.w s.down) f.unop.left (Over.w f.unop))).symm.trans hn.symm)
 
+/-- The section on a test scheme obtained by composing its structure morphism with the chosen
+origin. -/
 def originPoint (T : Over S) : T ⟶ Over.mk p :=
   Over.homMk (T.hom ≫ o) (by simp [Category.assoc, ho])
 

@@ -41,15 +41,20 @@ namespace AlgebraicGeometry.Scheme.PrimeInversion
 
 variable (A : Type u) [CommRing A] (ell : ℕ)
 
+/-- The localization of `A` obtained by inverting the image of `ell`. -/
 abbrev Ring := Localization.Away (ell : A)
 
+/-- The spectrum map induced by inverting `ell` in `A`. -/
 def baseMap : Spec (.of (Ring A ell)) ⟶ Spec (.of A) :=
   Spec.map (CommRingCat.ofHom (algebraMap A (Ring A ell)))
 
 variable {Y : Scheme.{u}} (p : Y ⟶ Spec (.of A))
 
+/-- The base change of `Y` along the localization map that inverts `ell`. -/
 abbrev model := pullback p (baseMap A ell)
+/-- The projection from the prime-inverted base change to the original scheme `Y`. -/
 abbrev projection : model A ell p ⟶ Y := pullback.fst p (baseMap A ell)
+/-- The structure morphism of the prime-inverted model over the localized base. -/
 abbrev structural : model A ell p ⟶ Spec (.of (Ring A ell)) :=
   pullback.snd p (baseMap A ell)
 
@@ -81,6 +86,7 @@ instance model_locallyNoetherian [IsLocallyNoetherian Y] :
 
 variable (sigma : Spec (.of A) ⟶ Y) (hsigma : sigma ≫ p = 𝟙 _)
 
+/-- The section of the prime-inverted model induced by the original section `sigma`. -/
 def originSection : Spec (.of (Ring A ell)) ⟶ model A ell p :=
   pullback.lift (baseMap A ell ≫ sigma) (𝟙 _)
     (by simp only [Category.assoc, hsigma, Category.comp_id, Category.id_comp])
@@ -137,6 +143,7 @@ def toField : Ring A ell →+* F :=
     (toField A ell F hell).comp (algebraMap A (Ring A ell)) = algebraMap A F :=
   IsLocalization.Away.lift_comp _ _
 
+/-- The spectrum map from `F` to the localized base, using invertibility of `ell` in `F`. -/
 def localizedGenericMap : Spec (.of F) ⟶ Spec (.of (Ring A ell)) :=
   Spec.map (CommRingCat.ofHom (toField A ell F hell))
 
@@ -167,6 +174,7 @@ def genericIso : pullback (structural A ell p) (localizedGenericMap A ell F hell
       pullback.snd (structural A ell p) (localizedGenericMap A ell F hell) := by
   simp [genericIso, pullback.map, pullback.lift_snd, Category.assoc]
 
+/-- The generic-fibre section induced by the section of the prime-inverted model. -/
 def localizedGenericOrigin : Spec (.of F) ⟶
     pullback (structural A ell p) (localizedGenericMap A ell F hell) :=
   pullback.lift (localizedGenericMap A ell F hell ≫ originSection A ell p sigma hsigma)

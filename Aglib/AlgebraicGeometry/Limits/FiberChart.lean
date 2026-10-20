@@ -75,6 +75,8 @@ lemma fibreChart_square {A Y S T : Scheme.{u}} (j : A ⟶ Y) (a : A ⟶ S)
     simpa only [fibreChart_snd, h] using IsPullback.of_hasPullback a g
   exact H.of_bot (fibreChart_fst j a f g h).symm (IsPullback.of_hasPullback f g)
 
+-- Retain the two-open-chart interface, including the second original open immersion.
+@[nolint unusedArguments]
 lemma fibreChart_preimage_range {A B Y S T : Scheme.{u}}
     (i : A ⟶ Y) (j : B ⟶ Y) (a : A ⟶ S) (b : B ⟶ S) (f : Y ⟶ S) (g : T ⟶ S)
     (hi : i ≫ f = a) (hj : j ≫ f = b) [IsOpenImmersion i] [IsOpenImmersion j] :

@@ -81,6 +81,7 @@ def unitBundle (X : Scheme.{u}) : LineBundle X :=
     (Limits.coproductUniqueIso (fun _ : PUnit.{u + 1} => SheafOfModules.unit X.ringCatSheaf))
       (trivialLineBundle X).property⟩
 
+/-- Postcomposition with `e` as an equivalence between the corresponding sets of isomorphisms. -/
 def isoRightEquiv {C : Type*} [Category C] {A B D : C} (e : B ≅ D) : (A ≅ B) ≃ (A ≅ D) where
   toFun φ := φ ≪≫ e
   invFun φ := φ ≪≫ e.symm

@@ -29,7 +29,9 @@ exactly the embedded constant units. No symbol theorem is included as data.
 Source: the proper connected curve and function-divisor background in
 `K2-018#lem:k2018-geometric-exact-order`, at the documented source snapshot. -/
 structure DivisorData (C K Div : Type*) [Field C] [Field K] [AddCommGroup Div] where
+  /-- The supplied inclusion of the constant field into the function field. -/
   constants : C →+* K
+  /-- The supplied divisor homomorphism; its kernel condition is separate input data. -/
   divisor : Additive Kˣ →+ Div
   kernel_eq_constants : ∀ f : Kˣ, divisor (Additive.ofMul f) = 0 ↔
     ∃ a : Cˣ, Units.map constants.toMonoidHom a = f
@@ -109,7 +111,7 @@ at the documented source snapshot. -/
 /-- The divisor of a natural power is the scalar multiple of its divisor.
 Source: the power factorizations in `K2-018#lem:k2018-geometric-exact-order`;
 this is proved from the divisor homomorphism at the documented source snapshot. -/
-@[simp] theorem divisor_pow (f : Kˣ) (n : ℕ) :
+theorem divisor_pow (f : Kˣ) (n : ℕ) :
     d.divisor (Additive.ofMul (f ^ n)) = n • d.divisor (Additive.ofMul f) := by
   rw [ofMul_pow, map_nsmul]
 

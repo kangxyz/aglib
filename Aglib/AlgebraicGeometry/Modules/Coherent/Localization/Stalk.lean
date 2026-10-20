@@ -43,6 +43,8 @@ universe u
 /-- Actual coherent restriction to an affine chart, its global sections,
 and actual scalar localization. This functor has no supplied quotient or
 generic-image hypotheses. -/
+-- Retain both original Noetherian guards of the coherent chart-localization interface.
+@[nolint unusedArguments]
 abbrev chartLocalization {X : Scheme.{u}} [IsNoetherian X]
     (R : CommRingCat.{u}) [IsNoetherianRing R]
     (j : Spec R ⟶ X) [IsOpenImmersion j] (S : Submonoid R) :
@@ -87,6 +89,11 @@ abbrev chartLocalizationExact {X : Scheme.{u}} [IsNoetherian X]
   toFunctor := chartLocalization R j S
   map_conflation _ h := h.map_of_exact _
 
+/-- Localize finite-type quasicoherent sheaves on the affine scheme by transporting the
+module-localization functor through the affine equivalences, with the original Noetherian
+guard. -/
+-- Retain the original Noetherian affine base in the coherent localization interface.
+@[nolint unusedArguments]
 abbrev affineLocalizationFunctor (R : CommRingCat.{u}) [IsNoetherianRing R]
     (S : Submonoid R) :
     FiniteTypeSheaves (Spec R) ⥤ FiniteTypeSheaves (Spec (CommRingCat.of (Localization S))) :=

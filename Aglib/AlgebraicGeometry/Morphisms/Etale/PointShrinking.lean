@@ -46,10 +46,14 @@ variable {P X Y : Scheme.{u}} (p : P ⟶ X) (f : X ⟶ Y) (q : P ⟶ Y)
 /-- The actual rational section in the full closed fibre. -/
 def fiberSection : P ⟶ pullback f q := pullback.lift p (𝟙 P) (by simpa using h)
 
-@[reassoc (attr := simp)] lemma fiberSection_fst [Etale f] [IsClosedImmersion q] :
+-- Retain the etale-map and closed-centre guards of the original full-fibre shrinking interface;
+-- the first projection equation is the formal pullback identity.
+@[nolint unusedArguments, reassoc (attr := simp)] lemma fiberSection_fst [Etale f] [IsClosedImmersion q] :
     fiberSection p f q h ≫ pullback.fst f q = p := by
   simp [fiberSection]
-@[reassoc (attr := simp)] lemma fiberSection_snd [Etale f] [IsClosedImmersion q] :
+-- Retain the etale-map and closed-centre guards of the original rational fibre-section
+-- interface; the second projection equation is the formal pullback identity.
+@[nolint unusedArguments, reassoc (attr := simp)] lemma fiberSection_snd [Etale f] [IsClosedImmersion q] :
     fiberSection p f q h ≫ pullback.snd f q = 𝟙 P := by
   simp [fiberSection]
 
@@ -139,12 +143,15 @@ variable {P X Y Z : Scheme.{u}} (p : P ⟶ X)
   (g : X ⟶ Z) (r : P ⟶ Z) (k : p ≫ g = r)
   [Etale f] [Etale g] [IsClosedImmersion q] [IsClosedImmersion r]
 
+/-- The intersection of the two actual shrinking neighborhoods, retaining both closed-fibre
+sections. -/
 def commonOpen : X.Opens := shrinkOpen p f q h ⊓ shrinkOpen p g r k
 
 lemma contains : Set.range p ⊆ commonOpen p f q h g r k := by
   intro x hx
   exact ⟨range_subset_shrinkOpen p f q h hx, range_subset_shrinkOpen p g r k hx⟩
 
+/-- The original map p factored through the common open neighborhood. -/
 def point : P ⟶ (commonOpen p f q h g r k).toScheme :=
   restrictedPoint p _ (contains p f q h g r k)
 
@@ -152,9 +159,11 @@ def point : P ⟶ (commonOpen p f q h g r k).toScheme :=
     point p f q h g r k ≫ (commonOpen p f q h g r k).ι = p :=
   restrictedPoint_triangle _ _ _
 
+/-- Restrict the original etale map f to the same common open neighborhood. -/
 def toLeft : (commonOpen p f q h g r k).toScheme ⟶ Y :=
   (commonOpen p f q h g r k).ι ≫ f
 
+/-- Restrict the original etale map g to the same common open neighborhood. -/
 def toRight : (commonOpen p f q h g r k).toScheme ⟶ Z :=
   (commonOpen p f q h g r k).ι ≫ g
 
@@ -170,6 +179,7 @@ lemma right_isPullback : IsPullback (point p f q h g r k) (𝟙 P) (toRight p f 
 instance point_closedImmersion : IsClosedImmersion (point p f q h g r k) :=
   restrictedPoint_closedImmersion p f q h _ (contains p f q h g r k) inf_le_left
 
+/-- The kernel ideal sheaf of the actual point factored through the common open neighborhood. -/
 def center : (commonOpen p f q h g r k).toScheme.IdealSheafData :=
   (point p f q h g r k).ker
 

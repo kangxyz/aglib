@@ -53,9 +53,12 @@ universe u
 
 variable (X : Scheme.{u}) [IsNoetherian X]
 
+/-- The points of `X` whose local rings have Krull dimension `p`. -/
 abbrev HeightPoint (p : ℕ) := {x : X // ringKrullDim (X.presheaf.stalk x) = p}
+/-- The local rings at the points of the height-`p` stratum. -/
 abbrev localRings (p : ℕ) (x : HeightPoint X p) : Type u := X.presheaf.stalk x.1
 
+/-- The exact functor taking a coherent sheaf to its module stalk at `x`. -/
 def coherentStalk (x : X) : _root_.CategoryTheory.ExactCategory.ExactFunctor
     (Scheme.Modules.Coherent.coherentExactStructure X)
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (ModuleCat.{u} (X.presheaf.stalk
@@ -82,6 +85,7 @@ instance coherentAtLeast_serre (p : ℕ) : (coherentAtLeast X p).IsSerreClass :=
     fun x => CategoryTheory.ObjectProperty.exactKernelSerre (coherentStalk X x.1)
   exact CategoryTheory.ObjectProperty.forallSerre _
 
+/-- The full subcategory of coherent sheaves with zero stalks at local-ring dimension below `p`. -/
 abbrev CohAtLeast (p : ℕ) := (coherentAtLeast X p).FullSubcategory
 
 /-- Actual stalk modules, with no finite-length or quotient assumption. -/

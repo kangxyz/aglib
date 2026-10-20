@@ -82,7 +82,7 @@ def originOverExtension (W : WeierstrassCurve k) (f : k →+* K) :
     change (Spec.map (CommRingCat.ofHom f) ≫ infinitySection W) ≫ structureMap W = Spec.map _
     simp only [Category.assoc, infinitySection_structure, Category.comp_id])
 
-@[simp] theorem originOverExtension_closedPoint (W : WeierstrassCurve k) (f : k →+* K) :
+theorem originOverExtension_closedPoint (W : WeierstrassCurve k) (f : k →+* K) :
     (originOverExtension W f).left (IsLocalRing.closedPoint K) = infinityPoint W := by
   change infinitySection W (Spec.map (CommRingCat.ofHom f) (IsLocalRing.closedPoint K)) = _
   congr 1

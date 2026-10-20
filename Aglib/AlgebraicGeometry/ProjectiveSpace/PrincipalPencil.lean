@@ -41,7 +41,9 @@ namespace AlgebraicGeometry.ProjectiveSpace.PrincipalPencil
 /-- Two projective coordinates in the original base-ring universe. -/
 abbrev Index := ULift.{u} (Fin 2)
 
+/-- The first index in the universe-lifted two-coordinate projective index type. -/
 def first : Index.{u} := ⟨0⟩
+/-- The second index in the universe-lifted two-coordinate projective index type. -/
 def second : Index.{u} := ⟨1⟩
 
 @[simp] theorem first_ne_second : (first : Index.{u}) ≠ second := by decide
@@ -301,10 +303,14 @@ theorem iSup_sourceOpen_eq_top (hprincipal : C.U ⊓ C.W = X.basicOpen C.f)
   rw [← covers C n τ hprincipal hτ]
   exact sup_le (le_iSup (sourceOpen C n τ) true) (le_iSup (sourceOpen C n τ) false)
 
+/-- The two-open source cover determined by a lift of the principal-chain quotient section,
+under the overlap and lifting hypotheses. -/
 abbrev sourceOpenCover (hprincipal : C.U ⊓ C.W = X.basicOpen C.f)
     (hτ : (C.quotientMap n).val.app (op ⊤) τ = C.quotientSection n) : X.OpenCover :=
   X.openCoverOfIsOpenCover (sourceOpen C n τ) (.mk (iSup_sourceOpen_eq_top C n τ hprincipal hτ))
 
+/-- The local projective-space map on each of the two opens, using the corresponding
+coefficients of the principal pencil. -/
 def localMap : (i : Bool) → (sourceOpen C n τ i).toScheme ⟶ ProjectiveSpace R Index.{u}
   | true => chartMap p C.W first (firstFunction C n τ)
   | false => chartMap p (secondOpen C n τ) second (secondFunction C n τ)

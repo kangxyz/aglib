@@ -42,3 +42,5 @@ The ordinary R5 packet files `Curves.GenericExtension` and
 the extraction basis. Application-specific `GeometryBackground` and
 `EllipticScheme` adapters remain downstream. No analytic imports, arithmetic
 markings, Tate parameter or application identity is introduced here.
+
+Focused interface guides: [Coefficient base change and residue fibres](BaseChange.md), [Split critical cubics](CriticalCubic/README.md), [Actual extension points under coefficient-fixing automorphisms](ExtensionPointAction.md), [The actual smooth charts of a Weierstrass cubic](SmoothLoci.md).

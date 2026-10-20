@@ -56,6 +56,7 @@ instance stratumStalks_preservesFiniteColimits : PreservesFiniteColimits (stratu
   have he := (stratumStalks X p).map_conflation S h
   exact ⟨he.exact, he.epi_g⟩
 
+/-- The objects of the height-at-least-`p` category whose height-`p` stalks all vanish. -/
 abbrev nextSupport : ObjectProperty (CohAtLeast X p) := (stratumStalks X p).toFunctor.kernel
 instance nextSupport_serre : (nextSupport X p).IsSerreClass :=
   CategoryTheory.ObjectProperty.exactKernelSerre (stratumStalks X p)
@@ -66,6 +67,7 @@ theorem nextSupport_eq : nextSupport X p =
   funext M
   exact propext (stratumStalks_kernel_next X p M)
 
+/-- The Serre quotient of height-at-least-`p` objects by those with vanishing height-`p` stalks. -/
 abbrev StratumQuotient := (nextSupport X p).isoModSerre.Localization
 instance stratumQuotientAbelian : Abelian (StratumQuotient X p) :=
   ObjectProperty.SerreClassLocalization.abelian (nextSupport X p).isoModSerre.Q (nextSupport X p)
@@ -140,6 +142,7 @@ instance quotientStalks_preservesFiniteColimits : PreservesFiniteColimits (quoti
   rw [quotientStalks_fac]
   infer_instance
 
+/-- The exact functor from the support-stratum quotient to its finite-support stalk families. -/
 def quotientStalksExact : _root_.CategoryTheory.ExactCategory.ExactFunctor
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (StratumQuotient X p))
     (_root_.CategoryTheory.ExactCategory.abelianExactStructure (FiniteSupportFamily (localRings

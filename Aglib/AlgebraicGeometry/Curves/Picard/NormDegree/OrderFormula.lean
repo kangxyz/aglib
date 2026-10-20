@@ -51,7 +51,10 @@ local instance branch_isLocalHom (q : MaximalSpectrum (LocalNormAlgebra.Ring f U
   localizationAtMaximal_isLocalHom q.asIdeal
 
 omit hNoethY hDVRY in
+-- Retain target noetherianity and its DVR stalks in the finite local-norm branch interface; this
+-- comparison uses the supplied branch stalk and fraction-field identifications.
 /-- The length-defined branch order is precisely `Scheme.ord` at its actual fibre point. -/
+@[nolint unusedArguments]
 theorem branch_order [AlgebraicGeometry.IsNoetherian Y]
     [∀ y : ClosedPoint Y, IsDiscreteValuationRing (Y.presheaf.stalk y.val)]
     (hy : IsClosed ({y.val} : Set Y))

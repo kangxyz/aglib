@@ -46,6 +46,8 @@ structure Curve.Properties (X : FScheme F) : Prop where
 
 /-- Native group-object data on the actual field scheme, with the specified origin. -/
 structure PointedGroupLaw (X : FScheme F) (o : 𝟙_ (FScheme F) ⟶ X) where
+  /-- The group-object structure on `X` whose identity is required to equal the prescribed
+  origin. -/
   law : GrpObj X
   origin : @MonObj.one _ _ _ X law.toMonObj = o
 

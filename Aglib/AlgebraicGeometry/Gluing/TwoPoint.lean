@@ -37,9 +37,12 @@ variable (k : Type u) [Field k] {X : Scheme.{u}}
   (a b : Spec (.of k) ⟶ X) [IsOpenImmersion a] [IsOpenImmersion b]
   (h : IsCompl a.opensRange b.opensRange)
 
+/-- The colimit structure for two complementary rational open charts on `X`. -/
 def cofan : IsColimit (BinaryCofan.mk a b) :=
   (nonempty_isColimit_binaryCofanMk_of_isCompl a b h).some
 
+/-- The isomorphism from a scheme with two complementary rational open charts to the coproduct
+of the two field spectra. -/
 def coproductIso : X ≅ Spec (.of k) ⨿ Spec (.of k) :=
   (cofan k a b h).coconePointUniqueUpToIso (colimit.isColimit (pair _ _))
 
@@ -53,6 +56,8 @@ def coproductIso : X ≅ Spec (.of k) ⨿ Spec (.of k) :=
   (cofan k a b h).comp_coconePointUniqueUpToIso_hom
     (colimit.isColimit (pair _ _)) ⟨.right⟩
 
+/-- The isomorphism identifying a scheme with two complementary rational open charts with `Spec
+(k × k)`. -/
 def iso : X ≅ Spec (.of (k × k)) :=
   (coproductIso k a b h).trans (asIso (coprodSpec k k))
 
@@ -64,6 +69,7 @@ def iso : X ≅ Spec (.of (k × k)) :=
     Spec.map (CommRingCat.ofHom (RingHom.snd k k)) := by
   simp [iso]
 
+/-- The structure morphism from `Spec (k × k)` induced by the diagonal ring map from `k`. -/
 def structureMap : Spec (.of (k × k)) ⟶ Spec (.of k) :=
   Spec.map (CommRingCat.ofHom ((RingHom.id k).prod (RingHom.id k)))
 
@@ -74,6 +80,8 @@ lemma iso_over (s : X ⟶ Spec (.of k)) (ha : a ≫ s = 𝟙 _) (hb : b ≫ s = 
   · simpa [structureMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp] using ha.symm
   · simpa [structureMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp] using hb.symm
 
+/-- The isomorphism over `Spec k` determined by complementary open charts that are sections of
+the given structure map. -/
 def overIso (s : X ⟶ Spec (.of k)) (ha : a ≫ s = 𝟙 _) (hb : b ≫ s = 𝟙 _) :
     Over.mk s ≅ Over.mk (structureMap k) :=
   Over.isoMk (iso k a b h) (iso_over k a b h s ha hb)
@@ -85,9 +93,11 @@ end AlgebraicGeometry.Scheme.TwoPoint.DisjointOpenGluing
 namespace AlgebraicGeometry.Scheme.TwoPoint
 
 
+/-- The first rational point of `Spec (k × k)`, induced by the first ring projection. -/
 def productPoint0 (k : Type u) [Field k] : Spec (.of k) ⟶ Spec (.of (k × k)) :=
   Spec.map (CommRingCat.ofHom (RingHom.fst k k))
 
+/-- The second rational point of `Spec (k × k)`, induced by the second ring projection. -/
 def productPoint1 (k : Type u) [Field k] : Spec (.of k) ⟶ Spec (.of (k × k)) :=
   Spec.map (CommRingCat.ofHom (RingHom.snd k k))
 

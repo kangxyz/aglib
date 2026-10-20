@@ -162,6 +162,8 @@ instance secondToClosedSupport_additive (hdim : SurfaceDimensionAtMostTwo X) :
     (secondToClosedSupport X hdim).Additive where
   map_add := by intros; rfl
 
+/-- The exact equivalence functor from second support to codimension-two closed-point support
+on an integral Noetherian scheme with the supplied dimension-at-most-two hypothesis. -/
 def secondToClosedSupportExact (hdim : SurfaceDimensionAtMostTwo X) :
     _root_.CategoryTheory.ExactCategory.ExactFunctor
     (_root_.CategoryTheory.ObjectProperty.subcategoryExactStructure (secondSupport X))

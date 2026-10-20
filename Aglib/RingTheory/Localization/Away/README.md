@@ -10,3 +10,5 @@ rings and algebra structures remain the displayed ones.
 geometric blowup identification. The inverse-map formula is shared with
 `MapInverse`. The source abbreviation for a Laurent localization simply reuses
 `Localization.Away (Polynomial.X : R[X])`; there is no second Laurent object.
+
+Focused interface guides: [Unique lifts from the actual saturated chart](SaturatedChartLift.md).

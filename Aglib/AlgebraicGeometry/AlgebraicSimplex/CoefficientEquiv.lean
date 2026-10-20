@@ -49,7 +49,7 @@ def coefficientEquiv (e : L ≃+* L) (d : ℕ) :
   map_mul' := (AlgebraicSimplex.coefficientMap e.toRingHom d).map_mul
   map_add' := (AlgebraicSimplex.coefficientMap e.toRingHom d).map_add
 
-@[simp] theorem coefficientEquiv_toRingHom (e : L ≃+* L) (d : ℕ) :
+theorem coefficientEquiv_toRingHom (e : L ≃+* L) (d : ℕ) :
     (coefficientEquiv e d).toRingHom = AlgebraicSimplex.coefficientMap e.toRingHom d := rfl
 
 /-- Coefficients move by e; torus monomials are fixed. -/
@@ -58,7 +58,7 @@ def laurentCoefficientEquiv (e : L ≃+* L) (d : ℕ) :
       MonoidAlgebra (CoordinateRing L d) (Multiplicative (ℤ × ℤ)) :=
   MonoidAlgebra.mapRingEquiv (Multiplicative (ℤ × ℤ)) (coefficientEquiv e d)
 
-@[simp] theorem laurentCoefficientEquiv_toRingHom (e : L ≃+* L) (d : ℕ) :
+theorem laurentCoefficientEquiv_toRingHom (e : L ≃+* L) (d : ℕ) :
     (laurentCoefficientEquiv e d).toRingHom =
       MonoidAlgebra.mapRingHom (Multiplicative (ℤ × ℤ))
         (AlgebraicSimplex.coefficientMap e.toRingHom d) := rfl

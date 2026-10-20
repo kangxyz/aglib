@@ -89,7 +89,7 @@ def baseInflation : BaseH1 (G := G) (n := n) →+ CurveH1 (G := G) (N := N) (n :
 
 /-- Representative formula for the actual H¹ pullback used in
 `K2-018#prop:k2018-arithmetic-characters`. -/
-@[simp] theorem baseInflation_mk (c : ContinuousCocycle G
+theorem baseInflation_mk (c : ContinuousCocycle G
   PUnit.{1} (ZMod n)) :
     baseInflation (G := G) (N := N) (continuousH1Mk c) =
       continuousH1Mk (baseCocycleInflation c) := rfl

@@ -32,18 +32,23 @@ universe u
 variable (X : Scheme.{u}) [hIntegral : IsIntegral X] [hNoeth : AlgebraicGeometry.IsNoetherian X]
 variable [hDVR : ∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
 
+/-- The linear equivalence on sections induced by the specified trivialization of the
+module sheaf. -/
 def isoSectionEquiv (N : SheafOfModules.{u} X.ringCatSheaf)
     (a : N ≅ SheafOfModules.unit X.ringCatSheaf) (V : X.Opens) :
     N.val.obj (op V) ≃ₗ[Γ(X, V)] Γ(X, V) :=
   ((PresheafOfModules.evaluation X.ringCatSheaf.obj (op V)).mapIso
     ((SheafOfModules.forget _).mapIso a)).toLinearEquiv
 
+/-- The global generator that corresponds to the unit section under the given trivialization. -/
 def globalGenerator (N : SheafOfModules.{u} X.ringCatSheaf)
     (a : N ≅ SheafOfModules.unit X.ringCatSheaf) : N.val.obj (op ⊤) :=
   (isoSectionEquiv X N a ⊤).symm 1
 
 omit [hIntegral : IsIntegral X] [hNoeth : AlgebraicGeometry.IsNoetherian X]
   [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
+-- Retain the integral-scheme guard of the original rational-trivialization section API.
+@[nolint unusedArguments]
 theorem globalGenerator_restrict [IsIntegral X] (N : SheafOfModules.{u} X.ringCatSheaf)
     (a : N ≅ SheafOfModules.unit X.ringCatSheaf) (V : X.Opens) :
     N.val.map (homOfLE le_top : V ⟶ ⊤).op (globalGenerator X N a) =
@@ -56,6 +61,8 @@ theorem globalGenerator_restrict [IsIntegral X] (N : SheafOfModules.{u} X.ringCa
   exact hn.symm
 
 omit hIntegral hNoeth hDVR in
+-- Retain the original Noetherian and closed-stalk DVR section-coordinate guards.
+@[nolint unusedArguments]
 theorem section_as_smul_generator [IsIntegral X] [AlgebraicGeometry.IsNoetherian X]
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (N : SheafOfModules.{u} X.ringCatSheaf)

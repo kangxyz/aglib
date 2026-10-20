@@ -89,9 +89,13 @@ def classBilinear : ContinuousH1.Cocycle J A →+ ContinuousH1.Cocycle J A →+
     change classOf J C (cocycleBilinear p a c + cocycleBilinear p b c) = _
     exact map_add _ _ _
 
+/-- The continuous cochain `g ↦ p(v, b(g))` used as a primitive when the left cup factor is
+principal. -/
 def principalLeftPrimitive (v : A) (b : ContinuousH1.Cocycle J A) : C(J, C) :=
   ⟨fun g => (p).bilinear v (b.val g), (p).continuous.comp (continuous_const.prodMk b.continuous)⟩
 
+/-- The continuous cochain `g ↦ -p(a(g), g • v)` used as a primitive when the right cup factor
+is principal. -/
 def principalRightPrimitive (a : ContinuousH1.Cocycle J A) (v : A) : C(J, C) :=
   ⟨fun g => -(p).bilinear (a.val g) (g • v),
     ((p).continuous.comp (a.continuous.prodMk (continuous_id.smul continuous_const))).neg⟩

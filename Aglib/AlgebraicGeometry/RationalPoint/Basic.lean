@@ -60,7 +60,9 @@ namespace AlgebraicGeometry.Scheme
 
 /-- An actual rational section of the structure morphism of a scheme over a field. -/
 structure RationalPoint (F : Type u) [Field F] (X : Scheme.{u}) where
+  /-- The actual structure morphism from X to the base field spectrum. -/
   structureMap : X ⟶ Spec (.of F)
+  /-- The specified rational section of the actual structure morphism. -/
   sectionMap : Spec (.of F) ⟶ X
   section_comp : sectionMap ≫ structureMap = 𝟙 _
 
@@ -143,7 +145,7 @@ def residueToBase (q : RationalPoint F X) : X.residueField q.point →+* F :=
   rw [h]
   rfl
 
-@[simp] lemma residueToBase_constants (q : RationalPoint F X) (a : F) :
+lemma residueToBase_constants (q : RationalPoint F X) (a : F) :
     q.residueToBase (IsLocalRing.residue q.localRing (q.constants a)) = a := by
   rw [residueToBase_residue, evaluation_constants]
 
@@ -157,7 +159,7 @@ def residueEquiv (q : RationalPoint F X) : X.residueField q.point ≃+* F :=
     q.residueEquiv (IsLocalRing.residue q.localRing r) = q.evaluation r :=
   q.residueToBase_residue r
 
-@[simp] lemma residueEquiv_constants (q : RationalPoint F X) (a : F) :
+lemma residueEquiv_constants (q : RationalPoint F X) (a : F) :
     q.residueEquiv (IsLocalRing.residue q.localRing (q.constants a)) = a :=
   q.residueToBase_constants a
 

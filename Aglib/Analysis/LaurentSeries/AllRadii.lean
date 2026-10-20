@@ -64,6 +64,7 @@ def coefficientSpace (F : Type u) [NormedField F] : Submodule F (ℤ → F) wher
   add_mem' := Converges.add
   smul_mem' := Converges.smul
 
+/-- Bilateral coefficient functions absolutely summable with every positive-radius weight. -/
 abbrev Series (F : Type u) [NormedField F] : Type u := ↥(coefficientSpace F)
 
 namespace Series
@@ -157,7 +158,7 @@ def power (a : ℕ) (ha : 0 < a) : Series F →ₗ[F] Series F where
 @[simp] theorem power_apply (a : ℕ) (ha : 0 < a) (c : Series F) (n : ℤ) :
     power a ha c n = powerCoefficients a c n := rfl
 
-@[simp] theorem power_apply_mul (a : ℕ) (ha : 0 < a) (c : Series F) (n : ℤ) :
+theorem power_apply_mul (a : ℕ) (ha : 0 < a) (c : Series F) (n : ℤ) :
     power a ha c ((a : ℤ) * n) = c n := powerCoefficients_mul a ha c n
 
 theorem power_injective (a : ℕ) (ha : 0 < a) :
@@ -338,7 +339,7 @@ instance : Algebra F (Series F) := Algebra.ofModule
     intro k
     ring)
 
-@[simp] theorem algebraMap_apply (a : F) (n : ℤ) :
+theorem algebraMap_apply (a : F) (n : ℤ) :
     algebraMap F (Series F) a n = if n = 0 then a else 0 := by
   rw [Algebra.algebraMap_eq_smul_one, smul_apply, one_apply]
   split_ifs <;> simp

@@ -48,6 +48,8 @@ universe u
 variable (X : Scheme.{u}) [IsIntegral X] [IsNoetherian X]
 variable [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
 
+/-- The section-module equivalence on a nonempty open induced by multiplication by a rational
+unit whose divisor shifts `E` to `D`. -/
 def nonemptyShiftEquiv (D E : Divisor X) (U : X.Opens) [Nonempty U]
     (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + E x = D x) :
@@ -65,6 +67,8 @@ theorem nonemptyShiftEquiv_value (D E : Divisor X) (U : X.Opens) [Nonempty U]
     (multiplyFractionalEquiv X D E U g hg (explicitSheafSectionsEquiv X D U s))
   exact congrArg Subtype.val h
 
+/-- The section-module equivalence on any open induced by multiplication by a rational unit
+satisfying the displayed order relation. -/
 def sectionShiftEquiv (D E : Divisor X) (U : X.Opens)
     (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + E x = D x) :
@@ -123,6 +127,8 @@ theorem sectionShiftEquiv_naturality (D E : Divisor X) {U V : X.Opens} (i : U �
     exact @Subsingleton.elim ((divisorSheaf X E).val.obj (op ⊥))
       (divisorSheaf_empty_subsingleton X E) _ _
 
+/-- The divisor-sheaf isomorphism induced by a rational unit satisfying `ord(g) + E = D` at
+every closed point. -/
 def divisorSheafShiftIso (D E : Divisor X) (g : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, X.ord (g : X.functionField) x.val + E x = D x) :
     divisorSheaf X D ≅ divisorSheaf X E :=
@@ -136,6 +142,8 @@ def divisorSheafShiftIso (D E : Divisor X) (g : X.functionFieldˣ)
         intro a
         exact (sectionShiftEquiv_naturality X D E f.unop g (fun x _ => hg x) a).symm)
 
+/-- The divisor-sheaf isomorphism from `D` to its shift by the principal divisor of `f`, induced
+by multiplication by `f⁻¹`. -/
 def principalShiftIso (D : Divisor X) (f : X.functionFieldˣ) :
     divisorSheaf X D ≅ divisorSheaf X (D + principal X (Additive.ofMul f)) :=
   divisorSheafShiftIso X _ _ f⁻¹ (by
@@ -145,6 +153,8 @@ def principalShiftIso (D : Divisor X) (f : X.functionFieldˣ) :
     rw [order_inv]
     omega)
 
+/-- The map from divisor classes modulo principal divisors to line-bundle classes, for an
+integral Noetherian scheme of dimension at most one with closed DVR stalks. -/
 def divisorClassToLineBundleClass (hdim : topologicalKrullDim X ≤ 1) :
     (Divisor X ⧸ (principal X).range) → LineBundleClass X :=
   Quotient.lift (fun D => Quotient.mk (lineBundleSetoid X) (divisorLineBundle X hdim D)) (by

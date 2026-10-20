@@ -68,7 +68,8 @@ variable (X : Scheme.{u}) {M N : SheafOfModules.{u} X.ringCatSheaf}
 def sectionOfHom (φ : M ⟶ N) (U : X.Opens) : (sheaf X M N).val.obj (op U) :=
   (sectionHomEquiv X M N U).symm ((SheafOfModules.overFunctor X.ringCatSheaf U).map φ)
 
-@[simp] theorem sectionOfHom_apply (φ : M ⟶ N) (U : X.Opens)
+-- Keep section evaluation; simpNF only unfolds the implicit restricted-module component types.
+@[nolint simpNF, simp] theorem sectionOfHom_apply (φ : M ⟶ N) (U : X.Opens)
     (V : (Over U)ᵒᵖ) (m : M.val.obj (op V.unop.left)) :
     (sectionOfHom X φ U).val.app V m = φ.val.app (op V.unop.left) m := rfl
 
@@ -93,16 +94,16 @@ def transpose (φ : M ⟶ N) : SheafOfModules.unit X.ringCatSheaf ⟶ sheaf X M 
     (transpose X φ).val.app (op U) r = r • sectionOfHom X φ U := rfl
 
 /-- The literal formula on any smaller open, using the actual scalar restriction. -/
-@[simp] theorem transpose_apply (φ : M ⟶ N) (U : X.Opens) (r : Γ(X, U))
+theorem transpose_apply (φ : M ⟶ N) (U : X.Opens) (r : Γ(X, U))
     (V : (Over U)ᵒᵖ) (m : M.val.obj (op V.unop.left)) :
     ((transpose X φ).val.app (op U) r).val.app V m =
       X.presheaf.map V.unop.hom.op r • φ.val.app (op V.unop.left) m := rfl
 
-@[simp] theorem transpose_one (φ : M ⟶ N) (U : X.Opens) :
+theorem transpose_one (φ : M ⟶ N) (U : X.Opens) :
     (transpose X φ).val.app (op U) (1 : Γ(X, U)) = sectionOfHom X φ U := by
   rw [transpose_app, one_smul]
 
-@[simp] theorem transpose_one_evaluate (φ : M ⟶ N) (U : X.Opens)
+theorem transpose_one_evaluate (φ : M ⟶ N) (U : X.Opens)
     (m : M.val.obj (op U)) :
     ((transpose X φ).val.app (op U) (1 : Γ(X, U))).val.app
       (op (Over.mk (𝟙 U))) m = φ.val.app (op U) m := by

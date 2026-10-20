@@ -31,12 +31,12 @@ noncomputable def restrictUnit (E : Subfield K) (a : Kˣ) (ha : (a : K) ∈ E) :
 @[simp] theorem restrictUnit_val (E : Subfield K) (a : Kˣ) (ha : (a : K) ∈ E) :
     ((restrictUnit E a ha : E) : K) = (a : K) := rfl
 
-@[simp] theorem map_restrictUnit (E : Subfield K) (a : Kˣ) (ha : (a : K) ∈ E) :
+theorem map_restrictUnit (E : Subfield K) (a : Kˣ) (ha : (a : K) ∈ E) :
     Units.map E.subtype.toMonoidHom (restrictUnit E a ha) = a := by
   apply Units.ext
   rfl
 
-@[simp] theorem inclusion_restrictUnit {E F : Subfield K} (hEF : E ≤ F)
+theorem inclusion_restrictUnit {E F : Subfield K} (hEF : E ≤ F)
     (a : Kˣ) (ha : (a : K) ∈ E) :
     Units.map (Subfield.inclusion hEF).toMonoidHom (restrictUnit E a ha) =
       restrictUnit F a (hEF ha) := by

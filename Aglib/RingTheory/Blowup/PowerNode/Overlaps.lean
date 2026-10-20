@@ -57,25 +57,34 @@ lemma node_awayV_u (c : R) :
   have h := congrArg (swapAwayUV c) (node_awayU_v c)
   simpa [swapAwayUV_inverse] using h
 
+/-- The localization of the left outer node ring at its V coordinate. -/
 abbrev leftOverlap (π : R) := Localization.Away (PlaneNode.V π)
+
+/-- The localization of the middle node ring at its U coordinate. -/
 abbrev middleLeftOverlap (π : R) (m : ℕ) := Localization.Away (PlaneNode.U (π^m))
 
+/-- The left node map to the middle overlap, sending U to π times U and V to U inverse. -/
 def leftOverlapBase (π : R) (m : ℕ) : PlaneNode.Ring π →ₐ[R] middleLeftOverlap π m :=
   PlaneNode.lift π (algebraMap R _ π * algebraMap (node π m) _ (PlaneNode.U (π^m)))
     (IsLocalization.Away.invSelf (PlaneNode.U (π^m))) (by
       rw [mul_assoc, IsLocalization.Away.mul_invSelf, mul_one])
 
+/-- The middle node map to the left overlap, sending U to V inverse and V to π^m times V. -/
 def middleLeftOverlapBase (π : R) (m : ℕ) : node π m →ₐ[R] leftOverlap π :=
   PlaneNode.lift (π^m) (IsLocalization.Away.invSelf (PlaneNode.V π))
     (algebraMap R _ (π^m) * algebraMap (PlaneNode.Ring π) _ (PlaneNode.V π)) (by
       rw [mul_left_comm, mul_comm (IsLocalization.Away.invSelf (PlaneNode.V π)),
         IsLocalization.Away.mul_invSelf, mul_one])
 
+/-- Extend the left node map to the actual overlap localization by inverting its V coordinate. -/
 def leftOverlapForward (π : R) (m : ℕ) : leftOverlap π →ₐ[R] middleLeftOverlap π m :=
   IsLocalization.Away.liftAlgHom (PlaneNode.V π) (f := leftOverlapBase π m) (by
     simp only [leftOverlapBase, PlaneNode.lift_V]
     exact isUnit_iff_exists_inv.mpr ⟨algebraMap (node π m) _ (PlaneNode.U (π^m)),
       by rw [mul_comm, IsLocalization.Away.mul_invSelf]⟩)
+
+/-- Extend the middle node map to the actual overlap localization by inverting its U
+coordinate. -/
 def leftOverlapReverse (π : R) (m : ℕ) : middleLeftOverlap π m →ₐ[R] leftOverlap π :=
   IsLocalization.Away.liftAlgHom (PlaneNode.U (π^m)) (f := middleLeftOverlapBase π m) (by
     simp only [middleLeftOverlapBase, PlaneNode.lift_U]
@@ -210,11 +219,19 @@ variable {R : Type u} [CommRing R]
 
 /-- v/u on the outer u-chart, or u/v on the identically presented v-chart. -/
 def outerRatio (π : R) (m : ℕ) : PlaneNode.Ring π := algebraMap R _ (π^m) * PlaneNode.V π ^ 2
+
+/-- The outer-chart overlap obtained by inverting the ratio π^m V^2. -/
 abbrev outerOverlap (π : R) (m : ℕ) := Localization.Away (outerRatio π m)
+
+/-- The inverse of the outer-chart ratio in its actual localization. -/
 abbrev outerInv (π : R) (m : ℕ) : outerOverlap π m :=
   IsLocalization.Away.invSelf (outerRatio π m)
+
+/-- The image of the outer node V coordinate in the outer overlap. -/
 abbrev outerP (π : R) (m : ℕ) : outerOverlap π m :=
   algebraMap (PlaneNode.Ring π) _ (PlaneNode.V π)
+
+/-- The opposite outer coordinate, defined as outerP times the inverse of the outer ratio. -/
 abbrev outerQ (π : R) (m : ℕ) : outerOverlap π m := outerP π m * outerInv π m
 
 lemma outerRatio_image (π : R) (m : ℕ) :
@@ -239,6 +256,7 @@ lemma outer_parameter_relation (π : R) (m : ℕ) :
       (algebraMap R _ (π^m) * outerP π m ^ 2 * outerInv π m) := by ring
     _ = _ := by rw [outer_inverse_relation, mul_one]
 
+/-- The outer node coordinate map sending U to π^(m+1) outerP and V to outerQ. -/
 def outerTransitionBase (π : R) (m : ℕ) : PlaneNode.Ring π →ₐ[R] outerOverlap π m :=
   PlaneNode.lift π (algebraMap R _ (π^(m+1)) * outerP π m)
     (outerQ π m) (outer_parameter_relation π m)
@@ -252,6 +270,8 @@ lemma outerTransitionBase_ratio (π : R) (m : ℕ) :
       ring
     _ = _ := by rw [outer_inverse_relation, one_mul]
 
+/-- The outer-chart transition extended to the localization where the outer ratio is
+invertible. -/
 def outerTransition (π : R) (m : ℕ) : outerOverlap π m →ₐ[R] outerOverlap π m :=
   IsLocalization.Away.liftAlgHom (outerRatio π m) (f := outerTransitionBase π m) (by
     rw [outerTransitionBase_ratio]
@@ -285,7 +305,7 @@ lemma outer_original_u (π : R) (m : ℕ) :
       (algebraMap (PlaneNode.Ring π) _ (PlaneNode.U π) * outerP π m) * outerQ π m := by ring
     _ = _ := by rw [hn, hp]
 
-@[simp] lemma outerTransition_p (π : R) (m : ℕ) :
+lemma outerTransition_p (π : R) (m : ℕ) :
     outerTransition π m (outerP π m) = outerQ π m := by
   change outerTransition π m (algebraMap (PlaneNode.Ring π) _ (PlaneNode.V π)) = _
   simp [outerTransitionBase]
@@ -335,6 +355,8 @@ lemma outer_p_isUnit (π : R) (m : ℕ) : IsUnit (outerP π m) := by
   dsimp [outerRatio]
   ring
 
+/-- The canonical map from the left-middle overlap to the outer overlap, using the
+invertibility of outerP. -/
 def outerOverlapFromLeftMiddle (π : R) (m : ℕ) : leftOverlap π →ₐ[R] outerOverlap π m :=
   IsLocalization.Away.liftAlgHom (PlaneNode.V π)
     (f := IsScalarTower.toAlgHom R (PlaneNode.Ring π) _) (outer_p_isUnit π m)

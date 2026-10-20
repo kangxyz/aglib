@@ -87,7 +87,7 @@ theorem field_supportIdeal (K L : Type u) [Field K] [Field L]
   exact supportIdeal_baseChange X
 
 /-- Literal field scalar extension of each actual simplex support algebra. -/
-def field_supportEquiv (K L : Type u) [Field K] [Field L]
+def fieldSupportEquiv (K L : Type u) [Field K] [Field L]
     (f : K →+* L) (j : ℕ) (X : Object (AlgebraicSimplex.CoordinateRing K j)) :
     letI := (AlgebraicSimplex.coefficientMap f j).toAlgebra
     AlgebraicSimplex.CoordinateRing L j ⊗[AlgebraicSimplex.CoordinateRing K j] Support X ≃ₐ[

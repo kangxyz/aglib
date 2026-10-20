@@ -32,6 +32,7 @@ open _root_.CategoryTheory.ExactCategory (ExactFunctor abelianExactStructure)
 namespace CategoryTheory.ObjectProperty.SerrePair
 universe u
 attribute [local instance] Abelian.hasFiniteBiproducts
+/-- The canonical abelian structure on the localization by a Serre class. -/
 local instance canonicalAbelian {C : Type u} [Category.{u} C] [Abelian C]
     (P : ObjectProperty C) [P.IsSerreClass] : Abelian P.isoModSerre.Localization :=
   ObjectProperty.SerreClassLocalization.abelian P.isoModSerre.Q P

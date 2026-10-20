@@ -54,6 +54,7 @@ namespace AlgebraicGeometry.Scheme.Group.MultiplicativeBaseChange
 universe u
 variable {X S T : Scheme.{u}}
 
+/-- The group object over `S` obtained by pulling back a group object over `X` along `f`. -/
 abbrev baseChangedGroup (f : S ⟶ X) (H : Grp (Over X)) : Grp (Over S) :=
   (Over.pullback f).mapGrp.obj H
 
@@ -117,11 +118,15 @@ def pullbackRootsEquiv (f : S ⟶ X) (n : ℕ) (U : Over S) :
       rootsOfUnity n Γ(U.left, ⊤) :=
   (pullbackSectionsEquiv f _ U).trans (rootsSectionsEquiv X n ((Over.map f).obj U))
 
+/-- The multiplicative equivalence comparing sections of the base-changed multiplicative group
+with sections of the multiplicative group over `S`. -/
 def unitsComparisonEquiv (f : S ⟶ X) (U : Over S) :
     (U ⟶ (baseChangedGroup f (MultiplicativeGroup.groupScheme X)).X) ≃*
       (U ⟶ (MultiplicativeGroup.groupScheme S).X) :=
   (pullbackUnitsEquiv f U).trans (unitsSectionsEquiv S U).symm
 
+/-- The multiplicative equivalence comparing sections of base-changed roots of unity with
+roots-of-unity sections over `S`. -/
 def rootsComparisonEquiv (f : S ⟶ X) (n : ℕ) (U : Over S) :
     (U ⟶ (baseChangedGroup f (MultiplicativeGroup.rootsGroupScheme X n)).X) ≃*
       (U ⟶ (MultiplicativeGroup.rootsGroupScheme S n).X) :=
@@ -157,6 +162,8 @@ def groupYonedaIsoOfSections (H K : Grp (Over S))
     intro a
     exact he h.unop a)
 
+/-- The group-object isomorphism induced by a natural family of multiplicative equivalences on
+all test-scheme sections. -/
 def groupIsoOfSections (H K : Grp (Over S))
     (e : ∀ U : Over S, (U ⟶ H.X) ≃* (U ⟶ K.X))
     (he : ∀ {U V : Over S} (h : U ⟶ V) (a : V ⟶ H.X), e U (h ≫ a) = h ≫ e V a) :

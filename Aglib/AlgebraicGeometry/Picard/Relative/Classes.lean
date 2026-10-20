@@ -29,20 +29,25 @@ open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 variable {S X : Scheme.{u}}
 
+/-- The set-valued Picard functor on test schemes over the given base. -/
 abbrev basePicardFunctor (S : Scheme.{u}) :=
   Scheme.RelativePicard.basePicardFunctor S ⋙ CategoryTheory.forget AddCommGrpCat
 
+/-- The set-valued Picard classes of the given family after pullback to each test scheme. -/
 abbrev familyPicardFunctor (p : X ⟶ S) :=
   Scheme.RelativePicard.familyPicardFunctor p ⋙ CategoryTheory.forget AddCommGrpCat
 
+/-- The natural pullback map from base Picard classes to Picard classes of the family. -/
 abbrev basePullback (p : X ⟶ S) :=
   Functor.whiskerRight (Scheme.RelativePicard.basePullback p) (CategoryTheory.forget AddCommGrpCat)
 
 variable (p : X ⟶ S) (o : S ⟶ X) (ho : o ≫ p = 𝟙 S)
 
+/-- The section of each pulled-back family induced by the specified origin and its
+structural triangle. -/
 abbrev originSection := Scheme.RelativePicard.originSection p o ho
 
-@[reassoc (attr := simp)] theorem originSection_snd (T : Over S) :
+@[reassoc] theorem originSection_snd (T : Over S) :
     originSection p o ho T ≫ pullback.snd p T.hom = 𝟙 _ :=
   Scheme.RelativePicard.originSection_snd p o ho T
 
@@ -58,6 +63,7 @@ theorem familyMap_eq_familyScheme_map {T T' : Over S} (f : T' ⟶ T) :
   rw [familyMap_eq_familyScheme_map]
   exact ((RelativePicard.originSectionNatTrans p o ho).naturality f).symm
 
+/-- Restrict family Picard classes along the specified origin section on each test scheme. -/
 abbrev originRestriction :=
   Functor.whiskerRight (Scheme.RelativePicard.originRestriction p o
       ho) (CategoryTheory.forget AddCommGrpCat)
@@ -72,16 +78,20 @@ theorem basePullback_injective (T : Over S) :
     Function.Injective ((basePullback p).app (op T)) :=
   RelativePicard.basePullback_app_injective p o ho (op T)
 
+/-- The functor of family Picard classes whose restriction along the specified origin is zero. -/
 abbrev normalizedClassFunctor :=
   RelativePicard.normalizedPicardFunctor p o ho ⋙ CategoryTheory.forget AddCommGrpCat
 
+/-- Forget normalization and regard a normalized Picard class as a class on the pulled-back
+family. -/
 abbrev normalizedInclusion :=
   Functor.whiskerRight (Scheme.RelativePicard.normalizedInclusion p o
       ho) (CategoryTheory.forget AddCommGrpCat)
 
+/-- The zero normalized Picard class on the given test scheme. -/
 def normalizedZero (T : Over S) : (normalizedClassFunctor p o ho).obj (op T) := 0
 
-@[simp] theorem normalizedZero_naturality {T T' : Over S} (f : T' ⟶ T) :
+theorem normalizedZero_naturality {T T' : Over S} (f : T' ⟶ T) :
     (normalizedClassFunctor p o ho).map f.op (normalizedZero p o ho T) =
       normalizedZero p o ho T' :=
   map_zero ((RelativePicard.normalizedPicardFunctor p o ho).map f.op).hom

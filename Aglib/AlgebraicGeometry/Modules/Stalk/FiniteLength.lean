@@ -67,6 +67,8 @@ theorem tilde_closedStalk_finiteLength (R : CommRingCat.{u}) [IsLocalRing R]
 
 /-- Actual quasicoherent affine comparison transports finite-length sections to
 the actual closed-point stalk. -/
+-- Retain the original Noetherian local base of the coherent finite-length comparison.
+@[nolint unusedArguments]
 theorem coherent_closedStalk_finiteLength (R : CommRingCat.{u}) [IsNoetherianRing R]
     [IsLocalRing R] (M :
         Scheme.Modules.QuasiCoherent.FiniteTypeSheaves (Spec R))

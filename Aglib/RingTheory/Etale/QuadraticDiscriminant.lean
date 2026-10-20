@@ -34,6 +34,7 @@ open scoped Polynomial
 namespace Algebra.QuadraticDiscriminant
 variable {R : Type*} [CommRing R]
 
+/-- The monic quadratic polynomial `X² - X - q`. -/
 def poly (q : R) : R[X] := X ^ 2 - X - C q
 
 lemma poly_monic (q : R) : (poly q).Monic := by
@@ -81,6 +82,7 @@ def standardPair (q : R) : StandardEtalePair R where
       pow_one, Nat.cast_ofNat, mul_one, sub_zero, map_add, map_one, map_mul, map_ofNat]
     ring
 
+/-- The quadratic quotient algebra localized at its discriminant `1 + 4q`. -/
 abbrev Away (q : R) :=
   Localization.Away (algebraMap R (AdjoinRoot (poly q)) (1 + 4 * q))
 

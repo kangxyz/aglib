@@ -27,7 +27,7 @@ variable (K : Type u) [CommRing K]
 def zeroEquiv : CoordinateRing K 0 ≃ₐ[K] K :=
   (polynomialEquiv K 0).trans (MvPolynomial.isEmptyAlgEquiv K (Fin 0))
 
-@[simp] theorem zeroEquiv_algebraMap (x : K) :
+theorem zeroEquiv_algebraMap (x : K) :
     zeroEquiv K (algebraMap K (CoordinateRing K 0) x) = x :=
   (zeroEquiv K).commutes x
 
@@ -42,7 +42,7 @@ def zeroEquiv : CoordinateRing K 0 ≃ₐ[K] K :=
   change (∑ i : Fin 1, coordinate K 0 i) = 1 at h
   simpa only [Fin.sum_univ_one] using h
 
-@[simp] theorem zeroEquiv_coordinate (i : Fin 1) :
+theorem zeroEquiv_coordinate (i : Fin 1) :
     zeroEquiv K (coordinate K 0 i) = 1 := by
   rw [coordinate_zero_simplex, map_one]
 

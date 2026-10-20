@@ -171,7 +171,9 @@ variable {C₀ C₁ C₂ C₃ : Type*}
 /-- Primitive low-degree source pullback and descent premises. This contains
 cochain maps and liftability, never an intended H1 comparison as input. -/
 structure SourceData (C : Complex C₀ C₁ C₂ C₃) where
+  /-- The specified degree-zero map into the target cochain group. -/
   pull₀ : C₀ →+ B₀
+  /-- The specified degree-one map into the target cochain group. -/
   pull₁ : C₁ →+ B₁
   comm₀ : ∀ x, d (pull₀ x) = pull₁ (C.d₀ x)
   invariant₀ : ∀ (g : G) (x : C₀), g • pull₀ x = pull₀ x
@@ -182,6 +184,7 @@ namespace SourceData
 
 variable {d} {C : Complex C₀ C₁ C₂ C₃} (s : SourceData d C)
 
+/-- A lift chosen from the `SourceData.liftable` premise for the given source cycle. -/
 def lift (x : C.Cycles₁) : B₀ := Classical.choose (s.liftable x)
 
 omit [TopologicalSpace G] [IsTopologicalAddGroup B₀] [ContinuousSMul G B₀]
@@ -256,7 +259,7 @@ def transgression (η : ContinuousH1.CoefficientMap G (Kernel d) A) : C.H₁ →
 
 @[simp] theorem transgression_class (η : ContinuousH1.CoefficientMap G (Kernel d) A)
     (x : C.Cycles₁) :
-    s.transgression η (QuotientAddGroup.mk' C.boundary₁.range x) = s.chosenClass η x := rfl
+    s.transgression η (x : C.H₁) = s.chosenClass η x := rfl
 
 /-- Formula on any source cycle and any closed-field cochain lift. -/
 theorem transgression_formula (η : ContinuousH1.CoefficientMap G (Kernel d) A)

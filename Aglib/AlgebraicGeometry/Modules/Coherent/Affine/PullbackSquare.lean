@@ -84,6 +84,8 @@ def pullbackThenGlobalSectionsExact :
   (coherentExactPullback (Spec.map φ)).comp
       (Scheme.Modules.Coherent.globalSectionsExact S)
 
+/-- The exact functor taking coherent sheaves to global sections and then extending scalars
+along the flat map of Noetherian affine schemes. -/
 def globalSectionsThenExtensionExact :
     ExactFunctor (coherentExactStructure (Spec R)) (finiteModuleExactStructure.{u, u} S) :=
   (Scheme.Modules.Coherent.globalSectionsExact R).comp

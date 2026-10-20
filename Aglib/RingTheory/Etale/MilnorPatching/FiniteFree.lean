@@ -145,7 +145,10 @@ variable {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
 
 local notation "P" => fiberRing f g
 
+/-- The algebra structure on the first ring induced by the first projection from the fibre ring. -/
 local instance fstAlgebra : Algebra P R := (RingHom.pullbackFst f g).toAlgebra
+/-- The algebra structure on the second ring induced by the second projection from the fibre
+ring. -/
 local instance sndAlgebra : Algebra P S := (RingHom.pullbackSnd f g).toAlgebra
 
 private theorem coefficients_smul (h : R →+* T) (a : R) (x : ι → R) :

@@ -61,6 +61,7 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.InternalHom
 universe u
 variable (X : Scheme.{u}) {M M' N N' : SheafOfModules.{u} X.ringCatSheaf}
+/-- Map internal Hom sheaves by precomposition in the source and postcomposition in the target. -/
 def map (a : M' ⟶ M) (b : N ⟶ N') : sheaf X M N ⟶ sheaf X M' N' where
   val.app U := ModuleCat.ofHom {
     toFun s := (sectionHomEquiv X M' N' U.unop).symm
@@ -85,7 +86,8 @@ def map (a : M' ⟶ M) (b : N ⟶ N') : sheaf X M N ⟶ sheaf X M' N' where
     change (_ : RawHom X M' N' V.unop) = _
     ext W m
     rfl
-@[simp] theorem map_apply (a : M' ⟶ M) (b : N ⟶ N') (U : X.Opens)
+-- Keep the pointwise internal-Hom map rule; simpNF only unfolds its implicit component types.
+@[nolint simpNF, simp] theorem map_apply (a : M' ⟶ M) (b : N ⟶ N') (U : X.Opens)
     (s : (sheaf X M N).val.obj (op U)) (V : (Over U)ᵒᵖ)
     (m : M'.val.obj (op V.unop.left)) :
     ((map X a b).val.app (op U) s).val.app V m =
@@ -113,6 +115,7 @@ variable {M'' N'' : SheafOfModules.{u} X.ringCatSheaf}
   change (_ : RawHom X M'' N'' U.unop) = _
   ext V m
   rfl
+/-- Transport the internal Hom sheaf along the specified source and target isomorphisms. -/
 def iso (e : M ≅ M') (f : N ≅ N') : sheaf X M N ≅ sheaf X M' N' where
   hom := map X e.inv f.hom
   inv := map X e.hom f.inv

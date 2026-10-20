@@ -100,12 +100,16 @@ theorem fieldMap_isIso :
         (Scheme.map_genericPoint_of_isDominant X f).symm)).hom := rfl
   rw [he]
   infer_instance
+/-- The function-field equivalence induced contravariantly by an open immersion of integral
+schemes. -/
 def fieldEquiv : Y.functionField ≃+* X.functionField := by
   let := fieldMap_isIso f
   exact (asIso (CommRingCat.ofHom
     (Scheme.functionFieldMap f))).commRingCatIsoToRingEquiv
 @[simp] theorem fieldEquiv_apply (a : Y.functionField) :
     fieldEquiv f a = Scheme.functionFieldMap f a := rfl
+/-- The identification of an integral scheme function field with the fraction field of an affine
+open chart. -/
 def affineFieldEquiv (A : CommRingCat.{u}) [IsDomain A]
     (j : Spec A ⟶ Y) [IsOpenImmersion j] :
     Y.functionField ≃+* FractionRing A :=
@@ -171,6 +175,7 @@ variable {k : Type u} [Field k] {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
   (sx : X ⟶ Spec (.of k)) (sy : Y ⟶ Spec (.of k))
   (φ : Y.functionField →+* X.functionField)
 
+/-- The generic-point morphism induced by the ring map between the function fields. -/
 def genericMap : Spec X.functionField ⟶ Y :=
   Spec.map (CommRingCat.ofHom φ) ≫ Y.fromSpecStalk (genericPoint Y)
 
@@ -190,6 +195,7 @@ variable {k : Type u} [Field k] {A X Y : Scheme.{u}}
   (sx : X ⟶ Spec (.of k)) (sy : Y ⟶ Spec (.of k))
   (jX : A ⟶ X) (jY : A ⟶ Y) [IsOpenImmersion jX] [IsOpenImmersion jY]
 
+/-- The function-field equivalence induced by a common integral open chart. -/
 def chartFieldEquiv : Y.functionField ≃+* X.functionField :=
   (fieldEquiv jY).trans (fieldEquiv jX).symm
 

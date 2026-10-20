@@ -47,6 +47,7 @@ def cocycles : AddSubgroup C(G × G, A) where
     simpa only [ContinuousMap.neg_apply, smul_neg, ← neg_add] using
       congrArg Neg.neg (hz g h k)
 
+/-- The additive group of continuous two-cocycles for the given action of `G` on `A`. -/
 abbrev Cocycle := cocycles G A
 
 omit [IsTopologicalGroup G] [ContinuousSMul G A] in
@@ -113,6 +114,8 @@ theorem d₁_eq_zero_iff (a : C(G, A)) :
     rw [ha]
     abel
 
+/-- The continuous one-cocycle obtained from a continuous cochain with zero degree-one
+differential. -/
 def cocycle₁OfClosed (a : C(G, A)) (ha : d₁ G A a = 0) : ContinuousH1.Cocycle G A :=
   ⟨a, (d₁_eq_zero_iff G A a).mp ha⟩
 

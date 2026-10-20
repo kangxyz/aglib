@@ -43,14 +43,19 @@ open Polynomial IsLocalRing
 namespace Algebra.QuadraticRoot
 variable {R : Type u} [CommRing R]
 
+/-- The auxiliary monic quadratic `X² - bX + ac` used to construct a root of `aX² + bX + c`. -/
 def polynomial (a b c : R) : R[X] := X ^ 2 - C b * X + C (a * c)
 
+/-- The standard-étale pair obtained from the auxiliary quadratic by inverting the product of
+its derivative and its variable. -/
 def pair (a b c : R) : StandardEtalePair R where
   f := polynomial a b c
   monic_f := by unfold polynomial; monicity!
   g := (polynomial a b c).derivative * X
   cond := ⟨X, 0, 1, by simp⟩
 
+/-- The standard-étale algebra of the auxiliary quadratic with its derivative and universal
+generator inverted. -/
 abbrev RootAlgebra (a b c : R) := (pair a b c).Ring
 
 lemma generator_isUnit (a b c : R) : IsUnit (pair a b c).X := by
@@ -59,8 +64,10 @@ lemma generator_isUnit (a b c : R) : IsUnit (pair a b c).X := by
   rw [map_mul, aeval_X] at h
   exact isUnit_of_mul_isUnit_right h
 
+/-- The universal generator of the standard-étale algebra, regarded as a unit. -/
 def generatorUnit (a b c : R) : (RootAlgebra a b c)ˣ := (generator_isUnit a b c).unit
 
+/-- The root `-c/t` of `aX² + bX + c` constructed from the invertible auxiliary generator `t`. -/
 def root (a b c : R) : RootAlgebra a b c :=
   -algebraMap R _ c * ↑(generatorUnit a b c)⁻¹
 

@@ -35,7 +35,7 @@ theorem mu_smul_eq_nsmul (g : Field.absoluteGaloisGroup K) (x : Mu K n) :
 abbrev primitiveMu : Mu K n := Coordinates.generator K n
 
 /-- The selected tensor generator uses literally the primitive root chosen in P1. -/
-@[simp] theorem primitiveMu_value :
+theorem primitiveMu_value :
     (((primitiveMu K n).toMul : (AlgebraicClosure K)ˣ) : AlgebraicClosure K) =
       _root_.Field.absoluteGaloisGroup.CyclotomicCharacter.primitiveRoot K n :=
   IsPrimitiveRoot.val_toRootsOfUnity_coe

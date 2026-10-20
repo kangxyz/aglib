@@ -70,6 +70,8 @@ variable (hdim : SmoothFieldDimension.{u}) (hprod : Picard.Degree.ProperCurvePro
 variable (htensor : AlgebraicGeometry.Scheme.Modules.Invertible.ModuleTensorPullback.{u})
 variable {F : Type u} [Field F] (X : FScheme F) (hX : Properties X)
 
+/-- The degree homomorphism obtained by restricting a family Picard class to the fibre over a
+field-valued test point. -/
 def fibreDegree (T : FScheme F) (K : Type u) [Field K]
     (s : Spec (.of K) ⟶ Base F) (t : Over.mk s ⟶ T) :
     Invertible.PicardGroup (pullback X.hom T.hom) →+ ℤ :=
@@ -93,6 +95,8 @@ theorem fibreDegree_pullback {T T' : FScheme F} (f : T' ⟶ T)
 
 variable (o : Base F ⟶ X.left) (ho : o ≫ X.hom = 𝟙 _)
 set_option backward.isDefEq.respectTransparency false in
+/-- The subgroup of origin-normalized Picard classes having degree zero on every algebraically
+closed field-valued fibre. -/
 def degreeZeroGroup (T : FScheme F) : AddSubgroup (normalizedGroup htensor X.hom o ho T) where
   carrier a := ∀ (K : Type u) [Field K] [IsAlgClosed K]
     (s : Spec (.of K) ⟶ Base F) (t : Over.mk s ⟶ T),
@@ -110,6 +114,8 @@ def degreeZeroGroup (T : FScheme F) : AddSubgroup (normalizedGroup htensor X.hom
     change fibreDegree hnormal hcomp hreg hclosed hdim hprod htensor X hX T K s t (-a.val) = 0
     rw [map_neg, ha K s t, neg_zero]
 
+/-- The pullback homomorphism on the subgroups of fibrewise degree-zero normalized Picard
+classes. -/
 def degreeZeroMap {T T' : FScheme F} (f : T' ⟶ T) :
     degreeZeroGroup hnormal hcomp hreg hclosed hdim hprod htensor X hX o ho T →+
       degreeZeroGroup hnormal hcomp hreg hclosed hdim hprod htensor X hX o ho T' where
@@ -121,6 +127,8 @@ def degreeZeroMap {T T' : FScheme F} (f : T' ⟶ T) :
   map_zero' := by apply Subtype.ext; exact map_zero _
   map_add' a b := by apply Subtype.ext; exact map_add _ _ _
 
+/-- The contravariant functor of fibrewise degree-zero normalized Picard classes on test schemes
+over `F`. -/
 def degreeZeroGroupFunctor : (FScheme F)ᵒᵖ ⥤ AddCommGrpCat.{u+1} where
   obj T := AddCommGrpCat.of (degreeZeroGroup hnormal hcomp hreg hclosed hdim hprod htensor X hX o
     ho T.unop)
@@ -133,6 +141,8 @@ def degreeZeroGroupFunctor : (FScheme F)ᵒᵖ ⥤ AddCommGrpCat.{u+1} where
     ext a
     exact congrArg (fun k ↦ k a.val.val) ((familyPicardFunctor X.hom).map_comp f g)
 
+/-- The natural inclusion of fibrewise degree-zero classes into the normalized Picard group
+functor. -/
 def degreeZeroInclusion : degreeZeroGroupFunctor hnormal hcomp hreg hclosed hdim hprod htensor X
   hX o ho ⟶
     normalizedGroupFunctor htensor X.hom o ho where

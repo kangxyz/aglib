@@ -31,6 +31,7 @@ theorem fieldPicard_eq_zero (K : Type u) [Field K] (a :
     exact ⟨e ≪≫ (coproductUniqueIso (fun _ : PUnit.{u + 1} ↦
       SheafOfModules.unit (Spec (.of K)).ringCatSheaf)).symm⟩
 
+/-- The base-field finrank of the global-section algebra of the scheme over `K`. -/
 def finiteSchemeDegree (K : Type u) [Field K] {D : Scheme.{u}} (q : D ⟶ Spec (.of K)) : ℕ :=
   letI : Algebra K Γ(D, ⊤) := coordinateAlgebra K (Over.mk q)
   Module.finrank K Γ(D, ⊤)

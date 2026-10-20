@@ -51,8 +51,11 @@ open Polynomial
 namespace Algebra.QuadraticEtale
 variable {R : Type u} [CommRing R]
 
+/-- The monic quadratic polynomial `X² + aX - b`. -/
 def polynomial (a b : R) : R[X] := X ^ 2 + C a * X - C b
+/-- The algebra obtained by adjoining a root of `X² + aX - b`. -/
 abbrev Quadratic (a b : R) := AdjoinRoot (polynomial a b)
+/-- The universal root of `X² + aX - b` in its quotient algebra. -/
 abbrev root (a b : R) : Quadratic a b := AdjoinRoot.root (polynomial a b)
 
 lemma polynomial_monic (a b : R) : (polynomial a b).Monic := by
@@ -99,6 +102,8 @@ def standardPair (a b : R) (h : IsUnit (a ^ 2 + 4 * b)) : StandardEtalePair R wh
         ring
       _ = _ := by rw [hi]; simp
 
+/-- The algebra equivalence from the standard-étale presentation to the quadratic quotient when
+`a² + 4b` is a unit. -/
 def standardEquiv (a b : R) (h : IsUnit (a ^ 2 + 4 * b)) :
     (standardPair a b h).Ring ≃ₐ[R] Quadratic a b := by
   let P := standardPair a b h

@@ -34,14 +34,18 @@ open Module.CommutingAutomorphisms CommutingAutomorphisms.LaurentSupport
 universe u
 variable {R : Type u} [CommRing R]
 
+/-- The character group of the one-dimensional torus, written multiplicatively. -/
 abbrev OneCharacter := Multiplicative ℤ
+/-- The one-variable Laurent polynomial algebra over `R`. -/
 abbrev OneLaurent (R : Type u) [CommRing R] := MonoidAlgebra R OneCharacter
 
+/-- The character action sending an integer exponent to the corresponding power of `X.a`. -/
 def oneExponent (X : Object R) : OneCharacter →* (X.carrier ≃ₗ[R] X.carrier) where
   toFun m := X.a ^ m.toAdd
   map_one' := by simp
   map_mul' m n := by change X.a ^ (m.toAdd+n.toAdd) = _; exact zpow_add _ _ _
 
+/-- The Laurent polynomial representation obtained by evaluating the variable at `X.a`. -/
 def oneRepresentation (X : Object R) : OneLaurent R →ₐ[R] Module.End R X.carrier :=
   MonoidAlgebra.lift R _ OneCharacter
     (LinearEquiv.automorphismGroup.toLinearMapMonoidHom.comp (oneExponent X))
@@ -50,8 +54,10 @@ def oneRepresentation (X : Object R) : OneLaurent R →ₐ[R] Module.End R X.car
     oneRepresentation X (MonoidAlgebra.single m r) = r • (X.a ^ m.toAdd).toLinearMap := by
   simp [oneRepresentation, oneExponent, MonoidAlgebra.lift_single]
 
+/-- The ideal of Laurent polynomials acting as zero on `X`. -/
 def oneSupportIdeal (X : Object R) : Ideal (OneLaurent R) :=
   RingHom.ker (oneRepresentation X)
+/-- The quotient of the Laurent algebra by the annihilator of its action on `X`. -/
 abbrev OneSupport (X : Object R) := OneLaurent R ⧸ oneSupportIdeal X
 
 /-- The literal graph pullback on each character: x^i y^j ↦ f^j x^i. -/
@@ -64,6 +70,7 @@ def graphExponent (f : Rˣ) : Character →* OneLaurent R where
     rw [zpow_add]
     simp [MonoidAlgebra.single_mul_single]
 
+/-- The Laurent algebra map substituting the unit `f` for the second coordinate. -/
 def graphMap (f : Rˣ) : Laurent R →ₐ[R] OneLaurent R :=
   MonoidAlgebra.lift R _ Character (graphExponent f)
 
@@ -72,11 +79,13 @@ def graphMap (f : Rˣ) : Laurent R →ₐ[R] OneLaurent R :=
       MonoidAlgebra.single (Multiplicative.ofAdd m.toAdd.1) (r * (↑(f^m.toAdd.2) : R)) := by
   simp [graphMap, graphExponent, MonoidAlgebra.lift_single]
 
+/-- The inclusion of one-variable characters as the first coordinate of two-variable characters. -/
 def includeExponent : OneCharacter →* Character where
   toFun m := Multiplicative.ofAdd (m.toAdd, 0)
   map_one' := rfl
   map_mul' _ _ := rfl
 
+/-- The inclusion of the one-variable Laurent algebra into the first Laurent coordinate. -/
 def firstInclude (R : Type u) [CommRing R] : OneLaurent R →ₐ[R] Laurent R :=
   MonoidAlgebra.mapDomainAlgHom R R includeExponent
 
@@ -157,6 +166,7 @@ theorem supportIdeal_tensor_graph (X : Object R) (f : Rˣ) :
       (oneSupportIdeal X).comap (graphMap f).toRingHom :=
   (CommutingAutomorphisms.supportIdeal_iso (tensorGraphIso X f)).trans (supportIdeal_graph X f)
 
+/-- Scalar-graph substitution followed by the quotient onto the one-variable support algebra. -/
 def graphToSupport (X : Object R) (f : Rˣ) : Laurent R →ₐ[R] OneSupport X :=
   (Ideal.Quotient.mkₐ R (oneSupportIdeal X)).comp (graphMap f)
 

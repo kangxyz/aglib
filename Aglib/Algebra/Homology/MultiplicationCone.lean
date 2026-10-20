@@ -30,8 +30,11 @@ variable (A₀ A₁ A₂ A₃ : Type*)
 
 /-- Four adjacent terms of an actual cochain complex. -/
 structure Complex where
+  /-- The differential from `A₀` to `A₁`. -/
   d₀ : A₀ →+ A₁
+  /-- The differential from `A₁` to `A₂`. -/
   d₁ : A₁ →+ A₂
+  /-- The differential from `A₂` to `A₃`. -/
   d₂ : A₂ →+ A₃
   d₁_d₀ : ∀ a, d₁ (d₀ a) = 0
   d₂_d₁ : ∀ a, d₂ (d₁ a) = 0
@@ -41,15 +44,19 @@ variable (C : Complex A₀ A₁ A₂ A₃)
 
 namespace Complex
 
+/-- Degree-two cycles, the kernel of `d₂`. -/
 abbrev Cycles₂ := C.d₂.ker
 
+/-- The differential `d₁` with codomain restricted to degree-two cycles. -/
 def boundary₂ : A₁ →+ C.Cycles₂ where
   toFun a := ⟨C.d₁ a, C.d₂_d₁ a⟩
   map_zero' := by ext; exact C.d₁.map_zero
   map_add' a b := by ext; exact C.d₁.map_add a b
 
+/-- Degree-two cohomology, the quotient of cycles by the image of `d₁`. -/
 abbrev H₂ := C.Cycles₂ ⧸ C.boundary₂.range
 
+/-- The quotient map from degree-two cycles to cohomology. -/
 def class₂ : C.Cycles₂ →+ C.H₂ := QuotientAddGroup.mk' _
 
 /-- Degree-one cocycles of the coefficient mapping cone, with sign convention
@@ -66,6 +73,7 @@ def cocycles (n : ℕ) : AddSubgroup (A₁ × A₂) where
     · simp only [map_neg, Prod.fst_neg, Prod.snd_neg, smul_neg, hx.1]
     · simp only [map_neg, Prod.snd_neg, hx.2, neg_zero]
 
+/-- The additive group of coefficient-cone cocycles for multiplication by `n`. -/
 abbrev Cocycles (n : ℕ) := C.cocycles n
 
 /-- Degree-zero differential of the coefficient cone. -/
@@ -80,8 +88,10 @@ def boundary (n : ℕ) : A₀ × A₁ →+ C.Cocycles n where
 /-- Degree-one cohomology of the coefficient cone. -/
 abbrev H₁mod (n : ℕ) := C.Cocycles n ⧸ (C.boundary n).range
 
+/-- The quotient map from coefficient-cone cocycles to their cohomology classes. -/
 def classMod (n : ℕ) : C.Cocycles n →+ C.H₁mod n := QuotientAddGroup.mk' _
 
+/-- The map sending a cone cocycle to the degree-two class of its second component. -/
 def betaOnCycles (n : ℕ) : C.Cocycles n →+ C.H₂ where
   toFun x := C.class₂ ⟨x.val.2, x.property.2⟩
   map_zero' := by change C.class₂ 0 = 0; exact map_zero _
@@ -140,6 +150,7 @@ def reductionCycles (d e : ℕ) : C.Cocycles (d * e) →+ C.Cocycles d where
   map_zero' := by ext <;> simp
   map_add' x y := by ext <;> simp [smul_add]
 
+/-- The map from coefficient `d` to coefficient `d * e` induced by cone insertion. -/
 def insertion (d e : ℕ) : C.H₁mod d →+ C.H₁mod (d * e) :=
   QuotientAddGroup.map _ _ (C.insertionCycles d e) (by
     rintro x ⟨a, rfl⟩
@@ -147,6 +158,7 @@ def insertion (d e : ℕ) : C.H₁mod d →+ C.H₁mod (d * e) :=
     apply Subtype.ext
     ext <;> simp [boundary, insertionCycles, smul_add, smul_smul, Nat.mul_comm])
 
+/-- The map from coefficient `d * e` to coefficient `d` induced by cone reduction. -/
 def reduction (d e : ℕ) : C.H₁mod (d * e) →+ C.H₁mod d :=
   QuotientAddGroup.map _ _ (C.reductionCycles d e) (by
     rintro x ⟨a, rfl⟩
@@ -185,13 +197,16 @@ theorem level_one_zero (q : C.H₁mod 1) : q = 0 := by
 /-- Integral degree-one cycles. -/
 abbrev Cycles₁ := C.d₁.ker
 
+/-- The differential `d₀` with codomain restricted to degree-one cycles. -/
 def boundary₁ : A₀ →+ C.Cycles₁ where
   toFun a := ⟨C.d₀ a, C.d₁_d₀ a⟩
   map_zero' := by ext; exact map_zero _
   map_add' a b := by ext; exact map_add _ _ _
 
+/-- Degree-one cohomology, the quotient of cycles by the image of `d₀`. -/
 abbrev H₁ := C.Cycles₁ ⧸ C.boundary₁.range
 
+/-- The inclusion of an integral degree-one cycle as the cone cocycle `(a, 0)`. -/
 def integralToCycles (n : ℕ) : C.Cycles₁ →+ C.Cocycles n where
   toFun a := ⟨(a.val, 0), by
     constructor
@@ -279,9 +294,13 @@ variable (D : Complex B₀ B₁ B₂ B₃)
 
 /-- An actual map on each term, commuting with all three differentials. -/
 structure ChainMap where
+  /-- The additive map on the `A₀` term. -/
   f₀ : A₀ →+ B₀
+  /-- The additive map on the `A₁` term. -/
   f₁ : A₁ →+ B₁
+  /-- The additive map on the `A₂` term. -/
   f₂ : A₂ →+ B₂
+  /-- The additive map on the `A₃` term. -/
   f₃ : A₃ →+ B₃
   comm₀ : ∀ a, f₁ (C.d₀ a) = D.d₀ (f₀ a)
   comm₁ : ∀ a, f₂ (C.d₁ a) = D.d₁ (f₁ a)
@@ -290,6 +309,7 @@ structure ChainMap where
 namespace ChainMap
 variable {C D}
 
+/-- The map on integral degree-one cycles induced by a chain map. -/
 def onCycles₁ (f : ChainMap C D) : C.Cycles₁ →+ D.Cycles₁ where
   toFun x := ⟨f.f₁ x.val, by
     change D.d₁ (f.f₁ x.val) = 0
@@ -305,6 +325,7 @@ def onH₁ (f : ChainMap C D) : C.H₁ →+ D.H₁ :=
     apply Subtype.ext
     exact (f.comm₀ a).symm)
 
+/-- The map on degree-two cycles induced by a chain map. -/
 def onCycles₂ (f : ChainMap C D) : C.Cycles₂ →+ D.Cycles₂ where
   toFun x := ⟨f.f₂ x.val, by
     change D.d₂ (f.f₂ x.val) = 0
@@ -312,6 +333,7 @@ def onCycles₂ (f : ChainMap C D) : C.Cycles₂ →+ D.Cycles₂ where
   map_zero' := by ext; exact map_zero _
   map_add' x y := by ext; exact map_add _ _ _
 
+/-- The map on degree-two cohomology induced by a chain map. -/
 def onH₂ (f : ChainMap C D) : C.H₂ →+ D.H₂ :=
   QuotientAddGroup.map _ _ f.onCycles₂ (by
     rintro x ⟨a, rfl⟩
@@ -319,6 +341,7 @@ def onH₂ (f : ChainMap C D) : C.H₂ →+ D.H₂ :=
     apply Subtype.ext
     exact (f.comm₁ a).symm)
 
+/-- The componentwise map on coefficient-cone cocycles induced by a chain map. -/
 def onCocycles (f : ChainMap C D) (n : ℕ) : C.Cocycles n →+ D.Cocycles n where
   toFun x := ⟨(f.f₁ x.val.1, f.f₂ x.val.2), by
     constructor
@@ -327,6 +350,7 @@ def onCocycles (f : ChainMap C D) (n : ℕ) : C.Cocycles n →+ D.Cocycles n whe
   map_zero' := by ext <;> simp
   map_add' x y := by ext <;> simp
 
+/-- The map on coefficient-cone degree-one cohomology induced by a chain map. -/
 def onH₁mod (f : ChainMap C D) (n : ℕ) : C.H₁mod n →+ D.H₁mod n :=
   QuotientAddGroup.map _ _ (f.onCocycles n) (by
     rintro x ⟨a, rfl⟩

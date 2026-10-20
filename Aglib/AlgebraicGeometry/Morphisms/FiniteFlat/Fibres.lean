@@ -64,10 +64,15 @@ namespace AlgebraicGeometry.Scheme.Hom.FiniteFlat
 universe u
 attribute [local instance] coordinateAlgebra
 variable (K : Type u) [Field K]
+/-- The base-field-linear identification of sections of the pushed-forward structure module
+with global sections of the source. -/
 def pushforwardFieldSectionsEquiv (Z : Over (Spec (CommRingCat.of K))) :
     fieldSections K (pushforwardStructureSheaf Z.hom) ≃ₗ[K] Γ(Z.left, ⊤) :=
   LinearEquiv.refl _ _
 variable {X Y : Scheme.{u}} (f : X ⟶ Y)
+/-- The identification of the fibre of the pushed-forward structure module with fibre-scheme
+sections
+for an affine morphism, using the supplied affine module base-change input. -/
 def moduleFibreStructureEquiv (hbase : AffineModuleBaseChange.{u})
     [IsAffineHom f] (p : Spec (CommRingCat.of K) ⟶ Y) :
     letI : Algebra K Γ(pullback f p, ⊤) := coordinateAlgebra K (Over.mk (pullback.snd f p))
@@ -140,11 +145,14 @@ end AlgebraicGeometry.Scheme.Hom
 namespace AlgebraicGeometry.Scheme.Hom.FiniteFlat
 universe u
 variable (K : Type u) [Field K] {X Y T : Scheme.{u}}
+/-- The linear equivalence on module fibres induced by an isomorphism of module sheaves. -/
 def moduleFibreIso {M N : Y.Modules} (e : M ≅ N)
     (p : Spec (CommRingCat.of K) ⟶ Y) :
     moduleFibre K M p ≃ₗ[K] moduleFibre K N p :=
   fieldSectionsIso K ((Scheme.Modules.pullback p).mapIso e)
 
+/-- The linear equivalence identifying an iterated module fibre with the fibre at the composite
+point. -/
 def moduleFibrePullbackIso (M : Y.Modules) (g : T ⟶ Y)
     (p : Spec (CommRingCat.of K) ⟶ T) :
     moduleFibre K ((Scheme.Modules.pullback g).obj M) p ≃ₗ[K]

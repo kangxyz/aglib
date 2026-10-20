@@ -26,3 +26,12 @@ PrimitiveRootCover supplies the finite free cyclotomic cover, etaleness with an
 invertible level, primitive field points, and level one. [BaseChange/PointTransport](BaseChange/PointTransport.lean) gives the
 ordinary point and group-map composition identities with the specified closure
 embeddings and original finite/etale conditions.
+
+Focused interface guides: [Comparisons of given etale group quotients](EtaleQuotient.md).
+
+[Characteristic-zero curve isogenies](../Curves/Isogeny/Etale.md) prove
+etaleness of the actual finite surjective homomorphism between smooth proper
+geometrically connected curve group objects. The native
+`Curve.charZeroFiniteCurveGroupHomEtale` supplier discharges the retained
+input of `Curve.pointed_dominant_finite_etale`; the direct proved adapter keeps
+the original curve map and origin equation.

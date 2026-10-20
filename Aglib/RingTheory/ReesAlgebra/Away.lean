@@ -34,6 +34,7 @@ universe u
 namespace reesAlgebra
 variable {A : Type u} [CommRing A]
 
+/-- The homogeneous degree-one Rees element `aX` associated to an element of the ideal. -/
 def degreeOne (I : Ideal A) (a : I) : reesAlgebra I :=
   homogeneous I 1 ⟨a, by simpa only [pow_one] using a.property⟩
 
@@ -43,9 +44,11 @@ lemma degreeOne_mem (I : Ideal A) (a : I) : degreeOne I a ∈ grading I 1 :=
 @[simp] lemma degreeOne_val (I : Ideal A) (a : I) :
     (degreeOne I a : A[X]) = monomial 1 (a : A) := rfl
 
+/-- The homogeneous localization of the Rees algebra away from the degree-one element `aX`. -/
 abbrev homogeneousAway (I : Ideal A) (a : I) :=
   HomogeneousLocalization.Away (grading I) (degreeOne I a)
 
+/-- The Rees-algebra map obtained by evaluating the polynomial variable at one in `A[1/a]`. -/
 def evalAtOne (I : Ideal A) (a : I) : reesAlgebra I →ₐ[A] Localization.Away (a : A) :=
   (Polynomial.aeval (1 : Localization.Away (a : A))).comp (reesAlgebra I).val
 
@@ -58,11 +61,13 @@ lemma evalAtOne_degreeOne_isUnit (I : Ideal A) (a : I) :
   rw [evalAtOne_degreeOne]
   exact IsLocalization.Away.algebraMap_isUnit (S := Localization.Away (a : A)) (a : A)
 
+/-- The extension of evaluation at one to the localization of the Rees algebra at `aX`. -/
 def localizedEvaluation (I : Ideal A) (a : I) :
     Localization.Away (degreeOne I a) →ₐ[A] Localization.Away (a : A) :=
   IsLocalization.Away.liftAlgHom (degreeOne I a) (f := evalAtOne I a)
     (evalAtOne_degreeOne_isUnit I a)
 
+/-- The ring map from homogeneous Rees localization to `A[1/a]` induced by evaluation at one. -/
 def awayEvaluation (I : Ideal A) (a : I) :
     homogeneousAway I a →+* Localization.Away (a : A) :=
   (localizedEvaluation I a).toRingHom.comp
@@ -194,6 +199,7 @@ instance (I : Ideal A) (a : I) : Algebra A (homogeneousAway I a) :=
   ((HomogeneousLocalization.fromZeroRingHom (grading I) (Submonoid.powers (degreeOne I a))).comp
     (degreeZeroEquiv I).symm.toRingHom).toAlgebra
 
+/-- The algebra map from homogeneous Rees localization to `A[1/a]` induced by evaluation at one. -/
 def awayAlgHom (I : Ideal A) (a : I) :
     homogeneousAway I a →ₐ[A] Localization.Away (a : A) where
   __ := awayEvaluation I a

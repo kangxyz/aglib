@@ -104,6 +104,7 @@ local instance : Surjective (AlgebraicGeometry.Scheme.Group.RootCover.cover X n 
     a).obj.hom :=
   AlgebraicGeometry.Scheme.Group.RootCover.cover_surjective X n hn hinv a
 
+/-- The sectionwise identification of the polynomial root cover with the Kummer root torsor. -/
 def sectionEquiv (U : X.Etaleᵒᵖ) :
     (finiteRepresentedSetSheaf (AlgebraicGeometry.Scheme.Group.RootCover.cover X n hn hinv
         a)).obj.obj U ≃
@@ -118,6 +119,7 @@ def sectionEquiv (U : X.Etaleᵒᵖ) :
       (AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv X n a _ p).val := by
   exact congrArg Subtype.val ((rootSectionsEquiv h X n hn hinv a U).apply_symm_apply _)
 
+/-- The sheaf isomorphism between the represented polynomial root cover and the root torsor. -/
 def sheafIso : finiteRepresentedSetSheaf (AlgebraicGeometry.Scheme.Group.RootCover.cover X n hn
     hinv a) ≅
     (rootTorsor h X n hn hinv a).carrier :=
@@ -138,6 +140,7 @@ def sheafIso : finiteRepresentedSetSheaf (AlgebraicGeometry.Scheme.Group.RootCov
       rw [sectionEquiv_coordinates]
       exact AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv_naturality X n a _ _))
 
+/-- The equivariant isomorphism from the polynomial root-cover torsor to the Kummer root torsor. -/
 def torsorIso : Scheme.EtaleH1.Torsor.Iso
     (torsorOfSchemeAction (MultiplicativeGroup.rootsGroupScheme X n)
       (AlgebraicGeometry.Scheme.Group.RootCover.cover X n hn hinv a)

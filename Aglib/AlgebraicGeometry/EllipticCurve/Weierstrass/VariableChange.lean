@@ -35,9 +35,11 @@ variable {R : Type u} [CommRing R]
 abbrev relation (W : WeierstrassCurve R) (x y : R) : R :=
   W.toAffine.polynomial.evalEval x y
 
+/-- The substitution `x ↦ u² * x + r` associated to the admissible variable change `v`. -/
 def changeX (v : WeierstrassCurve.VariableChange R) (x : R) : R :=
   (v.u : R) ^ 2 * x + v.r
 
+/-- The substitution `y ↦ u³ * y + s * u² * x + t` associated to `v`. -/
 def changeY (v : WeierstrassCurve.VariableChange R) (x y : R) : R :=
   (v.u : R) ^ 3 * y + v.s * (v.u : R) ^ 2 * x + v.t
 

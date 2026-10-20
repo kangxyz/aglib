@@ -42,6 +42,7 @@ open Field.absoluteGaloisGroup.RootsOfUnity
 
 variable (R K : Type*) [CommRing R] [Field K] [Algebra R K]
 
+/-- The natural semiring action of the absolute Galois group on the algebraic closure. -/
 local instance closureGaloisAction :
     MulSemiringAction (Field.absoluteGaloisGroup K) (AlgebraicClosure K) :=
   inferInstanceAs (MulSemiringAction

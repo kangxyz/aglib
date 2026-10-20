@@ -55,6 +55,8 @@ variable {Y X : Scheme.{u}} (f : Y ⟶ X) (R : CommRingCat.{u})
 def chartSectionRingMap : R →+* Γ(Y, f ⁻¹ᵁ (j ''ᵁ ⊤)) :=
   ((Scheme.ΓSpecIso R).inv ≫ (j.appIso ⊤).inv ≫ f.app (j ''ᵁ ⊤)).hom
 
+/-- The chart-linear identification of the pushed-forward unit module with sections on the
+preimage. -/
 def unitPushforwardChartEquiv :
     letI := (chartSectionRingMap f R j).toAlgebra
     moduleSpecΓFunctor.obj (((Scheme.Modules.pushforward f).obj

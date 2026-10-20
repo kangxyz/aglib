@@ -146,6 +146,8 @@ end PrimaryFactors
 section ActualStalkDictionary
 universe u
 variable (D : Scheme.{u}) [IsAffine D] [IsArtinianRing Γ(D, ⊤)]
+/-- Identify the selected Artinian component quotient with the actual stalk at the corresponding
+affine point, using the stated nilradical bound. -/
 def componentStalkEquiv (n : ℕ) (hn : _root_.nilradical Γ(D, ⊤) ^ (n + 1) = ⊥)
     (m : MaximalSpectrum Γ(D, ⊤)) :
     let x := (isAffineOpen_top D).fromSpec ⟨m.asIdeal, m.isMaximal.isPrime⟩
@@ -296,6 +298,8 @@ theorem map_coordinate (V : X.Opens) [Nonempty V] (s : L.val.val.obj (op V)) :
     germ_restrict X (homOfLE inf_le_right : V ⊓ U₀ ⟶ U₀)]
   rfl
 omit [IsIntegral X] in
+-- Retain the integral-curve guard of the original divisor-map generator interface.
+@[nolint unusedArguments]
 theorem generator_image_ne_zero [IsIntegral X] [Mono φ] : φ.app U₀ (chartGenerator X L.val U₀
     e) ≠ 0 := by
   let ev : X.Modules ⥤ ModuleCat Γ(X, U₀) := SheafOfModules.evaluation X.ringCatSheaf (op U₀)
@@ -308,6 +312,8 @@ theorem generator_image_ne_zero [IsIntegral X] [Mono φ] : φ.app U₀ (chartGen
   have ho := congrArg (chartSectionEquiv X L.val U₀ e U₀ le_rfl) hs
   simp [chartGenerator] at ho
 omit [IsIntegral X] in
+-- Retain integrality in the original curve divisor-map image-ideal interface.
+@[nolint unusedArguments]
 theorem imageIdeal_eq_span_generator [IsIntegral X] (W : X.Opens)
     (d : L.val.over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W)) :
     sectionImageIdeal φ W =
@@ -327,6 +333,8 @@ theorem imageIdeal_eq_span_generator [IsIntegral X] (W : X.Opens)
     subst a
     exact ⟨chartGenerator X L.val W d, rfl⟩
 
+/-- The nonzero function-field unit obtained by applying the monomorphism to the chosen local
+generator of the line bundle. -/
 def imageUnit [Mono φ] : X.functionFieldˣ :=
   Units.mk0 (X.germToFunctionField U₀ (φ.app U₀ (chartGenerator X L.val U₀ e))) (by
     simpa only [map_zero] using
@@ -335,6 +343,8 @@ def imageUnit [Mono φ] : X.functionFieldˣ :=
 variable [AlgebraicGeometry.IsNoetherian X]
 variable [∀ x : AlgebraicGeometry.Scheme.ClosedPoint X, IsDiscreteValuationRing
     (X.presheaf.stalk x.val)]
+/-- The divisor of the line-bundle monomorphism, computed as the principal divisor of its
+generator image minus the chosen line-bundle divisor. -/
 def mapDivisor [Mono φ] : Divisors.Divisor X :=
   Divisors.principal X (Additive.ofMul (imageUnit X L φ U₀ e)) -
     divisor X L.val U₀ e L.property
@@ -379,6 +389,8 @@ variable (X : Scheme.{u}) [IsIntegral X] (L : LineBundle X)
 variable (φ : (show X.Modules from L.val) ⟶ (show X.Modules from SheafOfModules.unit
     X.ringCatSheaf))
 omit [IsIntegral X] in
+-- Retain the original integral-curve context for the restricted Cartier generator.
+@[nolint unusedArguments]
 theorem imageIdeal_eq_span_restrict_generator [IsIntegral X] (W : X.Opens)
     (d : L.val.over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W))
     (V : X.Opens) (h : V ≤ W) :
@@ -420,6 +432,8 @@ theorem ideal_stalkKernel_eq_span_generator (W : X.Opens)
 
 omit hI
 variable {k : Type u} [Field k] (p : X ⟶ Spec (.of k))
+/-- The actual stalk map of the closed immersion as an algebra homomorphism over the given
+field, with the original stalk scalar maps. -/
 def stalkMapAlgHom (y : D) :
     letI := stalkConstantsAlgebra X p (i y)
     letI := stalkConstantsAlgebra D (i ≫ p) y
@@ -431,6 +445,8 @@ def stalkMapAlgHom (y : D) :
   change (i.stalkMap y).hom (stalkConstants X p (i y) a) = stalkConstants D (i ≫ p) y a
   simp only [stalkConstants]
   exact i.germ_stalkMap_apply ⊤ y trivial _
+/-- Identify the quotient by the specified principal stalk kernel with the actual stalk of
+the closed subscheme. -/
 def stalkQuotientEquiv (y : D) (a : X.presheaf.stalk (i y))
     (ha : RingHom.ker (i.stalkMap y).hom = Ideal.span {a}) :
     letI := stalkConstantsAlgebra X p (i y)
@@ -479,6 +495,8 @@ theorem ideal_mapDivisor_weighted_coefficient (U₀ : X.Opens) [Nonempty U₀]
   exact (stalkQuotient_finrank_eq_weight_mul_colength X p (i y) hx hc a ha).symm
 omit [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
+-- Retain the original Noetherian and closed-stalk DVR guards of the Cartier-degree API.
+@[nolint unusedArguments]
 theorem ideal_generator_germ_isUnit_of_not_mem_range [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] (W : X.Opens)
     (d : (idealModule i).over W ≅ SheafOfModules.unit (X.ringCatSheaf.over W))
@@ -551,6 +569,8 @@ theorem point_isClosed (m : MaximalSpectrum Γ(D, ⊤)) :
   simpa only [Set.image_singleton] using f.isClosedEmbedding.isClosedMap _ hm
 
 variable {X : Scheme.{u}} (i : D ⟶ X) [IsClosedImmersion i]
+/-- Push the selected closed point of the finite affine subscheme along the given closed
+immersion to obtain an ambient closed point. -/
 def closedPoint (m : MaximalSpectrum Γ(D, ⊤)) : AlgebraicGeometry.Scheme.ClosedPoint X :=
   ⟨i (FiniteStalks.point k D q m), by
     simpa only [Set.image_singleton] using

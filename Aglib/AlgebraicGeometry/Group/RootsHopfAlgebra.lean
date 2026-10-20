@@ -41,7 +41,9 @@ open Field.absoluteGaloisGroup.RootsOfUnity
 universe u
 variable (R : Type u) [CommRing R] (n : ℕ) [NeZero n]
 
+/-- The quotient algebra `R[T]/(T^n - 1)` underlying the roots-of-unity Hopf algebra. -/
 abbrev H := RootAlgebra R n
+/-- The universal root in the quotient algebra `R[T]/(T^n - 1)`. -/
 abbrev t : H R n := AdjoinRoot.root (rootPolynomial R n)
 
 /-- Actual multiplicative comultiplication on the root quotient. -/
@@ -152,6 +154,8 @@ open Field.absoluteGaloisGroup.RootsOfUnity.PrimitiveCoordinates
 open Algebra.TensorProduct.BaseChange
 
 -- This local view uses the same action on the definitional automorphism carrier.
+/-- The action of `K`-algebra automorphisms of the algebraic closure on the roots-of-unity
+coefficient group. -/
 local instance :
     DistribMulAction (AlgebraicClosure K ≃ₐ[K] AlgebraicClosure K) (Mu K n) :=
   muDistribMulAction K n

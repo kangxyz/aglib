@@ -37,6 +37,7 @@ instance (y : ClosedPoint Y) : Finite (ClosedFibre f y) := by
 
 noncomputable instance (y : ClosedPoint Y) : Fintype (ClosedFibre f y) := Fintype.ofFinite _
 
+/-- The residue-field algebra structure induced by the residue-field map of `f` at `x`. -/
 @[instance_reducible] def relativeResidueAlgebra (x : ClosedPoint X) :
     Algebra (Y.residueField (f x.val)) (X.residueField x.val) :=
   (f.residueFieldMap x.val).hom.toAlgebra
@@ -44,10 +45,12 @@ noncomputable instance (y : ClosedPoint Y) : Fintype (ClosedFibre f y) := Fintyp
 /-- The integer-valued degree is the cast of Mathlib's actual residue degree. -/
 abbrev residueDegreeInt (x : ClosedPoint X) : ℤ := (f.residueDegree x.val : ℤ)
 
+/-- The degree of the induced function-field extension, measured by its vector-space dimension. -/
 def fieldDegree : ℕ :=
   letI := Scheme.functionFieldMapAlgebra f
   Module.finrank Y.functionField X.functionField
 
+/-- The multiplicative norm for the function-field extension induced by `f`. -/
 def fieldNorm : X.functionField →* Y.functionField :=
   letI := Scheme.functionFieldMapAlgebra f
   Algebra.norm Y.functionField

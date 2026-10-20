@@ -129,7 +129,7 @@ def denseOpenNormalizationIso [QuasiCompact j] [QuasiSeparated j] [IsIntegral Y]
     (j.denseOpenNormalizationIso hY).hom = j.fromNormalization := rfl
 
 /-- The original open immersion is the canonical factorization through its normalization. -/
-@[reassoc (attr := simp)] theorem toNormalization_denseOpenNormalizationIso_hom
+@[reassoc] theorem toNormalization_denseOpenNormalizationIso_hom
     [QuasiCompact j] [QuasiSeparated j] [IsIntegral Y]
     [IsOpenImmersion j] [IsDominant j] (hY : NormalStalks Y) :
     j.toNormalization ≫ (j.denseOpenNormalizationIso hY).hom = j :=

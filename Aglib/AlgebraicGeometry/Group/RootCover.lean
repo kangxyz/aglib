@@ -62,7 +62,9 @@ open scoped CategoryTheory.MonObj CategoryTheory.Obj
 namespace AlgebraicGeometry.Scheme.Group.RootCover
 universe u
 variable (R : Type u) [CommRing R]
+/-- The polynomial `X^n - a` defining the positive-root algebra of a unit `a`. -/
 def rootPolynomial (n : ℕ) (a : Rˣ) : R[X] := X ^ n - C (a : R)
+/-- The quotient algebra obtained by adjoining a root of `X^n - a`. -/
 abbrev RootAlgebra (n : ℕ) (a : Rˣ) := AdjoinRoot (rootPolynomial R n a)
 
 theorem rootPolynomial_monic (n : ℕ) (hn : 0 < n) (a : Rˣ) :
@@ -80,6 +82,7 @@ theorem root_pow (n : ℕ) (a : Rˣ) :
   simp only [rootPolynomial, eval₂_sub, eval₂_pow, eval₂_X, eval₂_C, sub_eq_zero] at h
   exact h
 
+/-- The universal root of `X^n - a` as a unit, for nonzero `n` and a unit `a`. -/
 def rootUnit (n : ℕ) [NeZero n] (a : Rˣ) : (RootAlgebra R n a)ˣ :=
   ((isUnit_pow_iff (NeZero.ne n)).mp
     (show IsUnit ((AdjoinRoot.root (rootPolynomial R n a)) ^ n) from by
@@ -96,6 +99,8 @@ theorem rootUnit_pow (n : ℕ) [NeZero n] (a : Rˣ) :
   change (rootUnit R n a : RootAlgebra R n a) ^ n = algebraMap R (RootAlgebra R n a) a
   rw [rootUnit_val, root_pow]
 
+/-- The standard-étale presentation of `X^n - a` when `n` is positive and invertible in the base
+ring. -/
 def standardPair (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : R)) (a : Rˣ) :
     StandardEtalePair R where
   f := rootPolynomial R n a
@@ -120,6 +125,8 @@ def standardPair (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : R)) (a : Rˣ) :
       _ = C ((a : R) * ↑(a⁻¹)) := by rw [hb', map_one, map_mul]; ring
       _ = 1 := by rw [a.mul_inv, map_one]
 
+/-- The algebra equivalence from the standard-étale presentation to the positive-root quotient
+algebra. -/
 def standardPairEquiv (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : R)) (a : Rˣ) :
     (standardPair R n hn hinv a).Ring ≃ₐ[R] RootAlgebra R n a := by
   let P := standardPair R n hn hinv a
@@ -215,6 +222,7 @@ def ringHomEquiv (S : Type u) [CommRing S] (i : R →+* S) (n : ℕ) [NeZero n] 
 
 variable {R}
 
+/-- The pullback of a global unit on `X` to the global sections of a scheme over `X`. -/
 def unitRestriction (X : Scheme.{u}) (a : Γ(X, ⊤)ˣ) (U : Over X) : Γ(U.left, ⊤)ˣ :=
   Units.map U.hom.appTop.hom.toMonoidHom a
 
@@ -222,6 +230,7 @@ def unitRestriction (X : Scheme.{u}) (a : Γ(X, ⊤)ˣ) (U : Over X) : Γ(U.left
 abbrev RootSections (X : Scheme.{u}) (n : ℕ) (a : Γ(X, ⊤)ˣ) (U : Over X) :=
   {b : Γ(U.left, ⊤)ˣ // b ^ n = unitRestriction X a U}
 
+/-- The pullback universal-property equivalence for morphisms to the positive-root scheme. -/
 def homEquiv (X : Scheme.{u}) (n : ℕ) (a : Γ(X, ⊤)ˣ) (U : Over X) :
     (U ⟶ scheme X n a) ≃
       {g : U.left ⟶ Spec (.of (RootAlgebra Γ(X, ⊤) n a)) //
@@ -237,6 +246,8 @@ def homEquiv (X : Scheme.{u}) (n : ℕ) (a : Γ(X, ⊤)ˣ) (U : Over X) :
     · simp
   right_inv g := by apply Subtype.ext; simp
 
+/-- The equivalence identifying positive-root scheme sections with ring maps from the root
+algebra that respect the structural map on global sections. -/
 def homRingEquiv (X : Scheme.{u}) (n : ℕ) (a : Γ(X, ⊤)ˣ) (U : Over X) :
     (U ⟶ scheme X n a) ≃
       {h : RootAlgebra Γ(X, ⊤) n a →+* Γ(U.left, ⊤) //
@@ -278,6 +289,7 @@ theorem universalRoot_pow (X : Scheme.{u}) (n : ℕ) [NeZero n] (a : Γ(X, ⊤)�
   (sectionsEquiv X n a _ (𝟙 _)).property
 
 
+/-- The underlying scheme over `X` of the `n`th roots-of-unity group object. -/
 abbrev mu (X : Scheme.{u}) (n : ℕ) : Over X := (MultiplicativeGroup.rootsGroupScheme X n).X
 
 theorem rootsVal_naturality (X : Scheme.{u}) (n : ℕ) {U V : Over X}

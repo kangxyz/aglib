@@ -32,6 +32,8 @@ universe u
 namespace AlgebraicGeometry.Scheme.PowerNode
 variable {R : Type u} [CommRing R] (S : Type u) [CommRing S] [Algebra R S]
 
+/-- The affine-scheme isomorphism identifying the node with transported coefficient with the
+base change of the original node. -/
 def baseChangeIso (c : R) : Spec (.of (PlaneNode.Ring (algebraMap R S c))) ≅
     pullback (Spec.map (CommRingCat.ofHom (algebraMap R S)))
       (Spec.map (CommRingCat.ofHom (algebraMap R (PlaneNode.Ring c)))) :=

@@ -37,17 +37,28 @@ universe u
 section ModuleSequence
 variable (R : Type u) [CommRing R] (π : R)
 
+/-- The free rank-one `R`-module, viewed as a finite module. -/
 abbrev rankOne : FGModuleCat.{u} R := FGModuleCat.of R R
+/-- The finite `R`-module `R/(π)` with its quotient scalar action. -/
 abbrev principalQuotient : FGModuleCat.{u} R := FGModuleCat.of R (R ⧸ Ideal.span {π})
 
+/-- Multiplication by `π` on the free rank-one module. -/
 def mulPi : rankOne R ⟶ rankOne R := FGModuleCat.ofHom (LinearMap.mulLeft R π)
+/-- The canonical morphism from the rank-one module to `R/(π)`. -/
 def quotientPi : rankOne R ⟶ principalQuotient R π :=
   FGModuleCat.ofHom (Ideal.Quotient.mkₐ R (Ideal.span {π})).toLinearMap
 
-@[simp] theorem mulPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) : mulPi R π x = π*x := rfl
-@[simp] theorem quotientPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) :
+-- Retain the original Noetherian-domain interface of the principal multiplication sequence;
+-- this underlying module identity itself needs neither guard.
+@[nolint unusedArguments, simp] theorem mulPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) : mulPi R π x = π*x := rfl
+-- Retain the original Noetherian-domain interface of the principal multiplication sequence;
+-- this underlying module identity itself needs neither guard.
+@[nolint unusedArguments, simp] theorem quotientPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) :
     quotientPi R π x = Ideal.Quotient.mk (Ideal.span {π}) x := rfl
 
+-- Retain the original Noetherian-domain interface of the principal multiplication sequence;
+-- this underlying module identity itself needs neither guard.
+@[nolint unusedArguments]
 lemma mulPi_comp_quotientPi [IsDomain R] [IsNoetherianRing R] : mulPi R π ≫ quotientPi R π = 0 := by
   apply FGModuleCat.hom_ext
   apply LinearMap.ext
@@ -60,6 +71,9 @@ def multiplicationSequence [IsDomain R] [IsNoetherianRing R] : ShortComplex (FGM
   ShortComplex.mk (mulPi R π) (quotientPi R π) (mulPi_comp_quotientPi R π)
 
 /-- Injectivity uses only pi != 0 in the domain. -/
+-- Retain the original Noetherian-domain interface used by the finite-module exact sequence;
+-- injectivity itself uses only the domain and the nonzero scalar.
+@[nolint unusedArguments]
 theorem mulPi_injective
     [IsDomain R] [IsNoetherianRing R] (hπ : π ≠ 0) : Function.Injective (mulPi R π) := by
   intro x y h
@@ -98,6 +112,9 @@ theorem multiplication_conflation [IsDomain R] [IsNoetherianRing R] (hπ : π �
   multiplicationSequence_shortExact R π hπ
 
 /-- Pi kills the ACTUAL quotient module; this is the support data before localization. -/
+-- Retain the original Noetherian-domain interface of the principal multiplication sequence;
+-- this underlying module identity itself needs neither guard.
+@[nolint unusedArguments]
 theorem pi_annihilates_quotient
     [IsDomain R] [IsNoetherianRing R] (q : R ⧸ Ideal.span {π}) : π • q = 0 := by
   obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective q

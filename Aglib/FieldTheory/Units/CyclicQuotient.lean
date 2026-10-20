@@ -284,10 +284,12 @@ subgroup, and the map is the preexisting quotient of the power homomorphism. -/
 structure KernelNormalForm (q : Kˣ)
     (hq : Function.Injective (fun z : ℤ => q ^ z))
     (H : Subgroup (QuotientGroup.CyclicQuotient q)) where
+  /-- A lifted unit whose positive period exponent generates the exponent image. -/
   t : liftedSubgroup q H
   positive : 0 < periodExponent q H t
   generates : ∀ x : liftedSubgroup q H, ∃ z : ℤ,
     exponentHom q hq H x = exponentHom q hq H t ^ z
+  /-- The positive index factor relating the cardinality of `H` to the period exponent of `t`. -/
   b : ℕ
   b_pos : 0 < b
   index_relation : (Nat.card H : ℤ) = (b : ℤ) * periodExponent q H t
@@ -397,8 +399,11 @@ variable {K : Type u} [Field K] {q : Kˣ}
 
 namespace KernelNormalForm
 
+/-- The cardinality of the torsion subgroup of the lifted unit group. -/
 def a (_N : KernelNormalForm q hq H) : ℕ := Nat.card (torsionSubgroup q H)
 
+/-- The unit obtained by raising the chosen lifted generator to the torsion-subgroup
+cardinality. -/
 def p (N : KernelNormalForm q hq H) : Kˣ := (N.t : Kˣ) ^ N.a
 
 theorem a_pos (N : KernelNormalForm q hq H) [Finite H] : 0 < N.a := Nat.card_pos

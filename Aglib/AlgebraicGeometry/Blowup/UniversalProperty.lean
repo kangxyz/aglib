@@ -79,17 +79,21 @@ abbrev affineBlowupAlgebra (I : Ideal A) (a : A) :
     Subalgebra A (Localization.Away a) :=
   Localization.Away.saturatedChart A I a
 
+/-- The fraction b/a in the saturated affine blowup chart indexed by a. -/
 def ratio (I : Ideal A) (a b : I) : affineBlowupAlgebra A I a :=
   ⟨algebraMap A (Localization.Away (a : A)) b * IsLocalization.Away.invSelf (a : A),
     Algebra.subset_adjoin ⟨b, b.property, rfl⟩⟩
 
+/-- The ideal sheaf cutting out Spec(A/I) inside Spec(A), given by its actual kernel. -/
 def affineCenter (I : Ideal A) : (Spec (.of A)).IdealSheafData :=
   (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I))).ker
 
+/-- The structure morphism of the saturated affine blowup algebra over Spec(A). -/
 def affineChartMap (I : Ideal A) (a : A) :
     Spec (.of (affineBlowupAlgebra A I a)) ⟶ Spec (.of A) :=
   Spec.map (CommRingCat.ofHom (algebraMap A (affineBlowupAlgebra A I a)))
 
+/-- The principal-open inclusion obtained by inverting b/a in the a-chart. -/
 def affineOverlapMap (I : Ideal A) (a b : I) :
     Spec (.of (Localization.Away (ratio A I a b))) ⟶
       Spec (.of (affineBlowupAlgebra A I a)) :=
@@ -123,7 +127,9 @@ theorem cartierPullback_iff_isEffectiveCartier {X Y : Scheme.{u}}
 
 /-- The ordinary final-object universal property, Stacks 0806. -/
 structure BlowupDatum {X : Scheme.{u}} (I : X.IdealSheafData) where
+  /-- The scheme supplied as the representative of this blowup universal property. -/
   Y : Scheme.{u}
+  /-- The supplied morphism from the blowup representative to its original scheme. -/
   map : Y ⟶ X
   cartier : cartierPullback I map
   universal : ∀ (T : Scheme.{u}) (f : T ⟶ X), cartierPullback I f →
@@ -205,6 +211,7 @@ end BlowupDatum
 and the usual D_+(a) intersection described as localization at b/a. -/
 structure AffineAtlas (A : Type u) [CommRing A] (I : Ideal A)
     (B : BlowupDatum (affineCenter A I)) where
+  /-- The supplied chart morphisms from the literal saturated blowup algebras. -/
   chart : ∀ a : I, Spec (.of (affineBlowupAlgebra A I a)) ⟶ B.Y
   openImmersion : ∀ a, IsOpenImmersion (chart a)
   triangle : ∀ a, chart a ≫ B.map = affineChartMap A I a
@@ -275,15 +282,15 @@ def transport (H : AffineAtlas A I B) (C : BlowupDatum (affineCenter A I)) :
 
 /-- The transported chart's triangle with the original chart is the actual
 unique isomorphism between the two blowup representatives. -/
-@[reassoc (attr := simp)] theorem transport_chart_inv (H : AffineAtlas A I B)
+@[reassoc] theorem transport_chart_inv (H : AffineAtlas A I B)
     (C : BlowupDatum (affineCenter A I)) (a : I) :
     (H.transport C).chart a ≫ (B.comparisonIso C).inv = H.chart a := by
   simp [transport_chart]
 
-@[simp] theorem transport_chart_refl (H : AffineAtlas A I B) (a : I) :
+theorem transport_chart_refl (H : AffineAtlas A I B) (a : I) :
     (H.transport B).chart a = H.chart a := by simp
 
-@[simp] theorem transport_chart_trans (H : AffineAtlas A I B)
+theorem transport_chart_trans (H : AffineAtlas A I B)
     (C D : BlowupDatum (affineCenter A I)) (a : I) :
     ((H.transport C).transport D).chart a = (H.transport D).chart a := by
   simp only [transport_chart, Category.assoc]

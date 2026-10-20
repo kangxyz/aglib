@@ -259,9 +259,13 @@ theorem specTransporterPair_isIso {ε : H →ₐ[R] R} {Δ : H →ₐ[R] H ⊗[R
 end Pullback
 
 attribute [local instance] Over.cartesianMonoidalCategory Over.braidedCategory
+/-- The actual affine R-scheme Spec B, retaining its original algebra structure map in the
+over-category. -/
 abbrev affine (R B : Type u) [CommRing R] [CommRing B] [Algebra R B] :
     Over (Spec (.of R)) := Over.mk (structureMap R B)
 
+/-- Pull back global coordinates along the actual map to Spec B, using the canonical
+global-section identification of Spec B. -/
 def ringPoint {X : Scheme.{u}} {B : Type u} [CommRing B]
     (f : X ⟶ Spec (.of B)) : B →+* Γ(X, ⊤) :=
   ((Scheme.ΓSpecIso (.of B)).inv ≫ f.appTop).hom
@@ -278,7 +282,7 @@ theorem ringPoint_injective {X : Scheme.{u}} {B : Type u} [CommRing B] :
   simp only [ringPoint, Scheme.Hom.comp_appTop]
   rfl
 
-@[simp] theorem ringPoint_spec {X : Scheme.{u}} {B C : Type u} [CommRing B] [CommRing C]
+theorem ringPoint_spec {X : Scheme.{u}} {B C : Type u} [CommRing B] [CommRing C]
     (f : X ⟶ Spec (.of B)) (q : C →+* B) :
     ringPoint (f ≫ Spec.map (CommRingCat.ofHom q)) = (ringPoint f).comp q := by
   unfold ringPoint
@@ -289,6 +293,7 @@ theorem ringPoint_injective {X : Scheme.{u}} {B : Type u} [CommRing B] :
   rw [← Category.assoc, h, Category.assoc]
   rfl
 
+/-- The structural R-algebra on global functions of the actual scheme over Spec R. -/
 @[instance_reducible] def sectionAlgebra (R : Type u) [CommRing R]
     (X : Over (Spec (.of R))) : Algebra R Γ(X.left, ⊤) := (ringPoint X.hom).toAlgebra
 
@@ -296,8 +301,11 @@ section Basic
 variable (R : Type u) [CommRing R]
 variable (B H : Type u) [CommRing B] [Algebra R B] [CommRing H] [Algebra R H]
 
+/-- Use the structural R-algebra when interpreting actual Over-points as algebra homomorphisms. -/
 local instance (X : Over (Spec (.of R))) : Algebra R Γ(X.left, ⊤) := sectionAlgebra R X
 
+/-- An actual Over-point of Spec B expressed as an R-algebra map from B to the same source
+global functions. -/
 def pointAlg {X : Over (Spec (.of R))} (p : X ⟶ affine R B) : B →ₐ[R] Γ(X.left, ⊤) where
   __ := ringPoint p.left
   commutes' r := by
@@ -313,6 +321,8 @@ theorem pointAlg_injective {X : Over (Spec (.of R))} :
   apply ringPoint_injective
   exact congrArg AlgHom.toRingHom h
 
+/-- The scheme action from the actual coaction, using the literal pullback pair of the supplied
+source point and coefficient point. -/
 def action (alpha : B →ₐ[R] B ⊗[R] H) {X : Over (Spec (.of R))}
     (a : X ⟶ affine R H) (x : X ⟶ affine R B) : X ⟶ affine R B :=
   Over.homMk (pullback.lift (f := structureMap R B) (g := structureMap R H) x.left a.left
@@ -431,13 +441,17 @@ end Basic
 section Hopf
 variable (R B H : Type u) [CommRing R] [CommRing B] [Algebra R B] [CommRing H]
 variable [HopfAlgebra R H] [Coalgebra.IsCocomm R H]
+/-- Use the same structural R-algebra for global functions in the coefficient Hopf-group
+calculations. -/
 local instance (X : Over (Spec (.of R))) : Algebra R Γ(X.left, ⊤) := sectionAlgebra R X
+/-- The affine group object of the actual commutative Hopf R-algebra H, obtained from the native
+Hopf spectrum functor. -/
 abbrev coefficientGroup : Grp (Over (Spec (.of R))) :=
   (hopfSpec (.of R)).obj (op (CommHopfAlgCat.of R H))
 
 omit [Coalgebra.IsCocomm R H] in
 /-- The constructed coefficient group retains the original affine carrier and structural map. -/
-@[simp] theorem coefficientGroup_X : (coefficientGroup R H).X = affine R H := rfl
+theorem coefficientGroup_X : (coefficientGroup R H).X = affine R H := rfl
 omit [Coalgebra.IsCocomm R H] in
 @[simp] theorem coefficient_one {X : Over (Spec (.of R))} :
     pointAlg R H (1 : X ⟶ (coefficientGroup R H).X) =

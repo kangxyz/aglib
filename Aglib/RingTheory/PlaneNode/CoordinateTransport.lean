@@ -37,6 +37,7 @@ def tensorEquiv (c : R) :
   AdjoinRoot.bivariateTensorEquiv (poly c) (poly (algebraMap R S c)) (by
     simp [poly])
 
+/-- The map of node algebras induced by extension of coefficients from `R` to `S`. -/
 def coefficientMap (c : R) :
     Ring c →ₐ[R] Ring (algebraMap R S c) :=
   ((tensorEquiv S c).toAlgHom.restrictScalars R).comp
@@ -75,6 +76,7 @@ theorem coefficientMap_etale [Algebra.Etale R S] (c : R) :
       (tensorEquiv S c).bijective)
 
 variable {S} in
+/-- The node-algebra equivalence induced by an equality of the defining coefficients. -/
 def congr {c d : S} (h : c = d) : Ring c ≃ₐ[S] Ring d := by
   subst d
   exact AlgEquiv.refl
@@ -93,6 +95,8 @@ variable {S} in
     (congr h).symm (V d) = V c := by subst d; rfl
 
 variable {S} in
+/-- The node-algebra equivalence obtained when the defining coefficients differ by the specified
+unit factor. -/
 def scaledEquiv (c : S) (a : Sˣ) (d : S) (h : d = (a : S) * c) :
     Ring d ≃ₐ[S] Ring c :=
   (congr h).trans (unitScale c a)

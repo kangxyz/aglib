@@ -57,8 +57,12 @@ namespace OpenNormalizationGluing
 variable {W U V N : Scheme.{u}}
 variable (f : W ⟶ U) (g : W ⟶ V) (a : W ⟶ N)
 variable [IsOpenImmersion f] [IsOpenImmersion g] [IsOpenImmersion a]
+/-- The scheme obtained by gluing `U` and `V` along the given open copies of `W`. -/
 noncomputable abbrev glued : Scheme.{u} := pushout f g
+/-- The scheme obtained by gluing `N` and `V` along the given open copies of `W`. -/
 noncomputable abbrev normalized : Scheme.{u} := pushout a g
+/-- The morphism between the glued schemes induced by `n : N ⟶ U` and the identity on `V`,
+assuming agreement on `W`. -/
 noncomputable def normalizationMap (n : N ⟶ U) (h : a ≫ n = f) :
     normalized g a ⟶ glued f g :=
   pushout.desc (n ≫ pushout.inl f g) (pushout.inr f g)
@@ -180,6 +184,7 @@ theorem infinity_isPullback (n : N ⟶ U) (h : a ≫ n = f)
     IsPullback (𝟙 V) (pushout.inr a g) (pushout.inr f g) (normalizationMap f g a n h) :=
   IsOpenImmersion.isPullback (𝟙 V) _ _ _ (by simp) (preimage_infinity f g a n h hpre)
 
+/-- The two-chart open cover of the glued scheme by `U` and `V`. -/
 noncomputable def twoChartCover : (glued f g).OpenCover where
   I₀ := Bool
   X := fun b => if b then V else U

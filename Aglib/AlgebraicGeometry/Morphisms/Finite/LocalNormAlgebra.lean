@@ -47,6 +47,8 @@ instance preimage_nonempty [Nonempty U] : Nonempty (f ⁻¹ᵁ U) := by
   exact ((genericPoint_spec Y).mem_open_set_iff U.isOpen).mpr
     (by simpa using ‹Nonempty U›)
 
+/-- The target-chart algebra on functions of the entire inverse-image chart, induced by the
+actual map f.app U. -/
 @[instance_reducible]
 def chartAlgebra : Algebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) := (f.app U).hom.toAlgebra
 
@@ -54,6 +56,9 @@ attribute [local instance] chartAlgebra
 
 omit hFinite in
 /-- Generic restriction commutes with pullback on the entire inverse-image chart. -/
+-- Retain finiteness of the original finite dominant norm morphism; the germ identity alone only
+-- uses its actual dominant function-field pullback.
+@[nolint unusedArguments]
 theorem fieldMap_germ
     [IsFinite f]
     [Nonempty U] :
@@ -75,6 +80,9 @@ theorem chartMap_injective [Nonempty U] : Function.Injective (f.app U) := by
 
 include hU in
 omit hX hY hDominant in
+-- Retain the integral-source, integral-target and dominant-map guards of the original
+-- norm-chart interface; chart finiteness itself follows from finite_app.
+@[nolint unusedArguments]
 theorem chart_finite
     [IsIntegral X]
     [IsIntegral Y]
@@ -91,6 +99,7 @@ def denominators : Submonoid Γ(X, f ⁻¹ᵁ U) :=
 abbrev Ring := Localization (denominators f U hU y)
 
 variable [hNonempty : Nonempty U]
+/-- The target-chart algebra structure on the actual stalk at y, induced by the section germ. -/
 local instance stalkChartAlgebra : Algebra Γ(Y, U) (Y.presheaf.stalk y.val) :=
   TopCat.Presheaf.algebra_section_stalk Y.presheaf y
 
@@ -104,6 +113,8 @@ local instance model_isLocalization :
   change IsLocalization (denominators f U hU y) (Localization (denominators f U hU y))
   infer_instance
 
+/-- The target-stalk algebra on the full localized inverse-image chart, obtained from its
+localization map. -/
 @[instance_reducible]
 def stalkAlgebra : Algebra (Y.presheaf.stalk y.val) (Ring f U hU y) :=
   localizationAlgebra (hU.primeIdealOf y).asIdeal.primeCompl Γ(X, f ⁻¹ᵁ U)
@@ -161,12 +172,17 @@ instance isFractionRing : IsFractionRing (Ring f U hU y) X.functionField := by
   exact IsFractionRing.isFractionRing_of_isDomain_of_isLocalization
     (denominators f U hU y) (Ring f U hU y) X.functionField
 
+/-- The target-stalk algebra on the source function field, using generic restriction followed by
+the actual function-field pullback. -/
 @[instance_reducible]
 def stalkFieldAlgebra : Algebra (Y.presheaf.stalk y.val) X.functionField :=
   ((Scheme.functionFieldMap f).comp (algebraMap (Y.presheaf.stalk y.val) Y.functionField)).toAlgebra
 
 omit hFinite hNonempty in
 /-- The target-stalk map into the source field is exactly induced by `Scheme.functionFieldMap`. -/
+-- Retain the finite-map and nonempty-chart guards of the original full norm model; this
+-- scalar-tower compatibility is formal for the displayed field maps.
+@[nolint unusedArguments]
 theorem stalk_field_scalarTower
     [IsFinite f]
     [Nonempty U]
@@ -198,6 +214,10 @@ theorem stalk_model_scalarTower :
 
 omit hX hY hDominant hFinite hNonempty in
 /-- The local model is the entire affine base change by the actual target-stalk map. -/
+-- Retain all original finite-dominant integral-scheme and nonempty-chart guards of the full
+-- local norm realization; the affine cartesian identity is its localization pushout
+-- calculation.
+@[nolint unusedArguments]
 theorem isPullback_affine
     [IsIntegral X]
     [IsIntegral Y]
@@ -241,6 +261,9 @@ def branchPrime (q : MaximalSpectrum (Ring f U hU y)) : PrimeSpectrum Γ(X, f �
   q.toPrimeSpectrum.comap (algebraMap Γ(X, f ⁻¹ᵁ U) (Ring f U hU y))
 
 omit hNonempty in
+-- Retain the nonempty-chart guard of the original norm-branch interface, even though the
+-- displayed point y already witnesses that nonemptiness.
+@[nolint unusedArguments]
 theorem branchPrime_comap
     [Nonempty U]
     (q : MaximalSpectrum (Ring f U hU y)) :
@@ -284,6 +307,9 @@ theorem branchPoint_closed (hy : IsClosed ({y.val} : Set Y))
     (hy.preimage f.continuous).isClosedMap_subtype_val ({x}) isClosed_singleton
 
 omit hX hY hDominant hNonempty in
+-- Retain the original integral-scheme, dominant-map and nonempty-chart scope for the norm
+-- branches; injectivity itself uses the same localization and open-chart maps.
+@[nolint unusedArguments]
 theorem branchPoint_injective
     [IsIntegral X]
     [IsIntegral Y]
@@ -299,6 +325,9 @@ theorem branchPoint_injective
 
 omit hX hY hDominant hNonempty in
 /-- Every actual closed point above `y` gives a maximal branch; none is omitted. -/
+-- Retain the original integral-scheme, dominant-map and nonempty-chart scope of the
+-- closed-fibre branch construction; the existence proof uses its given closed fibre point.
+@[nolint unusedArguments]
 theorem exists_branch
     [IsIntegral X]
     [IsIntegral Y]
@@ -337,6 +366,8 @@ section ClosedFibre
 variable [hNoetherianX : AlgebraicGeometry.IsNoetherian X]
   [hNoetherianY : AlgebraicGeometry.IsNoetherian Y]
 
+/-- The actual closed fibre point of a maximal branch, with its source point and proved equality
+over y. -/
 def branchClosedFibre (hy : IsClosed ({y.val} : Set Y))
     (q : MaximalSpectrum (Ring f U hU y)) : ClosedFibre f ⟨y.val, hy⟩ :=
   ⟨⟨branchPoint f U hU y q, branchPoint_closed f U hU y hy q⟩,
@@ -357,6 +388,9 @@ end ClosedFibre
 
 omit hX hY hDominant hNonempty in
 /-- The branch point lies in the full inverse-image chart. -/
+-- Retain the integral-scheme, dominant-map and nonempty-chart guards shared by the original
+-- norm-branch API; chart membership is formal from the actual branch-point construction.
+@[nolint unusedArguments]
 theorem branchPoint_mem
     [IsIntegral X]
     [IsIntegral Y]
@@ -373,6 +407,8 @@ theorem primeIdealOf_branchPoint (q : MaximalSpectrum (Ring f U hU y)) :
   rw [(hU.preimage f).fromSpec_primeIdealOf]
   rfl
 
+/-- The source-chart algebra on the actual branch stalk, induced by the germ at its original
+source point. -/
 @[instance_reducible]
 def branchStalkAlgebra (q : MaximalSpectrum (Ring f U hU y)) :
     Algebra Γ(X, f ⁻¹ᵁ U) (X.presheaf.stalk (branchPoint f U hU y q)) :=
@@ -444,6 +480,9 @@ instance stalkMapAt_isLocalHom (x : X) (v : Y) (hx : f x = v) :
   simpa [stalkMapAt] using (inferInstance : IsLocalHom (f.stalkMap x).hom)
 
 omit hX hY hDominant hFinite hNonempty in
+-- Retain all original finite-dominant integral-scheme and nonempty-chart guards of the norm
+-- stalk-map interface; the actual germ equation is general morphism naturality.
+@[nolint unusedArguments]
 theorem stalkMapAt_germ
     [IsIntegral X]
     [IsIntegral Y]
@@ -493,6 +532,9 @@ variable [hNoetherianX : AlgebraicGeometry.IsNoetherian X]
 
 omit hNoetherianX hNoetherianY in
 /-- The residue degrees in the algebraic norm formula are the actual geometric residue degrees. -/
+-- Retain Noetherianity of both original schemes in the closed-fibre norm-degree interface; the
+-- displayed residue-field comparison itself is the canonical stalk-equivalence calculation.
+@[nolint unusedArguments]
 theorem branch_residueDegree
     [AlgebraicGeometry.IsNoetherian X]
     [AlgebraicGeometry.IsNoetherian Y]

@@ -68,6 +68,8 @@ def twoOpenCover : W.OpenCover :=
 variable (a : A ⟶ V) (b : B ⟶ V)
   (overlap : pullback.fst iA iB ≫ a = pullback.snd iA iB ≫ b)
 
+/-- The map on each member of the two-open source cover, selecting `a` or `b` according to the
+chart. -/
 def localMap (k : Bool) : (twoOpenCover iA iB cover).X k ⟶ V :=
   match k with
   | false => a

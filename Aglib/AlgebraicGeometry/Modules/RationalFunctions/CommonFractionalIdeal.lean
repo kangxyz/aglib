@@ -48,7 +48,9 @@ namespace AlgebraicGeometry.Scheme.Modules.RationalFunctions.CommonFractionalIde
 universe u
 variable (X : Scheme.{u}) [hIntegralX : IsIntegral X]
 
+/-- The native rational-function module sheaf on the given integral scheme. -/
 abbrev rationalFunctions := AlgebraicGeometry.Scheme.Modules.RationalFunctions.rationalFunctions X
+/-- The unit module sheaf of regular functions on the given scheme. -/
 abbrev regularModule : X.Modules := SheafOfModules.unit X.ringCatSheaf
 
 theorem generic_preimage_eq_top (U : X.Opens) [hU : Nonempty U] :
@@ -62,6 +64,8 @@ theorem generic_preimage_eq_top (U : X.Opens) [hU : Nonempty U] :
   rw [hz, Scheme.fromSpecStalk_closedPoint]
   exact ((genericPoint_spec X).mem_open_set_iff U.isOpen).mpr (by simpa using hU)
 
+/-- Identify sections over the generic preimage of a nonempty open with the function field
+through the canonical spectrum comparison. -/
 def rationalSectionIso (U : X.Opens) [Nonempty U] :
     Γ(Spec X.functionField, ((X.fromSpecStalk (genericPoint X))) ⁻¹ᵁ U) ≅ X.functionField :=
   (eqToIso (by rw [generic_preimage_eq_top X U])) ≪≫ Scheme.ΓSpecIso X.functionField
@@ -88,6 +92,7 @@ theorem generic_app_rationalSectionIso (U : X.Opens) [hU : Nonempty U] :
   rw [← Category.assoc _ (eqToHom _), hr]
   simp
 
+/-- Evaluate rational-function sections on a nonempty open as a linear map to the function field. -/
 def rationalValue (U : X.Opens) [Nonempty U] :
     (rationalFunctions X).val.obj (op U) →ₗ[Γ(X, U)] X.functionField where
   toFun := (rationalSectionIso X U).hom
@@ -101,6 +106,8 @@ def rationalValue (U : X.Opens) [Nonempty U] :
     exact congrArg (fun e : Γ(X, U) ⟶ X.functionField => e a)
       (generic_app_rationalSectionIso X U)
 
+/-- Identify rational-function sections on a nonempty open with their values in the function
+field. -/
 def rationalValueEquiv (U : X.Opens) [Nonempty U] :
     (rationalFunctions X).val.obj (op U) ≃ₗ[Γ(X, U)] X.functionField :=
   LinearEquiv.ofBijective (rationalValue X U)
@@ -128,6 +135,8 @@ theorem rationalValue_restrict {U V : X.Opens} [Nonempty U] [Nonempty V]
   congrArg (fun e => (e : Γ(Spec X.functionField, ((X.fromSpecStalk (genericPoint X))) ⁻¹ᵁ V) ⟶
     X.functionField) s) (rationalSectionIso_naturality X i)
 
+/-- The structure-module map including regular functions into rational functions along the
+actual generic-point morphism. -/
 def regularMap : regularModule X ⟶ rationalFunctions X :=
   AlgebraicGeometry.Scheme.Hom.structureModuleMap ((X.fromSpecStalk (genericPoint X)))
 
@@ -156,12 +165,15 @@ instance regularMap_mono : Mono (regularMap X) := by
       ((X.fromSpecStalk (genericPoint X))).app U.unop b at hab
     exact (he a).symm.trans ((congrArg (rationalSectionIso X U.unop).hom hab).trans (he b))
 
+/-- Multiplication by the specified function-field unit as an automorphism of the
+rational-function module. -/
 def rationalMultiplier (f : X.functionFieldˣ) : rationalFunctions X ≅ rationalFunctions X :=
   (Scheme.Modules.pushforward ((X.fromSpecStalk (genericPoint X)))).mapIso
     (Scheme.Modules.globalScalarIso (X := Spec X.functionField)
       (SheafOfModules.unit (Spec X.functionField).ringCatSheaf)
       (Units.map (Scheme.ΓSpecIso X.functionField).inv.hom.toMonoidHom f))
 
+/-- Include regular functions into rational functions and then multiply by the specified unit. -/
 def scaledRegularMap (f : X.functionFieldˣ) : regularModule X ⟶ rationalFunctions X :=
   regularMap X ≫ (rationalMultiplier X f).hom
 instance scaledRegularMap_mono (f : X.functionFieldˣ) : Mono (scaledRegularMap X f) := by
@@ -171,8 +183,11 @@ instance scaledRegularMap_mono (f : X.functionFieldˣ) : Mono (scaledRegularMap 
 /-- The actual common fractional ideal, with both its regular-module projections. -/
 def commonIdeal (f : X.functionFieldˣ) : X.Modules := CategoryTheory.Limits.pullback
     (regularMap X) (scaledRegularMap X f)
+/-- The first projection from the common fractional ideal to the unscaled regular module. -/
 def leftInclusion (f : X.functionFieldˣ) : commonIdeal X f ⟶ regularModule X :=
     CategoryTheory.Limits.pullback.fst _ _
+/-- The second projection from the common fractional ideal to the regular module whose
+rational inclusion is scaled by the specified unit. -/
 def rightInclusion (f : X.functionFieldˣ) : commonIdeal X f ⟶ regularModule X :=
     CategoryTheory.Limits.pullback.snd _ _
 instance leftInclusion_mono (f : X.functionFieldˣ) : Mono (leftInclusion X f) := by
@@ -180,7 +195,9 @@ instance leftInclusion_mono (f : X.functionFieldˣ) : Mono (leftInclusion X f) :
 instance rightInclusion_mono (f : X.functionFieldˣ) : Mono (rightInclusion X f) := by
   dsimp [rightInclusion]; infer_instance
 
+/-- The cokernel of the first projection from the common fractional ideal. -/
 def leftQuotient (f : X.functionFieldˣ) : X.Modules := cokernel (leftInclusion X f)
+/-- The cokernel of the second projection from the common fractional ideal. -/
 def rightQuotient (f : X.functionFieldˣ) : X.Modules := cokernel (rightInclusion X f)
 
 theorem rationalSectionIso_restrict_top (U : X.Opens) [Nonempty U] (a : X.functionField) :
@@ -237,6 +254,8 @@ open Ideal
 namespace LocalRelation
 variable (R K : Type*) [CommRing R] [Field K] [Algebra R K]
 
+/-- The linear relation sending a pair to its first coordinate minus the specified scalar
+times its second coordinate in the given field algebra. -/
 def relationMap (f : K) : (R × R) →ₗ[R] K where
   toFun := fun z => algebraMap R K z.1 - f * algebraMap R K z.2
   map_add' := by intro u v; simp only [Prod.fst_add, Prod.snd_add, map_add]; ring
@@ -248,16 +267,21 @@ def relationMap (f : K) : (R × R) →ₗ[R] K where
     rw [map_mul, map_mul]
     ring
 
+/-- The submodule of pairs satisfying the specified fractional relation. -/
 def commonModule (f : K) : Submodule R (R × R) := (relationMap R K f).ker
 
+/-- The first-coordinate linear map on the common-relation submodule. -/
 def leftProjection (f : K) : commonModule R K f →ₗ[R] R :=
   (LinearMap.fst R R R).comp (commonModule R K f).subtype
 
+/-- The second-coordinate linear map on the common-relation submodule. -/
 def rightProjection (f : K) : commonModule R K f →ₗ[R] R :=
   (LinearMap.snd R R R).comp (commonModule R K f).subtype
 
 variable [hDomainR : IsDomain R] [IsFractionRing R K]
 omit hDomainR in
+-- Retain the domain guard of the original fraction-field relation interface.
+@[nolint unusedArguments]
 theorem mem_commonModule_iff [IsDomain R] (a b : R) (hb : b ≠ 0) (z : R × R) :
     z ∈ commonModule R K (algebraMap R K a / algebraMap R K b) ↔ b * z.1 = a * z.2 := by
   have hbK : algebraMap R K b ≠ 0 := by
@@ -268,6 +292,7 @@ theorem mem_commonModule_iff [IsDomain R] (a b : R) (hb : b ≠ 0) (z : R × R) 
     (IsFractionRing.injective R K).eq_iff]
   simp only [mul_comm z.1 b]
 
+/-- Multiply by the denominator and reduce modulo the intersection of the two principal ideals. -/
 def principalImageMap (a b : R) : R →ₗ[R] (R ⧸ (Ideal.span {a} ⊓ Ideal.span {b})) :=
   (Submodule.mkQ (Ideal.span {a} ⊓ Ideal.span {b} : Ideal R)).comp (LinearMap.mulLeft R b)
 
@@ -294,6 +319,8 @@ theorem principalImageMap_ker (a b : R) (hb : b ≠ 0) :
     · exact Ideal.mem_span_singleton.mpr ⟨z.val.1, rfl⟩
 
 omit hDomainR in
+-- Retain the original domain context of the left fractional-ideal quotient formula.
+@[nolint unusedArguments]
 theorem principalImageMap_range [IsDomain R] (a b : R) :
     (principalImageMap R a b).range =
       quotientIdealImage R (Ideal.span {a} ⊓ Ideal.span {b}) (Ideal.span {b}) := by
@@ -308,12 +335,15 @@ theorem principalImageMap_range [IsDomain R] (a b : R) :
   rw [principalImageMap, LinearMap.range_comp, hm]
   rfl
 
+/-- Identify the quotient by the first common-relation projection with the quotient-ideal
+image of the denominator ideal modulo the intersection. -/
 def leftQuotientEquiv (a b : R) (hb : b ≠ 0) :
     (R ⧸ (leftProjection R K (algebraMap R K a / algebraMap R K b)).range) ≃ₗ[R]
       quotientIdealImage R (Ideal.span {a} ⊓ Ideal.span {b}) (Ideal.span {b}) :=
   (Submodule.quotEquivOfEq _ _ (principalImageMap_ker R K a b hb).symm).trans
     ((principalImageMap R a b).quotKerEquivRange.trans
       (LinearEquiv.ofEq _ _ (principalImageMap_range R a b)))
+/-- Multiply by the numerator and reduce modulo the intersection of the two principal ideals. -/
 def rightPrincipalImageMap (a b : R) : R →ₗ[R] (R ⧸ (Ideal.span {a} ⊓ Ideal.span {b})) :=
   (Submodule.mkQ (Ideal.span {a} ⊓ Ideal.span {b} : Ideal R)).comp (LinearMap.mulLeft R a)
 
@@ -339,6 +369,8 @@ theorem rightPrincipalImageMap_ker (a b : R) (hb : b ≠ 0) :
       exact Ideal.mem_span_singleton.mpr ⟨z.val.1, rfl⟩
 
 omit hDomainR in
+-- Retain the original domain context of the right fractional-ideal quotient formula.
+@[nolint unusedArguments]
 theorem rightPrincipalImageMap_range [IsDomain R] (a b : R) :
     (rightPrincipalImageMap R a b).range =
       quotientIdealImage R (Ideal.span {a} ⊓ Ideal.span {b}) (Ideal.span {a}) := by
@@ -353,6 +385,8 @@ theorem rightPrincipalImageMap_range [IsDomain R] (a b : R) :
   rw [rightPrincipalImageMap, LinearMap.range_comp, hm]
   rfl
 
+/-- Identify the quotient by the second common-relation projection with the quotient-ideal
+image of the numerator ideal modulo the intersection. -/
 def rightQuotientEquiv (a b : R) (hb : b ≠ 0) :
     (R ⧸ (rightProjection R K (algebraMap R K a / algebraMap R K b)).range) ≃ₗ[R]
       quotientIdealImage R (Ideal.span {a} ⊓ Ideal.span {b}) (Ideal.span {a}) :=
@@ -361,6 +395,7 @@ def rightQuotientEquiv (a b : R) (hb : b ≠ 0) :
       (LinearEquiv.ofEq _ _ (rightPrincipalImageMap_range R a b)))
 end LocalRelation
 
+/-- The cocone of compatible rational values on neighbourhoods, with vertex the function field. -/
 def rationalStalkCocone (x : X) :
     Cocone ((OpenNhds.inclusion x).op ⋙ (rationalFunctions X).presheaf) where
   pt := AddCommGrpCat.of X.functionField
@@ -376,6 +411,7 @@ def rationalStalkCocone (x : X) :
       exact rationalValue_restrict X (U := V.unop.val) (V := U.unop.val)
         ((OpenNhds.inclusion x).map f.unop) s }
 
+/-- The additive value map from the rational-function stalk to the function field. -/
 def rationalStalkValue (x : X) :
     (rationalFunctions X).presheaf.stalk x →+ X.functionField :=
   (colimit.desc _ (rationalStalkCocone X x)).hom
@@ -388,6 +424,7 @@ theorem rationalStalkValue_germ (x : X) (U : X.Opens) (hx : x ∈ U)
   rw [colimit.ι_desc]
   rfl
 
+/-- The rational stalk-value map as a linear map over the actual local ring. -/
 def rationalStalkLinear (x : X) :
     (rationalFunctions X).presheaf.stalk x →ₗ[X.presheaf.stalk x] X.functionField where
   __ := rationalStalkValue X x
@@ -404,6 +441,7 @@ def rationalStalkLinear (x : X) :
         Scheme.algebraMap_germ_eq_germToFunctionField]
     exact (rationalValue X U).map_smul a s
 
+/-- Identify the rational-function stalk with the function field as modules over the local ring. -/
 def rationalStalkEquiv (x : X) :
     (rationalFunctions X).presheaf.stalk x ≃ₗ[X.presheaf.stalk x] X.functionField :=
   LinearEquiv.ofBijective (rationalStalkLinear X x) (by
@@ -423,6 +461,7 @@ def rationalStalkEquiv (x : X) :
       change rationalStalkValue X x _ = a
       rw [rationalStalkValue_germ]
       exact (rationalValueEquiv X ⊤).apply_symm_apply a)
+/-- The cocone of actual regular-section germ maps to the local ring. -/
 def regularStalkCocone (x : X) :
     Cocone ((OpenNhds.inclusion x).op ⋙ (regularModule X).presheaf) where
   pt := AddCommGrpCat.of (X.presheaf.stalk x)
@@ -434,11 +473,14 @@ def regularStalkCocone (x : X) :
       ext s
       exact X.presheaf.germ_res_apply ((OpenNhds.inclusion x).map f.unop) x V.unop.property s }
 
+/-- The additive map from the unit-module stalk to the ring stalk induced by actual germs. -/
 def regularStalkValue (x : X) :
     (regularModule X).presheaf.stalk x →+ X.presheaf.stalk x :=
   (colimit.desc _ (regularStalkCocone X x)).hom
 
 omit hIntegralX in
+-- Retain integrality in the original common fractional-ideal stalk interface.
+@[nolint unusedArguments]
 theorem regularStalkValue_germ [IsIntegral X] (x : X) (U : X.Opens) (hx : x ∈ U)
     (s : (regularModule X).val.obj (op U)) :
     regularStalkValue X x ((regularModule X).presheaf.germ U x hx s) =
@@ -447,6 +489,7 @@ theorem regularStalkValue_germ [IsIntegral X] (x : X) (U : X.Opens) (hx : x ∈ 
   rw [colimit.ι_desc]
   rfl
 
+/-- The regular stalk-value map as a linear map over the actual local ring. -/
 def regularStalkLinear (x : X) :
     (regularModule X).presheaf.stalk x →ₗ[X.presheaf.stalk x] X.presheaf.stalk x where
   __ := regularStalkValue X x
@@ -460,6 +503,7 @@ def regularStalkLinear (x : X) :
     rw [regularStalkValue_germ, regularStalkValue_germ]
     exact (X.presheaf.germ U x hx).hom.map_mul a s
 
+/-- Identify the unit-module stalk with the ring stalk through the actual germ maps. -/
 def regularStalkEquiv (x : X) :
     (regularModule X).presheaf.stalk x ≃ₗ[X.presheaf.stalk x] X.presheaf.stalk x :=
   LinearEquiv.ofBijective (regularStalkLinear X x) (by
@@ -508,6 +552,7 @@ theorem rationalStalkMap_scaledRegularMap (f : X.functionFieldˣ) (x : X)
     (f : X.functionField) *
       algebraMap (X.presheaf.stalk x) X.functionField (X.presheaf.germ U x hx (show Γ(X,U) from s))
   rw [scaledRegularMap_value, Scheme.algebraMap_germ_eq_germToFunctionField]
+/-- Extract the two regular stalk coordinates of a common fractional-ideal germ. -/
 def pairStalkMap (f : X.functionFieldˣ) (x : X) :
     (commonIdeal X f).presheaf.stalk x →ₗ[X.presheaf.stalk x]
       ((X.presheaf.stalk x) × (X.presheaf.stalk x)) :=
@@ -536,6 +581,7 @@ theorem pairStalkMap_relation (f : X.functionFieldˣ) (x : X)
   rw [rationalStalkMap_regularMap, rationalStalkMap_scaledRegularMap] at h
   exact sub_eq_zero.mpr h
 
+/-- View the pair of stalk coordinates as an element of the local common-relation submodule. -/
 def commonStalkLinear (f : X.functionFieldˣ) (x : X) :
     (commonIdeal X f).presheaf.stalk x →ₗ[X.presheaf.stalk x]
       LocalRelation.commonModule (X.presheaf.stalk x) X.functionField f :=
@@ -607,11 +653,14 @@ theorem commonStalkLinear_surjective (f : X.functionFieldˣ) (x : X) :
     rw [hright]
     exact (regularStalkEquiv X x).apply_symm_apply z.val.2
 
+/-- Identify the actual common fractional-ideal stalk with the local module of related pairs. -/
 def commonStalkEquiv (f : X.functionFieldˣ) (x : X) :
     (commonIdeal X f).presheaf.stalk x ≃ₗ[X.presheaf.stalk x]
       LocalRelation.commonModule (X.presheaf.stalk x) X.functionField f :=
   LinearEquiv.ofBijective (commonStalkLinear X f x)
     ⟨commonStalkLinear_injective X f x, commonStalkLinear_surjective X f x⟩
+/-- Identify the first quotient stalk with the quotient of the local ring by the first
+local projection range. -/
 def leftQuotientStalkIso (f : X.functionFieldˣ) (x : X) :
     (Scheme.Modules.moduleStalk X x).obj (leftQuotient X f) ≅
       ModuleCat.of (X.presheaf.stalk x)
@@ -630,6 +679,8 @@ def leftQuotientStalkIso (f : X.functionFieldˣ) (x : X) :
   exact (PreservesCokernel.iso F (leftInclusion X f)) ≪≫
     (cokernel.mapIso (F.map (leftInclusion X f)) g e₁ e₂ h) ≪≫ ModuleCat.cokernelIsoRangeQuotient g
 
+/-- Identify the second quotient stalk with the quotient of the local ring by the second
+local projection range. -/
 def rightQuotientStalkIso (f : X.functionFieldˣ) (x : X) :
     (Scheme.Modules.moduleStalk X x).obj (rightQuotient X f) ≅
       ModuleCat.of (X.presheaf.stalk x)
@@ -648,6 +699,8 @@ def rightQuotientStalkIso (f : X.functionFieldˣ) (x : X) :
   exact (PreservesCokernel.iso F (rightInclusion X f)) ≪≫
     (cokernel.mapIso (F.map (rightInclusion X f)) g e₁ e₂ h) ≪≫ ModuleCat.cokernelIsoRangeQuotient g
 
+/-- Express the first quotient stalk as the quotient-ideal image of the denominator ideal
+for the specified fractional presentation. -/
 def leftQuotientStalkImageEquiv (f : X.functionFieldˣ) (x : X)
     (a b : X.presheaf.stalk x) (hb : b ≠ 0)
     (hf : (f : X.functionField) = algebraMap (X.presheaf.stalk x) X.functionField a /
@@ -660,6 +713,8 @@ def leftQuotientStalkImageEquiv (f : X.functionFieldˣ) (x : X)
       (LocalRelation.leftProjection (X.presheaf.stalk x) X.functionField z).range) hf)).trans
         (LocalRelation.leftQuotientEquiv (X.presheaf.stalk x) X.functionField a b hb))
 
+/-- Express the second quotient stalk as the quotient-ideal image of the numerator ideal
+for the specified fractional presentation. -/
 def rightQuotientStalkImageEquiv (f : X.functionFieldˣ) (x : X)
     (a b : X.presheaf.stalk x) (hb : b ≠ 0)
     (hf : (f : X.functionField) = algebraMap (X.presheaf.stalk x) X.functionField a /

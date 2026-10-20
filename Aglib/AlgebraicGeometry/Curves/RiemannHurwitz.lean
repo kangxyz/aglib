@@ -89,6 +89,8 @@ theorem differentialSheaf_isLocallyRankOne
   intro i
   exact ⟨(hn i).some.trans (Equiv.ofUnique (Fin 1) PUnit.{u + 1})⟩
 
+/-- The differential sheaf as a line bundle for a scheme smooth of relative dimension one over
+`F`. -/
 def canonicalLineBundle
     (X : FScheme F) (hX : SmoothOfRelativeDimension 1 X.hom) :
     Invertible.LineBundle X.left :=
@@ -98,11 +100,15 @@ def canonicalLineBundle
     (X : FScheme F) (hX : SmoothOfRelativeDimension 1 X.hom) :
     (canonicalLineBundle X hX).val = differentialSheaf X := rfl
 
+/-- The isomorphism class of the canonical line bundle on a scheme smooth of relative dimension
+one. -/
 def canonicalLineBundleClass
     (X : FScheme F) (hX : SmoothOfRelativeDimension 1 X.hom) :
     Invertible.LineBundleClass X.left :=
   Quotient.mk (Invertible.lineBundleSetoid X.left) (canonicalLineBundle X hX)
 
+/-- The pullback isomorphism of differential sheaves along an étale morphism of schemes over
+`F`. -/
 def canonicalEtaleIso
     {X Y : FScheme F} (f : X ⟶ Y) [Etale f.left] :
     ((Scheme.Modules.pullback f.left).obj (differentialSheaf Y) :
@@ -148,6 +154,8 @@ namespace AlgebraicGeometry.Scheme.OverField.Curve
 universe u
 open Divisors
 
+/-- The canonical-degree formula input asserting degree `2g - 2` for smooth curves under the
+displayed properness, constant-field, valuation, and dimension hypotheses. -/
 def SmoothCanonicalDegree : Prop :=
   ∀ (F : Type u) [Field F] (X : FScheme F) [IsIntegral X.left] [IsNoetherian X.left]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]

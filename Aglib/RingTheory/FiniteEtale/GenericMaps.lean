@@ -113,7 +113,7 @@ variable {B C H J : Type u} [CommRing B] [Algebra R B]
   [CommRing C] [Algebra R C] [CommRing H] [Algebra R H]
   [CommRing J] [Algebra R J]
 
-@[simp] theorem genericMap_id :
+theorem genericMap_id :
     BaseChange.map R K (AlgHom.id R B) = AlgHom.id K (K ⊗[R] B) :=
   Algebra.TensorProduct.map_id
 
@@ -296,6 +296,7 @@ Only the bialgebra part is needed to transfer the coaction laws.
 Supporting P8/P14 slice of `K2-018#prop:k2018-arithmetic-characters`
 at `e73d98b1b5c1e5abcdebf7d058e436d792b87982`; see the encoded subset and module scope. -/
 @[ext] structure AlgebraCoaction (ε : H →ₐ[R] R) (Δ : H →ₐ[R] H ⊗[R] H) where
+  /-- The supplied actual R-algebra coaction on the model algebra B. -/
   coact : B →ₐ[R] B ⊗[R] H
   counit : (coactionCounit R B H ε).comp coact = AlgHom.id R B
   coassoc : (Algebra.TensorProduct.map (AlgHom.id R B) Δ).comp coact =
@@ -309,6 +310,8 @@ K-rational automorphisms or an action already defined on the model.
 Supporting P8/P14 slice of `K2-018#prop:k2018-arithmetic-characters`
 at `e73d98b1b5c1e5abcdebf7d058e436d792b87982`; see the encoded subset and module scope. -/
 structure GenericCoaction (ε : H →ₐ[R] R) (Δ : H →ₐ[R] H ⊗[R] H) where
+  /-- The supplied coaction on the original generic tensor algebra, valued in the canonical
+  generic tensor of B tensor H. -/
   coact : (K ⊗[R] B) →ₐ[K] (K ⊗[R] (B ⊗[R] H))
   counit : (BaseChange.map R K (coactionCounit R B H ε)).comp coact =
     AlgHom.id K (K ⊗[R] B)

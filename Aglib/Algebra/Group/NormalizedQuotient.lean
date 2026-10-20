@@ -67,7 +67,7 @@ def reducedNormalize (c : C →+ I) (s : I →+ C)
     exact normalize_constant c s hsc a)
 
 /-- A reduced class is normalized by subtracting its origin constant. -/
-@[simp] theorem reducedNormalize_mk (c : C →+ I) (s : I →+ C)
+theorem reducedNormalize_mk (c : C →+ I) (s : I →+ C)
     (hsc : Function.LeftInverse s c) (x : I) :
     (reducedNormalize c s hsc (QuotientAddGroup.mk' c.range x) : I) =
       normalize c s x := rfl

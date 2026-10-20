@@ -103,6 +103,8 @@ theorem fieldMap_fractional (D : Divisor Y) (U : Y.Opens) {g : Y.functionField}
   rw [ho, Divisors.Pullback.divisorPullback_apply, ← mul_add]
   exact mul_nonneg (Divisors.Pullback.ramification_nonneg f x) (hg _ hx)
 
+/-- Pull back a divisor-sheaf section on a nonempty open by applying the actual function-field
+map to its rational value. -/
 def nonemptyPullbackSection (D : Divisor Y) (U : Y.Opens) [Nonempty U] [Nonempty (f ⁻¹ᵁ U)]
     (s : (divisorSheaf Y D).val.obj (op U)) :
     (divisorSheaf X (Divisors.Pullback.divisorPullback f D)).val.obj (op (f ⁻¹ᵁ U)) :=
@@ -116,6 +118,8 @@ theorem nonemptyPullbackSection_value (D : Divisor Y) (U : Y.Opens)
       Scheme.functionFieldMap f (rationalValue Y U s.val) :=
   congrArg Subtype.val ((explicitSheafSectionsEquiv X _ _).apply_symm_apply _)
 
+/-- The divisor-sheaf section pullback on every open, with the unique zero section on the
+empty open. -/
 def pullbackSection (D : Divisor Y) (U : Y.Opens) :
     (divisorSheaf Y D).val.obj (op U) →
       (divisorSheaf X (Divisors.Pullback.divisorPullback f D)).val.obj (op (f ⁻¹ᵁ U)) := by
@@ -130,6 +134,8 @@ theorem pullbackSection_value (D : Divisor Y) (U : Y.Opens)
   simp only [pullbackSection, dite_eq_left hU]
   exact nonemptyPullbackSection_value f D U s
 
+/-- The linear section map from the divisor sheaf to the pushforward of its
+ramification-weighted pullback. -/
 def pullbackSectionLinear (D : Divisor Y) (U : Y.Opens) :
     (divisorSheaf Y D).val.obj (op U) →ₗ[Γ(Y, U)]
       ((Scheme.Modules.pushforward f).obj (divisorSheaf X (Divisors.Pullback.divisorPullback f
@@ -166,6 +172,8 @@ def pullbackSectionLinear (D : Divisor Y) (U : Y.Opens) :
       subst U
       exact (divisorSheaf_empty_subsingleton X _).elim _ _
 
+/-- The sheaf morphism assembled from the compatible rational-value pullbacks on all target
+opens. -/
 def divisorPushforwardMap (D : Divisor Y) :
     (show Y.Modules from divisorSheaf Y D) ⟶ (Scheme.Modules.pushforward f).obj
       (divisorSheaf X (Divisors.Pullback.divisorPullback f D)) where
@@ -200,6 +208,9 @@ def divisorPullbackMap (D : Divisor Y) :
     (Scheme.Modules.pullback f).obj (divisorSheaf Y D) ⟶
       divisorSheaf X (Divisors.Pullback.divisorPullback f D) :=
   ((Scheme.Modules.pullbackPushforwardAdjunction f).homEquiv _ _).symm (divisorPushforwardMap f D)
+
+/-- The sheaf trivialization on the actual open subscheme U induced by the specified rational
+unit g. -/
 def restrictedDivisorIso (S : Scheme.{u}) [IsIntegral S] [AlgebraicGeometry.IsNoetherian S]
     [∀ x : ClosedPoint S, IsDiscreteValuationRing (S.presheaf.stalk x.val)]
     (hdim : topologicalKrullDim S ≤ 1) (D : Divisor S) (U : S.Opens) (g : S.functionFieldˣ)
@@ -323,7 +334,7 @@ def divisorPullbackIso (hdimX : topologicalKrullDim X ≤ 1)
   letI := divisorPullbackMap_isIso f hdimX hdimY D
   asIso (divisorPullbackMap f D)
 
-@[simp] theorem pullbackClass_divisor (hdimX : topologicalKrullDim X ≤ 1)
+theorem pullbackClass_divisor (hdimX : topologicalKrullDim X ≤ 1)
     (hdimY : topologicalKrullDim Y ≤ 1) (D : Divisor Y) :
     pullbackClass f (classOf Y (divisorLineBundle Y hdimY D)) =
       classOf X (divisorLineBundle X hdimX (Divisors.Pullback.divisorPullback f D)) :=

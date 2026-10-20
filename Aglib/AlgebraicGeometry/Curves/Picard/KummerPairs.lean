@@ -231,6 +231,9 @@ theorem toClass_injective_of_global_constants [IsAlgClosed k]
   · change (Units.map (Scheme.functionFieldConstants X p).toMonoidHom b') ^ n = z.toMul
     rw [← map_pow, hb', ha]
 
+/-- The equivalence from divisor/function pairs to `n`-torsion divisor classes
+over an algebraically closed field, under the stated global-constants, point,
+codimension-one and discrete-valuation hypotheses. -/
 def torsionEquivOfGlobalConstants [IsAlgClosed k]
     (p : X ⟶ Spec (.of k))
     (hconstants : Function.Surjective

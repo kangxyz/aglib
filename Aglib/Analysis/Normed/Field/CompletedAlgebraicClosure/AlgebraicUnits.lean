@@ -27,7 +27,7 @@ variable (F : Type u) [NontriviallyNormedField F] [CompleteSpace F]
   [CharZero F] [IsUltrametricDist F]
 
 /-- This is precisely the unit action in the already-verified descent predicate. -/
-@[simp] theorem relativeCompletedAutomorphism_algebraicUnits
+theorem relativeCompletedAutomorphism_algebraicUnits
     (σ : (algebraicClosure F (Completed F)) ≃ₐ[F] (algebraicClosure F (Completed F)))
     (x : (algebraicClosure F (Completed F))ˣ) :
     Units.map (relativeCompletedAutomorphism F σ).toMonoidHom (algebraicUnits x) =

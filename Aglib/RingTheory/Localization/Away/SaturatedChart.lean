@@ -37,6 +37,7 @@ def saturatedChart (A : Type v) [CommRing A] (I : Ideal A) (a : A) :
   Algebra.adjoin A {z | ∃ b ∈ I,
     z = algebraMap A (Localization.Away a) b * IsLocalization.Away.invSelf a}
 
+/-- The element `b / a` in the localization obtained by inverting `a`. -/
 def fraction {A : Type v} [CommRing A] (a b : A) : Localization.Away a :=
   algebraMap A (Localization.Away a) b * IsLocalization.Away.invSelf a
 

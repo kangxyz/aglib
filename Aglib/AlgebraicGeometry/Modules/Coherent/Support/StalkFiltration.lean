@@ -41,6 +41,7 @@ namespace AlgebraicGeometry.Scheme.Modules.Coherent.Support
 
 universe s
 
+/-- The chosen small model of finite-type quasicoherent sheaves on `X`. -/
 abbrev Coh (X : Scheme.{s}) :=
   SmallModel.{s + 1} (Scheme.Modules.QuasiCoherent.FiniteTypeSheaves X)
 
@@ -64,6 +65,7 @@ def positiveSupport : ObjectProperty (Coh X) :=
 instance positiveSupport_serre : (positiveSupport X).IsSerreClass :=
   CategoryTheory.ObjectProperty.exactKernelSerre (stalkPullback X (genericPoint X))
 
+/-- The full subcategory of the small coherent model whose generic-stalk pullback vanishes. -/
 abbrev CohOne := (positiveSupport X).FullSubcategory
 
 /-- Actual stalk pullback after the positive-support inclusion. -/

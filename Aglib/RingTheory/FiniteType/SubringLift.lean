@@ -25,6 +25,7 @@ noncomputable section
 
 namespace Subring
 universe u
+/-- Classical decidable equality on the ambient type used for generated-subring data. -/
 local instance subringLiftDecidableEq (L : Type u) : DecidableEq L := Classical.decEq L
 /-- Restrict a complete chart-ring lift to the original relation ring and
 recover each separately prescribed rational function. -/

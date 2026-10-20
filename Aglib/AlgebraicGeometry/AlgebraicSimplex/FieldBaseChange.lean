@@ -56,7 +56,7 @@ theorem polynomial_map_flat (f : K →+* L) (j : ℕ) :
   let := f.toAlgebra
   have h : Module.Flat (MvPolynomial (Fin j) K) (MvPolynomial (Fin j) L) :=
     Module.Flat.of_linearEquiv
-      (Algebra.IsPushout.equiv K (MvPolynomial (Fin j) K) L 
+      (Algebra.IsPushout.equiv K (MvPolynomial (Fin j) K) L
         (MvPolynomial (Fin j) L)).symm.toLinearEquiv
   change (algebraMap (MvPolynomial (Fin j) K) (MvPolynomial (Fin j) L)).Flat
   exact RingHom.flat_algebraMap_iff.mpr h

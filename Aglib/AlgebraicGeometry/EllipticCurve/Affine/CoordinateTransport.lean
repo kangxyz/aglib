@@ -79,6 +79,8 @@ def affineTranslateEquiv (W : WeierstrassCurve R) (r t : R) :
 
 variable (S : Type u) [CommRing S] [Algebra R S]
 
+/-- The algebra equivalence identifying the scalar extension of an affine Weierstrass coordinate
+ring with the coordinate ring of the curve with extended coefficients. -/
 def affineTensorEquiv (W : WeierstrassCurve R) :
     S ⊗[R] W.toAffine.CoordinateRing ≃ₐ[S] (W.map (algebraMap R S)).toAffine.CoordinateRing :=
   AdjoinRoot.bivariateTensorEquiv W.toAffine.polynomial

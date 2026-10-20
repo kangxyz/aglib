@@ -81,6 +81,8 @@ theorem pullback_isZero_of_support {Z X : Scheme.{u}} (f : Z ⟶ X) (M : X.Modul
 /-- Actual finite direct image has support contained in the image of the
 original coherent support. The image is closed because a finite morphism is
 closed; actual open base change proves vanishing on its complement. -/
+-- Retain the original locally Noetherian source and target of coherent direct image.
+@[nolint unusedArguments]
 theorem coherentPushforward_support_subset_image {Z X : Scheme.{u}}
     [IsLocallyNoetherian Z] [IsLocallyNoetherian X] (h : Z ⟶ X) [IsFinite h]
     (M : FiniteTypeSheaves Z) :

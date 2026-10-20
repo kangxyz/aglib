@@ -69,6 +69,8 @@ variable [IsIntegral X]
 
 omit [IsNoetherian X] in
 /-- On an integral scheme the only point below height one is its actual generic point. -/
+-- Retain the original Noetherian support-stratum interface.
+@[nolint unusedArguments]
 theorem eq_genericPoint_of_height_lt_one [IsNoetherian X] (x : X)
     (hx : ringKrullDim (X.presheaf.stalk x) < 1) : x = genericPoint X := by
   have hzero : Order.coheight x = 0 := by

@@ -101,6 +101,7 @@ theorem fractionalPresheaf_mono {A B : Divisor X} (h : A ≤ B) :
     · exact Or.inr (fun x hx => (hs x hx).trans (add_le_add le_rfl (h x)))
   · simp only [fractionalPresheaf, dite_eq_right hU, Submodule.mem_top]
 
+/-- The inclusion of divisor sheaves induced by the coefficientwise inequality A ≤ B. -/
 def divisorInclusion {A B : Divisor X} (h : A ≤ B) :
     divisorSheaf X A ⟶ divisorSheaf X B :=
   ⟨PresheafOfModules.Submodule.homOfLE (fractionalPresheaf_mono X h)⟩
@@ -111,9 +112,11 @@ instance divisorInclusion_mono {A B : Divisor X} (h : A ≤ B) :
   exact inferInstanceAs (Mono (PresheafOfModules.Submodule.homOfLE
     (fractionalPresheaf_mono X h)))
 
+/-- The cokernel sheaf of the inclusion from the divisor sheaf of A to that of B. -/
 def divisorQuotient {A B : Divisor X} (h : A ≤ B) : X.Modules :=
   cokernel (divisorInclusion X h)
 
+/-- The canonical divisor-sheaf inclusion followed by its cokernel projection. -/
 def divisorQuotientSequence {A B : Divisor X} (h : A ≤ B) : ShortComplex X.Modules :=
   ShortComplex.mk (divisorInclusion X h) (cokernel.π (divisorInclusion X h))
     (cokernel.condition _)
@@ -246,6 +249,8 @@ theorem divisorStalkValue_injective (D : Divisor X) (x : X) :
     exact (divisorStalkValue_germ X D x U hx s).symm.trans hm
   rw [hs, map_zero]
 
+/-- The germ at x of the section corresponding to 1 under the local trivialization determined
+by g. -/
 def divisorStalkGenerator (hdim : topologicalKrullDim X ≤ 1) (D : Divisor X)
     (x : X) (U : X.Opens) (hx : x ∈ U) (g : X.functionFieldˣ)
     (hg : ∀ y : ClosedPoint X, y.val ∈ U → X.ord (g : X.functionField) y.val + D y = 0) :
@@ -486,11 +491,16 @@ variable {K : Type u} [Field K] (X : FScheme K)
 variable [IsIntegral X.left] [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
 variable [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]
 
+/-- Enumerate the closed points in the finite support of D using its canonical Fin
+equivalence. -/
 def divisorSupportPoint (D : Divisor X.left) : Fin D.support.card → ClosedPoint X.left :=
   fun i => (D.support.equivFin.symm i).val
 
 omit [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)] in
+-- Retain the noetherian, finite-type and DVR-curve conditions of the divisor quotient cohomology
+-- interface; injectivity of this finite support enumeration is combinatorial.
+@[nolint unusedArguments]
 theorem divisorSupportPoint_injective [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]
     (D : Divisor X.left) :
@@ -501,6 +511,9 @@ theorem divisorSupportPoint_injective [IsNoetherian X.left] [LocallyOfFiniteType
 
 omit [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)] in
+-- Retain the noetherian, finite-type and DVR-curve conditions of the divisor quotient cohomology
+-- interface; the range statement itself only uses the finite support equivalence.
+@[nolint unusedArguments]
 theorem divisorSupportPoint_range [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]
     (D : Divisor X.left) (y : ClosedPoint X.left)
@@ -610,6 +623,8 @@ variable {K : Type u} [Field K] (X : FScheme K)
 variable [IsIntegral X.left] [IsNoetherian X.left] [LocallyOfFiniteType X.hom]
 variable [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]
 
+/-- The structure-module isomorphism with the zero-divisor sheaf, induced by the rational unit
+1. -/
 def zeroDivisorIso (hdim : topologicalKrullDim X.left ≤ 1) :
     (show X.left.Modules from SheafOfModules.unit X.left.ringCatSheaf) ≅ divisorSheaf X.left 0 :=
   globalTrivialization X.left hdim 0 1 (by
@@ -618,6 +633,8 @@ def zeroDivisorIso (hdim : topologicalKrullDim X.left ≤ 1) :
       (localOrder X.left y).map_zero
     simpa only [Units.val_one, Finsupp.zero_apply, add_zero] using ho)
 
+/-- Identify zeroth structure-module cohomology with K using the supplied bijectivity of the
+constants map. -/
 def structureModuleH0ConstantsEquiv (hc : Function.Bijective (constants X)) :
     moduleCohomology K X (SheafOfModules.unit X.left.ringCatSheaf) 0 ≃ₗ[K] K := by
   let f : K →ₗ[K] (SheafOfModules.unit X.left.ringCatSheaf).val.obj (op ⊤) :=
@@ -631,6 +648,9 @@ def structureModuleH0ConstantsEquiv (hc : Function.Bijective (constants X)) :
     (LinearEquiv.ofBijective f hc).symm
 
 omit [LocallyOfFiniteType X.hom] in
+-- Retain finite type of the curve structure morphism in the cohomological divisor interface; this
+-- transport of finiteness uses the supplied H1 finiteness and constants bijection.
+@[nolint unusedArguments]
 theorem zeroDivisorCohomology_finite [LocallyOfFiniteType X.hom]
     (hdim : topologicalKrullDim X.left ≤ 1)
     (hc : Function.Bijective (constants X)) [Module.Finite K (coherentH1 K X)] :
@@ -643,6 +663,9 @@ theorem zeroDivisorCohomology_finite [LocallyOfFiniteType X.hom]
   exact ⟨e0.symm.finiteDimensional, e1.symm.finiteDimensional⟩
 
 omit [LocallyOfFiniteType X.hom] in
+-- Retain finite type and H1 finiteness in the Riemann–Roch cohomology interface; the displayed
+-- finrank identity only transports dimensions across the constructed isomorphisms.
+@[nolint unusedArguments]
 theorem zeroDivisorEuler [LocallyOfFiniteType X.hom] (hdim : topologicalKrullDim X.left ≤ 1)
     (hc : Function.Bijective (constants X)) [Module.Finite K (coherentH1 K X)] :
     (Module.finrank K (moduleCohomology K X (divisorSheaf X.left 0) 0) : ℤ) -

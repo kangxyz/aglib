@@ -48,16 +48,19 @@ instance evalAdditive [∀ i, Preadditive (C i)] (i : I) : (Pi.eval C i).Additiv
 section Limits
 variable {J : Type*} [Category* J] (F : J ⥤ ∀ i, C i)
 
+/-- The cone in a dependent product category assembled from its coordinate cones. -/
 def familyCone (c : ∀ i, Cone (F ⋙ Pi.eval C i)) : Cone F where
   pt i := (c i).pt
   π := { app := fun j i => (c i).π.app j
          naturality := by intros; funext i; exact (c i).π.naturality _ }
 
+/-- The cocone in a dependent product category assembled from its coordinate cocones. -/
 def familyCocone (c : ∀ i, Cocone (F ⋙ Pi.eval C i)) : Cocone F where
   pt i := (c i).pt
   ι := { app := fun j i => (c i).ι.app j
          naturality := by intros; funext i; exact (c i).ι.naturality _ }
 
+/-- The universal property of the assembled cone when every coordinate cone is limiting. -/
 def familyConeIsLimit {c : ∀ i, Cone (F ⋙ Pi.eval C i)} (hc : ∀ i, IsLimit (c i)) :
     IsLimit (familyCone C F c) where
   lift s i := (hc i).lift ((Pi.eval C i).mapCone s)
@@ -66,6 +69,7 @@ def familyConeIsLimit {c : ∀ i, Cone (F ⋙ Pi.eval C i)} (hc : ∀ i, IsLimit
     funext i
     exact (hc i).uniq ((Pi.eval C i).mapCone s) (m i) (fun j => congr_fun (hm j) i)
 
+/-- The universal property of the assembled cocone when every coordinate cocone is colimiting. -/
 def familyCoconeIsColimit {c : ∀ i, Cocone (F ⋙ Pi.eval C i)} (hc : ∀ i, IsColimit (c i)) :
     IsColimit (familyCocone C F c) where
   desc s i := (hc i).desc ((Pi.eval C i).mapCocone s)

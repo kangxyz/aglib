@@ -34,6 +34,7 @@ variable (r : CosetSection G H)
 variable [TopologicalSpace G] [IsTopologicalGroup G] (hH : IsOpen (H : Set G))
 variable (A : Type*) [AddCommGroup A] [TopologicalSpace A] [IsTopologicalAddGroup A]
   [DistribMulAction G A] [ContinuousSMul G A] [H.FiniteIndex]
+/-- The finite coset enumeration used when comparing two sections. -/
 local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 
 variable (s : CosetSection G H)
@@ -341,10 +342,12 @@ def nestedCochain₂ : C(K × K, A) →+ C((K.subgroupOf H) × (K.subgroupOf H),
   map_zero' := by ext p; rfl
   map_add' _ _ := by ext p; rfl
 
+/-- Pullback of continuous one-cocycles along `K.subgroupOf H → K`. -/
 abbrev nestedCocycles₁ : ContinuousH1.Cocycle K A →+
     ContinuousH1.Cocycle (K.subgroupOf H) A :=
   ContinuousH1.restrictionCocycles A (nestedHom K H)
 
+/-- Pullback of continuous two-cocycles along `K.subgroupOf H → K`. -/
 def nestedCocycles₂ : Cocycle K A →+ Cocycle (K.subgroupOf H) A where
   toFun c := ⟨nestedCochain₂ K H A c.val, fun h k l =>
     c.property (nestedInclusion K H h) (nestedInclusion K H k) (nestedInclusion K H l)⟩
@@ -359,6 +362,7 @@ theorem nested_principal (a : A) :
   intro k
   rfl
 
+/-- Restriction on continuous `H1` along `K.subgroupOf H → K`. -/
 abbrev nestedH1 : ContinuousH1.H1 K A →+
     ContinuousH1.H1 (K.subgroupOf H) A :=
   ContinuousH1.restriction A (nestedHom K H)
@@ -371,6 +375,7 @@ omit [IsTopologicalGroup G] in
 theorem nested_d₁ (b : C(K, A)) :
     nestedCocycles₂ K H A (d₁ K A b) = d₁ (K.subgroupOf H) A (nestedCochain₁ K H A b) := rfl
 
+/-- Pullback on degree-two cycles of the continuous cochain complex. -/
 def nestedCycles₂ : (complex K A).Cycles₂ →+ (complex (K.subgroupOf H) A).Cycles₂ where
   toFun c := ⟨nestedCocycles₂ K H A c.val, rfl⟩
   map_zero' := Subtype.ext (map_zero (nestedCocycles₂ K H A))
@@ -393,9 +398,13 @@ def nestedH2 : H2.Continuous.Group K A →+ H2.Continuous.Group (K.subgroupOf H)
 
 variable (hK : IsOpen (K : Set G)) (hH : IsOpen (H : Set G))
 variable [K.FiniteIndex] [H.FiniteIndex]
-local instance : Fintype (G ⧸ K) := K.fintypeQuotientOfFiniteIndex
-local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
-local instance : Fintype (H ⧸ K.subgroupOf H) := (K.subgroupOf H).fintypeQuotientOfFiniteIndex
+/-- The finite total-coset enumeration supplied by `K.FiniteIndex`. -/
+local instance instFintypeQuotientInner : Fintype (G ⧸ K) := K.fintypeQuotientOfFiniteIndex
+/-- The finite outer-coset enumeration supplied by `H.FiniteIndex`. -/
+local instance instFintypeQuotientOuter : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
+/-- The finite inner-coset enumeration induced by the subgroup-tower hypotheses. -/
+local instance instFintypeQuotientSubgroupOf : Fintype (H ⧸ K.subgroupOf H) :=
+  (K.subgroupOf H).fintypeQuotientOfFiniteIndex
 
 omit [IsTopologicalGroup G] [K.FiniteIndex] [H.FiniteIndex] in
 include hK in

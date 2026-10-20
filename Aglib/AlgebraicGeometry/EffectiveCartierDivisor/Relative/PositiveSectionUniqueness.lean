@@ -103,12 +103,15 @@ variable (hI : IsLocallyRankOne X (idealModule i)) (hJ : IsLocallyRankOne X (ide
 variable [IsIso (divisorPositiveAdjoint p i hI)] [IsIso (divisorPositiveAdjoint p j hJ)]
 variable (e : (show X.Modules from (dualLineBundle X ⟨idealModule i, hI⟩).val) ≅
   (show X.Modules from (dualLineBundle X ⟨idealModule j, hJ⟩).val))
+/-- The base unit-module automorphism induced by `e` through the two invertible positive
+adjoints. -/
 def positiveBaseIso :
     (show S.Modules from SheafOfModules.unit S.ringCatSheaf) ≅
       (show S.Modules from SheafOfModules.unit S.ringCatSheaf) :=
   asIso (divisorPositiveAdjoint p i hI) ≪≫ (Scheme.Modules.pushforward p).mapIso e ≪≫
     (asIso (divisorPositiveAdjoint p j hJ)).symm
 
+/-- The unit-module automorphism on `X` obtained by pulling back the induced base automorphism. -/
 def positiveUnitIso :
     (show X.Modules from SheafOfModules.unit X.ringCatSheaf) ≅
       (show X.Modules from SheafOfModules.unit X.ringCatSheaf) :=
@@ -138,6 +141,7 @@ variable (σ : SheafOfModules.unit X.ringCatSheaf ⟶ M)
 variable (τ : SheafOfModules.unit X.ringCatSheaf ⟶ N)
 variable (e : M ≅ N)
 variable (v : SheafOfModules.unit X.ringCatSheaf ≅ SheafOfModules.unit X.ringCatSheaf)
+/-- The unit-module automorphism induced by precomposition with `v.symm` on internal Hom. -/
 def dualUnitIso : SheafOfModules.unit X.ringCatSheaf ≅ SheafOfModules.unit X.ringCatSheaf :=
   (Scheme.Modules.InternalHom.unitSourceIso X (SheafOfModules.unit
       X.ringCatSheaf)).symm ≪≫
@@ -222,8 +226,8 @@ variable [IsClosedImmersion i] [IsClosedImmersion j]
 theorem section_eq_of_kernel_eq (hi : i ≫ p = 𝟙 _) (hj : j ≫ p = 𝟙 _)
     (h : i.ker = j.ker) : i = j := by
   let e : Over.mk i ≅ Over.mk j :=
-    (zeroOverIso_of_ideal_eq i (imageIdealData_idealInclusion i)).symm ≪≫
-      zeroOverIso_of_ideal_eq j ((imageIdealData_idealInclusion i).trans h)
+    (zeroOverIsoOfIdealEq i (imageIdealData_idealInclusion i)).symm ≪≫
+      zeroOverIsoOfIdealEq j ((imageIdealData_idealInclusion i).trans h)
   let q : S ⟶ S := e.hom.left
   have he : q ≫ j = i := Over.w e.hom
   have hid : q = 𝟙 S := by

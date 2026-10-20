@@ -65,10 +65,12 @@ instance diagonalLocalization : IsLocalization.Away (r, r) (S × S) := by
         _ = r ^ m * (r ^ n * d) := by rw [hn]
         _ = _ := by rw [pow_add]; ring
 
+/-- For a supplied localization S of R away from r, the canonical equivalence between
+localization at the diagonal denominator and the product of the two localizations. -/
 def productLocalizationEquiv : Localization.Away (r, r) ≃ₐ[R × R] (S × S) :=
   IsLocalization.algEquiv (Submonoid.powers (r, r)) _ _
 
-@[simp] theorem productLocalizationEquiv_algebraMap (p : R × R) :
+theorem productLocalizationEquiv_algebraMap (p : R × R) :
     productLocalizationEquiv R S r (algebraMap (R × R) (Localization.Away (r, r)) p) =
       (algebraMap R S p.1, algebraMap R S p.2) :=
   (productLocalizationEquiv R S r).commutes p

@@ -106,6 +106,7 @@ def scalarLaurentModuleEquivSymm (X : Object R) :
   map_add' := (scalarModuleEquiv X).symm.map_add
   map_smul' := scalarModuleEquiv_symm_smul X
 
+/-- The scalar-extension equivalence for the complete Laurent action on the original module. -/
 def scalarLaurentModuleEquiv (X : Object R) :
     Laurent S ⊗[Laurent R] Realization X ≃ₗ[Laurent S]
       Realization (X.baseChange S) := (scalarLaurentModuleEquivSymm X).symm

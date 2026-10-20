@@ -5,6 +5,9 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Picard.KummerH1
+public import Aglib.AlgebraicGeometry.Curves.Picard.DivisorInverse
+
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Relative.PositiveSectionIsomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.FibreClass
 
@@ -101,3 +104,31 @@ variable [IsFinite f] [Flat f] [LocallyOfFinitePresentation f]
 example : IsFiniteLocallyFree Y (pushforwardStructureSheaf f) :=
   finiteFlat_pushforwardStructureSheaf_isFiniteLocallyFree f
 end FiniteFlatDirectImage
+
+section OrdinaryKummerDegree
+open Scheme.EtaleH1 Scheme.Modules.Invertible.EtaleDescent
+open GroupCohomology.Kummer.Coefficients
+universe w
+
+-- Exact composite for ordinary source KummerH1 at revision f8a3314,
+-- SHA-256 4800e7c5a5a870f9f737b3eb305af7507c192f225e6bd9953c0d5d9a79e946e4.
+example (X : Scheme.{u}) [IsIntegral X] [AlgebraicGeometry.IsNoetherian X]
+    [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
+    [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
+    {k : Type u} [Field k] (p : X ⟶ Spec (.of k))
+    (hdim : topologicalKrullDim X ≤ 1)
+    (hprod : Scheme.OverField.Curve.Picard.Degree.PrincipalProductFormula X p)
+    (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks03AJ.{u, w} X)
+    (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤)))
+    (hroot : Function.Surjective (fun a : Γ(X, ⊤)ˣ => a ^ n))
+    (x : H1Etale X (mu X n)) :
+    Scheme.OverField.Curve.Picard.Degree.picardDegree X p hdim hprod
+        (Scheme.Modules.Invertible.KummerH1.h1PicardTorsionEquiv
+          X h h03AJ n hn hinv hroot x).val = 0 := by
+  let y : Scheme.Modules.Invertible.Torsion.picardTorsion X n :=
+    Scheme.Modules.Invertible.KummerH1.h1PicardTorsionEquiv
+      X h h03AJ n hn hinv hroot x
+  have hy : n • (y : PicardGroup X) = 0 := y.property
+  exact Scheme.OverField.Curve.Picard.Degree.picard_torsion_degree_zero
+    X p hdim hprod n hn (y : PicardGroup X) hy
+end OrdinaryKummerDegree

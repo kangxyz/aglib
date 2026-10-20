@@ -94,7 +94,9 @@ variable {A : AbelianSheaf.{u, u + 1} X} (P : Torsor A)
 
 /-- Every section on every etale test scheme indexes a genuine trivialization. -/
 def Index := Σ U : X.Etale, P.carrier.obj.obj (op U)
+/-- The etale test scheme underlying a torsor-section index. -/
 def coverObject (i : Index P) : Scheme.{u} := i.1.left
+/-- The structure map of the etale scheme indexing a torsor section. -/
 def coverMap (i : Index P) : coverObject P i ⟶ X := i.1.hom
 instance coverMap_etale (i : Index P) : Etale (coverMap P i) := i.1.prop
 
@@ -174,6 +176,7 @@ def chosenPullback {A B S : Scheme.{u}} (f : A ⟶ S) (g : B ⟶ S) : ChosenPull
   condition := pullback.condition
   isLimit := (IsPullback.of_hasPullback f g).isLimit
 
+/-- The chosen pairwise fibre product of two torsor trivialization schemes. -/
 def overlap (i j : Index P) : ChosenPullback (coverMap P i) (coverMap P j) :=
   chosenPullback _ _
 
@@ -187,14 +190,19 @@ instance overlap_p_etale (i j : Index P) : Etale (overlap P i j).p := by
   dsimp [overlap, chosenPullback]
   infer_instance
 
+/-- The pairwise overlap viewed as an object of the small etale site of `X`. -/
 def overlapEtale (i j : Index P) : X.Etale := Scheme.Etale.mk (overlap P i j).p
 
+/-- The first projection from the overlap in the small etale site. -/
 def overlapFst (i j : Index P) : overlapEtale P i j ⟶ i.1 :=
   MorphismProperty.Over.homMk (overlap P i j).p₁ (by simp [overlapEtale, coverMap]) (by trivial)
+/-- The second projection from the overlap in the small etale site. -/
 def overlapSnd (i j : Index P) : overlapEtale P i j ⟶ j.1 :=
   MorphismProperty.Over.homMk (overlap P i j).p₂ (by simp [overlapEtale, coverMap]) (by trivial)
 
 
+/-- The chosen triple overlap of three torsor trivialization schemes, with its pairwise
+projections. -/
 def triple (i j k : Index P) : ChosenPullback₃ (overlap P i j) (overlap P j k) (overlap P i k) where
   chosenPullback := chosenPullback (overlap P i j).p₂ (overlap P j k).p₁
   l := Classical.choice (ChosenPullback.LiftStruct.nonempty (by
@@ -207,20 +215,27 @@ instance triple_p_etale (i j k : Index P) : Etale (triple P i j k).p := by
   dsimp [triple, chosenPullback]
   infer_instance
 
+/-- The triple overlap viewed as an object of the small etale site of `X`. -/
 def tripleEtale (i j k : Index P) : X.Etale := Scheme.Etale.mk (triple P i j k).p
 
+/-- The first projection from the triple overlap to a trivialization scheme. -/
 def tripleFst (i j k : Index P) : tripleEtale P i j k ⟶ i.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₁ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The middle projection from the triple overlap to a trivialization scheme. -/
 def tripleMid (i j k : Index P) : tripleEtale P i j k ⟶ j.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₂ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The third projection from the triple overlap to a trivialization scheme. -/
 def tripleSnd (i j k : Index P) : tripleEtale P i j k ⟶ k.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₃ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The projection from the triple overlap to the first and second pairwise overlap. -/
 def triple12 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i j :=
   MorphismProperty.Over.homMk (triple P i j k).p₁₂ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
+/-- The projection from the triple overlap to the second and third pairwise overlap. -/
 def triple23 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P j k :=
   MorphismProperty.Over.homMk (triple P i j k).p₂₃ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
+/-- The projection from the triple overlap to the first and third pairwise overlap. -/
 def triple13 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i k :=
   MorphismProperty.Over.homMk (triple P i j k).p₁₃ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
@@ -250,6 +265,7 @@ def triple13 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i k :=
   apply MorphismProperty.Over.Hom.ext
   exact (triple P i j k).p₁₃_p₃
 
+/-- The diagonal from a trivialization scheme to its self-overlap in the small etale site. -/
 def diagonalEtale (i : Index P) : i.1 ⟶ overlapEtale P i i :=
   MorphismProperty.Over.homMk (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.diagonal
       (overlap P) i)
@@ -268,6 +284,7 @@ def diagonalEtale (i : Index P) : i.1 ⟶ overlapEtale P i i :=
   apply MorphismProperty.Over.Hom.ext
   exact AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.diagonal_p₂ (overlap P) i
 
+/-- The global unit carrying the first restricted torsor section to the second on their overlap. -/
 def overlapUnit (i j : Index P) : Γ((overlap P i j).pullback, ⊤)ˣ :=
   transportUnit P (op (overlapEtale P i j))
     (P.carrier.obj.map (overlapFst P i j).op i.2)
@@ -358,10 +375,13 @@ private theorem presheafHom_map_eq_pullHom {S : Scheme.{u}}
       pullHom g f.left V.hom V.hom
         (MorphismProperty.Over.w f) (MorphismProperty.Over.w f) := rfl
 
+/-- The unit-line comparison between pullback of the unit object and the unit object on the
+source. -/
 def unitIso {Y Z : Scheme.{u}} (f : Y ⟶ Z) :
     (lineBundles.map f.op.toLoc).toFunctor.obj (unitObject Z) ≅ unitObject Y :=
   ObjectProperty.isoMk _ (pullbackUnitIso f)
 
+/-- The line-bundle pullback comparison from a composite morphism to iterated pullback. -/
 def compIso {Y Z S : Scheme.{u}} (f : Y ⟶ S) (a : Z ⟶ Y) (q : Z ⟶ S)
     (w : a ≫ f = q) (M : lineBundles.obj (.mk (op S))) :
     (lineBundles.map q.op.toLoc).toFunctor.obj M ≅
@@ -378,6 +398,7 @@ theorem unitIso_comp {Y Z S : Scheme.{u}} (f : Y ⟶ S) (a : Z ⟶ Y) (q : Z ⟶
   apply ObjectProperty.hom_ext
   exact Scheme.Modules.pullbackUnitIso_comp_inv a f
 
+/-- Multiplication by the global section `a` on the unit line bundle. -/
 def unitScalar (Y : Scheme.{u}) (a : Γ(Y, ⊤)) : unitObject Y ⟶ unitObject Y :=
   ObjectProperty.homMk (AlgebraicGeometry.Scheme.Modules.Invertible.TrivializedPower.scalarMap
       Y (SheafOfModules.unit Y.ringCatSheaf) a)
@@ -486,6 +507,8 @@ def chartMap (i : Index P) :
       unitObject (coverObject P i) :=
   ((cocycle P).recoveryIso h (cover_mem P)).hom.hom i
 
+/-- The descended local chart valued in the pulled-back base unit object,
+using the supplied etale line-bundle descent input. -/
 def rawChart (i : Index P) :
     (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj ((cocycle P).descendedObject h
         (cover_mem P)) ⟶
@@ -692,11 +715,15 @@ theorem pullHom_global {Y Z S : Scheme.{u}} (f : Y ⟶ S) (a : Z ⟶ Y) (q : Z �
     (compIso f a q w N).inv = _
   rw [← Category.assoc, ← hn, Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
+/-- Transport of a frame from `L` to `M` by precomposition with the inverse line-bundle
+isomorphism. -/
 def mapFrame {L M : LineBundle X} (e : L.val ≅ M.val) (U : X.Etaleᵒᵖ)
     (s : (frameSheaf h X L).obj.obj U) : (frameSheaf h X M).obj.obj U :=
   (frameSectionsEquiv h X M U).symm
     ((Scheme.Modules.pullback U.unop.hom).mapIso e.symm ≪≫ frameSectionsEquiv h X L U s)
 
+/-- The inverse of the line-bundle isomorphism `e`, viewed as a morphism in the line-bundle
+category. -/
 def bundleIsoHom {L M : LineBundle X} (e : L.val ≅ M.val) : ofLineBundle X M ⟶ ofLineBundle X L :=
   ObjectProperty.homMk e.inv
 

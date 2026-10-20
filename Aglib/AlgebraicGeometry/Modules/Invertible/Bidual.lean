@@ -130,12 +130,13 @@ def bidualMap : M ⟶ dualSheaf X (dualSheaf X M) where
     rfl
 
 /-- The defining formula is literally evaluation, with restriction to the chosen open. -/
-@[simp] theorem bidualMap_apply (U : X.Opens) (m : M.val.obj (op U))
+-- Keep bidual evaluation; simpNF only unfolds the implicit open-restriction component types.
+@[nolint simpNF, simp] theorem bidualMap_apply (U : X.Opens) (m : M.val.obj (op U))
     (V : (Over U)ᵒᵖ) (ell : (dualSheaf X M).val.obj (op V.unop.left)) :
     ((bidualMap X M).val.app (op U) m).val.app V ell =
       ell.val.app (op (Over.mk (𝟙 V.unop.left))) (M.val.map V.unop.hom.op m) := rfl
 
-@[simp] theorem bidualMap_evaluate (U : X.Opens) (m : M.val.obj (op U))
+theorem bidualMap_evaluate (U : X.Opens) (m : M.val.obj (op U))
     (ell : (dualSheaf X M).val.obj (op U)) :
     ((bidualMap X M).val.app (op U) m).val.app (op (Over.mk (𝟙 U))) ell =
       ell.val.app (op (Over.mk (𝟙 U))) m := by

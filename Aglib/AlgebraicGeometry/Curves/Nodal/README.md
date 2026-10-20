@@ -10,3 +10,5 @@ Pure node algebra belongs to [PlaneNode](../../../RingTheory/PlaneNode/README.md
 and its saturated power-node chart computations to
 [PowerNode.Rees](../../../RingTheory/Blowup/PowerNode/README.md). The coefficient
 comparison does not construct a global blowup or a node resolution.
+
+Focused interface guides: [Pinching two points of a line](PinchedLine.md).

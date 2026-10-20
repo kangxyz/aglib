@@ -86,6 +86,8 @@ namespace AlgebraicGeometry.Scheme.OverField.Curve
 universe u
 open Divisors
 
+/-- The line-bundle Riemann–Roch formula input for proper integral Noetherian curves with the
+displayed valuation, dimension, product-formula, and constant-field hypotheses. -/
 def LineBundleRiemannRoch : Prop :=
   ∀ (K : Type u) [Field K] (X : FScheme K) [IsIntegral X.left] [IsNoetherian X.left]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]
@@ -96,6 +98,9 @@ def LineBundleRiemannRoch : Prop :=
         (Module.finrank K (moduleCohomology K X L.val 1) : ℤ) =
       Picard.Degree.lineBundleDegree X.left X.hom hdim hprod L + 1 - (coherentGenus K X : ℤ)
 
+/-- The vanishing input for first line-bundle cohomology in degree at least `2g - 1` on proper
+integral curves over an algebraically closed field, under the displayed valuation and dimension
+hypotheses. -/
 def LineBundleHighDegreeVanishing : Prop :=
   ∀ (K : Type u) [Field K] [IsAlgClosed K] (X : FScheme K) [IsIntegral X.left] [IsNoetherian X.left]
     [∀ x : ClosedPoint X.left, IsDiscreteValuationRing (X.left.presheaf.stalk x.val)]

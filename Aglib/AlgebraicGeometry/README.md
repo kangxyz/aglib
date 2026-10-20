@@ -42,3 +42,5 @@ Godement and derived interfaces retain their bounds and original unit equations.
 Proper coherent finiteness and smooth differential rank have proved suppliers;
 the full arbitrary-base `LocalFreeCohomologyBaseChange` family remains an explicit
 input, with the exact conditions recorded in [INTERFACES.md](../../docs/INTERFACES.md).
+
+Focused interface guides: [Finite correspondences on the two-dimensional torus](Torus/FiniteCorrespondence/README.md).

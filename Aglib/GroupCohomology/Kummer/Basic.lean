@@ -26,8 +26,10 @@ variable (K : Type*) [Field K]
 local notation "Kbar" => AlgebraicClosure K
 local notation "G" => Field.absoluteGaloisGroup K
 
+/-- The discrete topology on the algebraic closure used for continuous Kummer cocycles. -/
 local instance closureTopology : TopologicalSpace Kbar := ⊥
 local instance closureDiscrete : DiscreteTopology Kbar := ⟨rfl⟩
+/-- The absolute Galois action on the algebraic closure by `K`-algebra automorphisms. -/
 local instance closureAction : MulSemiringAction G Kbar :=
   inferInstanceAs (MulSemiringAction (Kbar ≃ₐ[K] Kbar) Kbar)
 local instance closureContinuous : ContinuousSMul G Kbar := by

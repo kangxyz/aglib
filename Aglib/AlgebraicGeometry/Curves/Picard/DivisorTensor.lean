@@ -58,11 +58,15 @@ universe u
 variable (X : Scheme.{u}) [IsIntegral X] [IsNoetherian X]
 variable [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
 
+/-- The commutative ring structure on rational-function sections, inherited from the
+generic-point spectrum. -/
 local instance rationalSectionCommRing (U : X.Opensᵒᵖ) :
     CommRing ((rationalFunctions X).val.obj U) :=
   inferInstanceAs (CommRing Γ(Spec X.functionField, (X.fromSpecStalk (genericPoint X)) ⁻¹ᵁ
     U.unop))
 
+/-- The product of sections of the divisor sheaves for `D` and `E`, regarded as a section for `D
++ E`. -/
 def divisorMultiplySections (D E : Divisor X) (U : X.Opens)
     (s : (divisorSheaf X D).val.obj (op U)) (t : (divisorSheaf X E).val.obj (op U)) :
     (divisorSheaf X (D + E)).val.obj (op U) :=
@@ -86,6 +90,7 @@ theorem divisorMultiplySections_value (D E : Divisor X) (U : X.Opens) [Nonempty 
       rationalValue X U s.val * rationalValue X U t.val :=
   (rationalSectionIso X U).hom.hom.map_mul _ _
 
+/-- The tensor-presheaf morphism induced by multiplication of divisor-sheaf sections. -/
 def divisorMultiplicationPresheaf (D E : Divisor X) :
     PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf)
       (divisorSheaf X D).val (divisorSheaf X E).val ⟶ (divisorSheaf X (D + E)).val :=
@@ -116,6 +121,8 @@ def divisorMultiplicationPresheaf (D E : Divisor X) :
         ((Opens.map (X.fromSpecStalk (genericPoint X)).base).map i.unop).op).hom.map_mul s.val
           t.val |>.symm)
 
+/-- The morphism from the tensor product of divisor sheaves to the divisor sheaf of `D + E`,
+obtained by sheafification. -/
 def divisorMultiplicationSheaf (D E : Divisor X) :
     tensorSheaf X (divisorSheaf X D) (divisorSheaf X E) ⟶ divisorSheaf X (D + E) :=
   (PresheafOfModules.sheafificationHomEquiv (𝟙 X.ringCatSheaf.obj)).symm
@@ -131,6 +138,8 @@ theorem product_local_order (D E : Divisor X) (U : X.Opens) (g h : X.functionFie
   rw [Units.val_mul, Scheme.ord_mul g.ne_zero h.ne_zero, Finsupp.add_apply]
   linarith [hg x hx, hh x hx]
 
+/-- The local tensor-product isomorphism supplied by rational trivializing units for `D` and
+`E`, in dimension at most one. -/
 def divisorTensorLocalIso (hdim : topologicalKrullDim X ≤ 1)
     (D E : Divisor X) (U : X.Opens) (g h : X.functionFieldˣ)
     (hg : ∀ x : ClosedPoint X, x.val ∈ U → X.ord (g : X.functionField) x.val + D x = 0)

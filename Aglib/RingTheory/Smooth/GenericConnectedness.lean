@@ -100,7 +100,10 @@ theorem idempotent_trivial_of_preconnected (B : Type u) [CommRing B]
     simpa using h
 
 /-- A connected smooth algebra over a normal domain has preconnected generic
-fibre: no new idempotent appears after extension to the fraction field. -/
+fibre: no new idempotent appears after extension to the fraction field.
+The explicit domain guard retains the original normal-domain interface; its uses in the proof
+are already provided through the fraction-field and integral-closure structures. -/
+@[nolint unusedArguments]
 theorem generic_primeSpectrum_preconnected (R K B : Type u)
     [CommRing R] [IsDomain R] [IsIntegrallyClosed R]
     [Field K] [Algebra R K] [IsFractionRing R K]

@@ -39,13 +39,16 @@ section PointTopology
 variable (K Ω A : Type*) [Field K] [Field Ω] [Algebra K Ω]
   [CommRing A] [Algebra K A] [Module.Finite K A]
 
+/-- Postcomposition of actual K-algebra points with automorphisms of the target field. -/
 @[instance_reducible] def pointAction : MulAction (Ω ≃ₐ[K] Ω) (A →ₐ[K] Ω) where
   smul sigma f := sigma.toAlgHom.comp f
   one_smul f := by ext a; rfl
   mul_smul sigma tau f := by ext a; rfl
 
-local instance : MulAction (Ω ≃ₐ[K] Ω) (A →ₐ[K] Ω) := pointAction K Ω A
-local instance : TopologicalSpace (A →ₐ[K] Ω) := ⊥
+/-- Use the actual postcomposition action when studying stabilizers of algebra points. -/
+local instance instMulActionPoints : MulAction (Ω ≃ₐ[K] Ω) (A →ₐ[K] Ω) := pointAction K Ω A
+/-- The discrete topology on the algebra-point set used for its Galois action. -/
+local instance instTopologicalSpacePoints : TopologicalSpace (A →ₐ[K] Ω) := ⊥
 local instance : DiscreteTopology (A →ₐ[K] Ω) := ⟨rfl⟩
 
 theorem point_stabilizer_open (f : A →ₐ[K] Ω) :
@@ -215,6 +218,7 @@ omit [AddCommGroup Lambda] [DistribMulAction (Ω ≃ₐ[K] Ω) Lambda] in
 variable [Module.Finite K A] [TopologicalSpace Lambda]
   [IsTopologicalAddGroup Lambda] [ContinuousSMul (Ω ≃ₐ[K] Ω) Lambda]
 
+/-- The discrete topology on actual algebra points in the based continuous-cocycle construction. -/
 local instance : TopologicalSpace (A →ₐ[K] Ω) := ⊥
 local instance : DiscreteTopology (A →ₐ[K] Ω) := ⟨rfl⟩
 

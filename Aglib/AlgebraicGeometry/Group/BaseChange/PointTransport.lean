@@ -365,6 +365,9 @@ omit [CharZero K] [CharZero L] [CharZero M] [Algebra K M] [IsScalarTower K L M]
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]
   [GaloisCategory (Scheme.FiniteEtale (Spec (.of L)))]
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))] in
+-- Retain the original characteristic-zero tower and chosen fibre functors in this API.
+-- The proof consumes their point equivalences only through bijectivity.
+@[nolint unusedArguments]
 theorem fieldTowerGroupHom_ext
     [CharZero K] [CharZero L] [CharZero M] [Algebra K M] [IsScalarTower K L M]
     [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
@@ -391,7 +394,10 @@ theorem fieldTowerGroupHom_ext
   exact h aK
 
 /-- A tower square of ordinary finite-group coefficient maps follows from its
-literal point square. All coefficient groups remain generic in this proof. -/
+literal point square. All coefficient groups remain generic in this proof.
+The middle group's étaleness is retained as part of the original finite étale tower interface,
+although the pointwise comparison only uses its underlying coefficient maps. -/
+@[nolint unusedArguments]
 theorem fieldTowerCoefficientHom_comp
     (A : Grp (Over (Spec (.of K)))) [IsFinite A.X.hom] [Etale A.X.hom]
     (B : Grp (Over (Spec (.of L)))) [IsFinite B.X.hom] [Etale B.X.hom]

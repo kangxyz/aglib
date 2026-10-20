@@ -29,7 +29,9 @@ variable (F : Type u) [CommRing F]
 def smoothProperty : ObjectProperty (CommAlgCat.{u} F) :=
   fun A => Algebra.Smooth F A
 
+/-- The full subcategory of commutative `F`-algebras satisfying `Algebra.Smooth`. -/
 abbrev SmoothAlgebra := (smoothProperty F).FullSubcategory
+/-- The inclusion of smooth `F`-algebras into all commutative `F`-algebras. -/
 abbrev smoothInclusion : SmoothAlgebra F ⥤ CommAlgCat.{u} F :=
   (smoothProperty F).ι
 

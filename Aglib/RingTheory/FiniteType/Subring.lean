@@ -34,7 +34,7 @@ def restrictRingUnit (A : Subring K) (a : Kˣ)
   val_inv := Subtype.ext a.val_inv
   inv_val := Subtype.ext a.inv_val
 
-@[simp] theorem map_restrictRingUnit (A : Subring K) (a : Kˣ)
+theorem map_restrictRingUnit (A : Subring K) (a : Kˣ)
     (ha : (a : K) ∈ A) (hai : ((a⁻¹ : Kˣ) : K) ∈ A) :
     Units.map A.subtype.toMonoidHom (restrictRingUnit A a ha hai) = a := by
   apply Units.ext

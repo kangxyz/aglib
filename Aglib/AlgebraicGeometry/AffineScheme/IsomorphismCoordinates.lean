@@ -36,7 +36,7 @@ isomorphism, obtained from the fully faithful Spec functor. -/
 def ringEquivOfIso (e : Spec (.of A) ≅ Spec (.of B)) : A ≃+* B :=
   ((Scheme.Spec.preimageIso e).unop.symm).commRingCatIsoToRingEquiv
 
-@[simp] theorem map_ringEquivOfIso (e : Spec (.of A) ≅ Spec (.of B)) :
+theorem map_ringEquivOfIso (e : Spec (.of A) ≅ Spec (.of B)) :
     Spec.map (CommRingCat.ofHom (ringEquivOfIso e).toRingHom) = e.inv := by
   change Spec.map (Spec.preimage e.inv) = e.inv
   exact Spec.map_preimage _
@@ -59,7 +59,7 @@ def algEquivOfIso (R : Type u) [CommRing R] [Algebra R A] [Algebra R B]
         rw [Spec.map_comp, map_ringEquivOfIso, hinv]
       exact congrArg (fun q : CommRingCat.of R ⟶ CommRingCat.of B => q.hom r) hr }
 
-@[simp] theorem map_algEquivOfIso (R : Type u) [CommRing R] [Algebra R A] [Algebra R B]
+theorem map_algEquivOfIso (R : Type u) [CommRing R] [Algebra R A] [Algebra R B]
     (e : Spec (.of A) ≅ Spec (.of B))
     (h : e.hom ≫ Spec.map (CommRingCat.ofHom (algebraMap R B)) =
       Spec.map (CommRingCat.ofHom (algebraMap R A))) :

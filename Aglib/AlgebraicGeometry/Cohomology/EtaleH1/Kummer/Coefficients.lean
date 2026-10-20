@@ -72,12 +72,14 @@ open AlgebraicGeometry.Scheme.Group.MultiplicativeGroup
 open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Functor.LargePresheaf
 universe u
 
+/-- The multiplicative equivalence between maps to the multiplicative group and global units. -/
 def unitsMulEquiv (X : Scheme.{u}) (U : Over X) :
     letI := commGroup X
     (U ⟶ scheme X) ≃* Γ(U.left, ⊤)ˣ := by
   letI := commGroup X
   exact { sectionsUnitsEquiv X U with map_mul' := sectionsUnitsEquiv_mul X U }
 
+/-- The multiplicative equivalence between maps to the roots scheme and global roots of unity. -/
 def rootsMulEquiv (X : Scheme.{u}) (n : ℕ) (U : Over X) :
     letI := rootsCommGroup X n
     (U ⟶ rootsScheme X n) ≃* rootsOfUnity n Γ(U.left, ⊤) := by
@@ -94,11 +96,13 @@ def gm (X : Scheme.{u}) : AbelianSheaf.{u, u + 1} X := representedSheaf (groupSc
 def mu (X : Scheme.{u}) (n : ℕ) : AbelianSheaf.{u, u + 1} X :=
   representedSheaf (rootsGroupScheme X n)
 
+/-- Sections of the multiplicative coefficient sheaf as global units, written additively. -/
 def unitsSections (X : Scheme.{u}) (U : X.Etaleᵒᵖ) :
     (gm X).obj.obj U ≃+ Additive Γ(U.unop.left, ⊤)ˣ := by
   letI := commGroup X
   exact AddEquiv.ulift.trans (unitsMulEquiv X ((Scheme.Etale.forget X).obj U.unop)).toAdditive
 
+/-- Sections of the root coefficient sheaf as global roots of unity, written additively. -/
 def rootsSections (X : Scheme.{u}) (n : ℕ) (U : X.Etaleᵒᵖ) :
     (mu X n).obj.obj U ≃+ Additive (rootsOfUnity n Γ(U.unop.left, ⊤)) := by
   letI := rootsCommGroup X n
@@ -136,6 +140,7 @@ theorem power_apply_scheme (X : Scheme.{u}) (n : ℕ) (U : X.Etaleᵒᵖ)
   apply (sectionsUnitsEquiv X ((Scheme.Etale.forget X).obj U.unop)).injective
   exact (power_apply X n U a).trans (powerMap_comp X n _ a.down.toMul).symm
 
+/-- The inclusion of `n`th roots of unity into the unit group, written additively. -/
 def rootSubtype (R : Type u) [CommRing R] (n : ℕ) :
     Additive (rootsOfUnity n R) →+ Additive Rˣ where
   toFun a := Additive.ofMul a.toMul.val

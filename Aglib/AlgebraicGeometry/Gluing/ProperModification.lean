@@ -41,6 +41,8 @@ variable {A Y U V X : Scheme.{u}} (f : A ⟶ Y) (g : A ⟶ V)
   [IsOpenImmersion i] [IsOpenImmersion j]
   (w : f ≫ (p ≫ i) = g ≫ j)
 
+/-- The map to X descended from p followed by i on the modified chart and j on the unchanged
+chart. -/
 def gluedMap : pushout f g ⟶ X := pushout.desc (p ≫ i) j w
 
 omit [IsOpenImmersion i] [IsOpenImmersion j] in
@@ -85,6 +87,10 @@ lemma preimage_range_inr (hf : Set.range f = (p ≫ i) ⁻¹' Set.range j) :
     exact ⟨v, by simp only [← Scheme.Hom.comp_apply, inr_gluedMap]⟩
 
 omit [IsOpenImmersion j] in
+-- Retain the open-immersion condition on the unchanged base chart j for the symmetric
+-- modification interface; this pullback square uses the modified chart and the specified range
+-- equality.
+@[nolint unusedArguments]
 lemma inl_isPullback [IsOpenImmersion j] (hg : Set.range g = j ⁻¹' Set.range i) :
     IsPullback p (pushout.inl f g) i (gluedMap f g p i j w) := by
   apply IsOpenImmersion.isPullback
@@ -92,6 +98,9 @@ lemma inl_isPullback [IsOpenImmersion j] (hg : Set.range g = j ⁻¹' Set.range 
   · exact TopologicalSpace.Opens.ext (preimage_range_inl f g p i j w hg)
 
 omit [IsOpenImmersion i] in
+-- Retain the open-immersion condition on the modified base chart i for the symmetric modification
+-- interface; this pullback square uses the unchanged chart and the specified range equality.
+@[nolint unusedArguments]
 lemma inr_isPullback [IsOpenImmersion i] (hf : Set.range f = (p ≫ i) ⁻¹' Set.range j) :
     IsPullback (𝟙 V) (pushout.inr f g) j (gluedMap f g p i j w) := by
   apply IsOpenImmersion.isPullback
@@ -141,9 +150,14 @@ namespace OfRestriction
 variable {Y U X : Scheme.{u}} (p : Y ⟶ U) (i : U ⟶ X)
   [IsOpenImmersion i] (V : X.Opens) [IsIso (p ∣_ (i ⁻¹ᵁ V))]
 
+/-- The inverse image in Y of the intersection of the modified base open with V. -/
 abbrev overlap : Scheme.{u} := (p ⁻¹ᵁ (i ⁻¹ᵁ V)).toScheme
+
+/-- The original open inclusion of the restricted overlap into the modified scheme Y. -/
 abbrev overlapToModified : overlap p i V ⟶ Y := (p ⁻¹ᵁ (i ⁻¹ᵁ V)).ι
 
+/-- The overlap map to V obtained from the actual restricted morphism p and the restricted
+base inclusion. -/
 def overlapToUnchanged : overlap p i V ⟶ V := (p ∣_ (i ⁻¹ᵁ V)) ≫ (i ∣_ V)
 
 instance overlapToUnchanged_isOpenImmersion :
@@ -171,13 +185,20 @@ lemma range_overlapToUnchanged : Set.range (overlapToUnchanged p i V) =
   rw [hs.range_comp]
   exact range_openImmersion_restrict i V
 
+/-- The open pushout joining the modified scheme Y to the unchanged open V along their actual
+overlap. -/
 abbrev glued : Scheme.{u} := pushout (overlapToModified p i V) (overlapToUnchanged p i V)
 
+/-- The morphism from the open pushout to X induced by p followed by i and the original
+inclusion of V. -/
 def map : glued p i V ⟶ X := gluedMap (overlapToModified p i V)
   (overlapToUnchanged p i V) p i V.ι (overlap_triangle p i V)
 
+/-- The pushout inclusion of the modified scheme Y into the glued scheme. -/
 abbrev modifiedChart : Y ⟶ glued p i V :=
   pushout.inl (overlapToModified p i V) (overlapToUnchanged p i V)
+
+/-- The pushout inclusion of the unchanged open V into the glued scheme. -/
 abbrev unchangedChart : V.toScheme ⟶ glued p i V :=
   pushout.inr (overlapToModified p i V) (overlapToUnchanged p i V)
 
@@ -220,9 +241,13 @@ end OfRestriction
 isomorphism equal to the restricted modification map. No resolution, blowup,
 or global-gluing existence statement is assumed. -/
 structure Datum {X : Scheme.{u}} (U V : X.Opens) where
+  /-- The modified scheme supplied over U as part of the modification input datum. -/
   Y : Scheme.{u}
+  /-- The supplied proper morphism from the modified scheme to U. -/
   map : Y ⟶ U
   proper : IsProper map
+  /-- The supplied overlap isomorphism, whose forward map is required to be the actual
+  restriction of map. -/
   overlapIso : (map ⁻¹ᵁ (U.ι ⁻¹ᵁ V)).toScheme ≅ (U.ι ⁻¹ᵁ V).toScheme
   overlapIso_hom : overlapIso.hom = map ∣_ (U.ι ⁻¹ᵁ V)
 
@@ -231,9 +256,14 @@ attribute [instance] Datum.proper
 namespace Datum
 variable {X : Scheme.{u}} {U V : X.Opens} (D : Datum U V)
 
+/-- The actual inverse-image open of the intersection U ∩ V in the supplied modified scheme. -/
 abbrev overlap : Scheme.{u} := (D.map ⁻¹ᵁ (U.ι ⁻¹ᵁ V)).toScheme
+
+/-- The canonical open inclusion of the datum overlap into its modified scheme. -/
 abbrev overlapToModified : D.overlap ⟶ D.Y := (D.map ⁻¹ᵁ (U.ι ⁻¹ᵁ V)).ι
 
+/-- The map to V obtained from the supplied overlap isomorphism and the original restricted
+inclusion of U. -/
 def overlapToUnchanged : D.overlap ⟶ V := D.overlapIso.hom ≫ (U.ι ∣_ V)
 
 instance overlapToUnchanged_isOpenImmersion : IsOpenImmersion D.overlapToUnchanged := by
@@ -266,10 +296,15 @@ lemma range_overlapToUnchanged : Set.range D.overlapToUnchanged =
 /-- The actual glued scheme, constructed using mathlib's open-immersion pushout. -/
 abbrev glued : Scheme.{u} := pushout D.overlapToModified D.overlapToUnchanged
 
+/-- The map from the glued scheme to X descended from the original modified and unchanged base
+maps. -/
 def toBase : D.glued ⟶ X := gluedMap D.overlapToModified D.overlapToUnchanged
   D.map U.ι V.ι D.overlap_triangle
 
+/-- The pushout inclusion of the datum modified scheme into its glued scheme. -/
 abbrev modifiedChart : D.Y ⟶ D.glued := pushout.inl D.overlapToModified D.overlapToUnchanged
+
+/-- The pushout inclusion of the unchanged open V into the datum glued scheme. -/
 abbrev unchangedChart : V.toScheme ⟶ D.glued :=
   pushout.inr D.overlapToModified D.overlapToUnchanged
 

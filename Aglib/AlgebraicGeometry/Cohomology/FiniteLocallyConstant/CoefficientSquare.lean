@@ -62,6 +62,8 @@ variable [GaloisCategory (Scheme.FiniteEtale Z)] [PreGaloisCategory.FiberFunctor
 
 omit [GaloisCategory (Scheme.FiniteEtale Z)] in
 /-- Composition followed by a triangle has exactly its equality transport. -/
+-- Retain the original Galois-category input on the triangle source.
+@[nolint unusedArguments]
 theorem comp_triangle_hom [GaloisCategory (Scheme.FiniteEtale Z)]
     (g : Y ⟶ X) (m : Z ⟶ Y) (r : Z ⟶ X)
     (hm : m ≫ g = r) (L : AbelianSheaf.{u, u + 1} X) :

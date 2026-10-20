@@ -63,9 +63,11 @@ instance rationalGraph_quasiCompact [IsNoetherian X.left] :
 def rationalGraphImage : FScheme K :=
   Over.mk ((rationalGraph X P U r hr).imageι ≫ pullback.fst X.hom P.hom ≫ X.hom)
 
+/-- The projection from the scheme-theoretic rational graph image to the source scheme. -/
 def rationalGraphProjectionLeft : rationalGraphImage X P U r hr ⟶ X :=
   Over.homMk ((rationalGraph X P U r hr).imageι ≫ pullback.fst X.hom P.hom) (by rfl)
 
+/-- The projection from the scheme-theoretic rational graph image to the target scheme. -/
 def rationalGraphProjectionRight : rationalGraphImage X P U r hr ⟶ P :=
   Over.homMk ((rationalGraph X P U r hr).imageι ≫ pullback.snd X.hom P.hom) (by
     change _ = (rationalGraph X P U r hr).imageι ≫ pullback.fst X.hom P.hom ≫ X.hom
@@ -140,6 +142,7 @@ open _root_.AlgebraicGeometry.Scheme.OverField (FScheme)
 universe u
 namespace AlgebraicGeometry.Scheme
 variable {K : Type u} [Field K] (X : FScheme K)
+/-- The open cover of the underlying scheme of `X` by all affine opens. -/
 def graphBaseOpenCover : X.left.OpenCover :=
   X.left.openCoverOfIsOpenCover _ (iSup_affineOpens_eq_top X.left)
 

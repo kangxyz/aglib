@@ -57,6 +57,8 @@ variable (hreg : SmoothFieldRegularity.{u}) (hclosed : SmoothClosedPointDimensio
 variable (hdim : SmoothFieldDimension.{u}) (hprod : Picard.Degree.ProperCurveProductFormula.{u})
 variable {F : Type u} [Field F] (X : FScheme F) (hX : Properties X)
 
+/-- The Picard-degree homomorphism of a smooth proper curve, using the supplied geometric and
+product-formula inputs. -/
 def curveDegree : Invertible.PicardGroup X.left →+ ℤ := by
   letI := curveProperties_isIntegral hnormal hcomp hX
   letI := curveProperties_isNoetherian hX

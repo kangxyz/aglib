@@ -96,6 +96,9 @@ def rankOneLocalizationIso :
     (Algebra.linearMap R (Localization.Away pi))).extendScalarsOfIsLocalization
       (Submonoid.powers pi) (Localization.Away pi)).toFGModuleCatIso
 
+-- Retain the original Noetherian-domain interface of the principal-localization comparison;
+-- the formula for the canonical rank-one isomorphism itself is more general.
+@[nolint unusedArguments]
 theorem rankOneLocalizationIso_hom_apply [IsDomain R] [IsNoetherianRing R] (x : R) :
     (rankOneLocalizationIso R pi).hom
       ((ModuleCat.of.{u} R R).localizedModuleMkLinearMap (Submonoid.powers pi) x) =

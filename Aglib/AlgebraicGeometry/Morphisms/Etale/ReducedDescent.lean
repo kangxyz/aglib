@@ -69,6 +69,7 @@ open CategoryTheory Limits AlgebraicGeometry
 namespace AlgebraicGeometry.Scheme
 variable {X Y B K : Scheme.{u}} (f : X ⟶ Y) (b : Y ⟶ B) (r : K ⟶ B)
 
+/-- The map between the two base changes induced by the morphism `f` over `B`. -/
 def baseChangeMap : pullback (f ≫ b) r ⟶ pullback b r :=
   (pullbackRightPullbackFstIso b r f).inv ≫ pullback.snd f (pullback.fst b r)
 

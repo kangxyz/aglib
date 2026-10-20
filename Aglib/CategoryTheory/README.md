@@ -20,3 +20,5 @@ universal natural comparison; it asserts no comparison-isomorphism theorem.
 [Grp](Grp.lean) provides an explicit underlying-object composition formula. [Iso.Composite](Iso/Composite.lean)
 provides endpoint equality transport, while cancellation and reassociation use
 the existing Mathlib API.
+
+Focused interface guides: [Effective epimorphisms over a base](EffectiveEpi/README.md).

@@ -224,6 +224,7 @@ theorem coprimeLevelDetector_injective (d e : ℕ) (hde : d.Coprime e)
 
 /-- An additive detector at a level, together with its injectivity proof. -/
 structure InjectiveLevelDetector (n : ℕ) where
+  /-- The additive pairing from the level-`n` torsion groups to `ZMod n`. -/
   detector : torsionBy A n →+ (torsionBy B n →+ ZMod n)
   injective : Function.Injective detector
 

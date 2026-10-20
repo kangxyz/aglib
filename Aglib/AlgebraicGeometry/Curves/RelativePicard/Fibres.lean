@@ -85,6 +85,8 @@ universe u
 open AlgebraicGeometry.Scheme.Hom
 variable {F : Type u} [Field F] (X : FScheme F) (T : FScheme F)
 variable (K : Type u) [Field K] (t : Spec (.of K) ⟶ T.left)
+/-- The isomorphism over `Spec K` identifying an iterated family fibre with the direct base
+change of `X`. -/
 def familyFibreIso :
     Over.mk (pullback.snd (pullback.snd X.hom T.hom) t) ≅
       Over.mk (pullback.snd X.hom (t ≫ T.hom)) :=

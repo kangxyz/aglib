@@ -48,6 +48,9 @@ Native providers replace duplicate implementations.
 open CategoryTheory AlgebraicGeometry
 namespace AlgebraicGeometry.Scheme.Modules
 universe u
+/-- The theorem-family input that a map between locally free finitely presented module sheaves
+is an isomorphism if all its algebraically closed geometric-field pullbacks are
+isomorphisms. -/
 def FiniteLocallyFreeGeometricIso : Prop :=
   ∀ (X : Scheme.{u}) (M N : X.Modules) (φ : M ⟶ N),
     M.IsLocallyFree → M.IsFinitePresentation → N.IsLocallyFree → N.IsFinitePresentation →

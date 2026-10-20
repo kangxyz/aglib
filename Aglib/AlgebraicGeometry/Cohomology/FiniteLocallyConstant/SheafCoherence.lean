@@ -62,6 +62,7 @@ attribute [local instance] Over.cartesianMonoidalCategory
 section RootPointCoordinates
 variable {X S : Scheme.{u}} {C D : Type u} [Field C] [Field D]
 variable (n : ℕ)
+/-- The native commutative group law on the roots scheme over each test scheme. -/
 local instance (Y : Scheme.{u}) : CommGrpObj (MultiplicativeGroup.rootsScheme Y n) :=
   MultiplicativeGroup.rootsCommGroup Y n
 
@@ -334,6 +335,7 @@ variable {K L : Type u} [Field K] [Field L] [CharZero K] [CharZero L] [Algebra K
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]
   [GaloisCategory (Scheme.FiniteEtale (Spec (.of L)))]
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))]
+/-- The represented roots group structure on each field spectrum used for field transport. -/
 local instance (E : Type u) [Field E] : CommGrpObj (MultiplicativeGroup.rootsScheme (Spec (.of
     E)) n) :=
   MultiplicativeGroup.rootsCommGroup (Spec (.of E)) n
@@ -352,6 +354,8 @@ omit [CharZero K] [CharZero L]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint L))] in
 /-- The canonical roots group iso is exactly the previously constructed
 literal field root-point transport. -/
+-- Retain the original characteristic-zero and chosen field fibre-functor comparison inputs.
+@[nolint unusedArguments]
 theorem rootsBaseChangeIso_fieldPoint [CharZero K] [CharZero L]
     [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
     [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]

@@ -40,7 +40,7 @@ variable {C D X : Scheme.{u}} (i : C ⟶ X) (j : D ⟶ X)
   [IsClosedImmersion i] [IsClosedImmersion j] [IsReduced C] [IsReduced D]
 
 /-- Actual mutually inverse scheme maps, not a support-only identification. -/
-def of_range_eq (h : Set.range i = Set.range j) : C ≅ D where
+def ofRangeEq (h : Set.range i = Set.range j) : C ≅ D where
   hom := liftReducedToClosed j i h.le
   inv := liftReducedToClosed i j h.ge
   hom_inv_id := by
@@ -51,38 +51,38 @@ def of_range_eq (h : Set.range i = Set.range j) : C ≅ D where
     simp only [Category.assoc, liftReducedToClosed_fac, Category.id_comp]
 
 @[reassoc (attr := simp)] lemma of_range_eq_hom_fac (h : Set.range i = Set.range j) :
-    (of_range_eq i j h).hom ≫ j = i := liftReducedToClosed_fac j i h.le
+    (ofRangeEq i j h).hom ≫ j = i := liftReducedToClosed_fac j i h.le
 
 @[reassoc (attr := simp)] lemma of_range_eq_inv_fac (h : Set.range i = Set.range j) :
-    (of_range_eq i j h).inv ≫ i = j := liftReducedToClosed_fac i j h.ge
+    (ofRangeEq i j h).inv ≫ i = j := liftReducedToClosed_fac i j h.ge
 
 /-- Literal open pullbacks of both closed subschemes. Reducedness follows
 from the actual open projections, before any comparison is formed. -/
-def on_open (U : X.Opens)
+def onOpen (U : X.Opens)
     (h : U.ι ⁻¹' Set.range i = U.ι ⁻¹' Set.range j) :
     pullback i U.ι ≅ pullback j U.ι := by
   let : IsReduced (pullback i U.ι) := isReduced_of_isOpenImmersion (pullback.fst i U.ι)
   let : IsReduced (pullback j U.ι) := isReduced_of_isOpenImmersion (pullback.fst j U.ι)
-  apply of_range_eq (pullback.snd i U.ι) (pullback.snd j U.ι)
+  apply ofRangeEq (pullback.snd i U.ι) (pullback.snd j U.ι)
   rw [Scheme.Pullback.range_snd, Scheme.Pullback.range_snd]
   exact h
 
 @[reassoc (attr := simp)] lemma on_open_hom_snd (U : X.Opens)
     (h : U.ι ⁻¹' Set.range i = U.ι ⁻¹' Set.range j) :
-    (on_open i j U h).hom ≫ pullback.snd j U.ι = pullback.snd i U.ι := by
-  simp only [on_open, of_range_eq_hom_fac]
+    (onOpen i j U h).hom ≫ pullback.snd j U.ι = pullback.snd i U.ι := by
+  simp only [onOpen, of_range_eq_hom_fac]
 
 @[reassoc (attr := simp)] lemma on_open_hom_original (U : X.Opens)
     (h : U.ι ⁻¹' Set.range i = U.ι ⁻¹' Set.range j) :
-    (on_open i j U h).hom ≫ pullback.fst j U.ι ≫ j = pullback.fst i U.ι ≫ i := by
+    (onOpen i j U h).hom ≫ pullback.fst j U.ι ≫ j = pullback.fst i U.ι ≫ i := by
   rw [pullback.condition, on_open_hom_snd_assoc, ← pullback.condition]
 
 /-- Structural maps to any fixed base are retained by the same comparison. -/
-def on_open_over {B : Scheme.{u}} (b : X ⟶ B) (U : X.Opens)
+def onOpenOver {B : Scheme.{u}} (b : X ⟶ B) (U : X.Opens)
     (h : U.ι ⁻¹' Set.range i = U.ι ⁻¹' Set.range j) :
     Over.mk (pullback.snd i U.ι ≫ U.ι ≫ b) ≅
       Over.mk (pullback.snd j U.ι ≫ U.ι ≫ b) :=
-  Over.isoMk (on_open i j U h) (by simp)
+  Over.isoMk (onOpen i j U h) (by simp)
 
 end AlgebraicGeometry.Scheme.ReducedClosedSubscheme
 
@@ -103,10 +103,14 @@ variable {C D E X : Scheme.{u}} (i : C ⟶ X) (j : D ⟶ X) (e : E ⟶ X)
   [hjClosed : IsClosedImmersion j] [IsClosedImmersion e] [IsReduced D]
   (h : Set.range j = Set.range e)
 
+/-- The reduced-source factorization of j through the closed immersion e with the same
+underlying range. -/
 def factor : D ⟶ E := liftReducedToClosed e j h.le
 
 omit hjClosed in
-@[reassoc (attr := simp)] lemma factor_fac [IsClosedImmersion j] : factor j e h ≫ e = j :=
+-- Retain the closed-immersion condition on j in the equal-range closed-intersection interface;
+-- the factorization triangle itself only needs e closed and D reduced.
+@[nolint unusedArguments, reassoc (attr := simp)] lemma factor_fac [IsClosedImmersion j] : factor j e h ≫ e = j :=
   liftReducedToClosed_fac e j h.le
 
 instance factor_closedImmersion : IsClosedImmersion (factor j e h) := by
@@ -121,6 +125,8 @@ instance factor_surjective : Surjective (factor j e h) := by
   have hf := congrArg (fun f : D ⟶ X => f x) (factor_fac j e h)
   exact hf.trans hx
 
+/-- The pullback comparison induced by the original first projection and the factorization
+from D to E. -/
 def intersectionMap : pullback i j ⟶ pullback i e :=
   pullback.lift (pullback.fst i j) (pullback.snd i j ≫ factor j e h) (by
     rw [Category.assoc, factor_fac]; exact pullback.condition)
@@ -151,6 +157,8 @@ instance intersectionMap_surjective : Surjective (intersectionMap i j e h) :=
 instance intersectionMap_isIso [IsReduced (pullback i e)] : IsIso (intersectionMap i j e h) :=
   isIso_of_isClosedImmersion_of_surjective _
 
+/-- The isomorphism of the actual intersections when the comparison target pullback is
+reduced. -/
 def intersectionIso [IsReduced (pullback i e)] : pullback i j ≅ pullback i e :=
   asIso (intersectionMap i j e h)
 

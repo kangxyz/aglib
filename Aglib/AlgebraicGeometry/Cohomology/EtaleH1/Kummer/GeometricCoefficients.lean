@@ -81,7 +81,9 @@ variable (C : Type u) [Field C] {X : Scheme.{u}} (p : X ⟶ Spec (.of C))
   (x : Spec (.of C) ⟶ X) (h : x ≫ p = 𝟙 _) (n : ℕ)
 attribute [local instance] Over.cartesianMonoidalCategory
 
+/-- The group scheme of nth roots of unity over the given scheme. -/
 abbrev groupScheme := MultiplicativeGroup.rootsGroupScheme X n
+/-- The native commutative group law on the represented roots-of-unity scheme. -/
 local instance : CommGrpObj (MultiplicativeGroup.rootsScheme X n) :=
   MultiplicativeGroup.rootsCommGroup X n
 
@@ -90,6 +92,7 @@ def pointRoots : (Over.mk x ⟶ (groupScheme (X := X) n).X) ≃* rootsOfUnity n 
   (GroupCohomology.Kummer.Coefficients.rootsMulEquiv X n (Over.mk x)).trans
     ((Scheme.ΓSpecIso (.of C)).commRingCatIsoToRingEquiv.toMulEquiv.restrictRootsOfUnity n)
 
+/-- The given geometric point as a morphism to the identity cover. -/
 def pointToIdentity : Over.mk x ⟶ Over.mk (𝟙 X) := Over.homMk x (by simp)
 
 /-- An actual constant root supplies a global section of the roots scheme. -/
@@ -147,6 +150,8 @@ variable [Etale (groupScheme (X := X) n).X.hom]
 include p h in
 omit [CharZero C] in
 /-- Global constant roots force literal finite-fibre monodromy to be trivial. -/
+-- Retain the characteristic-zero guard of the original geometric coefficient interface.
+@[nolint unusedArguments]
 theorem point_action_trivial [CharZero C] (γ : FiberAutGroup x)
     (a : Over.mk x ⟶ (groupScheme (X := X) n).X) :
     γ.hom.app (coefficientCover (groupScheme (X := X) n)) a = a := by
@@ -169,7 +174,8 @@ def rootCoordinate (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n) 
   hζ.zmodEquivZPowers.trans (MulEquiv.subgroupCongr hζ.zpowers_eq).toAdditive
 
 omit [CharZero C] in
-@[simp] theorem rootCoordinate_one [CharZero C] (ζ : rootsOfUnity n C)
+-- Retain the original characteristic-zero primitive-root marking interface.
+@[nolint unusedArguments, simp] theorem rootCoordinate_one [CharZero C] (ζ : rootsOfUnity n C)
     (hζ : IsPrimitiveRoot (ζ : Cˣ) n) : rootCoordinate C n ζ hζ 1 = Additive.ofMul ζ := by
   unfold rootCoordinate
   rw [AddEquiv.trans_apply]
@@ -184,6 +190,8 @@ def pointMark (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n) :
   (pointRoots C x n).trans (rootCoordinate C n ζ hζ).symm.toMultiplicative
 
 omit [Etale (groupScheme (X := X) n).X.hom] in
+-- Retain etaleness of the actual represented coefficient group in the public point-marking API.
+@[nolint unusedArguments]
 theorem pointMark_root [Etale (groupScheme (X := X) n).X.hom]
     (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n)
     (a : Over.mk x ⟶ (groupScheme (X := X) n).X) (ha : pointRoots C x n a = ζ) :
@@ -192,6 +200,7 @@ theorem pointMark_root [Etale (groupScheme (X := X) n).X.hom]
   apply (rootCoordinate C n ζ hζ).injective
   rw [AddEquiv.apply_symm_apply, rootCoordinate_one, ha]
 
+/-- The action of fibre automorphisms on the root-coordinate group that fixes every element. -/
 @[instance_reducible] def trivialRootAction : DistribMulAction (FiberAutGroup x) (ZMod n) where
   smul _ a := a
   one_smul _ := rfl
@@ -199,6 +208,7 @@ theorem pointMark_root [Etale (groupScheme (X := X) n).X.hom]
   smul_zero _ := rfl
   smul_add _ _ _ := rfl
 
+/-- Use the trivial root-coordinate action when checking finite-fibre equivariance. -/
 local instance : DistribMulAction (FiberAutGroup x) (ZMod n) := trivialRootAction C x n
 local instance : ContinuousSMul (FiberAutGroup x) (ZMod n) := ⟨continuous_snd⟩
 
@@ -212,12 +222,14 @@ theorem pointMark_equivariant (ζ : rootsOfUnity n C)
   rfl
 
 end RootAction
+/-- Use the trivial root-coordinate action for the geometric coefficient comparison. -/
 local instance : DistribMulAction (FiberAutGroup x) (ZMod n) := trivialRootAction C x n
 local instance : ContinuousSMul (FiberAutGroup x) (ZMod n) := ⟨continuous_snd⟩
 
 variable [IsAlgClosed C] [PreconnectedSpace X]
   [GaloisCategory (Scheme.FiniteEtale X)] [PreGaloisCategory.FiberFunctor (fiberToFinite x)]
 
+/-- The roots sheaf as a finite locally constant coefficient of positive invertible level. -/
 def finiteCoefficient : FiniteCoefficient
     (GroupCohomology.Kummer.Coefficients.mu X n) := by
   letI : Etale (MultiplicativeGroup.rootsGroupScheme X n).X.hom :=
@@ -230,6 +242,8 @@ def finiteCoefficient : FiniteCoefficient
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
+/-- Compare etale roots classes with continuous fibre-group cohomology using the chosen primitive
+root and the supplied torsor and locally constant comparison inputs. -/
 def comparison (hA : Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
     (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n) :
     H1Etale X (GroupCohomology.Kummer.Coefficients.mu X n) ≃+
@@ -243,6 +257,7 @@ def comparison (hA : Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
     (finiteCoefficient C p x n)
 
 section Characters
+/-- Use the trivial root-coordinate action for the equivariant-character constructions. -/
 local instance : DistribMulAction (FiberAutGroup x) (ZMod n) := trivialRootAction C x n
 local instance : ContinuousSMul (FiberAutGroup x) (ZMod n) := ⟨continuous_snd⟩
 open _root_.GroupCohomology _root_.TopologicalGroup
@@ -251,6 +266,8 @@ variable {G N : Type*} [Group G] [Group N]
   [DistribMulAction G (ZMod n)]
 variable (e : FiberAutGroup x ≃ₜ* N)
 
+/-- Pull the equivariant character back along the specified fibre-group isomorphism to a
+continuous cocycle. -/
 def characterCocycle (c : _root_.GroupCohomology.PointedCohomology.EquivariantCharacter G N
     (ZMod n)) :
     _root_.GroupCohomology.ContinuousH1.Cocycle (FiberAutGroup x) (ZMod n) :=
@@ -260,6 +277,7 @@ def characterCocycle (c : _root_.GroupCohomology.PointedCohomology.EquivariantCh
       rw [map_mul]
       exact c.map_mul (e g) (e k)⟩
 
+/-- Send an equivariant character to the continuous cohomology class of its pulled-back cocycle. -/
 def characterH1 : _root_.GroupCohomology.PointedCohomology.EquivariantCharacter G N (ZMod n) →+
     _root_.GroupCohomology.ContinuousH1.H1 (FiberAutGroup x) (ZMod n) where
   toFun c := _root_.GroupCohomology.ContinuousH1.classOf _ _ (characterCocycle C x n e c)
@@ -275,6 +293,8 @@ omit [CharZero C] [NeZero n] [IsAlgClosed C] [PreconnectedSpace X]
     [GaloisCategory (Scheme.FiniteEtale X)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite x)] [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
     [TopologicalSpace G] in
+-- Retain the original geometric, Galois, Ext-size and topological character-comparison inputs.
+@[nolint unusedArguments]
 theorem characterH1_injective [CharZero C] [NeZero n] [IsAlgClosed C] [PreconnectedSpace X]
     [GaloisCategory (Scheme.FiniteEtale X)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite x)] [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
@@ -297,7 +317,8 @@ def characterEtale (hA : Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
   (comparison C p x h n hA hR ζ hζ).symm.toAddMonoidHom.comp (characterH1 C x n e)
 
 omit [IsAlgClosed C] [TopologicalSpace G] in
-@[simp] theorem comparison_characterEtale [IsAlgClosed C] [TopologicalSpace G] (hA :
+-- Retain the original algebraically closed coefficient and topological character context.
+@[nolint unusedArguments, simp] theorem comparison_characterEtale [IsAlgClosed C] [TopologicalSpace G] (hA :
     Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
     (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n)
     (c : _root_.GroupCohomology.PointedCohomology.EquivariantCharacter G N (ZMod n)) :

@@ -64,7 +64,7 @@ def constantUnit (a : Kˣ) (n : ℕ) : (AlgebraicSimplex.CoordinateRing K n)ˣ :
   Units.map (algebraMap K (AlgebraicSimplex.CoordinateRing K n)).toMonoidHom a
 
 /-- Every simplex pullback fixes constant units. -/
-@[simp] theorem pullback_constantUnit (a : Kˣ) {m n : ℕ}
+theorem pullback_constantUnit (a : Kˣ) {m n : ℕ}
     (f : Fin (m + 1) → Fin (n + 1)) :
     Units.map (AlgebraicSimplex.pullback K f).toRingHom.toMonoidHom (constantUnit K a n) =
       constantUnit K a m := by

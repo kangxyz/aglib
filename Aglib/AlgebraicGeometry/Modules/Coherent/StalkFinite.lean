@@ -64,6 +64,8 @@ theorem finite_restrictScalars {R S : Type u} [CommRing R] [CommRing S]
     { toFun := id, map_add' := fun _ _ => rfl, map_smul' := fun _ _ => rfl }
   exact (e.finite_iff_of_bijective Function.bijective_id).mpr inferInstance
 
+-- Retain the Noetherian affine base of the original coherent-stalk statement.
+@[nolint unusedArguments]
 theorem coherent_affine_stalk_finite (R : CommRingCat.{u}) [IsNoetherianRing R]
     (M : _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.FiniteTypeSheaves (Spec R)) (x :
         Spec R) :

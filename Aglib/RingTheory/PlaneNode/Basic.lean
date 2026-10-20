@@ -35,8 +35,11 @@ variable {S : Type*} [CommRing S] [Algebra R S]
 
 /-- The literal node coordinate ring R[U,V]/(UV-c), presented as an AdjoinRoot. -/
 def poly (c : R) : R[X][Y] := C X * Y - C (C c)
+/-- The plane-node algebra `R[U,V]/(UV - c)`, presented by adjoining a root over `R[X]`. -/
 abbrev Ring (c : R) := AdjoinRoot (poly c)
+/-- The first coordinate in the plane-node algebra. -/
 abbrev U (c : R) : Ring c := algebraMap R[X] _ X
+/-- The second coordinate in the plane-node algebra. -/
 abbrev V (c : R) : Ring c := AdjoinRoot.root (poly c)
 lemma relation (c : R) : U c * V c = algebraMap R _ c := by
   have h := AdjoinRoot.eval₂_root (poly c)
@@ -45,6 +48,8 @@ lemma relation (c : R) : U c * V c = algebraMap R _ c := by
   simpa only [← AdjoinRoot.algebraMap_eq, ← IsScalarTower.algebraMap_apply R R[X],
     ← Polynomial.algebraMap_eq, sub_eq_zero] using h
 
+/-- The algebra map from the plane-node algebra determined by elements `x` and `y` satisfying
+`xy = c`. -/
 def lift (c : R) (x y : S) (h : x * y = algebraMap R S c) : Ring c →ₐ[R] S :=
   AdjoinRoot.liftAlgHom (poly c) (aeval x) y (by simp [poly, h])
 @[simp] lemma lift_U (c : R) (x y : S) (h) :
@@ -58,6 +63,8 @@ def lift (c : R) (x y : S) (h : x * y = algebraMap R S c) : Ring c →ₐ[R] S :
   · exact hy
 
 
+/-- The algebra map from the node with coefficient `a * c` to the node with coefficient `c`,
+scaling `U` by the unit `a` and fixing `V`. -/
 def scaleHom (c : R) (a : Rˣ) : Ring ((a : R) * c) →ₐ[R] Ring c :=
   lift _ (algebraMap R _ (a : R) * U c) (V c) (by
     rw [mul_assoc, relation, ← map_mul])
@@ -68,6 +75,7 @@ def scaleHom (c : R) (a : Rˣ) : Ring ((a : R) * c) →ₐ[R] Ring c :=
 @[simp] theorem scaleHom_V (c : R) (a : Rˣ) :
     scaleHom c a (V ((a : R) * c)) = V c := by simp [scaleHom]
 
+/-- The inverse coordinate-scaling map, multiplying `U` by `a⁻¹` and fixing `V`. -/
 def unscaleHom (c : R) (a : Rˣ) : Ring c →ₐ[R] Ring ((a : R) * c) :=
   lift _ (algebraMap R _ (↑a⁻¹ : R) * U ((a : R) * c))
     (V ((a : R) * c)) (by

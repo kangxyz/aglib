@@ -53,6 +53,8 @@ structure CoefficientPointCoordinates
     [CommRing H] [Algebra R H] [AddCommGroup Lambda]
     [DistribMulAction (Ω ≃ₐ[K] Ω) Lambda]
     (epsilon : H →ₐ[R] R) (delta : H →ₐ[R] H ⊗[R] H) where
+  /-- The chosen identification of the coefficient group with geometric points of the generic
+  coefficient algebra. -/
   mark : Lambda ≃ ((K ⊗[R] H) →ₐ[K] Ω)
   mark_zero : mark 0 = (Algebra.ofId K Ω).comp (BaseChange.counit R K epsilon)
   mark_add (a b : Lambda) : mark (a + b) =

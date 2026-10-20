@@ -77,6 +77,8 @@ theorem local_nonclosed_height_lt (x : HeightPoint X p)
   rw [ringKrullDim_stalk_eq_coheight]
   exact WithBot.coe_lt_coe.mpr (hx ▸ hbad)
 
+/-- The coherent pullback to the local spectrum at a height-`p` point
+of an object supported in height at least `p`. -/
 abbrev localCoherentPullback (M : CohAtLeast X p) (x : HeightPoint X p) :=
   (Scheme.Modules.Coherent.coherentPullback (X.fromSpecStalk x.1)).obj
       M.obj

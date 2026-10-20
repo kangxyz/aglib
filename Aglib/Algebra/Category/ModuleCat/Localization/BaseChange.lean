@@ -54,6 +54,7 @@ def tensorLocalizationIso (M : ModuleCat.{u} R) :
   rw [extendScalarsAlgebraIso_tmul, IsBaseChange.equiv_tmul]
 
 
+/-- The natural isomorphism from tensor extension to localization at `S`. -/
 def tensorLocalizationNatIso :
     ModuleCat.extendScalars (algebraMap R (Localization S)) ≅
       ModuleCat.localizedModuleFunctor.{u} S :=

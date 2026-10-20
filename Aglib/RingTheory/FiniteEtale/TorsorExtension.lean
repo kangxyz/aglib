@@ -379,6 +379,8 @@ structure OriginalTorsorData
     (R K A H : Type u) [CommRing R] [Field K] [Algebra R K]
     [CommRing A] [Algebra K A] [Algebra R A] [IsScalarTower R K A]
     [CommRing H] [Algebra R H] (ε : H →ₐ[R] R) (Δ : H →ₐ[R] H ⊗[R] H) where
+  /-- The supplied coaction on the original generic algebra, including its counit and
+  coassociativity laws. -/
   coaction : OriginalCoaction R K (A := A) ε Δ
   nontrivial : Nontrivial A
   transporter_bijective : Function.Bijective
@@ -397,6 +399,7 @@ coefficient group, without group reconstruction. -/
 structure AlgebraicTorsorData
     (R B H : Type u) [CommRing R] [CommRing B] [Algebra R B]
     [CommRing H] [Algebra R H] (ε : H →ₐ[R] R) (Δ : H →ₐ[R] H ⊗[R] H) where
+  /-- The coaction on the model algebra, including its counit and coassociativity laws. -/
   coaction : AlgebraCoaction R B H ε Δ
   faithfullyFlat : Module.FaithfullyFlat R B
   transporter_bijective : Function.Bijective (transporter R B H coaction.coact)

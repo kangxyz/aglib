@@ -127,6 +127,9 @@ theorem ramification_residue_sum (h : FiniteMorphismNormOrder.{u})
 variable {k : Type u} [Field k] (p : Y ⟶ Spec (.of k))
 
 omit hNX hNY hDom hFin hDX hDY in
+-- Retain finite dominance and the noetherian DVR-curve conditions for the residue-degree norm
+-- interface; this scalar triangle is functoriality of the actual residue-field maps.
+@[nolint unusedArguments]
 theorem residueConstants_comp [IsNoetherian X] [IsNoetherian Y]
     [IsDominant f] [IsFinite f]
     [∀ x : ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
@@ -152,6 +155,9 @@ theorem residueTower (x : ClosedPoint X) :
   exact fun a => congrArg (fun g : k →+* X.residueField x.val => g a) (residueConstants_comp f p
     x).symm
 
+-- Retain finite type of the structural map in the degree-weight interface; this equality is the
+-- finrank tower identity for the already constructed residue algebras.
+@[nolint unusedArguments]
 theorem weight_mul_residueDegree [LocallyOfFiniteType p] (x : ClosedPoint X) :
     Degree.weight Y p (AlgebraicGeometry.Scheme.closedPointMap f x) * residueDegreeInt f x =
       Degree.weight X (f ≫ p) x := by

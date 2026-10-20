@@ -80,6 +80,8 @@ variable (o : Base F ⟶ X.left) (ho : o ≫ X.hom = 𝟙 _)
   apply Subtype.ext
   exact normalizedAbelClass_origin hdivisor htensor X.hom o ho T
 
+/-- The morphism corresponding to the degree-zero Abel class of the identity section under the
+supplied Picard representation. -/
 def abelMorphism : X ⟶ representingScheme hnormal hcomp hreg hclosed hdim hprod htensor hrep X hX
   o ho :=
   (representingEquivalence hnormal hcomp hreg hclosed hdim hprod htensor hrep X hX o

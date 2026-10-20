@@ -31,12 +31,14 @@ open GroupCohomology
 namespace GroupCohomology.Continuous.Corestriction
 variable (G : Type*) [_root_.Group G] (H : Subgroup G)
 
+/-- Inverse translation on the coset space, used to reindex transfer sums. -/
 def shift (g : G) (x : G ⧸ H) : G ⧸ H := g⁻¹ • x
 
 theorem shift_mul (g h : G) (x : G ⧸ H) :
     shift G H (g * h) x = shift G H h (shift G H g x) := by
   simp only [shift, mul_inv_rev, mul_smul]
 
+/-- The quotient's chosen representative of a coset. -/
 def representative (x : G ⧸ H) : G := x.out
 
 variable [TopologicalSpace G] [IsTopologicalGroup G]
@@ -45,7 +47,8 @@ theorem continuous_shift : Continuous (fun p : G × (G ⧸ H) => shift G H p.1 p
   continuous_fst.inv.smul continuous_snd
 
 variable (A : Type*) [AddCommGroup A] [H.FiniteIndex]
-local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
+/-- The finite coset enumeration supplied by the finite-index hypothesis. -/
+local instance instFintypeQuotient : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 
 omit [TopologicalSpace G] [IsTopologicalGroup G] in
 theorem sum_shift (g : G) (f : G ⧸ H → A) :
@@ -61,6 +64,7 @@ open GroupCohomology.H2.Continuous (Cocycle complex d₀ d₁ d₀_apply d₁_ap
 
 /-- An actual section of the quotient by a subgroup. -/
 structure CosetSection (G : Type*) [_root_.Group G] (H : Subgroup G) where
+  /-- The chosen representative of each coset. -/
   rep : G ⧸ H → G
   proj : ∀ x, QuotientGroup.mk (rep x) = x
 
@@ -80,6 +84,7 @@ theorem factor_mem (g : G) (x : G ⧸ H) :
   rw [r.proj, r.proj]
   exact (smul_inv_smul g x).symm
 
+/-- The subgroup element `r(x)⁻¹ g r(g⁻¹ • x)` determined by the coset section. -/
 def factor (g : G) (x : G ⧸ H) : H :=
   ⟨(r.rep x)⁻¹ * g * r.rep (shift G H g x), factor_mem r g x⟩
 
@@ -115,6 +120,7 @@ theorem continuous_factor : Continuous (fun p : G × (G ⧸ H) => factor r p.1 p
 variable (A : Type*) [AddCommGroup A] [TopologicalSpace A] [IsTopologicalAddGroup A]
   [DistribMulAction G A] [ContinuousSMul G A]
 variable [H.FiniteIndex]
+/-- The finite coset enumeration used by the transfers for a specified section. -/
 local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 
 omit [TopologicalSpace G] [IsTopologicalGroup G] [TopologicalSpace A]

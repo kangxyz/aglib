@@ -40,6 +40,7 @@ abbrev Ring := AdicCompletion (maximalIdeal q.localRing) q.localRing
 /-- Fraction field of the completed actual stalk. -/
 abbrev FractionField := FractionRing (Ring q)
 
+/-- The canonical ring map from the local ring at the rational point to its adic completion. -/
 abbrev completionMap : q.localRing →+* Ring q := algebraMap q.localRing (Ring q)
 
 /-- Canonical residue equivalence obtained from the original rational section. -/
@@ -59,7 +60,11 @@ theorem residue_triangle :
 @[instance_reducible] def constantsAlgebra : Algebra F (FractionField q) :=
   (AdicCompletion.fractionRingConstantsMap q.localRing q.constants).toAlgebra
 
+/-- The function-field algebra structure on the fraction field of the completed local ring,
+induced by the generic-stalk map. -/
 local instance : Algebra X.functionField (FractionField q) := fractionAlgebra q
+/-- The base-field algebra structure on the fraction field of the completed local ring, induced
+through constants in the original stalk. -/
 local instance : Algebra F (FractionField q) := constantsAlgebra q
 
 /-- The actual function-field map extends the original stalk map. -/

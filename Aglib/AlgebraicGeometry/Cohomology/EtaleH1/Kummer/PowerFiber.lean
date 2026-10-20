@@ -57,12 +57,14 @@ universe u
 variable {X : Scheme.{u}} (n : ℕ) (P : Torsor (gm X))
 variable (φ : P.carrier ⟶ underlyingSetSheaf (gm X))
 
+/-- The value of the given torsor-to-multiplicative-sheaf map on a section. -/
 def value (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) : (gm X).obj.obj U := φ.hom.app U s
 
 theorem value_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V) (s : P.carrier.obj.obj U) :
     value P φ V (P.carrier.obj.map f s) = (gm X).obj.map f (value P φ U s) :=
   ConcreteCategory.congr_hom (φ.hom.naturality f) s
 
+/-- The subfunctor of torsor sections mapped to zero in the additive multiplicative sheaf. -/
 def powerFiberSubfunctor : Subfunctor P.carrier.obj where
   obj U := {s | value P φ U s = 0}
   map {U V} f s hs := by
@@ -82,6 +84,7 @@ theorem powerFiber_isSheaf :
   rw [map_zero, ← value_naturality]
   exact hf
 
+/-- The subsheaf forming the zero fibre of the given map to the multiplicative sheaf. -/
 def powerFiberSheaf : SetSheaf X :=
   ⟨(powerFiberSubfunctor P φ).toFunctor, powerFiber_isSheaf P φ⟩
 

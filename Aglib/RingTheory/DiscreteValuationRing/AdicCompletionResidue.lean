@@ -40,6 +40,8 @@ variable {R : Type*} [CommRing R] [IsDedekindDomain R]
   (K : Type*) [Field K] [Algebra R K] [IsFractionRing R K]
   (v : HeightOneSpectrum R)
 
+/-- The ring map from `R` to the residue field of the integral adic completion at the height-one
+place `v`. -/
 noncomputable def integralResidueMap :
     R →+* IsLocalRing.ResidueField (v.adicCompletionIntegers K) :=
   (IsLocalRing.residue (v.adicCompletionIntegers K)).comp

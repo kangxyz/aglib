@@ -67,3 +67,9 @@ inverse laws do not independently discharge that general representability input.
 arrows, structural field base change, prescribed-origin data and the literal
 high-degree vanishing factory. Compilation,
 source-policy checks and mathematical adoption retain their separate scopes.
+
+Focused interface guides: [Actual model component geometry](Models/Components/README.md).
+
+[Isogeny.Etale](Isogeny/Etale.md) proves the characteristic-zero finite
+surjective curve-group homomorphism family and binds it to the original
+pointed proper-curve consumer.

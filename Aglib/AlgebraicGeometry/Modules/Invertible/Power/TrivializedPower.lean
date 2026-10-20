@@ -86,7 +86,9 @@ variable (X : Scheme.{u})
 
 /-- An actual line bundle with a specified trivialization of its nth tensor power. -/
 structure Pair (n : ℕ) where
+  /-- The actual line bundle whose nth tensor power is equipped with a trivialization. -/
   lineBundle : LineBundle X
+  /-- The specified isomorphism from the nth tensor power to the unit module sheaf. -/
   trivialization : (tensorPowerLineBundle X lineBundle n).val ≅ SheafOfModules.unit X.ringCatSheaf
 
 /-- Tensor-power transport of an actual line-bundle isomorphism. -/
@@ -178,6 +180,7 @@ instance pairSetoid (n : ℕ) : Setoid (Pair X n) where
 /-- Isomorphism classes of actual power-trivialized line bundles. -/
 abbrev Classes (n : ℕ) := Quotient (pairSetoid X n)
 
+/-- Forget the specified power trivialization and retain the ordinary Picard class. -/
 def forgetClass {n : ℕ} (P : Classes X n) : PicardGroup X :=
   Quotient.liftOn P (fun P => classOf X P.lineBundle) (by
     rintro P Q ⟨e, _⟩
@@ -187,6 +190,7 @@ theorem forgetClass_nsmul {n : ℕ} (P : Classes X n) : n • forgetClass X P = 
   induction P using Quotient.inductionOn with
   | h P => exact pair_class_nsmul X P
 
+/-- View the underlying Picard class as n-torsion using its specified power trivialization. -/
 def toPicardTorsion (n : ℕ) (P : Classes X n) :
     AlgebraicGeometry.Scheme.Modules.Invertible.Torsion.picardTorsion X n :=
   ⟨forgetClass X P, forgetClass_nsmul X P⟩
@@ -412,6 +416,8 @@ theorem globalUnits_pow_surjective {k : Type u} [Field k] [IsAlgClosed k]
 omit [IsIntegral X] in
 /-- A genuine nth root of the global mismatch unit adjusts an actual line-bundle
 isomorphism so that it preserves the specified power trivializations. -/
+-- Retain the integral-scheme guard of the original power-trivialized pair interface.
+@[nolint unusedArguments]
 theorem isomorphic_of_class_eq [IsIntegral X] {n : ℕ}
     (hroot : Function.Surjective (fun a : Γ(X, ⊤)ˣ => a ^ n))
     {P Q : Pair X n} (hPQ : classOf X P.lineBundle = classOf X Q.lineBundle) :
@@ -465,6 +471,8 @@ abbrev classesAddCommGroup (n : ℕ)
     (hroot : Function.Surjective (fun a : Γ(X, ⊤)ˣ => a ^ n)) : AddCommGroup (Classes X n) :=
   (picardTorsionEquiv X n hroot).addCommGroup
 
+/-- Identify power-trivialized pair classes additively with ordinary Picard n-torsion under
+the given surjectivity of nth powers on global units. -/
 def picardTorsionAddEquiv (n : ℕ)
     (hroot : Function.Surjective (fun a : Γ(X, ⊤)ˣ => a ^ n)) :
     letI := classesAddCommGroup X n hroot

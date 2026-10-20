@@ -110,7 +110,7 @@ def residueRoot {n : ℕ} (hn : 0 < n) (z : rootsOfUnity n K) : rootsOfUnity n (
       IsDiscreteValuationRing.residueUnits (rootLift R K hn z) := rfl
 
 /-- The residue root satisfies the requested n-th power equation. -/
-@[simp] theorem residueRoot_pow {n : ℕ} (hn : 0 < n) (z : rootsOfUnity n K) :
+theorem residueRoot_pow {n : ℕ} (hn : 0 < n) (z : rootsOfUnity n K) :
     (residueRoot R K hn z : (ResidueField R)ˣ) ^ n = 1 :=
   (residueRoot R K hn z).property
 

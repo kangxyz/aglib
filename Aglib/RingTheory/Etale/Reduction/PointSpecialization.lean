@@ -48,9 +48,12 @@ variable (K : Type*) [NontriviallyNormedField K] [IsUltrametricDist K] [Complete
   (V : ValuationSubring K) [Fact (∀ x : K, x ∈ V ↔ ‖x‖₊ ≤ 1)]
   (A : Type*) [CommRing A] [Algebra V A] [Module.Finite V A]
 
+/-- The algebra structure over `V` on the algebraic closure of its residue field. -/
 local instance residueClosureAlgebra : Algebra V (AlgebraicClosure (IsLocalRing.ResidueField V)) :=
   AlgebraicClosure.instAlgebra _
 
+/-- The factorization of a point of the finite model through the integral elements of the
+algebraic closure. -/
 def integralPoint (f : A →ₐ[V] AlgebraicClosure K) : A →ₐ[V] ClosureIntegers K :=
   (integralClosureEquiv K V).toAlgHom.comp
     (f.codRestrict (integralClosure V (AlgebraicClosure K))
@@ -60,6 +63,7 @@ theorem integralPoint_coe (f : A →ₐ[V] AlgebraicClosure K) (a : A) :
     (integralPoint K V A f a : AlgebraicClosure K) = f a :=
   integralClosureEquiv_coe K V _
 
+/-- The specialization of a model point by reduction through the closure integer ring. -/
 def specializePoint (f : A →ₐ[V] AlgebraicClosure K) :
     A →ₐ[V] AlgebraicClosure (IsLocalRing.ResidueField V) where
   __ := (closureReduction K V).comp (integralPoint K V A f).toRingHom
@@ -81,6 +85,7 @@ theorem specializePoint_injective [Algebra.Etale V A] :
     ((congrArg (fun q : A →ₐ[V] ClosureIntegers K => (q a : AlgebraicClosure K)) hi).trans
       (integralPoint_coe K V A g a))
 
+/-- Postcomposition of a model point with an absolute Galois automorphism. -/
 def pointGalois (g : Field.absoluteGaloisGroup K) (f : A →ₐ[V] AlgebraicClosure K) :
     A →ₐ[V] AlgebraicClosure K :=
   (g.restrictScalars V).toAlgHom.comp f
@@ -111,9 +116,12 @@ abbrev SpecialPoints :=
   (IsLocalRing.ResidueField V ⊗[V] A) →ₐ[IsLocalRing.ResidueField V]
     AlgebraicClosure (IsLocalRing.ResidueField V)
 
+/-- The tensor-product universal equivalence from model points to geometric generic-fibre points. -/
 def genericPointEquiv : (A →ₐ[V] AlgebraicClosure K) ≃ GenericPoints K V A :=
   AlgHom.liftEquiv V K A (AlgebraicClosure K)
 
+/-- The tensor-product universal equivalence from reduced model points to geometric
+special-fibre points. -/
 def specialPointEquiv :
     (A →ₐ[V] AlgebraicClosure (IsLocalRing.ResidueField V)) ≃ SpecialPoints K V A :=
   AlgHom.liftEquiv V (IsLocalRing.ResidueField V) A

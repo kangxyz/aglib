@@ -278,11 +278,11 @@ noncomputable def fractionOrderLinear : Additive Kˣ →ₗ[ℤ] ℤ :=
 @[simp] theorem fractionOrderLinear_apply (a : Kˣ) :
     fractionOrderLinear R K (Additive.ofMul a) = fractionOrder R K a := rfl
 
-@[simp] theorem fractionOrderLinear_fractionUnits (a : Rˣ) :
+theorem fractionOrderLinear_fractionUnits (a : Rˣ) :
     fractionOrderLinear R K (Additive.ofMul (fractionUnits R K a)) = 0 :=
   fractionOrder_fractionUnits R K a
 
-@[simp] theorem fractionOrderLinear_uniformizer {π : R} (hπ : Irreducible π) :
+theorem fractionOrderLinear_uniformizer {π : R} (hπ : Irreducible π) :
     fractionOrderLinear R K (Additive.ofMul (uniformizerUnit (K := K) hπ)) = 1 :=
   fractionOrder_uniformizer hπ
 

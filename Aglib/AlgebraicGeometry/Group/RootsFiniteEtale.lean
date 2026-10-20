@@ -134,6 +134,8 @@ def rootRingHomEquiv (S : Type u) [CommRing S] (i : R →+* S) (n : ℕ) [NeZero
 
 variable {R}
 
+/-- The global-sections adjunction identifying morphisms to `Spec A` with ring maps from `A` to
+global sections. -/
 def schemeHomRingEquiv (U : Scheme.{u}) (A : Type u) [CommRing A] :
     (U ⟶ Spec (.of A)) ≃ (A →+* Γ(U, ⊤)) :=
   ((ΓSpec.adjunction.homEquiv U (op (.of A))).symm.trans
@@ -166,6 +168,8 @@ def polynomialScheme (X : Scheme.{u}) (n : ℕ) : Over X :=
   Over.mk (pullback.fst X.toSpecΓ
     (Spec.map (CommRingCat.ofHom (algebraMap Γ(X, ⊤) (RootAlgebra Γ(X, ⊤) n)))))
 
+/-- The pullback universal-property equivalence for sections of the polynomial roots-of-unity
+scheme. -/
 def polynomialHomEquiv (X : Scheme.{u}) (n : ℕ) (U : Over X) :
     (U ⟶ polynomialScheme X n) ≃
       {g : U.left ⟶ Spec (.of (RootAlgebra Γ(X, ⊤) n)) //
@@ -181,6 +185,8 @@ def polynomialHomEquiv (X : Scheme.{u}) (n : ℕ) (U : Over X) :
     · simp
   right_inv g := by apply Subtype.ext; simp
 
+/-- The equivalence between sections of the polynomial roots scheme and ring maps from its
+coordinate algebra respecting base global sections. -/
 def polynomialHomRingEquiv (X : Scheme.{u}) (n : ℕ) (U : Over X) :
     (U ⟶ polynomialScheme X n) ≃
       {f : RootAlgebra Γ(X, ⊤) n →+* Γ(U.left, ⊤) //
@@ -191,6 +197,8 @@ def polynomialHomRingEquiv (X : Scheme.{u}) (n : ℕ) (U : Over X) :
         schemeHomRingEquiv_spec, schemeHomRingEquiv_comp, schemeHomRingEquiv_toSpecΓ,
         RingHom.comp_id]))
 
+/-- The equivalence between sections of the polynomial roots scheme and `n`th roots of unity in
+global sections, for nonzero `n`. -/
 def polynomialHomRootsEquiv (X : Scheme.{u}) (n : ℕ) [NeZero n] (U : Over X) :
     (U ⟶ polynomialScheme X n) ≃ rootsOfUnity n Γ(U.left, ⊤) :=
   (polynomialHomRingEquiv X n U).trans (rootRingHomEquiv _ U.hom.appTop.hom n)

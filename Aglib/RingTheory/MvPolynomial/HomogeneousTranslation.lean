@@ -36,6 +36,7 @@ def shiftCoordinates (r t : k) : Fin 3 → MvPolynomial (Fin 3) k :=
   ![MvPolynomial.X 0 + MvPolynomial.C r * MvPolynomial.X 2,
     MvPolynomial.X 1 + MvPolynomial.C t * MvPolynomial.X 2, MvPolynomial.X 2]
 
+/-- The polynomial substitution `(X₀, X₁, X₂) ↦ (X₀ + r * X₂, X₁ + t * X₂, X₂)`. -/
 def shiftPolynomial (r t : k) : MvPolynomial (Fin 3) k →+* MvPolynomial (Fin 3) k :=
   MvPolynomial.eval₂Hom MvPolynomial.C (shiftCoordinates r t)
 

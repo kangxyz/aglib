@@ -265,6 +265,8 @@ theorem actual_scalarTower :
 
 omit [IsIntegral X] in
 /-- The closed-constants tower uses the same selected F-algebra on the geometric field. -/
+-- Retain integrality of the original scheme in the generic-constants triangle interface.
+@[nolint unusedArguments]
 theorem constants_scalarTower [IsIntegral X] :
     letI := AlgebraicGeometry.Scheme.functionFieldConstantsAlgebra Xbar (pullback.snd p b)
     letI : Algebra F (Xbar).functionField :=
@@ -339,6 +341,8 @@ theorem rootsCoefficient_comp (f : Y ⟶ X) (g : Z ⟶ Y) (r : Z ⟶ X) (h : g �
 
 omit [GaloisCategory (Scheme.FiniteEtale Z)] in
 /-- Inverse triangle transport respects an actual equality of generic maps. -/
+-- Retain the original Galois-category input for the generic triangle source.
+@[nolint unusedArguments]
 theorem triangleIso_congr_inv [GaloisCategory (Scheme.FiniteEtale Z)] (p : X ⟶ B) {f g : Z ⟶ X}
     (e : f = g)
     (r : Z ⟶ B) (hf : f ≫ p = r) (hg : g ≫ p = r) (L : AbelianSheaf.{u, u + 1} B) :
@@ -499,6 +503,8 @@ theorem geometric_coefficient_route_iso {B C X Y : Scheme.{u}}
 
 /-- Generic represented coefficient transport along a scheme triangle. Native
 marked groups are substituted only after this map equation is proved. -/
+-- Retain finiteness of the actual represented coefficient group in the original interface.
+@[nolint unusedArguments]
 theorem represented_generic_triangle {S X Y : Scheme.{u}} {E : Type u} [Field E] [IsSepClosed E]
     (p : X ⟶ S) (k : Y ⟶ X) (q : Y ⟶ S) (hk : k ≫ p = q)
     (z : Spec (.of E) ⟶ Y)

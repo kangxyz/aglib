@@ -123,12 +123,15 @@ def transportUnit (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : Γ(U.unop.le
     transportUnit P U s t = (transportRoot P U s t).val :=
   inclusion_apply X n U _
 
-@[simp] theorem transportUnit_pow (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :
+-- Keep the unit power rule; exposing the opaque root coordinate alone does not prove the power
+-- law.
+@[nolint simpNF, simp] theorem transportUnit_pow (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :
     transportUnit P U s t ^ n = 1 := by
   rw [transportUnit_root]
   exact (transportRoot P U s t).property
 
-@[simp] theorem transportUnit_self (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+-- Keep diagonal unit normalization; transportUnit_root only exposes an opaque root coordinate.
+@[nolint simpNF, simp] theorem transportUnit_self (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
     transportUnit P U s s = 1 := by simp [transportUnit]
 
 theorem transportUnit_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
@@ -144,6 +147,7 @@ theorem transportUnit_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
   unfold pullUnit transportUnit
   rw [← unitsSections_naturality, ← inclusion_naturality, transport_naturality]
 
+/-- The chosen fibre product of the two specified torsor-cover maps. -/
 def overlap (i j : Index P) : ChosenPullback (coverMap P i) (coverMap P j) :=
   chosenPullback _ _
 
@@ -157,14 +161,18 @@ instance overlap_p_etale (i j : Index P) : Etale (overlap P i j).p := by
   dsimp [overlap, chosenPullback]
   infer_instance
 
+/-- The chosen double overlap as an object of the small etale site. -/
 def overlapEtale (i j : Index P) : X.Etale := Scheme.Etale.mk (overlap P i j).p
 
+/-- The first projection from the double overlap in the small etale site. -/
 def overlapFst (i j : Index P) : overlapEtale P i j ⟶ i.1 :=
   MorphismProperty.Over.homMk (overlap P i j).p₁ (by simp [overlapEtale, coverMap]) (by trivial)
+/-- The second projection from the double overlap in the small etale site. -/
 def overlapSnd (i j : Index P) : overlapEtale P i j ⟶ j.1 :=
   MorphismProperty.Over.homMk (overlap P i j).p₂ (by simp [overlapEtale, coverMap]) (by trivial)
 
 
+/-- The chosen triple overlap with its compatible projections to all three double overlaps. -/
 def triple (i j k : Index P) : ChosenPullback₃ (overlap P i j) (overlap P j k) (overlap P i k) where
   chosenPullback := chosenPullback (overlap P i j).p₂ (overlap P j k).p₁
   l := Classical.choice (ChosenPullback.LiftStruct.nonempty (by
@@ -177,20 +185,27 @@ instance triple_p_etale (i j k : Index P) : Etale (triple P i j k).p := by
   dsimp [triple, chosenPullback]
   infer_instance
 
+/-- The chosen triple overlap as an object of the small etale site. -/
 def tripleEtale (i j k : Index P) : X.Etale := Scheme.Etale.mk (triple P i j k).p
 
+/-- The projection from the triple overlap to the first cover object. -/
 def tripleFst (i j k : Index P) : tripleEtale P i j k ⟶ i.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₁ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The projection from the triple overlap to the middle cover object. -/
 def tripleMid (i j k : Index P) : tripleEtale P i j k ⟶ j.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₂ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The projection from the triple overlap to the last cover object. -/
 def tripleSnd (i j k : Index P) : tripleEtale P i j k ⟶ k.1 :=
   MorphismProperty.Over.homMk (triple P i j k).p₃ (by simp [tripleEtale, coverMap]) (by trivial)
+/-- The projection from the triple overlap to the overlap of its first two cover objects. -/
 def triple12 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i j :=
   MorphismProperty.Over.homMk (triple P i j k).p₁₂ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
+/-- The projection from the triple overlap to the overlap of its last two cover objects. -/
 def triple23 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P j k :=
   MorphismProperty.Over.homMk (triple P i j k).p₂₃ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
+/-- The projection from the triple overlap to the overlap of its first and last cover objects. -/
 def triple13 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i k :=
   MorphismProperty.Over.homMk (triple P i j k).p₁₃ (by simp [tripleEtale, overlapEtale]) (by
       trivial)
@@ -220,6 +235,7 @@ def triple13 (i j k : Index P) : tripleEtale P i j k ⟶ overlapEtale P i k :=
   apply MorphismProperty.Over.Hom.ext
   exact (triple P i j k).p₁₃_p₃
 
+/-- The diagonal map from a cover object to its chosen self-overlap in the small etale site. -/
 def diagonalEtale (i : Index P) : i.1 ⟶ overlapEtale P i i :=
   MorphismProperty.Over.homMk (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.diagonal
       (overlap P) i)
@@ -238,6 +254,8 @@ def diagonalEtale (i : Index P) : i.1 ⟶ overlapEtale P i i :=
   apply MorphismProperty.Over.Hom.ext
   exact AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.diagonal_p₂ (overlap P) i
 
+/-- The global transition unit carrying the first specified local torsor section to the
+second on their chosen overlap. -/
 def overlapUnit (i j : Index P) : Γ((overlap P i j).pullback, ⊤)ˣ :=
   transportUnit P (op (overlapEtale P i j))
     (P.carrier.obj.map (overlapFst P i j).op i.2)
@@ -346,6 +364,8 @@ def chartMap (i : Index P) :
       unitObject (coverObject P i) :=
   ((cocycle P).recoveryIso h (cover_mem P)).hom.hom i
 
+/-- The local frame of the object descended using the supplied line-bundle stack input,
+expressed in the native pullback-module coordinates. -/
 def rawChart (i : Index P) :
     (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj ((cocycle P).descendedObject h
         (cover_mem P)) ⟶

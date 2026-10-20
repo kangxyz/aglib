@@ -32,6 +32,8 @@ namespace AlgebraicGeometry.Scheme.OpenPushout
 variable {W U V : Scheme.{u}} (f : W ⟶ U) (g : W ⟶ V)
 variable [IsOpenImmersion f] [IsOpenImmersion g]
 
+/-- The morphism from the pushout of doubled open charts to the coproduct of two copies of their
+pushout. -/
 def doublePushoutHom : pushout (coprod.map f f) (coprod.map g g) ⟶
     (pushout f g ⨿ pushout f g) :=
   pushout.desc (coprod.map (pushout.inl f g) (pushout.inl f g))
@@ -41,6 +43,7 @@ def doublePushoutHom : pushout (coprod.map f f) (coprod.map g g) ⟶
           coprod.inl_map, coprod.inr_map]
       all_goals simp only [← Category.assoc, pushout.condition])
 
+/-- The morphism from the coproduct of two open pushouts to the pushout of the doubled charts. -/
 def doublePushoutInv : (pushout f g ⨿ pushout f g) ⟶
     pushout (coprod.map f f) (coprod.map g g) :=
   coprod.desc
@@ -55,6 +58,8 @@ def doublePushoutInv : (pushout f g ⨿ pushout f g) ⟶
           congrArg ((coprod.inr : W ⟶ W ⨿ W) ≫ ·)
             (pushout.condition (f := coprod.map f f) (g := coprod.map g g))))
 
+/-- The isomorphism expressing the pushout of doubled open charts as two copies of the original
+pushout. -/
 def doublePushoutIso : pushout (coprod.map f f) (coprod.map g g) ≅
     (pushout f g ⨿ pushout f g) where
   hom := doublePushoutHom f g

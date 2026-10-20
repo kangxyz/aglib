@@ -54,9 +54,15 @@ namespace AlgebraicGeometry.Scheme.OverField.Curve.Picard.Degree.CommonQuotientD
 universe u
 variable (X : Scheme.{u}) [IsIntegral X] [AlgebraicGeometry.IsNoetherian X]
 variable {k : Type u} [Field k] (p : X ⟶ Spec (.of k)) [LocallyOfFiniteType p]
+
+/-- The dimension over k of the left common-quotient stalk at x, with its structural scalar
+action. -/
 def leftStalkDimension (f : X.functionFieldˣ) (x : X) : ℕ :=
   letI := stalkBaseModule X p (leftQuotient X f) x
   Module.finrank k ((leftQuotient X f).presheaf.stalk x)
+
+/-- The dimension over k of the right common-quotient stalk at x, with its structural scalar
+action. -/
 def rightStalkDimension (f : X.functionFieldˣ) (x : X) : ℕ :=
   letI := stalkBaseModule X p (rightQuotient X f) x
   Module.finrank k ((rightQuotient X f).presheaf.stalk x)
@@ -308,6 +314,9 @@ theorem rightCohomology_positive (hdim : topologicalKrullDim Y.left = 1)
     hright n
 
 omit hIntegralY [AlgebraicGeometry.IsNoetherian Y.left] [LocallyOfFiniteType Y.hom] in
+-- Retain integrality in the common-quotient curve interface; this H0 finiteness step follows from
+-- properness of the structure morphism alone.
+@[nolint unusedArguments]
 theorem regularH0_finite [IsIntegral Y.left] [IsProper Y.hom] :
     Module.Finite k (moduleCohomology k Y (regularModule Y.left) 0) := by
   let := Scheme.Cohomology.properStructureCohomologyFinite _ Y 0 inferInstance

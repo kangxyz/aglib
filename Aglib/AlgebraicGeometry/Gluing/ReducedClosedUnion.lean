@@ -55,6 +55,7 @@ def compatiblePairs : Subring ((A ⧸ I) × (A ⧸ J)) :=
   ((Ideal.Quotient.factor (show J ≤ I ⊔ J from le_sup_right)).comp
     (RingHom.snd _ _))
 
+/-- Send a ring element to its two quotient classes, which agree in the quotient by I + J. -/
 def toCompatiblePairs : A →+* compatiblePairs I J where
   toFun a := ⟨(Ideal.Quotient.mk I a, Ideal.Quotient.mk J a), rfl⟩
   map_one' := Subtype.ext (by simp)
@@ -249,7 +250,10 @@ theorem closed_union_appTop_ker_inf_eq_bot [IsAffine X] :
     Scheme.Hom.ker_apply, Scheme.IdealSheafData.ideal_bot, Pi.bot_apply] using h
 
 omit hXred hYred hZred hiClosed hjClosed in
+-- Retain the reduced closed-cover conditions for subsequent restricted union descent; coverage of
+-- the restricted ranges itself is a pointwise inverse-image statement.
 /-- Restriction retains coverage and uses the genuine restricted immersions. -/
+@[nolint unusedArguments]
 theorem restrict_ranges_cover
     [IsReduced X] [IsReduced Y] [IsReduced Z]
     [IsClosedImmersion i] [IsClosedImmersion j] (U : X.Opens) :
@@ -324,7 +328,9 @@ def restrictedIntersectionToIntersection (U : X.Opens) :
           (pullback.condition (f := i ∣_ U) (g := j ∣_ U)))
 
 omit hXred hYred hZred hiClosed hjClosed in
-@[reassoc (attr := simp)]
+-- Retain the reduced closed-cover conditions of the intersection comparison interface; this first
+-- projection equation is the universal pullback-lift equation.
+@[nolint unusedArguments, reassoc (attr := simp)]
 theorem restrictedIntersectionToIntersection_fst
     [IsReduced X] [IsReduced Y] [IsReduced Z]
     [IsClosedImmersion i] [IsClosedImmersion j] (U : X.Opens) :
@@ -333,7 +339,9 @@ theorem restrictedIntersectionToIntersection_fst
   simp [restrictedIntersectionToIntersection]
 
 omit hXred hYred hZred hiClosed hjClosed in
-@[reassoc (attr := simp)]
+-- Retain the reduced closed-cover conditions of the intersection comparison interface; this
+-- second projection equation is the universal pullback-lift equation.
+@[nolint unusedArguments, reassoc (attr := simp)]
 theorem restrictedIntersectionToIntersection_snd
     [IsReduced X] [IsReduced Y] [IsReduced Z]
     [IsClosedImmersion i] [IsClosedImmersion j] (U : X.Opens) :
@@ -455,7 +463,10 @@ variable {X Y Z T : Scheme.{u}} [hXred : IsReduced X] [hYred : IsReduced Y] [hZr
 include hab
 
 omit hXred hYred hZred hiClosed hjClosed in
+-- Retain the reduced closed-cover conditions in the closed-union descent interface; equality of
+-- these two images only uses the supplied compatibility on the actual pullback.
 /-- Actual intersection compatibility implies equality over a common point. -/
+@[nolint unusedArguments]
 theorem images_eq_of_base_eq
     [IsReduced X] [IsReduced Y] [IsReduced Z]
     [IsClosedImmersion i] [IsClosedImmersion j] (y : Y) (z : Z) (hyz : i y = j z) : a y = b z := by

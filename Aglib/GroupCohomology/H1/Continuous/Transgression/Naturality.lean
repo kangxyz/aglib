@@ -75,7 +75,9 @@ actual actions; equivariance is relative to `φ`, not an assumed H1 square. -/
 structure ClosedMap (φ : ContinuousMonoidHom H G)
     (d : ContinuousH1.CoefficientMap G B₀ B₁)
     (d' : ContinuousH1.CoefficientMap H B₀' B₁') where
+  /-- The degree-zero continuous coefficient map, equivariant relative to `φ`. -/
   zero : ContinuousH1.PullbackMap (A := B₀) (B := B₀') φ
+  /-- The degree-one continuous coefficient map, equivariant relative to `φ`. -/
   one : ContinuousH1.PullbackMap (A := B₁) (B := B₁') φ
   comm : ∀ y : B₀, d' (zero y) = one (d y)
 
@@ -110,7 +112,7 @@ omit [IsTopologicalAddGroup B₀] [ContinuousSMul G B₀]
   [IsTopologicalAddGroup B₀'] [ContinuousSMul H B₀']
   [IsTopologicalAddGroup B₁'] [ContinuousSMul H B₁'] in
 @[simp] theorem onKernel_val (k : Kernel d) :
-    (u.onKernel k).val = u.zero k.val := rfl
+    (u.onKernel.toContinuousAddMonoidHom k).val = u.zero k.val := rfl
 
 omit [IsTopologicalAddGroup B₀] [ContinuousSMul G B₀]
   [IsTopologicalAddGroup B₁] [ContinuousSMul G B₁]
@@ -172,6 +174,9 @@ theorem cocycleOfLift_naturality (b : B₁) (hb : ∀ g : G, g • b = b)
 omit [IsTopologicalAddGroup B₁] [ContinuousSMul G B₁]
   [IsTopologicalAddGroup B₁'] [ContinuousSMul H B₁'] in
 /-- Arbitrary lift formula for simultaneous group pullback and coefficient map. -/
+-- Retain the original continuous-coefficient interface for both degree-one target groups;
+-- the class identity uses their specified topology and action, not these continuity instances.
+@[nolint unusedArguments]
 theorem classOfLift_naturality
     [IsTopologicalAddGroup B₁] [ContinuousSMul G B₁]
     [IsTopologicalAddGroup B₁'] [ContinuousSMul H B₁']
@@ -215,6 +220,9 @@ omit [IsTopologicalAddGroup B₁] [ContinuousSMul G B₁]
   [IsTopologicalAddGroup B₁'] [ContinuousSMul H B₁'] in
 /-- Naturality of the cycle class. The image of the source's chosen lift is an
 actual target lift; target lift independence replaces its separately chosen lift. -/
+-- Retain the original continuous-coefficient interface for both degree-one target groups;
+-- the class identity uses their specified topology and action, not these continuity instances.
+@[nolint unusedArguments]
 theorem chosenClass_naturality
     [IsTopologicalAddGroup B₁] [ContinuousSMul G B₁]
     [IsTopologicalAddGroup B₁'] [ContinuousSMul H B₁']

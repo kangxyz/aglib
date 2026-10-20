@@ -439,19 +439,26 @@ namespace AlgebraicGeometry.Scheme.OverField.Curve.Projectivity
 universe u
 variable {K : Type u} [Field K] (X : FScheme K)
 
+/-- The two polynomial affine charts covering the glued projective line. -/
 def graphLineOpenCover : (twoChartLine (.of K)).OpenCover :=
   Scheme.Cover.mkOfCovers Bool (fun _ => Spec (.of K[X]))
     (polynomialChart (.of K)) (polynomialChart_cover (.of K)) (fun _ => inferInstance)
 
+/-- The product open cover formed from affine opens of `X` and the two polynomial charts of the
+line. -/
 def graphProductOpenCover : (pullback X.hom (projection (.of K))).OpenCover :=
   Scheme.Pullback.openCoverOfLeftRight (graphBaseOpenCover X)
     (graphLineOpenCover (K := K)) X.hom (projection (.of K))
 
+/-- The isomorphism identifying a product-cover chart with the spectrum of a polynomial ring
+over its affine-open section ring. -/
 def graphProductChartIso (V : X.left.affineOpens) (b : Bool) :
     (graphProductOpenCover X).X (V, b) ≅ Spec (.of Γ(X.left, V.1)[X]) :=
   (pullback.congrHom rfl (polynomialChart_projection (.of K) b)) ≪≫
     affineOpenPolynomialPullbackIso X V.1 V.2
 
+/-- The open chart of the product obtained from an affine open of `X` and one polynomial chart
+of the line. -/
 def graphProductChart (V : X.left.affineOpens) (b : Bool) :
     Spec (.of Γ(X.left, V.1)[X]) ⟶ pullback X.hom (projection (.of K)) :=
   (graphProductChartIso X V b).inv ≫ (graphProductOpenCover X).f (V, b)

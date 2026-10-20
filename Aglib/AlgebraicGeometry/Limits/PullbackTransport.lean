@@ -110,6 +110,7 @@ variable {Z U A B X P : Scheme.{u}}
   (K : IsPullback a b c d) (l : Z ⟶ A) (t : Z ⟶ P) (p : P ⟶ B)
   (H : IsPullback l t c (p ≫ d))
 
+/-- The lift to the cartesian corner `U` induced by the compatible maps `l` and `t ≫ p`. -/
 def squareLift : Z ⟶ U := K.lift l (t ≫ p) (by simpa only [Category.assoc] using H.w)
 
 @[reassoc (attr := simp)] lemma squareLift_fst : squareLift K l t p H ≫ a = l := K.lift_fst ..
@@ -170,6 +171,7 @@ variable {C F O U L P Y Z Q : Scheme.{u}}
   (I : pullback i g ≅ pullback n e)
   (hI : I.hom ≫ pullback.fst n e = pullback.snd i g)
 
+/-- The map to `C` transported through the chosen pullback isomorphism `I`. -/
 def strictBranch : pullback n e ⟶ C := I.inv ≫ pullback.fst i g
 
 include hI in
@@ -185,6 +187,7 @@ variable (u : U ⟶ Y) (p : P ⟶ Y) (z : Z ⟶ O) (v : Z ⟶ P) (w : Z ⟶ U)
   (HG : IsPullback z v g pG) (hn : z ≫ n = w)
   (s : Q ⟶ L) (t : Q ⟶ P) (H : IsPullback s t (e ≫ u) p)
 
+/-- The map to the local pullback `Z` induced by `s ≫ e` and `t`. -/
 def localPoint : Q ⟶ Z := Hlocal.lift (s ≫ e) t (by simpa only [Category.assoc] using H.w)
 
 @[reassoc (attr := simp)] lemma localPoint_node :
@@ -198,6 +201,7 @@ lemma localPoint_square :
     simpa only [localPoint_component] using H
   exact H'.of_bot (localPoint_node e u p v w Hlocal s t H).symm Hlocal
 
+/-- The map to the branch pullback induced by the local-point map and `s`. -/
 def pointToBranch : Q ⟶ pullback n e :=
   pullback.lift (localPoint e u p v w Hlocal s t H ≫ z) s (by
     rw [Category.assoc, hn, localPoint_node])
@@ -218,6 +222,7 @@ lemma pointToBranch_square :
   exact K.of_right (pointToBranch_chart n e u p z v w Hlocal hn s t H)
     (IsPullback.of_hasPullback n e).flip
 
+/-- The map to `C` obtained from the branch lift and the chosen pullback isomorphism. -/
 def strictPoint : Q ⟶ C :=
   pointToBranch n e u p z v w Hlocal hn s t H ≫ strictBranch i g n e I
 

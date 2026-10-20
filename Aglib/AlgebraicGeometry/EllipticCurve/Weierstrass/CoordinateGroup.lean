@@ -33,6 +33,9 @@ namespace WeierstrassCurve.Projective
 universe u
 attribute [local instance] Over.cartesianMonoidalCategory
 
+/-- Classical equality on the field of coordinate points. The field guard keeps this local
+instance within the original field-valued group-comparison interface. -/
+@[nolint unusedArguments]
 local instance fieldDecidableEq (F : Type u) [Field F] : DecidableEq F := Classical.decEq F
 
 variable {k K : Type u} [Field k] [Field K]
@@ -94,6 +97,8 @@ def CoordinatePointExtensionGroupCompatibility : Prop :=
       coordinatePointExtension W f (P + Q) =
         coordinatePointExtension W f P * coordinatePointExtension W f Q
 
+/-- Coordinate evaluation as a homomorphism to the original curve's extension-valued points,
+conditional on the supplied operation-compatibility theorem and pointed group law. -/
 def coordinateExtensionGroupHom [CharZero k]
     (hcomp : CoordinatePointExtensionGroupCompatibility.{u})
     (W : WeierstrassCurve k) (f : k →+* K) (hΔ : W.Δ ≠ 0)

@@ -41,6 +41,10 @@ variable {S Z : Scheme.{u}} (g : S ⟶ Z) [QuasiCompact g]
 omit [QuasiCompact g]
     [IsDomain A]
     [IsNoetherianRing A] in
+-- Retain quasi-compactness and the noetherian domain chart conditions in the polynomial
+-- graph-image interface; this section-map surjectivity is inherited from the actual image closed
+-- immersion.
+@[nolint unusedArguments]
 theorem graphImage_chartSectionRingMap_surjective
     [QuasiCompact g]
     [IsDomain A]
@@ -54,8 +58,11 @@ theorem graphImage_chartSectionRingMap_surjective
 
 omit [IsDomain A]
     [IsNoetherianRing A] in
+-- Retain the noetherian domain coefficient conditions in the polynomial graph-image interface;
+-- this equation descent uses the original scheme-image kernel and chart section isomorphism.
 /-- A polynomial relation in the actual graph chart map descends to the
 actual scheme-image chart sections. -/
+@[nolint unusedArguments]
 theorem graphImage_chartSectionRingMap_eq_zero
     [IsDomain A]
     [IsNoetherianRing A]

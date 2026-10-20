@@ -31,7 +31,7 @@ variable {F K : Type u} [NormedField F] [CompleteSpace F] [CharZero F]
 variable (f : F →+* K) [RingHomIsometric f] (w : Kˣ)
 
 omit [CharZero F] [IsUltrametricDist F] [CharZero K] [IsUltrametricDist K] in
-@[simp, nolint unusedArguments] theorem Series.evaluationHom_constant [CharZero F]
+@[nolint unusedArguments] theorem Series.evaluationHom_constant [CharZero F]
   [IsUltrametricDist F] [CharZero K] [IsUltrametricDist K] (a : F) :
     Series.evaluationHom f w (algebraMap F (Series F) a) = f a := by
   change Series.evaluate f w _ = _

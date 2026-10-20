@@ -47,6 +47,8 @@ variable {k : Type u} [Field k] {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
   (sx : X ⟶ Spec (.of k)) (sy : Y ⟶ Spec (.of k))
   (φ : Y.functionField →+* X.functionField)
 
+/-- The extension of a constants-compatible function-field map supplied by `H`
+for a normal smooth proper source curve and proper target. -/
 def extend (H : NormalProperCurveGenericExtension.{u})
     (hx : IsProper sx) (hs : SmoothOfRelativeDimension 1 sx)
     (hn : NormalStalks X) (hy : IsProper sy)
@@ -114,6 +116,7 @@ theorem extend_fieldMap (H : NormalProperCurveGenericExtension.{u})
   apply (cancel_mono (Y.fromSpecStalk (genericPoint Y))).mp
   exact hd.symm.trans (extend_generic sx sy φ H hx hs hn hy hφ)
 
+/-- The extension supplied by `H`, bundled as a morphism over the base field. -/
 def extendOver (H : NormalProperCurveGenericExtension.{u})
     (hx : IsProper sx) (hs : SmoothOfRelativeDimension 1 sx)
     (hn : NormalStalks X) (hy : IsProper sy)
@@ -171,6 +174,7 @@ variable (H : NormalProperCurveGenericExtension.{u})
   (hy : IsProper sy) (hsy : SmoothOfRelativeDimension 1 sy) (hny : NormalStalks Y)
   (hc : jX ≫ sx = jY ≫ sy)
 
+/-- The curve morphism extending the common-chart function-field identification, using `H`. -/
 def chartExtension : X ⟶ Y :=
   extend sx sy (chartFieldEquiv jX jY).toRingHom H hx hsx hnx hy
     (chartFieldEquiv_constants sx sy jX jY hc)
@@ -209,6 +213,8 @@ theorem chartExtension_chart : jX ≫ chartExtension sx sy jX jY H hx hsx hnx hy
     (by rw [Category.assoc, chartExtension_over]; exact hc)
     (A.fromSpecStalk (genericPoint A)) hgeneric
 
+/-- The isomorphism over the base field induced by a common open chart,
+using `H` and the stated normal smooth proper curve hypotheses. -/
 def chartIso : Over.mk sx ≅ Over.mk sy where
   hom := Over.homMk (chartExtension (X := X) (Y := Y) sx sy jX jY H hx hsx hnx hy hc)
     (chartExtension_over sx sy jX jY H hx hsx hnx hy hc)

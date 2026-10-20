@@ -70,11 +70,14 @@ universe u
 variable {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
 variable (f : X ⟶ Y) [IsDominant f]
 
+/-- The generic fibre of the dominant morphism `f`, viewed over the target function field. -/
 abbrev genericFibreScheme : Over (Spec Y.functionField) :=
   Over.mk (pullback.snd f ((Y.fromSpecStalk (genericPoint Y))))
 
 attribute [local instance] coordinateAlgebra
 
+/-- Evaluation of generic-fibre global sections in the source function field,
+as an algebra map over the target function field. -/
 def genericFibreCoordinates :
     letI := Scheme.functionFieldMapAlgebra f
     letI := coordinateAlgebra Y.functionField (genericFibreScheme f)
@@ -96,6 +99,8 @@ def genericFibreCoordinates :
     rw [genericFibreMap, pullback.lift_snd, Scheme.ΓSpecIso_naturality, Iso.inv_hom_id_assoc]
   exact congrArg (fun q : Y.functionField ⟶ X.functionField ↦ q.hom a) he
 
+/-- The theorem-family input identifying the generic fibre of a finite dominant morphism
+of integral schemes with the spectrum of its source function field. -/
 def FiniteDominantGenericFibre : Prop :=
   ∀ (X Y : Scheme.{u}) [IsIntegral X] [IsIntegral Y]
     (f : X ⟶ Y) [IsDominant f], IsFinite f → IsIso (genericFibreMap f)
@@ -106,6 +111,8 @@ theorem finiteDominantGenericFibre : FiniteDominantGenericFibre.{u} := by
   letI := hf
   exact Scheme.genericFibreMap_isIso f
 
+/-- The generic-fibre coordinate-algebra equivalence for a finite dominant morphism,
+using the supplied generic-fibre input. -/
 def genericFibreCoordinatesEquiv (hgen : FiniteDominantGenericFibre.{u}) [IsFinite f] :
     letI := Scheme.functionFieldMapAlgebra f
     letI := coordinateAlgebra Y.functionField (genericFibreScheme f)
@@ -124,6 +131,8 @@ universe u
 variable {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
 variable (f : X ⟶ Y) [IsDominant f]
 
+/-- The generic fibre of the pushed-forward structure module as the source function field,
+using the supplied affine module base-change and finite-dominant generic-fibre inputs. -/
 def moduleFibreFunctionFieldEquiv
     (hbase : AffineModuleBaseChange.{u}) (hgen : FiniteDominantGenericFibre.{u}) [IsFinite f] :
     letI := Scheme.functionFieldMapAlgebra f

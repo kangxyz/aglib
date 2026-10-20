@@ -33,6 +33,7 @@ variable {C : Type uC} [Category.{vC} C]
   {E : Type uE} [Category.{vE} E]
 variable (I : C ⥤ D) (P : C ⥤ E)
 
+/-- The diagram applying `P` to objects equipped with a presentation arrow `I.obj c ⟶ R`. -/
 abbrev diagram (R : D) : CostructuredArrow I R ⥤ E :=
   CostructuredArrow.proj I R ⋙ P
 

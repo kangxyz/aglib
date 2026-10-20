@@ -113,6 +113,8 @@ theorem isFractionalSection_mul {D E : Divisor X} {U : X.Opens}
   rw [Scheme.ord_mul hf0 hg0, Finsupp.add_apply]
   linarith
 
+/-- The subpresheaf of rational functions whose nonzero sections satisfy `ord_x(f) + D(x) ≥ 0`
+at every closed point of the open. -/
 def fractionalPresheaf (D : Divisor X) : (rationalFunctions X).val.Submodule where
   obj U := if h : Nonempty U.unop then
     letI := h
@@ -132,6 +134,8 @@ def fractionalPresheaf (D : Divisor X) : (rationalFunctions X).val.Submodule whe
       exact he.symm ▸ isFractionalSection_restrict X f.unop.le hs
     · simp [hV]
 
+/-- The subsheaf of rational functions satisfying the fractional-section bounds prescribed by
+`D`. -/
 def fractionalSubsheaf (D : Divisor X) : SheafOfModules.Submodule (rationalFunctions X) where
   toSubmodule := fractionalPresheaf X D
   isSheaf {U} s hs := by
@@ -170,6 +174,8 @@ theorem divisorSheaf_empty_subsingleton (D : Divisor X) : Subsingleton ((divisor
     infer_instance
   infer_instance
 
+/-- The linear equivalence between divisor-sheaf sections on a nonempty open and rational
+functions satisfying the bounds of `D`. -/
 def divisorSheafSectionsEquiv (D : Divisor X) (U : X.Opens) [hU : Nonempty U] :
     (divisorSheaf X D).val.obj (op U) ≃ₗ[Γ(X, U)] fractionalSections X D U := by
   change ↥((fractionalPresheaf X D).obj (op U)) ≃ₗ[Γ(X, U)] _

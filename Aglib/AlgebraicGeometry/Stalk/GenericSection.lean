@@ -57,6 +57,7 @@ variable (A F : Type u) [CommRing A] [Field F] [Algebra A F] [IsFractionRing A F
   {Y : Scheme.{u}} (p : Y ⟶ Spec (.of A)) (σ : Spec (.of A) ⟶ Y)
   (hσ : σ ≫ p = 𝟙 _)
 
+/-- The section of the generic fibre obtained by base-changing the given section of the model. -/
 def genericSection : Spec (.of F) ⟶ scheme A F p :=
   pullback.lift (baseMap A F ≫ σ) (𝟙 _)
     (by simp only [Category.assoc, hσ, Category.comp_id, Category.id_comp])
@@ -71,11 +72,13 @@ omit [IsFractionRing A F] in
     genericSection A F p σ hσ ≫ pullback.snd p (baseMap A F) = 𝟙 _ :=
   pullback.lift_snd _ _ _
 
+/-- The rational point of the generic fibre defined by the base-changed section. -/
 def genericOrigin : RationalPoint F (scheme A F p) where
   structureMap := pullback.snd p (baseMap A F)
   sectionMap := genericSection A F p σ hσ
   section_comp := genericSection_structure A F p σ hσ
 
+/-- The point of the model obtained by projecting the generic-fibre rational origin. -/
 def origin : Y := projection A F p (genericOrigin A F p σ hσ).point
 
 omit [IsFractionRing A F] in
@@ -84,11 +87,15 @@ theorem origin_eq_section_generic_image :
   change (genericSection A F p σ hσ ≫ projection A F p) (IsLocalRing.closedPoint F) = _
   rw [genericSection_projection]
 
+/-- The stalk equivalence between the model at the projected origin and the local ring of the
+generic-fibre rational origin. -/
 def originStalkEquiv :
     Y.presheaf.stalk (origin A F p σ hσ) ≃+*
       (genericOrigin A F p σ hσ).localRing :=
   stalkEquiv A F p (genericOrigin A F p σ hσ).point
 
+/-- The residue-field equivalence at the model origin induced by the generic-fibre stalk
+equivalence and its rational point. -/
 def originResidueEquiv : Y.residueField (origin A F p σ hσ) ≃+* F :=
   (IsLocalRing.ResidueField.mapEquiv (originStalkEquiv A F p σ hσ)).trans
     (genericOrigin A F p σ hσ).residueEquiv

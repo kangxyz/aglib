@@ -65,16 +65,22 @@ variable (p : X ⟶ S) [SmoothOfRelativeDimension 1 p] [IsSeparated p]
 variable (o : S ⟶ X) (ho : o ≫ p = 𝟙 S)
 variable (t : T ⟶ S) (s : T ⟶ X) (hs : s ≫ p = t)
 
+/-- The dual of the graph ideal line bundle, representing the positive graph divisor under the
+supplied Cartier-graph hypothesis. -/
 def positiveGraphLineBundle : Invertible.LineBundle (pullback p t) :=
   Invertible.dualLineBundle _ (graphIdealLineBundle hdivisor p t s hs)
 
+/-- The graph ideal line bundle of the origin section after base change to `T`. -/
 def originIdealLineBundle : Invertible.LineBundle (pullback p t) :=
   graphIdealLineBundle hdivisor p t (t ≫ o) (by simp [Category.assoc, ho])
 
+/-- The line bundle `O(graph(s) - graph(o_T))`, formed by tensoring the positive graph bundle
+with the origin graph ideal. -/
 def abelLineBundle : Invertible.LineBundle (pullback p t) :=
   Invertible.tensorLineBundle _ (positiveGraphLineBundle hdivisor p t s hs)
     (originIdealLineBundle hdivisor p o ho t)
 
+/-- The Picard class of the graph-difference Abel line bundle. -/
 def abelClass : Invertible.PicardGroup (pullback p t) :=
   Invertible.classOf _ (abelLineBundle hdivisor p o ho t s hs)
 
@@ -82,6 +88,7 @@ theorem abelClass_eq : abelClass hdivisor p o ho t s hs =
     - Invertible.classOf _ (graphIdealLineBundle hdivisor p t s hs) +
       Invertible.classOf _ (originIdealLineBundle hdivisor p o ho t) := rfl
 
+/-- The trivialization of the Abel line bundle at the origin, given by dual evaluation. -/
 def abelOriginIso :
     (abelLineBundle hdivisor p o ho t (t ≫ o) (by simp [Category.assoc, ho])).val ≅
       SheafOfModules.unit (pullback p t).ringCatSheaf :=
@@ -94,6 +101,8 @@ def abelOriginIso :
     (Invertible.classOf _ (originIdealLineBundle hdivisor p o ho t)) = 0
   exact Invertible.dual_tensor_class_eq_zero _ _
 
+/-- The Abel line bundle of the identity section on `X ×_S X`, representing the diagonal minus
+the origin graph. -/
 def diagonalAbelLineBundle : Invertible.LineBundle (pullback p p) :=
   abelLineBundle hdivisor p o ho p (𝟙 X) (Category.id_comp p)
 

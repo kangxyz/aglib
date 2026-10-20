@@ -77,6 +77,7 @@ theorem appIso_inv_constantSection {Y X : FScheme K} (f : Y ⟶ X)
   rw [app_constantSection]
   exact (map_constantSection Y _ a).symm
 
+/-- The base-field-linear stalk equivalence for restriction along an open immersion over `K`. -/
 def restrictModuleStalkEquiv {Y X : FScheme K} (f : Y ⟶ X) [IsOpenImmersion f.left]
     (M : X.left.Modules) (y : Y.left) :
     moduleAdditiveStalk Y (M.restrict f.left) y ≃ₗ[K]
@@ -105,12 +106,14 @@ def restrictModuleStalkEquiv {Y X : FScheme K} (f : Y ⟶ X) [IsOpenImmersion f.
     rw [appIso_inv_constantSection]
 
 
+/-- The base-field-linear equivalence of stalks induced by a module-sheaf isomorphism. -/
 def moduleStalkIsoEquiv (X : FScheme K) {M N : X.left.Modules} (e : M ≅ N) (x : X.left) :
     moduleAdditiveStalk X M x ≃ₗ[K] moduleAdditiveStalk X N x :=
   LinearEquiv.ofBijective (moduleAdditiveStalkMap X e.hom x)
     (ConcreteCategory.bijective_of_isIso ((Scheme.Modules.stalkFunctor
         X.left x).map e.hom))
 
+/-- The constants map from `K` to the affine coordinate ring defined by the structure morphism. -/
 def affineConstants (R : CommRingCat.{u}) (p : Spec R ⟶ Spec (.of K)) : K →+* R :=
   (Scheme.ΓSpecIso R).hom.hom.comp (constants (Over.mk p))
 

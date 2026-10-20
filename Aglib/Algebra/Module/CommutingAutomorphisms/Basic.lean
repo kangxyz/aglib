@@ -35,12 +35,15 @@ universe u v
 The carrier is in the same universe as the ring, as are the tensor products
 used for extension of scalars. -/
 structure Object (R : Type u) [CommRing R] where
+  /-- The underlying finite projective module type. -/
   carrier : Type u
   [instAddCommGroup : AddCommGroup carrier]
   [instModule : Module R carrier]
   [instFinite : Module.Finite R carrier]
   [instProjective : Module.Projective R carrier]
+  /-- The first distinguished linear automorphism. -/
   a : carrier ≃ₗ[R] carrier
+  /-- The second distinguished linear automorphism, commuting with the first. -/
   b : carrier ≃ₗ[R] carrier
   commute : ∀ x, a (b x) = b (a x)
 
@@ -53,6 +56,7 @@ namespace Object
 
 /-- An isomorphism of the actual modules intertwining both automorphisms. -/
 structure Iso (X Y : Object R) where
+  /-- The underlying linear equivalence intertwining both distinguished automorphisms. -/
   linearEquiv : X.carrier ≃ₗ[R] Y.carrier
   commute_a : ∀ x, linearEquiv (X.a x) = Y.a (linearEquiv x)
   commute_b : ∀ x, linearEquiv (X.b x) = Y.b (linearEquiv x)

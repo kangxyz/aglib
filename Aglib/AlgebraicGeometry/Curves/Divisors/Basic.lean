@@ -106,12 +106,12 @@ def principal : Additive X.functionFieldˣ →+ Divisor X where
 @[simp] theorem principal_apply (f : Additive X.functionFieldˣ) (x : ClosedPoint X) :
     principal X f x = X.ord (f.toMul : X.functionField) x.val := rfl
 
-@[simp] theorem principal_mul (f g : X.functionFieldˣ) :
+theorem principal_mul (f g : X.functionFieldˣ) :
     principal X (Additive.ofMul (f * g)) =
       principal X (Additive.ofMul f) + principal X (Additive.ofMul g) :=
   (principal X).map_add _ _
 
-@[simp] theorem principal_pow (f : X.functionFieldˣ) (n : ℕ) :
+theorem principal_pow (f : X.functionFieldˣ) (n : ℕ) :
     principal X (Additive.ofMul (f ^ n)) = n • principal X (Additive.ofMul f) :=
   (principal X).map_nsmul _ _
 
@@ -130,7 +130,10 @@ theorem order_uniformizer (x : ClosedPoint X) (hx : Order.coheight x.val = 1)
 
 omit hNoeth in
 attribute [local instance] specializationOrder in
+-- Retain noetherianity in the divisor-curve interface used for finite principal support; this
+-- dimension-one dichotomy itself is order-theoretic.
 /-- On an integral scheme of dimension at most one, every point is generic or closed. -/
+@[nolint unusedArguments]
 theorem point_eq_generic_or_isClosed [IsNoetherian X] (hdim : topologicalKrullDim X ≤ 1) (x : X) :
     x = genericPoint X ∨ IsClosed ({x} : Set X) := by
   have hd : krullDim X ≤ 1 := by
@@ -149,7 +152,10 @@ theorem point_eq_generic_or_isClosed [IsNoetherian X] (hdim : topologicalKrullDi
     exact le_antisymm (genericPoint_specializes x) (hx (genericPoint_specializes x))
 
 omit hNoeth in
+-- Retain noetherianity in the divisor-curve codimension interface; the codimension calculation
+-- itself uses the actual DVR stalk dimension.
 /-- An actual DVR stalk has codimension one, by the stalk/coheight theorem. -/
+@[nolint unusedArguments]
 theorem coheight_eq_one_of_dvr [IsNoetherian X] (x : X)
     [IsDiscreteValuationRing (X.presheaf.stalk x)] :
   Order.coheight x = 1 := by
@@ -161,9 +167,12 @@ theorem coheight_eq_one_of_dvr [IsNoetherian X] (x : X)
 local instance : Nonempty (⊤ : X.Opens) := ⟨⟨genericPoint X, trivial⟩⟩
 
 omit hNoeth in
+-- Retain noetherianity in the divisor-curve section-extension interface; this gluing argument
+-- only uses integrality and the specified stalk representatives.
 /-- A rational function lying in every actual stalk ring extends globally.
 The proof constructs local sections, proves compatibility by fraction-field
 injectivity, and applies the structure sheaf gluing theorem. -/
+@[nolint unusedArguments]
 theorem exists_globalSection_of_mem_stalk [IsNoetherian X] (f : X.functionField)
     (hf : ∀ x : X, ∃ r : X.presheaf.stalk x,
       algebraMap (X.presheaf.stalk x) X.functionField r = f) :

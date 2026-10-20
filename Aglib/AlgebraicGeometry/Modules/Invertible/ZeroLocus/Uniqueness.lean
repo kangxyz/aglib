@@ -107,18 +107,20 @@ theorem imageIdealData_postcomp_unit_iso
 
 variable {φ : M ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)}
 variable {ψ : N ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)}
-def zeroOverIso_of_imageIdealData_eq (h : imageIdealData φ = imageIdealData ψ) :
+/-- The isomorphism over the ambient scheme induced by equality of the two image ideal data. -/
+def zeroOverIsoOfImageIdealDataEq (h : imageIdealData φ = imageIdealData ψ) :
     Over.mk (zeroInclusion φ) ≅ Over.mk (zeroInclusion ψ) :=
   (Scheme.IdealSheafData.subschemeFunctor X).mapIso (eqToIso (congrArg op h))
 
-def zeroSchemeIso_of_imageIdealData_eq (h : imageIdealData φ = imageIdealData ψ) :
+/-- The underlying zero-scheme isomorphism induced by equality of the two image ideal data. -/
+def zeroSchemeIsoOfImageIdealDataEq (h : imageIdealData φ = imageIdealData ψ) :
     zeroScheme φ ≅ zeroScheme ψ :=
-  (Over.forget X).mapIso (zeroOverIso_of_imageIdealData_eq h)
+  (Over.forget X).mapIso (zeroOverIsoOfImageIdealDataEq h)
 
 @[reassoc (attr := simp)] theorem zeroSchemeIso_of_imageIdealData_eq_inclusion
     (h : imageIdealData φ = imageIdealData ψ) :
-    (zeroSchemeIso_of_imageIdealData_eq h).hom ≫ zeroInclusion ψ = zeroInclusion φ :=
-  Over.w (zeroOverIso_of_imageIdealData_eq h).hom
+    (zeroSchemeIsoOfImageIdealDataEq h).hom ≫ zeroInclusion ψ = zeroInclusion φ :=
+  Over.w (zeroOverIsoOfImageIdealDataEq h).hom
 
 variable {D : Scheme.{u}} (i : D ⟶ X)
 theorem sectionImageIdeal_idealInclusion (U : X.Opens) :
@@ -142,29 +144,35 @@ theorem imageIdealData_idealInclusion : imageIdealData (idealInclusion i) = i.ke
   exact sectionImageIdeal_idealInclusion i U
 
 variable [IsClosedImmersion i]
-def zeroOverIso_of_ideal_eq (h : imageIdealData φ = i.ker) :
+/-- Identify the zero scheme over the ambient scheme with the given closed subscheme when
+the image ideal data equal its kernel ideal. -/
+def zeroOverIsoOfIdealEq (h : imageIdealData φ = i.ker) :
     Over.mk (zeroInclusion φ) ≅ Over.mk i :=
   (Scheme.IdealSheafData.subschemeFunctor X).mapIso (eqToIso (congrArg op h)) ≪≫
     (Over.isoMk (asIso i.toImage) i.toImage_imageι).symm
 
+/-- The canonical isomorphism from the zero scheme of the ideal inclusion to its original
+closed subscheme. -/
 def zeroIdealInclusionIso : zeroScheme (idealInclusion i) ≅ D :=
-  (Over.forget X).mapIso (zeroOverIso_of_ideal_eq i (imageIdealData_idealInclusion i))
+  (Over.forget X).mapIso (zeroOverIsoOfIdealEq i (imageIdealData_idealInclusion i))
 
 @[reassoc (attr := simp)] theorem zeroIdealInclusionIso_inclusion :
     (zeroIdealInclusionIso i).hom ≫ i = zeroInclusion (idealInclusion i) :=
-  Over.w (zeroOverIso_of_ideal_eq i (imageIdealData_idealInclusion i)).hom
+  Over.w (zeroOverIsoOfIdealEq i (imageIdealData_idealInclusion i)).hom
 
-def zeroSchemeIso_of_ideal_square
+/-- Identify the zero scheme with the given closed subscheme through the specified module
+isomorphism and its commuting ideal-inclusion square. -/
+def zeroSchemeIsoOfIdealSquare
     (e : (show X.Modules from idealModule i) ≅ M)
     (h : e.hom ≫ φ = idealInclusion i) : zeroScheme φ ≅ D := by
   have he : imageIdealData φ = i.ker := by
     rw [← imageIdealData_precomp_iso e φ, h, imageIdealData_idealInclusion]
-  exact (Over.forget X).mapIso (zeroOverIso_of_ideal_eq i he)
+  exact (Over.forget X).mapIso (zeroOverIsoOfIdealEq i he)
 
 @[reassoc (attr := simp)] theorem zeroSchemeIso_of_ideal_square_inclusion
     (e : (show X.Modules from idealModule i) ≅ M)
     (h : e.hom ≫ φ = idealInclusion i) :
-    (zeroSchemeIso_of_ideal_square i e h).hom ≫ i = zeroInclusion φ := by
-  exact Over.w (zeroOverIso_of_ideal_eq i
+    (zeroSchemeIsoOfIdealSquare i e h).hom ≫ i = zeroInclusion φ := by
+  exact Over.w (zeroOverIsoOfIdealEq i
     (by rw [← imageIdealData_precomp_iso e φ, h, imageIdealData_idealInclusion])).hom
 end AlgebraicGeometry.Scheme.Modules.Hom

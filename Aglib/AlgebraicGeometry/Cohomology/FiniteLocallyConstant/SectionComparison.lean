@@ -124,6 +124,8 @@ omit [GaloisCategory (Scheme.FiniteEtale B)]
   [PreGaloisCategory.FiberFunctor (fiberToFinite b)] [PreconnectedSpace B]
   [HasExt.{wB} (AbelianSheaf.{u, u + 1} B)] in
 /-- The same identity-representation simplification for the actual pulled-back comparison. -/
+-- Retain the original base fibre functor, connectedness and independent Ext-universe input.
+@[nolint unusedArguments]
 theorem generalBase_identityRepresentation
     [GaloisCategory (Scheme.FiniteEtale B)]
     [PreGaloisCategory.FiberFunctor (fiberToFinite b)] [PreconnectedSpace B]

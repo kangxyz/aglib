@@ -21,7 +21,7 @@ free target map. `resolutionTupleLift_precomp` identifies precomposition under
 the free/sheafification adjunctions, and `degreeTwoClass_precomp` identifies
 the resulting derived roofs when both maps are locally surjective.
 `resolutionMap_precomp_differential_eq` preserves literal primitives;
-`degreeTwoCocycle_nullHomotopy_precomp` pulls back actual null-homotopies.
+`degreeTwoCocycleNullHomotopyPrecomp` pulls back actual null-homotopies.
 The alternating tuple differential and the cochain extension have the same
 signs. No natural global splitting or enough-points hypothesis is introduced.
 

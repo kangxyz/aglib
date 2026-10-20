@@ -50,6 +50,7 @@ namespace AlgebraicGeometry.Scheme.Modules.Coherent.Support
 universe u
 variable {Y X : Scheme.{u}}
 
+/-- The structural map from the unit module to the pushforward of the source unit module. -/
 abbrev unitMap (f : Y ⟶ X) : SheafOfModules.unit X.ringCatSheaf ⟶
     (Scheme.Modules.pushforward f).obj (SheafOfModules.unit Y.ringCatSheaf) :=
   SheafOfModules.unitToPushforwardObjUnit f.toRingCatSheafHom
@@ -61,7 +62,9 @@ instance unitMap_mono (f : Y ⟶ X) [IsSchemeTheoreticallyDominant f] [QuasiComp
   intro U
   exact f.app_injective U.unop
 
+/-- The cokernel of the structural map to the pushed-forward unit module. -/
 abbrev quotient (f : Y ⟶ X) : X.Modules := cokernel (unitMap f)
+/-- The cokernel short complex of the structural map to the pushed-forward unit module. -/
 abbrev sequence (f : Y ⟶ X) : ShortComplex X.Modules :=
   ShortComplex.mk (unitMap f) (cokernel.π (unitMap f)) (cokernel.condition _)
 

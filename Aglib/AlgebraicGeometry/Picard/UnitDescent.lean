@@ -86,6 +86,7 @@ namespace AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent
 open EtaleDescent ScalarAutomorphisms
 universe u v
 
+/-- The structure-module unit as an object of the native line-bundle category. -/
 def unitObject (X : Scheme.{u}) : lineBundles.obj (.mk (op X)) :=
   ⟨SheafOfModules.unit X.ringCatSheaf, by
     change IsLocallyRankOne X (SheafOfModules.unit X.ringCatSheaf)
@@ -184,6 +185,7 @@ def diagonal (i : ι) : U i ⟶ (sq i i).pullback :=
 
 /-- Literal units on overlaps with the identity and multiplicative cocycle laws. -/
 structure Cocycle where
+  /-- The global transition unit on each chosen pairwise overlap. -/
   unit (i j : ι) : Γ((sq i j).pullback, ⊤)ˣ
   diagonal (i : ι) : pullUnit (diagonal sq i) (unit i i) = 1
   cocycle (i j k : ι) :

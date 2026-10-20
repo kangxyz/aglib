@@ -244,7 +244,7 @@ theorem degreeTwoCocycle_precomp {A : Sheaf J AddCommGrpCat.{max u v}}
   Cocycle.toSingleMk_precomp c (by norm_num) (-3) (by norm_num) hc (resolutionMap sq J)
 
 /-- A null-homotopy pulls back along the original resolution map. -/
-def degreeTwoCocycle_nullHomotopy_precomp {A : Sheaf J AddCommGrpCat.{max u v}}
+def degreeTwoCocycleNullHomotopyPrecomp {A : Sheaf J AddCommGrpCat.{max u v}}
     (c : (resolution f₂ J).X (-2) ⟶ A)
     (hc : (resolution f₂ J).d (-3) (-2) ≫ c = 0)
     (h : Homotopy (Cocycle.equivHomShift.symm (degreeTwoCocycle f₂ J c hc)) 0) :

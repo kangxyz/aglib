@@ -288,3 +288,5 @@ trace; general proper duality and embedding independence remain separate.
 pencil and coordinate interfaces. The consumers are the
 [curve projectivity family](../Curves/README.md), whose structure maps and
 original chart arrows remain explicit.
+
+Focused interface guides: [Normalizing two actual points of P¹](Line/TwoPoints.md).

@@ -110,6 +110,8 @@ theorem genericPointReduction_bijective :
   apply (genericPointReduction_injective K V A).bijective_of_nat_card_le
   rw [genericPoint_card, specialPoint_card]
 
+/-- The reduction equivalence between geometric generic and special fibre points
+of the same finite etale model over the complete valued field base. -/
 def genericPointReductionEquiv : GenericPoints K V A ≃ SpecialPoints K V A :=
   Equiv.ofBijective (genericPointReduction K V A) (genericPointReduction_bijective K V A)
 
@@ -267,9 +269,11 @@ def specialModelProduct (Δ : A →ₐ[V] A ⊗[V] A) (f g : SpecialPoints K V A
       (modelPointProduct V A (AlgebraicClosure (IsLocalRing.ResidueField V)) Δ
         ((specialPointEquiv K V A).symm f) ((specialPointEquiv K V A).symm g))
 
+/-- The generic-fibre point obtained by evaluating the supplied model counit. -/
 def genericModelUnit (ε : A →ₐ[V] V) : GenericPoints K V A :=
   genericPointEquiv K V A (modelPointUnit V A (AlgebraicClosure K) ε)
 
+/-- The special-fibre point obtained by evaluating the supplied model counit. -/
 def specialModelUnit (ε : A →ₐ[V] V) : SpecialPoints K V A :=
   specialPointEquiv K V A
     (modelPointUnit V A (AlgebraicClosure (IsLocalRing.ResidueField V)) ε)

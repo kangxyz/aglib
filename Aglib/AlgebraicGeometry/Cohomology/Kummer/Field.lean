@@ -99,6 +99,7 @@ theorem globalUnit_geometric (f : Kˣ) :
   exact h.trans (congrArg (algebraMap K (AlgebraicClosure K))
     (ConcreteCategory.congr_hom (Scheme.ΓSpecIso (.of K)).inv_hom_id (f : K)))
 
+/-- The commutative group structure on the scheme of `n`th roots of unity over `Spec K`. -/
 local instance : CommGrpObj (MultiplicativeGroup.rootsScheme (Spec (.of K)) n) :=
   MultiplicativeGroup.rootsCommGroup (Spec (.of K)) n
 local instance : IsFinite (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X.hom :=
@@ -108,18 +109,22 @@ local instance : Etale (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X
       (GroupCohomology.Kummer.RootStalk.levelInvertible K n)
 
 
+/-- The continuous map from the absolute Galois group to the field fundamental group. -/
 def fieldGroupHom : ContinuousMonoidHom (Field.absoluteGaloisGroup K) (FieldFundamentalGroup K) :=
   { (fundamentalGroupContinuousEquiv K).toMulEquiv.toMonoidHom with
     continuous_toFun := (fundamentalGroupContinuousEquiv K).continuous }
+/-- The continuous inverse map from the field fundamental group to the absolute Galois group. -/
 def absoluteGroupHom : ContinuousMonoidHom (FieldFundamentalGroup K) (Field.absoluteGaloisGroup
     K) :=
   { (fundamentalGroupContinuousEquiv K).symm.toMulEquiv.toMonoidHom with
     continuous_toFun := (fundamentalGroupContinuousEquiv K).symm.continuous }
 
+/-- The fundamental-group action on roots of unity transported from the absolute Galois action. -/
 @[instance_reducible] def fundamentalRootAction :
     DistribMulAction (FieldFundamentalGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
   restrictedAction (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (absoluteGroupHom K)
 
+/-- The transported fundamental-group action on the root coefficient group. -/
 local instance : DistribMulAction (FieldFundamentalGroup K)
     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
     fundamentalRootAction K n
@@ -127,6 +132,7 @@ local instance : ContinuousSMul (FieldFundamentalGroup K)
     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
   restrictedAction_continuous (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (absoluteGroupHom K)
 
+/-- The multiplicative marking of geometric root-scheme points by roots in the algebraic closure. -/
 def pointMark : (Over.mk (geometricPoint K) ⟶ MultiplicativeGroup.rootsScheme (Spec (.of K)) n) ≃*
     Multiplicative (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where
   toFun p := Multiplicative.ofAdd
@@ -165,6 +171,7 @@ theorem pointMark_equivariant (γ : FieldFundamentalGroup K)
     (ULift.up (Additive.ofMul q))) he).trans
         (GroupCohomology.Kummer.RootStalk.sectionRootsEquiv_galois K n σ p))
 
+/-- The finite etale cover adjoining an `n`th root of the field unit `f`. -/
 abbrev rootCover (f : Kˣ) : Scheme.FiniteEtale (Spec (.of K)) :=
   AlgebraicGeometry.Scheme.Group.RootCover.cover (Spec (.of K)) n (NeZero.pos n)
     (GroupCohomology.Kummer.RootStalk.levelInvertible K n) (globalUnit K f)
@@ -172,11 +179,13 @@ abbrev rootCover (f : Kˣ) : Scheme.FiniteEtale (Spec (.of K)) :=
 local instance (f : Kˣ) : Surjective (rootCover K n f).obj.hom :=
   AlgebraicGeometry.Scheme.Group.RootCover.cover_surjective _ _ _ _ _
 
+/-- The roots-of-unity torsor action on the cover adjoining an `n`th root of `f`. -/
 def rootAction (f : Kˣ) :=
   AlgebraicGeometry.Scheme.Group.RootCover.coverTorsorAction (Spec (.of K)) n
     (NeZero.pos n) (GroupCohomology.Kummer.RootStalk.levelInvertible K n)
         (globalUnit K f)
 
+/-- The root in the algebraic closure obtained by evaluating a geometric point of the root cover. -/
 def rootValue (f : Kˣ) (t : Fiber (geometricPoint K) (rootCover K n f)) : (AlgebraicClosure K)ˣ :=
   Units.map (Scheme.ΓSpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom
     (AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv (Spec (.of K)) n
@@ -212,6 +221,8 @@ theorem rootValue_galois (f : Kˣ) (t : Fiber (geometricPoint K) (rootCover K n 
 variable [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
   [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]
 
+/-- The finite locally constant root coefficient at nonzero level over a characteristic-zero
+field. -/
 def finiteCoefficient : FiniteCoefficient
     (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n) where
   level := n
@@ -234,6 +245,7 @@ def galoisRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOfUnity
         σ • a
     rw [ContinuousMulEquiv.symm_apply_apply]
 
+/-- The identity coefficient map for restriction from the Galois group to the fundamental group. -/
 def fundamentalRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (B :=
     Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
     (absoluteGroupHom K) where
@@ -243,6 +255,8 @@ def fundamentalRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOf
   continuous_toFun := continuous_id
   map_smul' _ _ := rfl
 
+/-- The additive equivalence on continuous first cohomology induced by the field group
+equivalence. -/
 def galoisRestrictionEquiv : H1 (FieldFundamentalGroup K)
     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) ≃+
     H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where
@@ -275,6 +289,8 @@ def galoisRestrictionEquiv : H1 (FieldFundamentalGroup K)
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]
 
+/-- The etale-to-Galois first-cohomology map using the supplied `Stacks03AJ` and `Stacks03RV`
+inputs. -/
 def comparison (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :
     H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec (.of
         K)) n) →+
@@ -287,6 +303,8 @@ def comparison (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.
       (finiteCoefficient K n)).toAddMonoidHom
 
 
+/-- The additive etale-to-Galois first-cohomology equivalence using the supplied comparison
+inputs. -/
 def comparisonEquiv (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :
     H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec (.of
         K)) n) ≃+
@@ -304,6 +322,7 @@ def comparisonEquiv (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Sp
     comparisonEquiv K n hA hR x = comparison K n hA hR x := rfl
 
 
+/-- The continuous Galois cocycle obtained from a based finite etale roots-of-unity torsor. -/
 def fieldCocycle (Y : Scheme.FiniteEtale (Spec (.of K)))
     (τ : _root_.CategoryTheory.TorsorAction
       (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)

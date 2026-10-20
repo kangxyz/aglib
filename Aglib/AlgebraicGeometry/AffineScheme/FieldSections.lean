@@ -27,6 +27,8 @@ namespace AlgebraicGeometry.Spec
 universe u
 variable (K Ω : Type u) [Field K] [Field Ω] [Algebra K Ω]
 
+/-- The equivalence between `Ω`-valued points of an affine `K`-scheme and `K`-algebra maps to
+`Ω`. -/
 def affineFieldSectionEquiv (A : CommAlgCat.{u} K) :
     (Over.mk (Spec.map (CommRingCat.ofHom (algebraMap K Ω))) ⟶
       (algebraSpecOver K).obj (op A)) ≃ (A →ₐ[K] Ω) where

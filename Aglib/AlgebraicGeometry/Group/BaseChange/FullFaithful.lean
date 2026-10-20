@@ -47,6 +47,9 @@ variable {X Z : Scheme.{u}} (j : Z ⟶ X)
   [(baseChange j).Full] [(baseChange j).Faithful]
 
 omit [(baseChange j).Full] [(baseChange j).Faithful] in
+-- Retain the original fully faithful finite-etale comparison interface; this equality-detection
+-- step uses faithfulness alone.
+@[nolint unusedArguments]
 theorem finite_pullback_map_ext [(baseChange j).Full] [(baseChange j).Faithful]
     (Y W : Scheme.FiniteEtale X) {f g : Y.obj ⟶ W.obj}
     (h : (Over.pullback j).map f = (Over.pullback j).map g) : f = g := by
@@ -59,6 +62,8 @@ theorem finite_pullback_map_ext [(baseChange j).Full] [(baseChange j).Faithful]
 variable (H J : Grp (Over X))
   [IsFinite H.X.hom] [Etale H.X.hom] [IsFinite J.X.hom] [Etale J.X.hom]
 
+/-- The actual Over-map chosen as a preimage of the displayed pulled-back group morphism under
+the full finite-etale base-change functor. -/
 def extendedGroupMap
     (α : (Over.pullback j).mapGrp.obj H ⟶ (Over.pullback j).mapGrp.obj J) : H.X ⟶ J.X :=
   ((baseChange j).preimage
@@ -67,6 +72,9 @@ def extendedGroupMap
         (baseChange j).obj (coefficientCover J))).hom
 
 omit [(baseChange j).Full] [(baseChange j).Faithful] in
+-- Retain faithfulness of the original comparison, used when bundling the chosen preimage as a
+-- group morphism; its pullback equation uses fullness alone.
+@[nolint unusedArguments]
 theorem extendedGroupMap_pullback [(baseChange j).Full] [(baseChange j).Faithful]
     (α : (Over.pullback j).mapGrp.obj H ⟶ (Over.pullback j).mapGrp.obj J) :
     (Over.pullback j).map (extendedGroupMap j H J α) = α.hom.hom :=
@@ -96,6 +104,8 @@ instance extendedGroupMap_isMonHom
   · rw [MonObj.mul_eq_mul, MonObj.mul_eq_mul, MonObj.comp_mul, tensorHom_fst, tensorHom_snd]
     exact hm (coefficientCover H ⊗ coefficientCover H) _ _
 
+/-- Bundle the same chosen preimage as a group morphism, with group laws transported through the
+faithful pullback. -/
 def extendedGroupHom
     (α : (Over.pullback j).mapGrp.obj H ⟶ (Over.pullback j).mapGrp.obj J) : H ⟶ J :=
   Grp.homMk (extendedGroupMap j H J α)
@@ -105,6 +115,8 @@ theorem extendedGroupHom_pullback
     (Over.pullback j).mapGrp.map (extendedGroupHom j H J α) = α :=
   Grp.hom_ext _ _ (extendedGroupMap_pullback j H J α)
 
+/-- The group isomorphism whose forward and inverse maps are the chosen preimages of the
+supplied pullback isomorphism and its inverse. -/
 def extendedGroupIso
     (e : (Over.pullback j).mapGrp.obj H ≅ (Over.pullback j).mapGrp.obj J) : H ≅ J where
   hom := extendedGroupHom j H J e.hom

@@ -60,6 +60,8 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Hom
 universe u
 variable {X Y Z : Scheme.{u}}
+/-- The theorem-family input asserting that the canonical ideal pullback map is invertible
+for cartesian base change of a closed Cartier subscheme flat over the family base. -/
 def RelativeCartierIdealBaseChange : Prop :=
   ∀ (S T X Y D D' : Scheme.{u}) (p : X ⟶ S) (q : T ⟶ S) (p' : Y ⟶ T)
     (b : Y ⟶ X) (i : D ⟶ X) (i' : D' ⟶ Y) (a : D' ⟶ D)
@@ -70,6 +72,7 @@ def RelativeCartierIdealBaseChange : Prop :=
         IsIso (idealPullbackMap i i' b a h)
 
 variable {S T T' : Scheme.{u}}
+/-- The canonical map from the pulled-back graph ideal to the graph ideal after base change. -/
 def graphIdealPullbackMap (p : X ⟶ S) (t : T ⟶ S) (t' : T' ⟶ S)
     (s : T ⟶ X) (hs : s ≫ p = t) (a : T' ⟶ T) (ha : a ≫ t = t') :
     (Scheme.Modules.pullback (familyMap p t t' a ha)).obj (idealModule (graph p t s hs)) ⟶
@@ -93,6 +96,8 @@ theorem graphIdealPullbackMap_isIso
   · exact graphIdeal_isLocallyRankOne hdivisor p t s hs
   · rw [graph_snd]; infer_instance
 
+/-- The canonical graph-ideal base-change isomorphism for a separated smooth relative curve,
+using the supplied divisor and Cartier ideal base-change inputs. -/
 def graphIdealBaseChangeIso
     (hdivisor : SmoothRelativeDivisorIdeal.{u}) (hbase : RelativeCartierIdealBaseChange.{u})
     (p : X ⟶ S) [SmoothOfRelativeDimension 1 p] [IsSeparated p]

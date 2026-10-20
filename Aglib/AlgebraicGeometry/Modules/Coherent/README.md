@@ -20,3 +20,5 @@ essential-surjectivity/localization specialization assumes `IsNoetherian X`.
 stalk module and its original structure-sheaf action. Its global coherent-stalk
 statement retains `IsNoetherian X`; the affine and tilde statements retain their
 displayed ring and module hypotheses.
+
+Focused interface guides: [Coherent presentations from an actual projective embedding](Projective/README.md).
