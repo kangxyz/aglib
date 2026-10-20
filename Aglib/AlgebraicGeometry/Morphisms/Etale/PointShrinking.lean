@@ -48,12 +48,14 @@ def fiberSection : P ⟶ pullback f q := pullback.lift p (𝟙 P) (by simpa usin
 
 -- Retain the etale-map and closed-centre guards of the original full-fibre shrinking interface;
 -- the first projection equation is the formal pullback identity.
-@[nolint unusedArguments, reassoc (attr := simp)] lemma fiberSection_fst [Etale f] [IsClosedImmersion q] :
+@[nolint unusedArguments, reassoc (attr := simp)]
+lemma fiberSection_fst [Etale f] [IsClosedImmersion q] :
     fiberSection p f q h ≫ pullback.fst f q = p := by
   simp [fiberSection]
 -- Retain the etale-map and closed-centre guards of the original rational fibre-section
 -- interface; the second projection equation is the formal pullback identity.
-@[nolint unusedArguments, reassoc (attr := simp)] lemma fiberSection_snd [Etale f] [IsClosedImmersion q] :
+@[nolint unusedArguments, reassoc (attr := simp)]
+lemma fiberSection_snd [Etale f] [IsClosedImmersion q] :
     fiberSection p f q h ≫ pullback.snd f q = 𝟙 P := by
   simp [fiberSection]
 

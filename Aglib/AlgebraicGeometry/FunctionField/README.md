@@ -16,3 +16,12 @@ same actual generic stalk map, require integral source/target and dominance,
 and impose no finite, smooth, Noetherian or dimension condition. The incoming
 `FunctionField.Constants` and `.BaseChange` families reuse native [Map](Map.lean) and
 [BaseChange](BaseChange.lean) directly; no second implementation or old namespace is created.
+
+[Dedekind generic fibres](DedekindGenericFiber.md) construct the actual generic
+lift for an integral scheme dominant over the spectrum of a Dedekind domain.
+The pullback projection is dominant without assuming that the generic fibre is
+integral. `DedekindGenericFiberIntegral` proves integrality of that same fibre;
+the canonical function-field equivalence retains its structural-constants
+triangle and original scalar actions. The separate
+[DVR open-immersion theorem](../Stalk/GenericFiber/DVROpen.md) concerns the actual
+fraction-field spectrum map and needs no properness or characteristic condition.

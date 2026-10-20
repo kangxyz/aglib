@@ -50,7 +50,8 @@ def quotientPi : rankOne R ⟶ principalQuotient R π :=
 
 -- Retain the original Noetherian-domain interface of the principal multiplication sequence;
 -- this underlying module identity itself needs neither guard.
-@[nolint unusedArguments, simp] theorem mulPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) : mulPi R π x = π*x := rfl
+@[nolint unusedArguments, simp]
+theorem mulPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) : mulPi R π x = π*x := rfl
 -- Retain the original Noetherian-domain interface of the principal multiplication sequence;
 -- this underlying module identity itself needs neither guard.
 @[nolint unusedArguments, simp] theorem quotientPi_apply [IsDomain R] [IsNoetherianRing R] (x : R) :

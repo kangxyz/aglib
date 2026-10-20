@@ -110,7 +110,8 @@ def factor : D ⟶ E := liftReducedToClosed e j h.le
 omit hjClosed in
 -- Retain the closed-immersion condition on j in the equal-range closed-intersection interface;
 -- the factorization triangle itself only needs e closed and D reduced.
-@[nolint unusedArguments, reassoc (attr := simp)] lemma factor_fac [IsClosedImmersion j] : factor j e h ≫ e = j :=
+@[nolint unusedArguments, reassoc (attr := simp)]
+lemma factor_fac [IsClosedImmersion j] : factor j e h ≫ e = j :=
   liftReducedToClosed_fac e j h.le
 
 instance factor_closedImmersion : IsClosedImmersion (factor j e h) := by

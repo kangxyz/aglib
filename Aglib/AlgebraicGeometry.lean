@@ -982,6 +982,8 @@ public import Aglib.AlgebraicGeometry.FlatteningStratification.Universal
 public import Aglib.AlgebraicGeometry.FunctionField.AffineCharts
 public import Aglib.AlgebraicGeometry.FunctionField.BaseChange
 public import Aglib.AlgebraicGeometry.FunctionField.Basic
+public import Aglib.AlgebraicGeometry.FunctionField.DedekindGenericFiber
+public import Aglib.AlgebraicGeometry.FunctionField.DedekindGenericFiberIntegral
 public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
 public import Aglib.AlgebraicGeometry.FunctionField.Map
 public import Aglib.AlgebraicGeometry.FunctionField.Normalization
@@ -1855,6 +1857,7 @@ public import Aglib.AlgebraicGeometry.Stalk.FlatDVR.Component
 public import Aglib.AlgebraicGeometry.Stalk.FlatDVR.ComponentKernel
 public import Aglib.AlgebraicGeometry.Stalk.FlatDVR.ComponentKernelProof
 public import Aglib.AlgebraicGeometry.Stalk.GenericFiber
+public import Aglib.AlgebraicGeometry.Stalk.GenericFiber.DVROpen
 public import Aglib.AlgebraicGeometry.Stalk.GenericSection
 public import Aglib.AlgebraicGeometry.Stalk.IntegralExtension
 public import Aglib.AlgebraicGeometry.Stalk.MapProperties

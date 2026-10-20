@@ -318,7 +318,8 @@ def characterEtale (hA : Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
 
 omit [IsAlgClosed C] [TopologicalSpace G] in
 -- Retain the original algebraically closed coefficient and topological character context.
-@[nolint unusedArguments, simp] theorem comparison_characterEtale [IsAlgClosed C] [TopologicalSpace G] (hA :
+@[nolint unusedArguments, simp]
+theorem comparison_characterEtale [IsAlgClosed C] [TopologicalSpace G] (hA :
     Stacks03AJ.{u, w} X) (hR : Stacks03RV X)
     (ζ : rootsOfUnity n C) (hζ : IsPrimitiveRoot (ζ : Cˣ) n)
     (c : _root_.GroupCohomology.PointedCohomology.EquivariantCharacter G N (ZMod n)) :

@@ -298,7 +298,10 @@ theorem sndTensorHom_tmul (s : S) (q : Q) :
 /-- The canonical normalization tensor algebra map is bijective. -/
 theorem fstTensorHom_bijective [_root_.Finite ι] (hf : Function.Surjective f) :
     Function.Bijective (fstTensorHom f g e) := by
-  let E := (mapClutchEquiv f g e).baseChange P R _ _ ≪≫ₗ
+  let : Algebra P (fiberRing (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))) :=
+    (map f g e).toAlgebra
+  let E : R ⊗[P] Q ≃ₗ[R] (ι → R) :=
+    (mapClutchEquiv f g e).baseChange P R _ _ ≪≫ₗ
     fstTensorModuleEquiv f g e.toLinearEquiv hf
   have h : (fstTensorHom f g e).toLinearMap = E.toLinearMap := by
     apply LinearMap.restrictScalars_injective P
@@ -315,7 +318,10 @@ theorem fstTensorHom_bijective [_root_.Finite ι] (hf : Function.Surjective f) :
 /-- The canonical node tensor algebra map is bijective. -/
 theorem sndTensorHom_bijective [_root_.Finite ι] (hf : Function.Surjective f) :
     Function.Bijective (sndTensorHom f g e) := by
-  let E := (mapClutchEquiv f g e).baseChange P S _ _ ≪≫ₗ
+  let : Algebra P (fiberRing (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))) :=
+    (map f g e).toAlgebra
+  let E : S ⊗[P] Q ≃ₗ[S] (ι → S) :=
+    (mapClutchEquiv f g e).baseChange P S _ _ ≪≫ₗ
     sndTensorModuleEquiv f g e.toLinearEquiv hf
   have h : (sndTensorHom f g e).toLinearMap = E.toLinearMap := by
     apply LinearMap.restrictScalars_injective P
@@ -451,7 +457,8 @@ variable {R S T : Type (max u v)} [CommRing R] [CommRing S] [CommRing T]
   (e : (ι → T) ≃ₐ[T] (ι → T)) [_root_.Finite ι]
 
 local notation "P" => fiberRing f g
-local notation "Q" => fiberRing (f.compLeft ι) (e.toRingHom.comp (g.compLeft ι))
+local notation "Q" => fiberRing (f.compLeft ι)
+  (RingHom.comp (e : (ι → T) →+* (ι → T)) (g.compLeft ι))
 attribute [local instance] fstAlgebra sndAlgebra algebraOfMap
 
 /-- Finite projectivity of the actual algebra module supplies finite
