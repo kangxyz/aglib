@@ -10,6 +10,7 @@ module
 public import Aglib.GroupTheory.Cyclic.CharacterFactorization
 public import Aglib.GroupTheory.Cyclic.Characters
 public import Aglib.GroupTheory.Hom.Cofinite
+public import Aglib.GroupTheory.Perm.CycleValues
 public import Aglib.GroupTheory.Perm.CyclicEnumeration
 public import Aglib.GroupTheory.Perm.FinRotate
 public import Aglib.GroupTheory.QuotientGroup.Power

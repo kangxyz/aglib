@@ -166,6 +166,7 @@ import AglibTest.EndomorphismRank
 import AglibTest.EtaleHeightOneEquiv
 import AglibTest.EtalePatching
 import AglibTest.EtalePatchingUnramified
+import AglibTest.EtaleRegularityDescent
 import AglibTest.ExactFunctor
 import AglibTest.ExtFiniteLengthPunctured
 import AglibTest.ExtQuotSMulTop
@@ -304,6 +305,7 @@ import AglibTest.IntegralClosureNormalClosureFlat
 import AglibTest.IntegralClosureOriginalModel
 import AglibTest.IntegralClosureReflexive
 import AglibTest.IntegralTensorCharpolyProduct
+import AglibTest.KummerIntegralModels
 import AglibTest.LaurentAnalysis
 import AglibTest.LocalDimensionDrop
 import AglibTest.LocalizedDedekindBranches
@@ -338,6 +340,10 @@ import AglibTest.MilnorK3Symbols
 import AglibTest.MilnorKDedekindResidueDirectSum
 import AglibTest.MilnorKDedekindResidueSupport
 import AglibTest.MilnorKPolynomialNormCompatibility
+import AglibTest.MultiplicationCotangent
+import AglibTest.MultiplicationEtale
+import AglibTest.MultiplicationKernelGeometry
+import AglibTest.NodalComponentsTail
 import AglibTest.NodalGeometry
 import AglibTest.NormalClosureEtale
 import AglibTest.NormalCurveInertia
@@ -357,6 +363,7 @@ import AglibTest.PolynomialResidueBaseChange
 import AglibTest.PowerSeriesConstantClosure
 import AglibTest.PrimeNormalScalarDichotomy
 import AglibTest.ProjectiveCoherentPresentation
+import AglibTest.ProperBirationalDVR
 import AglibTest.ProperDVRRecognition
 import AglibTest.PureTateNativeReuse
 import AglibTest.QuotSMulTopLocalizedFree
@@ -384,6 +391,7 @@ import AglibTest.RootGroupGeometry
 import AglibTest.SaturatedChartLift
 import AglibTest.SeparableTensorProductSplitting
 import AglibTest.SheafTensor
+import AglibTest.StableQuotient
 import AglibTest.SurfaceComponents
 import AglibTest.SylowFixedField
 import AglibTest.TensorCharpolyProduct

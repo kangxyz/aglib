@@ -94,6 +94,7 @@ public import Aglib.RingTheory.Etale.FiniteFlatPurity
 public import Aglib.RingTheory.Etale.FiniteFlatPurityLocalization
 public import Aglib.RingTheory.Etale.FormalProperties
 public import Aglib.RingTheory.Etale.HeightOneEquiv
+public import Aglib.RingTheory.Etale.LocalCotangent
 public import Aglib.RingTheory.Etale.MilnorPatching
 public import Aglib.RingTheory.Etale.MilnorPatching.FiniteFree
 public import Aglib.RingTheory.Etale.MilnorPatching.Unramified
@@ -236,6 +237,8 @@ public import Aglib.RingTheory.KrullDimension.Polynomial
 public import Aglib.RingTheory.KrullDimension.PrincipalOpen
 public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.KrullDimension.UnitDetection
+public import Aglib.RingTheory.Kummer.IntegralModel
+public import Aglib.RingTheory.Kummer.Valuation
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.Length.PrimeQuotient
 public import Aglib.RingTheory.Length.PrincipalIntersection
@@ -339,6 +342,7 @@ public import Aglib.RingTheory.RegularLocalRing.ArtinianQuotient
 public import Aglib.RingTheory.RegularLocalRing.DimensionZero
 public import Aglib.RingTheory.RegularLocalRing.Domain
 public import Aglib.RingTheory.RegularLocalRing.Etale
+public import Aglib.RingTheory.RegularLocalRing.EtaleDescent
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthDualComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExt
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExtComparison

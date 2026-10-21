@@ -1157,6 +1157,7 @@ public import Aglib.AlgebraicGeometry.Curves.Divisors.Basic
 public import Aglib.AlgebraicGeometry.Curves.Divisors.Pullback
 public import Aglib.AlgebraicGeometry.Curves.Divisors.RegularSections
 public import Aglib.AlgebraicGeometry.Curves.Duality
+public import Aglib.AlgebraicGeometry.Curves.FiniteEtaleGenusZero
 public import Aglib.AlgebraicGeometry.Curves.GenericExtension
 public import Aglib.AlgebraicGeometry.Curves.Genus
 public import Aglib.AlgebraicGeometry.Curves.Genus.BaseChange
@@ -1166,12 +1167,15 @@ public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree.Isomorphism
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Cartier
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.CartierUnions
+public import Aglib.AlgebraicGeometry.Curves.Models.Components.Complement
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.CyclicMinimality
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Intersections
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Minimality
+public import Aglib.AlgebraicGeometry.Curves.Models.Components.NeighborIntersections
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.NormalDegree
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Polygons
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.SpecialFiber
+public import Aglib.AlgebraicGeometry.Curves.Models.Components.SubsetCover
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.TwoGon
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.TwoGonCartier
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.TwoGonNormalDegree
@@ -1182,8 +1186,10 @@ public import Aglib.AlgebraicGeometry.Curves.Nodal.Gluing
 public import Aglib.AlgebraicGeometry.Curves.Nodal.LineGeometry
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.Affine
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.ComponentGeometry
+public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.CoverComponents
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.CoverPoints
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.EtaleProjection
+public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.FiniteClosedCover
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.Gluing
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.Intersections
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.Normalization
@@ -1220,7 +1226,9 @@ public import Aglib.AlgebraicGeometry.Curves.Picard.TorsionSections
 public import Aglib.AlgebraicGeometry.Curves.Picard.TrivializedPower
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Charts
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Comparison
+public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Geometry
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Native
+public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Reciprocal
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.TwoChart
 public import Aglib.AlgebraicGeometry.Curves.Projectivity.Embedding
 public import Aglib.AlgebraicGeometry.Curves.Projectivity.FiniteLineModel
@@ -1291,23 +1299,32 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.AffineField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.BaseChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CofinitePoints
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CoordinateGroup
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.AffineFunctionField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.AffineNormalization
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.AffinePinching
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.InfinityCharts
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.InfinityRing
+public import
+  Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.ProjectiveNormalization
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.ProjectivePinching
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.SingularNormalization
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.SingularTranslation
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalCubic.TargetNormalization
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPointAction
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPoints
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FunctionField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GeometryInputs
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.InfinityChart
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Integrality
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.OrdinaryNodePreparation
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedAgreement
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedGroup
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Points
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Projective
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ProjectiveTranslation
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ResidueFiber
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SmoothLoci
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodalNormalForm
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChangeChart
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
@@ -1321,12 +1338,14 @@ public import Aglib.AlgebraicGeometry.FlatteningStratification.Rank
 public import Aglib.AlgebraicGeometry.FlatteningStratification.StratumFlatness
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Universal
 public import Aglib.AlgebraicGeometry.FunctionField.AffineCharts
+public import Aglib.AlgebraicGeometry.FunctionField.AffineCompatibility
 public import Aglib.AlgebraicGeometry.FunctionField.BaseChange
 public import Aglib.AlgebraicGeometry.FunctionField.Basic
 public import Aglib.AlgebraicGeometry.FunctionField.DedekindGenericFiber
 public import Aglib.AlgebraicGeometry.FunctionField.DedekindGenericFiberIntegral
 public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
 public import Aglib.AlgebraicGeometry.FunctionField.Map
+public import Aglib.AlgebraicGeometry.FunctionField.MorphismExt
 public import Aglib.AlgebraicGeometry.FunctionField.Normalization
 public import Aglib.AlgebraicGeometry.FunctionField.SmoothConstants
 public import Aglib.AlgebraicGeometry.FunctionField.StalkMap
@@ -1412,6 +1431,13 @@ public import Aglib.AlgebraicGeometry.Group.Kernel.DeckTranslation
 public import Aglib.AlgebraicGeometry.Group.Kernel.PrimeDegree
 public import Aglib.AlgebraicGeometry.Group.Kernel.Remarking
 public import Aglib.AlgebraicGeometry.Group.Monodromy
+public import Aglib.AlgebraicGeometry.Group.MultiplicationCotangent
+public import Aglib.AlgebraicGeometry.Group.MultiplicationEtale
+public import Aglib.AlgebraicGeometry.Group.MultiplicationFinite
+public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
+public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel
+public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.MonodromyQuotient
+public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.Transitions
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTransport
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeBaseChange
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeGroup
@@ -1988,6 +2014,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GaloisInstances
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFiber
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFieldBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericRestriction
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricConnectedness
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.HenselianResidue
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.InertiaFibres
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Lifting
@@ -2037,12 +2064,14 @@ public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenPullback
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenSection
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Affine
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalDVR
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalInterfaces
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.Basic
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.FiniteProductMap
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.GraphProduct
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.Chow.GraphProduct.Restriction
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.ConstantFieldHelpers
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.CurveComponentHelpers
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.DVRRecognition
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GenericExtension
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GlobalSections
@@ -2181,6 +2210,7 @@ public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
 public import Aglib.AlgebraicGeometry.Properties.Normal.Components
 public import Aglib.AlgebraicGeometry.Properties.QuasiCompactCategory
 public import Aglib.AlgebraicGeometry.Properties.Regular.Basic
+public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.Etale
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.FlatLocal
 public import Aglib.AlgebraicGeometry.RationalMap.Graph
 public import Aglib.AlgebraicGeometry.RationalPoint.AffineCoordinates
@@ -2188,6 +2218,7 @@ public import Aglib.AlgebraicGeometry.RationalPoint.Basic
 public import Aglib.AlgebraicGeometry.RationalPoint.ClosedLift
 public import Aglib.AlgebraicGeometry.RationalPoint.Completion
 public import Aglib.AlgebraicGeometry.RationalPoint.ConstantsTriangles
+public import Aglib.AlgebraicGeometry.RationalPoint.Cotangent
 public import Aglib.AlgebraicGeometry.RationalPoint.ExtensionSource
 public import Aglib.AlgebraicGeometry.RationalPoint.FieldAutomorphism
 public import Aglib.AlgebraicGeometry.RationalPoint.FieldExtension
@@ -2449,6 +2480,7 @@ public import Aglib.GroupTheory
 public import Aglib.GroupTheory.Cyclic.CharacterFactorization
 public import Aglib.GroupTheory.Cyclic.Characters
 public import Aglib.GroupTheory.Hom.Cofinite
+public import Aglib.GroupTheory.Perm.CycleValues
 public import Aglib.GroupTheory.Perm.CyclicEnumeration
 public import Aglib.GroupTheory.Perm.FinRotate
 public import Aglib.GroupTheory.QuotientGroup.Power
@@ -2749,6 +2781,7 @@ public import Aglib.RingTheory.Etale.FiniteFlatPurity
 public import Aglib.RingTheory.Etale.FiniteFlatPurityLocalization
 public import Aglib.RingTheory.Etale.FormalProperties
 public import Aglib.RingTheory.Etale.HeightOneEquiv
+public import Aglib.RingTheory.Etale.LocalCotangent
 public import Aglib.RingTheory.Etale.MilnorPatching
 public import Aglib.RingTheory.Etale.MilnorPatching.FiniteFree
 public import Aglib.RingTheory.Etale.MilnorPatching.Unramified
@@ -2891,6 +2924,8 @@ public import Aglib.RingTheory.KrullDimension.Polynomial
 public import Aglib.RingTheory.KrullDimension.PrincipalOpen
 public import Aglib.RingTheory.KrullDimension.RegularQuotient
 public import Aglib.RingTheory.KrullDimension.UnitDetection
+public import Aglib.RingTheory.Kummer.IntegralModel
+public import Aglib.RingTheory.Kummer.Valuation
 public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.Length.PrimeQuotient
 public import Aglib.RingTheory.Length.PrincipalIntersection
@@ -2994,6 +3029,7 @@ public import Aglib.RingTheory.RegularLocalRing.ArtinianQuotient
 public import Aglib.RingTheory.RegularLocalRing.DimensionZero
 public import Aglib.RingTheory.RegularLocalRing.Domain
 public import Aglib.RingTheory.RegularLocalRing.Etale
+public import Aglib.RingTheory.RegularLocalRing.EtaleDescent
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthDualComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExt
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExtComparison
@@ -3069,6 +3105,7 @@ public import Aglib.TopologicalGroup
 public import Aglib.TopologicalGroup.PointedAffineActions
 public import Aglib.TopologicalGroup.SplitExtension
 public import Aglib.Topology
+public import Aglib.Topology.Algebra.Group.StableQuotient
 public import Aglib.Topology.Connected.FiniteClosedCover
 public import Aglib.Topology.Irreducible.ClosedCover
 public import Aglib.Topology.KrullDimension.ClosedSubspace
