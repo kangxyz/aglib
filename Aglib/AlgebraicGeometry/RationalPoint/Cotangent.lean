@@ -61,28 +61,28 @@ theorem stalkMapAt_comp {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
   simpa [stalkMapAt, TopCat.Presheaf.stalkCongr] using Scheme.Hom.stalkMap_comp f g x
 
 /-- Structural constants, as a categorical map into the actual stalk. -/
-def stalkConstants {k : Type u} [Field k] {X : Scheme.{u}}
+def stalkConstantsMorphism {k : Type u} [Field k] {X : Scheme.{u}}
     (p : X ⟶ Spec (.of k)) (x : X) : CommRingCat.of k ⟶ X.presheaf.stalk x :=
   (RationalPoint.fieldStalkIso k (p x)).inv ≫ p.stalkMap x
 
-theorem stalkConstants_congr {k : Type u} [Field k] {X : Scheme.{u}}
+theorem stalkConstantsMorphism_congr {k : Type u} [Field k] {X : Scheme.{u}}
     (p : X ⟶ Spec (.of k)) (x y : X) (h : x = y) :
-    stalkConstants p x ≫ (X.presheaf.stalkCongr (.of_eq h)).hom =
-      stalkConstants p y := by
+    stalkConstantsMorphism p x ≫ (X.presheaf.stalkCongr (.of_eq h)).hom =
+      stalkConstantsMorphism p y := by
   subst y
   simp [TopCat.Presheaf.stalkCongr]
 
-theorem stalkConstants_comp {k : Type u} [Field k] {X Y : Scheme.{u}}
+theorem stalkConstantsMorphism_comp {k : Type u} [Field k] {X Y : Scheme.{u}}
     (f : X ⟶ Y) (p : Y ⟶ Spec (.of k)) (x : X) :
-    stalkConstants (f ≫ p) x = stalkConstants p (f x) ≫ f.stalkMap x := by
-  simp [stalkConstants, Scheme.Hom.stalkMap_comp]
+    stalkConstantsMorphism (f ≫ p) x = stalkConstantsMorphism p (f x) ≫ f.stalkMap x := by
+  simp [stalkConstantsMorphism, Scheme.Hom.stalkMap_comp]
 
 theorem stalkMapAt_constants {k : Type u} [Field k] {X Y : Scheme.{u}}
     (f : X ⟶ Y) (p : X ⟶ Spec (.of k)) (q : Y ⟶ Spec (.of k))
     (hp : f ≫ q = p) (x : X) (y : Y) (h : f x = y) :
-    stalkConstants q y ≫ stalkMapAt f x y h = stalkConstants p x := by
-  rw [stalkMapAt, ← Category.assoc, stalkConstants_congr q y (f x) h.symm,
-    ← stalkConstants_comp, hp]
+    stalkConstantsMorphism q y ≫ stalkMapAt f x y h = stalkConstantsMorphism p x := by
+  rw [stalkMapAt, ← Category.assoc, stalkConstantsMorphism_congr q y (f x) h.symm,
+    ← stalkConstantsMorphism_comp, hp]
 
 end AlgebraicGeometry.Scheme
 

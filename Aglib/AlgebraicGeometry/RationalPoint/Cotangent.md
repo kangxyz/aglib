@@ -7,6 +7,10 @@ action comes from the same structure morphism, through the existing
 `RationalPoint.constants` map. No tangent-space model or scalar-action family is
 supplied.
 
+`Scheme.stalkConstantsMorphism` is the categorical structural scalar map: the
+inverse field-stalk comparison followed by the structure morphism's original
+stalk map. Its naturality lemmas retain this same composite.
+
 `Scheme.stalkMapAt` is the original `Scheme.Hom.stalkMap`, preceded by the native
 `stalkCongr` identifying the target point. `Cotangent.localMap` specializes it
 to an actual rational-point-preserving morphism, and `Cotangent.map` applies
