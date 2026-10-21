@@ -14,5 +14,8 @@ dependencies = []
 lean-ci = "lean_ci.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["lean_ci*"]
+
+[tool.setuptools.package-data]
+"lean_ci.checks" = ["lean/*.lean", "lean/Controls/*.lean"]

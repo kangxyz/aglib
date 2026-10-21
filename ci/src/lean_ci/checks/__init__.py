@@ -1,0 +1,1 @@
+"""Common checks responsibilities."""
