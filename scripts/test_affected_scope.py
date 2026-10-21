@@ -31,8 +31,8 @@ class AffectedScopeTests(unittest.TestCase):
         self.write('AglibTest/Focused.lean', 'import Aglib.Dep\nexample : True := trivial\n')
         self.write('AglibTest.lean', 'import AglibTest.Focused\n')
         self.write('AglibTest/AuditSupport.lean', 'import Lean\ndef support := 1\n')
-        self.write('AglibTest/Axioms.lean',
-                   (Path(__file__).resolve().parents[1] / 'AglibTest/Axioms.lean').read_text())
+        self.write('Audits/Aglib.lean',
+                   (Path(__file__).resolve().parents[1] / 'Audits/Aglib.lean').read_text())
         self.write('AglibTest/AuditCoverage.lean', 'module\ndef coverage := 1\n')
         self.write('examples/downstream/Consumer/Use.lean', 'module\npublic import Aglib.Dep\ndef use := 1\n')
         self.write('examples/downstream/Consumer.lean', 'module\npublic import Consumer.Use\n')
@@ -87,7 +87,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(plan['tests'], ['AglibTest', 'AglibTest.Focused'])
         self.assertEqual(plan['client'], ['Consumer', 'Consumer.Use'])
         self.assertNotIn('Aglib.Cold', plan['providers'] + plan['consumers'])
-        self.assertNotIn('AglibTest.Axioms', plan['tests'])
+        self.assertNotIn('Audits.Aglib', plan['tests'])
         self.assertIn('Aglib.Cold', plan['imports']['Aglib'])
         self.assertEqual(plan['style'], ['Aglib.Base'])
         self.assertEqual(plan['coverage'], 'affected-only')
@@ -104,7 +104,8 @@ class AffectedScopeTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.write(path, 'import Lean\n')
                 plan = select(self.root, self.base)
-                self.assertTrue(plan['native'] and plan['trust'] and plan['controls'])
+                self.assertFalse(plan['native'])
+                self.assertTrue(plan['trust'] and plan['controls'])
                 self.assertIn('lean-ci', plan['tooling_tests'])
                 self.assertEqual(plan['providers'] + plan['consumers'] + plan['tests'], [])
 
@@ -117,7 +118,8 @@ class AffectedScopeTests(unittest.TestCase):
         base = self.git('rev-parse', 'HEAD').strip()
         (self.root / path).unlink()
         plan = select(self.root, base)
-        self.assertTrue(plan['native'] and plan['controls'])
+        self.assertFalse(plan['native'])
+        self.assertTrue(plan['controls'])
         self.assertEqual(plan['providers'] + plan['consumers'] + plan['tests'], [])
 
     def test_verified_base_keeps_proof_changes_after_later_tooling_commit(self):
@@ -162,7 +164,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(cache_roots(self.root, plan), [])
 
 
-    def test_cache_projection_follows_actual_local_client_trust_and_tooling_imports(self):
+    def test_routine_cache_projection_excludes_client_and_control_dependencies(self):
         self.write('Aglib/Base.lean', 'module\npublic import Mathlib.Provider\ndef base := 1\n')
         self.write('Aglib/Cold.lean', 'module\npublic import Mathlib.FacadeDependency\ndef cold := 1\n')
         self.write('examples/downstream/Consumer/Use.lean',
@@ -180,7 +182,7 @@ class AffectedScopeTests(unittest.TestCase):
         plan = select(self.root, self.base)
         self.assertTrue(plan['controls'])
         self.assertEqual(cache_roots(self.root, plan),
-                         ['Mathlib.Client', 'Mathlib.FacadeDependency', 'Mathlib.Provider',
+                         ['Mathlib.FacadeDependency', 'Mathlib.Provider',
                           'Mathlib.Tactic.Linter.TextBased', 'Mathlib.ToolDependency', 'Mathlib.Trust'])
         self.assertNotIn('Mathlib.Unrelated', plan['cache_imports'])
         # The selected Aglib facade really imports Cold; its cache basis stays present.
@@ -277,6 +279,25 @@ class AffectedScopeTests(unittest.TestCase):
         return SimpleNamespace(root=self.root, run=command, compiler_identity=lambda *a, **k: identity)
 
 
+    def test_routine_and_full_task_plans_do_not_schedule_diagnostic_chains(self):
+        plans = [self.changed_plan(), select(self.root, full=True)]
+        for scope in plans:
+            with self.subTest(coverage=scope['coverage']):
+                tasks = core.tasks(self.root, {'scope': scope}, 'check',
+                                   Path(self.temp.name) / 'planned')
+                ids = {task['id'] for task in tasks}
+                self.assertTrue({'shared-root-build', 'Aglib/declaration',
+                                 'AglibTest/declaration', 'audit/all', 'check_placeholders.py'} <= ids)
+                self.assertFalse({'prepare-client', 'client/build', 'client-audit',
+                                  'negative-controls', 'compiled-inventory',
+                                  'core-native-cache'} & ids)
+                self.assertFalse(any('check_kernel.py' in task['command'] for task in tasks))
+        diagnostics = core.tasks(self.root, {'scope': plans[-1]}, 'native',
+                                 Path(self.temp.name) / 'diagnostics', phases=['trust', 'client'])
+        ids = {task['id'] for task in diagnostics}
+        self.assertTrue({'prepare-client', 'audit/all', 'compiled-inventory',
+                         'negative-controls', 'client-audit'} <= ids)
+
     def test_local_final_uses_one_graph_accepted_umbrellas_and_no_build_export(self):
         plan, calls = self.changed_plan(), []
         directory = Path(self.temp.name) / 'run'
@@ -287,12 +308,13 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(ids.count('shared-root-build'), 1)
         self.assertLess(ids.index('shared-root-build'), ids.index('Aglib/declaration'))
         self.assertLess(ids.index('Aglib/declaration'), ids.index('AglibTest/declaration'))
-        self.assertLess(ids.index('AglibTest/declaration'), ids.index('audit/all'))
-        self.assertLess(ids.index('audit/all'), ids.index('client/build'))
+        self.assertEqual(ids.count('audit/all'), 1)
+        for diagnostic in ('negative-controls', 'compiled-inventory', 'prepare-client', 'client/build', 'client-audit'):
+            self.assertNotIn(diagnostic, ids)
         self.assertEqual(ids[-1], 'root-graph')
         self.assertEqual(calls[-1][1:5], ['lake', '--rehash', '--no-build', 'build'])
         self.assertTrue(any('Aglib.Cold' in command and command[0] == 'unrelated-cached-imports' for command in calls))
-        self.assertEqual(summary['declaration_policy']['tests'], 'full AglibTest umbrella environment')
+        self.assertEqual(summary['declaration_policy']['tests'], 'AglibTest umbrella when present; otherwise exact selected positive origins in one native batch')
         self.assertEqual(json.loads(output.read_text().splitlines()[0]), '2026-03-17')
         self.assertNotIn('Aglib.Cold', summary['selected_targets'])
 
@@ -350,14 +372,13 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertFalse(any('--run' in command or command[0] == 'client/build' for command in calls))
 
 
-    def test_native_local_check_requires_prepared_client_without_running_tasks(self):
+    def test_native_local_check_does_not_require_prepared_client(self):
         plan, calls = self.changed_plan(), []
         (self.root / 'examples/downstream/.lake/packages').unlink()
         (self.root / 'examples/downstream/.lake').rmdir()
         with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
-            with self.assertRaisesRegex(ValueError, 'prepare_downstream.py before local final checks'):
-                execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True)
-        self.assertEqual(calls, [])
+            execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True)
+        self.assertNotIn('prepare-client', [call[0] for call in calls])
 
     def test_source_policy_only_check_does_not_discover_a_native_toolchain(self):
         self.write('scripts/check_source_policy.py', '# changed static source policy\n')
@@ -390,7 +411,7 @@ class AffectedScopeTests(unittest.TestCase):
         state = Path(self.temp.name) / 'client-retry'
         with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls, 'root-graph')):
             with self.assertRaises(subprocess.CalledProcessError):
-                execute(self.root, plan, state, native_only=True)
+                execute(self.root, plan, state, native_only=True, phases=['providers', 'provider-lint', 'consumers', 'client'])
         record = json.loads((state / 'local.json').read_text())
         checked = next(item for item in record['tasks'] if item['id'] == 'client-audit')
         binding = checked['result']['success']['binding']
@@ -400,7 +421,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertEqual(binding['execution']['cwd'], 'examples/downstream')
         calls.clear()
         with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
-            summary = execute(self.root, plan, state, native_only=True)
+            summary = execute(self.root, plan, state, native_only=True, phases=['providers', 'provider-lint', 'consumers', 'client'])
         self.assertIn('client-audit', summary['reused_checks'])
         self.assertNotIn('client-audit', [command[0] for command in calls])
 
@@ -408,12 +429,12 @@ class AffectedScopeTests(unittest.TestCase):
         plan, calls = self.changed_plan(), []
         state = Path(self.temp.name) / 'client-source'
         with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
-            execute(self.root, plan, state, native_only=True)
+            execute(self.root, plan, state, native_only=True, phases=['providers', 'provider-lint', 'consumers', 'client'])
         self.write('examples/downstream/Audit.lean', 'import Consumer\n-- changed audit input\n')
         current = select(self.root, self.base)
         calls.clear()
         with patch('check_affected.NativeRuntime', return_value=self.native_mock(calls)):
-            summary = execute(self.root, current, state, native_only=True)
+            summary = execute(self.root, current, state, native_only=True, phases=['providers', 'provider-lint', 'consumers', 'client'])
         self.assertIn('client-audit', summary['performed_checks'])
         self.assertIn('client-audit', [command[0] for command in calls])
 
@@ -467,7 +488,7 @@ class AffectedScopeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             selected_declaration_driver('unrecognized driver')
 
-    def test_declaration_lint_runs_each_exact_origin_sequentially(self):
+    def test_declaration_lint_uses_one_runtime_for_all_exact_origins(self):
         source = 'preamble\n' + MARKER + '    let linters ← getChecks\n'
         self.write('.lake/packages/batteries/scripts/runLinter.lean', source)
         modules = ['Aglib.Dep', 'Aglib.Base']
@@ -477,40 +498,70 @@ class AffectedScopeTests(unittest.TestCase):
             self.assertEqual(cwd, self.root)
             self.assertEqual(args[:4], ['lake', 'env', 'fixture-lean', '--run'])
             self.assertEqual(Path(args[4]).read_text(), selected_declaration_driver(source))
-            self.assertEqual(args[5:], ['--no-build', modules[len(calls)]])
+            self.assertEqual(args[5:], ['--no-build', *modules])
             calls.append(args)
             return subprocess.CompletedProcess(args, 0)
 
         with patch.dict(os.environ, {'LEAN': 'fixture-lean'}), \
                 patch('run_declaration_linter.subprocess.run', side_effect=command):
             self.assertEqual(run_selected_declaration_linter(self.root, modules), 0)
-        self.assertEqual(len(calls), len(modules))
-        self.assertEqual(calls[0][4], calls[1][4])
+        self.assertEqual(len(calls), 1)
         self.assertFalse(Path(calls[0][4]).exists())
 
-    def test_declaration_lint_failure_stops_at_first_failed_origin(self):
+    def test_declaration_lint_batch_failure_propagates_without_retry(self):
         self.write('.lake/packages/batteries/scripts/runLinter.lean', 'preamble\n' + MARKER)
         modules = ['Aglib.Base', 'Aglib.Dep', 'Aglib.Cold']
-        for failed_index in (0, 1):
-            with self.subTest(failed_index=failed_index):
-                calls = []
+        calls = []
 
-                def command(args, cwd):
-                    calls.append(args)
-                    return subprocess.CompletedProcess(args, 19 if len(calls) > failed_index else 0)
+        def command(args, cwd):
+            calls.append(args)
+            return subprocess.CompletedProcess(args, 19)
 
-                with patch('run_declaration_linter.subprocess.run', side_effect=command):
-                    self.assertEqual(run_selected_declaration_linter(self.root, modules), 19)
-                self.assertEqual([c[5:] for c in calls],
-                                 [['--no-build', module] for module in modules[:failed_index + 1]])
+        with patch('run_declaration_linter.subprocess.run', side_effect=command):
+            self.assertEqual(run_selected_declaration_linter(self.root, modules), 19)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][5:], ['--no-build', *modules])
+        self.assertFalse(Path(calls[0][4]).exists())
 
-    def test_client_only_changes_have_no_root_publication(self):
+    def test_no_test_umbrella_uses_selected_positive_origins_and_keeps_axioms(self):
+        (self.root / 'AglibTest.lean').unlink()
+        plan = self.changed_plan()
+        required = core.tasks(self.root, {'scope': plan}, 'check',
+                              Path(self.temp.name) / 'no-umbrella')
+        declaration = next(t for t in required if t['id'] == 'AglibTest/declaration')
+        self.assertEqual(declaration['modules'], ['AglibTest.Focused'])
+        self.assertEqual(declaration['command'],
+                         ['python3', 'scripts/run_declaration_linter.py', 'AglibTest.Focused'])
+        self.assertFalse(any('AglibTest' in t['command'] for t in required))
+        self.assertEqual(sum(t['id'] == 'audit/all' for t in required), 1)
+        audit = next(t for t in required if t['id'] == 'audit/all')
+        self.assertEqual(json.loads(audit['command'][-1]),
+                         [['Aglib'], ['AglibTest', 'Focused']])
+        self.assertFalse(any(t['id'] in {'prepare-client', 'client/build', 'negative-controls',
+                                        'compiled-inventory'} for t in required))
+
+    def test_client_only_changes_have_source_only_default_tasks(self):
         self.write('examples/downstream/Consumer/Use.lean',
                    'module\npublic import Aglib.Dep\ndef use := 2\n')
+        self.write('examples/downstream/lean-toolchain', 'client-only-toolchain\n')
         plan = select(self.root, self.base)
-        self.assertTrue(plan['native'])
+        self.assertFalse(plan['native'])
         self.assertFalse(plan['publish'])
         self.assertFalse(plan['trust'])
+        self.assertEqual(plan['cache_imports'], [])
+        self.assertEqual(core.AglibAdapter().required_phases(self.root, {'scope': plan}), ['source'])
+        tasks = core.tasks(self.root, {'scope': plan}, 'check', Path(self.temp.name) / 'client-only')
+        self.assertTrue(tasks)
+        self.assertTrue(all(not task['native'] for task in tasks))
+        self.assertFalse(any('lake' in task['command'] or task['kind'] == 'environment'
+                             or 'client' in task['id'] for task in tasks))
+        calls = []
+        runtime = self.native_mock(calls)
+        with patch('check_affected.NativeRuntime', return_value=runtime), \
+                patch.object(runtime, 'compiler_identity') as compiler:
+            result = execute(self.root, plan, Path(self.temp.name) / 'client-check')
+        compiler.assert_not_called()
+        self.assertEqual(result['native_validation'], 'not-performed')
 
     def test_changed_audit_support_retains_origin_audit_without_automatic_kernel_replay(self):
         self.write('AglibTest/AuditSupport.lean', 'import Lean\ndef support := 2\n')
@@ -542,7 +593,7 @@ class AffectedScopeTests(unittest.TestCase):
         self.assertFalse(any('check_kernel.py' in command for command in text))
         self.assertFalse(any('check_negative_controls.py' in command for command in text))
 
-    def test_ordinary_local_final_checks_keep_trust_and_export_without_replay_claims(self):
+    def test_ordinary_local_checks_export_without_diagnostics(self):
         plan, calls = self.changed_plan(), []
         directory = Path(self.temp.name) / 'run'
         output = directory / 'outputs.jsonl'
@@ -550,18 +601,18 @@ class AffectedScopeTests(unittest.TestCase):
             execute(self.root, plan, directory, native_only=True, outputs=output)
         text = [' '.join(command) for command in calls]
         self.assertFalse(any('check_kernel.py' in command for command in text))
-        self.assertTrue(any('SelectedAudit.lean' in command for command in text))
-        self.assertTrue(any('check_compiled_inventory.py' in command for command in text))
-        self.assertTrue(any('Audit.lean' in command and 'client-audit' in command for command in text))
+        self.assertEqual(sum(command[0] == 'audit/all' for command in calls), 1)
+        for diagnostic in ('check_compiled_inventory.py', 'client-audit', 'prepare_downstream.py'):
+            self.assertFalse(any(diagnostic in command for command in text))
         coverage = json.loads(output.with_suffix('.jsonl.coverage.json').read_text())
         self.assertEqual(coverage['kernel_replay'],
-                         'not-requested; formal-acceptance evidence tracked externally')
+                         'not-requested; standalone diagnostic only')
         self.assertEqual(coverage['negative_controls'],
-                         'unchanged-inputs; prior-compatible-coverage-required')
+                         'not-selected')
         self.assertNotIn('independent_replay', coverage)
 
     def test_auditor_controls_and_runtime_changes_trigger_rejection_controls(self):
-        inputs = ['AglibTest/AuditSupport.lean', 'AglibTest/Axioms.lean',
+        inputs = ['AglibTest/AuditSupport.lean', 'Audits/Aglib.lean',
                   'AglibTest/AuditCoverage.lean', 'AglibTest/NegativeControls/ImportedFixture.lean',
                   'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py']
         for path in inputs:
@@ -572,7 +623,11 @@ class AffectedScopeTests(unittest.TestCase):
                 plan = select(self.root, self.base)
                 self.assertTrue(plan['controls'])
                 self.assertTrue(plan['trust'])
-                self.assertTrue(plan['native'])
+                self.assertEqual(plan['native'], path == 'AglibTest/AuditCoverage.lean')
+                if not plan['native']:
+                    tasks = core.tasks(self.root, {'scope': plan}, 'check',
+                                       Path(self.temp.name) / 'control-only')
+                    self.assertTrue(all(not task['native'] for task in tasks))
                 if previous is None:
                     target.unlink()
                 else:
@@ -583,38 +638,18 @@ class AffectedScopeTests(unittest.TestCase):
             execute(self.root, plan, Path(self.temp.name) / 'run', native_only=True, ci=True, phases=['trust'])
         self.assertTrue(any('scripts/check_negative_controls.py' in command for command in calls))
 
-    def test_workflow_gates_native_setup_and_never_rebuilds_for_export(self):
+    def test_workflow_calls_the_current_native_recipe_without_legacy_pipeline(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        scope = workflow.index('id: scope')
-        install = workflow.index('- name: Install the pinned Lean toolchain')
-        self.assertLess(scope, install)
-        for name in ['Install the pinned Lean toolchain', 'Restore third-party proof cache',
-                     'Fetch matching Mathlib proof cache', 'Restore shared native Lake artifacts',
-                     'Restore incremental project builds', 'Run CI checks for the library and independent client',
-                     'Publish native artifacts for downstream dependencies']:
-            step = workflow.split('- name: ' + name, 1)[1].split('      - name:', 1)[0]
-            self.assertIn("steps.scope.outputs.native == 'true'", step)
-        self.assertNotIn('scripts/build_serial.py', workflow)
-        self.assertNotIn('Aglib AglibTest', workflow)
-        self.assertIn('native-outputs.jsonl.coverage.json', workflow)
-        self.assertIn('validation-coverage.json', workflow)
-        commands = [workflow.index('python3 scripts/ci_pipeline.py ' + phase)
-                    for phase in ('plan', 'source', 'native', 'finalize')]
-        self.assertEqual(commands, sorted(commands))
-        self.assertLess(commands[1], install)
-        self.assertIn('--head "$GITHUB_SHA"', workflow)
-        self.assertIn('--requested-base "$REQUESTED_BASE"', workflow)
-        self.assertIn('Optional older comparison commit', workflow)
-        self.assertNotIn('github.event.before', workflow)
-        finalizer = workflow.split('- name: Finalize complete CI coverage', 1)[1].split('      - name:', 1)[0]
-        self.assertIn("always() && steps.scope.outcome == 'success'", finalizer)
-        self.assertNotIn('steps.scope.outputs.native', finalizer)
-        self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', finalizer)
-        publication = workflow.split('- name: Publish native artifacts for downstream dependencies', 1)[1].split('      - name:', 1)[0]
-        self.assertIn("steps.finalize.outcome == 'success'", publication)
-        self.assertIn("steps.scope.outputs.publish == 'true'", publication)
-        self.assertIn("github.event_name == 'push'", publication)
-        self.assertIn("github.ref == 'refs/heads/main'", publication)
+        self.assertIn('uses: ./.github/workflows/lean-ci.yml', workflow)
+        self.assertIn('package-directory: .', workflow)
+        self.assertIn('build-targets: Aglib', workflow)
+        self.assertIn('contents: read', workflow)
+        self.assertIn('contents: write', workflow)
+        self.assertIn('cancel-in-progress: false', workflow)
+        self.assertIn('queue: max', workflow)
+        for obsolete in ('scripts/ci_pipeline.py', 'scripts/build_serial.py',
+                         'prepare_downstream.py', 'check_kernel.py', 'github.event.before'):
+            self.assertNotIn(obsolete, workflow)
 
 
 if __name__ == '__main__':

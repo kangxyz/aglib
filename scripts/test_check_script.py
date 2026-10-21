@@ -1,4 +1,4 @@
-"""Check fail propagation and explicit audit/kernel replay with controlled commands."""
+"""Check the shared local-entry forwarder and failure propagation without native work."""
 import os
 from pathlib import Path
 import subprocess
@@ -39,86 +39,36 @@ class CheckScriptTests(unittest.TestCase):
         self.assertNotIn('generate_imports.py', log)
         self.assertNotIn('Aglib AglibTest', log)
 
-    def test_source_only_never_builds(self):
+    def test_full_scope_forwards_to_the_same_recipe(self):
+        for args in [('--rehash',), ('--rehash', '--ci')]:
+            with self.subTest(args=args):
+                code, log = self.run_script('', *args)
+                self.assertEqual(code, 0)
+                self.assertEqual(len(log.splitlines()), 1)
+                self.assertIn('scripts/check_affected.py --full ' + ' '.join(args), log)
+                for duplicate_stage in ('build_serial.py', 'prepare_downstream.py',
+                                        'check_kernel.py', 'check_negative_controls.py',
+                                        'check_compiled_inventory.py', 'Audits/Aglib.lean'):
+                    self.assertNotIn(duplicate_stage, log)
+
+    def test_source_only_is_forwarded_without_separate_shell_builds(self):
         code, log = self.run_script('', '--source-only')
         self.assertEqual(code, 0)
-        self.assertNotIn('lake ', log)
-        self.assertIn('check_source_policy.py', log)
-
-    def test_source_guard_failure_stops_dependents(self):
-        code, log = self.run_script('check_library_layout.py')
-        self.assertEqual(code, 19)
-        self.assertNotIn('check_placeholders.py', log)
+        self.assertIn('scripts/check_affected.py --full --source-only', log)
+        self.assertEqual(len(log.splitlines()), 1)
         self.assertNotIn('lake ', log)
 
-    def test_audit_failure_stops_negative_and_kernel_replay(self):
-        code, log = self.run_script('AglibTest/Axioms.lean')
-        self.assertEqual(code, 19)
-        self.assertNotIn('check_negative_controls.py', log)
-        self.assertNotIn('check_kernel.py', log)
+    def test_adapter_failure_propagates_without_shell_retry(self):
+        for full in (False, True):
+            with self.subTest(full=full):
+                code, log = self.run_script('scripts/check_affected.py', '--ci', full=full)
+                self.assertEqual(code, 19)
+                self.assertEqual(len(log.splitlines()), 1)
 
-    def test_full_check_replays_audit_and_scoped_kernel(self):
-        code, log = self.run_script('', '--rehash')
-        self.assertEqual(code, 0)
-        self.assertIn('build_serial.py --receipt-dir', log)
-        self.assertIn('--rehash Aglib AglibTest', log)
-        self.assertIn('lake env lean -j1 AglibTest/Axioms.lean', log)
-        self.assertIn('check_kernel.py --receipt-dir', log)
-        self.assertIn('check_kernel.py --root', log)
-        self.assertIn('--client', log)
-        self.assertIn('resource_guard.py --capped-toolchain', log)
-        self.assertIn('lake env lean --run .lake/packages/batteries/scripts/runLinter.lean --no-build Aglib', log)
-        self.assertIn('python3 scripts/run_style_linter.py', log)
-        self.assertNotIn('lake --rehash lint', log)
-        self.assertNotIn('exe lint-style', log)
-        self.assertEqual(log.count('check_kernel.py'), 2)
-
-    def test_ci_omits_only_additional_independent_kernel_replays(self):
-        code, log = self.run_script('', '--rehash', '--ci')
-        self.assertEqual(code, 0)
-        for stage in ['build_serial.py', '--rehash Aglib AglibTest', 'lake --rehash test',
-                      'lake --rehash lint --builtin-only',
-                      'batteries/scripts/runLinter.lean --no-build Aglib',
-                      'lake --rehash exe mathlib/lint-style Aglib AglibTest',
-                      'AglibTest/Axioms.lean', 'check_negative_controls.py',
-                      'check_compiled_inventory.py', 'prepare_downstream.py',
-                      '--rehash Consumer', 'Audit.lean']:
-            self.assertIn(stage, log)
-        self.assertNotIn('check_kernel.py', log)
-        self.assertNotIn('lint -- --no-build', log)
-        self.assertNotIn('run_style_linter.py', log)
-
-    def test_ci_builtin_lint_failure_stops_dependents(self):
-        code, log = self.run_script('lint --builtin-only', '--ci')
-        self.assertEqual(code, 19)
-        self.assertNotIn('batteries/scripts/runLinter.lean', log)
-        self.assertNotIn('exe mathlib/lint-style', log)
-        self.assertNotIn('AglibTest/Axioms.lean', log)
-
-    def test_ci_declaration_linter_failure_stops_dependents(self):
-        code, log = self.run_script('batteries/scripts/runLinter.lean', '--ci')
-        self.assertEqual(code, 19)
-        self.assertIn('lint --builtin-only', log)
-        self.assertNotIn('exe mathlib/lint-style', log)
-        self.assertNotIn('AglibTest/Axioms.lean', log)
-
-    def test_ci_native_style_failure_stops_audits(self):
-        code, log = self.run_script('exe mathlib/lint-style', '--ci')
-        self.assertEqual(code, 19)
-        self.assertNotIn('AglibTest/Axioms.lean', log)
-        self.assertNotIn('check_kernel.py', log)
-
-    def test_declaration_linter_failure_stops_style_and_audits(self):
-        code, log = self.run_script('batteries/scripts/runLinter.lean')
-        self.assertEqual(code, 19)
-        self.assertNotIn('run_style_linter.py', log)
-        self.assertNotIn('AglibTest/Axioms.lean', log)
-
-    def test_style_linter_failure_stops_audits(self):
-        code, log = self.run_script('run_style_linter.py')
-        self.assertEqual(code, 19)
-        self.assertNotIn('AglibTest/Axioms.lean', log)
-        self.assertNotIn('check_kernel.py', log)
+    def test_shell_runs_from_its_own_package_root(self):
+        source = SCRIPT.read_text()
+        self.assertIn('cd "$(dirname "$0")/.."', source)
+        self.assertIn('exec python3 scripts/check_affected.py "$@"', source)
 
 
 if __name__ == '__main__':

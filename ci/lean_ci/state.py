@@ -155,6 +155,7 @@ class TemporalInputs:
         self.scan_count, self.scan_seconds = 0, 0.0
         self.files, self.missing, self.components = {}, set(), {}
         self.resolution = {}
+        self.resolution_parents = {}
         self.hash_count = 0
         self.directories = {}
 
@@ -168,11 +169,15 @@ class TemporalInputs:
         return cls.stat_identity(path.stat())
 
     @classmethod
-    def path_state(cls, path):
+    def path_state(cls, path, *, directory_entries=False):
         """Observe both a lookup result and its symlink/directory-entry identity."""
         def sample(follow):
             try:
-                return cls.stat_identity(path.stat() if follow else path.lstat())
+                value = path.stat() if follow else path.lstat()
+                identity = cls.stat_identity(value)
+                if stat.S_ISDIR(value.st_mode) and not directory_entries:
+                    return (*identity[:2], 0, 0, 0, identity[-1])
+                return identity
             except (FileNotFoundError, NotADirectoryError):
                 return None
         before = sample(False)
@@ -204,11 +209,12 @@ class TemporalInputs:
     def observe_resolution(self, path):
         path = Path(path).absolute()
         self.observe_components(path)
-        def observe(candidate):
-            state = self.path_state(candidate)
-            if candidate in self.resolution and self.resolution[candidate] != state:
+        def observe(candidate, *, parent=False):
+            records = self.resolution_parents if parent else self.resolution
+            state = self.path_state(candidate, directory_entries=parent)
+            if candidate in records and records[candidate] != state:
                 raise InputDrift('Import resolution changed during this attempt: ' + str(candidate))
-            self.resolution[candidate] = state
+            records[candidate] = state
             return state
         state = observe(path)
         # An absent name can appear and disappear without leaving a leaf stat.
@@ -216,7 +222,7 @@ class TemporalInputs:
         if state[0] is None:
             parent = path.parent
             while True:
-                parent_state = observe(parent)
+                parent_state = observe(parent, parent=True)
                 if parent_state[0] is not None or parent == parent.parent:
                     break
                 parent = parent.parent
@@ -311,9 +317,31 @@ class TemporalInputs:
         for path, state in self.resolution.items():
             if self.path_state(path) != state:
                 raise InputDrift('Import resolution changed during this attempt: ' + str(path))
+        for path, state in self.resolution_parents.items():
+            if self.path_state(path, directory_entries=True) != state:
+                raise InputDrift('Import resolution changed during this attempt: ' + str(path))
         for path, state in self.components.items():
             if self.component_state(path) != state:
                 raise InputDrift('Input path component changed during this attempt: ' + str(path))
+
+    def refresh_link_metadata(self):
+        """After checks finish, rehash only ctime-only native cache changes.
+
+        Active execution intervals never use this relaxation. Source, path,
+        content, mtime and absence guards retain their strict observations.
+        """
+        for path, (before, value) in self.files.items():
+            current = self.stamp(path)
+            if current == before:
+                continue
+            if (current[:4] != before[:4] or current[5:] != before[5:]
+                    or file_hash(path) != value or self.stamp(path) != current):
+                raise InputDrift('Reflective input changed during this attempt: ' + str(path))
+            self.hash_count += 1
+            self.files[path] = (current, value)
+            self.hash_cache[path] = (current, value)
+            if path in self.resolution:
+                self.resolution[path] = self.path_state(path)
 
     def optional_hash(self, path):
         path = Path(path).absolute()
@@ -427,8 +455,10 @@ class ReflectionGraph:
         root = root[1:-1] if root.startswith('«') else root
         for library in self.search_path:
             namespace, _ = self.observations.observe_resolution(library / root)
+            if namespace is not None and stat.S_ISDIR(namespace[-1]):
+                return library
             artifact, _ = self.observations.observe_resolution(library / (root + '.olean'))
-            if (namespace is not None and stat.S_ISDIR(namespace[-1])) or artifact is not None:
+            if artifact is not None:
                 return library
         return None
 
@@ -515,10 +545,32 @@ class ReflectionGraph:
             return None
 
 
+def check_inputs(binding):
+    """Check semantics, excluding the generic producer's recorded source bytes.
+
+    The implementation remains in the receipt and the live attempt guards.
+    Checker/policy sources, commands, environments and native inputs still bind.
+    """
+    value = dict(binding)
+    execution = value.get('execution')
+    if isinstance(execution, dict) and isinstance(execution.get('implementation'), dict):
+        execution = dict(execution)
+        implementation = execution.pop('implementation')
+        value['execution'] = execution
+        raw = value.get('raw_inputs')
+        if isinstance(raw, dict) and value.get('reflective_imports') is not None:
+            value['raw_inputs'] = {name: content for name, content in raw.items()
+                if not (isinstance(name, str) and Path(name).parent.name == 'lean_ci'
+                        and Path(name).name in implementation
+                        and content == implementation[Path(name).name])}
+    return value
+
+
 def valid_success(record, binding):
     return (isinstance(record, dict) and record.get('schema') == SCHEMA
-            and record.get('status') == 'success' and record.get('binding') == binding
-            and record.get('key') == digest(binding)
+            and record.get('status') == 'success' and isinstance(record.get('binding'), dict)
+            and check_inputs(record['binding']) == check_inputs(binding)
+            and record.get('key') in (digest(record['binding']), digest(check_inputs(record['binding'])))
             and valid_receipt(record.get('receipt'), record.get('executed_command'))
             and isinstance(record.get('executed_command'), list)
             and record.get('logical_arguments') == binding['arguments']
@@ -552,18 +604,37 @@ class Progress:
     def __init__(self, directory):
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
+        self._previous = None
 
     def lookup(self, binding):
-        try:
-            record = read_json(self.directory / (digest(binding) + '.json'))
-            return record if valid_success(record, binding) else None
-        except (OSError, ValueError, TypeError):
-            return None
+        key = digest(check_inputs(binding))
+        for candidate in dict.fromkeys((key, digest(binding))):
+            try:
+                record = read_json(self.directory / (candidate + '.json'))
+                if valid_success(record, binding):
+                    return record
+            except (OSError, ValueError, TypeError, KeyError):
+                pass
+        # Older receipts used the whole producer fingerprint as their filename.
+        # Index those small receipt files once; never rescan artifacts or rewrite
+        # historical evidence to migrate it.
+        if self._previous is None:
+            self._previous = {}
+            for path in self.directory.glob('*.json'):
+                try:
+                    record = read_json(path)
+                    previous = record['binding']
+                    if valid_success(record, previous):
+                        self._previous.setdefault(digest(check_inputs(previous)), []).append(record)
+                except (OSError, ValueError, TypeError, KeyError):
+                    continue
+        return next((record for record in self._previous.get(key, ())
+                     if valid_success(record, binding)), None)
 
     def save(self, binding, receipt, executed_command):
         if not valid_receipt(receipt, executed_command):
             raise ValueError('A check success requires an exit-zero, closed-group resource receipt')
-        record = {'schema': SCHEMA, 'key': digest(binding), 'status': 'success',
+        record = {'schema': SCHEMA, 'key': digest(check_inputs(binding)), 'status': 'success',
                   'binding': binding, 'logical_arguments': binding['arguments'],
                   'executed_command': list(map(str, executed_command)), 'receipt': receipt}
         if not valid_success(record, binding):

@@ -2,6 +2,20 @@
 
 Run commands from the package root. [lean-toolchain](../lean-toolchain) pins Lean 4.34.1; [lakefile.toml](../lakefile.toml) pins Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` and declares `Aglib` and `AglibTest`. Keep the pinned [lake-manifest.json](../lake-manifest.json). Production imports use Mathlib and precise lower `Aglib` leaves.
 
+## Mathematical trust
+
+Claimed closed results require source correspondence, explicit hypotheses and
+foundation inputs, no transitive `sorry`, and axiom dependencies limited to
+`propext`, `Classical.choice`, and `Quot.sound`. Custom and native-computation
+axioms cannot discharge a proof. Preserve production dependency boundaries and
+identify the source, pinned toolchain/dependencies and successful build. Retain
+the existing selected-origin transitive axiom audit in ordinary final validation;
+reuse compatible unchanged evidence and check changed or uncovered closure.
+Source token checks and ordinary lint do not supply transitive axiom coverage.
+This is an existing mathematical trust predicate, not kernel replay or an added
+acceptance stage. Independent mathematical review and writing acceptance retain
+their governing requirements; conditional theorems retain their premises.
+
 ## Normal task
 
 Use the prepared workspace: encode/prove, compile the exact changed leaf, and
@@ -17,7 +31,7 @@ At meaningful final code delivery, run the selected check once:
 categories after a failure through the [direct repair commands](#local-verification-and-ci).
 Use a consumer only for a concrete interface question. Look up setup, cache or
 environment details below only when a required input is missing or invalid.
-Mathematical adoption uses the separate [scoped replay recipe](#kernel-replay-at-mathematical-adoption).
+Kernel replay is an explicitly requested standalone diagnostic only.
 
 ## Setup and focused builds
 
@@ -35,7 +49,7 @@ The bootstrap mode accepts only that exact cache command. It retains the process
 
 Keep writable dependency build caches owned by this checkout. Before building with dependency links into another checkout, prepare private copies; ordinary Lake builds may compile missing dependency modules. Preserve the original sources and caches when making those copies.
 
-All normal workflows must use only incremental checks, including authoring, maintenance, documentation, review, merge, integration and publication. Preserve trusted caches, reuse compatible build and trust evidence, reconcile combined changes and fill actual coverage gaps. Reconcile exact source/toolchain/configuration identities and obtain matching caches before building genuinely missing or changed required targets and needed affected consumers. Complete coherent mathematical obligations using focused compilation and repair where they advance the proof, with [build_serial.py](../scripts/build_serial.py):
+All normal workflows must use only incremental checks, including authoring, maintenance, documentation, review, merge, integration and publication. Preserve trusted caches, reuse compatible build and check evidence, reconcile combined changes and fill actual coverage gaps. Reconcile exact source/toolchain/configuration identities and obtain matching caches before building genuinely missing or changed required targets and needed affected consumers. Complete coherent mathematical obligations using focused compilation and repair where they advance the proof, with [build_serial.py](../scripts/build_serial.py):
 
 See the exact-leaf command in the [normal task recipe](#normal-task).
 
@@ -44,9 +58,16 @@ to overwrite its prior `cached-check.log`.
 
 The helper accepts `--root ROOT`, `--rehash`, optional native Lake `--outputs FILE` mappings and one or more module targets. It first checks whether the requested targets are already cached, then invokes one ordinary Lake build graph for missing work. Lake schedules dependencies with one capped Lean compiler process at a time; `AGLIB_BUILD_THREADS` selects that compiler's internal parallelism. Expected out-of-date diagnostics from the cache probe are saved in `cached-check.log`; configuration, tool and compilation failures still fail the check. [resource_guard.py](../scripts/resource_guard.py) supplies the same owned-group guard for other commands through `--capped-toolchain --receipt FILE -- COMMAND`. [scripts/README.md](../scripts/README.md) owns detailed runtime and helper interfaces.
 
-Incremental validation includes compilation, applicable declaration and text/style lint, affected `AglibTest` regression/property modules and downstream client tests, and source/import/enrollment or trust checks affected by the change. During development, use incremental compilation and its diagnostics, keeping compiler-integrated checks enabled. Independent lint and tests run only in the task's final validation before delivery; a helper return, internal commit or merge does not start that phase. Cover applicable categories there using matching prior evidence and focused new checks. Compilation covers only the lint or tests it actually runs. After final-check repairs, rerun only failed or newly affected checks. Documentation-only changes use applicable source/link checks and changed examples; unchanged behavior needs no new tests.
+Routine validation consists of incremental native compilation, native/batch lint,
+relevant in-package tests and basic source/no-sorry checks. Retain compatible
+successes and check only failed or changed inputs. Compiler-integrated checks
+remain enabled. Tooling changes use affected Python fixture tests.
 
-An API smoke check answers a concrete interface question; it is not a required follow-up to every theorem. The final-validation timing above governs independent lint and tests; do not interrupt authoring with per-helper or per-theorem smoke, axiom, lint, Python-test, diagnostic-probe or receipt chains. When tooling changes, include its affected regressions in final validation, selecting the affected test class where sufficient.
+Do not automatically append kernel replay, additional inventory/negative-control
+chains or downstream preparation/build/audit. This applies to full scope, merge,
+publication and mathematical adoption. Complex multi-stage repeat-acceptance
+chains are prohibited. Independent mathematical review, writing acceptance and
+status obligations remain separate and unchanged.
 
 ## Local verification and CI
 
@@ -76,190 +97,44 @@ incremental workflow and unavailable validation history; it never silently
 substitutes the previous push or a full build. A manual comparison may move the
 verified baseline earlier, but cannot skip forward over unchecked changes.
 
-The protocol admits exact reviewed workflow and implementation identities,
-including the actual package modules. Its initial legacy witness is restricted
-to the reviewed whole-native source commit. The [cutover policy](CI.md#initial-policy-cutover)
-distinguishes retained legacy predicates for unchanged origins from current
-checks for changed and affected origins; it does not assert that the former
-umbrella linter environment equals a per-origin environment.
+The retained committed adapter keeps its source, verified-baseline, implementation,
+source-integrity and finalization guards. Baseline admission and provenance are
+unchanged. Native commands retain process ownership and resource limits.
 
-The CI adapter separately handles dependency, compiler and build-configuration
-transitions by assigning complete current check coverage. Commit a regenerated
-tracked downstream manifest with a pin update. Cache restoration still precedes
-Lake's native trace validation; assigning checks does not force recompilation of
-every target. See [upgrade semantics](CACHING.md#upstream-and-toolchain-updates).
-The local affected checker continues to require an explicit scope decision for
-these changes.
+The normal local recipe performs basic source checks and affected Python
+fixtures, an incremental native library/test build, native builtin/declaration
+lint and selected style lint. It does not prepare or validate the separate
+client. Existing selected-origin axiom auditing remains required final-validation
+coverage; additional inventory and rejection-control chains are not scheduled.
+Use the same external `AGLIB_VERIFY_DIR` to retain compatible successes.
+`--native-only` and explicit `--phase providers`, `--phase provider-lint` or
+`--phase consumers` restrict repairs to the affected groups. No helper return,
+commit, merge or publication creates another acceptance cycle.
 
-This comparison baseline does not discard partial build progress. Matching
-compiled outputs from failed runs remain eligible for the existing native and
-project cache restoration, and Lake validates them before reuse. Individual
-builtin/declaration lint and selected audit successes have separate progress
-records bound to their validated native inputs, outputs and checker policy.
-Those records never authorize skipping current native graph validation.
+`bash scripts/check.sh --full --rehash` selects the full library/test scope with
+the same basic checks. It does not request extra diagnostics. Standalone
+`check_kernel.py`, `check_negative_controls.py` and
+`check_compiled_inventory.py` remain callable only for a specifically requested
+diagnostic. An explicitly requested `--phase trust` or `--phase client` retains
+its existing diagnostic behavior. Client preparation is required only for that
+explicit client request, never for routine checks or a root pin update.
 
-Local final checks and committed CI consume the same library task recipe through
-`lean_ci.recipe` and its guarded executor. The local entry observes source,
-configuration and enrollment inputs before selecting the dirty-worktree scope;
-it does not require a commit or query GitHub. CI retains its clean-HEAD,
-verified-ancestor and finalization guards. Local success is never a CI receipt.
+## Memory and explicit diagnostics
 
-The shared native recipe uses one guarded Lake `--rehash` graph for the current
-library/test roots and required checker imports. Before that graph, unrelated
-imports must pass a cache-only check; recover matching artifacts if it fails.
-This guard prevents an affected facade or umbrella check from compiling unrelated
-cold siblings. Lake decides which selected/imported artifacts actually need work.
-The final root barrier is cache-only and exports verified mappings without a
-second proof build.
-
-The adopted declaration predicates are the complete `Aglib` and `AglibTest`
-umbrella environments, each checked once in a separate guarded process. Builtin
-lint likewise runs once per root; selected source style runs once, and the fixed
-origin auditor handles production/test prefixes together. These are the existing
-CI predicates, now also used by local final checks. Earlier exact-origin lint
-receipts remain evidence for their original environments and are not re-keyed as
-umbrella successes. The exact-origin wrapper is still required for selected
-`AglibTest.AuditSupport` and extra `Tools.*` origins. A diagnostic leaf pass has
-its distinct predicate and does not discharge a required umbrella check.
-
-Native local final checks require prepared matching dependencies and idempotent
-client setup. Run `python3 scripts/prepare_downstream.py` during operating setup
-before final validation; preserve the intended tracked manifest and pins. A cold
-or stale client setup fails with that command, without resetting source guards.
-Source-only checks do not initialize dependency or client caches.
-
-Selected-origin axiom auditing reuses `AglibTest.AuditSupport`, including its
-private/generated-declaration inventory and fixed allowed axioms. Negative
-controls and selected compiled enrollment remain separate checks; stale or negative
-outputs still fail. The existing client origin audit runs for affected clients.
-Proof-only edits retain matching rejection-control evidence from the accepted
-baseline. Controls rerun when their fixtures, auditor/support policy, pinned
-configuration or compiler-wrapper runtime change, or for explicit `--full`
-diagnostics. If matching baseline control coverage is unavailable, run
-`python3 scripts/check_negative_controls.py` for that actual gap. Selected-origin
-axiom auditing still covers changed proofs independently of this reuse.
-Ordinary selected final checks, commits and merges do not request extra kernel
-replay. They report their applicable code/trust evidence; mathematical adoption
-uses the [incremental replay recipe](#kernel-replay-at-mathematical-adoption).
-A normal cache export records replay as not requested and externally tracked;
-it does not claim formal mathematical acceptance or full inventory coverage.
-
-Use `AGLIB_VERIFY_DIR` for a state directory outside the checkout. Reuse that state
-after a later failure to retain compatible check successes. After a repair, rerun only failed
-or newly affected categories with `--phase providers`, `--phase provider-lint`,
-`--phase consumers`, `--phase trust` or `--phase client`; repeat `--phase` to combine
-categories. `provider-lint` now selects the declared umbrella check group; it does
-not assert equivalence to the older per-provider lint policy. A `--native-only` repair reuses already completed static/tooling
-checks. These repair runs do not export a complete selected-validation mapping.
-Retain their compatible prior coverage rather than rerunning unchanged checks.
-Compatible client audit successes also survive a later failure, under the actual
-client search path and its source/import/policy bindings. The cheap compiled
-inventory is checked again; no claim of cached inventory coverage is made.
-
-After repairing a final-check failure, retry the appropriate shared group
-with the same external state directory (replace `BASE` and `DIR`):
-
-```sh
-# Retry required umbrella/style checks after the repaired graph is current:
-AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase provider-lint
-# A late test or consumer repair: validate its affected graph and required check groups:
-AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase consumers
-# A late independent-client repair:
-AGLIB_VERIFY_DIR=DIR python3 scripts/check_affected.py --base BASE --native-only --phase client
-```
-
-Ordinary incremental module compilation remains available while making the
-repair. Passing exact-origin leaf lint is diagnostic for the adopted production/
-test umbrella predicates; it does not replace the shared final-check group.
-Selected AuditSupport and extra Tools origins retain their separately required
-exact-origin checks through the trust/extra-origin groups.
-
-Complete still-affected selected trust checks with the existing `--phase trust`
-command; completed provider lint need not repeat. Reselect if the actual import
-closure changes.
-
-Whole-library diagnostics require an explicit `--full`:
-
-```sh
-bash scripts/check.sh --full --source-only
-bash scripts/check.sh --full --rehash
-```
-
-These commands retain the comprehensive source/tooling suite and full local
-kernel replay. They are separately requested diagnostics, never an automatic
-fallback for missing caches or coverage. Coordinate all native checks with other
-Lean jobs; they write shared build outputs and remain serialized.
-
-The [workflow](../.github/workflows/ci.yml) invokes Aglib's thin package adapter
-through `ci_pipeline.py plan`, `source`,
-`native` and `finalize` operations. The plan precedes native setup; the finalizer
-is required even for source-only coverage. Matching caches are restored for
-native scopes, including compatible individual-check progress. An optional manual
-comparison can only move the automatically verified baseline earlier. Native exports use mappings emitted by
-successfully completed selected build phases; export schedules no new build.
-The adjacent `.coverage.json` records affected-only coverage and selected target
-identities. CI logs and retained evidence distinguish this from whole-library
-validation. Pinned declaration/style implementations, Lake builtin lint, compiler-integrated
-linters, source policy, origin audits and rejection controls remain enabled.
-Batteries declaration lint uses the accepted production/test umbrella environments,
-with selected support origins checked separately; text/style lint selects changed
-files only. Builtin lint uses the two compiled roots and `--no-build`;
-import-only facades receive compilation and exact source-style checks. CI prepares
-only the named imports of the pinned linter runtimes in its writable dependency
-caches when needed. Local runtime execution preserves shared dependency caches.
-Core/toolchain changes also run the bounded two-module native cache integration:
-partial success survives a later failure, current-input artifacts restore under
-`--no-build`, and old-only artifacts cannot cover an upstream change. This test
-uses isolated local caches and the installed compiler, without dependency updates.
-The uploaded native staging tree includes `validation-coverage.json`; client-only
-changes produce no new root-package native publication. New-branch push events
-use an available default-branch merge-base, or the empty tree for a genuinely
-parentless initial commit; unresolved Git metadata still fails actionably.
-
-## Memory and exact replay
-
-The build helper runs one compiler process at a time; `AGLIB_BUILD_THREADS` selects its internal parallelism, otherwise inheriting `LEAN_NUM_THREADS` or defaulting to one. The native `check.sh` route sets `LEAN_NUM_THREADS=1`, so only `AGLIB_BUILD_THREADS` overrides its compiler-thread default. Exact kernel replay uses bounded batches in one monitored process; select their size with `AGLIB_KERNEL_BATCH_SIZE` or `--batch-size`. Batches that reach the RSS cutoff are retried at smaller sizes. A temporary toolchain wrapper applies the selected native `-j` and `-M` limits to direct and Lake-spawned frontends. The RSS watchdog sums the owned process group's memory, fails closed on monitoring, memory or concurrency failure, and signals only PIDs whose owned-group identity it rechecks. Native heap limits alone do not bound all mapped memory.
-
-`AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` are in MiB. Choose values appropriate to the host, keeping the native Lean limit below the owned-group RSS cutoff. The helpers validate their settings; the workflow is the authority for CI's configured profile. Do not run another Lean job alongside this route.
+Native frontends remain serialized under the configured heap, owned-process-group
+RSS and concurrency limits. `AGLIB_BUILD_THREADS` selects compiler parallelism;
+`AGLIB_LEAN_MEMORY_MB` and `AGLIB_RSS_LIMIT_MB` are MiB limits. Coordinate shared
+build outputs and do not run overlapping Lean jobs.
 
 ### Kernel replay at mathematical adoption
 
-Formal mathematical acceptance here means the existing substantive adoption
-milestone for claimed formalized results. It is not a new workflow state and
-is not triggered by a commit, merge, ordinary code final check, cache publication,
-writing review or exposé status review by itself. Keep the mathematical review
-and status obligations appropriate to the actual product.
-
-At that adoption, use [check_kernel.py](../scripts/check_kernel.py) incrementally
-for the accepted modules and required uncovered dependencies, retaining compatible
-module-bound replay evidence from the stable root/client lineages. For example:
-
-```sh
-python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel \
-  --modules Aglib.CategoryTheory.ExactCategory.Basic
-python3 scripts/check_kernel.py --root examples/downstream --client \
-  --receipt-dir .lake/verification/client-kernel --modules Consumer.FundamentalGroup
-```
-
-Choose actual adopted modules; a scoped result does not establish whole-library
-coverage. The checker labels `--modules` output as a probe and does not freshly
-replay imported proofs. Combine its exact module evidence with compatible prior
-coverage, filling the actual missing dependency coverage rather than replaying
-unchanged accepted libraries. Use the same receipt directories across related
-source changes so matching compiled-import evidence can be reused.
-
-Replay supplies an additional kernel/environment check on recorded compiled
-terms and artifacts. For unreviewed generated source or uncertain environments
-and artifacts, resolve the source, options and trust basis and include the needed
-scoped replay before adopting the mathematical result; an ordinary successful
-compile or cached artifact alone is insufficient adoption evidence. Replay does
-not replace mathematical correspondence/review or explicit theorem premises.
-The pinned installed `LeanChecker.replayFromImports` implementation, resource
-bounds and fail-closed compatibility checks remain unchanged. Whole-library
-replay belongs only to explicitly requested diagnostics or warranted fault
-recovery, through the existing comprehensive route.
-
-On resumption, adopt the accepted operational tool revision separately from the frozen mathematical source snapshot, recording both identities. Continue the same explicit compatible kernel-receipt lineage; adopting operational guidance alone requires no new replay. Tool changes that affect the recorded compiler/runtime or checker semantics must satisfy the checker's compatibility rules before evidence can be reused.
+Mathematical adoption does not trigger replay. The existing kernel checker is
+an optional standalone diagnostic only when specifically requested. Its scoped
+output does not claim whole-library coverage or discharge mathematical premises
+or independent review. Resolve uncertain source, options, environment and artifact
+provenance before adopting a result; a cached artifact alone is insufficient.
+For an explicitly requested replay, retain compatible evidence and the selected
+operational tool revision separately from the mathematical source snapshot.
 
 Managed remote replay retains the admitted `R5_LEAN_REMOTE_PROFILE` wrapper and
 its `LEAN_SYSROOT` overlay for import metadata extraction and replay. The checker
@@ -271,7 +146,7 @@ retains its strict executable/prefix identity check and existing closure keys.
 Keep the owned phase's wrapper and resource profile set throughout the check;
 selecting its physical backend directly would bypass the admitted resource guard.
 
-The checker captures full identities at start/end and guards exact inputs and search-resolution candidates between batches, including ctime to detect changed-and-restored files. Missing dependency source metadata prevents reuse; incomplete compiled metadata or corrupt selected evidence fails closed. Original bases, records, logs and resource profiles remain immutable; current coverage summaries reference the original evidence and distinguish reuse from fresh execution. Older receipts without dependency metadata require a new closure-bound replay. [Replay mechanics](../scripts/README.md#resource-limits-and-exact-kernel-replay) describe the evidence layout and configuration normalization.
+The checker captures full identities at start/end and guards exact inputs and search-resolution candidates between batches, including ctime to detect changed-and-restored files. Missing dependency source metadata prevents reuse; incomplete compiled metadata or corrupt selected evidence fails closed. Original bases, records, logs and resource profiles remain immutable; current coverage summaries reference the original evidence and distinguish reuse from fresh execution. Older receipts without dependency metadata require a new closure-bound replay. [Replay mechanics](../scripts/README.md#resource-limits-and-explicitly-requested-kernel-replay) describe the evidence layout and configuration normalization.
 
 ## Incremental cache and publication
 
@@ -283,9 +158,10 @@ CI uses explicit cache restore and save steps. Newly acquired dependency proof c
 
 Main-branch CI runs serialize without cancelling the active run, allowing eligible build progress to be saved before the next snapshot starts. GitHub keeps the latest pending snapshot in that group. Other branches and pull-request refs cancel superseded active runs. See [workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).
 
-A build-cache hit alone does not establish tests, audits, inventory checks or replay required at mathematical acceptance. Retain compatible evidence for each required check and fill only actual gaps. The replay controller can discharge unchanged modules with validated matching per-closure evidence from the explicitly selected lineage; a historical receipt alone supplies no current coverage. Package version bumps preserve incremental CI reuse without accepting stale proof artifacts.
-
-The publication target is the public repository [`kangxyz/aglib`](https://github.com/kangxyz/aglib). Before publishing, reconcile applicable code-check and downstream-audit coverage for the combined source snapshot, using compatible retained evidence and narrow new checks. Publication of code or cache artifacts alone does not trigger replay. When publication also adopts a substantive mathematical result, complete its [mathematical acceptance](#memory-and-exact-replay), including scoped library/client replay where applicable. The configured workflow and the commands above are procedures; current results belong in [WORK_PLAN.md](WORK_PLAN.md).
+A build-cache hit supplies compiled artifacts, not mathematical acceptance.
+Publication reuses compatible routine build/lint/test evidence and fills actual
+gaps. It does not trigger replay, downstream checks or repeated certification.
+Independent mathematical and writing review retain their existing obligations.
 
 [generate_imports.py](../scripts/generate_imports.py) owns aggregate imports. The generator owner updates enrollment; `python3 scripts/generate_imports.py --check` detects drift. Modern `module` headers, precise `public import` and exposed public sections define the consumer/reduction boundary. [AglibTest](../AglibTest) and [examples/downstream](../examples/downstream) remain consumers, with rejection controls outside production imports.
 
@@ -301,9 +177,10 @@ Update the owning family README when an object, namespace, hypothesis, result or
 
 Preserve foreign changes and exact write ownership. Inspect `HEAD` and worktree status before writing and before staging or committing; coordinate overlapping edits and shared build outputs. Keep Git index and `HEAD` mutations serial. Do not push without an explicit current request.
 
-Use incremental checks during development, integration and publication. Preserve applicable enrollment, import direction, source policy, tests, linters, axiom coverage, rejection controls, inventory and downstream coverage through compatible evidence and actual gap checks. At a mathematical-adoption milestone, reuse the explicit replay lineage and cover its affected modules; a narrow probe does not claim whole-library coverage. Build success does not discharge mathematical premises.
-
-A build checks elaboration, an audit checks covered foundation dependencies, and kernel replay checks compiled terms on its recorded current basis. None supplies an explicit mathematical theorem-family parameter or independently establishes an external proof chain. [WORK_PLAN.md](WORK_PLAN.md) records actual integration coverage.
+Use incremental build, native/batch lint and relevant in-package tests during
+development, integration and publication, preserving basic source correctness.
+These execution checks do not discharge mathematical premises or independent
+mathematical and writing review obligations.
 
 ## Downstream candidates for Aglib
 

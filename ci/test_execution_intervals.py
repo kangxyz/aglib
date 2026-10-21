@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from lean_ci.engine import Application
 from lean_ci.runtime import semantic_environment, semantic_toolchain
@@ -76,10 +77,20 @@ class ExecutionIntervals(unittest.TestCase):
         with self.assertRaises(InputDrift):self.run_tasks()
         self.assertEqual(len(list((self.scratch/'progress').glob('*.json'))),1)
 
-    def test_fresh_final_observer_survives_to_publication_boundary(self):
+    def test_final_metadata_only_change_rehashes_one_native_file(self):
         records=self.run_tasks()
         self.application.verify_tasks(self.plan,self.tasks,records,fixtures.TOOLCHAIN,self.observer)
         self.touch_metadata(self.artifact)
+        with patch('lean_ci.state.file_hash', wraps=fixtures.file_hash) as hashed:
+            self.application.assert_verified_inputs(self.observer)
+        self.assertEqual([Path(call.args[0]) for call in hashed.call_args_list],[self.artifact])
+
+    def test_final_native_content_change_cannot_publish(self):
+        records=self.run_tasks()
+        self.application.verify_tasks(self.plan,self.tasks,records,fixtures.TOOLCHAIN,self.observer)
+        content,before=self.artifact.read_bytes(),self.artifact.stat()
+        self.artifact.write_bytes(bytes([content[0]^1])+content[1:])
+        os.utime(self.artifact,ns=(before.st_atime_ns,before.st_mtime_ns))
         with self.assertRaises(InputDrift):self.application.assert_verified_inputs(self.observer)
 
     def test_binding_scan_cost_is_coalesced_and_reported(self):
@@ -90,6 +101,27 @@ class ExecutionIntervals(unittest.TestCase):
         self.assertLessEqual(stats['operations']['binding']['calls'],6)
         self.assertGreater(stats['guards']['native_verification']['files'],0)
         self.assertGreaterEqual(stats['operations']['binding']['seconds'],0)
+
+    def test_final_verification_reuses_hashes_and_parsed_imports(self):
+        records=self.run_tasks()
+        with patch('lean_ci.state.file_hash', side_effect=AssertionError('unchanged input rehashed')), \
+             patch('lean_ci.state.read_json', wraps=fixtures.read_json) as read:
+            self.application.verify_tasks(self.plan,self.tasks,records,fixtures.TOOLCHAIN,self.observer)
+        self.assertFalse(any(str(call.args[0]).endswith('.ilean') for call in read.call_args_list))
+        self.assertLessEqual(self.application.execution_diagnostics()['guards']['native_verification']['scans'],2)
+
+    def test_changed_native_bytes_still_reject_preserved_success(self):
+        records=self.run_tasks()
+        self.artifact.write_text(self.artifact.read_text()+' ')
+        with self.assertRaisesRegex(ValueError,'stale|corrupt'):
+            self.application.verify_tasks(self.plan,self.tasks,records,fixtures.TOOLCHAIN,self.observer)
+
+    def test_verification_scan_count_is_independent_of_receipt_count(self):
+        original=self.tasks[-1]
+        self.tasks=self.tasks[:1]+[dict(original,id='copy-'+str(i)) for i in range(24)]
+        records=self.run_tasks()
+        self.application.verify_tasks(self.plan,self.tasks,records,fixtures.TOOLCHAIN,self.observer)
+        self.assertLessEqual(self.application.execution_diagnostics()['guards']['native_verification']['scans'],2)
 
 
 class ManagedCacheIdentity(unittest.TestCase):

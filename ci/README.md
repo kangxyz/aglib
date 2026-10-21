@@ -126,8 +126,11 @@ and resource identities remain guarded within each run.
 
 The package binds its actual executing implementation, including installed
 `site-packages` sources. The canonical content fingerprint is independent of its
-installation location and is included in plans, summaries and individual-check
-keys. The source must stay stable throughout the attempt. Reusing receipts from
+installation location and remains in plans, summaries and check provenance.
+Generic executor repairs do not invalidate compatible check results: their
+commands, checker/policy sources, native imports, runtime and environment still
+bind reuse. Implementation and input drift guards stay active throughout each
+attempt. Reusing receipts from
 an identical relocated checkout retains their original execution paths as
 provenance; a different logical working directory or repository changes the key.
 

@@ -5,6 +5,7 @@ import re
 import subprocess
 import tarfile
 import tempfile
+import tomllib
 import unittest
 
 import yaml
@@ -351,6 +352,11 @@ class CurrentArtifactTransfer(unittest.TestCase):
                         mappings.write_text('current mappings')
                         with tarfile.open(cache / 'lake-native-cache.tar', 'w') as stream:
                             stream.add(mappings, arcname='outputs.jsonl')
+                        auditor = root / 'axiom-audit'
+                        auditor.write_text('#!/bin/sh\nexit 0\n')
+                        auditor.chmod(0o755)
+                        with tarfile.open(cache / 'axiom-audit.tar', 'w') as stream:
+                            stream.add(auditor, arcname='axiom-audit')
                     elif archive == 'invalid':
                         (cache / 'lake-native-cache.tar').write_text('invalid archive')
                     mock = 'lake() { echo "$*" >> "$TRACE"; return "$UNSTAGE_STATUS"; }\n'
@@ -368,6 +374,184 @@ class CurrentArtifactTransfer(unittest.TestCase):
                                          'current mappings')
                     elif archive != 'valid':
                         self.assertFalse((root / 'trace').exists())
+
+
+class AuditorReuseAndTargets(unittest.TestCase):
+    def test_pinned_auditor_reuses_checkout_and_incremental_build_outputs(self):
+        prepare = step('build', 'Prepare axiom auditor')
+        self.assertFalse(prepare.get('continue-on-error', False))
+        self.assertEqual(prepare['working-directory'], '${{ inputs.package-directory }}')
+        mock = r"""
+git() {
+  printf 'git:%s\n' "$*" >> "$TRACE"
+  if test "$1" = clone; then mkdir -p "${@: -1}/.git"; return 0; fi
+  printf '%s\n' "$TOOL_REVISION"
+}
+lake() {
+  printf 'lake:%s\n' "$*" >> "$TRACE"
+  test "$TOOL_BUILD_STATUS" = 0 || return "$TOOL_BUILD_STATUS"
+  mkdir -p .lake/build/bin
+  printf '#!/bin/sh\nexit 0\n' > .lake/build/bin/axiom-audit
+  chmod +x .lake/build/bin/axiom-audit
+}
+"""
+        with tempfile.TemporaryDirectory(prefix='lean-ci-auditor-') as directory:
+            root = Path(directory)
+            (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
+            environment = {**os.environ, 'TRACE': directory + '/trace',
+                           'LAKE_CACHE_DIR': directory + '/cache',
+                           'TOOL_REVISION': '46024e005996495c65ef609368e11ab39c4222e3',
+                           'TOOL_BUILD_STATUS': '0'}
+            for _ in range(2):
+                result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', mock + prepare['run']],
+                                        cwd=root, env=environment, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+            trace = (root / 'trace').read_text().splitlines()
+            self.assertEqual(sum(line.startswith('git:clone ') for line in trace), 1)
+            self.assertEqual(trace.count('lake:build'), 2)
+            self.assertEqual((root / 'cache/axiom-audit/lean-toolchain').read_text(),
+                             (root / 'lean-toolchain').read_text())
+            for settings in ({'TOOL_REVISION': 'wrong-pin'}, {'TOOL_BUILD_STATUS': '1'}):
+                with self.subTest(settings=settings):
+                    result = subprocess.run(
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + prepare['run']],
+                        cwd=root, env={**environment, **settings}, capture_output=True, text=True)
+                    self.assertNotEqual(result.returncode, 0)
+        audit = step('test_lint', 'Audit production axioms')['run']
+        self.assertNotIn('git ', audit)
+        self.assertNotIn('lake build', audit)
+
+    def test_tool_is_transferred_with_current_run_outputs(self):
+        build_steps = JOBS['build']['steps']
+        self.assertLess(build_steps.index(step('build', 'Prepare axiom auditor')),
+                        build_steps.index(step('build', 'Build')))
+        upload = next(item for item in build_steps
+                      if item.get('uses', '').startswith('actions/upload-artifact@'))
+        self.assertEqual(upload['with']['path'].splitlines(), [
+            '${{ runner.temp }}/lake-native-cache.tar', '${{ runner.temp }}/axiom-audit.tar'])
+        self.assertIn('tar -cf "$RUNNER_TEMP/axiom-audit.tar"',
+                      step('build', 'Stage completed native outputs')['run'])
+        restore = step('test_lint', "Restore this run's native Build outputs")['run']
+        self.assertIn('test -x "$RUNNER_TEMP/check-tools/axiom-audit"', restore)
+
+    def test_actual_stage_and_restore_preserve_executable_and_require_tool_archive(self):
+        with tempfile.TemporaryDirectory(prefix='lean-ci-tool-transfer-') as directory:
+            root = Path(directory)
+            build = root / 'build'
+            cache = root / 'cache'
+            build.mkdir()
+            binary = cache / 'axiom-audit/.lake/build/bin/axiom-audit'
+            binary.parent.mkdir(parents=True)
+            binary.write_text('#!/bin/sh\nprintf "audited:%s\\n" "$*"\n')
+            binary.chmod(0o755)
+            (build / 'outputs.jsonl').write_text('current native outputs')
+            mock = r"""
+lake() {
+  if test "$2" = stage; then
+    mkdir -p "$4"
+    cp "$3" "$4/outputs.jsonl"
+  elif test "$2" = unstage; then
+    test -s "$3/outputs.jsonl"
+  else
+    return 99
+  fi
+}
+"""
+            stage_result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
+                    'build', 'Stage completed native outputs')['run']],
+                env={**os.environ, 'RUNNER_TEMP': str(build), 'LAKE_CACHE_DIR': str(cache),
+                     'GITHUB_OUTPUT': str(root / 'stage-output')}, capture_output=True, text=True)
+            self.assertEqual(stage_result.returncode, 0, stage_result.stderr)
+            self.assertEqual((root / 'stage-output').read_text(), 'staged=true\n')
+            for tool_archive in ('valid', 'missing', 'invalid'):
+                with self.subTest(tool_archive=tool_archive):
+                    test = root / tool_archive
+                    download = test / 'download'
+                    download.mkdir(parents=True)
+                    (download / 'lake-native-cache.tar').write_bytes(
+                        (build / 'lake-native-cache.tar').read_bytes())
+                    if tool_archive == 'valid':
+                        (download / 'axiom-audit.tar').write_bytes((build / 'axiom-audit.tar').read_bytes())
+                    elif tool_archive == 'invalid':
+                        (download / 'axiom-audit.tar').write_text('broken archive')
+                    result = subprocess.run(
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
+                            'test_lint', "Restore this run's native Build outputs")['run']],
+                        env={**os.environ, 'RUNNER_TEMP': str(test), 'LAKE_CACHE_DIR': str(download)},
+                        capture_output=True, text=True)
+                    self.assertEqual(result.returncode == 0, tool_archive == 'valid', result.stderr)
+                    self.assertFalse((download / 'lake-native-cache.tar').exists())
+                    self.assertFalse((download / 'axiom-audit.tar').exists())
+                    if tool_archive == 'valid':
+                        audit = subprocess.run([str(test / 'check-tools/axiom-audit'), '--root', 'Aglib'],
+                                               capture_output=True, text=True)
+                        self.assertEqual(audit.returncode, 0, audit.stderr)
+                        self.assertEqual(audit.stdout, 'audited:--root Aglib\n')
+
+    def test_actual_callers_supply_declared_production_roots_without_changing_release_pins(self):
+        # Package directories are sibling checkouts in the integration workspace.
+        for name, expected in (('aglib', 'Aglib'), ('quillen-k-theory', 'Quillen'),
+                               ('motivic', 'Motivic')):
+            root = ROOT.parent / name
+            with self.subTest(package=name):
+                if not root.exists():
+                    self.skipTest('sibling callers require the integration workspace')
+                caller = yaml.safe_load((root / '.github/workflows/ci.yml').read_text())['jobs']['lean']
+                self.assertEqual(caller['with']['package-directory'], '.')
+                self.assertEqual(caller['with']['build-targets'], expected)
+                config = tomllib.loads((root / 'lakefile.toml').read_text())
+                self.assertIn(expected, [lib['name'] for lib in config['lean_lib']])
+                self.assertTrue((root / f'{expected}.lean').is_file())
+                if name != 'aglib':
+                    self.assertEqual(caller['uses'],
+                                     'kangxyz/aglib/.github/workflows/lean-ci.yml@'
+                                     '6c8f51ca331261f88b33bb9c22ef7d33adf01da4')
+
+    def test_empty_targets_fail_all_native_entries_before_external_commands(self):
+        names = [('build', 'Check generated library entries'), ('build', 'Mathlib text style'),
+                 ('build', 'Build'), ('test_lint', 'Verify Build outputs without compilation'),
+                 ('test_lint', 'Lint'), ('test_lint', 'Audit production axioms')]
+        with tempfile.TemporaryDirectory(prefix='lean-ci-empty-targets-') as directory:
+            tool = Path(directory) / 'check-tools/axiom-audit'
+            tool.parent.mkdir()
+            tool.write_text('#!/bin/sh\nexit 99\n')
+            tool.chmod(0o755)
+            mock = 'lake() { echo unexpected-call >&2; return 99; }\n'
+            for job, name in names:
+                for targets in ('', '   ', '\t'):
+                    with self.subTest(step=name, targets=targets):
+                        result = subprocess.run(
+                            ['bash', '-e', '-o', 'pipefail', '-c', mock + step(job, name)['run']],
+                            env={**os.environ, 'BUILD_TARGETS': targets, 'RUNNER_TEMP': directory},
+                            capture_output=True, text=True)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn('at least one production root', result.stdout)
+                        self.assertNotIn('unexpected-call', result.stderr)
+
+    def test_production_audit_visits_every_root_and_propagates_failure(self):
+        with tempfile.TemporaryDirectory(prefix='lean-ci-audit-roots-') as directory:
+            tool = Path(directory) / 'check-tools/axiom-audit'
+            tool.parent.mkdir()
+            tool.write_text('#!/bin/sh\nexit 0\n')
+            tool.chmod(0o755)
+            mock = r"""
+lake() {
+  printf '%s\n' "$*" >> "$TRACE"
+  test "${@: -1}" != "$FAIL_ROOT"
+}
+"""
+            for failure in ('none', 'Aglib', 'Quillen'):
+                trace = Path(directory) / 'trace'
+                trace.write_text('')
+                result = subprocess.run(
+                    ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
+                        'test_lint', 'Audit production axioms')['run']],
+                    env={**os.environ, 'RUNNER_TEMP': directory, 'BUILD_TARGETS': 'Aglib Quillen',
+                         'TRACE': str(trace), 'FAIL_ROOT': failure}, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0 if failure == 'none' else 1, result.stderr)
+                self.assertEqual(trace.read_text().splitlines(), [
+                    f'env {tool} --root Aglib', f'env {tool} --root Quillen'])
 
 
 class NativeSetup(unittest.TestCase):

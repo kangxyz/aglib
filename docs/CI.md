@@ -1,16 +1,18 @@
-# Incremental CI contract
+# Lean CI and local checks
 
-The reusable [lean-incremental-ci package](../ci/README.md) owns execution,
-individual-check progress and final acceptance. [Aglib's adapter](../scripts/ci_pipeline.py)
-owns its mathematical source inventory, check predicates, affected scope and
-historical coverage policy. The workflow owns prepared toolchains, cache
-transport and publication authority. A skipped workflow step cannot waive a
-required core phase or task.
-The local `check_affected.py` entry and committed adapter construct that same
-native recipe and call the shared executor. Local selection observes working-tree
-inputs before reading them; its state and summaries remain distinct from committed
-CI admission. Category repairs retain their declared environment groups and reuse
-compatible successes without weakening CI finalization.
+The public [CI caller](../.github/workflows/ci.yml) uses the shared native
+[workflow](../.github/workflows/lean-ci.yml): Build checks production entries and
+text style, compiles incrementally and transfers its current outputs; Test runs
+in-package tests, native lint and the pinned transitive axiom auditor. The auditor
+is prepared incrementally in the existing native cache and transferred with the
+same Build artifact. Failed runs retain compilation caches; publication requires
+all required checks to pass.
+
+The reusable [lean-incremental-ci package](../ci/README.md) and
+[Aglib adapter](../scripts/ci_pipeline.py) serve local affected/full checks and
+retained committed-adapter consumers. The following baseline and receipt details
+belong to that adapter, not the public native workflow. All local scopes use
+`check_affected.py`; category repairs retain compatible successes.
 
 ## Committed source and verified coverage
 
@@ -33,10 +35,9 @@ implementation owners. Unknown or unavailable evidence fails with a recovery
 diagnostic, without choosing an empty scope or an implicit whole-library build.
 
 Manual bases may widen a verified range. They cannot advance over unverified
-changes. A source-only run may inherit coverage only when mathematical inputs,
-semantic check policy and required controls are compatible with its verified
-ancestor. A change to CI execution machinery requires native integration even
-when the Lean source is unchanged.
+changes. A source-only run may inherit coverage only when mathematical inputs and
+semantic check policy are compatible with its verified
+ancestor. Tooling changes run relevant in-package fixture regressions.
 
 The core reconstructs required tasks from the committed adapter. Completion
 requires the exact source-bound task set, successful resource receipts and
@@ -63,33 +64,34 @@ number of necessary builds. See [upgrade/cache semantics](CACHING.md#upstream-an
 
 Production declaration lint uses the unchanged Batteries driver on the complete
 `Aglib` umbrella environment. It runs as one guarded command, rather than once
-per production leaf. Test declaration lint likewise runs once on the complete
-`AglibTest` umbrella environment, and selected `AuditSupport` is checked separately.
+per production leaf. An existing `AglibTest.lean` retains its umbrella check.
+Without that entry, affected positive test origins use one invocation of the
+existing selected-origin driver, preserving each origin's native linter
+environment. Full selection includes all positive test origins. Selected
+`AuditSupport` is checked separately when changed.
 These environment predicates are explicit in
 the plan and summary; no equivalence to per-leaf lint is asserted, and old
 exact-origin successes are not re-keyed as umbrella successes.
 
-Builtin lint runs once for each production/test root, text style runs once for
-its selected sources, and the fixed axiom auditor
-checks the `Aglib`/`AglibTest` origin prefixes in one invocation. Extra tool
-origins remain explicitly selected. Builtin, declaration and audit commands use
-separate guarded processes, releasing one environment before the next. No extra input
-ledger or cross-version check-compatibility protocol is required.
-Selected style and rejection controls also use individual check records with their
-actual source/runtime input boundaries. A style record binds source text and the
-style-driver imports, not nonexistent compiled audit-source outputs. Unsupported
-reflection runs the actual check rather than inventing a reusable import closure.
-The independent client audit binds its own working directory, actual client
-search path, `Audit.lean` source, manifest and Consumer import closure, together
-with root checker policy. A later failure can reuse that compatible client
-success; a root import environment never substitutes for the client environment.
-The inexpensive compiled-inventory check remains a fresh process.
+Builtin lint runs once for each production/test root, and selected text style
+runs once. Routine formalization runs build, native/batch lint, relevant
+in-package tests, source/no-sorry checks and the existing fixed selected-origin
+axiom audit. Reuse compatible audit evidence for unchanged closure. It does not
+automatically schedule negative controls, compiled inventory, kernel replay or
+separate downstream setup/build/audit. Full scope, merge, publication and
+mathematical adoption do not add these tasks or repeat acceptance. Complex
+multi-stage repeat-acceptance chains are prohibited. Independent mathematical
+and writing review obligations are unchanged.
 
-Aglib tracks its deterministic downstream manifest. Regenerate it with
-`python3 scripts/prepare_downstream.py` and commit it with a root pin update.
-Planning rejects stale tracked client metadata before expensive native work.
-Preparation preserves identical bytes and establishes ignored cache links before
-optional-input observations begin.
+The fixed axiom auditor retains the production and selected test origins,
+including private/generated declarations and transitive approved-axiom checks.
+Compilation and lint alone do not supply its evidence. See
+[mathematical trust](DEVELOPMENT.md#mathematical-trust).
+
+The existing standalone diagnostics remain callable when specifically requested.
+Explicit `--phase trust` and `--phase client` select their existing diagnostic
+groups. Client preparation and matching client metadata are prerequisites only
+for an explicit client diagnostic, not for routine validation or root pin updates.
 
 Native frontends remain serialized under the configured heap, owned-process-group
 RSS and concurrency bounds. An explicitly admitted parent-managed resource
@@ -194,12 +196,12 @@ Package unit tests use a separate library/protocol. The bounded real
 [cache integration](../ci/native_test.py) uses two copies of a two-module Lean
 package and isolated local caches. It checks retained success after a later
 failure, matching restoration under `--no-build`, rejection of stale upstream
-inputs and restoration for the new inputs. It runs for core/toolchain changes;
+inputs and restoration for the new inputs. It runs only when explicitly requested;
 it does not rebuild Aglib or update its pins. Its same-compiler results are not
 a cross-version compatibility claim.
 
 Complete output distinguishes performed checks, reused individual successes,
 inherited policy and compiled-or-refreshed trace diagnostics. The latter are not
 an actual compiler-invocation count. Ordinary code validation does not claim
-additional kernel replay or mathematical adoption; those remain governed by
-[formalization acceptance](DEVELOPMENT.md#kernel-replay-at-mathematical-adoption).
+additional kernel replay or mathematical acceptance. Replay is an explicit
+[standalone diagnostic](DEVELOPMENT.md#kernel-replay-at-mathematical-adoption).

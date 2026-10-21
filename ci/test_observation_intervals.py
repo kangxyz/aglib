@@ -215,6 +215,26 @@ class ObservationIntervalTests(unittest.TestCase):
         with self.assertRaises(InputDrift):
             inputs.assert_stable()
 
+    def test_unrelated_namespace_entries_do_not_invalidate_resolution(self):
+        namespace = self.root / 'Quartz'
+        namespace.mkdir()
+        inputs = self.inputs()
+        inputs.observe_resolution(namespace)
+        sibling = namespace / 'Unrelated.olean'
+        sibling.write_bytes(b'unrelated cached module')
+        inputs.assert_stable()
+        sibling.unlink()
+        inputs.assert_stable()
+
+    def test_absent_namespace_still_detects_create_remove(self):
+        namespace = self.root / 'Absent'
+        inputs = self.inputs()
+        inputs.observe_resolution(namespace)
+        namespace.mkdir()
+        namespace.rmdir()
+        with self.assertRaises(InputDrift):
+            inputs.assert_stable()
+
     def test_inspection_keeps_per_file_guards_eager(self):
         inputs = self.inputs()
         inputs.native_hash_file(self.artifact)

@@ -10,9 +10,7 @@ import sys
 from library_sources import is_import_surface, lean_imports, module_name, module_path, style_sources
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = {'lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json',
-          'examples/downstream/lean-toolchain', 'examples/downstream/lakefile.toml',
-          'examples/downstream/lakefile.lean', 'examples/downstream/lake-manifest.json'}
+CONFIG = {'lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json'}
 AUDIT = {'Audits.Aglib', 'AglibTest.AuditSupport'}
 CONTROL_INPUTS = CONFIG | {
     '.github/workflows/ci.yml',
@@ -67,6 +65,15 @@ def node(path):
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+
+
+def routine_source(path):
+    """Root-package mathematical inputs, excluding standalone diagnostic sources."""
+    return (path.endswith('.lean')
+            and (path.startswith(('Aglib/', 'AglibTest/', 'Tools/'))
+                 or path in {'Aglib.lean', 'AglibTest.lean'})
+            and path not in {'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean'}
+            and not path.startswith('AglibTest/NegativeControls/'))
 
 
 def controls_changed(changed):
@@ -206,10 +213,12 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
                             'test_ci_baseline', 'test_affected_scope', 'test_source_guards',
                             'test_integration_setup', 'test_ci_cache', 'test_ci_audit'])
         elif path.endswith('.lean'):
-            if not (path.startswith(('Aglib/', 'AglibTest/', 'Tools/', 'examples/downstream/'))
+            if not (path.startswith(('Aglib/', 'AglibTest/', 'Tools/', 'Audits/', 'examples/downstream/'))
                     or path in {'Aglib.lean', 'AglibTest.lean'}):
                 raise ValueError('Unrecognized Lean source: ' + path)
             seeds.add(node(path))
+        elif path.startswith('examples/downstream/'):
+            continue  # Separate client configuration belongs to explicit diagnostics.
         elif path.endswith('.md') or (path.startswith('docs/') and path.endswith('.json')):
             continue
         elif path.startswith('scripts/') or path.startswith('.github/'):
@@ -252,16 +261,12 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
     trust = bool((executable - {n for n in executable if n.startswith('client:')})
                  or seeds & AUDIT or controls)
     client_audit = bool(client or 'client:Audit' in seeds)
-    native = bool(providers or consumers or tests or client_audit or trust)
-    cache_targets = providers + consumers + tests + ['client:' + name for name in client]
-    if trust:
+    native = bool(providers or consumers or tests)
+    # Routine cache preparation follows only the library/test build and linters.
+    # Explicit trust/client diagnostics own their additional dependency setup.
+    cache_targets = providers + consumers + tests
+    if trust and native:
         cache_targets += [name for name in graph if name in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'}]
-        if controls:
-            cache_targets += [name for name in graph if name.startswith('AglibTest.NegativeControls.')]
-        if 'Audits/Aglib.lean' in changed:
-            cache_targets.append('Audits.Aglib')
-    if client_audit:
-        cache_targets.append('client:Audit')
     identity_paths = set(changed) | {sources[n] for n in affected if n in sources} | CONFIG
     if trust:
         identity_paths.update(['Audits/Aglib.lean', 'AglibTest/AuditSupport.lean',
@@ -276,7 +281,7 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
             'style': sorted(n for n in affected & sources.keys() if (configuration_update or sources[n] in changed) and not n.startswith('client:')
                             and 'NegativeControls' not in n),
             'trust': trust, 'controls': controls, 'client_audit': client_audit, 'native': native,
-            'publish': bool(providers or consumers or tests or trust), 'tooling_tests': sorted(tooling),
+            'publish': native, 'tooling_tests': sorted(tooling),
             'identity': {p: digest(root / p) for p in sorted(identity_paths)}}
 
 

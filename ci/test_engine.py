@@ -235,7 +235,7 @@ class EngineTests(unittest.TestCase):
                 self.native(FixtureExecutor(self.root, callback=mutate))
             self.assertFalse(list((self.state / 'check-progress').glob('*.json')))
 
-    def test_changed_implementation_invalidates_individual_check_reuse(self):
+    def test_changed_producer_preserves_unchanged_individual_checks(self):
         copied = self.implementation_copy(self.scratch / 'installed')
         progress = self.scratch / 'shared-progress'
         with patch('lean_ci.engine.implementation_sources', return_value=copied):
@@ -249,7 +249,7 @@ class EngineTests(unittest.TestCase):
             result = self.application.run_phase(new_state, 'native', progress=progress,
                                                 executor=FixtureExecutor(self.root), toolchain=TOOLCHAIN)
             self.assertEqual([item['result']['mode'] for item in result['tasks'] if 'mode' in item['result']],
-                             ['performed', 'performed'])
+                             ['reused', 'reused'])
 
     def test_same_repository_relocation_reuses_logically_identical_checks(self):
         self.plan(); self.source(); self.native()

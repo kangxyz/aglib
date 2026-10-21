@@ -18,22 +18,19 @@ and unknown paths fail closed instead of selecting full roots.
 `check_affected.py` is the local entry to Aglib's shared recipe and executor.
 It selects observed working-tree inputs, runs cheap source/link checks and
 applicable Python fixtures, validates one native graph, then runs the declared
-lint, trust and client groups. Markdown and documentation-evidence JSON changes
+native/batch lint and relevant in-package test groups. Markdown and documentation-evidence JSON changes
 stop after static checks, without native setup or publication. Unrelated imports
 must pass a cache-only preflight before affected facades or umbrella checks can
 consume them; a missing cache does not authorize unrelated cold compilation.
 
-Builtin lint and the unchanged Batteries driver run separately on the complete
-`Aglib` and `AglibTest` environments. These are the accepted ordinary final-check
-predicates. Selected text/style checks run once through `run_style_linter.py`.
-
-`run_declaration_linter.py` remains a required adapter for the selected
-`AglibTest.AuditSupport` exact-origin check and selected `Tools.*` origins outside
-the two library umbrellas. It preserves every enabled Batteries check, nolints
-handling and failure behavior while filtering the declaration enumeration by
-origin. It is not the ordinary production/test leaf-lint path. A diagnostic
-exact-origin pass on an `Aglib.*` or `AglibTest.*` leaf cannot discharge that
-library's required umbrella check.
+Production builtin/declaration lint retains the complete `Aglib` environment.
+An existing `AglibTest.lean` retains its umbrella check. When that entry is
+absent, selected positive test origins use one batch invocation of
+`run_declaration_linter.py`. The pinned Batteries driver retains a separate
+linter environment per origin, all enabled checks, nolints handling and failure
+behavior; only repeated frontend initialization is removed. The same helper
+checks selected `AuditSupport` and `Tools.*` origins. Full selection includes all
+positive tests. These actual modes remain distinct in check compatibility.
 
 `run_style_linter.py --modules MODULE ...` retains the pinned Mathlib options,
 `lintModules`, naming and script-documentation checks with exact source
@@ -41,53 +38,32 @@ selection. Its enumeration adapter fails on unrecognized driver text; the
 no-argument helper retains comprehensive driver behavior. Neither helper
 overwrites dependency caches.
 
-The trust group imports the accepted production/test umbrellas plus selected
-extra origins and the maintained `AglibTest.AuditSupport`, retaining its existing
-defining-module origin policy.
-Both local and CI routes execute the committed
-[SelectedAudit.lean](../ci/lean/SelectedAudit.lean) program through `ci_audit.py`,
-passing validated module-name components as JSON data. Neither route generates
-an audit source file or extracts executable blocks from `Axioms.lean`.
-Private/generated declarations, allowed axioms, rejection controls and stale/negative
-compiled-output checks are retained. `check_compiled_inventory.py --modules MODULE ...`
-requires only selected enrollment while still rejecting stale and negative outputs.
-Formal mathematical adoption explicitly uses `check_kernel.py --modules MODULE ...`
-with compatible retained root/client evidence. Its output stays labelled a probe
-for the selected compiled-import basis, with no whole-library coverage claim.
-Ordinary selected code final checks and cache publication do not request extra
-kernel replay or claim mathematical acceptance; their metadata records replay
-as not requested and externally tracked. See the
-[adoption recipe](../docs/DEVELOPMENT.md#kernel-replay-at-mathematical-adoption).
+Routine formalization does not automatically add additional trust, inventory,
+negative-control or downstream preparation/build/audit tasks. Kernel replay is
+an explicitly requested standalone diagnostic only, including at mathematical
+adoption. This applies equally to merge, publication and full-library scope.
+Complex multi-stage repeat-acceptance chains are prohibited; independent
+mathematical and writing review obligations are unchanged.
 
-Changed-proof trust and rejection-control validation are separate plan decisions.
-Origin/axiom coverage still follows changed proofs. Unchanged control fixtures,
-auditor/support policy and pinned compiler-wrapper runtime reuse compatible
-accepted-baseline evidence; their changes and explicit full diagnostics select
-the controls. Missing compatible control coverage calls for the direct
-`python3 scripts/check_negative_controls.py` command, preserving the source and
-runtime basis of that check.
+For repairs, use `--phase providers`, `--phase provider-lint` or
+`--phase consumers` (repeatable), optionally `--native-only`, and retain the same
+external `AGLIB_VERIFY_DIR` for compatible successes. Explicitly requested
+`--phase trust` and `--phase client` retain their diagnostic behavior. Only an
+explicit client request requires client preparation and matching metadata.
 
-After final-check repairs use `--phase providers`, `--phase provider-lint`,
-`--phase consumers`, `--phase trust` or `--phase client` (repeatable), optionally
-`--native-only`, for only failed or newly invalidated categories. Reuse the same
-external `AGLIB_VERIFY_DIR` to retain compatible completed check successes.
-Compilation alone does not discharge independent lint/test/trust coverage.
-The [shared repair commands](../docs/DEVELOPMENT.md#local-verification-and-ci)
-retain the required umbrella and client predicates without repeating compatible
-completed categories.
-
-`check.sh --full [--source-only] [--rehash] [--ci]` retains separately requested
-whole-library diagnostics. Without literal `--full`, `check.sh` requires an
+`check.sh --full [--source-only] [--rehash] [--ci]` selects the whole library and
+in-package tests through the same shared executor and compatible progress. Without literal `--full`, `check.sh` requires an
 incremental baseline or guarded `--plan FILE`; no absent cache, manual dispatch,
 unknown path or changed pin implicitly selects the comprehensive command. All-zero
 new-branch event bases use an available trusted default-branch merge-base or a
 genuine parentless initial-tree diff; unavailable Git metadata fails actionably.
 
-[CI](../.github/workflows/ci.yml) calls the Aglib adapter `ci_pipeline.py` for
-planning, source/native execution and mandatory finalization through the
-installable [lean-incremental-ci package](../ci/README.md); see its
-[acceptance contract](../docs/CI.md). Planning precedes Lean installation and
-cache restoration. `ci_baseline.py` selects an ancestor whose native validation
+The public [CI caller](../.github/workflows/ci.yml) uses the shared native
+[workflow](../.github/workflows/lean-ci.yml); see [CI and local checks](../docs/CI.md).
+The installable [lean-incremental-ci package](../ci/README.md) serves local checks
+and retained committed-adapter consumers. For the retained committed adapter,
+planning precedes Lean installation and cache restoration. Its `ci_baseline.py`
+selects an ancestor whose native validation
 completed under an exact reviewed workflow and implementation recipe. The legacy
 whole-library witness is restricted to its reviewed source commit. A failed run,
 a source-only green run and the former previous-push
@@ -103,14 +79,12 @@ imports or fixed resource-variable names.
 
 The CI adapter explicitly assigns complete current check coverage for pin,
 compiler and build-configuration changes. The local affected checker still
-requires its caller's explicit scope decision for those changes. Regenerate and
-commit the deterministic downstream manifest with a root pin update; preparation
-preserves identical tracked bytes. Restoring artifacts for the new inputs before
+requires its caller's explicit scope decision for those changes. Downstream metadata preparation is separate and explicitly requested. Restoring artifacts for the new inputs before
 Lake's `--rehash`/`--no-build` validation can avoid target recompilation. This does
 not assume cross-compiler compatibility; [caching](../docs/CACHING.md#upstream-and-toolchain-updates)
 describes the supported boundary.
 
-Core/toolchain changes run `ci/native_test.py` as a required native task. Its
+`ci/native_test.py` is an explicitly requested standalone diagnostic. Its
 isolated two-module producer/consumer fixture exercises partial success,
 matching native cache restoration and rejection of stale upstream inputs.
 The [initial policy cutover](../docs/CI.md#initial-policy-cutover) records the
@@ -157,9 +131,13 @@ defining-module origin, so native mathematical namespaces do not reduce package
 coverage. Its `--no-build` rejects missing imported library artifacts; Lake can
 still build the executable's tool prerequisites. The style driver reads Aglib's
 current-root configuration and receives the explicit `Aglib AglibTest` selection.
-Neither command replaces the separate Lean axiom/origin audit. Python checks
-package structure, import enrollment and execution; it does not implement these
-Lean declaration or text-style rules.
+Full scope runs the same basic build/lint/in-package test categories. It does not
+request replay, additional inventory/control chains or separate client validation.
+Existing selected-origin axiom auditing retains its ordinary final-validation
+predicate and compatible evidence under
+[mathematical trust](../docs/DEVELOPMENT.md#mathematical-trust).
+The standalone diagnostic tools below remain available when specifically
+requested. Matching caches and completed checks are reused across repairs.
 
 The local route preserves shared dependency caches by running the same pinned
 Batteries source directly:
@@ -191,12 +169,15 @@ The actual checks and arguments remain those of the pinned driver. The helper
 does not pass `--fix`. CI owns writable dependency caches and uses the native
 commands above instead of this local overlay.
 
-## Resource limits and exact kernel replay
+## Resource limits and explicitly requested kernel replay
+
+The replay mechanics in this section apply only to an explicitly requested
+standalone diagnostic; routine formalization never schedules them.
 
 Full checks serialize frontend processes. Normal builds can select internal
 parallelism through `AGLIB_BUILD_THREADS`; without it, they inherit
-`LEAN_NUM_THREADS` or default to one. The comprehensive `check.sh` resets
-`LEAN_NUM_THREADS=1`; use `AGLIB_BUILD_THREADS` for its compiler parallelism.
+`LEAN_NUM_THREADS` or default to one. Every `check.sh` scope inherits the same
+configured resource limits; use `AGLIB_BUILD_THREADS` for compiler parallelism.
 The count must be positive
 and fit the available logical CPUs. A temporary toolchain wrapper carries the
 same count to native `-j` and `LEAN_NUM_THREADS`, including Lake-spawned compilers,
@@ -275,8 +256,8 @@ Missing source metadata disables reuse for the affected closure; incomplete
 compiled metadata fails closed. Configuration uses the existing typed cache
 normalization (ignoring only package version and storage-policy fields); raw
 configuration hashes remain in the full provenance. No historical-directory
-search is performed. The default full-check timestamp directories remain fresh;
-select a stable directory explicitly for incremental replay at mathematical adoption:
+search is performed. For an explicitly requested replay diagnostic, select a
+stable receipt directory:
 
 ```sh
 python3 scripts/check_kernel.py --receipt-dir .lake/verification/kernel \
@@ -285,15 +266,9 @@ python3 scripts/check_kernel.py --root examples/downstream --client \
   --receipt-dir .lake/verification/client-kernel --modules Consumer.FundamentalGroup
 ```
 
-This is the existing substantive adoption milestone for claimed formalized
-results, not a new state or a consequence of an ordinary code check, commit,
-merge or status/writing review alone. Scope the modules and uncovered dependencies
-to the adopted result and reuse matching evidence for the rest. Unreviewed
-generated source or uncertain source/options/environment/artifact provenance
-requires resolving that trust basis and the needed scoped replay before
-mathematical adoption; a successful ordinary compile alone does not establish it.
-Replay adds a recorded kernel/environment check and does not replace mathematical
-review or explicit premises.
+Replay adds a recorded kernel/environment diagnostic and does not replace
+mathematical review or explicit premises. Mathematical adoption does not require
+or automatically schedule this diagnostic.
 
 The pinned replay core checks each module's declarations sequentially; bounded
 module tasks provide replay parallelism. Normal-build thread settings remain
@@ -315,17 +290,10 @@ evidence and execution profiles. Older receipts lack dependency metadata and
 require a new closure-bound replay before automatic reuse. Missing or corrupted
 selected records, original bases, logs or resource evidence fail closed.
 
-On resumption, distinguish the accepted operational tool revision from the frozen
-mathematical source snapshot and record both identities. Continue warranted replay
-through the same explicit compatible receipt lineage; operational-guidance adoption
-alone requires no new replay. Changes affecting recorded compiler/runtime or checker
-semantics remain subject to the compatibility rules above. Integration and publication
-retain required library/client and other check coverage through compatible evidence
-and narrow new checks, without rerunning unchanged checks. Matching per-closure replay
-evidence discharges unchanged replay coverage. A scoped probe does not claim
-complete library replay or mathematical acceptance; adoption evaluates the actual
-accepted target and its required coverage. Cache publication reports its narrow
-build/check basis separately.
+On an explicitly requested replay resumption, distinguish the operational tool
+revision from the mathematical source snapshot and reuse compatible evidence.
+A scoped probe does not claim complete-library replay or mathematical acceptance.
+Merge, publication and adoption do not request replay or client diagnostics.
 
 Do not run another Lean job concurrently with this serialized route. On restricted
 macOS hosts, process monitoring and owned-process signaling require the authorized
@@ -369,26 +337,24 @@ Source changes can reuse unaffected compiled modules through Lake `--rehash`.
 
 The selected proof-cache command is `python3 scripts/cache_ci.py --plan PLAN
 --receipt RECEIPT`. It resolves the pinned dependencies, projects the existing
-scope graph's actual provider/consumer/test/client imports (including required
-broad facades) and named lint/trust tooling to explicit Mathlib roots, then uses
+scope graph's actual provider/consumer/in-package-test imports (including required
+broad facades) and named lint tooling to explicit Mathlib roots, then uses
 the existing capped toolchain and RSS guard with serialized compiler launches
 and exact cached compiler metadata queries. `affected_scope.py --cache-roots PLAN`
 prints the same validated roots after dependency resolution. Markdown-only plans
 skip dependency resolution and cache work; missing sources or basis fail without
 an unscoped fetch. The stricter original `--bootstrap-cache` gate remains unchanged.
 The CI runner and resource profile are defined in `.github/workflows/ci.yml`.
-Local final checks require matching prepared dependencies and
-`python3 scripts/prepare_downstream.py` before validation. Use an external
+Local final checks require matching prepared root dependencies; client setup is
+required only for an explicitly requested client diagnostic. Use an external
 `AGLIB_VERIFY_DIR`; retries in that state reuse compatible completed checks.
 The local entry and committed CI use the same `lean_ci.recipe` and task runner,
 with different source/CI admission boundaries. Production and test declaration
 lint use their accepted umbrella environments; old exact-origin successes do
 not become umbrella coverage. A source-only scope performs no cache setup.
-Its incremental `check.sh --base BASE --rehash --ci` mode retains selected
-compilation, linters, axiom audits and affected client checks. Selected local and
-CI code checks do not request extra kernel replay. Mathematical adoption uses
-the explicit scoped checker commands above; whole-library diagnostics retain
-`--full` and their existing replay behavior.
+Its incremental `check.sh --base BASE --rehash --ci` mode runs basic source
+checks, selected compilation, native lint and relevant in-package tests. Full
+scope uses the same categories; no routine path adds replay or client checks.
 
 `prepare_build_cache.py` runs before restored project outputs enter the declared
 CI check. Each build root carries an advisory `.aglib-cache.json` provenance stamp
@@ -410,9 +376,8 @@ caches remain outside these owned build roots.
 
 `test_ci_cache.py` uses isolated temporary fixtures (`/private/tmp` on macOS) to cover configuration
 identity, preservation across wrapper-metadata changes, enrollment pruning, path guards,
-and workflow ordering. Caches never replace audits, rejection controls, strict
-compiled inventory, or kernel replay: every trust stage still runs in the full
-`--rehash` checker.
+and workflow ordering. Caches preserve progress; checks reuse only compatible
+evidence for the selected routine categories.
 
 ## Maintained tools
 
@@ -445,11 +410,11 @@ compiled inventory, or kernel replay: every trust stage still runs in the full
 | `check_source_policy.py` | Any option with an exact `maxHeartbeats` name component, including `synthInstance.maxHeartbeats`, must use a positive finite budget scoped to one declaration with an explanatory comment after `in`. Aglib rejects `0` (unlimited), including documented local zero budgets; this is stricter than pinned Mathlib. Copyright headers require nonempty author credits while original extraction notices are preserved. Other fixed source safety remains enforced; comment quality and budget necessity remain author judgments. Accepts `--root PATH`. |
 | `check_compiled_inventory.py` | Matches the root-owned compiled replay view to current source; rejects deleted/old-prefix artifacts and negative controls in the positive view. Accepts `--root PATH`. |
 | `check_negative_controls.py` | Compiles isolated control data in a temporary overlay and requires the specific imported/current-module axiom rejection. Setup errors cannot count as rejection. |
-| `run_declaration_linter.py` | Required exact-origin Batteries adapter for selected AuditSupport and Tools origins; leaf diagnostics do not replace ordinary umbrella validation. Never builds project or dependency modules. |
+| `run_declaration_linter.py` | Exact-origin Batteries adapter for explicitly selected AuditSupport and Tools origins; leaf diagnostics do not replace ordinary umbrella validation. Never builds project or dependency modules. |
 | `run_style_linter.py` | Runs the exact pinned style driver through a temporary optional-module overlay. `--check-prerequisites --sysroot PATH` inspects direct driver/source prerequisites without Lake, compilation, or writes. |
 | `prepare_downstream.py` | Prepares the independently configured client's manifest and dependency-cache link from the pinned root manifest. It preserves the root manifest and existing dependency sources. |
 | `migration_helpers.py` | Read-only transitional inspection of initial-extraction routing and namespace maps. `read_source` requires an explicit source root, exact Git revision, and exact source SHA-256; `write_source` and `record` are retired and always fail before writes. It is not the redesigned-source authoring pipeline or a production dependency. |
-| `test_check_script.py` | Fixed command-level regressions for failure propagation, native CI and immutable-cache-safe local linter dispatch, explicit audits, and scoped kernel replay. |
+| `test_check_script.py` | Fixed command-level regressions for failure propagation, native CI and immutable-cache-safe local linter dispatch, explicit diagnostic separation. |
 | `test_integration_setup.py` | Regressions for exact compiled enrollment, isolated downstream manifest setup, and read-only optional linter prerequisite planning. |
 | `test_migration_helpers.py` | Regressions for explicit source selection, revision/hash guards, preserved provenance identities, and retired writer failure without module/metadata mutation. |
 | `test_source_guards.py` | Regression fixtures for lexical boundaries, facade ownership/enrollment, cycles, modern exports, placeholders, downstream imports, mixed-format test umbrellas, author credits, and local heartbeat policy. |

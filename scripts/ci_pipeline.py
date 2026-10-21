@@ -87,7 +87,7 @@ def tree(root, revision):
 
 def mathematical_tree(root, revision):
     return {p: value for p, value in tree(root, revision).items()
-            if (p.endswith('.lean') and not p.startswith('ci/')) or p in affected_scope.CONFIG}
+            if affected_scope.routine_source(p) or p in affected_scope.CONFIG}
 
 
 def validate_fixed_audit_sources(root):
@@ -192,35 +192,23 @@ def assert_native_scope(root, scope, base_math, head_math, changed):
     """A second, source-based gate against accidentally empty/omitted math scope."""
     math_changed = {p for p in base_math.keys() | head_math.keys()
                     if base_math.get(p) != head_math.get(p)}
-    controls_changed = affected_scope.controls_changed(changed)
-    if not scope['native'] and (math_changed or controls_changed or scope['controls']):
-        raise ValueError('Changed mathematical/control inputs cannot have source-only native coverage')
+    if not scope['native'] and math_changed:
+        raise ValueError('Changed mathematical inputs cannot have source-only native coverage')
     selected = set(scope['providers'] + scope['consumers'] + scope['tests'])
     if scope.get('configuration_update'):
         required = {affected_scope.node(p) for p in head_math if p.endswith('.lean')
                     and (p.startswith(('Aglib/', 'AglibTest/', 'Tools/')) or p in {'Aglib.lean', 'AglibTest.lean'})
                     and p not in {'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean'}
                     and not p.startswith(('AglibTest/NegativeControls/', 'examples/downstream/'))}
-        if required - selected or not (scope['trust'] and scope['controls'] and scope['client_audit']):
+        if required - selected:
             raise ValueError('Configuration update omitted complete current check scope')
     for path in sorted(math_changed):
         if path in affected_scope.CONFIG:
             if not scope.get('configuration_update'):
                 raise ValueError('Configuration/pin changes need an explicit validated migration scope: ' + path)
             continue
-        if path.startswith('examples/downstream/'):
-            if not scope['client_audit']:
-                raise ValueError('Changed client mathematical input omitted from native audit scope: ' + path)
-        elif path.startswith('AglibTest/NegativeControls/'):
-            if not scope['controls'] or not scope['trust']:
-                raise ValueError('Changed rejection control omitted from native scope: ' + path)
-        elif path in {'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean'}:
-            if not scope['trust']:
-                raise ValueError('Changed audit policy omitted from native scope: ' + path)
-        elif path in head_math and affected_scope.node(path) not in selected:
+        if path in head_math and affected_scope.node(path) not in selected:
             raise ValueError('Changed mathematical module omitted from native scope: ' + path)
-    if controls_changed and not (scope['native'] and scope['trust'] and scope['controls']):
-        raise ValueError('Changed control/runtime policy requires fresh native rejection controls')
 
 
 def runtime_imports(root):
@@ -233,7 +221,7 @@ def runtime_imports(root):
 
 def declaration_policy(scope):
     return {'production': 'full Aglib umbrella environment',
-            'tests': 'full AglibTest umbrella environment',
+            'tests': 'AglibTest umbrella when present; otherwise exact selected positive origins in one native batch',
             'support': 'exact AuditSupport origin when selected',
             'equivalence': 'umbrella and exact-origin environments are distinct predicates'}
 
@@ -241,8 +229,13 @@ def declaration_policy(scope):
 def tasks(root, plan, phase, directory, *, phases=None):
     """One library policy recipe for committed CI and local final validation."""
     scope = plan['scope']
-    selected_phases = set(phases or ['providers', 'provider-lint', 'consumers', 'trust', 'client'])
-    complete = selected_phases == {'providers', 'provider-lint', 'consumers', 'trust', 'client'}
+    selected_phases = set(phases or ['providers', 'provider-lint', 'consumers'])
+    complete = {'providers', 'provider-lint', 'consumers'} <= selected_phases
+    diagnostic = bool(selected_phases & {'trust', 'client'})
+    audit_selected = scope['trust'] and (phases is None or 'trust' in selected_phases)
+    test_roots = (['AglibTest'] if (root / 'AglibTest.lean').is_file() else
+                  sorted(name for name in scope['tests'] if name.startswith('AglibTest.')))
+    library_roots = ['Aglib', *test_roots]
     def task(name, args, kind='process', cwd=root, **extra):
         return {'id': name, 'kind': kind, 'command': list(map(str, args)),
                 'cwd': str(cwd), **extra}
@@ -258,32 +251,25 @@ def tasks(root, plan, phase, directory, *, phases=None):
                          'ci' if test == 'lean-ci' else 'scripts', '-p',
                          'test_*.py' if test in ('native-cache', 'lean-ci') else test + '.py'])
                          for test in scope['tooling_tests'])
-    if phase == 'source' or (phase == 'check' and not scope['native']):
+    if phase == 'source' or (phase == 'check' and not scope['native'] and not diagnostic):
         return native_recipe(root, directory, source_checks=source_checks, phase='source')
-    if phase not in ('native', 'check') or not scope['native']:
+    if phase not in ('native', 'check') or (not scope['native'] and not diagnostic):
         raise ValueError('Native phase was not required by this selection')
     prepare = []
-    core_changed = any(path.startswith('ci/') or path in {
-        'scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/ci_baseline.py',
-        '.github/workflows/ci.yml', 'lean-toolchain', 'examples/downstream/lean-toolchain',
-    } for path in scope['changed'])
-    if core_changed and complete:
-        prepare.append(task('core-native-cache', ['python3', 'ci/native_test.py', '--state',
-                            directory / 'core-cache-fixture', '--resource-prefix', 'AGLIB',
-                            '--profile-key', 'R5_LEAN_REMOTE_PROFILE']))
     client = root / 'examples/downstream'
-    prepare.append(task('prepare-client', ['python3', 'scripts/prepare_downstream.py'],
-                        establishes_inputs=True))
+    if 'client' in selected_phases:
+        prepare.append(task('prepare-client', ['python3', 'scripts/prepare_downstream.py'],
+                            establishes_inputs=True))
     lake = ['lake', '--rehash']
     imports = runtime_imports(root) if selected_phases & {'provider-lint', 'consumers'} else []
-    graph_roots = list(dict.fromkeys(['Aglib', 'AglibTest',
+    graph_roots = list(dict.fromkeys([*library_roots,
                         *scope['providers'], *scope['consumers'], *scope['tests'],
-                        *(['AglibTest.AuditSupport', 'AglibTest.AuditCoverage'] if scope['trust'] else [])]))
+                        *(['AglibTest.AuditSupport', 'AglibTest.AuditCoverage'] if audit_selected else [])]))
     if selected_phases == {'providers'}:
         graph_roots = list(scope['providers'])
     current_modules = source_order(root, graph_roots)
     selected = set(scope['providers'] + scope['consumers'] + scope['tests'])
-    if scope['trust']:
+    if audit_selected:
         selected.update(['AglibTest.AuditSupport', 'AglibTest.AuditCoverage'])
     unrelated = sorted(set(current_modules) - selected)
     before = ([safe('unrelated-cached-imports', lake + ['--no-build', 'build', *unrelated])]
@@ -308,10 +294,17 @@ def tasks(root, plan, phase, directory, *, phases=None):
                                    ['python3', 'scripts/run_declaration_linter.py', name],
                                    kind='check', check_kind='declaration', modules=[name], selection=[name])]]
     if selected_phases & {'provider-lint', 'consumers'}:
-        for module in ('Aglib', 'AglibTest'):
-            checks.append(full_lint(module + '/builtin', module, 'builtin'))
-        for module in ('Aglib', 'AglibTest'):
-            checks.append(full_lint(module + '/declaration', module, 'declaration'))
+        checks.append(full_lint('Aglib/builtin', 'Aglib', 'builtin'))
+        if test_roots:
+            checks.append(safe('AglibTest/builtin', lint_lake + ['lint', '--builtin-only', *test_roots],
+                               kind='check', check_kind='builtin', modules=test_roots, selection=test_roots))
+        checks.append(full_lint('Aglib/declaration', 'Aglib', 'declaration'))
+        if test_roots == ['AglibTest']:
+            checks.append(full_lint('AglibTest/declaration', 'AglibTest', 'declaration'))
+        elif test_roots:
+            checks.append(safe('AglibTest/declaration',
+                               ['python3', 'scripts/run_declaration_linter.py', *test_roots],
+                               kind='check', check_kind='declaration', modules=test_roots, selection=test_roots))
         all_lint = scope['providers'] + [n for n in scope['consumers'] + scope['tests']
                                        if n not in scope['facades']]
         other = [name for name in all_lint if not any(name == prefix or name.startswith(prefix + '.')
@@ -322,7 +315,7 @@ def tasks(root, plan, phase, directory, *, phases=None):
                                '--modules', *scope['style']], kind='check', check_kind='style',
                                modules=[], selection=scope['style'],
                                raw_paths=[str(module_path(name)) for name in scope['style']]))
-    if 'trust' in selected_phases and scope['trust']:
+    if audit_selected:
         support = ['AglibTest.AuditSupport', 'AglibTest.AuditCoverage']
         if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
             checks.extend(exact_lint('audit-support', ['AglibTest.AuditSupport']))
@@ -330,20 +323,21 @@ def tasks(root, plan, phase, directory, *, phases=None):
                               if n not in scope['facades']))
         if 'AglibTest/AuditSupport.lean' in scope['changed'] or scope.get('configuration_update'):
             selected.append('AglibTest.AuditSupport')
-        names = list(dict.fromkeys(['Aglib', 'AglibTest', *[name for name in selected
+        names = list(dict.fromkeys([*library_roots, *[name for name in selected
                     if not name.startswith(('Aglib.', 'AglibTest.'))]]))
         checks.append(safe('audit/all', audit_command(root, names), kind='check',
                            check_kind='audit', modules=sorted(set([*names, *support])), selection=names))
-        if 'Audits/Aglib.lean' in scope['changed']:
+        if 'trust' in selected_phases and 'Audits/Aglib.lean' in scope['changed']:
             checks.extend([safe('legacy-audit-cached-imports', lake + ['--no-build', 'build', 'Aglib', *support]),
                            safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'Audits/Aglib.lean'])])
-        if scope['controls']:
+        if 'trust' in selected_phases and scope['controls']:
             controls = sorted(path.relative_to(root).as_posix()
                               for path in (root / 'AglibTest/NegativeControls').rglob('*.lean'))
             checks.append(safe('negative-controls', ['python3', 'scripts/check_negative_controls.py'],
                                kind='check', check_kind='controls', modules=support,
                                selection=support, raw_paths=controls))
-        checks.append(safe('compiled-inventory', ['python3', 'scripts/check_compiled_inventory.py', '--modules',
+        if 'trust' in selected_phases:
+            checks.append(safe('compiled-inventory', ['python3', 'scripts/check_compiled_inventory.py', '--modules',
                            *dict.fromkeys([*scope['providers'], *scope['consumers'], *scope['tests'], *support])]))
     clients = []
     if 'client' in selected_phases:
@@ -368,7 +362,7 @@ def tasks(root, plan, phase, directory, *, phases=None):
         clients.append(group)
     if complete:
         clients.append({'id': 'root-export', 'build': False, 'checks': [
-            safe('root-graph', lake + ['--no-build', 'build', 'Aglib', 'AglibTest',
+            safe('root-graph', lake + ['--no-build', 'build', *graph_roots,
                  '-o', directory / 'native-outputs.jsonl'], mapping=str(directory / 'native-outputs.jsonl'),
                  identity_modules=current_modules, export_order=0, export_label='root')]})
     return native_recipe(root, directory, source_checks=source_checks, prepare=prepare,
@@ -425,9 +419,6 @@ class AglibAdapter:
     """Aglib-owned scope, predicates and historical coverage; no transport policy."""
     def plan(self, root, repository, default_branch, head, requested_base=None, api=None):
         baseline = ci_baseline.select(root, repository, default_branch, head, requested_base, api)
-        if GENERATED_MANIFEST in tree(root, head) and (root / GENERATED_MANIFEST).read_bytes() != manifest_bytes(root):
-            raise ValueError('Tracked downstream manifest is stale; run python3 scripts/prepare_downstream.py '
-                             'and commit it with the root dependency update before CI')
         scope = normalized_scope(root, affected_scope.select(root, baseline['base'], head=head,
                                                             allow_configuration_update=True))
         before = mathematical_tree(root, baseline['verified_base'])
@@ -497,19 +488,19 @@ class AglibAdapter:
                 'native_check_policy': policy,
                 'declaration_policy': plan['declaration_policy'],
                 'build_identity': 'fresh Lake --rehash; refreshed trace observations are diagnostic, not a Python build key',
-                'inherited_coverage': ([] if scope['native'] else ['unchanged mathematical source and pins'])
-                    + ['unchanged origins retain the verified ancestor policy; no fresh per-leaf lint claim']
-                    + (['unchanged-input rejection controls from verified baseline'] if not scope['controls'] else [])
-                    + (['independent-client audit outside affected scope'] if scope['native'] and not scope['client_audit'] else []),
-                'native_root_graph': scope['native'], 'client_graph': scope['native'],
+                'inherited_coverage': ([] if scope['native'] else ['unchanged root-package mathematical source and pins'])
+                    + ['unchanged origins retain the verified ancestor policy; no fresh per-leaf lint claim'],
+                'native_root_graph': scope['native'], 'client_graph': False,
                 'selected_targets': scope['providers'] + scope['consumers'] + scope['tests'],
-                'kernel_replay': 'not-requested; formal-acceptance evidence tracked externally'}
+                'kernel_replay': 'not-requested; standalone diagnostic only'}
 
 
 class AglibLocalAdapter(AglibAdapter):
     """Local selection over the same recipe, without committed-CI admission."""
-    def __init__(self, selected=None, head=None, *, source_only=False, native_only=False, phases=None):
-        self.selected, self.head = selected, head
+    def __init__(self, selected=None, head=None, *, full=False, source_only=False, native_only=False, phases=None):
+        self.selected, self.head, self.full = selected, head, full
+        if full and (selected is not None or head):
+            raise ValueError('--full cannot be combined with --plan/--head')
         self.source_only, self.native_only = source_only, native_only
         self.phases = phases
         if source_only and native_only:
@@ -567,9 +558,9 @@ class AglibLocalAdapter(AglibAdapter):
                 raise ValueError('Supplied scope differs from current source enrollment')
             scope = expected
         else:
-            scope = affected_scope.select(root, requested_base, self.head)
+            scope = affected_scope.select(root, requested_base, self.head, full=self.full)
         scope = normalized_scope(root, scope)
-        if scope['native'] and not self.source_only:
+        if not self.source_only and self.phases and 'client' in self.phases:
             client = root / 'examples/downstream'
             if (not (client / '.lake').is_dir() or not (client / '.lake/packages').is_dir()
                     or not (client / 'lake-manifest.json').is_file()
@@ -591,19 +582,18 @@ class AglibLocalAdapter(AglibAdapter):
 
     def local_summary(self, root, plan, record):
         scope = plan['scope']
-        native = scope['native'] and not self.source_only
+        native = (scope['native'] or bool(self.phases and set(self.phases) & {'trust', 'client'})) and not self.source_only
         control = next((item for item in record['tasks'] if item['id'] == 'negative-controls'), None)
         controls = ('compatible-success-reused' if control and control['result'].get('mode') == 'reused' else
                     'executed' if control else
-                    'unchanged-inputs; prior-compatible-coverage-required' if native and scope['trust'] and not scope['controls'] else
                     'not-selected')
         return {'coverage': scope['coverage'], 'base': scope['base'], 'head': scope['head'],
                 'selected_targets': scope['providers'] + scope['consumers'] + scope['tests'],
                 'declaration_policy': plan['declaration_policy'],
                 'native_validation': 'performed-selected-groups' if native else 'not-performed',
                 'source_validation': 'prior-compatible-coverage-required' if self.native_only else 'performed',
-                'check_groups': (self.phases or ['providers', 'provider-lint', 'consumers', 'trust', 'client']) if native else [],
-                'kernel_replay': 'not-requested; formal-acceptance evidence tracked externally',
+                'check_groups': (self.phases or ['providers', 'provider-lint', 'consumers']) if native else [],
+                'kernel_replay': 'not-requested; standalone diagnostic only',
                 'negative_controls': controls}
 
 

@@ -32,9 +32,12 @@ def audit_sources(root: Path) -> set[Path]:
 
 def test_modules(root: Path) -> set[Path]:
     """Positive trust sources are discovered without a generated Test umbrella."""
-    return {
+    modules = {
         path.relative_to(root) for path in (root / 'AglibTest').rglob('*.lean')
         if not is_audit_source(path.relative_to(root))}
+    if (root / 'AglibTest.lean').is_file():
+        modules.add(Path('AglibTest.lean'))
+    return modules
 
 
 def downstream_sources(root: Path) -> set[Path]:

@@ -51,6 +51,8 @@ class TaskRunner:
         if current is not None:
             if current.whole is not observations:
                 raise ValueError('Verification inputs belong to another source observation')
+            current.whole.assert_stable()
+            current.native.refresh_link_metadata()
             current.assert_stable()
         else:
             observations.assert_stable()
@@ -204,6 +206,7 @@ class TaskRunner:
         progress_store = Progress(progress)
         searches, outcomes = {}, {}
         hash_cache, metadata_cache = {}, {}
+        self._native_hash_cache, self._native_metadata_cache = hash_cache, metadata_cache
         next_record = 0
 
         def retire(inputs):
@@ -352,21 +355,25 @@ class TaskRunner:
         self._diagnostic_source = observations
         if not isinstance(actual, list) or len(actual) != len(required):
             raise ValueError('Required phase task coverage is incomplete')
-        inputs = CheckInputs(observations)
+        inputs = CheckInputs(observations,
+            hash_cache=getattr(self, '_native_hash_cache', None),
+            metadata_cache=getattr(self, '_native_metadata_cache', None))
         self._verified_inputs = inputs
         reflections = {}
-        for task, item in zip(required, actual):
-            if (not isinstance(item, dict) or item.get('id') != task['id']
-                    or item.get('specification') != digest(task)):
-                raise ValueError('Wrong/forged phase task specification: ' + task['id'])
-            if observe_toolchain and task.get('native', True):
-                self._task_toolchain(task, toolchain, observations)
-            cwd = str(Path(task['cwd']).resolve())
-            self.verify_task(plan, task, item.get('result'), toolchain, reflections.get(cwd), inputs)
-            self._observe_inputs(task, inputs)
-            if task['kind'] == 'environment':
-                reflections[cwd] = self._reflection(item['result'], toolchain, inputs, cwd)
-        inputs.assert_stable()
+        # This pass only reads receipts and bindings. Keep per-file observations,
+        # but scan the complete growing import closure once at its boundary.
+        with inputs.inspection():
+            for task, item in zip(required, actual):
+                if (not isinstance(item, dict) or item.get('id') != task['id']
+                        or item.get('specification') != digest(task)):
+                    raise ValueError('Wrong/forged phase task specification: ' + task['id'])
+                if observe_toolchain and task.get('native', True):
+                    self._task_toolchain(task, toolchain, observations)
+                cwd = str(Path(task['cwd']).resolve())
+                self.verify_task(plan, task, item.get('result'), toolchain, reflections.get(cwd), inputs)
+                self._observe_inputs(task, inputs)
+                if task['kind'] == 'environment':
+                    reflections[cwd] = self._reflection(item['result'], toolchain, inputs, cwd)
         self._guard_measurements = getattr(self, '_guard_measurements', {})
         self._guard_measurements['native_verification'] = {'scans': inputs.native.scan_count,
             'seconds': inputs.native.scan_seconds, 'files': len(inputs.native.files),

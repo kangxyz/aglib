@@ -82,7 +82,7 @@ class PipelineTests(unittest.TestCase):
         self.write('Aglib.lean', 'module\npublic import Aglib.Base\npublic import Aglib.Cold\n')
         self.write('AglibTest/Positive.lean', 'module\nimport Aglib.Base\nexample : True := trivial\n')
         self.write('AglibTest.lean', 'module\nimport AglibTest.Positive\n')
-        for path in ('AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean'):
+        for path in ('Audits/Aglib.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean'):
             self.write(path, (core.ROOT / path).read_text())
         self.write('examples/downstream/Consumer/Use.lean', 'module\nimport Aglib.Base\ndef y := 1\n')
         self.write('examples/downstream/Consumer.lean', 'module\nimport Consumer.Use\n')
@@ -176,13 +176,13 @@ class PipelineTests(unittest.TestCase):
                     core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
                 self.assertFalse((self.state / 'plan.json').exists())
 
-    def test_executor_only_change_requires_native_controls(self):
+    def test_executor_only_change_selects_source_regressions(self):
         self.write('scripts/ci_pipeline.py', '# changed native executor\n')
         head = self.commit('executor integration change')
         plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
-        self.assertTrue(plan['scope']['native'])
+        self.assertFalse(plan['scope']['native'])
         self.assertTrue(plan['scope']['controls'])
-        self.assertEqual(plan['required_phases'], ['source', 'native'])
+        self.assertEqual(plan['required_phases'], ['source'])
 
     def test_exact_audit_coverage_docstrings_keep_current_trust_checks(self):
         path = 'AglibTest/AuditCoverage.lean'
@@ -198,8 +198,8 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(plan['native_policy']['mode'], 'reviewed-audit-coverage-documentation')
         self.assertTrue(plan['scope']['trust'] and plan['scope']['controls'])
         required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
-        self.assertIn('audit/all', [task['id'] for task in required])
-        self.assertIn('negative-controls', [task['id'] for task in required])
+        self.assertEqual(sum(task['id'] == 'audit/all' for task in required), 1)
+        self.assertNotIn('negative-controls', [task['id'] for task in required])
 
     def test_coverage_value_changes_cannot_use_docstring_migration(self):
         path = 'AglibTest/AuditCoverage.lean'
@@ -218,20 +218,21 @@ class PipelineTests(unittest.TestCase):
                         self.assertRaisesRegex(ValueError, 'Native semantic policy changed'):
                     core.create_plan(self.root, REPOSITORY, 'main', head, self.state / str(index), api=self.api)
 
-    def test_fixed_ci_lean_source_requires_native_integration_without_math_scope(self):
+    def test_fixed_ci_lean_source_selects_source_regressions_without_math_scope(self):
         self.write('ci/fixtures/quartz/Check.lean', 'example : True := trivial\n')
         head = self.commit('fixed CI Lean fixture')
         plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
         self.assertEqual(plan['baseline_math'], plan['head_math'])
         self.assertEqual(plan['scope']['providers'] + plan['scope']['consumers'] + plan['scope']['tests'], [])
-        self.assertTrue(plan['scope']['controls'] and plan['scope']['native'])
-        self.assertEqual(plan['required_phases'], ['source', 'native'])
-        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
-        self.assertIn('core-native-cache', [task['id'] for task in required])
+        self.assertTrue(plan['scope']['controls'])
+        self.assertFalse(plan['scope']['native'])
+        self.assertEqual(plan['required_phases'], ['source'])
+        required = core.tasks(self.root, plan, 'source', self.state / 'required-source')
+        self.assertNotIn('core-native-cache', [task['id'] for task in required])
 
     def test_audit_uses_fixed_source_and_binds_its_actual_imports(self):
         plan = self.plan()
-        audits = [task for task in core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        audits = [task for task in core.tasks(self.root, plan, 'native', self.state / 'required-native', phases=['trust'])
                   if task.get('check_kind') == 'audit']
         self.assertTrue(audits)
         for task in audits:
@@ -259,6 +260,34 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(next(task for task in required if task['id'] == 'Aglib/declaration')['command'][-1],
                          'Aglib')
 
+    def test_current_no_umbrella_fixture_keeps_native_checks_and_axiom_task(self):
+        (self.root / 'AglibTest.lean').unlink()
+        plan = self.plan()
+        required = core.tasks(self.root, plan, 'native', self.state / 'no-umbrella')
+        declaration = next(t for t in required if t['id'] == 'AglibTest/declaration')
+        self.assertEqual(declaration['modules'], ['AglibTest.Positive'])
+        self.assertEqual(declaration['command'],
+                         ['python3', 'scripts/run_declaration_linter.py', 'AglibTest.Positive'])
+        self.assertFalse(any('AglibTest' in t['command'] for t in required))
+        self.assertEqual(sum(t['id'] == 'audit/all' for t in required), 1)
+        self.source()
+        commands = Commands(self.root)
+        self.native(commands)
+        result = self.finalize()
+        self.assertEqual(result['status'], 'complete')
+        self.assertIn('AglibTest.Positive', commands.calls[-1]['identity_modules'])
+        self.assertNotIn('AglibTest', commands.calls[-1]['identity_modules'])
+
+    def test_failed_required_axiom_task_blocks_finalization(self):
+        self.plan()
+        self.source()
+        failed = Commands(self.root, fail='audit/all')
+        with self.assertRaisesRegex(ValueError, 'Actual command failed: audit/all'):
+            self.native(failed)
+        self.assertNotIn('root-graph', [t['id'] for t in failed.calls])
+        with self.assertRaisesRegex(ValueError, 'incomplete'):
+            self.finalize()
+
     def test_exact_generated_audit_predecessor_has_a_bounded_static_migration(self):
         old_pipeline = subprocess.check_output(
             ['git', 'show', 'f0ff076:scripts/ci_pipeline.py'], cwd=core.ROOT, text=True)
@@ -279,7 +308,8 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(plan['native_policy']['mode'], 'reviewed-fixed-audit-entrypoint-migration')
         self.assertEqual(plan['native_policy']['old_generator_blob'], core.OLD_AUDIT_GENERATOR_BLOB)
         self.assertEqual(plan['native_policy']['old_audit_source_blobs'], core.OLD_AUDIT_SOURCE_BLOBS)
-        self.assertTrue(plan['scope']['native'] and plan['scope']['controls'])
+        self.assertFalse(plan['scope']['native'])
+        self.assertTrue(plan['scope']['controls'])
 
     def test_other_predecessor_audit_sources_cannot_inherit_the_fixed_migration(self):
         old_pipeline = subprocess.check_output(
@@ -293,7 +323,7 @@ class PipelineTests(unittest.TestCase):
                 for source, text in reviewed.items():
                     self.write(source, text)
                 changed = (reviewed[path].replace('hidden.size == 1', 'hidden.size ≤ 1')
-                           if path == 'AglibTest/Axioms.lean' else
+                           if path == 'Audits/Aglib.lean' else
                            reviewed[path] + '\n-- Different previously adopted audit source.\n')
                 self.assertNotEqual(changed, reviewed[path])
                 self.write(path, changed)
@@ -326,36 +356,19 @@ class PipelineTests(unittest.TestCase):
             core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
         self.assertFalse((self.state / 'plan.json').exists())
 
-    def test_core_integration_failure_prevents_completion_with_unchanged_math(self):
-        self.write('scripts/ci_pipeline.py', '# changed native executor\n')
-        head = self.commit('core integration change')
-        core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
-        self.source()
-        commands = Commands(self.root, fail='core-native-cache')
-        with self.assertRaisesRegex(ValueError, 'core-native-cache'):
-            self.native(commands)
-        with self.assertRaises(ValueError):
-            self.finalize()
-        self.assertFalse((self.state / 'complete.json').exists())
-
-    def test_workflow_only_change_requires_native_cache_integration_and_completion(self):
-        self.write('.github/workflows/ci.yml', FULL + '\n# workflow integration change\n')
-        head = self.commit('workflow-only integration change')
+    def test_core_and_workflow_changes_do_not_add_native_cache_fixture(self):
+        for path in ('scripts/ci_pipeline.py', '.github/workflows/ci.yml'):
+            self.write(path, (self.root / path).read_text() + '\n# executor change\n')
+        head = self.commit('execution machinery change')
         plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
-        self.assertEqual(plan['baseline_math'], plan['head_math'])
-        self.assertTrue(plan['scope']['native'] and plan['scope']['controls'])
-        self.assertEqual(plan['required_phases'], ['source', 'native'])
-        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
-        self.assertIn('core-native-cache', [task['id'] for task in required])
-        self.source()
-        commands = Commands(self.root, fail='core-native-cache')
-        with self.assertRaisesRegex(ValueError, 'core-native-cache'):
-            self.native(commands)
-        with self.assertRaises(ValueError):
-            self.finalize()
-        self.assertFalse((self.state / 'complete.json').exists())
+        required = core.tasks(self.root, plan, 'check', self.state / 'required-source')
+        ids = {task['id'] for task in required}
+        self.assertEqual(plan['required_phases'], ['source'])
+        self.assertFalse(any(task['native'] for task in required))
+        self.assertFalse({'core-native-cache', 'prepare-client', 'audit/all',
+                          'negative-controls', 'compiled-inventory', 'client-audit'} & ids)
 
-    def test_dependency_pin_update_assigns_current_checks_and_prepared_client(self):
+    def test_dependency_pin_update_assigns_current_axioms_without_client_diagnostics(self):
         # A configuration transition uses a bounded number of full-environment
         # declarations even when both libraries have many leaf modules.
         extra, extra_tests = [], []
@@ -392,20 +405,16 @@ class PipelineTests(unittest.TestCase):
                              and task['id'] in {'Aglib/declaration', 'AglibTest/declaration'}]
         self.assertEqual([task['id'] for task in full_declarations],
                          ['Aglib/declaration', 'AglibTest/declaration'])
-        self.assertEqual(plan['declaration_policy']['tests'], 'full AglibTest umbrella environment')
+        self.assertEqual(plan['declaration_policy']['tests'], 'AglibTest umbrella when present; otherwise exact selected positive origins in one native batch')
         test_declarations = [task for task in required if task['id'].startswith('tests/declaration/')]
         self.assertEqual(test_declarations, [])
         self.assertEqual(len([task for task in required if task['id'] == 'all/style']), 1)
-        self.assertEqual(len([task for task in required if task.get('check_kind') == 'audit']), 1)
-        audit = next(task for task in required if task.get('check_kind') == 'audit')
-        self.assertEqual(audit['id'], 'audit/all')
-        self.assertEqual(audit['selection'], ['Aglib', 'AglibTest'])
-        # AuditSupport retains its exact-origin wrapper checks alongside the
-        # full Aglib/AglibTest declarations.
-        self.assertIn('audit-support/builtin/0', [task['id'] for task in required])
-        support_decl = next(task for task in required if task['id'] == 'audit-support/declaration/0')
-        self.assertIn('scripts/run_declaration_linter.py', support_decl['command'])
-        self.assertEqual(support_decl['command'][-1], 'AglibTest.AuditSupport')
+        self.assertEqual([task['id'] for task in required if task.get('check_kind') == 'audit'],
+                         ['audit/all'])
+        ids = {task['id'] for task in required}
+        self.assertFalse({'prepare-client', 'client/build', 'client-audit', 'compiled-inventory',
+                          'negative-controls', 'core-native-cache'} & ids)
+        self.assertIn('audit-support/builtin/0', ids)
         self.assertFalse(any(task['command'][:2] == ['python3', 'scripts/run_declaration_linter.py']
                              and task['command'][-1].startswith('Aglib.Generated')
                              for task in required))
@@ -413,16 +422,30 @@ class PipelineTests(unittest.TestCase):
         self.native()
         self.assertEqual(self.finalize()['status'], 'complete')
 
-    def test_control_only_native_change_still_runs_full_production_declaration_lint(self):
+    def test_control_only_change_has_no_native_phase_or_root_tasks(self):
         self.write('ci/fixtures/quartz/Check.lean', 'example : True := trivial\n')
         head = self.commit('control-only CI source change')
         plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
         self.assertEqual(plan['scope']['providers'] + plan['scope']['consumers'] + plan['scope']['tests'], [])
-        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
-        production = next(task for task in required if task['id'] == 'Aglib/declaration')
-        self.assertEqual(production['check_kind'], 'declaration')
-        self.assertEqual(production['command'], ['lake', 'env', 'lean', '--run', core.DRIVERS[0],
-                                                  '--no-build', 'Aglib'])
+        self.assertFalse(plan['scope']['native'])
+        self.assertEqual(plan['required_phases'], ['source'])
+        required = core.tasks(self.root, plan, 'check', self.state / 'required-source')
+        self.assertTrue(all(not task['native'] for task in required))
+        self.assertFalse(any('lake' in task['command'] for task in required))
+        self.source()
+        self.assertEqual(self.finalize()['status'], 'complete')
+
+    def test_client_only_commit_finalizes_with_source_checks_only(self):
+        self.write('examples/downstream/Consumer/Use.lean', 'module\nimport Aglib.Base\ndef y := 2\n')
+        head = self.commit('separate client change')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        self.assertFalse(plan['scope']['native'])
+        self.assertEqual(plan['required_phases'], ['source'])
+        self.source()
+        result = self.finalize()
+        self.assertEqual(result['status'], 'complete')
+        self.assertFalse(result['native_root_graph'])
+        self.assertFalse(result['client_graph'])
 
     def test_declaration_policy_tampering_is_rejected(self):
         plan = self.plan()
@@ -432,14 +455,14 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Declaration environment coverage differs'):
             core.validate_plan(self.root, plan)
 
-    def test_stale_tracked_client_manifest_rejects_before_native_work(self):
+    def test_stale_tracked_client_manifest_does_not_block_root_checks(self):
         manifest = json.loads((self.root / 'lake-manifest.json').read_text())
         manifest['packages'] = [{'name': 'upstream', 'rev': 'new-revision', 'inherited': False}]
         self.write('lake-manifest.json', json.dumps(manifest))
-        head = self.commit('unprepared upstream update')
-        with self.assertRaisesRegex(ValueError, 'Tracked downstream manifest is stale'):
-            core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
-        self.assertFalse((self.state / 'plan.json').exists())
+        head = self.commit('root upstream update')
+        plan = core.create_plan(self.root, REPOSITORY, 'main', head, self.state, api=self.api)
+        required = core.tasks(self.root, plan, 'native', self.state / 'required-native')
+        self.assertNotIn('prepare-client', [task['id'] for task in required])
 
     def test_toolchain_update_cannot_become_empty_native_scope(self):
         self.write('lean-toolchain', 'new-toolchain\n')
@@ -497,7 +520,8 @@ class PipelineTests(unittest.TestCase):
         commands = Commands(self.root)
         self.native(commands)
         ids = [t['id'] for t in commands.calls]
-        self.assertLess(ids.index('prepare-client'), ids.index('root/environment'))
+        self.assertNotIn('prepare-client', ids)
+        self.assertNotIn('client-audit', ids)
         self.assertEqual(core.ReflectionGraph.stamp(manifest), stamp)
 
     def test_real_pending_math_cannot_finalize_after_only_source_or_empty_native_record(self):
@@ -529,7 +553,7 @@ class PipelineTests(unittest.TestCase):
         result = self.finalize()
         self.assertEqual(result['status'], 'complete')
         self.assertTrue(result['native_root_graph'])
-        self.assertTrue(result['client_graph'])
+        self.assertFalse(result['client_graph'])
         graph = [t for t in commands.calls if t['id'] == 'shared-root-build']
         self.assertEqual(len(graph), 1)
         self.assertEqual(graph[0]['command'][:3], ['lake', '--rehash', 'build'])
@@ -544,9 +568,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(declaration_wrappers, [])
         self.assertEqual(commands.calls[-1]['id'], 'root-graph')
         self.assertEqual(commands.calls[-1]['command'][:4], ['lake', '--rehash', '--no-build', 'build'])
-        root_origins = ['Aglib', 'AglibTest']
-        if plan['scope']['trust']:
-            root_origins += ['AglibTest.AuditSupport', 'AglibTest.AuditCoverage']
+        root_origins = ['Aglib', 'AglibTest', 'AglibTest.AuditSupport', 'AglibTest.AuditCoverage']
         expected_root = core.source_order(self.root, root_origins)
         self.assertEqual(commands.calls[-1]['identity_modules'], expected_root)
         native_record = read_json(self.state / 'native.json')
@@ -581,7 +603,8 @@ class PipelineTests(unittest.TestCase):
         self.assertIn(prior_check, result['reused_checks'])
         self.assertNotIn(prior_check, [task['id'] for task in retry.calls])
         self.assertIn('Aglib/declaration', [task['id'] for task in retry.calls])
-        self.assertTrue(audit_ids.intersection(task['id'] for task in retry.calls))
+        self.assertEqual(audit_ids, {'audit/all'})
+        self.assertEqual(sum(task['id'] == 'audit/all' for task in retry.calls), 1)
         self.assertEqual(result['status'], 'complete')
 
     def test_late_failure_keeps_successes_then_reuses_checks_with_full_import_binding(self):
@@ -612,7 +635,7 @@ class PipelineTests(unittest.TestCase):
         commands = Commands(self.root, fail='unrelated-cached-imports')
         with self.assertRaises(ValueError):
             self.native(commands)
-        self.assertEqual([t['id'] for t in commands.calls], ['prepare-client', 'unrelated-cached-imports'])
+        self.assertEqual([t['id'] for t in commands.calls], ['unrelated-cached-imports'])
 
     def test_zero_exit_empty_adapter_does_not_cover_required_work(self):
         self.plan()

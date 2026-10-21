@@ -70,6 +70,18 @@ jobs:
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
         run: lake exe cache get
+      - name: Prepare axiom auditor
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          # Reuse the pinned source and incremental outputs across Build runs.
+          tool="$LAKE_CACHE_DIR/axiom-audit"
+          if ! test -d "$tool/.git"; then
+            git clone --depth 1 --branch v0.1.2 https://github.com/leanprover-community/axiom-audit.git "$tool"
+          fi
+          test "$(git -C "$tool" rev-parse HEAD)" = 46024e005996495c65ef609368e11ab39c4222e3
+          cp lean-toolchain "$tool/lean-toolchain"
+          (cd "$tool" && lake build)
+          test -x "$tool/.lake/build/bin/axiom-audit"
       - name: Prepare check tools
         id: tools
         working-directory: ${{ inputs.package-directory }}
@@ -81,6 +93,10 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a roots <<< "$BUILD_TARGETS"
+          if test "${#roots[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           result=0
           for root in "${roots[@]}"; do
             lake --no-build exe mathlib/mk_all --lib "$root" --check || result=1
@@ -93,6 +109,10 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a roots <<< "$BUILD_TARGETS"
+          if test "${#roots[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           lake --no-build exe mathlib/lint-style "${roots[@]}"
       - name: Build
         id: build
@@ -101,6 +121,10 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a targets <<< "$BUILD_TARGETS"
+          if test "${#targets[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           lake build "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"
       - name: Save compilation independently of Test and lint
         if: ${{ always() }}
@@ -118,6 +142,7 @@ jobs:
           if test -s "$RUNNER_TEMP/outputs.jsonl"; then
             lake cache stage "$RUNNER_TEMP/outputs.jsonl" "$RUNNER_TEMP/cache-staging"
             tar -cf "$RUNNER_TEMP/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging" .
+            tar -cf "$RUNNER_TEMP/axiom-audit.tar" -C "$LAKE_CACHE_DIR/axiom-audit/.lake/build/bin" axiom-audit
             echo 'staged=true' >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
@@ -125,7 +150,9 @@ jobs:
         with:
           name: cache-staging
           overwrite: true
-          path: ${{ runner.temp }}/lake-native-cache.tar
+          path: |
+            ${{ runner.temp }}/lake-native-cache.tar
+            ${{ runner.temp }}/axiom-audit.tar
           compression-level: 0
       - name: Report Build result
         if: ${{ always() }}
@@ -195,15 +222,22 @@ jobs:
         id: current-cache
         working-directory: ${{ inputs.package-directory }}
         run: |
-          trap 'rm -f "$LAKE_CACHE_DIR/lake-native-cache.tar"' EXIT
+          trap 'rm -f "$LAKE_CACHE_DIR/lake-native-cache.tar" "$LAKE_CACHE_DIR/axiom-audit.tar"' EXIT
           mkdir -p "$RUNNER_TEMP/cache-staging"
           tar -xf "$LAKE_CACHE_DIR/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging"
           lake cache unstage "$RUNNER_TEMP/cache-staging" --force-overwrite
+          mkdir -p "$RUNNER_TEMP/check-tools"
+          tar -xf "$LAKE_CACHE_DIR/axiom-audit.tar" -C "$RUNNER_TEMP/check-tools"
+          test -x "$RUNNER_TEMP/check-tools/axiom-audit"
       - name: Verify Build outputs without compilation
         id: compiled
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a targets <<< "$BUILD_TARGETS"
+          if test "${#targets[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash "${targets[@]}" batteries/runLinter mathlib/lint-style mathlib/mk_all
       - name: Test
         id: test
@@ -219,6 +253,10 @@ jobs:
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a roots <<< "$BUILD_TARGETS"
+          if test "${#roots[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           for attempt in 1 2; do
             if timeout --kill-after=30s 10m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint "${roots[@]}" -- --trace; then
               exit 0
@@ -236,16 +274,17 @@ jobs:
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
-          # Reuse lean-action's pinned auditor, without its extra project build.
-          tool="$RUNNER_TEMP/axiom-audit"
-          git clone --depth 1 --branch v0.1.2 https://github.com/leanprover-community/axiom-audit.git "$tool"
-          test "$(git -C "$tool" rev-parse HEAD)" = 46024e005996495c65ef609368e11ab39c4222e3
-          cp lean-toolchain "$tool/lean-toolchain"
-          (cd "$tool" && lake build)
+          # This run's Build prepared and transferred the pinned executable.
+          tool="$RUNNER_TEMP/check-tools/axiom-audit"
+          test -x "$tool"
           read -r -a roots <<< "$BUILD_TARGETS"
+          if test "${#roots[@]}" -eq 0; then
+            echo '::error::build-targets must name at least one production root.'
+            exit 1
+          fi
           result=0
           for root in "${roots[@]}"; do
-            lake env "$tool/.lake/build/bin/axiom-audit" --root "$root" || result=1
+            lake env "$tool" --root "$root" || result=1
           done
           exit "$result"
       - name: Save completed Test compilation
