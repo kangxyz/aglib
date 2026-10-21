@@ -28,7 +28,7 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 universe u v
 variable {X : Scheme.{u}}
 
-lemma etaleSheaf_section_ext (F : Scheme.EtaleH1.SetSheaf X) {I : Type v} {V : X.Etale}
+lemma etaleSheaf_section_ext (F : Scheme.EtaleCohomology.SetSheaf X) {I : Type v} {V : X.Etale}
     (U : I → X.Etale) (f : ∀ i, U i ⟶ V)
     (h : ∀ x : V.left, ∃ i, ∃ y : (U i).left, (f i).left y = x)
     {s t : F.obj.obj (op V)} (hst : ∀ i, F.obj.map (f i).op s = F.obj.map (f i).op t) :
@@ -58,7 +58,7 @@ def trans {i j : C.I₀} (h : i ⟶ j) : site p C i ⟶ site p C j :=
     change C.trans h ≫ (C.f j ≫ p) = C.f i ≫ p
     rw [← Category.assoc, C.trans_map]) (by trivial)
 
-variable (F : Scheme.EtaleH1.SetSheaf X)
+variable (F : Scheme.EtaleCohomology.SetSheaf X)
 
 /-- Compatibility on a directed open diagram implies the complete sheaf matching condition. -/
 theorem matching (s : ∀ i, F.obj.obj (op (site p C i)))

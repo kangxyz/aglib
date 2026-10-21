@@ -11,7 +11,7 @@ The sheaf-representation leaves belong to
 represented set sheaf through affine trivializing charts and directed open
 covers. `AffineSheafAlgebraDatum` keeps the actual algebra coaction and its
 identity-section equations. Existing local-trivialization type extensions keep
-their type's native namespace in `Scheme.EtaleH1`.
+their type's native namespace in `Scheme.EtaleCohomology`.
 
 `Group` transports the actual group structure and its represented action.
 Lower generic diagram lifts, naturality transport and functor automorphisms

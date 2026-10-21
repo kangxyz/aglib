@@ -24,7 +24,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible (pullbackLineBundle )
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
 /-!
@@ -178,7 +178,7 @@ def compatibleFrameEquiv (X : Scheme.{u}) {n : ℕ} (P Q : Pair X n)
     change e.inv ≫ e.hom ≫ φ.val.hom = φ.val.hom
     rw [Iso.inv_hom_id_assoc]
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 
 /-- Literal root coordinates on the compatible frames of the pulled unit pair. -/
@@ -322,7 +322,7 @@ def rootTorsorIso (h :
     AlgebraicGeometry.Scheme.Modules.Invertible.EtaleDescent.EtaleLineBundleDescent.{u}) (X :
     Scheme.{u})
     (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (f : Γ(X, ⊤)ˣ) :
-    Scheme.EtaleH1.Torsor.Iso (torsor h X n hn hinv (unitPair X n f))
+    Scheme.EtaleCohomology.Torsor.Iso (torsor h X n hn hinv (unitPair X n f))
       (GroupCohomology.Kummer.Torsor.rootTorsor
           GroupCohomology.Kummer.RootCover.etalePowerSurjectivity X n hn hinv
           f) where

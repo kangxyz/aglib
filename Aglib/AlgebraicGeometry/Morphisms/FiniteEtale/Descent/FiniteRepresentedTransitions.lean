@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteRepresentedRestriction
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedTorsor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 
 /-! Actual scheme transition maps from local represented set-sheaf isomorphisms. -/
 
@@ -29,63 +29,67 @@ universe u
 /-- Restriction to etale charts composes by the actual postcomposition functors. -/
 def setEtaleRestrictionComp {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S)
     [Etale f] [Etale g] :
-    Scheme.EtaleH1.setEtaleRestriction f ⋙ Scheme.EtaleH1.setEtaleRestriction g ≅
-      Scheme.EtaleH1.setEtaleRestriction (g ≫ f) := by
-  let e : Scheme.EtaleH1.siteEtalePostcompose g ⋙ Scheme.EtaleH1.siteEtalePostcompose f ≅
-    Scheme.EtaleH1.siteEtalePostcompose (g ≫ f) :=
+    Scheme.EtaleCohomology.setEtaleRestriction f ⋙ Scheme.EtaleCohomology.setEtaleRestriction g ≅
+      Scheme.EtaleCohomology.setEtaleRestriction (g ≫ f) := by
+  let e : Scheme.EtaleCohomology.siteEtalePostcompose g ⋙
+    Scheme.EtaleCohomology.siteEtalePostcompose f ≅
+    Scheme.EtaleCohomology.siteEtalePostcompose (g ≫ f) :=
     (MorphismProperty.Over.mapComp (P := @Etale) (Q := ⊤)
       (inferInstance : Etale g) (inferInstance : Etale f)).symm
   exact Functor.sheafPushforwardContinuousComp' e
     (Type (u + 1)) (Scheme.smallEtaleTopology T)
       (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology X)
 
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} {Y Z W : Scheme.FiniteEtale X}
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} {Y Z W : Scheme.FiniteEtale X}
 
 /-- A common represented sheaf produces an actual isomorphism over the base. -/
-def finiteRepresentedTransition (eY : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ F)
-    (eZ : Scheme.EtaleH1.finiteRepresentedSetSheaf Z ≅ F) : Y.obj ≅ Z.obj :=
-  Scheme.EtaleH1.finiteRepresentedSetSheafIso (eY ≪≫ eZ.symm)
+def finiteRepresentedTransition (eY : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅ F)
+    (eZ : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Z ≅ F) : Y.obj ≅ Z.obj :=
+  Scheme.EtaleCohomology.finiteRepresentedSetSheafIso (eY ≪≫ eZ.symm)
 
 @[simp] lemma finiteRepresentedTransition_map
-    (eY : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ F) (eZ :
-      Scheme.EtaleH1.finiteRepresentedSetSheaf Z ≅ F) :
-    Scheme.EtaleH1.finiteRepresentedSetSheafMap (finiteRepresentedTransition eY eZ).hom = eY.hom
+    (eY : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅ F) (eZ :
+      Scheme.EtaleCohomology.finiteRepresentedSetSheaf Z ≅ F) :
+    Scheme.EtaleCohomology.finiteRepresentedSetSheafMap (finiteRepresentedTransition eY eZ).hom =
+      eY.hom
       ≫ eZ.inv :=
-  Scheme.EtaleH1.finiteRepresentedSetSheafMap_preimage _
+  Scheme.EtaleCohomology.finiteRepresentedSetSheafMap_preimage _
 
 /-- The transition scheme morphisms satisfy the actual cocycle equation. -/
 lemma finiteRepresentedTransition_comp
-    (eY : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ F) (eZ :
-      Scheme.EtaleH1.finiteRepresentedSetSheaf Z ≅ F)
-    (eW : Scheme.EtaleH1.finiteRepresentedSetSheaf W ≅ F) :
+    (eY : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅ F) (eZ :
+      Scheme.EtaleCohomology.finiteRepresentedSetSheaf Z ≅ F)
+    (eW : Scheme.EtaleCohomology.finiteRepresentedSetSheaf W ≅ F) :
     (finiteRepresentedTransition eY eZ).hom ≫ (finiteRepresentedTransition eZ eW).hom =
       (finiteRepresentedTransition eY eW).hom := by
-  apply (Scheme.EtaleH1.finiteRepresentedSetSheafHomEquiv Y W).injective
-  change Scheme.EtaleH1.finiteRepresentedSetSheafMap _ =
-    Scheme.EtaleH1.finiteRepresentedSetSheafMap _
-  rw [Scheme.EtaleH1.finiteRepresentedSetSheafMap_comp]
+  apply (Scheme.EtaleCohomology.finiteRepresentedSetSheafHomEquiv Y W).injective
+  change Scheme.EtaleCohomology.finiteRepresentedSetSheafMap _ =
+    Scheme.EtaleCohomology.finiteRepresentedSetSheafMap _
+  rw [Scheme.EtaleCohomology.finiteRepresentedSetSheafMap_comp]
   simp
 
-@[simp] lemma finiteRepresentedTransition_self (eY : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅
+@[simp] lemma finiteRepresentedTransition_self (eY :
+  Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅
   F) :
     (finiteRepresentedTransition eY eY).hom = 𝟙 Y.obj := by
-  apply (Scheme.EtaleH1.finiteRepresentedSetSheafHomEquiv Y Y).injective
-  change Scheme.EtaleH1.finiteRepresentedSetSheafMap _ =
-    Scheme.EtaleH1.finiteRepresentedSetSheafMap _
-  simp [Scheme.EtaleH1.finiteRepresentedSetSheafMap_id]
+  apply (Scheme.EtaleCohomology.finiteRepresentedSetSheafHomEquiv Y Y).injective
+  change Scheme.EtaleCohomology.finiteRepresentedSetSheafMap _ =
+    Scheme.EtaleCohomology.finiteRepresentedSetSheafMap _
+  simp [Scheme.EtaleCohomology.finiteRepresentedSetSheafMap_id]
 
 /-- Pull a chart representative to a common etale test scheme and identify its
 actual represented sheaf with the restriction of the original sheaf. -/
 def finiteRepresentedCommonChartIso {S T : Scheme.{u}}
     (f : S ⟶ X) (g : T ⟶ S) (k : T ⟶ X) [Etale f] [Etale g] [Etale k]
     (h : g ≫ f = k) (Y : Scheme.FiniteEtale S)
-    (eY : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ (Scheme.EtaleH1.setEtaleRestriction f).obj
+    (eY : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅
+      (Scheme.EtaleCohomology.setEtaleRestriction f).obj
       F) :
-    Scheme.EtaleH1.finiteRepresentedSetSheaf ((baseChange g).obj Y) ≅
-      (Scheme.EtaleH1.setEtaleRestriction k).obj F := by
+    Scheme.EtaleCohomology.finiteRepresentedSetSheaf ((baseChange g).obj Y) ≅
+      (Scheme.EtaleCohomology.setEtaleRestriction k).obj F := by
   subst k
   exact (finiteRepresentedRestrictionIso g Y).symm ≪≫
-    (Scheme.EtaleH1.setEtaleRestriction g).mapIso eY ≪≫ (setEtaleRestrictionComp f g).app F
+    (Scheme.EtaleCohomology.setEtaleRestriction g).mapIso eY ≪≫ (setEtaleRestrictionComp f g).app F
 
 end AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 

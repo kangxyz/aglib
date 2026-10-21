@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.TrivialCoverConstant
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.EtaleRestriction
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 
 /-! For an étale chart, actual inverse image of the represented finite-cover
 section sheaf is the section sheaf of the actual scheme pullback. -/
@@ -18,7 +18,7 @@ noncomputable section
 set_option autoImplicit false
 
 open _root_.CategoryTheory _root_.CategoryTheory.Limits AlgebraicGeometry Opposite
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (baseChange)

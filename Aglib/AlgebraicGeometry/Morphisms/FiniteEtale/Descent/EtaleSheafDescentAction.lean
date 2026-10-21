@@ -31,7 +31,7 @@ variable {X S : Scheme.{u}}
 /-- The existing lifted section sheaf is the lifted Yoneda presheaf of the
 same finite etale object in the small site. -/
 def finiteRepresentedYonedaIso (Y : Scheme.FiniteEtale S) :
-    uliftYoneda.{u + 1}.obj ((toEtale S).obj Y) ≅ (Scheme.EtaleH1.finiteRepresentedSetSheaf
+    uliftYoneda.{u + 1}.obj ((toEtale S).obj Y) ≅ (Scheme.EtaleCohomology.finiteRepresentedSetSheaf
       Y).obj :=
   NatIso.ofComponents
     (fun U => ((Equiv.ulift.trans
@@ -41,13 +41,15 @@ def finiteRepresentedYonedaIso (Y : Scheme.FiniteEtale S) :
       ext z
       exact congrArg ULift.up ((Scheme.Etale.forget S).map_comp g.unop z.down))
 
-variable (f : S ⟶ X) [Etale f] (F : Scheme.EtaleH1.SetSheaf X) (Y : Scheme.FiniteEtale S)
-variable (e : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ (Scheme.EtaleH1.setEtaleRestriction
+variable (f : S ⟶ X) [Etale f] (F : Scheme.EtaleCohomology.SetSheaf X) (Y : Scheme.FiniteEtale S)
+variable (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅
+  (Scheme.EtaleCohomology.setEtaleRestriction
   f).obj F)
 
 /-- The local represented restriction induces the actual descent monad algebra. -/
-def sheafDescentAlgebra : (Scheme.EtaleH1.siteEtalePostcomposeAdj f).toMonad.Algebra :=
-  CategoryTheory.PresheafRepresentedDescent.algebra (Scheme.EtaleH1.siteEtalePostcomposeAdj f) F.obj
+def sheafDescentAlgebra : (Scheme.EtaleCohomology.siteEtalePostcomposeAdj f).toMonad.Algebra :=
+  CategoryTheory.PresheafRepresentedDescent.algebra
+    (Scheme.EtaleCohomology.siteEtalePostcomposeAdj f) F.obj
     (finiteRepresentedYonedaIso Y ≪≫ (sheafToPresheaf _ _).mapIso e)
 
 /-- The action map on the actual schemes, over S. -/

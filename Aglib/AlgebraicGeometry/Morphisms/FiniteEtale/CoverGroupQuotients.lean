@@ -20,7 +20,7 @@ noncomputable section
 set_option autoImplicit false
 
 open _root_.CategoryTheory _root_.CategoryTheory.Limits AlgebraicGeometry
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale
 

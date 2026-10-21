@@ -39,7 +39,8 @@ lemma etaleFamily_covering {I : Type v} {V : X.Etale} (U : I → X.Etale)
   obtain ⟨i, y, hy⟩ := h x
   exact ⟨U i, f i, y, Sieve.ofArrows_mk _ _ i, inferInstance, hy⟩
 
-theorem etaleSheaf_existsUnique_glue (F : Scheme.EtaleH1.SetSheaf X) {I : Type v} {V : X.Etale}
+theorem etaleSheaf_existsUnique_glue (F : Scheme.EtaleCohomology.SetSheaf X) {I : Type v} {V :
+  X.Etale}
     (U : I → X.Etale) (f : ∀ i, U i ⟶ V)
     (h : ∀ x : V.left, ∃ i, ∃ y : (U i).left, (f i).left y = x)
     (s : ∀ i, F.obj.obj (op (U i)))
@@ -50,7 +51,7 @@ theorem etaleSheaf_existsUnique_glue (F : Scheme.EtaleH1.SetSheaf X) {I : Type v
   have hf := hF.isSheafFor _ (etaleFamily_covering U f h)
   exact (Presieve.isSheafFor_arrows_iff (P := F.obj) f).1 hf s hs
 
-theorem etaleSheaf_existsUnique_descend (F : Scheme.EtaleH1.SetSheaf X) {U V : X.Etale}
+theorem etaleSheaf_existsUnique_descend (F : Scheme.EtaleCohomology.SetSheaf X) {U V : X.Etale}
     (f : U ⟶ V) [Surjective f.left] (s : F.obj.obj (op U))
     (hs : ∀ (W : X.Etale) (a b : W ⟶ U), a ≫ f = b ≫ f →
       F.obj.map a.op s = F.obj.map b.op s) :
@@ -60,7 +61,7 @@ theorem etaleSheaf_existsUnique_descend (F : Scheme.EtaleH1.SetSheaf X) {U V : X
     (fun _ => s) (fun _ _ W a b hab => hs W a b hab)
   simpa only [forall_const] using h
 
-variable {F : Scheme.EtaleH1.SetSheaf X} (Y : Scheme.FiniteEtale X)
+variable {F : Scheme.EtaleCohomology.SetSheaf X} (Y : Scheme.FiniteEtale X)
 
 /-- The morphism in the small étale site associated to a section of the finite étale cover `Y`. -/
 def finiteSectionSiteMap {U : X.Etale} (s : (Scheme.Etale.forget X).obj U ⟶ Y.obj) :
@@ -74,7 +75,7 @@ def finiteSectionSiteMap {U : X.Etale} (s : (Scheme.Etale.forget X).obj U ⟶ Y.
 
 /-- A section on the actual representing cover gives a morphism of sheaves. -/
 def finiteRepresentedSectionMap (s : F.obj.obj (op ((toEtale X).obj Y))) :
-    Scheme.EtaleH1.finiteRepresentedSetSheaf Y ⟶ F where
+    Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ⟶ F where
   hom := {
     app U := ↾fun q => F.obj.map (finiteSectionSiteMap Y q.down).op s
     naturality {U V} g := by
@@ -93,7 +94,8 @@ def finiteRepresentedSectionMap (s : F.obj.obj (op ((toEtale X).obj Y))) :
   change F.obj.map (finiteSectionSiteMap Y (U := (toEtale X).obj Y) (𝟙 Y.obj)).op s = s
   simp
 
-lemma finiteRepresentedSectionMap_section (q : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ⟶ F) :
+lemma finiteRepresentedSectionMap_section (q : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y
+  ⟶ F) :
     finiteRepresentedSectionMap Y
       (q.hom.app (op ((toEtale X).obj Y)) (ULift.up (𝟙 Y.obj))) = q := by
   ext U s
@@ -108,7 +110,8 @@ lemma finiteRepresentedSectionMap_section (q : Scheme.EtaleH1.finiteRepresentedS
 /-- The equivalence evaluating a morphism from the represented section sheaf at the identity
 section. -/
 def finiteRepresentedSectionEquiv :
-    (Scheme.EtaleH1.finiteRepresentedSetSheaf Y ⟶ F) ≃ F.obj.obj (op ((toEtale X).obj Y)) where
+    (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ⟶ F) ≃ F.obj.obj (op ((toEtale X).obj Y))
+      where
   toFun q := q.hom.app (op ((toEtale X).obj Y)) (ULift.up (𝟙 Y.obj))
   invFun := finiteRepresentedSectionMap Y
   left_inv := finiteRepresentedSectionMap_section Y

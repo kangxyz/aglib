@@ -19,7 +19,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible (LineBundle)
 
 /-!
@@ -42,7 +42,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry Opposite
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 open AlgebraicGeometry.Scheme.Hom AlgebraicGeometry.Scheme.Modules
 open AlgebraicGeometry.Scheme.Modules.Hom

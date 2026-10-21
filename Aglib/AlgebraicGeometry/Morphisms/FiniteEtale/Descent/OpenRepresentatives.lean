@@ -24,7 +24,7 @@ open _root_.AlgebraicGeometry.Scheme.FiniteEtale (baseChange)
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
 universe u
-variable {X : Scheme.{u}} (F : Scheme.EtaleH1.SetSheaf X)
+variable {X : Scheme.{u}} (F : Scheme.EtaleCohomology.SetSheaf X)
 
 /-- A finite etale cover of an open subscheme together with an isomorphism representing the
 restriction of `F`. -/
@@ -33,7 +33,8 @@ structure FiniteSetOpenRepresentation (U : X.Opens) where
   cover : Scheme.FiniteEtale U.toScheme
   /-- The isomorphism from the represented sheaf of `cover` to the restriction of `F` along
   `U.ι`. -/
-  iso : Scheme.EtaleH1.finiteRepresentedSetSheaf cover ≅ (Scheme.EtaleH1.setEtaleRestriction
+  iso : Scheme.EtaleCohomology.finiteRepresentedSetSheaf cover ≅
+    (Scheme.EtaleCohomology.setEtaleRestriction
     U.ι).obj F
 
 namespace FiniteSetOpenRepresentation
@@ -50,8 +51,8 @@ def restrict (r : FiniteSetOpenRepresentation F U) (h : V ≤ U) :
 /-- Replace an arbitrary open immersion by its actual open range, transporting
 both the cover and its represented-sheaf isomorphism. -/
 def ofOpenImmersion {U : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
-    (Y : Scheme.FiniteEtale U) (e : Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅
-      (Scheme.EtaleH1.setEtaleRestriction j).obj F) :
+    (Y : Scheme.FiniteEtale U) (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅
+      (Scheme.EtaleCohomology.setEtaleRestriction j).obj F) :
     FiniteSetOpenRepresentation F j.opensRange := by
   let a : U ≅ j.opensRange.toScheme :=
     IsOpenImmersion.isoOfRangeEq j j.opensRange.ι Subtype.range_val.symm

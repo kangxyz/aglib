@@ -31,7 +31,7 @@ open MonoidalCategory CartesianMonoidalCategory MonObj
 open scoped CategoryTheory.MonObj
 open AlgebraicGeometry.Scheme AlgebraicGeometry.Scheme.Hom AlgebraicGeometry.Scheme.OverField
 open AlgebraicGeometry.Scheme.Modules.Invertible
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 
 universe u v

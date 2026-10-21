@@ -14,6 +14,7 @@ package-wide conventions, reading routes and the scope of recorded evidence.
 | [Performance](PERFORMANCE.md) | Measured costs, source-based diagnostics and limits of the measurements |
 | [Caching](CACHING.md) | Native Lake artifacts, CI transport, cross-library reuse and provenance |
 | [Downstream integration](DOWNSTREAM.md) | Dependency order, inspected pins and application verification boundaries |
+| [Etale cohomology migration](ETALE_COHOMOLOGY_MIGRATION.md) | Exact new module/namespace names and the separate Quillen, Motivic and R5Lab handoff |
 | [References](REFERENCES.md) | Exact source identities and inspected organization references |
 | [Work plan](WORK_PLAN.md) | Current source boundaries and identified historical acceptance checkpoints |
 | [Cohomology development](COHOMOLOGY_PLAN.md) | Implemented cohomology endpoints, remaining targets and proof dependencies |

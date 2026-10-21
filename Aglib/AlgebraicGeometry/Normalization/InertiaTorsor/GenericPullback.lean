@@ -8,7 +8,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Naturality
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericRestriction
 
 /-!
@@ -37,7 +37,7 @@ open _root_.AlgebraicGeometry.Scheme.EtaleFundamentalGroups
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FiberTorsorActions
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.GroupBaseChange
 open _root_.GroupCohomology.ContinuousH1
-open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Abelian
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian
 open _root_.CategoryTheory.Functor.LargePresheaf
 open AlgebraicGeometry.Scheme.FiniteEtale
 open AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor

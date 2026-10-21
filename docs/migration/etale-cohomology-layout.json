@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "migration_base": "d1994587faf05aad9ef3f39500a21c58d5a8f7ec",
+  "module_changes": [
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Basic",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.Basic"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.CoefficientRepresentation",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.CoefficientStalkBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientStalkBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.ContinuousTorsors",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.DegreeZeroPullback",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.DegreeZeroPullback"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.EtaleRestriction",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.ExtensionFiberClass",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.ExtensionFiberTransport",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberTransport"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.ExtensionTorsor",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionTorsor"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteCoefficientPullback",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientPullback"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteEtaleRigidity",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteLocallyConstant",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteLocallyConstant"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteSetRepresentation",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteTorsorRepresentation",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTorsorRepresentation"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteTrivialization",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FundamentalGroupComparison",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.GroupBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.GroupBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.CoefficientBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CoefficientBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.Coefficients",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.GeometricCoefficients",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GeometricCoefficients"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.PowerFiber",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.RootCover",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.RootNaturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootNaturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.Torsor",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.MarkedCoefficients",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.MarkedComparisonTransport",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedComparisonTransport"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Naturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.OverField",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.OverField"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PointedCoefficientNaturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedCoefficientNaturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PointedFieldTransport",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedFieldTransport"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PointedNaturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PointedNaturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Pullback",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.Pullback"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PullbackCoherence",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackCoherence"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PullbackComposition",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PullbackSquare",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackSquare"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedCoefficients",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedCoefficients"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedComparisonNaturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedKernel",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedKernel"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedTorsor",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.SchemeTorsorBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.SchemeTorsorClassification",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.SectionPullback",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorAdjunction",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorAdjunction"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorBaseChange",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorBaseChange"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorClass",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClass"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorClassification",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorCohomology",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorCohomology"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorComparisonAdditivity",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorComparisonAdditivity"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorFunctoriality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorFunctoriality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorPullback",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorPushout",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPushout"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorSum",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorTrivial",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorTrivial"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Torsors",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.CoefficientSquare",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.CoefficientSquare"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.GenericRestriction",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.GenericRestriction"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.LocalPasting",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.LocalPasting"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.PullbackZero",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.PullbackZero"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.SectionComparison",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SectionComparison"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.SheafCoherence",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SheafCoherence"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.TriangleCoherence",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.Kummer.Field",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.Kummer.FieldNaturality",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.FieldNaturality"
+    },
+    {
+      "old_module": "Aglib.AlgebraicGeometry.Cohomology.Kummer.RootStalk",
+      "new_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk"
+    }
+  ],
+  "namespace_prefix_changes": [
+    {
+      "old": "AlgebraicGeometry.Scheme.EtaleH1",
+      "new": "AlgebraicGeometry.Scheme.EtaleCohomology"
+    }
+  ],
+  "declaration_suffixes_unchanged": true,
+  "old_import_shims": false,
+  "old_namespace_aliases": false,
+  "downstream_updates_included": false,
+  "validation": {
+    "lean_source_basis": "9e8033c133c53603c79ef87684938c7cdb4dada13119a6ae22e656bbf636c6c2",
+    "affected_build": {
+      "status": "passed",
+      "targets": 128,
+      "test_modules": [
+        "AglibTest.FundamentalGroup",
+        "AglibTest.GroupBaseChange",
+        "AglibTest.RelativeCurveFoundations",
+        "AglibTest.RootGroupGeometry"
+      ]
+    },
+    "aggregate_build": {
+      "status": "passed",
+      "modules": [
+        "Aglib.AlgebraicGeometry",
+        "Aglib"
+      ]
+    },
+    "production_lint": {
+      "status": "passed",
+      "environment": "Aglib",
+      "predicates": [
+        "native_builtin",
+        "unmodified_batteries_driver"
+      ]
+    },
+    "selected_text_style": {
+      "status": "passed",
+      "modules": 116
+    },
+    "full_test_environment_lint": {
+      "status": "not_run",
+      "baseline_has_source_owned_AglibTest_umbrella": false,
+      "missing_unrelated_positive_test_artifacts": [
+        "AglibTest.KummerIntegralModels",
+        "AglibTest.MultiplicationCotangent",
+        "AglibTest.MultiplicationKernelGeometry",
+        "AglibTest.NodalComponentsTail",
+        "AglibTest.StableQuotient",
+        "AglibTest.SurfaceComponents"
+      ],
+      "reason": "No matching scoped cached test basis; broad archive recovery and cold unrelated/negative-control compilation were not run."
+    },
+    "downstream_validation": "not_requested; synchronization assigned to other sessions",
+    "kernel_replay": "not_requested"
+  }
+}

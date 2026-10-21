@@ -42,27 +42,28 @@ theorem coversTop_surjectiveEtale :
     MorphismProperty.Over.homMk (pullback.fst f U.hom) pullback.condition (by trivial)
   exact ⟨V, a, z, ⟨(), ⟨b⟩⟩, inferInstance, hz₂⟩
 
-theorem isIso_of_setEtaleRestriction_map {F G : Scheme.EtaleH1.SetSheaf X} (m : F ⟶ G)
-    [IsIso ((Scheme.EtaleH1.setEtaleRestriction f).map m)] : IsIso m := by
+theorem isIso_of_setEtaleRestriction_map {F G : Scheme.EtaleCohomology.SetSheaf X} (m : F ⟶ G)
+    [IsIso ((Scheme.EtaleCohomology.setEtaleRestriction f).map m)] : IsIso m := by
   apply Sheaf.isIso_of_coversTop (coversTop_surjectiveEtale f)
   intro i
   rw [← ObjectProperty.isIso_hom_iff, NatTrans.isIso_iff_isIso_app]
   intro W
   let V : S.Etale := Scheme.Etale.mk W.unop.hom.left
-  let e : (Scheme.EtaleH1.siteEtalePostcompose f).obj V ≅ W.unop.left :=
+  let e : (Scheme.EtaleCohomology.siteEtalePostcompose f).obj V ≅ W.unop.left :=
     MorphismProperty.Over.isoMk (Iso.refl _) (by
       simpa [V] using (MorphismProperty.Over.w W.unop.hom).symm)
-  have hm : IsIso (m.hom.app (op ((Scheme.EtaleH1.siteEtalePostcompose f).obj V))) :=
-    (NatTrans.isIso_iff_isIso_app ((Scheme.EtaleH1.setEtaleRestriction f).map m).hom).1
+  have hm : IsIso (m.hom.app (op ((Scheme.EtaleCohomology.siteEtalePostcompose f).obj V))) :=
+    (NatTrans.isIso_iff_isIso_app ((Scheme.EtaleCohomology.setEtaleRestriction f).map m).hom).1
       inferInstance (op V)
   change IsIso (m.hom.app (op W.unop.left))
-  have h : IsIso (F.obj.map e.hom.op ≫ m.hom.app (op ((Scheme.EtaleH1.siteEtalePostcompose f).obj
+  have h : IsIso (F.obj.map e.hom.op ≫ m.hom.app (op ((Scheme.EtaleCohomology.siteEtalePostcompose
+    f).obj
     V))) :=
     inferInstance
   rw [m.hom.naturality] at h
   exact IsIso.of_isIso_comp_right (m.hom.app (op W.unop.left)) (G.obj.map e.hom.op)
 
-theorem setEtaleRestrictionReflectsIsomorphisms : (Scheme.EtaleH1.setEtaleRestriction
+theorem setEtaleRestrictionReflectsIsomorphisms : (Scheme.EtaleCohomology.setEtaleRestriction
   f).ReflectsIsomorphisms :=
   ⟨fun {_F _G} m _ => isIso_of_setEtaleRestriction_map f m⟩
 

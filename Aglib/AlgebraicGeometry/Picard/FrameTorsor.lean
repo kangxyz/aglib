@@ -9,8 +9,8 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.IsomorphismSheaf
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Power.Pullback
 public import Aglib.AlgebraicGeometry.Picard.UnitDescent
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ScalarAutomorphisms
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.Coefficients
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Torsors
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -29,7 +29,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (LineBundle isLocallyRankOne_iff_restrict_unit isLocallyRankOne_of_iso
     pullback_locallyRankOne trivialLineBundle)
@@ -72,7 +72,7 @@ open AlgebraicGeometry.Scheme.Modules.Hom
 open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.FrameTorsor
 open EtaleDescent
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 universe u
 
 /-- The actual structure module as a line bundle. -/

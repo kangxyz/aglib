@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteCoverSheafBaseChange
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedTorsor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 public import Mathlib.CategoryTheory.Limits.Creates
 public import Mathlib.CategoryTheory.Sites.Limits
 
@@ -21,7 +21,7 @@ noncomputable section
 set_option autoImplicit false
 
 open _root_.CategoryTheory _root_.CategoryTheory.Limits AlgebraicGeometry
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale
 

@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Naturality
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Connectedness
 public import Aglib.RingTheory.Smooth.GenericConnectedness
 
@@ -32,7 +32,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open MonoidalCategory CartesianMonoidalCategory MonObj
-open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Abelian
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian
   _root_.CategoryTheory.Functor.LargePresheaf
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FiberTorsorActions
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber baseChange fiberToFinite)
@@ -67,7 +67,7 @@ theorem genericPoint_compat :
 
 /-- The native pointed fibre-group map for this exact generic inclusion. -/
 abbrev genericFibreMap : FiberAutGroup (basePoint K Ω) →ₜ* FiberAutGroup (basePoint R Ω) :=
-  AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedGroupHom (genericInclusion R K)
+  AlgebraicGeometry.Scheme.EtaleCohomology.Naturality.pointedGroupHom (genericInclusion R K)
     (basePoint K Ω) (basePoint R Ω) (genericPoint_compat R K Ω)
 
 end GenericMap
@@ -156,10 +156,12 @@ private theorem pointedGroupHom_surjective_of_connected
     [GaloisCategory (Scheme.FiniteEtale S)] [PreGaloisCategory.FiberFunctor (fiberToFinite s)]
     (hconn : ∀ (Y : Scheme.FiniteEtale X), ConnectedSpace Y.obj.left →
       ConnectedSpace ((baseChange f).obj Y).obj.left) :
-    Function.Surjective (_root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedGroupHom f s x
+    Function.Surjective
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Naturality.pointedGroupHom f s x
       hx) := by
   apply surjective_of_galois_fibre_transitive
-    (fiberToFinite x) (_root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedGroupHom f s x hx)
+    (fiberToFinite x) (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Naturality.pointedGroupHom
+      f s x hx)
   intro P b
   have : ConnectedSpace P.obj.obj.left :=
     _root_.AlgebraicGeometry.Scheme.FiniteEtale.Connectedness.connectedSpace_of_categoricalConnected
@@ -271,22 +273,22 @@ theorem generic_represented_h1Pullback_injective (R K Ω : Type u)
   let : Finite M := Finite.of_equiv
     ((fiberToFinite (basePoint R Ω)).obj (coefficientCover A)) mark.toAdditiveLeft.toEquiv
   intro a b hab
-  apply (_root_.AlgebraicGeometry.Scheme.EtaleH1.FundamentalGroupComparison.representedH1AddEquiv
+  apply (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
     (basePoint R Ω) A
     hAR hRR M mark hmark hcoeff).injective
   apply generic_restriction_injective R K Ω M
   have ha :=
-    _root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedInverseImageH1AddEquiv_pullback
+    Scheme.EtaleCohomology.Naturality.pointedInverseImageH1AddEquiv_pullback
     (genericInclusion R K)
     (basePoint K Ω) (basePoint R Ω) (genericPoint_compat R K Ω) A M mark hmark
     hAR hAK hRR hRK hcoeff a
   have hb :=
-    _root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedInverseImageH1AddEquiv_pullback
+    Scheme.EtaleCohomology.Naturality.pointedInverseImageH1AddEquiv_pullback
     (genericInclusion R K)
     (basePoint K Ω) (basePoint R Ω) (genericPoint_compat R K Ω) A M mark hmark
     hAR hAK hRR hRK hcoeff b
   exact ha.symm.trans ((congrArg
-    (_root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedInverseImageH1AddEquiv
+    (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Naturality.pointedInverseImageH1AddEquiv
       (genericInclusion R K)
       (basePoint K Ω) (basePoint R Ω) (genericPoint_compat R K Ω) A M mark hmark
       hAK hRK hcoeff) hab).trans hb)

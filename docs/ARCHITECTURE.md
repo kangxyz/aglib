@@ -39,6 +39,8 @@ the complete interface. The following decisions apply to extensions:
 | Arbitrary-site module sheaf/presheaf interfaces | `Algebra.Category.ModuleCat.Sheaf` / `Presheaf` | A scheme specialization must not own a statement quantified over arbitrary sites. |
 | Finitely generated module categories | `Algebra.Category.FGModuleCat` | These interfaces use the actual native `FGModuleCat`, rather than the category of all modules. |
 | Generic and topological Cech constructions | `CategoryTheory.Sites.SheafCohomology.Cech` / `Topology.Sheaves.Cech` | An arbitrary category and the opens of a topological space have different object-level dependencies. |
+| Scheme small-etale cohomology, torsors and coefficient comparisons | `AlgebraicGeometry.EtaleCohomology` | The small-etale site and its coefficient maps have a separate owner from Zariski module cohomology. |
+| Zariski module and coherent cohomology | `AlgebraicGeometry.Cohomology` | Structural scalars, quasicoherent/coherent coefficients, formal functions and their derived comparisons use the Zariski module-sheaf site. |
 
 A whole family must fit its owner, including relative constructions and its
 weakest general statements. Split a mixed file when the lower declarations need

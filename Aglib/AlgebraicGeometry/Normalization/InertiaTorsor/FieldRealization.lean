@@ -8,7 +8,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.AffineAlgebraization
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.MarkedCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients
 
 /-!
 # Realization of original field cocycles with actual Hopf coefficients
@@ -39,7 +39,7 @@ open _root_.AlgebraicGeometry.Scheme.FiniteEtale.GroupDescent
 open _root_.CategoryTheory
 open AlgebraicGeometry.Scheme.FiniteEtale.Adic
 open _root_.GroupCohomology.ContinuousH1
-open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Abelian
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian
 open _root_.CategoryTheory.Functor.LargePresheaf
 open AlgebraicGeometry.Scheme.FiniteEtale
 open AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor

@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Power.UnitPower
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorSum
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorSum
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
@@ -28,7 +28,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (LineBundle PicardGroup classOf tensorLineBundle)
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
@@ -76,7 +76,7 @@ open AlgebraicGeometry.Scheme.Modules.Hom
 open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor
 open EtaleDescent FrameTorsor PowerPullback TrivializedPower
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 universe u
 
@@ -272,7 +272,7 @@ theorem tensorSection_equivariant (U : X.Etaleᵒᵖ) (a b : (gm X).obj.obj U)
 
 /-- The genuine tensor morphism of frame sheaves, relative to coefficient addition. -/
 def tensorTorsorHom :
-    Scheme.EtaleH1.Torsor.Hom (torsorCoefficientAdd (gm X))
+    Scheme.EtaleCohomology.Torsor.Hom (torsorCoefficientAdd (gm X))
       (torsorProduct (frameTorsor h X L) (frameTorsor h X M))
       (frameTorsor h X (tensorLineBundle X L M)) where
   map := ⟨{ app U := ↾(fun s => tensorSection h X L M U s.1 s.2)

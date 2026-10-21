@@ -106,7 +106,7 @@ example : IsFiniteLocallyFree Y (pushforwardStructureSheaf f) :=
 end FiniteFlatDirectImage
 
 section OrdinaryKummerDegree
-open Scheme.EtaleH1 Scheme.Modules.Invertible.EtaleDescent
+open Scheme.EtaleCohomology Scheme.Modules.Invertible.EtaleDescent
 open GroupCohomology.Kummer.Coefficients
 universe w
 

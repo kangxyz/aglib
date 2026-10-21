@@ -31,7 +31,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (classOf pullbackClass pullbackLineBundle tensorPowerLineBundle)
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
@@ -90,7 +90,7 @@ open AlgebraicGeometry.Scheme.Modules.Hom
 open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.KummerH1
 open EtaleDescent UnitPower TrivializedPower PowerPullback TrivializedPowerTorsor FrameTorsor
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 universe u w
 
@@ -139,9 +139,9 @@ def pairTorsorIso (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) {P Q : Pair X n}
     (e : P.lineBundle.val ≅ Q.lineBundle.val)
     (he : (powerIso X e n).hom ≫ Q.trivialization.hom = P.trivialization.hom) :
-    Scheme.EtaleH1.Torsor.Iso (torsor h X n hn hinv P) (torsor h X n
+    Scheme.EtaleCohomology.Torsor.Iso (torsor h X n hn hinv P) (torsor h X n
         hn hinv Q) :=
-  (show Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) (torsor h X n hn hinv
+  (show Scheme.EtaleCohomology.Torsor.Hom (𝟙 (mu X n)) (torsor h X n hn hinv
       P) (torsor h X n hn hinv Q) from
     { map := ⟨{ app U := ↾(pairSectionMap h X n hn hinv e he U)
                 naturality {_ _} a := by
@@ -156,7 +156,7 @@ def pairTorsorIso (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
 /-- Forgetting the actual nth-power condition is coefficient-equivariant. -/
 def forgetCompatible (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P : Pair X n) :
-    Scheme.EtaleH1.Torsor.Hom (inclusion X n) (torsor h X n hn hinv P)
+    Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) (torsor h X n hn hinv P)
         (frameTorsor h X P.lineBundle) where
   map := ⟨{ app _ := ↾Subtype.val
             naturality := by intros; rfl }⟩
@@ -165,7 +165,7 @@ def forgetCompatible (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
 /-- A morphism to the actual compatible-frame torsor gives an actual descended pair isomorphism. -/
 def recoveredPairIso (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (R : Torsor (mu X n)) (Q : Pair X n)
-    (a : Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
+    (a : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
         hinv Q)) :
     (AlgebraicGeometry.Scheme.Modules.Invertible.PowerDescent.pair R h).lineBundle.val ≅
         Q.lineBundle.val :=
@@ -179,12 +179,12 @@ def recoveredPairIso (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
 /-- The recovered pair isomorphism preserves tau because every image section is power-compatible. -/
 theorem recoveredPairIso_compatible (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (R : Torsor (mu X n)) (Q : Pair X n)
-    (a : Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
+    (a : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
         hinv Q)) :
     (powerIso X (recoveredPairIso h X n hn hinv R Q a) n).hom ≫ Q.trivialization.hom =
       (AlgebraicGeometry.Scheme.Modules.Invertible.PowerDescent.pair R h).trivialization.hom := by
   let e := recoveredPairIso h X n hn hinv R Q a
-  let r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) R (frameTorsor h X
+  let r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) R (frameTorsor h X
       Q.lineBundle) :=
     { map := a.map ≫ (forgetCompatible h X n hn hinv Q).map
       equivariant U ζ s := by
@@ -251,10 +251,10 @@ theorem recoveredPairIso_compatible (h : EtaleLineBundleDescent.{u}) (X : Scheme
 assumption. -/
 theorem pairIsomorphic_of_torsorIso (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P Q : Pair X n)
-    (a : Scheme.EtaleH1.Torsor.Iso (torsor h X n hn hinv P) (torsor h
+    (a : Scheme.EtaleCohomology.Torsor.Iso (torsor h X n hn hinv P) (torsor h
         X n hn hinv Q)) : Isomorphic X P Q := by
   let R := torsor h X n hn hinv P
-  let r : Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
+  let r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (mu X n)) R (torsor h X n hn
       hinv Q) := ⟨a.carrierIso.hom, a.equivariant⟩
   let e := AlgebraicGeometry.Scheme.Modules.Invertible.PowerDescent.pairBundleRecovery h hn hinv P
   let f := recoveredPairIso h X n hn hinv R Q r

@@ -25,7 +25,7 @@ open TopologicalSpace.Opens
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
 universe u
-variable {X : Scheme.{u}} (F : Scheme.EtaleH1.SetSheaf X) (x : X)
+variable {X : Scheme.{u}} (F : Scheme.EtaleCohomology.SetSheaf X) (x : X)
 
 /-- An affine open neighborhood with one actual surjective affine etale chart
 on which the original sheaf is the original finite constant value. -/
@@ -50,7 +50,7 @@ structure AffineTrivializingNeighborhood where
   finite_value : Finite value
   /-- The isomorphism from the pullback of `F` along `chart ≫ baseMap` to the constant
   sheaf with value `ULift value`. -/
-  trivialization : (Scheme.EtaleH1.setInverseImage (chart ≫ baseMap)).obj F ≅
+  trivialization : (Scheme.EtaleCohomology.setInverseImage (chart ≫ baseMap)).obj F ≅
     (constantSheaf (Scheme.smallEtaleTopology (Spec ring)) (Type (u + 1))).obj (ULift.{u + 1} value)
 
 attribute [instance] AffineTrivializingNeighborhood.affine_base
@@ -59,17 +59,18 @@ attribute [instance] AffineTrivializingNeighborhood.affine_base
 
 end AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
-namespace AlgebraicGeometry.Scheme.EtaleH1.FiniteSetLocalTrivialization
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.FiniteSetLocalTrivialization
 
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X}
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X}
 
 open AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
 /-- Choose an affine neighborhood of `x` and a single surjective affine étale chart
 trivializing `F`, from the supplied finite-set local trivialization `t`. -/
 def affineTrivializingNeighborhood
-    (t : Scheme.EtaleH1.FiniteSetLocalTrivialization F) (x : X) : AffineTrivializingNeighborhood
+    (t : Scheme.EtaleCohomology.FiniteSetLocalTrivialization F) (x : X) :
+      AffineTrivializingNeighborhood
       F x := by
   apply Classical.choice
   obtain ⟨V₀, hV, hxV, _⟩ := isBasis_iff_nbhd.mp X.isBasis_affineOpens (mem_top x)
@@ -130,12 +131,12 @@ def affineTrivializingNeighborhood
     value := t.smallValue i
     finite_value := inferInstance
     trivialization := ?_ }⟩
-  exact eqToIso (congrArg (fun f => (Scheme.EtaleH1.setInverseImage f).obj F) squareS) ≪≫
+  exact eqToIso (congrArg (fun f => (Scheme.EtaleCohomology.setInverseImage f).obj F) squareS) ≪≫
     (setInverseImageComp a kS).app F ≪≫
-    (Scheme.EtaleH1.setInverseImage kS).mapIso (t.smallTrivialization i) ≪≫
+    (Scheme.EtaleCohomology.setInverseImage kS).mapIso (t.smallTrivialization i) ≪≫
     (setInverseImageConstantIso kS).app (ULift.{u + 1} (t.smallValue i))
 
-end AlgebraicGeometry.Scheme.EtaleH1.FiniteSetLocalTrivialization
+end AlgebraicGeometry.Scheme.EtaleCohomology.FiniteSetLocalTrivialization
 
 /- Migration source: the R5Lab/Aglib mirror; exact module in the migration record.
 R5 revision c82abf3a72ce1e1cedf4a4f1fe08bea994ad4df5.

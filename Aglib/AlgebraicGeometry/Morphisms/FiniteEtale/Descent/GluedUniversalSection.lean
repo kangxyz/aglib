@@ -28,8 +28,8 @@ open AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (toEtale)
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.GlobalFiniteRepresentation
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} (t :
-  Scheme.EtaleH1.FiniteSetLocalTrivialization F)
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} (t :
+  Scheme.EtaleCohomology.FiniteSetLocalTrivialization F)
 
 /-- The étale-site isomorphism from a chart of the glued cover to its selected local
 representative. -/
@@ -81,7 +81,7 @@ def universalSection : F.obj.obj (op ((toEtale X).obj (cover t))) :=
     (cover t).obj.hom (datum t).cover F (localSection t) (localSection_compatible t))).1 U
 
 /-- The universal section produces a map from the represented sheaf to the original one. -/
-def representingMap : Scheme.EtaleH1.finiteRepresentedSetSheaf (cover t) ⟶ F :=
+def representingMap : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (cover t) ⟶ F :=
   finiteRepresentedSectionMap (cover t) (universalSection t)
 
 end AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.GlobalFiniteRepresentation

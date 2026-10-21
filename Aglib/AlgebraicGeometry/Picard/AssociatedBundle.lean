@@ -9,8 +9,8 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitInverse
 
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.UnitDescent
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.Coefficients
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.TorsorPullback
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -29,7 +29,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible (LineBundle LineBundleClass )
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
 /-!
@@ -84,7 +84,7 @@ open AlgebraicGeometry.Scheme.Modules.Hom
 open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle
 open EtaleDescent UnitDescent
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 universe u
 variable {X : Scheme.{u}}
@@ -596,7 +596,7 @@ theorem toFrame_equivariant (U : X.Etaleᵒᵖ) (a : (gm X).obj.obj U) (s : P.ca
   exact hh.symm
 
 /-- An actual equivariant morphism of sheaves, constructed without torsor classification. -/
-def frameMap : Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X
+def frameMap : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X
     (lineBundle P h)) where
   map := ⟨{ app U := ↾(toFrame P h U)
             naturality {U V} f := by
@@ -605,7 +605,7 @@ def frameMap : Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X
   equivariant := toFrame_equivariant P h
 
 /-- The genuine frame torsor of the associated bundle recovers the original torsor. -/
-def frameIso : Scheme.EtaleH1.Torsor.Iso P (frameTorsor h X
+def frameIso : Scheme.EtaleCohomology.Torsor.Iso P (frameTorsor h X
     (lineBundle P h)) := (frameMap P h).toIso
 
 
@@ -632,7 +632,7 @@ theorem frameChart_raw (L : LineBundle X) (U : X.Etaleᵒᵖ)
 
 /-- A genuine equivariant map gives exactly the required chart square on every etale refinement. -/
 theorem frameMap_chart_comm (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L))
+    (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L))
     {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
     (lineBundles.map a.left.op.toLoc).toFunctor.map
       (frameChart h L (op i.1) (r.map.hom.app (op i.1) i.2)).hom ≫
@@ -668,7 +668,7 @@ theorem frameMap_chart_comm (L : LineBundle X)
 
 /-- Isomorphism of actual native overlap descent data supplied by an equivariant frame map. -/
 def frameMapChosenDescentIso (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
+    (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
     Pseudofunctor.DescentData'.ofDescentData (overlap P) (triple P)
       ((lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L)) ≅
         (cocycle P).descentData :=
@@ -680,7 +680,7 @@ def frameMapChosenDescentIso (L : LineBundle X)
 /-- Effective and fully faithful native descent recovers the actual bundle underlying a frame map.
 -/
 def lineBundleIsoOfFrameMap (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
+    (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
         (lineBundle P h).val ≅ L.val := by
   let e := Pseudofunctor.DescentData'.descentDataEquivalence lineBundles (overlap P) (triple P)
   let d : (lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L) ≅
@@ -766,8 +766,8 @@ theorem mapFrame_equivariant {L M : LineBundle X} (e : L.val ≅ M.val)
 
 /-- An actual O_X-linear isomorphism gives an actual equivariant frame-sheaf isomorphism. -/
 def frameIsoOfBundleIso {L M : LineBundle X} (e : L.val ≅ M.val) :
-    Scheme.EtaleH1.Torsor.Iso (frameTorsor h X L) (frameTorsor h X M) :=
-  (show Scheme.EtaleH1.Torsor.Hom (𝟙 (gm X)) (frameTorsor h X L)
+    Scheme.EtaleCohomology.Torsor.Iso (frameTorsor h X L) (frameTorsor h X M) :=
+  (show Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) (frameTorsor h X L)
       (frameTorsor h X M) from
     { map := ⟨{ app U := ↾(mapFrame h e U)
                 naturality {U V} f := by
@@ -777,7 +777,7 @@ def frameIsoOfBundleIso {L M : LineBundle X} (e : L.val ≅ M.val) :
 
 /-- Equivariantly isomorphic torsors have actually isomorphic associated module sheaves. -/
 def bundleIsoOfTorsorIso {Q : Torsor (gm X)} (e :
-    Scheme.EtaleH1.Torsor.Iso P Q) :
+    Scheme.EtaleCohomology.Torsor.Iso P Q) :
     (lineBundle P h).val ≅ (lineBundle Q h).val :=
   lineBundleIsoOfFrameMap P h (lineBundle Q h)
     { map := (e.trans (frameIso Q h)).carrierIso.hom

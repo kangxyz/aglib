@@ -8,7 +8,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.LocalSplittingMaps
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverReflection
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteTorsorRepresentation
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTorsorRepresentation
 public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 
 /-! Geometric points at every base point, and the finite local constancy
@@ -20,7 +20,7 @@ noncomputable section
 set_option autoImplicit false
 
 open _root_.CategoryTheory _root_.CategoryTheory.Limits AlgebraicGeometry
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber baseChange)

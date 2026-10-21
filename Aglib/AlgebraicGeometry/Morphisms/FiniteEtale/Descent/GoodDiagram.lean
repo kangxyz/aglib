@@ -28,8 +28,8 @@ open AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (toEtale)
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.GlobalFiniteRepresentation
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} (t :
-  Scheme.EtaleH1.FiniteSetLocalTrivialization F)
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} (t :
+  Scheme.EtaleCohomology.FiniteSetLocalTrivialization F)
 
 /-- The diagram of finite etale representatives over good opens, with their transition
 morphisms. -/

@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.Basic
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.ContinuousTorsors
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors
 public import Mathlib.FieldTheory.KrullTopology
 
 /-!
@@ -722,7 +722,7 @@ end CoefficientAction
 
 section NormalizationClass
 open integralClosure Algebra.FiniteEtale.TorsorCoordinates
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 variable (R K Ω A H Lambda : Type u)
   [CommRing R] [IsDomain R] [IsDiscreteValuationRing R]
   [Field K] [Algebra R K] [IsFractionRing R K]
@@ -814,7 +814,8 @@ def fullSchemeCocycle :
     Cocycle (FiberAutGroup (basePoint R Ω)) Lambda := by
   letI := modelCoefficientAction R K Ω H Lambda coords
   letI := modelCoefficientAction_continuous R K Ω H Lambda coords
-  exact _root_.AlgebraicGeometry.Scheme.EtaleH1.ContinuousTorsors.basedCocycle (basePoint R Ω)
+  exact _root_.AlgebraicGeometry.Scheme.EtaleCohomology.ContinuousTorsors.basedCocycle (basePoint
+    R Ω)
     (coefficientGroup R H)
     (normalizationCover R K Ω A H Lambda tau coords f Q hvan)
     (normalizationSchemeAction R K Ω A H Lambda tau coords f Q hvan)
@@ -839,7 +840,7 @@ theorem fullSchemeCocycle_restriction :
       (galoisToFibre R K Ω sigma) =
     (normalizationSchemeCocycle R K Ω A H Lambda tau coords f Q hvan).val sigma
   rw [fullSchemeCocycle,
-    _root_.AlgebraicGeometry.Scheme.EtaleH1.ContinuousTorsors.basedCocycle_apply,
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.ContinuousTorsors.basedCocycle_apply,
     galoisToFibre_apply]
   exact (schemeCocycleValue_fibreBasis R K Ω A H Lambda tau coords f Q hvan sigma).symm
 
@@ -854,7 +855,8 @@ def fullSchemeClass :
   letI : Nonempty (Fiber (basePoint R Ω)
       (normalizationCover R K Ω A H Lambda tau coords f Q hvan)) :=
     ⟨normalizationGenericPoint R K Ω A H Lambda tau coords f Q hvan⟩
-  exact _root_.AlgebraicGeometry.Scheme.EtaleH1.ContinuousTorsors.schemeTorsorClass (basePoint R Ω)
+  exact _root_.AlgebraicGeometry.Scheme.EtaleCohomology.ContinuousTorsors.schemeTorsorClass
+    (basePoint R Ω)
     (coefficientGroup R H)
     (normalizationCover R K Ω A H Lambda tau coords f Q hvan)
     (normalizationSchemeAction R K Ω A H Lambda tau coords f Q hvan)
@@ -873,7 +875,8 @@ theorem fullSchemeClass_eq_classOf :
   let : Nonempty (Fiber (basePoint R Ω)
       (normalizationCover R K Ω A H Lambda tau coords f Q hvan)) :=
     ⟨normalizationGenericPoint R K Ω A H Lambda tau coords f Q hvan⟩
-  exact _root_.AlgebraicGeometry.Scheme.EtaleH1.ContinuousTorsors.schemeTorsorClass_eq (basePoint R
+  exact _root_.AlgebraicGeometry.Scheme.EtaleCohomology.ContinuousTorsors.schemeTorsorClass_eq
+    (basePoint R
     Ω) (coefficientGroup R H)
     (normalizationCover R K Ω A H Lambda tau coords f Q hvan)
     (normalizationSchemeAction R K Ω A H Lambda tau coords f Q hvan)

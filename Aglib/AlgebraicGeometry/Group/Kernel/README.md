@@ -51,7 +51,7 @@ Galois-category/fibre-functor and Ext-universe inputs. `RepresentedKernel`
 constructs the represented categorical kernel from an actual monomorphism and
 section lifts on all over-category tests; it supplies no quotient epimorphy.
 
-Fibre reconstruction reuses `Scheme.EtaleH1.MarkedCoefficients` and
+Fibre reconstruction reuses `Scheme.EtaleCohomology.MarkedCoefficients` and
 `SchemeTorsorClassification`. The client `AglibTest.GroupBaseChange` compares
 the packet's original action-classification construction with that native
 group isomorphism by equality of the original forward map. Arithmetic cyclic

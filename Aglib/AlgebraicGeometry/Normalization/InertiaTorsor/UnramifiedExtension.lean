@@ -33,7 +33,7 @@ open scoped CategoryTheory.PreGaloisCategory FintypeCatDiscrete
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)
 open _root_.AlgebraicGeometry.Scheme.EtaleFundamentalGroups
 open _root_.GroupCohomology.ContinuousH1
-open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Abelian
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian
 open _root_.CategoryTheory.Functor.LargePresheaf
 open AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.GenericRestriction

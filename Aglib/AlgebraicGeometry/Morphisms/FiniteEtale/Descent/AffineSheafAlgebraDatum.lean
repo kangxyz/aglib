@@ -25,7 +25,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Category CategoryTheory.Limits AlgebraicGeometry Opposite
 open TensorProduct
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 open AlgebraicGeometry.Scheme.FiniteEtale
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.AffineSheafAlgebraDatum
@@ -51,7 +51,7 @@ def test (S A : Type u) [CommRing S] [CommRing A] [Algebra S A] [Algebra.Etale S
   exact Scheme.Etale.mk (Spec.map (CommRingCat.ofHom (algebraMap S A)))
 
 section Sections
-variable (F : Scheme.EtaleH1.SetSheaf (Spec (.of R)))
+variable (F : Scheme.EtaleCohomology.SetSheaf (Spec (.of R)))
 variable (A A' A'' : Type u) [CommRing A] [CommRing A'] [CommRing A'']
 variable [Algebra R A] [Algebra S A] [IsScalarTower R S A] [Algebra.Etale S A]
 variable [Algebra R A'] [Algebra S A'] [IsScalarTower R S A'] [Algebra.Etale S A']
@@ -60,15 +60,15 @@ variable [Algebra R A''] [Algebra S A''] [IsScalarTower R S A''] [Algebra.Etale 
 /-- The sections of `F` on the affine test scheme `Spec A`, viewed over `Spec R` through the
 chart. -/
 abbrev sections : Type (u + 1) :=
-  F.obj.obj (op ((Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S A)))
+  F.obj.obj (op ((Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S A)))
 
 variable {A A' A''}
 
 /-- An R-algebra map induces a map of the affine test schemes over Spec R,
 even when it does not respect their chosen S-algebra structures. -/
 def testMap (φ : A →ₐ[R] A') :
-    (Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S A') ⟶
-      (Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S A) :=
+    (Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S A') ⟶
+      (Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S A) :=
   MorphismProperty.Over.homMk (Spec.map (CommRingCat.ofHom φ.toRingHom)) (by
     change Spec.map (CommRingCat.ofHom φ.toRingHom) ≫
       (Spec.map (CommRingCat.ofHom (algebraMap S A)) ≫ chart R S) =
@@ -129,14 +129,14 @@ lemma algHomOverEquiv_comp (φ : B →ₐ[K] A) (ψ : A →ₐ[K] A') :
 end AlgebraHom
 
 section Representation
-variable (F : Scheme.EtaleH1.SetSheaf (Spec (.of R)))
+variable (F : Scheme.EtaleCohomology.SetSheaf (Spec (.of R)))
 variable (B A A' : Type u) [CommRing B] [CommRing A] [CommRing A']
 variable [Algebra R B] [Algebra S B] [IsScalarTower R S B]
 variable [Module.Finite S B] [Algebra.Etale S B]
 variable [Algebra R A] [Algebra S A] [IsScalarTower R S A] [Algebra.Etale S A]
 variable [Algebra R A'] [Algebra S A'] [IsScalarTower R S A'] [Algebra.Etale S A']
-variable (e : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
-  (Scheme.EtaleH1.setEtaleRestriction (chart R S)).obj F)
+variable (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
+  (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).obj F)
 
 /-- The local sheaf representative gives an equivalence on every etale affine
 S-algebra test object. -/
@@ -168,11 +168,11 @@ lemma representationEquiv_naturality (φ : B →ₐ[S] A) (ψ : A →ₐ[S] A') 
 end Representation
 
 section Coaction
-variable (F : Scheme.EtaleH1.SetSheaf (Spec (.of R)))
+variable (F : Scheme.EtaleCohomology.SetSheaf (Spec (.of R)))
 variable (B : Type u) [CommRing B] [Algebra R B] [Algebra S B] [IsScalarTower R S B]
 variable [Module.Finite S B] [Algebra.Etale S B]
-variable (e : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
-  (Scheme.EtaleH1.setEtaleRestriction (chart R S)).obj F)
+variable (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
+  (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).obj F)
 
 local instance etaleTensor : Algebra.Etale S (S ⊗[R] B) := by
   have : Algebra.Etale R B := Algebra.Etale.comp R S B

@@ -13,9 +13,9 @@ public import Aglib.AlgebraicGeometry.Group.BaseChange.UnitRange
 public import Aglib.AlgebraicGeometry.Group.BaseChange.FullFaithful
 public import Aglib.AlgebraicGeometry.Group.BaseChange.Composition
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.EmbeddingConjugacy
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.GroupBaseChange
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedKernel
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.MarkedCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.GroupBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedKernel
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients
 
 /-!
 # Clients and original-map comparisons for group base change
@@ -40,9 +40,9 @@ open AlgebraicGeometry.Scheme.Group.BaseChange
 open AlgebraicGeometry.Scheme.FiniteEtale
 open AlgebraicGeometry.Scheme.FiniteEtale.GroupDescent
 open AlgebraicGeometry.Scheme.FiniteEtale.FiberTorsorActions
-open AlgebraicGeometry.Scheme.EtaleH1
-open AlgebraicGeometry.Scheme.EtaleH1.SchemeTorsorClassification
-open AlgebraicGeometry.Scheme.EtaleH1.MarkedCoefficients
+open AlgebraicGeometry.Scheme.EtaleCohomology
+open AlgebraicGeometry.Scheme.EtaleCohomology.SchemeTorsorClassification
+open AlgebraicGeometry.Scheme.EtaleCohomology.MarkedCoefficients
 open AlgebraicGeometry.Scheme.OverField
 
 universe u

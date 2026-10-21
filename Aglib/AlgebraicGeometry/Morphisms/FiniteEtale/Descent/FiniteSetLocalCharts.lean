@@ -7,8 +7,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FiniteAffineRefinement
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteTorsorRepresentation
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.PullbackCoherence
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTorsorRepresentation
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackCoherence
 public import Mathlib.Data.Fintype.EquivFin
 
 /-! Concrete covering, base-change, and universe adapters for the exact
@@ -30,39 +30,42 @@ universe u
 
 /-- The actual set-valued inverse-image functors compose. -/
 def setInverseImageComp {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) :
-    Scheme.EtaleH1.setInverseImage (g ≫ f) ≅ Scheme.EtaleH1.setInverseImage f ⋙
-      Scheme.EtaleH1.setInverseImage g := by
-  let adj := (Scheme.EtaleH1.siteBaseChange (g ≫ f)).sheafAdjunctionContinuous (Type (u + 1))
+    Scheme.EtaleCohomology.setInverseImage (g ≫ f) ≅ Scheme.EtaleCohomology.setInverseImage f ⋙
+      Scheme.EtaleCohomology.setInverseImage g := by
+  let adj := (Scheme.EtaleCohomology.siteBaseChange (g ≫ f)).sheafAdjunctionContinuous (Type (u +
+    1))
     (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology T)
-  let adjf := (Scheme.EtaleH1.siteBaseChange f).sheafAdjunctionContinuous (Type (u + 1))
+  let adjf := (Scheme.EtaleCohomology.siteBaseChange f).sheafAdjunctionContinuous (Type (u + 1))
     (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let adjg := (Scheme.EtaleH1.siteBaseChange g).sheafAdjunctionContinuous (Type (u + 1))
+  let adjg := (Scheme.EtaleCohomology.siteBaseChange g).sheafAdjunctionContinuous (Type (u + 1))
     (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
-  let e := Functor.sheafPushforwardContinuousComp' (Scheme.EtaleH1.siteBaseChangeComp f g).symm
+  let e := Functor.sheafPushforwardContinuousComp' (Scheme.EtaleCohomology.siteBaseChangeComp f
+    g).symm
     (Type (u + 1)) (Scheme.smallEtaleTopology X)
       (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
   exact (Adjunction.leftAdjointCompIso adjf adjg adj e).symm
 
 /-- Inverse image preserves the actual constant set sheaves. -/
 def setInverseImageConstantIso {X S : Scheme.{u}} (f : S ⟶ X) :
-    constantSheaf (Scheme.smallEtaleTopology X) (Type (u + 1)) ⋙ Scheme.EtaleH1.setInverseImage f ≅
+    constantSheaf (Scheme.smallEtaleTopology X) (Type (u + 1)) ⋙
+      Scheme.EtaleCohomology.setInverseImage f ≅
       constantSheaf (Scheme.smallEtaleTopology S) (Type (u + 1)) := by
   let hT := MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X
   exact ((constantSheafAdj (Scheme.smallEtaleTopology X) (Type (u + 1)) hT).comp
-    ((Scheme.EtaleH1.siteBaseChange f).sheafAdjunctionContinuous (Type (u + 1))
+    ((Scheme.EtaleCohomology.siteBaseChange f).sheafAdjunctionContinuous (Type (u + 1))
       (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S))).leftAdjointUniq
     (constantSheafAdj (Scheme.smallEtaleTopology S) (Type (u + 1))
-      (hT.isTerminalObj (Scheme.EtaleH1.siteBaseChange f)))
+      (hT.isTerminalObj (Scheme.EtaleCohomology.siteBaseChange f)))
 
 end AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
-namespace AlgebraicGeometry.Scheme.EtaleH1.FiniteSetLocalTrivialization
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.FiniteSetLocalTrivialization
 
 universe u
 
 open AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
-variable {X S : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} (t :
-  Scheme.EtaleH1.FiniteSetLocalTrivialization F)
+variable {X S : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} (t :
+  Scheme.EtaleCohomology.FiniteSetLocalTrivialization F)
 
 /-- The exact chart data defines an actual jointly surjective etale cover. -/
 def cover : X.Cover (Scheme.precoverage @Etale) where
@@ -74,8 +77,8 @@ def cover : X.Cover (Scheme.precoverage @Etale) where
     exact ⟨t.covers, fun _ => inferInstance⟩
 
 /-- Pull back the given charts and their actual finite constant-sheaf isomorphisms. -/
-def pullback (f : S ⟶ X) : Scheme.EtaleH1.FiniteSetLocalTrivialization
-  ((Scheme.EtaleH1.setInverseImage f).obj F) where
+def pullback (f : S ⟶ X) : Scheme.EtaleCohomology.FiniteSetLocalTrivialization
+  ((Scheme.EtaleCohomology.setInverseImage f).obj F) where
   index := t.index
   chart i := Scheme.Etale.mk (Limits.pullback.snd (t.chart i).hom f)
   covers x := by
@@ -90,9 +93,9 @@ def pullback (f : S ⟶ X) : Scheme.EtaleH1.FiniteSetLocalTrivialization
     let h := Limits.pullback.snd a f
     have square : h ≫ f = g ≫ a := Limits.pullback.condition.symm
     exact ((setInverseImageComp f h).app F).symm ≪≫
-      eqToIso (congrArg (fun q => (Scheme.EtaleH1.setInverseImage q).obj F) square) ≪≫
+      eqToIso (congrArg (fun q => (Scheme.EtaleCohomology.setInverseImage q).obj F) square) ≪≫
       (setInverseImageComp a g).app F ≪≫
-      (Scheme.EtaleH1.setInverseImage g).mapIso (t.trivialization i) ≪≫
+      (Scheme.EtaleCohomology.setInverseImage g).mapIso (t.trivialization i) ≪≫
       (setInverseImageConstantIso g).app (t.value i)
 
 /-- The finite values can be chosen separately in the scheme universe. -/
@@ -123,7 +126,7 @@ def smallConstantIso (i : t.index) :
 /-- The local trivialization of the inverse image of `F` using the lifted small finite value
 type. -/
 def smallTrivialization (i : t.index) :
-    (Scheme.EtaleH1.setInverseImage (t.chart i).hom).obj F ≅
+    (Scheme.EtaleCohomology.setInverseImage (t.chart i).hom).obj F ≅
       (constantSheaf (Scheme.smallEtaleTopology (t.chart i).left) (Type (u + 1))).obj
         (ULift.{u + 1} (t.smallValue i)) :=
   t.trivialization i ≪≫ (t.smallConstantIso i).symm
@@ -133,15 +136,17 @@ def finiteAffineRefinement [CompactSpace X] :
     Scheme.FiniteEtale.AffineRefinement.Data t.cover :=
   Scheme.FiniteEtale.AffineRefinement.choose t.cover
 
-end AlgebraicGeometry.Scheme.EtaleH1.FiniteSetLocalTrivialization
+end AlgebraicGeometry.Scheme.EtaleCohomology.FiniteSetLocalTrivialization
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent
 
 universe u
 
 theorem isFiniteLocallyConstantSet_pullback {X S : Scheme.{u}} (f : S ⟶ X)
-    {F : Scheme.EtaleH1.SetSheaf X} (hF : Scheme.EtaleH1.IsFiniteLocallyConstantSet F) :
-    Scheme.EtaleH1.IsFiniteLocallyConstantSet ((Scheme.EtaleH1.setInverseImage f).obj F) := by
+    {F : Scheme.EtaleCohomology.SetSheaf X} (hF :
+      Scheme.EtaleCohomology.IsFiniteLocallyConstantSet F) :
+    Scheme.EtaleCohomology.IsFiniteLocallyConstantSet ((Scheme.EtaleCohomology.setInverseImage
+      f).obj F) := by
   obtain ⟨t⟩ := hF
   exact ⟨t.pullback f⟩
 

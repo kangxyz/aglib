@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.OverRing
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.MarkedComparisonTransport
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedComparisonTransport
 
 /-!
 # The sheaf Ext class of the same normalization torsor
@@ -34,7 +34,7 @@ open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)
 open _root_.AlgebraicGeometry.Scheme.EtaleFundamentalGroups
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FiberTorsorActions
 open _root_.GroupCohomology.ContinuousH1
-open _root_.AlgebraicGeometry.Scheme.EtaleH1 _root_.CategoryTheory.Abelian
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology _root_.CategoryTheory.Abelian
 open _root_.CategoryTheory.Functor.LargePresheaf
 open AlgebraicGeometry.Scheme.FiniteEtale
 open AlgebraicGeometry.Scheme.FiniteEtale.InertiaTorsor

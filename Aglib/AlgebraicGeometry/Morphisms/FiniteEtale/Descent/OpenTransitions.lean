@@ -27,7 +27,7 @@ open CategoryTheory CategoryTheory.Category CategoryTheory.Limits AlgebraicGeome
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (toEtale)
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.FiniteSetOpenRepresentation
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} {U V W : X.Opens}
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} {U V W : X.Opens}
 
 lemma factor_le (r : FiniteSetOpenRepresentation F U) (h : U ≤ V) :
     (r.cover.obj.hom ≫ X.homOfLE h) ≫ V.ι = r.site.hom := by

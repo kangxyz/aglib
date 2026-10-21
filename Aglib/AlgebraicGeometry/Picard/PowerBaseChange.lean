@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.CoefficientBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CoefficientBaseChange
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -26,7 +26,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (LineBundle pullbackLineBundle )
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
@@ -76,7 +76,7 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.PowerBaseChange
 open EtaleDescent UnitDescent TrivializedPower UnitPower PowerPullback TrivializedPowerTorsor
 open Pseudofunctor.LocallyDiscreteOpToCat
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 universe u
 
@@ -430,7 +430,7 @@ theorem sectionMap_naturality (h : EtaleLineBundleDescent.{u}) {X S : Scheme.{u}
 /-- Actual adjoint morphism of compatible-frame torsors, with the canonical root coefficient map. -/
 def torsorAdjointHom (h : EtaleLineBundleDescent.{u}) {X S : Scheme.{u}} (f : S ⟶ X)
     (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P : Pair X n) :
-    Scheme.EtaleH1.Torsor.AdjointHom f
+    Scheme.EtaleCohomology.Torsor.AdjointHom f
         (GroupCohomology.Kummer.CoefficientBaseChange.rootsUnit f n)
       (torsor h X n hn hinv P)
       (torsor h S n hn

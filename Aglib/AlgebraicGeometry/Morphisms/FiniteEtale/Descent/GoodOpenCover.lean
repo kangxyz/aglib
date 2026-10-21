@@ -27,8 +27,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open TopologicalSpace.Opens
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.GlobalFiniteRepresentation
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} (t :
-  Scheme.EtaleH1.FiniteSetLocalTrivialization F)
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} (t :
+  Scheme.EtaleCohomology.FiniteSetLocalTrivialization F)
 
 /-- Affine opens satisfying `IsGoodAffineOpen` for the sheaf `F`. -/
 abbrev GoodOpen := { U : X.Opens // IsGoodAffineOpen F U }

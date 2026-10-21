@@ -9,7 +9,7 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitInverse
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Power.UnitPower
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Kummer.PowerFiber
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -28,7 +28,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (LineBundle pullbackLineBundle)
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
@@ -396,7 +396,7 @@ theorem framePowerValue_naturality (h :
   rw [he]
   exact powerValue_nativePullFrame U.unop.hom V.unop.hom f.unop.left f.unop.w P _
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 
 /-- The multiplicative-sheaf section recording the positive power value of a local frame

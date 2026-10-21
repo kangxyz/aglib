@@ -32,22 +32,24 @@ universe u
 
 /-- The natural isomorphism from inverse image along `𝟙 X` to the identity functor
 on set-valued sheaves on the small étale site of `X`. -/
-def setInverseImageId (X : Scheme.{u}) : Scheme.EtaleH1.setInverseImage (𝟙 X) ≅ 𝟭
-  (Scheme.EtaleH1.SetSheaf X) := by
-  let adj := (Scheme.EtaleH1.siteBaseChange (𝟙 X)).sheafAdjunctionContinuous (Type (u + 1))
+def setInverseImageId (X : Scheme.{u}) : Scheme.EtaleCohomology.setInverseImage (𝟙 X) ≅ 𝟭
+  (Scheme.EtaleCohomology.SetSheaf X) := by
+  let adj := (Scheme.EtaleCohomology.siteBaseChange (𝟙 X)).sheafAdjunctionContinuous (Type (u + 1))
     (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology X)
-  let e := Functor.sheafPushforwardContinuousId' (Scheme.EtaleH1.siteBaseChangeId X)
+  let e := Functor.sheafPushforwardContinuousId' (Scheme.EtaleCohomology.siteBaseChangeId X)
     (Type (u + 1)) (Scheme.smallEtaleTopology X)
   exact (adj.ofNatIsoRight e).leftAdjointUniq Adjunction.id
 
 /-- A single actual surjective affine etale trivializing chart produces a
 representative of the sheaf on the affine base. -/
 theorem exists_of_affine_trivializing_chart {X : Scheme.{u}} [IsAffine X]
-    (F : Scheme.EtaleH1.SetSheaf X) (S : CommRingCat.{u}) (f : Spec S ⟶ X) [Etale f] [Surjective f]
+    (F : Scheme.EtaleCohomology.SetSheaf X) (S : CommRingCat.{u}) (f : Spec S ⟶ X) [Etale f]
+      [Surjective f]
     (A : Type u) [Finite A]
-    (hlocal : (Scheme.EtaleH1.setInverseImage f).obj F ≅
+    (hlocal : (Scheme.EtaleCohomology.setInverseImage f).obj F ≅
       (constantSheaf (Scheme.smallEtaleTopology (Spec S)) (Type (u + 1))).obj (ULift.{u + 1} A)) :
-    ∃ Y : Scheme.FiniteEtale X, Nonempty (Scheme.EtaleH1.finiteRepresentedSetSheaf Y ≅ F) := by
+    ∃ Y : Scheme.FiniteEtale X, Nonempty (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y ≅ F)
+      := by
   let R := Γ(X, ⊤)
   let r : R ⟶ S := Spec.preimage (f ≫ X.isoSpec.hom)
   let : Algebra R S := r.hom.toAlgebra
@@ -59,54 +61,57 @@ theorem exists_of_affine_trivializing_chart {X : Scheme.{u}} [IsAffine X]
     ((HasRingHomProperty.Spec_iff (P := @Etale)).1 inferInstance)
   have : Module.FaithfullyFlat R S := RingHom.faithfullyFlat_algebraMap_iff.1
     ((flat_and_surjective_SpecMap_iff _).1 ⟨inferInstance, inferInstance⟩)
-  let FR : Scheme.EtaleH1.SetSheaf (Spec R) := (Scheme.EtaleH1.setInverseImage X.isoSpec.inv).obj F
-  have hc : (Scheme.EtaleH1.setInverseImage (AffineSheafAlgebraDatum.chart R S)).obj FR ≅
+  let FR : Scheme.EtaleCohomology.SetSheaf (Spec R) := (Scheme.EtaleCohomology.setInverseImage
+    X.isoSpec.inv).obj F
+  have hc : (Scheme.EtaleCohomology.setInverseImage (AffineSheafAlgebraDatum.chart R S)).obj FR ≅
       (constantSheaf (Scheme.smallEtaleTopology (Spec S)) (Type (u + 1))).obj (ULift.{u + 1} A) :=
     ((setInverseImageComp X.isoSpec.inv (AffineSheafAlgebraDatum.chart R S)).app F).symm ≪≫
-    eqToIso (congrArg (fun q => (Scheme.EtaleH1.setInverseImage q).obj F) (by
+    eqToIso (congrArg (fun q => (Scheme.EtaleCohomology.setInverseImage q).obj F) (by
       change Spec.map (CommRingCat.ofHom (algebraMap R S)) ≫ X.isoSpec.inv = f
       rw [hq, Category.assoc, Iso.hom_inv_id, Category.comp_id])) ≪≫ hlocal
   let YS := trivialCover (Spec S) A
-  let eYS : Scheme.EtaleH1.finiteRepresentedSetSheaf YS ≅
-      (Scheme.EtaleH1.setEtaleRestriction (AffineSheafAlgebraDatum.chart R S)).obj FR :=
+  let eYS : Scheme.EtaleCohomology.finiteRepresentedSetSheaf YS ≅
+      (Scheme.EtaleCohomology.setEtaleRestriction (AffineSheafAlgebraDatum.chart R S)).obj FR :=
     trivialCoverConstantIso (Spec S) A ≪≫ hc.symm ≪≫
-      (Scheme.EtaleH1.setInverseImageEtaleIso (AffineSheafAlgebraDatum.chart R S)).app FR
+      (Scheme.EtaleCohomology.setInverseImageEtaleIso (AffineSheafAlgebraDatum.chart R S)).app FR
   let M := AffineDescent.algebraModel YS
   let : Algebra R M.algebra := ((algebraMap S M.algebra).comp (algebraMap R S)).toAlgebra
   let : IsScalarTower R S M.algebra := IsScalarTower.of_algebraMap_eq' rfl
-  let eB : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S M.algebra) ≅
-      (Scheme.EtaleH1.setEtaleRestriction (AffineSheafAlgebraDatum.chart R S)).obj FR :=
-    Scheme.EtaleH1.finiteRepresentedSetSheafMapIso M.iso ≪≫ eYS
+  let eB : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S M.algebra) ≅
+      (Scheme.EtaleCohomology.setEtaleRestriction (AffineSheafAlgebraDatum.chart R S)).obj FR :=
+    Scheme.EtaleCohomology.finiteRepresentedSetSheafMapIso M.iso ≪≫ eYS
   obtain ⟨Z, ⟨eZ⟩⟩ := AffineSheafAlgebraDatum.exists_affine_representative FR M.algebra eB
   refine ⟨(baseChange X.isoSpec.hom).obj Z, ⟨?_⟩⟩
   exact (finiteRepresentedInverseImageIso X.isoSpec.hom Z).symm ≪≫
-    (Scheme.EtaleH1.setInverseImage X.isoSpec.hom).mapIso eZ ≪≫
+    (Scheme.EtaleCohomology.setInverseImage X.isoSpec.hom).mapIso eZ ≪≫
     ((setInverseImageComp X.isoSpec.inv X.isoSpec.hom).app F).symm ≪≫
-    eqToIso (congrArg (fun q => (Scheme.EtaleH1.setInverseImage q).obj F) X.isoSpec.hom_inv_id) ≪≫
+    eqToIso (congrArg (fun q => (Scheme.EtaleCohomology.setInverseImage q).obj F)
+      X.isoSpec.hom_inv_id) ≪≫
     (setInverseImageId X).app F
 
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} {x : X}
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} {x : X}
 
 /-- Turn the constructed affine trivializing neighborhood into an actual
 representative on its open range in the original scheme. -/
 def AffineTrivializingNeighborhood.representation (N : AffineTrivializingNeighborhood F x) :
     FiniteSetOpenRepresentation F N.baseMap.opensRange := by
   apply Classical.choice
-  let FU := (Scheme.EtaleH1.setInverseImage N.baseMap).obj F
-  have hc : (Scheme.EtaleH1.setInverseImage N.chart).obj FU ≅
+  let FU := (Scheme.EtaleCohomology.setInverseImage N.baseMap).obj F
+  have hc : (Scheme.EtaleCohomology.setInverseImage N.chart).obj FU ≅
       (constantSheaf (Scheme.smallEtaleTopology (Spec N.ring)) (Type (u + 1))).obj
         (ULift.{u + 1} N.value) :=
     ((setInverseImageComp N.baseMap N.chart).app F).symm ≪≫ N.trivialization
   obtain ⟨Y, ⟨eY⟩⟩ := exists_of_affine_trivializing_chart FU N.ring N.chart N.value hc
   exact ⟨FiniteSetOpenRepresentation.ofOpenImmersion N.baseMap Y
-    (eY ≪≫ (Scheme.EtaleH1.setInverseImageEtaleIso N.baseMap).app F)⟩
+    (eY ≪≫ (Scheme.EtaleCohomology.setInverseImageEtaleIso N.baseMap).app F)⟩
 
 theorem AffineTrivializingNeighborhood.goodOpen (N : AffineTrivializingNeighborhood F x) :
     IsGoodAffineOpen F N.baseMap.opensRange :=
   ⟨isAffineOpen_opensRange N.baseMap, ⟨N.representation⟩⟩
 
-theorem _root_.AlgebraicGeometry.Scheme.EtaleH1.FiniteSetLocalTrivialization.exists_goodAffineOpen
-    (t : Scheme.EtaleH1.FiniteSetLocalTrivialization F) (x : X) :
+theorem
+  _root_.AlgebraicGeometry.Scheme.EtaleCohomology.FiniteSetLocalTrivialization.exists_goodAffineOpen
+    (t : Scheme.EtaleCohomology.FiniteSetLocalTrivialization F) (x : X) :
     ∃ U : X.Opens, IsGoodAffineOpen F U ∧ x ∈ U := by
   let N := t.affineTrivializingNeighborhood x
   exact ⟨N.baseMap.opensRange, N.goodOpen, ⟨N.point, N.point_eq⟩⟩

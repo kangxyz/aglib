@@ -28,11 +28,11 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.AffineSheafAlgebraDa
 universe u
 variable {R S : Type u} [CommRing R] [CommRing S] [Algebra R S] [Algebra.Etale R S]
 variable [Module.Flat R S]
-variable (F : Scheme.EtaleH1.SetSheaf (Spec (.of R))) (B : Type u)
+variable (F : Scheme.EtaleCohomology.SetSheaf (Spec (.of R))) (B : Type u)
 variable [CommRing B] [Algebra R B] [Algebra S B] [IsScalarTower R S B]
 variable [Module.Finite S B] [Algebra.Etale S B]
-variable (e : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
-  (Scheme.EtaleH1.setEtaleRestriction (chart R S)).obj F)
+variable (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
+  (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).obj F)
 
 local instance etaleTensor' : Algebra.Etale S (S ⊗[R] B) := by
   have : Algebra.Etale R B := Algebra.Etale.comp R S B

@@ -7,7 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverFiberQuotients
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteSetRepresentation
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation
 
 /-! Instantiate the actual finite-group quotient construction using the
 universal constructive Stacks03RV producer. No representability hypothesis is
@@ -19,7 +19,7 @@ noncomputable section
 set_option autoImplicit false
 
 open _root_.CategoryTheory _root_.CategoryTheory.Limits AlgebraicGeometry
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 
 namespace AlgebraicGeometry.Scheme.FiniteEtale
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)

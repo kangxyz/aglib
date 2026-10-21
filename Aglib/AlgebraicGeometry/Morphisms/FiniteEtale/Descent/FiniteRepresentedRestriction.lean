@@ -6,7 +6,7 @@ Authors: kangxyz
 
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FiniteTorsorRepresentation
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTorsorRepresentation
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange
 
 /-! The actual represented set sheaf commutes with restriction to etale charts. -/
@@ -30,8 +30,9 @@ variable {X S : Scheme.{u}} (f : S ⟶ X) [Etale f] (Y : Scheme.FiniteEtale X)
 /-- The pullback universal property identifies the represented sections on
 every etale test scheme, with the existing explicit universe lift. -/
 def finiteRepresentedRestrictionIso :
-    (Scheme.EtaleH1.setEtaleRestriction f).obj (Scheme.EtaleH1.finiteRepresentedSetSheaf Y) ≅
-      Scheme.EtaleH1.finiteRepresentedSetSheaf ((baseChange f).obj Y) :=
+    (Scheme.EtaleCohomology.setEtaleRestriction f).obj
+      (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y) ≅
+      Scheme.EtaleCohomology.finiteRepresentedSetSheaf ((baseChange f).obj Y) :=
   ObjectProperty.isoMk _ (NatIso.ofComponents
     (fun U => ((Equiv.ulift.trans ((Over.mapPullbackAdj f).homEquiv
       ((Scheme.Etale.forget S).obj U.unop) Y.obj)).trans Equiv.ulift.symm).toIso)
@@ -43,9 +44,11 @@ def finiteRepresentedRestrictionIso :
 
 /-- Genuine inverse image, not just a change in the section-set notation. -/
 def finiteRepresentedInverseImageIso :
-    (Scheme.EtaleH1.setInverseImage f).obj (Scheme.EtaleH1.finiteRepresentedSetSheaf Y) ≅
-      Scheme.EtaleH1.finiteRepresentedSetSheaf ((baseChange f).obj Y) :=
-  (Scheme.EtaleH1.setInverseImageEtaleIso f).app (Scheme.EtaleH1.finiteRepresentedSetSheaf Y) ≪≫
+    (Scheme.EtaleCohomology.setInverseImage f).obj
+      (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y) ≅
+      Scheme.EtaleCohomology.finiteRepresentedSetSheaf ((baseChange f).obj Y) :=
+  (Scheme.EtaleCohomology.setInverseImageEtaleIso f).app
+    (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y) ≪≫
     finiteRepresentedRestrictionIso f Y
 
 end AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent

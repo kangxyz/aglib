@@ -14,6 +14,6 @@ nth powers, and the level-one case are proved on this same quotient. Neither
 characteristic zero nor invertibility of `n` in the field is required here.
 
 The current geometric consumer is the field Kummer comparison in
-`AlgebraicGeometry/Cohomology/Kummer`; its additional comparison hypotheses
+`AlgebraicGeometry/EtaleCohomology/Kummer`; its additional comparison hypotheses
 remain with that owner. This group-cohomology construction does not assert
 a Kummer isomorphism or an étale realization without those inputs.

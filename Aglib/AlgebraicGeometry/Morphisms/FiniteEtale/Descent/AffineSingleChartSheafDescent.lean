@@ -10,7 +10,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineSheafS
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineDescentProjections
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleSectionDescent
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.EtaleRestrictionConservative
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.RepresentedTorsor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 public import Aglib.RingTheory.Descent.Basic
 
 /-! Descend the actual local identity section to the constructed affine cover. -/
@@ -33,11 +33,11 @@ namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.AffineSheafAlgebraDa
 universe u
 variable {R S : Type u} [CommRing R] [CommRing S] [Algebra R S] [Algebra.Etale R S]
 variable [Module.FaithfullyFlat R S]
-variable (F : Scheme.EtaleH1.SetSheaf (Spec (.of R))) (B : Type u)
+variable (F : Scheme.EtaleCohomology.SetSheaf (Spec (.of R))) (B : Type u)
 variable [CommRing B] [Algebra R B] [Algebra S B] [IsScalarTower R S B]
 variable [Module.Finite S B] [Algebra.Etale S B]
-variable (e : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
-  (Scheme.EtaleH1.setEtaleRestriction (chart R S)).obj F)
+variable (e : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
+  (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).obj F)
 
 local notation "D" => datum F B e
 local notation "A" => _root_.Algebra.Descent.Datum.invariants (datum F B e)
@@ -72,7 +72,7 @@ lemma identitySection_relation :
 
 /-- The literal inclusion of invariants gives a morphism on the small site. -/
 def inclusionSite :
-    (Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S B) ⟶
+    (Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S B) ⟶
       (toEtale (Spec (.of R))).obj (AffineDescent.descendedCover D) :=
   MorphismProperty.Over.homMk (Spec.map (CommRingCat.ofHom (A).val.toRingHom)) (by
     change Spec.map (CommRingCat.ofHom (A).val.toRingHom) ≫
@@ -105,7 +105,7 @@ lemma relation_isPullback : IsPullback (relationLeftSite F B e) (relationRightSi
     (IsPushout.of_isColimit (CommRingCat.pushoutCoconeIsColimit A B B))
 
 theorem identitySection_matching (W : (Spec (.of R)).Etale)
-    (a b : W ⟶ (Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S B))
+    (a b : W ⟶ (Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S B))
     (hab : a ≫ inclusionSite F B e = b ≫ inclusionSite F B e) :
     F.obj.map a.op (identitySection F B e) = F.obj.map b.op (identitySection F B e) := by
   let H := relation_isPullback F B e
@@ -139,14 +139,16 @@ lemma descendedSection_restrict :
   (existsUnique_descendedSection F B e).choose_spec.1
 
 /-- The actual morphism from the constructed affine section sheaf to F. -/
-def descendedMap : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.descendedCover D) ⟶ F :=
+def descendedMap : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.descendedCover
+  D) ⟶ F :=
   finiteRepresentedSectionMap (AffineDescent.descendedCover D) (descendedSection F B e)
 
 /-- Identify the original affine cover with the restriction of the reconstructed one. -/
-def localComparison : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.specCover S B) ≅
-    (Scheme.EtaleH1.setEtaleRestriction (chart R S)).obj
-      (Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.descendedCover D)) :=
-  Scheme.EtaleH1.finiteRepresentedSetSheafMapIso
+def localComparison : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.specCover S
+  B) ≅
+    (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).obj
+      (Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.descendedCover D)) :=
+  Scheme.EtaleCohomology.finiteRepresentedSetSheafMapIso
     ((forget (Spec (.of S))).mapIso (AffineDescent.baseChangeCoverIso D).symm) ≪≫
     (finiteRepresentedRestrictionIso (chart R S) (AffineDescent.descendedCover D)).symm
 
@@ -179,10 +181,10 @@ lemma identitySection_eq_e : identitySection F B e =
   exact Spec.map_id _
 
 lemma descendedMap_local : (localComparison F B e).hom ≫
-    (Scheme.EtaleH1.setEtaleRestriction (chart R S)).map (descendedMap F B e) = e.hom := by
+    (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).map (descendedMap F B e) = e.hom := by
   apply (finiteRepresentedSectionEquiv (AffineDescent.specCover S B)).injective
   change (descendedMap F B e).hom.app
-    (op ((Scheme.EtaleH1.siteEtalePostcompose (chart R S)).obj (test S B)))
+    (op ((Scheme.EtaleCohomology.siteEtalePostcompose (chart R S)).obj (test S B)))
       ((localComparison F B e).hom.hom.app
         (op ((toEtale (Spec (.of S))).obj (AffineDescent.specCover S B)))
         (ULift.up (𝟙 (AffineDescent.specCover S B).obj))) = _
@@ -193,10 +195,11 @@ lemma descendedMap_local : (localComparison F B e).hom ≫
 
 theorem descendedMap_isIso : IsIso (descendedMap F B e) := by
   have : IsIso ((localComparison F B e).hom ≫
-      (Scheme.EtaleH1.setEtaleRestriction (chart R S)).map (descendedMap F B e)) := by
+      (Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).map (descendedMap F B e)) := by
     rw [descendedMap_local]
     infer_instance
-  have : IsIso ((Scheme.EtaleH1.setEtaleRestriction (chart R S)).map (descendedMap F B e)) :=
+  have : IsIso ((Scheme.EtaleCohomology.setEtaleRestriction (chart R S)).map (descendedMap F B e))
+    :=
     IsIso.of_isIso_comp_left (localComparison F B e).hom _
   have : Surjective (chart R S) :=
     ((flat_and_surjective_SpecMap_iff _).2
@@ -204,14 +207,16 @@ theorem descendedMap_isIso : IsIso (descendedMap F B e) := by
   exact isIso_of_setEtaleRestriction_map (chart R S) (descendedMap F B e)
 
 /-- The reconstructed affine finite-etale cover represents the original sheaf. -/
-def descendedIso : Scheme.EtaleH1.finiteRepresentedSetSheaf (AffineDescent.descendedCover D) ≅ F
+def descendedIso : Scheme.EtaleCohomology.finiteRepresentedSetSheaf (AffineDescent.descendedCover
+  D) ≅ F
   := by
   letI := descendedMap_isIso F B e
   exact asIso (descendedMap F B e)
 
 include e in
 theorem exists_affine_representative :
-    ∃ Y : Scheme.FiniteEtale (Spec (.of R)), Nonempty (Scheme.EtaleH1.finiteRepresentedSetSheaf Y
+    ∃ Y : Scheme.FiniteEtale (Spec (.of R)), Nonempty
+      (Scheme.EtaleCohomology.finiteRepresentedSetSheaf Y
       ≅ F) :=
   ⟨AffineDescent.descendedCover D, ⟨descendedIso F B e⟩⟩
 

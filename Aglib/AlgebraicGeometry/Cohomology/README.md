@@ -2,6 +2,11 @@
 
 The object is Mathlib's additive `Sheaf.H` on the actual Zariski opens site. Schemes and coefficient fields in universe `u` give Ext-defined cohomology in `Type (u+1)`, in natural-number degrees. Generic additive-sheaf results allow arbitrary schemes; field-linear interfaces retain the actual structural field map.
 
+Scheme-specific small-etale H1, torsors and coefficient comparisons live in the
+sibling [EtaleCohomology](../EtaleCohomology/README.md) family. Its
+[module and namespace migration](../../../docs/ETALE_COHOMOLOGY_MIGRATION.md)
+keeps the two site owners separate.
+
 | Subfamily | Interfaces and main results |
 | --- | --- |
 | [Modules](Modules/README.md) | Actual coefficients, arbitrary structural-ring actions, H0, original module Ext comparison and coefficient maps |

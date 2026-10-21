@@ -25,7 +25,7 @@ Native providers replace duplicate implementations.
 
 @[expose] public section
 
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.AlgebraicGeometry.Scheme.Modules.Invertible
   (LineBundle pullbackLineBundle tensorPowerLineBundle)
 open _root_.AlgebraicGeometry.Scheme.Modules (pullbackUnitIso)
@@ -77,7 +77,7 @@ open AlgebraicGeometry.Scheme.Modules.Hom
 open AlgebraicGeometry.Scheme.Modules.Invertible
 namespace AlgebraicGeometry.Scheme.Modules.Invertible.PowerDescent
 open EtaleDescent UnitDescent AssociatedBundle
-open _root_.AlgebraicGeometry.Scheme.EtaleH1
+open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
 open _root_.GroupCohomology.Kummer.Coefficients
 universe u
 variable {X : Scheme.{u}} {n : ℕ} (P : Torsor (mu X n))
@@ -455,7 +455,7 @@ theorem toFrame_equivariant (U : X.Etaleᵒᵖ) (a : (mu X n).obj.obj U) (s : P.
   exact hh.symm
 
 /-- The positive chart map is equivariant for the actual root inclusion. -/
-def frameMap : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P
+def frameMap : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P
     (frameTorsor h X (lineBundle P h)) where
   map := ⟨{ app U := ↾(toFrame P h U)
             naturality {U V} f := by
@@ -792,7 +792,7 @@ theorem chart_compatible (i : Index P) :
 variable (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤)))
 
 /-- Sending each root-torsor section to its descended chart is a genuine torsor map. -/
-def torsorMap : Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) P (torsor h X n
+def torsorMap : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (mu X n)) P (torsor h X n
     hn hinv (pair P h)) where
   map := ⟨{
     app U := ↾(fun s => ⟨toFrame P h U s, by
@@ -808,7 +808,7 @@ def torsorMap : Scheme.EtaleH1.Torsor.Hom (𝟙 (mu X n)) P (torsor h X n
     exact toFrame_equivariant P h U a s
 
 /-- Actual equivariant recovery, proved by the same-coefficient torsor-map theorem. -/
-def torsorRecovery : Scheme.EtaleH1.Torsor.Iso P (torsor h X n hn hinv
+def torsorRecovery : Scheme.EtaleCohomology.Torsor.Iso P (torsor h X n hn hinv
     (pair P h)) :=
   (torsorMap P h hn hinv).toIso
 
@@ -821,7 +821,7 @@ def torsorRecovery : Scheme.EtaleH1.Torsor.Iso P (torsor h X n hn hinv
 
 /-- A genuine equivariant map gives exactly the required chart square on every etale refinement. -/
 theorem frameMap_chart_comm (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P (frameTorsor h X L))
+    (r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P (frameTorsor h X L))
     {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
     (lineBundles.map a.left.op.toLoc).toFunctor.map
       (frameChart h L (op i.1) (r.map.hom.app (op i.1) i.2)).hom ≫
@@ -857,7 +857,7 @@ theorem frameMap_chart_comm (L : LineBundle X)
 
 /-- Isomorphism of actual native overlap descent data supplied by an equivariant frame map. -/
 def frameMapChosenDescentIso (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P (frameTorsor h X L)) :
+    (r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P (frameTorsor h X L)) :
     Pseudofunctor.DescentData'.ofDescentData (overlap P) (triple P)
       ((lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L)) ≅
         (cocycle P).descentData :=
@@ -868,7 +868,7 @@ def frameMapChosenDescentIso (L : LineBundle X)
 
 /-- The frame map identifies the full native descent data. -/
 def frameMapDescentIso (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P (frameTorsor h X L)) :
+    (r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P (frameTorsor h X L)) :
     (lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L) ≅
       (cocycle P).descentData.descentData :=
   let E := Pseudofunctor.DescentData'.descentDataEquivalence lineBundles (overlap P) (triple P)
@@ -877,7 +877,7 @@ def frameMapDescentIso (L : LineBundle X)
 /-- Effective and fully faithful native descent recovers the bundle of a root-equivariant frame
 map. -/
 def lineBundleIsoOfFrameMap (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P (frameTorsor h X
+    (r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P (frameTorsor h X
         L)) : (lineBundle P h).val ≅ L.val :=
   (rankOne.prop (.mk (op X))).fullyFaithfulι.isoEquiv
     ((AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle.stackEquivalence h
@@ -886,7 +886,7 @@ def lineBundleIsoOfFrameMap (L : LineBundle X)
 
 /-- The bundle recovery carries exactly the original positive charts. -/
 theorem lineBundleIsoOfFrameMap_chart (L : LineBundle X)
-    (r : Scheme.EtaleH1.Torsor.Hom (inclusion X n) P (frameTorsor h X
+    (r : Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) P (frameTorsor h X
         L)) (i : Index P) :
     (Scheme.Modules.pullback (coverMap P i)).map (lineBundleIsoOfFrameMap P h L r).hom ≫
       (frameSectionsEquiv h X L (op i.1) (r.map.hom.app (op i.1) i.2)).hom =
@@ -905,7 +905,7 @@ theorem lineBundleIsoOfFrameMap_chart (L : LineBundle X)
 
 /-- Forgetting compatibility is the actual map into the underlying frame torsor. -/
 def forgetCompatible (Q : Pair X n) :
-    Scheme.EtaleH1.Torsor.Hom (inclusion X n) (torsor h X n hn hinv Q)
+    Scheme.EtaleCohomology.Torsor.Hom (inclusion X n) (torsor h X n hn hinv Q)
         (frameTorsor h X Q.lineBundle) where
   map := ⟨{ app U := ↾Subtype.val
             naturality := by intros; rfl }⟩

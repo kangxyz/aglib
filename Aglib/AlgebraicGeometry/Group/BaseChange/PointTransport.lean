@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ClosureEmbedding
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.GeometricFiber
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.Naturality
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Naturality
 
 /-!
 # Literal finite coefficient points and field pullback composition
@@ -33,7 +33,7 @@ set_option backward.isDefEq.respectTransparency.types false
 set_option maxRecDepth 4096
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open scoped CategoryTheory.MonObj CategoryTheory.PreGaloisCategory TensorProduct
-open AlgebraicGeometry.Scheme.EtaleH1
+open AlgebraicGeometry.Scheme.EtaleCohomology
 open AlgebraicGeometry.Scheme.Group
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)
@@ -113,7 +113,8 @@ theorem pointedPullbackFiberMark_point {X S : Scheme.{u}} {C : Type u} [Field C]
     (A : Grp (Over X)) [IsCommMonObj A.X] [IsFinite A.X.hom] [Etale A.X.hom]
     (M : Type*) [AddCommGroup M] (m : (Over.mk x ⟶ A.X) ≃* Multiplicative M)
     (a : Over.mk x ⟶ A.X) :
-    _root_.AlgebraicGeometry.Scheme.EtaleH1.Naturality.pointedPullbackFiberMark f s x hx A M m
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Naturality.pointedPullbackFiberMark f s x hx A
+      M m
       (pointedGroupPointEquiv f s x hx A a) = m a := by
   subst x
   change m ((_root_.AlgebraicGeometry.Scheme.FiniteEtale.GroupBaseChange.pullbackFiberMulEquiv f s

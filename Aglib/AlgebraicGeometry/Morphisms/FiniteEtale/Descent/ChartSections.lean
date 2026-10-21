@@ -27,12 +27,12 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 open _root_.AlgebraicGeometry.Scheme.FiniteEtale (toEtale)
 namespace AlgebraicGeometry.Scheme.FiniteEtale.SheafDescent.FiniteSetOpenRepresentation
 universe u
-variable {X : Scheme.{u}} {F : Scheme.EtaleH1.SetSheaf X} {U : X.Opens}
+variable {X : Scheme.{u}} {F : Scheme.EtaleCohomology.SetSheaf X} {U : X.Opens}
 
 /-- The étale test object over `X` obtained by composing the representing cover over
 `U.toScheme` with the open immersion `U.ι`. -/
 abbrev site (r : FiniteSetOpenRepresentation F U) : X.Etale :=
-  (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj ((toEtale U.toScheme).obj r.cover)
+  (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj ((toEtale U.toScheme).obj r.cover)
 
 /-- The section of `F` on the representing chart corresponding under `r.iso` to
 the identity morphism of `r.cover.obj`. -/
@@ -42,7 +42,7 @@ def section_ (r : FiniteSetOpenRepresentation F U) : F.obj.obj (op r.site) :=
 /-- Regard a morphism from the postcomposed chart `W` to `r.site` as a morphism
 over `U.toScheme`, by cancellation of the open immersion `U.ι`. -/
 def localHom (r : FiniteSetOpenRepresentation F U) {W : U.toScheme.Etale}
-    (g : (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site) :
+    (g : (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site) :
     (Scheme.Etale.forget U.toScheme).obj W ⟶ r.cover.obj :=
   Over.homMk g.left (by
     apply (cancel_mono U.ι).1
@@ -52,14 +52,14 @@ def localHom (r : FiniteSetOpenRepresentation F U) {W : U.toScheme.Etale}
 to obtain a morphism from the postcomposed chart `W` to `r.site`. -/
 def globalHom (r : FiniteSetOpenRepresentation F U) {W : U.toScheme.Etale}
     (g : (Scheme.Etale.forget U.toScheme).obj W ⟶ r.cover.obj) :
-    (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site :=
+    (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site :=
   MorphismProperty.Over.homMk g.left (by
     simp [site, toEtale]) (by trivial)
 
 /-- The equivalence between chart morphisms over `X` to `r.site` and morphisms over
 `U.toScheme` to `r.cover.obj`, with maps `localHom` and `globalHom`. -/
 def homEquiv (r : FiniteSetOpenRepresentation F U) (W : U.toScheme.Etale) :
-    ((Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site) ≃
+    ((Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site) ≃
       ((Scheme.Etale.forget U.toScheme).obj W ⟶ r.cover.obj) where
   toFun := r.localHom
   invFun := r.globalHom
@@ -67,13 +67,13 @@ def homEquiv (r : FiniteSetOpenRepresentation F U) (W : U.toScheme.Etale) :
   right_inv g := by apply Over.OverMorphism.ext; rfl
 
 lemma section_restrict (r : FiniteSetOpenRepresentation F U) {W : U.toScheme.Etale}
-    (g : (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site) :
+    (g : (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site) :
     F.obj.map g.op r.section_ = r.iso.hom.hom.app (op W) (ULift.up (r.localHom g)) := by
   have h := congrArg (fun k => k (ULift.up (𝟙 r.cover.obj)))
     (r.iso.hom.hom.naturality (finiteSectionSiteMap r.cover (r.localHom g)).op)
   change r.iso.hom.hom.app (op W) (ULift.up (r.localHom g ≫ 𝟙 r.cover.obj)) =
     F.obj.map _ r.section_ at h
-  have hg : (Scheme.EtaleH1.siteEtalePostcompose U.ι).map (finiteSectionSiteMap r.cover
+  have hg : (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).map (finiteSectionSiteMap r.cover
     (r.localHom g)) = g := by
     apply MorphismProperty.Over.Hom.ext
     rfl
@@ -82,14 +82,15 @@ lemma section_restrict (r : FiniteSetOpenRepresentation F U) {W : U.toScheme.Eta
 
 /-- The local universal section determines every map from a test scheme on the open. -/
 theorem section_bijective (r : FiniteSetOpenRepresentation F U) (W : U.toScheme.Etale) :
-    Function.Bijective (fun g : (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site =>
+    Function.Bijective (fun g : (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site =>
       F.obj.map g.op r.section_) := by
   have h : Function.Bijective (r.iso.hom.hom.app (op W)) :=
     (CategoryTheory.isIso_iff_bijective _).1 inferInstance
-  let E : ((Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site) ≃
+  let E : ((Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site) ≃
       ULift.{u + 1} ((Scheme.Etale.forget U.toScheme).obj W ⟶ r.cover.obj) :=
     (r.homEquiv W).trans Equiv.ulift.symm
-  have heq : (fun g : (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj W ⟶ r.site => F.obj.map g.op
+  have heq : (fun g : (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj W ⟶ r.site =>
+    F.obj.map g.op
     r.section_) =
       (fun g => r.iso.hom.hom.app (op W) (E g)) := funext (r.section_restrict)
   rw [heq]
@@ -102,9 +103,9 @@ theorem section_bijective_of_factor (r : FiniteSetOpenRepresentation F U)
   have : Etale (a ≫ U.ι) := by rw [ha]; infer_instance
   have : Etale a := Etale.of_comp a U.ι
   let V : U.toScheme.Etale := Scheme.Etale.mk a
-  let e : W ≅ (Scheme.EtaleH1.siteEtalePostcompose U.ι).obj V :=
+  let e : W ≅ (Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj V :=
     MorphismProperty.Over.isoMk (Iso.refl _) (by simpa [V] using ha)
-  let E : (W ⟶ r.site) ≃ ((Scheme.EtaleH1.siteEtalePostcompose U.ι).obj V ⟶ r.site) :=
+  let E : (W ⟶ r.site) ≃ ((Scheme.EtaleCohomology.siteEtalePostcompose U.ι).obj V ⟶ r.site) :=
     { toFun := fun g => e.inv ≫ g
       invFun := fun g => e.hom ≫ g
       left_inv := by intro g; simp

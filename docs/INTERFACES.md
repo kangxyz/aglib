@@ -323,7 +323,7 @@ fibre-functor, descent or exactness premise accepted by another interface.
 
 General connected-scheme Galois dictionaries, finite-etale classification and
 marked-kernel/group-scheme monodromy use their actual objects and displayed
-conditions. `Scheme.EtaleH1` denotes the actual small-etale Ext H1 surface;
+conditions. `Scheme.EtaleCohomology` denotes the actual small-etale Ext H1 surface;
 finite-coefficient comparisons retain their `HasSheafify`/`HasExt` universes,
 positive globally invertible annihilating level, local trivializations,
 markings, point hypotheses and actual forward-map conventions. Generic GC/FF

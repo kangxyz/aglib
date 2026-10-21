@@ -25,6 +25,7 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | [EffectiveCartierDivisor](EffectiveCartierDivisor/README.md) | Finite presentation of invertible closed ideals and smooth relative-dimension-one Cartier criteria |
 | [ProjectiveSpace](ProjectiveSpace/README.md) | Actual polynomial Proj, charts, twists, finite presentations, affine immersions, base change and chartwise Euler sequences |
 | [Cohomology](Cohomology/README.md) | Actual Zariski `Sheaf.H`, structural scalars, Cech and derived comparisons, qcqs flat base change, proper coherent finiteness, [field Hilbert polynomials](Cohomology/Projective/HilbertPolynomial/README.md), projective regularity and [relative projective duality](Cohomology/Duality/Projective/Relative/README.md) with its stated base hypotheses |
+| [EtaleCohomology](EtaleCohomology/README.md) | Actual small-etale H1, coefficient and torsor maps, finite locally constant comparisons and scheme-specific Kummer constructions |
 
 Lower [commutative algebra](../RingTheory/README.md), [categorical structure](../CategoryTheory/README.md), [homology](../Algebra/Homology/README.md) and [topological sheaves](../Topology/Sheaves/README.md) supply the reusable prerequisites. [Root reading routes](../../docs/README.md) explain their interfaces. Reusable curve, projective-line, genus and degree theory is admitted by the full R5 migration; arithmetic markings, literal Tate analytic realization and Quillen K/G/Q/S applications retain downstream owners.
 

@@ -1,5 +1,9 @@
 # Quillen and R5Lab integration
 
+The current [etale cohomology migration](ETALE_COHOMOLOGY_MIGRATION.md) has a
+separate module/namespace map and handoff for Quillen, Motivic and R5Lab.
+This Aglib-only change does not update those downstream libraries or pins.
+
 This document preserves the initial downstream migration census and transition
 contract. Its source revisions and counts are historical, rather than a current
 inventory or a claim that downstream packages have not adopted Aglib. The

@@ -8,7 +8,7 @@ module
 
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Basic
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineNeighborhoodRepresentation
-public import Aglib.AlgebraicGeometry.Cohomology.EtaleH1.FundamentalGroupComparison
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
 
 /-! Public-interface regressions for actual fibres, receiver-namespace lookup and finite H1.
 The source interfaces originate in local R5 checkpoint
@@ -21,7 +21,7 @@ noncomputable section
 
 open CategoryTheory AlgebraicGeometry
 open scoped CategoryTheory.MonObj CategoryTheory.PreGaloisCategory
-open Scheme.EtaleFundamentalGroups Scheme.EtaleH1
+open Scheme.EtaleFundamentalGroups Scheme.EtaleCohomology
 open Scheme.FiniteEtale (fiberToFinite)
 open Scheme.FiniteEtale.FiberTorsorActions (coefficientCover)
 
