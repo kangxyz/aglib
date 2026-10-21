@@ -67,3 +67,11 @@ may be nonreduced; changes to a new base are arbitrary.
 adjunction-counit/dual-evaluation contraction. Its curve application retains
 the general Riemann–Roch, high-degree vanishing and cohomological-dimension
 inputs, together with the stated fibre genus and degree conditions.
+
+[DegreeZero](HigherDirectImage/DegreeZero.lean) proves
+`higherDirectImageFlatBaseChangeMap_zero_unit`: on an actual Cartesian square
+with flat base arrow `j`, the installed degree-zero higher-image map commutes
+with the original ordinary Cartesian base-change map and the maps to zeroth
+right-derived functors. The coefficient `M` is arbitrary; this unit square
+needs no quasicoherence, properness or finiteness hypothesis. It does not by
+itself assert invertibility of either base-change map.

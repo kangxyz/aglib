@@ -17,13 +17,22 @@ Its target is the literal scheme-theoretic fibre defined by the native pullback.
   each element in beta's image is a residue-field constant. It makes no claim
   that beta contains every fibre idempotent in its image.
 
-These map constructions need no properness or Noetherianity. The stronger
-proper Noetherian image assertion remains a separate proof obligation: for each
-idempotent `e` of actual fibre sections there must be an arbitrary element `a`
-of the ordinary pushforward stalk whose image is `e`. There is no requirement
-that `a` be idempotent. This module does not assume that assertion, formal
-functions, flatness, Henselian hypotheses or a Stein factorization.
+These map constructions need no properness or Noetherianity. The focused
+[Stalk](FibreFormalFunctions/Stalk.lean) leaf proves
+`ProperFibreFormalFunctions.exists_stalk_restrict_eq_of_isIdempotentElem`:
+for proper `f : X ⟶ Y` with locally Noetherian `Y`, every idempotent of
+`Γ(f.fiber y, ⊤)` has a preimage under this same ordinary stalk map.
+The preimage is arbitrary and need not be idempotent. Its local-section
+equivalence and germ law identify the original map with actual local-fibre
+restriction. The [affine theorem](FibreFormalFunctions.lean) supplies the
+image witness over the local spectrum using formal functions. No flatness,
+Henselianity, completeness, Stein factorization or object effectivity is assumed.
 
-The ordinary functions result in `Morphisms/Proper/BirationalFunctions.lean`
-remains distinct from connectedness, and from geometric connectedness of all
-actual fibres. Compiler outcomes are recorded separately from this interface.
+[ConnectedFibres](../../Morphisms/Proper/ConnectedFibres.md) proves geometric
+connectedness for proper surjective `f` over a locally Noetherian target with
+`IsIso f.c`. Its direct affine proof uses the arbitrary-ideal image theorem
+and actual flat base change; it does not depend on the ordinary-stalk image
+specialization. The lower
+[birational functions theorem](../../Morphisms/Proper/BirationalFunctions.md)
+requires no Noetherianity, while its geometric-connectedness specialization
+retains local Noetherianity of the target.

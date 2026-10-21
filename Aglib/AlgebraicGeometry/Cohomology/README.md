@@ -41,5 +41,12 @@ Artin approximation and object effectivity remain external.
 [Ordinary stalks and fibre sections](Proper/FibreIdempotents.md) constructs the
 canonical ordinary pushforward-stalk map to literal-fibre global sections and
 its germ and residue factorization for arbitrary morphisms. When `f.c` is an
-isomorphism, its image consists of residue constants. A general proper
-fibre-idempotent image theorem and geometric connectedness remain separate.
+isomorphism, its image consists of residue constants. The proper
+[affine image theorem](Proper/FibreFormalFunctions.lean) gives an arbitrary
+global-function preimage for each idempotent on any ideal thickening over a
+Noetherian ring. Its [stalk specialization](Proper/FibreFormalFunctions/Stalk.lean)
+gives an arbitrary ordinary-stalk preimage for each literal-fibre idempotent
+over a locally Noetherian target. The
+[connectedness theorem](../Morphisms/Proper/ConnectedFibres.md) proves geometric
+connectedness for proper surjective `f` over a locally Noetherian target with
+`IsIso f.c`, using the direct affine image route and actual flat base change.

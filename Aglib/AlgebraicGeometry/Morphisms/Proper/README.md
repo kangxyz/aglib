@@ -62,7 +62,17 @@ flatness is required.
 
 [Connectedness from sections](ConnectedFibres.md) proves that a nonempty scheme
 with only trivial idempotents in its actual global-section ring is connected.
-The [ordinary pushforward-stalk comparison](../../Cohomology/Proper/FibreIdempotents.md)
-constructs the canonical map to literal-fibre sections and its residue-constant
-factorization when `f.c` is invertible. These results do not supply a general
-proper fibre-idempotent image theorem or geometric connectedness of fibres.
+It also proves `geometricallyConnected_of_isProper_of_isIso_c`: a proper
+surjective morphism over a locally Noetherian target has geometrically connected
+actual fibres when `IsIso f.c`. The proof uses the proper affine
+[idempotent-image theorem](../../Cohomology/Proper/FibreFormalFunctions.lean)
+and actual flat base change. Its birational specialization assumes integral
+source and target, locally Noetherian normal target, properness, dominance and
+invertibility of the actual function-field map. The reusable
+[ordinary pushforward-stalk image theorem](../../Cohomology/Proper/FibreIdempotents.md)
+is separate from this direct affine proof.
+
+The [surface isomorphism locus](../../Surfaces/Birational/README.md) is the
+maximal actual target open on which a proper dominant birational morphism is
+an isomorphism. For a normal Noetherian integral target of dimension at most
+two and integral source, its complement is a finite set of closed points.

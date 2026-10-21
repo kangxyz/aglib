@@ -85,3 +85,15 @@ than introducing an alternative limit model.
 
 `ThickeningCohomologyComparison` proves the native bundled cohomology-map and
 affine coefficient comparisons at variable schemes before geometric specialization.
+
+[FibreFormalFunctions](../Proper/FibreFormalFunctions.lean) uses the canonical
+geometric degree-zero tower to put every idempotent on an actual ideal
+thickening in the image of restriction from original global functions. The
+base is any Noetherian commutative ring, the morphism is proper, and the ideal
+is arbitrary. The preimage need not be idempotent. The focused
+[ordinary-stalk specialization](../Proper/FibreFormalFunctions/Stalk.lean)
+puts every idempotent of a literal fibre in the image of the canonical ordinary
+pushforward-stalk map for a proper morphism over a locally Noetherian target.
+It retains the original germ and local-fibre restriction comparisons. Neither
+image theorem assumes flatness, Henselianity, completeness, Grothendieck
+existence, Artin approximation or object effectivity.

@@ -360,6 +360,7 @@ public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExt
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExtComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteProjectiveDimension
 public import Aglib.RingTheory.RegularLocalRing.FlatDescent
+public import Aglib.RingTheory.RegularLocalRing.HeightOnePrincipal
 public import Aglib.RingTheory.RegularLocalRing.Localization
 public import Aglib.RingTheory.RegularLocalRing.Normal
 public import Aglib.RingTheory.RegularLocalRing.ParameterQuotient

@@ -403,6 +403,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GlobalSections
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GodementUnit
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.FlatComparison.AffineSections
@@ -1062,6 +1063,8 @@ public import Aglib.AlgebraicGeometry.Cohomology.Proper.BaseChangeLocus
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Chow
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.EulerCharacteristic
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.FiberVanishing
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.FibreFormalFunctions
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.FibreFormalFunctions.Stalk
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.FibreIdempotents
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Field
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.FiniteModel
@@ -2283,6 +2286,7 @@ public import Aglib.AlgebraicGeometry.Stalk.PrincipalBaseChange
 public import Aglib.AlgebraicGeometry.Stalk.PrincipalColength
 public import Aglib.AlgebraicGeometry.Stalk.ResidueCharacteristic
 public import Aglib.AlgebraicGeometry.Stalk.Scalar
+public import Aglib.AlgebraicGeometry.Surfaces.Birational.IsomorphismLocus
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.CommonCenters
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.Comparison
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.NodeAtlas
@@ -3103,6 +3107,7 @@ public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExt
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExtComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteProjectiveDimension
 public import Aglib.RingTheory.RegularLocalRing.FlatDescent
+public import Aglib.RingTheory.RegularLocalRing.HeightOnePrincipal
 public import Aglib.RingTheory.RegularLocalRing.Localization
 public import Aglib.RingTheory.RegularLocalRing.Normal
 public import Aglib.RingTheory.RegularLocalRing.ParameterQuotient

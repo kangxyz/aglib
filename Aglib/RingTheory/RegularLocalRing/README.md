@@ -21,3 +21,10 @@ of its residue field, using the minimal-resolution/Koszul cotangent lower bound.
 flat local homomorphism from a Noetherian local ring to a regular local ring.
 The ring universes are independent; no finite-type, unramifiedness,
 characteristic or completion premise is imposed.
+
+[HeightOnePrincipal](HeightOnePrincipal.md) proves that every height-one prime
+of a regular local ring with `ringKrullDim R ≤ 2` is principal, with a singleton
+basis on the actual ideal. In dimension exactly two, every nonmaximal prime
+is principal, including the zero ideal; its nonzero case has the same basis.
+These low-dimensional results do not assert regular-local factoriality in
+arbitrary dimension or a scheme-level Cartier or contraction theorem.

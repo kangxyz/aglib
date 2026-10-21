@@ -17,9 +17,16 @@ The sheaf statement follows on the original affine-open basis.
   structure sheaf to the ordinary pushforward is an isomorphism.
 - `isIso_c_of_isProper_birational`: the proper-morphism specialization.
 
-The original connectedness target is the stronger
-`ProperBirationalGeometricallyConnected` family in the frozen R5
-`Morphisms/Proper/BirationalInterfaces.lean`. The present functions result supplies
-a lower obligation. Geometric connectedness of the actual fibres still needs a
-valid Stein or other fibre theorem; no H0 base-change premise is inferred here.
-Native compiler outcomes are recorded separately from this source interface.
+[ConnectedFibres](ConnectedFibres.md) proves the stronger native endpoint
+`geometricallyConnected_of_isProper_birational`. It retains integral source and
+target, properness, dominance, `NormalStalks` of the target and invertibility
+of the same actual `functionFieldMap`, and additionally assumes the target is
+locally Noetherian. It applies the general theorem for proper surjective `f`
+with `IsIso f.c`, whose proof uses the proper affine idempotent-image theorem
+and actual flat base change. The functions theorem above still needs no
+Noetherianity. No Stein family or nonflat H0 base-change isomorphism is added.
+
+For a Noetherian target of dimension at most two, the separate
+[surface isomorphism-locus theorem](../../Surfaces/Birational/README.md)
+gives the maximal actual isomorphism open with finite closed-point complement.
+Neither endpoint supplies a contraction or point-blowup factorization.
