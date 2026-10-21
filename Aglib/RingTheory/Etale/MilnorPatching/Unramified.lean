@@ -356,14 +356,12 @@ theorem sndTensorEquiv_tmul [_root_.Finite ι] (hf : Function.Surjective f) (s :
 
 /-- The normalization inverse recovers the actual pure tensor on every
 scalar multiple of a projected glued element. -/
-@[simp]
 theorem fstTensorEquiv_symm_smul [_root_.Finite ι] (hf : Function.Surjective f) (r : R) (q : Q) :
     (fstTensorEquiv f g e hf).symm (r • q.val.1) = r ⊗ₜ[P] q := by
   change (fstTensorEquiv f g e hf).symm (fstTensorEquiv f g e hf (r ⊗ₜ[P] q)) = _
   exact (fstTensorEquiv f g e hf).symm_apply_apply _
 
 /-- The node inverse recovers the actual pure tensor from the node projection. -/
-@[simp]
 theorem sndTensorEquiv_symm_smul [_root_.Finite ι] (hf : Function.Surjective f) (s : S) (q : Q) :
     (sndTensorEquiv f g e hf).symm (s • q.val.2) = s ⊗ₜ[P] q := by
   change (sndTensorEquiv f g e hf).symm (sndTensorEquiv f g e hf (s ⊗ₜ[P] q)) = _

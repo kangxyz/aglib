@@ -46,6 +46,8 @@ def actualSelfIntersection {k : Type u} [Field k] {X D : Scheme.{u}}
 /-- Degree algebra for actual Cartier ideals. The tensor-trivial class identity
 and actual restriction isomorphism yield the result; the intersection degree
 is the actual finite-scheme dimension and is not a chosen number. -/
+-- Retain j as the original closed component immersion in the self-intersection interface.
+@[nolint unusedArguments]
 theorem selfIntersection_eq_negative_intersectionDegree
     (havoid : IntegralAvoidanceCartierPullback.{u})
     (hdegree : Scheme.OverField.Curve.Abel.FiniteCartierIdealDegree.{u})

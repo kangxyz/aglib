@@ -219,7 +219,7 @@ variable [Module.Finite K A] [TopologicalSpace Lambda]
   [IsTopologicalAddGroup Lambda] [ContinuousSMul (Ω ≃ₐ[K] Ω) Lambda]
 
 /-- The discrete topology on actual algebra points in the based continuous-cocycle construction. -/
-local instance : TopologicalSpace (A →ₐ[K] Ω) := ⊥
+local instance instTopologicalSpaceCocyclePoints : TopologicalSpace (A →ₐ[K] Ω) := ⊥
 local instance : DiscreteTopology (A →ₐ[K] Ω) := ⟨rfl⟩
 
 include hadd hmark in

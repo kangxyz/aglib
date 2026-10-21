@@ -48,6 +48,8 @@ theorem objectCycle_mem_support_iff_minimal [IsNoetherianRing R]
     rw [FreeAbelianGroup.mem_support_iff, objectCycle_coeff]
     exact_mod_cast (coefficient_ne_zero_iff X p).mpr hp.le
 
+-- Retain the source-Noetherian guard of the original principal-face coefficient interface.
+@[nolint unusedArguments]
 theorem originalPrincipalFaceTerm_eq_point_term [IsNoetherianRing R]
     (X : Object R) (p : FiniteDominantPrime R) (q : FiniteDominantPrime S)
     (hp : p.val ∈ (supportIdeal X).minimalPrimes) :

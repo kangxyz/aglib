@@ -158,7 +158,7 @@ def liftOfHom (f : A →+* S) (hreg : IsRegular (f (a : A)))
   let : Algebra A S := f.toAlgebra
   exact lift I a hreg hdiv
 
-@[simp] theorem liftOfHom_algebraMap (f : A →+* S) (hreg : IsRegular (f (a : A)))
+theorem liftOfHom_algebraMap (f : A →+* S) (hreg : IsRegular (f (a : A)))
     (hdiv : ∀ b : I, f (a : A) ∣ f (b : A)) (x : A) :
     liftOfHom I a f hreg hdiv (algebraMap A (saturatedChart A I (a : A)) x) = f x := by
   let : Algebra A S := f.toAlgebra

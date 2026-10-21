@@ -238,25 +238,25 @@ def parameterAffineEquiv (r s : k) (hrs : r ≠ s) : k[X] ≃ₐ[k] k[X] :=
 @[simp] lemma parameterAffineEquiv_symm_apply (r s : k) (hrs : r ≠ s) (p : k[X]) :
     (parameterAffineEquiv k r s hrs).symm p = p.comp (parameterToStandard k r s) := rfl
 
-@[simp] lemma parameterAffineEquiv_X (r s : k) (hrs : r ≠ s) :
+lemma parameterAffineEquiv_X (r s : k) (hrs : r ≠ s) :
     parameterAffineEquiv k r s hrs X = parameterFromStandard k r s := by simp
 
-@[simp] lemma parameterAffineEquiv_symm_X (r s : k) (hrs : r ≠ s) :
+lemma parameterAffineEquiv_symm_X (r s : k) (hrs : r ≠ s) :
     (parameterAffineEquiv k r s hrs).symm X = parameterToStandard k r s := by simp
 
-@[simp] lemma parameterAffineEquiv_eval_zero (r s : k) (hrs : r ≠ s) (p : k[X]) :
+lemma parameterAffineEquiv_eval_zero (r s : k) (hrs : r ≠ s) (p : k[X]) :
     (parameterAffineEquiv k r s hrs p).eval 0 = p.eval r := by
   simp [parameterFromStandard, eval_comp]
 
-@[simp] lemma parameterAffineEquiv_eval_one (r s : k) (hrs : r ≠ s) (p : k[X]) :
+lemma parameterAffineEquiv_eval_one (r s : k) (hrs : r ≠ s) (p : k[X]) :
     (parameterAffineEquiv k r s hrs p).eval 1 = p.eval s := by
   simp [parameterFromStandard, eval_comp]
 
-@[simp] lemma parameterAffineEquiv_symm_eval_left (r s : k) (hrs : r ≠ s)
+lemma parameterAffineEquiv_symm_eval_left (r s : k) (hrs : r ≠ s)
     (p : k[X]) : ((parameterAffineEquiv k r s hrs).symm p).eval r = p.eval 0 := by
   simp [parameterToStandard, eval_comp]
 
-@[simp] lemma parameterAffineEquiv_symm_eval_right (r s : k) (hrs : r ≠ s)
+lemma parameterAffineEquiv_symm_eval_right (r s : k) (hrs : r ≠ s)
     (p : k[X]) : ((parameterAffineEquiv k r s hrs).symm p).eval s = p.eval 1 := by
   simp [parameterToStandard, eval_comp, sub_ne_zero.mpr hrs.symm]
 
@@ -364,7 +364,7 @@ lemma coordinateNodeEquiv_normalization (r s : k) (hrs : r ≠ s)
   intro z
   rfl
 
-@[simp] lemma coordinateNodeEquiv_scalar (r s : k) (hrs : r ≠ s)
+lemma coordinateNodeEquiv_scalar (r s : k) (hrs : r ≠ s)
     (hr : r ^ 2 + a * r - b = 0) (hs : s ^ 2 + a * s - b = 0) (c : k) :
     coordinateNodeEquiv k a b r s hrs hr hs (algebraMap k A c) =
       algebraMap k (Polynomial.PinchedPair.nodeRing k) c :=

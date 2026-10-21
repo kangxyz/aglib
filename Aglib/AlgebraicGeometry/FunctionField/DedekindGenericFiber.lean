@@ -136,7 +136,7 @@ theorem functionFieldRingEquiv_constants :
     (pullback.condition (f := p) (g := baseMap A F))
 
 /-- Forward transport of a structural constant is its actual structural image on the fibre. -/
-@[simp] theorem functionFieldRingEquiv_constants_apply (a : F) :
+theorem functionFieldRingEquiv_constants_apply (a : F) :
     functionFieldRingEquiv A F p (DedekindBase.constantToFunctionField F p a) =
       structuralConstants A F p a :=
   DFunLike.congr_fun (functionFieldRingEquiv_constants A F p) a

@@ -120,7 +120,7 @@ theorem principalPoint_minimal_contract_zero [IsDomain R] [IsIntegrallyClosed R]
     _ = (⊥ : Ideal S).under R := rfl
 
 /-- All minimal components of a proper principal face are actual maintained cycle labels. -/
-def principalPoint_minimal_label [IsDomain R] [IsIntegrallyClosed R] [IsDomain S]
+def principalPointMinimalLabel [IsDomain R] [IsIntegrallyClosed R] [IsDomain S]
     (p : FiniteDominantPrime R) (t : R) (h : Function.Surjective (algebraMap R S))
     (ht : RingHom.ker (algebraMap R S) = Ideal.span ({t} : Set R))
     (q : Ideal (Laurent S))

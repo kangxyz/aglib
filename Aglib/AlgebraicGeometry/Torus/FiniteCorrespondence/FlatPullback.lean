@@ -130,6 +130,8 @@ theorem flatPullback_coeff_eq_zero_of_no_point (z : FreeAbelianGroup (FiniteDomi
 
 omit [IsNoetherianRing S] in
 /-- The matching-point coefficient formula, retaining its original target-Noetherian guard. -/
+-- Retain the target-Noetherian guard of the original matching-point coefficient interface.
+@[nolint unusedArguments]
 theorem coefficient_flat_baseChange_of_matching_points [IsNoetherianRing S]
     (X : Object R) (p : FiniteDominantPrime R) (q : FiniteDominantPrime S)
     (h : q.val.under (Laurent R) = p.val) :
@@ -143,6 +145,8 @@ theorem coefficient_flat_baseChange_of_matching_points [IsNoetherianRing S]
 
 /-- Full finite-cycle naturality for the original object over any flat map of
 Noetherian domains, proved from its actual coefficients at every target label. -/
+-- Retain the target-domain guard of the original flat object-cycle naturality interface.
+@[nolint unusedArguments]
 theorem objectCycle_flat_baseChange [IsNoetherianRing R] [IsDomain R] [IsDomain S]
     (X : Object R) :
     objectCycle (X.baseChange S) = flatPullback (S := S) (objectCycle X) := by

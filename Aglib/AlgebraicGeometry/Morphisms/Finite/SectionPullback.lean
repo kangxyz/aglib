@@ -62,7 +62,9 @@ def aboveSection : Spec (.of R) ⟶ X :=
 
 /-- A compatible original structural map makes the constructed source point
 a section of that same structural map. -/
-@[reassoc (attr := simp)] theorem aboveSection_structure
+-- The auxiliary structural map πY is explicit and cannot be inferred by simp.
+@[reassoc]
+theorem aboveSection_structure
     (πX : X ⟶ Spec (.of R)) (πY : Y ⟶ Spec (.of R))
     (hp : p ≫ πY = πX) (hσ : σ ≫ πY = 𝟙 _) :
     aboveSection p σ g hg ≫ πX = 𝟙 _ := by

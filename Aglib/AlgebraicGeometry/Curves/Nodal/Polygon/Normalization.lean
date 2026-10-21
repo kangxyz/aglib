@@ -299,7 +299,7 @@ def affineBranch (i : Fin n) (a : k) : Spec (.of (NormalizationRing k n)) :=
   ext a
   rfl
 
-@[simp] theorem affineBranch_zero_map (i : Fin n) :
+theorem affineBranch_zero_map (i : Fin n) :
     polynomialCover k n (affineBranch k n (finRotate n i) 0) = nodePoint k n i := by
   apply PrimeSpectrum.ext
   ext a
@@ -360,7 +360,7 @@ def gluedBranch (i : Fin n) (a : k) : normalizedScheme k n :=
   rw [affineBranch_one_map]
   rfl
 
-@[simp] theorem gluedBranch_zero_map (i : Fin n) :
+theorem gluedBranch_zero_map (i : Fin n) :
     gluedPolynomialCover k n (gluedBranch k n (finRotate n i) 0) = gluedNodePoint k n i := by
   change (pushout.inl (normalizationOverlapInclusion k n) (gluingToInfinity k n) ≫
     gluedPolynomialCover k n) (affineBranch k n (finRotate n i) 0) = _

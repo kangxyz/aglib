@@ -86,6 +86,8 @@ theorem quotientFibreCycleMap_coeff [IsNoetherianRing T]
 
 /-- A local minimal prime of the first fibre contracts to an actual minimal
 prime of the first literal specialization. -/
+-- Retain the explicit local-prime instance of the original fibre-composition interface.
+@[nolint unusedArguments]
 theorem localPointFibre_minimal_under (p : FiniteDominantPrime R)
     (Q : Ideal (Laurent S)) [Q.IsPrime]
     (r : Ideal (Localization.AtPrime Q)) [r.IsPrime]
@@ -229,7 +231,7 @@ theorem localPointFibre_minimalSum_eq_composition_coeff
   let label := fun (r : Ideal B) (hr : r ∈ moduleMinimalPrimes (A := B) N) =>
     let hm := (mem_moduleMinimalPrimes r).mp hr
     let := hm.isPrime
-    principalPoint_minimal_label p a h₁ ha (r.under (Laurent S))
+    principalPointMinimalLabel p a h₁ ha (r.under (Laurent S))
       (localPointFibre_minimal_under p Q r hm)
   have hsum : (∑ r ∈ moduleMinimalPrimes (A := B) N,
       minimalPrimeCokernelTerm N (algebraMap S B b) r) =

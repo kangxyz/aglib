@@ -79,7 +79,7 @@ variable (A : Type*) [AddCommGroup A] [TopologicalSpace A] [IsTopologicalAddGrou
   [DistribMulAction G A] [ContinuousSMul G A]
 variable [H.FiniteIndex]
 /-- The finite coset enumeration used by transfer for the chosen section. -/
-local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
+local instance instFintypeCosets : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 
 omit [TopologicalSpace G] [IsTopologicalGroup G] [TopologicalSpace A]
   [IsTopologicalAddGroup A] [ContinuousSMul G A] [H.FiniteIndex] in

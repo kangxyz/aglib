@@ -283,7 +283,9 @@ def pairClassToH1 (h : EtaleLineBundleDescent.{u}) (n : ℕ)
 
 omit [IsNoetherian X]
   [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
-@[simp] theorem pairClassToH1_mk [IsNoetherian X]
+-- Retain the original Noetherian/DVR curve guards on the representative class formula.
+@[nolint unusedArguments, simp]
+theorem pairClassToH1_mk [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (h : EtaleLineBundleDescent.{u}) (n : ℕ)
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P : Pair X n) :
@@ -292,6 +294,8 @@ omit [IsNoetherian X]
 omit [IsNoetherian X]
   [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
 /-- The coefficient inclusion takes the actual power-frame class to the underlying frame class. -/
+-- Retain the original Noetherian/DVR curve guards on coefficient-forgetting naturality.
+@[nolint unusedArguments]
 theorem pairClassToH1_forget [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (h : EtaleLineBundleDescent.{u}) (n : ℕ)
@@ -320,6 +324,8 @@ theorem pairClassToH1_injective_of_global_roots (h : EtaleLineBundleDescent.{u})
 omit [IsNoetherian X]
   [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
 /-- The canonical pair/H1 class map is injective by actual tau-preserving descent recovery. -/
+-- Retain the original Noetherian/DVR curve guards on the pair-class injectivity interface.
+@[nolint unusedArguments]
 theorem pairClassToH1_injective [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks03AJ.{u, w} X)
@@ -337,6 +343,8 @@ omit [IsNoetherian X]
   [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)] in
 /-- Every actual mu torsor descends to an actual line bundle with a specified power
 trivialization. -/
+-- Retain the original Noetherian/DVR curve guards on the pair-class surjectivity interface.
+@[nolint unusedArguments]
 theorem pairClassToH1_surjective [IsNoetherian X]
     [∀ x : Scheme.ClosedPoint X, IsDiscreteValuationRing (X.presheaf.stalk x.val)]
     (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks03AJ.{u, w} X)

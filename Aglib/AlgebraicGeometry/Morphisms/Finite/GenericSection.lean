@@ -39,6 +39,8 @@ variable {R F A : Type u} [CommRing R] [IsDomain R] [IsIntegrallyClosed R]
 
 omit [IsDomain R] in
 /-- Every map from an integral R-algebra to Frac(R) factors uniquely through R. -/
+-- Retain the original domain guard on the integral fraction-field retraction interface.
+@[nolint unusedArguments]
 theorem existsUnique_integral_retraction [IsDomain R] (f : R →+* A) (hf : f.IsIntegral)
     (g : A →+* F) (hg : g.comp f = algebraMap R F) :
     ∃! h : A →+* R, h.comp f = RingHom.id R ∧ (algebraMap R F).comp h = g := by
