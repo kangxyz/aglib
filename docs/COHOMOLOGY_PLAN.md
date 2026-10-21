@@ -700,7 +700,7 @@ endpoint's completion status.
   the next leaf. Preserve all compatible copied build artifacts.
 - Mathematical/source work may run in disjoint scopes; Lean frontends run through one
   shared build lock. Each guarded invocation names the required changed module.
-- Use a focused `lake build` for the changed leaf and strictly necessary
+- Use `scripts/build_serial.py` for the changed leaf and strictly necessary
   prerequisites. If a target unexpectedly expands into a broad rebuild, stop
   and inspect cache identity/imports instead of allowing it to continue.
 - Do not run `lake build Aglib`, `lake build AglibTest`, an unqualified build,

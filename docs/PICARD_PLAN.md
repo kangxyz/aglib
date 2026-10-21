@@ -589,7 +589,7 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     because Mathlib does not expose `baseChangeMkQ`. The instance is supplied by
     `RingTheory/Grassmannian/BaseChangeFormula`. That leaf is the only one
     allowed a private `import all`, as a one-file exception in
-    `.github/lean-ci-exceptions.json`. Remove both once Mathlib exposes
+    `scripts/check_library_layout.py`. Remove both once Mathlib exposes
     `baseChangeMkQ`.
   - An independent statement review found the slice corresponding; its
     documentation repairs are applied.

@@ -120,9 +120,9 @@ but they do not certify propagation of explicit native thread/heap flags.
 The current guard binds the absolute wrapper; subsequent runs verify actual
 `-j` and `-M` arguments separately from parent and process-group limits.
 
-The following command records the original macOS launch at the measured
-revision, using that revision's resource wrapper, owned setup file and separate
-output path. Current commands belong to the [common tooling guide](../ci/README.md).
+For reproduction on macOS after a focused Lake build, use the module's current
+owned
+`.lake/build/ir/...setup.json`, a fresh receipt and a separate output path:
 
 ```sh
 AGLIB_BUILD_THREADS=1 python3 scripts/resource_guard.py --capped-toolchain \
@@ -177,8 +177,6 @@ Tensor/Span changes. The ordinary rehashed build passes in 833.99 seconds with
 restores the remaining artifacts. This is an incremental/cache-restoring build,
 not a cold whole-library timing. The source/configuration snapshot remains fixed
 through the run.
-
-Recorded aggregate command at that revision:
 
 ```sh
 AGLIB_BUILD_THREADS=1 python3 scripts/build_serial.py \
@@ -960,7 +958,7 @@ equality certificate or abstract component calculation needs its own kernel
 check, component consumers and timed comparison before adoption.
 
 
-## Historical lint process isolation (2026-10-19)
+## Isolate lint processes when checking several module origins
 
 Lean 4.34.1's builtin lint driver imports a server-level environment for each
 selected module. The pinned Batteries driver also imports an environment per
@@ -974,42 +972,16 @@ process checking the final criterion, whose imports include all seven providers,
 passed at 2,876,129,280 bytes. Separate builtin invocations for all seven passed
 with a maximum of 2,867,855,360 bytes (about 2.67 GiB).
 
-That historical [selected-checker](https://github.com/kangxyz/aglib/blob/c6d88291f5b69e246eac940e9e04946f111839f1/scripts/check_affected.py) implementation started a fresh guarded
+That historical [selected-checker](../scripts/check_affected.py) implementation started a fresh guarded
 builtin-lint process for each selected module, and the
-[declaration wrapper](https://github.com/kangxyz/aglib/blob/c6d88291f5b69e246eac940e9e04946f111839f1/scripts/run_declaration_linter.py) starts a separate
+[declaration wrapper](../scripts/run_declaration_linter.py) starts a separate
 Lean interpreter for each exact origin. The module selection, linter options,
 exception handling and resource limits retain their existing meanings. Reuse
 successful provider compilation when repairing this scheduling issue; the
 failed lint does not require another proof build.
-The intervening shared recipe used production/test umbrella environments and
-separate exact-origin checks for support/tools. Those predicates differ from the
-current canonical isolated-origin checks; their old successes do not supply
-coverage for the new predicate.
-
-## Reuse input observations within one common-check invocation (2026-10-21)
-
-A cached four-module fixture exposed repeated input hashing after the shared
-importer was working correctly. Profiling three bindings attributed 34.9 of
-38.9 seconds to opening, reading and hashing native files. Final verification
-created a fresh hash cache and reread the same imported artifacts.
-
-The runner now carries content/metadata caches across its execution and final
-verification within that invocation. Final verification still constructs fresh
-native observations and reflection graphs, checks current path resolution and
-exact file stamps, and rehashes changed inputs. Drift, source restoration,
-shadow-path and publication-boundary fixtures retain these checks.
-
-| Cached fixture observation | Earlier candidate | Reused invocation observations |
-|---|---:|---:|
-| Complete second invocation | 64.67 s | 36.13 s |
-| Input binding, 27 calls | 49.06 s | 22.25 s |
-| Final verification | 25.92 s | 2.76 s |
-| Checks reused | 8 | 8 |
-| Modules compiled/refreshed | 0 | 0 |
-
-The later run used an installed package with 38 byte-matched source/assets;
-the repaired source/config selector was subsequently validated separately.
-One source-style check reran because its optional source-built runtime lacked
-reusable native metadata. The independent module stayed unselected and unbuilt.
-These timings describe this small cached fixture, without measuring production
-proof compilation or whole-library CI.
+The later shared final-check recipe adopts the already accepted production and
+test umbrella checks, keeping each whole environment in a separate guarded
+process. The exact-origin wrapper remains required for selected AuditSupport
+and extra Tools origins; diagnostic production/test leaf passes do not replace
+their umbrella check. Historical per-origin and current umbrella results retain their distinct input
+and predicate bases; this code migration does not itself measure a speedup.

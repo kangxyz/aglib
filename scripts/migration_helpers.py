@@ -7,6 +7,7 @@ explicitly; the retired writer entry points always fail before filesystem writes
 
 from pathlib import Path
 import hashlib
+import importlib.util
 import json
 import re
 import subprocess
@@ -150,7 +151,9 @@ def canonicalize(source: str, *, source_path: str | None = None) -> str:
     Imports are already routed by target_module and excluded from both namespace
     passes. Comments and strings retain their original source identity.
     """
-    from lean_ci.project import source as lexer
+    spec = importlib.util.spec_from_file_location("aglib_source_lexer", ROOT / "scripts/library_sources.py")
+    lexer = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(lexer)
     original_rules = json.loads((ROOT / "docs/namespace-map.json").read_text())["prefix_rewrites"]
     for rules in [original_rules, layout_rules(source_path)]:
         if not rules:

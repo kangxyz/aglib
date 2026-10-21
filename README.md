@@ -36,9 +36,8 @@ downstream.
 
 Use the [development guide](docs/DEVELOPMENT.md) to select focused builds and
 applicable final checks for the changed modules and their affected consumers.
-It also covers cache setup and contribution conventions. Final checks use
-`python3 -m lean_ci check --config .github/lean-ci.toml --root .` through the shared
-tooling distribution; CI delegates to the same pinned reusable workflow.
+It also covers cache setup and contribution conventions. The comprehensive
+`scripts/check.sh` route serves separately requested diagnostics and declared CI.
 
 ## License
 

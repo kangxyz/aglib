@@ -25,8 +25,9 @@ the normal current-source build, using `--rehash` when importing cached outputs.
 For a selected actual Aglib module, the guarded export route is:
 
 ```sh
-python3 -m lean_ci check --config .github/lean-ci.toml --root . \
-  --target SELECTED_MODULE --outputs /absolute/scratch/outputs.jsonl
+python3 scripts/build_serial.py --rehash \
+  --receipt-dir .lake/verification/my-leaf \
+  --outputs /absolute/scratch/outputs.jsonl SELECTED_MODULE
 lake cache stage /absolute/scratch/outputs.jsonl /absolute/scratch/staged
 ```
 
@@ -77,8 +78,7 @@ validation. `lake update` and Mathlib's post-update cache hook are mutating
 preparation operations; ordinary validation does not silently advance pins. If
 the hook defers or is disabled, obtain matching cache with the intended toolchain
 before the build. Aglib's tracked downstream manifest is derived from the root
-manifest: run `python3 -m lean_ci prepare --config .github/lean-ci.toml --root .`,
-inspect its pin-preserving preparation and commit the resulting manifest with
+manifest: run `python3 scripts/prepare_downstream.py` and commit the result with
 an upstream pin update. The CI adapter rejects a stale tracked copy early.
 
 The [CI contract](CI.md) assigns complete current check scope for a dependency,
@@ -87,7 +87,7 @@ cache-driven. Lint/axiom records have separate current-input keys; a build cache
 hit is not their success evidence. Unknown unbounded checker-policy changes
 require explicit current coverage or a validated migration.
 
-The reusable package's [native fixture](../ci/tests/execution/native_fixture.py) exercises local
+The reusable package's [native fixture](../ci/native_test.py) exercises local
 producer/consumer staging, recovery after a later failure, stale-input rejection
 and new-input restoration under `--no-build`. Its caches are isolated with a
 nonempty `LAKE_CACHE_DIR`; no remote service metadata is imported. Its same-
@@ -142,7 +142,7 @@ are part of the artifact trust boundary; native cache import is not a fresh
 kernel replay.
 
 After guarded checks succeed, export root-package mappings with the same
-`lean_ci check --target MODULE --outputs FILE` route. An up-to-date no-build
+`build_serial.py --rehash --outputs FILE TARGETS...` route. An up-to-date no-build
 probe exports mappings without recompiling the library. On a main-branch push,
 `mode: publish` runs native `lake cache stage`, adds honest source/compiler
 provenance and uploads a pinned official Actions staging artifact with a unique
@@ -166,15 +166,17 @@ asset already exists or has been downloaded. Remote transport operation needs
 evidence from successful producer and
 downstream restore runs, such as the historical rollout recorded below.
 
-The common reusable workflow and shared cache action own current producer and
-consumer transport. Bounded shared fixtures check source/pin correspondence,
-partial progress and matching native artifact restoration. These fixtures do not
-by themselves establish real public producer-to-consumer delivery. Such evidence
-must retain actual revisions, restore results and proof-compiler counts for the
-selected targets; a public miss is reported rather than hidden by cold compilation.
-The former [manual acceptance workflow](https://github.com/kangxyz/aglib/blob/c6d88291f5b69e246eac940e9e04946f111839f1/.github/workflows/cache-client.yml)
-is a historical source reference, not a current dispatch route. Its removal does
-not relabel historical rollout evidence or claim a new successful delivery.
+The manual [cache-client acceptance workflow](../.github/workflows/cache-client.yml)
+checks real Linux producer-to-Quillen delivery independently of full library CI.
+Dispatch it only after an Aglib producer cache release has been published. It
+checks out Quillen main and this workflow revision's separate tooling, fetches
+the existing pinned Mathlib prerequisites, and requires a public Aglib import
+into a newly empty isolated native cache. A remote miss fails this acceptance
+run. `lake --rehash --no-build build Aglib` must then succeed without upstream
+proof compilation, followed by one scratch Tensor/Span import. Logs record both
+actual producer and consumer revisions. The workflow is manual-only, has its own
+concurrency group and read-only repository permissions, uploads its evidence,
+and does not build Quillen mathematics or publish caches.
 
 ### Recorded initial rollout
 
@@ -204,13 +206,12 @@ python3 "$AGLIB_CACHE_TOOLING/.github/actions/lake-cache/cache.py" --root . rest
 ```
 
 This reads the existing manifest and does not update dependencies. Mathlib setup
-and the selected leaf's normal checks still follow the consumer guide. R5Lab
-uses the same shared workflow to publish its own qualified outputs after trusted
-main-branch validation, with its repository's permissions.
+and the selected leaf's normal checks still follow the consumer guide. R5Lab has
+no producer workflow; this integration does not publish it.
 
-A future library provides `.github/lean-ci.toml` and a pinned caller. The shared
-workflow owns preparation, guarded builds, native `-o` export, staging, release
-and partial-progress retention.
+A future TOML-configured library uses the same package options, reviewed pinned
+tooling action, repository allowlist, ordinary guarded build with native `-o`
+export, staging step, separate release job and native partial-progress save.
 The pinned Lean 4.34.1 sources `Lake/CLI/Help.lean`, `Lake/CLI/Main.lean`,
 `Lake/Config/PackageConfig.lean` and `Lake/Config/Env.lean` own native behavior.
 In particular, `unstage` accepts an optional package argument even though its
