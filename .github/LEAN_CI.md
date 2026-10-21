@@ -5,10 +5,25 @@ The template is adapted from Mathlib `d13f23b7`'s
 Callers supply only the Lake package directory and production targets.
 
 - `build` configures the pinned toolchain, restores cache and calls `lake build`.
+  Native setup follows Mathlib's pinned
+  [setup-build-env action](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/actions/setup-build-env/action.yml#L85-L103):
+  the official `https://elan.lean-lang.org/elan-init.sh` installer and `elan which
+  lake` select the package's unchanged `lean-toolchain`. Installer download
+  retries and at most three native toolchain-acquisition attempts handle
+  transient failures. Exhausted retries or failed Lean/Lake version checks fail
+  setup.
   Completed compilation is cached even when a later operation fails.
   Mathlib's `mk_all --lib <root> --check` verifies the generated production
   entries after compilation has been saved. It never rewrites sources in CI.
-- `test_lint` follows Build. It runs `lake test` after a successful Build, then
+- `test_lint` requires successful Build and generated-entry checks. It starts
+  by downloading this run's mandatory `cache-staging` artifact,
+  overlaying its native mappings/artifacts with `lake cache unstage
+  --force-overwrite`, and verifying all production roots and lint executables
+  with `LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash`. A missing
+  artifact or incomplete native output fails the job before Test/lint/audit.
+  This follows Mathlib's
+  [same-run staging transfer and completeness check](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml#L444-L479).
+  It then runs `lake test` and
   `lake lint -- --trace`. Library Tests use incremental compilation; persisted
   compiler-linter diagnostics are reused. Batteries declaration lint keeps its
   ordinary package-wide behavior. A failed Test does not suppress lint feedback.
@@ -19,8 +34,11 @@ Callers supply only the Lake package directory and production targets.
   reads the built production roots and their imported closure; only `propext`,
   `Classical.choice` and `Quot.sound` are allowed. It does not compile the project
   or replay proofs. Deliberate negative Test fixtures are outside this audit.
-- `upload_cache` publishes staged native compilation independently of Test/lint,
-  only for trusted default-branch pushes. A cache is not a passed-check claim.
+- `upload_cache` publishes staged native compilation only after Build,
+  generated-entry, Test, lint, text-style and production-axiom checks all pass,
+  and only for trusted default-branch pushes. Failed or interrupted Build/Test
+  work retains the always-run Actions cache saves where the runner can finish
+  cleanup; this does not authorize release publication.
 
 Necessary host adaptations are explicit: GitHub-hosted runners replace Mathlib's
 self-hosted pool; GitHub caches/releases replace its Azure backend; native
@@ -33,11 +51,25 @@ complete import lists of the package's default production targets, without
 changed-file filtering. Test libraries use `TestName.+` globs and `lake test`;
 they are not default production targets and have no generated `TestName.lean`.
 All four callers use these same native mechanisms.
+Native setup runs from the caller's Lake package directory. Configure Lean
+or cache-restore failure suppresses checks requiring compiled outputs; Test
+failure still allows lint, text-style and axiom feedback before the final report
+fails the job. The focused workflow regression suite uses Python and PyYAML:
+`python3 -m unittest discover -s scripts -p test_lean_ci_workflow.py -v`.
 The caller preserves each repository's workflow name and concurrency group.
 `cancel-in-progress: false` with `queue: max` serializes runs without cancelling
 the running job or replacing an already pending run.
 
-Actions caches serve CI jobs and later runs. Release assets provide a separate
+Each job restores `.lake` and the native cache directory together once. Build
+and Test run on separate runners and each saves its completed compilation,
+including partial progress on failure. Test's Actions restore warms unchanged
+dependency outputs; it is not the Build-to-Test handoff. Lake's `-o` mappings
+include root-package outputs, so the warm cache also supplies the Mathlib and
+Batteries executables built by Build. The required current-run artifact then
+overwrites root-package cache mappings, and the no-build check rejects any
+remaining incomplete outputs. The downloaded tar is removed after native
+unstaging so subsequent cache saves do not duplicate the archive. Release
+assets provide a separate
 manual download interface for local or remote consumers; CI does not download
 these releases. Use `gh release download lean-native-<commit> --repo <owner/repo>
 --pattern lake-native-cache-<run>-<attempt>.tar`, extract the archive into a fresh

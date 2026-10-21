@@ -31,17 +31,6 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
-      - name: Select existing native compilation cache
-        id: native-key
-        working-directory: ${{ inputs.package-directory }}
-        run: |
-          toolchain=$(tr '/:' '--' < lean-toolchain | tr -d '\r\n')
-          echo "prefix=lake-native-v1-${RUNNER_OS}-${RUNNER_ARCH}-$toolchain-" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
-        with:
-          path: ${{ runner.temp }}/lake-native-cache
-          key: ${{ steps.native-key.outputs.prefix }}${{ github.run_id }}-${{ github.run_attempt }}-seed
-          restore-keys: ${{ steps.native-key.outputs.prefix }}
       - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore
         with:
@@ -52,15 +41,31 @@ jobs:
           restore-keys: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
       - name: Configure Lean
         id: lean-setup
-        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
-        with:
-          lake-package-directory: ${{ inputs.package-directory }}
-          auto-config: 'false'
-          build: 'false'
-          test: 'false'
-          lint: 'false'
-          use-github-cache: 'false'
-          use-mathlib-cache: 'false'
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          installer="$RUNNER_TEMP/elan-init.sh"
+          curl --fail --silent --show-error --location --retry 2 --retry-all-errors \
+            --connect-timeout 20 --max-time 120 \
+            https://elan.lean-lang.org/elan-init.sh \
+            --output "$installer"
+          chmod +x "$installer"
+          "$installer" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+
+          for attempt in 1 2 3; do
+            if LAKE_PATH=$(elan which lake); then
+              lean --version
+              "$LAKE_PATH" --version
+              exit 0
+            fi
+            if test "$attempt" -lt 3; then
+              echo "::warning::Lean toolchain acquisition failed (attempt $attempt/3); retrying."
+              sleep "$((attempt * 5))"
+            fi
+          done
+          echo '::error::Lean toolchain acquisition failed after 3 attempts.'
+          exit 1
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
         run: lake exe cache get
@@ -118,14 +123,15 @@ jobs:
   test_lint:
     name: Test, lint and axiom audit
     needs: build
-    if: ${{ always() && (needs.build.result == 'success' || needs.build.result == 'failure') }}
+    if: ${{ needs.build.result == 'success' }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
-      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      - name: Warm dependency and native compilation outputs
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore-cache
         with:
           path: |
@@ -135,39 +141,73 @@ jobs:
           restore-keys: |
             ${{ needs.build.outputs.cache-key }}-tests-
             ${{ needs.build.outputs.cache-key }}
-          fail-on-cache-miss: true
       - name: Configure Lean
         id: lean-setup
-        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          installer="$RUNNER_TEMP/elan-init.sh"
+          curl --fail --silent --show-error --location --retry 2 --retry-all-errors \
+            --connect-timeout 20 --max-time 120 \
+            https://elan.lean-lang.org/elan-init.sh \
+            --output "$installer"
+          chmod +x "$installer"
+          "$installer" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+
+          for attempt in 1 2 3; do
+            if LAKE_PATH=$(elan which lake); then
+              lean --version
+              "$LAKE_PATH" --version
+              exit 0
+            fi
+            if test "$attempt" -lt 3; then
+              echo "::warning::Lean toolchain acquisition failed (attempt $attempt/3); retrying."
+              sleep "$((attempt * 5))"
+            fi
+          done
+          echo '::error::Lean toolchain acquisition failed after 3 attempts.'
+          exit 1
+      - name: Download this run's Build outputs
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
         with:
-          lake-package-directory: ${{ inputs.package-directory }}
-          auto-config: 'false'
-          build: 'false'
-          test: 'false'
-          lint: 'false'
-          use-github-cache: 'false'
-          use-mathlib-cache: 'false'
+          name: cache-staging
+          path: ${{ runner.temp }}/lake-native-cache
+      - name: Restore this run's native Build outputs
+        id: current-cache
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          trap 'rm -f "$LAKE_CACHE_DIR/lake-native-cache.tar"' EXIT
+          mkdir -p "$RUNNER_TEMP/cache-staging"
+          tar -xf "$LAKE_CACHE_DIR/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging"
+          lake cache unstage "$RUNNER_TEMP/cache-staging" --force-overwrite
+      - name: Verify Build outputs without compilation
+        id: compiled
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a targets <<< "$BUILD_TARGETS"
+          LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash "${targets[@]}" batteries/runLinter mathlib/lint-style mathlib/mk_all
       - name: Test
         id: test
-        if: ${{ needs.build.result == 'success' }}
+        if: ${{ needs.build.result == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: lake test
       - name: Lint
         id: lint
-        if: ${{ always() && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: lake --no-build lint -- --trace
       - name: Mathlib text style
         id: style
-        if: ${{ always() && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: lake --no-build exe mathlib/lint-style
       - name: Audit production axioms
         id: axioms
-        if: ${{ always() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
@@ -194,18 +234,19 @@ jobs:
       - name: Report Test, lint and axiom results
         if: ${{ always() }}
         env:
+          COMPILED: ${{ steps.compiled.outcome }}
           TEST: ${{ steps.test.outcome }}
           LINT: ${{ steps.lint.outcome }}
           STYLE: ${{ steps.style.outcome }}
           AXIOMS: ${{ steps.axioms.outcome }}
         run: |
-          printf 'Test: %s\nLint: %s\nText style: %s\nAxioms: %s\n' "$TEST" "$LINT" "$STYLE" "$AXIOMS" >> "$GITHUB_STEP_SUMMARY"
-          test "$TEST" = success && test "$LINT" = success && test "$STYLE" = success && test "$AXIOMS" = success
+          printf 'Build outputs: %s\nTest: %s\nLint: %s\nText style: %s\nAxioms: %s\n' "$COMPILED" "$TEST" "$LINT" "$STYLE" "$AXIOMS" >> "$GITHUB_STEP_SUMMARY"
+          test "$COMPILED" = success && test "$TEST" = success && test "$LINT" = success && test "$STYLE" = success && test "$AXIOMS" = success
 
   upload_cache:
     name: Publish compilation cache
-    needs: build
-    if: ${{ always() && needs.build.outputs.staged == 'true' && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+    needs: [build, test_lint]
+    if: ${{ needs.build.result == 'success' && needs.test_lint.result == 'success' && needs.build.outputs.staged == 'true' && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -225,6 +266,6 @@ jobs:
         run: |
           tag="lean-native-$REVISION"
           gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1 ||
-            gh release create "$tag" --repo "$REPOSITORY" --target "$REVISION" --title "Lean compilation $REVISION" --notes 'Compiled artifacts; Test and lint are reported separately.'
+            gh release create "$tag" --repo "$REPOSITORY" --target "$REVISION" --title "Lean compilation $REVISION" --notes 'Compiled artifacts from successful Build, generated-entry, Test, lint, text-style and production-axiom checks.'
           mv lake-native-cache.tar "$ASSET"
           gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"

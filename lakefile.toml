@@ -13,6 +13,15 @@ restoreAllArtifacts = true
 
 [[lean_lib]]
 name = "Aglib"
+roots = []
+globs = ["Aglib"]
+# Native mk_all owns this import-only entry, like Mathlib.lean.
+leanOptions = {autoImplicit = false, weak.linter.mathlibStandardSet = true, weak.linter.style.longFile = 0, warningAsError = true}
+
+[[lean_lib]]
+name = "AglibModules"
+roots = []
+globs = ["Aglib.+"]
 leanOptions = {autoImplicit = false, weak.linter.mathlibStandardSet = true, weak.linter.style.longFile = 1500, warningAsError = true}
 
 [[lean_lib]]
