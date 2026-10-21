@@ -1248,6 +1248,7 @@ public import Aglib.AlgebraicGeometry.FunctionField.StalkMap
 public import Aglib.AlgebraicGeometry.FunctionField.UnitOpen
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Basic
 public import Aglib.AlgebraicGeometry.FundamentalGroup.CommonBaseStage
+public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.Basic
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ClosureAlgHom
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ClosureEmbedding
@@ -1255,6 +1256,7 @@ public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.CyclotomicCharacter
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.CyclotomicCharacterBaseChange
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.Embedding
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.EmbeddingConjugacy
+public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.OverRing
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.PointedEmbedding
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.RootActions
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.RootCoefficientAction
@@ -1328,6 +1330,7 @@ public import Aglib.AlgebraicGeometry.Group.Kernel.PrimeDegree
 public import Aglib.AlgebraicGeometry.Group.Kernel.Remarking
 public import Aglib.AlgebraicGeometry.Group.Monodromy
 public import Aglib.AlgebraicGeometry.Group.MultiplicationCotangent
+public import Aglib.AlgebraicGeometry.Group.MultiplicationDegree
 public import Aglib.AlgebraicGeometry.Group.MultiplicationEtale
 public import Aglib.AlgebraicGeometry.Group.MultiplicationFinite
 public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
@@ -1337,6 +1340,7 @@ public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.Transitions
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTransport
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeBaseChange
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeGroup
+public import Aglib.AlgebraicGeometry.Group.PointDivisor
 public import Aglib.AlgebraicGeometry.Group.PointedMorphism
 public import Aglib.AlgebraicGeometry.Group.PointedTranslation
 public import Aglib.AlgebraicGeometry.Group.PrimitiveRootCover
@@ -1815,6 +1819,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Finite.PointLifts
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.SectionPullback
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ActualCoverQuotients
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.Affine
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.Equivalence
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.Fullness
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.RationalPointCompletion
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.Residue
@@ -1919,6 +1924,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.PointComparison
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.PointedCover
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ResidueFiber
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ResidueLift
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.SectionComparison
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.SourceGeometry
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.SplitMapFiber
@@ -1988,7 +1994,14 @@ public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.NormalCur
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RegularBase
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Stalks
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.TorsorExtension
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.AffineAlgebraization
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.Basic
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.ClassExtension
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.FieldRealization
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.GenericPullback
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.OriginalRepresentation
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass
+public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.UnramifiedExtension
 public import Aglib.AlgebraicGeometry.Normalization.Relative
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
@@ -2822,6 +2835,7 @@ public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.Length.PrimeQuotient
 public import Aglib.RingTheory.Length.PrincipalIntersection
 public import Aglib.RingTheory.Length.ResidueDimension
+public import Aglib.RingTheory.LocalRing.EtaleLift
 public import Aglib.RingTheory.LocalRing.ExtCriterion
 public import Aglib.RingTheory.LocalRing.ExtLengthCriterion
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance

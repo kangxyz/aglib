@@ -31,8 +31,8 @@ morphism. The coefficient Hopf structure and cocommutativity remain explicit
 inputs, and local nonemptiness is supplied separately by the proved cover
 surjectivity.
 
-The original torsor data, coefficient coordinates and their equations, chosen
-point, class vanishing, and any external `hclass` equality remain inputs. The
+In `Basic`, the original torsor data, coefficient coordinates and their equations,
+chosen point, class vanishing, and any external `hclass` equality remain inputs. The
 arbitrary-residue route keeps its DVR, fraction-field, Galois/closure, and
 prime/lies-over hypotheses. It first derives fixedness of every original
 embedding from the common fixed point and coefficient inertia.
@@ -42,10 +42,33 @@ The native global
 the owner of relative normalization over general bases. This affine interface
 uses the literal integral-closure model and its canonical generic map; it
 introduces no alternative normalization carrier or global gluing claim.
-Arbitrary torsor/H1 or coefficient-Hopf realization, regular-surface purity,
-Henselian comparison, and full sheaf-class comparison remain separate.
+Regular-surface gluing and proper-Henselian comparison remain separate.
+
+[AffineAlgebraization](AffineAlgebraization.lean) constructs the actual algebra
+coaction and bijective transporter from an affine categorical torsor action.
+[FieldRealization](FieldRealization.lean) realizes a finite continuous cocycle
+as an actual finite-etale field algebra and point under its Hopf, coefficient,
+Galois-category and fibre-functor hypotheses. [OriginalRepresentation](OriginalRepresentation.lean)
+specializes this to the literal generic Hopf algebra `K tensor_R H`, with its
+structural scalar tower and the original `genericClass` equality.
+
+[SheafClass](SheafClass.lean), [GenericPullback](GenericPullback.lean) and
+[ClassExtension](ClassExtension.lean) identify the normalization's actual sheaf
+Ext-H1 class and its generic pullback. `modelToGaloisH1` is the original
+three-factor composite: generic H1 pullback, the native coefficient comparison,
+and identity-coefficient Galois restriction. The proof preserves both independent
+Ext universes and proves injection for arbitrary model classes.
+
+[UnramifiedExtension](UnramifiedExtension.lean) combines realization and that
+injection: every original class with zero restriction to the same selected
+prime's inertia has a unique model Ext-H1 preimage. This local DVR theorem
+retains the displayed Hopf/coordinate, GC/FF, Stacks03AJ/03RV, positive
+annihilator and invertibility premises. The generic torsor and its point are
+constructed in this final endpoint. No unrestricted coefficient-Hopf
+representability or global arithmetic endpoint follows.
 
 The source basis is R5 `f8a3314ddecffcada2ec721d26d56a937bed9690`.
-The transferred scheme construction is the generic Spec/pullback portion of
-`SpecTorsor` and `SpecPullbackTorsor`, and `H1SchemeTorsor:53–350`.
-The subsequent H1/sheaf comparison tail is outside this extraction.
+The basic scheme construction comes from `SpecTorsor`, `SpecPullbackTorsor`
+and `H1SchemeTorsor:53–350`; the new sheaf, pullback and extension leaves continue
+its later source cuts. Each companion guide records the exact source identity
+and retained conditions.

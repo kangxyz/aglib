@@ -243,6 +243,7 @@ public import Aglib.RingTheory.Length.ExactSequence
 public import Aglib.RingTheory.Length.PrimeQuotient
 public import Aglib.RingTheory.Length.PrincipalIntersection
 public import Aglib.RingTheory.Length.ResidueDimension
+public import Aglib.RingTheory.LocalRing.EtaleLift
 public import Aglib.RingTheory.LocalRing.ExtCriterion
 public import Aglib.RingTheory.LocalRing.ExtLengthCriterion
 public import Aglib.RingTheory.LocalRing.ParameterAvoidance

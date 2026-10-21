@@ -15,3 +15,9 @@ Native owners follow the actual local/regular-local mathematical subject. These 
 [PrincipalMaximalIdeal](PrincipalMaximalIdeal.lean) is the lower native
 principal-maximal-ideal provider used by the smooth-curve stalk constructions.
 The geometric consumers keep their own field, smoothness and dimension inputs.
+
+[EtaleLift](EtaleLift.lean) constructs finite etale algebras over any local ring
+whose actual residue tensor products realize the supplied separable field
+extension or etale residue algebra. Monic polynomial lifting, the resultant
+unit criterion and native tensor-product comparisons give the construction;
+Henselian, Noetherian and excellence assumptions are unnecessary.

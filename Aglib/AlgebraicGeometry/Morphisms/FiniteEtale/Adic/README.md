@@ -31,3 +31,10 @@ completion ring is supplied independently.
 The incoming source is the hash-pinned R5 packet at
 `f8a3314ddecffcada2ec721d26d56a937bed9690`. Existing smooth and completion
 providers are reused without duplicate declarations.
+
+[Equivalence](Equivalence.lean) combines the existing fullness with locality-only
+faithfulness and essential surjectivity from [ResidueLift](../ResidueLift.lean).
+For a Noetherian local ring complete for its maximal ideal, it constructs the
+actual residue-base-change equivalence, including the exact marked-residue-field
+composite and both forward projection formulas. The Noetherian and completeness
+hypotheses remain explicit; proper-scheme comparison is a separate theorem.

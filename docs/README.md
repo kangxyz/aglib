@@ -49,6 +49,10 @@ recorded source cuts. Earlier selections are retained in
 [Module](module-map.json) and [namespace](namespace-map.json) maps record
 successive refinements and retirements, including intermediate names.
 
+The [R5 source/native correspondence](migration/R5_SOURCE_CORRESPONDENCE.md)
+links the frozen full-source baseline to exact native map and guard arguments,
+including retained mathematical premises and current producer frontiers.
+
 These records describe their identified source and validation snapshots. A
 historical `latest` filename or `current_identity_validation` field is not a
 live inventory or acceptance claim for every later checkout. Keep original

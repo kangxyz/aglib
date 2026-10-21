@@ -35,3 +35,15 @@ geometrically connected curve group objects. The native
 `Curve.charZeroFiniteCurveGroupHomEtale` supplier discharges the retained
 input of `Curve.pointed_dominant_finite_etale`; the direct proved adapter keeps
 the original curve map and origin equation.
+
+[Point/divisor compatibility](PointDivisor.md) identifies the actual normalized degree-zero
+Abel class with the supplied group multiplication and power maps on every test
+scheme, under the native curve and coherent-genus-one hypotheses. The producer
+uses the native geometric and Cartier suppliers without a representing witness
+or `hrep` input.
+
+[Multiplication degree](MultiplicationDegree.md) proves that the literal `[n]`
+is finite étale with geometric degree `n²` and native locally free rank `n²`,
+under the explicit `hG : Curve.Properties G.X`, `hg1 : coherentGenus k G.X = 1`
+and `IsUnit (n : k)` hypotheses. An external genus field still requires its
+separate identification with the native coherent genus.

@@ -60,3 +60,12 @@ pending the separate normalization producer assemblies; it is not part of this
 proved generic prefix.
 
 Focused interface guides: [Henselian residue sections](HenselianResidue.md), [Actual cover comparison, sections and deck maps](Lifting.md).
+
+[ResidueLift](ResidueLift.lean) proves that the actual residue-base-change
+functor is faithful and essentially surjective over every local ring. Its
+object lifts retain both projections of the original cover. The general
+uniqueness theorem determines maps from a universally closed source through
+a formally unramified, locally finite-type target by their residue restriction.
+Fullness for an arbitrary Henselian base and proper-scheme comparison remain
+separate. The complete Noetherian base has the existing
+[adic fullness supplier](Adic/Fullness.lean).

@@ -19,6 +19,16 @@ Galois group. Its characteristic-zero identification endpoint retains
 The cyclotomic leaves preserve finite level, primitive-root, root-coordinate and
 characteristic hypotheses at each endpoint.
 
+[Field/ArbitraryGalois](Field/ArbitraryGalois.lean) reconstructs the actual
+Galois group of an arbitrary Galois extension from natural automorphisms of its
+field-valued finite-etale point functor, with the continuous comparison and
+identity-coefficient H1 injection. This does not assert full faithfulness of
+that functor for an arbitrary field. [Field/OverRing](Field/OverRing.lean)
+compares the original generic and model coefficient actions and classes; its
+actual normalization and coefficient premises are retained. The
+[local class-extension family](../Normalization/InertiaTorsor/README.md)
+consumes these comparisons.
+
 Lower dependencies are the native finite-etale cover/fibre/base-change API,
 finite-stage descent, generic functor automorphism transport, split groups and
 continuous H1. Current consumers include finite-etale monodromy and the actual
