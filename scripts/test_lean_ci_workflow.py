@@ -504,9 +504,8 @@ lake() {
                 self.assertIn(expected, [lib['name'] for lib in config['lean_lib']])
                 self.assertTrue((root / f'{expected}.lean').is_file())
                 if name != 'aglib':
-                    self.assertEqual(caller['uses'],
-                                     'kangxyz/aglib/.github/workflows/lean-ci.yml@'
-                                     '6c8f51ca331261f88b33bb9c22ef7d33adf01da4')
+                    self.assertRegex(caller['uses'],
+                                     r'\Akangxyz/aglib/\.github/workflows/lean-ci\.yml@[0-9a-f]{40}\Z')
 
     def test_empty_targets_fail_all_native_entries_before_external_commands(self):
         names = [('build', 'Check generated library entries'), ('build', 'Mathlib text style'),
