@@ -12,7 +12,8 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-JOBS = yaml.safe_load((ROOT / '.github/workflows/lean-ci.yml').read_text())['jobs']
+WORKFLOW = yaml.safe_load((ROOT / '.github/workflows/lean-ci.yml').read_text())
+JOBS = WORKFLOW['jobs']
 
 
 def step(job, name):
@@ -61,48 +62,44 @@ class WorkflowGates(unittest.TestCase):
             self.assertFalse(JOBS[job].get('continue-on-error', False))
             self.assertTrue(condition(final['if'], {}, success=False, cancelled=True))
 
-    def test_build_report_requires_real_build_and_generated_entries(self):
-        success = dict.fromkeys(('TOOLS', 'IMPORTS', 'STYLE', 'RESULT'), 'success')
-        self.assertEqual(report(('build', 'Report Build result'), success), 0)
-        for check in success:
-            for outcome in ('failure', 'skipped', 'cancelled'):
-                with self.subTest(check=check, outcome=outcome):
-                    result = report(('build', 'Report Build result'),
-                                    {**success, check: outcome})
-                    self.assertNotEqual(result, 0)
-                    self.assertFalse(publish(build='failure'))
+    def test_build_report_requires_only_the_mathematical_build(self):
+        self.assertEqual(step('build', 'Report Build result')['env'],
+                         {'RESULT': '${{ steps.build.outcome }}'})
+        self.assertEqual(report(('build', 'Report Build result'),
+                                {'RESULT': 'success', 'TOOLS': 'failure',
+                                 'IMPORTS': 'failure', 'STYLE': 'failure', 'AXIOMS': 'failure'}), 0)
+        for outcome in ('failure', 'skipped', 'cancelled'):
+            self.assertNotEqual(report(('build', 'Report Build result'), {'RESULT': outcome}), 0)
+            self.assertFalse(publish(build='failure'))
 
     def test_setup_or_build_failure_prevents_downstream_job(self):
-        # Setup failure skips Build, whose report then fails; imports failure also
-        # fails that report. None may start checks against partial native output.
+        # Setup failure skips Build, whose report then fails. Test must never
+        # start against partial production output.
         for result in ('success', 'failure', 'skipped', 'cancelled'):
             with self.subTest(result=result):
                 allowed = condition(JOBS['test_lint']['if'], {'needs.build.result': result})
                 self.assertEqual(allowed, result == 'success')
 
-    def test_lint_feedback_survives_test_failure_but_requires_prerequisites(self):
+    def test_feedback_survives_test_failure_but_requires_its_prerequisites(self):
         for name in ('Lint', 'Audit production axioms'):
-            for build, restore, setup, compiled in (
-                    ('success', 'success', 'success', 'success'),
-                    ('failure', 'success', 'success', 'success'),
-                    ('success', 'failure', 'success', 'success'),
-                    ('success', 'success', 'failure', 'success'),
-                    ('success', 'skipped', 'skipped', 'skipped'),
-                    ('success', 'success', 'success', 'failure'),
-                    ('success', 'success', 'success', 'skipped'),
-                    ('success', 'success', 'success', 'cancelled')):
-                with self.subTest(step=name, build=build, restore=restore, setup=setup):
-                    values = {'needs.build.result': build,
-                              'steps.restore-cache.outcome': restore,
-                              'steps.lean-setup.outcome': setup,
-                              'steps.compiled.outcome': compiled}
-                    allowed = condition(step('test_lint', name)['if'], values, success=False)
-                    self.assertEqual(allowed, build == restore == setup == compiled == 'success')
-                    self.assertFalse(condition(step('test_lint', name)['if'], values,
-                                               success=False, cancelled=True))
+            success = {'needs.build.result': 'success', 'steps.restore-cache.outcome': 'success',
+                       'steps.lean-setup.outcome': 'success', 'steps.compiled.outcome': 'success',
+                       'steps.tools.outcome': 'success'}
+            self.assertTrue(condition(step('test_lint', name)['if'], success, success=False))
+            self.assertFalse(condition(step('test_lint', name)['if'], success,
+                                       success=False, cancelled=True))
+            for key in success:
+                for outcome in ('failure', 'skipped', 'cancelled'):
+                    with self.subTest(step=name, prerequisite=key, outcome=outcome):
+                        allowed = condition(step('test_lint', name)['if'],
+                                            {**success, key: outcome}, success=False)
+                        # The auditor prepares its own tool, independently of
+                        # the declaration/style/helper tool build.
+                        self.assertEqual(allowed,
+                                         name == 'Audit production axioms' and key == 'steps.tools.outcome')
 
     def test_each_check_failure_or_skip_fails_report_and_blocks_publication(self):
-        success = dict.fromkeys(('COMPILED', 'TEST', 'LINT', 'AXIOMS'), 'success')
+        success = dict.fromkeys(('COMPILED', 'TOOLS', 'IMPORTS', 'STYLE', 'TEST', 'LINT', 'AXIOMS'), 'success')
         self.assertEqual(report(('test_lint', 'Report Test, lint and axiom results'), success), 0)
         for check in success:
             for outcome in ('failure', 'skipped', 'cancelled'):
@@ -145,85 +142,99 @@ class WorkflowGates(unittest.TestCase):
 
     def test_native_checks_and_full_text_style_are_preserved(self):
         self.assertIn('mathlib/mk_all --lib "$root" --check',
-                      step('build', 'Check generated library entries')['run'])
+                      step('test_lint', 'Check generated library entries')['run'])
         self.assertIn('lake --no-build exe mathlib/lint-style "${roots[@]}"',
-                      step('build', 'Mathlib text style')['run'])
+                      step('test_lint', 'Mathlib text style')['run'])
         self.assertIn('lake --no-build lint "${roots[@]}" -- --trace',
                       step('test_lint', 'Lint')['run'])
         self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
 
 
-class PreflightAndLintTimeout(unittest.TestCase):
-    def test_preflights_run_once_before_production_and_gate_failures(self):
-        names = ['Prepare check tools', 'Check generated library entries', 'Mathlib text style', 'Build']
-        steps = [item for item in JOBS['build']['steps'] if item.get('name') in names]
-        self.assertEqual([item['name'] for item in steps], names)
+class CheckerBoundaryAndLintTimeout(unittest.TestCase):
+    def test_build_has_no_checker_dependency_or_helper_targets(self):
         self.assertEqual(set(JOBS), {'build', 'test_lint', 'upload_cache'})
         self.assertEqual(JOBS['upload_cache']['name'], 'Publish cache')
+        build = step('build', 'Build')
+        self.assertNotIn('if', build)
+        for item in JOBS['build']['steps']:
+            command = item.get('run', '')
+            for forbidden in ('axiom-audit', 'batteries/runLinter', 'mathlib/lint-style',
+                              'mathlib/mk_all', 'CHECK_TARGETS', 'steps.tools',
+                              'steps.imports', 'steps.style'):
+                self.assertNotIn(forbidden, command + item.get('if', ''), item.get('name'))
+        result = subprocess.run(
+            ['bash', '-e', '-o', 'pipefail', '-c', 'lake() { printf "%s\\n" "$*"; }\n' + build['run']],
+            env={**os.environ, 'BUILD_TARGETS': 'R5Lab Essays', 'CHECK_TARGETS': 'Checks',
+                 'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.splitlines(), ['build R5Lab Essays -o /fixture/outputs.jsonl'])
+
+    def test_optional_check_targets_default_empty_and_are_built_only_in_test(self):
+        inputs = WORKFLOW.get('on', WORKFLOW.get(True))['workflow_call']['inputs']
+        self.assertEqual(inputs['check-targets'], {'type': 'string', 'default': ''})
+        tools = step('test_lint', 'Prepare check tools')
+        self.assertEqual(tools['env'], {'CHECK_TARGETS': '${{ inputs.check-targets }}'})
+        steps = JOBS['test_lint']['steps']
+        self.assertLess(steps.index(step('test_lint', 'Verify Build outputs without compilation')),
+                        steps.index(tools))
+        self.assertLess(steps.index(tools), steps.index(step('test_lint', 'Test')))
+        for helpers, expected in (('', []), ('   ', []), ('Checks', ['Checks']),
+                                  ('Checks ExtraChecks', ['Checks', 'ExtraChecks'])):
+            with self.subTest(helpers=helpers):
+                result = subprocess.run(
+                    ['bash', '-e', '-o', 'pipefail', '-c',
+                     'lake() { printf "%s\\n" "$@"; }\n' + tools['run']],
+                    env={**os.environ, 'CHECK_TARGETS': helpers}, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout.splitlines(), [
+                    'build', 'batteries/runLinter', 'mathlib/lint-style', 'mathlib/mk_all', *expected])
+
+    def test_checker_failures_stay_in_test_and_source_checks_collect_feedback(self):
+        names = ['Prepare check tools', 'Check generated library entries', 'Mathlib text style']
+        steps = [item for item in JOBS['test_lint']['steps'] if item.get('name') in names]
+        self.assertEqual([item['name'] for item in steps], names)
+        self.assertTrue(all(item['continue-on-error'] for item in steps))
         self.assertEqual(sum(item.get('name') == 'Mathlib text style'
                              for job in JOBS.values() for item in job['steps']), 1)
-        self.assertFalse(any(item.get('id') == 'style' for item in JOBS['test_lint']['steps']))
-        self.assertEqual(step('build', 'Prepare check tools')['run'],
-                         'lake build batteries/runLinter mathlib/lint-style mathlib/mk_all')
-        mock = r'''
+        mock = r"""
 lake() {
   printf '%s\n' "$*" >> "$TRACE"
-  if test "$1" = build && test "$2" = batteries/runLinter; then return "$TOOLS_STATUS"; fi
-  if test "$1" = --no-build && test "$3" = mathlib/mk_all; then return "$IMPORTS_STATUS"; fi
-  if test "$1" = --no-build && test "$3" = mathlib/lint-style; then return "$STYLE_STATUS"; fi
-  return 0
+  if test "$1" = build; then return "$TOOLS_STATUS"; fi
+  if test "$3" = mathlib/mk_all; then return "$IMPORTS_STATUS"; fi
+  if test "$3" = mathlib/lint-style; then return "$STYLE_STATUS"; fi
+  return 99
 }
-'''
-        for tools, imports, style, prerequisite in (
-                (0, 0, 0, True), (0, 1, 0, True), (0, 0, 1, True),
-                (0, 1, 1, True), (1, 0, 0, True), (0, 0, 0, False)):
-            with self.subTest(tools=tools, imports=imports, style=style, setup_cache_ok=prerequisite):
-                with tempfile.TemporaryDirectory(prefix='lean-ci-preflight-') as directory:
-                    trace = Path(directory) / 'trace'
-                    trace.touch()
-                    values = {f'steps.{name}.outcome': 'skipped'
-                              for name in ('tools', 'imports', 'style', 'build')}
-                    healthy = prerequisite
-                    executed = []
-                    for item in steps:
-                        allowed = condition(item['if'], values, success=healthy) if 'if' in item else healthy
-                        if not allowed:
-                            continue
-                        result = subprocess.run(
-                            ['bash', '-e', '-o', 'pipefail', '-c', mock + item['run']],
-                            env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
-                                 'RUNNER_TEMP': directory, 'TRACE': str(trace),
-                                 'TOOLS_STATUS': str(tools), 'IMPORTS_STATUS': str(imports),
-                                 'STYLE_STATUS': str(style)},
-                            capture_output=True, text=True, check=False)
-                        values[f"steps.{item['id']}.outcome"] = 'success' if result.returncode == 0 else 'failure'
-                        if result.returncode and not item.get('continue-on-error', False):
-                            healthy = False
-                        executed.append(item['name'])
-                    expected_build = prerequisite and tools == imports == style == 0
-                    self.assertEqual('Build' in executed, expected_build)
-                    if prerequisite and tools == 0:
-                        self.assertEqual(executed[:3], names[:3])
-                        commands = trace.read_text().splitlines()
-                        self.assertEqual(commands[1:4], [
-                            '--no-build exe mathlib/mk_all --lib Aglib --check',
-                            '--no-build exe mathlib/mk_all --lib Quillen --check',
-                            '--no-build exe mathlib/lint-style Aglib Quillen'])
-                        self.assertEqual(commands[0], step('build', 'Prepare check tools')['run'].removeprefix('lake '))
-                        if expected_build:
-                            self.assertEqual(commands[4], f'build Aglib Quillen -o {directory}/outputs.jsonl')
-                    if not expected_build:
-                        self.assertFalse(publish(build='failure'))
-                    self.assertTrue(condition(step('build', 'Save compilation independently of Test and lint')['if'],
-                                              {}, success=False))
-
-    def test_failed_skipped_or_cancelled_preflight_never_allows_build(self):
-        success = dict.fromkeys(('steps.tools.outcome', 'steps.imports.outcome', 'steps.style.outcome'), 'success')
-        for key in success:
-            for outcome in ('failure', 'skipped', 'cancelled'):
-                self.assertFalse(condition(step('build', 'Build')['if'], {**success, key: outcome}))
-        self.assertFalse(condition(step('build', 'Build')['if'], success, cancelled=True))
+"""
+        for tools, imports, style in ((0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1), (0, 1, 1)):
+            with self.subTest(tools=tools, imports=imports, style=style), \
+                    tempfile.TemporaryDirectory(prefix='lean-ci-checkers-') as directory:
+                trace = Path(directory) / 'trace'
+                values = {f'steps.{name}.outcome': 'skipped' for name in ('tools', 'imports', 'style')}
+                for item in steps:
+                    if 'if' in item and not condition(item['if'], values):
+                        continue
+                    result = subprocess.run(
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + item['run']],
+                        env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen', 'CHECK_TARGETS': 'Checks',
+                             'TRACE': str(trace), 'TOOLS_STATUS': str(tools),
+                             'IMPORTS_STATUS': str(imports), 'STYLE_STATUS': str(style)},
+                        capture_output=True, text=True)
+                    values[f"steps.{item['id']}.outcome"] = 'success' if result.returncode == 0 else 'failure'
+                commands = trace.read_text().splitlines()
+                self.assertEqual(commands[0], 'build batteries/runLinter mathlib/lint-style mathlib/mk_all Checks')
+                self.assertEqual(commands[1:], [] if tools else [
+                    '--no-build exe mathlib/mk_all --lib Aglib --check',
+                    '--no-build exe mathlib/mk_all --lib Quillen --check',
+                    '--no-build exe mathlib/lint-style Aglib Quillen'])
+                self.assertEqual(report(('build', 'Report Build result'), {'RESULT': 'success'}), 0)
+                outcomes = dict.fromkeys(('COMPILED', 'TEST', 'LINT', 'AXIOMS'), 'success')
+                outcomes.update({name.upper(): values[f'steps.{name}.outcome']
+                                 for name in ('tools', 'imports', 'style')})
+                failed = bool(tools or imports or style)
+                self.assertEqual(report(('test_lint', 'Report Test, lint and axiom results'), outcomes) != 0,
+                                 failed)
+                self.assertEqual(publish(tests='failure' if failed else 'success'), not failed)
 
     def test_lint_only_retries_one_timeout_and_preserves_final_status(self):
         lint = step('test_lint', 'Lint')
@@ -259,7 +270,7 @@ class RootSelectionAndPublication(unittest.TestCase):
     def test_lint_commands_pass_all_roots_as_native_arguments(self):
         for job, name, expected in (
                 ('test_lint', 'Lint', ['--no-build', 'lint', 'Aglib', 'Quillen', '--', '--trace']),
-                ('build', 'Mathlib text style', ['--no-build', 'exe', 'mathlib/lint-style', 'Aglib', 'Quillen'])):
+                ('test_lint', 'Mathlib text style', ['--no-build', 'exe', 'mathlib/lint-style', 'Aglib', 'Quillen'])):
             with self.subTest(step=name):
                 result = subprocess.run(
                     ['bash', '-e', '-o', 'pipefail', '-c',
@@ -332,11 +343,13 @@ class CurrentArtifactTransfer(unittest.TestCase):
         self.assertIn('lake cache unstage "$RUNNER_TEMP/cache-staging" --force-overwrite',
                       restore['run'])
         self.assertIn('LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash', verify['run'])
-        for target in ('"${targets[@]}"', 'batteries/runLinter', 'mathlib/lint-style', 'mathlib/mk_all'):
-            self.assertIn(target, verify['run'])
+        self.assertIn('"${targets[@]}"', verify['run'])
+        for target in ('batteries/runLinter', 'mathlib/lint-style', 'mathlib/mk_all', 'CHECK_TARGETS'):
+            self.assertNotIn(target, verify['run'])
         for result in ('success', 'failure', 'skipped', 'cancelled'):
             self.assertEqual(condition(step('test_lint', 'Test')['if'], {
-                'needs.build.result': 'success', 'steps.compiled.outcome': result}),
+                'needs.build.result': 'success', 'steps.compiled.outcome': result,
+                'steps.tools.outcome': 'success'}),
                 result == 'success')
 
     def test_warm_cache_cannot_substitute_for_missing_or_invalid_current_archive(self):
@@ -352,11 +365,6 @@ class CurrentArtifactTransfer(unittest.TestCase):
                         mappings.write_text('current mappings')
                         with tarfile.open(cache / 'lake-native-cache.tar', 'w') as stream:
                             stream.add(mappings, arcname='outputs.jsonl')
-                        auditor = root / 'axiom-audit'
-                        auditor.write_text('#!/bin/sh\nexit 0\n')
-                        auditor.chmod(0o755)
-                        with tarfile.open(cache / 'axiom-audit.tar', 'w') as stream:
-                            stream.add(auditor, arcname='axiom-audit')
                     elif archive == 'invalid':
                         (cache / 'lake-native-cache.tar').write_text('invalid archive')
                     mock = 'lake() { echo "$*" >> "$TRACE"; return "$UNSTAGE_STATUS"; }\n'
@@ -377,33 +385,35 @@ class CurrentArtifactTransfer(unittest.TestCase):
 
 
 class AuditorReuseAndTargets(unittest.TestCase):
-    def test_pinned_auditor_reuses_checkout_and_incremental_build_outputs(self):
-        prepare = step('build', 'Prepare axiom auditor')
-        self.assertFalse(prepare.get('continue-on-error', False))
-        self.assertEqual(prepare['working-directory'], '${{ inputs.package-directory }}')
+    def test_pinned_auditor_is_prepared_only_in_test_and_reuses_cached_checkout(self):
+        audit = step('test_lint', 'Audit production axioms')
+        self.assertTrue(audit['continue-on-error'])
+        self.assertEqual(audit['working-directory'], '${{ inputs.package-directory }}')
         mock = r"""
 git() {
   printf 'git:%s\n' "$*" >> "$TRACE"
-  if test "$1" = clone; then mkdir -p "${@: -1}/.git"; return 0; fi
+  if test "$1" = clone; then mkdir -p "${@: -1}/.git"; return "$CLONE_STATUS"; fi
   printf '%s\n' "$TOOL_REVISION"
 }
 lake() {
   printf 'lake:%s\n' "$*" >> "$TRACE"
-  test "$TOOL_BUILD_STATUS" = 0 || return "$TOOL_BUILD_STATUS"
-  mkdir -p .lake/build/bin
-  printf '#!/bin/sh\nexit 0\n' > .lake/build/bin/axiom-audit
-  chmod +x .lake/build/bin/axiom-audit
+  if test "$1" = build; then
+    test "$TOOL_BUILD_STATUS" = 0 || return "$TOOL_BUILD_STATUS"
+    mkdir -p .lake/build/bin
+    printf '#!/bin/sh\nexit 0\n' > .lake/build/bin/axiom-audit
+    chmod +x .lake/build/bin/axiom-audit
+  fi
 }
 """
         with tempfile.TemporaryDirectory(prefix='lean-ci-auditor-') as directory:
             root = Path(directory)
             (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
-            environment = {**os.environ, 'TRACE': directory + '/trace',
-                           'LAKE_CACHE_DIR': directory + '/cache',
+            environment = {**os.environ, 'TRACE': directory + '/trace', 'BUILD_TARGETS': 'Aglib',
+                           'LAKE_CACHE_DIR': directory + '/cache', 'CLONE_STATUS': '0',
                            'TOOL_REVISION': '46024e005996495c65ef609368e11ab39c4222e3',
                            'TOOL_BUILD_STATUS': '0'}
             for _ in range(2):
-                result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', mock + prepare['run']],
+                result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', mock + audit['run']],
                                         cwd=root, env=environment, capture_output=True, text=True)
                 self.assertEqual(result.returncode, 0, result.stderr)
             trace = (root / 'trace').read_text().splitlines()
@@ -411,39 +421,26 @@ lake() {
             self.assertEqual(trace.count('lake:build'), 2)
             self.assertEqual((root / 'cache/axiom-audit/lean-toolchain').read_text(),
                              (root / 'lean-toolchain').read_text())
-            for settings in ({'TOOL_REVISION': 'wrong-pin'}, {'TOOL_BUILD_STATUS': '1'}):
+            for settings in ({'TOOL_REVISION': 'wrong-pin'}, {'TOOL_BUILD_STATUS': '1'},
+                             {'LAKE_CACHE_DIR': directory + '/cold-failure', 'CLONE_STATUS': '1'}):
                 with self.subTest(settings=settings):
                     result = subprocess.run(
-                        ['bash', '-e', '-o', 'pipefail', '-c', mock + prepare['run']],
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + audit['run']],
                         cwd=root, env={**environment, **settings}, capture_output=True, text=True)
                     self.assertNotEqual(result.returncode, 0)
-        audit = step('test_lint', 'Audit production axioms')['run']
-        self.assertNotIn('git ', audit)
-        self.assertNotIn('lake build', audit)
 
-    def test_tool_is_transferred_with_current_run_outputs(self):
-        build_steps = JOBS['build']['steps']
-        self.assertLess(build_steps.index(step('build', 'Prepare axiom auditor')),
-                        build_steps.index(step('build', 'Build')))
-        upload = next(item for item in build_steps
+    def test_build_artifact_contains_only_mathematical_outputs(self):
+        upload = next(item for item in JOBS['build']['steps']
                       if item.get('uses', '').startswith('actions/upload-artifact@'))
-        self.assertEqual(upload['with']['path'].splitlines(), [
-            '${{ runner.temp }}/lake-native-cache.tar', '${{ runner.temp }}/axiom-audit.tar'])
-        self.assertIn('tar -cf "$RUNNER_TEMP/axiom-audit.tar"',
-                      step('build', 'Stage completed native outputs')['run'])
-        restore = step('test_lint', "Restore this run's native Build outputs")['run']
-        self.assertIn('test -x "$RUNNER_TEMP/check-tools/axiom-audit"', restore)
+        self.assertEqual(upload['with']['path'], '${{ runner.temp }}/lake-native-cache.tar')
+        self.assertNotIn('axiom', step('build', 'Stage completed native outputs')['run'])
+        self.assertNotIn('axiom', step('test_lint', "Restore this run's native Build outputs")['run'])
 
-    def test_actual_stage_and_restore_preserve_executable_and_require_tool_archive(self):
-        with tempfile.TemporaryDirectory(prefix='lean-ci-tool-transfer-') as directory:
+    def test_actual_stage_and_restore_need_only_the_math_archive(self):
+        with tempfile.TemporaryDirectory(prefix='lean-ci-math-transfer-') as directory:
             root = Path(directory)
             build = root / 'build'
-            cache = root / 'cache'
             build.mkdir()
-            binary = cache / 'axiom-audit/.lake/build/bin/axiom-audit'
-            binary.parent.mkdir(parents=True)
-            binary.write_text('#!/bin/sh\nprintf "audited:%s\\n" "$*"\n')
-            binary.chmod(0o755)
             (build / 'outputs.jsonl').write_text('current native outputs')
             mock = r"""
 lake() {
@@ -457,37 +454,27 @@ lake() {
   fi
 }
 """
-            stage_result = subprocess.run(
+            result = subprocess.run(
                 ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
                     'build', 'Stage completed native outputs')['run']],
-                env={**os.environ, 'RUNNER_TEMP': str(build), 'LAKE_CACHE_DIR': str(cache),
+                env={**os.environ, 'RUNNER_TEMP': str(build), 'COPYFILE_DISABLE': '1',
                      'GITHUB_OUTPUT': str(root / 'stage-output')}, capture_output=True, text=True)
-            self.assertEqual(stage_result.returncode, 0, stage_result.stderr)
+            self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual((root / 'stage-output').read_text(), 'staged=true\n')
-            for tool_archive in ('valid', 'missing', 'invalid'):
-                with self.subTest(tool_archive=tool_archive):
-                    test = root / tool_archive
-                    download = test / 'download'
-                    download.mkdir(parents=True)
-                    (download / 'lake-native-cache.tar').write_bytes(
-                        (build / 'lake-native-cache.tar').read_bytes())
-                    if tool_archive == 'valid':
-                        (download / 'axiom-audit.tar').write_bytes((build / 'axiom-audit.tar').read_bytes())
-                    elif tool_archive == 'invalid':
-                        (download / 'axiom-audit.tar').write_text('broken archive')
-                    result = subprocess.run(
-                        ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
-                            'test_lint', "Restore this run's native Build outputs")['run']],
-                        env={**os.environ, 'RUNNER_TEMP': str(test), 'LAKE_CACHE_DIR': str(download)},
-                        capture_output=True, text=True)
-                    self.assertEqual(result.returncode == 0, tool_archive == 'valid', result.stderr)
-                    self.assertFalse((download / 'lake-native-cache.tar').exists())
-                    self.assertFalse((download / 'axiom-audit.tar').exists())
-                    if tool_archive == 'valid':
-                        audit = subprocess.run([str(test / 'check-tools/axiom-audit'), '--root', 'Aglib'],
-                                               capture_output=True, text=True)
-                        self.assertEqual(audit.returncode, 0, audit.stderr)
-                        self.assertEqual(audit.stdout, 'audited:--root Aglib\n')
+            with tarfile.open(build / 'lake-native-cache.tar') as archive:
+                self.assertEqual(archive.getnames(), ['.', './outputs.jsonl'])
+            test = root / 'test'
+            download = test / 'download'
+            download.mkdir(parents=True)
+            (download / 'lake-native-cache.tar').write_bytes((build / 'lake-native-cache.tar').read_bytes())
+            result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
+                    'test_lint', "Restore this run's native Build outputs")['run']],
+                env={**os.environ, 'RUNNER_TEMP': str(test), 'LAKE_CACHE_DIR': str(download)},
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertFalse((download / 'lake-native-cache.tar').exists())
+            self.assertEqual((test / 'cache-staging/outputs.jsonl').read_text(), 'current native outputs')
 
     def test_actual_callers_supply_declared_production_roots_without_changing_release_pins(self):
         # Package directories are sibling checkouts in the integration workspace.
@@ -508,14 +495,10 @@ lake() {
                                      r'\Akangxyz/aglib/\.github/workflows/lean-ci\.yml@[0-9a-f]{40}\Z')
 
     def test_empty_targets_fail_all_native_entries_before_external_commands(self):
-        names = [('build', 'Check generated library entries'), ('build', 'Mathlib text style'),
+        names = [('test_lint', 'Check generated library entries'), ('test_lint', 'Mathlib text style'),
                  ('build', 'Build'), ('test_lint', 'Verify Build outputs without compilation'),
                  ('test_lint', 'Lint'), ('test_lint', 'Audit production axioms')]
         with tempfile.TemporaryDirectory(prefix='lean-ci-empty-targets-') as directory:
-            tool = Path(directory) / 'check-tools/axiom-audit'
-            tool.parent.mkdir()
-            tool.write_text('#!/bin/sh\nexit 99\n')
-            tool.chmod(0o755)
             mock = 'lake() { echo unexpected-call >&2; return 99; }\n'
             for job, name in names:
                 for targets in ('', '   ', '\t'):
@@ -530,27 +513,33 @@ lake() {
 
     def test_production_audit_visits_every_root_and_propagates_failure(self):
         with tempfile.TemporaryDirectory(prefix='lean-ci-audit-roots-') as directory:
-            tool = Path(directory) / 'check-tools/axiom-audit'
-            tool.parent.mkdir()
-            tool.write_text('#!/bin/sh\nexit 0\n')
-            tool.chmod(0o755)
+            root = Path(directory)
+            tool = root / 'cache/axiom-audit'
+            (tool / '.git').mkdir(parents=True)
+            binary = tool / '.lake/build/bin/axiom-audit'
+            binary.parent.mkdir(parents=True)
+            binary.write_text('#!/bin/sh\nexit 0\n')
+            binary.chmod(0o755)
+            (root / 'lean-toolchain').write_text('leanprover/lean4:v4.34.1\n')
             mock = r"""
+git() { printf '%s\n' 46024e005996495c65ef609368e11ab39c4222e3; }
 lake() {
   printf '%s\n' "$*" >> "$TRACE"
-  test "${@: -1}" != "$FAIL_ROOT"
+  test "$1" = build || test "${@: -1}" != "$FAIL_ROOT"
 }
 """
             for failure in ('none', 'Aglib', 'Quillen'):
-                trace = Path(directory) / 'trace'
+                trace = root / 'trace'
                 trace.write_text('')
                 result = subprocess.run(
                     ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
-                        'test_lint', 'Audit production axioms')['run']],
-                    env={**os.environ, 'RUNNER_TEMP': directory, 'BUILD_TARGETS': 'Aglib Quillen',
-                         'TRACE': str(trace), 'FAIL_ROOT': failure}, capture_output=True, text=True)
+                        'test_lint', 'Audit production axioms')['run']], cwd=root,
+                    env={**os.environ, 'LAKE_CACHE_DIR': str(root / 'cache'),
+                         'BUILD_TARGETS': 'Aglib Quillen', 'TRACE': str(trace), 'FAIL_ROOT': failure},
+                    capture_output=True, text=True)
                 self.assertEqual(result.returncode, 0 if failure == 'none' else 1, result.stderr)
                 self.assertEqual(trace.read_text().splitlines(), [
-                    f'env {tool} --root Aglib', f'env {tool} --root Quillen'])
+                    'build', f'env {binary} --root Aglib', f'env {binary} --root Quillen'])
 
 
 class NativeSetup(unittest.TestCase):

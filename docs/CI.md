@@ -1,12 +1,15 @@
 # Lean CI and local checks
 
 The public [CI caller](../.github/workflows/ci.yml) uses the shared native
-[workflow](../.github/workflows/lean-ci.yml): Build checks production entries and
-text style, compiles incrementally and transfers its current outputs; Test runs
-in-package tests, native lint and the pinned transitive axiom auditor. The auditor
-is prepared incrementally in the existing native cache and transferred with the
-same Build artifact. Failed runs retain compilation caches; publication requires
-all required checks to pass.
+[workflow](../.github/workflows/lean-ci.yml): Build compiles only production
+mathematical targets and transfers their current outputs. Test verifies that
+artifact without compilation, prepares its own checker tools and optional
+`check-targets`, and runs generated-entry, text-style, in-package test, native
+lint and production-axiom checks. The existing axiom step prepares its pinned
+auditor incrementally in Test's restored native cache; Build carries no auditor
+archive or checker dependency. Checker failures fail Test and block Publish,
+while Build's result remains its mathematical compilation result. Failed runs
+retain compilation caches; publication requires all required checks to pass.
 
 The reusable [lean-incremental-ci package](../ci/README.md) and
 [Aglib adapter](../scripts/ci_pipeline.py) serve local affected/full checks and
