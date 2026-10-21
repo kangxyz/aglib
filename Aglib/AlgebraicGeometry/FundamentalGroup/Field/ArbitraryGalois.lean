@@ -76,7 +76,7 @@ variable (K Ω : Type u) [Field K] [Field Ω] [Algebra K Ω] [hGalois : IsGalois
 /-- The original K-automorphism, with its ambient field unchanged. -/
 abbrev asAutomorphism (σ : Ω ≃ₐ[K] Ω) : Ω ≃ₐ[K] Ω := σ
 
-@[simp] theorem galoisToFibre_act (σ : Ω ≃ₐ[K] Ω)
+theorem galoisToFibre_act (σ : Ω ≃ₐ[K] Ω)
     (Y : Scheme.FiniteEtale (Spec (.of K))) (p : Fiber (basePoint K Ω) Y) :
     (galoisToFibre K K Ω σ).hom.app Y p =
       AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.OverRing.act K K Ω σ Y p := rfl
@@ -167,7 +167,7 @@ def fieldCoverMap (φ : L →ₐ[K] M) : finiteFieldCover K M ⟶ finiteFieldCov
 
 omit hGalois in
 @[simp] theorem fieldLift_map [_hGalois : IsGalois K Ω] (φ : L →ₐ[K] M) (ψ : M →ₐ[K] Ω) :
-    (fiberToFinite (basePoint K Ω)).map (fieldCoverMap K φ) (fieldLift K Ω M ψ) =
+    fieldLift K Ω M ψ ≫ (fieldCoverMap K φ).hom =
       fieldLift K Ω L (ψ.comp φ) := by
   apply Over.OverMorphism.ext
   change Spec.map _ ≫ Spec.map _ = Spec.map _
@@ -176,7 +176,7 @@ omit hGalois in
 
 @[simp] theorem liftToEmbedding_map (φ : L →ₐ[K] M)
     (p : Fiber (basePoint K Ω) (finiteFieldCover K M)) :
-    liftToEmbedding K Ω L ((fiberToFinite (basePoint K Ω)).map (fieldCoverMap K φ) p) =
+    liftToEmbedding K Ω L (p ≫ (fieldCoverMap K φ).hom) =
       (liftToEmbedding K Ω M p).comp φ := by
   rw [← fieldLift_liftToEmbedding K Ω M p, fieldLift_map]
   simp only [liftToEmbedding_fieldLift]
@@ -191,7 +191,7 @@ theorem embeddingAction_comp (a : FiberAutGroup (basePoint K Ω)) (φ : L →ₐ
     embeddingAction K Ω a (ψ.comp φ) = (embeddingAction K Ω a ψ).comp φ := by
   have h := congrArg (liftToEmbedding K Ω L)
     (evaluate_naturality (basePoint K Ω) a (fieldCoverMap K φ) (fieldLift K Ω M ψ))
-  simpa only [fieldLift_map, liftToEmbedding_map, embeddingAction] using h.symm
+  simpa only [fiberToFinite_map, fieldLift_map, liftToEmbedding_map, embeddingAction] using h.symm
 
 end FiniteFields
 

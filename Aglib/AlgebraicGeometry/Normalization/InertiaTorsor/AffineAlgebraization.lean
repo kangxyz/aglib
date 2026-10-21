@@ -129,6 +129,7 @@ theorem actionCoact_point [_hCocomm : Coalgebra.IsCocomm K C] :
         (algebraPoint K A (A ⊗[K] C) Algebra.TensorProduct.includeLeft) :=
   (affinePointEquiv K A (A ⊗[K] C)).symm_apply_apply _
 
+/-- The group-object structure on the affine carrier of the original coefficient Hopf group. -/
 local instance : GrpObj (affine K C) := (coefficientGroup K C).grp
 
 variable (D : Type u) [CommRing D] [Algebra K D]

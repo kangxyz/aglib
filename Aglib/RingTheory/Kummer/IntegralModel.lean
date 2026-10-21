@@ -347,8 +347,6 @@ def integralClosureModelEquiv
     (B := RootAlgebra n (u : S))).trans
     ((genericModelEquiv n (u : S) f g hg hf).restrictScalars S).mapIntegralClosure
 
-variable [IsDomain S] [IsNoetherianRing S]
-
 /-- The normalization comparison retains the exact scaled generic generator. -/
 lemma integralClosureModelEquiv_root (n : ℕ) (hn : 0 < n) (hnS : IsUnit (n : S))
     (u : Sˣ) (f g : F) (hg : g ≠ 0) (hf : f = algebraMap S F (u : S) * g ^ n) :
@@ -373,10 +371,10 @@ lemma integralClosure_finite (n : ℕ) (hn : 0 < n) (hnS : IsUnit (n : S))
     (integralClosureModelEquiv n hn hnS u f g hg hf).toLinearMap
     (integralClosureModelEquiv n hn hnS u f g hg hf).surjective
 
-variable [UniqueFactorizationMonoid S] [NormalizationMonoid S]
+variable [IsDomain S] [UniqueFactorizationMonoid S] [NormalizationMonoid S]
 
 /-- Divisibility of signed UFD exponents implies that the literal integral closure in the
-f-Kummer algebra is finite and etale over the original normal Noetherian base. The actual
+f-Kummer algebra is finite and etale over the original integrally closed UFD base. The actual
 height-one valuation comparison, twisted coefficient and global descent remain separate. -/
 theorem finite_etale_integralClosure (n : ℕ) (hn : 0 < n) (hnS : IsUnit (n : S))
     (f : F) (h : FactorizationDivisible (R := S) n f) :

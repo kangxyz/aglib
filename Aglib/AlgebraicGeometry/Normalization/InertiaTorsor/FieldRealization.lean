@@ -70,6 +70,7 @@ variable (K Ω C Lambda : Type u) [Field K] [Field Ω] [Algebra K Ω]
   [hCategory : GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]
   [hFibre : PreGaloisCategory.FiberFunctor (fiberToFinite (basePoint K Ω))]
 
+/-- The group-object structure on the affine carrier of the original coefficient Hopf group. -/
 local instance : GrpObj (affine K C) := (coefficientGroup K C).grp
 
 /-- The continuous inverse of the equivalence for the original Ω-valued fibre functor. -/
@@ -152,7 +153,7 @@ def coefficientMark : (affine K Ω ⟶ (coefficientGroup K C).X) ≃* Multiplica
     right_inv := fun p => (coefficientCoordinates K Ω C Lambda mark).apply_symm_apply p
     map_mul' := fun a b => coefficientCoordinates_add K Ω C Lambda mark hadd a.toAdd b.toAdd }
 
-@[simp] theorem coefficientMark_coordinates (a : Lambda) :
+theorem coefficientMark_coordinates (a : Lambda) :
     coefficientMark K Ω C Lambda mark hadd (coefficientCoordinates K Ω C Lambda mark a) =
       Multiplicative.ofAdd a := by
   change Multiplicative.ofAdd ((coefficientCoordinates K Ω C Lambda mark).symm

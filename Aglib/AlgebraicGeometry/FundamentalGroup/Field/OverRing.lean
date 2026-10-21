@@ -794,7 +794,8 @@ def coefficientRestriction :
     map_smul' := modelCoefficientAction_restrict R K Ω H Lambda coords }
 
 @[simp] theorem coefficientRestriction_apply (a : Lambda) :
-    coefficientRestriction R K Ω H Lambda coords a = a := rfl
+    letI := modelCoefficientAction R K Ω H Lambda coords
+    (coefficientRestriction R K Ω H Lambda coords).toContinuousAddMonoidHom a = a := rfl
 
 /-- The induced operation on representatives is literal group restriction. -/
 theorem coefficientRestriction_cocycle_value :
@@ -833,8 +834,10 @@ theorem fullSchemeCocycle_restriction :
   let := modelCoefficientAction_continuous R K Ω H Lambda coords
   apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext
   intro sigma
-  rw [_root_.GroupCohomology.ContinuousH1.PullbackMap.onCocycles_apply,
-    coefficientRestriction_apply]
+  rw [_root_.GroupCohomology.ContinuousH1.PullbackMap.onCocycles_apply]
+  change (fullSchemeCocycle R K Ω A H Lambda tau coords f Q hvan).val
+      (galoisToFibre R K Ω sigma) =
+    (normalizationSchemeCocycle R K Ω A H Lambda tau coords f Q hvan).val sigma
   rw [fullSchemeCocycle,
     _root_.AlgebraicGeometry.Scheme.EtaleH1.ContinuousTorsors.basedCocycle_apply,
     galoisToFibre_apply]

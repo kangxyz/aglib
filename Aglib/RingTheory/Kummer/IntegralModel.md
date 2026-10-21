@@ -7,10 +7,11 @@ normalized factor exponents divisible by n give an actual unit-times-nth-power d
 The polynomial quotient, scaling isomorphism, tensor generic-fiber comparison, and
 factorization statements retain level zero where the source permits it. At positive levels
 invertible in the base, the literal unit-root algebra is finite and etale. Over the stated
-normal Noetherian base, its canonical generic comparison identifies it with the literal
-integral closure in the original parameter-root algebra. UFD, normality and Noetherianity are
-retained exactly in their source sections; no regular-local factoriality, purity, or arithmetic
-realization is asserted.
+integrally closed base with its specified fraction field, its canonical generic comparison
+identifies it with the literal integral closure in the original parameter-root algebra.
+This comparison and its generator, finite and etale consequences require no Noetherian
+hypothesis. The final factorization application retains its domain, UFD and normalization-monoid
+hypotheses. No regular-local factoriality, purity or arithmetic realization is asserted.
 
 The arbitrary-parameter carrier is the literal Mathlib `AdjoinRoot (X ^ n - C f)`.
 At a unit parameter it is definitionally the same polynomial quotient used by the
