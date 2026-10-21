@@ -198,13 +198,17 @@ jobs:
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
-        run: lake --no-build lint -- --trace
+        run: |
+          read -r -a roots <<< "$BUILD_TARGETS"
+          lake --no-build lint "${roots[@]}" -- --trace
       - name: Mathlib text style
         id: style
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
-        run: lake --no-build exe mathlib/lint-style
+        run: |
+          read -r -a roots <<< "$BUILD_TARGETS"
+          lake --no-build exe mathlib/lint-style "${roots[@]}"
       - name: Audit production axioms
         id: axioms
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
@@ -244,7 +248,7 @@ jobs:
           test "$COMPILED" = success && test "$TEST" = success && test "$LINT" = success && test "$STYLE" = success && test "$AXIOMS" = success
 
   upload_cache:
-    name: Publish compilation cache
+    name: Publish cache
     needs: [build, test_lint]
     if: ${{ needs.build.result == 'success' && needs.test_lint.result == 'success' && needs.build.outputs.staged == 'true' && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     runs-on: ubuntu-24.04
@@ -265,7 +269,9 @@ jobs:
           ASSET: lake-native-cache-${{ github.run_id }}-${{ github.run_attempt }}.tar
         run: |
           tag="lean-native-$REVISION"
-          gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1 ||
-            gh release create "$tag" --repo "$REPOSITORY" --target "$REVISION" --title "Lean compilation $REVISION" --notes 'Compiled artifacts from successful Build, generated-entry, Test, lint, text-style and production-axiom checks.'
           mv lake-native-cache.tar "$ASSET"
-          gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"
+          if gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"
+          else
+            gh release create "$tag" "$ASSET" --repo "$REPOSITORY" --target "$REVISION" --latest=false --title "Lean compilation $REVISION" --notes 'Compiled artifacts from successful Build, generated-entry, Test, lint, text-style and production-axiom checks.'
+          fi

@@ -142,11 +142,70 @@ class WorkflowGates(unittest.TestCase):
     def test_native_checks_and_full_text_style_are_preserved(self):
         self.assertIn('mathlib/mk_all --lib "$root" --check',
                       step('build', 'Check generated library entries')['run'])
-        self.assertEqual(step('test_lint', 'Mathlib text style')['run'],
-                         'lake --no-build exe mathlib/lint-style')
-        self.assertEqual(step('test_lint', 'Lint')['run'], 'lake --no-build lint -- --trace')
+        self.assertIn('lake --no-build exe mathlib/lint-style "${roots[@]}"',
+                      step('test_lint', 'Mathlib text style')['run'])
+        self.assertIn('lake --no-build lint "${roots[@]}" -- --trace',
+                      step('test_lint', 'Lint')['run'])
         self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
+
+
+class RootSelectionAndPublication(unittest.TestCase):
+    def test_lint_commands_pass_all_roots_as_native_arguments(self):
+        for name, expected in (
+                ('Lint', ['--no-build', 'lint', 'Aglib', 'Quillen', '--', '--trace']),
+                ('Mathlib text style', ['--no-build', 'exe', 'mathlib/lint-style', 'Aglib', 'Quillen'])):
+            with self.subTest(step=name):
+                result = subprocess.run(
+                    ['bash', '-e', '-o', 'pipefail', '-c',
+                     'lake() { printf "%s\\n" "$@"; }\n' + step('test_lint', name)['run']],
+                    env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen'},
+                    capture_output=True, text=True, check=False)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout.splitlines(), expected)
+
+    def test_new_release_includes_asset_and_never_becomes_latest(self):
+        self.run_publication(exists=False)
+
+    def test_existing_release_appends_asset(self):
+        self.run_publication(exists=True)
+
+    def test_release_failures_are_not_masked(self):
+        for exists in (False, True):
+            with self.subTest(exists=exists):
+                self.run_publication(exists=exists, status=1)
+
+    def run_publication(self, *, exists, status=0):
+        with tempfile.TemporaryDirectory(prefix='lean-ci-release-') as directory:
+            root = Path(directory)
+            (root / 'lake-native-cache.tar').write_text('native artifact')
+            mock = r'''
+gh() {
+  printf '%s\n' "$*" >> "$TRACE"
+  if test "$2" = view; then return "$VIEW_STATUS"; fi
+  test -s "$ASSET" || return 99
+  return "$PUBLISH_STATUS"
+}
+'''
+            result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c',
+                 mock + step('upload_cache', 'Publish staged compilation')['run']],
+                cwd=root, env={**os.environ, 'TRACE': directory + '/trace',
+                               'VIEW_STATUS': '0' if exists else '1',
+                               'PUBLISH_STATUS': str(status), 'ASSET': 'native-1-1.tar',
+                               'REPOSITORY': 'fixture/aglib', 'REVISION': '0123456'},
+                capture_output=True, text=True, check=False)
+            self.assertEqual(result.returncode, status, result.stderr)
+            commands = (root / 'trace').read_text().splitlines()
+            self.assertEqual(len(commands), 2)
+            self.assertTrue(commands[0].startswith('release view lean-native-0123456 '))
+            if exists:
+                self.assertEqual(commands[1],
+                                 'release upload lean-native-0123456 native-1-1.tar --repo fixture/aglib')
+            else:
+                self.assertTrue(commands[1].startswith(
+                    'release create lean-native-0123456 native-1-1.tar '))
+                self.assertIn('--latest=false', commands[1])
 
 
 class CurrentArtifactTransfer(unittest.TestCase):

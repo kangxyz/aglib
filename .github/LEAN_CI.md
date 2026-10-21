@@ -24,11 +24,11 @@ Callers supply only the Lake package directory and production targets.
   This follows Mathlib's
   [same-run staging transfer and completeness check](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml#L444-L479).
   It then runs `lake test` and
-  `lake lint -- --trace`. Library Tests use incremental compilation; persisted
+  `lake --no-build lint <production-roots> -- --trace`. Library Tests use incremental compilation; persisted
   compiler-linter diagnostics are reused. Batteries declaration lint keeps its
   ordinary package-wide behavior. A failed Test does not suppress lint feedback.
-  `lake --no-build exe mathlib/lint-style` separately runs Mathlib's own text
-  checks with its default module selection and without automatic fixes. No Git
+  `lake --no-build exe mathlib/lint-style <production-roots>` separately runs
+  Mathlib's own text checks over the full import lists without automatic fixes. No Git
   diff, explicit file list or library-specific style driver filters the scan.
   The [axiom auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
   reads the built production roots and their imported closure; only `propext`,
@@ -39,6 +39,8 @@ Callers supply only the Lake package directory and production targets.
   and only for trusted default-branch pushes. Failed or interrupted Build/Test
   work retains the always-run Actions cache saves where the runner can finish
   cleanup; this does not authorize release publication.
+  First publication creates the release together with its asset and
+  `--latest=false`; later runs append their asset to the existing release.
 
 Necessary host adaptations are explicit: GitHub-hosted runners replace Mathlib's
 self-hosted pool; GitHub caches/releases replace its Azure backend; native
@@ -46,9 +48,12 @@ self-hosted pool; GitHub caches/releases replace its Azure backend; native
 Library and Test drivers live in Lake configuration. The Build job prepares the
 Batteries, Mathlib text-style and `mk_all` executables; final checks use
 `--no-build` to prevent hidden compilation. Generate each production entry with
-`lake exe mathlib/mk_all --lib <root>`. Mathlib's text driver then scans the
-complete import lists of the package's default production targets, without
-changed-file filtering. Test libraries use `TestName.+` globs and `lake test`;
+`lake exe mathlib/mk_all --lib <root>`. Both native lint commands receive the
+full production roots from `BUILD_TARGETS`, before `--` for `lake lint`. This
+keeps builtin lint and Mathlib's text driver working when disjoint source
+libraries have `roots = []`, leaving no default roots to infer. Mathlib's text
+driver scans each selected root's complete import list without changed-file
+filtering. Test libraries use `TestName.+` globs and `lake test`;
 they are not default production targets and have no generated `TestName.lean`.
 All four callers use these same native mechanisms.
 Native setup runs from the caller's Lake package directory. Configure Lean
@@ -66,8 +71,11 @@ including partial progress on failure. Test's Actions restore warms unchanged
 dependency outputs; it is not the Build-to-Test handoff. Lake's `-o` mappings
 include root-package outputs, so the warm cache also supplies the Mathlib and
 Batteries executables built by Build. The required current-run artifact then
-overwrites root-package cache mappings, and the no-build check rejects any
-remaining incomplete outputs. The downloaded tar is removed after native
+overwrites root-package cache mappings. The no-build check tests availability
+and applicability of the combined warm and current-run outputs against native
+inputs; it does not certify cryptographic provenance or integrity of cache
+bytes. As in Mathlib, this transport relies on trusted cache producers.
+The downloaded tar is removed after native
 unstaging so subsequent cache saves do not duplicate the archive. Release
 assets provide a separate
 manual download interface for local or remote consumers; CI does not download
