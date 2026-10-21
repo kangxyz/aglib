@@ -1,0 +1,25 @@
+schema = 1
+package_dir = "."
+formal_only = ["AglibTest/Axioms.lean", "examples/downstream/Audit.lean"]
+controls = ["AglibTest/AuditSupport.lean", "AglibTest/NegativeControls/ImportedFixture.lean"]
+expected_failure = ["AglibTest/NegativeControls/ImportedAudit.lean", "AglibTest/NegativeControls/LocalAudit.lean"]
+
+[roles]
+production = ["Aglib"]
+tests = ["AglibTest"]
+
+[sources]
+support = ["ci", "examples/downstream/Audit.lean"]
+
+[[clients]]
+id = "downstream"
+path = "examples/downstream"
+
+[clients.roles]
+production = ["Consumer"]
+
+[policy]
+inventory = [".github/lean-ci-inventory.json"]
+controls = [".github/lean-ci-controls.json"]
+style = [".github/lean-ci-style.json"]
+exceptions = [".github/lean-ci-exceptions.json"]

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "inventory",
+  "included_support": [
+    "AglibTest/AuditSupport.lean"
+  ],
+  "forbidden_prefixes": [
+    "AGLib",
+    "AGLibTest",
+    "AlgebraicGeometry",
+    "AlgebraicGeometryTest",
+    "R5Lab",
+    "Quillen"
+  ]
+}

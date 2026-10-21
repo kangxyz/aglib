@@ -1,0 +1,501 @@
+name: Common Lean CI
+
+on:
+  workflow_call:
+    inputs:
+      config:
+        type: string
+        default: .github/lean-ci.toml
+      base:
+        type: string
+        default: ''
+      native-timeout-minutes:
+        type: number
+        default: 300
+      legacy-dependencies-prefix:
+        type: string
+        default: ''
+      legacy-dependencies-paths:
+        type: string
+        default: ''
+      legacy-builds-prefixes:
+        type: string
+        default: ''
+      legacy-builds-paths:
+        type: string
+        default: ''
+
+# Mandatory producer profile: canonical-origin-v1.
+# Native job and step names below are the history verification interface.
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONPATH: ${{ github.workspace }}/tooling/ci/src
+  CI_CONFIG: ${{ inputs.config }}
+  REQUESTED_BASE: ${{ inputs.base }}
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      native: ${{ steps.plan.outputs.native }}
+      candidate-native-fixtures: ${{ steps.fixtures.outputs.native }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: kangxyz/aglib
+          ref: 2f01516e2351692ccd4fe2419418e398a336379a
+          path: tooling
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - name: Plan committed common coverage
+        id: plan
+        working-directory: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          requested=()
+          if [[ -n "$REQUESTED_BASE" ]]; then requested=(--requested-base "$REQUESTED_BASE"); fi
+          python3 -P -m lean_ci plan --config "$CI_CONFIG" --state "$RUNNER_TEMP/source-state" \
+            --repository "$GITHUB_REPOSITORY" --default-branch "$DEFAULT_BRANCH" \
+            --head "$GITHUB_SHA" "${requested[@]}" --github-output "$GITHUB_OUTPUT"
+      - name: Check source and preflight
+        working-directory: source
+        run: python3 -P -m lean_ci source --config "$CI_CONFIG" --state "$RUNNER_TEMP/source-state" --progress "$RUNNER_TEMP/source-progress"
+      - name: Select changed common tooling fixtures
+        id: fixtures
+        if: ${{ github.repository == 'kangxyz/aglib' }}
+        working-directory: source
+        run: |
+          python3 -P - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          plan = json.loads((Path(os.environ['RUNNER_TEMP']) / 'source-state/plan.json').read_text())
+          scope = plan['scope']
+          paths = set(scope.get('changed', []))
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          candidates = [scope.get('base'), event.get('before'), event.get('pull_request', {}).get('base', {}).get('sha')]
+          def diff(base):
+              return subprocess.check_output(['git', 'diff', '--name-only', base, 'HEAD'], text=True).splitlines()
+          compared = False
+          for revision in candidates:
+              if not isinstance(revision, str) or re.fullmatch('[0-9a-f]{40}', revision) is None or revision == '0' * 40:
+                  continue
+              ancestor = subprocess.run(['git', 'merge-base', revision, 'HEAD'], capture_output=True, text=True)
+              if ancestor.returncode == 0:
+                  paths.update(diff(ancestor.stdout.strip()))
+                  compared = True
+          if not compared:
+              parent = subprocess.run(['git', 'rev-parse', '--verify', 'HEAD^'], capture_output=True, text=True)
+              if parent.returncode == 0:
+                  paths.update(diff(parent.stdout.strip()))
+          # The acyclic adoption commit B may only change workflow/configuration.
+          # A manual initial dispatch on B still tests its just-pinned core A.
+          if scope.get('initial') and '.github/workflows/lean-ci.yml' in paths:
+              tooling = Path(os.environ['GITHUB_WORKSPACE']) / 'tooling'
+              core = subprocess.run(['git', '-C', str(tooling), 'rev-parse', 'HEAD'], capture_output=True, text=True)
+              if core.returncode == 0:
+                  parent = subprocess.run(['git', 'rev-parse', '--verify', core.stdout.strip() + '^'], capture_output=True, text=True)
+                  if parent.returncode == 0:
+                      paths.update(diff(parent.stdout.strip()))
+          python_changed = any(p.startswith('ci/') and p.endswith(('.py', '.lean', '.toml')) for p in paths)
+          native_changed = any(p.startswith(('ci/lean_ci/', 'ci/src/lean_ci/')) and p.endswith(('.py', '.lean')) for p in paths)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('python=' + str(python_changed).lower() + '\nnative=' + str(native_changed).lower() + '\n')
+          PY
+      - name: Check changed common tooling fixtures
+        if: ${{ steps.fixtures.outputs.python == 'true' }}
+        working-directory: source
+        run: PYTHONPATH="$PWD/ci/src" python3 -P -m unittest discover -s ci/tests -t ci -p 'test_*.py'
+      - name: Finalize source-only coverage
+        if: ${{ steps.plan.outputs.native == 'false' }}
+        working-directory: source
+        run: python3 -P -m lean_ci finalize --config "$CI_CONFIG" --state "$RUNNER_TEMP/source-state"
+      - name: Transfer source receipts with their input bindings
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: common-source-progress-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-progress
+          if-no-files-found: error
+          retention-days: 7
+      - name: Retain source plan and diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: common-source-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-state
+          if-no-files-found: ignore
+          retention-days: 14
+
+  native:
+    needs: source
+    if: ${{ needs.source.outputs.native == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    # Main jobs have isolated runners. Only a superseded PR native job cancels.
+    concurrency:
+      group: common-native-${{ github.repository }}-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}-${{ github.event_name == 'pull_request' && 'pr' || github.run_attempt }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      native-artifact: ${{ steps.stage.outputs.artifact-name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: kangxyz/aglib
+          ref: 2f01516e2351692ccd4fe2419418e398a336379a
+          path: tooling
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - name: Recompute committed plan in this runner
+        id: plan
+        working-directory: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          requested=()
+          if [[ -n "$REQUESTED_BASE" ]]; then requested=(--requested-base "$REQUESTED_BASE"); fi
+          python3 -P -m lean_ci plan --config "$CI_CONFIG" --state "$RUNNER_TEMP/native-state" \
+            --repository "$GITHUB_REPOSITORY" --default-branch "$DEFAULT_BRANCH" \
+            --head "$GITHUB_SHA" "${requested[@]}" --github-output "$GITHUB_OUTPUT"
+      - name: Restore this run's source successes
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: common-source-progress-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/source-progress
+      - name: Bind source evidence to the recomputed plan
+        working-directory: source
+        run: python3 -P -m lean_ci source --config "$CI_CONFIG" --state "$RUNNER_TEMP/native-state" --progress "$RUNNER_TEMP/source-progress"
+      - name: Read configured cache coordinates
+        id: layout
+        working-directory: source
+        env:
+          LEGACY_DEPENDENCY_PREFIX: ${{ inputs.legacy-dependencies-prefix }}
+          LEGACY_DEPENDENCY_PATHS: ${{ inputs.legacy-dependencies-paths }}
+          LEGACY_BUILD_PREFIXES: ${{ inputs.legacy-builds-prefixes }}
+          LEGACY_BUILD_PATHS: ${{ inputs.legacy-builds-paths }}
+        run: |
+          python3 -P - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          from lean_ci.project.configuration import load_config
+          root = Path.cwd()
+          config = load_config(root, os.environ['CI_CONFIG'])
+          packages = [root / w['path'] for w in config['workspaces']]
+          pins = hashlib.sha256()
+          for package in packages:
+              for name in ('lean-toolchain', 'lakefile.toml', 'lake-manifest.json'):
+                  path = package / name
+                  pins.update(str(path.relative_to(root)).encode())
+                  pins.update(path.read_bytes() if path.exists() else b'absent')
+          repositories = set()
+          import re
+          for workspace in config['workspaces']:
+              for item in workspace['dependencies']:
+                  match = re.fullmatch(r'https://github\.com/([^/]+/[^/]+?)(?:\.git)?/?', item.get('git', ''))
+                  if match:
+                      repositories.add(match[1])
+          # These optional data-only coordinates reproduce the old cache version.
+          # No repository-specific recipe or Python callback participates.
+          def legacy_paths(variable):
+              values = [p.strip() for p in os.environ[variable].splitlines() if p.strip()]
+              for value in values:
+                  path = Path(value)
+                  if (path.is_absolute() or path.as_posix() != value or '..' in path.parts
+                          or path.parts[0] in {'source', 'tooling'} or '.git' in path.parts
+                          or path.parts[-2:] not in [('.lake', 'packages'), ('.lake', 'build')]):
+                      raise ValueError('Unsafe original cache directory: ' + value)
+              if len(set(values)) != len(values):
+                  raise ValueError('Duplicate original cache directory')
+              return values
+          legacy_dependencies = legacy_paths('LEGACY_DEPENDENCY_PATHS')
+          legacy_builds = legacy_paths('LEGACY_BUILD_PATHS')
+          prefixes = [p.strip() for p in os.environ['LEGACY_BUILD_PREFIXES'].splitlines() if p.strip()]
+          dependency_prefix = os.environ['LEGACY_DEPENDENCY_PREFIX']
+          if any(re.fullmatch('[a-z][a-z0-9-]*', p) is None for p in [*prefixes, *([dependency_prefix] if dependency_prefix else [])]):
+              raise ValueError('Legacy cache prefixes must be literal category names')
+          if bool(prefixes) != bool(legacy_builds) or bool(dependency_prefix) != bool(legacy_dependencies):
+              raise ValueError('Legacy cache prefix/path inputs must be paired')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('package=' + str(root / config['package_dir']) + '\n')
+              output.write('checkout-package=' + (Path('source') / config['package_dir']).as_posix() + '\n')
+              for key, values in [('legacy-dependencies', legacy_dependencies), ('legacy-builds', legacy_builds),
+                                  ('legacy-build-keys', [p + '-' + os.environ['RUNNER_OS'] + '-' + os.environ['RUNNER_ARCH'] + '-' for p in prefixes])]:
+                  output.write(key + '<<LEGACY_CACHE\n' + '\n'.join(values) + '\nLEGACY_CACHE\n')
+              output.write('pins=' + pins.hexdigest() + '\n')
+              output.write('repositories=' + ' '.join(sorted(repositories)) + '\n')
+              for key, suffix in [('dependencies', '.lake/packages'), ('builds', '.lake/build')]:
+                  output.write(key + '<<CI_PATHS\n' + '\n'.join(str(p / suffix) for p in packages) + '\nCI_PATHS\n')
+          PY
+      - name: Install pinned Lean
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        env:
+          ELAN_HOME: ${{ runner.temp }}/elan
+          PACKAGE_ROOT: ${{ steps.layout.outputs.package }}
+        run: |
+          set -euo pipefail
+          echo "ELAN_HOME=$ELAN_HOME" >> "$GITHUB_ENV"
+          curl -fsSL --retry 3 https://raw.githubusercontent.com/leanprover/elan/v4.2.4/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
+          "$ELAN_HOME/bin/elan" toolchain install "$(cat "$PACKAGE_ROOT/lean-toolchain")"
+      - name: Select actual hosted resource budget
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        run: |
+          python3 -P - <<'PY'
+          import os
+          from pathlib import Path
+          # Explicit admitted remote profiles retain their own concurrency/caps.
+          if 'LEAN_CI_REMOTE_PROFILE' not in os.environ:
+              ram = os.sysconf('SC_PHYS_PAGES') * os.sysconf('SC_PAGE_SIZE')
+              for name in ('/sys/fs/cgroup/memory.max', '/sys/fs/cgroup/memory/memory.limit_in_bytes'):
+                  path = Path(name)
+                  if path.exists() and path.read_text().strip().isdigit():
+                      ram = min(ram, int(path.read_text().strip()))
+              mib = ram // (1024 * 1024)
+              rss = min(mib - 2048, mib * 3 // 4)
+              heap = min(mib // 2, rss - 64)
+              if heap < 64:
+                  raise SystemExit('Insufficient hosted memory for guarded Lean')
+              cpus = len(os.sched_getaffinity(0))
+              quota = Path('/sys/fs/cgroup/cpu.max')
+              if quota.exists():
+                  limit, period = quota.read_text().split()
+                  if limit != 'max':
+                      cpus = min(cpus, max(1, int(limit) // int(period)))
+              with open(os.environ['GITHUB_ENV'], 'a') as output:
+                  output.write(f'LEAN_CI_RSS_LIMIT_MB={rss}\nLEAN_CI_LEAN_MEMORY_MB={heap}\nLEAN_CI_BUILD_THREADS={max(1, min(cpus, 4))}\n')
+          PY
+      - name: Restore pinned dependencies
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        id: dependencies
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.layout.outputs.dependencies }}
+          key: common-dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.layout.outputs.pins }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: common-dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.layout.outputs.pins }}-
+      - name: Recover original dependency cache coordinates
+        if: ${{ steps.plan.outputs.native == 'true' && steps.dependencies.outputs.cache-matched-key == '' && inputs.legacy-dependencies-prefix != '' }}
+        id: legacy-dependencies
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          # Path spelling/list and action cache version match the old producer.
+          path: ${{ steps.layout.outputs.legacy-dependencies }}
+          key: ${{ inputs.legacy-dependencies-prefix }}-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', steps.layout.outputs.checkout-package), format('{0}/lake-manifest.json', steps.layout.outputs.checkout-package)) }}
+          restore-keys: ${{ inputs.legacy-dependencies-prefix }}-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', steps.layout.outputs.checkout-package), format('{0}/lake-manifest.json', steps.layout.outputs.checkout-package)) }}-
+      - name: Restore project compilation
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        id: builds
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.layout.outputs.builds }}
+          key: common-builds-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.layout.outputs.pins }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            common-builds-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.layout.outputs.pins }}-${{ github.sha }}-
+            common-builds-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.layout.outputs.pins }}-
+            common-builds-v1-${{ runner.os }}-${{ runner.arch }}-
+      - name: Recover original project output coordinates
+        if: ${{ steps.plan.outputs.native == 'true' && steps.builds.outputs.cache-matched-key == '' && inputs.legacy-builds-prefixes != '' }}
+        id: legacy-builds
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.layout.outputs.legacy-builds }}
+          key: common-legacy-build-recovery-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: ${{ steps.layout.outputs.legacy-build-keys }}
+      - name: Adopt restored legacy cache directories
+        if: ${{ steps.legacy-dependencies.outputs.cache-matched-key != '' || steps.legacy-builds.outputs.cache-matched-key != '' }}
+        env:
+          LEGACY_DEPENDENCY_PATHS: ${{ steps.legacy-dependencies.outputs.cache-matched-key != '' && steps.layout.outputs.legacy-dependencies || '' }}
+          LEGACY_BUILD_PATHS: ${{ steps.legacy-builds.outputs.cache-matched-key != '' && steps.layout.outputs.legacy-builds || '' }}
+        run: |
+          python3 -P - <<'PY'
+          import os
+          from pathlib import Path
+          workspace = Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          checkout = workspace / 'source'
+          paths = [p for key in ('LEGACY_DEPENDENCY_PATHS', 'LEGACY_BUILD_PATHS') for p in os.environ[key].splitlines() if p]
+          def confined(path):
+              if not path.resolve().is_relative_to(workspace):
+                  raise ValueError('Legacy cache path escaped its runner workspace')
+              for parent in [path, *path.parents]:
+                  if parent == workspace:
+                      break
+                  if parent.is_symlink():
+                      raise ValueError('Redirected legacy cache coordinate')
+          def move(source, target):
+              confined(source); confined(target)
+              if not source.exists():
+                  return
+              if not source.is_dir():
+                  raise ValueError('Legacy cache coordinate must be a directory')
+              target.parent.mkdir(parents=True, exist_ok=True)
+              if not target.exists():
+                  source.rename(target)
+                  return
+              if not target.is_dir():
+                  raise ValueError('Legacy cache destination is not a directory')
+              for child in source.iterdir():
+                  destination = target / child.name
+                  if child.is_symlink() or destination.is_symlink():
+                      raise ValueError('Redirected legacy cache merge entry')
+                  if child.is_dir():
+                      move(child, destination)
+                  else:
+                      child.replace(destination)
+              source.rmdir()
+          # Cache results are Lake inputs only, never canonical checker successes.
+          for name in paths:
+              relative = Path(name)
+              if (relative.is_absolute() or '..' in relative.parts or relative.as_posix() != name
+                      or relative.parts[0] in {'source', 'tooling'} or '.git' in relative.parts
+                      or relative.parts[-2:] not in [('.lake', 'packages'), ('.lake', 'build')]):
+                  raise ValueError('Unsafe original cache directory')
+              source, target = workspace / relative, checkout / relative
+              confined(source); confined(target)
+              if source.exists():
+                  for child in source.rglob('*'):
+                      if child.is_symlink():
+                          moved = target / child.relative_to(source)
+                          link = Path(os.readlink(child))
+                          if link.is_absolute() or not (moved.parent / link).resolve().is_relative_to(checkout):
+                              raise ValueError('Legacy cached symlink escapes its adopted checkout')
+              move(source, target)
+          PY
+      - name: Restore public native Lake assets
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        id: lake-cache
+        uses: ./tooling/.github/actions/lake-cache
+        with:
+          mode: restore
+          root: ${{ steps.layout.outputs.package }}
+          repositories: ${{ steps.layout.outputs.repositories }}
+      - name: Restore canonical per-check progress
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        id: progress
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/check-progress
+          key: common-checks-canonical-origin-v1-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: common-checks-canonical-origin-v1-${{ runner.os }}-${{ runner.arch }}-
+      - name: Prepare selected pinned imports
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        id: prepare
+        working-directory: source
+        run: python3 -P -m lean_ci prepare --config "$CI_CONFIG" --state "$RUNNER_TEMP/native-state"
+      - name: Check changed candidate native implementation
+        if: ${{ steps.prepare.outcome == 'success' && needs.source.outputs.candidate-native-fixtures == 'true' }}
+        working-directory: source
+        env:
+          LEAN_CI_NATIVE_TEST_ROOT: ${{ steps.layout.outputs.package }}
+          LEAN_CI_NATIVE_TOOLCHAIN: leanprover/lean4:v4.34.1
+          LEAN_CI_TEST_SCRATCH: ${{ runner.temp }}
+        run: |
+          PYTHONPATH="$PWD/ci/src" python3 -P - <<'PY'
+          import sys, unittest
+          loader = unittest.TestLoader()
+          loader.testNamePatterns = ['*RealNativeTests*']
+          suite = loader.discover('ci/tests', pattern='test_config_native.py', top_level_dir='ci')
+          if suite.countTestCases() == 0:
+              raise SystemExit('Candidate native fixture suite was not discovered')
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if result.skipped:
+              raise SystemExit('Prepared candidate native fixtures must execute without skips')
+          sys.exit(not result.wasSuccessful())
+          PY
+      - name: Canonical native checks (canonical-origin-v1)
+        if: ${{ steps.plan.outputs.native == 'true' }}
+        timeout-minutes: ${{ inputs.native-timeout-minutes }}
+        working-directory: source
+        run: python3 -P -m lean_ci native --config "$CI_CONFIG" --state "$RUNNER_TEMP/native-state" --progress "$RUNNER_TEMP/check-progress"
+      - name: Finalize canonical coverage (canonical-origin-v1)
+        id: finalize
+        if: ${{ always() && steps.prepare.outcome == 'success' }}
+        working-directory: source
+        run: python3 -P -m lean_ci finalize --config "$CI_CONFIG" --state "$RUNNER_TEMP/native-state" --outputs "$RUNNER_TEMP/native-outputs.jsonl" --github-output "$GITHUB_OUTPUT"
+      - name: Stage complete trusted native artifacts
+        id: stage
+        if: ${{ steps.finalize.outcome == 'success' && steps.finalize.outputs.mappings == 'true' && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+        uses: ./tooling/.github/actions/lake-cache
+        with:
+          mode: publish
+          root: ${{ steps.layout.outputs.package }}
+          mappings: ${{ runner.temp }}/native-outputs.jsonl
+          coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json
+      - name: Retain partial dependency preparation
+        if: ${{ always() && steps.dependencies.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.layout.outputs.dependencies }}
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Retain partial project compilation
+        if: ${{ always() && steps.builds.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.layout.outputs.builds }}
+          key: ${{ steps.builds.outputs.cache-primary-key }}
+      - name: Retain individual canonical successes
+        if: ${{ always() && steps.progress.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/check-progress
+          key: ${{ steps.progress.outputs.cache-primary-key }}
+      - name: Retain partial native Lake assets
+        if: ${{ always() && steps.lake-cache.outputs.cache-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.lake-cache.outputs.cache-path }}
+          key: ${{ steps.lake-cache.outputs.cache-key }}
+      - name: Retain plan, setup, logs and completion evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: common-native-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/native-state
+            ${{ runner.temp }}/setup
+            ${{ runner.temp }}/native-outputs.jsonl*
+          if-no-files-found: ignore
+          retention-days: 14
+
+  publish-cache:
+    needs: native
+    if: ${{ github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && needs.native.outputs.native-artifact != '' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    concurrency:
+      group: common-native-publication-${{ github.repository }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: kangxyz/aglib
+          ref: 2f01516e2351692ccd4fe2419418e398a336379a
+          path: tooling
+          persist-credentials: false
+      - uses: ./tooling/.github/actions/lake-cache
+        with:
+          mode: release
+          artifact: ${{ needs.native.outputs.native-artifact }}
