@@ -3,6 +3,9 @@
 The template is adapted from Mathlib `d13f23b7`'s
 [build_template.yml](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml).
 Callers supply only the Lake package directory and production targets.
+`LAKE_NO_CACHE=true` follows Mathlib by disabling automatic package build
+downloads from Reservoir/GitHub. This is separate from
+`LAKE_ARTIFACT_CACHE=true`, which keeps native project artifacts available.
 
 - `build` configures the pinned toolchain, restores cache and calls `lake build`.
   Native setup follows Mathlib's pinned

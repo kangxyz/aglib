@@ -15,6 +15,7 @@ permissions:
   contents: read
 
 env:
+  LAKE_NO_CACHE: 'true'
   LAKE_ARTIFACT_CACHE: 'true'
   BUILD_TARGETS: ${{ inputs.build-targets }}
 
