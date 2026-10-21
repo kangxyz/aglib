@@ -149,7 +149,7 @@ lemma coordinateMap_away_bijective :
     exact ⟨z, m, by simpa using hz⟩
 
 /-- The actual affine normalization is an isomorphism on the dense x-chart. -/
-def coordinateMap_away_equiv :
+def coordinateMapAwayEquiv :
     Localization.Away (WeierstrassCurve.affineX (equation k a b)) ≃ₐ[k]
       Localization.Away (coordinateMap k a b
         (WeierstrassCurve.affineX (equation k a b))) :=
@@ -157,26 +157,26 @@ def coordinateMap_away_equiv :
     (WeierstrassCurve.affineX (equation k a b)))
     (coordinateMap_away_bijective k a b)
 
-@[simp] lemma coordinateMap_away_equiv_algebraMap
+@[simp] lemma coordinateMapAwayEquiv_algebraMap
     (z : (equation k a b).toAffine.CoordinateRing) :
-    coordinateMap_away_equiv k a b (algebraMap _ _ z) =
+    coordinateMapAwayEquiv k a b (algebraMap _ _ z) =
       algebraMap _ _ (coordinateMap k a b z) := by
-  simp [coordinateMap_away_equiv, Localization.awayMapₐ, IsLocalization.Away.mapₐ,
+  simp [coordinateMapAwayEquiv, Localization.awayMapₐ, IsLocalization.Away.mapₐ,
     IsLocalization.Away.map, IsLocalization.map_eq]
 
 /-- The localized inverse parameter is literally y/x. -/
-lemma coordinateMap_away_equiv_inverse_parameter :
-    (coordinateMap_away_equiv k a b).symm (algebraMap k[X] _ X) =
+lemma coordinateMapAwayEquiv_inverse_parameter :
+    (coordinateMapAwayEquiv k a b).symm (algebraMap k[X] _ X) =
       algebraMap _ _ (WeierstrassCurve.affineY (equation k a b)) *
         IsLocalization.Away.invSelf (WeierstrassCurve.affineX (equation k a b)) := by
-  apply (coordinateMap_away_equiv k a b).injective
-  rw [AlgEquiv.apply_symm_apply, map_mul, coordinateMap_away_equiv_algebraMap,
+  apply (coordinateMapAwayEquiv k a b).injective
+  rw [AlgEquiv.apply_symm_apply, map_mul, coordinateMapAwayEquiv_algebraMap,
     coordinateMap_Y, yPolynomial, map_mul]
-  have h := congrArg (coordinateMap_away_equiv k a b)
+  have h := congrArg (coordinateMapAwayEquiv k a b)
     (IsLocalization.Away.mul_invSelf
       (S := Localization.Away (WeierstrassCurve.affineX (equation k a b)))
       (WeierstrassCurve.affineX (equation k a b)))
-  simp only [map_mul, map_one, coordinateMap_away_equiv_algebraMap, coordinateMap_X] at h
+  simp only [map_mul, map_one, coordinateMapAwayEquiv_algebraMap, coordinateMap_X] at h
   rw [mul_assoc, h, mul_one]
 
 end WeierstrassCurve.CriticalCubic

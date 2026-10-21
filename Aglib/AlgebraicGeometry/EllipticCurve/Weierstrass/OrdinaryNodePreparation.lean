@@ -64,6 +64,7 @@ The constructor below chooses R itself only when its actual residue tangent
 polynomial has a root; otherwise it builds the concrete quadratic quotient. -/
 structure NodeExtension [IsDomain R] [IsDiscreteValuationRing R]
     (W : WeierstrassCurve R) where
+  /-- The underlying ring of the finite étale local DVR extension. -/
   ringType : Type u
   /-- The constructed extension ring has its actual commutative ring structure. -/
   [commRing : CommRing ringType]
@@ -79,6 +80,7 @@ structure NodeExtension [IsDomain R] [IsDiscreteValuationRing R]
   [etale : Algebra.Etale R ringType]
   /-- The same structural algebra map is local. -/
   [localHom : IsLocalHom (algebraMap R ringType)]
+  /-- A split node of the original equation after the structural base change. -/
   splitNode : SplitNodeData (W.map (algebraMap R ringType))
 
 attribute [instance] NodeExtension.commRing NodeExtension.domain NodeExtension.dvr
@@ -155,7 +157,9 @@ lemma nodeExtension_split_rank [IsDomain R] [IsDiscreteValuationRing R]
 
 /-- A rational ordinary double point on the literal reduced Weierstrass cubic. -/
 structure OrdinaryNodeData [IsLocalRing R] (W : WeierstrassCurve R) where
+  /-- The x-coordinate of the node on the reduced Weierstrass cubic. -/
   x : ResidueField R
+  /-- The y-coordinate of the node on the reduced Weierstrass cubic. -/
   y : ResidueField R
   point : (W.map (residue R)).toAffine.Equation x y
   gradientX : (W.map (residue R)).toAffine.polynomialX.evalEval x y = 0
@@ -164,7 +168,9 @@ structure OrdinaryNodeData [IsLocalRing R] (W : WeierstrassCurve R) where
 
 /-- A constructed integral critical translation of the original equation. -/
 structure CriticalPreparation [IsLocalRing R] (W : WeierstrassCurve R) where
+  /-- The integral x-translation parameter of the critical translation. -/
   r : R
+  /-- The integral y-translation parameter of the critical translation. -/
   t : R
   a3 : (translate W r t).a₃ = 0
   a4 : (translate W r t).a₄ = 0

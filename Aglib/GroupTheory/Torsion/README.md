@@ -21,3 +21,16 @@ finite coefficient groups rather than replacement torsion carriers.
 its injectivity proof. The public construction data are shared by the exposed
 assembled map and its injectivity theorem; prime-power realization and
 injectivity still have to be supplied.
+
+[RankTwo](RankTwo.md) constructs coordinates from the cardinalities at every
+positive divisor level, using the literal torsion subgroups and canonical
+coprime maps. Cardinality at the top level alone is not its hypothesis.
+Its `basisOfEquiv` retains an existing `ZMod n` scalar action.
+
+The geometric consumer [MultiplicationTorsion](../../AlgebraicGeometry/Group/MultiplicationTorsion.md)
+constructs a `Module.Basis (Fin 2) (ZMod n)` on the literal
+`MultiplicationKernel.finiteTorsionPoints E n`, under `hE : Curve.Properties E.X`,
+the native `coherentGenus F E.X = 1`, `0 < n` and `IsUnit (n : F)` hypotheses.
+The scalar action is canonical; the existing Galois action is linear and the
+actual level maps have their canonical semilinearity. Level one is included.
+No Galois equivariance of the selected basis or perfect pairing is asserted.

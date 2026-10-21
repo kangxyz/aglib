@@ -47,3 +47,13 @@ is finite étale with geometric degree `n²` and native locally free rank `n²`,
 under the explicit `hG : Curve.Properties G.X`, `hg1 : coherentGenus k G.X = 1`
 and `IsUnit (n : k)` hypotheses. An external genus field still requires its
 separate identification with the native coherent genus.
+
+[Multiplication torsion](MultiplicationTorsion.md) constructs a
+`Module.Basis (Fin 2) (ZMod n)` on the literal
+`MultiplicationKernel.finiteTorsionPoints E n` of a commutative curve group.
+It retains `hE : Curve.Properties E.X`, the native
+`hg1 : coherentGenus F E.X = 1`, `0 < n` and `IsUnit (n : F)`.
+Its canonical scalar action, linear Galois action and semilinear actual level
+maps keep the original carrier and underlying functions. The chosen basis is
+not asserted Galois-equivariant. Level one is covered; a perfect pairing
+remains separate.

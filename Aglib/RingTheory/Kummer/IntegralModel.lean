@@ -335,8 +335,9 @@ variable {S F : Type u} [CommRing S] [IsIntegrallyClosed S]
 /-- The constructed finite-etale unit-root model is isomorphic to the LITERAL integral closure
 in the original f-Kummer algebra. This uses the existing proved canonical normal-base model
 comparison in Algebra.FiniteEtale.GenericMaps,
-not a supplied normalization model or extension criterion. -/
-def integralClosureModelEquiv [IsDomain S] [IsNoetherianRing S]
+not a supplied normalization model or extension criterion. The comparison uses only the
+displayed integrally closed base and fraction-field assumptions. -/
+def integralClosureModelEquiv
     (n : ℕ) (hn : 0 < n) (hnS : IsUnit (n : S))
     (u : Sˣ) (f g : F) (hg : g ≠ 0) (hf : f = algebraMap S F (u : S) * g ^ n) :
     RootAlgebra n (u : S) ≃ₐ[S] integralClosure S (RootAlgebra n f) := by

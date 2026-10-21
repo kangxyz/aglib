@@ -21,6 +21,7 @@ public import Aglib.GroupTheory.Torsion.Finite
 public import Aglib.GroupTheory.Torsion.FiniteCharacters
 public import Aglib.GroupTheory.Torsion.FiniteKernel
 public import Aglib.GroupTheory.Torsion.Levels
+public import Aglib.GroupTheory.Torsion.RankTwo
 
 /-!
 # GroupTheory

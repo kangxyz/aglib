@@ -17,6 +17,6 @@ Ranges: `[[36, 261]]`. SHA-256 `1ded720bf0270889aeb32307b3555a839946a1d77571920d
 | `R5Lab.AlgebraicGeometry.Curves.LocalModels.GeometricMinimality.SplitRationalComponents.neighborIntersectionToOpen` | `AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.ComponentFamily.neighborIntersectionToOpen` |
 | `R5Lab.AlgebraicGeometry.Curves.LocalModels.GeometricMinimality.SplitRationalComponents.neighborIntersectionPoint_square` | `AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.ComponentFamily.neighborIntersectionPoint_square` |
 | `R5Lab.AlgebraicGeometry.Curves.LocalModels.GeometricMinimality.SplitRationalComponents.neighborIntersectionPoint_open` | `AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.ComponentFamily.neighborIntersectionPoint_open` |
-| `R5Lab.AlgebraicGeometry.Curves.LocalModels.GeometricMinimality.SplitRationalComponents.nativeOtherTwoPointIso_of_neighbor_squares` | `AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.ComponentFamily.nativeOtherTwoPointIso_of_neighbor_squares` |
+| `R5Lab.AlgebraicGeometry.Curves.LocalModels.GeometricMinimality.SplitRationalComponents.nativeOtherTwoPointIso_of_neighbor_squares` | `AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.ComponentFamily.nativeOtherTwoPointIsoOfNeighborSquares` |
 
 Compilation scope and actual cold imports are recorded in the author handoff. Source correspondence supplies no model-existence, representability, purity, independent review or adoption verdict.

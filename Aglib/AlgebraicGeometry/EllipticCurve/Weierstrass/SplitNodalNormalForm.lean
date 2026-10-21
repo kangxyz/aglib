@@ -218,9 +218,13 @@ theorem exists_normal_form_of_split_node [HenselianLocalRing R]
 /-- Concrete split-node data for this reduced equation. This is geometric
 input on the literal reduced cubic, not a recognition or isomorphism premise. -/
 structure SplitNodeData [IsLocalRing R] (W : WeierstrassCurve R) where
+  /-- The x-coordinate of the node on the reduced Weierstrass cubic. -/
   x : ResidueField R
+  /-- The y-coordinate of the node on the reduced Weierstrass cubic. -/
   y : ResidueField R
+  /-- The first rational tangent slope at the reduced node. -/
   first : ResidueField R
+  /-- The second rational tangent slope, required to differ from the first. -/
   second : ResidueField R
   point : (W.map (residue R)).toAffine.Equation x y
   gradientX : (W.map (residue R)).toAffine.polynomialX.evalEval x y = 0

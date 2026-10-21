@@ -358,6 +358,7 @@ instance affinePullbackLift_isIso : IsIso (affinePullbackLift k a b H) := by
       (affinePullbackLift k a b H).isClosedMap.isClosed_range
   exact (isIso_iff_isOpenImmersion_and_surjective _).mpr ⟨inferInstance, inferInstance⟩
 
+/-- The affine parameter line identified with the preimage of the cubic's affine chart. -/
 def affinePullbackIso : Spec (.of k[X]) ≅
     pullback (projectiveNormalization k a b H) (WeierstrassCurve.Projective.affineChart (equation
       k a b)) :=

@@ -171,7 +171,6 @@ omit hOpen in
     {Z : Scheme.{u}} [IsIntegral Z]
     (sZ : Z ⟶ Spec (.of k)) [IsProper sZ]
     (j : Spec (.of (equation k a b).toAffine.CoordinateRing) ⟶ Z)
-    [IsOpenImmersion j]
     (hj : j ≫ sZ = Spec.map (CommRingCat.ofHom
       (algebraMap k (equation k a b).toAffine.CoordinateRing)))
     (H : NormalProperCurveGenericExtension.{u}) :
@@ -182,7 +181,6 @@ omit hOpen in
     {Z : Scheme.{u}} [IsIntegral Z]
     (sZ : Z ⟶ Spec (.of k)) [IsProper sZ]
     (j : Spec (.of (equation k a b).toAffine.CoordinateRing) ⟶ Z)
-    [IsOpenImmersion j]
     (hj : j ≫ sZ = Spec.map (CommRingCat.ofHom
       (algebraMap k (equation k a b).toAffine.CoordinateRing)))
     (H : NormalProperCurveGenericExtension.{u}) :

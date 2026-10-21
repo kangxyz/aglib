@@ -53,9 +53,13 @@ attribute [local instance] Over.cartesianMonoidalCategory
 variable {F : Type u} [Field F]
   (E : Grp (FScheme F)) [IsCommMonObj E.X] (n : ℕ)
 
+/-- The chosen geometric point of the base field. -/
 abbrev b := FieldGalois.geometricPoint F
+/-- The underlying scheme morphism of the group identity section. -/
 abbrev o := η[E.X].left
+/-- The geometric point of the group obtained from the identity section. -/
 abbrev x0 := b (F := F) ≫ o E
+/-- The kernel of the arithmetic projection based at the identity section. -/
 abbrev N := GeometricKernel.ArithmeticKernel F E.X.hom (o E) (Over.w η[E.X])
 
 variable [IsFinite (multiplication E n).left] [Etale (multiplication E n).left]
@@ -121,16 +125,20 @@ end Surjectivity
 
 attribute [local instance] GroupDescent.coverCartesian
 
+/-- The product of two multiplication covers over the group scheme. -/
 abbrev pairCover : Scheme.FiniteEtale E.X.left
     := multiplicationCover E n ⊗ multiplicationCover E n
+/-- The pair cover viewed as a scheme over the original field. -/
 abbrev pairOverF : FScheme F := Over.mk ((pairCover E n).obj.hom ≫ E.X.hom)
 
+/-- The first projection from the pair cover to the group scheme over the field. -/
 def first : pairOverF E n ⟶ E.X := Over.homMk
   (fst (multiplicationCover E n).obj (multiplicationCover E n).obj).left (by
     rw [← Over.w (multiplication E n), ← Category.assoc]
     exact congrArg (fun f => f ≫ E.X.hom)
       (Over.w (fst (multiplicationCover E n).obj (multiplicationCover E n).obj)))
 
+/-- The second projection from the pair cover to the group scheme over the field. -/
 def second : pairOverF E n ⟶ E.X := Over.homMk
   (snd (multiplicationCover E n).obj (multiplicationCover E n).obj).left (by
     rw [← Over.w (multiplication E n), ← Category.assoc]
@@ -154,13 +162,17 @@ def difference : pairOverF E n ⟶ kernelScheme E n := Over.homMk
   (pullback.lift (first E n / second E n).left (pairOverF E n).hom
     (congrArg Over.Hom.left (difference_killed E n))) (pullback.lift_snd _ _ _)
 
+/-- The scheme-theoretic multiplication kernel as a finite étale cover of the field. -/
 abbrev kernelCover : Scheme.FiniteEtale (Base F) :=
   ⟨kernelScheme E n, inferInstance, inferInstanceAs
     (Etale (pullback.snd (multiplication E n).left η[E.X].left))⟩
 
+/-- The kernel cover pulled back along the structural morphism of the group scheme. -/
 abbrev relativeKernelCover : Scheme.FiniteEtale E.X.left := (baseChange E.X.hom).obj
     (kernelCover E n)
 
+/-- The map of covers sending a pair of multiplication lifts to their difference
+in the kernel cover pulled back to the group scheme. -/
 def differenceCoverMap : pairCover E n ⟶ relativeKernelCover E n := ObjectProperty.homMk
   (Over.homMk (pullback.lift (difference E n).left (pairCover E n).obj.hom
     (Over.w (difference E n))) (pullback.lift_snd _ _ _))
@@ -171,9 +183,11 @@ theorem differenceCoverMap_fst :
   pullback.lift_fst (f := (kernelScheme E n).hom) (g := E.X.hom)
     (difference E n).left (pairCover E n).obj.hom (Over.w (difference E n))
 
+/-- The point of the pair-cover fibre determined by two native torsion points. -/
 def pairPoint (t s : finiteTorsionPoints E n) : Fiber (x0 E) (pairCover E n) :=
   lift (fiberEquiv E n t) (fiberEquiv E n s)
 
+/-- The pair of native torsion points viewed as a geometric point over the field. -/
 def pairPointOverF (t s : finiteTorsionPoints E n) :
     Over.mk (b (F := F)) ⟶ pairOverF E n := Over.homMk (pairPoint E n t s).left (by
   change _ ≫ ((pairCover E n).obj.hom ≫ E.X.hom) = _
@@ -216,6 +230,8 @@ theorem pairPoint_snd (t s : finiteTorsionPoints E n) :
   have h := congrArg Over.Hom.left (pairPointOverF_second E n t s)
   exact h
 
+/-- The base-change equivalence from the relative kernel fibre at the identity
+to the kernel-cover fibre over the field geometric point. -/
 def kernelFiberEquiv : Fiber (x0 E) (relativeKernelCover E n) ≃
     Fiber (b (F := F)) (kernelCover E n) :=
   (pointedFiberEquiv
@@ -272,6 +288,8 @@ theorem kernelFiberEquiv_evaluation (g : N E) (q : Fiber (x0 E) (relativeKernelC
   rw [Equiv.symm_apply_apply] at h
   exact h.symm
 
+/-- The action of fibre-functor automorphisms on native torsion points,
+transported through the origin fibre of the multiplication cover. -/
 def rho (g : FiberAutGroup (x0 E)) (t : finiteTorsionPoints E n) : finiteTorsionPoints E n :=
   (fiberEquiv E n).symm (g.hom.app (multiplicationCover E n) (fiberEquiv E n t))
 
@@ -323,11 +341,15 @@ theorem quotientMap_mul (g h : N E) :
   rw [rho_mul, rho_kernel]
   rfl
 
+/-- Evaluation at the zero lift as a homomorphism from the arithmetic
+projection kernel to the multiplicative form of the torsion-point group. -/
 def quotientHom : N E →* Multiplicative (finiteTorsionPoints E n) where
   toFun g := Multiplicative.ofAdd (quotientMap E n g)
   map_one' := quotientMap_one E n
   map_mul' := quotientMap_mul E n
 
+/-- Evaluation at the zero lift as an additive homomorphism from the additive
+form of the arithmetic projection kernel to the native torsion-point group. -/
 def additiveQuotient : Additive (N E) →+ finiteTorsionPoints E n where
   toFun g := quotientMap E n g.toMul
   map_zero' := quotientMap_one E n
@@ -372,9 +394,10 @@ theorem quotientMap_galois (σ : Field.absoluteGaloisGroup F) (g : N E) :
   rfl
 
 open scoped FintypeCatDiscrete in
-/-- Continuity is finite-coordinate evaluation of the actual fibre automorphism. -/
-theorem quotientMap_continuous [TopologicalSpace (finiteTorsionPoints E n)]
-    [DiscreteTopology (finiteTorsionPoints E n)] : Continuous (quotientMap E n) := by
+/-- Continuity is finite-coordinate evaluation of the actual fibre automorphism.
+The torsion group may carry any topology; the finite-coordinate domain is discrete. -/
+theorem quotientMap_continuous [TopologicalSpace (finiteTorsionPoints E n)] :
+    Continuous (quotientMap E n) := by
   have he : Continuous (fun g : FiberAutGroup (x0 E) =>
       PreGaloisCategory.autEmbedding (fiberToFinite (x0 E)) g (multiplicationCover E n)) :=
     (continuous_apply (multiplicationCover E n)).comp continuous_induced_dom

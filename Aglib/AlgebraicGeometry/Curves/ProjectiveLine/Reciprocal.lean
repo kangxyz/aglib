@@ -41,15 +41,22 @@ universe u
 namespace AlgebraicGeometry.Scheme.ProjectiveLine.Reciprocal
 variable (k : Type u) [CommRing k]
 
+/-- The Laurent polynomial ring obtained by inverting `X` in `k[X]`. -/
 abbrev Laurent := Localization.Away (X : k[X])
+/-- The affine coordinate line `Spec k[X]` over `k`. -/
 abbrev affineLine : Scheme.{u} := Spec (.of k[X])
+/-- The common chart overlap `Spec (Localization.Away X)`. -/
 abbrev gm : Scheme.{u} := Spec (.of (Laurent k))
+/-- The image of the polynomial coordinate `X` in the Laurent polynomial ring. -/
 def t : Laurent k := algebraMap k[X] _ X
+/-- The inverse of the coordinate `t` in the Laurent polynomial ring. -/
 def invT : Laurent k := IsLocalization.Away.invSelf (X : k[X])
 @[simp] lemma t_mul_invT : t k * invT k = 1 := IsLocalization.Away.mul_invSelf _
 @[simp] lemma invT_mul_t : invT k * t k = 1 := by rw [mul_comm, t_mul_invT]
+/-- The Laurent coordinate `t` as a unit, with inverse `invT`. -/
 def tUnit : (Laurent k)ˣ := ⟨t k, invT k, t_mul_invT k, invT_mul_t k⟩
 
+/-- The `k`-algebra endomorphism of the Laurent ring sending `t` to `invT`. -/
 def inversion : Laurent k →ₐ[k] Laurent k :=
   IsLocalization.Away.liftAlgHom (X : k[X]) (f := aeval (invT k)) (by
     exact IsUnit.of_mul_eq_one (t k) (by simp))
@@ -61,6 +68,7 @@ def inversion : Laurent k →ₐ[k] Laurent k :=
     inversion k (invT k) = (t k * invT k) * inversion k (invT k) := by rw [t_mul_invT, one_mul]
     _ = t k := by rw [mul_assoc, h, mul_one]
 
+/-- The involutive `k`-algebra equivalence exchanging `t` and `invT`. -/
 def inversionEquiv : Laurent k ≃ₐ[k] Laurent k :=
   AlgEquiv.ofAlgHom (inversion k) (inversion k)
     (by
@@ -74,8 +82,10 @@ def inversionEquiv : Laurent k ≃ₐ[k] Laurent k :=
       change inversion k (inversion k (t k)) = t k
       simp)
 
+/-- The overlap inclusion into the zero chart, induced by localization at `X`. -/
 def toZeroChart : gm k ⟶ affineLine k :=
   Spec.map (CommRingCat.ofHom (algebraMap k[X] (Laurent k)))
+/-- The overlap inclusion into the infinity chart, sending its coordinate to `invT`. -/
 def toInfinityChart : gm k ⟶ affineLine k :=
   Spec.map (CommRingCat.ofHom (aeval (invT k)).toRingHom)
 instance toZeroChart_open : IsOpenImmersion (toZeroChart k) :=
@@ -134,11 +144,14 @@ lemma charts_cover (z : projectiveP1 k) :
   · exact Or.inl ⟨a, ha⟩
   · exact Or.inr ⟨a, ha⟩
 
+/-- The scheme obtained by gluing two affine lines along the reciprocal overlap maps. -/
 abbrev gluing : Scheme.{u} := pushout (toZeroChart k) (toInfinityChart k)
+/-- The morphism from the reciprocal gluing induced by the two standard projective charts. -/
 def toProjectiveLine : gluing k ⟶ projectiveP1 k :=
   pushout.desc (chart k 0) (chart k 1) (transition k)
 instance toProjectiveLine_isIso : IsIso (toProjectiveLine k) :=
   OpenPushoutIso.desc_isIso _ _ _ _ (transition k) (chart_preimage_opposite k) (charts_cover k)
+/-- The isomorphism from the reciprocal gluing to the fixed projective line. -/
 def gluingIso : gluing k ≅ projectiveP1 k := asIso (toProjectiveLine k)
 @[reassoc, simp] lemma gluingIso_zero :
     pushout.inl (toZeroChart k) (toInfinityChart k) ≫ (gluingIso k).hom = chart k 0 := by
@@ -191,8 +204,10 @@ universe u
 namespace AlgebraicGeometry.Scheme.ProjectiveLine.Reciprocal
 variable (k : Type u) [CommRing k]
 
+/-- The structure morphism of the affine coordinate line over `Spec k`. -/
 def affineBase : affineLine k ⟶ Spec (.of k) :=
   Spec.map (CommRingCat.ofHom (algebraMap k k[X]))
+/-- The structure morphism of the Laurent overlap over `Spec k`. -/
 def gmBase : gm k ⟶ Spec (.of k) :=
   Spec.map (CommRingCat.ofHom (algebraMap k (Laurent k)))
 @[reassoc] lemma toZeroChart_over : toZeroChart k ≫ affineBase k = gmBase k := by
@@ -204,6 +219,7 @@ def gmBase : gm k ⟶ Spec (.of k) :=
   ext r
   exact (aeval (invT k)).commutes r
 
+/-- The morphism to `Spec k` descended from the structure maps of the two affine charts. -/
 def gluingBase : gluing k ⟶ Spec (.of k) :=
   pushout.desc (affineBase k) (affineBase k) (by rw [toZeroChart_over, toInfinityChart_over])
 @[reassoc] lemma gluingIso_over : (gluingIso k).hom ≫ structureMap k = gluingBase k := by
@@ -225,7 +241,9 @@ lemma descend_over {Y : Scheme.{u}} (f0 f1 : affineLine k ⟶ Y)
 
 /-- The literal origin-evaluation morphism into either affine coordinate line. -/
 def affineOrigin : Spec (.of k) ⟶ affineLine k := Spec.map (CommRingCat.ofHom (evalRingHom 0))
+/-- The section of the projective line obtained from the origin of the zero chart. -/
 def zeroSection : Spec (.of k) ⟶ projectiveP1 k := affineOrigin k ≫ chart k 0
+/-- The section of the projective line obtained from the origin of the infinity chart. -/
 def infinitySection : Spec (.of k) ⟶ projectiveP1 k := affineOrigin k ≫ chart k 1
 @[reassoc] lemma affineOrigin_over : affineOrigin k ≫ affineBase k = 𝟙 _ := by
   rw [affineOrigin, affineBase, ← Spec.map_comp]

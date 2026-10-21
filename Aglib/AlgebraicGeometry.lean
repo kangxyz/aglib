@@ -1102,6 +1102,7 @@ public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.MonodromyQuotient
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.Transitions
+public import Aglib.AlgebraicGeometry.Group.MultiplicationTorsion
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTransport
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeBaseChange
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeGroup

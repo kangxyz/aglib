@@ -172,7 +172,7 @@ lemma targetLinePoint_def (a : k) :
     selectedLineAffine k ≫ Scheme.PinchedLine.lineStructure k = Spec.algebraMap k k[X] :=
   pushout.inl_desc ..
 
-@[reassoc (attr := simp)] lemma targetLinePoint_over (a : k) :
+@[reassoc] lemma targetLinePoint_over (a : k) :
     targetLinePoint k a ≫ Scheme.PinchedLine.lineStructure k = 𝟙 _ := by
   exact Scheme.PinchedLine.lineFieldPoint_structure k a
 
@@ -325,7 +325,7 @@ def outgoingPairPoint (i : Fin n) : Spec (.of k) ⟶ targetPair k n i (finRotate
 @[reassoc (attr := simp)] lemma outgoingPairPoint_snd (i : Fin n) :
     outgoingPairPoint k n i ≫ pullback.snd _ _ = targetLinePoint k 0 := pullback.lift_snd ..
 
-@[reassoc (attr := simp)] lemma outgoingPairPoint_over (i : Fin n) :
+@[reassoc] lemma outgoingPairPoint_over (i : Fin n) :
     outgoingPairPoint k n i ≫ pullback.fst _ _ ≫ Scheme.PinchedLine.lineStructure k = 𝟙 _ := by
   rw [outgoingPairPoint_fst_assoc, targetLinePoint_over]
 

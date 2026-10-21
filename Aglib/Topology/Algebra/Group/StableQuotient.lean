@@ -56,8 +56,8 @@ subgroup is stable. -/
     smul_add g q q' := (f g).map_add q q' }
 
 @[simp] theorem action_mk (g : G) (k : M) :
-    @SMul.smul G (M ⧸ R) (action R hstable).toSMul g (QuotientAddGroup.mk' R k) =
-      QuotientAddGroup.mk' R (g • k) := rfl
+    @SMul.smul G (M ⧸ R) (action R hstable).toSMul g (k : M ⧸ R) =
+      ((g • k : M) : M ⧸ R) := rfl
 
 variable [TopologicalSpace G] [TopologicalSpace M] [IsTopologicalAddGroup M]
   [ContinuousSMul G M]

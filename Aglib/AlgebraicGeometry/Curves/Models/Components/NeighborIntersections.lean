@@ -193,7 +193,7 @@ variable (s₀ : Spec (.of (IsLocalRing.ResidueField R)) ⟶ C w₀) (t₀ : Spe
 
 /-- No intersection degree is supplied: two actual cartesian point charts,
 their open containment, disjointness and exhaustive support yield the native iso. -/
-def nativeOtherTwoPointIso_of_neighbor_squares : componentOtherTwoPointIso π inclusion v := by
+def nativeOtherTwoPointIsoOfNeighborSquares : componentOtherTwoPointIso π inclusion v := by
   let a := neighborIntersectionPoint π inclusion hrange v w₀ hw₀ s₀ t₀ H₀
   let b := neighborIntersectionPoint π inclusion hrange v w₁ hw₁ s₁ t₁ H₁
   let : IsOpenImmersion a := neighborIntersectionPoint_open π inclusion hrange v w₀ hw₀ s₀ t₀ H₀ hU₀
