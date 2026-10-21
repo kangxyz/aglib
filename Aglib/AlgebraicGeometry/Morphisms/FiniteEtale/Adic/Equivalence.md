@@ -63,22 +63,10 @@ The current completed-rational-point consumer uses
 in [RationalPointCompletion.lean](RationalPointCompletion.lean). That existing
 file and its scalar structures were left unchanged.
 
-## Source and evidence boundary
+## Scope
 
-This is new native code on author HEAD
-`3a4d549981ced306d89d3ed55418c9e6a25f86c4`, using Lean `4.34.1` and Mathlib
-`d13f23b723b8a846827a245b89c10fc7d3f11612`. The frozen `ResidueLift.lean`
-input remains at SHA-256
-`fc30a092fedc3056b3dfbc2f59cbf1c8f1a1fb2649c0d086b8f8afef62b253b4`.
-The existing fullness suppliers were consumed unchanged.
-
-The new production leaf compiled successfully through the assigned serialized
-guard, with default heartbeats, in investigation receipt `adic/build-002`.
-The earlier iteration filled only the identified missing caches for
-`BaseChange.Isomorphism` and `Adic.Residue`. There was no broad rebuild or
-separate lint, test, client, kernel replay or release check.
-
-This closes the base-spectrum comparison for complete Noetherian local rings.
-It neither removes completeness/Noetherianity from fullness nor proves an
-arbitrary Henselian or proper-curve comparison. No established exposé status
-is assigned by this result.
+These interfaces retain their complete Noetherian hypotheses and marked-residue
+maps. The more general [Henselian residue equivalence](../HenselianEquivalence.md)
+proves equivalence over any Henselian local base without completeness or
+Noetherianity. Neither base-spectrum result asserts the closed-fibre comparison
+for every proper scheme over the base.

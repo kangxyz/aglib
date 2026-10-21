@@ -900,6 +900,7 @@ public import Aglib.AlgebraicGeometry.Curves.Projectivity.PrincipalBoundary
 public import Aglib.AlgebraicGeometry.Curves.Regular
 public import Aglib.AlgebraicGeometry.Curves.RelativePicard.DegreeZero
 public import Aglib.AlgebraicGeometry.Curves.RelativePicard.Fibres
+public import Aglib.AlgebraicGeometry.Curves.RelativePicard.Pullback
 public import Aglib.AlgebraicGeometry.Curves.RelativePicard.Representability
 public import Aglib.AlgebraicGeometry.Curves.RiemannHurwitz
 public import Aglib.AlgebraicGeometry.Curves.RiemannHurwitz.CanonicalDegree
@@ -1088,7 +1089,10 @@ public import Aglib.AlgebraicGeometry.Group.BaseChange.MarkedKernel
 public import Aglib.AlgebraicGeometry.Group.BaseChange.PointTransport
 public import Aglib.AlgebraicGeometry.Group.BaseChange.UnitRange
 public import Aglib.AlgebraicGeometry.Group.CurveIsogeny
+public import Aglib.AlgebraicGeometry.Group.DualIsogeny
 public import Aglib.AlgebraicGeometry.Group.EtaleQuotient
+public import Aglib.AlgebraicGeometry.Group.IsogenyPairing
+public import Aglib.AlgebraicGeometry.Group.IsogenyPairing.Galois
 public import Aglib.AlgebraicGeometry.Group.Kernel.Basic
 public import Aglib.AlgebraicGeometry.Group.Kernel.DeckTranslation
 public import Aglib.AlgebraicGeometry.Group.Kernel.PrimeDegree
@@ -1098,6 +1102,7 @@ public import Aglib.AlgebraicGeometry.Group.MultiplicationCotangent
 public import Aglib.AlgebraicGeometry.Group.MultiplicationDegree
 public import Aglib.AlgebraicGeometry.Group.MultiplicationEtale
 public import Aglib.AlgebraicGeometry.Group.MultiplicationFinite
+public import Aglib.AlgebraicGeometry.Group.MultiplicationFiniteDegree
 public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.MonodromyQuotient
@@ -1682,6 +1687,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFiber
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericFieldBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GenericRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.GeometricConnectedness
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.HenselianEquivalence
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.HenselianResidue
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.InertiaFibres
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Lifting
