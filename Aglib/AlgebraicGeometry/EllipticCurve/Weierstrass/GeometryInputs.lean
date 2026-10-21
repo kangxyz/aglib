@@ -10,12 +10,13 @@ public import Aglib.AlgebraicGeometry.Curves.Core
 public import Aglib.AlgebraicGeometry.Curves.Genus
 
 /-!
-# The exact remaining geometry and pointed-isomorphism inputs
+# Exact geometry and pointed-isomorphism interfaces
 
 Source: ordinary R5 Weierstrass.Projective, lines 351–355 and 1016–1028.
-These are explicit unresolved supplier statements. They prove neither
-nonsingular geometry of the literal Proj nor j-invariance for arbitrary
-pointed projective isomorphisms. Properness is already proved separately.
+These retained statements describe the same literal Proj and infinity
+section. Geometry supplies the nonsingular-geometry family, and
+PointedIsomorphism supplies j-invariance for arbitrary pointed projective
+isomorphisms. The interfaces remain separate from their proof modules.
 -/
 
 @[expose] public section
@@ -35,13 +36,14 @@ universe u
 attribute [local instance] Over.cartesianMonoidalCategory
 
 /-- Geometry and coherent genus of the same literal nonsingular Proj cubic,
-uniform over every field. A proof of this family remains a separate input. -/
+uniform over every field. Geometry supplies the proved family. -/
 def NonsingularWeierstrassGeometry : Prop :=
   ∀ (k : Type u) [Field k] (W : WeierstrassCurve k), W.Δ ≠ 0 →
     Properties (curveOver W) ∧ coherentGenus k (curveOver W) = 1
 
-/-- The original all-fields pointed-projective j-invariance input. An affine
-variable-change isomorphism alone does not supply this assertion. -/
+/-- The original all-fields pointed-projective j-invariance interface.
+PointedIsomorphism derives the requisite variable change from the given
+pointed projective isomorphism and supplies the proved family. -/
 def PointedWeierstrassJInvariant : Prop :=
   ∀ (k : Type u) [Field k] (W V : WeierstrassCurve k),
     W.Δ ≠ 0 → V.Δ ≠ 0 → ∀ e : curveOver W ≅ curveOver V,

@@ -8,6 +8,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Data.Fin.Rotate
+public import Aglib.Data.Finsupp.LexWeight
 public import Aglib.Data.Nat.PositiveDivisibility
 public import Aglib.Data.ZMod.CoefficientMaps
 

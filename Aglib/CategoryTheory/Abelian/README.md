@@ -26,3 +26,26 @@ to the finite-etale torsor and cohomology comparisons.
 and an actual generalized inverse. Projectivity of the original kernel is
 then equivalent to projectivity of the source, by the two actual
 retractions. It does not require a projective cokernel as a separate input.
+
+[PresentationEffectivity](PresentationEffectivity.lean) algebraizes an
+object with a two-term presentation by image objects of a full functor between
+abelian categories that preserves zero morphisms and finite colimits. It lifts
+the relation map and takes its native cokernel, retaining the quotient arrow.
+The alternative input is an epimorphism onto the object and an epimorphism onto
+its categorical kernel; existence of either presentation remains explicit.
+
+[ReductionKernel](ReductionKernel.lean) gives epimorphisms on ordinary relation
+kernels for a right exact reduction with epimorphic units. It does not assert
+preservation of kernels. [KernelSquare](KernelSquare.lean) interchanges the two
+kernels of a commutative square while retaining the double inclusions.
+[KernelSquareExact](KernelSquareExact.lean) gives the correction argument for
+surjectivity on the other pair of kernels when the upper arrow and the
+relation-kernel map are epimorphisms.
+
+[CoproductKernels](CoproductKernels.lean) identifies the coproduct of component
+kernels with the kernel of the coproduct map in an AB4 abelian category,
+retaining the kernel inclusion and allowing an independent, arbitrary index
+universe. [CoproductKernelTransport](CoproductKernelTransport.lean) transports
+this comparison through a finite-limit-preserving functor and a specified
+commuting coproduct square. Its geometric consumer is the coherent graded
+relation kernel in [Grothendieck existence](../../AlgebraicGeometry/Cohomology/GrothendieckExistence/README.md).

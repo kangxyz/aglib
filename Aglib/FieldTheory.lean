@@ -33,6 +33,11 @@ public import Aglib.FieldTheory.RatFuncTranslation
 public import Aglib.FieldTheory.RationalCoefficientRoot
 public import Aglib.FieldTheory.ResidueMinpolyBranch
 public import Aglib.FieldTheory.Separable.TensorProductSplitting
+public import Aglib.FieldTheory.SeparablyGenerated.EmbeddedField
+public import Aglib.FieldTheory.SeparablyGenerated.Equivalence
+public import Aglib.FieldTheory.SeparablyGenerated.FrobeniusCoefficients
+public import Aglib.FieldTheory.SeparablyGenerated.GeometricallyReduced
+public import Aglib.FieldTheory.SeparablyGenerated.Restriction
 public import Aglib.FieldTheory.Subfield.FiniteData
 public import Aglib.FieldTheory.SylowFixedField
 public import Aglib.FieldTheory.TensorCharpolyProduct

@@ -17,8 +17,25 @@ commutative rings. [Dependent sums](DFinsupp/README.md) retain the native
 subtype restriction and identify it as a linear equivalence when every omitted
 fiber is subsingleton, over an arbitrary semiring.
 
-[FreeModule](FreeModule/README.md) supplies the actual ZMod torsion-module
+[FreeModule](FreeModule/README.md) supplies rank-one stable cancellation
+over arbitrary commutative rings and the actual ZMod torsion-module
 interfaces; [Matrix](Matrix/README.md) supplies scalar restriction matrices and
 determinants for the chosen basis. The latter is consumed by
 [FGModuleCat/ScalarMatrices](../Algebra/Category/FGModuleCat/ScalarMatrices.lean),
 with no separability hypothesis.
+
+[KernelFiltration](KernelFiltration.lean) identifies the quotient of consecutive
+ordinary transition kernels with the original adjacent kernel when the first
+transition is surjective. The maps and quotient evaluation formula are retained;
+no adic compatibility or finite-generation assumption is made.
+
+[KernelFiltrationMap](KernelFiltrationMap.lean) retains a specified original composite in the canonical
+map between reduction kernels and computes its kernel. The comparison
+is surjective when the first map in the composite is surjective.
+
+[DirectSum/Kernels](DirectSum/Kernels.lean) identifies the direct sum of original linear-map kernels
+with the kernel of the original componentwise direct-sum map, retaining every
+original inclusion.
+
+[KernelIdealBound](KernelIdealBound.lean) transports an actual kernel containment in an ideal multiple
+along an original commuting square of linear equivalences.

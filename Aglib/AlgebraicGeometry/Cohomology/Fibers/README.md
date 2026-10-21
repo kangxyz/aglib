@@ -65,3 +65,12 @@ uniform bound across its affine opens. A nonflat higher-direct-image
 base-change sheaf map is a separate interface: the existing flat map keeps
 its flatness guard, and ordinary coefficient pullback is not identified
 with derived pullback merely from relative flatness over the target.
+
+The [field-extension vanishing comparison](../Proper/H0Vanishing/FieldExtension.md)
+retains the same point fibre and its literal further field pullback. It
+reflects vanishing in every degree for qcqs morphisms and quasicoherent
+coefficients. Its H⁰ consequence for a proper finite-type quasicoherent
+relatively flat coefficient over a locally Noetherian target produces an
+actual open containing the given point, with vanishing on every original
+fibre. Taking that point to be generic gives the finite-base spreading
+application, once its actual external fibre and coefficient are identified.

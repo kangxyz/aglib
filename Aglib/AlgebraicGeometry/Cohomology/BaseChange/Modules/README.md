@@ -123,3 +123,10 @@ Transitivity and Composite give opposite 2-of-3 conclusions of one commutative i
 unit-pure-tensor manipulations of scalar extension they share are
 `ModuleCat.extendScalarsComp_hom_app_comp_map_comp_one_tmul` and `ModuleCat.extendScalarsCongrIso`
 ([Algebra/Category/ModuleCat/ChangeOfRings/UnitTensor](../../../../Algebra/Category/ModuleCat/ChangeOfRings/UnitTensor.lean)).
+
+[FieldExtension](FieldExtension.md) specializes the original canonical tensor
+map to an arbitrary homomorphism of fields. It constructs a linear equivalence
+in every degree on a qcqs scheme with quasicoherent coefficients and retains
+the original unit-tensor/geometric-pullback equation. Faithful tensor extension
+reflects vanishing, and native dimensions agree over the respective fields.
+No properness, Noetherianity or finite-dimensional cohomology is required.

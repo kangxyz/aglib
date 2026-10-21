@@ -9,3 +9,9 @@ Finite-free sheaf tensors and degreewise split cochain pushout arguments consume
 [BiproductPushout](BiproductPushout.lean), imported as `Aglib.CategoryTheory.Limits.BiproductPushout`, proves `CategoryTheory.Limits.IsPushout.biprod_map`: the literal biproduct maps of two displayed pushout squares form a pushout in a preadditive category with binary biproducts. No mono or splitting premise is required. [Shapes](Shapes/README.md) owns displayed cokernel-to-pushout and zero-coproduct results. The [identity-cone functor](../../Algebra/Homology/MappingCone/README.md) consumes these universal-property primitives.
 
 [FullSubcategory](FullSubcategory/README.md) lifts a displayed ambient pushout to the actual full-subcategory functor once every value, including the chosen apex, satisfies the object property. [SequentialSystem](Shapes/SequentialSystem/README.md) constructs colimits of sequences of isomorphisms, finite-tail comparisons and invertibility of the original stage inclusions for eventually invertible sequences. Its sign-correction leaf turns anti-commuting successor squares into natural transformations with the prescribed alternating components. These categorical results retain only their stated colimit, isomorphism or preadditivity hypotheses.
+
+[Types/NatTower](Types/NatTower.lean) proves that adjacent compatibility
+implies compatibility for every arrow in a natural-number inverse tower,
+and that every stage evaluation on native sections is surjective if all
+adjacent maps are surjective. It uses dependent choice along the prescribed
+tail, without introducing a second limit construction.

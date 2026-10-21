@@ -13,3 +13,10 @@ The objects remain Mathlib ideals and prime spectra. Normality/integrality suppl
 interfaces. The latter is consumed by the conditional
 [FlatDVR component construction](../../AlgebraicGeometry/Stalk/FlatDVR/README.md),
 which still requires its actual special-fibre kernel input.
+
+[RegularPrincipal/BaseChange](RegularPrincipal/BaseChange.md) proves the
+canonical extended-kernel map invertible when the original kernel and its
+image have the displayed regular generators. It keeps the actual commuting
+ring square. [Intersection](RegularPrincipal/Intersection.md) proves regular
+principal cancellation against an arbitrary ring kernel; these lower results
+feed the native Cartier avoidance and product constructions.

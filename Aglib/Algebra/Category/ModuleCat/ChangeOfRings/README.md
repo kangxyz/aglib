@@ -83,3 +83,15 @@ Its commutative-ring refinements identify original Ext and compute the
 regular-principal coefficient object and the ring-coefficient object for a
 finite weakly regular list. These local algebraic calculations are inputs
 to geometric sheaf-purity and canonical-duality comparisons.
+
+[PresentationExt](PresentationExt.lean) detects maps from iterated scalar extensions on the double
+unit tensors of a specified original source presentation.
+
+[PresentationCompatibility](PresentationCompatibility.lean) packages the original scalar-extended presentation
+square as a named predicate. Four original unit-tensor equations prove the
+whole square, without linearity assumptions on the auxiliary coordinate
+functions or any flatness or finiteness premise.
+
+[PresentationUnit](PresentationUnit.lean) retains the inverse-coordinate unit image as a regular
+predicate. The original presentation factorization and its pure-tensor image
+prove it by abstract isomorphism cancellation before concrete specialization.

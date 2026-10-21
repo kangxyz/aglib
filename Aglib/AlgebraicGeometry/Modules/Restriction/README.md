@@ -18,3 +18,20 @@ gives the original exchange of closed pushforward with genuine open
 extension by zero, with its exact unit and all-module stalkwise
 invertibility. Its [focused guide](ExtensionByZero/README.md) records the
 closed-right-adjoint open-locality consumer.
+
+[OverlapRefinement](OverlapRefinement.lean) identifies the comparison obtained
+from any cartesian chart presentation with the original `overlapRestrictIso`
+on the chosen categorical pullback. Its hypotheses retain the actual chart
+factorizations, and the proof compares the native module maps on sections.
+[OverlapQuotient](OverlapQuotient.lean) carries compatible local quotient
+squares through that presentation. It uses the original restriction functors
+and their natural isomorphisms, without imposing epimorphism or coherence
+hypotheses on the supplied module maps.
+
+[OverlapComparison](OverlapComparison.lean) transports two original ambient-module comparison maps
+from a cartesian presentation of an overlap to the chosen categorical
+pullback. The canonical restriction maps for both modules are unchanged.
+
+[OverlapFamilyComparison](OverlapFamilyComparison.lean) packages these cartesian-refinement comparisons for
+an arbitrary indexed family into the existing native
+`InternalHom.RestrictionHomCompatible` predicate.

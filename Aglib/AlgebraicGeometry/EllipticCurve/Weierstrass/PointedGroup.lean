@@ -13,8 +13,9 @@ public import Aglib.AlgebraicGeometry.Curves.GenusOneGroupLaw
 
 Source: ordinary R5 Weierstrass.Projective, lines 382–419.
 This adapter retains every native genus-one prerequisite, including
-Picard representability, plus the unresolved exact Weierstrass geometry input.
-It is not a proof of those families.
+Picard representability and the explicit exact Weierstrass geometry argument.
+The latter has a proved supplier in Geometry; representability remains an
+external prerequisite of this group-law construction.
 -/
 
 @[expose] public section

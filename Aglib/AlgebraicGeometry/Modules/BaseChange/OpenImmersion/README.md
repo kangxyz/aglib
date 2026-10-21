@@ -20,3 +20,18 @@ pullback/restriction mate identifies the two composite coefficient arrows
 through the square, using the original restriction and pullback units,
 direct-image composition and equality comparison. Geometric cohomology
 restriction consumes this exact original-arrow equation.
+
+[Refinement](Refinement.lean) proves that the original cartesian open
+base-change maps commute with simultaneous source and target chart refinement.
+It retains the supplied pullback squares and native restriction-composition
+and equal-morphism comparisons; the proof uses their actual section maps.
+[AffineUnits](AffineUnits.lean) computes this native comparison on original
+affine restriction-unit sections, including the actual affine pushforward
+section isomorphisms on both sides.
+[RefinementComparisons](RefinementComparisons.lean) pastes the native
+refinement equation with compatible local coefficient and pushforward
+comparisons to obtain the realized coefficient's original refinement square.
+[UnitSections](UnitSections.lean) fixes the native section carriers before coefficient
+specialization when evaluating the original affine restriction unit and its
+cartesian base-change comparison. It retains the same adjunction and
+pushforward section isomorphisms.

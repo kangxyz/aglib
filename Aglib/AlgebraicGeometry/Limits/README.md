@@ -33,3 +33,6 @@ and `∐ X ⟶ S` induced by monomorphisms with pairwise disjoint images is a
 monomorphism (`Scheme.mono_sigmaDesc_of_pairwise_disjoint`). The statements use
 points, opens and covers of schemes. The flattening stratification
 (`FlatteningStratification/Flatness`) consumes them.
+
+[OpenImmersionIntersection](OpenImmersionIntersection.lean) proves that specified open-chart factorizations
+with actual image intersection form a cartesian square.

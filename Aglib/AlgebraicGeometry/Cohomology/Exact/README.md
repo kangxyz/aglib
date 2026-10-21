@@ -31,3 +31,9 @@ exactly when `Hⁿ⁺¹` of the first map is injective
 `moduleEuler_of_finiteClosedSupport` specializes to a quotient with actual zero stalks outside finitely many distinct closed points, finite-dimensional structural-field stalks there, and finite H0/H1 of the first sheaf. The extra term is the sum of those stalk dimensions. No properness, genus or unconditional curve product formula is asserted.
 
 [Finite extension/transfer](../Finiteness/ExactSequences.lean) is owned separately by Finiteness; [finite support](../Support/README.md) supplies its actual cohomology comparisons. The source conditions and universe-`u+1` original objects are preserved.
+
+[Tower](Tower.lean) lifts every element at any stage to the native compatible
+sections of a cohomology tower with epimorphic adjacent maps when the next
+cohomology of every adjacent kernel vanishes. Its tensor form requires a finite locally free
+coefficient, not flatness of the tower terms. It is a conditional lifting
+supplier and does not supply a uniform Serre bound by itself.

@@ -29,3 +29,20 @@ ideal-sheaf comparisons. [ReducedClosedUnion](Closed/ReducedClosedUnion.lean),
 [IntersectionComparison](Closed/IntersectionComparison.lean) and
 [SpecKernel](Closed/SpecKernel.lean) keep the original ideals, maps and reducedness
 hypotheses.
+
+[RegularSurface](Invertible/RegularSurface.md) proves local rank one of the
+same actual `idealModule i` for a closed immersion `i : C ⟶ X` with integral
+`C`, locally Noetherian `X`, every ambient stalk regular local of dimension at
+most two, and every actual kernel `RingHom.ker (i.stalkMap c).hom` of height
+one. The explicit height and local Noetherianity conditions remain part of
+the theorem. The shared [stalk-kernel criterion](Invertible/StalkKernel.md)
+uses actual singleton kernel bases, and [Factorial](Invertible/Factorial.md)
+supplies them in arbitrary dimension under explicit factorial-domain
+structures on the actual stalks. [Cartier operations](Cartier/README.md)
+provide avoidance, ideal tensor-product and DVR-fibre comparisons.
+
+[Regular-stalk Cartierness](Cartier/Regular.md) supplies these factorial
+structures from regularity of every actual ambient stalk, using the general
+regular-local UFD theorem. Its actual closed immersion, integral source,
+locally Noetherian ambient scheme and height-one stalk-kernel conditions
+remain explicit, with no dimension bound.

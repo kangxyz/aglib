@@ -22,15 +22,13 @@ The native adjunction's module carrier has universe `max v w`, where `w`
 is the target-ring universe; the source-ring universe stays independent.
 There is no flatness or finite-generation hypothesis.
 
-The leaf passed alone through the shared guarded wrapper with receipt
-`1792110237867749000-51660`. Its geometric consumer uses the original
-scheme-module stalk actions and adjunctions for closed-immersion descent.
+Closed-immersion descent consumes the original scheme-module stalk
+actions and adjunctions.
 The existing finite/coherent quotient categories remain specializations;
 they are not assumptions of this all-module result.
 
-The independent `QuotientModuleDescentConsumer.lean` passed with receipt
-`1792110351874146000-53287`. It checks unrelated ring and module-carrier
-universes, noncommutative ring restriction, and the original commutative
-scalar unit/counit criteria. All five inspected declarations use only the
-three standard axioms; the fully faithful constructor and kernel action
-formula do not need classical choice.
+[Unit](Unit.lean) proves that the original extension/restriction adjunction
+unit is surjective, hence an epimorphism, for a surjective commutative ring
+map and arbitrary module. It does not assume the source module is annihilated
+by the kernel. This is the lower tensor supplier for the geometric quotient
+unit.

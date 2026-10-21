@@ -50,3 +50,7 @@ The main consumers are the more specific object-property categories and [scheme 
 The latest general surface adds [Tensor](Tensor/README.md), [Stalk](Stalk/README.md), [ProjectionFormula](ProjectionFormula/README.md), coefficient/cartesian base change and the affine/tensor subfamilies of finite locally free sheaves. All tensors delegate to one site construction. The arbitrary-morphism projection formula requires finite local freeness of its target coefficient; the closed-immersion module formula permits arbitrary coefficients.
 
 The perfect-complex family uses these same ordinary sheaf complexes. `Scheme.Modules.Complex.StrictPerfect X` and `Perfect X` are full subcategories of the chain-map category; the latter's local-model predicate uses the canonical `DerivedCategory.Q`. The [family guide](PerfectComplexes/README.md) separates term bounds, local derived representatives and the exact structures actually supplied. Its definitions and restriction results hold on arbitrary schemes, without global quasi-compactness, Noetherianity or projectivity assumptions.
+
+[KernelSections](KernelSections.lean) identifies sections of the original sheaf kernel with the kernel
+of the original section map on every open. Its native evaluation comparison
+retains the original kernel inclusion, without an affine hypothesis.

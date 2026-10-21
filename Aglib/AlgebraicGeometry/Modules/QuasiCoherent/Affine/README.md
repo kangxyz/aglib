@@ -25,13 +25,6 @@ canonical `fromTildeΓ` maps. [Finite-type extension](../FiniteType/Extension/RE
 [restriction comparisons](../FiniteType/Restriction/README.md) keep their arbitrary-ring
 finite-type statements below the coherent layer.
 
-The affine base-change and finite-flat local-freeness suppliers do not retire
-the fifteen original R5 Spec comparison interfaces. Nineteen actual equality
-witnesses for their canonical maps pass native checks and independent correspondence
-review. Four R5 caller transports remain pending, so the original producer/caller
-interfaces remain unretired. The accepted comparisons are actual arrow equations,
-not type agreement alone.
-
 [Annihilator](Annihilator.lean) transports actual affine-section annihilation
 to every subopen, which need not be affine. The original scalar-center
 endomorphism vanishes by the native tilde/global-section counit; the
@@ -40,11 +33,6 @@ and section action. Quasicoherence is needed only on the affine mother
 chart. There is no finite-generation or Noetherian hypothesis. The native
 restriction map sends the original section annihilator into the subopen
 section annihilator.
-
-The source passed alone with receipt `1792113018497882000-92487` in
-3.4 seconds at the default budget. `AffineAnnihilatorConsumer.lean` passed
-with receipt `1792113077151022000-93137`, including arbitrary subopens;
-all four inspected declarations use only the three standard axioms.
 
 [Injective](Injective.lean) proves that the original affine sections functor
 preserves injective objects, using its adjunction with exact tilde. It sends
@@ -72,3 +60,60 @@ cocone under affine global sections and affine-open sections for arbitrary
 quasicoherent diagrams. The native affine chart isomorphism is natural in
 coefficients, and the proof uses the actual tilde equivalence and ambient
 quasicoherent colimit closure. No finite-type or flatness premise is imposed.
+
+[PrincipalSections](PrincipalSections.lean) proves localization for the
+actual global-to-principal-restriction map of a quasicoherent sheaf.
+`mapExtendScalars_globalSections` identifies Hom localization with the actual
+restricted morphism. [RestrictionGeneration](RestrictionGeneration.lean)
+shows that restrictions from a larger affine open span sections on a smaller
+affine open; its linear-map extensionality result allows arbitrary targets
+without finiteness or Noetherianity.
+
+[OpenRestrictionSections](OpenRestrictionSections.lean) identifies sections
+on a smaller affine open with scalar extension of sections on the larger one;
+its unit tensor is the original presheaf restriction.
+[DirectSumOpenRestriction](DirectSumOpenRestriction.lean) gives this comparison
+for arbitrary direct sums of quasicoherent coefficient sections.
+[BaseChangeChartSections](BaseChangeChartSections.lean) computes pullback
+sections on the literal tensor-coordinate base-change chart. These comparisons
+require no flatness or completion-localization assertion.
+
+[CoproductSectionIso](CoproductSectionIso.lean) identifies sections of a
+quasicoherent coproduct on an affine open with the direct sum of section modules,
+linearly over the original chart ring and preserving coproduct injections.
+[CoproductSectionRestriction](CoproductSectionRestriction.lean) preserves
+restrictions; [CoproductSectionNaturality](CoproductSectionNaturality.lean)
+identifies coefficient maps with their direct sums. No finiteness or
+completeness of the coproduct is assumed.
+
+[RestrictionSectionsNaturality](RestrictionSectionsNaturality.lean) preserves
+coefficient morphisms in the affine pullback and open-restriction comparisons.
+[ChartRestrictionNaturality](ChartRestrictionNaturality.lean) tests a nested
+chart square on restriction-unit images of sections of its quasicoherent source.
+[ChartRestrictionCoordinates](ChartRestrictionCoordinates.lean) retains the
+inverse affine-chart coordinates under affine restriction, without a
+quasicoherence or completion hypothesis for that coordinate transport.
+
+[ChartPullbackCoordinates](ChartPullbackCoordinates.lean) constructs section
+and scalar-coordinate comparisons from a scheme morphism, two affine open
+charts and their commuting equation. [ChartPullbackNaturality](ChartPullbackNaturality.lean)
+preserves coefficient morphisms, and
+[ChartPullbackCoordinateSections](ChartPullbackCoordinateSections.lean)
+identifies the unit tensor with the restricted geometric unit section.
+The coefficient is quasicoherent; no flatness, finiteness or cartesian-square
+hypothesis is required. [RestrictionUnit](RestrictionUnit.lean) supplies the
+abstract tilde restriction-unit calculation on the same scalar maps.
+
+[PushforwardChartRestriction](PushforwardChartRestriction.lean) obtains the
+nested-chart pushforward square from its section coordinates and the cartesian
+open base-change unit. [ChartScalarRestriction](ChartScalarRestriction.lean)
+retains scalar extension between commuting affine charts and identifies its
+unit tensors with `affineChartSectionRestriction`.
+
+[ChartPullbackCoordinateRestrictionPostcompose](ChartPullbackCoordinateRestrictionPostcompose.lean)
+transports a restricted coordinate-unit equation through an arbitrary target
+function. [ChartPullbackCoordinateRestrictionPresentation](ChartPullbackCoordinateRestrictionPresentation.lean)
+specializes it to a module presentation through the same inverse-unit predicate.
+[ChartPullbackPresentationCompatibility](ChartPullbackPresentationCompatibility.lean)
+derives the scalar presentation square from the source-unit, restricted-target-unit
+and coefficient-restriction equations, retaining the supplied chart constructors.

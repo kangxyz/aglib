@@ -12,9 +12,10 @@ public import Aglib.AlgebraicGeometry.Curves.Basic
 # The separate coordinate-operation compatibility inputs
 
 Source: ordinary R5 Weierstrass.Points, lines 233–274 and 533–587.
-The set bijection is proved in ExtensionPoints. Chord/tangent comparison
-with every actual pointed group law remains an explicit universal input.
-The extension version evaluates the original k-group on Spec K.
+The set bijection is proved in ExtensionPoints. GroupCompatibility supplies
+the exact chord/tangent comparison with every actual pointed group law.
+The extension version evaluates the original k-group on Spec K; the retained
+bundlers accept the proved comparison as their explicit argument.
 -/
 
 @[expose] public section
@@ -45,8 +46,10 @@ Milne EC2 I.Prop4.10/Rem4.11 pp.32–33 compare chord/tangent operations with th
 regular divisor-class law; AV I.Cor1.2/Rem1.3 p.9 imply uniqueness with fixed origin.
 Characteristic zero ensures the perfect-field scope. The explicit implementation bridge
 matches mathlib's actual formulas and these actual Proj chart points to that classical
-law. This is not claimed as a verbatim source statement or as an implemented proof.
-The supplied group law is a genuine group object on this same literal cubic. -/
+law. GroupCompatibility proves this retained family through the actual
+point-ideal, class-group and Abel-class maps; this is a source-corollary
+interface rather than a verbatim source statement. The supplied group law
+is a genuine group object on this same literal cubic. -/
 def CoordinatePointGroupCompatibility : Prop :=
   ∀ (k : Type u) [Field k] [CharZero k] (W : WeierstrassCurve k), W.Δ ≠ 0 →
     ∀ (L : PointedGroupLaw (curveOver W) (originOver W)),
@@ -86,8 +89,9 @@ Source-corollary boundary: Milne EC2 I.Prop4.10/Rem4.11 pp.32–33 identify
 chord/tangent with the regular divisor-class law; AV I.Cor1.2/Rem1.3 p.9
 give uniqueness for the chosen origin. Here the same comparison is interpreted
 naturally under scalar extension and on the original scheme’s point functor.
-The match to these exact Lean formulas remains a retained implementation bridge,
-not a verbatim source statement or an implemented algebraic proof. -/
+GroupCompatibility proves the match to these exact Lean formulas, including
+the original group's point functor and actual scalar-extension comparisons.
+The interface is a source corollary rather than a verbatim source statement. -/
 def CoordinatePointExtensionGroupCompatibility : Prop :=
   ∀ (k K : Type u) [Field k] [CharZero k] [Field K] (f : k →+* K)
     (W : WeierstrassCurve k), W.Δ ≠ 0 →

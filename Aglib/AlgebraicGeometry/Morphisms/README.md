@@ -25,3 +25,12 @@ Focused guides for [finite flat morphisms](FiniteFlat/README.md),
 [surjectivity](Surjective/README.md) document the incoming affine/stalk and
 generic-point comparisons. Rank, length and fibre-cardinality statements keep
 their displayed finite-flat, local and coefficient hypotheses.
+
+[SpreadingOut](SpreadingOut.md) constructs an actual smooth proper
+geometrically integral curve family over a finitely generated integer
+subalgebra of the original field, containing prescribed finite constants.
+It also restores these properties on a literal later base change of a
+given finitely presented qcqs model, with the original field comparison.
+The [generic-open theorem](GeometricallyIntegral/Open.md) concerns proper
+smooth relative curves over integral locally Noetherian bases and retains
+geometric integrality of every original fibre on the resulting open.

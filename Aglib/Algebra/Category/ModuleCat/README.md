@@ -49,8 +49,20 @@ original arrow families from compatible stagewise linear equivalences. It also
 transports native `sectionsSubmodule` families coordinatewise along a natural
 isomorphism, without introducing another limit model.
 
+[NatTower](NatTower.lean) defines `ModuleCat.sectionsEval` on the native
+compatible-section submodule and proves it surjective at every stage when all
+adjacent tower maps are surjective. Ring and module universes are independent.
+The maps retain every original transition; no preservation of kernels is assumed.
+
 [Minimal finite free covers and resolutions](MinimalFiniteFreeResolution.md)
 constructs a minimal finite free cover of any finite module over a commutative
 local ring, without Noetherianity. Over a Noetherian local ring, a finite module
 with actual projective dimension at most `n` has an actual minimal projective
 resolution with finite free terms and zero terms above `n`.
+
+[StablyFreeBaseChange](StablyFreeBaseChange.md) constructs a finite free
+stable complement after an actual flat scalar extension of a finite module
+of bounded projective dimension over a Noetherian local ring, whenever that
+same scalar extension is projective. The exact scalar-extended short sequence
+and splitting maps retain their original module structures. This lower result
+is used by regular-local factoriality.

@@ -18,9 +18,16 @@ Its proper structure map and infinity section work over any commutative ring.
 | [VariableChange](VariableChange.lean) | Actual affine-ring pullback and its inverse for an admissible variable change. |
 | [VariableChangeChart](VariableChangeChart.lean) | The corresponding contravariant Spec isomorphism over the same field. |
 | [FunctionField](FunctionField.lean) | Generic-stalk/affine-fraction-field equivalence with the actual x and y maps. Integrality is explicit. |
-| [GeometryInputs](GeometryInputs.lean) | Exact unresolved nonsingular-geometry and arbitrary pointed-projective j-invariance inputs. |
-| [PointedGroup](PointedGroup.lean) | Conditional adapter to the native genus-one group construction, retaining its actual prerequisites and the geometry input. |
-| [CoordinateGroup](CoordinateGroup.lean) | Conditional group-homomorphism bundling; chord/tangent comparison remains an explicit input. |
+| [GeometryInputs](GeometryInputs.lean) | Stable exact interfaces for nonsingular geometry and arbitrary pointed-projective j-invariance. |
+| [Geometry](Geometry.md) | Over every field, nonzero discriminant gives the actual smooth proper genus-one curve; geometric integrality and constants hold for every equation. |
+| [Normality](Normality.md) | Over a domain DVR, nonzero generic discriminant gives normal stalks of the same literal projective cubic, including singular residue fibres. |
+| [Genus](Genus.md) | Actual structural-field H¹ is linearly isomorphic to the field, including singular cubics. |
+| [Genus/Charts](Genus/Charts.md) | Monic chart bases, actual overlap restrictions and the one-dimensional Laurent quotient. |
+| [PoleBasis](PoleBasis.md) | Intrinsic principal-ideal colength forces triangular coordinates for every affine algebra isomorphism over a field. |
+| [PointedIsomorphism](PointedIsomorphism.md) | Every origin-preserving isomorphism of the literal nonsingular cubics preserves j, over every field. |
+| [PointedGroup](PointedGroup.lean) | Adapter to the native genus-one group construction, retaining its Picard representability and other explicit prerequisites. |
+| [CoordinateGroup](CoordinateGroup.lean) | Stable operation-comparison interfaces and group-homomorphism bundling for a given pointed group law. |
+| [GroupCompatibility](GroupCompatibility.md) | The original characteristic-zero coordinate addition comparison for every given pointed group law, including its original-group points over any field extension. |
 
 The common affine coordinate and lift definitions are imported from
 [Affine.Coordinates](../Affine/Coordinates.lean). The general homogeneous quotient
@@ -31,11 +38,14 @@ General extension from actual valuation-ring stalks belongs to
 normal smooth-curve extension family over arbitrary fields and preserves both
 the structural and generic-stalk triangles.
 
-The geometry, operation-comparison and arbitrary pointed-isomorphism assertions
-are statements of the remaining supplier obligations. Their definitions do not
-prove them. Mathlib's j-invariance under an admissible variable change does not
-identify every pointed projective isomorphism with such a change. The native
-genus-one group construction still retains its Picard representability input.
+The exact retained geometry, pointed-isomorphism and operation-comparison
+families now have proved suppliers in the modules above. The j-invariance
+proof derives an admissible variable change from the actual pointed
+isomorphism. Coordinate addition is compared with the given group law and,
+after any field extension, with the original group's point functor. The
+genus computation concerns coherent arithmetic genus, including singular
+cubics; it does not compute the genus of their normalizations. The native
+genus-one group construction retains its Picard representability input.
 
 The ordinary R5 packet files `Curves.GenericExtension` and
 `EllipticCurve.Weierstrass.{Projective,Points,CofinitePoints,VariableChange}` are

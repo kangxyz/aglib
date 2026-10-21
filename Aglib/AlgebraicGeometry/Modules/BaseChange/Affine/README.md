@@ -14,3 +14,8 @@ The affine global-section leaf retains two specified adjunction coordinates.
 unit and counit formulas are preserved. These functors are canonically
 isomorphic, but the library does not identify their chosen adjunction data by
 definitional equality.
+
+[UnitQuotient](UnitQuotient.lean) exposes the canonical affine base-change
+comparison for an affine morphism after pushing both objects to the
+original base, with its equation on the original pullback-pushforward unit. The coefficient is quasicoherent;
+the base-change morphism is arbitrary, without a flatness assumption.

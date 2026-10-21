@@ -57,3 +57,11 @@ of restriction maps is monomorphic with its actual structural scalars.
 It uses the epimorphism in the native free-open Mayer–Vietoris sequence and
 the native degree-zero Ext precomposition lemma, then faithful scalar
 forgetting. No acyclicity, affine-open or quasicoherence premise is used.
+
+[StructuralFirstCohomology](StructuralFirstCohomology.md) identifies the
+original coherent H¹, with its structural-field action, with the quotient
+of actual intersection sections by the sum of the two restriction-map
+ranges. It requires two affine opens covering the scheme; the intersection
+need not be affine. Its forward comparison preserves the native
+Mayer–Vietoris maps. The literal Weierstrass arithmetic-genus calculation
+uses this structural-field form.

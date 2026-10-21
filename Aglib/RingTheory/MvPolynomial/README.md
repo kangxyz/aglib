@@ -69,8 +69,7 @@ explicit monomial bases, finite/free results and negative-piece vanishing.
 It was extracted from `Cohomology.Duality.LaurentPairing.Pieces` without
 changing declarations or proofs; the old leaf is a compatibility import.
 This keeps the original projective global-section computation and residue
-pairing on the same lower algebraic coefficient maps. The lower owner passed
-`1792099434951339000-74640`.
+pairing on the same lower algebraic coefficient maps.
 
 [DegreeOne](DegreeOne.lean) supplies the original coordinate basis
 `homogeneousDegreeOneBasis` of the actual `homogeneousSubmodule ι R 1`.
@@ -86,3 +85,18 @@ and grading objects. The current consumers are projective chart rings and
 the actual projective twisting-sheaf section computation. These are local
 algebra and coefficient comparisons; no cohomological finiteness or Serre
 duality conclusion is asserted by this family.
+
+## Scaled expansion and quadratic remainders
+
+[ScaledTaylor](ScaledTaylor.lean) proves
+`MvPolynomial.exists_scaled_firstOrder_remainder` in finitely many variables over arbitrary commutative
+coefficient algebras: increments in an ideal have a remainder in its square,
+with the square of the chosen scale retained as an explicit factor.
+[QuadraticRemainder](QuadraticRemainder.lean) identifies the vanishing value and
+first derivatives at the origin of such quadratic remainders.
+[AdjugateExpansion](AdjugateExpansion.lean) applies this identity to a finite
+square system and the adjugate of its actual evaluated partial-derivative matrix.
+
+These providers allow empty variable types, zero scales, and zero divisors.
+They neither require nor assert a Henselian or approximation property. The
+Henselian consumer is `Aglib.RingTheory.Henselian.DeterminantCorrection`.

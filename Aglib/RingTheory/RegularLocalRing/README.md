@@ -1,4 +1,4 @@
-# Regular-local domain, parameters and normality
+# Regular-local rings
 
 [Domain](Domain.lean) exports `IsRegularLocalRing.isDomain_of_regularLocal`; [Normal](Normal.lean) exports `IsRegularLocalRing.isIntegrallyClosed_of_regularLocal`. Both assume a commutative regular local ring. Domain and integral closedness are conclusions, not extra premises. [DimensionZero](DimensionZero.lean) shows the dimension-zero ring is a field.
 
@@ -26,5 +26,34 @@ characteristic or completion premise is imposed.
 of a regular local ring with `ringKrullDim R ≤ 2` is principal, with a singleton
 basis on the actual ideal. In dimension exactly two, every nonmaximal prime
 is principal, including the zero ideal; its nonzero case has the same basis.
-These low-dimensional results do not assert regular-local factoriality in
-arbitrary dimension or a scheme-level Cartier or contraction theorem.
+The [regular-surface ideal consumer](../../AlgebraicGeometry/IdealSheaf/Invertible/RegularSurface.md)
+uses these actual ideal bases to prove local rank one of `idealModule i` for
+a closed immersion `i : C ⟶ X`. It retains integral `C`, locally Noetherian
+`X`, regular ambient stalks of dimension at most two, and height one of every
+actual kernel `RingHom.ker (i.stalkMap c).hom`. This leaf retains its
+dimension-at-most-two interface.
+
+[PrimeLocalization](PrimeLocalization.md) proves regularity of every actual
+prime localization from regularity of the original local ring, and derives
+native `IsRegularRing R`. Its arbitrary prime-localization-model version
+allows independent source and target universes.
+[PrincipalLocalization](PrincipalLocalization.md) proves principality of an
+actual extended ideal when that same localized ideal is projective, using
+finite projective dimension of the original finite ideal.
+
+[Factorial](Factorial.md) proves native `UniqueFactorizationMonoid R` for every
+commutative regular local ring, with no dimension bound. It also supplies
+`isPrincipal_of_height_eq_one` and `heightOneIdealBasis` on each actual
+height-one prime. Dimension induction combines the original finite ideal's
+stable free complement with rank-one cancellation and native prime-element
+localization descent. The [regular-stalk Cartier consumer](../../AlgebraicGeometry/IdealSheaf/Cartier/Regular.md)
+uses these actual ideal bases in every dimension, retaining local
+Noetherianity, integrality of the closed subscheme, and height one of the
+actual stalk-map kernels.
+
+[QuotientLift](QuotientLift.md) lifts regular locality from the quotient of a
+Noetherian local ring by an actual nonzerodivisor. Minimal quotient generators
+lift together with the original equation; no additional condition outside the
+square of the maximal ideal is needed. Its localization form uses the same
+mapped ideal and quotient. The actual regular-point blowup stalk proof uses
+this lower result.

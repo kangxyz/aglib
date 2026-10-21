@@ -76,3 +76,18 @@ The [surface isomorphism locus](../../Surfaces/Birational/README.md) is the
 maximal actual target open on which a proper dominant birational morphism is
 an isomorphism. For a normal Noetherian integral target of dimension at most
 two and integral source, its complement is a finite set of closed points.
+
+[FibreDescent](FibreDescent.md) proves
+`existsUnique_factor_of_isProper_of_isIso_c` for arbitrary schemes. For proper
+surjective `f : X ⟶ Y` with actual `IsIso f.c`, any given `g : X ⟶ Z` that
+is pointwise constant on every fibre of `f` factors through a unique actual
+scheme morphism `h : Y ⟶ Z` with `f ≫ h = g`. No Noetherianity, normality,
+integrality, flatness or separation of `Z` is assumed. This descends a given
+map through a given quotient; it does not construct a contraction.
+
+[Finite-fibre birational neighborhoods](QuasiFinite.md) prove that a proper
+dominant morphism of integral schemes with normal target and invertible actual
+function-field map is an isomorphism over a neighborhood of any finite actual
+point fibre. Quasi-finiteness at every point above the target point suffices.
+These statements require neither Noetherianity nor source normality, and use
+the native proper quasi-finite theorem through its finite-fibre corollary.

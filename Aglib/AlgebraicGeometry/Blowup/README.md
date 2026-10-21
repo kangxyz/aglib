@@ -60,3 +60,18 @@ transports actual stalk regularity from the complement of an actual closed centr
 The independent lower [power-node algebra](../../RingTheory/Blowup/PowerNode/README.md)
 computes actual saturated chart rings and transition maps. It does not supply
 these global geometric families or an actual node-resolution scheme.
+
+[RegularPoint](RegularPoint.md) identifies the literal closed-point fibre of
+the actual maximal-ideal blowup of a two-dimensional regular local ring with
+the native projective line over its original residue field. Its
+[parameter charts](RegularPoint/Charts.md) and inverse-image-centre comparison
+preserve the original projections. The isomorphism uses one chosen ordered
+regular pair. [Regularity](RegularPoint/Regularity.md) proves regularity of
+every actual stalk of this constructed blowup from the same regular-local
+dimension-two hypotheses. It uses the literal parameter charts, their regular
+principal fibre quotients and the actual stalk maps.
+[Scheme](RegularPoint/Scheme.md) extends this result to the actual blowup
+of a closed point on any scheme with regular stalks when its original
+stalk has dimension two. The canonical comparison with the local-ring blowup
+preserves both projections and uses the original centre ideal and stalk maps.
+Normal-line comparison and contraction remain separate obligations.

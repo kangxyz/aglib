@@ -12,3 +12,8 @@ geometric blowup identification. The inverse-map formula is shared with
 `Localization.Away (Polynomial.X : R[X])`; there is no second Laurent object.
 
 Focused interface guides: [Unique lifts from the actual saturated chart](SaturatedChartLift.md).
+
+[Torsion](Torsion.lean) uses the native kernel of `R → Localization.Away p` to remove exactly
+`p`-power torsion. It constructs and characterizes the quotient lift to a target
+where the image of `p` is regular, and proves that the image of `p` in this actual
+quotient is regular. `NeronModification.Basic` consumes this generic supplier.

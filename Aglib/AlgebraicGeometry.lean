@@ -8,9 +8,12 @@ Authors: R5Lab contributors, kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.AffineScheme.AlgebraMapTriangles
+public import Aglib.AlgebraicGeometry.AffineScheme.BaseChangeChart
+public import Aglib.AlgebraicGeometry.AffineScheme.BaseChangeChartNaturality
 public import Aglib.AlgebraicGeometry.AffineScheme.BaseChangeCoordinates
 public import Aglib.AlgebraicGeometry.AffineScheme.FieldSections
 public import Aglib.AlgebraicGeometry.AffineScheme.IsomorphismCoordinates
+public import Aglib.AlgebraicGeometry.AffineScheme.OpenChartIntersection
 public import Aglib.AlgebraicGeometry.AffineScheme.StructureMap
 public import Aglib.AlgebraicGeometry.AffineScheme.TensorPullback
 public import Aglib.AlgebraicGeometry.AlgebraicSimplex.Basic
@@ -40,6 +43,10 @@ public import Aglib.AlgebraicGeometry.Blowup.FlatBaseChange
 public import Aglib.AlgebraicGeometry.Blowup.GeneratorAtlas
 public import Aglib.AlgebraicGeometry.Blowup.Properness
 public import Aglib.AlgebraicGeometry.Blowup.RegularAway
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Charts
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Regularity
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme
 public import Aglib.AlgebraicGeometry.Blowup.UnitLocus
 public import Aglib.AlgebraicGeometry.Blowup.UniversalProperty
 public import Aglib.AlgebraicGeometry.Cohomology.Affine.DerivedGlobalSections
@@ -137,6 +144,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechComparis
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Composite
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.FieldExtension
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Naturality
@@ -531,6 +539,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Exact.Euler
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Modules
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Stabilization
+public import Aglib.AlgebraicGeometry.Cohomology.Exact.Tower
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.Affine
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.BaseChange
@@ -636,6 +645,124 @@ public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.NatTransQ
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.Naturality
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.PushforwardQuasiIso
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.TotalComplex.QuasiIso
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.AffineSectionRecovery
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ClosedImmersionReduction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ClosedImmersionReduction.Annihilation
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ClosedImmersionReduction.Comparison
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ClosedImmersionReduction.Pushforward
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ClosedImmersionReduction.QuotientUnit
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompatiblePresentation
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompleteSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompletedSectionGluing
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompletedSectionRecovery
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Completion
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompletionFunctorComparison
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.CompletionNaturality
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FormalGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FullFaithful
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FullFaithfulOriginal
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FullFaithfulReduction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FullFaithfulSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedActionLaws
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAffineFinite
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAffineGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAffineMap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAffineModule
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAffineScalars
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAmbientRestriction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedAmbientRestrictionSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedChartIntersection
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedChartNoetherian
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedChartRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedChartRestrictionSquare
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedCoherentQuotient
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedComparisonRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedDegreeZero
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedFiniteCover
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedGeneratorAction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedGenerators
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedGeometry
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedHomogeneousAction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalMap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalPushforward
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalPushforwardMap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalQuotient
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalQuotientCoordinates
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalQuotientUnitProperty
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedLocalRestrictionUnit
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedMapPresentation
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedNaturality
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedOverlap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPresentationMapSquare
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPresentationUnit
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardChartMap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardCharts
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardCoordinates
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardNaturality
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardQuotientRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedPushforwardRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedQuotientRestriction
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedQuotientRestrictionUnits
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRealization
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRealizationMap
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRealizationNaturality
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRealizationPair
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRelationRealization
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedScalarSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedStageComparison
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedStageIndependence
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedTensorNaturality
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.GradedTensorRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.LocalCompletedHom
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.LocalCompletedRestriction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.LocalHomSystem
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.NilpotentGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.PresentationAlgebraization
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Projective
+public import
+  Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ProjectiveEffectivityOfRealization
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ProjectivePresentation
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ProjectiveSpaceEffectivity
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RealizationVanishing
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationAffineAction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationAffineBound
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationAffineModule
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationAnnihilation
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationCoverBound
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationDiagram
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationDiagramGraded
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationDiagramProperties
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationFiltration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationFiltrationGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationFiniteGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationGraded
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationGradedSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationHomogeneousAction
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationKernelBound
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationPositiveLifts
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationPresentation
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationScalarLifts
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationSections
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.RelationTower
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.TowerCoverGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.TowerGeneration
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.TwistLifting
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.UniformTwist
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.UniformTwistBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.RestrictionSections
@@ -650,6 +777,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.GeometricTop
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.InjectiveComplex
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Scalars
 public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Scalars.Zero
+public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.StructuralFirstCohomology
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Constants
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext
@@ -764,6 +892,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Proper.Finiteness
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Grauert
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Grauert.Global
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.H0Vanishing
+public import Aglib.AlgebraicGeometry.Cohomology.Proper.H0Vanishing.FieldExtension
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.LocalCriterion
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Modification.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Modification.Support
@@ -897,6 +1026,10 @@ public import Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle
 public import Aglib.AlgebraicGeometry.Curves.RiemannRoch.NegativeDegree
 public import Aglib.AlgebraicGeometry.Curves.SmoothGeometry
 public import Aglib.AlgebraicGeometry.DedekindPointStalk
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Diagrams
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Properties
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Schemes
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Fppf
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.Pullback
@@ -964,13 +1097,20 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalNeighbor
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPointAction
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPoints
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FunctionField
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus.Charts
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Geometry
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GeometryInputs
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GroupCompatibility
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.InfinityChart
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Integrality
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Normality
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.OrdinaryNodePreparation
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedAgreement
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedGroup
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedIsomorphism
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Points
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PoleBasis
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Projective
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ProjectiveTranslation
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ResidueFiber
@@ -1185,11 +1325,16 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Family
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Fibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.FibreClass
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Flat
+public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.FlatMorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Isomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Map
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.OpenImmersion
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Avoidance
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.DVRFibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.FlatComap
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Interfaces
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Product
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Regular
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Restriction
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.Comaximal
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.IntersectionComparison
@@ -1204,6 +1349,9 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.TwoPointSubscheme
 public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueImmersion
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
+public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Factorial
+public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.RegularSurface
+public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.StalkKernel
 public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
@@ -1218,6 +1366,7 @@ public import Aglib.AlgebraicGeometry.Limits.GenericRestriction
 public import Aglib.AlgebraicGeometry.Limits.Monomorphisms
 public import Aglib.AlgebraicGeometry.Limits.OpenChartInjectivity
 public import Aglib.AlgebraicGeometry.Limits.OpenChartIntersection
+public import Aglib.AlgebraicGeometry.Limits.OpenImmersionIntersection
 public import Aglib.AlgebraicGeometry.Limits.OpenIntersection
 public import Aglib.AlgebraicGeometry.Limits.OverRange
 public import Aglib.AlgebraicGeometry.Limits.Polynomial
@@ -1233,24 +1382,39 @@ public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Mate
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.PullbackSections
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Sections
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Square
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.UnitQuotient
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Basic
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Cartesian
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Composition
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.AffineUnits
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Cartesian
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.CartesianSections
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Pullback
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Refinement
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.RefinementComparisons
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.UnitSections
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion.Units
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.CoherentSupport
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Descent
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Killed
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.KilledSubobject
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Locality
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.QuotientComparison
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Affine
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction.Counit
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Stalk
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Support
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Unit
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.AmbientExact
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.AssociatedGraded
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.Basic
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.Completion
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.Naturality
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.Quotient
+public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.Transitions
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Basic
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Comparison
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Exact
@@ -1259,6 +1423,11 @@ public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.GlobalSections
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Property
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.PullbackSquare
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.RestrictionExact
+public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.SectionQuotient
+public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.SectionQuotientComparison
+public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.SectionQuotientNaturality
+public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.SectionQuotientRestriction
+public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.SectionQuotientRestrictionProperty
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Affine.Support
 public import Aglib.AlgebraicGeometry.Modules.Coherent.AffineDetection
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Basic
@@ -1268,6 +1437,9 @@ public import Aglib.AlgebraicGeometry.Modules.Coherent.Extension.Affine
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Extension.CompactOpen
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Extension.Noetherian
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Extension.Subobjects
+public import Aglib.AlgebraicGeometry.Modules.Coherent.FiniteCoverGluing
+public import Aglib.AlgebraicGeometry.Modules.Coherent.FiniteCoverQuotientDescent
+public import Aglib.AlgebraicGeometry.Modules.Coherent.FiniteCoverQuotients
 public import Aglib.AlgebraicGeometry.Modules.Coherent.FinitePresentation
 public import Aglib.AlgebraicGeometry.Modules.Coherent.FlatPullback
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Gluing
@@ -1292,6 +1464,7 @@ public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.Finite.Charts
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.Finite.Functoriality
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.Finite.GeneralPushforward
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Pushforward.Finite.Quotient
+public import Aglib.AlgebraicGeometry.Modules.Coherent.QuotientRestrictionComparison
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Coherent.StalkFinite
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Subobjects
@@ -1394,19 +1567,45 @@ public import Aglib.AlgebraicGeometry.Modules.Generators.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeFunctor
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineEvaluation
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffinePushforward
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientChart
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientChartTower
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientNaturality
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientScalarComparison
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineQuotientSections
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Basic
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Boundary
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Functor
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.IdealSheaf
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Multiplication
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuasiCoherent
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuotientLayerFunctor
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuotientLayerLaws
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuotientLayers
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuotientMultiplication
+public import Aglib.AlgebraicGeometry.Modules.IdealPowers.QuotientScalar
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Scalars
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.Thickening
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.ThickeningSections
 public import Aglib.AlgebraicGeometry.Modules.IdealPowers.ThickeningTransitions
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineEvaluation
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineIterated
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineRestriction
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.AffineSections
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.Coherent
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.CompletedCoordinates
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.CompletedEvaluation
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.CompletedExt
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.CompletedRestriction
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.FormalComparison
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.GlobalEvaluation
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.GluingIsomorphisms
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.HomFunctor
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.HomSection
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.LocalEpiDescent
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafSource
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Refinement
@@ -1457,7 +1656,11 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.GeometricFibr
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Regular
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Uniqueness
 public import Aglib.AlgebraicGeometry.Modules.IsomorphismFunctors
+public import Aglib.AlgebraicGeometry.Modules.KernelSections
 public import Aglib.AlgebraicGeometry.Modules.Linear
+public import Aglib.AlgebraicGeometry.Modules.Locality.AffineChartRestriction
+public import Aglib.AlgebraicGeometry.Modules.Locality.AffineGluing
+public import Aglib.AlgebraicGeometry.Modules.Locality.ChartSections
 public import Aglib.AlgebraicGeometry.Modules.Locality.Exactness
 public import Aglib.AlgebraicGeometry.Modules.Locality.Isomorphisms
 public import Aglib.AlgebraicGeometry.Modules.Locality.Monomorphisms
@@ -1541,9 +1744,30 @@ public import Aglib.AlgebraicGeometry.Modules.Pushforward.Isomorphism
 public import Aglib.AlgebraicGeometry.Modules.Pushforward.SectionStalk
 public import Aglib.AlgebraicGeometry.Modules.Pushforward.Stalk
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Annihilator
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.BaseChangeChartSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Chart
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCompatibility
+public import
+  Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinateRestriction
+public import
+  Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinateRestrictionPostcompose
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinateRestrictionPresentation
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinateSections
+public import
+  Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinateUnitProperty
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackCoordinates
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackNaturality
+public import
+  Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartPullbackPresentationCompatibility
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartRestrictionCoordinates
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartRestrictionNaturality
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ChartScalarRestriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ClosedImmersion
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.CoproductSectionIso
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.CoproductSectionNaturality
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.CoproductSectionRestriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.CoproductSections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.DirectSumOpenRestriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Exact
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Exactness
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.FiniteGenerators
@@ -1558,11 +1782,17 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Free.Sections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Injective
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Isomorphisms
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Morphisms
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.OpenRestrictionSections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PrincipalSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Pullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PullbackSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Pushforward
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.PushforwardChartRestriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionCoefficients
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionGeneration
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionSections
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionSectionsNaturality
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.RestrictionUnit
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ScalarAdjunction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.ScalarAdjunction.Counit
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Sections
@@ -1613,6 +1843,10 @@ public import Aglib.AlgebraicGeometry.Modules.Restriction.ExtensionByZero.Closed
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Isomorphisms
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Monomorphisms
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Overlap
+public import Aglib.AlgebraicGeometry.Modules.Restriction.OverlapComparison
+public import Aglib.AlgebraicGeometry.Modules.Restriction.OverlapFamilyComparison
+public import Aglib.AlgebraicGeometry.Modules.Restriction.OverlapQuotient
+public import Aglib.AlgebraicGeometry.Modules.Restriction.OverlapRefinement
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Sections
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Sheafification
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Square
@@ -1821,6 +2055,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.SectionRigidi
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricPoints
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricRetraction
+public import Aglib.AlgebraicGeometry.Morphisms.GeometricallyIntegral.Open
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.BaseChangeRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.CartesianRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenPullback
@@ -1839,9 +2074,12 @@ public import Aglib.AlgebraicGeometry.Morphisms.Proper.ConnectedFibres
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.ConstantFieldHelpers
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.CurveComponentHelpers
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.DVRRecognition
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.FibreDescent
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GenericExtension
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GlobalSections
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure.Comparison
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.QuasiFinite
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
@@ -1852,6 +2090,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.RegularScheme
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.StandardEtaleChart
+public import Aglib.AlgebraicGeometry.Morphisms.SpreadingOut
 public import Aglib.AlgebraicGeometry.Morphisms.Surjective.GenericPoint
 public import Aglib.AlgebraicGeometry.Normalization.DenseOpen
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Basic
@@ -2049,6 +2288,7 @@ public import Aglib.AlgebraicGeometry.Stalk.PrincipalColength
 public import Aglib.AlgebraicGeometry.Stalk.ResidueCharacteristic
 public import Aglib.AlgebraicGeometry.Stalk.Scalar
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.IsomorphismLocus
+public import Aglib.AlgebraicGeometry.Surfaces.Birational.TraitGraph
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.CommonCenters
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.Comparison
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.NodeAtlas
@@ -2129,4 +2369,4 @@ Use an individual module import for a smaller dependency closure.
 -/
 
 -- The import-only facade follows the discovered source graph.
-set_option linter.style.longFile 2300
+set_option linter.style.longFile 2500

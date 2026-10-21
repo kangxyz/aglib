@@ -8,19 +8,46 @@ The prime-localization statement concludes formal etaleness. It does not assert 
 
 [Polynomial](Polynomial.lean), imported as `Aglib.RingTheory.Etale.Polynomial`, gives `RingHom.Etale.isMaximal_comap_polynomial`. For an actual etale map `g : MvPolynomial (Fin n) K →+* B`, where `K` is any field and `B` any commutative ring in the original common universe, the comap of a maximal ideal is maximal. The argument uses the existing finite-type field-algebra residue result; it imposes no separability or scheme hypothesis. [Etale polynomial stalks](../../AlgebraicGeometry/Stalk/EtalePolynomial.lean) consume this lower algebraic result.
 
-[MilnorPatching](MilnorPatching.lean) defines
-`RingHom.Etale.MilnorPatching.EtalePatching` as an explicit universal input,
-using the actual fibre-product map and compatible tensor boundary isomorphisms.
-This leaf defines the proposition and does not supply a proof of it.
+[MilnorPatching](MilnorPatching.lean) defines the original universal proposition
+`RingHom.Etale.MilnorPatching.EtalePatching`, using the actual fibre-product map
+and compatible tensor boundary isomorphisms. Its
+[FinitePresentation](MilnorPatching/FinitePresentation.lean) leaf proves
+`etale_fiberMap` and supplies `etalePatching : EtalePatching` for the full
+original seven-map family in one universe: the boundary map `f` is surjective,
+the two component maps are etale, and the supplied tensor equivalences retain
+their original boundary formulas. There is no finite-module, Noetherian,
+flatness-of-`g`, output-flatness, output-finite-presentation or input-patching
+premise.
 
-The [finite-free clutching guide](MilnorPatching/README.md) gives a proved
-finite-etale split-power case on the actual fibre map, with an explicit stable
+The [clutching guide](MilnorPatching/README.md) records the general component
+reconstruction, flatness and finite-presentation route. The finite-free
+split-power theorem remains a separate concrete result with an explicit stable
 retraction, both canonical tensor comparisons and an endpoint-dependent cyclic
-client. Projectivity gives finite presentation over an arbitrary fibre base;
-joint tensor conservativity proves formal unramifiedness. The universal
-arbitrary-component family remains separate.
+client.
 
 [Nilpotent lifting](NilpotentLift.md) lifts an actual étale algebra across any
 nilpotent ideal of a commutative ring. A finite input algebra has a finite lift,
 with the original tensor and quotient comparisons. No Noetherian, Henselian
 or completeness hypothesis is required.
+
+[PolynomialSystemChart](PolynomialSystemChart.lean) constructs the quotient of a finite square polynomial
+system localized at its native Jacobian. It proves this chart is etale rather
+than assuming etaleness. The native variable-row, equation-column matrix is
+the transpose of the usual Jacobian. Explicit points preserve the original
+coefficient map and coordinates. This is a nonsingular chart, not Artin
+approximation or general desingularization.
+
+## Points with local targets
+
+[LocalPoints](LocalPoints.lean), imported as
+`Aglib.RingTheory.Etale.LocalPoints`, proves
+`Algebra.Etale.residue_comp_injective`. For an etale `R`-algebra `B` and any
+local commutative `R`-algebra `T`, two maps `B →ₐ[R] T` agree if their composites
+with the actual residue map of `T` agree. The base, source, and target have
+independent universes. Neither the base nor the target is assumed Henselian;
+no Noetherianity, finite-module, or nilpotent-maximal-ideal assumption is used.
+
+The proof passes to a native standard-etale chart at the residue point and
+uses simple-root uniqueness in the local target. It proves injectivity only,
+not existence of a lift. [Henselian quotient lifting](../Henselian/EtaleQuotientLifting.lean)
+uses this uniqueness to preserve a point modulo an arbitrary proper ideal.

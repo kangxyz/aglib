@@ -34,3 +34,7 @@ factors through every member, and `WidePullback.mono_base`: the base of a wide
 pullback of monomorphisms is a monomorphism. Only existence of the wide
 pullback is assumed. The consumer is the joint rank stratification of the
 [flattening stratification](../../../AlgebraicGeometry/FlatteningStratification/README.md).
+
+[Products](Products.lean) detects vanishing of a mapped product lift from its
+mapped components for a product-preserving functor, with independent source,
+target, and index universes. It extends the binary-product zero-map interface.

@@ -1,4 +1,4 @@
-# Finite-free Milnor clutching and etale descent
+# Milnor patching and finite-free clutching
 
 [FiniteFree](FiniteFree.lean), imported as
 `Aglib.RingTheory.Etale.MilnorPatching.FiniteFree`, extends
@@ -37,6 +37,23 @@ level over an arbitrary field. The latter checks both canonical tensor
 comparisons and the literal seven-map conductor statement, with the actual
 first-projection normalization action on the polynomial ring.
 
-The universal `EtalePatching` family for arbitrary etale component algebras in
-[the parent leaf](../MilnorPatching.lean) remains an explicit input. The
-split-power theorem does not instantiate that broader family.
+The [parent leaf](../MilnorPatching.lean) defines the single original
+`EtalePatching` proposition and its literal fibre rings and seven-map
+`fiberMap`. [General](General.lean) reconstructs both canonical component
+tensor equivalences and proves formal unramifiedness of that map from the
+component hypotheses. [Flat](Flat.lean) proves general module flatness descent
+from the two component base changes and applies it to the original fibre map.
+[FinitePresentation](FinitePresentation.lean) descends algebra finite
+presentation for a flat algebra from its component base changes, then proves
+`etale_fiberMap` and `etalePatching : EtalePatching`.
+
+The universal endpoint keeps six arbitrary commutative rings in the same
+universe, all seven original maps and both commutative squares. It assumes
+surjectivity of `f : R →+* T`, etaleness of `r : R →+* C` and
+`s : S →+* D`, and the specified compatible `T`-algebra equivalences
+`T ⊗[R] C ≃ₐ[T] U` and `T ⊗[S] D ≃ₐ[T] U`, with their original
+`1 ⊗ c` and `1 ⊗ d` boundary formulas. It concludes etaleness of the literal
+map `R ×[T] S →+* C ×[U] D`. No finite-module, Noetherian, flatness-of-`g`,
+output-flatness, output-finite-presentation or input-patching premise is added.
+The concrete finite-free theorem above remains valid independently of this
+upper general endpoint.

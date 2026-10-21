@@ -12,3 +12,10 @@ The three length-comparison imports are `Aglib.RingTheory.Localization.LengthSur
 prime-quotient factor comparison in namespace `Module`. The source ideal may be
 arbitrary where stated, while the target ideal is prime. See also the focused
 [away-localization guide](Away/README.md).
+
+[HomEvaluation](HomEvaluation.lean) supplies
+`IsLocalizedModule.of_homEvaluation`. For a finitely presented source module,
+evaluation-compatible linear equivalences transfer the native Hom-localization
+theorem to the specified original modules and map. The target need not be
+finite, and no Noetherian hypothesis is imposed. Its current consumer is
+coherence of the actual scheme internal Hom.

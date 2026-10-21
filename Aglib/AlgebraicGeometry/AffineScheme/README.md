@@ -31,7 +31,13 @@ no finite or étale hypothesis on the algebra. The spectrum functor is the
 existing `Scheme.FiniteEtale.algebraSpecOver`; its native finite-étale fibre
 comparison remains the finite-étale specialization.
 
-The incoming source is the frozen R5 packet at
-`f8a3314ddecffcada2ec721d26d56a937bed9690`; each leaf records its exact source
-hash. Existing Aglib interfaces at `3a4d549` are preserved. The immediate
-consumers are finite-étale adic lifting and affine coordinate calculations.
+[BaseChangeChart](BaseChangeChart.lean) constructs the literal
+`Spec (B ⊗[A] C)` chart of the original base-changed scheme from a specified
+affine chart `Spec B → X`. Both projection maps, the cartesian square, open
+immersion and original inverse-image range are retained. No flatness is used.
+
+[BaseChangeChartNaturality](BaseChangeChartNaturality.lean) retains the original tensor transition maps between
+base-changed affine charts and proves their factorization equation.
+
+[OpenChartIntersection](OpenChartIntersection.lean) identifies the actual affine chart of an affine open
+intersection with the original cartesian square of coordinate restrictions.

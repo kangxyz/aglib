@@ -9,3 +9,11 @@
 [Fibre](Fibre.lean) constructs the actual fibre inclusion and cartesian square. Its conditional ideal isomorphism and line-bundle construction retain the explicitly displayed pointwise base-change supplier, closed-immersion, quotient-flatness and rank-one inputs from the source. These conditional interfaces are supplied by the proved `Flat` root in their final consumers; they are not new global theorem-family predicates.
 
 [OpenImmersion](OpenImmersion.lean) proves `Scheme.Hom.idealPullbackMap_isIso_of_isOpenImmersion`: along a cartesian square whose base-change morphism is an open immersion, the canonical ideal map is an isomorphism, with no flatness or closed-immersion hypothesis.
+
+[FlatMorphism](FlatMorphism.md) proves
+`Scheme.Hom.idealPullbackMap_isIso_of_flat` for a cartesian square with affine
+vertical map and flat base morphism, on arbitrary schemes. It concerns the
+same original canonical map and inclusion equation. Its flatness hypothesis
+is on the base morphism; the separate `Flat` theorem above instead uses
+flatness of the quotient family. The actual [DVR-fibre construction](../Cartier/DVRFibre.md)
+uses this flat-base result.

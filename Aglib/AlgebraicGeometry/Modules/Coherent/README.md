@@ -22,3 +22,19 @@ statement retains `IsNoetherian X`; the affine and tilde statements retain their
 displayed ring and module hypotheses.
 
 Focused interface guides: [Coherent presentations from an actual projective embedding](Projective/README.md).
+
+[FiniteCoverGluing](FiniteCoverGluing.lean) glues compatible coherent
+subobjects inside an arbitrary ambient module over a finite open-immersion
+cover of a locally Noetherian scheme. The kernel of the original finite product
+of cokernel obstructions retains every local inclusion equation. The ambient
+module need not be coherent or flat.
+
+For a coherent ambient module, [FiniteCoverQuotients](FiniteCoverQuotients.lean)
+takes the cokernel of the glued relation subobject and retains every local
+quotient map. [FiniteCoverQuotientDescent](FiniteCoverQuotientDescent.lean)
+obtains the relation-overlap comparisons from compatible local epimorphisms
+onto coherent quotients. Their quotient equations force relation compatibility
+without a separately chosen relation cocycle or global realization.
+[QuotientRestrictionComparison](QuotientRestrictionComparison.lean) transports
+these quotient equations to smaller charts and uses epimorphism cancellation
+to make the comparison independent of the covering chart.

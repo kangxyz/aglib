@@ -69,14 +69,9 @@ sheafification occurs. The present consumer is the stability of local
 isomorphisms of module presheaves under tensor products in
 [Tensor/Monoidal/LocalIso](../Tensor/Monoidal/LocalIso.lean).
 
-`PresheafSource` duplicates the construction of the original
-`InternalHom.sheaf` in [InternalHom](../InternalHom.lean) (lines 36-210),
-with the source presheaf `M.val` replaced by an arbitrary `P`; the `rfl`
-example in the [focused consumer](../../../../AglibTest/AlgebraicGeometry/Modules/InternalHom/PresheafTensor.lean)
-checks that the two agree. A later step will delegate the original to the
-presheaf-source version, `InternalHom.sheaf X M N :=
-PresheafSource.sheaf X M.val N` (and its helpers likewise); it is not done
-here because it edits existing files and their consumers.
+For the underlying presheaf of a module sheaf, `PresheafSource.sheaf X M.val N`
+agrees definitionally with `InternalHom.sheaf X M N`; both retain the original
+Hom presheaf and scalar-linearity condition.
 
 The two tensor–Hom bijections curry opposite factors. The sheaf-level
 `Pullback.Tensor.tensorHomEquiv`
@@ -90,3 +85,55 @@ closed-monoidal convention `tensorLeft P ⊣ ihom P`.
 [HomFunctor](HomFunctor.lean) and [HomSection](HomSection.lean) expose the
 actual internal-Hom functor and section interfaces used by line-bundle and
 relative-evaluation constructions.
+
+## Affine linear sections and coherence
+
+[AffineSections](AffineSections.lean) gives the original linear section
+`sectionEvaluation` and its restriction formula. [AffineEvaluation](AffineEvaluation.lean)
+proves `affineSectionsEquiv` on every actual affine open, requiring only
+quasicoherence of the restricted source; the target is arbitrary. Its
+`affineSectionsEquiv_restrict` covers arbitrary inclusions of affine opens,
+not only principal opens. [AffineRestriction](AffineRestriction.lean) gives
+the same linear comparison on an explicitly specified affine open immersion.
+[AffineIterated](AffineIterated.lean) preserves the native restriction-composition
+isomorphisms and proves the original principal-restriction evaluation square.
+
+[Coherent](Coherent.lean) proves
+`InternalHom.affineLocallyFiniteType_internalHom`: on a locally Noetherian
+scheme, the actual internal Hom of two affine-locally finite-type
+quasicoherent modules has the same property. Its lower
+`quasicoherent_affineRestriction` needs quasicoherent source and target and
+finite presentation of source sections on the specified chart, but no
+Noetherian hypothesis. The proof identifies original section restriction
+with Hom localization; it does not replace the native Hom sheaf or assume
+quasicoherence from stalk finiteness. No nonflat base-change assertion for
+internal Hom is made.
+
+## Completed affine comparison
+
+For affine-locally finite-type quasicoherent source and target on a locally
+Noetherian scheme, [FormalComparison](FormalComparison.lean) identifies the structural-ideal completion of original
+internal-Hom sections on an affine open with compatible linear maps on the
+original chart-module quotients. It uses flat completed-Hom base change, not
+Hom base change at a nonflat finite stage. Affine coordinate rings need not be
+complete. The comparison sends original sections to their literal evaluation
+and reduction maps.
+
+[CompletedEvaluation](CompletedEvaluation.lean) extends the original affine evaluation pairing to
+structural-ring completions, retaining its value on every pair of original
+classes. Restriction, coordinate detection, and global full-faithfulness are separate consumers.
+
+[CompletedRestriction](CompletedRestriction.lean) proves compatibility of this pairing with every
+inclusion of affine opens. [CompletedCoordinates](CompletedCoordinates.lean) identifies its original
+quotient coordinates with the compatible-Hom comparison, and
+[CompletedExt](CompletedExt.lean) detects a completed section by evaluating on restrictions
+from a larger affine open. The last statement uses the actual restriction-image
+spanning theorem, so it does not assume that an arbitrary affine inclusion is
+principal.
+
+[GluingIsomorphisms](GluingIsomorphisms.lean) combines original restricted-hom gluing and open-cover
+isomorphism detection, retaining each original local comparison.
+
+[LocalEpiDescent](LocalEpiDescent.lean) proves that local factorization equations through original
+epimorphisms force overlap compatibility, then glues the actual global
+factorization and retains its local maps.

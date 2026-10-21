@@ -35,3 +35,12 @@ of flat modules, to a relation among preimages of the `xᵢ`. The proof is a
 corollary of Mathlib's equational criterion (Stacks Project, Tag 00HK). The
 consumer is the flatness of chart sections in Nitsure's Lemma 3.2,
 `AlgebraicGeometry/Cohomology/Projective/FlatOfSections`.
+
+[KernelCriterion](KernelCriterion.md) proves quotient-kernel tensor
+injectivity and a flatness criterion for arbitrary rings and module universes.
+Flatness after a surjective quotient and tensor injectivity for every ideal
+contained in its actual kernel imply flatness before quotienting. The separate
+annihilated-cokernel lemma has exactly its stated restricted scope. No
+Noetherian, nilpotence or local-ring assumption is used. The
+[Milnor flatness theorem](../Etale/MilnorPatching/Flat.md) supplies the kernel
+conditions from the two actual component base changes.
