@@ -1,0 +1,662 @@
+{
+  "kind": "source-correspondence",
+  "source_archive": {
+    "filename": "aglib-purity-source-20261021T004536Z.tar.xz",
+    "sha256": "49f6b0a29c421f41de262ec1920491cd3494984b4b1a74c9e6a05221b215b027",
+    "reported_source_baseline": "202ff3a82dcc810acb2a1a7f590e5457cfff52e9"
+  },
+  "integration_base": "558fad66ff831d9c277e0e08c43e23783c175e6e",
+  "guide": "docs/ZARISKI_NAGATA_PURITY.md",
+  "primary_interfaces": [
+    {
+      "module": "Aglib.RingTheory.Etale.ZariskiNagataPurity",
+      "declaration": "Algebra.etale_of_unramified_height_one",
+      "conditions": "Regular domain A, finite faithful normal domain A-algebra B, separable canonical fraction-field extension, and unramifiedness at every source height-one prime.",
+      "conclusion": "Algebra.Etale A B for the original algebra."
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.Morphisms.Etale.ZariskiNagataPurity",
+      "declaration": "AlgebraicGeometry.Scheme.Hom.etale_of_unramified_coheight_one_of_regularStalks",
+      "conditions": "Finite dominant original morphism of integral schemes; locally Noetherian regular-stalk target; normal-stalk source; separability of the actual function-field map; original source-stalk unramifiedness at coheight one.",
+      "conclusion": "Etale for the original scheme morphism, with no characteristic or dimension bound."
+    }
+  ],
+  "normalization_application": {
+    "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.RegularBase",
+    "declaration": "AlgebraicGeometry.Scheme.FiniteEtale.GenericNormalization.etale_of_regularStalks",
+    "source_module": "R5Lab.Aglib.AlgebraicGeometry.Morphisms.Etale.NormalizationCriteria",
+    "source_sha256": "5fcdd6f2046dd320493968db06a07ac2407429ce303101742063d2119b465a85",
+    "source_lines": [
+      126,
+      161
+    ],
+    "generic_cover_scope": "Arbitrary finite-etale cover of the actual function field, including disconnected and empty covers.",
+    "removed_inputs": [
+      "Stacks0BMB",
+      "NormalizationLocalDimension",
+      "EtaleFromStalkBaseChange",
+      "explicit base-stalk normality"
+    ],
+    "retained_inputs": "Actual integral locally Noetherian base, regular base stalks, and original codimension-one target-stalk pullback etaleness."
+  },
+  "integration_changes": [
+    "Reuse the five byte-identical finite-chart declarations in one lower FunctionField provider; preserve the LocalNormAlgebra import interface and remaining definitions.",
+    "Enable the standard haveI/letI check in the two incoming scheme/function-field files; use let for the diagnosed proof bindings.",
+    "Retain current source fixes, pinned configuration, workflows and compiler/runtime policy; import no historical cache or raw backup records."
+  ],
+  "boundary": "This is a source-correspondence inventory, not a compilation, replay or unrestricted local quasi-finite purity certificate.",
+  "archive_files": [
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Ext/DualQuotient.lean",
+      "archive_sha256": "8b5262e2a9d975437dced50759339dc024718cfd36be5947dd1ecb34a10fb02d"
+    },
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Ext/FiniteLength.lean",
+      "archive_sha256": "5305bef5166b28bef4e4d5655b72298d125d5d09f1a7274c543078db4cef5f7d"
+    },
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Ext/FinitePi.lean",
+      "archive_sha256": "06a49dfec7193d0adffaf90c828bedf4af91e97a33799dcea6e8cca0eaf7e730"
+    },
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Ext/QuotSMulTop.lean",
+      "archive_sha256": "b472c8af8dea0a27e5bf0b12bc9a02cff9885cb5a394b8294491e145aae4b63f"
+    },
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Tensor/ExtOne.lean",
+      "archive_sha256": "f35c880becb2b348cb5140cbeb9f5601f43a3ba002543a78e7efa299bc1374db"
+    },
+    {
+      "native_path": "Aglib/Algebra/Category/ModuleCat/Tensor/ExtOneCoefficient.lean",
+      "archive_sha256": "48b603f344e9c7d3db1d85920bf514a6aedcedd5939dd03e2166922cb44c68f1"
+    },
+    {
+      "native_path": "Aglib/Algebra/Homology/DerivedCategory/Ext/Cokernel.lean",
+      "archive_sha256": "f05decad0fd579e647354c73888ce60c6fc29b46a3c5703796985cc58430e868"
+    },
+    {
+      "native_path": "Aglib/Algebra/Homology/DerivedCategory/Ext/LinearEquiv.lean",
+      "archive_sha256": "37287526fbbcddd13e401a84c942eff4bdb9388c59d8f74bb4a904a63a28fcc6"
+    },
+    {
+      "native_path": "Aglib/Algebra/Module/EndomorphismRank.lean",
+      "archive_sha256": "b13a4e0ba5a41da5afe9305fa2f695748b3e17c42f217c16c677fcb99e17f9b4"
+    },
+    {
+      "native_path": "Aglib/AlgebraicGeometry/Morphisms/Etale/ZariskiNagataPurity.lean",
+      "archive_sha256": "33e589c5a87e078eae92a635c2c71737120b2c3388f8733f9e18a8fd25d10754"
+    },
+    {
+      "native_path": "Aglib/AlgebraicGeometry/Morphisms/Finite/FunctionField.lean",
+      "archive_sha256": "0bed49f4d41fcb50ccacbd85a78e0cd45f81500361666f1f2b22bc0a7db8bd6b"
+    },
+    {
+      "native_path": "Aglib/AlgebraicGeometry/Morphisms/FormallyUnramified/StalkMap.lean",
+      "archive_sha256": "239fe9f7618c82f0cb885946caafb838eab771eaf985fe5d2427d42b63089089"
+    },
+    {
+      "native_path": "Aglib/FieldTheory/Galois/Endomorphism.lean",
+      "archive_sha256": "a5f599f824858fde1a8d40ba3bb4a1037c11f90a1b34eec92ce2c6927eff12e3"
+    },
+    {
+      "native_path": "Aglib/FieldTheory/Separable/TensorProductSplitting.lean",
+      "archive_sha256": "f3720411fce64dac329793b64edf57204dab88921c83fe178d62d17fbe0f3c76"
+    },
+    {
+      "native_path": "Aglib/LinearAlgebra/Dual/SplitInjection.lean",
+      "archive_sha256": "f844025337af92b19d2b3b1fcacecc5de74fdfbeadb788e26e36fb72d04daedf"
+    },
+    {
+      "native_path": "Aglib/LinearAlgebra/TensorProduct/DualEvaluation.lean",
+      "archive_sha256": "d7feb9537392d275e79040148ded0df62404ab8f999f06ec418b3f25175d65ea"
+    },
+    {
+      "native_path": "Aglib/LinearAlgebra/TensorProduct/DualEvaluationFiniteLength.lean",
+      "archive_sha256": "e9c72e268a0fafd3eabafb5e5b69e82581386653ed9faf003f49a06a4028b223"
+    },
+    {
+      "native_path": "Aglib/LinearAlgebra/TensorProduct/DualInjectivity.lean",
+      "archive_sha256": "ff034b0ecbe5f57b0e5ac2495383bb1142bd5b3162cd8a66dc339baade23c2cf"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/CodimensionOne.lean",
+      "archive_sha256": "93280a56267f72ccfd74ebf1d16f84dfbf4b13af3c3118d947054e5745db1a52"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/FiniteFlatPurity.lean",
+      "archive_sha256": "02ab8fc6dcca8b2a85975370d700324de94bf995af6c434050e90e1cb9342a02"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/FiniteFlatPurityLocalization.lean",
+      "archive_sha256": "9bde7bafe81a4e70ef958212040bf46119724817548af278f90c9484518c9855"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/HeightOneEquiv.lean",
+      "archive_sha256": "d70ec83f057a10a12f901c8c560fcee591c985e718e975fdbe1c8d62115d7b84"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/TracePairing.lean",
+      "archive_sha256": "81bde178a06bd0081c98deafd5c9fa8e63a6fcf0fa1cd2d38e1dcaddfefa154b"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Etale/ZariskiNagataPurity.lean",
+      "archive_sha256": "4271c791df0b5fd1f6bb351f1ca050dc38c65c313b8c777903ee668ace05eea2"
+    },
+    {
+      "native_path": "Aglib/RingTheory/FiniteLength/EulerObstruction.lean",
+      "archive_sha256": "9c894f5ebe203ac1fae3124f108295f1bebdc6184fa456e1ece48401bac18bfc"
+    },
+    {
+      "native_path": "Aglib/RingTheory/FiniteLength/Socle.lean",
+      "archive_sha256": "56b51907b0c1a345624760987cbe8f540c0c5813eae2662e137bf03d100ad389"
+    },
+    {
+      "native_path": "Aglib/RingTheory/FiniteLength/TensorInjectivity.lean",
+      "archive_sha256": "71aadf48393ceffb3d7e2cbc6b4e64b9f3285543cc3fc22b9580d52838e7b4a8"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/AssociatedHeight.lean",
+      "archive_sha256": "87096d12d7add8dc929a991da0a66bf92b69c3f0db34ea595d4191419730cb03"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/AssociatedPrincipal.lean",
+      "archive_sha256": "8d32881c31fe222e23e78f8b36c8c3ff3f27f51f364df766323e890280c79c18"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/EtaleDescent.lean",
+      "archive_sha256": "16479d4895188476160c1d2df51d22da03692cecd95d9832eda56c79f33355ef"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphism.lean",
+      "archive_sha256": "1bbcb0a6c36e9cd384ed01e401935ab9e2b98c810b06ba60d759e7b3213eff2a"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismBaseChange.lean",
+      "archive_sha256": "4919f0fbc970f8daec6fc3155ffca0b3a9dd93bffe8c9ec64116667ce184aba5"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismEtale.lean",
+      "archive_sha256": "10cdf9876d1d5afca78bcba3afc4b2661e0eecc49e841bed3b809c02d71dfd42"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismFin.lean",
+      "archive_sha256": "e64a5ea6c5256a66deeb8dbc08585bbe077f7ce77ce89aa81db8c1996fe2fe24"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismGeneric.lean",
+      "archive_sha256": "34e0dffd56e2bfeedeceac5cb8118f04612ea64159a46638840509e408be5cae"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismHartogs.lean",
+      "archive_sha256": "dea11c78c9ef105517aa57b19e9b866f834a18a07e21e9fd58bf0a06fe201c8e"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismLocalEtale.lean",
+      "archive_sha256": "6adfa222e01883e36cc09525baa41b1ab190372807806eab630eb2bdfb3beaa6"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismLocalization.lean",
+      "archive_sha256": "ae519e710abd05ead37b1de2c724d003a6bfb102611728b897870ca9fc8c3c87"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismTrace.lean",
+      "archive_sha256": "5850f5af70966d50873e21a47b779d103a31cfe21053c03e9861962fd0337106"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GaloisEndomorphismUnramified.lean",
+      "archive_sha256": "ebd4e168d0ea881a6fca45c0c00d6de20d353d34bdc07d40a2fd1416a95eeccf"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/GenericTensor.lean",
+      "archive_sha256": "7ea214ecc64978caf13d1ff1777b655746c01db15fedb020d8dbfced854c331c"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/HeightOne.lean",
+      "archive_sha256": "f1814c3f9e06e9f5009cd967aa25a7e9b719d20328c8cc24fa1e5ca7f6eab6c3"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/HeightOneDivisibility.lean",
+      "archive_sha256": "01249043c226fb282b84dd93cf3c6707a54621ff4cce22493fabc9768a901099"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/HeightOneIntersection.lean",
+      "archive_sha256": "11c45c8850e5af17474bc2d011172612657d2e57faefaa987f248322de2ebc4f"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/Inertia/NormalClosure.lean",
+      "archive_sha256": "a4c00947ab1c83669dea1f22ea5b2377ab7556e797e7186605ee5bce90259c23"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/Localization.lean",
+      "archive_sha256": "df333b0b324cebf1c972143324517435f45bddf4709838eaf442788b73ee7691"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/LocalizationTensor.lean",
+      "archive_sha256": "6e8d1272328fa3f572f4dd744715153c333ed2056fdd8a88e37b14536ab3a1ab"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/LocalizedGenericFiber.lean",
+      "archive_sha256": "5e278dd4c0b3c7e965e9abe03eea081ed05bf8809c004f2cd07938a9be880365"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/NormalClosureDescent.lean",
+      "archive_sha256": "72541cbd2b0490f82c2d23af7cad9a99fc7c5bc3733dcb53cc8e0147ccdc5bfd"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/NormalClosureFlat.lean",
+      "archive_sha256": "eb925196af8e60509fcdaa5a0f4a395ffd7a7ce4b3b49b453c81dd20211a0405"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/OriginalModel.lean",
+      "archive_sha256": "efcb31fc5aa998d8e6dc3c97ca9bd0a8dc01c8ffc33facad12b55b99a2de4733"
+    },
+    {
+      "native_path": "Aglib/RingTheory/IntegralClosure/Reflexive.lean",
+      "archive_sha256": "6e2aa40dbbee74ba4595c3b1d496b1d95f096b8ea71a7a11c55858cf9986ee81"
+    },
+    {
+      "native_path": "Aglib/RingTheory/KrullDimension/LocalDrop.lean",
+      "archive_sha256": "355ab1ffef9d6055e4acf6b567429f4901172c3761bf027448251ae35ed6f97a"
+    },
+    {
+      "native_path": "Aglib/RingTheory/KrullDimension/UnitDetection.lean",
+      "archive_sha256": "461cbdd0d90e67cbe6c3dc7775fb58cfc3b4f7569a0d8e01d723281da7c8dc4a"
+    },
+    {
+      "native_path": "Aglib/RingTheory/LocalRing/ExtCriterion.lean",
+      "archive_sha256": "89d1d9af96e7cf754b0e1877b1f2d0852eee43613af053f6e1e5038dc0a227a2"
+    },
+    {
+      "native_path": "Aglib/RingTheory/LocalRing/ExtLengthCriterion.lean",
+      "archive_sha256": "a59994426b27c8f998d6cb123e47007ab45242643bec4a2762077c5d1f29c26d"
+    },
+    {
+      "native_path": "Aglib/RingTheory/LocalRing/ProjectiveDimension.lean",
+      "archive_sha256": "09d1cfcf799b2406c576e4e80fce0e261e0cd572dc62a236e3788b4d9a25bda9"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Localization/EndomorphismPi.lean",
+      "archive_sha256": "b44e9b9aad7126b97aab9239b4f0e688db76ed96e23b8e9eb6a4ced3121ec452"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Localization/HeightOne.lean",
+      "archive_sha256": "c740983c810123f40acf857d1e7d1631aa642536c918e02e22c69c1bf7a708d1"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Localization/QuotSMulTop.lean",
+      "archive_sha256": "ffa3c66c787dbfb8dce34c18d2125adf0664e2fd719e4fee016e08782d126291"
+    },
+    {
+      "native_path": "Aglib/RingTheory/QuotSMulTop/Hom.lean",
+      "archive_sha256": "17191578835288960506cc97dc4c042eb010ce091a0f82b2bb57d45b244bebfe"
+    },
+    {
+      "native_path": "Aglib/RingTheory/QuotSMulTop/LocalizedFree.lean",
+      "archive_sha256": "1c2b63a69bb0111995ac1db49ed4cd74730b9cc583c021c31f0c7ddd60c41256"
+    },
+    {
+      "native_path": "Aglib/RingTheory/QuotSMulTop/Pi.lean",
+      "archive_sha256": "ec8712df653d17386340adec4c74181b8be2c72a1059c3e31a37e559eb82f5d6"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Algebra.lean",
+      "archive_sha256": "2d2e6323497b2497b938c9d0813fa10e8778ce94ab2aa4ca02dc9203ddd5e3f9"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Auslander.lean",
+      "archive_sha256": "7fad22a21007b05f8bfb9545040986456c7ff93c5e8176affe195efcf3626e85"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/AuslanderDimensionThree.lean",
+      "archive_sha256": "051aae307841c2d058c55f10627ab95313b75a63ab4a54e9c71acfb76e84ab46"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/AuslanderFlat.lean",
+      "archive_sha256": "f326d590faa2d0d15843598591938d3fa750f7392bdc96c52d692ec6b875012e"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/AuslanderLengthBound.lean",
+      "archive_sha256": "de282c93e8ed535062e1358cc5f9918bd987ed92e22455938ec6b34ef501c8aa"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/AuslanderRegularRing.lean",
+      "archive_sha256": "c954e419a08f4b353743914922cfc58baebb7def8252ebc69a8b6e82be20248c"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/BidualEndomorphism.lean",
+      "archive_sha256": "0f80db83b7eac366298e3e4f22fdc0987018353129f17d0b3f3fc9d83364154b"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/BidualEndomorphismComparison.lean",
+      "archive_sha256": "db85455fe17dc8d29db98b511f95d673997f9411a5f18b432c3fdbb50ec83ae2"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/BidualPuncturedFree.lean",
+      "archive_sha256": "0f9878945fe1b421780329613bc89f8f738e631c5ff6f81d088d989040e37568"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/DoubleDualFraction.lean",
+      "archive_sha256": "0244a76fbee14828f39eacd9d012e474d4c4eb6a019fbf819fcabfa424843f9f"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Dual.lean",
+      "archive_sha256": "269b554ebc2374beb6c9145fd03981e97e05fd5577cad45f68d39ee4f0c2eccb"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/DualPi.lean",
+      "archive_sha256": "211a750d087557c732c3fe76c723f657530da4ade97ae77a04d25f6fd80f2abd"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/EndomorphismLocalization.lean",
+      "archive_sha256": "dc7714d570d7a20590458105a9fe37f1efaa50a9098a058b6521ff4f6ca662c8"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/EvaluationLocalization.lean",
+      "archive_sha256": "af7fa6a4acf33cb7ae9bb79afc8551205a41c19639166907bd4bda2ccc75a26d"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/FractionLattice.lean",
+      "archive_sha256": "0aab9bff4e5f0e15b4a53bf5beb74bb44c428c24a32772c9145c379ffcd435b7"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/HeightOneLattice.lean",
+      "archive_sha256": "6f56f09de1446a41d1d4354432f74e08ace50104236176e549121835776e6938"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/HeightOneReconstruction.lean",
+      "archive_sha256": "d3ce0c6a15b496f02eb259ce299daac4e6b8e19a6f28129db1aace47a3970956"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Hom.lean",
+      "archive_sha256": "bd7d3996f8f35ff2b0e79ff676675a861d859f204da392d6a1146f2c6d06b6c3"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Localization.lean",
+      "archive_sha256": "ca573304a101500726b7744619f8b9582ccac7efb3dd10d51c3a9b50732c7cc4"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/Pi.lean",
+      "archive_sha256": "15c15f922b6f71b16a6689fbb597d5d39cdb8485aa6aeb746554d04e70ef6978"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/ProjectiveDimension.lean",
+      "archive_sha256": "342d21314be2bb11d58acd8f496c30f2d3cd1a32de7802da68473258cd22ee44"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientBidualFree.lean",
+      "archive_sha256": "9f161bd534d598f9e081f667a829e78781485887b91acfba0431c6e4de9b7b1c"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientEndomorphism.lean",
+      "archive_sha256": "c8815306916b83a1125c0bc8b1b77545275d1254817bfd43069824aadc96d9dc"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientEndomorphismComparison.lean",
+      "archive_sha256": "deb952919a447bd8c22eb482a5991999b13a2ce84a70dfe3b3effc82853eca5e"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientEndomorphismFiniteDefect.lean",
+      "archive_sha256": "1dd8c6077441251ec145e2862ebf2c19975b5bc385d5f2a5edd15d587c0b39f5"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientEndomorphismLocalization.lean",
+      "archive_sha256": "4ee5d5d7525e7f1b122ae5e16309b9ec8c5b6042955d19dc9a0abca7a41795d7"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/QuotientEndomorphismPi.lean",
+      "archive_sha256": "418b80af4f5eadf891e1f4d372821e43e52e428d4a3c96d2b96ff8f0a9bb65f6"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Reflexive/SecondSyzygy.lean",
+      "archive_sha256": "921ffa21c47bc8204eb21e1d264c5a108becb6ecd70e899d8b0863ef24eee027"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Regular/QuotientProjectiveDimension.lean",
+      "archive_sha256": "579480a18a426e2f76505d3379291d6b9cb38f871f79e3b40d4b4a3494f5af54"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/FiniteLengthDualComparison.lean",
+      "archive_sha256": "042cff8bf412dcfb81d70d5c42dc95c6b195118510426126a9d21e66cdb9b84b"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/FiniteLengthExt.lean",
+      "archive_sha256": "7b28ed23264a7bfa6841acbc2d26e9cfcff90a89273f233fbebd0db14200cc27"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/FiniteLengthExtComparison.lean",
+      "archive_sha256": "1512c73cdded6d565497d96fda216900f11a41d6919932b2daf62c53d8885556"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/FiniteProjectiveDimension.lean",
+      "archive_sha256": "98af9a1feda204f0d1b8f68dd3645d75705d5a1a9413bce9193f0a81922e7b17"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/ProjectiveDimension.lean",
+      "archive_sha256": "633544012ab3a8badc61ff8d625096ba3d2ce35b31b6f0d00e0f173367f47484"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/PuncturedDualComparison.lean",
+      "archive_sha256": "36da1abe80815ecc13caca9d8828963da53974bd27571045e876c1328c7e6bfa"
+    },
+    {
+      "native_path": "Aglib/RingTheory/RegularLocalRing/RegularSequence.lean",
+      "archive_sha256": "78acc09503bed85ff7f573ed63b38844b2235a754c30728b9fefb1b7965e3630"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Support/FiniteDefect.lean",
+      "archive_sha256": "2bd1b8189f5c61cca1349884fcea702991169a83895143a6616779e2b8cb62a1"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Support/FiniteLength.lean",
+      "archive_sha256": "f2551de2b3823cff4b428817a6a42b70fe7db25db8f8cb197ff329d47c819500"
+    },
+    {
+      "native_path": "Aglib/RingTheory/Support/FiniteLengthDetection.lean",
+      "archive_sha256": "69a2c5fb7505a2ad0739edb2de805633cc0bc05949197c463d22fa680e66e2f0"
+    },
+    {
+      "native_path": "AglibTest/Auslander.lean",
+      "archive_sha256": "2118b35336cb8183d7fe1b24862028a01908a94e14f9e4c38a68b83fda18b824"
+    },
+    {
+      "native_path": "AglibTest/AuslanderDimensionThree.lean",
+      "archive_sha256": "c5b4edbe7f125f32116c1653db414ea938d63bacbfe1b632fce0a979b2e5d3ed"
+    },
+    {
+      "native_path": "AglibTest/AuslanderFlat.lean",
+      "archive_sha256": "0ef4776bbee7c7fb5c645b8bdb98b0120cec0b80923c2d354fa57e3ed19f74af"
+    },
+    {
+      "native_path": "AglibTest/AuslanderRegularRing.lean",
+      "archive_sha256": "5de32efeacf5dd1984fb324c55a076b7a5821ed1d8bd06a7bbe4aefc7c62d847"
+    },
+    {
+      "native_path": "AglibTest/CodimensionOneEtale.lean",
+      "archive_sha256": "fccd3563fb4c1e889991c9d77276314e182e3add708195c369e6edc49b7c3f71"
+    },
+    {
+      "native_path": "AglibTest/DualQuotient.lean",
+      "archive_sha256": "6709928553fe2ff11d6b480c3aaece7e0beaf3769c109251b56ca628b5b53a03"
+    },
+    {
+      "native_path": "AglibTest/EndomorphismRank.lean",
+      "archive_sha256": "279cc82b9d1653139c47eb694f1c3633c092831c72056f6d787c60d94899f963"
+    },
+    {
+      "native_path": "AglibTest/EtaleHeightOneEquiv.lean",
+      "archive_sha256": "8d80489fe2105e6e8b9cf1f79c58169329a3bd96853d664dca28919d95c12b85"
+    },
+    {
+      "native_path": "AglibTest/ExtFiniteLengthPunctured.lean",
+      "archive_sha256": "a549fe2f4aad94e3a38f37f0fed9c83dd5a9f68b1f4e5a6021ee946e385a236b"
+    },
+    {
+      "native_path": "AglibTest/ExtQuotSMulTop.lean",
+      "archive_sha256": "9ffa213f61270dcf5065f46ed5376cd0ff980bf4fb0c3550fb84882c99a24e09"
+    },
+    {
+      "native_path": "AglibTest/ExtSocleTensor.lean",
+      "archive_sha256": "172111e53afe00fc8655fabeeb84199a3bf9cfa5346dc2900f8e753ab13b92c9"
+    },
+    {
+      "native_path": "AglibTest/ExtTensorComparisons.lean",
+      "archive_sha256": "ade17ee15a313c616a7d6e1b3fe5a0f17fc29bd977977e7937c3fcc65fb538d1"
+    },
+    {
+      "native_path": "AglibTest/FiniteFlatPurity.lean",
+      "archive_sha256": "77bc08d7bc93ea703e17269009ed5413ba5afb80eb44e58d832239293b5ec76d"
+    },
+    {
+      "native_path": "AglibTest/FiniteFlatPurityLocalization.lean",
+      "archive_sha256": "dfa092b8172f8abe63d9f529fdf77c7f65e52c4c088ff49c869b2dbd468b9b6f"
+    },
+    {
+      "native_path": "AglibTest/FiniteLengthEulerObstruction.lean",
+      "archive_sha256": "d9df023344b2d308d5502948daba67968d92e6913893449962ec179658b2c943"
+    },
+    {
+      "native_path": "AglibTest/FiniteLengthExt.lean",
+      "archive_sha256": "fd1b3a043b819ce6e1208fcae861279fd54d047d8a10de288ff0ef053a326637"
+    },
+    {
+      "native_path": "AglibTest/FiniteLengthExtComparison.lean",
+      "archive_sha256": "91f5fecf4c633d873038941060b29fb079b7fc1bfe17de480de4ee0e3255e67b"
+    },
+    {
+      "native_path": "AglibTest/FormallyUnramifiedStalkMap.lean",
+      "archive_sha256": "e8c68adaae29be8f1cae9d651806aa9a64723a13849844a07f8a27af2aff9c9b"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismBaseChange.lean",
+      "archive_sha256": "330ca13d2714a408782e7aa27946305b1f0cce0b4ff89cffb412bd1ebca50649"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismEtale.lean",
+      "archive_sha256": "13cc7bab2ee28277b957e80ed98908b11e2546f3e72c3bbf12cc1d0c6c178e06"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismField.lean",
+      "archive_sha256": "dce2721ca895a3b8c6e608801af099123714d30ce31af70ed61cee51322ceef6"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismHartogs.lean",
+      "archive_sha256": "b1d1e27f17f693c161c7d81e395a49d364d19dde0e9cf813d363ce3df858b05a"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismLocalEtale.lean",
+      "archive_sha256": "2c9d35df0599751f1fd1020590fc85273c142e096af3f6f2dea4b1d173e37bf3"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismLocalization.lean",
+      "archive_sha256": "967a6cb504793b2d6d86319bd1c25fa4a69874a13c7e45b242f9387836c484db"
+    },
+    {
+      "native_path": "AglibTest/GaloisEndomorphismUnramified.lean",
+      "archive_sha256": "3056437503b88afa17e9446e83b4003e4c735a4616a8799b7d2d1ad2044f607b"
+    },
+    {
+      "native_path": "AglibTest/HeightOneReconstruction.lean",
+      "archive_sha256": "e8bcfff26931a62020d7115cd6b6526142f33f0653c17b253ecdb0146721d8cd"
+    },
+    {
+      "native_path": "AglibTest/HeightOneUnitDetection.lean",
+      "archive_sha256": "8449aecc6a4c17f567f1f32c037252286a1ef5dec2ace7fb038c1f87c0b107cd"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureEtaleDescent.lean",
+      "archive_sha256": "6fb75bebc528ef364c74ee230f32f6321e1b8faa822fdf44421e9218e7111560"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureGaloisEndomorphism.lean",
+      "archive_sha256": "a5310638679350eb70edb86d769e7e26118394af047735840ad796797d5baeb4"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureGaloisEndomorphismFin.lean",
+      "archive_sha256": "c8a28873392d2787714cafccfe93a4e365e0e6628029b8d76c5cad22b6f9925a"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureGenericTensor.lean",
+      "archive_sha256": "7b82a69ec46268a1576709f60505c498bd8dcb7876d064461e79a333c97b6235"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureLocalization.lean",
+      "archive_sha256": "c8b953791ef9487f1afb185815ddb9afae2d8cf62d761c1573a11b743d500625"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureLocalizationTensor.lean",
+      "archive_sha256": "a1185d37c4bfad754c1e5257b05a4e29b3046ec7071ac8d4f6acfcd1df9e09a4"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureLocalizedGenericFiber.lean",
+      "archive_sha256": "7e5ef604b369138a14f731ce0329b9fd5e68cdd15c8717276e1a0364cf1225be"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureNormalClosureDescent.lean",
+      "archive_sha256": "6fe199ccd7ba53504ce37f4b1c1b25b7f50d70215232010932a8f9622daa4fa6"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureNormalClosureFlat.lean",
+      "archive_sha256": "4b94fd19a0847c3746b7ee604917d7f38e94f6a3a15c8dac2afe695d29947c5d"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureOriginalModel.lean",
+      "archive_sha256": "4a6e69b46283bb8118285ca4b76018208a6a90e1d1a37ba3265a51a19cb0b38c"
+    },
+    {
+      "native_path": "AglibTest/IntegralClosureReflexive.lean",
+      "archive_sha256": "f32b2f16754f06ca744b7614a021e02c4b5193b2518e6f4f947709498ce19899"
+    },
+    {
+      "native_path": "AglibTest/LocalDimensionDrop.lean",
+      "archive_sha256": "3d22af2a18f12b7337d55856158affd8bc7ec379761ffe6ab4496b23c0e0d3b8"
+    },
+    {
+      "native_path": "AglibTest/LocalizedEndomorphismPi.lean",
+      "archive_sha256": "60d9f3b98045fdb58e94461ba4710993bc2e640e091a509422c1d84ac71de74a"
+    },
+    {
+      "native_path": "AglibTest/NormalClosureEtale.lean",
+      "archive_sha256": "4b8ca4e391a05b03801563924af63a9783caad8d81b6be0192f2137925f05794"
+    },
+    {
+      "native_path": "AglibTest/QuotSMulTopLocalizedFree.lean",
+      "archive_sha256": "aef94f3fc746a10e14859154e5959096ae60b203e16f6faafda7c422f9765416"
+    },
+    {
+      "native_path": "AglibTest/ReflexiveHom.lean",
+      "archive_sha256": "5b9d461089f36d682ac55cf6de9a934e34c8f02d85275562852063fee732c50f"
+    },
+    {
+      "native_path": "AglibTest/ReflexiveLocalization.lean",
+      "archive_sha256": "451987c8940b26da7e8c690e22eb59529f4e636eca5cdb6d1f7a1a486f379c18"
+    },
+    {
+      "native_path": "AglibTest/ReflexiveQuotientEndomorphism.lean",
+      "archive_sha256": "4b583556cc2d15b78d16b77ee074301266c5ea2d276eb352fa7abd90c815affd"
+    },
+    {
+      "native_path": "AglibTest/ReflexiveQuotientEndomorphismComparison.lean",
+      "archive_sha256": "701474f11e6d486be59fe42d44b2c703fa525419cbcad541cd6c094978d5db75"
+    },
+    {
+      "native_path": "AglibTest/SeparableTensorProductSplitting.lean",
+      "archive_sha256": "feece7ddc20eed9ff71dd23c273852457b7da85921d0b40cd1b5b4dcb769c600"
+    },
+    {
+      "native_path": "AglibTest/TensorDualEvaluation.lean",
+      "archive_sha256": "f60f6a6b5393a45443f8e2f80c0bee411a988680e5b8a162dd6da9691733bb19"
+    },
+    {
+      "native_path": "AglibTest/ZariskiNagataPurity.lean",
+      "archive_sha256": "42c6851dbf3dfc401b80e398e2a50fdee228a20a91120c7624b9619cf9297186"
+    },
+    {
+      "native_path": "AglibTest/ZariskiNagataPurityScheme.lean",
+      "archive_sha256": "636cbdd32e129cbaa1f8051b9778cf113822f6fd512cea0af55b30b11a469c30"
+    },
+    {
+      "native_path": "examples/downstream/Consumer/PurityFiniteFlat.lean",
+      "archive_sha256": "d5b6587ba93d5c89912c3b0747d8be5837a31026f68ed7695a4042bdbdbf8b69"
+    }
+  ]
+}

@@ -40,6 +40,10 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
+public import Aglib.Algebra.Category.ModuleCat.Ext.DualQuotient
+public import Aglib.Algebra.Category.ModuleCat.Ext.FiniteLength
+public import Aglib.Algebra.Category.ModuleCat.Ext.FinitePi
+public import Aglib.Algebra.Category.ModuleCat.Ext.QuotSMulTop
 public import Aglib.Algebra.Category.ModuleCat.FiniteLength.Restriction
 public import Aglib.Algebra.Category.ModuleCat.FiniteLengthFamilies
 public import Aglib.Algebra.Category.ModuleCat.FiniteMatrixBaseChange
@@ -84,6 +88,8 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorInjectiveRetract
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections
+public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOne
+public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOneCoefficient
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension.FirstVariable
 public import Aglib.Algebra.Category.Ring.Localization
@@ -117,6 +123,8 @@ public import Aglib.Algebra.Homology.CochainComplexPlus.Shift
 public import Aglib.Algebra.Homology.CochainComplexPlus.Single
 public import Aglib.Algebra.Homology.Coproduct.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction
@@ -314,6 +322,7 @@ public import Aglib.Algebra.Module.CommutingAutomorphisms.RealizationBaseChange
 public import Aglib.Algebra.Module.CommutingAutomorphisms.SupportDominance
 public import Aglib.Algebra.Module.CommutingAutomorphisms.SupportNaturality
 public import Aglib.Algebra.Module.CommutingAutomorphisms.SupportPoints
+public import Aglib.Algebra.Module.EndomorphismRank
 public import Aglib.Algebra.Module.FiniteParametrix
 public import Aglib.Algebra.Module.LinearMap.Exact.Diagram
 public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule

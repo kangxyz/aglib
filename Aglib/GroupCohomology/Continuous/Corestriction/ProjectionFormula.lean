@@ -34,7 +34,7 @@ open GroupCohomology.H2.Continuous.Cup
 variable (G : Type*) [_root_.Group G] [TopologicalSpace G] [IsTopologicalGroup G]
 variable (H : Subgroup G) (hH : IsOpen (H : Set G)) [H.FiniteIndex]
 /-- The `Fintype` structure on the coset space of the finite-index subgroup `H`. -/
-local instance : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
+local instance instFintypeProjectionCosets : Fintype (G ⧸ H) := H.fintypeQuotientOfFiniteIndex
 variable (A B C : Type*)
   [AddCommGroup A] [TopologicalSpace A] [IsTopologicalAddGroup A]
   [DistribMulAction G A] [ContinuousSMul G A]

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Morphisms.Finite.FunctionField
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.Norm
 public import Aglib.RingTheory.DiscreteValuationRing.FiniteNorm
 public import Mathlib.RingTheory.Localization.Finiteness
@@ -40,54 +41,7 @@ variable {X Y : Scheme.{u}} [hX : IsIntegral X] [hY : IsIntegral Y]
 variable (f : X ⟶ Y) [hDominant : IsDominant f] [hFinite : IsFinite f]
 variable (U : Y.Opens) (hU : IsAffineOpen U)
 
-instance preimage_nonempty [Nonempty U] : Nonempty (f ⁻¹ᵁ U) := by
-  refine ⟨⟨genericPoint X, ?_⟩⟩
-  change f (genericPoint X) ∈ U
-  rw [Scheme.map_genericPoint_of_isDominant X f]
-  exact ((genericPoint_spec Y).mem_open_set_iff U.isOpen).mpr
-    (by simpa using ‹Nonempty U›)
-
-/-- The target-chart algebra on functions of the entire inverse-image chart, induced by the
-actual map f.app U. -/
-@[instance_reducible]
-def chartAlgebra : Algebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) := (f.app U).hom.toAlgebra
-
 attribute [local instance] chartAlgebra
-
-omit hFinite in
-/-- Generic restriction commutes with pullback on the entire inverse-image chart. -/
--- Retain finiteness of the original finite dominant norm morphism; the germ identity alone only
--- uses its actual dominant function-field pullback.
-@[nolint unusedArguments]
-theorem fieldMap_germ
-    [IsFinite f]
-    [Nonempty U] :
-    Y.germToFunctionField U ≫ CommRingCat.ofHom (Scheme.functionFieldMap f) =
-      f.app U ≫ X.germToFunctionField (f ⁻¹ᵁ U) := by
-  change Y.presheaf.germ U _ _ ≫
-    (Y.presheaf.stalkSpecializes _ ≫ f.stalkMap _) = _
-  rw [← Category.assoc, TopCat.Presheaf.germ_stalkSpecializes,
-    Scheme.Hom.germ_stalkMap]
-
-theorem chartMap_injective [Nonempty U] : Function.Injective (f.app U) := by
-  intro a b hab
-  apply Y.germToFunctionField_injective U
-  apply (Scheme.functionFieldMap f).injective
-  have h := congrArg (fun g : Γ(Y, U) ⟶ X.functionField => (g a, g b))
-    (fieldMap_germ f U)
-  exact (congrArg Prod.fst h).trans ((congrArg (X.germToFunctionField (f ⁻¹ᵁ U)) hab).trans
-    (congrArg Prod.snd h).symm)
-
-include hU in
-omit hX hY hDominant in
--- Retain the integral-source, integral-target and dominant-map guards of the original
--- norm-chart interface; chart finiteness itself follows from finite_app.
-@[nolint unusedArguments]
-theorem chart_finite
-    [IsIntegral X]
-    [IsIntegral Y]
-    [IsDominant f]
-    : Module.Finite Γ(Y, U) Γ(X, f ⁻¹ᵁ U) := f.finite_app U hU
 
 variable (y : U)
 

@@ -12,7 +12,12 @@ public import Aglib.GroupCohomology.Continuous.Corestriction.ProjectionFormula
 public import Aglib.GroupCohomology.Continuous.Corestriction.Sections
 public import Aglib.GroupCohomology.Continuous.Corestriction.Tower
 public import Aglib.GroupCohomology.H1.AffineTorsor
+public import Aglib.GroupCohomology.H1.CharacterFactorization
 public import Aglib.GroupCohomology.H1.Continuous
+public import Aglib.GroupCohomology.H1.Continuous.CocycleValues
+public import Aglib.GroupCohomology.H1.Continuous.Hilbert90
+public import Aglib.GroupCohomology.H1.Continuous.Inflation
+public import Aglib.GroupCohomology.H1.Continuous.InnerConjugacy
 public import Aglib.GroupCohomology.H1.Continuous.Transgression.Basic
 public import Aglib.GroupCohomology.H1.Continuous.Transgression.FiniteNaturality
 public import Aglib.GroupCohomology.H1.Continuous.Transgression.Naturality
@@ -26,6 +31,13 @@ public import Aglib.GroupCohomology.H2.Continuous
 public import Aglib.GroupCohomology.H2.Continuous.Cup
 public import Aglib.GroupCohomology.H2.Continuous.CupBilinear
 public import Aglib.GroupCohomology.Kummer.Basic
+public import Aglib.GroupCohomology.Kummer.InertiaCharacter
+public import Aglib.GroupCohomology.Kummer.InertiaConjugation
+public import Aglib.GroupCohomology.Kummer.LocalInertia
+public import Aglib.GroupCohomology.Kummer.PrimeToCharacteristic
+public import Aglib.GroupCohomology.Kummer.RootAction
+public import Aglib.GroupCohomology.Kummer.Surjectivity
+public import Aglib.GroupCohomology.Kummer.TameSurjectivity
 
 /-!
 # GroupCohomology

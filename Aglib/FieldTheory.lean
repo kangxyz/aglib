@@ -18,6 +18,7 @@ public import Aglib.FieldTheory.Divisors.FiniteConstants
 public import Aglib.FieldTheory.Divisors.UnitPowers
 public import Aglib.FieldTheory.FieldCharpolyPower
 public import Aglib.FieldTheory.FiniteCoprimeSplitting
+public import Aglib.FieldTheory.Galois.Endomorphism
 public import Aglib.FieldTheory.Galois.FiniteCoefficientDependence
 public import Aglib.FieldTheory.Galois.FiniteStabilizers
 public import Aglib.FieldTheory.Norm.RootFactorization
@@ -31,6 +32,7 @@ public import Aglib.FieldTheory.RatFuncReverse
 public import Aglib.FieldTheory.RatFuncTranslation
 public import Aglib.FieldTheory.RationalCoefficientRoot
 public import Aglib.FieldTheory.ResidueMinpolyBranch
+public import Aglib.FieldTheory.Separable.TensorProductSplitting
 public import Aglib.FieldTheory.Subfield.FiniteData
 public import Aglib.FieldTheory.SylowFixedField
 public import Aglib.FieldTheory.TensorCharpolyProduct

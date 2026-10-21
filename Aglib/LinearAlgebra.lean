@@ -8,11 +8,15 @@ Authors: kangxyz
 module
 
 public import Aglib.LinearAlgebra.DFinsupp.Subtype
+public import Aglib.LinearAlgebra.Dual.SplitInjection
 public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
 public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
 public import Aglib.LinearAlgebra.Matrix.ScalarRestriction
 public import Aglib.LinearAlgebra.Multilinear.Span
+public import Aglib.LinearAlgebra.TensorProduct.DualEvaluation
+public import Aglib.LinearAlgebra.TensorProduct.DualEvaluationFiniteLength
+public import Aglib.LinearAlgebra.TensorProduct.DualInjectivity
 public import Aglib.LinearAlgebra.TensorProduct.Finite
 public import Aglib.LinearAlgebra.TensorProduct.Map
 
