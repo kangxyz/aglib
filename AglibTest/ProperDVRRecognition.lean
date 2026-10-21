@@ -36,9 +36,8 @@ example (_hdim : Scheme.SmoothClosedPointDimension.{u})
   let := hf
   exact Scheme.smoothOfRelativeDimension_stalk_dimension_le K X f 1 x
 
-variable (hdesc : Scheme.RegularityDescent.FlatLocalRegularityDescent.{u})
-  (hreg : Scheme.SmoothFieldRegularity.{u}) (hdim : Scheme.SmoothClosedPointDimension.{u})
-  (K : Type u) [Field K] {X Y : Scheme.{u}}
+-- Native regularity and dimension suppliers are applied inside the chart theorems.
+variable (K : Type u) [Field K] {X Y : Scheme.{u}}
 
 -- No source integrality, closed chart point or target dimension bound is added.
 example [IsIntegral Y] [IsLocallyNoetherian Y]
@@ -46,17 +45,17 @@ example [IsIntegral Y] [IsLocallyNoetherian Y]
     (hf : SmoothOfRelativeDimension 1 f) (x : X)
     (himage : j x ≠ genericPoint Y) :
     IsDiscreteValuationRing (Y.presheaf.stalk (j x)) :=
-  Scheme.dvr_at_image_of_etale_smooth_curve_chart_any_point hdesc hreg hdim K j f hf x himage
+  Scheme.dvr_at_image_of_etale_smooth_curve_chart_any_point K j f hf x himage
 
 example [IsIntegral Y] [IsLocallyNoetherian Y]
     (j : X ⟶ Y) [Etale j] (b : X ⟶ Spec (.of (Polynomial K))) [Etale b]
     (x : X) (himage : j x ≠ genericPoint Y) :
     IsDiscreteValuationRing (Y.presheaf.stalk (j x)) :=
-  Scheme.dvr_at_image_of_etale_affine_line_chart hdesc hreg hdim K j b x himage
+  Scheme.dvr_at_image_of_etale_affine_line_chart K j b x himage
 
 -- The open-chart endpoint transports along the original stalkMap, with closed image.
 example [IsIntegral Y] (j : X ⟶ Y) [IsOpenImmersion j]
     (p : Y ⟶ Spec (.of K)) [SmoothOfRelativeDimension 1 (j ≫ p)]
     (q : X) (hq : IsClosed ({j q} : Set Y)) :
     IsDiscreteValuationRing (Y.presheaf.stalk (j q)) :=
-  Scheme.smoothChart_closedPoint_dvr j p hreg hdim q hq
+  Scheme.smoothChart_closedPoint_dvr j p q hq
