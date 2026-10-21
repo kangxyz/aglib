@@ -315,7 +315,8 @@
         "AglibTest.StableQuotient",
         "AglibTest.SurfaceComponents"
       ],
-      "reason": "No matching scoped cached test basis; broad archive recovery and cold unrelated/negative-control compilation were not run."
+      "reason": "The user excluded the AglibTest-wide check from this migration. The already successful affected four-test build is retained; no further test-environment expansion is required.",
+      "scope": "excluded_by_user"
     },
     "downstream_validation": "not_requested; synchronization assigned to other sessions",
     "kernel_replay": "not_requested"

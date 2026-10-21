@@ -138,11 +138,10 @@ complete production `Aglib` environment passed native builtin lint and the
 unmodified Batteries driver; selected text-style lint passed for 116 changed
 modules. The exact Lean-source digest and coverage are in the JSON map.
 
-Full-test-environment lint was not run. At the baseline there is no source-owned
-`AglibTest.lean` umbrella, and six unrelated positive-test artifacts lack
-matching scoped cache outputs. The existing public cache adapter offers only a
-broad package-archive fallback. This task did not compile those unrelated tests
-or negative-control fixtures to manufacture the missing environment. This
-limitation is not recorded as a passing test-umbrella lint result; the four
-affected test modules above did pass. Further test-runner/cache maintenance
-belongs to its owner, separately from the source migration.
+Full-test-environment lint was not run and is excluded by the user's explicit
+task scope. It is not an outstanding completion condition for this migration.
+The four affected test modules above already passed, and that evidence is
+retained. No further AglibTest environment preparation or test compilation is
+required by this phase. Earlier test-entry/cache readiness observations remain
+separate infrastructure facts and are not recorded as a passing test-umbrella
+lint result.
