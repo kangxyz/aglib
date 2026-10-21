@@ -15,3 +15,15 @@ sheaf tensor of two native tilde modules with tilde of their module tensor.
 every open. `isQuasicoherent_moduleTensorLeftFunctor` proves tensor closure on
 arbitrary schemes without flatness, finiteness, or Noetherian hypotheses; the
 module owner has no cohomology dependency.
+
+[AffinePushforward](AffinePushforward.lean) proves quasicoherent direct image
+for an arbitrary affine morphism, not just a map between affine schemes.
+It uses restriction to actual affine charts and the original open-base-change
+comparison. No Noetherian hypothesis is required.
+
+[Coproduct](Coproduct.lean) proves arbitrary small colimit closure, in
+particular quasicoherence of the actual ambient module-sheaf coproduct.
+[Affine/CoproductSections](Affine/CoproductSections.lean) proves that original
+affine-open section cocones remain colimiting for quasicoherent diagrams.
+Both statements preserve the actual cocone maps and require no finite-type,
+Noetherian, flatness or separatedness premise.

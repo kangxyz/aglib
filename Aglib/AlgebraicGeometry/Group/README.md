@@ -55,5 +55,16 @@ It retains `hE : Curve.Properties E.X`, the native
 `hg1 : coherentGenus F E.X = 1`, `0 < n` and `IsUnit (n : F)`.
 Its canonical scalar action, linear Galois action and semilinear actual level
 maps keep the original carrier and underlying functions. The chosen basis is
-not asserted Galois-equivariant. Level one is covered; a perfect pairing
-remains separate.
+not asserted Galois-equivariant. Level one is covered.
+[Weil pairing](WeilPairing.md) supplies an actual perfect alternating pairing
+at positive invertible levels, including one, even and composite levels, with
+the original torsion and roots-of-unity Galois actions.
+
+[Native curve genus](CurveGenus.md) proves `Curve.coherentGenus k G.X = 1`
+from the actual group object and `Curve.Properties G.X` over every field,
+including characteristic two. It does not identify an external genus field.
+[Positive-level multiplication](MultiplicationFiniteDegree.lean) proves that
+the actual `[n]` is finite, flat and surjective of locally free rank `n²` for
+every positive `n`, including noninvertible levels, with the native genus-one
+premise supplied by the genus theorem. The geometric reduced point-count and
+étaleness conclusions above retain their invertible-level premise.

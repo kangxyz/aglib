@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.FlatLocal
+public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.Etale
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity
 public import Mathlib.AlgebraicGeometry.FunctionField
@@ -16,10 +17,9 @@ public import Mathlib.RingTheory.KrullDimension.Field
 /-!
 # DVR stalks from actual étale smooth-curve charts
 
-The actual étale stalk map supplies the native equality of dimensions. The existing
-flat-local regularity-descent family remains an explicit input. The original smooth
-regularity and closed-point dimension inputs remain in the public chart interfaces;
-the native all-stalk dimension bound supplies the stronger dimension step internally.
+The actual étale stalk map supplies regularity descent and equality of dimensions.
+The proved native smooth-field regularity and all-stalk dimension bound supply the
+smooth-curve inputs internally. No general flat-local descent family is assumed.
 
 Selected source: `R5Lab/Aglib/AlgebraicGeometry/Stalk/EtaleCurveDVR.lean`, R5 revision
 `f8a3314ddecffcada2ec721d26d56a937bed9690`, SHA-256
@@ -56,8 +56,6 @@ lemma not_isField_stalk_of_ne_genericPoint
 /-- Every nongeneric image of an actual étale smooth-curve chart has a DVR stalk.
 The source need not be integral, and the chart point need not be closed. -/
 lemma dvr_at_image_of_etale_smooth_curve_chart_any_point
-    (hdesc : RegularityDescent.FlatLocalRegularityDescent.{u})
-    (hreg : SmoothFieldRegularity.{u}) (_hdim : SmoothClosedPointDimension.{u})
     (K : Type u) [Field K] {X Y : Scheme.{u}}
     [IsIntegral Y] [IsLocallyNoetherian Y]
     (j : X ⟶ Y) [Etale j] (f : X ⟶ Spec (.of K))
@@ -67,8 +65,8 @@ lemma dvr_at_image_of_etale_smooth_curve_chart_any_point
   let : SmoothOfRelativeDimension 1 f := hf
   let : Smooth f := SmoothOfRelativeDimension.smooth 1 f
   let : IsLocallyNoetherian X := LocallyOfFiniteType.isLocallyNoetherian f
-  have hregular := RegularityDescent.regular_at_image hdesc j x
-    (hreg K X f inferInstance x)
+  have hregular := RegularityDescent.Etale.regular_at_image j x
+    (smoothFieldRegularity K X f inferInstance x)
   have hbound : ringKrullDim (Y.presheaf.stalk (j x)) ≤ 1 := by
     rw [← ringKrullDim_stalk_eq_of_etale j x]
     exact smoothOfRelativeDimension_stalk_dimension_le K X f 1 x
@@ -85,24 +83,20 @@ lemma dvr_at_image_of_etale_smooth_curve_chart_any_point
   rw [hdim] at hc
   exact_mod_cast hc
 
-/-- The original closed-point chart interface follows from the arbitrary-point theorem.
-The closed-point and smooth-family premises are retained exactly. -/
+/-- The closed-point chart interface follows from the arbitrary-point theorem,
+with the original closed-point condition retained. -/
 lemma dvr_at_image_of_etale_smooth_curve_chart
-    (hdesc : RegularityDescent.FlatLocalRegularityDescent.{u})
-    (hreg : SmoothFieldRegularity.{u}) (hdim : SmoothClosedPointDimension.{u})
     (K : Type u) [Field K] {X Y : Scheme.{u}}
     [IsIntegral Y] [IsLocallyNoetherian Y]
     (j : X ⟶ Y) [Etale j] (f : X ⟶ Spec (.of K))
     (hf : SmoothOfRelativeDimension 1 f) (x : X)
     (_hx : IsClosed ({x} : Set X)) (himage : j x ≠ genericPoint Y) :
     IsDiscreteValuationRing (Y.presheaf.stalk (j x)) :=
-  dvr_at_image_of_etale_smooth_curve_chart_any_point hdesc hreg hdim K j f hf x himage
+  dvr_at_image_of_etale_smooth_curve_chart_any_point K j f hf x himage
 
 /-- An actual étale affine-line chart supplies the smooth curve structure. Its
 structural morphism is the literal Spec map of the polynomial algebra map. -/
 lemma dvr_at_image_of_etale_affine_line_chart
-    (hdesc : RegularityDescent.FlatLocalRegularityDescent.{u})
-    (hreg : SmoothFieldRegularity.{u}) (hdim : SmoothClosedPointDimension.{u})
     (K : Type u) [Field K] {X Y : Scheme.{u}}
     [IsIntegral Y] [IsLocallyNoetherian Y]
     (j : X ⟶ Y) [Etale j] (b : X ⟶ Spec (.of (Polynomial K))) [Etale b]
@@ -122,7 +116,7 @@ lemma dvr_at_image_of_etale_affine_line_chart
       (MvPolynomial.uniqueAlgEquiv K PUnit.{u+1})
   have : SmoothOfRelativeDimension 1 (b ≫ p) :=
     inferInstanceAs (SmoothOfRelativeDimension (0 + 1) _)
-  exact dvr_at_image_of_etale_smooth_curve_chart_any_point hdesc hreg hdim K j
+  exact dvr_at_image_of_etale_smooth_curve_chart_any_point K j
     (b ≫ p) inferInstance x himage
 
 end AlgebraicGeometry.Scheme

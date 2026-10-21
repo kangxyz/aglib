@@ -6,12 +6,13 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Properties.Regular.Basic
+public import Aglib.RingTheory.RegularLocalRing.FlatDescent
 public import Mathlib.AlgebraicGeometry.Morphisms.Flat
 public import Mathlib.AlgebraicGeometry.Noetherian
 public import Mathlib.AlgebraicGeometry.Morphisms.Etale
 
 /-!
-# Conditional regularity descent along flat local maps
+# Regularity descent along flat local maps
 
 Source: `R5Lab.Aglib.AlgebraicGeometry.Stalk.FlatRegularityDescent`.
 R5 packet revision: `f8a3314ddecffcada2ec721d26d56a937bed9690`.
@@ -32,10 +33,10 @@ universe u v
 section FlatLocalRegularityDescent
 
 
-/-! The separately reviewed ordinary flat-local regularity descent family,
-Stacks Lemma 10.110.9 (00OF). This is an explicit unproved proposition type,
-not an axiom or a specialised node/resolution conclusion. Actual scheme-stalk
-locality, flatness and Noetherianness are proved from the displayed hypotheses. -/
+/-! The ordinary flat-local regularity descent family, Stacks Lemma 10.110.9
+(00OF), retains its original parametric interface. The generic ring theorem
+below supplies an actual inhabitant. Scheme-stalk locality, flatness and
+Noetherianness follow from the displayed hypotheses. -/
 noncomputable section
 open CategoryTheory AlgebraicGeometry
 namespace AlgebraicGeometry.Scheme.RegularityDescent
@@ -46,6 +47,14 @@ def FlatLocalRegularityDescent : Prop :=
   ∀ (A B : Type u) [CommRing A] [CommRing B] [IsLocalRing A] [IsLocalRing B]
     [IsNoetherianRing A] [IsNoetherianRing B] (f : A →+* B),
     IsLocalHom f → f.Flat → IsRegularLocalRing B → IsRegularLocalRing A
+
+/-- The full flat-local regularity descent family follows from the proved
+ring theorem, with the original homomorphism and module structure. -/
+theorem flatLocalRegularityDescent : FlatLocalRegularityDescent.{u} := by
+  intro A B _ _ _ _ _ _ f hlocal hflat hregular
+  let := hlocal
+  let := hregular
+  exact IsRegularLocalRing.of_flat_local f hflat
 
 variable (hdesc : FlatLocalRegularityDescent.{u})
 include hdesc

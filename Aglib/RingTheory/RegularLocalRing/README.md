@@ -13,3 +13,11 @@ Focused imports are `Aglib.RingTheory.RegularLocalRing.Domain`, `.Normal`, `.Par
 [Localization](Localization.lean) supplies the localized regular-local-ring
 interfaces used by the operator and stalk families; their displayed regularity
 and localization hypotheses remain explicit.
+
+[Residue projective dimension](ResidueProjectiveDimension.md) proves regularity
+of a commutative Noetherian local ring from finite actual projective dimension
+of its residue field, using the minimal-resolution/Koszul cotangent lower bound.
+[Flat descent](FlatDescent.md) then proves regularity of the source of an actual
+flat local homomorphism from a Noetherian local ring to a regular local ring.
+The ring universes are independent; no finite-type, unramifiedness,
+characteristic or completion premise is imposed.

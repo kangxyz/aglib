@@ -14,6 +14,7 @@ public import Aglib.RingTheory.AdicCompletion.BranchUniformizer
 public import Aglib.RingTheory.AdicCompletion.ChineseRemainder
 public import Aglib.RingTheory.AdicCompletion.DedekindBranches
 public import Aglib.RingTheory.AdicCompletion.DiscreteValuationRing
+public import Aglib.RingTheory.AdicCompletion.EquivTransport
 public import Aglib.RingTheory.AdicCompletion.FiniteAlgebra
 public import Aglib.RingTheory.AdicCompletion.FiniteDedekindBranches
 public import Aglib.RingTheory.AdicCompletion.FiniteModule
@@ -27,6 +28,7 @@ public import Aglib.RingTheory.AdicCompletion.OriginalBranchResidues
 public import Aglib.RingTheory.AdicCompletion.Powers
 public import Aglib.RingTheory.AdicCompletion.ScalarExtension
 public import Aglib.RingTheory.AdicCompletion.SemilocalBranches
+public import Aglib.RingTheory.AdicCompletion.TowerComparison
 public import Aglib.RingTheory.AdjoinRoot.BivariateTensor
 public import Aglib.RingTheory.AdjoinRootBalancedFractions
 public import Aglib.RingTheory.AdjoinRootBranchProduct
@@ -98,6 +100,7 @@ public import Aglib.RingTheory.Etale.LocalCotangent
 public import Aglib.RingTheory.Etale.MilnorPatching
 public import Aglib.RingTheory.Etale.MilnorPatching.FiniteFree
 public import Aglib.RingTheory.Etale.MilnorPatching.Unramified
+public import Aglib.RingTheory.Etale.NilpotentLift
 public import Aglib.RingTheory.Etale.NonmonicPair
 public import Aglib.RingTheory.Etale.Polynomial
 public import Aglib.RingTheory.Etale.QuadraticDVR
@@ -175,6 +178,7 @@ public import Aglib.RingTheory.Grassmannian.Descent
 public import Aglib.RingTheory.Grassmannian.Gluing
 public import Aglib.RingTheory.Grassmannian.Overlap
 public import Aglib.RingTheory.Henselian.Etale
+public import Aglib.RingTheory.Henselian.FiniteAlgebraIdempotents
 public import Aglib.RingTheory.Henselian.Quadratic
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
@@ -251,6 +255,7 @@ public import Aglib.RingTheory.LocalRing.ParameterQuotient
 public import Aglib.RingTheory.LocalRing.PrincipalMaximalIdeal
 public import Aglib.RingTheory.LocalRing.ProjectiveDimension
 public import Aglib.RingTheory.LocalRing.ResidueFieldComap
+public import Aglib.RingTheory.LocalRing.ResidueProjectiveDimensionBound
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.Localization.Away.MapInverse
@@ -289,6 +294,8 @@ public import Aglib.RingTheory.MvPolynomial.HomogeneousTranslation
 public import Aglib.RingTheory.MvPolynomial.RegularSequence
 public import Aglib.RingTheory.PlaneNode.Basic
 public import Aglib.RingTheory.PlaneNode.CoordinateTransport
+public import Aglib.RingTheory.PlaneNode.Regularity
+public import Aglib.RingTheory.PlaneNode.Residue
 public import Aglib.RingTheory.Polynomial.GraphRelations
 public import Aglib.RingTheory.Polynomial.PinchedPair
 public import Aglib.RingTheory.PolynomialFiberNorm
@@ -306,7 +313,11 @@ public import Aglib.RingTheory.QuotSMulTop.Hom
 public import Aglib.RingTheory.QuotSMulTop.LocalizedFree
 public import Aglib.RingTheory.QuotSMulTop.Pi
 public import Aglib.RingTheory.ReesAlgebra.Away
+public import Aglib.RingTheory.ReesAlgebra.GradedTransition
+public import Aglib.RingTheory.ReesAlgebra.GradedTransitionGenerators
 public import Aglib.RingTheory.ReesAlgebra.Grading
+public import Aglib.RingTheory.ReesAlgebra.ModuleDirectSum
+public import Aglib.RingTheory.ReesAlgebra.ModuleImage
 public import Aglib.RingTheory.Reflexive.Algebra
 public import Aglib.RingTheory.Reflexive.Auslander
 public import Aglib.RingTheory.Reflexive.AuslanderDimensionThree
@@ -348,6 +359,7 @@ public import Aglib.RingTheory.RegularLocalRing.FiniteLengthDualComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExt
 public import Aglib.RingTheory.RegularLocalRing.FiniteLengthExtComparison
 public import Aglib.RingTheory.RegularLocalRing.FiniteProjectiveDimension
+public import Aglib.RingTheory.RegularLocalRing.FlatDescent
 public import Aglib.RingTheory.RegularLocalRing.Localization
 public import Aglib.RingTheory.RegularLocalRing.Normal
 public import Aglib.RingTheory.RegularLocalRing.ParameterQuotient
@@ -355,6 +367,7 @@ public import Aglib.RingTheory.RegularLocalRing.Parameters
 public import Aglib.RingTheory.RegularLocalRing.ProjectiveDimension
 public import Aglib.RingTheory.RegularLocalRing.PuncturedDualComparison
 public import Aglib.RingTheory.RegularLocalRing.RegularSequence
+public import Aglib.RingTheory.RegularLocalRing.ResidueProjectiveDimension
 public import Aglib.RingTheory.RootsOfUnity.Adjoin
 public import Aglib.RingTheory.RootsOfUnity.BaseField
 public import Aglib.RingTheory.RootsOfUnity.CharacterCompatibility

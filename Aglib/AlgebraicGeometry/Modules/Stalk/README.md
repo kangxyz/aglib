@@ -7,3 +7,8 @@ The actual module skyscraper is `Scheme.Modules.moduleSkyscraper X x`. `moduleSt
 [Reflection](Reflection.lean) gives `Scheme.Modules.epi_of_moduleStalk` and `isIso_of_moduleStalk`, together with zero-object and quasi-isomorphism detection on the original stalk maps. [Exactness](Exactness.lean) gives `exact_of_moduleStalk` and `shortExact_of_moduleStalk` for an actual short complex with the stated stalkwise exactness, mono and epi hypotheses. These detection results apply to arbitrary scheme module sheaves.
 
 The [tensor stalk comparisons](../Tensor/Stalk/README.md), [projection formula](../ProjectionFormula/README.md), [Godement construction](../../Cohomology/Godement/README.md) and [open-cover quasi-isomorphism detection](../../Cohomology/Locality/README.md) consume these interfaces. Stalkwise properties remain inputs to detection.
+
+[LocalSpectrum](LocalSpectrum.lean) identifies global sections on the spectrum
+of a local ring with the actual closed-point stalk. Its forward map is the
+original germ, with scalar restriction along the native closed-point ring
+isomorphism. It is natural in the coefficient and requires no quasicoherence.

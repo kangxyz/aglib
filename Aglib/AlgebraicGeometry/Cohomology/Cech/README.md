@@ -61,3 +61,45 @@ every degree. `moduleCohomologyPushforwardLinearEquiv` retains the specified
 structural scalar action and has the original
 `moduleCohomologyMapAlong f (𝟙 _)` as its literal forward map. The projective
 closed-immersion comparison consumes these exact maps.
+
+[CoproductSections](CoproductSections.lean) retains the specified structural
+ring on actual affine sections of quasicoherent colimits.
+[CoproductComplex](CoproductComplex.lean) gives the finite-affine Cech
+coproduct comparison and its original coefficient-inclusion equation.
+[Coproduct](Coproduct.lean) proves that the canonical direct-sum map to the
+original `Sheaf.H` is an equivalence on quasi-compact separated schemes in
+every degree. Its forward map is literally induced by the ambient coproduct
+inclusions; arbitrary maps out of the coproduct are compatible with it.
+[CoproductNaturality](CoproductNaturality.lean) identifies the original
+coproduct projections with direct-sum component extraction. None of these
+statements asserts finite generation of Cech terms or requires flatness.
+
+[CoproductSectionIso](CoproductSectionIso.lean) is the concrete affine-open
+section comparison with a direct sum. Its inclusion formula uses the literal
+coefficient inclusion and `DirectSum.lof`, with the original structural-ring
+action. It is independent of the higher-cohomology comparison.
+
+The coproduct index has an independent universe: an index in `Type v` is
+allowed on a scheme in universe `max u v`. In particular, the actual
+natural-number family is supported on `Scheme.{u}`, not only on schemes in
+universe zero. Naturality also permits index maps, including degree shifts.
+
+[CoproductMap](CoproductMap.lean) isolates the literal original cohomology
+map, independently of its bijectivity proof. The finite-cover computation
+is in [CoproductComputed](CoproductComputed.lean), and the actual canonical map is proved
+bijective in [CoproductComputedInclusions](CoproductComputedInclusions.lean)
+by specializing an abstract direct-sum transport theorem. The shared regular
+transport constructor preserves the same native comparison maps and scalar actions.
+Projection and coefficient-map naturality depend only on `CoproductMap`.
+
+[Modules/FunctorComparison](Modules/FunctorComparison.lean) presents the native
+all-degree Cech equivalence in the original module-valued cohomology functor.
+Its coefficient naturality is proved at variable coefficients before any
+coproduct substitution. This is a presentation adapter, not a replacement
+cohomology theory or a different scalar action.
+
+[CoproductCompatibility](CoproductCompatibility.lean) packages the actual
+complex-inclusion and original-cohomology naturality equations for the entire
+family. The final comparison specializes the abstract exact-complex transport
+with these named facts, using staged arguments to avoid coupled elaboration
+of the native cohomology presentations.

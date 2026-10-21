@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.TwoGon
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.CartierUnions
 public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.Intersections
+public import Aglib.AlgebraicGeometry.Curves.Nodal.Polygon.One
 public import Aglib.AlgebraicGeometry.Limits.PullbackTransport
 
 /-!
@@ -462,37 +463,6 @@ end AlgebraicGeometry.Scheme.LocalRing.ResidueFiber.PolygonComponents
 namespace AlgebraicGeometry.Scheme.Polygon
 variable (k : Type u) [Field k]
 
-/-- In the one-component cycle the literal diagonal node-ring map is an
-isomorphism; its inverse is evaluation at the unique normalization coordinate. -/
-theorem baseMap_one_bijective : Function.Bijective (baseMap k 1) := by
-  refine ⟨baseMap_injective k 1, ?_⟩
-  intro p
-  have hp : (p.val 0).eval 0 = (p.val 0).eval 1 := by
-    have h := (mem_nodeRing k 1 p.val).mp p.property 0
-    have hrot : finRotate 1 0 = 0 := Subsingleton.elim _ _
-    simpa only [hrot] using h.symm
-  refine ⟨⟨p.val 0, hp⟩, ?_⟩
-  apply Subtype.ext
-  funext i
-  change p.val 0 = p.val i
-  rw [Subsingleton.elim i 0]
-
-/-- The affine chart comparison for the one-component polygon is an isomorphism. -/
-instance affineMap_one_isIso : IsIso (affineMap k 1) :=
-  isIso_SpecMap_iff.mpr (baseMap_one_bijective k)
-
-/-- The infinity chart comparison for the one-component polygon is an isomorphism. -/
-instance infinityMap_one_isIso : IsIso (infinityMap k 1) := by
-  apply isIso_SpecMap_iff.mpr
-  constructor
-  · intro a b h
-    exact congrArg (fun f : Fin 1 → V k => f 0) h
-  · intro p
-    refine ⟨p 0, ?_⟩
-    funext i
-    change p 0 = p i
-    rw [Subsingleton.elim i 0]
-
 /-- The unique-index overlap has its original constant/evaluation ring inverse. -/
 instance overlapMap_one_isIso : IsIso (overlapMap k 1) := by
   apply isIso_SpecMap_iff.mpr
@@ -504,19 +474,6 @@ instance overlapMap_one_isIso : IsIso (overlapMap k 1) := by
     funext i
     change p 0 = p i
     rw [Subsingleton.elim i 0]
-
-/-- The same actual pushout map is an isomorphism on its three actual chart maps. -/
-instance cycleMap_one_isIso : IsIso (cycleMap k 1) := by
-  change IsIso (pushout.map (gluingToNode k 1) (gluingToInfinity k 1)
-    (Scheme.PinchedLine.gluingToNode k) (Scheme.PinchedLine.gluingToInfinity k)
-    (affineMap k 1) (infinityMap k 1) (overlapMap k 1)
-    (affine_compatibility k 1) (infinity_compatibility k 1))
-  infer_instance
-
-/-- The one-component polygon identified with the pinched line over the original field. -/
-def cycleOneOverIso : Over.mk (structureMap k 1) ≅ Over.mk (Scheme.PinchedLine.pinchedStructure
-    k) :=
-  Over.isoMk (asIso (cycleMap k 1)) rfl
 
 end AlgebraicGeometry.Scheme.Polygon
 namespace AlgebraicGeometry.Scheme.LocalRing.ResidueFiber

@@ -9,3 +9,8 @@ The same leaf proves `IsLocalRing.isUnit_add_of_mem_maximalIdeal`, which
 requires locality, a unit and a maximal-ideal summand. The general completion
 and finite-target lifting providers remain in the existing completion and
 smooth families.
+
+[Finite-algebra idempotents](FiniteAlgebraIdempotents.md) lifts each prescribed
+idempotent modulo the extended maximal ideal in any finite commutative algebra
+over a Henselian local ring. It retains the actual quotient map and requires
+no Noetherianity, flatness, étaleness or completeness.

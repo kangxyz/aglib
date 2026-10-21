@@ -27,3 +27,17 @@ homology of a two-term presentation is its signed cokernel. The Laurent
 finite-projective model consequently gives finiteness of the original module
 cokernel over a field. No geometric sheaf or projective-line identification is
 an input to these module statements.
+
+[Coproduct](Coproduct.lean) constructs the actual termwise coproduct of module
+complexes and its canonical direct-sum homology comparison. Exactness of
+module coproducts supplies the comparison without boundedness, flatness or
+finite-generation assumptions. `coproductComplexι_homologyIso` identifies
+the original summand inclusion on homology with the categorical inclusion.
+The index universe is independent of the complex's module universe, using
+native shrinking of exact coproducts; natural-number indices do not force
+the module universe to zero.
+
+[CoproductTransport](CoproductTransport.lean) transfers this exact coproduct
+homology computation to a specified functor. Both the complex inclusion
+identities and the functor coefficient maps are explicit hypotheses; all
+transport algebra is proved before concrete coefficients are substituted.

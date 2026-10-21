@@ -40,6 +40,7 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
+public import Aglib.Algebra.Category.ModuleCat.DirectSumMap
 public import Aglib.Algebra.Category.ModuleCat.Ext.DualQuotient
 public import Aglib.Algebra.Category.ModuleCat.Ext.FiniteLength
 public import Aglib.Algebra.Category.ModuleCat.Ext.FinitePi
@@ -48,6 +49,7 @@ public import Aglib.Algebra.Category.ModuleCat.FiniteLength.Restriction
 public import Aglib.Algebra.Category.ModuleCat.FiniteLengthFamilies
 public import Aglib.Algebra.Category.ModuleCat.FiniteMatrixBaseChange
 public import Aglib.Algebra.Category.ModuleCat.FinitePresentation
+public import Aglib.Algebra.Category.ModuleCat.FunctorTransport
 public import Aglib.Algebra.Category.ModuleCat.KernelBaseChange
 public import Aglib.Algebra.Category.ModuleCat.Localization.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.Localization.Counit
@@ -56,6 +58,7 @@ public import Aglib.Algebra.Category.ModuleCat.Localization.Homology
 public import Aglib.Algebra.Category.ModuleCat.Localization.Projective
 public import Aglib.Algebra.Category.ModuleCat.Localization.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Localization.Submodule
+public import Aglib.Algebra.Category.ModuleCat.MinimalFiniteFreeResolution
 public import Aglib.Algebra.Category.ModuleCat.Monoidal.RestrictScalars
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
@@ -93,6 +96,7 @@ public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOneCoefficient
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension.FirstVariable
 public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.NormalizedQuotient
@@ -210,6 +214,7 @@ public import Aglib.Algebra.Homology.Koszul.Ext.Quotient
 public import Aglib.Algebra.Homology.Koszul.Ext.ScalarExtensionClass
 public import Aglib.Algebra.Homology.Koszul.Ext.Top
 public import Aglib.Algebra.Homology.Koszul.Ideal
+public import Aglib.Algebra.Homology.Koszul.LinearPart
 public import Aglib.Algebra.Homology.Koszul.Resolution
 public import Aglib.Algebra.Homology.Koszul.ScalarQuotientFunctor
 public import Aglib.Algebra.Homology.Koszul.Single
@@ -234,6 +239,8 @@ public import Aglib.Algebra.Homology.MappingCone.QuasiIso
 public import Aglib.Algebra.Homology.MappingCone.Rotation
 public import Aglib.Algebra.Homology.MappingCone.ShortExact
 public import Aglib.Algebra.Homology.MappingCone.WeakMap
+public import Aglib.Algebra.Homology.ModuleCat.Coproduct
+public import Aglib.Algebra.Homology.ModuleCat.CoproductTransport
 public import Aglib.Algebra.Homology.ModuleCat.FiniteHomology
 public import Aglib.Algebra.Homology.ModuleCat.FiniteParametrix
 public import Aglib.Algebra.Homology.ModuleCat.LaurentModuleCech

@@ -38,3 +38,19 @@ constructs the actual finite-support, coordinatewise finite-length Serre
 subcategory of dependent module families and its exact coordinate functors. The
 finite-support property delegates to `CategoryTheory.Pi.FiniteSupport`; no
 semisimple or residue-field category replaces the given module actions.
+
+[DirectSumMap](DirectSumMap.lean) constructs canonical direct-sum descent for
+bundled module coefficients and the comparison induced by any module-valued
+functor. Its summand equation is the actual functor image of the original
+coproduct inclusion, without any preservation assumption on the functor.
+
+[FunctorTransport](FunctorTransport.lean) proves functor laws for specified
+original arrow families from compatible stagewise linear equivalences. It also
+transports native `sectionsSubmodule` families coordinatewise along a natural
+isomorphism, without introducing another limit model.
+
+[Minimal finite free covers and resolutions](MinimalFiniteFreeResolution.md)
+constructs a minimal finite free cover of any finite module over a commutative
+local ring, without Noetherianity. Over a Noetherian local ring, a finite module
+with actual projective dimension at most `n` has an actual minimal projective
+resolution with finite free terms and zero terms above `n`.

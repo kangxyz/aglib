@@ -16,3 +16,12 @@ Consumers are finite-presentation/quasicoherent transport, [arbitrary vector-bun
 compare the actual pullback/tensor adjunction and transported local bases.
 Their maps are the original pullback maps, with the displayed scheme and
 module hypotheses.
+
+[LocalSpectrum](LocalSpectrum.lean) normalizes the actual stalk map of
+`fromSpecStalk` and identifies the original module stalk with global sections
+of its actual local-spectrum pullback. The factors are the native scalar
+extension unit, original pullback-stalk comparison, and inverse closed germ;
+no quasicoherence or finiteness hypothesis is required.
+
+[UnitTriangle](UnitTriangle.lean) retains the original pullback units and native
+composition/equality comparisons on a commutative scheme triangle.

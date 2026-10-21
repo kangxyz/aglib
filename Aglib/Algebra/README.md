@@ -20,3 +20,9 @@ casting back from `ENat.toNat`.
 retraction and subgroup; [Torsion](Group/Torsion.lean) transports actual torsion.
 [Finite product projections](Ring/Pi/README.md) and
 [QuadraticNorm](QuadraticNorm.lean) provide lower algebraic interfaces.
+
+[DirectSumTransport](DirectSumTransport.lean) identifies a computed direct-sum
+linear equivalence from its summand equations and proves the specified
+canonical map bijective. The constructor and its theorems share the same
+regular definition. Its module universes are
+independent, allowing comparison with larger-universe original cohomology.

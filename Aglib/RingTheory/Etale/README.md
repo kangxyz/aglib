@@ -19,3 +19,8 @@ retraction, both canonical tensor comparisons and an endpoint-dependent cyclic
 client. Projectivity gives finite presentation over an arbitrary fibre base;
 joint tensor conservativity proves formal unramifiedness. The universal
 arbitrary-component family remains separate.
+
+[Nilpotent lifting](NilpotentLift.md) lifts an actual étale algebra across any
+nilpotent ideal of a commutative ring. A finite input algebra has a finite lift,
+with the original tensor and quotient comparisons. No Noetherian, Henselian
+or completeness hypothesis is required.

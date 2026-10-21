@@ -1,17 +1,17 @@
-# Conditional descent of actual regular stalks
+# Descent of actual regular stalks
 
-[FlatLocal](FlatLocal.lean) defines
-`Scheme.RegularityDescent.FlatLocalRegularityDescent` for the actual flat local
-homomorphism between Noetherian local rings. The flat module action is induced
-by that same homomorphism. The proposition is an explicit input; this file
-provides no universal flat-local regularity-descent supplier.
+[FlatLocal](FlatLocal.md) supplies
+`Scheme.RegularityDescent.flatLocalRegularityDescent`, an inhabitant of the
+original `FlatLocalRegularityDescent` family. It proves regularity of the source
+of an actual flat local homomorphism between Noetherian local rings when the
+target is regular, with flatness induced by that same homomorphism. The lower
+[ring theorem](../../../../RingTheory/RegularLocalRing/FlatDescent.md) allows
+independent ring universes and requires no finite-type, unramifiedness,
+characteristic or completion premise.
 
-From that input, `regular_at_image` proves regularity of the actual target stalk
-under a flat scheme map. `regular_of_etale_cover` applies it to an actual etale
-cover by locally Noetherian schemes with regular stalks. Stalk locality,
-flatness and Noetherianity are obtained from the stated scheme hypotheses.
-The regularity predicate is the existing `Scheme.RegularStalks`.
-
-The existing etale stalk provider proves regularity ascent and remains separate
-from the unsupplied descent family. Node/model constructions can consume the
-conditional cover theorem without treating the family definition as a proof.
+The existing `regular_at_image` and `regular_of_etale_cover` interfaces in
+[FlatLocal.lean](FlatLocal.lean) retain their parametric input and accept this
+supplied proof. They concern the actual stalk maps and the existing
+`Scheme.RegularStalks` predicate, with their original flatness, locality and
+local Noetherian hypotheses. Regularity ascent along étale maps remains with
+the existing étale stalk provider.

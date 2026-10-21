@@ -188,3 +188,9 @@ proper theorem to every locally Noetherian target using the original
 higher-image open comparison. All natural degrees and arbitrary coherent
 coefficients are included, without a quasi-compact-target or relative-flatness
 premise. See its [focused guide](Proper/README.md).
+
+[Stalk](Stalk.lean) identifies an actual higher-direct-image stalk with the
+original cohomology after base change to the spectrum of the target local
+ring. It retains the original flat base-change arrow and original affine
+section/cohomology comparison. The hypotheses are qcqs and quasicoherence,
+not properness or Noetherianity; it does not interchange stalks and limits.

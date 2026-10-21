@@ -66,3 +66,9 @@ tilde/Finsupp coproduct comparison. The ring, module, basis, index type and open
 retain their native universes, with no finite, field, Noetherian, or nontrivial
 premise. The actual projective Euler coordinate and Kähler frames consume these
 section formulas.
+
+[CoproductSections](CoproductSections.lean) preserves the actual colimiting
+cocone under affine global sections and affine-open sections for arbitrary
+quasicoherent diagrams. The native affine chart isomorphism is natural in
+coefficients, and the proof uses the actual tilde equivalence and ambient
+quasicoherent colimit closure. No finite-type or flatness premise is imposed.

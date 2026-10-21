@@ -21,3 +21,9 @@ whose actual residue tensor products realize the supplied separable field
 extension or etale residue algebra. Monic polynomial lifting, the resultant
 unit criterion and native tensor-product comparisons give the construction;
 Henselian, Noetherian and excellence assumptions are unnecessary.
+
+[Finite projective-dimension bound](ResidueProjectiveDimensionBound.md) proves
+`projectiveDimension M ≤ ringKrullDim R` for every finite module of finite
+projective dimension over a commutative Noetherian local ring. The supplied
+natural bound `n` witnesses finiteness; the conclusion bounds the actual
+projective dimension, rather than every such witness `n`.

@@ -18,6 +18,7 @@ The object is Mathlib's additive `Sheaf.H` on the actual Zariski opens site. Sch
 | [DirectImage](DirectImage/README.md) | Native resolution sections, qcqs quasicoherent higher images and proper coherent higher images over locally Noetherian targets |
 | [FiniteModel](FiniteModel/README.md) and [Proper/FiniteModel](Proper/FiniteModel/README.md) | One bounded finite-projective model for proper coherent relatively flat coefficients over a Noetherian affine base, including every ring base change |
 | [Proper/Finiteness](Proper/Finiteness/README.md) and [Proper/Field](Proper/Field/README.md) | Proved proper coherent finiteness and the retained field-valued family suppliers |
+| [FormalFunctions](FormalFunctions/README.md) | Canonical completion comparison with original cohomology and geometric thickening towers for proper coherent coefficients, including local higher-image stalks |
 | [Duality](Duality/README.md) and [projective duality](Duality/Projective/README.md) | Original residue/derived traces, relative projective coherent duality over Noetherian separated bases and the chosen smooth-embedding canonical comparison |
 
 Proved interfaces include positive affine quasicoherent vanishing over every commutative affine ring, skyscraper positive vanishing at any point and Noetherian vanishing above a topological dimension bound. Affine module base change allows arbitrary geometric base change. The original flat base-change map is invertible for qcqs morphisms and quasicoherent coefficients; its [D+ version](BaseChange/Derived/README.md) holds over arbitrary bases for bounded-below objects with quasicoherent original homology. Proper coherent finiteness holds over Noetherian affine bases, and actual coherent higher direct images descend to every locally Noetherian target. The retained field-valued finiteness families have proved suppliers.
@@ -27,3 +28,18 @@ Proved interfaces include positive affine quasicoherent vanishing over every com
 Lower [injective/Ext](../../CategoryTheory/Abelian/Injective/README.md), [total-complex](../../Algebra/Homology/TotalComplex/README.md), [generic site Cech](../../CategoryTheory/Sites/SheafCohomology/Cech/README.md) and [topological sheaf](../../Topology/Sheaves/README.md) results precede scheme specialization. [Actual module sheaves](../Modules/README.md) supply geometric functors, stalks, presentations and base-change maps. Field-linear results do not become arbitrary-base-ring theorems merely because relative evaluation allows an arbitrary base.
 
 The canonical [Godement](Godement/README.md), [local-QI detection](Locality/README.md) and [D+ projection formula](ProjectionFormula/README.md) families retain actual derived direct-image, flat-square and original-unit comparisons. Godement totalization is categorically exact on ordinary complexes; its augmentation/QI/derived calculation retains bounded-below membership or an explicit lower bound. These lower constructions and the geometric endpoint suppliers above have distinct hypotheses and roles.
+
+[Formal functions](FormalFunctions/README.md) identifies the canonical map
+from the adic completion of original cohomology to its compatible quotient
+and geometric thickening towers, for a proper scheme over a Noetherian affine
+base, every coherent coefficient, ideal and nonnegative degree. Complete-base
+identification retains adic completeness; the higher-direct-image stalk version
+allows a locally Noetherian target. No flatness, projective embedding or
+additional Rees-finiteness premise is needed. General Grothendieck existence,
+Artin approximation and object effectivity remain external.
+
+[Ordinary stalks and fibre sections](Proper/FibreIdempotents.md) constructs the
+canonical ordinary pushforward-stalk map to literal-fibre global sections and
+its germ and residue factorization for arbitrary morphisms. When `f.c` is an
+isomorphism, its image consists of residue constants. A general proper
+fibre-idempotent image theorem and geometric connectedness remain separate.

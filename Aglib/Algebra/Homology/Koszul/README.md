@@ -79,3 +79,8 @@ postcomposition by a supplied coefficient-localization map localizes this
 same top Ext. The base ring and quotient source stay fixed. These local
 suppliers do not themselves provide geometric gluing or a global
 regular-immersion purity theorem.
+
+[LinearPart](LinearPart.md) treats the actual tensor differential for a finite
+list with linearly independent cotangent classes over a commutative local ring.
+In every degree, `d(z) ∈ m² • K` implies `z ∈ m • K`. No Noetherianity,
+regular-sequence or residue-characteristic assumption is required.

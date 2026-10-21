@@ -16,3 +16,7 @@ The lower affine condition and module equivalence are in [Affine](../Affine/READ
 [Extension](Extension/README.md) gives affine finite-type approximation over arbitrary
 commutative rings; [restriction comparisons](Restriction/README.md) retain the actual
 open-range, top-open and principal restriction maps.
+
+[LocalSpectrum](LocalSpectrum.lean) derives finite-type quasicoherence of the
+actual local-spectrum base change of a proper coefficient over a locally
+Noetherian target. Source local Noetherianity is derived, not assumed.

@@ -66,6 +66,20 @@ functor is faithful and essentially surjective over every local ring. Its
 object lifts retain both projections of the original cover. The general
 uniqueness theorem determines maps from a universally closed source through
 a formally unramified, locally finite-type target by their residue restriction.
-Fullness for an arbitrary Henselian base and proper-scheme comparison remain
-separate. The complete Noetherian base has the existing
+[HenselianEquivalence](HenselianEquivalence.lean) supplies fullness and the
+actual residue-functor equivalence for every Henselian local ring, without
+Noetherianity or completeness. The complete Noetherian base also has the
 [adic fullness supplier](Adic/Fullness.lean).
+
+[Proper residue comparison](ProperResidue.md) proves uniqueness and reflection
+of isomorphisms on the actual closed fibre of a universally closed model over
+a local ring, without flatness, Noetherianity or Henselianity.
+[Proper-residue fullness](ProperResidue/Fullness.md) gives full faithfulness
+for a proper flat model over a Henselian DVR. Existence of arbitrary cover
+objects and the resulting proper-model equivalence remain separate.
+
+[Nilpotent comparison](Nilpotent.md) supplies actual global Hom and object
+gluing and an equivalence for the original finite-étale base-change functor
+across a nilpotent closed immersion of arbitrary schemes. Nilpotence means
+an actual global exponent. No Noetherianity, properness or algebraization
+premise is required; this does not supply general object effectivity.

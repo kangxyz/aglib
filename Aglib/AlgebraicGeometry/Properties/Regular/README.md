@@ -9,3 +9,8 @@ This stalk property alone does not assert that the scheme is locally Noetherian.
 The [geometric regularity criterion](../../Geometrically/Regular.lean) and
 [smoothness criterion](../../Morphisms/Smooth/GeometricRegularity.lean) retain
 the local finite-type or finite-presentation hypotheses needed there.
+
+[Flat-local descent](Descent/README.md) supplies the original flat-local
+regularity-descent family and retains its parametric stalk and étale-cover
+consumers. Their stated local Noetherian hypotheses remain explicit;
+`RegularStalks` alone does not supply them.

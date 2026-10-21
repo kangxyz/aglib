@@ -53,3 +53,16 @@ on such a target. The geometric and cohomological route is guided by
 [Stacks, Chow's lemma](https://stacks.math.columbia.edu/tag/02O2) and
 [Stacks, proper coherent direct images](https://stacks.math.columbia.edu/tag/02O3);
 these references are not formal premises.
+
+[Birational functions](BirationalFunctions.md) proves `IsIso f.c` for the
+original structure-sheaf map of a universally closed dominant morphism between
+integral schemes, with normal actual target stalks and an isomorphism on the
+actual function fields. Properness is a specialization; no Noetherianity or
+flatness is required.
+
+[Connectedness from sections](ConnectedFibres.md) proves that a nonempty scheme
+with only trivial idempotents in its actual global-section ring is connected.
+The [ordinary pushforward-stalk comparison](../../Cohomology/Proper/FibreIdempotents.md)
+constructs the canonical map to literal-fibre sections and its residue-constant
+factorization when `f.c` is invertible. These results do not supply a general
+proper fibre-idempotent image theorem or geometric connectedness of fibres.

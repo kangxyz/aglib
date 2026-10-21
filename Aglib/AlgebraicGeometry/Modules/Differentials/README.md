@@ -58,3 +58,10 @@ now supplies the normalized trace over separated bases and coherent duality
 over Noetherian separated bases, through the specified projective square
 and chosen closed embedding. General proper duality and embedding
 independence remain separate.
+
+[Diagonal conormal](Diagonal.md) proves that the canonical map from relative
+differentials to the actual diagonal conormal sheaf is invertible over any
+affine base. The map is induced by the original coordinate difference; its
+inverse sends `1 ⊗ a - a ⊗ 1` to `D(a)`. No smoothness, separation, finiteness,
+reducedness or field hypothesis is required. The global statement here retains
+an affine base.
