@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Replay isolated controls; compiler setup failures do not count as rejection.
+"""Compile isolated guarded controls; setup failures do not count as rejection.
 
-The control olean uses a temporary search-path overlay. It never enters the
-positive package build root or the scoped leanchecker view.
+This leaf writes its control olean only to a temporary search-path overlay;
+native Test discovery separately compiles the guarded controls normally. Each
+audit source's #guard_msgs assertion requires the specific unsupported-assumption
+error, and a successful guarded compilation establishes the expected rejection.
 """
 import os
 from pathlib import Path
@@ -45,12 +47,11 @@ def main() -> int:
             result = subprocess.run(['lean', '-j2', str(CONTROLS / name)],
                                     cwd=ROOT, env=env, capture_output=True, text=True)
             combined = result.stdout + result.stderr
-            if result.returncode == 0 or 'depends on unsupported assumption' not in combined \
-                    or assumption not in combined:
-                print(f'Negative control did not produce the required axiom rejection: {name}\n'
+            if result.returncode != 0:
+                print(f'Guarded negative control failed: {name}\n'
                       + f'Lean exit status: {result.returncode}\n' + combined, file=sys.stderr)
                 return 1
-            print(f'Origin audit rejected {name}: {assumption}.')
+            print(f'Guarded origin audit rejected {name}: {assumption}.')
     return 0
 
 

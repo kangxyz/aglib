@@ -49,14 +49,14 @@ POLICY = ['scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/resource_gua
           'scripts/build_serial.py', 'scripts/library_sources.py',
           'scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
           'scripts/check_negative_controls.py', 'scripts/nolints.json', 'scripts/nolints-style.txt', 'AglibTest/AuditSupport.lean',
-          'AglibTest/AuditCoverage.lean', 'AglibTest/Axioms.lean',
+          'AglibTest/AuditCoverage.lean', 'Audits/Aglib.lean',
           *FIXED_AUDIT_SOURCES, *PACKAGE_SOURCES, *sorted(affected_scope.CONFIG)]
 DRIVERS = ['.lake/packages/batteries/scripts/runLinter.lean',
            '.lake/packages/mathlib/scripts/lint-style.lean']
 GENERATED_MANIFEST = 'examples/downstream/lake-manifest.json'
 SEMANTIC_POLICY = ('scripts/run_declaration_linter.py', 'scripts/run_style_linter.py',
                    'scripts/check_compiled_inventory.py', 'scripts/nolints.json',
-                   'scripts/nolints-style.txt', 'AglibTest/Axioms.lean',
+                   'scripts/nolints-style.txt', 'Audits/Aglib.lean',
                    'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
                    *FIXED_AUDIT_SOURCES)
 LEGACY_CUTOVER = 'cc17eecf0344f15c89ffc04cade60b1b09cf9f43'
@@ -199,7 +199,7 @@ def assert_native_scope(root, scope, base_math, head_math, changed):
     if scope.get('configuration_update'):
         required = {affected_scope.node(p) for p in head_math if p.endswith('.lean')
                     and (p.startswith(('Aglib/', 'AglibTest/', 'Tools/')) or p in {'Aglib.lean', 'AglibTest.lean'})
-                    and p not in {'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean'}
+                    and p not in {'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean'}
                     and not p.startswith(('AglibTest/NegativeControls/', 'examples/downstream/'))}
         if required - selected or not (scope['trust'] and scope['controls'] and scope['client_audit']):
             raise ValueError('Configuration update omitted complete current check scope')
@@ -214,7 +214,7 @@ def assert_native_scope(root, scope, base_math, head_math, changed):
         elif path.startswith('AglibTest/NegativeControls/'):
             if not scope['controls'] or not scope['trust']:
                 raise ValueError('Changed rejection control omitted from native scope: ' + path)
-        elif path in {'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean'}:
+        elif path in {'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean'}:
             if not scope['trust']:
                 raise ValueError('Changed audit policy omitted from native scope: ' + path)
         elif path in head_math and affected_scope.node(path) not in selected:
@@ -334,9 +334,9 @@ def tasks(root, plan, phase, directory, *, phases=None):
                     if not name.startswith(('Aglib.', 'AglibTest.'))]]))
         checks.append(safe('audit/all', audit_command(root, names), kind='check',
                            check_kind='audit', modules=sorted(set([*names, *support])), selection=names))
-        if 'AglibTest/Axioms.lean' in scope['changed']:
+        if 'Audits/Aglib.lean' in scope['changed']:
             checks.extend([safe('legacy-audit-cached-imports', lake + ['--no-build', 'build', 'Aglib', *support]),
-                           safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'AglibTest/Axioms.lean'])])
+                           safe('legacy-audit-source', ['lake', 'env', 'lean', '-j1', 'Audits/Aglib.lean'])])
         if scope['controls']:
             controls = sorted(path.relative_to(root).as_posix()
                               for path in (root / 'AglibTest/NegativeControls').rglob('*.lean'))

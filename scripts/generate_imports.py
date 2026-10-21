@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Authors: kangxyz
-"""Generate the exhaustive library root and optional thematic import facades."""
+"""Generate optional thematic import facades; native mk_all owns the library root."""
 import argparse
 from pathlib import Path
 import sys
@@ -92,7 +92,6 @@ def generated_files(root: Path, modern_library: bool | None = None) -> dict[Path
     authors = {path: source_authors(source) for path in modules
                if not generator_owned(source := (root / path).read_text())}
     if modern_library is None:
-        library_root = root / 'Aglib.lean'
         modern_library = True
     outputs = {}
     for facade in sorted(family_facades(root)):
@@ -109,29 +108,12 @@ def generated_files(root: Path, modern_library: bool | None = None) -> dict[Path
             {name for path, names in authors.items() if directory in path.parents
              for name in names})
         modules.add(facade)
-    outputs[Path('Aglib.lean')] = render_imports(
-        [module_name(path) for path in modules],
-        '# Aglib library\n\nThe exhaustive import surface for all project source modules.\n'
-        'Use thematic facades or individual module imports for smaller dependencies.', modern_library,
-        {name for names in authors.values() for name in names})
     if modern_library:
         legacy = sorted(path for path in modules if path not in outputs
                         and not uses_module_system((root / path).read_text()))
         if legacy:
             raise ValueError('Modern library facades cannot import legacy sources: '
                              + ', '.join(map(str, legacy)))
-    tests = test_modules(root) - {Path('AglibTest.lean')}
-    if test_modules(root):
-        # A legacy test umbrella can consume both modern and legacy audit fixtures.
-        # Keep their existing visibility and private-origin checks unchanged.
-        modern_tests = all(uses_module_system((root / path).read_text()) for path in tests)
-        outputs[Path('AglibTest.lean')] = render_imports(
-            [module_name(path) for path in tests],
-            '# Aglib trust tests\n\nAll positive trust tests for the production library.\n'
-            'Positive fixtures are compiled separately; auditors and negative controls are replayed explicitly.',
-            modern=modern_tests, authors={name for path in tests
-                     if not generator_owned(source := (root / path).read_text())
-                     for name in source_authors(source)})
     return outputs
 
 
@@ -161,8 +143,7 @@ def main() -> int:
     else:
         # Recheck ownership before any writes: another editor may have created
         # or taken over a family facade after discovery.
-        conflicts = [path for path in outputs if path not in {Path('Aglib.lean'), Path('AglibTest.lean')}
-                     and (args.root / path).exists()
+        conflicts = [path for path in outputs if (args.root / path).exists()
                      and not generator_owned((args.root / path).read_text())]
         if conflicts:
             print('Refusing to overwrite manually owned facades: '

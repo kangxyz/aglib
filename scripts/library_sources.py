@@ -19,21 +19,20 @@ def source_modules(root: Path) -> set[Path]:
 
 
 def is_audit_source(path: Path) -> bool:
-    return path in {Path('AglibTest/Axioms.lean'),
+    return path in {Path('Audits/Aglib.lean'),
                     Path('AglibTest/AuditSupport.lean')} or \
         'NegativeControls' in path.parts
 
 
 def audit_sources(root: Path) -> set[Path]:
-    return {path.relative_to(root) for path in (root / 'AglibTest').rglob('*.lean')
+    return {path.relative_to(root) for directory in ('AglibTest', 'Audits')
+            for path in (root / directory).rglob('*.lean')
             if is_audit_source(path.relative_to(root))}
 
 
 def test_modules(root: Path) -> set[Path]:
-    """Positive trust tests have a separate generated integration root."""
-    if not (root / 'AglibTest').exists() and not (root / 'AglibTest.lean').exists():
-        return set()
-    return {Path('AglibTest.lean')} | {
+    """Positive trust sources are discovered without a generated Test umbrella."""
+    return {
         path.relative_to(root) for path in (root / 'AglibTest').rglob('*.lean')
         if not is_audit_source(path.relative_to(root))}
 

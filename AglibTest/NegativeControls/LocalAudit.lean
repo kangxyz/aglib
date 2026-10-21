@@ -5,12 +5,15 @@ Authors: kangxyz
 -/
 
 import AglibTest.AuditSupport
+import Lean.Elab.GuardMsgs
 
-/-! Must fail on a current-module stage-2 axiom with an unrelated root name. -/
+/-! The auditor must reject a current-module stage-2 axiom with an unrelated root name. -/
 
 axiom localBad : False
 private theorem privateLocalBad : False := localBad
 
+/-- depends on unsupported assumption localBad -/
+#guard_msgs (error, substring := true) in
 open Lean in
 run_cmd do
   let _ ← AglibAudit.auditModules #[(← getEnv).header.mainModule]

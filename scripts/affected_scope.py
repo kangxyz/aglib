@@ -13,10 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG = {'lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json',
           'examples/downstream/lean-toolchain', 'examples/downstream/lakefile.toml',
           'examples/downstream/lakefile.lean', 'examples/downstream/lake-manifest.json'}
-AUDIT = {'AglibTest.Axioms', 'AglibTest.AuditSupport'}
+AUDIT = {'Audits.Aglib', 'AglibTest.AuditSupport'}
 CONTROL_INPUTS = CONFIG | {
     '.github/workflows/ci.yml',
-    'AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
+    'Audits/Aglib.lean', 'AglibTest/AuditSupport.lean', 'AglibTest/AuditCoverage.lean',
     'scripts/check_negative_controls.py', 'scripts/resource_guard.py', 'scripts/build_serial.py',
     'scripts/ci_pipeline.py', 'scripts/ci_state.py', 'scripts/ci_baseline.py',
     'scripts/ci_audit.py',
@@ -242,7 +242,7 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
         tooling.update(['test_ci_pipeline', 'test_ci_cache', 'test_cache_ci', 'test_integration_setup'])
     executable = affected & sources.keys()
     # The legacy whole-library audit is replaced by a selected-origin audit.
-    executable -= {'AglibTest.Axioms', 'client:Audit'}
+    executable -= {'Audits.Aglib', 'client:Audit'}
     executable = {n for n in executable if 'NegativeControls' not in n.split('.')}
     providers = sorted(n for n in (executable & seeds) - facades if n.startswith('Aglib.') or n.startswith('Tools.'))
     consumers = sorted(n for n in executable - set(providers) if n == 'Aglib' or n.startswith(('Aglib.', 'Tools.')))
@@ -258,13 +258,13 @@ def select(root, base=None, head=None, full=False, default_base=None, *, allow_c
         cache_targets += [name for name in graph if name in {'AglibTest.AuditSupport', 'AglibTest.AuditCoverage'}]
         if controls:
             cache_targets += [name for name in graph if name.startswith('AglibTest.NegativeControls.')]
-        if 'AglibTest/Axioms.lean' in changed:
-            cache_targets.append('AglibTest.Axioms')
+        if 'Audits/Aglib.lean' in changed:
+            cache_targets.append('Audits.Aglib')
     if client_audit:
         cache_targets.append('client:Audit')
     identity_paths = set(changed) | {sources[n] for n in affected if n in sources} | CONFIG
     if trust:
-        identity_paths.update(['AglibTest/Axioms.lean', 'AglibTest/AuditSupport.lean',
+        identity_paths.update(['Audits/Aglib.lean', 'AglibTest/AuditSupport.lean',
                                'AglibTest/AuditCoverage.lean'])
     return {'schema': 1, 'coverage': 'explicit-full' if full else 'affected-only',
             'base': base_id, 'head': live_head, 'working_tree': not bool(head), 'changed': changed,

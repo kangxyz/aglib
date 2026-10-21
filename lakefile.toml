@@ -3,10 +3,10 @@ version = "0.1.0"
 description = "General commutative algebra, scheme geometry, and coherent cohomology."
 keywords = ["math", "algebraic-geometry", "commutative-algebra", "cohomology"]
 license = "Apache-2.0"
-defaultTargets = ["Aglib", "AglibTest"]
+defaultTargets = ["Aglib"]
 testDriver = "AglibTest"
 lintDriver = "batteries/runLinter"
-lintDriverArgs = ["Aglib"]
+lintDriverArgs = ["--no-build", "Aglib"]
 builtinLint = true
 enableArtifactCache = true
 restoreAllArtifacts = true
@@ -17,6 +17,7 @@ leanOptions = {autoImplicit = false, weak.linter.mathlibStandardSet = true, weak
 
 [[lean_lib]]
 name = "AglibTest"
+globs = ["AglibTest.+"]
 
 [[require]]
 name = "mathlib"

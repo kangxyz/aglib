@@ -482,7 +482,7 @@ not introduce or increase a production proof budget.
 
 ## Evidence boundary
 
-The legacy `AglibTest/Axioms.lean` replay selects production declarations by
+The legacy `Audits/Aglib.lean` replay selects production declarations by
 module origin, including private/generated declarations. Positive fixtures have a
 separate generated entry; auditors and negative controls are excluded from it.
 The allowed axioms remain `propext`, `Classical.choice`, and `Quot.sound`.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reject proof placeholders and custom axioms in library, tests and client.
 
-AglibTest/Axioms.lean performs the authoritative kernel dependency audit.
+Audits/Aglib.lean performs the authoritative kernel dependency audit.
 """
 import argparse
 from pathlib import Path

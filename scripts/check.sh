@@ -59,7 +59,7 @@ else
   safe style python3 scripts/run_style_linter.py
 fi
 # Cached oleans do not re-execute the trust audit, so replay the source explicitly.
-safe axioms lake env lean -j1 AglibTest/Axioms.lean
+safe axioms lake env lean -j1 Audits/Aglib.lean
 safe negative-controls python3 scripts/check_negative_controls.py
 # Check exact current inventory, including private/generated declarations.
 python3 scripts/check_compiled_inventory.py

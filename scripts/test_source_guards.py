@@ -45,6 +45,19 @@ class SourceGuards(unittest.TestCase):
         self.assertEqual(check_placeholders(self.root), [])
         self.assertEqual(check_source_policy(self.root), [])
 
+    def test_native_roots_are_not_generated_or_inventoried_as_test_sources(self):
+        native = 'module\npublic import Aglib.Algebra\n'
+        self.write('Aglib.lean', native)
+        self.write('AglibTest/Positive.lean', HEADER)
+        outputs = generated_files(self.root)
+        self.assertNotIn(Path('Aglib.lean'), outputs)
+        self.assertNotIn(Path('AglibTest.lean'), outputs)
+        self.assertIn(Path('Aglib/Algebra.lean'), outputs)
+        self.generate()
+        self.assertEqual((self.root / 'Aglib.lean').read_text(), native)
+        self.assertFalse((self.root / 'AglibTest.lean').exists())
+        self.assertEqual(positive_modules(self.root), {Path('AglibTest/Positive.lean')})
+
     def test_test_umbrella_composes_legacy_and_modern_fixtures(self):
         legacy = 'import Aglib.Algebra.A\n'
         self.write('AglibTest/Legacy.lean', legacy)

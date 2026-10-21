@@ -43,14 +43,20 @@ class IntegrationSetupTests(unittest.TestCase):
         self.compiled('Aglib/Deleted')
         self.assertTrue(any('Stale compiled' in error for error in check_inventory(self.root, ['Aglib.A'])))
 
-    def test_compiled_inventory_rejects_deleted_and_negative_sources(self):
+    def test_compiled_inventory_rejects_deleted_but_accepts_guarded_test_sources(self):
         self.compiled('Aglib')
         self.compiled('Aglib/A')
         self.compiled('Aglib/Deleted')
-        self.compiled('AglibTest/NegativeControls/ImportedFixture')
+        for name in ('ImportedFixture', 'ImportedAudit', 'LocalAudit'):
+            source = self.root / 'AglibTest/NegativeControls' / (name + '.lean')
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text('-- guarded native Test fixture\n')
+            self.compiled('AglibTest/NegativeControls/' + name)
         errors = check_inventory(self.root)
         self.assertTrue(any('Stale compiled' in error for error in errors))
-        self.assertTrue(any('Negative control' in error for error in errors))
+        self.assertFalse(any('Negative control' in error for error in errors))
+        (self.root / '.lake/build/lib/lean/Aglib/Deleted.olean').unlink()
+        self.assertEqual(check_inventory(self.root), [])
 
     def test_renamed_basis_rejects_old_prefix_artifacts(self):
         self.compiled('Aglib')

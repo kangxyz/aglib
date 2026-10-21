@@ -6,9 +6,12 @@ Authors: kangxyz
 
 import AglibTest.AuditSupport
 import AglibTest.NegativeControls.ImportedFixture
+import Lean.Elab.GuardMsgs
 
-/-! Must fail on the custom axiom by its defining module, regardless of namespace. -/
+/-! The auditor must reject the custom axiom by its defining module, regardless of namespace. -/
 
+/-- depends on unsupported assumption UnrelatedNegativeNamespace.importedBad -/
+#guard_msgs (error, substring := true) in
 run_cmd do
   let count ← AglibAudit.auditModules
     #[`AglibTest.NegativeControls.ImportedFixture]

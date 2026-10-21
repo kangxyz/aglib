@@ -1,0 +1,230 @@
+# Minimal adaptation of mathlib4 d13f23b7 build_template.yml.
+name: Lean CI
+
+on:
+  workflow_call:
+    inputs:
+      package-directory:
+        type: string
+        default: .
+      build-targets:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  LAKE_ARTIFACT_CACHE: 'true'
+  BUILD_TARGETS: ${{ inputs.build-targets }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    outputs:
+      outcome: ${{ steps.build.outcome }}
+      cache-key: ${{ steps.restore.outputs.cache-primary-key }}
+      staged: ${{ steps.stage.outputs.staged }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
+      - name: Select existing native compilation cache
+        id: native-key
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          toolchain=$(tr '/:' '--' < lean-toolchain | tr -d '\r\n')
+          echo "prefix=lake-native-v1-${RUNNER_OS}-${RUNNER_ARCH}-$toolchain-" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/lake-native-cache
+          key: ${{ steps.native-key.outputs.prefix }}${{ github.run_id }}-${{ github.run_attempt }}-seed
+          restore-keys: ${{ steps.native-key.outputs.prefix }}
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        id: restore
+        with:
+          path: |
+            ${{ inputs.package-directory }}/.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
+      - name: Configure Lean
+        id: lean-setup
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
+        with:
+          lake-package-directory: ${{ inputs.package-directory }}
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Get Mathlib cache
+        working-directory: ${{ inputs.package-directory }}
+        run: lake exe cache get
+      - name: Build
+        id: build
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a targets <<< "$BUILD_TARGETS"
+          lake build "${targets[@]}" batteries/runLinter mathlib/lint-style mathlib/mk_all -o "$RUNNER_TEMP/outputs.jsonl"
+      - name: Save compilation independently of Test and lint
+        if: ${{ always() }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ${{ inputs.package-directory }}/.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: ${{ steps.restore.outputs.cache-primary-key }}
+      - name: Check generated library entries
+        id: imports
+        if: ${{ always() && steps.build.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a roots <<< "$BUILD_TARGETS"
+          result=0
+          for root in "${roots[@]}"; do
+            lake --no-build exe mathlib/mk_all --lib "$root" --check || result=1
+          done
+          exit "$result"
+      - name: Stage completed native outputs
+        id: stage
+        if: ${{ always() && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          if test -s "$RUNNER_TEMP/outputs.jsonl"; then
+            lake cache stage "$RUNNER_TEMP/outputs.jsonl" "$RUNNER_TEMP/cache-staging"
+            tar -cf "$RUNNER_TEMP/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging" .
+            echo 'staged=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: ${{ always() && steps.stage.outputs.staged == 'true' }}
+        with:
+          name: cache-staging
+          overwrite: true
+          path: ${{ runner.temp }}/lake-native-cache.tar
+          compression-level: 0
+      - name: Report Build result
+        if: ${{ always() }}
+        env:
+          RESULT: ${{ steps.build.outcome }}
+          IMPORTS: ${{ steps.imports.outcome }}
+        run: test "$RESULT" = success && test "$IMPORTS" = success
+
+  test_lint:
+    name: Test, lint and axiom audit
+    needs: build
+    if: ${{ always() && (needs.build.result == 'success' || needs.build.result == 'failure') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        id: restore-cache
+        with:
+          path: |
+            ${{ inputs.package-directory }}/.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ needs.build.outputs.cache-key }}-tests-
+            ${{ needs.build.outputs.cache-key }}
+          fail-on-cache-miss: true
+      - name: Configure Lean
+        id: lean-setup
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
+        with:
+          lake-package-directory: ${{ inputs.package-directory }}
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Test
+        id: test
+        if: ${{ needs.build.result == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: lake test
+      - name: Lint
+        id: lint
+        if: ${{ always() && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: lake --no-build lint -- --trace
+      - name: Mathlib text style
+        id: style
+        if: ${{ always() && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: lake --no-build exe mathlib/lint-style
+      - name: Audit production axioms
+        id: axioms
+        if: ${{ always() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          # Reuse lean-action's pinned auditor, without its extra project build.
+          tool="$RUNNER_TEMP/axiom-audit"
+          git clone --depth 1 --branch v0.1.2 https://github.com/leanprover-community/axiom-audit.git "$tool"
+          test "$(git -C "$tool" rev-parse HEAD)" = 46024e005996495c65ef609368e11ab39c4222e3
+          cp lean-toolchain "$tool/lean-toolchain"
+          (cd "$tool" && lake build)
+          read -r -a roots <<< "$BUILD_TARGETS"
+          result=0
+          for root in "${roots[@]}"; do
+            lake env "$tool/.lake/build/bin/axiom-audit" --root "$root" || result=1
+          done
+          exit "$result"
+      - name: Save completed Test compilation
+        if: ${{ always() }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ${{ inputs.package-directory }}/.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: ${{ needs.build.outputs.cache-key }}-tests-${{ github.run_attempt }}
+      - name: Report Test, lint and axiom results
+        if: ${{ always() }}
+        env:
+          TEST: ${{ steps.test.outcome }}
+          LINT: ${{ steps.lint.outcome }}
+          STYLE: ${{ steps.style.outcome }}
+          AXIOMS: ${{ steps.axioms.outcome }}
+        run: |
+          printf 'Test: %s\nLint: %s\nText style: %s\nAxioms: %s\n' "$TEST" "$LINT" "$STYLE" "$AXIOMS" >> "$GITHUB_STEP_SUMMARY"
+          test "$TEST" = success && test "$LINT" = success && test "$STYLE" = success && test "$AXIOMS" = success
+
+  upload_cache:
+    name: Publish compilation cache
+    needs: build
+    if: ${{ always() && needs.build.outputs.staged == 'true' && github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    concurrency:
+      group: lean-cache-${{ github.repository }}-${{ github.sha }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: cache-staging
+      - name: Publish staged compilation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          REVISION: ${{ github.sha }}
+          ASSET: lake-native-cache-${{ github.run_id }}-${{ github.run_attempt }}.tar
+        run: |
+          tag="lean-native-$REVISION"
+          gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1 ||
+            gh release create "$tag" --repo "$REPOSITORY" --target "$REVISION" --title "Lean compilation $REVISION" --notes 'Compiled artifacts; Test and lint are reported separately.'
+          mv lake-native-cache.tar "$ASSET"
+          gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"

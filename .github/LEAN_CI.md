@@ -1,0 +1,50 @@
+# Minimal Mathlib-style CI
+
+The template is adapted from Mathlib `d13f23b7`'s
+[build_template.yml](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml).
+Callers supply only the Lake package directory and production targets.
+
+- `build` configures the pinned toolchain, restores cache and calls `lake build`.
+  Completed compilation is cached even when a later operation fails.
+  Mathlib's `mk_all --lib <root> --check` verifies the generated production
+  entries after compilation has been saved. It never rewrites sources in CI.
+- `test_lint` follows Build. It runs `lake test` after a successful Build, then
+  `lake lint -- --trace`. Library Tests use incremental compilation; persisted
+  compiler-linter diagnostics are reused. Batteries declaration lint keeps its
+  ordinary package-wide behavior. A failed Test does not suppress lint feedback.
+  `lake --no-build exe mathlib/lint-style` separately runs Mathlib's own text
+  checks with its default module selection and without automatic fixes. No Git
+  diff, explicit file list or library-specific style driver filters the scan.
+  The [axiom auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
+  reads the built production roots and their imported closure; only `propext`,
+  `Classical.choice` and `Quot.sound` are allowed. It does not compile the project
+  or replay proofs. Deliberate negative Test fixtures are outside this audit.
+- `upload_cache` publishes staged native compilation independently of Test/lint,
+  only for trusted default-branch pushes. A cache is not a passed-check claim.
+
+Necessary host adaptations are explicit: GitHub-hosted runners replace Mathlib's
+self-hosted pool; GitHub caches/releases replace its Azure backend; native
+`lake cache stage` replaces its project-specific cache staging executable.
+Library and Test drivers live in Lake configuration. The Build job prepares the
+Batteries, Mathlib text-style and `mk_all` executables; final checks use
+`--no-build` to prevent hidden compilation. Generate each production entry with
+`lake exe mathlib/mk_all --lib <root>`. Mathlib's text driver then scans the
+complete import lists of the package's default production targets, without
+changed-file filtering. Test libraries use `TestName.+` globs and `lake test`;
+they are not default production targets and have no generated `TestName.lean`.
+All four callers use these same native mechanisms.
+The caller preserves each repository's workflow name and concurrency group.
+`cancel-in-progress: false` with `queue: max` serializes runs without cancelling
+the running job or replacing an already pending run.
+
+Actions caches serve CI jobs and later runs. Release assets provide a separate
+manual download interface for local or remote consumers; CI does not download
+these releases. Use `gh release download lean-native-<commit> --repo <owner/repo>
+--pattern lake-native-cache-<run>-<attempt>.tar`, extract the archive into a fresh
+staging directory, then run `lake cache unstage <staging-directory> Aglib` from
+the consumer package (substitute the actual dependency name). Lake validates
+cache applicability against current native inputs during the subsequent build.
+
+Nightly automation, PR labelling, bibliography checks, style-fix bots, downstream-client
+jobs and the old Python orchestration are outside this minimal template.
+Mathematical review and kernel replay retain their separate existing owners.
