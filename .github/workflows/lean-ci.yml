@@ -70,24 +70,13 @@ jobs:
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
         run: lake exe cache get
-      - name: Build
-        id: build
-        continue-on-error: true
+      - name: Prepare check tools
+        id: tools
         working-directory: ${{ inputs.package-directory }}
-        run: |
-          read -r -a targets <<< "$BUILD_TARGETS"
-          lake build "${targets[@]}" batteries/runLinter mathlib/lint-style mathlib/mk_all -o "$RUNNER_TEMP/outputs.jsonl"
-      - name: Save compilation independently of Test and lint
-        if: ${{ always() }}
-        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
-        with:
-          path: |
-            ${{ inputs.package-directory }}/.lake
-            ${{ runner.temp }}/lake-native-cache
-          key: ${{ steps.restore.outputs.cache-primary-key }}
+        run: lake build batteries/runLinter mathlib/lint-style mathlib/mk_all
       - name: Check generated library entries
         id: imports
-        if: ${{ always() && steps.build.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.tools.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
@@ -97,6 +86,30 @@ jobs:
             lake --no-build exe mathlib/mk_all --lib "$root" --check || result=1
           done
           exit "$result"
+      - name: Mathlib text style
+        id: style
+        if: ${{ !cancelled() && steps.tools.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a roots <<< "$BUILD_TARGETS"
+          lake --no-build exe mathlib/lint-style "${roots[@]}"
+      - name: Build
+        id: build
+        if: ${{ !cancelled() && steps.tools.outcome == 'success' && steps.imports.outcome == 'success' && steps.style.outcome == 'success' }}
+        continue-on-error: true
+        working-directory: ${{ inputs.package-directory }}
+        run: |
+          read -r -a targets <<< "$BUILD_TARGETS"
+          lake build "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"
+      - name: Save compilation independently of Test and lint
+        if: ${{ always() }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ${{ inputs.package-directory }}/.lake
+            ${{ runner.temp }}/lake-native-cache
+          key: ${{ steps.restore.outputs.cache-primary-key }}
       - name: Stage completed native outputs
         id: stage
         if: ${{ always() && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
@@ -117,9 +130,13 @@ jobs:
       - name: Report Build result
         if: ${{ always() }}
         env:
+          TOOLS: ${{ steps.tools.outcome }}
           RESULT: ${{ steps.build.outcome }}
           IMPORTS: ${{ steps.imports.outcome }}
-        run: test "$RESULT" = success && test "$IMPORTS" = success
+          STYLE: ${{ steps.style.outcome }}
+        run: |
+          printf 'Check tools: %s\nGenerated entries: %s\nText style: %s\nBuild: %s\n' "$TOOLS" "$IMPORTS" "$STYLE" "$RESULT" >> "$GITHUB_STEP_SUMMARY"
+          test "$TOOLS" = success && test "$IMPORTS" = success && test "$STYLE" = success && test "$RESULT" = success
 
   test_lint:
     name: Test, lint and axiom audit
@@ -196,20 +213,23 @@ jobs:
         run: lake test
       - name: Lint
         id: lint
+        timeout-minutes: 25
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
           read -r -a roots <<< "$BUILD_TARGETS"
-          lake --no-build lint "${roots[@]}" -- --trace
-      - name: Mathlib text style
-        id: style
-        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
-        continue-on-error: true
-        working-directory: ${{ inputs.package-directory }}
-        run: |
-          read -r -a roots <<< "$BUILD_TARGETS"
-          lake --no-build exe mathlib/lint-style "${roots[@]}"
+          for attempt in 1 2; do
+            if timeout --kill-after=30s 10m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint "${roots[@]}" -- --trace; then
+              exit 0
+            else
+              status=$?
+            fi
+            if test "$status" -ne 124 || test "$attempt" -eq 2; then
+              exit "$status"
+            fi
+            echo '::warning::Declaration lint timed out; retrying once.'
+          done
       - name: Audit production axioms
         id: axioms
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
@@ -242,11 +262,10 @@ jobs:
           COMPILED: ${{ steps.compiled.outcome }}
           TEST: ${{ steps.test.outcome }}
           LINT: ${{ steps.lint.outcome }}
-          STYLE: ${{ steps.style.outcome }}
           AXIOMS: ${{ steps.axioms.outcome }}
         run: |
-          printf 'Build outputs: %s\nTest: %s\nLint: %s\nText style: %s\nAxioms: %s\n' "$COMPILED" "$TEST" "$LINT" "$STYLE" "$AXIOMS" >> "$GITHUB_STEP_SUMMARY"
-          test "$COMPILED" = success && test "$TEST" = success && test "$LINT" = success && test "$STYLE" = success && test "$AXIOMS" = success
+          printf 'Build outputs: %s\nTest: %s\nLint: %s\nAxioms: %s\n' "$COMPILED" "$TEST" "$LINT" "$AXIOMS" >> "$GITHUB_STEP_SUMMARY"
+          test "$COMPILED" = success && test "$TEST" = success && test "$LINT" = success && test "$AXIOMS" = success
 
   upload_cache:
     name: Publish cache

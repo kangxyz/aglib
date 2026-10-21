@@ -7,7 +7,9 @@ Callers supply only the Lake package directory and production targets.
 downloads from Reservoir/GitHub. This is separate from
 `LAKE_ARTIFACT_CACHE=true`, which keeps native project artifacts available.
 
-- `build` configures the pinned toolchain, restores cache and calls `lake build`.
+- `build` configures the pinned toolchain, restores cache and obtains the
+  Mathlib cache. It then prepares only the Batteries declaration-linter,
+  Mathlib text-style and `mk_all` tools before checking production sources.
   Native setup follows Mathlib's pinned
   [setup-build-env action](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/actions/setup-build-env/action.yml#L85-L103):
   the official `https://elan.lean-lang.org/elan-init.sh` installer and `elan which
@@ -15,10 +17,15 @@ downloads from Reservoir/GitHub. This is separate from
   retries and at most three native toolchain-acquisition attempts handle
   transient failures. Exhausted retries or failed Lean/Lake version checks fail
   setup.
-  Completed compilation is cached even when a later operation fails.
   Mathlib's `mk_all --lib <root> --check` verifies the generated production
-  entries after compilation has been saved. It never rewrites sources in CI.
-- `test_lint` requires successful Build and generated-entry checks. It starts
+  entries without rewriting sources, and `lake --no-build exe
+  mathlib/lint-style <production-roots>` scans the full import lists without
+  automatic fixes. Both preflight results are collected when tool preparation
+  succeeds; production `lake build` runs only when both checks pass. Its final
+  report requires successful tool preparation, generated entries, text style
+  and production Build. Existing compilation is cached even if setup, a
+  preflight or Build fails; production Build is never retried.
+- `test_lint` requires successful Build, including both source preflights. It starts
   by downloading this run's mandatory `cache-staging` artifact,
   overlaying its native mappings/artifacts with `lake cache unstage
   --force-overwrite`, and verifying all production roots and lint executables
@@ -30,9 +37,12 @@ downloads from Reservoir/GitHub. This is separate from
   `lake --no-build lint <production-roots> -- --trace`. Library Tests use incremental compilation; persisted
   compiler-linter diagnostics are reused. Batteries declaration lint keeps its
   ordinary package-wide behavior. A failed Test does not suppress lint feedback.
-  `lake --no-build exe mathlib/lint-style <production-roots>` separately runs
-  Mathlib's own text checks over the full import lists without automatic fixes. No Git
-  diff, explicit file list or library-specific style driver filters the scan.
+  Declaration lint has a ten-minute GNU `timeout`, a thirty-second kill grace
+  period and `LEAN_ABORT_ON_PANIC=1`. It retries once only for timeout exit 124;
+  ordinary diagnostics, other errors and a second timeout remain failures.
+  The step's twenty-five-minute limit bounds both attempts. Text style is
+  checked once in Build, with no duplicate scan in this job. No Git diff,
+  explicit file list or library-specific style driver filters the text scan.
   The [axiom auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
   reads the built production roots and their imported closure; only `propext`,
   `Classical.choice` and `Quot.sound` are allowed. It does not compile the project
@@ -61,7 +71,7 @@ they are not default production targets and have no generated `TestName.lean`.
 All four callers use these same native mechanisms.
 Native setup runs from the caller's Lake package directory. Configure Lean
 or cache-restore failure suppresses checks requiring compiled outputs; Test
-failure still allows lint, text-style and axiom feedback before the final report
+failure still allows declaration-lint and axiom feedback before the final report
 fails the job. The focused workflow regression suite uses Python and PyYAML:
 `python3 -m unittest discover -s scripts -p test_lean_ci_workflow.py -v`.
 The caller preserves each repository's workflow name and concurrency group.

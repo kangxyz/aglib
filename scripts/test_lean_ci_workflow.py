@@ -61,12 +61,15 @@ class WorkflowGates(unittest.TestCase):
             self.assertTrue(condition(final['if'], {}, success=False, cancelled=True))
 
     def test_build_report_requires_real_build_and_generated_entries(self):
-        for build in ('success', 'failure', 'skipped', 'cancelled'):
-            for imports in ('success', 'failure', 'skipped', 'cancelled'):
-                with self.subTest(build=build, imports=imports):
+        success = dict.fromkeys(('TOOLS', 'IMPORTS', 'STYLE', 'RESULT'), 'success')
+        self.assertEqual(report(('build', 'Report Build result'), success), 0)
+        for check in success:
+            for outcome in ('failure', 'skipped', 'cancelled'):
+                with self.subTest(check=check, outcome=outcome):
                     result = report(('build', 'Report Build result'),
-                                    {'RESULT': build, 'IMPORTS': imports})
-                    self.assertEqual(result == 0, build == imports == 'success')
+                                    {**success, check: outcome})
+                    self.assertNotEqual(result, 0)
+                    self.assertFalse(publish(build='failure'))
 
     def test_setup_or_build_failure_prevents_downstream_job(self):
         # Setup failure skips Build, whose report then fails; imports failure also
@@ -77,7 +80,7 @@ class WorkflowGates(unittest.TestCase):
                 self.assertEqual(allowed, result == 'success')
 
     def test_lint_feedback_survives_test_failure_but_requires_prerequisites(self):
-        for name in ('Lint', 'Mathlib text style', 'Audit production axioms'):
+        for name in ('Lint', 'Audit production axioms'):
             for build, restore, setup, compiled in (
                     ('success', 'success', 'success', 'success'),
                     ('failure', 'success', 'success', 'success'),
@@ -98,7 +101,7 @@ class WorkflowGates(unittest.TestCase):
                                                success=False, cancelled=True))
 
     def test_each_check_failure_or_skip_fails_report_and_blocks_publication(self):
-        success = dict.fromkeys(('COMPILED', 'TEST', 'LINT', 'STYLE', 'AXIOMS'), 'success')
+        success = dict.fromkeys(('COMPILED', 'TEST', 'LINT', 'AXIOMS'), 'success')
         self.assertEqual(report(('test_lint', 'Report Test, lint and axiom results'), success), 0)
         for check in success:
             for outcome in ('failure', 'skipped', 'cancelled'):
@@ -143,22 +146,124 @@ class WorkflowGates(unittest.TestCase):
         self.assertIn('mathlib/mk_all --lib "$root" --check',
                       step('build', 'Check generated library entries')['run'])
         self.assertIn('lake --no-build exe mathlib/lint-style "${roots[@]}"',
-                      step('test_lint', 'Mathlib text style')['run'])
+                      step('build', 'Mathlib text style')['run'])
         self.assertIn('lake --no-build lint "${roots[@]}" -- --trace',
                       step('test_lint', 'Lint')['run'])
         self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
 
 
+class PreflightAndLintTimeout(unittest.TestCase):
+    def test_preflights_run_once_before_production_and_gate_failures(self):
+        names = ['Prepare check tools', 'Check generated library entries', 'Mathlib text style', 'Build']
+        steps = [item for item in JOBS['build']['steps'] if item.get('name') in names]
+        self.assertEqual([item['name'] for item in steps], names)
+        self.assertEqual(set(JOBS), {'build', 'test_lint', 'upload_cache'})
+        self.assertEqual(JOBS['upload_cache']['name'], 'Publish cache')
+        self.assertEqual(sum(item.get('name') == 'Mathlib text style'
+                             for job in JOBS.values() for item in job['steps']), 1)
+        self.assertFalse(any(item.get('id') == 'style' for item in JOBS['test_lint']['steps']))
+        self.assertEqual(step('build', 'Prepare check tools')['run'],
+                         'lake build batteries/runLinter mathlib/lint-style mathlib/mk_all')
+        mock = r'''
+lake() {
+  printf '%s\n' "$*" >> "$TRACE"
+  if test "$1" = build && test "$2" = batteries/runLinter; then return "$TOOLS_STATUS"; fi
+  if test "$1" = --no-build && test "$3" = mathlib/mk_all; then return "$IMPORTS_STATUS"; fi
+  if test "$1" = --no-build && test "$3" = mathlib/lint-style; then return "$STYLE_STATUS"; fi
+  return 0
+}
+'''
+        for tools, imports, style, prerequisite in (
+                (0, 0, 0, True), (0, 1, 0, True), (0, 0, 1, True),
+                (0, 1, 1, True), (1, 0, 0, True), (0, 0, 0, False)):
+            with self.subTest(tools=tools, imports=imports, style=style, setup_cache_ok=prerequisite):
+                with tempfile.TemporaryDirectory(prefix='lean-ci-preflight-') as directory:
+                    trace = Path(directory) / 'trace'
+                    trace.touch()
+                    values = {f'steps.{name}.outcome': 'skipped'
+                              for name in ('tools', 'imports', 'style', 'build')}
+                    healthy = prerequisite
+                    executed = []
+                    for item in steps:
+                        allowed = condition(item['if'], values, success=healthy) if 'if' in item else healthy
+                        if not allowed:
+                            continue
+                        result = subprocess.run(
+                            ['bash', '-e', '-o', 'pipefail', '-c', mock + item['run']],
+                            env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
+                                 'RUNNER_TEMP': directory, 'TRACE': str(trace),
+                                 'TOOLS_STATUS': str(tools), 'IMPORTS_STATUS': str(imports),
+                                 'STYLE_STATUS': str(style)},
+                            capture_output=True, text=True, check=False)
+                        values[f"steps.{item['id']}.outcome"] = 'success' if result.returncode == 0 else 'failure'
+                        if result.returncode and not item.get('continue-on-error', False):
+                            healthy = False
+                        executed.append(item['name'])
+                    expected_build = prerequisite and tools == imports == style == 0
+                    self.assertEqual('Build' in executed, expected_build)
+                    if prerequisite and tools == 0:
+                        self.assertEqual(executed[:3], names[:3])
+                        commands = trace.read_text().splitlines()
+                        self.assertEqual(commands[1:4], [
+                            '--no-build exe mathlib/mk_all --lib Aglib --check',
+                            '--no-build exe mathlib/mk_all --lib Quillen --check',
+                            '--no-build exe mathlib/lint-style Aglib Quillen'])
+                        self.assertEqual(commands[0], step('build', 'Prepare check tools')['run'].removeprefix('lake '))
+                        if expected_build:
+                            self.assertEqual(commands[4], f'build Aglib Quillen -o {directory}/outputs.jsonl')
+                    if not expected_build:
+                        self.assertFalse(publish(build='failure'))
+                    self.assertTrue(condition(step('build', 'Save compilation independently of Test and lint')['if'],
+                                              {}, success=False))
+
+    def test_failed_skipped_or_cancelled_preflight_never_allows_build(self):
+        success = dict.fromkeys(('steps.tools.outcome', 'steps.imports.outcome', 'steps.style.outcome'), 'success')
+        for key in success:
+            for outcome in ('failure', 'skipped', 'cancelled'):
+                self.assertFalse(condition(step('build', 'Build')['if'], {**success, key: outcome}))
+        self.assertFalse(condition(step('build', 'Build')['if'], success, cancelled=True))
+
+    def test_lint_only_retries_one_timeout_and_preserves_final_status(self):
+        lint = step('test_lint', 'Lint')
+        self.assertEqual(lint['timeout-minutes'], 25)
+        self.assertTrue(lint['continue-on-error'])
+        mock = r'''
+count=0
+timeout() {
+  count=$((count + 1))
+  printf '%s\n' "$*" >> "$TRACE"
+  if test "$count" -eq 1; then return "$FIRST"; fi
+  return "$SECOND"
+}
+'''
+        for first, second, expected, attempts in (
+                (0, 0, 0, 1), (1, 0, 1, 1), (124, 0, 0, 2),
+                (124, 124, 124, 2), (124, 1, 1, 2), (137, 0, 137, 1), (143, 0, 143, 1)):
+            with self.subTest(first=first, second=second):
+                with tempfile.TemporaryDirectory(prefix='lean-ci-timeout-') as directory:
+                    trace = Path(directory) / 'trace'
+                    result = subprocess.run(
+                        ['bash', '-e', '-o', 'pipefail', '-c', mock + lint['run']],
+                        env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen', 'TRACE': str(trace),
+                             'FIRST': str(first), 'SECOND': str(second)},
+                        capture_output=True, text=True, check=False)
+                    self.assertEqual(result.returncode, expected, result.stderr)
+                    self.assertEqual(trace.read_text().splitlines(), [
+                        '--kill-after=30s 10m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint Aglib Quillen -- --trace'
+                    ] * attempts)
+
+
 class RootSelectionAndPublication(unittest.TestCase):
     def test_lint_commands_pass_all_roots_as_native_arguments(self):
-        for name, expected in (
-                ('Lint', ['--no-build', 'lint', 'Aglib', 'Quillen', '--', '--trace']),
-                ('Mathlib text style', ['--no-build', 'exe', 'mathlib/lint-style', 'Aglib', 'Quillen'])):
+        for job, name, expected in (
+                ('test_lint', 'Lint', ['--no-build', 'lint', 'Aglib', 'Quillen', '--', '--trace']),
+                ('build', 'Mathlib text style', ['--no-build', 'exe', 'mathlib/lint-style', 'Aglib', 'Quillen'])):
             with self.subTest(step=name):
                 result = subprocess.run(
                     ['bash', '-e', '-o', 'pipefail', '-c',
-                     'lake() { printf "%s\\n" "$@"; }\n' + step('test_lint', name)['run']],
+                     'lake() { printf "%s\\n" "$@"; }\n'
+                     'timeout() { shift; shift; shift; shift; "$@"; }\n' + step(job, name)['run']],
                     env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen'},
                     capture_output=True, text=True, check=False)
                 self.assertEqual(result.returncode, 0, result.stderr)
