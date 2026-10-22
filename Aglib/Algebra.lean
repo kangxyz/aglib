@@ -42,6 +42,8 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.SpanSingleton
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
+public import Aglib.Algebra.Category.ModuleCat.Descent.FinitePresentation.Maps
+public import Aglib.Algebra.Category.ModuleCat.Descent.FinitePresentation.Models
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
 public import Aglib.Algebra.Category.ModuleCat.DirectSumMap
 public import Aglib.Algebra.Category.ModuleCat.Ext.DualQuotient

@@ -44,6 +44,8 @@ public import Aglib.RingTheory.AdicCompletion.OriginalBranchResidues
 public import Aglib.RingTheory.AdicCompletion.Powers
 public import Aglib.RingTheory.AdicCompletion.QuotientComparison
 public import Aglib.RingTheory.AdicCompletion.QuotientDensity
+public import Aglib.RingTheory.AdicCompletion.RingEquiv
+public import Aglib.RingTheory.AdicCompletion.RingEquivApproximation
 public import Aglib.RingTheory.AdicCompletion.ScalarExtension
 public import Aglib.RingTheory.AdicCompletion.ScalarNaturality
 public import Aglib.RingTheory.AdicCompletion.SemilocalBranches
@@ -265,6 +267,9 @@ public import Aglib.RingTheory.Henselian.FieldEvaluationComponent
 public import Aglib.RingTheory.Henselian.FiniteAlgebraHenselian
 public import Aglib.RingTheory.Henselian.FiniteAlgebraIdempotents
 public import Aglib.RingTheory.Henselian.FiniteAlgebraLocalFactor
+public import Aglib.RingTheory.Henselian.FiniteBaseLocalization
+public import Aglib.RingTheory.Henselian.GeometricLocalArtinApproximation
+public import Aglib.RingTheory.Henselian.GeometricLocalFiniteOriginModel
 public import Aglib.RingTheory.Henselian.Henselization
 public import Aglib.RingTheory.Henselian.HenselizationCoefficientReduction
 public import Aglib.RingTheory.Henselian.HenselizationCompletion
@@ -272,14 +277,20 @@ public import Aglib.RingTheory.Henselian.HenselizationCompletionCoherence
 public import Aglib.RingTheory.Henselian.HenselizationCompletionEquiv
 public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalEquiv
 public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalPoint
+public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalTransport
 public import Aglib.RingTheory.Henselian.HenselizationHenselian
 public import Aglib.RingTheory.Henselian.HenselizationLocalRing
+public import Aglib.RingTheory.Henselian.HenselizationMap
 public import Aglib.RingTheory.Henselian.HenselizationMaximalIdeal
 public import Aglib.RingTheory.Henselian.HenselizationNoetherian
 public import Aglib.RingTheory.Henselian.HenselizationPolynomialDescent
 public import Aglib.RingTheory.Henselian.HenselizationQuotient
 public import Aglib.RingTheory.Henselian.HenselizationQuotientSystem
 public import Aglib.RingTheory.Henselian.HenselizationUniversal
+public import Aglib.RingTheory.Henselian.MonicFiniteHenselization
+public import Aglib.RingTheory.Henselian.MonicFiniteOriginModel
+public import Aglib.RingTheory.Henselian.MonicFiniteReduction
+public import Aglib.RingTheory.Henselian.MonicFiniteReductionMaximal
 public import Aglib.RingTheory.Henselian.Nilpotent
 public import Aglib.RingTheory.Henselian.PolynomialCompletionQuotient
 public import Aglib.RingTheory.Henselian.PolynomialLocalCompletion
@@ -319,6 +330,8 @@ public import Aglib.RingTheory.Henselian.PolynomialSystem
 public import Aglib.RingTheory.Henselian.Quadratic
 public import Aglib.RingTheory.Henselian.QuotientMaximalIdeal
 public import Aglib.RingTheory.Henselian.RectangularCorrection
+public import Aglib.RingTheory.Henselian.ResidueParameterAnnihilator
+public import Aglib.RingTheory.Henselian.ResidueParameterBasis
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
 public import Aglib.RingTheory.Ideal.CoordinateDisplacement
@@ -417,6 +430,7 @@ public import Aglib.RingTheory.Localization.Away.SaturatedChart
 public import Aglib.RingTheory.Localization.Away.SaturatedChartLift
 public import Aglib.RingTheory.Localization.Away.Torsion
 public import Aglib.RingTheory.Localization.EndomorphismPi
+public import Aglib.RingTheory.Localization.FractionBase
 public import Aglib.RingTheory.Localization.FrobeniusLinearIndependent
 public import Aglib.RingTheory.Localization.HeightOne
 public import Aglib.RingTheory.Localization.HomEvaluation

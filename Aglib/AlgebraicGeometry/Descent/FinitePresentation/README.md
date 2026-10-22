@@ -9,6 +9,7 @@ pullback comparisons over an actual filtered colimit of rings.
 | [Gluing](Gluing.md) | Quasi-compact open models, finite open gluing and eventual isomorphisms of the specified stage maps, with quasi-separatedness required only on the target for eventual isomorphisms. |
 | [Schemes](Schemes.md) | Every finitely presented qcqs scheme has a stage model; a finite category of such schemes has an actual stage functor and pullback natural isomorphism. |
 | [Properties](Properties.md) | Actual schematic-image, standard-smooth and relative-dimension suppliers for finite-base curve models. |
+| [Module maps and properties](Modules/README.md) | Actual global Hom and equality descent for finitely presented module sheaves, with eventual isomorphisms and rank-one frames on the original later pullbacks. |
 
 Scheme finite presentation uses the native three conditions
 `LocallyOfFinitePresentation`, `QuasiCompact` and `QuasiSeparated`.

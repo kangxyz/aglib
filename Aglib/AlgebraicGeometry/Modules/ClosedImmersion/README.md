@@ -117,6 +117,12 @@ closed immersion is an epimorphism on every module sheaf. It uses the original
 module-stalk comparison and surjectivity of the scalar extension unit, without
 coherence or flatness assumptions. It supplies canonical formal quotient transitions.
 
+[StructureQuotient](StructureQuotient.md) applies that same quotient unit to
+the original structure-module map. `Hom.structureModuleMap_epi` and
+`Hom.idealSequence_shortExact` give its actual short exact kernel sequence,
+with the existing `Hom.idealModule` and `Hom.idealInclusion`. These statements
+apply to every closed immersion without quasicoherence or finiteness conditions.
+
 [KilledSubobject](KilledSubobject.lean) transfers actual affine ideal-sheaf
 annihilation to ordinary monomorphic subobjects, using injectivity on the
 original sections and no quasicoherence hypothesis.

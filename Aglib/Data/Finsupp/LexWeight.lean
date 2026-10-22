@@ -9,7 +9,6 @@ public import Mathlib.Data.Finsupp.Lex
 public import Mathlib.Data.Finsupp.Weight
 public import Mathlib.Data.Fin.Tuple.Basic
 public import Mathlib.Algebra.BigOperators.Fin
-public import Lean.Elab.Tactic.Omega
 
 /-!
 # Positive weights isolating one lexicographic exponent

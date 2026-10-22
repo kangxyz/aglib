@@ -9,8 +9,23 @@ The domain/DVR proof uses the [separated principal-maximal-ideal criterion](../L
 [TowerComparison](TowerComparison.lean), imported as `Aglib.RingTheory.AdicCompletion.TowerComparison`, constructs the canonical linear map from the native `AdicCompletion I M` to `ModuleCat.sectionsSubmodule Q` for an inverse tower indexed by all natural numbers, including zero. Its stage maps are the original quotient factors, and its composite with `AdicCompletion.of` is the original compatible family. A uniform shifted kernel bound and an eventual transition-range bound make this actual map a linear equivalence. The shifts can differ, and ring, source-module, and tower-module universes are independent. No Noetherianity, finite generation, or surjectivity of the tower transitions is assumed. These are explicitly conditional algebraic bounds, not a supplier of geometric formal functions or a topological comparison.
 
 [EquivTransport](EquivTransport.lean) composes native completion congruence with
-a given comparison, preserving the original base-ring scalars and class map
-across independent module universes.
+a given linear comparison over a fixed base ring, preserving the original
+base-ring scalars and class map across independent module universes.
+
+[RingEquiv](RingEquiv.lean) defines `AdicCompletion.congrRingEquiv` for a ring
+equivalence `e : R ≃+* S` between commutative rings and an ideal `I` of `R`. It identifies
+`AdicCompletion I R` with `AdicCompletion (I.map e.toRingHom) S` across independent
+ring universes, using the actual finite quotient equivalences `quotientPowEquiv`.
+The maps preserve original elements, every quotient projection and transition,
+and the extended ideal powers (`congrRingEquiv_map_power`). No finite-generation,
+Noetherianity or completeness premise is required.
+[RingEquivApproximation](RingEquivApproximation.lean) gives
+`AdicCompletion.exists_solution_of_ringEquiv_solver`: a solver in the mapped-ideal
+completion yields an exact solution in the original ring, retaining both its
+literal quotient-projection equality and its extended-ideal error. The solver
+remains a premise of this transport helper; the
+[geometric-local Henselization endpoint](../Henselian/GeometricLocalArtinApproximation.md)
+constructs the model and supplies that solver.
 
 [HomComparison](HomComparison.lean) defines `AdicCompletion.quotientHomEquiv`:
 maps into an adically complete module are exactly compatible maps on the

@@ -999,6 +999,7 @@ public import Aglib.AlgebraicGeometry.Curves.Picard.PullbackDegree
 public import Aglib.AlgebraicGeometry.Curves.Picard.RationalTrivialization
 public import Aglib.AlgebraicGeometry.Curves.Picard.TorsionSections
 public import Aglib.AlgebraicGeometry.Curves.Picard.TrivializedPower
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Sections
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Birational
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Charts
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Comparison
@@ -1028,6 +1029,9 @@ public import Aglib.AlgebraicGeometry.Curves.SmoothGeometry
 public import Aglib.AlgebraicGeometry.DedekindPointStalk
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Diagrams
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Affine
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Maps
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Schemes
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
@@ -1406,6 +1410,7 @@ public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Affin
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction.Counit
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Stalk
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.StructureQuotient
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Support
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Unit
 public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.AmbientExact
@@ -2056,6 +2061,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricPoints
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricRetraction
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricallyIntegral.Open
+public import Aglib.AlgebraicGeometry.Morphisms.Integral.GenericSection
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.BaseChangeRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.CartesianRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenPullback

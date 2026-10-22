@@ -1,5 +1,29 @@
 # Migration work and validation boundaries
 
+## Field-geometric Artin approximation and module maps
+
+[Geometric-local Artin approximation](../Aglib/RingTheory/Henselian/GeometricLocalArtinApproximation.md)
+now applies to the actual Henselization of any prime localization of a
+finite-type algebra over an arbitrary field. Every proper ideal, finite
+polynomial system, original formal root and requested ideal-power precision
+are retained. The finite-origin model and cross-universe completion
+equivalence are constructed. Approximation for arbitrary excellent Henselian
+local rings and the general excellent-DVR route remain outside this endpoint.
+
+[Finite-presentation module Hom descent](../Aglib/AlgebraicGeometry/Descent/FinitePresentation/Modules/README.md)
+retains the original cofiltered scheme cone, given coefficients, pullbacks
+and recovery equations. Global Hom uses qcqs stages; equality needs only
+quasi-compact stages. Eventual isomorphisms retain both inverse equations,
+and rank-one descent constructs actual finite covers and frames. Global
+module-object and finite-diagram effectivity remain separate obligations.
+
+The same source cohort includes the [structure-module kernel sequence](../Aglib/AlgebraicGeometry/Modules/ClosedImmersion/StructureQuotient.md)
+for every closed immersion, [unique generic lifts through integral morphisms](../Aglib/AlgebraicGeometry/Morphisms/Integral/GenericSection.md)
+from normal integral schemes, and [intrinsic rational-point section flags](../Aglib/AlgebraicGeometry/Curves/PointDivisor/Sections.md)
+for genus-one curves over arbitrary fields. Surface contraction, regular
+resolution, common regular domination and minimal-model comparison continue
+in their own mathematical scopes; these lower producers do not close them.
+
 ## Fundamental groups and finite-coefficient etale H1 migration
 
 The [190-module R5 source selection](migration/r5-fundamental-groups.json)

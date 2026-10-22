@@ -73,5 +73,22 @@ original quotient-projection equality and extended-ideal precision modulo `J ^ c
 Here `k` and `A` share one universe; the finite variable and equation types have
 independent universes. The statement derives locality of the structural map
 and the needed cofinality comparison. It requires no caller-supplied solver,
-cofinality bound, flatness or free-module structure on `A`. The full excellent-DVR and
-general geometric-local Artin statements remain open extensions of this scope.
+cofinality bound, flatness or free-module structure on `A`.
+
+## Geometric local Henselizations over a field
+
+[GeometricLocalArtinApproximation](GeometricLocalArtinApproximation.lean) gives
+`GeometricLocalHenselization.exists_solution_ideal_completion_with_precision`
+for the actual `H = Henselization (Localization.AtPrime q)`, where `q` is any prime
+of a finite-type algebra `B` over an arbitrary field `k`. For every proper
+ideal `I`, a formal solution of a finite polynomial system in `AdicCompletion I H`
+has an exact solution in the original Henselization `H`, with literal quotient
+precision modulo `I ^ c` and error in the original extended ideal power for
+every `c : ℕ`. The universes of `k`, `B`, the variables and the equations are
+independent. The [statement and construction guide](GeometricLocalArtinApproximation.md)
+explains the constructed finite-origin model and completion transport.
+
+These results concern actual Henselizations of prime localizations of finite-type
+algebras over a field, together with the polynomial-origin finite-local setting
+above. Artin approximation for arbitrary excellent Henselian local rings and
+the general excellent-DVR route remain outside this scope.

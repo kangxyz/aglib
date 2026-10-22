@@ -20,6 +20,12 @@ affine bases, proper surjective modifications finite over finite projective
 products. The separate cohomology family consumes these actual maps to prove
 proper coherent finiteness.
 
+[Integral generic lifts](Integral/GenericSection.md) extend a specified
+generic lift through an integral morphism uniquely from a normal integral
+scheme. The actual extension preserves both original structural and generic
+triangles. No Noetherianity, dimension or reducedness condition is imposed on
+the integral target; finite morphisms are included.
+
 Focused guides for [finite flat morphisms](FiniteFlat/README.md),
 [flat morphisms](Flat/README.md), [isomorphisms](IsIso/README.md) and
 [surjectivity](Surjective/README.md) document the incoming affine/stalk and

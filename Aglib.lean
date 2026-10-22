@@ -36,6 +36,8 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.SpanSingleton
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
+public import Aglib.Algebra.Category.ModuleCat.Descent.FinitePresentation.Maps
+public import Aglib.Algebra.Category.ModuleCat.Descent.FinitePresentation.Models
 public import Aglib.Algebra.Category.ModuleCat.Differentials.Presheaf.Relative
 public import Aglib.Algebra.Category.ModuleCat.DirectSumMap
 public import Aglib.Algebra.Category.ModuleCat.Ext.DualQuotient
@@ -1251,6 +1253,7 @@ public import Aglib.AlgebraicGeometry.Curves.Picard.PullbackDegree
 public import Aglib.AlgebraicGeometry.Curves.Picard.RationalTrivialization
 public import Aglib.AlgebraicGeometry.Curves.Picard.TorsionSections
 public import Aglib.AlgebraicGeometry.Curves.Picard.TrivializedPower
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Sections
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Birational
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Charts
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Comparison
@@ -1280,6 +1283,9 @@ public import Aglib.AlgebraicGeometry.Curves.SmoothGeometry
 public import Aglib.AlgebraicGeometry.DedekindPointStalk
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Diagrams
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Affine
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Maps
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Schemes
 public import Aglib.AlgebraicGeometry.Descent.IdealSheaf.FaithfullyFlat
@@ -1657,6 +1663,7 @@ public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Affin
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction.Counit
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Stalk
+public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.StructureQuotient
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Support
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.Unit
 public import Aglib.AlgebraicGeometry.Modules.Coherent.AdicSystem.AmbientExact
@@ -2299,6 +2306,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricPoints
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricRetraction
 public import Aglib.AlgebraicGeometry.Morphisms.GeometricallyIntegral.Open
+public import Aglib.AlgebraicGeometry.Morphisms.Integral.GenericSection
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.BaseChangeRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.CartesianRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenPullback
@@ -3058,6 +3066,8 @@ public import Aglib.RingTheory.AdicCompletion.OriginalBranchResidues
 public import Aglib.RingTheory.AdicCompletion.Powers
 public import Aglib.RingTheory.AdicCompletion.QuotientComparison
 public import Aglib.RingTheory.AdicCompletion.QuotientDensity
+public import Aglib.RingTheory.AdicCompletion.RingEquiv
+public import Aglib.RingTheory.AdicCompletion.RingEquivApproximation
 public import Aglib.RingTheory.AdicCompletion.ScalarExtension
 public import Aglib.RingTheory.AdicCompletion.ScalarNaturality
 public import Aglib.RingTheory.AdicCompletion.SemilocalBranches
@@ -3279,6 +3289,9 @@ public import Aglib.RingTheory.Henselian.FieldEvaluationComponent
 public import Aglib.RingTheory.Henselian.FiniteAlgebraHenselian
 public import Aglib.RingTheory.Henselian.FiniteAlgebraIdempotents
 public import Aglib.RingTheory.Henselian.FiniteAlgebraLocalFactor
+public import Aglib.RingTheory.Henselian.FiniteBaseLocalization
+public import Aglib.RingTheory.Henselian.GeometricLocalArtinApproximation
+public import Aglib.RingTheory.Henselian.GeometricLocalFiniteOriginModel
 public import Aglib.RingTheory.Henselian.Henselization
 public import Aglib.RingTheory.Henselian.HenselizationCoefficientReduction
 public import Aglib.RingTheory.Henselian.HenselizationCompletion
@@ -3286,14 +3299,20 @@ public import Aglib.RingTheory.Henselian.HenselizationCompletionCoherence
 public import Aglib.RingTheory.Henselian.HenselizationCompletionEquiv
 public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalEquiv
 public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalPoint
+public import Aglib.RingTheory.Henselian.HenselizationFiniteLocalTransport
 public import Aglib.RingTheory.Henselian.HenselizationHenselian
 public import Aglib.RingTheory.Henselian.HenselizationLocalRing
+public import Aglib.RingTheory.Henselian.HenselizationMap
 public import Aglib.RingTheory.Henselian.HenselizationMaximalIdeal
 public import Aglib.RingTheory.Henselian.HenselizationNoetherian
 public import Aglib.RingTheory.Henselian.HenselizationPolynomialDescent
 public import Aglib.RingTheory.Henselian.HenselizationQuotient
 public import Aglib.RingTheory.Henselian.HenselizationQuotientSystem
 public import Aglib.RingTheory.Henselian.HenselizationUniversal
+public import Aglib.RingTheory.Henselian.MonicFiniteHenselization
+public import Aglib.RingTheory.Henselian.MonicFiniteOriginModel
+public import Aglib.RingTheory.Henselian.MonicFiniteReduction
+public import Aglib.RingTheory.Henselian.MonicFiniteReductionMaximal
 public import Aglib.RingTheory.Henselian.Nilpotent
 public import Aglib.RingTheory.Henselian.PolynomialCompletionQuotient
 public import Aglib.RingTheory.Henselian.PolynomialLocalCompletion
@@ -3333,6 +3352,8 @@ public import Aglib.RingTheory.Henselian.PolynomialSystem
 public import Aglib.RingTheory.Henselian.Quadratic
 public import Aglib.RingTheory.Henselian.QuotientMaximalIdeal
 public import Aglib.RingTheory.Henselian.RectangularCorrection
+public import Aglib.RingTheory.Henselian.ResidueParameterAnnihilator
+public import Aglib.RingTheory.Henselian.ResidueParameterBasis
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
 public import Aglib.RingTheory.Ideal.CoordinateDisplacement
@@ -3431,6 +3452,7 @@ public import Aglib.RingTheory.Localization.Away.SaturatedChart
 public import Aglib.RingTheory.Localization.Away.SaturatedChartLift
 public import Aglib.RingTheory.Localization.Away.Torsion
 public import Aglib.RingTheory.Localization.EndomorphismPi
+public import Aglib.RingTheory.Localization.FractionBase
 public import Aglib.RingTheory.Localization.FrobeniusLinearIndependent
 public import Aglib.RingTheory.Localization.HeightOne
 public import Aglib.RingTheory.Localization.HomEvaluation

@@ -65,3 +65,10 @@ remain open for F6 and are not in this family:
   Mathlib's `Pseudofunctor.DescentData` ranges over all test schemes, not only affine ones.
 
 The focused test is `AglibTest/Algebra/Category/ModuleCat/Descent/FaithfullyFlat.lean`.
+
+## Finite-presentation limits
+
+The separate [finite-presentation family](FinitePresentation/README.md)
+constructs actual finite matrix models over filtered ring colimits and
+descends their original homomorphisms and equations. These limit statements
+do not require flat or injective transition maps.

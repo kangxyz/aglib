@@ -19,3 +19,17 @@ evaluation-compatible linear equivalences transfer the native Hom-localization
 theorem to the specified original modules and map. The target need not be
 finite, and no Noetherian hypothesis is imposed. Its current consumer is
 coherence of the actual scheme internal Hom.
+
+[FractionBase](FractionBase.lean), in namespace `FractionBaseLocalization`,
+localizes a commutative `R`-algebra `B` at the images of the nonzero elements
+of a domain `R`. Its `BaseLocalized R B` carries the native `FractionRing R`
+action, with independent ring universes. For compatible coefficient maps
+`k → R → B`, the images of any original `k`-algebra generators generate the
+localized algebra over `FractionRing R`; finite type over `k` suffices.
+For a prime `q` with zero contraction to `R`, `selectedPrime` is its actual
+extension, `selectedPrime_comap` recovers `q`, and `localEquiv` identifies the
+selected prime localization with `Localization.AtPrime q` as a `B`-algebra.
+`quotientMap` and `quotientMap_comp_algebraMap` retain the original quotient
+classes and coefficient square. The
+[geometric-local finite-origin construction](../Henselian/GeometricLocalFiniteOriginModel.lean)
+uses these maps after choosing residue transcendence parameters.
