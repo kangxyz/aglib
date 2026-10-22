@@ -71,6 +71,16 @@ The independent lower [power-node algebra](../../RingTheory/Blowup/PowerNode/REA
 computes actual saturated chart rings and transition maps. It does not supply
 these global geometric families or an actual node-resolution scheme.
 
+[Ideal frames](IdealFrames.md), in `Scheme.Blowup.IdealFrames`, frame the
+actual inverse-image-centre kernel module on the original saturated charts
+of any supplied affine universal blowup. `chartFrame_inclusion` retains
+multiplication by the original denominator. For equal chart maps with an
+actual open-immersion overlap, `chartFrameAfterMap_transition` retains the
+given denominator-ratio equation before fibre reduction.
+[Frame pullback coherence](IdealFrames/Transition.md) preserves the original
+forward maps through native unit, composition and congruence comparisons.
+These are lower inputs to the regular-point conormal calculation.
+
 [RegularPoint](RegularPoint.md) identifies the literal closed-point fibre of
 the actual maximal-ideal blowup of a two-dimensional regular local ring with
 the native projective line over its original residue field. Its
@@ -84,4 +94,16 @@ principal fibre quotients and the actual stalk maps.
 of a closed point on any scheme with regular stalks when its original
 stalk has dimension two. The canonical comparison with the local-ring blowup
 preserves both projections and uses the original centre ideal and stalk maps.
-Normal-line comparison and contraction remain separate obligations.
+
+[Local conormal and normal lines](RegularPoint/Normal.md), in
+`Scheme.Blowup.RegularPoint`, identify the actual exceptional conormal with
+native `O(1)` and the restricted dual with native `O(-1)` for the same
+commutative regular local ring `A` with `ringKrullDim A = 2`.
+`centreConormalTwistingIso` and `centreNormalTwistingIso` use the original
+parameter-dependent centre/projective-line comparison and canonical coordinate
+lift, retaining the original generators and evaluation map. The
+[frames](RegularPoint/Normal/Frames.md) and
+[section coefficients](RegularPoint/Normal/Sections.md) retain the original
+reciprocal-chart maps and Laurent transition coefficient. A global
+scheme-level normal-line comparison, numerical self-intersection and
+contraction remain separate obligations.

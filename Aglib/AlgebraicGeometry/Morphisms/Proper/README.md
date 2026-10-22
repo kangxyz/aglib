@@ -65,6 +65,8 @@ properness and the affine open, through the lower qcqs affinization theorem.
 The intermediate scheme is the spectrum of the actual section ring, with no
 identification with the raw schematic image or gluing of global factors asserted.
 
+## Birational morphisms and Cartier neighborhoods
+
 [Birational functions](BirationalFunctions.md) proves `IsIso f.c` for the
 original structure-sheaf map of a universally closed dominant morphism between
 integral schemes, with normal actual target stalks and an isomorphism on the
@@ -102,3 +104,29 @@ function-field map is an isomorphism over a neighborhood of any finite actual
 point fibre. Quasi-finiteness at every point above the target point suffices.
 These statements require neither Noetherianity nor source normality, and use
 the native proper quasi-finite theorem through its finite-fibre corollary.
+
+[The Cartier neighborhood test](CartierNeighborhood.md) concerns an original
+proper dominant `q : W ⟶ B` between integral schemes, with locally Noetherian
+normal target and invertible actual `functionFieldMap q`. It retains the
+given effective Cartier immersions `i : E ⟶ W`, `j : D ⟶ B`, isomorphism
+`e : E ≅ D`, and square `e.hom ≫ j = i ≫ q`.
+`Scheme.exists_isIso_restrict_of_isProper_birational_of_cartier_pullback_epi`
+requires epimorphy of the original canonical `idealPullbackMap` after the
+actual pullback by `i`. It produces a target open containing `range j` on
+which the original restriction of `q` is an isomorphism. Its `..._isIso`
+corollary assumes invertibility of that same pulled map. The original ideal
+equality is derived using [kernel detection](../../IdealSheaf/BaseChange/Detection.md);
+it is not an input to the neighborhood test.
+
+## Sections over a trait
+
+[Trait section lifting](TraitSections.md), in `Scheme.ProperTraitSections`,
+takes a DVR `R`, its specified fraction field `F`, an actual
+`p : X ⟶ Spec R`, and a proper `f : Y ⟶ X` whose literal generic-fibre
+map is an isomorphism. `existsUnique_lift` lifts every original section of
+`p` uniquely through `f`. The chosen `lift` retains its composite with `f`,
+its section equation over `R`, and the inverse transport of the original
+generic section through that same native generic map. Properness of `p`,
+regularity, integrality and flatness are unnecessary. The
+[trait common-domination theorem](../../Surfaces/Birational/TraitDomination.md)
+uses this supplier for its original compatible sections.

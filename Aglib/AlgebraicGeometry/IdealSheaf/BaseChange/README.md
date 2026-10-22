@@ -12,6 +12,17 @@ module of the base-changed closed immersion. No flatness, Noetherianity or
 Cartier hypothesis is required. This is an epimorphism statement; it does not
 identify a nonflat pullback ideal module with its image ideal by an isomorphism.
 
+[Kernel detection](Detection.md) supplies
+`Scheme.Hom.ker_comap_eq_of_idealPullbackMap_epi`. For closed immersions
+`c : D ⟶ Z` and `i : E ⟶ X`, maps `f : X ⟶ Z`, `a : E ⟶ D`, and
+`h : a ≫ c = i ≫ f`, epimorphy of the original
+`idealPullbackMap c i f a h` gives the literal equality
+`c.ker.comap f = i.ker`. The native closed-immersion criterion then gives
+cartesianness of that same square. The theorem assumes neither
+cartesianness nor flatness, finiteness or Cartierness. Its current consumers
+are the [Cartier neighborhood test](../../Morphisms/Proper/CartierNeighborhood.md)
+and the [projective image-point ideal](../../Surfaces/Contraction/PointIdeal.md).
+
 [Flat](Flat.lean) supplies `Scheme.Hom.flatQuotient_idealPullbackMap_isIso`. Its two actual cartesian squares, `IsClosedImmersion i` and `Flat (i ≫ p)` imply invertibility of the specified ideal map. Neither the ambient family nor the base-change morphism needs to be flat; an invertible ideal is also not a premise of this root. The source Cartier specialization retains its original extra rank-one hypothesis as a pointwise corollary.
 
 [Fibre](Fibre.lean) constructs the actual fibre inclusion and cartesian square. Its conditional ideal isomorphism and line-bundle construction retain the explicitly displayed pointwise base-change supplier, closed-immersion, quotient-flatness and rank-one inputs from the source. These conditional interfaces are supplied by the proved `Flat` root in their final consumers; they are not new global theorem-family predicates.

@@ -1,4 +1,6 @@
-# Birational surface isomorphism locus
+# Birational surface maps and common domination
+
+## Isomorphism locus
 
 [IsomorphismLocus](IsomorphismLocus.md) describes the actual
 `Hom.targetIsomorphismLocus`, the union of all target opens on which the literal
@@ -43,6 +45,26 @@ The [regular-point blowup computation](../../Blowup/RegularPoint.md) separately
 identifies its actual inverse-image centre with the original residue-field
 projective line. Neither theorem supplies contraction or blowup factorization.
 
+## Common domination and trait models
+
+[CommonDomination](CommonDomination.md), in `Scheme.CommonDomination`,
+starts with an integral Noetherian `X` with regular stalks and dimension at
+most two, an actual map `pX : X ⟶ Spec R` over a Noetherian commutative
+ring, and an integral target proper over the same base. The original
+dominant `gη : Spec K(X) ⟶ T` and its base triangle are inputs.
+`exists_pointBlowupChain_extension_to_proper_target` produces a finite
+point-blowup chain `β : Y ⟶ X` and a dominant extension `h : Y ⟶ T`,
+with regular integral Noetherian `Y` of dimension at most two. It retains
+the base triangle, the generic triangle through the canonical
+`functionFieldMap β`, and an actual `j : Spec K(X) ⟶ Y` with
+`j ≫ β = ηX` and `j ≫ h = gη`. The construction uses the actual Chow
+modification, [projective extension](../../RationalMap/ProjectiveExtension.md)
+for its finite product factors, and the finite-map integral generic lift.
+When `pX` is proper,
+`exists_proper_pointBlowupChain_commonDomination` also makes `h` proper
+and surjective. Birationality of `h` requires a corresponding original
+generic isomorphism.
+
 [TraitGraph](TraitGraph.md) constructs the actual common proper integral
 Noetherian flat graph over a DVR from a supplied identification of the
 literal generic fibres. Both projections are proper and surjective;
@@ -50,4 +72,21 @@ their generic comparisons and induced function-field equivalences retain
 the original maps. Compatible supplied sections lift with both original
 triangles. The lower [graph comparison](../../Morphisms/Proper/GraphClosure/Comparison.md)
 uses the actual schematic image and schematic-density factorization.
-Regularity and resolution of this graph remain separate obligations.
+Regularity of the graph itself is not asserted by this construction;
+regular-source domination is supplied below.
+
+[TraitDomination](TraitDomination.md), in `Scheme.TraitDomination`, starts
+with the original DVR `R`, specified fraction field `F`, proper flat
+integral `p : X ⟶ Spec R`, proper integral `q : Y ⟶ Spec R`, and supplied
+isomorphism `e` between their literal generic fibres. The original `X`
+is regular of dimension at most two.
+`exists_regular_commonDomination` gives a finite point-blowup chain
+`β : W ⟶ X`, a second projection `γ : W ⟶ Y`, and the original graph
+lift. The regular integral Noetherian `W` has dimension at most two and
+proper flat structure map; both projections are proper, surjective and
+birational. Their literal generic isomorphisms have the original native
+base-change maps as forward arrows and satisfy `eX ≪≫ e = eY`. Compatible
+supplied sections lift uniquely with both original projection equations,
+using [proper trait sections](../../Morphisms/Proper/TraitSections.md).
+Regularity of the original source is essential to this construction;
+resolution from arbitrary singular initial data remains separate.

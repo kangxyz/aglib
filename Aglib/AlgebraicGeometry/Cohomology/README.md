@@ -20,6 +20,7 @@ keeps the two site owners separate.
 | [Support](Support/README.md) and [Vanishing](Vanishing/README.md) | Skyscraper/finite-closed-support calculations and Noetherian topological-dimension vanishing |
 | [BaseChange](BaseChange/README.md) | Original tensor mates and all-degree qcqs flat base change for arbitrary quasicoherent module coefficients |
 | [Projective](Projective/README.md) | Finite free twist cohomology over arbitrary rings and all-degree coherent finiteness through an actual embedding in Noetherian polynomial projective space |
+| [Cartier-curve filtrations](CartierCurve/Vanishing.md) | Positive twist vanishing, original quotient-section lifts and finite generating families for actual short exact sequences |
 | [DirectImage](DirectImage/README.md) | Native resolution sections, qcqs quasicoherent higher images and proper coherent higher images over locally Noetherian targets |
 | [FiniteModel](FiniteModel/README.md) and [Proper/FiniteModel](Proper/FiniteModel/README.md) | One bounded finite-projective model for proper coherent relatively flat coefficients over a Noetherian affine base, including every ring base change |
 | [Proper/Finiteness](Proper/Finiteness/README.md) and [Proper/Field](Proper/Field/README.md) | Proved proper coherent finiteness and the retained field-valued family suppliers |
@@ -55,3 +56,16 @@ over a locally Noetherian target. The
 [connectedness theorem](../Morphisms/Proper/ConnectedFibres.md) proves geometric
 connectedness for proper surjective `f` over a locally Noetherian target with
 `IsIso f.c`, using the direct affine image route and actual flat base change.
+
+[Cartier-curve vanishing](CartierCurve/Vanishing.md), in
+`Scheme.Cohomology.CartierCurve`, proves positive cohomology vanishing for
+the affine pushforward of native projective-line `O(m)`, with `m ≥ -1`,
+over any commutative coefficient ring and into a compact separated scheme.
+`filtration_vanishing_and_section_lifts` takes actual short exact sequences
+`M(j) ⟶ M(j+1) ⟶ Q(j)`, comparisons `Q(j) ≅ i_* O(D-j-1)`, vanishing
+of `H¹(M(0))` and `N ≤ D+1`. It gives first-cohomology vanishing through
+stage `N` and surjectivity of every original quotient section map before
+that stage. Its finite-family lemmas retain actual structure-module maps
+and prescribed extra sections. The
+[projective Cartier construction](../Surfaces/Contraction/ProjectiveSections.md)
+supplies these sequences and the initial Serre vanishing for its own inputs.

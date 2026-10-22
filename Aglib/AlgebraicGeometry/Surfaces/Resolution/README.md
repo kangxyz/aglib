@@ -47,8 +47,30 @@ inverse-image ideal through the later dominant integral chain maps. This uses
 the canonical ideal maps and Cartier avoidance; pullback of an abstract
 invertible module alone is not substituted for the embedded ideal comparison.
 
-The source scheme is already regular. This interface does not remove a
-divisorial part of an arbitrary ideal, extend a given rational map, construct
-common regular domination or resolve an initially singular scheme. The
-[original rational-coordinate ideals](../../RationalMap/BaseIdeal.md) are a
-separate provider with their own normalization and dimension hypotheses.
+## Supplied chains and their generic maps
+
+[PointBlowupChain](PointBlowupChain.md), in `Scheme.Blowup.PointBlowupChain`,
+concatenates supplied chains over their literal composite. For integral
+original `X`, `functionFieldMap_isIso` and `functionFieldEquiv` identify
+the original canonical function-field map of a supplied chain with an
+isomorphism. This needs no additional regularity, Noetherianity,
+properness or global dimension hypothesis.
+
+[Trait](Trait.md) treats a supplied chain `f : Y ⟶ X` and an actual proper
+`p : X ⟶ Spec R` over a DVR with specified fraction field `F`.
+`PointBlowupChain.genericBaseChange_isIso` proves invertibility of the
+literal `Over.pullback (baseMap R F)` image of `f`.
+`PointBlowupChain.genericIso` has exactly that forward map, with the
+original projection and base triangles. Regularity, integrality and
+flatness of `X` are unnecessary for this preservation theorem. The separate
+[proper section theorem](../../Morphisms/Proper/TraitSections.md) lifts
+original sections through a proper map with such an invertible generic map.
+
+Principalization starts with an already regular source and an Artinian
+ideal quotient. The
+[original rational-coordinate ideals](../../RationalMap/BaseIdeal.md)
+supply such an ideal to
+[projective extension](../../RationalMap/ProjectiveExtension.md), which in
+turn serves [regular-source common domination](../Birational/CommonDomination.md).
+Removing a divisorial part of an arbitrary ideal and resolving an initially
+singular scheme remain separate obligations.

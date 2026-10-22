@@ -22,15 +22,14 @@ Noetherian, proper and flat over `R`. Its source projection is proper and
 surjective. If the target is integral, its target projection is also
 proper and surjective. The construction needs no regularity, dimension
 or excellence premise. A separate flatness premise on the target is
-unnecessary for these conclusions. The individual `toSource_surjective`
-instance does not require source Noetherianity. The individual
-`toTarget_dominant` and `toTarget_surjective` instances require neither
-source Noetherianity nor properness of the target structural map.
+unnecessary for these conclusions.
 
 The flatness proof uses injectivity of the actual stalk maps of an
 integral dominant morphism to the Dedekind base. The resulting stalk
 modules are torsion-free, hence flat by the native Dedekind-domain
-criterion.
+criterion. The reusable argument is
+[Dedekind-base flatness](../../Morphisms/Flat/DedekindBase.md), retaining
+quasi-compactness and the same original stalk maps.
 
 `liftSection` takes the two supplied sections, their original section
 equations, and equality of their literal generic sections under `e`.

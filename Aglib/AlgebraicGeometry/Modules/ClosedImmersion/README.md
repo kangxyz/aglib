@@ -123,6 +123,19 @@ the original structure-module map. `Hom.structureModuleMap_epi` and
 with the existing `Hom.idealModule` and `Hom.idealInclusion`. These statements
 apply to every closed immersion without quasicoherence or finiteness conditions.
 
+[Closed-pullback Nakayama detection](Nakayama.md) proves
+`Scheme.Modules.epi_of_pullback_closedImmersion_of_stalkFinite` for an
+original map `φ : M ⟶ N` and closed immersion `i : E ⟶ X`. It requires
+epimorphy of the actual pulled map, finiteness of the original target stalks
+at points in the image of `i`, and epimorphy of the original stalk maps off
+that image.
+The source module is arbitrary; quasicoherence, Noetherianity and flatness
+are unnecessary. The `..._stalkSurjective` variant takes surjectivity of the
+same off-image stalk maps. The
+[Cartier neighborhood](../../Morphisms/Proper/CartierNeighborhood.md) and
+[image-point ideal](../../Surfaces/Contraction/PointIdeal.md) consumers supply
+these actual first-order, finite-target and complement hypotheses.
+
 [KilledSubobject](KilledSubobject.lean) transfers actual affine ideal-sheaf
 annihilation to ordinary monomorphic subobjects, using injectivity on the
 original sections and no quasicoherence hypothesis.

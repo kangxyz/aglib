@@ -27,6 +27,16 @@ that last result. These results use `Scheme.LocalRing.GenericFiber.baseMap`,
 not a supplied replacement generic fibre. The common generic-point formula is
 owned by `Stalk.GenericSection`.
 
-The leaves preserve the exact maps and assumptions of the frozen R5 packet at
-`f8a3314ddecffcada2ec721d26d56a937bed9690`. They supply general local geometry,
-not a purity or flat-local regularity theorem.
+[Integral sources over a Dedekind base](DedekindBase.md) proves
+`Scheme.Hom.flat_of_isIntegral_of_isDominant` for an actual quasi-compact
+dominant `p : Z ⟶ Spec A`, with `A` a Dedekind domain and `Z` integral.
+It gives `Flat p` for that same morphism, using injectivity of the original
+stalk maps and torsion-free flatness. The displayed quasi-compactness remains
+an input; source Noetherianity, regularity, dimension and finite type are
+unnecessary. The [trait graph](../../Surfaces/Birational/TraitGraph.md) reuses
+this lower theorem, as does
+[regular trait domination](../../Surfaces/Birational/TraitDomination.md).
+Purity and flat-local regularity remain separate interfaces.
+
+The earlier local-geometry leaves preserve the exact maps and assumptions of
+the frozen R5 packet at `f8a3314ddecffcada2ec721d26d56a937bed9690`.

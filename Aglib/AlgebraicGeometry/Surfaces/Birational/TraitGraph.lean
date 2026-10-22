@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure.Comparison
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.DVRBaseChange
+public import Aglib.AlgebraicGeometry.Morphisms.Flat.DedekindBase
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.GenericFiberCriteria
 public import Aglib.AlgebraicGeometry.SchemeTheoreticImage.Integral
 public import Aglib.AlgebraicGeometry.FunctionField.DedekindGenericFiberIntegral
@@ -216,41 +217,12 @@ instance toTarget_surjective [IsIntegral X] [IsIntegral Y]
     [IsProper f] [Flat f] : Surjective (toTarget R F f g e) :=
   surjective_of_isDominant_of_isClosed_range _ (toTarget R F f g e).isClosedMap.isClosed_range
 
-private lemma flat_of_integral_dominant {A : Type u} [CommRing A] [IsDedekindDomain A]
-    {Z : Scheme.{u}} [IsIntegral Z] (p : Z ⟶ Spec (.of A)) [QuasiCompact p] [IsDominant p] :
-    Flat p := by
-  have : IsSchemeTheoreticallyDominant p := IsSchemeTheoreticallyDominant.of_isDominant p
-  apply Flat.of_stalkMap
-  intro z
-  have hinj : Function.Injective (p.stalkMap z).hom := by
-    apply stalkMap_injective_of_isAffine p z
-    intro a ha
-    rw [TopCat.Presheaf.Γgerm, Scheme.Hom.germ_stalkMap_apply] at ha
-    have hzero : p.app ⊤ a = 0 :=
-      (germ_injective_of_isIntegral Z z (show z ∈ p ⁻¹ᵁ ⊤ from trivial))
-        (by simpa only [map_zero] using ha)
-    have ha0 : a = 0 := (p.app_injective ⊤) (by simpa only [map_zero] using hzero)
-    simp [ha0]
-  let B := (Spec (.of A)).presheaf.stalk (p z)
-  have : (p z).asIdeal.IsPrime := (p z).isPrime
-  let : Algebra A B := inferInstanceAs
-    (Algebra A ((Spec.structureSheaf A).presheaf.stalk (p z)))
-  have : IsLocalization.AtPrime B (p z).asIdeal := inferInstanceAs
-    (IsLocalization.AtPrime ((Spec.structureSheaf A).presheaf.stalk (p z)) (p z).asIdeal)
-  have : IsDomain B := IsLocalization.isDomain_of_le_nonZeroDivisors B
-    (p z).asIdeal.primeCompl_le_nonZeroDivisors
-  have : IsDedekindDomain B := IsLocalization.AtPrime.isDedekindDomain A (p z).asIdeal B
-  let : Algebra B (Z.presheaf.stalk z) := (p.stalkMap z).hom.toAlgebra
-  have : Module.IsTorsionFree B (Z.presheaf.stalk z) :=
-    Module.isTorsionFree_iff_algebraMap_injective.mpr hinj
-  exact RingHom.flat_algebraMap_iff.mpr inferInstance
-
 /-- The actual integral graph model is flat over the DVR. -/
 instance toBase_flat [IsIntegral X] [IsNoetherian X]
     [IsProper f] [Flat f] [IsProper g] : Flat (toBase R F f g e) := by
   have : IsDominant f := source_dominant R f
   have : IsDominant (toBase R F f g e) := by unfold toBase; infer_instance
-  exact flat_of_integral_dominant (toBase R F f g e)
+  exact Scheme.Hom.flat_of_isIntegral_of_isDominant (toBase R F f g e)
 
 private lemma fieldMap_isIso_of_open_comp {U C Z : Scheme.{u}}
     [IsIntegral U] [IsIntegral C] [IsIntegral Z]

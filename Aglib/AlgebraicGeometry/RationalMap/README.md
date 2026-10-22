@@ -38,5 +38,29 @@ kernel module a line module, with no dimension bound. On a globally Noetherian
 regular integral scheme with actual stalk dimensions at most two,
 `baseIdeal_isArtinian_subscheme` makes the original base-ideal quotient
 Artinian; finite local colength is derived from regularity and primitivity.
-These endpoints construct the coordinate ideals and maps. Extension of a
-given rational projective morphism remains a separate consumer.
+These endpoints construct the coordinate ideals and maps used by the
+projective extension below.
+
+## Extension after point blowups
+
+[ProjectiveExtension](ProjectiveExtension.md), in `Scheme.RationalCoordinates`,
+supplies `exists_pointBlowupChain_projectiveExtension` for an integral
+Noetherian scheme `X` with regular stalks and topological dimension at most
+two. It starts with an actual `p : X ⟶ Spec R`, finite coordinate type `I`,
+and original `gη : Spec K(X) ⟶ ProjectiveSpace R I` satisfying the original
+base triangle. A finite point-blowup chain `β : Y ⟶ X` gives a proper
+birational map, regular integral source of local dimension at most two,
+and an actual extension `h`. Its structural triangle is
+`h ≫ toSpec = β ≫ p`; its generic triangle uses exactly
+`Scheme.functionFieldMap β` and the original `gη`. Dominance of `gη` is
+unnecessary.
+
+The original denominator line is pulled back literally; the pulled
+coordinate row maps canonically onto the actual inverse-image base ideal.
+[Point principalization](../Surfaces/Resolution/README.md) makes that ideal
+Cartier, and the native line-source projective constructor retains the
+original indexed coordinates. The
+[common-domination consumer](../Surfaces/Birational/CommonDomination.md)
+combines these extensions for finite projective products and an actual
+proper integral target. Resolution of an initially singular source remains
+separate.
