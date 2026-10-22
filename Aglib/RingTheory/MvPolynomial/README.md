@@ -100,3 +100,23 @@ square system and the adjugate of its actual evaluated partial-derivative matrix
 These providers allow empty variable types, zero scales, and zero divisors.
 They neither require nor assert a Henselian or approximation property. The
 Henselian consumer is `Aglib.RingTheory.Henselian.DeterminantCorrection`.
+
+[AffineScaling](AffineScaling.lean) gives the derivative chain rule for
+simultaneous affine scaling over arbitrary commutative rings. Its divided
+relation formula cancels the scale only after evaluation in a target where
+that scale is regular. [LocalConstantDivisibility](LocalConstantDivisibility.lean)
+recovers divisibility of the constant from an actual local point when the
+linear coefficients and the scaled remainder vanish modulo a generator of
+the source maximal ideal; this step needs neither separability nor regularity
+of that generator. The rational-centre Néron step uses these formulas.
+
+[ResidueFrobenius](ResidueFrobenius.lean) proves independence of finite
+coefficient-times-monomial families over the literal rational Frobenius range,
+with distinct exponent vectors bounded by the characteristic.
+[RationalFrobenius](RationalFrobenius.lean) clears actual fraction denominators
+to turn the supplied finite monomial-independence condition into geometric
+reducedness. [CoefficientFractionFrobenius](CoefficientFractionFrobenius.lean)
+supplies the rational coefficient-extension result from geometrically reduced
+field coefficients in prime characteristic. All scalar towers and polynomial
+maps remain explicit; no finite imperfection degree or finite variable type
+is required. The parameter-DVR completion argument consumes these results.

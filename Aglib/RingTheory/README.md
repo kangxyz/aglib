@@ -40,3 +40,27 @@ Their ring maps, chosen fraction fields, finite-type and local hypotheses remain
 explicit; the guides do not replace those inputs by geometric assumptions.
 
 Focused interface guides: [Derivations on actual fraction fields](Derivation/README.md).
+
+[Excellence](Excellent/README.md) defines the standard G-ring, J-2 and
+universal-catenarity conditions, with the finite-type test universe explicit.
+Its DVR formal-fibre projection supplies the intrinsic completed-fraction
+condition used by [DVR Artin approximation](Henselian/DVRArtinApproximation.md).
+The public endpoints cover characteristic-zero or standard-excellent domain
+DVRs, arbitrary finite-type algebras and their actual geometric local
+Henselizations; an original-ring endpoint additionally assumes Henselianity.
+The field-origin results and the other completion interfaces retain their
+separate hypotheses.
+
+The algebraic construction uses actual parameter coordinates:
+[Generators/Parameters](Extension/Generators/Parameters.lean) absorbs
+coordinates from the coefficient algebra, and
+[Generators/RetainedFittingEquality](Extension/Generators/RetainedFittingEquality.lean)
+retains the evaluated Fitting ideal for the selected original relations.
+[Kaehler/SeparatingBasis](Kaehler/SeparatingBasis.lean) constructs the
+differential basis over the displayed separating rational function field;
+[Kaehler/GenericFittingNonzero](Kaehler/GenericFittingNonzero.lean) derives
+nonvanishing from the separably generated generic fraction extension and
+injective evaluation. These interfaces keep their actual scalar actions
+and presentations. [Nilpotent/GeometricallyReduced](Nilpotent/GeometricallyReduced.lean)
+tests geometric reducedness on finite field extensions in the base universe,
+with the other algebra in an independent universe.

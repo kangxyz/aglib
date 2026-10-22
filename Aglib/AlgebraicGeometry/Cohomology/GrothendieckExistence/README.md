@@ -1,36 +1,38 @@
 # Coherent Grothendieck existence
 
-[Projective](Projective.lean) proves coherent Grothendieck existence for an
-actual closed immersion
-`i : X ⟶ ProjectiveSpace A (ULift (Fin (n + 1)))`. The base `A` is an arbitrary
-commutative Noetherian ring, `I : Ideal A`, and `[IsAdicComplete I A]` supplies
-completeness. Local Noetherianity of `X` and properness of the composite
-`i ≫ toSpec A (ULift (Fin (n + 1)))` follow from the embedding.
+[Proper](Proper.lean) proves coherent Grothendieck existence for every actual
+proper `f : X ⟶ Spec (CommRingCat.of A)`, where `A : Type u` is a commutative
+Noetherian ring, `I : Ideal A`, `[IsAdicComplete I A]`, and `X : Scheme.{u}`.
+It derives local Noetherianity of `X` and constructs
+`properCompletionEquivalence I f` between `X.CoherentSheaf` and
+`AdicSystem X (idealThickeningIdealSheaf f I)`. Its forward functor is literally
+`completionFunctor`, by `properCompletionEquivalence_functor` and `rfl`.
+There is no local-ring, flatness, projective-embedding, excellence, dimension,
+or realization premise. The focused [proper existence guide](Proper.md) gives
+the full endpoint, reconstruction hypotheses, and proof route.
 
-The public declarations in `AlgebraicGeometry.Scheme.Cohomology` are:
+[FullFaithful](FullFaithful.lean) supplies
+`completionFunctorFullyFaithful I f` and `properCompletionFullyFaithful I f`
+under the same complete-base and properness hypotheses, with the derived
+local Noetherian instance for the lower interface.
+`properCompletionEssSurj` and `proper_completion_essImage` in
+[Proper](Proper.lean) supply essential surjectivity for the original native
+adic systems; `properCompletionIsEquivalence` combines the two parts.
+The [adic-system category](../../Modules/Coherent/AdicSystem/README.md) retains
+the original quotient projections, adjunction units, and transition maps.
 
-- `projective_completion_essImage`: every native coherent adic system lies in
-  the essential image of its original completion functor.
-- `projectiveCompletionIsEquivalence`: that completion functor is an equivalence.
-- `projectiveCompletionEquivalence`: the equivalence of `X.CoherentSheaf` with
-  `AdicSystem X (idealThickeningIdealSheaf (i ≫ toSpec A _) I)`.
-- `projectiveCompletionEquivalence_functor`: its forward functor is literally
-  `completionFunctor`, by reflexivity.
+[Projective](Projective.lean) is the embedded projective specialization and a
+supplier for the proper proof. Given an actual closed immersion
+`i : X ⟶ ProjectiveSpace A (ULift (Fin (n + 1)))`, it derives local
+Noetherianity and properness of the original composite with `toSpec`.
+Its declarations in `AlgebraicGeometry.Scheme.Cohomology` are
+`projective_completion_essImage`, `projectiveCompletionIsEquivalence`,
+`projectiveCompletionEquivalence`, and
+`projectiveCompletionEquivalence_functor`. They use the original base ideal
+and completion functor, with no auxiliary realization, vanishing, presentation,
+flatness, or local-ring hypothesis.
 
-These statements have no auxiliary realization, vanishing, presentation,
-flatness, or local-ring hypothesis. The formal objects and morphisms belong to
-[the native coherent adic-system category](../../Modules/Coherent/AdicSystem/README.md).
-The quotient projections, adjunction units, and transition maps are retained.
-
-[FullFaithful](FullFaithful.lean) also supplies
-`properCompletionFullyFaithful I f` for any proper
-`f : X ⟶ Spec (CommRingCat.of A)` over the same complete Noetherian base.
-Local Noetherianity is derived from properness. This theorem proves full
-faithfulness; essential surjectivity for general proper schemes remains open
-in this family. The equivalence endpoint here requires the actual projective
-embedding above.
-
-## Proof organization
+## Projective construction
 
 [Completion](Completion.lean), [CompletionNaturality](CompletionNaturality.lean),
 and [CompletionFunctorComparison](CompletionFunctorComparison.lean) compare the
@@ -59,3 +61,34 @@ records the assembly theorem with explicit realization premises.
 premises and proves the projective-space equivalence.
 [ClosedImmersionReduction](ClosedImmersionReduction.lean) descends effectivity
 along the original closed immersion, completing the projective endpoint.
+
+## Proper descent and algebraization
+
+[ChowSourceEffectivity](ChowSourceEffectivity.lean) applies projective existence
+to the same actual Chow modification. The original formal pullback and its
+coherent realization feed
+[FormalModificationBoundedComparison](FormalModificationBoundedComparison.lean),
+which constructs the global formal map and one uniform exceptional-ideal
+bound. [Ideal-sheaf induction](../../IdealSheaf/Noetherian.lean) retains
+nilpotent structure, and
+[ClosedImmersionReduction/IdealInduction](ClosedImmersionReduction/IdealInduction.lean)
+supplies effectivity on the original exceptional-power thickenings.
+[TwoIdeal/Effectivity](TwoIdeal/Effectivity.lean) combines this effectivity with
+the bounded comparison to recover the original base-ideal formal system.
+
+[BoundedCoherentReconstruction](BoundedCoherentReconstruction.lean) separately
+constructs coherent realizations of `K`-adic systems from formal comparisons
+whose defects are killed by a power of that same `K`, on quasi-compact locally
+Noetherian schemes. A bound by an independent ideal uses the two-ideal theorem
+and its closed-thickening-effectivity hypothesis; the
+[proper guide](Proper.md#same-ideal-reconstruction-and-two-ideal-effectivity)
+records the distinction and the resulting bounds.
+
+[Algebraization/Operations](Algebraization/Operations.lean) lifts native
+commutative algebra operations to the coherent realization and preserves the
+whole family of original quotient maps. Its `properAdicAlgebraization` is
+consumed by the
+[finite-etale complete-local comparison](../../Morphisms/FiniteEtale/ProperCompleteLocal.md).
+The [ordinary cohomology family](../README.md) owns cohomology objects and
+formal functions; general scheme and module descent retains the existing
+[Descent](../../Descent/README.md) owners.

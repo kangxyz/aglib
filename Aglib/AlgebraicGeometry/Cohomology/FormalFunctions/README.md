@@ -97,3 +97,14 @@ pushforward-stalk map for a proper morphism over a locally Noetherian target.
 It retains the original germ and local-fibre restriction comparisons. Neither
 image theorem assumes flatness, Henselianity, completeness, Grothendieck
 existence, Artin approximation or object effectivity.
+
+[GlobalSections](GlobalSections.lean) gives
+`moduleGlobalSectionsFormalFunctionsEquiv` directly on the actual global-section
+module. For a proper `f : X ⟶ Spec A` over a Noetherian commutative ring, an
+arbitrary ideal `I`, and an affine-locally finite-type quasicoherent coefficient,
+it identifies its `I`-adic completion with compatible global sections of the
+original quotient tower. Completeness of `A` is unnecessary. Its `_of` formula
+sends each original section to its original quotient in every degree-zero
+stage. The target is an ambient inverse diagram; no adic-system property of
+its section modules is assumed. The proper-modification comparison in
+[Grothendieck existence](../GrothendieckExistence/Proper.md) uses this interface.

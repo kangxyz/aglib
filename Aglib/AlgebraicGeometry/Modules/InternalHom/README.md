@@ -137,3 +137,19 @@ isomorphism detection, retaining each original local comparison.
 [LocalEpiDescent](LocalEpiDescent.lean) proves that local factorization equations through original
 epimorphisms force overlap compatibility, then glues the actual global
 factorization and retains its local maps.
+
+[OpenCoverExt](OpenCoverExt.lean) detects equality of original module maps on
+an open cover. [DiagramRestriction](DiagramRestriction.lean) transports whole
+module-valued diagram maps through successive native open restrictions.
+[DiagramGluing](DiagramGluing.lean) glues compatible local stage maps through
+the same Hom sheaf; their transition equations are local, so the result is an
+actual natural transformation. No quasicoherence or exactness of an ambient
+target is required.
+
+[DiagramFactorizationGluing](DiagramFactorizationGluing.lean) uses uniqueness
+of whole factorization families on affine opens to force overlap compatibility
+and glue the specified diagram factorization. Its uniqueness premise concerns
+the whole compatible family; individual comparison components need not be
+injective. The [bounded coherent reconstruction](../../Cohomology/GrothendieckExistence/BoundedCoherentReconstruction.lean)
+and [formal modification comparison](../../Cohomology/GrothendieckExistence/FormalModificationBoundedComparison.lean)
+consume these original restriction, gluing, and equality interfaces.

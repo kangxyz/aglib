@@ -11,3 +11,17 @@ These three focused imports extend native Mathlib etale morphisms. Lower [essent
 [PointShrinking](PointShrinking.lean) and [PointShrinkingTop](PointShrinkingTop.lean) retain an actual point map `p : P ⟶ X`, an etale map `f : X ⟶ Y`, a closed immersion `q : P ⟶ Y`, and the equality `p ≫ f = q`. The computed open removes the full complement of the actual closed fibre section; over any chosen open containing `range p` and contained in that shrink, the centre square is cartesian and the centre ideal sheaf pulls back exactly. `PointShrinking.Common` intersects two such opens and identifies their pulled-back centre ideals. No field or nonemptiness premise on `P` is needed. `shrinkOpen_eq_top` applies when the original centre square is already cartesian.
 
 [Reduced](Reduced.lean) proves `Etale.geometricallyReduced` from the existing smooth-field normality theorem; `Etale.isReduced` retains reducedness and local Noetherianity of the target. [ReducedDescent](ReducedDescent.lean) proves reducedness from actual reduced flat charts covering every point, using injectivity of the flat stalk map. Its `Scheme.baseChangeMap` retains the literal pullback square and projection equations; the etale base-change result keeps reducedness and local Noetherianity of the target fibre, and the equality-based variant retains the supplied structure-map equality.
+
+[AffineStalkAlgebra](AffineStalkAlgebra.lean) transports etaleness of an actual
+affine section algebra after tensoring by the original germ to etaleness of
+its actual target-stalk base change. The comparison uses the native open-chart
+stalk isomorphism. [FiniteStalkNeighborhood](FiniteStalkNeighborhood.lean)
+then gives `exists_etale_target_neighborhood_of_finite`: for a finite,
+locally finitely presented morphism, etaleness after base change to the actual
+target stalk yields a target open neighborhood on which the original morphism
+is etale. Its affine variant shrinks inside any prescribed target neighborhood.
+Local finite presentation remains explicit over arbitrary targets; no flatness
+or Noetherianity of the original morphism is assumed. The more general closed-map
+version removes the image of the complement of the source etale locus.
+The [finite-etale algebraization](../FiniteEtale/Adic/README.md) uses these
+neighborhoods for the original coherent section spectra.

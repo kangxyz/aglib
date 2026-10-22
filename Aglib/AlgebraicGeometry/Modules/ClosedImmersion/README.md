@@ -139,3 +139,15 @@ these actual first-order, finite-target and complement hypotheses.
 [KilledSubobject](KilledSubobject.lean) transfers actual affine ideal-sheaf
 annihilation to ordinary monomorphic subobjects, using injectivity on the
 original sections and no quasicoherence hypothesis.
+
+[KilledQuotient](KilledQuotient.lean) transfers `killedByIdealSheaf` through
+an actual epimorphism of module sheaves and identifies annihilation by the
+supremum of two ideal sheaves with annihilation by each of them. These are
+all-module statements without quasicoherence or finiteness assumptions.
+[PullbackQuotient](PullbackQuotient.lean) gives
+`closedImmersionPullbackQuotientIso` for a closed immersion, an arbitrary
+change of base, and a quasicoherent coefficient. Affine base change for the
+closed immersion supplies the comparison; the changing map need not be flat.
+Its `_unit` equation retains the actual pullback/pushforward quotient unit.
+The [coherent adic-system family](../Coherent/AdicSystem/README.md) uses these
+interfaces for independent quotients and formal pullback.

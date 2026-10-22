@@ -73,3 +73,12 @@ of bounded projective dimension over a Noetherian local ring, whenever that
 same scalar extension is projective. The exact scalar-extended short sequence
 and splitting maps retain their original module structures. This lower result
 is used by regular-local factoriality.
+
+[NatTowerExactUniverses](NatTowerExactUniverses.lean) defines
+`ModuleCat.sectionsMapOfLinearMaps` for compatible stage maps with independent
+module universes. For natural-number towers, its surjectivity theorem requires
+surjectivity at every stage and surjectivity of the adjacent maps on the
+actual kernels. No finiteness or Noetherianity is assumed. The
+[compatible-presentation construction](../../../RingTheory/AdicCompletion/CompatibleSystemPresentation.lean)
+uses these kernel corrections to obtain a surjection onto native compatible
+sections; reduction of arbitrary kernels is not asserted to be exact.

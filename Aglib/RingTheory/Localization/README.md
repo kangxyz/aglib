@@ -33,3 +33,15 @@ selected prime localization with `Localization.AtPrime q` as a `B`-algebra.
 classes and coefficient square. The
 [geometric-local finite-origin construction](../Henselian/GeometricLocalFiniteOriginModel.lean)
 uses these maps after choosing residue transcendence parameters.
+
+[SeparatingParameters](SeparatingParameters.lean) localizes a residual source
+subalgebra at the nonzero polynomials in a supplied algebraically independent
+parameter family. Algebraicity over the actual parameter field makes its
+canonical point into the given fraction field bijective.
+[SeparatingParameterField](SeparatingParameterField.lean) transports finite
+separability through the specified coefficient equivalence and proves its
+fraction-map triangle. [ProjectedResidue](ProjectedResidue.lean) identifies
+the extended original residue kernel and its quotient, retaining the explicit
+denominator-image equality. The
+[projected DVR centre](../DiscreteValuationRing/ParameterProjectedResidue.lean)
+supplies that equality from its original coefficient and residue maps.

@@ -59,7 +59,7 @@ inputs. The original normalization-coefficient-specific final theorem remains
 pending the separate normalization producer assemblies; it is not part of this
 proved generic prefix.
 
-Focused interface guides: [Henselian residue sections](HenselianResidue.md), [Actual cover comparison, sections and deck maps](Lifting.md).
+Focused interface guides: [Henselian residue sections](HenselianResidue.md), [actual cover comparison, sections and deck maps](Lifting.md), and [proper schemes over complete local rings](ProperCompleteLocal.md).
 
 [ResidueLift](ResidueLift.lean) proves that the actual residue-base-change
 functor is faithful and essentially surjective over every local ring. Its
@@ -75,8 +75,14 @@ Noetherianity or completeness. The complete Noetherian base also has the
 of isomorphisms on the actual closed fibre of a universally closed model over
 a local ring, without flatness, Noetherianity or Henselianity.
 [Proper-residue fullness](ProperResidue/Fullness.md) gives full faithfulness
-for a proper flat model over a Henselian DVR. Existence of arbitrary cover
-objects and the resulting proper-model equivalence remain separate.
+for a proper flat model over a Henselian DVR.
+[ProperCompleteLocal](ProperCompleteLocal.md) separately proves the actual
+closed-fibre equivalence for every proper scheme over a Noetherian local ring
+complete for its maximal ideal. Its forward functor is literally
+`baseChange (pullback.fst f (LocalRing.residueSpecMap A))`; proper coherent
+Grothendieck existence supplies object effectivity, without flatness or a
+projective embedding. The complete-local hypotheses belong to this theorem;
+no arbitrary Henselian-base proper equivalence is asserted.
 
 [Nilpotent comparison](Nilpotent.md) supplies actual global Hom and object
 gluing and an equivalence for the original finite-étale base-change functor

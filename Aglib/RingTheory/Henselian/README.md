@@ -88,7 +88,34 @@ every `c : ℕ`. The universes of `k`, `B`, the variables and the equations are
 independent. The [statement and construction guide](GeometricLocalArtinApproximation.md)
 explains the constructed finite-origin model and completion transport.
 
-These results concern actual Henselizations of prime localizations of finite-type
-algebras over a field, together with the polynomial-origin finite-local setting
-above. Artin approximation for arbitrary excellent Henselian local rings and
-the general excellent-DVR route remain outside this scope.
+## Geometric local Henselizations over a DVR
+
+The [DVR statement and construction guide](DVRArtinApproximation.md) records
+the characteristic-zero and standard-excellent variants. Let `R : Type u` be a
+commutative domain DVR, `B : Type v` any finite-type `R`-algebra and `q` any
+prime of `B`. For the actual `H = Henselization (Localization.AtPrime q)`,
+[DVRGeometricLocalArtinApproximation](DVRGeometricLocalArtinApproximation.lean)
+assumes `CharZero R`, while
+[ExcellentDVRGeometricLocalArtinApproximation](ExcellentDVRGeometricLocalArtinApproximation.lean)
+takes `hexcellent : IsExcellentRing.{u, e} R`. The latter keeps the auxiliary
+test universe of [standard excellence](../Excellent/README.md) explicit.
+Neither endpoint requires a characteristic or perfectness condition on the
+residue field. The source algebra need not be a domain, flat or smooth, and
+`q` may be generic or vertical. The universes of `R` and `B` are independent.
+
+For every proper ideal `I` of `H`, every finite polynomial system over `H`,
+an exact formal solution in the original `AdicCompletion I H` and every
+`c : ℕ`, these theorems return an exact solution in `H`. They retain both
+equality under the original quotient projection modulo `I ^ c` and error
+in the extension of `I ^ c` to that same completion. Equation and unknown
+types have independent universes. The finite local model, coefficient
+condition and completion equivalences are constructed within the theorem;
+no approximation solver is a public premise.
+
+[HenselianDVRArtinApproximation](HenselianDVRArtinApproximation.lean) and
+[ExcellentHenselianDVRArtinApproximation](ExcellentHenselianDVRArtinApproximation.lean)
+add `HenselianLocalRing R` and return the exact solution in the original
+`R`, with both precision conditions for its original ideal and completion.
+The characteristic-zero and excellent hypotheses remain separate variants.
+Artin approximation for arbitrary excellent Henselian local rings and a
+general Popescu theorem remain outside these DVR interfaces.

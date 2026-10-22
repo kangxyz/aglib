@@ -13,10 +13,10 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 /-!
 # Monic finite reduction at a closed point
 
-For a finitely generated field algebra, monic positive-degree equations for the
-residue coordinates define an actual polynomial algebra action. The original
-generators are integral for this action, so the algebra is module-finite, and
-the selected prime contracts to the polynomial origin. The action need not be
+For a finitely generated algebra over a nontrivial commutative ring, monic
+positive-degree equations define an actual polynomial algebra action. The original
+generators are integral for this action, so the algebra is module-finite.
+Over a field, the selected prime contracts to the polynomial origin. The action need not be
 injective; no residue separability is used.
 -/
 
@@ -28,7 +28,9 @@ universe u v
 
 namespace MonicFiniteReduction
 
-variable {F : Type u} [Field F] {B : Type v} [CommRing B] [Algebra F B]
+section FiniteConstruction
+
+variable {F : Type u} [CommRing F] [Nontrivial F] {B : Type v} [CommRing B] [Algebra F B]
 variable {n : ℕ} (z : Fin n → B) (Q : Fin n → Polynomial F)
 
 /-- The actual polynomial map used in the closed-point finite reduction. -/
@@ -75,6 +77,11 @@ theorem finite (hz : Algebra.adjoin F (Set.range z) = ⊤)
   simpa only [hz', Algebra.top_toSubmodule] using
     (fg_adjoin_of_finite (R := MvPolynomial (Fin n) F) (Set.finite_range z)
       (by rintro _ ⟨i, rfl⟩; exact hint i))
+
+end FiniteConstruction
+
+variable {F : Type u} [Field F] {B : Type v} [CommRing B] [Algebra F B]
+variable {n : ℕ} (z : Fin n → B) (Q : Fin n → Polynomial F)
 
 /-- The selected prime contracts to the actual polynomial-origin ideal. -/
 theorem comap_eq_origin (q : Ideal B) [q.IsPrime]

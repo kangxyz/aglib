@@ -344,3 +344,44 @@ pencil and coordinate interfaces. The consumers are the
 original chart arrows remain explicit.
 
 Focused interface guides: [Normalizing two actual points of P¹](Line/TwoPoints.md).
+
+## Segre embeddings and finite projective products
+
+[PulledCoordinates](PulledCoordinates.lean) evaluates the original projective
+coordinate ratios on arbitrary source subopens. [ChartGluing](ChartGluing.lean)
+glues actual chart maps from compatible normalized ratios and detects a closed
+immersion from affine chart surjectivity and the exact coordinate-open
+preimages. These are the coordinate interfaces used by the Segre construction.
+
+[Segre/ProductChart](Segre/ProductChart.lean) identifies the original binary
+projective product charts with the native tensor spectra, retaining both
+projections. The [section coordinates](Segre/Sections.lean),
+[chart ring map](Segre/ChartRing.lean), and
+[section comparison](Segre/ChartSections.lean) give literal products of the
+factor ratios and original structural coefficients.
+[ChartEvaluation](Segre/ChartEvaluation.lean),
+[ChartConstants](Segre/ChartConstants.lean), and
+[ChartSurjectivity](Segre/ChartSurjectivity.lean) identify this original section
+map with the surjective tensor-chart map.
+[Segre/Map](Segre/Map.lean) retains its exact coordinate-open preimages and
+structural map. [Segre/ClosedImmersion](Segre/ClosedImmersion.lean) proves that
+`Segre.embedding R ι κ` from the actual pullback of the two projective spaces
+to `ProjectiveSpace R (ι × κ)` is a closed immersion. The binary statement
+holds over every commutative ring and arbitrary coordinate types in the same
+universe, without a finite-coordinate or nonzero-ring premise.
+
+[Segre/FiniteProduct](Segre/FiniteProduct.lean) constructs a closed embedding
+of a finite native over-product when every factor coordinate type is finite
+and nonempty. Its target coordinate type is finite and nonempty, and the
+original structure morphism is preserved. The empty product is the original
+base spectrum; [Point](Point.lean) embeds it using projective zero-space,
+whose original `toSpec` is an isomorphism over every commutative ring.
+
+[FiniteProductEmbedding](FiniteProductEmbedding.lean) applies this embedding
+and the existing finite-map embedding theorem to an actual finite map into
+such a product. It obtains a closed embedding of the unchanged source into
+`ProjectiveSpace R (ULift (Fin (m + 1)))`, with the original structural map.
+The finite map itself need not be a closed immersion. The
+[projective Chow modification](../Morphisms/Proper/Chow/Projective.lean) is the
+current geometric consumer, feeding
+[proper coherent Grothendieck existence](../Cohomology/GrothendieckExistence/Proper.md).

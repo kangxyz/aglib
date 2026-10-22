@@ -44,3 +44,12 @@ annihilated-cokernel lemma has exactly its stated restricted scope. No
 Noetherian, nilpotence or local-ring assumption is used. The
 [Milnor flatness theorem](../Etale/MilnorPatching/Flat.md) supplies the kernel
 conditions from the two actual component base changes.
+
+[Adic/FiniteFree](Adic/FiniteFree.lean) gives
+`Module.free_of_flat_quotient_pow`: a finite module over a Noetherian local
+ring is free if its scalar extensions to `R ⧸ J ^ n` are flat for every
+positive `n`, for any proper ideal `J`. Neither the ring nor the module is
+assumed complete, and the basis may be empty. The proof retains one original
+surjection and detects its kernel through the actual quotient base changes.
+The [adic etale criterion](../Etale/Adic/LocalCriterion.lean) uses this
+freeness before applying the discriminant criterion.

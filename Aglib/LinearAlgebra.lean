@@ -8,6 +8,8 @@ Authors: kangxyz
 module
 
 public import Aglib.LinearAlgebra.DFinsupp.Subtype
+public import Aglib.LinearAlgebra.DefectIdealBound
+public import Aglib.LinearAlgebra.DefectRestriction
 public import Aglib.LinearAlgebra.DirectSum.Kernels
 public import Aglib.LinearAlgebra.Dual.SplitInjection
 public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
@@ -17,9 +19,17 @@ public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
 public import Aglib.LinearAlgebra.KernelFiltration
 public import Aglib.LinearAlgebra.KernelFiltrationMap
 public import Aglib.LinearAlgebra.KernelIdealBound
+public import Aglib.LinearAlgebra.LinearIndependent.FiniteBasisChange
+public import Aglib.LinearAlgebra.Matrix.ChangeOfGenerators
 public import Aglib.LinearAlgebra.Matrix.GenericCoordinateProjection
 public import Aglib.LinearAlgebra.Matrix.GenericProjection
+public import Aglib.LinearAlgebra.Matrix.MinorIdealRank
+public import Aglib.LinearAlgebra.Matrix.MinorIdealResidue
+public import Aglib.LinearAlgebra.Matrix.MinorIdealValuation
+public import Aglib.LinearAlgebra.Matrix.NormalizedProjection
+public import Aglib.LinearAlgebra.Matrix.RetainedAdjugate
 public import Aglib.LinearAlgebra.Matrix.ScalarRestriction
+public import Aglib.LinearAlgebra.Matrix.SelectedMinorRows
 public import Aglib.LinearAlgebra.Multilinear.Span
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluation
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluationFiniteLength

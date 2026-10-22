@@ -57,3 +57,11 @@ lift together with the original equation; no additional condition outside the
 square of the maximal ideal is needed. Its localization form uses the same
 mapped ideal and quotient. The actual regular-point blowup stalk proof uses
 this lower result.
+
+[Reduced](Reduced.lean) gives `IsRegularRing.isReduced_of_regular` for a
+commutative ring with native `IsRegularRing`: regularity of maximal
+localizations and the regular-local domain theorem imply reducedness. The
+[regular generic formal-fibre criterion](../AdicCompletion/RegularGenericFormalFiber.lean)
+uses this implication on its actual finite fibre tensors. The result imposes
+no dimension, characteristic or field hypothesis beyond the regular-ring
+structure.

@@ -57,6 +57,7 @@ public import Aglib.CategoryTheory.Functor.NaturalityTransport
 public import Aglib.CategoryTheory.Functor.Sections.Initial
 public import Aglib.CategoryTheory.Galois.Connected
 public import Aglib.CategoryTheory.Grp
+public import Aglib.CategoryTheory.Iso.CertifiedHomTransport
 public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout

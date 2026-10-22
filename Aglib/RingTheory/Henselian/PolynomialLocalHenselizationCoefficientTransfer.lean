@@ -6,11 +6,13 @@ Authors: kangxyz
 module
 
 public import Aglib.RingTheory.Henselian.HenselizationCoefficientReduction
-public import Aglib.RingTheory.Henselian.PolynomialLocalHenselizationFieldReduction
+public import Aglib.RingTheory.Henselian.PolynomialLocalHenselizationCoefficientMap
+public import Aglib.RingTheory.Henselian.PolynomialLocalHenselizationPrecision
 public import Aglib.RingTheory.MvPolynomial.FiniteSystemReindex
 
 /-! # Removing henselized coefficients at the actual formal point
 
+The coefficient ring may be any local Noetherian ring.
 The original formal map is used, not a newly chosen henselization map.
 The same system of finitely many polynomial equations is evaluated in the source
 and formal target; the ambient unknown index may be arbitrary.
@@ -29,7 +31,7 @@ universe u v w
 
 namespace PolynomialLocalHenselization
 
-variable (k : Type u) [Field k] (d : ℕ)
+variable (k : Type u) [CommRing k] [IsLocalRing k] [IsNoetherianRing k] (d : ℕ)
 
 /-- A formal root of a system over the henselization with finitely many equations
 extends to a formal root of a system with polynomial coefficients after adjoining

@@ -38,3 +38,29 @@ without a separately chosen relation cocycle or global realization.
 [QuotientRestrictionComparison](QuotientRestrictionComparison.lean) transports
 these quotient equations to smaller charts and uses epimorphism cancellation
 to make the comparison independent of the covering chart.
+
+[Algebra/Sections](Algebra/Sections.lean) equips the original sections of a
+native commutative monoid in `X.Modules` with scoped ring and section-algebra
+structures. [SectionLaws](Algebra/SectionLaws.lean) detects the internal monoid
+laws on original pure section tensors. [Tensor](Algebra/Tensor.lean) proves
+closure of finite-type quasicoherent modules under the actual ambient tensor
+without Noetherianity; local Noetherianity gives coherent tensor closure.
+No additional monoidal structure on the coherent category is installed.
+
+[Algebra/DirectImage](Algebra/DirectImage.lean) gives the actual `f_*𝒪` its
+native commutative algebra structure for any scheme map; a finite map makes
+its underlying module affine-locally finite type. [DirectImageMaps](Algebra/DirectImageMaps.lean)
+retains the original contravariant structure-module maps, and
+[DirectImageSections](Algebra/DirectImageSections.lean) identifies its section
+algebra with the original structure sections on the inverse-image open.
+[AffineRestriction](Algebra/AffineRestriction.lean) and
+[ScalarExtension](Algebra/ScalarExtension.lean) retain the canonical algebra
+base-change map and its original unit-tensor equation. Quasicoherence guards
+the affine restriction equivalence; these lower algebra constructions do not
+impose a locally Noetherian coherent interpretation on arbitrary modules.
+
+The [proper algebraization of operations](../../Cohomology/GrothendieckExistence/Algebraization/Operations.lean)
+uses coherent tensor sources to lift unit and multiplication. The
+[finite-etale adic family](../../Morphisms/FiniteEtale/Adic/README.md) uses the
+original direct-image algebras and their section restrictions to reconstruct
+actual covers.

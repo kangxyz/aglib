@@ -39,3 +39,17 @@ original inclusion.
 
 [KernelIdealBound](KernelIdealBound.lean) transports an actual kernel containment in an ideal multiple
 along an original commuting square of linear equivalences.
+
+[LinearIndependent/FiniteBasisChange](LinearIndependent/FiniteBasisChange.lean)
+transports independence of finite product families through a change of basis
+of the same finite coefficient span. It retains the supplied field maps and
+their scalar compatibility; the valued parameter-monomial argument uses this
+to pass from an orthogonal basis to the original independent coefficients.
+
+[DefectIdealBound](DefectIdealBound.lean) transports one ideal bound on both
+the kernel and cokernel through a commuting square of the original linear
+equivalences. [DefectRestriction](DefectRestriction.lean) restricts an
+extended-ideal bound to the original scalar ring, with the stated scalar
+towers. Neither result needs finiteness or flatness. The affine bounded
+reconstruction in Grothendieck existence uses these bounds on its actual
+comparison maps.

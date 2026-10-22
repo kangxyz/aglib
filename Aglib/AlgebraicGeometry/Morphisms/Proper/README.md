@@ -130,3 +130,19 @@ generic section through that same native generic map. Properness of `p`,
 regularity, integrality and flatness are unnecessary. The
 [trait common-domination theorem](../../Surfaces/Birational/TraitDomination.md)
 uses this supplier for its original compatible sections.
+
+[Chow/Projective](Chow/Projective.lean) places the unchanged Chow source in
+one finite-coordinate polynomial projective space over the same Noetherian
+affine base. Its closed embedding preserves the original structural map,
+proper surjective modification, and dense isomorphism open.
+[Proper Grothendieck existence](../../Cohomology/GrothendieckExistence/Proper.md)
+uses this projective realization and bounded exceptional-ideal descent.
+
+[LocalBaseOpenCover](LocalBaseOpenCover.lean) proves
+`Scheme.LocalRing.open_eq_top_of_closedFiber_subset`: for a universally closed
+scheme over a local ring, an open containing the literal residue fibre is
+the whole scheme. Any family of opens covering that fibre therefore covers
+the scheme, with no finiteness, Noetherianity, flatness, or nonemptiness
+hypothesis. The [complete-local finite-etale application](../FiniteEtale/ProperCompleteLocal.md)
+uses this to make the good affine neighborhoods of its closed-fibre points
+a cover of the original proper scheme.

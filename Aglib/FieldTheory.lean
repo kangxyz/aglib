@@ -35,7 +35,10 @@ public import Aglib.FieldTheory.ResidueMinpolyBranch
 public import Aglib.FieldTheory.Separable.TensorProductSplitting
 public import Aglib.FieldTheory.SeparablyGenerated.EmbeddedField
 public import Aglib.FieldTheory.SeparablyGenerated.Equivalence
+public import Aglib.FieldTheory.SeparablyGenerated.FiniteBasis
+public import Aglib.FieldTheory.SeparablyGenerated.FrobeniusBaseEquiv
 public import Aglib.FieldTheory.SeparablyGenerated.FrobeniusCoefficients
+public import Aglib.FieldTheory.SeparablyGenerated.FrobeniusCriterion
 public import Aglib.FieldTheory.SeparablyGenerated.GeometricallyReduced
 public import Aglib.FieldTheory.SeparablyGenerated.Restriction
 public import Aglib.FieldTheory.Subfield.FiniteData

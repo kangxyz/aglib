@@ -30,3 +30,12 @@ The open comparison's adjunction-unit equation is named
 `restrictFunctorIsoPullback_inv_adjunction_unit`. The existing
 `restrictFunctorIsoPullback_inv_unit` in `Modules/Restriction/Unit` concerns
 the monoidal unit object. Both keep their actual maps and distinct meanings.
+
+[Adjoint](Adjoint.lean) proves `cartesianBaseChangeMap_adjoint` for an actual
+cartesian square and arbitrary module sheaves. It identifies base change of
+the original adjoint, followed by the actual `cartesianBaseChangeMap`, with
+the adjoint of the original pulled-back arrow. This is an equation of the
+specified maps, with no invertibility, quasicoherence, flatness, or Noetherian
+premise. The
+[formal/algebraic adjunction comparison](../../Cohomology/GrothendieckExistence/FormalAlgebraicAdjunction.lean)
+uses it to retain the original modification adjoint under completion.

@@ -51,3 +51,15 @@ The proof passes to a native standard-etale chart at the residue point and
 uses simple-root uniqueness in the local target. It proves injectivity only,
 not existence of a lift. [Henselian quotient lifting](../Henselian/EtaleQuotientLifting.lean)
 uses this uniqueness to preserve a point modulo an arbitrary proper ideal.
+
+## Detection from adic reductions
+
+[Adic/LocalCriterion](Adic/LocalCriterion.lean) proves
+`Algebra.etale_of_etale_quotient_pow`: a finite commutative algebra over a
+Noetherian local ring is etale when every positive reduction modulo powers
+of a proper ideal is etale over its quotient ring. The ideal need not be
+maximal, and completeness is not required. [Adic/BaseChange](Adic/BaseChange.lean)
+retains the native tensor cancellation maps and applies this criterion after
+scalar extension to a Noetherian local target where the extended ideal is
+proper. The finite-etale construction uses it to detect etaleness of the
+actual finite algebra on its good opens.

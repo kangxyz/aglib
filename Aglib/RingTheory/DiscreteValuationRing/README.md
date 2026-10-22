@@ -27,3 +27,28 @@ nonunit; [FractionBaseChange](FractionBaseChange.lean) supplies the compatible
 fraction pushout and tensor equivalence, including ramified local DVR maps.
 These native providers are reused. Incoming norm/length hashes are recorded in
 the leaves against R5 `f8a3314ddecffcada2ec721d26d56a937bed9690`.
+
+## Parameter DVRs and completed-source modifications
+
+[ParameterCompletionStability](ParameterCompletionStability.lean) proves that
+`AdicCompletion.HasGeometricallyReducedFractionCompletion` passes from a
+domain DVR to its actual parameter DVR localization, for any finite parameter
+type in an independent universe and a chosen uniformizer. The coefficient,
+fraction and residue actions are the constructed ones. The
+[separating-coordinate construction](SourceSeparatingCoordinates.lean) uses
+the original centre residue field and fraction-field degree; the projected
+chart retains the same source generators, selected relations and coordinate
+matrix when transporting Fitting ideals.
+
+[CompletedGlobalTermination](CompletedGlobalTermination.lean) iterates the
+actual global Néron modifications under that intrinsic coefficient condition,
+retaining the original polynomial action and common fraction field.
+[CompletedGlobalImageSmooth](CompletedGlobalImageSmooth.lean) specializes this
+to an injective finite-type algebra point in multivariate power series over
+the actual completion: it constructs a finite-type enlargement embedded in
+the same power-series ring and smooth at its actual uniformizer centre.
+This smooth-image theorem uses `Fin n` parameters and coefficient/source
+rings in one universe. Characteristic zero supplies a separate wrapper. The
+[geometric-local DVR approximation construction](../Henselian/DVRArtinApproximation.md)
+uses this enlargement inside its finite local model; it does not require the
+original finite-type algebra to be a domain or flat.

@@ -8,3 +8,11 @@ The isomorphism and equality are the actual categorical inputs.
 Cancellation and reassociation use Mathlib's existing `Iso` and `Category.assoc`
 API. The historical cancellation and five-map bookkeeping wrappers have no
 parallel native constants.
+
+[CertifiedHomTransport](CertifiedHomTransport.lean) gives
+`CategoryTheory.certifiedHomTransport_val` for a morphism packaged with a
+proposition-valued certificate. Transporting the target index transports both
+the morphism and its certificate; the underlying arrow is the original arrow
+followed by `eqToHom` for the target equality. It works in any category. The
+[affine modification comparison](../../AlgebraicGeometry/Cohomology/GrothendieckExistence/AffineModificationComparison.lean)
+uses this formula to retain its original certified maps.

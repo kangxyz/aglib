@@ -27,7 +27,39 @@ kernels and their native coproduct, with split component maps.
 These results concern the ambient diagram category. No levelwise abelian
 structure or categorical kernel construction is installed on `AdicSystem`.
 
-The comparison with base-ideal formal-functions quotients and the projective
-completion equivalence are developed in
+The comparison with base-ideal formal-functions quotients and the proper and projective
+completion equivalences are developed in
 [GrothendieckExistence](../../../Cohomology/GrothendieckExistence/README.md).
 That comparison preserves the original quotient maps and transitions.
+
+[QuotientSystem](QuotientSystem.lean) takes the termwise quotient of an
+`I`-adic system by an independent ideal sheaf `K`, retaining `I`-adicity and
+the original quotient units and transitions. [QuotientReductionSystem](QuotientReductionSystem.lean)
+constructs nested reduction comparisons and the entire `K`-power quotient
+tower. [QuotientInterchange](QuotientInterchange.lean) and its
+[naturality](QuotientInterchangeNaturality.lean) interchange the two actual
+closed-thickening quotients, preserving their original unit composites.
+These constructions do not declare an arbitrary kernel diagram adic.
+
+[QuotientCompletion](QuotientCompletion.lean) compares the independent
+quotient of a coherent completion with completion of the coherent quotient.
+[QuotientCompletionUnit](QuotientCompletionUnit.lean),
+[QuotientCompletionCoefficient](QuotientCompletionCoefficient.lean), and
+[QuotientCompletionNaturality](QuotientCompletionNaturality.lean) retain the
+original coherent quotient unit, coefficient maps, ideal reductions, and
+whole-tower naturality. The hypotheses are local Noetherianity and the
+specified ideal sheaves; no base completeness or effectivity is used.
+
+[PullbackQuotient](PullbackQuotient.lean) transports the original quotient
+and its unit under arbitrary pullback for quasicoherent coefficients.
+[OpenIdealPowers](OpenIdealPowers.lean) preserves powers of any ideal sheaf
+under open restriction, including an independent exceptional ideal.
+[QuotientFactorization](QuotientFactorization.lean) obtains natural diagram
+factorizations from pointwise factorizations through the original epimorphic
+quotient units. [UnitComparisons](UnitComparisons.lean),
+[QuotientComparisonTransport](QuotientComparisonTransport.lean), and
+[QuotientCongr](QuotientCongr.lean) retain the entire unit-compatible diagram
+when components or ideal indices are transported. The
+[two-ideal reconstruction](../../../Cohomology/GrothendieckExistence/Proper.md#same-ideal-reconstruction-and-two-ideal-effectivity)
+uses these comparisons while keeping the defining and exceptional ideals
+distinct.

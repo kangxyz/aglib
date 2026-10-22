@@ -53,3 +53,13 @@ Broader surface dimension and regularity interfaces remain separate.
 [PrincipalColength](PrincipalColength.lean) and the
 [codimension-one provider](CodimensionOne.lean) preserve the actual stalk and
 residue maps used by curve norm and degree constructions.
+
+[LocalBaseIdeal](LocalBaseIdeal.lean) compares the actual section-scalar map
+followed by its germ with the original `stalkScalar`. For a scheme over a
+local ring and a point mapping to the closed point of the base, that structural
+stalk map is local. Consequently every proper base ideal has proper image in
+the actual stalk; the same holds for the induced affine section ideal after
+the original germ. No properness of the scheme map, Noetherianity, completeness,
+or flatness is required. The
+[finite-etale good-open construction](../Morphisms/FiniteEtale/Adic/CoherentGoodOpens.lean)
+uses this proper-ideal condition in the finite local etaleness criterion.

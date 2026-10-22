@@ -27,3 +27,13 @@ and uses the actual idempotent/clopen correspondence. The normal-domain,
 smoothness, fraction-field and connectedness conditions remain explicit on
 the main results; lower helpers use their stated weaker hypotheses. The
 consumer is finite-etale GenericRestriction.
+
+[LocalEquivalence](LocalEquivalence.lean) transports `Algebra.IsSmoothAt`
+through a coefficient-compatible algebra equivalence to the actual inverse
+image prime, across independent ring universes.
+[QuotientImage](QuotientImage.lean) applies this to a surjective generator
+evaluation followed by an injective point: smoothness of the original source
+at the target-prime inverse image gives smoothness of the literal kernel
+quotient at its corresponding prime. The point-factorization equation remains
+an input. The polynomial-origin DVR approximation reduction uses this
+comparison to retain its original evaluated equation ideal.

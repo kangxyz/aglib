@@ -60,3 +60,11 @@ structures from regularity of every actual ambient stalk, using the general
 regular-local UFD theorem. Its actual closed immersion, integral source,
 locally Noetherian ambient scheme and height-one stalk-kernel conditions
 remain explicit, with no dimension bound.
+
+[Noetherian](Noetherian.lean) gives `WellFoundedGT X.IdealSheafData` for a
+Noetherian scheme. A finite affine cover reduces ascending chains of the
+actual quasi-coherent ideals to ring-ideal stabilization with one common
+index. The induction retains nilpotent structure; strict closed subschemes
+produce strict increases of the original ideal, not merely changes of closed
+support. [Proper Grothendieck existence](../Cohomology/GrothendieckExistence/Proper.md)
+uses this induction on its actual closed-subscheme thickenings.

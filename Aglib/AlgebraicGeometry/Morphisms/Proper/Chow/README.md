@@ -60,3 +60,16 @@ uniform bounded coherent derived images and finite original cohomology.
 The [proper-finiteness consumer](../../../Cohomology/Proper/Finiteness/README.md)
 now closes the support-cone induction over every Noetherian affine base,
 as recorded by the owning [Proper guide](../README.md).
+
+[Projective](Projective.lean) strengthens the target of this same modification.
+`Scheme.Chow.exists_projective_modification` constructs a closed immersion
+`j : Y ⟶ ProjectiveSpace R (ULift (Fin (m + 1)))` with
+`j ≫ toSpec R _ = p ≫ f`. The original scheme `Y`, proper surjective map `p`,
+and dense isomorphism open `V` are unchanged. The base is any Noetherian
+commutative ring, and `f` is proper, including the empty-source case. The proof
+uses the [finite-product Segre embedding](../../../ProjectiveSpace/Segre/FiniteProduct.lean)
+and the [finite-map embedding](../../../ProjectiveSpace/FiniteProductEmbedding.lean);
+it does not identify a finite map with a closed immersion.
+[Proper Grothendieck existence](../../../Cohomology/GrothendieckExistence/Proper.md)
+uses the resulting actual projective embedding to realize the formal pullback
+on the Chow source.

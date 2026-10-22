@@ -127,3 +127,54 @@ completion of `B`. The proof derives the finite residue-branch
 decomposition from the Artinian residue quotient, radical powers and CRT.
 It does not assume that the uncompleted localization `C_p` is finite
 over `B`, and it needs no domain, flatness or coefficient-field premise.
+
+## DVR coefficient conditions and finite-local transfer
+
+[GeometricallyReducedFraction](GeometricallyReducedFraction.lean) defines
+`AdicCompletion.HasGeometricallyReducedFractionCompletion R` for a domain
+DVR: the fraction field of its actual maximal-adic completion is
+geometrically reduced over `FractionRing R` under the canonical lifted
+coefficient action. Characteristic zero supplies this condition through
+perfectness of the original fraction field. [RegularGenericFormalFiber](RegularGenericFormalFiber.lean)
+and [GenericFormalFiber](GenericFormalFiber.lean) derive it from the finite
+generic formal-fibre tests; the [excellent-DVR interface](../Excellent/README.md)
+supplies those tests from the G-ring component of standard excellence.
+[SameUniformizer](SameUniformizer.lean) and
+[ValuativeCompleteness](ValuativeCompleteness.lean) retain the actual DVR maps
+and completed fraction-field valuation used in parameter extension.
+
+[FiniteLocalApproximation](FiniteLocalApproximation.lean) transfers a supplied
+maximal-adic approximation solver over a Noetherian local ring to every
+proper-ideal completion of a finite local algebra in the same coefficient
+universe. The finite equation and unknown types have independent universes.
+It returns an exact solution, the literal original quotient projection and
+membership of the error in the original extended ideal power. The
+[DVR approximation results](../Henselian/DVRArtinApproximation.md) supply the
+solver and construct the finite local model in their stated setting.
+
+## Compatible systems and bounded reconstruction
+
+[CompatibleSystemEffectivity](CompatibleSystemEffectivity.lean) makes the
+native compatible-section module finite over `AdicCompletion I R` for an
+`IsCompatibleSystem I F`. For `I.FG`, its canonical reductions recover the
+original stages and their transition maps. For the same `I.FG` hypothesis,
+[CompatibleSystemComplete](CompatibleSystemComplete.lean) proves completeness
+for the original ideal, and
+[CompatibleSystemHom](CompatibleSystemHom.lean) gives the completed-linear
+map of compatible families across independent carrier universes.
+[CompatibleSystemBounds](CompatibleSystemBounds.lean) transports uniform
+stage bounds to the limit; its cokernel bound retains separation of the
+actual cokernel and finite generation of `I`.
+
+[BoundedReconstruction](BoundedReconstruction.lean) treats a Noetherian
+commutative ring `R`, a finite `AdicCompletion I R`-module `M`, a finite
+`R`-module `N` and a
+completed-linear map `f : M →ₗ[AdicCompletion I R] AdicCompletion I N`, all in
+the ring universe. If a single power of `I` kills both defects of the
+restricted map, the native pullback along `AdicCompletion.of I N` is finite
+over `R`, and its completed first projection is the canonical equivalence
+with `M`. [BoundedReconstructionUnique](BoundedReconstructionUnique.lean)
+retains the finite candidate's original bounded map to `N`, its specified
+completion equivalence and their commuting equation. The affine Grothendieck-existence
+construction uses these comparisons; finiteness of an arbitrary completed
+module over the uncompleted ring is not a conclusion.

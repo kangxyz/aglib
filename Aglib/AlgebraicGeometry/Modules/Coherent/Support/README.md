@@ -22,3 +22,12 @@ The incoming [stalk filtration](StalkFiltration.lean),
 module and its stalks. They retain the stated closed-point, Noetherian,
 dimension and finite-length hypotheses; passing to natural or integer lengths
 does not supply a missing finiteness premise.
+
+[BoundedDefect](BoundedDefect.lean) gives one positive ideal-sheaf power
+annihilating two coherent modules supported on the same closed locus of a
+Noetherian scheme. For a map of coherent modules invertible on an actual open
+`U`, any ideal sheaf whose support contains the complement of `U` therefore
+has one positive power annihilating both the actual kernel and cokernel.
+The theorem uses `IsNoetherian X`; there is no flatness or dimension bound.
+The [proper-modification comparison](../../../Cohomology/GrothendieckExistence/ProperAlgebraicComparison.lean)
+uses this uniform bound on its original algebraic adjoint.

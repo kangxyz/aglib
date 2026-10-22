@@ -67,6 +67,7 @@ public import Aglib.Algebra.Category.ModuleCat.Localization.Submodule
 public import Aglib.Algebra.Category.ModuleCat.MinimalFiniteFreeResolution
 public import Aglib.Algebra.Category.ModuleCat.Monoidal.RestrictScalars
 public import Aglib.Algebra.Category.ModuleCat.NatTower
+public import Aglib.Algebra.Category.ModuleCat.NatTowerExactUniverses
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ForgetToModuleCat
