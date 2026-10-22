@@ -4,6 +4,11 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
+from types import ModuleType
+import sys
+
+import check_affected
 
 SCRIPT = Path(__file__).with_name('check.sh')
 
@@ -69,6 +74,33 @@ class CheckScriptTests(unittest.TestCase):
         source = SCRIPT.read_text()
         self.assertIn('cd "$(dirname "$0")/.."', source)
         self.assertIn('exec python3 scripts/check_affected.py "$@"', source)
+
+
+class NativeEntryTests(unittest.TestCase):
+    def test_wrapper_supplies_native_roots_source_guards_and_resource_policy(self):
+        cli = ModuleType('lean_ci.cli')
+        from unittest.mock import Mock
+        cli.main = Mock(return_value=19)
+        args = ['--base', 'accepted', '--progress', '/absolute/progress']
+        with patch.dict(sys.modules, {'lean_ci.cli': cli}):
+            self.assertEqual(check_affected.main(args), 19)
+        positional, options = cli.main.call_args
+        self.assertEqual(positional, (['check', *args],))
+        self.assertEqual(options['root'], check_affected.ROOT)
+        self.assertEqual(options['production'], ('Aglib',))
+        self.assertEqual(options['source_checks'], [
+            [sys.executable, 'scripts/check_library_layout.py'],
+            [sys.executable, 'scripts/check_placeholders.py'],
+            [sys.executable, 'scripts/check_source_policy.py']])
+        self.assertEqual(options['resource_config'].prefix, 'AGLIB')
+        self.assertEqual(options['resource_config'].profile_keys, ('R5_LEAN_REMOTE_PROFILE',))
+        self.assertNotIn('adapter', options)
+
+    def test_native_wrapper_needs_no_retired_orchestration_imports(self):
+        source = Path(check_affected.__file__).read_text()
+        for retired in ('ci_pipeline', 'affected_scope', 'lean_ci.engine', 'lean_ci.recipe',
+                        'lean_ci.github', 'lean_ci.frozen', 'prepare_downstream'):
+            self.assertNotIn(retired, source)
 
 
 if __name__ == '__main__':

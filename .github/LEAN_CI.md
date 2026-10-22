@@ -109,3 +109,9 @@ Nightly automation, PR labelling, bibliography checks, style-fix bots,
 downstream-client jobs and the old Python orchestration are outside this template.
 Independent mathematical review retains its governing requirements. This workflow
 adds no kernel replay, separate client checks or extra acceptance stages.
+
+Local `scripts/check.sh` now calls the native CLI documented in
+[development](../docs/DEVELOPMENT.md#local-verification-and-ci). It uses these
+same native mechanisms with existing local source guards. The old Python
+CI/baseline/frozen-request protocols and duplicate custom auditor are retired;
+this does not modify the public YAML or broaden mathematical acceptance.

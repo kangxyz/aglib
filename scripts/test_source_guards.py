@@ -7,7 +7,6 @@ import unittest
 from check_library_layout import check_layout, import_cycles, forbidden_domain_import
 from check_placeholders import check_placeholders
 from check_source_policy import check_source_policy
-from generate_imports import GENERATED_MARKER, generated_files, generator_owned, stale_files
 from library_sources import lean_imports, module_path, test_modules as positive_modules
 from library_sources import is_import_surface, uses_module_system
 
@@ -33,8 +32,16 @@ class SourceGuards(unittest.TestCase):
         path.write_text(source)
 
     def generate(self):
-        for path, source in generated_files(self.root).items():
-            self.write(path, source)
+        # Source-only fixtures supply ordinary import facades; mk_all owns real entries.
+        for directory in sorted((self.root / 'Aglib').iterdir()):
+            if directory.is_dir():
+                names = sorted('.'.join(p.relative_to(self.root).with_suffix('').parts)
+                               for p in directory.rglob('*.lean'))
+                self.write('Aglib/' + directory.name + '.lean',
+                           'module\n' + ''.join('public import ' + n + '\n' for n in names))
+        names = sorted('.'.join(p.relative_to(self.root).with_suffix('').parts)
+                       for p in (self.root / 'Aglib').rglob('*.lean'))
+        self.write('Aglib.lean', 'module\n' + ''.join('public import ' + n + '\n' for n in names))
 
     def rejected(self, expected):
         errors, _ = check_layout(self.root)
@@ -45,32 +52,21 @@ class SourceGuards(unittest.TestCase):
         self.assertEqual(check_placeholders(self.root), [])
         self.assertEqual(check_source_policy(self.root), [])
 
-    def test_native_roots_are_not_generated_or_inventoried_as_test_sources(self):
-        native = 'module\npublic import Aglib.Algebra\n'
-        self.write('Aglib.lean', native)
-        self.write('AglibTest/Positive.lean', HEADER)
-        outputs = generated_files(self.root)
-        self.assertNotIn(Path('Aglib.lean'), outputs)
-        self.assertNotIn(Path('AglibTest.lean'), outputs)
-        self.assertIn(Path('Aglib/Algebra.lean'), outputs)
-        self.generate()
-        self.assertEqual((self.root / 'Aglib.lean').read_text(), native)
-        self.assertFalse((self.root / 'AglibTest.lean').exists())
-        self.assertEqual(positive_modules(self.root), {Path('AglibTest/Positive.lean')})
 
-    def test_test_umbrella_composes_legacy_and_modern_fixtures(self):
-        legacy = 'import Aglib.Algebra.A\n'
-        self.write('AglibTest/Legacy.lean', legacy)
-        self.write('AglibTest/Modern.lean', HEADER)
-        self.generate()
-        umbrella = (self.root / 'AglibTest.lean').read_text()
-        self.assertFalse(uses_module_system(umbrella))
-        self.assertEqual(lean_imports(umbrella), ['AglibTest.Legacy', 'AglibTest.Modern'])
-        self.assertEqual(check_layout(self.root)[0], [])
-        self.assertEqual((self.root / 'AglibTest/Legacy.lean').read_text(), legacy)
-        self.write('AglibTest/Legacy.lean', HEADER)
-        self.generate()
-        self.assertTrue(uses_module_system((self.root / 'AglibTest.lean').read_text()))
+
+    def test_native_test_discovery_needs_no_umbrella(self):
+        self.write('AglibTest/Positive.lean', HEADER)
+        self.assertEqual(positive_modules(self.root), {Path('AglibTest/Positive.lean')})
+        self.assertFalse((self.root / 'AglibTest.lean').exists())
+        self.write('AglibTest.lean', 'import AglibTest.Positive\n')
+        self.assertEqual(positive_modules(self.root),
+                         {Path('AglibTest/Positive.lean'), Path('AglibTest.lean')})
+
+    def test_removed_audit_fixture_directory_has_no_placeholder_exemption(self):
+        self.write('AglibTest/NegativeControls/Bad.lean', 'axiom bad : False\n')
+        errors = check_placeholders(self.root)
+        self.assertEqual(len(errors), 1)
+        self.assertIn('forbidden token axiom', errors[0])
 
     def test_copyright_headers_require_and_preserve_author_credit(self):
         header = ('/-\nCopyright (c) 2026 Test contributors. All rights reserved.\n'
@@ -125,59 +121,13 @@ import Mathlib.Data.Nat.Basic
                   'def syntaxValue := `(command|\n import Quillen.Fake\n)\n')
         self.assertEqual(lean_imports(source), ['Aglib.Algebra.A', 'Aglib.Algebra.B'])
 
-    def test_root_enrolls_even_orphan_leaves(self):
-        self.write('Aglib/New/Orphan.lean', HEADER + 'def orphan : Nat := 2\n')
-        self.rejected('missing enrollment')
-        self.generate()
-        self.assertEqual(stale_files(self.root), [])
-        self.assertEqual(check_layout(self.root)[0], [])
 
-    def test_empty_directories_do_not_create_placeholders(self):
-        (self.root / 'Aglib/Empty').mkdir()
-        self.assertNotIn(Path('Aglib/Empty.lean'), generated_files(self.root))
 
-    def test_hand_owned_family_is_preserved_and_enrolled(self):
-        source = 'module\npublic import Aglib.Algebra.A\n'
-        self.write('Aglib/Algebra.lean', source)
-        self.generate()
-        self.assertEqual((self.root / 'Aglib/Algebra.lean').read_text(), source)
-        self.assertIn('Aglib.Algebra', lean_imports(
-            (self.root / 'Aglib.lean').read_text()))
 
-    def test_nested_owned_facades_receive_new_leaves(self):
-        self.write('Aglib/Algebra/Nested/Leaf.lean', HEADER)
-        self.write('Aglib/Algebra/Nested.lean', GENERATED_MARKER)
-        self.generate()
-        self.assertIn('Aglib.Algebra.Nested.Leaf', lean_imports(
-            (self.root / 'Aglib/Algebra/Nested.lean').read_text()))
-        self.assertEqual(check_layout(self.root)[0], [])
 
-    def test_marker_inside_prose_does_not_transfer_ownership(self):
-        self.assertFalse(generator_owned('/-! ' + GENERATED_MARKER + '-/\n'))
-        self.assertFalse(generator_owned('module\n' + GENERATED_MARKER))
-        self.assertTrue(generator_owned(GENERATED_MARKER))
 
-    def test_removed_leaf_stales_generation(self):
-        (self.root / 'Aglib/Algebra/B.lean').unlink()
-        self.assertTrue(stale_files(self.root))
 
-    def test_positive_root_excludes_audits_and_negative_controls(self):
-        self.write('AglibTest/Positive.lean',
-                   'module\npublic import Aglib.Algebra.A\n')
-        for path in ['Axioms.lean', 'AuditSupport.lean', 'NegativeControls/Bad.lean']:
-            self.write('AglibTest/' + path, 'import Lean\n')
-        self.generate()
-        imports = lean_imports((self.root / 'AglibTest.lean').read_text())
-        self.assertEqual(imports, ['AglibTest.Positive'])
-        self.assertEqual(len(positive_modules(self.root)), 2)
-        self.assertEqual(check_layout(self.root)[0], [])
 
-    def test_positive_cannot_import_negative_control(self):
-        self.write('AglibTest/NegativeControls/Bad.lean', 'import Lean\n')
-        self.write('AglibTest/Positive.lean',
-                   'import AglibTest.NegativeControls.Bad\n')
-        self.generate()
-        self.rejected('Positive fixture imports audit')
 
     def test_production_only_mathlib_and_foundation(self):
         for name in ['AGLib.Algebra.A', 'AGLibTest.Positive',
@@ -242,17 +192,13 @@ import Mathlib.Data.Nat.Basic
         self.write('Aglib/Algebra/A.lean', 'module\ndef datum : Nat := 0\n')
         self.rejected('lacks exposed public section')
 
-    def test_legacy_auditor_is_required(self):
-        self.write('AglibTest/Axioms.lean', 'module\npublic import Aglib\n')
-        self.rejected('must retain legacy private imports')
 
-    def test_placeholders_scan_positives_clients_and_auditors(self):
+    def test_placeholders_scan_all_positive_sources_and_clients(self):
         self.write('Aglib/Algebra/A.lean', HEADER + 'example : True := by sorry\n')
         self.write('AglibTest/Positive.lean', 'example : True := by admit\n')
-        self.write('AglibTest/Axioms.lean', 'axiom bad : False\n')
+        self.write('AglibTest/Extra.lean', 'axiom bad : False\n')
         self.write('examples/downstream/Consumer/Bad.lean', 'axiom bad : False\n')
         self.write('examples/downstream/.lake/packages/Foreign/Bad.lean', 'sorry\n')
-        self.write('AglibTest/NegativeControls/Bad.lean', 'axiom bad : False\n')
         self.generate()
         errors = check_placeholders(self.root)
         self.assertEqual(len(errors), 4, errors)

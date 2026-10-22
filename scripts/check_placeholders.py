@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reject proof placeholders and custom axioms in library, tests and client.
 
-Audits/Aglib.lean performs the authoritative kernel dependency audit.
+The native upstream axiom auditor checks transitive dependencies after compilation.
 """
 import argparse
 from pathlib import Path
@@ -9,15 +9,14 @@ import re
 import sys
 
 from library_sources import (downstream_sources, source_modules,
-                             strip_comments_and_strings, test_modules, audit_sources)
+                             strip_comments_and_strings, test_modules)
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def check_placeholders(root: Path) -> list[str]:
     errors = []
-    sources = source_modules(root) | test_modules(root) | downstream_sources(root) | {
-        path for path in audit_sources(root) if 'NegativeControls' not in path.parts}
+    sources = source_modules(root) | test_modules(root) | downstream_sources(root)
     for relative in sorted(sources):
         source = (root / relative).read_text()
         clean = strip_comments_and_strings(source)

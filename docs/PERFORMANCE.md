@@ -178,10 +178,16 @@ restores the remaining artifacts. This is an incremental/cache-restoring build,
 not a cold whole-library timing. The source/configuration snapshot remains fixed
 through the run.
 
+The historical command at that source revision was:
+
 ```sh
 AGLIB_BUILD_THREADS=1 python3 scripts/build_serial.py \
   --receipt-dir /absolute/fresh/aggregate --rehash Aglib AglibTest AglibTest.AuditSupport
 ```
+
+`AglibTest.AuditSupport` and that orchestration have since been retired. Current
+production final checks use the native commands in [the local guide](DEVELOPMENT.md);
+the historical timing is not a measurement of that command sequence.
 
 Its slowest actual compilations are `Godement.Section.Localization` (78 s),
 `BaseChange.CechComparison` (72 s), `Exact.LongExact` (57 s),
@@ -972,16 +978,11 @@ process checking the final criterion, whose imports include all seven providers,
 passed at 2,876,129,280 bytes. Separate builtin invocations for all seven passed
 with a maximum of 2,867,855,360 bytes (about 2.67 GiB).
 
-That historical [selected-checker](../scripts/check_affected.py) implementation started a fresh guarded
-builtin-lint process for each selected module, and the
-[declaration wrapper](../scripts/run_declaration_linter.py) starts a separate
-Lean interpreter for each exact origin. The module selection, linter options,
-exception handling and resource limits retain their existing meanings. Reuse
-successful provider compilation when repairing this scheduling issue; the
-failed lint does not require another proof build.
-The later shared final-check recipe adopts the already accepted production and
-test umbrella checks, keeping each whole environment in a separate guarded
-process. The exact-origin wrapper remains required for selected AuditSupport
-and extra Tools origins; diagnostic production/test leaf passes do not replace
-their umbrella check. Historical per-origin and current umbrella results retain their distinct input
-and predicate bases; this code migration does not itself measure a speedup.
+The historical selected-checker and exact-origin declaration wrappers ran
+separate processes for selected origins. Those wrappers and AuditSupport have
+since been retired. Current local final checks use native production lint and
+the pinned upstream production axiom auditor, retaining compatible successes;
+they do not run another per-origin acceptance chain. Reuse successful provider
+compilation after a lint failure and check only changed or missing coverage.
+Historical per-origin and current production results retain their distinct input
+and predicate bases; this migration does not itself measure a speedup.
