@@ -104,6 +104,15 @@ parameter-dependent centre/projective-line comparison and canonical coordinate
 lift, retaining the original generators and evaluation map. The
 [frames](RegularPoint/Normal/Frames.md) and
 [section coefficients](RegularPoint/Normal/Sections.md) retain the original
-reciprocal-chart maps and Laurent transition coefficient. A global
-scheme-level normal-line comparison, numerical self-intersection and
-contraction remain separate obligations.
+reciprocal-chart maps and Laurent transition coefficient.
+
+[The scheme-level comparison](RegularPoint/Normal/Scheme.md) applies to a
+closed point `x` on any scheme `X` whose actual stalk is a regular local
+ring of dimension two. It identifies the literal exceptional fibre of
+`blowupDatum (X.fromSpecResidueField x).ker` with the projective line over
+the original residue field. The actual conormal and restricted dual normal
+line are identified with native `O(1)` and `O(-1)`, preserving both fibre
+projections, ideal inclusions and evaluation. No global Noetherianity,
+integrality or regularity of `X` is required. These comparisons enter
+[regular-surface factorization](../Surfaces/Birational/Factorization.md);
+numerical self-intersection and contraction have separate interfaces.

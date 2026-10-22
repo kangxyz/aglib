@@ -50,6 +50,7 @@ public import Aglib.AlgebraicGeometry.Blowup.RegularPoint
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Charts
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal.Frames
+public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal.Scheme
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Normal.Sections
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Regularity
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint.Scheme
@@ -543,6 +544,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Coe
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistExt.Linear
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.TwistMaps
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Euler
+public import Aglib.AlgebraicGeometry.Cohomology.Exact.KernelLength
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.LongExact
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Modules
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Stabilization
@@ -1113,6 +1115,7 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.CriticalNeighbor
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPointAction
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPoints
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FiniteProjection
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FiniteProjection.FunctionField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FunctionField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus.Charts
@@ -2331,6 +2334,9 @@ public import Aglib.AlgebraicGeometry.Stalk.PrincipalColength
 public import Aglib.AlgebraicGeometry.Stalk.ResidueCharacteristic
 public import Aglib.AlgebraicGeometry.Stalk.Scalar
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.CommonDomination
+public import Aglib.AlgebraicGeometry.Surfaces.Birational.ExceptionalConormal
+public import Aglib.AlgebraicGeometry.Surfaces.Birational.ExceptionalLocus
+public import Aglib.AlgebraicGeometry.Surfaces.Birational.Factorization
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.IsomorphismLocus
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.TraitDomination
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.TraitGraph

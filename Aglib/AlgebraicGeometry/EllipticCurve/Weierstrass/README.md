@@ -14,6 +14,7 @@ Its proper structure map and infinity section work over any commutative ring.
 | [ExtensionPoints](ExtensionPoints.lean) | For every field map `k → K` and `Δ ≠ 0`, coordinate points are in bijection with K-valued points of the original k-scheme. |
 | [AffineField](AffineField.lean) | Rank-two norm injectivity and the retained characteristic-zero quadratic existence argument. |
 | [Finite projections](FiniteProjection.md) | Finite free x- and y-projections of the same affine coordinate ring over any commutative ring, with a unit-degree normalized trace over a local base. |
+| [Projection fraction fields](FiniteProjection/FunctionField.md) | The original selected projection over a local domain induces a finite separable extension of the original fraction fields of degree two or three. |
 | [CofinitePoints](CofinitePoints.lean) | A nonzero affine function has finitely many coordinate zeros. |
 | [PointedAgreement](PointedAgreement.lean) | Cofinite agreement with a homomorphism determines a proper-group morphism and forces its origin equation, under the stated group and geometric hypotheses. |
 | [VariableChange](VariableChange.lean) | Actual affine-ring pullback and its inverse for an admissible variable change. |
@@ -87,9 +88,13 @@ every commutative ring. The explicit `projectionAlgebra W` selects the
 x-structure when two is a unit and the y-structure otherwise, retaining the
 original coordinates and base constants. Over a local ring the selected
 degree, two or three, is a unit, and `normalizedTrace` retracts the original
-polynomial coefficient map on the full selected algebra. Restriction to
-completed local factors, generic fraction-field separability and singular
-resolution require separate arguments.
+polynomial coefficient map on the full selected algebra.
+[The fraction-field comparison](FiniteProjection/FunctionField.md) proves
+finiteness, exact degree and separability for that same projection over a
+local domain, with its explicit original scalar action and constant map.
+It needs no discriminant, Noetherian, DVR, excellence or characteristic
+assumption. Restriction of the trace to completed local factors and singular
+resolution require further arguments.
 
 The common affine coordinate and lift definitions are imported from
 [Affine.Coordinates](../Affine/Coordinates.lean). The general homogeneous quotient

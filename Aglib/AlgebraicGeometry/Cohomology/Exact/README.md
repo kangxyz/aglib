@@ -37,3 +37,15 @@ sections of a cohomology tower with epimorphic adjacent maps when the next
 cohomology of every adjacent kernel vanishes. Its tensor form requires a finite locally free
 coefficient, not flatness of the tower terms. It is a conditional lifting
 supplier and does not supply a uniform Serre bound by itself.
+
+[KernelLength](KernelLength.md) bounds the length of the kernel of an
+actual H1 map by a section-comparison cokernel. In its scalar specialization,
+the short exact sequence starts with multiplication by an original
+`a : R`, so the kernel is the native `Submodule.torsionBy` for `a`.
+An injective H1 restriction to an open, surjectivity of original constants
+onto middle sections, and the stated section-comparison kernel conditions
+give the bound using one fixed map `R →ₗ[R] N`. No Noetherianity,
+normality, dimension or finite-length assumption is needed for the
+`ENat` inequality. The geometric punctured-base injection, finite
+normalization and finite normalization colength remain separate inputs
+to the surface application; this result alone gives no uniform H1 bound.

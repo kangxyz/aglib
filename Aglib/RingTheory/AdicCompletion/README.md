@@ -116,3 +116,14 @@ transfers approximation over a Noetherian ring to a finite algebra in the same
 universe, without requiring a free algebra module. Both helpers retain their
 solver premise; the [polynomial-origin Henselization results](../Henselian/README.md)
 supply it in their stated setting.
+
+[FiniteLocalization](FiniteLocalization.md) treats a finite commutative
+algebra `C` over a Noetherian local ring `B`, in the same universe, and an
+original prime `p` of `C` contracting to the maximal ideal of `B`.
+`FiniteLocalization.completionMap p hp` is the canonical same-precision
+quotient-system extension of `B → C_p`. Its explicit `baseAlgebra p hp`
+makes the actual completion of `C_p` finite over the maximal-adic
+completion of `B`. The proof derives the finite residue-branch
+decomposition from the Artinian residue quotient, radical powers and CRT.
+It does not assume that the uncompleted localization `C_p` is finite
+over `B`, and it needs no domain, flatness or coefficient-field premise.

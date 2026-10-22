@@ -30,6 +30,7 @@ public import Aglib.RingTheory.AdicCompletion.FiniteAlgebra
 public import Aglib.RingTheory.AdicCompletion.FiniteAlgebraApproximation
 public import Aglib.RingTheory.AdicCompletion.FiniteDedekindBranches
 public import Aglib.RingTheory.AdicCompletion.FiniteLocalCofinality
+public import Aglib.RingTheory.AdicCompletion.FiniteLocalization
 public import Aglib.RingTheory.AdicCompletion.FiniteModule
 public import Aglib.RingTheory.AdicCompletion.FormalHom
 public import Aglib.RingTheory.AdicCompletion.FractionBaseChange

@@ -1,4 +1,4 @@
-# Birational surface maps and common domination
+# Birational surface maps, common domination and factorization
 
 ## Isomorphism locus
 
@@ -31,8 +31,8 @@ ambient scheme whose stalks are regular local of dimension at most two.
 `g : X ⟶ Z` uniquely through a given proper surjective `f : X ⟶ Y` with
 `IsIso f.c`, provided `g` is pointwise constant on its fibres. This theorem
 works for arbitrary schemes, with no separation condition on `Z`; it creates
-no contraction morphism. Point-blowup factorization, contraction and
-minimal-model existence remain separate. General
+no contraction morphism. The point-blowup factorization below uses this
+descent theorem; contraction and minimal-model existence remain separate. General
 [Milnor patching](../../../RingTheory/Etale/MilnorPatching/README.md), including
 fibre-product flatness with surjective boundary map, flat component maps and
 the original compatible tensor equivalences, is proved independently of these
@@ -43,7 +43,8 @@ gives an actual isomorphism neighborhood whenever such a proper birational
 morphism has a finite point fibre, without a dimension or Noetherian bound.
 The [regular-point blowup computation](../../Blowup/RegularPoint.md) separately
 identifies its actual inverse-image centre with the original residue-field
-projective line. Neither theorem supplies contraction or blowup factorization.
+projective line. These are inputs to factorization below; contraction requires
+further results.
 
 ## Common domination and trait models
 
@@ -90,3 +91,38 @@ supplied sections lift uniquely with both original projection equations,
 using [proper trait sections](../../Morphisms/Proper/TraitSections.md).
 Regularity of the original source is essential to this construction;
 resolution from arbitrary singular initial data remains separate.
+
+## Exceptional curves and point-blowup factorization
+
+[ExceptionalConormal](ExceptionalConormal.md) proves nonvanishing of the
+original canonical conormal map for a proper dominant birational morphism
+and an actual compatible isomorphism of Cartier divisors. If both divisors
+are projective lines over the same specified field and their actual
+conormals have supplied native `O(1)` comparisons, that same canonical
+map is an isomorphism. The ambient target is integral and locally
+Noetherian; ambient regularity, normality and a dimension bound are not
+required. Identifying different centre residue fields is a separate step
+in the factorization proof.
+
+[ExceptionalLocus](ExceptionalLocus.md) defines `contractedCurves f` using
+actual irreducible closed curves and their original images. For an integral
+Noetherian source of dimension at most two, an integral locally Noetherian
+normal target, and a proper dominant `f` with invertible original
+function-field map, this set is finite. With the same dimension bound on
+the target, an empty set, or its zero finite count, forces `f` to be an
+isomorphism. Factoring through an actual closed regular-point blowup
+strictly decreases the finite count. The proof constructs a curve mapping
+onto the whole exceptional divisor; it assumes no curve isomorphism.
+
+[Factorization](Factorization.md) proves
+`exists_pointBlowupChain_factorization` for a proper dominant morphism
+`f : X ⟶ Y` between integral schemes with regular stalks and dimension at
+most two, with `Y` Noetherian and the actual `functionFieldMap f`
+invertible. Noetherianity of `X` follows from properness. It returns
+`β : Z ⟶ Y`, a literal `Blowup.PointBlowupChain β`, and an explicit
+`e : X ≅ Z` satisfying `e.hom ≫ β = f`. A wrapper accepts
+`BirationalOver f (𝟙 Y)`. The proof constructs the lift through each bad
+target-point blowup and terminates by the strict finite-count decrease.
+There is no excellence, characteristic, perfectness or projectivity
+assumption. Construction of a regular scheme from singular initial data
+and minimal-model existence remain separate tasks.
