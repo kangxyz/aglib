@@ -11,7 +11,7 @@ import unittest
 import yaml
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = yaml.safe_load((ROOT / '.github/workflows/lean-ci.yml').read_text())
 JOBS = WORKFLOW['jobs']
 

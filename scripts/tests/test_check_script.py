@@ -10,7 +10,7 @@ import sys
 
 import check_affected
 
-SCRIPT = Path(__file__).with_name('check.sh')
+SCRIPT = (Path(__file__).resolve().parents[1] / 'check.sh')
 
 
 class CheckScriptTests(unittest.TestCase):
