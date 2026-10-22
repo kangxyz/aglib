@@ -20,3 +20,14 @@ image have the displayed regular generators. It keeps the actual commuting
 ring square. [Intersection](RegularPrincipal/Intersection.md) proves regular
 principal cancellation against an arbitrary ring kernel; these lower results
 feed the native Cartier avoidance and product constructions.
+
+[SquareZeroUnits](SquareZeroUnits.lean) constructs the actual `1+x` units of a
+square-zero ideal, identifies the additive ring kernel with the kernel of the
+original map on units, and gives its restriction naturality. It also lifts
+units over nilpotent ideal quotients.
+[PowerQuotientSquareZero](PowerQuotientSquareZero.lean) proves that the actual
+positive-level `factorPowSucc` kernel is square zero and that its map on units
+is surjective. The kernel is the image of the original ideal power; no flat
+tensor identification is used. These results feed the
+[ring-sheaf unit sequence](../../Algebra/Category/Ring/Sheaf/README.md) and the
+formal line-bundle lifting tower.

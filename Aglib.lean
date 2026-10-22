@@ -109,6 +109,12 @@ public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Propagation
 public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Surjectivity
 public import Aglib.Algebra.Category.Ring.FilteredPullback
 public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroCohomology
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernel
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSequence
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
+public import Aglib.Algebra.Category.Ring.Sheaf.Units
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
@@ -4080,10 +4086,12 @@ public import Aglib.RingTheory.Ideal.InvertiblePrincipal
 public import Aglib.RingTheory.Ideal.LocalizedRange
 public import Aglib.RingTheory.Ideal.MinimalPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.MinimalPrime.GoingDown
+public import Aglib.RingTheory.Ideal.PowerQuotientSquareZero
 public import Aglib.RingTheory.Ideal.RegularPrincipal
 public import Aglib.RingTheory.Ideal.RegularPrincipal.BaseChange
 public import Aglib.RingTheory.Ideal.RegularPrincipal.Intersection
 public import Aglib.RingTheory.Ideal.ResidueSpan
+public import Aglib.RingTheory.Ideal.SquareZeroUnits
 public import Aglib.RingTheory.IntegralClosure.Actions
 public import Aglib.RingTheory.IntegralClosure.AssociatedHeight
 public import Aglib.RingTheory.IntegralClosure.AssociatedPrincipal

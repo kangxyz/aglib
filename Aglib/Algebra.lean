@@ -115,6 +115,12 @@ public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Propagation
 public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Surjectivity
 public import Aglib.Algebra.Category.Ring.FilteredPullback
 public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroCohomology
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernel
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSequence
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
+public import Aglib.Algebra.Category.Ring.Sheaf.Units
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
