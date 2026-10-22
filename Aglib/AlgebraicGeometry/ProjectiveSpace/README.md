@@ -46,6 +46,15 @@ ring on the remaining variables. Its forward map is dehomogenization
 formula for every homogeneous polynomial. `coordinateOpenIsoSpecPolynomial`
 transports this proved equivalence to the actual coordinate-open scheme.
 
+[FieldCoordinates](FieldCoordinates.md) factors an actual map
+`Spec K ⟶ ProjectiveSpace R I` through an original standard chart, recovering
+that same morphism. `chartHomCoordinates` evaluates its original coordinate
+ratios and gives one in the selected coordinate. The relative factorization
+retains the original coefficient map `R → K`. The coordinate type is arbitrary;
+the categorical factorization uses the native common universe for `R`, `K`
+and the index, while coordinate evaluation allows an independently sized
+commutative target ring.
+
 `Aglib.AlgebraicGeometry.ProjectiveSpace.Transition` constructs the units
 `Xᵢ / Xⱼ = Xᵢ² / (Xᵢ Xⱼ)` on the native two-coordinate localizations. The
 `coordinateOverlapToTriple` maps are the native homogeneous-localization
@@ -141,6 +150,27 @@ Its generation follows from the original epimorphism, and
 with the map of that actual pulled family. The isomorphic-module version
 retains the specified section-preserving comparison. Each generating family
 has its own `O(1)` comparison from `FromSections` above.
+
+[FromSections/LineSource](FromSections/LineSource.md) starts with locally
+rank-one modules `D` and `J` and an original finite epimorphic row `d i : D ⟶ J`.
+Its canonical section family belongs to the actual coefficient line module
+`Dᵛ ⊗ J`, using the existing dual-evaluation and dual-tensor equivalence.
+`LineSource.mapOfFamily` constructs the projective map over the original base,
+and `twistingPullbackIso` identifies its actual `O(1)` pullback with that
+coefficient module. `pulledCoordinate_triangle` retains each original map
+under canonical duality, and `recoveredCoordinate_eq` recovers literal equality
+with `d i`. No frames or alternative spanning family are chosen.
+
+[FromSections/FieldSpan](FromSections/FieldSpan.md) treats a commutative ring
+`A`, field `κ` and ring map `β : A →+* κ` in the native common universe. For a
+finite original family `a : I → κ`, the full span
+`Submodule.span A (Set.range a) = ⊤`, using exactly `Module.compHom κ β`, makes
+its literal original `mapOfFiniteFamily` a closed immersion. Generation and
+finiteness of `β` follow from that same span; no index or section map is replaced.
+`mapOfFiniteFamily_eq_chart_of_ratios` identifies the original projective map
+with a given chart map from its coefficient square and actual normalized-ratio
+equations at a nonzero original coordinate. `mapOfFiniteFamily_eq_chart_of_values` derives that coordinate to be one. These chart comparisons retain the finite index needed
+by the constructor, with no full-span or finite-ring-map premise.
 
 [AwayAlgebra](AwayAlgebra.lean) makes every degree-zero localization
 `HomogeneousLocalization.Away (homogeneousSubmodule ι R) f` an `R`-algebra (`awayAlgebra`: the

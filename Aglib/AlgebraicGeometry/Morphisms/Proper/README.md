@@ -54,6 +54,17 @@ on such a target. The geometric and cohomological route is guided by
 [Stacks, proper coherent direct images](https://stacks.math.columbia.edu/tag/02O3);
 these references are not formal premises.
 
+[AffineStein](AffineStein.md) factors a proper `f : X ⟶ Y`, over an actual
+affine open `V` of a locally Noetherian target, through
+`Spec Γ(X, f ⁻¹ᵁ V)`. Its first map is the original open affinization
+`(f ⁻¹ᵁ V).toSpecΓ`; its second is induced by the literal `f.app V` followed
+by the original affine-chart isomorphism. Their composite is exactly `f ∣_ V`.
+The first map is proper and its original structure-sheaf map is an isomorphism;
+the second map is finite. The structure-sheaf isomorphism itself needs only
+properness and the affine open, through the lower qcqs affinization theorem.
+The intermediate scheme is the spectrum of the actual section ring, with no
+identification with the raw schematic image or gluing of global factors asserted.
+
 [Birational functions](BirationalFunctions.md) proves `IsIso f.c` for the
 original structure-sheaf map of a universally closed dominant morphism between
 integral schemes, with normal actual target stalks and an isomorphism on the

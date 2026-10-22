@@ -2,7 +2,21 @@
 
 [Modules](Modules.lean), imported as `Aglib.AlgebraicGeometry.IdealSheaf.Modules`, defines `Scheme.Hom.idealModule i` as the actual kernel of the structure-module map `𝒪_X → i_*𝒪_D`. Its inclusion and sectionwise kernel equivalences retain the actual ring-section maps. This construction applies to arbitrary scheme morphisms; closed immersion is an additional premise on the results that need it.
 
-[Affine](Affine.lean) compares spectral ideal modules with sheafification of the actual ring kernel and proves the stated finite-generation consequence of finite presentation. [Restriction](Restriction.lean) compares actual ideal restrictions and their inclusions. The [base-change family](BaseChange/README.md) constructs the canonical ideal pullback map and proves its quotient-flat isomorphism theorem.
+[Affine](Affine.lean) compares spectral ideal modules with sheafification of the actual ring kernel and proves the stated finite-generation consequence of finite presentation. [Restriction](Restriction.lean) compares actual ideal restrictions and their inclusions. The [base-change family](BaseChange/README.md) constructs the canonical ideal pullback map, proves epimorphy for a cartesian square of a closed immersion, and gives the separate quotient-flat isomorphism theorem.
+
+[Colon](Colon.md) defines `IdealSheafData.stalkIdeal` from the original affine
+germs and detects ideal-sheaf equality and inclusion on these actual stalk
+ideals. On a locally Noetherian scheme, `colon I K` has the ordinary ideal
+quotient on every affine open and every actual stalk. Its pullback comparison
+requires isomorphisms of the original stalk maps, as for open immersions.
+
+[Artinian](Artinian.md) identifies the ideal stalk on the actual quotient
+subscheme with the kernel of its closed-immersion stalk map. Under local
+Noetherianity, finite length of every original quotient stalk makes that
+quotient scheme locally Artinian; finite support additionally makes it
+Artinian. These lower bridges serve the
+[point-blowup principalization](../Surfaces/Resolution/README.md) and
+[rational-coordinate base-ideal](../RationalMap/BaseIdeal.md) constructions.
 
 [Glue](Glue.lean) glues ideal sheaves along open covers. For a jointly surjective family of open immersions `f i : U i ⟶ X` and ideal sheaves `I i` on the `U i` whose pullbacks to the overlaps `pullback (f i) (f j)` agree, `Scheme.IdealSheafData.glue f I hf hI` is an ideal sheaf on `X` with `(glue f I hf hI).comap (f i) = I i` (`comap_glue`). Its ideal on an affine open `V` is `glueIdeal f I V`, the sections whose restrictions to all affine opens of the `U i` over `V` lie in the `I i`; the basic-open condition uses a finite subcover of `V` and the localization of sections at basic opens. Mathlib's pushforward `IdealSheafData.map` does not give this gluing directly, because `(I.map j).comap j = I` can fail for an open immersion `j` that is not quasi-compact (example in the module docstring, checked by hand, not formalized). The Zariski sheaf property of closed subschemes in [Descent/IdealSheaf/Fppf](../Descent/IdealSheaf/Fppf.lean) uses this construction.
 

@@ -14,6 +14,7 @@ public import Aglib.RingTheory.AdicCompletion.BranchFractionFinite
 public import Aglib.RingTheory.AdicCompletion.BranchUniformizer
 public import Aglib.RingTheory.AdicCompletion.ChineseRemainder
 public import Aglib.RingTheory.AdicCompletion.CofinalIdeals
+public import Aglib.RingTheory.AdicCompletion.CompatibleLifts
 public import Aglib.RingTheory.AdicCompletion.CompatibleSystem
 public import Aglib.RingTheory.AdicCompletion.CompatibleSystemGenerators
 public import Aglib.RingTheory.AdicCompletion.CompletedHom
@@ -83,11 +84,13 @@ public import Aglib.RingTheory.AssociatedGraded.TensorComponentGeneration
 public import Aglib.RingTheory.AssociatedGraded.TensorPositiveGeneration
 public import Aglib.RingTheory.AssociatedGraded.TensorRing
 public import Aglib.RingTheory.Binomial
+public import Aglib.RingTheory.Blowup.Colength
 public import Aglib.RingTheory.Blowup.PowerNode.Charts
 public import Aglib.RingTheory.Blowup.PowerNode.Overlaps
 public import Aglib.RingTheory.Blowup.PowerNode.Saturated
 public import Aglib.RingTheory.Blowup.RegularPair
 public import Aglib.RingTheory.Blowup.RegularPair.Reciprocal
+public import Aglib.RingTheory.Blowup.WeakTransform
 public import Aglib.RingTheory.CompleteDVRExtension
 public import Aglib.RingTheory.CompleteDVRIntegralClosureTower
 public import Aglib.RingTheory.DVRCartierLength
@@ -244,6 +247,7 @@ public import Aglib.RingTheory.Flat.PrincipalQuotient.Local
 public import Aglib.RingTheory.Flat.PrincipalQuotient.Localization
 public import Aglib.RingTheory.Flat.Quotient
 public import Aglib.RingTheory.Flat.TorsionFreeBaseChange
+public import Aglib.RingTheory.FractionalIdeal.Denominator
 public import Aglib.RingTheory.GenericFreeness.Filtration
 public import Aglib.RingTheory.GenericFreeness.Localization
 public import Aglib.RingTheory.GenericFreeness.Noetherian

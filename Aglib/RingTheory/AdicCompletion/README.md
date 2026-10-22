@@ -8,6 +8,30 @@ The domain/DVR proof uses the [separated principal-maximal-ideal criterion](../L
 
 [TowerComparison](TowerComparison.lean), imported as `Aglib.RingTheory.AdicCompletion.TowerComparison`, constructs the canonical linear map from the native `AdicCompletion I M` to `ModuleCat.sectionsSubmodule Q` for an inverse tower indexed by all natural numbers, including zero. Its stage maps are the original quotient factors, and its composite with `AdicCompletion.of` is the original compatible family. A uniform shifted kernel bound and an eventual transition-range bound make this actual map a linear equivalence. The shifts can differ, and ring, source-module, and tower-module universes are independent. No Noetherianity, finite generation, or surjectivity of the tower transitions is assumed. These are explicitly conditional algebraic bounds, not a supplier of geometric formal functions or a topological comparison.
 
+For a commutative ring `R`, ideal `I` and `R`-module `M`,
+[CompatibleLifts](CompatibleLifts.md) takes maps `F n : M →ₗ[R] N n` with
+transitions `ρ n : N (n + 1) →ₗ[R] N n`, assuming
+`(ρ n).comp (F (n + 1)) = F n` and the explicit correction condition
+
+```lean
+(ρ n).ker ≤ (I ^ n • (⊤ : Submodule R M)).map (F (n + 1))
+```
+
+For a compatible family `x : ∀ n, N n`, if `N 0` is subsingleton,
+`exists_compatible_cauchy_lift` constructs exact stage lifts forming a native
+adic Cauchy sequence. If each `F n` also kills
+`I ^ n • ⊤`, `exists_compatible_lift` returns an element of the native
+completion whose evaluations, followed by the original quotient factors of
+`F n`, are exactly the prescribed components. No Noetherianity, finite
+generation or completeness hypothesis is imposed.
+
+For `q : ℕ`, with the same compatibility, correction and annihilation conditions,
+`exists_filtered_compatible_lift` replaces the zero-stage premise by `x q = 0`.
+It lifts from the completion of the original submodule `I ^ q • ⊤`; the image
+under completion of its actual inclusion has every prescribed original
+component. The theorem asserts neither injectivity of this inclusion map on
+completions nor equality of its image with a completed ideal power.
+
 [EquivTransport](EquivTransport.lean) composes native completion congruence with
 a given linear comparison over a fixed base ring, preserving the original
 base-ring scalars and class map across independent module universes.

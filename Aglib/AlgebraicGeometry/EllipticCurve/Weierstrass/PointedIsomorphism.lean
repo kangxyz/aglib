@@ -250,12 +250,16 @@ private theorem affineX_ne_constant (W : WeierstrassCurve k) (r : k) :
   simpa only [map_sub, map_zero, sub_eq_zero, ← Polynomial.algebraMap_eq,
     ← IsScalarTower.algebraMap_apply k k[X]] using h
 
-/-- Every actual algebra isomorphism between affine Weierstrass coordinate
-rings gives an admissible variable change over the original field. No roots,
-characteristic restriction, or classification premise is needed. -/
-theorem affineAlgEquiv_exists_variableChange (W V : WeierstrassCurve k)
+/-- The admissible change obtained from the actual algebra isomorphism
+retains both original coordinate images as well as the coefficient identity.
+No root extraction or characteristic restriction is used. -/
+theorem affineAlgEquiv_exists_variableChange_with_coordinates (W V : WeierstrassCurve k)
     (e : W.toAffine.CoordinateRing ≃ₐ[k] V.toAffine.CoordinateRing) :
-    ∃ v : VariableChange k, v • W = V := by
+    ∃ v : VariableChange k, v • W = V ∧
+      e (affineX W) = VariableChange.changeX
+        (v.map (algebraMap k V.toAffine.CoordinateRing)) (affineX V) ∧
+      e (affineY W) = VariableChange.changeY
+        (v.map (algebraMap k V.toAffine.CoordinateRing)) (affineX V) (affineY V) := by
   obtain ⟨⟨a, r, hx⟩, ⟨b, s, t, hy⟩⟩ := affineAlgEquiv_coordinateForms W V e
   have ha : a ≠ 0 := by
     intro ha
@@ -277,7 +281,6 @@ theorem affineAlgEquiv_exists_variableChange (W V : WeierstrassCurve k)
       _ = (b / a) * a := by rw [hu2]; rfl
       _ = b := div_mul_cancel₀ b ha
   let v : VariableChange k := ⟨u, r, s / a, t⟩
-  refine ⟨v, ?_⟩
   have hx' : e (affineX W) = VariableChange.changeX
       (v.map (algebraMap k V.toAffine.CoordinateRing)) (affineX V) := by
     rw [hx]
@@ -298,8 +301,18 @@ theorem affineAlgEquiv_exists_variableChange (W V : WeierstrassCurve k)
   have hu : ((v.map (algebraMap k V.toAffine.CoordinateRing)).u :
       V.toAffine.CoordinateRing) ^ 6 ≠ 0 := pow_ne_zero 6 (Units.ne_zero _)
   have hrel := (mul_eq_zero.mp hmap).resolve_left hu
+  refine ⟨v, ?_, hx', hy'⟩
   apply affine_relation_unique (v • W) V
   simpa only [VariableChange.relation, Affine.evalEval_polynomial, WeierstrassCurve.map] using hrel
+
+/-- Every actual algebra isomorphism between affine Weierstrass coordinate
+rings gives an admissible variable change over the original field. No roots,
+characteristic restriction, or classification premise is needed. -/
+theorem affineAlgEquiv_exists_variableChange (W V : WeierstrassCurve k)
+    (e : W.toAffine.CoordinateRing ≃ₐ[k] V.toAffine.CoordinateRing) :
+    ∃ v : VariableChange k, v • W = V := by
+  obtain ⟨v, hv, _, _⟩ := affineAlgEquiv_exists_variableChange_with_coordinates W V e
+  exact ⟨v, hv⟩
 
 /-- Classification is applied to the actual affine restriction of the given
 pointed isomorphism. It is a conclusion, not a supplied bridge. -/

@@ -30,6 +30,7 @@ Its proper structure map and infinity section work over any commutative ring.
 | [Genus/Charts](Genus/Charts.md) | Monic chart bases, actual overlap restrictions and the one-dimensional Laurent quotient. |
 | [PoleBasis](PoleBasis.md) | Intrinsic principal-ideal colength forces triangular coordinates for every affine algebra isomorphism over a field. |
 | [PointedIsomorphism](PointedIsomorphism.md) | Every origin-preserving isomorphism of the literal nonsingular cubics preserves j, over every field. |
+| [PointedVariableChange](PointedVariableChange.md) | Every specified pointed isomorphism of literal cubics over any field is the canonical projective map of a native admissible change, without a discriminant hypothesis. |
 | [PointedGroup](PointedGroup.lean) | Adapter to the native genus-one group construction, retaining its Picard representability and other explicit prerequisites. |
 | [CoordinateGroup](CoordinateGroup.lean) | Stable operation-comparison interfaces and group-homomorphism bundling for a given pointed group law. |
 | [GroupCompatibility](GroupCompatibility.md) | The original characteristic-zero coordinate addition comparison for every given pointed group law, including its original-group points over any field extension. |
@@ -44,6 +45,15 @@ algebra; a group law or Picard representer is not an input.
 `WeierstrassCurve.VariableChange.projectiveOverIso W C` realizes the native
 change over any commutative ring as `curveOver (C • W) ≅ curveOver W`,
 preserving the actual structural map and infinity section.
+
+`WeierstrassCurve.Projective.pointedIso_exists_variableChange_eq` also starts
+from an actual `E : curveOver V ≅ curveOver W` preserving the original infinity
+sections. It produces `C`, `hC : C • W = V`, and equality of that same `E` with
+`variableChangeOverIso W V C hC`, the coefficient cast followed by the native
+projective map. The lower affine classification retains the chosen change and
+both original coordinate images. This original-map conclusion holds over every
+field without a nonzero-discriminant, group-law or perfectness assumption.
+
 `IntegralModel` starts from a specified fraction-field equation. Over a domain
 it clears denominators using an actual native change; over a DVR it selects
 Mathlib's `IsMinimal` equation. For two native minima with nonzero discriminant,

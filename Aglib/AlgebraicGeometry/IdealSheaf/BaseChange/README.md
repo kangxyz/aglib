@@ -4,6 +4,14 @@
 
 [Affine](Affine.lean) identifies that specified map with sheafification of the actual scalar-extended ring-kernel map, including its unit and inclusion equations. The affine adjunction comparison directions are part of this interface. [Isomorphism](Isomorphism.lean) treats isomorphism squares with arbitrary vertical maps.
 
+[Epimorphism](Epimorphism.md) proves
+`Scheme.Hom.idealPullbackMap_epi_of_isPullback` for the original cartesian
+square of a closed immersion along an arbitrary base morphism. It concerns
+the actual `idealPullbackMap`, from the pulled-back ideal module to the ideal
+module of the base-changed closed immersion. No flatness, Noetherianity or
+Cartier hypothesis is required. This is an epimorphism statement; it does not
+identify a nonflat pullback ideal module with its image ideal by an isomorphism.
+
 [Flat](Flat.lean) supplies `Scheme.Hom.flatQuotient_idealPullbackMap_isIso`. Its two actual cartesian squares, `IsClosedImmersion i` and `Flat (i ≫ p)` imply invertibility of the specified ideal map. Neither the ambient family nor the base-change morphism needs to be flat; an invertible ideal is also not a premise of this root. The source Cartier specialization retains its original extra rank-one hypothesis as a pointwise corollary.
 
 [Fibre](Fibre.lean) constructs the actual fibre inclusion and cartesian square. Its conditional ideal isomorphism and line-bundle construction retain the explicitly displayed pointwise base-change supplier, closed-immersion, quotient-flatness and rank-one inputs from the source. These conditional interfaces are supplied by the proved `Flat` root in their final consumers; they are not new global theorem-family predicates.

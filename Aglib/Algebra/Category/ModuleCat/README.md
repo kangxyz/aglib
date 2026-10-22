@@ -25,6 +25,13 @@ hypotheses.
 
 [KernelBaseChange](KernelBaseChange.lean), imported as `Aglib.Algebra.Category.ModuleCat.KernelBaseChange`, constructs the actual restricted and scalar-extended maps of ring kernels and their inclusion equation. Its canonical scalar-extension comparison is natural for actual module morphisms. Construction requires the displayed commutative square; flatness is reserved for the lower quotient-flat ideal theorem.
 
+[KernelBaseChange/Epimorphism](KernelBaseChange/Epimorphism.md) gives
+`ModuleCat.extendedKernelMap_epi_of_ker_eq_map`: in the original commutative
+ring square, the canonical scalar-extended kernel map is epi when the target
+kernel is the ideal extension of the original kernel. Its unit-tensor formula
+retains the original kernel map. No flatness or surjectivity premise is
+required; invertibility is not a conclusion.
+
 [FinitePresentation](FinitePresentation.lean) proves finite presentation of
 the actual categorical cokernel of a map from a finite module to a
 finitely presented module. Ring and carrier universes remain independent.

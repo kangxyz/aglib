@@ -1121,6 +1121,7 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.OrdinaryNodePrep
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedAgreement
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedGroup
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedIsomorphism
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedVariableChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Points
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PoleBasis
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Presentation
@@ -1335,7 +1336,9 @@ public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.Group.Translation
 public import Aglib.AlgebraicGeometry.Group.WeilPairing
 public import Aglib.AlgebraicGeometry.IdealSheaf.Affine
+public import Aglib.AlgebraicGeometry.IdealSheaf.Artinian
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Affine
+public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Epimorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Family
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Fibre
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.FibreClass
@@ -1361,6 +1364,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.ReducedComparison
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.ReducedFactor
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.SpecKernel
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.TwoPointSubscheme
+public import Aglib.AlgebraicGeometry.IdealSheaf.Colon
 public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueImmersion
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
@@ -2081,6 +2085,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenSection
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Affine
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.AffineStein
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalDVR
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalFunctions
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalInterfaces
@@ -2184,12 +2189,15 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.LocalE
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.MiddleFrame
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.Overlap
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Differentials.Euler.PolynomialChart
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FieldCoordinates
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.ChartData
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.Coefficients
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.Map
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Flat
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections.FieldSpan
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections.LineSource
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections.Naturality
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.GlobalFunctions
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.GlobalGeneration
@@ -2247,6 +2255,7 @@ public import Aglib.AlgebraicGeometry.Properties.Regular.Basic
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.Etale
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.FlatLocal
 public import Aglib.AlgebraicGeometry.Properties.Regular.OpenCover
+public import Aglib.AlgebraicGeometry.RationalMap.BaseIdeal
 public import Aglib.AlgebraicGeometry.RationalMap.Graph
 public import Aglib.AlgebraicGeometry.RationalPoint.AffineCoordinates
 public import Aglib.AlgebraicGeometry.RationalPoint.Basic
@@ -2353,6 +2362,8 @@ public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.NextCenter
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.Recursion
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.Regularity
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.SourceGeometry
+public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Principalization
+public import Aglib.AlgebraicGeometry.Surfaces.Resolution.WeakTransform
 public import Aglib.AlgebraicGeometry.Torsors.Relative
 public import Aglib.AlgebraicGeometry.Torsors.Restriction
 public import Aglib.AlgebraicGeometry.Torus.FiniteCorrespondence.Basic
@@ -2390,4 +2401,4 @@ Use an individual module import for a smaller dependency closure.
 -/
 
 -- The import-only facade follows the discovered source graph.
-set_option linter.style.longFile 2500
+set_option linter.style.longFile 2600

@@ -56,6 +56,7 @@ public import Aglib.Algebra.Category.ModuleCat.FiniteMatrixBaseChange
 public import Aglib.Algebra.Category.ModuleCat.FinitePresentation
 public import Aglib.Algebra.Category.ModuleCat.FunctorTransport
 public import Aglib.Algebra.Category.ModuleCat.KernelBaseChange
+public import Aglib.Algebra.Category.ModuleCat.KernelBaseChange.Epimorphism
 public import Aglib.Algebra.Category.ModuleCat.Localization.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.Localization.Counit
 public import Aglib.Algebra.Category.ModuleCat.Localization.Exactness
