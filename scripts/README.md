@@ -59,15 +59,15 @@ resource profile and matching prepared dependencies.
 Source-policy and wrapper regression suites:
 
 ```sh
-python3 -m unittest discover -s scripts -p test_source_guards.py
-python3 -m unittest discover -s scripts -p test_check_script.py
-python3 -m unittest discover -s scripts -p test_build_serial.py
-python3 -m unittest discover -s scripts -p test_migration_helpers.py
+PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_source_guards.py
+PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_check_script.py
+PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_build_serial.py
+PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_migration_helpers.py
 ```
 
 `test_lean_ci_workflow.py` independently checks the existing public workflow;
 it is not modified by the local-entry migration. Shared resource/runtime/progress
-fixtures live beside their implementation under `scripts/`. No test here establishes
+fixtures live under `scripts/tests/`. No test here establishes
 mathematical source correspondence or discharges theorem premises.
 
-Run the combined bounded Python suites with `python3 -m unittest discover -s scripts`.
+Run the combined bounded Python suites with `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests`.

@@ -101,7 +101,7 @@ then run `lake cache unstage <staging-directory> Aglib` from the consumer packag
 subsequent build.
 
 The focused regression suite uses Python and PyYAML:
-`python3 -m unittest discover -s scripts -p test_lean_ci_workflow.py -v`.
+`PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
 The caller preserves each repository's workflow name and concurrency group.
 `cancel-in-progress: false` with `queue: max` serializes runs without cancelling
 the running job or replacing an already pending run.
