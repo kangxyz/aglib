@@ -5,7 +5,6 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.Coherent.FinitePresentation
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Basic
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Limits
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineSectionsGlobal
@@ -13,9 +12,9 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineS
 /-!
 # Quasicoherent preimages of open subobjects
 
-For an open immersion between locally Noetherian schemes, a finite-type subobject of the
-restriction of a quasicoherent sheaf is the restriction of a quasicoherent subobject, with its
-original inclusion map.
+For a quasi-compact open immersion, a quasicoherent subobject of the restriction of a
+quasicoherent sheaf extends as a quasicoherent subobject, with its original inclusion map.
+The locally Noetherian finite-type specialization delegates to this general construction.
 -/
 
 /-!
@@ -37,21 +36,21 @@ open AlgebraicGeometry.Scheme.Modules
 attribute [local instance] Abelian.hasFiniteBiproducts
 namespace AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
-/-- The quasicoherent preimage kernel of an actual coherent open subsheaf.
-No finite generation of the ambient module sheaf is assumed. -/
-theorem quasicoherent_subobject_preimage
-    {U X : Scheme.{u}} [IsLocallyNoetherian X] [IsLocallyNoetherian U]
-    (j : U ⟶ X) [IsOpenImmersion j] (M : X.Modules) [M.IsQuasicoherent]
-    (A : FiniteTypeSheaves U) (i : A.obj ⟶ M.restrict j) [Mono i] :
+/-- The actual quasicoherent preimage kernel of an open subsheaf.
+Quasi-compactness replaces Noetherianity; neither module need be finite type. -/
+theorem quasicoherent_subobject_preimage_of_quasiCompact
+    {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j] [QuasiCompact j]
+    (M : X.Modules) [M.IsQuasicoherent]
+    (A : U.Modules) [A.IsQuasicoherent] (i : A ⟶ M.restrict j) [Mono i] :
     ∃ (K : X.Modules) (s : K ⟶ M), K.IsQuasicoherent ∧ Mono s ∧
-      ∃ (e : K.restrict j ≅ A.obj),
+      ∃ (e : K.restrict j ≅ A),
         (Scheme.Modules.restrictFunctor j).map s = e.hom ≫ i := by
   let F := Scheme.Modules.restrictFunctor j
   let adj := Scheme.Modules.restrictAdjunction j
   let C := cokernel i
   have : C.IsQuasicoherent := quasicoherent_cokernel i
   have : ((Scheme.Modules.pushforward j).obj C).IsQuasicoherent :=
-    quasicoherent_pushforward_open_of_locallyNoetherian j C
+    quasicoherent_pushforward_open j C
   let k : M ⟶ (Scheme.Modules.pushforward j).obj C := adj.homEquiv M C (cokernel.π i)
   have hk : F.map k ≫ adj.counit.app C = cokernel.π i := by
     simpa only [Adjunction.homEquiv_counit] using
@@ -62,5 +61,19 @@ theorem quasicoherent_subobject_preimage
   refine ⟨kernel k, kernel.ι k, quasicoherent_kernel k, inferInstance,
     h₁.conePointUniqueUpToIso h₂, ?_⟩
   exact (h₁.conePointUniqueUpToIso_hom_comp h₂ WalkingParallelPair.zero).symm
+
+
+/-- The quasicoherent preimage kernel of an actual coherent open subsheaf.
+No finite generation of the ambient module sheaf is assumed. -/
+theorem quasicoherent_subobject_preimage
+    {U X : Scheme.{u}} [IsLocallyNoetherian X] [IsLocallyNoetherian U]
+    (j : U ⟶ X) [IsOpenImmersion j] (M : X.Modules) [M.IsQuasicoherent]
+    (A : FiniteTypeSheaves U) (i : A.obj ⟶ M.restrict j) [Mono i] :
+    ∃ (K : X.Modules) (s : K ⟶ M), K.IsQuasicoherent ∧ Mono s ∧
+      ∃ (e : K.restrict j ≅ A.obj),
+        (Scheme.Modules.restrictFunctor j).map s = e.hom ≫ i := by
+  have : A.obj.IsQuasicoherent :=
+    quasicoherent_of_affineCharts A.obj (fun R a _ => (A.property R a).1)
+  exact quasicoherent_subobject_preimage_of_quasiCompact j M A.obj i
 
 end AlgebraicGeometry.Scheme.Modules.QuasiCoherent

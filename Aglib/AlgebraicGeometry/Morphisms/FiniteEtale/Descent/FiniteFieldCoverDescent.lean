@@ -9,6 +9,7 @@ module
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Presentation
 public import Aglib.RingTheory.Descent.FieldOfDefinition.Etale
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineCoverAlgebra
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineCoverBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.GlobalFinitePureAffine
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.FieldLimit
 
@@ -40,13 +41,7 @@ def specCoverIso {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
     [Algebra A B] [Algebra A C] [Module.Finite A B] [Algebra.Etale A B]
     [Module.Finite A C] [Algebra.Etale A C] (e : B ≃ₐ[A] C) :
     specCover A B ≅ specCover A C :=
-  ObjectProperty.isoMk _ (Over.isoMk
-    (Scheme.Spec.mapIso e.toRingEquiv.toCommRingCatIso.op).symm (by
-      change Spec.map (CommRingCat.ofHom e.symm.toRingHom) ≫
-        Spec.map (CommRingCat.ofHom (algebraMap A C)) =
-          Spec.map (CommRingCat.ofHom (algebraMap A B))
-      rw [← Spec.map_comp]
-      exact congrArg Spec.map (CommRingCat.hom_ext e.symm.toAlgHom.comp_algebraMap)))
+  AffineDescent.specCoverIso e
 
 variable (K Ω R : Type u) [Field K] [Field Ω] [Algebra K Ω]
   [Algebra.IsAlgebraic K Ω] [CommRing R] [Algebra K R]

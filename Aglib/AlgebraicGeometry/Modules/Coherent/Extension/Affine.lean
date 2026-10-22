@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Extension.Affine
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Extension.Enlargement
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Subobjects.Preimage
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Subobjects.Gluing
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Gluing
@@ -52,40 +52,7 @@ theorem affineLocallyFiniteType_subobject_extension_affine
     ∃ (B : FiniteTypeSheaves (Spec R)) (b : B.obj ⟶ M), Mono b ∧
       ∃ (e : B.obj.restrict j ≅ A.obj),
         (Scheme.Modules.restrictFunctor j).map b = e.hom ≫ a := by
-  obtain ⟨K, s, hK, hs, e, he⟩ := quasicoherent_subobject_preimage j M A a
-  have : K.IsQuasicoherent := hK
-  have : Mono s := hs
-  have hKj : affineLocallyFiniteType U (K.restrict j) :=
-    (affineLocallyFiniteType U).prop_of_iso e.symm A.property
-  let er : Scheme.Modules.restrictFunctor j ⋙
-      Scheme.Modules.restrictFunctor j.isoOpensRange.inv ≅
-      Scheme.Modules.restrictFunctor j.opensRange.ι :=
-    (Scheme.Modules.restrictFunctorComp j.isoOpensRange.inv j).symm ≪≫
-      Scheme.Modules.restrictFunctorCongr j.isoOpensRange_inv_comp
-  have hKr : affineLocallyFiniteType j.opensRange.toScheme (K.restrict j.opensRange.ι) :=
-    (affineLocallyFiniteType j.opensRange.toScheme).prop_of_iso (er.app K)
-      (affineLocallyFiniteType_restrict j.isoOpensRange.inv hKj)
-  obtain ⟨B, t, ht, htr⟩ := exists_finiteType_subsheaf_restrict_isIso R K j.opensRange
-    (NoetherianSpace.isCompact _) hKr
-  have : Mono t := ht
-  have : IsIso ((Scheme.Modules.restrictFunctor j.opensRange.ι).map t) := htr
-  have hj : j.isoOpensRange.hom ≫ j.opensRange.ι = j := by
-    apply (cancel_epi j.isoOpensRange.inv).mp
-    simp [j.isoOpensRange_inv_comp]
-  let er' : Scheme.Modules.restrictFunctor j.opensRange.ι ⋙
-      Scheme.Modules.restrictFunctor j.isoOpensRange.hom ≅
-      Scheme.Modules.restrictFunctor j :=
-    (Scheme.Modules.restrictFunctorComp j.isoOpensRange.hom j.opensRange.ι).symm ≪≫
-      Scheme.Modules.restrictFunctorCongr hj
-  have htj : IsIso ((Scheme.Modules.restrictFunctor j).map t) := by
-    apply (NatIso.isIso_map_iff er' t).mp
-    exact (Scheme.Modules.restrictFunctor j.isoOpensRange.hom).map_isIso
-      ((Scheme.Modules.restrictFunctor j.opensRange.ι).map t)
-  let e' : B.obj.restrict j ≅ A.obj :=
-    asIso ((Scheme.Modules.restrictFunctor j).map t) ≪≫ e
-  refine ⟨B, t ≫ s, inferInstance, e', ?_⟩
-  rw [Functor.map_comp, he]
-  rfl
+  exact affineLocallyFiniteType_subobject_extension_affine_of_quasiCompact R j M A a
 
 /-- A global quasicoherent sheaf coherent on `W` has a quasicoherent
 subsheaf equal to it on `W` and coherent on the union of `W` with one affine
@@ -99,31 +66,6 @@ theorem affineLocallyFiniteType_affine_enlargement
     ∃ (N' : X.Modules) (s : N' ⟶ N), N'.IsQuasicoherent ∧ Mono s ∧
       IsIso ((Scheme.Modules.restrictFunctor W.ι).map s) ∧
       affineLocallyFiniteType (W ⊔ a.opensRange).toScheme (N'.restrict (W ⊔ a.opensRange).ι) := by
-  let p := pullback.fst W.ι a
-  let q := pullback.snd W.ι a
-  let A : FiniteTypeSheaves W.toScheme := ⟨N.restrict W.ι, hW⟩
-  let Ap : FiniteTypeSheaves (CategoryTheory.Limits.pullback W.ι a) := (finiteTypeSheavesRestriction
-    p).obj A
-  let E := overlapRestrictIso W.ι a
-  let i : Ap.obj ⟶ (N.restrict a).restrict q := (E.app N).hom
-  have : Mono i := by dsimp only [i]; infer_instance
-  obtain ⟨B, b, hb, eB, heB⟩ :=
-    affineLocallyFiniteType_subobject_extension_affine R q (N.restrict a) Ap i
-  have : Mono b := hb
-  have he : (Scheme.Modules.restrictFunctor p).map (𝟙 (N.restrict W.ι)) ≫
-      E.hom.app N = eB.inv ≫ (Scheme.Modules.restrictFunctor q).map b := by
-    rw [heB]
-    simp [i]
-  obtain ⟨N', s, hN', hs, eW, ea, hsW, hsa⟩ :=
-    exists_quasicoherent_glued_subobject W.ι a (𝟙 (N.restrict W.ι)) b eB.symm he
-  have hN'W : affineLocallyFiniteType W.toScheme (N'.restrict W.ι) :=
-    (affineLocallyFiniteType W.toScheme).prop_of_iso eW.symm hW
-  have hN'a : affineLocallyFiniteType (Spec R) (N'.restrict a) :=
-    (affineLocallyFiniteType (Spec R)).prop_of_iso ea.symm B.property
-  refine ⟨N', s, hN', hs, ?_, ?_⟩
-  · rw [hsW, Category.comp_id]
-    infer_instance
-  · exact affineLocallyFiniteType_restrict_sup N' W a.opensRange hN'W
-      (affineLocallyFiniteType_restrict_opensRange a N' hN'a)
+  exact affineLocallyFiniteType_affine_enlargement_of_quasiCompact N W hW R a
 
 end AlgebraicGeometry.Scheme.Modules.Coherent

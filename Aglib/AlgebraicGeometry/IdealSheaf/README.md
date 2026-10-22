@@ -68,3 +68,47 @@ index. The induction retains nilpotent structure; strict closed subschemes
 produce strict increases of the original ideal, not merely changes of closed
 support. [Proper Grothendieck existence](../Cohomology/GrothendieckExistence/Proper.md)
 uses this induction on its actual closed-subscheme thickenings.
+
+## Finite-type ideals and closed approximation
+
+[FiniteType](FiniteType.lean), imported as
+`Aglib.AlgebraicGeometry.IdealSheaf.FiniteType`, defines
+`Scheme.IdealSheafData.AffineLocallyFG`: the actual ideal on every affine open
+is finitely generated. `affineLocallyFG_iff_affineLocallyFiniteType` identifies
+it with finite type of the native ideal module. The lower
+`Scheme.Hom.idealModule_isQuasicoherent` needs only an affine morphism.
+For a closed immersion `e`, [FinitePresentation](FinitePresentation.lean)
+proves `Scheme.Hom.locallyOfFinitePresentation_iff_ker_affineLocallyFG`.
+No Noetherian hypothesis occurs in these criteria.
+
+[FiniteTypeExtension](FiniteTypeExtension.lean), imported as
+`Aglib.AlgebraicGeometry.IdealSheaf.FiniteTypeExtension`, proves
+`IdealSheafData.exists_affineLocallyFG_extension_le`. On qcqs `X`, for a
+compact open `U`, an ambient ideal `I` and an affine-locally finitely generated
+`K ≤ I.comap U.ι`, it returns `J ≤ I` with `J.AffineLocallyFG` and the literal
+equality `J.comap U.ι = K`.
+
+[FiniteTypeApproximation](FiniteTypeApproximation.lean), imported as
+`Aglib.AlgebraicGeometry.IdealSheaf.FiniteTypeApproximation`, defines
+`FiniteTypeSubideal I := {J // J ≤ I ∧ J.AffineLocallyFG}` in the original
+scheme universe. This is a nonempty filtered category.
+`iSup_finiteTypeSubideal` proves `(⨆ J : FiniteTypeSubideal I, J.val) = I` on a
+qcqs scheme. These are actual subideals and inclusions.
+
+[FinitePresentationApproximation](FinitePresentationApproximation.lean),
+imported as `Aglib.AlgebraicGeometry.IdealSheaf.FinitePresentationApproximation`,
+takes the opposite index to produce finitely presented closed subschemes
+over `X`. `finitePresentationApproximationConeIsLimit` and its scheme-valued
+form prove that their limit is the closed subscheme defined by `I`, for qcqs
+`X`. Transitions are closed immersions. No nilpotence or equality of stage
+supports is asserted.
+
+For an arbitrary category-indexed ideal diagram, [Limits](Limits.lean) gives
+`IdealSheafData.subschemeSupConeIsLimit` in `Over X` without a connectedness
+hypothesis. Its forgotten scheme limit
+`subschemeSupSchemeConeIsLimit` requires `[IsConnected C]`. The cofiltered
+finite-subideal approximation satisfies this requirement. The
+[closed-immersion interface](../Morphisms/ClosedImmersion/README.md) returns
+the original source and structural triangles; the
+[approximation family](../Approximation/README.md) consumes these lower
+constructions.

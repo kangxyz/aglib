@@ -60,7 +60,9 @@ public import Aglib.CategoryTheory.Grp
 public import Aglib.CategoryTheory.Iso.CertifiedHomTransport
 public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
+public import Aglib.CategoryTheory.Limits.Equifibered
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
+public import Aglib.CategoryTheory.Limits.Monomorphisms
 public import Aglib.CategoryTheory.Limits.NatTransCoproduct
 public import Aglib.CategoryTheory.Limits.Shapes.BinaryProducts
 public import Aglib.CategoryTheory.Limits.Shapes.CokernelPushout
@@ -72,6 +74,7 @@ public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.SignCorrection
 public import Aglib.CategoryTheory.Limits.Shapes.SequentialSystem.TailColimit
 public import Aglib.CategoryTheory.Limits.Shapes.WidePullbacks
 public import Aglib.CategoryTheory.Limits.Shapes.ZeroObjects
+public import Aglib.CategoryTheory.Limits.Types.FiniteSubset
 public import Aglib.CategoryTheory.Limits.Types.NatTower
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced

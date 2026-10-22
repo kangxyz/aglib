@@ -7,7 +7,9 @@ actual open-immersion pushout. Its declarations belong to `Scheme`,
 map API starts from a supplied map of one chart and its actual overlap equation;
 its finiteness conclusion also requires the displayed inverse-image equality.
 [Coproduct](Coproduct.lean) compares a doubled open pushout with the coproduct
-of its pushouts and proves properness of the coproduct of a proper map.
+of its pushouts. `Scheme.OpenPushout.coprodDesc_proper_of_proper` proves
+properness of `coprod.desc p q` for two proper maps to the same base;
+`coprodDesc_proper p` retains the repeated-map specialization.
 
 [ProperModification](ProperModification.lean), in
 `Scheme.OpenPushout.Modification`, replaces one actual open chart by a supplied
@@ -40,3 +42,33 @@ structure-map triangle.
 
 The new graph and curve constructions consume these interfaces. Provenance is
 recorded in each leaf; no native module imports its R5 source.
+
+## Cartesian open pushout maps and schematic density
+
+[OpenPushoutMap](OpenPushoutMap.lean), imported as
+`Aglib.AlgebraicGeometry.Gluing.OpenPushoutMap`, studies the native
+`pushout.map f g f' g' b c a hf hg`, in `Scheme.OpenPushoutMap`.
+All four gluing arrows are open immersions.
+`isPullback_inl` uses the opposite overlap square `IsPullback a g g' c`,
+while `isPullback_inr` uses `IsPullback a f f' b`.
+`isAffineHom` needs both squares cartesian and both chart maps `b,c` affine.
+The projection order and overlap equations are those of the original
+pushouts. [Arithmetic system gluing](../Approximation/FinitePresentationEnvelope/README.md)
+and [finite-presentation descent](../Descent/FinitePresentation/README.md)
+consume these maps.
+
+[OpenUnionPushout](OpenUnionPushout.lean), imported as
+`Aglib.AlgebraicGeometry.Gluing.OpenUnionPushout`, proves
+`Scheme.isPushout_of_isPullback_of_openCover`: a cartesian overlap of two open
+immersions whose ranges cover the target is a scheme pushout.
+`isPushout_opens_of_sup_eq_top` specializes to actual opens `U ⊔ V = ⊤`.
+
+[SchematicDensity](SchematicDensity.lean), imported as
+`Aglib.AlgebraicGeometry.Gluing.SchematicDensity`, gives
+`Scheme.Cover.glueMorphismsOfSchemeTheoreticallyDominant`. For an open cover
+of `X`, compatible maps over `S` to a separated `Y ⟶ S` agree on overlaps
+when they agree after a quasi-compact schematically dominant `j : U ⟶ X`.
+The constructed map retains each chart map, its composite with `j`, and its
+map to `S`. Quasi-compactness of `j`, schematic dominance and relative
+separatedness are explicit hypotheses. This is the map-gluing input used
+in the finite-cover [compactification construction](../Compactification/README.md).

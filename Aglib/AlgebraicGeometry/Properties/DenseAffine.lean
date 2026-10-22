@@ -29,11 +29,16 @@ namespace AlgebraicGeometry.Scheme
 
 variable {X : Scheme.{u}}
 
-/-- An affine open of a scheme with finitely many irreducible components is contained
-in an affine open containing all generic points. -/
-theorem exists_isAffineOpen_superset_genericPoints
-    (hX : (irreducibleComponents X).Finite) {V : X.Opens} (hV : IsAffineOpen V) :
-    ∃ U : X.Opens, IsAffineOpen U ∧ V ≤ U ∧ genericPoints X ⊆ U := by
+/-- Enlarge an arbitrary open by finitely many disjoint affine pieces to
+contain all generic points. Each added piece lies in a prescribed open
+neighborhood of its chosen generic point. -/
+theorem exists_finite_disjoint_affine_enlargement
+    (hX : (irreducibleComponents X).Finite) (V : X.Opens)
+    (N : genericPoints X → X.Opens) (hN : ∀ x, x.val ∈ N x) :
+    ∃ (A : Type u) (_ : Fintype A) (W : A → X.Opens) (x : A → genericPoints X),
+      (∀ a, IsAffineOpen (W a)) ∧ (∀ a, W a ≤ N (x a)) ∧
+      Pairwise (fun a b => Disjoint (W a) (W b)) ∧
+      Disjoint V (⨆ a, W a) ∧ genericPoints X ⊆ ((V ⊔ ⨆ a, W a : X.Opens) : Set X) := by
   classical
   let : Finite (irreducibleComponents X) := hX.to_subtype
   let E (Z : irreducibleComponents X) : X.Opens :=
@@ -54,9 +59,11 @@ theorem exists_isAffineOpen_superset_genericPoints
       ⟨z, hEsub Z hz, hz⟩
   let A := {Z : irreducibleComponents X // (genericPoints.ofComponent Z).val ∉ V}
   have hW (a : A) : ∃ W : X.Opens,
-      IsAffineOpen W ∧ (genericPoints.ofComponent a.val).val ∈ W ∧ W ≤ E a.val :=
-    exists_isAffineOpen_mem_and_subset (hEmem a.val)
-  choose W hWaff hWmem hWle using hW
+      IsAffineOpen W ∧ (genericPoints.ofComponent a.val).val ∈ W ∧
+        W ≤ E a.val ⊓ N (genericPoints.ofComponent a.val) :=
+    exists_isAffineOpen_mem_and_subset ⟨hEmem a.val, hN _⟩
+  choose W hWaff hWmem hWbound using hW
+  have hWle (a : A) : W a ≤ E a.val := (hWbound a).trans inf_le_left
   have hWdisj : Pairwise (fun a b : A => Disjoint (W a) (W b)) := by
     intro a b hab
     rw [← Opens.coe_disjoint]
@@ -80,9 +87,8 @@ theorem exists_isAffineOpen_superset_genericPoints
     have hd := ((genericPoints.isGenericPoint_ofComponent a.val).disjoint_iff V.isOpen).mpr
       a.property
     exact Set.disjoint_left.mp hd (hEsub a.val (hWle a hzW)) hzV
-  refine ⟨V ⊔ ⨆ a, W a,
-    hV.sup_of_disjoint (IsAffineOpen.iSup_of_disjoint hWaff hWdisj) hVdisj,
-    le_sup_left, ?_⟩
+  refine ⟨A, Fintype.ofFinite A, W, fun a => genericPoints.ofComponent a.val,
+    hWaff, fun a => (hWbound a).trans inf_le_right, hWdisj, hVdisj, ?_⟩
   intro x hx
   by_cases hxV : x ∈ V
   · exact (show V ≤ V ⊔ ⨆ a, W a from le_sup_left) hxV
@@ -94,6 +100,18 @@ theorem exists_isAffineOpen_superset_genericPoints
       have hm : (genericPoints.ofComponent Z).val ∈ W a := hWmem a
       rwa [hxZ] at hm
     exact (show (⨆ a, W a) ≤ V ⊔ ⨆ a, W a from le_sup_right) ((le_iSup W a) hxW)
+
+/-- An affine open of a scheme with finitely many irreducible components is contained
+in an affine open containing all generic points. -/
+theorem exists_isAffineOpen_superset_genericPoints
+    (hX : (irreducibleComponents X).Finite) {V : X.Opens} (hV : IsAffineOpen V) :
+    ∃ U : X.Opens, IsAffineOpen U ∧ V ≤ U ∧ genericPoints X ⊆ U := by
+  obtain ⟨A, hA, W, _, hW, _, hdisj, hVdisj, hgen⟩ :=
+    exists_finite_disjoint_affine_enlargement hX V (fun _ => ⊤) (fun _ => trivial)
+  let := hA
+  exact ⟨V ⊔ ⨆ a, W a,
+    hV.sup_of_disjoint (IsAffineOpen.iSup_of_disjoint hW hdisj) hVdisj,
+    le_sup_left, hgen⟩
 
 /-- Every point has a dense affine neighborhood when there are finitely many
 irreducible components. -/

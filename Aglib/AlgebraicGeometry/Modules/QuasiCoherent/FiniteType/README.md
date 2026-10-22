@@ -20,3 +20,42 @@ open-range, top-open and principal restriction maps.
 [LocalSpectrum](LocalSpectrum.lean) derives finite-type quasicoherence of the
 actual local-spectrum base change of a proper coefficient over a locally
 Noetherian target. Source local Noetherianity is derived, not assumed.
+
+## Locality and extension over qcqs schemes
+
+[Locality](Locality.lean), imported as
+`Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Locality`, proves
+`Scheme.Modules.QuasiCoherent.affineLocallyFiniteType_of_openImmersionCover`.
+For a quasicoherent `M`, the finite-type condition descends from any jointly
+surjective family of actual open immersions, with no Noetherian or
+compactness hypothesis on the ambient scheme. The cover index has an
+independent universe. The binary-cover and open-union forms retain their
+specified restriction maps.
+
+[Extension/Global](Extension/Global.lean), imported as
+`Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Extension.Global`,
+constructs finite-type subobjects over a qcqs `X`. In the same native
+namespace, `affineLocallyFiniteType_subobject_extension_of_qcqs` takes a
+quasi-compact open immersion `j : U ⟶ X`, a quasicoherent `M`, and a finite-type
+subobject `i : A.obj ⟶ M.restrict j`. It returns a finite-type subobject
+`b : B.obj ⟶ M` and `e : B.obj.restrict j ≅ A.obj` with the actual equation
+
+```lean
+(restrictFunctor j).map b = e.hom ≫ i
+```
+
+The ambient qcqs condition and quasi-compactness of `j` are retained.
+[Extension/Sections](Extension/Sections.lean) proves
+`exists_finiteType_subsheaf_section`: every section of a quasicoherent sheaf
+on a specified affine open of a qcqs scheme lies in the image of the actual
+inclusion of a global finite-type subobject. Its equation is
+`i.app U.val y = x`. [Ideal extension](../../../IdealSheaf/FiniteTypeExtension.lean)
+and [finite-type ideal approximation](../../../IdealSheaf/FiniteTypeApproximation.lean)
+consume these constructions.
+
+The lower [preimage](../Subobjects/Preimage.lean) and
+[gluing](../Subobjects/Gluing.lean) results extend quasicoherent subobjects
+along quasi-compact open immersions on arbitrary schemes. Their output need
+not be of finite type; the global finite-type conclusion uses the additional
+qcqs hypotheses above. The locally Noetherian specializations remain
+available.

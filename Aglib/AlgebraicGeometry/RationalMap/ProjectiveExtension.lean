@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.RationalMap.ProjectiveExtension.Basic
 public import Aglib.AlgebraicGeometry.RationalMap.BaseIdeal
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Principalization
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FieldCoordinates
@@ -45,48 +46,6 @@ attribute [local instance] MvPolynomial.gradedAlgebra
 namespace AlgebraicGeometry.Scheme.RationalCoordinates
 
 variable {X Y : Scheme.{u}}
-
-/-- The original map between the actual closed base-ideal subschemes. -/
-def baseIdealSourceMap (J : X.IdealSheafData) (β : Y ⟶ X) :
-    (J.comap β).subscheme ⟶ J.subscheme :=
-  IdealSheafData.subschemeMap (J.comap β) J β (J.le_map_comap β)
-
-@[reassoc]
-theorem baseIdealSourceMap_comm (J : X.IdealSheafData) (β : Y ⟶ X) :
-    baseIdealSourceMap J β ≫ J.subschemeι = (J.comap β).subschemeι ≫ β :=
-  IdealSheafData.subschemeMap_subschemeι _ _ _ _
-
-/-- This is the actual cartesian square, not an assumed comparison of modules. -/
-theorem baseIdealSourceMap_isPullback (J : X.IdealSheafData) (β : Y ⟶ X) :
-    IsPullback (baseIdealSourceMap J β) (J.comap β).subschemeι J.subschemeι β := by
-  apply IsPullback.flip
-  apply AlgebraicGeometry.isPullback_of_isClosedImmersion
-    (J.comap β).subschemeι J.subschemeι (baseIdealSourceMap J β) β
-    (baseIdealSourceMap_comm J β).symm
-  rw [J.ker_subschemeι, (J.comap β).ker_subschemeι]
-
-/-- The canonical map onto the actual inverse-image ideal module. -/
-def baseIdealPullbackMap (J : X.IdealSheafData) (β : Y ⟶ X) :
-    (Scheme.Modules.pullback β).obj (Hom.idealModule J.subschemeι) ⟶
-      Hom.idealModule (J.comap β).subschemeι :=
-  Hom.idealPullbackMap J.subschemeι (J.comap β).subschemeι β
-    (baseIdealSourceMap J β) (baseIdealSourceMap_comm J β)
-
-/-- This original comparison is epimorphic along every actual morphism. -/
-instance baseIdealPullbackMap_epi (J : X.IdealSheafData) (β : Y ⟶ X) :
-    Epi (baseIdealPullbackMap J β) :=
-  Hom.idealPullbackMap_epi_of_isPullback J.subschemeι (J.comap β).subschemeι β
-    (baseIdealSourceMap J β) (baseIdealSourceMap_comm J β)
-    (baseIdealSourceMap_isPullback J β)
-
-/-- The actual inclusion triangle of the same canonical epimorphism. -/
-@[reassoc]
-theorem baseIdealPullbackMap_inclusion (J : X.IdealSheafData) (β : Y ⟶ X) :
-    baseIdealPullbackMap J β ≫ Hom.idealInclusion (J.comap β).subschemeι =
-      (Scheme.Modules.pullback β).map (Hom.idealInclusion J.subschemeι) ≫
-        (pullbackUnitIso β).hom :=
-  Hom.idealPullbackMap_inclusion J.subschemeι (J.comap β).subschemeι β
-    (baseIdealSourceMap J β) (baseIdealSourceMap_comm J β)
 
 variable (X) [IsIntegral X] {I : Type u} [Fintype I]
 

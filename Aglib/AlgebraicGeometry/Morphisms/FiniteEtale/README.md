@@ -81,11 +81,43 @@ closed-fibre equivalence for every proper scheme over a Noetherian local ring
 complete for its maximal ideal. Its forward functor is literally
 `baseChange (pullback.fst f (LocalRing.residueSpecMap A))`; proper coherent
 Grothendieck existence supplies object effectivity, without flatness or a
-projective embedding. The complete-local hypotheses belong to this theorem;
-no arbitrary Henselian-base proper equivalence is asserted.
+projective embedding. The complete-local hypotheses belong to this theorem. The general
+henselian-local comparison is supplied separately by
+[ProperHenselian](ProperHenselian/README.md).
 
 [Nilpotent comparison](Nilpotent.md) supplies actual global Hom and object
 gluing and an equivalence for the original finite-étale base-change functor
 across a nilpotent closed immersion of arbitrary schemes. Nilpotence means
 an actual global exponent. No Noetherianity, properness or algebraization
 premise is required; this does not supply general object effectivity.
+
+## Proper henselian local comparison and limit descent
+
+Import `Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperHenselian.General`
+for the [proper henselian comparison](ProperHenselian/README.md).
+For every `R : Type u` with `[CommRing R] [HenselianLocalRing R]` and proper
+`f : X ⟶ Spec (.of R)` with `X : Scheme.{u}`,
+`Scheme.FiniteEtale.properHenselian_baseChange_isEquivalence f` proves that
+
+```lean
+baseChange (pullback.fst f (LocalRing.residueSpecMap R))
+```
+
+is an equivalence. `properHenselianEquivalence f` has exactly this forward
+functor: `properHenselianEquivalence_functor f` is proved by `rfl`.
+The endpoint imposes no Noetherian, finite-presentation, completeness,
+flatness, excellence, domain or projectivity hypothesis. It constructs a
+[proper finite-presentation approximation](../../Approximation/Proper/README.md)
+over the original base, lifts at a stage, and uses universal essential
+surjectivity on proper schemes to lift residue morphisms by their graphs.
+
+[Descent/LimitObjects](Descent/LimitObjects.lean), imported as
+`Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.LimitObjects`, supplies
+`Scheme.FiniteEtale.LimitDescent.exists_cover_of_isLimit`. For a small
+cofiltered diagram of qcqs schemes with affine transitions and a specified
+limit `c`, every `Y : FiniteEtale c.pt` is isomorphic to
+`(baseChange (c.π.app i)).obj Yi` for an actual stage cover `Yi`.
+The index, scheme and hom universes are `u`. Transition maps need not be flat,
+injective on rings or surjective on schemes. The theorem is an object-descent
+interface with the original projection; it is also used in the proper
+henselian construction.

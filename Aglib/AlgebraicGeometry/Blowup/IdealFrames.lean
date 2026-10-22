@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Blowup.AffineAtlas
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Affine
-public import Aglib.AlgebraicGeometry.Modules.Pullback.Unit
+public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitMultiplication
 public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.Hom
 
 /-!
@@ -267,23 +267,6 @@ theorem affineMultiplication_comp (S : Type u) [CommRing S] (s t : S) :
   ac_rfl
 
 open Opposite
-
-private theorem unitMul_pullback {X Y : Scheme.{u}} (f : X ⟶ Y) (s : Γ(Y, ⊤)) :
-    (Scheme.Modules.pullback f).map (unitMul Y s) ≫ (pullbackUnitIso f).hom =
-      (pullbackUnitIso f).hom ≫ unitMul X (f.appTop s) := by
-  apply ((pullbackPushforwardAdjunction f).homEquiv _ _).injective
-  rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right,
-    pullbackUnitIso_homEquiv]
-  apply Scheme.Modules.hom_ext
-  intro U
-  ext x
-  change Γ(Y, U) at x
-  change f.app U (x * Y.presheaf.map (homOfLE le_top : U ⟶ ⊤).op s) =
-    f.app U x * X.presheaf.map (homOfLE le_top : f ⁻¹ᵁ U ⟶ ⊤).op (f.appTop s)
-  rw [map_mul]
-  congr 1
-  exact ConcreteCategory.congr_hom
-    (f.toLRSHom.c.naturality (homOfLE (show U ≤ ⊤ from le_top)).op) s
 
 private theorem tildeUnit_toOpen_top (S : Type u) [CommRing S] (s : S) :
     tilde.toOpen (R := .of S) (ModuleCat.of S S) ⊤ s =

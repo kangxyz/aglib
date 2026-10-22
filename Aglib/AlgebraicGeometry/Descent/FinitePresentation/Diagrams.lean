@@ -73,7 +73,10 @@ instance baseChangeDiagram_quasiSeparatedSpace (D : I ⥤ Scheme.{u}) (i : I)
 /-- A morphism between actual limit base changes descends to an actual morphism
 between base changes at one later stage, with its base triangle and comparison. -/
 lemma exists_hom_between_baseChanges_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
     [QuasiCompact f] [QuasiSeparated f] [LocallyOfFinitePresentation g]
@@ -84,7 +87,6 @@ lemma exists_hom_between_baseChanges_of_isLimit [IsCofiltered I]
       b ≫ pullback.fst (D.map j.hom) g = pullback.fst (D.map j.hom) f ∧
       (baseChangeCone D c i f).π.app j ≫ b =
         a ≫ (baseChangeCone D c i g).π.app j := by
-  have {j k : I} (q : j ⟶ k) : IsAffineHom (D.map q) := inferInstance
   let t : baseChangeDiagram D i f ⟶ (Functor.const (Over i)).obj (D.obj i) :=
     { app j := pullback.snd (D.map j.hom) f ≫ f
       naturality {j k} q := by

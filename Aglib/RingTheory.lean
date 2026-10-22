@@ -68,6 +68,7 @@ public import Aglib.RingTheory.AdicCompletion.HomComparison
 public import Aglib.RingTheory.AdicCompletion.HomNaturality
 public import Aglib.RingTheory.AdicCompletion.IdealMap
 public import Aglib.RingTheory.AdicCompletion.LocalCompletionsBase
+public import Aglib.RingTheory.AdicCompletion.LocalResidue
 public import Aglib.RingTheory.AdicCompletion.Localization
 public import Aglib.RingTheory.AdicCompletion.MappedHomCoordinates
 public import Aglib.RingTheory.AdicCompletion.NoetherianRing
@@ -120,6 +121,7 @@ public import Aglib.RingTheory.AssociatedGraded.TensorComponentGeneration
 public import Aglib.RingTheory.AssociatedGraded.TensorPositiveGeneration
 public import Aglib.RingTheory.AssociatedGraded.TensorRing
 public import Aglib.RingTheory.Binomial
+public import Aglib.RingTheory.Blowup.BoundarySeparation
 public import Aglib.RingTheory.Blowup.Colength
 public import Aglib.RingTheory.Blowup.PowerNode.Charts
 public import Aglib.RingTheory.Blowup.PowerNode.Overlaps
@@ -229,6 +231,7 @@ public import Aglib.RingTheory.Etale.CodimensionOne
 public import Aglib.RingTheory.Etale.DiagonalCentre
 public import Aglib.RingTheory.Etale.DiagonalLocalization
 public import Aglib.RingTheory.Etale.DifferentialCoordinates
+public import Aglib.RingTheory.Etale.FiniteDescent
 public import Aglib.RingTheory.Etale.FiniteFlatPurity
 public import Aglib.RingTheory.Etale.FiniteFlatPurityLocalization
 public import Aglib.RingTheory.Etale.FormalProperties
@@ -302,7 +305,14 @@ public import Aglib.RingTheory.FiniteLength.Socle
 public import Aglib.RingTheory.FiniteLength.Support
 public import Aglib.RingTheory.FiniteLength.TensorInjectivity
 public import Aglib.RingTheory.FiniteLocalResidue
+public import Aglib.RingTheory.FiniteType.ColimitGenerators
+public import Aglib.RingTheory.FiniteType.EventualSurjectivity
+public import Aglib.RingTheory.FiniteType.FilteredSubalgebra
 public import Aglib.RingTheory.FiniteType.FiniteResidue
+public import Aglib.RingTheory.FiniteType.Generators
+public import Aglib.RingTheory.FiniteType.LocalizationSubalgebra
+public import Aglib.RingTheory.FiniteType.ResidueColimit
+public import Aglib.RingTheory.FiniteType.SubalgebraColimit
 public import Aglib.RingTheory.FiniteType.Subring
 public import Aglib.RingTheory.FiniteType.SubringLift
 public import Aglib.RingTheory.FiniteTypeLocalResidue
@@ -342,6 +352,7 @@ public import Aglib.RingTheory.FractionalIdeal.Denominator
 public import Aglib.RingTheory.GenericFreeness.Filtration
 public import Aglib.RingTheory.GenericFreeness.Localization
 public import Aglib.RingTheory.GenericFreeness.Noetherian
+public import Aglib.RingTheory.GradedAlgebra.HomogeneousLocalization.Surjective
 public import Aglib.RingTheory.GradedAlgebra.Quotient
 public import Aglib.RingTheory.Grassmannian.BaseChange
 public import Aglib.RingTheory.Grassmannian.BaseChangeFormula
@@ -354,6 +365,7 @@ public import Aglib.RingTheory.Grassmannian.Covering
 public import Aglib.RingTheory.Grassmannian.Descent
 public import Aglib.RingTheory.Grassmannian.Gluing
 public import Aglib.RingTheory.Grassmannian.Overlap
+public import Aglib.RingTheory.Henselian.ArtinApproximationAlgHom
 public import Aglib.RingTheory.Henselian.DVRGeometricApproximation
 public import Aglib.RingTheory.Henselian.DVRGeometricFiniteModel
 public import Aglib.RingTheory.Henselian.DVRGeometricFiniteModelCoefficient
@@ -373,6 +385,7 @@ public import Aglib.RingTheory.Henselian.FiniteBaseLocalizationGenerators
 public import Aglib.RingTheory.Henselian.FiniteBaseLocalizationResidue
 public import Aglib.RingTheory.Henselian.GenericGeometricLocalArtinApproximation
 public import Aglib.RingTheory.Henselian.GeometricLocalArtinApproximation
+public import Aglib.RingTheory.Henselian.GeometricLocalArtinApproximationAlgHom
 public import Aglib.RingTheory.Henselian.GeometricLocalFiniteOriginModel
 public import Aglib.RingTheory.Henselian.HenselianDVRArtinApproximation
 public import Aglib.RingTheory.Henselian.HenselianNativeGeometricEquiv
@@ -392,12 +405,16 @@ public import Aglib.RingTheory.Henselian.HenselizationNoetherian
 public import Aglib.RingTheory.Henselian.HenselizationPolynomialDescent
 public import Aglib.RingTheory.Henselian.HenselizationQuotient
 public import Aglib.RingTheory.Henselian.HenselizationQuotientSystem
+public import Aglib.RingTheory.Henselian.HenselizationResidue
 public import Aglib.RingTheory.Henselian.HenselizationSelectedApproximation
 public import Aglib.RingTheory.Henselian.HenselizationUniversal
 public import Aglib.RingTheory.Henselian.LocalMonicFiniteOriginModel
 public import Aglib.RingTheory.Henselian.LocalMonicFiniteReduction
 public import Aglib.RingTheory.Henselian.LocalResidueMonicEquations
 public import Aglib.RingTheory.Henselian.LocalResidueParameterBasis
+public import Aglib.RingTheory.Henselian.LocalTarget
+public import Aglib.RingTheory.Henselian.LocalTargetIdealResidue
+public import Aglib.RingTheory.Henselian.LocalTargetResidue
 public import Aglib.RingTheory.Henselian.MonicFiniteHenselization
 public import Aglib.RingTheory.Henselian.MonicFiniteOriginModel
 public import Aglib.RingTheory.Henselian.MonicFiniteReduction
@@ -553,6 +570,7 @@ public import Aglib.RingTheory.LocalRing.ResidueProjectiveDimensionBound
 public import Aglib.RingTheory.LocalRing.ResidueSpanAnnihilator
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
+public import Aglib.RingTheory.Localization.Away.FiniteTypeSubalgebra
 public import Aglib.RingTheory.Localization.Away.MapInverse
 public import Aglib.RingTheory.Localization.Away.Products
 public import Aglib.RingTheory.Localization.Away.SaturatedChart
@@ -564,6 +582,7 @@ public import Aglib.RingTheory.Localization.FrobeniusLinearIndependent
 public import Aglib.RingTheory.Localization.HeightOne
 public import Aglib.RingTheory.Localization.HomEvaluation
 public import Aglib.RingTheory.Localization.IdealSpreading
+public import Aglib.RingTheory.Localization.IntegerLocalTarget
 public import Aglib.RingTheory.Localization.IteratedModuleLength
 public import Aglib.RingTheory.Localization.LengthFlatBaseChange
 public import Aglib.RingTheory.Localization.LengthSurjective
@@ -573,6 +592,8 @@ public import Aglib.RingTheory.Localization.OriginalFraction
 public import Aglib.RingTheory.Localization.PolynomialSystem
 public import Aglib.RingTheory.Localization.PrincipalQuotientLength
 public import Aglib.RingTheory.Localization.ProjectedResidue
+public import Aglib.RingTheory.Localization.ProjectiveCoordinates
+public import Aglib.RingTheory.Localization.PullbackAway
 public import Aglib.RingTheory.Localization.QuotSMulTop
 public import Aglib.RingTheory.Localization.ResiduePoint
 public import Aglib.RingTheory.Localization.ResidueRange
@@ -687,6 +708,7 @@ public import Aglib.RingTheory.ReesAlgebra.Away
 public import Aglib.RingTheory.ReesAlgebra.GradedTransition
 public import Aglib.RingTheory.ReesAlgebra.GradedTransitionGenerators
 public import Aglib.RingTheory.ReesAlgebra.Grading
+public import Aglib.RingTheory.ReesAlgebra.Map
 public import Aglib.RingTheory.ReesAlgebra.ModuleDirectSum
 public import Aglib.RingTheory.ReesAlgebra.ModuleImage
 public import Aglib.RingTheory.Reflexive.Algebra

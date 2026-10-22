@@ -9,3 +9,17 @@
 [IntegerBaseInterchange](IntegerBaseInterchange.lean), imported as `Aglib.AlgebraicGeometry.Products.IntegerBaseInterchange`, constructs `Scheme.Products.baseProductSwapMap` and `baseProductSwapIso`. For maps `p : S ⟶ integerBase` and `q : T ⟶ integerBase`, the natural isomorphism interchanges the iterated products `(X × S) × T` and `(X × T) × S` over the integer base. Its forward component is the displayed two-pullback lift, and its inverse is the same map with `p,q` exchanged. `baseProductSwapMap_comp` and `baseProductSwapIso_trans` express involutivity; `baseProductSwapMap_naturality` holds for every morphism of the varying scheme. The `baseProductSwapMap_fst_fst`, `baseProductSwapMap_fst_snd` and `baseProductSwapMap_snd` equations fix the original three projections; `baseProductSwapIso_projection_first` and `baseProductSwapIso_projection_second` state compatibility with the product projections. The `baseProductSwapIso_transformation_first` and `baseProductSwapIso_transformation_second` equations retain the supplied structural-map compatibility of a morphism in the corresponding factor.
 
 The ordinary interchange requires no quasi-compactness hypothesis. `qcBaseProductSwapIso` gives the corresponding isomorphism of the quasi-compact-scheme functors under `QuasiCompact p` and `QuasiCompact q`, with its original underlying component and projection/transformation equations. The [relative polynomial–Laurent family](../Spec/PolynomialLaurent/README.md) specializes these comparisons to its actual plus/minus maps.
+
+[IntegerFiniteTypeProperties](IntegerFiniteTypeProperties.lean), imported as
+`Aglib.AlgebraicGeometry.Products.IntegerFiniteTypeProperties`, proves two
+arithmetic stage results in `AlgebraicGeometry.Scheme`. For
+`X : Scheme.{u}` with `[LocallyOfFiniteType (Products.toIntegerBase X)]` and
+`[QuasiCompact (Products.toIntegerBase X)]`,
+`integerFiniteType_stage_properties X` supplies compactness and
+quasi-separatedness of `X`, and local finite presentation and
+quasi-separatedness of its original integer structural map.
+`isNoetherian_of_integerFiniteType X` proves `IsNoetherian X` under the same
+hypotheses. The [conditional closed hull](../Descent/FiniteType/IntegerFiniteTypeHull.lean)
+and [two-diagram compactification assembly](../Compactification/ActualDiagrams.lean)
+use these properties of the actual arithmetic stages. No Noetherianity of
+the original inverse limit is inferred.

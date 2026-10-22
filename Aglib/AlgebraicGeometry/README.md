@@ -5,6 +5,8 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | Subject | Interfaces and principal results |
 | --- | --- |
 | [Modules](Modules/README.md) | Actual stalks/functors/base-change maps, quasicoherent affine comparison, finite presentations, exact vector bundles, coherent specialization, ordinary Picard tensor groups and differential maps |
+| [Compactification](Compactification/README.md) | Schematically dense compactification of separated finite-type morphisms over qcqs bases, with the original open immersion and proper factorization. |
+| [Approximation](Approximation/README.md) | Actual arithmetic systems for qcqs schemes, closed finite-presentation hulls, and proper fixed-base approximation over arbitrary affine schemes. |
 | [Descent](Descent/README.md) | Zariski module stacks, fpqc quasicoherent and fppf line-bundle stacks, and closed-subscheme descent along flat surjective quasi-compact maps |
 | [FlatteningStratification](FlatteningStratification/README.md) | Rank strata of a quasi-coherent sheaf of finite type, cut out by Fitting ideal sheaves, with their universal property (the case `n = 0` of the flattening stratification) |
 | [Morphisms](Morphisms/README.md) | Etale stalk/neighborhood comparison, finite field-valued lift sets, finite-etale objects and base change, section rigidity, smooth regularity/dimension and proper graph modifications |

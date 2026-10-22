@@ -14,6 +14,7 @@ public import Aglib.RingTheory.Descent.PurelyInseparable.BaseChange
 public import Aglib.RingTheory.Descent.Canonical
 public import Aglib.RingTheory.Descent.PurelyInseparable.Morphisms
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineCoverAlgebra
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.AffineCoverBaseChange
 
 /-!
 # GlobalFinitePureAffine
@@ -75,12 +76,7 @@ set_option backward.isDefEq.respectTransparency.types false in
 to `Spec (S ⊗[R] A)`, as finite étale covers of `Spec S`. -/
 def specBaseChangeIso :
     (baseChange (Spec.algebraMap R S)).obj (specCover R A) ≅ specCover S (S ⊗[R] A) :=
-  ObjectProperty.isoMk _ (Over.isoMk
-    (pullbackSymmetry (Spec.algebraMap R A) (Spec.algebraMap R S) ≪≫ pullbackSpecIso R S A)
-    (by
-      change (_ ≫ _) ≫ Spec.algebraMap S (S ⊗[R] A) = _
-      rw [Category.assoc, pullbackSpecIso_hom_fst']
-      exact pullbackSymmetry_hom_comp_fst _ _))
+  AffineDescent.specBaseChangeIso R S A
 
 theorem specBaseChangeIso_hom_left :
     (specBaseChangeIso R S A).hom.hom.left =

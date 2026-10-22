@@ -92,3 +92,37 @@ consumed by the
 The [ordinary cohomology family](../README.md) owns cohomology objects and
 formal functions; general scheme and module descent retains the existing
 [Descent](../../Descent/README.md) owners.
+
+## Projective generators and finite projective products
+
+[ProjectiveGenerators](ProjectiveGenerators.lean), imported as
+`Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.ProjectiveGenerators`,
+adds two interfaces in `Scheme.Cohomology`. Let `A : Type u` be a commutative
+Noetherian ring, `I : Ideal A`, `ι : Type u` a finite coordinate type, and
+`e : ι ≃ Fin (n + 1)`. For an arbitrary coherent adic system `F` on
+`ProjectiveSpace A ι`, `projective_formal_uniform_h1` supplies a single bound
+for H¹ vanishing of all its successive transition kernels after sufficiently
+large positive twists. `exists_completion_negativeTwist_epi` constructs a
+map to `F` from the completion of one finite sum of negative twists, with
+`Epi (p.hom.app (op k))` at every level `k`. No completeness, external graded
+realization, or vanishing premise is required. This interface constructs
+generators; algebraization of the target uses the effectivity results above.
+
+[FiniteProjectiveProduct](FiniteProjectiveProduct.lean), imported as
+`Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.FiniteProjectiveProduct`,
+proves `Scheme.Cohomology.finiteProjectiveProductCompletionIsEquivalence`.
+Its input is a finite `q : Y ⟶ P`, where `P` is the native finite over-product
+of projective spaces over `A`, indexed by `Fin n` with finite nonempty
+coordinate types `σ i : Type u`. For `[IsAdicComplete I A]`, it gives an
+equivalence for the literal functor
+
+```lean
+completionFunctor Y (idealThickeningIdealSheaf
+  (q ≫ (finiteProductOver (fun i => Over.mk (toSpec A (σ i)))).hom) I)
+```
+
+`isLocallyNoetherian_of_finite_projectiveProduct` derives local Noetherianity
+of `Y` from the constructed projective embedding. The ideal is pulled back
+along the original product structural map. This specializes projective
+existence and adds a useful product interface; the proper theorem at the
+start of this guide keeps its complete Noetherian-base hypotheses.

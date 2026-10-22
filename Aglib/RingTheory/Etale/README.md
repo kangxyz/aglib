@@ -63,3 +63,33 @@ retains the native tensor cancellation maps and applies this criterion after
 scalar extension to a Noetherian local target where the extended ideal is
 proper. The finite-etale construction uses it to detect etaleness of the
 actual finite algebra on its good opens.
+
+## Finite-étale descent to coefficients and filtered stages
+
+[FiniteDescent](FiniteDescent.lean), imported as
+`Aglib.RingTheory.Etale.FiniteDescent`, proves
+`Algebra.Etale.exists_subalgebra_fg_of_finite`. Given commutative rings
+`R : Type w`, `A : Type u`, `B : Type v`, an `R`-algebra structure on `A`,
+and a finite étale `A`-algebra `B`, it constructs a finitely generated
+`R`-subalgebra `A₀` of `A` and a finite étale `A₀`-algebra `B₀ : Type u` with
+
+```lean
+Nonempty (B ≃ₐ[A] A ⊗[A₀] B₀)
+```
+
+The three input universes are independent. The construction retains a finite
+étale presentation and the integral equations of its generators. It does not
+assume that `A` is Noetherian or finitely generated over `R`.
+
+[Filtered-colimit descent](../../Algebra/Category/Ring/Descent/FiniteEtale.lean),
+imported as `Aglib.Algebra.Category.Ring.Descent.FiniteEtale`, proves
+`Algebra.Etale.exists_finite_model_of_isColimit` and its `_above` variant.
+For an actual filtered `F : I ⥤ CommRingCat.{u}`, specified colimit cocone `c`,
+and finite étale `c.pt`-algebra `B : Type v`, the conclusion is a finite étale
+`Bᵢ : Type u` at an original stage and an algebra equivalence
+`c.pt ⊗[F.obj i] Bᵢ ≃ₐ[c.pt] B`, using the algebra structure induced by
+`c.ι.app i`. The index and hom universe are `u`. The `_above` form also returns
+an arrow from any prescribed initial stage. No flatness or injectivity of
+the transition maps is imposed. The
+[scheme-limit object descent](../../AlgebraicGeometry/Morphisms/FiniteEtale/Descent/LimitObjects.lean)
+uses these lower algebraic constructions.

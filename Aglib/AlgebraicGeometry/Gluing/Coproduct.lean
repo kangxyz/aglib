@@ -71,14 +71,19 @@ def doublePushoutIso : pushout (coprod.map f f) (coprod.map g g) ≅
     apply coprod.hom_ext <;> apply pushout.hom_ext <;>
       simp [doublePushoutHom, doublePushoutInv, Category.assoc]
 
-/-- A disjoint union of two proper schemes remains proper, via a finite fold map. -/
-theorem coprodDesc_proper {X S : Scheme.{u}} (p : X ⟶ S) [IsProper p] :
-    IsProper (coprod.desc p p) := by
-  have : IsProper (coprod.map p p) :=
-    IsZariskiLocalAtTarget.coprodMap p p inferInstance inferInstance
-  have he : coprod.desc p p = coprod.map p p ≫ coprod.desc (𝟙 S) (𝟙 S) := by
+/-- The coproduct of two proper morphisms to the same base is proper. -/
+theorem coprodDesc_proper_of_proper {X Y S : Scheme.{u}}
+    (p : X ⟶ S) (q : Y ⟶ S) [IsProper p] [IsProper q] :
+    IsProper (coprod.desc p q) := by
+  have : IsProper (coprod.map p q) :=
+    IsZariskiLocalAtTarget.coprodMap p q inferInstance inferInstance
+  have he : coprod.desc p q = coprod.map p q ≫ coprod.desc (𝟙 S) (𝟙 S) := by
     apply coprod.hom_ext <;> simp
   rw [he]
   infer_instance
+
+/-- A disjoint union of two proper schemes remains proper, via a finite fold map. -/
+theorem coprodDesc_proper {X S : Scheme.{u}} (p : X ⟶ S) [IsProper p] :
+    IsProper (coprod.desc p p) := coprodDesc_proper_of_proper p p
 
 end AlgebraicGeometry.Scheme.OpenPushout

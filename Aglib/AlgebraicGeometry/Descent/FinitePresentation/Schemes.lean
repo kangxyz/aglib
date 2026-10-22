@@ -141,7 +141,8 @@ retain their triangles to the modeled charts and are cartesian over the
 actual base cone. -/
 lemma Scheme.exists_common_open_chart_models_of_isLimit
     {K : Type u} [Category.{u} K] [IsCofiltered K]
-    (D : K ⥤ Scheme.{u}) [∀ k, IsAffine (D.obj k)]
+    (D : K ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
     (c : Cone D) (hc : IsLimit c) (i : K)
     {J : Type*} [Finite J] (X Z : J → Scheme.{u})
     (f : ∀ j, X j ⟶ D.obj i)
@@ -155,7 +156,6 @@ lemma Scheme.exists_common_open_chart_models_of_isLimit
         (V.ι ≫ pullback.fst (D.map k.hom) (f j)) (c.π.app k.left) := by
   classical
   let : Fintype J := Fintype.ofFinite J
-  have {j k : K} (q : j ⟶ k) : IsAffineHom (D.map q) := inferInstance
   choose k V hV he using fun j ↦ AlgebraicGeometry.exists_preimage_eq
     (Scheme.baseChangeDiagram D i (f j)) (Scheme.baseChangeCone D c i (f j))
     (Scheme.isLimitBaseChangeCone D c hc i (f j)) (u j).opensRange
@@ -187,7 +187,10 @@ to a single common stage, preserving the base triangles and every limit
 comparison. -/
 lemma Scheme.exists_common_homs_between_baseChanges_of_isLimit
     {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {J : Type*} [Finite J] {X Y : J → Scheme.{u}}
     (f : ∀ j, X j ⟶ D.obj i) (g : ∀ j, Y j ⟶ D.obj i)
@@ -215,7 +218,9 @@ lemma Scheme.exists_common_homs_between_baseChanges_of_isLimit
 stage. The sources are QC and the targets locally of finite type. -/
 lemma Scheme.exists_common_stage_baseChange_map_eq_of_isLimit
     {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {J : Type*} [Finite J] {X Y : J → Scheme.{u}}
     (f : ∀ j, X j ⟶ D.obj i) (g : ∀ j, Y j ⟶ D.obj i)
@@ -249,7 +254,10 @@ isomorphisms at one common stage when their actual limit base changes are
 isomorphisms. -/
 lemma Scheme.exists_common_stage_isIso_baseChange_maps_of_isLimit
     {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {J : Type*} [Finite J] {X Y : J → Scheme.{u}}
     (f : ∀ j, X j ⟶ D.obj i) (g : ∀ j, Y j ⟶ D.obj i)
@@ -487,7 +495,10 @@ end Map
 /-- Finitely many specified original arrows between modeled objects have
 maps of the actual models after one common later base change. -/
 lemma exists_common_maps {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {O A : Type*} [Finite A] (source target : A → O)
     (Z : O → Scheme.{u}) (t : ∀ o, Z o ⟶ c.pt)
@@ -523,7 +534,10 @@ lemma exists_common_maps {I : Type u} [Category.{u} I] [IsCofiltered I]
 /-- A specified arrow between two original objects admits a map of their
 actual models at a later stage, with its original comparison retained. -/
 lemma exists_map {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {Z W : Scheme.{u}} {t : Z ⟶ c.pt} {s : W ⟶ c.pt}
     (M : Model (c.π.app i) t) (N : Model (c.π.app i) s)
@@ -540,7 +554,9 @@ lemma exists_map {I : Type u} [Category.{u} I] [IsCofiltered I]
 modeled objects has actual open submodels at one common later stage.
 Each inclusion represents the given original arrow. -/
 lemma exists_common_open_submodels {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {J : Type*} [Finite J] {Z W : J → Scheme.{u}}
     (t : ∀ j, Z j ⟶ c.pt) (s : ∀ j, W j ⟶ c.pt)
@@ -609,7 +625,8 @@ namespace Model
 cocone is the specified original scheme, and the resulting comparison is
 cartesian over the specified base map. This constructor does not assume
 that arbitrary schemes already have models. -/
-def ofOpenDiagram {S S₀ : Scheme.{u}} [IsAffine S₀] (π : S ⟶ S₀)
+def ofOpenDiagram {S S₀ : Scheme.{u}} [CompactSpace S₀] [QuasiSeparatedSpace S₀]
+    (π : S ⟶ S₀)
     {J : Type v} [SmallCategory J] [Finite J] [Small.{u} J] [Quiver.IsThin J]
     (F G : J ⥤ Scheme.{u})
     [∀ {i j} (a : i ⟶ j), IsOpenImmersion (G.map a)]
@@ -639,7 +656,10 @@ def ofOpenDiagram {S S₀ : Scheme.{u}} [IsAffine S₀] (π : S ⟶ S₀)
         refine ⟨k, fi, fj, y, ?_⟩
         apply (pullback.fst (𝒰.f i) (𝒰.f j)).isOpenEmbedding.injective
         simpa only [← Scheme.Hom.comp_apply, pullback.lift_fst] using hyi }
-  have (j : J) : IsAffine (((Functor.const J).obj S₀).obj j) := inferInstanceAs (IsAffine S₀)
+  have (j : J) : CompactSpace (((Functor.const J).obj S₀).obj j) :=
+    inferInstanceAs (CompactSpace S₀)
+  have (j : J) : QuasiSeparatedSpace (((Functor.const J).obj S₀).obj j) :=
+    inferInstanceAs (QuasiSeparatedSpace S₀)
   have hcomp (j : J) : CompactSpace (G.obj j) :=
     QuasiCompact.compactSpace_of_compactSpace (g.app j)
   have hqs (j : J) : QuasiSeparatedSpace (G.obj j) :=
@@ -773,7 +793,10 @@ produce a model of the original covered scheme at a later stage. The
 overlap is modeled as an actual open on each side, and its identity is
 descended before gluing. -/
 lemma Model.exists_of_binary_cover {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X W : Scheme.{u}} [CompactSpace W] (U : Bool → Scheme.{u})
     (p : ∀ b, W ⟶ U b) (f : ∀ b, U b ⟶ X) [∀ b, IsOpenImmersion (f b)]
@@ -873,19 +896,24 @@ lemma Model.exists_of_binary_cover {I : Type u} [Category.{u} I] [IsCofiltered I
   exact ⟨Over.mk (l.hom ≫ j.hom ≫ k.hom),
     ⟨Model.ofOpenDiagram (c.π.app l.left) F G s hs t g p' Hp⟩⟩
 
-/-- A finite diagram of specified original objects with actual models
-descends to a single later stage, including identities, compositions, and
-the natural literal-base-change comparison. -/
-lemma Model.exists_diagram {I : Type u} [Category.{u} I] [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+/-- A finite diagram descends as actual maps between the specified models after
+one common pair of rebases. The identity and composition laws hold before
+constructing the stage functor, and every map retains its original comparison. -/
+lemma Model.exists_diagram_maps {I : Type u} [Category.{u} I] [IsCofiltered I]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)] [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {J : Type v} [SmallCategory J] [Finite J] [∀ j k : J, Finite (j ⟶ k)]
     (Z : J ⥤ Scheme.{u}) (t : Z ⟶ (Functor.const J).obj c.pt)
     (M : ∀ j, Model (c.π.app i) (t.app j)) :
-    ∃ k : Over i, ∃ F : J ⥤ Over (D.obj k.left),
-      (∀ j, LocallyOfFinitePresentation (F.obj j).hom) ∧
-      (∀ j, QuasiCompact (F.obj j).hom) ∧ (∀ j, QuasiSeparated (F.obj j).hom) ∧
-      Nonempty (F ⋙ Over.pullback (c.π.app k.left) ≅ Over.lift Z t) := by
+    ∃ (j : Over i) (k : Over j.left),
+      let N := fun l ↦ ((M l).rebase D c i j).rebase D c j.left k
+      ∃ a : ∀ {l m : J} (h : l ⟶ m),
+        Model.Map (N l) (N m) ((Over.lift Z t).map h),
+        (∀ l, (a (𝟙 l)).hom = 𝟙 _) ∧
+        (∀ {l m n : J} (h : l ⟶ m) (q : m ⟶ n),
+          (a (h ≫ q)).hom = (a h).hom ≫ (a q).hom) := by
   classical
   let Arrows := Σ j : J, Σ k : J, (j ⟶ k)
   let L := Over.lift Z t
@@ -930,24 +958,46 @@ lemma Model.exists_diagram {I : Type u} [Category.{u} I] [IsCofiltered I]
         (a k l h).overIso_naturality_assoc]
   obtain ⟨k, hk⟩ := Scheme.exists_common_stage_baseChange_map_eq_of_isLimit D c hc j.left
     (fun r ↦ (N (src r)).f) (fun r ↦ (N (dst r)).f) lhs rhs heq
-  let N' (l : J) := (N l).rebase D c j.left k
+  refine ⟨j, k, (fun {l m} h ↦ (a l m h).rebase D c j.left k), ?_, ?_⟩
+  · intro l
+    change (Over.pullback (D.map k.hom)).map (a l l (𝟙 l)).hom =
+      𝟙 ((Over.pullback (D.map k.hom)).obj (Over.mk (N l).f))
+    have H := hk (.inl l)
+    change (Over.pullback (D.map k.hom)).map (a l l (𝟙 l)).hom =
+      (Over.pullback (D.map k.hom)).map (𝟙 (Over.mk (N l).f)) at H
+    exact H.trans ((Over.pullback (D.map k.hom)).map_id _)
+  · intro l m n h q
+    change (Over.pullback (D.map k.hom)).map (a l n (h ≫ q)).hom =
+      (Over.pullback (D.map k.hom)).map (a l m h).hom ≫
+        (Over.pullback (D.map k.hom)).map (a m n q).hom
+    simpa only [lhs, rhs, Functor.map_comp] using hk (.inr ⟨l, m, n, h, q⟩)
+
+/-- A finite diagram of specified original objects with actual models
+descends to a single later stage, including identities, compositions, and
+the natural literal-base-change comparison. -/
+lemma Model.exists_diagram {I : Type u} [Category.{u} I] [IsCofiltered I]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)] [∀ j, QuasiSeparatedSpace (D.obj j)]
+    (c : Cone D) (hc : IsLimit c) (i : I)
+    {J : Type v} [SmallCategory J] [Finite J] [∀ j k : J, Finite (j ⟶ k)]
+    (Z : J ⥤ Scheme.{u}) (t : Z ⟶ (Functor.const J).obj c.pt)
+    (M : ∀ j, Model (c.π.app i) (t.app j)) :
+    ∃ k : Over i, ∃ F : J ⥤ Over (D.obj k.left),
+      (∀ j, LocallyOfFinitePresentation (F.obj j).hom) ∧
+      (∀ j, QuasiCompact (F.obj j).hom) ∧ (∀ j, QuasiSeparated (F.obj j).hom) ∧
+      Nonempty (F ⋙ Over.pullback (c.π.app k.left) ≅ Over.lift Z t) := by
+  obtain ⟨j, k, a, hid, hcomp⟩ := Model.exists_diagram_maps D c hc i Z t M
+  let N (l : J) := ((M l).rebase D c i j).rebase D c j.left k
   let F : J ⥤ Over (D.obj k.left) :=
-    { obj := fun l ↦ Over.mk (N' l).f
-      map := fun h ↦ (Over.pullback (D.map k.hom)).map (a _ _ h).hom
-      map_id := fun l ↦ by
-        change (Over.pullback (D.map k.hom)).map (a l l (𝟙 l)).hom =
-          𝟙 ((Over.pullback (D.map k.hom)).obj (Over.mk (N l).f))
-        have H := hk (.inl l)
-        change (Over.pullback (D.map k.hom)).map (a l l (𝟙 l)).hom =
-          (Over.pullback (D.map k.hom)).map (𝟙 (Over.mk (N l).f)) at H
-        exact H.trans ((Over.pullback (D.map k.hom)).map_id _)
-      map_comp := fun h q ↦ by
-        simpa only [lhs, rhs, Functor.map_comp] using hk (.inr ⟨_, _, _, h, q⟩) }
-  let e : F ⋙ Over.pullback (c.π.app k.left) ≅ L :=
-    NatIso.ofComponents (fun l ↦ (N' l).overIso) (fun h ↦
-      ((a _ _ h).rebase D c j.left k).overIso_naturality)
-  exact ⟨Over.mk (k.hom ≫ j.hom), F, fun l ↦ (N' l).locallyOfFinitePresentation,
-    fun l ↦ (N' l).quasiCompact, fun l ↦ (N' l).quasiSeparated, ⟨e⟩⟩
+    { obj := fun l ↦ Over.mk (N l).f
+      map := fun h ↦ (a h).hom
+      map_id := hid
+      map_comp := hcomp }
+  let e : F ⋙ Over.pullback (c.π.app k.left) ≅ Over.lift Z t :=
+    NatIso.ofComponents (fun l ↦ (N l).overIso) (fun h ↦ (a h).overIso_naturality)
+  exact ⟨Over.mk (k.hom ≫ j.hom), F, fun l ↦ (N l).locallyOfFinitePresentation,
+    fun l ↦ (N l).quasiCompact, fun l ↦ (N l).quasiSeparated, ⟨e⟩⟩
 
 
 end Scheme.FinitePresentationDescent
@@ -1052,5 +1102,123 @@ lemma Scheme.exists_diagram_model_of_isColimit
   obtain ⟨l, G, hGfp, hGqc, hGqs, e⟩ :=
     Scheme.FinitePresentationDescent.Model.exists_diagram D C hC (Opposite.op k) Z t M
   exact ⟨l.left.unop, G, hGfp, hGqc, hGqs, e⟩
+
+/-- A finitely presented scheme over an actual cofiltered limit of affine
+schemes has a model over one of those affine schemes, retaining its original
+source, structural map, and cartesian comparison. -/
+lemma Scheme.exists_model_of_isLimit_of_isAffine
+    {I : Type u} [Category.{u} I] [IsCofiltered I]
+    (D : I ⥤ Scheme.{u}) [∀ i, IsAffine (D.obj i)]
+    (c : Cone D) (hc : IsLimit c)
+    {X : Scheme.{u}} (f : X ⟶ c.pt)
+    [LocallyOfFinitePresentation f] [QuasiCompact f] [QuasiSeparated f] :
+    ∃ i : I, Nonempty (Scheme.FinitePresentationDescent.Model (c.π.app i) f) := by
+  have : IsAffine c.pt := Scheme.isAffine_of_isLimit c hc
+  have (i : I) : IsAffine (((Functor.const I).obj c.pt).obj i) :=
+    inferInstanceAs (IsAffine c.pt)
+  have {i j : I} (q : i ⟶ j) : IsAffineHom (D.map q) := inferInstance
+  let F := D.op ⋙ Scheme.Γ
+  let C := Scheme.Γ.mapCocone c.op
+  obtain ⟨hC⟩ := nonempty_isColimit_Γ_mapCocone D c hc
+  obtain ⟨i, Z, g, hfp, hqc, hqs, ⟨e⟩⟩ :=
+    Scheme.exists_model_of_isColimit F C hC (f ≫ c.pt.isoSpec.hom)
+  let := hfp
+  let := hqc
+  let := hqs
+  let M := Scheme.FinitePresentationDescent.Model.ofOverIso g e
+  refine ⟨i.unop, ⟨{
+    X := Z
+    f := g ≫ (D.obj i.unop).isoSpec.inv
+    locallyOfFinitePresentation := inferInstance
+    quasiCompact := inferInstance
+    quasiSeparated := inferInstance
+    p := M.p
+    square := ?_ }⟩⟩
+  refine M.square.of_iso' (.refl _) (.refl _) c.pt.isoSpec
+    (D.obj i.unop).isoSpec ?_ ?_ ?_ ?_
+  · simp
+  · simp
+  · simp [M, Scheme.FinitePresentationDescent.Model.ofOverIso]
+  · simpa [F, C] using Scheme.isoSpec_hom_naturality (c.π.app i.unop)
+
+/-- A finitely presented scheme over a cofiltered limit of qcqs schemes
+with affine transition maps descends to an actual stage, retaining its
+original structural map in the cartesian comparison. -/
+lemma Scheme.exists_model_of_isLimit
+    {I : Type u} [Category.{u} I] [IsCofiltered I]
+    (D : I ⥤ Scheme.{u})
+    [∀ {i j} (q : i ⟶ j), IsAffineHom (D.map q)]
+    [∀ i, CompactSpace (D.obj i)] [∀ i, QuasiSeparatedSpace (D.obj i)]
+    (c : Cone D) (hc : IsLimit c)
+    {X : Scheme.{u}} (f : X ⟶ c.pt)
+    [LocallyOfFinitePresentation f] [QuasiCompact f] [QuasiSeparated f] :
+    ∃ i : I, Nonempty (Scheme.FinitePresentationDescent.Model (c.π.app i) f) := by
+  classical
+  obtain ⟨i₀⟩ := IsCofiltered.nonempty (C := I)
+  have : IsAffineHom (c.π.app i₀) := isAffineHom_π_app D c hc i₀
+  have : QuasiSeparatedSpace c.pt := quasiSeparatedSpace_of_quasiSeparated (c.π.app i₀)
+  have : QuasiSeparatedSpace X := quasiSeparatedSpace_of_quasiSeparated f
+  let g := f ≫ c.π.app i₀
+  let P (U : (D.obj i₀).Opens) : Prop := ∃ i : I,
+    Nonempty (Scheme.FinitePresentationDescent.Model (c.π.app i) ((g ⁻¹ᵁ U).ι ≫ f))
+  have hcomp (U : (D.obj i₀).Opens) (hU : IsCompact (U : Set (D.obj i₀))) :
+      IsCompact ((g ⁻¹ᵁ U : X.Opens) : Set X) :=
+    g.isCompact_preimage hU
+  have haff (U : (D.obj i₀).Opens) (hU : IsAffineOpen U) : P U := by
+    let V := c.π.app i₀ ⁻¹ᵁ U
+    have (j : Over i₀) : IsAffine ((opensDiagram D i₀ U).obj j) := hU.preimage _
+    obtain ⟨j, ⟨M⟩⟩ := Scheme.exists_model_of_isLimit_of_isAffine
+      (opensDiagram D i₀ U) (opensCone D c i₀ U) (isLimitOpensCone D c hc i₀ U) (f ∣_ V)
+    let W := D.map j.hom ⁻¹ᵁ U
+    have : IsAffine W.toScheme := hU.preimage _
+    have H : IsPullback ((opensCone D c i₀ U).π.app j) V.ι W.ι (c.π.app j.left) := by
+      apply IsOpenImmersion.isPullback
+      · simp [V, W, opensCone]
+      · simp [V, W, ← Scheme.Hom.comp_preimage]
+    refine ⟨j.left, ⟨{
+      X := M.X
+      f := M.f ≫ W.ι
+      locallyOfFinitePresentation := inferInstance
+      quasiCompact := inferInstance
+      quasiSeparated := inferInstance
+      p := M.p
+      square := ?_ }⟩⟩
+    simpa only [g, V, Scheme.Hom.comp_preimage, morphismRestrict_ι] using
+      M.square.paste_vert H
+  have htop : P ⊤ := by
+    refine compact_open_induction_on (X := D.obj i₀) ⊤
+      (by simpa using isCompact_univ) (haff ⊥ (isAffineOpen_bot _)) ?_
+    intro U hU V ih
+    obtain ⟨i, ⟨M⟩⟩ := ih
+    obtain ⟨j, ⟨N⟩⟩ := haff V.1 V.2
+    let k := IsCofiltered.min i j
+    let q : k ⟶ i := IsCofiltered.minToLeft i j
+    let r : k ⟶ j := IsCofiltered.minToRight i j
+    let M' := M.rebase D c i (Over.mk q)
+    let N' := N.rebase D c j (Over.mk r)
+    let A := g ⁻¹ᵁ U
+    let B := g ⁻¹ᵁ V.1
+    have hAB : IsCompact ((A ⊓ B : X.Opens) : Set X) :=
+      (hcomp U hU).inter_of_isOpen (hcomp V.1 V.2.isCompact) A.isOpen B.isOpen
+    have : CompactSpace (A ⊓ B).toScheme := isCompact_iff_compactSpace.mp hAB
+    let 𝒰 := Scheme.FinitePresentationDescent.supOpenCover A B
+    let p : ∀ b : Bool, (A ⊓ B).toScheme ⟶ 𝒰.X b :=
+      Bool.rec (X.homOfLE inf_le_left) (X.homOfLE inf_le_right)
+    let t := (A ⊔ B).ι ≫ f
+    let models : ∀ b : Bool,
+        Scheme.FinitePresentationDescent.Model (c.π.app k) (𝒰.f b ≫ t) := by
+      intro b
+      cases b
+      · exact M'.ofIso _ (.refl _) (by simp [𝒰, t, A, B,
+          Scheme.FinitePresentationDescent.supOpenCover])
+      · exact N'.ofIso _ (.refl _) (by simp [𝒰, t, A, B,
+          Scheme.FinitePresentationDescent.supOpenCover])
+    have H : IsPullback (p false) (p true) (𝒰.f false) (𝒰.f true) :=
+      isPullback_opens_inf_le le_sup_left le_sup_right
+    obtain ⟨l, ⟨L⟩⟩ := Scheme.FinitePresentationDescent.Model.exists_of_binary_cover
+      D c hc k 𝒰.X p 𝒰.f (fun x ↦ 𝒰.exists_eq x) H t models
+    exact ⟨l.left, ⟨L⟩⟩
+  obtain ⟨i, ⟨M⟩⟩ := htop
+  exact ⟨i, ⟨M.ofIso f X.topIso.symm (by simp)⟩⟩
 
 end AlgebraicGeometry

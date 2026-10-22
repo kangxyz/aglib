@@ -108,7 +108,12 @@ public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOne
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOneCoefficient
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension.FirstVariable
+public import Aglib.Algebra.Category.Ring.Descent.FiniteEtale
+public import Aglib.Algebra.Category.Ring.Descent.FinitePresentation.Factorization
 public import Aglib.Algebra.Category.Ring.Descent.FinitePresentation.Models
+public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Propagation
+public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Surjectivity
+public import Aglib.Algebra.Category.Ring.FilteredPullback
 public import Aglib.Algebra.Category.Ring.Localization
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients

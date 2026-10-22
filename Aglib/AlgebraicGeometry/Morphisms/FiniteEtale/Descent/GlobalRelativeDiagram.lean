@@ -107,10 +107,7 @@ def localObjectIso {U : Scheme.{u}} (i : U ⟶ X) (A : Over U) (Z : Over T)
     (Over.map (pullback.snd i f)).mapIso α ≪≫
     localTargetSymmetryIso Z (Over.mk (pullback.snd i f))
 
-set_option linter.unusedSectionVars false in
--- Preserve the original auto-included hypotheses and binder order.
--- Keep the original supplied class/data inputs and binder order of this interface.
-@[nolint unusedArguments]
+omit [Surjective f] [Flat f] [QuasiCompact f] in
 theorem localObjectIso_structure {U : Scheme.{u}} (i : U ⟶ X) (A : Over U) (Z : Over T)
     (α : (Over.pullback (pullback.fst i f)).obj A ≅
       (Over.pullback (pullback.snd i f)).obj Z) :

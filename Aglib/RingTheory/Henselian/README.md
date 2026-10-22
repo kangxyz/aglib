@@ -119,3 +119,57 @@ add `HenselianLocalRing R` and return the exact solution in the original
 The characteristic-zero and excellent hypotheses remain separate variants.
 Artin approximation for arbitrary excellent Henselian local rings and a
 general Popescu theorem remain outside these DVR interfaces.
+
+## Algebra maps with prescribed adic precision
+
+[ArtinApproximationAlgHom](ArtinApproximationAlgHom.lean), imported as
+`Aglib.RingTheory.Henselian.ArtinApproximationAlgHom`, converts polynomial
+approximation into approximation of algebra maps.
+`Algebra.FinitePresentation.exists_algHom_with_precision_of_solver` takes an
+explicit finite-polynomial solver, a finitely presented `R`-algebra `C`, a map
+`b : C →ₐ[R] AdicCompletion I R`, and `n : ℕ`. It returns an actual
+`a : C →ₐ[R] R` with
+
+```lean
+(Ideal.Quotient.mkₐ R (I ^ n)).comp a = (AdicCompletion.evalₐ I n).comp b
+```
+
+`Algebra.FinitePresentation.exists_algHom_with_precision_and_error_of_solver`
+additionally assumes `I.FG` and records the error of every element in the
+extension of `I ^ n` to the same completion.
+The solver remains a premise of these general presentation interfaces.
+
+[GeometricLocalArtinApproximationAlgHom](GeometricLocalArtinApproximationAlgHom.lean),
+imported as `Aglib.RingTheory.Henselian.GeometricLocalArtinApproximationAlgHom`,
+discharges that solver for the actual
+`H = Henselization (Localization.AtPrime q)`. In
+`GeometricLocalHenselization`,
+`exists_algHom_ideal_completion_with_precision` applies to a finite-type
+algebra `B : Type v` over any field `k : Type u` and any prime `q`.
+`exists_algHom_ideal_completion_with_precision_of_charZeroDVR` replaces the
+field by a characteristic-zero commutative domain DVR. For every proper
+`I : Ideal H`, finitely presented `H`-algebra `C : Type w`, formal algebra map
+`b`, and `n : ℕ`, each theorem returns the displayed literal equality with
+`R = H`. The coefficient, finite-type algebra and source-algebra universes
+are independent; no domain or flatness hypothesis is imposed on `B`.
+
+## Maps selected by an actual local target
+
+[LocalTarget](LocalTarget.lean), imported as
+`Aglib.RingTheory.Henselian.LocalTarget`, factors any ring map `f : B →+* R`
+into a local target through the localization at the preimage of its maximal
+ideal. `Localization.AtLocalTarget.map_comp_algebraMap` retains `f` exactly.
+For henselian local `R`, `Henselization.AtLocalTarget.map` extends this map
+through the actual henselization, with
+
+```lean
+(Henselization.AtLocalTarget.map f).comp
+  (Henselization.AtLocalTarget.of f) = f
+```
+
+This is `map_comp_of`. The original coefficient map `f` need not itself be
+local. [LocalTargetResidue](LocalTargetResidue.lean) and
+[LocalTargetIdealResidue](LocalTargetIdealResidue.lean) compare the actual
+local and prime-ideal residue maps. These interfaces preserve the chosen
+coefficient map in the [proper geometric-local lifting theorem](../../AlgebraicGeometry/Morphisms/FiniteEtale/ProperGeometricBaseChange.lean)
+and the [general proper henselian comparison](../../AlgebraicGeometry/Morphisms/FiniteEtale/ProperHenselian/README.md).

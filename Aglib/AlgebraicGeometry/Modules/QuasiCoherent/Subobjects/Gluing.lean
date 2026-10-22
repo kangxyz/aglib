@@ -12,8 +12,9 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineS
 /-!
 # Gluing quasicoherent subobjects
 
-On a locally Noetherian scheme the paired-obstruction kernel glues compatible quasicoherent
-subobjects inside a quasicoherent ambient sheaf. The two open immersions need not form a cover.
+The paired-obstruction kernel glues compatible quasicoherent subobjects along quasi-compact
+open immersions inside a quasicoherent ambient sheaf. The immersions need not form a cover.
+The locally Noetherian specialization delegates to the general construction.
 -/
 
 /-!
@@ -36,11 +37,12 @@ attribute [local instance] Abelian.hasFiniteBiproducts
 namespace AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
 /-- Compatible quasicoherent subobjects glue to a global quasicoherent
-subobject. The open immersions need not cover the target. Local noetherianity
-is used only for quasicoherence of the actual direct images. -/
-theorem exists_quasicoherent_glued_subobject
-    {U V X : Scheme.{u}} [IsLocallyNoetherian X]
+subobject. The quasi-compact open immersions need not cover the target.
+No Noetherian hypothesis or finite-type hypothesis on the sheaves is needed. -/
+theorem exists_quasicoherent_glued_subobject_of_quasiCompact
+    {U V X : Scheme.{u}}
     (j : U ⟶ X) (a : V ⟶ X) [IsOpenImmersion j] [IsOpenImmersion a]
+    [QuasiCompact j] [QuasiCompact a]
     {M : X.Modules} {A : U.Modules} {B : V.Modules}
     [M.IsQuasicoherent] [A.IsQuasicoherent] [B.IsQuasicoherent]
     (i : A ⟶ M.restrict j) (k : B ⟶ M.restrict a) [Mono i] [Mono k]
@@ -58,9 +60,9 @@ theorem exists_quasicoherent_glued_subobject
   have : (cokernel i).IsQuasicoherent := quasicoherent_cokernel i
   have : (cokernel k).IsQuasicoherent := quasicoherent_cokernel k
   have : ((pushforward j).obj (cokernel i)).IsQuasicoherent :=
-    quasicoherent_pushforward_open_of_locallyNoetherian j (cokernel i)
+    quasicoherent_pushforward_open j (cokernel i)
   have : ((pushforward a).obj (cokernel k)).IsQuasicoherent :=
-    quasicoherent_pushforward_open_of_locallyNoetherian a (cokernel k)
+    quasicoherent_pushforward_open a (cokernel k)
   have : (((pushforward j).obj (cokernel i)) ⨯
       ((pushforward a).obj (cokernel k))).IsQuasicoherent := (by
       apply (SheafOfModules.isQuasicoherent X.ringCatSheaf).prop_of_isLimit
@@ -87,5 +89,25 @@ theorem exists_quasicoherent_glued_subobject
   refine ⟨kernel l, kernel.ι l, hN, inferInstance, eU, eV, ?_, ?_⟩
   · exact (hU₀.conePointUniqueUpToIso_hom_comp hUl WalkingParallelPair.zero).symm
   · exact (hV₀.conePointUniqueUpToIso_hom_comp hVl WalkingParallelPair.zero).symm
+
+
+/-- Compatible quasicoherent subobjects glue to a global quasicoherent
+subobject. The open immersions need not cover the target. Local noetherianity
+is used only for quasicoherence of the actual direct images. -/
+theorem exists_quasicoherent_glued_subobject
+    {U V X : Scheme.{u}} [IsLocallyNoetherian X]
+    (j : U ⟶ X) (a : V ⟶ X) [IsOpenImmersion j] [IsOpenImmersion a]
+    {M : X.Modules} {A : U.Modules} {B : V.Modules}
+    [M.IsQuasicoherent] [A.IsQuasicoherent] [B.IsQuasicoherent]
+    (i : A ⟶ M.restrict j) (k : B ⟶ M.restrict a) [Mono i] [Mono k]
+    (e : A.restrict (pullback.fst j a) ≅ B.restrict (pullback.snd j a))
+    (he : (restrictFunctor (pullback.fst j a)).map i ≫
+        (overlapRestrictIso j a).hom.app M =
+      e.hom ≫ (restrictFunctor (pullback.snd j a)).map k) :
+    ∃ (N : X.Modules) (s : N ⟶ M), N.IsQuasicoherent ∧ Mono s ∧
+      ∃ (eU : N.restrict j ≅ A) (eV : N.restrict a ≅ B),
+        (restrictFunctor j).map s = eU.hom ≫ i ∧
+        (restrictFunctor a).map s = eV.hom ≫ k := by
+  exact exists_quasicoherent_glued_subobject_of_quasiCompact j a i k e he
 
 end AlgebraicGeometry.Scheme.Modules.QuasiCoherent

@@ -50,7 +50,9 @@ descends to a finitely presented open model at a later stage. The comparison
 is in the over category of the actual limit base. In particular, the open
 need not be affine. -/
 lemma exists_open_model_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X : Scheme.{u}} (f : X ⟶ D.obj i)
     [LocallyOfFinitePresentation f] [QuasiCompact f] [QuasiSeparated f]
@@ -64,7 +66,6 @@ lemma exists_open_model_of_isLimit [IsCofiltered I]
       Nonempty ((Over.pullback (c.π.app j.left)).obj
         (Over.mk (V.ι ≫ pullback.fst (D.map j.hom) f)) ≅
           Over.mk (U.ι ≫ pullback.fst (c.π.app i) f)) := by
-  have {j k : I} (g : j ⟶ k) : IsAffineHom (D.map g) := inferInstance
   obtain ⟨j, V, hV, hVU⟩ := AlgebraicGeometry.exists_preimage_eq
     (baseChangeDiagram D i f) (baseChangeCone D c i f)
     (isLimitBaseChangeCone D c hc i f) U hU
@@ -178,7 +179,9 @@ lemma baseChangeDiagramMapHom_comp_π (D : I ⥤ Scheme.{u}) (c : Cone D) (i : I
 by their literal base changes. The target need only be locally of finite
 type, and the source structural morphism only quasi-compact. -/
 lemma exists_baseChange_map_eq_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
     [QuasiCompact f] [LocallyOfFiniteType g]
@@ -186,7 +189,6 @@ lemma exists_baseChange_map_eq_of_isLimit [IsCofiltered I]
     (hab : (Over.pullback (c.π.app i)).map a = (Over.pullback (c.π.app i)).map b) :
     ∃ j : Over i,
       (Over.pullback (D.map j.hom)).map a = (Over.pullback (D.map j.hom)).map b := by
-  have {j k : I} (q : j ⟶ k) : IsAffineHom (D.map q) := inferInstance
   have ha : a.left ≫ g = f := Over.w a
   have hb : b.left ≫ g = f := Over.w b
   let t : baseChangeDiagram D i f ⟶ (Functor.const (Over i)).obj (D.obj i) :=
@@ -222,7 +224,10 @@ lemma exists_baseChange_map_eq_of_isLimit [IsCofiltered I]
 family of maps between the actual base changes of two finitely presented
 models. -/
 lemma exists_isIso_baseChangeNatTrans_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
     [LocallyOfFinitePresentation f] [QuasiCompact f]
@@ -234,7 +239,6 @@ lemma exists_isIso_baseChangeNatTrans_of_isLimit [IsCofiltered I]
     (he : (baseChangeCone D c i f).π ≫ α =
       (Functor.const (Over i)).map e.hom ≫ (baseChangeCone D c i g).π) :
     ∃ j : Over i, IsIso (α.app j) := by
-  have {j k : I} (q : j ⟶ k) : IsAffineHom (D.map q) := inferInstance
   have hinv : e.inv ≫ pullback.fst (c.π.app i) f = pullback.fst (c.π.app i) g := by
     rw [← hebase, Iso.inv_hom_id_assoc]
   obtain ⟨j, b, hb, hbcomp⟩ := exists_hom_between_baseChanges_of_isLimit
@@ -318,7 +322,10 @@ lemma exists_isIso_baseChangeNatTrans_of_isLimit [IsCofiltered I]
 schemes is an isomorphism at the limit, its literal base change is an
 isomorphism at a later stage. -/
 lemma exists_isIso_baseChange_map_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
     [LocallyOfFinitePresentation f] [QuasiCompact f]
@@ -467,7 +474,10 @@ literal base changes at one later stage. This is an existence corollary;
 it does not assert that a particular choice of the final isomorphism has
 the prescribed limit comparison. -/
 lemma exists_iso_between_baseChanges_of_isLimit [IsCofiltered I]
-    (D : I ⥤ Scheme.{u}) [∀ j, IsAffine (D.obj j)]
+    (D : I ⥤ Scheme.{u})
+    [∀ {j k} (q : j ⟶ k), IsAffineHom (D.map q)]
+    [∀ j, CompactSpace (D.obj j)]
+    [∀ j, QuasiSeparatedSpace (D.obj j)]
     (c : Cone D) (hc : IsLimit c) (i : I)
     {X Y : Scheme.{u}} (f : X ⟶ D.obj i) (g : Y ⟶ D.obj i)
     [LocallyOfFinitePresentation f] [QuasiCompact f] [QuasiSeparated f]

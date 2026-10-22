@@ -116,10 +116,8 @@ def geometricTargetComponentIso (i : 𝒰.I₀) :
       simp only [Category.assoc, pullbackSymmetry_hom_comp_fst_assoc,
         pullbackLeftPullbackSndIso_hom_snd_assoc])
 
-set_option linter.unusedSectionVars false in
--- Preserve the original supplied hypotheses and binder order.
--- Keep the original supplied class/data inputs and binder order of this interface.
-@[nolint unusedArguments]
+omit [Surjective f] [Flat f] [QuasiCompact f] [Small.{u} 𝒰.I₀] [Quiver.IsThin 𝒰.I₀]
+  [∀ i, (baseChange (pullback.fst (𝒰.f i) f)).IsEquivalence] in
 theorem geometricTargetComponentIso_hom_ι (i : 𝒰.I₀) :
     (geometricTargetComponentIso f 𝒰 Y i).hom ≫
       (overCoverCocone Y.obj (targetOpenCover f 𝒰 Y)).ι.app i =
