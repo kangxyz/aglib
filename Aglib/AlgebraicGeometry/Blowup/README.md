@@ -40,6 +40,16 @@ and its actual affine pullbacks. [AffineAtlas](AffineAtlas.md) proves
 `blowupAffineAtlas` with the original saturated chart rings and projection maps.
 All four retained theorem-family interfaces therefore have proved suppliers.
 
+[Integral](Integral.md) treats an integral base `X` and a centre ideal `I`
+whose support misses `genericPoint X`. `blowup_isIntegral` gives integrality
+of the literal `blowupDatum I` source. For any specified `BlowupDatum I`,
+the same condition gives source integrality and dominance of its original map;
+`awayPartialIso` and `birationalOver` retain its actual restriction off the
+centre and its map over `X`. `functionFieldEquiv` has underlying homomorphism
+exactly `Scheme.functionFieldMap` of that blowup map. No Noetherianity,
+regularity or dimension hypothesis is imposed. The closed-point specializations
+retain the necessary condition `x ≠ genericPoint X`.
+
 [AffineCenter](AffineCenter.lean) identifies the actual kernel centre of a
 surjective ring map. [BaseChange](BaseChange.lean), in `Scheme.Blowup.BaseChange`,
 constructs the canonical map for an equality of actual centre ideals and proves

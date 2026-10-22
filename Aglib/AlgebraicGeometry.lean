@@ -41,6 +41,7 @@ public import Aglib.AlgebraicGeometry.Blowup.Construction
 public import Aglib.AlgebraicGeometry.Blowup.CoordinateOverlap
 public import Aglib.AlgebraicGeometry.Blowup.FlatBaseChange
 public import Aglib.AlgebraicGeometry.Blowup.GeneratorAtlas
+public import Aglib.AlgebraicGeometry.Blowup.Integral
 public import Aglib.AlgebraicGeometry.Blowup.Properness
 public import Aglib.AlgebraicGeometry.Blowup.RegularAway
 public import Aglib.AlgebraicGeometry.Blowup.RegularPoint
@@ -999,6 +1000,9 @@ public import Aglib.AlgebraicGeometry.Curves.Picard.PullbackDegree
 public import Aglib.AlgebraicGeometry.Curves.Picard.RationalTrivialization
 public import Aglib.AlgebraicGeometry.Curves.Picard.TorsionSections
 public import Aglib.AlgebraicGeometry.Curves.Picard.TrivializedPower
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.AffineComplement
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.PoleFunctions
+public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Products
 public import Aglib.AlgebraicGeometry.Curves.PointDivisor.Sections
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Birational
 public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Charts
@@ -1030,7 +1034,9 @@ public import Aglib.AlgebraicGeometry.DedekindPointStalk
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Diagrams
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Gluing
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Affine
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Diagrams
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Maps
+public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Objects
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Properties
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Schemes
@@ -1103,10 +1109,12 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ExtensionPoints
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.FunctionField
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Genus.Charts
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GenusOneModel
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Geometry
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GeometryInputs
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.GroupCompatibility
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.InfinityChart
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.IntegralModel
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Integrality
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Normality
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.OrdinaryNodePreparation
@@ -1115,11 +1123,14 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedGroup
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PointedIsomorphism
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Points
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.PoleBasis
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Presentation
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.Projective
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ProjectiveTranslation
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ProjectiveVariableChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ResidueFiber
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ResidueNode
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.ResidueNodeInfinity
+public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SmoothDiscriminant
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SmoothLoci
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodalNormalForm
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodePinching
@@ -1626,6 +1637,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.Field
 public import Aglib.AlgebraicGeometry.Modules.Invertible.FieldMaps
 public import Aglib.AlgebraicGeometry.Modules.Invertible.FinitePresentation
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Frames
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Morphisms
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Pullback
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Gluing.Sections
@@ -2177,6 +2189,9 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.ChartData
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.Coefficients
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteEmbedding.Map
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Flat
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FromSections.Naturality
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.GlobalFunctions
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.GlobalGeneration
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Hom.Coefficients
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Hom.Linear

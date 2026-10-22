@@ -26,10 +26,20 @@ morphism providers.
 | `Aglib.AlgebraicGeometry.Curves.Duality` | Actual canonical Ext/cohomology duality on a smooth curve with a closed projective embedding, retaining coefficient finiteness and original structural field actions. |
 | `Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle` | The proved `LineBundleRiemannRoch` family for actual line bundles, their actual O(D)-transferred degree and H0/H1 finranks. Closed-DVR, dimension, properness and constants hypotheses remain explicit. |
 | `Aglib.AlgebraicGeometry.Curves.PointDivisor.Sections` | Actual powers of the dual ideal of a specified rational point on a smooth proper geometrically connected curve. In genus one, positive powers have H1 zero and H0 dimension n over the original arbitrary field; original inclusions and the first constant-one section are retained. See the [point-divisor guide](PointDivisor/Sections.md). |
+| [PointDivisor.PoleFunctions](PointDivisor/PoleFunctions.md) and [Products](PointDivisor/Products.md) | On the same pointed genus-one curve, normalized field-linear maps send actual point-pole sections into the original function field. Native tensor multiplication agrees with field multiplication for all natural pole bounds, including zero. |
+| [PointDivisor.AffineComplement](PointDivisor/AffineComplement.md) | On an integral smooth proper curve of relative dimension one, a rational function with negative order at the supplied closed point and regular away from it gives a finite projective-line map whose affine-chart inverse image is exactly the original point complement. |
 | `Aglib.AlgebraicGeometry.Curves.RiemannRoch.HighDegreeVanishing` | The literal original high-degree H1 vanishing family on actual line bundles. Smoothness and constants are derived from the original regular proper curve hypotheses. |
 | `Aglib.AlgebraicGeometry.Curves.RiemannHurwitz.CanonicalDegree` | The proved `SmoothCanonicalDegree` family, with actual canonical line bundle and degree `2g - 2`, preserving all original conditions. |
 | `Aglib.AlgebraicGeometry.Curves.RelativePicard.Representability` | Conditional all-field, all-genus representability of the existing normalized degree-zero Picard classes on every test scheme, including explicit local Noetherianity of the representer. |
 | `Aglib.AlgebraicGeometry.Curves.GenusOneGroupLaw` | Exact-origin genus-one group law transported from the selected Picard representing witness; the general representability premise remains explicit. |
+
+The [pointed Weierstrass presentation](../EllipticCurve/Weierstrass/Presentation.md)
+constructs a native equation with nonzero discriminant from `Curve.Properties X`,
+`coherentGenus k X = 1` and the original rational section over `k`. Its actual
+isomorphism over that same arbitrary field preserves the specified section as
+the literal infinity section. The construction uses the original pole sections,
+their products and the affine complement; no group law or Picard representer
+is supplied as a premise.
 
 `ProjectiveLine.Charts` constructs the literal homogeneous Proj over an arbitrary
 commutative ring. `ProjectiveLine.TwoChart` constructs the literal polynomial

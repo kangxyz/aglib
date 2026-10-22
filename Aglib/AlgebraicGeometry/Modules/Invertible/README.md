@@ -60,6 +60,16 @@ and `homOfLocalSections_generator` sends the canonical local generator to
 the supplied target section. Neither a gluing-existence premise nor
 quasicoherence, finiteness or Noetherianity is required.
 
+[Gluing/Frames](Gluing/Frames.md) constructs `LocalFrames.cocycle` from
+actual local unit frames of an arbitrary module sheaf. Its transition unit is
+the coefficient in frame `i` of the original generator of frame `j`; inverse,
+restriction and cocycle equations are supplied by the construction. When the
+frame opens cover the scheme, `LocalFrames.sheafIso` reconstructs the original
+module from that cocycle, and `sheafIso_hom_over` retains every original local
+frame morphism. `overFrameOfChart` transports a frame on an open immersion to
+its actual open range. These interfaces require no quasicoherence, finite cover,
+flatness, field or Noetherian hypothesis.
+
 [Gluing/Pullback](Gluing/Pullback.lean) pulls a glued line module back along a scheme
 morphism `f : X ⟶ Y`. Take cocycles `c` on a cover `U` of `Y` and `c'` on `U'` with
 `f⁻¹(U i) = U' i` and transition units `f^#(c_ij) = c'_ij` (`TransitionPullback`, stable

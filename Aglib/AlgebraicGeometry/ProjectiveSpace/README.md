@@ -30,6 +30,13 @@ using `toSpec.appTop` and `ΓSpecIso.inv`, with its original homogeneous
 constant fraction under the canonical section map. This supplies the
 base-ring normalization used by the Laurent section comparison.
 
+[GlobalFunctions](GlobalFunctions.md) identifies the original structural
+coefficient map `R →+* Γ(ProjectiveSpace R I, ⊤)` as a bijection for a finite
+nonempty coordinate type `I`. `globalFunctionsRingEquiv` has exactly that
+forward map, normalized by `toSpec.appTop` and `ΓSpecIso.inv`. This holds over
+any commutative ring, including the zero ring, with no point of the projective
+scheme chosen.
+
 `Aglib.AlgebraicGeometry.ProjectiveSpace.CoordinateRing` proves the full
 chart calculation over every commutative ring. `coordinateRingEquivPolynomial`
 identifies the native degree-zero localization at `Xᵢ` with the polynomial
@@ -117,6 +124,23 @@ generating section family; it is finite when `ι` is finite. This is global
 generation of the nonnegative twists themselves. `TwistPresentation` below
 supplies finite negative-twist presentations for arbitrary affine-locally
 finite-type coefficients.
+
+[FromSections](FromSections.md) constructs `FromSections.mapOfFiniteFamily`
+from a structural map `p : X ⟶ Spec R`, an actual locally rank-one module `M`
+and a finite family of section morphisms whose coproduct map is epi. The result
+is an actual map `X ⟶ ProjectiveSpace R I`, with the original structural triangle
+and exact coordinate-open inverse images. `twistingPullbackIsoOfFiniteFamily`
+identifies the pullback of the actual `O(1)` with `M`; every pulled native
+coordinate map followed by this isomorphism is its originally prescribed
+section map. No flatness, Noetherianity or quasi-compactness is required.
+
+[Source naturality](FromSections/Naturality.md) retains the original coordinate
+index and constructs the pulled section family under every morphism `g : T ⟶ X`.
+Its generation follows from the original epimorphism, and
+`mapOfFiniteFamily_pullback` gives equality of the composite projective map
+with the map of that actual pulled family. The isomorphic-module version
+retains the specified section-preserving comparison. Each generating family
+has its own `O(1)` comparison from `FromSections` above.
 
 [AwayAlgebra](AwayAlgebra.lean) makes every degree-zero localization
 `HomogeneousLocalization.Away (homogeneousSubmodule ι R) f` an `R`-algebra (`awayAlgebra`: the
