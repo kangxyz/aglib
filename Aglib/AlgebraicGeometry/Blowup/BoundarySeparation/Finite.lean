@@ -12,9 +12,9 @@ public import Aglib.AlgebraicGeometry.Blowup.Construction
 public import Mathlib.AlgebraicGeometry.PullbackCarrier
 
 /-!
-# Separation of finitely many boundary closures
+# Separation of boundary closures for a family of ideals
 
-Blowing up the sum of a finite family of ideals separates the closures of
+Blowing up the sum of an arbitrary family of ideals separates the closures of
 their inverse-image supports away from the centre: these closures have empty
 intersection. This is the topological part of Conrad's Lemma 1.4 needed in
 Lemma 3.2 of `https://virtualmath1.stanford.edu/~conrad/papers/nagatafinal.pdf`.
@@ -32,11 +32,11 @@ universe u v
 
 namespace AlgebraicGeometry.Scheme.Blowup
 
-/-- Affine finite-boundary separation on any actual blowup representative.
+/-- Affine boundary separation for an arbitrary family on any actual blowup representative.
 A denominator from one ideal gives an open chart missing that ideal's
 boundary closure; charts indexed by the whole family cover the blowup. -/
 theorem affine_finite_boundary_separation {A : Type u} [CommRing A]
-    {ι : Type v} [Finite ι] (I : ι → Ideal A)
+    {ι : Type v} (I : ι → Ideal A)
     (B : BlowupDatum (affineCenter A (⨆ i, I i))) :
     (⋂ i, closure (B.map ⁻¹'
       (PrimeSpectrum.zeroLocus (I i : Set A) \
@@ -60,7 +60,7 @@ theorem affine_finite_boundary_separation {A : Type u} [CommRing A]
 
 /-- Blowing up the sum ideal separates the boundary closures outside the
 common centre. No Noetherianity, reducedness, or dimension assumption is used. -/
-theorem finite_boundary_separation {X : Scheme.{u}} {ι : Type v} [Finite ι]
+theorem finite_boundary_separation {X : Scheme.{u}} {ι : Type v}
     (I : ι → X.IdealSheafData) (B : BlowupDatum (⨆ i, I i)) :
     (⋂ i, closure (B.map ⁻¹'
       ((I i).support \ (⨆ j, I j).support))) = ∅ := by

@@ -61,7 +61,7 @@ def overPullbackConeIso (cF : Cone F) (cG : Cone G) (a : cF.pt ⟶ cG.pt)
 /-- A limiting source cone proves that the actual target cone pulled back
 along any stage component is limiting. The target cone itself is not assumed
 limiting. -/
-def isLimit_overPullbackCone [IsCofiltered I]
+def isLimitOverPullbackCone [IsCofiltered I]
     (cF : Cone F) (hcF : IsLimit cF) (cG : Cone G) (a : cF.pt ⟶ cG.pt)
     (H : ∀ i, IsPullback (cF.π.app i) a (α.app i) (cG.π.app i)) (i : I) :
     IsLimit ((Over.pullback (α.app i)).mapCone ((Over.conePost G i).obj cG)) := by

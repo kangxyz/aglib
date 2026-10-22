@@ -28,8 +28,11 @@ namespace AlgebraicGeometry.Scheme.QuasiDomination
 structure CommonEnlargementData {ι : Type v} {A S : Scheme.{u}}
     (X : ι → Scheme.{u}) (p : ∀ i, X i ⟶ S) (pA : A ⟶ S)
     (c : ∀ i, A ⟶ X i) [∀ i, IsOpenImmersion (c i)] where
+  /-- The common Noetherian model of the family. -/
   M : Scheme.{u}
+  /-- The separated, quasi-compact structure morphism to `S`, locally of finite type. -/
   pM : M ⟶ S
+  /-- The schematically dense open immersion of `A` into `M` over `S`. -/
   common : A ⟶ M
   noetherian : IsNoetherian M
   separated : IsSeparated pM
@@ -38,9 +41,14 @@ structure CommonEnlargementData {ι : Type v} {A S : Scheme.{u}}
   common_open : IsOpenImmersion common
   common_dense : IsSchemeTheoreticallyDominant common
   common_over : common ≫ pM = pA
+  /-- The source schemes of the admissible modifications of the original models `X i`. -/
   T : ι → Scheme.{u}
+  /-- The proper morphisms from `T i` to `X i` given by the admissible sequences. -/
   β : ∀ i, T i ⟶ X i
+  /-- The open immersions from `T i` to `M`, whose images jointly cover `M`. -/
   chart : ∀ i, T i ⟶ M
+  /-- The schematically dense open immersions lifting `c i` through `β i` and
+  `common` through `chart i`. -/
   original : ∀ i, A ⟶ T i
   sequence : ∀ i, Blowup.AdmissibleSequence (c i).opensRange (β i)
   proper : ∀ i, IsProper (β i)

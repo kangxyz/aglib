@@ -118,7 +118,7 @@ end LimitGluing
 
 /-- Limits of schemes over a fixed base can be checked on an arbitrary open cover.
 The cone point, all projections and the structural map are retained literally. -/
-def isLimit_of_pullback : IsLimit c where
+def isLimitOfPullback : IsLimit c where
   lift s := LimitGluing.lift 𝒰 D c hc s
   fac s i := LimitGluing.lift_fac 𝒰 D c hc s i
   uniq s m hm := cone_hom_ext_of_pullback 𝒰 D c hc m _ (fun i => by

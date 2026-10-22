@@ -51,14 +51,14 @@ def isLimitCone (hcU : IsLimit cU) (hcV : IsLimit cV) :
   let i : I := Classical.choice IsCofiltered.nonempty
   let c := cone f g cW cU cV f₀ g₀ hf₀ hg₀
   have hlocal : IsLimit ((Over.conePost (diagram f g) i).obj c) := by
-    apply Scheme.Cover.isLimit_of_pullback
+    apply Scheme.Cover.isLimitOfPullback
       (OpenNormalizationGluing.twoChartCover (f.app i) (g.app i))
     intro a
     cases a
-    · exact NatTrans.Equifibered.isLimit_overPullbackCone (left f g)
+    · exact NatTrans.Equifibered.isLimitOverPullbackCone (left f g)
         (left_equifibered f g hg) cU hcU c (pushout.inl f₀ g₀)
         (fun j => cone_inl_isPullback f g cW cU cV f₀ g₀ hf₀ hg₀ j (Hg j)) i
-    · exact NatTrans.Equifibered.isLimit_overPullbackCone (right f g)
+    · exact NatTrans.Equifibered.isLimitOverPullbackCone (right f g)
         (right_equifibered f g hf) cV hcV c (pushout.inr f₀ g₀)
         (fun j => cone_inr_isPullback f g cW cU cV f₀ g₀ hf₀ hg₀ j (Hf j)) i
   exact (Functor.Initial.isLimitWhiskerEquiv (Over.forget i) c)

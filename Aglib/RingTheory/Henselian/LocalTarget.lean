@@ -104,7 +104,7 @@ theorem map_comp_algebraMap :
 theorem map_comp_of : (map f).comp (of f) = f := RingHom.ext (map_of f)
 
 /-- The induced map on actual residue fields retains the original coefficients. -/
-@[simp] theorem residueMap_residue_of (b : B) :
+theorem residueMap_residue_of (b : B) :
     ResidueField.map (map f) (IsLocalRing.residue (Ring f) (of f b)) =
       IsLocalRing.residue R (f b) := by
   rw [ResidueField.map_residue, map_of]

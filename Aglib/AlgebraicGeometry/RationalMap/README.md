@@ -14,6 +14,26 @@ native curve projectivity constructions use this exact field graph.
 The proof reuses the actual schematic-image integrality and the open-section
 restriction theorem from their lower native owners.
 
+## Quasi-domination on target opens
+
+In `Scheme.QuasiDomination`,
+[TargetOpen.Modification](QuasiDomination/TargetOpen/Modification.lean)
+proves `exists_targetOpen_modification` for Noetherian `X`, a quasi-compact
+locally finite-type `f : Y ⟶ X`, opens `U ≤ V`, and an actual section
+`g : U.toScheme ⟶ Y` with `g ≫ f = U.ι`. The image of this section's
+graph is assumed closed over `V`. For each affine open `O` of `Y`, it
+constructs a `V`-admissible sequence `β : B ⟶ X`, an immersion
+`d : D ⟶ B`, and a map `h : D ⟶ O.toScheme`. The original restriction of
+`g` lifts through `D`, and the induced map `D ⟶ B ×[X] O` is a closed
+immersion, with the original projection triangles.
+
+[FiniteTargetCover](QuasiDomination/FiniteTargetCover.lean) proves
+`exists_locallyQuasiFinite_graphImage_modification` under the same
+hypotheses on `X`, `f`, `U`, `V`, `g`, and its graph. It constructs a
+`V`-admissible sequence `β : B ⟶ X` for which the actual map from the
+schematic image of `modifiedGraph U f g hg β` to `B` is locally
+quasi-finite.
+
 ## Denominator and base ideals
 
 [BaseIdeal](BaseIdeal.md), in `Scheme.RationalCoordinates`, starts with a finite

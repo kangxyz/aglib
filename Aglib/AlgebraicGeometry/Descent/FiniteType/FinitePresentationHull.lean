@@ -63,7 +63,7 @@ This uses varying-source separatedness of the actual original-source limit. -/
 theorem exists_separated_finitePresentation_factorization_of_closed
     {X Y S : Scheme.{u}} [CompactSpace Y] [QuasiSeparatedSpace Y]
     [QuasiSeparatedSpace S] (e : X ⟶ Y) [IsClosedImmersion e]
-    (g : Y ⟶ S) [LocallyOfFinitePresentation g] [QuasiCompact g] [QuasiSeparated g]
+    (g : Y ⟶ S) [LocallyOfFinitePresentation g] [QuasiCompact g]
     (f : X ⟶ S) (hef : e ≫ g = f) [IsSeparated f] :
     ∃ (Z : Scheme.{u}) (j : X ⟶ Z) (h : Z ⟶ S),
       CompactSpace Z ∧ QuasiSeparatedSpace Z ∧ IsClosedImmersion j ∧
@@ -87,8 +87,8 @@ theorem exists_separated_finitePresentation_factorization_of_closed
     dsimp [t]
     infer_instance
   have hcompat (J : (IdealSheafData.FiniteTypeSubideal e.ker)ᵒᵖ) : c.π.app J ≫ t.app J = f := by
-    change e.finitePresentationApproximationCone.π.app J ≫
-      (e.finitePresentationApproximationStructure.app J ≫ g) = f
+    change ((e.toImage ≫ IdealSheafData.inclusion J.unop.property.1) ≫
+      (e.finitePresentationApproximationStructure.app J ≫ g) : X ⟶ S) = f
     rw [← Category.assoc, e.finitePresentationApproximationCone_comp, hef]
   let i : (IdealSheafData.FiniteTypeSubideal e.ker)ᵒᵖ := Classical.choice inferInstance
   obtain ⟨J, hJ⟩ := exists_isSeparated_app_of_isLimit_of_quasiSeparatedSpace

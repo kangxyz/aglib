@@ -57,7 +57,7 @@ private lemma lift_congrHom {A B C Z : Scheme.{u}} {a a' : A ⟶ Z} {b b' : B �
 closed graph with immersed domain, preserving the actual original section. -/
 theorem exists_targetOpen_modification
     {X Y : Scheme.{u}} [IsNoetherian X]
-    (f : Y ⟶ X) [IsSeparated f] [QuasiCompact f] [LocallyOfFiniteType f]
+    (f : Y ⟶ X) [QuasiCompact f] [LocallyOfFiniteType f]
     (U V : X.Opens) (hUV : U ≤ V)
     (g : U.toScheme ⟶ Y) (hg : g ≫ f = U.ι)
     (hclosed : IsClosed ((pullback.fst (𝟙 X) f ⁻¹ᵁ V).ι ⁻¹'

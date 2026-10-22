@@ -56,7 +56,7 @@ theorem exists_coherent_subsheaf_restrict_isIso_noetherian
 ambient sheaf on a noetherian scheme. The restriction isomorphism commutes
 with the given inclusion. -/
 theorem affineLocallyFiniteType_subobject_extension_noetherian
-    {U X : Scheme.{u}} [IsNoetherian X] [IsLocallyNoetherian U]
+    {U X : Scheme.{u}} [IsNoetherian X]
     (j : U ⟶ X) [IsOpenImmersion j]
     (M : X.Modules) [M.IsQuasicoherent]
     (A : FiniteTypeSheaves U) (i : A.obj ⟶ M.restrict j) [Mono i] :
@@ -81,9 +81,11 @@ theorem affineLocallyFiniteType_subobject_extension_noetherian
 /-- Every coherent sheaf on an open subscheme of a noetherian scheme is
 the actual restriction of a coherent sheaf on that scheme. -/
 theorem affineLocallyFiniteType_extension
-    {U X : Scheme.{u}} [IsNoetherian X] [IsLocallyNoetherian U]
+    {U X : Scheme.{u}} [IsNoetherian X]
     (j : U ⟶ X) [IsOpenImmersion j] (A : FiniteTypeSheaves U) :
     ∃ B : FiniteTypeSheaves X, Nonempty ((finiteTypeSheavesRestriction j).obj B ≅ A) := by
+  have : A.obj.IsQuasicoherent :=
+    quasicoherent_of_affineCharts A.obj (fun R a _ => (A.property R a).1)
   let M := (pushforward j).obj A.obj
   have : M.IsQuasicoherent := quasicoherent_pushforward_open_of_locallyNoetherian j A.obj
   let e : M.restrict j ≅ A.obj := (restrictFunctorAdjCounitIso j).app A.obj
@@ -93,7 +95,7 @@ theorem affineLocallyFiniteType_extension
 /-- Actual coherent restriction along every open immersion into a
 noetherian scheme is essentially surjective. -/
 instance finiteTypeSheavesRestriction_essSurj
-    {U X : Scheme.{u}} [IsNoetherian X] [IsLocallyNoetherian U]
+    {U X : Scheme.{u}} [IsNoetherian X]
     (j : U ⟶ X) [IsOpenImmersion j] : (finiteTypeSheavesRestriction j).EssSurj where
   mem_essImage A := affineLocallyFiniteType_extension j A
 

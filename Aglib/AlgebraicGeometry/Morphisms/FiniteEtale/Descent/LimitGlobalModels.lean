@@ -40,7 +40,7 @@ theorem exists_cover_of_structured_diagram
     (c : Cone D) (hc : IsLimit c) (i : I)
     (𝒰 : (D.obj i).OpenCover.{u})
     [Category.{u} 𝒰.I₀] [𝒰.LocallyDirected] [Quiver.IsThin 𝒰.I₀] [Finite 𝒰.I₀]
-    [∀ j, CompactSpace (𝒰.X j)] [∀ j, QuasiSeparatedSpace (𝒰.X j)]
+    [∀ j, CompactSpace (𝒰.X j)]
     (Y : FiniteEtale c.pt) (F : 𝒰.I₀ ⥤ Over (D.obj i))
     (n : F ⟶ chartDiagram 𝒰)
     [∀ j, IsFinite (n.app j).left] [∀ j, Etale (n.app j).left]

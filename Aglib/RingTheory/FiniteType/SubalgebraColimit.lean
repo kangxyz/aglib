@@ -94,7 +94,8 @@ def ringCoconeIsColimit : IsColimit (ringCocone R A) := by
 /-- The inclusion of a stage respects the original coefficient algebra map. -/
 @[simp]
 theorem ringCocone_algebraMap (s : Finset A) (r : R) :
-    ((ringCocone R A).ι.app s).hom (algebraMap R (stage R A s) r) =
+    CommRingCat.Hom.hom (S := (ringCocone R A).pt) ((ringCocone R A).ι.app s)
+        (algebraMap R (stage R A s) r) =
       algebraMap R A r := rfl
 
 end Algebra.FiniteTypeSubalgebraLimit

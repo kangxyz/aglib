@@ -23,11 +23,11 @@ universe u v
 
 namespace AlgebraicGeometry.Scheme.Compactification
 
-/-- The canonical finite boundary blowup for actual model projections.
+/-- The canonical boundary blowup for actual model projections.
 Equality of the open domains will be supplied by uniqueness of their closed
 graphs on the original product image. -/
 theorem finite_model_boundary_separation
-    {M : Scheme.{u}} {ι : Type v} [Finite ι]
+    {M : Scheme.{u}} {ι : Type v}
     {Y : ι → Scheme.{u}} (π : ∀ i, M ⟶ Y i)
     (V : ∀ i, (Y i).Opens) (F : ∀ i, Closeds (V i).toScheme)
     (Ω : M.Opens) (hΩ : ∀ i, π i ⁻¹ᵁ V i = Ω)

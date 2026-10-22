@@ -19,7 +19,15 @@ generic points. Neither Noetherianity nor flatness is required.
 
 [Diagrams](Diagrams.lean), imported as
 `Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.Diagrams`, constructs native
-closed-subscheme cones. In `Scheme.ClosedSubscheme`,
+closed-subscheme cones. In `Scheme.ClosedSubscheme`, `cone` and `schemeCone`
+take a diagram `F : J ⥤ Over Y` with closed stage structure maps, an arbitrary
+`f : X ⟶ Y`, and inequalities `(F.obj j).hom.ker ≤ f.ker`. Their cone points
+are `Over.mk f` and `X`, respectively. `cone_π_app_left_hom` identifies every
+projection triangle with `f`. For an ideal diagram, `idealCone` constructs
+the same cone from the equality of its ideal supremum with `f.ker`.
+
+`cone_projection_closed` assumes that `f` is a closed immersion, as do the
+limit constructions `isLimitCone` and `isLimitSchemeCone`.
 `isLimitIdealCone D f hsup` assumes an actual closed immersion `f : X ⟶ Y`
 and an ideal diagram `D : J ⥤ Y.IdealSheafDataᵒᵖ` with
 `(⨆ j, (D.obj j).unop) = f.ker`. The cone is limiting in `Over Y`, and every

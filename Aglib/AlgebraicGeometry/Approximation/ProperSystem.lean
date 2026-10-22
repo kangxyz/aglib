@@ -93,10 +93,10 @@ def ProperFinitePresentationSystem.ofProperStage
         (IsClosedImmersion (c.π.app j.left).left) }
 
 /-- A closed modified stage is proper over the original base, and properness
-descends along the actual proper-surjective modification. -/
+descends along the actual surjective pullback projection. -/
 theorem isProper_of_closed_modified_stage {S : Scheme.{u}}
     {Y W P : Over S} (p : W ⟶ Y) (q : W ⟶ P) (Z : Over Y.left)
-    [IsProper p.left] [Surjective p.left] [IsProper P.hom]
+    [Surjective p.left] [IsProper P.hom]
     [IsSeparated (Z.hom ≫ Y.hom)] [LocallyOfFiniteType (Z.hom ≫ Y.hom)]
     [IsClosedImmersion (pullback.snd Z.hom p.left ≫ q.left)] :
     IsProper (Z.hom ≫ Y.hom) := by

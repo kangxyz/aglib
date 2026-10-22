@@ -120,10 +120,10 @@ lemma imageToBoundaryComplement_ι {X B Z Y : Scheme.{u}}
 
 /-- Actual ideal choice produces the initial proper modification and the
 closed-image factor needed for the two-open argument. The displayed image is
-that of the literal base-changed original immersion. -/
+that of the literal base-changed original morphism. -/
 theorem exists_boundaryComplement_image_factor {X Z Y : Scheme.{u}}
     [IsLocallyNoetherian X] [IsNoetherian Z]
-    (p : Z ⟶ X) (f : Y ⟶ Z) [IsImmersion f] [QuasiCompact f]
+    (p : Z ⟶ X) (f : Y ⟶ Z) [QuasiCompact f]
     (U V : X.Opens) (hUV : U ≤ V) (hfU : Set.range (f ≫ p) ⊆ U)
     (hclosed : IsClosed ((p ⁻¹ᵁ V).ι ⁻¹' Set.range f)) :
     ∃ I₁ I₂ : X.IdealSheafData,

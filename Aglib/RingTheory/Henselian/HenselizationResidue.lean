@@ -36,7 +36,7 @@ def residueEquiv : ResidueField (Henselization R) ≃+* ResidueField R :=
 @[simp] theorem residueEquiv_residue (x : Henselization R) :
     residueEquiv R (IsLocalRing.residue (Henselization R) x) = residue R x := rfl
 
-@[simp] theorem residueEquiv_residue_algebraMap (r : R) :
+theorem residueEquiv_residue_algebraMap (r : R) :
     residueEquiv R (IsLocalRing.residue (Henselization R)
       (algebraMap R (Henselization R) r)) = IsLocalRing.residue R r :=
   RingHom.congr_fun (residue_comp_of R) r

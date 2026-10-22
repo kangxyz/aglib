@@ -23,21 +23,29 @@ namespace AlgebraicGeometry.Scheme.Compactification
 modification theorem. The common open is not asserted to be schematically
 dense in each individual proper model. -/
 structure InitialPatchFamily {X S : Scheme.{u}} (p : X ⟶ S) where
+  /-- One less than the size of the nonempty finite patch index. -/
   n : ℕ
+  /-- The finite open cover of `X` over which the proper maps `q` are isomorphisms. -/
   W : Fin (n + 1) → X.Opens
+  /-- A dense open of `X` contained in every patch `W a`. -/
   U : X.Opens
   dense : Dense (U : Set X)
   le : ∀ a, U ≤ W a
   cover : ∀ x : X, ∃ a, x ∈ W a
+  /-- The proper models over `S`, one for each patch. -/
   C : Fin (n + 1) → Over S
   proper : ∀ a, IsProper (C a).hom
+  /-- The schematically dense open subset of each proper model supporting `q`. -/
   V : ∀ a, (C a).left.Opens
   denseV : ∀ a, Dense (V a : Set (C a).left)
   dominantV : ∀ a, IsSchemeTheoreticallyDominant (V a).ι
+  /-- The proper maps to `X`, restricting to isomorphisms over the patches `W a`. -/
   q : ∀ a, (V a).toScheme ⟶ X
   properQ : ∀ a, IsProper (q a)
   isoQ : ∀ a, IsIso (q a ∣_ W a)
   over : ∀ a, (V a).ι ≫ (C a).hom = q a ≫ p
+  /-- The schematically dominant open immersions lifting the inclusions of `W a` into `X`
+  through `q a`. -/
   s : ∀ a, (W a).toScheme ⟶ (V a).toScheme
   openS : ∀ a, IsOpenImmersion (s a)
   dominantS : ∀ a, IsSchemeTheoreticallyDominant (s a)

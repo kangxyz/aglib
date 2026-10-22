@@ -55,10 +55,16 @@ immersion `e : c.pt ⟶ Y`, and a separated finitely presented `g : Y ⟶ S`
 with `e ≫ g = f`. The diagram and its limit remain premises of this theorem.
 
 [FinitePresentationHull](FinitePresentationHull.lean), imported as
-`Aglib.AlgebraicGeometry.Descent.FiniteType.FinitePresentationHull`, gives the
-underlying `exists_separated_finitePresentation_factorization_of_isLimit`
-with qcqs stages whose integer structural maps are locally finitely
-presented, quasi-compact and quasi-separated. The
+`Aglib.AlgebraicGeometry.Descent.FiniteType.FinitePresentationHull`, proves
+`exists_separated_finitePresentation_factorization_of_closed`. For qcqs
+`Y`, quasi-separated `S`, a closed immersion `e : X ⟶ Y`, and a locally
+finitely presented quasi-compact `g : Y ⟶ S` with `e ≫ g = f` and
+separated `f`, it produces qcqs `Z`, a closed immersion `j : X ⟶ Z`, and
+a separated finitely presented `h : Z ⟶ S` with `j ≫ h = f`.
+
+Its `exists_separated_finitePresentation_factorization_of_isLimit` uses
+qcqs stages whose integer structural maps are locally finitely presented,
+quasi-compact and quasi-separated. The
 [unconditional hull](../../Morphisms/FiniteType/README.md) constructs the
 required arithmetic system for a compact source and removes the supplied
 diagram premise. [Qcqs compactification](../../Compactification/QCQS.md)

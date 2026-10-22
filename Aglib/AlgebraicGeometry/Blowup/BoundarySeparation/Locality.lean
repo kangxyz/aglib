@@ -145,10 +145,10 @@ theorem boundary_separation {X Z : Scheme.{u}} (p : Z ⟶ X)
   exact Set.disjoint_left.mp hsep hz₀ hz₀T
 
 /-- **Conrad's Lemma 1.5, separation conclusion.** The kernel is that of the
-original immersion. The source and its base change may be nonreduced and have
+original morphism. The source and its base change may be nonreduced and have
 arbitrary dimension; the exact squared-ideal containment is retained. -/
 theorem originalDiagram_boundary_separation {X Z Y : Scheme.{u}} (p : Z ⟶ X)
-    (f : Y ⟶ Z) [IsImmersion f] [QuasiCompact f]
+    (f : Y ⟶ Z)
     (U V : X.Opens) (hUV : U ≤ V) (hfU : Set.range (f ≫ p) ⊆ U)
     (I₁ I₂ : X.IdealSheafData)
     (hI₁ : (V : Set X) \ (U : Set X) ⊆ I₁.support)
@@ -178,7 +178,7 @@ theorem originalDiagram_boundary_separation {X Z Y : Scheme.{u}} (p : Z ⟶ X)
 Noetherian base, unchanged over the protected larger open, and separates the
 specified closures in the actual original diagram. -/
 theorem canonical_boundary_separation {X Z Y : Scheme.{u}} [IsLocallyNoetherian X]
-    (p : Z ⟶ X) (f : Y ⟶ Z) [IsImmersion f] [QuasiCompact f]
+    (p : Z ⟶ X) (f : Y ⟶ Z)
     (U V : X.Opens) (hUV : U ≤ V) (hfU : Set.range (f ≫ p) ⊆ U)
     (I₁ I₂ : X.IdealSheafData)
     (hI₁ : (V : Set X) \ (U : Set X) ⊆ I₁.support)

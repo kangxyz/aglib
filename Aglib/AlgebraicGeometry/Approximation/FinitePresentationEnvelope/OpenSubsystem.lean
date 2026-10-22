@@ -135,8 +135,9 @@ def overlapIsLimit : IsLimit P.overlapCone :=
 /-- Original overlap projections commute with the unchanged base inclusion. -/
 @[reassoc (attr := simp)]
 theorem overlapCone_π_inclusion (j : P.Index) :
-    P.overlapCone.π.app j ≫ P.inclusion.app j = W.ι ≫ P.baseCone.π.app j := by
-  simp [overlapCone, inclusion, baseCone, AlgebraicGeometry.opensCone, System.cone]
+    (P.overlapCone.π.app j ≫ (M.diagram.map j.hom ⁻¹ᵁ P.stageOpen).ι :
+      W.toScheme ⟶ M.diagram.obj j.left) = W.ι ≫ P.baseCone.π.app j := by
+  simp [overlapCone, baseCone, AlgebraicGeometry.opensCone, System.cone]
 
 /-- Every transition square of the original open-inclusion diagram is
 cartesian. No separate replacement of the overlap diagram is used. -/

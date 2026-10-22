@@ -40,6 +40,36 @@ and its actual affine pullbacks. [AffineAtlas](AffineAtlas.md) proves
 `blowupAffineAtlas` with the original saturated chart rings and projection maps.
 All four retained theorem-family interfaces therefore have proved suppliers.
 
+[BoundarySeparation.Finite](BoundarySeparation/Finite.lean) proves
+`affine_finite_boundary_separation` and `finite_boundary_separation` for an
+arbitrary indexed family of ideals and a specified blowup of their
+supremum. The closures of the inverse images of
+`(I i).support \ (⨆ j, I j).support` have empty intersection. The affine
+statement uses the corresponding prime-spectrum zero loci over an
+arbitrary commutative ring.
+
+[Global](BoundarySeparation/Global.lean) and
+[Locality](BoundarySeparation/Locality.lean) prove separation in the original
+diagram `Y ⟶ Z ⟶ X`. For maps `f : Y ⟶ Z` and `p : Z ⟶ X`, they retain
+opens `U ≤ V`, `Set.range (f ≫ p) ⊆ U`, the support conditions
+`V \ U ⊆ I₁.support ⊆ Uᶜ` and
+`I₂.support ⊆ I₁.support ∩ Vᶜ`, and the ideal containment
+`I₂.comap p ≤ (I₁ ^ 2).comap p ⊔ f.ker`. A specified blowup of `I₁ ⊔ I₂`
+separates the closure of the transformed image from the pullback of the
+closure of the transformed boundary. `canonical_boundary_separation`
+uses locally Noetherian `X` to obtain the proper canonical blowup, whose
+restriction over `V` is an isomorphism.
+
+[IdealChoice](BoundarySeparation/IdealChoice.lean) constructs these ideals
+when `Z` is Noetherian, `f` is quasi-compact, and its image is closed in
+`p ⁻¹ᵁ V`, retaining `U ≤ V` and `Set.range (f ≫ p) ⊆ U`.
+[ProtectedOpen](BoundarySeparation/ProtectedOpen.lean) then factors the
+actual schematic image of the transformed map through
+`boundaryComplement B.map U V`, preserving the composite of its image
+inclusion with the projection to the blowup.
+These canonical proper-blowup conclusions also assume locally Noetherian
+`X`.
+
 [Integral](Integral.md) treats an integral base `X` and a centre ideal `I`
 whose support misses `genericPoint X`. `blowup_isIntegral` gives integrality
 of the literal `blowupDatum I` source. For any specified `BlowupDatum I`,

@@ -10,8 +10,9 @@ public import Mathlib.AlgebraicGeometry.AffineTransitionLimit
 /-!
 # Descending the quasi-affine overlap in affine-open extension
 
-A quasi-compact quasi-affine open of a qcqs affine-transition limit descends
-to an actual quasi-compact quasi-affine open at a stage. The preimage equality
+A quasi-compact quasi-affine open of an affine-transition limit with
+quasi-separated stages descends to an actual quasi-compact quasi-affine open
+at a stage. The preimage equality
 retains the original open; no independently chosen replacement is used.
 -/
 
@@ -28,12 +29,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 /-- A specified quasi-affine compact open descends as a quasi-affine compact
-open along an actual qcqs affine-transition inverse limit. -/
+open along an actual affine-transition inverse limit with quasi-separated stages. -/
 theorem exists_quasiAffine_open_preimage_eq
     {I : Type u} [Category.{u} I] [IsCofiltered I]
     (D : I ⥤ Scheme.{u})
     [∀ {i j} (g : i ⟶ j), IsAffineHom (D.map g)]
-    [∀ i, CompactSpace (D.obj i)] [∀ i, QuasiSeparatedSpace (D.obj i)]
+    [∀ i, QuasiSeparatedSpace (D.obj i)]
     (c : Cone D) (hc : IsLimit c)
     (W : c.pt.Opens) (hW : IsCompact (W : Set c.pt)) [IsQuasiAffine W.toScheme] :
     ∃ (i : I) (U : (D.obj i).Opens), IsCompact (U : Set (D.obj i)) ∧

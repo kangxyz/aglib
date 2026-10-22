@@ -71,6 +71,8 @@ theorem baseChange_map_range {C D : FiniteEtale Y} (j : C ⟶ D) :
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
+/-- The isomorphism of finite étale `S`-schemes induced by the open immersions `j` and `k`
+with equal ranges. -/
 def coverIsoOfRangeEq {C D P : FiniteEtale S} (j : C ⟶ P) (k : D ⟶ P)
     [IsOpenImmersion j.hom.left] [IsOpenImmersion k.hom.left]
     (h : Set.range j.hom.left = Set.range k.hom.left) : C ≅ D :=
@@ -85,18 +87,23 @@ theorem coverIsoOfRangeEq_hom {C D P : FiniteEtale S} (j : C ⟶ P) (k : D ⟶ P
   apply Over.OverMorphism.ext
   exact IsOpenImmersion.isoOfRangeEq_hom_fac j.hom.left k.hom.left h
 
+/-- The fiber product of two finite étale `Y`-schemes, viewed as a finite étale `Y`-scheme. -/
 abbrev productCover (C D : FiniteEtale Y) : FiniteEtale Y :=
   mk (pullback.fst C.obj.hom D.obj.hom ≫ C.obj.hom)
 
+/-- The first projection from `productCover C D` to `C` over `Y`. -/
 def productFirst (C D : FiniteEtale Y) : productCover C D ⟶ C :=
   ObjectProperty.homMk (Over.homMk (pullback.fst C.obj.hom D.obj.hom) rfl)
 
+/-- The second projection from `productCover C D` to `D` over `Y`. -/
 def productSecond (C D : FiniteEtale Y) : productCover C D ⟶ D :=
   ObjectProperty.homMk (Over.homMk (pullback.snd C.obj.hom D.obj.hom) pullback.condition.symm)
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
+/-- The scheme morphism from the base change of `C` along `i` to `productCover C D`,
+pairing its projection to `C` with `φ` followed by the projection to `D`. -/
 def residueGraphBase {C D : FiniteEtale Y}
     (φ : (baseChange i).obj C ⟶ (baseChange i).obj D) :
     ((baseChange i).obj C).obj.left ⟶ (productCover C D).obj.left :=
@@ -125,6 +132,8 @@ theorem residueGraphBase_second {C D : FiniteEtale Y}
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
+/-- The graph of `φ` as a morphism to the base change of `productCover C D` along `i`,
+in the finite étale category over `S`. -/
 def residueGraph {C D : FiniteEtale Y}
     (φ : (baseChange i).obj C ⟶ (baseChange i).obj D) :
     (baseChange i).obj C ⟶ (baseChange i).obj (productCover C D) :=

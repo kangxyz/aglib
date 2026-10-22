@@ -35,6 +35,14 @@ the envelope and eventual closedness of the modified sources yield a proper
 stage. `ProperFinitePresentationSystem.ofProperStage` takes the cofinal tail
 below that stage, keeping the original point and limit proof.
 
+The lower `isProper_of_closed_modified_stage` in `ProperSystem` takes
+`Y W P : Over S`, maps `p : W ⟶ Y` and `q : W ⟶ P`, and
+`Z : Over Y.left`. It assumes that `p.left` is surjective, `P.hom` is
+proper, and the original structure map `Z.hom ≫ Y.hom` is separated and
+locally of finite type. If the modified map
+`pullback.snd Z.hom p.left ≫ q.left` is a closed immersion, the original
+structure map `Z.hom ≫ Y.hom` is proper.
+
 [Proper](../Proper.lean) exposes
 `nonempty_properSystem_of_closed_finitePresentation_envelope` when the closed
 envelope is supplied. The theorem in `FiniteType` constructs that envelope

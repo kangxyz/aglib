@@ -64,13 +64,17 @@ def productDiagram : Over i ⥤ Scheme.{u} where
 
 @[reassoc (attr := simp)]
 lemma productDiagram_map_fst {j k : Over i} (q : j ⟶ k) :
-    (productDiagram D t i U V).map q ≫ pullback.fst _ _ =
+    (productDiagram D t i U V).map q ≫
+        pullback.fst (Z := S) ((D.map k.hom ⁻¹ᵁ U).ι ≫ t.app k.left)
+          ((D.map k.hom ⁻¹ᵁ V).ι ≫ t.app k.left) =
       pullback.fst _ _ ≫ (opensDiagram D i U).map q :=
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
 lemma productDiagram_map_snd {j k : Over i} (q : j ⟶ k) :
-    (productDiagram D t i U V).map q ≫ pullback.snd _ _ =
+    (productDiagram D t i U V).map q ≫
+        pullback.snd (Z := S) ((D.map k.hom ⁻¹ᵁ U).ι ≫ t.app k.left)
+          ((D.map k.hom ⁻¹ᵁ V).ι ≫ t.app k.left) =
       pullback.snd _ _ ≫ (opensDiagram D i V).map q :=
   pullback.lift_snd _ _ _
 
@@ -79,11 +83,11 @@ def overlapMap : opensDiagram D i (U ⊓ V) ⟶ productDiagram D t i U V where
   app j := toProduct (t.app j.left) (D.map j.hom ⁻¹ᵁ U) (D.map j.hom ⁻¹ᵁ V)
   naturality j k q := by
     apply pullback.hom_ext
-    · simp only [Category.assoc, productDiagram_map_fst]
+    · simp only [Category.assoc, chartStructure_app, productDiagram_map_fst]
       simpa only [chartStructure_app, chartInclusion, toProduct_fst,
         toProduct_fst_assoc] using (chartInclusion D i (U := U ⊓ V) (V := U)
           inf_le_left).naturality q
-    · simp only [Category.assoc, productDiagram_map_snd]
+    · simp only [Category.assoc, chartStructure_app, productDiagram_map_snd]
       simpa only [chartStructure_app, chartInclusion, toProduct_snd,
         toProduct_snd_assoc] using (chartInclusion D i (U := U ⊓ V) (V := V)
           inf_le_right).naturality q

@@ -34,7 +34,7 @@ namespace AlgebraicGeometry.Scheme.QuasiDomination
 locally quasi-finite after an actual protected admissible sequence. -/
 theorem exists_locallyQuasiFinite_graphImage_modification
     {X Y : Scheme.{u}} [IsNoetherian X]
-    (f : Y ⟶ X) [IsSeparated f] [QuasiCompact f] [LocallyOfFiniteType f]
+    (f : Y ⟶ X) [QuasiCompact f] [LocallyOfFiniteType f]
     (U V : X.Opens) (hUV : U ≤ V)
     (g : U.toScheme ⟶ Y) (hg : g ≫ f = U.ι)
     (hclosed : IsClosed ((pullback.fst (𝟙 X) f ⁻¹ᵁ V).ι ⁻¹'

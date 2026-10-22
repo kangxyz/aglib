@@ -83,7 +83,7 @@ def map : Ring R →+* R :=
     (fun s => notMem_maximalIdeal.mp
       (fun hs => s.property (residuePrime_le_prime R hs)))
 
-@[simp] theorem map_algebraMap (n : ℤ) :
+theorem map_algebraMap (n : ℤ) :
     map R (algebraMap ℤ (Ring R) n) = n :=
   IsLocalization.lift_eq _ n
 

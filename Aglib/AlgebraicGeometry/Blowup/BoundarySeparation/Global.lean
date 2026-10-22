@@ -181,12 +181,12 @@ private lemma affineCenter_pow_eq (I : Ideal A) (n : ℕ) :
     spectrumIdeal_pow_eq, spectrumIdeal_affineCenter_eq]
 
 /-- Conrad's Lemma 1.5 for the original diagram with affine `X` and `Z`.
-The source `Y` need not be affine. The old schematic image is represented
-by the actual native kernel `f.ker`, and the new image is the actual
-base-changed source, not the base change of the old schematic image.
+The source `Y` need not be affine, and `f` is arbitrary. The containment uses
+the original native kernel `f.ker`, while the separation conclusion uses the
+actual base-changed source.
 No Noetherian, reducedness, dimension, or flatness assumption is used. -/
 theorem affine_originalDiagram_boundary_separation {Y : Scheme.{u}}
-    (f : Y ⟶ Spec (.of R)) [IsImmersion f] [QuasiCompact f]
+    (f : Y ⟶ Spec (.of R))
     (U V : (Spec (.of A)).Opens) (hUV : U ≤ V)
     (hfU : ∀ y, (f ≫ Spec.map (CommRingCat.ofHom (algebraMap A R))) y ∈ U)
     (I₁ I₂ : Ideal A)

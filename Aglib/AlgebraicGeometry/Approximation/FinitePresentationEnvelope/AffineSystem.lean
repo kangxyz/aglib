@@ -57,7 +57,7 @@ theorem affineArithmeticStage_finiteType (A : CommRingCat.{u}) (s : Finset A) :
   exact ha
 
 /-- Transport the universal property before specializing either cone or isomorphism. -/
-def isLimit_extendByIso {C J : Type*} [Category C] [Category J]
+def isLimitExtendByIso {C J : Type*} [Category C] [Category J]
     {D : J ⥤ C} (c : Cone D) (hc : IsLimit c) {Z : C} (e : Z ≅ c.pt) :
     IsLimit (c.extend e.hom) :=
   hc.ofIsoLimit (c.extendIso e.symm)
@@ -69,7 +69,7 @@ def affineSystemCone (X : Scheme.{u}) [IsAffine X] :
 
 /-- The original affine scheme is the limit of the arithmetic subalgebra diagram. -/
 def affineSystemConeIsLimit (X : Scheme.{u}) [IsAffine X] : IsLimit (affineSystemCone X) :=
-  isLimit_extendByIso (affineArithmeticCone Γ(X, ⊤))
+  isLimitExtendByIso (affineArithmeticCone Γ(X, ⊤))
     (affineArithmeticIsLimit Γ(X, ⊤)) X.isoSpec
 
 /-- Every affine scheme has an actual small arithmetic approximation system. -/

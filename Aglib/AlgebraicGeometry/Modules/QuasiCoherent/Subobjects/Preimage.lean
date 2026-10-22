@@ -66,7 +66,7 @@ theorem quasicoherent_subobject_preimage_of_quasiCompact
 /-- The quasicoherent preimage kernel of an actual coherent open subsheaf.
 No finite generation of the ambient module sheaf is assumed. -/
 theorem quasicoherent_subobject_preimage
-    {U X : Scheme.{u}} [IsLocallyNoetherian X] [IsLocallyNoetherian U]
+    {U X : Scheme.{u}} [IsLocallyNoetherian X]
     (j : U ⟶ X) [IsOpenImmersion j] (M : X.Modules) [M.IsQuasicoherent]
     (A : FiniteTypeSheaves U) (i : A.obj ⟶ M.restrict j) [Mono i] :
     ∃ (K : X.Modules) (s : K ⟶ M), K.IsQuasicoherent ∧ Mono s ∧

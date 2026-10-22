@@ -27,7 +27,7 @@ universe u
 /-- The single-affine extension step of absolute arithmetic approximation,
 with the original union as the literal limiting scheme. -/
 theorem nonempty_system_of_affine_open_union
-    {X : Scheme.{u}} [CompactSpace X] [QuasiSeparatedSpace X]
+    {X : Scheme.{u}} [QuasiSeparatedSpace X]
     (U V : X.Opens) (hU : IsAffineOpen U) (hV : IsCompact (V : Set X))
     (hcover : U ⊔ V = ⊤) (M : System V.toScheme) : Nonempty (System X) := by
   let : IsAffine U.toScheme := hU

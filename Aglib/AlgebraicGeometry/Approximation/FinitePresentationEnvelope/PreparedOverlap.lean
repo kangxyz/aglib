@@ -72,7 +72,11 @@ theorem inclusion_cone (j : P.Index) :
       P.subsystem.overlapCone.π.app j.left) ≫ P.subsystem.inclusion.app j.left =
     ((OpenUnionCoordinates.overlapIso U V).inv ≫ (OpenUnionCoordinates.overlap U V).ι) ≫
       P.subsystem.baseCone.π.app j.left
-  rw [Category.assoc, P.subsystem.overlapCone_π_inclusion, Category.assoc]
+  exact (Category.assoc _ _ _).trans
+    ((congrArg (fun f : (OpenUnionCoordinates.overlap U V).toScheme ⟶
+        M.diagram.obj j.left.left ↦ (OpenUnionCoordinates.overlapIso U V).inv ≫ f)
+      (P.subsystem.overlapCone_π_inclusion j.left)).trans
+        (Category.assoc _ _ _).symm)
 
 /-- The original second-chart cone squares remain cartesian after the actual
 image isomorphism and the cofinal tail are applied. -/

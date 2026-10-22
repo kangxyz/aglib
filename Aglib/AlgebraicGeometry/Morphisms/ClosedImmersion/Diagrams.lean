@@ -35,9 +35,9 @@ namespace AlgebraicGeometry.Scheme.ClosedSubscheme
 
 variable {J : Type v} [Category.{w} J] {X Y : Scheme.{u}}
 
-/-- A closed subscheme contained in every member of a diagram gives its canonical cone.
+/-- A morphism whose kernel contains every diagram ideal gives its canonical cone.
 The point is the original arrow `f`, not a chosen isomorphic closed subscheme. -/
-def cone (F : J ⥤ Over Y) (f : X ⟶ Y) [IsClosedImmersion f]
+def cone (F : J ⥤ Over Y) (f : X ⟶ Y)
     [∀ j, IsClosedImmersion (F.obj j).hom]
     (h : ∀ j, (F.obj j).hom.ker ≤ f.ker) : Cone F where
   pt := Over.mk f
@@ -49,8 +49,8 @@ def cone (F : J ⥤ Over Y) (f : X ⟶ Y) [IsClosedImmersion f]
         simp }
 
 /-- The canonical projections retain the original structural map. -/
-@[reassoc (attr := simp)]
-theorem cone_π_app_left_hom (F : J ⥤ Over Y) (f : X ⟶ Y) [IsClosedImmersion f]
+@[reassoc]
+theorem cone_π_app_left_hom (F : J ⥤ Over Y) (f : X ⟶ Y)
     [∀ j, IsClosedImmersion (F.obj j).hom]
     (h : ∀ j, (F.obj j).hom.ker ≤ f.ker) (j : J) :
     ((cone F f h).π.app j).left ≫ (F.obj j).hom = f :=
@@ -89,7 +89,7 @@ def isLimitCone (F : J ⥤ Over Y) (f : X ⟶ Y) [IsClosedImmersion f]
       Over.homMk_left, IsClosedImmersion.lift_fac] using Over.w m
 
 /-- Forgetting the over structure retains the original limiting scheme and actual projections. -/
-def schemeCone (F : J ⥤ Over Y) (f : X ⟶ Y) [IsClosedImmersion f]
+def schemeCone (F : J ⥤ Over Y) (f : X ⟶ Y)
     [∀ j, IsClosedImmersion (F.obj j).hom]
     (h : ∀ j, (F.obj j).hom.ker ≤ f.ker) : Cone (F ⋙ Over.forget Y) :=
   (Over.forget Y).mapCone (cone F f h)
@@ -118,8 +118,8 @@ instance diagram_map_closed (F : J ⥤ Over Y)
     infer_instance
   exact IsClosedImmersion.of_comp_isClosedImmersion _ (F.obj j).hom
 
-/-- An ideal supremum identifies the original closed immersion as a native limiting cone. -/
-def idealCone (D : J ⥤ Y.IdealSheafDataᵒᵖ) (f : X ⟶ Y) [IsClosedImmersion f]
+/-- An ideal supremum gives the canonical native cone on the original morphism. -/
+def idealCone (D : J ⥤ Y.IdealSheafDataᵒᵖ) (f : X ⟶ Y)
     (hsup : (⨆ j, (D.obj j).unop) = f.ker) : Cone (idealDiagram D) :=
   cone (idealDiagram D) f (fun j => by
     change (D.obj j).unop.subschemeι.ker ≤ f.ker

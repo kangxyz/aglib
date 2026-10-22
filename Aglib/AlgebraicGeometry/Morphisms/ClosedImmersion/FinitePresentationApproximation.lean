@@ -61,8 +61,8 @@ def finitePresentationApproximationCone : Cone e.finitePresentationApproximation
 @[reassoc (attr := simp)]
 lemma finitePresentationApproximationCone_comp
     (J : (IdealSheafData.FiniteTypeSubideal e.ker)ᵒᵖ) :
-    e.finitePresentationApproximationCone.π.app J ≫
-      e.finitePresentationApproximationStructure.app J = e := by
+    ((e.toImage ≫ IdealSheafData.inclusion J.unop.property.1) ≫
+      e.finitePresentationApproximationStructure.app J : X ⟶ Y) = e := by
   change (e.toImage ≫ IdealSheafData.inclusion J.unop.property.1) ≫
     J.unop.val.subschemeι = e
   rw [Category.assoc, IdealSheafData.inclusion_subschemeι]

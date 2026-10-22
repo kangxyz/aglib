@@ -46,7 +46,7 @@ theorem restrictIsoOfComapEqTop_hom (U : X.Opens) (hI : I.comap U.ι = ⊤) :
     (B.restrictIsoOfComapEqTop U hI).hom = B.map ∣_ U := rfl
 
 /-- The protected-open identification commutes with the ambient structural map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem restrictIsoOfComapEqTop_hom_ι (U : X.Opens) (hI : I.comap U.ι = ⊤) :
     (B.restrictIsoOfComapEqTop U hI).hom ≫ U.ι = (B.map ⁻¹ᵁ U).ι ≫ B.map :=
   morphismRestrict_ι B.map U

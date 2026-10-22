@@ -61,22 +61,28 @@ def productCone : Cone (productDiagram D t i U V) where
     (by simpa using (chartCone_structure D t c h hcompat i V j).symm)
   π.naturality j k q := by
     apply pullback.hom_ext
-    · simp only [Functor.const_obj_map, Category.assoc,
+    · simp only [Functor.const_obj_map, Category.assoc, chartStructure_app,
         productDiagram_map_fst, pullback.map, pullback.lift_fst, pullback.lift_fst_assoc]
       exact congrArg (fun z ↦ pullback.fst _ _ ≫ z) ((opensCone D c i U).w q).symm
-    · simp only [Functor.const_obj_map, Category.assoc,
+    · simp only [Functor.const_obj_map, Category.assoc, chartStructure_app,
         productDiagram_map_snd, pullback.map, pullback.lift_snd, pullback.lift_snd_assoc]
       exact congrArg (fun z ↦ pullback.snd _ _ ≫ z) ((opensCone D c i V).w q).symm
 
 @[reassoc (attr := simp)]
 lemma productCone_π_fst (j : Over i) :
-    (productCone D t c h hcompat i U V).π.app j ≫ pullback.fst _ _ =
+    ((productCone D t c h hcompat i U V).π.app j ≫
+        pullback.fst (Z := S) ((D.map j.hom ⁻¹ᵁ U).ι ≫ t.app j.left)
+          ((D.map j.hom ⁻¹ᵁ V).ι ≫ t.app j.left) :
+      (productCone D t c h hcompat i U V).pt ⟶ (D.map j.hom ⁻¹ᵁ U).toScheme) =
       pullback.fst _ _ ≫ (opensCone D c i U).π.app j :=
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
 lemma productCone_π_snd (j : Over i) :
-    (productCone D t c h hcompat i U V).π.app j ≫ pullback.snd _ _ =
+    ((productCone D t c h hcompat i U V).π.app j ≫
+        pullback.snd (Z := S) ((D.map j.hom ⁻¹ᵁ U).ι ≫ t.app j.left)
+          ((D.map j.hom ⁻¹ᵁ V).ι ≫ t.app j.left) :
+      (productCone D t c h hcompat i U V).pt ⟶ (D.map j.hom ⁻¹ᵁ V).toScheme) =
       pullback.snd _ _ ≫ (opensCone D c i V).π.app j :=
   pullback.lift_snd _ _ _
 
@@ -105,9 +111,11 @@ def isLimitProductCone [IsCofiltered I] (hc : IsLimit c) :
   refine { lift := l, fac := ?_, uniq := ?_ }
   · intro s j
     apply pullback.hom_ext
-    · simp only [Category.assoc, productCone_π_fst, l, pullback.lift_fst_assoc]
+    · simp only [Category.assoc, chartStructure_app, productCone_π_fst, l,
+        pullback.lift_fst_assoc]
       exact hU.fac (sU s) j
-    · simp only [Category.assoc, productCone_π_snd, l, pullback.lift_snd_assoc]
+    · simp only [Category.assoc, chartStructure_app, productCone_π_snd, l,
+        pullback.lift_snd_assoc]
       exact hV.fac (sV s) j
   · intro s m hm
     apply pullback.hom_ext
@@ -116,7 +124,8 @@ def isLimitProductCone [IsCofiltered I] (hc : IsLimit c) :
       calc
         (m ≫ pullback.fst _ _) ≫ (opensCone D c i U).π.app j =
             (m ≫ (productCone D t c h hcompat i U V).π.app j) ≫
-              pullback.fst _ _ := by simp only [Category.assoc, productCone_π_fst]
+              pullback.fst _ _ := by
+                simp only [Category.assoc, chartStructure_app, productCone_π_fst]
         _ = s.π.app j ≫ pullback.fst _ _ := by rw [hm]
         _ = (l s ≫ pullback.fst _ _) ≫ (opensCone D c i U).π.app j := by
           simp only [l, pullback.lift_fst]
@@ -126,7 +135,8 @@ def isLimitProductCone [IsCofiltered I] (hc : IsLimit c) :
       calc
         (m ≫ pullback.snd _ _) ≫ (opensCone D c i V).π.app j =
             (m ≫ (productCone D t c h hcompat i U V).π.app j) ≫
-              pullback.snd _ _ := by simp only [Category.assoc, productCone_π_snd]
+              pullback.snd _ _ := by
+                simp only [Category.assoc, chartStructure_app, productCone_π_snd]
         _ = s.π.app j ≫ pullback.snd _ _ := by rw [hm]
         _ = (l s ≫ pullback.snd _ _) ≫ (opensCone D c i V).π.app j := by
           simp only [l, pullback.lift_snd]
@@ -143,12 +153,12 @@ lemma overlapLimitMap_comp_π (j : Over i) :
         (productCone D t c h hcompat i U V).π.app j =
       (opensCone D c i (U ⊓ V)).π.app j ≫ (overlapMap D t i U V).app j := by
   apply pullback.hom_ext
-  · simp only [Category.assoc, productCone_π_fst, overlapMap,
+  · simp only [Category.assoc, chartStructure_app, productCone_π_fst, overlapMap,
       overlapLimitMap, toProduct_fst_assoc]
     apply (cancel_mono (D.map j.hom ⁻¹ᵁ U).ι).mp
     simp [opensCone, Scheme.Hom.resLE_comp_ι]
     rfl
-  · simp only [Category.assoc, productCone_π_snd, overlapMap,
+  · simp only [Category.assoc, chartStructure_app, productCone_π_snd, overlapMap,
       overlapLimitMap, toProduct_snd_assoc]
     apply (cancel_mono (D.map j.hom ⁻¹ᵁ V).ι).mp
     simp [opensCone, Scheme.Hom.resLE_comp_ι]

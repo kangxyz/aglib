@@ -45,7 +45,7 @@ namespace AlgebraicGeometry.Scheme.Modules.Coherent
 scheme extends to a coherent subobject of its actual quasicoherent ambient. -/
 theorem affineLocallyFiniteType_subobject_extension_affine
     (R : CommRingCat.{u}) [IsNoetherianRing R]
-    {U : Scheme.{u}} [IsLocallyNoetherian U]
+    {U : Scheme.{u}}
     (j : U ⟶ Spec R) [IsOpenImmersion j]
     (M : (Spec R).Modules) [M.IsQuasicoherent]
     (A : FiniteTypeSheaves U) (a : A.obj ⟶ M.restrict j) [Mono a] :

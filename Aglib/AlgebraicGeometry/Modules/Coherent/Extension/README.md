@@ -17,6 +17,11 @@ The coherent interpretation is guarded by local Noetherianity.
   pushed-forward cokernel; the locally Noetherian theorem provides it. No whole-scheme
   quasi-compactness premise is needed for this fixed coherent ambient object.
 
+The affine and Noetherian extension theorems take an arbitrary open immersion
+`j : U ⟶ X` into their Noetherian target. Local Noetherianity of `U` follows
+from these hypotheses. `finiteTypeSheavesRestriction_essSurj` gives essential
+surjectivity of the native finite-type sheaf restriction for Noetherian `X`.
+
 The lower [affine finite-type approximation](../../QuasiCoherent/FiniteType/Extension/README.md)
 works over arbitrary commutative rings. [Localization](../Localization/README.md) consumes
 the actual extension maps and support denominators.

@@ -28,6 +28,15 @@ systems with their actual overlaps, and the top-open isomorphism returns the
 cone to the original scheme. The existence theorem supplies this process;
 `System` itself is only its data interface.
 
+[AffineExtension](AffineExtension.lean) proves
+`nonempty_system_of_affine_open_union` for a quasi-separated `X`, an affine
+open `U`, and a compact open `V` with `U ⊔ V = ⊤`. It extends the supplied
+`System V.toScheme` to a system on the original `X`.
+[Overlap](Overlap.lean) proves `exists_quasiAffine_open_preimage_eq` for a
+cofiltered limit with affine transitions and quasi-separated stages. A
+specified compact quasi-affine open `W` of the limit is the exact inverse
+image `c.π.app i ⁻¹ᵁ U = W` of a compact quasi-affine open at some stage.
+
 ## Closed envelopes over an affine base
 
 ```lean

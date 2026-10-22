@@ -119,7 +119,7 @@ theorem restrictIso_hom (BI : BlowupDatum I) (U : X.Opens)
     (hI : I.comap U.ι = ⊤) (hJ : J.comap U.ι = ⊤) :
     (restrictIso BI U hI hJ).hom = map BI J ∣_ U := rfl
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem restrictIso_hom_ι (BI : BlowupDatum I) (U : X.Opens)
     (hI : I.comap U.ι = ⊤) (hJ : J.comap U.ι = ⊤) :
     (restrictIso BI U hI hJ).hom ≫ U.ι = (map BI J ⁻¹ᵁ U).ι ≫ map BI J :=

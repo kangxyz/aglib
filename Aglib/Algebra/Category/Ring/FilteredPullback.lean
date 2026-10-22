@@ -43,13 +43,13 @@ def ringDiagram : I ⥤ CommRingCat.{u} where
       simp [pullback.map, Functor.map_comp, pullback.lift_fst, pullback.lift_snd,
         pullback.lift_snd_assoc]
 
-@[reassoc (attr := simp)]
+@[simp, reassoc]
 lemma ringDiagram_map_fst {i j : I} (f : i ⟶ j) :
     (ringDiagram c s).map f ≫ pullback.fst s (c.ι.app j) =
       pullback.fst s (c.ι.app i) := by
   simp [ringDiagram, pullback.map, pullback.lift_fst]
 
-@[reassoc (attr := simp)]
+@[simp, reassoc]
 lemma ringDiagram_map_snd {i j : I} (f : i ⟶ j) :
     (ringDiagram c s).map f ≫ pullback.snd s (c.ι.app j) =
       pullback.snd s (c.ι.app i) ≫ F.map f := by

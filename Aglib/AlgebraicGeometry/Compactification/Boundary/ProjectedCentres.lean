@@ -46,7 +46,7 @@ upstairs boundary separation and uniform control for every subset `D`.
 The common open `Ω` is retained as an actual unit locus of the upstairs
 centre, so any original source inside it lifts unchanged. -/
 theorem exists_projected_boundary_centres
-    {M : Scheme.{u}} [IsNoetherian M] {ι : Type v} [Finite ι]
+    {M : Scheme.{u}} [IsNoetherian M] {ι : Type v}
     {Y : ι → Scheme.{u}} [∀ i, IsNoetherian (Y i)] (π : ∀ i, M ⟶ Y i)
     (V : ∀ i, (Y i).Opens) (F : ∀ i, Closeds (V i).toScheme)
     (Ω : M.Opens) (hΩ : ∀ i, π i ⁻¹ᵁ V i = Ω)

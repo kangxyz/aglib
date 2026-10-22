@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.PowerContainment
 /-!
 # Actual boundary ideals from relative closedness
 
-For a quasi-compact immersion whose image is closed over the larger protected
+For a quasi-compact morphism whose image is closed over the larger protected
 open, the ideals in Conrad's boundary-separation argument can be constructed.
 The first ideal is the vanishing ideal of the closure of the protected boundary.
 The second is a positive power of the vanishing ideal of the part of that
@@ -30,7 +30,7 @@ namespace AlgebraicGeometry.Scheme.Blowup
 boundary separation, including the containment in the original kernel plus the
 square of the first ideal. Only the ambient scheme `Z` must be Noetherian. -/
 theorem exists_boundary_ideals {X Z Y : Scheme.{u}} [IsNoetherian Z]
-    (p : Z ⟶ X) (f : Y ⟶ Z) [IsImmersion f] [QuasiCompact f]
+    (p : Z ⟶ X) (f : Y ⟶ Z) [QuasiCompact f]
     (U V : X.Opens) (_hUV : U ≤ V) (hfU : Set.range (f ≫ p) ⊆ U)
     (hclosed : IsClosed ((p ⁻¹ᵁ V).ι ⁻¹' Set.range f)) :
     ∃ I₁ I₂ : X.IdealSheafData,
@@ -86,11 +86,11 @@ theorem exists_boundary_ideals {X Z Y : Scheme.{u}} [IsNoetherian Z]
 
 /-- Actual ideal choice and the canonical proper boundary blowup, with no
 ideal-containment supplier. The relative closedness hypothesis concerns the
-image of the original immersion over `V`, not an asserted base-change identity
+image of the original morphism over `V`, not an asserted base-change identity
 for schematic image. -/
 theorem exists_canonical_boundary_separation {X Z Y : Scheme.{u}}
     [IsLocallyNoetherian X] [IsNoetherian Z]
-    (p : Z ⟶ X) (f : Y ⟶ Z) [IsImmersion f] [QuasiCompact f]
+    (p : Z ⟶ X) (f : Y ⟶ Z) [QuasiCompact f]
     (U V : X.Opens) (hUV : U ≤ V) (hfU : Set.range (f ≫ p) ⊆ U)
     (hclosed : IsClosed ((p ⁻¹ᵁ V).ι ⁻¹' Set.range f)) :
     ∃ I₁ I₂ : X.IdealSheafData,
