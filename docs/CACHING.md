@@ -77,9 +77,8 @@ Prepare the intended dependency revisions and matching toolchain before
 validation. `lake update` and Mathlib's post-update cache hook are mutating
 preparation operations; ordinary validation does not silently advance pins. If
 the hook defers or is disabled, obtain matching cache with the intended toolchain
-before the build. Aglib's tracked downstream manifest is derived from the root
-manifest: run `python3 scripts/prepare_downstream.py` and commit the result with
-an upstream pin update. The CI adapter rejects a stale tracked copy early.
+before the build. Downstream examples are explicit diagnostics with their own
+package manifests; routine checks do not prepare or validate separate clients.
 
 The [CI contract](CI.md) assigns complete current check scope for a dependency,
 compiler or build-configuration transition. Compilation remains incremental and
@@ -87,11 +86,10 @@ cache-driven. Lint/axiom records have separate current-input keys; a build cache
 hit is not their success evidence. Unknown unbounded checker-policy changes
 require explicit current coverage or a validated migration.
 
-The reusable package's [native fixture](../ci/native_test.py) exercises local
-producer/consumer staging, recovery after a later failure, stale-input rejection
-and new-input restoration under `--no-build`. Its caches are isolated with a
-nonempty `LAKE_CACHE_DIR`; no remote service metadata is imported. Its same-
-compiler result does not assert arbitrary Lean-version compatibility.
+Local compilation uses one native incremental Lake build. Successful lint,
+entry, text and axiom results are retained by the [native local helper](../scripts/README.md)
+against their actual command and inputs; unsupported or changed coverage is run
+again. There is no separate local cache producer/consumer acceptance workflow.
 
 ## Shared CI protocol
 

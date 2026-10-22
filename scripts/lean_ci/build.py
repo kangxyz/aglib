@@ -5,10 +5,9 @@ import json
 import os
 from pathlib import Path
 import subprocess
-import sys
 import tempfile
 
-from .source import lean_imports, module_path
+from .source import MODULE
 from .resources import limits, remote_profile, run
 
 
@@ -68,75 +67,31 @@ def capped_toolchain(root, threads=1, environment=None, config=None):
                    PATH=str(overlay / 'bin') + os.pathsep + environment.get('PATH', ''))
 
 
-def source_order(root, targets):
-    seen, active, result = set(), set(), []
-    def visit(name):
-        if name in seen:
-            return
-        if name in active:
-            raise ValueError('Local import cycle: ' + name)
-        path = root / module_path(name)
-        if not path.is_file():
-            raise ValueError('Missing local build target: ' + name)
-        active.add(name)
-        for dependency in lean_imports(path.read_text()):
-            if (root / module_path(dependency)).is_file():
-                visit(dependency)
-        active.remove(name); seen.add(name); result.append(name)
-    for target in targets:
-        visit(target)
-    return result
-
-
-def expected_cache_miss(code, output):
-    # Pinned Lake Build/Run.lean assigns noBuildCode = 3. A mixed graph can
-    # contain other failures too, so never classify by exit status alone.
-    errors = [line.split('error:', 1)[1].strip()
-              for line in output.splitlines() if 'error:' in line]
-    return code == 3 and bool(errors) and all(
-        error == 'target is out-of-date and needs to be rebuilt' for error in errors)
-
-
 def native_targets(targets, selection='module'):
     """Render Lake selectors only here; callers and source queries use bare names."""
     if selection not in ('module', 'library'):
         raise ValueError('Build selection must be module or library')
     names = list(targets)
     for name in names:
-        module_path(name)  # Reject already-rendered selectors and malformed names.
+        if not isinstance(name, str) or MODULE.fullmatch(name) is None:
+            raise ValueError('Expected a bare Lean target name: ' + str(name))
     return [('+' + name) if selection == 'module' else name for name in names]
 
 
 def build(root, targets, directory, rehash=False, outputs=None, *, environment=None, config=None, selection='module'):
-    directory.mkdir(parents=True, exist_ok=True)
     selectors = native_targets(targets, selection)
-    if selection == 'module':
-        source_order(root, targets)
+    directory.mkdir(parents=True, exist_ok=True)
+    receipt = directory / 'graph-build.json'
+    # Reserve this invocation's receipt before setup or launch. Native Lake owns
+    # dependency scheduling and cache decisions; no preliminary build is needed.
+    with receipt.open('x') as reserved:
+        json.dump({'state': 'reserved'}, reserved)
     lake = ['lake'] + (['--rehash'] if rehash else [])
     output_args = ['-o', str(outputs.resolve())] if outputs is not None else []
     if outputs is not None:
         outputs.parent.mkdir(parents=True, exist_ok=True)
     budget = limits(environment, config=config)
-    # Local policy admits one compiler; an explicit parent profile selects the
-    # shared remote wrapper and its scheduler/frontend concurrency separately.
     budget['native_build_threads'] = build_threads(environment, config)
     with capped_toolchain(root, threads=budget['native_build_threads'], environment=environment, config=config) as env:
-        log = directory / 'cached-check.log'
-        # Each receipt directory owns one probe. Preserve earlier evidence rather
-        # than silently overwriting it when a caller accidentally reuses a path.
-        with log.open('x') as output:
-            code = run(lake + ['--no-build', 'build', *selectors, *output_args], cwd=root, env=env,
-                       receipt=directory / 'cached-check.json', budget=budget, config=config,
-                       stdout=output, stderr=output)
-        if code == 0:
-            print(f'Build cache hit; no compilation needed (probe log: {log}).', flush=True)
-            return 0
-        diagnostics = log.read_text()
-        if not expected_cache_miss(code, diagnostics):
-            print(f'Build cache probe failed ({code}); see {log}.', file=sys.stderr, flush=True)
-            print(diagnostics, file=sys.stderr, end='' if diagnostics.endswith('\n') else '\n')
-            return code
-        print(f'Build cache miss; building requested targets (probe log: {log}).', flush=True)
         return run(lake + ['build', *selectors, *output_args], cwd=root, env=env,
-                   receipt=directory / 'graph-build.json', budget=budget, config=config)
-
+                   receipt=receipt, budget=budget, config=config)

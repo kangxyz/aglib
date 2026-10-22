@@ -127,30 +127,108 @@ class ResourceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 resources.capped_command(unsafe, environment)
 
-    def test_build_only_compiles_after_authoritative_expected_cache_miss(self):
+    def test_build_runs_one_native_graph_for_hits_misses_and_failures(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             config = resources.ResourceConfig(prefix='QUARTZ')
-            for code, diagnostic, launches in (
-                    (0, '', 1), (3, 'error: target is out-of-date and needs to be rebuilt\n', 2),
-                    (3, 'error: a genuine compiler failure\n', 1), (125, '', 1)):
-                attempts = []
+            for code in (0, 3, 19, 125):
+                with self.subTest(code=code), tempfile.TemporaryDirectory(dir=root) as run_directory:
+                    receipt = Path(run_directory) / 'graph-build.json'
+                    with patch.object(build, 'capped_toolchain', return_value=nullcontext({})) as capped, \
+                         patch.object(build, 'run', return_value=code) as guarded:
+                        result = build.build(root, ['Quartz.Base'], Path(run_directory), rehash=True,
+                                             environment={}, config=config)
+                    self.assertEqual(result, code)
+                    guarded.assert_called_once()
+                    self.assertEqual(guarded.call_args.args,
+                                     (['lake', '--rehash', 'build', '+Quartz.Base'],))
+                    self.assertEqual(guarded.call_args.kwargs['receipt'], receipt)
+                    self.assertEqual(guarded.call_args.kwargs['config'], config)
+                    capped.assert_called_once()
+                    self.assertEqual(read_json(receipt), {'state': 'reserved'})
+                    self.assertFalse((Path(run_directory) / 'cached-check.json').exists())
+                    self.assertFalse((Path(run_directory) / 'cached-check.log').exists())
+
+    def test_build_retains_library_selectors_outputs_and_exclusive_receipt(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            state = root / 'run'
+            outputs = root / 'out/mappings.jsonl'
+            with patch.object(build, 'capped_toolchain', return_value=nullcontext({})), \
+                 patch.object(build, 'run', return_value=0) as guarded:
+                self.assertEqual(build.build(root, ['Quartz'], state, outputs=outputs,
+                                             environment={}, selection='library'), 0)
+            self.assertEqual(guarded.call_args.args,
+                             (['lake', 'build', 'Quartz', '-o', str(outputs.resolve())],))
+            receipt = state / 'graph-build.json'
+            original = receipt.read_bytes()
+            with patch.object(build, 'capped_toolchain') as capped, patch.object(build, 'run') as guarded:
+                with self.assertRaises(FileExistsError):
+                    build.build(root, ['Quartz'], state, environment={}, selection='library')
+                capped.assert_not_called()
+                guarded.assert_not_called()
+            self.assertEqual(receipt.read_bytes(), original)
+
+    def test_build_rejects_malformed_selector_before_setup(self):
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.object(build, 'capped_toolchain') as capped, patch.object(build, 'run') as guarded:
+            with self.assertRaises(ValueError):
+                build.build(Path(directory), ['+Quartz'], Path(directory) / 'run')
+            capped.assert_not_called()
+            guarded.assert_not_called()
+
+    def test_runtime_direct_process_reuses_prepared_environment_and_valid_receipt(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            environment = {'LEAN': '/already/prepared/bin/lean', 'LEAN_NUM_THREADS': '1'}
+            runtime = NativeRuntime(root, environment=environment)
+            task = {'id': 'native', 'kind': 'process', 'cwd': str(root),
+                    'command': ['lake', '--rehash', 'build', 'Quartz']}
+            def guarded(command, **keywords):
+                self.assertEqual(command, task['command'])
+                self.assertEqual(keywords['env'], environment)
+                keywords['receipt'].write_text(json.dumps({
+                    'state': 'completed', 'command': command, 'cwd': str(root),
+                    'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True}))
+                return 0
+            with patch('lean_ci.runtime.resources.run', side_effect=guarded) as run, \
+                 patch.object(build, 'capped_toolchain') as capped, \
+                 patch('lean_ci.runtime.subprocess.check_output') as locator:
+                result = runtime.run(task, root / 'run')
+                run.assert_called_once()
+                capped.assert_not_called()
+                locator.assert_not_called()
+            self.assertEqual(result['receipt']['command'], task['command'])
+            self.assertEqual(set(result), {'receipt'})
+            with patch('lean_ci.runtime.resources.run') as run:
+                with self.assertRaises(FileExistsError):
+                    runtime.run(task, root / 'run')
+                run.assert_not_called()
+
+    def test_runtime_rejects_failed_incomplete_or_mismatched_process_receipt(self):
+        cases = [(19, {}), (0, {'exit_code': 19}), (0, {'guard_failure': 'rss'}),
+                 (0, {'owned_group_gone': False}), (0, {'state': 'running'}),
+                 (0, {'command': ['different']}), (0, {'cwd': '/different'})]
+        for code, override in cases:
+            with self.subTest(code=code, override=override), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                task = {'id': 'source', 'kind': 'process', 'cwd': str(root), 'command': ['python3', 'check.py']}
                 def guarded(command, **keywords):
-                    attempts.append(command)
-                    if len(attempts) == 1:
-                        keywords['stdout'].write(diagnostic)
-                        return code
-                    return 0
-                with tempfile.TemporaryDirectory(dir=root) as run_directory, \
-                     patch.object(build, 'source_order'), \
-                     patch.object(build, 'capped_toolchain', return_value=nullcontext({})), \
-                     patch.object(build, 'run', side_effect=guarded), \
-                     redirect_stderr(io.StringIO()), patch('builtins.print'):
-                    result = build.build(root, ['Quartz.Base'], Path(run_directory), rehash=True,
-                                         environment={}, config=config)
-                self.assertEqual(len(attempts), launches)
-                self.assertEqual(attempts[0], ['lake', '--rehash', '--no-build', 'build', '+Quartz.Base'])
-                self.assertEqual(result, 0 if launches == 2 else code)
+                    value = dict(state='completed', command=command, cwd=str(root), exit_code=0,
+                                 guard_failure=None, owned_group_gone=True)
+                    value.update(override)
+                    keywords['receipt'].write_text(json.dumps(value))
+                    return code
+                with patch('lean_ci.runtime.resources.run', side_effect=guarded):
+                    with self.assertRaisesRegex(ValueError, 'Native command failed: source'):
+                        NativeRuntime(root, environment={}).run(task, root / 'run')
+
+    def test_runtime_rejects_retired_task_kinds_before_launch(self):
+        with tempfile.TemporaryDirectory() as directory, patch('lean_ci.runtime.resources.run') as run:
+            for kind in ('build', 'graph-build', 'environment', 'check'):
+                with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, 'direct process'):
+                    NativeRuntime(directory).run({'kind': kind}, Path(directory) / kind)
+            run.assert_not_called()
 
     def test_managed_identity_binds_wrapper_physical_runtime_and_json_stable_config(self):
         with tempfile.TemporaryDirectory() as directory:

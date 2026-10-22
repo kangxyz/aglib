@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check occupied-source enrollment, modern exports, import resolution and cycles.
+"""Check modern exports, production dependency boundaries, import resolution and cycles.
 
 This is an exact source-graph guard, not acceptance of mathematical premises.
 """
@@ -8,8 +8,7 @@ from pathlib import Path
 import re
 import sys
 
-from generate_imports import generator_owned, stale_files
-from library_sources import (audit_sources, downstream_sources, is_import_surface,
+from library_sources import (downstream_sources, is_import_surface,
                              lean_imports, module_name, module_path, source_modules,
                              strip_comments_and_strings, test_modules, uses_module_system)
 
@@ -82,17 +81,10 @@ def import_cycles(graph: dict[str, set[str]]) -> list[str]:
 
 def check_layout(root: Path) -> tuple[list[str], int]:
     errors = []
-    modules, tests, audits = source_modules(root), test_modules(root), audit_sources(root)
+    modules, tests = source_modules(root), test_modules(root)
     loose = {path.name for path in root.glob('*.lean')} - {PROJECT + '.lean', TEST + '.lean'}
     if loose:
         errors.append(f'Unclassified project-root Lean files: {sorted(loose)}')
-    try:
-        stale = stale_files(root)
-        if stale:
-            errors.append(f'Stale generated imports (missing enrollment or changed facade): {stale}; '
-                          'run python3 scripts/generate_imports.py')
-    except ValueError as error:
-        errors.append(str(error))
     graph = {}
     clients = downstream_sources(root)
     client_root = root / 'examples/downstream'
@@ -100,18 +92,8 @@ def check_layout(root: Path) -> tuple[list[str], int]:
         path.parts[2] for path in clients if len(path.parts) > 3}
     topic_facades = {path for path in modules if path != Path(PROJECT + '.lean')
                      and (root / path.with_suffix('')).is_dir()
-                     and (generator_owned((root / path).read_text())
-                          or is_import_surface((root / path).read_text()))}
-    for facade in sorted(modules - {Path(PROJECT + '.lean')}):
-        path = root / facade
-        if path.exists() and generator_owned(path.read_text()) and not path.with_suffix('').is_dir():
-            errors.append(f'Generator-owned facade has no corresponding directory: {facade}')
-    for auditor in (Path(TEST + '/Axioms.lean'), Path(TEST + '/AuditSupport.lean'),
-                    Path('examples/downstream/Audit.lean')):
-        path = root / auditor
-        if path.exists() and uses_module_system(path.read_text()):
-            errors.append(f'Exhaustive axiom auditor must retain legacy private imports: {auditor}')
-    for relative in sorted(modules | tests | audits | clients):
+                     and is_import_surface((root / path).read_text())}
+    for relative in sorted(modules | tests | clients):
         path = root / relative
         if not path.is_file():
             errors.append(f'Missing project import source: {relative}')
@@ -148,9 +130,7 @@ def check_layout(root: Path) -> tuple[list[str], int]:
             if library and relative not in topic_facades | {Path(PROJECT + '.lean')} and (
                     imported == PROJECT or module_path(imported) in topic_facades):
                 errors.append(f'Implementation imports broad facade in {relative}: {imported}')
-            if relative in tests and module_path(imported) in audits:
-                errors.append(f'Positive fixture imports audit or negative control: {relative}: {imported}')
-        if relative in modules | tests | audits:
+        if relative in modules | tests:
             graph[module_name(relative)] = {name for name in imports
                 if name.split('.')[0] in {PROJECT, TEST}}
     errors.extend('Project import cycle: ' + cycle for cycle in import_cycles(graph))

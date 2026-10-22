@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lean-incremental-ci"
-version = "0.1.0"
-description = "Incremental Lean CI execution and explicitly configured evidence"
+version = "0.2.0"
+description = "Guarded native Lean commands and compatible check progress"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
