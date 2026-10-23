@@ -118,6 +118,7 @@ public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSequence
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
 public import Aglib.Algebra.Category.Ring.Sheaf.Units
+public import Aglib.Algebra.CharP.Frobenius
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
@@ -1773,7 +1774,14 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodalNormal
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodePinching
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChangeChart
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Complex
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Injective
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.KernelCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.RootCover
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.ShortExact
+public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Surjective
 public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
@@ -1867,6 +1875,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Site
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Splitting
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Standard
+public import Aglib.AlgebraicGeometry.EtaleCohomology.StructureSheaf.Basic
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
@@ -3224,6 +3233,8 @@ public import Aglib.AlgebraicGeometry.SchemeTheoreticImage.OpenComparison
 public import Aglib.AlgebraicGeometry.SchemeTheoreticImage.OpenLocalization
 public import Aglib.AlgebraicGeometry.SchemeTheoreticImage.PolynomialCharts
 public import Aglib.AlgebraicGeometry.SchemeTheoreticImage.ProperComparison
+public import Aglib.AlgebraicGeometry.Sites.Etale
+public import Aglib.AlgebraicGeometry.Sites.GlobalSections
 public import Aglib.AlgebraicGeometry.Spec.CompletionResidueFiber
 public import Aglib.AlgebraicGeometry.Spec.CompletionSpecialization
 public import Aglib.AlgebraicGeometry.Spec.DiscreteValuationRing
@@ -4097,6 +4108,8 @@ public import Aglib.RingTheory.DiscreteValuationRing.UnramifiedRoots
 public import Aglib.RingTheory.Etale.Adic.BaseChange
 public import Aglib.RingTheory.Etale.Adic.LocalCriterion
 public import Aglib.RingTheory.Etale.ArtinSchreier
+public import Aglib.RingTheory.Etale.ArtinSchreier.Kernel
+public import Aglib.RingTheory.Etale.ArtinSchreier.Kernel.Idempotents
 public import Aglib.RingTheory.Etale.CodimensionOne
 public import Aglib.RingTheory.Etale.DiagonalCentre
 public import Aglib.RingTheory.Etale.DiagonalLocalization

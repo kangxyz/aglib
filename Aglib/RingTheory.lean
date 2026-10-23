@@ -228,6 +228,8 @@ public import Aglib.RingTheory.DiscreteValuationRing.UnramifiedRoots
 public import Aglib.RingTheory.Etale.Adic.BaseChange
 public import Aglib.RingTheory.Etale.Adic.LocalCriterion
 public import Aglib.RingTheory.Etale.ArtinSchreier
+public import Aglib.RingTheory.Etale.ArtinSchreier.Kernel
+public import Aglib.RingTheory.Etale.ArtinSchreier.Kernel.Idempotents
 public import Aglib.RingTheory.Etale.CodimensionOne
 public import Aglib.RingTheory.Etale.DiagonalCentre
 public import Aglib.RingTheory.Etale.DiagonalLocalization

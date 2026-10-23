@@ -124,6 +124,7 @@ public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSequence
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
 public import Aglib.Algebra.Category.Ring.Sheaf.Units
+public import Aglib.Algebra.CharP.Frobenius
 public import Aglib.Algebra.DirectSumTransport
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation

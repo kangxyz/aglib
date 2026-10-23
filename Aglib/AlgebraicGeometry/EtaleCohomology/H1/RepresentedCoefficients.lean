@@ -10,7 +10,7 @@ module
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteLocallyConstant
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.Group
-public import Mathlib.AlgebraicGeometry.Sites.Proetale
+public import Aglib.AlgebraicGeometry.Sites.Etale
 public import Mathlib.AlgebraicGeometry.Limits
 public import Mathlib.Algebra.Category.Grp.FilteredColimits
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.Grp
@@ -40,26 +40,7 @@ open scoped CategoryTheory.MonObj
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 universe u v
 
-/-- The actual big étale topology is subcanonical. -/
-theorem etaleSubcanonical : Scheme.etaleTopology.{u}.Subcanonical :=
-  .of_le Scheme.etaleTopology_le_proetaleTopology
-
 attribute [local instance] etaleSubcanonical
-
-/-- Restriction from schemes over `X` to étale test schemes is continuous. -/
-instance smallEtaleForgetContinuous (X : Scheme.{u}) :
-    (Scheme.Etale.forget X).IsContinuous (Scheme.smallEtaleTopology X)
-      (Scheme.etaleTopology.over X) := by
-  let := flat_of_preservesFiniteLimits (Scheme.Etale.forget X)
-  exact Functor.isContinuous_iff_coverPreserving.mpr
-    (Functor.coverPreserving_restrictedTopology
-      (MorphismProperty.Over.forget @Etale ⊤ X) (Scheme.etaleTopology.over X))
-
-/-- The actual small étale topology is subcanonical. -/
-theorem smallEtaleSubcanonical (X : Scheme.{u}) :
-    (Scheme.smallEtaleTopology X).Subcanonical :=
-  GrothendieckTopology.subcanonical_of_full_of_faithful
-    (Scheme.Etale.forget X) _ (Scheme.etaleTopology.over X)
 
 variable {X : Scheme.{u}}
 
