@@ -8,6 +8,7 @@ Authors: kangxyz
 module
 
 public import Aglib.RepresentationTheory.EquivariantQuotients
+public import Aglib.RepresentationTheory.PGroup
 
 /-!
 # RepresentationTheory

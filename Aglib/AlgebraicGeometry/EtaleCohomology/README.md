@@ -10,10 +10,14 @@ Its principal declaration namespace is
 | [H1](H1/README.md) | Actual `Sheaf.H L 1`, coefficient maps, exact inverse image, direct image, canonical transports, torsors and finite-etale representation |
 | [H0 proper henselian](H0/README.md) | Original constant-finite sections and `Sheaf.H` degree-zero pullbacks are bijective over any proper henselian local base; sections extend to actual finite locally constant coefficients. |
 | [H1 finite constant](H1/ConstantFinite/README.md) | Original `H1Etale` closed-residue pullback is bijective for every finite constant additive group, with no order-invertibility or Noetherian premise; the result extends to actual finite locally constant abelian sheaves. |
+| [Finite locally constant and presented coefficients](Constructible/README.md) | The original generic adjunction unit is monic for every finite locally constant coefficient on an integral scheme, and such coefficients have actual finite Galois constant trivializations over fields. On a qcqs base, [actual finite local constancy](Constructible/FiniteLocallyConstantCompactness.lean) gives ordinary `IsFinitelyPresentable.{u+1}` with no supplied presentation. The separate explicit finite-`ZMod` presentation supplier retains its presentation data; existence of those presentations remains open. |
 | [Normal constants](Constructible/NormalConstants.lean) | For integral `X` whose local rings are integrally closed and finite `A`, the original generic-point unit induces `constantGenericIso` from the constant sheaf on `X` to direct image of the constant sheaf on `Spec(X.functionField)`. This uses the original adjunction unit and inverse-image constant-coefficient map; it assumes no Noetherian, Nagata, excellence, quasi-compactness, invertible-order, properness or strict-henselization premise. It is a finite-constant comparison input, not finite cogeneration or proper base change. |
 | [FiniteLocallyConstant](FiniteLocallyConstant/CoefficientSquare.lean) | Coefficient, section and pullback comparisons with the original local-trivialization and comparison premises |
 | [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses |
-| [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback and bounded-below `D+` comparison maps. The D source supplies the original H1 square and ordinary, derived, and all-degree identity/pasting equations through native comparisons; exchange invertibility, proper base change, and unbounded scope remain open. |
+| [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback, bounded-below `D+` exchange, and ordinary, derived and higher identity/pasting equations through the native comparisons. The finite subfamily supplies exchange invertibility for finite morphisms; general proper base change and unbounded scope remain open. |
+| [Continuity](Continuity/README.md) | On a fixed qcqs scheme, the actual canonical coefficient-colimit comparison for original `Sheaf.H` is invertible in every degree, with index type `Type (u + 1)` and independent Ext universe. Represented-section descent and compatible-system transports are also available; varying-scheme continuity remains open. |
+| [Finite direct image and base change](Finite/README.md) | For an arbitrary finite morphism, original direct image on `AbelianSheaf.{u,u+1}` preserves epimorphisms, homology and finite colimits, and positive higher direct images vanish. The canonical ordinary, `D+` and all-degree higher exchange maps are invertible for actual cartesian squares over arbitrary schemes, retaining the displayed derived-category universes. |
+| [Original cohomology on charts](Stalk/OriginalPresheaf.lean) | The size-correct original cohomology presheaf sheafifies to the native higher direct image. [Chart restriction](Stalk/ChartRestrictionNaturality.lean) agrees with original cohomology pullback in every degree, with the base, chart and slice Ext universes retained. |
 | [Fibrewise-closed geometric points](GeometricPoints/FibrewiseClosed/README.md) | Under only `LocallyOfFiniteType p`, genuine geometric-point lifts detect covers on every object of the actual small-etale site; the resulting `Point.{u+1}` family detects isomorphisms of `AbelianSheaf.{u,u+1}`. No Ext or proper-base-change theorem is asserted. |
 | [Original stalks](GeometricPoints/FibrewiseClosed/README.md) and [inverse image](GeometricPoints/InverseImage/README.md) | The canonical `pointSmallEtale` stalk comparison and original inverse-image `stalkUnit` isomorphism hold for every standard-value abelian sheaf; only the separate fibrewise-closed detection consumer needs `LocallyOfFiniteType p`. |
 
@@ -38,35 +42,34 @@ mathematical owners. Finite-etale cover geometry remains in
 `GroupCohomology.Kummer` keep that native object namespace; the directory
 change does not duplicate their group-cohomological objects.
 
-The [older migration guide](../../../docs/ETALE_COHOMOLOGY_MIGRATION.md) records
-the module relocation and namespace change. The [2026-10-23 foundation note](../../../docs/migration/etale-foundations-2026-10-23.md)
-describes the admitted generic and derived providers. The canonical exchange maps retain their degree-zero normalization. The D
-continuation adds the original square equations: `h1Pullback_square` uses the
-four displayed `HasExt` universes, while `derivedBaseChangeMap_h1_square`
-normalizes the actual derived mate through the constant-sheaf, adjunction, shift,
-and single comparisons.
+The [older migration guide](../../../docs/ETALE_COHOMOLOGY_MIGRATION.md)
+records the module relocation and namespace change. The
+[foundation note](../../../docs/migration/etale-foundations-2026-10-23.md)
+describes the generic and derived providers.
 
-The ordinary `baseChangeMap_hComp`, `_vComp`, and `_vId` equations use the
-original inverse-image and direct-image composition maps. The derived
-`derivedBaseChangeMap_hComp`, `_vComp`, and `_vId` equations use the native
-`D+` adjunctions and comparisons under their displayed derived-category
-instances. For each natural degree `q`, `higherBaseChangeMap_hComp`, `_vComp`,
-and `_vId` state the corresponding equations using the actual source/target
-higher-image comparisons and homology of the actual composite derived images.
-The higher vertical identity retains its native comparison; it does not identify
-the positive-degree derived image of an identity with the identity functor.
+The canonical exchange maps retain their degree-zero normalization.
+`h1Pullback_square` keeps its four displayed `HasExt` universes;
+`derivedBaseChangeMap_h1_square` compares the actual derived mate through the
+constant-sheaf, adjunction, shift and single comparisons. The ordinary
+`baseChangeMap_hComp`, `_vComp` and `_vId` equations use the original
+inverse-image and direct-image composition maps. Their derived counterparts
+use the native `D+` adjunctions and displayed derived-category instances.
+For every natural degree, `higherBaseChangeMap_hComp`, `_vComp` and
+`_vId` retain the actual higher-image comparisons and homology of the
+composite derived images. The higher vertical identity retains its native
+comparison, without identifying a positive-degree derived image of an identity
+with the identity functor.
 
-These equations are compatibility statements for the canonical maps. They do
-not assert exchange-map invertibility, proper base change, or an unbounded
-derived theorem. The independent `derived_archive_review` accepted the selected D sources,
-and the principal-owned incremental compilation and selected native checks
-passed. The general proper-base-change theorem remains a separate target.
-
-The new bounded-below sources are [DirectImage](DirectImage.lean),
-[Pullback](Pullback.lean), [PullbackComposition](PullbackComposition.lean),
-[BaseChangeMap](BaseChangeMap.lean), and [Derived base change](Derived/BaseChange.lean).
-They retain the original maps and the actual canonical comparison data; their
-stated boundaries are not a proper-base-change theorem.
+Invertibility is supplied by the
+[ordinary étale-chart comparison](Stalk/EtaleDirectImageMate.lean) for arbitrary
+vertical morphisms and étale horizontal morphisms, and by the
+[finite subfamily](Finite/README.md) for finite vertical morphisms and arbitrary
+horizontal morphisms. The general proper-base-change theorem and unbounded
+derived scope remain open. The basic interfaces are
+[DirectImage](DirectImage.lean), [Pullback](Pullback.lean),
+[PullbackComposition](PullbackComposition.lean),
+[BaseChangeMap](BaseChangeMap.lean) and
+[Derived base change](Derived/BaseChange.lean).
 
 ## Further small-etale inputs
 
@@ -77,16 +80,29 @@ stated boundaries are not a proper-base-change theorem.
 | [Binary-form product](../ProjectiveSpace/BinaryFormProduct/README.md) | The actual finite surjective map to projective space has a cartesian coefficient-map square under every commutative-ring map and every degree `n`, including zero. This is an available projective geometric input, not a proper-base-change theorem. |
 | [Amitsur module complex](../../Algebra/Homology/Amitsur/README.md) | Under faithfully flat scalar extension, the actual augmented module Amitsur complex is exact in every degree and the unaugmented complex has zero positive homology for arbitrary coefficient modules. This is algebraic module exactness, not étale-sheaf acyclicity. |
 | [Torsion sheaves](Torsion/README.md) | On the actual small-etale site, internal torsion is detected by original geometric stalks and every torsion sheaf is the actual filtered colimit of its native factorial annihilator kernels. This does not assert cohomological continuity or proper base change. |
-| [Torsion comparison](Torsion/Comparison.lean) | For an internally torsion coefficient, bijectivity of the original cohomology pullback follows from explicit preservation of all `ℕ`-shaped colimits by both original cohomology functors in each degree and bijectivity for all prime `ZMod` module-sheaf tests. These comparison/continuity premises are inputs, not results of the theorem; this is not proper base change. Independent Ext universes are transported by the native `ULift` comparison map. |
+| [Torsion comparison](Torsion/README.md) | The general original-cohomology comparison reduces internally torsion coefficients to genuine prime `ZMod` module-sheaf tests, assuming sequential-colimit preservation in each degree. [QcqsComparison](Torsion/QcqsComparison.lean) supplies that continuity for morphisms between qcqs schemes, leaving only the all-degree prime-module comparison as an application hypothesis. Independent source/target Ext universes are retained. |
 | [Ringed ZMod bridge](../../CategoryTheory/Sites/Torsion/ZMod/Ringed.lean) | A generic site equivalence identifies genuine `ZMod n`-module sheaves, including modulus zero, with modules over the associated sheaf of the actual constant ring presheaf, retaining the original underlying module sheaf. It is a coefficient-category bridge, not a cohomology comparison. |
+| [ZMod underlying cohomology](Torsion/ZModCohomology.lean) | On any scheme and for every modulus, including zero and one, the original underlying functor on genuine module sheaves preserves finite limits and colimits. An injective genuine module sheaf has zero positive original underlying abelian cohomology, with an independently supplied Ext universe or the native standard Ext endpoint. |
 | [Module-injective pullback criterion](Torsion/InjectiveCriterion.lean) | Original pullback comparison for ringed module coefficients is conditional on degree-zero comparison and positive cohomology vanishing for the actual pulled-back underlying injective module sheaves, with independent module/source/target Ext universes. |
 
-The latest eleven-leaf torsion-comparison and ringed-module integration passed
-its scoped native build, generated-entry and style checks, selected declaration
-linters, pinned axiom audit and source guards (`remote-688042ffc6d9448c8b4933075b2da7f5`,
-`997884c1787f4a78ba259e4c452e4a68`). The stated colimit, prime-comparison and
-module-injective cohomology conditions remain hypotheses; this batch is not a
-proper-base-change proof.
+The qcqs theorem supplies its required sequential coefficient continuity.
+Prime-module comparison and the pulled-back-injective acyclicity required by
+the module-injective pullback criterion remain application hypotheses.
+
+## Multiplicative and curve inputs
+
+| Input | Objects, maps and conditions |
+| --- | --- |
+| [Artin sheaf equivalence](Artin/SheafEquivalence.lean) | For locally Artinian quasi-separated source and target, a surjective morphism whose actual finite-etale base-change functor is an equivalence makes the original direct and inverse image functors equivalences. [Root-cohomology pullback](Kummer/ArtinPullback.lean) is then bijective for positive globally invertible levels. [Nilpotent quotients](Kummer/ArtinNilpotent.lean) of Artinian rings and [residue maps](Kummer/ArtinResidue.lean) of Artinian local rings supply concrete cases. |
+| [Picard and Kummer](Picard/KummerQuotient.lean) | For positive `n` invertible in global sections, the literal `picardQuotientBoundary` embeds ordinary Picard classes modulo `n` into original `Sheaf.H (mu X n) 2`, naturally for the ordinary Picard and root-cohomology pullbacks. [Surjectivity of the Kummer boundary](Kummer/CohomologyConsequences.lean) from degree `q` retains power injectivity in degree `q + 1`; vanishing of `Sheaf.H (mu X n) (q + 1)` retains power surjectivity in degree `q` and injectivity in degree `q + 1`. |
+| [Derived divisibility](Derived/OriginalDivisibility.lean) | Bijectivity of multiplication by `n` on source cohomology in degrees `q` and `q + 1`, together with invertibility of multiplication by `n` on every positive higher direct image, gives bijectivity on degree `q + 1` cohomology of the direct-image coefficient. The source and target Ext and derived-category inputs remain independent. |
+| [Quasicoherent additive coefficients](QuasiCoherent/AdditiveSections.lean) | For an actual quasicoherent `X.Modules` object, the additive small-etale coefficient has lifted sections of the actual pullback module as values. Restrictions retain the typed Hom-transport and original geometric-unit formula. [Descent](QuasiCoherent/AdditiveDescent.lean) also holds on the big étale slice. Affine étale acyclicity and global Zariski comparison remain open. |
+| [Tsen](../../FieldTheory/Tsen/AlgebraicFunctionField.lean), [Brauer splitting](../../FieldTheory/Brauer/C1Splitting.lean) and [cocycle primitives](../../FieldTheory/Brauer/C1Cocycles.lean) | Every algebraic extension of `K(T)` with algebraically closed `K` is C₁. Over an infinite C₁ field, native central simple algebras split and finite-Galois multiplicative two-cocycles have actual primitives. [Amitsur unit primitives](../../FieldTheory/Galois/AmitsurPrimitives.lean) use the original conerve rings and cofaces for finite Galois extensions of those algebraic function fields. |
+
+The final all-degree finite-constant curve restriction, transport of field
+two-cocycles to original étale `H2`, finite-coefficient higher vanishing and
+purely inseparable field comparison remain open. The algebraic splitting and
+primitive results do not close these cohomological comparisons.
 
 ## Original geometric stalks and inverse images
 

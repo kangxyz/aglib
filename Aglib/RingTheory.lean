@@ -474,6 +474,14 @@ public import Aglib.RingTheory.Henselian.QuotientMaximalIdeal
 public import Aglib.RingTheory.Henselian.RectangularCorrection
 public import Aglib.RingTheory.Henselian.ResidueParameterAnnihilator
 public import Aglib.RingTheory.Henselian.ResidueParameterBasis
+public import Aglib.RingTheory.Henselian.StrictHenselization.BasePoint
+public import Aglib.RingTheory.Henselian.StrictHenselization.Colimit
+public import Aglib.RingTheory.Henselian.StrictHenselization.FiniteDecomposition
+public import Aglib.RingTheory.Henselian.StrictHenselization.FiniteLocalFactors
+public import Aglib.RingTheory.Henselian.StrictHenselization.GeometricNeighborhood
+public import Aglib.RingTheory.Henselian.StrictHenselization.Henselian
+public import Aglib.RingTheory.Henselian.StrictHenselization.LocalRing
+public import Aglib.RingTheory.Henselian.StrictHenselization.SeparablyClosedResidue
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
 public import Aglib.RingTheory.Ideal.CoordinateDisplacement
@@ -840,6 +848,7 @@ public import Aglib.RingTheory.TensorProduct.PushoutModuleBijective
 public import Aglib.RingTheory.TensorProduct.PushoutModuleEquiv
 public import Aglib.RingTheory.Units.PositiveNat
 public import Aglib.RingTheory.Unramified.Equalizer
+public import Aglib.RingTheory.Unramified.GaloisPoint
 public import Aglib.RingTheory.Unramified.Rigidity
 public import Aglib.RingTheory.Valuation.IntegerMap
 public import Aglib.RingTheory.Valuation.LeadingRelation

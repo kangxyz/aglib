@@ -14,6 +14,8 @@ the section and the cover. No single global annihilator is assumed.
 | [Property reduction](Reduction.lean) | An isomorphism-invariant property of abelian sheaves reduces from internally torsion to prime-annihilated objects, assuming it contains zero objects and is stable under actual short-exact extensions and the displayed `ℕ`-colimits. The module-coefficient form uses prime `ZMod p` sheaves and retains `[UnivLE.{max u v, w}]`. |
 | [ZMod modules](ZMod/Basic.lean) | Conversion of a sheaf killed by the literal scalar identity into a genuine `ZMod n`-module sheaf while retaining its original sections, restriction maps, coefficient arrows, and underlying-sheaf isomorphism. |
 | [ZMod injectives](ZMod/Injectives.lean) | Genuine `ZMod n`-valued sheaves on the standard-sized site have enough injectives and `HasExt`, for every `n`, including zero. This is a result in the module-valued sheaf category. |
+| [ZMod underlying cohomology](ZMod/Cohomology.lean) | The actual genuine-module underlying functor preserves finite limits and colimits for every modulus. Under the displayed terminal, over-product and Ext hypotheses, injective genuine module sheaves have acyclic original underlying abelian coefficients in every positive degree. |
+| [Finite presentations](FinitePresentation.lean) | Native free scalar-quotient generators and actual finite generator/relation cokernel data give finite presentability, original finite-stage factorization and a colimit certificate for the original Hom cocone, under explicitly sized evaluation continuity. |
 | [Original Ext comparison](../../../Algebra/Homology/DerivedCategory/Ext/ShortExactComparison.lean) | The actual exact-functor comparison is natural and stable under zero objects, isomorphisms and short-exact extensions. It is stable at an actual colimit cocone when both original Ext functors preserve that colimit. Independent Ext universes are related by an explicit native `ULift` natural transformation. |
 | [Composite Ext comparison](../../../Algebra/Homology/DerivedCategory/Ext/CompositeComparison.lean) | If the first actual comparison is bijective in all degrees, the second in degree zero, and positive Ext vanishes on actual composite images of source injectives, the second comparison is bijective. Injectives need not be preserved by either functor; all three Ext universes remain independent. |
 | [Ringed ZMod bridge](ZMod/Ringed.lean) | For every site and every modulus, including zero, genuine `ZMod n`-module sheaves are equivalent to native `SheafOfModules` over the associated sheaf of the actual constant `RingCat` presheaf on `ULift (ZMod n)`. The comparison retains the original underlying module sheaf and is natural. |
@@ -34,36 +36,52 @@ over the associated sheaf of the constant ring. It makes no claim that a
 module-sheaf injective is injective after forgetting to abelian sheaves or that
 module Ext agrees with abelian-sheaf Ext.
 
+## Free scalar quotients and finite presentations
 
-## Native validation
+[Generators](FinitePresentation/Generators.lean) uses the existing
+`Hypercohomology.freeAbelianSheaf`. The actual
+`freeZModRepresentable J n U` is the native cokernel of multiplication by
+`n` on this free representable. Its Hom equivalence identifies maps to
+`F` with original sections of `F` on `U` killed by `n`, retaining
+the original quotient and coefficient maps. The comparison between evaluation
+and the honest Hom universe uses the explicit native `ULift`. The coefficient
+category is `Sheaf J AddCommGrpCat.{max v t}` under the displayed
+sheafification hypothesis.
 
-The admitted fifteen-source C4 family passed its scoped native checks. In the
-initial thirteen-source batch, cached compilation was fully reused, generated
-entries and text style passed, and the pinned 208-declaration audit found only
-the standard three foundations. Its declaration-lint pass reported ten
-repairable findings. After the prescribed name and simp-attribute repairs,
-`remote-a10c066b1f364e5ea36b41f84ff0077c` compiled with nine frontends and passed
-all fifteen declaration linters; the compatible entries and audit results were
-retained.
+[Compactness](FinitePresentation/Compactness.lean) retains an actual finite
+generator family `U0 : Fin r0 → C`, relation family `U1 : Fin r1 → C`,
+relation arrow `d`, quotient arrow `q`, equation `d ≫ q = 0`, and
+`IsColimit (CokernelCofork.ofπ q hdq)`. Evaluation on every selected
+generator and relation object must satisfy
+`PreservesFilteredColimitsOfSize.{k,k} (evaluation J U)`. These data imply native `IsFinitelyPresentable.{k} F`.
 
-The two additional leaves passed build, entries, style, lint, and their
-149-declaration audit in `remote-28b1b2a7ebbb4443991dddd079742bb7`; that audit
-overlaps the original 208-declaration scope. After narrowing `Reduction.lean`
-to import its actual `ZMod.Sheaf` provider,
-`remote-4d07168b428f4dfe8e0c1a922af9da8d` passed its incremental build, style,
-and declaration lint. Final source guards passed in
-`run-35d42ec65a584c4f92730591ee49208c` across 4,778 production modules and 399
-positive checks. This validation does not establish cohomological continuity,
-a local criterion, or proper base change.
+[FinitePresentation](FinitePresentation.lean) then factors every original
+`a : F ⟶ c.pt` through an original stage of any supplied filtered colimit
+cocone: `b ≫ c.ι.app i = a`. It also supplies
+`IsColimit ((coyoneda.obj (op F)).mapCocone c)`.
+All natural moduli, including zero and one, and empty finite generator or
+relation families are allowed. The
+[small-etale geometric consumer](../../../AlgebraicGeometry/EtaleCohomology/Constructible/README.md)
+supplies evaluation continuity on chosen qcqs objects. Existence of such
+presentations for arbitrary finite locally constant or constructible
+coefficients remains open.
 
-The subsequent eleven-leaf comparison and ringed-coefficient batch passed in
-`remote-688042ffc6d9448c8b4933075b2da7f5`, source snapshot
-`a9be1007452276d037d0c2ae914646da2e9a471e2beee14d90ba43f8857648fb`. The run
-used five fresh frontends and reused the remaining cached outputs; generated
-entries and text style passed, as did all fifteen declaration linters over the
-eleven selected module prefixes. The pinned axiom audit covered 4,476
-declarations and found only the standard three foundations. Final source guards
-passed in `997884c1787f4a78ba259e4c452e4a68` over 4,789 production modules and
-399 positive checks. The selected module prefixes overlap, so their count is
-not additive. The exact comparison and injective-cohomology premises described
-above remain hypotheses; these checks do not prove proper base change.
+## Exact underlying coefficients and acyclicity
+
+[ZMod/Cohomology](ZMod/Cohomology.lean) proves preservation of finite limits
+and finite colimits by the original
+`sheafCompose J (forget₂ (ModuleCat (ZMod n)) AddCommGrpCat)`.
+The module and abelian values have universe `max u v`, for a site with
+object universe `u` and morphism universe `v`; the result allows every
+`n`, including zero and one.
+
+For acyclicity, the theorem retains
+`HasExt.{e} (Sheaf J AddCommGrpCat.{max u v})`, finite products in
+`Over W` for every site object `W`, and a supplied terminal object.
+For an injective genuine module sheaf `I`, the original underlying
+abelian sheaf has trivial positive `Sheaf.H.{e}`. The construction uses
+the actual ringed-module equivalence and its original underlying natural
+isomorphism. The hypothesis is injectivity in the module-valued sheaf category;
+the conclusion is underlying abelian cohomological acyclicity.
+The [scheme consumer](../../../AlgebraicGeometry/EtaleCohomology/Torsion/ZModCohomology.lean)
+supplies the site conditions and also a native standard Ext endpoint.
