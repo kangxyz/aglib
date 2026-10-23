@@ -39,6 +39,21 @@ cause as uncertain; retain failed approaches only when they prevent repeated
 work. Reuse existing measurements and compatible checks; no per-edit diary,
 mandatory benchmark or extra acceptance run is required.
 
+## Generated import entries and file-length limits
+
+[CI run 39951693002](https://github.com/kangxyz/aglib/actions/runs/39951693002)
+failed at `2c34f185` because the generated `Aglib.AlgebraicGeometry` entry grew to
+3304 lines while retaining `set_option linter.style.longFile 3100`. This was a
+source-style failure; completed compilation was saved, and Test/Publish skipped.
+
+The minimal repair sets that import-only entry's `longFile` option to `0`,
+following Mathlib's [explicit generated-root exemption](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Tactic/Linter/Style.lean#L379-L383).
+Imports, ordinary implementation limits and mathematical checks are unchanged.
+Under Lean 4.34.1 and the pinned Mathlib linter, a bounded native fixture reproduces
+the 3100-line failure, accepts `0`, and still rejects an ordinary file at 1500.
+This is scoped linter evidence, not a full-library CI pass or a general automatic
+entry-classification mechanism. Future-entry automation is a separate change.
+
 ## What the measurements establish
 
 The successful [cold CI run](https://github.com/kangxyz/aglib/actions/runs/38711518878)
