@@ -52,3 +52,16 @@ rings in one universe. Characteristic zero supplies a separate wrapper. The
 [geometric-local DVR approximation construction](../Henselian/DVRArtinApproximation.md)
 uses this enlargement inside its finite local model; it does not require the
 original finite-type algebra to be a domain or flat.
+
+## Dimension-one criteria and arbitrary residue extensions
+
+[DimensionOne](DimensionOne.md) gives the normal local dimension-one DVR
+criterion and actual prime-localization consumers for nonzero principal
+quotients. Its regular-ambient alternative retains the original minimal-prime
+condition and ambient localization.
+[MonogenicResidueExtension](MonogenicResidueExtension.md) and
+[ResidueExtension](ResidueExtension.md) construct actual marked residue
+extensions while retaining the same natural prime as uniformizer.
+[FilteredColimit](FilteredColimit.md) proves the DVR and maximal-kernel
+properties for the original compatible filtered diagram. These feed the
+[arbitrary-residue Cohen construction](../LocalRing/CohenRing.md).

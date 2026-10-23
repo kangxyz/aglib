@@ -139,6 +139,26 @@ private theorem eval_residueBranchesAlgEquiv {A : Type*} [CommRing A]
   rw [← ha]
   rfl
 
+/-- The full residue-branch comparison exists with the literal branch ideals
+and its original quotient-system map at every level. -/
+theorem exists_residueBranchesAlgEquiv {A : Type*} [CommRing A] [IsNoetherianRing A]
+    (I : Ideal A) [IsArtinianRing (A ⧸ I)] :
+    ∃ e : AdicCompletion I A ≃ₐ[A]
+        ∀ q : MaximalSpectrum (A ⧸ I),
+          AdicCompletion (q.asIdeal.comap (Ideal.Quotient.mk I)) A,
+      ∀ (n : ℕ) (x : AdicCompletion I A) (q : MaximalSpectrum (A ⧸ I)),
+        evalₐ (q.asIdeal.comap (Ideal.Quotient.mk I)) n (e x q) =
+          Ideal.Quotient.factor
+            (Ideal.pow_right_mono (show I ≤ q.asIdeal.comap (Ideal.Quotient.mk I) from by
+              intro a ha
+              change Ideal.Quotient.mk I a ∈ q.asIdeal
+              rw [Ideal.Quotient.eq_zero_iff_mem.mpr ha]
+              exact q.asIdeal.zero_mem) n)
+            (evalₐ I n x) := by
+  refine ⟨residueBranchesAlgEquiv I, ?_⟩
+  intro n x q
+  exact eval_residueBranchesAlgEquiv I n x q
+
 /-- A maximal branch of an Artinian residue quotient is an actual quotient of the
 original ideal-adic completion. Its map is the literal quotient-system map. -/
 theorem reindex_to_maximal_surjective {A : Type*} [CommRing A] [IsNoetherianRing A]

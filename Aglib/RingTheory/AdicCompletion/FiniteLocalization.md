@@ -55,6 +55,20 @@ maximal p containing I. It proves surjectivity of the literal quotient-system
 map from the I-completion to the p-completion. This theorem supplies the
 branch rather than taking a decomposition as a premise.
 
+`AdicCompletion.exists_residueBranchesAlgEquiv I` makes the full comparison
+available under the same Noetherian-A and Artinian-A/I hypotheses. It supplies
+an A-algebra equivalence from `AdicCompletion I A` to the product indexed by
+`q : MaximalSpectrum (A ⧸ I)`, with each literal branch ideal
+`q.asIdeal.comap (Ideal.Quotient.mk I)`. For every level n, input x, and branch q,
+evaluation of the q-component is exactly the quotient factor map induced by
+`I^n ≤ (q.asIdeal.comap (Ideal.Quotient.mk I))^n`, applied to `evalₐ I n x`.
+This includes level zero and retains the original quotient-system maps.
+The existence theorem reuses the existing private construction and evaluation
+proof; it exposes no private branch definitions or additional cofinality
+premises. Its current consumer is the full semilocal completion comparison
+in the Nagata analytic-unramifiedness argument, followed by the existing
+maximal-localization completion equivalences.
+
 The uncompleted ring C_p is not assumed finite over B. Neither ring must be a
 domain. No flatness, free rank, coefficient field, separability, nonzero ideal
 or discriminant hypothesis is needed. The result gives no full-cover degree

@@ -54,6 +54,405 @@ the 3100-line failure, accepts `0`, and still rejects an ordinary file at 1500.
 This is scoped linter evidence, not a full-library CI pass or a general automatic
 entry-classification mechanism. Future-entry automation is a separate change.
 
+## Keep one representation of module sections
+
+On 2026-10-23, the initial arbitrary-section nonvanishing implementation
+reached the standard 200000-heartbeat limit at `whnf` while elaborating
+restriction composition. This was an elaboration timeout. The accepted
+[Nonvanishing](../Aglib/AlgebraicGeometry/Modules/Invertible/Nonvanishing.lean)
+implementation states the comparison using one explicitly typed
+`M : X.Modules`, changes the goal to its actual presheaf morphisms, and
+applies the functor law:
+
+```lean
+change (M.presheaf.map (homOfLE k).op ≫ M.presheaf.map (homOfLE h).op) s =
+  M.presheaf.map ((homOfLE k).op ≫ (homOfLE h).op) s
+rw [Functor.map_comp]
+```
+
+This avoids asking elaboration to identify differently presented section
+carriers while also reconstructing the composite restriction. In related
+scalar and zero-section proofs, give `L.val` an explicit `X.Modules` alias
+before using `.presheaf`, and retain that same `M.presheaf.map` expression
+through the calculation. The bare expression `L.val` has syntactic type
+`SheafOfModules`; switching representations in the last step introduced
+field-projection errors or unnecessary conversions.
+
+The original candidate `93b8d319` failed in native run
+`remote-b5b40b72db8f4d7398c2fb40e082f3d3`. The complete repaired module,
+SHA-256 `0b00b8a1d47a07013706469cf05ce96e797ffd3e759da8701aafbc045987b590`,
+passed ordinary native compilation in
+`remote-9fcb2011c37746649cfe2ac83c040e1a`: one compiler invocation and
+11.14 seconds for the remote build action. All declarations retained the
+standard heartbeat budget and their original maps and hypotheses. Several
+proof repairs and cache conditions differ between the runs, so these
+observations establish removal of the timeout, not a controlled speedup
+ratio or a general attribution of compilation cost.
+
+When the same boundary occurs elsewhere, align the actual module object,
+section carrier and morphism presentation before applying a narrowly typed
+naturality or composition lemma. Record the successful ordinary producer
+compilation and its actual consumers under [normal proof iteration](DEVELOPMENT.md#normal-task).
+
+## Preserve regular equations through conormal comparisons
+
+On Lean 4.34.1, the unipotent-overlap comparison in
+[RankTwoExtension/Conormal](../Aglib/AlgebraicGeometry/ProjectiveBundle/RankTwoExtension/Conormal.lean)
+exceeded the default 200000-heartbeat limit during ordinary kernel checking
+of `overlapConormalMaps_coordinate`. Abstract helpers, aligned section
+carriers and a shared canonical map alone had not closed the specialization.
+
+The passing implementation states both the abstract producer and concrete
+comparison through the same regular definition `GlobalSectionImagesEq`.
+Its arguments are the actual module objects, morphisms and original section.
+The abstract frame-extensionality consumer accepts that same proposition;
+its final application therefore retains the equation boundary at the
+concrete spectral modules. Applying a wrapper to only one side would not
+provide the same boundary. This follows the existing `CompEq` pattern below
+and the pinned [kernel reduction hints](https://github.com/leanprover/lean4/blob/v4.34.1/src/Lean/Declaration.lean#L17-L47).
+No new trace was collected, and no upstream compiler defect is established.
+
+The localization calculations also use `Sections.translationOverlapPolynomial`
+as the denominator of every inverse and lift. A separate
+`overlapDenominator_algebraMap` states its coefficient equation using an
+explicit `change` and ring-homomorphism laws. This avoids requesting an
+instance for a differently expanded denominator inside an inverse argument.
+The original maps and mathematical hypotheses are unchanged.
+
+The failed source
+`7b76a0eca7ab9cc764e6f32ac9c4dc686f6594c207897b02c1be38acf1d72f9e`
+in native run `remote-f907e22742434203a1e1b46e479c1083` recorded the kernel
+timeout at line 543, alongside denominator and rewrite errors. Source
+`66f4b3a59348f687359b722c43295c569f9cd44843485c61d004d6037c80781e`
+passed the complete Conormal module in 65 seconds in native run
+`remote-ba6b25fe06e741aba407d12e644df10d`, with standard budgets and a
+successful compiler exit. Other proof repairs and cache conditions differ,
+so this establishes removal of the timeout on that module, not a controlled
+speedup ratio or attribution to a single edit. The outer run failed on other
+modules, including the separate global `Conormal.Compatibility` candidate;
+that upper obligation was not covered by this pass.
+
+The subsequent global frame transport retained the same regular
+`FrameMapCompatible`, `FrameTransportSquare` and `PullbackFrameTransport`
+equations in its generic proofs and actual consumers. Its final bare
+`pullbackUnitIso_comp` rewrite still exhausted 200000 heartbeats at `whnf`.
+Source `40fd6ed9804fc95d8fb6456c4aa92821f01c9caaad2076a5196de222c04a98db`
+failed at line 593 in native run
+`remote-4235fb93c0fe44f1ab828326a8daff66`.
+
+Keep the typed naturality calculation and supply the exact composition fact
+`pullbackUnitIso_comp a j₀` through `congrArg`, rather than asking rewriting
+to infer the two scheme maps through the unit objects. After that repair and
+removal of one unused simp argument, source
+`edf1223ad5f5c00cc93161fbcb59fd92ecf9c4eee6c6e96e7cdd72567f98fc42`
+passed the complete
+[Compatibility module](../Aglib/AlgebraicGeometry/ProjectiveBundle/RankTwoExtension/Conormal/Compatibility.lean)
+in native run `remote-123316c95d424e5d98b249b27da5de4a`, reported duration
+278.45 seconds, at unchanged default budgets and without diagnostics.
+The original morphisms and short exact extension hypotheses are unchanged.
+This verifies the global conormal isomorphism and its original frame formulas;
+it does not prove the later H¹-injection, GR vanishing or surface capstones.
+No controlled timing improvement or profiled compiler-cause claim follows.
+
+## Preserve module types in finite normalization
+
+With Lean 4.34.1 and Mathlib `d13f23b`,
+`integralClosure.finite_scalar_quotient_of_complete_local_normal_dimLE_two`
+in [CompleteLocalSurface](../Aglib/RingTheory/IntegralClosure/PurelyInseparable/CompleteLocalSurface.lean)
+reached the standard 200000-heartbeat limit at `whnf`. Its finite assembly
+combined the literal product of local normalization images, the proved
+kernel equality and quotient finiteness. Correcting intermediate product
+instances alone had not closed this elaboration.
+
+The passing implementation uses the regular named type `surfaceLocalImages`
+and its named additive/module structures in both `surfaceToLocalImages` and
+`isNoetherian_surfaceLocalImages`. A private regular proposition
+`QuotientFinite Q` also appears in both the abstract kernel theorem and
+concrete surface producer. The abstract theorem proves it using Mathlib's
+`Submodule.CoFG.ker`; a separate abstract adapter matches the scalar
+submodule quotient with `QuotSMulTop` once. The final surface endpoint
+applies these shared statements. The private boundaries introduce no new
+mathematical premise: finite local images, the original coefficient
+actions, actual kernel and original hypotheses remain proved and unchanged.
+
+Source `bf29b1f1d43c3e175cac7212d498a4813c01e79550164ea6605daaa80f32c4d8`
+failed at `whnf` in native run `remote-ba6b25fe06e741aba407d12e644df10d`.
+The complete repaired module, source
+`8efdb286d5f297faa28e1191bd6ed57ed0c1cf133448389b8e571a667b851620`,
+passed ordinary native compilation in 25 seconds in
+`remote-df7e416c5dde4021b771d8c9cdddc29c`, at unchanged default budgets.
+The outer graph failed on other modules. This establishes removal of the
+tested timeout, not a controlled speedup, unique cause or general compiler
+defect. Finite-type Nagata stability and resolution boundedness are separate
+mathematical obligations.
+
+The [all-finite-extension wrapper](../Aglib/RingTheory/IntegralClosure/CompleteSurface.lean)
+encountered a related instance boundary at the concrete normal model
+`B = integralClosure R F`. Asking for `Module B (integralClosure B M)`
+reached the default 20000-heartbeat typeclass limit; manually choosing that
+module exposed a parent-structure mismatch in the trace finiteness theorem.
+Instead, `finite_of_finite_integral_model` proves the trace/transitivity and
+integral-model comparison with `B` an abstract ring parameter. The concrete
+consumer receives its conclusion over the original abstract base `R`.
+No finiteness premise is added: all normality, fraction-field, finite-model
+and separability hypotheses are supplied by the original field construction.
+
+The explicit-module candidate
+`138a15eb2b9b0c5bb47898d199b38d448f065f9ebc5f3ee72603ee50bcceb66e`
+failed in `remote-68314ede6d02463d9b66ea5eb8be5993`. The abstract-model
+version `a5558b461739c12d5958bbbf5d0b2e8afa51cc99e65c43884185d62b5f899e6a`
+passed the whole wrapper in 17 seconds in
+`remote-a32421a12426431ab6a42af7a2bda5a6`, with all default budgets. These
+observations verify the repair on this source; they are not a controlled
+comparison of individual instance-search paths or a general speedup claim.
+
+## Retain the original map in ideal-power comparisons
+
+The completed-base quotient comparison in
+[FiniteTypeLocalComparison](../Aglib/RingTheory/AdicCompletion/FiniteTypeLocalComparison.lean)
+originally normalized the native tensor `includeRight` from an `AlgHom`
+through its `RingHom`, then rewrote `Ideal.map_coe`. The power-equivalence
+declaration reached the default 200000-heartbeat `whnf` limit. The repair
+uses `Ideal.map_pow` directly with the original `includeRight`, keeping the
+same map in both the quotient producer and its consumers. Surjectivity is
+composed with the existing exact quotient-map equation.
+
+Candidate `dd06f3c14eb726e5444c61f03d616292541abc7132e81144d51e05e25819b3cb`
+failed in native run `remote-68314ede6d02463d9b66ea5eb8be5993`. Repaired
+source `4f11e3612242ef6443f0e5bcdefea7c194a7354f740bafaa1d31967f1d672cb0`
+passed the complete quotient-comparison module in 10 seconds in
+`remote-a32421a12426431ab6a42af7a2bda5a6`. Maps, hypotheses and budgets are
+unchanged. This covers the compatible quotient comparisons; localization,
+completed local rings and scheme stalk comparisons remain separate consumers.
+The observations establish removal of the tested timeout, without a
+controlled speedup or general attribution of compiler cost.
+
+## Retain native localization structures
+
+With Lean 4.34.1 and Mathlib `d13f23b`, the generic-ring comparison in
+[ArcTermination](../Aglib/RingTheory/Blowup/ArcTermination.lean) encountered
+a native `OreLocalization.instSemiring` versus fresh `CommRing` projection
+mismatch, with an unexposed `OreLocalization.instAdd` in the diagnostic.
+Its generic quotient-map specialization also exhausted 200000 heartbeats
+at `isDefEq`. Source
+`d98b1c8f0e6640f4f6843ace2b34d7bedba208728b4d2e18ecd410a703b03528`
+recorded these failures in `remote-1f49812de3c9446db53b7f46d94f6bd4`.
+
+The retained repair names the literal native localization with a regular
+`arcGenericLocalRing` definition and exposes its native ring, algebra,
+localization and local-ring instances consistently. Chart-map uniqueness
+uses its sufficient semiring target. One `genericQuotientLift f S`
+constructor serves both generic rings, and the comparison receives the
+same actual ring homomorphisms into an abstract target. It no longer
+converts between independently instantiated literal quotient maps.
+
+Source `f69d9776e231497a5951eac41d27ae67c6ab564cacd230c4bf78ce14925d4720`
+passed the complete module in 47 seconds in ordinary native run
+`remote-4da3d88998fa431d8ee02bfe0cd45601`, with unchanged premises, maps
+and default budgets. This removes the reported failures on that snapshot;
+it is not a controlled speedup or compiler-defect diagnosis. The outer
+graph failed elsewhere. Later minimal-generator and termination extensions
+have separate source identities and coverage; full arc termination was
+not proved by this pass.
+
+## Preserve both affine unit comparisons in tensor-section transport
+
+On the pinned Lean 4.34.1 / Mathlib `d13f23b7` basis, the actual affine
+presentation row in
+[AffineRow](../Aglib/AlgebraicGeometry/Blowup/ProjectivePresentation/AffineRow.lean)
+exhausted 200000 elaborator heartbeats at `whnf` in
+`pulled_tilde_spanSingleton`. Keeping the same unbundled module carrier at
+every occurrence was insufficient (`remote-fc6fcc504e1e44568d2087416ccce62b`).
+Carry both original `tildeSelf` comparisons explicitly. In particular the
+source unit is transported by the actual pullback of `tildeSelf R` followed
+by `pullbackUnitIso`; the proof no longer asks a concrete specialization to
+identify pullback of the associated scalar module with pullback of the unit.
+
+Concrete map-identity and unit congruence pastes then moved the timeout to
+`affine_tilde_unit_triangle` (`remote-80e660ecc8564cbc93647fae9ed5ffa7`).
+The successful boundary proves `unit_triangle_of_id` over an abstract functor,
+with the actual unit arrows and their identity equations as parameters. A
+single specialization uses the existing proved
+`affinePullbackTildeIso_unitToUnit`. The original unit maps, full tensor ideal,
+section reconstruction and epimorphic presentation remain the actual objects;
+the equations are proved witnesses, rather than additional assumptions.
+
+Exact Row source `a1b35d34009edc8eac0bf5f52c357e7fcd821f749c322117699a2c9b89bbcd2f`
+compiled in 72 seconds in `remote-1e5790e91c584985854cb1ff33475be9`, source
+snapshot `af9e59a97a25c21887eeee4ac29ff44ef8843e54dd01c4824de227bcec667a6b`,
+under the unchanged 200000-heartbeat budget. No opacity, trust, premise or
+resource-cap change, profiling or extra replay was used. The chart consumer
+failed separately in that graph; this evidence covers Row, not the completed
+projective embedding. Changed sources and failed baselines do not establish a
+controlled runtime improvement.
+
+## Retain the original pullback-row equation boundary
+
+On the same Lean 4.34.1 / Mathlib `d13f23b7` basis, the concrete affine
+restriction specializations in
+[Restriction](../Aglib/AlgebraicGeometry/Blowup/ProjectivePresentation/Restriction.lean)
+reached the default 200000-heartbeat `whnf` limit in both the quotient-cube
+and framed original-row comparisons. Native run
+`remote-72c0dd0ea2924206b5b28e7bf3d821ef` records those two failures. The
+abstract cube argument alone did not prevent expensive conversion when its
+result was pasted into the actual sheaf/module pipeline.
+
+Use the same regular `QuotientRestrictionEq` and `RowRestrictionEq`
+constructors in both the generic producer and concrete consumer. Their
+arguments are the actual module objects, frame comparisons, quotient maps
+and original sections. The concrete proof supplies established equations
+for those arguments; it introduces no extra mathematical hypothesis.
+Keep naturality at the exact component heads `(E.app M).hom` and
+`(E.app D).hom`. A small typed `framed_naturality_paste` lemma composes
+that equation with the original unit/frame/quotient arrows without asking
+a final concrete rewrite to reconstruct their representations.
+
+Restriction source
+`fe89dc56d4a309ae3cae6d48b05cd7e0fdd2975a2c0cdfcdcf5477b4bab72b80`
+passed ordinary native compilation in 301 seconds in
+`remote-0cb9da7407c44157992bcd73c41985b2`, source snapshot
+`577d7825be362af684667e2e6858ca1db5a6926544e93a794d8d86121c974de4`.
+Default budgets, original maps and full ideal were unchanged. The outer
+graph failed separately in ChartCoordinates, so this evidence covers
+Restriction and its original row equation, rather than the complete
+projectivity or contraction theorem. No profiling or extra replay was
+performed. Different source repairs and cache states preclude a controlled
+timing comparison or a general compiler-cause claim.
+
+## Keep the completed-stalk equation through specialization
+
+The tensor and arbitrary-scheme completed-stalk comparisons in
+[Spec/CompletionLocalRing](../Aglib/AlgebraicGeometry/Spec/CompletionLocalRing.lean)
+repeatedly reached the default recursion limit when a generic composite
+of ring equivalences was applied to the actual stalks. Naming the
+composite function alone did not close that boundary. Native run
+`remote-540c701dce1447df9d7a70b82004351c` records recursion failures in both
+the tensor and global specialization, alongside a separate affine-algebra
+carrier error.
+
+State the generic calculation and the concrete consumer through the SAME
+regular `CompletionImageEq` definition, with the actual equivalence,
+source/target completion maps, original stalk map and original element as
+arguments. Its content is exactly `e (sourceMap s) = targetMap (originalMap s)`.
+The `.eq` projection exposes that equality after an abstract equivalence
+has been obtained. This retains the original map equation without asking
+the specialization to normalize a newly expanded composite of stalk
+isomorphisms, localization maps and completion equivalences.
+
+For the affine chart, retain one raw ring carrier with its original
+commutative-ring structure, and build the actual base algebra on that same
+carrier. For the final point equation, retain the literal pullback and its
+original projection, evaluate the proved chart-base equation by typed
+`congrArg`, and compose explicit `Scheme.Hom.comp_apply` equations. Neither
+step adds a flatness, normality, finite-type or completion-isomorphism
+premise to the arbitrary-scheme completed-stalk comparison.
+
+Source
+`c8512946a69b5cad1b256cef8f274eae2f0a1edf293280ca38811abfbc39a894`
+passed the full Spec module in 20 seconds in
+`remote-0fb712b753214ed1bf3194b902d7a977`, source snapshot
+`42b0e59dd8b032e4dc3b2ec827ff4f1eb84d81099ba7fa8756ef6aa0379d76df`.
+The pinned toolchain and default budgets were unchanged. Coverage includes
+the actual completed-stalk equation, residue-fibre correspondence and the
+pointwise regularity comparison under the stated local finite-type
+hypotheses. A subsequent proper global-regularity adapter is a different
+source version and is not covered by this pass. Other modules failed in
+the outer graph. No profiling or replay was used; these observations do
+not establish a controlled speedup or a general compiler defect.
+
+## Specialize the whole arc argument after fixing its algebraic data
+
+The equal-count step in
+[ArcTermination/Descent](../Aglib/RingTheory/Blowup/ArcTermination/Descent.lean)
+repeatedly exhausted the default 200000-heartbeat `whnf` budget when its
+minimality and transformed-kernel equations were specialized to the actual
+localized arc ring. Merely naming the target ring, or sharing a kernel-span
+proposition while still specializing intermediate calculations separately,
+was insufficient. Native run `remote-c0a48689d3a74b3c9f52479f5fb84e97`
+records the remaining failure in the equal-count step.
+
+Move the entire algebraic argument into one generic producer with a fixed
+target ring, quotient map, localization structure and uniformizer. Keep
+`KernelSpanEq` as the exact original kernel/span equation in both the
+localization producer and the minimality/realization consumer. The actual
+instance is proved from the original chart and quotient composite; it is
+not an extra hypothesis about the arc. Specialize once, supplying those
+same native structures explicitly. Preserve the original raw power
+relation when extracting its exponent and unit, rather than confusing it
+with the outer relation object.
+
+Exact Descent source
+`6eca82a1c83ba6d2e874b83f65b6cf2df416c94dda543be4cde8ffc4550012f2`
+passed the whole module in 80 seconds in
+`remote-ad1455766c90484085f7debe96f7ff67`, source snapshot
+`847a187c5e3a40fb5026465ad82e7c6d47327c402767558d265858037e6eae15`.
+The pinned toolchain and default budgets were unchanged. This covers the
+actual strict measure, finite local-ring iteration, original scalar and
+quotient equations, and the regular-generic DVR supplier. It does not
+cover the subsequent comparison with original scheme point blowups or
+full surface resolution. Other proof repairs accompanied the structural
+change, so no controlled speedup ratio or profiled compiler cause follows.
+
+## Cache independent chart producers before concrete geometry
+
+When one concrete specialization blocks an incoming module, use its real
+mathematical interfaces to separate independent producers. In the blowup
+presentation, [ChartMap](../Aglib/AlgebraicGeometry/Blowup/ProjectivePresentation/ChartMap.lean),
+[RowCoordinates](../Aglib/AlgebraicGeometry/Blowup/ProjectivePresentation/RowCoordinates.lean)
+and [DegreeOneAugmentationChart](../Aglib/AlgebraicGeometry/Blowup/ProjectivePresentation/DegreeOneAugmentationChart.lean)
+were separated from the scalar Rees specialization. The original namespaces,
+actual maps and mathematical conditions were retained. Private coefficient
+and preimage data stayed private; only the actual current consumer interfaces
+were exported. The native Lake graph can retain each successful producer
+when another module fails.
+
+Run `remote-1b573df8ede942709d4c67dd6437e52e`, source snapshot
+`aad4d3dd3fa636465cf368351715da01715d27f8fd2a0a9132ceb39cbbdd16bf`,
+compiled ChartMap source `9e9765f2` in 3.4 seconds, RowCoordinates source
+`9341ad2b` in 197 seconds and DegreeOneAugmentationChart source `4afe0736`
+in 4.5 seconds, all at default budgets. ScalarChart failed separately;
+its concrete consumer, embedding and final contraction theorem were not
+covered. These are scoped reusable successes, not a completed-contraction
+claim. Source and proof changes differ from the predecessor monolith,
+so these measurements do not establish a controlled runtime improvement.
+No standalone extra check, replay, client or profiling stage was added.
+
+## Construct the tensor comparison inside the shared chart witness
+
+The actual scalar Rees-chart triangle in
+`Blowup/ProjectivePresentation/ScalarChart` exhausted the default 200000
+heartbeats after the independent chart producers had compiled. Sharing only
+`ChartTriangleEq` at the public producer and consumer still failed in
+`remote-cd0528cad14b4f25bbce7027db079eae`. The first shared arrow witness
+also failed in `remote-c854a529f942462a9cb03811e9b9e91d`: its Rees
+specialization compared an independently constructed scalar `RingEquiv`
+with the generic witness's expected tensor/localization types. That source
+also contained an unavailable private-helper reference.
+
+The successful `gradedChartArrowWithEquation` takes the original Away
+algebra equivalence and constructs the actual tensor ring comparison
+inside the generic constructor. It proves the coefficient square there,
+pastes the native Cartesian chart square with the public Spec-square
+lemma, and returns the actual chart arrow together with its literal value
+equality and original scalar-map triangle. `scalarChartToProjData`
+specializes this one constructor; the public arrow and both proofs project
+the same witness. The actual chart-frame and augmentation consumers retain
+the value equality as well as the projection triangle. The full tensor
+Rees algebra, original row and geometric hypotheses are preserved.
+
+In `remote-d74407bf6e1847f1842de9dd12c41ae9`, source snapshot SHA-256
+`d3d754cb7deb6ce97d26c4d6c8e04cc3bada9c21145f064c9de64c3a62e9d8fa`,
+`ScalarChart.lean` SHA-256
+`a6306d446833da8fded31f22e9fb03b5ddd0b8c113543fcac649dacda2e63db4`
+compiled in 128 seconds and its actual `ChartCoordinates.lean` consumer
+SHA-256 `b5c032224be360aeece4818bd5902d82cac0dddf1e203d522a205ab637f4e378`
+compiled in 113 seconds. Both used default heartbeat/synthesis budgets and
+unchanged resource ceilings. This reuses ordinary proof-iteration evidence;
+no profiling, replay, separate client run or controlled benchmark was added.
+The whole Proper graph then failed in the newly reached `Embedding` module
+on separate interface and instance errors, so this records the chart and
+coordinate passes only, with no general-contraction completion claim.
+
 ## What the measurements establish
 
 The successful [cold CI run](https://github.com/kangxyz/aglib/actions/runs/38711518878)
@@ -1288,12 +1687,14 @@ boundaries, file-wide backward-defeq settings and implicit simplifier equality
 proofs are diagnostic candidates, not measured causes. The last declaration
 only transports an extension-by-zero component, so derived categories alone
 cannot explain all three sites. Use the focused procedure above to locate the
-named kernel task on the next otherwise-needed replay. A narrowly explicit
-equality certificate or abstract component calculation needs its own kernel
-check, component consumers and timed comparison before adoption.
+named task during the next otherwise-needed native compilation. A narrowly
+explicit equality or abstract component calculation needs successful ordinary
+compilation of the affected producer and actual consumers before adoption.
+Keep separate profiling or controlled comparisons to an explicitly requested
+performance investigation; they are not another acceptance chain.
 
 
-## Isolate lint processes when checking several module origins
+## Historical selected-origin lint measurements
 
 Lean 4.34.1's builtin lint driver imports a server-level environment for each
 selected module. The pinned Batteries driver also imports an environment per

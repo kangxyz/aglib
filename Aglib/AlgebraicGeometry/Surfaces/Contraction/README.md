@@ -1,4 +1,4 @@
-# Projective images of an exceptional Cartier curve
+# Contraction of exceptional Cartier curves
 
 This family, in `Scheme.Surfaces.Contraction`, constructs actual projective
 maps and their kernel-ideal images from specified Cartier-line data. The
@@ -111,7 +111,17 @@ target is regular, integral, Noetherian and projective over the same base.
 The full point field, pulled ideal, exceptional and structural triangles,
 and complement isomorphism are retained.
 
-Extension to quasi-projective neighborhoods still requires the actual
-compactification, open and line-bundle gluing, section descent and relative
-ampleness constructions. General surface factorization and the remaining
-resolution applications remain subsequent obligations.
+[Proper base assembly](Proper.md) starts with the original proper map
+`f : X ⟶ S` and a finite projective embedding of the specified inverse-image
+affine neighbourhood. [Open restriction](OpenRestriction.md) retains the
+original exceptional curve, ideal and conormal. [Proper gluing](ProperGluing.md)
+then constructs the contraction over the same base with its full `Spec k`
+point, pulled Cartier ideal, canonical blowup lift and complement
+isomorphism. The local point stalk is regular of dimension two; the
+stalk/complement lemma recovers global dimension two when the original
+source has dimension at most two.
+
+The finite neighbourhood embedding remains an explicit input of this
+proper-base assembly. Constructing it from properness alone is a further
+projectivity step. Surface resolution from singular initial data is also
+separate from these contraction results.

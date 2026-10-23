@@ -27,3 +27,18 @@ Henselian, Noetherian and excellence assumptions are unnecessary.
 projective dimension over a commutative Noetherian local ring. The supplied
 natural bound `n` witnesses finiteness; the conclusion bounds the actual
 projective dimension, rather than every such witness `n`.
+
+[CoefficientSection](CoefficientSection.md) constructs sections of the original
+residue map in equal characteristic, including arbitrary imperfect residue
+fields. [CohenRing](CohenRing.md) constructs a complete characteristic-zero DVR
+with any prescribed prime-characteristic residue field and the original prime
+as uniformizer. [CohenMap](CohenMap.md) lifts its actual residue point to an
+injective local map into the original complete mixed-characteristic domain.
+
+[ParameterIdeal](ParameterIdeal.md) constructs maximal-radical parameter sets
+in Noetherian local rings. In a local domain of dimension at most two, any
+prescribed nonzero nonunit extends to such a pair; its intermediate principal
+quotient need not be regular or reduced. The
+[completed parameter map](../AdicCompletion/CompleteParameterMap.md) preserves
+these original maps and uses the residue and parameter equations to derive
+finiteness.

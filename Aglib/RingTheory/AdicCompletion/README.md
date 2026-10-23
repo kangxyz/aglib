@@ -178,3 +178,26 @@ retains the finite candidate's original bounded map to `N`, its specified
 completion equivalence and their commuting equation. The affine Grothendieck-existence
 construction uses these comparisons; finiteness of an arbitrary completed
 module over the uncompleted ring is not a conclusion.
+
+## Local regularity and actual finite-algebra descent
+
+[RegularLocalRing](RegularLocalRing.md) identifies regularity and dimension of
+a Noetherian local ring with those of its original maximal-adic completion.
+[The completed-stalk comparison](../../AlgebraicGeometry/Spec/CompletionLocalRing.md)
+retains the actual scheme point, scalar map and proper global regularity
+comparison. [PrincipalDiscreteValuationRing](PrincipalDiscreteValuationRing.md)
+constructs the literal principal completion and its original residue comparison.
+
+[CompleteParameterMap](CompleteParameterMap.md) completes an original local
+parameter map into a complete Noetherian local ring. Maximal-radical image and
+original residue surjectivity derive module finiteness; a regular source and
+matching finite dimensions derive injectivity.
+
+[FiniteReducedDescent](FiniteReducedDescent.md) descends reducedness of the
+actual base completion along an original finite injective algebra map when
+the actual completed maximal localizations are reduced. Its branch comparison
+uses the public all-level evaluation interface of
+[FiniteLocalization](FiniteLocalization.md).
+[AssociatedPrimeCriterion](AssociatedPrimeCriterion.md) gives analytic
+reducedness criteria with their actual associated-prime DVR and
+reduced-prime-completion inputs explicit.
