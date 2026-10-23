@@ -385,3 +385,14 @@ The finite map itself need not be a closed immersion. The
 [projective Chow modification](../Morphisms/Proper/Chow/Projective.lean) is the
 current geometric consumer, feeding
 [proper coherent Grothendieck existence](../Cohomology/GrothendieckExistence/Proper.md).
+
+## Binary-form multiplication
+
+[BinaryFormProduct](BinaryFormProduct/README.md) constructs the actual coefficient
+morphism `(P¹_R)^n → ProjectiveSpace R (ULift (Fin (n + 1)))`. It is finite and
+surjective over every commutative ring and for every `n`, including zero; the
+coordinate formulas use the coefficients of `∏ i, (x i * T + y i * U)`. Its
+original coefficient-map square is cartesian for every homomorphism of
+commutative rings `σ : R →+* S`, with the source and target base-change maps
+retained. No flatness, reducedness, characteristic or factorial-invertibility
+hypothesis is required.

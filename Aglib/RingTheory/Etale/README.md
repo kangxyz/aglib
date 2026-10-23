@@ -93,3 +93,12 @@ an arrow from any prescribed initial stage. No flatness or injectivity of
 the transition maps is imposed. The
 [scheme-limit object descent](../../AlgebraicGeometry/Morphisms/FiniteEtale/Descent/LimitObjects.lean)
 uses these lower algebraic constructions.
+
+## Artin–Schreier root algebra
+
+[ArtinSchreier](ArtinSchreier.lean) owns the actual finite free quotient
+`R[X] / (X^p - X - a)` and its faithful scalar action for any commutative
+ring. If `(p : R) = 0`, the quotient is étale, including when `R` is the zero
+ring. The scheme root-cover consumer belongs to
+[EtaleCohomology/ArtinSchreier](../../AlgebraicGeometry/EtaleCohomology/ArtinSchreier/README.md);
+the full additive coefficient sequence is not asserted there.

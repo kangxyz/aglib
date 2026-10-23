@@ -49,3 +49,11 @@ The new bounded-below sources are [DirectImage](DirectImage.lean),
 [BaseChangeMap](BaseChangeMap.lean), and [Derived base change](Derived/BaseChange.lean).
 They retain the original maps and the actual canonical comparison data; their
 stated boundaries are not a proper-base-change theorem.
+
+## Further small-etale inputs
+
+| Input | Scope and owner |
+| --- | --- |
+| [Strictly local](StrictlyLocal/README.md) | For henselian local rings with separably closed residue field: arbitrary jointly surjective étale families split, terminal covering sieves are maximal, and original positive-degree `Sheaf.H` vanishes for arbitrary value and Ext universes under native existence assumptions. These are suppliers, not a proper-base-change theorem. |
+| [Artin–Schreier](ArtinSchreier/README.md) | Actual finite étale surjective root covers for global sections when the prime maps to zero; the lower finite/free root algebra is owned by [RingTheory/Etale](../../RingTheory/Etale/README.md). The full additive sheaf sequence remains open. |
+| [Binary-form product](../ProjectiveSpace/BinaryFormProduct/README.md) | The actual finite surjective map to projective space has a cartesian coefficient-map square under every commutative-ring map and every degree `n`, including zero. This is an available projective geometric input, not a proper-base-change theorem. |

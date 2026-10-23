@@ -12,3 +12,8 @@ The lower subjects are formal coproducts, abelian coefficients and actual sheaf/
 | [Slice](Slice/README.md) | Exact slice adjunction, free-representable Ext comparison, original maps and `H'`; concrete consumer is `Slice/Etale`. |
 | [ModuleCoefficients](ModuleCoefficients/README.md) | Original module/abelian comparison, actual injective acyclicity, evaluation and slice maps; concrete consumer is `ModuleCoefficients.Etale`. |
 | [Hypercohomology](../Hypercohomology/README.md) | Generic free-representable and degree-zero ordinary-cohomology comparison providers. |
+
+[SplitTerminal](SplitTerminal.lean) owns the generic section-surjectivity
+supplier: it constructs the local-image subgroup subsheaf inside the target.
+The actual strictly-local small-etale consumer is
+[EtaleCohomology/StrictlyLocal](../../../AlgebraicGeometry/EtaleCohomology/StrictlyLocal/README.md).

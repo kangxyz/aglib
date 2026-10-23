@@ -174,6 +174,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Naturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Ordinary
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OverMap
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Restriction
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitTerminal
 public import Aglib.CategoryTheory.SmallModel.Abelian
 public import Aglib.CategoryTheory.SmallModel.Exact
 public import Aglib.CategoryTheory.SmallModel.Functor

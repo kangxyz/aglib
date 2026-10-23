@@ -1270,3 +1270,71 @@ they do not run another per-origin acceptance chain. Reuse successful provider
 compilation after a lint failure and check only changed or missing coverage.
 Historical per-origin and current production results retain their distinct input
 and predicate bases; this migration does not itself measure a speedup.
+
+## Binary-form section and geometric-point typing
+
+On Lean 4.34.1 and Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612`, the new
+`ProjectiveSpace.BinaryFormProduct.Fibers.surjective_of_geometric_point_lifting`
+proof exhausted 200000 elaborator heartbeats at `whnf` in
+`remote-e0d45d58b1ae4817876f8ce2b2f66f61`. The final application of
+`Scheme.fromSpecResidueField_apply` had only inferred arguments. The successful
+proof explicitly names the point obtained through the original
+`Spec.algebraMap`, supplies the original residue point and both explicit
+arguments to the native lemma, and annotates categorical pullbacks occurring
+inside `Finite` as `: Scheme`. The latter annotations prevent elaboration
+through the category of types. The scope owner recorded the unchanged geometric criterion compiling
+in 4.7 seconds in `remote-b24285e7546a4c7ba4ad15c6087a07db`.
+
+The same run exposed a separate `Lean.Meta.acLt` heartbeat failure in
+`BinaryFormProduct.LocalCoordinates.transitionUnit`, where
+`simpa only [mul_comm] using hzw` compared concrete section-ring products.
+The exact term `(mul_comm w z).trans hzw` proves the same inverse identity.
+The scope owner recorded `LocalCoordinates` compiling in 5.1 seconds in
+`remote-095c0a8fd69f4c3aa97f9e7764122554`. The upstream
+[simplifier implementation](https://github.com/leanprover/lean4/blob/master/src/Lean/Meta/Tactic/Simp/Rewrite.lean)
+shows permutation-rule ordering through `acLt`; that current source supplies
+background, without establishing a defect or an applicable upstream fix in
+the pinned compiler.
+
+The final finite/surjective endpoint batch
+`remote-36e7150d5e5e4dce8167addfc4fc81ed` compiled four changed leaves with no
+diagnostics on source digest
+`a2769aeb58683a14eaaa45e52a11d27d1bed2555759e5afd58e007bd8bd13a8f`.
+All original maps, universes and mathematical conditions are retained, with
+the standard heartbeat budget. These are successful proof repairs, not a
+matched benchmark or a compiler-defect diagnosis; no extra acceptance run
+was used.
+
+## Typed evaluation of coefficient-map composites
+
+The same typed-transport boundary also applies to evaluating concrete
+represented-coefficient pullback equalities. The development provider
+`EtaleCohomology/H0/ProperHenselian/Sections` exhausted 200000 elaborator
+heartbeats at `whnf` when `ConcreteCategory.congr_hom` specialized the final
+concrete unit/comparison composite. The scope owner observed this in
+`remote-a435e19647de4064a96b9a7dbadcc452` and
+`remote-e7a6a8ffcc8d40558b0e9df7db85b6ad`.
+
+Keep the complete original arrows, input and output as parameters of a generic
+helper:
+
+```lean
+private theorem eval_composite_of_eq {P Q R : AddCommGrpCat.{v}}
+    (p : P ⟶ Q) (q : Q ⟶ R) (r : P ⟶ R) (h : p ≫ q = r)
+    (x : P) (y : R) (hr : r x = y) : q (p x) = y :=
+  (ConcreteCategory.congr_hom h x).trans hr
+```
+
+The concrete use supplies the proved categorical equality and a reflexive
+pure represented-output equation. The original pullback, represented-sheaf
+base-change isomorphism, coefficient unit and terminal transport are retained;
+no concrete inverse-image carrier has to be reconstructed inside evaluation.
+The owner recorded one successful provider frontend in 8.17 seconds in
+`remote-d28c35d131cf46d6b38802fcabe27be4`, on source SHA-256
+`d5e6e1e087d66bd805dab2c0e6d19f91ad4817437c25d4a4adcc52cee6326469`,
+without a heartbeat increase. This is evidence for the actual completed
+section-comparison provider. Its subsequent proper-henselian H0 and torsor
+consumers were not completed by that invocation. These observations extend
+the existing typed-transport finding; no matched benchmark or extra run was
+introduced for the note.
