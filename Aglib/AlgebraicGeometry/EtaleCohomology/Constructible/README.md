@@ -1,13 +1,43 @@
-# Generic and finite-presentation coefficient inputs
+# Constructible and finite locally constant coefficients
 
-This family supplies generic detection, finite Galois trivialization and
-finite-presentation results for actual small-etale abelian coefficients
+This family develops actual affine-local constructibility, finite locally
+constant coefficients, generic detection, finite Galois trivialization and
+finite-presentation inputs on the original small-etale site, with coefficients
 `AbelianSheaf.{u,u+1}`. The generic-detection, normal-constant and
 field-trivialization declarations use the native namespaces
 `EtaleCohomology.GenericDetection`, `EtaleCohomology.NormalConstants`
 and `EtaleCohomology.FieldTrivialization` under
-`AlgebraicGeometry.Scheme`. The geometric finite-presentation declarations
-use `AlgebraicGeometry.Scheme.EtaleCohomology.Constructible`.
+`AlgebraicGeometry.Scheme`. Constructibility and its geometric suppliers
+use the prefix
+`AlgebraicGeometry.Scheme.EtaleCohomology.Constructible`. The ordinary FLC
+finite-presentability theorem lives in its parent `EtaleCohomology` namespace.
+
+## Actual constructibility and torsion
+
+[Basic](Basic.lean) defines `IsConstructible F` on any scheme: every affine
+open admits a finite partition by actual locally closed subschemes with
+constructible, pairwise disjoint images covering that open, and the original
+inverse image of `F` on each part is finite locally constant. This is the
+abelian-sheaf clause of [Stacks 03RW](https://stacks.math.columbia.edu/tag/03RW).
+`ConstructiblePartition` retains the actual schemes, immersions and
+coefficient restrictions; empty strata and the empty partition of the empty
+scheme are allowed. Coefficient isomorphisms transport the same partition.
+Actual FLC and finite constant coefficients give examples on every scheme.
+
+On qcqs `X`, [Basic/FiniteCover](Basic/FiniteCover.lean) constructs
+`finiteLocallyClosedCover F hF`. Its finite family has actual immersions,
+constructible images covering `X`, and FLC original restrictions. The
+pieces may overlap: this is a finite cover, with no global disjoint partition
+asserted.
+
+[TorsionColimit/ConstructibleTorsion](TorsionColimit/ConstructibleTorsion.lean)
+proves `finite_geometricStalk_of_isConstructible` for every original
+geometric point `η : Spec Ω ⟶ X`, where `Ω : Type u` is a separably
+closed field. It uses actual field-point factorizations through the immersions and
+the original inverse-image stalk comparison.
+`isTorsion_of_isConstructible` then gives internal torsion on arbitrary
+`X`, without a qcqs or cohomology premise. These results do not export
+a uniform positive global annihilator.
 
 ## Generic restriction
 
@@ -54,6 +84,35 @@ For any field `K : Type u`,
 requires no prescribed marking, perfection or invertibility of the coefficient
 order. Points used to obtain a chart lift provide existence witnesses.
 
+## Finite constant cogenerators on a connected base
+
+[FiniteCogenerators/LocallyConstant](FiniteCogenerators/LocallyConstant.lean)
+works with `F : AbelianSheaf.{u,u+1} X`,
+`hF : IsFiniteLocallyConstant F` and `ConnectedSpace X`.
+`finiteEtaleTrivialization F hF` constructs a finite étale surjection
+`f : Y ⟶ X`, a finite `A : AddCommGrpCat.{u+1}`, and an actual
+isomorphism `e` from `(inverseImage f).obj F` to the original small-etale
+constant sheaf on `Y` with value `A`.
+
+`FiniteEtaleTrivialization.embedding` is the original map
+
+```lean
+(inverseImageAdjunction f).unit.app F ≫
+  (directImage f).map e.hom
+```
+
+from `F` to the original direct image of that finite constant coefficient.
+`mono_embedding` makes it monic, and
+`exists_finite_constant_embedding` exports the produced cover, value and
+monomorphism. No Noetherian, normality, perfectness, coefficient-order or
+marking premise is added. The connected-base hypothesis is retained;
+qcqs alone does not replace it or supply finitely many connected components.
+
+The separate `mono_unit_of_finiteLocallyConstant` theorem applies on
+arbitrary schemes to an actual FLC coefficient and an actual
+`f : Y ⟶ X` with `Flat f` and `Surjective f`. Its conclusion
+concerns the literal `(inverseImageAdjunction f).unit.app F`.
+
 ## Finite local constancy on a qcqs base
 
 For a qcqs `X : Scheme.{u}` and an actual
@@ -81,9 +140,8 @@ marking, coefficient-order invertibility or Noetherian hypothesis is required.
 
 Existence of an explicit finite-`ZMod` generator/relation presentation
 remains a separate question. Ordinary finite presentability for these finite
-locally constant coefficients does not require that presentation. Finite
-cogeneration and finite presentability of general constructible coefficients
-remain open.
+locally constant coefficients does not require that presentation. General
+constructible finite cogeneration and finite presentability remain open.
 
 ## Explicit presentations on qcqs étale objects
 
@@ -108,5 +166,13 @@ families.
 The lower
 [generic finite-presentation family](../../../CategoryTheory/Sites/Torsion/README.md)
 owns the scalar-quotient Hom equivalence and finite-colimit argument.
-Finite cogeneration and existence of these presentations for arbitrary finite
-locally constant or constructible coefficients remain open.
+Existence of these explicit presentations for arbitrary finite locally
+constant or constructible coefficients remains open.
+
+## Remaining geometric inputs
+
+General constructible finite presentability and finite cogeneration,
+constructible-stage torsion-colimit presentations, and global
+integral-to-finite approximation remain open. A positive global annihilator
+bound is not yet part of the available interface. The finite-cover,
+individual-stalk and connected-FLC results above retain their stated ranges.

@@ -1320,6 +1320,65 @@ the failed diagnostics do not state a numerical heartbeat budget. No source
 budget override, replay or new benchmark was used, and no speedup ratio or
 compiler-defect claim follows from the changed-source observations.
 
+### Higher exchange components: retain the whole transport equation
+
+The original higher-exchange consumer in
+[`Proper/Reduction/Composition`](../Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/Composition.lean)
+encountered a kernel `deterministic timeout` when a concrete `change` exposed
+its source isomorphism, mapped original derived mate and target isomorphism
+at once. On Lean 4.34.1 and Mathlib `d13f23b7`, run
+`remote-976f2775cb4446c5a5bb25b1d9d7739a` failed this Composition leaf
+(source `aae7ec921785deb277e91f4571ffadc411beee2762332361fad90c50f7efab6b`);
+Lake reported 152 seconds for the module. The standard 200000-heartbeat
+budget was retained, and no OOM was observed.
+
+The repair proves `isIso_app_of_whiskered_transport` over variable categories,
+functors and original transformations. It accepts the literal whole equation
+`δ = s.hom ≫ whiskerLeft J (whiskerRight β H) ≫ t.hom` and invertibility
+of the original `β.app (J.obj X)`. Only that typed helper expands the native
+whiskering component. The concrete consumer supplies the existing whole
+`higherBaseChangeMap_eq_transport` and preserves its original coefficient,
+source/target comparisons, derived mate and four derived-category universes.
+It needs no concrete component conversion or new premise.
+
+The repaired source
+`1b0b3c0166c0ade282a78d7ac80bc78029920e179f96f26f5374f524eeab856d`
+compiled in 5.5 reported module seconds in
+`remote-e3f48a4100624625bb4632ca1f4d0ce0` with the unchanged standard budget.
+That batch accepted Composition and Retracts but failed a separate record-layout
+error in InjectiveRetract; it was not a successful three-leaf run. These are
+source-bound incremental observations, not a controlled speedup benchmark,
+compiler-defect claim, new profile or kernel replay.
+
+### Finite Ext tests: isolate witness selection
+
+In
+[`Ext/BiproductComparison`](../Aglib/Algebra/Homology/DerivedCategory/Ext/BiproductComparison.lean),
+the actual `Ext.addEquivBiproduct` source and target equivalences were already
+typed at their original coefficient carriers. Selecting componentwise
+preimages inside the specialized surjectivity proof still exhausted the
+standard 200000 heartbeats at `whnf`. This occurred in
+`remote-8c4ef9011fcb408e8cb017d79e1d1137`, source snapshot
+`4ec8c76c3be06c267eba21d07018946fabe806ddeb4ab4d467c468df33c99b35`;
+the subsequent unknown-constant error was cascading.
+
+The validated repair puts witness selection and inversion of the product
+equivalences in private `surjective_of_pi_transport`, parameterized by plain
+functions, two actual equivalences and their literal component equation.
+The Ext consumer supplies its original comparison, native additive
+equivalences and original coefficient-naturality equation. The public
+statement retains arbitrary finite-index universes, independent Ext sizes,
+a preadditive source and an additive coefficient functor; no premise or
+budget is added.
+
+The exact repaired leaf
+`8851e330dd2ae53f1b26f3876078379849302c51a5f3e9d12eb3a6697229fb77`
+compiled without diagnostics in
+`remote-1aca77219a7c4e619c3b814d976be5be`, whose source manifest
+`6b15739f5f2dc67137f8e663a118c2b0904f8cd1a47f96768f1d2a127a9fdd1d`
+contains that leaf hash. Its one frontend succeeded; recorded wall time was 7.7 seconds. These are changed-source compilation
+observations, not a controlled benchmark, new diagnostic run or kernel replay.
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks
