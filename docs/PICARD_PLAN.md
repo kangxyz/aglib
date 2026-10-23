@@ -101,7 +101,7 @@ Paths are relative to the respective `Aglib/` or `Mathlib/` source root.
 | Module sheaves | Mathlib `AlgebraicGeometry/Modules/Sheaf.lean`: `Scheme.Modules` (36), pullback/pushforward (165–188), `Scheme.Modules.pseudofunctor` (319) | Descent pseudofunctor |
 | Topologies | Mathlib `AlgebraicGeometry/Sites/BigZariski.lean` (57), `Sites/Fpqc.lean`: precoverages (40), fpqc/fppf subcanonical (87, 97), effective epimorphisms (114, 123); `CategoryTheory/Sites/Over.lean` (240) | Representables are sheaves; quotients |
 | Sheafification | Mathlib `CategoryTheory/Sites/LeftExact.lean` (313): `HasSheafify J (Type (max u v))`, hence values in `Type (u+1)` on `Over S` | `Pic_{(fppf)}` |
-| Zariski representability | Mathlib `AlgebraicGeometry/Sites/Representability.lean` (208), for `Sheaf zariskiTopology (Type u)` | Gluing `Pic^φ_m` |
+| Zariski representability | Mathlib `AlgebraicGeometry/Sites/Representability.lean` (208), for `Sheaf zariskiTopology (Type u)`; Aglib's `Sites/OverRepresentability` gives the `Over S` and locally Noetherian forms in any universe | Gluing `Pic^φ_m` |
 | Descent formalism | Mathlib `CategoryTheory/Sites/Descent/`: `DescentData` (59), `IsStack` (49), `IsStack.of_precoverage` (`Precoverage.lean` 410); no concrete stack instance | Target 3 |
 | Ring descent | Mathlib `Algebra/Category/ModuleCat/Descent.lean` (59): extension of scalars along a faithfully flat map is comonadic; effectivity is a TODO there. Aglib `RingTheory/Descent`: algebra descent data and faithfully flat invariants | Target 3 |
 | Morphism descent | Mathlib `AlgebraicGeometry/Morphisms/LocalFlatDescent.lean` (35–47), `FlatDescent.lean` | Properties of `Pic` |
@@ -461,8 +461,12 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
   - An independent statement and source-correspondence review on 2026-10-17
     found every checked definition and statement corresponding. Its
     documentation repairs are applied.
-  - Open from M1: small values of the fppf sheafification, which the Zariski
-    representability adapter needs. Generic helpers to move to lower owners:
+  - The `Over S` Zariski-representability adapter is done (`Sites/OverRepresentability`):
+    it glues directly in `Over S`, so the values may lie in any universe and no smallness
+    is needed. It has a variant on full subcategories of a property that passes to open
+    immersions and is local for open covers (C8: locally Noetherian test schemes) and a
+    form over an open cover of the base (Stacks 01JJ relative to `S`).
+  - Open from M1: generic helpers to move to lower owners:
     `Split.quotientEquiv`, `Scheme.Modules.isIso_of_forall_bijective_app` and
     the module helpers of `StructureSheaf/Coefficient`.
 - **M2 in progress.**
@@ -620,8 +624,4 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
   - M4: the Thm 6.1 subfunctors of F13 (through a closed-subfunctor step for `X ⊂ P^n`),
     then `Div` open in `Hilb` (F14).
   - In parallel toward M5 and M6: the Plücker embedding (F8), `Gr(E, k)` and `P(E)` for
-    locally free `E`, the F15 cohomological lemmas, Zariski-local representability on
-    `Over S` and on locally Noetherian test schemes, and the F18 tangent-space core.
-  - The `Over S` Zariski-representability adapter: shrink the values, pass to
-    the total presheaf on schemes through `overEquivPresheafCostructuredArrow`,
-    then apply `Scheme.LocalRepresentability.isRepresentable`.
+    locally free `E`, the F15 cohomological lemmas and the F18 tangent-space core.
