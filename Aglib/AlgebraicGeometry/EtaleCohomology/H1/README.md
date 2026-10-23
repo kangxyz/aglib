@@ -15,10 +15,13 @@ quotient and its affine torsor carrier.
 specified fibre functor and marking. `MarkedComparisonTransport`, `Naturality`,
 `PointedNaturality`, `PointedFieldTransport`, `PointedCoefficientNaturality` and
 `CoefficientStalkBaseChange` transport the actual displayed comparison maps.
-Finite locally constant coefficients retain their positive globally invertible
-level, annihilator, local trivializations, markings, actual point and every
-explicit GC/FF hypothesis required by each theorem. No supplier is inferred
-from the presence of an abstract classification interface.
+The existing finite-representation and marked comparison interfaces retain
+their positive globally invertible level, annihilator, local trivializations,
+markings, actual point and every explicit GC/FF hypothesis required by each
+theorem. The separate proper-henselian results below apply to every actual
+finite locally constant abelian sheaf and impose no order-invertibility premise.
+No supplier is inferred from the presence of an abstract classification
+interface.
 
 Generic Kan extension and extension-pushout algebra live below this family in
 `CategoryTheory`; finite-etale sheaf descent lives in
@@ -32,3 +35,15 @@ fullness and the represented-coefficient comparisons remain inputs.
 [Kummer/PowerFiber](../Kummer/PowerFiber.lean) constructs the actual fibre torsor
 of a supplied power-equivariant multiplicative-torsor map. It retains positive
 level and invertibility of that level in the global sections.
+
+## Proper henselian finite coefficients
+
+[ConstantFinite](ConstantFinite/README.md) proves bijectivity of the original
+closed-residue pullback on `H1Etale` for every finite constant additive
+coefficient group, over any proper scheme above a henselian local ring. The
+constant coefficient is compared by the actual `inverseImageConstantIso`;
+source and target `HasExt` universes remain separate. The same H1 argument
+works for every actual finite locally constant abelian sheaf. The corresponding
+sections and original `H0` maps are documented in
+[H0/ProperHenselian](../H0/README.md). These finite-coefficient conclusions
+do not assert arbitrary-sheaf proper base change.

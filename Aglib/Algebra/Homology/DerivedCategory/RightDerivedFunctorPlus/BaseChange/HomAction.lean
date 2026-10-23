@@ -159,6 +159,17 @@ theorem normalizedMateHomActionEquation_actual
   dsimp only [NormalizedMateHomActionEquation]
   simpa only [Category.assoc, hb] using hp
 
+/-- Transport only the named target of the literal normalized-action equation. -/
+theorem normalizedMateHomActionEquation_congr_target
+    (β : R₁ ⋙ G ⟶ H ⋙ R₂) {A : C} {B : E} {K : D} {Z' W : F}
+    (d : G.obj A ≅ B) (e : L₂.obj B ≅ Z')
+    (r : L₁.obj A ⟶ K) (p : H.obj K ⟶ W) (b b' : Z' ⟶ W)
+    (hb : b = b') (he : NormalizedMateHomActionEquation adj₁ adj₂ β d e r p b) :
+    NormalizedMateHomActionEquation adj₁ adj₂ β d e r p b' := by
+  subst b'
+  exact he
+
+
 end HomAction
 section NativeConstants
 

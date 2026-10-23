@@ -118,4 +118,11 @@ theorem exchangeCoherence_chain_natTransport
   refine exchangeCoherence_chain_arrows d di hd h₁ h₂ h₃ h₄ h₅ ?_
   simp only [eqToIso.hom, eqToIso.inv, eqToHom_app, eqToHom_trans]
 
+/-- Remove the native unitor identity tails before specializing an identity square. -/
+theorem exchangeCoherence_remove_right_id
+    {C : Type*} [Category* C] {X Y Z : C}
+    (a : X ⟶ Y) (b : Y ⟶ Z) (c : X ⟶ Z)
+    (h : a ≫ (b ≫ 𝟙 Z) = c ≫ 𝟙 Z) : a ≫ b = c := by
+  simpa only [Category.comp_id] using h
+
 end CategoryTheory

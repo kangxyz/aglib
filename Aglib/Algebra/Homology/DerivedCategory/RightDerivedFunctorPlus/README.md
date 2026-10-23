@@ -79,10 +79,20 @@ The [actual right-derived Ext comparison](../ExtRightDerived.lean) and
 used by the scheme-specific [etale derived cohomology family](../../../../AlgebraicGeometry/EtaleCohomology/README.md).
 The resulting canonical `D+` and global-sections comparison retains the actual
 right-derived adjunction and unit. Higher maps and their degree-zero ordinary
-normalization are recorded by the consumer. The selected continuation also
-adds [ActualPasting](BaseChange/ActualPasting.lean),
-[HigherHorizontalEdges](BaseChange/HigherHorizontalEdges.lean), and the accepted
-[CoherenceDiagram](BaseChange/CoherenceDiagram.lean) comparison. These do not
-close the original `H1` pullback-square compatibility or the full
-ordinary/derived all-degree pasting; see the migration note for the exact
-source selection.
+normalization are recorded by the consumer. The D continuation also supplies
+[HigherHorizontalDiagram](BaseChange/HigherHorizontalDiagram.lean),
+[HigherWholePasting](BaseChange/HigherWholePasting.lean), and
+[WholeNormalization](BaseChange/WholeNormalization.lean). The ordinary
+`baseChangeMap_hComp`, `_vComp`, and `_vId` equations retain the native
+inverse-image/direct-image composition comparisons. The derived
+`derivedBaseChangeMap_hComp`, `_vComp`, and `_vId` equations retain the actual
+`D+` mates, adjunctions, and direct-image composition maps. The all-degree
+`higherBaseChangeMap_hComp`, `_vComp`, and `_vId` equations pass through the
+native higher source/target comparisons and homology of actual composite
+images. The vertical identity uses the native comparison and does not identify
+positive-degree derived image of an identity with the identity functor. The
+original H1 square is also supplied by `h1Pullback_square` and its canonical
+mate form `derivedBaseChangeMap_h1_square`. These identities do not assert
+exchange-map invertibility, proper base change, or unbounded derived scope. The independent `derived_archive_review` accepted the selected D sources;
+the principal-owned selected integration checks passed. See the
+migration note for the exact claim boundary.

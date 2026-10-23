@@ -179,4 +179,48 @@ theorem exchangeCoherence_whole_transport
         (eqToIso (congrArg P e₅₄)).inv = (eqToIso (congrArg P e₀₅)).hom := by
   simp only [eqToIso.hom, eqToIso.inv, eqToHom_trans]
 
+section WhiskeredComparisonChain
+variable {A B C D E F : Type*}
+  [Category* A] [Category* B] [Category* C] [Category* D] [Category* E] [Category* F]
+  {G₁ : A ⥤ B} {G₂ : B ⥤ C} {L₂ : C ⥤ D} {L₁ : B ⥤ E}
+  {H₂ : E ⥤ D} {L₀ : A ⥤ F} {H₁ : F ⥤ E}
+  {G : A ⥤ C} {M N : A ⥤ E} {P₀ D₀ E₀ N₀ O : A ⥤ D}
+  (γ : G ≅ G₁ ⋙ G₂) (δ : M ≅ G₁ ⋙ L₁) (ε : N ≅ L₀ ⋙ H₁)
+  (p : P₀ ⟶ G ⋙ L₂) (b₀ : G₁ ⋙ G₂ ⋙ L₂ ⟶ D₀)
+  (t₂ : D₀ ⟶ E₀) (c₀ : E₀ ⟶ G₁ ⋙ L₁ ⋙ H₂)
+  (t₁ : M ⋙ H₂ ⟶ N ⋙ H₂) (τ : P₀ ⟶ N₀) (u : N₀ ⟶ O)
+  (v : O ⟶ L₀ ⋙ H₁ ⋙ H₂)
+
+/-- Shared whole comparison equation retaining the native functor associators. -/
+def WhiskeredComparisonChainEquation : Prop :=
+  p ≫ (Functor.whiskerRight γ.hom L₂ ≫ (Functor.associator G₁ G₂ L₂).hom) ≫
+      b₀ ≫ t₂ ≫ c₀ ≫
+      (Functor.isoWhiskerRight δ H₂ ≪≫ Functor.associator G₁ L₁ H₂).inv ≫ t₁ ≫
+      (Functor.whiskerRight ε.hom H₂ ≫ (Functor.associator L₀ H₁ H₂).hom) =
+    τ ≫ u ≫ v
+
+/-- The component comparison equation with all associator identities removed. -/
+def WhiskeredComparisonChainAppEquation (X : A) : Prop :=
+  p.app X ≫ L₂.map (γ.hom.app X) ≫ b₀.app X ≫ t₂.app X ≫ c₀.app X ≫
+      H₂.map (δ.inv.app X) ≫ t₁.app X ≫ H₂.map (ε.hom.app X) =
+    τ.app X ≫ u.app X ≫ v.app X
+
+/-- Remove associator components while all functors and comparison isos are abstract. -/
+theorem whiskeredComparisonChain_app
+    (h : WhiskeredComparisonChainEquation γ δ ε p b₀ t₂ c₀ t₁ τ u v) (X : A) :
+    WhiskeredComparisonChainAppEquation γ δ ε p b₀ t₂ c₀ t₁ τ u v X := by
+  have hc := congrArg (fun η => η.app X) h
+  simpa only [WhiskeredComparisonChainAppEquation, NatTrans.comp_app, Iso.trans_inv,
+    Functor.isoWhiskerRight_inv, Functor.whiskerRight_app, Functor.associator_hom_app,
+    Functor.associator_inv_app, Category.comp_id, Category.id_comp] using hc
+
+/-- Extract a literal component equation without reducing any concrete comparison. -/
+theorem whiskeredComparisonChain_app_eq (X : A)
+    (h : WhiskeredComparisonChainAppEquation γ δ ε p b₀ t₂ c₀ t₁ τ u v X) :
+    p.app X ≫ L₂.map (γ.hom.app X) ≫ b₀.app X ≫ t₂.app X ≫ c₀.app X ≫
+        H₂.map (δ.inv.app X) ≫ t₁.app X ≫ H₂.map (ε.hom.app X) =
+      τ.app X ≫ u.app X ≫ v.app X := h
+
+end WhiskeredComparisonChain
+
 end CategoryTheory

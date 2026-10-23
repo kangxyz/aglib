@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherHorizontal
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherVertical
 
 /-! # Native comparison factors prove the higher horizontal transport edges
 
@@ -126,4 +127,92 @@ theorem mapped_horizontal_target_edge
   rw [hs]
 
 end Target
+/-- Assemble horizontal transport with the actual comparison arrows opaque.
+The middle coefficient change is proved from naturality, not assumed as an edge. -/
+theorem mapped_horizontal_pasting_actual
+    {C D₁ D₂ A₁ A₂ : Type*}
+    [Category* C] [Category* D₁] [Category* D₂] [Category* A₁] [Category* A₂]
+    (H₁ : D₁ ⥤ A₁) (H₂ : D₂ ⥤ A₂) (G : A₁ ⥤ A₂) (DG : D₁ ⥤ D₂)
+    (γ : DG ⋙ H₂ ≅ H₁ ⋙ G) (R : C ⥤ D₁) (Q : C ⥤ D₂)
+    (β₂ : R ⋙ DG ⟶ Q) {X Y : C} (p : Y ≅ X)
+    {U : D₁} (β₁ : U ⟶ R.obj X)
+    {A T : D₂} (a : A ⟶ DG.obj U) (d : A ⟶ T) (e : T ⟶ Q.obj X)
+    (hp : a ≫ DG.map β₁ ≫ β₂.app X = d ≫ e)
+    {U' V' : A₁} (iU : U' ≅ H₁.obj U) (iV : V' ≅ H₁.obj (R.obj X))
+    (iE : V' ≅ H₁.obj (R.obj Y))
+    (iS : G.obj V' ≅ H₂.obj (DG.obj (R.obj Y)))
+    (ht : iV.hom = iE.hom ≫ H₁.map (R.map p.hom))
+    (hs : iS.hom = G.map iE.hom ≫ γ.inv.app (R.obj Y))
+    {W : A₂} (iW : W ≅ H₂.obj (Q.obj Y))
+    (b₁ : U' ⟶ V') (b₂ : G.obj V' ⟶ W)
+    (hb₁ : b₁ ≫ iV.hom = iU.hom ≫ H₁.map β₁)
+    (hb₂ : b₂ ≫ iW.hom = iS.hom ≫ H₂.map (β₂.app Y))
+    {A' T' : A₂} (iA : A' ≅ H₂.obj A) (iT : T' ≅ H₂.obj T)
+    (a' : A' ⟶ G.obj U') (d' : A' ⟶ T') (e' : T' ⟶ W)
+    (ha : a' ≫ G.map iU.hom ≫ γ.inv.app U = iA.hom ≫ H₂.map a)
+    (hd : d' ≫ iT.hom = iA.hom ≫ H₂.map d)
+    (he : e' ≫ iW.hom ≫ H₂.map (Q.map p.hom) = iT.hom ≫ H₂.map e) :
+    a' ≫ G.map b₁ ≫ b₂ = d' ≫ e' := by
+  let iB := G.mapIso iU ≪≫ (γ.app U).symm
+  let iC := G.mapIso iV ≪≫ (γ.app (R.obj X)).symm
+  let iD := iW ≪≫ H₂.mapIso (Q.mapIso p)
+  have hc₀ : iC.hom = iS.hom ≫ H₂.map (DG.map (R.map p.hom)) := by
+    have hn := γ.inv.naturality (R.map p.hom)
+    simp only [Functor.comp_map] at hn
+    dsimp only [iC, Iso.trans_hom, Functor.mapIso_hom, Iso.symm_hom, Iso.app_inv]
+    rw [ht, G.map_comp, Category.assoc, hn, hs, Category.assoc]
+  have hc := mapped_horizontal_single_edge H₂ β₂ p.hom iS iW b₂ hb₂
+  apply mapped_horizontal_transport H₂ a (DG.map β₁) (β₂.app X) d e hp
+    iA iB iC iD iT a' (G.map b₁) b₂ d' e'
+  · exact ha
+  · exact mapped_horizontal_pullback_edge H₁ H₂ G DG γ β₁ iU iV b₁ hb₁
+  · change b₂ ≫ (iW.hom ≫ H₂.map (Q.map p.hom)) = iC.hom ≫ H₂.map (β₂.app X)
+    rw [hc₀]
+    exact hc
+  · exact hd
+  · exact he
+
+/-- The literal higher horizontal equation with its actual maps left opaque. -/
+def MappedHorizontalPastingEquation
+    {A B : Type*} [Category* A] [Category* B] (G : A ⥤ B)
+    {U V : A} {P Q W : B} (a : P ⟶ G.obj U) (b : U ⟶ V)
+    (c : G.obj V ⟶ W) (d : P ⟶ Q) (e : Q ⟶ W) : Prop :=
+  a ≫ G.map b ≫ c = d ≫ e
+
+/-- All higher exchange factors and the conclusion use the shared literal interfaces. -/
+theorem mapped_horizontal_pasting_actual_equation
+    {C D₁ D₂ A₁ A₂ : Type*}
+    [Category* C] [Category* D₁] [Category* D₂] [Category* A₁] [Category* A₂]
+    (H₁ : D₁ ⥤ A₁) (H₂ : D₂ ⥤ A₂) (G : A₁ ⥤ A₂) (DG : D₁ ⥤ D₂)
+    (γ : DG ⋙ H₂ ≅ H₁ ⋙ G) (R : C ⥤ D₁) (Q : C ⥤ D₂)
+    (β₂ : R ⋙ DG ⟶ Q) {X Y : C} (p : Y ≅ X)
+    {U : D₁} (β₁ : U ⟶ R.obj X)
+    {A T : D₂} (a : A ⟶ DG.obj U) (d : A ⟶ T) (e : T ⟶ Q.obj X)
+    (hp : a ≫ DG.map β₁ ≫ β₂.app X = d ≫ e)
+    {U' V' : A₁} (iU : U' ≅ H₁.obj U) (iV : V' ≅ H₁.obj (R.obj X))
+    (iE : V' ≅ H₁.obj (R.obj Y))
+    (iS : G.obj V' ≅ H₂.obj (DG.obj (R.obj Y)))
+    (ht : iV.hom = iE.hom ≫ H₁.map (R.map p.hom))
+    (hs : iS.hom = G.map iE.hom ≫ γ.inv.app (R.obj Y))
+    {W : A₂} (iW : W ≅ H₂.obj (Q.obj Y))
+    (b₁ : U' ⟶ V') (b₂ : G.obj V' ⟶ W)
+    (hb₁ : MappedTargetInverseEquation H₁ β₁ iU iV b₁)
+    (hb₂ : MappedTargetInverseEquation H₂ (β₂.app Y) iS iW b₂)
+    {A' T' : A₂} (iA : A' ≅ H₂.obj A) (iT : T' ≅ H₂.obj T)
+    (a' : A' ⟶ G.obj U') (d' : A' ⟶ T') (e' : T' ⟶ W)
+    (ha : a' ≫ G.map iU.hom ≫ γ.inv.app U = iA.hom ≫ H₂.map a)
+    (hd : MappedTargetInverseEquation H₂ d iA iT d')
+    (he : e' ≫ iW.hom ≫ H₂.map (Q.map p.hom) = iT.hom ≫ H₂.map e) :
+    MappedHorizontalPastingEquation G a' b₁ b₂ d' e' :=
+  mapped_horizontal_pasting_actual H₁ H₂ G DG γ R Q β₂ p β₁ a d e hp
+    iU iV iE iS ht hs iW b₁ b₂ hb₁ hb₂ iA iT a' d' e' ha hd he
+
+/-- Read the literal horizontal equation without unfolding any actual map. -/
+theorem mappedHorizontalPastingEquation_eq
+    {A B : Type*} [Category* A] [Category* B] (G : A ⥤ B)
+    {U V : A} {P Q W : B} (a : P ⟶ G.obj U) (b : U ⟶ V)
+    (c : G.obj V ⟶ W) (d : P ⟶ Q) (e : Q ⟶ W)
+    (h : MappedHorizontalPastingEquation G a b c d e) :
+    a ≫ G.map b ≫ c = d ≫ e := h
+
 end CategoryTheory

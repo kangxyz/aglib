@@ -849,6 +849,36 @@ comparison arguments throughout the concrete application, and move their
 canonical substitutions behind the generic boundary as well.
 
 
+### Native whiskering conventions for higher horizontal pasting
+
+The final 2026-10-23 continuation adds a precise convention to the same method.
+For nested coefficient prewhiskering and homology postwhiskering, the generic
+supplier must return the consumer's literal `whiskerLeft J (whiskerRight β H)`.
+Normalize `Functor.whiskerRight_left`, `whiskerLeft_twice` and
+`whiskerRight_twice` over abstract categories while retaining the required
+associators. Substituting concrete exchange arrows before this normalization
+left the delivering author's higher-horizontal witnesses at a kernel
+`deterministic timeout` in runs119 and121.
+
+Even a concrete `congrArg (whiskerLeft P)` factor proof could retain expensive
+conversion. `HigherWholePasting.mapped_horizontal_second_native` accepts the
+original unwhiskered source-comparison and exchange equations, constructs their
+whiskered forms in the abstract helper, and returns the native convention.
+`whole_second_reassociate` handles the last comparison-source association.
+Assemble the whole transformation before extracting its final component.
+
+The corrected generic provider compiled in delivery run123; run124 then
+compiled the raw concrete leaf. Final run125 compiled HigherWholePasting in
+2.9 seconds and the complete Derived/BaseChange consumer, including
+`higherBaseChangeMap_hComp`, in228 seconds. The two final source hashes are
+`513e0413705b92c3950dd8f0151fc63917d0e52a9a9fdee1196ef3386b8b3258`
+and `9833e77023b1d94956a783e83d2d89446e842dd864d112d91e19e79ab876ff31`.
+These are retained author observations from archive
+`etale-coherence-source-20261023T040650Z.tar.gz`, with source and log records;
+the failed diagnostics do not state a numerical heartbeat budget. No source
+budget override, replay or new benchmark was used, and no speedup ratio or
+compiler-defect claim follows from the changed-source observations.
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks
@@ -1338,3 +1368,29 @@ section-comparison provider. Its subsequent proper-henselian H0 and torsor
 consumers were not completed by that invocation. These observations extend
 the existing typed-transport finding; no matched benchmark or extra run was
 introduced for the note.
+
+
+## Shared full-preimage witnesses for action descent
+
+For the actual finite-cover action and positive difference maps in
+`EtaleCohomology/H1/ConstantFinite/ActionDescent`, specializing
+`congrArg (fun k => k.hom) (F.map_preimage ...)` directly at the concrete
+coefficient/carrier products exhausted 200000 heartbeats at `whnf` and
+`isDefEq` in `remote-aa8b53b3090e4d51949e309f2e1ddfa2`.
+
+Keep the native full preimage and its literal pullback equation together in
+one regular constructor with variable covers and variable arrow. The private
+`liftedArrow` returns `{r : U.obj ⟶ V.obj // (Over.pullback f).map r = q}`.
+Its value is exactly the original native full preimage. Both concrete action
+and difference maps use this value, and both pullback formulas use the same
+constructor's property. No product comparison or positive-action convention
+changes.
+
+The complete ActionDescent provider compiled in 6.4 seconds in
+`remote-f8f2cf772a974889897ebdff1dbe8a7b`, source SHA-256
+`ad8af195f047f1eb085d20bebf96b07068cd799a08b39510f44ffec899b6fe8f`,
+under unchanged heartbeats and resource ceilings. That invocation's final H1
+consumer still failed on a separate structural-arrow rewrite; it is not
+claimed as H1 completion evidence. The final H1 root subsequently compiled
+in `remote-c25304d9e9944faa8eedbd942e570ea8`. This extends the typed-transport
+finding using existing proof-iteration observations, without an extra benchmark.
