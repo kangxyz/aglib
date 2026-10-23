@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 import sys
 
-from library_sources import (downstream_sources, is_import_surface,
+from library_sources import (downstream_sources, is_import_surface, generate_topic,
                              lean_imports, module_name, module_path, source_modules,
                              strip_comments_and_strings, test_modules, uses_module_system)
 
@@ -140,8 +140,13 @@ def check_layout(root: Path) -> tuple[list[str], int]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--generate', metavar='MODULE', help='write one generated topic entry; default checks remain read-only')
     args = parser.parse_args()
     try:
+        if args.generate:
+            relative = generate_topic(args.root, args.generate)
+            print(f'Generated {relative} with longFile = 0; native mk_all retains the production root.')
+            return 0
         errors, count = check_layout(args.root)
     except (OSError, ValueError, KeyError) as error:
         print(f'Layout check failed: {error}', file=sys.stderr)

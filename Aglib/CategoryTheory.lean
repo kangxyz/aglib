@@ -273,3 +273,6 @@ public import Aglib.CategoryTheory.Triangulated.Yoneda.Exact
 All modules in the `Aglib.CategoryTheory` family.
 Use an individual module import for a smaller dependency closure.
 -/
+
+-- Generated import entries grow with the source graph.
+set_option linter.style.longFile 0
