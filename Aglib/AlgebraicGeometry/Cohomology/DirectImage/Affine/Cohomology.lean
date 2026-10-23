@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine
+public import Aglib.CategoryTheory.Abelian.Injective.ExtZero
 public import Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.DegreeZero
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleHomology
@@ -235,60 +236,7 @@ private theorem affineSectionsHomologyMap_toRightDerivedZero (I : InjectiveResol
 
 open CategoryTheory.Abelian CochainComplex HomComplex
 
-section ExtZero
-universe v w t
-variable {C : Type v} [Category.{w} C] [Abelian C] [HasExt.{t} C]
 
-omit [HasExt C] in
-private theorem cocycle_equivHomShift_ofHom {K L : CochainComplex C ℤ} (φ : K ⟶ L) :
-    Cocycle.equivHomShift.symm (Cocycle.ofHom φ) = ShiftedHom.mk₀ (0 : ℤ) rfl φ := by
-  ext i
-  simp [Cocycle.equivHomShift_symm_apply, Cocycle.homOf, Cocycle.ofHom,
-    Cochain.rightShift_v, Cochain.ofHom, ShiftedHom.mk₀,
-    CategoryTheory.shiftFunctorZero', CochainComplex.shiftFunctorZero_inv_app_f,
-    HomologicalComplex.XIsoOfEq]
-
-private theorem extMk_iota_zero {U M : C} (I : InjectiveResolution M) (g : U ⟶ M) :
-    I.extMk (g ≫ I.ι.f 0) 1 rfl (by
-      rw [Category.assoc, I.ι.comm 0 1]
-      simp) = Ext.mk₀ g := by
-  let := HasDerivedCategory.standard C
-  have h0 : (g ≫ I.ι.f 0) ≫ I.cocomplex.d 0 1 = 0 := by
-    rw [Category.assoc, I.ι.comm 0 1]
-    simp
-  have hc :
-      Cocycle.fromSingleMk ((g ≫ I.ι.f 0) ≫ (I.cochainComplexXIso 0 0 rfl).inv)
-          (zero_add (0 : ℤ)) 1 rfl (by
-            rw [I.cochainComplex_d 0 1 0 1 rfl rfl]
-            simp only [Category.assoc, Iso.inv_hom_id_assoc]
-            simpa only [Category.assoc, zero_comp] using
-              congrArg (fun k => k ≫ (I.cochainComplexXIso 1 1 rfl).inv) h0) =
-        Cocycle.ofHom ((CochainComplex.singleFunctor C 0).map g ≫ I.ι') := by
-    apply Cocycle.ext
-    apply (Cochain.fromSingleEquiv (zero_add (0 : ℤ))).injective
-    simp only [Cocycle.fromSingleMk_coe, Cochain.fromSingleEquiv_fromSingleMk]
-    dsimp only [Cocycle.ofHom, Cocycle.mk, Cochain.fromSingleEquiv]
-    change _ = (HomologicalComplex.singleObjXSelf (.up ℤ) 0 U).inv ≫
-      (Cochain.ofHom ((CochainComplex.singleFunctor C 0).map g ≫ I.ι')).v 0 0 (add_zero 0)
-    rw [Cochain.ofHom_v]
-    rw [HomologicalComplex.comp_f, HomologicalComplex.single_map_f_self,
-      InjectiveResolution.ι'_f_zero]
-    simp only [Category.assoc, Iso.inv_hom_id_assoc]
-  ext
-  rw [InjectiveResolution.extMk_hom]
-  erw [hc]
-  erw [cocycle_equivHomShift_ofHom, ShiftedHom.map_mk₀,
-    ShiftedHom.mk₀_comp_mk₀, ShiftedHom.mk₀_comp_mk₀, Ext.mk₀_hom]
-  congr 1
-  have hn := (DerivedCategory.singleFunctorIsoCompQ C 0).hom.naturality g
-  simp only [Functor.comp_map] at hn
-  rw [Functor.map_comp]
-  simp only [Category.assoc, IsIso.hom_inv_id_assoc]
-  rw [← Category.assoc, ← hn]
-  simp only [Category.assoc, Iso.hom_inv_id_app, Category.comp_id]
-
-
-end ExtZero
 
 private theorem resolutionSectionClass_zero
     {A : Type u} [CommRing A] (Z : Scheme.{u}) (α : A →+* Γ(Z, ⊤))
@@ -315,7 +263,7 @@ private theorem resolutionSectionClass_zero
     exact hs
   have hext : moduleResolutionSectionExtClass Z α J 0 s = Ext.mk₀ g := by
     rw [moduleResolutionSectionExtClass_eq_extMk]
-    simpa only [hrep] using extMk_iota_zero J g
+    simpa only [hrep] using InjectiveResolution.extMk_ι_zero J g
   change Sheaf.H.equiv₀ (moduleAddSheaf Z P) isTerminalTop
     (moduleExtCohomologyMap Z P 0 (moduleResolutionSectionExtClass Z α J 0 s)) = x
   rw [hext, moduleExtCohomologyMap_mk₀_sections]

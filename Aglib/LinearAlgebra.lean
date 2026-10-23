@@ -16,6 +16,7 @@ public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
 public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 public import Aglib.LinearAlgebra.FreeModule.StableRankOne
 public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
+public import Aglib.LinearAlgebra.FrobeniusDifference
 public import Aglib.LinearAlgebra.KernelFiltration
 public import Aglib.LinearAlgebra.KernelFiltrationMap
 public import Aglib.LinearAlgebra.KernelIdealBound

@@ -1470,6 +1470,11 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodalNormal
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.SplitNodePinching
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChange
 public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.VariableChangeChart
+public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Composition
+public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.CoefficientSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.GenericRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.LocalPasting
@@ -1535,6 +1540,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Pullback
+public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct

@@ -663,6 +663,192 @@ proof-representation boundary; without a kernel trace it does not identify
 an internal compiler cause, and the changed declarations do not supply a
 controlled speedup ratio.
 
+## Site cohomology: share the comparison definition, not only its proof
+
+These entries retain the delivering author's reported native build observations
+from the adopted source packet, at the stated source versions. The packet
+contains source identities and status records; its historical timings are not
+measurements made by the present integration run.
+
+The native derived-section comparison gives a second instance of the
+[shared-constructor boundary above](#nonflat-base-change-share-the-concrete-coefficient-constructor).
+Generic coefficient-naturality lemmas compiled, but their concrete module-sheaf
+specializations still exhausted 200,000 heartbeats at `whnf` or `isDefEq`.
+Supplying explicit functors and universes, unfolding the concrete wrapper, and
+using `simpa only ... using!` did not by themselves remove the expensive final
+conversion. One diagnostic reported 77,412 reductions of `SheafOfModules.forget`
+and 18,912 of each lifted-unit definition, but only 27 of `Functor.rightDerived`.
+These are unfolding counts, not timings: they locate carrier conversion work,
+not evidence that constructing the derived functor itself was the bottleneck.
+
+The retained
+[DerivedComparisonFactory](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedComparisonFactory.lean)
+defines the **whole module-valued additive comparison** with its source object,
+full functor and represented natural isomorphism as parameters. The generic
+naturality lemma and the concrete terminal/scalar comparison definitions use
+that same factory head. This avoids comparing independently elaborated
+additive-equivalence chains after the native module carriers become concrete.
+[DerivedGammaNaturality](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedGammaNaturality.lean)
+then compiled in 8.43 seconds under the unchanged native guard. The source is
+still native evaluation `rightDerived`, with actual `restrictScalars` where
+required, and the same original Ext comparison; no new cohomology definition
+or assumed comparison replaced it. This verifies the coefficient-naturality
+fix, not every degree-zero, slice or boundary normalization using the factory.
+
+The concrete degree-zero endpoint needed one further abstraction: the shared
+factory and a generic H⁰ theorem still left a final carrier conversion, with
+`DerivedTerminalZero` exhausting 200,000 heartbeats at `whnf`. In
+[DerivedZeroPacket](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedZeroPacket.lean),
+`moduleRepresentedPostcomp_ext_zero_of_eq` takes the **complete comparison `E`,
+native unit value `y`, and original output class `z`** as parameters, together
+with their equations identifying the canonical factory, unit and `Ext.mk₀`
+class. It also retains the original section morphism and its equation under
+the represented-section isomorphism. Rewrite these equations abstractly, so
+the conclusion is literally `E y = z`, rather than reconstructing those
+carriers during concrete specialization.
+[DerivedTerminalZero](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedTerminalZero.lean)
+then supplies the actual original comparison, section value and Ext class,
+with `rfl` witnesses. The generic packet and concrete terminal/scalar H⁰ leaf
+compiled in 5.58 and 8.42 seconds respectively, with stable source and clean
+native guards. No concrete endpoint hypotheses, definitions, maps or budgets
+were changed. This verifies these H⁰ endpoints, not the subsequent
+`finalComparisonZero` consumer.
+The same complete-`E`/`y`/`z` boundary, with canonical equality witnesses, also
+made [DerivedScalarSlice](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/DerivedScalarSlice.lean)
+compile in 78.57 seconds under a clean native guard, retaining the original
+coefficient action and native chain restriction.
+
+For the original module-to-abelian slice restriction square, abstracting only
+the source map left another expensive conversion inside Ext: module restriction
+followed by forgetting had to be compared with abelian restriction at the
+coefficient object. The retained
+[SliceNaturality](../Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/SliceNaturality.lean)
+proves `extFullRestriction_square` over all four functors, including the actual
+coefficient transport and its equation. It first proves
+`toSheaf_overFunctorMap` at the sheaf-map level, then instantiates the complete
+Ext equation. The leaf compiled in 87.68 seconds under the unchanged guard.
+Carry both source and coefficient comparisons across the abstraction boundary;
+do not leave their concrete object conversion for the final Ext rewrite.
+
+A separate instance-synthesis failure required a different repair. Explicit
+universes on the essentially-small-site Grothendieck theorem, and then on the
+induced `HasSheafify` target, still left a constraint of the form
+`u + 1 = max (u + 1) ?v` for `SmallModel`'s category. The retained
+[Large/Injectives](../Aglib/CategoryTheory/Sites/SheafCohomology/Large/Injectives.lean)
+first binds the original `smallCategorySmallModel` at the precise
+`SmallCategory.{max u v}` type, then synthesizes sheafification and applies the
+native Grothendieck supplier. This generic leaf compiled in 4.13 seconds.
+Pin the category structure before dependent synthesis when this exact
+max-universe ambiguity occurs; annotating only the final theorem may be too
+late. This is not evidence for globally changing instance priorities.
+
+These measurements are successful native leaf builds, not controlled speedup
+ratios. Reuse their existing receipts; documenting the repair does not require
+another compilation or a downstream blanket rebuild.
+
+
+## Étale derived comparisons: share the equation, then specialize
+
+These entries retain the delivering author's reported native build observations
+from the adopted source packet, at the stated source versions. The packet
+contains source identities and status records; its historical timings are not
+measurements made by the present integration run.
+
+The bounded-below étale comparison work on 2026-10-22 supplies two further
+examples of the literal-boundary method above. These are native incremental
+module results on the pinned dependencies, starting from Aglib `c6f64b5b`;
+heartbeat and process caps were not increased. They establish successful
+compilation of particular source versions, not controlled speedup ratios,
+whole-library acceptance or a compiler defect.
+
+### Exact-square conversion
+
+A concrete proof of `derivedInverseImageSquareIso_exactComparison` in
+[Derived/BaseChange](../Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange.lean)
+failed with `(kernel) deterministic timeout`. The generic exact-square proof
+already compiled, but specializing a separately expanded concrete equality
+still required an expensive native conversion.
+
+The successful boundary uses `ExactComparisonSquareEquation` in
+[ExactSquare](../Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactSquare.lean):
+a definition of the literal original equality, parameterized by the functors,
+ordinary square, derived square and complex. The generic
+`exactComparisonSquareEquation` proves that formula over abstract functors;
+the concrete theorem states the same predicate and supplies the canonical
+inverse-image comparisons. Only the named square constructors and equality
+transport are normalized at the concrete boundary. The related
+[UnitComparison](../Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/UnitComparison.lean)
+uses `DerivedMateUnitEquation` in the same way. These predicates are explicit
+equalities with proved witnesses, not replacement assumptions or opaque
+certificates.
+
+The repaired exact-square provider, unit-comparison provider and concrete
+`Derived/BaseChange` leaf compiled in 2.6, 2.0 and 4.0 seconds, respectively.
+The concrete leaf had previously failed after a 62-second task. Since the
+baseline failed and the source changed, those times are not a speedup ratio.
+The actual square, original units, universes and mathematical hypotheses remain
+part of the interface.
+
+### Cocycle elaboration
+
+A concrete cocycle comparison in
+[PullbackComposition](../Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean)
+instead exhausted the elaborator's `whnf` limit of 200000 heartbeats. This is
+not the preceding kernel-timeout diagnostic. The successful refactor moves the
+cycle-class map law to `HomologicalComplex.addCommGrpCycleClass_map` and the
+Ext/right-derived comparison to
+`InjectiveResolution.extRightDerivedAddEquiv_cocycle_natTrans` in
+[CocycleComparison](../Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/CocycleComparison.lean).
+Their arguments are abstract complexes, an injective resolution and an additive
+natural transformation. The concrete application supplies the original
+constant-integer/global-sections transformation instead of repeating its
+resolution and homology calculation inside the scheme-specific proof.
+
+The generic leaf compiled in 2.7 seconds. Subsequent normalization repairs and
+specialization yielded a successful 169-second `PullbackComposition` compile,
+including the equality of the original all-degree cohomology pullback with the
+actual canonical derived-global-sections pullback. Generic acceptance alone did
+not establish that endpoint; its concrete module had to pass too.
+
+Use small reusable lemmas with explicitly typed arrows and the same literal
+formula on both sides of the abstraction boundary. Import their owning leaves,
+retain successful dependencies and continue only the affected incremental graph;
+a documentation update creates no new compilation or validation obligation.
+
+### Degree-zero specialization: preserve the actual maps as parameters
+
+The concrete degree-zero comparison still hit a native kernel timeout in the
+run that accepted `PullbackComposition`. Sharing the conclusion predicate and
+then the unit/transport input predicates did not suffice: the next concrete
+specialization also timed out, despite acceptance of its generic provider.
+
+The successful boundary in
+[ActualZeroComparison](../Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ActualZeroComparison.lean)
+keeps the actual ordinary, derived and higher exchange maps, comparison
+isomorphisms, and source/target transport arrows as typed abstract parameters.
+Separately proved canonical equalities identify these parameters with the native
+mates, comparison isomorphisms and transport formula. Substitution of those
+witnesses occurs only in the abstract proof, not in the large concrete sheaf
+calculation. Here “opaque parameters” means abstraction by theorem arguments,
+not changing the canonical definitions to Lean `opaque` declarations.
+
+The generic `higherExchangeZero_normalization_actual` and its actual-unit
+adapter compiled in a 2.0-second provider task. The concrete leaf next accepted
+five canonical alias lemmas: the ordinary mate, native derived adjunction,
+derived mate, higher-direct-image comparison, and higher-map transport
+identifications. The final `Derived/BaseChange` leaf then compiled in 11 seconds
+on 2026-10-23, including `higherBaseChangeMap_zero` for the actual canonical
+maps. This last consumer acceptance, rather than the earlier generic or alias
+acceptance, establishes the successful degree-zero specialization.
+
+No mathematical assumptions, maps or resource caps were added or changed, and
+no separate kernel replay was used. This is a successful compilation boundary,
+not a controlled speedup ratio or acceptance of every derived coherence target.
+The lesson is stronger than naming a proposition: preserve the actual map and
+comparison arguments throughout the concrete application, and move their
+canonical substitutions behind the generic boundary as well.
+
+
 ## Why a short proof can be expensive
 
 The kernel checks the elaborated proof and its type. In particular, it checks

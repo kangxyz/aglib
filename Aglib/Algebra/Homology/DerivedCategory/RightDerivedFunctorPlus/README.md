@@ -71,3 +71,18 @@ receipt `1792118659907779000-91729`; all four inspected declarations use
 only the three standard axioms. Affine direct images of quasicoherent
 coefficients and their finite-morphism coherent specializations consume
 this comparison.
+
+## Etale cohomology comparisons
+
+The [actual right-derived Ext comparison](../ExtRightDerived.lean) and
+[adjunction interfaces](Adjunction.lean) supply the bounded-below comparison
+used by the scheme-specific [etale derived cohomology family](../../../../AlgebraicGeometry/EtaleCohomology/README.md).
+The resulting canonical `D+` and global-sections comparison retains the actual
+right-derived adjunction and unit. Higher maps and their degree-zero ordinary
+normalization are recorded by the consumer. The selected continuation also
+adds [ActualPasting](BaseChange/ActualPasting.lean),
+[HigherHorizontalEdges](BaseChange/HigherHorizontalEdges.lean), and the accepted
+[CoherenceDiagram](BaseChange/CoherenceDiagram.lean) comparison. These do not
+close the original `H1` pullback-square compatibility or the full
+ordinary/derived all-degree pasting; see the migration note for the exact
+source selection.
