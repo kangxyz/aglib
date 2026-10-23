@@ -8,10 +8,11 @@ from the native projective line, with its original invertible kernel ideal `I_E`
 The conormal and coefficient comparisons are actual module-sheaf isomorphisms
 `i^* I_E ≅ O(1)` and `i^* H ≅ O(d)`.
 
-`embeddedTensorTwist_serreVanishing` proves Serre vanishing for the literal
-pullback tensor twist of any coherent coefficient. It uses the native projective
-Serre theorem, the closed-immersion projection formula, and the original
-projective-embedding cohomology map. No relative flatness is assumed.
+The generic `embeddedTensorTwist` and `embeddedTensorTwist_serreVanishing`
+implementations live in [Cohomology/Projective/SerreVanishing/ClosedImmersion](../../Cohomology/Projective/SerreVanishing/ClosedImmersion.md).
+The names in this file are transparent adapters with the same objects and statements.
+The proof uses the native projective Serre theorem, closed-immersion projection
+formula, and original projective-embedding cohomology map. No relative flatness is assumed.
 
 `conormalDualRestrictionIso`, `tensorPowerRestrictionIso`, and
 `projectivePowerIso` construct the needed dual and power comparisons from the

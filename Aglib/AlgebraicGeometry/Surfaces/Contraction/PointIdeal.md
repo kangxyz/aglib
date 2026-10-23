@@ -103,3 +103,10 @@ The public multiplier also exposes its necessary data dependencies
 map and the same canonical index-equality isomorphism. Their definitions and
 all equations are unchanged. This supplies the module-visible data used by
 the actual formal-neighborhood consumer.
+
+`pullbackSectionOn`, `pullbackSectionOn_map` and
+`pullbackSectionOn_global` expose the existing native construction for a
+section on an open whose original inverse image is the whole source. They
+retain the actual pullback unit, original equality of opens, module map
+naturality and literal global pulled-section comparison. The local Koszul
+consumer uses these maps for the original selected-chart ideal coordinates.

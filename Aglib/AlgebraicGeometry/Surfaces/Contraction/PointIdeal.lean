@@ -957,7 +957,9 @@ private theorem unitHomGlobalSections_comp {Y : Scheme.{u}} {M N : Y.Modules}
 
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
-private def pullbackSectionOn {Y : Scheme.{u}} (f : Y ⟶ X) (M : X.Modules)
+/-- The actual section on an open whose original inverse image is the whole source,
+transported by the native pullback unit and original equality of opens. -/
+def pullbackSectionOn {Y : Scheme.{u}} (f : Y ⟶ X) (M : X.Modules)
     (U : X.Opens) (h : f ⁻¹ᵁ U = ⊤) (m : Γ(M, U)) :
     SheafOfModules.unit Y.ringCatSheaf ⟶ (Scheme.Modules.pullback f).obj M :=
   (unitHomGlobalSectionsEquiv Y _).symm
@@ -966,7 +968,8 @@ private def pullbackSectionOn {Y : Scheme.{u}} (f : Y ⟶ X) (M : X.Modules)
 
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
-private theorem pullbackSectionOn_map {Y : Scheme.{u}} (f : Y ⟶ X) {M N : X.Modules}
+/-- The original open-section pullback commutes with the original module morphism. -/
+theorem pullbackSectionOn_map {Y : Scheme.{u}} (f : Y ⟶ X) {M N : X.Modules}
     (α : M ⟶ N) (U : X.Opens) (h : f ⁻¹ᵁ U = ⊤) (m : Γ(M, U)) :
     pullbackSectionOn f N U h (α.val.app (op U) m) =
       pullbackSectionOn f M U h m ≫ (Scheme.Modules.pullback f).map α := by
@@ -985,7 +988,8 @@ private theorem pullbackSectionOn_map {Y : Scheme.{u}} (f : Y ⟶ X) {M N : X.Mo
 
 set_option backward.isDefEq.respectTransparency false in
 set_option backward.isDefEq.respectTransparency.types false in
-private theorem pullbackSectionOn_global {Y : Scheme.{u}} (f : Y ⟶ X) {M : X.Modules}
+/-- An original global unit morphism pulls back to its literal native pulled section. -/
+theorem pullbackSectionOn_global {Y : Scheme.{u}} (f : Y ⟶ X) {M : X.Modules}
     (s : SheafOfModules.unit X.ringCatSheaf ⟶ M) (U : X.Opens)
     (h : f ⁻¹ᵁ U = ⊤) :
     pullbackSectionOn f M U h (s.val.app (op U) (1 : Γ(X, U))) =
