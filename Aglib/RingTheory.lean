@@ -742,6 +742,7 @@ public import Aglib.RingTheory.NeronModification.RationalSquare
 public import Aglib.RingTheory.NeronModification.Relations
 public import Aglib.RingTheory.NeronModification.ResiduePoint
 public import Aglib.RingTheory.Nilpotent.GeometricallyReduced
+public import Aglib.RingTheory.NoetherNormalization.DimensionOne
 public import Aglib.RingTheory.PicardGroup.SquareZero
 public import Aglib.RingTheory.PlaneNode.Basic
 public import Aglib.RingTheory.PlaneNode.CoordinateTransport

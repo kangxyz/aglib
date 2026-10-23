@@ -1,0 +1,46 @@
+# Original cohomology presheaves and higher-image stalks
+
+This family retains the original small-etale cohomology, chart pullbacks and
+native higher direct images for `AbelianSheaf.{u,u+1}`. Group resizing
+changes the cohomology carriers, not the coefficient sheaf or higher-image
+object.
+
+| Source | Canonical interface |
+| --- | --- |
+| [OriginalPresheaf](OriginalPresheaf.lean) | The original represented-cohomology presheaf, its size-correct version, actual resolution comparison and sheafification to `higherDirectImage`. |
+| [ChartRestrictionNaturality](ChartRestrictionNaturality.lean) | Every chart restriction agrees with original scheme cohomology pullback and its commuting-triangle coefficient transport in all degrees. Base, chart and slice Ext universes are retained. |
+| [FibreProductPresheaf](FibreProductPresheaf.lean), [FibreProductStalk](FibreProductStalk.lean) | Original cohomology of the literal fibre products, original restrictions and canonical maps from original classes to higher-image germs. |
+| [GeometricOriginalDiagram](GeometricOriginalDiagram.lean) | The actual compatible-system cohomology diagram agrees with the original, unresized scheme-H diagram before resizing. |
+| [ResizeCohomologyDiagram](ResizeCohomologyDiagram.lean), [ResizeCohomologyReindex](ResizeCohomologyReindex.lean) | Whole-diagram and reindexing comparisons retain the actual coefficient maps and explicit size/Ext/colimit premises. |
+| [EtaleDirectImageMate](EtaleDirectImageMate.lean) | For arbitrary vertical `f` and étale horizontal `g`, the original ordinary exchange is the actual chart isomorphism, with original unit/counit normalization. |
+
+## Geometric neighborhood colimit
+
+[GeometricCohomologyStalk](GeometricCohomologyStalk.lean) defines
+`geometricCohomologyStalkIso`. Let `R,Ω : Type u`, with `R`
+commutative, `Ω` a separably closed field and `Algebra R Ω`.
+For `f : X ⟶ Spec R`, actual `F : AbelianSheaf.{u,u+1} X` and
+every natural `q`, the colimit over the actual
+`GeometricEtaleNeighborhood R Ω` of the size-correct original fibre-product
+cohomology diagram is isomorphic to the original geometric stalk of
+`(higherDirectImage f q).obj F`.
+
+The theorem retains `HasExt.{w}` on `X`, `HasExt.{s}` on the
+displayed slice categories and `HasExt.{e}` on each literal fibre product.
+No qcqs or finite-type premise on `f` is added. The normalization
+`ι_geometricCohomologyStalkIso_apply` sends each original class, through
+its explicit `Shrink` comparison and colimit injection, to its literal
+original higher-image germ.
+
+The [geometric neighborhood family](../Finite/GeometricNeighborhoodStalk.lean)
+supplies the actual final functor to the original point index and the germ
+formula. The [original inverse-image stalk comparison](../GeometricPoints/InverseImage/README.md)
+remains in its own geometric-point owner.
+
+## Remaining strict-local comparison
+
+The neighborhood-colimit theorem does not yet identify this colimit with
+cohomology on the strict-local limit scheme. That last passage uses the
+[continuity assembly](../Continuity/README.md), whose `hzero` and
+`hqcqsSectionCocones` remain explicit. No unconditional strict-local
+cohomological continuity or general proper-base-change theorem is asserted.

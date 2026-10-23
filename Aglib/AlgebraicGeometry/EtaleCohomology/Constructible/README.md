@@ -36,8 +36,11 @@ geometric point `η : Spec Ω ⟶ X`, where `Ω : Type u` is a separably
 closed field. It uses actual field-point factorizations through the immersions and
 the original inverse-image stalk comparison.
 `isTorsion_of_isConstructible` then gives internal torsion on arbitrary
-`X`, without a qcqs or cohomology premise. These results do not export
-a uniform positive global annihilator.
+`X`, without a qcqs or cohomology premise.
+On qcqs `X`, [Bounded](TorsionColimit/Bounded.lean) additionally proves
+`exists_positive_annihilator_of_isConstructible`: there is `n > 0`
+with the original equation `n • 𝟙 F = 0`. The bound is constructed,
+rather than assumed.
 
 ## Generic restriction
 
@@ -169,10 +172,38 @@ owns the scalar-quotient Hom equivalence and finite-colimit argument.
 Existence of these explicit presentations for arbitrary finite locally
 constant or constructible coefficients remains open.
 
+## Bounded presentations and stratum maps
+
+[BoundedPresentation](TorsionColimit/BoundedPresentation.lean) works on any
+scheme with an actual equation `n • 𝟙 F = 0`, for every natural `n`,
+including zero and one. `exists_filtered_presentation` constructs a small
+filtered `I : Type (u+1)`, a diagram in the full category of n-killed
+coefficients and an actual colimit cocone with point `F`. Its stages are
+finite colimits of the original affine free mod-n representables. For positive moduli,
+their geometric constructibility remains a separate obligation.
+
+[Strata](FiniteCogenerators/Strata.lean) proves joint faithfulness of original
+inverse images along covering immersions. Given an actual
+`FiniteLocallyClosedPartition X`, original stratum monomorphisms give
+`mono_adjunctionProduct` into the finite product of direct images;
+each coordinate is the original unit followed by the direct image of the
+supplied stratum map. `mono_unitProduct` specializes to the original
+restriction units. This does not construct a global disjoint partition from
+the qcqs finite cover.
+
+[AffineIntegralConstants/Sections](FiniteCogenerators/AffineIntegralConstants/Sections.lean)
+proves an actual represented finite-constant section-cocone colimit along
+finitely generated subalgebras of a ring algebra `R → A`, after base
+change to a fixed qcqs test `U → Spec R`. Its cocone maps are original
+scheme precomposition. When `A` is integral over `R`, the stages
+are finite over `R`. The section result itself does not require
+integrality. Identifying this represented cocone with the full original
+constant direct-image sheaf cocone remains open.
+
 ## Remaining geometric inputs
 
-General constructible finite presentability and finite cogeneration,
-constructible-stage torsion-colimit presentations, and global
-integral-to-finite approximation remain open. A positive global annihilator
-bound is not yet part of the available interface. The finite-cover,
-individual-stalk and connected-FLC results above retain their stated ranges.
+Geometric constructibility of the finite-colimit stages for positive moduli, full constructible
+finite cogeneration/presentability and the represented-to-original sheaf
+cocone bridge remain open. The positive qcqs constructible bound and the
+actual n-killed filtered presentation are available inputs, not assumed
+presentation or boundedness fields.

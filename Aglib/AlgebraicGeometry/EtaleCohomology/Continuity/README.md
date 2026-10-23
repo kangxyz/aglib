@@ -39,23 +39,47 @@ A focused import is:
 import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsCoefficientContinuity
 ```
 
-## Sections on scheme limits
+## Sections and compatible systems
 
-| Source | Actual interface and conditions |
+| Source | Actual interface |
 | --- | --- |
-| [SchemeLimitSections](SchemeLimitSections.lean) | For a cofiltered diagram in `Over S` with qcqs stages and affine transition maps, a locally finitely presented `Y : Over S` has its relative Hom set on the supplied underlying scheme limit as the filtered colimit of the stage Hom sets. Every cocone leg is composition with the original cone projection. |
-| [PullbackEtaleEvaluation](PullbackEtaleEvaluation.lean) and [PullbackEtaleNaturality](PullbackEtaleNaturality.lean) | Étale-chart evaluation of actual inverse-image coefficients, with coefficient and chart naturality. |
-| [PullbackRestrictionSections](PullbackRestrictionSections.lean) | Original restriction maps, followed by the chart-evaluation inverse and original inverse-image composition, agree with the literal relative-section pullback maps. |
-| [DiagramPullbacks](DiagramPullbacks.lean) and [DiagramLimitSections](DiagramLimitSections.lean) | Compatible systems use the actual pulled-back stage coefficients. Fixed qcqs coefficient continuity makes the outer section cocone a colimit when the cone point is qcqs. |
-| [DiagramTailCocones](DiagramTailCocones.lean) | Relative tail cocones and compatible-system tail cocones agree under the actual diagram transport. `isColimitCompatibleTailOfNative` transports a supplied native `IsColimit` certificate. |
-| [DiagramInjectives](DiagramInjectives.lean) and [PullbackCohomologySystem](PullbackCohomologySystem.lean) | Actual compatible coefficient and cohomology systems retain the original direct/inverse-image adjunctions, composition maps and injective envelopes. |
+| [SchemeLimitSections](SchemeLimitSections.lean) | Locally finitely presented relative represented objects commute with cofiltered qcqs affine-transition scheme limits, using original projection-composition maps. |
+| [PullbackRestrictionSections](PullbackRestrictionSections.lean), [DiagramNativeCocone](DiagramNativeCocone.lean) | Original inverse-image restrictions and native cohomology cocones retain actual units, composition and coefficient transports. |
+| [DiagramH0Sections](DiagramH0Sections.lean), [DiagramEtaleSections](DiagramEtaleSections.lean) | Degree-zero and étale-test section comparisons use the original section cocones. These normalizations are distinct from producing their missing colimit certificates. |
+| [DiagramShortExact](DiagramShortExact.lean), [DiagramCohomologyExact](DiagramCohomologyExact.lean) | Actual compatible injective replacements and pointwise cokernels give the original cohomology exact sequences and connecting squares. |
+| [InjectiveLimitAcyclic](InjectiveLimitAcyclic.lean) | Descended finite-family cochains give positive original cohomology vanishing for the actual injective limit once its qcqs evaluated right-tail cocones are colimiting. |
 
-Represented-section descent and the fixed-site coefficient theorem are inputs
-to varying-scheme continuity. General inverse-image section gluing and the
-higher-degree varying-scheme theorem remain open; the native tail
-`IsColimit` premise above is still supplied by the caller.
+## Higher continuity from two degree-zero inputs
 
-The [finite family](../Finite/README.md) owns the constructed strict-local
-neighborhood model, its finite local decomposition and the resulting finite
-direct-image results. The final strict-local higher-cohomology comparison
-remains open.
+[SchemeLimitHigher](SchemeLimitHigher.lean) proves
+`isIso_schemeLimitCohomologyComparison_of_sectionCocones` for the literal
+`schemeLimitCohomologyComparison X c F n`. Its legs are original pullback
+followed by original coefficient-colimit maps.
+
+Here `I : Type u` has `Category.{u} I` and is filtered,
+`X : I ⥤ Scheme.{u}ᵒᵖ`, and `c` is an actual colimit cocone.
+All stages are qcqs and all transition scheme maps are affine. The theorem
+retains one independent Ext universe `e` at every stage and the limit,
+and `HasColimitsOfShape I AddCommGrpCat.{e}`.
+
+Two inputs remain explicit:
+
+- `hzero`: for every actual compatible coefficient system, the original
+  degree-zero `diagramCohomologyCocone` is colimiting.
+- `hqcqsSectionCocones`: for every objectwise-injective compatible system,
+  every stage and every qcqs étale test there, evaluation of the original
+  `diagramRightTailCocone` is colimiting.
+
+Under these hypotheses the original comparison is invertible in every natural
+degree, by the constructed injective system, actual cokernel and original
+dimension shift. This closes the higher reduction. The geometric degree-zero
+and cone assembly needed to discharge both inputs remain open; no
+unconditional varying-scheme theorem is claimed.
+
+The [stalk family](../Stalk/README.md) now identifies the original geometric
+neighborhood-cohomology colimit with the native higher-image stalk. Identifying
+that colimit with cohomology of the strict-local limit still requires the
+remaining continuity assembly.
+[Finite/Cohomology](../Finite/Cohomology.lean) supplies the original finite
+direct-image cohomology equivalence and its actual pullback/counit/base-change
+normalization; it does not make arbitrary global pullback invertible.

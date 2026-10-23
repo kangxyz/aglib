@@ -56,6 +56,31 @@ import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.HigherVanishing
 import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DerivedBaseChange
 ```
 
+## Original finite direct-image cohomology
+
+[Cohomology](Cohomology.lean) defines
+`finiteCohomologyDirectImageAddEquiv f F q` for every natural `q`:
+
+```lean
+Sheaf.H.{wS} ((directImage f).obj F) q ≃+ Sheaf.H.{wX} F q
+```
+
+The source and target `HasExt` universes `wS,wX` are independent.
+Its value at an original class `a` is exactly
+
+```lean
+Sheaf.H.map ((inverseImageAdjunction f).counit.app F) q
+  (cohomologyPullback f ((directImage f).obj F) q a)
+```
+
+Coefficient naturality uses the original cohomology maps.
+`finiteCohomologyDirectImageAddEquiv_baseChange` normalizes the actual
+cartesian square: original pullback along `g`, followed by cohomology of
+the original ordinary exchange and the finite equivalence upstairs, equals
+original pullback along `g'` after the finite equivalence downstairs.
+All four Ext universes remain independent. This is the finite export;
+arbitrary global-cohomology pullback need not be invertible.
+
 ## Local geometry and original stalks
 
 | Source | Canonical construction and conditions |
@@ -67,6 +92,6 @@ import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.DerivedBaseChange
 | [GlobalEvaluationIso](ExactImageComparison/GlobalEvaluationIso.lean) and [PointedEvaluationBaseChange](ExactImageComparison/PointedEvaluationBaseChange.lean) | At an algebraically closed geometric point, the original finite direct-image stalk is compared with its actual geometric-fibre tuple, and the canonical exchange is normalized by the original pointed unit/counit evaluation formula. |
 
 The general proper-base-change theorem and unbounded derived scope remain
-open. The final strict-local higher comparison and the minimal finite
-original-`Sheaf.H` export are also open; no arbitrary global cohomology
-pullback is asserted here.
+open. The final strict-local-limit cohomology comparison remains separate
+from the now-supplied neighborhood-colimit and finite original-H exports.
+No arbitrary global-cohomology pullback is asserted to be invertible.

@@ -2208,3 +2208,909 @@ unfolded statement" above, and the method "Preserve useful regular definition bo
 State the values of composite equivalences as `rfl` lemmas at variable arguments and use them
 through `congrArg` and `trans`. Give the components of a natural transformation regular
 definitions, and prove naturality as separate lemmas stated through them.
+
+
+## Picard pullback: parameterize the target unit before specializing
+
+At Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`,
+the concrete scalar-frame rewrite in
+[Picard.Pullback](../Aglib/AlgebraicGeometry/EtaleCohomology/Picard/Pullback.lean)
+failed with an implicit-transparency `@Etale`/`MorphismProperty` mismatch.
+The selected-build observation is `picard-kummer-02.log`, line 95 of that
+failed source; no failed-source digest is asserted.
+
+Use a completely abstract scalar/frame helper with the schemes, arrows, frame,
+and both source and target units explicit. Take equality with the pulled-back
+source unit as an input, then instantiate once with the original
+`gmUnit_sections` equation. The retained `pullbackFrame_scalar_of_eq` helper
+preserves the actual `gmUnit` and frame-torsor square; it does not replace the
+coefficient morphism by another comparison.
+
+The repaired leaf, source SHA256
+`4c17ce8e264be91543524d3d9fed753e3253c33c21105474ab1fa74672098bc8`,
+passed in 54 seconds in the existing `picard-kummer-03.log` observation with
+the unchanged standard 200000-heartbeat budget. This validates that leaf's
+repair only, not the later boundary-naturality, quotient or henselian
+consumers. These observations are not a matched performance benchmark, and
+no separate probe or resource-budget increase was added.
+
+## Transport section equivalences before specializing the QC pseudofunctor
+
+At the same Lean/Mathlib pins, constructing `NatIso.ofComponents` directly on
+the concrete QC pseudofunctor Hom/section equivalence in
+[SectionsNaturality](../Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/SectionsNaturality.lean)
+exhausted the standard 200000-heartbeat budget at `whnf`.
+The existing observation is `qc-coefficients-02.log`, line 38:67, after 17 seconds.
+
+Define `transportTypeFunctor` and `transportTypeFunctorIso` for an arbitrary
+Type-valued functor and objectwise equivalences. Instantiate that abstract
+natural isomorphism once at the native `homPresheaf` and `sectionsEquiv`.
+This retains the original presheaf, actual sections of the pulled-back module,
+restriction maps, and fpqc/fppf sheaf interfaces.
+
+The exact repaired leaf, SHA256
+`fdb58c9f5aac9efb149e2fee9b3ea21f8416fa0f15ceab627dcd992ad43b7dca`,
+passed in 2.9 seconds in `qc-coefficients-04.log` without a budget increase.
+This is an existing successful compile observation, not a controlled benchmark.
+The separate SectionUnit, SectionsRestriction, EtaleSections and AmitsurProducts
+consumer failures in that invocation are excluded from the success claim.
+
+The same principle also applies to
+[SectionsRestriction](../Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/SectionsRestriction.lean).
+Its concrete `mapComp` rewrite exhausted 200000 heartbeats at `whnf`
+(`qc-coefficients-06.log`, line 48; 99 seconds). The abstract
+`nativePullHom_eq` helper first pastes the existing component equalities with
+`congrArg₂`, then specializes to the QC objects. The repaired leaf, SHA256
+`a69299432bc13eb992c6d7a5692ceedab0575bb49a7b8a6e10e71b3d4c76ec2d`,
+passed in 118 seconds in `qc-coefficients-07.log` at the unchanged budget.
+This eliminated that heartbeat failure; it is not a wall-time speedup claim.
+Original pullback/pushforward units and `pullbackComp`/`pullbackCongr` maps are
+retained. The separate additive-coefficient consumer was still under repair.
+
+### Stage subtype equalities before concrete matrix equivalences
+
+In the actual crossed-product
+[coefficient equivalence](../Aglib/FieldTheory/Brauer/CrossedProduct/Coefficients.lean),
+a one-term `Subtype.ext (fromCoefficients_row hc h₁ x.property)` exhausted
+200000 heartbeats at `whnf` (`brauer-cocycles-01.log`, line 94:29).
+The repair explicitly types the full-indexed matrix in `toFun`, applies
+`Subtype.ext` first, changes the goal to the original matrix equality, and
+then applies `fromCoefficients_row` with the original membership proof.
+The right-inverse proof similarly uses `funext`, an explicit `change`, and
+the actual row identity instead of asking elaboration to discover all carrier
+conversions inside one term.
+
+The complete repaired producer, SHA256
+`b67ae05a1e98a43e65686bd3748e4a3198add570329386462e26567e5e19b81f`,
+passed in 3.7 seconds in `brauer-cocycles-03.log` at the unchanged native
+200000-heartbeat budget. The intermediate graph 02 removed the first timeout
+but still had a right-inverse error; only graph 03 establishes acceptance.
+This validates the typed-staging repair, not a controlled timing comparison
+or acceptance of the downstream centrality/simplicity/primitive producers.
+
+### Transport complete additive naturality before specializing geometric sections
+
+The additive transport boundary must include naturality, not only the component constructors.
+In `qc-coefficients-26.log`, the final
+[unit structure comparison](../Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/StructureComparison.lean)
+`NatIso` still exhausted 200000 heartbeats at `whnf` after individual lifted
+additive components had been abstracted. The repaired `liftTransportNativeIso`
+in `AdditiveTransport` proves the entire naturality square over arbitrary
+`P`, `A`, `e`, `r` and the native additive target `Q`, before specializing to
+scheme sections. The concrete `unitSectionsAddEquiv` and its actual native
+unit-section naturality theorem remain unchanged.
+
+The full StructureComparison producer, SHA256
+`7760ceaf3f01c3048fb4ea2b08c9a2b12e3ac4985ba087de06dde1832534dce3`,
+passed in 12 seconds in `qc-coefficients-28.log`; AdditiveTransport, SHA256
+`ac88e351a741f7986b78b76ccbe28fa40262693994ad9384c087731cd0d85722`,
+passed in 4.6 seconds, with the unchanged native budget. These are acceptance
+observations, not a controlled speedup or acceptance of CoefficientMaps,
+BaseRestrictionAdditive, or the downstream cohomology comparison.
+
+For base restriction the analogous full-boundary repair is
+`liftTransportIsoOfTypeIso`: prove the Type-natural-isomorphism-to-additive
+transport abstractly, then supply `sectionsBaseRestrictionIso` and the named
+component evaluation equality. This retains the original `pullbackComp`
+components. The concrete section-naturality specialization in
+`qc-coefficients-30.log` exhausted 200000 heartbeats at `whnf` (49-second leaf).
+BaseRestrictionAdditive, SHA256
+`9a70f8e1fd1be4bc88aa422d1ad4a94f6954f9b9b356f33ca4d8eb1452f3a6ba`,
+passed in 38 seconds in `qc-coefficients-32.log`; the expanded AdditiveTransport,
+SHA256 `c53d9228e314117d956f3f81453399d8683594bd596a3fe589ad3855bfe6f6a6`,
+passed in 5 seconds. Budgets were unchanged. This validates that boundary,
+not a controlled timing comparison or the pending coefficient-map/Amitsur consumers.
+
+For maps on the same site, also absorb the identity functor and left unitor
+inside the abstract transport helper. The concrete `liftTransportHom`
+specialization in `CoefficientMaps` still exhausted 200000 heartbeats at `whnf`
+in `qc-coefficients-31.log`. `liftTransportHomSame` checks that complete
+same-site construction before geometric specialization, retaining the actual
+`coefficientSectionsAddHom` and original coefficient naturality. After ordinary
+identity/composition normalization in graph 32, CoefficientMaps, SHA256
+`b4e0e2250ce17e33e507c15900aee7ba6661c109f339facf0c3010191cbc416a`,
+passed in 12 seconds in `qc-coefficients-33.log`, with no budget increase or
+separate benchmark.
+
+The original Amitsur-to-Cech transport needs the same full boundary for
+opposition and whiskering. In `qc-coefficients-39.log`, the concrete
+opposite-diagram isomorphism/section-whiskering conversion exhausted 200000
+heartbeats at `whnf` (21-second failed leaf). Generic `rightOpSectionsIso`
+checks the inverse identities and functor-composition conversion before any
+scheme/module specialization. The original geometric isomorphism, coefficient
+and `amitsurCechSectionsIso` interface are retained. AmitsurCech, SHA256
+`6f10c40dc35b0d57761531f980fc4b26fd6389c752c7a4245bc528fbcc3a4d5a`,
+passed in 3.3 seconds in `qc-coefficients-40.log` with the same budget; this is
+acceptance evidence, not a controlled speedup or a Zariski-consumer acceptance.
+
+For the final original Zariski module-coefficient naturality square,
+`qc-zariski-06.log` hit maximum recursion depth in one `change` computing
+sheaf-preimage, open inclusion, transport and `ULift.down` simultaneously
+(7-second failed leaf). The repair first proves `zariskiModuleIso_hom_app`
+at the bundled-morphism level, retaining the opaque original presheaf iso
+and using only the actual identity/map-identity equations. Consumers rewrite
+that named equality before evaluating `down` by `rfl`. The original component
+formula and coefficient naturality are unchanged. ZariskiModuleCoefficients,
+SHA256 `adf2847e95382b4fee2adf79dd7e89023b664ba43b0729c85517aa67a0aef6e5`,
+passed in 16 seconds in `qc-modules-01.log`. No recursion/heartbeat limit was
+raised, no benchmark added, and downstream original-H wrappers were not part
+of that acceptance.
+
+### Fix site objects before applying a generic finite-sum descent theorem
+
+The finite-etale trace gluing producer exhausted 200000 heartbeats in
+`isDefEq` at `chartSum_independent` in `finite-trace-08.log`: the target of the
+chart morphism was still unresolved during specialization. Supplying the
+actual `(X := X)`, `(V := V)` and `(U := (toEtale X).obj Y)` to the existing
+generic independence theorem removed that timeout in graph 09. Graph 09 still
+had unrelated projection/linter diagnostics; only `finite-trace-10.log`
+accepted the complete Gluing producer (6.1 seconds), SHA256
+`ff0fe364e1fe5f53cf507d3f48f560e110bb2cf7afe18308bd34e78c3688c915`.
+No budget increase or separate timing experiment was used. The original sums,
+local transition maps and finite-flat rank equation remain unchanged; this
+receipt does not certify the downstream normalized trace/source square.
+
+### Specialize a complete coproduct projection identity, not its intermediate rewrites
+
+The actual generic-Artin pullback point-index producer repeatedly failed to
+normalize the projection through `pullback (Sigma.desc ...)` versus
+`pullback (genericArtinMap X)`. In `generic-discrete-09.log`, even the requested
+`Category.assoc` rewrite did not match across that wrapper. This was an
+elaboration/normalization failure, not evidence of a resource timeout.
+Prove the entire first-projection identity for an arbitrary literal family of
+schemes and maps; only then specialize the completed identity to the original
+generic-Artin map with `exact`. The native Sigma inclusions, pullback symmetry,
+finite-coproduct comparison and literal projection equation are unchanged.
+GenericArtinBaseChangeIndex, SHA256
+`89edc71d5f135c1679a4e90c712f3a507066dd5985d911c4b53acc430d3309be`,
+passed in 4.9 seconds in `generic-discrete-10.log`. No budget increase or
+separate benchmark was used; the receipt does not validate later support
+consumers.
+
+### Pin the existing Ext universe before specializing a concrete fibre
+
+In `root-b3-03.log`, the final characteristic-primary restriction wrapper hit
+the 20000 typeclass-synthesis heartbeat limit trying to reconstruct `HasExt`
+through the local `Over.left C` abbreviation. The original target fibre already
+had the required `HasExt` instance. Install that exact instance on `C.left` with
+`inferInstanceAs`, then apply the accepted vanishing theorem with its explicit
+Ext universe. Also rewrite the chosen degree equality rather than letting
+`subst` pick a differently oriented arithmetic equality. No new cohomology
+model, universe equality assumption or budget increase is needed.
+CharacteristicPrimaryRestriction, SHA256
+`69df63d03c2623e63892604a19155528a2046f355442e94e061bd64cb3988fae`,
+passed in 35 seconds in `root-b3-04.log`. This acceptance is the actual
+characteristic-primary original restriction endpoint, not the remaining
+prime-to-characteristic curve branch.
+
+### Type the original Hom endpoints before expanding an adjunction composite
+
+`finite-trace-14.log` exhausted the standard 200000 heartbeats in `whnf` while
+evaluating the composed adjunction for the finite-etale source comparison
+through concrete small-etale wrappers. Fix the full Hom type first, from the
+actual slice integer coefficient to `inverse.obj A`; compose typed
+`congrArg`/`trans` identities rather than rewriting beneath unresolved
+adjunction wrappers. Select the original slice exactness instance explicitly,
+`overPullback_preservesFiniteColimits.{u+1,u,u+1}`, where universes are otherwise
+underconstrained. The source and target Ext universes remain independent.
+SlicePullback.SourceSquare, SHA256
+`3e2b3330ec34033a7f5beec764a756150a55104949d20c93349c5c2595b5637d`,
+passed in 69 seconds in `finite-trace-16.log` without raising any budget.
+This validates the literal original pullback/source square, not the later
+finite-field scalar-transfer injectivity consumer.
+
+The same explicit-Ext pattern applies to original field pullback effacement.
+In `field-dimension-04.log`, `PullbackEffacement` reached the native 20000
+instance-search limit while reconstructing `HasExt` through
+`(Functor.fromPUnit X).obj U.right` and the finite-field-cover chart wrapper.
+Fix `(X := X)` and `(S := U.left)`, then transport the existing chart `HasExt`
+with `inferInstanceAs`; do not ask typeclass search to rediscover it beneath
+the geometric wrapper. The next graph's ordinary `map_zero` rewrite failure
+was separate: under implicit transparency, the unfolded `@Etale` property did
+not match its bundled `MorphismProperty`. Typed additive-equivalence aliases
+and complete `congrArg`/`Eq.trans`/`map_zero` identities avoid rewriting there.
+PullbackEffacement, SHA256
+`45f19c79c2a7a9d194e968b34df0410ab12c85c7ea323866d0ae4bf62b79fb5e`,
+passed in 37 seconds in `field-dimension-06.log`; its original dimension-shift
+consumer passed in 26 seconds. These are acceptance receipts, not a controlled
+speedup measurement. Original maps, independent Ext universes and all budgets
+are unchanged; the geometric finite-coinduction and H2 inputs are separate
+suppliers, not certified by this consumer graph.
+
+### Stage pointed fibre identities before specializing field restriction
+
+In the field-restriction graph, specializing the entire pointed precomposition
+identity at the native field chart made elaboration and kernel checking unfold
+large concrete fibre and Galois constructions. `field-sylow-10.log` recorded a
+kernel deterministic timeout (97 seconds); `field-sylow-11.log` and
+`field-sylow-12.log` reached the unchanged 200000 weak-head-normalization budget
+(35 and 21 seconds). These are distinct failure receipts, not benchmarks.
+
+Prove the fibre-component identity first with an abstract typed scheme map,
+pointed fibre and cover. Derive the pointed-map identity from that statement,
+then specialize to the native field map in a separate opaque theorem. The
+accepted staging uses `pointEnd_left_restrictScalars`,
+`pointedFiber_toFibreAut`, `pointedMap_toFibreAut_of_map`, and finally the
+canonical field/Galois comparison. Explicit source, target and scheme
+parameters keep instance reconstruction out of the concrete final application.
+`Field.Restriction`, SHA256
+`322ddfbd7a75809a1a603807f9b838c0057789c88665c6ef4f14c825fff13e71`,
+passed in 4.3 seconds in `field-sylow-13.log`, without increasing any budget.
+This certifies the original restriction comparison only; the subsequent Sylow
+and finite-coefficient H2 theorems require their own acceptance receipts.
+
+A separate kernel-memory failure occurred in `SylowMonodromy` at line35:8
+in `field-sylow-17.log` (83 seconds): elaboration had completed, but the concrete
+native fibre-equivalence power transport exceeded the unchanged memory limit.
+Extract the entire conjugation through `autEmbedding` and the fibre equivalence
+into `FundamentalGroup.PointedPower.component_pow_eq_one_of_pointedMap`, with
+the actual pointed map, automorphism, cover and exponent abstract. The concrete
+field theorem then uses the component identity and one opaque application.
+The proof still uses the original pointed maps and field restriction data.
+In `field-sylow-18.log`, PointedPower (SHA256
+`e880022d25300827ed32462e7314458b22ad0ec4969fac6e2032349580fa5c90`)
+and SylowMonodromy (SHA256
+`a5d9c9668b032868713461900c696820d9134da2ee474aeb4c93bbaa1f559556`)
+passed in 2.9 and4.6 seconds. The graph then failed in the downstream SylowLine
+consumer. These local receipts do not certify that consumer or the finite-H2
+endpoint, and no resource ceilings were increased.
+
+### Use native sized subobject infima instead of rebuilding a concrete lattice
+
+For the actual point-supported subobject of an original abelian etale sheaf,
+complete-lattice inference reached the unchanged 20000 typeclass budget in
+`generic-support-06.log` (130 seconds). A later explicit lattice still made the
+concrete infimum bound normalize too much: `generic-support-11.log` reached
+200000 weak-head-normalization steps (47 seconds).
+
+Keep the native Grothendieck sheaf structure and express the same infimum as
+explicitly sized `Subobject.sInf` of the range of the original kernel family.
+Use native `sInf_le`/`le_sInf`, an abstract kernel-factorization relation, and
+native downward AB5 for the actual point fibre. This avoids reconstructing an
+unused concrete complete lattice; it does not assert that a fibre preserves
+infinite infima. PointSupportedSubobject (SHA256
+`0aee711895e260d4290840b065e3ddb3569e48a3a0f1c6da71ffe1e1a4518a15`)
+passed in 4.3 seconds in `generic-support-13.log`, and the closed-unit consumer
+passed in 2.6 seconds. Exhaustion and higher-cohomology consumers are separate
+unaccepted targets at this checkpoint. No budgets were raised; these are
+acceptance receipts rather than a controlled performance comparison.
+
+The same explicit-Ext transport also resolved the actual generic higher-image
+consumer. In `generic-higher-03.log`, GenericHigherImages at112:13 reached the
+unchanged 20000 typeclass budget while reconstructing localized Hom smallness
+on the literal pullback behind a chart wrapper (102 seconds). Install the
+`HasExt.{u+2}` for that pullback with `inferInstanceAs` from the existing
+`HasExt.{u+2}` on the chart's `T.left`, and specify the power theorem's
+`.{u,u+2}` universes. GenericHigherImages (SHA256
+`71feb1d19cd0d7b6b93fabc2bf024f80dbdc9883af98ee72650c66b74668baf4`)
+passed in 66 seconds in `generic-higher-04.log`; its original direct-image
+cohomology divisibility consumer passed in 7 seconds. These validate the
+unchanged actual sheaves and maps, not a controlled speedup comparison.
+
+## Original represented étale cohomology: normalize complete values before specialization
+
+The initial `Stalk/OriginalCohomologyZero.lean` proof expanded the concrete
+Ext-to-native-derived comparison inside the scheme sheaf category and hit the
+unchanged 200000-heartbeat limit at `whnf` (native compilation graph005).
+The first unit calculation also needed an explicit unfolding of only
+`rightDerivedNatIso` so its hom matched the existing native transformation lemma.
+
+The successful repair retained exactly the original Ext.mk₀ class, native
+injective resolution, represented-section isomorphism, and degree-zero derived
+unit. A private abstract `representedExtZero_of_eq` takes the complete additive
+comparison E, original input class x, and output value y, together with their
+canonical equations. It performs the Ext.mk₀ rewrite abstractly. The concrete
+scheme theorem supplies the actual objects and maps with rfl witnesses instead
+of asking the elaborator to reconstruct and normalize the full sheaf carriers.
+
+Graph007 compiled the entire changed `OriginalCohomologyZero` leaf in 28 seconds.
+No heartbeat limit increase, separate test, or kernel replay was used. The
+accepted `OriginalCohomology` and `ResolutionPresheaf` providers were unchanged.
+This is evidence for the degree-zero normalization repair, not acceptance of
+unrelated site restriction naturality or the full higher-image stalk theorem.
+
+## Small étale morphism-property boundaries: preserve typed native objects
+
+The finite affine refinement producer failed in graphs001,004,006 and010 with
+instance and implicit-transparency mismatches at the `Scheme.Etale` /
+`MorphismProperty.Over` boundary. Printed morphism-property heads could look
+identical while elaboration could not identify the expected native category.
+Use the explicitly typed eta-expanded property
+`fun {X Y : Scheme.{u}} (f : X ⟶ Y) => AlgebraicGeometry.Etale f`, and provide
+the original-site category to constructors such as
+`Presieve.ofArrows.mk (C := S.Etale)`. For a native Over factorization, typed
+`congrArg` and `Eq.trans` avoid an unnecessary `calc` transitivity search through
+projected carrier expressions. Reuse the actual covering and morphism-property
+instances rather than inventing alternate site structures.
+
+Graph014 accepted `EtaleAffineBasis.FiniteRefinement` in2.0 seconds and
+`FiniteHypercovers` in2.2 seconds with these repairs. These are full-leaf native
+build times, not isolated benchmarks. No heartbeat or linter relaxation, test,
+audit or kernel replay was used. The later qcqs hypercover consumer remains a
+separate compilation obligation.
+
+## Typed projection proofs across additive Hom carriers
+
+Evidence: the native FiniteFreeHom target failed in graphs 029 and 034, then passed in graph 036 (5.3 seconds). No additional benchmark was run.
+
+When an additive equivalence on a raw Hom type is converted with `AddEquiv.toAddCommGrpIso`, downstream goals may present its source as the native preadditive Coyoneda `MShrink` carrier and its target as the concrete product cone point. These are definitionally compatible at full transparency but rewriting can reject the entire target as ill-typed at implicit transparency.
+
+Do not repeatedly change equivalent projection rewrite lemmas. After the ordinary associativity and `Pi.isoLimit_hom_π` steps, compose the fully typed canonical projection equality using `congrArg`, not a further rewrite through the additive equivalence. Annotate BOTH objects of `toAddCommGrpIso` explicitly as `AddCommGrpCat.of ...`: otherwise a lambda elaboration leaves the source group as a metavariable (graph 034).
+
+The successful proof uses `exact congrArg (fun f => (E.toAddCommGrpIso : AddCommGrpCat.of X ≅ AddCommGrpCat.of Y).hom ≫ f) (limit.conePointUniqueUpToIso_hom_comp hc j)`, with actual E, X, Y, hc and j supplied. The final generator evaluation is definitional. Keep any required existing backward-defeq options local to the theorem. This is a typed-term elaboration repair, not a reason to increase resource limits or run kernel replay.
+
+## Short-complex colimit comparisons: normalize abstract endpoints first
+
+On baseline3b4b58eb with pinned Lean4.34.1, native graphs041–046 failed while
+rewriting preservation formulas that mixed `(T ⋙ π₁).obj X` and
+`(T.obj X).X₁`. The target could not be checked at implicit transparency.
+Local backward-transparency settings and `erw` did not resolve the final
+mixed-composite match. Instead prove the preservation square for abstract
+functors F,H and a natural transformation α, then instantiate α with the
+native short-complex projection transformation using `exact`.
+
+Graph049 accepted `Continuity.ShortComplexColimit` in1.3 seconds with this
+repair, without extra transparency options or increased resource budgets.
+This is full-leaf native evidence, not a benchmark or a kernel-defect claim.
+No additional test, audit or kernel replay was used.
+
+## Additive Ext transport: avoid an irrelevant integer-module diamond
+
+Graph073 of ExactImageComparison.Cohomology, with pinned Lean4.34.1 and
+Mathlib d13f23b, failed when converting `Ext.precompLinearEquiv ℤ` to an
+additive equivalence: the inferred integer module on the native Ext carrier
+was not definitionally equal to `AddCommGroup.toIntModule`. This scalar
+structure is irrelevant to the additive cohomology endpoint and is not a
+missing Ext-size instance.
+
+Use the scalar-free `Ext.precompIsoAddEquiv`, built from original `Ext.precomp`
+and the actual isomorphism and its inverse, with native Ext associativity.
+Retain original `Adjunction.extEquiv`, cohomology pullback/counit and independent
+source/target HasExt universes. Explicit associativity degrees0,q,0,q avoid
+unresolved degree metavariables. Existing graph076 then accepted the complete
+Cohomology leaf in60 seconds; Exact graph071 and Exchange graph073 were
+unchanged. No additional benchmark, replay or budget change was used.
+
+## Pullback Gamma coherence: transport typed identities explicitly
+
+In Continuity.PullbackCohomologySystem, graphs078–080 could not simplify
+identity maps inside inverse-image composite comparisons: composite.obj and
+nested.obj left the native `map_id` and `id_comp` endpoints unmatched.
+Keep the original comparison isomorphism and transport the typed `map_id`
+and `Category.id_comp` equations with `congrArg` through its complete hom
+and inv endpoints. Compose those equations using `Eq.trans`, finishing with
+original `Iso.hom_inv_id_app`, rather than expanding the composite functor.
+Graph082 accepted the complete leaf in40 seconds on the pinned Lean4.34.1
+and Mathlib d13f23b baseline. No heartbeat, transparency or synthesis budget
+was raised, and no extra benchmark or kernel replay was run.
+
+## Finite pointed lifts: name the residue-point morphism
+
+FiniteNeighborhoodLift graph076 exhausted the ordinary200000-heartbeat
+budget while repeatedly elaborating residue Spec maps in the component
+triangle. Name the original morphism `localComponentResidueMap`, with its
+complete source and target, and explicitly type the MaximalSpectrum binder.
+Prove the scheme triangle componentwise through coproduct injections and
+transport the residue triangle using typed equations. Graph084 accepted
+the complete leaf in2.6 seconds after ordinary proof and formatting fixes.
+This records observed compilation evidence, not a standalone benchmark;
+no resource budget was raised and no replay was used.
+
+## Original cohomology squares: normalize the whole comparison first
+
+CohomologySquare graphs079 and082 timed out during ordinary compilation
+when reducing inverseImageSquareIso at concrete components. Normalize the
+whole isomorphism chain first using the generic iso_comparison_square and
+the native inverseImageSquareIso_comp_hom equation. Then use congr_app and
+an additive element-transport lemma with explicit AddCommGrpCat.comp_apply
+and typed Eq.trans, rather than unfolding the original sheaf carriers.
+Graph084 accepted SquareComparison in2.7 seconds; graph085 accepted
+SquareTransport in885 milliseconds and CohomologySquare in16 seconds.
+The original maps and four independent Ext universes are retained, without
+new mathematical premises, larger budgets, or additional replay/benchmarks.
+
+## Chart Ext comparisons: abstract the complete values before specialization
+
+ChartSourceMap graph093 exhausted200000 heartbeats at whnf while composing
+concrete slice and chart Ext comparisons. A private generic twoStep_ext_of_eq
+lemma first composes the complete Ext values and their already-proved
+comparison equations in abstract categories. Specialize that lemma once,
+with explicit original HasExt, additive and finite-colimit instances for
+the local functor aliases, rather than rewriting through concrete carriers.
+Graph097 accepted the full ChartSourceMap leaf in28 seconds after the alias
+instances were supplied. The original maps and independent Ext universes
+remain unchanged. No larger budget, extra test or kernel replay was used.
+
+## Diagram inverse-image comparisons: type the transported morphism
+
+DiagramPullbacks graph097 exhausted200000 heartbeats at isDefEq when an
+untyped morphism variable in congrArg and an inferred Iso.trans midpoint
+forced inference through the concrete inverse-image functors. Explicitly
+type the scheme-op Hom domain and the intermediate isomorphism with the
+original inverseImage source and target. This removed the timeout in099;
+typed transport of the original mate equation completed graph101 in7.1
+seconds. No transparency or resource option was changed.
+
+## Inverse naturality of representative sections: use the original hom equation
+
+RepresentativeSections graph106 exhausted200000 heartbeats at isDefEq when
+specializing the inverse naturality of the full pullbackSectionsEtaleNatIso.
+Use the accepted original pullbackSectionsMap_etaleEvaluation hom equation,
+then cancel the two explicitly typed chart isomorphisms via inv_hom_id.
+Graph108 accepted the entire leaf in92 seconds on baseline37cce7b, with no
+budget or transparency change. This is successful ordinary compilation,
+not evidence of a measured performance speedup or an extra test run.
+
+## Horizontal base-change unit: prove whole mate equations abstractly
+
+BaseChangeHorizontalUnit graph110 exhausted200000 heartbeats at isDefEq
+while expanding a concrete scheme inverse-image conjugate chain; rewriting
+the concrete base-change map also caused an ordinary compiler kernel timeout.
+Prove the complete isomorphism-chain conjugation and horizontal unit equation
+first for abstract categories, functors and adjunctions. Instantiate with the
+original inverseImageComp, equality transports and existing conjugate
+identities as complete proof terms, rather than rewriting inside their
+concrete carriers. Graph114 accepted the full leaf in3.2 seconds, with the
+same mathematical premises and resource budgets. No replay or separate
+benchmark was performed.
+
+## Canonical etale exchange: compare the whole continuous pushforward chain
+
+EtaleDirectImageMate repeatedly exceeded the default kernel/isDefEq budget
+when projecting a chain of direct-image composition and equality isomorphisms
+onto concrete sheaf components. Individual component equations still forced
+the kernel to normalize several large category carriers together.
+Instead identify each original directImageComp hom/inv and equality transport
+with its continuous-pushforward natural transformation at the whole functor
+level. Compose there using a generic continuous-transformation chain lemma,
+then evaluate only once. Supply the original composite-site continuity
+instances explicitly. The final exchange proof uses the complete original
+unit and site-square equations as typed inputs.
+Graph127 accepted the full canonical EtaleDirectImageMate leaf in91 seconds
+on37cce7b, without increased budgets or new mathematical premises. This closes
+the original baseChangeMap identification, not merely existence of an iso.
+The timing is ordinary compilation evidence, not a matched speedup claim.
+
+## Affine-limit section equality: type the isoSpec arrows and section values
+
+AffineSchemeSectionEquality exhausted the ordinary whnf heartbeat budget
+while inferring concrete isoSpec arrows and cancelling their action on
+original section values. Specify the original arrows hU/hV, and pass the
+entire mapped isomorphism and all section values into a generic additive-
+category equality lemma. Graph128 accepted the full leaf in3.8 seconds on
+37cce7b without changing resource budgets or the original maps. This records
+actual proof compilation; no separate replay or benchmark was performed.
+
+## Finite chart stalk comparison: use explicit native isomorphisms
+
+The monolithic GlobalEvaluationChart proof in graph129 exceeded the native
+memory limit. Splitting the actual index, chart stalk comparison and coordinate
+identity exposed a further kernel timeout in ChartStalkComparison graph130:
+`asIso` of the stalk image of the canonical exchange required normalization of
+its inferred IsIso instance and inverse.
+Use the original nativeStalkIso.app and the explicit
+sheafFiber.mapIso(etaleBaseChangeIso.app), then prove a complete hom boundary
+using the original nativeStalkIso_hom and etaleBaseChangeIso_hom equations.
+Graph131 accepted ChartStalkComparison in2.4 seconds, the coordinate leaf in
+2.2 seconds and GlobalEvaluationChart in1.0 second. Memory/heartbeat ceilings,
+mathematical hypotheses and canonical maps were unchanged. No extra replay,
+audit or matched performance benchmark was run.
+
+## Resized cohomology diagrams: stop extensionality at the actual group element
+
+FibreProductPresheaf graph132 failed when `ext x` recursively invoked
+`Shrink.ext`: the resulting goal had already been transported back into the
+original Ext universe, so a subsequent `change` to an equality in the resized
+group was not definitionally correct. Its natural-isomorphism proof also left
+an unresolved `u + 1 = max w ?v` universe constraint for untyped Shrink maps.
+Use `ConcreteCategory.ext_apply` explicitly to stop at the actual resized
+group element. Give the source and target Shrink additive equivalences complete
+types, and transport the original functor's whole identity equation using
+`ConcreteCategory.congr_hom` and `congrArg` instead of implicit rewriting.
+Graph135 accepted the full leaf in 219 seconds on 37cce7b, retaining independent
+base/slice/scheme Ext universes and the original coefficient sheaves. This is
+ordinary compilation evidence, not a speedup claim or evidence that inherited
+elaborator transparency options are necessary. No budgets were increased and
+no separate benchmark, audit or replay was performed.
+
+## Relative section scalars: name the actual transport before evaluating
+
+The finite representative consumers in graphs134–136 encountered kernel
+normalization timeouts when instantiating a generic equality lemma with the
+original chart-evaluation iso, the coefficient-composition map, and several
+large abelian-group morphisms simultaneously. Replacing the two intermediate
+maps by an inline composite still left the concrete carriers in that proof.
+
+PullbackScalarTransport names the actual composite E.inv followed by the
+original global-sections image of inverseImageComp.inv as a single typed
+morphism. Its unit and restriction equations are separate opaque theorems;
+separate scalar lemmas then evaluate one accepted equation at a time using
+ConcreteCategory.congr_hom and the original composition-application equation.
+Consumers can combine scalar equalities with congrArg and Eq.trans without
+reconstructing the intermediate isomorphism or all the group carriers.
+Graph138 accepted this complete supplier in 3.7 seconds on 37cce7b. At that
+point the downstream scalar consumers were still awaiting compilation; this
+entry does not claim that their independent timeouts were already resolved.
+The original maps, hypotheses and resource budgets are unchanged. No extra
+test, audit, kernel replay or comparative benchmark was run.
+The next ordinary graph139 accepted the downstream FiniteSectionRepresentatives
+consumer in 22 seconds and UnitSectionsAmalgamation in 2.7 seconds using these
+scalar boundaries. This validates the finite-representative path specifically;
+UnitRepresentativeEquality and SectionsCompatibility had not yet been accepted
+in that graph and are not covered by this observation.
+
+## Cohomology cone legs: specify the actual scheme endpoints
+
+In graph139, `DiagramCohomologyCocone` inferred the target scheme of a cone
+projection as `((Functor.const I).obj c.pt).obj i`. Searching for `HasExt`
+on that expression expanded to localized-Hom instances and exhausted the
+20,000 typeclass synthesis heartbeat limit. A later equality also reached
+the separate 200,000 elaboration heartbeat limit; subsequent cocone errors
+were cascading and were not evidence of a mathematical obstruction.
+
+Specify the source stage scheme and the actual target `c.pt.unop` explicitly
+in `cohomologyTransfer` and `cohomologyTransfer_triangle` applications. This
+selects the existing `HasExt` instances without unfolding the constant diagram.
+Keep the Ext universe independent of the scheme and coefficient universes.
+For cocone naturality, compose the typed equation with `Category.comp_id`
+rather than asking simplification to identify opaque cohomology objects.
+Graph141 accepted the complete cocone leaf in 43 seconds on 37cce7b after
+these changes and an ordinary `colimit.ι_desc` argument correction. No budget
+or transparency option was changed; no extra benchmark, test, audit or kernel
+replay was run. This records a validated repair, not a comparative speedup.
+
+### Fixed pullback systems: compose transformations before evaluating coefficients
+
+The fixed-coefficient inverse scheme system encountered kernel excessive-memory
+failures in its native transition composition proof (compiler graphs 141 and
+142). A separate concrete `congrArg` transporting the adjunction composition
+comparison also reached the unchanged `whnf` limit. The generic mate constructor
+and abstract scheme-triangle laws themselves were already accepted; the expensive
+boundary was their simultaneous specialization to indexed scheme maps and an
+actual sheaf coefficient.
+
+In `EtaleCohomology/Stalk/PullbackCoefficientSystem.lean`, the successful repair
+first proves the triangle composition as an equality of whole natural
+transformations, specializes that equality to the diagram, and evaluates it at
+the coefficient only once. `System.ofLeftMapsWithComparisons` transports the
+specified identity and composition isomorphisms at the abstract adjunction
+boundary, rather than constructing a large concrete component-level `congrArg`
+inside the native system definition. The original inverse-image triangles and
+adjunction comparisons are unchanged.
+
+The exact repaired leaf passed the normal production build in graph 144 (97 s).
+This is evidence of acceptance after the diagnosed failures, not a benchmark or
+a claim that compilation is optimized. No limits, elaborator options, kernel
+replay, or additional validation runs were introduced for this repair.
+
+## Original tuple cochains: normalize typed carriers before transport
+
+With Lean 4.34.1 and Mathlib d13f23b, graphs 142–151 of the continuity task
+encountered implicit-transparency endpoint mismatches and 200000-heartbeat
+`whnf` failures while rewriting native Hom-complex carriers and tuple-product
+generators. Unannotated product vertices also forced unnecessary reduction of
+chosen limit cones. No mathematical product-preservation assumption was missing.
+
+Construct the degree maps first on the explicitly typed original Hom groups.
+Use named original product objects, tuple generators and site arrows, and
+transport the native chain-map and tuple-projection equalities by whole-value
+`congrArg`. Evaluate the free-family Yoneda comparison through those typed
+generators rather than unfolding the complete Hom complex during rewriting.
+For dependent products of section equivalences, first map the actual abelian
+isomorphism through `forget`, then use the native type isomorphism equivalence.
+
+Graph 148 accepted `Continuity.TupleBaseChange` in 4.3 seconds; graph 152 accepted
+generic `Continuity.FamilyBaseChange` in 5.1 seconds and its actual etale adapter
+in 3.4 seconds. These are full-leaf native acceptance results, not benchmarks.
+No budgets were raised and no extra tests, audits or kernel replay were run.
+Only the additive Hom cochain comparison is proved invertible; the underlying
+map of free tuple presheaves is not asserted to be an isomorphism.
+
+The corresponding `Stalk/PullbackLimitCoefficient.lean` encountered the same
+concrete-component expansion in its naturality proof (graph 146). Its accepted
+repair also specializes a whole original triangle transformation before a single
+coefficient evaluation. Explicit native endpoint isomorphisms avoid relying on
+simp to identify constant-functor objects with the original sheaf objects. The
+constant-diagram colimit insertion equation is proved in an abstract category,
+with independent index and target object/morphism universes, then instantiated
+without unfolding the concrete sheaf category. Proof helpers referenced by an
+exposed definition must themselves be publicly accessible; merely putting the
+construction in a tactic block does not remove that module visibility boundary.
+The exact leaf passed graph 152 (67 s), with unchanged budgets and options. This
+is acceptance evidence, not a benchmark or an additional validation cycle.
+
+### Preserve native representative interfaces across geometric specialization
+
+In the étale continuity implementation, a concrete matching proof repeatedly exceeded the
+normal deterministic kernel budget even after its Scheme/Over geometry and abstract
+functor algebra had been separated. The abstract helper consumed naked `P.map` values
+and explicit evaluation-inverse seeds, whereas both the accepted input producer and
+required conclusion used `etaleRepresentativeSection`. Specializing the helper therefore
+forced simultaneous reduction of deep pullback-source objects, the original section
+functor, and the evaluation-inverse endpoint types.
+
+The successful repair keeps the native interface intact: prove equality transport for the
+original coefficient sheaf and arbitrary Over objects, with
+`etaleRepresentativeSection` on both sides and original coefficient sections as inputs.
+Its proof uses the existing native restriction theorem. Specialize this theorem once to
+the already-proved geometric arrows. Also align the geometric arrow's source and the
+consumer statement with the literal native `Over.mk` source of `unitRepresentativeArrow`,
+rather than requiring an additional source-object alias conversion under the section
+functor. No replacement cohomology, extra mathematical assumption, increased budget,
+or kernel replay is involved.
+
+Normal compilation on 2026-10-23 accepted `BaseChangeUnitMatching` in 8.6 seconds and
+its actual stage-sheaf amalgamation consumer in 2.5 seconds (graph157). These timings
+validate this interface repair, not completion of the full scheme-limit continuity theorem.
+
+## Reindexed direct-image comparisons: evaluate a whole identity first
+
+The first `DiagramDirectImageTriangleComp` compilation in graph157 reached
+the 200,000 elaboration heartbeat limit at the final `Category.assoc` transport.
+The native scheme triangle lemmas had elaborated; the remaining problem was
+implicit normalization of the reindexed adjunction comparison at a concrete
+sheaf object.
+
+Normalize that reindexed comparison first as an equality of whole natural
+transformations (`diagramDirectImageComp_inv`), evaluate that equality at the
+specified coefficient object, then use a `congrArg` with explicit source and
+target to postcompose the original triangle. The final proof joins these typed
+equations with the already established native associativity equation. Graph159
+accepted the full leaf in 10 seconds on 37cce7b. Resource limits, original maps,
+and hypotheses were unchanged; no separate benchmark, test, audit, or kernel
+replay was run.
+
+### Whole fixed-site cochain cocones before concrete geometric specialization
+
+In graph162, `FamilyTailCochains` reached the kernel's normal memory guard while
+checking a concrete sheaf-cochain colimit certificate. The proof supplied a
+presheaf cocone mapped in two steps, whereas the actual consumer used the whole
+sheaf-to-presheaf and additive Hom composite. Converting those cocones directly
+expanded the concrete right-tail coefficient system and geometric site carriers.
+
+Keep that conversion at the fixed-site level: `FiniteSheafHomCocone` consumes
+the literal tuple `sheafSections` cocones and returns a certificate for the
+complete original composite functor. The concrete consumer then specializes
+one whole certificate. For the limit-family extension, give the existing
+cochain isomorphism explicit source and target complexes before applying native
+`IsColimit.extendIso`; do not ask instance synthesis to normalize its inverse
+through concrete family-model aliases.
+
+Graph164 accepted the fixed-site leaf in 25 seconds and the actual scheme
+cochain consumer in 14 seconds, with unchanged resource limits and options.
+The certificate still assumes only the original evaluated tuple cocones, not
+a colimit of the whole sheaf cocone. No benchmark, extra test, audit, or kernel
+replay was run for this record.
+
+### Original section images: explicit relative arrows and pointwise native interfaces
+
+The final original-section image equation repeatedly reached the normal kernel
+heartbeat or memory guard when equality-rebasing two relative chart objects
+under the original section functor. The two objects had the same underlying
+pullback scheme but differently associated structural maps. Moving primitive
+section-map normalization to a shallow canonical gluing interface was useful,
+but did not by itself remove this dependent carrier conversion.
+
+Keep those relative objects separate. `RelativeChartComparison` constructs
+actual identity-underlying Over arrows in both directions and proves their
+source and representative triangles without coefficients. Functorial
+restriction along these arrows yields the original relative separation
+interface. Likewise, `RelativeChartTransition` isolates the actual pullback
+lift and its triangles before introducing the coefficient sheaf.
+
+For map-square element algebra, use an opaque arbitrary functor with intermediate
+values equal to the original `etaleRepresentativeSection` terms. Those values
+already have the required functor-object types. Do not replace them with explicit
+étale-evaluation inverse seeds, which reintroduce the earlier carrier mismatch.
+The final geometric specialization is a pointwise chart equation with exactly
+the same literal original Over arrow in its statement and result. The family
+image theorem then only applies separation to these pointwise equations.
+
+Normal graph169 compilation on baseline 2c34f185 accepted
+`MappedCoverSectionRepresentatives` and `StageSectionsImage` in 10 seconds each.
+The preceding graph168 accepted the independent original relative separation
+leaf in 59 seconds. No resource limit, mathematical hypothesis, or original map
+was changed, and no extra test, benchmark, audit, or kernel replay was performed.
+This validates the actual image equation, not yet the full continuity endpoint.
+
+### Normalize original fibre-product cohomology before geometric specialization
+
+The geometric fixed-coefficient diagram reached the normal kernel timeout while
+converting its all-degree transition to the original fibre-product restriction.
+A direct rewrite first failed at the hidden base-cone carrier. Moving the rewrite
+to a concrete coefficient equality or a concrete cohomology `congrArg` still
+expanded the geometric system, native chart morphism and coefficient evaluation.
+
+Separate the actual scheme structure/map equations, then compare the whole
+original `pullbackTriangleIso` before evaluating it at the coefficient sheaf.
+A generic fixed-system component lemma must retain the literal
+`pullbackCoefficientTransition` in its conclusion. Finally, normalize the
+original `fibreProductCohomologyRestriction` at arbitrary native étale objects,
+before supplying geometric-neighborhood objects. Its input includes both actual
+scheme arrows and the heterogeneous equality of their coefficient maps. Merely
+normalizing an abstract `H.map` composite and converting to the native restriction
+after geometric specialization did not resolve the timeout.
+
+Graph173 accepted `GeometricCohomologyDiagram` in 62 seconds on f27c5fa9, with
+independent Ext universes, unchanged original maps and no changed resource limits
+or elaborator options. This records acceptance of the actual stage map, not a
+benchmark or a proof of strict-local cohomological continuity. No extra test,
+audit, repeated validation or kernel replay was run.
+
+### Form the original relative-section bifunctor before evaluating coefficients
+
+The scalar base-change naturality proof in
+[PullbackSectionsBase](../Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean)
+reached the normal kernel budget in graphs 127 and 177. Giving the same scalar
+equation typed helpers did not resolve the conversion: specialization still
+expanded the original Over-map structural arrows, inverse-image comparisons,
+and coefficient evaluation simultaneously.
+
+Keep the coefficient variable at the functor level. The actual
+`pullbackSectionsBifunctor` uses the original global-section unit and original
+triangle comparison as its arrows. Prove base-change naturality as an equality
+of whole natural transformations, then evaluate this bifunctor at the chosen
+coefficient sheaf. The resulting evaluation is definitionally the original
+relative-section functor. Its restriction to the actual small-etale site is
+therefore naturally isomorphic to the original inverse-image sheaf, with no
+new sheaf or continuity hypothesis. Avoid inserting an identity associator
+inside the component comparison when the native functor endpoints already
+agree; keep genuinely necessary outer reassociations explicit.
+
+Graph 181 accepted the full leaf in 79 seconds on baseline f27c5fa9, under
+Lean 4.34.1 and the pinned Mathlib version, with the original resource limits
+and elaborator options. This is native acceptance evidence, not a controlled
+benchmark or a proof of scheme-limit section continuity. The actual affine
+section descent and eventual-equality producers remain separate obligations.
+No extra test, audit, repeated validation or kernel replay was performed.
+
+### Compare whole unresized cohomology diagrams before shrinking groups
+
+The geometric stage comparison repeatedly reached the normal kernel heartbeat
+or memory guard when combining original system-H object aliases, native chart-H
+objects and `Shrink` in one concrete value or morphism equation. Generic additive
+cancellation and a whole small-presheaf map lemma did not remove the conversion
+at their geometric specialization; graphs177,179,181 exposed that boundary.
+
+Construct the original unresized fibre-product H functor first, reusing its
+already proved actual restriction identity/composition laws. Compare the whole
+geometric system-H diagram with that original diagram in its independent Ext
+universe, before introducing any `Shrink`. Keep the independent original
+neighborhood-colimit/stalk germ supplier separate from resizing naturality.
+
+Graph183 accepted `FibreProductOriginalDiagram` in 76 seconds,
+`GeometricOriginalDiagram` in 29 seconds and the independent
+`GeometricCohomologyStalk` in 24 seconds on f27c5fa9. This validates the original
+whole-diagram comparison and native germ supplier, not yet their resized
+whole-diagram consumer or strict-local cohomological continuity. No resource
+limits or elaborator options changed, and no benchmark or extra validation was run.
+
+### Keep original chart unit and coefficient-square maps whole until evaluation
+
+The original etale chart-square section comparison reached the normal kernel
+budget when a whole square identity was specialized to a coefficient and then
+combined with the original unit-representative equation. Generic scalar factor
+lemmas and typed composition aliases did not remove the dependent carrier
+conversion: graphs 180, 182 and 185 still expanded the original Over arrow,
+chart evaluation and inverse-image composition together.
+
+Retain both actual transformations before evaluation.
+`DiagramEtaleSections.squareSectionsNatTrans` is the original section pullback
+followed by the original coefficient-square inverse. `unitSectionNatTrans`
+is the original adjunction unit followed by restriction on the specified test.
+Use the native relative-section bifunctor for the original Over arrow, package
+the existing representative equation in the coefficient functor category, and
+cancel the original composition isomorphism there. Evaluate the resulting whole
+equality only once. Separate generic component normalization from concrete
+chart specialization; the final theorem still names the literal
+`squareSectionsMap`, original adjoint coefficient component and restriction map.
+
+Graph 187 accepted the full leaf in 24 seconds on f27c5fa9, with unchanged
+resource limits and elaborator options. Graph 182 separately accepted the
+actual test-diagram geometry in 4.3 seconds. These are canonical map identities,
+not section-colimit certificates or higher continuity. No extra test, benchmark,
+audit, repeated validation or kernel replay was performed for this record.
+
+### Rebase sections to the terminal coefficient chart before equality descent
+
+The affine section eventual-equality proof initially refined two finite
+representative covers, restricted both sections to actual base-change charts,
+and descended all representative equalities simultaneously. The mathematical
+route was valid, and its geometric and generic equality suppliers compiled,
+but concrete scalar specialization repeatedly exceeded the normal kernel
+budget. Splitting wrappers, aligning Over arrows, introducing correctly typed
+native seeds, and evaluating whole coefficient squares did not close that
+concrete boundary. Those unsuccessful drafts are not acceptance evidence.
+
+Once the original fixed-base section natural isomorphism was available, the
+finite-cover route was unnecessary. For a stage map `r`, set the coefficient
+sheaf on that stage to the original `r⁻¹F`. Its global sections are coefficient
+values on the terminal étale chart. Use the original base-change natural
+isomorphism, with an explicit identity-underlying Over arrow at the initial
+stage, to turn equality of original limit images into equality of two terminal
+representatives. Apply the existing actual affine representative-equality
+descent theorem, then reflect equality through the same natural isomorphism.
+This avoids all concrete pullback-chart scalar criteria while retaining the
+literal original section maps and without adding a continuity premise.
+
+Keep the terminal `τ ≫ 𝟙` source normalization explicit: transport equality
+along the original Scheme-arrow equality before instantiating the dependent
+representative carrier, rather than asking `simp` to rewrite that carrier.
+For the identity representative use the explicit original functor `map_id`
+equation followed by `ConcreteCategory.congr_hom`, rather than rewriting
+inside an already exposed concrete coercion.
+
+Graph 191 accepted the complete `StageSectionsInjectivity` leaf in 5.6 seconds
+on f27c5fa9 after graph 189 had only ordinary native-alias errors. Its actual
+public endpoint is `exists_stage_sections_eventually_equal`, for the original
+same-stage section maps. The source retains the affine-stage and small-index
+hypotheses; it does not claim full scheme-limit continuity. Resource limits,
+options and dependency pins were unchanged. No benchmark, extra test, audit
+or kernel replay was run for this record.
+
+## Bounded presentations: preserve typed section transport
+
+Affected declaration:
+`AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.BoundedPresentation.generators_isSeparating`
+in `Constructible/TorsionColimit/BoundedPresentation.lean`.
+
+Private basis 2c34f185fa859e862661f939cd216b07bcccfb26; Lean 4.34.1;
+Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612.
+
+The first module version, SHA256
+32ae530eddea5ee1ebadae05f910fe0925be79ff51b35986fbb9d9835ea36f39,
+exhausted the standard 200000 elaborator heartbeats at `whnf` in
+remote-4f8d706226d14488959cf43eb95b836d, source snapshot
+1c8814701ec3705c9023b2f01a9f106b309d7c0f8c90f062e6727655851dedd2.
+The generated downstream unknown
+`generators_isSeparating` diagnostic was cascading; no endpoint from that
+module was admitted by the failed run.
+
+The repair first uses the actual single-index constructor of
+`ObjectProperty.ofObj`, rather than trying to treat it as an existential
+pair. The subsequent section calculation keeps the original free mod-n
+cokernel carrier behind the named `sectionsEquiv` boundary. A typed
+`sectionsEquiv_symm_naturality` equation transports the actual coefficient
+arrow on an unchanged section. The proof composes these exact equations
+instead of simplifying the concrete affine restriction and free-cokernel
+carrier. Native reflection-of-isomorphism instances are installed at their
+fully typed original maps. The final filtered presentation also uses the
+actual costructured-arrow category and its explicit standard-universe
+`SmallModel`, with essential smallness proved from the finite-colimit closure.
+
+The unchanged mathematical construction uses actual sheaves killed by n,
+original free ZMod representables on affine etale tests, the original
+coefficient maps, and the original underlying colimit cocone. No constructible
+presentation or finite cogenerator premise was added; stages are still only
+proved to belong to the genuine finite-colimit closure. No heartbeat or
+resource ceiling was raised.
+
+Actual successful scope: exact BoundedPresentation module SHA256
+ d07e613bffcdd8d1d38887ad81e02435466e9643ed0a1acd420f6bb51cba66ec,
+accepted as one frontend in remote-0ee44936a46b4f95b2601122b7c5763e,
+source snapshot 6fb90108db4177e899d229330ed65e1e9106c7d31be7f96167cd86df3e98db3c,
+reported 6.2 seconds, standard 200000, no diagnostics in that leaf. The same
+invocation accepted Sections and failed the separate Bounded leaf; this
+records only BoundedPresentation coverage. These are ordinary existing
+proof-iteration observations, not a controlled benchmark or a diagnosis of
+a Lean defect. No additional profiling, replay, audit, or benchmark was run.

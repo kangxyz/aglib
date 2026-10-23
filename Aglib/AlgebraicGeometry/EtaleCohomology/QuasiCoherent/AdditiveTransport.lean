@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.Algebra.Category.Grp.Ulift
+public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveSections
 
 /-! # Typed additive component transport -/
 
@@ -13,7 +14,7 @@ public import Mathlib.Algebra.Category.Grp.Ulift
 
 universe u v
 
-open CategoryTheory
+open CategoryTheory Opposite
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent
 
@@ -44,5 +45,91 @@ def sectionNatIso {C : Type*} [Category* C] (P Q : C ⥤ AddCommGrpCat.{u})
     (h : ∀ {T U} (f : T ⟶ U) (s : P.obj T),
       (e U).hom (P.map f s) = Q.map f ((e T).hom s)) : P ≅ Q :=
   NatIso.ofComponents e (by intro T U f; ext s; exact h f s)
+
+section Transport
+
+variable {C D : Type*} [Category* C] [Category* D]
+    (P : Cᵒᵖ ⥤ Type u) (A : C → AddCommGrpCat.{u})
+    (e : ∀ T, P.obj (op T) ≃ A T)
+    (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
+    (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s)))
+    (Q : Dᵒᵖ ⥤ Type u) (B : D → AddCommGrpCat.{u})
+    (e' : ∀ T, Q.obj (op T) ≃ B T)
+    (r' : ∀ {T U}, (U ⟶ T) → (B T →+ B U))
+    (hr' : ∀ {T U} (f : U ⟶ T) (s : B T), r' f s = e' U (Q.map f.op ((e' T).symm s)))
+    (g : D ⥤ C)
+
+/-- Natural additive maps between two original Type transports, including base restriction. -/
+def liftTransportHom (a : ∀ T, A (g.obj T) →+ B T)
+    (ha : ∀ {T U} (f : U ⟶ T) (s : A (g.obj T)),
+      a U (r (g.map f) s) = r' f (a T s)) :
+    g.op ⋙ liftAdditiveTransport P A e r hr ⟶ liftAdditiveTransport Q B e' r' hr' where
+  app T := liftSectionAddHom (a T.unop)
+  naturality {T U} f := by
+    ext s
+    apply ULift.ext
+    exact ha f.unop s.down
+
+/-- Natural additive equivalences between two original Type transports. -/
+def liftTransportIso (a : ∀ T, A (g.obj T) ≃+ B T)
+    (ha : ∀ {T U} (f : U ⟶ T) (s : A (g.obj T)),
+      a U (r (g.map f) s) = r' f (a T s)) :
+    g.op ⋙ liftAdditiveTransport P A e r hr ≅ liftAdditiveTransport Q B e' r' hr' :=
+  NatIso.ofComponents (fun T => liftSectionAddIso (a T.unop)) (by
+    intro T U f
+    ext s
+    apply ULift.ext
+    exact ha f.unop s.down)
+
+/-- Native Type naturality supplies the coherence for additive equivalences,
+without unfolding concrete transported carriers in the naturality proof. -/
+def liftTransportIsoOfTypeIso
+    (E : g.op ⋙ transportTypeFunctor P (fun T => A T.unop) (fun T => e T.unop) ≅
+      transportTypeFunctor Q (fun T => B T.unop) (fun T => e' T.unop))
+    (a : ∀ T, A (g.obj T) ≃+ B T)
+    (ha : ∀ T (s : A (g.obj T)), a T s = E.hom.app (op T) s) :
+    g.op ⋙ liftAdditiveTransport P A e r hr ≅ liftAdditiveTransport Q B e' r' hr' :=
+  liftTransportIso P A e r hr Q B e' r' hr' g a (by
+    intro T U f s
+    rw [hr, hr', ha, ha]
+    exact ConcreteCategory.congr_hom (E.hom.naturality f.op) s)
+
+end Transport
+
+/-- Compare an original Type transport with a native additive presheaf, before value lift. -/
+def liftTransportNativeIso {C D : Type*} [Category* C] [Category* D]
+    (P : Cᵒᵖ ⥤ Type u) (A : C → AddCommGrpCat.{u})
+    (e : ∀ T, P.obj (op T) ≃ A T)
+    (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
+    (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s)))
+    (g : D ⥤ C) (Q : Dᵒᵖ ⥤ AddCommGrpCat.{u})
+    (a : ∀ T, A (g.obj T) ≃+ Q.obj (op T))
+    (ha : ∀ {T U} (f : U ⟶ T) (s : A (g.obj T)),
+      a U (r (g.map f) s) = Q.map f.op (a T s)) :
+    g.op ⋙ liftAdditiveTransport P A e r hr ≅ Q ⋙ AddCommGrpCat.uliftFunctor.{u+1,u} :=
+  NatIso.ofComponents (fun T => liftSectionAddIso (a T.unop)) (by
+    intro T U f
+    ext s
+    apply ULift.ext
+    exact ha f.unop s.down)
+
+/-- Same-site additive transport, with identity functor coherence absorbed abstractly. -/
+def liftTransportHomSame {C : Type*} [Category* C]
+    (P : Cᵒᵖ ⥤ Type u) (A : C → AddCommGrpCat.{u})
+    (e : ∀ T, P.obj (op T) ≃ A T)
+    (r : ∀ {T U}, (U ⟶ T) → (A T →+ A U))
+    (hr : ∀ {T U} (f : U ⟶ T) (s : A T), r f s = e U (P.map f.op ((e T).symm s)))
+    (Q : Cᵒᵖ ⥤ Type u) (B : C → AddCommGrpCat.{u})
+    (e' : ∀ T, Q.obj (op T) ≃ B T)
+    (r' : ∀ {T U}, (U ⟶ T) → (B T →+ B U))
+    (hr' : ∀ {T U} (f : U ⟶ T) (s : B T), r' f s = e' U (Q.map f.op ((e' T).symm s)))
+    (a : ∀ T, A T →+ B T)
+    (ha : ∀ {T U} (f : U ⟶ T) (s : A T), a U (r f s) = r' f (a T s)) :
+    liftAdditiveTransport P A e r hr ⟶ liftAdditiveTransport Q B e' r' hr' where
+  app T := liftSectionAddHom (a T.unop)
+  naturality {T U} f := by
+    ext s
+    apply ULift.ext
+    exact ha f.unop s.down
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent

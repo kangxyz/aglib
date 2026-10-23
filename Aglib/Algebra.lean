@@ -18,6 +18,7 @@ public import Aglib.Algebra.Category.FGModuleCat.RestrictScalars
 public import Aglib.Algebra.Category.FGModuleCat.ScalarAutomorphisms
 public import Aglib.Algebra.Category.FGModuleCat.ScalarExtension
 public import Aglib.Algebra.Category.FGModuleCat.ScalarMatrices
+public import Aglib.Algebra.Category.Grp.ProductSections
 public import Aglib.Algebra.Category.Grp.ZModSequence
 public import Aglib.Algebra.Category.ModuleCat.BaseChange
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Additive
@@ -185,6 +186,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.ScalarTransfer
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SurjectiveColimit
