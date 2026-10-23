@@ -143,8 +143,9 @@ marking, coefficient-order invertibility or Noetherian hypothesis is required.
 
 Existence of an explicit finite-`ZMod` generator/relation presentation
 remains a separate question. Ordinary finite presentability for these finite
-locally constant coefficients does not require that presentation. General
-constructible finite cogeneration and finite presentability remain open.
+locally constant coefficients does not require that presentation. Nonaffine general
+constructible finite cogeneration and arbitrary constructible finite
+presentability remain separate.
 
 ## Explicit presentations on qcqs étale objects
 
@@ -180,7 +181,7 @@ including zero and one. `exists_filtered_presentation` constructs a small
 filtered `I : Type (u+1)`, a diagram in the full category of n-killed
 coefficients and an actual colimit cocone with point `F`. Its stages are
 finite colimits of the original affine free mod-n representables. For positive moduli,
-their geometric constructibility remains a separate obligation.
+their geometric constructibility is supplied below on separated schemes.
 
 [Strata](FiniteCogenerators/Strata.lean) proves joint faithfulness of original
 inverse images along covering immersions. Given an actual
@@ -197,13 +198,128 @@ finitely generated subalgebras of a ring algebra `R → A`, after base
 change to a fixed qcqs test `U → Spec R`. Its cocone maps are original
 scheme precomposition. When `A` is integral over `R`, the stages
 are finite over `R`. The section result itself does not require
-integrality. Identifying this represented cocone with the full original
-constant direct-image sheaf cocone remains open.
+integrality. [RepresentedSections](FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean)
+identifies the original direct-image sections and transition maps, with their
+original adjunction units. [SheafColimit](FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean)
+then proves the literal constant direct-image sheaf cocone is a colimit at
+value size `u+1`, for arbitrary ring algebras and finite abelian values.
+Integrality is needed only to make the stages finite over the base. This
+does not assert arbitrary varying-system cohomological continuity.
+
+## Completed positive-presentation suppliers
+
+[Ambient](PositivePresentation/Ambient.lean) proves ambient finite
+presentability for every original bounded-producer stage on every scheme and
+for every modulus, including zero. [ModulusOne](PositivePresentation/ModulusOne.lean)
+proves these stages are constructible at modulus one. Neither result infers
+geometric constructibility from finite presentability for other moduli.
+
+[Partitions](FiniteColimits/Partitions.lean) constructs actual common finite
+locally closed refinements, including empty families.
+[Values](FiniteColimits/Values.lean) proves finiteness of the actual abelian
+colimit of finite values when the object family is finite; the arrow family
+need not be finite. [LocalTrivialization](FiniteColimits/LocalTrivialization.lean)
+constructs a common actual etale chart for finitely many FLC objects. Arrow
+compatibility on that chart is supplied for finite arrow families below.
+
+[FreeSet](PositivePresentation/FreeSet.lean) proves finite local constancy of
+the original free-mod-n generators for finite etale test objects when `n != 0`.
+Its extension to arbitrary qc etale test objects retains a locally Artinian,
+quasi-separated base. [FiniteColimits/Artinian](FiniteColimits/Artinian.lean)
+supplies the actual arrow-compatible diagrams and finite-object colimit closure
+on locally Artinian bases. [PositivePresentation/Artinian](PositivePresentation/Artinian.lean)
+therefore gives constructible, ambient finitely presentable original stages
+for nonzero moduli on locally Artinian quasi-separated bases; base
+quasi-compactness is not an extra premise.
+
+[RepresentablePullback](PositivePresentation/RepresentablePullback.lean)
+identifies original free-mod-n generators under arbitrary inverse image,
+for every modulus. Its constructibility consequence requires actual finite
+etale structural maps on supplied finite locally closed partitions; the geometric
+partitions for affine structural maps and separated-base affine generators
+are constructed by the finite-stratification suppliers below.
+
+## General finite-diagram closure
+
+[ConstantRestriction](FiniteColimits/ConstantRestriction.lean) preserves the
+literal original constant-presheaf unit under actual etale restriction.
+[LocalMaps](FiniteColimits/LocalMaps.lean) simultaneously lifts finitely many
+original arrows to additive value maps on an actual chart retaining a point.
+The source values are finite; target values need not be finite.
+
+[General](FiniteColimits/General.lean) uses these original arrow maps and their
+proved functor laws to identify the whole restricted diagram with an actual
+finite-value diagram. For `Finite (Arrow J)`, the original colimit of FLC or
+constructible coefficients is FLC or constructible on every scheme. No
+Noetherian, locally Artinian, compactness or separatedness premise is added.
+The older Artinian result retains its weaker finite-object-only shape bound.
+
+[FiniteEtalePartitions](PositivePresentation/FiniteEtalePartitions.lean)
+therefore makes the original positive-modulus presentation stages constructible
+and ambient finitely presentable from actual finite-etale partitions of the
+original generators. The original diagram, cocone and index/value size `u+1`
+are retained. The finite-stratification suppliers below construct this exact input on
+separated bases.
+
+## Genuine presentations and geometric strata
+
+[GenuineModules](PositivePresentation/GenuineModules.lean) identifies the
+original bounded-coefficient category with genuine ZMod sheaves through an
+actual equivalence, for every modulus including zero. The original underlying
+functor preserves colimits of size `u+1`. The original filtered presentation
+lifts to the supplied genuine module itself; its literal underlying cocone
+legs and whole cocone are recovered through the native scalar comparison.
+
+[AffineRestriction](PositivePresentation/AffineRestriction.lean) proves ambient
+finite presentability after restriction to every original affine open for
+these actual stages on separated schemes. This is a theorem about the stage
+closure, not arbitrary preservation of FP objects by inverse image.
+
+[NoetherianAffine](FiniteStratification/NoetherianAffine.lean) constructs actual
+finite partitions for affine locally quasi-finite finite-type maps over a
+Noetherian base. [AffineEtale](FiniteStratification/AffineEtale.lean) descends an
+actual etale algebra to a finitely generated integer subalgebra and pulls
+back its Noetherian partition. Thus affine etale maps over arbitrary affine
+bases have finite literal stratum projections.
+[AffineRepresentable](FiniteStratification/AffineRepresentable.lean) supplies
+the exact partition input for affine structural maps on any scheme and for
+original affine-source generators on separated schemes. Together with the
+positive genuine producer, it gives constructible, ambient-FP stages and
+both actual colimit cocones without a Noetherian assumption. Geometric
+constructibility still requires nonzero modulus.
+
+## Finite cogenerators on an affine Noetherian base
+
+[Affine](FiniteCogenerators/Affine.lean) constructs
+`finiteConstantProductEmbeddingOfIsAffine X F hF` for an affine Noetherian
+scheme, a geometrically constructible original abelian coefficient and its
+explicit ambient finite-presentability instance. The result stores actual
+finite source schemes over X, finite abelian values and the literal original
+monomorphism into their finite constant direct-image product.
+
+[IntegralStrata](FiniteCogenerators/IntegralStrata.lean) uses actual reduced
+integral components and original generic detection.
+[GenericTrivialization](FiniteCogenerators/GenericTrivialization.lean),
+[GenericExtension](FiniteCogenerators/GenericExtension.lean) and
+[NormalGenericModel](FiniteCogenerators/NormalGenericModel.lean) construct and
+compare the original finite Galois values, normal models and generic triangles.
+The integral closure may be infinite.
+[Factorization](FiniteCogenerators/AffineIntegralConstants/Factorization.lean)
+uses the original sheaf colimit and ambient finite presentability to select
+actual finite subalgebra stages. [Spectrum](FiniteCogenerators/Spectrum.lean)
+assembles their literal product map and proves its monicity.
+No Japanese, Nagata or finite-normalization premise is used.
+
+The source coefficient still needs ambient FP. Nonaffine global finite
+cogeneration is separate, and arbitrary finite output groups have no prescribed
+annihilator. The genuine-module annihilator adapter is supplied in
+[Proper/Local](../Proper/README.md).
 
 ## Remaining geometric inputs
 
-Geometric constructibility of the finite-colimit stages for positive moduli, full constructible
-finite cogeneration/presentability and the represented-to-original sheaf
-cocone bridge remain open. The positive qcqs constructible bound and the
-actual n-killed filtered presentation are available inputs, not assumed
-presentation or boundedness fields.
+Global finite cogeneration on nonaffine schemes and arbitrary constructible
+finite presentability remain separate obligations. The affine embedding
+requires ambient FP; the actual positive presentations provide that condition
+for their stages on separated schemes. General nonseparated qcqs generator
+stratification is not asserted. The locally Artinian theorem retains its own
+weaker diagram-shape conditions and is not the sole available geometric case.

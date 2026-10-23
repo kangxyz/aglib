@@ -1,8 +1,9 @@
 # Proper-base-change reduction inputs
 
 This family collects formal reductions for the original exchange maps and
-geometric inputs for proper base change. Its namespace is
-`AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction`.
+geometric inputs for proper base change. The universal exchange interfaces use
+`AlgebraicGeometry.Scheme.EtaleCohomology.Proper`; the lower reduction suppliers use
+its `Reduction` namespace.
 Scheme coefficients use `AbelianSheaf.{u,u+1}`; the derived statements use
 the actual bounded-below category `DerivedCategory.Plus`.
 
@@ -146,9 +147,56 @@ The proof uses the production finite binary-form covers and the actual Chow
 packet above; it leaves no Noetherian or finite-presentation premise on the
 original affine base or proper morphism.
 
-Applying this criterion to proper base change still requires a genuinely
-universal exchange property, with all coefficients on every pulled-back source,
-its model/universe transport and the projective-line input over every base.
+The constructed
+[universal bounded exchange property](Universal/Basic.lean) tests every
+coefficient killed by `n` on every pulled-back source. Actual finite exchange,
+composition and surjective descent supply its closure rules. Thus universal
+exchange for the native projective line implies the same property for every
+proper morphism over the same arbitrary spectrum. The initial original-source
+predicate alone is not asserted stable under base change.
+
+[ModelTransport](Universal/ModelTransport.lean) transfers this standard-model
+property to the original higher exchange in four independently supplied
+derived-category models and universes. It uses the actual ordinary mate in
+degree zero and the original higher-image zero objects on genuine module
+injectives in positive degrees. [AffineReduction](Universal/AffineReduction.lean)
+exports the original higher-exchange and derived-single conclusions directly.
+Every natural modulus, including zero, is retained. No injectivity after scalar
+forgetting is asserted.
+
+The actual universal projective-line input and the remaining general-base and
+torsion assembly are still open. These conditional reductions do not assert
+general proper base change.
 The [finite family](../Finite/README.md) supplies actual finite exchange;
 the [torsion family](../Torsion/README.md) retains the geometric presentation
 and local surjectivity inputs. General proper base change remains open.
+
+## Original strictly local test coefficients
+
+[FiniteTests](Local/FiniteTests.lean) transports original cohomology pullback
+surjectivity and injectivity to an actual finite direct-image coefficient,
+through the original finite cohomology exchange square. All four Ext
+universes remain independent, and no torsion assumption is required.
+
+[ProjectiveLineTests](Local/ProjectiveLineTests.lean) applies the completed
+curve comparison to finite constant direct images on the literal projective-line
+residue fibre. It proves all-degree surjectivity over any henselian local ring
+with separably closed residue field and degree-zero injectivity over any
+henselian local ring. Neither conclusion adds Noetherianity or an order
+condition; higher injectivity for general coefficients remains a devissage.
+
+[ModuleCogenerators](Local/ModuleCogenerators.lean) factors a given original
+abelian monomorphism through the actual native annihilator of its target,
+yielding a monomorphism of the original genuine `ZMod n` sheaves. Its proved
+factorization recovers the original arrow. The annihilator of a constant
+direct image is the same direct image of the actual constant value kernel;
+finite values remain finite. Every modulus is permitted. This constructs the
+module adapter from a supplied embedding; it does not produce general finite
+cogenerators or complete the remaining coefficient presentations.
+
+[AnnihilatorProducts](Local/AnnihilatorProducts.lean) identifies the original
+whole-product annihilator with the product of its actual coordinate
+annihilators, including empty products and all moduli. The constant direct-image
+specialization retains the original finite sources and value kernels. Applying
+the same genuine-module lift to the whole original abelian product therefore
+supplies the product target adapter for a given finite cogenerator embedding.

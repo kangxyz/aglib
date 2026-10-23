@@ -91,7 +91,8 @@ arbitrary global-cohomology pullback need not be invertible.
 | [StrictLocalComponents](StrictLocalComponents.lean) | Finite local algebras over a Henselian local ring with separably closed residue have zero positive original `Sheaf.H`. Base, algebra and Ext universes remain independent, and the displayed sheafification and Ext existence assumptions are retained. |
 | [GlobalEvaluationIso](ExactImageComparison/GlobalEvaluationIso.lean) and [PointedEvaluationBaseChange](ExactImageComparison/PointedEvaluationBaseChange.lean) | At an algebraically closed geometric point, the original finite direct-image stalk is compared with its actual geometric-fibre tuple, and the canonical exchange is normalized by the original pointed unit/counit evaluation formula. |
 
-The general proper-base-change theorem and unbounded derived scope remain
-open. The final strict-local-limit cohomology comparison remains separate
-from the now-supplied neighborhood-colimit and finite original-H exports.
+The [marked strict-local comparison](../Stalk/README.md) now identifies the
+actual higher-image stalk with original limit-scheme cohomology, with its
+explicit chart/Ext/colimit premises and original germ/degree-zero equations.
+General proper base change and unbounded derived scope remain open.
 No arbitrary global-cohomology pullback is asserted to be invertible.

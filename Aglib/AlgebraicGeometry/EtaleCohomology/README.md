@@ -17,9 +17,9 @@ Its principal declaration namespace is
 | [FiniteLocallyConstant](FiniteLocallyConstant/CoefficientSquare.lean) | Coefficient, section and pullback comparisons with the original local-trivialization and comparison premises |
 | [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses |
 | [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback, bounded-below `D+` exchange, and ordinary, derived and higher identity/pasting equations through the native comparisons. The finite subfamily supplies exchange invertibility for finite morphisms; general proper base change and unbounded scope remain open. |
-| [Continuity](Continuity/README.md) | On a fixed qcqs scheme, the actual canonical coefficient-colimit comparison for original `Sheaf.H` is invertible in every degree, with index type `Type (u + 1)` and independent Ext universe. The higher scheme-limit comparison is reduced to explicit `hzero` and `hqcqsSectionCocones` inputs; fully discharged varying-scheme continuity remains open. |
+| [Continuity](Continuity/README.md) | Original all-degree fixed-qcqs coefficient continuity and varying-system qcqs scheme-limit continuity with affine transitions. The latter constructs the former section/cone inputs, retaining actual limit, independent Ext and group-colimit premises. |
 | [Finite direct image and base change](Finite/README.md) | For an arbitrary finite morphism, original direct image on `AbelianSheaf.{u,u+1}` preserves epimorphisms, homology and finite colimits, and positive higher direct images vanish. The canonical ordinary, `D+` and all-degree higher exchange maps are invertible for actual cartesian squares over arbitrary schemes, retaining the displayed derived-category universes. [Original cohomology](Finite/Cohomology.lean) identifies cohomology of finite direct image with source cohomology by actual pullback and counit. |
-| [Original cohomology and higher-image stalks](Stalk/README.md) | Original cohomology-presheaf sheafification, all-degree chart restriction and actual geometric-neighborhood colimits compute native higher-image germs, retaining original maps and displayed base/slice/fibre-product Ext universes. The strict-local-limit cohomology comparison remains separate. |
+| [Original cohomology and higher-image stalks](Stalk/README.md) | Original presheaf sheafification and germs; marked strict-local limit cohomology computes the actual higher-image stalk, with coefficient naturality, every pointed-neighborhood leg and original q0 normalization. Actual chart/Ext/colimit premises remain. |
 | [Field cohomology](Fields/README.md) | Over algebraic extensions of `k(t)` with separably closed `k`, original degrees `q ≥ 2` vanish for genuine finite `p`-killed FLC coefficients when `p` is prime and invertible, and for cyclic/root coefficients of positive invertible order. Arbitrary purely inseparable root comparison is supplied; higher Gm vanishing is not asserted. |
 | [Strictly local curve comparison](Curves/README.md) | The original finite-constant closed-fibre restriction is surjective in every natural degree for every finite scheme over native `P1_R`, with `R` henselian local and separably closed residue, finite abelian values and independent Ext universes. No Noetherian/excellence/completeness/flatness/fp/normality/order premise or higher injectivity claim is added. |
 | [Fibrewise-closed geometric points](GeometricPoints/FibrewiseClosed/README.md) | Under only `LocallyOfFiniteType p`, genuine geometric-point lifts detect covers on every object of the actual small-etale site; the resulting `Point.{u+1}` family detects isomorphisms of `AbelianSheaf.{u,u+1}`. No Ext or proper-base-change theorem is asserted. |
@@ -94,14 +94,14 @@ derived scope remain open. The basic interfaces are
 The qcqs theorem supplies sequential coefficient continuity. Prime-module
 degree-zero injectivity and all-degree surjectivity remain test hypotheses.
 The exact-map local criterion consumes actual colimit presentations and
-monomorphism embeddings. Bounded coefficients now have actual filtered
-presentations by finite-colimit stages, but geometric constructibility of
-those stages and full finite cogeneration remain open. The special
-represented-section colimit is proved; its bridge to the original sheaf
-cocone remains open, as do the general geometric test-surjectivity inputs. The earlier
-module-injective pullback criterion retains its actual pulled-back-injective
-acyclicity input. None of these conditional reductions closes general proper
-base change.
+monomorphism embeddings. Bounded genuine coefficients have original filtered
+presentations with geometrically constructible, ambient-FP stages on
+separated schemes; ambient FP also holds on every original affine open.
+Finite constant cogeneration is proved on affine Noetherian schemes, and
+its nonaffine global extension remains separate. The constant direct-image
+sheaf cocone bridge is proved. Actual projective-line local comparison and
+general proper-base-change assembly remain applications; no conditional
+reduction alone closes them.
 
 ## Multiplicative and curve inputs
 

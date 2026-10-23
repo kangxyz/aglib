@@ -3442,3 +3442,159 @@ whole-family or proper-base-change closure evidence.
 The actual logs and receipts are preserved in this task's `remote-runs/`
 directory. This note diagnoses the successful typed coherence boundary,
 not a Lean compiler defect or an asserted performance ratio.
+
+## Keep the original universal exchange test at a shared data head
+
+Basis: Lean 4.34.1, Mathlib `d13f23b`, and the published proper-reduction
+suppliers retained at `f464f6b`. The first
+[universal-property](../Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/Basic.lean)
+source, SHA256
+`e55d71f9f83faeca6b0e1ce20a0eeede7e3f61bf303a02c43c5e1da0e975428a`,
+failed in `remote-6260a813bb0f4c8e91ea0dcd44ab8a90`. Its actual
+surjective-descent declaration exhausted the kernel's deterministic budget;
+other diagnostics concerned concrete pullback transport and implicit object
+quantifiers. No budget was raised.
+
+The repair defines one regular `boundedExchange` predicate for the original
+all-degree, all-n-killed-coefficient test. Generic composition and descent
+helpers consume and return that same head before actual Cartesian squares
+are supplied. In composition, the actual pullback triangle is retained by
+`clear_value a` and substitution of its original equation before applying
+the generic helper. Explicit theorem applications preserve the entire
+implicit object quantifier in universal finite membership and descent.
+The original exchange maps, coefficients and hypotheses are unchanged.
+
+Final source
+`7a56a974fbf33818e1b21f54654a9c68c705cbb2ce939a92254af797569cbf1f`
+passed the complete leaf in `remote-0b94a03fbf9447e1a503ae0b5cf1097e`,
+with one successful frontend and 9.64 seconds for the remote build action.
+This reuses ordinary compiler evidence; it establishes removal of the
+observed timeout, not a controlled speedup or a compiler-defect diagnosis.
+The separately compiled model transport retains four independent model
+universes; final projective-line exchange is still a mathematical input.
+
+## Use a finite original-unit calculation for constant direct-image coordinates
+
+In the finite-constant
+[represented-coordinate supplier](../Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean),
+run `remote-442a6e3ab1a34db3a105414977b08fb5` diagnosed a potentially looping
+simp rule and exceeded maximum recursion depth. The original calculation
+combined forward `Functor.map_comp` and associativity with reverse
+`Functor.map_comp_assoc`. This was a rewrite loop; it was not a measured
+heartbeat timeout.
+
+The repair is a finite calculation using forward functor composition, the
+original adjunction-unit naturality equation, and explicitly typed
+identity-map equations transported by `congrArg`. Projection lemmas retain
+the exact original `Scheme.Etale.forget` object heads. The final residual
+projection mismatch in `remote-6039f2c31878477ca53093e34b01bd76` was repaired
+at that same head. No recursion or heartbeat budget was raised, and the
+original maps and mathematical assumptions were preserved.
+
+Exact source
+`458ea48f66e37deba72898fd309dde62d9bbc5a57d77834b9a720c7c2a6800da`
+passed `remote-df229d88e13c44a58e0467cc3745c13e`: one successful frontend,
+no diagnostics and 15.27 seconds for the build action. Lean and Mathlib
+remain at the pinned versions above. These existing observations do not
+supply a benchmark, profiling attribution or broader mathematical closure.
+
+## Assemble normal generic triangles before the concrete integral closure
+
+On Lean 4.34.1 and Mathlib `d13f23b`, the first
+[normal generic model](../Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/NormalGenericModel.lean)
+source `90df91ee9a26693d0a1cbaac567e7a03483bbfb032132d5cb1100003c657a8b2`
+failed in `remote-49522076a3ac4507bffb6d65c2b974bc`. It had scalar-tower
+orientation and native function-field instance errors, plus a 200000-heartbeat
+whnf timeout at concrete integral-closure specialization. The next failed
+run `remote-b9f30b7bfd174e72a1255b5d20eb63a3` retained instance failures and a
+constructor timeout; neither run supplies accepted source.
+
+The passing implementation supplies the named native
+`StructureSheaf.stalkAlgebra` and `functionField_isFractionRing_of_affine`
+producers. It proves the original localization triangle at abstract R,C,L,
+then assembles its complete original field-map equation and constant
+trivialization at abstract R,C,K,L. Only that complete constructor receives
+the actual integral closure. Typed scalar-tower equations retain the literal
+structures. The canonical field point is `IsLocalRing.closedPoint Q`; default
+point instance search had failed separately. The actual maps and assumptions
+are preserved, and the integral closure remains possibly infinite.
+
+Exact source
+`2a46fc5b9ddbce8bd67452bf5a75993407da9dc2ef99a2f313d347560004da5d`
+passed its complete frontend in `remote-8950dd65f65242898c09150d9b16957d`,
+reported as 32 seconds, at unchanged standard budgets. The outer graph failed
+on the separate Spectrum consumer. This validates the repaired leaf without
+a benchmark, unique compiler-cause attribution or claim of a finite
+normalization.
+
+## Retain complete product families through finite-stage factorization
+
+The original
+[Spectrum](../Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Spectrum.lean)
+assembly encountered a dependent rewrite motive, a categorical `Pi.map` name
+collision and product projections retaining different constant-cocone heads.
+Source `64f138c7d25789632b4ccd8aebfd8fe5a4d85dc6392565c8ffcf48c8137b1465`
+also timed out at 200000 heartbeats in `remote-02dc218e3235421c94394cbf8a1605e1`,
+while an ordinary projection type error remained. The later ae862b49 source
+reported only a calc Trans inference error, without a timeout. These mixed
+repairs do not identify one cause of the earlier cost.
+
+The final proof names the actual `normalModelTargets` family and its original
+`normalModelProduct_π` equation. Typed associativity, `congrArg` and `Eq.trans`
+transport those complete equations; `CategoryTheory.Limits.Pi.map` is qualified.
+The product-monicity factorization is proved at abstract categorical objects
+and supplied with the entire actual cocone and model packet. This preserves
+all finite values, actual stage arrows and the original mono.
+
+Source `b19fec9aba152326f896fda0e5665155f127a6110f796388bc90f10dbb7d0506`
+passed its complete frontend in `remote-9c333911ae764c3fa4aa3ffb6ae96062`.
+Its Affine consumer initially failed on another projection normalization.
+The same typed equation boundary repaired exact Affine source
+`7cca91d19ee404a79ec80ce7c928e89a5b046d4c8c7bba30742996bd69f03c3c`,
+which passed `remote-1848273a3a744f19ba71b722e32c481c`: one fresh frontend,
+no diagnostics, 5.864 seconds between compiler events. Ordinary budgets were
+unchanged; these existing observations are not a controlled speedup, profiling
+experiment or broader verification cycle.
+
+## Pass the preservation dictionary of an equivalence explicitly
+
+In [GenuineModules](../Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/PositivePresentation/GenuineModules.lean),
+`genuinePresentationCoconeIsColimit` transports an original cocone through
+canonical scalar conversion, an actual equivalence. In
+`remote-2f45842a61de4ea99587e88fe0e0f568`, implicit synthesis of
+`PreservesColimit D (scalarLift X n)` reached the standard 20000
+instance-search heartbeat limit at that declaration.
+
+The repaired proof obtains `PreservesColimitsOfShape I (scalarLift X n)`
+explicitly from the equivalence's adjunction, projects its
+`preservesColimit` dictionary, and applies the dictionary's `preserves`
+field to the original colimit. Extension by the original `canonicalModuleIso`
+retains the point and literal underlying cocone equations. No global instance
+or heartbeat change is required.
+
+Exact source `92e86ad7a778777b15dff05050c4c6ef72b83d89690aef793c0c8d321986a2b5`
+passed in `remote-3d9b7fc4a13f4c429e8fbc0df4b09070` (6.1 seconds reported).
+That graph also contained a failing separate AffineRestriction child; only
+this passing leaf is credited. These retained observations validate the
+repair, not a controlled speedup or a profiling experiment.
+
+## Name local instances in independently imported public modules
+
+`local instance` controls instance search scope; it does not make its generated
+constant name private inside a public section. Independent branches in
+`Stalk/GeometricCohomologyDiagram.lean` and
+`Stalk/GeometricLimitCohomologyCocone.lean` generated the same public HasExt
+instance name. Each module compiled separately, but the shared native lint
+and audit import failed in `remote-fe2c1151635345c6bc8467a75a2a441d`.
+
+The repair gives the latter module's three local instances explicit,
+module-specific names. Their types and bodies and the public theorem proofs
+are unchanged. Exact source
+`24f8f134a44294e235caadcbff5ddfe33e051fc37e97dd4ba05b3e857fb3ba99`
+passed its sole changed frontend in
+`remote-865a132c04aa463f8fe3faf4c559a3af`. The next shared import succeeded
+and its audit covered 36,580 declarations; that run separately reported native
+naming, documentation and simp-normal-form findings. Their five-source repair
+and actual affected consumers then passed 23 frontends in
+`remote-4a990481bbe1449cb6734161aca0c57a`. This uses retained compiler evidence
+and the ordinary shared check, without replay or a separate diagnostic chain.

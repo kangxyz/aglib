@@ -37,10 +37,36 @@ supplies the actual final functor to the original point index and the germ
 formula. The [original inverse-image stalk comparison](../GeometricPoints/InverseImage/README.md)
 remains in its own geometric-point owner.
 
-## Remaining strict-local comparison
+## Marked strict-local cohomology comparison
 
-The neighborhood-colimit theorem does not yet identify this colimit with
-cohomology on the strict-local limit scheme. That last passage uses the
-[continuity assembly](../Continuity/README.md), whose `hzero` and
-`hqcqsSectionCocones` remain explicit. No unconditional strict-local
-cohomological continuity or general proper-base-change theorem is asserted.
+[ChartStrictLocalComparison](ChartStrictLocalComparison.lean) defines
+`chartStrictLocalCohomologyAddEquiv`. For a qcqs map `f`, the original
+higher-image stalk at a marked separably closed geometric point is additively
+equivalent to original `Sheaf.H` on its literal strict-local base change,
+in every natural degree. [ChartLimitContinuity](ChartLimitContinuity.lean)
+applies the genuine [scheme-limit continuity theorem](../Continuity/SchemeLimit.lean);
+no section-colimit or cohomological-continuity certificate remains an input.
+
+The base scheme is arbitrary. The construction retains a chosen affine etale
+monomorphism chart through the point, independent base/slice/stage/limit Ext
+universes, and the stated group-colimit existence. An affine open chart
+through the actual field-valued point exists. The apex is literally
+`Spec (GeometricEtaleColimit R Ω)` and its base change is a single original
+fibre product. The ring is local and henselian with separably closed residue.
+Its actual residue map to Ω is retained; the residue need not equal Ω.
+No separate identification with a differently named strict henselization is
+asserted.
+
+| Source | Original-map conclusion |
+| --- | --- |
+| [PointedNeighborhoodLimit](PointedNeighborhoodLimit.lean), [PointedNeighborhoodBaseChange](PointedNeighborhoodBaseChange.lean) | Actual limiting cones over all original pointed neighborhoods, with original structure and marked field-point equations. |
+| [ChartPointedComparison](ChartPointedComparison.lean) | `chartStrictLocalCohomologyAddEquiv_pointedGerm` sends every original pointed-neighborhood germ to its actual limit-leg cohomological transfer, including neighborhoods outside the chosen chart. |
+| [ChartStrictLocalNaturality](ChartStrictLocalNaturality.lean) | The final equivalence commutes with original coefficient morphisms and their inverse-image cohomology maps. |
+| [ChartStrictLocalZero](ChartStrictLocalZero.lean) | The original ordinary direct-image germ, followed by the native derived-zero unit and final equivalence, is original `pullbackSectionsMap` after `Sheaf.H.equiv₀`. |
+
+The lower [germ naturality](FibreProductGermNaturality.lean),
+[germ restriction](FibreProductGermRestriction.lean) and
+[degree-zero germ](FibreProductGermZero.lean) retain the original resolution,
+sheafification and point maps. The final comparison is consequently more
+than an isomorphism of endpoints. It does not itself assert general proper
+base change or an unbounded derived theorem.

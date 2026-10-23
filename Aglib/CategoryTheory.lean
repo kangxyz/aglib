@@ -149,6 +149,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.CoverResolutionNat
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Exactness
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.FiniteCoefficients
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.CoconeDoubleOpposite
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.CoefficientComparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.CoefficientContinuity
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.CoefficientDegreeZero
@@ -278,6 +279,7 @@ public import Aglib.CategoryTheory.Sites.Torsion.Sheaf
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Basic
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Cohomology
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Full
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Injectives
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed.ConstantRing
