@@ -23,6 +23,9 @@ Grassmannian", pp. 7–8.
 | [Kernel](Kernel.lean) | `ofSurjective` (kernel of a surjection onto a finite projective module of rank `k`), `eq_of_le` | arbitrary `M` |
 | [MapCriterion](MapCriterion.lean) | `rTensor_mem_map`, `map_toSubmodule_le`, `map_eq_of_forall` | uses `BaseChangeFormula` |
 | [LinearEquiv](LinearEquiv.lean) | `ofLinearEquiv`, `ofLinearEquivEquiv`, `map_ofLinearEquiv_baseChange`, `functorIsoOfLinearEquiv` | linear equivalence `M ≃ₗ[R] M'` |
+| [ChartPolynomial](ChartPolynomial.lean) | `chartCoordinate_coordinateTuple`, `chartRingEquivMvPolynomial`, `subsingleton_chartRing`, `smooth_chartRing`, `flat_chartRing` | `M = Fin n → R`, coordinate tuples |
+| [Plucker](Plucker.lean) | `pluckerMap`, `plucker`, `map_plucker`, `pluckerNatTrans` | `plucker`: `M` in the universe of `R`; `map_plucker` uses `BaseChangeFormula` (via `MapCriterion`) |
+| [PluckerInjective](PluckerInjective.lean) | `plucker_injective` | as `Plucker` |
 
 **Charts.** For `x : Fin k → M`, `chart R x` is the set of points `N` for which
 `chartMap x N : R^k → M ⧸ N`, `e_b ↦ [x b]`, is bijective (Mathlib's TODO item). Base change
@@ -69,6 +72,13 @@ points over the `Localization.Away (s i)` whose base changes agree on overlaps g
 (`exists_map_localization_eq`); the overlap of `i` and `j` is any localization of
 `Localization.Away (s j)` away from `s i`, with an `R`-algebra map from
 `Localization.Away (s i)` compatible with the maps from `A`.
+
+**Plücker map.** For `N ∈ G(k, A ⊗[R] M; A)` with quotient `Q`,
+`plucker N ∈ G(1, A ⊗[R] ⋀[R]^k M; A)` is the kernel of
+`A ⊗[R] ⋀[R]^k M → ⋀[A]^k (A ⊗[R] M) → ⋀[A]^k Q`,
+whose target is finite projective of rank one. It commutes with base change (`map_plucker`),
+so it is a natural transformation `pluckerNatTrans R M k`, and it is injective
+(`plucker_injective`). Nitsure, arXiv:math/0504590v1, §1, pp. 5 and 9.
 
 **Module exposure and the named premise.** Mathlib's `baseChangeMkQ`, `baseChangeMkQEquiv` and
 `map` have unexposed bodies; in module-system sources (such as Aglib's) that do not `import all`

@@ -171,6 +171,33 @@ Relocation candidates (general, not specific to the Grassmannian): `algSpecPoint
 belong to a lower owner for schemes over `Spec R`. After such a move, `exists_chartLocal` can be
 derived from `AlgSpecPoints.exists_locAway_comp_eq`.
 
+[Flat](Flat.lean): `toBase R k n` is smooth (`smooth_toBase`), hence flat (`flat_toBase`), also for
+`(schemeOver R k n).hom`. Every coordinate chart ring is a polynomial ring in `k (n − k)`
+variables or zero ([RingTheory/Grassmannian/ChartPolynomial](../../RingTheory/Grassmannian/ChartPolynomial.lean)).
+Nitsure, §1, p. 8; Stacks, Tag 089T, proof. Premise BCF.
+
+[Plucker](Plucker.lean): the Plücker morphism `plucker R k n : schemeOver R k n ⟶ schemeOver R 1
+(n.choose k)` and `pluckerProjective R k n` into `ProjectiveSpace.schemeOver R (ULift
+(Set.powersetCard (Fin n) k))` (Plücker coordinates, `exteriorPowerEquivFin`). Their functor of
+points is the Plücker transformation (`homEquivNatTrans_comp_plucker`,
+`representableEquiv_comp_plucker`, `representableEquiv_comp_pluckerProjective`). Both are
+monomorphisms (`mono_plucker`, `mono_pluckerProjective`). BCF is discharged by import (through
+`ProjectiveSpace/*` and `MapCriterion`). Nitsure, §1, pp. 5 and 9; Stacks has no Plücker
+statement (Section 27.22).
+
+[AffinePullback](AffinePullback.lean): a square over `Spec R` with mono first map and the lifting
+property on affine points is a pullback (`AlgSpecPoints.isPullback_of_lift`).
+
+[PluckerChart](PluckerChart.lean): a point lies in the chart at `S` exactly when its Plücker point
+lies in the rank-one chart at `p_S` (`pluckerFin_mem_chart_of_mem_chart`,
+`mem_chart_of_pluckerFin_mem_chart`), with the quotient `⋀^k Q` of the Plücker point
+(`pluckerQuotientEquiv`).
+
+[PluckerClosedImmersion](PluckerClosedImmersion.lean): the Plücker morphisms are closed immersions
+(`isClosedImmersion_plucker`, `isClosedImmersion_pluckerProjective`): the chart square is a
+pullback and the chart ring map is surjective. Hence `Gr(R^n, k)` is proper and separated over
+`Spec R` (instances on `toBase` and `(schemeOver R k n).hom`). BCF discharged by import.
+
 ## Projective space as `Gr(R^m, 1)`
 
 The leaves in `ProjectiveSpace/` compare the Grassmannian of rank-one quotients with Aglib's

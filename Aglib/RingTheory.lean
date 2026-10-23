@@ -384,6 +384,7 @@ public import Aglib.RingTheory.Grassmannian.BaseChangeFormula
 public import Aglib.RingTheory.Grassmannian.Chart
 public import Aglib.RingTheory.Grassmannian.ChartIntersection
 public import Aglib.RingTheory.Grassmannian.ChartLocus
+public import Aglib.RingTheory.Grassmannian.ChartPolynomial
 public import Aglib.RingTheory.Grassmannian.ChartRing
 public import Aglib.RingTheory.Grassmannian.CoordinateChart
 public import Aglib.RingTheory.Grassmannian.Covering
@@ -393,6 +394,8 @@ public import Aglib.RingTheory.Grassmannian.Kernel
 public import Aglib.RingTheory.Grassmannian.LinearEquiv
 public import Aglib.RingTheory.Grassmannian.MapCriterion
 public import Aglib.RingTheory.Grassmannian.Overlap
+public import Aglib.RingTheory.Grassmannian.Plucker
+public import Aglib.RingTheory.Grassmannian.PluckerInjective
 public import Aglib.RingTheory.Henselian.ArtinApproximationAlgHom
 public import Aglib.RingTheory.Henselian.DVRGeometricApproximation
 public import Aglib.RingTheory.Henselian.DVRGeometricFiniteModel

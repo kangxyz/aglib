@@ -2050,11 +2050,16 @@ public import Aglib.AlgebraicGeometry.Gluing.SchematicDensity.Pushout
 public import Aglib.AlgebraicGeometry.Gluing.SeparatedModification
 public import Aglib.AlgebraicGeometry.Gluing.SourceOpenCover
 public import Aglib.AlgebraicGeometry.Gluing.TwoPoint
+public import Aglib.AlgebraicGeometry.Grassmannian.AffinePullback
 public import Aglib.AlgebraicGeometry.Grassmannian.Chart
 public import Aglib.AlgebraicGeometry.Grassmannian.Finiteness
+public import Aglib.AlgebraicGeometry.Grassmannian.Flat
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
+public import Aglib.AlgebraicGeometry.Grassmannian.Plucker
+public import Aglib.AlgebraicGeometry.Grassmannian.PluckerChart
+public import Aglib.AlgebraicGeometry.Grassmannian.PluckerClosedImmersion
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Charts
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Comparison
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.FunctorOfPoints

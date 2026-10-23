@@ -2528,11 +2528,16 @@ public import Aglib.AlgebraicGeometry.Gluing.SchematicDensity.Pushout
 public import Aglib.AlgebraicGeometry.Gluing.SeparatedModification
 public import Aglib.AlgebraicGeometry.Gluing.SourceOpenCover
 public import Aglib.AlgebraicGeometry.Gluing.TwoPoint
+public import Aglib.AlgebraicGeometry.Grassmannian.AffinePullback
 public import Aglib.AlgebraicGeometry.Grassmannian.Chart
 public import Aglib.AlgebraicGeometry.Grassmannian.Finiteness
+public import Aglib.AlgebraicGeometry.Grassmannian.Flat
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
+public import Aglib.AlgebraicGeometry.Grassmannian.Plucker
+public import Aglib.AlgebraicGeometry.Grassmannian.PluckerChart
+public import Aglib.AlgebraicGeometry.Grassmannian.PluckerClosedImmersion
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Charts
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Comparison
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.FunctorOfPoints
@@ -4785,8 +4790,10 @@ public import Aglib.LinearAlgebra.DefectIdealBound
 public import Aglib.LinearAlgebra.DefectRestriction
 public import Aglib.LinearAlgebra.DirectSum.Kernels
 public import Aglib.LinearAlgebra.Dual.SplitInjection
+public import Aglib.LinearAlgebra.ExteriorPower.BaseChange
 public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
 public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
+public import Aglib.LinearAlgebra.ExteriorPower.Wedge
 public import Aglib.LinearAlgebra.FreeModule.StableRankOne
 public import Aglib.LinearAlgebra.FreeModule.ZModTorsion
 public import Aglib.LinearAlgebra.FrobeniusDifference
@@ -5193,6 +5200,7 @@ public import Aglib.RingTheory.Grassmannian.BaseChangeFormula
 public import Aglib.RingTheory.Grassmannian.Chart
 public import Aglib.RingTheory.Grassmannian.ChartIntersection
 public import Aglib.RingTheory.Grassmannian.ChartLocus
+public import Aglib.RingTheory.Grassmannian.ChartPolynomial
 public import Aglib.RingTheory.Grassmannian.ChartRing
 public import Aglib.RingTheory.Grassmannian.CoordinateChart
 public import Aglib.RingTheory.Grassmannian.Covering
@@ -5202,6 +5210,8 @@ public import Aglib.RingTheory.Grassmannian.Kernel
 public import Aglib.RingTheory.Grassmannian.LinearEquiv
 public import Aglib.RingTheory.Grassmannian.MapCriterion
 public import Aglib.RingTheory.Grassmannian.Overlap
+public import Aglib.RingTheory.Grassmannian.Plucker
+public import Aglib.RingTheory.Grassmannian.PluckerInjective
 public import Aglib.RingTheory.Henselian.ArtinApproximationAlgHom
 public import Aglib.RingTheory.Henselian.DVRGeometricApproximation
 public import Aglib.RingTheory.Henselian.DVRGeometricFiniteModel
