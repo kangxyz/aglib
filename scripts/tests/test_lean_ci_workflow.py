@@ -23,6 +23,49 @@ def step(job, name):
     return next(item for item in JOBS[job]['steps'] if item.get('name') == name)
 
 
+
+def runner_arguments(command):
+    """Model ProcessStartInfo.Arguments on Unix, as used by actions/runner.
+
+    Based on dotnet/runtime v8.0.12 Process.Unix.cs GetNextArgument;
+    single quotes are literal, and only double quotes group an argument.
+    """
+    result, index = [], 0
+    while index < len(command):
+        if command[index] in ' \t':
+            index += 1
+            continue
+        argument, quoted = '', False
+        while index < len(command):
+            count = 0
+            while index < len(command) and command[index] == '\\':
+                count += 1
+                index += 1
+            if count:
+                if index == len(command) or command[index] != '"':
+                    argument += '\\' * count
+                else:
+                    argument += '\\' * (count // 2)
+                    if count % 2:
+                        argument += '"'
+                        index += 1
+                continue
+            char = command[index]
+            if char == '"':
+                if quoted and command[index:index + 2] == '""':
+                    argument += '"'
+                    index += 1
+                else:
+                    quoted = not quoted
+            elif char in ' \t' and not quoted:
+                break
+            else:
+                argument += char
+            index += 1
+        result.append(argument)
+    return result
+
+
 def condition(expression, values, *, success=True, cancelled=False):
     """Evaluate this workflow's conditions, including implicit success()."""
     text = expression.removeprefix('${{').removesuffix('}}').strip()
@@ -85,7 +128,7 @@ class WorkflowGates(unittest.TestCase):
 
     def test_feedback_survives_test_failure_but_requires_its_prerequisites(self):
         for name in ('Lint', 'Audit production axioms'):
-            success = {'needs.build.result': 'success', 'steps.restore-cache.outcome': 'success',
+            success = {'needs.build.result': 'success',
                        'steps.lean-setup.outcome': 'success', 'steps.compiled.outcome': 'success',
                        'steps.tools.outcome': 'success'}
             self.assertTrue(condition(step('test_lint', name)['if'], success, success=False))
@@ -186,6 +229,128 @@ class WorkflowGates(unittest.TestCase):
                       step('test_lint', 'Lint')['run'])
         self.assertEqual(step('test_lint', 'Test')['run'], 'lake test')
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
+
+
+class DependencyRecoveryAndNativeResources(unittest.TestCase):
+    def test_recovery_runs_only_for_missing_or_failed_warm_cache(self):
+        warm = step('test_lint', 'Warm dependency and native compilation outputs')
+        self.assertTrue(warm['continue-on-error'])
+        recovery = [step('test_lint', name) for name in (
+            "Download this run's dependencies on cache miss",
+            "Restore this run's dependencies on cache miss",
+            'Recover Mathlib dependencies on cache miss')]
+        for outcome, key, expected in (('success', 'warm-generation', False),
+                                       ('success', '', True), ('failure', '', True),
+                                       ('failure', 'partial-generation', True)):
+            for action in recovery:
+                values = {'steps.restore-cache.outcome': outcome,
+                          'steps.restore-cache.outputs.cache-matched-key': key}
+                self.assertEqual(condition(action['if'], values), expected)
+                self.assertFalse(condition(action['if'], values, success=False))
+                self.assertFalse(action.get('continue-on-error', False))
+        self.assertEqual(recovery[0]['with'], {'name': 'build-dependencies',
+                                              'path': '${{ runner.temp }}/build-dependencies'})
+        self.assertEqual(recovery[2]['run'], step('build', 'Get Mathlib cache')['run'])
+        actions = JOBS['test_lint']['steps']
+        for before, after in zip(recovery, recovery[1:] + [step('test_lint', "Download this run's Build outputs")]):
+            self.assertLess(actions.index(before), actions.index(after))
+        self.assertLess(actions.index(step('test_lint', "Restore this run's native Build outputs")),
+                        actions.index(step('test_lint', 'Verify Build outputs without compilation')))
+
+    def test_same_run_native_handoff_covers_readonly_partial_restores(self):
+        stage = step('build', 'Stage native dependencies for Test')
+        upload = step('build', 'Upload native dependencies for Test')
+        for action in (stage, upload):
+            for outcome in ('success', 'failure', 'cancelled', 'skipped'):
+                self.assertEqual(condition(action['if'], {'steps.build.outcome': outcome}),
+                                 outcome == 'success')
+        self.assertEqual(upload['with']['name'], 'build-dependencies')
+        self.assertTrue(upload['with']['overwrite'])
+        self.assertEqual(upload['with']['if-no-files-found'], 'error')
+        self.assertEqual(upload['with']['compression-level'], 0)
+        with tempfile.TemporaryDirectory(prefix='native-dependency-handoff-') as directory:
+            root = Path(directory)
+            source = root / 'producer'
+            for part in ('artifacts', 'outputs/Aglib', 'axiom-audit'):
+                (source / part).mkdir(parents=True)
+            (source / 'artifacts/dependency.olean').write_text('new unpublished output')
+            (source / 'artifacts/native-tool').write_text('cached executable')
+            (source / 'artifacts/native-tool').chmod(0o755)
+            (source / 'outputs/Aglib/input.json').write_text('native mapping')
+            (source / 'axiom-audit/checkout').write_text('not a dependency artifact')
+            env = {**os.environ, 'RUNNER_TEMP': directory, 'LAKE_CACHE_DIR': str(source)}
+            staged = subprocess.run(['bash', '-eo', 'pipefail', '-c', stage['run']],
+                                    env=env, capture_output=True, text=True)
+            self.assertEqual(staged.returncode, 0, staged.stderr)
+            archive = root / 'build-dependencies.tar.zst'
+            downloaded = root / 'build-dependencies'; downloaded.mkdir()
+            archive.rename(downloaded / archive.name)
+            target = root / 'consumer'; (target / 'artifacts').mkdir(parents=True)
+            old = target / 'artifacts/dependency.olean'
+            old.write_text('incomplete Actions restore'); old.chmod(0o444)
+            restored = subprocess.run(['bash', '-eo', 'pipefail', '-c', step(
+                'test_lint', "Restore this run's dependencies on cache miss")['run']],
+                env={**env, 'LAKE_CACHE_DIR': str(target)}, capture_output=True, text=True)
+            self.assertEqual(restored.returncode, 0, restored.stderr)
+            self.assertEqual(old.read_text(), 'new unpublished output')
+            self.assertTrue(os.access(target / 'artifacts/native-tool', os.X_OK))
+            self.assertEqual((target / 'outputs/Aglib/input.json').read_text(), 'native mapping')
+            self.assertFalse((target / 'axiom-audit').exists())
+            self.assertFalse(downloaded.exists())
+
+    def test_recovered_outputs_enable_checks_after_warm_cache_failure(self):
+        values = {'needs.build.result': 'success', 'steps.restore-cache.outcome': 'failure',
+                  'steps.lean-setup.outcome': 'success', 'steps.compiled.outcome': 'success',
+                  'steps.tools.outcome': 'success'}
+        for name in ('Lint', 'Audit production axioms'):
+            self.assertTrue(condition(step('test_lint', name)['if'], values))
+            self.assertFalse(condition(step('test_lint', name)['if'],
+                                       {**values, 'steps.compiled.outcome': 'failure'}))
+
+    def test_runner_does_not_interpret_posix_single_quotes(self):
+        self.assertEqual(runner_arguments("bash -c 'echo success'"),
+                         ['bash', '-c', "'echo", "success'"])
+
+    def test_native_scope_retains_status_environment_and_old_memory_ceiling(self):
+        shell = WORKFLOW['defaults']['run']['shell']
+        with tempfile.TemporaryDirectory(prefix='native-resource-shell-') as directory:
+            root = Path(directory)
+            binary = root / 'bin'; binary.mkdir()
+            (binary / 'getconf').write_text('#!/bin/sh\nif test "$1" = _PHYS_PAGES; then echo "$FIXTURE_PAGES"; else echo 4096; fi\n')
+            (binary / 'nproc').write_text('#!/bin/sh\necho 4\n')
+            (binary / 'sudo').write_text('''#!/usr/bin/env python3
+import json,os,sys
+args=sys.argv[1:]
+assert args[0:2] == ['--preserve-env','systemd-run']
+open(os.environ['TRACE'],'w').write(json.dumps(args))
+index=args.index('/usr/bin/env')
+os.execv(args[index],args[index:])
+''')
+            for file in binary.iterdir(): file.chmod(0o755)
+            script = root / 'native step.sh'
+            script.write_text('test "$VISIBLE_INPUT" = retained\ntest "$LEAN_NUM_THREADS" = 1\nexit "$STATUS"\n')
+            for memory, expected in ((16384, 13824), (7168, 5120)):
+                for status in (0, 7):
+                    result = subprocess.run(runner_arguments(shell.format(script)), cwd=root,
+                        env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
+                             'FIXTURE_PAGES': str(memory * 256), 'STATUS': str(status),
+                             'TRACE': str(root / 'trace'), 'VISIBLE_INPUT': 'retained'},
+                        text=True, capture_output=True)
+                    self.assertEqual(result.returncode, status, result.stderr)
+                    args = json.loads((root / 'trace').read_text())
+                    self.assertIn('--scope', args)
+                    self.assertIn('--uid=' + str(os.getuid()), args)
+                    self.assertIn('--gid=' + str(os.getgid()), args)
+                    self.assertIn(f'--property=MemoryMax={expected}M', args)
+                    self.assertIn('--property=MemorySwapMax=0', args)
+
+    def test_each_library_keeps_native_weak_resource_arguments(self):
+        for name, threads in (('aglib', 4), ('quillen-k-theory', 4), ('motivic', 4)):
+            root = ROOT.parent / name
+            if not root.exists():
+                continue
+            config = tomllib.loads((root / 'lakefile.toml').read_text())
+            self.assertEqual(config['weakLeanArgs'], ['-M12800', f'-j{threads}'])
 
 
 class CheckerBoundaryAndLintTimeout(unittest.TestCase):

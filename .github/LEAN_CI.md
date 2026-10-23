@@ -15,7 +15,10 @@ downloads from Reservoir/GitHub. This is separate from
   cache, imports published native caches for resolved `kangxyz/*` Git dependencies,
   and incrementally builds only the production targets. It saves completed
   compilation, stages the production build's native mappings and outputs, and
-  uploads that mathematical artifact for Test. It does not prepare checker tools
+  uploads that mathematical artifact for Test. It also snapshots the native
+  `artifacts/` and `outputs/` directories as a compressed, same-run dependency
+  fallback, separate from the public root-only artifact. No package checkouts or
+  working build directories enter that fallback. It does not prepare checker tools
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
   Its final report requires the production build to succeed; checker failures
   belong to Test and do not change Build's result. Production Build is not retried.
@@ -26,6 +29,13 @@ downloads from Reservoir/GitHub. This is separate from
   artifact or incomplete native output fails the job before checker preparation.
   This follows Mathlib's
   [same-run staging transfer and completeness check](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/workflows/build_template.yml#L444-L479).
+  An optional Actions cache miss or restoration failure first downloads and
+  restores Build's mandatory same-run dependency snapshot, including dependency
+  outputs Build compiled that have no public release. It also obtains pinned
+  Mathlib artifacts through Build's existing cache command. Recovery runs before
+  the mandatory current-run root overlay. Successful output verification,
+  rather than a warm-cache outcome, enables
+  the later checks.
   Test then incrementally builds the Batteries declaration-linter, Mathlib
   text-style and `mk_all` executables plus any `check-targets`, using its restored
   caches. Mathlib's `mk_all --lib <root> --check` verifies the generated production
@@ -45,8 +55,9 @@ downloads from Reservoir/GitHub. This is separate from
   [pinned auditor used by lean-action](https://github.com/leanprover-community/axiom-audit/tree/46024e005996495c65ef609368e11ab39c4222e3)
   under `$LAKE_CACHE_DIR/axiom-audit`, checks its exact source revision and uses
   the package's unchanged toolchain. A cold cache clones/builds it there; a warm
-  cache reuses the checkout and incremental outputs. No auditor archive travels
-  through Build. The auditor reads built production roots and their imported
+  cache reuses the checkout and incremental outputs. Build never prepares the
+  auditor, and its checkout is excluded from the dependency snapshot.
+  The auditor reads built production roots and their imported
   closure; only `propext`, `Classical.choice` and `Quot.sound` are allowed.
   It does not compile the project or replay proofs. Deliberate negative Test
   fixtures are outside this production audit. Auditor preparation is independent
@@ -92,8 +103,11 @@ The required current-run artifact overwrites production cache mappings. The
 no-build check tests availability and applicability of those production outputs
 against native inputs, without requiring checker outputs from Build. It does not
 certify cryptographic provenance or integrity of cache bytes. As in Mathlib, this
-transport relies on trusted cache producers. The downloaded tar is removed after
-native unstaging so subsequent cache saves do not duplicate it.
+transport relies on trusted cache producers. Downloaded transport archives are
+removed after restoration so subsequent cache saves do not duplicate them. The dependency
+snapshot transfers the existing native content store without a custom map
+format; zstd compression is streamed to avoid an uncompressed tar copy. It is
+not downloaded when Test's Actions restore succeeds with a matching key.
 Build discovers accepted `kangxyz/*` Git dependencies from the resolved manifest,
 including inherited dependencies: native `-o` exports only the producer's root
 package, so each upstream needs its own mappings. The existing native release
@@ -112,7 +126,22 @@ Archives are unpacked only as flat regular native files, and temporary downloads
 are removed before saving the Actions cache. This is cache acquisition, not an
 additional mathematical check. Build/Test/publication conditions are unchanged.
 
-The focused regression suite uses Python and PyYAML:
+Run steps use a native systemd scope, dropping back to the runner UID/GID and
+preserving its working directory, environment and selected toolchain. The
+historical aggregate allowance is 13824 MiB, reduced only when physical RAM
+minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
+scope, and the Actions runner stays outside its combined memory limit. The
+maintained libraries all use weak `-M12800 -j4` frontend arguments: a
+12800 MiB managed-allocation limit and four threads for their own modules.
+Existing pinned dependencies and the separate auditor retain their own compiler
+arguments; the aggregate scope also bounds those processes. These resource-only
+arguments do not change native build traces.
+Lake's runtime pool retains the historical `LEAN_NUM_THREADS=1`; the available
+CPU count is logged separately. This is not a promise of a particular number
+of simultaneous compiler processes. Ordinary failure can still execute the
+existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
+
+The focused regression suite uses Python, PyYAML, tar and zstd:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
 Callers use the display name `GitHub CI` and retain each repository's existing
 concurrency-group identity.

@@ -22,6 +22,20 @@ env:
   LAKE_ARTIFACT_CACHE: 'true'
   BUILD_TARGETS: ${{ inputs.build-targets }}
 
+# Keep compiler failures inside the scope so the runner can save partial caches.
+defaults:
+  run:
+    shell: >-
+      bash --noprofile --norc -e -o pipefail -c
+      "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 ));
+      if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi;
+      printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\";
+      exec sudo --preserve-env systemd-run --scope --quiet --collect
+      --uid=\"$(id -u)\" --gid=\"$(id -g)\"
+      --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0
+      /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1
+      /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
+
 jobs:
   build:
     name: Build
@@ -77,7 +91,7 @@ jobs:
           exit 1
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
-        run: lake exe cache get
+        run: &mathlib-cache-get lake exe cache get
       - name: Restore published native dependency caches
         working-directory: ${{ inputs.package-directory }}
         env:
@@ -177,6 +191,20 @@ jobs:
           overwrite: true
           path: ${{ runner.temp }}/lake-native-cache.tar
           compression-level: 0
+      - name: Stage native dependencies for Test
+        if: ${{ steps.build.outcome == 'success' }}
+        run: |
+          tar -cf - -C "$LAKE_CACHE_DIR" artifacts outputs | \
+            zstd -T0 -1 -o "$RUNNER_TEMP/build-dependencies.tar.zst"
+      - name: Upload native dependencies for Test
+        if: ${{ steps.build.outcome == 'success' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: build-dependencies
+          overwrite: true
+          path: ${{ runner.temp }}/build-dependencies.tar.zst
+          if-no-files-found: error
+          compression-level: 0
       - name: Report Build result
         if: ${{ always() }}
         env:
@@ -196,6 +224,7 @@ jobs:
           persist-credentials: false
       - run: echo "LAKE_CACHE_DIR=$RUNNER_TEMP/lake-native-cache" >> "$GITHUB_ENV"
       - name: Warm dependency and native compilation outputs
+        continue-on-error: true
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         id: restore-cache
         with:
@@ -233,6 +262,23 @@ jobs:
           done
           echo '::error::Lean toolchain acquisition failed after 3 attempts.'
           exit 1
+      - name: Download this run's dependencies on cache miss
+        if: &dependency-recovery ${{ steps.restore-cache.outcome != 'success' || steps.restore-cache.outputs.cache-matched-key == '' }}
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: build-dependencies
+          path: ${{ runner.temp }}/build-dependencies
+      - name: Restore this run's dependencies on cache miss
+        if: *dependency-recovery
+        run: |
+          trap 'rm -rf "$RUNNER_TEMP/build-dependencies"' EXIT
+          mkdir -p "$LAKE_CACHE_DIR"
+          zstd -dc "$RUNNER_TEMP/build-dependencies/build-dependencies.tar.zst" | \
+            tar --unlink-first -xf - -C "$LAKE_CACHE_DIR"
+      - name: Recover Mathlib dependencies on cache miss
+        if: *dependency-recovery
+        working-directory: ${{ inputs.package-directory }}
+        run: *mathlib-cache-get
       - name: Download this run's Build outputs
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
         with:
@@ -302,7 +348,7 @@ jobs:
       - name: Lint
         id: lint
         timeout-minutes: 25
-        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' }}
+        if: ${{ !cancelled() && needs.build.result == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
@@ -324,7 +370,7 @@ jobs:
           done
       - name: Audit production axioms
         id: axioms
-        if: ${{ !cancelled() && needs.build.result == 'success' && steps.restore-cache.outcome == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
+        if: ${{ !cancelled() && needs.build.result == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
         run: |
