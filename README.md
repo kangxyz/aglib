@@ -1,6 +1,6 @@
 # Aglib
 
-[![CI](https://github.com/kangxyz/aglib/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/kangxyz/aglib/actions/workflows/ci.yml?query=branch%3Amain)
+[![GitHub CI](https://github.com/kangxyz/aglib/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/kangxyz/aglib/actions/workflows/ci.yml?query=branch%3Amain)
 
 A Lean 4 library for general algebraic geometry and its algebraic, categorical
 and homological foundations, built on Mathlib.
