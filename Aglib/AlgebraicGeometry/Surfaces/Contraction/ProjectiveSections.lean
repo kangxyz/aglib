@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.CartierCurve.Vanishing
-public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.GlobalGeneration
 public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.ClosedImmersion
@@ -49,35 +49,17 @@ variable {A : Type u} [CommRing A] [IsNoetherianRing A]
   {ι : Type u} {X : Scheme.{u}}
   (p : X ⟶ ProjectiveSpace A ι) [IsClosedImmersion p]
 
-/-- The actual tensor twist pulled back from the specified projective embedding. -/
+/-- The original tensor twist, now owned by the general closed-embedding cohomology leaf. -/
 abbrev embeddedTensorTwist (d : ℤ) (F : X.Modules) : X.Modules :=
-  (moduleTensorLeftFunctor X ((Scheme.Modules.pullback p).obj
-    (twistingSheaf A ι d))).obj F
+  Cohomology.embeddedTensorTwist p d F
 
-/-- Serre vanishing on a genuine closed projective subscheme, with the original
-pullback tensor object and native sheaf cohomology. No relative flatness is needed. -/
+/-- The unchanged generic Serre statement, through its single lower implementation. -/
 theorem embeddedTensorTwist_serreVanishing (r : ℕ) (e : ι ≃ Fin (r + 1))
     (F : X.Modules) (hF : affineLocallyFiniteType X F) :
     ∃ B : ℕ, ∀ d : ℤ, (B : ℤ) ≤ d → ∀ q : ℕ, q ≠ 0 →
       Subsingleton (Sheaf.H.{u + 1} (Cohomology.moduleAddSheaf X
-        (embeddedTensorTwist p d F)) q) := by
-  let : Finite ι := Finite.of_equiv _ e.symm
-  let : F.IsQuasicoherent :=
-    quasicoherent_of_affineCharts F (fun R j _ => (hF R j).1)
-  have hPF := Coherent.Pushforward.ClosedImmersion.affineLocallyFiniteType_pushforward p hF
-  let : ((Scheme.Modules.pushforward p).obj F).IsQuasicoherent :=
-    quasicoherent_of_affineCharts _ (fun R j _ => (hPF R j).1)
-  obtain ⟨B, hB⟩ := Cohomology.projectiveSerreVanishing A ι r e
-    ((Scheme.Modules.pushforward p).obj F) hPF
-  refine ⟨B, fun d hd q hq => ?_⟩
-  let : (embeddedTensorTwist p d F).IsQuasicoherent :=
-    isQuasicoherent_moduleTensorLeftFunctor _ _
-  let : ((Scheme.Modules.pushforward p).obj (embeddedTensorTwist p d F)).IsQuasicoherent :=
-    isQuasicoherent_pushforward_of_isAffineHom p _
-  let := Cohomology.moduleCohomology_subsingleton_of_iso
-    (closedImmersionProjectionFormulaIso p (twistingSheaf A ι d) F) q (hB d hd q hq)
-  exact (Cohomology.projectiveEmbeddingCohomologyLinearEquiv A ι p
-    (embeddedTensorTwist p d F) q).surjective.subsingleton
+        (embeddedTensorTwist p d F)) q) :=
+  Cohomology.embeddedTensorTwist_serreVanishing p r e F hF
 
 /-- Change only the displayed objects of an actual short complex. -/
 def cartierSequenceOfIsos (S : ShortComplex X.Modules) {U V W : X.Modules}

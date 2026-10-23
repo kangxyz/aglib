@@ -1357,6 +1357,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.Regularity.Surjectiv
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.RightExact
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Semicontinuity
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.SerreVanishing.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Flat
@@ -1830,6 +1831,7 @@ public import Aglib.AlgebraicGeometry.Gluing.Coproduct
 public import Aglib.AlgebraicGeometry.Gluing.FiniteClosedCover
 public import Aglib.AlgebraicGeometry.Gluing.OpenImmersion
 public import Aglib.AlgebraicGeometry.Gluing.OpenPushoutMap
+public import Aglib.AlgebraicGeometry.Gluing.OpenReplacement
 public import Aglib.AlgebraicGeometry.Gluing.OpenUnionPushout
 public import Aglib.AlgebraicGeometry.Gluing.ProperModification
 public import Aglib.AlgebraicGeometry.Gluing.ReducedClosedUnion
@@ -1914,7 +1916,9 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.FlatComap
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Interfaces
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Product
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Regular
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.RegularQuotient
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Restriction
+public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.SectionFibres
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.Comaximal
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.IntersectionComparison
 public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.MonoFactor
@@ -1941,6 +1945,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.StalkKernel
 public import Aglib.AlgebraicGeometry.IdealSheaf.Limits
 public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
+public import Aglib.AlgebraicGeometry.IdealSheaf.Modules.Stalk
 public import Aglib.AlgebraicGeometry.IdealSheaf.Noetherian
 public import Aglib.AlgebraicGeometry.IdealSheaf.OpenExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.PowerContainment
@@ -2281,6 +2286,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorFunctorAssociator
 public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorFunctorAssociator.Sections
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Tilde
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Trivialization
+public import Aglib.AlgebraicGeometry.Modules.Invertible.TwoSections
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Charts
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Fibrewise
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.GeometricFibre
@@ -2459,6 +2465,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineS
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineSectionsQuasicoherent
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.AffineSheafification
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.PrincipalCech
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.QCQSSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.SMulRegular
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Pullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Subobjects.Gluing
@@ -2540,6 +2547,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Etale.StalkBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.ZariskiNagataPurity
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.Birational
+public import Aglib.AlgebraicGeometry.Morphisms.Finite.Birational.NormalLocus
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.ClosedPoints
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.FunctionField
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.GenericSection
@@ -2738,6 +2746,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.Fibres
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.FunctionField
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.GeometricDegreeRank
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteFlat.RankOne
+public import Aglib.AlgebraicGeometry.Morphisms.FiniteType.FieldPoint
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteType.FinitePresentationHull
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteType.Generators
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.AffineStalk
@@ -2904,6 +2913,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Hom.Coefficients
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Hom.Linear
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Hom.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.HomogeneousSections
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.PositiveTwist
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.TwoPoints
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Multiplication
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Point
@@ -2962,8 +2972,10 @@ public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
 public import Aglib.AlgebraicGeometry.Properties.Normal.Components
+public import Aglib.AlgebraicGeometry.Properties.Normal.GlobalSections
 public import Aglib.AlgebraicGeometry.Properties.QuasiCompactCategory
 public import Aglib.AlgebraicGeometry.Properties.Regular.Basic
+public import Aglib.AlgebraicGeometry.Properties.Regular.ClosedPoints
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.Etale
 public import Aglib.AlgebraicGeometry.Properties.Regular.Descent.FlatLocal
 public import Aglib.AlgebraicGeometry.Properties.Regular.OpenCover
@@ -3096,9 +3108,19 @@ public import Aglib.AlgebraicGeometry.Surfaces.Birational.IsomorphismLocus
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.TraitDomination
 public import Aglib.AlgebraicGeometry.Surfaces.Birational.TraitGraph
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.Complement
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.Completion
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.LocalCoordinates
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.Powers
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.StructureMap
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.Support
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.FormalNeighborhood.Vanishing
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.PointBlowup
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.PointIdeal
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.Projective
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.ProjectiveImage
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.ProjectiveSections
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.Regularity
+public import Aglib.AlgebraicGeometry.Surfaces.Contraction.Regularity.Projective
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.CommonCenters
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.Comparison
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Blowup.NodeAtlas
@@ -3144,6 +3166,7 @@ public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.SourceGeomet
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.PointBlowupChain
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Principalization
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Trait
+public import Aglib.AlgebraicGeometry.Surfaces.Resolution.VerticalCartier
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.WeakTransform
 public import Aglib.AlgebraicGeometry.Torsors.Relative
 public import Aglib.AlgebraicGeometry.Torsors.Restriction
@@ -3656,6 +3679,7 @@ public import Aglib.RingTheory.AdicCompletion.FilteredKernelGeneration
 public import Aglib.RingTheory.AdicCompletion.FiniteAlgebra
 public import Aglib.RingTheory.AdicCompletion.FiniteAlgebraApproximation
 public import Aglib.RingTheory.AdicCompletion.FiniteDedekindBranches
+public import Aglib.RingTheory.AdicCompletion.FiniteGeneration
 public import Aglib.RingTheory.AdicCompletion.FiniteLocalApproximation
 public import Aglib.RingTheory.AdicCompletion.FiniteLocalCofinality
 public import Aglib.RingTheory.AdicCompletion.FiniteLocalization
@@ -3664,6 +3688,7 @@ public import Aglib.RingTheory.AdicCompletion.FormalHom
 public import Aglib.RingTheory.AdicCompletion.FractionBaseChange
 public import Aglib.RingTheory.AdicCompletion.FractionBranches
 public import Aglib.RingTheory.AdicCompletion.FractionTensorBranches
+public import Aglib.RingTheory.AdicCompletion.FrobeniusSeparated
 public import Aglib.RingTheory.AdicCompletion.GenericFormalFiber
 public import Aglib.RingTheory.AdicCompletion.GeometricallyReducedFraction
 public import Aglib.RingTheory.AdicCompletion.HomComparison
@@ -3903,9 +3928,11 @@ public import Aglib.RingTheory.FiniteEtale.TorsorPoints
 public import Aglib.RingTheory.FiniteLength.EulerObstruction
 public import Aglib.RingTheory.FiniteLength.FiniteAlgebraFiber
 public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
+public import Aglib.RingTheory.FiniteLength.ScalarQuotient
 public import Aglib.RingTheory.FiniteLength.Socle
 public import Aglib.RingTheory.FiniteLength.Support
 public import Aglib.RingTheory.FiniteLength.TensorInjectivity
+public import Aglib.RingTheory.FiniteLength.Torsion
 public import Aglib.RingTheory.FiniteLocalResidue
 public import Aglib.RingTheory.FiniteType.ColimitGenerators
 public import Aglib.RingTheory.FiniteType.EventualSurjectivity
@@ -4087,6 +4114,8 @@ public import Aglib.RingTheory.Ideal.ResidueSpan
 public import Aglib.RingTheory.IntegralClosure.Actions
 public import Aglib.RingTheory.IntegralClosure.AssociatedHeight
 public import Aglib.RingTheory.IntegralClosure.AssociatedPrincipal
+public import Aglib.RingTheory.IntegralClosure.Colength
+public import Aglib.RingTheory.IntegralClosure.CompleteCurve
 public import Aglib.RingTheory.IntegralClosure.EtaleDescent
 public import Aglib.RingTheory.IntegralClosure.FiniteEtale
 public import Aglib.RingTheory.IntegralClosure.FlatDescent
@@ -4105,6 +4134,7 @@ public import Aglib.RingTheory.IntegralClosure.GenericTensor
 public import Aglib.RingTheory.IntegralClosure.HeightOne
 public import Aglib.RingTheory.IntegralClosure.HeightOneDivisibility
 public import Aglib.RingTheory.IntegralClosure.HeightOneIntersection
+public import Aglib.RingTheory.IntegralClosure.HeightOneLocalization
 public import Aglib.RingTheory.IntegralClosure.Inertia
 public import Aglib.RingTheory.IntegralClosure.Inertia.Absolute
 public import Aglib.RingTheory.IntegralClosure.Inertia.Compactness
@@ -4126,6 +4156,8 @@ public import Aglib.RingTheory.IntegralClosure.NormalClosureDescent
 public import Aglib.RingTheory.IntegralClosure.NormalClosureFlat
 public import Aglib.RingTheory.IntegralClosure.OriginalModel
 public import Aglib.RingTheory.IntegralClosure.PrimeAway
+public import Aglib.RingTheory.IntegralClosure.PurelyInseparable
+public import Aglib.RingTheory.IntegralClosure.PurelyInseparable.FiniteGeneration
 public import Aglib.RingTheory.IntegralClosure.Reflexive
 public import Aglib.RingTheory.IntegralTensorCharpolyProduct
 public import Aglib.RingTheory.IntermediateIntegralClosureTower
@@ -4365,9 +4397,11 @@ public import Aglib.RingTheory.RegularLocalRing.PrincipalLocalization
 public import Aglib.RingTheory.RegularLocalRing.ProjectiveDimension
 public import Aglib.RingTheory.RegularLocalRing.PuncturedDualComparison
 public import Aglib.RingTheory.RegularLocalRing.QuotientLift
+public import Aglib.RingTheory.RegularLocalRing.RankOneKernel
 public import Aglib.RingTheory.RegularLocalRing.Reduced
 public import Aglib.RingTheory.RegularLocalRing.RegularSequence
 public import Aglib.RingTheory.RegularLocalRing.ResidueProjectiveDimension
+public import Aglib.RingTheory.RegularLocalRing.TwoGenerators
 public import Aglib.RingTheory.RootsOfUnity.Adjoin
 public import Aglib.RingTheory.RootsOfUnity.BaseField
 public import Aglib.RingTheory.RootsOfUnity.CharacterCompatibility
