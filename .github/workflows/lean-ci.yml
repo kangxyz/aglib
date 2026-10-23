@@ -29,11 +29,11 @@ defaults:
       bash --noprofile --norc -e -o pipefail -c
       "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 ));
       if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi;
-      printf \"Native resources: group=%s MiB, Lake threads=%s\n\" \"$ci_memory_mb\" \"$(nproc)\";
+      printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\";
       exec sudo --preserve-env systemd-run --scope --quiet --collect
       --uid=\"$(id -u)\" --gid=\"$(id -g)\"
       --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0
-      /usr/bin/env \"PATH=$PATH\" \"LEAN_NUM_THREADS=$(nproc)\"
+      /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1
       /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
 
 jobs:

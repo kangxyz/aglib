@@ -328,7 +328,7 @@ os.execv(args[index],args[index:])
 ''')
             for file in binary.iterdir(): file.chmod(0o755)
             script = root / 'native step.sh'
-            script.write_text('test "$VISIBLE_INPUT" = retained\ntest "$LEAN_NUM_THREADS" = 4\nexit "$STATUS"\n')
+            script.write_text('test "$VISIBLE_INPUT" = retained\ntest "$LEAN_NUM_THREADS" = 1\nexit "$STATUS"\n')
             for memory, expected in ((16384, 13824), (7168, 5120)):
                 for status in (0, 7):
                     result = subprocess.run(runner_arguments(shell.format(script)), cwd=root,
@@ -345,12 +345,12 @@ os.execv(args[index],args[index:])
                     self.assertIn('--property=MemorySwapMax=0', args)
 
     def test_each_library_keeps_native_weak_resource_arguments(self):
-        for name in ('aglib', 'quillen-k-theory', 'motivic'):
+        for name, threads in (('aglib', 4), ('quillen-k-theory', 4), ('motivic', 4)):
             root = ROOT.parent / name
             if not root.exists():
                 continue
             config = tomllib.loads((root / 'lakefile.toml').read_text())
-            self.assertEqual(config['weakLeanArgs'], ['-M12800', '-j2'])
+            self.assertEqual(config['weakLeanArgs'], ['-M12800', f'-j{threads}'])
 
 
 class CheckerBoundaryAndLintTimeout(unittest.TestCase):

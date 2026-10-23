@@ -94,12 +94,14 @@ exclusion of the auditor checkout. These are transport results, not a complete
 three-library CI pass.
 
 The historical limits are retained through native controls: each maintained
-package uses weak `-M12800 -j2` arguments, which do not invalidate artifact
-traces. Older pinned dependencies and the auditor retain their own arguments.
+package uses weak `-M12800` arguments, which do not invalidate artifact traces.
+The three libraries use Aglib's four-thread frontend setting, `-j4`, and retain
+`LEAN_NUM_THREADS=1` for Lake. Older pinned dependencies and the auditor retain
+their own arguments.
 A systemd scope bounds each run step and its subprocesses at at most 13824 MiB,
 reduced for machines with less than that allowance plus a 2048 MiB system/runner
-reserve. This cgroup limit covers more than process RSS. Lake's runtime pool
-uses `nproc`; no CPU-saturation or throughput improvement has been measured.
+reserve. This cgroup limit covers more than process RSS; no CPU-saturation or
+throughput improvement has been measured.
 The Actions runner stays outside the scope so ordinary workload failure can
 reach the existing cache saves. Runner/VM teardown still cannot guarantee saving,
 and the earlier shutdown's cause remains unknown.
@@ -116,8 +118,11 @@ inner quotes, checked against the [runner launcher](https://github.com/actions/r
 and [.NET parser](https://github.com/dotnet/runtime/blob/v8.0.12/src/libraries/System.Diagnostics.Process/src/System/Diagnostics/Process.Unix.cs#L868-L939).
 An actual local .NET launcher preserved script paths with spaces, environment
 and exit statuses 0/7 under simulated 16 GiB and 7 GiB RAM. Its systemd boundary
-was mocked; actual Linux scope enforcement awaits the hosted run. This repair
-adds no kernel replay, client workflow or mathematical acceptance requirement.
+was mocked. The [corrected hosted run](https://github.com/kangxyz/aglib/actions/runs/40008706099/job/120603170297)
+then passed its first scoped command and reached Actions cache restoration.
+A full pipeline pass and induced-OOM behavior are not established by that step.
+This repair adds no kernel replay, client workflow or mathematical acceptance
+requirement.
 
 ## Generated import entries and file-length limits
 

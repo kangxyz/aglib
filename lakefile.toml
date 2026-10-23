@@ -11,7 +11,7 @@ builtinLint = true
 enableArtifactCache = true
 restoreAllArtifacts = true
 # Resource-only flags retain the native artifact trace.
-weakLeanArgs = ["-M12800", "-j2"]
+weakLeanArgs = ["-M12800", "-j4"]
 
 [[lean_lib]]
 name = "Aglib"

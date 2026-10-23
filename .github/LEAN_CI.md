@@ -131,15 +131,15 @@ preserving its working directory, environment and selected toolchain. The
 historical aggregate allowance is 13824 MiB, reduced only when physical RAM
 minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
 scope, and the Actions runner stays outside its combined memory limit. The
-maintained libraries use `weakLeanArgs = ["-M12800", "-j2"]`:
-their own Lean frontend invocations retain the 12800 MiB managed-allocation
-limit and two threads. Existing pinned dependencies and the separate auditor
-retain their own compiler arguments; the aggregate scope also bounds those
-processes. These resource-only arguments do not change native build traces.
-Lake's runtime pool uses the runner's `nproc` CPU count. This is not a promise of
-a particular number of simultaneous compiler processes. Ordinary failure can
-still execute the existing cache saves; VM/runner teardown remains outside
-that guarantee. The retired manual cache-client workflow is no longer present.
+maintained libraries all use weak `-M12800 -j4` frontend arguments: a
+12800 MiB managed-allocation limit and four threads for their own modules.
+Existing pinned dependencies and the separate auditor retain their own compiler
+arguments; the aggregate scope also bounds those processes. These resource-only
+arguments do not change native build traces.
+Lake's runtime pool retains the historical `LEAN_NUM_THREADS=1`; the available
+CPU count is logged separately. This is not a promise of a particular number
+of simultaneous compiler processes. Ordinary failure can still execute the
+existing cache saves; VM/runner teardown remains outside that guarantee. The retired manual cache-client workflow is no longer present.
 
 The focused regression suite uses Python, PyYAML, tar and zstd:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
