@@ -104,6 +104,12 @@ The Actions runner stays outside the scope so ordinary workload failure can
 reach the existing cache saves. Runner/VM teardown still cannot guarantee saving,
 and the earlier shutdown's cause remains unknown.
 
+[The first hosted run](https://github.com/kangxyz/aglib/actions/runs/40007949025/job/120600585739)
+failed before cache acquisition: Ubuntu 24.04's systemd rejected
+`MemoryOOMGroup=yes` as an unknown assignment. That unsupported property was
+removed; `MemoryMax` and `MemorySwapMax` retain the native resource bound.
+Do not infer a guarantee that every process in the scope is killed together.
+
 GitHub's custom shell is launched through .NET argument parsing, which does not
 group POSIX single quotes. The shell uses double-quote grouping with escaped
 inner quotes, checked against the [runner launcher](https://github.com/actions/runner/blob/v2.338.0/src/Runner.Sdk/ProcessInvoker.cs#L228)

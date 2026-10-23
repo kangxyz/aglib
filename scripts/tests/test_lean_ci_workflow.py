@@ -343,7 +343,6 @@ os.execv(args[index],args[index:])
                     self.assertIn('--gid=' + str(os.getgid()), args)
                     self.assertIn(f'--property=MemoryMax={expected}M', args)
                     self.assertIn('--property=MemorySwapMax=0', args)
-                    self.assertIn('--property=MemoryOOMGroup=yes', args)
 
     def test_each_library_keeps_native_weak_resource_arguments(self):
         for name in ('aglib', 'quillen-k-theory', 'motivic'):

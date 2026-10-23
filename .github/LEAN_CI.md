@@ -130,8 +130,8 @@ Run steps use a native systemd scope, dropping back to the runner UID/GID and
 preserving its working directory, environment and selected toolchain. The
 historical aggregate allowance is 13824 MiB, reduced only when physical RAM
 minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
-scope and an OOM ends the scope's workload together, leaving the Actions runner
-outside it. The maintained libraries retain `weakLeanArgs = ["-M12800", "-j2"]`:
+scope, and the Actions runner stays outside its combined memory limit. The
+maintained libraries use `weakLeanArgs = ["-M12800", "-j2"]`:
 their own Lean frontend invocations retain the 12800 MiB managed-allocation
 limit and two threads. Existing pinned dependencies and the separate auditor
 retain their own compiler arguments; the aggregate scope also bounds those

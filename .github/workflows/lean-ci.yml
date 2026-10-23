@@ -32,7 +32,7 @@ defaults:
       printf \"Native resources: group=%s MiB, Lake threads=%s\n\" \"$ci_memory_mb\" \"$(nproc)\";
       exec sudo --preserve-env systemd-run --scope --quiet --collect
       --uid=\"$(id -u)\" --gid=\"$(id -g)\"
-      --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0 --property=MemoryOOMGroup=yes
+      --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0
       /usr/bin/env \"PATH=$PATH\" \"LEAN_NUM_THREADS=$(nproc)\"
       /bin/bash --noprofile --norc -eo pipefail \"$0\"" "{0}"
 
