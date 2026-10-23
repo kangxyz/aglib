@@ -39,6 +39,7 @@ public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.PresentationCompati
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.PresentationExt
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.PresentationUnit
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.SpanSingleton
+public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.Surjective
 public import Aglib.Algebra.Category.ModuleCat.ChangeOfRings.UnitTensor
 public import Aglib.Algebra.Category.ModuleCat.Descent.Coalgebra
 public import Aglib.Algebra.Category.ModuleCat.Descent.FaithfullyFlat
@@ -103,6 +104,8 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorInjectiveRetract
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections
+public import Aglib.Algebra.Category.ModuleCat.SquareZeroMorphisms
+public import Aglib.Algebra.Category.ModuleCat.SquareZeroProjective
 public import Aglib.Algebra.Category.ModuleCat.StablyFreeBaseChange
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOne
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOneCoefficient

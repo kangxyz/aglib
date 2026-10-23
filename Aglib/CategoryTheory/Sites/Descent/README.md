@@ -1,5 +1,17 @@
 # Generic descent: transfer, composition and sheaf conditions over `Over S`
 
+[Binary](Binary.lean) constructs genuine native descent data for two
+monomorphisms from one specified isomorphism on their actual pullback.
+[Binary/Compatibility](Binary/Compatibility.lean) checks morphism and
+isomorphism compatibility on that single overlap.
+[Binary/Pullback](Binary/Pullback.lean) computes the original native
+`DescentData.pullFunctor` overlap arrow through its canonical pseudofunctor
+square comparisons. [Binary/Lifting](Binary/Lifting.lean) constructs a
+lifted datum from two actual local lifts and lifting of the required
+overlap isomorphism, retaining the specified original pullback comparison.
+Effectivity and the local lifting supplier are supplied by the
+[scheme module consumer](../../../AlgebraicGeometry/Descent/Modules/README.md).
+
 Seven leaves extend Mathlib's effective-descent predicate `Pseudofunctor.IsStackFor` for
 pseudofunctors `LocallyDiscrete Cᵒᵖ ⥤ᵖ Cat`, for arbitrary categories, functors and morphisms.
 [Transfer](Transfer.lean) and [SiteChange](SiteChange.lean) transfer it between pseudofunctors;

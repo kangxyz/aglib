@@ -1,5 +1,10 @@
 # Canonical module pullback comparisons
 
+[Isomorphism](Isomorphism.lean) proves that actual module-sheaf pullback
+along a scheme isomorphism is an equivalence. Its inverse is the original
+pullback along the inverse morphism, with native composition, congruence
+and identity comparisons.
+
 [Free](Free.lean) constructs actual pullback comparisons for the structure module, free sheaves and open restriction. The unit/free generator index sets are retained; the maps come from the native pullback adjunction.
 
 [FreeComp](FreeComp.lean) proves that `pullbackFreeIso` respects Mathlib's composition, identity and equality comparisons of pullbacks (`pullbackFreeIso_comp`, `pullbackFreeIso_id`, `pullbackFreeIso_congr`); the first two are checked on the summand inclusions through `pullbackUnitIso_comp` and `_id`. Its consumer is the quotient functor of [Grassmannian/Quotient](../../Grassmannian/README.md).

@@ -50,6 +50,7 @@ public import Aglib.CategoryTheory.Functor.AutomorphismTransport
 public import Aglib.CategoryTheory.Functor.Derived.RightDerivedCommShift
 public import Aglib.CategoryTheory.Functor.DiagramLift
 public import Aglib.CategoryTheory.Functor.Flat
+public import Aglib.CategoryTheory.Functor.IsoLifting
 public import Aglib.CategoryTheory.Functor.KanExtension.ClosedImage
 public import Aglib.CategoryTheory.Functor.MapComparisonSquare
 public import Aglib.CategoryTheory.Functor.ModelAutomorphisms
@@ -86,6 +87,10 @@ public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport
 public import Aglib.CategoryTheory.Preadditive.Coproducts
 public import Aglib.CategoryTheory.PresentationColimit
+public import Aglib.CategoryTheory.Sites.Descent.Binary
+public import Aglib.CategoryTheory.Sites.Descent.Binary.Compatibility
+public import Aglib.CategoryTheory.Sites.Descent.Binary.Lifting
+public import Aglib.CategoryTheory.Sites.Descent.Binary.Pullback
 public import Aglib.CategoryTheory.Sites.Descent.Bind
 public import Aglib.CategoryTheory.Sites.Descent.Composition
 public import Aglib.CategoryTheory.Sites.Descent.OfEpi

@@ -8,6 +8,11 @@ The owner is `AlgebraicGeometry.Scheme.Modules.Invertible`. [Basic](Basic.lean) 
 
 [Pullback](Pullback.lean) preserves actual local rank one under every scheme morphism. [PullbackTensor/Local](PullbackTensor/README.md) proves the canonical tensor comparison and gives `PullbackTensor.Local.pullbackHom f : PicardGroup Y →+ PicardGroup X`, with no extra tensor-pullback theorem-family premise.
 
+[SquareZero](SquareZero/README.md) constructs actual affine and two-affine
+line-bundle lifts across intrinsic square-zero closed immersions, with
+the original geometric pullback isomorphisms. Its generic binary descent
+and projective-module suppliers remain in their lower owners.
+
 Focused imports are `Aglib.AlgebraicGeometry.Modules.Invertible.Basic`, `.Dual` and `.PullbackTensor.Local` for objects, group and additive pullback. This is the ordinary Picard group; no Picard-scheme representability or curve-degree map is included.
 
 The canonical tensor is now defined below schemes in [ModuleCat/Sheaf/Tensor/Basic](../../../Algebra/Category/ModuleCat/Sheaf/Tensor/Basic.lean). The invertible `tensorSheaf`, its map and braiding transparently specialize that construction; [TensorComparison](TensorComparison.lean) records the object/map/braiding comparison. [TensorFunctorAssociator](TensorFunctorAssociator.lean) retains the actual associator-functor interface. Generic symmetry imports neither the invertible nor projection-formula tier.
@@ -98,3 +103,15 @@ cancellation maps use the actual evaluation, associator, braiding and units.
 [Power](Power/README.md) documents coherent powers and their pullbacks;
 [FinitePresentation](FinitePresentation.lean), [Bidual](Bidual.lean) and
 [TensorFaithful](TensorFaithful.lean) retain the original line-bundle objects.
+
+## Formal lifting and descent
+
+[Formal](Formal/README.md) documents the square-zero, completion, formal-system
+and henselian line-bundle lifting interfaces. In particular,
+[Henselian/General](Formal/Henselian/General.lean) proves residue-fibre line-bundle
+lifting and surjectivity of the original Picard pullback for any henselian local
+ring and proper morphism equipped with an actual affine binary cover. The
+complete-base result has the additional Noetherian and adic-completeness
+hypotheses recorded there. [Descent](Descent/README.md) describes the actual
+binary overlap and limit comparison sources. The projective-line case is a
+corollary of the general henselian theorem.

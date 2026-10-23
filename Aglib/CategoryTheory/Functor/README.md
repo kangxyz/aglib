@@ -1,5 +1,11 @@
 # Native functors and their comparisons
 
+[IsoLifting](IsoLifting.lean) transports a prescribed isomorphism lift
+through a given natural functor-square comparison, using a fully faithful
+source comparison and a faithful target comparison. It preserves equality
+with the original forward map. Actual affine line-bundle lifting uses it
+to pass through the canonical affine-spectrum isomorphisms.
+
 [KanExtension](KanExtension/README.md) gives the native opposite Kan-extension
 monomorphism criterion used by exact open extension by zero.
 [Sections](Sections/README.md) identifies the original compatible sections

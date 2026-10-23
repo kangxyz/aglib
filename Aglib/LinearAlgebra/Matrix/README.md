@@ -8,6 +8,12 @@ The basis index is any finite type with decidable equality; no separability
 hypothesis is added. Entrywise determinant naturality uses Mathlib's existing
 `Matrix.GeneralLinearGroup.map_det`.
 
+[SquareZeroLift](SquareZeroLift.lean) proves that the original entrywise
+map of finite matrices has square-zero kernel when its scalar map does.
+Native noncommutative idempotent lifting lifts the original finite
+projector. The actual finite-projective module-lifting construction takes
+its image and uses the existing original matrix base-change comparison.
+
 The categorical scalar-restriction squares in
 [FGModuleCat.ScalarMatrices](../../Algebra/Category/FGModuleCat/ScalarMatrices.lean)
 use this same matrix and the native finite restriction-of-scalars functor.

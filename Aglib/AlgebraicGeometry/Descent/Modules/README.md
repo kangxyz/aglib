@@ -8,6 +8,14 @@ Stack statements use Mathlib's `Pseudofunctor.IsPrestack` and `Pseudofunctor.IsS
 is the Zariski part (row F3) of the fppf stacks of row F6 in
 [PICARD_PLAN.md](../../../../docs/PICARD_PLAN.md).
 
+[BinaryGluing](BinaryGluing.lean) glues two arbitrary actual line bundles
+through a single specified overlap isomorphism and retains the entire
+native descent comparison. [BinaryLifting](BinaryLifting.lean) identifies
+the original pullback of that global object with a prescribed bundle,
+using actual local lifts and the actual overlap-isomorphism lift. The
+[two-affine square-zero application](../../Modules/Invertible/SquareZero/README.md)
+proves these local lifting hypotheses from the intrinsic kernel condition.
+
 [Pseudofunctor](Pseudofunctor.lean):
 
 - `pullbackPseudofunctor := Scheme.Modules.pseudofunctor.comp Adj.forget₁`, the left-adjoint

@@ -5,6 +5,14 @@ presheaf and sheaf constructions. The category of finitely generated modules
 and its Noetherian Serre/exact specialization have their focused
 [FGModuleCat](../FGModuleCat/README.md) owner.
 
+[SquareZeroProjective](SquareZeroProjective.lean) lifts actual finite
+projective modules across a surjective square-zero ring map, with an
+isomorphism from the original scalar extension. [SquareZeroMorphisms](SquareZeroMorphisms.lean)
+lifts prescribed reduced isomorphisms between projectives and retains their
+original forward maps; the projectives need not be finite. The
+[ring Picard](../../../RingTheory/PicardGroup/README.md) and affine
+line-bundle lifting families consume these results.
+
 [ScalarExtensionUnit](ScalarExtensionUnit.lean) proves
 `ModuleCat.restrictedExtensionUnit_apply`: for compatible commutative ring maps
 `R → A → S`, the restricted extension/restriction unit is literally

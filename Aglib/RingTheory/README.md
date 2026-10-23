@@ -15,6 +15,7 @@ The objects are actual Mathlib rings, algebras, ideals, prime spectra, localizat
 | [Spectrum](Spectrum/README.md) | Open residue-fibre surjectivity, upper semicontinuity of finite-module fibre dimension and local constancy under finite-presentation flatness |
 | [Ideal/MinimalPrime](Ideal/MinimalPrime/README.md), [Flat](Flat/README.md), [MonoidAlgebra](MonoidAlgebra/README.md), [RootsOfUnity](RootsOfUnity/README.md), [Smooth](Smooth/README.md), [Etale](Etale/README.md) | Actual minimal-prime, flat-module, finite-type monoid algebra, root-adjoin, reducedness and formal-etale ring-map prerequisites |
 | [FittingIdeal](FittingIdeal/README.md) | Fitting ideals of finitely generated modules: presentation independence, base change, stalkwise freeness criteria and fibre-rank strata |
+| [PicardGroup](PicardGroup/README.md) | Actual invertible-module lifting and bijectivity of the original ring Picard map across a surjective square-zero extension |
 | [GenericFreeness](GenericFreeness/README.md) | Free localizations from filtrations; generic freeness of finite modules over finite-type algebras over a Noetherian domain (Stacks 051R) |
 | [Grassmannian](Grassmannian/README.md) | Charts and Zariski descent of Mathlib's `Module.Grassmannian.functor`, with the base-change formula class `BaseChangeMkQFormula` |
 

@@ -1,5 +1,11 @@
 # Scalar restriction and canonical base change
 
+[Surjective](Surjective.lean) identifies the original scalar-adjunction
+unit along a surjective ring map `f` with `M -> M / (ker f) M`.
+Its actual kernel and surjectivity give fullness of scalar extension on
+morphisms with projective source. No finiteness, nilpotence or flatness is
+required. Prescribed square-zero isomorphism lifting consumes this map.
+
 [Algebra](Algebra.lean) gives `extendScalarsAlgebraObjIso` for a specified
 algebra structure. It identifies the original scalar-extension object along
 `algebraMap` with the original algebra tensor product. Both directions

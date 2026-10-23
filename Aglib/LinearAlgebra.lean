@@ -30,6 +30,7 @@ public import Aglib.LinearAlgebra.Matrix.NormalizedProjection
 public import Aglib.LinearAlgebra.Matrix.RetainedAdjugate
 public import Aglib.LinearAlgebra.Matrix.ScalarRestriction
 public import Aglib.LinearAlgebra.Matrix.SelectedMinorRows
+public import Aglib.LinearAlgebra.Matrix.SquareZeroLift
 public import Aglib.LinearAlgebra.Multilinear.Span
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluation
 public import Aglib.LinearAlgebra.TensorProduct.DualEvaluationFiniteLength

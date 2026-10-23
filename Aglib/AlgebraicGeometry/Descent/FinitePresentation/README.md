@@ -58,3 +58,14 @@ models and original closed-fibre projection equations used by the
 [proper henselian comparison](../../Morphisms/FiniteEtale/ProperHenselian/README.md).
 The [finite-type descent family](../FiniteType/README.md) separately owns
 eventual closedness and the two forms of separatedness descent.
+
+## Proper models with a binary cover
+
+| Source | Actual construction |
+| --- | --- |
+| [ModelBaseFactor](ModelBaseFactor.lean) | `Model.factorBase` factors the specified base map while retaining the original source, structural map and cartesian comparison square. |
+| [ProperBinaryCoverModel](ProperBinaryCoverModel.lean) | For a proper finitely presented scheme over a Noetherian finite-type coefficient base, constructs a later proper finite-type coefficient model carrying an actual affine binary cover. The original cartesian structural comparison is retained. |
+
+The resulting model does not supply a projective-line morphism, overlap recovery
+equalities, or an `IsScalarTower D C R` instance. The cover existence is the
+explicit output `Nonempty (Scheme.AffineBinaryCover M.X)`.
