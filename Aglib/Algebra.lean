@@ -210,6 +210,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Plus.Divisibility
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Divisibility.Truncation
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Ext
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Comparison
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Layers

@@ -3130,3 +3130,296 @@ invocation accepted Sections and failed the separate Bounded leaf; this
 records only BoundedPresentation coverage. These are ordinary existing
 proof-iteration observations, not a controlled benchmark or a diagnosis of
 a Lean defect. No additional profiling, replay, audit, or benchmark was run.
+
+
+## Convert the coefficient family before specializing the canonical exchange
+
+Basis: private Aglib HEAD `2c34f185fa859e862661f939cd216b07bcccfb26`,
+Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Lean 4.34.1.
+This records existing scoped compilation observations. No benchmark, replay
+or additional check was run, and the ordinary budgets were unchanged.
+
+Run `remote-1863ac2989664358a4a7f2d9e15a72bb`, source snapshot
+`f05d77f18121237fffa1bace745947db2dd16e8efce3c8ffa64f12266795a271`,
+compiled `AllModuleCoefficients` successfully in 9.3 seconds, then rejected
+the two concrete bounded-coefficient composition/descent declarations with
+**kernel deterministic timeout** diagnostics. `BoundedCoefficients` source
+`83b15994453093d37b94c1f82c29b97b4277dce8562d323f5bb0eadc0b92d981`
+took 295 seconds according to its actual frontend log. The unknown-constant
+errors in its two higher wrappers were cascading consequences.
+
+The failing wrappers converted the hypotheses inline:
+
+```lean
+fun J _ => hOuter _ (zmodUnderlying_nsmul_id X n J)
+```
+
+This supplied the literal `beta.app (single (underlying J))` test where the
+compiled injective reduction used the protected regular `zmodSingle` head.
+The effective repair moves that conversion to a typed generic boundary
+**before** specializing the original exchange. The bridge takes
+
+```text
+single : A -> B, U : M -> A, Z : M -> B,
+e : Z = U followed by single,
+beta : L -> R, P : A -> Prop,
+h : every P-coefficient has invertible beta on its single,
+hU : every injective I satisfies P (U I).
+```
+
+It substitutes the whole functor equality with variable `beta`, then returns
+the injective tests directly at `Z.obj I`. The concrete consumer supplies
+the already compiled original `zmodSingle`, its whole original functor
+equality by `rfl`, the actual underlying functor, and its actual annihilation
+theorem. Both concrete wrappers then pass tests with exactly the same shared
+data head as the compiled injective provider.
+
+The public bounded-coefficient signatures are unchanged: they use the
+literal original single of the actual abelian coefficient. The canonical
+`derivedBaseChangeMap`, every higher-image map, all six independent abelian
+derived-category universes, and the actual modulus hypothesis are unchanged.
+There is no new mathematical premise, alternate coefficient or exchange.
+The bridge preserves the actual original object and arrow formulas through
+the existing `zmodSingle_obj` and `zmodSingle_map` identities.
+
+Validated source:
+`4d8eb96a1d6e9595c34236da6d95d7aff0fb27ab23c08729715b906ea2393385`.
+Run `remote-92dc3e6bec274704977cd8711ecec024`, source snapshot
+`044e3e0d4434e59e6509c9ca93d56224055c88aaee1f393e64efe8afdcf4d3ab`,
+compiled the complete bounded leaf in 5.5 seconds and its original
+all-degree `HigherReduction` consumer in 4.9 seconds. This final run had
+exactly two actual frontends, both successful, with exit code zero and
+14.42 seconds overall wall time. Earlier matching leaf successes were
+reused; the Lake progress index is not a count of fresh frontends.
+
+The comparison records the successful proof boundary, not a performance
+ratio or a diagnosis of a Lean defect. Existing logs, receipts and compiler
+events remain under the two run IDs in this task's `remote-runs/` directory.
+
+
+## Share the actual coefficient-single data head before transporting exchange tests
+
+Basis: private Aglib HEAD `2c34f185fa859e862661f939cd216b07bcccfb26`,
+Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Lean 4.34.1.
+These are ordinary scoped compilation observations, not benchmark runs or a
+compiler-defect diagnosis. The standard 200000 declaration-heartbeat limit
+was retained throughout.
+
+The original `InjectiveExchange` assembled canonical vertical-pasting,
+acyclic-single comparisons and actual coefficient retracts directly at the
+expanded original `singleFunctor.obj (zmodUnderlying.obj I)` terms. Run
+`remote-b72d18ebd6954922a783d46bbfa25a12` failed both concrete reduction
+theorems with **kernel deterministic timeout** diagnostics. Its leaf source
+was `a78dbd5ed97cfc826a9acd1209c29fc475dcab92bef7261cb1b3006742ab846d`;
+the log reports 280 seconds for that frontend. The later unknown-constant
+diagnostic was a consequence of the rejected descent declaration.
+
+Extracting only the logical transport into generic `NatTrans` injective-test
+lemmas was insufficient. In `remote-ceb0c3469fbd493a9444108bdba76e26`, package
+`d874a1584ea2cb92369a63b6786e192c0667cd3c8a62f8730ee1e800c3fe1cfb`,
+leaf source `dc58e249c88670ef11a799230886b18d907c1cadb7fa455e2f8a373664277142`
+again failed both concrete wrappers with kernel deterministic timeouts. The
+log reports 247 seconds for this frontend. No accepted theorem or broader
+scope is inferred from either failed invocation.
+
+The effective repair gives the actual coefficient embedding one shared
+regular data head:
+
+```lean
+def zmodSingle (X : Scheme.{u})
+    [HasDerivedCategory.{dX} (AbelianSheaf.{u,u+1} X)] (n : ℕ) :
+    ZModSheaf X n ⥤ DerivedCategory.Plus (AbelianSheaf.{u,u+1} X) :=
+  zmodUnderlying X n ⋙
+    DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u,u+1} X) 0
+```
+
+The exposed `zmodSingle_obj` and `zmodSingle_map` formulas are `rfl` and
+retain exactly the original object and coefficient arrow. A separately
+typed `zmodInjectiveImageSingleIso` returns the previously compiled native
+`derivedDirectImageZModInjectiveSingleIso` at these same shared heads. It is
+the original acyclic-single comparison from the original right-derived unit.
+The generic injective-test composition/descent proofs and the concrete
+theorem statements use this identical functor head. The canonical
+`derivedBaseChangeMap`, native vertical-pasting and genuine coefficient
+retract suppliers are unchanged. No new mathematical premise, alternate
+exchange, or injectivity-after-forgetting claim is introduced.
+
+The source interface is normalized to use the shared actual functor; an
+unused draft higher-injective wrapper was omitted. The direct original
+all-degree reduction consumers remain in the separate upper leaves. No
+additional fully expanded certificate was pursued merely to reproduce the
+failed conversion.
+
+Validated leaf source:
+`e0bf719ae8240bbb4c652648cc7d84cdcd91b2d2c0a05e6de3aab2c5751f24fe`.
+Run `remote-5343d4769a9c40948d7108ee21f8548d`, source snapshot
+`b8e6140d19600b44c67df20b2b06ce171dc61349e620227ac4396e464a52d849`,
+compiled the complete `InjectiveExchange` leaf successfully in 5.4 seconds.
+Its two-frontend batch **failed overall**, because the independent
+`ExchangeShift` leaf had four ordinary elaboration errors. That run is not
+a successful whole-family or proper-base-change closure claim.
+
+The pre-execution snapshot-guard stop reported as invocation `70101` did
+not execute a compiler and is not additional proof-failure evidence.
+
+All cited logs and receipts are the existing artifacts under this task's
+`remote-runs/` directory. No benchmark, replay, lint or additional build was
+run to prepare this note.
+
+
+## Use the native isomorphism-to-monomorphism constructor directly
+
+Basis: private Aglib HEAD `2c34f185fa859e862661f939cd216b07bcccfb26`,
+Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Lean 4.34.1.
+
+The generic `Plus.InjectiveComparison.homology_mono_successor` uses an actual
+injective presentation and its actual cokernel. In the failed run
+`remote-ceb0c3469fbd493a9444108bdba76e26`, package
+`d874a1584ea2cb92369a63b6786e192c0667cd3c8a62f8730ee1e800c3fe1cfb`,
+source `5f07c5e041f5c4a19a393b1a23c4531155bd081f653bab01ee1837eeec376a26`,
+the already available preceding-degree isomorphism hypothesis was installed
+locally. A subsequent `infer_instance` for monicity of precisely that
+homology-comparison arrow exhausted the native 20000 typeclass heartbeats.
+The diagnostic was at line 131, on the actual cokernel of the chosen
+injective presentation. This was not a kernel timeout or an OOM.
+
+The effective repair changes only that final instance search:
+
+```lean
+have := hPrev (cokernel P.f)
+exact IsIso.mono_of_iso _
+```
+
+The existing native constructor consumes the same local isomorphism proof
+and yields monicity of the same original arrow. No extra mathematical
+premise, altered cokernel, comparison map or search-budget override is used.
+This records the validated proof boundary, not a diagnosis of why the wider
+instance search visited its particular alternatives.
+
+Successful source:
+`7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f`.
+Actual run `remote-513fd164d7b74707b30c0616780ee6cb`, package
+`fdd10aa46960815795782d7e809e939a2bd275f674631b5faf2818e97276c14e`,
+compiled this leaf in 12 seconds. The three-frontend scoped batch passed all
+three selected leaves; its other two were `GeometryCriterion` and
+`SingleHigher`. The enclosing run succeeded. No replay, benchmark, lint or
+extra check was run to prepare this note; the ordinary 200000-heartbeat
+declaration limit and 20000 typeclass limit were retained.
+
+Evidence is in the two runs' existing `build.log`, `receipt.json` and
+`compiler-events.jsonl` under this task's `remote-runs/` directory.
+
+
+## Pinning the actual module universe in a Kan-extension preservation proof
+
+Basis: Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`,
+Aglib private HEAD `2c34f185fa859e862661f939cd216b07bcccfb26`.
+This records ordinary author repair, not a benchmark or a compiler-defect claim.
+
+The failed run `remote-a6f5a8f9129a467b96fc8a03d1aadb5c`, source snapshot
+`35ac35bf7c7b5e64ad72036331dc00b219fe0d0cf0a9fe9dc970228ae06dd8a5`,
+reported a stuck universe constraint at `ZModImages.lean:93:2`:
+`u + 1 =?= max (u + 1) ?u`, while synthesizing limits of the actual
+`ModuleCat.{u + 1} (ZMod n)`. Earlier explicitly typed functors and comparison
+isomorphisms alone had not fixed the unresolved universe of the limit instance.
+The mathematical statement and ordinary 200000-heartbeat limit were unchanged.
+
+The successful proof keeps the native comparison
+`V.lanCompIsoOfPreserves G.op`, with `V` the actual module-to-abelian forgetful
+functor and `G` the actual small-etale site base-change functor. For each finite
+shape `J : Type (u + 1)`, it installs the exact native instances
+
+```lean
+ModuleCat.hasLimitsOfShape.{u + 1, u + 1, u + 1, 0}
+ModuleCat.forget₂AddCommGroup_preservesLimitsOfSize.{u + 1, u + 1, u + 1, 0}
+```
+
+and then explicitly constructs preservation for both postcomposition functors
+with `whiskeringRight_preservesLimitsOfShape`, fixing the actual source,
+target and shape. Reflection of those limits and the original Kan comparison
+prove preservation for the module Kan extension. No extra mathematical
+premise or alternate inverse image was introduced.
+
+Validated leaf SHA-256:
+`a5e16619ecc3507b42737d94be44a13d8ae1418d5de3a42f5a0e0ae0734d27ba`.
+The run `remote-0af3ec46961642fe80cacaa0f3f9a10a`, source snapshot
+`bbe7c640f9c3b77652f248f6782d497315ba3d870818777bc7b2113af0a95d98`,
+compiled this actual leaf successfully in 5.8 seconds. Its same four-frontend
+batch also compiled `HigherImageAcyclic` and failed only the two other
+dependent leaves `ZModRetract` and `ZModAcyclic`; the overall run status is
+**failed**, not a successful closure claim. No additional benchmark, replay
+or verification cycle was run for this note.
+
+Exact local evidence:
+
+- `remote-runs/remote-a6f5a8f9129a467b96fc8a03d1aadb5c/build.log`
+- `remote-runs/remote-0af3ec46961642fe80cacaa0f3f9a10a/build.log`
+- Both runs' accompanying `receipt.json` and `compiler-events.jsonl`.
+
+
+## Keep native shift structures explicit in the canonical exchange proof
+
+Basis: private Aglib HEAD `2c34f185fa859e862661f939cd216b07bcccfb26`,
+Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Lean 4.34.1.
+The ordinary 200000-heartbeat declaration budget and native instance-search
+budget were retained. These are existing scoped compilation observations,
+not benchmarks or an additional verification cycle.
+
+The failed `ExchangeShift` source
+`6e394111247e039aa7b488409081d13fff411dfa39b55a5612a04c27e2ec00ea`
+was compiled in `remote-ceb0c3469fbd493a9444108bdba76e26`, package
+`d874a1584ea2cb92369a63b6786e192c0667cd3c8a62f8730ee1e800c3fe1cfb`.
+After building the original derived inverse-image comparisons, direct
+instance search for `NatTrans.CommShift` on their concrete two-factor and
+three-factor isomorphism chains exhausted 200000 heartbeats at `whnf` or
+`isDefEq`. The same leaf also exposed a separate actual coherence mismatch
+in its identity-on-complexes comparison and a missing import of the existing
+bounded-below quasi-isomorphism shift instance.
+
+The effective repair has three parts.
+
+1. The original degreewise identity comparison is postcomposed with the
+   fully faithful native complex inclusion. Its displayed chain includes
+   both the right unitor and the final inverse left unitor. The latter
+   retains the target functor as `Id ⋙ inclusion`, with its actual composite
+   `CommShift` structure, rather than identifying only the underlying
+   functor with `inclusion`. The original chain components remain identities.
+2. The existing `CochainComplexPlus.QuasiIsoShift` provider is imported;
+   no new shift-stability premise is assumed.
+3. Private typed `isoTrans_commShift` and `isoChain_commShift` prove the
+   native composition law over variable functors and their supplied native
+   shift structures. The concrete inverse-image comparison and original
+   square supply those same factors to these regular proof heads. This
+   avoids asking instance search to reconstruct the expanded geometric
+   comparison chain. It does not choose another shift structure or another
+   inverse-image square.
+
+The original derived-adjunction unit is shown shift-compatible through its
+original unit factorization. Its two right-derived units and original
+degreewise adjunction unit are retained. Only the exact left functor's unit
+is inverted; the nonexact right-derived unit is not cancelled. The original
+adjunction mate consequently has the original canonical shift compatibility.
+There is no additional public scheme hypothesis.
+
+After the performance repair, `remote-5343d4769a9c40948d7108ee21f8548d`
+reported only four ordinary elaboration errors, with no remaining timeout.
+These were repaired by using `NatTrans.ext` followed by `funext K` instead
+of allowing `ext K` to descend to the full-subcategory morphism's underlying
+`.hom`, and by naming the two original `derivedImageAdjunction` compatibility
+facts at their exact types. `remote-3daf87dbe5e24b0dab8cb23955db4394` then
+reported only a local-let normalization and an associativity equality;
+explicitly unfolding that local `Q` and applying `Category.assoc` closed them.
+Neither intermediate failed invocation is claimed as a successful provider.
+
+Complete validated leaf source:
+`19875b7f834ee4099fcc6d1a3d87e7d96f7dc3fff57a9900a4e2171060072534`.
+Run `remote-aa4f8a36498e4ef3a3da29f4fab9b1cb`, source snapshot
+`00847f07b44899f9f17b527183df7bcfa0ce7a173f0703df630ea87c6c01de2a`,
+compiled `ExchangeShift` successfully in 6.1 seconds. That two-frontend batch
+**failed overall** at the separate upper `AllModuleCoefficients` parser
+error, so the evidence covers the complete shift provider only. It is not
+whole-family or proper-base-change closure evidence.
+
+The actual logs and receipts are preserved in this task's `remote-runs/`
+directory. This note diagnoses the successful typed coherence boundary,
+not a Lean compiler defect or an asserted performance ratio.

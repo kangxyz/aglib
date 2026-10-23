@@ -103,14 +103,52 @@ premise using the published proper-approximation system. Neither `R` nor
 requires no finite-presentation hypothesis. Finite presentation of `Y`
 and dense-open isomorphism data are outside the exported packet.
 
-## Remaining comparison
+## Original all-coefficient reductions
 
-The all-coefficient, sheaf-valued comparison needed for proper reduction
-remains open. The formal composition and retract theorems retain their
-exchange-invertibility inputs. Torsion-specific descent through proper
-surjections and general proper-base-change assembly also remain open.
+[HigherReduction](Reduction/HigherReduction.lean) proves composition and
+surjective descent for the original all-degree higher exchange on every actual
+coefficient satisfying `n • 𝟙 F = 0`, for any natural `n`, including zero.
+Its hypotheses quantify all coefficients on the declared source schemes.
+All six original derived-category universes remain independent.
 
-The [finite family](../Finite/README.md) supplies actual finite exchange.
-The [torsion family](../Torsion/README.md) supplies conditional original-map
-test reductions, with its geometric presentation and surjectivity inputs
-still explicit.
+[AllModuleCoefficients](Reduction/AllModuleCoefficients.lean) extends original
+exchange tests on genuine injective `ZMod n` sheaves to every n-killed abelian
+coefficient. The auxiliary module-derived model is supplied internally; it does
+not constrain the four displayed abelian-derived universes. The exact genuine
+module images and actual injective retract use
+[ZModImages](Reduction/ZModImages.lean) and [ZModRetract](Reduction/ZModRetract.lean).
+[HigherImageAcyclic](Reduction/HigherImageAcyclic.lean),
+[ZModAcyclic](Reduction/ZModAcyclic.lean) and
+[ZModDerivedImage](Reduction/ZModDerivedImage.lean) identify the original
+relative acyclicity and actual derived image of the underlying injective.
+Scalar forgetting and geometric pullback are never assumed to preserve injectives.
+
+The native
+[injective-single criterion](../../../Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean)
+uses triangulated functors, installed shifts, nonnegative source-single images
+and tests on actual injectives. Its finite-degree induction derives degree zero;
+it adds no H0 comparison, convergence or unbounded-resolution premise.
+[ExchangeShift](Reduction/ExchangeShift.lean) proves shift compatibility for
+the original canonical mate.
+[SingleHigher](Reduction/SingleHigher.lean) identifies original derived-single
+invertibility with invertibility of all original natural-degree higher maps.
+[InjectiveExchange](Reduction/InjectiveExchange.lean) and
+[BoundedCoefficients](Reduction/BoundedCoefficients.lean) retain the actual
+source coefficients and maps in the composition/descent arguments.
+
+## Conditional projective-line reduction
+
+[GeometryCriterion](Reduction/GeometryCriterion.lean) reduces an explicitly
+supplied morphism property to the native projective line over an arbitrary
+spectrum. Composition stability, arbitrary base-change stability, membership
+of finite maps and the proper-surjective descent rule remain hypotheses.
+The proof uses the production finite binary-form covers and the actual Chow
+packet above; it leaves no Noetherian or finite-presentation premise on the
+original affine base or proper morphism.
+
+Applying this criterion to proper base change still requires a genuinely
+universal exchange property, with all coefficients on every pulled-back source,
+its model/universe transport and the projective-line input over every base.
+The [finite family](../Finite/README.md) supplies actual finite exchange;
+the [torsion family](../Torsion/README.md) retains the geometric presentation
+and local surjectivity inputs. General proper base change remains open.
