@@ -93,10 +93,20 @@ again. There is no separate local cache producer/consumer acceptance workflow.
 
 ## Shared CI protocol
 
-[The composite action](../.github/actions/lake-cache/action.yml) and its adjacent
-Python adapter are the single implementation. Tooling revisions are pinned
-independently of mathematical dependency revisions. Quillen checks out the
-tooling separately; enabling the protocol does not upgrade accepted mathematics.
+Routine CI uses the [native reusable workflow](../.github/workflows/lean-ci.yml).
+Build restores the current toolchain/manifest first, then the same toolchain
+across manifest changes. Legacy exact-manifest and OS/architecture prefixes
+also recover existing cache generations during the key-format migration.
+Restored files are candidates: the ordinary `lake build --rehash` evaluates
+current sources, imports, options and compiler identity before reusing outputs.
+Each run still saves an immutable cache generation. Test restores this run's
+Build outputs and retains its existing checks; no extra restoration step or
+check job is added. Quillen and Motivic pin this workflow independently of their
+mathematical dependencies.
+
+The [legacy composite action](../.github/actions/lake-cache/action.yml) and its
+adjacent adapter below remain available for explicitly selected compatibility
+operations; they are not used by routine CI.
 
 Call the action with `mode: restore` after installing the pinned toolchain and
 resolving the existing manifest, before the normal build. `root` selects a Lake

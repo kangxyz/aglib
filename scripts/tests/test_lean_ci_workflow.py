@@ -140,6 +140,40 @@ class WorkflowGates(unittest.TestCase):
                                      '${{ runner.temp }}/lake-native-cache'])
         self.assertNotIn('native-key', [item.get('id') for item in JOBS['build']['steps']])
 
+    def test_cache_fallback_reuses_changed_pins_and_existing_key_generations(self):
+        restore = next(item for item in JOBS['build']['steps'] if item.get('id') == 'restore')['with']
+        values = {'runner.os': 'Linux', 'runner.arch': 'X64', 'github.sha': 'commit',
+                  'github.run_id': 'run', 'github.run_attempt': '1',
+                  "hashFiles(format('{0}/lean-toolchain', inputs.package-directory))": 'compiler',
+                  "hashFiles(format('{0}/lake-manifest.json', inputs.package-directory))": 'pins',
+                  "hashFiles(format('{0}/lean-toolchain', inputs.package-directory), "
+                  "format('{0}/lake-manifest.json', inputs.package-directory))": 'legacy-pins'}
+
+        def render(text):
+            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}',
+                          lambda match: values[match[1]], text)
+
+        primary = render(restore['key'])
+        prefixes = render(restore['restore-keys']).splitlines()
+        self.assertEqual(primary, 'lean-Linux-X64-compiler-pins-commit-run-1')
+        # Keys are newest-first; the action still tries each restore prefix in order.
+        candidates = ['lean-Linux-X64-other-compiler-other-pins-newest',
+                      'lean-Linux-X64-legacy-other-pins-previous',
+                      'lean-Linux-X64-legacy-pins-previous',
+                      'lean-Linux-X64-compiler-old-pins-previous',
+                      'lean-Linux-X64-compiler-pins-previous']
+        for remaining, expected in ((candidates, candidates[-1]),
+                                    (candidates[:-1], candidates[-2]),
+                                    (candidates[:-2], candidates[-3]),
+                                    (candidates[:2], candidates[0])):
+            with self.subTest(expected=expected):
+                selected = next((key for prefix in prefixes for key in remaining
+                                 if key.startswith(prefix)), None)
+                self.assertEqual(selected, expected)
+        for key in ('lean-Windows-X64-compiler-pins-old', 'lean-Linux-ARM64-compiler-pins-old'):
+            self.assertFalse(any(key.startswith(prefix) for prefix in prefixes))
+        self.assertIn('lake build --rehash "${targets[@]}"', step('build', 'Build')['run'])
+
     def test_native_checks_and_full_text_style_are_preserved(self):
         self.assertIn('mathlib/mk_all --lib "$root" --check',
                       step('test_lint', 'Check generated library entries')['run'])
@@ -168,7 +202,7 @@ class CheckerBoundaryAndLintTimeout(unittest.TestCase):
             env={**os.environ, 'BUILD_TARGETS': 'R5Lab Essays', 'CHECK_TARGETS': 'Checks',
                  'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.splitlines(), ['build R5Lab Essays -o /fixture/outputs.jsonl'])
+        self.assertEqual(result.stdout.splitlines(), ['build --rehash R5Lab Essays -o /fixture/outputs.jsonl'])
 
     def test_optional_check_targets_default_empty_and_are_built_only_in_test(self):
         inputs = WORKFLOW.get('on', WORKFLOW.get(True))['workflow_call']['inputs']

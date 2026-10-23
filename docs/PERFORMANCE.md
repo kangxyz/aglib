@@ -39,6 +39,22 @@ cause as uncertain; retain failed approaches only when they prevent repeated
 work. Reuse existing measurements and compatible checks; no per-edit diary,
 mandatory benchmark or extra acceptance run is required.
 
+## CI cache reuse across dependency updates
+
+[Quillen run 39969720587](https://github.com/kangxyz/quillen-k-theory/actions/runs/39969720587)
+missed the whole-manifest Actions cache after upgrading Aglib and logged 3424
+successful builds before its runner shut down. No Lean compilation error was
+reported; cache saving was skipped after the shutdown. The shutdown cause is
+unknown. Commit `5489643` had removed the separate toolchain-scoped restore,
+leaving only exact toolchain/manifest recovery.
+
+The existing restore now prefers matching pins, then the same Lean toolchain,
+with legacy-key fallbacks so adoption can recover already saved generations.
+The ordinary build uses `--rehash`; Lake decides applicability from current
+inputs, rather than a GitHub cache hit establishing validity. Workflow fixtures
+cover changed pins, legacy keys, preference order and platform separation.
+This repairs cache selection, not runner shutdown or proof elaboration costs.
+
 ## Generated import entries and file-length limits
 
 [CI run 39951693002](https://github.com/kangxyz/aglib/actions/runs/39951693002)

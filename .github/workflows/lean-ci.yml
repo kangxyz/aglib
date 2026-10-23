@@ -41,8 +41,13 @@ jobs:
           path: |
             ${{ inputs.package-directory }}/.lake
             ${{ runner.temp }}/lake-native-cache
-          key: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
+          key: lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-${{ hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)) }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # Prefer current pins, then the same Lean; retain existing cache generations as seeds.
+          restore-keys: |
+            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-${{ hashFiles(format('{0}/lake-manifest.json', inputs.package-directory)) }}-
+            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-
+            lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
+            lean-${{ runner.os }}-${{ runner.arch }}-
       - name: Configure Lean
         id: lean-setup
         working-directory: ${{ inputs.package-directory }}
@@ -83,7 +88,7 @@ jobs:
             echo '::error::build-targets must name at least one production root.'
             exit 1
           fi
-          lake build "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"
+          lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"
       - name: Save compilation independently of Test and lint
         if: ${{ always() }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
