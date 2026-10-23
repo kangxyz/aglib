@@ -102,7 +102,8 @@ subsequent build.
 
 The focused regression suite uses Python and PyYAML:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.
-The caller preserves each repository's workflow name and concurrency group.
+Callers use the display name `GitHub CI` and retain each repository's existing
+concurrency-group identity.
 `cancel-in-progress: false` with `queue: max` serializes runs without cancelling
 the running job or replacing an already pending run.
 Nightly automation, PR labelling, bibliography checks, style-fix bots,
