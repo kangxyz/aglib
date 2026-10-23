@@ -14,6 +14,9 @@ the section and the cover. No single global annihilator is assumed.
 | [Property reduction](Reduction.lean) | An isomorphism-invariant property of abelian sheaves reduces from internally torsion to prime-annihilated objects, assuming it contains zero objects and is stable under actual short-exact extensions and the displayed `ℕ`-colimits. The module-coefficient form uses prime `ZMod p` sheaves and retains `[UnivLE.{max u v, w}]`. |
 | [ZMod modules](ZMod/Basic.lean) | Conversion of a sheaf killed by the literal scalar identity into a genuine `ZMod n`-module sheaf while retaining its original sections, restriction maps, coefficient arrows, and underlying-sheaf isomorphism. |
 | [ZMod injectives](ZMod/Injectives.lean) | Genuine `ZMod n`-valued sheaves on the standard-sized site have enough injectives and `HasExt`, for every `n`, including zero. This is a result in the module-valued sheaf category. |
+| [Original Ext comparison](../../../Algebra/Homology/DerivedCategory/Ext/ShortExactComparison.lean) | The actual exact-functor comparison is natural and stable under zero objects, isomorphisms and short-exact extensions. It is stable at an actual colimit cocone when both original Ext functors preserve that colimit. Independent Ext universes are related by an explicit native `ULift` natural transformation. |
+| [Composite Ext comparison](../../../Algebra/Homology/DerivedCategory/Ext/CompositeComparison.lean) | If the first actual comparison is bijective in all degrees, the second in degree zero, and positive Ext vanishes on actual composite images of source injectives, the second comparison is bijective. Injectives need not be preserved by either functor; all three Ext universes remain independent. |
+| [Ringed ZMod bridge](ZMod/Ringed.lean) | For every site and every modulus, including zero, genuine `ZMod n`-module sheaves are equivalent to native `SheafOfModules` over the associated sheaf of the actual constant `RingCat` presheaf on `ULift (ZMod n)`. The comparison retains the original underlying module sheaf and is natural. |
 
 For torsion sheaves, the factorial annihilator stages present the original sheaf
 as a filtered colimit through the actual kernel inclusions. The result is an
@@ -25,10 +28,11 @@ structure. Its generic site statement uses the displayed `HasSheafCompose`
 premise; native preservation supplies it under `UnivLE.{max u v, w}`, including
 the standard coefficient universe. In that genuine module-valued sheaf category,
 [ZMod injectives](ZMod/Injectives.lean) supplies enough injectives and `HasExt`
-in the standard universe for every modulus, including zero. This does not
-identify it with ringed sheaves of modules or assert that a module-sheaf
-injective is injective after forgetting to abelian sheaves; no Ext or cohomology
-comparison is included.
+in the standard universe for every modulus, including zero. The separate
+[ringed bridge](ZMod/Ringed.lean) identifies these module sheaves with modules
+over the associated sheaf of the constant ring. It makes no claim that a
+module-sheaf injective is injective after forgetting to abelian sheaves or that
+module Ext agrees with abelian-sheaf Ext.
 
 
 ## Native validation
@@ -51,3 +55,15 @@ and declaration lint. Final source guards passed in
 `run-35d42ec65a584c4f92730591ee49208c` across 4,778 production modules and 399
 positive checks. This validation does not establish cohomological continuity,
 a local criterion, or proper base change.
+
+The subsequent eleven-leaf comparison and ringed-coefficient batch passed in
+`remote-688042ffc6d9448c8b4933075b2da7f5`, source snapshot
+`a9be1007452276d037d0c2ae914646da2e9a471e2beee14d90ba43f8857648fb`. The run
+used five fresh frontends and reused the remaining cached outputs; generated
+entries and text style passed, as did all fifteen declaration linters over the
+eleven selected module prefixes. The pinned axiom audit covered 4,476
+declarations and found only the standard three foundations. Final source guards
+passed in `997884c1787f4a78ba259e4c452e4a68` over 4,789 production modules and
+399 positive checks. The selected module prefixes overlap, so their count is
+not additive. The exact comparison and injective-cohomology premises described
+above remain hypotheses; these checks do not prove proper base change.

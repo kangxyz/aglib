@@ -163,8 +163,10 @@ public import Aglib.Algebra.Homology.CochainComplexPlus.Single
 public import Aglib.Algebra.Homology.Coproduct.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.CompositeComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction
@@ -1783,6 +1785,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.RootCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.ShortExact
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Surjective
 public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants.Represented
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Composition
@@ -1878,6 +1882,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Standard
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StructureSheaf.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Colimit
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Comparison
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InjectiveCriterion
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InverseImage
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
@@ -3571,6 +3578,10 @@ public import Aglib.CategoryTheory.Sites.Torsion.Sheaf
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Basic
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Injectives
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed.ConstantRing
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed.Equivalence
+public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Ringed.Presheaf
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Sheaf
 public import Aglib.CategoryTheory.SmallModel.Abelian
 public import Aglib.CategoryTheory.SmallModel.Exact

@@ -10,6 +10,7 @@ Its principal declaration namespace is
 | [H1](H1/README.md) | Actual `Sheaf.H L 1`, coefficient maps, exact inverse image, direct image, canonical transports, torsors and finite-etale representation |
 | [H0 proper henselian](H0/README.md) | Original constant-finite sections and `Sheaf.H` degree-zero pullbacks are bijective over any proper henselian local base; sections extend to actual finite locally constant coefficients. |
 | [H1 finite constant](H1/ConstantFinite/README.md) | Original `H1Etale` closed-residue pullback is bijective for every finite constant additive group, with no order-invertibility or Noetherian premise; the result extends to actual finite locally constant abelian sheaves. |
+| [Normal constants](Constructible/NormalConstants.lean) | For integral `X` whose local rings are integrally closed and finite `A`, the original generic-point unit induces `constantGenericIso` from the constant sheaf on `X` to direct image of the constant sheaf on `Spec(X.functionField)`. This uses the original adjunction unit and inverse-image constant-coefficient map; it assumes no Noetherian, Nagata, excellence, quasi-compactness, invertible-order, properness or strict-henselization premise. It is a finite-constant comparison input, not finite cogeneration or proper base change. |
 | [FiniteLocallyConstant](FiniteLocallyConstant/CoefficientSquare.lean) | Coefficient, section and pullback comparisons with the original local-trivialization and comparison premises |
 | [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses |
 | [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback and bounded-below `D+` comparison maps. The D source supplies the original H1 square and ordinary, derived, and all-degree identity/pasting equations through native comparisons; exchange invertibility, proper base change, and unbounded scope remain open. |
@@ -76,6 +77,16 @@ stated boundaries are not a proper-base-change theorem.
 | [Binary-form product](../ProjectiveSpace/BinaryFormProduct/README.md) | The actual finite surjective map to projective space has a cartesian coefficient-map square under every commutative-ring map and every degree `n`, including zero. This is an available projective geometric input, not a proper-base-change theorem. |
 | [Amitsur module complex](../../Algebra/Homology/Amitsur/README.md) | Under faithfully flat scalar extension, the actual augmented module Amitsur complex is exact in every degree and the unaugmented complex has zero positive homology for arbitrary coefficient modules. This is algebraic module exactness, not étale-sheaf acyclicity. |
 | [Torsion sheaves](Torsion/README.md) | On the actual small-etale site, internal torsion is detected by original geometric stalks and every torsion sheaf is the actual filtered colimit of its native factorial annihilator kernels. This does not assert cohomological continuity or proper base change. |
+| [Torsion comparison](Torsion/Comparison.lean) | For an internally torsion coefficient, bijectivity of the original cohomology pullback follows from explicit preservation of all `ℕ`-shaped colimits by both original cohomology functors in each degree and bijectivity for all prime `ZMod` module-sheaf tests. These comparison/continuity premises are inputs, not results of the theorem; this is not proper base change. Independent Ext universes are transported by the native `ULift` comparison map. |
+| [Ringed ZMod bridge](../../CategoryTheory/Sites/Torsion/ZMod/Ringed.lean) | A generic site equivalence identifies genuine `ZMod n`-module sheaves, including modulus zero, with modules over the associated sheaf of the actual constant ring presheaf, retaining the original underlying module sheaf. It is a coefficient-category bridge, not a cohomology comparison. |
+| [Module-injective pullback criterion](Torsion/InjectiveCriterion.lean) | Original pullback comparison for ringed module coefficients is conditional on degree-zero comparison and positive cohomology vanishing for the actual pulled-back underlying injective module sheaves, with independent module/source/target Ext universes. |
+
+The latest eleven-leaf torsion-comparison and ringed-module integration passed
+its scoped native build, generated-entry and style checks, selected declaration
+linters, pinned axiom audit and source guards (`remote-688042ffc6d9448c8b4933075b2da7f5`,
+`997884c1787f4a78ba259e4c452e4a68`). The stated colimit, prime-comparison and
+module-injective cohomology conditions remain hypotheses; this batch is not a
+proper-base-change proof.
 
 ## Original geometric stalks and inverse images
 

@@ -1479,6 +1479,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.RootCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.ShortExact
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Surjective
 public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.NormalConstants.Represented
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Composition
@@ -1574,6 +1576,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Standard
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StructureSheaf.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Colimit
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Comparison
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InjectiveCriterion
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.InverseImage
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct

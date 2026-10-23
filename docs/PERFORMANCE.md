@@ -1493,3 +1493,70 @@ records a validated proof-boundary repair without isolating a compiler cause
 or measuring a matched speedup. The actual Artin--Schreier short-exact consumer
 subsequently compiled in `remote-fdafdc1ba6484130bfca42898e69d458`;
 that consumer is outside the leaf-only timing claim.
+
+
+## Normal constants: typed Kan-extension comparison
+
+Typed Kan-extension comparison for the original generic unit
+
+Affected declaration
+AlgebraicGeometry.Scheme.EtaleCohomology.NormalConstants.isIso_representedGenericUnit
+in Constructible/NormalConstants/Represented.lean.
+Lean 4.34.1; Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612;
+private base 175a8ee20860f4ad7470cc3b043f618502380457.
+
+Observed failed scope
+remote-66083d8753994721b679a72634c53776, snapshot
+5d168a61c59681d79109a8395e3a63841f6e8c4daa17a22f8e9f34245a5ab652,
+Represented.lean SHA 0bb5d3986ed4b8454f8d3eb53d7d469934a5d81e0f9f7babdde960114998e363.
+The concrete theorem transported the sheafification-unit isomorphism with
+NatTrans.isIso_app_iff_of_iso applied to representedPresheafBaseChangeIso j H.
+It exceeded the standard 200000 heartbeats at isDefEq, line 175:38, and the
+whole declaration reported a whnf timeout. The run did not accept the module.
+
+Validated repair
+A private theorem isIso_unit_of_leftKanIso takes variable source/target schemes,
+coefficient sheaves, a typed native Lan comparison iso, the actual restriction
+arrow, its original factorization equation, and invertibility of that arrow.
+Cancellation and the sheafification step stay inside this variable-map theorem.
+The latter step transports Presheaf.IsSheaf through the comparison and applies
+isIso_toSheafify, instead of transporting the natural-transformation component
+at the fully expanded concrete Kan extension. The concrete represented theorem
+supplies exactly representedPresheafBaseChangeIso, representedBaseChangeUnit and
+the native descOfIsLeftKanExtension_fac equation. No map, hypothesis, resource
+ceiling or mathematical statement changed.
+
+Actual successful scope
+remote-564eb185f0af40438bea720bf0a3e23b, snapshot
+b63b61c86b7615e38a8191bc30b28bdef649f1f0ba58c402933a2255a376558a,
+accepted the exact Represented leaf, SHA
+7203bf4f2258ad998327f9d1be05372b08bcc99fbd3c9f8b246abccd92a2adad,
+in a reported 15 seconds, with no diagnostics in that leaf, at 200000 heartbeats.
+The same run failed in the root NormalConstants leaf on unrelated style and
+instance lookup; it is successful evidence only for Represented. The final
+root consumer subsequently compiled in remote-91552d915c764abd8454c7c6b4be047d,
+snapshot 75bfa8baf56185dc212317b1065358c550058c385ccd014f11e5a1ffd9372524:
+one fresh root frontend, exit 0, no diagnostics, reported 6.3 seconds.
+The accepted Represented artifact was retained; it was not rebuilt.
+
+This validates a proof-representation boundary. It does not isolate a compiler
+cause or establish a matched speedup. No profiling, replay or benchmark was run.
+Logs are retained under the adjacent remote-runs/<run-id>/build.log paths.
+
+
+## Ringed coefficient equivalence: typed adjunction unit boundary
+
+
+On Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, directly constructing the equivalence between the full subcategory of already-abelian-sheaf module presheaves and native ringed module sheaves exhausted the standard 200000 elaborator heartbeats at `whnf`. The failed declaration specialized the final triangle identity directly to `PresheafOfModules.sheafificationAdjunction α`. Its actual premise was a locally bijective map `α : R₀ ⟶ R.obj`, with native abelian sheafification and `WEqualsLocallyBijective`; the source objects had their actual original underlying presheaves already satisfying the sheaf condition.
+
+The retained repair keeps the actual functors and adjunction as typed parameters of `equivalenceOfSheafAdjunction`. A separately typed `adjunctionUnitIso` names both full-subcategory objects before constructing the iso from the original `adj.unit.app`. Its component equation `adjunctionUnitIso_hom_app_hom` retains exactly that original arrow. The generic triangle proof first changes to the original `L.map (adj.unit.app ...)` composite, rewrites the typed component equation, and applies the original `adj.left_triangle_components`. The concrete definition then supplies the native module-sheafification adjunction, its already-proved actual unit-isomorphism supplier, and the native invertible counit. There is no additional public premise at the concrete equivalence or final standard-site endpoint, no alternative unit/counit, and no heartbeat change.
+
+Failed concrete assembly: `remote-8144e600971340389df971c845ce4c50`, source digest `622dac5562656cfe941797358293f71eac1c1a6e3a051fc56d7466a0048f6fa9`; the Equivalence source hash was `4f9230f36a6b6cb011ef526d570f3845c5ac661c0c9e92542100da86a8d8fda6`. That invocation accepted the separate ConstantRing/Presheaf leaves and failed Equivalence after the reported `whnf` exhaustion; its later generated placeholder diagnostics were cascading failures, not authored `sorry` proofs.
+
+Successful complete Equivalence provider: `remote-9454bb315c834f69ac20961def3f4d17`, source digest `0dfacbbd6d04be34c8461a883dd736d68494012ae8eae9d0c9597d321361c055`, owned Equivalence hash `a2ecd5fb8d36688a9907354fd752ed90eee02a2a047c459e6c8c3508b41e50f4`, accepted in 8.7 seconds. This run still failed the final Ringed root solely for missing local installation of the already-proved ring-unit local-bijectivity instances. The provider success is not a claim that the entire invocation or then-current root succeeded.
+
+All original module/sheaf functors, scalar RingEquiv, constant-ring maps and abelian comparisons were retained. Native compiler evidence is preserved under `/Users/kang/Documents/New project/tmp/output/etale-amitsur-20261023/remote-runs/`. These are existing failed/successful proof-iteration observations, not a controlled benchmark or compiler-defect diagnosis; no extra run was launched for this note.
+
+The standard root subsequently exposed a separate inference boundary: installing generic local-instance attributes, and then globally typed standard unit instances, still left the generic module-sheafification equivalence unable to match its inferred ring-unit map. The failed root-only run `remote-11390e5299ef4fa1b232058eb51e3c04`, global source `ab8899fe3d3ffa47b71da232e1b7bed7e4803ded916c1ed0b351f6d62419f91f`, root hash `5a00ea7bae67754f3c0d4df6f34eb51148f88a13c3ba531ceb36dde02672117a`, reported that missing instance and a downstream associator source mismatch. The retained root instead fixes `R₀`, `R`, and `α : R₀ ⟶ R.obj` as typed local constants equal to the original constant presheaf, associated ring sheaf, and original ring unit. It installs the existing proved local-injectivity and local-surjectivity as local constants at exactly that arrow, and calls the generic equivalence and its underlying comparison with named `R₀`, `R`, and `α`, letting their universes be inferred from the actual objects. Public `moduleEquivalenceStandard` and `moduleUnderlyingIsoStandard` record this concrete boundary; the final standard equivalence and original-ab-elian comparison consume them. This does not identify a Lean defect or prove that a particular universe-instantiation mechanism was the cause; it records the narrow successful elaboration boundary.
+
+Successful final root: `remote-20fc45647d51488e8eeb931d17a102e6`, global source `0060ec8b72e3130a7969f4b395425b6f30632c36c19e163b3130e6b06b0476fa`, exact root hash `e807bdbd01c80c1a97bb327b6bae7bcb3d39a9830e9d0ac979a3a5ae4f5fd9c2`, one actual frontend accepted in 17 seconds, exit zero, no diagnostics, process group closed, with the three exact already-compiled lower sources retained. This completed the assigned four-source root closure without any change to its public mathematical conditions or the standard heartbeat budget. No further compiler invocation was made for this note.\n

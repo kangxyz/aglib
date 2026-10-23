@@ -169,8 +169,10 @@ public import Aglib.Algebra.Homology.CochainComplexPlus.Single
 public import Aglib.Algebra.Homology.Coproduct.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.CompositeComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction
