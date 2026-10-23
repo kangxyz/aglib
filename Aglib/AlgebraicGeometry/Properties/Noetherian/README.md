@@ -12,3 +12,9 @@ the finite dense-affine cover and dense common intersection.
 hypothesis and follows from those general statements. The broader owner
 records these weakest hypotheses without classifying the primitive results
 as Noetherian-only geometry; empty schemes are still included.
+
+[LocallyNoetherianOver](LocallyNoetherianOver.lean): `Scheme.LocallyNoetherianOver S`, the full
+subcategory of `Over S` on locally Noetherian schemes (all morphisms over `S`; property
+`Scheme.locallyNoetherianOver S`), with inclusion `Scheme.locallyNoetherianOverInclusion` and the
+instance `Scheme.LocallyNoetherianOver.isLocallyNoetherian`: the test schemes of Nitsure,
+*Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1, §1, pp. 3–4.

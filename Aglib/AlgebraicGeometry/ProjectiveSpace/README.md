@@ -134,6 +134,14 @@ generation of the nonnegative twists themselves. `TwistPresentation` below
 supplies finite negative-twist presentations for arbitrary affine-locally
 finite-type coefficients.
 
+[Monomials](Monomials.lean): `Monomials ι r`, the exponents of degree `r`, and their numbering
+`monomialsEquiv ι n e r : Monomials ι r ≃ ULift (Fin ((n + r).choose r))` for `e : ι ≃ Fin (n + 1)`.
+[HomogeneousEvaluation](HomogeneousEvaluation.lean): `homogeneousEvaluation ι r s : 𝒪^I ⟶ 𝒪(r)` for
+homogeneous polynomials `s : I → A[x]_r` (`_freeSection`, `_coordinatePower`), the monomial basis
+`monomialFamily := homogeneousPieceBasis`, `monomialSection` and the monomial map
+`monomialMap ι A r := homogeneousEvaluation ι r (monomialFamily ι r)`, with `ιFree_monomialMap`.
+Its base change is [BaseChange/MonomialMap](BaseChange/MonomialMap.lean).
+
 [FromSections](FromSections.md) constructs `FromSections.mapOfFiniteFamily`
 from a structural map `p : X ⟶ Spec R`, an actual locally rank-one module `M`
 and a finite family of section morphisms whose coproduct map is epi. The result

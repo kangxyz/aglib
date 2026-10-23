@@ -49,3 +49,9 @@ universe. [CoproductKernelTransport](CoproductKernelTransport.lean) transports
 this comparison through a finite-limit-preserving functor and a specified
 commuting coproduct square. Its geometric consumer is the coherent graded
 relation kernel in [Grothendieck existence](../../AlgebraicGeometry/Cohomology/GrothendieckExistence/README.md).
+
+[KernelCompEpi](KernelCompEpi.lean): if `i` is a kernel of `q` and `μ` is an epimorphism, then a
+map `k` from a kernel of `μ ≫ q` with `k ≫ i = ιK ≫ μ` is an epimorphism
+(`Abelian.epi_of_isKernel_comp`), as a pullback of an epimorphism. Consumer: the direct image of the
+twisted ideal sheaf of a Hilbert family
+([HilbertScheme/IdealTwist/DirectImage](../../AlgebraicGeometry/HilbertScheme/IdealTwist/DirectImage.lean)).

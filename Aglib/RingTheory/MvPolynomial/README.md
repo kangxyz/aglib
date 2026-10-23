@@ -129,3 +129,8 @@ supplies the rational coefficient-extension result from geometrically reduced
 field coefficients in prime characteristic. All scalar towers and polynomial
 maps remain explicit; no finite imperfection degree or finite variable type
 is required. The parameter-DVR completion argument consumes these results.
+
+[GradedMapBasis](GradedMapBasis.lean) proves `MvPolynomial.gradedMap_homogeneousPieceBasis`: the
+degree-`r` coefficient map `(gradedMap σ).gradedAddHom r` of [GradedMap](GradedMap.lean) sends each
+monomial basis vector of `homogeneousPieceBasis A r` ([CoordinatePieces](CoordinatePieces.lean)) to
+the corresponding basis vector over `B`, for every ring map `σ : A →+* B`.

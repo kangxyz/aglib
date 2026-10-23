@@ -66,6 +66,14 @@ coordinate hypothesis.
   it is the base change of `Spec S → Spec R`. The projection of a field extension is flat as an
   instance (`flat_map_algebraMap`), so pullback along it preserves monomorphisms. The structure
   morphism `toSpec R ι` is flat by `ProjectiveSpace/Flat` (`flat_toSpec`).
+- The separate focused import `Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.FamilyTwist`
+  defines the twisting sheaf `familyTwistingSheaf ι g r` of `X_T = P^n_A ×_{Spec A} T` (the
+  pullback of `𝒪(r)` along the first projection), locally of rank one and finite locally free,
+  with its base changes along point maps (`pointMapTwistingPullbackIso`) and base-changed maps
+  (`baseChangeMapTwistingPullbackIso`), and the instance `isOpenImmersion_pointMap`.
+- `MonomialMap` proves `pullbackFreeMap_monomialMap`: for every ring map `σ`, the pullback of the
+  monomial map `monomialMap ι A r` along `map σ ι`, through `twistingPullbackIso σ ι r`, is
+  `monomialMap ι B r`.
 
 The lower algebraic owner is
 [`RingTheory/MvPolynomial/GradedMap`](../../../RingTheory/MvPolynomial/GradedMap.lean).

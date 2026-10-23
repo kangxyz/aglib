@@ -16,3 +16,8 @@ It requires no quasicoherence, finiteness or completion hypothesis.
 on commuting open charts respects refinement of both chart images. It uses
 the native restricted coefficient and module-presheaf maps, without a flatness,
 quasicoherence or cartesian-square hypothesis.
+
+[Epimorphisms](Epimorphisms.lean), imported as `Aglib.AlgebraicGeometry.Modules.Locality.Epimorphisms`,
+detects epimorphisms on the restrictions or pullbacks along a jointly surjective family of open
+immersions (`epi_of_restrict_openCover`, `epi_of_pullback_openCover`), the counterpart of
+[Monomorphisms](Monomorphisms.lean).

@@ -30,3 +30,20 @@ no quasicoherence or finiteness hypothesis is required.
 
 [UnitTriangle](UnitTriangle.lean) retains the original pullback units and native
 composition/equality comparisons on a commutative scheme triangle.
+
+[FreeTransfer](FreeTransfer.lean) transfers a map `ιK : K ⟶ 𝒪_T^I` along `π : X ⟶ T` and
+`p : X ⟶ P` to `freeTransfer π p ιK : π^* K ⟶ p^* 𝒪_P^I` and proves its base change along a
+commutative square through the comparison `pullbackSquareIso` of
+[BaseChange/Affine/Mate](../BaseChange/Affine/Mate.lean) (`pullbackSquareIso_hom_freeTransfer`),
+for arbitrary morphisms and modules.
+
+[FreeMap](FreeMap.lean) defines the pullback `pullbackFreeMap q m : free I ⟶ q^* F` of a map out of
+a free sheaf, with its composition, congruence and basis-inclusion laws (`pullbackFreeMap_comp`,
+`pullbackFreeMap_congr`, `pullbackFreeMap_comp_right`, `ιFree_comp_pullbackFreeIso_inv`), for
+arbitrary `q`. The direct-image counterpart is [BaseChange/FreeMap](../BaseChange/FreeMap.lean).
+
+[UnitSections](UnitSections.lean) computes the global section of a pulled-back section map
+through the adjunction unit (`pullbackUnitIso_inv_one`,
+`unitHomGlobalSectionsEquiv_pullbackUnitIso_inv_comp`). The second is a public restatement of the
+private `unitHomGlobalSectionsEquiv_pullback` of
+[ResolutionSections/Pullback](../../Cohomology/DirectImage/ResolutionSections/Pullback.lean).

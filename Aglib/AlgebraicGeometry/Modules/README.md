@@ -54,3 +54,14 @@ The perfect-complex family uses these same ordinary sheaf complexes. `Scheme.Mod
 [KernelSections](KernelSections.lean) identifies sections of the original sheaf kernel with the kernel
 of the original section map on every open. Its native evaluation comparison
 retains the original kernel inclusion, without an affine hypothesis.
+
+[ZeroLocus/ImageFactorisation](ZeroLocus/ImageFactorisation.lean): for `φ : M ⟶ 𝒪` with
+`Hom.ImageIdealLocalizes φ` (for instance quasi-coherent `M`), the factor onto the image ideal is an
+epimorphism (`Hom.epi_zeroIdealFactor`), the factorisation is an image
+(`Hom.zeroIdealMonoFactorisationIsImage`), and the image ideal is determined by any
+epimorphism–ideal-inclusion factorisation (`Hom.imageIdealData_eq_of_epi_comp`); for quasi-coherent
+`M`, `φ` vanishes on `𝒪_X / I(φ)` (`Hom.comp_toQuotientModule_imageIdealData_eq_zero`).
+[ZeroLocus/Pullback](ZeroLocus/Pullback.lean): `I(f^* φ) = I(φ).comap f` for quasi-coherent `M` and
+every `f`, without flatness (`Hom.imageIdealData_pullback`, Stacks Tags 01JU, 01AJ); main's
+`Hom.imageIdealData_restrict` ([ZeroLocus/Restriction](ZeroLocus/Restriction.lean)) is the
+restriction-functor form for open immersions.

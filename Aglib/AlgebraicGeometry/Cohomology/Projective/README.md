@@ -155,6 +155,12 @@ included, and all scalar actions are the original structural actions. The
 leaf passed `1792099705457974000-79259`.
 `GlobalSections.PolynomialSections` evaluates the polynomial `H0` element on sections over `⊤`:
 `equiv₀_twistingH0PolynomialLinearEquiv_symm` gives the homogeneous section of the polynomial.
+`GlobalSections.DirectImage` treats the direct image along `toSpec B ι`: it preserves
+quasi-coherence (`isQuasicoherent_pushforward_toSpec`), its global sections are `H^0(P^n_B, M)`
+linearly over `B` (`pushforwardToSpecSectionsLinearEquiv`,
+`equiv₀_pushforwardToSpecSectionsLinearEquiv`), and the adjoint `𝒪^{monomials} ⟶ (toSpec)_* 𝒪(r)`
+of the monomial map is an epimorphism for every ring `B` and natural `r`
+(`epi_pushforwardFreeMap_monomialMap`).
 
 [`FiniteModel`](FiniteModel/README.md) constructs an actual bounded
 finite-projective complex for coherent coefficients relatively flat over

@@ -39,3 +39,22 @@ specified maps, with no invertibility, quasicoherence, flatness, or Noetherian
 premise. The
 [formal/algebraic adjunction comparison](../../Cohomology/GrothendieckExistence/FormalAlgebraicAdjunction.lean)
 uses it to retain the original modification adjoint under completion.
+
+[Counit](Counit.lean) proves `pullback_counit_eq_of_isPullback`: on a cartesian square the pullback
+of the counit `f^* f_* M ⟶ M` is the base-changed counit after `cartesianBaseChangeMap` and the
+square comparison; `epi_pullback_counit_of_isPullback` transfers epimorphy when the mate is
+invertible. Arbitrary module sheaves.
+
+[FreeMap](FreeMap.lean) defines the adjoint `pushforwardFreeMap π ψ : free I ⟶ π_* M` of a map out
+of a free sheaf, with its basis sections (`ιFree_pushforwardFreeMap`,
+`unitHomGlobalSectionsEquiv_ιFree_pushforwardFreeMap`), composition on the right
+(`pushforwardFreeMap_comp_right`), the vanishing criterion `comp_pushforwardFreeMap_eq_zero_iff`,
+the free comparison along a commutative
+square (`pullbackFreeIso_square`) and base change along a cartesian square
+(`pushforwardFreeMap_baseChange`), for arbitrary module sheaves. The pullback counterpart
+`pullbackFreeMap` is [Pullback/FreeMap](../Pullback/FreeMap.lean).
+
+[CartesianInvertibility](CartesianInvertibility.lean) proves
+`isIso_cartesianBaseChangeMap_of_isIso_moduleBaseChangeMap`: the mate of every cartesian square is
+invertible when `moduleBaseChangeMap` of the chosen pullback is, through `IsPullback.isoPullback`,
+`cartesianBaseChangeMap_comp` and the open-immersion case.

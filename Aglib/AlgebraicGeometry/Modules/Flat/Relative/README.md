@@ -149,3 +149,9 @@ Import `Aglib.AlgebraicGeometry.Modules.Flat.Relative.ClosedSubscheme` for close
 `pushforwardUnitStalkIso`), `relativeFlat_pullback_quotientModule_iff` (the same for `f^* 𝒪_W`,
 with no flatness of `W`) and `relativeFlat_idealModule_of_flat` (the ideal module of a flat closed
 subscheme over a flat affine base).
+
+[LocalOnTarget](LocalOnTarget.lean) proves that relative flatness of a module `M` on `X` over `T`
+is local on `T` through arbitrary cartesian squares over open immersions
+(`relativeFlat_of_forall_isPullback`), with the point-lifting step
+`exists_apply_eq_of_isPullback`; the counterpart of `relativeFlat_of_isPullback_of_forall_exists`
+([LocalOnBase](LocalOnBase.lean)) for modules not pulled back from a base.

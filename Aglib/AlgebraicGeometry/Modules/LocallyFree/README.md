@@ -36,3 +36,10 @@ finite local correction step for strict-perfect chain nullhomotopies.
 [Kernel](Kernel.lean): in a short exact sequence of module sheaves with finite locally free middle and last terms, the first term is finite locally free (`finiteLocallyFree_X₁_of_shortExact`; on `Spec R`, `finiteLocallyFree_X₁_of_shortExact_Spec`). The proof works on affine charts, where global sections are exact and the kernel's sections are a finite projective summand ([ProjectiveKernel](../../../Algebra/Category/ModuleCat/ProjectiveKernel.lean)).
 
 [RankAdditivity](RankAdditivity.lean): fibre ranks add along a short exact sequence whose first and last terms are finite locally free, at every field-valued point (`finrank_moduleFibre_X₂_eq_add_of_shortExact`) and at every point (`sheafRank_X₂_eq_add_of_shortExact`); a finite free sheaf has rank its number of generators (`finrank_moduleFibre_free`, `sheafRank_free`).
+
+[EqualRank](EqualRank.lean): a sheaf with a local basis of rank zero is zero
+(`isZero_of_sheafHasRank_zero`), and an epimorphism between sheaves of the same constant rank is an
+isomorphism (`isIso_of_epi_of_sheafHasRank`; its kernel is finite locally free of rank zero by
+`sheafRank_X₂_eq_add_of_shortExact`); for two quotients of `free I` of the same constant rank with
+`ker q ⊆ ker q'` the induced surjection is an isomorphism under `free I`
+(`exists_iso_of_kernel_ι_comp_eq_zero_of_sheafHasRank`).

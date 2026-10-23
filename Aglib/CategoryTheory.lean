@@ -19,6 +19,7 @@ public import Aglib.CategoryTheory.Abelian.Injective.ExtZero
 public import Aglib.CategoryTheory.Abelian.Injective.MapAugmentation
 public import Aglib.CategoryTheory.Abelian.Injective.MappedResolution
 public import Aglib.CategoryTheory.Abelian.Injective.ResolutionKernels
+public import Aglib.CategoryTheory.Abelian.KernelCompEpi
 public import Aglib.CategoryTheory.Abelian.KernelSquare
 public import Aglib.CategoryTheory.Abelian.KernelSquareExact
 public import Aglib.CategoryTheory.Abelian.ObjectProperty.ExactFive
@@ -91,6 +92,8 @@ public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Localization.SerreKernel
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
+public import Aglib.CategoryTheory.Monoidal.Untwist
+public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport

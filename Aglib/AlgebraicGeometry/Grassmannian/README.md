@@ -140,6 +140,10 @@ Nitsure, §5, p. 26). The classifying map `classifyingMap P` is natural
 (`classifyingMap_pullback`) and detects isomorphism under `O^n`
 (`classifyingMap_eq_classifyingMap_iff`). Premise BCF.
 
+[Quotient/UniversalQuotientPullback](Quotient/UniversalQuotientPullback.lean): the classifying map of
+the pullback of `universalQuotientRep R k n` along `φ : T ⟶ schemeOver R k n` is `φ`
+(`classifyingMap_pullback_universalQuotientRep`). Premise BCF.
+
 [Quotient/Reindex](Quotient/Reindex.lean) transports quotients of `SheafOfModules.free I`, for
 `e : I ≃ ULift (Fin n)`, to quotients of `O^n` (`ofFree`, inverse `toFree`), compatibly with
 pullback on the nose (`ofFree_pullback`), through `freeReindexIso` (Mathlib's `freeMap e`). The

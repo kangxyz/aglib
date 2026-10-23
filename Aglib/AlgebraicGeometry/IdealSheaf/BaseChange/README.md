@@ -44,3 +44,10 @@ same original canonical map and inclusion equation. Its flatness hypothesis
 is on the base morphism; the separate `Flat` theorem above instead uses
 flatness of the quotient family. The actual [DVR-fibre construction](../Cartier/DVRFibre.md)
 uses this flat-base result.
+
+[TwistedRestriction](TwistedRestriction.lean): the restriction `W.twistedRestriction L : L ⟶ L ⊗ 𝒪_W`
+to a closed subscheme, the comparison `W.pullbackTensorQuotientIso p c : p^*(L ⊗ 𝒪_W) ≅ L' ⊗ 𝒪_{W.comap p}`
+for every `p` (no flatness) and its naturality `pullback_map_twistedRestriction`; the `rfl`
+identities `tensor_quotientModule_eq_shortComplex_map_X₃`, `twistedRestriction_eq_shortComplex_map_g`
+and `whiskerLeft_idealInclusion_eq_shortComplex_map_f` compare these with the twisted sequence
+`W.shortComplex.map (moduleTensorLeftFunctor X L)`.

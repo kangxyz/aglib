@@ -681,6 +681,7 @@ public import Aglib.RingTheory.MvPolynomial.FiniteSystemReindex
 public import Aglib.RingTheory.MvPolynomial.FormalPrimeReduction
 public import Aglib.RingTheory.MvPolynomial.FrobeniusDecomposition
 public import Aglib.RingTheory.MvPolynomial.GradedMap
+public import Aglib.RingTheory.MvPolynomial.GradedMapBasis
 public import Aglib.RingTheory.MvPolynomial.Homogeneous
 public import Aglib.RingTheory.MvPolynomial.HomogeneousBaseChange
 public import Aglib.RingTheory.MvPolynomial.HomogeneousFinrank
