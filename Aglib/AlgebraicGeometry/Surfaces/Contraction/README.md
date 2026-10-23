@@ -1,5 +1,24 @@
 # Contraction of exceptional Cartier curves
 
+[The proper contraction theorem](Proper.md), in
+`Scheme.Surfaces.Contraction.Proper`, applies to an integral regular
+Noetherian scheme X of dimension at most two with a supplied proper map
+f:X→S to a Noetherian scheme. The original closed immersion P¹_k→X must
+have singleton image in S, a locally rank-one actual kernel ideal, and
+actual conormal O(1). Its contraction preserves the full k-point, pulled
+Cartier ideal, canonical blowup, complement and original base map.
+The target is integral regular Noetherian of dimension two; the maps
+retain the stated properness, separatedness and birationality.
+
+[Proper projectivity](../Projectivity.md) constructs the required finite
+projective embedding on the actual inverse image of an affine base
+neighbourhood. [Proper gluing](ProperGluing.md) then glues this contraction
+with the unchanged original complement. An ample bundle or a projective
+presentation is not an extra hypothesis of this proper-base endpoint.
+
+The projective construction below supplies the local contraction and its
+original ideal, point and coordinate comparisons.
+
 This family, in `Scheme.Surfaces.Contraction`, constructs actual projective
 maps and their kernel-ideal images from specified Cartier-line data. The
 input is a closed embedding `p : X ⟶ ProjectiveSpace A ι` over a commutative
@@ -111,17 +130,7 @@ target is regular, integral, Noetherian and projective over the same base.
 The full point field, pulled ideal, exceptional and structural triangles,
 and complement isomorphism are retained.
 
-[Proper base assembly](Proper.md) starts with the original proper map
-`f : X ⟶ S` and a finite projective embedding of the specified inverse-image
-affine neighbourhood. [Open restriction](OpenRestriction.md) retains the
-original exceptional curve, ideal and conormal. [Proper gluing](ProperGluing.md)
-then constructs the contraction over the same base with its full `Spec k`
-point, pulled Cartier ideal, canonical blowup lift and complement
-isomorphism. The local point stalk is regular of dimension two; the
-stalk/complement lemma recovers global dimension two when the original
-source has dimension at most two.
-
-The finite neighbourhood embedding remains an explicit input of this
-proper-base assembly. Constructing it from properness alone is a further
-projectivity step. Surface resolution from singular initial data is also
-separate from these contraction results.
+The proper-base endpoint uses the supplied proper map throughout. A bare
+surface without that map is outside its stated scope. The remaining
+resolution applications require their own normalization, cohomology and
+finite-modification arguments.

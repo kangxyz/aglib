@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.ProperProjective
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.OpenRestriction
 public import Aglib.AlgebraicGeometry.Surfaces.Contraction.ProperGluing
+public import Aglib.AlgebraicGeometry.Surfaces.Projectivity
 
 /-!
 # The actual base neighbourhood for a proper surface contraction
@@ -164,6 +165,19 @@ theorem birationalOver_of_point_complement
   simpa only [PartialIso.IsOver, P, asIso_hom, Category.comp_id] using
     morphismRestrict_ι b C
 
+/-- Birationality of the original proper map descends through the constructed
+birational contraction, using its original structural triangle. -/
+theorem birationalOver_structure_of_factorization {X Y S : Scheme.{u}}
+    (f : X ⟶ S) (b : X ⟶ Y) (s : Y ⟶ S) (htri : b ≫ s = f)
+    (hb : BirationalOver b (𝟙 Y)) (hf : BirationalOver f (𝟙 S)) :
+    BirationalOver s (𝟙 S) := by
+  obtain ⟨e, he⟩ := hb
+  have hbs : BirationalOver f s := by
+    refine ⟨e, ?_⟩
+    have h := congrArg (fun g : e.source.toScheme ⟶ Y => g ≫ s) he
+    simpa only [PartialIso.IsOver, Category.assoc, Category.id_comp, htri] using h
+  exact hbs.symm.trans hf
+
 /-- An actual finite projective embedding on the specified inverse-image
 neighbourhood gives a contraction over the original base. All global ideal,
 blowup and complement comparisons refer to the original exceptional immersion. -/
@@ -276,5 +290,65 @@ theorem exists_cartier_contraction_of_local_projective_embedding
         rw [hexc, Category.assoc]
         rfl
   · exact ProperGluing.range_right_eq_compl_point f V W c ρ hcompl
+
+/-- Contract the original exceptional Cartier projective line in a fibre of
+the given proper map from a regular integral Noetherian surface. Projectivity
+of its actual affine-base neighbourhood is constructed from properness. -/
+theorem exists_cartier_contraction_of_isProper
+    {k : Type u} [Field k] {X S : Scheme.{u}}
+    [IsIntegral X] [IsNoetherian X] [IsNoetherian S]
+    (hX : RegularStalks X) (hd : topologicalKrullDim X ≤ 2)
+    (f : X ⟶ S) [IsProper f]
+    (i : ProjectiveSpace k (ULift.{u} (Fin 2)) ⟶ X) [IsClosedImmersion i]
+    (hI : IsLocallyRankOne X (Hom.idealModule i))
+    (eI : (Scheme.Modules.pullback i).obj (Hom.idealModule i) ≅
+      twistingSheaf k (ULift.{u} (Fin 2)) 1)
+    (z : S) (hz : ∀ d, f (i d) = z) :
+    ∃ (Y : Scheme.{u}) (b : X ⟶ Y) (c : Spec (.of k) ⟶ Y)
+      (s : Y ⟶ S) (hf : Blowup.cartierPullback c.ker b),
+      Surjective b ∧ IsProper b ∧ IsClosedImmersion c ∧ IsProper s ∧ IsSeparated s ∧
+      IsNoetherian Y ∧ RegularStalks Y ∧ IsIntegral Y ∧ topologicalKrullDim Y = 2 ∧
+      ringKrullDim (Y.presheaf.stalk (c (IsLocalRing.closedPoint k))) = 2 ∧
+      IsIso ((Blowup.blowupDatum c.ker).lift b hf) ∧ c.ker.comap b = i.ker ∧
+      i ≫ b = toSpec k (ULift.{u} (Fin 2)) ≫ c ∧ b ≫ s = f ∧
+      BirationalOver b (𝟙 Y) ∧
+      (BirationalOver f (𝟙 S) → BirationalOver s (𝟙 S)) ∧
+      ∃ (C : Y.Opens) (ε : (exceptionalComplement i).toScheme ≅ C.toScheme),
+        (C : Set Y) = (Set.range c)ᶜ ∧
+        b ⁻¹ᵁ C = exceptionalComplement i ∧ IsIso (b ∣_ C) ∧
+        ε.hom ≫ C.ι = (exceptionalComplement i).ι ≫ b := by
+  obtain ⟨V, hV, Z, hzV, hZ, hbase, hrange, haway, hcover⟩ :=
+    exists_affine_base_cover f i z hz
+  let U := f ⁻¹ᵁ V
+  let d : ProjectiveSpace k (ULift.{u} (Fin 2)) := Classical.choice inferInstance
+  obtain ⟨u, _⟩ := hrange ⟨d, rfl⟩
+  let : Nonempty U.toScheme := ⟨u⟩
+  let : IsIntegral U.toScheme := isIntegral_of_isOpenImmersion U.ι
+  let : CompactSpace U.toScheme :=
+    isCompact_iff_compactSpace.mp (NoetherianSpace.isCompact (U : Set X))
+  let : IsNoetherian U.toScheme := ⟨⟩
+  let : IsNoetherianRing Γ(S, V) := IsLocallyNoetherian.component_noetherian ⟨V, hV⟩
+  let q : U.toScheme ⟶ Spec Γ(S, V) := (f ∣_ V) ≫ hV.isoSpec.hom
+  let : IsProper q := inferInstance
+  have hUdim : topologicalKrullDim U.toScheme ≤ 2 :=
+    U.ι.isOpenEmbedding.isInducing.topologicalKrullDim_le.trans hd
+  obtain ⟨I, p, hIcoord, hp, hpbase⟩ :=
+    Surfaces.exists_projective_embedding_of_isProper (hX.of_isOpenImmersion U.ι) hUdim q
+  let : Finite I := hIcoord
+  let : IsClosedImmersion p := hp
+  obtain ⟨Y, b, c, s, hf, hbs, hbp, hc, hsp, hYN, hYR, hYI, hpoint,
+    hbl, hker, hexc, htri, C, ε, hC, hpre, hiso, hε⟩ :=
+    exists_cartier_contraction_of_local_projective_embedding hX f i hI eI
+      V hV Z hbase haway hcover hrange p hpbase
+  let : IsIntegral Y := hYI
+  let : Surjective b := hbs
+  let : IsProper s := hsp
+  let : IsIso (b ∣_ C) := hiso
+  have hbir := birationalOver_of_point_complement c hpoint b C hC
+  exact ⟨Y, b, c, s, hf, hbs, hbp, hc, hsp, inferInstance, hYN, hYR, hYI,
+    dimension_eq_two_of_point_complement hd c hpoint b C hC, hpoint,
+    hbl, hker, hexc, htri, hbir,
+    birationalOver_structure_of_factorization f b s htri hbir,
+    C, ε, hC, hpre, hiso, hε⟩
 
 end AlgebraicGeometry.Scheme.Surfaces.Contraction.Proper

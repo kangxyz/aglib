@@ -1,4 +1,4 @@
-# Literal pullbacks of original point-blowup chains
+# Literal pullbacks and finite embeddings of original point-blowup chains
 
 Import `Aglib.AlgebraicGeometry.Surfaces.Birational.ProjectiveDomination.Chain`.
 
@@ -30,7 +30,7 @@ opposite direction.
 the original structural maps to `X`. For every original `s : W → S`,
 `chainPullbackIso_hom_structure` proves that the composite structural map
 through the nested pullback is exactly `pullback.snd (g ≫ B.map) π ≫ s`.
-For the structural map of a projective embedding, take
+The projective-embedding induction uses
 `s = j ≫ ProjectiveSpace.toSpec A κ`.
 
 `PointBlowupChain.isLocallyNoetherian` proves
@@ -46,27 +46,41 @@ then passes that actual source as the base of the original tail. It does
 not impose Noetherianity on arbitrary base changes, nor replace those
 base changes by blowups of image ideals.
 
-This checkpoint retains only the categorical pullback, projection and
-original-Noetherianity interfaces above. The uncompiled forward projective
-embedding induction and its `ProjectivePresentation.Embedding` import are
-excluded. No forward embedding or full contraction closure is claimed.
+`PointBlowupChain.exists_projective_embedding_pullback c π j` takes an
+original `c : PointBlowupChain β` for `β : Y → X`, a locally Noetherian
+original `X`, an arbitrary `π : W → X`, and a closed immersion
+`j : W → ProjectiveSpace A κ` with `Finite κ`. It constructs
 
-No exact byte backup was present in the author's scratch. The Lean file was
-reconstructed from frozen production source
-`82180ada3455d56dd909a3313a59050f43f31c5fb4cd4b43ebf384c1833f46ef`
-by removing only that forward-specific import, its two-line module description,
-and the private induction helper plus public forward embedding theorem; the
-module title was restored. Its resulting SHA256 is
-`f6df6589aad097fd20516b460e2c8d100a3226e6ca3ab207867af0306d28dc09`,
-exactly matching the previously passed completed-only source. That source
-passed ordinary native compilation in `afc4725e`, source `f7f8f219`, in
-6.1 seconds at standard budgets. This retains exact-source coverage, not a
-fresh compiler pass on the final checkpoint dependency graph. Root owns the
-single normal final checkpoint batch.
+```text
+∃ (J : Type u) (_ : Finite J)
+  (k : pullback β π → ProjectiveSpace A J),
+  IsClosedImmersion k ∧
+    k ≫ ProjectiveSpace.toSpec A J =
+      pullback.snd β π ≫ j ≫ ProjectiveSpace.toSpec A κ.
+```
 
-The pair is prepared only under the author's `checkpoint-chain` scratch
-directory. Production P and latest-main R remain unchanged. No new proof,
-build, test, probe, replay, or Git operation was performed. The original
-source basis is Aglib HEAD
-`8b93cc5940dc93f39a2eaf05e6985af28250a578`, Mathlib
-`d13f23b723b8a846827a245b89c10fc7d3f11612`, and Lean 4.34.1.
+The identity case uses the original pullback projection followed by `j`.
+The cons case invokes the concrete
+`ProjectivePresentation.exists_projective_embedding B π j`, recurses on
+the original tail over `pullback B.map π`, and precomposes with
+`chainPullbackIso`. The original structural equation follows from the
+two concrete embedding equations and `chainPullbackIso_hom_structure`.
+No family of projective embeddings or other conclusion-equivalent premise
+is supplied to the theorem. No structural map on `X` or Noetherianity of
+the arbitrary new base `W` is added.
+
+The associativity and original-Noetherianity package previously passed at
+SHA256 `f6df6589aad097fd20516b460e2c8d100a3226e6ca3ab207867af0306d28dc09`
+in native run `afc4725e` (source `f7f8f219`, 6.1 seconds). The current
+increment adds the forward embedding induction and its precise public
+import of the concrete single-step provider. The latter source candidate,
+`Blowup/ProjectivePresentation/Embedding.lean`, was reconciled at SHA256
+`73f03488a80c83b2358f359ea5277a04b5551fd9219eca045e24ed0dd37abb42`.
+It has the exact binder and existential order used above.
+
+The new whole-module candidate and its single-step dependency await the
+shared native compilation batch; the older pass does not cover this
+increment. No local build, test, replay, or diagnostic probe was run.
+The source basis is Aglib HEAD `8b93cc5940dc93f39a2eaf05e6985af28250a578`, Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612`, and Lean 4.34.1. It uses the
+standard theorem budget without additional options.

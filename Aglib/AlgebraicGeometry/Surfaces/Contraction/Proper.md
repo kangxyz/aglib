@@ -27,7 +27,21 @@ descent assumption on the proper map.
 over the original target. The point-stalk dimension makes its target complement
 dense, and surjectivity makes its original source complement nonempty and dense.
 Properness of the structural map also supplies separatedness over the same base.
+`birationalOver_structure_of_factorization` transfers birationality of the
+original map to the resulting structural map using the actual factorization.
 
-The general proper existence theorem still requires the forward projective
-construction to produce that local embedding. This leaf does not claim that
-remaining projectivity premise closed.
+`exists_cartier_contraction_of_isProper` constructs that local projective
+embedding from the original proper map and the dimension bound, then invokes
+the actual assembly. Its target is integral regular Noetherian of dimension two,
+its structure map to the original base is proper and separated, and its source
+map is birational. Birationality of the original structure map also descends.
+The complete pulled ideal, full field point, canonical blowup comparison,
+exceptional triangle and original complement remain explicit outputs.
+
+The source and base are the original integral regular Noetherian scheme of
+dimension at most two and arbitrary Noetherian scheme. The original curve
+must have singleton image, a locally rank-one actual kernel ideal and actual
+conormal `O(1)` on the unchanged `P1_k`. No field/trait base, excellence,
+projectivity or coefficient-field identification is added. The local projective
+embedding comes from [proper projectivity](../Projectivity.md), retaining the
+same restricted structural map before the contraction is glued over the base.

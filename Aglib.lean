@@ -573,6 +573,7 @@ public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.AffineRow
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.ChartCoordinates
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.ChartMap
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.DegreeOneAugmentationChart
+public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.Embedding
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.FrameCover
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.Restriction
 public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.RowCoordinates
@@ -3631,6 +3632,7 @@ public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.NextCenter
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.Recursion
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.Regularity
 public import Aglib.AlgebraicGeometry.Surfaces.PowerNode.Resolution.SourceGeometry
+public import Aglib.AlgebraicGeometry.Surfaces.Projectivity
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.PointBlowupChain
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Principalization
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Trait

@@ -453,6 +453,27 @@ The whole Proper graph then failed in the newly reached `Embedding` module
 on separate interface and instance errors, so this records the chart and
 coordinate passes only, with no general-contraction completion claim.
 
+The subsequent `Embedding` repair also keeps the complete restriction
+comparison generic over the affine square and framed family before its
+concrete section-ring specialization. It passes the existing epimorphism
+proof explicitly to the original finite-family constructor. Unused finite
+section instances are omitted only from the two private comparison lemmas;
+the public finite embedding retains its needed finiteness hypotheses.
+With `Embedding.lean` SHA-256
+`27535326e5c4d925a4ff795cf112cca76cccbeb5d861395e949551ddb5148c22`,
+run `remote-37836972b3b9498cb3ef9168b5fd58bd`, source SHA-256
+`1ac63637a49c93bd5e981518ed64c89557b727966ac47f3119b739fd383332a8`,
+compiled that module in 149 seconds and the original forward chain in
+9.1 seconds at the standard budgets. That parent run then failed a
+redundant rewrite in the upper projectivity assembly. Removing the rewrite
+preserved the same base triangle. The final whole-Proper run
+`remote-7ac9858abc3849a7bf9112dbadcdb71b`, source SHA-256
+`ce5280f7f3740db61928d11a8fb9a2862efb26af108bc6bc9241510765251494`,
+exited zero, compiling `Surfaces.Projectivity` in 7.6 seconds and
+`Surfaces.Contraction.Proper` in 11 seconds. These are ordinary incremental
+build observations; no controlled timing ratio or broader library checks
+are inferred from them.
+
 ## What the measurements establish
 
 The successful [cold CI run](https://github.com/kangxyz/aglib/actions/runs/38711518878)

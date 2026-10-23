@@ -5,16 +5,19 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Blowup.ProjectivePresentation.Embedding
 public import Aglib.AlgebraicGeometry.Surfaces.Resolution.Principalization
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting
 
 /-!
-# Literal pullbacks of original point-blowup chains
+# Literal pullbacks and finite embeddings of original point-blowup chains
 
 The cons step of a point-blowup chain is regrouped by the canonical pullback
 pasting isomorphism. Both projections and the original structural triangles
 are retained. Local Noetherianity propagates along the original blowups;
 no base-changed blowup is identified with a blowup of an image ideal.
+The concrete single-step projective embedding then gives a finite embedding
+of the literal chain pullback, retaining its original structural map.
 -/
 
 @[expose] public noncomputable section
@@ -160,5 +163,64 @@ theorem PointBlowupChain.isLocallyNoetherian {X Y : Scheme.{u}} {f : Y ⟶ X}
     let : IsLocallyNoetherian X := hX
     exact ih (BlowupDatum.isLocallyNoetherian
       (blowupDatum (X.fromSpecResidueField x).ker))
+
+private theorem exists_projective_embedding_pullback_aux
+    {A : Type u} [CommRing A] {X Y : Scheme.{u}} {β : Y ⟶ X}
+    (c : PointBlowupChain β) :
+    IsLocallyNoetherian X →
+      ∀ {W : Scheme.{u}} (π : W ⟶ X) {κ : Type u} [Finite κ]
+        (j : W ⟶ ProjectiveSpace A κ) [IsClosedImmersion j],
+        ∃ (J : Type u) (_ : Finite J)
+          (k : pullback β π ⟶ ProjectiveSpace A J),
+          IsClosedImmersion k ∧
+            k ≫ ProjectiveSpace.toSpec A J =
+              pullback.snd β π ≫ j ≫ ProjectiveSpace.toSpec A κ := by
+  induction c with
+  | refl X =>
+    intro _hX W π κ hκ j _hj
+    refine ⟨κ, hκ, pullback.snd (𝟙 X) π ≫ j, ?_, ?_⟩
+    · infer_instance
+    · exact Category.assoc _ _ _
+  | @cons X _Y x _hx _hd g _tail ih =>
+    intro hX W π κ _hκ j _hj
+    let : IsLocallyNoetherian X := hX
+    let B := blowupDatum (X.fromSpecResidueField x).ker
+    obtain ⟨J, hJ, j₁, hj₁, hj₁_base⟩ :=
+      ProjectivePresentation.exists_projective_embedding B π j
+    let : Finite J := hJ
+    let : IsClosedImmersion j₁ := hj₁
+    obtain ⟨K, hK, k₁, hk₁, hk₁_base⟩ :=
+      ih (BlowupDatum.isLocallyNoetherian B) (pullback.fst B.map π) j₁
+    refine ⟨K, hK, (B.chainPullbackIso g π).hom ≫ k₁, ?_, ?_⟩
+    · let : IsClosedImmersion k₁ := hk₁
+      infer_instance
+    · calc
+        ((B.chainPullbackIso g π).hom ≫ k₁) ≫ ProjectiveSpace.toSpec A K =
+            (B.chainPullbackIso g π).hom ≫ (k₁ ≫ ProjectiveSpace.toSpec A K) :=
+          Category.assoc _ _ _
+        _ = (B.chainPullbackIso g π).hom ≫
+            (pullback.snd g (pullback.fst B.map π) ≫
+              j₁ ≫ ProjectiveSpace.toSpec A J) :=
+          congrArg (fun k ↦ (B.chainPullbackIso g π).hom ≫ k) hk₁_base
+        _ = (B.chainPullbackIso g π).hom ≫
+            pullback.snd g (pullback.fst B.map π) ≫
+              pullback.snd B.map π ≫ j ≫ ProjectiveSpace.toSpec A κ := by
+          rw [hj₁_base]
+        _ = pullback.snd (g ≫ B.map) π ≫ j ≫ ProjectiveSpace.toSpec A κ := by
+          simpa only [Category.assoc] using
+            B.chainPullbackIso_hom_structure g π (j ≫ ProjectiveSpace.toSpec A κ)
+
+/-- Embed the literal pullback of the original finite point-blowup chain,
+retaining the original structural map determined by the supplied embedding. -/
+theorem PointBlowupChain.exists_projective_embedding_pullback
+    {A : Type u} [CommRing A] {X Y W : Scheme.{u}} [IsLocallyNoetherian X]
+    {β : Y ⟶ X} (c : PointBlowupChain β) (π : W ⟶ X)
+    {κ : Type u} [Finite κ] (j : W ⟶ ProjectiveSpace A κ) [IsClosedImmersion j] :
+    ∃ (J : Type u) (_ : Finite J)
+      (k : pullback β π ⟶ ProjectiveSpace A J),
+      IsClosedImmersion k ∧
+        k ≫ ProjectiveSpace.toSpec A J =
+          pullback.snd β π ≫ j ≫ ProjectiveSpace.toSpec A κ :=
+  exists_projective_embedding_pullback_aux c inferInstance π j
 
 end AlgebraicGeometry.Scheme.Blowup
