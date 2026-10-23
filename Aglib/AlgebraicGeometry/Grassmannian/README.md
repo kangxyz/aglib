@@ -120,6 +120,46 @@ in sibling leaves of their owners: `Modules/Pullback/FreeComp`, `Modules/Fitting
 `Algebra/Category/ModuleCat/ChangeOfRings/SpanSingleton`. `AlgSpecPoints.isOpenImmersion_coverPt`
 and `AlgSpecPoints.exists_coverPt_apply_eq` are in [Injectivity](Quotient/Injectivity.lean).
 
+[Quotient/Kernel](Quotient/Kernel.lean) gives the kernel `q.kernel` of a quotient with its inclusion
+`q.kernelι` into `O^n` and the short exact sequence `0 → K → O^n → Q → 0` (`shortExact`), which
+splits locally (`exists_local_splitting`). Its formation commutes with pullback along every
+morphism, with no flatness: `pullbackKernelIso f q : f^* q.kernel ≅ (q.pullback f).kernel`
+commutes with the inclusions through `pullbackFreeIso` (`pullbackKernelIso_hom_kernelι`), and
+isomorphic quotients have isomorphic kernels (`IsoUnder.kernelIso`). Nitsure,
+arXiv:math/0504590v1, §5, p. 26 (`K_Y = φ^* ker(f)`).
+
+[Quotient/KernelRank](Quotient/KernelRank.lean) proves that the kernel is finite locally free of
+rank `n - k` (`isFiniteLocallyFree_kernel`, `sheafHasRank_kernel`); on a nonempty scheme `k ≤ n`
+(`rank_le_of_nonempty`).
+
+[Quotient/UniversalKernel](Quotient/UniversalKernel.lean) defines the universal kernel
+`universalKernel R k n`, the kernel of `universalQuotientRep R k n`, finite locally free of rank
+`n - k`. If `P` represents the class classified by `g`, then `g^*` of the universal kernel is
+`P.kernel` under `O^n` (`pullbackUniversalKernelIso`, `pullbackUniversalKernelIso_hom_kernelι`;
+Nitsure, §5, p. 26). The classifying map `classifyingMap P` is natural
+(`classifyingMap_pullback`) and detects isomorphism under `O^n`
+(`classifyingMap_eq_classifyingMap_iff`). Premise BCF.
+
+[Quotient/Reindex](Quotient/Reindex.lean) transports quotients of `SheafOfModules.free I`, for
+`e : I ≃ ULift (Fin n)`, to quotients of `O^n` (`ofFree`, inverse `toFree`), compatibly with
+pullback on the nose (`ofFree_pullback`), through `freeReindexIso` (Mathlib's `freeMap e`). The
+kernel of `π` in `free I` is the kernel of `ofFree e π hQ` (`ofFreeKernelιIsKernel`,
+`ofFreeKernelIso`). With BCF, the Grassmannian classifies these quotients
+(`existsUnique_isoUnder_ofFree`), and the universal kernel included into `free I`,
+`universalKernelιFree`, pulls back to the kernel of `π` (`pullbackUniversalKernelIsoOfFree_hom_ι`).
+
+[Finiteness](Finiteness.lean) shows that `scheme R k n` is quasi-compact and that `toBase R k n` is
+quasi-compact and locally of finite type; over a Noetherian `R` the scheme is Noetherian
+(instances, also for `(schemeOver R k n).left` and `.hom`). The proof uses the finitely many charts
+`Spec (R[Φ]/I)` (Stacks, Tag 089T, proof). Premise BCF.
+
+The focused test [Kernel](../../../AglibTest/AlgebraicGeometry/Grassmannian/Kernel.lean) restates
+these results with the BCF instance and guards their axioms. Relocation candidates:
+`freeReindexIso`, `pullback_map_freeReindexIso_hom`/`_inv`,
+`pullbackFreeIso_inv_freeReindexIso_inv` and `epi_pullbackFreeIso_inv_comp` in
+[Quotient/Reindex](Quotient/Reindex.lean) belong in `Modules/Pullback` (namespace `Scheme.Modules`),
+and `finiteType_chartRing` in [Finiteness](Finiteness.lean) belongs in `RingTheory/Grassmannian`.
+
 Relocation candidates (general, not specific to the Grassmannian): `algSpecPoints`,
 `algSpecPointsEquiv` and `AlgebraicGeometry.AlgSpecPoints.*` in
 [FunctorOfPoints](FunctorOfPoints.lean), and `Grassmannian.locAway` and

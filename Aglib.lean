@@ -72,6 +72,7 @@ public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ForgetToModuleCat
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
+public import Aglib.Algebra.Category.ModuleCat.ProjectiveKernel
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Descent
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Unit
 public import Aglib.Algebra.Category.ModuleCat.ScalarExtensionCoordinateNaturality
@@ -2205,6 +2206,7 @@ public import Aglib.AlgebraicGeometry.Gluing.SeparatedModification
 public import Aglib.AlgebraicGeometry.Gluing.SourceOpenCover
 public import Aglib.AlgebraicGeometry.Gluing.TwoPoint
 public import Aglib.AlgebraicGeometry.Grassmannian.Chart
+public import Aglib.AlgebraicGeometry.Grassmannian.Finiteness
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
@@ -2217,9 +2219,13 @@ public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Affine
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.BaseChange
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Basic
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Injectivity
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Kernel
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.KernelRank
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Points
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Reindex
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Representability
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Surjectivity
+public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.UniversalKernel
 public import Aglib.AlgebraicGeometry.Grassmannian.Representability
 public import Aglib.AlgebraicGeometry.Group.BaseChange.Composition
 public import Aglib.AlgebraicGeometry.Group.BaseChange.CyclicKernel
@@ -2719,6 +2725,8 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FiniteFlat
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FiniteType
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FreeCover
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.FreeCover.Sections
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Kernel
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.KernelPullback
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalBases
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalLifting
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.LocalSplitting
@@ -2726,6 +2734,7 @@ public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Locality
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.OpenImage
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Pullback
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Rank
+public import Aglib.AlgebraicGeometry.Modules.LocallyFree.RankAdditivity
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Restriction
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.Exact
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Tensor.InjectiveRestriction
@@ -2872,6 +2881,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.Princip
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.QCQSSections
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Localization.SMulRegular
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Pullback
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.ShortExact
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Subobjects.Gluing
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Subobjects.Preimage
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor

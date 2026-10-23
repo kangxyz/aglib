@@ -78,6 +78,7 @@ public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ForgetToModuleCat
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
+public import Aglib.Algebra.Category.ModuleCat.ProjectiveKernel
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Descent
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Unit
 public import Aglib.Algebra.Category.ModuleCat.ScalarExtensionCoordinateNaturality

@@ -27,3 +27,5 @@ particular quasicoherence of the actual ambient module-sheaf coproduct.
 affine-open section cocones remain colimiting for quasicoherent diagrams.
 Both statements preserve the actual cocone maps and require no finite-type,
 Noetherian, flatness or separatedness premise.
+
+[ShortExact](ShortExact.lean) proves `Scheme.Modules.isQuasicoherent_X₁_of_shortExact`: the first term of a short exact sequence of module sheaves is quasi-coherent when the other two are, through `QuasiCoherent.quasicoherent_kernel`.

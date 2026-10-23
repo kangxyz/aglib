@@ -90,3 +90,5 @@ actual kernels. No finiteness or Noetherianity is assumed. The
 [compatible-presentation construction](../../../RingTheory/AdicCompletion/CompatibleSystemPresentation.lean)
 uses these kernel corrections to obtain a surjection onto native compatible
 sections; reduction of arbitrary kernels is not asserted to be exact.
+
+[ProjectiveKernel](ProjectiveKernel.lean) proves `ModuleCat.finite_projective_X₁_of_shortExact`: in a short exact sequence of modules over a commutative ring with projective last term, the first term is a direct summand of the middle term, hence finite and projective when the middle term is.
