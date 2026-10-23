@@ -153,6 +153,8 @@ module with all actual morphisms `O(b) → O(m+b)`, for any integer `b`; its
 forward map is the existing polynomial multiplication. Dimension zero is
 included, and all scalar actions are the original structural actions. The
 leaf passed `1792099705457974000-79259`.
+`GlobalSections.PolynomialSections` evaluates the polynomial `H0` element on sections over `⊤`:
+`equiv₀_twistingH0PolynomialLinearEquiv_symm` gives the homogeneous section of the polynomial.
 
 [`FiniteModel`](FiniteModel/README.md) constructs an actual bounded
 finite-projective complex for coherent coefficients relatively flat over

@@ -53,6 +53,15 @@ coordinate hypothesis.
   to the frame `Xᵢ^d` (`twistingPullbackIso_hom_generator`, `_inv_generator`, `_inv_app`).
   `twistingTensorPullbackIso` gives `π^*(O_R(d) ⊗ M) ≅ O_S(d) ⊗ π^* M` from the canonical tensor
   comparison; it is natural in `M` (`twistingTensorPullbackIso_hom_naturality`, `@[reassoc]`).
+- `Point` owns the points of `X_T = P^n_A ×_{Spec A} T` and the base change of the base:
+  `pointRingHom g x`, `pointMap ι g x : P^n_K ⟶ X_T` for `x : Spec K ⟶ T` (cartesian over `x`,
+  `isPullback_pointMap`) and `baseChangeMap ι g g' f h : X_{T'} ⟶ X_T` (`isPullback_baseChangeMap`,
+  `pointMap_comp_baseChangeMap`); `AffineOpen`'s `affineBaseMap` and `pullbackBaseChange` are
+  their instances.
+- `HomogeneousSections` computes the base change of polynomial sections: under
+  `twistingPullbackIso φ ι n`, the pullback of `homogeneousSection R ι n p` is the section of
+  `(gradedMap φ).gradedAddHom n p` (`twistingPullbackIso_hom_unit_homogeneousSection`), and
+  `twistingTensorPullbackIso_rightUnitor` matches the unit twist through the right unitors.
 - `Flat` proves that `map f ι` is flat for a flat ring map `f` (`flat_map`): by `isPullback_map`
   it is the base change of `Spec S → Spec R`. The projection of a field extension is flat as an
   instance (`flat_map_algebraMap`), so pullback along it preserves monomorphisms. The structure

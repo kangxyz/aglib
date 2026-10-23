@@ -17,6 +17,7 @@ This family extends Mathlib's actual `AlgebraicGeometry.Scheme`, structural shea
 | [Curves](Curves/README.md) | Native field curves, divisors, degree, Riemann--Roch and projective-line comparisons, with explicit hypotheses and remaining representability inputs |
 | [AlgebraicSimplex](AlgebraicSimplex/README.md) | Literal coordinate quotients, face maps, field coefficient extension and finite scalar dependence |
 | [Grassmannian](Grassmannian/README.md) | Coordinate charts, overlaps and glued schemes representing the affine Grassmannian functor and its natural-transformation extension |
+| [HilbertScheme](HilbertScheme/README.md) | The Hilbert functor of `P^n_A`, Mumford's uniform regularity bound, direct images of flat families, the Grassmannian point and its naturality on Noetherian affine test schemes, and the flattening-stratum image step |
 | [Picard](Picard/README.md) | Relative group presheaves, normalized and rigidified comparisons, and fppf sheafification; Picard representability remains open |
 | [FunctionField](FunctionField/README.md) | Canonical generic inclusions, dominant field maps, generic-fibre isomorphisms and extension to targets integral over the base |
 | [Generic finite-etale normalization](Normalization/GenericFiniteEtale/README.md) | Actual relative normalization and generic recovery, with separate normal/locally Noetherian finiteness and stalk conclusions |

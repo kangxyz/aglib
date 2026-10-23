@@ -45,3 +45,8 @@ fibre dimension, without flatness, finite presentation or Noetherianity.
 Its exact closed-point normalization compares the native prime residue field
 with the usual quotient residue field. The independent public consumer
 passed `1792102760772343000-32015`, with only the three standard axioms.
+
+[FreeLocus/ResidueField](FreeLocus/ResidueField.lean) proves
+`Module.rankAtStalk_eq_finrank_of_extendScalars_iso`: for a finite flat module and a prime `p`,
+an isomorphism of `κ(p) ⊗ H` with a `κ(p)`-module `N` gives `rankAtStalk H p = dim N`
+(Mathlib's `rankAtStalk_baseChange` at the prime of `κ(p)`).

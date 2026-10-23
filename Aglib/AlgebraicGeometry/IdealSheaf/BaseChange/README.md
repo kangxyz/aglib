@@ -12,6 +12,14 @@ module of the base-changed closed immersion. No flatness, Noetherianity or
 Cartier hypothesis is required. This is an epimorphism statement; it does not
 identify a nonflat pullback ideal module with its image ideal by an isomorphism.
 
+[QuotientModule](QuotientModule.lean) applies this epimorphism to the square of a pulled-back
+closed subscheme `I.comap f`, for any `f : Y ⟶ X` and no hypothesis beyond `IdealSheafData`:
+`epi_idealPullbackMap`, the image of `f^* I ⟶ 𝒪_Y` as the ideal of `I.comap f`
+(`pullbackIdealImageIso`; Stacks, Tag 01JU, Lemma 26.17.6 (1)) and
+`quotientModulePullbackIso : f^* 𝒪_W ≅ 𝒪_{W.comap f}` with its projection lemma and pushforward
+form `pushforwardUnitPullbackIso`. It also proves surjectivity on affine sections
+(`surjective_idealPullbackMap_app`). The Hilbert-scheme family consumes the isomorphism.
+
 [Kernel detection](Detection.md) supplies
 `Scheme.Hom.ker_comap_eq_of_idealPullbackMap_epi`. For closed immersions
 `c : D ⟶ Z` and `i : E ⟶ X`, maps `f : X ⟶ Z`, `a : E ⟶ D`, and

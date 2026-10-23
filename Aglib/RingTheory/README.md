@@ -23,6 +23,8 @@ The objects are actual Mathlib rings, algebras, ideals, prime spectra, localizat
 difference form, `0 ≤ C(y, i) ≤ yⁱ` for `y ≥ 0`, and the integration of a binomial forward
 difference (`Int.eq_sum_choose_of_fwdDiff`); the Hilbert-function and Mumford-bound leaves of
 `AlgebraicGeometry/Cohomology/Projective` consume them.
+[Binomial/Uniqueness](Binomial/Uniqueness.lean) proves that binomial coefficients are unique:
+`Int.eq_of_forall_sum_mul_choose_eq`; the Hilbert-scheme regularity bound consumes it.
 
 [Generic exact-sequence length](Length/README.md), [scalar homology](ScalarHomology/README.md), fraction and filtration calculations belong to their lower object owners; the multiplicity proofs consume them. No Grayson cycle, principal-face, curve or K/G/Q/S application object is introduced. Scheme smooth/stalk/connectedness results consume the regular-local, polynomial and tensor-domain leaves; other admitted interfaces remain available as public standalone results.
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Cartesian
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Point
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Structure
 public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.AffineSections
 
@@ -27,6 +27,11 @@ projection `X_S ⟶ S`.
   `g.appLE U V : Γ(S, U) → Γ(T, V)` (`affineBaseRingHom_comp`, `affineBaseMap_pullbackBaseChange`).
 * `X_S` is locally Noetherian when `S` is and the coordinates are finite
   (`isLocallyNoetherian_pullback_toSpec`).
+
+Both maps are instances of `ProjectiveSpace/BaseChange/Point`: `affineBaseMap ι s hU` is the point
+map `pointMap ι s hU.fromSpec` (`affineBaseMap_eq_pointMap`, with
+`pointRingHom_fromSpec : pointRingHom s hU.fromSpec = affineBaseRingHom s hU`), and
+`pullbackBaseChange ι s g` is `baseChangeMap ι s (g ≫ s) g rfl`.
 
 These are the restrictions used by the flattening stratification over a locally Noetherian base
 (`FlatteningStratification/AffineBase`, `FlatteningStratification/Global`).
@@ -68,22 +73,32 @@ theorem affineBaseRingHom_comp {T : Scheme.{u}} (g : T ⟶ S) {U : S.Opens} (hU 
   rw [affineBaseRingHom, affineBaseRingHom, ← CommRingCat.hom_comp, Category.assoc,
     Scheme.Hom.appLE_comp_appLE]
 
+/-- The ring map of the point `hU.fromSpec : Spec Γ(S, U) ⟶ S` is `affineBaseRingHom s hU`. -/
+theorem pointRingHom_fromSpec {U : S.Opens} (hU : IsAffineOpen U) :
+    pointRingHom s (K := Γ(S, U)) hU.fromSpec = affineBaseRingHom s hU :=
+  congrArg CommRingCat.Hom.hom (Spec.map_injective
+    ((specMap_pointRingHom s hU.fromSpec).trans (specMap_affineBaseRingHom s hU).symm))
+
 /-- The restriction of `X_S = P^n_A ×_{Spec A} S` over an affine open `U`: the morphism
-`P^n_{Γ(S, U)} ⟶ X_S` over `hU.fromSpec`. -/
+`P^n_{Γ(S, U)} ⟶ X_S` over `hU.fromSpec`, the point map `pointMap ι s hU.fromSpec`. -/
 def affineBaseMap {U : S.Opens} (hU : IsAffineOpen U) :
     ProjectiveSpace Γ(S, U) ι ⟶ pullback (toSpec A ι) s :=
-  pullback.lift (map (affineBaseRingHom s hU) ι) (toSpec Γ(S, U) ι ≫ hU.fromSpec) (by
-    rw [map_toSpec, specMap_affineBaseRingHom, Category.assoc])
+  pointMap ι s (K := Γ(S, U)) hU.fromSpec
+
+/-- The chart map of an affine open `U ⊆ S` is the point map of `U ⟶ S`. -/
+theorem affineBaseMap_eq_pointMap {U : S.Opens} (hU : IsAffineOpen U) :
+    affineBaseMap ι s hU = pointMap ι s (K := Γ(S, U)) hU.fromSpec :=
+  rfl
 
 @[reassoc (attr := simp)]
 theorem affineBaseMap_fst {U : S.Opens} (hU : IsAffineOpen U) :
-    affineBaseMap ι s hU ≫ pullback.fst (toSpec A ι) s = map (affineBaseRingHom s hU) ι :=
-  pullback.lift_fst _ _ _
+    affineBaseMap ι s hU ≫ pullback.fst (toSpec A ι) s = map (affineBaseRingHom s hU) ι := by
+  rw [affineBaseMap, pointMap_fst, pointRingHom_fromSpec]
 
 @[reassoc (attr := simp)]
 theorem affineBaseMap_snd {U : S.Opens} (hU : IsAffineOpen U) :
     affineBaseMap ι s hU ≫ pullback.snd (toSpec A ι) s = toSpec Γ(S, U) ι ≫ hU.fromSpec :=
-  pullback.lift_snd _ _ _
+  pointMap_snd ι s _
 
 /-- `P^n_{Γ(S, U)}` is the base change of `X_S ⟶ S` along `hU.fromSpec`. -/
 theorem isPullback_affineBaseMap {U : S.Opens} (hU : IsAffineOpen U) :
@@ -105,22 +120,21 @@ theorem affineBaseMap_restrict {U W : S.Opens} (hU : IsAffineOpen U) (hW : IsAff
       CommRingCat.ofHom_hom, IsAffineOpen.map_fromSpec]
 
 /-- The base change of `X_S` along `g : T ⟶ S`: the morphism `P^n_A ×_{Spec A} T ⟶ X_S`, for the
-structure morphism `g ≫ s` of `T`. -/
+structure morphism `g ≫ s` of `T`, the base-changed map `baseChangeMap ι s (g ≫ s) g rfl`. -/
 def pullbackBaseChange {T : Scheme.{u}} (g : T ⟶ S) :
     pullback (toSpec A ι) (g ≫ s) ⟶ pullback (toSpec A ι) s :=
-  pullback.lift (pullback.fst _ _) (pullback.snd _ _ ≫ g) (by
-    rw [pullback.condition, Category.assoc])
+  baseChangeMap ι s (g ≫ s) g rfl
 
 @[reassoc (attr := simp)]
 theorem pullbackBaseChange_fst {T : Scheme.{u}} (g : T ⟶ S) :
     pullbackBaseChange ι s g ≫ pullback.fst (toSpec A ι) s = pullback.fst (toSpec A ι) (g ≫ s) :=
-  pullback.lift_fst _ _ _
+  baseChangeMap_fst ι s (g ≫ s) g rfl
 
 @[reassoc (attr := simp)]
 theorem pullbackBaseChange_snd {T : Scheme.{u}} (g : T ⟶ S) :
     pullbackBaseChange ι s g ≫ pullback.snd (toSpec A ι) s =
       pullback.snd (toSpec A ι) (g ≫ s) ≫ g :=
-  pullback.lift_snd _ _ _
+  baseChangeMap_snd ι s (g ≫ s) g rfl
 
 /-- `P^n_A ×_{Spec A} T` is the base change of `X_S ⟶ S` along `g : T ⟶ S`. -/
 theorem isPullback_pullbackBaseChange {T : Scheme.{u}} (g : T ⟶ S) :

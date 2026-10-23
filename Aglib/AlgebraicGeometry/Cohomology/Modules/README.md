@@ -81,3 +81,8 @@ model in `Cohomology.Projective.EulerCharacteristic`.
 and native sections linearly for the original structural field action. Its
 naturality and cokernel comparisons keep the original coefficient morphism;
 finite cokernel transfer retains its finite-dimensionality premise.
+
+[UnitHom](UnitHom.lean) gives `unitHomH0Equiv : (𝟙_ ⟶ M) ≃ H^0(X, M)` for every scheme, natural
+in `M` (`unitHomH0Equiv_comp`). [DegreeZero](DegreeZero.lean) evaluates degree-zero coefficient
+maps on sections over `⊤` (`equiv₀_moduleCohomologyMapOfHom`,
+`equiv₀_moduleCohomologyFunctorOfHom_mapIso`).

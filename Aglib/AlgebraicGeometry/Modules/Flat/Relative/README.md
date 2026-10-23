@@ -142,3 +142,10 @@ relative flatness of the structure module over the target, by transitivity of
 flatness along `f.stalkMap x`. No Noetherianity, quasicompactness or properness
 is assumed. The consumers are the proper local criterion for the structure
 sheaf and `ProjectiveSpace/Tensor/Flat`.
+
+Import `Aglib.AlgebraicGeometry.Modules.Flat.Relative.ClosedSubscheme` for closed subschemes:
+`relativeFlat_quotientModule_iff_flat` (the structure module `𝒪_X / I_W` is relatively flat over
+`S` exactly when `W ⟶ X ⟶ S` is flat, through the stalks of `i_* 𝒪_W`,
+`pushforwardUnitStalkIso`), `relativeFlat_pullback_quotientModule_iff` (the same for `f^* 𝒪_W`,
+with no flatness of `W`) and `relativeFlat_idealModule_of_flat` (the ideal module of a flat closed
+subscheme over a flat affine base).

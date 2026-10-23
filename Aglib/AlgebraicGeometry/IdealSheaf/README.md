@@ -2,6 +2,8 @@
 
 [Modules](Modules.lean), imported as `Aglib.AlgebraicGeometry.IdealSheaf.Modules`, defines `Scheme.Hom.idealModule i` as the actual kernel of the structure-module map `𝒪_X → i_*𝒪_D`. Its inclusion and sectionwise kernel equivalences retain the actual ring-section maps. This construction applies to arbitrary scheme morphisms; closed immersion is an additional premise on the results that need it.
 
+[QuotientModule](QuotientModule.lean) defines the structure module `quotientModule W = cokernel (idealInclusion W.subschemeι)` of a closed subscheme with its projection `toQuotientModule`, the short exact sequence `shortComplex_shortExact`, `quotientModuleIsoPushforward : 𝒪_X / I_W ≅ i_* 𝒪_W`, quasi-coherence, and coherence on locally Noetherian schemes (`affineLocallyFiniteType_quotientModule`, `Scheme.Hom.affineLocallyFiniteType_idealModule`). [Order](Order.lean) proves `le_of_idealInclusion_factor`: closed subschemes are ordered by factorization of their ideal inclusions. [Comap](Comap.lean) proves that Mathlib's `subschemeMap (I.comap b) I b (I.le_map_comap b)` forms a cartesian square (`isPullback_subschemeMap_comap`).
+
 [Affine](Affine.lean) compares spectral ideal modules with sheafification of the actual ring kernel and proves the stated finite-generation consequence of finite presentation. [Restriction](Restriction.lean) compares actual ideal restrictions and their inclusions. The [base-change family](BaseChange/README.md) constructs the canonical ideal pullback map, proves epimorphy for a cartesian square of a closed immersion, and gives the separate quotient-flat isomorphism theorem.
 
 [Colon](Colon.md) defines `IdealSheafData.stalkIdeal` from the original affine

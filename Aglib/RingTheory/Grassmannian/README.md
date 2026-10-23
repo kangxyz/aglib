@@ -20,6 +20,9 @@ Grassmannian", pp. 7–8.
 | [ChartLocus](ChartLocus.lean) | `mem_chart_of_map_localization`, `exists_mem_chart_map_of_bijective` | arbitrary `M` |
 | [Descent](Descent.lean) | `eq_of_map_localization_eq`, `rTensor_mem_map_iff_of_isLocalization`, `finite_projective_rankAtStalk_of_localizationSpan` | `span (range s) = ⊤` |
 | [Gluing](Gluing.lean) | `exists_map_localization_eq` | finite `s`, `span (range s) = ⊤` |
+| [Kernel](Kernel.lean) | `ofSurjective` (kernel of a surjection onto a finite projective module of rank `k`), `eq_of_le` | arbitrary `M` |
+| [MapCriterion](MapCriterion.lean) | `rTensor_mem_map`, `map_toSubmodule_le`, `map_eq_of_forall` | uses `BaseChangeFormula` |
+| [LinearEquiv](LinearEquiv.lean) | `ofLinearEquiv`, `ofLinearEquivEquiv`, `map_ofLinearEquiv_baseChange`, `functorIsoOfLinearEquiv` | linear equivalence `M ≃ₗ[R] M'` |
 
 **Charts.** For `x : Fin k → M`, `chart R x` is the set of points `N` for which
 `chartMap x N : R^k → M ⧸ N`, `e_b ↦ [x b]`, is bijective (Mathlib's TODO item). Base change

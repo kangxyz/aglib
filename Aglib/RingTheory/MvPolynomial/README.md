@@ -71,6 +71,15 @@ changing declarations or proofs; the old leaf is a compatibility import.
 This keeps the original projective global-section computation and residue
 pairing on the same lower algebraic coefficient maps.
 
+[HomogeneousFinrank](HomogeneousFinrank.lean) counts the monomials of degree `m`:
+`Finsupp.finite_degree_eq` and `Finsupp.natCard_degree_eq` (`(|σ| + m - 1).choose m`, stars and
+bars), with `MvPolynomial.finrank_homogeneousSubmodule_eq` through `homogeneousPieceBasis` and the
+monomial basis `homogeneousSubmoduleEquivFinFun : R[x]_m ≃ₗ[R] R^N`.
+[HomogeneousBaseChange](HomogeneousBaseChange.lean) builds
+`homogeneousSubmoduleBaseChangeEquiv σ m A B : B ⊗[A] A[x]_m ≃ₗ[B] B[x]_m` on
+`homogeneousPieceEquivFinsupp`; it sends `b ⊗ q` to `b • q` and turns `f ⊗ id` into
+`(gradedMap f).gradedAddHom m`. The Hilbert-scheme Grassmannian point consumes both.
+
 [DegreeOne](DegreeOne.lean) supplies the original coordinate basis
 `homogeneousDegreeOneBasis` of the actual `homogeneousSubmodule ι R 1`.
 Its native basis coordinates are exactly `coeff (Finsupp.single i 1)`,
