@@ -1572,6 +1572,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Site
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Splitting
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Standard
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StructureSheaf.Basic
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Basic
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Colimit
 public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
