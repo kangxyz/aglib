@@ -1,6 +1,8 @@
 # Authors: kangxyz
 """Fixed behavioral regressions for portable source discovery and policy guards."""
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -8,7 +10,8 @@ from check_library_layout import check_layout, import_cycles, forbidden_domain_i
 from check_placeholders import check_placeholders
 from check_source_policy import check_source_policy
 from library_sources import lean_imports, module_path, test_modules as positive_modules
-from library_sources import is_import_surface, uses_module_system
+from library_sources import (is_import_surface, uses_module_system, generate_topic,
+                             GENERATED_MARKER, LEGACY_GENERATED_MARKER)
 
 HEADER = 'module\npublic import Mathlib.Data.Nat.Basic\n@[expose] public section\n'
 
@@ -363,6 +366,87 @@ end Field.DivisorData
                      'Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus.KTheory.Bad',
                      'Aglib.Other.Cech.Resolution.Plus']:
             self.assertTrue(forbidden_domain_import(name))
+
+
+class TopicGenerationTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix='aglib-topic-generation-')
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        self.directory = self.root / 'Aglib/NewFamily'
+        self.directory.mkdir(parents=True)
+        self.leaf = self.directory / 'First.lean'
+        self.leaf.write_text(HEADER + 'def first : Nat := 1\n')
+        self.native_root = self.root / 'Aglib.lean'
+        self.native_root.write_text('module\n')
+        self.facade = self.root / 'Aglib/NewFamily.lean'
+
+    def test_new_topic_gets_exemption_and_keeps_it_after_growth(self):
+        self.assertEqual(generate_topic(self.root, 'Aglib.NewFamily'), Path('Aglib/NewFamily.lean'))
+        first = self.facade.read_text()
+        self.assertIn(GENERATED_MARKER, first)
+        self.assertIn('set_option linter.style.longFile 0\n', first)
+        self.assertEqual(lean_imports(first), ['Aglib.NewFamily.First'])
+        (self.directory / 'Second.lean').write_text(HEADER)
+        generate_topic(self.root, 'Aglib.NewFamily')
+        grown = self.facade.read_text()
+        self.assertEqual(lean_imports(grown), ['Aglib.NewFamily.First', 'Aglib.NewFamily.Second'])
+        self.assertEqual(grown.count('set_option linter.style.longFile 0'), 1)
+        self.assertTrue(is_import_surface(grown))
+        self.assertEqual(self.native_root.read_text(), 'module\n')
+        self.assertEqual(self.leaf.read_text(), HEADER + 'def first : Nat := 1\n')
+
+    def test_nested_new_topic_needs_no_registry_entry(self):
+        nested = self.directory / 'Nested'
+        nested.mkdir()
+        (nested / 'Leaf.lean').write_text(HEADER)
+        generate_topic(self.root, 'Aglib.NewFamily.Nested')
+        source = nested.with_suffix('.lean').read_text()
+        self.assertEqual(lean_imports(source), ['Aglib.NewFamily.Nested.Leaf'])
+        self.assertIn('set_option linter.style.longFile 0', source)
+
+    def test_legacy_owned_entry_preserves_credits_and_retires_finite_limit(self):
+        prefix = ('/-\nCopyright (c) 2026 Original contributors.\n'
+                  'Released under Apache 2.0 license as described in the file LICENSE.\n'
+                  'Authors: Original Author\n-/\n\n')
+        self.facade.write_text(prefix + LEGACY_GENERATED_MARKER + 'module\n'
+                              'public import Aglib.NewFamily.First\n'
+                              'set_option linter.style.longFile 3100\n')
+        generate_topic(self.root, 'Aglib.NewFamily')
+        source = self.facade.read_text()
+        self.assertTrue(source.startswith(prefix + GENERATED_MARKER))
+        self.assertIn('set_option linter.style.longFile 0', source)
+        self.assertNotIn('3100', source)
+
+    def test_manual_and_mislabelled_implementation_entries_are_preserved(self):
+        for original in ('module\npublic import Aglib.NewFamily.First\n',
+                         GENERATED_MARKER + HEADER + 'def answer := 42\n'):
+            with self.subTest(original=original):
+                self.facade.write_text(original)
+                with self.assertRaisesRegex(ValueError, 'manually owned or non-import-only'):
+                    generate_topic(self.root, 'Aglib.NewFamily')
+                self.assertEqual(self.facade.read_text(), original)
+
+    def test_native_root_tests_and_missing_topics_are_not_generated(self):
+        for name in ('Aglib', 'AglibTest.NewFamily', 'Aglib.Missing', '../Outside'):
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                generate_topic(self.root, name)
+        self.assertFalse(self.facade.exists())
+        self.assertEqual(self.native_root.read_text(), 'module\n')
+
+    def test_cycle_is_rejected_before_writing(self):
+        self.leaf.write_text('module\npublic import Aglib.NewFamily\n')
+        with self.assertRaisesRegex(ValueError, 'consumer of that same entry'):
+            generate_topic(self.root, 'Aglib.NewFamily')
+        self.assertFalse(self.facade.exists())
+
+    def test_actual_cli_generates_only_when_explicitly_requested(self):
+        script = Path(__file__).resolve().parents[1] / 'check_library_layout.py'
+        result = subprocess.run([sys.executable, '-B', str(script), '--root', str(self.root),
+                                 '--generate', 'Aglib.NewFamily'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('longFile = 0', result.stdout)
+        self.assertTrue(self.facade.is_file())
 
 
 if __name__ == '__main__':

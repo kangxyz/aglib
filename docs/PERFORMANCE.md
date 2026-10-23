@@ -51,8 +51,14 @@ following Mathlib's [explicit generated-root exemption](https://github.com/leanp
 Imports, ordinary implementation limits and mathematical checks are unchanged.
 Under Lean 4.34.1 and the pinned Mathlib linter, a bounded native fixture reproduces
 the 3100-line failure, accepts `0`, and still rejects an ordinary file at 1500.
-This is scoped linter evidence, not a full-library CI pass or a general automatic
-entry-classification mechanism. Future-entry automation is a separate change.
+This is scoped linter evidence, not a full-library CI pass.
+
+Topic generation now uses the existing layout command's explicit `--generate
+Aglib.Topic` mode. It always writes `longFile 0` for new and refreshed generated
+entries; existing generated topics carry the same setting. It does not infer
+exemptions from arbitrary proof-file contents.
+Generator fixtures cover new and nested topics, source growth, ownership and
+retained root/implementation bytes. Native root generation and CI are unchanged.
 
 ## Keep one representation of module sections
 

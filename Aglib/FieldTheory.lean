@@ -92,3 +92,6 @@ public import Aglib.FieldTheory.Units.CyclicQuotientDescent
 All modules in the `Aglib.FieldTheory` family.
 Use an individual module import for a smaller dependency closure.
 -/
+
+-- Generated import entries grow with the source graph.
+set_option linter.style.longFile 0

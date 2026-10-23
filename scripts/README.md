@@ -40,7 +40,7 @@ native helper without a frozen request or CI-baseline protocol.
 
 | Retained tool | Purpose |
 | --- | --- |
-| `check_library_layout.py` | Source import resolution, production dependency boundary, modern exports, precise imports and cycles; native `mk_all` checks production entry generation. |
+| `check_library_layout.py` | Source import resolution, production dependency boundary, modern exports, precise imports and cycles; `--generate MODULE` writes one selected topic entry. |
 | `check_placeholders.py` | Reject placeholders and custom-axiom tokens in production, in-package tests and standalone client source, masking comments and strings. This is not a transitive axiom audit. |
 | `check_source_policy.py` | Retain finite local heartbeat, option, source-safety and author-credit checks. |
 | `library_sources.py` | Library-specific inventory/routing over the shared Lean grammar. |
@@ -48,8 +48,14 @@ native helper without a frozen request or CI-baseline protocol.
 | `resource_guard.py` | Compatibility CLI delegating one explicit command to shared resource limits and owned-process monitoring. |
 | `migration_helpers.py` | Read-only inspection of historical extraction sources with explicit source revision/hash. Retired writer functions continue to fail before writes. |
 
-Mathlib `mk_all` replaces the custom aggregate generator. Native Test uses the
-package test glob without a generated test umbrella. The upstream production
+Mathlib `mk_all` owns the production root. For a new topic with existing source,
+or an existing generator-owned topic entry, run
+`python3 scripts/check_library_layout.py --generate Aglib.Topic`; then use
+`lake exe mathlib/mk_all --lib Aglib` when root enrollment changes. Generated
+topic entries always use `set_option linter.style.longFile 0`, so future growth
+needs no recalculated line allowance. Manually maintained entries retain their
+ownership. Native Test uses the package test glob without a generated test
+umbrella. The upstream production
 axiom auditor replaces duplicate custom origin audits and rejection controls.
 Its recorded scope is not relabelled as the former checked-environment predicate.
 The removed orchestration/cache scripts are not a second local or remote check
