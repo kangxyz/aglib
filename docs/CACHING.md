@@ -100,8 +100,16 @@ also recover existing cache generations during the key-format migration.
 Restored files are candidates: the ordinary `lake build --rehash` evaluates
 current sources, imports, options and compiler identity before reusing outputs.
 Each run still saves an immutable cache generation. Test restores this run's
-Build outputs and retains its existing checks. Quillen and Motivic pin this
-workflow independently of their mathematical dependencies.
+Build outputs and retains its existing checks. If the optional Actions restore
+misses or fails, Test restores Build's same-run native `artifacts/` and
+`outputs/` snapshot, then obtains pinned Mathlib artifacts before overlaying the
+mandatory current-run root archive. This includes unpublished dependency outputs
+compiled by Build. The snapshot excludes package checkouts and working build
+directories; streamed zstd compression avoids an uncompressed tar copy, and a
+warm Test does not download it. Test keeps the same no-build production
+verification. The Mathlib command is shared with Build through a YAML alias.
+Quillen and Motivic pin this workflow independently of their mathematical
+dependencies.
 
 Before compilation, Build also imports published native caches for resolved
 `kangxyz/*` Git dependencies, including inherited ones. It prefers exact producer
@@ -183,17 +191,9 @@ asset already exists or has been downloaded. Remote transport operation needs
 evidence from successful producer and
 downstream restore runs, such as the historical rollout recorded below.
 
-The manual [cache-client acceptance workflow](../.github/workflows/cache-client.yml)
-checks real Linux producer-to-Quillen delivery independently of full library CI.
-Dispatch it only after an Aglib producer cache release has been published. It
-checks out Quillen main and this workflow revision's separate tooling, fetches
-the existing pinned Mathlib prerequisites, and requires a public Aglib import
-into a newly empty isolated native cache. A remote miss fails this acceptance
-run. `lake --rehash --no-build build Aglib` must then succeed without upstream
-proof compilation, followed by one scratch Tensor/Span import. Logs record both
-actual producer and consumer revisions. The workflow is manual-only, has its own
-concurrency group and read-only repository permissions, uploads its evidence,
-and does not build Quillen mathematics or publish caches.
+The obsolete manual cache-client diagnostic has been retired. Its historical
+results below retain their original producer and consumer basis; routine CI
+now acquires native dependency caches through the shared workflow.
 
 ### Recorded initial rollout
 

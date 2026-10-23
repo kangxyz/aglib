@@ -10,6 +10,8 @@ lintDriverArgs = ["--no-build", "Aglib"]
 builtinLint = true
 enableArtifactCache = true
 restoreAllArtifacts = true
+# Resource-only flags retain the native artifact trace.
+weakLeanArgs = ["-M12800", "-j2"]
 
 [[lean_lib]]
 name = "Aglib"
