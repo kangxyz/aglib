@@ -1488,6 +1488,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FibrewiseC
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FibrewiseClosed.Geometry
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FibrewiseClosed.PointLift
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FibrewiseClosed.Site
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Projection
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Skyscraper
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.StalkUniverse
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections

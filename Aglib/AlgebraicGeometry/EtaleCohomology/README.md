@@ -14,7 +14,7 @@ Its principal declaration namespace is
 | [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses |
 | [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback and bounded-below `D+` comparison maps. The D source supplies the original H1 square and ordinary, derived, and all-degree identity/pasting equations through native comparisons; exchange invertibility, proper base change, and unbounded scope remain open. |
 | [Fibrewise-closed geometric points](GeometricPoints/FibrewiseClosed/README.md) | Under only `LocallyOfFiniteType p`, genuine geometric-point lifts detect covers on every object of the actual small-etale site; the resulting `Point.{u+1}` family detects isomorphisms of `AbelianSheaf.{u,u+1}`. No Ext or proper-base-change theorem is asserted. |
-| [Original geometric stalks](GeometricPoints/FibrewiseClosed/README.md) | The canonical larger-point to original `pointSmallEtale` stalk comparison applies to every `AbelianSheaf.{u,u+1}`; only the separate isomorphism-detection consumer needs `LocallyOfFiniteType p`. |
+| [Original stalks](GeometricPoints/FibrewiseClosed/README.md) and [inverse image](GeometricPoints/InverseImage/README.md) | The canonical `pointSmallEtale` stalk comparison and original inverse-image `stalkUnit` isomorphism hold for every standard-value abelian sheaf; only the separate fibrewise-closed detection consumer needs `LocallyOfFiniteType p`. |
 
 Use focused imports, for example:
 
@@ -74,18 +74,29 @@ stated boundaries are not a proper-base-change theorem.
 | [Strictly local](StrictlyLocal/README.md) | For henselian local rings with separably closed residue field: arbitrary jointly surjective étale families split, terminal covering sieves are maximal, and original positive-degree `Sheaf.H` vanishes for arbitrary value and Ext universes under native existence assumptions. These are suppliers, not a proper-base-change theorem. |
 | [Artin–Schreier](ArtinSchreier/README.md) | Actual finite étale surjective root covers for global sections when the prime maps to zero; the lower finite/free root algebra is owned by [RingTheory/Etale](../../RingTheory/Etale/README.md). The full additive sheaf sequence remains open. |
 | [Binary-form product](../ProjectiveSpace/BinaryFormProduct/README.md) | The actual finite surjective map to projective space has a cartesian coefficient-map square under every commutative-ring map and every degree `n`, including zero. This is an available projective geometric input, not a proper-base-change theorem. |
+| [Amitsur module complex](../../Algebra/Homology/Amitsur/README.md) | Under faithfully flat scalar extension, the actual augmented module Amitsur complex is exact in every degree and the unaugmented complex has zero positive homology for arbitrary coefficient modules. This is algebraic module exactness, not étale-sheaf acyclicity. |
 
-## Original geometric stalks at the standard value universe
+## Original geometric stalks and inverse images
 
-[StalkUniverse](GeometricPoints/StalkUniverse.lean) constructs
-the canonical natural isomorphism from `FibrewiseClosed.largePoint η` to the
-original `pointSmallEtale η` sheaf fibre for every actual
-`AbelianSheaf.{u,u+1} T`. Its germ formula sends the lifted witness
-`ULift.up x` to the same original geometric Hom witness `x`; the map is natural
-for every coefficient morphism. The comparison itself has no FLC, `HasExt`, or
-`LocallyOfFiniteType` premise.
+[StalkUniverse](GeometricPoints/StalkUniverse.lean) compares the canonical
+`FibrewiseClosed.largePoint η` sheaf fibre with the original
+`pointSmallEtale η` fibre for every actual `AbelianSheaf.{u,u+1}`. The
+isomorphism uses the literal lifted Hom witness and is natural for every
+coefficient morphism. The comparison itself requires no finite-local-constant,
+Ext, or `LocallyOfFiniteType` premise.
 
-The separate `isIso_of_original_geometricStalks` consumer uses the original
-small-etale stalks and assumes only `[LocallyOfFiniteType p]`; it is not a
-proper-base-change theorem. General inverse-image `stalkUnit` bijectivity
-remains a separate open question.
+[InverseImage](GeometricPoints/InverseImage/README.md) proves that for every
+morphism `f : S ⟶ X`, geometric point `η : Spec Ω ⟶ S`, and actual
+`L : AbelianSheaf.{u,u+1} X`, the original `stalkUnit f η L` is an isomorphism.
+Its natural-isomorphism component is definitionally that original map, and the
+germ formula retains the original section and `pulledBackPoint`. It is natural
+in coefficient maps and agrees with the existing represented-coefficient
+isomorphism when a representation is supplied. No FLC, Ext, or
+`LocallyOfFiniteType` condition is required for this stalk comparison. General
+inverse-image stalk-unit bijectivity at wider coefficient universes remains
+outside scope; no proper-base-change theorem is asserted.
+
+The separate detection consumer
+`isIso_of_original_geometricStalks` continues to require
+`[LocallyOfFiniteType p]`. That geometric condition belongs to the
+isomorphism-detection theorem, not to the stalk-unit comparison.

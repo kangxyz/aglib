@@ -50,9 +50,12 @@ fibre with the original `pointSmallEtale` sheaf fibre for every actual
 `AbelianSheaf.{u,u+1}`. Its forward germ formula sends the lift `ULift.up x`
 to the same original geometric Hom witness `x`; the natural isomorphism is
 natural in every coefficient morphism. This comparison requires no FLC, Ext,
-or `LocallyOfFiniteType` premise.
+or `LocallyOfFiniteType` premise. The accompanying
+[InverseImage](../InverseImage/README.md) result proves the original inverse-
+image `stalkUnit` isomorphism for every standard-value abelian sheaf and every
+geometric inverse-image morphism, preserving the germ, coefficient-map, and
+point-pullback formulas. Wider coefficient universes remain outside its scope.
 
 The original-stalk isomorphism-detection consumer
 `isIso_of_original_geometricStalks` uses `[LocallyOfFiniteType p]`, exactly at
-that detection statement. This adds no full proper-base-change theorem. General
-inverse-image `stalkUnit` bijectivity remains open.
+that detection statement. These stalk results do not assert proper base change.

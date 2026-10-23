@@ -47,3 +47,8 @@ works for every actual finite locally constant abelian sheaf. The corresponding
 sections and original `H0` maps are documented in
 [H0/ProperHenselian](../H0/README.md). These finite-coefficient conclusions
 do not assert arbitrary-sheaf proper base change.
+
+The [all-coefficient stalk inverse-image comparison](../GeometricPoints/InverseImage/README.md)
+proves the original `stalkUnit` isomorphism for every standard-value abelian
+sheaf, independently of finite-local-constant or Ext hypotheses. This is a
+stalk comparison, not an H1 or proper-base-change theorem.
