@@ -78,6 +78,63 @@ jobs:
       - name: Get Mathlib cache
         working-directory: ${{ inputs.package-directory }}
         run: lake exe cache get
+      - name: Restore published native dependency caches
+        working-directory: ${{ inputs.package-directory }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          compiler=$(lean --version)
+          domain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"
+          while IFS=$'\t' read -r package repository pin; do
+            exact=$(gh api "repos/$repository/releases/tags/lean-native-$pin" 2>/dev/null) || exact=null
+            recent=$(gh api "repos/$repository/releases?per_page=20" 2>/dev/null) || recent='[]'
+            candidates=$(printf '%s' "$recent" | jq -r --argjson exact "$exact" --arg domain "$domain" '
+              [([$exact] + (map(select(.id != $exact.id)) | sort_by(.published_at) | reverse))[] | select(.draft == false)
+              | select(.tag_name | test("^lean-native-[0-9a-f]{40}$"))
+              | select(.target_commitish == (.tag_name | ltrimstr("lean-native-")))
+              | .tag_name as $tag | (.assets | sort_by(.created_at) | reverse)[]
+              | select((.name | startswith("lake-native-cache-" + $domain + "-"))
+                  or (.name | test("^lake-native-cache-[0-9]+-[0-9]+[.]tar$")))
+              | [$tag, .name]][:5][] | @tsv') || candidates=''
+            imported=false
+            while IFS=$'\t' read -r tag asset; do
+              test -n "$tag" || continue
+              temporary=$(mktemp -d "$RUNNER_TEMP/native-seed.XXXXXX")
+              if gh release download "$tag" --repo "$repository" --pattern "$asset" --dir "$temporary"; then
+                archive="$temporary/$asset"
+                # Native staging contains flat regular files, never links or nested paths.
+                if tar -tvf "$archive" | awk 'substr($1,1,1)!="-" && !(substr($1,1,1)=="d" && $NF=="./") {exit 1}' &&
+                    tar -tf "$archive" | awk '!/^(\.\/)?$|^(\.\/)?(outputs[.]jsonl|producer[.]json|[0-9a-f]{16}([.][A-Za-z0-9_.+-]+)?)$/ {bad=1} END {exit bad}'; then
+                  mkdir "$temporary/staged"
+                  if tar -xf "$archive" -C "$temporary/staged"; then
+                    compatible=false
+                    if test -f "$temporary/staged/producer.json"; then
+                      if jq -e --arg repository "$repository" --arg revision "${tag#lean-native-}" \
+                          --arg package "${package#«}" --arg domain "$domain" --arg compiler "$compiler" '
+                          .repository == $repository and .revision == $revision
+                          and .package == ($package | rtrimstr("»"))
+                          and .domain == $domain and .compiler == $compiler' \
+                          "$temporary/staged/producer.json" >/dev/null; then compatible=true; fi
+                    elif [[ "$asset" =~ ^lake-native-cache-[0-9]+-[0-9]+[.]tar$ ]]; then
+                      echo "$package: legacy native seed; current Lake inputs decide applicability."
+                      compatible=true
+                    fi
+                    if "$compatible" && lake cache unstage "$temporary/staged" "$package"; then
+                      echo "$package: imported $repository producer ${tag#lean-native-} for pin $pin."
+                      imported=true
+                    fi
+                  fi
+                fi
+              fi
+              rm -rf "$temporary"
+              "$imported" && break
+            done <<< "$candidates"
+            "$imported" || echo "$package: no compatible published cache; ordinary incremental build."
+          done < <(jq -r '.packages[] | select(.type == "git")
+            | select(.url | test("^https://github[.]com/kangxyz/[^/]+/?$"))
+            | select(.rev | test("^[0-9a-f]{40}$"))
+            | [.name, (.url | sub("^https://github[.]com/"; "") | sub("[.]git/?$"; "") | rtrimstr("/")), .rev]
+            | @tsv' lake-manifest.json)
       - name: Build
         id: build
         continue-on-error: true
@@ -104,6 +161,12 @@ jobs:
         run: |
           if test -s "$RUNNER_TEMP/outputs.jsonl"; then
             lake cache stage "$RUNNER_TEMP/outputs.jsonl" "$RUNNER_TEMP/cache-staging"
+            domain="$RUNNER_OS-$RUNNER_ARCH-$(sha256sum lean-toolchain | cut -c 1-16)"
+            package=$(python3 -c 'import tomllib; print(tomllib.load(open("lakefile.toml", "rb"))["name"])')
+            jq -n --arg repository "$GITHUB_REPOSITORY" --arg revision "$GITHUB_SHA" \
+              --arg package "$package" --arg domain "$domain" --arg compiler "$(lean --version)" \
+              '{repository: $repository, revision: $revision, package: $package, domain: $domain, compiler: $compiler}' \
+              > "$RUNNER_TEMP/cache-staging/producer.json"
             tar -cf "$RUNNER_TEMP/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging" .
             echo 'staged=true' >> "$GITHUB_OUTPUT"
           fi
@@ -325,12 +388,17 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
           REVISION: ${{ github.sha }}
-          ASSET: lake-native-cache-${{ github.run_id }}-${{ github.run_attempt }}.tar
         run: |
+          domain=$(tar -xOf lake-native-cache.tar ./producer.json | jq -er \
+            --arg repository "$REPOSITORY" --arg revision "$REVISION" \
+            'select(.repository == $repository and .revision == $revision).domain')
+          ASSET="lake-native-cache-$domain-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.tar"
           tag="lean-native-$REVISION"
           mv lake-native-cache.tar "$ASSET"
-          if gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"
+          if existing=$(gh release view "$tag" --repo "$REPOSITORY" --json assets --jq '.assets[].name'); then
+            if ! printf '%s\n' "$existing" | grep -Fxq "$ASSET"; then
+              gh release upload "$tag" "$ASSET" --repo "$REPOSITORY"
+            fi
           else
-            gh release create "$tag" "$ASSET" --repo "$REPOSITORY" --target "$REVISION" --latest=false --title "Lean compilation $REVISION" --notes 'Compiled artifacts from successful Build, generated-entry, Test, lint, text-style and production-axiom checks.'
+            gh release create "$tag" "$ASSET" --repo "$REPOSITORY" --target "$REVISION" --prerelease --latest=false --title "Lean compilation $REVISION" --notes 'Compiled artifacts from successful Build, generated-entry, Test, lint, text-style and production-axiom checks.'
           fi

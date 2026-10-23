@@ -55,6 +55,25 @@ inputs, rather than a GitHub cache hit establishing validity. Workflow fixtures
 cover changed pins, legacy keys, preference order and platform separation.
 This repairs cache selection, not runner shutdown or proof elaboration costs.
 
+The first repair covered only same-repository Actions restoration. The native
+migration had also removed Quillen's upstream-release import in `95270559`,
+while the shared publisher retained a different `lean-native-*` format. Restoring
+Quillen's older cache therefore did not acquire newly available Aglib outputs.
+The shared native workflow now connects that publisher to manifest-discovered
+upstream downloads, exact-pin/recent seeds and dependency-scoped `unstage`.
+The native `-o` exporter records root-package outputs only, so inherited upstream
+packages must be fetched separately too.
+
+A bounded Lean 4.34.1 fixture exercised the actual workflow's stage, publication,
+download and import commands for all three package scopes, with GitHub storage
+replaced by a local transport fixture. A fresh consumer reused all three core
+modules with `--no-build --rehash`, including an older Aglib producer at a newer
+consumer pin. Its changed Aglib leaf correctly failed the no-build request and
+compiled only that leaf. Forty workflow tests cover transport fallbacks and
+identity, archive handling, immutable publication and existing check boundaries.
+These are scoped transport/reuse results, not a whole-library CI pass or a timing
+claim. The fix does not identify or prevent the earlier runner shutdown.
+
 ## Generated import entries and file-length limits
 
 [CI run 39951693002](https://github.com/kangxyz/aglib/actions/runs/39951693002)

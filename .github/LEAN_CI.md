@@ -12,7 +12,8 @@ downloads from Reservoir/GitHub. This is separate from
 `LAKE_ARTIFACT_CACHE=true`, which keeps native project artifacts available.
 
 - `build` restores caches, configures the pinned toolchain, obtains the Mathlib
-  cache and incrementally builds only the production targets. It saves completed
+  cache, imports published native caches for resolved `kangxyz/*` Git dependencies,
+  and incrementally builds only the production targets. It saves completed
   compilation, stages the production build's native mappings and outputs, and
   uploads that mathematical artifact for Test. It does not prepare checker tools
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
@@ -58,7 +59,8 @@ downloads from Reservoir/GitHub. This is separate from
   Failed or interrupted Build/Test work retains the always-run Actions cache saves
   where the runner can finish cleanup; this does not authorize release publication.
   First publication creates the release together with its asset and
-  `--latest=false`; later runs append their asset to the existing release.
+  `--prerelease --latest=false`; later runs append an immutable run/platform asset
+  to the existing release, preserving an already uploaded asset.
 
 Native setup follows Mathlib's pinned
 [setup-build-env action](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/.github/actions/setup-build-env/action.yml#L85-L103):
@@ -92,13 +94,23 @@ against native inputs, without requiring checker outputs from Build. It does not
 certify cryptographic provenance or integrity of cache bytes. As in Mathlib, this
 transport relies on trusted cache producers. The downloaded tar is removed after
 native unstaging so subsequent cache saves do not duplicate it.
-Release assets provide a separate manual download interface for local or remote
-consumers; CI does not download these releases. Use `gh release download
-lean-native-<commit> --repo <owner/repo> --pattern
-lake-native-cache-<run>-<attempt>.tar`, extract into a fresh staging directory,
-then run `lake cache unstage <staging-directory> Aglib` from the consumer package
-(substitute the actual dependency name). Lake validates applicability during the
-subsequent build.
+Build discovers accepted `kangxyz/*` Git dependencies from the resolved manifest,
+including inherited dependencies: native `-o` exports only the producer's root
+package, so each upstream needs its own mappings. The existing native release
+transport now serves both CI and explicit local downloads. Fetch the exact
+`lean-native-<pin>` release first; otherwise try at most five matching assets from
+20 recent releases. New asset names include OS, architecture and toolchain;
+`producer.json` binds repository, actual producer SHA, package and full compiler.
+The release tag must target that producer SHA. Downloads register mappings with
+`lake cache unstage <staging-directory> <manifest-package-name>`, retaining quoted
+hyphenated selectors. Logs report producer SHA and consumer pin separately.
+Existing `lake-native-cache-<run>-<attempt>.tar` assets remain optional legacy
+seeds; current Lake input hashes decide their applicability. Downloads use the
+normal repository token's public-read access, without a cross-repository secret.
+Unavailable or incompatible seeds leave the ordinary incremental build in place.
+Archives are unpacked only as flat regular native files, and temporary downloads
+are removed before saving the Actions cache. This is cache acquisition, not an
+additional mathematical check. Build/Test/publication conditions are unchanged.
 
 The focused regression suite uses Python and PyYAML:
 `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_lean_ci_workflow.py -v`.

@@ -1,6 +1,6 @@
 # Native Lean artifact cache
 
-Aglib, Quillen and R5Lab enable Lean **4.34.1** Lake's native artifact cache with
+Aglib, Quillen, Motivic and R5Lab enable Lean **4.34.1** Lake's native artifact cache with
 `enableArtifactCache = true` and `restoreAllArtifacts = true` in their package
 configuration. Lake shares immutable content-addressed artifacts and native
 input-to-output mappings across checkouts and dependency positions. It restores
@@ -100,9 +100,18 @@ also recover existing cache generations during the key-format migration.
 Restored files are candidates: the ordinary `lake build --rehash` evaluates
 current sources, imports, options and compiler identity before reusing outputs.
 Each run still saves an immutable cache generation. Test restores this run's
-Build outputs and retains its existing checks; no extra restoration step or
-check job is added. Quillen and Motivic pin this workflow independently of their
-mathematical dependencies.
+Build outputs and retains its existing checks. Quillen and Motivic pin this
+workflow independently of their mathematical dependencies.
+
+Before compilation, Build also imports published native caches for resolved
+`kangxyz/*` Git dependencies, including inherited ones. It prefers exact producer
+releases, then compatible recent seeds. Scoped assets carry producer identity
+and compiler metadata, and mappings are registered under the dependency's own
+Lake package name. Existing native release archives remain usable as legacy
+seeds. Producer SHA and configured pin stay distinct. The
+[workflow guide](../.github/LEAN_CI.md) owns the transport details. Partial progress
+is saved through Actions caches; public releases still require successful Build
+and Test. The cache transport adds no mathematical acceptance stage.
 
 The [legacy composite action](../.github/actions/lake-cache/action.yml) and its
 adjacent adapter below remain available for explicitly selected compatibility

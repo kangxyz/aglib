@@ -1,5 +1,8 @@
 """Exercise native workflow failure gates without running Lean (requires PyYAML)."""
 import os
+import io
+import hashlib
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -300,6 +303,119 @@ timeout() {
                     ] * attempts)
 
 
+class PublishedDependencyTransport(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix='native-dependency-cache-')
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        (self.root / 'lean-toolchain').write_text('fixture\n')
+        self.domain = 'Linux-X64-' + hashlib.sha256(b'fixture\n').hexdigest()[:16]
+        self.pin, self.seed = '1' * 40, '2' * 40
+        self.releases = []
+        self.package = 'Aglib'
+        self.dependencies = [{'name': self.package, 'type': 'git', 'inherited': True,
+                              'url': 'https://github.com/kangxyz/aglib.git', 'rev': self.pin}]
+
+    def release(self, revision, *, changes=None, legacy=False, unsafe=False):
+        index = len(self.releases) + 1
+        name = (f'lake-native-cache-{index}-1.tar' if legacy else
+                f'lake-native-cache-{self.domain}-{index}-1.tar')
+        metadata = dict(repository='kangxyz/aglib', revision=revision, domain=self.domain,
+                        package=self.package.strip('«»'), compiler='Lean fixture')
+        metadata.update(changes or {})
+        with tarfile.open(self.root / name, 'w') as archive:
+            entries = {'./outputs.jsonl': b'fixture native mappings'}
+            if not legacy:
+                entries['./producer.json'] = json.dumps(metadata).encode()
+            if unsafe:
+                entries['../escape'] = b'not a native staging member'
+            for path, content in entries.items():
+                member = tarfile.TarInfo(path)
+                member.size = len(content)
+                archive.addfile(member, io.BytesIO(content))
+        release = dict(id=index, draft=False, tag_name='lean-native-' + revision,
+                       target_commitish=revision, assets=[dict(name=name, created_at=str(index))])
+        self.releases.append(release)
+        return release
+
+    def run_restore(self, *, offline=False):
+        (self.root / 'lake-manifest.json').write_text(json.dumps({'packages': self.dependencies}))
+        exact = next((r for r in self.releases if r['tag_name'] == 'lean-native-' + self.pin), None)
+        (self.root / 'exact.json').write_text(json.dumps(exact))
+        (self.root / 'recent.json').write_text(json.dumps(list(reversed(self.releases))))
+        mock = r"""
+lean() { printf 'Lean fixture\n'; }
+gh() {
+  printf 'gh:%s\n' "$*" >> "$TRACE"
+  test "$OFFLINE" = 0 || return 1
+  if test "$1" = api; then
+    if [[ "$2" == */tags/* ]]; then cat "$FIXTURE/exact.json";
+    else cat "$FIXTURE/recent.json"; fi
+  else
+    cp "$FIXTURE/$7" "$9/$7"
+  fi
+}
+lake() { printf 'lake:%s\n' "$4" >> "$TRACE"; }
+"""
+        result = subprocess.run(
+            ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
+                'build', 'Restore published native dependency caches')['run']],
+            cwd=self.root, env={**os.environ, 'RUNNER_TEMP': str(self.root), 'RUNNER_OS': 'Linux',
+                               'RUNNER_ARCH': 'X64', 'TRACE': str(self.root / 'trace'),
+                               'FIXTURE': str(self.root), 'OFFLINE': str(int(offline))},
+            capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        trace = (self.root / 'trace').read_text().splitlines() if (self.root / 'trace').exists() else []
+        return result.stdout, trace
+
+    def test_exact_pin_wins_and_inherited_dependency_is_not_skipped(self):
+        self.release(self.pin)
+        self.release(self.seed)
+        output, trace = self.run_restore()
+        self.assertIn('producer ' + self.pin, output)
+        self.assertEqual([line for line in trace if line.startswith('lake:')], ['lake:Aglib'])
+        self.assertEqual(sum('release download' in line for line in trace), 1)
+
+    def test_package_scope_preserves_quoted_hyphenated_selectors(self):
+        self.package = '«quillen-k-theory»'
+        self.dependencies[0]['name'] = self.package
+        self.release(self.pin)
+        _, trace = self.run_restore()
+        self.assertIn('lake:«quillen-k-theory»', trace)
+
+    def test_recent_legacy_native_asset_can_seed_a_missing_pin(self):
+        self.release(self.seed, legacy=True)
+        output, trace = self.run_restore()
+        self.assertIn('legacy native seed', output)
+        self.assertIn('producer ' + self.seed + ' for pin ' + self.pin, output)
+        self.assertIn('lake:Aglib', trace)
+
+    def test_incompatible_or_unsafe_exact_asset_falls_back_before_unstage(self):
+        cases = [{'repository': 'other/project'}, {'revision': self.seed},
+                 {'package': 'Foreign'}, {'domain': 'other-platform'}, {'compiler': 'other-compiler'}, None]
+        for changes in cases:
+            with self.subTest(changes=changes):
+                self.releases = []
+                (self.root / 'trace').unlink(missing_ok=True)
+                self.release(self.pin, changes=changes, unsafe=changes is None)
+                self.release(self.seed)
+                output, trace = self.run_restore()
+                self.assertIn('producer ' + self.seed + ' for pin ' + self.pin, output)
+                self.assertEqual([line for line in trace if line.startswith('lake:')], ['lake:Aglib'])
+                self.assertFalse((self.root / 'escape').exists())
+
+    def test_optional_download_outage_retains_ordinary_build_fallback(self):
+        output, trace = self.run_restore(offline=True)
+        self.assertIn('ordinary incremental build', output)
+        self.assertFalse(any(line.startswith('lake:') for line in trace))
+
+    def test_foreign_repository_and_non_git_dependencies_are_not_downloaded(self):
+        self.dependencies = [dict(self.dependencies[0], url='https://github.com/other/aglib.git'),
+                             dict(self.dependencies[0], type='path')]
+        _, trace = self.run_restore()
+        self.assertEqual(trace, [])
+
+
 class RootSelectionAndPublication(unittest.TestCase):
     def test_lint_commands_pass_all_roots_as_native_arguments(self):
         for job, name, expected in (
@@ -321,19 +437,32 @@ class RootSelectionAndPublication(unittest.TestCase):
     def test_existing_release_appends_asset(self):
         self.run_publication(exists=True)
 
+    def test_existing_immutable_asset_is_preserved(self):
+        self.run_publication(exists=True, asset_exists=True)
+
     def test_release_failures_are_not_masked(self):
         for exists in (False, True):
             with self.subTest(exists=exists):
                 self.run_publication(exists=exists, status=1)
 
-    def run_publication(self, *, exists, status=0):
+    def run_publication(self, *, exists, status=0, asset_exists=False):
         with tempfile.TemporaryDirectory(prefix='lean-ci-release-') as directory:
             root = Path(directory)
-            (root / 'lake-native-cache.tar').write_text('native artifact')
+            producer = {'repository': 'fixture/aglib', 'revision': '0123456',
+                        'domain': 'Linux-X64-fixture'}
+            content = json.dumps(producer).encode()
+            with tarfile.open(root / 'lake-native-cache.tar', 'w') as archive:
+                member = tarfile.TarInfo('./producer.json')
+                member.size = len(content)
+                archive.addfile(member, io.BytesIO(content))
             mock = r'''
 gh() {
   printf '%s\n' "$*" >> "$TRACE"
-  if test "$2" = view; then return "$VIEW_STATUS"; fi
+  if test "$2" = view; then
+    test "$VIEW_STATUS" = 0 || return "$VIEW_STATUS"
+    printf '%s\n' "$EXISTING_ASSET"
+    return 0
+  fi
   test -s "$ASSET" || return 99
   return "$PUBLISH_STATUS"
 }
@@ -343,20 +472,24 @@ gh() {
                  mock + step('upload_cache', 'Publish staged compilation')['run']],
                 cwd=root, env={**os.environ, 'TRACE': directory + '/trace',
                                'VIEW_STATUS': '0' if exists else '1',
-                               'PUBLISH_STATUS': str(status), 'ASSET': 'native-1-1.tar',
+                               'PUBLISH_STATUS': str(status), 'GITHUB_RUN_ID': '1', 'GITHUB_RUN_ATTEMPT': '1',
+                               'EXISTING_ASSET': 'lake-native-cache-Linux-X64-fixture-1-1.tar' if asset_exists else '',
                                'REPOSITORY': 'fixture/aglib', 'REVISION': '0123456'},
                 capture_output=True, text=True, check=False)
             self.assertEqual(result.returncode, status, result.stderr)
             commands = (root / 'trace').read_text().splitlines()
-            self.assertEqual(len(commands), 2)
+            self.assertEqual(len(commands), 1 if asset_exists else 2)
             self.assertTrue(commands[0].startswith('release view lean-native-0123456 '))
+            if asset_exists:
+                return
             if exists:
                 self.assertEqual(commands[1],
-                                 'release upload lean-native-0123456 native-1-1.tar --repo fixture/aglib')
+                                 'release upload lean-native-0123456 lake-native-cache-Linux-X64-fixture-1-1.tar --repo fixture/aglib')
             else:
                 self.assertTrue(commands[1].startswith(
-                    'release create lean-native-0123456 native-1-1.tar '))
+                    'release create lean-native-0123456 lake-native-cache-Linux-X64-fixture-1-1.tar '))
                 self.assertIn('--latest=false', commands[1])
+                self.assertIn('--prerelease', commands[1])
 
 
 class CurrentArtifactTransfer(unittest.TestCase):
@@ -476,7 +609,10 @@ lake() {
             build = root / 'build'
             build.mkdir()
             (build / 'outputs.jsonl').write_text('current native outputs')
+            (build / 'lean-toolchain').write_text('fixture\n')
+            (build / 'lakefile.toml').write_text('name = \"Fixture\"\n')
             mock = r"""
+lean() { printf 'Lean fixture\n'; }
 lake() {
   if test "$2" = stage; then
     mkdir -p "$4"
@@ -492,11 +628,13 @@ lake() {
                 ['bash', '-e', '-o', 'pipefail', '-c', mock + step(
                     'build', 'Stage completed native outputs')['run']],
                 env={**os.environ, 'RUNNER_TEMP': str(build), 'COPYFILE_DISABLE': '1',
-                     'GITHUB_OUTPUT': str(root / 'stage-output')}, capture_output=True, text=True)
+                     'GITHUB_OUTPUT': str(root / 'stage-output'), 'RUNNER_OS': 'Linux', 'RUNNER_ARCH': 'X64',
+                     'GITHUB_REPOSITORY': 'fixture/package', 'GITHUB_SHA': '0123456'},
+                cwd=build, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual((root / 'stage-output').read_text(), 'staged=true\n')
             with tarfile.open(build / 'lake-native-cache.tar') as archive:
-                self.assertEqual(archive.getnames(), ['.', './outputs.jsonl'])
+                self.assertEqual(set(archive.getnames()), {'.', './outputs.jsonl', './producer.json'})
             test = root / 'test'
             download = test / 'download'
             download.mkdir(parents=True)
