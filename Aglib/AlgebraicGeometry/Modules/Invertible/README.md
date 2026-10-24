@@ -83,6 +83,25 @@ chart generators to the chart generators. The forward map is adjoint to `toPushf
 and the inverse is `toPullback`. Both composites are checked on generators
 (`hom_ext_generator`), so no local trivialization of the pullback is computed.
 
+[Gluing/Cohomologous](Gluing/Cohomologous.lean) compares unit cocycles `c`, `c'` on the same cover.
+`Cohomologous c c' u` says `c'ᵢⱼ uⱼ = cᵢⱼ uᵢ` for units `uᵢ` on the charts; `sheafIsoOfCohomologous`
+glues such units to an isomorphism of the glued sheaves (sending the generator of chart `i` to `uᵢ`
+times the generator), and `exists_cohomologous_of_iso` recovers the units from any isomorphism. The
+trivial cocycle `1` glues to the structure sheaf (`oneSheafIso`), and `twist` changes the frames by
+units. Hence `classOf_lineBundle_eq_iff` and `classOf_lineBundle_eq_zero_iff`: glued line bundles
+have equal classes exactly when their cocycles are cohomologous (the torsor form is Stacks, Tag
+0B8R). The leaf also has `Scheme.Modules.val_app_smul`, the `f.val.app (op V)` form of Mathlib's
+`Scheme.Modules.Hom.app_smul` with the scalar typed in `Γ(X, V)`.
+[Gluing/Tensor](Gluing/Tensor.lean) proves that the sheafified tensor product of the glued sheaves
+of `c` and `c'` is the glued sheaf of the product cocycle `c * c'` (`tensorIso`, forward map the
+section product, as for `ProjectiveSpace.twistingTensorIso`), so `classOf_lineBundle_mul` adds the
+classes. [Gluing/PullbackCocycle](Gluing/PullbackCocycle.lean) constructs, for a family `U'` with
+`f⁻¹(U i) = U' i`, the cocycle of the pulled-back transition units `f^#(cᵢⱼ)`
+(`UnitCocycle.pullbackCocycle`; `ProjectiveSpace.FromSections.pullbackCocycle` is the case
+`U' i = f⁻¹(U i)`). The pullback of the glued line bundle has the class of the line bundle glued
+from it (`classOf_pullbackLineBundle`). No hypothesis on `X` or on the cover is used beyond
+`iSup U = ⊤` and, for the pullback, `f⁻¹(U i) = U' i`. Consumer: `Picard/Tangent/Cech`.
+
 [TensorFunctorAssociator/Sections](TensorFunctorAssociator/Sections.lean)
 records the original left/right tensor-unit and nested pure-section
 formulas. `moduleLineTensorAssociator_hom_section` and `_inv_section`

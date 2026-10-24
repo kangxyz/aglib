@@ -199,6 +199,29 @@ only the étale form `FrameTensor.picardH1Equiv`. No separatedness, quasi-compac
 Noetherian hypothesis on `X` is used. The focused test is
 `AglibTest.AlgebraicGeometry.Picard.Tangent`.
 
+[Tangent/Cech](Tangent/Cech/DualNumbers.lean) computes the kernel of `i^* : Pic(Y) → Pic(X)` by Čech
+cocycles, without the premise `UnitsCohomologyComparison`. For a split thickening with an
+`IdealGenerator` (`Tangent/Cech/Units`: the units `1 + ε p^♯ b`, and on affine opens the units with
+reduction 1 are exactly these), a pair cocycle `b` on a cover `U` of `X` gives the unit cocycle
+`1 + ε b` on `p⁻¹ U` and the class `cocycleClass U hU b` (`Tangent/Cech/Cocycle`), an additive map
+into `ker i^*` whose kernel is the pair coboundaries when the `U j` are affine.
+`Tangent/Cech/Frames` shows every class in `ker i^*` arises, when `U j`, `p⁻¹ U j` and `U j ⊓ U l`
+are affine: frames on `p⁻¹ U j` come from `exists_lineBundle_iso_lift_affine_of_square_zero`, and
+the frame cocycle is normalized to reduction 1 through `UnitCocycle.pullbackIso` along `i`.
+`Tangent/Cech/Equiv` gives `IdealGenerator.pairCohomologyEquivKer : PairCohomology U ≃+ ker i^*`.
+For the dual numbers (`Tangent/Cech/DualNumbers`), let `k` be any commutative ring, `X` a scheme
+over `Spec k`, and `U` a cover (`iSup U = ⊤`) by affine opens with affine pairwise intersections.
+Then `picardKerEquivPairCohomology : ker(Pic X[ε] → Pic X) ≃+ PairCohomology U`. The preimages
+`p⁻¹ U j` are affine because `X[ε] ⟶ X` is affine (`isAffineHom_projection`). Now let `k` be a
+field, `X : FScheme k` with `X.left` separated, and `U` a cover (`iSup U = ⊤`) by affine opens. Then
+`picardKerEquivCech : ker(Pic X[ε] → Pic X) ≃+ structureCohomology k X 1` composes it with
+`Cohomology.pairCohomologyEquivCech` and `Cohomology.structureCechCohomologyLinearEquiv`. It has the
+type of the conditional `DualNumbers.picardKerEquiv`, and `picardKerEquivCech_cocycleClass` gives
+its value on glued classes. `Tangent/Cech/Scaling` defines `dualScale a : X[ε] ⟶ X[ε]` from
+`µ_a : ε ↦ aε` and proves `picardKerEquivCech_dualScale`: pulling back along `dualScale a` is
+multiplication by `a` (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, pp. 42–43). The cover need
+not be finite. The focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Cech`.
+
 [Strata/FiberConditions](Strata/FiberConditions.lean) defines, for a closed immersion
 `i : X ⟶ P^N_A`, `s : T ⟶ Spec A`, a line bundle `L` on `X ×_{Spec A} T` and `t ∈ T`, the fibre
 conditions of the strata of Kleiman's Thm 4.8 (arXiv:math/0504020v1, pp. 28–30) with the plan's

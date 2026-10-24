@@ -10,6 +10,15 @@
 
 [FieldBaseChange](FieldBaseChange.lean) constructs `Scheme.Cohomology.structureCechComplex` and its canonical tensor/geometric comparisons for a finite family of affine opens in a separated field scheme. A covering premise is not needed for that complex-level comparison; its cohomology consequence uses the separate covering/comparison route. Generic finite coefficient comparison lives below schemes in [FiniteCoefficients](../../../CategoryTheory/Sites/SheafCohomology/Cech/FiniteCoefficients.lean).
 
+[PairCocycles](PairCocycles.lean) defines degree-one pair cocycles, coboundaries and
+`Scheme.PairCohomology U` of the structure sheaf on the pairwise intersections `U j ⊓ U l`, for any
+scheme and family. [DegreeOnePairs](DegreeOnePairs.lean) identifies them, for a field `F` and
+`X : FScheme F`, with the degree-one cycles and boundaries of `structureCechComplex X U` by
+components (`cech_d_one_eq_zero_iff`, `cechToPairs_d_zero`, from `cech_d_comp_π`), giving
+`pairCohomologyEquivCech : PairCohomology U ≃+ (structureCechComplex X U).homology 1`, compatible
+with the structural scalars (`pairCohomologyEquivCech_smul`). No covering, finiteness or affineness
+hypothesis is used. Consumer: `Picard/Tangent/Cech/DualNumbers`.
+
 Focused imports follow these leaves. [Canonical field base change](../BaseChange/README.md) consumes the precise scalar/naturality comparison with the original cohomology tensor map.
 
 [Modules](Modules.lean) gives `moduleCechComplex`, using the shared
