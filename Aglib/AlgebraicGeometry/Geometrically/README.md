@@ -29,3 +29,8 @@ integrality after arbitrary field base change. Properness, perfectness and
 characteristic restrictions are absent. The rational-point cotangent supplier
 is [RationalPoint/SmoothCurve](../RationalPoint/SmoothCurve.lean);
 principal-maximal-ideal algebra reuses the existing native `IsLocalRing` provider.
+
+[Irreducible](Irreducible/README.md) extends Mathlib's `GeometricallyIrreducible` with field
+extension: irreducibility of a field base change descends along a further field extension, and
+irreducibility after every algebraically closed extension field gives geometric irreducibility over
+an arbitrary field. No finiteness or separation premise is added.

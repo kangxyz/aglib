@@ -70,5 +70,5 @@ premise supplied by the genus theorem. The geometric reduced point-count and
 étaleness conclusions above retain their invertible-level premise.
 
 [IdentityComponent](IdentityComponent/README.md): the identity component of a group scheme locally
-of finite type over a field, open, closed, geometrically connected, a group scheme, and compatible
-with field extension.
+of finite type over a field: open, closed, geometrically connected, a group scheme, compatible with
+field extension, geometrically irreducible, quasi-compact and of finite type.

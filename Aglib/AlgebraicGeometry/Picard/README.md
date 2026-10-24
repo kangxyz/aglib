@@ -78,9 +78,23 @@ Noetherian, any `p`, and a representation `e` of `Pic_{X/S,(fppf)}` on locally N
 schemes by `P` locally of finite type over `S` (an explicit argument; its existence is target 5),
 `picardCommGrpObj p P e` is a commutative group object structure on `P` in `Over S`, and `e` turns
 the group law of `T ⟶ P` into the addition of `Pic_{X/S,(fppf)}(T)` (`picard_homEquiv_one`,
-`picard_homEquiv_mul`, `picard_homEquiv_inv`, `picardHomAddEquiv`). Consumer: the planned Picard
-identity component (Kleiman, Prop. 5.3, p. 37), through
-[Group/IdentityComponent](../Group/IdentityComponent/README.md).
+`picard_homEquiv_mul`, `picard_homEquiv_inv`, `picardHomAddEquiv`). Consumer:
+[IdentityComponent](IdentityComponent.lean).
+
+[IdentityComponent](IdentityComponent.lean), imported as
+`Aglib.AlgebraicGeometry.Picard.IdentityComponent`: for a field `k`, `p : X ⟶ Spec k` and a
+representation `e` of `Pic_{X/k,(fppf)}` on locally Noetherian test schemes by `P` locally of finite
+type over `k` (an explicit argument), `picardIdentityComponent p P e` is the identity component of
+`P` for the group law `picardCommGrpObj p P e`, with inclusion `picardIdentityComponentι p P e`. It
+is open and closed (`isClopen_picardIdentityComponent`; inclusion an open immersion), a group
+subscheme (`grpObjPicardIdentityComponent`, `isMonHom_picardIdentityComponentι`), of finite type
+(`quasiCompact_picardIdentityComponent_hom`, `locallyOfFiniteType_picardIdentityComponent_hom`,
+`quasiCompact_and_locallyOfFiniteType_picardIdentityComponent`), geometrically irreducible
+(`geometricallyIrreducible_picardIdentityComponent_hom`), and the identity component of the base
+change `P_K` is the preimage of `Pic⁰` (`picardIdentityComponent_pullback`,
+`pullbackPicardIdentityComponentIso`): Kleiman, Prop. 5.3, p. 37, without the separatedness and
+smoothness clauses. The base change `P_K` carries the base-changed group law; that it represents
+`Pic_{X_K/K,(fppf)}` (Kleiman Ex. 4.4) is not used.
 
 [FamilyBaseChange](FamilyBaseChange.lean), imported as
 `Aglib.AlgebraicGeometry.Picard.FamilyBaseChange`, has no hypothesis: for `g : S' ⟶ S` and

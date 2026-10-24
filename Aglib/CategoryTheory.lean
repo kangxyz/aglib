@@ -114,6 +114,7 @@ public import Aglib.CategoryTheory.Localization.SerreKernel
 public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
+public import Aglib.CategoryTheory.Monoidal.GrpObjShear
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing

@@ -12,6 +12,7 @@ public import Aglib.Topology.Connected.FiniteClosedCover
 public import Aglib.Topology.Connected.LocallyConnected
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
+public import Aglib.Topology.Irreducible.LocallyFinite
 public import Aglib.Topology.KrullDimension.ClosedSubspace
 public import Aglib.Topology.NoetherianCurveSupport
 public import Aglib.Topology.NoetherianSpace

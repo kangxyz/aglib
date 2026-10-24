@@ -33,3 +33,11 @@ is an isomorphism of monoids `adj.homMulEquiv T : (L T ⟶ M) ≃* (T ⟶ R M)` 
 `R.obj M` of Mathlib's `Functor.monObjObj` (`Adjunction.homEquiv_mul`, `Adjunction.homEquiv_one`,
 `Adjunction.homEquiv_symm_mul`). It imports only Mathlib. Consumer:
 [Picard/BaseChangeGroupLaw](../../AlgebraicGeometry/Picard/BaseChangeGroupLaw.lean).
+
+[GrpObjShear](GrpObjShear.lean), imported as `Aglib.CategoryTheory.Monoidal.GrpObjShear`, works in
+the namespace `CategoryTheory.GrpObj`. For a group object `G` of a cartesian monoidal category,
+`GrpObj.shearIso G : G ⊗ G ≅ G ⊗ G` is `(a, b) ↦ (a b⁻¹, b)` with inverse `(c, b) ↦ (c b, b)`, in
+the group structure on morphisms into `G`; `shearIso_hom_fst` identifies its first coordinate with
+the division map `fst G G / snd G G`, and `shearIso_hom_snd` keeps the second (the diagram of Stacks
+047K). It imports only Mathlib. Consumer:
+[Group/IdentityComponent/QuasiCompact](../../AlgebraicGeometry/Group/IdentityComponent/QuasiCompact.lean).

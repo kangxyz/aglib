@@ -2948,6 +2948,7 @@ public import Aglib.AlgebraicGeometry.Geometrically.Connected.PointedCurve
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.RationalPoint
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.GlobalSections
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.SmoothCurve
+public import Aglib.AlgebraicGeometry.Geometrically.Irreducible.FieldExtension
 public import Aglib.AlgebraicGeometry.Geometrically.Reduced.Smooth
 public import Aglib.AlgebraicGeometry.Geometrically.Regular
 public import Aglib.AlgebraicGeometry.Gluing.BoundaryPatch
@@ -3015,6 +3016,9 @@ public import Aglib.AlgebraicGeometry.Group.DualIsogeny
 public import Aglib.AlgebraicGeometry.Group.EtaleQuotient
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.BaseChange
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.FiniteType
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Irreducible
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.QuasiCompact
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing.Galois
 public import Aglib.AlgebraicGeometry.Group.Kernel.Basic
@@ -4194,6 +4198,7 @@ public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw
+public import Aglib.AlgebraicGeometry.Picard.IdentityComponent
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.AbelClass
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
@@ -4872,6 +4877,7 @@ public import Aglib.CategoryTheory.Localization.SerreKernel
 public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
+public import Aglib.CategoryTheory.Monoidal.GrpObjShear
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
@@ -6441,6 +6447,7 @@ public import Aglib.Topology.Connected.JacobsonValues
 public import Aglib.Topology.Connected.LocallyConnected
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
+public import Aglib.Topology.Irreducible.LocallyFinite
 public import Aglib.Topology.KrullDimension.ClosedSubspace
 public import Aglib.Topology.NoetherianCurveSupport
 public import Aglib.Topology.NoetherianSpace
