@@ -11,7 +11,7 @@ package-wide conventions, reading routes and the scope of recorded evidence.
 | [Interfaces](INTERFACES.md) | Canonical maps, universe boundaries, proved suppliers and remaining inputs |
 | [Scope](SCOPE.md) | General mathematics admitted here and deferred application layers |
 | [Development](DEVELOPMENT.md) | Setup, incremental validation, publication and contribution conventions |
-| [Performance](PERFORMANCE.md) | Key guidance and the complete case records under `performance/` |
+| [Performance](PERFORMANCE.md) | Performance methods, decision process and complete cases under `performance/` |
 | [Caching](CACHING.md) | Native Lake artifacts, CI transport, cross-library reuse and provenance |
 | [Downstream integration](DOWNSTREAM.md) | Dependency order, inspected pins and application verification boundaries |
 | [Etale cohomology migration](ETALE_COHOMOLOGY_MIGRATION.md) | Exact new module/namespace names and the separate Quillen, Motivic and R5Lab handoff |
