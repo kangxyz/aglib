@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Picard.Fppf
+public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Unit
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.StructureSheaf.Pushforward
 
@@ -25,8 +25,8 @@ fppf covering sieve of `T` in `Over S` lies in the image of `Pic(T)`. This is th
 the "alternatively" form of Kleiman's proof of Part 1 (p. 19), which uses that
 `Pic_{X/S,(fppf)}` is also the sheafification of `T ↦ Pic(X ×_S T)` (`fppfFamilyPicardSheafIso`).
 
-* `toFppfPicardSheaf_isLocallyInjective`: the sheafification unit is locally injective
-  (Mathlib's `Presheaf.isLocallyInjective_toSheafify'`).
+* `toFppfPicardSheaf_isLocallyInjective` ([FppfSections](../FppfSections.lean)): the
+  sheafification unit is locally injective (Mathlib's `Presheaf.isLocallyInjective_toSheafify'`).
 * `equalizerSieve_mem_of_toFppfPicardSheaf_app_eq_zero` and
   `exists_sieve_of_toFppfPicardSheaf_app_eq_zero`: if `[a] ∈ P_{X/S}(T)` maps to zero in the
   sheafification, then `a` vanishes in `Pic(X ×_S U)` for every `U ⟶ T` in an fppf covering
@@ -68,12 +68,6 @@ def FppfLocallyTrivialMemBaseImage : Prop :=
   ∀ (T : (Over S)ᵒᵖ) (a : (familyPicardFunctor p).obj T),
     Presheaf.equalizerSieve (F := familyPicardFunctor p) a 0 ∈
       (Scheme.fppfTopology.over S) T.unop → a ∈ baseImage p T
-
-/-- The sheafification unit `P_{X/S} ⟶ Pic_{X/S,(fppf)}` is locally injective. -/
-instance toFppfPicardSheaf_isLocallyInjective :
-    Presheaf.IsLocallyInjective (Scheme.fppfTopology.over S) (toFppfPicardSheaf p) :=
-  Presheaf.isLocallyInjective_toSheafify' (J := Scheme.fppfTopology.over S)
-    (relativePicardFunctor p)
 
 /-- **Kleiman, Thm 2.5(1), conditional form.** If fppf-locally trivial classes are base
 classes, then `P_{X/S}(T) ⟶ Pic_{X/S,(fppf)}(T)` is injective for every `T`. -/

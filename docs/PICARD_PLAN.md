@@ -147,7 +147,7 @@ commitments.
 | F14 | Relative effective Cartier divisors, fibrewise criterion and `Div` open in `Hilb` (Kleiman, Lemma 3.4, Thm 3.7, pp. 22–24) | partial: relative effective Cartier divisors and their base change (`EffectiveCartierDivisor/Relative`; Stacks 062T, 056Q), the fibrewise criterion over any base for flat, locally finitely presented families and under Kleiman's Noetherian hypotheses (Lemma 3.4; Stacks 062Y), and openness of the Cartier locus for flat, universally closed families over a locally Noetherian base, with its base-change and factorization form (proof of Thm 3.7); open: `Div` open in `Hilb`, which applies the factorization form to the universal family of F13 | M |
 | F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial: the finite model; the cohomological inputs (degree-zero projection formula, line subbundles from fibrewise nonzero maps, zero schemes on integral fibres, residue-field concentration, and 15a, the locally free direct image on the rank pieces); open: `LinSys = Gr(E, r − 1)` | M |
 | F16 | Quotient of a strongly quasi-projective scheme by a flat proper equivalence relation (Nitsure, Thm 6.9, p. 35, by the proof of Thm 6.8, pp. 33–35, with Thm 6.1 and Lemma 6.7) | absent | M |
-| F17 | Strata `Pic^φ`, `Pic^φ_m`, the Abel map and assembly of target 5 | absent | L |
+| F17 | Strata `Pic^φ`, `Pic^φ_m`, the Abel map and assembly of target 5 | partial: the generic open-subsheaf lemma for any `p : X ⟶ S` (`Picard/FiberCondition/{Subsheaf,OpenSubfunctor}`): a fiber condition (`RelativePicard.FiberCondition`: invariant under base change of the point, open in locally Noetherian families) cuts out an fppf subsheaf `Pic^C` of `Pic_{(fppf)}`, which is an open subfunctor on locally Noetherian test schemes, with `U_ξ` representing `Pic^C ×_Pic h_T`, and open and closed when the failure of the condition is also open; open: the fiber conditions of `Pic^φ` and `Pic^φ_m` with their base-change invariance and openness, the twist `Pic^φ_m ≅ Pic^{φ₀}_0`, the Abel map and the assembly | L |
 | F18 | Tangent space via square-zero thickenings and `Sheaf.H` of `𝒪_X` (`structureCohomology`); identity component of a group scheme locally of finite type over a field (open and closed, finite type, geometrically irreducible). Optional: Krull dimension of a local ring bounded by its embedding dimension (not checked in Mathlib), `Pic(P^n_K) ≅ ℤ` for fields `K` | partial: tangent-space core (`Picard/Tangent/{Thickening,Generator,DualNumbers}`): the split truncated exponential sequence for `X[ε]` over any ring with its `Sheaf.H` splitting in every degree, `Pic(X[ε]) ≃+ Pic(X) × ker(i^*)`, and `ker(i^*) ≃+ H^1(X, 𝒪_X)` under the premise `UnitsCohomologyComparison`; open: the premise, `k`-linearity, T2, T3 and the base-change step of target 6, and the identity component | M |
 | F19 | Deferred. Noetherian approximation: for `X` of finite type over `A` and `B = colim B_i` a filtered colimit of finitely generated `A`-algebras, every line bundle on `X_B` comes from some `X_{B_i}`, uniquely up to enlarging `i` (standard limit argument; source locator not yet checked) | absent; Mathlib has `Scheme.preservesColimit_yoneda` (`AlgebraicGeometry/AffineTransitionLimit.lean` 1339) for the representing side | M |
 
@@ -264,7 +264,11 @@ fppf functor.
    `φ₀(n) = φ(n − m)`. The nonvanishing condition is necessary: on `P^1`,
    `O(−1)` satisfies the vanishing for `m = 0` and has no sections. Kleiman's
    proof (p. 30) omits this condition, and his twist formula on p. 29 reads
-   `φ(m + n)`; the independent review of 2026-10-17 found both.
+   `φ(m + n)`; the independent review of 2026-10-17 found both. The generic open-subfunctor argument
+   (Kleiman pp. 28–29) is `RelativePicard.FiberCondition.isOpenSubfunctor`; its open is the locus of
+   points where the section satisfies the condition, so no overlap descent of opens is needed. The
+   nonvanishing condition is bundled with the vanishing condition into one fiber condition `C_m`,
+   since it is open only inside the vanishing locus; `Pic^φ_m = (C_φ ⊓ C_m).subfunctor`.
 3. `Z := Pic^{φ₀}_0 ×_Pic Div` is open in `Div^θ ⊂ Hilb^θ`. `Hilb^θ` is
    locally closed in a Grassmannian, which the Plücker embedding places in a
    projective space, so `Z` is strongly quasi-projective.
@@ -650,6 +654,11 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
       fibre cohomology vanishes ((4.8.3) with `m = 0`) the direct image is locally free of
       rank `r` and commutes with every base change (statement 15a).
     - A review found no blocking gap; its citation and registration repairs are applied.
+  - F17, generic open-subsheaf lemma done (`Picard/FiberCondition/{Subsheaf,OpenSubfunctor}`;
+    Kleiman, proof of Thm 4.8, pp. 28–29, with fppf coverings): on locally Noetherian test schemes,
+    with the open and closed variant, conjunction of conditions and the representation of
+    `Pic^C ×_Pic h_T` by the open; no hypothesis on `p` or `S`. A review found no blocking gap; its
+    repairs are applied.
   - Open: `LinSys = Gr(E, r − 1)` with its universal divisor (F15b).
 - **M6 in progress.**
   - F18, tangent-space core done (`Picard/Tangent/{Thickening,Generator,DualNumbers}`; Kleiman,

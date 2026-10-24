@@ -3475,7 +3475,10 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.Isomorphism
 public import Aglib.AlgebraicGeometry.Picard.Comparison.LocallyTrivial
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
+public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
+public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Subsheaf
 public import Aglib.AlgebraicGeometry.Picard.Fppf
+public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
@@ -3811,6 +3814,7 @@ public import Aglib.AlgebraicGeometry.Sites.EtaleSigmaGeometry
 public import Aglib.AlgebraicGeometry.Sites.EtaleSigmaSections
 public import Aglib.AlgebraicGeometry.Sites.EtaleSlice
 public import Aglib.AlgebraicGeometry.Sites.EtaleSliceTopology
+public import Aglib.AlgebraicGeometry.Sites.FppfCoveringPoints
 public import Aglib.AlgebraicGeometry.Sites.GlobalSections
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover

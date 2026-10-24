@@ -65,6 +65,64 @@ set-valued fppf sheafification of `T ↦ Pic(X_T)`; here sheafification is taken
 `AddCommGrpCat.{u + 1}`. The local-bijectivity criterion is Mathlib's
 `GrothendieckTopology.WEqualsLocallyBijective` instance for `AddCommGrpCat.{u + 1}`.
 
+[FppfSections](FppfSections.lean), imported as `Aglib.AlgebraicGeometry.Picard.FppfSections`, has
+no hypothesis on `p`: the sheafification unit `toFppfPicardSheaf p` is locally injective and
+locally surjective for `Scheme.fppfTopology.over S` (instances
+`toFppfPicardSheaf_isLocallyInjective`, `toFppfPicardSheaf_isLocallySurjective`, from Mathlib's
+`Presheaf.isLocallyInjective_toSheafify'` and `Presheaf.isLocallySurjective_toSheafify'`), and the
+underlying presheaf of sets `(fppfPicardSheaf p).obj ⋙ forget AddCommGrpCat` is an fppf sheaf
+(`isSheaf_fppfPicardSheaf_forget`).
+
+[FiberCondition/Subsheaf](FiberCondition/Subsheaf.lean) and
+[FiberCondition/OpenSubfunctor](FiberCondition/OpenSubfunctor.lean) give the generic
+open-subsheaf lemma of Kleiman's proof of Thm 4.8 (arXiv:math/0504020v1, pp. 28–29), with fppf
+coverings in place of étale ones. No hypothesis on `p : X ⟶ S` or on `S` is used.
+
+- `FiberCondition p`: a condition `Holds T a t` on a point `t` of an `S`-scheme `T` and a class
+  `a ∈ Pic(X ×_S T)`, with `holds_map` (for `g : T' ⟶ T` over `S`, the condition holds at `t'`
+  for `g^* a` iff it holds at `g t'` for `a`; Kleiman p. 28, "remains valid after any base
+  change") and `isOpen_setOf_holds` (open in locally Noetherian families). Classes make it
+  invariant under isomorphism; `ofLineBundle` builds one from an isomorphism-invariant condition
+  on line bundles. `holds_iff_holds_residuePoint` (only the fiber over `Spec κ(t)` matters),
+  `holds_iff_of_eq` (classes with the same image in `Pic_{X/S,(fppf)}(T)` satisfy the condition at
+  the same points), `holds_add_basePullback_iff` (invariance under `⊗` with classes from `T`).
+  The conjunction `C ⊓ D` (`Min` instance) has `inf_holds`, `inf_holdsAt`, `subfunctor_inf` and
+  `opens_inf`.
+- For a section `ξ` of `Pic_{X/S,(fppf)}` over `T`: `HoldsAt ξ t` (some local representative
+  satisfies the condition at a point over `t`), `exists_flat_app_eq` (a representative along an fppf
+  morphism through every point), `holdsAt_iff` (independent of the representative), `holdsAt_map`
+  (base change).
+- `C.subfunctor = Pic^C`: Mathlib's `Subfunctor.sheafify` for `Scheme.fppfTopology.over S` of the
+  image presheaf `C.imageSubfunctor` (Kleiman's "subsheaf associated to the presheaf" of classes
+  satisfying the condition everywhere), defined on all of `Over S`; `isSheaf_subfunctor`,
+  `mem_subfunctor_iff` (sections satisfying the condition at every point), `app_mem_subfunctor_iff`.
+- For `T` locally Noetherian: `isOpen_setOf_holdsAt`, the open `C.opens ξ` (Kleiman's `T^φ`),
+  `map_mem_subfunctor_iff` (for every `g : Z ⟶ T` over `S`, `Z` arbitrary, `g^* ξ ∈ Pic^C` iff
+  `g.left ⁻¹ᵁ C.opens ξ = ⊤`), `mem_subfunctor_iff_opens_eq_top`; if the failure of the condition
+  is also open (an `IsClosed` hypothesis), `isClosed_setOf_holdsAt_of_isClosed` and
+  `isClopen_setOf_holdsAt_of_isClosed`.
+- Consumer form on `Scheme.LocallyNoetherianOver S`: `C.locallyNoetherianSubfunctor`
+  (`LocalRepresentability.restrictSubfunctor`), `isOpenSubfunctor`
+  (`LocalRepresentability.IsOpenSubfunctor`, the openness field of `SubfunctorCover`; Stacks, Tag
+  01JI), `preimageSubfunctor ξ` (`Pic^C ×_{Pic} h_T` inside the functor of points of `T`),
+  `preimageRepresentableBy` (represented by `LocalRepresentability.restrictOpens T (C.opens ξ)`,
+  through `restrictOpensι`; `preimageRepresentableBy_homEquiv_coe`).
+- Families: `opens_mono`, `disjoint_opens`, `iSup_opens_eq_top` (Kleiman p. 29: the `T^φ` are
+  disjoint and cover `T`; the `P^φ_m ×_{P^φ} T` are nested with union `T`).
+
+Kleiman descends the open locus of a representative along the étale covering; here the open is
+the intrinsic locus `{t | HoldsAt ξ t}`, whose preimage under each fppf morphism with a
+representative is the open locus of the representative, and fppf morphisms are open maps. The
+locally Noetherian hypothesis on `T` enters only through the openness field, applied to the
+fppf `V ⟶ T`, which are locally of finite type. The focused tests are
+`AglibTest.AlgebraicGeometry.Picard.FiberCondition.Subsheaf` and `.OpenSubfunctor` (with axiom
+guards). Planned consumers: the strata `Pic^φ = C_φ.subfunctor` and
+`Pic^φ_m = (C_φ ⊓ C_m).subfunctor` (F17 step 2), where `C_m` is the single condition
+"`H^i(X_t, L_t(n)) = 0` for `i ≥ 1`, `n ≥ m`, and `H^0(X_t, L_t(m)) ≠ 0`"; the nonvanishing
+condition is open only inside the vanishing locus, so it is not a fiber condition by itself. A
+further consumer is `Z := Pic^{φ₀}_0 ×_{Pic} Div` open in `Div` (F17 step 3,
+`preimageRepresentableBy` at `T = Div^θ`).
+
 [Comparison](Comparison/README.md) adds the rigidified functor with Kleiman's Lemmas
 2.9 and 2.10. It also reduces the injectivity of `toFppfPicardSheaf` (Thm 2.5(1)) to the
 equivalent premise `FppfLocallyTrivialMemBaseImage`.

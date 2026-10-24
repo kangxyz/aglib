@@ -59,7 +59,8 @@ pullback pseudofunctor is used.
 `Aglib.AlgebraicGeometry.Picard.Comparison.Injectivity`, has no hypothesis on `p` except in the
 last item:
 
-- `toFppfPicardSheaf_isLocallyInjective`;
+- `toFppfPicardSheaf_isLocallyInjective`, declared in [FppfSections](../FppfSections.lean), which
+  Injectivity imports;
 - `equalizerSieve_mem_of_toFppfPicardSheaf_app_eq_zero` and
   `exists_sieve_of_toFppfPicardSheaf_app_eq_zero`: a class with zero image in
   `Pic_{X/S,(fppf)}(T)` vanishes in `Pic(X ×_S U)` for all `U ⟶ T` in an fppf covering sieve;
