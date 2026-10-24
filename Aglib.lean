@@ -4262,6 +4262,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.PositiveTwist
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.RelativePositiveTwist
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Line.TwoPoints
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.LinearEmbedding
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Monomials
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Multiplication
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Point
@@ -4270,6 +4271,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.PrincipalPencil
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Products.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.PulledCoordinates
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective.Coproduct
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Reindex
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SchemeOver
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension
@@ -4757,6 +4759,7 @@ public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.CoproductsFromFiltered
 public import Aglib.CategoryTheory.Limits.Equifibered
+public import Aglib.CategoryTheory.Limits.FiniteCoproductMaps
 public import Aglib.CategoryTheory.Limits.FiniteCoproductPowers
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
 public import Aglib.CategoryTheory.Limits.Monomorphisms

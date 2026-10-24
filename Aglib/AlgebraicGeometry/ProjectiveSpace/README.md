@@ -351,6 +351,13 @@ pencil and coordinate interfaces. The consumers are the
 [curve projectivity family](../Curves/README.md), whose structure maps and
 original chart arrows remain explicit.
 
+[LinearEmbedding](LinearEmbedding.lean): for an injective `j : ι → κ`,
+`ProjectiveSpace.linearEmbedding R hj : P(ι)_R ⟶ P(κ)_R` is the native `Proj.map` of Mathlib's
+`killCompl` as a graded ring map (`MvPolynomial.gradedKillCompl`, surjective in every degree), the
+inclusion of the coordinate linear subspace. It is a closed immersion over `Spec R`
+(`isClosedImmersion_linearEmbedding`, `linearEmbedding_toSpec`; Stacks 01N0, 01MY) for every
+commutative ring and arbitrary coordinate types.
+
 Focused interface guides: [Normalizing two actual points of P¹](Line/TwoPoints.md).
 
 ## Segre embeddings and finite projective products
@@ -421,5 +428,16 @@ any immersion over a Noetherian ring (`IsHQuasiProjective.comp_of_isImmersion`);
 fibre products by the Segre embedding (`ProjectiveSpace.Segre.productEmbedding`,
 `isHQuasiProjective_pullback_fst_comp`, `isHProjective_pullback_fst_comp`, `…snd_comp`).
 [AffineImmersion/QuasiProjective](AffineImmersion/QuasiProjective.lean): `Spec A ⟶ Spec R` of
-finite type is H-quasi-projective (`isHQuasiProjective_spec_map_of_finiteType`). Open: finite
-disjoint unions, base change of the base ring.
+finite type is H-quasi-projective (`isHQuasiProjective_spec_map_of_finiteType`).
+
+[QuasiProjective/Coproduct](QuasiProjective/Coproduct.lean): finite disjoint unions of
+H-quasi-projective (H-projective) schemes over `Spec R` are H-quasi-projective (H-projective)
+(`isHQuasiProjective_sigmaDesc`, `isHProjective_sigmaDesc`; binary `isHQuasiProjective_coprodDesc`,
+`isHProjective_coprodDesc`; colimit cofans and finite disjoint open covers, `….of_isColimit`,
+`….of_iSup_eq_top_of_pairwise_disjoint`), for a finite index type in any universe and every
+commutative ring (Stacks 0B43 (4), 0B46 (4), over a base with an ample invertible sheaf). The proof
+shows that `P(ι)_R ⨿ P(κ)_R` is H-projective (`ProjectiveSpace.isHProjective_coprodDesc_toSpec`):
+the linear embeddings into `P(Option (ι ⊕ κ))_R` give a finite morphism from `P(ι)_R ⨿ P(κ)_R`, so
+`FiniteEmbedding.exists_closedImmersion_of_isFinite` gives a closed immersion of `P(ι)_R ⨿ P(κ)_R`
+into some `P^n_R` over `Spec R`; no disjointness argument is used. Open: base change of the base
+ring.

@@ -85,6 +85,7 @@ public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.CoproductsFromFiltered
 public import Aglib.CategoryTheory.Limits.Equifibered
+public import Aglib.CategoryTheory.Limits.FiniteCoproductMaps
 public import Aglib.CategoryTheory.Limits.FiniteCoproductPowers
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
 public import Aglib.CategoryTheory.Limits.Monomorphisms

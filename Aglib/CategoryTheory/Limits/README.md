@@ -15,3 +15,15 @@ implies compatibility for every arrow in a natural-number inverse tower,
 and that every stage evaluation on native sections is surjective if all
 adjacent maps are surjective. It uses dependent choice along the prescribed
 tail, without introducing a second limit construction.
+
+[FiniteCoproductMaps](FiniteCoproductMaps.lean), imported as
+`Aglib.CategoryTheory.Limits.FiniteCoproductMaps`, gives
+`CategoryTheory.Limits.Sigma.desc_induction`: in a category with finite coproducts, a property of
+morphisms into a fixed object that is stable under precomposition with isomorphisms, holds on
+initial objects and is stable under binary `coprod.desc` holds for `Sigma.desc` over every finite
+index type (through `sigmaOptionIso : Y none ⨿ ∐ (Y ∘ some) ≅ ∐ Y`).
+`CategoryTheory.FinitaryExtensive.isPullback_sigmaι_sigmaMap` shows that summand inclusions are
+cartesian over `Sigma.map f` in a finitary extensive category. Consumer: the finite disjoint unions
+of H-quasi-projective schemes
+([ProjectiveSpace/QuasiProjective/Coproduct](../../AlgebraicGeometry/ProjectiveSpace/QuasiProjective/Coproduct.lean)),
+through `Sigma.desc_induction`.
