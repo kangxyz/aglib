@@ -3066,6 +3066,12 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.OpenSubscheme
 public import Aglib.AlgebraicGeometry.HilbertScheme.Point
 public import Aglib.AlgebraicGeometry.HilbertScheme.PulledBackGrassmannianPoint
 public import Aglib.AlgebraicGeometry.HilbertScheme.QuasiProjective
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Datum
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Descent
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Effective
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.FlatProper
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Graph
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Points
 public import Aglib.AlgebraicGeometry.HilbertScheme.QuotientDirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.Regularity
 public import Aglib.AlgebraicGeometry.HilbertScheme.Representability

@@ -50,6 +50,12 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [ClosedSubscheme/Containment](ClosedSubscheme/Containment.lean) | `sectionPairing` (`sectionPairing_homogeneousEvaluation`: = `homogeneousEvaluationPairing`), `familySectionPairing`, `imageIdealData_familySectionPairing`, `comap_le_iff_familySectionMap_eq_zero`, `comap_le_iff_directImageSectionMap_eq_zero` | any `T`, any closed `V`; `C` the image ideal of `sectionPairing ι r φ` |
 | [ClosedSubscheme/Generation](ClosedSubscheme/Generation.lean) | `idealTwistToTwistingSheaf`, `imageIdealData_sectionPairing_of_epi`, `exists_sectionPairing_imageIdealData_eq` | the last: `A` Noetherian, `e : ι ≃ Fin (n + 1)` |
 | [ClosedSubscheme/Representability](ClosedSubscheme/Representability.lean) | `closedHilbertSubfunctor` (a `Subfunctor` of `hilbertFunctor`), `locallyNoetherianClosedHilbertSubfunctor`, `closedHilbertIdeal`, `closedHilbertScheme`, `closedHilbertSchemeι`, `isNoetherian_closedHilbertScheme`, `closedHilbertSchemeOver`, `exists_lift_closedHilbertSchemeι_iff`, `locallyNoetherianClosedHilbertSubfunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_id_coe`), `universalClosedHilbertPoint`, `exists_closedHilbertScheme_representableBy` | `A` Noetherian, natural `r ≥ hilbertRegularityBound n Φ`, `φ` cutting out `C` |
+| [Quotient/Datum](Quotient/Datum.lean) | `QuotientHilbertDatum`, `QuotientHilbertDatum.familyProj`, `exists_lift_comap_iff_exists_lift`, `exists_lift_subschemeι_iff_pointsRelation`, `pointsRelation_iff_exists_lift_comap`, `ker_comap_eq_comap`, `pointsRelation_of_comp_familyProj_eq`; `CategoryTheory.pointsRelation_comp_fst_comp_snd_iff` | any base `S`, any `T`; `j` a closed immersion |
+| [Quotient/Points](Quotient/Points.lean) | `QuotientHilbertDatum.pointsRelation_iff_comp_eq` | `T` locally Noetherian, `πZ` locally of finite type, the relation an equivalence relation on locally Noetherian points |
+| [Quotient/Graph](Quotient/Graph.lean) | `QuotientHilbertDatum.graph`, `isClosedImmersion_graph`, `exists_comp_subschemeι_eq_graph`, `isClosedImmersion_of_comp_subschemeι_eq_graph`, `comp_familyProj_of_comp_subschemeι_eq_graph`, `exists_comp_eq_iff_of_comp_subschemeι_eq_graph`, `ker_comap_fst_eq_ker_comap_snd_of_comp_subschemeι_eq_graph` | `isClosedImmersion_graph`, `isClosedImmersion_of_comp_subschemeι_eq_graph`: `H` separated over `S`; `exists_comp_subschemeι_eq_graph`: `j` a closed immersion, `(𝟙, 𝟙)` related at `T = Z`; the last: `j` a closed immersion, `πZ` locally of finite type, `H` separated over `S` and locally Noetherian, the relation an equivalence relation on locally Noetherian points; the `…_of_comp_subschemeι_eq_graph` statements take any `Γ` with `Γ ≫ D.subschemeι = graph` |
+| [Quotient/Descent](Quotient/Descent.lean) | `QuotientHilbertDatum.isPullback_toImage_of_comp_subschemeι_eq_graph`, `exists_isPullback_toImage`, `flat_toImage`, `surjective_toImage`, `isProper_toImage` | as `ker_comap_fst_eq_ker_comap_snd_of_comp_subschemeι_eq_graph`; all but `isPullback_toImage_of_comp_subschemeι_eq_graph` also need `Z` locally Noetherian |
+| [Quotient/FlatProper](Quotient/FlatProper.lean) | `FlatProperQuotient`, `quasiCompact`, `isLocallyNoetherian`, `locallyOfFinitePresentation`, `isSeparated`, `locallyOfFiniteType`, `effectiveEpi`, `isColimitCofork`, `singleton_mem_fppfPrecoverage` | base `Spec A`; Noetherian `A` for local Noetherianity, finite presentation and fppf |
+| [Quotient/Effective](Quotient/Effective.lean) | `QuotientHilbertDatum.comp_toImage_eq`, `isIso_lift_toImage`, `isPullback_toImage`, `flatProperQuotient`, `flatProperQuotient_q`, `flatProperQuotient_q_imageι`, `nonempty_flatProperQuotient_of_comp_eq` | `comp_toImage_eq`: `j` a closed immersion, `Z` locally Noetherian, `πZ` locally of finite type, the relation an equivalence relation on locally Noetherian points; `isIso_lift_toImage`, `isPullback_toImage`: as Descent; `flatProperQuotient` and the last three: base `Spec A`, `H` H-quasi-projective and locally Noetherian |
 
 **The functor.** `IsHilbertFamily ι Φ g Z` asks a closed subscheme `Z ⊆ P^n_A ×_{Spec A} T` to be
 flat over `T` (Mathlib's `Flat` of `Z ⟶ T`; equivalently `𝒪_Z` is relatively flat,
@@ -197,6 +203,28 @@ Noetherian. This is Nitsure, §6, p. 28, Exercise A for `π : P^n_A ×_{Spec A} 
 representation is the restriction of `locallyNoetherianHilbertFunctorRepresentableBy` to an open
 subscheme (`Scheme.LocalRepresentability.representableByRestrictOpens`,
 [Sites/OverRepresentability/OpenSubscheme](../Sites/OverRepresentability/OpenSubscheme.lean)).
+
+**The quotient by a flat proper equivalence relation.** The `Quotient/` leaves prove the core of
+Nitsure, Theorem 6.8 (pp. 33–35; Theorem 6.9, p. 36), against an abstract Hilbert datum
+`QuotientHilbertDatum πZ j` for `πZ : Z ⟶ S` and a closed immersion `j : R ⟶ Z ×_S Z`: a scheme
+`H` over `S`, a closed subscheme `D ⊆ Z ×_S H` flat, proper and surjective over `H`, and
+`φ : Z ⟶ H` over `S` with `D.comap (𝟙 × φ) = ker j` (Nitsure's `φ^* D = R`), such that points of
+`H` over `S` on locally Noetherian `T` are determined by their pulled-back families on `Z ×_S T`.
+No Hilbert scheme is unfolded; the instantiation with the finite union of Hilbert schemes of `Z`
+is separate. With `p₁ = j ≫ pr₁`, `p₂ = j ≫ pr₂` and the relation an equivalence relation on
+locally Noetherian points (`Properties/Noetherian/EquivalenceRelation`): `(x, y) ∈ R(T)` iff
+`(x, φ ∘ y) ∈ D(T)` for every `T`, and iff `φ ∘ x = φ ∘ y` for `T` locally Noetherian (`(***)`,
+p. 34); the graph `(𝟙, φ)` factors through `D` as a closed subscheme `Γ_φ` with
+`p₁⁻¹Γ_φ = p₂⁻¹Γ_φ ⊂ D ×_H D` (pp. 34–35); by Lemma 6.7(2)
+([Descent/IdealSheaf/FaithfullyFlat](../Descent/IdealSheaf/FaithfullyFlat.lean)) the
+scheme-theoretic image `Q = φ.image` satisfies `Γ_φ = p⁻¹Q`, so `q = φ.toImage` is flat,
+surjective and proper (p. 35, (ii)); and `(p₁, p₂) : R ⟶ Z ×_Q Z` is an isomorphism (p. 35, (iii)).
+The equalities and the isomorphism are tested on locally Noetherian points
+([Properties/Noetherian/Yoneda](../Properties/Noetherian/Yoneda.lean)), where Nitsure tests all
+`S`-schemes. Over `Spec A` with `H` H-quasi-projective and locally Noetherian the result is a
+`FlatProperQuotient`: `Q` H-quasi-projective, `q` flat, surjective and proper over `Spec A`,
+`IsPullback p₁ p₂ q q`; `q` is an effective epimorphism and a coequalizer of `p₁, p₂`, and for `A`
+Noetherian `Q` is locally Noetherian and `{q}` is an fppf covering.
 
 **Lower owners.** The general helpers of this family live in sibling leaves:
 [IdealSheaf/QuotientModule](../IdealSheaf/QuotientModule.lean),
