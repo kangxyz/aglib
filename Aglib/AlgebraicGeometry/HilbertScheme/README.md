@@ -51,6 +51,10 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [ClosedSubscheme/Generation](ClosedSubscheme/Generation.lean) | `idealTwistToTwistingSheaf`, `imageIdealData_sectionPairing_of_epi`, `exists_sectionPairing_imageIdealData_eq` | the last: `A` Noetherian, `e : ι ≃ Fin (n + 1)` |
 | [ClosedSubscheme/Representability](ClosedSubscheme/Representability.lean) | `closedHilbertSubfunctor` (a `Subfunctor` of `hilbertFunctor`), `locallyNoetherianClosedHilbertSubfunctor`, `closedHilbertIdeal`, `closedHilbertScheme`, `closedHilbertSchemeι`, `isNoetherian_closedHilbertScheme`, `closedHilbertSchemeOver`, `exists_lift_closedHilbertSchemeι_iff`, `locallyNoetherianClosedHilbertSubfunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_id_coe`), `universalClosedHilbertPoint`, `exists_closedHilbertScheme_representableBy` | `A` Noetherian, natural `r ≥ hilbertRegularityBound n Φ`, `φ` cutting out `C` |
 | [Immersed/Functor](Immersed/Functor.lean) | `immersionBaseChange`, `immersionBaseChange_eq_overPullbackMap`, `isPullback_immersionBaseChange_baseChangeMap`, `isProper_subschemeι_comp_snd_iff_isClosedImmersion`, `properClosedSubschemeEquiv`, `IsImmersedHilbertFamily`, `IsImmersedHilbertFamily.comap`, `immersedHilbertFunctor`, `locallyNoetherianImmersedHilbertFunctor`, `immersedHilbertSubfunctor`, `immersedHilbertFunctorIso`, `isImmersedHilbertFamily_iff_of_isClosedImmersion` | any `T`; `[IsPreimmersion i]` for the functor; `[Finite ι]` for the bijection and the isomorphism |
+| [Immersed/PointPullback](Immersed/PointPullback.lean) | `locallyNoetherianImmersedHilbertFunctor_map_coe`, `locallyNoetherianImmersedHilbertFunctor_homEquiv_eq_comap` | `[IsPreimmersion i]`; imports only `Immersed/Functor` |
+| [Immersed/Subfunctor](Immersed/Subfunctor.lean) | `comap_fst_le_iff_exists_lift`, `comap_ker_le_of_comp_eq`, `fst_mem_coborderRange_of_comp_eq`, `exists_lift_immersionBaseChange_iff_closed_and_open`, `ker_immersionBaseChange`, `exists_lift_immersionBaseChange_iff`, `mem_immersedHilbertSubfunctor_obj_iff_closed_and_open`, `immersedHilbertSubfunctor_eq_inf`, `immersedHilbertSubfunctor_eq_closedHilbertSubfunctor_ker`, `immersedHilbertSubfunctor_subschemeι`, `locallyNoetherianImmersedHilbertSubfunctor`, `locallyNoetherianImmersedHilbertFunctorIso`, `map_comap_immersionBaseChange_of_mem` | any `T`; the converse and the meet: `[IsImmersion i] [QuasiCompact i]`; the closed case: `[IsClosedImmersion i]`; the isomorphism: `[IsPreimmersion i] [Finite ι]` |
+| [Immersed/Representability](Immersed/Representability.lean) | `immersedHilbertSchemeOpens`, `immersedHilbertSchemeOver`, `immersedHilbertScheme`, `immersedHilbertSchemeι`, `isImmersion_immersedHilbertSchemeι`, `isNoetherian_immersedHilbertScheme`, `immersedHilbertSchemeToHilbertScheme`, `exists_lift_immersedHilbertSchemeι_iff`, `locallyNoetherianImmersedHilbertSubfunctorRepresentableBy`, `locallyNoetherianImmersedHilbertFunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_eq_comap`), `universalImmersedHilbertFamily`, `universalImmersedHilbertPoint`, `isImmersedHilbertFamily_universalImmersedHilbertFamily`, `map_universalImmersedHilbertFamily`, `exists_immersedHilbertScheme_representableBy` | `A` Noetherian, `e : ι ≃ Fin (n + 1)`, `[IsImmersion i]`, natural `r ≥ hilbertRegularityBound n Φ`, any `φ`; `hC` (`φ` cuts out `i.ker`) only for the lifting criterion, the representations, the universal point and the statements about the universal family |
+| [Immersed/QuasiProjective](Immersed/QuasiProjective.lean) | `isHQuasiProjective_immersedHilbertSchemeOver_hom` | `A` Noetherian, `[IsImmersion i]`, any `φ` |
 | [Quotient/Datum](Quotient/Datum.lean) | `QuotientHilbertDatum`, `QuotientHilbertDatum.familyProj`, `exists_lift_comap_iff_exists_lift`, `exists_lift_subschemeι_iff_pointsRelation`, `pointsRelation_iff_exists_lift_comap`, `ker_comap_eq_comap`, `pointsRelation_of_comp_familyProj_eq`; `CategoryTheory.pointsRelation_comp_fst_comp_snd_iff` | any base `S`, any `T`; `j` a closed immersion |
 | [Quotient/Points](Quotient/Points.lean) | `QuotientHilbertDatum.pointsRelation_iff_comp_eq` | `T` locally Noetherian, `πZ` locally of finite type, the relation an equivalence relation on locally Noetherian points |
 | [Quotient/Graph](Quotient/Graph.lean) | `QuotientHilbertDatum.graph`, `isClosedImmersion_graph`, `exists_comp_subschemeι_eq_graph`, `isClosedImmersion_of_comp_subschemeι_eq_graph`, `comp_familyProj_of_comp_subschemeι_eq_graph`, `exists_comp_eq_iff_of_comp_subschemeι_eq_graph`, `ker_comap_fst_eq_ker_comap_snd_of_comp_subschemeι_eq_graph` | `isClosedImmersion_graph`, `isClosedImmersion_of_comp_subschemeι_eq_graph`: `H` separated over `S`; `exists_comp_subschemeι_eq_graph`: `j` a closed immersion, `(𝟙, 𝟙)` related at `T = Z`; the last: `j` a closed immersion, `πZ` locally of finite type, `H` separated over `S` and locally Noetherian, the relation an equivalence relation on locally Noetherian points; the `…_of_comp_subschemeι_eq_graph` statements take any `Γ` with `Γ ≫ D.subschemeι = graph` |
@@ -223,6 +227,35 @@ open subschemes of a proper scheme (the second Exercise on p. 28); the one-step 
 `i_T` is a route choice. For a closed immersion `i` properness is automatic
 (`isImmersedHilbertFamily_iff_of_isClosedImmersion`).
 
+**Locally closed subschemes of `P^n_A`.** For an immersion `i : Y ⟶ P^n_A` over `Spec A`, let
+`C = i.ker` be its scheme-theoretic image and `U = i.coborderRange`. A family of `Hilb^Φ` contained
+in `Y` lies in `C_T` and in `U_T`, and for a quasi-compact `i` the converse holds, through Mathlib's
+cartesian square `Y = im(i) ×_P U` (`IsImmersion.isPullback_toImage_liftCoborder`); so
+`immersedHilbertSubfunctor i hi Φ = closedHilbertSubfunctor ι Φ C ⊓ openHilbertSubfunctor ι Φ U`
+(`immersedHilbertSubfunctor_eq_inf`, [Immersed/Subfunctor](Immersed/Subfunctor.lean)). For a closed
+immersion the open condition is void and the families contained in `Y` are `Hilb^Φ_C`
+(`immersedHilbertSubfunctor_eq_closedHilbertSubfunctor_ker`). On locally Noetherian test schemes the
+Hilbert functor of `Y` acts by pullback along `Y ×_{Spec A} Z ⟶ Y ×_{Spec A} T`, so every
+representation pulls back its universal family
+(`locallyNoetherianImmersedHilbertFunctor_homEquiv_eq_comap`,
+[Immersed/PointPullback](Immersed/PointPullback.lean), a leaf directly above the functor). For a
+Noetherian `A` every immersion into `P^n_A` is quasi-compact, and with sections `φ` of `𝒪(r)` cutting out `C` the open subscheme
+`H^Φ_Y = immersedHilbertScheme ι n e A Φ r hr φ i` of the closed `H_C` over which the universal
+family lies in `U` (the preimage of `openHilbertSchemeOpens`) represents the Nitsure-form Hilbert
+functor `locallyNoetherianImmersedHilbertFunctor i hi Φ` on locally Noetherian test schemes
+(`locallyNoetherianImmersedHilbertFunctorRepresentableBy`; Nitsure, Thm 6.1, p. 28, for
+`E = 𝒪_Y`), with universal family `universalImmersedHilbertFamily ⊆ Y ×_{Spec A} H^Φ_Y`, a point of
+that functor whose pullbacks are the points of `H^Φ_Y` and whose image in `P^n_A ×_{Spec A} H^Φ_Y` is
+the restricted universal family of `G_Φ`; a morphism `T ⟶ G_Φ` factors through `H^Φ_Y` exactly when
+its family is contained in `Y` (`exists_lift_immersedHilbertSchemeι_iff`). Such `φ` exist for all
+large `r` (`exists_sectionPairing_imageIdealData_eq`; packaged in
+`exists_immersedHilbertScheme_representableBy`). `immersedHilbertSchemeι : H^Φ_Y ⟶ G_Φ` is an
+immersion, so `H^Φ_Y` is H-quasi-projective over `Spec A`
+(`isHQuasiProjective_immersedHilbertSchemeOver_hom`,
+[Immersed/QuasiProjective](Immersed/QuasiProjective.lean)). The route is Nitsure's: the Hilbert
+functor of `Y` is open in that of its schematic closure (p. 28, the two Exercises), which is closed
+in `Hilb^Φ` (p. 25, Lemma 5.4 (ii)).
+
 **The quotient by a flat proper equivalence relation.** The `Quotient/` leaves prove the core of
 Nitsure, Theorem 6.8 (pp. 33–35; Theorem 6.9, p. 36), against an abstract Hilbert datum
 `QuotientHilbertDatum πZ j` for `πZ : Z ⟶ S` and a closed immersion `j : R ⟶ Z ×_S Z`: a scheme
@@ -325,9 +358,7 @@ The following are not formalized. The list is an inventory, not a proof.
 
 - **Projectivity of `G_Φ`** (Nitsure's valuative-criterion step, §5, p. 27), which would make
   the Hilbert scheme projective over `Spec A`; optional for representability.
-- **The remaining subfunctors of Theorem 6.1** (§6): the open step for an open `U ⊆ P^N_A` is
-  `HilbertScheme/OpenSubscheme` (with `Hilb^Φ_U` the subfunctor of families contained in `U`),
-  and the closed step for `C ⊆ P^N_A` is `HilbertScheme/ClosedSubscheme`. Open: the identification
-  of `Hilb^Φ_U` with the Hilbert functor of `U` itself (a closed subscheme of `U_T`, proper over
-  `T`, is closed in `P^N_T`; Exercise B, p. 28), the locally closed combination (Nitsure makes
-  `Quot_{E/X}` open in `Quot_{Ē/X'}` for the closure `X'` of `X`), and quasi-projectivity.
+- **The direct identification for an open `U ⊆ P^N_A`**:
+  `immersedHilbertSubfunctor U.ι rfl Φ = openHilbertSubfunctor ι Φ U`. It is not needed: the
+  open, closed and locally closed steps of Theorem 6.1 are `HilbertScheme/OpenSubscheme`,
+  `HilbertScheme/ClosedSubscheme` and `HilbertScheme/Immersed/*`.

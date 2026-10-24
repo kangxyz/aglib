@@ -3065,6 +3065,10 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Fiber
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.GlobalGeneration
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Untwist
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Functor
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.PointPullback
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.QuasiProjective
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Representability
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Subfunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.Injectivity
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianFunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianPoint
