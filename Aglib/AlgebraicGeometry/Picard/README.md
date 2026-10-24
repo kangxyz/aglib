@@ -211,8 +211,8 @@ identification `ker(i^*) ≃+ H^1(X, 𝒪_X)` (`picardKerEquiv`, `picardEquiv`) 
 `UnitsCohomologyComparison`: Zariski `Pic = H^1(𝒪^*)` for `Y` on the common space (an
 equivalence) and for `X` (an injective map) (Stacks, Tag 09NU, `lemma-h1-invertible`, for the
 isomorphisms; compatibility with `i^*` is a separate naturality statement). Kleiman uses this
-identification tacitly in the sentence before Square (5.11.4); the square itself, which
-compares `H^1(𝒪^*_{X_T})` with `Pic_{X/k}(T)`, and (5.11.3) are not formalized. Aglib proves
+identification tacitly in the sentence before Square (5.11.4); the square in its `Pic` form,
+with the fppf Picard sheaf, is `Tangent/Comparison`; (5.11.3) is not formalized here. Aglib proves
 only the étale form `FrameTensor.picardH1Equiv`. No separatedness, quasi-compactness or
 Noetherian hypothesis on `X` is used. The focused test is
 `AglibTest.AlgebraicGeometry.Picard.Tangent`.
@@ -261,6 +261,35 @@ for `a • t = F(µ_a) t` (`tangentKernelEquiv_scale`, `tangentKernelModule`,
 `finrank_L ker(F(L[ε]) → F(L)) = finrank_k (𝔪/𝔪²)` for every field `L` over `k`, finite since `P` is
 locally Noetherian (`finite_tangentKernel`); `finrank_squareZeroKernel` is the `L ⊕ M` form. The
 focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`.
+
+[Tangent/Comparison](Tangent/Comparison.lean) gives the vertical maps of Kleiman's Square (5.11.4)
+(arXiv:math/0504020v1, proof of Thm 5.11, pp. 43–44) for the fppf Picard sheaf. Let `k` be a field,
+`X : FScheme k` with structure map `p`, and `F = (fppfPicardSheaf p).obj`. The closed point and
+`µ_a : ε ↦ aε` are the morphisms
+`DualNumbers.closedPointOver k : Over.mk (𝟙 (Spec k)) ⟶ Over.mk (dualMap k)` and
+`DualNumbers.scaleOver k a` of `k`-schemes; on the fibres `X ×_k -` they induce `i` through
+`pullback.fst : X ×_k Spec k ≅ X` (`familyClosedPoint_eq`) and `dualScale a` (`familyScale_eq`). The
+vertical maps `toFppfDualNumbers X : Pic(X[ε]) →+ F(k[ε])` and
+`toFppfClosedFibre X : Pic(X) →+ F(k)` are `quotientProjection` followed by `toFppfPicardSheaf`. The
+square `F(ρ) ∘ toFppfDualNumbers X = toFppfClosedFibre X ∘ i^*` commutes by naturality of the unit
+(`fppfPicardSheaf_map_closedPointOver_toFppfDualNumbers`), compatibly with `µ_a`
+(`fppfPicardSheaf_map_scaleOver_toFppfDualNumbers`), and `picardKerToFppf X : ker(i^*) →+ ker F(ρ)`
+is the induced map of kernels. For `p` proper and flat with geometrically integral fibres both
+vertical maps are injective (Kleiman, Thm 2.5(1), p. 18, with `Pic(k) = Pic(k[ε]) = 0`;
+`RelativePicard.quotientProjection_app_injective_of_subsingleton`). With `IsSplitEpi p` they are
+bijective (Thm 2.5(2), p. 18), and
+`fppfPicardKerEquivOfIsSplitEpiOfIsProperOfFlatOfGeometricallyIntegral X : ker F(ρ) ≃+ ker(i^*)` has
+inverse `picardKerToFppf X` and carries `F(µ_a)` to `dualScaleKer a`. This replaces Kleiman's
+Exercise 2.3 over an algebraically closed field by Thm 2.5(2) with a section, over any field.
+[Tangent/KernelMap](Tangent/KernelMap.lean) defines Kleiman's `v` (proof of Thm 5.11, p. 43) for
+`X.left` separated and a cover `U` by affine opens:
+`cohomologyToFppfPicardKer X U hU hU₁ : H^1(X, 𝒪_X) →+ ker F(ρ)` is `picardKerEquivCech⁻¹` followed
+by `picardKerToFppf X`; no section is used. It satisfies `v (a • c) = F(µ_a) (v c)`
+(`cohomologyToFppfPicardKer_smul`), is injective for `p` proper and flat with geometrically integral
+fibres, and with a section is the inverse comparison after `picardKerEquivCech⁻¹`, hence bijective
+(`cohomologyToFppfPicardKer_bijective_of_isSplitEpi_of_isProper_of_flat_of_geometricallyIntegral`).
+`scaleRingHom_eq_map` identifies `µ_a` with Mathlib's `TrivSqZeroExt.map (a • id)`. The focused
+tests are `AglibTest.AlgebraicGeometry.Picard.Tangent.{Comparison,KernelMap}`.
 
 [Strata/FiberConditions](Strata/FiberConditions.lean) defines, for a closed immersion
 `i : X ⟶ P^N_A`, `s : T ⟶ Spec A`, a line bundle `L` on `X ×_{Spec A} T` and `t ∈ T`, the fibre

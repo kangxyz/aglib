@@ -29,8 +29,9 @@ cohomology splits as `H^n(𝒪_{X[ε]}^*) ≃+ H^n(X, 𝒪_X) × H^n(𝒪_X^*)`
 (`unitsCohomologyKerEquiv`), and, under a
 unit-cohomology comparison, `ker(Pic(X[ε]) → Pic(X)) ≃+ H^1(X, 𝒪_X)` and
 `Pic(X[ε]) ≃+ Pic(X) × H^1(X, 𝒪_X)` (the kernel of the top row of Kleiman's Square (5.11.4),
-p. 43, through `Pic = H^1(𝒪^*)`; the passage to `T_0 Pic_{X/k}` through (5.11.3) and the
-vertical maps of (5.11.4) is not formalized).
+p. 43, through `Pic = H^1(𝒪^*)`; the vertical maps of (5.11.4), for the fppf Picard sheaf, are
+in `Picard/Tangent/Comparison`; the passage to `T_0 Pic_{X/k}` through (5.11.3) is not formalized
+here).
 -/
 
 @[expose] public noncomputable section
