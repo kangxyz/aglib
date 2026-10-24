@@ -6,13 +6,22 @@ import subprocess
 import sys
 import unittest
 
-from lean_tools.quillen.generate_imports import (
-    COPYRIGHT_HEADER, GENERATED_MARKER, generated_files, render_imports, stale_files,
+from lean_tools.imports import (
+    GENERATED_MARKER, generated_files, render_imports, stale_files,
     source_authors,
 )
-from lean_tools.quillen.library_sources import (
-    is_import_surface, lean_imports, module_path, project_imports,
+from lean_tools.source import (
+    is_import_surface, lean_imports, module_path,
 )
+from functools import partial
+from lean_tools.library import PROFILES
+COPYRIGHT_HEADER = PROFILES['quillen']['copyright_header']
+render_imports = partial(render_imports, data=PROFILES['quillen'])
+
+
+def project_imports(text):
+    return [name for name in lean_imports(text) if name == 'Quillen' or name.startswith('Quillen.')]
+
 
 
 class ImportParserTests(unittest.TestCase):
@@ -23,7 +32,7 @@ class ImportParserTests(unittest.TestCase):
                   'def text := "import Quillen.Hidden"\n'
                   'import Quillen.NotInHeader\n')
         self.assertEqual(lean_imports(source), ['Quillen.A', 'Quillen.B'])
-        self.assertEqual(project_imports(source), ['Quillen.A', 'Quillen.B'])
+        self.assertEqual([name for name in lean_imports(source) if name == 'Quillen' or name.startswith('Quillen.')], ['Quillen.A', 'Quillen.B'])
         self.assertEqual(module_path('Quillen.«A.B»'), Path('Quillen/A.B.lean'))
 
     def test_strings_terminate_import_token_scan(self):
@@ -151,7 +160,7 @@ class ImportGenerationTests(unittest.TestCase):
         self.generate()
         self.assertEqual(stale_files(self.root), [])
         source = (self.root / 'Quillen/Future.lean').read_text()
-        self.assertIn('Quillen.Future.Deep.New', project_imports(source))
+        self.assertIn('Quillen.Future.Deep.New', [name for name in lean_imports(source) if name == 'Quillen' or name.startswith('Quillen.')])
         self.assertIn('set_option linter.style.longFile 0', source)
 
     def test_new_leaf_and_removed_leaf_stale(self):
@@ -240,7 +249,7 @@ class ImportGenerationTests(unittest.TestCase):
         # A marker mentioned elsewhere does not transfer ownership.
         facade.write_bytes(original + ('-- ' + GENERATED_MARKER).encode())
         original = facade.read_bytes()
-        result = subprocess.run([sys.executable, '-m', 'lean_tools', 'quillen', 'imports', '--root', str(self.root)],
+        result = subprocess.run([sys.executable, '-m', 'lean_tools', 'imports', '--root', str(self.root)],
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(facade.read_bytes(), original)

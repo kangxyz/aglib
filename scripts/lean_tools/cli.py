@@ -1,5 +1,6 @@
 """One entry point for native Lean work and the libraries' source tools."""
 import argparse
+import importlib
 import json
 import os
 from pathlib import Path
@@ -8,7 +9,7 @@ import tempfile
 
 from . import __version__, build, local, resources
 
-from .library import LIBRARIES, options as package_options, main as library_main
+from .library import options as package_options
 
 
 def run_command(args, package, config, environment):
@@ -40,11 +41,9 @@ def run_command(args, package, config, environment):
 def main(argv=None, *, root=None, production=(), check_targets=(), source_checks=None,
          resource_config=None, environment=None):
     arguments = list(sys.argv[1:] if argv is None else argv)
-    if arguments[:1] == ['cache']:
-        from .cache import main as cache_main
-        return cache_main(arguments[1:])
-    if arguments[:1] and arguments[0] in LIBRARIES.values():
-        return library_main(arguments[0], arguments[1:])
+    operations = {'cache': 'cache', 'source': 'policy', 'imports': 'imports', 'client': 'client'}
+    if arguments[:1] and arguments[0] in operations:
+        return importlib.import_module('.' + operations[arguments[0]], __package__).main(arguments[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--version', action='version', version='lean-tools ' + __version__)
     sub = parser.add_subparsers(dest='action', required=True)
@@ -74,8 +73,8 @@ def main(argv=None, *, root=None, production=(), check_targets=(), source_checks
     run.add_argument('--bootstrap-cache', action='store_true')
     run.add_argument('--capped-toolchain', action='store_true')
     run.add_argument('command', nargs=argparse.REMAINDER)
-    for family in LIBRARIES.values():
-        sub.add_parser(family, help=family.capitalize() + ' source, generation and cache tools')
+    for name in ('source', 'imports', 'client'):
+        sub.add_parser(name, help=name + ' using the selected package configuration')
     args = parser.parse_args(arguments)
     package = args.root.resolve()
     try:
@@ -105,7 +104,14 @@ def main(argv=None, *, root=None, production=(), check_targets=(), source_checks
                 resource_config=config, environment=env)
             print(json.dumps(result, indent=2, sort_keys=True))
             return 0
+        build.native_targets(args.targets, args.selection)
+        if args.export_only and args.outputs is None:
+            raise ValueError('--export-only requires --outputs')
+        if args.outputs is not None and not args.outputs.is_absolute():
+            args.outputs = package / args.outputs
         state = args.state or Path(tempfile.mkdtemp(prefix='lean-native-build-'))
+        if not state.is_absolute():
+            state = package / state
         if not args.export_only:
             return build.build(package, args.targets, state.resolve(), rehash=True,
                 outputs=args.outputs, config=config, environment=env, selection=args.selection)

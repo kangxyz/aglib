@@ -14,8 +14,10 @@ from unittest.mock import patch
 
 from lean_tools.cache import cache_roots, main as cache_main
 from lean_tools import cache as cache_bootstrap
-from lean_tools.motivic.repository import PINS, check_configuration, check_sources
-from lean_tools.motivic.sources import lean_imports
+from lean_tools.policy import check_configuration, check_sources
+from lean_tools.library import PROFILES
+PINS = PROFILES['motivic']['accepted_pins']
+from lean_tools.source import lean_imports
 
 
 class RepositoryBoundaryTests(unittest.TestCase):
@@ -92,7 +94,7 @@ end PrimeSpectrum.FiniteFiber
         self.assertEqual(check_sources(self.root)[0], [])
         self.write('Motivic/Core.lean', 'import Motivic.RingTheory.Bridge\n')
         errors, _ = check_sources(self.root)
-        self.assertTrue(any('Import cycle:' in error for error in errors), errors)
+        self.assertTrue(any('Project import cycle:' in error for error in errors), errors)
 
     def test_candidate_and_external_dependencies_allow_host_consumers(self):
         self.write('Motivic/Aglib/RingTheory/Basic.lean',
@@ -122,7 +124,7 @@ end PrimeSpectrum.FiniteFiber
         self.write('Motivic/Core.lean', 'public import Motivic.Aglib.RingTheory.Entry\n')
         errors, _ = check_sources(self.root)
         self.assertTrue(any('candidate imports host module' in error for error in errors), errors)
-        self.assertTrue(any('Import cycle:' in error for error in errors), errors)
+        self.assertTrue(any('Project import cycle:' in error for error in errors), errors)
 
     def test_indirect_test_leak_is_detected_at_its_production_edge(self):
         self.write('Motivic/Bridge.lean', 'import MotivicTest.Client\n')

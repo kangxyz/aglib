@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from lean_tools import source
 from lean_tools import library
-from lean_tools.motivic import sources
+from lean_tools import source as sources
 
 
 class PolicyTests(unittest.TestCase):
@@ -34,11 +34,12 @@ class PolicyTests(unittest.TestCase):
         self.assertIn('AGLIB_RSS_LIMIT_MB', config.names('rss'))
 
     def test_dispatcher_is_lazy_and_forwards_root_and_arguments(self):
-        with patch('lean_tools.motivic.repository.main', return_value=9) as main:
-            self.assertEqual(library.main('motivic', ['repository', '--root', '/fixture']), 9)
+        from lean_tools.cli import main as cli_main
+        with patch('lean_tools.policy.main', return_value=9) as main:
+            self.assertEqual(cli_main(['source', '--root', '/fixture']), 9)
         main.assert_called_once_with(['--root', '/fixture'])
-        with redirect_stderr(io.StringIO()):
-            self.assertEqual(library.main('motivic', ['unknown']), 2)
+        with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            cli_main(['unknown'])
 
     def test_package_options_name_only_source_policy_dependencies(self):
         from lean_tools.local import SourceCheck
@@ -52,10 +53,9 @@ class PolicyTests(unittest.TestCase):
         self.assertEqual(result['check_targets'], ())
         check, = result['source_checks']
         self.assertIsInstance(check, SourceCheck)
-        self.assertEqual(check.command, (sys.executable, str(Path(__file__).resolve().parents[2] / 'lean_tools/__main__.py'), 'motivic',
-                                        'repository', '--root', str(root)))
+        self.assertEqual(check.command, (sys.executable, str(Path(__file__).resolve().parents[2] / 'lean_tools/__main__.py'), 'source', '--root', str(root)))
         self.assertEqual({Path(path).name for path in check.inputs},
-                         {'__init__.py', 'repository.py', 'imports.py', 'sources.py', 'source.py', 'cli.py', '__main__.py', 'library.py'})
+                         {'policy.py', 'imports.py', 'source.py', 'cli.py', '__main__.py', 'library.py'})
         self.assertTrue(all(Path(path).is_file() for path in check.inputs))
 
 

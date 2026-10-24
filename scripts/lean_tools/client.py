@@ -3,6 +3,7 @@
 """Build the independent client with this checkout's locked dependencies and guard."""
 import argparse
 from datetime import datetime, timezone
+from .library import family, profile, resource_config, runtime_environment
 import json
 import os
 from pathlib import Path
@@ -15,16 +16,21 @@ ROOT = Path.cwd()
 
 def prepare(root: Path) -> Path:
     """Prepare an explicitly requested client; preserve existing cache ownership."""
+    data = profile(root)
+    module = data.get('client_module')
+    if not module:
+        raise ValueError('No explicit client module is configured for this package')
+    package = data['package']
     client = root / 'examples/downstream'
     config = tomllib.loads((client / 'lakefile.toml').read_text())
-    if not (client / 'MotivicClient.lean').is_file():
-        raise ValueError('Missing independent MotivicClient source')
+    if not (client / (module + '.lean')).is_file():
+        raise ValueError('Missing independent client source: ' + module)
     if (client / 'lean-toolchain').read_bytes() != (root / 'lean-toolchain').read_bytes():
         raise ValueError('Client and library must use the same pinned Lean toolchain')
     requirements = config.get('require', [])
-    if not any(row.get('name') == 'Motivic' and row.get('path') == '../..'
+    if not any(row.get('name') == package and row.get('path') == '../..'
                for row in requirements):
-        raise ValueError('Expected the client to require this Motivic checkout by ../..')
+        raise ValueError('Expected the client to require this checkout by ../..')
     packages = root / '.lake/packages'
     if not packages.is_dir():
         raise ValueError('Resolve the root pinned dependencies before building the client')
@@ -38,11 +44,11 @@ def prepare(root: Path) -> Path:
     elif link.exists():
         raise ValueError('Preserve and reconcile existing client packages before using the shared cache')
     manifest = json.loads((root / 'lake-manifest.json').read_text())
-    if manifest['name'] != 'Motivic':
-        raise ValueError('Expected the Motivic root dependency manifest')
-    for package in manifest['packages']:
-        package['inherited'] = True
-    manifest['packages'].append({'type': 'path', 'name': 'Motivic', 'scope': '',
+    if manifest['name'] != package:
+        raise ValueError('Expected this package root dependency manifest')
+    for dependency in manifest['packages']:
+        dependency['inherited'] = True
+    manifest['packages'].append({'type': 'path', 'name': package, 'scope': '',
         'dir': '../..', 'inherited': False, 'configFile': 'lakefile.toml',
         'manifestFile': 'lake-manifest.json'})
     manifest['name'] = config['name']
@@ -66,11 +72,11 @@ def main(argv=None) -> int:
     if not receipts.is_absolute():
         receipts = root / receipts
     try:
-        from ..library import resource_config, runtime_environment
-        from lean_tools.build import build
+        from .build import build
+        selected = family(root)
         client = prepare(root)
-        return build(client, ['MotivicClient'], receipts, rehash=True,
-                     config=resource_config('motivic'), environment=runtime_environment('motivic'), selection='module')
+        return build(client, [profile(root)['client_module']], receipts, rehash=True,
+                     config=resource_config(selected), environment=runtime_environment(selected), selection='module')
     except (OSError, ValueError) as error:
         print(f'Independent client build failed: {error}', file=sys.stderr)
         return 1

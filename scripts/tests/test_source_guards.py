@@ -6,12 +6,14 @@ import sys
 import tempfile
 import unittest
 
-from lean_tools.aglib.layout import check_layout, import_cycles, forbidden_domain_import
-from lean_tools.aglib.placeholders import check_placeholders
-from lean_tools.aglib.policy import check_source_policy
-from lean_tools.aglib.sources import lean_imports, module_path, test_modules as positive_modules
-from lean_tools.aglib.sources import (is_import_surface, uses_module_system, generate_topic,
-                             GENERATED_MARKER, LEGACY_GENERATED_MARKER)
+from lean_tools.policy import check_sources, forbidden_import
+from lean_tools.source import (lean_imports, module_path, source_modules, import_cycles,
+                               is_import_surface, uses_module_system)
+from lean_tools.imports import generate_topic
+from lean_tools.library import PROFILES
+
+GENERATED_MARKER = PROFILES['aglib']['generated_marker']
+LEGACY_GENERATED_MARKER = PROFILES['aglib']['generated_markers'][-1]
 
 HEADER = 'module\npublic import Mathlib.Data.Nat.Basic\n@[expose] public section\n'
 
@@ -47,27 +49,27 @@ class SourceGuards(unittest.TestCase):
         self.write('Aglib.lean', 'module\n' + ''.join('public import ' + n + '\n' for n in names))
 
     def rejected(self, expected):
-        errors, _ = check_layout(self.root)
+        errors, _ = check_sources(self.root, ('layout',))
         self.assertTrue(any(expected in error for error in errors), errors)
 
     def test_clean_modern_tree(self):
-        self.assertEqual(check_layout(self.root)[0], [])
-        self.assertEqual(check_placeholders(self.root), [])
-        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual(check_sources(self.root, ('layout',))[0], [])
+        self.assertEqual(check_sources(self.root, ('tokens',))[0], [])
+        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
 
 
 
     def test_native_test_discovery_needs_no_umbrella(self):
         self.write('AglibTest/Positive.lean', HEADER)
-        self.assertEqual(positive_modules(self.root), {Path('AglibTest/Positive.lean')})
+        self.assertEqual({path.relative_to(self.root) for path in source_modules(self.root, ('AglibTest',)).values()}, {Path('AglibTest/Positive.lean')})
         self.assertFalse((self.root / 'AglibTest.lean').exists())
         self.write('AglibTest.lean', 'import AglibTest.Positive\n')
-        self.assertEqual(positive_modules(self.root),
+        self.assertEqual({path.relative_to(self.root) for path in source_modules(self.root, ('AglibTest',)).values()},
                          {Path('AglibTest/Positive.lean'), Path('AglibTest.lean')})
 
     def test_removed_audit_fixture_directory_has_no_placeholder_exemption(self):
         self.write('AglibTest/NegativeControls/Bad.lean', 'axiom bad : False\n')
-        errors = check_placeholders(self.root)
+        errors = check_sources(self.root, ('tokens',))[0]
         self.assertEqual(len(errors), 1)
         self.assertIn('forbidden token axiom', errors[0])
 
@@ -77,17 +79,17 @@ class SourceGuards(unittest.TestCase):
         for credit in ['', 'Authors: \n']:
             self.write('Aglib/Algebra/A.lean', header + credit + '-/\n' + HEADER)
             self.assertTrue(any('Authors credit' in error
-                                for error in check_source_policy(self.root)))
+                                for error in check_sources(self.root, ('policy',))[0]))
         source = header + 'Authors: Upstream contributor\n-/\n' + HEADER
         self.write('Aglib/Algebra/A.lean', source)
-        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
         self.assertEqual((self.root / 'Aglib/Algebra/A.lean').read_text(), source)
 
     def test_extraction_notice_is_not_replaced_with_a_copyright_header(self):
         source = ('/-\nExtracted source; no upstream license is declared.\n'
                   'Original attribution is retained below.\n-/\n' + HEADER)
         self.write('Aglib/Algebra/A.lean', source)
-        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
         self.assertEqual((self.root / 'Aglib/Algebra/A.lean').read_text(), source)
 
     def test_parser_nested_comments_strings_quoted_roots_import_all(self):
@@ -148,29 +150,29 @@ import Mathlib.Data.Nat.Basic
             with self.subTest(name=name):
                 self.write('Aglib/Algebra/A.lean',
                     'module\npublic import Aglib.' + name + '.Bad\n')
-                self.rejected('Forbidden domain import')
+                self.rejected('Forbidden library import')
 
     def test_exposed_public_noncomputable_section_is_an_implementation(self):
         self.write('Aglib/Algebra/A.lean', HEADER.replace(
             '@[expose] public section', '@[expose] public noncomputable section') +
             'def datum : Nat := 1\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',))[0], [])
 
     def test_general_milnor_owner_keeps_other_k_applications_out(self):
         for name in ['Aglib.KTheory', 'Aglib.KTheory.MilnorK',
                      'Aglib.KTheory.MilnorK.K2.Basic',
                      'Aglib.KTheory.MilnorK.Norm.FiniteExtension.Tower']:
-            self.assertFalse(forbidden_domain_import(name))
+            self.assertFalse(forbidden_import(name, PROFILES['aglib']))
         for name in ['Aglib.KTheory.Quillen.Basic',
                      'Aglib.KTheory.MilnorK.SConstruction.Basic',
                      'Aglib.Other.KTheory.MilnorK.Basic']:
-            self.assertTrue(forbidden_domain_import(name))
+            self.assertTrue(forbidden_import(name, PROFILES['aglib']))
 
     def test_retained_namespaces_and_comments_are_allowed(self):
         self.write('Aglib/Algebra/A.lean', HEADER +
             '/- Quillen.KTheory and R5Lab.Curves are source provenance. -/\n'
             'namespace Quillen.Devissage\ndef result : Nat := 1\nend Quillen.Devissage\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',))[0], [])
 
     def test_unresolved_import_and_cycles(self):
         self.write('Aglib/Algebra/A.lean',
@@ -203,18 +205,18 @@ import Mathlib.Data.Nat.Basic
         self.write('examples/downstream/Consumer/Bad.lean', 'axiom bad : False\n')
         self.write('examples/downstream/.lake/packages/Foreign/Bad.lean', 'sorry\n')
         self.generate()
-        errors = check_placeholders(self.root)
+        errors = check_sources(self.root, ('tokens',))[0]
         self.assertEqual(len(errors), 4, errors)
 
     def test_placeholder_comments_strings_ignored(self):
         self.write('Aglib/Algebra/A.lean', HEADER +
                    '/- sorry /- axiom -/ admit -/\ndef text := "sorry axiom admit"\n')
-        self.assertEqual(check_placeholders(self.root), [])
+        self.assertEqual(check_sources(self.root, ('tokens',))[0], [])
 
     def test_independent_client_resolution(self):
         self.write('examples/downstream/Consumer.lean', 'import Consumer.Client\n')
         self.write('examples/downstream/Consumer/Client.lean', 'import Aglib.Algebra.A\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',))[0], [])
         self.write('examples/downstream/Consumer/Client.lean', 'import Consumer.Missing\n')
         self.rejected('Unresolved local import')
 
@@ -228,7 +230,7 @@ import Mathlib.Data.Nat.Basic
                            'def datum := 1\n']:
                 with self.subTest(option=option, source=source):
                     self.write('Aglib/Algebra/A.lean', HEADER + source)
-                    self.assertTrue(check_source_policy(self.root))
+                    self.assertTrue(check_sources(self.root, ('policy',))[0])
 
     def test_other_fixed_source_safety_is_preserved(self):
         for source in ['set_option autoImplicit true\n',
@@ -236,7 +238,7 @@ import Mathlib.Data.Nat.Basic
                        'set_option linter.mathlibStandardSet false\n']:
             with self.subTest(source=source):
                 self.write('Aglib/Algebra/A.lean', HEADER + source)
-                self.assertTrue(check_source_policy(self.root))
+                self.assertTrue(check_sources(self.root, ('policy',))[0])
 
     def test_documented_local_positive_heartbeat_budgets(self):
         for option in ['maxHeartbeats', 'synthInstance.maxHeartbeats',
@@ -249,7 +251,7 @@ import Mathlib.Data.Nat.Basic
                     with self.subTest(option=option, value=value, comment=comment):
                         self.write('Aglib/Algebra/A.lean', HEADER +
                             f'set_option {option} {value} in\n' + comment + 'def datum := 1\n')
-                        self.assertEqual(check_source_policy(self.root), [])
+                        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
 
     def test_documented_local_zero_heartbeat_budgets_are_rejected(self):
         for option in ['maxHeartbeats', 'synthInstance.maxHeartbeats',
@@ -262,7 +264,7 @@ import Mathlib.Data.Nat.Basic
                     with self.subTest(option=option, value=value, comment=comment):
                         self.write('Aglib/Algebra/A.lean', HEADER +
                             f'set_option {option} {value} in\n' + comment + 'def datum := 1\n')
-                        errors = check_source_policy(self.root)
+                        errors = check_sources(self.root, ('policy',))[0]
                         self.assertEqual(len(errors), 1, errors)
                         self.assertIn('positive and finite', errors[0])
 
@@ -275,13 +277,13 @@ def «set_option maxHeartbeats 0» := 1
 set_option «foo maxHeartbeats».«bar--baz» 0
 def datum := 1
 ''')
-        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
         self.write('Aglib/Algebra/A.lean', HEADER + '''
 set_option /- option -/ «with /- spaces -/».«maxHeartbeats» /- budget -/ 0x00 in
 /- Explanation /- nested -/ supplied. -/
 def datum := 1
 ''')
-        errors = check_source_policy(self.root)
+        errors = check_sources(self.root, ('policy',))[0]
         self.assertEqual(len(errors), 1, errors)
         self.assertIn(':5: heartbeat budgets must be positive and finite', errors[0])
 
@@ -297,7 +299,7 @@ def text := "constant bad : False; unsafe opaque bad : Nat"
 /- constant bad : False /- unsafe def bad := 0 -/ -/
 end Field.DivisorData
 ''')
-        self.assertEqual(check_source_policy(self.root), [])
+        self.assertEqual(check_sources(self.root, ('policy',))[0], [])
 
     def test_actual_constant_and_unsafe_commands_remain_rejected(self):
         for source in [
@@ -310,7 +312,7 @@ end Field.DivisorData
                 'noncomputable unsafe\ndef bad : Nat := 0\n']:
             with self.subTest(source=source):
                 self.write('Aglib/Algebra/A.lean', HEADER + source)
-                errors = check_source_policy(self.root)
+                errors = check_sources(self.root, ('policy',))[0]
                 self.assertEqual(len(errors), 1, errors)
                 self.assertIn('unsupported source assumption or unsafe implementation', errors[0])
 
@@ -320,7 +322,7 @@ end Field.DivisorData
                 self.write('Aglib/Algebra/A.lean', HEADER +
                            f'def datum : Nat := (set_option maxHeartbeats {value} in\n'
                            '-- Explanation for this term.\n1)\n')
-                errors = check_source_policy(self.root)
+                errors = check_sources(self.root, ('policy',))[0]
                 if value == '0':
                     self.assertTrue(any('positive and finite' in error for error in errors), errors)
                 else:
@@ -330,14 +332,14 @@ end Field.DivisorData
         self.write('Aglib/Algebra/A.lean', HEADER +
                    "set_option maxHeartbeats 400000 in'\n"
                    '-- This is not the scope keyword.\ndef datum := 1\n')
-        errors = check_source_policy(self.root)
+        errors = check_sources(self.root, ('policy',))[0]
         self.assertTrue(any('declaration-local' in error for error in errors), errors)
 
     def test_heartbeat_rule_matches_name_components_not_substrings(self):
         for option in ['maxHeartbeatsExtra', '«foo.maxHeartbeats»', 'maxRecDepth']:
             with self.subTest(option=option):
                 self.write('Aglib/Algebra/A.lean', HEADER + f'set_option {option} 0\n')
-                self.assertEqual(check_source_policy(self.root), [])
+                self.assertEqual(check_sources(self.root, ('policy',))[0], [])
 
     def test_reusable_curve_and_surface_geometry_is_admitted(self):
         for name in ['Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle',
@@ -347,25 +349,25 @@ end Field.DivisorData
                      'Aglib.AlgebraicGeometry.Divisors.Relative.Basic',
                      'Aglib.AlgebraicGeometry.Stalk.FlatDVR.Component']:
             with self.subTest(name=name):
-                self.assertFalse(forbidden_domain_import(name))
+                self.assertFalse(forbidden_import(name, PROFILES['aglib']))
         for name in ['R5Lab.AlgebraicGeometry.Curves.Basic',
                      'Quillen.AlgebraicGeometry.Curves.Basic',
                      'Aglib.AlgebraicGeometry.Curves.KTheory.Basic',
                      'Aglib.AlgebraicGeometry.Curves.SConstruction.Basic']:
             with self.subTest(name=name):
-                self.assertTrue(forbidden_domain_import(name))
+                self.assertTrue(forbidden_import(name, PROFILES['aglib']))
 
     def test_bounded_below_plus_marker_is_distinct_from_application_plus(self):
         for name in ['Aglib.Algebra.Homology.DerivedCategory.Plus.SingleTriangle',
                      'Aglib.Algebra.Homology.HomotopyCategory.Plus.BoundedComparison',
                      'Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus']:
-            self.assertFalse(forbidden_domain_import(name))
+            self.assertFalse(forbidden_import(name, PROFILES['aglib']))
         for name in ['Aglib.Plus.Basic', 'Aglib.PlusConstruction.Basic',
                      'Aglib.Other.DerivedCategory.Plus.Basic',
                      'Aglib.Algebra.Homology.DerivedCategory.Plus.KTheory.Application',
                      'Aglib.AlgebraicGeometry.Cohomology.Cech.Resolution.Plus.KTheory.Bad',
                      'Aglib.Other.Cech.Resolution.Plus']:
-            self.assertTrue(forbidden_domain_import(name))
+            self.assertTrue(forbidden_import(name, PROFILES['aglib']))
 
 
 class TopicGenerationTests(unittest.TestCase):
@@ -423,7 +425,7 @@ class TopicGenerationTests(unittest.TestCase):
                          GENERATED_MARKER + HEADER + 'def answer := 42\n'):
             with self.subTest(original=original):
                 self.facade.write_text(original)
-                with self.assertRaisesRegex(ValueError, 'manually owned or non-import-only'):
+                with self.assertRaisesRegex(ValueError, 'manually owned or non-import-only|contains implementation commands'):
                     generate_topic(self.root, 'Aglib.NewFamily')
                 self.assertEqual(self.facade.read_text(), original)
 
@@ -436,16 +438,16 @@ class TopicGenerationTests(unittest.TestCase):
 
     def test_cycle_is_rejected_before_writing(self):
         self.leaf.write_text('module\npublic import Aglib.NewFamily\n')
-        with self.assertRaisesRegex(ValueError, 'consumer of that same entry'):
+        with self.assertRaisesRegex(ValueError, 'Generated facade import cycle'):
             generate_topic(self.root, 'Aglib.NewFamily')
         self.assertFalse(self.facade.exists())
 
     def test_actual_cli_generates_only_when_explicitly_requested(self):
-        result = subprocess.run([sys.executable, '-B', '-m', 'lean_tools', 'aglib', 'layout', '--root', str(self.root),
+        result = subprocess.run([sys.executable, '-B', '-m', 'lean_tools', 'imports', '--root', str(self.root),
                                  '--generate', 'Aglib.NewFamily'], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn('longFile = 0', result.stdout)
         self.assertTrue(self.facade.is_file())
+        self.assertIn('set_option linter.style.longFile 0', self.facade.read_text())
 
 
 if __name__ == '__main__':

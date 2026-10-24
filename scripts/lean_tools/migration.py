@@ -3,10 +3,8 @@ from pathlib import Path
 import hashlib
 import re
 import subprocess
+from .source import module_path
 
-
-def module_path(module: str) -> Path:
-    return Path(module.replace(".", "/") + ".lean")
 
 
 def source_path(module: str, *, source_root: Path) -> Path:

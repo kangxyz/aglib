@@ -1,4 +1,9 @@
-"""Lean names and pinned import-header lexical helpers; no native runtime required."""
+"""Lean names, import-header grammar and shared source-graph discovery.
+
+Inventory adapted from kangxyz/aglib scripts/library_sources.py at
+c9863095f90b8bd312af807dbf0e378df82403b5, Apache-2.0.
+Copyright (c) 2026 Algebraic geometry contributors; Authors: kangxyz.
+"""
 from pathlib import Path
 import re
 
@@ -129,3 +134,47 @@ def module_name(path: Path | str) -> str:
     return Path(path).with_suffix('').as_posix().replace('/', '.')
 
 
+
+
+def source_modules(root, roots=None):
+    """Discover occupied project roots and leaves, including in-package tests."""
+    from .library import profile
+    root = Path(root)
+    if roots is None:
+        production = profile(root)['production']
+        roots = (production, production + 'Test')
+    result = {}
+    for name in roots:
+        facade = root / (name + '.lean')
+        if facade.is_file():
+            result[name] = facade
+        result.update({module_name(path.relative_to(root)): path
+                       for path in (root / name).rglob('*.lean')})
+    return result
+
+def client_sources(root):
+    root = Path(root) / 'examples/downstream'
+    return {module_name(path.relative_to(root)): path for path in root.rglob('*.lean')
+            if '.lake' not in path.relative_to(root).parts}
+
+def import_cycles(graph):
+    """Iterative DFS supports dependency chains beyond Python's recursion limit."""
+    state, cycles = {}, []
+    for entry in sorted(graph):
+        if state.get(entry):
+            continue
+        state[entry] = 1
+        stack = [(entry, iter(sorted(graph[entry])))]
+        while stack:
+            node, children = stack[-1]
+            child = next(children, None)
+            if child is None:
+                state[node] = 2
+                stack.pop()
+            elif state.get(child) == 1:
+                route = [item[0] for item in stack]
+                cycles.append(' -> '.join(route[route.index(child):] + [child]))
+            elif child in graph and not state.get(child):
+                state[child] = 1
+                stack.append((child, iter(sorted(graph[child]))))
+    return cycles

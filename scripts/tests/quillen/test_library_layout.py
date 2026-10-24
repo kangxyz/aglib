@@ -6,9 +6,14 @@ import subprocess
 import sys
 import unittest
 
-from lean_tools.quillen.check_library_layout import check_layout, import_cycles
-from lean_tools.quillen.generate_imports import generated_files, stale_files
-from lean_tools.quillen.library_sources import lean_imports, uses_module_system
+from lean_tools.policy import check_sources
+from lean_tools.source import import_cycles
+from lean_tools.imports import generated_files, stale_files
+from lean_tools.source import lean_imports, uses_module_system
+
+from functools import partial
+from lean_tools.library import PROFILES
+COPYRIGHT_HEADER = PROFILES['quillen']['copyright_header']
 
 
 
@@ -39,18 +44,18 @@ class LayoutGuardTests(unittest.TestCase):
         self.write('Quillen.lean', ''.join('import ' + name + '\n' for name in names))
 
     def rejected(self, phrase):
-        errors, _ = check_layout(self.root)
+        errors, _ = check_sources(self.root, ('layout',), generated=True)
         self.assertTrue(any(phrase in error for error in errors), '\n'.join(errors))
 
     def test_missing_enrollment_even_for_orphan_module(self):
         self.write('Quillen/Algebra/Orphan.lean', '')
         self.rejected('missing enrollment')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_native_root_enrollment_is_left_to_mk_all(self):
         self.write('Quillen.lean', 'import Quillen.Library\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_library_test_import_bypasses_are_rejected(self):
         for imported in ('Consumer.Bad', 'Tests.Bad', '«Tests».Bad', 'Quillen.Tests.Bad',
@@ -74,13 +79,13 @@ class LayoutGuardTests(unittest.TestCase):
                 self.write('Quillen/Algebra/A.lean', 'module\npublic meta import ' + imported + '\n')
                 self.rejected('Forbidden library import')
         self.write('Quillen/Algebra/A.lean', 'import Mathlib.Tools.Helper\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_fake_imports_in_comments_and_strings_do_not_create_failures(self):
         self.write('Quillen/Algebra/A.lean', '''/- import Consumer.Bad /- nested -/ -/
 def s := "import QuillenTest.Bad"
 ''')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_unresolved_import_in_library_and_consumer(self):
         self.write('Quillen/Algebra/A.lean', 'import Quillen.NoSuchModule\n')
@@ -107,20 +112,20 @@ def s := "import QuillenTest.Bad"
         self.write('Quillen/Algebra/API/Leaf.lean', '')
         self.write('Quillen/Algebra/API.lean', 'import Quillen.Algebra.API.Leaf\n')
         self.write('Quillen/Algebra/Generated/Leaf.lean', '')
-        from lean_tools.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
+        from lean_tools.imports import GENERATED_MARKER
         self.write('Quillen/Algebra/Generated.lean', COPYRIGHT_HEADER + GENERATED_MARKER)
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
         for surface in ('Quillen.Algebra.API', 'Quillen.Algebra.Generated'):
             with self.subTest(surface=surface):
                 self.write('Quillen/Algebra/A.lean', 'import ' + surface + '\n')
                 self.rejected('Implementation imports broad facade')
         self.write('Quillen/Algebra/A.lean', '')
         self.write('Quillen/Algebra/API.lean', 'import Quillen.Algebra.Generated\n')
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_orphan_generator_marker_requires_a_corresponding_directory(self):
-        from lean_tools.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
+        from lean_tools.imports import GENERATED_MARKER
         self.write('Quillen/Algebra/Orphan.lean', COPYRIGHT_HEADER + GENERATED_MARKER)
         self.generate()
         self.rejected('no corresponding directory')
@@ -130,7 +135,7 @@ def s := "import QuillenTest.Bad"
         self.write('Quillen/Algebra/Foundation/Extension.lean',
                    'import Quillen.Algebra.Foundation\n')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
         self.write('Quillen/Algebra/Foundation.lean',
                    'module\npublic import Quillen.Algebra.B\n'
                    '/-! Manual API. -/\n@[expose] public section\n')
@@ -139,7 +144,7 @@ def s := "import QuillenTest.Bad"
     def test_extra_family_and_facade_supported(self):
         self.write('Quillen/Future/X.lean', '')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_loose_root_source_rejected(self):
         self.write('StrayAudit.lean', 'import Quillen\n')
@@ -155,11 +160,11 @@ def s := "import QuillenTest.Bad"
     def test_trust_tests_accept_production_imports_and_require_enrollment(self):
         self.write('QuillenTest/Axioms.lean', 'import Quillen\n')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
         self.write('QuillenTest/NewPositiveTest.lean', 'import Quillen.Algebra.A\n')
-        self.assertEqual(check_layout(self.root)[0], [])  # Test globs enroll it.
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])  # Test globs enroll it.
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_core_cannot_import_test_root_or_test_leaf(self):
         self.write('QuillenTest/Check.lean', 'import Quillen.Algebra.A\n')
@@ -184,7 +189,7 @@ def s := "import QuillenTest.Bad"
         self.write('examples/downstream/Consumer.lean', 'import Consumer.RealClient\n')
         self.write('examples/downstream/Consumer/RealClient.lean', 'import Quillen.Library\n')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
         self.write('examples/downstream/Consumer/RealClient.lean', 'import Consumer.Missing\n')
         self.rejected('Unresolved local import')
 
@@ -195,7 +200,7 @@ def s := "import QuillenTest.Bad"
         self.generate()
         # Even a previously unlisted child must not escape the module guard.
         self.write('examples/downstream/Consumer/NewClient.lean', 'import Quillen.Library\n')
-        for check in (generated_files, stale_files, check_layout):
+        for check in (generated_files, stale_files):
             with self.subTest(check=check.__name__):
                 with self.assertRaisesRegex(ValueError,
                                             'Modern Consumer.*Consumer/NewClient.lean'):
@@ -203,7 +208,7 @@ def s := "import QuillenTest.Bad"
         original = (self.root / 'examples/downstream/Consumer.lean').read_bytes()
         for arguments in ([], ['--check']):
             result = subprocess.run(
-                [sys.executable, '-m', 'lean_tools', 'quillen', 'imports',
+                [sys.executable, '-m', 'lean_tools', 'imports',
                  '--root', str(self.root), *arguments], capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn('Consumer/NewClient.lean', result.stderr)
@@ -224,19 +229,19 @@ def s := "import QuillenTest.Bad"
         self.generate()
         self.assertEqual(lean_imports((self.root / facade).read_text()),
                          ['Consumer.Audit', 'Consumer.Existing', 'Consumer.New.Nested'])
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
         (self.root / 'examples/downstream/Consumer/Existing.lean').unlink()
         self.rejected('missing enrollment')
         self.generate()
         self.assertEqual(lean_imports((self.root / facade).read_text()),
                          ['Consumer.Audit', 'Consumer.New.Nested'])
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
     def test_manual_future_facade_and_leaf_both_enrolled(self):
         self.write('Quillen/Future/A.lean', '')
         self.write('Quillen/Future.lean', 'import Quillen.Future.A\n\ndef answer : Nat := 42\n')
         self.generate()
-        self.assertEqual(check_layout(self.root)[0], [])
+        self.assertEqual(check_sources(self.root, ('layout',), generated=True)[0], [])
 
 
 if __name__ == '__main__':
