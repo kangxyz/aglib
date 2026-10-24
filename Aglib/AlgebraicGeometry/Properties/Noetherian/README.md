@@ -19,6 +19,18 @@ subcategory of `Over S` on locally Noetherian schemes (all morphisms over `S`; p
 instance `Scheme.LocallyNoetherianOver.isLocallyNoetherian`: the test schemes of Nitsure,
 *Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1, §1, pp. 3–4.
 
+[LocallyOfFiniteTypeOver](LocallyOfFiniteTypeOver.lean): `Scheme.locallyOfFiniteTypeOver S` (`T ⟶ S`
+locally of finite type; Mathlib's `MorphismProperty.overObj @LocallyOfFiniteType` by
+`locallyOfFiniteTypeOver_eq_overObj`) and its full subcategory `Scheme.LocallyOfFiniteTypeOver S`,
+closed under isomorphisms, the terminal object and binary products (instances
+`Scheme.isClosedUnderIsomorphisms_…`, `…_discrete_pEmpty_…`,
+`Scheme.isClosedUnderBinaryProducts_…`), hence cartesian monoidal with the fibre products over `S`.
+For `S` locally Noetherian, `Scheme.locallyOfFiniteTypeOver_le_locallyNoetherianOver` (Stacks 01T6),
+the inclusion `Scheme.LocallyOfFiniteTypeOver.toLocallyNoetherianOver`, and the restriction of
+representations `Scheme.LocallyNoetherianOver.representableByLocallyOfFiniteType`. Consumer: the
+group law of
+[Sites/OverRepresentability/CommGrpObj](../../Sites/OverRepresentability/CommGrpObj.lean).
+
 [Yoneda](Yoneda.lean): Yoneda on locally Noetherian test schemes. Isomorphisms
 (`Scheme.isIso_of_locallyNoetherian_yoneda_map_bijective`; over `S`,
 `Scheme.LocallyNoetherianOver.isIso_of_yoneda_map_bijective`, `isIso_left_…`), monomorphisms

@@ -159,6 +159,17 @@ fppf comparison map with a global section**, under the hypotheses above, with no
 The statements without `o` take `[IsSplitEpi p]`: their conclusions fail without a section (for
 a conic over ℝ without a real point, `P(ℝ) ⟶ Pic_{(fppf)}(ℝ)` is multiplication by 2 on ℤ).
 
+[RepresentableBy](RepresentableBy.lean), imported as
+`Aglib.AlgebraicGeometry.Picard.Comparison.RepresentableBy`: under the hypotheses of Isomorphism
+(`S` locally Noetherian, `p` proper, flat, geometrically integral fibres), a representation `e` of
+`Pic_{X/S,(fppf)}` on locally Noetherian test schemes by `P` gives representations by the same `P`
+of the normalized functor (`normalizedRepresentableByOfIsProperOfFlatOfGeometricallyIntegral`), of
+the rigidified functor (`rigidifiedRepresentableByOfIsProperOfFlatOfGeometricallyIntegral`), both
+for a section `o`, and of `P_{X/S}` for `[IsSplitEpi p]`
+(`relativeRepresentableByOfIsSplitEpiOfIsProperOfFlatOfGeometricallyIntegral`), each with its
+`_homEquiv` formula, through the comparison isomorphisms (Kleiman, Thm 2.5(2), p. 18, with Def. 2.8
+and Lemma 2.9, p. 19, for rigidified pairs; Stacks 0B9N).
+
 **Presentations.** Pulled-back bundles have two presentations: Mathlib's pullback functors (in
 `RigidifiedPair.map`) and the pullback pseudofunctor (in descent data). Equations between
 composites written in the two presentations are compared through the regular definition

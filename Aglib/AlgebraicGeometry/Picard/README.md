@@ -73,6 +73,27 @@ locally surjective for `Scheme.fppfTopology.over S` (instances
 underlying presheaf of sets `(fppfPicardSheaf p).obj ⋙ forget AddCommGrpCat` is an fppf sheaf
 (`isSheaf_fppfPicardSheaf_forget`).
 
+[GroupLaw](GroupLaw.lean), imported as `Aglib.AlgebraicGeometry.Picard.GroupLaw`: for `S` locally
+Noetherian, any `p`, and a representation `e` of `Pic_{X/S,(fppf)}` on locally Noetherian test
+schemes by `P` locally of finite type over `S` (an explicit argument; its existence is target 5),
+`picardCommGrpObj p P e` is a commutative group object structure on `P` in `Over S`, and `e` turns
+the group law of `T ⟶ P` into the addition of `Pic_{X/S,(fppf)}(T)` (`picard_homEquiv_one`,
+`picard_homEquiv_mul`, `picard_homEquiv_inv`, `picardHomAddEquiv`). Consumer: the planned Picard
+identity component (Kleiman, Prop. 5.3, p. 37), through
+[Group/IdentityComponent](../Group/IdentityComponent/README.md).
+
+[FamilyBaseChange](FamilyBaseChange.lean), imported as
+`Aglib.AlgebraicGeometry.Picard.FamilyBaseChange`, has no hypothesis: for `g : S' ⟶ S` and
+`p' := pullback.snd p g`, `familyBaseChangeIso p g T : (X ×_S S') ×_{S'} T ≅ X ×_S T` (Mathlib's
+`pullbackLeftPullbackSndIso`, typed between the literal fibre products),
+`familySchemeBaseChangeIso p g : familyScheme p' ≅ Over.map g ⋙ familyScheme p`,
+`familyPicardFunctorBaseChangeIso p g : familyPicardFunctor p' ≅ (Over.map g).op ⋙ familyPicardFunctor p`,
+and the compatibility with the base pullbacks
+`basePullback_comp_familyPicardFunctorBaseChangeIso_hom` (Kleiman, Ex. 4.4, p. 27, Answer 4.4, p.
+65, presheaf level). Consumer: the planned fppf base change
+`Pic_{X_{S'}/S',(fppf)} ≅ (Over.map g)^* Pic_{X/S,(fppf)}` (plan row F18, base-change step of target
+6).
+
 [FiberCondition/Subsheaf](FiberCondition/Subsheaf.lean) and
 [FiberCondition/OpenSubfunctor](FiberCondition/OpenSubfunctor.lean) give the generic
 open-subsheaf lemma of Kleiman's proof of Thm 4.8 (arXiv:math/0504020v1, pp. 28–29), with fppf

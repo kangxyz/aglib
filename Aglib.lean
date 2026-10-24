@@ -4169,8 +4169,10 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.Injectivity
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Isomorphism
 public import Aglib.AlgebraicGeometry.Picard.Comparison.LocallyTrivial
 public import Aglib.AlgebraicGeometry.Picard.Comparison.PullbackFullyFaithful
+public import Aglib.AlgebraicGeometry.Picard.Comparison.RepresentableBy
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
+public import Aglib.AlgebraicGeometry.Picard.FamilyBaseChange
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.RelativeCover
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Subsheaf
@@ -4180,6 +4182,7 @@ public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
+public import Aglib.AlgebraicGeometry.Picard.GroupLaw
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Bijection
@@ -4374,6 +4377,7 @@ public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyOfFiniteTypeOver
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
@@ -4546,6 +4550,7 @@ public import Aglib.AlgebraicGeometry.Sites.GlobalSections
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Basic
+public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.CommGrpObj
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Fppf
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.GlueData
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.LocallyNoetherian
@@ -4841,6 +4846,8 @@ public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
+public import Aglib.CategoryTheory.ObjectProperty.GrpObj
+public import Aglib.CategoryTheory.ObjectProperty.RepresentableBy
 public import Aglib.CategoryTheory.ObjectProperty.Yoneda
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport

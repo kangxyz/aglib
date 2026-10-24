@@ -37,3 +37,16 @@ and `P Y`, gives an isomorphism) and `ObjectProperty.mono_of_yoneda_map_injectiv
 `Over.equivalence_pointsRelation_iff`, `Over.jointlyMono₂_of_left`; joint monicity from a
 monomorphism: `jointlyMono₂_comp_of_mono`, `jointlyMono₂_pullback_fst_snd`. Consumer: the locally
 Noetherian tests of `AlgebraicGeometry/Properties/Noetherian`.
+
+[ObjectProperty/RepresentableBy](ObjectProperty/RepresentableBy.lean) restricts representations to
+full subcategories: `Functor.FullyFaithful.representableBy` turns `F.RepresentableBy (G.obj Y)` into
+`(G.op ⋙ F).RepresentableBy Y` for fully faithful `G` (values in any universe), and
+`ObjectProperty.representableByιOfLE` does so along `ObjectProperty.ιOfLE` for `P ≤ Q`.
+[ObjectProperty/GrpObj](ObjectProperty/GrpObj.lean): for `P` closed under the terminal object and
+binary products in a cartesian monoidal `C` (Mathlib's `CartesianMonoidalCategory.fullSubcategory`),
+`MonObj.ofFullSubcategory`, `GrpObj.ofFullSubcategory`, `IsCommMonObj.ofFullSubcategory` and
+`CommGrpObj.ofFullSubcategory` carry a (commutative) monoid or group object `X` of
+`P.FullSubcategory` to `X.obj`, with the same unit, multiplication and inverse (by definition); the
+braidings of `C` and of `P.FullSubcategory` agree (`ObjectProperty.braiding_hom_hom`). These are
+definitions, not instances. Consumer:
+[Sites/OverRepresentability/CommGrpObj](../AlgebraicGeometry/Sites/OverRepresentability/CommGrpObj.lean).
