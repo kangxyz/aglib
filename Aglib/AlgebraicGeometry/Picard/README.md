@@ -155,8 +155,9 @@ Not yet proved here:
 - representability: the abstract quotient step (`Scheme.representableByOfFppfQuotient`,
   [Sites/FppfQuotient](../Sites/FppfQuotient.lean)) and the Zariski sheaf input of the gluing
   ([ZariskiSheaf](ZariskiSheaf.lean)) are proved, and so are the open subscheme `Z` of `Div^{ψ − φ₀}_X` and its universal Abel class
-  ([Abel/Divisor](Abel/Divisor.lean)); the local sections of `Z ⟶ Pic^{φ₀,ψ,r}_0`, the relation
-  `Z ×_P Z`, the instance for the strata and the gluing remain.
+  ([Abel/Divisor](Abel/Divisor.lean)), the local sections of `Z ⟶ Pic^{φ₀,ψ,r}_0`
+  ([Strata/LocalSections](Strata/LocalSections.lean)) and the relation `Z ×_P Z`
+  ([Strata/Relation](Strata/Relation/)); the instance for the strata and the gluing remain.
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,
@@ -367,6 +368,23 @@ Noetherian `A`, `Z = Pic^{φ₀,ψ,r}_m ×_P Div^{ψ − φ₀}_X` is represente
 schemes by an H-quasi-projective Noetherian scheme, an open subscheme of the scheme of `Div^{ψ −
 φ₀}_X` (`Strata.exists_abelPreimage_fineCondition_representableBy`; "Hence `Z` is
 quasi-projective").
+
+[Strata/LocalSections](Strata/LocalSections.lean): for a closed immersion `i` with `ι ≃ Fin (N + 1)`
+and `f = i ≫ toSpec A ι` flat with geometrically integral fibres, a representation `E` of
+`Div^{ψ − φ₀}_X` and `Z = C.abelPreimageOver E` with `C = fineCondition φ₀ ψ 0 (k + 1)`: a line
+bundle on `X ×_S V`, `V` locally Noetherian, that satisfies `C` at every point lifts to `Z` over the
+Grassmannian bundle `Gr(p_{V*} L, k) ⟶ V`, which is flat, locally of finite presentation and
+surjective, with `a^* α_Z = g^*[L]`
+(`Strata.exists_lift_abelPreimageOver_of_forall_fineCondition_holds`; the universal divisor of
+`LinSys_{L/X_V/V}`, transported by
+`LinearSystem.fppfAbelClass_comap_isoPullback_hom_eq_of_isLinearSystemDivisor`); hence the Abel map
+`Z ⟶ Pic^{φ₀,ψ,k+1}_0` is fppf-locally surjective on locally Noetherian test schemes
+(`Strata.exists_lift_abelPreimageOver_of_mem_subfunctor_fineCondition`), stated, up to the name of
+the bound morphism, as hypothesis (h₃) of `Scheme.representableByOfFppfQuotient` for
+`G = C.locallyNoetherianSubfunctor` and `z = abelPreimageFppfAbelClass E`. Kleiman,
+arXiv:math/0504020v1, proof of Thm 4.8, p. 30, in the fppf topology: the étale covering `T₁ → T′`
+with a map to `P(Q)` is replaced by `T₁ = Gr(p_{V*} L, k)` itself (Kleiman's `P(Q)`); Thm 3.13, pp.
+25–26. With `E` given, no Noetherian hypothesis on `A` is used.
 
 [Strata/Relation](Strata/Relation/) proves that `R = Z ×_P Z` is a proper and flat equivalence
 relation on `Z = Pic^{φ₀,ψ,k+1}_0 ×_P Div^{ψ − φ₀}_X`, represented by a Grassmannian bundle over `Z`

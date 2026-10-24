@@ -232,6 +232,16 @@ rank-`(k + 1)` sheaf is a line bundle (`LocallyFreeQuotientOf.isLocallyRankOne_k
 a map from a line bundle that is nonzero on every field fibre gives the quotient `ofLineSubbundle`
 by it, whose kernel is that map (`exists_iso_hom_kernel_ι_ofLineSubbundle`).
 
+[Surjective](LocallyFree/Surjective.lean): for `E` finite locally free of constant rank `n` and
+`k ≤ n`, `Gr(E, k) ⟶ S` is surjective (`surjective_grassmannianBundle_hom_of_le`). Every
+trivializing chart `j : Spec R ⟶ S` lifts to `Gr(E, k)`
+(`exists_comp_grassmannianBundle_hom_eq_trivializingChart`), by the point classifying the coordinate
+projection `O^{k + m} ↠ O^k` (`LocallyFreeQuotient.coordinateProjection`; `coordinateProjectionMap`,
+split by the first inclusion of `O^k ⨿ O^m`, through Mathlib's `SheafOfModules.freeSumIso`;
+`sheafHasRank_freeSheaf`). Plain mathematics, from the representability of `Quot_k(E)` (Nitsure, §1,
+Exercises (2), pp. 5–6); consumer: the local sections of the Abel map
+(`Picard/Strata/LocalSections`). Premise BCF.
+
 For `E = O^m` on `Spec R`, `P(E)` is `Gr(R^m, 1) ≅ ProjectiveSpace R ι` (below); identifying its
 universal quotient with `O^ι ↠ O(1)` is the open part of row F9.
 

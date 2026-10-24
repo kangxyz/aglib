@@ -2352,6 +2352,7 @@ public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.ProjectiveBundle
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Proper
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Representability
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Sheaf
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Surjective
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Trivialization
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
 public import Aglib.AlgebraicGeometry.Grassmannian.Plucker
@@ -3579,6 +3580,7 @@ public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorPolynomial
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
+public import Aglib.AlgebraicGeometry.Picard.Strata.LocalSections
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Basic
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.LinearSystem
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Properties
