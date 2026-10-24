@@ -268,3 +268,7 @@ locally free quotients (Stacks, Tags 089V and 01NE): `ProjectiveSpace.quotFuncto
 `O^m = SheafOfModules.free (ULift (Fin m))`; the form with `O^ι` needs reindexing along `e`, and
 the identification of the universal quotient with `coordinatePowerGeneratingMap R ι 1 : O^ι ↠ O(1)`
 is open.
+
+[QuasiProjective](QuasiProjective.lean): the Grassmannian `Gr(R^n, k)` is H-projective over
+`Spec R` by the Plücker closed immersion `pluckerProjective` (`Grassmannian.isHProjective_toBase`,
+`isHProjective_schemeOver_hom`), over any commutative ring.

@@ -115,6 +115,8 @@ public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.NatTrans.Unit
+public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
+public import Aglib.CategoryTheory.ObjectProperty.Yoneda
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport
 public import Aglib.CategoryTheory.Preadditive.CoprimeScalar

@@ -404,3 +404,22 @@ original coefficient-map square is cartesian for every homomorphism of
 commutative rings `σ : R →+* S`, with the source and target base-change maps
 retained. No flatness, reducedness, characteristic or factorial-invertibility
 hypothesis is required.
+
+## Quasi-projective schemes over `Spec R`
+
+[QuasiProjective](QuasiProjective.lean) defines `IsHQuasiProjective f` and `IsHProjective f` for
+`f : X ⟶ Spec R`: a quasi-compact immersion (closed immersion) into `ProjectiveSpace R ι`, `ι`
+finite, over `Spec R` (Stacks 01VW, 01W8 for an affine base; Nitsure's strongly (quasi-)projective,
+p. 23, with trivial bundle). Over a Noetherian ring every immersion into `P(ι)_R` is quasi-compact
+(`quasiCompact_of_isImmersion_of_isLocallyNoetherian`, Stacks 01OX), so
+`isHQuasiProjective_iff_exists_isImmersion`. Comparisons: H-projective implies H-quasi-projective
+and proper; H-quasi-projective implies separated, quasi-compact, locally of finite type;
+`isHProjective_iff_isHQuasiProjective_and_isProper` (Stacks 0BCL). Closure: projective space,
+quasi-compact immersions (`isHQuasiProjective_comp`), closed immersions (`isHProjective_comp`),
+any immersion over a Noetherian ring (`IsHQuasiProjective.comp_of_isImmersion`); Noetherian source
+(`IsHQuasiProjective.isNoetherian`). [Segre/QuasiProjective](Segre/QuasiProjective.lean):
+fibre products by the Segre embedding (`ProjectiveSpace.Segre.productEmbedding`,
+`isHQuasiProjective_pullback_fst_comp`, `isHProjective_pullback_fst_comp`, `…snd_comp`).
+[AffineImmersion/QuasiProjective](AffineImmersion/QuasiProjective.lean): `Spec A ⟶ Spec R` of
+finite type is H-quasi-projective (`isHQuasiProjective_spec_map_of_finiteType`). Open: finite
+disjoint unions, base change of the base ring.

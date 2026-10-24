@@ -2347,6 +2347,7 @@ public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Comparison
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.Quotient
 public import Aglib.AlgebraicGeometry.Grassmannian.ProjectiveSpace.UniversalQuotient
+public import Aglib.AlgebraicGeometry.Grassmannian.QuasiProjective
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Affine
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.BaseChange
 public import Aglib.AlgebraicGeometry.Grassmannian.Quotient.Basic
@@ -2425,6 +2426,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianPoint
 public import Aglib.AlgebraicGeometry.HilbertScheme.Naturality
 public import Aglib.AlgebraicGeometry.HilbertScheme.Point
 public import Aglib.AlgebraicGeometry.HilbertScheme.PulledBackGrassmannianPoint
+public import Aglib.AlgebraicGeometry.HilbertScheme.QuasiProjective
 public import Aglib.AlgebraicGeometry.HilbertScheme.QuotientDirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.Regularity
 public import Aglib.AlgebraicGeometry.HilbertScheme.Representability
@@ -3509,6 +3511,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveBundle.RankTwoExtension.Conormal
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.Open
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.OpenChart
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.QuasiProjective
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AwayAlgebra
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
@@ -3596,6 +3599,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.PrincipalOpen
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.PrincipalPencil
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Products.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.PulledCoordinates
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Reindex
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SchemeOver
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension
@@ -3613,6 +3617,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.ClosedImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.FiniteProduct
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.Map
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.ProductChart
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.QuasiProjective
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Segre.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Smooth
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Structure
@@ -3648,7 +3653,9 @@ public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.DenseComp
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.PointComponent
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.Transport
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
 public import Aglib.AlgebraicGeometry.Properties.Normal.Basic
 public import Aglib.AlgebraicGeometry.Properties.Normal.Components

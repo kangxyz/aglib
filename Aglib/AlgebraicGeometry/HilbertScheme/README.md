@@ -194,6 +194,10 @@ and the Grassmannian leaves [Kernel](../../RingTheory/Grassmannian/Kernel.lean),
 [MapCriterion](../../RingTheory/Grassmannian/MapCriterion.lean) and
 [LinearEquiv](../../RingTheory/Grassmannian/LinearEquiv.lean).
 
+[QuasiProjective](QuasiProjective.lean): over a Noetherian ring the Hilbert scheme of `P^n_A` is
+H-quasi-projective over `Spec A` (`ProjectiveSpace.isHQuasiProjective_hilbertSchemeOver_hom`), as a
+locally closed subscheme of the H-projective Grassmannian; hence separated and of finite type.
+
 ## Open toward Nitsure, §§5–6, for `P^n_A`
 
 The following are not formalized. The list is an inventory, not a proof.

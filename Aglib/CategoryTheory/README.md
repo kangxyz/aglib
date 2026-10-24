@@ -22,3 +22,18 @@ provides endpoint equality transport, while cancellation and reassociation use
 the existing Mathlib API.
 
 Focused interface guides: [Effective epimorphisms over a base](EffectiveEpi/README.md).
+
+[ObjectProperty/Yoneda](ObjectProperty/Yoneda.lean) tests morphisms on the objects of a property
+`P`: `ObjectProperty.isIso_of_yoneda_map_bijective` (bijective on `T`-points for `P T`, with `P X`
+and `P Y`, gives an isomorphism) and `ObjectProperty.mono_of_yoneda_map_injective` (injective on
+`P`-points with `P (X ×_Y X)` gives a monomorphism, through `fst_eq_snd_…` and
+`isIso_diagonal_…`); Stacks 001P and 08LR in the full subcategory of `P`.
+[ObjectProperty/EquivalenceRelation](ObjectProperty/EquivalenceRelation.lean) defines
+`pointsRelation p₁ p₂ T` (the image of `R(T) → X(T) × X(T)`) and compares Mathlib's internal
+`EquivalenceRelation` with it: internal relations give equivalence relations on all points
+(`EquivalenceRelation.equivalence_pointsRelation`), and for jointly monic `p₁, p₂` with `P X`,
+`P R`, `P (R ×_X R)` the converse holds from `P`-points (`ObjectProperty.equivalenceRelationOfPoints`,
+`ObjectProperty.isEquivalenceRelation_iff_points`). Over a base: `Over.pointsRelation_iff`,
+`Over.equivalence_pointsRelation_iff`, `Over.jointlyMono₂_of_left`; joint monicity from a
+monomorphism: `jointlyMono₂_comp_of_mono`, `jointlyMono₂_pullback_fst_snd`. Consumer: the locally
+Noetherian tests of `AlgebraicGeometry/Properties/Noetherian`.
