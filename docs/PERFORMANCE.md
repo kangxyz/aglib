@@ -13,7 +13,7 @@ remain saved independently of this synthesis.
 | Generic proof passes but specialization, a field or a short `rfl` is expensive | [Shared constructions and equations](#shared-constructions-and-equations) |
 | Instance-search limits, universe `max` or incompatible parent structures | [Instances and universes](#instances-and-universes) |
 | Rebuilds, overlapping jobs, memory, checker startup or import-only failure | [Build-and-check costs](#build-and-check-costs) |
-| An explicitly requested investigation of cause or timing | [Requested diagnosis and evidence](#requested-diagnosis-and-evidence) |
+| A compilation bottleneck or unclear cause | [Diagnosis and evidence](#diagnosis-and-evidence) |
 
 ## Repair workflow
 
@@ -22,7 +22,8 @@ Use these decisions within ordinary proof iteration:
 1. Locate the failing phase from existing feedback: cache/input preparation,
    imports, elaboration/instance search, tactic work, kernel checking, checker
    startup or serialization. A short proof or completed tactic can still leave
-   expensive kernel conversion.
+   expensive kernel conversion. If feedback cannot locate an actual bottleneck,
+   use [targeted diagnosis](#diagnosis-and-evidence) to guide the next repair.
 2. Read the relevant method below and its matching case. Check the actual
    source, toolchain, structures and budget conditions; consult the dependency's
    cases when it owns the expensive construction.
@@ -35,8 +36,7 @@ Use these decisions within ordinary proof iteration:
    artifacts and successful checks; repeat only changed inputs, failures and
    actual coverage gaps.
 5. If the recorded methods do not cover the problem, use
-   [upstream reference search](#search-upstream-references). Separate profiling,
-   probes and matched timing comparisons are explicitly requested investigations.
+   [upstream reference search](#search-upstream-references).
 6. When a validated repair adds new reusable knowledge, preserve its complete
    case and improve the applicable method here. Follow-ups update the same case; a new summary does not replace
    or delete its underlying evidence.
@@ -243,9 +243,15 @@ mathematical conditions govern that choice.
 Current operating guides own commands; historical split-linter, client, replay
 and control sequences in those records do not become present procedures.
 
-## Requested diagnosis and evidence
+## Diagnosis and evidence
 
-For an explicitly requested investigation:
+At a compilation bottleneck, actively use targeted compiler diagnostics, scoped
+traces, profiling or scratch probes when existing feedback does not locate the
+cause or guide the next repair. Normal troubleshooting and targeted compilation
+diagnostics need no separate user approval and add no routine benchmark or
+acceptance stage. Kernel replay and separate client checks remain excluded from
+ordinary work; mathematical trust and independent mathematical/writing review
+retain their existing requirements.
 
 1. Keep one implicated declaration/module on its actual pinned source, prepared
    dependencies and effective options. Put diagnostic outputs in scratch.
@@ -258,8 +264,9 @@ For an explicitly requested investigation:
    type probe puts `P` in a theorem binder
    (`theorem probe (_h : P) : True := True.intro`);
    `def probe : Prop := P` can measure a different nested-proof construction.
-5. Compare only the scope requested. For a speedup claim, use matched unprofiled
-   conditions: relevant source/dependencies, threads, flags, outputs, cache
+5. Compare only the scope needed for the investigation. For a speedup claim,
+   use matched unprofiled conditions: relevant source/dependencies, threads,
+   flags, outputs, cache
    treatment and measurement mode, including consumers when work can move.
 
 [Original diagnostic records](performance/a-focused-diagnostic-procedure.md),
