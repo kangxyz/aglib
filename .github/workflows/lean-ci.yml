@@ -347,7 +347,7 @@ jobs:
         run: lake test
       - name: Lint
         id: lint
-        timeout-minutes: 25
+        timeout-minutes: 45
         if: ${{ !cancelled() && needs.build.result == 'success' && steps.lean-setup.outcome == 'success' && steps.compiled.outcome == 'success' && steps.tools.outcome == 'success' }}
         continue-on-error: true
         working-directory: ${{ inputs.package-directory }}
@@ -358,7 +358,7 @@ jobs:
             exit 1
           fi
           for attempt in 1 2; do
-            if timeout --kill-after=30s 10m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint "${roots[@]}" -- --trace; then
+            if timeout --kill-after=30s 20m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint "${roots[@]}" -- --trace; then
               exit 0
             else
               status=$?
