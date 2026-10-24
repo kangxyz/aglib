@@ -30,14 +30,13 @@ class CommandTests(unittest.TestCase):
         self.assertEqual(policy['production'], ('Quillen',))
         self.assertEqual(policy['check_targets'], ())
         checks = policy['source_checks']
-        self.assertEqual(len(checks), 2)
+        self.assertEqual(len(checks), 1)
         for check in checks:
             self.assertTrue(Path(check.command[1]).as_posix().endswith('/lean_tools/__main__.py'))
             self.assertIn(str(self.root), check.command)
             self.assertTrue(all(Path(path).is_file() for path in check.inputs))
             self.assertIn('source.py', [Path(path).name for path in check.inputs])
-        self.assertIn('generate_imports.py', [Path(path).name for path in checks[0].inputs])
-        self.assertNotIn('generate_imports.py', [Path(path).name for path in checks[1].inputs])
+        self.assertIn('imports.py', [Path(path).name for path in checks[0].inputs])
 
     def test_empty_scoped_cache_never_falls_back_to_fetching_all_mathlib(self):
         from types import SimpleNamespace
@@ -85,12 +84,12 @@ class CommandTests(unittest.TestCase):
 
     def test_gitless_module_dispatch(self):
         (self.root / 'lakefile.toml').write_text('name = "quillen-k-theory"\ndefaultTargets = ["Quillen"]\n')
-        for command in ('layout', 'placeholders'):
-            result = subprocess.run([sys.executable, '-m', 'lean_tools', 'quillen', command,
+        for command in ('layout', 'tokens'):
+            result = subprocess.run([sys.executable, '-m', 'lean_tools', 'source', '--only', command,
                                      '--root', str(self.root)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
         result = subprocess.run([sys.executable, '-m', 'lean_tools', 'check', '--root',
                                  str(self.root), '--list'], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn('placeholders', result.stdout)
+        self.assertIn('source', result.stdout)
         self.assertNotIn('AglibTest', result.stdout)

@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from lean_tools.quillen.check_placeholders import check_placeholders
+from lean_tools.policy import check_sources
 
 
 class PlaceholderTests(unittest.TestCase):
@@ -28,7 +28,7 @@ def s := "sorry and axiom with \\" quote"
 example : True := by
   sorry
 ''')
-        errors = check_placeholders(self.root)
+        errors = check_sources(self.root, ('tokens',))[0]
         self.assertEqual(len(errors), 1)
         self.assertIn('Quillen/Example.lean:4: forbidden token sorry', errors[0])
 
@@ -37,14 +37,14 @@ example : True := by
         self.write('QuillenTest.lean', '')
         self.write('QuillenTest/Bad.lean', 'example : True := by admit\n')
         self.write('examples/downstream/Consumer/Bad.lean', 'example : True := by sorry\n')
-        errors = check_placeholders(self.root)
+        errors = check_sources(self.root, ('tokens',))[0]
         self.assertEqual(len(errors), 3)
         self.assertTrue(any('QuillenTest/Bad.lean' in error for error in errors))
         self.assertTrue(any('Consumer/Bad.lean' in error for error in errors))
 
     def test_downstream_dependency_cache_is_not_scanned(self):
         self.write('examples/downstream/.lake/packages/Dep/Bad.lean', 'sorry\n')
-        self.assertEqual(check_placeholders(self.root), [])
+        self.assertEqual(check_sources(self.root, ('tokens',))[0], [])
 
 
 if __name__ == '__main__':

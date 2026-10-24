@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from lean_tools.motivic.client import prepare
+from lean_tools.client import prepare
 
 
 class ClientBuildTests(unittest.TestCase):
@@ -16,6 +16,7 @@ class ClientBuildTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix='motivic client ')
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name).resolve()
+        (self.root / 'lakefile.toml').write_text('name = "Motivic"\n')
         self.client = self.root / 'examples/downstream'
         self.client.mkdir(parents=True)
         self.packages = self.root / '.lake/packages'
@@ -73,7 +74,7 @@ path = "../.."
             prepare(self.root)
 
     def test_explicit_client_uses_shared_module_builder(self):
-        from lean_tools.motivic import client as build_client
+        from lean_tools import client as build_client
         from unittest.mock import patch
         receipt = self.root / 'receipt'
         with patch.object(sys, 'argv', ['build_client.py', '--root', str(self.root),

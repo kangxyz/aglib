@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 from .library import family, local_roots
-from .source import lean_imports, module_path, MODULE
+from .source import lean_imports, module_path, MODULE, source_modules, client_sources
 
 
 def workspace_imports(root, targets=None):
@@ -23,11 +23,8 @@ def workspace_imports(root, targets=None):
                 raise ValueError('Expected existing local cache target: ' + name)
             pending.append(path)
     else:
-        pending = [path.relative_to(root) for name in roots
-                   for path in (root / name).rglob('*.lean')]
-        pending += [Path(name + '.lean') for name in roots if (root / (name + '.lean')).is_file()]
-        pending += [path.relative_to(root) for path in (root / 'examples/downstream').rglob('*.lean')
-                    if '.lake' not in path.relative_to(root).parts]
+        pending = [path.relative_to(root) for path in source_modules(root, roots).values()]
+        pending += [path.relative_to(root) for path in client_sources(root).values()]
     seen, imports = set(), set()
     while pending:
         path = pending.pop()
@@ -91,19 +88,6 @@ def run(root, command, receipt):
     from .cli import main
     return main(['run', '--root', str(root), '--receipt', str(receipt), '--bootstrap-cache', '--', *command])
 
-
-def bootstrap_main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', type=Path, default=Path.cwd())
-    parser.add_argument('--receipt', type=Path, required=True)
-    parser.add_argument('command', nargs=argparse.REMAINDER)
-    args = parser.parse_args(argv)
-    command = args.command[1:] if args.command[:1] == ['--'] else args.command
-    try:
-        return run(args.root.resolve(), command, args.receipt)
-    except (OSError, ValueError, ImportError, subprocess.SubprocessError) as error:
-        print('Focused cache bootstrap failed: ' + str(error), file=sys.stderr)
-        return 125
 
 
 def main(argv=None):

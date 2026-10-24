@@ -8,10 +8,10 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_tools.motivic.repository import check_repository
-from lean_tools.motivic.imports import (GENERATED_MARKER, check_generated, generated_files,
+from lean_tools.policy import check_repository
+from lean_tools.imports import (GENERATED_MARKER, check_generated, generated_files,
                               generator_owned, main, stale_files, write_generated)
-from lean_tools.motivic.sources import is_import_surface, lean_imports, uses_module_system
+from lean_tools.source import is_import_surface, lean_imports, uses_module_system
 
 
 class FacadeGenerationTests(unittest.TestCase):
