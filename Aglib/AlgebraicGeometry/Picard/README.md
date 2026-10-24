@@ -618,6 +618,61 @@ locally of finite type, the disjoint union of the open and closed `Pic^φ`, each
 of the H-quasi-projective opens `Pic^φ_m`. Tests:
 `AglibTest.AlgebraicGeometry.Picard.{Scheme.*,Representability,Representability.FineStrata}`.
 
+[Scheme/FieldProperties](Scheme/FieldProperties.lean): the Picard scheme over a field. For any
+ring, `ProjectiveSpace.isProper_comp_toSpec_of_isClosedImmersion i e : IsProper (i ≫ toSpec A ι)`
+for a closed immersion `i : X ⟶ P^N_A` and `ι ≃ Fin (N + 1)`. For a field `k` and any
+representation `e` of `F = Pic_{X/k,(fppf)}` on locally Noetherian test schemes by `P` locally of
+finite type over `k`: `unitPoint_eq_unitPoint_picardCommGrpObj` (the point of the section
+representing `0`, where `unitStalk e` is taken, is the unit point of the group law
+`picardCommGrpObj p P e`); `identityComponent_baseChangeRepresentableBy` (for a field extension `K`
+of `k`, the identity component of `P_K`, for its group law as the scheme representing
+`Pic_{X_K/K,(fppf)}` through `baseChangeRepresentableBy`, is the preimage of that of `P`; Kleiman,
+arXiv:math/0504020v1, Prop. 5.3, p. 37, "forming it commutes with extending `k`", with Ex. 4.4,
+p. 27) and `picardIdentityComponentBaseChangeIso : (Pic⁰_{X/k})_K ≅ Pic⁰_{X_K/K}`. At the Picard
+scheme `picardScheme h` of a closed `X ⊆ P^N_k`, flat with geometrically integral fibres, with `X`
+the `FScheme k` `Over.mk (i ≫ toSpec k ι)`: `picardSchemeTangentKernelLinearEquiv h :
+ker(F(k[ε]) → F(k)) ≃ₗ[k] H^1(X, 𝒪_X)` for `a • t = F(µ_a) t` (Kleiman, Thm 5.11, p. 42) and the
+Zariski form `picardSchemeCotangentSpaceDualLinearEquiv h : (𝔪/𝔪²)^∨ ≃ₗ[k] H^1(X, 𝒪_X)`; the
+statements of [IdentityComponent](IdentityComponent.lean) apply at `picardScheme h` as they stand
+(`Pic⁰_{X/k}` open and closed, a group subscheme, of finite type, geometrically irreducible;
+Kleiman, Prop. 5.3, p. 37). **`exists_representableBy_fppfPicardSheaf_fieldProperties i e`, target 6
+over a field with no premise**: a separated `k`-scheme `P` locally of finite type representing
+`Pic_{X/k,(fppf)}` on locally Noetherian test schemes, with `T_0 = H^1(X, 𝒪_X)` in the
+tangent-kernel and the Zariski form at the unit point, `Pic⁰_{X/k}` open and closed, a group
+subscheme of finite type, geometrically irreducible, and its formation commuting with every field
+extension. Instance search does not find `unitStalkAlgebra` at `picardScheme h` (measured; a
+candidate cause is that `picardScheme h` is reducible), so the Zariski form supplies it with
+`letI := unitStalkAlgebra (picardSchemeRepresentableBy h)`; the group and finiteness instances of
+`Pic⁰` are found through those on `identityComponentOver`. The focused test is
+`AglibTest.AlgebraicGeometry.Picard.Scheme.FieldProperties` (with axiom guards).
+
+[Scheme/Properties](Scheme/Properties.lean): the basic properties of the Picard scheme over a
+Noetherian `A` (target 6 of [PICARD_PLAN.md](../../../docs/PICARD_PLAN.md)). With a section `o` of
+`p = i ≫ toSpec A ι`: `picardSchemeNormalizedRepresentableBy h o ho`,
+`picardSchemeRigidifiedRepresentableBy h o ho` and, with `IsSplitEpi p`,
+`picardSchemeRelativeRepresentableByOfIsSplitEpi h` (each with `_homEquiv`; Kleiman, Thm 2.5(2),
+p. 18, Def. 2.8 and Lemma 2.9, p. 19; Stacks, Tag 0B9N); for `g : S' ⟶ Spec A` with `S'` locally
+Noetherian, `picardSchemeBaseChangeIso h g e' : P' ≅ P ×_S S'` for every representation `e'` of
+`Pic_{X_{S'}/S',(fppf)}` by `P'` on locally Noetherian `S'`-schemes (Kleiman, Ex. 4.4, p. 27, and
+Answer 4.4, p. 65; Mathlib's `RepresentableBy.uniqueUpToIso`). The group law `picardCommGrpObj`,
+its additivity (`picard_homEquiv_mul`, `picardHomAddEquiv`), the base change
+`baseChangeRepresentableBy` and its group law (`picardCommGrpObj_baseChange_toGrpObj`) apply at
+`picardScheme h` with no new declaration. **`exists_representableBy_fppfPicardSheaf_basicProperties
+i e`, target 6 with no premise**: a separated `Spec A`-scheme `P` locally of finite type with a
+representation `R` of `Pic_{X/S,(fppf)}` on locally Noetherian test schemes such that `R` is
+additive for `picardCommGrpObj p P R`; with a section, `P` represents the normalized and rigidified
+functors, and `P_{X/S}` with `IsSplitEpi p`; for every locally Noetherian `S'` over `S`, the group
+law of `P ×_S S'` as the scheme representing `Pic_{X_{S'}/S',(fppf)}` (`baseChangeRepresentableBy`)
+is the base-changed one, and every representing scheme is isomorphic to `P ×_S S'`; the strata
+`Pic^φ` are open and closed, disjoint and cover `P`, with their functorial meaning; and for every
+field point `g : Spec K ⟶ Spec A`, with `X_K = X ×_S Spec K` and `P_K` representing
+`Pic_{X_K/K,(fppf)}`: `T_0 = H^1(X_K, 𝒪)` in the tangent-kernel and the Zariski form, the point of
+the Zariski form is the unit, and `Pic⁰_{X_K/K}` is open and closed, a group subscheme, of finite
+type, geometrically irreducible, and its formation commutes with every field extension `L/K`. For
+`A = k` a field the statements for `X` itself are
+`exists_representableBy_fppfPicardSheaf_fieldProperties`. The focused test is
+`AglibTest.AlgebraicGeometry.Picard.Scheme.Properties` (with axiom guards).
+
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
 `map_mem_subfunctor_iff_of_surjective`), from `mem_subfunctor_iff` and `holdsAt_map`; no flatness.

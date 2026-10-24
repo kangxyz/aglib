@@ -3653,7 +3653,9 @@ public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
 public import Aglib.AlgebraicGeometry.Picard.Representability
 public import Aglib.AlgebraicGeometry.Picard.Representability.FineStrata
+public import Aglib.AlgebraicGeometry.Picard.Scheme.FieldProperties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Glue
+public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Separated
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Stratification
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
