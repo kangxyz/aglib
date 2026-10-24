@@ -986,6 +986,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.Fl
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.GeneralHyperplane
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.NatDegree
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.TwistMultiplication
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.ZeroModule
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LargeTwistBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LaurentComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.LocalBaseChange
@@ -2251,6 +2252,7 @@ public import Aglib.AlgebraicGeometry.FlatteningStratification.AffineBase
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Closed
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Coproduct
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Finite
+public import Aglib.AlgebraicGeometry.FlatteningStratification.FlatDecomposition
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Flatness
 public import Aglib.AlgebraicGeometry.FlatteningStratification.Global
 public import Aglib.AlgebraicGeometry.FlatteningStratification.HilbertPolynomial
@@ -2416,6 +2418,8 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Containment
 public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Generation
 public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Representability
 public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.SectionMap
+public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Decomposition
+public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Family
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheaf
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheafEpi
@@ -2439,6 +2443,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.Injectivity
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianFunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianPoint
 public import Aglib.AlgebraicGeometry.HilbertScheme.Naturality
+public import Aglib.AlgebraicGeometry.HilbertScheme.Nonempty
 public import Aglib.AlgebraicGeometry.HilbertScheme.OpenSubfunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.OpenSubscheme
 public import Aglib.AlgebraicGeometry.HilbertScheme.Point
@@ -2494,12 +2499,15 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Closed.TwoPointSubscheme
 public import Aglib.AlgebraicGeometry.IdealSheaf.ClosedExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.Colon
 public import Aglib.AlgebraicGeometry.IdealSheaf.Comap
+public import Aglib.AlgebraicGeometry.IdealSheaf.EmptySubscheme
 public import Aglib.AlgebraicGeometry.IdealSheaf.FinitePresentation
 public import Aglib.AlgebraicGeometry.IdealSheaf.FinitePresentationApproximation
 public import Aglib.AlgebraicGeometry.IdealSheaf.FiniteType
 public import Aglib.AlgebraicGeometry.IdealSheaf.FiniteTypeApproximation
 public import Aglib.AlgebraicGeometry.IdealSheaf.FiniteTypeExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
+public import Aglib.AlgebraicGeometry.IdealSheaf.GlueCoproduct
+public import Aglib.AlgebraicGeometry.IdealSheaf.GlueDisjoint
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueImmersion
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Factorial
@@ -2523,6 +2531,7 @@ public import Aglib.AlgebraicGeometry.Limits.Clopen
 public import Aglib.AlgebraicGeometry.Limits.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Limits.ClosedRange
 public import Aglib.AlgebraicGeometry.Limits.ConnectedCoproduct
+public import Aglib.AlgebraicGeometry.Limits.CoproductPullback
 public import Aglib.AlgebraicGeometry.Limits.DenseRange
 public import Aglib.AlgebraicGeometry.Limits.FiberChart
 public import Aglib.AlgebraicGeometry.Limits.FibreProductBaseChange

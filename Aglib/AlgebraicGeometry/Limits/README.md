@@ -43,3 +43,11 @@ for `p : X ⟶ S` and `f : T' ⟶ T` with `f ≫ g = g'`, the map
 projections form a cartesian square over `f`. No hypothesis on the morphisms is used. The
 [immersed Hilbert functor](../HilbertScheme/Immersed/Functor.lean) consumes it, and the base change
 of relative effective Cartier divisors on `X ×_S T` (F14) is its next consumer.
+
+[CoproductPullback](CoproductPullback.lean): for `πZ : Z ⟶ S` and `πH j : H j ⟶ S` (any small
+index type), the components `Scheme.pullbackSigmaι πZ πH j : Z ×_S H j ⟶ Z ×_S ∐ H` are open
+immersions, base changes of `Sigma.ι H j` (`isPullback_pullbackSigmaι`), with images the preimages
+of the components (`range_pullbackSigmaι`), covering (`exists_pullbackSigmaι_eq`) and pairwise
+disjoint (`pairwise_disjoint_range_pullbackSigmaι`). For finite index types they are the
+coprojections of [FiniteCoproductPullback](FiniteCoproductPullback.lean)`.iso`, with the factors
+swapped (`pullbackSigmaι_eq_sigmaι_iso`).

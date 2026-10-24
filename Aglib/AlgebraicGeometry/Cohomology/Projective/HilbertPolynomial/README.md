@@ -148,3 +148,14 @@ Surjectivity onto `ℤ^{n+1}` is not claimed.
 `NatDegree`: the Hilbert polynomial of a coherent `F` on `P^n_k` has degree at most `n`
 (`natDegree_projectiveHilbertPolynomial_le`), from `exists_projectiveHilbertFunction_eq_sum_choose`
 and `C(m, i) = descPochhammer i (m) / i!`.
+
+`ZeroModule` proves `Scheme.Cohomology.projectiveHilbertPolynomial_eq_zero_iff`: for a field `k`,
+`ι ≃ Fin (n + 1)` and a coherent `F` on `ProjectiveSpace k ι`, the Hilbert polynomial of `F` is zero
+iff `F` is zero (`projectiveHilbertPolynomial_eq_zero_of_isZero`, any `ι` and `F`;
+`isZero_of_projectiveHilbertPolynomial_eq_zero`). For `F` `m`-regular
+(`exists_isProjectiveRegular`), `h^0(O(m) ⊗ F) = χ(O(m) ⊗ F) = P_F(m)` by the vanishing half of
+Nitsure, arXiv:math/0504590v1, Lemma 2.1 (c), p. 10, and `O(m) ⊗ F` is globally generated
+(`IsProjectiveRegular.epi_globalSectionsEval`); so `P_F = 0` makes every global section zero,
+`O(m) ⊗ F = 0`, and `F = 0` by tensoring with `O(-m)` (`twistingTensorEquivalence`). Stacks has no
+direct statement (compare Tag 08AE); Tags 0BEN (Lemma 33.45.2) and 0BEV (Lemma 33.45.9) give an
+indirect route. Consumer: [HilbertScheme/Nonempty](../../../HilbertScheme/Nonempty.lean).

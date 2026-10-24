@@ -135,3 +135,26 @@ finite-subideal approximation satisfies this requirement. The
 the original source and structural triangles; the
 [approximation family](../Approximation/README.md) consumes these lower
 constructions.
+
+[EmptySubscheme](EmptySubscheme.lean) characterizes the empty closed subscheme of an arbitrary
+scheme: `Scheme.IdealSheafData.isEmpty_subscheme_iff` (`W` has no point iff `W = ⊤`),
+`nonempty_subscheme_iff`, and `isZero_quotientModule_iff` (`𝒪_X / I_W = 0` iff `W = ⊤`). The last
+goes through `quotientModuleIsoPushforward`: modules on an empty scheme vanish
+(`Scheme.Modules.isZero_iff_stalks`), and the global sections of `i_* 𝒪_W` form the ring
+`Γ(W, ⊤)`, nontrivial when `W` has a point. The nonvanishing of Hilbert polynomials of nonempty
+subschemes ([HilbertScheme/Nonempty](../HilbertScheme/Nonempty.lean)) consumes it.
+
+[GlueDisjoint](GlueDisjoint.lean) glues ideal sheaves along a jointly surjective family of open
+immersions with pairwise disjoint images, with no compatibility hypothesis:
+`Scheme.IdealSheafData.glueOfDisjoint`, `comap_glueOfDisjoint`, `eq_glueOfDisjoint_iff`. The
+overlap condition of [Glue](Glue.lean) holds automatically
+(`comap_fst_eq_comap_snd_of_pairwise_disjoint`; ideal sheaves on an empty scheme agree,
+`eq_of_isEmpty`). Any index universe.
+
+[GlueCoproduct](GlueCoproduct.lean) glues closed subschemes `D j ⊆ Z ×_S H j` to
+`Scheme.IdealSheafData.sigmaGlue πZ πH D ⊆ Z ×_S ∐_j H j` along the components
+`Scheme.pullbackSigmaι` ([Limits/CoproductPullback](../Limits/CoproductPullback.lean)):
+`comap_sigmaGlue`, `eq_sigmaGlue_iff`, and `comap_sigmaGlue_pullbackMap` (pullback along a map into
+one component). `ext_of_comap_pullbackMap_eq`: closed subschemes of `Z ×_S T` agreeing over an
+open cover of `T` are equal. Any small index type. Consumers:
+[HilbertScheme/Coproduct](../HilbertScheme/Coproduct/Family.lean).

@@ -44,7 +44,8 @@ quasi-compact `S` only finitely many fibre Hilbert polynomials occur.
   [Cohomology/Projective/HilbertPolynomial](../Cohomology/Projective/HilbertPolynomial/README.md)).
 - Present consumers: the tests `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank`,
   `.Universal`, `.Coproduct`, `.Finite`, `.Closed`, `.HilbertPolynomial`, `.Flatness`,
-  `.StratumFlatness`, `.AffineBase` and `.Global`.
+  `.StratumFlatness`, `.AffineBase`, `.Global` and `.FlatDecomposition`, and
+  [HilbertScheme/Coproduct/Decomposition](../HilbertScheme/Coproduct/Decomposition.lean).
 
 ## Main results
 
@@ -206,6 +207,32 @@ module `F` on `X_S`:
   (`relativeFlat_flatteningStrata`).
 - Theorem 4.3 (iii), `closure_range_flatteningStratumι_subset`, with Nitsure's order `f ≤ g` as
   "`f(m) ≤ g(m)` for `m ≫ 0`".
+
+[FlatDecomposition](FlatDecomposition.lean), in the setting of [Global](Global.lean), for `F` flat
+over `S`: the fibre Hilbert polynomial is locally constant
+(`isLocallyConstant_fiberHilbertPolynomialAt_of_relativeFlat`). The identity of `S` factors
+through `∐ S_f` (`exists_flatteningStrataι_section_of_relativeFlat`), so `flatteningStrataι` is an
+isomorphism (`isIso_flatteningStrataι_of_relativeFlat`), every stratum `S_f ⟶ S` is an open
+immersion (`isOpenImmersion_flatteningStratumι_of_relativeFlat`) and `{y | P_y = f}` is open and
+closed (`isOpen_setOf_fiberHilbertPolynomialAt_eq_of_relativeFlat`,
+`isClopen_setOf_fiberHilbertPolynomialAt_eq_of_relativeFlat`): the decomposition of Nitsure,
+arXiv:math/0504590v1, §1, p. 4, and the `T_f` of the proof of Thm 4.3 (ii), p. 22, obtained here
+from Thm 4.3 (ii) without a separate local-constancy argument. For an injective
+`φ : J → ℚ[X]` whose range contains every `P_y` (for instance a finite set of polynomials), the
+strata `S_{φ j}` cover `S` (`exists_flatteningStratumι_apply_eq`, flat or not) and
+`∐_j S_{φ j} ⟶ S` is an isomorphism (`isIso_sigmaDesc_flatteningStratumι_of_relativeFlat`,
+`flatteningDecompositionIso`); morphisms out of `S` are glued and compared on the strata
+(`flatteningStratumι_flatteningDecompositionIso_inv`,
+`hom_ext_of_flatteningStratumι_of_relativeFlat`). No finiteness of `J` is needed. Related local
+constancy statements through other interfaces: over an affine base,
+`isLocallyConstant_projectiveHilbertPolynomial_fiber`
+([HilbertPolynomial/FlatFamily](../Cohomology/Projective/HilbertPolynomial/FlatFamily.lean));
+for proper flat families, the point-fibre Euler characteristics,
+`isLocallyConstant_modulePointFiberEulerChar_of_proper`
+([Cohomology/Proper/EulerCharacteristic](../Cohomology/Proper/EulerCharacteristic.lean),
+Stacks Tag 0B9T), used for twisted line bundles in projective families by
+[Cohomology/Projective/EmbeddedFibers/Family](../Cohomology/Projective/EmbeddedFibers/Family.lean)
+(`isClopen_setOf_embeddedFiberTwistEulerChar_eq`).
 
 ## Not covered
 

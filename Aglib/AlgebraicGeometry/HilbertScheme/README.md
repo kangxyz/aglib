@@ -57,6 +57,9 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [Quotient/Descent](Quotient/Descent.lean) | `QuotientHilbertDatum.isPullback_toImage_of_comp_subschemeι_eq_graph`, `exists_isPullback_toImage`, `flat_toImage`, `surjective_toImage`, `isProper_toImage` | as `ker_comap_fst_eq_ker_comap_snd_of_comp_subschemeι_eq_graph`; all but `isPullback_toImage_of_comp_subschemeι_eq_graph` also need `Z` locally Noetherian |
 | [Quotient/FlatProper](Quotient/FlatProper.lean) | `FlatProperQuotient`, `quasiCompact`, `isLocallyNoetherian`, `locallyOfFinitePresentation`, `isSeparated`, `locallyOfFiniteType`, `effectiveEpi`, `isColimitCofork`, `singleton_mem_fppfPrecoverage` | base `Spec A`; Noetherian `A` for local Noetherianity, finite presentation and fppf |
 | [Quotient/Effective](Quotient/Effective.lean) | `QuotientHilbertDatum.comp_toImage_eq`, `isIso_lift_toImage`, `isPullback_toImage`, `flatProperQuotient`, `flatProperQuotient_q`, `flatProperQuotient_q_imageι`, `nonempty_flatProperQuotient_of_comp_eq` | `comp_toImage_eq`: `j` a closed immersion, `Z` locally Noetherian, `πZ` locally of finite type, the relation an equivalence relation on locally Noetherian points; `isIso_lift_toImage`, `isPullback_toImage`: as Descent; `flatProperQuotient` and the last three: base `Spec A`, `H` H-quasi-projective and locally Noetherian |
+| [Nonempty](Nonempty.lean) | `subschemeHilbertPolynomial_eq_zero_iff`, `subschemeHilbertPolynomial_ne_zero_iff`, `subschemeHilbertPolynomial_top`, `nonempty_subscheme_comap_pointMap_iff`, `nonempty_subscheme_comap_fromSpecResidueField_iff`, `IsHilbertFamily.surjective_of_ne_zero`, `IsHilbertFamily.ne_zero_of_nonempty`, `IsHilbertFamily.surjective_iff_ne_zero`, `fiberHilbertPolynomialAt_quotientModule_eq_zero_iff`, `fiberHilbertPolynomialAt_quotientModule_ne_zero_iff` | `subschemeHilbertPolynomial_eq_zero_iff`, `_ne_zero_iff`: field `K`, `e : ι ≃ Fin (n + 1)`; `_top`: field `K`, any `ι`; `nonempty_subscheme_comap_*_iff`: any `ι`, `T`, closed `Z` (any ring `K` for `pointMap`); `IsHilbertFamily.*`, `fiberHilbertPolynomialAt_quotientModule_*_iff`: `e`, any `T`; no flatness or Noetherian hypothesis |
+| [Coproduct/Decomposition](Coproduct/Decomposition.lean) | `isHilbertFamily_comap_pullbackBaseChange_of_flat`, `isHilbertFamily_comap_flatteningStratumι`, `isOpenImmersion_flatteningStratumι_of_flat`, `isClopen_setOf_fiberHilbertPolynomialAt_quotientModule_eq_of_flat`, `isIso_sigmaDesc_flatteningStratumι_of_flat`, `fiberHilbertPolynomialAt_pullback_baseChangeMap`, `fiberHilbertPolynomialAt_quotientModule_comap_baseChangeMap`, `pullbackSigmaι_toSpec_eq_baseChangeMap`, `fiberHilbertPolynomialAt_sigmaGlue_sigmaι`, `fiberHilbertPolynomialAt_sigmaGlue_sigmaι_of_isHilbertFamily`, `fiberHilbertPolynomialAt_sigmaGlue_comap_eq_iff` | `[Finite ι]`; restriction along a map with constant fibre polynomial: `V` flat, any `T`; stratum restriction: `T` locally Noetherian, `e`, any `V`; decomposition: `T` locally Noetherian, `e`, `V` flat, `φ` injective; glued family: any small `J` (`_comap_eq_iff`: `Φ` injective) |
+| [Coproduct/Family](Coproduct/Family.lean) | `Scheme.IdealSheafData.sigmaGlue_iff`, `flat_sigmaGlue`, `isProper_sigmaGlue`, `surjective_sigmaGlue` | any `πZ : Z ⟶ S`, `πH j : H j ⟶ S`, `J` small; `sigmaGlue_iff`: `P` local at the target |
 
 **The functor.** `IsHilbertFamily ι Φ g Z` asks a closed subscheme `Z ⊆ P^n_A ×_{Spec A} T` to be
 flat over `T` (Mathlib's `Flat` of `Z ⟶ T`; equivalently `𝒪_Z` is relatively flat,
@@ -242,6 +245,25 @@ The equalities and the isomorphism are tested on locally Noetherian points
 `IsPullback p₁ p₂ q q`; `q` is an effective epimorphism and a coequalizer of `p₁, p₂`, and for `A`
 Noetherian `Q` is locally Noetherian and `{q}` is an fppf covering.
 
+**Coproducts of Hilbert data.** For a closed `V ⊆ P^n_A ×_{Spec A} T` flat over a
+locally Noetherian `T`, `T` is the disjoint union of the open and closed strata
+`T_Φ = {t | P_t = Φ}` (`Coproduct/Decomposition`, from
+[FlatteningStratification/FlatDecomposition](../FlatteningStratification/FlatDecomposition.lean)),
+over any injective family of polynomials containing those that occur; the restriction of `V` to
+`T_Φ` (or to any open or test scheme on which `P_t = Φ`) is a point of `Hilb^Φ`, and fibre
+polynomials are unchanged by pullback. Families `D j ⊆ Z ×_S H j` glue to
+`sigmaGlue πZ πH D ⊆ Z ×_S ∐ H` ([IdealSheaf/GlueCoproduct](../IdealSheaf/GlueCoproduct.lean)),
+flat, proper or surjective over `∐ H` exactly when every `D j` is (`Coproduct/Family`); in `P^n`
+the glued family of points `D j ∈ Hilb^{Φ j}(H j)` has fibre polynomial `Φ j` on the `j`-th
+component, and, for distinct `Φ j`, its pullback along `a : T ⟶ ∐ H` has fibre polynomial `Φ j`
+exactly over `a⁻¹(H j)`. This is the finite union `H = ⊔ Hilb^Φ` with its family `D` of Nitsure,
+proof of Thm 6.8, p. 33. No finiteness is assumed: the index types are arbitrary small types.
+
+**Nonempty fibres.** A closed subscheme of `P^n_K` has zero Hilbert polynomial iff it
+is empty (`Nonempty`); so a point of `Hilb^Φ(T)` with `Φ ≠ 0` is surjective over `T`
+(`IsHilbertFamily.surjective_of_ne_zero`), and a nonempty point has `Φ ≠ 0`
+(`IsHilbertFamily.ne_zero_of_nonempty`) (Nitsure, p. 33, used there without proof).
+
 **Lower owners.** The general helpers of this family live in sibling leaves:
 [IdealSheaf/QuotientModule](../IdealSheaf/QuotientModule.lean),
 [IdealSheaf/Order](../IdealSheaf/Order.lean), [IdealSheaf/Comap](../IdealSheaf/Comap.lean),
@@ -286,6 +308,12 @@ The open step uses [Morphisms/UniversallyClosed/ImageComplement](../Morphisms/Un
 and [Sites/OverRepresentability/OpenSubscheme](../Sites/OverRepresentability/OpenSubscheme.lean).
 The immersed Hilbert functor uses [IdealSheaf/Monomorphism](../IdealSheaf/Monomorphism.lean) and
 [Limits/FibreProductBaseChange](../Limits/FibreProductBaseChange.lean).
+The coproduct and nonemptiness leaves use [IdealSheaf/EmptySubscheme](../IdealSheaf/EmptySubscheme.lean),
+[IdealSheaf/GlueDisjoint](../IdealSheaf/GlueDisjoint.lean),
+[IdealSheaf/GlueCoproduct](../IdealSheaf/GlueCoproduct.lean),
+[Limits/CoproductPullback](../Limits/CoproductPullback.lean),
+[FlatteningStratification/FlatDecomposition](../FlatteningStratification/FlatDecomposition.lean) and
+[Cohomology/Projective/HilbertPolynomial/ZeroModule](../Cohomology/Projective/HilbertPolynomial/ZeroModule.lean).
 
 [QuasiProjective](QuasiProjective.lean): over a Noetherian ring the Hilbert scheme of `P^n_A` is
 H-quasi-projective over `Spec A` (`ProjectiveSpace.isHQuasiProjective_hilbertSchemeOver_hom`), as a
