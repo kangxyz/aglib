@@ -441,3 +441,11 @@ the linear embeddings into `P(Option (ι ⊕ κ))_R` give a finite morphism from
 `FiniteEmbedding.exists_closedImmersion_of_isFinite` gives a closed immersion of `P(ι)_R ⨿ P(κ)_R`
 into some `P^n_R` over `Spec R`; no disjointness argument is used. Open: base change of the base
 ring.
+
+[QuasiProjective/EquivFin](QuasiProjective/EquivFin.lean): an H-quasi-projective `f : X ⟶ Spec R`
+has a quasi-compact immersion into `P(κ)_R` over `Spec R` with `κ ≃ Fin (n + 1)`
+(`IsHQuasiProjective.exists_isImmersion_equivFin`): the given immersion into `P(ι)_R` followed by
+the linear embedding `P(ι)_R ⟶ P(Option ι)_R`, also for empty `ι`; every commutative ring `R` (the
+form of Stacks 01VW, with `n + 1` coordinates). Consumer:
+[HilbertScheme/Quotient/Existence](../HilbertScheme/Quotient/Existence.lean), for the Hilbert
+schemes of an immersed scheme, which take `e : κ ≃ Fin (n + 1)`.

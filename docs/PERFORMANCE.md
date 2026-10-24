@@ -154,6 +154,12 @@ introduce new instance-proof conversions. Expose the equations the actual API
 needs. Abstract theorem parameters do not require replacing canonical data by
 Lean `opaque` or changing global transparency.
 [Tensor/Span and rejected helpers](performance/what-the-measurements-establish.md).
+When the proof needs only the defining equation of a large constructed value,
+such as a lift through an open immersion, introduce it with
+`obtain ⟨x, hx⟩ : ∃ x, … := ⟨…, …⟩` rather than `let`; in one combined repair
+this, with the per-component step split into lemmas, removed a 341-second `whnf`
+timeout in `refine`, and the attribution to `let` is a candidate.
+[Open-immersion lift case](performance/open-immersion-lifts-in-long-proofs-keep-only-the-defining-equation.md).
 
 **Bridge an isomorphism definition and its value before projecting.** At an
 identified boundary, prove a named `rfl` value equation at variable arguments,

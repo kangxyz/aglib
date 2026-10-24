@@ -2425,6 +2425,9 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Representabi
 public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.SectionMap
 public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Decomposition
 public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Family
+public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Functor
+public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.QuasiProjective
+public import Aglib.AlgebraicGeometry.HilbertScheme.Coproduct.Representability
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheaf
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheafEpi
@@ -2466,6 +2469,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.QuasiProjective
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Datum
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Descent
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Effective
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Existence
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.FlatProper
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Graph
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Points
@@ -2523,6 +2527,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.Glue
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueCoproduct
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueDisjoint
 public import Aglib.AlgebraicGeometry.IdealSheaf.GlueImmersion
+public import Aglib.AlgebraicGeometry.IdealSheaf.ImageOverBase
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Factorial
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.RegularSurface
@@ -3691,6 +3696,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.Products.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.PulledCoordinates
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective.Coproduct
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.QuasiProjective.EquivFin
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Reindex
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SchemeOver
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.SectionExtension
@@ -3743,6 +3749,7 @@ public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.DenseComponent
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.PointComponent
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.Transport
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.Coproduct
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected

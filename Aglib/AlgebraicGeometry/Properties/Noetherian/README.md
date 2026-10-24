@@ -19,6 +19,17 @@ subcategory of `Over S` on locally Noetherian schemes (all morphisms over `S`; p
 instance `Scheme.LocallyNoetherianOver.isLocallyNoetherian`: the test schemes of Nitsure,
 *Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1, §1, pp. 3–4.
 
+[Coproduct](Coproduct.lean): a disjoint union of locally Noetherian schemes, over a small index type
+in any universe, is locally Noetherian (`isLocallyNoetherian_sigma`, through Mathlib's
+`sigmaOpenCover` and `isLocallyNoetherian_iff_openCover`), and
+`Scheme.LocallyNoetherianOver.sigma H` is the disjoint union of locally Noetherian test schemes over
+`S`, with structure morphism `Sigma.desc fun j => (H j).obj.hom` and inclusions
+`LocallyNoetherianOver.sigmaι`. Consumer:
+[HilbertScheme/Coproduct/Representability](../../HilbertScheme/Coproduct/Representability.lean);
+H-quasi-projectivity of finite such unions over `Spec R` is
+`Scheme.LocallyNoetherianOver.isHQuasiProjective_sigma_obj_hom`
+([HilbertScheme/Coproduct/QuasiProjective](../../HilbertScheme/Coproduct/QuasiProjective.lean)).
+
 [LocallyOfFiniteTypeOver](LocallyOfFiniteTypeOver.lean): `Scheme.locallyOfFiniteTypeOver S` (`T ⟶ S`
 locally of finite type; Mathlib's `MorphismProperty.overObj @LocallyOfFiniteType` by
 `locallyOfFiniteTypeOver_eq_overObj`) and its full subcategory `Scheme.LocallyOfFiniteTypeOver S`,

@@ -66,9 +66,13 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [Quotient/Descent](Quotient/Descent.lean) | `QuotientHilbertDatum.isPullback_toImage_of_comp_subschemeι_eq_graph`, `exists_isPullback_toImage`, `flat_toImage`, `surjective_toImage`, `isProper_toImage` | as `ker_comap_fst_eq_ker_comap_snd_of_comp_subschemeι_eq_graph`; all but `isPullback_toImage_of_comp_subschemeι_eq_graph` also need `Z` locally Noetherian |
 | [Quotient/FlatProper](Quotient/FlatProper.lean) | `FlatProperQuotient`, `quasiCompact`, `isLocallyNoetherian`, `locallyOfFinitePresentation`, `isSeparated`, `locallyOfFiniteType`, `effectiveEpi`, `isColimitCofork`, `singleton_mem_fppfPrecoverage` | base `Spec A`; Noetherian `A` for local Noetherianity, finite presentation and fppf |
 | [Quotient/Effective](Quotient/Effective.lean) | `QuotientHilbertDatum.comp_toImage_eq`, `isIso_lift_toImage`, `isPullback_toImage`, `flatProperQuotient`, `flatProperQuotient_q`, `flatProperQuotient_q_imageι`, `nonempty_flatProperQuotient_of_comp_eq` | `comp_toImage_eq`: `j` a closed immersion, `Z` locally Noetherian, `πZ` locally of finite type, the relation an equivalence relation on locally Noetherian points; `isIso_lift_toImage`, `isPullback_toImage`: as Descent; `flatProperQuotient` and the last three: base `Spec A`, `H` H-quasi-projective and locally Noetherian |
+| [Quotient/Existence](Quotient/Existence.lean) | `nonempty_flatProperQuotient`, `nonempty_flatProperQuotient_of_isProper_fst_of_flat_fst`, `FlatProperQuotient.flip` (`flip_q`, `flip_πQ`), `QuotientHilbertDatum.exists_isHQuasiProjective`, `isClosedImmersion_pullback_lift_of_isProper_snd_of_locallyNoetherian_injective`; `CategoryTheory.pointsRelation_swap_iff`, `CategoryTheory.equivalence_pointsRelation_swap` | `nonempty_…`: `A` Noetherian, `πZ` H-quasi-projective, `p₂` (`…_of_isProper_fst_of_flat_fst`: `p₁`) proper and flat, `(p₁, p₂)` injective and an equivalence relation on locally Noetherian points; `exists_isHQuasiProjective`: `A` Noetherian, `πZ` H-quasi-projective, `j` a closed immersion with `j ≫ pr₂` proper, flat and surjective; `isClosedImmersion_…`: any base `S`, `πZ` separated, `Z ×_S Z` locally Noetherian, `p₂` proper, injective on locally Noetherian points |
 | [Nonempty](Nonempty.lean) | `subschemeHilbertPolynomial_eq_zero_iff`, `subschemeHilbertPolynomial_ne_zero_iff`, `subschemeHilbertPolynomial_top`, `nonempty_subscheme_comap_pointMap_iff`, `nonempty_subscheme_comap_fromSpecResidueField_iff`, `IsHilbertFamily.surjective_of_ne_zero`, `IsHilbertFamily.ne_zero_of_nonempty`, `IsHilbertFamily.surjective_iff_ne_zero`, `fiberHilbertPolynomialAt_quotientModule_eq_zero_iff`, `fiberHilbertPolynomialAt_quotientModule_ne_zero_iff` | `subschemeHilbertPolynomial_eq_zero_iff`, `_ne_zero_iff`: field `K`, `e : ι ≃ Fin (n + 1)`; `_top`: field `K`, any `ι`; `nonempty_subscheme_comap_*_iff`: any `ι`, `T`, closed `Z` (any ring `K` for `pointMap`); `IsHilbertFamily.*`, `fiberHilbertPolynomialAt_quotientModule_*_iff`: `e`, any `T`; no flatness or Noetherian hypothesis |
 | [Coproduct/Decomposition](Coproduct/Decomposition.lean) | `isHilbertFamily_comap_pullbackBaseChange_of_flat`, `isHilbertFamily_comap_flatteningStratumι`, `isOpenImmersion_flatteningStratumι_of_flat`, `isClopen_setOf_fiberHilbertPolynomialAt_quotientModule_eq_of_flat`, `isIso_sigmaDesc_flatteningStratumι_of_flat`, `fiberHilbertPolynomialAt_pullback_baseChangeMap`, `fiberHilbertPolynomialAt_quotientModule_comap_baseChangeMap`, `pullbackSigmaι_toSpec_eq_baseChangeMap`, `fiberHilbertPolynomialAt_sigmaGlue_sigmaι`, `fiberHilbertPolynomialAt_sigmaGlue_sigmaι_of_isHilbertFamily`, `fiberHilbertPolynomialAt_sigmaGlue_comap_eq_iff` | `[Finite ι]`; restriction along a map with constant fibre polynomial: `V` flat, any `T`; stratum restriction: `T` locally Noetherian, `e`, any `V`; decomposition: `T` locally Noetherian, `e`, `V` flat, `φ` injective; glued family: any small `J` (`_comap_eq_iff`: `Φ` injective) |
 | [Coproduct/Family](Coproduct/Family.lean) | `Scheme.IdealSheafData.sigmaGlue_iff`, `flat_sigmaGlue`, `isProper_sigmaGlue`, `surjective_sigmaGlue` | any `πZ : Z ⟶ S`, `πH j : H j ⟶ S`, `J` small; `sigmaGlue_iff`: `P` local at the target |
+| [Coproduct/Functor](Coproduct/Functor.lean) | `range_map_immersionBaseChange_subschemeι_comp_snd`, `map_immersionBaseChange_subschemeι_comp_snd_iff`, `fiberHilbertPolynomialAt_map_immersionBaseChange_ne_zero_iff`, `IsImmersedHilbertFamily.surjective_of_ne_zero`, `IsImmersedHilbertFamilyIn` (`.isClosedImmersion`, `.flat_map`, `.isProper_map`, `.isImmersedHilbertFamily_of_fiberHilbertPolynomialAt_eq`, `.comap`, `.surjective_of_zero_notMem`), `IsImmersedHilbertFamily.isImmersedHilbertFamilyIn_of_mem`, `isImmersedHilbertFamilyIn_singleton_iff`, `isImmersedHilbertFamilyIn_range_fiberHilbertPolynomialAt`, `finite_range_fiberHilbertPolynomialAt_map_immersionBaseChange`, `zero_notMem_range_fiberHilbertPolynomialAt_map_immersionBaseChange_iff`, `immersedHilbertFunctorIn`, `locallyNoetherianImmersedHilbertFunctorIn`, `comap_pullbackSigmaι_map_immersionBaseChange`, `map_sigmaGlue_immersionBaseChange`, `isImmersedHilbertFamilyIn_sigmaGlue`, `fiberHilbertPolynomialAt_map_comap_sigmaGlue_eq_iff` | any set `F`, any `T`; image over the base: `V` closed in `P_T`, no hypothesis on `i`; `finite_range_…`: `T` quasi-compact and locally Noetherian, `e`; `[IsPreimmersion i]` for closedness, the functor and the glued image; `[Finite ι]` for the functor, base change and glued families; `e : ι ≃ Fin (n + 1)` for the nonvanishing and surjectivity statements (`surjective_of_zero_notMem`: `0 ∉ F`); glued families: any small `J`, each `D j` proper (`_eq_iff`: `Φ` injective) |
+| [Coproduct/Representability](Coproduct/Representability.lean) | from representations `E Φ` of the pieces: `sigmaImmersedHilbertFamily`, `comap_sigmaImmersedHilbertFamily`, `isImmersedHilbertFamilyIn_sigmaImmersedHilbertFamily`, `range_comp_subset_range_sigmaι_of_fiberHilbertPolynomialAt_eq`, `comp_eq_comp_of_comap_sigmaImmersedHilbertFamily_eq`, `eq_of_comap_sigmaImmersedHilbertFamily_eq`, `exists_comap_sigmaImmersedHilbertFamily_eq`, `sigmaImmersedHilbertRepresentableBy` (`_homEquiv_coe`); for the Hilbert schemes of `Immersed/Representability`: `sigmaImmersedHilbertSchemeOver`, `sigmaImmersedHilbertScheme`, `universalSigmaImmersedHilbertFamily` (`comap_…`, `…_eq_sigmaImmersedHilbertFamily`, `isImmersedHilbertFamilyIn_…`, `flat_…`, `isProper_…`, `surjective_…_of_zero_notMem`, `map_…`), `locallyNoetherianImmersedHilbertFunctorInRepresentableBy` (`_homEquiv_coe`), `eq_of_comap_universalSigmaImmersedHilbertFamily_eq`, `exists_comap_universalSigmaImmersedHilbertFamily_eq`, `exists_sigmaImmersedHilbertScheme_representableBy`; `Scheme.IdealSheafData.comap_pullbackMap_comap_pullbackMap` | any set `F`; `[IsPreimmersion i]`, `[Finite ι]`, `e : ι ≃ Fin (n + 1)`; injectivity and surjectivity on locally Noetherian `T`; for the Hilbert schemes: `A` Noetherian, `i` an immersion, `r Φ ≥ hilbertRegularityBound n Φ`, `φ Φ` cutting out `i.ker` (`hC`); `surjective_…_of_zero_notMem`: `0 ∉ F` |
+| [Coproduct/QuasiProjective](Coproduct/QuasiProjective.lean) | `Scheme.LocallyNoetherianOver.isHQuasiProjective_sigma_obj_hom`, `isHQuasiProjective_sigmaImmersedHilbertSchemeOver_hom` | `F` finite; `A` Noetherian, `i` an immersion |
 
 **The functor.** `IsHilbertFamily ι Φ g Z` asks a closed subscheme `Z ⊆ P^n_A ×_{Spec A} T` to be
 flat over `T` (Mathlib's `Flat` of `Z ⟶ T`; equivalently `𝒪_Z` is relatively flat,
@@ -267,8 +271,7 @@ Nitsure, Theorem 6.8 (pp. 33–35; Theorem 6.9, p. 36), against an abstract Hilb
 `H` over `S`, a closed subscheme `D ⊆ Z ×_S H` flat, proper and surjective over `H`, and
 `φ : Z ⟶ H` over `S` with `D.comap (𝟙 × φ) = ker j` (Nitsure's `φ^* D = R`), such that points of
 `H` over `S` on locally Noetherian `T` are determined by their pulled-back families on `Z ×_S T`.
-No Hilbert scheme is unfolded; the instantiation with the finite union of Hilbert schemes of `Z`
-is separate. With `p₁ = j ≫ pr₁`, `p₂ = j ≫ pr₂` and the relation an equivalence relation on
+No Hilbert scheme is unfolded in the core; `Quotient/Existence` instantiates it (below). With `p₁ = j ≫ pr₁`, `p₂ = j ≫ pr₂` and the relation an equivalence relation on
 locally Noetherian points (`Properties/Noetherian/EquivalenceRelation`): `(x, y) ∈ R(T)` iff
 `(x, φ ∘ y) ∈ D(T)` for every `T`, and iff `φ ∘ x = φ ∘ y` for `T` locally Noetherian (`(***)`,
 p. 34); the graph `(𝟙, φ)` factors through `D` as a closed subscheme `Γ_φ` with
@@ -283,6 +286,23 @@ The equalities and the isomorphism are tested on locally Noetherian points
 `IsPullback p₁ p₂ q q`; `q` is an effective epimorphism and a coequalizer of `p₁, p₂`, and for `A`
 Noetherian `Q` is locally Noetherian and `{q}` is an fppf covering.
 
+`Quotient/Existence` instantiates the core with the finite union of Hilbert schemes of `Z` (Nitsure,
+Thm 6.9, p. 36, by the proof of Thm 6.8, p. 33): over a Noetherian ring `A`, for `πZ : Z ⟶ Spec A`
+H-quasi-projective and `p₁, p₂ : R ⟶ Z` over `Spec A` with `p₂` proper and flat, injective and an
+equivalence relation on locally Noetherian points, `nonempty_flatProperQuotient` gives a
+`FlatProperQuotient πZ p₁ p₂`. The relation `(p₁, p₂) : R ⟶ Z ×_A Z` is a closed immersion
+(`isClosedImmersion_pullback_lift_of_isProper_snd_of_locallyNoetherian_injective`: proper, since
+`j ≫ pr₂ = p₂` is proper and `pr₂` is separated, and injective on locally Noetherian points); `R` is
+proper, flat and surjective over the second factor (the diagonal is a section of `p₂`), so its fibre
+Hilbert polynomials through an immersion `Z ⟶ P(ι)_A` with `ι ≃ Fin (n + 1)` form a finite set `F`
+without `0`, and `H_F = ∐_{Φ ∈ F} Hilb^Φ_Z` with its universal family and the classifying morphism
+of `R` is a Hilbert datum with `H_F` H-quasi-projective
+(`QuotientHilbertDatum.exists_isHQuasiProjective`). If instead `p₁` is proper and flat, the relation
+`(p₂, p₁)` is used and the square flipped
+(`nonempty_flatProperQuotient_of_isProper_fst_of_flat_fst`, `FlatProperQuotient.flip`). Only one
+projection needs to be proper and flat (Nitsure assumes both), and the relation is tested on locally
+Noetherian points only (Nitsure: all `S`-schemes).
+
 **Coproducts of Hilbert data.** For a closed `V ⊆ P^n_A ×_{Spec A} T` flat over a
 locally Noetherian `T`, `T` is the disjoint union of the open and closed strata
 `T_Φ = {t | P_t = Φ}` (`Coproduct/Decomposition`, from
@@ -296,6 +316,34 @@ the glued family of points `D j ∈ Hilb^{Φ j}(H j)` has fibre polynomial `Φ j
 component, and, for distinct `Φ j`, its pullback along `a : T ⟶ ∐ H` has fibre polynomial `Φ j`
 exactly over `a⁻¹(H j)`. This is the finite union `H = ⊔ Hilb^Φ` with its family `D` of Nitsure,
 proof of Thm 6.8, p. 33. No finiteness is assumed: the index types are arbitrary small types.
+
+**The Hilbert scheme of an immersed scheme with polynomials in a set.** For a preimmersion
+`i : Y ⟶ P^n_A` over `Spec A` and a set `F` of polynomials, `immersedHilbertFunctorIn i hi F`
+(`Coproduct/Functor`) sends `T` to the closed subschemes `V ⊆ Y_T` that are proper and flat over `T`
+and whose images `V.map i_T ⊆ P_T` have every fibre Hilbert polynomial `fiberHilbertPolynomialAt` in
+`F`; for all polynomials it is Nitsure's `Hilb_{Y/S}` (§1, p. 4), and for `F = {Φ}` it is
+`immersedHilbertFunctor i hi Φ` (`isImmersedHilbertFamilyIn_singleton_iff`). A closed `V ⊆ Y_T`
+closed in `P_T` and its image have the same image in `T` and the same properties over `T` respecting
+isomorphisms (`range_map_immersionBaseChange_subschemeι_comp_snd`,
+`map_immersionBaseChange_subschemeι_comp_snd_iff`), so points of `Hilb^Φ_Y` with `Φ ≠ 0`, and points
+with polynomials in `F` when `0 ∉ F`, cover their base. The image of a glued family
+`sigmaGlue πY πH D` is the glued family of the images (`map_sigmaGlue_immersionBaseChange`). Given
+representations of the `Hilb^Φ_Y`, `Φ ∈ F`, by `H Φ`, the disjoint union `∐_{Φ ∈ F} H Φ`
+(`Scheme.LocallyNoetherianOver.sigma`) represents the functor on locally Noetherian test schemes,
+with universal family glued from the universal families of the pieces (`Coproduct/Representability`,
+`sigmaImmersedHilbertRepresentableBy`): injectivity and surjectivity are proved on the strata of the
+image of a family (`Coproduct/Decomposition`). For the Hilbert schemes `H^Φ_Y` of
+`Immersed/Representability` this is `locallyNoetherianImmersedHilbertFunctorInRepresentableBy` with
+`H_F = sigmaImmersedHilbertSchemeOver ι n e A r hr φ i` and
+`D_F = universalSigmaImmersedHilbertFamily`, which exist for every set `F`
+(`exists_sigmaImmersedHilbertScheme_representableBy`); for finite `F`, `H_F` is H-quasi-projective
+over `Spec A` (`Coproduct/QuasiProjective`). This is the finite union `H` and its family `D` in
+Nitsure's proof of Thm 6.8, p. 33. The plain-morphism forms
+`eq_of_comap_universalSigmaImmersedHilbertFamily_eq` (injectivity on locally Noetherian `T`),
+`exists_comap_universalSigmaImmersedHilbertFamily_eq` (classifying morphisms),
+`flat_universalSigmaImmersedHilbertFamily`, `isProper_universalSigmaImmersedHilbertFamily` and
+`surjective_universalSigmaImmersedHilbertFamily_of_zero_notMem` give the fields of
+`QuotientHilbertDatum` (`Quotient/Datum`) directly.
 
 **Nonempty fibres.** A closed subscheme of `P^n_K` has zero Hilbert polynomial iff it
 is empty (`Nonempty`); so a point of `Hilb^Φ(T)` with `Φ ≠ 0` is surjective over `T`
@@ -346,7 +394,9 @@ The open step uses [Morphisms/UniversallyClosed/ImageComplement](../Morphisms/Un
 and [Sites/OverRepresentability/OpenSubscheme](../Sites/OverRepresentability/OpenSubscheme.lean).
 The immersed Hilbert functor uses [IdealSheaf/Monomorphism](../IdealSheaf/Monomorphism.lean) and
 [Limits/FibreProductBaseChange](../Limits/FibreProductBaseChange.lean).
-The coproduct and nonemptiness leaves use [IdealSheaf/EmptySubscheme](../IdealSheaf/EmptySubscheme.lean),
+The coproduct and nonemptiness leaves use [IdealSheaf/ImageOverBase](../IdealSheaf/ImageOverBase.lean),
+[Properties/Noetherian/Coproduct](../Properties/Noetherian/Coproduct.lean),
+[IdealSheaf/EmptySubscheme](../IdealSheaf/EmptySubscheme.lean),
 [IdealSheaf/GlueDisjoint](../IdealSheaf/GlueDisjoint.lean),
 [IdealSheaf/GlueCoproduct](../IdealSheaf/GlueCoproduct.lean),
 [Limits/CoproductPullback](../Limits/CoproductPullback.lean),

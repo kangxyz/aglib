@@ -165,3 +165,10 @@ overlap condition of [Glue](Glue.lean) holds automatically
 one component). `ext_of_comap_pullbackMap_eq`: closed subschemes of `Z ×_S T` agreeing over an
 open cover of `T` are equal. Any small index type. Consumers:
 [HilbertScheme/Coproduct](../HilbertScheme/Coproduct/Family.lean).
+
+[ImageOverBase](ImageOverBase.lean) compares a closed subscheme `I ⊆ X` that is closed in `Y` along
+`j : X ⟶ Y` with its image `I.map j`, over a base `q : Y ⟶ T` with `j ≫ q = p`: they have the same
+image in `T` (`Scheme.IdealSheafData.range_map_subschemeι_comp`) and the same properties respecting
+isomorphisms (`map_subschemeι_comp_iff`), through `mapSubschemeIso`
+([Monomorphism](Monomorphism.lean)). No hypothesis on `j`, `q` or the schemes. Consumer:
+[HilbertScheme/Coproduct/Functor](../HilbertScheme/Coproduct/Functor.lean).
