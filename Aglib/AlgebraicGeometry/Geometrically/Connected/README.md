@@ -7,3 +7,14 @@
 Import the two `Aglib.AlgebraicGeometry.Geometrically.Connected` leaves. The proof uses actual pullback isomorphisms and [tensor domains](../../../RingTheory/TensorProduct/README.md) on geometric fibres. The common-overfield/projection results feed the detection endpoint and external geometric consumers, with fields and schemes in the declared universe `u`.
 
 Focused interface guides: [A rational point on a connected smooth proper curve](PointedCurve.md).
+
+[RationalPoint](RationalPoint.lean) proves the rational-point case of Stacks 04KV with no finiteness
+or separation hypothesis: a connected scheme `q : Y ⟶ Spec k` with a section `o`, `o ≫ q = 𝟙 _`, is
+geometrically connected (`geometricallyConnected_of_connectedSpace_of_section`). Over every integral
+extension `K` the base change `Y_K` is connected (`connectedSpace_pullback_of_section`), and for
+every field extension the fibre of `Y_K ⟶ Y` over the rational point has at most one point
+(`subsingleton_preimage_of_section`). The projection is universally open and universally closed, so
+the images of a clopen partition both contain the rational point; the detection endpoint is
+`geometricallyConnected_of_connected_algebraicClosure`. This route differs from the Stacks proof (a
+separable algebraic closure, Stacks 056R and 0387). Consumer:
+[Group/IdentityComponent](../../Group/IdentityComponent/README.md).

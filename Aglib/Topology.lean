@@ -9,6 +9,7 @@ module
 
 public import Aglib.Topology.Algebra.Group.StableQuotient
 public import Aglib.Topology.Connected.FiniteClosedCover
+public import Aglib.Topology.Connected.LocallyConnected
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
 public import Aglib.Topology.KrullDimension.ClosedSubspace

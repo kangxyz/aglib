@@ -14,3 +14,14 @@ value at the unit (`rightUnitor_inv_whiskerRight_untwistIso_hom`).
 `comp_rightUnitor_inv_whiskerLeft_eq_zero`. Consumer: the twisted ideal sheaf of a Hilbert family
 ([HilbertScheme/IdealTwist/Untwist](../../AlgebraicGeometry/HilbertScheme/IdealTwist/Untwist.lean),
 [HilbertScheme/PulledBackGrassmannianPoint](../../AlgebraicGeometry/HilbertScheme/PulledBackGrassmannianPoint.lean)).
+
+[GrpObjOfMono](GrpObjOfMono.lean), imported as `Aglib.CategoryTheory.Monoidal.GrpObjOfMono`, works
+in the namespace `CategoryTheory`. A monomorphism `j : H ⟶ G` into a monoid object, through which
+the unit and `(j ⊗ₘ j) ≫ μ[G]` factor, makes `H` a monoid object (`MonObj.ofMono`) with `j` a monoid
+morphism (`MonObj.isMonHom_ofMono`). In a cartesian monoidal category, if `G` is a group object and
+`j ≫ ι[G]` factors too, `GrpObj.ofMono` and `GrpObj.isMonHom_ofMono` give the group object. Each
+axiom of `H` is that of `G` after cancelling `j`. It imports only Mathlib. Consumer:
+[Group/IdentityComponent/Basic](../../AlgebraicGeometry/Group/IdentityComponent/Basic.lean).
+`CategoryTheory.monObjOfJointDetection`
+([JointDetection](../../AlgebraicGeometry/GrothendieckExistence/Algebraization/JointDetection.lean))
+treats jointly detecting families; `MonObj.ofMono` is its one-element case.

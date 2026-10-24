@@ -44,3 +44,10 @@ projection locally of finite type), `Scheme.isEquivalenceRelation_of_locallyNoet
 (no monicity: `S` locally Noetherian, `X ⟶ S` and `p₁` locally of finite type, injectivity on
 points), and over `S` `Scheme.LocallyNoetherianOver.equivalence_pointsRelation_iff`,
 `Scheme.LocallyNoetherianOver.isEquivalenceRelation_iff`. Consumer: the hypothesis of F16.
+
+[LocallyConnected](LocallyConnected.lean): the instance
+`AlgebraicGeometry.IsLocallyNoetherian.locallyConnectedSpace` (Stacks 04MF). The underlying space of
+a locally Noetherian scheme is locally connected, because affine opens with Noetherian rings are
+Noetherian spaces; so its connected components are open and closed (Mathlib's
+`isClopen_connectedComponent`). Consumer: the identity component of a group scheme locally of finite
+type over a field ([Group/IdentityComponent](../../Group/IdentityComponent/README.md)).

@@ -2317,6 +2317,7 @@ public import Aglib.AlgebraicGeometry.FundamentalGroup.StageModelNaturality
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.CommonOverfield
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.FieldExtension
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.PointedCurve
+public import Aglib.AlgebraicGeometry.Geometrically.Connected.RationalPoint
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.GlobalSections
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.SmoothCurve
 public import Aglib.AlgebraicGeometry.Geometrically.Reduced.Smooth
@@ -2383,6 +2384,8 @@ public import Aglib.AlgebraicGeometry.Group.CurveGenus
 public import Aglib.AlgebraicGeometry.Group.CurveIsogeny
 public import Aglib.AlgebraicGeometry.Group.DualIsogeny
 public import Aglib.AlgebraicGeometry.Group.EtaleQuotient
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.BaseChange
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing.Galois
 public import Aglib.AlgebraicGeometry.Group.Kernel.Basic
@@ -3726,6 +3729,7 @@ public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.PointComp
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.Transport
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine

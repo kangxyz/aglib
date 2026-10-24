@@ -68,3 +68,7 @@ the actual `[n]` is finite, flat and surjective of locally free rank `n²` for
 every positive `n`, including noninvertible levels, with the native genus-one
 premise supplied by the genus theorem. The geometric reduced point-count and
 étaleness conclusions above retain their invertible-level premise.
+
+[IdentityComponent](IdentityComponent/README.md): the identity component of a group scheme locally
+of finite type over a field, open, closed, geometrically connected, a group scheme, and compatible
+with field extension.

@@ -112,6 +112,7 @@ public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Localization.SerreKernel
 public import Aglib.CategoryTheory.Monoidal.Discrete
+public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
