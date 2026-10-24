@@ -133,8 +133,9 @@ Not yet proved here:
 - the bijectivity of `toFppfPicardSheaf` with a section (target 4 of the plan);
 - representability: the abstract quotient step (`Scheme.representableByOfFppfQuotient`,
   [Sites/FppfQuotient](../Sites/FppfQuotient.lean)) and the Zariski sheaf input of the gluing
-  ([ZariskiSheaf](ZariskiSheaf.lean)) are proved; the instance for the strata and the gluing
-  remain.
+  ([ZariskiSheaf](ZariskiSheaf.lean)) are proved, and so are the open subscheme `Z` of `Div^{ψ − φ₀}_X` and its universal Abel class
+  ([Abel/Divisor](Abel/Divisor.lean)); the local sections of `Z ⟶ Pic^{φ₀,ψ,r}_0`, the relation
+  `Z ×_P Z`, the instance for the strata and the gluing remain.
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,
@@ -290,6 +291,17 @@ point (`Strata.subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_fineCondition
 Kleiman, arXiv:math/0504020v1, p. 30: "Set `θ(n) := ψ(n) − φ₀(n)`. Plainly `Z` lies in
 `Hilb^θ_{X/S}(n)`".
 
+[Strata/DivisorLocus](Strata/DivisorLocus.lean): for a closed immersion `i` with `ι ≃ Fin (N + 1)`
+and `f = i ≫ toSpec A ι` flat, a relative effective Cartier divisor whose Abel class satisfies
+`fineCondition φ₀ ψ m r` at every point, or whose fppf Abel class lies in `Pic^{φ₀,ψ,r}_m`, is a
+point of `Div^{ψ − φ₀}_X` (`Strata.isRelativeDivisorFamily_of_forall_fineCondition_holds_abelClass`,
+`Strata.isRelativeDivisorFamily_of_fppfAbelClass_mem_subfunctor_fineCondition`; Kleiman,
+arXiv:math/0504020v1, proof of Thm 4.8, p. 30: "Plainly `Z` lies in `Hilb^θ_{X/S}(n)`"); over a
+Noetherian `A`, `Z = Pic^{φ₀,ψ,r}_m ×_P Div^{ψ − φ₀}_X` is represented on locally Noetherian test
+schemes by an H-quasi-projective Noetherian scheme, an open subscheme of the scheme of `Div^{ψ −
+φ₀}_X` (`Strata.exists_abelPreimage_fineCondition_representableBy`; "Hence `Z` is
+quasi-projective").
+
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
 `map_mem_subfunctor_iff_of_surjective`), from `mem_subfunctor_iff` and `holdsAt_map`; no flatness.
@@ -311,6 +323,34 @@ class in `Pic_{X/S,(fppf)}(T)` is `fppfAbelClass`, natural by `fppfPicardSheaf_m
 No hypothesis on `p`. Sign convention as the curve-level `Scheme.Hom.abelClass`
 (EffectiveCartierDivisor/Relative/GraphLineBundle): classes of `𝒪(D)`. The natural transformation
 out of `Div^θ` (P7c) is not formed.
+
+[Abel/Divisor](Abel/Divisor.lean): for a preimmersion `i : X ⟶ P^n_A` over `Spec A` (`hi : i ≫
+toSpec A ι = πX`) and `θ ∈ ℚ[X]`, the divisor functor `Div^θ_X = relativeDivisorFunctor i hi θ`
+pulls divisors back along the maps of `familyScheme πX`
+(`ProjectiveSpace.relativeDivisorFunctor_map_coe_eq_comap_familyScheme_map`, `rfl`). A line bundle
+`L` represents the Abel class of a relative effective Cartier divisor `D` if and only if `L^∨ ≅ I_D`
+(`classOf_eq_abelClass_iff`; one direction
+`nonempty_dualLineBundle_iso_idealModule_of_classOf_eq_abelClass`). The Abel map `divisorAbelMap i
+hi θ : Div^θ_X ⋙ uliftFunctor ⟶ familyPicardFunctor πX ⋙ forget`, `D ↦ [𝒪(D)] = −[I_D]`, with values
+in the absolute Picard functor (the lift to `Type (u + 1)` is forced by the universe of the Picard
+groups), and its composite `divisorFppfAbelMap` with the class map to `Pic_{X/S,(fppf)}`, `D ↦
+fppfAbelClass πX D`, which is Kleiman's Abel map (arXiv:math/0504020v1, Def. 4.6, p. 27) with its
+target `Pic_{X/S}` replaced by the associated fppf sheaf. For a representation `E` of `Div^θ_X` on
+locally Noetherian test schemes by `D`, `universalFppfAbelClass E` is the class of the universal
+divisor and its pullback along `a : T ⟶ D` is the class of the divisor `E.homEquiv a`
+(`fppfPicardSheaf_map_universalFppfAbelClass`). For a fibre condition `C`, `C.abelPreimage i hi θ`
+is the subfunctor `Pic^C ×_P Div^θ_X` of the divisors whose fppf Abel class lies in `Pic^C`
+(pointwise: `mem_abelPreimage_obj_iff_forall_holds`); on locally Noetherian test schemes it is
+represented by the open subscheme `C.abelPreimageOver E = C.opens (universalFppfAbelClass E)` of `D`
+(`abelPreimageRepresentableBy`, through `representableByRestrictOpens`; criterion
+`homEquiv_mem_abelPreimage_iff`), with universal class `abelPreimageFppfAbelClass` in `Pic^C`, equal
+to the class of the universal divisor of the open subscheme (`abelPreimageFppfAbelClass_eq`) and
+pulling back to the class of the classified divisor
+(`fppfPicardSheaf_map_abelPreimageFppfAbelClass`). Over a Noetherian `A` with `D`
+H-quasi-projective, the open subscheme is H-quasi-projective and Noetherian (instances
+`isHQuasiProjective_abelPreimageOver_hom`, `isNoetherian_abelPreimageOver`). Kleiman, proof of Thm
+4.8, p. 30 ("Form the product `P_0^{φ0} ×_P Div_{X/S}`. It is a scheme `Z`, in fact, an open
+subscheme of `Div_{X/S}`"), for any fibre condition.
 
 [ZariskiSheaf](ZariskiSheaf.lean): `(fppfPicardSheaf p).obj ⋙ forget` is a sheaf for
 `Scheme.zariskiTopology.over S` (`isSheaf_zariskiTopology_fppfPicardSheaf_forget`), and its

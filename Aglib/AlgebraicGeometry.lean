@@ -3526,6 +3526,7 @@ public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.UnramifiedExtension
 public import Aglib.AlgebraicGeometry.Normalization.Relative
 public import Aglib.AlgebraicGeometry.Picard.Abel.Basic
+public import Aglib.AlgebraicGeometry.Picard.Abel.Divisor
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
@@ -3561,6 +3562,7 @@ public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
+public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorPolynomial
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.Twist

@@ -385,7 +385,9 @@ H-quasi-projective Noetherian scheme
 (`exists_locallyNoetherianRelativeDivisorFunctor_representableBy`). On the Picard strata the fibre
 hypothesis of `IsRelativeDivisorFamily.of_isRelativeEffectiveCartier` is
 `RelativePicard.subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_hasFiberDualEulerPolynomial`
-([Picard/Strata/DivisorPolynomial](../Picard/Strata/DivisorPolynomial.lean)).
+([Picard/Strata/DivisorPolynomial](../Picard/Strata/DivisorPolynomial.lean)). The Abel map out of
+`Div^θ_X`, the universal Abel class of a representation and the open subschemes `Pic^C ×_P Div^θ_X`
+of fibre conditions are in [Picard/Abel/Divisor](../Picard/Abel/Divisor.lean).
 
 ## Open toward Nitsure, §§5–6, for `P^n_A`
 
