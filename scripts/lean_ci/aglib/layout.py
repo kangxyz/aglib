@@ -8,11 +8,11 @@ from pathlib import Path
 import re
 import sys
 
-from library_sources import (downstream_sources, is_import_surface, generate_topic,
+from .sources import (downstream_sources, is_import_surface, generate_topic,
                              lean_imports, module_name, module_path, source_modules,
                              strip_comments_and_strings, test_modules, uses_module_system)
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path.cwd()
 PROJECT = 'Aglib'
 TEST = 'AglibTest'
 # These are module identities, never declaration namespace restrictions.
@@ -137,11 +137,11 @@ def check_layout(root: Path) -> tuple[list[str], int]:
     return errors, len(modules)
 
 
-def main() -> int:
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--generate', metavar='MODULE', help='write one generated topic entry; default checks remain read-only')
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     try:
         if args.generate:
             relative = generate_topic(args.root, args.generate)

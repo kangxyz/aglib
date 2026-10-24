@@ -89,20 +89,21 @@ matching compilation artifacts. A cache hit is not mathematical acceptance.
 Keep writable checkout/dependency outputs owned by their actual writer; do not
 silently share mutable build directories across concurrent checkouts.
 
-The compatibility command `scripts/build_serial.py` delegates one selected module
-graph to the shared native build/resource helper. It invokes Lake once; Lake
-handles cache hits and missing dependencies without a preliminary no-build probe
-or a duplicate Python import graph. Each invocation keeps an exclusive receipt:
+The installed `lean-ci build` command delegates one selected incremental module
+graph to the shared package. For example:
 
 ```sh
-python3 scripts/build_serial.py --receipt-dir /absolute/fresh/build \
-  Aglib.CategoryTheory.ExactCategory.Basic
+lean-ci build --root . --state /absolute/fresh/build Aglib.Module.Name
+lean-ci run --root . --receipt /absolute/command.json --capped-toolchain -- COMMAND
 ```
 
-`scripts/resource_guard.py` delegates explicitly guarded native commands to the
-same resource implementation. Managed remote execution preserves its admitted
-`R5_LEAN_REMOTE_PROFILE`; local execution retains the configured compiler/RSS
-limits. These wrappers do not add another final-validation or audit stage.
+The package contains the source policies and library tools too; see
+[the toolkit entry](../scripts/README.md). Managed remote execution preserves
+its admitted `R5_LEAN_REMOTE_PROFILE`. Shared native artifact link metadata is
+rechecked by content, so adding a hardlink in a peer workspace does not invalidate
+a successful check. Real source/input changes still fail the relevant check.
+The local native check set and independent axiom feedback follow CI; hosted job
+transport and runner limits remain hosted concerns.
 
 Mathlib's standard `maxHeartbeats` is 200000. Retained overrides must be positive,
 finite and declaration-local, with an adjacent explanation. Do not use unlimited

@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import migration_helpers as helpers
+import lean_ci.aglib.migration as helpers
 
 REVISION = '189a8e779f0c68b2dfc6f8195daebb3e684a5905'
 
@@ -25,7 +25,7 @@ class MigrationHelperTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def inspect(self, revision=REVISION, sha256=None):
-        with patch('migration_helpers.subprocess.run', return_value=
+        with patch('lean_ci.aglib.migration.subprocess.run', return_value=
                    subprocess.CompletedProcess([], 0, REVISION + '\n', '')):
             return helpers.read_source('Quillen.Example', source_root=self.root,
                 expected_revision=revision, expected_sha256=sha256 or self.sha256)
@@ -61,8 +61,7 @@ class MigrationHelperTests(unittest.TestCase):
         provenance.parent.mkdir(parents=True)
         provenance.write_text('{"source_revision":"immutable"}\n')
         before = {path: path.read_bytes() for path in [destination, provenance]}
-        with patch.object(helpers, 'ROOT', self.root), \
-                patch.object(helpers, 'source_path', side_effect=AssertionError('must not read source')):
+        with patch.object(helpers, 'source_path', side_effect=AssertionError('must not read source')):
             with self.assertRaisesRegex(RuntimeError, 'writing is retired'):
                 helpers.write_source('Quillen.Example', destination='Aglib.Example')
             with self.assertRaisesRegex(RuntimeError, 'recording is retired'):

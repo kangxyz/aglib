@@ -6,11 +6,11 @@ import sys
 import tempfile
 import unittest
 
-from check_library_layout import check_layout, import_cycles, forbidden_domain_import
-from check_placeholders import check_placeholders
-from check_source_policy import check_source_policy
-from library_sources import lean_imports, module_path, test_modules as positive_modules
-from library_sources import (is_import_surface, uses_module_system, generate_topic,
+from lean_ci.aglib.layout import check_layout, import_cycles, forbidden_domain_import
+from lean_ci.aglib.placeholders import check_placeholders
+from lean_ci.aglib.policy import check_source_policy
+from lean_ci.aglib.sources import lean_imports, module_path, test_modules as positive_modules
+from lean_ci.aglib.sources import (is_import_surface, uses_module_system, generate_topic,
                              GENERATED_MARKER, LEGACY_GENERATED_MARKER)
 
 HEADER = 'module\npublic import Mathlib.Data.Nat.Basic\n@[expose] public section\n'
@@ -441,8 +441,7 @@ class TopicGenerationTests(unittest.TestCase):
         self.assertFalse(self.facade.exists())
 
     def test_actual_cli_generates_only_when_explicitly_requested(self):
-        script = Path(__file__).resolve().parents[1] / 'check_library_layout.py'
-        result = subprocess.run([sys.executable, '-B', str(script), '--root', str(self.root),
+        result = subprocess.run([sys.executable, '-B', '-m', 'lean_ci', 'aglib', 'layout', '--root', str(self.root),
                                  '--generate', 'Aglib.NewFamily'], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn('longFile = 0', result.stdout)

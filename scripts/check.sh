@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# All scopes use the same incremental recipe and compatible check progress.
+# The package owns the native commands and Aglib source policy.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-exec python3 scripts/check_affected.py "$@"
+exec python3 scripts/lean_ci/__main__.py check --root "$PWD" "$@"

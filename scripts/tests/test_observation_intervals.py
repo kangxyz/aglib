@@ -73,20 +73,34 @@ class ObservationIntervalTests(unittest.TestCase):
         two.assert_stable()
         self.assertNotIn(self.artifact, self.whole.files)
 
-    def test_native_hardlink_during_interval_rejects(self):
+    def test_native_hardlink_during_interval_rehashes_and_preserves_content(self):
         inputs = self.inputs()
-        inputs.native_hash_file(self.artifact)
+        expected = inputs.native_hash_file(self.artifact)
         self.hardlink_roundtrip(self.artifact)
-        with self.assertRaises(InputDrift):
-            inputs.assert_stable()
+        inputs.assert_stable()
+        self.assertEqual(inputs.native_hash_file(self.artifact), expected)
+        self.assertEqual(inputs.native.hash_count, 2)
 
-    def test_restored_native_bytes_during_interval_reject(self):
+    def test_native_content_observations_do_not_claim_continuous_mutation_detection(self):
         inputs = self.inputs()
         before = inputs.native_hash_file(self.artifact)
         self.restored_write(self.artifact)
         self.assertEqual(file_hash(self.artifact), before)
-        with self.assertRaises(InputDrift):
-            inputs.native_hash_file(self.artifact)
+        self.assertEqual(inputs.native_hash_file(self.artifact), before)
+        inputs.assert_stable()
+
+    def test_hardlink_changes_while_hashing_and_resolving_are_content_checked(self):
+        inputs = self.inputs()
+        inputs.observe_resolution(self.artifact)
+        def linked_hash(path):
+            value = file_hash(path)
+            self.hardlink_roundtrip(path)
+            return value
+        with patch('lean_ci.state.file_hash', side_effect=linked_hash):
+            expected = inputs.native_hash_file(self.artifact)
+        inputs.assert_stable()
+        self.assertEqual(inputs.native_hash_file(self.artifact), expected)
+        self.assertEqual(inputs.native.hash_count, 2)
 
     def test_source_restoration_across_intervals_rejects(self):
         one = self.inputs()
@@ -139,15 +153,15 @@ class ObservationIntervalTests(unittest.TestCase):
         with self.assertRaises(InputDrift):
             guarded.native_hash_file(original)
 
-    def test_final_aggregate_observer_rejects_earlier_native_drift(self):
+    def test_final_aggregate_observer_rehashes_earlier_native_link_metadata(self):
         other = self.artifact.with_name('Other.olean')
         other.write_bytes(b'other')
         final = self.inputs()
         final.native_hash_file(self.artifact)
         final.native_hash_file(other)
         self.hardlink_roundtrip(self.artifact)
-        with self.assertRaises(InputDrift):
-            final.assert_stable()
+        final.assert_stable()
+        self.assertEqual(final.native.hash_count, 3)
 
     def test_nested_pure_inspection_defers_scans_but_rejects_before_external_use(self):
         inputs = self.inputs()
@@ -157,7 +171,7 @@ class ObservationIntervalTests(unittest.TestCase):
         with self.assertRaises(InputDrift):
             with inputs.inspection():
                 with inputs.inspection():
-                    self.restored_write(self.artifact)
+                    self.artifact.write_bytes(b'changed content')
                     inputs.assert_stable()
                 inputs.assert_stable()
             escaped.append('binding consumed')
@@ -191,12 +205,14 @@ class ObservationIntervalTests(unittest.TestCase):
             return found
 
         with patch.object(progress, 'lookup', side_effect=mutate_lookup):
-            with self.assertRaises(InputDrift):
-                progress.run(lambda: binding(third), lambda: self.fail('must lookup'))
+            reused = progress.run(lambda: binding(third), lambda: self.fail('must lookup'))
+        self.assertEqual(reused['mode'], 'reused')
         fourth = self.inputs()
 
         def mutate_execute():
-            self.restored_write(self.artifact)
+            before = self.artifact.stat()
+            self.artifact.write_bytes(b'X' * before.st_size)
+            os.utime(self.artifact, ns=(before.st_atime_ns, before.st_mtime_ns))
             return receipt, command
 
         with self.assertRaises(InputDrift):
@@ -240,7 +256,7 @@ class ObservationIntervalTests(unittest.TestCase):
         inputs.native_hash_file(self.artifact)
         with self.assertRaises(InputDrift):
             with inputs.inspection():
-                self.restored_write(self.artifact)
+                self.artifact.write_bytes(b'actual changed native bytes')
                 inputs.native_hash_file(self.artifact)
 
     def test_source_and_native_resolution_use_different_lifetimes(self):

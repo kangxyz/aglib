@@ -1,79 +1,81 @@
-# Local developer tools
+# Lean development toolkit
 
-Run from the package root with Python 3.11 or newer. The native check entry is:
-
-```sh
-bash scripts/check.sh
-bash scripts/check.sh --base ACCEPTED_COMMIT --progress /absolute/check-progress
-bash scripts/check.sh --source-only
-bash scripts/check.sh --list
-```
-
-`check.sh` forwards to `check_affected.py`, a thin wrapper around `lean_ci.cli`.
-It supplies the `Aglib` production root, existing source guards and Aglib's resource
-configuration. There is no separate adapter, hosted-baseline, phase or frozen
-request protocol. The [development guide](../docs/DEVELOPMENT.md) describes the
-native build/Test/generated-entry/text/lint/axiom commands and trust boundaries.
-Use direct focused `lake build +Module.Name` during proof iteration.
-
-## Shared native helpers
-
-`lean_ci/` contains the existing native command, resource, build, source and
-successful-check reuse helpers. Its implementation is moved here from the
-retired `ci/` directory; no second executor or audit implementation is added.
-Python 3.11 or newer is required. The package and console-command names remain
-compatible with existing callers.
+All shared implementations and library-specific tools live in one installable
+`lean_ci` package. Install it once from the selected Aglib checkout:
 
 ```sh
 python3 -m pip install /absolute/path/to/aglib/scripts
-PYTHONPATH=/absolute/path/to/aglib/scripts python3 -m lean_ci check \
-  --root /absolute/package --production Aglib
+lean-ci check --root /absolute/package
+lean-ci build --root /absolute/package --state /absolute/fresh/build Module.Name
+lean-ci run --root /absolute/package --receipt /absolute/command.json -- COMMAND
 ```
 
-The check CLI accepts optional `--check-target`, `--base`/`--head`, `--full`,
-`--source-only`, `--progress`, `--state`/`--receipt-dir`, `--outputs` and `--list`.
-Focused `lean-ci build` uses one incremental native Lake build. Lake controls
-compilation reuse; compatible lint, entry, text and axiom successes retain their
-actual command/checker/input boundary. The existing managed resource profile
-passes through unchanged. Generic remote phases can call the same prepared
-native helper without a frozen request or CI-baseline protocol.
+Python 3.11 or newer is required; the toolkit uses the standard library. An
+explicit source checkout also works with `PYTHONPATH=/absolute/aglib/scripts
+python3 -m lean_ci ...`. Existing `scripts/check.sh` and the downstream libraries'
+thin launchers select this same package. Explicit `LEAN_CI_TOOLING_ROOT` and
+`MOTIVIC_TOOLING_ROOT` selection remains supported. Migrated launchers require
+toolkit 0.3 or newer, so an older installation cannot silently omit library
+source policies. No second executor, cache
+scheduler, frozen request or script-hash approval protocol is retained.
 
-| Retained tool | Purpose |
+`check` selects Aglib, Quillen or Motivic policy from the package's Lake name;
+its explicit Python API still supports R5Lab and other callers. It uses the
+same production build, checker preparation, generated-entry, text-style,
+in-package Test, declaration lint and pinned production axiom audit as CI.
+Ordinary check failures retain compatible successes and collect independent
+axiom feedback. Failed Build or a real source/input change cannot produce a
+successful final result. `--list` prints the commands, `--source-only` limits the
+request to existing source guards, and `--base`/`--head`, `--progress`, `--state`
+and `--outputs` retain their existing meanings. `--full` does not force rebuilding.
+Hosted cache transport and runner/job limits remain in the public workflow.
+
+`build` delegates one incremental graph to Lake, preserving matching compiled
+artifacts. `--no-build --outputs PATH` exports already available native mappings.
+`run --capped-toolchain` uses the same resource implementation; `run
+--bootstrap-cache -- lake exe cache get [MODULE...]` acquires Mathlib/Batteries
+cache roots without a library-specific compiler wrapper. Managed remote resource
+profiles retain the parent's admitted compiler and concurrency limits.
+
+## Library tools
+
+| Command | Existing operation |
 | --- | --- |
-| `check_library_layout.py` | Source import resolution, production dependency boundary, modern exports, precise imports and cycles; `--generate MODULE` writes one selected topic entry. |
-| `check_placeholders.py` | Reject placeholders and custom-axiom tokens in production, in-package tests and standalone client source, masking comments and strings. This is not a transitive axiom audit. |
-| `check_source_policy.py` | Retain finite local heartbeat, option, source-safety and author-credit checks. |
-| `library_sources.py` | Library-specific inventory/routing over the shared Lean grammar. |
-| `build_serial.py` | Compatibility CLI for a selected guarded native module build, using shared `build/resources`. |
-| `resource_guard.py` | Compatibility CLI delegating one explicit command to shared resource limits and owned-process monitoring. |
-| `migration_helpers.py` | Read-only inspection of historical extraction sources with explicit source revision/hash. Retired writer functions continue to fail before writes. |
+| `lean-ci aglib layout` | Aglib source graph, exports, import boundaries and cycles |
+| `lean-ci aglib layout --generate Aglib.Topic` | Generate one occupied topic; native `mathlib/mk_all` owns production roots |
+| `lean-ci aglib placeholders` / `policy` | Existing placeholder, source-safety, author and finite-heartbeat predicates |
+| `lean-ci quillen layout` / `placeholders` / `imports` | Quillen policy and unchanged topic generation |
+| `lean-ci quillen cache [MODULE...]` | Existing scoped Mathlib cache acquisition |
+| `lean-ci motivic repository` / `imports` / `cache` | Motivic policy, topic generation and scoped cache acquisition |
+| `lean-ci motivic build` / `client` | Explicit existing module/export and client helper requests |
 
-Mathlib `mk_all` owns the production root. For a new topic with existing source,
-or an existing generator-owned topic entry, run
-`python3 scripts/check_library_layout.py --generate Aglib.Topic`; then use
-`lake exe mathlib/mk_all --lib Aglib` when root enrollment changes. Generated
-topic entries always use `set_option linter.style.longFile 0`, so future growth
-needs no recalculated line allowance. Manually maintained entries retain their
-ownership. Native Test uses the package test glob without a generated test
-umbrella. The upstream production
-axiom auditor replaces duplicate custom origin audits and rejection controls.
-Its recorded scope is not relabelled as the former checked-environment predicate.
-The removed orchestration/cache scripts are not a second local or remote check
-path. Generic remote commands may invoke the same native entry with its managed
-resource profile and matching prepared dependencies.
+Historical extraction inspection is the Python API
+`lean_ci.aglib.migration.read_source`; it still requires original source revision
+and content hash. Retired extraction writers remain disabled. Historical
+performance records retain their original command names; current invocations
+are documented here.
 
-Source-policy and wrapper regression suites:
+## Input identity and reusable results
+
+Successful checks retain their actual command, checker, source, environment and
+native-content bindings. Shared `.olean`/`.ilean` hardlinks can change ctime
+without changing bytes: this invalidates the cached content hash, then identical
+content and lookup identity preserve the check result. Inode, mtime, mode,
+content, symlink, disappearance and import-shadowing changes remain guarded.
+Source/configuration observations retain strict temporal guards. Native evidence
+has CI's trusted-producer content-correspondence contract at observation
+boundaries; it does not certify uninterrupted absence of transient native writes.
+Moving these Python tools does not by itself invalidate compatible native checks.
+No kernel replay, separate client validation or new acceptance chain is added;
+independent mathematical review and writing acceptance retain their requirements.
+
+All Python tests, including the three libraries' migrated policy/tool tests,
+live under `scripts/tests/`:
 
 ```sh
-PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_source_guards.py
-PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_check_script.py
-PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_build_serial.py
-PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests -p test_migration_helpers.py
+PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests
 ```
 
-`test_lean_ci_workflow.py` independently checks the existing public workflow;
-it is not modified by the local-entry migration. Shared resource/runtime/progress
-fixtures live under `scripts/tests/`. No test here establishes
-mathematical source correspondence or discharges theorem premises.
-
-Run the combined bounded Python suites with `PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests`.
+The hosted-workflow tests additionally use PyYAML, tar and zstd. These bounded
+tests exercise orchestration and content/reuse behavior; they are not a complete
+Lean library build or mathematical acceptance evidence.

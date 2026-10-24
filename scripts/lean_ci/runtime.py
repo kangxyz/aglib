@@ -181,6 +181,17 @@ def command_matches(logical, actual):
     return actual == logical
 
 
+class CommandFailed(ValueError):
+    """An ordinary nonzero exit after the owned process group was closed."""
+    def __init__(self, message, code):
+        super().__init__(message)
+        self.code = code
+
+
+class RuntimeFailure(ValueError):
+    """Cancellation, guard failure or unverifiable command/ownership evidence."""
+
+
 class NativeRuntime:
     def __init__(self, root, resource_config=None, environment=None):
         self.root = Path(root).resolve()
@@ -206,6 +217,16 @@ class NativeRuntime:
                              budget=resources.limits(self.environment, config=self.resource_config),
                              config=self.resource_config)
         receipt = read_json(receipt_path)
-        if code or not valid_receipt(receipt, cwd=cwd) or not command_matches(command, receipt['command']):
-            raise ValueError(f'Native command failed: {task["id"]}')
+        closed = (isinstance(receipt, dict) and receipt.get('state') == 'completed'
+                  and type(receipt.get('exit_code')) is int
+                  and receipt.get('exit_code') == code
+                  and receipt.get('guard_failure', 'missing') is None
+                  and receipt.get('owned_group_gone') is True
+                  and receipt.get('cwd') == str(cwd)
+                  and isinstance(receipt.get('command'), list)
+                  and command_matches(command, receipt['command']))
+        if not closed:
+            raise RuntimeFailure(f'Native command has failed guard/ownership evidence: {task["id"]}')
+        if code:
+            raise CommandFailed(f'Native command failed: {task["id"]} (exit {code})', code)
         return {'receipt': receipt}

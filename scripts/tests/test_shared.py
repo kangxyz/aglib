@@ -15,6 +15,7 @@ from unittest.mock import patch
 
 from lean_ci import cli, local, resources
 from lean_ci.local import _prepare_auditor
+from lean_ci.runtime import CommandFailed
 from lean_ci.state import TemporalInputs, read_json, write_json
 
 
@@ -63,7 +64,7 @@ class FakeRuntime:
         command = task['command']
         self.calls.append(command)
         if self.fail and self.fail(command):
-            raise ValueError('Synthetic native command failed')
+            raise CommandFailed('Synthetic native command failed', 1)
         if '-o' in command:
             Path(command[command.index('-o') + 1]).write_text('"2026-03-17"\n')
         if self.callback:
@@ -150,9 +151,9 @@ class NativeFlowTests(NativeFixture):
         self.assertEqual(calls[2], ['lake', '--rehash', 'build', 'batteries/runLinter',
                                   'mathlib/lint-style', 'mathlib/mk_all', 'AglibTest'])
         self.assertEqual(calls[3:], [
-            ['lake', 'test'],
             ['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', 'Quartz', '--check'],
             ['lake', '--no-build', 'exe', 'mathlib/lint-style', 'Quartz'],
+            ['lake', 'test'],
             ['lake', '--no-build', 'lint', 'Quartz', '--', '--trace'],
             ['lake', 'env', str(self.auditor), '--root', 'Quartz']])
         self.assertEqual(result['status'], 'complete')

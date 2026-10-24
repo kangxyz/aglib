@@ -25,7 +25,7 @@ the normal current-source build, using `--rehash` when importing cached outputs.
 For a selected actual Aglib module, the guarded export route is:
 
 ```sh
-python3 scripts/build_serial.py --rehash \
+lean-ci build --root . --rehash \
   --receipt-dir .lake/verification/my-leaf \
   --outputs /absolute/scratch/outputs.jsonl SELECTED_MODULE
 lake cache stage /absolute/scratch/outputs.jsonl /absolute/scratch/staged

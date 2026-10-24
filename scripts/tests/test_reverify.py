@@ -7,15 +7,83 @@ from test_shared import CHECK, NativeFixture
 class RetryTests(NativeFixture):
     def test_failure_retries_failed_work_and_reuses_earlier_compatible_successes(self):
         self.runtime.fail = lambda command: command[:3] == ['lake', '--no-build', 'lint']
-        with self.assertRaisesRegex(ValueError, 'Synthetic native command failed'):
+        with self.assertRaisesRegex(ValueError, 'Native checks failed: lint'):
             self.check()
         self.runtime.fail = None
         self.runtime.calls.clear()
         result = self.check()
-        self.assertEqual(result['reused_checks'], ['source-0', 'entries-Quartz', 'text-style'])
-        self.assertEqual(result['performed_checks'], ['lint', 'axioms-Quartz'])
+        self.assertEqual(result['reused_checks'], ['source-0', 'entries-Quartz', 'text-style', 'axioms-Quartz'])
+        self.assertEqual(result['performed_checks'], ['lint'])
         self.assertNotIn(list(CHECK), self.runtime.calls)
         self.assertIn(['lake', 'test'], self.runtime.calls)
+
+    def test_native_hardlink_activity_during_lint_reaches_audit_and_reuses_results(self):
+        artifact = self.root / '.lake/build/lib/lean/Quartz/Base.olean'
+        def link_while_lint_runs(command):
+            if command[:3] == ['lake', '--no-build', 'lint']:
+                link = self.scratch / 'peer-workspace.olean'
+                import os
+                os.link(artifact, link)
+                link.unlink()
+        self.runtime.callback = link_while_lint_runs
+        first = self.check()
+        self.assertIn('axioms-Quartz', first['performed_checks'])
+        self.runtime.callback = None
+        self.runtime.calls.clear()
+        second = self.check()
+        self.assertIn('lint', second['reused_checks'])
+        self.assertIn('axioms-Quartz', second['reused_checks'])
+        self.assertNotIn(['lake', '--no-build', 'lint', 'Quartz', '--', '--trace'], self.runtime.calls)
+
+    def test_checker_preparation_and_test_failures_do_not_suppress_axiom_feedback(self):
+        for target in ('tools', 'test'):
+            with self.subTest(target=target):
+                self.runtime.fail = lambda command: (command[:3] == ['lake', '--rehash', 'build']
+                    and 'batteries/runLinter' in command if target == 'tools' else command == ['lake', 'test'])
+                with self.assertRaisesRegex(ValueError, 'Native checks failed: ' + target):
+                    self.check()
+                result = next(row for row in self.summaries() if target in row.get('failed_checks', {}))
+                self.assertIn('axioms-Quartz', result['performed_checks'] + result['reused_checks'])
+                self.runtime.calls.clear()
+        self.runtime.fail = None
+
+    def test_fatal_runtime_or_cancellation_never_launches_later_audit(self):
+        from lean_ci.runtime import RuntimeFailure
+        for reason in ('KeyboardInterrupt', 'owned process group unresolved'):
+            with self.subTest(reason=reason):
+                def fail_at_lint(command):
+                    if command[:3] == ['lake', '--no-build', 'lint']:
+                        raise RuntimeFailure(reason)
+                self.runtime.callback = fail_at_lint
+                with self.assertRaisesRegex(RuntimeFailure, reason):
+                    self.check()
+                self.assertNotIn(['lake', 'env', str(self.auditor), '--root', 'Quartz'], self.runtime.calls)
+                self.runtime.calls.clear()
+        self.runtime.callback = None
+
+    def test_additional_source_policy_scope_is_guarded_through_export(self):
+        from lean_ci.local import SourceCheck
+        from lean_ci.state import InputDrift
+        client = self.root / 'examples/downstream'
+        client.mkdir(parents=True)
+        check = SourceCheck(CHECK, source_roots=(client,))
+        def add_source(command):
+            if command[:3] == ['lake', '--no-build', 'lint']:
+                (client / 'New.lean').write_text('module\n')
+        self.runtime.callback = add_source
+        with self.assertRaises((InputDrift, ValueError)):
+            self.check(source_checks=(check,), outputs=self.outputs)
+        self.assertFalse(self.outputs.exists())
+
+    def test_extra_source_added_after_policy_selection_is_in_initial_binding(self):
+        from lean_ci.local import SourceCheck
+        client = self.root / 'examples/downstream'
+        check = SourceCheck(CHECK, source_roots=(client,))
+        client.mkdir(parents=True)
+        (client / 'BeforeStart.lean').write_text('module\n')
+        self.check(source_checks=(check,))
+        source = next(row for row in self.records() if row['binding']['kind'] == 'source-0')
+        self.assertIn('examples/downstream/BeforeStart.lean', source['binding']['raw_inputs'])
 
     def test_unchanged_checks_reuse_exact_compatible_records(self):
         first = self.check()

@@ -152,8 +152,11 @@ downstream-client jobs and the old Python orchestration are outside this templat
 Independent mathematical review retains its governing requirements. This workflow
 adds no kernel replay, separate client checks or extra acceptance stages.
 
-Local `scripts/check.sh` now calls the native CLI documented in
-[development](../docs/DEVELOPMENT.md#local-verification-and-ci). It uses these
-same native mechanisms with existing local source guards. The old Python
+Local `scripts/check.sh` calls the unified toolkit documented in
+[development](../docs/DEVELOPMENT.md#local-verification-and-ci). The three
+libraries' tools live in that one package. Its check set and independent axiom
+feedback use these same native mechanisms with existing local source guards.
+Shared-artifact ctime changes trigger content rechecking rather than a new
+validation attempt. The old Python
 CI/baseline/frozen-request protocols and duplicate custom auditor are retired;
 this does not modify the public YAML or broaden mathematical acceptance.

@@ -5,9 +5,9 @@ import argparse
 from pathlib import Path
 import re
 import sys
-from library_sources import IDENT, MODULE, source_modules, strip_comments_and_strings
+from .sources import IDENT, MODULE, source_modules, strip_comments_and_strings
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path.cwd()
 
 
 def check_source_policy(root: Path) -> list[str]:
@@ -69,10 +69,10 @@ def check_source_policy(root: Path) -> list[str]:
     return errors
 
 
-def main() -> int:
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     try:
         errors = check_source_policy(args.root)
     except OSError as error:

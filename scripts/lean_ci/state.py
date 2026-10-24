@@ -149,7 +149,8 @@ class TemporalInputs:
     parents retain no directory timestamps; absent names require their nearest
     existing parent's timestamp to detect transient creation/removal.
     """
-    def __init__(self, *, hash_cache=None):
+    def __init__(self, *, hash_cache=None, allow_link_metadata=False):
+        self.allow_link_metadata = allow_link_metadata
         self.hash_cache = hash_cache if hash_cache is not None else {}
         self._inspection_depth = 0
         self.scan_count, self.scan_seconds = 0, 0.0
@@ -169,7 +170,7 @@ class TemporalInputs:
         return cls.stat_identity(path.stat())
 
     @classmethod
-    def path_state(cls, path, *, directory_entries=False):
+    def path_state(cls, path, *, directory_entries=False, allow_link_metadata=False):
         """Observe both a lookup result and its symlink/directory-entry identity."""
         def sample(follow):
             try:
@@ -177,6 +178,8 @@ class TemporalInputs:
                 identity = cls.stat_identity(value)
                 if stat.S_ISDIR(value.st_mode) and not directory_entries:
                     return (*identity[:2], 0, 0, 0, identity[-1])
+                if allow_link_metadata and stat.S_ISREG(value.st_mode):
+                    return (*identity[:4], 0, identity[-1])
                 return identity
             except (FileNotFoundError, NotADirectoryError):
                 return None
@@ -211,7 +214,8 @@ class TemporalInputs:
         self.observe_components(path)
         def observe(candidate, *, parent=False):
             records = self.resolution_parents if parent else self.resolution
-            state = self.path_state(candidate, directory_entries=parent)
+            state = self.path_state(candidate, directory_entries=parent,
+                                    allow_link_metadata=self.allow_link_metadata)
             if candidate in records and records[candidate] != state:
                 raise InputDrift('Import resolution changed during this attempt: ' + str(candidate))
             records[candidate] = state
@@ -262,7 +266,7 @@ class TemporalInputs:
         if path in self.files:
             old_stamp, value = self.files[path]
             if old_stamp != stamp:
-                raise InputDrift('Reflective input changed during this attempt: ' + str(path))
+                self._refresh_file(path, old_stamp, value, stamp)
             return value
         cached = self.hash_cache.get(path)
         if cached is not None and cached[0] == stamp:
@@ -270,8 +274,9 @@ class TemporalInputs:
         else:
             value = file_hash(path)
             self.hash_count += 1
-        if self.stamp(path) != stamp:
-            raise InputDrift('Reflective input changed while hashing: ' + str(path))
+        after = self.stamp(path)
+        if after != stamp:
+            stamp = self._refresh_file(path, stamp, value, after)
         self.files[path] = (stamp, value)
         self.hash_cache[path] = (stamp, value)
         return value
@@ -308,40 +313,43 @@ class TemporalInputs:
         for (path, excluded), value in self.directories.items():
             if self.directory_state(path, excluded) != value:
                 raise InputDrift('Source enrollment directory changed: ' + str(path))
-        for path, (stamp, _) in self.files.items():
-            if self.stamp(path) != stamp:
-                raise InputDrift('Reflective input changed during this attempt: ' + str(path))
+        for path, (stamp, value) in self.files.items():
+            current = self.stamp(path)
+            if current != stamp:
+                self._refresh_file(path, stamp, value, current)
         for path in self.missing:
             if path.exists():
                 raise InputDrift('Previously absent reflective input appeared: ' + str(path))
         for path, state in self.resolution.items():
-            if self.path_state(path) != state:
+            if self.path_state(path, allow_link_metadata=self.allow_link_metadata) != state:
                 raise InputDrift('Import resolution changed during this attempt: ' + str(path))
         for path, state in self.resolution_parents.items():
-            if self.path_state(path, directory_entries=True) != state:
+            if self.path_state(path, directory_entries=True,
+                               allow_link_metadata=self.allow_link_metadata) != state:
                 raise InputDrift('Import resolution changed during this attempt: ' + str(path))
         for path, state in self.components.items():
             if self.component_state(path) != state:
                 raise InputDrift('Input path component changed during this attempt: ' + str(path))
 
-    def refresh_link_metadata(self):
-        """After checks finish, rehash only ctime-only native cache changes.
+    def _refresh_file(self, path, before, value, current):
+        """A native ctime change invalidates a hash cache, not a check result.
 
-        Active execution intervals never use this relaxation. Source, path,
-        content, mtime and absence guards retain their strict observations.
+        Native artifacts have the same trusted-producer, content-correspondence
+        contract as CI. This does not certify that bytes never changed and were
+        restored between observations. Source/config observations remain strict.
         """
-        for path, (before, value) in self.files.items():
-            current = self.stamp(path)
-            if current == before:
-                continue
-            if (current[:4] != before[:4] or current[5:] != before[5:]
-                    or file_hash(path) != value or self.stamp(path) != current):
-                raise InputDrift('Reflective input changed during this attempt: ' + str(path))
-            self.hash_count += 1
-            self.files[path] = (current, value)
-            self.hash_cache[path] = (current, value)
-            if path in self.resolution:
-                self.resolution[path] = self.path_state(path)
+        def same_input(left, right):
+            return left[:4] == right[:4] and left[5:] == right[5:]
+        if not self.allow_link_metadata or not same_input(before, current):
+            raise InputDrift('Reflective input changed during this attempt: ' + str(path))
+        actual = file_hash(path)
+        self.hash_count += 1
+        after = self.stamp(path)
+        if actual != value or not same_input(current, after):
+            raise InputDrift('Reflective input changed during this attempt: ' + str(path))
+        self.files[path] = (after, value)
+        self.hash_cache[path] = (after, value)
+        return after
 
     def optional_hash(self, path):
         path = Path(path).absolute()
@@ -364,7 +372,7 @@ class CheckInputs:
     """
     def __init__(self, whole, *, hash_cache=None, metadata_cache=None):
         self.whole = whole
-        self.native = TemporalInputs(hash_cache=hash_cache)
+        self.native = TemporalInputs(hash_cache=hash_cache, allow_link_metadata=True)
         self.metadata_cache = metadata_cache if metadata_cache is not None else {}
 
     @property

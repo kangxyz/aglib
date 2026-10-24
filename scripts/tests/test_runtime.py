@@ -11,7 +11,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from lean_ci import build, resources
-from lean_ci.runtime import NativeRuntime, compiler_identity
+from lean_ci.runtime import CommandFailed, RuntimeFailure, NativeRuntime, compiler_identity
 from lean_ci.state import TemporalInputs, read_json
 
 
@@ -220,8 +220,23 @@ class ResourceTests(unittest.TestCase):
                     keywords['receipt'].write_text(json.dumps(value))
                     return code
                 with patch('lean_ci.runtime.resources.run', side_effect=guarded):
-                    with self.assertRaisesRegex(ValueError, 'Native command failed: source'):
+                    with self.assertRaisesRegex(RuntimeFailure, 'guard/ownership evidence: source'):
                         NativeRuntime(root, environment={}).run(task, root / 'run')
+
+    def test_only_closed_ordinary_exit_is_recoverable(self):
+        for code, actual_exit, failure, expected in (
+            (19, 19, None, CommandFailed),
+            (125, -2, 'watchdog failed closed: KeyboardInterrupt()', RuntimeFailure),
+            (143, -15, None, RuntimeFailure)):
+            with self.subTest(code=code), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                task = {'id': 'lint', 'kind': 'process', 'cwd': str(root), 'command': ['lake', 'lint']}
+                def guarded(command, **keywords):
+                    keywords['receipt'].write_text(json.dumps(dict(state='completed', command=command,
+                        cwd=str(root), exit_code=actual_exit, guard_failure=failure, owned_group_gone=True)))
+                    return code
+                with patch('lean_ci.runtime.resources.run', side_effect=guarded), self.assertRaises(expected):
+                    NativeRuntime(root, environment={}).run(task, root / 'run')
 
     def test_runtime_rejects_retired_task_kinds_before_launch(self):
         with tempfile.TemporaryDirectory() as directory, patch('lean_ci.runtime.resources.run') as run:

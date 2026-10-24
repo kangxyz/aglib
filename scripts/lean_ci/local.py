@@ -1,5 +1,6 @@
 """Native Lake final checks with compatible per-command success reuse."""
 from contextlib import nullcontext
+from dataclasses import dataclass
 import fcntl
 import os
 from pathlib import Path
@@ -7,9 +8,10 @@ import subprocess
 import uuid
 
 from . import build
-from .runtime import NativeRuntime, semantic_environment, semantic_toolchain
+from .runtime import (CommandFailed, NativeRuntime, RuntimeFailure,
+                      semantic_environment, semantic_toolchain)
 from .state import (CheckInputs, Progress, ReflectionGraph, TemporalInputs, check_binding,
-                    valid_receipt, write_json)
+                    InputDrift, valid_receipt, write_json)
 from .source import lean_imports, module_path
 
 AUDITOR_REVISION = '46024e005996495c65ef609368e11ab39c4222e3'
@@ -18,17 +20,31 @@ TOOLS = ('batteries/runLinter', 'mathlib/lint-style', 'mathlib/mk_all')
 EXCLUDED = {'.lake', '.git', '__pycache__', 'node_modules', 'vendor'}
 
 
-def sources(root):
-    """Read package inputs, without enrolling caches or another package's clients."""
-    paths = []
-    for current, children, files in os.walk(root, followlinks=False):
-        children[:] = sorted(n for n in children if n not in EXCLUDED and n != 'examples')
-        for name in sorted(files):
-            path = Path(current) / name
-            if path.suffix == '.lean' or path.relative_to(root).as_posix() in CONFIG:
-                if path.is_symlink():
-                    raise ValueError('Native source inputs must be regular files: ' + str(path))
-                paths.append(path)
+@dataclass(frozen=True)
+class SourceCheck:
+    """One existing source command and the policy files it actually consumes."""
+    command: tuple
+    inputs: tuple = ()
+    source_roots: tuple = ()
+
+
+def source_command(check):
+    return list(check.command if isinstance(check, SourceCheck) else check)
+
+
+def sources(root, extra_roots=()):
+    """Read actual policy source scopes, excluding native dependency caches."""
+    paths = set()
+    for source_root in (root, *extra_roots):
+        for current, children, files in os.walk(source_root, followlinks=False):
+            excluded = EXCLUDED | {'examples'} if source_root == root else {'.lake'}
+            children[:] = sorted(name for name in children if name not in excluded)
+            for name in sorted(files):
+                path = Path(current) / name
+                if path.suffix == '.lean' or (source_root == root and path.relative_to(root).as_posix() in CONFIG):
+                    if path.is_symlink():
+                        raise ValueError('Native source inputs must be regular files: ' + str(path))
+                    paths.add(path)
     return sorted(paths)
 
 
@@ -69,12 +85,12 @@ def commands(root, production, check_targets=(), source_checks=()):
         raise ValueError('At least one production root is required')
     for name in (*production, *check_targets):
         module_path(name)
-    return [*map(list, source_checks),
+    return [*(source_command(check) for check in source_checks),
             ['lake', '--rehash', 'build', *production],
             ['lake', '--rehash', 'build', *TOOLS, *check_targets],
-            ['lake', 'test'],
             *[['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', name, '--check'] for name in production],
             ['lake', '--no-build', 'exe', 'mathlib/lint-style', *production],
+            ['lake', 'test'],
             ['lake', '--no-build', 'lint', *production, '--', '--trace'],
             *[['lake', 'env', '<pinned-axiom-audit>', '--root', name] for name in production]]
 
@@ -85,17 +101,23 @@ def _run(runtime, command, directory, *, cwd=None):
                           'cwd': str(cwd or runtime.root)}, directory)
     receipt = result.get('receipt')
     if not valid_receipt(receipt, command, cwd or runtime.root):
-        raise ValueError('Native command has no completed successful receipt: ' + str(command))
+        raise RuntimeFailure('Native command has no completed successful receipt: ' + str(command))
     return receipt
 
 
-def _observe_sources(root, observations):
-    paths = sources(root)
+def _observe_sources(root, observations, extra_roots=()):
+    paths = sources(root, extra_roots)
     for path in paths:
         observations.hash_file(path)
     for name in CONFIG:
         observations.optional_hash(root / name)
-    for directory in {root, *(path.parent for path in paths)}:
+    directories = {root, *(path.parent for path in paths)}
+    for source_root in extra_roots:
+        parent = source_root
+        while not parent.is_dir() and parent != parent.parent:
+            parent = parent.parent
+        directories.add(parent)
+    for directory in directories:
         observations.observe_directory(directory, EXCLUDED)
     return paths
 
@@ -147,7 +169,8 @@ def check(root, production, *, check_targets=(), source_checks=(), base=None, he
         directory = state / ('run-' + uuid.uuid4().hex)
         directory.mkdir()
         summary = {'status': 'running', 'root': str(root), 'production': list(production),
-                   'native': native, 'performed_checks': [], 'reused_checks': [], 'directory': str(directory)}
+                   'native': native, 'performed_checks': [], 'reused_checks': [],
+                   'failed_checks': {}, 'directory': str(directory)}
         summary_path = directory / 'result.json'
         write_json(summary_path, summary)
         try:
@@ -165,7 +188,9 @@ def check(root, production, *, check_targets=(), source_checks=(), base=None, he
 def _checks(root, production, check_targets, source_checks, native, progress, directory,
             summary, outputs, runtime):
     whole = TemporalInputs()
-    files = _observe_sources(root, whole)
+    extra_roots = tuple(sorted({(root / path).absolute() for check in source_checks
+        if isinstance(check, SourceCheck) for path in check.source_roots}))
+    files = _observe_sources(root, whole, extra_roots)
     progress_store = Progress(progress)
     hashes, metadata = {}, {}
     toolchain, search_path = {}, None
@@ -177,6 +202,14 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         source_helpers.append(str(parser))
     counter = 0
     accepted = []
+
+    def attempt(name, action):
+        try:
+            return action()
+        except CommandFailed as error:
+            summary['failed_checks'][name] = str(error)
+            write_json(directory / 'result.json', summary)
+            return None
 
     def execute(name, command, *, imports=(), raw=(), enrollment=None, prepared=False):
         nonlocal counter
@@ -218,7 +251,9 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         if record is not None:
             mode = 'reused_checks'
         else:
-            receipt = _run(runtime, command, run_dir)
+            receipt = attempt(name, lambda: _run(runtime, command, run_dir))
+            if receipt is None:
+                return False
             after = binding()
             if after != before:
                 raise ValueError('Native check inputs changed during execution: ' + name)
@@ -231,12 +266,20 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         accepted.append(inputs.native)
         summary[mode].append(name)
         write_json(directory / 'result.json', summary)
+        return True
 
     raw_sources = [str(path.relative_to(root)) for path in files]
-    for index, command in enumerate(source_checks):
-        execute('source-' + str(index), list(map(str, command)), raw=[*raw_sources, *source_helpers])
+    for index, check in enumerate(source_checks):
+        implementation = check.inputs if isinstance(check, SourceCheck) else source_helpers
+        execute('source-' + str(index), list(map(str, source_command(check))),
+                raw=[*raw_sources, *map(str, implementation)])
+    if summary['failed_checks']:
+        raise ValueError('Source checks failed: ' + '; '.join(
+            name + ': ' + error for name, error in summary['failed_checks'].items()))
     if not native:
         whole.assert_stable()
+        if files != sources(root, extra_roots):
+            raise ValueError('Package source enrollment changed during source checking')
         return
     # Elan discovery is once per invocation. Resource/process guarding and the
     # parent's managed compiler remain in force for every native command.
@@ -251,8 +294,8 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
         runtime = bounded
         mapping = directory / 'native-outputs.jsonl'
         _run(runtime, ['lake', '--rehash', 'build', *production, '-o', str(mapping)], directory / 'build')
-        _run(runtime, ['lake', '--rehash', 'build', *TOOLS, *check_targets], directory / 'tools')
-        _run(runtime, ['lake', 'test'], directory / 'tests')
+        tools = attempt('tools', lambda: _run(runtime,
+            ['lake', '--rehash', 'build', *TOOLS, *check_targets], directory / 'tools'))
         search = subprocess.check_output(['lake', 'env', 'printenv', 'LEAN_PATH'],
                                          cwd=root, env=runtime.environment, text=True).strip()
         search_path = [str((root / path).resolve()) for path in search.split(os.pathsep) if path]
@@ -266,32 +309,38 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
             directory = entry.with_suffix('')
             return [str(path.relative_to(root)) for path in files
                     if path == entry or path.is_relative_to(directory)]
-        entry_imports, entry_files = checker('mk_all')
-        for name in production:
-            execute('entries-' + name,
-                    ['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', name, '--check'],
-                    imports=entry_imports, raw=[str(module_path(name)), *entry_files],
-                    enrollment=production_sources(name))
-        text_imports, text_files = checker('lint-style')
-        execute('text-style', ['lake', '--no-build', 'exe', 'mathlib/lint-style', *production],
-                imports=text_imports, raw=[*(path for name in production for path in production_sources(name)),
-                                         *text_files, 'scripts/nolints-style.txt'])
-        execute('lint', ['lake', '--no-build', 'lint', *production, '--', '--trace'],
-                imports=[*production, 'Batteries.Tactic.Lint'],
-                raw=['scripts/nolints.json', 'scripts/nolints-style.txt',
-                     '.lake/packages/batteries/scripts/runLinter.lean',
-                     '.lake/packages/batteries/.lake/build/bin/runLinter'])
-        auditor = _prepare_auditor(root, runtime, directory / 'auditor', whole)
-        for name in production:
-            execute('axioms-' + name, ['lake', 'env', str(auditor), '--root', name],
-                    imports=[name], prepared=True)
+        if tools is not None:
+            entry_imports, entry_files = checker('mk_all')
+            for name in production:
+                execute('entries-' + name,
+                        ['lake', '--no-build', 'exe', 'mathlib/mk_all', '--lib', name, '--check'],
+                        imports=entry_imports, raw=[str(module_path(name)), *entry_files],
+                        enrollment=production_sources(name))
+            text_imports, text_files = checker('lint-style')
+            execute('text-style', ['lake', '--no-build', 'exe', 'mathlib/lint-style', *production],
+                    imports=text_imports, raw=[*(path for name in production for path in production_sources(name)),
+                                             *text_files, 'scripts/nolints-style.txt'])
+            attempt('test', lambda: _run(runtime, ['lake', 'test'], directory / 'tests'))
+            execute('lint', ['lake', '--no-build', 'lint', *production, '--', '--trace'],
+                    imports=[*production, 'Batteries.Tactic.Lint'],
+                    raw=['scripts/nolints.json', 'scripts/nolints-style.txt',
+                         '.lake/packages/batteries/scripts/runLinter.lean',
+                         '.lake/packages/batteries/.lake/build/bin/runLinter'])
+        auditor = attempt('auditor', lambda: _prepare_auditor(root, runtime, directory / 'auditor', whole))
+        if auditor is not None:
+            for name in production:
+                execute('axioms-' + name, ['lake', 'env', str(auditor), '--root', name],
+                        imports=[name], prepared=True)
     # Keep the observations that justified earlier successes alive until export.
     # This is an in-process stat check, not another native validation pass.
     for observations in accepted:
         observations.assert_stable()
     whole.assert_stable()
-    if files != sources(root):
+    if files != sources(root, extra_roots):
         raise ValueError('Package source enrollment changed during native checking')
+    if summary['failed_checks']:
+        raise ValueError('Native checks failed: ' + '; '.join(
+            name + ': ' + error for name, error in summary['failed_checks'].items()))
     if outputs:
         destination = Path(outputs).resolve()
         destination.parent.mkdir(parents=True, exist_ok=True)
