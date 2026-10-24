@@ -951,6 +951,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Famil
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Monotone
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Projective
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Twist
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.ZeroTwist
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EulerCharacteristic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiberBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel
@@ -3512,6 +3513,7 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.PullbackFullyFaithful
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
+public import Aglib.AlgebraicGeometry.Picard.FiberCondition.RelativeCover
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Subsheaf
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.FppfSections
@@ -3531,6 +3533,8 @@ public import Aglib.AlgebraicGeometry.Picard.PowerRoot
 public import Aglib.AlgebraicGeometry.Picard.Presheaf
 public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
+public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
+public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator

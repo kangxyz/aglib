@@ -392,3 +392,9 @@ closed immersion `i` with `ι ≃ Fin (N + 1)`, also openness of the vanishing l
 vanishing with `h^0 ≠ 0`, `= 0` or `= r`. Base-change invariance of the twisted fibre invariants
 (`embeddedFiberTwistDim_familyBaseChange`) needs only `f` proper.
 `Scheme.isLocallyConstant_pi_of_isLocallyNoetherian` (joint local constancy) is proved there.
+[ZeroTwist](EmbeddedFibers/ZeroTwist.lean): the zero twist is the identity
+(`pulledTwistZeroIso : pulledTwist h 0 M ≅ M`, from `twistingZeroIso`, the pullback of the unit
+and the left unitor), so the point-fibre cohomology of a module on `X_T` at `t` is the twisted
+fibre cohomology at twist `0` (`modulePointFiberCohomologyDimension_eq_embeddedFiberTwistDim_zero`;
+vanishing form for line bundles under a closed immersion,
+`subsingleton_modulePointFiberCohomology_iff_embeddedFiberTwistDim_zero`).

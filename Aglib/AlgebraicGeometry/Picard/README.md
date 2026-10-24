@@ -211,6 +211,46 @@ Noetherian `T` for flat `f`, with each level `h^0(X_t, L_t(m)) = r` of the vanis
 `familyPicardFunctor_map_add_zsmul_fiberTwistClass`. The open-subsheaf bundling consumes these
 pointwise statements.
 
+The Picard strata use three layers: `Picard/FiberCondition/*` is the generic structure
+`FiberCondition p` with its subsheaf, open-subfunctor and cover lemmas;
+`Picard/Strata/{FiberConditions,BaseAndRank}` state the pointwise fibre predicates `HasFiber…` of a
+line bundle at a point; `Picard/Strata/Conditions` bundles them as `FiberCondition` values
+(`Strata.eulerCondition`, …).
+
+[FiberCondition/RelativeCover](FiberCondition/RelativeCover.lean): if every point where a fiber
+condition `C` holds satisfies some `D j`, the opens of the conjunctions `C ⊓ D j` cover the open of
+`C` (`FiberCondition.iSup_opens_inf_eq`). [Strata/BaseAndRank](Strata/BaseAndRank.lean): the base
+condition `HasFiberStructureEulerPolynomial i s ψ t` (`χ(X_t, O_{X_t}(n)) = ψ(n)`, through the
+trivial line bundle, with no hypothesis on `A`: invariant under base change of the family and
+determined by the image of `t` in `Spec A` for `f` proper; for a closed immersion `i` with
+`ι ≃ Fin (N + 1)`, every point has a unique `ψ`, and for `f` also flat the locus is open and closed
+on locally Noetherian `T`; over a Noetherian `A` only finitely many `ψ` occur,
+`finite_setOf_exists_hasFiberStructureEulerPolynomial`), the level condition
+`HasFiberTwistVanishingAndRank i s m r L t` ((4.8.3) for `n ≥ m` and `h^0(X_t, L_t(m)) = r`:
+congruence, base change (`f` proper), the twist shift, openness on locally Noetherian `T` (closed
+immersion, `f` flat), and, with geometrically integral fibres, some `r ≥ 1` at every `m ≫ 0`), and
+the bridge to cohomology and base change at `m = 0`
+(`HasFiberTwistVanishingAndRank.modulePointFiberCohomologyDimension_zero`: `h^0 = r`;
+`HasFiberTwistVanishingAndRank.subsingleton_modulePointFiberCohomology`, for a closed immersion: the
+higher point-fibre cohomology of `L` vanishes). [Strata/Conditions](Strata/Conditions.lean) bundles
+the conditions, for a closed immersion `i` with `ι ≃ Fin (N + 1)` and `f` flat, as
+`FiberCondition (i ≫ toSpec A ι)` values (`eulerCondition φ`, `baseCondition ψ`,
+`levelCondition m r`, `coarseLevelCondition m`, `fineCondition φ ψ m r`, `coarseCondition φ m`),
+whose subsheaves are the strata `Pic^φ`, `Pic^{φ,ψ,r}_m` and `Pic^φ_m`, and proves the covers of
+Kleiman p. 29 with the plan's refinement, for sections over locally Noetherian `T`: the `C_φ`- and
+`C_ψ`-opens are open and closed, disjoint and covering; the coarse strata increase with `m` and
+exhaust `Pic^φ` (geometrically integral fibres); for fixed `(φ, m)` the fine strata with `r ≥ 1`
+cover the coarse stratum; for fixed `m` the fine strata are pairwise disjoint; and, with
+geometrically integral fibres, they cover `T` over the gluing index `(φ, ψ, m, k)`, `r = k + 1`. If
+a representative `L` satisfies the fine condition at `m = 0` at every point of `T`, the geometric
+fibres of `X_T ⟶ T` have `h^0(L) = r` and no higher cohomology of `L`
+(`fibreCohomologyConcentrated_of_forall_fineCondition_holds`), and for `T` locally Noetherian
+`p_* L` is locally free of rank `r` and every base-change map of `L` is an isomorphism
+(`sheafHasRank_and_isIso_moduleBaseChangeMap_of_forall_fineCondition_holds`). `twistClass i m T`,
+the class of `O_{X_T}(m)`, equals `m • twistClass i 1 T` (`twistClass_eq_zsmul`) and is natural in
+`T`, and translation by `m • twistClass i 1 T` carries the fine condition at `(φ, ψ, m, r)` to the
+one at `(φ₀, ψ, 0, r)`, `φ₀(n) = φ(n − m)` (`fineCondition_holds_add_twistClass`).
+
 [LinearSystem](LinearSystem/) gives the linear-system functor `LinSys_{L/X/S}` (Kleiman, Def. 3.12,
 p. 25, in ideal form: `I_D ≅ q_T^* N ⊗ g_T^* L^∨` for a line bundle `N` on `T`, so Kleiman's `N` is
 the dual of this one) and its representability by `Gr(E, r − 1)`, `E = p_* L`, in the locally free
