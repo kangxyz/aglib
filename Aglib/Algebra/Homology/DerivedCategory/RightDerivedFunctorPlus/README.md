@@ -96,3 +96,12 @@ mate form `derivedBaseChangeMap_h1_square`. These identities do not assert
 exchange-map invertibility, proper base change, or unbounded derived scope. The independent `derived_archive_review` accepted the selected D sources;
 the principal-owned selected integration checks passed. See the
 migration note for the exact claim boundary.
+
+## Scalar-forgetting exchange cubes
+
+`BaseChange/ExactIsoCube`, `ExactMateCube`, `MateCubeComponent` and
+`MateCubeIsomorphism` retain the original exact comparisons and mates of a
+whole cube before deriving. `Conservative` proves reflection of isomorphisms
+for the actual exact derived functor. Their geometric consumer is the
+original genuine-module scalar-forgetting exchange square and finite base
+change in `EtaleCohomology/Exceptional/Derived`, with independent models.

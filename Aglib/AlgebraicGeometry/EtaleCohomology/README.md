@@ -143,3 +143,29 @@ The separate detection consumer
 `isIso_of_original_geometricStalks` continues to require
 `[LocallyOfFiniteType p]`. That geometric condition belongs to the
 isomorphism-detection theorem, not to the stalk-unit comparison.
+
+## Further coefficient and six-operation suppliers
+
+[Constructible module coefficients](Constructible/Modules/README.md) retain
+finite generation over an independent-universe commutative coefficient ring.
+They include arbitrary inverse image, actual etale-cover descent, Noetherian-ring
+kernel/cokernel/extension closure, and finite-etale direct-image constructibility.
+Their underlying additive groups need not be finite. These results do not
+supply descent of native finite coefficient diagrams to Noetherian models.
+
+[Finiteness](Finiteness/README.md) includes characteristic-primary proper
+cohomology and invertible-order smooth proper curve H1, with their displayed
+scalar, trivialization and Ext hypotheses. [Smooth base change](SmoothBaseChange/README.md)
+supplies unconditional etale exchange and a smooth-to-affine-line reduction;
+the actual positive-relative-dimensional affine-line theorem is still an input.
+
+[Exceptional images](Exceptional/README.md) and [localization](Localization/README.md)
+use genuine constant-ring module sheaves, their actual lower-shriek counit and
+closed-image unit. Exact open extension, localization, native D+ and unbounded
+ordinary-image suppliers are available. Proper-refinement invertibility,
+compactification independence and a complete exceptional-image calculus remain
+open. The coefficient equivalence with module-valued sheaves retains the
+original units; it is not a definitional identification of the two carriers.
+
+The [source integration note](../../../docs/migration/etale-six-functor-suppliers-2026-10-24.md)
+records admitted families, excluded drafts, deduplication and exact boundaries.

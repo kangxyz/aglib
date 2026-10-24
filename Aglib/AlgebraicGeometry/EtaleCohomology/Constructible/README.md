@@ -323,3 +323,15 @@ requires ambient FP; the actual positive presentations provide that condition
 for their stages on separated schemes. General nonseparated qcqs generator
 stratification is not asserted. The locally Artinian theorem retains its own
 weaker diagram-shape conditions and is not the sole available geometric case.
+
+## Constant-ring module coefficients
+
+The [module family](Modules/README.md) uses the actual module-valued sheaf
+category over a commutative ring in its independent scalar universe. Local
+values are finite modules, with no finite additive-cardinality premise.
+Arbitrary pullback, Zariski and jointly surjective etale descent, and
+finite-etale image constructibility are supplied. Finite sums/products work
+over arbitrary commutative rings; kernel, cokernel and extension closure uses
+a Noetherian coefficient ring and retains the weak-Serre scope.
+General finite-image constructibility, arbitrary qcqs-surjective descent and
+Noetherian-model descent of coefficient objects/arrows remain separate results.

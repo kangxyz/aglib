@@ -96,3 +96,18 @@ actual higher-image stalk with original limit-scheme cohomology, with its
 explicit chart/Ext/colimit premises and original germ/degree-zero equations.
 General proper base change and unbounded derived scope remain open.
 No arbitrary global-cohomology pullback is asserted to be invertible.
+
+## Module-linear finite comparison and trace
+
+[EtaleTrace](EtaleTrace.lean) and [EtaleModuleTrace](EtaleModuleTrace.lean)
+retain the original finite-etale unit/rank equation and coefficient
+naturality. Coprime annihilators give actual retractions preserved by further
+functors. The [module-coefficient comparison](../ModuleCoefficients/FiniteDirectImage.lean)
+is linear over the original coefficient ring and preserves the original
+finite direct-image cohomology map, with independent Ext universes. This
+does not prove constructibility for arbitrary finite direct image.
+
+`Exceptional/Derived/FiniteBaseChange` also proves finite base change for the
+original genuine constant-ring module D+ exchange over arbitrary rings. It
+uses the proved scalar-forgetting exchange square and conservative exact
+derived forgetting; its eight derived-model universes remain independent.

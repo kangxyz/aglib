@@ -38,3 +38,12 @@ admissible blowup sequences, a finite common enlargement and proper-surjective
 descent. This family concerns compactification of scheme morphisms; the
 Nagata/Japanese ring condition and finiteness of normalization have separate
 owners.
+
+## Refinements and normalized base change
+
+The [refinement family](Refinements/README.md) retains schematic density,
+original open/ambient maps and proper refinement triangles. It constructs
+common refinements, Cartesian open squares, normalized base change and
+composition towers. Native Nagata supplies nonemptiness/cofilteredness for
+separated finite-type maps over qcqs targets. Derived refinement coherence
+does not by itself prove invertibility or compactification independence.

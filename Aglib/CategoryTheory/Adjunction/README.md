@@ -11,3 +11,11 @@ isomorphism at `N'`, then `F` is bijective on morphisms `N ⟶ N'`, for every `N
 of Mathlib's `Adjunction.fullyFaithfulLOfIsIsoUnit`). Consumer:
 `Picard/Comparison/LocallyTrivial.lean` (`q_T^*` on morphisms into trivial line bundles).
 
+
+[UnderlyingMate](UnderlyingMate.lean) proves
+`mateEquiv_inv_natTrans_eq_of_unit`: the original unit equation identifies
+the actual mate for a specified right natural transformation, without an
+invertibility premise on that transformation. The
+`Mates/ScalarForgetting` isomorphism-valued theorem delegates to this more
+general result and retains its API. The genuine module/abelian coefficient
+comparison consumes the transformation-valued form.

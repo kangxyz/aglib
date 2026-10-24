@@ -25,3 +25,14 @@ injective objects.
 normalization of concentrated derived objects and its coefficient
 naturality. It is shared by Postnikov layers and geometric purity;
 no enough-injectives or chosen-representative hypothesis is imposed.
+
+## Unbounded right-derived suppliers
+
+[UnboundedRightDerived](UnboundedRightDerived/README.md) constructs original
+right-derived functors from native K-injective resolutions. Its Grothendieck
+specialization uses the actual functorial
+[K-injective replacement](KInjective/Existence/Tower/README.md), with natural
+monic quasi-isomorphism, rather than a supplied-replacement premise.
+Conditional lower interfaces retain their explicit hypotheses. This is
+derived existence, not a geometric proper-exchange or finite-dimensional
+acyclic-computation theorem.

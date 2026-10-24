@@ -70,3 +70,23 @@ The lower [germ naturality](FibreProductGermNaturality.lean),
 sheafification and point maps. The final comparison is consequently more
 than an isomorphism of endpoints. It does not itself assert general proper
 base change or an unbounded derived theorem.
+
+## Original global classes and the actual exchange
+
+[GlobalSections](GlobalSections.lean) constructs the original
+`cohomologyToHigherSections`. [BaseChangeGlobalSections](BaseChangeGlobalSections.lean)
+identifies the actual higher exchange on this map with original cohomology
+pullback for any commuting square, all natural degrees, two independent Ext
+universes and four independent derived models.
+[BaseChangeGlobalGerms](BaseChangeGlobalGerms.lean) retains the original
+stalk-unit and global-class germ. [GlobalSectionsField](GlobalSectionsField.lean)
+proves bijectivity of the same edge over a separably closed target field.
+No general-base edge injectivity, properness or PBC premise is asserted.
+
+[ChartCycleWitness](ChartCycleWitness.lean), [ChartTargetCycles](ChartTargetCycles.lean)
+and the generic actual-resolution comparison supply neighborhood-cycle inputs.
+They do not yet export the all-degree arbitrary-neighborhood exchange/germ
+identity. The unfinished chart-exchange and chart-relative-germ consumers
+are excluded from the integrated source set.
+[ChartLimitZero](ChartLimitZero.lean) separately spreads original vanishing
+on an actual qcqs affine-transition limit to a genuine pointed etale stage.

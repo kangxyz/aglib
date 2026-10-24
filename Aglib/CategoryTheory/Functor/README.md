@@ -30,3 +30,10 @@ components and `Aut.autMulEquivOfIso`.
 [MapComparisonSquare](MapComparisonSquare.lean) transports original map squares through natural functor
 comparisons and objectwise coordinate isomorphisms. Its shared compatibility
 predicate preserves the displayed composites and separate category universes.
+
+## Whole composition cubes
+
+`CompositionCube` and `CompositionCubeWhole` normalize the actual functor
+composition comparisons on a complete cube before taking components. They
+are used by the scalar-forgetting derived mate cube; `CompositionSquare`
+retains the corresponding original two-dimensional equations.
