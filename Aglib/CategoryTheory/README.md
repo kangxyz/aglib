@@ -50,3 +50,11 @@ binary products in a cartesian monoidal `C` (Mathlib's `CartesianMonoidalCategor
 braidings of `C` and of `P.FullSubcategory` agree (`ObjectProperty.braiding_hom_hom`). These are
 definitions, not instances. Consumer:
 [Sites/OverRepresentability/CommGrpObj](../AlgebraicGeometry/Sites/OverRepresentability/CommGrpObj.lean).
+
+[ObjectProperty/RepresentableByAdjunction](ObjectProperty/RepresentableByAdjunction.lean) transports
+representations along an adjunction on full subcategories: for `adj : L ⊣ R`, properties `P` of `C`
+and `Q` of `D` with `L` sending `P` into `Q`, and `F` on `Q` represented by `Y`,
+`ObjectProperty.representableByLiftOfAdjunction` represents `(Q.lift (P.ι ⋙ L) hL).op ⋙ F` by
+`R.obj Y.obj` when that object satisfies `P`, through `(T ⟶ R Y) ≃ (L T ⟶ Y)`; the adjunction need
+not restrict to the full subcategories. Consumer:
+[Picard/BaseChangeRepresentableBy](../AlgebraicGeometry/Picard/BaseChangeRepresentableBy.lean).

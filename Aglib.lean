@@ -2993,6 +2993,7 @@ public import Aglib.AlgebraicGeometry.Geometrically.Connected.PointedCurve
 public import Aglib.AlgebraicGeometry.Geometrically.Connected.RationalPoint
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.GlobalSections
 public import Aglib.AlgebraicGeometry.Geometrically.Integral.SmoothCurve
+public import Aglib.AlgebraicGeometry.Geometrically.Irreducible.FieldExtension
 public import Aglib.AlgebraicGeometry.Geometrically.Reduced.Smooth
 public import Aglib.AlgebraicGeometry.Geometrically.Regular
 public import Aglib.AlgebraicGeometry.Gluing.BoundaryPatch
@@ -3060,6 +3061,9 @@ public import Aglib.AlgebraicGeometry.Group.DualIsogeny
 public import Aglib.AlgebraicGeometry.Group.EtaleQuotient
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.BaseChange
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.FiniteType
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Irreducible
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.QuasiCompact
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing
 public import Aglib.AlgebraicGeometry.Group.IsogenyPairing.Galois
 public import Aglib.AlgebraicGeometry.Group.Kernel.Basic
@@ -4220,6 +4224,9 @@ public import Aglib.AlgebraicGeometry.Normalization.Relative
 public import Aglib.AlgebraicGeometry.Picard.Abel.Basic
 public import Aglib.AlgebraicGeometry.Picard.Abel.Divisor
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+public import Aglib.AlgebraicGeometry.Picard.BaseChange
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeGroupLaw
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeRepresentableBy
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
 public import Aglib.AlgebraicGeometry.Picard.Comparison.GluingDescent
@@ -4241,6 +4248,7 @@ public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw
+public import Aglib.AlgebraicGeometry.Picard.IdentityComponent
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.AbelClass
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
@@ -4280,8 +4288,10 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Equiv
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Frames
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Scaling
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Units
+public import Aglib.AlgebraicGeometry.Picard.Tangent.Comparison
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
+public import Aglib.AlgebraicGeometry.Picard.Tangent.KernelMap
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening
 public import Aglib.AlgebraicGeometry.Picard.Torsion
@@ -4451,6 +4461,7 @@ public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOverBaseChange
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyOfFiniteTypeOver
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
@@ -4924,8 +4935,10 @@ public import Aglib.CategoryTheory.Linear.Opposite
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Localization.SerreKernel
+public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
+public import Aglib.CategoryTheory.Monoidal.GrpObjShear
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
@@ -4933,6 +4946,7 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj
 public import Aglib.CategoryTheory.ObjectProperty.RepresentableBy
+public import Aglib.CategoryTheory.ObjectProperty.RepresentableByAdjunction
 public import Aglib.CategoryTheory.ObjectProperty.Yoneda
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport
@@ -4959,6 +4973,7 @@ public import Aglib.CategoryTheory.Sites.Hypercohomology.RepresentableTransfer
 public import Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Terminal
 public import Aglib.CategoryTheory.Sites.Linear
+public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
 public import Aglib.CategoryTheory.Sites.PushforwardSections
@@ -6524,6 +6539,7 @@ public import Aglib.Topology.Connected.JacobsonValues
 public import Aglib.Topology.Connected.LocallyConnected
 public import Aglib.Topology.GenericOrClosedDimension
 public import Aglib.Topology.Irreducible.ClosedCover
+public import Aglib.Topology.Irreducible.LocallyFinite
 public import Aglib.Topology.KrullDimension.ClosedSubspace
 public import Aglib.Topology.NoetherianCurveSupport
 public import Aglib.Topology.NoetherianSpace
