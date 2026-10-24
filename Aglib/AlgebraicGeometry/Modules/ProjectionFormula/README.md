@@ -7,3 +7,5 @@
 [ClosedImmersion](ClosedImmersion.lean) instead gives `isIso_projectionFormulaMap_of_closedImmersion` with arbitrary `E` and `M`. It supplies natural comparison isomorphisms in both coefficient variables, retaining the original projection map; no finite-local-free hypothesis is needed in this closed case.
 
 [Affine](Affine.lean), [OpenBaseChange](OpenBaseChange.lean) and [Stalk](Stalk.lean) fix scalar restriction, cartesian-open and actual stalk comparisons. Their affine/square/open and local isomorphism hypotheses remain attached to each source statement. [D+ projection formula](../../Cohomology/ProjectionFormula/README.md) is a later consumer and retains finite local freeness for its derived tensor interface.
+
+[PushforwardTensorPullback](PushforwardTensorPullback.lean) gives `pushforwardTensorPullbackIso f L N : f_*(L ⊗ f^*N) ≅ f_*L ⊗ N` for finite locally free `N` and arbitrary `f` and `L`, natural in `N` (`pushforwardTensorPullbackNatIso`, on `FiniteLocallyFree S`), with the canonical projection map as inverse (Kleiman, 3.10 (iii), p. 24). It is the ordinary formula conjugated by tensor symmetries.

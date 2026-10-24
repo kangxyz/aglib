@@ -145,7 +145,7 @@ commitments.
 | F12 | Generic freeness (Nitsure, Lemma 4.1, p. 18; Stacks 051R), generic flatness (Thm 4.2, p. 19) and flattening stratification on `P^n_A` (Thm 4.3, p. 19) | proved over an affine Noetherian base `Spec A`, for locally Noetherian test schemes: generic freeness (`RingTheory/GenericFreeness`), generic flatness (`Modules/Flat/Generic`), Fitting ideals (`RingTheory/FittingIdeal`) and the case `n = 0` (`Modules/FittingIdeal`, `FlatteningStratification/{Rank,Universal}`); over any base, the packaging `⊔ S_r ⟶ S` (Stacks 05P9, locally free form), the joint and refined strata and base change of `relativeFlat` (Stacks 01U8, global form); over `Spec A`, Nitsure Lemma 3.1 (with `r₀` depending on the base change), Lemma 3.2 (as an equivalence), (B) and (C) for any coherent `F` (`Cohomology/Projective/FiberBaseChange`), the strata `S_f` with Thm 4.3 (i)–(iii) and the universal property (ii) (`FlatteningStratification/{HilbertPolynomial,Flatness}`; "⇒" for every test scheme), and the monomorphism `∐ S_f ⟶ Spec A`, independent of the bound up to unique isomorphism; over a locally Noetherian base `S ⟶ Spec A` (`A` any ring), for `F` coherent on `P^n_A ×_{Spec A} S`: the strata `S_f`, glued from the affine strata (`IdealSheaf/GlueImmersion`), with Thm 4.3 (i)–(iii), (ii) for locally Noetherian test schemes, finitely many `S_f` for quasi-compact `S`, each `S_f` unique up to unique isomorphism and independent of the bound, and fibre Hilbert polynomials stable under base change of the base (`FlatteningStratification/{StratumFlatness,AffineBase,Global}`, `ProjectiveSpace/BaseChange/AffineOpen`); open: "⇐" for test schemes that are not locally Noetherian | L |
 | F13 | Hilbert schemes on locally Noetherian test schemes: `Hilb^Φ` of closed subschemes of `P^n_A` represented by a locally closed subscheme of a Grassmannian (Nitsure, proof of Thm 5.2/5.3 up to the flattening step, pp. 24–26), and its open subfunctors for locally closed `X ⊂ P^N_A` (Thm 6.1 with trivial bundles, p. 28). Projectivity of `Hilb^Φ` uses the DVR valuative criterion (pp. 26–27), which Mathlib lists as future work (`AlgebraicGeometry/ValuativeCriterion.lean`, "Future projects"); the route does not need it | proved for `P^n_A` with `A` Noetherian, on locally Noetherian test schemes: `Hilb^Φ` is represented by a locally closed subscheme `G_Φ` of the Grassmannian of rank-`⌊Φ(r)⌋₊` quotients of `𝒪^N`, with its universal family (`HilbertScheme/Representability`: `locallyNoetherianHilbertFunctorRepresentableBy`; Nitsure §5, p. 27, Thm 5.3 with `X = P^n_A`, `E = 𝒪`). Inputs: the Hilbert functor, the uniform regularity bound, direct images compatible with base change (`DirectImageSheaf*`, `IdealTwist/*`), relative global generation of `I_Z(r)`, the Grassmannian point and its naturality (`LocallyNoetherianPoint`, `LocallyNoetherianFunctor`), the universal subscheme (`UniversalSubscheme*`), pullback of closed subschemes (Stacks 01JU) and the image step through the flattening stratum (Nitsure's (F)); open: the subfunctors of Thm 6.1 for locally closed `X ⊂ P^N_A` (projectivity of `Hilb^Φ` is not needed) | XL |
 | F14 | Relative effective Cartier divisors, fibrewise criterion and `Div` open in `Hilb` (Kleiman, Lemma 3.4, Thm 3.7, pp. 22–24) | partial: relative effective Cartier divisors and their base change (`EffectiveCartierDivisor/Relative`; Stacks 062T, 056Q), the fibrewise criterion over any base for flat, locally finitely presented families and under Kleiman's Noetherian hypotheses (Lemma 3.4; Stacks 062Y), and openness of the Cartier locus for flat, universally closed families over a locally Noetherian base, with its base-change and factorization form (proof of Thm 3.7); open: `Div` open in `Hilb`, which applies the factorization form to the universal family of F13 | M |
-| F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial (finite model) | M |
+| F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial: the finite model; the cohomological inputs (degree-zero projection formula, line subbundles from fibrewise nonzero maps, zero schemes on integral fibres, residue-field concentration, and 15a, the locally free direct image on the rank pieces); open: `LinSys = Gr(E, r − 1)` | M |
 | F16 | Quotient of a strongly quasi-projective scheme by a flat proper equivalence relation (Nitsure, Thm 6.9, p. 35, by the proof of Thm 6.8, pp. 33–35, with Thm 6.1 and Lemma 6.7) | absent | M |
 | F17 | Strata `Pic^φ`, `Pic^φ_m`, the Abel map and assembly of target 5 | absent | L |
 | F18 | Tangent space via square-zero thickenings and Čech `H^1`; identity component of a group scheme locally of finite type over a field (open and closed, finite type, geometrically irreducible). Optional: Krull dimension of a local ring bounded by its embedding dimension (not checked in Mathlib), `Pic(P^n_K) ≅ ℤ` for fields `K` | absent | M |
@@ -623,8 +623,25 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
   - Open:
     - `Gr(E, r)` for locally free `E`;
     - `P(E)`.
+- **M5 in progress.**
+  - F15, cohomological inputs done (Kleiman 3.10 and Thm 3.13, pp. 24–26):
+    - `Modules/ProjectionFormula/PushforwardTensorPullback`: the degree-zero projection
+      formula `f_*(L ⊗ f^*N) ≅ f_*L ⊗ N` for finite locally free `N`, natural in `N`
+      (3.10 (iii));
+    - `Modules/LocallyFree/LineSubbundle`: a map from a locally rank-one sheaf to a finite
+      locally free one that is nonzero on every field fibre is locally split, with finite
+      locally free cokernel (the Nakayama step of Thm 3.13);
+    - `EffectiveCartierDivisor/Relative/ZeroScheme`: on geometrically integral fibres the
+      zero scheme of a fibrewise nonzero map `L ⟶ O` is a relative effective Cartier divisor
+      (the regularity step of Thm 3.13);
+    - `Cohomology/BaseChange/{ResidueFieldConcentration,ResidueFieldPushforward}`: point-fibre
+      vanishing gives geometric concentration, and on the rank-`r` pieces where all higher
+      fibre cohomology vanishes ((4.8.3) with `m = 0`) the direct image is locally free of
+      rank `r` and commutes with every base change (statement 15a).
+    - A review found no blocking gap; its citation and registration repairs are applied.
+  - Open: `LinSys = Gr(E, r − 1)` with its universal divisor (F15b).
 - **Next.**
   - M4: the Thm 6.1 subfunctors of F13 (through a closed-subfunctor step for `X ⊂ P^n`),
     then `Div` open in `Hilb` (F14).
   - In parallel toward M5 and M6: `Gr(E, k)` and `P(E)` for
-    locally free `E`, the F15 cohomological lemmas and the F18 tangent-space core.
+    locally free `E`, `LinSys = Gr(E, r − 1)` (F15b) and the F18 tangent-space core.

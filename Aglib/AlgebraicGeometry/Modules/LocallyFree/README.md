@@ -43,3 +43,5 @@ isomorphism (`isIso_of_epi_of_sheafHasRank`; its kernel is finite locally free o
 `sheafRank_X₂_eq_add_of_shortExact`); for two quotients of `free I` of the same constant rank with
 `ker q ⊆ ker q'` the induced surjection is an isomorphism under `free I`
 (`exists_iso_of_kernel_ι_comp_eq_zero_of_sheafHasRank`).
+
+[LineSubbundle](LineSubbundle.lean): a map `u : N ⟶ E` from a locally rank-one sheaf to a finite locally free one that is nonzero on every field fibre is locally split (`exists_isSplitMono_pullback_map_of_ne_zero`). It is mono, and its cokernel is finite locally free, of rank `r - 1` when `E` has rank `r`. Conversely, the kernel inclusion of such a sequence is nonzero on every field fibre (Kleiman, Thm 3.13, p. 25; Stacks 00O0). Arbitrary schemes.

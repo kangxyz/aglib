@@ -75,3 +75,14 @@ with the original ordinary Cartesian base-change map and the maps to zeroth
 right-derived functors. The coefficient `M` is arbitrary; this unit square
 needs no quasicoherence, properness or finiteness hypothesis. It does not by
 itself assert invertibility of either base-change map.
+
+[ResidueFieldConcentration](ResidueFieldConcentration.lean) turns point-fibre
+conditions into `FibreCohomologyConcentrated`, for quasi-compact quasi-separated
+`f` and quasicoherent `M`, by field base change (Stacks 02KH). For proper `f`
+over a locally Noetherian base, `h^0` is locally constant when the higher fibre
+cohomology vanishes. [ResidueFieldPushforward](ResidueFieldPushforward.lean)
+gives statement 15a of the Picard plan: on the locus where `h^0 = r` and all
+higher fibre cohomology vanishes (Kleiman's (4.8.3), p. 29, with `m = 0`, which
+is stronger than 3.10 (v)), the direct image `E = f_*M` is locally free of rank
+`r` and commutes with every base change, so `Q = E^∨` is locally free
+(3.10 (i)).
