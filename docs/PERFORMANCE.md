@@ -59,6 +59,12 @@ For a functor whose values are literal fibre products, such as `familyScheme p`,
 with the literal source and target and state every lemma through that name; conversions between
 `(familyScheme p).map t`-typed maps and modules over `pullback p T.hom` cost 44–86 s of type
 checking each. [Family-map case](performance/linear-system-family-maps-type-them-between-the-literal-fibre-products.md).
+Type an `Over.isoMk` between objects whose structure maps agree only up to a proof at the actual
+object (`Iso.refl (Spec (.of k))`), not at the `left` of either `Over` object: the latter cost
+89 + 44 s of kernel checking for one definition, the former under 1 s. Compare kernels of a concrete
+presheaf only through generic equivalences such as `AddEquiv.addSubgroupCongr`; `rfl` between two
+subtypes of `Pic_{X/k,(fppf)}` exhausted kernel memory.
+[Over-category comparison case](performance/over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md).
 
 **Prove the whole relevant equation before evaluating components.** Compose,
 transport or cancel the original transformations/isomorphisms over variables,
@@ -290,7 +296,12 @@ A repaired-module pass does not supply a successful speedup baseline, consumer
 pass or compiler-cause attribution. Keep profiled, unmatched and retained author
 observations distinct; cached modules have no new timing. Inclusive profile
 weights and parallel job durations cannot be summed into wall time. Missing old
-logs remain missing; relocating a record does not revalidate it.
+logs remain missing; relocating a record does not revalidate it. A large `refine`
+or closing `linting` entry right after heavy definitions may be waiting for the
+asynchronous kernel checks of the preceding declarations (a candidate reading
+whose totals matched in two profiles); compare it with those checks before
+attributing it to the tactic
+([profile reading](performance/over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md)).
 
 ### Search upstream references
 

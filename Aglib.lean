@@ -773,6 +773,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Derived.Resolution
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Derived.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Derived.Shift
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Field
+public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.FieldSection
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.Flat
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GlobalSections
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.GodementUnit
@@ -4290,9 +4291,11 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Scaling
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Units
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Comparison
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
+public import Aglib.AlgebraicGeometry.Picard.Tangent.FieldExtension
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
 public import Aglib.AlgebraicGeometry.Picard.Tangent.KernelMap
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
+public import Aglib.AlgebraicGeometry.Picard.Tangent.StructureCohomology
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening
 public import Aglib.AlgebraicGeometry.Picard.Torsion
 public import Aglib.AlgebraicGeometry.Picard.TranslationLift

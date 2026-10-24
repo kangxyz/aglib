@@ -104,6 +104,7 @@ original runs; current operating guides own present procedures.
 - [Field-point cohomology dimensions: specialize residue fields through variable-field statements](field-point-cohomology-dimensions-specialize-residue-fields-through-variable-field-statements.md)
 - [Linear-system family maps: type them between the literal fibre products](linear-system-family-maps-type-them-between-the-literal-fibre-products.md)
 - [Open-immersion lifts in long proofs: keep only the defining equation](open-immersion-lifts-in-long-proofs-keep-only-the-defining-equation.md)
+- [Over-category comparisons: type identity isomorphisms at the actual object](over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md)
 
 Additional complete cases:
 

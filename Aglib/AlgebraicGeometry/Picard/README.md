@@ -351,6 +351,52 @@ fibres, and with a section is the inverse comparison after `picardKerEquivCech�
 `scaleRingHom_eq_map` identifies `µ_a` with Mathlib's `TrivSqZeroExt.map (a • id)`. The focused
 tests are `AglibTest.AlgebraicGeometry.Picard.Tangent.{Comparison,KernelMap}`.
 
+[Tangent/FieldExtension](Tangent/FieldExtension.lean) compares, for any functor
+`F : (Over (Spec k))ᵒᵖ ⥤ AddCommGrpCat`, the test objects of `Tangent/Points` with those of
+`Tangent/Comparison`. Over `k`, `specOver k k[ε]` is `Over.mk (dualMap k)` by definition, while
+`specOver k k` is `Over.mk (𝟙 (Spec k))` only up to `specOverSelfIso` (`Spec (algebraMap k k)` is
+the identity through `Spec.map_id`); hence `tangentKernel F k = ker F(closedPointOver k)`
+(`tangentKernel_eq_ker_closedPointOver`), `µ_a = scaleOver k a`
+(`specOverMap_map_smul_id_eq_scaleOver`), and an additive map into `ker F(closedPointOver k)` linear
+for `F(scaleOver k a)` is a `k`-linear map into `tangentKernel F k` for `tangentKernelModule e k`
+(`linearMapToTangentKernel`). Over a field extension `K/k` with `g : Spec K ⟶ Spec k`,
+`specOverDualNumberIso` and `specOverFieldIso` identify `specOver k K[ε]` and `specOver k K` with
+`Spec K[ε]` and `Spec K` viewed through `Over.map g`, compatibly with the closed points and the
+scalings; `kerClosedPointOverAddEquivTangentKernel` identifies
+`ker F(Over.map g (closedPointOver K))` with `tangentKernel F K`, carrying
+`F(Over.map g (scaleOver K a))` to `F(µ_a)` (`map_scaleOver_specOverDualNumberIso`). Given a functor
+`G` on `K`-schemes and an equivalence of kernels compatible with the scalings,
+`linearMapToTangentKernelOfFieldExtension` and `linearEquivTangentKernelOfFieldExtension` give the
+`K`-linear map and, for bijective input, the `K`-linear equivalence. No hypothesis on `F`. The
+focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.FieldExtension`.
+
+[Tangent/StructureCohomology](Tangent/StructureCohomology.lean) proves Kleiman's Thm 5.11
+(arXiv:math/0504020v1, p. 42) for the fppf Picard sheaf on locally Noetherian test schemes: let `k`
+be a field, `X : FScheme k` proper and flat with geometrically integral fibres,
+`F = Pic_{X/k,(fppf)}`, and `e` a representation of `F` on locally Noetherian test schemes by `P`
+(an explicit argument). Then
+`tangentKernelLinearEquivStructureCohomologyOfIsProperOfFlatOfGeometricallyIntegral X e` is a
+`k`-linear equivalence `ker(F(k[ε]) → F(k)) ≃ₗ[k] H^1(X, 𝒪_X)` for `a • t = F(µ_a) t`, with inverse
+Kleiman's `v` on the cover by all affine opens (its `_symm_apply`), and
+`cotangentSpaceDualLinearEquivStructureCohomologyOfIsProperOfFlatOfGeometricallyIntegral X e` is the
+Zariski form `(𝔪/𝔪²)^∨ ≃ₗ[k] H^1(X, 𝒪_X)`; also `finrank_k H^1(X, 𝒪_X) = finrank_k (𝔪/𝔪²)`, which is
+finite
+(`finrank_structureH1_eq_finrank_cotangentSpace_of_isProper_of_flat_of_geometricallyIntegral`). The
+proof is a dimension count: `v` is injective and `k`-linear (`structureCohomologyToTangentKernel`,
+`structureCohomologyToTangentKernel_injective_of_isProper_of_flat_of_geometricallyIntegral`; Thm
+2.5(1), p. 18); for a residue field `K = κ(x)` the base change `X_K` has a section
+(`Cohomology.exists_isSplitEpi_fieldBaseChange_hom`), so `ker(F(K[ε]) → F(K)) ≃ₗ[K] H^1(X_K, 𝒪)`
+(`tangentKernelLinearEquivFieldBaseChangeOfIsSplitEpiOfIsProperOfFlatOfGeometricallyIntegral`,
+through Thm 2.5(2), p. 18, the base change of the Picard sheaf, Ex. 4.4, p. 27, and Answer 4.4, p.
+65, made compatible with `µ_a` by `fppfPicardSheafBaseChangeKerAddEquiv_map_scaleOver`, and
+`Tangent/FieldExtension`); flat base change of `H^1` and `finrank_tangentKernel` at `K` and at `k`
+give equal finite dimensions, so `v` is bijective
+(`structureCohomologyToTangentKernel_bijective_of_isProper_of_flat_of_geometricallyIntegral`). This
+replaces Kleiman's passage to an algebraically closed field (pp. 43–44, with Ex. 2.3). No group
+scheme, finite-type or separatedness hypothesis on `P`, no rational point and no finiteness of
+`κ(x)/k` is used. The focused test is
+`AglibTest.AlgebraicGeometry.Picard.Tangent.StructureCohomology`.
+
 [Strata/FiberConditions](Strata/FiberConditions.lean) defines, for a closed immersion
 `i : X ⟶ P^N_A`, `s : T ⟶ Spec A`, a line bundle `L` on `X ×_{Spec A} T` and `t ∈ T`, the fibre
 conditions of the strata of Kleiman's Thm 4.8 (arXiv:math/0504020v1, pp. 28–30) with the plan's
