@@ -1,24 +1,14 @@
 """One entry point for native Lean work and the libraries' source tools."""
 import argparse
-import importlib
 import json
 import os
 from pathlib import Path
 import sys
 import tempfile
-import tomllib
 
 from . import __version__, build, local, resources
 
-LIBRARIES = {'Aglib': 'aglib', 'quillen-k-theory': 'quillen', 'Motivic': 'motivic'}
-
-
-def package_options(root):
-    lakefile = root / 'lakefile.toml'
-    package = tomllib.loads(lakefile.read_text()) if lakefile.is_file() else {}
-    family = LIBRARIES.get(package.get('name'))
-    return (importlib.import_module('.' + family, __package__).options(root)
-            if family else {'production': tuple(package.get('defaultTargets', ()))})
+from .library import LIBRARIES, options as package_options, main as library_main
 
 
 def run_command(args, package, config, environment):
@@ -50,13 +40,17 @@ def run_command(args, package, config, environment):
 def main(argv=None, *, root=None, production=(), check_targets=(), source_checks=None,
          resource_config=None, environment=None):
     arguments = list(sys.argv[1:] if argv is None else argv)
+    if arguments[:1] == ['cache']:
+        from .cache import main as cache_main
+        return cache_main(arguments[1:])
     if arguments[:1] and arguments[0] in LIBRARIES.values():
-        return importlib.import_module('.' + arguments[0], __package__).main(arguments[1:])
+        return library_main(arguments[0], arguments[1:])
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--version', action='version', version='lean-incremental-ci ' + __version__)
+    parser.add_argument('--version', action='version', version='lean-tools ' + __version__)
     sub = parser.add_subparsers(dest='action', required=True)
     check = sub.add_parser('check', help='native CI checks with compatible successes retained')
     compile_ = sub.add_parser('build', help='incremental native build or no-build mapping export')
+    cache = sub.add_parser('cache', help='scoped cache recovery shared by all libraries')
     run = sub.add_parser('run', help='one command using the existing resource implementation')
     for command in (check, compile_, run):
         command.add_argument('--root', type=Path, default=Path(root or '.'))

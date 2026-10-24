@@ -46,7 +46,7 @@ def check_layout(root: Path) -> tuple[list[str], int]:
     stale = stale_files(root)
     if stale:
         errors.append(f'Stale generated imports (missing enrollment or changed facade): {stale}; '
-                      'run lean-ci quillen imports')
+                      'run lean-tools quillen imports')
     graph = {}
     clients = downstream_sources(root)
     client_root = root / 'examples/downstream'

@@ -12,10 +12,10 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_ci.motivic.cache import cache_roots, main as cache_main
-from lean_ci.motivic import cache_bootstrap
-from lean_ci.motivic.repository import PINS, check_configuration, check_sources
-from lean_ci.motivic.sources import lean_imports
+from lean_tools.cache import cache_roots, main as cache_main
+from lean_tools import cache as cache_bootstrap
+from lean_tools.motivic.repository import PINS, check_configuration, check_sources
+from lean_tools.motivic.sources import lean_imports
 
 
 class RepositoryBoundaryTests(unittest.TestCase):
@@ -23,6 +23,7 @@ class RepositoryBoundaryTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
+        self.write('lakefile.toml', 'name = \"Motivic\"\n')
         self.write('Motivic.lean', 'public import Motivic.Core\n')
         self.write('Motivic/Core.lean', 'public import Mathlib.Algebra.Group.Basic\n')
         self.write('MotivicTest.lean', 'import MotivicTest.Client\n')
@@ -162,7 +163,7 @@ theorem bad : True := by sorry
     def test_lint_runtime_fetches_exact_cached_leaves_without_optional_support_roots(self):
         self.style_driver()
         argv = ['cache.py', '--root', str(self.root), '--lint-runtime', 'Motivic']
-        with patch.object(sys, 'argv', argv), patch('lean_ci.motivic.cache.subprocess.run',
+        with patch.object(sys, 'argv', argv), patch('lean_tools.cache.subprocess.run',
                 return_value=subprocess.CompletedProcess([], 0)) as run:
             self.assertEqual(cache_main(), 0)
         run.assert_called_once()
@@ -180,7 +181,7 @@ theorem bad : True := by sorry
             with self.subTest(flag=flag):
                 output = io.StringIO()
                 argv = ['cache.py', '--root', str(self.root), '--list', *flag, 'Motivic']
-                with patch.object(sys, 'argv', argv), patch('lean_ci.motivic.cache.subprocess.run') as run, \
+                with patch.object(sys, 'argv', argv), patch('lean_tools.cache.subprocess.run') as run, \
                         redirect_stdout(output):
                     self.assertEqual(cache_main(), 0)
                 run.assert_not_called()
@@ -233,11 +234,11 @@ class CacheBootstrapTests(unittest.TestCase):
         self.prepare()
         command = ['lake', 'exe', 'cache', 'get', 'Mathlib.Algebra.Group.Basic']
         receipt = self.root / 'receipt.json'
-        with patch('lean_ci.cli.main', return_value=17) as run:
+        with patch('lean_tools.cli.main', return_value=17) as run:
             self.assertEqual(cache_bootstrap.run(self.root, command, receipt), 17)
         self.assertEqual(run.call_args.args[0], ['run', '--root', str(self.root),
                          '--receipt', str(receipt), '--bootstrap-cache', '--', *command])
-        self.assertEqual(run.call_args.kwargs['resource_config'].prefix, 'MOTIVIC')
+        self.assertEqual(run.call_args.kwargs, {})
 
     def test_bootstrap_rejects_unscoped_foreign_or_option_commands(self):
         self.prepare()
@@ -252,7 +253,7 @@ class CacheBootstrapTests(unittest.TestCase):
     def test_guarded_cache_uses_focused_bootstrap_without_old_vendor_helpers(self):
         self.prepare()
         argv = ['--root', str(self.root), '--guarded', 'Motivic']
-        with patch('lean_ci.motivic.cache_bootstrap.run', return_value=5) as run:
+        with patch('lean_tools.cache.run', return_value=5) as run:
             self.assertEqual(cache_main(argv), 5)
         self.assertEqual(run.call_args.args[0], self.root.resolve())
         self.assertEqual(run.call_args.args[1], ['lake', 'exe', 'cache', 'get',

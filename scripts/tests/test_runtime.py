@@ -10,9 +10,9 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from lean_ci import build, resources
-from lean_ci.runtime import CommandFailed, RuntimeFailure, NativeRuntime, compiler_identity
-from lean_ci.state import TemporalInputs, read_json
+from lean_tools import build, resources
+from lean_tools.runtime import CommandFailed, RuntimeFailure, NativeRuntime, compiler_identity
+from lean_tools.state import TemporalInputs, read_json
 
 
 class ResourceTests(unittest.TestCase):
@@ -191,16 +191,16 @@ class ResourceTests(unittest.TestCase):
                     'state': 'completed', 'command': command, 'cwd': str(root),
                     'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True}))
                 return 0
-            with patch('lean_ci.runtime.resources.run', side_effect=guarded) as run, \
+            with patch('lean_tools.runtime.resources.run', side_effect=guarded) as run, \
                  patch.object(build, 'capped_toolchain') as capped, \
-                 patch('lean_ci.runtime.subprocess.check_output') as locator:
+                 patch('lean_tools.runtime.subprocess.check_output') as locator:
                 result = runtime.run(task, root / 'run')
                 run.assert_called_once()
                 capped.assert_not_called()
                 locator.assert_not_called()
             self.assertEqual(result['receipt']['command'], task['command'])
             self.assertEqual(set(result), {'receipt'})
-            with patch('lean_ci.runtime.resources.run') as run:
+            with patch('lean_tools.runtime.resources.run') as run:
                 with self.assertRaises(FileExistsError):
                     runtime.run(task, root / 'run')
                 run.assert_not_called()
@@ -219,7 +219,7 @@ class ResourceTests(unittest.TestCase):
                     value.update(override)
                     keywords['receipt'].write_text(json.dumps(value))
                     return code
-                with patch('lean_ci.runtime.resources.run', side_effect=guarded):
+                with patch('lean_tools.runtime.resources.run', side_effect=guarded):
                     with self.assertRaisesRegex(RuntimeFailure, 'guard/ownership evidence: source'):
                         NativeRuntime(root, environment={}).run(task, root / 'run')
 
@@ -235,11 +235,11 @@ class ResourceTests(unittest.TestCase):
                     keywords['receipt'].write_text(json.dumps(dict(state='completed', command=command,
                         cwd=str(root), exit_code=actual_exit, guard_failure=failure, owned_group_gone=True)))
                     return code
-                with patch('lean_ci.runtime.resources.run', side_effect=guarded), self.assertRaises(expected):
+                with patch('lean_tools.runtime.resources.run', side_effect=guarded), self.assertRaises(expected):
                     NativeRuntime(root, environment={}).run(task, root / 'run')
 
     def test_runtime_rejects_retired_task_kinds_before_launch(self):
-        with tempfile.TemporaryDirectory() as directory, patch('lean_ci.runtime.resources.run') as run:
+        with tempfile.TemporaryDirectory() as directory, patch('lean_tools.runtime.resources.run') as run:
             for kind in ('build', 'graph-build', 'environment', 'check'):
                 with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, 'direct process'):
                     NativeRuntime(directory).run({'kind': kind}, Path(directory) / kind)
@@ -273,14 +273,14 @@ class ResourceTests(unittest.TestCase):
     def test_managed_unknown_runtime_provenance_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
             environment = self.managed(directory)
-            with patch('lean_ci.runtime.subprocess.check_output') as locator:
+            with patch('lean_tools.runtime.subprocess.check_output') as locator:
                 with self.assertRaisesRegex(ValueError, 'Unsupported managed runtime'):
                     compiler_identity(directory, environment=environment,
                                       resource_config=resources.ResourceConfig(profile_keys=('PARENT_PROFILE',)))
                 locator.assert_not_called()
 
     def test_compiler_override_is_rejected_before_locator(self):
-        with patch('lean_ci.runtime.subprocess.check_output') as locator:
+        with patch('lean_tools.runtime.subprocess.check_output') as locator:
             with self.assertRaisesRegex(ValueError, 'LEAN_GITHASH'):
                 compiler_identity('.', environment={'LEAN_GITHASH': 'invented'})
             locator.assert_not_called()

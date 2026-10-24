@@ -33,7 +33,7 @@ class CheckScriptTests(unittest.TestCase):
                      'PYTHONPATH': '/unchanged/remote/profile', 'TRACE': str(root / 'trace')})
             self.assertEqual(result.returncode, 19)
             log = (root / 'trace').read_text()
-            self.assertIn('scripts/lean_ci/__main__.py check --root', log)
+            self.assertIn('scripts/lean_tools/__main__.py check --root', log)
             self.assertIn('--base accepted --source-only', log)
             self.assertTrue(log.rstrip().endswith('/unchanged/remote/profile'))
 

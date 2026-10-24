@@ -48,7 +48,7 @@ class RetryTests(NativeFixture):
         self.runtime.fail = None
 
     def test_fatal_runtime_or_cancellation_never_launches_later_audit(self):
-        from lean_ci.runtime import RuntimeFailure
+        from lean_tools.runtime import RuntimeFailure
         for reason in ('KeyboardInterrupt', 'owned process group unresolved'):
             with self.subTest(reason=reason):
                 def fail_at_lint(command):
@@ -62,8 +62,8 @@ class RetryTests(NativeFixture):
         self.runtime.callback = None
 
     def test_additional_source_policy_scope_is_guarded_through_export(self):
-        from lean_ci.local import SourceCheck
-        from lean_ci.state import InputDrift
+        from lean_tools.local import SourceCheck
+        from lean_tools.state import InputDrift
         client = self.root / 'examples/downstream'
         client.mkdir(parents=True)
         check = SourceCheck(CHECK, source_roots=(client,))
@@ -76,7 +76,7 @@ class RetryTests(NativeFixture):
         self.assertFalse(self.outputs.exists())
 
     def test_extra_source_added_after_policy_selection_is_in_initial_binding(self):
-        from lean_ci.local import SourceCheck
+        from lean_tools.local import SourceCheck
         client = self.root / 'examples/downstream'
         check = SourceCheck(CHECK, source_roots=(client,))
         client.mkdir(parents=True)
@@ -170,7 +170,7 @@ class RetryTests(NativeFixture):
         self.assertIn('axioms-Quartz', result['reused_checks'])
 
     def test_shared_source_parser_change_invalidates_source_guards_only(self):
-        parser = self.root / 'scripts/lean_ci/source.py'
+        parser = self.root / 'scripts/lean_tools/source.py'
         parser.parent.mkdir()
         parser.write_text('# original source grammar\n')
         self.check()

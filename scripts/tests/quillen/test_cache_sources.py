@@ -9,7 +9,7 @@ import sys
 import tempfile
 import unittest
 
-from lean_ci.quillen.cache_sources import mathlib_cache_roots, workspace_imports
+from lean_tools.cache import mathlib_cache_roots, workspace_imports
 
 
 
@@ -17,6 +17,7 @@ class CacheSourceTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(prefix='quillen-cache-sources-')
         self.root = Path(self.tmp.name)
+        self.write('lakefile.toml', 'name = \"quillen-k-theory\"\n')
         self.write('Quillen.lean', 'import Mathlib.Direct\n')
 
     def tearDown(self):

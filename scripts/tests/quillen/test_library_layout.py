@@ -6,9 +6,9 @@ import subprocess
 import sys
 import unittest
 
-from lean_ci.quillen.check_library_layout import check_layout, import_cycles
-from lean_ci.quillen.generate_imports import generated_files, stale_files
-from lean_ci.quillen.library_sources import lean_imports, uses_module_system
+from lean_tools.quillen.check_library_layout import check_layout, import_cycles
+from lean_tools.quillen.generate_imports import generated_files, stale_files
+from lean_tools.quillen.library_sources import lean_imports, uses_module_system
 
 
 
@@ -107,7 +107,7 @@ def s := "import QuillenTest.Bad"
         self.write('Quillen/Algebra/API/Leaf.lean', '')
         self.write('Quillen/Algebra/API.lean', 'import Quillen.Algebra.API.Leaf\n')
         self.write('Quillen/Algebra/Generated/Leaf.lean', '')
-        from lean_ci.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
+        from lean_tools.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
         self.write('Quillen/Algebra/Generated.lean', COPYRIGHT_HEADER + GENERATED_MARKER)
         self.generate()
         self.assertEqual(check_layout(self.root)[0], [])
@@ -120,7 +120,7 @@ def s := "import QuillenTest.Bad"
         self.assertEqual(check_layout(self.root)[0], [])
 
     def test_orphan_generator_marker_requires_a_corresponding_directory(self):
-        from lean_ci.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
+        from lean_tools.quillen.generate_imports import COPYRIGHT_HEADER, GENERATED_MARKER
         self.write('Quillen/Algebra/Orphan.lean', COPYRIGHT_HEADER + GENERATED_MARKER)
         self.generate()
         self.rejected('no corresponding directory')
@@ -203,7 +203,7 @@ def s := "import QuillenTest.Bad"
         original = (self.root / 'examples/downstream/Consumer.lean').read_bytes()
         for arguments in ([], ['--check']):
             result = subprocess.run(
-                [sys.executable, '-m', 'lean_ci', 'quillen', 'imports',
+                [sys.executable, '-m', 'lean_tools', 'quillen', 'imports',
                  '--root', str(self.root), *arguments], capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn('Consumer/NewClient.lean', result.stderr)

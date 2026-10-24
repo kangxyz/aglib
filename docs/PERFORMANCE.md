@@ -94,7 +94,7 @@ or Test failures collect independent axiom feedback and retain successful
 categories for the retry; they do not authorize a successful aggregate result.
 
 The active source, generator, cache and build implementations from all three
-libraries now live in one `lean_ci` distribution. Thin current callers select
+libraries now live in one `lean_tools` package. Thin current callers select
 that package instead of importing retired scripts or checking old helper hashes.
 The bounded regressions cover link activity during hashing/lint/reuse/export,
 real mutations, failed checks, cancellation and managed-profile preservation.

@@ -9,7 +9,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_ci.quillen import cache, main, options, resource_config
+from lean_tools import cache
+from lean_tools.library import options, resource_config
 
 
 class CommandTests(unittest.TestCase):
@@ -18,6 +19,10 @@ class CommandTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name).resolve()
         (self.root / 'Quillen').mkdir()
+        (self.root / 'lakefile.toml').write_text('name = \"quillen-k-theory\"\n')
+        provider = self.root / '.lake/packages/mathlib/Mathlib/Direct.lean'
+        provider.parent.mkdir(parents=True)
+        provider.write_text('module\n')
         (self.root / 'Quillen.lean').write_text('import Mathlib.Direct\n')
 
     def test_source_policy_inputs_are_package_implementations(self):
@@ -27,7 +32,7 @@ class CommandTests(unittest.TestCase):
         checks = policy['source_checks']
         self.assertEqual(len(checks), 2)
         for check in checks:
-            self.assertTrue(Path(check.command[1]).as_posix().endswith('/lean_ci/__main__.py'))
+            self.assertTrue(Path(check.command[1]).as_posix().endswith('/lean_tools/__main__.py'))
             self.assertIn(str(self.root), check.command)
             self.assertTrue(all(Path(path).is_file() for path in check.inputs))
             self.assertIn('source.py', [Path(path).name for path in check.inputs])
@@ -35,17 +40,15 @@ class CommandTests(unittest.TestCase):
         self.assertNotIn('generate_imports.py', [Path(path).name for path in checks[1].inputs])
 
     def test_empty_scoped_cache_never_falls_back_to_fetching_all_mathlib(self):
-        from lean_ci.quillen import cache
         from types import SimpleNamespace
         with patch.object(cache, 'workspace_imports', return_value=set()), \
                 patch.object(cache, 'mathlib_cache_roots', return_value=[]), \
                 patch.object(cache.subprocess, 'run', return_value=SimpleNamespace(returncode=0)) as run:
             self.assertEqual(cache.main(['--root', str(self.root)]), 2)
-        self.assertEqual(run.call_count, 1)
-        self.assertEqual(run.call_args.args[0], ['lake', 'resolve-deps'])
+        run.assert_not_called()
 
     def test_accepted_resource_variable_names_remain_compatible(self):
-        config = resource_config()
+        config = resource_config('quillen')
         self.assertEqual(config.prefix, 'QUILLEN')
         self.assertEqual(config.profile_keys, ('R5_LEAN_REMOTE_PROFILE',))
         self.assertEqual(config.value({'AGLIB_LEAN_MEMORY_MB': '1024'}, 'memory'), '1024')
@@ -55,25 +58,25 @@ class CommandTests(unittest.TestCase):
             self.assertEqual(command, ['lake', 'resolve-deps'])
             self.assertEqual(kwargs['cwd'], self.root)
             return subprocess.CompletedProcess(command, 0)
-        with patch('lean_ci.quillen.cache.subprocess.run', side_effect=resolve), \
-                patch('lean_ci.cli.main', return_value=19) as run, \
+        with patch('lean_tools.cache.subprocess.run', side_effect=resolve), \
+                patch('lean_tools.cli.main', return_value=19) as run, \
                 patch.dict(os.environ, QUILLEN_VERIFY_DIR=str(self.root / 'verify')):
-            self.assertEqual(cache.main(['--root', str(self.root), '--ci']), 19)
+            self.assertEqual(cache.main(['--root', str(self.root), '--resolve-deps', '--ci']), 19)
         self.assertEqual(run.call_args.args[0], ['run', '--root', str(self.root), '--receipt',
             str(self.root / 'verify-cache.json'), '--bootstrap-cache', '--',
             'lake', 'exe', 'cache', 'get', 'Mathlib.Direct'])
 
     def test_failed_resolution_stops_before_fetch(self):
-        with patch('lean_ci.quillen.cache.subprocess.run', return_value=subprocess.CompletedProcess([], 23)), \
-                patch('lean_ci.cli.main') as run:
-            self.assertEqual(cache.main(['--root', str(self.root), '--ci']), 23)
+        with patch('lean_tools.cache.subprocess.run', side_effect=subprocess.CalledProcessError(23, ['lake', 'resolve-deps'])), \
+                patch('lean_tools.cli.main') as run:
+            self.assertEqual(cache.main(['--root', str(self.root), '--resolve-deps', '--ci']), 23)
             run.assert_not_called()
 
     def test_existing_cache_receipt_is_not_overwritten(self):
         receipt = self.root / 'verify-cache.json'
         receipt.write_text('existing')
-        with patch('lean_ci.quillen.cache.subprocess.run', return_value=subprocess.CompletedProcess([], 0)), \
-                patch('lean_ci.cli.main') as run, \
+        with patch('lean_tools.cache.subprocess.run', return_value=subprocess.CompletedProcess([], 0)), \
+                patch('lean_tools.cli.main') as run, \
                 patch.dict(os.environ, QUILLEN_VERIFY_DIR=str(self.root / 'verify')), \
                 redirect_stderr(io.StringIO()):
             self.assertEqual(cache.main(['--root', str(self.root), '--ci']), 2)
@@ -83,10 +86,10 @@ class CommandTests(unittest.TestCase):
     def test_gitless_module_dispatch(self):
         (self.root / 'lakefile.toml').write_text('name = "quillen-k-theory"\ndefaultTargets = ["Quillen"]\n')
         for command in ('layout', 'placeholders'):
-            result = subprocess.run([sys.executable, '-m', 'lean_ci', 'quillen', command,
+            result = subprocess.run([sys.executable, '-m', 'lean_tools', 'quillen', command,
                                      '--root', str(self.root)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
-        result = subprocess.run([sys.executable, '-m', 'lean_ci', 'check', '--root',
+        result = subprocess.run([sys.executable, '-m', 'lean_tools', 'check', '--root',
                                  str(self.root), '--list'], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn('placeholders', result.stdout)

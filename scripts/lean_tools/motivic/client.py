@@ -66,11 +66,11 @@ def main(argv=None) -> int:
     if not receipts.is_absolute():
         receipts = root / receipts
     try:
-        from . import resource_config, runtime_environment
-        from lean_ci.build import build
+        from ..library import resource_config, runtime_environment
+        from lean_tools.build import build
         client = prepare(root)
         return build(client, ['MotivicClient'], receipts, rehash=True,
-                     config=resource_config(), environment=runtime_environment(), selection='module')
+                     config=resource_config('motivic'), environment=runtime_environment('motivic'), selection='module')
     except (OSError, ValueError) as error:
         print(f'Independent client build failed: {error}', file=sys.stderr)
         return 1

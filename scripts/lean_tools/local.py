@@ -197,7 +197,7 @@ def _checks(root, production, check_targets, source_checks, native, progress, di
     original_environment = dict(runtime.environment)
     source_helpers = [str(path) for path in sorted((root / 'scripts').glob('*.py'))
                       if not path.name.startswith('test_')]
-    parser = root / 'scripts/lean_ci/source.py'
+    parser = root / 'scripts/lean_tools/source.py'
     if parser.is_file():
         source_helpers.append(str(parser))
     counter = 0

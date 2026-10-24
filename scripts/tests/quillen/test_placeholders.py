@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from lean_ci.quillen.check_placeholders import check_placeholders
+from lean_tools.quillen.check_placeholders import check_placeholders
 
 
 class PlaceholderTests(unittest.TestCase):

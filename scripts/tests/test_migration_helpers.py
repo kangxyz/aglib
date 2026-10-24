@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import lean_ci.aglib.migration as helpers
+import lean_tools.aglib.migration as helpers
 
 REVISION = '189a8e779f0c68b2dfc6f8195daebb3e684a5905'
 
@@ -25,7 +25,7 @@ class MigrationHelperTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def inspect(self, revision=REVISION, sha256=None):
-        with patch('lean_ci.aglib.migration.subprocess.run', return_value=
+        with patch('lean_tools.aglib.migration.subprocess.run', return_value=
                    subprocess.CompletedProcess([], 0, REVISION + '\n', '')):
             return helpers.read_source('Quillen.Example', source_root=self.root,
                 expected_revision=revision, expected_sha256=sha256 or self.sha256)

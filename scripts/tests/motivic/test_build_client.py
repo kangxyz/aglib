@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from lean_ci.motivic.client import prepare
+from lean_tools.motivic.client import prepare
 
 
 class ClientBuildTests(unittest.TestCase):
@@ -73,12 +73,12 @@ path = "../.."
             prepare(self.root)
 
     def test_explicit_client_uses_shared_module_builder(self):
-        from lean_ci.motivic import client as build_client
+        from lean_tools.motivic import client as build_client
         from unittest.mock import patch
         receipt = self.root / 'receipt'
         with patch.object(sys, 'argv', ['build_client.py', '--root', str(self.root),
                                        '--receipt-dir', str(receipt)]), \
-                patch('lean_ci.build.build', return_value=9) as build:
+                patch('lean_tools.build.build', return_value=9) as build:
             self.assertEqual(build_client.main(), 9)
         self.assertEqual(build.call_args.args, (self.client, ['MotivicClient'], receipt))
         self.assertEqual(build.call_args.kwargs['selection'], 'module')

@@ -440,7 +440,7 @@ lake() {
 
     def test_lint_only_retries_one_timeout_and_preserves_final_status(self):
         lint = step('test_lint', 'Lint')
-        self.assertEqual(lint['timeout-minutes'], 25)
+        self.assertEqual(lint['timeout-minutes'], 45)
         self.assertTrue(lint['continue-on-error'])
         mock = r'''
 count=0
@@ -464,7 +464,7 @@ timeout() {
                         capture_output=True, text=True, check=False)
                     self.assertEqual(result.returncode, expected, result.stderr)
                     self.assertEqual(trace.read_text().splitlines(), [
-                        '--kill-after=30s 10m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint Aglib Quillen -- --trace'
+                        '--kill-after=30s 20m env LEAN_ABORT_ON_PANIC=1 lake --no-build lint Aglib Quillen -- --trace'
                     ] * attempts)
 
 

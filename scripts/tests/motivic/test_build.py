@@ -8,8 +8,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_ci.motivic.build import command
-from lean_ci.motivic import build as module_build
+from lean_tools.motivic.build import command
+from lean_tools.motivic import build as module_build
 
 
 
@@ -28,7 +28,7 @@ class BuildForwardingTests(unittest.TestCase):
             outputs = self.root / 'outputs.jsonl'
             argv = command(self.root, ['Motivic', 'MotivicTest'], self.root / 'receipts',
                            outputs=outputs, export_only=export)
-            self.assertEqual(argv[1:4], ['-m', 'lean_ci', 'build'])
+            self.assertEqual(argv[1:4], ['-m', 'lean_tools', 'build'])
             self.assertEqual(argv[-2:], ['Motivic', 'MotivicTest'])
             self.assertEqual('--export-only' in argv, export)
             self.assertEqual(argv[argv.index('--outputs') + 1], str(outputs))
@@ -36,7 +36,7 @@ class BuildForwardingTests(unittest.TestCase):
     def test_core_build_receives_semantic_names_and_module_selection(self):
         argv = ['--root', str(self.root), '--receipt-dir', str(self.root / 'receipts'),
                 '--rehash', 'Motivic', 'Motivic.Selected']
-        with patch('lean_ci.build.build', return_value=7) as build:
+        with patch('lean_tools.build.build', return_value=7) as build:
             self.assertEqual(module_build.main(argv), 7)
         args, kwargs = build.call_args
         self.assertEqual(args[1], ['Motivic', 'Motivic.Selected'])
@@ -49,9 +49,9 @@ class BuildForwardingTests(unittest.TestCase):
             yield dict(os.environ)
         argv = ['--root', str(self.root), '--receipt-dir', str(self.root / 'receipts'),
                 '--rehash', '--export-only', '--outputs', str(self.root / 'out.jsonl'), 'Motivic']
-        with patch('lean_ci.build.capped_toolchain', capped), \
-                patch('lean_ci.resources.limits', return_value={}), \
-                patch('lean_ci.resources.run', return_value=3) as run, patch('lean_ci.build.build') as build:
+        with patch('lean_tools.build.capped_toolchain', capped), \
+                patch('lean_tools.resources.limits', return_value={}), \
+                patch('lean_tools.resources.run', return_value=3) as run, patch('lean_tools.build.build') as build:
             self.assertEqual(module_build.main(argv), 3)
         build.assert_not_called()
         run.assert_called_once()
@@ -60,7 +60,7 @@ class BuildForwardingTests(unittest.TestCase):
 
     def test_rendered_selectors_are_rejected_before_shared_tooling_execution(self):
         argv = ['--root', str(self.root), '--receipt-dir', str(self.root / 'receipts'), '+Motivic']
-        with patch('lean_ci.build.build') as build, redirect_stderr(io.StringIO()):
+        with patch('lean_tools.build.build') as build, redirect_stderr(io.StringIO()):
             self.assertEqual(module_build.main(argv), 1)
         build.assert_not_called()
 

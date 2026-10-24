@@ -1,23 +1,27 @@
 # Lean development toolkit
 
 All shared implementations and library-specific tools live in one installable
-`lean_ci` package. Install it once from the selected Aglib checkout:
+`lean_tools` package. Install it once from the selected Aglib checkout:
 
 ```sh
 python3 -m pip install /absolute/path/to/aglib/scripts
-lean-ci check --root /absolute/package
-lean-ci build --root /absolute/package --state /absolute/fresh/build Module.Name
-lean-ci run --root /absolute/package --receipt /absolute/command.json -- COMMAND
+lean-tools check --root /absolute/package
+lean-tools build --root /absolute/package --state /absolute/fresh/build Module.Name
+lean-tools run --root /absolute/package --receipt /absolute/command.json -- COMMAND
 ```
 
 Python 3.11 or newer is required; the toolkit uses the standard library. An
 explicit source checkout also works with `PYTHONPATH=/absolute/aglib/scripts
-python3 -m lean_ci ...`. Existing `scripts/check.sh` and the downstream libraries'
+python3 -m lean_tools ...`. Existing `scripts/check.sh` and the downstream libraries'
 thin launchers select this same package. Explicit `LEAN_CI_TOOLING_ROOT` and
 `MOTIVIC_TOOLING_ROOT` selection remains supported. Migrated launchers require
-toolkit 0.3 or newer, so an older installation cannot silently omit library
+toolkit 0.3.1 or newer, so an older installation cannot silently omit library
 source policies. No second executor, cache
 scheduler, frozen request or script-hash approval protocol is retained.
+
+The console command is `lean-tools`; the existing `lean-ci` command is an alias
+to the same function. The distribution keeps the installation name
+`lean-incremental-ci` so existing installations can be upgraded in place.
 
 `check` selects Aglib, Quillen or Motivic policy from the package's Lake name;
 its explicit Python API still supports R5Lab and other callers. It uses the
@@ -29,6 +33,9 @@ successful final result. `--list` prints the commands, `--source-only` limits th
 request to existing source guards, and `--base`/`--head`, `--progress`, `--state`
 and `--outputs` retain their existing meanings. `--full` does not force rebuilding.
 Hosted cache transport and runner/job limits remain in the public workflow.
+Library selection and resource-variable aliases are data in `library.py`; all
+libraries share one check/build/run/cache implementation. The named subpackages
+contain their differing source-boundary rules and topic generators.
 
 `build` delegates one incremental graph to Lake, preserving matching compiled
 artifacts. `--no-build --outputs PATH` exports already available native mappings.
@@ -41,16 +48,22 @@ profiles retain the parent's admitted compiler and concurrency limits.
 
 | Command | Existing operation |
 | --- | --- |
-| `lean-ci aglib layout` | Aglib source graph, exports, import boundaries and cycles |
-| `lean-ci aglib layout --generate Aglib.Topic` | Generate one occupied topic; native `mathlib/mk_all` owns production roots |
-| `lean-ci aglib placeholders` / `policy` | Existing placeholder, source-safety, author and finite-heartbeat predicates |
-| `lean-ci quillen layout` / `placeholders` / `imports` | Quillen policy and unchanged topic generation |
-| `lean-ci quillen cache [MODULE...]` | Existing scoped Mathlib cache acquisition |
-| `lean-ci motivic repository` / `imports` / `cache` | Motivic policy, topic generation and scoped cache acquisition |
-| `lean-ci motivic build` / `client` | Explicit existing module/export and client helper requests |
+| `lean-tools aglib layout` | Aglib source graph, exports, import boundaries and cycles |
+| `lean-tools aglib layout --generate Aglib.Topic` | Generate one occupied topic; native `mathlib/mk_all` owns production roots |
+| `lean-tools aglib placeholders` / `policy` | Existing placeholder, source-safety, author and finite-heartbeat predicates |
+| `lean-tools quillen layout` / `placeholders` / `imports` | Quillen policy and unchanged topic generation |
+| `lean-tools cache --root PACKAGE [MODULE...]` | One scoped Mathlib cache implementation for every library |
+| `lean-tools motivic repository` / `imports` | Motivic policy and topic generation |
+| `lean-tools motivic build` / `client` | Explicit existing module/export and client helper requests |
+
+The existing `quillen cache`, `quillen cache-sources`, `motivic cache` and
+`motivic cache-bootstrap` command forms dispatch to the shared cache module.
+Dependency resolution runs only with `--resolve-deps`; prepared workspaces do
+not repeat it for every cache request. `--list` is read-only, `--guarded` uses
+the shared resource implementation, and empty scopes never request all Mathlib.
 
 Historical extraction inspection is the Python API
-`lean_ci.aglib.migration.read_source`; it still requires original source revision
+`lean_tools.aglib.migration.read_source`; it still requires original source revision
 and content hash. Retired extraction writers remain disabled. Historical
 performance records retain their original command names; current invocations
 are documented here.

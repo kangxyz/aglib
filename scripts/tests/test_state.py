@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_ci.state import Progress, TemporalInputs, arguments_match, digest, read_json, write_json
+from lean_tools.state import Progress, TemporalInputs, arguments_match, digest, read_json, write_json
 
 
 class GenericStateTests(unittest.TestCase):
@@ -51,8 +51,9 @@ class GenericStateTests(unittest.TestCase):
             original = path.read_bytes()
             current = deepcopy(old)
             current['execution']['implementation']['execution.py'] = 'repaired'
-            current['raw_inputs']['ci/lean_ci/execution.py'] = 'repaired'
-            with patch('lean_ci.state.read_json', wraps=read_json) as read:
+            current['raw_inputs'].pop('ci/lean_ci/execution.py')
+            current['raw_inputs']['scripts/lean_tools/execution.py'] = 'repaired'
+            with patch('lean_tools.state.read_json', wraps=read_json) as read:
                 self.assertEqual(progress.lookup(current), record)
                 self.assertEqual(progress.lookup(current), record)
             self.assertEqual(sum(Path(call.args[0]) == path for call in read.call_args_list), 1)

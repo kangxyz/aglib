@@ -7,8 +7,8 @@ import sys
 import tempfile
 import unittest
 
-from lean_ci.runtime import managed_mechanism
-from lean_ci.state import InputDrift, TemporalInputs
+from lean_tools.runtime import managed_mechanism
+from lean_tools.state import InputDrift, TemporalInputs
 
 
 class ManagedCompatibility(unittest.TestCase):

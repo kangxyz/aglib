@@ -4,15 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lean-incremental-ci"
-version = "0.3.0"
+version = "0.3.1"
 description = "Native Lean build, validation, cache and source tools"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
 
 [project.scripts]
-lean-ci = "lean_ci.cli:main"
+lean-tools = "lean_tools.cli:main"
+lean-ci = "lean_tools.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["lean_ci*"]
+include = ["lean_tools*"]

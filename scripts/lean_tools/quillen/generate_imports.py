@@ -159,7 +159,7 @@ def main(argv=None) -> int:
         stale = stale_files(args.root, args.modern_library)
         if stale:
             print('Stale generated imports: ' + ', '.join(map(str, stale))
-                  + '\nRun lean-ci quillen imports', file=sys.stderr)
+                  + '\nRun lean-tools quillen imports', file=sys.stderr)
             return 1
     else:
         # Recheck ownership before any writes: another editor may have created

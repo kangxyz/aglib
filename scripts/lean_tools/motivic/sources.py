@@ -6,7 +6,7 @@ kangxyz/aglib scripts/library_sources.py,
 revision c9863095f90b8bd312af807dbf0e378df82403b5, Apache-2.0.
 Copyright (c) 2026 Algebraic geometry contributors; Authors: kangxyz.
 The project inventory below is specific to Motivic; lexical grammar is shared
-through lean_ci.source.
+through lean_tools.source.
 """
 from pathlib import Path
 import re

@@ -13,10 +13,10 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from lean_ci import cli, local, resources
-from lean_ci.local import _prepare_auditor
-from lean_ci.runtime import CommandFailed
-from lean_ci.state import TemporalInputs, read_json, write_json
+from lean_tools import cli, local, resources
+from lean_tools.local import _prepare_auditor
+from lean_tools.runtime import CommandFailed
+from lean_tools.state import TemporalInputs, read_json, write_json
 
 
 CHECK = ('python3', 'scripts/check_sources.py')
@@ -114,8 +114,8 @@ class NativeFixture(unittest.TestCase):
         self.outputs = self.scratch / 'accepted.jsonl'
         self.actual_check_output = subprocess.check_output
         self.addCleanup(patch.stopall)
-        patch('lean_ci.local.subprocess.check_output', side_effect=self.check_output).start()
-        patch('lean_ci.local._prepare_auditor', side_effect=self.prepare_auditor).start()
+        patch('lean_tools.local.subprocess.check_output', side_effect=self.check_output).start()
+        patch('lean_tools.local._prepare_auditor', side_effect=self.prepare_auditor).start()
 
     def check_output(self, command, **kwargs):
         if command == ['lake', 'env', 'printenv', 'LEAN_PATH']:
@@ -254,7 +254,7 @@ class AuditorPreparationTests(NativeFixture):
     def test_prepared_upstream_auditor_uses_pinned_revision_and_native_build(self):
         tool = self.prepare_checkout()
         observations = TemporalInputs()
-        with patch('lean_ci.local.subprocess.check_output', side_effect=[local.AUDITOR_REVISION + '\n', b'']):
+        with patch('lean_tools.local.subprocess.check_output', side_effect=[local.AUDITOR_REVISION + '\n', b'']):
             result = _prepare_auditor(self.root, self.runtime, self.scratch / 'auditor', observations)
         self.assertEqual(result, self.auditor)
         self.assertEqual(self.runtime.calls, [['lake', '--rehash', 'build']])
@@ -262,7 +262,7 @@ class AuditorPreparationTests(NativeFixture):
 
     def test_dirty_pinned_auditor_sources_are_rejected(self):
         self.prepare_checkout()
-        with patch('lean_ci.local.subprocess.check_output',
+        with patch('lean_tools.local.subprocess.check_output',
                    side_effect=[local.AUDITOR_REVISION + '\n', b'AxiomAudit/Main.lean\n']):
             with self.assertRaisesRegex(ValueError, 'local modifications'):
                 _prepare_auditor(self.root, self.runtime, self.scratch / 'auditor', TemporalInputs())
@@ -270,7 +270,7 @@ class AuditorPreparationTests(NativeFixture):
 
     def test_wrong_auditor_revision_blocks_execution(self):
         self.prepare_checkout()
-        with patch('lean_ci.local.subprocess.check_output', return_value='0' * 40 + '\n'):
+        with patch('lean_tools.local.subprocess.check_output', return_value='0' * 40 + '\n'):
             with self.assertRaisesRegex(ValueError, 'revision'):
                 _prepare_auditor(self.root, self.runtime, self.scratch / 'auditor', TemporalInputs())
         self.assertEqual(self.runtime.calls, [])
@@ -279,7 +279,7 @@ class AuditorPreparationTests(NativeFixture):
         tool = self.prepare_checkout()
         (tool / 'lean-toolchain').write_text('wrong compiler\n')
         self.runtime.environment['LEAN_CI_AUDITOR_ROOT'] = str(tool)
-        with patch('lean_ci.local.subprocess.check_output', side_effect=[local.AUDITOR_REVISION + '\n', b'']):
+        with patch('lean_tools.local.subprocess.check_output', side_effect=[local.AUDITOR_REVISION + '\n', b'']):
             with self.assertRaisesRegex(ValueError, 'toolchain'):
                 _prepare_auditor(self.root, self.runtime, self.scratch / 'auditor', TemporalInputs())
         self.assertEqual(self.runtime.calls, [])

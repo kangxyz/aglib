@@ -6,11 +6,11 @@ import subprocess
 import sys
 import unittest
 
-from lean_ci.quillen.generate_imports import (
+from lean_tools.quillen.generate_imports import (
     COPYRIGHT_HEADER, GENERATED_MARKER, generated_files, render_imports, stale_files,
     source_authors,
 )
-from lean_ci.quillen.library_sources import (
+from lean_tools.quillen.library_sources import (
     is_import_surface, lean_imports, module_path, project_imports,
 )
 
@@ -240,7 +240,7 @@ class ImportGenerationTests(unittest.TestCase):
         # A marker mentioned elsewhere does not transfer ownership.
         facade.write_bytes(original + ('-- ' + GENERATED_MARKER).encode())
         original = facade.read_bytes()
-        result = subprocess.run([sys.executable, '-m', 'lean_ci', 'quillen', 'imports', '--root', str(self.root)],
+        result = subprocess.run([sys.executable, '-m', 'lean_tools', 'quillen', 'imports', '--root', str(self.root)],
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(facade.read_bytes(), original)

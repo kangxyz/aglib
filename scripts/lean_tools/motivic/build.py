@@ -23,7 +23,7 @@ def command(root: Path, targets: list[str], receipt_dir: Path,
         raise ValueError('At least one explicit build target is required')
     if export_only and outputs is None:
         raise ValueError('--export-only requires --outputs')
-    argv = [sys.executable, '-m', 'lean_ci', 'build', '--root', str(root), '--rehash',
+    argv = [sys.executable, '-m', 'lean_tools', 'build', '--root', str(root), '--rehash',
             '--receipt-dir', str(receipt_dir)]
     if outputs is not None:
         argv.extend(['--outputs', str(outputs)])
@@ -56,8 +56,8 @@ def main(argv=None) -> int:
             receipts.mkdir(parents=True, exist_ok=True)
             outputs.parent.mkdir(parents=True, exist_ok=True)
         from ..cli import main as native_main
-        from . import resource_config, runtime_environment
-        return native_main(argv[3:], resource_config=resource_config(), environment=runtime_environment())
+        from ..library import resource_config, runtime_environment
+        return native_main(argv[3:], resource_config=resource_config('motivic'), environment=runtime_environment('motivic'))
     except (OSError, ValueError) as error:
         print(f'Focused build failed: {error}', file=sys.stderr)
         return 1

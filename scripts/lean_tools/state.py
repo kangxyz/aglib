@@ -568,7 +568,7 @@ def check_inputs(binding):
         raw = value.get('raw_inputs')
         if isinstance(raw, dict) and value.get('reflective_imports') is not None:
             value['raw_inputs'] = {name: content for name, content in raw.items()
-                if not (isinstance(name, str) and Path(name).parent.name == 'lean_ci'
+                if not (isinstance(name, str) and Path(name).parent.name in {'lean_ci', 'lean_tools'}
                         and Path(name).name in implementation
                         and content == implementation[Path(name).name])}
     return value

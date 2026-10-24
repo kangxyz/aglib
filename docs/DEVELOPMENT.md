@@ -89,12 +89,12 @@ matching compilation artifacts. A cache hit is not mathematical acceptance.
 Keep writable checkout/dependency outputs owned by their actual writer; do not
 silently share mutable build directories across concurrent checkouts.
 
-The installed `lean-ci build` command delegates one selected incremental module
+The installed `lean-tools build` command delegates one selected incremental module
 graph to the shared package. For example:
 
 ```sh
-lean-ci build --root . --state /absolute/fresh/build Aglib.Module.Name
-lean-ci run --root . --receipt /absolute/command.json --capped-toolchain -- COMMAND
+lean-tools build --root . --state /absolute/fresh/build Aglib.Module.Name
+lean-tools run --root . --receipt /absolute/command.json --capped-toolchain -- COMMAND
 ```
 
 The package contains the source policies and library tools too; see

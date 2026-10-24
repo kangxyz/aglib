@@ -7,7 +7,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from lean_ci.state import (CheckInputs, InputDrift, Progress, ReflectionGraph, TemporalInputs,
+from lean_tools.state import (CheckInputs, InputDrift, Progress, ReflectionGraph, TemporalInputs,
                            check_binding, file_hash, write_json)
 
 
@@ -96,7 +96,7 @@ class ObservationIntervalTests(unittest.TestCase):
             value = file_hash(path)
             self.hardlink_roundtrip(path)
             return value
-        with patch('lean_ci.state.file_hash', side_effect=linked_hash):
+        with patch('lean_tools.state.file_hash', side_effect=linked_hash):
             expected = inputs.native_hash_file(self.artifact)
         inputs.assert_stable()
         self.assertEqual(inputs.native_hash_file(self.artifact), expected)
@@ -138,7 +138,7 @@ class ObservationIntervalTests(unittest.TestCase):
         one = self.inputs()
         expected = one.native_hash_file(self.artifact)
         two = self.inputs()
-        with patch('lean_ci.state.file_hash', side_effect=AssertionError('should reuse exact stamp')):
+        with patch('lean_tools.state.file_hash', side_effect=AssertionError('should reuse exact stamp')):
             self.assertEqual(two.native_hash_file(self.artifact), expected)
         self.assertEqual(two.native.hash_count, 0)
         observed = list(two.native.components)
@@ -293,7 +293,7 @@ class ObservationIntervalTests(unittest.TestCase):
         metadata_path = library / 'Quartz.ilean'
         self.hardlink_roundtrip(metadata_path)
         two = self.inputs()
-        with patch('lean_ci.state.read_json', wraps=lambda p: json.loads(Path(p).read_text())) as read:
+        with patch('lean_tools.state.read_json', wraps=lambda p: json.loads(Path(p).read_text())) as read:
             value = ReflectionGraph(self.root, [str(library)], toolchain, observations=two).node('Quartz')
         self.assertEqual(value['imports'], [])
         self.assertNotIn(metadata_path, [Path(call.args[0]) for call in read.call_args_list])
