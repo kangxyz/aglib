@@ -2424,6 +2424,9 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheaf
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheafEpi
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheafQuotient
+public import Aglib.AlgebraicGeometry.HilbertScheme.Divisor.ClosedHilbertScheme
+public import Aglib.AlgebraicGeometry.HilbertScheme.Divisor.Functor
+public import Aglib.AlgebraicGeometry.HilbertScheme.Divisor.Representability
 public import Aglib.AlgebraicGeometry.HilbertScheme.FieldCohomology
 public import Aglib.AlgebraicGeometry.HilbertScheme.FlatteningBridge
 public import Aglib.AlgebraicGeometry.HilbertScheme.FlatteningStratum
@@ -2438,6 +2441,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Family
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Fiber
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.GlobalGeneration
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Untwist
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.ClosedImmersion
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Functor
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.PointPullback
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.QuasiProjective
