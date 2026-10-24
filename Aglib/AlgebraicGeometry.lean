@@ -3489,6 +3489,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Proper.TraitSections
 public import Aglib.AlgebraicGeometry.Morphisms.Restrict.Agreement
 public import Aglib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant
 public import Aglib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant.OpenFactor
+public import Aglib.AlgebraicGeometry.Morphisms.Separated.Cover
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
@@ -3521,6 +3522,7 @@ public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.OriginalRepres
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.SheafClass
 public import Aglib.AlgebraicGeometry.Normalization.InertiaTorsor.UnramifiedExtension
 public import Aglib.AlgebraicGeometry.Normalization.Relative
+public import Aglib.AlgebraicGeometry.Picard.Abel.Basic
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
@@ -3534,6 +3536,7 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.RelativeCover
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Subsheaf
+public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Surjective
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Translation
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.FppfSections
@@ -3565,6 +3568,7 @@ public import Aglib.AlgebraicGeometry.Picard.Torsion
 public import Aglib.AlgebraicGeometry.Picard.TranslationLift
 public import Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor
 public import Aglib.AlgebraicGeometry.Picard.UnitDescent
+public import Aglib.AlgebraicGeometry.Picard.ZariskiSheaf
 public import Aglib.AlgebraicGeometry.Points.Closed
 public import Aglib.AlgebraicGeometry.Points.FiniteResidue
 public import Aglib.AlgebraicGeometry.Products.IntegerBase
@@ -3890,10 +3894,12 @@ public import Aglib.AlgebraicGeometry.Sites.EtaleSigmaSections
 public import Aglib.AlgebraicGeometry.Sites.EtaleSlice
 public import Aglib.AlgebraicGeometry.Sites.EtaleSliceTopology
 public import Aglib.AlgebraicGeometry.Sites.FppfCoveringPoints
+public import Aglib.AlgebraicGeometry.Sites.FppfQuotient
 public import Aglib.AlgebraicGeometry.Sites.GlobalSections
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Basic
+public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Fppf
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.GlueData
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.LocallyNoetherian
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.OpenSubscheme

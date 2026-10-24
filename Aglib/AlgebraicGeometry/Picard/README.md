@@ -131,7 +131,10 @@ Not yet proved here:
 
 - that premise under universal O-connectedness;
 - the bijectivity of `toFppfPicardSheaf` with a section (target 4 of the plan);
-- representability.
+- representability: the abstract quotient step (`Scheme.representableByOfFppfQuotient`,
+  [Sites/FppfQuotient](../Sites/FppfQuotient.lean)) and the Zariski sheaf input of the gluing
+  ([ZariskiSheaf](ZariskiSheaf.lean)) are proved; the instance for the strata and the gluing
+  remain.
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,
@@ -286,6 +289,34 @@ hypothesis of the construction of points of `Div^θ_X`), also from `fineConditio
 point (`Strata.subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_fineCondition_holds`, `f` flat).
 Kleiman, arXiv:math/0504020v1, p. 30: "Set `θ(n) := ψ(n) − φ₀(n)`. Plainly `Z` lies in
 `Hilb^θ_{X/S}(n)`".
+
+[FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
+`g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
+`map_mem_subfunctor_iff_of_surjective`), from `mem_subfunctor_iff` and `holdsAt_map`; no flatness.
+This is the descent hypothesis of `Scheme.representableByOfFppfQuotient` for `G =
+C.locallyNoetherianSubfunctor`.
+
+[Abel/Basic](Abel/Basic.lean): for an effective Cartier divisor `i : D ⟶ X`,
+`IsEffectiveCartier.idealLineBundle` is `I_D` as a line bundle; for a relative effective Cartier
+divisor and cartesian squares of the base and the divisor, the canonical comparison `b^* I_D ⟶
+I_{D'}` is an isomorphism (`IsRelativeEffectiveCartier.pullbackIdealLineBundleIso`, from
+`flatQuotient_idealPullbackMap_isIso`; Kleiman, remark after Def. 3.6, p. 23), with class form
+`pullbackClass_classOf_idealLineBundle`. For `D ⊆ X ×_S T` relative effective Cartier over `T` (an
+`IdealSheafData` of the literal `pullback p T.hom`), `RelativePicard.abelClass p D hD = −[I_D]`, the
+class of `𝒪_{X_T}(D) = I_D^∨` (`abelClass_eq_classOf_dualLineBundle`; Kleiman, Def. 4.6, p. 27).
+Naturality: `pullbackClass_abelClass` for any cartesian square `X ×_S T' ⟶ X ×_S T` over `T' ⟶ T`,
+and `familyPicardFunctor_map_abelClass` along `(familyScheme p).map g` with `D.comap ((familyScheme
+p).map g)` (`isPullback_familyScheme_map`, `isRelativeEffectiveCartier_comap_familyScheme_map`). The
+class in `Pic_{X/S,(fppf)}(T)` is `fppfAbelClass`, natural by `fppfPicardSheaf_map_fppfAbelClass`.
+No hypothesis on `p`. Sign convention as the curve-level `Scheme.Hom.abelClass`
+(EffectiveCartierDivisor/Relative/GraphLineBundle): classes of `𝒪(D)`. The natural transformation
+out of `Div^θ` (P7c) is not formed.
+
+[ZariskiSheaf](ZariskiSheaf.lean): `(fppfPicardSheaf p).obj ⋙ forget` is a sheaf for
+`Scheme.zariskiTopology.over S` (`isSheaf_zariskiTopology_fppfPicardSheaf_forget`), and its
+restriction to `Scheme.LocallyNoetherianOver S` satisfies the sheaf hypothesis of
+`SubfunctorCover.representableByGlued` (`isZariskiSheaf_fppfPicardSheaf_forget`). No hypothesis on
+`p`.
 
 [LinearSystem](LinearSystem/) gives the linear-system functor `LinSys_{L/X/S}` (Kleiman, Def. 3.12,
 p. 25, in ideal form: `I_D ≅ q_T^* N ⊗ g_T^* L^∨` for a line bundle `N` on `T`, so Kleiman's `N` is

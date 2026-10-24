@@ -48,3 +48,13 @@ given finitely presented qcqs model, with the original field comparison.
 The [generic-open theorem](GeometricallyIntegral/Open.md) concerns proper
 smooth relative curves over integral locally Noetherian bases and retains
 geometric integrality of every original fibre on the resulting open.
+
+[Separated/Cover](Separated/Cover.lean) proves that `f : P ⟶ S` is separated when opens `U i` cover
+`P`, each `U i ⟶ S` is separated, and any two `U i` are disjoint or both contained in a third
+(`isSeparated_of_cover_of_disjoint_or_le`; Kleiman, arXiv:math/0504020v1, proof of Thm 4.8, p. 28,
+contains the disjoint and the increasing cases). Special cases:
+`isSeparated_of_cover_of_pairwise_disjoint`, `isSeparated_of_cover_of_directed`, and the strata form
+`isSeparated_of_cover_of_disjoint_of_monotone` (disjoint in one index, increasing in a directed
+one). The proof checks that the range of the diagonal (an immersion) is closed, through the open
+immersions `U k ×_S U k ⟶ P ×_S P` (`Scheme.Pullback.range_map`). No finiteness or Noetherian
+hypothesis.
