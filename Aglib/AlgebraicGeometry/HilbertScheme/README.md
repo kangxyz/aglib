@@ -44,6 +44,8 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [UniversalSubschemePullback](UniversalSubschemePullback.lean) | `monomialEvaluation`, `directImageMonomialMap`, `epi_directImageMonomialMap`, `directImageQuotientMap_eq_comp`, `monomialEvaluationLift`, `IsHilbertFamily.evaluationIdeal_kernel_directImageQuotientMap`, `IsHilbertFamily.universalHilbertSubscheme_comap_grassmannianMap` | any `T` for the first four; `T` locally Noetherian, natural `r ≥ m` for the last two |
 | [PulledBackGrassmannianPoint](PulledBackGrassmannianPoint.lean) | `monomialEvaluation_comp_twistedRestriction_evaluationIdeal`, `comp_directImageQuotientMap_evaluationIdeal`, `IsHilbertFamily.grassmannianMap_eq_of_comap_universalHilbertSubscheme` | `K` quasi-coherent; `T` locally Noetherian for the last |
 | [Representability](Representability.lean) | `hilbertScheme`, `hilbertSchemeι`, `isImmersion_hilbertSchemeι`, `exists_lift_hilbertSchemeι_iff`, `universalHilbertFamily`, `locallyNoetherianHilbertFunctorRepresentableBy`, `locallyNoetherianGrassmannianNatTrans_app_injective`, `locallyNoetherianGrassmannianNatTrans_app_homEquiv` | `A` Noetherian, natural `r ≥ m` (injectivity: any `A`) |
+| [OpenSubfunctor](OpenSubfunctor.lean) | `containmentLocus`, `mem_containmentLocus`, `preimage_containmentLocus_eq_top_iff`, `openHilbertSubfunctor`, `mem_openHilbertSubfunctor_obj`, `isOpenOverSubfunctor_openHilbertSubfunctor`, `locallyNoetherianOpenHilbertSubfunctor`, `isOpenSubfunctor_locallyNoetherianOpenHilbertSubfunctor` | `[Finite ι]`, `U ⊆ P^n_A` open, any `T` over `Spec A`; no flatness of `Z`, no Noetherian hypothesis |
+| [OpenSubscheme](OpenSubscheme.lean) | `openHilbertSchemeOpens`, `mem_openHilbertSchemeOpens`, `openHilbertSchemeOver`, `openHilbertScheme`, `openHilbertSchemeι`, `isOpenImmersion_openHilbertSchemeι`, `isNoetherian_openHilbertScheme`, `preimage_openHilbertSchemeOpens_eq_top_iff`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy_homEquiv_coe`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy_homEquiv_id_coe` | `A` Noetherian, `e : ι ≃ Fin (n + 1)`, natural `r ≥ m`, `U ⊆ P^n_A` open |
 
 **The functor.** `IsHilbertFamily ι Φ g Z` asks a closed subscheme `Z ⊆ P^n_A ×_{Spec A} T` to be
 flat over `T` (Mathlib's `Flat` of `Z ⟶ T`; equivalently `𝒪_Z` is relatively flat,
@@ -139,8 +141,9 @@ of the universal subscheme `Z_univ` over the Noetherian Grassmannian `G` of rank
 quotients of `𝒪^N`, `N = (n + r).choose r`; it is a locally closed subscheme of `G`
 (`isImmersion_hilbertSchemeι`) and Noetherian (`isNoetherian_hilbertScheme`). It represents the
 Hilbert functor on locally Noetherian test schemes (`locallyNoetherianHilbertFunctorRepresentableBy`),
-with universal family `Z_univ|_{G_Φ}` (`universalHilbertFamily`). This is Nitsure, §5, p. 27,
-Theorem 5.3 with `X = P^n_A` and `E = 𝒪`, through the proof of Theorem 5.2 (p. 24), with the test
+with universal family `Z_univ|_{G_Φ}` (`universalHilbertFamily`). This is Nitsure, §5,
+Theorem 5.3 (p. 24; the locally closed form is reached on p. 27) with `X = P^n_A` and `E = 𝒪`,
+through the proof of Theorem 5.2 (p. 24), with the test
 schemes of §1, pp. 3–4; projectivity is not claimed. "⇒": `Z = Z_univ.comap φ_Z`
 (`IsHilbertFamily.universalHilbertSubscheme_comap_grassmannianMap`), since `Z(ker q_Z) = Z` by
 relative global generation of `I_Z(r)` and the epimorphism `𝒪^{monomials} ⟶ π_*(𝒪(r) ⊗ 𝒪)`
@@ -152,6 +155,26 @@ an isomorphism. Nitsure states the representing property "by its construction" (
 equal-rank argument supplies it. The Grassmannian points are injective for every ring `A`
 (`locallyNoetherianGrassmannianNatTrans_app_injective`) and correspond to `G_Φ ⟶ G` under the
 representing isomorphism (`locallyNoetherianGrassmannianNatTrans_app_homEquiv`).
+
+**Open subschemes of `P^n_A`.** For an open `U ⊆ P^n_A` and `g : T ⟶ Spec A`, a closed subscheme
+`Z ⊆ P^n_A ×_{Spec A} T` lies in `U_T` when every point of its support maps into `U`. For finite
+`ι` this is an open and universal condition on `T`: `containmentLocus ι g Z U` is the complement
+of the image of the closed set `Z ∖ U_T` under the proper projection to `T`
+(`Scheme.Hom.complImage`, [Morphisms/UniversallyClosed/ImageComplement](../Morphisms/UniversallyClosed/ImageComplement.lean)),
+and `f : T' ⟶ T` over `Spec A` factors through it exactly when the pullback of `Z` lies in
+`U_{T'}` (`preimage_containmentLocus_eq_top_iff`; images commute with base change on points,
+Stacks 01JT). No flatness and no Noetherian hypothesis is used. Hence the subfunctor `Hilb^Φ_U`
+of the families contained in `U` (`openHilbertSubfunctor`, on all schemes over `Spec A`) is open
+(`isOpenOverSubfunctor_openHilbertSubfunctor`; Stacks 01JI), also on locally Noetherian test
+schemes. For a Noetherian `A` it is represented on locally Noetherian test schemes by the open
+subscheme `G_Φ^U = openHilbertScheme ι n e A Φ r U` of `G_Φ` over which the universal family lies
+in `U` (`locallyNoetherianOpenHilbertSubfunctorRepresentableBy`), with universal family the
+restriction of `universalHilbertFamily`; `openHilbertSchemeι` is an open immersion and `G_Φ^U` is
+Noetherian. This is Nitsure, §6, p. 28, Exercise A for `π : P^n_A ×_{Spec A} G_Φ ⟶ G_Φ`,
+`Y = (P^n_A ∖ U)_{G_Φ}` and `F = 𝒪_W`, the openness step of the proof of Theorem 6.1; the
+representation is the restriction of `locallyNoetherianHilbertFunctorRepresentableBy` to an open
+subscheme (`Scheme.LocalRepresentability.representableByRestrictOpens`,
+[Sites/OverRepresentability/OpenSubscheme](../Sites/OverRepresentability/OpenSubscheme.lean)).
 
 **Lower owners.** The general helpers of this family live in sibling leaves:
 [IdealSheaf/QuotientModule](../IdealSheaf/QuotientModule.lean),
@@ -193,6 +216,8 @@ representing isomorphism (`locallyNoetherianGrassmannianNatTrans_app_homEquiv`).
 and the Grassmannian leaves [Kernel](../../RingTheory/Grassmannian/Kernel.lean),
 [MapCriterion](../../RingTheory/Grassmannian/MapCriterion.lean) and
 [LinearEquiv](../../RingTheory/Grassmannian/LinearEquiv.lean).
+The open step uses [Morphisms/UniversallyClosed/ImageComplement](../Morphisms/UniversallyClosed/ImageComplement.lean)
+and [Sites/OverRepresentability/OpenSubscheme](../Sites/OverRepresentability/OpenSubscheme.lean).
 
 [QuasiProjective](QuasiProjective.lean): over a Noetherian ring the Hilbert scheme of `P^n_A` is
 H-quasi-projective over `Spec A` (`ProjectiveSpace.isHQuasiProjective_hilbertSchemeOver_hom`), as a
@@ -202,7 +227,10 @@ locally closed subscheme of the H-projective Grassmannian; hence separated and o
 
 The following are not formalized. The list is an inventory, not a proof.
 
-- **Projectivity of `G_Φ`** (Nitsure's valuative-criterion step, §5, pp. 26–27), which would make
+- **Projectivity of `G_Φ`** (Nitsure's valuative-criterion step, §5, p. 27), which would make
   the Hilbert scheme projective over `Spec A`; optional for representability.
-- **The open subfunctors of Theorem 6.1** (§6): Hilbert and Quot schemes of locally closed
-  `X ⊂ P^N_A` as open subschemes of those of `P^N_A`.
+- **The remaining subfunctors of Theorem 6.1** (§6): the open step for an open `U ⊆ P^N_A` is
+  `HilbertScheme/OpenSubscheme` (with `Hilb^Φ_U` the subfunctor of families contained in `U`).
+  Open: the identification of `Hilb^Φ_U` with the Hilbert functor of `U` itself (a closed
+  subscheme of `U_T`, proper over `T`, is closed in `P^N_T`; Exercise B, p. 28), the closed step
+  for `C ⊆ P^N_A`, the locally closed combination, and quasi-projectivity.

@@ -3050,6 +3050,8 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.Injectivity
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianFunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianPoint
 public import Aglib.AlgebraicGeometry.HilbertScheme.Naturality
+public import Aglib.AlgebraicGeometry.HilbertScheme.OpenSubfunctor
+public import Aglib.AlgebraicGeometry.HilbertScheme.OpenSubscheme
 public import Aglib.AlgebraicGeometry.HilbertScheme.Point
 public import Aglib.AlgebraicGeometry.HilbertScheme.PulledBackGrassmannianPoint
 public import Aglib.AlgebraicGeometry.HilbertScheme.QuasiProjective
@@ -4077,6 +4079,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.StandardEtaleChart
 public import Aglib.AlgebraicGeometry.Morphisms.SpreadingOut
 public import Aglib.AlgebraicGeometry.Morphisms.Surjective.GenericPoint
+public import Aglib.AlgebraicGeometry.Morphisms.UniversallyClosed.ImageComplement
 public import Aglib.AlgebraicGeometry.Normalization.DenseOpen
 public import Aglib.AlgebraicGeometry.Normalization.FunctionField
 public import Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Basic
@@ -4458,6 +4461,7 @@ public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Basic
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.GlueData
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.LocallyNoetherian
+public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.OpenSubscheme
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Representable
 public import Aglib.AlgebraicGeometry.Sites.ZariskiEtale
 public import Aglib.AlgebraicGeometry.Spec.CompletionLocalRing

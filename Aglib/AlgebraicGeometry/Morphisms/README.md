@@ -20,6 +20,14 @@ affine bases, proper surjective modifications finite over finite projective
 products. The separate cohomology family consumes these actual maps to prove
 proper coherent finiteness.
 
+[ImageComplement](UniversallyClosed/ImageComplement.lean) gives, for a universally closed
+`f : X ⟶ Y` and a closed `C ⊆ X`, the open complement `f.complImage C` of `f(C)`: the points over
+which `C` is empty, universal for base change (`Scheme.preimage_complImage_eq_top_iff_of_isPullback`;
+Stacks 01JT). For `i : X ⟶ W` and an open `O ⊆ W` it is the open locus where the fibres of `f`
+map into `O`, universal for "the base change maps into `O`"
+(`Scheme.preimage_complImage_compl_preimage_eq_top_iff_of_isPullback`). No flatness or
+Noetherian hypothesis is used.
+
 [Integral generic lifts](Integral/GenericSection.md) extend a specified
 generic lift through an integral morphism uniquely from a normal integral
 scheme. The actual extension preserves both original structural and generic

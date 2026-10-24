@@ -24,8 +24,9 @@ It represents the Hilbert functor of `P^n_A` on locally Noetherian test schemes
 (`locallyNoetherianHilbertFunctorRepresentableBy`), with universal family the restriction of
 `Z_univ` to `G_Φ` (`universalHilbertFamily`).
 
-This is Nitsure, *Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1, §5, p. 27,
-Theorem 5.3 for `X = P^n_A` and `E = 𝒪` (trivial `V` and `W`), through the proof of Theorem 5.2
+This is Nitsure, *Construction of Hilbert and Quot schemes*, arXiv:math/0504590v1, §5,
+Theorem 5.3 (p. 24; the locally closed form is reached on p. 27) for `X = P^n_A` and `E = 𝒪`
+(trivial `V` and `W`), through the proof of Theorem 5.2
 (p. 24, pp. 25–27), with the test schemes of §1, pp. 3–4, the Grassmannian and the
 flattening stratification of §4 (Theorem 4.3, `FlatteningStratification/Global`) over the
 Noetherian base `G`, and with locally Noetherian test schemes:
@@ -283,8 +284,9 @@ theorem map_universalHilbertPoint_surjective
   exact congrArg (universalHilbertSubscheme ι r ⌊Φ.eval (r : ℚ)⌋₊ n e).comap
     (baseChangeMap_congr ι _ _ hh _ _)
 
-/-- **Representability of the Hilbert functor** (Nitsure, arXiv:math/0504590v1, §5, p. 27,
-Theorem 5.3 for `X = P^n_A` and `E = 𝒪`, through the proof of Theorem 5.2, up to projectivity):
+/-- **Representability of the Hilbert functor** (Nitsure, arXiv:math/0504590v1, §5,
+Theorem 5.3, p. 24, in the locally closed form reached on p. 27, for `X = P^n_A` and `E = 𝒪`,
+through the proof of Theorem 5.2, up to projectivity):
 for a Noetherian ring `A`,
 `ι ≃ Fin (n + 1)`, `Φ ∈ ℚ[X]` and a natural `r ≥ hilbertRegularityBound n Φ`, the Hilbert functor
 of `P^n_A` on locally Noetherian test schemes over `Spec A` is represented by the Hilbert scheme
