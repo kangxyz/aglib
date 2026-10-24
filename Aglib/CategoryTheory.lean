@@ -111,6 +111,7 @@ public import Aglib.CategoryTheory.Linear.Opposite
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Localization.SerreKernel
+public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
@@ -120,6 +121,7 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj
 public import Aglib.CategoryTheory.ObjectProperty.RepresentableBy
+public import Aglib.CategoryTheory.ObjectProperty.RepresentableByAdjunction
 public import Aglib.CategoryTheory.ObjectProperty.Yoneda
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport
@@ -146,6 +148,7 @@ public import Aglib.CategoryTheory.Sites.Hypercohomology.RepresentableTransfer
 public import Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Terminal
 public import Aglib.CategoryTheory.Sites.Linear
+public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
 public import Aglib.CategoryTheory.Sites.PushforwardSections

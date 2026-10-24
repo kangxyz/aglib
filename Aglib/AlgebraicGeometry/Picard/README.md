@@ -90,9 +90,55 @@ identity component (Kleiman, Prop. 5.3, p. 37), through
 `familyPicardFunctorBaseChangeIso p g : familyPicardFunctor p' ≅ (Over.map g).op ⋙ familyPicardFunctor p`,
 and the compatibility with the base pullbacks
 `basePullback_comp_familyPicardFunctorBaseChangeIso_hom` (Kleiman, Ex. 4.4, p. 27, Answer 4.4, p.
-65, presheaf level). Consumer: the planned fppf base change
-`Pic_{X_{S'}/S',(fppf)} ≅ (Over.map g)^* Pic_{X/S,(fppf)}` (plan row F18, base-change step of target
-6).
+65, presheaf level). Consumer: the fppf base change [BaseChange](BaseChange.lean).
+
+[BaseChange](BaseChange.lean), imported as `Aglib.AlgebraicGeometry.Picard.BaseChange`, has no
+hypothesis: for `g : S' ⟶ S` and `p' := pullback.snd p g`,
+`fppfPicardSheafBaseChangeIso p g : (fppfPicardSheaf p').obj ≅ (Over.map g).op ⋙ (fppfPicardSheaf p).obj`
+(`Pic_{X'/S',(fppf)}(T) ≅ Pic_{X/S,(fppf)}(T)` naturally in the `S'`-scheme `T`), the same
+isomorphism of fppf sheaves `fppfPicardSheafBaseChangeSheafIso p g` with target Mathlib's
+`Functor.sheafPushforwardContinuous` along `Over.map g`, and the base change of the relative Picard
+functors `relativePicardFunctorBaseChangeIso p g`, induced by `familyPicardFunctorBaseChangeIso`.
+The sheafified step is Mathlib's `Functor.pushforwardContinuousSheafificationCompatibility` (the
+pointwise Kan-extension and both `HasWeakSheafify` instances are found by instance search for
+`AddCommGrpCat.{u + 1}`), between the identifications `fppfFamilyPicardSheafIso` for `p` and `p'`;
+the continuity and cocontinuity it needs are the correspondence of coverings, recorded as
+`fppf_functorPushforward_over_map_mem_iff` (a family of `S'`-schemes covers if and only if it covers
+over `S`; the reason Kleiman gives, in Answer 4.4, p. 65, for the identification that "holds
+essentially by definition"). Compatibility with the units:
+`toFppfPicardSheaf_comp_fppfPicardSheafBaseChangeIso_hom` (relative functors),
+`quotientProjection_comp_toFppfPicardSheaf_comp_fppfPicardSheafBaseChangeIso_hom` (family functors)
+and, on the class of a line bundle, `fppfPicardSheafBaseChangeIso_hom_app_toFppfPicardSheaf_mk`.
+Naturality: `fppfPicardSheafBaseChangeIso_hom_naturality` and
+`fppfPicardSheafBaseChangeIso_hom_app_map_apply`. For `i : T₀ ⟶ T` over `S'`,
+`fppfPicardSheafBaseChangeKerAddEquiv p g i` identifies the kernels of the restrictions along `i`
+and along `(Over.map g).map i` (`fppfPicardSheafBaseChangeKerAddEquiv_apply_coe`). Kleiman, Ex. 4.4,
+p. 27, Answer 4.4, p. 65. Consumer: the tangent-space comparison of target 6 at `Spec K[ε]` and
+`Spec K`.
+
+[BaseChangeRepresentableBy](BaseChangeRepresentableBy.lean), imported as
+`Aglib.AlgebraicGeometry.Picard.BaseChangeRepresentableBy`: for `S'` locally Noetherian, any `p`,
+and a representation `e` of `Pic_{X/S,(fppf)}` on locally Noetherian test schemes by `P` locally of
+finite type over `S` (an explicit argument; no hypothesis on `S`),
+`baseChangeRepresentableBy p g P e` represents `Pic_{X'/S',(fppf)}` on locally Noetherian
+`S'`-schemes by `LocallyNoetherianOver.baseChange g P`, the object `(Over.pullback g).obj P.obj`
+(`P ×_S S'`;
+[Properties/Noetherian/LocallyNoetherianOverBaseChange](../Properties/Noetherian/LocallyNoetherianOverBaseChange.lean)).
+Its bijection (`baseChangeRepresentableBy_homEquiv`) is Mathlib's `Over.mapPullbackAdj g`, then `e`
+at the `S`-scheme `T` (`LocallyNoetherianOver.map g`, which keeps the scheme), then the inverse of
+`fppfPicardSheafBaseChangeIso p g`. Built from the generic
+`ObjectProperty.representableByLiftOfAdjunction`. Kleiman, Ex. 4.4, p. 27, Answer 4.4, p. 65.
+Consumer: the instantiation of target 6.
+
+[BaseChangeGroupLaw](BaseChangeGroupLaw.lean), imported as
+`Aglib.AlgebraicGeometry.Picard.BaseChangeGroupLaw`: for `S` and `S'` locally Noetherian, the group
+law of `P ×_S S'` as the scheme representing `Pic_{X'/S',(fppf)}` (`picardCommGrpObj` for
+`baseChangeRepresentableBy p g P e`) is the base change of the group law of `P`, Mathlib's
+`Functor.grpObjObj` for `Over.pullback g`, i.e. the group law of `(Over.pullback g).mapGrp` and of
+`groupSchemeBaseChange g` (`picardCommGrpObj_baseChange_toGrpObj`). The base-changed law makes the
+representation additive (`baseChangeRepresentableBy_homEquiv_mul`), by the multiplicativity of the
+adjunction bijection (`Adjunction.homEquiv_symm_mul`); the two laws agree at the test scheme
+`(P ×_S S') ×_{S'} (P ×_S S')`, locally of finite type over `S'`.
 
 [FiberCondition/Subsheaf](FiberCondition/Subsheaf.lean) and
 [FiberCondition/OpenSubfunctor](FiberCondition/OpenSubfunctor.lean) give the generic

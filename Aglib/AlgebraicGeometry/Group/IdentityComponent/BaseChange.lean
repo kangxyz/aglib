@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOverBaseChange
 
 /-!
 # The identity component under field extension
@@ -36,11 +37,6 @@ open scoped CategoryTheory.MonObj CategoryTheory.Obj
 namespace AlgebraicGeometry.Scheme.Group
 
 universe u
-
-/-- The base change of a scheme locally of finite type is locally of finite type. -/
-instance locallyOfFiniteType_pullback_obj_hom {S T : Scheme.{u}} (f : T ⟶ S) (X : Over S)
-    [LocallyOfFiniteType X.hom] : LocallyOfFiniteType ((Over.pullback f).obj X).hom :=
-  inferInstanceAs (LocallyOfFiniteType (pullback.snd X.hom f))
 
 variable {k : Type u} [Field k] (G : Over (Spec (.of k))) [MonObj G] (K : Type u) [Field K]
   [Algebra k K]

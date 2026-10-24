@@ -3541,6 +3541,9 @@ public import Aglib.AlgebraicGeometry.Normalization.Relative
 public import Aglib.AlgebraicGeometry.Picard.Abel.Basic
 public import Aglib.AlgebraicGeometry.Picard.Abel.Divisor
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+public import Aglib.AlgebraicGeometry.Picard.BaseChange
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeGroupLaw
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeRepresentableBy
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
 public import Aglib.AlgebraicGeometry.Picard.Comparison.GluingDescent
@@ -3773,6 +3776,7 @@ public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOverBaseChange
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyOfFiniteTypeOver
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine

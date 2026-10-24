@@ -4170,6 +4170,9 @@ public import Aglib.AlgebraicGeometry.Normalization.Relative
 public import Aglib.AlgebraicGeometry.Picard.Abel.Basic
 public import Aglib.AlgebraicGeometry.Picard.Abel.Divisor
 public import Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+public import Aglib.AlgebraicGeometry.Picard.BaseChange
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeGroupLaw
+public import Aglib.AlgebraicGeometry.Picard.BaseChangeRepresentableBy
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Endomorphisms
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Gluing
 public import Aglib.AlgebraicGeometry.Picard.Comparison.GluingDescent
@@ -4403,6 +4406,7 @@ public import Aglib.AlgebraicGeometry.Properties.Noetherian.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.EquivalenceRelation
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyConnected
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOver
+public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyNoetherianOverBaseChange
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.LocallyOfFiniteTypeOver
 public import Aglib.AlgebraicGeometry.Properties.Noetherian.Yoneda
 public import Aglib.AlgebraicGeometry.Properties.Normal.Affine
@@ -4865,6 +4869,7 @@ public import Aglib.CategoryTheory.Linear.Opposite
 public import Aglib.CategoryTheory.Localization.Approximation
 public import Aglib.CategoryTheory.Localization.Monoidal.Induced
 public import Aglib.CategoryTheory.Localization.SerreKernel
+public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
@@ -4874,6 +4879,7 @@ public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj
 public import Aglib.CategoryTheory.ObjectProperty.RepresentableBy
+public import Aglib.CategoryTheory.ObjectProperty.RepresentableByAdjunction
 public import Aglib.CategoryTheory.ObjectProperty.Yoneda
 public import Aglib.CategoryTheory.Pi.Abelian
 public import Aglib.CategoryTheory.Pi.FiniteSupport
@@ -4900,6 +4906,7 @@ public import Aglib.CategoryTheory.Sites.Hypercohomology.RepresentableTransfer
 public import Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Terminal
 public import Aglib.CategoryTheory.Sites.Linear
+public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
 public import Aglib.CategoryTheory.Sites.PushforwardSections

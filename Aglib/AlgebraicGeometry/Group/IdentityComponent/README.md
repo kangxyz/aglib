@@ -31,7 +31,8 @@ CategoryTheory.Obj`; definitionally the structure of
 is the preimage of `G⁰` (Kleiman Lemma 5.1(3), p. 37), `isPullback_preimage_identityComponent`
 identifies that preimage with `(G⁰)_K`, and `pullback_fst_unitPoint` says that the unit point lies
 over the unit point. `pullbackIdentityComponentIso` is the resulting isomorphism of schemes `(G⁰)_K
-≅ (G_K)⁰`. The instance `locallyOfFiniteType_pullback_obj_hom` is general.
+≅ (G_K)⁰`. The general instance `Scheme.locallyOfFiniteType_over_pullback_obj_hom` is in
+[Properties/Noetherian/LocallyNoetherianOverBaseChange](../../Properties/Noetherian/LocallyNoetherianOverBaseChange.lean).
 
 Not covered: irreducibility over `k̄` (Stacks 0B7Q), quasi-compactness (Stacks 0B7P), finite type,
 geometric irreducibility, the group compatibility of `(G⁰)_K ≅ (G_K)⁰`, and the Picard

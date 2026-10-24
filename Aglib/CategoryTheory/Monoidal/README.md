@@ -25,3 +25,11 @@ axiom of `H` is that of `G` after cancelling `j`. It imports only Mathlib. Consu
 `CategoryTheory.monObjOfJointDetection`
 ([JointDetection](../../AlgebraicGeometry/GrothendieckExistence/Algebraization/JointDetection.lean))
 treats jointly detecting families; `MonObj.ofMono` is its one-element case.
+
+[AdjunctionHomMulEquiv](AdjunctionHomMulEquiv.lean), imported as
+`Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv`: for cartesian monoidal `C`, `D`, an
+adjunction `adj : L ⊣ R` with `R` monoidal and a monoid object `M` of `D`, the adjunction bijection
+is an isomorphism of monoids `adj.homMulEquiv T : (L T ⟶ M) ≃* (T ⟶ R M)` for the monoid object
+`R.obj M` of Mathlib's `Functor.monObjObj` (`Adjunction.homEquiv_mul`, `Adjunction.homEquiv_one`,
+`Adjunction.homEquiv_symm_mul`). It imports only Mathlib. Consumer:
+[Picard/BaseChangeGroupLaw](../../AlgebraicGeometry/Picard/BaseChangeGroupLaw.lean).

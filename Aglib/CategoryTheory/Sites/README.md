@@ -10,3 +10,12 @@ Main results are split-cover positive-degree exactness, actual coefficient/inter
 actual descent action from an adjunction and a supplied representation of the
 restricted presheaf. The unit and associativity equations follow from the
 adjunction triangles. Existence of the representing object remains an input.
+
+[OverMapCovering](OverMapCovering.lean): for a Grothendieck topology `J` on `C` and `f : X ⟶ Y`, a
+sieve `R` on `U : Over X` covers for `J.over X` if and only if `R.functorPushforward (Over.map f)`
+covers for `J.over Y` (`GrothendieckTopology.functorPushforward_over_map_mem_iff`), and a sieve on
+`(Over.map f).obj U` covers if and only if its preimage under `Over.map f` does
+(`GrothendieckTopology.functorPullback_over_map_mem_iff`); both say that the generated sieve of
+`U.left` covers for `J`. These are the two directions behind Mathlib's continuity and cocontinuity
+instances of `Over.map f`. Consumer:
+[Picard/BaseChange](../../AlgebraicGeometry/Picard/BaseChange.lean).

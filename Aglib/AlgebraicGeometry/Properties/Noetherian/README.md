@@ -42,6 +42,16 @@ representations `Scheme.LocallyNoetherianOver.representableByLocallyOfFiniteType
 group law of
 [Sites/OverRepresentability/CommGrpObj](../../Sites/OverRepresentability/CommGrpObj.lean).
 
+[LocallyNoetherianOverBaseChange](LocallyNoetherianOverBaseChange.lean): for `g : S' ⟶ S`,
+`Scheme.LocallyNoetherianOver.map g : LocallyNoetherianOver S' ⥤ LocallyNoetherianOver S` is
+`Over.map g` on locally Noetherian test schemes (same underlying scheme;
+`LocallyNoetherianOver.map_obj_obj`); for `S'` locally Noetherian and `Y ⟶ S` locally of finite
+type, `(Over.pullback g).obj Y` is locally of finite type over `S'`
+(`Scheme.locallyOfFiniteType_over_pullback_obj_hom`) with locally Noetherian source
+(`Scheme.isLocallyNoetherian_over_pullback_obj_left`; Stacks 01T6), and
+`Scheme.LocallyNoetherianOver.baseChange g P` is `P ×_S S'` as a locally Noetherian `S'`-scheme.
+Consumer: [Picard/BaseChangeRepresentableBy](../../Picard/BaseChangeRepresentableBy.lean).
+
 [Yoneda](Yoneda.lean): Yoneda on locally Noetherian test schemes. Isomorphisms
 (`Scheme.isIso_of_locallyNoetherian_yoneda_map_bijective`; over `S`,
 `Scheme.LocallyNoetherianOver.isIso_of_yoneda_map_bijective`, `isIso_left_…`), monomorphisms
