@@ -153,11 +153,13 @@ Not yet proved here:
 - that premise under universal O-connectedness;
 - the bijectivity of `toFppfPicardSheaf` with a section (target 4 of the plan);
 - representability: the abstract quotient step (`Scheme.representableByOfFppfQuotient`,
-  [Sites/FppfQuotient](../Sites/FppfQuotient.lean)) and the Zariski sheaf input of the gluing
-  ([ZariskiSheaf](ZariskiSheaf.lean)) are proved, and so are the open subscheme `Z` of `Div^{ψ − φ₀}_X` and its universal Abel class
-  ([Abel/Divisor](Abel/Divisor.lean)), the local sections of `Z ⟶ Pic^{φ₀,ψ,r}_0`
-  ([Strata/LocalSections](Strata/LocalSections.lean)) and the relation `Z ×_P Z`
-  ([Strata/Relation](Strata/Relation/)); the instance for the strata and the gluing remain.
+  [Sites/FppfQuotient](../Sites/FppfQuotient.lean)), the Zariski sheaf input of the gluing
+  ([ZariskiSheaf](ZariskiSheaf.lean)), the open subscheme `Z` of `Div^{ψ − φ₀}_X` and its universal
+  Abel class ([Abel/Divisor](Abel/Divisor.lean)), the relation `Z ×_P Z`
+  ([Strata/Relation](Strata/Relation/)), the local sections
+  ([Strata/LocalSections](Strata/LocalSections.lean)) and the representability of the fine strata
+  `Pic^{φ₀,ψ,k+1}_0` ([Strata/Quotient](Strata/Quotient.lean),
+  [Strata/Representability](Strata/Representability.lean)) are proved; the gluing remains.
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,
@@ -416,6 +418,31 @@ Noetherian points of schemes (`abelRelation_left_injective`,
 `comp_eq_comp_of_fppfPicardSheaf_map_eq_of_abelRelationFst_comp_eq_abelRelationSnd_comp` is
 hypothesis (h₁) of `Scheme.representableByOfFppfQuotient` for `z = α_Z`. The focused tests are
 `AglibTest.AlgebraicGeometry.Picard.Strata.Relation.*` (with axiom guards).
+
+[Strata/Quotient](Strata/Quotient.lean) applies the fppf form of Kleiman's Lemma 4.9
+(`Scheme.representableByOfFppfQuotient`; Kleiman, arXiv:math/0504020v1, end of the proof of Thm 4.8,
+p. 30, and Lemma 4.9, pp. 30–31) to `Z = Pic^{φ₀,ψ,k+1}_0 ×_P Div^{ψ − φ₀}_X` and `R = Z ×_P Z`, in
+the setting of `Strata/Relation` with `A` Noetherian and the representing scheme `D` of
+`Div^{ψ − φ₀}_X` H-quasi-projective. `abelRelation_w`: the projections of `R` agree over `S`;
+`abelQuotient e k E`: the flat proper quotient `Q = Z / R` chosen by `nonempty_flatProperQuotient`
+(`Q` H-quasi-projective, `q` flat, surjective, proper, `R = Z ×_Q Z`), used through
+`(abelQuotient e k E).quotientOver` and `.quotientπ`; `comp_abelQuotientπ_eq_iff`:
+`a ≫ q = b ≫ q ↔ a^* α_Z = b^* α_Z` on locally Noetherian points, the pair conditions (h₁), (h₂);
+`abelQuotientFppfClass e k E`: the descended class `λ ∈ Pic_{X/S,(fppf)}(Q)`, the unique section
+with `q^* λ = α_Z` (`fppfPicardSheaf_map_abelQuotientFppfClass`,
+`eq_abelQuotientFppfClass_of_map_eq`), in `Pic^{φ₀,ψ,k+1}_0(Q)`
+(`abelQuotientFppfClass_mem_subfunctor`). Given the local lifting property `hloc` of
+`α : Z ⟶ Pic^{φ₀,ψ,k+1}_0` (hypothesis (h₃) of `representableByOfFppfQuotient`),
+`abelQuotientRepresentableByOfExistsLift e k E hloc` is a representation of
+`(fineCondition i N e φ₀ ψ 0 (k + 1)).locallyNoetherianSubfunctor` by
+`(abelQuotient e k E).quotientOver`, `f ↦ f^* λ`, under which `q` corresponds to `α_Z`;
+`exists_fineCondition_representableBy_of_exists_lift` is the existence form.
+[Strata/Representability](Strata/Representability.lean) discharges `hloc` by the local sections
+([Strata/LocalSections](Strata/LocalSections.lean)): `abelQuotientRepresentableBy e k E` (with
+`_homEquiv_coe`, `_homEquiv_quotientπ`) and `exists_fineCondition_representableBy e k E`, **the fine
+stratum `Pic^{φ₀,ψ,k+1}_0` is represented on locally Noetherian test schemes by the
+H-quasi-projective `Q`**. The focused tests are
+`AglibTest.AlgebraicGeometry.Picard.Strata.{Quotient,Representability}` (with axiom guards).
 
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,

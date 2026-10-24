@@ -3099,6 +3099,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Effective
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Existence
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.FlatProper
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Graph
+public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.LocallyNoetherianOver
 public import Aglib.AlgebraicGeometry.HilbertScheme.Quotient.Points
 public import Aglib.AlgebraicGeometry.HilbertScheme.QuotientDirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.Regularity
@@ -4210,10 +4211,12 @@ public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorPolynomial
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.LocalSections
+public import Aglib.AlgebraicGeometry.Picard.Strata.Quotient
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Basic
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.LinearSystem
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Properties
 public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Representability
+public import Aglib.AlgebraicGeometry.Picard.Strata.Representability
 public import Aglib.AlgebraicGeometry.Picard.Strata.Twist
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Cocycle
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.DualNumbers
