@@ -2539,6 +2539,13 @@ public import Aglib.AlgebraicGeometry.Grassmannian.Finiteness
 public import Aglib.AlgebraicGeometry.Grassmannian.Flat
 public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Basic
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Chart
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.LocalStructure
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.ProjectiveBundle
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Representability
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Sheaf
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Trivialization
 public import Aglib.AlgebraicGeometry.Grassmannian.Overlap
 public import Aglib.AlgebraicGeometry.Grassmannian.Plucker
 public import Aglib.AlgebraicGeometry.Grassmannian.PluckerChart
@@ -3058,6 +3065,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.PrincipalChain
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Pullback
 public import Aglib.AlgebraicGeometry.Modules.Invertible.PullbackTensor.Local
 public import Aglib.AlgebraicGeometry.Modules.Invertible.PullbackTensor.Properties
+public import Aglib.AlgebraicGeometry.Modules.Invertible.RankOne
 public import Aglib.AlgebraicGeometry.Modules.Invertible.RationalTrivialization
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Root.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Root.Basic
@@ -3179,6 +3187,7 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.RightUnit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Unit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.TensorAdjunction
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Triangle
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Unit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitEndomorphisms
 public import Aglib.AlgebraicGeometry.Modules.Pullback.UnitInverse

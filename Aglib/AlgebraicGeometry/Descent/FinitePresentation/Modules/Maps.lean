@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Modules.Affine
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Mate
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.HomLocality
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Triangle
 
 /-!
 # Actual finite-presentation module maps over cofiltered scheme limits
@@ -195,12 +196,6 @@ theorem exists_hom_equality_above_of_isLimit
   exact pullback_map_eq_of_eq hr
     (pullback_map_eq_of_comp r _ (hq a))
 
-/-- Native composition through an actual commuting triangle. -/
-def pullbackTriangleIso {X Y S : Scheme.{u}}
-    (a : X ⟶ Y) (b : Y ⟶ S) (d : X ⟶ S) (h : a ≫ b = d) :
-    pullback b ⋙ pullback a ≅ pullback d :=
-  pullbackComp a b ≪≫ pullbackCongr h
-
 private theorem pullbackConeCompIso_eq_triangle {I : Type u} [Category.{u} I]
     (D : I ⥤ Scheme.{u}) (c : Cone D) {i j : I} (q : j ⟶ i) :
     pullbackConeCompIso D c q =
@@ -215,51 +210,6 @@ def pullbackHomOfTriangle {X Y S : Scheme.{u}}
     (pullback d).obj M ⟶ (pullback d).obj N :=
   (pullbackTriangleIso a b d h).inv.app M ≫ (pullback a).map f ≫
     (pullbackTriangleIso a b d h).hom.app N
-
-private theorem pullbackComp_assoc_hom
-    {W X Y S : Scheme.{u}} (a : W ⟶ X) (b : X ⟶ Y) (d : Y ⟶ S)
-    (M : S.Modules) :
-    (pullback a).map ((pullbackComp b d).hom.app M) ≫
-        (pullbackComp a (b ≫ d)).hom.app M =
-      (pullbackComp a b).hom.app ((pullback d).obj M) ≫
-        (pullbackComp (a ≫ b) d).hom.app M ≫
-          (pullbackCongr (Category.assoc a b d)).hom.app M := by
-  have H := congrArg (fun t => t.app M) (pseudofunctor_associativity a b d)
-  change (pullbackComp a (b ≫ d)).inv.app M ≫
-      (pullback a).map ((pullbackComp b d).inv.app M) ≫
-      (pullbackComp a b).hom.app ((pullback d).obj M) ≫
-      (pullbackComp (a ≫ b) d).hom.app M =
-        (pullbackCongr (Category.assoc a b d)).inv.app M at H
-  have H' := congrArg (fun t =>
-    (pullback a).map ((pullbackComp b d).hom.app M) ≫
-      (pullbackComp a (b ≫ d)).hom.app M ≫ t) H
-  have H'' :
-      (pullbackComp a b).hom.app ((pullback d).obj M) ≫
-          (pullbackComp (a ≫ b) d).hom.app M =
-        (pullback a).map ((pullbackComp b d).hom.app M) ≫
-          (pullbackComp a (b ≫ d)).hom.app M ≫
-            (pullbackCongr (Category.assoc a b d)).inv.app M := by
-    simp only [Iso.hom_inv_id_app_assoc,
-      ← Functor.map_comp_assoc, Iso.hom_inv_id_app] at H'
-    simpa only [CategoryTheory.Functor.map_id, Category.id_comp] using H'
-  apply (cancel_mono ((pullbackCongr (Category.assoc a b d)).inv.app M)).mp
-  simpa only [Category.assoc, Iso.hom_inv_id_app, Category.comp_id] using H''.symm
-
-/-- The actual triangle comparisons compose through native pullback associativity. -/
-theorem pullbackTriangleIso_assoc_hom
-    {W X Y S : Scheme.{u}} (a : X ⟶ Y) (b : W ⟶ X) (d : Y ⟶ S)
-    (r : X ⟶ S) (hr : a ≫ d = r) (s : W ⟶ S) (hs : b ≫ r = s)
-    (M : S.Modules) :
-    (pullback b).map ((pullbackTriangleIso a d r hr).hom.app M) ≫
-        (pullbackTriangleIso b r s hs).hom.app M =
-      (pullbackComp b a).hom.app ((pullback d).obj M) ≫
-        (pullbackTriangleIso (b ≫ a) d s
-          (by rw [Category.assoc, hr, hs])).hom.app M := by
-  subst r
-  subst s
-  simpa only [pullbackTriangleIso, Iso.trans_hom, NatTrans.comp_app,
-    pullbackCongr, eqToIso_refl, Iso.refl_hom, NatTrans.id_app, Category.comp_id]
-    using pullbackComp_assoc_hom b a d M
 
 /-- Transporting an original arrow through two actual pullback triangles
 agrees with transport through their composite triangle. -/

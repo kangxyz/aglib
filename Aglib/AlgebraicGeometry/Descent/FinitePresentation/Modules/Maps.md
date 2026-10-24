@@ -18,8 +18,8 @@ cofiltered stage give equality on a covering family of actual pullbacks.
 The original sheaf-Hom uniqueness theorem then gives the global equality.
 The affine transport uses `isoSpec` and the original global-section maps.
 
-`pullbackTriangleIso` and `pullbackHomOfTriangle` retain actual commuting
-triangles. Their composition identity is the original native pullback
+`pullbackTriangleIso` (from [Modules/Pullback/Triangle](../../../Modules/Pullback/Triangle.lean)) and `pullbackHomOfTriangle` retain actual commuting
+triangles. Their composition identity `pullbackTriangleIso_assoc_hom`, in the same leaf, is the original native pullback
 associativity theorem. The existing canonical square comparison `pullbackSquareIso` from
 `Modules.BaseChange.Affine.Mate` and its
 cone-composition identity supply the exact coordinate transport for the

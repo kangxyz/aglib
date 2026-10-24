@@ -138,7 +138,7 @@ commitments.
 | F5 | Ring-level effective faithfully flat descent of modules in descent-data form; descent of invertibility and isomorphism | proved: `Algebra/Category/ModuleCat/Descent` (`isStackFor_moduleCatExtendScalarsPseudofunctorOpOp_singleton`, for Mathlib's descent data on `CommRingCatᵒᵖ`) and `RingTheory/Descent/FinitePresentation`, `Invertible` | M |
 | F6 | Quasi-coherent, invertible and closed-subscheme fppf stacks on schemes; descent of open subschemes along fppf coverings (saturated opens are preimages, since fppf morphisms are open) | proved: quasi-coherent sheaves and line bundles form fpqc and fppf stacks (`Descent/Modules/Fppf`); closed subschemes form Zariski, fpqc and fppf sheaves (`Descent/IdealSheaf/Fppf`, with the gluing `IdealSheaf/Glue`); open subschemes descend (`Descent/Opens`); composition of descent `IsStackFor.bind` (`CategoryTheory/Sites/Descent`) | L |
 | F7 | Rigidified pairs, their automorphisms, comparison theorem (target 4) | proved on the big fppf site of `Over S` (`Picard/Comparison`): Kleiman Thm 2.5(1), injectivity of the fppf comparison map under target 2 (Stacks 0B9M), and Thm 2.5(2) with a section, the rigidified and relative functors are fppf sheaves and the comparison maps are isomorphisms (Stacks 0B9N); generic descent lemmas in `CategoryTheory/Sites/Descent`; open: the Zariski and étale comparison maps and the restriction to locally Noetherian test schemes | M |
-| F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras), `Grassmannian/FunctorOfPoints` (the extension to all test schemes) and `Grassmannian/Quotient` (rank-`k` locally free quotients of `O_T^n` on all schemes over `Spec R`: `quotFunctorIso`, `quotFunctorRepresentableBy`, Stacks 089T, with a universal quotient), the kernel of a rank-`k` quotient (finite locally free of rank `n - k`, compatible with every pullback), the universal kernel, quotients of free sheaves on any finite index type and finiteness over a Noetherian base (`Grassmannian/Quotient/{Kernel,KernelRank,UniversalKernel,Reindex}`, `Grassmannian/Finiteness`), the Plücker closed immersion `Gr(R^n, k) → P(⋀^k R^n)` from the Plücker map on points, natural and injective (`Grassmannian/{Plucker,PluckerClosedImmersion}`), and `Gr(R^n, k)` smooth, flat, separated and proper over `Spec R` (`Grassmannian/{Flat,PluckerClosedImmersion}`); open: locally free `E`, `P(E)` | L |
+| F8 | Grassmannian of rank-`r` quotients of a finite locally free module: charts, gluing, functor of points; `P(E) = Gr(E,1)`; Plücker closed embedding | partial: for free `R^n` over `Spec R`, `Grassmannian/Representability` (`representableIso`, Mathlib's `Module.Grassmannian.functor` on `R`-algebras), `Grassmannian/FunctorOfPoints` (the extension to all test schemes) and `Grassmannian/Quotient` (rank-`k` locally free quotients of `O_T^n` on all schemes over `Spec R`: `quotFunctorIso`, `quotFunctorRepresentableBy`, Stacks 089T, with a universal quotient), the kernel of a rank-`k` quotient (finite locally free of rank `n - k`, compatible with every pullback), the universal kernel, quotients of free sheaves on any finite index type and finiteness over a Noetherian base (`Grassmannian/Quotient/{Kernel,KernelRank,UniversalKernel,Reindex}`, `Grassmannian/Finiteness`), the Plücker closed immersion `Gr(R^n, k) → P(⋀^k R^n)` from the Plücker map on points, natural and injective (`Grassmannian/{Plucker,PluckerClosedImmersion}`), and `Gr(R^n, k)` smooth, flat, separated and proper over `Spec R` (`Grassmannian/{Flat,PluckerClosedImmersion}`); for `E` finite locally free of constant rank `n` on any scheme `S` (`Grassmannian/LocallyFree`): `Quot_k(E)` and its Zariski sheaf property on `Over S`, its restriction to trivializing affine charts (`Quot_k(O^n)`, represented by `Gr(R^n, k)`), representability by `Gr(E, k)` with universal quotient (through `Scheme.LocalRepresentability.overZariskiLocalRepresentability`), `P(E) = Gr(E, 1)` classifying rank-one (invertible) quotients through `E_{P(E)} ↠ O_{P(E)}(1)`, `Gr(E, k) ×_S Spec R ≅ Gr(R^n, k)` on trivializing charts, and `Gr(E, k) ⟶ S` quasi-compact and locally of finite type; open: the Plücker embedding for locally free `E`, and `E` of non-constant rank | L |
 | F9 | Functor of points of `ProjectiveSpace A`, comparison with `Gr(A^{n+1},1)`, quasi-projective morphisms | partial: `Gr(R^m, 1) ≅ ProjectiveSpace R ι` over `Spec R` (`Grassmannian/ProjectiveSpace`; Stacks 089V), maps from any scheme over `Spec R` into projective space as natural transformations into the Grassmannian functor and as rank-one locally free quotients of `O^m` (`ProjectiveSpace.quotFunctorRepresentableBy`; Stacks 089V, 01NE), and the universal quotient chart by chart as `O^ι ↠ O(1)` by the coordinate sections; open: the universal quotient as the sheaf map `O^ι ↠ O(1)`, quasi-projective morphisms | M |
 | F10 | Hilbert polynomial of coherent sheaves on `P^n` over a field, local constancy in flat families | partial: field case (`Cohomology/Projective/HilbertPolynomial`); local constancy in flat families and finiteness of the fibre Hilbert polynomials (Nitsure's (A)) over an affine Noetherian base (`HilbertPolynomial/{Fiber,FlatFamily,Finiteness}`); open: non-affine base | M |
 | F11 | Castelnuovo–Mumford regularity and Mumford's bound (Nitsure, Lemma 2.1, Thm 2.3, pp. 10–11) | partial: Nitsure Lemma 2.1 proved over any ring (`Cohomology/Projective/Regularity`): (a) in coordinate-multiplication form, (b), and (c) as vanishing plus finite global generation; Mumford's bound (Thm 2.3) proved over every field, for subsheaves of `O^p` and ideal sheaves, with integer binomial coefficients of Hilbert functions (`Regularity/Mumford`, `HilbertPolynomial/Basic`); open: the literal tensor form of (a) | L |
@@ -222,7 +222,10 @@ functor of points on all test schemes; set `P(E) := Gr(E, 1)` and construct the
 Plücker closed embedding. Aglib's `ProjectiveSpace A (Fin (n+1))` keeps its role
 as the owner of twisting sheaves and cohomology. A single comparison
 `Gr(A^{n+1}, 1) ≅ ProjectiveSpace A (Fin (n+1))` supplies the functor of points of
-projective space; do not construct a second twisting sheaf. Polynomiality of
+projective space; do not construct a second twisting sheaf. For locally free `E`, the universal
+rank-one quotient `E_{P(E)} ↠ O_{P(E)}(1)` of `P(E) = Gr(E, 1)` belongs to the functor of points;
+it is not a second twisting sheaf, and for `E = O^m` its identification with `O(1)` on
+`ProjectiveSpace` is the open part of row F9. Polynomiality of
 `n ↦ χ(F(n))` on `P^n` over a field needs its own argument (hyperplane exact
 sequences, or Serre vanishing with the Hilbert polynomial of the graded section
 module); local constancy in flat families is Aglib's Euler local constancy.
@@ -620,9 +623,17 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     `baseChangeMkQ`.
   - An independent statement review found the slice corresponding; its
     documentation repairs are applied.
+  - Done for `E` finite locally free of constant rank `n` on any scheme `S` (`Grassmannian/LocallyFree`):
+    - `Quot_k(E)`, a Zariski sheaf on `Over S` whose restrictions to trivializing affine charts are
+      `Quot_k(O^n)`; representability by `Gr(E, k)` with universal quotient, through the M1 adapter
+      `Scheme.LocalRepresentability.overZariskiLocalRepresentability`;
+    - `P(E) := Gr(E, 1)`, with `E_{P(E)} ↠ O_{P(E)}(1)` classifying rank-one (invertible) quotients;
+    - `Gr(E, k) ×_S Spec R ≅ Gr(R^n, k)` on trivializing charts; `Gr(E, k) ⟶ S` is quasi-compact
+      and locally of finite type.
+    - A review found no blocking gap; its repairs are applied.
   - Open:
-    - `Gr(E, r)` for locally free `E`;
-    - `P(E)`.
+    - the Plücker embedding for locally free `E`;
+    - `E` of non-constant rank.
 - **M5 in progress.**
   - F15, cohomological inputs done (Kleiman 3.10 and Thm 3.13, pp. 24–26):
     - `Modules/ProjectionFormula/PushforwardTensorPullback`: the degree-zero projection
@@ -666,6 +677,5 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
 - **Next.**
   - M4: the Thm 6.1 subfunctors of F13 (through a closed-subfunctor step for `X ⊂ P^n`),
     then `Div` open in `Hilb` (F14).
-  - In parallel toward M5 and M6: `Gr(E, k)` and `P(E)` for locally free `E`,
-    `LinSys = Gr(E, r − 1)` (F15b), and the F18 premise `UnitsCohomologyComparison`
-    (Zariski `Pic = H^1(𝒪^*)`).
+  - In parallel toward M5 and M6: `LinSys = Gr(E, r − 1)` (F15b, for `Q` locally free of
+    constant rank), and the F18 premise `UnitsCohomologyComparison` (Zariski `Pic = H^1(𝒪^*)`).

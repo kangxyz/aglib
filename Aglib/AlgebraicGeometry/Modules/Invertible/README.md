@@ -110,6 +110,8 @@ lifting a prescribed root-pair isomorphism additionally requires
 `IsUnit (n : Γ(X, ⊤))`. These results do not assert global, formal, or
 henselian root existence.
 
+[RankOne](RankOne.lean) proves `isLocallyRankOne_iff_sheafHasRank_one : IsLocallyRankOne X M ↔ SheafHasRank M 1`. Consumers: [Formal/Algebraization](Formal/Algebraization.lean) and [Grassmannian/LocallyFree](../../Grassmannian/README.md).
+
 ## Formal lifting and descent
 
 [Formal](Formal/README.md) documents the square-zero, completion, formal-system

@@ -1,7 +1,7 @@
 # Grassmannian schemes
 
-This family will own the Grassmannian `Gr(E, k)` of rank-`k` locally free quotients of a finite
-locally free module and the projective bundle `P(E) := Gr(E, 1)`
+This family owns the Grassmannian `Gr(E, k)` of rank-`k` locally free quotients of a finite
+locally free module of constant rank and the projective bundle `P(E) := Gr(E, 1)`
 ([Picard plan](../../../docs/PICARD_PLAN.md), rows F8 and F9). Its ring-level input is
 [RingTheory/Grassmannian](../../RingTheory/Grassmannian/README.md): charts of Mathlib's
 `Module.Grassmannian.functor`, their coordinate rings, overlaps, local covering, and Zariski
@@ -197,6 +197,32 @@ lies in the rank-one chart at `p_S` (`pluckerFin_mem_chart_of_mem_chart`,
 (`isClosedImmersion_plucker`, `isClosedImmersion_pluckerProjective`): the chart square is a
 pullback and the chart ring map is surjective. Hence `Gr(R^n, k)` is proper and separated over
 `Spec R` (instances on `toBase` and `(schemeOver R k n).hom`). BCF discharged by import.
+
+## Locally free `E` and `P(E)`
+
+[LocallyFree](LocallyFree/) treats a module sheaf `E` on a scheme `S`. `LocallyFreeQuotientOf F k`
+is a rank-`k` locally free quotient `F ↠ Q` of an arbitrary source (F8's structure with `O^n`
+replaced by `F`), and `quotBundleFunctor E k : (Over S)ᵒᵖ ⥤ Type (u + 1)` is `Quot_k(E)`:
+quotients of `E_T = Scheme.Modules.overPullback E T`, with pullback through
+`Scheme.Modules.overPullbackIso` ([Basic](LocallyFree/Basic.lean); the comparisons and their
+coherence are in [Modules/Pullback/Triangle](../Modules/Pullback/Triangle.lean)). It is a sheaf
+for `Scheme.zariskiTopology.over S` for every `E` ([Sheaf](LocallyFree/Sheaf.lean)). On a
+trivializing chart `j : Spec R ⟶ S`, `j^* E ≅ O^n`, its restriction is `quotFunctor R k n` and
+is represented by `schemeOver R k n` ([Chart](LocallyFree/Chart.lean)); for `SheafHasRank E n`
+such charts cover `S` ([Trivialization](LocallyFree/Trivialization.lean)). Representability is
+local on the base (`Scheme.LocalRepresentability.overZariskiLocalRepresentability`), so
+`Quot_k(E)` is represented by `grassmannianBundle E k n h`, `Gr(E, k)`, with universal quotient,
+and `projectiveBundle E n h := Gr(E, 1)` classifies rank-one quotients, equivalently
+epimorphisms onto line bundles, through `E_{P(E)} ↠ O_{P(E)}(1)`
+([Representability](LocallyFree/Representability.lean),
+[ProjectiveBundle](LocallyFree/ProjectiveBundle.lean)). `Gr(E, k) ×_S Spec R ≅ schemeOver R k n`
+on every chart, and `Gr(E, k) ⟶ S` is quasi-compact and locally of finite type
+([LocalStructure](LocallyFree/LocalStructure.lean)). Premise BCF as in the rest of the family.
+Sources: Nitsure, arXiv:math/0504590v1, §1, Exercises (1)–(2), pp. 5–6; Stacks, Tags 089S,
+089T, 089U, 01OA, 01OB, 01JJ.
+
+For `E = O^m` on `Spec R`, `P(E)` is `Gr(R^m, 1) ≅ ProjectiveSpace R ι` (below); identifying its
+universal quotient with `O^ι ↠ O(1)` is the open part of row F9.
 
 ## Projective space as `Gr(R^m, 1)`
 

@@ -31,6 +31,8 @@ no quasicoherence or finiteness hypothesis is required.
 [UnitTriangle](UnitTriangle.lean) retains the original pullback units and native
 composition/equality comparisons on a commutative scheme triangle.
 
+[Triangle](Triangle.lean) holds `pullbackTriangleIso a b d h : pullback b ⋙ pullback a ≅ pullback d` for a commutative triangle (`pullbackComp`, then `pullbackCongr`), its associativity `pullbackTriangleIso_assoc_hom` from `pullbackComp_assoc_hom`, the component, unit, free-sheaf and three-triangle identities, and `overPullback E T = (T ⟶ S)^* E` with `overPullbackIso`. Consumers: [Descent/FinitePresentation/Modules/Maps](../../Descent/FinitePresentation/Modules/Maps.lean) and [Grassmannian/LocallyFree](../../Grassmannian/README.md).
+
 [FreeTransfer](FreeTransfer.lean) transfers a map `ιK : K ⟶ 𝒪_T^I` along `π : X ⟶ T` and
 `p : X ⟶ P` to `freeTransfer π p ιK : π^* K ⟶ p^* 𝒪_P^I` and proves its base change along a
 commutative square through the comparison `pullbackSquareIso` of

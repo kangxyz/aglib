@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Formal.Algebraization.Detection
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.LocallyFree
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
+public import Aglib.AlgebraicGeometry.Modules.Invertible.RankOne
 
 /-!
 # Rank-one algebraization over a complete Noetherian base
@@ -35,15 +36,6 @@ open CategoryTheory
 namespace AlgebraicGeometry.Scheme.Modules.Invertible
 
 universe u
-
-/-- Singleton local bases are precisely local bases of displayed rank one. -/
-theorem isLocallyRankOne_iff_sheafHasRank_one {X : Scheme.{u}} (M : X.Modules) :
-    IsLocallyRankOne X M ↔ SheafHasRank M 1 := by
-  constructor
-  · rintro ⟨q, hq, h⟩
-    exact ⟨q, hq, fun i => ⟨(h i).some.trans (Equiv.ofUnique _ _)⟩⟩
-  · rintro ⟨q, hq, h⟩
-    exact ⟨q, hq, fun i => ⟨(h i).some.trans (Equiv.ofUnique _ _)⟩⟩
 
 /-- A coherent module on a proper scheme over an adically complete
 Noetherian ring is an actual line bundle when every positive original
