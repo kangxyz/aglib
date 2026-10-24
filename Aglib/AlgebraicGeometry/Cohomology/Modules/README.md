@@ -86,3 +86,11 @@ finite cokernel transfer retains its finite-dimensionality premise.
 in `M` (`unitHomH0Equiv_comp`). [DegreeZero](DegreeZero.lean) evaluates degree-zero coefficient
 maps on sections over `⊤` (`equiv₀_moduleCohomologyMapOfHom`,
 `equiv₀_moduleCohomologyFunctorOfHom_mapIso`).
+
+[Biproduct](Biproduct.md) gives native finite-biproduct cohomology comparisons
+and length sums for the specified structural ring action.
+[ScalarFactorization](ScalarFactorization.md) transports an actual sheaf-map
+composite equal to scalar multiplication to original cohomology, and bounds
+its length by scalar torsion plus the target length. Lengths are in `ℕ∞`;
+no splitting or finite-length hypothesis is added. The trace-coordinate
+consumer supplies the actual arrows and structural scalar square.

@@ -96,7 +96,31 @@ normalization; it does not supply that model.
 The complete resolution criterion RES and its quasi-excellent consequence
 RES-QE remain open. The
 [resolution guide](Resolution/README.md#open-resolution-construction)
-records the remaining geometric duality, rational/Gorenstein, tangent-cone,
-termination and descent obligations. In particular, the algebraic
+records the remaining global canonical comparisons, rational/Gorenstein
+reduction, geometric tangent-cone inputs, termination and descent obligations.
+The chosen-embedding duality and ordinary rational-blowup results below are
+prerequisites with their own hypotheses. In particular, the algebraic
 [monic-quadratic theorem](../../RingTheory/GradedAlgebra/MonicQuadratic.md)
 retains its actual relation and genuine Hilbert-function premises.
+
+## Further completed prerequisites
+
+The [birational guide](Birational/README.md#normalized-covers-and-finite-domination)
+describes actual normalized ideal blowups and finite domination in an original
+finite function-field extension. The
+[cohomology guide](../Cohomology/README.md#surface-cohomology-with-original-coefficients)
+records uniform scalar torsion, finite separable H1 transfer, a maximal model
+from a supplied uniform bound, its complete-local R1 consequence, and
+chosen-embedding GR with its actual regular-base map and closed embedding.
+The [rational-blowup guide](RationalSingularities/README.md#ordinary-rational-blowups-and-the-full-exceptional-fibre)
+retains the full exceptional fibre, positive ideal twists and original
+power-section products under Nagata and universal H1-vanishing hypotheses.
+
+Supplied normalized chains, local point comparisons and the available
+cohomological reductions do not construct a resolving chain. The conditional
+Case-I/II chart and marking primitives in the
+[blowup algebra](../../RingTheory/Blowup/README.md#conditional-quadratic-charts-and-differential-images)
+do not complete RDP termination. Full coefficient-valued curve Serre duality,
+global integral trace, canonical restriction and the general singular-surface
+resolution theorem remain separate obligations. Arbitrary completion or
+Cohen-stalk comparison is not inferred from these interfaces.

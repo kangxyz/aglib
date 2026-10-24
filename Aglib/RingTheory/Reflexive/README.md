@@ -34,3 +34,13 @@ punctured-freeness input for a local ring carrying native `IsRegularRing`, using
 strict dimension drop and actual localization comparisons.
 [AuslanderFlat](AuslanderFlat.lean) gives global flatness over `IsRegularRing`;
 it does not assert global freeness over a nonlocal base.
+
+[DoubleDual](DoubleDual.md) proves freeness of the actual double dual of a
+finite module over a regular local ring of dimension at most two; generic
+rank one gives its local line comparison. Over a normal Noetherian domain,
+height-one image conditions give a unique lift into the actual double dual
+of a finitely presented module, preserving its original generic map.
+[DoubleDualFraction/Uniqueness](DoubleDualFraction/Uniqueness.md) shows that
+agreement on original evaluations determines that generic bidual map.
+The sheaf and one-pole differential consumers retain these evaluation laws;
+raw-module reflexivity and torsion-freeness are not extra assumptions.

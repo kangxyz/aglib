@@ -97,3 +97,58 @@ the corresponding coherent linear duality over a Noetherian separated base,
 with the explicit formula: derived pushforward of the original Ext arrow,
 followed by that one trace. The integer-indexed canonical identification and
 the actual empty-source argument avoid a global `d ≤ n` condition.
+
+## Chosen-embedding curve and normal-surface interfaces
+
+[CohenMacaulayCurve](CohenMacaulayCurve.md) constructs concentration and the
+canonical module for an actual closed embedding over an arbitrary field.
+At every closed stalk it requires a regular element with maximal principal
+radical. Nonreduced and non-Gorenstein sources are allowed. The canonical
+degree is the integer `(n : ℤ) - 1`.
+[Coefficients](CohenMacaulayCurve/Coefficients.md) retains an actual finite
+one-dimensional coefficient module and its own canonical homology, including
+the intrinsic derived-residue line, without choosing an orientation.
+
+[Unit-coefficient Serre duality](CohenMacaulayCurve/Serre.md) retains the same
+closed-stalk condition and `1 ≤ n`, with coherent-source bijectivity and
+the original trace and positive Yoneda pairing. Its
+[Derived](CohenMacaulayCurve/Serre/Derived.md),
+[Transport](CohenMacaulayCurve/Serre/Transport.md),
+[Pairing](CohenMacaulayCurve/Serre/Pairing.md),
+[Trace](CohenMacaulayCurve/Serre/Trace.md) and
+[Comparison](CohenMacaulayCurve/Serre/Comparison.md) providers preserve the
+native single/shift maps, structural section one and original additive
+comparison. [Coefficient affine model](CohenMacaulayCurve/Coefficients/Serre/Affine.md)
+proves the generic map and evaluation laws for arbitrary specified field
+modules. It does not supply full coefficient-valued Serre duality.
+[Enlargement](CohenMacaulayCurve/Enlargement.md) constructs finite-support
+row enlargement from supplied trace-compatible coherent-source duality;
+the geometric hyperplane and those coefficient comparisons remain inputs.
+
+[NormalSurface](NormalSurface.md) constructs chosen-embedding concentration
+for a normal integral source of dimension at most two over a regular local
+domain, with dominant finite original function-field map. Inseparability is
+allowed and the canonical module is not assumed invertible.
+[Trace](NormalSurface/Trace.md) retains its original canonical-section trace.
+[Cohomology](NormalSurface/Cohomology.md) compares original canonical
+cohomology with the native A-linear derived dual.
+[UnitTrace](NormalSurface/Cohomology/UnitTrace.md) identifies the original
+dual unit with the section trace for a finite injective local map from a
+regular local surface base to a normal Noetherian local surface domain,
+retaining the supplied resolutions and structural triangle. These are
+chosen-embedding interfaces; global integral trace and surface-to-curve
+canonical restriction remain separate obligations.
+
+[CartierRegularity](NormalSurface/CartierRegularity.md) proves that every
+nonzero original stalk element acts regularly on the actual normal-surface
+canonical stalk. It derives monicity of the original Cartier tensor section
+for a closed immersion with locally rank-one kernel ideal. The original
+normal integral source, dimension bound, regular local base, finite projective
+indexing and dominant finite generic-image map remain those of concentration;
+no canonical freeness or Gorenstein premise is added.
+[CartierRestriction/Transport](NormalSurface/CartierRestriction/Transport.md)
+transports original Serre maps through supplied canonical reconstructions
+and native affine sections, retaining integer degree `r-d`, coefficient
+comparisons and source Ext-composition laws. Bijectivity keeps the Noetherian
+base and affine-locally-finite-type source hypotheses. These are suppliers
+to full canonical restriction and its counit comparison, which remain open.

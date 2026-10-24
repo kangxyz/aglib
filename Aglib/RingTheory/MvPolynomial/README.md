@@ -134,3 +134,10 @@ is required. The parameter-DVR completion argument consumes these results.
 degree-`r` coefficient map `(gradedMap σ).gradedAddHom r` of [GradedMap](GradedMap.lean) sends each
 monomial basis vector of `homogeneousPieceBasis A r` ([CoordinatePieces](CoordinatePieces.lean)) to
 the corresponding basis vector over `B`, for every ring map `σ : A →+* B`.
+
+[QuadraticClosedPoint](QuadraticClosedPoint.md) proves that a nonzero
+polynomial of total degree at most two in the square of an actual maximal
+plane-point ideal with residue degree greater than one is a nonzero scalar
+times the square of an affine linear polynomial. The residue quotient and
+constant action are the original ones. No division by two is used. This
+supplies the nonsquare Case-I residue-degree argument over arbitrary fields.

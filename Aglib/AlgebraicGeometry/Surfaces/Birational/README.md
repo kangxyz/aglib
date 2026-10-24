@@ -126,3 +126,21 @@ target-point blowup and terminates by the strict finite-count decrease.
 There is no excellence, characteristic, perfectness or projectivity
 assumption. Construction of a regular scheme from singular initial data
 and minimal-model existence remain separate tasks.
+
+## Normalized covers and finite domination
+
+[NormalizedBlowupCover](NormalizedBlowupCover.md) constructs the literal
+normalized blowup of a nonzero ideal over a domain and its original
+invertible image ideal, including nonflat ideal-pullback frames.
+[Finite](NormalizedBlowupCover/Finite.md) constructs the second normalization
+in the original finite extension field and its B-structure.
+[Nagata](NormalizedBlowupCover/Nagata.md) proves finiteness and properness
+for these same objects over a Noetherian Nagata domain of dimension at most
+two, without separability.
+[FiniteDomination](FiniteDomination.md) constructs normal proper birational
+models and an actual finite map dominating a supplied proper birational
+upper model over the original finite injective algebra, with both base
+squares and generic maps retained. Its coefficient row and projective
+factorization are constructed, not assumed. The finite separable H1 bound
+consumes this diagram; separability is needed there for the discriminant,
+not for this domination construction.

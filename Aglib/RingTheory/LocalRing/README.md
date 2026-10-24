@@ -53,3 +53,10 @@ finiteness.
 (`IsLocalRing.trivSqZeroExtLiftEquivDerivation`). For Noetherian `A`, `𝔪/𝔪²` is finite over `k`
 (`IsLocalRing.finite_cotangentSpace_of_algHom`). The tangent space of a represented functor
 ([Picard/Tangent/Points](../../AlgebraicGeometry/Picard/Tangent/Points.lean)) consumes them.
+
+[ReducedPrincipalCover](ReducedPrincipalCover.md) constructs a nonzero
+nonunit with reduced principal quotient whose positive power is divisible
+by a specified nonzero nonunit, over a normal Noetherian local domain of
+dimension two. No completeness, Nagata property or coefficient field is
+assumed. Its stable parameter-pair and bounded minimal-prime arguments feed
+the uniform scalar-torsion cohomology bound.

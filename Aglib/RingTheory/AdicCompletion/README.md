@@ -201,3 +201,17 @@ uses the public all-level evaluation interface of
 [AssociatedPrimeCriterion](AssociatedPrimeCriterion.md) gives analytic
 reducedness criteria with their actual associated-prime DVR and
 reduced-prime-completion inputs explicit.
+
+## Actual finite-algebra branches and degree
+
+[FiniteSemilocal](FiniteSemilocal.md) identifies the completed-base tensor
+of a finite algebra over a Noetherian local ring with the finite product of
+its actual completed local branches. The original scalar and quotient maps
+are retained; the uncompleted localization need not be finite.
+[FiniteSemilocalDegree](FiniteSemilocalDegree.md) embeds each branch in a
+free module of the original generic degree by first embedding the whole
+finite domain algebra and then completing that injection. Domain hypotheses
+on the relevant completions are retained for fraction-field degree bounds;
+regularity supplies the base completion's domain property where stated.
+These are inputs to complete-local degree induction, not that induction
+or a resolution theorem.

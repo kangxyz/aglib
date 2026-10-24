@@ -45,3 +45,10 @@ the extended original residue kernel and its quotient, retaining the explicit
 denominator-image equality. The
 [projected DVR centre](../DiscreteValuationRing/ParameterProjectedResidue.lean)
 supplies that equality from its original coefficient and residue maps.
+
+[FiniteRankEmbedding](FiniteRankEmbedding.md) clears finitely many original
+fraction-field coordinates of a finite module to obtain an injective map
+into a finite free module. For a finite algebra of domains it gives rank
+equal to the original generic field degree, without normality or
+separability. The completed-branch degree comparison completes this whole
+algebra injection before selecting a branch.

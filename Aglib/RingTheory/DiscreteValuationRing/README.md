@@ -65,3 +65,13 @@ extensions while retaining the same natural prime as uniformizer.
 [FilteredColimit](FilteredColimit.md) proves the DVR and maximal-kernel
 properties for the original compatible filtered diagram. These feed the
 [arbitrary-residue Cohen construction](../LocalRing/CohenRing.md).
+
+[PureDegreeP/FiniteDegree](PureDegreeP/FiniteDegree.md) proves the actual
+ramification-times-residue-degree formula for finite torsion-free extensions
+of DVRs. Its pure degree-p field consequences retain prime characteristic
+and the specified original fraction fields.
+[Monogenic](PureDegreeP/Monogenic.md) constructs a presentation of a finite
+purely inseparable degree-p DVR extension, preserving its actual root and
+algebra map. These feed the monogenic differential trace; extra uniformizer
+or non-pth-power coefficient classifications are not asserted unless
+separately exposed by the theorem.

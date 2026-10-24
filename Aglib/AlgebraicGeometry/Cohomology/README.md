@@ -69,3 +69,34 @@ that stage. Its finite-family lemmas retain actual structure-module maps
 and prescribed extra sections. The
 [projective Cartier construction](../Surfaces/Contraction/ProjectiveSections.md)
 supplies these sequences and the initial Serre vanishing for its own inputs.
+
+## Surface cohomology with original coefficients
+
+[Proper/ScalarTorsion](Proper/ScalarTorsion.md) bounds torsion by a fixed
+nonzero scalar uniformly on original structure-H1 of normal proper
+birational models over a normal Noetherian Nagata local surface domain.
+[FiniteExtension](Proper/FiniteExtension.md) defines `NormalModificationH1Bounded`
+and transfers it along a finite faithful local algebra of such domains when
+the original function-field extension is separable. It retains the actual
+residue degree, without residue separability or flatness.
+[MaximalModel](Proper/MaximalModel.md) constructs a model attaining a supplied
+uniform H1 bound; subsequent original H1 maps are bijective.
+[MaximalModel/R1](Proper/MaximalModel/R1.md) over a complete normal Noetherian
+local surface domain derives vanishing of the actual R1 above that model,
+still requiring `NormalModificationH1Bounded`. These are inputs to local
+rationality reduction, not resolving-chain existence.
+
+[Chosen-embedding GR](Proper/GrauertRiemenschneider.md) proves original H1
+vanishing for the actual canonical module of a normal integral proper
+birational model over a complete normal Noetherian local domain of dimension
+two. It retains a finite injective local regular-surface base map and an
+actual compatible closed projective embedding, with source dimension at
+most two. It supplies neither global integral trace nor arbitrary complete
+or Cohen-stalk comparisons.
+
+[Positive exceptional comparison](Blowup/RegularPoint/ExceptionalPositive.md)
+proves invertibility of the original structural derived unit followed by
+the dual-ideal section on the actual full closed-point blowup of a regular
+integral locally Noetherian scheme at a two-dimensional stalk. The residue
+field is unrestricted. This is the normalized `O(E)` comparison used by
+later differential and trace consumers.

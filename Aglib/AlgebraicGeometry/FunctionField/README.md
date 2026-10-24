@@ -25,3 +25,16 @@ the canonical function-field equivalence retains its structural-constants
 triangle and original scalar actions. The separate
 [DVR open-immersion theorem](../Stalk/GenericFiber/DVROpen.md) concerns the actual
 fraction-field spectrum map and needs no properness or characteristic condition.
+
+[SectionRange](SectionRange.md) characterizes regular sections on a nonempty
+open of an integral scheme by membership in all original stalk images in
+its function field. [Trace](Trace.md) constructs affine finite-morphism
+trace for a finite dominant morphism of integral schemes with normal target;
+[Trace/Sheaf](Trace/Sheaf.md) glues its original field-trace values into
+`finiteStructureTrace`. [Transport](Trace/Transport.md) transports field
+trace through the original commuting birational square.
+[Coordinates](Trace/Coordinates.md) constructs the original trace-coordinate
+and adjugate sheaf maps for the fixed finite field basis and discriminant,
+with their scalar composite identities; separability supplies injectivity
+where required. These feed the finite separable surface H1 bound and do not
+assert a global canonical-module trace.

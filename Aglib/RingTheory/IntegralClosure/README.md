@@ -57,3 +57,10 @@ on the actual maximal ideal. The
 [closed-fibre extension calculation](../../AlgebraicGeometry/Cohomology/Proper/ClosedFibreExtensions.md)
 uses that scalar to correct a supplied lift; producing the lift is a
 separate geometric input.
+
+[TraceLattice](TraceLattice.md) constructs a fixed integral field basis and
+its principal-localization basis from an original finite algebra of domains
+with compatible fraction fields. Normality gives base-valued traces;
+separability gives the nonzero discriminant and injective trace coordinates.
+The adjugate identities retain that basis and scalar. The finite-diagram
+cohomology consumer supplies the geometric maps and length comparison.

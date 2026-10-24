@@ -32,3 +32,28 @@ transform has Artinian chart quotient and strictly smaller local colengths.
 positive order and both ideal-power bounds. The
 [finite point-blowup consumer](../../AlgebraicGeometry/Surfaces/Resolution/README.md)
 uses these individual strict inequalities in a multiset termination argument.
+
+## Conditional quadratic charts and differential images
+
+[QuadraticPresentation](QuadraticPresentation.md) obtains the entire canonical
+quadratic kernel and actual exceptional quotient from the original three
+generators and genuine all-degree Hilbert-function hypothesis.
+[CaseOne](CaseOne.md) uses the actual coordinate-compatible exceptional
+presentation and its Case-I nonsquare condition to prove the original
+child residue map bijective. These conditions are retained, not inferred
+from a name for the singularity.
+[DoubleLine/Child](DoubleLine/Child.md) proves the actual Case-II repeated-prime
+and residue-map consequences from the original cubic and child kernel.
+[Marked](DoubleLine/Marked.md), [Chart](DoubleLine/Marked/Chart.md) and
+[Successor](DoubleLine/Marked/Successor.md) construct corrected recentering,
+marked-chart and local entry/continuation interfaces, preserving the
+original scalar maps, extended centre and exceptional element. The marking
+and full canonical-kernel hypotheses remain inputs. These are local
+primitives, not full RDP termination or a global resolving chain.
+
+[RegularPair/Differentials](RegularPair/Differentials.md) computes genuine
+Kähler modules on original regular-pair quotient and saturated charts for
+the specified coefficient tower. [Exterior](RegularPair/Exterior.md) proves
+the exceptional-scalar image bound on the original exterior map. Their
+consumer is the raw one-pole differential comparison; determinant defects,
+canonical identification and proper-trace compatibility remain separate.

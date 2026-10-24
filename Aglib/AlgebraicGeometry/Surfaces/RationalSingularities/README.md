@@ -21,9 +21,30 @@ its base ring need not be complete.
 This universal vanishing property is broader than the conventional
 rational-singularity definition whose domain includes a normal Nagata
 local ring. Regularity is not used to assert Nagata. Propagation to local
-modification rings, normality of ordinary rational blowups and Gorenstein
-reduction are separate obligations.
+modification rings and Gorenstein reduction retain their separate hypotheses.
+The ordinary rational-blowup interfaces below assume Nagata explicitly.
 
 The full resolution criterion RES and its quasi-excellent corollary
-RES-QE remain open; this family presently supplies the universal vanishing
-result over an already regular local base.
+RES-QE remain open. The universal vanishing result and ordinary rational-blowup
+interfaces below are prerequisites for that construction.
+
+## Ordinary rational blowups and the full exceptional fibre
+
+[Blowup](Blowup.md) constructs the literal normalized ordinary maximal-ideal
+blowup and its ideal pullback. [IdealPowers](Blowup/IdealPowers.md) proves
+vanishing and original section images for its actual ideal powers;
+[Normality](Blowup/Normality.md) proves that the normalization map is an
+isomorphism, hence normality of the ordinary blowup. The hypotheses are a
+normal Noetherian Nagata local domain of dimension two and the genuine
+`NormalModificationH1Vanishing A` predicate.
+
+[Exceptional](Blowup/Exceptional.md) retains the full exceptional scheme,
+including nilpotents, its original residue structure map and coefficient
+bijection. [Geometry](Blowup/Exceptional/Geometry.md) gives its actual
+projective embedding, positive twist and closed-stalk regular-primary
+parameters. [Powers](Blowup/Exceptional/Powers.md) identifies original power
+layers with sections and preserves products and degree zero. Here the
+positive twist is the original ideal line `L = i*(m O_X)`, and its powers
+are restrictions of the original ideal powers. These interfaces serve the
+curve and tangent-cone consumers; they do not prove Gorenstein reduction,
+full RDP termination or existence of a resolving chain.

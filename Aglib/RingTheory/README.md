@@ -73,3 +73,35 @@ injective evaluation. These interfaces keep their actual scalar actions
 and presentations. [Nilpotent/GeometricallyReduced](Nilpotent/GeometricallyReduced.lean)
 tests geometric reducedness on finite field extensions in the base universe,
 with the other algebra in an independent universe.
+
+[Pure degree-p differential trace](Kaehler/PureDegreePTrace.md) constructs the
+original one-form trace for a monic presentation `X^p-a` in prime
+characteristic, with its original base-change and localization equations.
+[Presentation](Kaehler/PureDegreePTrace/Presentation.md) computes the actual
+relative differential decomposition, and
+[Exterior](Kaehler/PureDegreePTrace/Exterior.md) extends the trace to positive
+exterior degrees with the original wedge normalization. These allow arbitrary
+coefficient towers, including characteristic two; smoothness, finite p-rank
+and nonzero `da` are not substituted for the explicit presentation. The
+surface differential comparison remains a geometric consumer.
+
+[Finite coefficient expansion](MvPowerSeries/FiniteCoefficientExpansion.md)
+constructs an actual two-variable power-series basis over the original
+coefficient map followed by nonzero variable expansion. It retains a finite
+coefficient-field basis and requires no characteristic hypothesis. The
+pure degree-p completion application must supply its actual coefficient
+family; this module does not construct an arbitrary Cohen presentation.
+
+[BasisOfDerivations](Kaehler/BasisOfDerivations.md) constructs a basis of the
+ordinary algebraic Kähler module from finitely many actual algebra generators
+and derivations dual to them. Its basis values are the original universal
+differentials and its coordinates on `d a` are those derivations at `a`;
+generation and duality are genuine inputs, without a smoothness or freeness
+assumption. [Expanded-series derivation](MvPowerSeries/FiniteCoefficientExpansion/Derivation.md)
+extends an actual coefficient-field derivation coefficientwise to two-variable
+series and makes it a derivation over the original nonzero-expanded series
+scalar map. It retains the given field algebra, kills both spatial variables
+and needs no characteristic or continuity hypothesis. The differential-basis
+consumer must still supply algebraic generation and the spatial derivations;
+the full field/series rank conclusions and fixed-family applications remain
+separate obligations.

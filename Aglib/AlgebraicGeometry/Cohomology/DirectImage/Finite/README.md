@@ -40,3 +40,12 @@ The exact source passed with receipt `1792119248720598000-99386` in
 objects, the finite identity case, and the exported Noetherian-free
 amplitude interface. All eight inspected declarations use only
 `propext`, `Classical.choice`, and `Quot.sound`.
+
+[Trace](Trace.md) proves `finiteTraceCohomology_length_le` on an actual finite
+birational-base diagram over a finite faithful local algebra. Normality of
+the lower base and model, the original function-field identifications and
+scalar towers are retained. In every degree the upper cohomology length is
+bounded by discriminant-torsion length times the actual residue degree plus
+field degree times lower cohomology length. The trace-coordinate map is only
+base-linear; finite flatness and residue separability are not assumed.
+The uniform separable surface bound consumes this actual-diagram inequality.

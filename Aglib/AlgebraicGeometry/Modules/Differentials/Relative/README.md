@@ -74,3 +74,10 @@ General base change, the relative canonical line, and its duality
 identification remain separate mathematical results.
 The older field differential object must be compared through its original
 universal derivation rather than replaced by an unrelated choice.
+
+[FiniteType](FiniteType.md) identifies the actual relative differential
+sheaf on an affine chart with the Kähler module for the original composite
+coefficient map. For locally finite-type morphisms it proves finite type
+of that sheaf, preserving the localized universal differential. The
+surface determinant consumer must still derive its generic rank and
+line property; no smoothness or perfectness premise is substituted.

@@ -194,3 +194,9 @@ original cohomology after base change to the spectrum of the target local
 ring. It retains the original flat base-change arrow and original affine
 section/cohomology comparison. The hypotheses are qcqs and quasicoherence,
 not properness or Noetherianity; it does not interchange stalks and limits.
+
+[Stalk/Structure](Stalk/Structure.md) identifies the actual R1 structure-sheaf
+stalk with original H1 on a supplied local-spectrum pullback, linearly for
+the original stalk action. Only qcqs of the original morphism is needed.
+It serves local rationality comparisons; it does not assert arbitrary
+completion or Cohen-stalk base change.

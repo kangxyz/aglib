@@ -142,3 +142,15 @@ complete-base result has the additional Noetherian and adic-completeness
 hypotheses recorded there. [Descent](Descent/README.md) describes the actual
 binary overlap and limit comparison sources. The projective-line case is a
 corollary of the general henselian theorem.
+
+[GeneratingKernel](GeneratingKernel.md) constructs original cross-relation
+sections of the kernel of a finite generating row for a line bundle, with
+the actual tensor-inclusion formula. The scheme is arbitrary. It supplies
+the section-algebra argument on the ordinary rational blowup.
+[Bidual/Affine](Bidual/Affine.md) compares actual affine bidual sections and
+evaluation with module double duals; over regular local rings of dimension
+at most two, finite modules with generic dimension one yield the stated
+local line comparison. [Bidual/Map](Bidual/Map.md) proves naturality of
+original evaluation and extends a supplied map into an actual line to the
+bidual. The one-pole differential consumer supplies that map and its
+rank-one target; canonical-module or trace compatibility is not assumed.

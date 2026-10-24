@@ -11,3 +11,10 @@ and [PrincipalIntersection](PrincipalIntersection.lean) supply the lower length
 comparisons used by operator multiplicities. These distinguish actual
 extended-natural lengths from their natural or integer casts; finite-length
 interpretations keep the stated finiteness premises.
+
+[ScalarFactorization](ScalarFactorization.md) bounds the length of `M` by
+its original scalar torsion plus the length of `N` when actual linear maps
+`M → N → M` compose to scalar multiplication. Its local-ring restriction
+form retains the residue-field degree and needs only base-linearity of the
+maps. Lengths are in `ℕ∞`, without a splitting or finiteness premise.
+The finite trace-coordinate cohomology estimate consumes this inequality.

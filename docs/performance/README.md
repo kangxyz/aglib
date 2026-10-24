@@ -105,5 +105,9 @@ original runs; current operating guides own present procedures.
 - [Linear-system family maps: type them between the literal fibre products](linear-system-family-maps-type-them-between-the-literal-fibre-products.md)
 - [Open-immersion lifts in long proofs: keep only the defining equation](open-immersion-lifts-in-long-proofs-keep-only-the-defining-equation.md)
 
+Additional complete cases:
+
+- [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)
+
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.

@@ -31,3 +31,9 @@ precomposition. It uses finite free covers and Noetherian syzygies, without
 local-ring, finite-projective-dimension or regular-sequence premises. The
 carrier and Ext universes are the ones declared by the native scalar
 adjunction interfaces.
+
+[ScalarRegularity](ScalarRegularity.md) proves regularity of a scalar on native
+`Ext M N q`, for any natural degree, from its regularity on `M` and vanishing
+of Ext from the original `QuotSMulTop` quotient. The commutative ring and
+modules need no finiteness or projectivity. The canonical-stalk consumer must
+supply that quotient vanishing from its geometry.

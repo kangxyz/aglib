@@ -54,3 +54,14 @@ consists of the `v` with
 `v ∧ ⋀^n V ⊆ ker (⋀^(n+1) V → ⋀^(n+1) (V ⧸ N))`
 (`mem_iff_forall_wedgeLeft_mem_ker`). Consumer: the Plücker map in
 `RingTheory/Grassmannian`.
+
+[ScalarExtension](ScalarExtension.md) gives native exterior-power scalar
+extension for arbitrary modules over commutative rings, in every degree.
+It proves the original exterior map's base-change and localization laws,
+without flatness, finite generation or invertibility of two. It supplies
+the monogenic differential trace; the projective/rank interfaces in
+[BaseChange](BaseChange.lean) remain separate.
+[CyclicCokernel](CyclicCokernel.md) proves that a scalar killing a cyclic
+cokernel sends every exterior form into the image of the original exterior
+map. Degree zero, characteristic two and torsion modules are included.
+Its consumer is the exceptional one-pole differential estimate.

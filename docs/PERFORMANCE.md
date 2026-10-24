@@ -134,6 +134,14 @@ head expected by their provider.
 [Tensor witness](performance/construct-the-tensor-comparison-inside-the-shared-chart-witness.md),
 [coefficient-single cases](performance/share-the-actual-coefficient-single-data-head-before-transporting-exchange-tests.md).
 
+**Preserve an original map's literal constructor when its formula is the API.**
+For a zero-power ideal comparison, prove invertibility of the original inclusion
+and use `asIso` on it, so the forward-map equation is `rfl`. At a different
+boundary, move the complete coefficient calculation, elementary typed linear
+argument or localization-and-kernel producer over variables before specializing;
+coordinate helpers alone may leave the concrete conversion unchanged.
+[Surface-resolution cases and evidence](performance/surface-resolution-constructor-boundaries.md).
+
 **Name repeated equation proofs before elaborating statement and body.** Use
 the same named degree/transport lemma with atomic arguments inside
 `eqToHom`, `pullbackCongr` and `mapComp'`. Proof irrelevance still requires

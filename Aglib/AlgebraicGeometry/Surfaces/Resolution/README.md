@@ -125,12 +125,14 @@ The full singular-surface resolution criterion RES and its quasi-excellent
 corollary RES-QE remain open. The normal-graph, vanishing and necessity
 results above do not supply the converse construction.
 
-The remaining argument includes the geometric canonical-module and trace
-comparison, Grauert–Riemenschneider vanishing, the uniform original-H1
-bound and rational/Gorenstein reduction, the genuine child tangent-cone
-presentation, persistent marking and RDP termination, complete-local degree
-induction, and descent and globalization of the prescribed normalized
-chain. These statements are not part of the frozen prerequisite cohort.
+The remaining argument includes global canonical-module and integral-trace
+comparisons, full coefficient-valued curve Serre duality, canonical
+restriction, rational/Gorenstein reduction, geometric production of the
+genuine child tangent-cone hypotheses, persistent marking and full RDP
+termination, complete-local degree induction, and descent and globalization
+of the prescribed normalized chain. The completed interfaces below supply
+parts of this argument under their stated hypotheses; they do not supply
+the converse resolution construction.
 
 The [monic-quadratic kernel theorem](../../../RingTheory/GradedAlgebra/MonicQuadratic.md)
 assumes both an actual relation and the genuine Hilbert function
@@ -144,3 +146,44 @@ original selected point under its actual completion or complete-base
 hypotheses. The marking and the original finite-prefix residue-finiteness
 conditions remain inputs. Its local termination conclusion does not
 construct the required marking or an arbitrary global resolving chain.
+
+## Additional prerequisites and their consumers
+
+[Finite domination](../Birational/FiniteDomination.md) constructs the actual
+normal finite diagram used by the
+[finite separable H1 transfer](../../Cohomology/Proper/FiniteExtension.md).
+The latter retains a genuine lower uniform bound, Nagata normal local
+surface bases and original function-field separability. The
+[maximal-model construction](../../Cohomology/Proper/MaximalModel.md) consumes
+such a uniform bound; its
+[complete-local R1 consequence](../../Cohomology/Proper/MaximalModel/R1.md)
+uses the original higher direct image. Neither supplies a resolving chain.
+
+[Chosen-embedding GR](../../Cohomology/Proper/GrauertRiemenschneider.md)
+retains a finite injective local map from a regular local surface base, a
+compatible actual closed embedding, a complete normal local surface target
+and a supplied normal proper birational model of dimension at most two.
+[Unit-coefficient curve Serre](../../Cohomology/Duality/Projective/Relative/CohenMacaulayCurve/Serre.md)
+retains the closed-stalk regular-primary parameter condition and `1 ≤ n`.
+The intrinsic-line coefficient concentration and generic affine coefficient
+model do not themselves supply full coefficient-valued Serre duality.
+
+[Ordinary rational blowups](../RationalSingularities/README.md#ordinary-rational-blowups-and-the-full-exceptional-fibre)
+and [conditional quadratic charts](../../../RingTheory/Blowup/README.md#conditional-quadratic-charts-and-differential-images)
+provide original-map, ideal-power and local marked-successor primitives.
+Their rationality, full-kernel, Hilbert-function and marking premises remain
+explicit. A supplied normalized chain, its cohomological consequences and
+its pointwise comparisons are distinct from existence and termination of a
+resolving chain. RES and RES-QE remain open.
+
+[NormalizedPointBlowupChain](NormalizedPointBlowupChain.md) records a supplied
+finite sequence of literal ordinary blowups at closed nongeneric points,
+each followed by normalization in its original function field. Its index
+is the actual composite arrow. Integrality, normality, dominance and the
+original function-field isomorphism are derived without Noetherian or Nagata
+hypotheses. Finiteness of normalization, hence chain properness, needs its
+own hypotheses and is not automatic. The
+[completion point comparison](../../Descent/CompletionPointBlowup.md) supplies
+the one-step consumer interface under its actual domain-completion and
+normal-upper-model assumptions. The full finite-chain descent capstone and
+existence of a resolving chain remain open; this chain type supplies neither.

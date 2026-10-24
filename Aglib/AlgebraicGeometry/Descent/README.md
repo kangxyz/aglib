@@ -21,3 +21,23 @@ along faithfully flat ring maps, finite presentation, invertibility and ideals;
 [ModuleCat/Descent](../../Algebra/Category/ModuleCat/Descent/README.md) proves
 effective descent of modules along faithfully flat ring maps, as `IsStackFor`
 for the extension-of-scalars pseudofunctor on `CommRingCatᵒᵖ`.
+
+[CompletionNormalization](CompletionNormalization.md) proves finiteness and
+the actual normalization/completion comparison for a proper birational
+integral model over a Noetherian local domain of dimension two, assuming
+the actual completion is a domain, the pullback is integral and its stalks
+are normal off the original closed fibre. The completion and structural
+maps are retained. These conditional descent interfaces do not construct
+a normalized resolving chain or assert arbitrary completion base change.
+
+[CompletionPointBlowup](CompletionPointBlowup.md) proves the actual
+residue-point cartesian square over the original closed fibre, full
+point-centre equality and ordinary flat blowup base change. Its one-step
+`exists_normalizedPointCompletion` retains a proper birational integral
+model over a Noetherian local domain of dimension two, domain completion,
+an actual isomorphism of the integral upper model with the literal pullback,
+normal upper stalks and a specified closed nongeneric upper point. It derives
+finite lower normalization and the original normalized-blowup comparison;
+neither is assumed. The supplied-chain consumer retains normal completion.
+No Nagata premise is added to this step, and no resolving upper chain or
+global descent capstone is constructed here.

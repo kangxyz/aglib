@@ -13,6 +13,8 @@ public import Aglib.LinearAlgebra.DefectRestriction
 public import Aglib.LinearAlgebra.DirectSum.Kernels
 public import Aglib.LinearAlgebra.Dual.SplitInjection
 public import Aglib.LinearAlgebra.ExteriorPower.BaseChange
+public import Aglib.LinearAlgebra.ExteriorPower.CyclicCokernel
+public import Aglib.LinearAlgebra.ExteriorPower.ScalarExtension
 public import Aglib.LinearAlgebra.ExteriorPower.Semilinear
 public import Aglib.LinearAlgebra.ExteriorPower.TopDegree
 public import Aglib.LinearAlgebra.ExteriorPower.Wedge

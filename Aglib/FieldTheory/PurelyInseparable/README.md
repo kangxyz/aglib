@@ -38,3 +38,10 @@ no bound on the imperfection degree of `K` is used.
 constant-root theorem. The perfect rational-function construction in
 [RationalFunction](RationalFunction.lean) remains a separate interface
 with its original hypotheses and declaration names.
+
+[NonPowerComplement](NonPowerComplement.md) constructs, for a field of prime
+characteristic and an element outside its Frobenius image, an actual maximal
+subfield avoiding that element and containing the image. The extension has
+degree `p`, with the original element as monogenic root and the basis of its
+powers. Infinite ambient p-rank is allowed. The coefficient-expansion and
+pure degree-p differential-trace consumers retain this original inclusion.

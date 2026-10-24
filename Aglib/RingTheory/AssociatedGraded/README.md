@@ -28,3 +28,10 @@ associated-graded quotient factor.
 coordinate pushout comparison to this quotient, including its direct-sum
 variant. These algebraic suppliers feed the geometric graded realizations in
 [Grothendieck existence](../../AlgebraicGeometry/Cohomology/GrothendieckExistence/README.md).
+
+[Cotangent/Graded](Cotangent/Graded.md) bundles the original polynomial map
+to the native Rees-quotient associated graded ring over the actual coefficient
+quotient. It preserves the existing homogeneous carriers and grading.
+Spanning by the chosen ideal generators or their cotangent classes yields
+surjectivity. This feeds the full quadratic-kernel presentation; it does
+not supply a Hilbert function from surface geometry.

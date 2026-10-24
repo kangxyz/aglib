@@ -116,3 +116,11 @@ budget. The independent arbitrary-universe
 the unconditional qcqs/quasicoherent constructor, the literal counit
 components and identity-on-sections formula. All six inspected
 declarations use only the three standard axioms.
+
+[GlobalSections](GlobalSections.md) compares installed derived global sections
+after the original affine pushforward, for every quasicoherent coefficient.
+The target need not be affine; its specified structural scalar map is
+composed with the actual map on global sections. The resulting original
+cohomology linear equivalence preserves units and coefficient naturality,
+without Noetherianity or properness. Its current consumer is the finite
+trace-coordinate cohomology comparison.

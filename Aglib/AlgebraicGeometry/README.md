@@ -51,3 +51,13 @@ the full arbitrary-base `LocalFreeCohomologyBaseChange` family remains an explic
 input, with the exact conditions recorded in [INTERFACES.md](../../docs/INTERFACES.md).
 
 Focused interface guides: [Finite correspondences on the two-dimensional torus](Torus/FiniteCorrespondence/README.md).
+
+The [surface families](Surfaces/README.md) also use original-map
+[finite function-field normalization](Normalization/FiniteFunctionField.md).
+For an integral scheme and a specified finite extension of its actual
+function field, finiteness and local Noetherianity retain the required
+Nagata finite-type chart hypotheses. The construction uses the original
+generic map and makes no finite-flat or finite-étale assertion.
+The [cohomology](Cohomology/README.md), [duality](Cohomology/Duality/Projective/Relative/README.md)
+and [descent](Descent/README.md) guides describe the completed prerequisites
+and their conditions; general singular-surface resolution remains open.
