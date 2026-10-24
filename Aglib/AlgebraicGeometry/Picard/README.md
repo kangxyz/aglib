@@ -271,6 +271,22 @@ Noetherian test schemes by `Q` is one of `Pic^{φ,ψ,r}_m` by `Q` (`fineRepresen
 (Kleiman, arXiv:math/0504020v1, proof of Thm 4.8, pp. 29–30, with `φ₀(n) = φ(n - m)` in place of the
 printed `φ(m + n)`).
 
+[Strata/DivisorPolynomial](Strata/DivisorPolynomial.lean): for a closed immersion `i` with `ι ≃ Fin
+(N + 1)`, a closed subscheme `V ⊆ X_T` flat over `T` (for example a relative effective Cartier
+divisor) and a line bundle `L` with `L^{-1} ≅ I_V` (`O(D) ≅ L` for a divisor): `C_φ` for `L` at `t`
+is `χ(X_t, (I_V)_t(n)) = φ(n)` for all `n` (`hasFiberDualEulerPolynomial_iff_of_iso`, any `M ≅
+L^{-1}`; `hasFiberDualEulerPolynomial_iff_idealModule_comap` with the ideal of the fibre `V_t`);
+with `C_ψ` at `t` the fibre at `t` of the image of `V` in `P^N_A ×_{Spec A} T` has Hilbert
+polynomial `ψ − φ₀` (`subschemeHilbertPolynomial_comap_pointMap_fromSpecResidueField_eq_sub`); if
+`L` satisfies `C_{φ₀}` and `C_ψ` holds at every point, the image of `V` is a point of `Hilb^{ψ −
+φ₀}(T)` (`isHilbertFamily_map_immersionBaseChange_of_hasFiberDualEulerPolynomial`) and every
+field-point fibre has Hilbert polynomial `θ = ψ − φ₀`
+(`subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_hasFiberDualEulerPolynomial`, the fibre
+hypothesis of the construction of points of `Div^θ_X`), also from `fineCondition φ₀ ψ m r` at every
+point (`Strata.subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_fineCondition_holds`, `f` flat).
+Kleiman, arXiv:math/0504020v1, p. 30: "Set `θ(n) := ψ(n) − φ₀(n)`. Plainly `Z` lies in
+`Hilb^θ_{X/S}(n)`".
+
 [LinearSystem](LinearSystem/) gives the linear-system functor `LinSys_{L/X/S}` (Kleiman, Def. 3.12,
 p. 25, in ideal form: `I_D ≅ q_T^* N ⊗ g_T^* L^∨` for a line bundle `N` on `T`, so Kleiman's `N` is
 the dual of this one) and its representability by `Gr(E, r − 1)`, `E = p_* L`, in the locally free

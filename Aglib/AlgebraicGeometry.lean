@@ -2442,6 +2442,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Fiber
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.GlobalGeneration
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Untwist
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.ClosedImmersion
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Fiber
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Functor
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.PointPullback
 public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.QuasiProjective
@@ -2532,6 +2533,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.OpenExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.Order
 public import Aglib.AlgebraicGeometry.IdealSheaf.PowerContainment
 public import Aglib.AlgebraicGeometry.IdealSheaf.QuotientModule
+public import Aglib.AlgebraicGeometry.IdealSheaf.QuotientModule.Map
 public import Aglib.AlgebraicGeometry.IdealSheaf.Restriction
 public import Aglib.AlgebraicGeometry.Limits.ArrowBaseChange
 public import Aglib.AlgebraicGeometry.Limits.CartesianBaseChange
@@ -3553,6 +3555,7 @@ public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
+public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorPolynomial
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.Twist
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers

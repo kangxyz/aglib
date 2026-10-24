@@ -4,6 +4,13 @@
 
 [QuotientModule](QuotientModule.lean) defines the structure module `quotientModule W = cokernel (idealInclusion W.subschemeι)` of a closed subscheme with its projection `toQuotientModule`, the short exact sequence `shortComplex_shortExact`, `quotientModuleIsoPushforward : 𝒪_X / I_W ≅ i_* 𝒪_W`, quasi-coherence, and coherence on locally Noetherian schemes (`affineLocallyFiniteType_quotientModule`, `Scheme.Hom.affineLocallyFiniteType_idealModule`). [Order](Order.lean) proves `le_of_idealInclusion_factor`: closed subschemes are ordered by factorization of their ideal inclusions. [Comap](Comap.lean) proves that Mathlib's `subschemeMap (I.comap b) I b (I.le_map_comap b)` forms a cartesian square (`isPullback_subschemeMap_comap`).
 
+[QuotientModule/Map](QuotientModule/Map.lean) proves `quotientModulePushforwardIso : j_* 𝒪_V ≅
+𝒪_{V.map j}` for a closed subscheme `V ⊆ X` closed in `Y` (`IsClosedImmersion (V.subschemeι ≫ j)`),
+through `mapSubschemeIso` and the pushforward presentations `quotientModuleIsoPushforward`; it is
+the pushforward counterpart of `quotientModulePullbackIso`
+([BaseChange/QuotientModule](BaseChange/QuotientModule.lean)). The [fibres of embedded
+families](../HilbertScheme/Immersed/Fiber.lean) consume it.
+
 [Monomorphism](Monomorphism.lean) compares closed subschemes along a monomorphism `j : X ⟶ Y`
 (for example an immersion). It builds on `ker_comap_of_mono`
 ([Closed/MonoFactor](Closed/MonoFactor.lean)): for `z : Z ⟶ X` with `z ≫ j` a closed immersion,

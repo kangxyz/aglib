@@ -56,6 +56,7 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [Immersed/Representability](Immersed/Representability.lean) | `immersedHilbertSchemeOpens`, `immersedHilbertSchemeOver`, `immersedHilbertScheme`, `immersedHilbertSchemeι`, `isImmersion_immersedHilbertSchemeι`, `isNoetherian_immersedHilbertScheme`, `immersedHilbertSchemeToHilbertScheme`, `exists_lift_immersedHilbertSchemeι_iff`, `locallyNoetherianImmersedHilbertSubfunctorRepresentableBy`, `locallyNoetherianImmersedHilbertFunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_eq_comap`), `universalImmersedHilbertFamily`, `universalImmersedHilbertPoint`, `isImmersedHilbertFamily_universalImmersedHilbertFamily`, `map_universalImmersedHilbertFamily`, `exists_immersedHilbertScheme_representableBy` | `A` Noetherian, `e : ι ≃ Fin (n + 1)`, `[IsImmersion i]`, natural `r ≥ hilbertRegularityBound n Φ`, any `φ`; `hC` (`φ` cuts out `i.ker`) only for the lifting criterion, the representations, the universal point and the statements about the universal family |
 | [Immersed/QuasiProjective](Immersed/QuasiProjective.lean) | `isHQuasiProjective_immersedHilbertSchemeOver_hom` | `A` Noetherian, `[IsImmersion i]`, any `φ` |
 | [Immersed/ClosedImmersion](Immersed/ClosedImmersion.lean) | `immersedHilbertSubfunctorIsoClosedHilbertSubfunctor`, `locallyNoetherianImmersedHilbertFunctorIsoOfIsClosedImmersion`, `isHQuasiProjective_closedHilbertSchemeOver_hom`, `locallyNoetherianImmersedHilbertFunctorRepresentableByOfIsClosedImmersion` (`_homEquiv_coe`, `_homEquiv_coe_map`, `_homEquiv_id_coe`), `exists_locallyNoetherianImmersedHilbertFunctor_representableBy_of_isClosedImmersion` | `i` a closed immersion; the isos: `[Finite ι]` for the restricted one; the rest: `A` Noetherian, `e : ι ≃ Fin (n + 1)`, natural `r ≥ hilbertRegularityBound n θ`, `φ` with `imageIdealData (sectionPairing ι r φ) = i.ker` |
+| [Immersed/Fiber](Immersed/Fiber.lean) | `isPullback_embeddedFiberι_pointMap`, `comap_pointMap_map_immersionBaseChange`, `isClosedImmersion_comap_subschemeι_comp_embeddedFiberι`, `subschemeHilbertPolynomial_comap_pointMap_map_immersionBaseChange`, `eval_subschemeHilbertPolynomial_comap_pointMap_map_immersionBaseChange`, `flat_map_immersionBaseChange_subschemeι_comp_snd`, `isIso_idealPullbackMap_fieldPoint`, `fieldPointIdealPullbackIso`, `eval_subschemeHilbertPolynomial_comap_pointMap_map_immersionBaseChange_of_flat`, `subschemeHilbertPolynomial_comap_pointMap_map_immersionBaseChange_eq_sub` | field point `x : Spec K ⟶ T` at a variable field, any `T`; the square: any `i`; the image: `[IsPreimmersion i]`, `V` closed in `P_T`; the Euler-characteristic formula: closed immersion `i`, `e : ι ≃ Fin (N + 1)`, any closed `V`; flatness of the image: any `hi`; the pulled-back ideal and `ψ − φ₀`: `V` flat over `T` |
 | [Divisor/Functor](Divisor/Functor.lean) | `IsRelativeDivisorFamily` (`.flat`, `.isHilbertFamily_map`, `.isClosedImmersion`, `.comap`, `.of_isRelativeEffectiveCartier`), `isRelativeDivisorFamily_iff_of_isClosedImmersion`, `relativeDivisorFunctor` (`_map_coe`), `locallyNoetherianRelativeDivisorFunctor`, `relativeDivisorSubfunctor` (a `Subfunctor` of `immersedHilbertFunctor`), `relativeDivisorFunctorObjEquiv`, `relativeDivisorFunctorIso` | `i : X ⟶ P^n_A` a preimmersion over `Spec A`, any `T`; the closed forms: `[IsClosedImmersion i] [Finite ι]` |
 | [Divisor/Representability](Divisor/Representability.lean) | `locallyNoetherianRelativeDivisorSubfunctor`, `divisorLocus`, `mem_divisorLocus`, `preimage_divisorLocus_eq_top_iff`, `isOpenSubfunctor_locallyNoetherianRelativeDivisorSubfunctor`, `preimage_divisorLocus_homEquiv_id_eq_top_iff`, `divisorSchemeOver`, `divisorScheme`, `divisorSchemeι`, `isOpenImmersion_divisorSchemeι`, `divisorSchemeToHilbertScheme`, `locallyNoetherianRelativeDivisorFunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_coe_eq_comap`), `universalDivisor`, `isRelativeEffectiveCartier_universalDivisor`, `universalDivisor_eq`, `isHQuasiProjective_divisorSchemeOver_hom`, `isNoetherian_divisorScheme` (`_of_isHQuasiProjective`) | `[Finite ι]`, `i` a closed immersion, `[Flat πX]`, locally Noetherian test schemes; any representation `E` of `Hilb^θ_X` by `H`; H-qp: `A` Noetherian and `H` H-qp |
 | [Divisor/ClosedHilbertScheme](Divisor/ClosedHilbertScheme.lean) | `exists_locallyNoetherianRelativeDivisorFunctor_representableBy` | `A` Noetherian, `e : ι ≃ Fin (n + 1)`, `i` a closed immersion, `[Flat πX]` |
@@ -356,19 +357,35 @@ The coproduct and nonemptiness leaves use [IdealSheaf/EmptySubscheme](../IdealSh
 H-quasi-projective over `Spec A` (`ProjectiveSpace.isHQuasiProjective_hilbertSchemeOver_hom`), as a
 locally closed subscheme of the H-projective Grassmannian; hence separated and of finite type.
 
-[Divisor](Divisor/Functor.lean): for a closed immersion `i : X ⟶ P^n_A` over `Spec A` with `X`
-flat over `A`, the functor `Div^θ_X` (`relativeDivisorFunctor i hi θ`, X-first: relative
-effective Cartier divisors `D ⊆ X ×_{Spec A} T` over `T` whose images in `P^n_A ×_{Spec A} T`
-have fibre Hilbert polynomial `θ`; Kleiman, arXiv:math/0504020v1, Def. 3.6, p. 23) is an open
-subfunctor of the Hilbert functor of `X` on locally Noetherian test schemes
-(`isOpenSubfunctor_locallyNoetherianRelativeDivisorSubfunctor`), and for any representation `E`
-of the latter by `H` it is represented by the open subscheme `divisorSchemeOver E` of `H`
-(`fiberCartierLocus` of the universal family), with universal divisor `universalDivisor E`
-(Kleiman, Thm 3.7, statement p. 23, proof p. 24). Over a Noetherian `A`, the closed Hilbert
-scheme of `i.ker` represents the Hilbert functor of `X`
+**Fibres of an embedded family.** [Immersed/Fiber](Immersed/Fiber.lean): for `i : X ⟶ P^N_A`, `g : T
+⟶ Spec A` and a field point `x : Spec K ⟶ T`, the fibre `X_x = X ×_{Spec A} Spec K` is the base
+change of `i_T` along `pointMap ι g x`, by the cartesian square of `b_x : X_x ⟶ X_T`, the fibre
+embedding `embeddedFiberι i (x ≫ g)`, `i_T` and `pointMap ι g x`; hence the fibre at `x` of the
+image of a closed `V ⊆ X_T` is the image of the fibre `V_x`, its Hilbert polynomial is that of the
+pushforward of `𝒪_{V_x}`, and for a closed immersion `i` its value at `n` is `χ(X_x, O(n)) − χ(X_x,
+I_{V_x}(n))` (additivity on `0 → I_{V_x} → 𝒪_{X_x} → 𝒪_{V_x} → 0` pushed to `P^N_K`). For `V` flat
+over `T`, `I_{V_x} ≅ b_x^* I_V` and the image is flat, and evaluations `ψ`, `φ₀` give the polynomial
+`ψ − φ₀`. This is the computation behind Kleiman's "Plainly `Z` lies in `Hilb^θ_{X/S}(n)`"
+(arXiv:math/0504020v1, p. 30); the [Picard strata](../Picard/Strata/DivisorPolynomial.lean) consume
+it.
+
+[Divisor](Divisor/Functor.lean): for a closed immersion `i : X ⟶ P^n_A` over `Spec A` with `X` flat
+over `A`, the functor `Div^θ_X` (`relativeDivisorFunctor i hi θ`, X-first: relative effective
+Cartier divisors `D ⊆ X ×_{Spec A} T` over `T` whose images in `P^n_A ×_{Spec A} T` have fibre
+Hilbert polynomial `θ`; Kleiman, arXiv:math/0504020v1, Def. 3.6, p. 23) is an open subfunctor of the
+Hilbert functor of `X` on locally Noetherian test schemes
+(`isOpenSubfunctor_locallyNoetherianRelativeDivisorSubfunctor`), and for any representation `E` of
+the latter by `H` it is represented by the open subscheme `divisorSchemeOver E` of `H`
+(`fiberCartierLocus` of the universal family), with universal divisor `universalDivisor E` (Kleiman,
+Thm 3.7, statement p. 23, proof p. 24). Over a Noetherian `A`, the closed Hilbert scheme of `i.ker`
+represents the Hilbert functor of `X`
 (`locallyNoetherianImmersedHilbertFunctorRepresentableByOfIsClosedImmersion`,
 [Immersed/ClosedImmersion](Immersed/ClosedImmersion.lean)), so `Div^θ_X` is represented by an
-H-quasi-projective Noetherian scheme (`exists_locallyNoetherianRelativeDivisorFunctor_representableBy`).
+H-quasi-projective Noetherian scheme
+(`exists_locallyNoetherianRelativeDivisorFunctor_representableBy`). On the Picard strata the fibre
+hypothesis of `IsRelativeDivisorFamily.of_isRelativeEffectiveCartier` is
+`RelativePicard.subschemeHilbertPolynomial_comap_pointMap_eq_sub_of_hasFiberDualEulerPolynomial`
+([Picard/Strata/DivisorPolynomial](../Picard/Strata/DivisorPolynomial.lean)).
 
 ## Open toward Nitsure, §§5–6, for `P^n_A`
 
