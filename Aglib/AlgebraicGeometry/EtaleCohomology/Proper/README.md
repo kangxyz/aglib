@@ -200,3 +200,9 @@ annihilators, including empty products and all moduli. The constant direct-image
 specialization retains the original finite sources and value kernels. Applying
 the same genuine-module lift to the whole original abelian product therefore
 supplies the product target adapter for a given finite cogenerator embedding.
+
+The [local cohomology criteria](Local/README.md) reduce the original
+`cohomologyPullback` to explicit finite-embedding and finite-annihilator tests.
+The projective-line specialization retains `n ≠ 0`, its henselian and
+residue-field hypotheses, and `hfinite`; it does not establish general proper
+base change.

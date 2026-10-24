@@ -104,6 +104,12 @@ cancellation maps use the actual evaluation, associator, braiding and units.
 [FinitePresentation](FinitePresentation.lean), [Bidual](Bidual.lean) and
 [TensorFaithful](TensorFaithful.lean) retain the original line-bundle objects.
 
+[Root pairs](Root/README.md) retains the actual target power isomorphism and
+original pullback maps. Affine square-zero object lifting holds for every `n`;
+lifting a prescribed root-pair isomorphism additionally requires
+`IsUnit (n : Γ(X, ⊤))`. These results do not assert global, formal, or
+henselian root existence.
+
 ## Formal lifting and descent
 
 [Formal](Formal/README.md) documents the square-zero, completion, formal-system
