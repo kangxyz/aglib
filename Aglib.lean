@@ -4157,6 +4157,7 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.RelativeCover
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Subsheaf
+public import Aglib.AlgebraicGeometry.Picard.FiberCondition.Translation
 public import Aglib.AlgebraicGeometry.Picard.Fppf
 public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
@@ -4178,6 +4179,7 @@ public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
+public import Aglib.AlgebraicGeometry.Picard.Strata.Twist
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening

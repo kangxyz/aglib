@@ -212,10 +212,10 @@ Noetherian `T` for flat `f`, with each level `h^0(X_t, L_t(m)) = r` of the vanis
 pointwise statements.
 
 The Picard strata use three layers: `Picard/FiberCondition/*` is the generic structure
-`FiberCondition p` with its subsheaf, open-subfunctor and cover lemmas;
+`FiberCondition p` with its subsheaf, open-subfunctor, cover and translation lemmas;
 `Picard/Strata/{FiberConditions,BaseAndRank}` state the pointwise fibre predicates `HasFiber…` of a
-line bundle at a point; `Picard/Strata/Conditions` bundles them as `FiberCondition` values
-(`Strata.eulerCondition`, …).
+line bundle at a point; `Picard/Strata/{Conditions,Twist}` bundle them as `FiberCondition` values
+(`Strata.eulerCondition`, …) and relate the strata by twisting.
 
 [FiberCondition/RelativeCover](FiberCondition/RelativeCover.lean): if every point where a fiber
 condition `C` holds satisfies some `D j`, the opens of the conjunctions `C ⊓ D j` cover the open of
@@ -250,6 +250,26 @@ fibres of `X_T ⟶ T` have `h^0(L) = r` and no higher cohomology of `L`
 the class of `O_{X_T}(m)`, equals `m • twistClass i 1 T` (`twistClass_eq_zsmul`) and is natural in
 `T`, and translation by `m • twistClass i 1 T` carries the fine condition at `(φ, ψ, m, r)` to the
 one at `(φ₀, ψ, 0, r)`, `φ₀(n) = φ(n − m)` (`fineCondition_holds_add_twistClass`).
+
+[FiberCondition/Translation](FiberCondition/Translation.lean): for a family of classes `c T ∈ Pic(X
+×_S T)` compatible with pullback, translation `ξ ↦ ξ + γ_T` by the image `γ_T` of `c T` in
+`Pic_{X/S,(fppf)}(T)` is a natural bijection with inverse `ξ ↦ ξ - γ_T` (`translationNatIso`); if
+two fiber conditions satisfy `D(a + c T) ↔ C(a)` at every point, it carries `Pic^C` onto `Pic^D` on
+every `S`-scheme (`FiberCondition.mem_subfunctor_iff_translation`), giving `Pic^C ≅ Pic^D`
+(`FiberCondition.subfunctorTranslationIso`; on locally Noetherian test schemes
+`FiberCondition.locallyNoetherianSubfunctorTranslationIso`) and the transport of a representation of
+`Pic^D` to `Pic^C` (`FiberCondition.representableByOfTranslation`). No hypothesis on `p` or `S` is
+used. [Strata/Twist](Strata/Twist.lean): the twist `τ_m : ξ ↦ ξ + o_T(m)` of `Pic_{X/S,(fppf)}`,
+with `o_T(m)` the image in `Pic_{X/S,(fppf)}(T)` of the class of `O_{X_T}(m)` (`twistNatIso`,
+`twistSection`); for a closed immersion `i` with `ι ≃ Fin (N + 1)` and `f` flat it carries
+`Pic^{φ,ψ,r}_m` onto `Pic^{φ₀,ψ,r}_0`, `φ₀ = φ.comp (X - C m)`, on every `S`-scheme
+(`mem_fine_iff_twist`), and likewise `Pic^φ_m` onto `Pic^{φ₀}_0` (`mem_coarse_iff_twist`) and the
+locus of `C_m` onto that of `C_0` (`mem_coarseLevel_iff_twist`); it induces `Pic^{φ,ψ,r}_m ≅
+Pic^{φ₀,ψ,r}_0` (`fineTwistIso`; on locally Noetherian test schemes `fineLocallyNoetherianTwistIso`)
+and `Pic^φ_m ≅ Pic^{φ₀}_0` (`coarseTwistIso`), and a representation of `Pic^{φ₀,ψ,r}_0` on locally
+Noetherian test schemes by `Q` is one of `Pic^{φ,ψ,r}_m` by `Q` (`fineRepresentableByOfTwist`)
+(Kleiman, arXiv:math/0504020v1, proof of Thm 4.8, pp. 29–30, with `φ₀(n) = φ(n - m)` in place of the
+printed `φ(m + n)`).
 
 [LinearSystem](LinearSystem/) gives the linear-system functor `LinSys_{L/X/S}` (Kleiman, Def. 3.12,
 p. 25, in ideal form: `I_D ≅ q_T^* N ⊗ g_T^* L^∨` for a line bundle `N` on `T`, so Kleiman's `N` is
