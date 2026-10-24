@@ -58,3 +58,11 @@ contains the disjoint and the increasing cases). Special cases:
 one). The proof checks that the range of the diagonal (an immersion) is closed, through the open
 immersions `U k ×_S U k ⟶ P ×_S P` (`Scheme.Pullback.range_map`). No finiteness or Noetherian
 hypothesis.
+
+[Separated/DisjointUnion](Separated/DisjointUnion.lean): an open `U ⊆ P` that is the union of
+pairwise disjoint opens `V k`, each separated over `S`, is separated over `S`
+(`isSeparated_ι_comp_of_iSup_eq_of_pairwise_disjoint`; Kleiman, arXiv:math/0504020v1, proof of Thm
+4.8, p. 28, disjoint unions, for an open subscheme), through `Scheme.Opens.range_ι_comp_ι_of_le`
+(for `V ≤ U`, `U.ι ⁻¹ᵁ V ⟶ U ⟶ P` has image `V`) and `isSeparated_comp_iff_of_range_eq` (open
+immersions with the same image are separated over `S` together). No finiteness or Noetherian
+hypothesis. Consumer: `Picard/Scheme/Separated`.

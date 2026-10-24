@@ -152,14 +152,8 @@ Not yet proved here:
 
 - that premise under universal O-connectedness;
 - the bijectivity of `toFppfPicardSheaf` with a section (target 4 of the plan);
-- representability: the abstract quotient step (`Scheme.representableByOfFppfQuotient`,
-  [Sites/FppfQuotient](../Sites/FppfQuotient.lean)), the Zariski sheaf input of the gluing
-  ([ZariskiSheaf](ZariskiSheaf.lean)), the open subscheme `Z` of `Div^{ψ − φ₀}_X` and its universal
-  Abel class ([Abel/Divisor](Abel/Divisor.lean)), the relation `Z ×_P Z`
-  ([Strata/Relation](Strata/Relation/)), the local sections
-  ([Strata/LocalSections](Strata/LocalSections.lean)) and the representability of the fine strata
-  `Pic^{φ₀,ψ,k+1}_0` ([Strata/Quotient](Strata/Quotient.lean),
-  [Strata/Representability](Strata/Representability.lean)) are proved; the gluing remains.
+- representability on all test schemes, beyond locally Noetherian ones (Noetherian approximation
+  of line bundles; deferred in [PICARD_PLAN.md](../../../docs/PICARD_PLAN.md)).
 
 Source provenance: `R5Lab.AlgebraicGeometry.Curves.RelativePicard` and
 `RelativePicard/Group.lean`. Retained names: `basePicardFunctor`, `familyPicardFunctor`,
@@ -443,6 +437,51 @@ with `q^* λ = α_Z` (`fppfPicardSheaf_map_abelQuotientFppfClass`,
 stratum `Pic^{φ₀,ψ,k+1}_0` is represented on locally Noetherian test schemes by the
 H-quasi-projective `Q`**. The focused tests are
 `AglibTest.AlgebraicGeometry.Picard.Strata.{Quotient,Representability}` (with axiom guards).
+
+[Scheme/Glue](Scheme/Glue.lean): for a closed immersion `i : X ⟶ P^N_A`, `ι ≃ Fin (N + 1)`,
+`p = i ≫ toSpec A ι` flat with geometrically integral fibres, and the premise
+`Strata.FineStrataRepresentableByHQuasiProjective i N e` (each `Pic^{φ₀,ψ,k+1}_0` represented on
+locally Noetherian test schemes by an H-quasi-projective scheme), the cover
+`picardSubfunctorCover h` of `Pic_{X/S,(fppf)}` on locally Noetherian test schemes by the fine
+strata `Pic^{φ,ψ,k+1}_m`, indexed by `ULift (ℚ[X] × ℚ[X] × ℤ × ℕ)`, each represented through the
+twist (`Strata.fineRepresentableByOfTwist`); the glued `picardScheme h` with
+`picardSchemeRepresentableBy h` (`SubfunctorCover.representableByGlued`,
+`isZariskiSheaf_fppfPicardSheaf_forget`), the universal section `picardUniversalSection h`
+(`picardSchemeRepresentableBy_homEquiv`, `…_homEquiv_id`), the charts as open subfunctors
+(`map_picardUniversalSection_mem_iff`) with image the open of `fineCondition φ ψ m (k + 1)`
+(`range_picardChart`) and H-quasi-projective structure maps, and `locallyOfFiniteType_picardScheme`.
+No Noetherian hypothesis. Kleiman, arXiv:math/0504020v1, proof of Thm 4.8, pp. 28–30; Stacks, Tag
+01JJ.
+
+[Scheme/Stratification](Scheme/Stratification.lean): with `ξ` the universal section,
+`picardStratumOpens h φ` (open of `C_φ`: open and closed, pairwise disjoint, covering),
+`picardLevelOpens h φ m` (open of `C_φ ⊓ C_m`: monotone in `m`, union `picardStratumOpens h φ`),
+`picardBaseLevelOpens h φ ψ m` (the disjoint union of the chart images over the ranks), and the
+functorial meaning `picardSchemeRepresentableBy_homEquiv_mem_iff` (a morphism lands in the open of
+`C` iff its section lies in `Pic^C`). Over a Noetherian `A`, under
+`Strata.FiniteFineStrataRanks i N e`, finitely many `(ψ, k)` occur at `(φ, m)`
+(`finite_setOf_fineCondition_holds_of_finiteFineStrataRanks`) and
+`isHQuasiProjective_picardLevelOpens_of_finiteFineStrataRanks` holds (finite disjoint union,
+`IsHQuasiProjective.of_iSup_eq_top_of_pairwise_disjoint`). Kleiman, Thm 4.8 (2), pp. 27–29.
+
+[Scheme/Separated](Scheme/Separated.lean): `isSeparated_picardScheme` (Kleiman, Thm 4.8 (1), proof
+p. 28): each `Pic^{φ,ψ}_m` is the disjoint union of separated chart images, and the `Pic^{φ,ψ}_m`
+cover, increase with `m` and are disjoint for distinct `(φ, ψ)`
+(`isSeparated_of_cover_of_disjoint_of_monotone`). No Noetherian hypothesis, no rank premise.
+
+[Representability](Representability.lean): `exists_representableBy_fppfPicardSheaf_of_fineStrata`
+collects target 5 (Kleiman, Thm 4.8, pp. 27–31, fppf form on locally Noetherian test schemes over a
+Noetherian `A`) under the two premises.
+[Representability/FineStrata](Representability/FineStrata.lean) discharges them
+(`Strata.fineStrataRepresentableByHQuasiProjective`, `Strata.finiteFineStrataRanks`, with
+`FiberCondition.nonempty_of_holds_of_representableBy`) from
+`Strata.exists_fineCondition_representableBy` and the H-quasi-projective Noetherian `Div^{ψ−φ₀}_X`,
+and states **`exists_representableBy_fppfPicardSheaf`, target 5 with no premise**: for `A`
+Noetherian and a closed `X ⊆ P^N_A` flat over `A` with geometrically integral fibres,
+`Pic_{X/S,(fppf)}` on locally Noetherian test schemes is represented by a separated `Spec A`-scheme
+locally of finite type, the disjoint union of the open and closed `Pic^φ`, each the increasing union
+of the H-quasi-projective opens `Pic^φ_m`. Tests:
+`AglibTest.AlgebraicGeometry.Picard.{Scheme.*,Representability,Representability.FineStrata}`.
 
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
