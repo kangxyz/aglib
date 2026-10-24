@@ -210,3 +210,27 @@ Noetherian `T` for flat `f`, with each level `h^0(X_t, L_t(m)) = r` of the vanis
 (`isFiberStratum_pulledTwistLineBundle_iff`); `fiberTwistClass` gives the classes `o_T(n)` with
 `familyPicardFunctor_map_add_zsmul_fiberTwistClass`. The open-subsheaf bundling consumes these
 pointwise statements.
+
+[LinearSystem](LinearSystem/) gives the linear-system functor `LinSys_{L/X/S}` (Kleiman, Def. 3.12,
+p. 25, in ideal form: `I_D ≅ q_T^* N ⊗ g_T^* L^∨` for a line bundle `N` on `T`, so Kleiman's `N` is
+the dual of this one) and its representability by `Gr(E, r − 1)`, `E = p_* L`, in the locally free
+regime (Thm 3.13 and Ex. 3.14, pp. 25–26), for `p` proper, flat and geometrically integral over a
+locally Noetherian base, with every base-change map of `L` an isomorphism (statement 15a) and `E` of
+constant rank `r ≥ 1`. [Basic](LinearSystem/Basic.lean): `familyMap p t := (familyScheme p).map t`,
+typed between the literal fibre products (it equals the `pullback.lift` form `Scheme.Hom.familyMap`
+by `RelativePicard.Classes.familyMap_eq_familyScheme_map`), `IsLinearSystemDivisor`,
+`linearSystemFunctor` (on all of `Over S`) and `evaluationPairing`.
+[Evaluation](LinearSystem/Evaluation.lean): the evaluation map `q_T^* E_T ⟶ g_T^* L` (adjoint of the
+base-change map) and its base change. [Divisor](LinearSystem/Divisor.lean): the divisor of a line
+subbundle `u : N ⟶ E_T` and of a point of `Gr(E, k)` (`isLinearSystemDivisor_subbundleDivisor`,
+`isLinearSystemDivisor_quotientDivisor`), and nonvanishing of sections (`subbundleSection_ne_zero`,
+`pullback_fst_map_subbundleSection_ne_zero`). [Bijection](LinearSystem/Bijection.lean): `Gr(E, k)(T)
+≃ LinSys(T)` (`quotientDivisorEquiv`); no divisor over a nonempty `T` where `E = 0`
+(`isEmpty_of_isLinearSystemDivisor_of_sheafHasRank_zero`).
+[Representability](LinearSystem/Representability.lean): `linearSystemRepresentableBy` (all schemes
+over `S`), `locallyNoetherianLinearSystemRepresentableBy` (locally Noetherian test schemes),
+`exists_representableBy_linearSystemFunctor` (by a scheme proper, smooth and flat over `S`),
+`universalLinearSystemDivisor` and its universal property
+(`existsUnique_comap_universalLinearSystemDivisor`, Ex. 3.14). Open: representability by `∅` on the
+`r = 0` piece, gluing over the clopen `h^0` pieces, and the `O(D)` form, which F17 does not need.
+The focused test is `AglibTest.AlgebraicGeometry.Picard.LinearSystem` (with axiom guards).

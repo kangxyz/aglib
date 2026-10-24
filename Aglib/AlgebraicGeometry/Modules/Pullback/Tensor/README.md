@@ -22,3 +22,8 @@ that declaration's legacy `ModuleTensorPullback` premise.
 
 [PairingComp](PairingComp.lean): `pullbackPairing p ((a ⊗ 𝟙) ≫ ε) = (p^* a ⊗ 𝟙) ≫ pullbackPairing p ε`
 (`pullbackPairing_tensorSheafMap_comp`), for every morphism `p` and all modules.
+
+[PairingEquiv](PairingEquiv.lean): tensoring with a line bundle is fully faithful
+(`Invertible.tensorRightFullyFaithful`); for a perfect pairing `ε : N ⊗ L ≅ 𝒪` with `L` a line
+bundle, `j ↦ pullbackPairingOf p ε j` is a bijection `Hom(M, p^* N) ≃ Hom(M ⊗ p^* L, 𝒪)`
+(`pullbackPairingOfEquiv`).

@@ -55,6 +55,10 @@ generic law. For module sheaves, keep a single `M : X.Modules` and its actual
 of a transport. An annotation that elaborates to the same core term may do
 nothing; inspect which representation differs.
 [Module-section case](performance/keep-one-representation-of-module-sections.md).
+For a functor whose values are literal fibre products, such as `familyScheme p`, name its maps
+with the literal source and target and state every lemma through that name; conversions between
+`(familyScheme p).map t`-typed maps and modules over `pullback p T.hom` cost 44–86 s of type
+checking each. [Family-map case](performance/linear-system-family-maps-type-them-between-the-literal-fibre-products.md).
 
 **Prove the whole relevant equation before evaluating components.** Compose,
 transport or cancel the original transformations/isomorphisms over variables,

@@ -119,10 +119,10 @@ info: 'AlgebraicGeometry.Scheme.Modules.pushforwardTensorPullbackIso_hom_natural
 #print axioms AlgebraicGeometry.Scheme.Modules.pushforwardTensorPullbackIso_hom_naturality
 
 /--
-info: 'AlgebraicGeometry.Scheme.Modules.exists_isSplitMono_pullback_map_of_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.Scheme.Modules.exists_isSplitMono_pullback_map_of_fibre_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms AlgebraicGeometry.Scheme.Modules.exists_isSplitMono_pullback_map_of_ne_zero
+#print axioms AlgebraicGeometry.Scheme.Modules.exists_isSplitMono_pullback_map_of_fibre_ne_zero
 
 /--
 info: 'AlgebraicGeometry.Scheme.Modules.mono_of_pullback_map_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -161,11 +161,11 @@ info: 'AlgebraicGeometry.Scheme.Modules.pullback_map_ne_zero_of_isAlgClosed' dep
 #print axioms AlgebraicGeometry.Scheme.Modules.pullback_map_ne_zero_of_isAlgClosed
 
 /--
-info: 'AlgebraicGeometry.Scheme.Modules.Invertible.geometricFibreRegular_of_isIntegral_of_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.Scheme.Modules.Invertible.geometricFibreRegular_of_isIntegral_of_fibre_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
 #print axioms
-  AlgebraicGeometry.Scheme.Modules.Invertible.geometricFibreRegular_of_isIntegral_of_ne_zero
+  AlgebraicGeometry.Scheme.Modules.Invertible.geometricFibreRegular_of_isIntegral_of_fibre_ne_zero
 
 /--
 info: 'AlgebraicGeometry.Scheme.Modules.Invertible.isRelativeEffectiveCartier_zeroInclusion_of_geometricallyIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -175,10 +175,10 @@ info: 'AlgebraicGeometry.Scheme.Modules.Invertible.isRelativeEffectiveCartier_ze
   AlgebraicGeometry.Scheme.Modules.Invertible.isRelativeEffectiveCartier_zeroInclusion_of_geometricallyIntegral
 
 /--
-info: 'AlgebraicGeometry.Scheme.Cohomology.fibreCohomology_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.Scheme.Cohomology.fibreCohomology_residueField_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms AlgebraicGeometry.Scheme.Cohomology.fibreCohomology_comparison
+#print axioms AlgebraicGeometry.Scheme.Cohomology.fibreCohomology_residueField_comparison
 
 /--
 info: 'AlgebraicGeometry.Scheme.Cohomology.fibreCohomologyConcentrated_of_modulePointFiberCohomology' depends on axioms: [propext, Classical.choice, Quot.sound]

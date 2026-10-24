@@ -22,11 +22,11 @@ arXiv:math/0504020v1, condition (4.8.3), p. 29, used with `m = 0` in the proof o
 p. 30; the criterion 3.10 (v), p. 25, needs only `H^1`). This file supplies the passage between
 them.
 
-* `fibreCohomology_comparison`: for a quasi-compact quasi-separated `f` and quasicoherent `M`,
-  the fibre cohomology over a field point `Spec K ⟶ Spec κ(s) ⟶ S` has the dimension of the
-  point-fibre cohomology at `s`, and vanishes exactly when it does. This is flat base change
-  along the field extension `κ(s) → K` (Stacks Project, Tag 02KH, Cohomology of Schemes,
-  Lemma 30.5.2), through `moduleCohomologyFieldBaseChangeEquiv`.
+* `fibreCohomology_residueField_comparison`: for a quasi-compact quasi-separated `f` and
+  quasicoherent `M`, the fibre cohomology over a field point `Spec K ⟶ Spec κ(s) ⟶ S` has the
+  dimension of the point-fibre cohomology at `s`, and vanishes exactly when it does. This is
+  flat base change along the field extension `κ(s) → K` (Stacks Project, Tag 02KH, Cohomology
+  of Schemes, Lemma 30.5.2), through `moduleCohomologyFieldBaseChangeEquiv`.
 * `fibreCohomologyConcentrated_of_modulePointFiberCohomology`: point-fibre conditions at every
   point of `S` give `FibreCohomologyConcentrated f M r`.
 * `isLocallyConstant_modulePointFiberCohomologyDimension_zero`: for a proper `f` over a locally
@@ -97,8 +97,9 @@ theorem fibreCohomology_pullback_comparison {T : Scheme.{u}} (g : T ⟶ S) {K : 
 /-- The fibre cohomology over the field point `Spec K ⟶ Spec κ(s) ⟶ S` is the field base change
 of the point-fibre cohomology at `s`: it has the same dimension, and it vanishes exactly when
 the point-fibre cohomology vanishes (Stacks Project, Tag 02KH). -/
-theorem fibreCohomology_comparison [QuasiCompact f] [QuasiSeparated f] [M.IsQuasicoherent]
-    {K : Type u} [Field K] (t : Spec (.of K) ⟶ S) (s : S) (σ : S.residueField s →+* K)
+theorem fibreCohomology_residueField_comparison [QuasiCompact f] [QuasiSeparated f]
+    [M.IsQuasicoherent] {K : Type u} [Field K] (t : Spec (.of K) ⟶ S) (s : S)
+    (σ : S.residueField s →+* K)
     (ht : t = Spec.map (CommRingCat.ofHom σ) ≫ S.fromSpecResidueField s) (n : ℕ) :
     Module.finrank K (fibreCohomology f M K t n) = modulePointFiberCohomologyDimension f M n s ∧
       (Subsingleton (fibreCohomology f M K t n) ↔
@@ -125,8 +126,8 @@ theorem fibreCohomologyConcentrated_of_modulePointFiberCohomology [QuasiCompact 
   intro K _ _ t
   obtain ⟨⟨s, φ⟩, hsφ⟩ := (Scheme.SpecToEquivOfField K S).symm.surjective t
   have ht : t = Spec.map (CommRingCat.ofHom φ.hom) ≫ S.fromSpecResidueField s := hsφ.symm
-  exact ⟨(fibreCohomology_comparison f M t s φ.hom ht 0).1.trans (h0 s),
-    fun n hn => (fibreCohomology_comparison f M t s φ.hom ht n).2.mpr (hpos s n hn)⟩
+  exact ⟨(fibreCohomology_residueField_comparison f M t s φ.hom ht 0).1.trans (h0 s),
+    fun n hn => (fibreCohomology_residueField_comparison f M t s φ.hom ht n).2.mpr (hpos s n hn)⟩
 
 /-- If the higher point-fibre cohomology vanishes everywhere, the degree-zero point-fibre
 dimension is locally constant: it is the fibre Euler characteristic. -/
@@ -173,7 +174,7 @@ theorem fibreCohomologyConcentrated_pullback_of_range_subset [QuasiCompact f] [Q
       exact Scheme.fromSpecResidueField_apply s _
     simpa using h1
   have hc (n : ℕ) := fibreCohomology_pullback_comparison f M g t n
-  have hp (n : ℕ) := fibreCohomology_comparison f M (t ≫ g) s φ.hom ht n
+  have hp (n : ℕ) := fibreCohomology_residueField_comparison f M (t ≫ g) s φ.hom ht n
   exact ⟨((hc 0).1.trans (hp 0).1).trans (h0 s hs),
     fun n hn => (hc n).2.mpr ((hp n).2.mpr (hpos s hs n hn))⟩
 

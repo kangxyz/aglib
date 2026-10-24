@@ -97,6 +97,15 @@ Thm 2.5(1)** (injectivity of the fppf comparison map) along Stacks 0B9M, without
   `mono_toFppfPicardSheaf_of_isProper_of_flat_of_geometricallyIntegral`, for `S` locally
   Noetherian and `p` proper, flat, with geometrically integral fibres.
 
+[PullbackFullyFaithful](PullbackFullyFaithful.lean): for `p` proper, flat and geometrically integral
+over a locally Noetherian base, and any `g : T ⟶ S`, the unit `N ⟶ q_* q^* N` is an isomorphism for
+every line bundle `N` on `T` (`q = pullback.snd p g`;
+`isIso_unit_app_pullback_snd_of_isLocallyRankOne_of_isProper_of_flat_of_geometricallyIntegral`), so
+`q^*` is bijective on maps into line bundles
+(`bijective_pullback_snd_map_of_isLocallyRankOne_of_isProper_of_flat_of_geometricallyIntegral`;
+Kleiman, Lemma 2.7, p. 18). The trivial-target case is
+`bijective_familyPullback_map_of_isProper_of_flat_of_geometricallyIntegral` above.
+
 [Sheaf](Sheaf.lean), imported as `Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf`:
 
 - `isSeparated_relativePicardFunctor_of_isProper_of_flat_of_geometricallyIntegral` and

@@ -21,8 +21,8 @@ public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 Let `N` be a locally rank-one module sheaf and `E` a finite locally free module sheaf on a scheme
 `X`, and let `u : N ⟶ E` be nonzero on every field-valued fibre: `(pullback t).map u ≠ 0` for
 every field `K` and every `t : Spec K ⟶ X`. Then `u` is locally split
-(`exists_isSplitMono_pullback_map_of_ne_zero`): every point has an open immersion along which
-the pulled back `u` is a split monomorphism. Consequently `u` is a monomorphism
+(`exists_isSplitMono_pullback_map_of_fibre_ne_zero`): every point has an open immersion along
+which the pulled back `u` is a split monomorphism. Consequently `u` is a monomorphism
 (`mono_of_pullback_map_ne_zero`), its cokernel is finite locally free
 (`isFiniteLocallyFree_cokernel_of_pullback_map_ne_zero`), of rank `r - 1` when `E` has
 rank `r` (`sheafHasRank_cokernel_of_pullback_map_ne_zero`), and `0 → N → E → coker u → 0` is
@@ -181,7 +181,7 @@ variable {X : Scheme.{u}} {N E : X.Modules}
 Tag 00O0). A map from a locally rank-one module sheaf to a finite locally free one which is
 nonzero on every field-valued fibre becomes a split monomorphism after pulling back along an
 open immersion around any given point. -/
-theorem exists_isSplitMono_pullback_map_of_ne_zero (hN : IsLocallyRankOne X N)
+theorem exists_isSplitMono_pullback_map_of_fibre_ne_zero (hN : IsLocallyRankOne X N)
     [IsFiniteLocallyFree X E] (u : N ⟶ E)
     (hu : ∀ (K : Type u) [Field K] (t : Spec (.of K) ⟶ X),
       (Scheme.Modules.pullback t).map u ≠ 0)
@@ -298,7 +298,7 @@ include hN hu
 /-- A map from a locally rank-one module sheaf to a finite locally free one which is nonzero on
 every field-valued fibre is a monomorphism. -/
 theorem mono_of_pullback_map_ne_zero : Mono u := by
-  choose W k hk hx hs using exists_isSplitMono_pullback_map_of_ne_zero hN u hu
+  choose W k hk hx hs using exists_isSplitMono_pullback_map_of_fibre_ne_zero hN u hu
   have : ∀ x, IsOpenImmersion (k x) := hk
   refine mono_of_restrict_openCover W k (fun x => ⟨x, Set.mem_range.mp (hx x)⟩) u fun x => ?_
   have := hs x
@@ -309,7 +309,7 @@ which is nonzero on every field-valued fibre is finite locally free. -/
 theorem isFiniteLocallyFree_cokernel_of_pullback_map_ne_zero :
     IsFiniteLocallyFree X (cokernel u) := by
   have : IsFiniteLocallyFree X N := isFiniteLocallyFree_of_isLocallyRankOne hN
-  choose W k hk hx hs using exists_isSplitMono_pullback_map_of_ne_zero hN u hu
+  choose W k hk hx hs using exists_isSplitMono_pullback_map_of_fibre_ne_zero hN u hu
   have : ∀ x, IsOpenImmersion (k x) := hk
   refine finiteLocallyFree_of_openImmersionCover (cokernel u) W k
     (fun x => ⟨x, Set.mem_range.mp (hx x)⟩) fun x => ?_

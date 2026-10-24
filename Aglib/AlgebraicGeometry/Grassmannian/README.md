@@ -221,6 +221,17 @@ on every chart, and `Gr(E, k) ⟶ S` is quasi-compact and locally of finite type
 Sources: Nitsure, arXiv:math/0504590v1, §1, Exercises (1)–(2), pp. 5–6; Stacks, Tags 089S,
 089T, 089U, 01OA, 01OB, 01JJ.
 
+[Proper](LocallyFree/Proper.lean): for `E` finite locally free of constant rank `n`, `Gr(E, k) ⟶ S`
+is proper, separated, smooth and flat (`isProper_grassmannianBundle_hom`,
+`isSeparated_grassmannianBundle_hom`, `smooth_grassmannianBundle_hom`,
+`flat_grassmannianBundle_hom`), from the free charts (Nitsure, §1, Exercise (2), pp. 5–6, and the
+construction of `Grass(r, d)`: smooth and separated, p. 8; proper, pp. 8–9).
+
+[KernelRank](LocallyFree/KernelRank.lean): the kernel of a rank-`k` locally free quotient of a
+rank-`(k + 1)` sheaf is a line bundle (`LocallyFreeQuotientOf.isLocallyRankOne_kernel`); conversely
+a map from a line bundle that is nonzero on every field fibre gives the quotient `ofLineSubbundle`
+by it, whose kernel is that map (`exists_iso_hom_kernel_ι_ofLineSubbundle`).
+
 For `E = O^m` on `Spec R`, `P(E)` is `Gr(R^m, 1) ≅ ProjectiveSpace R ι` (below); identifying its
 universal quotient with `O^ι ↠ O(1)` is the open part of row F9.
 

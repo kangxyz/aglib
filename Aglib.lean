@@ -2966,8 +2966,10 @@ public import Aglib.AlgebraicGeometry.Grassmannian.FunctorOfPoints
 public import Aglib.AlgebraicGeometry.Grassmannian.Gluing
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Basic
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Chart
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.KernelRank
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.LocalStructure
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.ProjectiveBundle
+public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Proper
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Representability
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Sheaf
 public import Aglib.AlgebraicGeometry.Grassmannian.LocallyFree.Trivialization
@@ -3186,6 +3188,7 @@ public import Aglib.AlgebraicGeometry.Modules.BaseChange.Basic
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Cartesian
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.CartesianInvertibility
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Composition
+public import Aglib.AlgebraicGeometry.Modules.BaseChange.Congr
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Counit
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.FreeMap
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.OpenImmersion
@@ -3541,6 +3544,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.TwoSections
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Charts
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Fibrewise
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.GeometricFibre
+public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.IntegralFibre
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Regular
 public import Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.Uniqueness
 public import Aglib.AlgebraicGeometry.Modules.IsomorphismFunctors
@@ -3632,6 +3636,7 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Basic
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Isomorphism
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Pairing
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.PairingComp
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.PairingEquiv
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.RightUnit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Unit
@@ -4132,6 +4137,7 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.GluingDescent
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Injectivity
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Isomorphism
 public import Aglib.AlgebraicGeometry.Picard.Comparison.LocallyTrivial
+public import Aglib.AlgebraicGeometry.Picard.Comparison.PullbackFullyFaithful
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
@@ -4141,6 +4147,11 @@ public import Aglib.AlgebraicGeometry.Picard.FppfSections
 public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Bijection
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Divisor
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Evaluation
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Representability
 public import Aglib.AlgebraicGeometry.Picard.LocalKummer
 public import Aglib.AlgebraicGeometry.Picard.Normalized
 public import Aglib.AlgebraicGeometry.Picard.PowerBaseChange

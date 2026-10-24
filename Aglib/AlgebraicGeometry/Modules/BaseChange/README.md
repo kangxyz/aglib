@@ -58,3 +58,6 @@ square (`pullbackFreeIso_square`) and base change along a cartesian square
 `isIso_cartesianBaseChangeMap_of_isIso_moduleBaseChangeMap`: the mate of every cartesian square is
 invertible when `moduleBaseChangeMap` of the chosen pullback is, through `IsPullback.isoPullback`,
 `cartesianBaseChangeMap_comp` and the open-immersion case.
+
+[Congr](Congr.lean): the cartesian base-change map of two equal squares, compared through
+`pullbackCongr` (`cartesianBaseChangeMap_congr`).

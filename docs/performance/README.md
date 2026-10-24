@@ -102,6 +102,7 @@ original runs; current operating guides own present procedures.
 - [Limit exposure to the actual public implementation boundary](limit-exposure-to-the-actual-public-implementation-boundary.md)
 - [Continue native checks after cache-record preparation fails](continue-native-checks-after-cache-record-preparation-fails.md)
 - [Field-point cohomology dimensions: specialize residue fields through variable-field statements](field-point-cohomology-dimensions-specialize-residue-fields-through-variable-field-statements.md)
+- [Linear-system family maps: type them between the literal fibre products](linear-system-family-maps-type-them-between-the-literal-fibre-products.md)
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.
