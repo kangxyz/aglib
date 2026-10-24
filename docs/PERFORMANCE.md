@@ -3747,3 +3747,301 @@ measurements, and the repair's effect on single declarations was not measured.
 
 Rule: prove additive-group algebra over an abstract `[AddCommGroup A]`, then specialize it once
 to concrete heavy groups such as `PicardGroup`.
+
+### Avoid self-referential coefficient simplification
+
+In `RingTheory/IntegralClosure/RationalAdjunction`, the constant-polynomial
+case has an equality `p = C (p.coeff 0)`. Supplying this equality to `simp`
+also rewrites the occurrence of `p` inside its own coefficient, so the
+simplifier recursively expands the same expression. Native run
+`remote-d9ad38f59b5d491889b0ef3612dcb375` reports this nested recursion failure
+for source `05138406d61dcba643c206696ecbabb366089ebc9156eaa8485eada66049cda9`.
+The repair uses the equality once through `congrArg` and an explicit equality
+composition. It preserves the original polynomial, evaluation map and kernel
+statement, without changing options or budgets. Repaired source
+`fc3ee6ad41878745a8d22b2b11e22fc06d1ae7790a81ab9b70fb7c8669360581`
+passed the complete then-current lower module in 7.6 seconds in
+`remote-7331ea0549b140b786dadc76bfcea3c0`; that parent graph failed other
+modules. The later local-DVR extension has its own inputs and pending coverage.
+These observations establish the repair on that source, with no controlled
+timing ratio or broader performance conclusion.
+
+
+### Use naturality before concrete scalar conversion
+
+In [HomComplex/Cohomology](../Aglib/Algebra/Homology/ModuleCat/HomComplex/Cohomology.lean),
+concrete elementwise naturality and scalar conversion repeatedly exhausted
+200000 heartbeats at `whnf` under Lean 4.34.1 and Mathlib `d13f23b`.
+The initial `be6db054` candidate failed in `remote-33c87f3ac3c742a4b640a91089babd7a`.
+Shared component constructors (`8a355`, `remote-84604fbebeea4fa5bbaaa61e55524a8d`)
+and a complete natural isomorphism followed by concrete elementwise wrappers
+(`bfb1`, `remote-61753936bd6e493faf8234a6e23a95a4`) still reached that limit.
+
+The passing implementation proves the scalar law in the generic
+`ModuleCat.natIsoAddEquivTransLinear`, retaining the whole functors and natural
+isomorphism. It applies `F.map_smul` and `e.hom.naturality` at variable module
+carriers, then specializes to `moduleHomologyFunctor` and the original
+class-to-derived comparison. The two unpublished elementwise wrappers are
+removed; categorical naturality and the original forward, cocycle and Ext
+normalizations remain. The native module action is unchanged. Its actual
+scalar supplier is documented and public so the exposed linear constructor
+can use it.
+
+Source `9e3a10f4519a8dcaada616c6664cb839a07797330801f15f1e26a744d05d68db`
+passed the complete Coho module in 24 seconds in
+`remote-2622eebf034a468da7c61bbba6623088`, source snapshot
+`e70cfd2b09fb86cb84d5c627b1a9db3092ccd32baa60fea35da4209612532f7c`,
+with standard package budgets and enabled compiler checks. The same graph
+first reached `NormalCoefficient`, which failed separately. This records the
+successful proof-construction boundary and removal of the observed timeout;
+the runs do not isolate a compiler cause or provide a controlled timing ratio.
+No extra diagnostic or benchmark run was made for this note.
+
+### Retain the coefficient algebra in singleton-adjoin localization
+
+The concrete `Algebra.isLocalization_adjoin_singleton` adapter in
+[RationalAdjunction](../Aglib/RingTheory/IntegralClosure/RationalAdjunction.lean)
+exceeded the standard kernel heartbeat budget in `remote-ab2c32b2` and
+`remote-873a3090`, after the evaluation and quotient-map presentation errors
+were repaired. This is ordinary native proof checking, with Lean 4.34.1
+and Mathlib `d13f23b`.
+
+The retained proof checks the denominator criterion over variable rings,
+then uses the same named `adjoinSingletonScalarExtensionAlgebra` in its
+producer and concrete consumer. That class-valued definition carries the
+native `instance_reducible` annotation. The actual singleton inclusion and
+images of the original coefficient denominators remain unchanged. The
+concrete adapter still requires a documented declaration-local
+`maxHeartbeats 400000`; the generic criterion and package defaults remain
+at 200000. The explaining comment follows `set_option ... in`, as required
+by the native style linter.
+
+The full lower module, source
+`7f2f822b30ea2f484dbe2cb91b1cec28491a06329bc2112d37ca7480e10318e7`,
+passed in 184 seconds in `remote-51cbdddab5e14ae58cf49cb3b351fc80`,
+snapshot `ead84b86531b445f978a7bfb5b126f9db485b8a4b45d7fbd7ab69c595d8e43b8`.
+That graph subsequently failed the newly reached upper Nagata adapter.
+These observations support the retained representation and local allowance;
+they do not isolate their individual costs or establish full finite-type
+stability. No additional timing or diagnostic run was made for this note.
+
+
+### Fix finite-subtype ranges before coefficient fields
+
+In [FinitePureConstants](../Aglib/FieldTheory/SeparablyGenerated/FinitePureConstants.lean),
+transporting a separating basis into the original ambient field exhausted
+200000 heartbeats at `whnf` in `remote-51cbddd` and `remote-b8aff27f`,
+and 400000 in `remote-a00bf5e0`. Variable fields and a named proposition
+alone had not resolved the dependent coefficient-field conversion.
+
+The retained proof specializes `Subtype.range_coe` at the actual finite
+source sets before forming the coefficient fields, passes the original
+`N.val` inclusion explicitly, and transports native `IsSeparable` witnesses
+by typed equalities such as `hbt` followed by substitution. This keeps each
+original intermediate field and algebra action through the calculation.
+It avoids simplifying across two dependent presentations of an adjoined
+coefficient field. The variable-field and named-proposition boundaries remain.
+
+The complete source
+`459822be5cfdfca76a2c1c894b86c5ff414a0badf6127b7f7dea84de71f87545`
+passed in 16 seconds in `remote-1f83a39fab694b6ea101ee70592c2726`,
+snapshot `5551545e0e3e1913783d811e1aba05fc0dddbe3930dbf83669420577aca2c735`,
+after restoring the standard 200000 budget. No override remains in this
+module. The larger graph failed other consumers. These existing iterations
+support the retained typed transport; they do not isolate a compiler cause
+or provide a controlled timing comparison. No extra benchmark was run.
+
+### Type the native homology map before its scalar law
+
+The scalar comparison in
+[FiniteSource](../Aglib/AlgebraicGeometry/Cohomology/ClosedImmersion/RightAdjoint/FiniteSource.lean)
+failed repeated apparently identical `map_smul` rewrites. The compiler's
+ordinary error context exposed different ring dictionaries: the categorical
+quotient-away ring and the separately selected Ore-localization ring. A
+later generic square still presented the same homology through an expanded
+functor object and a complex-homology alias.
+
+The passing implementation constructs the scalar comparison over variable
+`CommRingCat` objects, then supplies the original quotient-localization
+square. It also binds the actual native homology arrow as a linear map with
+explicit source and target module types. Typed scalar identities and the
+native coinduction equation are applied directly to that map. The original
+restriction, coefficient action and Ext map remain fixed. Internal aliases
+stay private; only the intended interfaces and native instances required in
+public statements are exposed.
+
+Source `a0f3417ccdd3fcd592fb8bc07ef7fe25eedecbf13e2da793e1b87bf757ae5ddb`
+passed the complete module in 111 seconds in the same `remote-1f83a39f`
+graph at standard budgets. The preceding `bdc44de1` source had reached only
+a redundant final tactic after the scalar proof closed; earlier `f58b2bf`
+and `aca28117` failures retain the actual representation errors. This is
+scoped producer evidence; its new stalk consumer failed separately. No
+transparency change, profiling, additional diagnostic or budget increase
+was used for this repair.
+
+## Preserve exact import casing across native platforms
+
+Use the basename returned by the pinned source tree when adding an import.
+A macOS filesystem may accept reading `ModuleCat/ULift.lean` while the actual
+Mathlib file is `ModuleCat/Ulift.lean`; the Linux compiler then rejects
+`Mathlib.Algebra.Category.ModuleCat.ULift` before elaborating the module.
+The canonical import is `Mathlib.Algebra.Category.ModuleCat.Ulift`.
+
+At Mathlib `d13f23b7`, the casing-only repair of `FiniteComplexModel` from
+`512d57bc` to `d5922ea6` passed in native `bf37d261` (5.9s). The same wrong
+import later blocked the new derived Hom-cohomology bridge in `0eaa2726`.
+Resolve this known failure with `rg --files` in the pinned owning directory;
+reading a guessed path locally does not establish its exact casing. This
+uses existing compiler feedback and requires no separate build or audit.
+
+## Separate the structural H0 interface from its H1 consumer
+
+The closed-embedding `UnitTrace` consumer needs the original structure
+section map, coefficient module, unit and H0 comparison, together with the
+literal derived pushforward unit. Importing the full `Proper.DerivedStructure`
+also forced its separate Postnikov, Leray and H1 proofs into that dependency
+path. In `remote-38af34a7`, the then-current Main failed after 266 seconds and the
+UnitTrace body was not reached.
+
+Move those shared definitions and H0 results into the focused
+[DerivedStructure.Basic](../Aglib/AlgebraicGeometry/Cohomology/Proper/DerivedStructure/Basic.lean),
+preserving their names, original maps and hypotheses. Keep the H1 argument
+and its additional comparison dependencies in the original Main module.
+Import Basic and the actual single-unit provider directly from UnitTrace.
+The existing native graph `remote-5c7a586b` built Basic `cc0f7917` in 6.2
+seconds and reached the full UnitTrace `631a4edf` body independently while
+Main `d095dd72` still failed. UnitTrace then reported its own repairable
+compiler errors.
+
+This records a passed lower interface and an unblocked independent consumer,
+not a UnitTrace pass or a measured speedup of the complete proof. The same
+batch still contains the independent H1 target; no per-layer build barrier,
+budget increase or extra diagnostic run is needed.
+
+## Retain the given grading in an exceptional-chart quotient
+
+The original exceptional-chart comparison in
+[ExceptionalChart](../Aglib/RingTheory/ReesAlgebra/ExceptionalChart.lean)
+passes from the saturated chart modulo its exceptional parameter to the
+degree-zero chart of the original associated graded ring. Concrete quotient
+equivalence chains compared independently synthesized grading dictionaries
+and reached the standard 200000-heartbeat `whnf` limit. Native
+`remote-38af34a7` recorded both such failures; later feedback exposed the
+remaining original-numerator equation.
+
+Construct `HomogeneousLocalization.Away.chartQuotientEquiv` over variable
+rings and the given original target grading. Keep the supplied original
+affine-chart equivalence and its `toRingHom` literally in the numerator law.
+Prove the successive quotient equations through explicitly typed intermediate
+equivalences, then specialize the whole construction to the Rees algebra and
+its actual associated-graded grading. This preserves the original quotient,
+coefficient map, numerator and denominator without converting between two
+concrete grading implementations inside the consumer.
+
+The complete `d4ddcf9c` module passed native compilation in 43 seconds in
+`remote-48f30d9f` at the standard heartbeat and synthesis budgets. This is
+evidence for the retained full exceptional-chart repair, not an isolated
+benchmark of one proof change. Its DoubleLine consumer failed separately
+after its body was reached. No grading compatibility oracle, transparency
+change, additional diagnostic or budget increase was added.
+
+## Keep the original H1 transport and triangle-component maps
+
+The original-map comparison in
+[DerivedStructure](../Aglib/AlgebraicGeometry/Cohomology/Proper/DerivedStructure.lean)
+first reached a maximum-recursion-depth failure in `remote-38af34a7` while
+changing a concrete composite of homology, module and linear-equivalence
+maps. Its maps include the actual derived structure unit and the original
+cohomology map. Expanding those constructions together is unnecessary.
+
+The retained repair proves `originalLinearTransport_comparison` over variable
+modules, linear equivalences, an isomorphism and the original morphisms.
+The concrete consumer supplies its two definitions by reflexivity and the
+original functor-composition equation. Thus the comparison is transported
+after fixing the module carriers, rather than by unfolding the concrete
+derived geometry during a final `change`.
+
+Two triangle-component proofs had a separate representation issue. A closing
+`simpa` split the original `RF.map (single phi ≫ unit)` only in its input,
+leaving the expected component in the original unsplit form. Native
+`remote-bd14382` reports those exact two mismatches. Compose the already
+passed single-unit and comparison-triangle component equations directly,
+using `congrArg`, and retain the raw mapped composite throughout. These are
+the same original maps; no replacement naturality or compatibility premise
+is added.
+
+The complete Main source `fc21a757` passed native compilation in
+`remote-3326d6a6` (313 seconds), followed by its actual general first-H1
+injection consumer `8aaddba7` (6.3 seconds). Standard heartbeat, synthesis
+and recursion limits were retained. This establishes successful completion
+of the module on the repaired representations; the duration is not a
+controlled speedup measurement. Keep this passed source and its compiled
+outputs while repairing independent upper consumers.
+
+## Local instance names must remain distinct across actual imports
+
+A local instance still creates a declaration with a name. Incoming
+`ClosedImmersion.RightAdjoint.FiniteSource.Derived` declared
+`Scheme.Modules.instHasDerivedCategory_aglib`, which already belonged to
+the existing `DirectImage.Restriction.Composition`. The isolated new provider
+compiled as `f7fb6110`, but its actual NormalSurface consumer failed during
+import in `remote-3326d6a6`, before any mathematical body was elaborated.
+
+Rename the incoming local declaration to `finiteSourceDerivedCategory`,
+keeping the identical `HasDerivedCategory.standard` value, universe and
+priority. Preserve the existing library provider. Revised source `6870088d`
+passed in `remote-f5e32cec` (17 seconds), and the same consumer then reached
+its mathematical body. This verifies the import repair; it is not a pass
+for that still-pending consumer. Use distinct or appropriately private names
+for local declarations in new files rather than relying on local instance
+visibility to isolate their declaration names.
+
+
+## Limit exposure to the actual public implementation boundary
+
+An exposed section changes implementation visibility, rather than merely
+marking exported names. In `ClosedImmersion.RightAdjoint.FiniteSource`,
+adding a module-wide `@[expose] public` scope made private localization
+aliases unavailable in exposed implementations. Native `remote-a86527a5`
+reported 47 diagnostics, including those missing names and subsequent
+elaboration cascades. The original source had already compiled with a
+`noncomputable section` and selected explicit exposed definitions.
+
+Retain that original boundary. A focused `@[expose] public section` around
+the already exposed `closedImmersionRightAdjointQuotientResolutionComplex`
+API satisfies the maintained export convention without publishing private
+helpers or changing any definition body, theorem, map or hypothesis. Remove
+the now-redundant per-definition `@[expose]` inside that section; the compiler
+reports such redundant attributes as errors. The same attribute adjustment
+applies to `NormalModificationH1Vanishing` inside its exposed section.
+
+The repaired full FiniteSource `9637db9e` passed in 110 seconds and the
+regular-local consumer passed in 13 seconds in `remote-4f9e0c68`; the full
+Aglib entry then compiled in 8.3 seconds. These are existing incremental
+build observations at the standard budgets. They verify the visibility
+repair, not a controlled timing improvement. No new diagnostic or benchmark
+was run for this note.
+
+
+## Continue native checks after cache-record preparation fails
+
+The local native-check wrapper computes its reflective import closure before
+looking up a compatible check or launching lint. On the surface prerequisite
+cohort, `remote-4f9e0c68` completed compilation, package tests, entry and text
+checks, then rejected a changed `SpectralNorm.ilean` temporal stamp before
+lint ran. This is not a linter or compiler failure.
+
+`TemporalInputs.stat_identity` includes ctime. The inspected metadata and
+proof artifacts were read-only hardlinks with identical contents, inodes and
+mtime in two prepared workspaces; each had nine links. Hardlink-count changes
+can change ctime without changing file contents. That is a consistent cause,
+not a retained before/after content comparison proving this instance's cause.
+
+Keep the failed wrapper result distinct from actual successful checks.
+After resolving the concrete artifact/source basis, retain compatible native
+successes and use the documented remaining direct commands under the same
+managed resource guard. `remote-6bfdf7e8` ran the unchanged 15 production
+linters in one environment and returned all 77 actionable findings together.
+The pinned production axiom audit remains required. This continuation avoids
+repeating passed checks or the wrapper's broad cache-record walk; it does not
+change checker predicates, suppress failures or establish a timing ratio.

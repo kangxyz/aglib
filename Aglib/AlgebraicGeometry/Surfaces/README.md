@@ -14,6 +14,9 @@ The trait and explicit-equation families below supply more specialized tools.
 | [Contraction](Contraction/README.md) | Contraction of an original exceptional Cartier projective line in one fibre of a supplied proper map, with its field, ideal, blowup and complement comparisons. |
 | [Birational geometry](Birational/README.md) | Graphs, regular-source common domination, Chow domination, exceptional-conormal comparisons and original-map factorization. Each theorem retains its own source hypotheses. |
 | [Regular-source principalization](Resolution/README.md) | Finite closed-point blowups principalizing an actual nonzero ideal with Artinian quotient on an already regular integral surface. |
+| [Normal graphs and punctured cohomology](Resolution/ExtensionGraph/Construction.md) | The literal finite normal graph and injectivity of original punctured structure-H1 restriction over a normal Noetherian Nagata local domain of dimension two. |
+| [Regular-local universal vanishing](RationalSingularities/README.md) | Structure-H1 vanishing on every supplied normal proper birational model over a regular local ring of dimension two. |
+| [Resolution necessity](Resolution/Necessity.md) | Finite generic normalization, a finite singular set and normal domain completions, derived from a supplied proper birational regular integral model. |
 | [Power-node models](PowerNode/README.md) | Explicit affine, blowup and Cartier-divisor calculations for the stated power-node equations and coefficient rings. |
 
 ## Projectivity over the original affine base
@@ -82,3 +85,18 @@ Reusable local algebra, cohomology, blowup and descent results keep their
 respective owners elsewhere in Aglib; this directory supplies their surface
 consumers. No field, trait or projective-model restriction should be silently
 substituted for a general surface hypothesis.
+
+The [normal-graph construction](Resolution/ExtensionGraph/Construction.md)
+and [regular-local universal vanishing](RationalSingularities/Regular.md)
+retain their actual normality, properness, birationality and local-base
+hypotheses. [Necessity](Resolution/Necessity.md) starts from a supplied
+regular proper birational model and derives conditions on the original
+normalization; it does not supply that model.
+
+The complete resolution criterion RES and its quasi-excellent consequence
+RES-QE remain open. The
+[resolution guide](Resolution/README.md#open-resolution-construction)
+records the remaining geometric duality, rational/Gorenstein, tangent-cone,
+termination and descent obligations. In particular, the algebraic
+[monic-quadratic theorem](../../RingTheory/GradedAlgebra/MonicQuadratic.md)
+retains its actual relation and genuine Hilbert-function premises.

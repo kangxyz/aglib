@@ -101,3 +101,14 @@ covariance under its actual generator-change hypotheses. Those local algebraic
 interfaces and the displayed derived regular-list comparison feed geometric
 purity through the consumers' actual local models, determinant identifications
 and overlap/gluing conditions.
+
+[TraceKernel](TraceKernel.md) proves generation of the native coinduced
+`B`-module `Hom_k(B,M)` by its functionals vanishing at `1`, for a
+finite-dimensional commutative algebra `B` over a field `k` with
+`2 ≤ finrank k B`. The coefficient `M` is arbitrary. Evaluation at one
+is the original restriction–coinduction counit and is `k`-linear;
+its kernel generates under the native action `(b • φ)(x) = φ(x*b)`.
+No reducedness, separability, Gorenstein or nonzero-trace condition is
+used. A geometric hyperplane-section application must separately identify
+its dualizing sections and boundary with this module and counit, then
+supply the pointwise Nakayama argument.

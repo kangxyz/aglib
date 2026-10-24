@@ -15,3 +15,45 @@ element implies integral closedness of the original ring. Prime-ideal
 lying over gives cancellation for integral fractions, followed by induction
 on the actual denominator power. No Noetherian condition is required.
 The literal DVR Weierstrass charts use this criterion.
+
+## Finiteness and localization
+
+[NormalHull](NormalHull.md) derives finite literal normalization in every
+finite extension of a supplied fraction field from the purely inseparable
+cases. The original base is a Noetherian domain. The test fields have the
+same universe as the target extension; the base and fraction-field universes
+may differ. The actual normal hull, fixed field and ambient inclusions are
+retained. No local, normal, complete or dimension premise is added.
+
+[FiniteLocalization](FiniteLocalization.md) proves finite normalization of a
+Noetherian domain in its supplied fraction field from two precise inputs:
+an actual nonzero normal principal open, and finite literal normalizations
+at all maximal localizations. Its denominator filtration uses the same
+original element throughout. The local coefficient actions are those of
+`atPrimeFractionMap`; local finiteness alone is not the statement of this
+criterion.
+
+[FlatBaseChange](FlatBaseChange.md) supplies the actual fraction-tensor
+inclusion and faithful-flat finiteness descent used by
+[AdicCompletion.Normalization](../AdicCompletion/Normalization.md). That
+application proves finite literal normalization in the supplied total quotient
+ring for a Noetherian local ring of dimension at most two whose actual
+maximal-adic completion is reduced. These maps and hypotheses remain explicit.
+
+[RationalAdjunction](RationalAdjunction.md) supplies the original
+polynomial evaluation kernel, numerator-ideal quotient, coefficient-DVR
+localization comparison and finite polynomial-value inclusion for adjoining
+an actual fraction to a normal domain. The
+[Nagata consumer](../Nagata/RationalAdjunction.md) adds the Nagata and
+dimension-at-most-two hypotheses to prove finite normalization. Its finite
+intermediate and second localization preserve the original ambient field;
+the selected final local ring is not assumed finite over the coefficient
+localization.
+
+[MaximalIdealDual](MaximalIdealDual.md) identifies the original scalar map
+`A → Hom_A(m_A,A)` with a linear equivalence for a normal Noetherian local
+domain of dimension at least two. It sends `a` to multiplication by `a`
+on the actual maximal ideal. The
+[closed-fibre extension calculation](../../AlgebraicGeometry/Cohomology/Proper/ClosedFibreExtensions.md)
+uses that scalar to correct a supplied lift; producing the lift is a
+separate geometric input.

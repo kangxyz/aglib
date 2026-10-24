@@ -1,4 +1,4 @@
-# Principalization by finite point blowups
+# Surface principalization and resolution prerequisites
 
 [Principalization](Principalization.md), in `Scheme.Blowup`, supplies
 `exists_regular_pointBlowup_principalization` for a locally Noetherian integral
@@ -74,3 +74,73 @@ supply such an ideal to
 turn serves [regular-source common domination](../Birational/CommonDomination.md).
 Removing a divisorial part of an arbitrary ideal and resolving an initially
 singular scheme remain separate obligations.
+
+## Splitting and punctured cohomology from the original normal graph
+
+[ExtensionGraph](ExtensionGraph.md), in
+`Scheme.ProjectiveBundle.RankTwoExtension`, proves
+`splitting_of_finite_normal_graph` for an actual rank-two extension on an
+integral normal scheme proper and birational over a normal Noetherian
+local domain of dimension two. A supplied finite map from an integral
+normal scheme to its actual projective bundle has birational projection,
+avoids the quotient section generically, and meets that section only over
+the original closed base point. The original Cartier ideal, conormal
+comparison and open complement then split the extension.
+
+[Construction](ExtensionGraph/Construction.md) constructs this finite
+normal graph as the literal normalization of the punctured
+complementary-section image. Its actual injective finite-type algebraic
+chart maps satisfy the
+[surface Nagata stability theorem](../../../RingTheory/Nagata/FiniteTypeSurface.md).
+It proves injectivity of the original punctured structure-H1 restriction
+over a normal Noetherian Nagata local domain of dimension two. The
+complete-base corollary derives Nagata on the original base. The
+[residue-field calculation](../../Cohomology/Proper/ResidueVanishing.md)
+uses this injection to obtain the original degree-one residue-Hom
+vanishing.
+
+## Regular-local vanishing and necessary conditions
+
+[Regular](../RationalSingularities/Regular.md), in
+`Scheme.RationalSingularities`, proves universal original structure-H1
+vanishing for every supplied integral normal proper dominant model over
+a regular local ring of dimension two whose original function-field map
+is invertible. It constructs a dominating regular point chain from the
+already regular base and applies the original H1 injection. The supplied
+normal model need not be projective, and no resolution of it is an input.
+This universal predicate does not assert Nagata or construct a resolution
+of an initially singular surface.
+
+[Necessity](Necessity.md) starts with a supplied proper dominant birational
+regular integral model of an integral Noetherian scheme of dimension at
+most two. It proves finiteness of the literal generic normalization,
+finiteness of that normalization's singular set, and normal domain
+completions at every actual normalization point. The localized structural
+section bijections are derived from the original normal-birational map.
+These are necessary conditions for resolution, not an existence theorem.
+
+## Open resolution construction
+
+The full singular-surface resolution criterion RES and its quasi-excellent
+corollary RES-QE remain open. The normal-graph, vanishing and necessity
+results above do not supply the converse construction.
+
+The remaining argument includes the geometric canonical-module and trace
+comparison, Grauert–Riemenschneider vanishing, the uniform original-H1
+bound and rational/Gorenstein reduction, the genuine child tangent-cone
+presentation, persistent marking and RDP termination, complete-local degree
+induction, and descent and globalization of the prescribed normalized
+chain. These statements are not part of the frozen prerequisite cohort.
+
+The [monic-quadratic kernel theorem](../../../RingTheory/GradedAlgebra/MonicQuadratic.md)
+assumes both an actual relation and the genuine Hilbert function
+`finrank k (H n) = 2*n+1` in every nonnegative degree. Deriving those
+inputs from the rational/Gorenstein geometry remains open; changing
+cotangent coordinates only preserves a presentation already supplied.
+
+[MarkedPath](../../Blowup/Arc/MarkedPath.md) constructs a formal arc on a
+given marked ordinary point-blowup path and obtains regularity at an
+original selected point under its actual completion or complete-base
+hypotheses. The marking and the original finite-prefix residue-finiteness
+conditions remain inputs. Its local termination conclusion does not
+construct the required marking or an arbitrary global resolving chain.

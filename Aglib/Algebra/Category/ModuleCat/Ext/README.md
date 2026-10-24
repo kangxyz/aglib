@@ -1,4 +1,4 @@
-# Degree-one module Ext
+# Module Ext
 
 [FiniteLength](FiniteLength.lean) proves that the original Ext-one module into a Noetherian local ring has finite length when the finite source module is projective (in particular free) at every nonmaximal localization. The proof uses the original connecting map, finite-presentation denominator clearing and the native closed-point support criterion; it does not replace Ext by an unrelated model or require regularity or projective dimension at most one.
 
@@ -17,3 +17,17 @@ regular scalar on the quotient of a short exact presentation with free middle
 term. No projective-dimension-one assumption is imposed on the final module;
 the first syzygy need not be free. The focused consumer keeps the Ext universe
 independent of the ring/module carrier universe.
+
+[Localization](Localization.md) treats every nonnegative Ext degree over a
+Noetherian commutative ring, with finite source and arbitrary coefficients.
+`ModuleCat.extPostcomp_isLocalized_of_finite` proves that postcomposition
+with the original coefficient-localization map localizes Ext.
+`ModuleCat.extScalarExtension_isLocalized_of_finite` proves the corresponding
+property for the original extension-of-scalars `mapExtLinearMap`.
+
+The comparison keeps the actual extension/restriction adjunction unit and
+its pointwise equation, together with original source-endomorphism
+precomposition. It uses finite free covers and Noetherian syzygies, without
+local-ring, finite-projective-dimension or regular-sequence premises. The
+carrier and Ext universes are the ones declared by the native scalar
+adjunction interfaces.

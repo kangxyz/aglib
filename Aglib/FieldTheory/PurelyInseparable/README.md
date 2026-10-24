@@ -19,3 +19,22 @@ No extra constant-action or tower premise is required from the caller.
 The separate [geometric purely inseparable comparison](../../AlgebraicGeometry/EtaleCohomology/Fields/PurelyInseparable/README.md) transports
 original prime-to-characteristic root cohomology; no multiplicative-sheaf
 invariance is claimed here.
+
+## Finite constants in a supplied rational extension
+
+[FiniteConstantRoots](FiniteConstantRoots.md) supplies the distinct
+`IsPurelyInseparable.exists_finite_constant_field` theorem. The original
+image of its field `F` has supplied rational presentations in a
+transcendental `t` over `K` inside an algebraically closed ambient field.
+For a finite purely inseparable `L/F` in that same ambient field, it
+constructs a finite purely inseparable constant field `E/K` and a
+characteristic-power root
+`z` of the original variable. The element `z` is transcendental over `E`,
+and the original extension image lies in the literal field `E(z)`.
+The rational presentation and original coefficient maps are explicit;
+no bound on the imperfection degree of `K` is used.
+
+[Nagata.Polynomial](../../RingTheory/Nagata/Polynomial.md) uses this finite
+constant-root theorem. The perfect rational-function construction in
+[RationalFunction](RationalFunction.lean) remains a separate interface
+with its original hypotheses and declaration names.
