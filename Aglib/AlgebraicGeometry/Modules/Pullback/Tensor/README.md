@@ -19,3 +19,6 @@ is `asIso (pullbackTensorMap f M N)`, the pointwise form of
 `Invertible.pullbackTensorIso moduleTensorPullback f M N`
 ([Invertible/PullbackTensor/Properties](../../Invertible/PullbackTensor/Properties.lean)) without
 that declaration's legacy `ModuleTensorPullback` premise.
+
+[PairingComp](PairingComp.lean): `pullbackPairing p ((a ⊗ 𝟙) ≫ ε) = (p^* a ⊗ 𝟙) ≫ pullbackPairing p ε`
+(`pullbackPairing_tensorSheafMap_comp`), for every morphism `p` and all modules.

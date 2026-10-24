@@ -46,6 +46,10 @@ structure module `quotientModule` ([IdealSheaf/QuotientModule](../IdealSheaf/Quo
 | [Representability](Representability.lean) | `hilbertScheme`, `hilbertSchemeι`, `isImmersion_hilbertSchemeι`, `exists_lift_hilbertSchemeι_iff`, `universalHilbertFamily`, `locallyNoetherianHilbertFunctorRepresentableBy`, `locallyNoetherianGrassmannianNatTrans_app_injective`, `locallyNoetherianGrassmannianNatTrans_app_homEquiv` | `A` Noetherian, natural `r ≥ m` (injectivity: any `A`) |
 | [OpenSubfunctor](OpenSubfunctor.lean) | `containmentLocus`, `mem_containmentLocus`, `preimage_containmentLocus_eq_top_iff`, `openHilbertSubfunctor`, `mem_openHilbertSubfunctor_obj`, `isOpenOverSubfunctor_openHilbertSubfunctor`, `locallyNoetherianOpenHilbertSubfunctor`, `isOpenSubfunctor_locallyNoetherianOpenHilbertSubfunctor` | `[Finite ι]`, `U ⊆ P^n_A` open, any `T` over `Spec A`; no flatness of `Z`, no Noetherian hypothesis |
 | [OpenSubscheme](OpenSubscheme.lean) | `openHilbertSchemeOpens`, `mem_openHilbertSchemeOpens`, `openHilbertSchemeOver`, `openHilbertScheme`, `openHilbertSchemeι`, `isOpenImmersion_openHilbertSchemeι`, `isNoetherian_openHilbertScheme`, `preimage_openHilbertSchemeOpens_eq_top_iff`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy_homEquiv_coe`, `locallyNoetherianOpenHilbertSubfunctorRepresentableBy_homEquiv_id_coe` | `A` Noetherian, `e : ι ≃ Fin (n + 1)`, natural `r ≥ m`, `U ⊆ P^n_A` open |
+| [ClosedSubscheme/SectionMap](ClosedSubscheme/SectionMap.lean) | `familySectionMap`, `directImageSectionMap`, `directImageSectionMap_monomialMap` (= `directImageQuotientMap`, `rfl`), `directImageSectionMap_eq_zero_iff`, `directImageSectionMap_baseChange`, `IsHilbertFamily.pullback_map_directImageSectionMap_eq_zero_iff` | any `T`, any `φ : 𝒪^J ⟶ 𝒪(r)` (the last: `T` locally Noetherian, natural `r ≥ m`) |
+| [ClosedSubscheme/Containment](ClosedSubscheme/Containment.lean) | `sectionPairing` (`sectionPairing_homogeneousEvaluation`: = `homogeneousEvaluationPairing`), `familySectionPairing`, `imageIdealData_familySectionPairing`, `comap_le_iff_familySectionMap_eq_zero`, `comap_le_iff_directImageSectionMap_eq_zero` | any `T`, any closed `V`; `C` the image ideal of `sectionPairing ι r φ` |
+| [ClosedSubscheme/Generation](ClosedSubscheme/Generation.lean) | `idealTwistToTwistingSheaf`, `imageIdealData_sectionPairing_of_epi`, `exists_sectionPairing_imageIdealData_eq` | the last: `A` Noetherian, `e : ι ≃ Fin (n + 1)` |
+| [ClosedSubscheme/Representability](ClosedSubscheme/Representability.lean) | `closedHilbertSubfunctor` (a `Subfunctor` of `hilbertFunctor`), `locallyNoetherianClosedHilbertSubfunctor`, `closedHilbertIdeal`, `closedHilbertScheme`, `closedHilbertSchemeι`, `isNoetherian_closedHilbertScheme`, `closedHilbertSchemeOver`, `exists_lift_closedHilbertSchemeι_iff`, `locallyNoetherianClosedHilbertSubfunctorRepresentableBy` (`_homEquiv_coe`, `_homEquiv_id_coe`), `universalClosedHilbertPoint`, `exists_closedHilbertScheme_representableBy` | `A` Noetherian, natural `r ≥ hilbertRegularityBound n Φ`, `φ` cutting out `C` |
 
 **The functor.** `IsHilbertFamily ι Φ g Z` asks a closed subscheme `Z ⊆ P^n_A ×_{Spec A} T` to be
 flat over `T` (Mathlib's `Flat` of `Z ⟶ T`; equivalently `𝒪_Z` is relatively flat,
@@ -156,6 +160,24 @@ equal-rank argument supplies it. The Grassmannian points are injective for every
 (`locallyNoetherianGrassmannianNatTrans_app_injective`) and correspond to `G_Φ ⟶ G` under the
 representing isomorphism (`locallyNoetherianGrassmannianNatTrans_app_homEquiv`).
 
+**Closed subschemes.** For a closed `C ⊆ P^n_A` (not necessarily flat) the Hilbert subfunctor of
+`C` (`closedHilbertSubfunctor ι Φ C`, a Mathlib `Subfunctor`) consists of the points `V ⊆ C_T`, written
+`C.comap p ≤ V` with `C_T = C.comap p`, the closed subscheme cut out by the image of
+`p^* I_C ⟶ 𝒪` (Stacks, Tag 01JU (1)). Choose `φ : 𝒪^J ⟶ 𝒪(r)` whose section pairing
+`𝒪^J ⊗ 𝒪(-r) ⟶ 𝒪` has image ideal `C` (for `r ≥` the regularity of `I_C`,
+`exists_sectionPairing_imageIdealData_eq`, Nitsure Lemma 2.1 (c)). Then `V ⊆ C_T` iff the images
+of the sections of `φ` vanish in `π_* 𝒪_V(r)` (`comap_le_iff_directImageSectionMap_eq_zero`, no
+flatness). Over the Hilbert scheme these images form a map `𝒪^J ⟶ π_* 𝒪_W(r)` into a finite
+locally free sheaf of rank `⌊Φ(r)⌋₊`, compatible with base change for Hilbert families
+(`IsHilbertFamily.pullback_map_directImageSectionMap_eq_zero_iff`), and its zero scheme
+(`Modules/ZeroLocus/LocallyFree`) is the closed subscheme `closedHilbertScheme` of
+`hilbertScheme` (Noetherian), which represents the Hilbert subfunctor of `C` on locally Noetherian
+test schemes (`locallyNoetherianClosedHilbertSubfunctorRepresentableBy`, universal family
+`…_homEquiv_id_coe`, `universalClosedHilbertPoint`). This is Nitsure, Theorem 5.3, p. 24, for
+`X = C` and `E = 𝒪_C` (Theorem 6.1, p. 28, for closed `X`), by the closed embedding of Lemma 5.4
+(ii), p. 25; the vanishing scheme of Remark 3.6, p. 17 is replaced by the Fitting zero scheme of
+`Modules/ZeroLocus/LocallyFree`.
+
 **Open subschemes of `P^n_A`.** For an open `U ⊆ P^n_A` and `g : T ⟶ Spec A`, a closed subscheme
 `Z ⊆ P^n_A ×_{Spec A} T` lies in `U_T` when every point of its support maps into `U`. For finite
 `ι` this is an open and universal condition on `T`: `containmentLocus ι g Z U` is the complement
@@ -230,7 +252,8 @@ The following are not formalized. The list is an inventory, not a proof.
 - **Projectivity of `G_Φ`** (Nitsure's valuative-criterion step, §5, p. 27), which would make
   the Hilbert scheme projective over `Spec A`; optional for representability.
 - **The remaining subfunctors of Theorem 6.1** (§6): the open step for an open `U ⊆ P^N_A` is
-  `HilbertScheme/OpenSubscheme` (with `Hilb^Φ_U` the subfunctor of families contained in `U`).
-  Open: the identification of `Hilb^Φ_U` with the Hilbert functor of `U` itself (a closed
-  subscheme of `U_T`, proper over `T`, is closed in `P^N_T`; Exercise B, p. 28), the closed step
-  for `C ⊆ P^N_A`, the locally closed combination, and quasi-projectivity.
+  `HilbertScheme/OpenSubscheme` (with `Hilb^Φ_U` the subfunctor of families contained in `U`),
+  and the closed step for `C ⊆ P^N_A` is `HilbertScheme/ClosedSubscheme`. Open: the identification
+  of `Hilb^Φ_U` with the Hilbert functor of `U` itself (a closed subscheme of `U_T`, proper over
+  `T`, is closed in `P^N_T`; Exercise B, p. 28), the locally closed combination (Nitsure makes
+  `Quot_{E/X}` open in `Quot_{Ē/X̄}` for the closure `X̄`), and quasi-projectivity.

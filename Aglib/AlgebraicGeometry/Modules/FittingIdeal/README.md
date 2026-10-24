@@ -23,7 +23,9 @@ finite-presentation hypothesis enters the construction.
   `IdealSheafData.fromSpec_mem_support_iff`).
 - Present consumers: the [flattening stratification](../../FlatteningStratification/README.md) and
   the tests `AglibTest.AlgebraicGeometry.Modules.FittingIdeal.Pullback` and
-  `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank`. The rank interface is Aglib's
+  `AglibTest.AlgebraicGeometry.FlatteningStratification.Rank`; the zero schemes of
+  [ZeroLocus/LocallyFree](../ZeroLocus/LocallyFree.lean) and the test
+  `AglibTest.AlgebraicGeometry.Modules.ZeroLocus.LocallyFree`. The rank interface is Aglib's
   [LocallyFree/Rank](../LocallyFree/Rank.lean) (`SheafHasRank`, `sheafRank`).
 
 ## Main results
@@ -80,6 +82,12 @@ under every pullback) and `sheafHasRank_of_iso`; on `Spec A`, `sheafRank_eq_rank
 rank of a finitely presented sheaf whose module of global sections is finite and flat is the stalk
 rank of its global sections), `sheafHasRank_tilde` and `rankAtStalk_globalSections`. Consumer:
 [Grassmannian/Quotient](../../Grassmannian/README.md).
+
+[Quotient](Quotient.lean): for an epimorphism `p : E ⟶ Q` with quasi-coherent kernel between
+quasi-coherent sheaves of finite type, `Fitt_k(E) ⊆ Fitt_k(Q)` (`fittingIdealSheaf_le_of_epi`;
+Stacks, Tag 07ZA (5), on affine opens through `affineOpenSections_epi_surjective`), and
+`Fitt_d(Q) = 𝒪_X` when `E` has constant rank `d`
+(`fittingIdealSheaf_eq_top_of_epi_of_sheafHasRank`).
 
 ## Not covered
 

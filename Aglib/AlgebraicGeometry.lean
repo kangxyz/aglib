@@ -2402,6 +2402,10 @@ public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.Group.Translation
 public import Aglib.AlgebraicGeometry.Group.WeilPairing
 public import Aglib.AlgebraicGeometry.HilbertScheme.Affine
+public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Containment
+public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Generation
+public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Representability
+public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.SectionMap
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImage
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheaf
 public import Aglib.AlgebraicGeometry.HilbertScheme.DirectImageSheafEpi
@@ -2724,6 +2728,7 @@ public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Basic
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.ConstantRank
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.LocallyFree
 public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Pullback
+public import Aglib.AlgebraicGeometry.Modules.FittingIdeal.Quotient
 public import Aglib.AlgebraicGeometry.Modules.Flat.Closure
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generators
 public import Aglib.AlgebraicGeometry.Modules.Flat.Generic.Integral
@@ -2984,6 +2989,7 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.StalkUnit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Basic
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Isomorphism
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Pairing
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.PairingComp
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.RightUnit
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Unit
@@ -3069,6 +3075,7 @@ public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.LocalSpec
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Locality
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pullback
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Pushforward
+public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Quotient
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Restriction.Comparison
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.FiniteType.Sections
@@ -3147,6 +3154,8 @@ public import Aglib.AlgebraicGeometry.Modules.Tensor.ToUnit
 public import Aglib.AlgebraicGeometry.Modules.Trivial.Sections
 public import Aglib.AlgebraicGeometry.Modules.ZeroLocus
 public import Aglib.AlgebraicGeometry.Modules.ZeroLocus.ImageFactorisation
+public import Aglib.AlgebraicGeometry.Modules.ZeroLocus.LocallyFree
+public import Aglib.AlgebraicGeometry.Modules.ZeroLocus.Order
 public import Aglib.AlgebraicGeometry.Modules.ZeroLocus.Pullback
 public import Aglib.AlgebraicGeometry.Modules.ZeroLocus.Restriction
 public import Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.ComponentStalk

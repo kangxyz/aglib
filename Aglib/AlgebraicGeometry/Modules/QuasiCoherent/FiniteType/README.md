@@ -12,6 +12,12 @@ The lower affine condition and module equivalence are in [Affine](../Affine/READ
 
 [Sections](Sections.lean) owns two interface results. `finite_sections_of_affineLocallyFiniteType` says the sections on an actual affine open form a finite module over its ring of functions. `affineLocallyFiniteType_pullback_of_finitePresentation` says the module-sheaf pullback of a finitely presented sheaf along an arbitrary morphism satisfies the chart condition. The library does not yet supply the general theorem that the pullback of a finite-type quasicoherent sheaf is of finite type. Until it does, consumers such as the [Fitting ideal sheaves](../../FittingIdeal/README.md) take that finite type as an argument or obtain it from finite presentation.
 
+[Quotient](Quotient.lean) proves `affineLocallyFiniteType_of_epi`: the target of an epimorphism
+with quasi-coherent target and kernel from a finite-type sheaf is of finite type (affine-chart
+sections are surjective by `affineRestriction_epi_surjective`); in particular
+`affineLocallyFiniteType_cokernel` for a morphism of quasi-coherent sheaves into a finite-type
+sheaf. No Noetherian or finite-presentation hypothesis.
+
 [Support](Support.lean) proves closedness of ordinary stalk support on arbitrary schemes.
 [Extension](Extension/README.md) gives affine finite-type approximation over arbitrary
 commutative rings; [restriction comparisons](Restriction/README.md) retain the actual

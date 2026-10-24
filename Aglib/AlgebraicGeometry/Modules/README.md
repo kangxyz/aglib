@@ -65,3 +65,27 @@ epimorphism–ideal-inclusion factorisation (`Hom.imageIdealData_eq_of_epi_comp`
 every `f`, without flatness (`Hom.imageIdealData_pullback`, Stacks Tags 01JU, 01AJ); main's
 `Hom.imageIdealData_restrict` ([ZeroLocus/Restriction](ZeroLocus/Restriction.lean)) is the
 restriction-functor form for open immersions.
+
+[ZeroLocus/LocallyFree](ZeroLocus/LocallyFree.lean): the zero scheme of `σ : F ⟶ E`, for `F`
+quasi-coherent and `E` finite locally free of constant rank `d` (`SheafHasRank E d`), is
+`Hom.zeroLocusIdeal σ d = Fitt_{d-1}(coker σ)` (`Fitt_{-1} = 0`). A morphism `g : T ⟶ X` from any
+scheme factors through it iff `g^* σ = 0` (`Hom.exists_lift_zeroLocusSchemeι_iff`), it pulls back
+to the zero scheme of `f^* σ` (`Hom.zeroLocusIdeal_comap`), and it is `X` iff `σ = 0`. For
+sections `s i : 𝒪_X ⟶ E` (any index type) the zero scheme of `freeDesc s : 𝒪_X^{(I)} ⟶ E`
+represents the vanishing of all pulled-back sections, also as elements of `Γ(T, g^* E)`
+(`exists_lift_zeroLocusSchemeι_freeDesc_iff`, `…_globalSections`), and pulls back to the zero
+scheme of the pulled-back sections (`zeroLocusIdeal_freeDesc_comap`). Stacks Tag 0FA8 (definition
+through `E^∨`, Section 42.44); invertible case Tags 02OQ, 02OR. Varying rank is not covered.
+For `E = 𝒪_X` it is the image-ideal zero scheme (`Hom.zeroLocusIdeal_one_eq_imageIdealData`).
+`IdealSheafData.eq_of_forall_comap_eq_bot_iff` (a closed subscheme is determined by the morphisms
+factoring through it) and `pullback_map_comp_eq_zero_iff` are relocation candidates for new sibling
+leaves under `IdealSheaf/` and `Modules/Pullback/` (not the widely imported
+`IdealSheaf/LocallyClosed`).
+
+[ZeroLocus/Order](ZeroLocus/Order.lean): for closed subschemes `W ≤ W'`, `I_W ⟶ 𝒪 ⟶ 𝒪/I_{W'}`
+vanishes (`IdealSheafData.idealInclusion_comp_toQuotientModule_eq_zero_of_le`); a module-to-unit
+map whose image ideal lies in `W` vanishes on `𝒪/I_W`
+(`Hom.comp_toQuotientModule_eq_zero_of_imageIdealData_le`, quasi-coherent source, generalizing
+`Hom.comp_toQuotientModule_imageIdealData_eq_zero`); image ideals shrink under precomposition
+(`Hom.imageIdealData_comp_le`); the image ideal vanishes iff the map does
+(`Hom.imageIdealData_eq_bot_iff`).
