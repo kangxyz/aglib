@@ -194,3 +194,19 @@ compares `H^1(𝒪^*_{X_T})` with `Pic_{X/k}(T)`, and (5.11.3) are not formalize
 only the étale form `FrameTensor.picardH1Equiv`. No separatedness, quasi-compactness or
 Noetherian hypothesis on `X` is used. The focused test is
 `AglibTest.AlgebraicGeometry.Picard.Tangent`.
+
+[Strata/FiberConditions](Strata/FiberConditions.lean) defines, for a closed immersion
+`i : X ⟶ P^N_A`, `s : T ⟶ Spec A`, a line bundle `L` on `X ×_{Spec A} T` and `t ∈ T`, the fibre
+conditions of the strata of Kleiman's Thm 4.8 (arXiv:math/0504020v1, pp. 28–30) with the plan's
+repairs: `HasFiberDualEulerPolynomial i s φ L t` (`χ(X_t, L_t^{-1}(n)) = φ(n)` for all `n`, (4.8.1)),
+`HasFiberTwistVanishingAndSections i s m L t` (the single condition `C_m`: (4.8.3) for `n ≥ m` and
+`h^0(X_t, L_t(m)) ≠ 0`), and `IsFiberStratum i s φ m L t = C_φ ∧ C_m`. They are invariant under
+isomorphism and base change of the family (`hasFiberDualEulerPolynomial_pullback_iff`,
+`hasFiberTwistVanishingAndSections_pullback_iff`), open (`C_φ` open and closed) on locally
+Noetherian `T` for flat `f`, with each level `h^0(X_t, L_t(m)) = r` of the vanishing locus open
+(`isOpen_setOf_hasFiberTwistVanishing_and_fiberTwistDim_zero_eq`), monotone in `m`, and cover
+(geometrically integral fibres). The twist
+`L ↦ L(m)` carries `C_φ ∧ C_m` to `C_{φ₀} ∧ C_0` with `φ₀(n) = φ(n - m)`
+(`isFiberStratum_pulledTwistLineBundle_iff`); `fiberTwistClass` gives the classes `o_T(n)` with
+`familyPicardFunctor_map_add_zsmul_fiberTwistClass`. The open-subsheaf bundling consumes these
+pointwise statements.

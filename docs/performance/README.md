@@ -101,6 +101,7 @@ original runs; current operating guides own present procedures.
 - [Local instance names must remain distinct across actual imports](local-instance-names-must-remain-distinct-across-actual-imports.md)
 - [Limit exposure to the actual public implementation boundary](limit-exposure-to-the-actual-public-implementation-boundary.md)
 - [Continue native checks after cache-record preparation fails](continue-native-checks-after-cache-record-preparation-fails.md)
+- [Field-point cohomology dimensions: specialize residue fields through variable-field statements](field-point-cohomology-dimensions-specialize-residue-fields-through-variable-field-statements.md)
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.

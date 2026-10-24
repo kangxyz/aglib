@@ -1155,7 +1155,9 @@ public import Aglib.AlgebraicGeometry.Cohomology.Exact.Modules
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Stabilization
 public import Aglib.AlgebraicGeometry.Cohomology.Exact.Tower
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.Affine
+public import Aglib.AlgebraicGeometry.Cohomology.Fibers.BaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Fibers.FieldPoint
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.Immersion
 public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.BaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.FiniteModel.BaseChangeCriterion
@@ -1563,6 +1565,11 @@ public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedLine
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Comparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Coproduct
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Family
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Monotone
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Projective
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Twist
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EulerCharacteristic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiberBaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteModel
@@ -4133,6 +4140,7 @@ public import Aglib.AlgebraicGeometry.Picard.PowerRoot
 public import Aglib.AlgebraicGeometry.Picard.Presheaf
 public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
+public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening

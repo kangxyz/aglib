@@ -189,6 +189,14 @@ still needs that provider.
 [grading](performance/retain-the-given-grading-in-an-exceptional-chart-quotient.md),
 [shift structures](performance/keep-native-shift-structures-explicit-in-the-canonical-exchange-proof.md).
 
+**Reach residue fields by instantiating variable-field statements.** State
+finiteness and dimension facts for a variable field `K` and data over
+`Spec (CommRingCat.of K)`, then instantiate them at `κ(t)`. Re-deriving such a
+fact at the residue field cost 68 s of kernel checking in one declaration;
+after instantiation the consumer leaf built in 10 s. The variable-field
+lemmas keep their own cost.
+[Field-point case](performance/field-point-cohomology-dimensions-specialize-residue-fields-through-variable-field-statements.md).
+
 **Request only the structure used.** Prefer `Ext.precompIsoAddEquiv` for an
 additive argument, native sized `Subobject.sInf` when no complete lattice is
 needed, and an available native isomorphism/field-point API. The original

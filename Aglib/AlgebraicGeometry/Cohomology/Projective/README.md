@@ -365,3 +365,30 @@ base have finite unchanged cohomology in every degree. These results
 supply the two inputs for the proper-modification support argument in
 [Proper/Finiteness](../Proper/Finiteness/README.md), which discharges the
 support-induction premise internally.
+
+[EmbeddedFibers](EmbeddedFibers/Basic.lean) treats `i : X ⟶ P^N_A` and field points
+`k : Spec K ⟶ Spec A`, with `X_K = X ×_{Spec A} Spec K`, the twist `pulledTwist h n M = h^*O(n) ⊗ M`
+(`pulledTwistPullbackIso`: twisting commutes with pullback), and
+`embeddedFiberTwistDim i k M n q = h^q(X_K, O(n) ⊗ M)`, `embeddedFiberTwistEulerChar`. Point
+fibres of `X_T ⟶ T` are these field points (`modulePointFiberCohomologyDimension_pulledTwist`),
+and field extension does not change them (`embeddedFiberTwistDim_fieldBaseChange`).
+[Projective](EmbeddedFibers/Projective.lean), for a closed immersion: `embeddedFiberι i k` embeds
+`X_K` in `P^N_K` as a base change of `i`, and
+`embeddedFiberTwistDim_eq_projectiveCohomologyDim` computes `h^q(X_K, O(n) ⊗ M)` on `P^N_K`
+for coherent `M`; consequences: the fibre Euler characteristic is a Hilbert function, hence
+polynomial (`exists_embeddedFiberTwistEulerChar_eq_eval`); vanishing for all `q ≥ 1`, `n ≥ m` is
+equivalent to vanishing for `1 ≤ q ≤ N`, `m ≤ n < m + N` (`embeddedFiberTwistDim_vanishing_iff`,
+by Castelnuovo–Mumford regularity, Nitsure Lemma 2.1 (b)); Serre vanishing and nonvanishing of
+`h^0` for large twists of a nonzero coherent `M` (`exists_embeddedFiberTwistDim_eq_zero`,
+`exists_embeddedFiberTwistDim_zero_ne_zero`); `h^q = 0` iff `H^q = 0`
+(`embeddedFiberTwistDim_eq_zero_iff`). [Monotone](EmbeddedFibers/Monotone.lean): `h^0` of twists
+of a line bundle does not decrease (`embeddedFiberTwistDim_zero_mono`), by a general section of
+`O(1)` over the algebraic closure (`exists_forall_frameCoefficient_isSMulRegular`), with no
+integrality hypothesis. [Twist](EmbeddedFibers/Twist.lean): `h^q(X_K, O(n) ⊗ (O(m) ⊗ M)) =
+h^q(X_K, O(n + m) ⊗ M)` and likewise for `χ`. [Family](EmbeddedFibers/Family.lean), for `f`
+proper and flat and `T` locally Noetherian: upper semicontinuity and local constancy on the
+fibres of a line bundle, and clopenness of the locus with prescribed Euler characteristics; for a
+closed immersion `i` with `ι ≃ Fin (N + 1)`, also openness of the vanishing locus and of
+vanishing with `h^0 ≠ 0`, `= 0` or `= r`. Base-change invariance of the twisted fibre invariants
+(`embeddedFiberTwistDim_familyBaseChange`) needs only `f` proper.
+`Scheme.isLocallyConstant_pi_of_isLocallyNoetherian` (joint local constancy) is proved there.

@@ -74,3 +74,25 @@ relatively flat coefficient over a locally Noetherian target produces an
 actual open containing the given point, with vanishing on every original
 fibre. Taking that point to be generic gives the finite-base spreading
 application, once its actual external fibre and coefficient are identified.
+
+[FieldPoint](FieldPoint.lean) defines `moduleCohomologyDimension b M q`, the dimension over a
+field `K` of the original `H^q(Y, M)` for `b : Y ⟶ Spec K`, with its structural action, and
+`moduleEulerChar b M`. They are invariant under module isomorphism and transport along
+isomorphisms over `Spec K` (`moduleCohomologyDimension_eq_of_isIso`); for qcqs `b` and
+quasicoherent `M` they are unchanged by field extension
+(`moduleCohomologyDimension_fieldBaseChange`, from `moduleCohomology_finrank_fieldBaseChange`).
+`residueFieldBaseChange p s t : X ×_S Spec κ(t) ⟶ X ×_S T` is the base change at a point, and
+`modulePointFiberCohomologyDimension_eq_pullbackMap` identifies the point fibre of
+`X ×_S T ⟶ T` at `t` with this base change through the pasting isomorphism. No properness,
+Noetherian or flatness hypothesis is used.
+
+[BaseChange](BaseChange.lean) treats a morphism `b : T' ⟶ T` over `S` and
+`familyBaseChange p s s' b hb : X ×_S T' ⟶ X ×_S T` (definitionally the map of
+`RelativePicard.familyScheme p`). The fibre at `t'` is the base change of the fibre at `b t'`
+along `Spec κ(t') ⟶ Spec κ(b t')` (`isPullback_fiberBaseChange`), compatibly with the maps to
+`X ×_S T` (`residueFieldBaseChange_comp_familyBaseChange`); coefficients transport naturally
+(`familyBaseChangeFiberNatIso`). For qcqs `p` and quasicoherent `M`, point-fibre dimensions and
+Euler characteristics of `b^* M` at `t'` and of `M` at `b t'` agree
+(`modulePointFiberCohomologyDimension_familyBaseChange`,
+`modulePointFiberEulerChar_familyBaseChange`), and so does vanishing
+(`subsingleton_modulePointFiberCohomology_familyBaseChange_iff`). Consumer: the Picard strata.
