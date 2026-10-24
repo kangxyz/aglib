@@ -41,3 +41,12 @@ The lower ring-only inputs are
 [ideal-power quotient kernels](../../../../RingTheory/Ideal/PowerQuotientSquareZero.lean).
 No flatness, Noetherianity or invertible-order hypothesis enters these generic
 unit-sequence results.
+
+[SquareZeroSplitting](SquareZeroSplitting.lean) adds a ring section `s` with `s ≫ f = 𝟙`.
+Then `f` is locally surjective (`isLocallySurjective_of_section`), `squareZeroUnitsSplitting`
+splits the original unit sequence with section literally `unitsMap s`, and in every degree
+`squareZeroUnitsCohomologyEquiv : H^n(R^*) ≃+ H^n(I) × H^n(S^*)` and
+`squareZeroUnitsCohomologyKerEquiv : ker H^n(unitsMap f) ≃+ H^n(I)` (through the one-plus
+map). The generic statements for split short complexes of abelian sheaves are in
+[CategoryTheory/Sites/SheafCohomology/Splitting](../../../../CategoryTheory/Sites/SheafCohomology/Splitting.lean).
+The consumer is the Picard tangent space.

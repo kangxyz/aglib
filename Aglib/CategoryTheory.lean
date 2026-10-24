@@ -265,6 +265,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Ordinary
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OverMap
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Restriction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitTerminal
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Splitting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.ExactSequence
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.MapBijective
 public import Aglib.CategoryTheory.Sites.Torsion.Annihilator

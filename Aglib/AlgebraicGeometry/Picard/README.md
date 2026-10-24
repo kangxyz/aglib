@@ -111,3 +111,28 @@ The [curve representability interface](../Curves/RelativePicard/Representability
 remains an input to the prescribed-origin genus-one construction.
 [PowerRoot](PowerRoot.lean), [PowerDescent](PowerDescent.lean) and
 [FrameTorsor](FrameTorsor.lean) describe actual root, descent and frame objects.
+
+[Tangent/Thickening](Tangent/Thickening.lean), [Tangent/Generator](Tangent/Generator.lean) and
+[Tangent/DualNumbers](Tangent/DualNumbers.lean) give the algebraic core of the tangent space
+of the Picard functor (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, p. 43). For morphisms
+`i : X ⟶ Y` and `p : Y ⟶ X` with `i ≫ p = 𝟙 X`, `SplitThickening.ringSheaf p` is `p_* 𝒪_Y` on
+the Zariski site of `X`, with the closed-fibre map `reduction i p h` and its section
+`projectionMap p`. Given square-zero section kernels (`reduction_ker_sq` from quasi-compact
+`i` with `i.ker ^ 2 = ⊥`, or `IdealGenerator.reduction_ker_sq`), the original unit sequence is
+short exact and split, and `unitsCohomologyEquiv` gives
+`H^n((p_* 𝒪_Y)^*) ≃+ H^n(I) × H^n(𝒪_X^*)` in every degree. `picardRetractionEquiv` splits
+`Pic(Y) ≃+ Pic(X) × ker(i^*)` with no further hypothesis. An `IdealGenerator` `ε` identifies the
+additive kernel `I` with `𝒪_X` (`IdealGenerator.kernelIso`), so the truncated exponential
+sequence `0 → 𝒪_X → (p_* 𝒪_Y)^* → 𝒪_X^* → 1`, `b ↦ 1 + bε`, is short exact and split. For
+`X[ε] = X ×_{Spec k} Spec k[ε]` over any commutative ring `k`,
+`DualNumbers.dualIdealGenerator` supplies `ε`; on an affine open `W`, sections over `p⁻¹ W`
+are the pushout `Γ(X, W) ⊗ k[ε]` (Mathlib `isIso_pushoutSection_of_isAffineOpen`). The
+identification `ker(i^*) ≃+ H^1(X, 𝒪_X)` (`picardKerEquiv`, `picardEquiv`) takes the premise
+`UnitsCohomologyComparison`: Zariski `Pic = H^1(𝒪^*)` for `Y` on the common space (an
+equivalence) and for `X` (an injective map) (Stacks, Tag 09NU, `lemma-h1-invertible`, for the
+isomorphisms; compatibility with `i^*` is a separate naturality statement). Kleiman uses this
+identification tacitly in the sentence before Square (5.11.4); the square itself, which
+compares `H^1(𝒪^*_{X_T})` with `Pic_{X/k}(T)`, and (5.11.3) are not formalized. Aglib proves
+only the étale form `FrameTensor.picardH1Equiv`. No separatedness, quasi-compactness or
+Noetherian hypothesis on `X` is used. The focused test is
+`AglibTest.AlgebraicGeometry.Picard.Tangent`.

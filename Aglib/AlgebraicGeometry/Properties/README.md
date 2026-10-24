@@ -44,3 +44,10 @@ for the finite-cover conclusion. The former
 module. All four native `Scheme` declarations and their statements are
 unchanged. The implementation was moved byte for byte, with SHA-256
 `936ace3003edccb7f026470e640687adb3bb1ad244e32b2795585c4b8440ebe4`.
+
+[AffineLocalSections](AffineLocalSections.lean) proves `Scheme.eq_zero_of_local` and
+`Scheme.eq_zero_of_forall_affine`: a section of the structure sheaf vanishes if it vanishes
+near every point of its domain, or on every affine open inside its domain. No hypothesis on
+the scheme is used. Consumers are
+[square-zero kernels on every open](../Modules/Invertible/SquareZero/KernelOpens.lean) and the
+Picard tangent space.

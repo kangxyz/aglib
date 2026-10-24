@@ -129,6 +129,7 @@ public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroCohomology
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernel
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSequence
+public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroSplitting
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroUnits
 public import Aglib.Algebra.Category.Ring.Sheaf.Units
 public import Aglib.Algebra.Central.Matrix
@@ -138,6 +139,7 @@ public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.NormalizedQuotient
 public import Aglib.Algebra.Group.Subgroup.Ker
+public import Aglib.Algebra.Group.Subgroup.KerEquiv
 public import Aglib.Algebra.Group.Torsion
 public import Aglib.Algebra.Group.TwoTorsionSign
 public import Aglib.Algebra.Group.Units.Map

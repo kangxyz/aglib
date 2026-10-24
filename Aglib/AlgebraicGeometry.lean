@@ -2583,6 +2583,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.ScalarAutomorphisms
 public import Aglib.AlgebraicGeometry.Modules.Invertible.SquareZero.Affine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.SquareZero.AffineMorphism
 public import Aglib.AlgebraicGeometry.Modules.Invertible.SquareZero.ClosedImmersion
+public import Aglib.AlgebraicGeometry.Modules.Invertible.SquareZero.KernelOpens
 public import Aglib.AlgebraicGeometry.Modules.Invertible.SquareZero.TwoAffine
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator
@@ -3181,6 +3182,9 @@ public import Aglib.AlgebraicGeometry.Picard.PowerRoot
 public import Aglib.AlgebraicGeometry.Picard.Presheaf
 public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
+public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
+public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
+public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening
 public import Aglib.AlgebraicGeometry.Picard.Torsion
 public import Aglib.AlgebraicGeometry.Picard.TranslationLift
 public import Aglib.AlgebraicGeometry.Picard.TrivializedPowerTorsor
@@ -3329,6 +3333,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.ClosedImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.DegreeOneBaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.DegreeOneEmbedding
 public import Aglib.AlgebraicGeometry.Properties.AffineInduction
+public import Aglib.AlgebraicGeometry.Properties.AffineLocalSections
 public import Aglib.AlgebraicGeometry.Properties.DenseAffine
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents
 public import Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.DenseComponent

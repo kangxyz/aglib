@@ -3712,3 +3712,38 @@ When an equation's statement uses a definition of an isomorphism or morphism and
 the value, bridge them with a named `rfl` lemma through `congrArg` and `trans`, not by `rw`, `exact`
 or a type-changing application. This is the method of "Hilbert-scheme naturality: rfl value lemmas
 and regular components" applied to isomorphism values.
+
+## Picard tangent space: prove additive-group algebra abstractly, then specialize
+
+At Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, a profiled remote build
+of a pre-repair `Picard/Tangent/Thickening` (run `remote-ae44f9f482d946e99dbd5c68365a0ca5`,
+source `1cc92cc3`, not retained; the receipt records a whole-cgroup average of 12.0 CPU cores,
+and the author's observation of a host load of about 80 on 32 cores has no retained probe)
+reported, among entries of at least 10 s, kernel type checking of 36.7 s at 188:4, 13.8 s at
+199:8, 25.4 s at 206:4, 80.4 s plus 21.4 s of congruence-lemma generation at 261:0, seven
+entries of 18.1–69.8 s at 276:4, 42.3 s and 24.4 s at 290:4 and 296:4, and linting of 339 s at
+310:0. In that source the `AddEquiv` constructions `picardRetractionEquiv` and
+`UnitsCohomologyComparison.kerEquiv` proved their fields with `abel` and `rw` directly over
+`PicardGroup`; the positions cannot be checked against a retained file, so the mapping from
+positions to declarations is the author's reading. An earlier pre-repair version (source
+`4c1c686a`, not retained) took 487 s in run `remote-38bfcbc79b2f4fad8e40f15b57e17e46` (exit 1
+on the `unnecessarySeqFocus` style linter at 141:7).
+
+Candidate mechanism, not established: the kernel unfolds the `PicardGroup` additive structure
+(tensor product, dual and the quotient by isomorphism) while checking `abel` and
+structure-field proofs stated over `PicardGroup`. The profile attributes the time to kernel
+checking of whole declarations, not to `abel`.
+
+Repair: the additive-group algebra (`AddMonoidHom.retractionAddEquiv`,
+`AddMonoidHom.kerAddEquivOfComm`, now in `Aglib/Algebra/Group/Subgroup/KerEquiv`) is proved
+over abstract `[AddCommGroup A]`, and the Picard declarations specialize it once; the `rfl`
+lemma `picardEquiv_apply_fst` was dropped. The repaired module built in 273 s
+(`remote-6237c559e89345668abc9c12402a5620`), then in 247 s
+(`remote-c8bf07378f894e029e5dc0ef76ac076f`) and finally 243 s
+(`remote-7523f430ca654fb7a18559a29077b505`) (whole-cgroup averages 8.6, 10.4 and 11.1 CPU
+cores in the receipts); after the review repairs, which moved the generic lemmas out, it built
+in 244 s (`remote-9f484e84e2d34695ac803d74f5040b21`) (6.3 cores). These builds are not matched
+measurements, and the repair's effect on single declarations was not measured.
+
+Rule: prove additive-group algebra over an abstract `[AddCommGroup A]`, then specialize it once
+to concrete heavy groups such as `PicardGroup`.

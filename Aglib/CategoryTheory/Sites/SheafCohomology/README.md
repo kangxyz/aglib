@@ -15,6 +15,7 @@ Scheme geometry belongs to the corresponding scheme family.
 | [Coefficient continuity](Continuity/FiniteCoefficientContinuity.lean) | Canonical filtered-colimit comparison in original `Sheaf.H`; finite generating hypercovers supply invertibility in all degrees. The scheme consumer is [fixed qcqs continuity](../../../AlgebraicGeometry/EtaleCohomology/Continuity/README.md). |
 | [Basis acyclicity](BasisAcyclicity/Basic.lean) | Čech acyclicity on a cofinal cover basis gives positive represented-object Ext vanishing on basis objects, and original `Sheaf.H` vanishing when a terminal object lies in the basis. The quasicoherent étale family uses these generic suppliers. |
 | [Exact-sequence vanishing](Vanishing/ExactSequence.lean) | Original connecting homomorphisms transport supplied vanishing and surjectivity through actual short exact coefficient sequences. |
+| [Split complexes](Splitting.lean) | On any site, a split short complex `0 → A → B → C → 0` of abelian sheaves gives `Sheaf.H.splittingAddEquiv : H^n(B) ≃+ H^n(A) × H^n(C)` and `Sheaf.H.kerAddEquivOfSplitting : ker H^n(g) ≃+ H^n(A)`, with injective first map; sheafification and the Ext universe remain explicit. The consumer is the split square-zero unit sequence [Ring/Sheaf/SquareZeroSplitting](../../../Algebra/Category/Ring/Sheaf/SquareZeroSplitting.lean). |
 
 ## Filtered coefficients and compatible systems
 

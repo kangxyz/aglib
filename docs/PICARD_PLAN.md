@@ -148,7 +148,7 @@ commitments.
 | F15 | The module `Q` with `Hom(Q,N) ≅ f_*(L ⊗ f^*N)` in the locally free regime; `LinSys = P(Q)` (Kleiman 3.10, Thm 3.13, pp. 24–26) | partial: the finite model; the cohomological inputs (degree-zero projection formula, line subbundles from fibrewise nonzero maps, zero schemes on integral fibres, residue-field concentration, and 15a, the locally free direct image on the rank pieces); open: `LinSys = Gr(E, r − 1)` | M |
 | F16 | Quotient of a strongly quasi-projective scheme by a flat proper equivalence relation (Nitsure, Thm 6.9, p. 35, by the proof of Thm 6.8, pp. 33–35, with Thm 6.1 and Lemma 6.7) | absent | M |
 | F17 | Strata `Pic^φ`, `Pic^φ_m`, the Abel map and assembly of target 5 | absent | L |
-| F18 | Tangent space via square-zero thickenings and Čech `H^1`; identity component of a group scheme locally of finite type over a field (open and closed, finite type, geometrically irreducible). Optional: Krull dimension of a local ring bounded by its embedding dimension (not checked in Mathlib), `Pic(P^n_K) ≅ ℤ` for fields `K` | absent | M |
+| F18 | Tangent space via square-zero thickenings and `Sheaf.H` of `𝒪_X` (`structureCohomology`); identity component of a group scheme locally of finite type over a field (open and closed, finite type, geometrically irreducible). Optional: Krull dimension of a local ring bounded by its embedding dimension (not checked in Mathlib), `Pic(P^n_K) ≅ ℤ` for fields `K` | partial: tangent-space core (`Picard/Tangent/{Thickening,Generator,DualNumbers}`): the split truncated exponential sequence for `X[ε]` over any ring with its `Sheaf.H` splitting in every degree, `Pic(X[ε]) ≃+ Pic(X) × ker(i^*)`, and `ker(i^*) ≃+ H^1(X, 𝒪_X)` under the premise `UnitsCohomologyComparison`; open: the premise, `k`-linearity, T2, T3 and the base-change step of target 6, and the identity component | M |
 | F19 | Deferred. Noetherian approximation: for `X` of finite type over `A` and `B = colim B_i` a filtered colimit of finitely generated `A`-algebras, every line bundle on `X_B` comes from some `X_{B_i}`, uniquely up to enlarging `i` (standard limit argument; source locator not yet checked) | absent; Mathlib has `Scheme.preservesColimit_yoneda` (`AlgebraicGeometry/AffineTransitionLimit.lean` 1339) for the representing side | M |
 
 Mathlib PRs that overlap these rows were open on 2026-10-17: #24434 (effectiveness
@@ -308,7 +308,7 @@ products, and `P` is one of them. Yoneda in that full subcategory, through
 Mathlib's `CommGrpObj.ofRepresentableBy` once the subcategory carries its
 cartesian monoidal structure, gives the commutative group law on `P` as
 morphisms of `S`-schemes. For the tangent space over a field `k`, the exact
-sequence `0 → O_X → O_{X[ε]}^* → O_X^* → 1` and Čech `H^1` give an injective
+sequence `0 → O_X → O_{X[ε]}^* → O_X^* → 1` and sheaf cohomology `Sheaf.H` give an injective
 `k`-linear map `H^1(X, O_X) → T_0`, using target 4 injectivity. After base change
 to the residue field of a closed point, where a section exists, it becomes the
 comparison isomorphism, by target 4 and base change of `P`. A finite, possibly
@@ -640,8 +640,32 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
       rank `r` and commutes with every base change (statement 15a).
     - A review found no blocking gap; its citation and registration repairs are applied.
   - Open: `LinSys = Gr(E, r − 1)` with its universal divisor (F15b).
+- **M6 in progress.**
+  - F18, tangent-space core done (`Picard/Tangent/{Thickening,Generator,DualNumbers}`; Kleiman,
+    proof of Thm 5.11, p. 43): the split truncated exponential sequence for `X[ε]` over any
+    commutative ring, its `Sheaf.H` splitting in every degree, the retraction splitting
+    `Pic(X[ε]) ≃+ Pic(X) × ker(i^*)`, and `ker(Pic(X[ε]) → Pic(X)) ≃+ H^1(X, 𝒪_X)` under the
+    premise `UnitsCohomologyComparison`. Generic inputs went to new leaves
+    (`CategoryTheory/Sites/SheafCohomology/Splitting`, `Algebra/Group/Subgroup/KerEquiv`,
+    `Properties/AffineLocalSections`, `Modules/Invertible/SquareZero/KernelOpens`). A review
+    found no blocking gap; its repairs are applied.
+  - Open:
+    - `UnitsCohomologyComparison` for `X ⟶ X[ε] ⟶ X`, from the canonical Zariski
+      `Pic = H^1(𝒪^*)` (Stacks 09NU), its transport to `|X|` and its naturality along `i`, `µ_a`
+      and base change;
+    - `k`-linearity through `µ_a` (Kleiman p. 43) against `cohomologyScalars`;
+    - for target 6: `T_0 P = ker(P(k_ε) → P(k))` with its group and `k`-structures (Kleiman
+      (5.11.1)–(5.11.3), task T2); the comparison of `ker(Pic(X_ε) → Pic(X))` with
+      `ker(P(k_ε) → P(k))` (the vertical maps of (5.11.4); with a rational point by Thm 2.5(2)
+      and `Pic(k_ε) = 0`, otherwise by a finite extension, task T3, using target 4 and base
+      change of `P`); and compatibility of the kernel identification with that base change,
+      including `H^1(X,𝒪_X) ⊗_k K ≅ H^1(X_K,𝒪_{X_K})`.
+    - Naturality of the kernel identification means naturality of the canonical comparison
+      under morphisms of split thickenings; an arbitrary `UnitsCohomologyComparison` gives a
+      non-canonical `picardKerEquiv`.
 - **Next.**
   - M4: the Thm 6.1 subfunctors of F13 (through a closed-subfunctor step for `X ⊂ P^n`),
     then `Div` open in `Hilb` (F14).
-  - In parallel toward M5 and M6: `Gr(E, k)` and `P(E)` for
-    locally free `E`, `LinSys = Gr(E, r − 1)` (F15b) and the F18 tangent-space core.
+  - In parallel toward M5 and M6: `Gr(E, k)` and `P(E)` for locally free `E`,
+    `LinSys = Gr(E, r − 1)` (F15b), and the F18 premise `UnitsCohomologyComparison`
+    (Zariski `Pic = H^1(𝒪^*)`).
