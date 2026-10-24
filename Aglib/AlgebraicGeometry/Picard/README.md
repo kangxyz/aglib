@@ -243,6 +243,28 @@ its value on glued classes. `Tangent/Cech/Scaling` defines `dualScale a : X[ε] 
 multiplication by `a` (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, pp. 42–43). The cover need
 not be finite. The focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Cech`.
 
+[Tangent/Points](Tangent/Points.lean) computes the tangent space at the unit of a functor
+`F : (Over (Spec k))ᵒᵖ ⥤ AddCommGrpCat` whose restriction to locally Noetherian test schemes is
+represented by `P` (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, (5.11.1)–(5.11.3), pp. 42–43).
+The representation `e` is an explicit argument; no group scheme and no finite-type hypothesis on `P`
+is used. `unitSection e : Spec k ⟶ P` represents `0 ∈ F(k)`; `unitStalk e = 𝒪_{P,x₀}` is a
+`k`-algebra through the structure map (`unitStalkAlgebra`), and `unitResidue e : 𝒪_{P,x₀} →ₐ[k] k`,
+the stalk map of the unit section, makes `k` its residue field. For a field `L` over `k` and a
+finite-dimensional `L`-module `M`, the kernel `squareZeroKernel F L M` of `F(L ⊕ M) → F(L)`
+(`tangentKernel F L` for `L[ε] = L ⊕ L`) is `Hom_k(𝔪/𝔪², M)` (`squareZeroKernelEquiv`): through the
+points reducing to the unit section (`squareZeroKernelEquivPoints`), the local `k`-algebra maps
+reducing to the residue map (`squareZeroLiftEquivPoints`, from Mathlib's `SpecToEquivOfLocalRing`)
+and the cotangent lifts (`IsLocalRing.trivSqZeroExtLiftEquiv`), see
+`squareZeroKernelEquiv_eq_trans`; `squareZeroKernelEquivDerivation` is the derivation form. The
+identification is natural for `L`-linear maps acting through `TrivSqZeroExt.map`
+(`squareZeroKernelEquiv_map`). Hence it is additive (`squareZeroKernelAddEquiv`,
+`tangentKernelEquiv`; a variant of Kleiman's argument, pp. 42–43, through `L ⊕ M²`) and `L`-linear
+for `a • t = F(µ_a) t` (`tangentKernelEquiv_scale`, `tangentKernelModule`,
+`tangentKernelLinearEquiv`). `finrank_tangentKernel` gives
+`finrank_L ker(F(L[ε]) → F(L)) = finrank_k (𝔪/𝔪²)` for every field `L` over `k`, finite since `P` is
+locally Noetherian (`finite_tangentKernel`); `finrank_squareZeroKernel` is the `L ⊕ M` form. The
+focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`.
+
 [Strata/FiberConditions](Strata/FiberConditions.lean) defines, for a closed immersion
 `i : X ⟶ P^N_A`, `s : T ⟶ Spec A`, a line bundle `L` on `X ×_{Spec A} T` and `t ∈ T`, the fibre
 conditions of the strata of Kleiman's Thm 4.8 (arXiv:math/0504020v1, pp. 28–30) with the plan's

@@ -4216,6 +4216,7 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Scaling
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Units
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
+public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening
 public import Aglib.AlgebraicGeometry.Picard.Torsion
 public import Aglib.AlgebraicGeometry.Picard.TranslationLift
@@ -6100,6 +6101,7 @@ public import Aglib.RingTheory.LocalRing.ResidueProjectiveDimensionBound
 public import Aglib.RingTheory.LocalRing.ResidueSpanAnnihilator
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
+public import Aglib.RingTheory.LocalRing.SquareZeroLift
 public import Aglib.RingTheory.Localization.Away.FiniteTypeSubalgebra
 public import Aglib.RingTheory.Localization.Away.MapInverse
 public import Aglib.RingTheory.Localization.Away.Products
@@ -6391,6 +6393,7 @@ public import Aglib.RingTheory.TensorProduct.PolynomialCoordinates
 public import Aglib.RingTheory.TensorProduct.PurelyInseparable
 public import Aglib.RingTheory.TensorProduct.PushoutModuleBijective
 public import Aglib.RingTheory.TensorProduct.PushoutModuleEquiv
+public import Aglib.RingTheory.TrivSqZeroExt
 public import Aglib.RingTheory.Units.PositiveNat
 public import Aglib.RingTheory.Unramified.Equalizer
 public import Aglib.RingTheory.Unramified.GaloisPoint

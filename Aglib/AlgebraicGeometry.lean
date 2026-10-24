@@ -3587,6 +3587,7 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Scaling
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Units
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
+public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Thickening
 public import Aglib.AlgebraicGeometry.Picard.Torsion
 public import Aglib.AlgebraicGeometry.Picard.TranslationLift

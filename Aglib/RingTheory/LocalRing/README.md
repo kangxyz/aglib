@@ -42,3 +42,14 @@ quotient need not be regular or reduced. The
 [completed parameter map](../AdicCompletion/CompleteParameterMap.md) preserves
 these original maps and uses the residue and parameter equations to derive
 finiteness.
+
+[SquareZeroLift](SquareZeroLift.lean) treats a local `k`-algebra `A` with a `k`-algebra map
+`ψ : A →ₐ[k] k` over a field `k`. Then `ker ψ = 𝔪` (`IsLocalRing.ker_algHom_eq_maximalIdeal`), and
+`a ↦ [a - ψ a]` is a `k`-derivation `A → 𝔪/𝔪²` (`IsLocalRing.cotangentDerivation`). The
+`k`-derivations into an `A`-module killed by `𝔪` are the `k`-linear maps on `𝔪/𝔪²`
+(`IsLocalRing.derivationEquivCotangentSpace`). The lifts `A →ₐ[k] TrivSqZeroExt L M` of `ψ` are
+`Hom_k(𝔪/𝔪², M)` (`IsLocalRing.trivSqZeroExtLiftEquiv`), naturally in `M`
+(`IsLocalRing.map_comp_trivSqZeroExtLift`), and correspond to derivations
+(`IsLocalRing.trivSqZeroExtLiftEquivDerivation`). For Noetherian `A`, `𝔪/𝔪²` is finite over `k`
+(`IsLocalRing.finite_cotangentSpace_of_algHom`). The tangent space of a represented functor
+([Picard/Tangent/Points](../../AlgebraicGeometry/Picard/Tangent/Points.lean)) consumes them.

@@ -632,6 +632,7 @@ public import Aglib.RingTheory.LocalRing.ResidueProjectiveDimensionBound
 public import Aglib.RingTheory.LocalRing.ResidueSpanAnnihilator
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
+public import Aglib.RingTheory.LocalRing.SquareZeroLift
 public import Aglib.RingTheory.Localization.Away.FiniteTypeSubalgebra
 public import Aglib.RingTheory.Localization.Away.MapInverse
 public import Aglib.RingTheory.Localization.Away.Products
@@ -914,6 +915,7 @@ public import Aglib.RingTheory.TensorProduct.PolynomialCoordinates
 public import Aglib.RingTheory.TensorProduct.PurelyInseparable
 public import Aglib.RingTheory.TensorProduct.PushoutModuleBijective
 public import Aglib.RingTheory.TensorProduct.PushoutModuleEquiv
+public import Aglib.RingTheory.TrivSqZeroExt
 public import Aglib.RingTheory.Units.PositiveNat
 public import Aglib.RingTheory.Unramified.Equalizer
 public import Aglib.RingTheory.Unramified.GaloisPoint

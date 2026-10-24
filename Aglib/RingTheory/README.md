@@ -26,6 +26,12 @@ difference (`Int.eq_sum_choose_of_fwdDiff`); the Hilbert-function and Mumford-bo
 [Binomial/Uniqueness](Binomial/Uniqueness.lean) proves that binomial coefficients are unique:
 `Int.eq_of_forall_sum_mul_choose_eq`; the Hilbert-scheme regularity bound consumes it.
 
+[TrivSqZeroExt](TrivSqZeroExt.lean): Mathlib's trivial square-zero extension `R ⊕ M` is local for
+local `R` (`TrivSqZeroExt.isLocalRing`, with the local projection `TrivSqZeroExt.isLocalHom_fstHom`)
+and Noetherian for Noetherian `R` and finite `M` (`TrivSqZeroExt.isNoetherianRing`). The
+tangent-space leaf [Picard/Tangent/Points](../AlgebraicGeometry/Picard/Tangent/Points.lean) uses
+them for the test schemes `Spec L[ε]` and `Spec L[ε, ε']`.
+
 [Generic exact-sequence length](Length/README.md), [scalar homology](ScalarHomology/README.md), fraction and filtration calculations belong to their lower object owners; the multiplicity proofs consume them. No Grayson cycle, principal-face, curve or K/G/Q/S application object is introduced. Scheme smooth/stalk/connectedness results consume the regular-local, polynomial and tensor-domain leaves; other admitted interfaces remain available as public standalone results.
 
 The Milnor norm prerequisites also include actual root-field branch/tensor
