@@ -368,6 +368,37 @@ schemes by an H-quasi-projective Noetherian scheme, an open subscheme of the sch
 φ₀}_X` (`Strata.exists_abelPreimage_fineCondition_representableBy`; "Hence `Z` is
 quasi-projective").
 
+[Strata/Relation](Strata/Relation/) proves that `R = Z ×_P Z` is a proper and flat equivalence
+relation on `Z = Pic^{φ₀,ψ,k+1}_0 ×_P Div^{ψ − φ₀}_X`, represented by a Grassmannian bundle over `Z`
+and closed in `Z ×_S Z` when the representing scheme of `Div^{ψ − φ₀}_X` is separated and locally of
+finite type (Kleiman, arXiv:math/0504020v1, proof of Thm 4.8 and of Lemma 4.9, p. 30), for a closed
+`X ⊆ P^N_A`, `ι ≃ Fin (N + 1)`, `X ⟶ Spec A` flat with geometrically integral fibres, `A`
+Noetherian, and a representation `E` of `Div^{ψ − φ₀}_X` given as data.
+[Basic](Strata/Relation/Basic.lean): equal classes in `Pic_{X/S,(fppf)}(T)` differ by a base class
+(Thm 2.5(1); `quotientProjection_comp_toFppfPicardSheaf_app_eq_iff`,
+`fppfAbelClass_eq_fppfAbelClass_iff`), hence `a^* α_Z = b^* α_Z` iff the classified divisors have
+Abel classes differing by a base class
+(`FiberCondition.fppfPicardSheaf_map_abelPreimageFppfAbelClass_eq_iff`, any fibre condition); the
+functor `FiberCondition.abelRelation` of pairs with the same class.
+[LinearSystem](Strata/Relation/LinearSystem.lean): the universal divisor `W_Z` of `Z` and
+`𝒪(W_Z) = I_{W_Z}^∨` (class `abelClass W_Z`, condition `C` at every point, fppf class `α_Z`); on the
+fine stratum at `m = 0` its direct image has rank `k + 1` with base change, and
+`abelRelationBundle e k E = Gr(p_{Z*}𝒪(W_Z), k)` represents `LinSys_{𝒪(W_Z)/X_Z/Z}`
+(`abelRelationBundleRepresentableBy`). [Representability](Strata/Relation/Representability.lean):
+naturality of `X ×_S U ≅ X_V ×_V U` (`familyMap_comp_isoPullback_hom`), `R = abelRelationOver e k E`
+with projections `abelRelationFst` (the bundle map) and `abelRelationSnd` (classifying the
+transported universal divisor, of fppf class `pr₁^* α_Z`), `abelRelationι : R ⟶ Z ×_S Z`, and
+`abelRelationRepresentableBy : (C.abelRelation E).RepresentableBy R` (with `abelRelation_hom_ext`,
+`exists_comp_abelRelationFst_and_comp_abelRelationSnd_iff`).
+[Properties](Strata/Relation/Properties.lean): both projections proper and flat (`pr₂ = swap ≫ pr₁`,
+`abelRelationSwap`), `R` Noetherian when `Z` is, injectivity and the equivalence relation on locally
+Noetherian points of schemes (`abelRelation_left_injective`,
+`equivalence_pointsRelation_abelRelation`), and, for `D ⟶ S` separated and locally of finite type,
+`IsClosedImmersion (abelRelationι e k E)` and `isEquivalenceRelation_abelRelation`;
+`comp_eq_comp_of_fppfPicardSheaf_map_eq_of_abelRelationFst_comp_eq_abelRelationSnd_comp` is
+hypothesis (h₁) of `Scheme.representableByOfFppfQuotient` for `z = α_Z`. The focused tests are
+`AglibTest.AlgebraicGeometry.Picard.Strata.Relation.*` (with axiom guards).
+
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
 `map_mem_subfunctor_iff_of_surjective`), from `mem_subfunctor_iff` and `holdsAt_map`; no flatness.
@@ -444,6 +475,21 @@ subbundle `u : N ⟶ E_T` and of a point of `Gr(E, k)` (`isLinearSystemDivisor_s
 over `S`), `locallyNoetherianLinearSystemRepresentableBy` (locally Noetherian test schemes),
 `exists_representableBy_linearSystemFunctor` (by a scheme proper, smooth and flat over `S`),
 `universalLinearSystemDivisor` and its universal property
-(`existsUnique_comap_universalLinearSystemDivisor`, Ex. 3.14). Open: representability by `∅` on the
-`r = 0` piece, gluing over the clopen `h^0` pieces, and the `O(D)` form, which F17 does not need.
+(`existsUnique_comap_universalLinearSystemDivisor`, Ex. 3.14).
+[AbelClass](LinearSystem/AbelClass.lean): the Abel-class form of the linear system: a relative
+effective Cartier `D ⊆ X ×_S T` lies in `LinSys_{L/X/S}(T)` iff `abelClass D = g_T^*[L] + p_T^* n`
+for a class `n` on `T` (`isLinearSystemDivisor_iff_exists_abelClass_eq`,
+`isLinearSystemDivisor_iff_abelClass_sub_mem_baseImage`), so its fppf Abel class is the class of
+`g_T^* L` (`fppfAbelClass_eq_of_isLinearSystemDivisor`); two classes have the same image in
+`P_{X/S}(T)` iff they differ by a base class (`RelativePicard.quotientProjection_app_eq_iff`); the
+transport along `X ×_S U ≅ X_V ×_V U = (isPullback_familyMap p g).isoPullback` for `g : U ⟶ V` of
+relative effective Cartier divisors (both directions), Abel classes and base classes
+(`RelativePicard.isRelativeEffectiveCartier_comap_isoPullback_hom`, `…_inv`,
+`abelClass_comap_isoPullback_hom`, `pullbackClass_isoPullback_hom_mem_baseImage_iff`), and the
+linear system over `V` read on `X ×_S U`
+(`isLinearSystemDivisor_iff_abelClass_comap_isoPullback_hom_sub_mem_baseImage`,
+`fppfAbelClass_comap_isoPullback_hom_eq_of_isLinearSystemDivisor`). No hypothesis on `p`.
+Open: representability by `∅` on the `r = 0` piece, gluing over the clopen `h^0` pieces, and the
+module form `O(D) ≅ L_T ⊗ p_T^*N` of the divisor class (the class form is `AbelClass`), which F17
+does not need.
 The focused test is `AglibTest.AlgebraicGeometry.Picard.LinearSystem` (with axiom guards).

@@ -4189,6 +4189,7 @@ public import Aglib.AlgebraicGeometry.Picard.FrameTensor
 public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
+public import Aglib.AlgebraicGeometry.Picard.LinearSystem.AbelClass
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Bijection
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Divisor
@@ -4207,6 +4208,10 @@ public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorPolynomial
 public import Aglib.AlgebraicGeometry.Picard.Strata.FiberConditions
+public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Basic
+public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.LinearSystem
+public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Properties
+public import Aglib.AlgebraicGeometry.Picard.Strata.Relation.Representability
 public import Aglib.AlgebraicGeometry.Picard.Strata.Twist
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.Cocycle
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Cech.DualNumbers

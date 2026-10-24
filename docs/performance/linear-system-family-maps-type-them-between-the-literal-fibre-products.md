@@ -45,3 +45,19 @@ arguments. The counters in item 2 are consistent with this; no conversion pair w
 
 Rule: when a functor's values are literal fibre products, give its maps a named definition typed
 between those literal objects and state every lemma through it.
+
+### Follow-up: isomorphisms obtained from a `familyScheme`-typed square
+
+Measured on 2026-10-24, remote profile `aglib-picard-relation`, module
+`Picard/LinearSystem/AbelClass`. With the transport isomorphism
+`X ×_S U ≅ X_V ×_V U` taken as `IsPullback.isoPullback` of
+`RelativePicard.isPullback_familyScheme_map p g` (a square typed over `(familyScheme p).obj U`), the
+first build (`remote-a831fc8bf01c49aeb6a67862ab1058de`, 38 s, exit 1) failed at every `rw` through
+the isomorphism ("The target expression is not type-correct under the `implicit` transparency
+level", with `pullback.snd p V.hom` expected at `(familyScheme p).obj V ⟶ V.left`) and had one
+`whnf` heartbeat timeout. With the same square typed between the literal fibre products
+(`LinearSystem.isPullback_familyMap p g`, definitionally equal) the module built in 4.7 s
+(`remote-a6f8608c144a4f4fad5cb3094c08b848`). Candidate mechanism, not measured: the same
+representation mismatch as above, here surfacing as rewrite-motive failures rather than kernel
+cost. The rule above covers it: `IsPullback.isoPullback` of a `familyScheme`-typed square inherits
+the `familyScheme` types, so take the isomorphism from the literal-typed square.
