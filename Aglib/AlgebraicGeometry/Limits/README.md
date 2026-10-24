@@ -36,3 +36,10 @@ points, opens and covers of schemes. The flattening stratification
 
 [OpenImmersionIntersection](OpenImmersionIntersection.lean) proves that specified open-chart factorizations
 with actual image intersection form a cartesian square.
+
+[FibreProductBaseChange](FibreProductBaseChange.lean) proves `Scheme.isPullback_pullbackMap_snd`:
+for `p : X ⟶ S` and `f : T' ⟶ T` with `f ≫ g = g'`, the map
+`pullback.map p g' p g (𝟙 X) f (𝟙 S)` (the map of `RelativePicard.familyScheme p`) and the second
+projections form a cartesian square over `f`. No hypothesis on the morphisms is used. The
+[immersed Hilbert functor](../HilbertScheme/Immersed/Functor.lean) consumes it, and the base change
+of relative effective Cartier divisors on `X ×_S T` (F14) is its next consumer.

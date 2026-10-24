@@ -4,6 +4,27 @@
 
 [QuotientModule](QuotientModule.lean) defines the structure module `quotientModule W = cokernel (idealInclusion W.subschemeι)` of a closed subscheme with its projection `toQuotientModule`, the short exact sequence `shortComplex_shortExact`, `quotientModuleIsoPushforward : 𝒪_X / I_W ≅ i_* 𝒪_W`, quasi-coherence, and coherence on locally Noetherian schemes (`affineLocallyFiniteType_quotientModule`, `Scheme.Hom.affineLocallyFiniteType_idealModule`). [Order](Order.lean) proves `le_of_idealInclusion_factor`: closed subschemes are ordered by factorization of their ideal inclusions. [Comap](Comap.lean) proves that Mathlib's `subschemeMap (I.comap b) I b (I.le_map_comap b)` forms a cartesian square (`isPullback_subschemeMap_comap`).
 
+[Monomorphism](Monomorphism.lean) compares closed subschemes along a monomorphism `j : X ⟶ Y`
+(for example an immersion). It builds on `ker_comap_of_mono`
+([Closed/MonoFactor](Closed/MonoFactor.lean)): for `z : Z ⟶ X` with `z ≫ j` a closed immersion,
+`(z ≫ j).ker.comap j = z.ker`. Mathlib's pushforward `I ↦ I.map j` and pullback
+`J ↦ J.comap j` are inverse bijections between the closed subschemes of `X` that are closed in `Y`
+and the closed subschemes of `Y` that factor through `j` (`mapEquivOfMono`,
+`comap_map_of_mono_of_isClosedImmersion`, `map_comap_of_comp_eq`; the last needs no
+monomorphism hypothesis). The closedness premise is necessary (the non-quasi-compact example in
+[Glue](Glue.lean)); `comap_map_of_isClosedImmersion` ([ClosedExtension](ClosedExtension.lean)) is
+the case of a closed immersion `j`, and `comap_map_of_isOpenImmersion`
+([OpenExtension](OpenExtension.lean)) the equation for a quasi-compact open immersion.
+`mapSubschemeIso` identifies a closed subscheme with its image over `Y`. Along a cartesian square
+`j₂ ≫ b = a ≫ j₁`, closedness and factorization are preserved, and for a monomorphism `j₁` the
+image commutes with pullback (`map_comap_of_isPullback`); `comap_subschemeι_comp_of_isPullback`
+transfers any property stable under base change of `I ⟶ X₁ ⟶ T₁` to the pulled-back square. For a
+preimmersion `j` and `q : Y ⟶ T`, a closed subscheme proper over `T` is closed in `Y` when `q` is
+separated, and properness over `T` is equivalent to closedness in `Y` when `q` is proper
+(`isProper_subschemeι_comp_iff_isClosedImmersion`; for immersions in `Over S` the same argument is
+`Scheme.isClosedImmersion_of_immersion_over_proper`). The
+[immersed Hilbert functor](../HilbertScheme/Immersed/Functor.lean) consumes these results.
+
 [Affine](Affine.lean) compares spectral ideal modules with sheafification of the actual ring kernel and proves the stated finite-generation consequence of finite presentation. [Restriction](Restriction.lean) compares actual ideal restrictions and their inclusions. The [base-change family](BaseChange/README.md) constructs the canonical ideal pullback map, proves epimorphy for a cartesian square of a closed immersion, and gives the separate quotient-flat isomorphism theorem.
 
 [Colon](Colon.md) defines `IdealSheafData.stalkIdeal` from the original affine

@@ -2431,6 +2431,7 @@ public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Family
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Fiber
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.GlobalGeneration
 public import Aglib.AlgebraicGeometry.HilbertScheme.IdealTwist.Untwist
+public import Aglib.AlgebraicGeometry.HilbertScheme.Immersed.Functor
 public import Aglib.AlgebraicGeometry.HilbertScheme.Injectivity
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianFunctor
 public import Aglib.AlgebraicGeometry.HilbertScheme.LocallyNoetherianPoint
@@ -2506,6 +2507,7 @@ public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules.ConormalMap
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules.Stalk
+public import Aglib.AlgebraicGeometry.IdealSheaf.Monomorphism
 public import Aglib.AlgebraicGeometry.IdealSheaf.Noetherian
 public import Aglib.AlgebraicGeometry.IdealSheaf.OpenExtension
 public import Aglib.AlgebraicGeometry.IdealSheaf.Order
@@ -2520,6 +2522,7 @@ public import Aglib.AlgebraicGeometry.Limits.ClosedRange
 public import Aglib.AlgebraicGeometry.Limits.ConnectedCoproduct
 public import Aglib.AlgebraicGeometry.Limits.DenseRange
 public import Aglib.AlgebraicGeometry.Limits.FiberChart
+public import Aglib.AlgebraicGeometry.Limits.FibreProductBaseChange
 public import Aglib.AlgebraicGeometry.Limits.FiniteCoproductPullback
 public import Aglib.AlgebraicGeometry.Limits.FinitePrincipalRangeDescent
 public import Aglib.AlgebraicGeometry.Limits.FiniteProducts
