@@ -5,6 +5,12 @@ repairs, source identities and ordinary incremental evidence. They concern
 private proof candidates; they do not assign publication or PBC status.
 The applicable toolchain and workflow are in the [performance guide](../PERFORMANCE.md).
 
+The failure and open-consumer statements below record their stated source
+versions and runs. The [2026-10-25 completion addendum](#complete-the-original-pbc-section-germ-and-stalk-consumers)
+records the later local PBC implementation and completed native validation.
+It preserves the earlier observations and does not assign publication or
+established exposé status.
+
 ## Isolate concrete cohomology-colimit relation extraction
 
 In the private PBC mainline on 2026-10-24,
@@ -612,3 +618,289 @@ inputs, failed/corrected prefix pair, metadata logs and original run records
 are retained under the mainline task's `universal/notes/` and
 `universal/remote-runs/`. This establishes an effective representation repair
 for the actual CH boundary, not a unique kernel-cost diagnosis or general PBC.
+
+## Complete the original PBC section, germ and stalk consumers
+
+This 2026-10-25 continuation uses Lean 4.34.1, commit
+`5045d0056413266e57c625dcd7c365b10e377c52`, and Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612`. Its mathematical baseline is
+local WIP `5d4350d225107c5bbd2619bb9842412dae9aeafc` with the recorded source
+overlays. Published `d578d2cb686c84187b76dc5f51a2de4b3a41df63` is the
+recorded baseline at validation, before the separately authorized publication
+integration. Ordinary proof builds retain the admitted 16-frontend, two-thread
+profile, 12800 MiB per compiler and 110592 MiB pool ceiling. Ext worlds and
+all eight supplied derived-model data records remain independent. The
+existing N declaration-local 500000-heartbeat allowance is retained; the new
+helpers and common-point/stalk modules use their recorded default budgets.
+
+### Paste whole section and coefficient comparisons
+
+[ComparisonPasting](../../Aglib/CategoryTheory/Functor/ComparisonPasting.lean)
+constructs the actual comparison from a section transformation and a
+coefficient transformation. Its whole composition and transport laws give a
+`CommSq` from the original unit and relative-coefficient equations. The
+section target is an arbitrary category; the exchange transformations need
+not be invertible. This repairs the construction boundary rather than adding
+another scalar wrapper.
+
+The [Continuity adapter](../../Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SectionComparison.lean)
+and [native section square](../../Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean)
+use this same comparison head. The
+[relative producer](../../Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartRelative.lean)
+exports an equality of the existing whole `TwoSquare` pastings before a
+coefficient is chosen. The original evaluation, unit, section pullback and
+inverse-square coefficient comparison remain explicit. Original-value and
+chart-IsIso views come from these constructions; existing component clients
+retain their original relative law.
+
+Core source `96b4e99f...`, the actual Continuity section adapter, original
+coefficient consumer and chart witness/value/IsIso provider passed in
+`remote-d17c47787d02458785f1f533236d8958`; that graph still failed in the
+then-unrepaired native section adapter. Whole relative producer `46b4bc2e...`
+passed in `remote-ae8db1a907864f41aa414fccdad7f502`. Section-square adapter
+`cf10b304...` passed in 35 reported module seconds in
+`remote-31825991294b4998b8e617a0ae0d7221`, whose later N failure remained a
+separate obligation.
+
+### Match the actual cohomology transfer before eight-model cancellation
+
+Frozen N `1624b2c6...` failed kernel checking at
+`higherBaseChangeMap_fibreProductSection_whole:543` in that last run. The
+unknown private constant that followed is a cascade. The section square had
+no earlier reported error, but a failed module supplies no independently
+importable prefix artifact.
+
+Valid command-only probe `0aece468...`, run
+`remote-38da8aa598544d8dba0757875592a8d5`, extracts the four actual Pi domains
+of `sectionHom_cancel`: `hsquare`, `hsource`, `hglobal` and `htarget`.
+Recovery is disabled and each report ends at its intentional completion
+error, without exporting the target theorem. The reports expose original
+geometry/coefficient aliases and two native presentations of the consumed
+transfer. Their structural walks reach bounds; hashes and unfold counters do
+not identify a unique expensive kernel pair. The earlier layout-broken
+probe `781b477f...` remains rejected diagnostic evidence.
+
+The [N repair](../../Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean)
+proves the actual original `cohomologyTransfer.hom` formula over variable
+schemes and four actual models, then supplies the literal original chart and
+coefficient values at the eight-model cancellation. The independent `w,w'`
+primitive remains. The shared `e` in the transfer view is already required
+by N's two original chart cohomology groups; no model replacement or new
+universe equality is introduced.
+
+After placing the existing budget explanation after `set_option ... in`, full
+N `2c17cbb5...`, including its section and germ endpoints, passed in
+`remote-570d5879577f437189cb0069220e7960` (174 reported module seconds).
+The same graph then stopped at an import collision. Later `df2095fb...`
+removed two unused private scalar-pasting helpers. The final lint repair
+changes canonical data-definition names and adds documentation while keeping
+the original formulas, model data, proof content and local allowance.
+This is removal of the recorded failure, not a controlled speedup against a
+successful older baseline.
+
+### Retain the whole indexed germ law before point evaluation
+
+The real next consumer found colliding anonymous local `HasExt` declaration
+names from `ChartRestrictionNaturality` and `ChartTargetCycles`. The complete
+build log, rather than the shortened first-diagnostic string, identifies the
+latter current module. Naming the four local declarations in
+`ChartRestrictionNaturality:e38ccba1...` preserves their types, right sides,
+levels and default priority. This uses the
+[existing local-instance-name method](local-instance-names-must-remain-distinct-across-actual-imports.md);
+the diagnostic did not justify invalidating caches.
+
+After that repair, the chart-comparison consumer reached maximum recursion
+depth at the pointed-germ specialization. Explicit dictionaries alone
+(`744fb683...`) and scoped transparency trials (`9bd5f295...`) still failed.
+A body marker places the failure after formation of the target, at the
+`Elements`-indexed primitive's specialization. Heavy unfolding includes the
+original free-abelian/sheafification constructions. The observations do not
+establish a compiler defect or unique cause.
+
+The lighter scalar producer `05ba3983...` also fails there in
+`remote-b13f25d176124706bf0cd5da57175c55`: removing derived-model context is
+insufficient. Successful
+[GeometricComparisonExchange](../../Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean)
+`45b431fc...` first proves the whole original AddHom equation at variable
+pointed object `d`. It then specializes the whole law to
+`{obj := U, val := p}` and evaluates it through `additiveComparison_apply`
+over variable group objects. Stalk world `u+1` and cohomology world `e`
+remain separate. The complete module passed in
+`remote-fc5023df02884e1b930fb17ceb6a5dbf` (130 reported module seconds),
+before that graph stopped at the downstream dictionary obligation.
+
+The [GeometricStalkExchange](../../Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean)
+consumer needs its original `HasExt.{e}` dictionaries at exact projected
+Over-left fibre and cone-apex types. Named local instances obtain them with
+`inferInstanceAs` from the displayed hypotheses; no standard model or
+priority is substituted. Source `86b0318c...` passed in
+`remote-3b0faef7eed24afa9aee5533359ba634` (36.75 execution seconds), with
+default recursion and heartbeat budgets.
+
+The universal P1 wrapper also supplies `H₀.flip`: its binder gives
+`IsPullback f a b structureMap`, while the existing base-changed-line helper
+expects `IsPullback a f structureMap b`. Both express the same Cartesian
+square. Source and tactic-style findings were repaired in source. The
+chart factory retains its earlier body opacity.
+
+### Run the native builtin check on one complete terminal environment
+
+The first final-check launch lacked the transported native Python package.
+Resumed `remote-63951a472085480da39adf150837453d` retained text-style success,
+then settled under the elastic controller's working-set emergency: owned
+peak RSS 83,109,003,264 bytes, exit 143 and native exit -15, closed process
+group, no cgroup OOM/OOM-kill increment. Zero wrapper frontend events do not
+mean that arbitrary phase commands imported no Lean environment.
+
+Recovery first used the existing optional metadata cache through an
+import-header-only adapter. It retained full metadata hashes, native parsing,
+row validation, temporal observations and source/native identity. That change
+plus reducing job concurrency to two was insufficient:
+`remote-c27febc499ae4a649162568087b3fa9a` settled for the same recorded reason
+at 83,180,695,552 bytes owned peak RSS, again exit 143/native exit -15 with a
+closed group and zero cgroup OOM/OOM-kill increment. Neither is a successful
+final check or a mathematical proof failure.
+
+The pinned `Lake/CLI/BuiltinLint.lean` imports one server environment per
+module argument; its check routines select the imported package through
+`mod.getRoot`. Passing 97 overlapping arguments
+therefore repeated environment import. The existing native source parser
+shows that the single terminal `Proper.BaseChange` reaches every one of the
+twelve roots and 97 selected origins, with the same 3129 Aglib modules and no
+missing source. Selecting that terminal once retains the configured builtin
+text/deferred checks and imported Aglib environment. Its native environment
+linter registry is empty, so it reports that no environment linters were run.
+The separate Batteries declaration linter still runs all 15 configured
+predicates. This changes neither origin scope nor the twelve-root axiom audit.
+
+The first completed declaration-lint invocation,
+`remote-01a1811b6be84e9090a2ef7c16dab738`, reported 41 findings in 944
+declarations and 598 generated declarations: twelve canonical-name repairs,
+28 missing documentation entries, and one redundant private constructor
+injectivity simp rule. The naming/documentation repairs update the actual
+references and field descriptions. An initial local `[-simp]` trial retained
+the generated theorem; its actual affected PBC build
+`remote-c54f6f2d9b684604b0e6f28f9b71a498` passed all 39 invoked frontends,
+at source basis
+`f49764726e8e664158bcc59d5a384a29c3119354222a718ac5c8f64212ee11aa`.
+
+That attribute trial did not repair the imported simp set. Native check
+`remote-7c40e91f23624649899a8a30a90dd5ed`, source basis
+`18df44002fd7dc14871eb0a3e1fcbe71458d01806e53195719f62629d46ec29a`,
+still reports the generated private `ChartSectionMapWitness.mk.injEq` simpNF
+finding: one error in the same 944 declarations and 598 generated declarations
+from 97 selected origins with all 15 linters. Its text-style, terminal builtin
+and pinned axiom checks pass. The local simp erasure changes the local
+extension state, while the recorded export contains the addition and no
+exported erasure; import restores the registration. The attribute-erasure
+trial therefore did not resolve the imported finding. There is no `nolint`,
+predicate disabling, origin filter or new exception file.
+
+### Keep failed witness representations at their actual source boundary
+
+The next trial expresses the same private stored map and four proof fields
+as a Subtype, retaining the opaque `originalChartSectionWitness`, stored-map
+projection and public original-map/value/IsIso interface with four independent
+models. Source
+`a266d09d373da3a9197cbc1ee24bf727e861a8fc107e5aab8f8146b5c7ff88d1`
+fails at public
+`fibreProductChartSectionMap:141:4` with a kernel deterministic timeout in
+`remote-daa66ea80d9f44b183dd635b1563d7f7`, source basis
+`dc5e4d09bffabe0e78556d0331e00b3e5d6b4790f3ba36865383808e45b9e027`.
+The later unknown-map errors are cascades. The complete failed source is
+retained as `ChartExchangeMaps-subtype-failed-a266.lean` in the task's
+`chart-witness-lint-boundary/` packet. It supplies no successful repaired module.
+
+The generic-predicate family-indexed structure trial at source
+`f197b43f5f8b518489d4ec4ce4674ced796d0cd958a28c166b877e7dd3353cee`
+then fails at `originalChartSectionWitness:130:15` with a kernel deterministic
+timeout in `remote-f86da3819da84178b95428d963a3f16c`, source basis
+`a7959dc63b89f9d6496fe42a7eb968d296129c0c8f76fab0f65aacd3e8213ada`.
+The following unknown initializer constants are cascades. Each run invokes one
+frontend, succeeds in none, closes its process group and records zero cgroup
+OOM/OOM-kill increment. These failures do not establish a kernel cause or a
+successful simpNF remedy. Both complete inputs and their source/run index
+remain in `chart-witness-lint-boundary/`.
+
+### Simplify the retained constructor rule before its arguments
+
+The accepted source
+`abd8b711d780afa53f1a6d6aed87ae204d7c2c41b0b51c3b3eb38b8ed591dbb6`
+returns to the exact fixed-law structure, constructor, opaque provider,
+stored-map projection and proof content of `ce80fba1...`. Only the ineffective
+simp-erasure attribute and its comment change. The same generated
+`ChartSectionMapWitness.mk.injEq` theorem is registered with `[simp↓]`.
+It simplifies the constructor expression before contextual fixed-map equalities
+normalize the arguments and make the rule redundant. No generated theorem is
+removed; no `genInjectivity` option, filter, linter suppression, exception file
+or new axiom is introduced. This scheduling observation concerns the actual
+inspected rule and does not prescribe pre-simplification for all constructors.
+
+Changed leaf compilation passes in
+`remote-e1816079fa0843ef9496aa378b394dd2`: one invoked/successful frontend,
+33.787 execution seconds, source basis
+`f7163cfffc711fcafe9cbab2d0eb8473ddbe9648903de81599f4712907254f63`.
+The failed-origin native declaration check passes in
+`remote-4e2dd907753e42a98c348200a52b8394`: zero errors in 21 declarations and
+22 generated declarations with all 15 checks, 6.830 execution seconds, source
+basis `1d0c056e85da7cff8467f210b51c8c49665e6c996da77c2425f299cb3d7f13fc`.
+The actual full `Proper.BaseChange` build then returns `cached_build_accepted`
+in `remote-805290382b874d3b9a8bd47d532b2b18` on the same `f7163cff...` source
+basis: 4.9495 execution seconds and no new frontend invocation. It retains the
+compatible full graph coverage, including the earlier 39-frontend build; it
+is not another 39-frontend compilation.
+
+### Final native evidence and exact completed boundary
+
+All three current source guards pass on `abd8b711...`: layout covers 5867
+production and 405 positive modules with no forbidden imports or cycles;
+the placeholder guard finds no proof placeholders or custom assumptions;
+source policy retains documented positive finite declaration-local budgets.
+Their actual outputs are retained in `source-guard-final-abd8.json`.
+
+The completed final native run is
+`remote-5630d4ceb5ce4426894ca431a90cbe9c`, source basis
+`f82ca9bce97a5065f6849e4fed4ab6d8f8631e27912ac7af3cdc44d9d0f55090`.
+All four categories were performed:
+
+| Native check | Actual scope and result |
+| --- | --- |
+| Text style | Pass on 97 actual changed/uncovered origins |
+| Builtin terminal check | Pass for the recorded text/deferred checks in the terminal environment reaching 3129 Aglib modules, all twelve roots and all 97 origins; the native environment-linter registry is empty |
+| Batteries declaration lint | Zero errors in 944 declarations plus 598 automatically generated declarations, all 15 configured linters on the 97 selected origins |
+| Pinned axiom audit | 38,113 declarations from the twelve-root Aglib closure; only `propext`, `Classical.choice` and `Quot.sound`, with no violation |
+
+The driver and receipt report success, exit zero/native exit zero and a closed
+process group after 609.01729811728 execution seconds. The complete `build.log`
+and `receipt.json` are retained under the mainline task's
+`universal/remote-runs/remote-5630d4ceb5ce4426894ca431a90cbe9c/`.
+The earlier failed `7c40...` check remains evidence of its one imported simpNF
+finding, not a successful complete validation. Tests, a root facade rebuild,
+`mk_all`, kernel replay and separate client checks are outside this validation.
+The final source cut contains 26 recorded overlays; the earlier `c54...` cut
+is separately retained as
+`chart-witness-lint-boundary/source-cut-c54.manifest.json`.
+
+The completed local M2 endpoints are in
+[Proper/BaseChange](../../Aglib/AlgebraicGeometry/EtaleCohomology/Proper/BaseChange.lean):
+`properHigherBaseChange_isIso` for every natural degree and internally locally
+torsion original coefficient, `properDerivedBaseChange_single_isIso` for its
+original degree-zero derived single, and
+`properDerivedBaseChange_isIso_of_torsion_homology` for the actual D+ domain.
+They allow every proper map and arbitrary base change, retain four independent
+derived models, and add no uniform annihilator, Noetherian, constructibility or
+invertible-order hypothesis. The D+ result assumes locally torsion original
+homology sheaves. Unbounded proper exchange, relative cohomological-dimension
+passage and the full six-operation programme remain outside this completion.
+
+The mainline task retains complete fixed inputs, including the failed light
+helper and rejected probe, under
+`comparison-core-refactor-research-20261025/n-cancellation-boundary/` and
+`common-point-instance-boundary/`. Its `performance-evidence.json`,
+`builtin-terminal-scope.json`, `chart-witness-lint-boundary/manifest.json`,
+final source cut and native check records retain the source/run correspondence;
+`universal/remote-runs/` retains the full
+receipts and logs. Source hashes abbreviated above refer to these fixed
+packets. Independent ordinary P0/P1, P2, N/core and final-assembly reports
+accept their stated scopes and retained inputs. This documentation assigns no
+established exposé status, controlled speedup ratio or unique compiler cause.

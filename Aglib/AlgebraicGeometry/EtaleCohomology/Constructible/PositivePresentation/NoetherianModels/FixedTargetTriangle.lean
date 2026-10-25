@@ -132,7 +132,7 @@ theorem cone_identity_leg {I C : Type*} [Category* I] [Category* C]
     ((congrArg (fun k : X.obj i ⟶ X.obj i => k ≫ X.map a) hr).trans (Category.id_comp _))
 
 /-- The original coefficient object transported along an actual structural equality. -/
-def coefficient_stage_iso {I : Type*} [Category* I] (X : I ⥤ Scheme.{u}ᵒᵖ)
+def coefficientStageIso {I : Type*} [Category* I] (X : I ⥤ Scheme.{u}ᵒᵖ)
     (b : Cone X) (B : AbelianSheaf.{u, u + 1} b.pt.unop) (j : I)
     (q : b.pt ⟶ X.obj j) (h : b.π.app j = q) :
     (Stalk.pullbackCoefficientSystem X b B).obj j ≅ (inverseImage q.unop).obj B :=

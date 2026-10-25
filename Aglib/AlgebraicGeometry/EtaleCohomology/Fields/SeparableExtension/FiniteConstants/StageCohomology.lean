@@ -57,7 +57,7 @@ variable {I : Type u} [Category.{u} I] [IsFiltered I]
 local instance : IsConnected I := IsFiltered.isConnected I
 
 /-- Scheme-limit continuity with the original structural inverse image as apex. -/
-def isColimit_pullbackCohomologyCocone (q : ℕ) :
+def isColimitPullbackCohomologyCocone (q : ℕ) :
     IsColimit (pullbackLimitCohomologyCocone X b c l hl F q) := by
   let E : AddCommGrpCat.of (Sheaf.H.{e}
       (colimit (coneCoefficientFunctor X c (pullbackCoefficientSystem X b F))) q) ≅
@@ -84,7 +84,7 @@ theorem exists_stage_cohomologyClass (q : ℕ)
     preservesFilteredColimitsOfSize_of_univLE.{e, e, u, u} _
   obtain ⟨i, aᵢ, haᵢ⟩ := Concrete.isColimit_exists_rep
     (diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q)
-      (isColimit_pullbackCohomologyCocone X b c hc l hl F q) a
+      (isColimitPullbackCohomologyCocone X b c hc l hl F q) a
   refine ⟨i, aᵢ, ?_⟩
   rw [pullbackLimitCohomologyCocone_leg] at haᵢ
   exact haᵢ
@@ -105,7 +105,7 @@ theorem exists_stage_cohomologyRelation (q : ℕ) (i j : I)
   let D : I ⥤ AddCommGrpCat.{e} :=
     diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q
   let C : Cocone D := pullbackLimitCohomologyCocone X b c l hl F q
-  let hC : IsColimit C := isColimit_pullbackCohomologyCocone X b c hc l hl F q
+  let hC : IsColimit C := isColimitPullbackCohomologyCocone X b c hc l hl F q
   exact concreteGroup_exists_relation D C hC a a' h
 
 include hc in

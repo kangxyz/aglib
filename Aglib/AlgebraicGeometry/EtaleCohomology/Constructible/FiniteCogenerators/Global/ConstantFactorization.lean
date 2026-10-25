@@ -41,13 +41,19 @@ model, retaining the original relative source map and coefficient transition. -/
 structure FiniteConstantFactorization {X Y : Scheme.{u}} (f : Y ⟶ X)
     (B : Type u) [AddCommGroup B] [Finite B] (F : AbelianSheaf.{u, u + 1} X)
     (α : F ⟶ (constantPushforwardFunctor (X := X) B).obj (op (Over.mk f))) where
+  /-- The total space of the finite model through whose constant pushforward `α` factors. -/
   source : Scheme.{u}
+  /-- The finite structural morphism from the model `source` to the original base `X`. -/
   morphism : source ⟶ X
   [finite_morphism : IsFinite morphism]
+  /-- The integral surjective map from the original source `Y` to the model `source`,
+  commuting with the maps to `X` by `over`. -/
   comparison : Y ⟶ source
   [comparison_surjective : Surjective comparison]
   [comparison_integral : IsIntegralHom comparison]
   over : comparison ≫ morphism = f
+  /-- The factor of `α` into the constant pushforward along `morphism` with coefficient `B`;
+  its transition along `comparison` recovers `α`. -/
   map : F ⟶ (constantPushforwardFunctor (X := X) B).obj (op (Over.mk morphism))
   factor : map ≫ (constantPushforwardFunctor (X := X) B).map
     (Over.homMk comparison over).op = α

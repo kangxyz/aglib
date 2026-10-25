@@ -181,7 +181,7 @@ namespace Proper
 /-- The accepted finite-coordinate kernel comparison on the literal
 original family indexed by any finite type in the scheme universe. Both
 product transports are the native reindex maps. -/
-def constantDirectImageProductAnnihilatorIso_finiteIndex
+def constantDirectImageProductAnnihilatorIsoFiniteIndex
     {X : Scheme.{u}} {ι : Type u} [Finite ι] (n : ℕ)
     (Y : ι → Scheme.{u}) (f : ∀ i, Y i ⟶ X) (A : ι → AddCommGrpCat.{u + 1}) :
     Sheaf.annihilator
@@ -248,7 +248,7 @@ theorem finiteConstantDirectImageProductAnnihilator_residuePullback_surjective
   let B : ι → AddCommGrpCat.{u + 1} := fun i => kernel (n • 𝟙 (A i))
   have (i : ι) : Finite (B i) := finite_nsmulKernelValue n (A i)
   exact cohomologyPullback_surjective_of_iso _
-    (constantDirectImageProductAnnihilatorIso_finiteIndex n Y f A).symm q
+    (constantDirectImageProductAnnihilatorIsoFiniteIndex n Y f A).symm q
     (finiteConstantDirectImageProduct_residuePullback_surjective Y f B q)
 
 /-- Degree-zero injectivity transports to the same actual annihilator at
@@ -262,7 +262,7 @@ theorem finiteConstantDirectImageProductAnnihilator_residuePullback_injective_ze
   let B : ι → AddCommGrpCat.{u + 1} := fun i => kernel (n • 𝟙 (A i))
   have (i : ι) : Finite (B i) := finite_nsmulKernelValue n (A i)
   exact cohomologyPullback_injective_of_iso _
-    (constantDirectImageProductAnnihilatorIso_finiteIndex n Y f A).symm 0
+    (constantDirectImageProductAnnihilatorIsoFiniteIndex n Y f A).symm 0
     (finiteConstantDirectImageProduct_residuePullback_injective_zero Y f B)
 
 /-- The genuine n-annihilator target has the same original all-degree test

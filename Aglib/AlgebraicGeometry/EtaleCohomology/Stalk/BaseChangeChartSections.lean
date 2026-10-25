@@ -57,7 +57,8 @@ variable
   [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
   [hDU : HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U.left)]
 
-local instance baseChangeChartSections_targetIdentityHasDerivedCategory : HasDerivedCategory.{dU}
+/-- The supplied target-chart derived model at the identity presentation of its scheme. -/
+local instance baseChangeChartSectionsTargetIdentityHasDerivedCategory : HasDerivedCategory.{dU}
     (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hDU
 
 omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]

@@ -71,7 +71,7 @@ def baseStageIso (n : ℕ) (B : BoundedPresentation.Coefficient (X.obj i).unop n
     (a : Under i) :
     (baseCoefficientSystem X i r n B).obj a.right ≅
       (inverseImage (X.map a.hom).unop).obj B.obj :=
-  coefficient_stage_iso X (Cone.mk (X.obj i) r) B.obj a.right (X.map a.hom)
+  coefficientStageIso X (Cone.mk (X.obj i) r) B.obj a.right (X.map a.hom)
     (baseCone_leg X i r hr a)
 
 /-- The actual original fixed coefficient unit into a later right image. -/

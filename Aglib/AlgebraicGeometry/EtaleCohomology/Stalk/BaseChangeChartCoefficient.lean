@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SectionComparison
 
 /-! # Original unit sections and coefficient maps on the base-changed chart
 
@@ -67,51 +67,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
-private theorem squareSectionsNatTrans_arrow_congr {X S Y T : Scheme.{u}}
-    (f : X ⟶ S) (fT : Y ⟶ T) (g : T ⟶ S) (r₁ r₂ : Y ⟶ X)
-    (h₁ : fT ≫ g = r₁ ≫ f) (h₂ : fT ≫ g = r₂ ≫ f) (hr : r₁ = r₂) :
-    Continuity.squareSectionsNatTrans f fT g r₁ h₁ =
-      Continuity.squareSectionsNatTrans f fT g r₂ h₂ := by
-  subst r₂
-  rfl
-
-private theorem unitRepresentativeArrow_identity {S T : Scheme.{u}}
-    (g : T ⟶ S) (U : S.Etale) :
-    (Continuity.unitRepresentativeArrow g (𝟙 ((siteBaseChange g).obj U))).left =
-      pullback.fst U.hom g := by
-  let V : T.Etale := (siteBaseChange g).obj U
-  let b : V.left ⟶ U.left := pullback.fst U.hom g
-  exact (congrArg (fun k : V.left ⟶ V.left => k ≫ b)
-    (etaleHom_id_left V)).trans (Category.id_comp b)
-
-private theorem unitSectionMap_identity {S T : Scheme.{u}}
-    (g : T ⟶ S) (U : S.Etale) (L : AbelianSheaf.{u, u + 1} S) :
-    Continuity.unitSectionMap g L (𝟙 ((siteBaseChange g).obj U)) =
-      ((inverseImageAdjunction g).unit.app L).hom.app (op U) := by
-  let V : T.Etale := (siteBaseChange g).obj U
-  let P := ((inverseImage g).obj L).obj
-  let u := ((inverseImageAdjunction g).unit.app L).hom.app (op U)
-  have hid : P.map (𝟙 V).op = 𝟙 (P.obj (op V)) := by
-    simpa only [op_id] using P.map_id (op V)
-  change u ≫ P.map (𝟙 V).op = u
-  exact (congrArg (fun k => u ≫ k) hid).trans (Category.comp_id u)
-
-private theorem unitSectionNatTrans_baseChangeChart_square {S T : Scheme.{u}}
-    (g : T ⟶ S) (U : S.Etale) :
-    Continuity.unitSectionNatTrans g (𝟙 ((siteBaseChange g).obj U)) ≫
-        Functor.whiskerLeft (inverseImage g)
-          (Continuity.pullbackSectionsEtaleEvaluationNatIso ((siteBaseChange g).obj U)).inv =
-      (Continuity.pullbackSectionsEtaleEvaluationNatIso U).inv ≫
-        Continuity.squareSectionsNatTrans U.hom ((siteBaseChange g).obj U).hom g
-          (pullback.fst U.hom g) pullback.condition.symm := by
-  let V : T.Etale := (siteBaseChange g).obj U
-  let b : V.left ⟶ U.left := pullback.fst U.hom g
-  let a := Continuity.unitRepresentativeArrow g (𝟙 V)
-  have hs := squareSectionsNatTrans_arrow_congr U.hom V.hom g a.left b
-    (Over.w a).symm pullback.condition.symm (unitRepresentativeArrow_identity g U)
-  exact (Continuity.unitSectionNatTrans_square g (𝟙 V)).trans
-    (congrArg (fun t => (Continuity.pullbackSectionsEtaleEvaluationNatIso U).inv ≫ t) hs)
-
 /-- The original unit followed by an arbitrary original coefficient map, after
 chart evaluation, is exactly its original coefficient-square section transfer. -/
 theorem unitSectionMap_baseChangeChart_coefficient {S T : Scheme.{u}}
@@ -140,13 +95,14 @@ theorem unitSectionMap_baseChangeChart_coefficient {S T : Scheme.{u}}
     (inverseImageSquareIso U.hom V.hom g b pullback.condition.symm).inv
     (Continuity.unitSectionNatTrans g (𝟙 V))
     (Continuity.squareSectionsNatTrans U.hom V.hom g b pullback.condition.symm)
-    rfl (unitSectionNatTrans_baseChangeChart_square g U) L M φ
+    rfl (Continuity.unitSectionNatTrans_baseChangeChart_square g U) L M φ
     (Continuity.pullbackSectionsEtaleEvaluationIso L U)
     (Continuity.pullbackSectionsEtaleEvaluationIso M V)
     (((inverseImageAdjunction g).unit.app L).hom.app (op U))
     (φ.hom.app (op V)) (globalSectionsPullback b ((inverseImage U.hom).obj L))
     rfl rfl
-    ((Continuity.unitSectionNatTrans_app g (𝟙 V) L).trans (unitSectionMap_identity g U L))
+    ((Continuity.unitSectionNatTrans_app g (𝟙 V) L).trans
+      (Continuity.unitSectionMap_identity g U L))
     rfl rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

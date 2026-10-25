@@ -143,7 +143,7 @@ def originalCoefficientCocone : Cocone D where
 
 /-- Reflection through the original full inclusion retains the supplied
 original colimit, without replacing its cocone maps. -/
-def originalCoefficientCocone_isColimit
+def originalCoefficientCoconeIsColimit
     (hι : IsColimit (Cocone.mk ((zmodUnderlying X n).obj M) ι)) :
     IsColimit (originalCoefficientCocone X n M D ι) := by
   apply isColimitOfReflects (BoundedPresentation.inclusion X n)
@@ -156,7 +156,7 @@ def genuinePresentationCocone : Cocone (D ⋙ scalarLift X n) :=
     (canonicalModuleIso X n M).hom
 
 /-- The actual transported cocone with original genuine point is a colimit. -/
-def genuinePresentationCocone_isColimit
+def genuinePresentationCoconeIsColimit
     (hι : IsColimit (Cocone.mk ((zmodUnderlying X n).obj M) ι)) :
     IsColimit (genuinePresentationCocone X n M D ι) := by
   have hPres : PreservesColimitsOfShape I (scalarLift X n) :=
@@ -164,7 +164,7 @@ def genuinePresentationCocone_isColimit
       PreservesColimitsOfSize.{w, v} (scalarLift X n)).preservesColimitsOfShape
   have hD : PreservesColimit D (scalarLift X n) := hPres.preservesColimit
   exact IsColimit.extendIso (canonicalModuleIso X n M).hom
-    (hD.preserves (originalCoefficientCocone_isColimit X n M D ι hι)).some
+    (hD.preserves (originalCoefficientCoconeIsColimit X n M D ι hι)).some
 
 /-- Every original cocone map is recovered through the native scalar comparison. -/
 theorem genuinePresentationCocone_underlying_ι (i : I) :
@@ -231,7 +231,7 @@ theorem exists_filtered_genuine_presentation (M : ZModSheaf X n) :
   let := hI
   have : IsFiltered I := hfiltered
   refine ⟨I, hI, hfiltered, D, ι, (genuinePresentationCocone X n M D ι).ι,
-    ⟨hι⟩, ⟨genuinePresentationCocone_isColimit X n M D ι hι⟩,
+    ⟨hι⟩, ⟨genuinePresentationCoconeIsColimit X n M D ι hι⟩,
     genuinePresentationCocone_underlying_ι X n M D ι, ?_⟩
   exact fun i => ⟨hstage i, scalarLiftStage_isFinitelyPresentable X n (D.obj i) (hstage i)⟩
 

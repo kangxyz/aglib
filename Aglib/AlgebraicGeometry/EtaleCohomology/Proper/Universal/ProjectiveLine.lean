@@ -83,8 +83,7 @@ base-change property, including all coefficients on each pulled-back source. -/
 theorem universallyBoundedBaseChange_projectiveLine
     (n : ℕ) (hn : n ≠ 0) (R : Type u) [CommRing R] :
     universallyBoundedBaseChange n (ProjectiveLine.structureMap R) := by
-  intro X S a b f H₀
-  intro X' S' f' g g' H
-  exact boundedExchange_of_baseChangedProjectiveLine n hn R f b a H₀ f' g g' H
+  intro X S a b f H₀ X' S' f' g g' H
+  exact boundedExchange_of_baseChangedProjectiveLine n hn R f b a H₀.flip f' g g' H
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper

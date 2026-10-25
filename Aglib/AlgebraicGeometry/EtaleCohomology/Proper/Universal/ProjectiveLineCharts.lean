@@ -16,7 +16,7 @@ native projective-line model. The isomorphism is over that same affine
 chart, retaining the actual first pullback projection.
 -/
 
-public noncomputable section
+@[expose] public noncomputable section
 
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
@@ -57,6 +57,7 @@ variable (R T : Type u) [CommRing R] [CommRing T]
 
 /-- The actual pullback to any original affine chart of a base-changed P1
 is the native P1 of that chart, as an isomorphism over its spectrum. -/
+@[no_expose]
 def projectiveLineAffineChartIso :
     Over.mk (ProjectiveLine.structureMap T) ≅ Over.mk (pullback.fst j f) := by
   let φ : R →+* T := (Spec.preimage (j ≫ g)).hom

@@ -65,16 +65,23 @@ point of the original stratum and literal finite constant trivialization.
 Its original map is integral and can be infinite. -/
 structure GlobalNormalGenericModel {X S : Scheme.{u}} (s : S ⟶ X)
     (F : AbelianSheaf.{u, u + 1} X) where
+  /-- The integral scheme underlying the global model, whose stalks are integrally closed. -/
   source : Scheme.{u}
   [source_integral : IsIntegral source]
   normal_stalk : ∀ x : source, IsIntegrallyClosed (source.presheaf.stalk x)
+  /-- The integral structural morphism from the global model `source` to the original base `X`. -/
   morphism : source ⟶ X
   [morphism_integral : IsIntegralHom morphism]
+  /-- The finite abelian group giving the constant coefficient at the generic point of `source`. -/
   value : AddCommGrpCat.{u}
   [value_finite : Finite value]
+  /-- The dominant map from `Spec source.functionField` to `S`, whose composite with `s`
+  is the generic restriction of `morphism`. -/
   point : Spec source.functionField ⟶ S
   [point_dominant : IsDominant point]
   over : point ≫ s = source.fromSpecStalk (genericPoint source) ≫ morphism
+  /-- The trivialization of `F` pulled back along the generic restriction of `morphism`,
+  with constant coefficient group `value`. -/
   trivialization :
     (inverseImage (source.fromSpecStalk (genericPoint source) ≫ morphism)).obj F ≅
       ConstantFinite.coefficient value (Spec source.functionField)

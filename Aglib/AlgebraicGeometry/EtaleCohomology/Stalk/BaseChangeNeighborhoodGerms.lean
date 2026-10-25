@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartRelative
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartCoefficient
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductBaseChangeMap
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalSections
@@ -105,40 +106,6 @@ private theorem mapped_coefficient_hom
     _ = ((Γ.map g).hom.comp b).comp r := rfl
     _ = (c.comp t).comp r := congrArg (fun z => z.comp r) hg
     _ = _ := rfl
-
-private theorem relative_square_reassociate
-    {C D : Type*} [Category* C] [Category* D] (G : C ⥤ D)
-    {U V : C} {A B P W : D} (α : G.obj U ⟶ A) (k : A ⟶ B) (e : B ⟶ W)
-    (b : U ⟶ V) (c : G.obj V ⟶ P) (r : P ⟶ W)
-    (h : α ≫ k ≫ e = G.map b ≫ c ≫ r) :
-    G.map b ≫ (c ≫ r) = (α ≫ k) ≫ e := by
-  simpa only [Category.assoc] using h.symm
-
-private theorem sectionMap_paste
-    {A B : Type*} [Category* A] [Category* B] (G : A ⥤ B)
-    (ΓA : A ⥤ AddCommGrpCat.{v}) (ΓB : B ⥤ AddCommGrpCat.{v})
-    (s : ΓA ⟶ G ⋙ ΓB) {U V : A} {Q W : B}
-    (b : U ⟶ V) (c : G.obj V ⟶ W) (d : G.obj U ⟶ Q) (e : Q ⟶ W)
-    (hsquare : G.map b ≫ c = d ≫ e)
-    {Z T J : AddCommGrpCat.{v}} (EU : ΓA.obj U ≅ Z) (EV : ΓB.obj Q ≅ T)
-    (u : Z ⟶ J) (v : J ⟶ T)
-    (hpre : u ≫ v ≫ EV.inv = (EU.inv ≫ s.app U) ≫ ΓB.map d) :
-    unitSectionMapOfHom u v ≫ chartSectionMapOfHom ΓB EV e =
-      chartSectionMapOfHom ΓA EU b ≫ s.app V ≫ ΓB.map c := by
-  dsimp only [unitSectionMapOfHom, chartSectionMapOfHom]
-  have hn : ΓA.map b ≫ s.app V = s.app U ≫ ΓB.map (G.map b) := s.naturality b
-  calc
-    _ = (u ≫ v ≫ EV.inv) ≫ ΓB.map e := by simp only [Category.assoc]
-    _ = ((EU.inv ≫ s.app U) ≫ ΓB.map d) ≫ ΓB.map e :=
-      congrArg (fun z => z ≫ ΓB.map e) hpre
-    _ = (EU.inv ≫ s.app U) ≫ ΓB.map (d ≫ e) := by rw [ΓB.map_comp, Category.assoc]
-    _ = (EU.inv ≫ s.app U) ≫ ΓB.map (G.map b ≫ c) :=
-      congrArg (fun z => (EU.inv ≫ s.app U) ≫ ΓB.map z) hsquare.symm
-    _ = EU.inv ≫ (s.app U ≫ ΓB.map (G.map b)) ≫ ΓB.map c := by
-      rw [ΓB.map_comp]; simp only [Category.assoc]
-    _ = EU.inv ≫ (ΓA.map b ≫ s.app V) ≫ ΓB.map c :=
-      congrArg (fun z => EU.inv ≫ z ≫ ΓB.map c) hn.symm
-    _ = _ := by simp only [Category.assoc]
 
 private theorem sectionHom_cancel
     {A B C D : AddCommGrpCat.{v}} (k : A ⟶ B) (a : A ⟶ C)
@@ -298,7 +265,8 @@ variable
   [hChartDerived : HasDerivedCategory.{dZU} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
   [hBase : HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U.left)]
 
-local instance neighborhoodChartNormalization_baseDerived : HasDerivedCategory.{dU}
+/-- The supplied base derived model at the identity presentation used by chart normalization. -/
+local instance neighborhoodChartNormalizationBaseDerived : HasDerivedCategory.{dU}
     (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hBase
 
 omit hOriginalExt hSliceExt hChart in
@@ -310,7 +278,7 @@ private theorem originalChartExchange_value_eq_primitive (q : ℕ) :
     (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f)
       ((𝟭 Scheme.{u}).obj U.left)
       hSourceDerived hTargetDerived hChartDerived
-      (@baseChangeChartSections_targetIdentityHasDerivedCategory.{u, dU} S U hBase)
+      (@baseChangeChartSectionsTargetIdentityHasDerivedCategory.{u, dU} S U hBase)
       f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q) := rfl
 
 private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
@@ -338,7 +306,7 @@ private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : �
     (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f)
       ((𝟭 Scheme.{u}).obj U.left)
       hSourceDerived hTargetDerived hChartDerived
-      (@baseChangeChartSections_targetIdentityHasDerivedCategory.{u, dU} S U hBase)
+      (@baseChangeChartSectionsTargetIdentityHasDerivedCategory.{u, dU} S U hBase)
       f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q)
     (originalChartExchange_value_eq_primitive f U
       (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
@@ -418,6 +386,32 @@ private theorem higherBaseChangeMap_coefficientSections_hom
     (cohomologyToHigherSections fT G q) (cohomologyPullback.{u, w, w'} r F q)
     (Sheaf.H.map φ q) hs ht
 
+/-- Use the actual original coefficient-transfer value before native chart specialization. -/
+private theorem higherBaseChangeMap_coefficientTransferSections_hom
+    {X S Y T : Scheme.{u}}
+    [hDomainExt : HasExt.{e} (AbelianSheaf.{u, u + 1} X)]
+    [hCodomainExt : HasExt.{e} (AbelianSheaf.{u, u + 1} Y)]
+    [hDomainDerived : HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+    [hDomainBaseDerived : HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+    [hCodomainDerived : HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} Y)]
+    [hCodomainBaseDerived : HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} T)]
+    (f : X ⟶ S) (fT : Y ⟶ T) (b : T ⟶ S) (r : Y ⟶ X)
+    (h : fT ≫ b = r ≫ f) (F : AbelianSheaf.{u, u + 1} X)
+    (G : AbelianSheaf.{u, u + 1} Y) (φ : (inverseImage r).obj F ⟶ G) (q : ℕ) :
+    (globalSectionsPullback b ((higherDirectImage f q).obj F) ≫
+      (globalSections T).map
+        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S Y T
+          hDomainDerived hDomainBaseDerived hCodomainDerived hCodomainBaseDerived
+          f fT b r h q).app F ≫
+          (higherDirectImage fT q).map φ)).hom.comp (cohomologyToHigherSections f F q) =
+      (cohomologyToHigherSections fT G q).comp
+        (Continuity.cohomologyTransfer.{u, e} r φ q).hom := by
+  exact higherBaseChangeMap_coefficientSections_hom.{u, e, e, dX, dS, dX', dS'}
+    (hDomainExt := hDomainExt) (hCodomainExt := hCodomainExt)
+    (hDomainDerived := hDomainDerived) (hDomainBaseDerived := hDomainBaseDerived)
+    (hCodomainDerived := hCodomainDerived) (hCodomainBaseDerived := hCodomainBaseDerived)
+    f fT b r h F G φ q
+
 variable {X S X' S' : Scheme.{u}}
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f) (U : S.Etale)
@@ -442,11 +436,13 @@ variable
     (AbelianSheaf.{u, u + 1} (pullback ((siteBaseChange g).obj U).hom f'))]
   [hDV : HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} ((siteBaseChange g).obj U).left)]
 
-local instance neighborhoodBaseChange_sourceBaseIdentityHasDerivedCategory :
+/-- The original source base derived model at its identity-functor presentation. -/
+local instance neighborhoodBaseChangeSourceBaseIdentityHasDerivedCategory :
     HasDerivedCategory.{dU}
       (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hDU
 
-local instance neighborhoodBaseChange_targetBaseIdentityHasDerivedCategory :
+/-- The original target base derived model at its identity-functor presentation. -/
+local instance neighborhoodBaseChangeTargetBaseIdentityHasDerivedCategory :
     HasDerivedCategory.{dV}
       (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj ((siteBaseChange g).obj U).left)) := hDV
 
@@ -478,10 +474,8 @@ def fibreProductBaseChangeSectionMap (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     ((higherDirectImage f q).obj F).obj.obj (op U) ⟶
       ((higherDirectImage f' q).obj ((inverseImage g').obj F)).obj.obj
         (op ((siteBaseChange g).obj U)) :=
-  unitSectionMapOfHom
-    (((inverseImageAdjunction g).unit.app ((higherDirectImage f q).obj F)).hom.app (op U))
-    (((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
-      hDX hDS hDX' hDS' f f' g g' h q).app F).hom.app (op ((siteBaseChange g).obj U)))
+  (@fibreProductBaseChangeSectionNatTrans.{u, dX, dS, dX', dS'} X S X' S'
+    hDX hDS hDX' hDS' f f' g g' h U q).app F
 
 /-- This is literally the original unit followed by the original higher exchange. -/
 theorem fibreProductBaseChangeSectionMap_eq_original
@@ -491,7 +485,9 @@ theorem fibreProductBaseChangeSectionMap_eq_original
       ((inverseImageAdjunction g).unit.app ((higherDirectImage f q).obj F)).hom.app (op U) ≫
         ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F).hom.app
-          (op ((siteBaseChange g).obj U)) := rfl
+          (op ((siteBaseChange g).obj U)) :=
+  @fibreProductBaseChangeSectionNatTrans_app.{u, dX, dS, dX', dS'} X S X' S'
+    hDX hDS hDX' hDS' f f' g g' h U q F
 
 end OriginalMap
 
@@ -523,66 +519,22 @@ private theorem higherBaseChangeMap_sectionChart_square
                 (pullback.snd ((siteBaseChange g).obj U).hom f') g'
                 (fibreProductBaseChangeMap f f' g g' h U)
                 (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F)) := by
-  rw [fibreProductChartSectionMap_eq_constructor.{u, dX', dS', dZV, dV}
+  rw [fibreProductChartSectionMap_eq_family.{u, dX', dS', dZV, dV}
     f' ((siteBaseChange g).obj U)
     (hSourceDerived := hDX') (hTargetDerived := hDS')
     (hChartDerived := hDZV) (hBase := hDV) ((inverseImage g').obj F) q,
-    fibreProductChartSectionMap_eq_constructor.{u, dX, dS, dZU, dU} f U
+    fibreProductChartSectionMap_eq_family.{u, dX, dS, dZU, dU} f U
       (hSourceDerived := hDX) (hTargetDerived := hDS)
       (hChartDerived := hDZU) (hBase := hDU) F q]
-  let V : S'.Etale := (siteBaseChange g).obj U
-  let fU : pullback U.hom f ⟶ U.left := pullback.fst U.hom f
-  let fV : pullback V.hom f' ⟶ V.left := pullback.fst V.hom f'
-  let piU := pullback.snd U.hom f
-  let piV := pullback.snd V.hom f'
-  let b : V.left ⟶ U.left := pullback.fst U.hom g
-  let rU : pullback V.hom f' ⟶ pullback U.hom f :=
-    fibreProductBaseChangeMap f f' g g' h U
-  let hrU : piV ≫ g' = rU ≫ piU := (fibreProductBaseChangeMap_snd f f' g g' h U).symm
-  let hR : fV ≫ b = rU ≫ fU := (fibreProductBaseChangeMap_fst f f' g g' h U).symm
-  let L := (higherDirectImage f q).obj F
-  let G := (inverseImage g').obj F
-  let L' := (higherDirectImage f' q).obj G
-  let β : (inverseImage g).obj L ⟶ L' :=
-    (@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
-      hDX hDS hDX' hDS' f f' g g' h q).app F
-  let βU : (inverseImage U.hom).obj L ⟶
-      (higherDirectImage fU q).obj ((inverseImage piU).obj F) :=
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
-      hDX hDS hDZU hDU f fU U.hom piU pullback.condition q).app F
-  let βV : (inverseImage V.hom).obj L' ⟶
-      (higherDirectImage fV q).obj ((inverseImage piV).obj G) :=
-    (@higherBaseChangeMap.{u, dX', dS', dZV, dV} X' S' (pullback V.hom f') V.left
-      hDX' hDS' hDZV hDV f' fV V.hom piV pullback.condition q).app G
-  let βR : (inverseImage b).obj ((higherDirectImage fU q).obj ((inverseImage piU).obj F)) ⟶
-      (higherDirectImage fV q).obj ((inverseImage rU).obj ((inverseImage piU).obj F)) :=
-    (@higherBaseChangeMap.{u, dZU, dU, dZV, dV}
-      (pullback U.hom f) U.left (pullback V.hom f') V.left
-      hDZU hDU hDZV hDV fU fV b rU hR q).app ((inverseImage piU).obj F)
-  let δ : (inverseImage rU).obj ((inverseImage piU).obj F) ⟶
-      (inverseImage piV).obj G := (inverseImageSquareIso piU piV g' rU hrU).inv.app F
-  let δS : (inverseImage b).obj ((inverseImage U.hom).obj L) ⟶
-      (inverseImage V.hom).obj ((inverseImage g).obj L) :=
-    (inverseImageSquareIso U.hom V.hom g b pullback.condition.symm).inv.app L
-  have hrel := @higherBaseChangeMap_chartRelative_square.{u, dX, dS, dX', dS', dZU, dU, dZV, dV}
-    X S X' S' (pullback U.hom f) U.left (pullback V.hom f') V.left
-    hDX hDS hDX' hDS' hDZU hDU hDZV hDV f f' g g' h fU fV U.hom V.hom piU piV b rU
-    pullback.condition pullback.condition pullback.condition.symm hrU hR q F
-  have hsquare := relative_square_reassociate (inverseImage b) δS
-    ((inverseImage V.hom).map β) βV βU βR ((higherDirectImage fV q).map δ) hrel
-  exact sectionMap_paste (inverseImage b) (globalSections U.left) (globalSections V.left)
-    (globalSectionsPullbackNatTrans b) βU (βR ≫ (higherDirectImage fV q).map δ)
-    (δS ≫ (inverseImage V.hom).map β) βV hsquare
-    (Continuity.pullbackSectionsEtaleEvaluationIso L U)
-    (Continuity.pullbackSectionsEtaleEvaluationIso L' V)
-    (((inverseImageAdjunction g).unit.app L).hom.app (op U)) (β.hom.app (op V))
-    (unitSectionMap_baseChangeChart_coefficient g U β)
+  exact higherBaseChangeMap_sectionChart_square_app.{u, dX, dS, dX', dS', dZU, dU, dZV, dV}
+    f f' g g' h U (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS')
+    (hDZU := hDZU) (hDU := hDU) (hDZV := hDZV) (hDV := hDV) q F
 
 end SectionMaps
 
+set_option maxHeartbeats 500000 in
 -- Allow finite extra elaboration for this eight-model native specialization.
 -- Its comparisons and cancellation are equalities of whole additive maps.
-set_option maxHeartbeats 500000 in
 private theorem higherBaseChangeMap_fibreProductSection_whole
     (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     (fibreProductBaseChangeSectionMap.{u, dX, dS, dX', dS'} f f' g g' h U
@@ -595,47 +547,54 @@ private theorem higherBaseChangeMap_fibreProductSection_whole
               (pullback.snd ((siteBaseChange g).obj U).hom f') g'
               (fibreProductBaseChangeMap f f' g g' h U)
               (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q).hom := by
-  let V : S'.Etale := (siteBaseChange g).obj U
-  let fU := pullback.fst U.hom f
-  let fV := pullback.fst V.hom f'
-  let piU := pullback.snd U.hom f
-  let piV := pullback.snd V.hom f'
-  let b : V.left ⟶ U.left := pullback.fst U.hom g
-  let rU := fibreProductBaseChangeMap f f' g g' h U
-  let hR := (fibreProductBaseChangeMap_fst f f' g g' h U).symm
-  let δ : (inverseImage rU).obj ((inverseImage piU).obj F) ⟶
-      (inverseImage piV).obj ((inverseImage g').obj F) :=
-    (inverseImageSquareIso piU piV g' rU
-    (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F
-  let G := (inverseImage g').obj F
-  let βR : (inverseImage b).obj ((higherDirectImage fU q).obj ((inverseImage piU).obj F)) ⟶
-      (higherDirectImage fV q).obj ((inverseImage rU).obj ((inverseImage piU).obj F)) :=
-    (@higherBaseChangeMap.{u, dZU, dU, dZV, dV}
-    (pullback U.hom f) U.left (pullback V.hom f') V.left
-    hDZU hDU hDZV hDV fU fV b rU hR q).app
-    ((inverseImage piU).obj F)
-  have : IsIso (fibreProductChartSectionMap.{u, dX', dS', dZV, dV} f' V
+  have : IsIso (fibreProductChartSectionMap.{u, dX', dS', dZV, dV}
+      f' ((siteBaseChange g).obj U)
       (hSourceDerived := hDX') (hTargetDerived := hDS')
-      (hChartDerived := hDZV) (hBase := hDV) G q) :=
-    fibreProductChartSectionMap_isIso.{u, dX', dS', dZV, dV} f' V
+      (hChartDerived := hDZV) (hBase := hDV) ((inverseImage g').obj F) q) :=
+    fibreProductChartSectionMap_isIso.{u, dX', dS', dZV, dV}
+      f' ((siteBaseChange g).obj U)
       (hSourceDerived := hDX') (hTargetDerived := hDS')
-      (hChartDerived := hDZV) (hBase := hDV) G q
+      (hChartDerived := hDZV) (hBase := hDV) ((inverseImage g').obj F) q
+  -- Keep the original chart and coefficient values literal at this application boundary.
   exact sectionHom_cancel
     (fibreProductBaseChangeSectionMap.{u, dX, dS, dX', dS'} f f' g g' h U
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q)
     (fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
       (hSourceDerived := hDX) (hTargetDerived := hDS)
       (hChartDerived := hDZU) (hBase := hDU) F q)
-    (fibreProductChartSectionMap.{u, dX', dS', dZV, dV} f' V
+    (fibreProductChartSectionMap.{u, dX', dS', dZV, dV} f' ((siteBaseChange g).obj U)
       (hSourceDerived := hDX') (hTargetDerived := hDS')
-      (hChartDerived := hDZV) (hBase := hDV) G q)
-    (globalSectionsPullback b ((higherDirectImage fU q).obj ((inverseImage piU).obj F)) ≫
-      (globalSections V.left).map (βR ≫ (higherDirectImage fV q).map δ))
+      (hChartDerived := hDZV) (hBase := hDV) ((inverseImage g').obj F) q)
+    (globalSectionsPullback (pullback.fst U.hom g)
+        ((higherDirectImage (pullback.fst U.hom f) q).obj
+          ((inverseImage (pullback.snd U.hom f)).obj F)) ≫
+      (globalSections ((siteBaseChange g).obj U).left).map
+        ((@higherBaseChangeMap.{u, dZU, dU, dZV, dV}
+          (pullback U.hom f) U.left
+          (pullback ((siteBaseChange g).obj U).hom f') ((siteBaseChange g).obj U).left
+          hDZU hDU hDZV hDV (pullback.fst U.hom f)
+          (pullback.fst ((siteBaseChange g).obj U).hom f') (pullback.fst U.hom g)
+          (fibreProductBaseChangeMap f f' g g' h U)
+          (fibreProductBaseChangeMap_fst f f' g g' h U).symm q).app
+            ((inverseImage (pullback.snd U.hom f)).obj F) ≫
+          (higherDirectImage (pullback.fst ((siteBaseChange g).obj U).hom f') q).map
+            ((inverseImageSquareIso (pullback.snd U.hom f)
+              (pullback.snd ((siteBaseChange g).obj U).hom f') g'
+              (fibreProductBaseChangeMap f f' g g' h U)
+              (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F)))
     (fibreProductCohomologySectionHom.{u, w, s, e} f U F q)
-    (fibreProductCohomologySectionHom.{u, w', s', e} f' V G q)
-    (Continuity.cohomologyTransfer.{u, e} rU δ q).hom
-    (cohomologyToHigherSections fU ((inverseImage piU).obj F) q)
-    (cohomologyToHigherSections fV ((inverseImage piV).obj G) q)
+    (fibreProductCohomologySectionHom.{u, w', s', e} f' ((siteBaseChange g).obj U)
+      ((inverseImage g').obj F) q)
+    (Continuity.cohomologyTransfer.{u, e} (fibreProductBaseChangeMap f f' g g' h U)
+      ((inverseImageSquareIso (pullback.snd U.hom f)
+        (pullback.snd ((siteBaseChange g).obj U).hom f') g'
+        (fibreProductBaseChangeMap f f' g g' h U)
+        (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q).hom
+    (cohomologyToHigherSections (pullback.fst U.hom f)
+      ((inverseImage (pullback.snd U.hom f)).obj F) q)
+    (cohomologyToHigherSections (pullback.fst ((siteBaseChange g).obj U).hom f')
+      ((inverseImage (pullback.snd ((siteBaseChange g).obj U).hom f')).obj
+        ((inverseImage g').obj F)) q)
     (higherBaseChangeMap_sectionChart_square.{u, dX, dS, dX', dS', dZU, dU, dZV, dV}
       f f' g g' h U
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS')
@@ -643,14 +602,24 @@ private theorem higherBaseChangeMap_fibreProductSection_whole
     (fibreProductChartSection_hom.{u, w, s, e, dX, dS, dZU, dU} f U
       (hSourceDerived := hDX) (hTargetDerived := hDS)
       (hChartDerived := hDZU) (hBase := hDU) F q)
-    (higherBaseChangeMap_coefficientSections_hom.{u, e, e, dZU, dU, dZV, dV}
+    (higherBaseChangeMap_coefficientTransferSections_hom.{u, e, dZU, dU, dZV, dV}
       (hDomainExt := hZU) (hCodomainExt := hZV)
       (hDomainDerived := hDZU) (hDomainBaseDerived := hDU)
       (hCodomainDerived := hDZV) (hCodomainBaseDerived := hDV)
-      fU fV b rU hR ((inverseImage piU).obj F) ((inverseImage piV).obj G) δ q)
-    (fibreProductChartSection_hom.{u, w', s', e, dX', dS', dZV, dV} f' V
+      (pullback.fst U.hom f) (pullback.fst ((siteBaseChange g).obj U).hom f')
+      (pullback.fst U.hom g) (fibreProductBaseChangeMap f f' g g' h U)
+      (fibreProductBaseChangeMap_fst f f' g g' h U).symm
+      ((inverseImage (pullback.snd U.hom f)).obj F)
+      ((inverseImage (pullback.snd ((siteBaseChange g).obj U).hom f')).obj
+        ((inverseImage g').obj F))
+      ((inverseImageSquareIso (pullback.snd U.hom f)
+        (pullback.snd ((siteBaseChange g).obj U).hom f') g'
+        (fibreProductBaseChangeMap f f' g g' h U)
+        (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q)
+    (fibreProductChartSection_hom.{u, w', s', e, dX', dS', dZV, dV}
+      f' ((siteBaseChange g).obj U)
       (hSourceDerived := hDX') (hTargetDerived := hDS')
-      (hChartDerived := hDZV) (hBase := hDV) G q)
+      (hChartDerived := hDZV) (hBase := hDV) ((inverseImage g').obj F) q)
 
 /-- The original unit-and-exchange section map commutes with the exact original
 coefficient-square cohomology transfer as an equality of additive maps. -/

@@ -37,9 +37,11 @@ local instance (K : Type u) : IsConnected (Finset K) := IsFiltered.isConnected (
 variable (k K : Type u) [CommRing k] [CommRing K] [Algebra k K]
   {Y : Scheme.{u}} (p : Y ⟶ Spec (.of k))
 
+/-- The original finite-type coefficient base changes, viewed as schemes over `Y`. -/
 abbrev overDiagram : (Finset K)ᵒᵖ ⥤ Over Y :=
   Scheme.FiniteTypeSubalgebraLimit.baseDiagram k K ⋙ Over.pullback p
 
+/-- The canonical functor from finite subsets to their double opposites. -/
 abbrev indexEquivalence := (opOpEquivalence (Finset K)).inverse
 
 /-- Original coefficient schemes in their filtered cohomological direction. -/
@@ -196,7 +198,7 @@ theorem exists_cohomologyZero_over_finiteTypeSubalgebra
     preservesFilteredColimitsOfSize_of_univLE.{e, e, u, u} _
   obtain ⟨t, ht⟩ := Stalk.exists_pullback_eq_zero_of_colimit X b d l hl
     (coefficient A Y) q
-    (isColimit_pullbackCohomologyCocone X b d
+    (isColimitPullbackCohomologyCocone X b d
       (coefficientLimitIsColimit k K p) l hl (coefficient A Y) q) a hraw
   refine ⟨t, ?_⟩
   change Sheaf.H.map ((inverseImageConstantIso (b.π.app t).unop).app (value A)).hom q

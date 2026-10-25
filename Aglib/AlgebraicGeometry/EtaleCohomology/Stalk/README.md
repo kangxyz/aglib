@@ -13,6 +13,9 @@ object.
 | [GeometricOriginalDiagram](GeometricOriginalDiagram.lean) | The actual compatible-system cohomology diagram agrees with the original, unresized scheme-H diagram before resizing. |
 | [ResizeCohomologyDiagram](ResizeCohomologyDiagram.lean), [ResizeCohomologyReindex](ResizeCohomologyReindex.lean) | Whole-diagram and reindexing comparisons retain the actual coefficient maps and explicit size/Ext/colimit premises. |
 | [EtaleDirectImageMate](EtaleDirectImageMate.lean) | For arbitrary vertical `f` and étale horizontal `g`, the original ordinary exchange is the actual chart isomorphism, with original unit/counit normalization. |
+| [BaseChangeChartRelative](BaseChangeChartRelative.lean) | Whole `TwoSquare` interchange of the four original higher exchanges retains both inverse-image square comparisons and eight independent derived models. Its original component formula remains available without Cartesian or invertibility assumptions. |
+| [BaseChangeSectionComparison](BaseChangeSectionComparison.lean) | The original whole unit and relative-exchange equations give the actual section square before coefficient evaluation. Its component view retains the original section pullback and inverse coefficient comparison. This supplies an input to neighborhood-germ comparison, not proper base change by itself. |
+| [ChartExchangeMaps](ChartExchangeMaps.lean) | The chart witness uses the shared whole comparison family. Its original-factor, family-value and `IsIso` views preserve the four arbitrary models and obtain invertibility from the original etale exchange. |
 
 ## Geometric neighborhood colimit
 

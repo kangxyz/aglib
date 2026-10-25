@@ -89,17 +89,37 @@ variable {X S X' S' : Scheme.{u}}
   [HasExt.{e} (AbelianSheaf.{u, u + 1}
     (pullback (Spec.algebraMap R' (GeometricEtaleColimit R' Ω) ≫ j') f'))]
 
+local instance geometricStalkExchangeSourceFiberExt :
+    HasExt.{e} (AbelianSheaf.{u, u + 1} (Over.mk (pullback.snd (ζ ≫ g) f)).left) :=
+  inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} (pullback (ζ ≫ g) f)))
+
+local instance geometricStalkExchangeTargetFiberExt :
+    HasExt.{e} (AbelianSheaf.{u, u + 1} (Over.mk (pullback.snd ζ f')).left) :=
+  inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} (pullback ζ f')))
+
+local instance geometricStalkExchangeSourceApexExt :
+    HasExt.{e} (AbelianSheaf.{u, u + 1}
+      (pointedNeighborhoodBaseChangedCone R Ω j (ζ ≫ g) hη f).pt.left) :=
+  inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1}
+    (pullback (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)))
+
+local instance geometricStalkExchangeTargetApexExt :
+    HasExt.{e} (AbelianSheaf.{u, u + 1}
+      (pointedNeighborhoodBaseChangedCone R' Ω j' ζ hζ f').pt.left) :=
+  inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1}
+    (pullback (Spec.algebraMap R' (GeometricEtaleColimit R' Ω) ≫ j') f')))
+
 /-- Bijectivity of the actual local transfers proves invertibility of the
 defined higher exchange on the original geometric stalk. -/
 theorem higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
     (H : IsPullback g' f' f g)
     (hκ : Function.Bijective
-      (relativeCohomologyTransfer F q (chartGeometricPointMap Ω (ζ ≫ g) f R j hη)))
+      (relativeCohomologyTransfer.{u, e} F q (chartGeometricPointMap Ω (ζ ≫ g) f R j hη)))
     (hκ' : Function.Bijective
-      (relativeCohomologyTransfer ((inverseImage g').obj F) q
+      (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
         (chartGeometricPointMap Ω ζ f' R' j' hζ))) :
     IsIso (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap f f' g g' h q).app F)) := by
+      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)) := by
   let L := (higherDirectImage f q).obj F
   let sourceStalk : AddCommGrpCat.{u + 1} :=
     ((pointSmallEtale (ζ ≫ g)).sheafFiber (A := AddCommGrpCat.{u + 1})).obj L

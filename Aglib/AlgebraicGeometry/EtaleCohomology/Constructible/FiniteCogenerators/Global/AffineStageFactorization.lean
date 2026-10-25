@@ -50,7 +50,11 @@ structure AffineConstantStage
     (B : Type u) [AddCommGroup B] [Finite B] (F : AbelianSheaf.{u, u + 1} X)
     (α : F ⟶ (constantPushforwardFunctor (X := X) B).obj (op (Over.mk f)))
     (U : X.AffineZariskiSite) where
+  /-- The finite set of sections over `f ⁻¹ᵁ U.1` indexing the chosen finitely generated stage. -/
   stage : Finset Γ(Y, f ⁻¹ᵁ U.1)
+  /-- The map from `F` restricted along `U.2.fromSpec` to the constant pushforward at `stage`,
+  whose cocone composite recovers the restriction of `α` under
+  `affineConstantPushforwardRestrictionIso`. -/
   map :
     letI := (f.app U.1).hom.toAlgebra
     (inverseImage U.2.fromSpec).obj F ⟶

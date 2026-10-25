@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SectionComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Etale
 
 /-! # Original chart exchange on section groups
@@ -71,11 +71,15 @@ private structure ChartSectionMapWitness {X S : Scheme.{u}} (U : S.Etale)
     (F : AbelianSheaf.{u, u + 1} X) where
   map : (P.obj F).obj.obj (op U) ⟶ (globalSections U.left).obj (Q.obj F)
   isIso : IsIso map
+  map_eq_family : map = (Continuity.chartSectionComparison U P Q α).app F
   map_eq_constructor : map = chartSectionMapOfHom (globalSections U.left)
     (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U) (α.app F)
   map_eq_original : map =
     (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U).inv ≫
       (globalSections U.left).map (α.app F)
+
+-- Apply injectivity before contextual value laws simplify the constructor arguments.
+attribute [simp↓] ChartSectionMapWitness.mk.injEq
 
 /-- Construct the original evaluation and exchange component while their family is variable. -/
 private def chartSectionMapWitnessOfIsIso {X S : Scheme.{u}} (U : S.Etale)
@@ -83,14 +87,15 @@ private def chartSectionMapWitnessOfIsIso {X S : Scheme.{u}} (U : S.Etale)
     (Q : AbelianSheaf.{u, u + 1} X ⥤ AbelianSheaf.{u, u + 1} U.left)
     (α : P ⋙ @inverseImage.{u} S U.left U.hom ⟶ Q) (hα : IsIso α)
     (F : AbelianSheaf.{u, u + 1} X) : ChartSectionMapWitness U P Q α F where
-  map := chartSectionMapOfHom (globalSections U.left)
-    (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U) (α.app F)
-  isIso := chartSectionMapOfHom_isIso (globalSections U.left)
-    (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U) (α.app F)
-    (chartComponent_isIso_of_whole α hα F)
-  map_eq_constructor := rfl
-  map_eq_original := chartSectionMapOfHom_eq_comp (globalSections U.left)
-    (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U) (α.app F)
+  map := (Continuity.chartSectionComparison U P Q α).app F
+  isIso := by
+    rw [Continuity.chartSectionComparison_app]
+    exact chartSectionMapOfHom_isIso (globalSections U.left)
+      (@Continuity.pullbackSectionsEtaleEvaluationIso.{u} S (P.obj F) U) (α.app F)
+      (chartComponent_isIso_of_whole α hα F)
+  map_eq_family := rfl
+  map_eq_constructor := Continuity.chartSectionComparison_app U P Q α F
+  map_eq_original := Continuity.chartSectionComparison_app U P Q α F
 
 variable {X S : Scheme.{u}} (f : X ⟶ S) (U : S.Etale)
   [hSourceDerived : HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
@@ -98,7 +103,8 @@ variable {X S : Scheme.{u}} (f : X ⟶ S) (U : S.Etale)
   [hChartDerived : HasDerivedCategory.{dZU} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
   [hBase : HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U.left)]
 
-local instance chartExchangeMaps_baseIdentityDerived : HasDerivedCategory.{dU}
+/-- The supplied chart-base derived model at the identity presentation of its scheme. -/
+local instance chartExchangeMapsBaseIdentityDerived : HasDerivedCategory.{dU}
     (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hBase
 
 private theorem originalChartComponent_isIso
@@ -143,6 +149,21 @@ def fibreProductChartSectionMap (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
   (originalChartSectionWitness.{u, dX, dS, dZU, dU} f U
     (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
     (hChartDerived := hChartDerived) (hBase := hBase) F q).map
+
+/-- The native map is a component of the same whole chart comparison family. -/
+theorem fibreProductChartSectionMap_eq_family
+    (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
+    fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
+        (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
+        (hChartDerived := hChartDerived) (hBase := hBase) F q =
+      (Continuity.chartSectionComparison U (higherDirectImage f q)
+        (inverseImage (pullback.snd U.hom f) ⋙ higherDirectImage (pullback.fst U.hom f) q)
+        (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+          hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
+          U.hom (pullback.snd U.hom f) pullback.condition q)).app F :=
+  (originalChartSectionWitness.{u, dX, dS, dZU, dU} f U
+    (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
+    (hChartDerived := hChartDerived) (hBase := hBase) F q).map_eq_family
 
 /-- The native map uses the same actual constructor as its generic section laws. -/
 theorem fibreProductChartSectionMap_eq_constructor

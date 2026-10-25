@@ -151,7 +151,7 @@ theorem projectiveLine_fieldExtension_finiteConstantAnnihilator_bijective
         (projectiveLine_fieldExtension_finiteValueDirectImage_bijective
           k K (f i) (B i) q).surjective)⟩
   let E : (Reduction.zmodUnderlying (ProjectiveLine.projectiveP1 k) n).obj M ≅ G :=
-    e ≪≫ constantDirectImageProductAnnihilatorIso_finiteIndex n Y f
+    e ≪≫ constantDirectImageProductAnnihilatorIsoFiniteIndex n Y f
       (fun i => ConstantFinite.value (A i))
   exact ⟨cohomologyPullback_injective_of_iso g E.symm q hG.injective,
     cohomologyPullback_surjective_of_iso g E.symm q hG.surjective⟩

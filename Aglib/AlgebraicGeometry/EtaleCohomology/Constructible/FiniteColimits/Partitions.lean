@@ -56,7 +56,9 @@ def ofFintype {ι : Type v} [Fintype ι] (S : ι → Scheme.{u})
 
 /-- An actual refinement records its original maps over the base. -/
 structure Refinement (q p : FiniteLocallyClosedPartition X) where
+  /-- The original stratum selected for each refining stratum. -/
   indexMap : Fin q.count → Fin p.count
+  /-- The actual map from each refining stratum to its selected original stratum. -/
   map : ∀ i, q.stratum i ⟶ p.stratum (indexMap i)
   comm : ∀ i, map i ≫ p.inclusion (indexMap i) = q.inclusion i
 
@@ -91,14 +93,14 @@ def intersection (p q : FiniteLocallyClosedPartition X) :
       exact ⟨(i, j), w, by simpa only [Scheme.Hom.comp_apply, hw] using hy⟩)
 
 /-- Projection from an intersection stratum to the first original stratum. -/
-def intersection_refines_left (p q : FiniteLocallyClosedPartition X) :
+def intersectionRefinesLeft (p q : FiniteLocallyClosedPartition X) :
     Refinement (p.intersection q) p where
   indexMap i := ((Fintype.equivFin (Fin p.count × Fin q.count)).symm i).1
   map _ := pullback.fst _ _
   comm _ := rfl
 
 /-- Projection from an intersection stratum to the second original stratum. -/
-def intersection_refines_right (p q : FiniteLocallyClosedPartition X) :
+def intersectionRefinesRight (p q : FiniteLocallyClosedPartition X) :
     Refinement (p.intersection q) q where
   indexMap i := ((Fintype.equivFin (Fin p.count × Fin q.count)).symm i).2
   map _ := pullback.snd _ _
@@ -141,9 +143,9 @@ theorem exists_common_partition_fin {X : Scheme.{u}} (r : ℕ)
     refine ⟨p.intersection q.toFiniteLocallyClosedPartition, ?_⟩
     intro i
     refine Fin.cases ?_ (fun k => ?_) i
-    · exact (p.intersection_refines_right q.toFiniteLocallyClosedPartition).isFiniteLocallyConstant
+    · exact (p.intersectionRefinesRight q.toFiniteLocallyClosedPartition).isFiniteLocallyConstant
         q.locally_constant
-    · exact (p.intersection_refines_left q.toFiniteLocallyClosedPartition).isFiniteLocallyConstant
+    · exact (p.intersectionRefinesLeft q.toFiniteLocallyClosedPartition).isFiniteLocallyConstant
         (hp k)
 
 /-- Every finite family admits an actual common partition; the label
