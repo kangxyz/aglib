@@ -13,6 +13,9 @@ object.
 | [GeometricOriginalDiagram](GeometricOriginalDiagram.lean) | The actual compatible-system cohomology diagram agrees with the original, unresized scheme-H diagram before resizing. |
 | [ResizeCohomologyDiagram](ResizeCohomologyDiagram.lean), [ResizeCohomologyReindex](ResizeCohomologyReindex.lean) | Whole-diagram and reindexing comparisons retain the actual coefficient maps and explicit size/Ext/colimit premises. |
 | [EtaleDirectImageMate](EtaleDirectImageMate.lean) | For arbitrary vertical `f` and étale horizontal `g`, the original ordinary exchange is the actual chart isomorphism, with original unit/counit normalization. |
+| [BaseChangeChartRelative](BaseChangeChartRelative.lean) | Whole `TwoSquare` interchange of the four original higher exchanges retains both inverse-image square comparisons and eight independent derived models. Its original component formula remains available without Cartesian or invertibility assumptions. |
+| [BaseChangeSectionComparison](BaseChangeSectionComparison.lean) | The original whole unit and relative-exchange equations give the actual section square before coefficient evaluation. Its component view retains the original section pullback and inverse coefficient comparison. This supplies an input to neighborhood-germ comparison, not proper base change by itself. |
+| [ChartExchangeMaps](ChartExchangeMaps.lean) | The chart witness uses the shared whole comparison family. Its original-factor, family-value and `IsIso` views preserve the four arbitrary models and obtain invertibility from the original etale exchange. |
 
 ## Geometric neighborhood colimit
 
@@ -85,8 +88,15 @@ No general-base edge injectivity, properness or PBC premise is asserted.
 
 [ChartCycleWitness](ChartCycleWitness.lean), [ChartTargetCycles](ChartTargetCycles.lean)
 and the generic actual-resolution comparison supply neighborhood-cycle inputs.
-They do not yet export the all-degree arbitrary-neighborhood exchange/germ
-identity. The unfinished chart-exchange and chart-relative-germ consumers
-are excluded from the integrated source set.
+[BaseChangeNeighborhoodGerms](BaseChangeNeighborhoodGerms.lean) exports the
+actual all-degree section and arbitrary-pointed-neighborhood germ equations.
+[GeometricComparisonExchange](GeometricComparisonExchange.lean) compares the
+original stalk exchange with the two cohomology transfers over one common
+geometric point. [GeometricStalkExchange](GeometricStalkExchange.lean) obtains
+invertibility from the stated bijectivity hypotheses on the actual local
+transfers, retaining the projected Ext dictionaries and original maps. The
+[proper family](../Proper/README.md) supplies those transfers on its selected
+route to locally torsion higher and D+ proper exchange. Unbounded exchange
+retains its separate homological obligations.
 [ChartLimitZero](ChartLimitZero.lean) separately spreads original vanishing
 on an actual qcqs affine-transition limit to a genuine pointed etale stage.

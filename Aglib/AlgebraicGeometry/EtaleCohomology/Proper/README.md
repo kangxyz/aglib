@@ -1,11 +1,40 @@
-# Proper-base-change reduction inputs
+# Proper base change
 
-This family collects formal reductions for the original exchange maps and
-geometric inputs for proper base change. The universal exchange interfaces use
-`AlgebraicGeometry.Scheme.EtaleCohomology.Proper`; the lower reduction suppliers use
-its `Reduction` namespace.
+This family owns proper base change for the original higher and bounded-below
+derived exchange maps, in namespace
+`AlgebraicGeometry.Scheme.EtaleCohomology.Proper`. Its formal and geometric
+reducers retain the lower `Proper.Reduction` namespace.
 Scheme coefficients use `AbelianSheaf.{u,u+1}`; the derived statements use
 the actual bounded-below category `DerivedCategory.Plus`.
+
+## Original proper exchange on locally torsion coefficients
+
+For proper `f : X ⟶ S`, arbitrary `g : S' ⟶ S` and an actual Cartesian square
+with maps `f'` and `g'`, [BaseChange](BaseChange.lean) supplies:
+
+- `properHigherBaseChange_isIso`: every original higher exchange component
+  is invertible in every natural degree for an internally locally torsion F.
+- `properDerivedBaseChange_single_isIso`: the same original derived exchange
+  is invertible on the original degree-zero single of F.
+- `properDerivedBaseChange_isIso_of_torsion_homology`: the same exchange is
+  invertible on every D+ object whose homology sheaves are internally locally
+  torsion.
+
+The four supplied derived-category data records and their universes remain
+independent. The base, base change and locally torsion coefficient are
+arbitrary: the final statements add no uniform annihilator, Noetherian,
+constructibility, finite-presentation or coefficient-order-invertibility
+condition. The D+ statement retains bounded-below scope and imposes no common
+annihilator on its homology sheaves or terms.
+
+[Bounded](Bounded.lean) gives the intermediate original exchange on every
+coefficient killed by a supplied positive integer. The actual universal-P1
+input is constructed in [Universal/ProjectiveLine](Universal/ProjectiveLine.lean)
+from original local and geometric-stalk comparisons. The original factorial
+kernel cocone and sheaf-valued sequential higher-image continuity give local
+torsion; the native finite Postnikov windows give D+.
+
+## Formal and geometric reduction inputs
 
 | Source | Supplied interface |
 | --- | --- |
@@ -164,12 +193,12 @@ exports the original higher-exchange and derived-single conclusions directly.
 Every natural modulus, including zero, is retained. No injectivity after scalar
 forgetting is asserted.
 
-The actual universal projective-line input and the remaining general-base and
-torsion assembly are still open. These conditional reductions do not assert
-general proper base change.
-The [finite family](../Finite/README.md) supplies actual finite exchange;
-the [torsion family](../Torsion/README.md) retains the geometric presentation
-and local surjectivity inputs. General proper base change remains open.
+The actual universal projective-line input is constructed in
+[Universal/ProjectiveLine](Universal/ProjectiveLine.lean).
+[TargetLocality](Universal/TargetLocality.lean) supplies the arbitrary-target
+bounded conclusion, and [BaseChange](BaseChange.lean) assembles the original
+locally torsion higher and D+ endpoints. The reductions retain their explicit
+inputs as reusable interfaces.
 
 ## Original strictly local test coefficients
 
@@ -204,5 +233,20 @@ supplies the product target adapter for a given finite cogenerator embedding.
 The [local cohomology criteria](Local/README.md) reduce the original
 `cohomologyPullback` to explicit finite-embedding and finite-annihilator tests.
 The projective-line specialization retains `n ≠ 0`, its henselian and
-residue-field hypotheses, and `hfinite`; it does not establish general proper
-base change.
+residue-field hypotheses, and `hfinite`. The selected PBC route constructs
+that finite-embedding input; the local criterion retains it explicitly for
+independent applications.
+
+## Scope boundaries
+
+The formal composition and retract theorems retain their displayed
+exchange-invertibility inputs for general commuting squares. The proper
+endpoints above supply those inputs in their stated torsion range.
+Unbounded proper exchange and the remaining six-operation formalism have
+separate homological and coherence obligations.
+
+The [finite family](../Finite/README.md) supplies actual finite exchange.
+The [torsion family](../Torsion/README.md) retains its geometric presentation,
+local surjectivity inputs and conditional original-map test interfaces. Proper
+base change constructs the actual geometric and comparison inputs needed by its
+selected route; unrelated applications retain their own premises.

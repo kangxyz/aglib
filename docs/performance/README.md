@@ -109,6 +109,7 @@ original runs; current operating guides own present procedures.
 Additional complete cases:
 
 - [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)
+- [Private PBC original-map and finite-model boundaries](pbc-original-map-and-finite-model-boundaries.md)
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.

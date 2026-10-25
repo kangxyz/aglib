@@ -77,6 +77,31 @@ leave the costly specialization unchanged.
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
 
+**Match the actual transfer before cancellation.** If a cancellation lemma
+accepts one presentation of a cohomology transfer while its native consumer
+supplies another, first prove the original transfer's whole value formula
+over variable schemes and its actual model data. Supply literal chart,
+coefficient and transport values at the completed cancellation boundary.
+Retain independently supplied Ext worlds and derived models.
+[PBC transfer boundary](performance/pbc-original-map-and-finite-model-boundaries.md#match-the-actual-cohomology-transfer-before-eight-model-cancellation).
+
+**Evaluate concrete composition over variable objects.** After proving the
+whole equation of the actual raw group maps, apply `congr_hom` and simplify
+composition in a helper over variable `AddCommGrpCat` objects. Have the native
+consumer supply those raw maps and their whole equation once. Native evaluation
+followed by simplification can leave carrier/functor presentations that print
+identically but are still expensive to compare. Preserve the original concrete
+category instances and cohomology worlds.
+[Original raw rectangle case](performance/pbc-original-map-and-finite-model-boundaries.md#evaluate-the-raw-group-rectangle-before-specializing-cohomology-objects).
+
+**Retain the indexed whole germ law before choosing a point.** Prove the
+original additive-map equation at variable `d` in the actual category of
+elements. Specialize that whole equation to `{obj := U, val := p}`, then
+evaluate it in a helper over variable group objects. Abstracting only the
+scalar law or dropping the derived-model context need not remove the indexed
+specialization. Preserve the original stalk and cohomology worlds.
+[PBC indexed-germ completion](performance/pbc-original-map-and-finite-model-boundaries.md#retain-the-whole-indexed-germ-law-before-point-evaluation).
+
 **Transport dependent data early.** Fix degree equalities, finite-subtype ranges,
 Over source objects, index families and equality orientation before forming
 concrete dependent carriers. Keep the original arithmetic spelling when it
@@ -148,6 +173,44 @@ argument or localization-and-kernel producer over variables before specializing;
 coordinate helpers alone may leave the concrete conversion unchanged.
 [Surface-resolution cases and evidence](performance/surface-resolution-constructor-boundaries.md).
 
+**Paste whole section and coefficient families through the same constructor.**
+Construct the actual comparison from its original section transformation and
+coefficient transformation. Prove its whole composition, transport and
+`CommSq` laws while the functors remain variable. Feed the existing relative
+`TwoSquare` pasting equality and whole unit square to this constructor before
+choosing a coefficient. Keep native value formulas as views of that same
+construction; a scalar wrapper around rebuilt data can leave the original
+specialization unchanged.
+[PBC whole-family completion](performance/pbc-original-map-and-finite-model-boundaries.md#paste-whole-section-and-coefficient-comparisons).
+
+**Keep the coefficient family variable at a component boundary.** When a native
+component application still compares a composite functor object with nested
+object applications, construct the original evaluation and component inside a
+producer over the coefficient functors and the whole transformation. Supply
+its original whole invertibility proof, then specialize. A scalar map-and-laws
+witness and fixed scheme endpoints alone did not close the recorded native
+initializer; the family construction did. Its then-failing CH and section-square
+consumers have later [completion records](performance/pbc-original-map-and-finite-model-boundaries.md#complete-the-original-pbc-section-germ-and-stalk-consumers).
+[Chart exchange family](performance/pbc-original-map-and-finite-model-boundaries.md#construct-the-chart-exchange-from-its-whole-coefficient-family).
+
+**Transport original whole values before projecting a primitive law.** When a
+supplied scalar law stores a definitionally equal scheme endpoint or model
+alias differently, extract the actual whole transformations and retain their
+original data. Prove their value equality before taking a coefficient component.
+Pass both values and this proved equality to the variable-functor consumer;
+project and apply Gamma there, then use the primitive law. A native component
+transport can leave the same conversion boundary. Keep separately typed model
+arguments and omit unused section instances rather than assuming a generated
+helper's universe order.
+[Chart whole-value transport](performance/pbc-original-map-and-finite-model-boundaries.md#transport-the-actual-chart-exchange-value-before-projecting-its-scalar-law).
+
+**Return the native quantified property whole.** At a scalar-to-property
+boundary, have the factory return the same regular quantified predicate as its
+consumer, and fix any phantom model arguments explicitly inside that factory.
+A scalar `IsIso` producer, even with the complete actual map as an argument,
+can leave the concrete native-property specialization expensive.
+[Bounded target-locality case](performance/pbc-original-map-and-finite-model-boundaries.md#return-the-whole-standard-bounded-target-test).
+
 **Name repeated equation proofs before elaborating statement and body.** Use
 the same named degree/transport lemma with atomic arguments inside
 `eqToHom`, `pullbackCongr` and `mapComp'`. Proof irrelevance still requires
@@ -161,6 +224,17 @@ when the concrete consumer still pays for it. Packaging alone is insufficient:
 Motivic's context variants regressed its recorded constructor cost, and the
 retained 141-second observation does not improve the original 135-second one.
 [Complete original Motivic observations](https://github.com/kangxyz/motivic/blob/main/docs/performance/observed-module-costs.md).
+
+**Preserve a compiled fixed-law witness when the failure is simplification order.**
+At the recorded boundary, the generated constructor-injectivity rule becomes
+redundant only after contextual fixed-map equalities normalize its arguments.
+Register that existing rule with `[simp↓]` so it runs before those arguments
+are simplified. Keep the exact structure, constructor, provider and projections
+when replacement representations disturb their native conversion. Local simp
+erasure did not remove the exported registration in this case. This is a
+bounded repair for the inspected rule, not a scheduling convention for all
+constructor lemmas.
+[PBC constructor-rule order](performance/pbc-original-map-and-finite-model-boundaries.md#simplify-the-retained-constructor-rule-before-its-arguments).
 
 **Preserve the consumer's reduction interface.** A local constructor may retain
 component formulas by beta/zeta reduction; an independently applied helper can
@@ -191,6 +265,9 @@ use `inferInstanceAs` for the actual `HasExt`, and obtain preservation from
 the original equivalence/adjunction before projecting its field. Use
 `IsIso.mono_of_iso` when that is precisely the available hypothesis.
 [Preservation dictionary](performance/pass-the-preservation-dictionary-of-an-equivalence-explicitly.md).
+For projected geometric fibres and cone apices, bind the original `HasExt.{e}`
+at the exact `Over`-left or `.pt.left` type with `inferInstanceAs`.
+[PBC projected dictionaries](performance/pbc-original-map-and-finite-model-boundaries.md#retain-the-whole-indexed-germ-law-before-point-evaluation).
 These restrict known search; they do not replace missing mathematics with
 assumptions or global priority changes.
 
@@ -244,6 +321,14 @@ mathematical conditions govern that choice.
 - Reuse matching checker setup through the existing native entry. A missing tool
   needs that dependency, not a clean mathematical rebuild. Distinguish a driver
   launch failure from a reported source-style error.
+- Inspect the pinned native checker's import loop before passing overlapping
+  module arguments. If each imports the same package environment, establish
+  with the native source parser that one terminal target reaches every required
+  root and origin, then select it once. Retain its registered text/deferred and
+  any environment checks, separate declaration predicates and axiom-audit
+  roots. Metadata-cache reuse and fewer jobs alone did not resolve the recorded
+  repeated-environment pressure.
+  [PBC terminal-check recovery](performance/pbc-original-map-and-finite-model-boundaries.md#run-the-native-builtin-check-on-one-complete-terminal-environment).
 - Distinguish frontend caps/threads, job concurrency, aggregate RSS/cgroup memory
   and runner reserve. Inspect a resource failure before changing mathematical
   proofs in response to secondary type errors. A serialized tail cannot use all

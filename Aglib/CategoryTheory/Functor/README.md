@@ -31,6 +31,15 @@ components and `Aut.autMulEquivOfIso`.
 comparisons and objectwise coordinate isomorphisms. Its shared compatibility
 predicate preserves the displayed composites and separate category universes.
 
+[ComparisonPasting](ComparisonPasting.lean) constructs one comparison from a
+section transformation and a coefficient transformation. Its whole composition
+and transport laws give a `CommSq` from the original whole unit and relative
+coefficient equations, with explicit functor associators. The section target
+is arbitrary, object and hom universes are independent, and the exchanges
+need not be invertible. Existing `TwoSquare` pasting supplies its coefficient
+relations. The small-etale chart and unit section families consume this same
+constructor; the component views retain their original factors.
+
 ## Whole composition cubes
 
 `CompositionCube` and `CompositionCubeWhole` normalize the actual functor

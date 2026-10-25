@@ -51,6 +51,11 @@ import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsCoefficientContinu
 | [DiagramTailCocones](DiagramTailCocones.lean) | Relative tail cocones and compatible-system tail cocones agree under the actual diagram transport. `isColimitCompatibleTailOfNative` transports a supplied native `IsColimit` certificate. |
 | [DiagramInjectives](DiagramInjectives.lean) and [PullbackCohomologySystem](PullbackCohomologySystem.lean) | Actual compatible coefficient and cohomology systems retain the original direct/inverse-image adjunctions, composition maps and injective envelopes. |
 | [DiagramH0Sections](DiagramH0Sections.lean) | A supplied colimit certificate for the original compatible-section cocone gives a colimit certificate for the original degree-zero cohomology cocone, preserving all native legs. For a `u`-small scheme index, sections take values in `Ab.{u + 1}` and original cohomology in independent `Ab.{e}`. Only the section universe lift preserves a colimit; the fully faithful cohomology lift reflects it, so no `e`-smallness of the index or target colimit premise is introduced. |
+| [DiagramNativeCocone](DiagramNativeCocone.lean) | Native cohomology cocones retain the actual inverse-image units, composition and coefficient transports. |
+| [DiagramEtaleSections](DiagramEtaleSections.lean) | Étale-test section comparisons retain the original compatible cocones and their displayed colimit inputs; the matching section producers supply those certificates. |
+| [SectionComparison](SectionComparison.lean) | Original unit, chart evaluation and coefficient-square transformations define whole section-comparison families. Whole coefficient coherence gives their square before any higher-direct-image specialization; component laws preserve the raw original maps. No exchange invertibility or continuity premise is added. |
+| [DiagramShortExact](DiagramShortExact.lean), [DiagramCohomologyExact](DiagramCohomologyExact.lean) | Actual compatible injective replacements and pointwise cokernels give the original cohomology exact sequences and connecting squares. |
+| [InjectiveLimitAcyclic](InjectiveLimitAcyclic.lean) | Descended finite-family cochains give positive original cohomology vanishing for the actual injective limit once its qcqs evaluated right-tail cocones are colimiting. |
 
 [AffineLimitSections](AffineLimitSections.lean) proves the actual relative
 section cocone is colimiting on affine inverse limits using real finite local
@@ -94,5 +99,7 @@ The [finite family](../Finite/README.md) owns the constructed strict-local
 neighborhood model, its finite local decomposition and the resulting finite
 direct-image results. The marked strict-local higher-cohomology comparison is supplied in the
 [stalk family](../Stalk/README.md), with actual pointed germs, coefficient
-naturality and original degree-zero normalization. General proper base change
-remains a separate application.
+naturality and original degree-zero normalization. The
+[proper family](../Proper/README.md) uses these inputs for the original locally
+torsion higher and D+ exchange; properness and torsion remain conditions of
+those endpoints.

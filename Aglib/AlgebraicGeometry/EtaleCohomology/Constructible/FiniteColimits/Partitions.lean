@@ -56,9 +56,9 @@ def ofFintype {ι : Type v} [Fintype ι] (S : ι → Scheme.{u})
 
 /-- An actual refinement records its original maps over the base. -/
 structure Refinement (q p : FiniteLocallyClosedPartition X) where
-  /-- The original label of the containing coarse stratum. -/
+  /-- The original stratum selected for each refining stratum. -/
   indexMap : Fin q.count → Fin p.count
-  /-- The actual refinement morphism between the original strata. -/
+  /-- The actual map from each refining stratum to its selected original stratum. -/
   map : ∀ i, q.stratum i ⟶ p.stratum (indexMap i)
   comm : ∀ i, map i ≫ p.inclusion (indexMap i) = q.inclusion i
 

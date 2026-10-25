@@ -58,16 +58,16 @@ variable [hBaseExt : HasExt.{w₀} (AbelianSheaf.{u, u + 1} X)]
   [hUExt : HasExt.{w₁} (AbelianSheaf.{u, u + 1} U.left)]
   [hVExt : HasExt.{w₂} (AbelianSheaf.{u, u + 1} V.left)]
 
-local instance : HasExt.{w₀}
+local instance chartRestrictionNaturality_uBaseExt : HasExt.{w₀}
     (AbelianSheaf.{u, u + 1} ((Functor.fromPUnit X).obj U.right)) := hBaseExt
 
-local instance : HasExt.{w₀}
+local instance chartRestrictionNaturality_vBaseExt : HasExt.{w₀}
     (AbelianSheaf.{u, u + 1} ((Functor.fromPUnit X).obj V.right)) := hBaseExt
 
-local instance : HasExt.{w₁}
+local instance chartRestrictionNaturality_uChartExt : HasExt.{w₁}
     (Sheaf ((𝟭 Scheme.{u}).obj U.left).smallEtaleTopology AddCommGrpCat.{u + 1}) := hUExt
 
-local instance : HasExt.{w₂}
+local instance chartRestrictionNaturality_vChartExt : HasExt.{w₂}
     (Sheaf ((𝟭 Scheme.{u}).obj V.left).smallEtaleTopology AddCommGrpCat.{u + 1}) := hVExt
 
 /-- Chart-variable comparison uses the original scheme cohomology pullback and

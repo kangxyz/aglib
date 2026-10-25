@@ -30,12 +30,14 @@ attribute [local instance] hasSheafifyLarge
 whole original coefficient family. -/
 structure EtaleFamilyTrivialization {X : Scheme.{u}} {ι : Type v}
     (F : ι → AbelianSheaf.{u, u + 1} X) where
-  /-- The common actual etale chart. -/
+  /-- The etale chart over `X` used to trivialize every member of the original family `F`. -/
   chart : X.Etale
-  /-- The original finite value group of each coefficient on this chart. -/
+  /-- For each `i`, the finite abelian group giving the constant value of `F i` after pullback
+  along `chart.hom`. -/
   value : ι → AddCommGrpCat.{u + 1}
   finite_value : ∀ i, Finite (value i)
-  /-- Each literal inverse image is identified with its actual constant value. -/
+  /-- For each `i`, the isomorphism from the pullback of `F i` along `chart.hom` to the constant
+  sheaf with value `value i` on the small etale site of `chart.left`. -/
   trivialization : ∀ i, (inverseImage chart.hom).obj (F i) ≅
     (constantSheaf chart.left.smallEtaleTopology AddCommGrpCat.{u + 1}).obj (value i)
 
