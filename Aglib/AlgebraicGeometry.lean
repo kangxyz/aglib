@@ -3653,6 +3653,7 @@ public import Aglib.AlgebraicGeometry.Picard.Relative.Classes
 public import Aglib.AlgebraicGeometry.Picard.Relative.Groups
 public import Aglib.AlgebraicGeometry.Picard.Representability
 public import Aglib.AlgebraicGeometry.Picard.Representability.FineStrata
+public import Aglib.AlgebraicGeometry.Picard.Representability.LocallyNoetherianBase
 public import Aglib.AlgebraicGeometry.Picard.Scheme.FieldProperties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Glue
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
@@ -3837,6 +3838,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.TwistPresentation.Epimorph
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.TwistPresentation.Sections
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting.Frames
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.ZariskiLocalClosedImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.ClosedImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.DegreeOneBaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpectrum.DegreeOneEmbedding
@@ -4025,6 +4027,7 @@ public import Aglib.AlgebraicGeometry.Sites.FppfQuotient
 public import Aglib.AlgebraicGeometry.Sites.GlobalSections
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover
+public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.BaseCover.FullSubcategory
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Basic
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.CommGrpObj
 public import Aglib.AlgebraicGeometry.Sites.OverRepresentability.Fppf

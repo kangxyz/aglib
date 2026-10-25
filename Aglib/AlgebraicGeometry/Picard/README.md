@@ -673,6 +673,40 @@ type, geometrically irreducible, and its formation commutes with every field ext
 `exists_representableBy_fppfPicardSheaf_fieldProperties`. The focused test is
 `AglibTest.AlgebraicGeometry.Picard.Scheme.Properties` (with axiom guards).
 
+[Representability/LocallyNoetherianBase](Representability/LocallyNoetherianBase.lean): **target 5
+over a locally Noetherian base** (Kleiman, arXiv:math/0504020v1, Thm 4.8(1), p. 27, fppf form on
+locally Noetherian test schemes; proof, p. 28: "it is a local matter on `S` to represent a Zariski
+sheaf on the category of `S`-schemes. Moreover, it is also a local matter on `S` to prove that an
+`S`-scheme is separated and locally of finite type"). For `S` locally Noetherian, `f : X ⟶ S` flat
+with geometrically integral fibres and `E : ProjectiveSpace.ZariskiLocalClosedImmersion f`: the
+restriction of `Pic_{X/S,(fppf)}` along `LocallyNoetherianOver.map (j a)` is represented by the
+Picard scheme of the chart, `E.chartPicardScheme a = picardScheme h` for the closed subscheme
+`c a` of `P(ι a)_{A_a}` (`E.chartPicardSchemeRepresentableBy`, through
+`locallyNoetherianFppfPicardSheafBaseChangeIso` and `representableByOfEq` along
+`c a ≫ toSpec = pullback.snd f (j a)`). These glue to `E.picardScheme : LocallyNoetherianOver S`
+with `E.picardSchemeRepresentableBy` (the base cover of
+[Sites/OverRepresentability/BaseCover/FullSubcategory](../Sites/OverRepresentability/BaseCover/FullSubcategory.lean)
+with `isZariskiSheaf_fppfPicardSheaf_forget`), locally of finite type and separated over `S`
+(instances `locallyOfFiniteType_picardScheme`, from the charts, and `isSeparated_picardScheme`,
+local on `S` through the chart isomorphisms). For every `P` locally of finite type over `S`
+representing `Pic_{X/S,(fppf)}` by `R`, `P ×_S Spec A_a ≅ E.chartPicardScheme a` over `Spec A_a`,
+carrying `baseChangeRepresentableBy f (j a) P R` to the transported `picardSchemeRepresentableBy`
+(`E.baseChangeIsoChartPicardScheme R a`, `_homEquiv`; `E.picardSchemeBaseChangeIso a` for
+`E.picardScheme`; Kleiman, Ex. 4.4, p. 27, Answer 4.4, p. 65). Collected statements, with no
+premise beyond the setting:
+`exists_representableBy_fppfPicardSheaf_of_zariskiLocalClosedImmersion E` and, for
+`IsZariskiLocallyHProjective f` and all `E` at once,
+`exists_representableBy_fppfPicardSheaf_of_isZariskiLocallyHProjective`. Checked at
+`E.picardScheme` with no new declaration: the group law `picardCommGrpObj` with
+`picard_homEquiv_mul`; `baseChangeRepresentableBy` along every locally Noetherian `S' ⟶ S` with
+`picardCommGrpObj_baseChange_toGrpObj` and the uniqueness of the representing scheme; the
+normalized and rigidified representations with a section (`f` is proper,
+`ZariskiLocalClosedImmersion.isProper`); and the tangent kernel
+`ker(Pic_{X_K/K,(fppf)}(K[ε]) → Pic_{X_K/K,(fppf)}(K)) ≃ₗ[K] H^1(X_K, 𝒪)` at every field point
+`Spec K ⟶ S`. Not treated: the Hilbert-polynomial strata (Thm 4.8(2)) over a nonaffine base, and
+test schemes that are not locally Noetherian. The focused test is
+`AglibTest.AlgebraicGeometry.Picard.Representability.LocallyNoetherianBase` (with axiom guards).
+
 [FiberCondition/Surjective](FiberCondition/Surjective.lean): `Pic^C` descends along every morphism
 `g : T' ⟶ T` over `S` that is surjective on points (`FiberCondition.mem_subfunctor_of_map_mem`,
 `map_mem_subfunctor_iff_of_surjective`), from `mem_subfunctor_iff` and `holdsAt_map`; no flatness.

@@ -56,9 +56,12 @@ theorem to all test schemes needs Noetherian approximation (F19) and is deferred
    `Pic^φ` indexed by Hilbert polynomials, and each `Pic^φ` is an increasing
    union of quasi-projective open subschemes `Pic^φ_m` (Kleiman, Thm 4.8,
    pp. 27–30, with the stratum repair under Representability below). No section
-   is assumed. Gluing to locally Noetherian nonaffine `S` with `f` projective
-   Zariski-locally over `S` is an optional extension, added when a consumer
-   needs a nonaffine base.
+   is assumed. Over a locally Noetherian, possibly nonaffine `S` with `f`
+   projective Zariski locally over `S`, the same representability holds by
+   gluing over affine charts (Kleiman, Thm 4.8(1), p. 27, proof p. 28): the
+   representing scheme is separated and locally of finite type over `S`, and
+   its base change to each chart `Spec A_a` is the Picard scheme of the chart.
+   The strata over a nonaffine base (Thm 4.8(2)) are not included.
 6. **Basic properties.** Commutative group scheme structure from the
    group-valued functor; base change `Pic_{X_T/T} ≅ Pic_{X/S} ×_S T` (Kleiman,
    Ex. 4.4, p. 27); the Hilbert-polynomial decomposition; with a section, the
@@ -82,8 +85,8 @@ discharge target 5.
 
 | Aspect | Included | Deferred or excluded, and why |
 | --- | --- | --- |
-| Base | Noetherian affine `Spec A` | Nonaffine locally Noetherian bases by gluing are optional until a consumer needs them. Non-Noetherian bases need limit arguments throughout the Hilbert-scheme construction; Kleiman calls them standard but they double the surface. |
-| Morphism | Closed subscheme of `P^n_A` | Zariski-local projectivity over a nonaffine base comes with the optional gluing. Proper non-projective morphisms need Murre's criterion or Artin's theorem (Kleiman 4.18.3, 4.18.6, stated without proof there). |
+| Base | Noetherian affine `Spec A`; locally Noetherian `S` by gluing over affine charts, without the strata (Kleiman, Thm 4.8(1), p. 27, proof p. 28) | The Hilbert-polynomial strata over a nonaffine base (Thm 4.8(2)) need `S` Noetherian and `X/S` projective, and are not formalized. Non-Noetherian bases need limit arguments throughout the Hilbert-scheme construction; Kleiman calls them standard but they double the surface. |
+| Morphism | Closed subscheme of `P^n_A`; over a locally Noetherian `S`, projective Zariski locally over `S`, as closed immersions over an affine open cover (`ProjectiveSpace.ZariskiLocalClosedImmersion`) or H-projective over affine opens (`IsZariskiLocallyHProjective`, Stacks' locally projective by Tag 01WB) | Proper non-projective morphisms need Murre's criterion or Artin's theorem (Kleiman 4.18.3, 4.18.6, stated without proof there). |
 | Test schemes | Locally Noetherian, possibly nonreduced | All test schemes need Noetherian approximation of line bundles (F19); deferred. |
 | Fibres | Flat, geometrically integral | Geometrically reduced and connected fibres are not enough: for Mumford's conic `x² + y² = t` over `ℝ[[t]]` the functor is not representable, and after `ℂ[[t]]` it is represented by a nonseparated scheme (Kleiman Ex. 4.14, pp. 31–33). Mumford's variant for reduced fibres with geometrically irreducible components (Kleiman 4.18.1, p. 33, stated without proof) and general reducible fibres, which need algebraic spaces, are excluded. |
 | Topology | fppf functor and fppf descent | Zariski sheafification is not formalized separately. fpqc descent is unnecessary. The étale functor agrees with the fppf one with a section, or after étale-local sections of smooth surjections (EGA IV₄ 17.16.3(ii)); that theorem is an optional later extension. |
@@ -250,8 +253,8 @@ The steps follow the proof of Kleiman's Theorem 4.8 (pp. 28–30), adapted to th
 fppf functor.
 
 1. Work over `S = Spec A` with `A` Noetherian and `X ⊂ P^n_A` closed. The
-   optional nonaffine extension uses that representability of a Zariski sheaf
-   is local on `S` (Kleiman p. 28).
+   nonaffine extension uses that representability of a Zariski sheaf,
+   separatedness and local finite type are local on `S` (Kleiman p. 28).
 2. Strata follow Kleiman's convention. `Pic^φ` is the open and closed
    subfunctor where `χ(X_t, L_t^{-1}(n)) = φ(n)`; this fixes the Hilbert
    polynomial `θ(n) = χ(O_{X_t}(n)) − φ(n)` of every divisor `D` with
@@ -456,7 +459,7 @@ variety `Pic^0_red` remain later extensions.
 
 ## Current status
 
-Status on branch `claude/picard-scheme`, 2026-10-24. F5, F3 and the closed-subscheme
+Status on branch `claude/picard-scheme`, 2026-10-25. F5, F3 and the closed-subscheme
 descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
 
 - **M0 done.** The probes are in `AglibTest/AlgebraicGeometry/Picard/Interfaces.lean`.
@@ -769,6 +772,24 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     `R = Z ×_Q Z`, `q` an effective epimorphism and an fppf covering
     (`nonempty_flatProperQuotient`). Reviews of the core, of the Hilbert datum and of the final
     assembly found no mathematical gap; their repairs are applied.
+  - Target 5 over a locally Noetherian base done
+    (`Sites/OverRepresentability/BaseCover/FullSubcategory`,
+    `ProjectiveSpace/ZariskiLocalClosedImmersion`, `Picard/Representability/LocallyNoetherianBase`;
+    Kleiman, Thm 4.8(1), p. 27, proof p. 28): representability is local on the base for any full
+    subcategory of test schemes with `IsOpenLocal`, in particular for locally Noetherian test
+    schemes. For `S` locally Noetherian and `f : X ⟶ S` flat with geometrically integral fibres and
+    projective Zariski locally over `S` (`E : ProjectiveSpace.ZariskiLocalClosedImmersion f` over
+    affine charts `Spec A_a ⟶ S`, or the property `IsZariskiLocallyHProjective f`),
+    `Pic_{X/S,(fppf)}` on locally Noetherian test schemes is represented by `E.picardScheme`, glued
+    from the Picard schemes of the charts, separated and locally of finite type over `S`; for every
+    representing `P` locally of finite type, `P ×_S Spec A_a` is the Picard scheme of the chart,
+    compatibly with the representations
+    (`exists_representableBy_fppfPicardSheaf_of_zariskiLocalClosedImmersion`,
+    `exists_representableBy_fppfPicardSheaf_of_isZariskiLocallyHProjective`). The group law, base
+    change, the normalized and rigidified representations with a section, and the tangent kernel at
+    field points of target 6 apply to `E.picardScheme` with no new declaration (`f` is proper,
+    `ZariskiLocalClosedImmersion.isProper`). The strata over a nonaffine base are not included. A
+    review found no mathematical gap; its repairs are applied.
 - **M6 in progress.**
   - F18, tangent-space core done (`Picard/Tangent/{Thickening,Generator,DualNumbers}`; Kleiman,
     proof of Thm 5.11, p. 43): the split truncated exponential sequence for `X[ε]` over any

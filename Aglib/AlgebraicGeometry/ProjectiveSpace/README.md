@@ -449,3 +449,22 @@ the linear embedding `P(ι)_R ⟶ P(Option ι)_R`, also for empty `ι`; every co
 form of Stacks 01VW, with `n + 1` coordinates). Consumer:
 [HilbertScheme/Quotient/Existence](../HilbertScheme/Quotient/Existence.lean), for the Hilbert
 schemes of an immersed scheme, which take `e : κ ≃ Fin (n + 1)`.
+
+## Projectivity Zariski locally over a base
+
+[ZariskiLocalClosedImmersion](ZariskiLocalClosedImmersion.lean): for `f : X ⟶ S`,
+`ProjectiveSpace.ZariskiLocalClosedImmersion f` is the data of open immersions
+`j a : Spec A_a ⟶ S` covering `S`, indexed by a type in the universe of `S` (no finiteness), and
+closed immersions `c a : X ×_S Spec A_a ⟶ P(ι a)_{A_a}` over `Spec A_a` with
+`ι a ≃ Fin (N a + 1)` (Kleiman, arXiv:math/0504020v1, Thm 4.8, p. 27, "projective Zariski locally
+over `S`"). `IsZariskiLocallyHProjective f` is the property that every point of `S` lies in an
+affine open `Spec R ⟶ S` over which `f` is `IsHProjective`; this is Stacks' "locally projective"
+(Definition 29.44.1, Tag 01W8) by Lemmas 29.44.4 and 29.44.8 (Tags 01WB, 01WF). The data give the
+property (`ZariskiLocalClosedImmersion.isZariskiLocallyHProjective`), and the property gives data
+(`ZariskiLocalClosedImmersion.nonempty_of_isZariskiLocallyHProjective`, through the linear
+embedding `P(ι)_R ⊆ P(Option ι)_R`). Further: the open cover `openCover`; for `S` locally
+Noetherian the `A_a` are Noetherian (`isNoetherianRing`); flatness and geometric integrality of `f`
+pass to the embedded families `c a ≫ toSpec` (`flat_c_comp_toSpec`,
+`geometricallyIntegral_c_comp_toSpec`), which are proper (`isProper_c_comp_toSpec`), so `f` is
+proper (`isProper`; Stacks, Lemma 29.44.5, Tag 01WC). Consumer:
+[Picard/Representability/LocallyNoetherianBase](../Picard/Representability/LocallyNoetherianBase.lean).
