@@ -54,6 +54,8 @@ theorem rightDerivedPostcompIso_hom_resolution :
   simp only [Functor.comp_map] at hG
   rw [hF, G.map_comp]
   dsimp only [rightDerivedPostcompIso, rightDerivedPostcompObjIso,
+    CategoryTheory.Functor.rightDerivedPostcompIso,
+    CategoryTheory.Functor.rightDerivedPostcompObjIso,
     NatIso.ofComponents_hom_app, Iso.trans_hom, Functor.mapIso_hom, Iso.symm_hom]
   simp only [Category.assoc]
   rw [← G.map_comp_assoc, Iso.inv_hom_id, G.map_id, Category.id_comp]

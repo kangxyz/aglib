@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Associator
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.LocalIso
 
 /-!
@@ -43,25 +44,24 @@ local notation "η" => SheafOfModulesOfCommRing.associatedSheafUnit X.sheaf
 theorem isIso_associatedSheaf_map_unit_whiskerRight
     (P B : PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :
     IsIso ((𝓛).map ((η).app P ▷ B)) :=
-  (presheafLocalIso_iff _).mp
-    ((presheafLocalIso X).whiskerRight_mem _ (presheafLocalIso_unit P) B)
+  SheafOfModulesOfCommRing.isIso_associatedSheaf_map_unit_whiskerRight X.sheaf P B
 
 /-- The sheafified left whiskered sheafification unit is an isomorphism. -/
 theorem isIso_associatedSheaf_map_whiskerLeft_unit
     (A P : PresheafOfModulesOfCommRing.{u} X.sheaf.obj) :
     IsIso ((𝓛).map (A ◁ (η).app P)) :=
-  (presheafLocalIso_iff _).mp
-    ((presheafLocalIso X).whiskerLeft_mem A _ (presheafLocalIso_unit P))
+  SheafOfModulesOfCommRing.isIso_associatedSheaf_map_whiskerLeft_unit X.sheaf A P
 
 /-- The associator of scheme-module tensors: the sheafified presheaf associator conjugated by
 the sheafified whiskered sheafification units. -/
 def tensorSheafAssociator (M N O : X.Modules) :
     tensorSheaf X (tensorSheaf X M N) O ≅ tensorSheaf X M (tensorSheaf X N O) :=
-  (@asIso _ _ _ _ ((𝓛).map ((η).app ((𝓖).obj M ⊗ (𝓖).obj N) ▷ (𝓖).obj O))
-      (isIso_associatedSheaf_map_unit_whiskerRight X _ _)).symm ≪≫
-    (𝓛).mapIso (α_ ((𝓖).obj M) ((𝓖).obj N) ((𝓖).obj O)) ≪≫
-    @asIso _ _ _ _ ((𝓛).map ((𝓖).obj M ◁ (η).app ((𝓖).obj N ⊗ (𝓖).obj O)))
-      (isIso_associatedSheaf_map_whiskerLeft_unit X _ _)
+  SheafOfModulesOfCommRing.tensorAssociator X.sheaf M N O
+
+/-- The original Scheme associator is the actual generic three-factor construction. -/
+theorem tensorSheafAssociator_eq_generic (M N O : X.Modules) :
+    tensorSheafAssociator X M N O =
+      SheafOfModulesOfCommRing.tensorAssociator X.sheaf M N O := rfl
 
 -- The associator is typed on `X.ringCatSheaf`-modules and its factors on the commutative-ring
 -- spelling; unfolding it under `simp` needs the transparency override.
@@ -74,8 +74,8 @@ theorem map_unit_whiskerRight_comp_tensorSheafAssociator_hom (M N O : X.Modules)
     (𝓛).map ((η).app ((𝓖).obj M ⊗ (𝓖).obj N) ▷ (𝓖).obj O) ≫
         (tensorSheafAssociator X M N O).hom =
       (𝓛).map (α_ ((𝓖).obj M) ((𝓖).obj N) ((𝓖).obj O)).hom ≫
-        (𝓛).map ((𝓖).obj M ◁ (η).app ((𝓖).obj N ⊗ (𝓖).obj O)) := by
-  simp [tensorSheafAssociator]
+        (𝓛).map ((𝓖).obj M ◁ (η).app ((𝓖).obj N ⊗ (𝓖).obj O)) :=
+  SheafOfModulesOfCommRing.map_unit_whiskerRight_comp_tensorAssociator_hom X.sheaf M N O
 
 -- Rewriting with unit naturality crosses the `X.sheaf` versus `Sheaf J` spellings of the
 -- structure sheaf; this needs the transparency override.
@@ -89,12 +89,7 @@ theorem associatedSheafUnit_comp_tensorSheafAssociator_hom (M N O : X.Modules) :
       (α_ ((𝓖).obj M) ((𝓖).obj N) ((𝓖).obj O)).hom ≫
         ((𝓖).obj M ◁ (η).app ((𝓖).obj N ⊗ (𝓖).obj O)) ≫
           (η).app ((𝓖).obj M ⊗ (𝓖).obj ((𝓛).obj ((𝓖).obj N ⊗ (𝓖).obj O))) := by
-  have n₁ := (η).naturality ((η).app ((𝓖).obj M ⊗ (𝓖).obj N) ▷ (𝓖).obj O)
-  have n₂ := (η).naturality (α_ ((𝓖).obj M) ((𝓖).obj N) ((𝓖).obj O)).hom
-  have n₃ := (η).naturality ((𝓖).obj M ◁ (η).app ((𝓖).obj N ⊗ (𝓖).obj O))
-  dsimp only [Functor.id_obj, Functor.id_map, Functor.comp_obj, Functor.comp_map] at n₁ n₂ n₃
-  rw [reassoc_of% n₁, ← Functor.map_comp, map_unit_whiskerRight_comp_tensorSheafAssociator_hom,
-    Functor.map_comp, ← reassoc_of% n₂, n₃]
+  exact SheafOfModulesOfCommRing.associatedSheafUnit_comp_tensorAssociator_hom X.sheaf M N O
 
 /-- The associator on nested pure section tensors. -/
 theorem tensorSheafAssociator_hom_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)
@@ -104,8 +99,7 @@ theorem tensorSheafAssociator_hom_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)
           ((tensorSheafUnit X M N).app U (m ⊗ₜ n) ⊗ₜ o)) =
       (tensorSheafUnit X M (tensorSheaf X N O)).app U
         (m ⊗ₜ (tensorSheafUnit X N O).app U (n ⊗ₜ o)) :=
-  congrArg (fun k ↦ k.app U ((m ⊗ₜ n) ⊗ₜ o))
-    (associatedSheafUnit_comp_tensorSheafAssociator_hom X M N O)
+  SheafOfModulesOfCommRing.tensorAssociator_hom_tmul X.sheaf M N O U m n o
 
 /-- The inverse associator on nested pure section tensors. -/
 theorem tensorSheafAssociator_inv_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)
@@ -114,9 +108,7 @@ theorem tensorSheafAssociator_inv_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)
         ((tensorSheafUnit X M (tensorSheaf X N O)).app U
           (m ⊗ₜ (tensorSheafUnit X N O).app U (n ⊗ₜ o))) =
       (tensorSheafUnit X (tensorSheaf X M N) O).app U
-        ((tensorSheafUnit X M N).app U (m ⊗ₜ n) ⊗ₜ o) := by
-  rw [← tensorSheafAssociator_hom_tmul]
-  exact congrArg (fun k ↦ k.val.app U ((tensorSheafUnit X (tensorSheaf X M N) O).app U
-    ((tensorSheafUnit X M N).app U (m ⊗ₜ n) ⊗ₜ o))) (tensorSheafAssociator X M N O).hom_inv_id
+        ((tensorSheafUnit X M N).app U (m ⊗ₜ n) ⊗ₜ o) :=
+  SheafOfModulesOfCommRing.tensorAssociator_inv_tmul X.sheaf M N O U m n o
 
 end AlgebraicGeometry.Scheme.Modules

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Etale
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.Cohomology
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedComparison
 public import Mathlib.AlgebraicGeometry.Sites.AffineEtale
 

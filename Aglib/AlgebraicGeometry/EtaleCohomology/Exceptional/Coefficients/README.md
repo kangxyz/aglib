@@ -5,6 +5,14 @@ sheaf on the small-etale site. The standard scalar and value universe is
 `u+1` for schemes in `u`; no torsion, Noetherian, or base-invertibility
 hypothesis belongs to these ordinary constructions.
 
+The constant ring, module-valued/ringed equivalence, image functors and
+underlying comparisons specialize the
+[general constant-ring family](../../../../Algebra/Category/ModuleCat/Sheaf/ConstantRing/Basic.lean).
+Its [underlying comparison](../../../../Algebra/Category/ModuleCat/Sheaf/ConstantRing/Underlying.lean)
+retains the original seven construction factors, composite-unit and mate
+equations. These scheme leaves keep their public names and original native
+module carriers; the arbitrary-ring constructions live in the generic owner.
+
 `Underlying` compares the original native module inverse image with the
 original abelian inverse image after forgetting scalars. `AdjunctionUnderlying`
 retains the unit equation for module-valued sheaves. `NativeAdjunctionUnderlying`

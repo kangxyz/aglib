@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Modules.ClosedImmersion.RightAdjoint.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.Restriction
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Comparison.ThreeFactor
 public import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
 
 /-!
@@ -50,6 +50,16 @@ variable {W U V X : Scheme.{u}}
   [IsOpenImmersion a] [IsOpenImmersion j]
   [IsClosedImmersion f] [IsClosedImmersion b] (h : IsPullback a b f j)
 
+local instance closedRightAdjointSourceComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (closedImmersionRightAdjoint f) (restrictFunctor a)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesHomology _ _
+
+local instance closedRightAdjointTargetComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (restrictFunctor j) (closedImmersionRightAdjoint b)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesInjectives _ _
+
 /-- The native derived closed right adjoint commutes with original open
 restriction on all bounded-below module complexes. -/
 def derivedClosedImmersionRightAdjointOpenIso :
@@ -57,12 +67,23 @@ def derivedClosedImmersionRightAdjointOpenIso :
         (restrictFunctor a).rightDerivedFunctorPlus ≅
       (restrictFunctor j).rightDerivedFunctorPlus ⋙
         (closedImmersionRightAdjoint b).rightDerivedFunctorPlus :=
-  ((closedImmersionRightAdjoint f).rightDerivedFunctorPlusCompIsoOfPreservesHomology
-      (restrictFunctor a)).symm ≪≫
-    (closedImmersionRightAdjoint f ⋙ restrictFunctor a).rightDerivedFunctorPlusIso
-      (closedImmersionRightAdjointOpenIso a b f j h) ≪≫
-    (restrictFunctor j).rightDerivedFunctorPlusCompIsoOfPreservesInjectives
-      (closedImmersionRightAdjoint b)
+  Functor.rightDerivedFunctorPlusThreeFactorIso
+    (closedImmersionRightAdjoint f) (restrictFunctor a)
+    (restrictFunctor j) (closedImmersionRightAdjoint b)
+    (closedImmersionRightAdjointOpenIso a b f j h)
+
+/-- The shared constructor retains the original homology and injective-preservation factors. -/
+theorem derivedClosedImmersionRightAdjointOpenIso_eq_original :
+    derivedClosedImmersionRightAdjointOpenIso a b f j h =
+      ((closedImmersionRightAdjoint f).rightDerivedFunctorPlusCompIsoOfPreservesHomology
+        (restrictFunctor a)).symm ≪≫
+      (closedImmersionRightAdjoint f ⋙ restrictFunctor a).rightDerivedFunctorPlusIso
+        (closedImmersionRightAdjointOpenIso a b f j h) ≪≫
+      (restrictFunctor j).rightDerivedFunctorPlusCompIsoOfPreservesInjectives
+        (closedImmersionRightAdjoint b) := by
+  rw [derivedClosedImmersionRightAdjointOpenIso, Functor.rightDerivedFunctorPlusThreeFactorIso,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesHomology,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesInjectives]
 
 /-- The actual derived open comparison is normalized by the original
 ordinary open comparison and both installed composite-derived units. -/
@@ -77,33 +98,9 @@ theorem derivedClosedImmersionRightAdjointOpenIso_unit
         ((NatIso.mapCochainComplexPlus (closedImmersionRightAdjointOpenIso a b f j h)).hom.app K) ≫
       (Functor.rightDerivedFunctorPlusCompUnit (restrictFunctor j)
         (closedImmersionRightAdjoint b)).app K := by
-  let F := closedImmersionRightAdjoint f
-  let A := restrictFunctor a
-  let J := restrictFunctor j
-  let B := closedImmersionRightAdjoint b
-  let eL := F.rightDerivedFunctorPlusCompIsoOfPreservesHomology A
-  let eM := (F ⋙ A).rightDerivedFunctorPlusIso (closedImmersionRightAdjointOpenIso a b f j h)
-  let eR := J.rightDerivedFunctorPlusCompIsoOfPreservesInjectives B
-  have hL : (F ⋙ A).rightDerivedFunctorPlusUnit.app K ≫
-      eL.hom.app (DerivedCategory.Plus.Q.obj K) =
-      (Functor.rightDerivedFunctorPlusCompUnit F A).app K := by
-    rw [Functor.rightDerivedFunctorPlusCompUnit_app]
-    exact F.rightDerivedFunctorPlusCompIsoOfPreservesHomology_hom_app A K
-  have hM := (F ⋙ A).rightDerivedFunctorPlusIso_hom_app
+  exact Functor.rightDerivedFunctorPlusThreeFactorIso_unit_app
+    (closedImmersionRightAdjoint f) (restrictFunctor a)
+    (restrictFunctor j) (closedImmersionRightAdjoint b)
     (closedImmersionRightAdjointOpenIso a b f j h) K
-  have hR : (J ⋙ B).rightDerivedFunctorPlusUnit.app K ≫
-      eR.hom.app (DerivedCategory.Plus.Q.obj K) =
-      (Functor.rightDerivedFunctorPlusCompUnit J B).app K := by
-    rw [Functor.rightDerivedFunctorPlusCompUnit_app]
-    exact J.rightDerivedFunctorPlusCompIsoOfPreservesInjectives_hom_app B K
-  change (Functor.rightDerivedFunctorPlusCompUnit F A).app K ≫
-      eL.inv.app (DerivedCategory.Plus.Q.obj K) ≫
-      eM.hom.app (DerivedCategory.Plus.Q.obj K) ≫
-      eR.hom.app (DerivedCategory.Plus.Q.obj K) = _
-  rw [← hL]
-  simp only [Category.assoc, Iso.hom_inv_id_app_assoc]
-  rw [← Category.assoc, hM]
-  simp only [Category.assoc]
-  rw [hR]
 
 end AlgebraicGeometry.Scheme.Modules

@@ -5,8 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Unit
-public import Mathlib.CategoryTheory.Preadditive.Yoneda.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Terminal.Comparison
 
 /-!
 # Actual terminal sections represented by the lifted module unit
@@ -28,20 +27,15 @@ variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
   {T : C} (hT : IsTerminal T) (R : Sheaf J RingCat.{r})
 
 /-- The lifted unit represents terminal sections additively over unchanged scalars. -/
-def liftedUnitTerminalAddEquiv (M : SheafOfModules.{max u v r w} R) :
-    (SheafOfModules.liftedUnit.{u, v, max u v w, r} R ⟶ M) ≃+ M.val.obj (op T) where
-  toEquiv := liftedUnitHomTerminalEquiv (hT := hT) (R := R) M
-  map_add' _ _ := rfl
+abbrev liftedUnitTerminalAddEquiv (M : SheafOfModules.{max u v r w} R) :
+    (SheafOfModules.liftedUnit.{u, v, max u v w, r} R ⟶ M) ≃+ M.val.obj (op T) :=
+  SheafOfModules.representedGammaTerminalAddEquiv hT R M
 
 /-- The represented functor is the original module evaluation followed by forgetting. -/
-def representedTerminalSectionsIso :
+abbrev representedTerminalSectionsIso :
     preadditiveCoyoneda.obj (op (SheafOfModules.liftedUnit.{u, v, max u v w, r} R)) ≅
       SheafOfModules.evaluation.{max u v r w} R (op T) ⋙
         forget₂ (ModuleCat (R.obj.obj (op T))) AddCommGrpCat :=
-  NatIso.ofComponents (fun M => (liftedUnitTerminalAddEquiv hT R M).toAddCommGrpIso)
-    (by
-      intro M N f
-      ext a
-      rfl)
+  SheafOfModules.representedGammaTerminalIso hT R
 
 end CategoryTheory.Sheaf.ModuleCoefficients

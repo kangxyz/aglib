@@ -48,7 +48,7 @@ theorem moduleInverseImageCompIso_unit (M : ModuleSheaf X Λ) :
       (moduleDirectImageCompIso Λ f g))
     ((moduleInverseImageAdjunction f Λ).comp (moduleInverseImageAdjunction g Λ)) M
   rw [Adjunction.homEquiv_ofNatIsoRight_apply] at h
-  simpa only [moduleInverseImageCompIso, Adjunction.homEquiv_unit, Functor.comp_obj,
-    Category.assoc] using h
+  rw [moduleInverseImageCompIso_eq_original]
+  simpa only [Adjunction.homEquiv_unit, Functor.comp_obj, Category.assoc] using h
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

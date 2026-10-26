@@ -63,8 +63,11 @@ def diagramH0SectionsUliftIso :
       diagramSectionsFunctor X F ⋙ AddCommGrpCat.uliftFunctor.{e, u + 1} :=
   NatIso.ofComponents (fun i =>
     (Sheaf.H.degreeZeroSectionsUliftIso (etaleTerminalIsTerminal (X.obj i).unop)).app
-      (F.obj i)) (fun {_i _j} a =>
-        cohomologyTransfer_zero_sectionsUlift (X.map a).unop
+      (F.obj i)) (fun {_i _j} a => by
+        change AddCommGrpCat.uliftFunctor.{u + 1, e}.map
+            (diagramCohomologyMap X F 0 a) ≫ _ = _ ≫ _
+        rw [diagramCohomologyMap_eq_transfer]
+        exact cohomologyTransfer_zero_sectionsUlift (X.map a).unop
           (diagramInverseTransition X F a))
 
 end Diagram

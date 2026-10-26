@@ -45,6 +45,7 @@ public import Aglib.CategoryTheory.Adjunction.Mates.Equivalences
 public import Aglib.CategoryTheory.Adjunction.Mates.RestrictionSections
 public import Aglib.CategoryTheory.Adjunction.Mates.ScalarForgetting
 public import Aglib.CategoryTheory.Adjunction.Mates.ScalarForgettingCoherence
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
 public import Aglib.CategoryTheory.Adjunction.UnderlyingEquivalence
 public import Aglib.CategoryTheory.Adjunction.UnderlyingMate
 public import Aglib.CategoryTheory.Adjunction.Unit
@@ -63,6 +64,7 @@ public import Aglib.CategoryTheory.ExactCategory.MatrixDeflation
 public import Aglib.CategoryTheory.ExactCategory.Small
 public import Aglib.CategoryTheory.ExactCategory.Subcategory
 public import Aglib.CategoryTheory.Functor.AutomorphismTransport
+public import Aglib.CategoryTheory.Functor.ComparisonPasting
 public import Aglib.CategoryTheory.Functor.CompositionCube
 public import Aglib.CategoryTheory.Functor.CompositionCubeWhole
 public import Aglib.CategoryTheory.Functor.CompositionSquare
@@ -153,6 +155,7 @@ public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
 public import Aglib.CategoryTheory.Sites.PushforwardSections
+public import Aglib.CategoryTheory.Sites.SectionsAdditive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.AllCovers
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.Basic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.CechChange
@@ -221,6 +224,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDia
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.RightTail
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.SystemCoherence
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveSystem
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.RepresentedDiagram
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SchemeSystemColimits
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SectionsColimit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexCocone
@@ -228,6 +232,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplex
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SupportedFamilyAcyclic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.SupportedFamilyColimit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.TupleBaseChange
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Global.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.DisjointSections
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.FiniteCoproduct
@@ -256,8 +261,6 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Deri
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedComparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedComparisonFactory
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedComparisonZero
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedEtale
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedEtaleSlice
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedExt
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedExtNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedExtNormalization
@@ -274,7 +277,6 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Deri
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedSlice
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedTerminalZero
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedZeroPacket
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Etale
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.ExtBoundary
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.FamilyAcyclic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.FamilyProjective
@@ -301,7 +303,6 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Adjunction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coproduct
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Etale
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExtComparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.FreeRepresentable
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Injectives
@@ -312,6 +313,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OverMap
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Restriction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitTerminal
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Splitting
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Terminal.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.ExactSequence
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Vanishing.MapBijective
 public import Aglib.CategoryTheory.Sites.Torsion.Annihilator
@@ -324,6 +326,7 @@ public import Aglib.CategoryTheory.Sites.Torsion.Colimit
 public import Aglib.CategoryTheory.Sites.Torsion.Devissage
 public import Aglib.CategoryTheory.Sites.Torsion.FinitePresentation
 public import Aglib.CategoryTheory.Sites.Torsion.FinitePresentation.Compactness
+public import Aglib.CategoryTheory.Sites.Torsion.FinitePresentation.FiniteCover
 public import Aglib.CategoryTheory.Sites.Torsion.FinitePresentation.Generators
 public import Aglib.CategoryTheory.Sites.Torsion.Points
 public import Aglib.CategoryTheory.Sites.Torsion.Reduction
@@ -349,6 +352,7 @@ public import Aglib.CategoryTheory.TorsorAction.CoefficientTransport
 public import Aglib.CategoryTheory.TorsorAction.KernelMarkingOrbits
 public import Aglib.CategoryTheory.TorsorAction.TransportMarking
 public import Aglib.CategoryTheory.Triangulated.EndpointTransport
+public import Aglib.CategoryTheory.Triangulated.LocalizationTriangle
 public import Aglib.CategoryTheory.Triangulated.NatTransIso
 public import Aglib.CategoryTheory.Triangulated.Yoneda.Exact
 

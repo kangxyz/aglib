@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
 
 /-!
 # Naturality of the native mate under comparison maps

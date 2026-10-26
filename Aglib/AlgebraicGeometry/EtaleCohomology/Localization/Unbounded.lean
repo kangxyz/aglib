@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Triangulated.LocalizationTriangle
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Localization.UnboundedComparison
 
 /-!
@@ -77,85 +78,107 @@ def moduleUnboundedLocalizationComplexThirdNatIso :
 theorem moduleUnboundedLocalizationComplexTriangleFunctor_inverts :
     (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ)).IsInvertedBy
       (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp) := by
-  intro K L a ha
-  let : IsIso (DerivedCategory.Q.map a) :=
-    Localization.inverts DerivedCategory.Q
-      (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ)) a ha
-  apply Triangle.isIso_of_isIsos
-  · apply (NatIso.isIso_map_iff (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp) a).mpr
-    change IsIso ((moduleUnboundedDerivedLowerShriek j Λ).map
-      ((moduleUnboundedDerivedInverseImage Λ j).map (DerivedCategory.Q.map a)))
-    infer_instance
-  · exact (NatIso.isIso_map_iff (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp) a).mpr
-      inferInstance
-  · apply (NatIso.isIso_map_iff (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp) a).mpr
-    change IsIso ((moduleUnboundedDerivedDirectImage Λ i).map
-      ((moduleUnboundedDerivedInverseImage Λ i).map (DerivedCategory.Q.map a)))
-    infer_instance
+  exact Localization.triangleFunctor_inverts DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
 
 /-- The native localization of the actual complex-triangle functor. -/
 def moduleUnboundedLocalizationTriangleFunctor :
     DerivedCategory (ModuleSheaf X Λ) ⥤
       Triangle (DerivedCategory (ModuleSheaf X Λ)) :=
-  Localization.lift (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
-    (moduleUnboundedLocalizationComplexTriangleFunctor_inverts j Λ i hcomp) DerivedCategory.Q
+  Localization.liftTriangleFunctor DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+
+/-- The shared constructor retains the original native localization value. -/
+theorem moduleUnboundedLocalizationTriangleFunctor_eq_original :
+    moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp =
+      Localization.lift (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+        (moduleUnboundedLocalizationComplexTriangleFunctor_inverts j Λ i hcomp) DerivedCategory.Q :=
+  rfl
 
 /-- The original native factorization comparison on arbitrary cochain complexes. -/
 def moduleUnboundedLocalizationTriangleFunctorFac :
     DerivedCategory.Q ⋙ moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp ≅
       moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp :=
-  Localization.fac (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
-    (moduleUnboundedLocalizationComplexTriangleFunctor_inverts j Λ i hcomp) DerivedCategory.Q
+  Localization.liftTriangleFunctorFac DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
 
 /-- Descended triangles are distinguished; representatives only prove this property. -/
 theorem moduleUnboundedLocalizationTriangleFunctor_distinguished
     (M : DerivedCategory (ModuleSheaf X Λ)) :
     (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).obj M ∈
       distTriang (DerivedCategory (ModuleSheaf X Λ)) := by
-  let Q := DerivedCategory.Q (C := ModuleSheaf X Λ)
-  let : Q.EssSurj := Localization.essSurj Q
+  exact Localization.liftTriangleFunctor_distinguished DerivedCategory.Q
     (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
-  let K := Q.objPreimage M
-  let e : (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).obj M ≅
-      moduleUnboundedLocalizationComplexTriangle j Λ i hcomp K :=
-    (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).mapIso (Q.objObjPreimageIso M).symm ≪≫
-      (moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).app K
-  exact isomorphic_distinguished _
-    (moduleUnboundedLocalizationComplexTriangle_distinguished j Λ i hcomp K) _ e
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexTriangle_distinguished j Λ i hcomp) M
 
 /-- The descended first vertex is naturally the genuine derived open composite. -/
 def moduleUnboundedLocalizationFirstNatIso :
     moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp ⋙ Triangle.π₁ ≅
       moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ :=
-  Localization.liftNatIso DerivedCategory.Q
-    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ)) _ _ _ _
-    ((Functor.associator _ _ _).symm ≪≫
-      Functor.isoWhiskerRight
-        (moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp) Triangle.π₁ ≪≫
-      moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+  Localization.liftTriangleVertexIso DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+    Triangle.π₁ (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ)
+      (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
 
 /-- The descended middle vertex is naturally the identity on the original derived category. -/
 def moduleUnboundedLocalizationMiddleNatIso :
     moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp ⋙ Triangle.π₂ ≅
       𝟭 (DerivedCategory (ModuleSheaf X Λ)) :=
-  Localization.liftNatIso DerivedCategory.Q
-    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ)) _ _ _ _
-    ((Functor.associator _ _ _).symm ≪≫
-      Functor.isoWhiskerRight
-        (moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp) Triangle.π₂ ≪≫
-      moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫
-      (Functor.rightUnitor _).symm)
+  Localization.liftTriangleVertexIso DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+    Triangle.π₂ (𝟭 _)
+      (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
 
 /-- The descended third vertex is naturally the genuine derived closed composite. -/
 def moduleUnboundedLocalizationThirdNatIso :
     moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp ⋙ Triangle.π₃ ≅
       moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i :=
-  Localization.liftNatIso DerivedCategory.Q
-    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ)) _ _ _ _
-    ((Functor.associator _ _ _).symm ≪≫
-      Functor.isoWhiskerRight
-        (moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp) Triangle.π₃ ≪≫
-      moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+  Localization.liftTriangleVertexIso DerivedCategory.Q
+    (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+    (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+    (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+    (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+    (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+    Triangle.π₃ (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+      (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
 
 /-- The descended first comparison retains its original factorization on complexes. -/
 @[simp]
@@ -164,10 +187,16 @@ theorem moduleUnboundedLocalizationFirstNatIso_hom_app
     (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
       ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₁ ≫
         (moduleUnboundedLocalizationFirstVertexIso j Λ K).hom := by
-  simp [moduleUnboundedLocalizationFirstNatIso, Localization.liftNatIso,
-    Localization.liftNatTrans_app, Localization.Lifting.iso,
-    moduleUnboundedLocalizationComplexFirstNatIso]
-  rfl
+  exact Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
+      (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+      (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+      (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+      (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+      (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+      (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+      (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+      Triangle.π₁ (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ)
+        (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp) K
 
 /-- The descended middle comparison is the original factorization component. -/
 @[simp]
@@ -175,13 +204,22 @@ theorem moduleUnboundedLocalizationMiddleNatIso_hom_app
     (K : CochainComplex (ModuleSheaf X Λ) ℤ) :
     (moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
       ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₂ := by
-  dsimp only [moduleUnboundedLocalizationMiddleNatIso, Localization.liftNatIso]
-  rw [Localization.liftNatTrans_app]
-  change 𝟙 _ ≫ (𝟙 _ ≫
+  have h :=
+    Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
+      (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+      (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+      (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+      (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+      (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+      (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+      (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+      Triangle.π₂ (𝟭 _)
+        (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫
+          (Functor.rightUnitor _).symm) K
+  change (moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
     ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₂ ≫
-      𝟙 _ ≫ 𝟙 _) ≫ 𝟙 _ = _
-  erw [Category.id_comp, Category.id_comp, Category.comp_id,
-    Category.comp_id, Category.comp_id]
+      (𝟙 _ ≫ 𝟙 _) at h
+  simpa only [Category.comp_id] using h
 
 /-- The descended closed comparison retains its original factorization on complexes. -/
 @[simp]
@@ -190,10 +228,16 @@ theorem moduleUnboundedLocalizationThirdNatIso_hom_app
     (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
       ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₃ ≫
         (moduleUnboundedLocalizationThirdVertexIso Λ i K).hom := by
-  simp [moduleUnboundedLocalizationThirdNatIso, Localization.liftNatIso,
-    Localization.liftNatTrans_app, Localization.Lifting.iso,
-    moduleUnboundedLocalizationComplexThirdNatIso]
-  rfl
+  exact Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
+      (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
+      (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
+      (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
+      (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+      (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp)
+      (moduleUnboundedLocalizationComplexMiddleNatIso j Λ i hcomp ≪≫ (Functor.rightUnitor _).symm)
+      (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
+      Triangle.π₃ (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
+        (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp) K
 
 /-- The first descended arrow is the original derived adjunction counit, naturally. -/
 theorem moduleUnboundedLocalization_counit_comparison :
@@ -233,49 +277,67 @@ theorem moduleUnboundedLocalization_unit_comparison :
 /-- Localization on any original derived object, with the actual derived unit and counit. -/
 def moduleUnboundedDerivedLocalizationTriangle (M : DerivedCategory (ModuleSheaf X Λ)) :
     Triangle (DerivedCategory (ModuleSheaf X Λ)) :=
-  Triangle.mk ((moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit.app M)
-    ((moduleUnboundedDerivedAdjunction Λ i).unit.app M)
-    ((moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).inv.app M ≫
-      ((moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).obj M).mor₃ ≫
-      (shiftFunctor _ (1 : ℤ)).map ((moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).hom.app M))
+  (Triangle.normalizeFunctor (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp)
+    (moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit
+      (moduleUnboundedDerivedAdjunction Λ i).unit).obj M
 
 /-- The normalization is a genuine triangle isomorphism, not a changed third vertex label. -/
 def moduleUnboundedDerivedLocalizationTriangleIso (M : DerivedCategory (ModuleSheaf X Λ)) :
     (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).obj M ≅
-      moduleUnboundedDerivedLocalizationTriangle j Λ i hcomp M := by
-  refine Triangle.isoMk _ _ ((moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).app M)
-    ((moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp).app M)
-    ((moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).app M) ?_ ?_ ?_
-  · exact NatTrans.congr_app (moduleUnboundedLocalization_counit_comparison j Λ i hcomp) M
-  · exact NatTrans.congr_app (moduleUnboundedLocalization_unit_comparison j Λ i hcomp) M
-  · dsimp only [moduleUnboundedDerivedLocalizationTriangle, Triangle.mk_mor₃]
-    change _ ≫ (shiftFunctor _ (1 : ℤ)).map
-      ((moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).hom.app M) =
-      (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).hom.app M ≫
-      ((moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).inv.app M ≫ _)
-    rw [← Category.assoc, Iso.hom_inv_id_app, Category.id_comp]
-    rfl
+      moduleUnboundedDerivedLocalizationTriangle j Λ i hcomp M :=
+  (Triangle.normalizeFunctorIso (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp)
+    (moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit
+      (moduleUnboundedDerivedAdjunction Λ i).unit
+    (moduleUnboundedLocalization_counit_comparison j Λ i hcomp)
+      (moduleUnboundedLocalization_unit_comparison j Λ i hcomp)).app M
 
 /-- The actual localization triangle is distinguished for every native derived object. -/
 theorem moduleUnboundedDerivedLocalizationTriangle_distinguished
     (M : DerivedCategory (ModuleSheaf X Λ)) :
     moduleUnboundedDerivedLocalizationTriangle j Λ i hcomp M ∈
-      distTriang (DerivedCategory (ModuleSheaf X Λ)) :=
-  isomorphic_distinguished _
-    (moduleUnboundedLocalizationTriangleFunctor_distinguished j Λ i hcomp M)
-    _ (moduleUnboundedDerivedLocalizationTriangleIso j Λ i hcomp M).symm
+      distTriang (DerivedCategory (ModuleSheaf X Λ)) := by
+  exact Triangle.normalizeFunctor_distinguished
+    (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp)
+    (moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit
+      (moduleUnboundedDerivedAdjunction Λ i).unit
+    (moduleUnboundedLocalization_counit_comparison j Λ i hcomp)
+      (moduleUnboundedLocalization_unit_comparison j Λ i hcomp)
+    (moduleUnboundedLocalizationTriangleFunctor_distinguished j Λ i hcomp) M
 
 /-- The actual localization triangles form a functor on the whole native derived category. -/
 def moduleUnboundedDerivedLocalizationTriangleFunctor :
     DerivedCategory (ModuleSheaf X Λ) ⥤
-      Triangle (DerivedCategory (ModuleSheaf X Λ)) where
-  obj := moduleUnboundedDerivedLocalizationTriangle j Λ i hcomp
-  map {M N} a := (moduleUnboundedDerivedLocalizationTriangleIso j Λ i hcomp M).inv ≫
-    (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).map a ≫
-      (moduleUnboundedDerivedLocalizationTriangleIso j Λ i hcomp N).hom
-  map_id M := by
-    simp only [CategoryTheory.Functor.map_id, Category.id_comp, Iso.inv_hom_id]
-  map_comp a b := by
-    simp only [CategoryTheory.Functor.map_comp, Category.assoc, Iso.hom_inv_id_assoc]
+      Triangle (DerivedCategory (ModuleSheaf X Λ)) :=
+  Triangle.normalizeFunctor (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp)
+    (moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit
+      (moduleUnboundedDerivedAdjunction Λ i).unit
+
+
+/-- The shared normalized functor retains the original conjugated triangle map. -/
+theorem moduleUnboundedDerivedLocalizationTriangleFunctor_map_eq_original
+    {M N : DerivedCategory (ModuleSheaf X Λ)} (a : M ⟶ N) :
+    (moduleUnboundedDerivedLocalizationTriangleFunctor j Λ i hcomp).map a =
+      (moduleUnboundedDerivedLocalizationTriangleIso j Λ i hcomp M).inv ≫
+        (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp).map a ≫
+        (moduleUnboundedDerivedLocalizationTriangleIso j Λ i hcomp N).hom := by
+  exact Triangle.normalizeFunctor_map_eq_original
+    (moduleUnboundedLocalizationTriangleFunctor j Λ i hcomp)
+    (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationMiddleNatIso j Λ i hcomp)
+    (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp)
+    (moduleUnboundedDerivedLowerShriekAdjunction j Λ).counit
+      (moduleUnboundedDerivedAdjunction Λ i).unit
+    (moduleUnboundedLocalization_counit_comparison j Λ i hcomp)
+      (moduleUnboundedLocalization_unit_comparison j Λ i hcomp) a
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

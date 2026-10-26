@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.InternalHom.Evaluation
 
 /-!
 # Line-bundle duality and the ordinary Picard group
@@ -60,33 +61,46 @@ def dualLineBundle (L : LineBundle X) : LineBundle X :=
   ⟨dualSheaf X L.val, dualSheaf_locallyRankOne X L.val L.property⟩
 
 variable (M N : SheafOfModules.{u} X.ringCatSheaf)
-/-- Sectionwise evaluation from the tensor of the internal-Hom sheaf with M to N. -/
-def evaluationPresheaf :
+/-- The actual generic presheaf evaluation on the original Zariski site. -/
+abbrev evaluationPresheaf :
     PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf)
       (InternalHom.sheaf X M N).val M.val ⟶ N.val :=
-  PresheafOfModulesOfCommRing.homMk (fun U =>
-    ModuleCat.MonoidalCategory.tensorLift
-      (fun s m => s.val.app (op (Over.mk (𝟙 U.unop))) m)
-      (by intro s t m; rfl)
-      (by
-        intro r s m
-        change X.presheaf.map (𝟙 U.unop).op r • (show N.val.obj U from
-          s.val.app (op (Over.mk (𝟙 U.unop))) m) = r • (show N.val.obj U from
-          s.val.app (op (Over.mk (𝟙 U.unop))) m)
-        simp)
-      (by intro s m n; exact (s.val.app (op (Over.mk (𝟙 U.unop)))).hom.map_add m n)
-      (by intro r s m; exact s.property (op (Over.mk (𝟙 U.unop))) r m))
-    (by
-      intro U V i
-      apply ModuleCat.MonoidalCategory.tensor_ext
-      intro s m
-      exact NatTrans.naturality_apply s.val
-        (Over.homMk i.unop : Over.mk i.unop ⟶ Over.mk (𝟙 U.unop)).op m)
+  _root_.SheafOfModules.InternalHom.evaluationPresheaf.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N
 
-/-- The sheaf evaluation map obtained from sectionwise structure-linear evaluation. -/
-def evaluationSheaf : tensorSheaf X (InternalHom.sheaf X M N) M ⟶ N :=
-  (_root_.PresheafOfModules.sheafificationHomEquiv (𝟙 X.ringCatSheaf.obj)).symm
-    (evaluationPresheaf X M N)
+/-- The actual generic sheaf evaluation on the original sheafified tensor. -/
+abbrev evaluationSheaf : tensorSheaf X (InternalHom.sheaf X M N) M ⟶ N :=
+  _root_.SheafOfModules.InternalHom.evaluationSheaf.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N
+
+/-- The original presheaf map is the actual generic evaluation on the same objects. -/
+theorem evaluationPresheaf_eq_generic :
+    evaluationPresheaf X M N =
+      _root_.SheafOfModules.InternalHom.evaluationPresheaf.{u, u, u}
+        (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N := rfl
+
+/-- The original sheaf map is the actual generic evaluation on the same tensor. -/
+theorem evaluationSheaf_eq_generic :
+    evaluationSheaf X M N =
+      _root_.SheafOfModules.InternalHom.evaluationSheaf.{u, u, u}
+        (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N := rfl
+
+/-- The original evaluation formula on pointwise pure tensors. -/
+theorem evaluationPresheaf_app_tmul (U : X.Opensᵒᵖ)
+    (s : (InternalHom.sheaf X M N).val.obj U) (m : M.val.obj U) :
+    (evaluationPresheaf X M N).app U (s ⊗ₜ m) =
+      s.val.app (op (Over.mk (𝟙 U.unop))) m :=
+  _root_.SheafOfModules.InternalHom.evaluationPresheaf_app_tmul.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N U s m
+
+/-- The original evaluation formula on sheafification-unit generators. -/
+theorem evaluationSheaf_tmul (U : X.Opensᵒᵖ)
+    (s : (InternalHom.sheaf X M N).val.obj U) (m : M.val.obj U) :
+    (evaluationSheaf X M N).val.app U
+        ((tensorSheafUnit X (InternalHom.sheaf X M N) M).app U (s ⊗ₜ m)) =
+      s.val.app (op (Over.mk (𝟙 U.unop))) m :=
+  _root_.SheafOfModules.InternalHom.evaluationSheaf_tmul.{u, u, u}
+    (C := X.Opens) (J := Opens.grothendieckTopology X) X.sheaf M N U s m
 
 /-- The local tensor-presheaf identification of the dual of M tensored with M, using the
 supplied trivialization. -/

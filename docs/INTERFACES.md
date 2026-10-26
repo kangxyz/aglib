@@ -4,6 +4,23 @@
 
 The selected exact-category structure lives in `CategoryTheory.ExactCategory`. Its `ExactFunctor` preserves chosen conflations and is distinct from other native exact-functor notions. Its [pushout interface](../Aglib/CategoryTheory/ExactCategory/README.md) retains the admissibility of the first input map of the displayed pushout square. Site Cech declarations use `CategoryTheory.Cech`; small-model declarations use the actual `CategoryTheory.SmallModel` interface. [namespace-map.json](namespace-map.json) records correspondence and [module-map.json](module-map.json) records path changes. Original names are provenance; downstream adapters belong in the original packages.
 
+## Minimal implementation choices
+
+Every proof uses as few models and concrete realizations as its mathematical
+content requires. State results through intrinsic objects, universal properties
+and natural maps. Select one realization of each underlying object or category
+and reuse it. For ordinary cohomology, prefer the native Ext and natural-degree
+right-derived interfaces when they suffice. Generic constructions may retain
+the single chosen model needed to name their ambient category.
+
+Apply the same discipline to resolutions, replacements, localizations and
+presentations. Add another realization when an actual comparison or
+choice-independence statement needs it, and isolate that proof at its consumer
+boundary. Concrete entries may choose Mathlib's standard construction locally;
+do not install a global model instance or collapse necessary universe bounds.
+Different mathematical categories and genuinely required comparison maps
+remain part of their statements.
+
 ## Object properties and categorical structures
 
 Ambient module sheaves are Mathlib's actual `X.Modules`. Quasicoherence, finite type, finite presentation and finite local freeness are distinct properties of these sheaves. The locally Noetherian coherent category is an abelian/exact specialization; those categorical structures must not impose local Noetherianity on lower finite-type or finite-presentation constructions that do not need it.

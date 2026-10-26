@@ -5,6 +5,14 @@ Hom sheaf for arbitrary native scheme module sheaves. Its original
 `InternalHom.sectionHomEquiv` identifies sections over an open with actual
 module morphisms over that open.
 
+The Hom sheaf, its presheaf-source variant and functor maps specialize the
+[ringed-site internal Hom](../../../Algebra/Category/ModuleCat/Sheaf/InternalHom/Basic.lean).
+The native Opens category has object and morphism universe `u`; its
+specialization of `max uC vC uM` is `(uC,vC,uM) = (u,u,u)`.
+The scalar action and actual sections are unchanged. Evaluation and right-tensor
+currying use the general [evaluation](../../../Algebra/Category/ModuleCat/Sheaf/InternalHom/Evaluation.lean)
+and [tensor–Hom adjunction](../../../Algebra/Category/ModuleCat/Sheaf/InternalHom/TensorAdjunction.lean).
+
 [Restriction](Restriction.lean) supplies
 `InternalHom.restrictionHomEquiv j M N` for an actual open immersion `j : U ⟶ X`.
 It identifies actual arrows `M.restrict j ⟶ N.restrict j` with sections of the

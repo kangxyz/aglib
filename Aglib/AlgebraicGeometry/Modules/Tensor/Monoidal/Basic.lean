@@ -5,11 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.RightUnit
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Basic
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Associator
-public import Aglib.CategoryTheory.Localization.Monoidal.Induced
-public import Mathlib.CategoryTheory.Monoidal.Preadditive
-public import Mathlib.CategoryTheory.Monoidal.Transport
 
 /-!
 # The monoidal category of scheme modules
@@ -23,8 +20,9 @@ hypothesis on `X`, whose data are the existing tensor maps:
   `tensorRightUnitIso`;
 * `α_` is the general `tensorSheafAssociator`.
 
-The coherence equations are transported by `CategoryTheory.Monoidal.induced` along the identity
-functor `toLocalizedMonoidal X : X.Modules ⥤ LocalizedMonoidal L W ε`, where `L` is module
+The generic chosen coherence construction is specialized here. It transports the equations by
+`CategoryTheory.Monoidal.induced` along the identity functor
+`toLocalizedMonoidal X : X.Modules ⥤ LocalizedMonoidal L W ε`, where `L` is module
 sheafification and `W = presheafLocalIso X`; Mathlib's localized monoidal structure serves only
 as the coherence source. Each data field agrees definitionally with its existing name
 (`tensorObj_eq_tensorSheaf` and the following lemmas), and
@@ -55,7 +53,7 @@ def associatedSheafTensorUnitIso :
       SheafOfModules.unit
         ((sheafCompose (Opens.grothendieckTopology X) (forget₂ CommRingCat.{u} RingCat.{u})).obj
           X.sheaf) :=
-  sheafifyForgetIso X (SheafOfModules.unit X.ringCatSheaf)
+  SheafOfModulesOfCommRing.associatedSheafTensorUnitIso X.sheaf
 
 local notation "ε₀" => associatedSheafTensorUnitIso X
 
@@ -63,20 +61,13 @@ section Construction
 
 /-- The existing tensor data of scheme modules, with the general associator. -/
 @[instance_reducible]
-def tensorMonoidalCategoryStruct : MonoidalCategoryStruct X.Modules where
-  tensorObj M N := tensorSheaf X M N
-  whiskerLeft M _ _ g := tensorSheafMap X (𝟙 M) g
-  whiskerRight f N := tensorSheafMap X f (𝟙 N)
-  tensorHom f g := tensorSheafMap X f g
-  tensorUnit := SheafOfModules.unit X.ringCatSheaf
-  associator M N O := tensorSheafAssociator X M N O
-  leftUnitor M := tensorSheafLeftUnit X M
-  rightUnitor M := (SheafOfModulesOfCommRing.tensorRightUnitIso X.sheaf).app M
+def tensorMonoidalCategoryStruct : MonoidalCategoryStruct X.Modules :=
+  SheafOfModulesOfCommRing.tensorMonoidalCategoryStruct X.sheaf
 
 /-- The identity of scheme modules, into Mathlib's localized monoidal category of module
 presheaves at the local isomorphisms. -/
 def toLocalizedMonoidal : X.Modules ⥤ LocalizedMonoidal (𝓛) (presheafLocalIso X) (ε₀) :=
-  𝟭 X.Modules
+  SheafOfModulesOfCommRing.toLocalizedMonoidal X.sheaf
 
 instance : (toLocalizedMonoidal X).Faithful := inferInstanceAs (𝟭 X.Modules).Faithful
 
@@ -88,57 +79,51 @@ attribute [local instance] tensorMonoidalCategoryStruct
 category. -/
 def toLocalizedMonoidalCounitIso (M : X.Modules) :
     (L').obj ((𝓖).obj M) ≅ (toLocalizedMonoidal X).obj M :=
-  sheafifyForgetIso X M
+  SheafOfModulesOfCommRing.toLocalizedMonoidalCounitIso X.sheaf M
 
 /-- The comparison of the localized tensor with the existing tensor: the localized `μ` at the
 underlying presheaves, transported along the sheafification counits. -/
 def toLocalizedMonoidalμIso (M N : X.Modules) :
     (toLocalizedMonoidal X).obj M ⊗ (toLocalizedMonoidal X).obj N ≅
       (toLocalizedMonoidal X).obj (M ⊗ N) :=
-  μOf (𝓛) (presheafLocalIso X) (ε₀) (toLocalizedMonoidalCounitIso X M)
-    (toLocalizedMonoidalCounitIso X N)
+  SheafOfModulesOfCommRing.toLocalizedMonoidalμIso X.sheaf M N
 
 /-- Naturality of the sheafification counit, in the localized category. -/
 theorem map_toPresheaf_comp_counitIso_hom {M N : X.Modules} (g : M ⟶ N) :
     (L').map ((𝓖).map g) ≫ (toLocalizedMonoidalCounitIso X N).hom =
       (toLocalizedMonoidalCounitIso X M).hom ≫ (toLocalizedMonoidal X).map g :=
-  (_root_.PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).counit.naturality g
+  SheafOfModulesOfCommRing.map_toPresheaf_comp_counitIso_hom X.sheaf g
 
 theorem toLocalizedMonoidal_map_tensorHom {M₁ M₂ N₁ N₂ : X.Modules} (f : M₁ ⟶ N₁)
     (g : M₂ ⟶ N₂) :
     (toLocalizedMonoidal X).map (f ⊗ₘ g) = (toLocalizedMonoidalμIso X M₁ M₂).inv ≫
       ((toLocalizedMonoidal X).map f ⊗ₘ (toLocalizedMonoidal X).map g) ≫
         (toLocalizedMonoidalμIso X N₁ N₂).hom :=
-  map_tensorHom_eq _ _ _ _ (map_toPresheaf_comp_counitIso_hom X f)
-    (map_toPresheaf_comp_counitIso_hom X g)
+  SheafOfModulesOfCommRing.toLocalizedMonoidal_map_tensorHom X.sheaf f g
 
 theorem toLocalizedMonoidal_map_whiskerLeft (M : X.Modules) {N N' : X.Modules} (g : N ⟶ N') :
     (toLocalizedMonoidal X).map (M ◁ g) = (toLocalizedMonoidalμIso X M N).inv ≫
       ((toLocalizedMonoidal X).obj M ◁ (toLocalizedMonoidal X).map g) ≫
         (toLocalizedMonoidalμIso X M N').hom := by
-  have h := toLocalizedMonoidal_map_tensorHom X (𝟙 M) g
-  rw [CategoryTheory.Functor.map_id, MonoidalCategory.id_tensorHom] at h
-  exact h
+  exact SheafOfModulesOfCommRing.toLocalizedMonoidal_map_whiskerLeft X.sheaf M g
 
 theorem toLocalizedMonoidal_map_whiskerRight {M M' : X.Modules} (f : M ⟶ M') (N : X.Modules) :
     (toLocalizedMonoidal X).map (f ▷ N) = (toLocalizedMonoidalμIso X M N).inv ≫
       ((toLocalizedMonoidal X).map f ▷ (toLocalizedMonoidal X).obj N) ≫
         (toLocalizedMonoidalμIso X M' N).hom := by
-  have h := toLocalizedMonoidal_map_tensorHom X f (𝟙 N)
-  rw [CategoryTheory.Functor.map_id, MonoidalCategory.tensorHom_id] at h
-  exact h
+  exact SheafOfModulesOfCommRing.toLocalizedMonoidal_map_whiskerRight X.sheaf f N
 
 theorem toLocalizedMonoidal_map_leftUnitor (M : X.Modules) :
     (toLocalizedMonoidal X).map (λ_ M).hom =
       (((toLocalizedMonoidalμIso X (𝟙_ X.Modules) M).symm ≪≫
         ((Iso.refl _).symm ⊗ᵢ .refl _)) ≪≫ λ_ ((toLocalizedMonoidal X).obj M)).hom :=
-  map_leftUnitor_hom_comp (toLocalizedMonoidalCounitIso X M)
+  SheafOfModulesOfCommRing.toLocalizedMonoidal_map_leftUnitor X.sheaf M
 
 theorem toLocalizedMonoidal_map_rightUnitor (M : X.Modules) :
     (toLocalizedMonoidal X).map (ρ_ M).hom =
       (((toLocalizedMonoidalμIso X M (𝟙_ X.Modules)).symm ≪≫
         (.refl _ ⊗ᵢ (Iso.refl _).symm)) ≪≫ ρ_ ((toLocalizedMonoidal X).obj M)).hom :=
-  map_rightUnitor_hom_comp (toLocalizedMonoidalCounitIso X M)
+  SheafOfModulesOfCommRing.toLocalizedMonoidal_map_rightUnitor X.sheaf M
 
 theorem toLocalizedMonoidal_map_associator (M N O : X.Modules) :
     (toLocalizedMonoidal X).map (α_ M N O).hom =
@@ -146,44 +131,33 @@ theorem toLocalizedMonoidal_map_associator (M N O : X.Modules) :
         ≪≫ α_ ((toLocalizedMonoidal X).obj M) ((toLocalizedMonoidal X).obj N)
           ((toLocalizedMonoidal X).obj O)
         ≪≫ ((.refl _ ⊗ᵢ toLocalizedMonoidalμIso X _ _) ≪≫ toLocalizedMonoidalμIso X _ _)).hom := by
-  have h₁ := map_unit_whiskerRight_comp_tensorSheafAssociator_hom X M N O
-  have h₂ := map_whiskerRight_comp_associator_eq (L := 𝓛) (W := presheafLocalIso X) (ε := ε₀)
-    (toLocalizedMonoidalCounitIso X M) (toLocalizedMonoidalCounitIso X N)
-    (toLocalizedMonoidalCounitIso X O)
-    ((η).app ((𝓖).obj M ⊗ (𝓖).obj N)) ((η).app ((𝓖).obj N ⊗ (𝓖).obj O))
-    (toLocalizedMonoidalCounitIso X (M ⊗ N)) (toLocalizedMonoidalCounitIso X (N ⊗ O))
-    ((_root_.PresheafOfModules.sheafificationAdjunction
-      (𝟙 X.ringCatSheaf.obj)).left_triangle_components _)
-    ((_root_.PresheafOfModules.sheafificationAdjunction
-      (𝟙 X.ringCatSheaf.obj)).left_triangle_components _)
-  have : IsIso ((L').map ((η).app ((𝓖).obj M ⊗ (𝓖).obj N) ▷ (𝓖).obj O)) :=
-    isIso_associatedSheaf_map_unit_whiskerRight X _ _
-  exact (cancel_epi ((L').map ((η).app ((𝓖).obj M ⊗ (𝓖).obj N) ▷ (𝓖).obj O))).1
-    (h₁.trans h₂.symm)
+  exact SheafOfModulesOfCommRing.toLocalizedMonoidal_map_associator X.sheaf M N O
 
 /-- The inducing data of the monoidal structure: the existing tensor maps are carried to the
 localized ones by the identity functor, through `toLocalizedMonoidalμIso`. -/
 def toLocalizedMonoidalInducingData :
-    Monoidal.InducingFunctorData (toLocalizedMonoidal X) where
-  μIso := toLocalizedMonoidalμIso X
-  whiskerLeft_eq := toLocalizedMonoidal_map_whiskerLeft X
-  whiskerRight_eq := toLocalizedMonoidal_map_whiskerRight X
-  tensorHom_eq := toLocalizedMonoidal_map_tensorHom X
-  εIso := Iso.refl _
-  associator_eq := toLocalizedMonoidal_map_associator X
-  leftUnitor_eq := toLocalizedMonoidal_map_leftUnitor X
-  rightUnitor_eq := toLocalizedMonoidal_map_rightUnitor X
+    Monoidal.InducingFunctorData (toLocalizedMonoidal X) :=
+  SheafOfModulesOfCommRing.toLocalizedMonoidalInducingData X.sheaf
 
 /-- Scheme modules form a monoidal category under the existing tensor maps. -/
 instance monoidalCategory : MonoidalCategory X.Modules :=
-  Monoidal.induced (toLocalizedMonoidal X) (toLocalizedMonoidalInducingData X)
+  SheafOfModulesOfCommRing.monoidalCategory X.sheaf
 
 /-- The identity into the localized monoidal category is a monoidal functor, with tensor
 comparison `toLocalizedMonoidalμIso` and identity unit comparison. -/
 instance instMonoidalToLocalizedMonoidal : (toLocalizedMonoidal X).Monoidal :=
-  Monoidal.fromInducedMonoidal (toLocalizedMonoidal X) (toLocalizedMonoidalInducingData X)
+  SheafOfModulesOfCommRing.instMonoidalToLocalizedMonoidal X.sheaf
 
 end Construction
+
+/-- The original Scheme structure uses the actual generic chosen tensor data. -/
+theorem tensorMonoidalCategoryStruct_eq_generic :
+    tensorMonoidalCategoryStruct X =
+      SheafOfModulesOfCommRing.tensorMonoidalCategoryStruct X.sheaf := rfl
+
+/-- The original Scheme monoidal category is the actual generic chosen construction. -/
+theorem monoidalCategory_eq_generic :
+    monoidalCategory X = SheafOfModulesOfCommRing.monoidalCategory X.sheaf := rfl
 
 theorem toLocalizedMonoidal_μ (M N : X.Modules) :
     Functor.LaxMonoidal.μ (toLocalizedMonoidal X) M N = (toLocalizedMonoidalμIso X M N).hom :=
@@ -227,11 +201,8 @@ theorem moduleTensorCoefficientMap_app_eq_whiskerRight {M N : X.Modules} (f : M 
 
 /-- The monoidal structure of scheme modules is preadditive: whiskering is additive, since the
 left and right tensor functors are additive. -/
-instance monoidalPreadditive : MonoidalPreadditive X.Modules where
-  whiskerLeft_zero := (moduleTensorLeftFunctor X _).map_zero _ _
-  zero_whiskerRight := (moduleTensorRightFunctor X _).map_zero _ _
-  whiskerLeft_add _ _ := (moduleTensorLeftFunctor X _).map_add
-  add_whiskerRight _ _ := (moduleTensorRightFunctor X _).map_add
+instance monoidalPreadditive : MonoidalPreadditive X.Modules :=
+  SheafOfModulesOfCommRing.monoidalPreadditive X.sheaf
 
 /-- The associator on nested pure section tensors. -/
 theorem associator_hom_tmul (M N O : X.Modules) (U : X.Opensᵒᵖ)

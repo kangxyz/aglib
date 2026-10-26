@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantImages
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Valued
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientPullback
 
 /-! # Actual constant-ring module coefficients on the small etale site
@@ -29,7 +30,8 @@ attribute [local instance] hasSheafifyLarge ModuleCat.Sheaf.hasSheafify
 variable (R : Type r) [CommRing R]
 
 /-- Genuine constant-ring module-valued sheaves in the original coefficient universe. -/
-abbrev ModuleSheaf (X : Scheme.{u}) := Sheaf X.smallEtaleTopology (ModuleCat.{u + 1} R)
+abbrev ModuleSheaf (X : Scheme.{u}) :=
+  ModuleCat.Sheaf.ConstantRing.ModuleValuedSheaf.{u + 1, u, r, u + 1} X.smallEtaleTopology R
 
 /-- The original underlying abelian coefficient functor. -/
 abbrev moduleUnderlying (X : Scheme.{u}) : ModuleSheaf R X ⥤ AbelianSheaf.{u, u + 1} X :=
@@ -38,20 +40,21 @@ abbrev moduleUnderlying (X : Scheme.{u}) : ModuleSheaf R X ⥤ AbelianSheaf.{u, 
 /-- The actual native inverse image of constant-ring module coefficients. -/
 abbrev moduleInverseImage {X S : Scheme.{u}} (f : S ⟶ X) :
     ModuleSheaf R X ⥤ ModuleSheaf R S :=
-  (siteBaseChange f).sheafPullback (ModuleCat.{u + 1} R)
-    X.smallEtaleTopology S.smallEtaleTopology
+  ModuleCat.Sheaf.ConstantRing.moduleValuedInverseImage.{u + 1, u, u + 1, u, r, u + 1}
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology R
 
 /-- The actual native direct image of constant-ring module coefficients. -/
 abbrev moduleDirectImage {X S : Scheme.{u}} (f : S ⟶ X) :
     ModuleSheaf R S ⥤ ModuleSheaf R X :=
-  (siteBaseChange f).sheafPushforwardContinuous (ModuleCat.{u + 1} R)
-    X.smallEtaleTopology S.smallEtaleTopology
+  ModuleCat.Sheaf.ConstantRing.moduleValuedDirectImage.{u + 1, u, u + 1, u, r, u + 1}
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology R
 
 /-- The native image adjunction, with no replacement of either image functor. -/
 abbrev moduleImageAdjunction {X S : Scheme.{u}} (f : S ⟶ X) :
     moduleInverseImage R f ⊣ moduleDirectImage R f :=
-  (siteBaseChange f).sheafAdjunctionContinuous (ModuleCat.{u + 1} R)
-    X.smallEtaleTopology S.smallEtaleTopology
+  ModuleCat.Sheaf.ConstantRing.moduleValuedInverseImageAdjunction.{
+    u + 1, u, u + 1, u, r, u + 1}
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology R
 
 /-- The original abelian inverse image of the original underlying coefficient. -/
 def moduleInverseImageUnderlyingIso {X S : Scheme.{u}} (f : S ⟶ X) :
@@ -85,17 +88,33 @@ instance moduleInverseImage_preservesFiniteLimits {X S : Scheme.{u}} (f : S ⟶ 
 def moduleInverseImageConstantIso {X S : Scheme.{u}} (f : S ⟶ X) :
     constantSheaf X.smallEtaleTopology (ModuleCat.{u + 1} R) ⋙ moduleInverseImage R f ≅
       constantSheaf S.smallEtaleTopology (ModuleCat.{u + 1} R) :=
-  ((constantSheafAdj X.smallEtaleTopology (ModuleCat.{u + 1} R)
-    (etaleTerminalIsTerminal X)).comp (moduleImageAdjunction R f)).leftAdjointUniq
-      (constantSheafAdj S.smallEtaleTopology (ModuleCat.{u + 1} R)
-        ((etaleTerminalIsTerminal X).isTerminalObj (siteBaseChange f)))
+  ModuleCat.Sheaf.ConstantRing.moduleValuedInverseImageConstantIso.{
+    u + 1, u, u + 1, u, r, u + 1}
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology R
+    (etaleTerminal X) (etaleTerminalIsTerminal X)
+    ((etaleTerminalIsTerminal X).isTerminalObj (siteBaseChange f))
 
 /-- Native module inverse images compose with the original scheme base changes. -/
 def moduleInverseImageComp {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) :
-    moduleInverseImage R (g ≫ f) ≅ moduleInverseImage R f ⋙ moduleInverseImage R g := by
-  let e := Functor.sheafPushforwardContinuousComp' (siteBaseChangeComp f g).symm
-    (ModuleCat.{u + 1} R) X.smallEtaleTopology S.smallEtaleTopology T.smallEtaleTopology
-  exact (Adjunction.leftAdjointCompIso (moduleImageAdjunction R f)
-    (moduleImageAdjunction R g) (moduleImageAdjunction R (g ≫ f)) e).symm
+    moduleInverseImage R (g ≫ f) ≅ moduleInverseImage R f ⋙ moduleInverseImage R g :=
+  ModuleCat.Sheaf.ConstantRing.moduleValuedInverseImageCompIso.{
+    u + 1, u, u + 1, u, u + 1, u, r, u + 1}
+    (siteBaseChange f) (siteBaseChange g) (siteBaseChange (g ≫ f))
+    X.smallEtaleTopology S.smallEtaleTopology T.smallEtaleTopology R
+    (siteBaseChangeComp f g).symm
+
+/-- The thin module-valued realization retains the original native inverse image. -/
+theorem moduleInverseImage_eq_original {X S : Scheme.{u}} (f : S ⟶ X) :
+    moduleInverseImage R f = (siteBaseChange f).sheafPullback (ModuleCat.{u + 1} R)
+      X.smallEtaleTopology S.smallEtaleTopology := rfl
+
+/-- The composition realization retains the original selected adjunction comparison. -/
+theorem moduleInverseImageComp_eq_original {X S T : Scheme.{u}}
+    (f : S ⟶ X) (g : T ⟶ S) : moduleInverseImageComp R f g =
+      (Adjunction.leftAdjointCompIso (moduleImageAdjunction R f) (moduleImageAdjunction R g)
+        (moduleImageAdjunction R (g ≫ f))
+        (Functor.sheafPushforwardContinuousComp' (siteBaseChangeComp f g).symm
+          (ModuleCat.{u + 1} R) X.smallEtaleTopology S.smallEtaleTopology
+          T.smallEtaleTopology)).symm := rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.Modules

@@ -50,6 +50,7 @@ def diagramCohomologyLeg (i : I) : diagramCohomologyObj X F n i ⟶
 lemma diagramCohomologyLeg_naturality {i j : I} (a : i ⟶ j) :
     diagramCohomologyMap X F n a ≫ diagramCohomologyLeg X c F n j =
       diagramCohomologyLeg X c F n i := by
+  rw [diagramCohomologyMap_eq_transfer]
   have ht := cohomologyTransfer_triangle
     (X := (X.obj i).unop) (Y := (X.obj j).unop) (Z := c.pt.unop) (X.map a).unop
     (c.ι.app i).unop (c.ι.app j).unop

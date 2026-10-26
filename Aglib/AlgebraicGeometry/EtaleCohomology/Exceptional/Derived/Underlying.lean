@@ -9,7 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Underl
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ClosedExactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.DirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Composition.Acyclic
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Comparison.ThreeFactor
 
 /-!
 # Original derived images under additive coefficient forgetting
@@ -46,28 +46,73 @@ variable {X S : Scheme.{u}} (f : X ⟶ S)
   [HasDerivedCategory.{wAX} (AbelianSheaf.{u, u + 1} X)]
   [HasDerivedCategory.{wAS} (AbelianSheaf.{u, u + 1} S)]
 
+local instance inverseImageUnderlyingSourceComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing X Λ))) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesHomology _ _
+
+local instance inverseImageUnderlyingTargetComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesHomology _ _
+
+local instance directImageUnderlyingSourceComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (moduleDirectImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesHomology _ _
+
+local instance directImageUnderlyingTargetComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_acyclic _ _
+    (fun I _ n => higherDirectImage_moduleInjective_isZero f Λ I n)
+
 /-- Exact scalar forgetting commutes with original derived inverse image. -/
 def moduleDerivedInverseImageUnderlyingIso :
     moduleDerivedInverseImage Λ f ⋙ moduleDerivedUnderlying Λ X ≅
       moduleDerivedUnderlying Λ S ⋙ derivedInverseImage f :=
-  (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
-      (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing X Λ))).symm ≪≫
-    (moduleInverseImage f Λ ⋙ SheafOfModules.toSheaf (constantRing X Λ)).rightDerivedFunctorPlusIso
-      (moduleInverseImageUnderlyingIso Λ f) ≪≫
-    Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
-      (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f)
+  Functor.rightDerivedFunctorPlusThreeFactorIso
+    (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing X Λ))
+    (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f)
+    (moduleInverseImageUnderlyingIso Λ f)
+
+/-- The shared constructor gives the original inverse-image three-factor map. -/
+theorem moduleDerivedInverseImageUnderlyingIso_eq_original :
+    moduleDerivedInverseImageUnderlyingIso Λ f =
+      (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
+        (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing X Λ))).symm ≪≫
+      Functor.rightDerivedFunctorPlusIso
+        (moduleInverseImage f Λ ⋙ SheafOfModules.toSheaf (constantRing X Λ))
+        (moduleInverseImageUnderlyingIso Λ f) ≪≫
+      Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
+        (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f) := by
+  rw [moduleDerivedInverseImageUnderlyingIso, Functor.rightDerivedFunctorPlusThreeFactorIso,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesHomology,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesHomology]
 
 /-- The original module-derived direct image has the original abelian image underneath. -/
 def moduleDerivedDirectImageUnderlyingIso :
     moduleDerivedDirectImage Λ f ⋙ moduleDerivedUnderlying Λ S ≅
       moduleDerivedUnderlying Λ X ⋙ derivedDirectImage f :=
-  (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
-      (moduleDirectImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))).symm ≪≫
-    (moduleDirectImage f Λ ⋙ SheafOfModules.toSheaf (constantRing S Λ)).rightDerivedFunctorPlusIso
-      (moduleDirectImageUnderlyingIso f Λ) ≪≫
-    Functor.rightDerivedFunctorPlusCompIsoOfAcyclic
-      (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)
-      (fun I _ n => higherDirectImage_moduleInjective_isZero f Λ I n)
+  Functor.rightDerivedFunctorPlusThreeFactorIso
+    (moduleDirectImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))
+    (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)
+    (moduleDirectImageUnderlyingIso f Λ)
+
+/-- The shared constructor gives the original relative-acyclicity direct-image map. -/
+theorem moduleDerivedDirectImageUnderlyingIso_eq_original :
+    moduleDerivedDirectImageUnderlyingIso Λ f =
+      (Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology
+        (moduleDirectImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))).symm ≪≫
+      (moduleDirectImage f Λ ⋙ SheafOfModules.toSheaf (constantRing S Λ)).rightDerivedFunctorPlusIso
+        (moduleDirectImageUnderlyingIso f Λ) ≪≫
+      Functor.rightDerivedFunctorPlusCompIsoOfAcyclic
+        (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)
+        (fun I _ n => higherDirectImage_moduleInjective_isZero f Λ I n) := by
+  rw [moduleDerivedDirectImageUnderlyingIso, Functor.rightDerivedFunctorPlusThreeFactorIso,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesHomology,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_acyclic _ _
+      (fun I _ n => higherDirectImage_moduleInjective_isZero f Λ I n)]
 
 /-- The inverse-image scalar comparison retains the two original composite units. -/
 theorem moduleDerivedInverseImageUnderlyingIso_unit
@@ -79,13 +124,10 @@ theorem moduleDerivedInverseImageUnderlyingIso_unit
         ((NatIso.mapCochainComplexPlus (moduleInverseImageUnderlyingIso Λ f)).hom.app K) ≫
       (Functor.rightDerivedFunctorPlusCompUnit
         (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f)).app K := by
-  rw [Functor.rightDerivedFunctorPlusCompUnit_app,
-    ← Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology_hom_app]
-  simp only [moduleDerivedInverseImageUnderlyingIso, Iso.trans_hom, Iso.symm_hom,
-    NatTrans.comp_app, Category.assoc, Iso.hom_inv_id_app_assoc]
-  rw [← Category.assoc, Functor.rightDerivedFunctorPlusIso_hom_app, Category.assoc,
-    Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology_hom_app,
-    Functor.rightDerivedFunctorPlusCompUnit_app]
+  exact Functor.rightDerivedFunctorPlusThreeFactorIso_unit_app
+    (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing X Λ))
+    (SheafOfModules.toSheaf (constantRing S Λ)) (inverseImage f)
+    (moduleInverseImageUnderlyingIso Λ f) K
 
 /-- The direct-image scalar comparison retains the original acyclicity comparison unit. -/
 theorem moduleDerivedDirectImageUnderlyingIso_unit
@@ -97,12 +139,9 @@ theorem moduleDerivedDirectImageUnderlyingIso_unit
         ((NatIso.mapCochainComplexPlus (moduleDirectImageUnderlyingIso f Λ)).hom.app K) ≫
       (Functor.rightDerivedFunctorPlusCompUnit
         (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)).app K := by
-  rw [Functor.rightDerivedFunctorPlusCompUnit_app,
-    ← Functor.rightDerivedFunctorPlusCompIsoOfPreservesHomology_hom_app]
-  simp only [moduleDerivedDirectImageUnderlyingIso, Iso.trans_hom, Iso.symm_hom,
-    NatTrans.comp_app, Category.assoc, Iso.hom_inv_id_app_assoc]
-  rw [← Category.assoc, Functor.rightDerivedFunctorPlusIso_hom_app, Category.assoc,
-    Functor.rightDerivedFunctorPlusCompIsoOfAcyclic_hom_app,
-    Functor.rightDerivedFunctorPlusCompUnit_app]
+  exact Functor.rightDerivedFunctorPlusThreeFactorIso_unit_app
+    (moduleDirectImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))
+    (SheafOfModules.toSheaf (constantRing X Λ)) (directImage f)
+    (moduleDirectImageUnderlyingIso f Λ) K
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

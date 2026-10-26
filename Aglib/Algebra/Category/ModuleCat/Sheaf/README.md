@@ -2,6 +2,36 @@
 
 The objects are actual module sheaves over a ring sheaf on a site, before scheme specialization. Tensor statements retain commutative coefficient rings where required. [Tensor/Basic](Tensor/README.md) owns the single sheafified tensor bifunctor and unit/braiding maps.
 
+[ConstantRing/Basic](ConstantRing/Basic.lean), [Equivalence](ConstantRing/Equivalence.lean)
+and [Pullback](ConstantRing/Pullback.lean) construct actual module sheaves over
+an arbitrary constant ring and compare them with module-valued sheaves. Native
+ring and module sheafification, image adjunctions, and their original units
+and counits are retained. Ring and module-carrier universes remain independent.
+The étale coefficient, open-restriction and constructibility families specialize
+these constructions; commutativity is not required for this bridge.
+
+[ConstantRing/RingPullback](ConstantRing/RingPullback.lean) compares the actual
+native RingCat-valued inverse image of a constant ring with the target
+constant ring. It uses continuity, weak ring sheafification, native
+right-adjoint existence, and a specified source terminal object whose image
+is terminal. Its adjoint transpose is the original `constantRingMap`; the
+native unit, counit and original sheafification-unit equations are retained.
+
+[InternalHom/PresheafSource](InternalHom/PresheafSource.lean) constructs the
+sheaf of componentwise ring-linear maps from an arbitrary module presheaf to a
+module sheaf. [Basic](InternalHom/Basic.lean) specializes its source and identifies
+sections with actual module morphisms on the slice site. For site-object,
+site-morphism and module universes `uC`, `vC`, `uM`, its output lies in
+`max uC vC uM`; the ring universe remains independent. The
+[scheme Hom family](../../../../AlgebraicGeometry/Modules/InternalHom/README.md)
+uses these same constructors with the native Opens category.
+
+[Pullback/AdjunctionSquare](Pullback/AdjunctionSquare.lean) constructs a
+left-adjoint comparison from a specified square of right adjoints. Its partial
+mate and original unit and counit equations are explicit. Scheme open
+restriction uses this construction with its original geometric square.
+Invertibility of the partial mate is a separate conclusion.
+
 [Linear](Linear.lean) sends sections of a commutative ring sheaf on a
 specified initial presheaf object to the native category center.
 `scalarEndomorphismOfInitial` is actual module-linear multiplication by

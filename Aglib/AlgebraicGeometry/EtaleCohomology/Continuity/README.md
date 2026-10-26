@@ -4,6 +4,14 @@ This family owns continuity for original small-etale cohomology and the
 canonical sections and coefficient maps used in scheme-limit comparisons.
 Its namespace is `AlgebraicGeometry.Scheme.EtaleCohomology.Continuity`.
 
+[CohomologyTransfers](CohomologyTransfers.lean) retains the original transfer
+and constructs the actual constant-integer source system from native inverse
+image and constant-sheaf comparison maps. [DiagramCohomology](DiagramCohomology.lean)
+specializes the [general represented Ext diagram](../../../CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram.lean),
+with whole original-map equality and the same independent Ext universe.
+Geometric section-colimit and injective-acyclicity suppliers remain in this
+family and provide the continuity hypotheses used below.
+
 ## Filtered coefficients on a fixed qcqs scheme
 
 Let `S : Scheme.{u}` be quasi-compact and quasi-separated, let

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedEtale
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.DerivedCohomology
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedScalarSlice
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Injectives
 

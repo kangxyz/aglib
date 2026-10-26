@@ -32,8 +32,11 @@ def diagramCohomologyConnecting :
       diagramCohomologyFunctor X F (n + 1) where
   app i := AddCommGrpCat.ofHom
     (Sheaf.H.δ (diagramCokernelComplex_shortExact X η hη i) n (n + 1) rfl)
-  naturality i j a :=
-    (cohomologyTransfer_connecting
+  naturality i j a := by
+    change diagramCohomologyMap X (diagramCokernelSystem X η) n a ≫ _ =
+      _ ≫ diagramCohomologyMap X F (n + 1) a
+    simp only [diagramCohomologyMap_eq_transfer]
+    exact (cohomologyTransfer_connecting
       (X := (X.obj i).unop) (Y := (X.obj j).unop) (X.map a).unop
       (diagramCokernelComplex X η i) (diagramCokernelComplex X η j)
       (diagramCokernelComplex_shortExact X η hη i)

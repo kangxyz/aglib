@@ -19,13 +19,16 @@ isomorphism of the underlying functors.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits
+open CategoryTheory.TorsionZMod.Ringed
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
 
 universe u
 
 attribute [local instance] hasSheafifyLarge hasSheafifyModules
-  moduleForget_preservesSheafification
+  moduleForget_preservesSheafification moduleForget_preservesLeftKanExtensions
+  hasSheafifyRingStandard hasSheafifyAbStandard
+  ringWEqualsLocallyBijectiveStandard abWEqualsLocallyBijectiveStandard
 
 variable {X S : Scheme.{u}} (f : S ⟶ X) (Λ : Type (u + 1)) [Ring Λ]
 
@@ -37,19 +40,10 @@ theorem moduleValuedInverseImageUnderlyingIso_unit (M : ModuleValuedSheaf X Λ) 
       (directImage f).map ((moduleValuedInverseImageUnderlyingIso Λ f).hom.app M) =
     (inverseImageAdjunction f).unit.app
       ((sheafCompose (Scheme.smallEtaleTopology X)
-        (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1})).obj M) := by
-  let U := forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1}
-  let : U.PreservesLeftKanExtensions (siteBaseChange f).op := by
-    intro P
-    infer_instance
-  have h := Functor.sheafPullbackCoefficientIso_unit (siteBaseChange f)
-    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) U M
-  change (inverseImageAdjunction f).unit.app ((sheafCompose _ U).obj M) ≫
-      (directImage f).map ((moduleValuedInverseImageUnderlyingIso Λ f).inv.app M) =
-    (sheafCompose _ U).map ((moduleValuedInverseImageAdjunction f Λ).unit.app M) at h
-  rw [← h]
-  erw [Category.assoc, ← Functor.map_comp, Iso.inv_hom_id_app,
-    CategoryTheory.Functor.map_id, Category.comp_id]
+        (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1})).obj M) :=
+  ModuleCat.Sheaf.ConstantRing.moduleValuedInverseImageUnderlyingIso_unit.{
+    u + 1, u, u + 1, u, u + 1, u + 1}
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ M
 
 /-- Isomorphism of the native unit can be detected before transport by equivalences. -/
 theorem moduleInverseImage_unit_map_isIso_iff

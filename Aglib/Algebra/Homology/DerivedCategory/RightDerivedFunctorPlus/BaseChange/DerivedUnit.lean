@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
 
 /-!
 # The original right-derived unit as a canonical mate

@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Cohomology.ProjectionFormula.TensorPushforward
 public import Aglib.AlgebraicGeometry.Modules.ProjectionFormula.FiniteLocallyFree
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Comparison.ThreeFactor
 
 /-!
 Source: `Quillen/AlgebraicGeometry/Scheme/VectorBundle/DerivedProjectionFormula.lean` at LOCAL
@@ -74,15 +75,50 @@ theorem tensorPushforwardDerivedCompIso_unit (K : CochainComplex.Plus X.Modules)
       (Functor.rightDerivedFunctorPlusCompUnit
         (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
         (Scheme.Modules.pushforward f)) (CochainComplex.Plus.quasiIso X.Modules) (𝟙 _) K
+
+local instance projectionFormulaSourceComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (Scheme.Modules.pushforward f) (moduleTensorLeftFunctor Y E)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_preservesHomology _ _
+
+local instance projectionFormulaTensorPushforwardIsRightDerived :
+    ((moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E)).rightDerivedFunctorPlus ⋙
+      (Scheme.Modules.pushforward f).rightDerivedFunctorPlus).IsRightDerivedFunctor
+        (Functor.rightDerivedFunctorPlusCompUnit
+          (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
+          (Scheme.Modules.pushforward f)) (CochainComplex.Plus.quasiIso X.Modules) :=
+  tensorPushforward_isRightDerived f E
+
+local instance projectionFormulaTargetComparisonIsIso :
+    IsIso (Functor.rightDerivedFunctorPlusCompComparison
+      (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
+      (Scheme.Modules.pushforward f)) :=
+  Functor.isIso_rightDerivedFunctorPlusCompComparison_of_isRightDerivedFunctor _ _
+
 /-- The derived projection formula induced by the original ordinary projection map. -/
 def derivedProjectionFormulaIso :
     derivedPushforwardPlus f ⋙ (moduleTensorLeftFunctor Y E).rightDerivedFunctorPlus ≅
       (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E)).rightDerivedFunctorPlus ⋙
         derivedPushforwardPlus f :=
-  ((Scheme.Modules.pushforward f).rightDerivedFunctorPlusCompIsoOfPreservesHomology
-    (moduleTensorLeftFunctor Y E)).symm ≪≫
-  (Scheme.Modules.pushforward f ⋙ moduleTensorLeftFunctor Y E).rightDerivedFunctorPlusIso
-    (projectionFormulaNatIso f E) ≪≫ tensorPushforwardDerivedCompIso f E
+  Functor.rightDerivedFunctorPlusThreeFactorIso
+    (Scheme.Modules.pushforward f) (moduleTensorLeftFunctor Y E)
+    (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
+    (Scheme.Modules.pushforward f) (projectionFormulaNatIso f E)
+
+/-- The shared constructor retains the original projection map and selected tensor comparison. -/
+theorem derivedProjectionFormulaIso_eq_original :
+    derivedProjectionFormulaIso f E =
+      ((Scheme.Modules.pushforward f).rightDerivedFunctorPlusCompIsoOfPreservesHomology
+        (moduleTensorLeftFunctor Y E)).symm ≪≫
+      (Scheme.Modules.pushforward f ⋙ moduleTensorLeftFunctor Y E).rightDerivedFunctorPlusIso
+        (projectionFormulaNatIso f E) ≪≫ tensorPushforwardDerivedCompIso f E := by
+  have hR : Functor.rightDerivedFunctorPlusCompIso
+      (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
+      (Scheme.Modules.pushforward f) = tensorPushforwardDerivedCompIso f E := by
+    exact Functor.rightDerivedFunctorPlusCompIso_eq_rightDerivedUnique _ _
+  rw [derivedProjectionFormulaIso, Functor.rightDerivedFunctorPlusThreeFactorIso,
+    Functor.rightDerivedFunctorPlusCompIso_eq_of_preservesHomology, hR]
+
 /-- Both original composite units and the literal ordinary projection formula are retained. -/
 theorem derivedProjectionFormulaIso_unit (K : CochainComplex.Plus X.Modules) :
     (Functor.rightDerivedFunctorPlusCompUnit
@@ -93,18 +129,8 @@ theorem derivedProjectionFormulaIso_unit (K : CochainComplex.Plus X.Modules) :
     (Functor.rightDerivedFunctorPlusCompUnit
       (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
       (Scheme.Modules.pushforward f)).app K := by
-  let F := Scheme.Modules.pushforward f
-  let T := moduleTensorLeftFunctor Y E
-  let P := moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E)
-  have hL := F.rightDerivedFunctorPlusCompIsoOfPreservesHomology_hom_app T K
-  have hM := (F ⋙ T).rightDerivedFunctorPlusIso_hom_app (projectionFormulaNatIso f E) K
-  have hR := tensorPushforwardDerivedCompIso_unit f E K
-  rw [← Functor.rightDerivedFunctorPlusCompUnit_app F T K] at hL
-  change _ ≫ (_ ≫ _ ≫ _) = _
-  rw [← hL]
-  simp only [Iso.symm_hom, Category.assoc]
-  erw [Iso.hom_inv_id_app_assoc]
-  rw [← Category.assoc]
-  erw [hM]
-  rw [Category.assoc, hR]
+  exact Functor.rightDerivedFunctorPlusThreeFactorIso_unit_app
+    (Scheme.Modules.pushforward f) (moduleTensorLeftFunctor Y E)
+    (moduleTensorLeftFunctor X ((Scheme.Modules.pullback f).obj E))
+    (Scheme.Modules.pushforward f) (projectionFormulaNatIso f E) K
 end AlgebraicGeometry.Scheme.Modules

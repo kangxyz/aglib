@@ -8,4 +8,21 @@ The ambient data is a commutative-ring sheaf `R` on a site, with the stated `Has
 
 This family maintains one tensor construction. [Scheme tensors](../../../../../AlgebraicGeometry/Modules/Tensor/README.md) and [invertible-sheaf tensors](../../../../../AlgebraicGeometry/Modules/Invertible/README.md) delegate to it; [finite-free/retract properties](../README.md) provide separate exactness and injective-preservation results. No arbitrary-coefficient exactness is part of the tensor definition.
 
-The right-unit leaf was integrated byte-for-byte from local Aglib revision `451aeda`; its existing delivered-Quillen provenance is preserved. Its dependency is the existing `Basic` leaf. No additional monoidal coherence assertion is supplied here.
+The right-unit leaf was integrated byte-for-byte from local Aglib revision `451aeda`; its existing delivered-Quillen provenance is preserved. Its dependency is the existing `Basic` leaf. 
+[Monoidal/Objects](Monoidal/Objects.lean), [Associator](Monoidal/Associator.lean),
+[Basic](Monoidal/Basic.lean) and [Symmetric](Monoidal/Symmetric.lean) descend
+actual presheaf coherence to the chosen sheafified tensor, retaining the original
+unitors, associator and braiding. This construction assumes monoidal stability
+of the sheafification weak equivalences. Its current ring and module carriers
+share one universe; site-object and site-morphism universes remain independent.
+Scheme tensor coherence specializes these constructions.
+
+[InternalHom/TensorAdjunction](../InternalHom/TensorAdjunction.lean) constructs
+the actual right-tensor adjunction `Hom(M tensor N, P) ≃ Hom(M, Hom(N,P))`.
+Its counit evaluates `Hom(N,P) tensor N`.
+[Monoidal/Stability](Monoidal/Stability.lean) uses presheaf-source Hom and the
+sheaf-target bijectivity criterion to prove the required stability, without
+points or an assumed monoidal weak-equivalence class. These closed constructions
+take ring and module carriers already in the explicit common universe
+`max uC vC r`. Plain internal Hom retains its independent ring universe and
+its natural output-size bound.

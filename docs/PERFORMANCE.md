@@ -76,6 +76,10 @@ from the original data; abstracting only one map or the final scalar step can
 leave the costly specialization unchanged.
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
+For a sheafified tensor associator, prove typed three-isomorphism cancellation
+and a variable-functor naturality/map-square equation before supplying the
+actual `L.obj` and tensor endpoints.
+[Chosen-associator case](performance/abstract-foundation-construction-boundaries.md#prove-the-chosen-associators-typed-square-before-tensor-specialization).
 
 **Match the actual transfer before cancellation.** If a cancellation lemma
 accepts one presentation of a cohomology transfer while its native consumer
@@ -146,6 +150,16 @@ affine-stage/small-index scope and original section maps.
 
 ## Shared constructions and equations
 
+**Check whether the consumer needs another implementation.** Follow the
+[minimal-choice rule](INTERFACES.md#minimal-implementation-choices): use one
+chosen realization per mathematical category, and prefer Ext, natural-degree
+right-derived functors or ordinary invariant tests when they suffice. Put a
+necessary comparison or choice-independence proof at its actual boundary.
+The restored PBC consumer retained its public four-output conclusion through
+ordinary exchange and zero-object tests; its optional reference-model cube
+was held, with failed diagnostics preserved.
+[Route-retirement case](performance/abstract-foundation-construction-boundaries.md#retire-optional-implementation-transport-at-the-actual-consumer).
+
 **Use the same regular proposition on both sides.** State the exact original
 equation through one regular definition, with actual objects and arrows as
 arguments, in the generic producer, concrete statement and consumer. Examples
@@ -164,6 +178,20 @@ internally; coefficient-single tests had to reach the actual `zmodSingle`
 head expected by their provider.
 [Tensor witness](performance/construct-the-tensor-comparison-inside-the-shared-chart-witness.md),
 [coefficient-single cases](performance/share-the-actual-coefficient-single-data-head-before-transporting-exchange-tests.md).
+For localization triangles, share the actual lift, whole vertex factorization
+and specified first/second arrows with the transported original connecting
+arrow; retain named original-value equations for existing unfolding consumers.
+[Triangle and original-value case](performance/abstract-foundation-construction-boundaries.md#keep-intrinsic-comparisons-whole-and-retain-original-value-views).
+
+**Reconcile native composition branches once.** For a derived comparison built
+from two composition isomorphisms and an ordinary isomorphism, use the installed
+canonical composition maps in one shared constructor. Prove their whole unit
+equations and identify the existing homology, injective, acyclic-image and
+selected-derivability branches by unit uniqueness. The geometric callers can
+then share both the construction and its unit law without identifying their
+chosen derived models. Preserve named original-factor value laws for consumers
+that previously unfolded the concrete definition.
+[Derived three-factor pilot](performance/right-derived-three-factor-comparisons.md).
 
 **Preserve an original map's literal constructor when its formula is the API.**
 For a zero-power ideal comparison, prove invertibility of the original inclusion
@@ -280,6 +308,14 @@ underconstrained expressions without imposing artificial universe equalities.
 [Small-model case](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md),
 [Kan-preservation case](performance/pinning-the-actual-module-universe-in-a-kan-extension-preservation-proof.md).
 
+**Specify residual universes hidden by `max`.** A common output carrier does
+not uniquely determine each input universe. Pass those residual parameters
+explicitly through constructor, helper and corollary calls; retain the actual
+scalar parent and whole extensionality carrier, and give native fully faithful
+Hom equivalences their actual `X` and `Y`. Endpoint annotations alone need not
+resolve all those inputs.
+[Generic tensor–Hom and pullback case](performance/abstract-foundation-construction-boundaries.md#pin-residual-universes-through-noninjective-maxima).
+
 **Retain native parent structures and scalar actions.** Use the original
 localization ring, module action, grading and comparison map. Reprojecting a
 `CommRing`, choosing another Ore structure or synthesizing another grading
@@ -289,6 +325,11 @@ still needs that provider.
 [Localization](performance/retain-native-localization-structures.md),
 [grading](performance/retain-the-given-grading-in-an-exceptional-chart-quotient.md),
 [shift structures](performance/keep-native-shift-structures-explicit-in-the-canonical-exchange-proof.md).
+In generic ringed-site adapters, retain the exact forgotten `RingCat` sheaf and
+scalar/tensor head, and check the native `Opens` Hom universe. If component
+`IsIso` synthesis misses that literal head, take a component of the actual
+whole counit NatIso and pass its proved dictionary explicitly.
+[Native parents and counit case](performance/abstract-foundation-construction-boundaries.md#take-the-whole-counit-isomorphism-then-supply-its-literal-dictionary).
 
 **Reach residue fields by instantiating variable-field statements.** State
 finiteness and dimension facts for a variable field `K` and data over

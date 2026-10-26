@@ -28,6 +28,14 @@ direct-image unit. Existing closed-image exactness proves that unit invertible.
 The comparison equations identify the original chain counit and unit with the
 installed unbounded adjunction maps, naturally in every complex morphism.
 
+Both [Derived](Derived.lean) and [Unbounded](Unbounded.lean) use the general
+[localization triangle construction](../../../CategoryTheory/Triangulated/LocalizationTriangle.lean).
+It descends the actual complex triangle from its three vertex comparisons and
+normalizes its first two arrows to the specified native maps. Its third arrow
+is transported through the same triangle isomorphism. The geometric short
+exact sequence and chain comparisons remain in this family; distinguishedness
+comes from that actual source triangle.
+
 `Unbounded` descends the actual triangle functor through `DerivedCategory.Q`.
 Its normalized triangle has vertices `j! j* K`, `K`, and `Ri_* i* K`, with the
 original unbounded counit and unit as its first two arrows. Its third arrow is

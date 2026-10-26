@@ -73,7 +73,7 @@ theorem moduleDerivedInverseImageUnderlyingIso_exactComparison
     (SheafOfModules.toSheaf (constantRing S Λ) ⋙ inverseImage f)
     (moduleInverseImage f Λ ⋙ SheafOfModules.toSheaf (constantRing X Λ))
     (Iso.refl _) (Iso.refl _) (moduleInverseImageUnderlyingIso Λ f).symm K
-  simpa only [moduleDerivedInverseImageUnderlyingIso,
+  simpa only [moduleDerivedInverseImageUnderlyingIso_eq_original,
     rightDerivedFunctorPlusIso_refl, rightDerivedFunctorPlusIso_symm,
     Iso.refl_symm, Iso.refl_trans, Iso.trans_refl, Iso.trans_hom, Iso.trans_inv,
     Iso.symm_hom, Iso.symm_inv, Category.assoc] using h

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
 
 /-! # Transporting the actual vertical composition law through homology -/
 

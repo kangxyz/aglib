@@ -35,6 +35,7 @@ original runs; current operating guides own present procedures.
 - [Nonflat base change: share the concrete coefficient constructor](nonflat-base-change-share-the-concrete-coefficient-constructor.md)
 - [Formal line-bundle algebraization: explicit transports](formal-line-bundle-algebraization-explicit-transports.md)
 - [Site cohomology: share the comparison definition, not only its proof](site-cohomology-share-the-comparison-definition-not-only-its-proof.md)
+- [Right-derived three-factor comparisons across native branches](right-derived-three-factor-comparisons.md)
 - [Étale derived comparisons: share the equation, then specialize](étale-derived-comparisons-share-the-equation-then-specialize.md)
 - [Why a short proof can be expensive](why-a-short-proof-can-be-expensive.md)
 - [Methods and evidence](methods-and-evidence.md)
@@ -110,6 +111,7 @@ Additional complete cases:
 
 - [Surface-resolution constructor boundaries](surface-resolution-constructor-boundaries.md)
 - [Private PBC original-map and finite-model boundaries](pbc-original-map-and-finite-model-boundaries.md)
+- [Abstract foundation constructions: native parents, universes, counits and triangles](abstract-foundation-construction-boundaries.md)
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.

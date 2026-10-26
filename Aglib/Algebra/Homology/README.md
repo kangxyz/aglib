@@ -8,6 +8,14 @@ Latest local Quillen additions include [CochainComplexPlus](CochainComplexPlus/R
 
 The [cochain-complex guide](CochainComplex/README.md) records the kernel, splitting and single-shift conditions. The [mapping-cone guide](MappingCone/README.md) adds the generic additive identity-cone functor and its pushout and short-exactness comparisons. [QuasiIso](QuasiIso.lean), imported as `Aglib.Algebra.Homology.QuasiIso`, proves `CochainComplex.quasiIso_of_two_acyclic`: any actual map between two acyclic integer cochain complexes in an abelian category is a quasi-isomorphism. Both acyclicity proofs are explicit inputs.
 
+[RightDerived/Represented](RightDerived/Represented.lean) compares original
+Ext with the native natural-degree right derivatives of the additive
+represented functor, retaining coefficient naturality and the original
+degree-zero unit. It keeps the displayed Ext universe and enough-injectives
+assumption. [RightDerived/Postcomp](RightDerived/Postcomp.lean) owns the
+additive postcomposition constructors and original comparison values used by
+the [site module-cohomology family](../../CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/README.md).
+
 [Semicontinuity](Semicontinuity.lean) proves upper semicontinuity of the
 homology dimension of the original residue-field scalar-extension complex,
 for any complex shape. In degree `i`, only finiteness of `K.X i` and finite

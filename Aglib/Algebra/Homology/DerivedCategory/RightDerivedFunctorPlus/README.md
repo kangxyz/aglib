@@ -4,6 +4,20 @@
 
 Each hom-component equation uses the installed right-derived unit, rather than an arbitrary choice of comparison. [Identity](Identity.lean) constructs `rightDerivedFunctorPlusIdIso` and `rightDerivedFunctorPlusIdIso_unit` from the original identity comparison.
 
+[Comparison/ThreeFactor](Comparison/ThreeFactor.lean) constructs
+`rightDerivedFunctorPlusThreeFactorIso F G H I e` from the inverse canonical
+composition comparison for `F ⋙ G`, the derived image of the original
+`e : F ⋙ G ≅ H ⋙ I`, and the canonical comparison for `H ⋙ I`.
+Its whole `_unit` equation retains `rightDerivedFunctorPlusCompUnit` on both
+sides; `_unit_app` gives its components. The four category, Hom and chosen
+derived-model universes remain independent. Invertibility of the installed
+composition maps is supplied by proved homology preservation, injective
+preservation, acyclic images, or native composite derivability. The branch
+agreement theorems identify the original isomorphisms by their units.
+Actual clients are etale scalar forgetting, the Zariski finite-locally-free
+projection formula, and closed-right-adjoint open locality. Their named
+`_eq_original` laws retain the original three factors.
+
 Consumers are [one-sided derived contraction](../Plus/README.md), actual scheme pushforward composition, Godement calculation and derived projection formula. Neither composition branch may be used without its corresponding preservation hypothesis.
 
 [Homology](Homology.lean), imported as `Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Homology`, constructs `CategoryTheory.Functor.mapCochainComplexPlusHomologyIso` for an additive functor preserving homology. With `EnoughInjectives` in the source and derived categories for both abelian categories, `rightDerivedFunctorPlusHomologyIso` compares the actual right-derived functor followed by homology with homology followed by the original functor. `rightDerivedFunctorPlusHomologyIso_unit` preserves the installed unit and the original complex homology maps. `DerivedCategory.Plus.homologyFunctorFactors` supplies the comparison through the actual bounded-below localization. This result does not assert such a calculation for an arbitrary additive functor.

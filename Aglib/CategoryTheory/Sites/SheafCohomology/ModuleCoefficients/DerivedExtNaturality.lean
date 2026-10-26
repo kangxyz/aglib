@@ -45,33 +45,7 @@ lemma extRightDerivedRepresentedAddEquiv_naturality
     (f : Y ⟶ Y') (n : ℕ) (x : Ext.{w} X Y n) :
     extRightDerivedRepresentedAddEquiv X Y' n (x.comp (Ext.mk₀ f) (add_zero _)) =
       ((preadditiveCoyoneda.obj (op X)).rightDerived n).map f
-        (extRightDerivedRepresentedAddEquiv X Y n x) := by
-  let I := injectiveResolution Y
-  let I' := injectiveResolution Y'
-  let G := preadditiveCoyoneda.obj (op X)
-  let φ : I.Hom I' f :=
-    { hom := InjectiveResolution.desc f I' I
-      ι_f_zero_comp_hom_f_zero := by
-        rw [CochainComplex.single₀_map_f_zero]
-        exact InjectiveResolution.desc_commutes_zero f I' I }
-  obtain ⟨a, ha, rfl⟩ := I.extMk_surjective x (n + 1) rfl
-  rw [InjectiveResolution.extMk_comp_mk₀ a (n + 1) rfl ha φ,
-    extRightDerivedRepresentedAddEquiv_extMk,
-    extRightDerivedRepresentedAddEquiv_extMk]
-  let K := (G.mapHomologicalComplex (.up ℕ)).obj I.cocomplex
-  have h := ConcreteCategory.congr_hom
-    (InjectiveResolution.isoRightDerivedObj_inv_naturality f I I' φ.hom
-      (by
-        have hφ := φ.ι_f_zero_comp_hom_f_zero
-        rw [CochainComplex.single₀_map_f_zero] at hφ
-        exact hφ) G n)
-    (K.homologyπ n (K.cyclesMk a (n + 1) (by simp) ha))
-  change (G.rightDerived n).map f ((I.isoRightDerivedObj G n).inv
-      (K.homologyπ n (K.cyclesMk a (n + 1) (by simp) ha))) =
-    (I'.isoRightDerivedObj G n).inv
-    (HomologicalComplex.homologyMap ((G.mapHomologicalComplex (.up ℕ)).map φ.hom) n
-      (K.homologyπ n (K.cyclesMk a (n + 1) (by simp) ha))) at h
-  erw [homologyMap_cyclesMk] at h
-  exact h.symm
+        (extRightDerivedRepresentedAddEquiv X Y n x) :=
+  CategoryTheory.Abelian.extRightDerivedRepresentedAddEquiv_naturality X f n x
 
 end CategoryTheory.Sheaf.ModuleCoefficients
