@@ -22,4 +22,18 @@ provides no term of the family. Its original statement has no excellence or
 perfect-residue-field assumption; a future restricted theorem must retain any
 extra premise and cannot inhabit the unrestricted family without a proof.
 
+[QuasiFiniteSurjective](QuasiFiniteSurjective.lean) proves
+`Scheme.Hom.strictMono_of_locallyQuasiFinite`: a locally quasi-finite morphism is
+strictly monotone for Mathlib's specialization order on schemes, because its
+fibres are discrete. A locally quasi-finite `f : X ⟶ Y` with closed image and
+irreducible `Y` is surjective when some `x : X` has
+`dim 𝒪_{Y,f x} ≤ dim 𝒪_{X,x} < ∞`
+(`Scheme.Hom.surjective_of_locallyQuasiFinite_of_isClosed_range_of_ringKrullDim_stalk_le_of_lt_top`);
+the endomorphism form
+`Scheme.Hom.surjective_of_locallyQuasiFinite_of_isClosed_range_of_apply_eq` needs
+an irreducible locally Noetherian `X` and a fixed point. Stalk dimensions enter
+as coheights (Mathlib's `ringKrullDim_stalk_eq_coheight`); no bound on `dim X`
+or `dim Y` and no going-up theorem is used. Consumer:
+[Group/MultiplicationSurjective](../Group/MultiplicationSurjective.lean).
+
 The native curve and model interfaces consume these bounds and conditions.

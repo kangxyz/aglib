@@ -69,6 +69,21 @@ every positive `n`, including noninvertible levels, with the native genus-one
 premise supplied by the genus theorem. The geometric reduced point-count and
 étaleness conclusions above retain their invertible-level premise.
 
+[Multiplication by `n` with finite `k`-point fibres](MultiplicationSurjective.lean):
+for a group scheme `G` over an algebraically closed field `k`, proper over `k`,
+and `n` such that `{p | p ^ n = y}` is finite for every `k`-point `y`, the
+literal `[n] = (𝟙 G) ^ n` is finite
+(`multiplication_isFinite_of_finite_setOf_pow_eq_of_isAlgClosed`); if `G` is
+moreover connected, `[n]` is surjective
+(`multiplication_surjective_of_finite_setOf_pow_eq_of_isAlgClosed`) and `G(k)` is
+`n`-divisible (`exists_pow_eq_of_finite_setOf_pow_eq_of_isAlgClosed`). For an
+abelian variety these are Stacks 03RP (3), (4) and the finiteness in the proof
+of 0BFG; here the finiteness of the `k`-point fibres is the hypothesis, and no
+smoothness, commutativity, ample line bundle or dimension bound is used.
+`multiplication_left_apply_point`, `multiplication_left_apply_unitPoint` and
+`multiplication_isProper` hold over any field. Consumer: the Jacobian
+([Curves/Jacobian/Multiplication](../Curves/Jacobian/Multiplication.lean)).
+
 [IdentityComponent](IdentityComponent/README.md): the identity component of a group scheme locally
 of finite type over a field: open, closed, geometrically connected, a group scheme, compatible with
 field extension, geometrically irreducible, quasi-compact and of finite type.

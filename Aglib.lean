@@ -1867,6 +1867,7 @@ public import Aglib.AlgebraicGeometry.Curves.Jacobian.AbelMorphism
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeStrata
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeZero
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Multiplication
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.PicardScheme
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.RationalPoints
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree
@@ -2044,6 +2045,7 @@ public import Aglib.AlgebraicGeometry.Dimension.CodimensionTwoClosed
 public import Aglib.AlgebraicGeometry.Dimension.FiniteTypeFibres
 public import Aglib.AlgebraicGeometry.Dimension.FlatDVR
 public import Aglib.AlgebraicGeometry.Dimension.OpenCover
+public import Aglib.AlgebraicGeometry.Dimension.QuasiFiniteSurjective
 public import Aglib.AlgebraicGeometry.Dimension.ZeroFinite
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.FinitePresentation
 public import Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Relative.BaseChange
@@ -3232,6 +3234,7 @@ public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.MonodromyQuotient
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.Transitions
+public import Aglib.AlgebraicGeometry.Group.MultiplicationSurjective
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTorsion
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTransport
 public import Aglib.AlgebraicGeometry.Group.MultiplicativeBaseChange
@@ -4066,6 +4069,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Etale.StalkMap
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.ZariskiNagataPurity
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.Birational
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.Birational.NormalLocus
+public import Aglib.AlgebraicGeometry.Morphisms.Finite.ClosedPointFibres
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.ClosedPoints
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.FunctionField
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.GenericSection
