@@ -2447,6 +2447,11 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekExt
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleCohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.EtaleCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.EtaleInverseImageInjectives
 public import Aglib.AlgebraicGeometry.EtaleCohomology.EtaleProductTests
