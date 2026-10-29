@@ -5,7 +5,10 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import shutil
+import signal
 import subprocess
+import sys
 import tarfile
 import tempfile
 import tomllib
@@ -231,6 +234,167 @@ class WorkflowGates(unittest.TestCase):
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
 
 
+class BuildJobBudget(unittest.TestCase):
+    def test_deadline_is_first_and_includes_setup_time(self):
+        first = JOBS['build']['steps'][0]
+        self.assertEqual(first['name'], 'Set Build deadline')
+        self.assertEqual(first['shell'], 'bash')
+        self.assertEqual(JOBS['build']['timeout-minutes'], 360)
+        with tempfile.TemporaryDirectory(prefix='lean-ci-deadline-') as directory:
+            environment_file = Path(directory) / 'github-env'
+            result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c',
+                 'date() { printf "1000\\n"; }\n' + first['run']],
+                env={**os.environ, 'GITHUB_ENV': str(environment_file)},
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            deadline = int(environment_file.read_text().strip().removeprefix('BUILD_DEADLINE='))
+            self.assertEqual(deadline - 1000, 330 * 60)
+        result, calls, partial = self.run_build(deadline=deadline, now=4600)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(calls, [
+            'timeout:--signal=INT --kill-after=60s 16200s lake build --rehash Aglib Quillen -o ./outputs.jsonl',
+            'lake:build --rehash Aglib Quillen -o ./outputs.jsonl'])
+        self.assertTrue(partial)
+
+    def run_build(self, *, deadline=20800, now=1000, compiler_status=0, timeout_status=0):
+        mock = r'''
+date() { printf '%s\n' "$FIXTURE_NOW"; }
+lake() {
+  printf 'lake:%s\n' "$*" >> "$TRACE"
+  echo completed-module > "$PARTIAL"
+  return "$COMPILER_STATUS"
+}
+timeout() {
+  printf 'timeout:%s\n' "$*" >> "$TRACE"
+  shift 3
+  if test "$TIMEOUT_STATUS" -ne 0; then
+    "$@" || return "$?"
+    return "$TIMEOUT_STATUS"
+  fi
+  "$@"
+}
+'''
+        with tempfile.TemporaryDirectory(prefix='lean-ci-build-budget-') as directory:
+            root = Path(directory)
+            trace = root / 'trace'
+            result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c', mock + step('build', 'Build')['run']],
+                cwd=root, env={**os.environ, 'BUILD_TARGETS': 'Aglib Quillen',
+                               'BUILD_DEADLINE': str(deadline), 'FIXTURE_NOW': str(now),
+                               'RUNNER_TEMP': '.', 'TRACE': str(trace), 'PARTIAL': str(root / 'completed'),
+                               'COMPILER_STATUS': str(compiler_status), 'TIMEOUT_STATUS': str(timeout_status)},
+                capture_output=True, text=True)
+            return result, trace.read_text().splitlines() if trace.exists() else [], (root / 'completed').exists()
+
+    def test_expired_budget_never_invokes_lake_or_timeout(self):
+        for now in (20800, 20801):
+            with self.subTest(now=now):
+                result, calls, partial = self.run_build(now=now)
+                self.assertEqual(result.returncode, 124)
+                self.assertEqual(calls, [])
+                self.assertFalse(partial)
+                self.assertIn('330-minute compiler budget', result.stdout)
+                self.assertIn('rerun this branch', result.stdout)
+                self.assert_failed_build_blocks_consumers(result.returncode)
+
+    def test_success_and_compile_errors_are_unchanged_without_retry(self):
+        for status in (0, 1, 2):
+            with self.subTest(status=status):
+                result, calls, partial = self.run_build(compiler_status=status)
+                self.assertEqual(result.returncode, status, result.stderr)
+                self.assertEqual(sum(call.startswith('lake:') for call in calls), 1)
+                self.assertTrue(partial)
+                self.assertNotIn('::warning::', result.stdout)
+
+    def test_timeout_and_forced_kill_fail_after_preserving_completed_outputs(self):
+        for status in (124, 137):
+            with self.subTest(status=status):
+                result, calls, partial = self.run_build(timeout_status=status)
+                self.assertEqual(result.returncode, status, result.stderr)
+                self.assertEqual(sum(call.startswith('lake:') for call in calls), 1)
+                self.assertTrue(partial)
+                self.assertIn(f'timeout/kill status {status}', result.stdout)
+                self.assertIn('rerun this branch', result.stdout)
+                self.assert_failed_build_blocks_consumers(result.returncode)
+
+    def assert_failed_build_blocks_consumers(self, status):
+        self.assertNotEqual(status, 0)
+        self.assertTrue(step('build', 'Build')['continue-on-error'])
+        self.assertNotEqual(report(('build', 'Report Build result'), {'RESULT': 'failure'}), 0)
+        self.assertFalse(condition(JOBS['test_lint']['if'], {'needs.build.result': 'failure'}))
+        self.assertFalse(publish(build='failure'))
+
+    def test_partial_cache_save_precedes_staging_and_new_attempt_can_restore_it(self):
+        actions = JOBS['build']['steps']
+        save = step('build', 'Save compilation independently of Test and lint')
+        self.assertTrue(condition(save['if'], {}, success=False))
+        self.assertEqual(save['with']['path'].splitlines(),
+                         ['${{ inputs.package-directory }}/.lake', '${{ runner.temp }}/lake-native-cache'])
+        self.assertLess(actions.index(step('build', 'Build')), actions.index(save))
+        self.assertLess(actions.index(save), actions.index(step('build', 'Stage completed native outputs')))
+        restore = next(item for item in actions if item.get('id') == 'restore')['with']
+        self.assertEqual(save['with']['key'], '${{ steps.restore.outputs.cache-primary-key }}')
+        fields = {'runner.os': 'Linux', 'runner.arch': 'X64', 'github.sha': 'commit',
+                  'github.run_id': 'run', 'github.run_attempt': '1'}
+        def render(text):
+            return re.sub(r'\$\{\{\s*(.*?)\s*\}\}', lambda match: (
+                'input-hash' if match[1].startswith('hashFiles(') else fields[match[1]]), text)
+        previous_key = render(restore['key'])
+        fields['github.run_attempt'] = '2'
+        self.assertNotEqual(render(restore['key']), previous_key)
+        self.assertTrue(any(previous_key.startswith(prefix)
+                            for prefix in render(restore['restore-keys']).splitlines()))
+
+    def test_real_gnu_timeout_interrupts_lake_and_retains_completed_file(self):
+        executable = shutil.which('timeout') or shutil.which('gtimeout')
+        if not executable:
+            self.skipTest('GNU timeout is unavailable; timeout status handling covered by workflow-shell stubs')
+        version = subprocess.run([executable, '--version'], capture_output=True, text=True)
+        if version.returncode or 'GNU coreutils' not in version.stdout:
+            self.skipTest('available timeout is not GNU coreutils')
+        with tempfile.TemporaryDirectory(prefix='lean-ci-real-cutoff-') as directory:
+            root = Path(directory)
+            (root / 'timeout').symlink_to(executable)
+            compiler = root / 'lake'
+            compiler.write_text(f'#!{sys.executable}\n' +
+                                'from pathlib import Path\nimport signal\n'
+                                'signal.signal(signal.SIGINT, lambda *_: exit(0))\n'
+                                'Path("completed-module").write_text("completed before cutoff")\n'
+                                'signal.pause()\n')
+            compiler.chmod(0o755)
+            result = subprocess.run(
+                ['bash', '-e', '-o', 'pipefail', '-c',
+                 'date() { printf "1000\\n"; }\n' + step('build', 'Build')['run']],
+                cwd=root, env={**os.environ, 'PATH': directory + os.pathsep + os.environ['PATH'],
+                               'BUILD_TARGETS': 'Aglib', 'BUILD_DEADLINE': '1001', 'RUNNER_TEMP': directory},
+                capture_output=True, text=True, timeout=10)
+            self.assertEqual(result.returncode, 124, result.stderr)
+            self.assertEqual((root / 'completed-module').read_text(), 'completed before cutoff')
+            self.assertIn('timeout/kill status 124', result.stdout)
+
+    def test_sigint_preserves_already_completed_process_output(self):
+        with tempfile.TemporaryDirectory(prefix='lean-ci-interrupt-') as directory:
+            root = Path(directory)
+            source = ('from pathlib import Path\nimport signal\n'
+                      'signal.signal(signal.SIGINT, lambda *_: exit(0))\n'
+                      'Path("completed-module").write_text("completed before interrupt")\n'
+                      'print("ready", flush=True)\n'
+                      'signal.pause()\n')
+            process = subprocess.Popen([sys.executable, '-c', source], cwd=root,
+                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            try:
+                self.assertEqual(process.stdout.readline(), 'ready\n')
+                process.send_signal(signal.SIGINT)
+                stdout, stderr = process.communicate(timeout=5)
+                self.assertEqual(process.returncode, 0, stdout + stderr)
+                self.assertEqual((root / 'completed-module').read_text(), 'completed before interrupt')
+            finally:
+                if process.poll() is None:
+                    process.kill()
+                    process.communicate()
+
+
 class DependencyRecoveryAndNativeResources(unittest.TestCase):
     def test_recovery_runs_only_for_missing_or_failed_warm_cache(self):
         warm = step('test_lint', 'Warm dependency and native compilation outputs')
@@ -366,9 +530,10 @@ class CheckerBoundaryAndLintTimeout(unittest.TestCase):
                               'steps.imports', 'steps.style'):
                 self.assertNotIn(forbidden, command + item.get('if', ''), item.get('name'))
         result = subprocess.run(
-            ['bash', '-e', '-o', 'pipefail', '-c', 'lake() { printf "%s\\n" "$*"; }\n' + build['run']],
+            ['bash', '-e', '-o', 'pipefail', '-c', 'lake() { printf "%s\\n" "$*"; }\n'
+             'timeout() { shift 3; "$@"; }\n' + build['run']],
             env={**os.environ, 'BUILD_TARGETS': 'R5Lab Essays', 'CHECK_TARGETS': 'Checks',
-                 'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
+                 'BUILD_DEADLINE': '2000000000', 'RUNNER_TEMP': '/fixture'}, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout.splitlines(), ['build --rehash R5Lab Essays -o /fixture/outputs.jsonl'])
 
