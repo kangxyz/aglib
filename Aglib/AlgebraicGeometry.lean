@@ -1474,6 +1474,11 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.DerivedCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.DerivedSliceCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Cohomology.SliceComparison
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CurveRoots
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FiniteComplement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Localization
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.PointRemoval
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.FiniteCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FieldTrivialization
