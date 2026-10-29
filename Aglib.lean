@@ -1863,6 +1863,12 @@ public import Aglib.AlgebraicGeometry.Curves.Genus
 public import Aglib.AlgebraicGeometry.Curves.Genus.BaseChange
 public import Aglib.AlgebraicGeometry.Curves.GenusOneGroupLaw
 public import Aglib.AlgebraicGeometry.Curves.Isogeny.Etale
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.AbelMorphism
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeStrata
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeZero
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.PicardScheme
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.RationalPoints
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree.Isomorphism
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Cartier
@@ -4336,6 +4342,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity.Field
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.InfinitesimalLifting
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.LocalCoordinates
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
@@ -4418,6 +4425,8 @@ public import Aglib.AlgebraicGeometry.Picard.Scheme.Glue
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Separated
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Stratification
+public import Aglib.AlgebraicGeometry.Picard.Smooth.Curve
+public import Aglib.AlgebraicGeometry.Picard.Smooth.Lifting
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
@@ -6327,6 +6336,7 @@ public import Aglib.RingTheory.Henselian.StrictHenselization.RationalResidue
 public import Aglib.RingTheory.Henselian.StrictHenselization.SeparablyClosedResidue
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
+public import Aglib.RingTheory.Ideal.ArtinReesInfMulSup
 public import Aglib.RingTheory.Ideal.AssociatedPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.AssociatedPrime.Reduced
 public import Aglib.RingTheory.Ideal.CoordinateDisplacement
@@ -6720,6 +6730,7 @@ public import Aglib.RingTheory.ScalarHomology.SurjectiveSpecialization
 public import Aglib.RingTheory.Smooth.AdicCompletion
 public import Aglib.RingTheory.Smooth.AdicLift
 public import Aglib.RingTheory.Smooth.AdicQuotient
+public import Aglib.RingTheory.Smooth.ArtinianLifting
 public import Aglib.RingTheory.Smooth.Field
 public import Aglib.RingTheory.Smooth.FiniteData
 public import Aglib.RingTheory.Smooth.FiniteModel

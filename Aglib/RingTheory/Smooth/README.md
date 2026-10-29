@@ -13,6 +13,25 @@ proves `I ⊓ m^2 = m * I` for a regular local ring with regular local quotient.
 to the actual cotangent map. The scheme consumer is the
 [geometric regularity criterion](../../AlgebraicGeometry/Morphisms/Smooth/GeometricRegularity.lean).
 
+[ArtinianLifting](ArtinianLifting.lean), imported as `Aglib.RingTheory.Smooth.ArtinianLifting`,
+proves the Artinian-test criterion `Algebra.FormallySmooth.of_lift_artinianLocal_squareZero`. Let
+`R` be any commutative ring and `S` a local `R`-algebra with a surjection `P → S` of `R`-algebras,
+where `P` is a Noetherian local `R`-algebra, formally smooth with finite free `Ω[P⁄R]`. Suppose
+that, for every surjection `g : A' → A` of `R`-algebras with `A'` Artinian local in the universe
+of `P` and `(ker g) ^ 2 = 0`, every surjective `R`-algebra map `S → A` lifts through `g`. Then `S`
+is formally smooth over `R`. The proof uses the single extension `P ⧸ 𝔪 J → P ⧸ J`, with
+`J = ker (P → S) + 𝔪 ^ m` for the exponent of
+[ArtinReesInfMulSup](../Ideal/ArtinReesInfMulSup.lean), and Mathlib's Jacobian criterion
+`Algebra.FormallySmooth.iff_injective_cotangentComplexBaseChange_residueField`. Unlike
+[LocalCriterion](GeometricRegularity/LocalCriterion.lean), it imposes no condition on the residue
+field. `Algebra.FormallySmooth.of_lift_artinianLocal_squareZero_of_isLocalization` applies the
+criterion to the localization at a prime of a finite type algebra over a Noetherian `R`, with test
+rings in the universe of `R`. It uses the localized polynomial presentation of Mathlib's
+`Algebra.FormallySmooth.of_formallySmooth_residueField_tensor`. The scheme consumer is
+[InfinitesimalLifting](../../AlgebraicGeometry/Morphisms/Smooth/InfinitesimalLifting.lean)
+(Kleiman, *The Picard scheme*, arXiv:math/0504020v1, proof of Prop. 5.19, p. 47, applies the
+infinitesimal criterion to Artin local test rings).
+
 [Reduced](Reduced.lean), imported as `Aglib.RingTheory.Smooth.Reduced`, gives `Algebra.Etale.etale_isReduced`, the standard-smooth reducedness result and the smooth-algebra reducedness result in their native owners. The base is an arbitrary commutative domain; the algebra is commutative with the stated etale/standard-smooth/smooth structure.
 
 The etale result uses actual flat injection into the generic fibre, whose unramified field algebra is reduced. Polynomial presentation/localization gives the smooth result. No field or characteristic assumption is placed on the base domain. [Smooth scheme reducedness](../../AlgebraicGeometry/Morphisms/Smooth/Reduced.lean) is the concrete consumer.

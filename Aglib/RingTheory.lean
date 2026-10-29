@@ -537,6 +537,7 @@ public import Aglib.RingTheory.Henselian.StrictHenselization.RationalResidue
 public import Aglib.RingTheory.Henselian.StrictHenselization.SeparablyClosedResidue
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
+public import Aglib.RingTheory.Ideal.ArtinReesInfMulSup
 public import Aglib.RingTheory.Ideal.AssociatedPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.AssociatedPrime.Reduced
 public import Aglib.RingTheory.Ideal.CoordinateDisplacement
@@ -929,6 +930,7 @@ public import Aglib.RingTheory.ScalarHomology.SurjectiveSpecialization
 public import Aglib.RingTheory.Smooth.AdicCompletion
 public import Aglib.RingTheory.Smooth.AdicLift
 public import Aglib.RingTheory.Smooth.AdicQuotient
+public import Aglib.RingTheory.Smooth.ArtinianLifting
 public import Aglib.RingTheory.Smooth.Field
 public import Aglib.RingTheory.Smooth.FiniteData
 public import Aglib.RingTheory.Smooth.FiniteModel
