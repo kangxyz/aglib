@@ -92,7 +92,7 @@ discharge target 5.
 | Topology | fppf functor and fppf descent | Zariski sheafification is not formalized separately. fpqc descent is unnecessary. The étale functor agrees with the fppf one with a section, or after étale-local sections of smooth surjections (EGA IV₄ 17.16.3(ii)); that theorem is an optional later extension. |
 | Representing object | Schemes | Algebraic spaces (Artin; Stacks 0D2C) are excluded. |
 | Sections | Not assumed by target 5 | The Kleiman proof uses no section, so the field case without a rational point needs no Galois descent. |
-| Properties | Group law, separatedness, local finite type, strata, tangent space, `Pic^0` over fields | `Pic^τ` (Kleiman §6), properness/projectivity of `Pic^0` (Thm 5.4), smoothness from `H^2 = 0` (Prop. 5.19) and Cartier's theorem (Cor. 5.14) are later extensions. |
+| Properties | Group law, separatedness, local finite type, strata, tangent space, `Pic^0` over fields; smoothness over a field for curves (the curve case of Prop. 5.19) | `Pic^τ` (Kleiman §6), properness/projectivity of `Pic^0` (Thm 5.4), smoothness from `H^2 = 0` (Prop. 5.19) beyond curves over a field, and Cartier's theorem (Cor. 5.14) are later extensions. |
 
 ## Existing foundations
 
@@ -909,6 +909,19 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     `picardIdentityComponentBaseChangeIso`). Instance search does not find `unitStalkAlgebra` at
     `picardScheme h` (measured; reducibility of `picardScheme` is a candidate cause), so it is
     supplied with `letI`. A review found no mathematical gap; its repairs are applied.
+  - Smoothness of the Picard scheme of a curve done (`Picard/Smooth/{Lifting,Curve}`, with
+    `RingTheory/Ideal/ArtinReesInfMulSup`, `RingTheory/Smooth/ArtinianLifting` and
+    `Morphisms/Smooth/InfinitesimalLifting`; the curve case of Kleiman, Prop. 5.19, p. 47, with
+    Thm 2.5(2), p. 18, and Ex. 4.4, p. 27): for a field `k` and a closed `X ⊆ P^N_k`, flat with
+    geometrically integral fibres, integral and of dimension one, `picardScheme h` and
+    `Pic⁰_{X/k}` are smooth over `k`, with no rational point assumed
+    (`smooth_picardScheme_of_curve`). Kleiman's infinitesimal criterion is replaced by an
+    Artinian-test criterion for local algebras over any base ring (one test extension, Artin–Rees
+    and Mathlib's Jacobian criterion). The truncated exponential sequence and `H^2 = 0` are replaced
+    by lifting line bundles on the two affine charts pulled back from a finite map to `P^1`. The flat
+    local base change to an algebraically closed residue field is replaced by base change to a
+    residue field of `X` and fpqc descent of smoothness. No group-scheme input is used. A review
+    found no mathematical gap; its repairs are applied.
 - **Next.**
   - Paused after target 6 (2026-10-25). M6 exit criterion, the R5Lab retargeting ("Consumers and
     migration"): weaken `DegreeZeroPicardRepresentability` to locally Noetherian test schemes and

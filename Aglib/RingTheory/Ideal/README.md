@@ -31,3 +31,10 @@ is surjective. The kernel is the image of the original ideal power; no flat
 tensor identification is used. These results feed the
 [ring-sheaf unit sequence](../../Algebra/Category/Ring/Sheaf/README.md) and the
 formal line-bundle lifting tower.
+
+[ArtinReesInfMulSup](ArtinReesInfMulSup.lean), imported as
+`Aglib.RingTheory.Ideal.ArtinReesInfMulSup`, proves `Ideal.exists_inf_mul_sup_pow_eq_mul`: for
+ideals `I` and `𝔪` of a Noetherian ring there is `m ≥ 1` with `I ⊓ 𝔪 * (I ⊔ 𝔪 ^ m) = 𝔪 * I`.
+Equivalently, for `J = I + 𝔪 ^ m` the map `I / 𝔪 I → J / 𝔪 J` is injective. It follows from
+Mathlib's Artin–Rees lemma `Ideal.exists_pow_inf_eq_pow_smul`; no local or field hypothesis is
+used. The consumer is the [Artinian-test criterion](../Smooth/ArtinianLifting.lean).

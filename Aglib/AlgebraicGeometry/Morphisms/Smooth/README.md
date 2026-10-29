@@ -36,4 +36,20 @@ perfect field: local finite type, local Noetherianity of the original scheme
 and `Scheme.RegularStalks` are the stated hypotheses. This is a regular-to-smooth
 supplier; it does not assert the remaining curve-construction inputs.
 
+[InfinitesimalLifting](InfinitesimalLifting.lean), imported as
+`Aglib.AlgebraicGeometry.Morphisms.Smooth.InfinitesimalLifting`, defines
+`Scheme.Hom.LiftsAlongNoetherianSquareZero π` for `π : X ⟶ Spec k` over a commutative ring `k`.
+It says that for every surjection `g : A' → A` of `k`-algebras with `A'` Noetherian and
+`(ker g) ^ 2 = 0`, every morphism `Spec A ⟶ X` over `Spec k` extends along `Spec g` to a morphism
+`Spec A' ⟶ X` over `Spec k`. The predicate is stated through ordinary morphisms, so a
+representation on locally Noetherian test schemes supplies it.
+`Scheme.Hom.LiftsAlongNoetherianSquareZero.exists_lift_stalk` gives the hypothesis of the
+[Artinian-test criterion](../../../RingTheory/Smooth/ArtinianLifting.lean) at every stalk. For
+`k` Noetherian (for instance a field) and `π` locally of finite type,
+`Scheme.Hom.formallySmooth_stalkMap_of_liftsAlongNoetherianSquareZero` makes every stalk map
+formally smooth, with no residue-field condition, and
+`Scheme.Hom.smooth_of_liftsAlongNoetherianSquareZero` gives `Smooth π` (Kleiman, *The Picard
+scheme*, arXiv:math/0504020v1, proof of Prop. 5.19, p. 47). The leaf imports no Picard module. The
+consumer is the [Picard scheme of a curve](../../Picard/Smooth/Curve.lean).
+
 [StandardEtaleChart](StandardEtaleChart.lean) supplies `Scheme.StandardSmoothEtaleChart.coordinateMap` from the native standard-smooth theorem. The chart is exactly `Spec.map` of that chosen ring map, with its original algebra-map compatibility triangle. Over a regular base ring, `regularStalks` uses the native actual-stalk etale theorem and `Scheme.regularStalks_spec`; the relative dimension, algebra structures and common universe remain explicit.

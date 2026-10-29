@@ -3577,6 +3577,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Charts
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Dimension
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.GeometricRegularity.Field
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.InfinitesimalLifting
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.LocalCoordinates
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Normality
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
@@ -3659,6 +3660,8 @@ public import Aglib.AlgebraicGeometry.Picard.Scheme.Glue
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Separated
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Stratification
+public import Aglib.AlgebraicGeometry.Picard.Smooth.Curve
+public import Aglib.AlgebraicGeometry.Picard.Smooth.Lifting
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus

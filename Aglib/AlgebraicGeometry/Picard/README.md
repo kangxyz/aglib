@@ -673,6 +673,39 @@ type, geometrically irreducible, and its formation commutes with every field ext
 `exists_representableBy_fppfPicardSheaf_fieldProperties`. The focused test is
 `AglibTest.AlgebraicGeometry.Picard.Scheme.Properties` (with axiom guards).
 
+[Smooth/Lifting](Smooth/Lifting.lean) and [Smooth/Curve](Smooth/Curve.lean): **smoothness of
+the Picard scheme of a curve**, the curve case of Kleiman, *The Picard scheme*,
+arXiv:math/0504020v1, Prop. 5.19, p. 47.
+- `familySpecOverMap p g : X_A ⟶ X_{A'}` is the map of `familyScheme p` along `Spec g`, typed
+  between the literal fibre products. For `g` surjective with `(ker g) ^ 2 = 0` it is a closed
+  immersion with square-zero kernel (`familySpecOverMap_isClosedImmersion`,
+  `familySpecOverMap_ker_sq`).
+- `liftsAlongNoetherianSquareZero_of_relativeRepresentableBy_of_isAffineHom_projectiveP1`: let
+  `K` be a field, `q : Y ⟶ Spec K`, `P` a scheme representing `relativePicardFunctor q` on
+  locally Noetherian test schemes, and `ρ : Y ⟶ P^1_{R₀}` an affine morphism to the projective
+  line over a ring `R₀`. Then points of `P` lift along every surjection `A' → A` of `K`-algebras
+  with `A'` Noetherian and square-zero kernel (`Scheme.Hom.LiftsAlongNoetherianSquareZero`). The
+  proof lifts line bundles across `familySpecOverMap` on the two affine chart preimages of `P^1`
+  (`exists_lineBundle_lift_twoAffine_of_square_zero`). No cohomology vanishing and no Artinian
+  condition is used.
+- `OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1` gives an affine map to
+  `P^1_k` for a proper integral curve over a field, from
+  `exists_finite_dominant_map_to_nativeP1`.
+- `smooth_picardScheme_of_curve h hdim`: let `k` be a field and `X ⊆ P^N_k` closed, flat with
+  geometrically integral fibres, integral and of dimension one. Then `picardScheme h` and
+  `picardIdentityComponent p (picardScheme h) (picardSchemeRepresentableBy h)` (`Pic⁰_{X/k}`)
+  are smooth over `k`, with no rational point assumed. Over the residue field `K` of a point of
+  `X`, `X_K` has a section, and `P_K` represents the relative functor of `X_K`
+  (`baseChangeRepresentableBy`, Kleiman Ex. 4.4, p. 27, and Thm 2.5(2), p. 18). Smoothness then
+  descends along `Spec K ⟶ Spec k` (Mathlib's `MorphismProperty.of_pullback_snd_of_descendsAlong`
+  with `Morphisms/LocalFlatDescent`).
+- `smooth_picardScheme_of_curve_of_section` is the case with a section, through
+  `picardSchemeRelativeRepresentableByOfIsSplitEpi`.
+
+The fine-strata premise `h` always holds (`Strata.fineStrataRepresentableByHQuasiProjective i e`).
+The focused tests are `AglibTest.AlgebraicGeometry.Picard.Smooth.{Lifting,Curve}`, with axiom
+guards.
+
 [Representability/LocallyNoetherianBase](Representability/LocallyNoetherianBase.lean): **target 5
 over a locally Noetherian base** (Kleiman, arXiv:math/0504020v1, Thm 4.8(1), p. 27, fppf form on
 locally Noetherian test schemes; proof, p. 28: "it is a local matter on `S` to represent a Zariski
