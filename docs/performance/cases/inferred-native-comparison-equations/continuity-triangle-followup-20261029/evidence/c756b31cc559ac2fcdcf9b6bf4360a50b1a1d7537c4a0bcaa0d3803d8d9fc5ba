@@ -1,0 +1,25 @@
+✔ [3371/3372] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTail (19s)
+✖ [3372/3372] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle (490s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-7d460a777767484d8999236e140a6ffe/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:34:2: Type mismatch
+  hv
+has type
+  (eqToHom ⋯).app ((directImage q).obj K) ≫ (directImageTriangleIso g p q ⋯).hom.app K =
+    (directImageTriangleIso f p q ⋯).hom.app K
+but is expected to have type
+  eqToHom ⋯ ≫ (directImageTriangleIso g p q hg).hom.app K = (directImageTriangleIso f p q hf).hom.app K
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getLimitCone ↦ 88508
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:33:57: This simp argument is unused:
+  eqToHom_app
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NatTrans.comp_app, Functor.whiskerLeft_app] at hv ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:37:6: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean:54:6: (kernel) deterministic timeout
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle
+error: build failed

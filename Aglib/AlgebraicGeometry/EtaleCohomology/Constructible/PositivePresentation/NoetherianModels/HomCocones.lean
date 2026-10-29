@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRightTailColimit
-public import Mathlib.CategoryTheory.Presentable.Limits
+public import Aglib.CategoryTheory.Filtered.AdjointStageHom
 
 /-! # Original Hom cocones for native bounded finite-colimit stages
 
@@ -53,52 +53,13 @@ def canonicalHomCoconeIsColimit
         (op (BoundedPresentation.free X n ((Scheme.AffineEtale.Spec X).obj U)))).mapCocone c))
     (A : BoundedPresentation.Coefficient X n)
     (hA : BoundedPresentation.finiteColimitStages X n A) :
-    IsColimit ((coyoneda.obj (op A)).mapCocone c) := by
-  let Q : ObjectProperty (BoundedPresentation.Coefficient X n) :=
-    fun A => Nonempty (IsColimit ((coyoneda.obj (op A)).mapCocone c))
-  have : Q.IsClosedUnderIsomorphisms := {
-    of_iso := by
-      intro A B e hA
-      obtain ⟨hc⟩ := hA
-      exact ⟨IsColimit.mapCoconeEquiv (coyoneda.mapIso e.op).symm hc⟩ }
-  have hgenerators : BoundedPresentation.generators X n ≤ Q := by
-    rintro A ⟨U⟩
-    exact ⟨hgen U⟩
-  have hclosure : BoundedPresentation.finiteColimitStages X n ≤ Q := by
-    apply (BoundedPresentation.generators X n).colimitsCardinalClosure_le
-      Cardinal.aleph0.{u + 1} ?_ hgenerators
-    intro K _ hK
-    have hfinite : Finite (Arrow K) := by
-      simpa only [hasCardinalLT_aleph0_iff] using hK
-    have hKop : HasCardinalLT (Arrow Kᵒᵖ) Cardinal.aleph0.{u} := by
-      rw [hasCardinalLT_arrow_op_iff, hasCardinalLT_aleph0_iff]
-      exact hfinite
-    refine { colimitsOfShape_le := ?_ }
-    rintro A ⟨p⟩
-    let cA : Cocone p.diag := Cocone.mk A p.ι
-    have hcA : IsColimit cA := p.isColimit
-    let t := coyoneda.mapCone cA.op
-    have ht : IsLimit t := isLimitOfPreserves coyoneda hcA.op
-    let : IsCardinalFiltered J Cardinal.aleph0.{u} :=
-      (isCardinalFiltered_aleph0_iff J).2 inferInstance
-    refine ⟨Functor.Accessible.Limits.isColimitMapCocone t
-      (fun B => isLimitOfPreserves
-        ((CategoryTheory.evaluation (BoundedPresentation.Coefficient X n)
-          (Type (u + 1))).obj B) ht)
-      Cardinal.aleph0.{u} hKop c ?_⟩
-    intro k
-    exact Classical.choice (p.prop_diag_obj k.unop)
-  exact Classical.choice (hclosure A hA)
-
-private theorem nsmul_identity_colimit
-    {J : Type u} [SmallCategory J] {X : Scheme.{u}}
-    (n : ℕ) (D : J ⥤ AbelianSheaf.{u, u + 1} X) [HasColimit D]
-    (hD : ∀ j, n • 𝟙 (D.obj j) = 0) : n • 𝟙 (colimit D) = 0 := by
-  apply colimit.hom_ext
-  intro j
-  have h := congrArg (fun a => a ≫ colimit.ι D j) (hD j)
-  simpa only [Preadditive.nsmul_comp, Preadditive.comp_nsmul, Category.id_comp,
-    Category.comp_id, zero_comp, comp_zero] using h
+    IsColimit ((coyoneda.obj (op A)).mapCocone c) :=
+  AdjointStageHom.homCoconeIsColimit_of_finiteColimitClosure
+    (BoundedPresentation.generators X n) c (by
+      intro B hB
+      exact Classical.choice (by
+        rcases hB with ⟨U⟩
+        exact ⟨hgen U⟩)) A hA
 
 /-- The actual bounded lift of a supplied original coefficient diagram. -/
 def boundedDiagram {J : Type u} [SmallCategory J] {X : Scheme.{u}}
@@ -138,7 +99,11 @@ variable (c : Cocone X) [HasColimit (coneCoefficientFunctor X c F)]
 include hF in
 private theorem limitCoefficient_killed :
     n • 𝟙 (colimit (coneCoefficientFunctor X c F)) = 0 := by
-  apply nsmul_identity_colimit
+  let P := TorsionZMod.killedSheaves c.pt.unop.smallEtaleTopology n
+  let : P.IsClosedUnderColimitsOfShape I :=
+    ObjectProperty.IsClosedUnderColimitsOfShape.of_equivalence
+      (show AsSmall.{u + 1} I ≌ I from (AsSmall.equiv (C := I)).symm)
+  apply P.prop_colimit
   intro i
   change n • 𝟙 ((inverseImage (c.ι.app i).unop).obj (F.obj i)) = 0
   simpa using congrArg (fun f => (inverseImage (c.ι.app i).unop).map f) (hF i)

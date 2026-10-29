@@ -109,16 +109,16 @@ local instance chartExchangeMapsBaseIdentityDerived : HasDerivedCategory.{dU}
 
 private theorem originalChartComponent_isIso
     (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
-    IsIso ((@higherBaseChangeMap.{u, dX, dS, dZU, dU}
+    IsIso ((@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU}
       X S (pullback U.hom f) U.left
       hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
       U.hom (pullback.snd U.hom f) pullback.condition q).app F) :=
   chartComponent_isIso_of_whole
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
       hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
       U.hom (pullback.snd U.hom f) pullback.condition q)
-    (@higherBaseChangeMap_etale_isIso.{u, dX, dS, dZU, dU} X S U.left f U.hom U.prop
-      hSourceDerived hTargetDerived hChartDerived hBase q) F
+    (by simpa only [higherBaseChangeMapFromDerived_eq] using
+      (@higherBaseChangeMap_etale_isIso.{u} X S U.left f U.hom U.prop q)) F
 
 /-- Specialize the original whole exchange before projecting its section map and laws. -/
 private opaque originalChartSectionWitness
@@ -127,18 +127,18 @@ private opaque originalChartSectionWitness
       (@higherDirectImage.{u} X S f q)
       ((@inverseImage.{u} X (pullback U.hom f) (pullback.snd U.hom f)) ⋙
         @higherDirectImage.{u} (pullback U.hom f) U.left (pullback.fst U.hom f) q)
-      (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+      (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
         hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
         U.hom (pullback.snd U.hom f) pullback.condition q) F :=
   chartSectionMapWitnessOfIsIso U
     (@higherDirectImage.{u} X S f q)
     ((@inverseImage.{u} X (pullback U.hom f) (pullback.snd U.hom f)) ⋙
       @higherDirectImage.{u} (pullback U.hom f) U.left (pullback.fst U.hom f) q)
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
       hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
       U.hom (pullback.snd U.hom f) pullback.condition q)
-    (@higherBaseChangeMap_etale_isIso.{u, dX, dS, dZU, dU} X S U.left f U.hom U.prop
-      hSourceDerived hTargetDerived hChartDerived hBase q) F
+    (by simpa only [higherBaseChangeMapFromDerived_eq] using
+      (@higherBaseChangeMap_etale_isIso.{u} X S U.left f U.hom U.prop q)) F
 
 /-- The original chart evaluation followed by its original higher exchange. -/
 @[no_expose]
@@ -158,7 +158,7 @@ theorem fibreProductChartSectionMap_eq_family
         (hChartDerived := hChartDerived) (hBase := hBase) F q =
       (Continuity.chartSectionComparison U (higherDirectImage f q)
         (inverseImage (pullback.snd U.hom f) ⋙ higherDirectImage (pullback.fst U.hom f) q)
-        (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+        (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
           hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
           U.hom (pullback.snd U.hom f) pullback.condition q)).app F :=
   (originalChartSectionWitness.{u, dX, dS, dZU, dU} f U
@@ -173,7 +173,7 @@ theorem fibreProductChartSectionMap_eq_constructor
         (hChartDerived := hChartDerived) (hBase := hBase) F q =
       chartSectionMapOfHom (globalSections U.left)
         (Continuity.pullbackSectionsEtaleEvaluationIso ((higherDirectImage f q).obj F) U)
-        ((@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
           hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
           U.hom (pullback.snd U.hom f) pullback.condition q).app F) :=
   (originalChartSectionWitness.{u, dX, dS, dZU, dU} f U
@@ -188,7 +188,7 @@ theorem fibreProductChartSectionMap_eq_original
         (hChartDerived := hChartDerived) (hBase := hBase) F q =
       (Continuity.pullbackSectionsEtaleEvaluationIso ((higherDirectImage f q).obj F) U).inv ≫
         (globalSections U.left).map
-          ((@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+          ((@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
             hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
             U.hom (pullback.snd U.hom f) pullback.condition q).app F) :=
   (originalChartSectionWitness.{u, dX, dS, dZU, dU} f U

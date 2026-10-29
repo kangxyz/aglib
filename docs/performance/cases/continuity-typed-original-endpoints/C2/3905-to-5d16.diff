@@ -1,0 +1,54 @@
+--- versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean
++++ versions/v7/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean
+@@ -39,6 +39,15 @@
+ variable (c : Cocone X) [HasExt.{e} (AbelianSheaf.{u, u + 1} c.pt.unop)]
+   [IsFiltered I] [HasColimitsOfShape I AddCommGrpCat.{u + 1}]
+ 
++/-- The original constant-source inverse transport at the literal representing objects. -/
++abbrev diagramIntegerConePrecomp (i : I) :
++    ((constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
++      (AddCommGrpCat.of (ULift.{u + 1} ℤ))) ⟶
++      (inverseImage (c.ι.app i).unop).obj ((diagramIntegerSystem X).obj i) := by
++  dsimp only [diagramIntegerSystem, InjectiveSystem.System.ofLeft]
++  exact (inverseImageConstantIso (c.ι.app i).unop).inv.app
++    (AddCommGrpCat.of (ULift.{u + 1} ℤ))
++
+ /-- Each original stage-to-limit leg respects the original connecting map. -/
+ lemma diagramCohomologyLeg_connecting (i : I) :
+     AddCommGrpCat.ofHom
+@@ -47,10 +56,17 @@
+     diagramCohomologyLeg X c (diagramCokernelSystem X η) n i ≫
+       AddCommGrpCat.ofHom
+         (Sheaf.H.δ (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+-          n (n + 1) rfl) :=
+-  Functor.extPrecompMap_connecting_naturality (inverseImage (c.ι.app i).unop)
+-    ((inverseImageConstantIso (c.ι.app i).unop).inv.app
++          n (n + 1) rfl) := by
++  letI connectingLegApexExt : HasExt.{e} (AbelianSheaf.{u, u + 1}
++      (((Functor.const I).obj c.pt).obj i).unop) :=
++    inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} c.pt.unop))
++  exact Functor.extPrecompMap_connecting_naturality
++    (C := AbelianSheaf.{u, u + 1} (X.obj i).unop)
++    (B := AbelianSheaf.{u, u + 1} c.pt.unop)
++    (X := (diagramIntegerSystem X).obj i)
++    (V := (constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
+       (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
++    (inverseImage (c.ι.app i).unop) (diagramIntegerConePrecomp X c i)
+     (diagramCokernelComplex_shortExact X η hη i)
+     (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+     (diagramCokernelLimitLeg X η c i) n
+@@ -66,12 +82,12 @@
+         (Sheaf.H.δ (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+           n (n + 1) rfl) := by
+   exact InjectiveSystem.representedCohomologyConnecting_colimit_connecting
++    (B := AbelianSheaf.{u, u + 1} c.pt.unop)
+     (diagramAdjunctionData X) η (diagramIntegerSystem X) hη n
+     (fun i => inverseImage (c.ι.app i).unop)
+     ((constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
+       (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+-    (fun i => (inverseImageConstantIso (c.ι.app i).unop).inv.app
+-      (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
++    (diagramIntegerConePrecomp X c)
+     (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+     (diagramCokernelLimitLeg X η c)
+     (schemeLimitCohomologyComparison X c F (n + 1))

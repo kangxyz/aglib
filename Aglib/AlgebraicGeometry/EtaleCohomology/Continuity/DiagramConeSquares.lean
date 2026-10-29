@@ -22,20 +22,20 @@ lemma systemSquareSectionsMap_congr {i j : I} (a b : i ⟶ j) (hab : a = b)
     {Y Z : Scheme.{u}} (f : Y ⟶ (X.obj i).unop) (g : Z ⟶ (X.obj j).unop) (h : Z ⟶ Y)
     (ea : g ≫ (X.map a).unop = h ≫ f) (eb : g ≫ (X.map b).unop = h ≫ f) :
     systemSquareSectionsMap X F a f g h ea = systemSquareSectionsMap X F b f g h eb := by
-  subst b
-  rfl
+  simp only [systemSquareSectionsMap_eq_sectionSystemSquareMap]
+  exact schemeSectionData.systemSquareMap_congr X F a b hab f.op g.op h.op
+    (congrArg Quiver.Hom.op ea) (congrArg Quiver.Hom.op eb)
 
 variable (c : Cocone X)
 
 lemma coneSquare {i j : I} (a : i ⟶ j) :
     (c.ι.app j).unop ≫ (X.map a).unop = (c.ι.app i).unop :=
-  congrArg (fun k : X.obj i ⟶ c.pt => k.unop) (c.w a)
+  congrArg Quiver.Hom.unop (InjectiveSystem.AdjunctionData.Sections.coneSquare X c a)
 
 lemma coneArrowSquare (a : Arrow I) :
     (c.ι.app a.left).unop ≫ (X.map (𝟙 a.left)).unop =
-      (c.ι.app a.right).unop ≫ (X.map a.hom).unop := by
-  rw [X.map_id, CategoryTheory.unop_id, Category.comp_id]
-  exact (coneSquare X c a.hom).symm
+      (c.ι.app a.right).unop ≫ (X.map a.hom).unop :=
+  congrArg Quiver.Hom.unop (InjectiveSystem.AdjunctionData.Sections.coneArrowSquare X c a)
 
 /-- Pull arrow-indexed sections to the cone point with their source-stage coefficient. -/
 def coneArrowSectionsMap (a : Arrow I) :
@@ -50,33 +50,25 @@ def coneSystemSectionsMap {i j : I} (a : i ⟶ j) :
   systemSquareSectionsMap X F a (c.ι.app i).unop (c.ι.app j).unop (𝟙 _)
     ((coneSquare X c a).trans (Category.id_comp _).symm)
 
+/-- The actual native cone leg is the generic original-square cone leg. -/
+lemma coneArrowSectionsMap_eq_sectionConeArrowMap (a : Arrow I) :
+    coneArrowSectionsMap X F c a = schemeSectionData.coneArrowMap X F c a := by
+  exact systemSquareSectionsMap_eq_sectionSystemSquareMap X F (𝟙 a.left)
+    (X.map a.hom).unop (c.ι.app a.left).unop (c.ι.app a.right).unop
+    (coneArrowSquare X c a)
+
+/-- The actual native apex transition is the generic original-square transition. -/
+lemma coneSystemSectionsMap_eq_sectionConeSystemMap {i j : I} (a : i ⟶ j) :
+    coneSystemSectionsMap X F c a = schemeSectionData.coneSystemMap X F c a := by
+  exact systemSquareSectionsMap_eq_sectionSystemSquareMap X F a
+    (c.ι.app i).unop (c.ι.app j).unop (𝟙 _)
+    ((coneSquare X c a).trans (Category.id_comp _).symm)
+
 lemma coneArrowSectionsMap_naturality {a b : Arrow I} (m : a ⟶ b) :
     arrowSectionsMap X F m ≫ coneArrowSectionsMap X F c b =
       coneArrowSectionsMap X F c a ≫ coneSystemSectionsMap X F c m.left := by
-  let e : (c.ι.app b.left).unop ≫ (X.map m.left).unop =
-      (c.ι.app a.right).unop ≫ (X.map a.hom).unop :=
-    (coneSquare X c m.left).trans (coneSquare X c a.hom).symm
-  let e₁ : (c.ι.app b.left).unop ≫ (X.map (m.left ≫ 𝟙 b.left)).unop =
-      (c.ι.app a.right).unop ≫ (X.map a.hom).unop := by
-    simpa only [Category.comp_id] using e
-  let e₂ : (c.ι.app b.left).unop ≫ (X.map (𝟙 a.left ≫ m.left)).unop =
-      (c.ι.app a.right).unop ≫ (X.map a.hom).unop := by
-    simpa only [Category.id_comp] using e
-  have h₁ := systemSquareSectionsMap_comp X F m.left (𝟙 b.left)
-    (X.map a.hom).unop (X.map b.hom).unop (c.ι.app b.left).unop
-    (X.map m.right).unop (c.ι.app b.right).unop (c.ι.app a.right).unop
-    (coneSquare X c m.right).symm (arrowSectionsSquare X m) (coneArrowSquare X c b) e₁
-  have h₂ := systemSquareSectionsMap_comp X F (𝟙 a.left) m.left
-    (X.map a.hom).unop (c.ι.app a.left).unop (c.ι.app b.left).unop
-    (c.ι.app a.right).unop (𝟙 _) (c.ι.app a.right).unop
-    (Category.id_comp _).symm (coneArrowSquare X c a)
-    ((coneSquare X c m.left).trans (Category.id_comp _).symm) e₂
-  have hi := systemSquareSectionsMap_congr X F (m.left ≫ 𝟙 b.left) m.left
-    (Category.comp_id m.left) (X.map a.hom).unop (c.ι.app b.left).unop
-    (c.ι.app a.right).unop e₁ e
-  have hj := systemSquareSectionsMap_congr X F (𝟙 a.left ≫ m.left) m.left
-    (Category.id_comp m.left) (X.map a.hom).unop (c.ι.app b.left).unop
-    (c.ι.app a.right).unop e₂ e
-  exact h₁.symm.trans (hi.trans (hj.symm.trans h₂))
+  simp only [arrowSectionsMap_eq_sectionArrowMap,
+    coneArrowSectionsMap_eq_sectionConeArrowMap, coneSystemSectionsMap_eq_sectionConeSystemMap]
+  exact schemeSectionData.coneArrowMap_naturality schemeAdjunctionData_coherent X F c m
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

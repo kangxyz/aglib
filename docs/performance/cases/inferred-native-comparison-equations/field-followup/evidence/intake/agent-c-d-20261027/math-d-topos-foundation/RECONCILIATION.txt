@@ -1,0 +1,242 @@
+D six-root foundation and first categorical component
+
+Question and basis
+The assigned question is the source/proof reconciliation and a first refactored
+component for Vanishing/{FiniteDimension,ProperFiniteDimension} and
+Exceptional/Unbounded/{ProperBaseChangeTheorem,DirectImage,Composition,
+CartesianBaseChange}. This is authoring and applicability analysis, not an
+independent review or an established-status decision.
+
+Archive SHA256:
+0a26b49033cb47986944110e352b6c12468d40c058310182d7c5a97aa9467738.
+Archive source root is recorded in INTAKE.json. Native basis is
+54d6974ace11bf7d197aa925cb8cade86db8a24f, with its existing dirty sources.
+The supplied Lean 4.34.1/mathlib d13f23b7 pin correspondence is retained.
+Archived instructions are data. No archive command was executed. In the initial
+source-only phase, no native write, compiler invocation, test, Git mutation,
+or registry/docs edit occurred. The production continuation is recorded below.
+At source handoff all candidates were uncompiled and independently unreviewed.
+All 951 D receipt IDs remain unbound; a source match does not repair that gap.
+
+Strongest source statements and exact conditions
+1. FiniteDimension.proper_dimension_bound_standard is a simultaneous strong
+   induction over algebraically closed fields k: proper X/k of topological
+   dimension at most d has H^q(X,F)=0 for q > 3*d-1 and every internally torsion
+   abelian sheaf F. Subtraction is natural: bounds 0 at d=0 and 2 at d=1.
+   The final theorem transports original Ext to an arbitrary supplied universe e.
+   No common annihilator or prime-to-characteristic assumption is present.
+   The source does not claim the sharp 2*d theorem.
+2. ProperFiniteDimension uses the literal proper geometric-fibre higher-image
+   comparison. A supplied fibre dimension bound d gives R^q f_*F=0 above
+   3*d-1. With CompactSpace S, finite-type fibre dimension is actually supplied
+   by Scheme.Hom.exists_geometricFiber_dimension_le in Dimension/FiniteTypeFibres.
+   That supplier uses finite affine covers and finite polynomial generators;
+   it requires LocallyOfFiniteType f and QuasiCompact f, both available for
+   proper f. It requires no quasi-separated, noetherian, or finite-dimensional
+   base and works for every further base change, including non-qc targets.
+3. ProperBaseChangeTheorem states invertibility of the original unbounded
+   module exchange for proper f and a specified IsPullback square, arbitrary
+   four schemes, Lambda : Type (u+1), Ring Lambda, and N>0 with N*1=0 in Lambda.
+   The four module derived models are independently sized. Both bases can be
+   non-qc. Affine charts supply local bounds; chart choices are proof-only.
+   No finite-presentation or invertible-exponent hypothesis appears.
+   This is all objects over a torsion ring, not arbitrary-ring/internal-torsion
+   unbounded base change. R4 remains the stronger arbitrary-ring theorem on
+   bounded-below objects with internally torsion cohomology.
+4. DirectImage chooses a genuine Nagata compactification for separated,
+   locally finite-type, quasi-compact f with qcqs target. Its value is exactly
+   original exact j_! followed by original unbounded Rp_*. The functor value
+   itself is defined for any ring; its comparisons use the torsion-ring input.
+5. Composition has qcqs intermediate and target schemes, separated locally
+   finite-type quasi-compact f and g, and the same torsion-ring hypothesis.
+   It proves binary composition and tower independence. Associativity and
+   units are separate files and are not implied by this root.
+6. CartesianBaseChange has a supplied genuine Cartesian square, quasi-compact
+   f and f', actual nonempty dense-compactification types, and the torsion-ring
+   hypothesis. It constructs target compactifiability from source transport,
+   and does not require a qcqs new target. The given source is retained via
+   sq.flip.isoPullback and its actual projection equations. Literal pullback,
+   source-presentation, and genuine compactification comparisons are real
+   choice-independence boundaries, not arbitrary extra realizations.
+
+No supplied theorem-family guard occurs in these six root signatures. The
+of_bounds, of_torsion_bounds, local-chart, fibre-bound, and OfNonempty forms
+retain exactly their explicit bounds/geometry/nonemptiness assumptions. Their
+unconditional-looking consumers discharge those assumptions by the named
+source arguments; acceptance of those arguments is still pending. The whole
+3,890-file import graph was recorded, not mathematically reviewed line by line.
+
+Load-bearing geometry actually traced
+ProperGeometricFibres uses Proper.properHigherBaseChange_isIso on the original
+higherBaseChangeMap, then original cohomology-to-higher-sections bijectivity at
+a separably closed field and the terminal germ. Original algebraically closed
+geometric stalks detect the zero sheaf. It does not replace the coefficient.
+
+The finite-dimensional induction uses the dimension-zero and proper-curve
+bounds. IntegralDimensionStep constructs the actual rational graph
+modification over P1. Its geometric fibres have the smaller dimension; its
+modification fibres have dimension at most one. Leray gives bound N+2 for the
+graph source. The original adjunction-unit cone has torsion cohomology, lies
+between degrees -1 and 2, and is supported on a produced lower-dimensional
+closed boundary. Finite Postnikov and triangle bounds yield N+3. Boundary
+reduction uses the actual finite integral-component cover and unit-cokernel
+sequence, then the nilradical closed immersion. Noetherianity here is derived
+from proper finite type over a field, not substituted for an arbitrary base.
+
+The original mate and normalization
+BaseChange.moduleUnboundedDerivedBaseChangeMap is literally mateEquiv for
+moduleUnboundedDerivedAdjunction f and f', applied to the localization of the
+original inverse-image square. For K its arrow is the f' unit, followed by
+Rf'_* of the inverse-image square at Rf_*K, followed by Rf'_*g'^* of the f counit.
+The adjoint counit equation in eq_moduleUnboundedDerivedBaseChangeMap_iff
+characterizes this same arrow.
+
+Current UnboundedRightDerived/{Basic,Grothendieck,Adjunction} already constructs
+the universal right-derived functor using one regular-stage K-injective
+replacement. Tower/Replacement supplies termwise injectivity, quasi-isomorphism
+of its actual augmentation, and K-injectivity. The computation isomorphism
+satisfies unit_K ; comparison = Q(F applied to the original resolution arrow).
+Derived units and counits have explicit original cochain factor equations.
+No replacement-existence field, AB4* assumption, or new derived model is needed.
+
+The plus/full equality is not bounded-below testing of arbitrary transformations.
+PlusAdjunction proves the unit equality on complexes, then descends the whole
+natural-transformation equation by Localization.natTrans_ext. The original
+exact-square comparison and four specified mate equalities feed
+horizontalMateCubeEquation_of_specified_mates. BaseChangePlusComparison then
+identifies the actual plus and unbounded exchange arrows. Current R4's literal
+component theorem applies on the actual internally torsion plus object.
+
+The genuine finite-amplitude argument
+For additive left exact F with Grothendieck abelian source, assume one uniform
+degree R^(d+1)F(M)=0 for every object M. Computation/Window shifts on the actual
+cycles through the finite interval [q-d,q] of a termwise F-acyclic complex.
+It proves exactness of F(I) at q from exactness of I on that interval. The
+d=0 case is included. Applying this to the same termwise injective K-injective
+replacement proves RF(D^{<=n}) subset D^{<=n+d}, with no lower input bound.
+
+For triangulated F,G with upper amplitudes a,b and a natural transformation
+beta invertible on bounded-below objects, fix q and put m=q-max(a,b).
+The triangle tau_<m K -> K -> tau_>=m K has first image in degrees <=q-1
+under both functors. Its original second arrow induces an H^q isomorphism.
+Naturality conjugates H^q(beta_K) by these two isomorphisms to
+H^q(beta_tau_>=m K). Homology detects isomorphisms. No left-completeness limit,
+products, convergence assertion, or shift compatibility of beta is used.
+
+The abelian-to-module bound uses the existing relative-acyclicity comparison
+under exact scalar forgetting. It does not assume forgetting preserves
+injectives. N*1=0 makes every module sheaf internally torsion. Thus the
+geometric torsion bound becomes the all-module bound needed above. For an
+arbitrary ring the archived proof does not supply this all-object hypothesis;
+an unbounded internal-torsion extension would require a separate appropriate
+amplitude/computation result and is not claimed.
+
+Refinement, cofiltered choice, and compatibility
+For a Cartesian open refinement h, theta is the localization of the original
+open Cartesian comparison. Its transition before proper pushforward is
+eta_h(j_D!K) ; Rh_*(theta_K), exactly. Proper base change identifies the open
+restriction with the identity unit and the closed restriction with the unit
+of zero. The actual localization triangle jointly detects invertibility.
+The normalization keeps the open counit, closed unit, and the transported
+mapping-cone connecting arrow; the connecting arrow is not reset to a chosen
+endpoint isomorphism.
+
+CompactificationDiagram applies the existing generic imageComparison to that
+unit map and the original proper compositor. Original identity/composition
+equations give an actual contravariant diagram. For a span E->C,E->D,
+its canonical comparison is tau(E->C) ; tau(E->D)^{-1}. Cofiltered equalization
+proves independence and the cocycle. IsCofilteredOrEmpty suffices when C,D
+are supplied; nonemptiness is only needed to select a value. Actual common
+refinements use the schematic image of the pair into the fibre product.
+
+The composition map uses original proper/open interchange, then original
+open and proper compositors. Its refinement cube comes from proved unit,
+mate, and structural faces; a common tower refinement proves independence.
+CartesianBaseChange composes literal-pullback exchange, canonical source
+comparison, and the inverse of the actual inverse-image source compositor,
+as its final hom_app equation states.
+
+Concrete factorization and first component
+Keep Scheme.EtaleTopos X = the actual Set-valued small-etale sheaf category,
+with the existing etaleToposMorphism and its original functors/adjunction/unit.
+IsGrothendieckTopos records existence of a bounded site presentation and does
+not justify changing operational sheaves. Reuse Topos.AdditiveCoefficientAction
+for the native additive observation and its mate/unit equation. Ring/module
+comparison is not derivable from that additive fragment alone: current
+ConstantRing.ToposAction / SheafOfModules.NativeCoefficientAction already
+binds the original module and additive adjunctions, and current
+NativeAdjunctionUnderlying proves the required original unit/mate equation.
+
+Below Scheme, retain current generic K-injective derivation, localization,
+unit/mate laws, imageComparison, and cofilteredComparison. The archive's
+Compactification/ComparisonAlgebra is byte-identical to current
+CategoryTheory/Functor/ImageComparison and must not create a duplicate owner.
+The existing native InvertibleDiagram already contains the cofiltered proof.
+
+The candidate first component contains nine generic files and two adapters.
+Seven generic files are unchanged archive amplitude/window/dimension-shift/
+truncation/exact-homology arguments. Computation/Exchange is a new generic
+assembly for RF followed by an exact functor versus an exact functor followed
+by RF', with separate finite all-object bounds. JointConservativity is a new
+generic passage from a jointly conservative exact coefficient family to its
+original unbounded localizations, using the original homology comparison.
+Every category has one selected derived realization, with independent size
+parameters. Neither new theorem needs a Scheme or a superfluous topos record.
+
+The ProperBaseChange adapter retains the original mate and R4 call and supplies
+them to Exchange. Its public four module models are retained; four proof-only
+abelian models move inside the torsion-bound bridge. EtaleCover supplies the
+actual jointly conservative native coefficient family to JointConservativity.
+All candidate files contain no proof-option changes, budget overrides, sorry,
+new axioms, native_decide, or pin changes. No compilation success is claimed.
+
+Admission and remaining obligations
+FIRST_COMPONENT.json binds each file and its source. The nine generic files
+have a complete import cut against 100 existing native files, with no missing
+internal source imports. The two adapters are staged separately: their absent
+frontier contains 13 named archive modules, including plus/full unit/mate
+normalization. Several of those have archived proof options and must be
+reconciled under the current default before admission, not silently copied.
+
+The six-root archive graph has 3,890 internal files: 3,401 identical native,
+244 stale archive files whose current native versions must be kept, 234 new,
+4 clean deltas, and 7 conflicts. Exact paths and hashes are in the dependency
+and admission manifests. Seven of P6's eight conflicts lie in this graph;
+P6 owns their merge. No intake-marked unaccepted draft enters this graph.
+This last fact is only an inventory property. All source-specific geometric
+proofs still require their actual acceptance/compilation coverage.
+
+FieldComparison is a material lineage exception: archive SHA256 3237122b...
+matches C's frozen accepted-source claim but not D's claimed 0590ef02... bytes
+or its unbound build415 receipt. Only the C lineage can support admission after
+the C owner reconciles it. C2 sharp-dimension and other held drafts remain held.
+
+The next exact action is guarded application and incremental checking of the
+nine generic paths from first-generic-paths.txt, assigned by the principal.
+Then reconcile the 13-file adapter frontier and current R4/P6 interfaces.
+For later choice-dependent endpoints, give compactificationFunctor C only
+C.Xbar's model and the chosen direct-image value only C0's model; model families
+belong to the actual comparison diagram, not the value definition. Preserve
+original units/compositors when doing that migration. No user approval per file
+is proposed. New compiler diagnostics and repairs stay with this author.
+
+No unbounded arbitrary-ring internal-torsion theorem, C3/C4 closure,
+associativity package, or full D acceptance follows from this return.
+
+Production continuation: changed assignment, 2026-10-28
+The principal subsequently assigned exactly the nine generic paths listed in
+FIRST_COMPONENT.json.first_generic_apply_scope. All nine were absent. Their
+candidate hashes and all 100 existing native dependency hashes matched;
+HEAD/status were stable across the guard. The nine fixed sources were applied
+to native HEAD 54d6974ace11bf7d197aa925cb8cade86db8a24f, with status entries
+1031 -> 1040. APPLY_RESULT.json binds this source mutation. The two native
+adapters, their 13-file absent frontier, all geometry, and all conflicts remain
+staged/read-only. The principal's existing compile lane B compiled the coherent
+nine-file union successfully: run remote-c1ed9ead12694bc086ebc2ad247bcac1,
+source 4395a978b043b5b28a18044fb11913490e421f90c41f18ef30d5656a83e92a8b,
+exit 0, group closed, nine fresh frontends and nine successes, zero failures
+or input drift. COMPILATION_RESULT.json records the actual command, modules,
+receipt/log locators, and coverage boundary. No repair was necessary. This
+adds fresh compiler coverage for the nine generic leaves only; it is not
+standalone lint/tests/replay, geometric acceptance, or independent review.
+The old source-only observation is not compilation evidence for this continuation.

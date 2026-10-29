@@ -1,0 +1,21 @@
+{
+  "run": "remote-44791797b8fd4f7095aedd681672d2f0",
+  "input_sha256": "af771a01a7a640de3f7f3942858c5c226c9c65ed478304836e0f973275b6c542",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-44791797b8fd4f7095aedd681672d2f0/build.log",
+  "log_sha256": "ef846d427e1a85845d353d5a7827614594433f194b43c150195c73cc253bf948",
+  "log_utf8_bytes": 21176,
+  "log_unicode_characters": 20942,
+  "remaining_user_units": {
+    "SECTION_BODY": 5492,
+    "EXPLICIT_NATTRANS_EXT": 1888,
+    "CORE_BODY": 84131,
+    "COMPARISON_READY": 76828,
+    "FACTORY_BOUND": 75567,
+    "MAPS_BOUND": 35551,
+    "VALUES_BOUND": 34518,
+    "RELATIVE_CONSTRUCTOR_BOUND": 33553,
+    "AFTER_AST_INSPECTION": 29648
+  },
+  "qualified_conclusion": "V33 measured5492 remaining at section proof-body entry (~194508 pre-body units in the current Core context, NOT independently isolated statement cost); explicit ext advances to1888. HC inspection reached after earlier producer failure; differing object-projection heads recorded, not a proved dictionary mismatch.",
+  "coverage": "Diagnostic syntax comparison reached and is usable on its actual expected/producer proposition types. The preceding section producer proof failed; no proof/prefix/fullGlobal/callers pass."
+}

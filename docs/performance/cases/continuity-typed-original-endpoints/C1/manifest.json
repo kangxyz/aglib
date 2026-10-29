@@ -1,0 +1,247 @@
+{
+  "question": "Existing typed-original-endpoint/value method at fixed coefficient insertion and related H normalization",
+  "status": "Small fixed R-only existing-evidence packet; both final native leaves closed",
+  "sources": [
+    {
+      "role": "failed-stalk-907f.lean",
+      "original_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean",
+      "fixed_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/performance-typed-original-leg/failed-stalk-907f.lean",
+      "sha256": "907f5d4925ca2e53922871f3e05f04eae772944cd2ec03af85f1116f52bef7d0"
+    },
+    {
+      "role": "passed-stalk-fdbf.lean",
+      "original_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/versions/v7/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean",
+      "fixed_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/performance-typed-original-leg/passed-stalk-fdbf.lean",
+      "sha256": "fdbfd36520e1ef8044121fd1cd90e36955de50fc5f68b099130cb19258263b2f"
+    },
+    {
+      "role": "failed-root-b36.lean",
+      "original_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/native-colimit-leg-normalization-staging/versions/v1/after.lean",
+      "fixed_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/performance-typed-original-leg/failed-root-b36.lean",
+      "sha256": "b36f5a050be42ff4748c1f6c3c743e267eac7de08056947c8d7f0dcb9842546b"
+    },
+    {
+      "role": "passed-root-3fb.lean",
+      "original_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/native-colimit-leg-normalization-staging/versions/v2/after.lean",
+      "fixed_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/performance-typed-original-leg/passed-root-3fb.lean",
+      "sha256": "3fb1fd622aea0a1b40d3a17365666e07dcfdd9e32e0c39a2320f506de0390379"
+    }
+  ],
+  "public_target_correspondence": {
+    "stalk_original_header_byte_equal": true,
+    "header_sha256": "488f2b6d7cefac18e77d43d6759f91b51a1ad8d3eb96145012cd2c942b265515",
+    "original_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/adjacent-constancy/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean",
+    "typed_value": "Same original pullbackConeCoefficientComponent.inv at literal C.obj i; exact original structural triangle/insertion value, no new model."
+  },
+  "evidence": [
+    {
+      "role": "failed_stalk",
+      "job_id": "960222c105fb4095b940a5117ede023c",
+      "source": "a253e6ed716136ec332947626d58cee94c46278bf53a7aaecdba9014b4938d09",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient",
+      "module_sha256": "907f5d4925ca2e53922871f3e05f04eae772944cd2ec03af85f1116f52bef7d0",
+      "frontend_log_lines": [
+        "\u2716 [3538/3539] Building Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient (379s)"
+      ],
+      "shared_exit_code": 1,
+      "module_outcome": "failure",
+      "mixed_scope": "Use own module outcome; command may name separately owned modules.",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCokernelTransitions",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization",
+        "Aglib.Algebra.Category.Grp.Resize.Diagram",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramReindex",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyDiagramUlift",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.CohomologyUliftComponents"
+      ],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/receipt.json",
+      "receipt_sha256": "ddbdc8e43a0445270d33bf84e948009daf2821a4cc994496bf126b68d08906ce",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/compiler-events.jsonl",
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "config_fingerprints": {
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      }
+    },
+    {
+      "role": "passed_stalk_and_failed_root",
+      "job_id": "18bae28d3d084929b9ec85394374e177",
+      "source": "660b69e688696550db9b21c3ea29ca60b28e24e9295e35cfcd22c9b427469c84",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient",
+      "module_sha256": "fdbfd36520e1ef8044121fd1cd90e36955de50fc5f68b099130cb19258263b2f",
+      "frontend_log_lines": [
+        "\u2714 [3379/3380] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient (353s)"
+      ],
+      "shared_exit_code": 1,
+      "module_outcome": "PASS",
+      "mixed_scope": "Stalk passed and Rootb36 rw43 failed in this shared job; unrelated C2 style failure is not attributed here.",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization"
+      ],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18bae28d3d084929b9ec85394374e177/receipt.json",
+      "receipt_sha256": "6d2982fbb67de2902d3ce9e4773f2aff2d9df984ca5d355e1c2db16d6d273922",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18bae28d3d084929b9ec85394374e177/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18bae28d3d084929b9ec85394374e177/compiler-events.jsonl",
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "config_fingerprints": {
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      }
+    },
+    {
+      "role": "passed_root",
+      "job_id": "d428d60042ce45b8abdf7914143ee304",
+      "source": "56d823510a95e073522f036d1163283d30ee7c7ea07b205c8dbed06c55acadf6",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization",
+      "module_sha256": "3fb1fd622aea0a1b40d3a17365666e07dcfdd9e32e0c39a2320f506de0390379",
+      "frontend_log_lines": [
+        "\u2714 [3378/3380] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization (11s)"
+      ],
+      "shared_exit_code": 0,
+      "module_outcome": "PASS",
+      "mixed_scope": "Use own module outcome; command may name separately owned modules.",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCohomologyNormalization"
+      ],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/receipt.json",
+      "receipt_sha256": "0e240eaeab63c845e680b59c9a1b2d8304c77a11c77c25241f3dd48d63ec0312",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/compiler-events.jsonl",
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "config_fingerprints": {
+        "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+        "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      }
+    }
+  ],
+  "settings": {
+    "Lean": "4.34.1, exact executable/version/pin hashes in receipt projections",
+    "mathlib_assignment_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "budgets": "Task/library standard200000; no added production heartbeat/recursion option, linter suppression or flag in these repairs. Actual command/config fingerprints retained.",
+    "actual_profile_limits": "See per-job exact profiles: jobs2/threads4/lean_memory_mib12800/rss_limit_mib32768; no per-tactic resource attribution."
+  },
+  "method_sources": [
+    "docs/PERFORMANCE.md#conversion-boundaries",
+    "docs/performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md"
+  ],
+  "limits": [
+    "379s and353s are whole frontend observations with different outcomes/sources, not controlled speedup",
+    "Rootb36 failure/Root3fb pass are separate module context, not Stalk proof coverage",
+    "No exact kernel reduction pair, whole-library speedup or new execution/check/profiling claim"
+  ],
+  "files": [
+    {
+      "name": "failed-root-b36.lean",
+      "sha256": "b36f5a050be42ff4748c1f6c3c743e267eac7de08056947c8d7f0dcb9842546b",
+      "bytes": 2066
+    },
+    {
+      "name": "stalk-repair.diff",
+      "sha256": "6712456d2d8f7f19cf28ab2ffaf82d461a764b6aac61aebe332c88687954bc5d",
+      "bytes": 1927
+    },
+    {
+      "name": "NOTES.txt",
+      "sha256": "aa47eb814a76209721d76323dba2676951c7379937ea7a897c4d6c2bb2577de5",
+      "bytes": 1998
+    },
+    {
+      "name": "passed-stalk-fdbf.lean",
+      "sha256": "fdbfd36520e1ef8044121fd1cd90e36955de50fc5f68b099130cb19258263b2f",
+      "bytes": 8716
+    },
+    {
+      "name": "root-repair.diff",
+      "sha256": "0575d645c58485c3084f987957995f368bf6564750b9e27848e3f919e33ead70",
+      "bytes": 1060
+    },
+    {
+      "name": "failed-root-context.txt",
+      "sha256": "7f9c2527fde619834623262ba646b9226d9187410de9244c9867d70312befb57",
+      "bytes": 2580
+    },
+    {
+      "name": "passed-root-3fb.lean",
+      "sha256": "3fb1fd622aea0a1b40d3a17365666e07dcfdd9e32e0c39a2320f506de0390379",
+      "bytes": 2623
+    },
+    {
+      "name": "failed-stalk-feedback.txt",
+      "sha256": "3cc69a508549c365b74803eb939880cd3b315412b00c20b5b824846d1794d117",
+      "bytes": 3801
+    },
+    {
+      "name": "failed-stalk-907f.lean",
+      "sha256": "907f5d4925ca2e53922871f3e05f04eae772944cd2ec03af85f1116f52bef7d0",
+      "bytes": 8460
+    }
+  ],
+  "created_utc": "2026-10-27T09:56:29.489817+00:00"
+}

@@ -1,0 +1,35 @@
+  [Elab.definition.header] [6.780536] ✅️ AlgebraicGeometry.Scheme.Cohomology.subsingleton_sheafHPrime_of_moduleResolution_sections_exact
+    [Elab.step] [5.078727] ✅️ expected type: Sort ?u.9, term
+        ∀ n : ℕ, (((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex).ExactAt (n + 1)
+      [Elab.step] [5.078647] ✅️ expected type: Sort ?u.9, term
+          ∀ (n : ℕ), (((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex).ExactAt (n + 1)
+        [Elab.step] [5.078008] ✅️ expected type: Prop, term
+            (((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex).ExactAt (n + 1)
+          [Elab.step] [5.066726] ✅️ expected type: <not-available>, term
+              (((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex)
+            [Elab.step] [5.066661] ✅️ expected type: <not-available>, term
+                ((sectionsFunctor X U).mapHomologicalComplex _).obj I.cocomplex
+              [Elab.step] [5.055023] ✅️ expected type: <not-available>, term
+                  ((sectionsFunctor X U).mapHomologicalComplex _)
+                [Elab.step] [5.054961] ✅️ expected type: <not-available>, term
+                    (sectionsFunctor X U).mapHomologicalComplex _
+                  [Elab.app.args] [5.053315] ✅️ elabAppArgs (2 args) `@Functor.mapHomologicalComplex`
+                    [Elab.app.finalize] [5.051639] ✅️ (sectionsFunctor X U).mapHomologicalComplex
+                          ?m.13 : HomologicalComplex X.Modules ?m.13 ⥤ HomologicalComplex AddCommGrpCat ?m.13
+                      [Meta.synthInstance] [5.044878] ✅️ (sectionsFunctor X U).PreservesZeroMorphisms
+                        [Meta.synthInstance.apply] [0.112063] ✅️ apply @Functor.instIsHomologicalCompOfIsTriangulated to (sectionsFunctor
+                                X U).IsHomological
+                          [Meta.synthInstance.tryResolve] [0.111668] ✅️ (sectionsFunctor X
+                                  U).IsHomological ≟ (SheafOfModules.evaluation X.ringCatSheaf (op U) ⋙
+                                  forget₂ (ModuleCat ↑(X.ringCatSheaf.obj.obj (op U))) AddCommGrpCat).IsHomological
+    [Elab.step] [1.683829] ✅️ expected type: Prop, term
+        Subsingleton (Sheaf.H'.{u + 1} (moduleAddSheaf X M) (n + 1) U)
+      [Elab.app.args] [1.683017] ✅️ elabAppArgs (1 args) `Subsingleton`
+        [Elab.step] [1.622367] ✅️ expected type: Sort ?u.34, term
+            (Sheaf.H'.{u + 1} (moduleAddSheaf X M) (n + 1) U)
+          [Elab.step] [1.622302] ✅️ expected type: Sort ?u.34, term
+              Sheaf.H'.{u + 1} (moduleAddSheaf X M) (n + 1) U
+            [Elab.app.args] [1.622104] ✅️ elabAppArgs (3 args) `@Sheaf.H'`
+              [Meta.synthInstance] [1.546767] ✅️ HasSheafify (Opens.grothendieckTopology ↥X) AddCommGrpCat
+[Elab.async] [36.473524] ✅️ elaborating proof of AlgebraicGeometry.Scheme.Cohomology.subsingleton_sheafHPrime_of_moduleResolution_sections_exact
+  [Elab.definition.value] [36.434128] ✅️ AlgebraicGeometry.Scheme.Cohomology.subsingleton_sheafHPrime_of_moduleResolution_sections_exact

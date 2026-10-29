@@ -1,0 +1,418 @@
+{
+  "question": "Dominant declarations/phases in the passed Scheme Comparison a9ff, and whether a bounded existing-proof repair is justified.",
+  "basis": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "original_comparison_sha256": "0e1863171bcc6e87933a35b2c6292301da8070fd8617717b5bf9335610572375"
+  },
+  "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+  "source_content_sha256": "94ff0139b4121437ff5e1fe111ffcf557a15e479e541a51a1506045fdc2721a8",
+  "retained_files": [
+    {
+      "path": "packets/implementation-result.md",
+      "sha256": "b8f4e6414721e73b5d1914433e381ec1d6b7882bba51aa811dda092d11d1fc89",
+      "bytes": 2574,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/implementation-result.md",
+      "source_sha256": "b8f4e6414721e73b5d1914433e381ec1d6b7882bba51aa811dda092d11d1fc89"
+    },
+    {
+      "path": "packets/implementation-result.json",
+      "sha256": "a4d9bcacf35c51e1be132f90cec4a474c5b3082051810aaf1f31c2422b2bd00e",
+      "bytes": 18571,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/implementation-result.json",
+      "source_sha256": "a4d9bcacf35c51e1be132f90cec4a474c5b3082051810aaf1f31c2422b2bd00e"
+    },
+    {
+      "path": "packets/augmentation-manifest.json",
+      "sha256": "8476b06b49fe6dccfc1cbfd0ec1113ca92efcf3cf92952144fbae5525c03d4ac",
+      "bytes": 581,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/augmentation-manifest.json",
+      "source_sha256": "8476b06b49fe6dccfc1cbfd0ec1113ca92efcf3cf92952144fbae5525c03d4ac"
+    },
+    {
+      "path": "packets/section-cycles-manifest.json",
+      "sha256": "88e5d5a4138dafb6cbee69d5df06d4e85b4e4786405595dcabb9418e84154e94",
+      "bytes": 609,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/section-cycles-manifest.json",
+      "source_sha256": "88e5d5a4138dafb6cbee69d5df06d4e85b4e4786405595dcabb9418e84154e94"
+    },
+    {
+      "path": "packets/resolution-rows-manifest.json",
+      "sha256": "fda5f548675ca1990c766ab03ce684c8264fa2cbecc902f4af118e07a2d325e3",
+      "bytes": 661,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/resolution-rows-manifest.json",
+      "source_sha256": "fda5f548675ca1990c766ab03ce684c8264fa2cbecc902f4af118e07a2d325e3"
+    },
+    {
+      "path": "packets/comparison-manifest.json",
+      "sha256": "3b642a7cf25e73c885539b746dcb74c4b3cd2812e235aafff315793cdc914a05",
+      "bytes": 988,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/comparison-manifest.json",
+      "source_sha256": "3b642a7cf25e73c885539b746dcb74c4b3cd2812e235aafff315793cdc914a05"
+    },
+    {
+      "path": "analysis/request.json",
+      "sha256": "38741ed831bea2234f58641a0faa4f96402b0249c45b2cf9fb6b7aab4a2db05d",
+      "bytes": 3541,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/request.json",
+      "source_sha256": "38741ed831bea2234f58641a0faa4f96402b0249c45b2cf9fb6b7aab4a2db05d"
+    },
+    {
+      "path": "analysis/request-v2.json",
+      "sha256": "fee790813b461bdf47371115a9aa4be8068376aa3db21765623bd44be4efa625",
+      "bytes": 5292,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/request-v2.json",
+      "source_sha256": "fee790813b461bdf47371115a9aa4be8068376aa3db21765623bd44be4efa625"
+    },
+    {
+      "path": "analysis/result.md",
+      "sha256": "c6b49b949dcef7014e08ec7de0e5423ff2def5f196af5c388afb07db328c4d09",
+      "bytes": 4983,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/result.md",
+      "source_sha256": "c6b49b949dcef7014e08ec7de0e5423ff2def5f196af5c388afb07db328c4d09"
+    },
+    {
+      "path": "analysis/result.json",
+      "sha256": "d44d55b6b77c78a01c9dad273b427f85e59817eb5e340c18d5a49cec84ab08cc",
+      "bytes": 18564,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/result.json",
+      "source_sha256": "d44d55b6b77c78a01c9dad273b427f85e59817eb5e340c18d5a49cec84ab08cc"
+    },
+    {
+      "path": "analysis/analyze.py",
+      "sha256": "7479bfcde4c55d42871324860452015922375b9c663662a5affd9e3d3c98fd55",
+      "bytes": 7353,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/analyze.py",
+      "source_sha256": "7479bfcde4c55d42871324860452015922375b9c663662a5affd9e3d3c98fd55"
+    },
+    {
+      "path": "analysis/frames.json",
+      "sha256": "a46efc6d2ab09b593d9bd67cc2b43f5a8eed0a7e363312eca85535bbc400e380",
+      "bytes": 4120787,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/frames.json",
+      "source_sha256": "a46efc6d2ab09b593d9bd67cc2b43f5a8eed0a7e363312eca85535bbc400e380"
+    },
+    {
+      "path": "diagnostic/source.lean",
+      "sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+      "bytes": 52232,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/source.lean",
+      "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a"
+    },
+    {
+      "path": "diagnostic/Comparison.setup.json",
+      "sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159",
+      "bytes": 2501520,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/Comparison.setup.json",
+      "source_sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159"
+    },
+    {
+      "path": "diagnostic/delivery.json",
+      "sha256": "9a28123dda100892d83aa2558887e72d575700a3bb4cd50b1005b28b38df3c85",
+      "bytes": 3584,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/delivery.json",
+      "source_sha256": "9a28123dda100892d83aa2558887e72d575700a3bb4cd50b1005b28b38df3c85"
+    },
+    {
+      "path": "diagnostic/profile.json",
+      "sha256": "639c073f6909f23656c0ec016077a2a19f9df1a8c6169415b60b95c08dd966f0",
+      "bytes": 2158,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.json",
+      "source_sha256": "639c073f6909f23656c0ec016077a2a19f9df1a8c6169415b60b95c08dd966f0"
+    },
+    {
+      "path": "diagnostic/preparation.json",
+      "sha256": "ce5fde8277a532993fdd1e206e674e7ec355f1167037e94504f8fa958fbdc0f9",
+      "bytes": 2063,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/preparation.json",
+      "source_sha256": "ce5fde8277a532993fdd1e206e674e7ec355f1167037e94504f8fa958fbdc0f9"
+    },
+    {
+      "path": "diagnostic/profile.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stderr.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "diagnostic/setup.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/setup.stderr.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native/receipt.json",
+      "sha256": "aca0fd3774794c86edee269034306d2008866959438abfba1619fc13b6f5432d",
+      "bytes": 18125,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/receipt.json",
+      "source_sha256": "aca0fd3774794c86edee269034306d2008866959438abfba1619fc13b6f5432d"
+    },
+    {
+      "path": "native/build.log",
+      "sha256": "7d9c5db86662bf60a4cc7c0a13ff7e9b30d9c900d80fa4e69ff2cfdf1efa7024",
+      "bytes": 2133,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/build.log",
+      "source_sha256": "7d9c5db86662bf60a4cc7c0a13ff7e9b30d9c900d80fa4e69ff2cfdf1efa7024"
+    },
+    {
+      "path": "native/compiler-events.jsonl",
+      "sha256": "d2242dac7ada1e6211534e10559586ebc00e0599cec267cd2f8e6a37ee081a33",
+      "bytes": 2109,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/compiler-events.jsonl",
+      "source_sha256": "d2242dac7ada1e6211534e10559586ebc00e0599cec267cd2f8e6a37ee081a33"
+    },
+    {
+      "path": "source/Aglib/Topology/Sheaves/Cech/Augmentation.lean",
+      "sha256": "26e0420d62881144e636866606b11295b4452518e3d57c0d965f96cb58ec9727",
+      "bytes": 4507,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Topology/Sheaves/Cech/Augmentation.lean",
+      "source_sha256": "26e0420d62881144e636866606b11295b4452518e3d57c0d965f96cb58ec9727"
+    },
+    {
+      "path": "source/Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "sha256": "af4a402c64b33c88fadeed16e76cfbf3f875e3d27abe08fa487dab6e37c67020",
+      "bytes": 2306,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "source_sha256": "af4a402c64b33c88fadeed16e76cfbf3f875e3d27abe08fa487dab6e37c67020"
+    },
+    {
+      "path": "source/Aglib/Topology/Sheaves/Cohomology/SectionCycles.lean",
+      "sha256": "9421e29e3eb6157f51216c1bd9e9f4d357c5c8ca6535ee9d959919cdab3c1faf",
+      "bytes": 9381,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Topology/Sheaves/Cohomology/SectionCycles.lean",
+      "source_sha256": "9421e29e3eb6157f51216c1bd9e9f4d357c5c8ca6535ee9d959919cdab3c1faf"
+    },
+    {
+      "path": "source/Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "sha256": "756f2b94b276878584927ddd9e54f9c659b05980c60763f2397bc194ebb5d372",
+      "bytes": 7426,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "source_sha256": "756f2b94b276878584927ddd9e54f9c659b05980c60763f2397bc194ebb5d372"
+    },
+    {
+      "path": "source/Aglib/Topology/Sheaves/Cech/Resolution.lean",
+      "sha256": "d48f780b8afcd70989aa1d2c5cc24a8ac237c4b0374c543c4d403f6a061cff67",
+      "bytes": 31717,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Topology/Sheaves/Cech/Resolution.lean",
+      "source_sha256": "d48f780b8afcd70989aa1d2c5cc24a8ac237c4b0374c543c4d403f6a061cff67"
+    },
+    {
+      "path": "source/Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "sha256": "32af5984bf3082f4533f155aef53f714c1a9f4038a7dd3b0074c1f8697cc2925",
+      "bytes": 13570,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "source_sha256": "32af5984bf3082f4533f155aef53f714c1a9f4038a7dd3b0074c1f8697cc2925"
+    },
+    {
+      "path": "source/Aglib/Topology/Sheaves/Cech/Comparison.lean",
+      "sha256": "84541fafe679d700362efcb7c93d41bf07c4ec912f82cc981ac0b290947b3a4e",
+      "bytes": 28548,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Topology/Sheaves/Cech/Comparison.lean",
+      "source_sha256": "84541fafe679d700362efcb7c93d41bf07c4ec912f82cc981ac0b290947b3a4e"
+    },
+    {
+      "path": "source/Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+      "bytes": 52232,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a"
+    },
+    {
+      "path": "source/Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean",
+      "sha256": "e3776bb971ea3943fcc010812ed309358d46d7149a2e70b401d903ee1d192f3c",
+      "bytes": 9587,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean",
+      "source_sha256": "e3776bb971ea3943fcc010812ed309358d46d7149a2e70b401d903ee1d192f3c"
+    },
+    {
+      "path": "review/cech-comparison-intrinsic-core.md",
+      "sha256": "182a4db0b6cfe548d3af0b82597f7a8e68c5272431db43971fdc369a1586bdbe",
+      "bytes": 14366,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/cech-comparison-intrinsic-core.md",
+      "source_sha256": "182a4db0b6cfe548d3af0b82597f7a8e68c5272431db43971fdc369a1586bdbe"
+    },
+    {
+      "path": "review/cech-comparison-intrinsic-core.json",
+      "sha256": "e86ce7640376961be550b89dc489f287c17b048b8a86e8809d1f0b1b27fb39af",
+      "bytes": 41688,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/cech-comparison-intrinsic-core.json",
+      "source_sha256": "e86ce7640376961be550b89dc489f287c17b048b8a86e8809d1f0b1b27fb39af"
+    },
+    {
+      "path": "excerpts/stdout-lines-81-174.log",
+      "sha256": "eaf4b9d150039a57bba7a8da557907d09c6128bf38bf9b833a4dd8602116b56a",
+      "bytes": 7639,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        81,
+        174
+      ]
+    },
+    {
+      "path": "excerpts/stdout-lines-179-1130.log",
+      "sha256": "68993111d6bcfae5bb2cb7452ebd4a806e1edbb4802ca7ed61db280cdf570c43",
+      "bytes": 95981,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        179,
+        1130
+      ]
+    },
+    {
+      "path": "excerpts/stdout-lines-65840-65857.log",
+      "sha256": "88a67f86a890ee0de93717a6e6350e2f7847f747e1c53140fa1efcad75d70338",
+      "bytes": 1677,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        65840,
+        65857
+      ]
+    },
+    {
+      "path": "excerpts/stdout-lines-66370-66384.log",
+      "sha256": "2774d68181d94e6f60c83df165baf54d21c80585ad19ea61bc03c78f9fbfc856",
+      "bytes": 1539,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        66370,
+        66384
+      ]
+    },
+    {
+      "path": "excerpts/stdout-lines-67109-67143.log",
+      "sha256": "20a238810029bbe6b68391152f9ecb0bc934987cc98dc2a354087775f588041b",
+      "bytes": 3150,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        67109,
+        67143
+      ]
+    },
+    {
+      "path": "excerpts/stdout-lines-71175-71220.log",
+      "sha256": "19b863bd25e6c00dab03a85285c04f1f4e9da4115913d96958c0da2a747018d4",
+      "bytes": 5126,
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "source_sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "source_lines_inclusive": [
+        71175,
+        71220
+      ]
+    }
+  ],
+  "external_authoritative_evidence": [
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+      "sha256": "bc407f9755a0321e3bcf78280788a0215023716326abe66642c9d1c4597d4f38",
+      "bytes": 66793397
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/setup.stdout.log",
+      "sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159",
+      "bytes": 2501520
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-cech-profile-6536a791.json",
+      "sha256": "2eed2f5f696c7169121c972d004889f9bbf5b5c270beedd461b8d94cae119046",
+      "bytes": 1026890
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/receipt.json",
+      "sha256": "4cab4cca714397a4261c3ee0c08a1cd2e8a391afa2b6cf6af3d99572a5de0bc2",
+      "bytes": 13711
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/build.log",
+      "sha256": "cb465d8af4f70ac5b74db49f8becf9f7c97ab9ec23c6f50b4121287f317641a3",
+      "bytes": 2804
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/compiler-events.jsonl",
+      "sha256": "b94ad680c2c52ccb2806cc5c344eb744620287067fd008f5d7e381c49de4975c",
+      "bytes": 8922
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/receipt.json",
+      "sha256": "ce36ee612586a829e673399321f81c8852b1934ce8fc672b52baf8702dd853d1",
+      "bytes": 13986
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/build.log",
+      "sha256": "fef76463af56a479c0450c6a9172563e4f11bca1358a3eaa591c20a543ec9048",
+      "bytes": 2990
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/compiler-events.jsonl",
+      "sha256": "d99d6ae8b96f92c29e43ac27f8787a59a47cb620a28787dea0ccbf7bf76d28bb",
+      "bytes": 6761
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/receipt.json",
+      "sha256": "ea019c9f64638549da9e4c76050f68e8ffa29138004388b10174d56fc9b2ff96",
+      "bytes": 14556
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/build.log",
+      "sha256": "168eee847fbd208844980392d67f081acbf51845b233c308cb6e2dd9d1f68e47",
+      "bytes": 5640
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/compiler-events.jsonl",
+      "sha256": "199801095ce7e2d2409ec77d320c2c95e2fb49f5669cd78afed0739079fbc374",
+      "bytes": 6542
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/receipt.json",
+      "sha256": "892e6141af9fd82e233655559b54afb77e5e744bdd9ae9f1bfb8ca51cd088093",
+      "bytes": 13418
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/build.log",
+      "sha256": "ea5abdaf5486a5727675096595bab4a4a781af32f9ef4591226d368362e91dc6",
+      "bytes": 6733
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/compiler-events.jsonl",
+      "sha256": "8a78c583e1ce38cbc0ba44f6eee4f7076e19505e26f31eb6776d54c93cb7ce25",
+      "bytes": 4355
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/receipt.json",
+      "sha256": "153d22b8aa81c91a6990a75af654a7bf91c43b0db695b6a6289f67842a50a85e",
+      "bytes": 13357
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/build.log",
+      "sha256": "bf3dc2fca3f4c493b2cb6c608444ffa1c0447bc73fb8075eeec9d1743cc755ce",
+      "bytes": 5004
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/compiler-events.jsonl",
+      "sha256": "7d794bc7def9bf8d1f56edc3958bcd878ce902797ebeec39efa263ce9181f08b",
+      "bytes": 4446
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/receipt.json",
+      "sha256": "f69cee2d8c26cac3454ecf1861a31c074c07a386080dba44b051a902955d8dee",
+      "bytes": 12438
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/build.log",
+      "sha256": "ea7192f5df9c02681f9bd2cc97435a9fc898a2317a1961879adfb405354ce8f4",
+      "bytes": 119
+    },
+    {
+      "locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/compiler-events.jsonl",
+      "sha256": "426736ce7118917f0bb7d663c89ad7a5532b5b27da38e35537bb7f1407a6b645",
+      "bytes": 2208
+    }
+  ],
+  "boundary": "Full raw profiler trace and full-package source manifest remain at durable research workspace locators. No new Lean execution or mathematical acceptance. Original packet pending wording is historical; diagnostic result supersedes only its profile-pending statement."
+}

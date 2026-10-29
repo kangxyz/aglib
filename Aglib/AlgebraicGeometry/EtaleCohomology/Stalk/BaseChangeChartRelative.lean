@@ -14,6 +14,9 @@ between a base-change map and its chart-relative base-change map. Both
 coefficient comparisons are the original inverse-image square isomorphisms.
 The eight derived models are independent; no Cartesian or invertibility
 condition is used.
+
+The ordinary square is intrinsic. Separate compatibility companions retain the
+literal original transports in all eight independently supplied derived models.
 -/
 
 @[expose] public noncomputable section
@@ -132,11 +135,7 @@ private theorem inverseImageSquareIso_inv_factor_whole {X S Y T : Scheme.{u}}
 
 private theorem higherBaseChangeMap_transport_whole
     {X S Y T : Scheme.{u}}
-    [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-    [HasDerivedCategory.{dW} (AbelianSheaf.{u, u + 1} Y)]
-    [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} T)]
-    (f : X ⟶ S) (fT : Y ⟶ T) (a₁ a₂ : T ⟶ S) (k₁ k₂ : Y ⟶ X)
+            (f : X ⟶ S) (fT : Y ⟶ T) (a₁ a₂ : T ⟶ S) (k₁ k₂ : Y ⟶ X)
     (h₁ : fT ≫ a₁ = k₁ ≫ f) (h₂ : fT ≫ a₂ = k₂ ≫ f)
     (ha : a₂ = a₁) (hk : k₂ = k₁) (q : ℕ) :
     Functor.whiskerLeft (higherDirectImage f q)
@@ -152,15 +151,9 @@ private theorem higherBaseChangeMap_transport_whole
     (fun a k => fT ≫ a = k ≫ f)
     (fun a k h => higherBaseChangeMap f fT a k h q) a₁ a₂ k₁ k₂ h₁ h₂ ha hk
 
+section Ordinary
+
 variable {X S X' S' Z U W V : Scheme.{u}}
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
-  [HasDerivedCategory.{dZ} (AbelianSheaf.{u, u + 1} Z)]
-  [HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U)]
-  [HasDerivedCategory.{dW} (AbelianSheaf.{u, u + 1} W)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} V)]
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f)
   (fU : Z ⟶ U) (fV : W ⟶ V) (aU : U ⟶ S) (aV : V ⟶ S')
@@ -171,7 +164,7 @@ variable {X S X' S' Z U W V : Scheme.{u}}
 
 /-- Whole interchange of the four original higher exchanges, before a coefficient
 is chosen. Both comparisons are the original inverse-image square isomorphisms,
-and all eight derived models remain arbitrary and independent. -/
+with an intrinsic ordinary higher map at every edge. -/
 theorem higherBaseChangeMap_chartRelative_square_whole (q : ℕ) :
     ((TwoSquare.mk (higherDirectImage f q) (inverseImage g') (inverseImage g)
         (higherDirectImage f' q) (higherBaseChangeMap f f' g g' h q)).vComp
@@ -183,6 +176,14 @@ theorem higherBaseChangeMap_chartRelative_square_whole (q : ℕ) :
       (TwoSquare.mk (higherDirectImage fU q) (inverseImage r) (inverseImage b)
         (higherDirectImage fV q) (higherBaseChangeMap fU fV b r hR q))).whiskerLeft
           (inverseImageSquareIso piU piV g' r hr).inv := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} Z)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} U)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} W)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} V)
   let h₁ : fV ≫ (b ≫ aU) = (r ≫ piU) ≫ f := by
     rw [← Category.assoc, hR, Category.assoc, hU, ← Category.assoc]
   let h₂ : fV ≫ (aV ≫ g) = (piV ≫ g') ≫ f := by
@@ -224,5 +225,56 @@ theorem higherBaseChangeMap_chartRelative_square (q : ℕ)
   simpa only [TwoSquare.whiskerRight_app, TwoSquare.whiskerLeft_app,
     TwoSquare.vComp_app, TwoSquare.mk, TwoSquare.natTrans, Category.assoc] using
     NatTrans.congr_app hwhole F
+
+end Ordinary
+
+section SelectedModels
+
+variable {X S X' S' Z U W V : Scheme.{u}}
+  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
+  [HasDerivedCategory.{dZ} (AbelianSheaf.{u, u + 1} Z)]
+  [HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U)]
+  [HasDerivedCategory.{dW} (AbelianSheaf.{u, u + 1} W)]
+  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} V)]
+  (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+  (h : f' ≫ g = g' ≫ f)
+  (fU : Z ⟶ U) (fV : W ⟶ V) (aU : U ⟶ S) (aV : V ⟶ S')
+  (piU : Z ⟶ X) (piV : W ⟶ X') (b : V ⟶ U) (r : W ⟶ Z)
+  (hU : fU ≫ aU = piU ≫ f) (hV : fV ≫ aV = piV ≫ f')
+  (hb : aV ≫ g = b ≫ aU) (hr : piV ≫ g' = r ≫ piU)
+  (hR : fV ≫ b = r ≫ fU)
+
+/-- The literal original relative square in all eight independently selected models. -/
+theorem higherBaseChangeMapFromDerived_chartRelative_square_whole (q : ℕ) :
+    ((TwoSquare.mk (higherDirectImage f q) (inverseImage g') (inverseImage g)
+        (higherDirectImage f' q) (higherBaseChangeMapFromDerived f f' g g' h q)).vComp
+      (TwoSquare.mk (higherDirectImage f' q) (inverseImage piV) (inverseImage aV)
+        (higherDirectImage fV q) (higherBaseChangeMapFromDerived f' fV aV piV hV q))).whiskerRight
+          (inverseImageSquareIso aU aV g b hb).inv =
+      ((TwoSquare.mk (higherDirectImage f q) (inverseImage piU) (inverseImage aU)
+        (higherDirectImage fU q) (higherBaseChangeMapFromDerived f fU aU piU hU q)).vComp
+      (TwoSquare.mk (higherDirectImage fU q) (inverseImage r) (inverseImage b)
+        (higherDirectImage fV q) (higherBaseChangeMapFromDerived fU fV b r hR q))).whiskerLeft
+          (inverseImageSquareIso piU piV g' r hr).inv := by
+  simpa only [higherBaseChangeMapFromDerived_eq] using
+    higherBaseChangeMap_chartRelative_square_whole
+      f f' g g' h fU fV aU aV piU piV b r hU hV hb hr hR q
+
+/-- The original selected-model relative square retains every coefficient component. -/
+theorem higherBaseChangeMapFromDerived_chartRelative_square (q : ℕ)
+    (F : AbelianSheaf.{u, u + 1} X) :
+    (inverseImageSquareIso aU aV g b hb).inv.app ((higherDirectImage f q).obj F) ≫
+        (inverseImage aV).map ((higherBaseChangeMapFromDerived f f' g g' h q).app F) ≫
+        (higherBaseChangeMapFromDerived f' fV aV piV hV q).app ((inverseImage g').obj F) =
+      (inverseImage b).map ((higherBaseChangeMapFromDerived f fU aU piU hU q).app F) ≫
+        (higherBaseChangeMapFromDerived fU fV b r hR q).app ((inverseImage piU).obj F) ≫
+        (higherDirectImage fV q).map ((inverseImageSquareIso piU piV g' r hr).inv.app F) := by
+  simpa only [higherBaseChangeMapFromDerived_eq] using
+    higherBaseChangeMap_chartRelative_square f f' g g' h fU fV aU aV piU piV b r hU hV hb hr hR q F
+
+end SelectedModels
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

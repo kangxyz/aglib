@@ -1,0 +1,12 @@
+--- v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean
++++ v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean
+@@ -27,7 +27,8 @@
+         eqToHom (congrArg
+           (fun k : X₁ ⟶ X₀ => (inverseImage k).obj ((inverseImage f₀).obj F)) eh) ≫
+           squareCoefficientMap f₀ f₁ g h e φ := by
+-  simpa only [schemeSquareCoefficientMap_eq_squareCoefficientMap, schemeLeft_eq_inverseImage] using
++  simpa only [schemeSquareCoefficientMap_eq_squareCoefficientMap, schemeLeft_eq_inverseImage,
++    Quiver.Hom.unop_op] using
+     schemeAdjunctionData.squareCoefficientMap_transport f₀.op f₁.op g.op g'.op h.op h'.op
+       (congrArg Quiver.Hom.op eg) (congrArg Quiver.Hom.op eh)
+       (congrArg Quiver.Hom.op e) (congrArg Quiver.Hom.op e') φ

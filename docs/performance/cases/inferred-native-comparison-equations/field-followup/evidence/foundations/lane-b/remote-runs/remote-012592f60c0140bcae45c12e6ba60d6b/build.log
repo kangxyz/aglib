@@ -1,0 +1,59 @@
+✔ [3685/3711] Built Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Coherence (6.8s)
+✔ [3686/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleComparisons (10s)
+✔ [3687/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleIsomorphism (3.2s)
+✔ [3688/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModulePullbackCoherence (4.7s)
+✔ [3689/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianBaseChange (4.3s)
+✔ [3690/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleRefinementCoherence (3.2s)
+✔ [3691/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageCoherence (7.4s)
+✔ [3692/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleValuedDirectImageSquare (13s)
+✔ [3693/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.RefinementComparison (8.7s)
+✔ [3694/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleInverseImageCoherence (4.2s)
+✔ [3695/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeMate (4.4s)
+✔ [3696/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleIdentityCoherence (8.7s)
+✔ [3697/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageValued (6.7s)
+✔ [3698/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.BaseChange (11s)
+✔ [3699/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleDirectImageSquareValued (5.6s)
+✔ [3700/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Unbounded.StructuralComparisons (9.5s)
+✔ [3701/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangePasting (14s)
+✖ [3702/3711] Building Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleEtaleExchangeMate (6.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-012592f60c0140bcae45c12e6ba60d6b/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean:58:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq
+    ((moduleSheafEquivalence S Λ).inverse.obj ((moduleDirectImage (pullback.snd g f) Λ ⋙ moduleDirectImage f Λ).obj N) ⟶
+      ((moduleSheafEquivalence (pullback g f) Λ).inverse ⋙
+            moduleValuedDirectImage (pullback.fst g f) Λ ⋙ moduleValuedDirectImage g Λ).obj
+        N)
+    ((moduleSheafEquivalence S Λ).inverse.map
+        ((moduleDirectImageSquareIso Λ f (pullback.fst g f) g (pullback.snd g f) ⋯).hom.app N) ≫
+      (ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompRightIso (siteBaseChange g) (siteBaseChange (pullback.fst g f))
+              S.smallEtaleTopology T.smallEtaleTopology (pullback g f).smallEtaleTopology Λ).hom.app
+        N)
+    ((ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompRightIso (siteBaseChange f) (siteBaseChange (pullback.snd g f))
+              S.smallEtaleTopology X.smallEtaleTopology (pullback g f).smallEtaleTopology Λ).hom.app
+        N ≫
+      (moduleValuedDirectImageSquareIso f (pullback.fst g f) g (pullback.snd g f) ⋯ Λ).hom.app
+        ((moduleSheafEquivalence (pullback g f) Λ).inverse.obj N))
+but is expected to have type
+  @Eq
+    ((moduleSheafEquivalence S Λ).inverse.obj ((moduleDirectImage (pullback.snd g f) Λ ⋙ moduleDirectImage f Λ).obj N) ⟶
+      (moduleValuedDirectImage g Λ).obj
+        (((moduleSheafEquivalence (pullback g f) Λ).inverse ⋙ moduleValuedDirectImage (pullback.fst g f) Λ).obj N))
+    ((moduleSheafEquivalence S Λ).inverse.map
+        ((moduleDirectImageSquareIso Λ f (pullback.fst g f) g (pullback.snd g f) ⋯).hom.app N) ≫
+      (moduleDirectImageComparison g Λ).hom.app ((moduleDirectImage (pullback.fst g f) Λ).obj N) ≫
+        (moduleValuedDirectImage g Λ).map ((moduleDirectImageComparison (pullback.fst g f) Λ).hom.app N))
+    ((moduleDirectImageComparison f Λ).hom.app ((moduleDirectImage (pullback.snd g f) Λ).obj N) ≫
+      (moduleValuedDirectImage f Λ).map ((moduleDirectImageComparison (pullback.snd g f) Λ).hom.app N) ≫
+        (moduleValuedDirectImageSquareIso f (pullback.fst g f) g (pullback.snd g f) ⋯ Λ).hom.app
+          ((moduleSheafEquivalence (pullback g f) Λ).inverse.obj N))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 27
+✔ [3703/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field (122s)
+✔ [3704/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleSourceExchange (90s)
+✔ [3705/3711] Built Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeSourcePasting (28s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleEtaleExchangeMate
+error: build failed

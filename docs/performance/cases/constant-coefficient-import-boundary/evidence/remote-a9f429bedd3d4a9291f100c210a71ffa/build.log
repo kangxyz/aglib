@@ -1,0 +1,218 @@
+✖ [3549/3658] Building Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy (2.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-a9f429bedd3d4a9291f100c210a71ffa/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.setup.json --json
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:132:49: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (D.left (g ≫ r)).map φ ≫ (D.leftCompIso g r).hom.app G
+in the target expression
+  (𝟙 (D.left (f ≫ g ≫ r))).app F ≫
+      (D.leftCompIso f (g ≫ r)).hom.app F ≫
+        ((D.left (g ≫ r)).map φ ≫ (𝟙 (D.left (g ≫ r))).app G) ≫ (D.leftCompIso g r).hom.app G ≫ (D.left r).map ψ =
+    (eqToHom ⋯).app F ≫
+      (D.leftCompIso (f ≫ g) r).hom.app F ≫
+        (D.left r).map ((D.leftCompIso f g).hom.app F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ
+
+case refl.refl
+J : Type uJ
+inst✝¹ : Category.{vJ, uJ} J
+A : J → Type uA
+inst✝ : (j : J) → Category.{vA, uA} (A j)
+D : AdjunctionData A
+hD : D.Coherent
+x y z t : J
+f : x ⟶ y
+g : y ⟶ z
+r : z ⟶ t
+F : A x
+G : A y
+H : A z
+φ : (D.left f).obj F ⟶ G
+ψ : (D.left g).obj G ⟶ H
+hn :
+  (D.left (g ≫ r)).map φ ≫ (D.leftCompIso g r).hom.app G =
+    (D.leftCompIso g r).hom.app ((D.left f).obj F) ≫ (D.left g ⋙ D.left r).map φ
+ha :
+  (D.leftCompIso (f ≫ g) r).hom.app F ≫ (D.left r).map ((D.leftCompIso f g).hom.app F) =
+    eqToHom ⋯ ≫ (D.leftCompIso f (g ≫ r)).hom.app F ≫ (D.leftCompIso g r).hom.app ((D.left f).obj F)
+ht :
+  eqToHom ⋯ ≫ (D.leftCompIso (f ≫ g) r).hom.app F ≫ (D.left r).map ((D.leftCompIso f g).hom.app F) =
+    eqToHom ⋯ ≫ eqToHom ⋯ ≫ (D.leftCompIso f (g ≫ r)).hom.app F ≫ (D.leftCompIso g r).hom.app ((D.left f).obj F)
+ha' :
+  (D.leftCompIso f (g ≫ r)).hom.app F ≫ (D.leftCompIso g r).hom.app ((D.left f).obj F) =
+    eqToHom ⋯ ≫ (D.leftCompIso (f ≫ g) r).hom.app F ≫ (D.left r).map ((D.leftCompIso f g).hom.app F)
+⊢ (𝟙 (D.left (f ≫ g ≫ r))).app F ≫
+      (D.leftCompIso f (g ≫ r)).hom.app F ≫
+        ((D.left (g ≫ r)).map φ ≫ (𝟙 (D.left (g ≫ r))).app G) ≫ (D.leftCompIso g r).hom.app G ≫ (D.left r).map ψ =
+    (eqToHom ⋯).app F ≫
+      (D.leftCompIso (f ≫ g) r).hom.app F ≫
+        (D.left r).map ((D.leftCompIso f g).hom.app F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:131:27: This simp argument is unused:
+  Category.id_comp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eqToHom_refl, Functor.map_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:148:2: Type mismatch: After simplification, term
+  Eq.symm (leftCompIso_assoc_hom D hD f a q F)
+ has type
+  eqToHom ⋯ ≫ (D.leftCompIso f (a ≫ q)).hom.app F ≫ (D.leftCompIso a q).hom.app ((D.left f).obj F) =
+    (D.leftCompIso (f ≫ a) q).hom.app F ≫ (D.left q).map ((D.leftCompIso f a).hom.app F)
+but is expected to have type
+  (eqToHom ⋯ ≫ (D.leftCompIso f (a ≫ q)).hom.app F) ≫ (D.leftCompIso a q).hom.app ((D.left f).obj F) =
+    (D.leftCompIso (f ≫ a) q).hom.app F ≫ (D.left q).map ((D.leftCompIso f a).hom.app F)
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:221:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.286 ≫ ?f
+in the target expression
+  𝟙 ((D.left l).obj F) ≫ (D.triangleIso l (b.π.app j) (c.ι.app j) ⋯).hom.app F ≫ eqToHom ⋯ =
+    ((D.triangleIso l (b.π.app i) (c.ι.app i) ⋯).hom.app F ≫ eqToHom ⋯) ≫ C.map a
+
+J : Type uJ
+inst✝² : Category.{vJ, uJ} J
+A : J → Type uA
+inst✝¹ : (j : J) → Category.{vA, uA} (A j)
+D : AdjunctionData A
+hD : D.Coherent
+I : Type uI
+inst✝ : Category.{vI, uI} I
+Y : I ⥤ J
+b : Limits.Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : A b.pt
+C : I ⥤ A c.pt
+hobj : ∀ (i : I), C.obj i = (D.left (c.ι.app i)).obj ((D.left (b.π.app i)).obj F)
+hmap :
+  ∀ {i j : I} (a : i ⟶ j),
+    C.map a =
+      eqToHom ⋯ ≫
+        D.triangleCoefficientMap (Y.map a) (c.ι.app i) (c.ι.app j) ⋯
+            ((D.triangleIso (b.π.app j) (b.π.app i) (Y.map a) ⋯).inv.app F) ≫
+          eqToHom ⋯
+i j : I
+a : i ⟶ j
+⊢ 𝟙 ((D.left l).obj F) ≫ (D.triangleIso l (b.π.app j) (c.ι.app j) ⋯).hom.app F ≫ eqToHom ⋯ =
+    ((D.triangleIso l (b.π.app i) (c.ι.app i) ⋯).hom.app F ≫ eqToHom ⋯) ≫ C.map a
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:210:4: (kernel) declaration has metavariables 'CategoryTheory.InjectiveSystem.AdjunctionData.fixedCoefficientIso'
+✔ [3839/3860] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberTransport (3.9s)
+✔ [3849/3865] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.BaseRestriction (3.5s)
+✔ [3853/3865] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SectionScalars (7.8s)
+✖ [3854/3866] Building Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveDescent (6.4s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-a9f429bedd3d4a9291f100c210a71ffa/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.lean:25:2: Type mismatch
+  liftAdditiveTransport_isSheaf (etaleTopology.over X) (homPresheaf X F) ?m.18 ?m.19 ?m.20 ?m.21
+    (homPresheaf_isSheaf_etale X F)
+has type
+  Presheaf.IsSheaf (etaleTopology.over X) (liftAdditiveTransport (homPresheaf X F) ?m.18 ?m.19 (fun {T U} => ?m.20) ⋯)
+but is expected to have type
+  Presheaf.IsSheaf (etaleTopology.over X) (additiveSectionsPresheaf X F)
+✔ [3855/3866] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification (17s)
+✖ [3856/3886] Building Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic (23s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-a9f429bedd3d4a9291f100c210a71ffa/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.setup.json --json
+error: Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean:37:0: automatically included section variable(s) unused in theorem `CategoryTheory.Sheaf.cyclicCoefficient_shortExact`:
+  [HasSheafify J AddCommGrpCat]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [HasSheafify J AddCommGrpCat] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3936/3954] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.PullbackUnit (9.5s)
+✔ [3937/4033] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.StructureComparison (12s)
+✔ [4224/4271] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.BaseRestrictionAdditive (25s)
+✔ [4249/4271] Built Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.Vanishing (7.6s)
+✔ [4250/4328] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Vanishing (4.1s)
+✔ [4303/4328] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SpecSections (28s)
+✔ [4306/4328] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity (72s)
+✔ [4307/4328] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections (26s)
+✔ [4308/4330] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurExactness (4.4s)
+✔ [4309/4346] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurCech (3.9s)
+✔ [4329/4347] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic (29s)
+✔ [4330/4406] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction (12s)
+✔ [4367/4408] Built Aglib.AlgebraicGeometry.Cohomology.Cech.Geometric (86s)
+✔ [4368/4429] Built Aglib.AlgebraicGeometry.Cohomology.Cech.Pushforward (50s)
+✔ [4383/4429] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric (132s)
+✔ [4386/4429] Built Aglib.AlgebraicGeometry.Cohomology.Cech.Modules (206s)
+✔ [4387/4429] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.GeometricTop (22s)
+✔ [4388/4434] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Open (190s)
+✔ [4390/4434] Built Aglib.AlgebraicGeometry.Cohomology.Cech.ModuleBaseChange (15s)
+✔ [4391/4434] Built Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Open (127s)
+✔ [4392/4434] Built Aglib.AlgebraicGeometry.Cohomology.Cech.DegreeZero (24s)
+✔ [4393/4434] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric.Composition (121s)
+✔ [4394/4437] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechComparison (33s)
+✔ [4396/4437] Built Aglib.AlgebraicGeometry.Cohomology.Cech.ModuleBaseChange.Cartesian (6.6s)
+✔ [4397/4437] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Open.Basic (4.9s)
+✔ [4398/4437] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Geometric.Coefficients (107s)
+✔ [4399/4437] Built Aglib.AlgebraicGeometry.Cohomology.Cech.DegreeZero.Forget (9.2s)
+✔ [4400/4438] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Geometric (51s)
+✔ [4402/4438] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Open.Cycles (8.6s)
+✔ [4403/4438] Built Aglib.AlgebraicGeometry.Cohomology.Projective.TwistingCech (48s)
+✔ [4404/4441] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Pushforward.Spec (7.9s)
+✔ [4405/4441] Built Aglib.AlgebraicGeometry.Cohomology.Cech.DegreeZero.Geometric (8.1s)
+✔ [4408/4441] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport (52s)
+✔ [4409/4441] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Open (68s)
+✔ [4411/4442] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Scalars (154s)
+✔ [4412/4443] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.SeparatedPositive (11s)
+✔ [4413/4443] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.ResolutionSections.Open.Naturality (8.9s)
+✔ [4414/4443] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.CechTransport.DegreeZero (45s)
+✔ [4415/4443] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Top (16s)
+✔ [4416/4444] Built Aglib.AlgebraicGeometry.Cohomology.Functoriality.Modules.Open (126s)
+✔ [4418/4444] Built Aglib.AlgebraicGeometry.Cohomology.Projective.LaurentComparison (106s)
+✔ [4419/4444] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Separated (10s)
+✔ [4420/4444] Built Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.Scalars.Zero (32s)
+✔ [4422/4444] Built Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology (29s)
+✔ [4423/4446] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Separated.Cartesian (16s)
+✔ [4424/4449] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Map.Open (148s)
+✔ [4426/4449] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Coproduct (74s)
+✔ [4429/4450] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Finiteness (33s)
+✔ [4432/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.ClosedImmersion (7.1s)
+✔ [4491/4519] Built Aglib.CategoryTheory.Sites.Torsor.Hom (3.2s)
+✔ [4492/4519] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Coefficients (198s)
+✔ [4493/4519] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Cartesian (201s)
+✖ [4494/4519] Building Aglib.CategoryTheory.Sites.Torsor.Class (18s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-a9f429bedd3d4a9291f100c210a71ffa/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/Torsor/Class.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/Torsor/Class.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/Torsor/Class.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/Torsor/Class.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/Torsor/Class.setup.json --json
+error: Aglib/CategoryTheory/Sites/Torsor/Class.lean:163:16: Application type mismatch: The argument
+  torsorExtClass
+has type
+  Torsor ?m.51 → H ?m.51 1
+but is expected to have type
+  HomRel ?m.44
+in the application
+  @Quotient.lift ?m.44 ?m.45 torsorExtClass
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Shrink ↦ 2
+error: Aglib/CategoryTheory/Sites/Torsor/Class.lean:163:40: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+error: Aglib/CategoryTheory/Sites/Torsor/Class.lean:166:23: Function expected at
+  { as := Torsor.isomorphicSetoid L }
+but this term has type
+  Quotient ?m.41
+
+Note: Expected a function because this term is being applied to the argument
+  P
+✔ [4495/4519] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.MayerVietoris (89s)
+✔ [4496/4519] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.Gluing (14s)
+✔ [4497/4519] Built Aglib.AlgebraicGeometry.Cohomology.Restriction.Cartesian.Geometric (59s)
+✔ [4498/4519] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs.Open (269s)
+✔ [4499/4519] Built Aglib.AlgebraicGeometry.Cohomology.BaseChange.Modules.Qcqs (16s)
+✔ [4500/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization (25s)
+✔ [4501/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.Open (117s)
+✔ [4502/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Localization.Principal (4.2s)
+✔ [4503/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Resolution (20s)
+✔ [4504/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine (26s)
+✔ [4505/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.QuasiCoherent (6.5s)
+✔ [4506/4519] Built Aglib.AlgebraicGeometry.Cohomology.DirectImage.Affine.Cohomology (85s)
+✔ [4507/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Coherence (7.7s)
+✔ [4508/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Vanishing (8.1s)
+✔ [4509/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Amplitude (3.9s)
+✔ [4510/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Projection.Derived (3.7s)
+✔ [4511/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Products.Derived (4.7s)
+✔ [4512/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Products.BaseChange (3.9s)
+✔ [4513/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Products.Finite (3.8s)
+✔ [4514/4519] Built Aglib.AlgebraicGeometry.Cohomology.Projective.Products.Finiteness (4.2s)
+✔ [4515/4519] Built Aglib.AlgebraicGeometry.Cohomology.Proper.Chow (4.9s)
+✔ [4516/4519] Built Aglib.AlgebraicGeometry.Cohomology.Proper.Finiteness (5.8s)
+✔ [4517/4519] Built Aglib.AlgebraicGeometry.Cohomology.Proper.Field (26s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy
+- Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveDescent
+- Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic
+- Aglib.CategoryTheory.Sites.Torsor.Class
+error: build failed

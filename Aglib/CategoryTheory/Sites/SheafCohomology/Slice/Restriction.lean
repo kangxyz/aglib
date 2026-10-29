@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.Continuous.Limits
+
 public import Mathlib.Algebra.Category.Grp.Abelian
 public import Mathlib.Algebra.Category.Grp.EpiMono
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor
@@ -45,15 +47,9 @@ instance overPullback_additive : (J.overPullback AddCommGrpCat.{m} U).Additive w
 /-- Restriction preserves every limit whose shape is admitted by the coefficient category. -/
 instance overPullback_preservesLimitsOfShape {K : Type w} [Category.{w'} K]
     [HasLimitsOfShape K AddCommGrpCat.{m}] :
-    PreservesLimitsOfShape K (J.overPullback AddCommGrpCat.{m} U) := by
-  let R := J.overPullback AddCommGrpCat.{m} U
-  let I := sheafToPresheaf (J.over U) AddCommGrpCat.{m}
-  have : PreservesLimitsOfShape K (R ⋙ I) := by
-    change PreservesLimitsOfShape K
-      (sheafToPresheaf J AddCommGrpCat.{m} ⋙
-        (Functor.whiskeringLeft _ _ AddCommGrpCat.{m}).obj (Over.forget U).op)
-    infer_instance
-  exact preservesLimitsOfShape_of_reflects_of_preserves R I
+    PreservesLimitsOfShape K (J.overPullback AddCommGrpCat.{m} U) :=
+  Functor.sheafPushforwardContinuous_preservesLimitsOfShape
+    (Over.forget U) AddCommGrpCat.{m} (J.over U) J
 
 /-- The literal restriction functor preserves finite limits. -/
 instance overPullback_preservesFiniteLimits :

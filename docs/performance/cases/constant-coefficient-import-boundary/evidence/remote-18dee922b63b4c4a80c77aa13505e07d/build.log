@@ -1,0 +1,6 @@
+✔ [4374/4378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence (11s)
+✔ [4375/4378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing (7.1s)
+✔ [4376/4378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimary (33s)
+✔ [4377/4378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimaryGeometry (56s)
+✔ [4378/4378] Built Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier (159s)
+Build completed successfully (4378 jobs).

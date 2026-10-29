@@ -1,0 +1,318 @@
+{
+  "phase": "intrinsic-higher-basechange-native3-coherent20",
+  "targets": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+      "sha256": "84144c15e160b648e4f5702414f357571da49a48df57238af5a94639e29d0486",
+      "before_sha256": "64b2538185af25e1b1ec86162e19265137ee0d14c9b0a35aa1851d149a46c465",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Bounded"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/AffineReduction.lean",
+      "sha256": "72cb494c35488eb1ef882f0c537bd568ff5e01960b822b8183a0dee117cee45c",
+      "before_sha256": "63acec27237527a85bef25e7cb6ab9462ef2bad5ebbb13da5cc1c120e63cc28f",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.AffineReduction"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/ModelTransport.lean",
+      "sha256": "f0fda3798f5aed087e57774059fc429cee97b9fe7f7cfd34cf83a36f87488f3c",
+      "before_sha256": "363d12fefaaf986786f36294ba7d4405c5e05185e2ca09d553c5df8995c9938e",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.ModelTransport"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/RelativeExchangeIso.lean",
+      "sha256": "3da1e773b4f49a8817c1301ebc2b21682b8ec0008a82ec06d356b3a749a89a88",
+      "before_sha256": "4558e980678d3245e6beb7439443fbdfd25c4a24fb961273ec56c4ac7f356106",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.RelativeExchangeIso"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+      "sha256": "7dd201a58061bcd32e59c2ad28ccf0bcaa158ec60f276a8c18d88fc9dbd2d240",
+      "before_sha256": "2b3610dcbe0952b2230eb3b21ec405afe0fa737ae0ddbffe2435cfbf7a30f6f6",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.TargetLocality"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Horizontal.lean",
+      "sha256": "ec92a6f10861a6faa8f9b4f0a15da735f9110b433a4333ef3fd8def15e87e0c2",
+      "before_sha256": "74dc8937bba686e8940b72d34f9160c984d57c9364c4e60e50348c87268c65c0",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Horizontal"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Reduction.lean",
+      "sha256": "c0c9c8f6ae30180568adfbd7647b0c718c3de20368b9975320e42f99ac827dce",
+      "before_sha256": "ff9fa2535139cec614d3dd5ece14790215832aa77be9ba7f1c7d01b793aa732d",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Reduction"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartRelative.lean",
+      "sha256": "ef9a638de0eede1f0e674828e39ca05b06c763d14ba06f3d950ba444914039e2",
+      "before_sha256": "46b4bc2ec2cd415bbc83132d62ca81408eda9611964986cbe8955aac749551f5",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartRelative"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+      "sha256": "203b9baf84735e14ad0c207c829d3af967e43c1272046d86595d6d687fd7ac4e",
+      "before_sha256": "be196a5c1d3efbd81f31d101905011f3190a44892c34e1267afd5257365d33b5",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeNeighborhoodGerms"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeSectionComparison.lean",
+      "sha256": "26b10b88cfc209cd10ab3fbd6ec0edc8b454e515e228409fb1776646d203b5ff",
+      "before_sha256": "cf10b3045e7720c867013007e38ec4c5c2c5e8e53e9d4b009ebe7e0144f2a54a",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/ChartExchangeMaps.lean",
+      "sha256": "ea6ad5b5f0eb1bacc6ce814a02629212467d597a114fd1353d13feb0957155ec",
+      "before_sha256": "abd8b711d780afa53f1a6d6aed87ae204d7c2c41b0b51c3b3eb38b8ed591dbb6",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+      "sha256": "34ca719cd6ea0d5c60a4e59e9ac5a43ceb42d3eb5543e42d3ee5e85c07816f1c",
+      "before_sha256": "ee3d48dbc608450d900b89160971cd8566e62a54b24ca304442b91ad82348b24",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+      "sha256": "0f206502fc6afd502616ec30a9f04afd18086b958ad45691600e5f458f0d58a0",
+      "before_sha256": "45b431fcce2a48eeb78da6e9b0496144b52ed27f51771280fbc8f4317ff70d1c",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean",
+      "sha256": "f612f541d7ddab5365e009901b080983dc9664346167e49e91aeae1f10bc8f0f",
+      "before_sha256": "86b0318c3c3463f3cabe4b8852dc39373ba4692ca2e44720f4a2117ecd6583a2",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricStalkExchange"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/HorizontalComposition.lean",
+      "sha256": "4240ef1f0c92287fefebecab6398f735b7eb6cdb91e9109882bc252fe2a37710",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposition"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/Retracts.lean",
+      "sha256": "7d63649f7b50fa1ae147f2bb5feff7e27560d5120583aacb0bb3098374576b2d",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.Retracts"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Etale.lean",
+      "sha256": "e23d4fb455a52aa62762b5bca2c258253643792cc218e6785c0d59e0ed83e156",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Etale"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeGlobalSections.lean",
+      "sha256": "fd0068d7e4994bc389453214d0bd1fa4a0626a23d9071a846994f6c9dc252221",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalSections"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartSections.lean",
+      "sha256": "7bd6f22dc97eab9c11a8bc84246a32c850fbb1421555e8268dfed7f01522604f",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartSections"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Bounded.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Bounded",
+      "sha256": "b8b114b889d54dd87949b1c7b68353b169f97fd57b8bd7b16fbb19de0c0880f1",
+      "scope": "assigned unchanged-source affected consumer"
+    }
+  ],
+  "changed": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/HorizontalComposition.lean",
+      "sha256": "4240ef1f0c92287fefebecab6398f735b7eb6cdb91e9109882bc252fe2a37710"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/Retracts.lean",
+      "sha256": "7d63649f7b50fa1ae147f2bb5feff7e27560d5120583aacb0bb3098374576b2d"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/Etale.lean",
+      "sha256": "e23d4fb455a52aa62762b5bca2c258253643792cc218e6785c0d59e0ed83e156"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeGlobalSections.lean",
+      "sha256": "fd0068d7e4994bc389453214d0bd1fa4a0626a23d9071a846994f6c9dc252221"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartSections.lean",
+      "sha256": "7bd6f22dc97eab9c11a8bc84246a32c850fbb1421555e8268dfed7f01522604f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeChartRelative.lean",
+      "sha256": "ef9a638de0eede1f0e674828e39ca05b06c763d14ba06f3d950ba444914039e2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonEquation.lean",
+      "sha256": "34ca719cd6ea0d5c60a4e59e9ac5a43ceb42d3eb5543e42d3ee5e85c07816f1c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+      "sha256": "203b9baf84735e14ad0c207c829d3af967e43c1272046d86595d6d687fd7ac4e"
+    }
+  ],
+  "ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/intrinsic-higher-basechange-core-staging/native-3/READY.json",
+  "ready_sha256": "7a8de375722ce1e089f929f2f5380b59ff6c3cf49ca82bc09f7be69047566dfc",
+  "previous_actual_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/higher-basechange-native2-f26c151e.json",
+  "retained_current_core_passes": [
+    "HigherComparisons864347",
+    "OrdinaryExchangedb9e",
+    "Composition421608",
+    "BaseChange.Basic e41448",
+    "BaseChange.Higher3a764",
+    "BaseChange8aaa1",
+    "Propertyda18",
+    "Resolutiondfff",
+    "CycleSections1109"
+  ],
+  "ownership_basis": "author reports Root explicitly granted five previously unowned required-provider paths; Root notified of exact native3 packet",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "boundary": "19 finished remaining native roots+assigned SmoothBounded; current-core passes retained; exactsource hashes guarded; no runtime source edits or extra checks",
+  "session_id": 37674,
+  "phase_state": "closed1:57 fresh passes; selected12PASS/3longlineFAIL/5unreached; author repairing",
+  "updated_utc": "2026-10-27T21:21:39.098495+00:00",
+  "run": "remote-647d45f7b99546e0a50cc017a82115c3",
+  "source": "b605f444ffa44e004cc9ef4da3cbf9bc265e60cd7d1ab79bb0654d121498caf3",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/higher-basechange-native3-647d45f7.json",
+  "native_exit": 1,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-647d45f7b99546e0a50cc017a82115c3/receipt.json",
+  "fresh_frontend_passes": 57,
+  "selected_passes": [
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.Retracts",
+      "log_duration": "3.4s",
+      "sha256": "7d63649f7b50fa1ae147f2bb5feff7e27560d5120583aacb0bb3098374576b2d"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposition",
+      "log_duration": "3.9s",
+      "sha256": "4240ef1f0c92287fefebecab6398f735b7eb6cdb91e9109882bc252fe2a37710"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Etale",
+      "log_duration": "9.1s",
+      "sha256": "e23d4fb455a52aa62762b5bca2c258253643792cc218e6785c0d59e0ed83e156"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeGlobalSections",
+      "log_duration": "20s",
+      "sha256": "fd0068d7e4994bc389453214d0bd1fa4a0626a23d9071a846994f6c9dc252221"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Horizontal",
+      "log_duration": "5.3s",
+      "sha256": "ec92a6f10861a6faa8f9b4f0a15da735f9110b433a4333ef3fd8def15e87e0c2"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartExchangeMaps",
+      "log_duration": "38s",
+      "sha256": "ea6ad5b5f0eb1bacc6ce814a02629212467d597a114fd1353d13feb0957155ec"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartRelative",
+      "log_duration": "49s",
+      "sha256": "ef9a638de0eede1f0e674828e39ca05b06c763d14ba06f3d950ba444914039e2"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.ModelTransport",
+      "log_duration": "7.2s",
+      "sha256": "f0fda3798f5aed087e57774059fc429cee97b9fe7f7cfd34cf83a36f87488f3c"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Bounded",
+      "log_duration": "3.8s",
+      "sha256": "b8b114b889d54dd87949b1c7b68353b169f97fd57b8bd7b16fbb19de0c0880f1"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.Reduction",
+      "log_duration": "5.1s",
+      "sha256": "c0c9c8f6ae30180568adfbd7647b0c718c3de20368b9975320e42f99ac827dce"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeChartSections",
+      "log_duration": "232s",
+      "sha256": "7bd6f22dc97eab9c11a8bc84246a32c850fbb1421555e8268dfed7f01522604f"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonEquation",
+      "log_duration": "338s",
+      "sha256": "34ca719cd6ea0d5c60a4e59e9ac5a43ceb42d3eb5543e42d3ee5e85c07816f1c"
+    }
+  ],
+  "failed_frontends": [
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.RelativeExchangeIso",
+      "sha256": "3da1e773b4f49a8817c1301ebc2b21682b8ec0008a82ec06d356b3a749a89a88"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.AffineReduction",
+      "sha256": "72cb494c35488eb1ef882f0c537bd568ff5e01960b822b8183a0dee117cee45c"
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeSectionComparison",
+      "sha256": "26b10b88cfc209cd10ab3fbd6ec0edc8b454e515e228409fb1776646d203b5ff"
+    }
+  ],
+  "unreached_selected": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+      "sha256": "84144c15e160b648e4f5702414f357571da49a48df57238af5a94639e29d0486",
+      "before_sha256": "64b2538185af25e1b1ec86162e19265137ee0d14c9b0a35aa1851d149a46c465",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Bounded"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/TargetLocality.lean",
+      "sha256": "7dd201a58061bcd32e59c2ad28ccf0bcaa158ec60f276a8c18d88fc9dbd2d240",
+      "before_sha256": "2b3610dcbe0952b2230eb3b21ec405afe0fa737ae0ddbffe2435cfbf7a30f6f6",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.TargetLocality"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeNeighborhoodGerms.lean",
+      "sha256": "203b9baf84735e14ad0c207c829d3af967e43c1272046d86595d6d687fd7ac4e",
+      "before_sha256": "be196a5c1d3efbd81f31d101905011f3190a44892c34e1267afd5257365d33b5",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeNeighborhoodGerms"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricComparisonExchange.lean",
+      "sha256": "0f206502fc6afd502616ec30a9f04afd18086b958ad45691600e5f458f0d58a0",
+      "before_sha256": "45b431fcce2a48eeb78da6e9b0496144b52ed27f51771280fbc8f4317ff70d1c",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricComparisonExchange"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricStalkExchange.lean",
+      "sha256": "f612f541d7ddab5365e009901b080983dc9664346167e49e91aeae1f10bc8f0f",
+      "before_sha256": "86b0318c3c3463f3cabe4b8852dc39373ba4692ca2e44720f4a2117ecd6583a2",
+      "changed": true,
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricStalkExchange"
+    }
+  ],
+  "observations": {
+    "wall_seconds": 550.0337817072868,
+    "peak_frontends": 8,
+    "peak_rss_bytes": 19037409280,
+    "sampled_process_average_cpu_cores": 3.4605400695563953
+  }
+}

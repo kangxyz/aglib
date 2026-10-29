@@ -1,0 +1,37 @@
+✖ [3156/3158] Building Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (3.4s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-dfdf9beaed40462ea787b2c0d19165f2/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.setup.json --json
+error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:127:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?f ≫ ?g ≫ ?h
+in the target expression
+  toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient p)) ≫
+      (primeFieldToAdditive R J hR p h).hom ≫ (artinSchreierMap R J hR p hp h).hom =
+    toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient p)) ≫ 0
+
+C : Type u
+inst✝¹ : Category.{v, u} C
+R : Cᵒᵖ ⥤ CommRingCat
+J : GrothendieckTopology C
+hR : Presheaf.IsSheaf J (additivePresheaf R)
+inst✝ : HasWeakSheafify J AddCommGrpCat
+p : ℕ
+hp : Nat.Prime p
+h : ∀ (U : Cᵒᵖ), ↑p = 0
+⊢ toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient p)) ≫
+      (primeFieldToAdditive R J hR p h).hom ≫ (artinSchreierMap R J hR p hp h).hom =
+    toSheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient p)) ≫ 0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (primeFieldToAdditive R J hR p h).hom
+  has type
+    @Quiver.Hom (Cᵒᵖ ⥤ AddCommGrpCat) Functor.category.toQuiver
+      ((constantSheaf J AddCommGrpCat).obj (primeFieldCoefficient p)).obj (additiveSheaf R J hR).obj
+  but is expected to have type
+    @Quiver.Hom (Cᵒᵖ ⥤ AddCommGrpCat) Functor.category.toQuiver
+      (sheafify J ((Functor.const Cᵒᵖ).obj (primeFieldCoefficient p))) (additiveSheaf R J hR).obj
+  in the application
+    CategoryStruct.comp (primeFieldToAdditive R J hR p h).hom
+Some required targets logged failures:
+- Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier
+error: build failed

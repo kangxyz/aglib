@@ -1,0 +1,196 @@
+{
+  "schema_version": 2,
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "lean_version": "4.34.1",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib_per_frontend": 12800,
+    "aggregate_rss_limit_mib": 110592,
+    "allow_cpu_oversubscription": false,
+    "default_heartbeat_cap": 200000
+  },
+  "reconstruction_start": {
+    "version": "v3",
+    "source_path": "sources/AssociatedBundle-v3-2083.lean.txt",
+    "source_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+    "role": "Failed 2083 source baseline for this bounded case."
+  },
+  "consecutive_full_patch_transitions": [
+    {
+      "from": "v3",
+      "to": "v4",
+      "before_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+      "after_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+      "patch": "patches/v4.patch",
+      "patch_sha256": "691793486d31cf430f12c2518450e473b722433c17ae6a2195c35d18f8a8bf69"
+    },
+    {
+      "from": "v4",
+      "to": "v5",
+      "before_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+      "after_sha256": "844a9cc1d6615ee5ef6bdb54afbf1f76eae68f5bc8adbab6112162555be58a0d",
+      "patch": "patches/v5.patch",
+      "patch_sha256": "07cabddd9c88a3d64f2417082b8a8af58a96c8250f5e90dd95847f2c3677ffdf"
+    },
+    {
+      "from": "v5",
+      "to": "v6",
+      "before_sha256": "844a9cc1d6615ee5ef6bdb54afbf1f76eae68f5bc8adbab6112162555be58a0d",
+      "after_sha256": "1ce133bfe3604320c20dc0693bdb7e2b4b47c7d85d4b37e8950d71eae1c53e58",
+      "patch": "patches/v6.patch",
+      "patch_sha256": "f28e875eb2ccfeeb8b52ee1a35419bad269180c3f6864222bc849d1b1508dd90"
+    },
+    {
+      "from": "v6",
+      "to": "v7",
+      "before_sha256": "1ce133bfe3604320c20dc0693bdb7e2b4b47c7d85d4b37e8950d71eae1c53e58",
+      "after_sha256": "6fde11f53cd6d52b388ff5a0c8a217ec9705ced15688ccff2198b201e76cf349",
+      "patch": "patches/v7.patch",
+      "patch_sha256": "53d65f3531e3a347c77033727983eea8f499b8f6c79d399e6f7ed98b0e218790"
+    }
+  ],
+  "v3_predecessor_context_not_copied": {
+    "before_sha256": "13881b0920b7cb26d8bea35d492bbb5864d8eaf35fb5f65ea41f712f5f2c7464",
+    "patch_sha256": "a59637a82f8a49baeeb08d61e0826fed046d7f68973b81ff7ca2eaabddb01a0f",
+    "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v3",
+    "boundary": "The admitted bounded source series starts at failed v3 source 2083; prior v3 preparation remains in its complete original R history."
+  },
+  "version_source_hashes": {
+    "v3": {
+      "snapshot_path": "sources/AssociatedBundle-v3-2083.lean.txt",
+      "source_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+      "lines": 1120,
+      "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v3/after/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean"
+    },
+    "v4": {
+      "snapshot_path": "sources/AssociatedBundle-v4-d555.lean.txt",
+      "source_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+      "lines": 1131,
+      "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v4/after/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean"
+    },
+    "v5": {
+      "snapshot_path": "sources/AssociatedBundle-v5-844a.lean.txt",
+      "source_sha256": "844a9cc1d6615ee5ef6bdb54afbf1f76eae68f5bc8adbab6112162555be58a0d",
+      "lines": 1162,
+      "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/picard-astra-raw-naturality/after/AssociatedBundle.lean"
+    },
+    "v6": {
+      "snapshot_path": "sources/AssociatedBundle-v6-1ce.lean.txt",
+      "source_sha256": "1ce133bfe3604320c20dc0693bdb7e2b4b47c7d85d4b37e8950d71eae1c53e58",
+      "lines": 1164,
+      "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/picard-astra-raw-naturality/v6/after/AssociatedBundle.lean"
+    },
+    "v7": {
+      "snapshot_path": "sources/AssociatedBundle-v7-6fde.lean.txt",
+      "source_sha256": "6fde11f53cd6d52b388ff5a0c8a217ec9705ced15688ccff2198b201e76cf349",
+      "lines": 1164,
+      "original_R_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/picard-astra-raw-naturality/v7/after/AssociatedBundle.lean"
+    }
+  },
+  "direct_source_import_capsule": {
+    "parser": "scripts/lean_tools/source.py:lean_imports with nested comment/string masking",
+    "headers_identical_v3_v7": true,
+    "direct_Aglib_imports": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients",
+      "Aglib.AlgebraicGeometry.Modules.InternalHom",
+      "Aglib.AlgebraicGeometry.Modules.Invertible.Basic",
+      "Aglib.AlgebraicGeometry.Modules.Invertible.Dual",
+      "Aglib.AlgebraicGeometry.Modules.Invertible.Pullback",
+      "Aglib.AlgebraicGeometry.Modules.Invertible.Tensor",
+      "Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator",
+      "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+      "Aglib.AlgebraicGeometry.Modules.Pullback.UnitInverse",
+      "Aglib.AlgebraicGeometry.Picard.FrameTorsor",
+      "Aglib.AlgebraicGeometry.Picard.UnitDescent"
+    ],
+    "non_Aglib_direct_imports": [],
+    "current_direct_Aglib_dependencies": [
+      {
+        "module": "Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback",
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPullback.lean",
+        "source_sha256": "81e0e4011c7e8d6ce598dfea4974fa9eaf31b07a21e1c2f7a585d43414cfaaaa",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients",
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Coefficients.lean",
+        "source_sha256": "95fd98bc7635d14cc761324d9d27b44b161780224f58b582398745dff6a57284",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.InternalHom",
+        "path": "Aglib/AlgebraicGeometry/Modules/InternalHom.lean",
+        "source_sha256": "dec38d3d40b4dc5c42810b1e93e54ac4cd9cfded824e2f99f234b8963d19b3a6",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Invertible.Basic",
+        "path": "Aglib/AlgebraicGeometry/Modules/Invertible/Basic.lean",
+        "source_sha256": "06459c1a2f901cc1d2dfacb0570aaaf19fc8b3aec8cd38e3faae5336b52e49f9",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Invertible.Dual",
+        "path": "Aglib/AlgebraicGeometry/Modules/Invertible/Dual.lean",
+        "source_sha256": "4a2627184aad76df79fff373e84bf9eaac8c1fd8068dd1cee0f6bb091c0616a3",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Invertible.Pullback",
+        "path": "Aglib/AlgebraicGeometry/Modules/Invertible/Pullback.lean",
+        "source_sha256": "3e546b9aeb14e41e8687accb9a57ca6ad10c2d88c1df75cbed735302463bcc1c",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Invertible.Tensor",
+        "path": "Aglib/AlgebraicGeometry/Modules/Invertible/Tensor.lean",
+        "source_sha256": "905899c6802767173d989bb723a7bd6243e554c684e3f8d9b4b2bbfc798eb8ba",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator",
+        "path": "Aglib/AlgebraicGeometry/Modules/Invertible/TensorAssociator.lean",
+        "source_sha256": "01a057b5cd7cd4a0cb7f883423a409081ed9127681aa7016d68321476c1b1e35",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction",
+        "path": "Aglib/AlgebraicGeometry/Modules/Pullback/OpenRestriction.lean",
+        "source_sha256": "7a51648912f255b742e9f0cb955a3a72229c96c8c401308cc338804ef7147f61",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Modules.Pullback.UnitInverse",
+        "path": "Aglib/AlgebraicGeometry/Modules/Pullback/UnitInverse.lean",
+        "source_sha256": "d06143b4f0813ff1c151f48d3e696eec50a6151dff8b249bd89e7e082a3135d6",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Picard.FrameTorsor",
+        "path": "Aglib/AlgebraicGeometry/Picard/FrameTorsor.lean",
+        "source_sha256": "a03e1d45418bd585b718c11b66d8ce7356170f91838d5e4cd75510deaa94af1d",
+        "registered_group_source_sha256_key": false
+      },
+      {
+        "module": "Aglib.AlgebraicGeometry.Picard.UnitDescent",
+        "path": "Aglib/AlgebraicGeometry/Picard/UnitDescent.lean",
+        "source_sha256": "749621906089111541562ace861f977588c06cb8f530411c0d490ac28aeaac26",
+        "registered_group_source_sha256_key": false
+      }
+    ],
+    "powerdescent_v7run_input_sha256": "6f8658b9c48f8448a89b98b0234603c4afbdc8f9aa6055cc7ac8b39df2fbb11e",
+    "powerdescent_current_sha256": "167ef3bacff9cad20c908f6e9b4bfe54a9b95b0534260c362df88194b053bb57",
+    "power_change_boundary": "Root-reported two blank-line deletions only; all nonblank bytes preserved. Current native770 closure pending.",
+    "scope": "Bounded direct-import source hashes/pins only; no full per-run manifests copied."
+  },
+  "8129_full_SOURCE_archive": {
+    "r_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/picard-associated-closure-8129c1ff.json",
+    "sha256": "94880b0fc73c5c9687acea32b08c851b7d79e90fad7bb2ff61236436e661da67",
+    "content_sha256": "19e406fcd7c0449405ca327664d2caf91e35341de0cd9a9e55f4db3ff6ee7a86",
+    "owner": "root",
+    "copied": false
+  }
+}

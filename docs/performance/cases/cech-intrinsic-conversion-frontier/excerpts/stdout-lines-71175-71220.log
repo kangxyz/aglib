@@ -1,0 +1,46 @@
+                                                                    (Sheaf (Opens.grothendieckTopology ↥X)
+                                                                      AddCommGrpCat)
+                                                                [Meta.synthInstance] [2.715611] ✅️ F.PreservesZeroMorphisms
+                                                                  [Meta.synthInstance.apply] [2.337715] ✅️ apply @Functor.IsHomological.toPreservesZeroMorphisms to F.PreservesZeroMorphisms
+                                                                    [Meta.synthInstance.tryResolve] [2.337093] ✅️ F.PreservesZeroMorphisms ≟ F.PreservesZeroMorphisms
+                                                                      [Meta.isDefEq] [2.336982] ✅️ F.PreservesZeroMorphisms =?= Functor.PreservesZeroMorphisms
+                                                                            ?m.215
+                                                                        [Meta.isDefEq] [2.332001] ✅️ ObjectProperty.instHasZeroMorphismsFullSubcategory
+                                                                              (Presheaf.IsSheaf
+                                                                                (Opens.grothendieckTopology
+                                                                                  ↥X)) =?= Preadditive.preadditiveHasZeroMorphisms
+                                                                          [Meta.isDefEq] [2.331787] ✅️ have
+                                                                                __spread.0 :=
+                                                                                (ObjectProperty.fullyFaithfulι
+                                                                                    (Presheaf.IsSheaf
+                                                                                      (Opens.grothendieckTopology
+                                                                                        ↥X))).hasZeroMorphisms;
+                                                                              {
+                                                                                zero := fun x x_1 =>
+                                                                                  { zero := ObjectProperty.homMk 0 },
+                                                                                comp_zero := ⋯,
+                                                                                zero_comp :=
+                                                                                  ⋯ } =?= { zero := inferInstance,
+                                                                                comp_zero := ⋯, zero_comp := ⋯ }
+                                                                            [Meta.isDefEq] [2.331654] ✅️ {
+                                                                                  zero := fun x x_1 =>
+                                                                                    { zero := ObjectProperty.homMk 0 },
+                                                                                  comp_zero := ⋯,
+                                                                                  zero_comp :=
+                                                                                    ⋯ } =?= { zero := inferInstance,
+                                                                                  comp_zero := ⋯, zero_comp := ⋯ }
+                                                                              [Meta.isDefEq] [2.329638] ✅️ fun x x_1 =>
+                                                                                    {
+                                                                                      zero :=
+                                                                                        ObjectProperty.homMk
+                                                                                          0 } =?= inferInstance
+                                                                                [Meta.isDefEq] [2.329530] ✅️ fun x
+                                                                                        x_1 =>
+                                                                                      {
+                                                                                        zero :=
+                                                                                          ObjectProperty.homMk
+                                                                                            0 } =?= fun X_1 =>
+                                                                                      inferInstance X_1
+                                                                                  [Meta.isDefEq] [2.329357] ✅️ fun x =>
+                                                                                        {
+                                                                                          zero :=

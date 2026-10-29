@@ -7,6 +7,8 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.Sections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange
+public import Aglib.CategoryTheory.Functor.CopyObjRestriction
+public import Aglib.CategoryTheory.Over.RelativeTests
 
 /-! # Fixed-site sections of actual finite-constant direct images
 
@@ -32,19 +34,13 @@ variable {X : Scheme.{u}}
 
 /-- The actual base-changed étale tests, regarded over their original base. -/
 def directImageTests (Y : Over X) : X.Etale ⥤ Over X :=
-  siteBaseChange Y.hom ⋙ Scheme.Etale.forget Y.left ⋙ Over.map Y.hom
+  MorphismProperty.Over.RelativeTests.tests etaleMorphismProperty Y
 
 /-- The original relative pullback map, at a typed object of the over category. -/
 def baseChangedTestMap (U : Over X) {Y Z : Over X} (a : Y ⟶ Z) :
     (Over.map Y.hom).obj ((Over.pullback Y.hom).obj U) ⟶
       (Over.map Z.hom).obj ((Over.pullback Z.hom).obj U) :=
-  Over.homMk
-    (pullback.lift (pullback.fst U.hom Y.hom)
-      (pullback.snd U.hom Y.hom ≫ a.left)
-      ((pullback.condition (f := U.hom) (g := Y.hom)).trans
-        (by rw [Category.assoc, Over.w a])))
-    (by simp only [Over.map_obj_hom, Over.pullback_obj_hom, Category.assoc,
-      pullback.lift_snd_assoc, Over.w a])
+  Over.RelativeTests.mapApp U a
 
 /-- The underlying map is the literal native pullback lift. -/
 theorem baseChangedTestMap_left (U : Over X) {Y Z : Over X} (a : Y ⟶ Z) :
@@ -58,124 +54,100 @@ theorem baseChangedTestMap_left (U : Over X) {Y Z : Over X} (a : Y ⟶ Z) :
 theorem baseChangedTestMap_fst (U : Over X) {Y Z : Over X} (a : Y ⟶ Z) :
     (baseChangedTestMap U a).left ≫ pullback.fst U.hom Z.hom =
       pullback.fst U.hom Y.hom :=
-  pullback.lift_fst _ _ _
+  Over.RelativeTests.mapApp_fst U a
 
 /-- The second projection of the actual relative test map. -/
 theorem baseChangedTestMap_snd (U : Over X) {Y Z : Over X} (a : Y ⟶ Z) :
     (baseChangedTestMap U a).left ≫ pullback.snd U.hom Z.hom =
       pullback.snd U.hom Y.hom ≫ a.left :=
-  pullback.lift_snd _ _ _
-
-private theorem pullbackMap_fst {S : Scheme.{u}} (f : S ⟶ X)
-    {U V : Over X} (b : U ⟶ V) :
-    ((Over.pullback f).map b).left ≫ pullback.fst V.hom f =
-      pullback.fst U.hom f ≫ b.left :=
-  pullback.lift_fst _ _ _
-
-private theorem pullbackMap_snd {S : Scheme.{u}} (f : S ⟶ X)
-    {U V : Over X} (b : U ⟶ V) :
-    ((Over.pullback f).map b).left ≫ pullback.snd V.hom f =
-      pullback.snd U.hom f :=
-  pullback.lift_snd _ _ _
+  Over.RelativeTests.mapApp_snd U a
 
 /-- The original pullback map induced by a relative scheme morphism. -/
 def directImageTestsMap {Y Z : Over X} (a : Y ⟶ Z) :
-    directImageTests Y ⟶ directImageTests Z where
-  app U := baseChangedTestMap ((Scheme.Etale.forget X).obj U) a
-  naturality {U V} b := by
-    let U₀ := (Scheme.Etale.forget X).obj U
-    let V₀ := (Scheme.Etale.forget X).obj V
-    let b₀ : U₀ ⟶ V₀ := (Scheme.Etale.forget X).map b
-    apply Over.OverMorphism.ext
-    change ((Over.pullback Y.hom).map b₀).left ≫ (baseChangedTestMap V₀ a).left =
-      (baseChangedTestMap U₀ a).left ≫ ((Over.pullback Z.hom).map b₀).left
-    apply pullback.hom_ext
-    · simp only [Category.assoc]
-      rw [baseChangedTestMap_fst V₀ a, pullbackMap_fst Y.hom b₀,
-        pullbackMap_fst Z.hom b₀, ← Category.assoc, baseChangedTestMap_fst U₀ a]
-    · simp only [Category.assoc]
-      rw [baseChangedTestMap_snd V₀ a, ← Category.assoc, pullbackMap_snd Y.hom b₀,
-        pullbackMap_snd Z.hom b₀, baseChangedTestMap_snd U₀ a]
+    directImageTests Y ⟶ directImageTests Z :=
+  MorphismProperty.Over.RelativeTests.map etaleMorphismProperty a
 
 /-- The test map for an identity is the identity on the original pullbacks. -/
 theorem directImageTestsMap_id (Y : Over X) :
-    directImageTestsMap (𝟙 Y) = 𝟙 (directImageTests Y) := by
-  apply NatTrans.ext
-  funext U
-  apply Over.OverMorphism.ext
-  change (baseChangedTestMap ((Scheme.Etale.forget X).obj U) (𝟙 Y)).left = 𝟙 _
-  apply pullback.hom_ext
-  · rw [baseChangedTestMap_fst, Category.id_comp]
-  · rw [baseChangedTestMap_snd, Over.id_left, Category.comp_id, Category.id_comp]
+    directImageTestsMap (𝟙 Y) = 𝟙 (directImageTests Y) :=
+  MorphismProperty.Over.RelativeTests.map_id etaleMorphismProperty Y
 
 /-- Actual relative test maps compose in their scheme direction. -/
 theorem directImageTestsMap_comp {Y Z W : Over X} (a : Y ⟶ Z) (b : Z ⟶ W) :
-    directImageTestsMap (a ≫ b) = directImageTestsMap a ≫ directImageTestsMap b := by
-  apply NatTrans.ext
-  funext U
-  apply Over.OverMorphism.ext
-  change (baseChangedTestMap ((Scheme.Etale.forget X).obj U) (a ≫ b)).left =
-    (baseChangedTestMap ((Scheme.Etale.forget X).obj U) a).left ≫
-      (baseChangedTestMap ((Scheme.Etale.forget X).obj U) b).left
-  apply pullback.hom_ext
-  · rw [baseChangedTestMap_fst, Category.assoc, baseChangedTestMap_fst,
-      baseChangedTestMap_fst]
-  · rw [baseChangedTestMap_snd, Category.assoc, baseChangedTestMap_snd,
-      ← Category.assoc (baseChangedTestMap ((Scheme.Etale.forget X).obj U) a).left
-        (pullback.snd ((Scheme.Etale.forget X).obj U).hom Z.hom) b.left,
-      baseChangedTestMap_snd]
-    exact congrArg (fun q => pullback.snd ((Scheme.Etale.forget X).obj U).hom Y.hom ≫ q)
-      (Over.comp_left Y Z W a b) |>.trans
-      (Category.assoc _ _ _).symm
+    directImageTestsMap (a ≫ b) = directImageTestsMap a ≫ directImageTestsMap b :=
+  MorphismProperty.Over.RelativeTests.map_comp etaleMorphismProperty a b
+
+/-- The given group has the original direct-image section coordinates.
+This is the same whiskered inverse of the original Over adjunction. -/
+def representedDirectImageCoordinatesIso
+    (H : Grp (Over X)) [IsCommMonObj H.X] (Y : Over X) :
+    ((directImage Y.hom).obj (representedSheaf (baseChangedGroup Y.hom H))).obj ≅
+      MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+        (sectionFunctor H) Y :=
+  Functor.isoWhiskerLeft
+    (siteBaseChange Y.hom ⋙ Scheme.Etale.forget Y.left).op
+    (CommutativeGroupSections.adjunctionIso.{u + 1} (Over.mapPullbackAdj Y.hom) H).symm
+
+/-- The direct image of the pullback of one given represented group. -/
+abbrev representedDirectImage (H : Grp (Over X)) [IsCommMonObj H.X] (Y : Over X) :
+    AbelianSheaf.{u, u + 1} X :=
+  (directImage Y.hom).obj (representedSheaf (baseChangedGroup Y.hom H))
+
+/-- The original coordinate-map constructor, shared for the given group. -/
+def representedDirectImageMap (H : Grp (Over X)) [IsCommMonObj H.X]
+    {Y Z : Over X} (a : Y ⟶ Z) :
+    representedDirectImage H Z ⟶ representedDirectImage H Y :=
+  ⟨((representedDirectImageCoordinatesIso H Z).homCongr
+    (representedDirectImageCoordinatesIso H Y)).symm
+      (MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+        (sectionFunctor H) a)⟩
+
+/-- Actual represented direct images and their same original coordinate transitions. -/
+def representedDirectImageFunctor (H : Grp (Over X)) [IsCommMonObj H.X] :
+    (Over X)ᵒᵖ ⥤ AbelianSheaf.{u, u + 1} X := by
+  have h := Over.RelativeTests.Comparison.diagram_laws
+    (sheafToPresheaf X.smallEtaleTopology AddCommGrpCat.{u + 1})
+    (MorphismProperty.Over.RelativeTests.coordinateFunctor etaleMorphismProperty
+      (sectionFunctor H))
+    (fun Y => representedDirectImage H Y.unop)
+    (fun Y => (representedDirectImageCoordinatesIso H Y.unop).symm)
+    (fun a => representedDirectImageMap H a.unop)
+    (by intro Y Z a; rfl)
+  exact
+    { obj := fun Y => representedDirectImage H Y.unop
+      map := fun a => representedDirectImageMap H a.unop
+      map_id := h.1
+      map_comp := h.2 }
+
+/-- The operational functor keeps the original represented direct-image object. -/
+theorem representedDirectImageFunctor_obj
+    (H : Grp (Over X)) [IsCommMonObj H.X] (Y : (Over X)ᵒᵖ) :
+    (representedDirectImageFunctor H).obj Y = representedDirectImage H Y.unop := rfl
 
 variable (B : Type u) [AddCommGroup B] [Finite B]
 
 /-- The actual direct image of the represented pullback of the fixed finite
 constant coefficient group. -/
 abbrev constantRepresentedDirectImage (Y : Over X) : AbelianSheaf.{u, u + 1} X :=
-  (directImage Y.hom).obj
-    (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group))
+  representedDirectImage (ConstantFinite.representation B X).group Y
 
 /-- Original scheme sections on the original base-changed étale tests. -/
 def constantDirectImageCoordinates (Y : Over X) : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-  (directImageTests Y).op ⋙ sectionFunctor (ConstantFinite.representation B X).group
+  MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty
+    (sectionFunctor (ConstantFinite.representation B X).group) Y
 
 /-- The original Over adjunction identifies actual direct-image sections with
 maps from the base-changed test scheme to the fixed finite constant group. -/
 def constantDirectImageCoordinatesIso (Y : Over X) :
     (constantRepresentedDirectImage B Y).obj ≅ constantDirectImageCoordinates B Y :=
-  NatIso.ofComponents (fun U => AddEquiv.toAddCommGrpIso
-    ((AddEquiv.ulift.trans
-      (SchemeTorsorBaseChange.pullbackSectionMulEquiv Y.hom
-        ((Scheme.Etale.forget Y.left).obj ((siteBaseChange Y.hom).obj U.unop))
-        (ConstantFinite.representation B X).group).symm.toAdditive).trans
-      AddEquiv.ulift.symm)) (by
-    intro U V a
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro s
-    apply ULift.ext
-    change Additive.ofMul
-        ((SchemeTorsorBaseChange.pullbackSectionEquiv Y.hom _
-          (ConstantFinite.representation B X).group.X).symm
-          ((Scheme.Etale.forget Y.left).map ((siteBaseChange Y.hom).map a.unop) ≫
-            s.down.toMul)) =
-      Additive.ofMul
-        ((Over.map Y.hom).map
-          ((Scheme.Etale.forget Y.left).map ((siteBaseChange Y.hom).map a.unop)) ≫
-          (SchemeTorsorBaseChange.pullbackSectionEquiv Y.hom _
-            (ConstantFinite.representation B X).group.X).symm s.down.toMul)
-    exact congrArg Additive.ofMul
-      (SchemeTorsorBaseChange.pullbackSectionEquiv_symm_naturality Y.hom
-        ((Scheme.Etale.forget Y.left).map ((siteBaseChange Y.hom).map a.unop))
-        (ConstantFinite.representation B X).group.X s.down.toMul))
+  representedDirectImageCoordinatesIso (ConstantFinite.representation B X).group Y
 
 /-- Relative coordinate transport is literal precomposition with the original
 map of base-changed test schemes. -/
 def constantDirectImageCoordinateMap {Y Z : Over X} (a : Y ⟶ Z) :
     constantDirectImageCoordinates B Z ⟶ constantDirectImageCoordinates B Y :=
-  Functor.whiskerRight (NatTrans.op (directImageTestsMap a))
-    (sectionFunctor (ConstantFinite.representation B X).group)
+  MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+    (sectionFunctor (ConstantFinite.representation B X).group) a
 
 /-- The coordinate transition keeps the original scheme morphism on every section. -/
 theorem constantDirectImageCoordinateMap_apply {Y Z : Over X} (a : Y ⟶ Z)
@@ -189,8 +161,7 @@ theorem constantDirectImageCoordinateMap_apply {Y Z : Over X} (a : Y ⟶ Z)
 original Over-adjunction section coordinates. -/
 def constantRepresentedDirectImageMap {Y Z : Over X} (a : Y ⟶ Z) :
     constantRepresentedDirectImage B Z ⟶ constantRepresentedDirectImage B Y :=
-  ⟨(constantDirectImageCoordinatesIso B Z).hom ≫
-    constantDirectImageCoordinateMap B a ≫ (constantDirectImageCoordinatesIso B Y).inv⟩
+  representedDirectImageMap (ConstantFinite.representation B X).group a
 
 /-- In the original coordinates, the actual sheaf transition is precisely
 precomposition by the original relative pullback map. -/
@@ -199,67 +170,50 @@ theorem constantRepresentedDirectImageMap_coordinates {Y Z : Over X} (a : Y ⟶ 
     (constantRepresentedDirectImageMap B a).hom ≫
         (constantDirectImageCoordinatesIso B Y).hom =
       (constantDirectImageCoordinatesIso B Z).hom ≫ constantDirectImageCoordinateMap B a := by
-  change ((constantDirectImageCoordinatesIso B Z).hom ≫
-    constantDirectImageCoordinateMap B a ≫ (constantDirectImageCoordinatesIso B Y).inv) ≫
-      (constantDirectImageCoordinatesIso B Y).hom = _
-  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  exact Functor.homCongr_symm_comp_hom
+    (constantDirectImageCoordinatesIso B Z) (constantDirectImageCoordinatesIso B Y)
+    (constantDirectImageCoordinateMap B a)
 
 /-- The actual finite-constant direct-image objects and their original section
 transitions form a contravariant functor on relative schemes. -/
-def constantRepresentedDirectImageFunctor : (Over X)ᵒᵖ ⥤ AbelianSheaf.{u, u + 1} X where
-  obj Y := constantRepresentedDirectImage B Y.unop
-  map a := constantRepresentedDirectImageMap B a.unop
-  map_id Y := by
-    have hi : constantDirectImageCoordinateMap B (𝟙 Y.unop) =
-        𝟙 (constantDirectImageCoordinates B Y.unop) := by
-      apply NatTrans.ext
-      funext U
-      change (sectionFunctor (ConstantFinite.representation B X).group).map
-          ((directImageTestsMap (𝟙 Y.unop)).app U.unop).op = 𝟙 _
-      rw [directImageTestsMap_id]
-      exact (sectionFunctor (ConstantFinite.representation B X).group).map_id _
-    apply Sheaf.hom_ext
-    change (constantDirectImageCoordinatesIso B Y.unop).hom ≫
-        constantDirectImageCoordinateMap B (𝟙 Y.unop) ≫
-        (constantDirectImageCoordinatesIso B Y.unop).inv = 𝟙 _
-    rw [hi]
-    simp only [Category.id_comp, Iso.hom_inv_id]
-  map_comp {Y Z W} a b := by
-    have hc : constantDirectImageCoordinateMap B (b.unop ≫ a.unop) =
-        constantDirectImageCoordinateMap B a.unop ≫
-          constantDirectImageCoordinateMap B b.unop := by
-      apply NatTrans.ext
-      funext U
-      change (sectionFunctor (ConstantFinite.representation B X).group).map
-          ((directImageTestsMap (b.unop ≫ a.unop)).app U.unop).op =
-        (sectionFunctor (ConstantFinite.representation B X).group).map
-            ((directImageTestsMap a.unop).app U.unop).op ≫
-          (sectionFunctor (ConstantFinite.representation B X).group).map
-            ((directImageTestsMap b.unop).app U.unop).op
-      rw [directImageTestsMap_comp]
-      exact (sectionFunctor (ConstantFinite.representation B X).group).map_comp _ _
-    apply Sheaf.hom_ext
-    change (constantDirectImageCoordinatesIso B Y.unop).hom ≫
-        constantDirectImageCoordinateMap B (b.unop ≫ a.unop) ≫
-        (constantDirectImageCoordinatesIso B W.unop).inv =
-      ((constantDirectImageCoordinatesIso B Y.unop).hom ≫
-        constantDirectImageCoordinateMap B a.unop ≫
-        (constantDirectImageCoordinatesIso B Z.unop).inv) ≫
-      ((constantDirectImageCoordinatesIso B Z.unop).hom ≫
-        constantDirectImageCoordinateMap B b.unop ≫
-        (constantDirectImageCoordinatesIso B W.unop).inv)
-    rw [hc]
-    simp only [Category.assoc, Iso.inv_hom_id_assoc]
+def constantRepresentedDirectImageFunctor : (Over X)ᵒᵖ ⥤ AbelianSheaf.{u, u + 1} X :=
+  representedDirectImageFunctor (ConstantFinite.representation B X).group
+
+/-- The original represented-to-constant coefficient comparison, shared
+before direct image or an actual exchange applies it. -/
+def constantRepresentedCoefficientIso {S : Scheme.{u}} (f : S ⟶ X) :
+    representedSheaf (baseChangedGroup f (ConstantFinite.representation B X).group) ≅
+      ConstantFinite.coefficient B S :=
+  Over.RelativeTests.Comparison.coefficientIso (inverseImage f)
+    (representedSheafBaseChangeIso f (ConstantFinite.representation B X).group)
+    (ConstantFinite.representation B X).iso
+    ((inverseImageConstantIso f).app (ConstantFinite.value B))
+
+/-- Its forward arrow retains all three original coefficient factors. -/
+theorem constantRepresentedCoefficientIso_hom {S : Scheme.{u}} (f : S ⟶ X) :
+    (constantRepresentedCoefficientIso B f).hom =
+      (representedSheafBaseChangeIso f (ConstantFinite.representation B X).group).inv ≫
+        (inverseImage f).map (ConstantFinite.representation B X).iso.hom ≫
+        (inverseImageConstantIso f).hom.app (ConstantFinite.value B) := by
+  simp only [constantRepresentedCoefficientIso,
+    Over.RelativeTests.Comparison.coefficientIso_hom, Iso.app_hom]
 
 /-- Each displayed object is an actual finite-constant pushforward. The
 comparison uses the original represented pullback and original constant transport. -/
 def constantRepresentedDirectImageIso (Y : Over X) :
     constantRepresentedDirectImage B Y ≅
       (directImage Y.hom).obj (ConstantFinite.coefficient B Y.left) :=
-  (directImage Y.hom).mapIso
-    ((representedSheafBaseChangeIso Y.hom (ConstantFinite.representation B X).group).symm ≪≫
-      (inverseImage Y.hom).mapIso (ConstantFinite.representation B X).iso ≪≫
-        (inverseImageConstantIso Y.hom).app (ConstantFinite.value B))
+  (directImage Y.hom).mapIso (constantRepresentedCoefficientIso B Y.hom)
+
+/-- Direct image uses the same original coefficient comparison. -/
+theorem constantRepresentedDirectImageIso_hom (Y : Over X) :
+    (constantRepresentedDirectImageIso B Y).hom =
+      (directImage Y.hom).map (constantRepresentedCoefficientIso B Y.hom).hom := rfl
+
+/-- The inverse is direct image of that same original comparison inverse. -/
+theorem constantRepresentedDirectImageIso_inv (Y : Over X) :
+    (constantRepresentedDirectImageIso B Y).inv =
+      (directImage Y.hom).map (constantRepresentedCoefficientIso B Y.hom).inv := rfl
 
 /-- The original adjunction unit, with its original represented coefficient
 comparison, maps into the displayed actual direct image. -/

@@ -1,0 +1,374 @@
+{
+  "question": "Apply existing PERFORMANCE whole-statement/original-value method at two actual native square kernel boundaries",
+  "status": "FIXED COMPLETE existing-evidence application packet: all currentSquare9 matchedpasses and fullsourcearchives bound; no extra execution or performanceexperiment",
+  "cases": [
+    {
+      "role": "old horizontal inverse failure",
+      "exact_source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v5/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "701e9ae82c306028ac376924caff9c835994a0fadd49b89b2a7484ad27fd2a0c",
+      "job": "aeb4b5240d16454d8407596071bc75cc",
+      "source": "b8000ae60996cea8cf925ec1ee6d9c2cf26b897ee236f56bca75d70c93c40b1f",
+      "status": "kernel deterministic timeout at102; failedwholefrontend126s",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-aeb4b5240d16454d8407596071bc75cc/receipt.json",
+      "receipt_sha256": "89e8624276163f49f1b1cfb1ea85b5880c8dc54d04118f27fc902db8781c9ac6",
+      "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-aeb4b5240d16454d8407596071bc75cc/build.log",
+      "full_log_sha256": "daf424c92b1b326f8b8f23d18954862620105e52574d3233af5c0c3a27964a73",
+      "bounded_actual_feedback": [
+        "\u2716 [3358/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (126s)",
+        "error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean:102:6: (kernel) deterministic timeout"
+      ],
+      "native_command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+      ],
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "actual_profile_limits": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "no_input_drift": true,
+      "shared_exit_code": 1
+    },
+    {
+      "role": "horizontal inverse accepted repair",
+      "exact_source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v7/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "job": "86af6b33e48a4416acba01690e53a39e",
+      "source": "fae614f1597cba0a32ef575b6c56e0d91449bbbbe081baf4fe452b49134d8c44",
+      "status": "PASS6.2s in mixedexit1; genericb3 PASS4.7s",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-86af6b33e48a4416acba01690e53a39e/receipt.json",
+      "receipt_sha256": "ac6595ce1d20a49b2064463261a1cdfcadabe413172f4ff57819bedac4818762",
+      "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-86af6b33e48a4416acba01690e53a39e/build.log",
+      "full_log_sha256": "352bd6f0fe7a6db5c9936d17858624628a0e43302f74b2a6db216512f6277149",
+      "bounded_actual_feedback": [
+        "\u2714 [3358/3369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (6.2s)"
+      ],
+      "native_command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+      ],
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "actual_profile_limits": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "no_input_drift": true,
+      "shared_exit_code": 1
+    },
+    {
+      "role": "old triangle failure",
+      "exact_source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "sha256": "5e4519902eae4c87b7c72223a6146c870b844d47d4ef0eb3eb482e7afa487bc4",
+      "job": "ac3fc2af6a114bbda6fef1ea760b2383",
+      "source": "fab4502b6e105f1b65e14458f0da76dea52eba92f5dddd180d6e416c661ea917",
+      "status": "kernel deterministic timeout at19; failedwholefrontend167s",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/receipt.json",
+      "receipt_sha256": "7a74550e091b9a103decd37293d31e19f34bbdfeb6547c5e93496ecf60a98a32",
+      "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/build.log",
+      "full_log_sha256": "8fd25026cb806b6fad3e5268c2e0dcfc00293ecbbeeab187f6f0eab1daddc632",
+      "bounded_actual_feedback": [
+        "\u2716 [3369/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (167s)",
+        "error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean:19:6: (kernel) deterministic timeout",
+        "error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean:1:0: The current module only contains private declarations."
+      ],
+      "native_command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+      ],
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "actual_profile_limits": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "no_input_drift": true,
+      "shared_exit_code": 1
+    },
+    {
+      "role": "triangle actual original-comparison accepted repair",
+      "exact_source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "status": "PASS3.7s in closedmixedexit1/no drift; ownadjoint + independentfinitegroupfailures separate",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b3a2978033524fe39a1d72c73d5478a3/receipt.json",
+      "receipt_sha256": "973bb11b69b96fafc874cd51cede74c91a532f4948412226dff752f5cf0933f1",
+      "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b3a2978033524fe39a1d72c73d5478a3/build.log",
+      "full_log_sha256": "e60bebe47a2b4f09e976d03036b0b9c488b5d194acf9262e2be803834ff73993",
+      "bounded_actual_feedback": [
+        "\u2714 [3367/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (3.7s)"
+      ],
+      "native_command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Algebra.Category.Grp.FiniteColimits",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Values",
+        "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+      ],
+      "pins": {
+        "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+        "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+        "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+        "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+        "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+        "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+      },
+      "actual_profile_limits": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 4,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 49152,
+        "threads": 4
+      },
+      "no_input_drift": true,
+      "shared_exit_code": 1,
+      "complete_source_archive": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-finiteValues-square-v9-b3a29780.json",
+        "sha256": "6ed8e1e8b3ed51ebe57575ce318bf85a4264f6713669458e7de9b575070e1b33",
+        "content_sha256": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+        "all9_fixed_applied_source_hashes_match": true,
+        "total_source_files": 7361
+      }
+    }
+  ],
+  "current_triangle_repair": {
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/READY-applied.json",
+    "source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+    "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+    "generic_sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+    "actual_result": "Actual c606 PASS3.7s, genericc419 PASS5.1s in closed B b3a/source335d, sharedexit1 separate failures; no further triangle source/compilation needed"
+  },
+  "method": "Derive the full coherence equation at the original native natural isomorphisms before evaluating F or coefficient morphisms; use one shared constructor and generic evaluation at those same original values. Native/D results keep the same D.Coherent and original comparison identities, never take the desired target equation as a capability.",
+  "limits": "Existing ordinary compilation evidence only. Old701/aeb failed126s and old5e/ac3fc failed167s versus accepted265/86af and c606/b3a are separate wholefrontend observations with differing snapshots/profiles/cache context, not a matched speedup, unique exactkernel-reduction pair or kernel-cause diagnosis. No per-tactic/whole-library performance or no-transitive-axiom claim. Independent mixedrun failures remain explicit; final2 run closes success. No extra rebuild, profiling, benchmark or native fingerprint/check executed for this packet.",
+  "source_pins": {
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": [
+      {
+        "url": "https://github.com/leanprover-community/mathlib4.git",
+        "type": "git",
+        "subDir": null,
+        "scope": "",
+        "rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "name": "mathlib",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "inherited": false,
+        "configFile": "lakefile.lean"
+      }
+    ]
+  },
+  "production_settings": "Default200000 budget, no new source flags/linter suppression/sorry/axioms, native compiler profile exactly from receipts above.",
+  "write_boundary": "R-only fixed packet for principal/owning docs contributor; no docs/performance/source ownership expansion.",
+  "historical_pending_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/performance-whole-actual-comparisons/manifest-pending.json",
+  "unchanged_original_public_headers": {
+    "count": 20,
+    "evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/PUBLIC-HEADER-CORRESPONDENCE.json",
+    "native_triangle_declaration": "triangleCoefficientMap_square original header retained verbatim; only generic whole equation and exact actual native instance replace proof"
+  },
+  "final_current9_pass_matrix": [
+    {
+      "module": "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares",
+      "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 5.1
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle",
+      "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 3.7
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 5.0
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity",
+      "sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 20.0
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections",
+      "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 3.6
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity",
+      "sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 3.4
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport",
+      "sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+      "job": "b3a2978033524fe39a1d72c73d5478a3",
+      "source": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "frontend_elapsed_seconds_rounded": 3.4
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+      "sha256": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1",
+      "job": "5c98a3a074d248fa923c002d3e10ea07",
+      "source": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "shared_exit_code": 0,
+      "frontend_elapsed_seconds_rounded": 5.5
+    },
+    {
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint",
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "job": "5c98a3a074d248fa923c002d3e10ea07",
+      "source": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "shared_exit_code": 0,
+      "frontend_elapsed_seconds_rounded": 3.7
+    }
+  ],
+  "final_source_archives": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-finiteValues-square-v9-b3a29780.json",
+      "sha256": "6ed8e1e8b3ed51ebe57575ce318bf85a4264f6713669458e7de9b575070e1b33",
+      "content_sha256": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "all9_fixed_applied_source_hashes_match": true,
+      "total_source_files": 7361
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-finiteValuesv2-squarev10-5c98a3a0.json",
+      "sha256": "9b83ea656dfc0e8451fb4c51009a3f645ff00572705f21b3c56f30107f671c04",
+      "content_sha256": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "all9_fixed_v10_source_hashes_match": true,
+      "total_source_files": 7361
+    }
+  ],
+  "final_source_vector": {
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/READY-applied.json",
+    "sha256": "cb00fe20864f80f41b72cea62e92ce2c292a7b446440879e096e7ba7890b006f",
+    "all9_matched_native_compiler_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/compiler-result-all9.json",
+    "public20_statement_headers": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/PUBLIC-HEADER-CORRESPONDENCE.json"
+  },
+  "final_two_closed_run": {
+    "job": "5c98a3a074d248fa923c002d3e10ea07",
+    "source": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+    "closed_success": true,
+    "exit_code": 0,
+    "no_input_drift": true,
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/receipt.json",
+    "receipt_sha256": "af2ba0c1c7d0948e7e43cc67aaf1741260b5be04b369eeaba78288d1e6d056be",
+    "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/build.log",
+    "full_log_sha256": "b201ff5103df5fffeaabb5e2d5a16d9d240caa116587f95a466c20d0a4171d5b",
+    "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/compiler-events.jsonl",
+    "actual_command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.Algebra.Category.Grp.FiniteColimits",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Values",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+    ],
+    "actual_profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "pins": {
+      "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+      "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+      "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+      "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+    },
+    "explicit_own_roots": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint"
+    ],
+    "unrelated_shared_roots": "FiniteColimits/Values2 independently owned; their actual observed pass does not enlarge this result scope"
+  },
+  "freeze_utc": "2026-10-27T12:24:21.763465+00:00"
+}

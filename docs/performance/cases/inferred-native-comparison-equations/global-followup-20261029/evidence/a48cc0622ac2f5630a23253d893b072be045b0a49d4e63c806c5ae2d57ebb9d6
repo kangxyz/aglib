@@ -1,0 +1,25 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V31_NATIVE_SHARED_CONSTRUCTOR_NORMALIZATION_BEGIN sha256=d3742412cbd47da77f319e9e38250177f2e5a753beba85cc5129a76585250fb0
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/NativeGlobal.setup.json"]
+V31_VARIABLE_BODY
+V31_WHOLE_COMPARISON_READY
+V31_FACTORY_BOUND
+V31_MAPS_BOUND
+V31_VALUES_BOUND
+V31_RELATIVE_CONSTRUCTOR_BOUND
+/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:919:4: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:860:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V31_FINITE_ALIAS_BODY
+/root/autodl-tmp/lean-build/logs/remote-49c97cedad5c4e929fa64720fdc84bc3/SharedConstructorNormalization-v31.lean:926:16: error: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.representedRestrictionIso_hom_app'
+
+V31_NATIVE_SHARED_CONSTRUCTOR_NORMALIZATION_END exit=1
+{"prefix_exit": 1, "source_sha256": "d3742412cbd47da77f319e9e38250177f2e5a753beba85cc5129a76585250fb0", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "author complete operational represented H/K/c family with finite aliases; no fullGlobalfollowup until authorrelease"}

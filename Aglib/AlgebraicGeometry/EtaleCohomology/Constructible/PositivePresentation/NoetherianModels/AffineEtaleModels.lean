@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Descent.FinitePresentation.Schemes
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.AffineModelDescent
+public import Aglib.CategoryTheory.Over.SitePullbackPasting
 
 /-! # Actual affine etale models over original affine chart systems
 
@@ -96,11 +97,10 @@ theorem chartCone_isPullback
     change pullback.lift (pullback.fst (c.π.app i) j ≫ c.π.app a.left)
       (pullback.snd (c.π.app i) j) _ ≫ pullback.snd (D.map a.hom) j = _
     exact pullback.lift_snd _ _ _
-  have houter : IsPullback (p ≫ pullback.snd (D.map a.hom) j)
-      (pullback.fst (c.π.app i) j) j (c.π.app a.left ≫ D.map a.hom) := by
-    rw [hsnd, c.w a.hom]
-    exact (IsPullback.of_hasPullback (c.π.app i) j).flip
-  exact houter.of_right hfst (IsPullback.of_hasPullback (D.map a.hom) j).flip
+  exact IsPullback.of_two_pullback_projections
+    (IsPullback.of_hasPullback (c.π.app i) j)
+    (IsPullback.of_hasPullback (D.map a.hom) j)
+    p (c.π.app a.left) (c.w a.hom) hfst hsnd
 
 /-- Affine etale objects on the actual pullback of a fixed affine open chart
 have affine etale models over an original scheme stage. The returned square

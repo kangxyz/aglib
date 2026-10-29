@@ -1,0 +1,67 @@
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:33:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:108:70: unsolved goals
+I : Type uI
+inst✝ : Category.{vI, uI} I
+Y : I ⥤ Schemeᵒᵖ
+b : Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : AbelianSheaf (unop b.pt)
+C : I ⥤ AbelianSheaf (unop c.pt) := coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)
+hobj : ∀ (i : I),
+  C.obj i = (schemeAdjunctionData.left (c.ι.app i)).obj ((schemeAdjunctionData.left (b.π.app i)).obj F) :=
+  fun x => rfl
+i j : I
+a : i ⟶ j
+⊢ (pullbackTriangleIso (c.ι.app i).unop (Y.map a).unop (c.ι.app j).unop ⋯).hom.app
+        ((inverseImage (b.π.app i).unop).obj F) ≫
+      (inverseImage (c.ι.app j).unop).map
+        ((pullbackTriangleIso (b.π.app j).unop (b.π.app i).unop (Y.map a).unop ⋯).inv.app F) =
+    (pullbackTriangleIso (c.ι.app i).unop (Y.map a).unop (c.ι.app j).unop ⋯).hom.app
+        ((inverseImage (b.π.app i).unop).obj F) ≫
+      (inverseImage (c.ι.app j).unop).map
+        ((pullbackTriangleIso (b.π.app j).unop (b.π.app i).unop (Y.map a).unop ⋯).inv.app F)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitCoefficient.lean:156:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  colimit.ι ?m.151 ?i ≫ (constantDiagramColimitIso ?e).hom
+in the target expression
+  colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+      (pullbackLimitCoefficientIso Y b c l hl F).hom =
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+
+I : Type uI
+inst✝² : Category.{vI, uI} I
+Y : I ⥤ Schemeᵒᵖ
+b : Cone Y
+c : Cocone Y
+l : b.pt ⟶ c.pt
+hl : ∀ (i : I), b.π.app i ≫ c.ι.app i = l
+F : AbelianSheaf (unop b.pt)
+inst✝¹ : CategoryTheory.IsConnected I
+inst✝ : HasColimit (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F))
+i : I
+⊢ colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+      (pullbackLimitCoefficientIso Y b c l hl F).hom =
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+  has type
+    @Quiver.Hom (AbelianSheaf (unop c.pt))
+      (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf (unop c.pt).smallEtaleTopology)).toQuiver
+      ((inverseImage (b.π.app i).unop ⋙ inverseImage (c.ι.app i).unop).obj F) ((inverseImage l.unop).obj F)
+  but is expected to have type
+    @Quiver.Hom (AbelianSheaf (unop c.pt))
+      (ObjectProperty.FullSubcategory.category (Presheaf.IsSheaf (unop c.pt).smallEtaleTopology)).toQuiver
+      ((coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i) ((inverseImage l.unop).obj F)
+  in the application
+    colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+        (pullbackLimitCoefficientIso Y b c l hl F).hom =
+      (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop ⋯).inv.app F
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting
+- Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitCoefficient

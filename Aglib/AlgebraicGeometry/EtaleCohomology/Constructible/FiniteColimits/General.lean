@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimi
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.LocalTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Partitions
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteColimits.Values
+public import Aglib.CategoryTheory.Functor.ActualDiagramLift
 public import Mathlib.CategoryTheory.Comma.Arrow
 
 /-! # Actual general finite-diagram constructible colimits
@@ -82,25 +83,12 @@ theorem isFiniteLocallyConstant_of_isColimit {X : Scheme.{u}}
         Iso.symm_inv, Functor.mapIso_hom, Functor.mapIso_inv, Category.assoc]
       simpa only [q, Arrow.mk_left, Arrow.mk_right, Arrow.mk_hom,
         Functor.map_comp, Category.assoc] using h.symm
-    let E : J ⥤ AddCommGrpCat.{u + 1} := {
-      obj := A
-      map := fun f => g (Arrow.mk f)
-      map_id := by
-        intro j
-        apply constant_map_injective_at_point U.left (A j) (A j) z
-        change C.map (g (Arrow.mk (𝟙 j))) = C.map (𝟙 (A j))
-        rw [hg', D₁.map_id, C.map_id]
-        simpa only [Category.id_comp] using (a j).inv_hom_id
-      map_comp := by
-        intro i j k f f'
-        apply constant_map_injective_at_point U.left (A i) (A k) z
-        rw [C.map_comp, hg', hg', hg', D₁.map_comp]
-        simp }
-    let e : D₁ ≅ E ⋙ C := NatIso.ofComponents a (by
-      intro i j f
-      change D₁.map f ≫ (a j).hom = (a i).hom ≫ C.map (g (Arrow.mk f))
-      rw [hg']
-      simp)
+    let : C.Faithful := {
+      map_injective := by
+        intro M N φ ψ hφψ
+        exact constant_map_injective_at_point U.left M N z hφψ }
+    let E : J ⥤ AddCommGrpCat.{u + 1} := Functor.actualDiagramLift C D₁ A a
+      (fun {i j} f => g (Arrow.mk f)) (fun {i j} f => hg' f)
     have : ∀ j, Finite (E.obj j) := fun j => by
       change Finite (A j)
       exact t.finite_value j
@@ -108,11 +96,10 @@ theorem isFiniteLocallyConstant_of_isColimit {X : Scheme.{u}}
     let d := R.mapCocone ((inverseImage t.chart.hom).mapCocone c)
     have hd : IsColimit d :=
       isColimitOfPreserves R (isColimitOfPreserves (inverseImage t.chart.hom) hc)
-    let : HasColimit D₁ := ⟨d, hd⟩
     let : C.IsLeftAdjoint := (constantAdjunction U.left).isLeftAdjoint
     let eCol : d.pt ≅ C.obj (Limits.colimit E) :=
-      (colimit.isoColimitCocone ⟨d, hd⟩).symm ≪≫ HasColimit.isoOfNatIso e ≪≫
-        (preservesColimitIso C E).symm
+      Functor.actualDiagramLiftColimitIso C D₁ A a
+        (fun {i j} f => g (Arrow.mk f)) (fun {i j} f => hg' f) hd
     let p : U.left ⟶ X := U.hom ≫ t.chart.hom
     let eOriginal : (inverseImage p).obj c.pt ≅ C.obj (Limits.colimit E) :=
       (inverseImageComp t.chart.hom U.hom).app c.pt ≪≫

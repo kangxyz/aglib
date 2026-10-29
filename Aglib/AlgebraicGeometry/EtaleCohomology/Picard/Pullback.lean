@@ -125,7 +125,7 @@ variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 def picardCohomologyEquiv (X : Scheme.{u})
     [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] :
     PicardGroup X ≃+ Sheaf.H.{w} (gm X) 1 :=
-  picardH1Equiv etaleLineBundleDescent X (stacks03AJ X)
+  picardH1Equiv.{u, w} X
 
 variable [HasExt.{w'} (AbelianSheaf.{u, u + 1} S)]
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.InjectiveComplex
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Evaluation
 public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.Sections
 public import Mathlib.Algebra.Homology.Additive
 /-!
@@ -23,7 +23,6 @@ set_option backward.defeqAttrib.useBackward true
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 namespace AlgebraicGeometry.Scheme.Modules
-open TwoOpen
 
 section
 variable {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
@@ -31,8 +30,8 @@ variable {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
 /-- Original sections of a restricted sheaf equal sections on the image open,
 with naturality in the sheaf retained. -/
 def restrictedSectionsIso :
-    Scheme.Modules.restrictFunctor j ⋙ sectionsFunctor U ⊤ ≅
-      sectionsFunctor X j.opensRange := by
+    Scheme.Modules.restrictFunctor j ⋙ SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤) ≅
+      SheafOfModules.additiveEvaluation X.ringCatSheaf (op j.opensRange) := by
   refine NatIso.ofComponents (fun M => M.restrictAppIso j ⊤ ≪≫
     M.presheaf.mapIso (eqToIso j.image_top_eq_opensRange.symm).op) ?_
   intro M N f
@@ -44,17 +43,32 @@ def restrictedSectionsIso :
 /-- The cochain isomorphism between actual restricted sections and original
 sections on the open image. -/
 def restrictedSectionsComplexIso (I : CochainComplex X.Modules ℕ) :
-    ((sectionsFunctor U ⊤).mapHomologicalComplex _).obj
+    ((SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)).mapHomologicalComplex _).obj
         (((Scheme.Modules.restrictFunctor j).mapHomologicalComplex _).obj I) ≅
-      ((sectionsFunctor X j.opensRange).mapHomologicalComplex _).obj I :=
-  (Functor.mapHomologicalComplexCompIso (restrictedSectionsIso j) (.up ℕ)).app I
+      ((SheafOfModules.additiveEvaluation X.ringCatSheaf (op j.opensRange)).mapHomologicalComplex
+        _).obj I := by
+  letI : @Functor.PreservesZeroMorphisms U.Modules inferInstance
+      AddCommGrpCat.{u} inferInstance inferInstance inferInstance
+      (SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)) := by
+    exact SheafOfModules.additiveEvaluation_preservesZeroMorphisms U.ringCatSheaf (op ⊤)
+      (sourceZero := (inferInstance : HasZeroMorphisms U.Modules))
+      (targetZero := (inferInstance : HasZeroMorphisms AddCommGrpCat.{u}))
+  letI : @Functor.PreservesZeroMorphisms X.Modules inferInstance
+      AddCommGrpCat.{u} inferInstance inferInstance inferInstance
+      (SheafOfModules.additiveEvaluation X.ringCatSheaf (op j.opensRange)) := by
+    exact SheafOfModules.additiveEvaluation_preservesZeroMorphisms
+      X.ringCatSheaf (op j.opensRange)
+      (sourceZero := (inferInstance : HasZeroMorphisms X.Modules))
+      (targetZero := (inferInstance : HasZeroMorphisms AddCommGrpCat.{u}))
+  exact (Functor.mapHomologicalComplexCompIso (restrictedSectionsIso j) (.up ℕ)).app I
 
 end
 
 /-- Unit sheaf restriction agrees with the original ring-section identification. -/
 lemma restrictedSectionsIso_inv_unit {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j] :
     ((restrictedSectionsIso j).app (SheafOfModules.unit X.ringCatSheaf)).inv ≫
-      (sectionsFunctor U ⊤).map (Scheme.Modules.restrictUnitIso j).hom =
+      (SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)).map
+        (Scheme.Modules.restrictUnitIso j).hom =
     AddCommGrpCat.ofHom (IsOpenImmersion.ΓIsoTop j).inv.hom.toAddMonoidHom := by
   rfl
 
@@ -77,7 +91,8 @@ lemma restrictUnitIso_comp {U V X : Scheme.{u}} (f : U ⟶ V) (g : V ⟶ X)
 def trivializedOpenSectionsIso {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
     (M : X.Modules) (e : M.restrict j ≅ SheafOfModules.unit U.ringCatSheaf) :
     Γ(M, j.opensRange) ≅ AddCommGrpCat.of Γ(U, ⊤) :=
-  ((restrictedSectionsIso j).app M).symm ≪≫ (sectionsFunctor U ⊤).mapIso e
+  ((restrictedSectionsIso j).app M).symm ≪≫
+    (SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)).mapIso e
 
 /-- A trivialization arising from a global sheaf arrow retains that arrow on sections. -/
 lemma trivializedOpenSectionsIso_hom {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
@@ -88,7 +103,8 @@ lemma trivializedOpenSectionsIso_hom {U X : Scheme.{u}} (j : U ⟶ X) [IsOpenImm
     (trivializedOpenSectionsIso j M e).hom =
       φ.app j.opensRange ≫ AddCommGrpCat.ofHom
         (IsOpenImmersion.ΓIsoTop j).inv.hom.toAddMonoidHom := by
-  change ((restrictedSectionsIso j).app M).inv ≫ (sectionsFunctor U ⊤).map e.hom = _
+  change ((restrictedSectionsIso j).app M).inv ≫
+    (SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)).map e.hom = _
   rw [← hφ, Functor.map_comp, ← Category.assoc]
   erw [← (restrictedSectionsIso j).inv.naturality φ]
   rw [Category.assoc]
@@ -99,7 +115,8 @@ lemma restrictedSectionsIso_inv_map_unit {U X : Scheme.{u}} (j : U ⟶ X) [IsOpe
     (M : X.Modules) (φ : M ⟶ SheafOfModules.unit X.ringCatSheaf) :
     φ.app j.opensRange ≫ AddCommGrpCat.ofHom
         (IsOpenImmersion.ΓIsoTop j).inv.hom.toAddMonoidHom =
-      ((restrictedSectionsIso j).app M).inv ≫ (sectionsFunctor U ⊤).map
+      ((restrictedSectionsIso j).app M).inv ≫
+        (SheafOfModules.additiveEvaluation U.ringCatSheaf (op ⊤)).map
         ((Scheme.Modules.restrictFunctor j).map φ ≫
           (Scheme.Modules.restrictUnitIso j).hom) := by
   rw [Functor.map_comp, ← Category.assoc]

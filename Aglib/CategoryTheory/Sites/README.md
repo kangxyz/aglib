@@ -19,3 +19,26 @@ covers for `J.over Y` (`GrothendieckTopology.functorPushforward_over_map_mem_iff
 `U.left` covers for `J`. These are the two directions behind Mathlib's continuity and cocontinuity
 instances of `Over.map f`. Consumer:
 [Picard/BaseChange](../../AlgebraicGeometry/Picard/BaseChange.lean).
+
+[Constant-sheaf units](ConstantSheaf/Unit.lean) retain the original
+`constantSheafAdj` unit under a coefficient functor preserving sheafification.
+At a supplied terminal object, the actual constant-composition isomorphism
+identifies the two units. If the coefficient functor reflects isomorphisms,
+invertibility of the target unit implies invertibility of the original unit.
+The etale module consumer supplies its original torsion-unit geometric theorem.
+
+[Constant cohomology transport](ConstantRestriction/Cohomology.lean) uses the
+original constant-adjunction comparison at both the integer generator and the
+coefficient value. Its identity, composition and triangle laws follow from the
+whole adjunction coherence, preserving independent Ext worlds. The underived
+constant-restriction interface keeps its separate, narrower imports.
+
+[Torsor chart trivialization](Torsor/ChartTrivialization.lean) restricts the
+same carrier and action to an actual site slice, then uses the supplied local
+section for its original section-equivalence trivialization.
+[Coefficient isomorphisms](Torsor/CoefficientIso.lean) retain the literal
+carrier with the inverse coefficient action.
+[Torsor functoriality](Torsor/Functoriality.lean) uses actual coefficient
+pushouts and inverse-image carriers on isomorphism classes, with their stated
+sheafification and Ext hypotheses. The class formulas retain those actual
+representatives.

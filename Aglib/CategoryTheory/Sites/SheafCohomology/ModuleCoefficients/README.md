@@ -6,6 +6,7 @@
 | [Comparison](Comparison.lean), [DerivedExt](DerivedExt.lean) and [DerivedGamma](DerivedGamma.lean) | Original module-Ext/abelian-`Sheaf.H` comparisons in every degree and actual module evaluation `rightDerived` comparison. |
 | [DerivedScalarSections](DerivedScalarSections.lean), [DerivedSlice](DerivedSlice.lean), [Restriction](Restriction.lean) | Original scalar restriction and slice maps, including the actual `restrictScalars` on coefficient-valued sections. |
 | [DerivedBoundary](DerivedBoundary.lean), [ExtBoundary](ExtBoundary.lean) | Additive Gamma long exact sequence with boundary normalized through the original short-exact-sequence Ext class. |
+| [UniqueFamily](UniqueFamily.lean) | The original sheafified free Cech tuple term of a unique-indexed family, compared with the free abelian sheaf on its actual iterated product. |
 | [Etale cohomology](../../../../AlgebraicGeometry/EtaleCohomology/Coefficients/Cohomology.lean), [derived cohomology](../../../../AlgebraicGeometry/EtaleCohomology/Coefficients/DerivedCohomology.lean) and [derived slice cohomology](../../../../AlgebraicGeometry/EtaleCohomology/Coefficients/DerivedSliceCohomology.lean) | Concrete small-etale entries with the required existence and universe hypotheses discharged, owned by the geometric family. |
 
 The constant-ring action comes from the constant-sheaf adjunction unit; it does

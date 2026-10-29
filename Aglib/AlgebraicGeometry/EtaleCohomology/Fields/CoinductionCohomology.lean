@@ -70,19 +70,8 @@ theorem directImageCohomologyEquiv_cohomologyPullback
     directImageCohomologyEquiv f ((inverseImage f).obj F) q
       (cohomologyPullback f F q a) =
         Sheaf.H.map ((inverseImageAdjunction f).unit.app F) q a := by
-  let e := (inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))
-  change (inverseImageAdjunction f).extEquiv
-      ((Ext.mk₀ e.hom).comp
-        ((Ext.mk₀ e.inv).comp (a.mapExactFunctor (inverseImage f)) (Nat.zero_add q))
-          (Nat.zero_add q)) = _
-  rw [Ext.mk₀_comp_mk₀_assoc, e.hom_inv_id, Ext.mk₀_id_comp]
-  have h := (inverseImageAdjunction f).extEquiv_naturality_left a
-    (Ext.mk₀ (𝟙 ((inverseImage f).obj F))) (Nat.add_zero q)
-  rw [Ext.comp_mk₀_id, Adjunction.extEquiv_mk₀] at h
-  have hunit : (inverseImageAdjunction f).homEquiv F ((inverseImage f).obj F)
-      (𝟙 ((inverseImage f).obj F)) = (inverseImageAdjunction f).unit.app F :=
-    (inverseImageAdjunction f).homEquiv_id F
-  exact h.trans (congrArg (fun k => a.comp (Ext.mk₀ k) (Nat.add_zero q)) hunit)
+  exact (inverseImageAdjunction f).sourceExtComparison_mapExactFunctor
+    ((inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))) F q a
 
 /-- A class killed by the original geometric pullback is killed by the
 actual coefficient unit, without replacing either cohomology group. -/

@@ -1,0 +1,87 @@
+# Proper injective assembly: bounded repair1 retention
+
+Current verdict: **repair1 retains the prior mathematical/source-correspondence verdict, with actual published bff/b70 source binding and ordinary compilation still pending**. No new mathematical obligation or material objection was identified. This continues the same ordinary review using its unchanged complete-assembly coverage; it creates no established-status or new acceptance gate.
+
+## Actual changed basis
+
+The fixed repair packet is `migration/implementation/proper-injective-assembly-core-staging/repairs/1/READY.json` (SHA-256 `785b31b3830bb67ea5ef8ccba0e349958785b48e7596f7c06008eaffb37842ff`), with `ARGUMENT.md` (`dcc94182d7f00d0e281abc0e4735eaa877a044ce91d3dd5cc3dabbee3fa14a1a`). Its actual diffs and before-images were read. Entry/N HEADs and the unchanged complete-assembly dependencies match the earlier review.
+
+| Source | Prior reviewed SHA-256 | Repair1 SHA-256 |
+|---|---|---|
+| `Plus/InjectiveComparisonExact.lean` | `c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb` | `bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183` |
+| `Proper/Reduction/AllModuleCoefficients.lean` | `7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89` | `b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b` |
+
+Publication occurred during this review. A before-image guard stopped report mutation; reinspection then bound both actual live sources to exact bff/b70 staged candidates. A separate dependency guard found the independent `ZModImages.lean` migration from e241aaca to `b8c1e056716e14d28a410744f794b2a8adb25607c92047a96e0292a9657d83d3`. Its inspected actual diff leaves the ZModSheaf/zmodUnderlying constructions used here unchanged. That separate adjunct-proof migration receives no new mathematical verdict from this review. Both guard conditions were reconciled before any report write. No source was changed by the reviewer.
+
+## Delta and retained conclusions
+
+`InjectiveComparisonExact#isIso_app_of_injective_after_exact` is a supported literal-single corollary. Its added input is the construction equality `hZ : Z = U followed by singleFunctor A 0`. Its proof substitutes Z and calls the unchanged complete assembly theorem. This equality specifies the original construction; it is not an arbitrary endpoint isomorphism, desired invertibility or desired comparison-coherence input. No new model is introduced.
+
+The native call at lines 69–71 supplies exactly `Z = zmodSingle X n` and `hZ = rfl`, with the same actual U, four functors, beta, hI and M. The retained inspected definition of zmodSingle is literally zmodUnderlying followed by the native single. No stronger native hypothesis is added, and tests and conclusion retain the same original Z.obj value head.
+
+The complete original assembly proof is byte-unchanged. The original beta/map, shift structure, canonical derived-unit exact-single comparison, actual category/sheaf worlds and four independent derived universes retain prior coverage. All three original native theorem headers and the full killed/higher tail are unchanged by the diff.
+
+Result-specific retention: `InjectiveComparisonExact#isIso_app_single_of_injective_after_exact` retains its original exact-coefficient conclusion; `AllModuleCoefficients#derivedExchange_on_all_zmodCoefficients` retains the canonical derived exchange on all genuine module singles; `AllModuleCoefficients#derivedExchange_on_killedCoefficients` retains the original killed-coefficient single conclusion; and `AllModuleCoefficients#higherExchange_on_killedCoefficients` retains the original arbitrary natural-degree higher map. Their original hypotheses and pending compilation boundary remain explicit. The original hI remains a premise.
+
+## Actual compiler feedback and present limit
+
+The inspected existing run is `remote-ea58796c97b44af5bb5072b84c7a0d3f`, source `926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f`. Its receipt reports the same expected/content source, no input drift and overall failure. Compiler events give the c9ee lower frontend exit 0 in 3.871010 seconds and the 7f83 native frontend exit 1 in 161.041797 seconds. The human build log reports the lower module duration as 4.4 seconds. Native diagnostics are `(kernel) deterministic timeout` at 46:8 and an unknown `derivedExchange_on_all_zmodCoefficients` at 75:8, a dependent cascade.
+
+This feedback supersedes the initial report's then-current absence of compiler evidence. The observations remain tied to c9ee/7f83 in the actual 926bd graph: the old lower pass is not a pass on the appended bff module, and native failure is not a mathematical counterexample. Neither supplies a compiler pass on repair1.
+
+The cited same-family PERFORMANCE records explain the repair method's provenance. They do not validate a speedup for bff/b70 or establish the unique cause of this timeout. Repair1 compilation and any further repair remain with the author/broker. This reviewer ran no compilation, tests, replay, client checks or axiom audit.
+
+Only the same two report artifacts were updated. Pre-update SHA-256 values were `e1a9eb6e62075860adbdb79da0bfab30b44e3aea314afb20552db10c2ab90a47` (Markdown) and `82924ac8611655b9cb847eace48b816f9d5799612b77213dd8532d9c647f3b53` (JSON). The original vector and initial evidence boundary are preserved below and in JSON history.
+
+---
+
+The following initial review on c9ee/7f83 is preserved as historical coverage. Its execution-evidence description records the state before the actual feedback above; the current retention verdict and execution boundary govern present use.
+
+# Proper injective assembly: independent ordinary source review
+
+Verdict: **supported within the assigned mathematical/source-correspondence scope, conditional on compilation of these exact staged sources**. No material mathematical objection or target-correspondence gap was identified. This is an ordinary review, with no established-status decision and no claim of Proper-family or migration closure.
+
+## Fixed basis
+
+Entry HEAD `3467423400c765167730d4372704650a52ab3a95`; Aglib HEAD `54d6974ace11bf7d197aa925cb8cade86db8a24f`. The three assigned Lean hashes match, and the live native file still equals the recorded before-image. The packet is `migration/implementation/proper-injective-assembly-core-staging/READY.json` (SHA-256 `a863bebad65588ae7b4be6f002f7d4fe4c966b29a1654375debd238ce3470813`); its inspected plan/correspondence is `CORRESPONDENCE.md` (SHA-256 `9274b61c0601b6300e27e3776bb292976a4b32d6560d8fff2a7243354f0d1175`). All paths below are relative to that staging packet unless stated otherwise.
+
+| Source | Before SHA-256 | Candidate SHA-256 |
+|---|---|---|
+| `Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean` | New leaf | `c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb` |
+| `Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean` | `3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049` | `7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89` |
+| `Aglib/Algebra/Homology/DerivedCategory/Plus/README.md` | `416c92277304acaf432cdeec3c1096c9794a0d895e8d6d6b842a6bc3e669d598` | `3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68` |
+
+The unchanged lower `InjectiveComparison.lean` has SHA-256 `7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f`. The accompanying JSON fingerprints the other inspected Aglib dependencies. Pinned source basis: Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; Mathlib was read at the assigned local source path.
+
+## Result-specific outcomes
+
+- `InjectiveComparisonExact#isIso_app_single_of_injective_after_exact`: supported source derivation. Under its displayed abelian/enough-injective hypotheses, exact additive U and four additive functors, the original shift-compatible beta is invertible on the original A-single of U(M) for every M, conditional on the stated tests on injectives in T.
+- `AllModuleCoefficients#derivedExchange_on_all_zmodCoefficients`: supported source correspondence. Exactly the original genuine-module injective tests imply invertibility of the same `derivedBaseChangeMap` on every original `zmodSingle`.
+- `AllModuleCoefficients#derivedExchange_on_killedCoefficients`: unchanged statement and proof tail remain supported through the revised first theorem. The literal `n • id F = 0` supplies the same canonical genuine-module coefficient and original-single transport.
+- `AllModuleCoefficients#higherExchange_on_killedCoefficients`: unchanged statement and proof tail remain supported through the same existing native higher-map transport, for arbitrary q : Nat.
+
+Every outcome above retains the uncompiled boundary.
+
+## Mathematical and map correspondence
+
+The new leaf contains the complete assembly, rather than accepting its intended coherence as a premise. Lines 57–62 select one proof-only standard derived realization of T and form the literal `alpha = whiskerLeft RU beta`. The already installed right-derived shift and triangulated structures are closed under composition and whiskering; no comparison or triangulatedness hypothesis is inserted at this stage.
+
+Lines 63–66 use exactly `U.rightDerivedFunctorPlusSingleIso 0`. Finite-limit and finite-colimit preservation supply `U.PreservesHomology` through Mathlib's `preservesHomologyOfExact`. The inspected `SingleHomology.lean:143–187` constructs this comparison from the inverse installed derived unit and the actual single-complex map, and proves its unit equation. An arbitrary endpoint isomorphism or a second reference realization is absent.
+
+Lines 67–76 prove both required nonnegative ranges by applying the existing `rightDerivedFunctorPlus_isGE` successively to U, F1, F2 and U, G1, G2. That API requires additivity and enough injectives in the source; it does not require extra exactness of the four value functors. The inspected `TStructure.lean:34–60` uses an injective representative in the same lower range and the original derived unit. Thus these lower bounds are proved inputs to the injective comparison theorem, rather than desired bounds assumed as new premises.
+
+At line 79, naturality across the fixed exact-single iso transports the original test to alpha on a T-injective single; at line 81 it transports the conclusion back to the original beta component. The directions of `NatTrans.isIso_app_iff_of_iso` are correct for the displayed iso. The unchanged core theorem supplies the intervening extension to all singles. Its inspected argument uses the actual single short-exact triangles and homology ladders: negative homology starts the induction; the two four-lemma steps yield monicity and then invertibility in the next degree; degreewise invertibility detects the derived isomorphism. This requires no injectivity of U(I) in A and no finite injective dimension.
+
+The adapter at native lines 53–70 instantiates T with the genuine `ZModSheaf X n`, U with literal `zmodUnderlying X n`, and F1/F2/G1/G2 with `directImage f`, `inverseImage g`, `inverseImage g'`, `directImage f'`. The existing derived-image abbreviations are those functors' installed right-derived functors. Beta is the identical `derivedBaseChangeMap f f' g g' h`, with its existing `derivedBaseChangeMap_commShift`. The inspected definition of `zmodSingle` is definitionally U followed by the original degree-zero single, so both hI and the conclusion have the required original values and arrows.
+
+Native exactness and enough injectives are supplied by the existing `TorsionZMod` APIs at the actual site/value worlds; their statements allow every n, including zero. The abelian sheaf categories have the existing enough-injective instances. No properness, cartesianness, nonzero modulus, selected coefficient marking, or injectivity after forgetting is added. The generic object, morphism and derived universes are independent; native dX/dS/dX'/dS' and the actual sheaf worlds remain unchanged. The T-derived model is hidden from the theorem statement and conclusion.
+
+The diff preserves all three native theorem statements and the complete killed/higher proof tail. The new module prose, the bounded README addition and the supplied correspondence describe this scoped construction consistently; their claims do not supply additional proof premises. The lower core's propagation uses its stated nonnegative-single hypotheses, which the exact-coefficient leaf proves here.
+
+## Evidence boundary and remaining obligation
+
+This review read the fixed derivation and applicable dependency implementations. It performed source identity checks and a source diff only. No Lean compilation, tests, replay, client build or axiom audit was run or claimed, and no matching compiler pass was supplied for the new candidate. The author/broker retain the compilation and any repair chain. A changed source or affected dependency requires correspondence reconciliation; this verdict does not attach to future repaired bytes automatically.
+
+There is no identified mathematical repair obligation within the assigned closure. Remaining execution obligation: compile the exact new leaf and native root with their actual dependency/pin/options basis, through the existing author/broker workflow. The original hI remains an explicit mathematical premise; this review does not prove those injective tests. The independently frozen fixed3 source `3dede325a048fde9dc106d7561dfb72e3e44a1fc1c469e6d6ae0988a558cbabd` receives no new coverage from this staged review.
+
+The only writes by this reviewer are this report and its JSON companion. Both were absent before creation; Entry/N HEAD and source guards were rechecked before writing, and foreign work was preserved.

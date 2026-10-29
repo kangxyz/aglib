@@ -481,7 +481,7 @@ def higherBaseChangeStalkMap :
     ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).obj
       ((higherDirectImage f' q).obj ((inverseImage g').obj F)) :=
   higherDirectImageStalkMapOfHom.{u} f f' g g' ζ F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F)
 
 omit hXExt hX'Ext hSourceSlice hTargetSlice hZU hZV hFiber hFiber' in
@@ -492,7 +492,7 @@ theorem higherBaseChangeStalkMap_apply
     higherBaseChangeStalkMap.{u, dX, dS, dX', dS'} f f' g g' h ζ
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q z =
       ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
         hDX hDS hDX' hDS' f f' g g' h q).app F)
         ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
           ((higherDirectImage f q).obj F) z) := rfl
@@ -508,7 +508,7 @@ def geometricCohomologyComparisonEquation
         Sheaf.H.{e} ((inverseImage (pullback.snd ζ f')).obj ((inverseImage g').obj F)) q) : Prop :=
   geometricCohomologyComparisonEquationOfHom.{u, e} f f' g g' h ζ
     (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) b b'
 
 omit hXExt hX'Ext hSourceSlice hTargetSlice hZU hZV in
@@ -524,14 +524,14 @@ theorem geometricCohomologyComparisonEquation_iff_original
       (hFiber := hFiber) (hFiber' := hFiber')
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q b b' ↔
       ∀ z, b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-          ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+          ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
         hDX hDS hDX' hDS' f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
             ((higherDirectImage f q).obj F) z)) =
         geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) :=
   geometricCohomologyComparisonEquationOfHom_iff_original.{u, e} f f' g g' h ζ
     (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) b b'
 
 /-- Comparisons with the original pointed-germ formulas commute with the
@@ -539,8 +539,9 @@ original stalk unit and higher exchange over the same geometric point. -/
 theorem geometricCohomologyComparison_exchange_of_neighborhoodGerms
     (hN : ∀ (U : S.Etale) (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U)
       (y : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q),
-      (pointSmallEtale ζ).sheafFiber.map ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
-        hDX hDS hDX' hDS' f f' g g' h q).app F)
+      (pointSmallEtale ζ).sheafFiber.map
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
+          hDX hDS hDX' hDS' f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F)
             (@fibreProductCohomologyGerm.{u, w, s, e} X S f U
               hXExt (hSourceSlice U) (hZU U) F q Ω hΩField hΩSep (ζ ≫ g) p y)) =
@@ -580,7 +581,7 @@ theorem geometricCohomologyComparison_exchange_of_neighborhoodGerms
     (hXExt := hXExt) (hX'Ext := hX'Ext)
     (hSourceSlice := hSourceSlice) (hTargetSlice := hTargetSlice)
     (hZU := hZU) (hZV := hZV) (hFiber := hFiber) (hFiber' := hFiber') F q
-    ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F) hN b b' hb hb'
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

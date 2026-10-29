@@ -6,8 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
-public import Mathlib.CategoryTheory.Sites.PreservesLocallyBijective
-public import Mathlib.CategoryTheory.Sites.LocallyBijective
+public import Aglib.CategoryTheory.Sites.ConstantRestriction
 
 /-! # Unit-compatible constant sheaves on actual etale restrictions
 
@@ -96,19 +95,20 @@ def restrictionConstantMap {X S : Scheme.{u}} (p : S ⟶ X) [Etale p]
     (Functor.const S.Etaleᵒᵖ).obj A ⟶
       ((etaleRestriction p).obj
         ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A)).obj :=
-  Functor.whiskerLeft (siteEtalePostcompose p).op (constantPresheafUnit X A)
+  CategoryTheory.Functor.restrictionConstantMap S.smallEtaleTopology X.smallEtaleTopology
+    (siteEtalePostcompose p) A
 
 instance restrictionConstantMap_locallyInjective {X S : Scheme.{u}} (p : S ⟶ X) [Etale p]
     (A : AddCommGrpCat.{u + 1}) :
     Presheaf.IsLocallyInjective S.smallEtaleTopology (restrictionConstantMap p A) :=
-  Presheaf.isLocallyInjective_whisker S.smallEtaleTopology X.smallEtaleTopology
-    (siteEtalePostcompose p) (constantPresheafUnit X A)
+  CategoryTheory.Functor.restrictionConstantMap_locallyInjective
+    S.smallEtaleTopology X.smallEtaleTopology (siteEtalePostcompose p) A
 
 instance restrictionConstantMap_locallySurjective {X S : Scheme.{u}} (p : S ⟶ X) [Etale p]
     (A : AddCommGrpCat.{u + 1}) :
     Presheaf.IsLocallySurjective S.smallEtaleTopology (restrictionConstantMap p A) :=
-  Presheaf.isLocallySurjective_whisker S.smallEtaleTopology X.smallEtaleTopology
-    (siteEtalePostcompose p) (constantPresheafUnit X A)
+  CategoryTheory.Functor.restrictionConstantMap_locallySurjective
+    S.smallEtaleTopology X.smallEtaleTopology (siteEtalePostcompose p) A
 
 /-- The locally bijective original unit gives an actual constant-restriction
 isomorphism, without a point, finiteness or connectedness hypothesis. -/
@@ -116,32 +116,17 @@ def etaleRestrictionConstantIso {X S : Scheme.{u}} (p : S ⟶ X) [Etale p]
     (A : AddCommGrpCat.{u + 1}) :
     (constantSheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A ≅
       (etaleRestriction p).obj
-        ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A) := by
-  let L := presheafToSheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}
-  let m := restrictionConstantMap p A
-  have : Sheaf.IsLocallyInjective (L.map m) :=
-    (Presheaf.isLocallyInjective_presheafToSheaf_map_iff S.smallEtaleTopology m).mpr inferInstance
-  have : Sheaf.IsLocallySurjective (L.map m) :=
-    (Presheaf.isLocallySurjective_presheafToSheaf_map_iff S.smallEtaleTopology m).mpr inferInstance
-  have : IsIso (L.map m) :=
-    (Sheaf.isLocallyBijective_iff_isIso (L.map m)).mp ⟨inferInstance, inferInstance⟩
-  exact asIso (L.map m) ≪≫
-    asIso ((sheafificationAdjunction S.smallEtaleTopology AddCommGrpCat.{u + 1}).counit.app
-      ((etaleRestriction p).obj
-        ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A)))
+        ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A) :=
+  CategoryTheory.Functor.constantRestrictionIso S.smallEtaleTopology X.smallEtaleTopology
+    (siteEtalePostcompose p) A
 
 /-- The restriction isomorphism retains the original constant-presheaf unit. -/
 theorem etaleRestrictionConstantIso_unit {X S : Scheme.{u}} (p : S ⟶ X) [Etale p]
     (A : AddCommGrpCat.{u + 1}) :
     constantPresheafUnit S A ≫ (etaleRestrictionConstantIso p A).hom.hom =
-      restrictionConstantMap p A := by
-  change toSheafify S.smallEtaleTopology _ ≫
-    (sheafifyMap S.smallEtaleTopology (restrictionConstantMap p A) ≫
-      ((sheafificationAdjunction S.smallEtaleTopology AddCommGrpCat.{u + 1}).counit.app
-        ((etaleRestriction p).obj
-          ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A))).hom) = _
-  rw [← Category.assoc, ← toSheafify_naturality, Category.assoc,
-    sheafificationAdjunction_counit_app_val, toSheafify_sheafifyLift, Category.comp_id]
+      restrictionConstantMap p A :=
+  CategoryTheory.Functor.constantRestrictionIso_unit S.smallEtaleTopology X.smallEtaleTopology
+    (siteEtalePostcompose p) A
 
 /-- Literal values on one original chart determine the full restricted
 coefficient map after the unit-compatible constant identifications. -/
@@ -154,53 +139,9 @@ theorem etaleRestriction_map_constant_of_unit_eq {X : Scheme.{u}} (U : X.Etale)
       q.hom.app (op U) ((constantPresheafUnit X A).app (op U) a)) :
     (etaleRestrictionConstantIso U.hom A).hom ≫ (etaleRestriction U.hom).map q =
       (constantSheaf U.left.smallEtaleTopology AddCommGrpCat.{u + 1}).map g ≫
-        (etaleRestrictionConstantIso U.hom B).hom := by
-  apply Sheaf.hom_ext
-  apply sheafify_hom_ext U.left.smallEtaleTopology _ _
-    ((etaleRestriction U.hom).obj
-      ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B)).property
-  change constantPresheafUnit U.left A ≫
-      ((etaleRestrictionConstantIso U.hom A).hom.hom ≫ ((etaleRestriction U.hom).map q).hom) =
-    constantPresheafUnit U.left A ≫
-      (((constantSheaf U.left.smallEtaleTopology AddCommGrpCat.{u + 1}).map g).hom ≫
-        (etaleRestrictionConstantIso U.hom B).hom.hom)
-  rw [← Category.assoc, etaleRestrictionConstantIso_unit]
-  rw [← Category.assoc, constantPresheafUnit_naturality U.left g, Category.assoc,
-    etaleRestrictionConstantIso_unit]
-  ext V a
-  let k : (siteEtalePostcompose U.hom).obj V.unop ⟶ U :=
-    MorphismProperty.Over.homMk V.unop.hom rfl (by trivial)
-  have hA := ConcreteCategory.congr_hom ((constantPresheafUnit X A).naturality k.op) a
-  have hB := ConcreteCategory.congr_hom ((constantPresheafUnit X B).naturality k.op) (g a)
-  have hq := ConcreteCategory.congr_hom (q.hom.naturality k.op)
-    ((constantPresheafUnit X A).app (op U) a)
-  change (constantPresheafUnit X A).app
-      (op ((siteEtalePostcompose U.hom).obj V.unop)) a =
-    ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A).obj.map k.op
-      ((constantPresheafUnit X A).app (op U) a) at hA
-  change (constantPresheafUnit X B).app
-      (op ((siteEtalePostcompose U.hom).obj V.unop)) (g a) =
-    ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B).obj.map k.op
-      ((constantPresheafUnit X B).app (op U) (g a)) at hB
-  change q.hom.app (op ((siteEtalePostcompose U.hom).obj V.unop))
-      (((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj A).obj.map k.op
-        ((constantPresheafUnit X A).app (op U) a)) =
-    ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B).obj.map k.op
-      (q.hom.app (op U) ((constantPresheafUnit X A).app (op U) a)) at hq
-  change q.hom.app (op ((siteEtalePostcompose U.hom).obj V.unop))
-      ((constantPresheafUnit X A).app
-        (op ((siteEtalePostcompose U.hom).obj V.unop)) a) =
-    (constantPresheafUnit X B).app (op ((siteEtalePostcompose U.hom).obj V.unop)) (g a)
-  calc
-    _ = ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B).obj.map k.op
-        (q.hom.app (op U) ((constantPresheafUnit X A).app (op U) a)) := by
-      exact (congrArg (fun z =>
-        q.hom.app (op ((siteEtalePostcompose U.hom).obj V.unop)) z) hA).trans hq
-    _ = ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B).obj.map k.op
-        ((constantPresheafUnit X B).app (op U) (g a)) :=
-      congrArg (fun z =>
-        ((constantSheaf X.smallEtaleTopology AddCommGrpCat.{u + 1}).obj B).obj.map k.op z)
-        (h a).symm
-    _ = _ := hB.symm
+        (etaleRestrictionConstantIso U.hom B).hom :=
+  CategoryTheory.Functor.constantRestriction_map_of_unit_eq
+    U.left.smallEtaleTopology X.smallEtaleTopology (siteEtalePostcompose U.hom)
+    (U := U) (fun V => MorphismProperty.Over.homMk V.hom rfl (by trivial)) A B q g h
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteColimits

@@ -1,0 +1,536 @@
+{
+  "review_kind": "independent ordinary fixed-source mathematical/source-correspondence review",
+  "reviewer": "/root/review_initial_normalizations",
+  "date": "2026-10-27",
+  "question": "Complete coherent coefficient-square producer and eight original thin wrappers, fixed square9 v2 HOLD",
+  "fixed_version": "Square9 v10: complete v9 actual-comparison core and current typed native Adj repair",
+  "verdict": "mathematically_sound_retained_on_fixed_square9_v10_actual_comparison_sources",
+  "blockers": [],
+  "established_status_assigned": false,
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "immutable_baseline": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/audit-basis/aglib",
+  "native_head_basis": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "lean": "4.34.1",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "source_targets": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+      "native_sha256_at_binding": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+      "original_before_sha256": null,
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "native_sha256_at_binding": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "original_before_sha256": "c3961f6a65c05a57a4fad0cc7a7a395b113364e0fcea7f2e005d4288025d0828",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "native_sha256_at_binding": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "original_before_sha256": "e5c4b47f8bfd5c6fe9fddc2d9d060c4c77f1291b01c154b0ef38e7baf17dc5cd",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+      "native_sha256_at_binding": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+      "original_before_sha256": "c2a041be140df564200bef3351d304f40c651f548aa5752cfd547ff27a8c263c",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+      "native_sha256_at_binding": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+      "original_before_sha256": "6fff211ee6eff8a8eb2dc587beb441584245dc55634451353b7e14259353b0ab",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+      "native_sha256_at_binding": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+      "original_before_sha256": "027fce6eea34b84451290c550bb0982d08149dc293b2d5a1a4c0cf1de6e73855",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+      "native_sha256_at_binding": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+      "original_before_sha256": "9783eaa1eb13476a2119d9e92cdd7e63b93bb46027fda8e859767c651c3083f5",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "sha256": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1",
+      "native_sha256_at_binding": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1",
+      "original_before_sha256": "beeb237d8332e67cb07bdc2556651a727c50b587796b2ee50c1387bc03832567",
+      "status": "applied; exact source-bound native coverage stated separately"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "native_sha256_at_binding": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "original_before_sha256": "07f478cfa06cac2f47de031b9eacc3a28d1caeadb496754a74f8ade5d931bc62",
+      "status": "applied; exact source-bound native coverage stated separately"
+    }
+  ],
+  "current_manifest": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/READY-applied.json",
+    "sha256": "cb00fe20864f80f41b72cea62e92ce2c292a7b446440879e096e7ba7890b006f",
+    "actual_all_nine_hashes_match": true
+  },
+  "constructor_packet": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/CONSTRUCTOR-CORRESPONDENCE.json",
+    "sha256": "b5f7c699caee2be7fd9890df0ba8e2ed725c6c888f97a566524f0b2a376ba765"
+  },
+  "historical_manifest_correction": {
+    "copied_manifest_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/SOURCE-COMPLETE-HOLD.json",
+    "copied_manifest_sha256": "a09c79fc25797f65b241393b5397e0db152aa16e40e7b396c7eb6c0f366d0bfc",
+    "finding": "The inherited manifest named version1 images and old hashes on generic CoefficientSquares and DiagramSquareCoefficients. Reviewer bound the actual nine v2 images directly before reading derivations; author supplied metadata-only corrected manifest matching that exact vector.",
+    "source_change": false,
+    "resolution": "Resolved by corrected manifest; no mathematical defect and no new review cycle."
+  },
+  "dependencies": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean",
+      "sha256": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseTransitions.lean",
+      "sha256": "841a2f9a20f0b263760820855d616b6214aa932420cbda34fdb3031f2b573be2"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/SystemCoherence.lean",
+      "sha256": "bfac0db8c2c0d7c0b4e5bcb979964a7e84bbcf49d0c0a05c3c0b216f7e2d2540"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/Mates/Coherence.lean",
+      "sha256": "ff964fee7ee52a038ba3cef1584aa17aa709ca41a08bb48cd42a9d70472a2a02"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+      "sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/Mates/RepresentedCoherence.lean",
+      "sha256": "cefdbe2178bfeb2c813e63c1adff364380eec688135dae95b73e81795d14f56a"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/InjectiveSystem.lean",
+      "sha256": "e8629f1504a920f182f84a95b1a4949fdd788bbd7c58c38de5d4316f620ef389"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitCoefficients.lean",
+      "sha256": "a82b41d96b938e27219687366e94a26157a314dcf4f28d1690714ea31e525d03"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+      "sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointCocone.lean",
+      "sha256": "f35ce7d0b499bc65ac31b728d659ccac80b4990c4fe4d64845edb3ddb8491f9e"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean",
+      "sha256": "24c97f8783107d99be4629923c8df08fb6f1ab7f30fe9c3c316841c2cf12b5b3"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean",
+      "sha256": "81abace2a806ad3c2b71443e15df1778c2c1657a500fbcee3a45335abd005c52"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeHorizontalUnit.lean",
+      "sha256": "72eef83bc71a88e4956dafcd2fa68017d9f0492ff5a44472980d6d8fe55826c1"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Adjunction/CompositionIso.lean",
+      "sha256": "d22afc8318635612755da5e3eed4920149ac8c4f20499a923429c29f6c73fd9d"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Adjunction/Basic.lean",
+      "sha256": "8d886b21dc4ab48379e9c98653967307f7f57a97cc61f9db0dfd50d4d53353e8"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Adjunction/Mates.lean",
+      "sha256": "e03368a9cd5187c4cfec79abd1a9c99118787454c5e8f44b0c39aefc7fc96c1f"
+    }
+  ],
+  "findings": [
+    {
+      "locator": "CoefficientSquares.lean:24-31,44-64; DiagramSquareCoefficients.lean:47-75",
+      "conclusion": "One actual raw coefficientMap abbreviation constructs s.inv.app F followed by L_v1.map phi, and both the D view and native wrapper use it. The native squareCoefficientMap_eq_original is equality of the whole old morphism, proved by rfl. The actual chosen square iso is still the original compositor/equality-transport/compositor chain, with no second square/System or replacement coefficient carrier."
+    },
+    {
+      "locator": "CoefficientSquares.lean:66-129; SquareCoefficientAdjoint.lean:20-66; native CompositionIso.lean:82-86; Mates.lean:300-307,349-357",
+      "conclusion": "Equality transport conjugates in the reversed right direction. The actual canonical left compositor and its inverse have the supplied original right mates. Expanding the complete left square and native conjugate composition proves the whole selected right square equation; transpose gives its inverse form. Scheme right functors, original adjunctions, direct-image compositors and equality transports are identified by actual whole equalities/rfl. No desired Hom-value or BC-invertibility law is supplied as a premise."
+    },
+    {
+      "locator": "CoefficientSquares.lean:133-327; native CompositionIso.lean:90-118",
+      "conclusion": "The whole left unit comparisons are derived from the original hD right unit laws via the native left-adjoint composition unit theorems. Identity/base-identity/top-identity square and coefficient formulas follow by actual iso cancellation and functor mapping. Transport is equality elimination, retaining the exact object transports. No unit/naturality/identity conclusion is a new data field."
+    },
+    {
+      "locator": "CoefficientSquares.lean:329-547; Mates/Coherence.lean:169-273,324-332,396-445",
+      "conclusion": "The horizontalDiagram contains only the actual existing functors, compositors and equality transports. All five chain equations are separately proved from original left associativity or equality elimination, and the closing transport follows from the actual base-arrow equalities. The native common arrow chase proves whole horizontal square pasting before component evaluation. The private old inverse_pasting is moved to the common owner and applies to actual mapped comparison isos. Arbitrary phi/psi coefficient composition then follows by naturality of the same inverse square and the proved inverse-pasting equation."
+    },
+    {
+      "locator": "CoefficientSquares.lean:551-631; DiagramPullbackTriangle.lean:19-36",
+      "conclusion": "Whole vertical pasting is derived by transposing the proved horizontal square and applying the same inverse-pasting lemma in the functor category. Evaluation gives the actual component equation. The triangle/square equation for arbitrary original coefficient phi uses this exact vertical pasting, original triangle equality transports and naturality of the same square. It is not merely an endpoint or unit-only result."
+    },
+    {
+      "locator": "CoefficientSquares.lean:637-688; RepresentedCoherence.lean:31-56; SquareCoefficientAdjoint.lean:68-83; TriangleSquareAdjoint.lean:18-43",
+      "conclusion": "The full Hom formula has arbitrary phi and arbitrary second leg psi. It invokes the existing native three-adjunction formula for the actual inverse square and its proved inverse right mate. The nested square/triangle formula composes that result with the actual triangle mate and native homEquiv naturality, preserving the right-square inverse evaluated at R_q1 K and the final R_v0.map of the triangle comparison. Four/five category object/Hom worlds are independent. No desired final Hom equation is assumed."
+    },
+    {
+      "locator": "All eight fixed Scheme wrappers and their original preimages; especially DiagramSquareSections.lean:19-74",
+      "conclusion": "All 20 old public headers are byte-identical, with the same universe declarations and shared Horizontal variable ordering inspected. The section constructor is literally unchanged; its already-thin identity/composition/transport and base/top section laws continue to use the original globalSectionsPullback unit/coefficient maps. Original AbelianSheaf.{u,u+1}, actual inverse/direct images, arbitrary coefficients, equality witnesses and public premises are retained. Generic imports have no Scheme backedge."
+    },
+    {
+      "locator": "Current CoefficientSquares.lean:547-563; DiagramSquareCoefficients.lean:101-125",
+      "conclusion": "squareIso_hComp_whole_of_eq receives actual whole gamma/theta/s comparisons with proved equalities to the existing D isos. Equality elimination reduces to the already reviewed D.Coherent whole producer before any coefficient F. The native private whole theorem supplies exactly original inverseImageComp/square isos and their proved whole identities. The subsequent raw inverse_hComp/coefficient_hComp evaluate those same heads, preserving arbitrary original phi/psi and the shared constructor."
+    },
+    {
+      "locator": "Current CoefficientSquares.lean:43-52,666-708,794-907; DiagramPullbackTriangle.lean:19-69; Identity.lean:19-38; TopIdentity.lean:19-40",
+      "conclusion": "The complete whole triangle-square equation is derived from the existing coherent vertical-whole pasting and actual triangle equality transports. Its actual-comparison version only substitutes independently proved whole Iso equalities. The six-category raw evaluator obtains the coefficient formula by evaluating that whole law and original s1 naturality. Raw base/top evaluators likewise evaluate the actual coherence-derived whole unit laws. Original native theorems gain no premise or altered map; no desired-law capability or second model appears."
+    },
+    {
+      "locator": "Current CoefficientSquares.lean:807-835",
+      "conclusion": "The new raw horizontal evaluators explicitly capture the proved whole equation h through include h. This is their legitimate conditional logical premise, and native wrappers supply the independently derived whole D theorem. The uncompiled v6 omission of proof-only h is not retained as an unconditional theorem/API or accepted coverage; no old D/native theorem is strengthened."
+    },
+    {
+      "locator": "Current SquareCoefficientAdjoint.lean:41-109; original native comparison definitions unchanged",
+      "conclusion": "Typed congrArg2 builds equality of the same complete right-square Iso factors. The v10 inverse/conjugate transport fixes original whole left/right Iso and actual inverseImageAdjunction endpoints, proves hs/hr independently, and composes congrArg/trans with the existing D conjugacy. It changes only proof encoding; the inverse right comparison and arbitrary-second-leg/nested Hom values are the original ones."
+    }
+  ],
+  "public_api_comparison": [
+    {
+      "file": "DiagramPullbackTriangle.lean",
+      "old_public_headers_verbatim": [
+        "triangleCoefficientMap_square"
+      ]
+    },
+    {
+      "file": "DiagramSquareCoefficients.lean",
+      "old_public_headers_verbatim": [
+        "squareCoefficientMap",
+        "inverseImageSquareIso_inv_hComp",
+        "squareCoefficientMap_hComp"
+      ]
+    },
+    {
+      "file": "DiagramSquareIdentity.lean",
+      "old_public_headers_verbatim": [
+        "inverseImageSquareIso_base_id",
+        "squareCoefficientMap_base_id",
+        "squareSectionsMap_base_id"
+      ]
+    },
+    {
+      "file": "DiagramSquareSections.lean",
+      "old_public_headers_verbatim": [
+        "squareCoefficientMap_id",
+        "squareSectionsMap",
+        "squareSectionsMap_id",
+        "squareSectionsMap_hComp",
+        "squareSectionsMap_transport"
+      ]
+    },
+    {
+      "file": "DiagramSquareTopIdentity.lean",
+      "old_public_headers_verbatim": [
+        "inverseImageSquareIso_top_id",
+        "squareCoefficientMap_top_id",
+        "squareSectionsMap_top_id"
+      ]
+    },
+    {
+      "file": "DiagramSquareTransport.lean",
+      "old_public_headers_verbatim": [
+        "squareCoefficientMap_transport"
+      ]
+    },
+    {
+      "file": "SquareCoefficientAdjoint.lean",
+      "old_public_headers_verbatim": [
+        "directImageSquareIso_transpose",
+        "conjugate_inverseImageSquareIso_inv",
+        "squareCoefficientMap_homEquiv"
+      ]
+    },
+    {
+      "file": "TriangleSquareAdjoint.lean",
+      "old_public_headers_verbatim": [
+        "triangleSquareCoefficientMap_homEquiv"
+      ]
+    }
+  ],
+  "conditions": [
+    "The coherent-system portion uses the one existing AdjunctionData D and its actual Coherent certificate, with original left/right functors, adjunctions and comparison maps.",
+    "The raw coefficientMap and arbitrary-second-leg/nested Hom formulas use actual functors/adjunctions and proved conjugate relations, and keep four/five independent category object/Hom worlds.",
+    "The D-index/base category object/Hom uJ/vJ and coefficient category object/Hom uA/vA remain independent; the existing D structure is reused, not replaced by an extra desired-law record/System.",
+    "The commuting base-arrow equalities are the original whole-square/triangle inputs. No cartesian square, Ext, injective-object/existence, topology/point or geometric hypothesis is added.",
+    "Native coefficients remain AbelianSheaf.{u,u+1} with exactly original actual maps, equalities and section-unit normalization.",
+    "New raw component evaluators carry their explicit actual whole-equation proof; the original D/native producers derive that intermediate theorem from D.Coherent and independently proved identities of actual whole comparisons before F. No new premise is added to the original public endpoint theorems."
+  ],
+  "mathematical_boundary": "The structural composition-square isos are composites of the supplied actual functor comparison isos and equality transports. No invertibility of an arbitrary base-change mate is asserted.",
+  "dependency_reconciliation": {
+    "cone_constancy_sha256": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6",
+    "scheme_triangle_owner_sha256": "a82b41d96b938e27219687366e94a26157a314dcf4f28d1690714ea31e525d03",
+    "correspondence": "Actual current left functor projection is inverseImage by rfl; whole selected left compositor/triangle match the original maps. Original constancy-helper explicit header restoration was separately checked and historical signature claim corrected in the authorized constancy review pair.",
+    "coverage_limit": "No later full Stalkfdb/root-normalization closure is inferred for square9; those repairs remain outside this fixed-nine verdict."
+  },
+  "native_coverage": {
+    "current_seven": {
+      "run": "remote-b3a2978033524fe39a1d72c73d5478a3",
+      "source_content_sha256": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "shared_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "module_passes": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+          "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+          "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+          "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+          "sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+          "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+          "sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+          "result": "PASS"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+          "sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+          "result": "PASS"
+        }
+      ],
+      "receipt_sha256": "973bb11b69b96fafc874cd51cede74c91a532f4948412226dff752f5cf0933f1",
+      "boundary": "Seven matched module passes reused; mixed run also had v9Adj6708 and unrelated failures. Not a whole-job/family success."
+    },
+    "current_adj": {
+      "sha256": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1",
+      "state": "PASS",
+      "run": "remote-5c98a3a074d248fa923c002d3e10ea07",
+      "source_content_sha256": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "shared_exit_code": 0,
+      "input_drift": [],
+      "receipt_sha256": "af2ba0c1c7d0948e7e43cc67aaf1741260b5be04b369eeaba78288d1e6d056be",
+      "evidence_boundary": "Source-bound final-two module pass supplied after the fixed proof inspection; no source delta or reviewer execution."
+    },
+    "final_consumer": {
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "state": "PASS",
+      "run": "remote-5c98a3a074d248fa923c002d3e10ea07",
+      "source_content_sha256": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "shared_exit_code": 0,
+      "input_drift": [],
+      "receipt_sha256": "af2ba0c1c7d0948e7e43cc67aaf1741260b5be04b369eeaba78288d1e6d056be",
+      "evidence_boundary": "Source-bound final-two module pass supplied after the fixed proof inspection; no source delta or reviewer execution."
+    },
+    "historical_failures": "Old generic proof encodings, native701 kernel102 and triangle5e45 kernel timeout remain tied to their own sources. Current passes do not establish a paired speedup, exact kernel-cause explanation or library-wide performance assertion.",
+    "reviewer_execution": "No build, probe, replay, test, lint, axiom audit, benchmark or Git action.",
+    "remaining_own_compiler_gap": null
+  },
+  "prose_claim_review": "The new module's claims about one supplied adjunction system and independently sized Hom-value calculations are supported by the actual definitions, coherence derivations and explicit universe binders.",
+  "write_scope": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/continuity-coefficient-squares.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/continuity-coefficient-squares.json"
+  ],
+  "remaining": [
+    "All nine exact assigned sources now have source-bound module passes in the supplied evidence, separated as seven in a mixed job plus two in a closed successful job. No whole-family/global/client status or new check gate is assigned.",
+    "Any later affected source repair needs only a fixed-hunk continuation.",
+    "No established status, full family/global/client closure or performance cause/speedup claim is assigned."
+  ],
+  "preservation": "Only the currently authorized Square and C2 review pairs are updated; constancy and all other reports/source/metadata remain untouched.",
+  "affected_packets": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/SOURCE-COMPLETE-HOLD.json",
+      "sha256": "c0dca25733b79215bd9b142f2de6943f2c8cdf9a2fa55d256c36734fa13b9f98"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/READY-applied.json",
+      "sha256": "cb00fe20864f80f41b72cea62e92ce2c292a7b446440879e096e7ba7890b006f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/SquareCoefficientAdjoint.diff",
+      "sha256": "21077b6214ddabbf0e623ba36c93a9743db1932e08bdba0bc6e63f2aa70a6e6c"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/SOURCE-COMPLETE-HOLD.json",
+      "sha256": "19344b4679294b46d35d8834a211574ff520f88dda2ae966c10c8ce0b3a824fa"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/compiler-result-partial.json",
+      "sha256": "c89a1c863d425f43cb9d10be374d2c6db574764a9dccc54d65bd96911cd67904"
+    }
+  ],
+  "retained_v2_review": {
+    "version": "v2",
+    "report_sha256": {
+      "markdown": "c4af843a8d159e2e21098db5a699931f11304c994f4ac36efa327b464a6562c5",
+      "json": "f1f46b57aae2d3daa75d7ff559528b86266188aebca14773de51b2dbc0ba1bda"
+    },
+    "source_targets": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+        "sha256": "0b4b277c21b9912de1fee1c36e7cefe51351c5b68ccfe2bdd63bf4bda04c38cc",
+        "before_snapshot": null,
+        "before_sha256": null,
+        "native_sha256_at_binding": null,
+        "native_status": "New generic path absent from N",
+        "baseline_correspondence": "New lower leaf"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+        "sha256": "f991825809723f09f48da23f93115437ac1f6c7e5d14e80f76de02bbff71d85b",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+        "before_sha256": "c3961f6a65c05a57a4fad0cc7a7a395b113364e0fcea7f2e005d4288025d0828",
+        "native_sha256_at_binding": "c3961f6a65c05a57a4fad0cc7a7a395b113364e0fcea7f2e005d4288025d0828",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+        "sha256": "90abf752eac1495f297916dd8e5c3b7b95aca1792068a4e6237bb89fd4798b6e",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+        "before_sha256": "e5c4b47f8bfd5c6fe9fddc2d9d060c4c77f1291b01c154b0ef38e7baf17dc5cd",
+        "native_sha256_at_binding": "e5c4b47f8bfd5c6fe9fddc2d9d060c4c77f1291b01c154b0ef38e7baf17dc5cd",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+        "sha256": "3757eb5f001c54e6b8a5b095d811a51f202f90e20a50c0d5dbd3ed1bf4d06e04",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+        "before_sha256": "c2a041be140df564200bef3351d304f40c651f548aa5752cfd547ff27a8c263c",
+        "native_sha256_at_binding": "c2a041be140df564200bef3351d304f40c651f548aa5752cfd547ff27a8c263c",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+        "sha256": "4c9781fd819793676c3b95ce5bef480460d037438cc50e93d8c68498a676ffb7",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+        "before_sha256": "6fff211ee6eff8a8eb2dc587beb441584245dc55634451353b7e14259353b0ab",
+        "native_sha256_at_binding": "6fff211ee6eff8a8eb2dc587beb441584245dc55634451353b7e14259353b0ab",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+        "sha256": "345865d32bb49240cb9fa965659ccd4076687f9fc1fc50a32393e1d92f181b8c",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+        "before_sha256": "027fce6eea34b84451290c550bb0982d08149dc293b2d5a1a4c0cf1de6e73855",
+        "native_sha256_at_binding": "027fce6eea34b84451290c550bb0982d08149dc293b2d5a1a4c0cf1de6e73855",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+        "sha256": "190008932124f088c02344750ea140d3189a6c08b71d8af4907ffbf1e99d032d",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+        "before_sha256": "9783eaa1eb13476a2119d9e92cdd7e63b93bb46027fda8e859767c651c3083f5",
+        "native_sha256_at_binding": "9783eaa1eb13476a2119d9e92cdd7e63b93bb46027fda8e859767c651c3083f5",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+        "sha256": "d6467e04e8a457433d362eca946be680ca86cad738f043cadfc788b34a309f3c",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+        "before_sha256": "beeb237d8332e67cb07bdc2556651a727c50b587796b2ee50c1387bc03832567",
+        "native_sha256_at_binding": "beeb237d8332e67cb07bdc2556651a727c50b587796b2ee50c1387bc03832567",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+        "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+        "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+        "before_sha256": "07f478cfa06cac2f47de031b9eacc3a28d1caeadb496754a74f8ade5d931bc62",
+        "native_sha256_at_binding": "07f478cfa06cac2f47de031b9eacc3a28d1caeadb496754a74f8ade5d931bc62",
+        "native_status": "Unapplied; N equals the immutable original preimage",
+        "baseline_correspondence": "Preimage byte-equal to immutable baseline54 source"
+      }
+    ],
+    "verdict": "mathematically_sound_source_correspondence_on_fixed_square9_v2_images_pending_native_elaboration",
+    "findings": [
+      {
+        "locator": "CoefficientSquares.lean:24-31,44-64; DiagramSquareCoefficients.lean:47-75",
+        "conclusion": "One actual raw coefficientMap abbreviation constructs s.inv.app F followed by L_v1.map phi, and both the D view and native wrapper use it. The native squareCoefficientMap_eq_original is equality of the whole old morphism, proved by rfl. The actual chosen square iso is still the original compositor/equality-transport/compositor chain, with no second square/System or replacement coefficient carrier."
+      },
+      {
+        "locator": "CoefficientSquares.lean:66-129; SquareCoefficientAdjoint.lean:20-66; native CompositionIso.lean:82-86; Mates.lean:300-307,349-357",
+        "conclusion": "Equality transport conjugates in the reversed right direction. The actual canonical left compositor and its inverse have the supplied original right mates. Expanding the complete left square and native conjugate composition proves the whole selected right square equation; transpose gives its inverse form. Scheme right functors, original adjunctions, direct-image compositors and equality transports are identified by actual whole equalities/rfl. No desired Hom-value or BC-invertibility law is supplied as a premise."
+      },
+      {
+        "locator": "CoefficientSquares.lean:133-327; native CompositionIso.lean:90-118",
+        "conclusion": "The whole left unit comparisons are derived from the original hD right unit laws via the native left-adjoint composition unit theorems. Identity/base-identity/top-identity square and coefficient formulas follow by actual iso cancellation and functor mapping. Transport is equality elimination, retaining the exact object transports. No unit/naturality/identity conclusion is a new data field."
+      },
+      {
+        "locator": "CoefficientSquares.lean:329-547; Mates/Coherence.lean:169-273,324-332,396-445",
+        "conclusion": "The horizontalDiagram contains only the actual existing functors, compositors and equality transports. All five chain equations are separately proved from original left associativity or equality elimination, and the closing transport follows from the actual base-arrow equalities. The native common arrow chase proves whole horizontal square pasting before component evaluation. The private old inverse_pasting is moved to the common owner and applies to actual mapped comparison isos. Arbitrary phi/psi coefficient composition then follows by naturality of the same inverse square and the proved inverse-pasting equation."
+      },
+      {
+        "locator": "CoefficientSquares.lean:551-631; DiagramPullbackTriangle.lean:19-36",
+        "conclusion": "Whole vertical pasting is derived by transposing the proved horizontal square and applying the same inverse-pasting lemma in the functor category. Evaluation gives the actual component equation. The triangle/square equation for arbitrary original coefficient phi uses this exact vertical pasting, original triangle equality transports and naturality of the same square. It is not merely an endpoint or unit-only result."
+      },
+      {
+        "locator": "CoefficientSquares.lean:637-688; RepresentedCoherence.lean:31-56; SquareCoefficientAdjoint.lean:68-83; TriangleSquareAdjoint.lean:18-43",
+        "conclusion": "The full Hom formula has arbitrary phi and arbitrary second leg psi. It invokes the existing native three-adjunction formula for the actual inverse square and its proved inverse right mate. The nested square/triangle formula composes that result with the actual triangle mate and native homEquiv naturality, preserving the right-square inverse evaluated at R_q1 K and the final R_v0.map of the triangle comparison. Four/five category object/Hom worlds are independent. No desired final Hom equation is assumed."
+      },
+      {
+        "locator": "All eight fixed Scheme wrappers and their original preimages; especially DiagramSquareSections.lean:19-74",
+        "conclusion": "All 20 old public headers are byte-identical, with the same universe declarations and shared Horizontal variable ordering inspected. The section constructor is literally unchanged; its already-thin identity/composition/transport and base/top section laws continue to use the original globalSectionsPullback unit/coefficient maps. Original AbelianSheaf.{u,u+1}, actual inverse/direct images, arbitrary coefficients, equality witnesses and public premises are retained. Generic imports have no Scheme backedge."
+      }
+    ],
+    "native_coverage": {
+      "square9": "Unapplied and uncompiled held images. No compiler pass claimed.",
+      "native_eight": "N still equals immutable preimages at binding; new generic path absent.",
+      "compatible_supplier_evidence": "Existing source-bound supplier results may be reused by the principal; this review did not execute or relabel them as square9 coverage.",
+      "reviewer_executed_builds_probes_tests_audits_replay_or_git": false
+    },
+    "scope": "The prior mathematical verdict is retained on its exact held v2 basis, not relabeled as v10 or as a compiler pass."
+  }
+}
+

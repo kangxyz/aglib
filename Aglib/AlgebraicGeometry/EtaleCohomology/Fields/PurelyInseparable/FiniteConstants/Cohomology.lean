@@ -9,14 +9,15 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.F
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.HigherVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ExactImageComparison.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.ExtComparison
 public import Mathlib.AlgebraicGeometry.Morphisms.Finite
 
 /-! # Original finite constant cohomology under finite purely inseparable extension
 
 The original constant-sheaf unit is proved in `SectionUnit`. Exact finite
-direct image and its original counit formula then identify the actual
-all-degree pullback with a composite of bijections. The two Ext universes
-remain independent.
+direct image then identifies the actual all-degree pullback with the original
+coefficient-unit map under the exact-adjunction comparison. The two Ext
+universes remain independent.
 -/
 
 @[expose] public noncomputable section
@@ -40,39 +41,8 @@ private theorem cohomologyPullback_bijective_of_finite_unit
     (L : AbelianSheaf.{u, u + 1} X)
     [IsIso ((inverseImageAdjunction f).unit.app L)] (q : ℕ) :
     Function.Bijective (cohomologyPullback.{u, w, w'} f L q) := by
-  let η := (inverseImageAdjunction f).unit.app L
-  let ε := (inverseImageAdjunction f).counit.app ((inverseImage f).obj L)
-  let E : Sheaf.H.{w} ((directImage f).obj ((inverseImage f).obj L)) q ≃+
-      Sheaf.H.{w'} ((inverseImage f).obj L) q :=
-    cohomologyDirectImageAddEquiv f ((inverseImage f).obj L) q
-  have hη : Function.Bijective (Sheaf.H.map η q) :=
-    cohomologyMapIso_bijective (asIso η) q
-  have hb : Function.Bijective (fun a : Sheaf.H.{w} L q => E (Sheaf.H.map η q a)) :=
-    E.bijective.comp hη
-  have heq (a : Sheaf.H.{w} L q) :
-      E (Sheaf.H.map η q a) = cohomologyPullback.{u, w, w'} f L q a := by
-    let z := cohomologyPullback.{u, w, w'} f L q a
-    calc
-      E (Sheaf.H.map η q a) =
-        Sheaf.H.map ε q (cohomologyPullback.{u, w, w'} f
-          ((directImage f).obj ((inverseImage f).obj L)) q (Sheaf.H.map η q a)) :=
-        cohomologyDirectImageAddEquiv_apply f ((inverseImage f).obj L) q _
-      _ = Sheaf.H.map ε q (Sheaf.H.map ((inverseImage f).map η) q z) :=
-        congrArg (Sheaf.H.map ε q)
-          (cohomologyPullback_coefficientMap.{u, w, w'} f η q a)
-      _ = Sheaf.H.map ((inverseImage f).map η ≫ ε) q z :=
-        (Sheaf.H.map_comp_apply ((inverseImage f).map η) ε z).symm
-      _ = Sheaf.H.map (𝟙 ((inverseImage f).obj L)) q z :=
-        congrArg (fun a => Sheaf.H.map a q z)
-          ((inverseImageAdjunction f).left_triangle_components L)
-      _ = z := Sheaf.H.map_id_apply z
-  constructor
-  · intro a b hab
-    apply hb.injective
-    exact (heq a).trans (hab.trans (heq b).symm)
-  · intro b
-    obtain ⟨a, ha⟩ := hb.surjective b
-    exact ⟨a, (heq a).symm.trans ha⟩
+  exact (inverseImageAdjunction f).mapExactFunctor_precomp_bijective_of_isIso_unit
+    ((inverseImageConstantIso f).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))) L q
 
 variable (k K : Type u) [Field k] [Field K] [Algebra k K]
   [IsPurelyInseparable k K] [Module.Finite k K]

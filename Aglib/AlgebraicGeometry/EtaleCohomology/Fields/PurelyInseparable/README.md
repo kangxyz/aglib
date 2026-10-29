@@ -24,3 +24,10 @@ functors, rather than a replacement Galois category.
 The comparison retains positive invertible root order and independent Ext
 universes. No invariance of the multiplicative sheaf is asserted, and no
 finite-degree or perfectness hypothesis is imposed on the field extension.
+
+For finite purely inseparable extensions,
+[FiniteConstants/SectionUnit](FiniteConstants/SectionUnit.lean) proves
+invertibility of the original adjunction unit on finite constant abelian
+sheaves on every scheme over the base field. It uses the original
+represented coefficient unit, followed by general isomorphism cancellation
+and naturality transport.

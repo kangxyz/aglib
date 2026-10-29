@@ -67,12 +67,11 @@ theorem baseChangedTestMap_isPullback {X : Scheme.{u}} (U : Over X)
     {Y Z : Over X} (a : Y ⟶ Z) :
     IsPullback (baseChangedTestMap U a).left (pullback.snd U.hom Y.hom)
       (pullback.snd U.hom Z.hom) a.left := by
-  have hs : IsPullback
-      ((baseChangedTestMap U a).left ≫ pullback.fst U.hom Z.hom)
-      (pullback.snd U.hom Y.hom) U.hom (a.left ≫ Z.hom) := by
-    rw [baseChangedTestMap_fst, Over.w]
-    exact IsPullback.of_hasPullback _ _
-  exact hs.of_right (baseChangedTestMap_snd U a) (IsPullback.of_hasPullback _ _)
+  exact IsPullback.of_two_pullback_projections
+    (IsPullback.of_hasPullback U.hom Y.hom).flip
+    (IsPullback.of_hasPullback U.hom Z.hom).flip
+    (baseChangedTestMap U a).left a.left (Over.w a)
+    (baseChangedTestMap_snd U a) (baseChangedTestMap_fst U a)
 
 instance baseChangedTestMap_surjective {X : Scheme.{u}} (U : Over X)
     {Y Z : Over X} (a : Y ⟶ Z) [Surjective a.left] :

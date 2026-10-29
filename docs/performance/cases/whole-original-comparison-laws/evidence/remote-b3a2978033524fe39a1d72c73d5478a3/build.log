@@ -1,0 +1,58 @@
+✖ [3362/3376] Building Aglib.Algebra.Category.Grp.FiniteColimits (1.0s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-b3a2978033524fe39a1d72c73d5478a3/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/Algebra/Category/Grp/FiniteColimits.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Grp/FiniteColimits.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/Algebra/Category/Grp/FiniteColimits.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Grp/FiniteColimits.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/Algebra/Category/Grp/FiniteColimits.setup.json --json
+error: Aglib/Algebra/Category/Grp/FiniteColimits.lean:33:4: failed to synthesize instance of type class
+  Finite ((j : J) → ↑(D.obj j))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/Algebra/Category/Grp/FiniteColimits.lean:37:54: failed to synthesize instance of type class
+  Small.{u, max v u} (Colimits.Quot D)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/Algebra/Category/Grp/FiniteColimits.lean:47:12: failed to synthesize instance of type class
+  HasColimit D
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/Algebra/Category/Grp/FiniteColimits.lean:48:25: failed to synthesize instance of type class
+  HasColimit D
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [3364/3376] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares (5.1s)
+✔ [3365/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (5.0s)
+✔ [3366/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (3.6s)
+✔ [3367/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (3.7s)
+✔ [3368/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport (3.4s)
+✔ [3369/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity (20s)
+✔ [3370/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTopIdentity (3.4s)
+✔ [3371/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramArrowSections (39s)
+✔ [3372/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares (32s)
+✔ [3373/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeSquares (3.0s)
+✔ [3374/3376] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointCocone (12s)
+✖ [3375/3376] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (4.9s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-b3a2978033524fe39a1d72c73d5478a3/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:49:4: Type mismatch: After simplification, term
+  congrArg Iso.symm (schemeRightCompIso_eq_directImageCompIso f₀ h)
+ has type
+  @Eq (schemeAdjunctionData.right h ⋙ schemeAdjunctionData.right f₀ ≅ schemeAdjunctionData.right (f₀ ≫ h))
+    (schemeAdjunctionData.compIso f₀ h).symm (directImageCompIso f₀.unop h.unop).symm.symm
+but is expected to have type
+  @Eq (schemeAdjunctionData.right h ⋙ schemeAdjunctionData.right f₀ ≅ schemeAdjunctionData.right (f₀ ≫ h))
+    (schemeAdjunctionData.compIso f₀ h).symm (directImageCompIso f₀.unop h.unop)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:83:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.conjugate_squareIso_inv schemeAdjunctionData f.op f'.op g.op g'.op
+    (congrArg Quiver.Hom.op e)
+ has type
+  @Eq (directImage f' ⋙ directImage g ⟶ directImage g' ⋙ directImage f)
+    ((conjugateEquiv ((inverseImageAdjunction g).comp (inverseImageAdjunction f'))
+        ((inverseImageAdjunction f).comp (inverseImageAdjunction g')))
+      (inverseImageSquareIso f f' g g' ⋯).inv)
+    (directImageSquareIso f f' g g' ⋯).inv
+but is expected to have type
+  @Eq (directImage f' ⋙ directImage g ⟶ directImage g' ⋙ directImage f)
+    ((conjugateEquiv ((inverseImageAdjunction g).comp (inverseImageAdjunction f'))
+        ((inverseImageAdjunction f).comp (inverseImageAdjunction g')))
+      (inverseImageSquareIso f f' g g' e).inv)
+    (directImageSquareIso f f' g g' e).inv
+Some required targets logged failures:
+- Aglib.Algebra.Category.Grp.FiniteColimits
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint
+error: build failed

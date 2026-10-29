@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.FunctionField.Normalization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange
+public import Aglib.CategoryTheory.Sites.Continuous.KanUnit
 
 /-! # Generic restriction of represented coefficients over a normal integral scheme
 
@@ -111,62 +112,16 @@ theorem isIso_representedBaseChangeUnit :
     apply ULift.ext
     exact congrArg Additive.ofMul ha
 
-private theorem isIso_unit_of_leftKanUnit {S T : Scheme.{u}} (f : T ⟶ S)
-    (L : AbelianSheaf.{u, u + 1} S)
-    [IsIso ((siteBaseChange f).op.leftKanExtensionUnit L.obj)]
-    [IsIso (toSheafify (Scheme.smallEtaleTopology T)
-      ((siteBaseChange f).op.lan.obj L.obj))] :
-    IsIso ((inverseImageAdjunction f).unit.app L) := by
-  let adj := Functor.sheafPullbackConstruction.sheafAdjunctionContinuous
-    (siteBaseChange f) AddCommGrpCat.{u + 1}
-    (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
-  have hu : (adj.unit.app L).hom =
-      (siteBaseChange f).op.leftKanExtensionUnit L.obj ≫
-        Functor.whiskerLeft (siteBaseChange f).op
-          (toSheafify (Scheme.smallEtaleTopology T)
-            ((siteBaseChange f).op.lan.obj L.obj)) := by
-    change (sheafToPresheaf _ _).map (adj.unit.app L) = _
-    simp only [adj, Functor.sheafPullbackConstruction.sheafAdjunctionContinuous,
-      Adjunction.map_restrictFullyFaithful_unit_app, Iso.refl_hom, NatTrans.id_app,
-      Adjunction.comp_unit_app,
-      Functor.lanAdjunction_unit]
-    rfl
-  have : IsIso (adj.unit.app L) := by
-    apply (isIso_iff_of_reflects_iso _ (sheafToPresheaf _ _)).mp
-    change IsIso (adj.unit.app L).hom
-    rw [hu]
-    infer_instance
-  let e := Functor.sheafPullbackConstruction.sheafPullbackIso
-    (siteBaseChange f) AddCommGrpCat.{u + 1}
-    (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
-  have he : (inverseImageAdjunction f).unit.app L ≫
-      (directImage f).map (e.app L).hom = adj.unit.app L :=
-    Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f) adj L
-  have : IsIso ((inverseImageAdjunction f).unit.app L ≫
-      (directImage f).map (e.app L).hom) := he.symm ▸ inferInstance
-  exact IsIso.of_isIso_comp_right
-    ((inverseImageAdjunction f).unit.app L)
-    ((directImage f).map (e.app L).hom)
-
 private theorem isIso_unit_of_leftKanIso {S T : Scheme.{u}} (f : T ⟶ S)
     (L : AbelianSheaf.{u, u + 1} S) (M : AbelianSheaf.{u, u + 1} T)
     (e : (siteBaseChange f).op.lan.obj L.obj ≅ M.obj)
     (α : L.obj ⟶ (siteBaseChange f).op ⋙ M.obj)
     (h : (siteBaseChange f).op.leftKanExtensionUnit L.obj ≫
       Functor.whiskerLeft (siteBaseChange f).op e.hom = α) [IsIso α] :
-    IsIso ((inverseImageAdjunction f).unit.app L) := by
-  have : IsIso ((siteBaseChange f).op.leftKanExtensionUnit L.obj ≫
-      Functor.whiskerLeft (siteBaseChange f).op e.hom) := h.symm ▸ inferInstance
-  have : IsIso ((siteBaseChange f).op.leftKanExtensionUnit L.obj) :=
-    IsIso.of_isIso_comp_right
-      ((siteBaseChange f).op.leftKanExtensionUnit L.obj)
-      (Functor.whiskerLeft (siteBaseChange f).op e.hom)
-  have hsheaf : Presheaf.IsSheaf (Scheme.smallEtaleTopology T)
-      ((siteBaseChange f).op.lan.obj L.obj) :=
-    (Presheaf.isSheaf_of_iso_iff e).mpr M.property
-  have : IsIso (toSheafify (Scheme.smallEtaleTopology T)
-      ((siteBaseChange f).op.lan.obj L.obj)) := isIso_toSheafify _ hsheaf
-  exact isIso_unit_of_leftKanUnit f L
+    IsIso ((inverseImageAdjunction f).unit.app L) :=
+  Functor.isIso_unit_of_leftKanIso (siteBaseChange f) AddCommGrpCat.{u + 1}
+    (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
+    (inverseImageAdjunction f) L M e α h
 
 /-- The original inverse-image adjunction unit is an isomorphism for an integral
 etale commutative group scheme over the normal integral base. -/

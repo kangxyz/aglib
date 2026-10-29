@@ -1,12 +1,34 @@
 # Scheme Cech exactness and comparison with Sheaf.H
 
-[Augmentation](Augmentation.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation`, constructs `Scheme.Cohomology.cechAugmentationZero` by restricting global presheaf sections to the degree-zero Cech intersections. For a scheme and open-family index in universe `u`, coefficients are any preadditive category with `HasProducts.{u}`. `cechAugmentationZero_π` gives the actual component formula and `cechAugmentationZero_d` shows that the signed first differential annihilates it. A zero object permits the cochain map `cechAugmentation` from the degree-zero single; `cechAugmentation_naturality` preserves the actual coefficient maps. No covering, affine or sheaf hypothesis is needed for these constructions.
+The shared topological core is documented in
+[Topology/Sheaves/Cech](../../../Topology/Sheaves/Cech/README.md):
+`Topology.Sheaves.Cohomology.SectionCycles` → `Cech.Resolution` →
+`Cech.Comparison`, alongside `Cech.Augmentation`. Scheme wrappers retain the
+public `AlgebraicGeometry.Scheme.Cohomology` names and the actual original
+complexes, quotient, signs, augmentations and section normalization. This layer
+supplies the geometric hypotheses: quasicoherence, affine tuple intersections,
+and separatedness where it is used to produce those intersections.
+
+[Augmentation](Augmentation.lean), imported as `Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation`, specializes the topological `cechAugmentationZero` as
+`Scheme.Cohomology.cechAugmentationZero` by restricting global presheaf sections to the degree-zero Cech intersections. For a scheme and open-family index in universe `u`, coefficients are any preadditive category with `HasProducts.{u}`. `cechAugmentationZero_π` gives the actual component formula and `cechAugmentationZero_d` shows that the signed first differential annihilates it. A zero object permits the cochain map `cechAugmentation` from the degree-zero single; `cechAugmentation_naturality` preserves the actual coefficient maps. No covering, affine or sheaf hypothesis is needed for these constructions.
 
 [AffineDegreeOne](AffineDegreeOne.lean) and [AffineHigherExactness](AffineHigherExactness.lean) prove actual principal-cover Cech exactness for quasicoherent module coefficients on an affine scheme over any commutative ring. The cover is a finite principal cover; the numerator/denominator and higher exactness arguments preserve actual sections/restrictions. No Noetherian premise is added.
 
 [InjectiveCoefficients](InjectiveCoefficients.lean) proves positive exactness for the original scheme Cech complex with injective module coefficients. [Restriction](Restriction.lean) gives actual Cech/restriction comparisons. Their lower section-representing open-free objects and generic [site Cech](../../../CategoryTheory/Sites/SheafCohomology/Cech/README.md) results are actual objects, rather than chosen replacement complexes.
 
-[Comparison](Comparison.lean) uses the lower augmentation and [generic degree-zero criterion](../../../Algebra/Homology/CochainComplex/Augmentation.lean), identifies open `Sheaf.H'` with unchanged whole-space `Sheaf.H` in every degree and compares original Cech cohomology with it. The statement retains the actual cover/acyclicity hypotheses and proves coefficient naturality, H0 normalization and compatibility with structural scalars.
+[Comparison](Comparison.lean), imported as
+`Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison`, specializes the shared
+topological resolution/comparison pipeline and the [generic degree-zero criterion](../../../Algebra/Homology/CochainComplex/Augmentation.lean), identifies open `Sheaf.H'` with unchanged whole-space `Sheaf.H` in every degree and compares original Cech cohomology with it. The statements retain the actual covering and affine-intersection hypotheses.
+`moduleCech_hasAcyclicIntersections` obtains the topological open-Ext acyclicity
+from quasicoherence and affine tuple intersections.
+`moduleCechCohomologyAddEquivCanonical` gives the positive-degree comparison
+with one injective resolution selected internally;
+`moduleCechCohomologyAddEquivCanonical_naturality` preserves the original
+coefficient map. The supplied-resolution `moduleCechCohomologyAddEquiv`
+retains its public name and underlying values;
+`moduleCechCohomologyAddEquiv_eq_canonical` identifies it with the canonical
+comparison. The shared normalization retains the original constant-integer unit
+and its degree-zero section value.
 
 [FieldBaseChange](FieldBaseChange.lean) constructs `Scheme.Cohomology.structureCechComplex` and its canonical tensor/geometric comparisons for a finite family of affine opens in a separated field scheme. A covering premise is not needed for that complex-level comparison; its cohomology consequence uses the separate covering/comparison route. Generic finite coefficient comparison lives below schemes in [FiniteCoefficients](../../../CategoryTheory/Sites/SheafCohomology/Cech/FiniteCoefficients.lean).
 
@@ -21,13 +43,19 @@ hypothesis is used. Consumer: `Picard/Tangent/Cech/DualNumbers`.
 
 Focused imports follow these leaves. [Canonical field base change](../BaseChange/README.md) consumes the precise scalar/naturality comparison with the original cohomology tensor map.
 
-[Modules](Modules.lean) gives `moduleCechComplex`, using the shared
+[Modules](Modules.lean), imported as
+`Aglib.AlgebraicGeometry.Cohomology.Cech.Modules`, gives `moduleCechComplex`,
+using the shared
 [`moduleSectionsPresheaf`](../Modules/Sections.lean),
 for arbitrary module coefficients and any commutative structural ring
 `α : R →+* Γ(X, ⊤)`. They use native scalar restriction of the actual module
-presheaf. `moduleCechCohomologyLinearEquiv` computes original positive
+presheaf. `moduleCechCohomologyLinearEquivCanonical` computes original positive
 `Sheaf.H` linearly over `R`, retaining a covering family, affine finite
-intersections, quasicoherence and the supplied additive injective resolution.
+intersections and quasicoherence, with the resolution chosen internally.
+The legacy `moduleCechCohomologyLinearEquiv` still takes a supplied additive
+injective resolution and keeps its actual underlying additive equivalence.
+`moduleCechCohomologyLinearEquiv_eq_canonical` identifies its values with the
+canonical linear comparison; the structural scalar action is unchanged.
 `moduleAffineCechCohomologyLinearEquiv` supplies the affine-intersection
 condition from separatedness and an affine open cover. No field, Noetherianity,
 finite generation or properness is needed. The scalar-forgetting and homology
@@ -79,9 +107,10 @@ coproduct comparison and its original coefficient-inclusion equation.
 original `Sheaf.H` is an equivalence on quasi-compact separated schemes in
 every degree. Its forward map is literally induced by the ambient coproduct
 inclusions; arbitrary maps out of the coproduct are compatible with it.
-[CoproductNaturality](CoproductNaturality.lean) identifies the original
-coproduct projections with direct-sum component extraction. None of these
-statements asserts finite generation of Cech terms or requires flatness.
+The previously referenced `CoproductNaturality.lean` source for identifying
+original coproduct projections with direct-sum component extraction is currently
+absent. The coproduct results above do not assert finite generation of Cech terms
+or require flatness.
 
 [CoproductSectionIso](CoproductSectionIso.lean) is the concrete affine-open
 section comparison with a direct sum. Its inclusion formula uses the literal

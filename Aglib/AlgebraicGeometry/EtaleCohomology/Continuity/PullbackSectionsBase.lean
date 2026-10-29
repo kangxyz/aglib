@@ -5,59 +5,15 @@ Authors: kangxyz
 -/
 module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleNaturality
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension
 
 /-! # Relative global sections after changing the fixed base -/
 @[expose] public noncomputable section
 open CategoryTheory Limits Opposite
-private theorem iso_square_inverse {C : Type*} [Category C]
-    {A B D E : C} (i : A ≅ B) (j : D ≅ E) (p : A ⟶ D) (q : B ⟶ E)
-    (h : p ≫ j.hom = i.hom ≫ q) : i.inv ≫ p = q ≫ j.inv := by
-  apply (cancel_epi i.hom).1
-  rw [← Category.assoc, i.hom_inv_id, Category.id_comp, ← Category.assoc,
-    ← h, Category.assoc, j.hom_inv_id, Category.comp_id]
-
-private theorem mapped_square_pasting {C D : Type*} [Category C] [Category D]
-    (G : C ⥤ D) {A B E H : C} {Z W : D}
-    (q : A ⟶ B) (r : B ⟶ E) (s : A ⟶ H) (t : H ⟶ E)
-    (p : Z ⟶ G.obj A) (w : Z ⟶ W) (p' : W ⟶ G.obj H)
-    (h : q ≫ r = s ≫ t) (hn : w ≫ p' = p ≫ G.map s) :
-    (p ≫ G.map q) ≫ G.map r = w ≫ p' ≫ G.map t := by
-  rw [Category.assoc, ← G.map_comp, h, G.map_comp, ← Category.assoc, ← hn,
-    Category.assoc]
-
-private theorem section_square_whole {C D E B : Type*}
-    [Category C] [Category D] [Category E] [Category B]
-    (R S : C ⥤ D) (T U : C ⥤ E) (L : D ⥤ E)
-    (GD : D ⥤ B) (GE : E ⥤ B) (P : GD ⟶ L ⋙ GE)
-    (q : R ⋙ L ⟶ T) (r : T ⟶ U) (s : R ⟶ S) (t : S ⋙ L ⟶ U)
-    (h : q ≫ r = Functor.whiskerRight s L ≫ t) :
-    (Functor.whiskerLeft R P ≫ Functor.whiskerRight q GE) ≫
-        Functor.whiskerRight r GE =
-      Functor.whiskerRight s GD ≫ Functor.whiskerLeft S P ≫
-        Functor.whiskerRight t GE := by
-  ext F
-  exact mapped_square_pasting GE _ _ _ _ _ _ _ (NatTrans.congr_app h F)
-    (P.naturality (s.app F))
-
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u
 attribute [local instance] hasSheafifyLarge
-
-/-- Native coefficient composition respects a relative triangle over a fixed base. -/
-theorem inverseImageComp_triangle {X S Y Z : Scheme.{u}} (f : S ⟶ X)
-    (b : Z ⟶ S) (c : Y ⟶ S) (a : Y ⟶ Z) (e : a ≫ b = c)
-    (F : AbelianSheaf.{u, u + 1} X) :
-    (inverseImageComp f c).hom.app F ≫
-        (pullbackTriangleIso c b a e).hom.app ((inverseImage f).obj F) =
-      (pullbackTriangleIso (c ≫ f) (b ≫ f) a
-        (by rw [← Category.assoc, e])).hom.app F ≫
-        (inverseImage a).map ((inverseImageComp f b).hom.app F) := by
-  subst c
-  have h := congrArg (fun t => t.app F) (inverseImageComp_assoc_hom f b a)
-  simpa only [pullbackTriangleIso, Iso.trans_hom, NatTrans.comp_app, eqToIso.hom,
-    eqToHom_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
-    Functor.associator_hom_app, eqToHom_refl, Category.id_comp, Category.comp_id,
-    Category.assoc] using h
 
 /-- The relative triangle square in the original functor category, before evaluation. -/
 theorem inverseImageComp_triangle_whole {X S Y Z : Scheme.{u}} (f : S ⟶ X)
@@ -68,10 +24,26 @@ theorem inverseImageComp_triangle_whole {X S Y Z : Scheme.{u}} (f : S ⟶ X)
         (by rw [← Category.assoc, e])).hom ≫
         Functor.whiskerRight (inverseImageComp f b).hom (inverseImage a) ≫
         (Functor.associator (inverseImage f) (inverseImage b) (inverseImage a)).hom := by
-  subst c
-  simpa only [pullbackTriangleIso, Iso.trans_hom, eqToIso.hom, eqToHom_refl,
-    Functor.whiskerLeft_comp, Functor.whiskerLeft_id, Category.id_comp, Category.assoc] using
-      inverseImageComp_assoc_hom f b a
+  have hw := schemeAdjunctionData.triangleIso_precompose_whole schemeAdjunctionData_coherent
+    f.op b.op c.op a.op (congrArg Quiver.Hom.op e)
+  simp only [schemeTriangleIso_eq_pullbackTriangleIso,
+    schemeLeftCompIso_eq_inverseImageComp, schemeLeft_eq_inverseImage,
+    unop_comp, Quiver.Hom.unop_op] at hw ⊢
+  exact hw
+
+/-- Native coefficient composition respects a relative triangle over a fixed base. -/
+theorem inverseImageComp_triangle {X S Y Z : Scheme.{u}} (f : S ⟶ X)
+    (b : Z ⟶ S) (c : Y ⟶ S) (a : Y ⟶ Z) (e : a ≫ b = c)
+    (F : AbelianSheaf.{u, u + 1} X) :
+    (inverseImageComp f c).hom.app F ≫
+        (pullbackTriangleIso c b a e).hom.app ((inverseImage f).obj F) =
+      (pullbackTriangleIso (c ≫ f) (b ≫ f) a
+        (by rw [← Category.assoc, e])).hom.app F ≫
+        (inverseImage a).map ((inverseImageComp f b).hom.app F) := by
+  have h := NatTrans.congr_app (inverseImageComp_triangle_whole f b c a e) F
+  simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, Category.comp_id] at h ⊢
+  exact h
 
 /-- Inverse triangle square at the original functor-category boundary. -/
 theorem inverseImageComp_triangle_inv_whole {X S Y Z : Scheme.{u}} (f : S ⟶ X)
@@ -80,11 +52,13 @@ theorem inverseImageComp_triangle_inv_whole {X S Y Z : Scheme.{u}} (f : S ⟶ X)
         (by rw [← Category.assoc, e])).inv ≫ (inverseImageComp f c).hom =
       (Functor.whiskerRight (inverseImageComp f b).hom (inverseImage a) ≫
         (Functor.associator (inverseImage f) (inverseImage b) (inverseImage a)).hom) ≫
-        Functor.whiskerLeft (inverseImage f) (pullbackTriangleIso c b a e).inv :=
-  iso_square_inverse
-    (pullbackTriangleIso (c ≫ f) (b ≫ f) a (by rw [← Category.assoc, e]))
-    (Functor.isoWhiskerLeft (inverseImage f) (pullbackTriangleIso c b a e)) _ _
-    (inverseImageComp_triangle_whole f b c a e)
+        Functor.whiskerLeft (inverseImage f) (pullbackTriangleIso c b a e).inv := by
+  have hw := schemeAdjunctionData.triangleIso_precompose_inv_whole
+    schemeAdjunctionData_coherent f.op b.op c.op a.op (congrArg Quiver.Hom.op e)
+  simp only [schemeTriangleIso_eq_pullbackTriangleIso,
+    schemeLeftCompIso_eq_inverseImageComp, schemeLeft_eq_inverseImage,
+    unop_comp, Quiver.Hom.unop_op] at hw ⊢
+  exact hw
 
 /-- The inverse form of the original relative coefficient square. -/
 theorem inverseImageComp_triangle_inv {X S Y Z : Scheme.{u}} (f : S ⟶ X)
@@ -111,19 +85,13 @@ theorem pullbackSections_base_whole {X S Y Z : Scheme.{u}} (f : S ⟶ X)
           (globalSectionsPullbackNatTrans a) ≫
         Functor.whiskerRight (Functor.whiskerLeft (inverseImage f)
           (pullbackTriangleIso c b a e).inv) (globalSections Y) := by
-  have hc := inverseImageComp_triangle_inv_whole f b c a e
-  have ha : (Functor.associator (inverseImage f) (inverseImage b)
-      (inverseImage a)).hom = 𝟙 _ := rfl
-  have hc' : (pullbackTriangleIso (c ≫ f) (b ≫ f) a
-      (by rw [← Category.assoc, e])).inv ≫ (inverseImageComp f c).hom =
-      Functor.whiskerRight (inverseImageComp f b).hom (inverseImage a) ≫
-        Functor.whiskerLeft (inverseImage f) (pullbackTriangleIso c b a e).inv := by
-    simpa only [ha, Category.comp_id] using hc
-  exact section_square_whole
-    (inverseImage (b ≫ f)) (inverseImage f ⋙ inverseImage b)
-    (inverseImage (c ≫ f)) (inverseImage f ⋙ inverseImage c)
-    (inverseImage a) (globalSections Z) (globalSections Y)
-    (globalSectionsPullbackNatTrans a) _ _ _ _ hc'
+  have hw := schemeAdjunctionData.triangleIso_precompose_sections_whole
+    schemeAdjunctionData_coherent f.op b.op c.op a.op (congrArg Quiver.Hom.op e)
+    (globalSections Z) (globalSections Y) (globalSectionsPullbackNatTrans a)
+  simp only [schemeTriangleIso_eq_pullbackTriangleIso,
+    schemeLeftCompIso_eq_inverseImageComp, schemeLeft_eq_inverseImage,
+    unop_comp, Quiver.Hom.unop_op] at hw ⊢
+  exact hw
 
 /-- Evaluate the whole section square without rebuilding its original functors. -/
 theorem pullbackSections_base_app {X S Y Z : Scheme.{u}} (f : S ⟶ X)

@@ -1,0 +1,8 @@
+from pathlib import Path
+import hashlib,json,subprocess,sys
+r=Path("/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025")
+x=json.loads((r/"migration/incremental-compiler/recovery-20261029/global-original-component-v29-input.json").read_text())
+for rel,h in x["source_guards"].items(): assert hashlib.sha256((r/"aglib"/rel).read_bytes()).hexdigest()==h,rel
+for key,hkey in [("payload","payload_sha256"),("metadata","metadata_sha256"),("prefix_source","prefix_sha256")]: assert hashlib.sha256(Path(x[key]).read_bytes()).hexdigest()==x[hkey]
+argv=[sys.executable,"-m","r5tools","lean","remote","--config",str(r/"foundations/lane-a/remote.json"),"phase","--jobs","8","--threads","4","--lean-memory-mib","12800","--rss-limit-mib","65536","--label","V29NativeOriginalComponentAssembly",*x["module_scope"],"--command","python3","-c",Path(x["payload"]).read_text()]
+sys.exit(subprocess.call(argv))

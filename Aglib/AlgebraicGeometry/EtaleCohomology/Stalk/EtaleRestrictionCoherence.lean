@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleRestrictionComposition
-public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.InverseImageUnitComposition
+public import Aglib.CategoryTheory.Adjunction.Mates.UnitNormalizedComposition
 
 /-! # Native inverse-image coherence for étale chart restriction -/
 
@@ -20,31 +20,72 @@ open CategoryTheory CategoryTheory.Limits Opposite
 
 universe u
 
-private theorem compose_units {C : Type*} [Category* C]
-    {A B C₀ D E H B' G : C}
-    (u₁ : A ⟶ B) (u₂ : B ⟶ C₀) (d : C₀ ⟶ D)
-    (u : A ⟶ E) (c : E ⟶ D) (l : D ⟶ H) (l' : C₀ ⟶ G)
-    (d' : G ⟶ H) (e : B ⟶ B') (v : B' ⟶ G) (j : A ⟶ B') (r : A ⟶ H)
-    (hc : u₁ ≫ u₂ ≫ d = u ≫ c) (hn : d ≫ l = l' ≫ d')
-    (hu : u₂ ≫ l' = e ≫ v) (he : u₁ ≫ e = j) (hg : j ≫ v ≫ d' = r) :
-    u ≫ c ≫ l = r := by
-  rw [← Category.assoc, ← hc]
-  simp only [Category.assoc]
-  rw [hn, ← Category.assoc u₂, hu]
-  simp only [Category.assoc]
-  rw [← Category.assoc u₁ e, he, hg]
-
-private theorem unit_naturality_comp {C : Type*} [Category* C]
-    {A B D E H : C} (e : A ⟶ B) (v : B ⟶ D) (u : A ⟶ E) (k : E ⟶ D)
-    (t : D ⟶ H) (z : B ⟶ H) (h₀ : e ≫ v = u ≫ k) (h₁ : v ≫ t = z) :
-    u ≫ k ≫ t = e ≫ z := by
-  rw [← Category.assoc, ← h₀, Category.assoc, h₁]
-
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
 variable {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) [Etale f] [Etale g]
+
+/-- The actual chart adjunction, with no reselected sheaf adjunction. -/
+private abbrev etaleRestrictionAdj {Y Z : Scheme.{u}} (k : Y ⟶ Z) [Etale k] :=
+  (siteEtalePostcomposeAdj k).sheafPushforwardContinuous
+    (E := AddCommGrpCat.{u + 1}) (Scheme.smallEtaleTopology Y) (Scheme.smallEtaleTopology Z)
+
+/-- The original site counit identity normalizes the whole restriction compositor. -/
+private theorem etaleRestrictionComp_unit :
+    let d := Functor.sheafPushforwardContinuousComp' (siteBaseChangeComp f g).symm
+      AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X)
+        (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
+    ((etaleRestrictionAdj f).comp (etaleRestrictionAdj g)).unit ≫
+        Functor.whiskerLeft (etaleRestriction f ⋙ etaleRestriction g) d.hom =
+      (etaleRestrictionAdj (g ≫ f)).unit ≫
+        Functor.whiskerRight (etaleRestrictionComp f g).hom (directImage (g ≫ f)) := by
+  apply NatTrans.ext
+  funext F
+  simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Adjunction.comp_unit_app]
+  apply Sheaf.hom_ext
+  apply NatTrans.ext
+  funext V
+  let U := V.unop
+  change F.obj.map ((siteEtalePostcomposeAdj f).counit.app U).op ≫
+      F.obj.map ((siteEtalePostcompose f).map
+        ((siteEtalePostcomposeAdj g).counit.app ((siteBaseChange f).obj U))).op ≫
+      F.obj.map ((siteEtalePostcompose f).map
+        ((siteEtalePostcompose g).map ((siteBaseChangeComp f g).hom.app U))).op =
+    F.obj.map ((siteEtalePostcomposeAdj (g ≫ f)).counit.app U).op ≫
+      F.obj.map ((siteEtalePostcomposeComp f g).inv.app
+        ((siteBaseChange (g ≫ f)).obj U)).op
+  have hsite :
+      (siteEtalePostcompose f).map
+          ((siteEtalePostcompose g).map ((siteBaseChangeComp f g).hom.app U)) ≫
+          (siteEtalePostcompose f).map
+            ((siteEtalePostcomposeAdj g).counit.app ((siteBaseChange f).obj U)) ≫
+          (siteEtalePostcomposeAdj f).counit.app U =
+        (siteEtalePostcomposeComp f g).inv.app ((siteBaseChange (g ≫ f)).obj U) ≫
+          (siteEtalePostcomposeAdj (g ≫ f)).counit.app U := by
+    exact (Iso.eq_inv_comp _).mpr (siteEtalePostcomposeComp_counit f g U)
+  simpa only [op_comp, Functor.map_comp, Category.assoc] using
+    congrArg (fun k => F.obj.map k.op) hsite
+
+/-- The full chosen inverse-image comparison agrees with chart restriction composition. -/
+theorem inverseImageEtaleIso_comp_whole :
+    (inverseImageComp f g).hom ≫
+        Functor.whiskerRight (inverseImageEtaleIso f).hom (inverseImage g) ≫
+        Functor.whiskerLeft (etaleRestriction f) (inverseImageEtaleIso g).hom =
+      (inverseImageEtaleIso (g ≫ f)).hom ≫ (etaleRestrictionComp f g).hom := by
+  let d := Functor.sheafPushforwardContinuousComp' (siteBaseChangeComp f g).symm
+    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X)
+      (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
+  exact Adjunction.leftAdjointUniq_comp_of_unit
+    (inverseImageAdjunction f) (inverseImageAdjunction g)
+    (inverseImageAdjunction (g ≫ f))
+    (etaleRestrictionAdj f) (etaleRestrictionAdj g) (etaleRestrictionAdj (g ≫ f))
+    (inverseImageComp f g).hom d.hom (etaleRestrictionComp f g).hom
+    (Adjunction.conjugateEquiv_leftAdjointCompIso_inv
+      (inverseImageAdjunction f) (inverseImageAdjunction g)
+      (inverseImageAdjunction (g ≫ f)) d)
+    (etaleRestrictionComp_unit f g)
 
 /-- The chosen inverse-image comparison agrees with literal chart restriction composition. -/
 theorem inverseImageEtaleIso_comp (F : AbelianSheaf.{u, u + 1} X) :
@@ -52,58 +93,10 @@ theorem inverseImageEtaleIso_comp (F : AbelianSheaf.{u, u + 1} X) :
         (inverseImage g).map ((inverseImageEtaleIso f).hom.app F) ≫
         (inverseImageEtaleIso g).hom.app ((etaleRestriction f).obj F) =
       (inverseImageEtaleIso (g ≫ f)).hom.app F ≫
-        (etaleRestrictionComp f g).hom.app F := by
-  let L := (inverseImage g).map ((inverseImageEtaleIso f).hom.app F) ≫
-    (inverseImageEtaleIso g).hom.app ((etaleRestriction f).obj F)
-  apply ((inverseImageAdjunction (g ≫ f)).homEquiv F _).injective
-  change (inverseImageAdjunction (g ≫ f)).unit.app F ≫
-      (directImage (g ≫ f)).map ((inverseImageComp f g).hom.app F ≫ L) =
-    (inverseImageAdjunction (g ≫ f)).unit.app F ≫
-      (directImage (g ≫ f)).map ((inverseImageEtaleIso (g ≫ f)).hom.app F ≫
-        (etaleRestrictionComp f g).hom.app F)
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext V
-  let U := V.unop
-  let δ := (siteBaseChangeComp f g).hom.app U
-  have hc := EtaleAffineBasis.inverseImageUnit_comp f g F U
-  have hn := L.hom.naturality δ.op
-  have he := inverseImageEtaleIso_unit_app f F U
-  have hg₀ := inverseImageEtaleIso_unit_app (g ≫ f) F U
-  have hu₀ := congrArg (fun h => h.hom.app (op ((siteBaseChange f).obj U)))
-    ((inverseImageAdjunction g).unit.naturality ((inverseImageEtaleIso f).hom.app F))
-  have hu₁ := inverseImageEtaleIso_unit_app g ((etaleRestriction f).obj F)
-    ((siteBaseChange f).obj U)
-  have hu : ((inverseImageAdjunction g).unit.app ((inverseImage f).obj F)).hom.app
-        (op ((siteBaseChange f).obj U)) ≫ L.hom.app
-          (op ((siteBaseChange g).obj ((siteBaseChange f).obj U))) =
-      ((inverseImageEtaleIso f).hom.app F).hom.app (op ((siteBaseChange f).obj U)) ≫
-        ((etaleRestriction f).obj F).obj.map
-          ((siteEtalePostcomposeAdj g).counit.app ((siteBaseChange f).obj U)).op := by
-    have hu₀' :
-        ((inverseImageEtaleIso f).hom.app F).hom.app (op ((siteBaseChange f).obj U)) ≫
-          ((inverseImageAdjunction g).unit.app ((etaleRestriction f).obj F)).hom.app
-            (op ((siteBaseChange f).obj U)) =
-        ((inverseImageAdjunction g).unit.app ((inverseImage f).obj F)).hom.app
-          (op ((siteBaseChange f).obj U)) ≫
-          ((inverseImage g).map ((inverseImageEtaleIso f).hom.app F)).hom.app
-            (op ((siteBaseChange g).obj ((siteBaseChange f).obj U))) := hu₀
-    exact unit_naturality_comp _ _ _ _ _ _ hu₀' hu₁
-  have hsite := siteEtalePostcomposeComp_counit f g U
-  have hsite' :
-      (siteEtalePostcompose f).map ((siteEtalePostcompose g).map δ) ≫
-          (siteEtalePostcompose f).map
-            ((siteEtalePostcomposeAdj g).counit.app ((siteBaseChange f).obj U)) ≫
-          (siteEtalePostcomposeAdj f).counit.app U =
-        (siteEtalePostcomposeComp f g).inv.app ((siteBaseChange (g ≫ f)).obj U) ≫
-          (siteEtalePostcomposeAdj (g ≫ f)).counit.app U := by
-    exact (Iso.eq_inv_comp _).mpr hsite
-  have hg := congrArg (fun k => F.obj.map k.op) hsite'
-  simp only [op_comp, Functor.map_comp, Category.assoc] at hg
-  have hgr := congrArg
-    (fun k => k ≫ ((etaleRestrictionComp f g).hom.app F).hom.app
-      (op ((siteBaseChange (g ≫ f)).obj U))) hg₀
-  simp only [Category.assoc] at hgr
-  exact (compose_units _ _ _ _ _ _ _ _ _ _ _ _ hc hn hu he hg).trans hgr.symm
+        (etaleRestrictionComp f g).hom.app F :=
+  Adjunction.unitNormalizedComparison_comp_app (inverseImageComp f g).hom
+    (inverseImageEtaleIso f).hom (inverseImageEtaleIso g).hom
+    (inverseImageEtaleIso (g ≫ f)).hom (etaleRestrictionComp f g).hom
+    (inverseImageEtaleIso_comp_whole f g) F
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

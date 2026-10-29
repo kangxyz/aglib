@@ -1,0 +1,305 @@
+/- Active extension, not a READY production source. Insert into the existing
+Global.Restriction owner when the complete dependent proof is ready. -/
+
+private theorem constantGroupBaseChangeIso_normalization
+    {V W : Scheme.{u}} (f : W ⟶ V) (B : Type u) [AddCommGroup B] [Finite B] :
+    (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+        representedSheafMap (constantGroupBaseChangeIso f B).hom ≫
+          (ConstantFinite.representation B W).iso.hom =
+      (inverseImage f).map (ConstantFinite.representation B V).iso.hom ≫
+        (inverseImageConstantIso f).hom.app (ConstantFinite.value B) := by
+  dsimp only [constantGroupBaseChangeIso, representedGroupIsoOfSheafIso]
+  rw [representedSheafMap_preimage]
+  simp only [Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, Category.assoc,
+    Iso.hom_inv_id_assoc, Iso.inv_hom_id, Category.comp_id]
+
+private def representedGroupCompIso {V W Z : Scheme.{u}} (f : W ⟶ V) (k : Z ⟶ W)
+    (H : Grp (Over V)) :
+    baseChangedGroup k (baseChangedGroup f H) ≅ baseChangedGroup (k ≫ f) H :=
+  ((Functor.mapGrpCompIso (Over.pullback f) (Over.pullback k)).symm ≪≫
+    (Functor.mapGrpNatIso (Over.pullbackComp k f)).symm).app H
+
+private theorem representedGroupCompIso_hom {V W Z : Scheme.{u}}
+    (f : W ⟶ V) (k : Z ⟶ W) (H : Grp (Over V)) :
+    (representedGroupCompIso f k H).hom.hom.hom =
+      (Over.pullbackComp k f).inv.app H.X := by
+  change (𝟙 _) ≫ (Over.pullbackComp k f).inv.app H.X = _
+  exact Category.id_comp _
+
+private theorem representedGroupCompIso_inv {V W Z : Scheme.{u}}
+    (f : W ⟶ V) (k : Z ⟶ W) (H : Grp (Over V)) :
+    (representedGroupCompIso f k H).inv.hom.hom =
+      (Over.pullbackComp k f).hom.app H.X := by
+  change (Over.pullbackComp k f).hom.app H.X ≫ (𝟙 _) = _
+  exact Category.comp_id _
+
+private def representedGroupEqIso {V W : Scheme.{u}} {f k : W ⟶ V} (h : f = k)
+    (H : Grp (Over V)) : baseChangedGroup f H ≅ baseChangedGroup k H :=
+  (Functor.mapGrpNatIso (eqToIso (congrArg (fun a => Over.pullback a) h))).app H
+
+private theorem representedBaseChange_eqTransport {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (H : Grp (Over V))
+    [IsCommMonObj H.X] [Etale H.X.hom] :
+    (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H) ≫
+        (representedSheafBaseChangeIso k H).hom =
+      (representedSheafBaseChangeIso f H).hom ≫
+        representedSheafMap (representedGroupEqIso h H).hom := by
+  subst k
+  change (𝟙 _) ≫ (representedSheafBaseChangeIso f H).hom =
+    (representedSheafBaseChangeIso f H).hom ≫
+      representedSheafMap (𝟙 (baseChangedGroup f H))
+  rw [representedSheafMap_id, Category.id_comp, Category.comp_id]
+
+private def representedGroupSquareIso {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W)) :
+    baseChangedGroup f' (baseChangedGroup g H) ≅
+      baseChangedGroup g' (baseChangedGroup f H) :=
+  representedGroupCompIso g f' H ≪≫ representedGroupEqIso h H ≪≫
+    (representedGroupCompIso f g' H).symm
+
+private theorem representedBaseChange_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (H : Grp (Over W))
+    [IsCommMonObj H.X] [Etale H.X.hom] :
+    (inverseImageSquareIso f f' g g' h).hom.app (representedSheaf H) ≫
+        (inverseImage g').map (representedSheafBaseChangeIso f H).hom ≫
+        (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom =
+      (inverseImage f').map (representedSheafBaseChangeIso g H).hom ≫
+        (representedSheafBaseChangeIso f' (baseChangedGroup g H)).hom ≫
+        representedSheafMap (representedGroupSquareIso f f' g g' h H).hom := by
+  let u₁ := representedGroupCompIso g f' H
+  let u₂ := representedGroupCompIso f g' H
+  have hc₁ := RepresentedBaseChange.iso_comp_of_hom g f' H u₁.hom
+    (representedGroupCompIso_hom g f' H)
+  have hc₂ := RepresentedBaseChange.iso_comp_of_hom f g' H u₂.hom
+    (representedGroupCompIso_hom f g' H)
+  have h₁ :
+      (inverseImageComp g f').inv.app (representedSheaf H) ≫
+          (representedSheafBaseChangeIso (f' ≫ g) H).hom =
+        (inverseImage f').map (representedSheafBaseChangeIso g H).hom ≫
+          (representedSheafBaseChangeIso f' (baseChangedGroup g H)).hom ≫
+          representedSheafMap u₁.hom := by
+    have hh := congrArg
+      (fun k => (inverseImageComp g f').inv.app (representedSheaf H) ≫ k) hc₁
+    simpa only [Category.assoc, Iso.inv_hom_id_app_assoc] using hh.symm
+  have h₂ :
+      (inverseImageComp f g').hom.app (representedSheaf H) ≫
+          (inverseImage g').map (representedSheafBaseChangeIso f H).hom ≫
+          (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom =
+        (representedSheafBaseChangeIso (g' ≫ f) H).hom ≫
+          representedSheafMap u₂.inv := by
+    have hh := congrArg (fun k => k ≫ representedSheafMap u₂.inv) hc₂
+    simpa only [Category.assoc, ← representedSheafMap_comp, Iso.hom_inv_id,
+      representedSheafMap_id, Category.comp_id] using hh
+  have he := representedBaseChange_eqTransport h H
+  calc
+    _ = (inverseImageComp g f').inv.app (representedSheaf H) ≫
+        (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H) ≫
+        ((inverseImageComp f g').hom.app (representedSheaf H) ≫
+          (inverseImage g').map (representedSheafBaseChangeIso f H).hom ≫
+          (representedSheafBaseChangeIso g' (baseChangedGroup f H)).hom) := by
+      simp only [inverseImageSquareIso, Iso.trans_hom, Iso.symm_hom,
+        NatTrans.comp_app, Category.assoc]
+    _ = (inverseImageComp g f').inv.app (representedSheaf H) ≫
+        ((eqToIso (congrArg (fun a => inverseImage a) h)).hom.app (representedSheaf H) ≫
+          (representedSheafBaseChangeIso (g' ≫ f) H).hom) ≫
+        representedSheafMap u₂.inv := by rw [h₂]; simp only [Category.assoc]
+    _ = ((inverseImageComp g f').inv.app (representedSheaf H) ≫
+          (representedSheafBaseChangeIso (f' ≫ g) H).hom) ≫
+        representedSheafMap (representedGroupEqIso h H).hom ≫
+        representedSheafMap u₂.inv := by rw [he]; simp only [Category.assoc]
+    _ = _ := by
+      rw [h₁]
+      simp only [representedGroupSquareIso, Iso.trans_hom, Iso.symm_hom,
+        representedSheafMap_comp, Category.assoc]
+
+private theorem constantComparison_eqTransport {V W : Scheme.{u}}
+    {f k : W ⟶ V} (h : f = k) (A : AddCommGrpCat.{u + 1}) :
+    (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app
+        ((constantSheaf (Scheme.smallEtaleTopology V) AddCommGrpCat.{u + 1}).obj A) ≫
+        (inverseImageConstantIso k).hom.app A = (inverseImageConstantIso f).hom.app A := by
+  subst k
+  exact Category.id_comp _
+
+private theorem constantComparison_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (A : AddCommGrpCat.{u + 1}) :
+    (inverseImageSquareIso f f' g g' h).hom.app
+        ((constantSheaf (Scheme.smallEtaleTopology W) AddCommGrpCat.{u + 1}).obj A) ≫
+        (inverseImage g').map ((inverseImageConstantIso f).hom.app A) ≫
+        (inverseImageConstantIso g').hom.app A =
+      (inverseImage f').map ((inverseImageConstantIso g).hom.app A) ≫
+        (inverseImageConstantIso f').hom.app A := by
+  have hf := inverseImageComp_constant f g' A
+  have hg := inverseImageComp_constant g f' A
+  calc
+    _ = (inverseImageComp g f').inv.app _ ≫
+        (eqToIso (congrArg (fun a => inverseImage a) h)).hom.app _ ≫
+        ((inverseImageComp f g').hom.app _ ≫
+          (inverseImage g').map ((inverseImageConstantIso f).hom.app A) ≫
+          (inverseImageConstantIso g').hom.app A) := by
+      simp only [inverseImageSquareIso, Iso.trans_hom, Iso.symm_hom,
+        NatTrans.comp_app, Category.assoc]
+    _ = (inverseImageComp g f').inv.app _ ≫
+        ((eqToIso (congrArg (fun a => inverseImage a) h)).hom.app _ ≫
+          (inverseImageConstantIso (g' ≫ f)).hom.app A) := by
+      rw [hf]; simp only [Category.assoc]
+    _ = (inverseImageComp g f').inv.app _ ≫
+        (inverseImageConstantIso (f' ≫ g)).hom.app A := by
+      rw [constantComparison_eqTransport h A]
+    _ = _ := by rw [← hg]; simp only [Iso.inv_hom_id_app_assoc]
+
+private theorem iteratedConstantGroup_normalization {V W Z : Scheme.{u}}
+    (f : W ⟶ V) (k : Z ⟶ W) (B : Type u) [AddCommGroup B] [Finite B] :
+    (inverseImage k).map
+        (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+        (representedSheafBaseChangeIso k
+          (baseChangedGroup f (ConstantFinite.representation B V).group)).hom ≫
+        representedSheafMap ((Over.pullback k).mapGrp.map
+          (constantGroupBaseChangeIso f B).hom) ≫
+        representedSheafMap (constantGroupBaseChangeIso k B).hom ≫
+        (ConstantFinite.representation B Z).iso.hom =
+      (inverseImage k).map
+          ((inverseImage f).map (ConstantFinite.representation B V).iso.hom) ≫
+        (inverseImage k).map ((inverseImageConstantIso f).hom.app (ConstantFinite.value B)) ≫
+        (inverseImageConstantIso k).hom.app (ConstantFinite.value B) := by
+  have hn := representedSheafBaseChangeIso_naturality k (constantGroupBaseChangeIso f B).hom
+  have hf := constantGroupBaseChangeIso_normalization f B
+  have hk := constantGroupBaseChangeIso_normalization k B
+  calc
+    _ = (inverseImage k).map
+          (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+        ((representedSheafBaseChangeIso k
+            (baseChangedGroup f (ConstantFinite.representation B V).group)).hom ≫
+          representedSheafMap ((Over.pullback k).mapGrp.map
+            (constantGroupBaseChangeIso f B).hom)) ≫
+        representedSheafMap (constantGroupBaseChangeIso k B).hom ≫
+        (ConstantFinite.representation B Z).iso.hom := by simp only [Category.assoc]
+    _ = (inverseImage k).map
+          (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+        (inverseImage k).map (representedSheafMap (constantGroupBaseChangeIso f B).hom) ≫
+        ((representedSheafBaseChangeIso k (ConstantFinite.representation B W).group).hom ≫
+          representedSheafMap (constantGroupBaseChangeIso k B).hom ≫
+          (ConstantFinite.representation B Z).iso.hom) := by
+      rw [← hn]; simp only [Category.assoc]
+    _ = (inverseImage k).map
+          ((representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).hom ≫
+            representedSheafMap (constantGroupBaseChangeIso f B).hom ≫
+            (ConstantFinite.representation B W).iso.hom) ≫
+        (inverseImageConstantIso k).hom.app (ConstantFinite.value B) := by
+      rw [hk]; simp only [Functor.map_comp, Category.assoc]
+    _ = _ := by rw [hf]; simp only [Functor.map_comp, Category.assoc]
+
+private theorem constantGroup_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (B : Type u) [AddCommGroup B] [Finite B] :
+    (Over.pullback f').mapGrp.map (constantGroupBaseChangeIso g B).hom ≫
+        (constantGroupBaseChangeIso f' B).hom =
+      (representedGroupSquareIso f f' g g' h (ConstantFinite.representation B W).group).hom ≫
+        (Over.pullback g').mapGrp.map (constantGroupBaseChangeIso f B).hom ≫
+        (constantGroupBaseChangeIso g' B).hom := by
+  apply (representedSheafHomEquiv _ _).injective
+  apply (cancel_epi
+    ((inverseImage f').map
+        (representedSheafBaseChangeIso g (ConstantFinite.representation B W).group).hom ≫
+      (representedSheafBaseChangeIso f'
+        (baseChangedGroup g (ConstantFinite.representation B W).group)).hom)).mp
+  apply (cancel_mono (ConstantFinite.representation B V').iso.hom).mp
+  simp only [representedSheafMap_comp, Category.assoc]
+  have hR := representedBaseChange_square f f' g g' h
+    (ConstantFinite.representation B W).group
+  have hN := (inverseImageSquareIso f f' g g' h).hom.naturality
+    (ConstantFinite.representation B W).iso.hom
+  have hC := constantComparison_square f f' g g' h (ConstantFinite.value B)
+  have hL := iteratedConstantGroup_normalization g f' B
+  have hT := iteratedConstantGroup_normalization f g' B
+  rw [hL]
+  symm
+  calc
+    _ = (inverseImageSquareIso f f' g g' h).hom.app
+          (representedSheaf (ConstantFinite.representation B W).group) ≫
+        ((inverseImage g').map
+            (representedSheafBaseChangeIso f (ConstantFinite.representation B W).group).hom ≫
+          (representedSheafBaseChangeIso g'
+            (baseChangedGroup f (ConstantFinite.representation B W).group)).hom ≫
+          representedSheafMap ((Over.pullback g').mapGrp.map
+            (constantGroupBaseChangeIso f B).hom) ≫
+          representedSheafMap (constantGroupBaseChangeIso g' B).hom ≫
+          (ConstantFinite.representation B V').iso.hom) := by
+      rw [← Category.assoc, ← Category.assoc, ← hR]
+      simp only [Category.assoc]
+    _ = (inverseImageSquareIso f f' g g' h).hom.app
+          (representedSheaf (ConstantFinite.representation B W).group) ≫
+        ((inverseImage g').map
+            ((inverseImage f).map (ConstantFinite.representation B W).iso.hom) ≫
+          (inverseImage g').map ((inverseImageConstantIso f).hom.app (ConstantFinite.value B)) ≫
+          (inverseImageConstantIso g').hom.app (ConstantFinite.value B)) := by rw [hT]
+    _ = _ := by
+      rw [← Category.assoc, ← hN, Category.assoc, hC]
+
+private theorem constantGroupCoefficient_hom {V W : Scheme.{u}}
+    (f : W ⟶ V) (B : Type u) [AddCommGroup B] [Finite B] :
+    representedSheafMap (constantGroupBaseChangeIso f B).hom ≫
+        (ConstantFinite.representation B W).iso.hom =
+      (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).inv ≫
+        (inverseImage f).map (ConstantFinite.representation B V).iso.hom ≫
+        (inverseImageConstantIso f).hom.app (ConstantFinite.value B) := by
+  have hh := congrArg
+    (fun k => (representedSheafBaseChangeIso f (ConstantFinite.representation B V).group).inv ≫ k)
+    (constantGroupBaseChangeIso_normalization f B)
+  simpa only [Category.assoc, Iso.inv_hom_id_assoc] using hh
+
+private theorem constantCoefficient_square {V W V' W' : Scheme.{u}}
+    (f : V ⟶ W) (f' : V' ⟶ W') (g : W' ⟶ W) (g' : V' ⟶ V)
+    (h : f' ≫ g = g' ≫ f) (B : Type u) [AddCommGroup B] [Finite B] :
+    let e₀ := (representedSheafBaseChangeIso f (ConstantFinite.representation B W).group).symm ≪≫
+      (inverseImage f).mapIso (ConstantFinite.representation B W).iso ≪≫
+      (inverseImageConstantIso f).app (ConstantFinite.value B)
+    let e₁ := (representedSheafBaseChangeIso f' (ConstantFinite.representation B W').group).symm ≪≫
+      (inverseImage f').mapIso (ConstantFinite.representation B W').iso ≪≫
+      (inverseImageConstantIso f').app (ConstantFinite.value B)
+    (inverseImage g').map e₀.hom ≫
+        (inverseImageConstantIso g').hom.app (ConstantFinite.value B) ≫ e₁.inv =
+      (representedSheafBaseChangeIso g'
+        (baseChangedGroup f (ConstantFinite.representation B W).group)).hom ≫
+        representedSheafMap
+          ((representedGroupSquareIso f f' g g' h (ConstantFinite.representation B W).group).inv ≫
+            (Over.pullback f').mapGrp.map (constantGroupBaseChangeIso g B).hom) := by
+  intro e₀ e₁
+  have he₀ : e₀.hom = representedSheafMap (constantGroupBaseChangeIso f B).hom ≫
+      (ConstantFinite.representation B V).iso.hom :=
+    (constantGroupCoefficient_hom f B).symm
+  have he₁ : e₁.hom = representedSheafMap (constantGroupBaseChangeIso f' B).hom ≫
+      (ConstantFinite.representation B V').iso.hom :=
+    (constantGroupCoefficient_hom f' B).symm
+  let t := representedGroupSquareIso f f' g g' h (ConstantFinite.representation B W).group
+  have hG := congrArg (fun k => t.inv ≫ k) (constantGroup_square f f' g g' h B)
+  have hG' :
+      (Over.pullback g').mapGrp.map (constantGroupBaseChangeIso f B).hom ≫
+          (constantGroupBaseChangeIso g' B).hom =
+        t.inv ≫ (Over.pullback f').mapGrp.map (constantGroupBaseChangeIso g B).hom ≫
+          (constantGroupBaseChangeIso f' B).hom := by
+    simpa only [Category.assoc, Iso.inv_hom_id_assoc] using hG.symm
+  apply (cancel_mono e₁.hom).mp
+  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  rw [he₀, he₁]
+  calc
+    _ = (inverseImage g').map (representedSheafMap (constantGroupBaseChangeIso f B).hom) ≫
+        ((inverseImage g').map (ConstantFinite.representation B V).iso.hom ≫
+          (inverseImageConstantIso g').hom.app (ConstantFinite.value B)) := by
+      simp only [Functor.map_comp, Category.assoc]
+    _ = (inverseImage g').map (representedSheafMap (constantGroupBaseChangeIso f B).hom) ≫
+        (representedSheafBaseChangeIso g' (ConstantFinite.representation B V).group).hom ≫
+        representedSheafMap (constantGroupBaseChangeIso g' B).hom ≫
+        (ConstantFinite.representation B V').iso.hom := by
+      rw [← constantGroupBaseChangeIso_normalization g' B]
+      simp only [Category.assoc]
+    _ = (representedSheafBaseChangeIso g'
+          (baseChangedGroup f (ConstantFinite.representation B W).group)).hom ≫
+        representedSheafMap ((Over.pullback g').mapGrp.map (constantGroupBaseChangeIso f B).hom ≫
+          (constantGroupBaseChangeIso g' B).hom) ≫
+        (ConstantFinite.representation B V').iso.hom := by
+      rw [representedSheafBaseChangeIso_naturality]
+      simp only [representedSheafMap_comp, Category.assoc]
+    _ = _ := by rw [hG']; simp only [representedSheafMap_comp, Category.assoc]

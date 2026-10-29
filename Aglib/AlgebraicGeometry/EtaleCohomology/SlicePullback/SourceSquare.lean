@@ -197,18 +197,17 @@ theorem cohomologyPullback_sliceComparison (F : AbelianSheaf.{u, u + 1} X) (n : 
       ((Ext.mk₀ (representedIntegerAugmentation U)).comp x (Nat.zero_add n)) := by
   let := overPullback_preservesFiniteColimits.{u + 1, u, u + 1}
     (Scheme.smallEtaleTopology X) U
-  have h := extRestrictionCompatibility.{w₀, w₁, w₂}
-    (A := AbelianSheaf.{u, u + 1} X) (B := AbelianSheaf.{u, u + 1} U.left)
-    (D := Sheaf ((Scheme.smallEtaleTopology X).over U) AddCommGrpCat.{u + 1})
+  have h := sourceExtComparison_compatibility
     (inverseImage (X := X) (S := U.left) U.hom)
     ((Scheme.smallEtaleTopology X).overPullback AddCommGrpCat.{u + 1} U)
     (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse
-    (inverseImageSliceInverseIso U).hom (sliceIntegerSource U)
+    (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).toAdjunction
+    ((sliceConstantSheafIso.{u, u + 1} U).app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (inverseImageSliceInverseIso U)
     (((inverseImageConstantIso U.hom).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
     (sliceComparisonUnit.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X) U)
     (representedIntegerAugmentation U) (inverseImageSlice_source_square U) x
-  rw [sliceCohomologyEquiv, Adjunction.sourceExtComparison_apply,
-    cohomologyPullback_apply, sliceComparison_apply]
+  rw [sliceCohomologyEquiv, cohomologyPullback_apply, sliceComparison_apply]
   exact h
 
 /-- Injectivity of literal represented restriction implies injectivity of the
@@ -225,5 +224,32 @@ theorem cohomologyPullback_injective_of_represented_precomp
   rw [← cohomologyPullback_sliceComparison, ← cohomologyPullback_sliceComparison, hxy]
 
 end Cohomology
+
+section ZeroTransfer
+
+variable [HasExt.{w₀} (AbelianSheaf.{u, u + 1} X)]
+  [HasExt.{w₁} (AbelianSheaf.{u, u + 1} U.left)]
+
+/-- Vanishing under the original represented augmentation implies vanishing
+under the original geometric pullback, through the proved integer-source square. -/
+theorem cohomologyPullback_eq_zero_of_represented_precomp_eq_zero
+    (F : AbelianSheaf.{u, u + 1} X) (n : ℕ) (x : Sheaf.H.{w₀} F n)
+    (hx : (Ext.mk₀ (representedIntegerAugmentation U)).comp x (Nat.zero_add n) = 0) :
+    cohomologyPullback.{u, w₀, w₁} (X := X) (S := U.left) U.hom F n x = 0 := by
+  let := overPullback_preservesFiniteColimits.{u + 1, u, u + 1}
+    (Scheme.smallEtaleTopology X) U
+  rw [cohomologyPullback_apply]
+  exact extPrecomp_eq_zero_of_precomp_eq_zero
+    (inverseImage (X := X) (S := U.left) U.hom)
+    ((Scheme.smallEtaleTopology X).overPullback AddCommGrpCat.{u + 1} U)
+    (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse
+    (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).toAdjunction
+    ((sliceConstantSheafIso.{u, u + 1} U).app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (inverseImageSliceInverseIso U)
+    (((inverseImageConstantIso U.hom).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv)
+    (sliceComparisonUnit.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X) U)
+    (representedIntegerAugmentation U) (inverseImageSlice_source_square U) x hx
+
+end ZeroTransfer
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

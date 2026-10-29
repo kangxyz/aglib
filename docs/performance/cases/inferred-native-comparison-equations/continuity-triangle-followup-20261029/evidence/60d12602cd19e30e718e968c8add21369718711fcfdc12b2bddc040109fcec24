@@ -1,0 +1,91 @@
+{
+  "question": "Live source publication of the existing continuity triangle-calculus complete8-source chain",
+  "authority": "Root explicitly requested meaningful source-publication/own-root-result packets directly to retained migration_registry_closed_wave; this is metadata, not new compilation/review/acceptance.",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "ac9d78c2e93ec218429c2d91bb992044a61545c990a307f1c7e9e4386f7847b8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "current_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/READY.json",
+  "publication_guard": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v11.json",
+  "current_status": "LIVE v11 nativeSquareac9 published under concrete disjoint-source release, compiler outcome PENDING. Same8-source chain; shared critical Extension0f and other6 unchanged. Not compiler-closed/established/wholeEtale closure.",
+  "source_correspondence": "Original26 nativeheaders/maps/data and geometric/universe premises preserved. Whole laws at original actual comparisons and raw variable-category evaluation; original mate e/doc/type/body relocated exactly, oldimportreexports, no duplicateimplementation/reference model.",
+  "previous_actual_native_failure": {
+    "run": "remote-88d1a641efd34eeabbd07613e356406c",
+    "source": "4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a",
+    "sha256": "af9d3a36c6f2b9dad24b3b6c24e1f381fe603ac862964e9d7acad9c7e4195cc0",
+    "compiler_exit": 1,
+    "seconds": 4.74,
+    "diagnostics": "Only application39:72 (hc:True expected Eq) and65:74 (hc0-prime:True expected original Iso equality); no native kernel timeout reported in this source.",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/D-live-88d1a641/build.log.partial"
+  },
+  "retained_module_coverage": [
+    {
+      "module": "Cone",
+      "sha256": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+      "run": "remote-f62382ef588a4cf688c44bedd08c4b8b",
+      "source": "b8599555240b2b76c3686efb7eb6216cca8e2b05f9cea9e53948c374a606ca93",
+      "compiler_exit": 0,
+      "seconds": 4.246
+    },
+    {
+      "module": "ConeConstancy",
+      "sha256": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+      "run": "remote-32b0b319b0534121836b5d69a22718d0",
+      "source": "998a4a2e7b38a97ee4251fb4664d9580fb999929189fd80e7fe92d2b80cb4b0d",
+      "compiler_exit": 0,
+      "seconds": 2.951
+    },
+    {
+      "module": "CoefficientSquares",
+      "sha256": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+      "run": "remote-32b0b319b0534121836b5d69a22718d0",
+      "source": "998a4a2e7b38a97ee4251fb4664d9580fb999929189fd80e7fe92d2b80cb4b0d",
+      "compiler_exit": 0,
+      "seconds": 5.341
+    },
+    {
+      "module": "ConeExtension",
+      "sha256": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+      "run": "remote-88d1a641efd34eeabbd07613e356406c",
+      "source": "4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a",
+      "compiler_exit": 0,
+      "seconds": 5.321
+    },
+    {
+      "module": "DiagramLimitFunctor",
+      "sha256": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+      "run": "remote-88d1a641efd34eeabbd07613e356406c",
+      "source": "4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a",
+      "compiler_exit": 0,
+      "seconds": 139.382
+    },
+    {
+      "module": "DiagramDirectImageTriangleComp",
+      "sha256": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+      "run": "remote-88d1a641efd34eeabbd07613e356406c",
+      "source": "4cdfbe282316fc8e3505d64d6bbbcc3c0499fb11815f4493bc1535bb14a3a07a",
+      "compiler_exit": 0,
+      "seconds": 14.099
+    },
+    {
+      "module": "PullbackSectionsBase",
+      "sha256": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+      "run": "remote-556fecfbf1ef45c7931df903bbe2d1b9",
+      "source": "4b47226fa78183173602fc8a5ef85b48c5f88e1f2b307d44ed57fd4ab5075e4b",
+      "compiler_exit": 0,
+      "seconds": 234.69,
+      "coverage_note": "Required generic precomposition/section definitions unchanged in current Extension; compatible earlier producing pass retained, not relabeled as later fresh build."
+    }
+  ],
+  "history_boundary": "af9 is actual two proof-input application failure D88d1/source4cdf (4.740s), not ac9. Currentac9 replaces only3 proof-input simp commands by dsimp; no actualac9 pass exists yet. Earlier 8d530 kernel negative/probe header-only observation remain historical.",
+  "fixed_proper_boundary": "MainSOURCE3dede/d04 physically preserved on reservedA through native expected-source continuation. Squareclosure83 is verified disjoint and outside fixedProper closure. Do not move fixedProper milestone or treat pendingSquare as its blocker.",
+  "registry_request": "Update only matching existing family live-source/applied-partial/pendingcompiler metadata if appropriate; preserve all historical evidence and conditions. No new success/closure/review/verification claim, helper/import registry churn or second runtime progress counter. Broker ACTIVE_EXECUTION remains actual runtime owner."
+}

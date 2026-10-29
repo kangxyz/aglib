@@ -73,6 +73,20 @@ theorem cohomologyDirectImageAddEquiv_apply
   exact (Ext.comp_assoc (a₁ := 0) (a₂ := q) (a₃ := 0) (a := q) _ _ _
     (zero_add q) (add_zero q) (by omega)).symm
 
+/-- The exact-image comparison sends the original unit map to the original pullback. -/
+theorem cohomologyDirectImageAddEquiv_unit
+    (F : AbelianSheaf.{u, u + 1} S) (q : ℕ) (x : Sheaf.H.{wS} F q) :
+    cohomologyDirectImageAddEquiv f ((inverseImage f).obj F) q
+        (Sheaf.H.map ((inverseImageAdjunction f).unit.app F) q x) =
+      cohomologyPullback f F q x := by
+  rw [cohomologyDirectImageAddEquiv_apply, cohomologyPullback_coefficientMap,
+    ← Sheaf.H.map_comp_apply, (inverseImageAdjunction f).left_triangle_components F]
+  change ((Sheaf.functorH.{wX, u + 1, u, u + 1}
+    (Scheme.smallEtaleTopology X) q).map (𝟙 ((inverseImage f).obj F)))
+      (cohomologyPullback f F q x) = cohomologyPullback f F q x
+  rw [CategoryTheory.Functor.map_id]
+  rfl
+
 /-- Coefficient naturality retains the original maps on both cohomology groups. -/
 theorem cohomologyDirectImageAddEquiv_naturality
     {F G : AbelianSheaf.{u, u + 1} X} (a : F ⟶ G) (q : ℕ)

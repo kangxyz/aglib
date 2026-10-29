@@ -1,0 +1,10 @@
+{
+  "question": "Does using the actual whole CopyObj source/target isomorphism components avoid the observed first-source endpoint conversion, with the original complete variable-H/K equation and map unchanged?",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/OriginalComponentAssembly-v29.lean",
+  "sha256": "abae81abf3f527f65726be186ae37fe450149eccebfe7c600cba674032908a6d",
+  "production_basis": "Global91a18323/e6cd595f/4fa61d36/5ab29b54",
+  "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v29/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+  "candidate_sha256": "f782c539fff6fe5e6e700470855574121ce71a5c95d32d57e6580a17413cf448",
+  "runtime": "Official native Global setup/full4options/default200000, retained matching imports; prefix only, no fullGlobal until author adopts completed repair",
+  "coverage": "Current Global prefix through literal theorem, existing original constructors and variable-H/K section proof; not complete native Global/callers"
+}

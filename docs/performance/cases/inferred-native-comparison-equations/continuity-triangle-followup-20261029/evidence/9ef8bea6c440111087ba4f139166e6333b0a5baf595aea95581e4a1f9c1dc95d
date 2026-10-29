@@ -1,0 +1,34 @@
+{
+  "question": "Existing continuity triangle-calculus refactor, not a new theory",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "12eb7648ff15f4ebad9055f601067313ae5e6fa215e88af175c34495e06d24f4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "current_success_slice": {
+    "run": "remote-4bf2cf8835154146b031922dedbfab3b",
+    "source_content_sha256": "b96c8f077826bb53808a8eae47879b36c9f074cdd15065fe9a8add8405544e7c",
+    "nativeDiagramDirectImageTriangleCompfa14": {
+      "compiler_exit": 0,
+      "compiler_seconds": 18.388
+    },
+    "evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/C-live-4bf2cf88/",
+    "boundary": "Saved bounded observation/currentComp pass only; no aggregateC closure/pass claimed."
+  },
+  "coverage_correction": "The earlier belief that C25152 coalesced graph included DirectImageSquareTriangle was withdrawn after actual dependency reconciliation; Square was unselected, not waiting or failed.",
+  "current_remaining_run": "Broker dispatched minimal nativeSquare8d530 on B45348 with independent repairedRightTail2a2; exact synchronization marker observed, own8 hold released, actual fullrun/SOURCE pending. No explicit goodComp/Base/ShortExact replay.",
+  "retained_current_passes": {
+    "Conef611": "Bf623/SOURCEb859 compiler0/4.246s",
+    "Constancyb90": "B32b0/SOURCE998a compiler0/2.951s",
+    "CoefficientSquaresd833": "B32b0/SOURCE998a compiler0/5.341s",
+    "ConeExtension12eb": "B556fecfb/SOURCE4b472 compiler0/4.399s",
+    "nativeDiagramLimitFunctor4a7": "B556fecfb/SOURCE4b472 compiler0/149.088s",
+    "nativePullbackSectionsBasef404": "B556fecfb/SOURCE4b472 compiler0/234.690s"
+  },
+  "remaining_gap": "Only current nativeDirectImageSquareTriangle8d530 compiler outcome within own8. No new source/map/model/premise change."
+}

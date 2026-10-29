@@ -1,0 +1,32 @@
+✔ [7427/7461] Built Aglib.CategoryTheory.Over.RelativeTests (6.5s)
+✔ [7428/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections (14s)
+✔ [7429/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit (31s)
+✔ [7430/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.Factorization (6.2s)
+✔ [7431/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.StageMaps (7.6s)
+✔ [7432/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.ComparisonMono (8.8s)
+✔ [7433/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Spectrum (5.9s)
+✔ [7434/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.FiniteStageModel (9.2s)
+✔ [7435/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteCogenerators (5.2s)
+✔ [7436/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Affine (5.3s)
+✔ [7437/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.GenericDetection (6.4s)
+✔ [7438/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.AffineFPTransport (4.5s)
+✔ [7439/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CogeneratorCriterion (14s)
+✔ [7440/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.EmbeddingTransport (5.7s)
+✔ [7441/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCogenerators (22s)
+✔ [7442/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ConstructibleComparison (12s)
+✔ [7443/7461] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineCriterion (19s)
+✖ [7444/7461] Building Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction (160s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-107c5bb3c7614351ada7a0b5ac567d77/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean:259:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean:261:16: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean:745:6: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean:840:8: (kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction.0.AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global.constantCoefficient_square'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction
+error: build failed

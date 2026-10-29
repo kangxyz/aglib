@@ -44,21 +44,12 @@ theorem diagramCohomologyLeg_pullbackLimitCoefficientIso (n : ℕ) (i : I) :
       ((coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i) n :=
     cohomologyPullback (X := (Y.obj i).unop) (S := c.pt.unop)
       (c.ι.app i).unop ((pullbackCoefficientSystem Y b F).obj i) n x
-  have hc : (Sheaf.H.map (pullbackLimitCoefficientIso Y b c l hl F).hom n).comp
-      (Sheaf.H.map
-        (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i) n) =
-      Sheaf.H.map
-        (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
-          (pullbackLimitCoefficientIso Y b c l hl F).hom) n := by
-    apply AddMonoidHom.ext
-    intro a
-    exact (Sheaf.H.map_comp_apply
-      (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i)
-      (pullbackLimitCoefficientIso Y b c l hl F).hom a).symm
-  have ht := congrArg
-    (fun t : (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i ⟶
-      (inverseImage l.unop).obj F => Sheaf.H.map t n)
-    (ι_pullbackLimitCoefficientIso_hom Y b c l hl F i)
-  exact DFunLike.congr_fun (hc.trans ht) z
+  exact (Sheaf.H.map_comp_apply
+    (colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i)
+    (pullbackLimitCoefficientIso Y b c l hl F).hom z).symm.trans
+      (congrArg
+        (fun t : (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)).obj i ⟶
+          (inverseImage l.unop).obj F => Sheaf.H.map t n z)
+        (ι_pullbackLimitCoefficientIso_hom Y b c l hl F i))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

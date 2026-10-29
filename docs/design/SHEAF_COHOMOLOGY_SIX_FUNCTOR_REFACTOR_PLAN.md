@@ -82,6 +82,40 @@ principal's correspondence check against those inputs.
 
 ## 2. Recommended layers and construction discipline
 
+### Ordinary topos spine
+
+The user has made ordinary topos language a core architectural requirement.
+Generalizing a Scheme proof to arbitrary site parameters is useful but does not
+by itself complete this requirement. The implemented P1–P5 foundations remain
+valid in their recorded scopes; the intrinsic topos interface and its actual
+consumers remain incomplete. Higher foundations are deferred.
+
+Use the existing Set-valued sheaf categories as the actual topoi. A minimal
+geometric-morphism interface must retain the actual inverse/direct functors,
+their original adjunction, and left exactness of inverse image. Construct
+identity, composition, 2-morphism/mate and presentation-comparison laws from
+these maps. Site functors supply concrete realizations and calculation laws;
+the intrinsic theorem should depend only on the topos data it uses. Keep pure
+categorical results at their weaker categorical assumptions.
+
+Necessary ordinary interfaces include intrinsic global sections, optional
+points and conservative families, slices and the localizations used by current
+results, ring objects and the existing module categories, and compatibility of
+the original operations with proved changes of presentation. A Set-sheaf
+adjunction alone does not construct its induced native module functors: that
+bridge must be implemented and its underlying, scalar, unit and counit maps
+identified before it is advertised as a ringed-topos realization. Do not add a
+parallel internal-module or sheaf model merely to rename this boundary.
+
+First make a small ordinary topos core compile and make existing section/image
+and mate laws consume it. Then continue the existing-result migrations through
+that interface. Preserve the actual geometric hypotheses for base-change
+invertibility and exceptional operations. No general higher-topos theory,
+hyperdescent enhancement, or new six-operation existence theorem is added to
+this migration phase. Big and small sites are distinct presentations with
+explicit size contracts; only a proved equivalence permits invariant transport.
+
+
 Keep the base category general: schemes, ringed spaces, PD pairs and prisms
 must be possible clients. An indexed family of sites or ringed sites over
 that base supplies presentations. Enough points, terminal evaluation,
@@ -102,14 +136,16 @@ generic leaves retain only the chosen models needed to name their categories.
 
 ```mermaid
 flowchart TD
-  C[Categories, adjunctions, mates and whole equations] --> S[Native sites, sheaves and ringed modules]
-  S --> H[Actual tensor, Hom, sections and Ext comparisons]
-  H --> D[Derived constructions in a chosen realization]
-  D --> O[Sector-aware six-operation calculus, base change and descent]
-  G[Etale, Zariski, PD and prism geometry] --> R[Proved realization capabilities]
-  R --> S
+  C[Categories, adjunctions, mates and whole equations] --> T[Ordinary topoi, geometric morphisms and intrinsic sheaf laws]
+  S[Native site presentations and calculation maps] --> T
+  T --> H[Existing coefficient and ringed-module categories, tensor, Hom and Ext]
+  H --> D[Derived constructions in one chosen realization]
+  D --> O[Sector-aware operation calculus, base change and descent]
+  G[Etale, Zariski, PD and prism geometry] --> S
+  G --> R[Proved geometric capabilities]
+  R --> T
   R --> O
-  E[Later verified enhancement] -.-> D
+  E[Later higher enhancement] -.-> D
 ```
 
 At the bottom, reuse Mathlib's actual sheaf, sheafification, continuous
@@ -444,6 +480,299 @@ and keep old alternate PBC drafts outside production. Existing Zariski
 projective duality and completion APIs are consumers to preserve, not blank
 future work to replace.
 
+### Topos-based downstream execution plan
+
+Planning proceeds in parallel with the ordinary-topos compiler loop, as
+requested on 2026-10-26. The new ordinary-topos layer is the mathematical
+basis of this migration. A generic site parameterization alone does not meet
+this plan. This section specifies work and dependencies; it does not claim
+that every new foundation or downstream family has passed native validation.
+
+The immutable full-reading audit is based on native commit `54d6974`: 3403
+production files, including the actual related Zariski reverse consumers,
+and all 589 additions in the latest geometric-locality archive. The earlier
+inventory counts in section 1 refer to their own older basis. Reuse these
+source-bound readings, and reconcile changed proof owners and actual consumers
+against the new foundation rather than repeating unchanged audits.
+
+#### Mathematical layers and readiness
+
+* Pure category theory owns adjunction, exactness, conservativity, units,
+  counits, mates and whole equations at their weakest valid assumptions.
+  Do not add a topos hypothesis to an argument that does not use it.
+* Ordinary topoi own intrinsic objects and morphisms: the optional bounded
+  `Topos.IsGrothendieckTopos`, actual `Topos.GeometricMorphism`, its identity,
+  composition, two-morphisms and native square mates, intrinsic global points,
+  points, and the actual slice `E/P`. No selected public site model is added
+  by the Grothendieck-topos proposition.
+* The coefficient layer uses the existing abelian and native module categories,
+  their actual ring maps, tensor/Hom and image adjunctions. The first
+  `SheafOfModules.NativeCoefficientAction` has an explicit common ring,
+  module-carrier and Set-value world. The older independent-world P2 APIs
+  retain their broader hypotheses. A later consumer requiring a larger
+  observation sector must prove that bridge rather than silently identify
+  universes or strengthen an old theorem.
+* Ordinary cohomology uses intrinsic Gamma, Ext and natural-degree right
+  derivation when sufficient. A proof that actually names a derived category
+  retains one selected realization for that mathematical category. Resolutions,
+  model changes and presentation comparisons occur only where an actual
+  comparison or independence result requires them.
+* Sites supply presentations and calculations: covers, local representatives,
+  sheafification/Kan formulas, Cech coordinates, and germ values. Geometry
+  supplies its real site, conservative point families, acyclicity, flatness,
+  finiteness, approximation and compactification inputs.
+
+The foundation entry owners are `Topos/{Grothendieck,GeometricMorphism,Point,
+SheafMorphism,Slice,SlicePresentation}`, `Sites/Elements/{Topology,
+SheafCondition}`, and native module-sheaf `ToposAction`/`ConstantRing.ToposAction`.
+The complete actual-slice presentation and its Grothendieck-topos consumer,
+the actual `X_et`/`f_et` realization, and its native coefficient-action consumer
+now have source-bound native compiler passes. Existing image, continuity,
+local-representative, torsor and finite-coefficient consumers have also compiled
+on their recorded inputs. The current Picard naturality boundary remains in
+compiler diagnosis; the joint scoped lint, in-package tests and transitive
+axiom checks have not yet run. Dependent work uses the recorded interfaces and
+source versions. No provisional theorem is installed as an assumption to
+bypass a missing producer.
+
+#### Migration waves
+
+| Wave | Existing families and actual work | Common producer and retained instance mathematics |
+| --- | --- | --- |
+| M1: underived sheaves and images | Ordinary pullback/pushforward, identity/composition, coefficient forgetting, constant coefficients, stalk/skyscraper and coefficient-system constructors | Use the actual geometric morphism and coefficient action, native adjunction/unit laws and generic point view. Retain concrete site realization, ring map, exactness/flatness range and original germ formulas. |
+| M2: ordinary cohomology and functoriality | H0/Ext, pullback and direct-image maps, ordinary and higher composition, continuity maps and their naturality | Move formal arguments to Gamma/Ext/right-derived owners. Remove proof-only H0 detours through Ext or derived models when an underived Hom/adjunction proof suffices. Keep actual cofinality, injective-image acyclicity and finite-presentation descent inputs. |
+| M3: Cech, resolutions and descent | Augmentation, coefficient naturality, pair cocycles, contracting/exactness arguments, bicomplex/total-complex comparisons, dimension shifting and resolution independence | Use actual slice/global-section correspondences and existing additive/homological producers. Retain covers, affine acyclicity and the exact boundedness/totalization of each existing result; no upgrade from an ordinary derived category to enhanced hyperdescent. |
+| M4: Zariski and low-degree consumers | Module locality, restriction, tensor/Hom and projection arrows; coherent/invertible modules; H1, Picard/Kummer, completion, projective/curve/surface consumers in the audited closure | Keep native module categories and actual monoidal/evaluation maps. Share exact-family and character/associated-bundle producers. Retain effective descent/QCoh realization, frame/generator/quotient/determinant independence, regularity and all real geometry. Discharge a legacy Prop-family parameter only with its exact existing supplier. |
+| M5: proper and exceptional existing results | Finite/proper exchange, localization, constructibility/finiteness reductions, compactification/refinement and the supplied agent work | Use the same canonical mate and coefficient/derived comparisons. Recover one supplied-compactifiability core and thin native cases; retain actual bounds, compactification independence and source/trace normalization. New existence or uniform-bound theorems are outside this migration. |
+
+M1 and the independent locality/character subfamilies of M4 are the first
+implementation candidates. M2 follows the image/Gamma interfaces; M3 follows
+its actual slice/augmentation suppliers. Other M4 and M5 subfamilies follow
+their real dependencies, not the order of filenames. The whole audited family
+remains the scope; a first successful leaf does not complete its family.
+
+#### Etale-first priority and delivery milestones
+
+The user explicitly made the etale refactor the primary workstream on
+2026-10-27 because later work depends on these interfaces. The full completed
+audit remains the source basis. Prioritize etale implementations and their
+shared producers; retain broader Zariski findings and already-authored patches
+without starting further large Zariski implementation batches before the
+first etale checkpoint. Necessary repairs of actual consumers of a changed
+shared interface remain part of that checkpoint.
+
+| Milestone | First deliverable and mathematical boundary |
+| --- | --- |
+| E0: load-bearing language | Actual geometric morphisms, canonical mates, native coefficient action, intrinsic points/Gamma and the complete actual-slice presentation. Preserve original functors, units/counits, value maps and independent worlds. |
+| E1: existing sheaves and images | Thin etale image/constant/restriction/stalk/system constructors and underived section laws. Direct Hom/adjunction proofs replace proof-only Ext detours. |
+| E2: cohomology and descent | Ordinary Gamma/Ext/right-derived maps, continuity, Cech augmentation/comparison, local representatives, torsors/H1 and finite-coefficient/Picard/Kummer clients. Real coverings, acyclicity and effective descent retain their suppliers. |
+| E3: existing exchange and finiteness | Proper exchange, localization, constructibility/finiteness reductions and compatible recovery of the supplied exceptional work. Retain genuine geometric bounds, compactification independence and each conditional theorem's premises. |
+| E4: broader reuse | Continue the remaining Zariski modules/duality/completion/projective/surface migration after the etale checkpoint. The surveyed Motivic/Quillen interfaces remain application consumers of the same language, with their own coefficient and sector hypotheses. |
+
+These milestones are dependency boundaries, not a serial queue. Etale image,
+cohomology/continuity, Cech/descent, low-degree/classification and
+proper/exceptional lanes proceed concurrently on their accepted inputs. The
+shared foundation has one owner per producer; a lane requests a missing shared
+map rather than copying a constructor or treating an unproved property as a
+premise. Higher foundations, new enhanced hyperdescent and new six-operation
+existence/bound theorems remain outside the current migration.
+
+Etale-facing statements and constructors use the actual category
+`Scheme.EtaleTopos X`, denoted `X_et`, and the induced geometric morphism
+`Scheme.etaleToposMorphism f` as their base language. Its inverse/direct images
+and whole unit/counit are the original native functors and adjunction.
+Coefficient actions are indexed by this actual geometric morphism; sites
+supply its presentation, local representatives and geometric covering proofs.
+The primitive site-base-change realization belongs below H1/cohomology so
+using `X_et` does not load those theories. Keep the original historical public
+names as compatibility exports from their actual lower owner.
+
+The initial concrete value world is the existing `u + 1` above schemes.
+Older independent ring, value and Ext worlds retain their original range;
+other worlds and big-site realizations use the same general topos language
+with their explicit native existence and comparison suppliers. Pure
+adjunction/mate laws retain their weaker categorical hypotheses. Reuse one
+operational realization per mathematical category and expose implementation
+comparisons only at an actual mathematical boundary.
+
+The first etale checkpoint requires source-bound old/new map correspondence,
+actual original etale consumers compiled, necessary changed-interface consumer
+repairs closed, and the required scoped native lint/test/axiom checks. It is
+not defined by a source-file count or one successful leaf. Preserve compatible
+checks and use a coherent local commit boundary; record validated performance
+findings with their complete cases and matched measurement conditions.
+
+#### Parallel work packages and integration
+
+The wave numbers describe mathematical dependencies, not a serial execution
+queue. Run these lanes concurrently when their particular inputs are ready:
+
+| Lane | Owned work | Required input before releasing dependent code |
+| --- | --- | --- |
+| P0: shared foundation | Topos objects, geometric morphisms/mates, native coefficient action and slice correspondences | One owner per shared producer; actual source/version and native evidence supplied to consumers. |
+| P1: sheaves and coefficients | Image identity/composition, constants, point/germ and ordinary coefficient systems | Use accepted image/point interfaces; a currently missing coefficient realization remains an explicit dependency. |
+| P2: cohomology and continuity | Gamma/Ext, natural-degree maps, boundary and continuity formalism | Actual P1 units/maps and the exact acyclicity/size range of the existing theorem. |
+| P3: Cech and descent | Additive augmentation/cochain/total arguments and actual gluing comparisons | Pure homological subarguments can use existing weak APIs immediately; operation transport waits for the required accepted slice comparisons. |
+| P4: Zariski modules | Locality/exact families, restriction, tensor/Hom and coherent/invertible consumers | Current native module/stalk/monoidal suppliers, with genuine flatness and conservative-family inputs. |
+| P5: H1 and characters | Picard/Kummer associated bundles, torsor/Ext normalization and their actual maps | The accepted single torsor implementation; existing native effective-descent supplier and real character-specific conditions. |
+| P6: proper and exceptional | Localization/reductions and scoped agent-archive recovery | Accepted canonical mate/coefficient interfaces and the actual bounds/refinement/compactification suppliers. |
+
+The initial exact-family consumers have compatible native passes. Applied
+independent candidates now include P1's covering-test and representative
+producers, P2's underived section laws and P5's single character/associated-
+bundle producer; their actual changed consumers remain in incremental
+validation. They use existing proved suppliers and require no unproved slice
+or arbitrary coefficient lift. The pure mate/coherence owner relocation is a
+shared etale priority, retaining every historical public declaration and
+canonical map. The prepared surface specialization and affine derived-Hom
+analysis are retained for E4; small shared-interface compatibility repairs
+continue now. These statuses do not close every theorem in any lane.
+
+Assign disjoint exact write paths. Shared foundation files have a single
+mathematical owner; a dependent lane requests a shared change rather than
+copying the construction. Use an isolated checkout only for genuinely
+overlapping writes. Each author retains its coupled proof and compiler repair.
+A delegated compiler owner coordinates sealed source captures, managed
+workspaces and ready targets; authors exchange exact diagnostics and repairs
+with that owner directly. The principal serializes Git index/HEAD mutations and
+resolves consequential mathematical, interface or write-ownership conflicts.
+Routine edits, builds, repairs and source-evidence registration need no per-file
+principal checkpoint. Reuse compatible cached successes instead of rebuilding
+every lane.
+
+Each migration must lower the complete common proof, including its final
+assembly, cancellation and reflection steps, to the appropriate abstract
+owner. Inspect the resulting consumer before compilation: its work should be
+the actual instantiation and the geometry specific to that presentation.
+Intermediate generic helpers do not close a migration if the final common
+argument still unfolds concrete image or derived implementations. Preserve the
+original supplied arrows and their whole comparison laws across this boundary;
+an endpoint isomorphism or a premise asserting the desired conclusion does not
+replace that argument. This is the existing thick-abstraction, thin-
+instantiation requirement, reiterated by the user after the R4 assembly
+bottleneck, and applies to every lane.
+
+The user's explicit execution correction on 2026-10-27 governs every lane:
+refactor independent, disjoint parts in parallel, and compile each completed
+changed part immediately with only its necessary dependencies. Do not select
+an untouched direct or deep downstream consumer as a build target before that
+consumer's own refactor is complete. In particular, neither the original
+proper-base-change endpoint nor an entire dependency family is an iteration
+target merely because it will eventually consume the new foundation. Retain
+all compatible caches. A completed family's assembled endpoint may be built
+when needed after its relevant producers are ready. Standalone checks remain
+at task-final validation; defer whole-scope validation and paired performance
+comparisons rather than imposing them on every partial batch.
+
+The subsequent autonomy correction delegates whole bounded author/build/repair
+loops. Independent ready leaves can use separate managed workspaces and shared
+matching caches. A long import in one workspace must not hold an unrelated
+ready packet. Conversely, a large assembled endpoint should wait for its
+actually relevant changing producers; use the real import closure rather than
+a blanket hold on every active lane. Keep healthy jobs running and preserve
+individual matching passes from mixed requests.
+
+If one source-local compiler bottleneck would hold every later upstream
+migration, preserve its sealed source/provider artifacts in a verified isolated
+context for targeted own-source diagnostics. Other source owners can then
+continue on the current tree. Bind each diagnostic to the frozen provider
+manifest and candidate delta; it is not current-tree integration coverage.
+Keep source, setup, pin, resource and mutation guards intact, and integrate the
+repaired result on the actual current tree after its relevant wave is ready.
+This adds neither kernel replay nor a separate certification chain.
+
+Current existing-result migration has source-matching compilation for the
+reconciled 46-file proper family and its assembled endpoint; the canonical
+Picard/Kummer slice; the Artin--Schreier coefficient slice; the stalk-unit cycle
+split; generic chart tails; continuous-H1 coefficient transport; represented
+pullback composition; and the nine-file topological Cech comparison slice.
+These are scoped source/build results; independent mathematical review
+coverage remains bound to its recorded versions. They do not close the entire
+etale migration or the remaining task-final checks. The recovered module
+proper exchange and compactification unary slice
+retain their current dependency and compiler-repair obligations. Torsion-valued
+targets, exceptional composition, gamma, higher descent and a full six-operation
+existence theorem are not supplied by that unary slice.
+
+The intrinsic H1 extraction uses actual global elements in the sheaf topos.
+Its first augmentation/fibre producers and two Scheme consumers have matching
+incremental compiler passes; their fixed source review is in progress. The
+ordered forward-class, pushout and classification lowering now continues with
+one author. Its sheafification/local-bijectivity and Ext size capabilities
+remain explicit, and a terminal object of the presenting site is used only by
+the legacy presentation wrappers. These scoped results do not yet close the
+whole torsor classification or its later sum/trivialization consumers.
+
+A changed shared interface invalidates only the affected dependent use: record
+the new source identity, reconcile late returns, and repair that closure before
+releasing it. No lane introduces another selected resolution/localization/model
+merely to avoid waiting for its actual producer. Final integration performs the
+required joint scoped in-package checks; it adds no kernel replay, separate
+external-client chain, or new acceptance cycle at every helper/commit/merge.
+
+#### Base change and descent in every wave
+
+For each existing exchange, identify the original arrow first and express it
+through the native `TwoSquare`/mate on the actual adjunctions. Preserve the
+whole unit/counit normalization, identity, horizontal/vertical pasting and any
+coefficient or presentation comparison cube used by a current consumer.
+Construction of a comparison and proof that it is invertible are separate.
+Only the original geometric theorem supplies proper, flat, smooth or other
+invertibility hypotheses; a cartesian geometric diagram alone supplies no
+all-topos Beck--Chevalley theorem.
+
+For descent, reuse the actual `Sheaf(elementSite(P))` versus `E/P`
+equivalence, its native total/forget and restriction/product comparisons, and
+its original-unit/counit global-point section formula. The existing
+`overSigma` constructor and its weaker per-cover hypotheses remain unchanged.
+A raw representable is used as a sheaf only with its actual sheaf proof;
+general `h_U^#` presentation comparison has its separate supplier obligation.
+The same language supports a chosen bounded big site, with explicit size and
+existence conditions. Small and big sites are not identified by default.
+Higher foundations and new enhanced hyperdescent remain deferred.
+
+#### First two bounded consumer slices
+
+1. **Local exactness: two old files, no new generic owner.**
+   `Modules/Locality/Exactness.lean` and
+   `Cohomology/Cech/InjectiveCoefficients.lean` can use the pinned native
+   `JointlyReflectIsomorphisms.exact_iff` and `shortExact_iff`. Supply the
+   actual original restriction/stalk detectors. Do not assume all topoi have
+   enough points, or that an arbitrary section/forgetful functor is exact.
+2. **Associated bundles: the same P and character.**
+   `Picard/{AssociatedBundle,PowerDescent}.lean` share a
+   producer on the original torsor `P` and `chi : A -> gm`, with the original
+   cover, positive transporter, transitions, chart/frame and recovery maps.
+   Identity and the mu inclusion are thin cases. Do not replace P with a
+   coefficient-pushout torsor or change its cover. The existing native
+   etale line-bundle descent theorem supplies the real Scheme/QCoh descent;
+   power-specific independence and normalization remain mathematical content.
+
+These bounded source/API plans are preparation inputs, not claims of already
+migrated or compiled consumer patches. Reconcile their input hashes with the
+accepted ordinary-topos basis when each batch is released.
+
+#### Agent archive and completion discipline
+
+The 589-source geometric-locality archive is an audited input, not an overlay.
+Reconcile its generic owners against the new core before admitting actual
+consumers. Resolve the duplicate `cartesianSourceExchange_identity` full name
+before joint import. Share the supplied compactification/refinement producers
+and retain the two actual all-object relative bounds per chart in the
+conditional unbounded result. Do not infer a completed unbounded six-operation
+system or a new geometric bound from these interfaces.
+
+Each coherent batch records: old constructor, one shared constructor, actual
+value/whole-map correspondence, original units/counits, exact retained
+hypotheses and universes, and real affected consumers. Native compilation is
+incremental; retain compatible successful evidence. Run the required scoped
+in-package lint/tests and existing axiom-audit predicates at final integration,
+without per-helper certification cycles, kernel replay or separate external
+client checks. Record actionable compilation findings in PERFORMANCE and
+complete cases in docs/performance. Matched performance measurements retain
+their source/flags/cache conditions; no whole-library speedup is inferred from
+a few successful leaves or from comparing failed and successful frontends.
+
 ## 7. Multiple sites and the enhancement boundary
 
 ### Big sites and presentation changes
@@ -759,10 +1088,12 @@ creates an import cycle or transfers unexplained cost to a caller, stop that
 dependent slice, retain the concrete evidence and return the mathematical or
 construction obligation to its owner. Independent slices may continue.
 
-The scoped foundation constructions and thin existing-result migrations are
-implemented in their recorded ranges. Final integration checked the actual
-upper consumers and native source, test, lint and axiom closures, retaining
-compatible successes; the source-bound final result is complete. The optional paired-model experiment
+The earlier scoped foundation checkpoint implemented its constructions and
+thin migrations in their recorded ranges. Its fixed-source integration checked
+the recorded upper consumers and native source, test, lint and axiom closures,
+retaining compatible successes. That historical checkpoint is complete; the
+subsequent whole-existing-result migration described above remains active and
+has its own pending task-final coverage. The optional paired-model experiment
 is outside this active dependency graph. Hom size bounds and chosen tensor
 coherence retain the exact sectors recorded above. Subsequent work must prove P6's
 bounded-below torsion range and refinement

@@ -1,0 +1,37 @@
+module
+
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeHorizontalUnit
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension
+
+@[expose] public noncomputable section
+open CategoryTheory
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
+universe u
+attribute [local instance] hasSheafifyLarge
+
+theorem triangleDiagnostic_squareComp_formation {X₀ X₁ Y₀ Y₁ : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (he : v₁ ≫ f = h ≫ v₀) (M : AbelianSheaf.{u, u + 1} Y₁)
+    {N : AbelianSheaf.{u, u + 1} X₀}
+    (r : (directImage (v₁ ≫ f)).obj M ⟶ N)
+    (_h : (directImageSquareIso v₀ v₁ f h he).hom.app M ≫
+        (directImageCompIso f v₁).hom.app M ≫ r =
+      (directImageCompIso v₀ h).hom.app M ≫
+        eqToHom (congrArg (fun s : Y₁ ⟶ X₀ => (directImage s).obj M) he.symm) ≫ r) :
+    True := True.intro
+
+theorem triangleDiagnostic_squareTriangle_formation {X₀ X₁ Y₀ Y₁ T : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (p₀ : T ⟶ X₀) (p₁ : T ⟶ X₁) (q₀ : T ⟶ Y₀) (q₁ : T ⟶ Y₁)
+    (he : v₁ ≫ f = h ≫ v₀) (hp : p₁ ≫ f = p₀) (hq : q₁ ≫ h = q₀)
+    (hi : q₀ ≫ v₀ = p₀) (hj : q₁ ≫ v₁ = p₁)
+    (K : AbelianSheaf.{u, u + 1} T)
+    (_h : (directImage v₀).map ((directImageTriangleIso h q₀ q₁ hq).hom.app K) ≫
+        (directImageTriangleIso v₀ p₀ q₀ hi).hom.app K =
+      (directImageSquareIso v₀ v₁ f h he).hom.app ((directImage q₁).obj K) ≫
+        (directImage f).map ((directImageTriangleIso v₁ p₁ q₁ hj).hom.app K) ≫
+          (directImageTriangleIso f p₀ p₁ hp).hom.app K) : True := True.intro
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

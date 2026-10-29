@@ -1,0 +1,218 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V30_NATIVE_SHARED_REPRESENTED_CONSTRUCTION_BEGIN sha256=2cf13634bd2a5cd034fff1fb3410758838e4f56172c303d7474e4bcd20ea3fbe
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/NativeGlobal.setup.json"]
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:364:2: error(lean.unknownIdentifier): Unknown identifier `representedCoordinateFunctor`
+
+Note: A private declaration `representedCoordinateFunctor` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:373:2: error(lean.unknownIdentifier): Unknown identifier `representedCoordinateFunctorIso`
+
+Note: A private declaration `representedCoordinateFunctorIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:379:6: error: Type mismatch
+  (constantDirectImageCoordinatesIso B Y).hom
+has type
+  (constantRepresentedDirectImage B Y).obj ⟶ constantDirectImageCoordinates B Y
+but is expected to have type
+  (constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf S.smallEtaleTopology AddCommGrpCat).obj (op Y) ⟶
+    (constantCoordinateFunctor B).obj (op Y)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 9228
+  inv ↦ 316
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:385:6: error: Type mismatch
+  (constantDirectImageCoordinatesIso B Y).inv
+has type
+  constantDirectImageCoordinates B Y ⟶ (constantRepresentedDirectImage B Y).obj
+but is expected to have type
+  (constantCoordinateFunctor B).obj (op Y) ⟶
+    (constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf S.smallEtaleTopology AddCommGrpCat).obj (op Y)
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:391:6: error: Type mismatch
+  constantDirectImageCoordinateMap B a.unop
+has type
+  constantDirectImageCoordinates B (unop Y) ⟶ constantDirectImageCoordinates B (unop Z)
+but is expected to have type
+  (constantCoordinateFunctor B).obj Y ⟶ (constantCoordinateFunctor B).obj Z
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:594:2: error(lean.unknownIdentifier): Unknown identifier `representedCoordinateRestrictionIso`
+
+Note: A private declaration `representedCoordinateRestrictionIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:598:0: error: Not a definitional equality: the left-hand side
+  (ConcreteCategory.hom ((coordinateRestrictionIso g B Y).hom.app (op U))) s
+is not definitionally equal to the right-hand side
+  {
+    down :=
+      Additive.ofMul
+        ((pullbackSectionEquiv g ((directImageTests ((Over.pullback g).obj Y)).obj U)
+              (ConstantFinite.representation B X).group.X)
+            ((restrictionTestsIso g Y).hom.app U ≫ Additive.toMul s.down) ≫
+          (constantGroupBaseChangeIso g B).hom.hom.hom) }
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:608:62: error: Type mismatch
+  rfl
+has type
+  ?m.114 = ?m.114
+but is expected to have type
+  (ConcreteCategory.hom ((coordinateRestrictionIso g B Y).hom.app (op U))) s =
+    {
+      down :=
+        Additive.ofMul
+          ((pullbackSectionEquiv g ((directImageTests ((Over.pullback g).obj Y)).obj U)
+                (ConstantFinite.representation B X).group.X)
+              ((restrictionTestsIso g Y).hom.app U ≫ Additive.toMul s.down) ≫
+            (constantGroupBaseChangeIso g B).hom.hom.hom) }
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 20
+  getColimitCocone ↦ 48
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:618:2: error: Type mismatch
+  MorphismProperty.Over.RelativeTests.coordinateRestrictionIso_relative etaleMorphismProperty g
+    (have this := inferInstance;
+    this)
+    (sectionFunctor (ConstantFinite.representation B X).group)
+    (sectionFunctor (ConstantFinite.representation B T).group)
+    (sectionFunctorBaseChangeIso g (ConstantFinite.representation B X).group ≪≫
+      sectionFunctorGroupIso (constantGroupBaseChangeIso g B))
+    a
+has type
+  (MorphismProperty.Over.map ⊤ ⋯).op.whiskerLeft
+        (MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+          (sectionFunctor (ConstantFinite.representation B X).group) a) ≫
+      (MorphismProperty.Over.RelativeTests.coordinateRestrictionIso etaleMorphismProperty g ⋯
+          (sectionFunctor (ConstantFinite.representation B X).group)
+          (sectionFunctor (ConstantFinite.representation B T).group)
+          (sectionFunctorBaseChangeIso g (ConstantFinite.representation B X).group ≪≫
+            sectionFunctorGroupIso (constantGroupBaseChangeIso g B))
+          Y).hom =
+    (MorphismProperty.Over.RelativeTests.coordinateRestrictionIso etaleMorphismProperty g ⋯
+          (sectionFunctor (ConstantFinite.representation B X).group)
+          (sectionFunctor (ConstantFinite.representation B T).group)
+          (sectionFunctorBaseChangeIso g (ConstantFinite.representation B X).group ≪≫
+            sectionFunctorGroupIso (constantGroupBaseChangeIso g B))
+          Z).hom ≫
+      MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty
+        (sectionFunctor (ConstantFinite.representation B T).group) ((Over.pullback g).map a)
+but is expected to have type
+  (siteEtalePostcompose g).op.whiskerLeft (constantDirectImageCoordinateMap B a) ≫
+      (coordinateRestrictionIso g B Y).hom =
+    (coordinateRestrictionIso g B Z).hom ≫ constantDirectImageCoordinateMap B ((Over.pullback g).map a)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 276
+  getColimitCocone ↦ 230
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:632:2: error(lean.unknownIdentifier): Unknown identifier `representedCoordinateRestrictionFunctorIso`
+
+Note: A private declaration `representedCoordinateRestrictionFunctorIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:639:6: error: Type mismatch
+  (coordinateRestrictionIso g B Y).hom
+has type
+  (siteEtalePostcompose g).op ⋙ constantDirectImageCoordinates B Y ⟶
+    constantDirectImageCoordinates B ((Over.pullback g).obj Y)
+but is expected to have type
+  (constantCoordinateFunctor B ⋙
+          (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op).obj
+      (op Y) ⟶
+    ((Over.pullback g).op ⋙ constantCoordinateFunctor B).obj (op Y)
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:649:2: error(lean.unknownIdentifier): Unknown identifier `representedRestrictionSourceIso`
+
+Note: A private declaration `representedRestrictionSourceIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:657:2: error(lean.unknownIdentifier): Unknown identifier `representedRestrictionTargetIso`
+
+Note: A private declaration `representedRestrictionTargetIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:662:6: error: Type mismatch
+  (constantDirectImageCoordinatesIso B ((Over.pullback g).obj Y)).hom
+has type
+  (constantRepresentedDirectImage B ((Over.pullback g).obj Y)).obj ⟶
+    constantDirectImageCoordinates B ((Over.pullback g).obj Y)
+but is expected to have type
+  (((Over.pullback g).op ⋙ constantRepresentedDirectImageFunctor B) ⋙
+          sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).obj
+      (op Y) ⟶
+    ((Over.pullback g).op ⋙ constantCoordinateFunctor B).obj (op Y)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 9228
+  inv ↦ 316
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:683:4: error: Application type mismatch: The argument
+  constantCoordinateRestrictionIso g B
+has type
+  constantCoordinateFunctor B ⋙
+      (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op ≅
+    (Over.pullback g).op ⋙ constantCoordinateFunctor B
+but is expected to have type
+  ((constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf X.smallEtaleTopology AddCommGrpCat).copyObj
+        (fun Y => constantDirectImageCoordinates B (unop Y)) fun Y => constantDirectImageCoordinatesIso B (unop Y)) ⋙
+      (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op ≅
+    (Over.pullback g).op ⋙
+      (constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).copyObj
+        (fun Z => constantDirectImageCoordinates B (unop Z)) fun Z => constantDirectImageCoordinatesIso B (unop Z)
+in the application
+  copyObjRestrictionIso (constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf X.smallEtaleTopology AddCommGrpCat)
+    (constantRepresentedDirectImageFunctor B ⋙ sheafToPresheaf T.smallEtaleTopology AddCommGrpCat)
+    ((Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op) (Over.pullback g).op
+    (fun Y => constantDirectImageCoordinates B (unop Y)) (fun Y => constantDirectImageCoordinatesIso B (unop Y))
+    (fun Z => constantDirectImageCoordinates B (unop Z)) (fun Z => constantDirectImageCoordinatesIso B (unop Z))
+    (constantCoordinateRestrictionIso g B)
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:690:2: error(lean.unknownIdentifier): Unknown identifier `representedRestrictionIso`
+
+Note: A private declaration `representedRestrictionIso` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:702:2: error: Type mismatch
+  Functor.liftRestrictionIso_normalization (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat)
+    (Functor.FullyFaithful.ofFullyFaithful (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat))
+    (representedRestrictionSourceCoordinatesIso g B) (constantCoordinateRestrictionIso g B)
+    (representedRestrictionTargetCoordinatesIso g B)
+has type
+  Functor.whiskerRight
+        (Functor.liftRestrictionIso (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat)
+            (Functor.FullyFaithful.ofFullyFaithful (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat))
+            (representedRestrictionSourceCoordinatesIso g B) (constantCoordinateRestrictionIso g B)
+            (representedRestrictionTargetCoordinatesIso g B)).hom
+        (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat) ≫
+      (representedRestrictionTargetCoordinatesIso g B).hom =
+    (representedRestrictionSourceCoordinatesIso g B).hom ≫ (constantCoordinateRestrictionIso g B).hom
+but is expected to have type
+  Functor.whiskerRight (representedDirectImageRestrictionIso g B).hom
+        (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat) ≫
+      (representedRestrictionTargetCoordinatesIso g B).hom =
+    (representedRestrictionSourceCoordinatesIso g B).hom ≫ (constantCoordinateRestrictionIso g B).hom
+V30_VARIABLE_BODY
+V30_WHOLE_COMPARISON_READY
+V30_FACTORY_BOUND
+V30_MAPS_BOUND
+V30_VALUES_BOUND
+V30_RELATIVE_CONSTRUCTOR_BOUND
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:854:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V30_FINITE_ALIAS_BODY
+/root/autodl-tmp/lean-build/logs/remote-6c24abe6e2524b43890800031ccf6773/SharedRepresentedConstruction-v30.lean:931:2: error: Type mismatch
+  representedRestrictionIso_hom_app g Y (ConstantFinite.representation B X).group
+    (ConstantFinite.representation B T).group (constantGroupBaseChangeIso g B)
+has type
+  (representedRestrictionIso g (ConstantFinite.representation B X).group (ConstantFinite.representation B T).group
+            (constantGroupBaseChangeIso g B)).hom.app
+      (op Y) =
+    (etaleDirectImageRestrictionIso Y.hom g).hom.app
+        (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+      (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+                (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g (pullback.snd g Y.hom) ⋯
+                    (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map (constantGroupBaseChangeIso g B).hom)) ≫
+        representedDirectImageMap (ConstantFinite.representation B T).group (pullbackSymmetryOverIso g Y).inv
+but is expected to have type
+  (representedDirectImageRestrictionIso g B).hom.app (op Y) =
+    (etaleDirectImageRestrictionIso Y.hom g).hom.app
+        (representedSheaf (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)) ≫
+      (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom)
+                (baseChangedGroup Y.hom (ConstantFinite.representation B X).group)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g (pullback.snd g Y.hom) ⋯
+                    (ConstantFinite.representation B X).group).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map (constantGroupBaseChangeIso g B).hom)) ≫
+        constantRepresentedDirectImageMap B (pullbackSymmetryOverIso g Y).inv
+
+V30_NATIVE_SHARED_REPRESENTED_CONSTRUCTION_END exit=1
+{"prefix_exit": 1, "source_sha256": "2cf13634bd2a5cd034fff1fb3410758838e4f56172c303d7474e4bcd20ea3fbe", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "author complete operational represented H/K/c family with finite aliases; no fullGlobalfollowup until authorrelease"}

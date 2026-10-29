@@ -60,4 +60,35 @@ theorem sourceExtComparison_mk₀ (Y : D) (a : Z ⟶ Y) :
   change adj.extEquiv ((Ext.mk₀ e.hom).comp (Ext.mk₀ a) (Nat.zero_add 0)) = _
   rw [Ext.mk₀_comp_mk₀, Adjunction.extEquiv_mk₀]
 
+/-- Applying the exact left adjoint and the supplied inverse source transport
+becomes postcomposition by the original coefficient unit. -/
+theorem sourceExtComparison_mapExactFunctor (Y : C) (n : ℕ) (x : Ext.{w₁} X Y n) :
+    adj.sourceExtComparison e (L.obj Y) n
+        ((Ext.mk₀ e.inv).comp (x.mapExactFunctor L) (Nat.zero_add n)) =
+      x.comp (Ext.mk₀ (adj.unit.app Y)) (Nat.add_zero n) := by
+  change adj.extEquiv
+      ((Ext.mk₀ e.hom).comp
+        ((Ext.mk₀ e.inv).comp (x.mapExactFunctor L) (Nat.zero_add n))
+          (Nat.zero_add n)) = _
+  rw [Ext.mk₀_comp_mk₀_assoc, e.hom_inv_id, Ext.mk₀_id_comp]
+  have h := adj.extEquiv_naturality_left x
+    (Ext.mk₀ (𝟙 (L.obj Y))) (Nat.add_zero n)
+  rw [Ext.comp_mk₀_id, Adjunction.extEquiv_mk₀] at h
+  exact h.trans (congrArg (fun k => x.comp (Ext.mk₀ k) (Nat.add_zero n))
+    (adj.homEquiv_id Y))
+
+/-- The original exact-functor Ext map with inverse source transport is
+bijective whenever the actual coefficient unit is an isomorphism. -/
+theorem mapExactFunctor_precomp_bijective_of_isIso_unit
+    (Y : C) [IsIso (adj.unit.app Y)] (n : ℕ) :
+    Function.Bijective (fun x : Ext.{w₁} X Y n =>
+      (Ext.mk₀ e.inv).comp (x.mapExactFunctor L) (Nat.zero_add n)) := by
+  have hunit : Function.Bijective (fun x : Ext.{w₁} X Y n =>
+      x.comp (Ext.mk₀ (adj.unit.app Y)) (Nat.add_zero n)) :=
+    ((extFunctorObj X n).mapIso (asIso (adj.unit.app Y))).addCommGroupIsoToAddEquiv.bijective
+  apply Function.Bijective.of_comp_left
+    (f := adj.sourceExtComparison e (L.obj Y) n)
+  · simpa only [Function.comp_def, sourceExtComparison_mapExactFunctor] using hunit
+  · exact (adj.sourceExtComparison e (L.obj Y) n).injective
+
 end CategoryTheory.Adjunction

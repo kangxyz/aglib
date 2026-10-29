@@ -1,0 +1,49 @@
+{
+  "phase": "Triangle-v8 exact unit-associativity component proof and ready native/tail graph",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "a0d6e66f07445d4823058fa4f87e6ac8bfb90763e880f96dc2277a9291094893",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "12eb7648ff15f4ebad9055f601067313ae5e6fa215e88af175c34495e06d24f4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramRightTail.lean": "e2f762d215494cacd44cb3d90a1cde3ef2af332571cff963b88b3357435d1e0d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramShortExact.lean": "bd0168a7e59679667e739d12b79a1967fca8a0e0ec6ddb9cc94c64e371901cfd",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cokernel.lean": "a433778e473347def8a49a46fd8a989c677d1e48a2fdafb28e3c969f3badaf75",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ShortComplexColimit.lean": "1afdd470ff6292149c5f07e80a64b2cd3cebb8d85bc4e95230bd77a92a345cc2",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeRightTail.lean": "074cb25382902c6a9fac6fd954a820201dcff07bc49ca476809561729d1932f7"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTail",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact"
+  ],
+  "packet_guards": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/coherent-v8/READY.json",
+      "sha256": "63cbf835cd6aa8229bd3e7eff4c493e6d0897206217d492d69c8ce26b049b2ef"
+    }
+  ],
+  "closure_counts": {
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle": 83,
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase": 84,
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTail": 84,
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact": 74
+  },
+  "missing": [],
+  "blocked": [],
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-triangle-tail-v7-55db5b64.json",
+  "prior_source_archive_sha256": "1343791f73c1099d0ba77ff0af3902d648cf8406b265f4fa523e7c7cd70ad2a3",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "default_maxHeartbeats": 200000
+  },
+  "boundary": "Only actual Extension12eb repair; other12currentfiles fixed. Actual producer pass releases pending Proper2 immediately; no additional acceptance/generic-success stage. Four native roots already finished."
+}

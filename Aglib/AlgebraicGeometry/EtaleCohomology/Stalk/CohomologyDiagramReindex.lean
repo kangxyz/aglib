@@ -25,7 +25,6 @@ def additiveTwiceReindexUliftIso
       H ⋙ AddCommGrpCat.uliftFunctor.{e, r}) :
     F ⋙ AddCommGrpCat.uliftFunctor.{r, e} ≅
       (A ⋙ B ⋙ H) ⋙ AddCommGrpCat.uliftFunctor.{e, r} :=
-  additiveReindexUliftIso A F (B ⋙ G) (B ⋙ H) α
-    (additiveReindexUliftIso B (B ⋙ G) G H (Iso.refl _) β)
+  CategoryTheory.additiveTwiceReindexUliftIso A B F G H α β
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

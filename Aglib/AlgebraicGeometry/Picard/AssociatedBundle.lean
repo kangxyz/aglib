@@ -41,38 +41,22 @@ all construction/proof bodies are preserved. Historical source and validation
 receipts below retain their original basis. New-interface validation is pending.
 -/
 /-!
-# Associated line bundles of actual etale multiplicative torsors
+# Associated line bundles of characters of actual étale torsors
 
-Manuscript locator: `K2-018#lem:k2018-geometric-exact-order`.
-Mathematical source revision: `e73d98b1b5c1e5abcdebf7d058e436d792b87982`.
-Engineering source revision: `7f86e4a1763cc4ec35e9b0a8acd659750355a0de`.
+For an original torsor `P : Torsor A` and character `χ : A ⟶ gm X`,
+the single character construction below uses the original section-indexed
+cover and its original chosen scheme fibre products. Its literal transition
+unit is the image under χ of the positive transporter sending s to t.
 
-For an arbitrary scheme X and a genuine small-etale torsor under the
-represented coefficient sheaf Gm, construct a covering family indexed by
-all actual sections on all etale test schemes. Its covering property is
-proved from the torsor's covering-sieve local nonemptiness. Unique transport
-produces literal global units on actual pairwise fiber products; its identity,
-restriction, and transitivity laws give an actual UnitDescent.Cocycle.
-The fixed native rank-one descent construction then produces an actual
-locally rank-one structure-module sheaf and its actual O-linear charts.
+The existing native étale line-bundle stack descends these transitions to one
+Zariski line bundle. The actual quasi-coherent/rank-one and Scheme descent
+input remains geometric; no assertion about descent of arbitrary étale
+modules is used. No Ext or derived-category premise enters this producer.
 
-The convention is positive: if p_j = u_ij * p_i, the corresponding chart
-on j is the chart on i followed by multiplication by u_ij. Sending each
-section to its own descended chart constructs an equivariant sheaf map;
-the proved same-coefficient torsor-map theorem makes this an actual sheaf
-isomorphism. Recovery of an existing line bundle is proved by constructing
-an isomorphism of its native chosen-overlap descent data with these unit
-transitions, and applying full faithfulness of the same stack equivalence.
-
-The sole retained general theorem family is exactly
-EtaleDescent.EtaleLineBundleDescent: the stack property for the fixed
-pseudofunctor of actual locally rank-one module sheaves and native module
-pullback, for Scheme.etaleTopology. Its source boundary, Stacks Tags 023T
-and 05B2 and actual rank-one preservation/descent, is documented in
-EtaleDescent. No separate Picard/H1 classification, arbitrary gluing datum,
-or final comparison equivalence is a premise. No curve, properness,
-characteristic, or integer-level hypothesis is needed here. This module
-asserts no additive compatibility with tensor products or contracted sums.
+The Gm API specializes χ to the identity. PowerDescent specializes χ to the
+original root inclusion, retaining its genuine nth-power independence and
+power-trivialization arguments. Legacy stack-proof arguments remain thin
+compatibility parameters for existing callers.
 -/
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -89,8 +73,78 @@ open _root_.GroupCohomology.Kummer.Coefficients
 universe u
 variable {X : Scheme.{u}}
 
+open Pseudofunctor.LocallyDiscreteOpToCat FrameTorsor
+
+@[simp] theorem site_id_left (U : X.Etale) : (𝟙 U : U ⟶ U).left = 𝟙 U.left := rfl
+
+private theorem presheafHom_map_eq_pullHom {S : Scheme.{u}}
+    {M N : lineBundles.obj (.mk (op S))} {U V : S.Etale} (f : V ⟶ U)
+    (g : (lineBundles.map U.hom.op.toLoc).toFunctor.obj M ⟶
+      (lineBundles.map U.hom.op.toLoc).toFunctor.obj N) :
+    (lineBundles.presheafHom M N).map ((Scheme.Etale.forget S).map f).op g =
+      pullHom g f.left V.hom V.hom
+        (MorphismProperty.Over.w f) (MorphismProperty.Over.w f) := rfl
+
+namespace Construction
+
+universe uC vC uF uG uH
+
+/-- Naturality of one actual section family, with its whole functor heads retained. -/
+def NaturalFamily {C : Type uC} [Category.{vC} C]
+    (F : C ⥤ Type uF) (G : C ⥤ Type uG)
+    (t : ∀ U, F.obj U → G.obj U) : Prop :=
+  ∀ {U V : C} (f : U ⟶ V) (s : F.obj U), G.map f (t U s) = t V (F.map f s)
+
+/-- A natural injective view detects naturality of the same original section family. -/
+theorem naturalFamily_of_injective {C : Type uC} [Category.{vC} C]
+    {F : C ⥤ Type uF} {G : C ⥤ Type uG} {H : C ⥤ Type uH}
+    (r : ∀ U, G.obj U → H.obj U)
+    (hr : ∀ {U V : C} (f : U ⟶ V) (s : G.obj U),
+      r V (G.map f s) = H.map f (r U s))
+    (hinj : ∀ U, Function.Injective (r U))
+    (t : ∀ U, F.obj U → G.obj U) (b : ∀ U, F.obj U → H.obj U)
+    (hb : ∀ U s, r U (t U s) = b U s)
+    (hn : NaturalFamily F H b) : NaturalFamily F G t := by
+  intro U V f s
+  apply hinj V
+  calc
+    r V (G.map f (t U s)) = H.map f (r U (t U s)) := hr f _
+    _ = H.map f (b U s) := congrArg (H.map f) (hb U s)
+    _ = b V (F.map f s) := hn f s
+    _ = r V (t V (F.map f s)) := (hb V _).symm
+
+/-- The original raw-Hom presheaf at its actual native line-bundle object. -/
+abbrev rawPresheaf (X : Scheme.{u}) (M : lineBundles.obj (.mk (op X))) :
+    X.Etaleᵒᵖ ⥤ Type u :=
+  (Scheme.Etale.forget X).op ⋙ lineBundles.presheafHom M (unitObject X)
+
+/-- The same native frameRawHom, typed at the original pseudofunctor object. -/
+abbrev frameRawHom_native (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u})
+    (M : lineBundles.obj (.mk (op X))) (U : X.Etaleᵒᵖ) :
+    (frameSheaf h X (toLineBundle X M)).obj.obj U → (rawPresheaf X M).obj U :=
+  FrameTorsor.frameRawHom h X (toLineBundle X M) U
+
+/-- The native-object view retains the original injective raw-frame map. -/
+theorem frameRawHom_native_injective (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u})
+    (M : lineBundles.obj (.mk (op X))) (U : X.Etaleᵒᵖ) :
+    Function.Injective (frameRawHom_native h X M U) :=
+  FrameTorsor.frameRawHom_injective h X (toLineBundle X M) U
+
+/-- Naturality of the same raw-frame map before any descended object is supplied. -/
+theorem frameRawHom_native_naturality (h : EtaleLineBundleDescent.{u}) (X : Scheme.{u})
+    (M : lineBundles.obj (.mk (op X))) {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
+    (s : (frameSheaf h X (toLineBundle X M)).obj.obj U) :
+    frameRawHom_native h X M V
+        ((frameSheaf h X (toLineBundle X M)).obj.map f s) =
+      (rawPresheaf X M).map f (frameRawHom_native h X M U s) :=
+  FrameTorsor.frameRawHom_naturality h X (toLineBundle X M) f s
+
+end Construction
+
+section General
+variable {A : AbelianSheaf.{u, u + 1} X} (P : Torsor A) (χ : A ⟶ gm X)
+
 section Cover
-variable {A : AbelianSheaf.{u, u + 1} X} (P : Torsor A)
 
 /-- Every section on every etale test scheme indexes a genuine trivialization. -/
 def Index := Σ U : X.Etale, P.carrier.obj.obj (op U)
@@ -118,17 +172,112 @@ theorem cover_mem : Sieve.ofArrows (coverObject P) (coverMap P) ∈ Scheme.etale
 
 end Cover
 
-variable (P : Torsor (gm X))
+namespace Construction
 
-/-- The unique positive scalar carrying one torsor section to another. -/
-def transport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : (gm X).obj.obj U :=
+universe uC vC
+
+/-- Keep a whole chart equation shared before specializing its category and maps. -/
+def ChartComposition {C : Type uC} [Category.{vC} C] {M N : C}
+    (f : M ⟶ N) (t : N ⟶ N) (g : M ⟶ N) : Prop :=
+  f ≫ t = g
+
+/-- Cancel the actual identity transition before evaluating the native chart maps. -/
+private theorem chartComposition_eq {C : Type uC} [Category.{vC} C] {M N : C}
+    {f g : M ⟶ N} {t : N ⟶ N} (h : ChartComposition f t g) (ht : t = 𝟙 N) :
+    f = g := by
+  subst t
+  exact (Category.comp_id f).symm.trans h
+
+/-- Actual raw charts on the original section-indexed cover, with one native object. -/
+abbrev RawChartFamily (M : lineBundles.obj (.mk (op X))) :=
+  ∀ i : Index P,
+    (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj M ⟶
+      (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj (unitObject X)
+
+/-- Read the indexed raw chart at each original torsor section. -/
+abbrev sectionFamily (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M) :
+    ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → (rawPresheaf X M).obj U :=
+  fun U s => c ⟨U.unop, s⟩
+
+/-- The original positive transition equation on one arbitrary refinement. -/
+def ChartRelationOn (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+    (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ)
+    {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) : Prop :=
+  ChartComposition
+    (pullHom (F := lineBundles) (c i) a.left V.hom V.hom
+      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a))
+    (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
+      ((u (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
+        Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)))
+    (pullHom (F := lineBundles) (c j) b.left V.hom V.hom
+      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b))
+
+/-- The same regular transition relation for every original common refinement. -/
+def ChartRelations (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+    (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ) :
+    Prop :=
+  ∀ {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1),
+    ChartRelationOn P M c u i j a b
+
+/-- The proved transition relation and diagonal unit give whole raw-chart naturality. -/
+theorem sectionFamily_natural (M : lineBundles.obj (.mk (op X)))
+    (c : RawChartFamily P M)
+    (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ)
+    (hr : ChartRelations P M c u)
+    (hu : ∀ U (s : P.carrier.obj.obj U), u U s s = 1) :
+    NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c) := by
+  intro U V f s
+  have hview :
+      (rawPresheaf X M).map f (c ⟨U.unop, s⟩) =
+        pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+          (f₁ := U.unop.hom) (f₂ := U.unop.hom) (c ⟨U.unop, s⟩)
+          f.unop.left V.unop.hom V.unop.hom
+          (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) :=
+    presheafHom_map_eq_pullHom (S := X) (M := M) (N := unitObject X)
+      f.unop (c ⟨U.unop, s⟩)
+  have hh := hr ⟨U.unop, s⟩ ⟨V.unop, P.carrier.obj.map f s⟩ f.unop (𝟙 V.unop)
+  have hunit :
+      u (op V.unop) (P.carrier.obj.map f.unop.op s)
+        (P.carrier.obj.map (𝟙 V.unop).op (P.carrier.obj.map f s)) = 1 :=
+    (congrArg (u V (P.carrier.obj.map f s))
+      (P.carrier.obj.map_id_apply V (P.carrier.obj.map f s))).trans
+        (hu V (P.carrier.obj.map f s))
+  have htransition :
+      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition
+          V.unop.hom V.unop.hom
+          ((u (op V.unop) (P.carrier.obj.map f.unop.op s)
+            (P.carrier.obj.map (𝟙 V.unop).op (P.carrier.obj.map f s)) :
+              Γ(V.unop.left, ⊤)ˣ) : Γ(V.unop.left, ⊤)) = 𝟙 _ :=
+    (congrArg
+      (fun a : Γ(V.unop.left, ⊤)ˣ =>
+        AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition
+          V.unop.hom V.unop.hom (a : Γ(V.unop.left, ⊤))) hunit).trans
+      (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one V.unop.hom)
+  have hid :
+      pullHom (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+          (f₁ := V.unop.hom) (f₂ := V.unop.hom)
+          (c ⟨V.unop, P.carrier.obj.map f s⟩)
+          (𝟙 V.unop : V.unop ⟶ V.unop).left V.unop.hom V.unop.hom
+          (MorphismProperty.Over.w (𝟙 V.unop : V.unop ⟶ V.unop))
+          (MorphismProperty.Over.w (𝟙 V.unop : V.unop ⟶ V.unop)) =
+        c ⟨V.unop, P.carrier.obj.map f s⟩ :=
+    pullHom_id (F := lineBundles) (M₁ := M) (M₂ := unitObject X)
+      (f₁ := V.unop.hom) (f₂ := V.unop.hom)
+      (c ⟨V.unop, P.carrier.obj.map f s⟩)
+  exact hview.trans ((chartComposition_eq hh htransition).trans hid)
+
+end Construction
+
+
+/-- The unique positive coefficient carrying one torsor section to another. -/
+def transport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : A.obj.obj U :=
   (P.sectionEquiv U s).symm t
 
 @[simp] theorem action_transport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :
     P.action U (transport P U s t) s = t := (P.sectionEquiv U s).apply_symm_apply t
 
 theorem transport_eq (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U)
-    (a : (gm X).obj.obj U) (ha : P.action U a s = t) : transport P U s t = a := by
+    (a : A.obj.obj U) (ha : P.action U a s = t) : transport P U s t = a := by
   apply (P.sectionEquiv U s).injective
   exact (action_transport P U s t).trans ha.symm
 
@@ -139,34 +288,60 @@ theorem transport_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
     transport P U s t + transport P U t r = transport P U s r := by
   symm
   apply transport_eq
-  rw [add_comm, P.add_action, action_transport, action_transport]
+  have hact : P.action U (transport P U t r + transport P U s t) s =
+      P.action U (transport P U t r) (P.action U (transport P U s t) s) :=
+    CategoryTheory.Sheaf.Torsor.add_action P U (transport P U t r) (transport P U s t) s
+  calc
+    P.action U (transport P U s t + transport P U t r) s =
+        P.action U (transport P U t r + transport P U s t) s :=
+      congrArg (fun a : A.obj.obj U => P.action U a s) (add_comm _ _)
+    _ = P.action U (transport P U t r) (P.action U (transport P U s t) s) := hact
+    _ = P.action U (transport P U t r) t :=
+      congrArg (P.action U (transport P U t r)) (action_transport P U s t)
+    _ = r := action_transport P U t r
 
 theorem transport_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
     (s t : P.carrier.obj.obj U) :
-    (gm X).obj.map f (transport P U s t) =
+    A.obj.map f (transport P U s t) =
       transport P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) := by
   symm
   apply transport_eq
-  rw [← P.naturality, action_transport]
+  have hnat : P.carrier.obj.map f (P.action U (transport P U s t) s) =
+      P.action V (A.obj.map f (transport P U s t)) (P.carrier.obj.map f s) :=
+    CategoryTheory.Sheaf.Torsor.naturality P f (transport P U s t) s
+  exact hnat.symm.trans
+    (congrArg (P.carrier.obj.map f) (action_transport P U s t))
 
-/-- Literal invertible global regular function of positive transport. -/
+namespace Character
+
+
+/-- Literal unit of the character applied to the original positive transport. -/
 def transportUnit (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : Γ(U.unop.left, ⊤)ˣ :=
-  (unitsSections X U (transport P U s t)).toMul
+  (unitsSections X U (χ.hom.app U (transport P U s t))).toMul
 
 @[simp] theorem transportUnit_self (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
-    transportUnit P U s s = 1 := by simp [transportUnit]
+    transportUnit P χ U s s = 1 := by simp [transportUnit]
 
 theorem transportUnit_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
-    transportUnit P U s t * transportUnit P U t r = transportUnit P U s r := by
-  exact congrArg Additive.toMul ((unitsSections X U).map_add _ _).symm |>.trans
-    (congrArg (fun a => (unitsSections X U a).toMul) (transport_trans P U s t r))
+    transportUnit P χ U s t * transportUnit P χ U t r = transportUnit P χ U s r := by
+  have ht := congrArg (fun a => (unitsSections X U (χ.hom.app U a)).toMul)
+    (transport_trans P U s t r)
+  simpa only [transportUnit, map_add, toMul_add] using ht
 
 theorem transportUnit_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
     (s t : P.carrier.obj.obj U) :
-    pullUnit f.unop.left (transportUnit P U s t) =
-      transportUnit P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) := by
+    pullUnit f.unop.left (transportUnit P χ U s t) =
+      transportUnit P χ V (P.carrier.obj.map f s) (P.carrier.obj.map f t) := by
   unfold pullUnit transportUnit
-  rw [← unitsSections_naturality, transport_naturality]
+  rw [← unitsSections_naturality]
+  have hχ := ConcreteCategory.congr_hom (χ.hom.naturality f) (transport P U s t)
+  change χ.hom.app V (A.obj.map f (transport P U s t)) =
+    (gm X).obj.map f (χ.hom.app U (transport P U s t)) at hχ
+  rw [← hχ, transport_naturality]
+
+
+end Character
+
 
 /-- A fixed genuine scheme fiber product. -/
 def chosenPullback {A B S : Scheme.{u}} (f : A ⟶ S) (g : B ⟶ S) : ChosenPullback f g where
@@ -284,32 +459,6 @@ def diagonalEtale (i : Index P) : i.1 ⟶ overlapEtale P i i :=
   apply MorphismProperty.Over.Hom.ext
   exact AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.diagonal_p₂ (overlap P) i
 
-/-- The global unit carrying the first restricted torsor section to the second on their overlap. -/
-def overlapUnit (i j : Index P) : Γ((overlap P i j).pullback, ⊤)ˣ :=
-  transportUnit P (op (overlapEtale P i j))
-    (P.carrier.obj.map (overlapFst P i j).op i.2)
-    (P.carrier.obj.map (overlapSnd P i j).op j.2)
-
-/-- Literal global-unit transitions obtained from the original torsor action. -/
-def cocycle : AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle (overlap P)
-    (triple P) where
-  unit := overlapUnit P
-  diagonal i := by
-    change pullUnit (diagonalEtale P i).left (transportUnit P _ _ _) = 1
-    erw [transportUnit_naturality P (diagonalEtale P i).op]
-    simp only [← Functor.map_comp_apply, ← op_comp, diagonal_fst, diagonal_snd,
-      op_id, transportUnit_self]
-  cocycle i j k := by
-    change pullUnit (triple12 P i j k).left (transportUnit P _ _ _) *
-      pullUnit (triple23 P i j k).left (transportUnit P _ _ _) =
-      pullUnit (triple13 P i j k).left (transportUnit P _ _ _)
-    erw [transportUnit_naturality P (triple12 P i j k).op,
-      transportUnit_naturality P (triple23 P i j k).op,
-      transportUnit_naturality P (triple13 P i j k).op]
-    simp only [← Functor.map_comp_apply, ← op_comp, triple12_fst, triple12_snd,
-      triple23_fst, triple23_snd, triple13_fst, triple13_snd]
-    exact transportUnit_trans P _ _ _ _
-
 /-- Any common etale refinement has its canonical map into the overlap. -/
 def overlapLift {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
     V ⟶ overlapEtale P i j :=
@@ -330,25 +479,54 @@ def overlapLift {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
   apply MorphismProperty.Over.Hom.ext
   exact IsPullback.lift_snd _ _ _ _
 
+namespace Character
+
+
+/-- The global unit carrying the first restricted torsor section to the second on their overlap. -/
+def overlapUnit (i j : Index P) : Γ((overlap P i j).pullback, ⊤)ˣ :=
+  transportUnit P χ (op (overlapEtale P i j))
+    (P.carrier.obj.map (overlapFst P i j).op i.2)
+    (P.carrier.obj.map (overlapSnd P i j).op j.2)
+
+/-- Literal global-unit transitions obtained from the original torsor action. -/
+def cocycle : AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle (overlap P)
+    (triple P) where
+  unit := overlapUnit P χ
+  diagonal i := by
+    change pullUnit (diagonalEtale P i).left (transportUnit P χ _ _ _) = 1
+    erw [transportUnit_naturality P χ (diagonalEtale P i).op]
+    simp only [← Functor.map_comp_apply, ← op_comp, diagonal_fst, diagonal_snd,
+      op_id, transportUnit_self]
+  cocycle i j k := by
+    change pullUnit (triple12 P i j k).left (transportUnit P χ _ _ _) *
+      pullUnit (triple23 P i j k).left (transportUnit P χ _ _ _) =
+      pullUnit (triple13 P i j k).left (transportUnit P χ _ _ _)
+    erw [transportUnit_naturality P χ (triple12 P i j k).op,
+      transportUnit_naturality P χ (triple23 P i j k).op,
+      transportUnit_naturality P χ (triple13 P i j k).op]
+    simp only [← Functor.map_comp_apply, ← op_comp, triple12_fst, triple12_snd,
+      triple23_fst, triple23_snd, triple13_fst, triple13_snd]
+    exact transportUnit_trans P χ _ _ _ _
+
 /-- The chosen-overlap transition has the literal unique-transport value on every refinement. -/
 theorem overlapUnit_pullback {V : X.Etale} (i j : Index P)
     (a : V ⟶ i.1) (b : V ⟶ j.1) :
-    pullUnit (overlapLift P i j a b).left (overlapUnit P i j) =
-      transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) := by
-  have hh := transportUnit_naturality P (overlapLift P i j a b).op
+    pullUnit (overlapLift P i j a b).left (overlapUnit P χ i j) =
+      transportUnit P χ (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) := by
+  have hh := transportUnit_naturality P χ (overlapLift P i j a b).op
     (P.carrier.obj.map (overlapFst P i j).op i.2)
     (P.carrier.obj.map (overlapSnd P i j).op j.2)
-  change pullUnit (overlapLift P i j a b).left (overlapUnit P i j) = _ at hh
+  change pullUnit (overlapLift P i j a b).left (overlapUnit P χ i j) = _ at hh
   simpa only [← Functor.map_comp_apply, ← op_comp, overlapLift_fst, overlapLift_snd] using hh
 
 /-- All refinement maps of the native descent datum have the same positive transport. -/
 theorem descentData_hom {V : X.Etale} (i j : Index P)
     (a : V ⟶ i.1) (b : V ⟶ j.1) :
-    (cocycle P).descentData.descentData.hom V.hom a.left b.left
+    (cocycle P χ).descentData.descentData.hom V.hom a.left b.left
       (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) =
     AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition a.left b.left
-      (transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2)) := by
-  change Pseudofunctor.DescentData'.pullHom' (cocycle P).descentData.hom
+      (transportUnit P χ (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2)) := by
+  change Pseudofunctor.DescentData'.pullHom' (cocycle P χ).descentData.hom
     V.hom a.left b.left (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) = _
   have h₁ : (overlapLift P i j a b).left ≫ (overlap P i j).p₁ = a.left :=
     IsPullback.lift_fst _ _ _ _
@@ -358,22 +536,16 @@ theorem descentData_hom {V : X.Etale} (i j : Index P)
     (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) h₁ h₂]
   change Pseudofunctor.LocallyDiscreteOpToCat.pullHom
     (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition (overlap P i j).p₁
-        (overlap P i j).p₂ (overlapUnit P i j))
+        (overlap P i j).p₂ (overlapUnit P χ i j))
       (overlapLift P i j a b).left a.left b.left h₁ h₂ = _
   rw [AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.pullHom_transition]
-  have hh := congrArg Units.val (overlapUnit_pullback P i j a b)
+  have hh := congrArg Units.val (overlapUnit_pullback P χ i j a b)
   exact congrArg (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition a.left
       b.left) hh
 
-open Pseudofunctor.LocallyDiscreteOpToCat
+end Character
 
-private theorem presheafHom_map_eq_pullHom {S : Scheme.{u}}
-    {M N : lineBundles.obj (.mk (op S))} {U V : S.Etale} (f : V ⟶ U)
-    (g : (lineBundles.map U.hom.op.toLoc).toFunctor.obj M ⟶
-      (lineBundles.map U.hom.op.toLoc).toFunctor.obj N) :
-    (lineBundles.presheafHom M N).map ((Scheme.Etale.forget S).map f).op g =
-      pullHom g f.left V.hom V.hom
-        (MorphismProperty.Over.w f) (MorphismProperty.Over.w f) := rfl
+
 
 /-- The unit-line comparison between pullback of the unit object and the unit object on the
 source. -/
@@ -490,130 +662,9 @@ theorem recovery_square {ι : Type*} {S : Scheme.{u}} {U : ι → Scheme.{u}}
     compIso, Iso.app_hom, Iso.app_inv, Cat.Hom.toNatIso_hom, Cat.Hom.toNatIso_inv,
     Category.assoc] using (c.recoveryIso h hf).hom.comm q a b ha hb
 
+
+
 variable (h : EtaleLineBundleDescent.{u})
-/-- The actual locally rank-one O_X-module descended from torsor transport. -/
-def lineBundle : LineBundle X := (cocycle P).descended h (cover_mem P)
-
-/-- The actual local trivialization specified by each original torsor section. -/
-def chart (i : Index P) :
-    (Scheme.Modules.pullback (coverMap P i)).obj (lineBundle P h).val ≅
-      SheafOfModules.unit (coverObject P i).ringCatSheaf :=
-  (cocycle P).chart h (cover_mem P) i
-
-/-- The descent recovery map before identifying the pulled structure module. -/
-def chartMap (i : Index P) :
-    (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj ((cocycle P).descendedObject h
-        (cover_mem P)) ⟶
-      unitObject (coverObject P i) :=
-  ((cocycle P).recoveryIso h (cover_mem P)).hom.hom i
-
-/-- The descended local chart valued in the pulled-back base unit object,
-using the supplied etale line-bundle descent input. -/
-def rawChart (i : Index P) :
-    (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj ((cocycle P).descendedObject h
-        (cover_mem P)) ⟶
-      (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj (unitObject X) :=
-  chartMap P h i ≫ (unitIso (coverMap P i)).inv
-
-/-- Exact positive transition law for the actual local frames on arbitrary refinements. -/
-theorem rawChart_relation {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
-    pullHom (rawChart P h i) a.left V.hom V.hom
-      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a) ≫
-      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
-        ((transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
-            Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
-    pullHom (rawChart P h j) b.left V.hom V.hom
-      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b) := by
-  apply chart_comm_to_raw (coverMap P i) (coverMap P j) a.left b.left V.hom
-    (MorphismProperty.Over.w a) (MorphismProperty.Over.w b)
-    ((cocycle P).descendedObject h (cover_mem P)) (chartMap P h i) (chartMap P h j)
-  have hh := recovery_square (cocycle P) h (cover_mem P) i j
-    V.hom a.left b.left (MorphismProperty.Over.w a) (MorphismProperty.Over.w b)
-  rw [descentData_hom P i j a b] at hh
-  exact hh
-
-open FrameTorsor
-
-@[simp] theorem site_id_left (U : X.Etale) : (𝟙 U : U ⟶ U).left = 𝟙 U.left := rfl
-
-/-- The original torsor section is sent to its own actual descended chart. -/
-def toFrame (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
-    (frameSheaf h X (lineBundle P h)).obj.obj U :=
-  (frameSectionsEquiv h X (lineBundle P h) U).symm (chart P h ⟨U.unop, s⟩)
-
-@[simp] theorem toFrame_raw (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
-    frameRawHom h X (lineBundle P h) U (toFrame P h U s) = rawChart P h ⟨U.unop, s⟩ := by
-  rfl
-
-set_option maxHeartbeats 1600000 in
--- Retain the original source budget: descended-chart conversion measured 1016766 heartbeats.
-theorem toFrame_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V) (s : P.carrier.obj.obj U) :
-    (frameSheaf h X (lineBundle P h)).obj.map f (toFrame P h U s) =
-      toFrame P h V (P.carrier.obj.map f s) := by
-  apply frameRawHom_injective h X (lineBundle P h) V
-  rw [frameRawHom_naturality, toFrame_raw, toFrame_raw]
-  change pullHom (F := lineBundles)
-    (M₁ := (cocycle P).descendedObject h (cover_mem P)) (M₂ := unitObject X) (rawChart P h
-        ⟨U.unop, s⟩) f.unop.left V.unop.hom V.unop.hom
-    (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop) =
-      rawChart P h ⟨V.unop, P.carrier.obj.map f s⟩
-  have hh := rawChart_relation P h ⟨U.unop, s⟩ ⟨V.unop, P.carrier.obj.map f s⟩
-    f.unop (𝟙 V.unop)
-  simp only [site_id_left] at hh
-  simp only [Quiver.Hom.op_unop, op_id, op_unop, CategoryTheory.Functor.map_id,
-    types_id_apply, transportUnit_self, Units.val_one,
-        AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one] at hh
-  apply ObjectProperty.hom_ext
-  have hh' := congrArg (fun k => k.hom) hh
-  change (pullHom (F := lineBundles)
-    (M₁ := (cocycle P).descendedObject h (cover_mem P)) (M₂ := unitObject X) (rawChart P h
-        ⟨U.unop, s⟩) f.unop.left V.unop.hom V.unop.hom
-    (MorphismProperty.Over.w f.unop) (MorphismProperty.Over.w f.unop)).hom ≫ 𝟙 _ =
-      (pullHom (F := lineBundles)
-    (M₁ := (cocycle P).descendedObject h (cover_mem P)) (M₂ := unitObject X) (rawChart P h
-        ⟨V.unop, P.carrier.obj.map f s⟩) (𝟙 V.unop.left)
-        V.unop.hom V.unop.hom (Category.id_comp _) (Category.id_comp _)).hom at hh'
-  rw [CategoryTheory.Category.comp_id] at hh'
-  have hid := congrArg (fun k => k.hom)
-    (pullHom_id (F := lineBundles)
-    (M₁ := (cocycle P).descendedObject h (cover_mem P)) (M₂ := unitObject X) (rawChart P h
-        ⟨V.unop, P.carrier.obj.map f s⟩))
-  exact hh'.trans hid
-
-
-theorem toFrame_equivariant (U : X.Etaleᵒᵖ) (a : (gm X).obj.obj U) (s : P.carrier.obj.obj U) :
-    toFrame P h U (P.action U a s) = frameAction h X (lineBundle P h) U a (toFrame P h U s) := by
-  apply frameRawHom_injective h X (lineBundle P h) U
-  rw [frameRawHom_action, toFrame_raw, toFrame_raw]
-  have hh := rawChart_relation P h ⟨U.unop, s⟩ ⟨U.unop, P.action U a s⟩
-    (𝟙 U.unop) (𝟙 U.unop)
-  have ht : transportUnit P U s (P.action U a s) = (unitsSections X U a).toMul := by
-    unfold transportUnit
-    rw [transport_eq P U s (P.action U a s) a rfl]
-  simp only [site_id_left] at hh
-  simp only [op_id, op_unop, CategoryTheory.Functor.map_id, types_id_apply] at hh
-  erw [pullHom_id, pullHom_id, ht] at hh
-  exact hh.symm
-
-/-- An actual equivariant morphism of sheaves, constructed without torsor classification. -/
-def frameMap : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X
-    (lineBundle P h)) where
-  map := ⟨{ app U := ↾(toFrame P h U)
-            naturality {U V} f := by
-              ext s
-              exact (toFrame_naturality P h f s).symm }⟩
-  equivariant := toFrame_equivariant P h
-
-/-- The genuine frame torsor of the associated bundle recovers the original torsor. -/
-def frameIso : Scheme.EtaleCohomology.Torsor.Iso P (frameTorsor h X
-    (lineBundle P h)) := (frameMap P h).toIso
-
-
-/-- The torsor recovery isomorphism sends a section to its literal descended local chart. -/
-@[simp] theorem frameIso_sections (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
-    frameSectionsEquiv h X (lineBundle P h) U
-      ((frameIso P h).carrierIso.hom.hom.app U s) = chart P h ⟨U.unop, s⟩ :=
-  (frameSectionsEquiv h X (lineBundle P h) U).apply_symm_apply _
 
 /-- A literal frame, regarded in the fixed full rank-one subcategory. -/
 def frameChart (L : LineBundle X) (U : X.Etaleᵒᵖ)
@@ -630,8 +681,332 @@ theorem frameChart_raw (L : LineBundle X) (U : X.Etaleᵒᵖ)
     (pullbackUnitIso U.unop.hom).inv = frameHom h X L U s
   simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
-/-- A genuine equivariant map gives exactly the required chart square on every etale refinement. -/
+namespace Character
+
+
+/-- The one bundle descended from the original torsor and its character. -/
+def lineBundle : LineBundle X := (cocycle P χ).descended etaleLineBundleDescent (cover_mem P)
+
+/-- The actual local trivialization specified by each original torsor section. -/
+def chart (i : Index P) :
+    (Scheme.Modules.pullback (coverMap P i)).obj (lineBundle P χ).val ≅
+      SheafOfModules.unit (coverObject P i).ringCatSheaf :=
+  (cocycle P χ).chart etaleLineBundleDescent (cover_mem P) i
+
+/-- The descent recovery map before identifying the pulled structure module. -/
+def chartMap (i : Index P) :
+    (lineBundles.map (coverMap P i).op.toLoc).toFunctor.obj ((cocycle P χ).descendedObject
+      etaleLineBundleDescent
+        (cover_mem P)) ⟶
+      unitObject (coverObject P i) :=
+  ((cocycle P χ).recoveryIso etaleLineBundleDescent (cover_mem P)).hom.hom i
+
+/-- The descended local chart valued in the pulled-back base unit object,
+using the fixed native étale line-bundle descent theorem. -/
+def rawChart : Construction.RawChartFamily P
+    ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)) :=
+  fun i => chartMap P χ i ≫ (unitIso (coverMap P i)).inv
+
+/-- The original recovered charts satisfy the shared native-object transition relation. -/
+theorem rawChart_relations :
+    Construction.ChartRelations P
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P))
+      (rawChart P χ) (transportUnit P χ) := by
+  intro V i j a b
+  change pullHom (rawChart P χ i) a.left V.hom V.hom
+      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a) ≫
+      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
+        ((transportUnit P χ (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
+            Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom
+      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b)
+  apply chart_comm_to_raw (coverMap P i) (coverMap P j) a.left b.left V.hom
+    (MorphismProperty.Over.w a) (MorphismProperty.Over.w b)
+    ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)) (chartMap P χ i) (chartMap
+      P χ j)
+  have hh := recovery_square (cocycle P χ) etaleLineBundleDescent (cover_mem P) i j
+    V.hom a.left b.left (MorphismProperty.Over.w a) (MorphismProperty.Over.w b)
+  rw [descentData_hom P χ i j a b] at hh
+  exact hh
+
+theorem rawChart_relation {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
+    pullHom (rawChart P χ i) a.left V.hom V.hom
+      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a) ≫
+      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
+        ((transportUnit P χ (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
+            Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom
+      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b) :=
+  rawChart_relations P χ i j a b
+
+/-- The original torsor section is sent to its own actual descended chart. -/
+def toFrame (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    (frameSheaf etaleLineBundleDescent X (lineBundle P χ)).obj.obj U :=
+  (frameSectionsEquiv etaleLineBundleDescent X (lineBundle P χ) U).symm (chart P χ ⟨U.unop, s⟩)
+
+@[simp] theorem toFrame_raw (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    frameRawHom etaleLineBundleDescent X (lineBundle P χ) U (toFrame P χ U s) = rawChart P χ
+      ⟨U.unop, s⟩ := by
+  rfl
+
+/-- Whole raw-chart naturality is supplied by the variable native-object relation factory. -/
+theorem rawChart_natural :
+    Construction.NaturalFamily P.carrier.obj
+      (Construction.rawPresheaf X
+        ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)))
+      (Construction.sectionFamily P
+        ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P))
+        (rawChart P χ)) :=
+  Construction.sectionFamily_natural P
+    ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P))
+    (rawChart P χ) (transportUnit P χ) (rawChart_relations P χ) (transportUnit_self P χ)
+
+/-- The original raw-frame value, through the same native-object view used by the factory. -/
+theorem toFrame_raw_native (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    Construction.frameRawHom_native etaleLineBundleDescent X
+        ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)) U
+        (toFrame P χ U s) =
+      Construction.sectionFamily P
+        ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P))
+        (rawChart P χ) U s :=
+  toFrame_raw P χ U s
+
+/-- Whole naturality uses the same frameRawHom and the actual native raw-chart family. -/
+theorem toFrame_natural :
+    Construction.NaturalFamily P.carrier.obj
+      (frameSheaf etaleLineBundleDescent X (lineBundle P χ)).obj (toFrame P χ) := by
+  exact Construction.naturalFamily_of_injective
+    (F := P.carrier.obj)
+    (G := (frameSheaf etaleLineBundleDescent X (lineBundle P χ)).obj)
+    (H := Construction.rawPresheaf X
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)))
+    (Construction.frameRawHom_native etaleLineBundleDescent X
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)))
+    (Construction.frameRawHom_native_naturality etaleLineBundleDescent X
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)))
+    (Construction.frameRawHom_native_injective etaleLineBundleDescent X
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P)))
+    (toFrame P χ)
+    (Construction.sectionFamily P
+      ((cocycle P χ).descendedObject etaleLineBundleDescent (cover_mem P))
+      (rawChart P χ))
+    (toFrame_raw_native P χ) (rawChart_natural P χ)
+
+/-- Restriction sends the frame of an original section to its restricted frame. -/
+theorem toFrame_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V) (s : P.carrier.obj.obj U) :
+    (frameSheaf etaleLineBundleDescent X (lineBundle P χ)).obj.map f (toFrame P χ U s) =
+      toFrame P χ V (P.carrier.obj.map f s) :=
+  toFrame_natural P χ f s
+
+
+theorem toFrame_equivariant (U : X.Etaleᵒᵖ) (a : A.obj.obj U) (s : P.carrier.obj.obj U) :
+    toFrame P χ U (P.action U a s) = frameAction etaleLineBundleDescent X (lineBundle P χ) U
+      (χ.hom.app U a) (toFrame P χ U s) := by
+  apply frameRawHom_injective etaleLineBundleDescent X (lineBundle P χ) U
+  rw [frameRawHom_action, toFrame_raw, toFrame_raw]
+  have hh := rawChart_relation P χ ⟨U.unop, s⟩ ⟨U.unop, P.action U a s⟩
+    (𝟙 U.unop) (𝟙 U.unop)
+  have ht : transportUnit P χ U s (P.action U a s) = (unitsSections X U (χ.hom.app U a)).toMul := by
+    unfold transportUnit
+    rw [transport_eq P U s (P.action U a s) a rfl]
+  simp only [site_id_left] at hh
+  simp only [op_id, op_unop, CategoryTheory.Functor.map_id, types_id_apply] at hh
+  erw [pullHom_id, pullHom_id, ht] at hh
+  exact hh.symm
+
+/-- An actual equivariant morphism of sheaves, constructed without torsor classification. -/
+def frameMap : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X
+    (lineBundle P χ)) where
+  map := ⟨{ app U := ↾(toFrame P χ U)
+            naturality {U V} f := by
+              ext s
+              exact (toFrame_naturality P χ f s).symm }⟩
+  equivariant := toFrame_equivariant P χ
+
+@[simp] theorem toFrame_sections (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    frameSectionsEquiv etaleLineBundleDescent X (lineBundle P χ) U (toFrame P χ U s) =
+      chart P χ ⟨U.unop, s⟩ := (frameSectionsEquiv etaleLineBundleDescent X (lineBundle P χ)
+        U).apply_symm_apply _
+
 theorem frameMap_chart_comm (L : LineBundle X)
+    (r : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X L))
+    {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
+    (lineBundles.map a.left.op.toLoc).toFunctor.map
+      (frameChart etaleLineBundleDescent L (op i.1) (r.map.hom.app (op i.1) i.2)).hom ≫
+        AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition a.left b.left
+          ((transportUnit P χ (op V) (P.carrier.obj.map a.op i.2)
+            (P.carrier.obj.map b.op j.2) : Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
+      (compIso (coverMap P i) a.left V.hom (MorphismProperty.Over.w a) (ofLineBundle X L)).inv ≫
+      (compIso (coverMap P j) b.left V.hom (MorphismProperty.Over.w b) (ofLineBundle X L)).hom ≫
+      (lineBundles.map b.left.op.toLoc).toFunctor.map
+        (frameChart etaleLineBundleDescent L (op j.1) (r.map.hom.app (op j.1) j.2)).hom := by
+  apply raw_to_chart_comm (coverMap P i) (coverMap P j) a.left b.left V.hom
+    (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) (ofLineBundle X L)
+    (frameChart etaleLineBundleDescent L (op i.1) (r.map.hom.app (op i.1) i.2)).hom
+    (frameChart etaleLineBundleDescent L (op j.1) (r.map.hom.app (op j.1) j.2)).hom
+  erw [frameChart_raw etaleLineBundleDescent L (op i.1) (r.map.hom.app (op i.1) i.2),
+    frameChart_raw etaleLineBundleDescent L (op j.1) (r.map.hom.app (op j.1) j.2)]
+  have h₁ := congrArg (fun k => k i.2) (r.map.hom.naturality a.op)
+  have h₂ := congrArg (fun k => k j.2) (r.map.hom.naturality b.op)
+  change r.map.hom.app (op V) (P.carrier.obj.map a.op i.2) =
+    (frameSheaf etaleLineBundleDescent X L).obj.map a.op (r.map.hom.app (op i.1) i.2) at h₁
+  change r.map.hom.app (op V) (P.carrier.obj.map b.op j.2) =
+    (frameSheaf etaleLineBundleDescent X L).obj.map b.op (r.map.hom.app (op j.1) j.2) at h₂
+  have hr := r.equivariant (op V)
+    (transport P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2))
+    (P.carrier.obj.map a.op i.2)
+  change r.map.hom.app (op V) (P.action (op V) _ _) =
+    frameAction etaleLineBundleDescent X L (op V) _ (r.map.hom.app (op V) _) at hr
+  rw [action_transport, h₁, h₂] at hr
+  have hh := congrArg (frameRawHom etaleLineBundleDescent X L (op V)) hr.symm
+  rw [frameRawHom_action, frameRawHom_naturality, frameRawHom_naturality,
+    presheafHom_map_eq_pullHom, presheafHom_map_eq_pullHom] at hh
+  exact hh
+
+/-- Isomorphism of actual native overlap descent data supplied by an equivariant frame map. -/
+def frameMapChosenDescentIso (L : LineBundle X)
+    (r : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X L)) :
+    Pseudofunctor.DescentData'.ofDescentData (overlap P) (triple P)
+      ((lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L)) ≅
+        (cocycle P χ).descentData :=
+  Pseudofunctor.DescentData'.isoMk
+    (fun i => frameChart etaleLineBundleDescent L (op i.1) (r.map.hom.app (op i.1) i.2)) (by
+      intro i j
+      exact frameMap_chart_comm P χ L r i j (overlapFst P i j) (overlapSnd P i j))
+
+/-- The frame map identifies the full native descent data. -/
+def frameMapDescentIso (L : LineBundle X)
+    (r : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X L)) :
+    (lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L) ≅
+      (cocycle P χ).descentData.descentData :=
+  let E := Pseudofunctor.DescentData'.descentDataEquivalence lineBundles (overlap P) (triple P)
+  (E.counitIso.app _).symm ≪≫ E.functor.mapIso (frameMapChosenDescentIso P χ L r)
+
+/-- Effective and fully faithful native descent recovers the bundle of a character-equivariant frame
+map. -/
+def lineBundleIsoOfFrameMap (L : LineBundle X)
+    (r : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X
+        L)) : (lineBundle P χ).val ≅ L.val :=
+  (rankOne.prop (.mk (op X))).fullyFaithfulι.isoEquiv
+    ((AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle.stackEquivalence
+      etaleLineBundleDescent
+        (cover_mem P)).fullyFaithfulFunctor.preimageIso
+      ((cocycle P χ).recoveryIso etaleLineBundleDescent (cover_mem P) ≪≫ (frameMapDescentIso P χ L
+        r).symm))
+
+/-- The bundle recovery carries exactly the original positive charts. -/
+theorem lineBundleIsoOfFrameMap_chart (L : LineBundle X)
+    (r : Scheme.EtaleCohomology.Torsor.Hom χ P (frameTorsor etaleLineBundleDescent X
+        L)) (i : Index P) :
+    (Scheme.Modules.pullback (coverMap P i)).map (lineBundleIsoOfFrameMap P χ L r).hom ≫
+      (frameSectionsEquiv etaleLineBundleDescent X L (op i.1) (r.map.hom.app (op i.1) i.2)).hom =
+        (chart P χ i).hom := by
+  have hh := (AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle.stackEquivalence
+      etaleLineBundleDescent (cover_mem P)).fullyFaithfulFunctor.map_preimage
+    ((cocycle P χ).recoveryIso etaleLineBundleDescent (cover_mem P) ≪≫ (frameMapDescentIso P χ L
+      r).symm).hom
+  have hh' := congrArg (fun k => (k.hom i).hom) hh
+  change (Scheme.Modules.pullback (coverMap P i)).map (lineBundleIsoOfFrameMap P χ L r).hom = _
+      at hh'
+  rw [hh']
+  change ((chart P χ i).hom ≫
+    ((frameSectionsEquiv etaleLineBundleDescent X L (op i.1) (r.map.hom.app (op i.1) i.2)).inv ≫ 𝟙
+      _)) ≫
+      (frameSectionsEquiv etaleLineBundleDescent X L (op i.1) (r.map.hom.app (op i.1) i.2)).hom = _
+  simp only [Category.comp_id, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+
+end Character
+end General
+
+
+variable (P : Torsor (gm X)) (h : EtaleLineBundleDescent.{u})
+
+/- Identity-character compatibility API on the same original torsor. -/
+
+abbrev transportUnit (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : Γ(U.unop.left, ⊤)ˣ :=
+  Character.transportUnit P (𝟙 (gm X)) U s t
+
+@[simp] theorem transportUnit_self (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    transportUnit P U s s = 1 :=
+  Character.transportUnit_self P (𝟙 (gm X)) U s
+
+theorem transportUnit_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
+    transportUnit P U s t * transportUnit P U t r = transportUnit P U s r :=
+  Character.transportUnit_trans P (𝟙 (gm X)) U s t r
+
+theorem transportUnit_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
+    (s t : P.carrier.obj.obj U) :
+    pullUnit f.unop.left (transportUnit P U s t) =
+      transportUnit P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) :=
+  Character.transportUnit_naturality P (𝟙 (gm X)) f s t
+
+abbrev overlapUnit (i j : Index P) : Γ((overlap P i j).pullback, ⊤)ˣ :=
+  Character.overlapUnit P (𝟙 (gm X)) i j
+
+abbrev cocycle : AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle (overlap P)
+    (triple P) :=
+  Character.cocycle P (𝟙 (gm X))
+
+theorem overlapUnit_pullback {V : X.Etale} (i j : Index P)
+    (a : V ⟶ i.1) (b : V ⟶ j.1) :
+    pullUnit (overlapLift P i j a b).left (overlapUnit P i j) =
+      transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :=
+  Character.overlapUnit_pullback P (𝟙 (gm X)) i j a b
+
+theorem descentData_hom {V : X.Etale} (i j : Index P)
+    (a : V ⟶ i.1) (b : V ⟶ j.1) :
+    (cocycle P).descentData.descentData.hom V.hom a.left b.left
+      (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) =
+    AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition a.left b.left
+      (transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2)) :=
+  Character.descentData_hom P (𝟙 (gm X)) i j a b
+
+abbrev lineBundle (_h : EtaleLineBundleDescent.{u}) :=
+  Character.lineBundle P (𝟙 (gm X))
+
+abbrev chart (_h : EtaleLineBundleDescent.{u}) :=
+  Character.chart P (𝟙 (gm X))
+
+abbrev chartMap (_h : EtaleLineBundleDescent.{u}) :=
+  Character.chartMap P (𝟙 (gm X))
+
+abbrev rawChart (_h : EtaleLineBundleDescent.{u}) :=
+  Character.rawChart P (𝟙 (gm X))
+
+theorem rawChart_relation (h : EtaleLineBundleDescent.{u}) {V : X.Etale} (i j : Index P) (a : V ⟶
+    i.1) (b : V ⟶ j.1) :
+    pullHom (rawChart P h i) a.left V.hom V.hom
+      (MorphismProperty.Over.w a) (MorphismProperty.Over.w a) ≫
+      AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition V.hom V.hom
+        ((transportUnit P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2) :
+            Γ(V.left, ⊤)ˣ) : Γ(V.left, ⊤)) =
+    pullHom (rawChart P h j) b.left V.hom V.hom
+      (MorphismProperty.Over.w b) (MorphismProperty.Over.w b) :=
+  Character.rawChart_relation P (𝟙 (gm X)) i j a b
+
+abbrev toFrame (_h : EtaleLineBundleDescent.{u}) :=
+  Character.toFrame P (𝟙 (gm X))
+
+@[simp] theorem toFrame_raw (h : EtaleLineBundleDescent.{u}) (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj
+    U) :
+    frameRawHom h X (lineBundle P h) U (toFrame P h U s) = rawChart P h ⟨U.unop, s⟩ :=
+  Character.toFrame_raw P (𝟙 (gm X)) U s
+
+theorem toFrame_naturality (h : EtaleLineBundleDescent.{u}) {U V : X.Etaleᵒᵖ} (f : U ⟶ V) (s :
+    P.carrier.obj.obj U) :
+    (frameSheaf h X (lineBundle P h)).obj.map f (toFrame P h U s) =
+      toFrame P h V (P.carrier.obj.map f s) :=
+  Character.toFrame_naturality P (𝟙 (gm X)) f s
+
+theorem toFrame_equivariant (h : EtaleLineBundleDescent.{u}) (U : X.Etaleᵒᵖ) (a : (gm X).obj.obj U)
+    (s : P.carrier.obj.obj U) :
+    toFrame P h U (P.action U a s) = frameAction h X (lineBundle P h) U a (toFrame P h U s) :=
+  Character.toFrame_equivariant P (𝟙 (gm X)) U a s
+
+abbrev frameMap (_h : EtaleLineBundleDescent.{u}) :=
+  Character.frameMap P (𝟙 (gm X))
+
+theorem frameMap_chart_comm (h : EtaleLineBundleDescent.{u}) (L : LineBundle X)
     (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L))
     {V : X.Etale} (i j : Index P) (a : V ⟶ i.1) (b : V ⟶ j.1) :
     (lineBundles.map a.left.op.toLoc).toFunctor.map
@@ -642,54 +1017,32 @@ theorem frameMap_chart_comm (L : LineBundle X)
       (compIso (coverMap P i) a.left V.hom (MorphismProperty.Over.w a) (ofLineBundle X L)).inv ≫
       (compIso (coverMap P j) b.left V.hom (MorphismProperty.Over.w b) (ofLineBundle X L)).hom ≫
       (lineBundles.map b.left.op.toLoc).toFunctor.map
-        (frameChart h L (op j.1) (r.map.hom.app (op j.1) j.2)).hom := by
-  apply raw_to_chart_comm (coverMap P i) (coverMap P j) a.left b.left V.hom
-    (MorphismProperty.Over.w a) (MorphismProperty.Over.w b) (ofLineBundle X L)
-    (frameChart h L (op i.1) (r.map.hom.app (op i.1) i.2)).hom
-    (frameChart h L (op j.1) (r.map.hom.app (op j.1) j.2)).hom
-  erw [frameChart_raw h L (op i.1) (r.map.hom.app (op i.1) i.2),
-    frameChart_raw h L (op j.1) (r.map.hom.app (op j.1) j.2)]
-  have h₁ := congrArg (fun k => k i.2) (r.map.hom.naturality a.op)
-  have h₂ := congrArg (fun k => k j.2) (r.map.hom.naturality b.op)
-  change r.map.hom.app (op V) (P.carrier.obj.map a.op i.2) =
-    (frameSheaf h X L).obj.map a.op (r.map.hom.app (op i.1) i.2) at h₁
-  change r.map.hom.app (op V) (P.carrier.obj.map b.op j.2) =
-    (frameSheaf h X L).obj.map b.op (r.map.hom.app (op j.1) j.2) at h₂
-  have hr := r.equivariant (op V)
-    (transport P (op V) (P.carrier.obj.map a.op i.2) (P.carrier.obj.map b.op j.2))
-    (P.carrier.obj.map a.op i.2)
-  change r.map.hom.app (op V) (P.action (op V) _ _) =
-    frameAction h X L (op V) _ (r.map.hom.app (op V) _) at hr
-  rw [action_transport, h₁, h₂] at hr
-  have hh := congrArg (frameRawHom h X L (op V)) hr.symm
-  rw [frameRawHom_action, frameRawHom_naturality, frameRawHom_naturality,
-    presheafHom_map_eq_pullHom, presheafHom_map_eq_pullHom] at hh
-  exact hh
+        (frameChart h L (op j.1) (r.map.hom.app (op j.1) j.2)).hom :=
+  Character.frameMap_chart_comm P (𝟙 (gm X)) L r i j a b
 
-/-- Isomorphism of actual native overlap descent data supplied by an equivariant frame map. -/
-def frameMapChosenDescentIso (L : LineBundle X)
+abbrev frameMapChosenDescentIso (h : EtaleLineBundleDescent.{u}) (L : LineBundle X)
     (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
     Pseudofunctor.DescentData'.ofDescentData (overlap P) (triple P)
       ((lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L)) ≅
         (cocycle P).descentData :=
-  Pseudofunctor.DescentData'.isoMk
-    (fun i => frameChart h L (op i.1) (r.map.hom.app (op i.1) i.2)) (by
-      intro i j
-      exact frameMap_chart_comm P h L r i j (overlapFst P i j) (overlapSnd P i j))
+  Character.frameMapChosenDescentIso P (𝟙 (gm X)) L r
 
-/-- Effective and fully faithful native descent recovers the actual bundle underlying a frame map.
--/
-def lineBundleIsoOfFrameMap (L : LineBundle X)
+abbrev lineBundleIsoOfFrameMap (h : EtaleLineBundleDescent.{u}) (L : LineBundle X)
     (r : Scheme.EtaleCohomology.Torsor.Hom (𝟙 (gm X)) P (frameTorsor h X L)) :
-        (lineBundle P h).val ≅ L.val := by
-  let e := Pseudofunctor.DescentData'.descentDataEquivalence lineBundles (overlap P) (triple P)
-  let d : (lineBundles.toDescentData (coverMap P)).obj (ofLineBundle X L) ≅
-      (cocycle P).descentData.descentData :=
-    (e.counitIso.app _).symm ≪≫ e.functor.mapIso (frameMapChosenDescentIso P h L r)
-  let t := AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.Cocycle.stackEquivalence h
-      (cover_mem P)
-  let z := t.fullyFaithfulFunctor.preimageIso (((cocycle P).recoveryIso h (cover_mem P)) ≪≫ d.symm)
-  exact (rankOne.prop (.mk (op X))).fullyFaithfulι.isoEquiv z
+        (lineBundle P h).val ≅ L.val :=
+  Character.lineBundleIsoOfFrameMap P (𝟙 (gm X)) L r
+
+
+/-- The genuine frame torsor of the associated bundle recovers the original torsor. -/
+def frameIso : Scheme.EtaleCohomology.Torsor.Iso P (frameTorsor h X
+    (lineBundle P h)) := (frameMap P h).toIso
+
+
+/-- The torsor recovery isomorphism sends a section to its literal descended local chart. -/
+@[simp] theorem frameIso_sections (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
+    frameSectionsEquiv h X (lineBundle P h) U
+      ((frameIso P h).carrierIso.hom.hom.app U s) = chart P h ⟨U.unop, s⟩ :=
+  (frameSectionsEquiv h X (lineBundle P h) U).apply_symm_apply _
 
 /-- Rebuilding from the genuine frame torsor recovers each actual line bundle. -/
 def bundleRecovery (L : LineBundle X) :
@@ -794,18 +1147,18 @@ def bundleClassToTorsor : LineBundleClass X → TorsorClass (gm X) :=
 
 /-- The proved correspondence of actual line-bundle and genuine Gm-torsor isomorphism classes.
 No tensor/contracted-sum additivity assertion is made here. -/
-def classEquiv : LineBundleClass X ≃ TorsorClass (gm X) where
-  toFun := bundleClassToTorsor h
-  invFun := torsorClassToBundle h
+def classEquiv (X : Scheme.{u}) : LineBundleClass X ≃ TorsorClass (gm X) where
+  toFun := bundleClassToTorsor etaleLineBundleDescent
+  invFun := torsorClassToBundle etaleLineBundleDescent
   left_inv := by
     intro c
     refine Quotient.inductionOn c ?_
     intro L
-    exact Quotient.sound ⟨bundleRecovery h L⟩
+    exact Quotient.sound ⟨bundleRecovery etaleLineBundleDescent L⟩
   right_inv := by
     intro c
     refine Quotient.inductionOn c ?_
     intro P
-    exact Quotient.sound ⟨(frameIso P h).symm⟩
+    exact Quotient.sound ⟨(frameIso P etaleLineBundleDescent).symm⟩
 
 end AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle

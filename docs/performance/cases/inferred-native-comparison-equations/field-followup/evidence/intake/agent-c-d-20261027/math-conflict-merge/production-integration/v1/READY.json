@@ -1,0 +1,115 @@
+{
+  "status": "GUARDED_APPLIED_PARTIAL_IMPORT_FRONTIER_READY",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "applied_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/production-integration/v1/APPLIED.json",
+  "applied_manifest_sha256": "1a96c400bcb689ca6c6b4b24404e1bc28536dc34f8271ae1e7a7aa15becf41c5",
+  "scope27_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean": "06b53a1094934ee8d3cc4199b8ee2e49b1653e1cddb14e345f7832f48c8edd7d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean": "6b691bae2eba0d1e4169af949db7695b01f45426486e702897d4197e695156d2",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean": "c4d8883adeb3db3f7fbbc1744dc8c5e44a41799d728a05a5fe52d83e92d61db5",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean": "88825d639c02f8f07c6269fcb50df2674f73f886b5ef6914b5870efb5c6a98b0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean": "0de6f5b8299ba4bb9c70a69bc59391b3d73fb3e7b773de419ab4735f525679ae",
+    "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean": "765293a2bbe0efd24ff7675dd9829bfb6f4a42f417d40ebbb7e8858b4c9f7608",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean": "20377f51631c880cd0754b041d3da4972e083e86f29396193659a5316127bd27",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparison.lean": "210a7a2b20ef6477b9215e2f9fcf82b0614fee39866ad530d31d7e07a1323de3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelComparison.lean": "0d63e6ede67b9667b11236511bf9a96e255c5df45fc4e9f8a301a270189a05b1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoIdentity.lean": "240ed745a104c5b149005181f0103df4fe63a855ad66a5c32f8dffff5a5e6dee",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean": "86eb638df3ad0b9eaa264c2de1b6d48eea7a131e80853a79b392da20f40d4c8e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelIdentity.lean": "96fd4d969e08d12889807bf9cb7159448764dc98aa5ae8fd2578701bfecb7d1b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeTargetModels.lean": "cf4aabf2f3a6757e3c9597d30cdcbc1d6bb571dfcee5ee547c7aa3372af61b3c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean": "b67b9766ff5dbbc321047f91dd2c96b86f9477ca8f9cd992edfe35491ad65874",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Comparison.lean": "f5a0aac8a7be318cc6b09560a31edb7d639bc5f8cdab061046286d114e54e7fc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean": "9a3d7f9ab10d91dad49bb89e0bd77436acd1b891c57cd5274b239fd2a7312ef6",
+    "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean": "c2e6e617d60eb884bec9fce4f60efcc31e6fb4d0838e4803b76dbd444ef03653",
+    "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean": "5210fe1c215ee66813c859c38cd07115f7549ffb6757024c8d3d8bf2c122fa85",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean": "0bda98be195f04a520fa1bd9a57444dce7d4202ed17ae056dacd8558ee59481e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean": "5ead6d087ea70942197fb6832604ffc28fd9b8c2df2fec69578aef12cbc8ac33",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean": "559bc5606e2ce95b2e2147832f0ab15a79318b18a7270f6e4ac361fb38eccfd3",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean": "f54d82539419847e22730133f71cf369ca3a9eeca99bb7dc1748ab80b6f9f29f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean": "c7fc6386705365d09ecef1f9d77b7422e6be02a0acbf1605e4e9068b171b16c5"
+  },
+  "held_extra_source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Independence.lean": "c9798072b668f24f658a1b1974ee54ca9d30aaa68bf33164186c030d041932ff",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingBaseChange.lean": "6a84bc472cb2a3b2841d27fdb753e907371fe633c7d0364fd288518b7a31afbf",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleAdjunctionCompatibility.lean": "f287f8cd4f2c63f68878f804b1e183980d3db45b3f6bf55fe921b40dd957616c"
+  },
+  "changed_source_paths": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/Torsion.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/DirectImage.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Serre.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/HigherTorsion.lean",
+    "Aglib/CategoryTheory/Sites/Torsion/AdditiveFunctor.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ModelComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/TargetModelComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SourceIsoIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/TargetModelComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeModelIdentity.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/BaseChangeTargetModels.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawDenseTransition.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/ProperOpen/Comparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/RawBaseChange.lean",
+    "Aglib/CategoryTheory/ObjectProperty/LiftFunctorIso.lean",
+    "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/SuppliedDirectImage.lean"
+  ],
+  "noop_source_paths": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/Diagram.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/CompositionCoherence.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/Isomorphism.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperComparison.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Refinement/ProperIsomorphism.lean"
+  ],
+  "first_unblocked_roots": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FullSubcategory.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.FullSubcategory",
+      "sha256": "c57ad7ee73bef89de88e001912d18827f94d0a0f1821d839d8c3b9dc7dfbaa15"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionPreservation.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.TorsionPreservation",
+      "sha256": "c4d8883adeb3db3f7fbbc1744dc8c5e44a41799d728a05a5fe52d83e92d61db5"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/ComparisonAlgebra.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.ComparisonAlgebra",
+      "sha256": "71f46412064364330efd4c621f77d55a80a5c2be852e94d837b4468768a9ab16"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Compactification/DirectImageComparison.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Compactification.DirectImageComparison",
+      "sha256": "20377f51631c880cd0754b041d3da4972e083e86f29396193659a5316127bd27"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "module": "Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism",
+      "sha256": "07da86d8361ff33df9e6bd4f82249c17b06a6abd9d0d7eba34c05edb4eae7e57"
+    }
+  ],
+  "frontier": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-conflict-merge/production-integration/v1/IMPORT_FRONTIER.json",
+  "frontier_sha256": "6ee195925392582830400ae2be721f946ae4247361e5d1842b999bd66cdfbb83",
+  "queued_endpoint": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.BoundedBelow.SuppliedDirectImage",
+  "queued_endpoint_sha256": "5210fe1c215ee66813c859c38cd07115f7549ffb6757024c8d3d8bf2c122fa85",
+  "scheduling": "LaneB owns new runtime. Preserve its already running disjointC56 job. After it closes, compile the five unblocked roots and their necessary imports with matching caches. Reconcile actual current A source passes before selecting the full supplied endpoint. Do not select archive clients with missing source until Root supplies exact further scope. C old endpoint dispatch is withdrawn.",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "mode": "elastic",
+    "proof_budget": 200000
+  },
+  "conditions": "Pinned Lean4.34.1/mathlibd13f23b7, unchanged trust/default proof budgets. No new flags; archived inherited option context retains its fixed provenance. No old D receipt acceptance, repeated frozen probe, separate client test, replay or whole-library rebuild.",
+  "author": "/root/exceptional_module_proper_exchange",
+  "runtime_owner": "/root/incremental_compile_lane_b",
+  "timestamp_utc": "2026-10-27T21:31:15.915062+00:00"
+}

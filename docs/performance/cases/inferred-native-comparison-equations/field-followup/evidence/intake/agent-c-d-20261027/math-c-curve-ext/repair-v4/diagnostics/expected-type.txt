@@ -1,0 +1,1575 @@
+  @Eq.{u + 1}
+    (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+      (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n) (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+      (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+      (@Additive.addCommGroup.{u}
+        (@Subtype.{u + 1}
+          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+          fun
+            (x :
+              @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+          @Membership.mem.{u, u}
+            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+            (@Subgroup.{u}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+            (@SetLike.instMembership.{u, u}
+              (@Subgroup.{u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              (@Subgroup.instSetLike.{u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+            (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+            x)
+        (@Subgroup.toCommGroup.{u}
+          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+          (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+          (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+      (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+      (@isTopologicalAddGroup_of_discreteTopology.{u} (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+        (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+        (@AddCommGroup.toAddGroup.{u} (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+          (@Additive.addCommGroup.{u}
+            (@Subtype.{u + 1}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              fun
+                (x :
+                  @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+              @Membership.mem.{u, u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Subgroup.{u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                (@SetLike.instMembership.{u, u}
+                  (@Subgroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Subgroup.instSetLike.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                x)
+            (@Subgroup.toCommGroup.{u}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+              (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+        (@Field.absoluteGaloisGroup.RootsOfUnity.muDiscreteTopology.{u} K inst✝⁵ n))
+      (@Field.absoluteGaloisGroup.RootsOfUnity.muDistribMulAction.{u} K inst✝⁵ n)
+      (@Field.absoluteGaloisGroup.RootsOfUnity.muContinuousSMul.{u} K inst✝⁵ n))
+    (@DFunLike.coe.{u + 2, u + 2, u + 1}
+      (@AddMonoidHom.{u + 1, u}
+        (@GroupCohomology.ContinuousH1.H1.{u + 1, u}
+          (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+          (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+          (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+            (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+              (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u} AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                  AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+              FintypeCat.{u}
+              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                Finite.{u + 1}))
+            (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+              (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u} AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                  AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+              FintypeCat.{u}
+              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                Finite.{u + 1}))
+            (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+              (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+              (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+          (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+            (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+            (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+              (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u} AlgebraicGeometry.Scheme.instCategory.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+              (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                AlgebraicGeometry.Scheme.instCategory.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+              (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+            (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+              (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+              (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+          (@Additive.addCommGroup.{u}
+            (@Subtype.{u + 1}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              fun
+                (x :
+                  @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+              @Membership.mem.{u, u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Subgroup.{u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                (@SetLike.instMembership.{u, u}
+                  (@Subgroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Subgroup.instSetLike.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                x)
+            (@Subgroup.toCommGroup.{u}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+              (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+          (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+          (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+          (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+          (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+        (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+          (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n) (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+          (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+          (@Additive.addCommGroup.{u}
+            (@Subtype.{u + 1}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              fun
+                (x :
+                  @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+              @Membership.mem.{u, u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Subgroup.{u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                (@SetLike.instMembership.{u, u}
+                  (@Subgroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Subgroup.instSetLike.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                x)
+            (@Subgroup.toCommGroup.{u}
+              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+              (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+              (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+          (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+          (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+          (@Field.absoluteGaloisGroup.RootsOfUnity.muDistribMulAction.{u} K inst✝⁵ n)
+          (@Field.absoluteGaloisGroup.RootsOfUnity.muContinuousSMul.{u} K inst✝⁵ n))
+        (@AddZeroClass.toAddZero.{u + 1}
+          (@GroupCohomology.ContinuousH1.H1.{u + 1, u}
+            (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+            (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+            (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+              (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                  (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                FintypeCat.{u}
+                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                  Finite.{u + 1}))
+              (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                  (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                FintypeCat.{u}
+                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                  Finite.{u + 1}))
+              (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+            (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+              (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u} AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                  AlgebraicGeometry.Scheme.instCategory.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+              (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+            (@Additive.addCommGroup.{u}
+              (@Subtype.{u + 1}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                fun
+                  (x :
+                    @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                @Membership.mem.{u, u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Subgroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@SetLike.instMembership.{u, u}
+                    (@Subgroup.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Subgroup.instSetLike.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                  (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                  x)
+              (@Subgroup.toCommGroup.{u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+            (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+            (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+            (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+            (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+          (@AddMonoid.toAddZeroClass.{u + 1}
+            (@GroupCohomology.ContinuousH1.H1.{u + 1, u}
+              (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+              (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+              (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                  (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                    (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                  FintypeCat.{u}
+                  (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                    Finite.{u + 1}))
+                (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                  (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                    (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                  FintypeCat.{u}
+                  (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u) CategoryTheory.types.{u}
+                    Finite.{u + 1}))
+                (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                  (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                  (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+              (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                  (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                    AlgebraicGeometry.Scheme.instCategory.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                  (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                  (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                  (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+              (@Additive.addCommGroup.{u}
+                (@Subtype.{u + 1}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  fun
+                    (x :
+                      @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                  @Membership.mem.{u, u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Subgroup.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@SetLike.instMembership.{u, u}
+                      (@Subgroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Subgroup.instSetLike.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                    (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                    x)
+                (@Subgroup.toCommGroup.{u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                  (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+              (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+              (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+              (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+              (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+            (@SubNegMonoid.toAddMonoid.{u + 1}
+              (@GroupCohomology.ContinuousH1.H1.{u + 1, u}
+                (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                  (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                    (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                      (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                    FintypeCat.{u}
+                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                      CategoryTheory.types.{u} Finite.{u + 1}))
+                  (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                    (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                      (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                    FintypeCat.{u}
+                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                      CategoryTheory.types.{u} Finite.{u + 1}))
+                  (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                    (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                  (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                  (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                    (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                      AlgebraicGeometry.Scheme.instCategory.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                  (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                    (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                    (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                (@Additive.addCommGroup.{u}
+                  (@Subtype.{u + 1}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    fun
+                      (x :
+                        @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                    @Membership.mem.{u, u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Subgroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                      (@SetLike.instMembership.{u, u}
+                        (@Subgroup.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Subgroup.instSetLike.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                      (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                      x)
+                  (@Subgroup.toCommGroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                    (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+                (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+              (@AddGroup.toSubNegMonoid.{u + 1}
+                (@GroupCohomology.ContinuousH1.H1.{u + 1, u}
+                  (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                  (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                  (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                    (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                      (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                        (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                      FintypeCat.{u}
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                        CategoryTheory.types.{u} Finite.{u + 1}))
+                    (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                      (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                        (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                      FintypeCat.{u}
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                        CategoryTheory.types.{u} Finite.{u + 1}))
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                      (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                  (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                    (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                      (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                        AlgebraicGeometry.Scheme.instCategory.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                      (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                      (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                  (@Additive.addCommGroup.{u}
+                    (@Subtype.{u + 1}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      fun
+                        (x :
+                          @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                      @Membership.mem.{u, u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Subgroup.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                        (@SetLike.instMembership.{u, u}
+                          (@Subgroup.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Subgroup.instSetLike.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                        (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                        x)
+                    (@Subgroup.toCommGroup.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                      (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                  (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                  (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+                  (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+                (@QuotientAddGroup.Quotient.addGroup.{u + 1}
+                  (@GroupCohomology.ContinuousH1.Cocycle.{u + 1, u}
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                    (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                    (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                      (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        FintypeCat.{u}
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                          CategoryTheory.types.{u} Finite.{u + 1}))
+                      (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        FintypeCat.{u}
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                          CategoryTheory.types.{u} Finite.{u + 1}))
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                        (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                    (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                      (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                        (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                        (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                    (@Additive.addCommGroup.{u}
+                      (@Subtype.{u + 1}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        fun
+                          (x :
+                            @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                        @Membership.mem.{u, u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Subgroup.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                          (@SetLike.instMembership.{u, u}
+                            (@Subgroup.{u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Subgroup.instSetLike.{u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                          (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                          x)
+                      (@Subgroup.toCommGroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                        (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                    (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                    (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+                  (@AddSubgroup.toAddGroup.{u + 1}
+                    (@ContinuousMap.{u + 1, u}
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                      (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                          (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                          (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n))
+                    (@ContinuousMap.instAddGroupOfIsTopologicalAddGroup.{u + 1, u}
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                      (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                          (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                          (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                      (@AddCommGroup.toAddGroup.{u} (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                        (@Additive.addCommGroup.{u}
+                          (@Subtype.{u + 1}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            fun
+                              (x :
+                                @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                            @Membership.mem.{u, u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Subgroup.{u}
+                                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                              (@SetLike.instMembership.{u, u}
+                                (@Subgroup.{u}
+                                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                  (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                (@Subgroup.instSetLike.{u}
+                                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                  (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                              (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                              x)
+                          (@Subgroup.toCommGroup.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                            (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                      (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n))
+                    (@GroupCohomology.ContinuousH1.cocycles.{u + 1, u}
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                      (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                        (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                          (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                            (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                              AlgebraicGeometry.Scheme.instCategory.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                            (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                              AlgebraicGeometry.Scheme.instCategory.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                            (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                          FintypeCat.{u}
+                          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                            CategoryTheory.types.{u} Finite.{u + 1}))
+                        (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                          (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                            (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                              AlgebraicGeometry.Scheme.instCategory.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                            (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                              AlgebraicGeometry.Scheme.instCategory.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                            (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                              (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                          FintypeCat.{u}
+                          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                            CategoryTheory.types.{u} Finite.{u + 1}))
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                          (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                          (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                      (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                          (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                          (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                      (@Additive.addCommGroup.{u}
+                        (@Subtype.{u + 1}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          fun
+                            (x :
+                              @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                          @Membership.mem.{u, u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Subgroup.{u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                            (@SetLike.instMembership.{u, u}
+                              (@Subgroup.{u}
+                                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Subgroup.instSetLike.{u}
+                                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                                (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                            (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                            x)
+                        (@Subgroup.toCommGroup.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                          (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                      (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                      (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                      (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴
+                        n)))
+                  (@GroupCohomology.ContinuousH1.coboundaries.{u + 1, u}
+                    (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.FieldFundamentalGroup.{u} K inst✝⁵)
+                    (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                    (@CategoryTheory.Aut.instGroup.{u + 1, u + 1}
+                      (@CategoryTheory.Functor.{u, u, u + 1, u + 1}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        FintypeCat.{u}
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                          CategoryTheory.types.{u} Finite.{u + 1}))
+                      (@CategoryTheory.Functor.category.{u, u, u + 1, u + 1}
+                        (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                          (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                            AlgebraicGeometry.Scheme.instCategory.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                          (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                            (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                        FintypeCat.{u}
+                        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1} (Type u)
+                          CategoryTheory.types.{u} Finite.{u + 1}))
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                        (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                    (@CategoryTheory.PreGaloisCategory.instTopologicalSpaceAutFunctorFintypeCat.{u + 1, u, u}
+                      (AlgebraicGeometry.Scheme.FiniteEtale.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u, u + 1}
+                        (@CategoryTheory.Over.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (@CategoryTheory.instCategoryOver.{u, u + 1} AlgebraicGeometry.Scheme.{u}
+                          AlgebraicGeometry.Scheme.instCategory.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵))))
+                        (AlgebraicGeometry.Scheme.finiteEtaleProperty.{u}
+                          (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))))
+                      (@AlgebraicGeometry.Scheme.FiniteEtale.fiberToFinite.{u}
+                        (AlgebraicGeometry.Spec.{u} (@CommRingCat.of.{u} K (@Field.toCommRing.{u} K inst✝⁵)))
+                        (@AlgebraicClosure.{u} K inst✝⁵) (@AlgebraicClosure.instField.{u} K inst✝⁵)
+                        (@AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois.geometricPoint.{u} K inst✝⁵)))
+                    (@Additive.addCommGroup.{u}
+                      (@Subtype.{u + 1}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        fun
+                          (x :
+                            @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                        @Membership.mem.{u, u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Subgroup.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                          (@SetLike.instMembership.{u, u}
+                            (@Subgroup.{u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Subgroup.instSetLike.{u}
+                              (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                              (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                          (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                          x)
+                      (@Subgroup.toCommGroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                        (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                    (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                    (@GroupCohomology.Kummer.Field.instDistribMulActionFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n)
+                    (@GroupCohomology.Kummer.Field.instContinuousSMulFieldFundamentalGroupMu.{u} K inst✝⁵ inst✝⁴ n))
+                  (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_6.{u} K inst✝⁵ inst✝⁴ n))))))
+        (@AddZeroClass.toAddZero.{u}
+          (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+            (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+            (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+            (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+            (@Additive.addCommGroup.{u}
+              (@Subtype.{u + 1}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                fun
+                  (x :
+                    @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                @Membership.mem.{u, u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Subgroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                  (@SetLike.instMembership.{u, u}
+                    (@Subgroup.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Subgroup.instSetLike.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                  (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                  x)
+              (@Subgroup.toCommGroup.{u}
+                (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                  (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+            (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+            (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+            (@Field.absoluteGaloisGroup.RootsOfUnity.muDistribMulAction.{u} K inst✝⁵ n)
+            (@Field.absoluteGaloisGroup.RootsOfUnity.muContinuousSMul.{u} K inst✝⁵ n))
+          (@AddMonoid.toAddZeroClass.{u}
+            (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+              (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+              (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+              (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+              (@Additive.addCommGroup.{u}
+                (@Subtype.{u + 1}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  fun
+                    (x :
+                      @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                  @Membership.mem.{u, u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Subgroup.{u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                    (@SetLike.instMembership.{u, u}
+                      (@Subgroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Subgroup.instSetLike.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                    (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                    x)
+                (@Subgroup.toCommGroup.{u}
+                  (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                  (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                  (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                    (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+              (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+              (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+              (@Field.absoluteGaloisGroup.RootsOfUnity.muDistribMulAction.{u} K inst✝⁵ n)
+              (@Field.absoluteGaloisGroup.RootsOfUnity.muContinuousSMul.{u} K inst✝⁵ n))
+            (@SubNegMonoid.toAddMonoid.{u}
+              (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+                (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+                (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+                (@Additive.addCommGroup.{u}
+                  (@Subtype.{u + 1}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    fun
+                      (x :
+                        @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))) =>
+                    @Membership.mem.{u, u}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      (@Subgroup.{u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                      (@SetLike.instMembership.{u, u}
+                        (@Subgroup.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Subgroup.instSetLike.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                      (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                      x)
+                  (@Subgroup.toCommGroup.{u}
+                    (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                    (@Units.instCommGroupUnits.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                    (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                      (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                (@Field.absoluteGaloisGroup.RootsOfUnity.muTopology.{u} K inst✝⁵ n)
+                (@GroupCohomology.Kummer.Field.galoisRestrictionEquiv._proof_3.{u} K inst✝⁵ n)
+                (@Field.absoluteGaloisGroup.RootsOfUnity.muDistribMulAction.{u} K inst✝⁵ n)
+                (@Field.absoluteGaloisGroup.RootsOfUnity.muContinuousSMul.{u} K inst✝⁵ n))
+              (@AddGroup.toSubNegMonoid.{u}
+                (@GroupCohomology.ContinuousH1.H1.{u, u} (@Field.absoluteGaloisGroup.{u} K inst✝⁵)
+                  (@Field.absoluteGaloisGroup.RootsOfUnity.Mu.{u} K inst✝⁵ n)
+                  (@Field.instGroupAbsoluteGaloisGroup.{u} K inst✝⁵)
+                  (@Field.instTopologicalSpaceAbsoluteGaloisGroup.{u} K inst✝⁵)
+                  (@Additive.addCommGroup.{u}
+                    (@Subtype.{u + 1}
+                      (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                        (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                      fun
+                        (x :
+                          @Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} ⋯ ⋯) ⋯)) =>
+                      @Membership.mem.{u, u}
+                        (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                        (@Subgroup.{u}
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                        (@SetLike.instMembership.{u, u}
+                          (@Subgroup.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))))
+                          (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                          (@Subgroup.instSetLike.{u}
+                            (@Units.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))
+                            (@Units.instGroup.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                              (@CommMonoid.toMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                                  (@AlgebraicClosure.instCommRing.{u} K inst✝⁵))))))
+                        (@rootsOfUnity.{u} n (@AlgebraicClosure.{u} K inst✝⁵)
+                          (@CommRing.toCommMonoid.{u} (@AlgebraicClosure.{u} K inst✝⁵)
+                            (@AlgebraicClosure.instCommRing.{u} K inst✝⁵)))
+                        x)
+                    ⋯)
+                  ⋯ ⋯ ⋯ ⋯)
+                ⋯)))))
+      ⋯ ⋯ ⋯ ⋯ ⋯)
+    ⋯

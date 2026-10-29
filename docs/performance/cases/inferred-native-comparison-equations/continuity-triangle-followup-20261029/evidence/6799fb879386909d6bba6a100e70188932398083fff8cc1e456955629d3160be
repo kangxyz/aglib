@@ -1,0 +1,71 @@
+{
+  "question": "Existing continuity triangle-calculus refactor, not a new theory",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "frozen_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source",
+  "publication_status": "LIVE v11 under concrete disjoint-source broker release; only nativeSquareac9 published. Earlier frozen-staged status remains historical.",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "ac9d78c2e93ec218429c2d91bb992044a61545c990a307f1c7e9e4386f7847b8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "baseline_guard": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "ada16f2f9bab8488c7df73f8ff28f5a8d21d4420f20d0c68c71a373e3a513b25",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "e4c28699b2b144a48eafa46ac224f51765ecea7e1d2f8b7188653aa4ccdc11d5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "0a186f7a15d521590da8b1b9b25f6ea90e9a787d5385c81e5bf764883f6da392",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "e7c797d2856816cfc5d3952b8cf9fb83c6c177a25631d5e41710345ada35a570",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "2e697d4e5ba7551b9d74a67d5b5c2670a1cdfbc665cf79acb37358ffee2d5088"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle"
+  ],
+  "independent_finished_fallback": "If actual Global-dependent Square root is held, complete DiagramDirectImageTriangleComp and any independent PullbackSectionsBase branch may compile without a generic-only gate. Broker selects actual minimal ready dependency closure.",
+  "generic_boundary": "Existing Cone/ConeConstancy/ConeExtension declarations and bodies unchanged; additions only. No ConeRightTail source or other sibling-owned file modified.",
+  "native_correspondence": "All original native public headers and all original native data definitions byte-identical to baseline; actual direct/inverse image comparisons identified as whole values, then original coefficients evaluated once. coneCoefficientFunctor/diagramConeAdjunctionData/pullbackSectionsBifunctor and original base/etale isomorphism data literal unchanged.",
+  "mathematical_product": "Existing right transport and Cone composition exposed as whole comparisons; same actual triangle transport/composition, coefficient unit/transport, right square contraction/pasting, relative left triangle hom/inverse and complete relative section square proved below Scheme. Native maps specialize SAME schemeAdjunctionData and existing Cone; no final native triangle/naturality law input.",
+  "conditions": "All original native maps/headers/data/premises/default200000/options/trust unchanged. Actual comparison isos constrained by proved WHOLE equalities to same D; no second cone/reference model/SourceData, no public desired triangle/naturality premise. Conditional raw whole-proof arguments are internally discharged by D-derived factories at native boundary.",
+  "actual_coverage": "Current lower4 have actual matching passes, including Extension0f; nativeLimit4a7 current required PASS139.382s and Compfa14 PASS14.099s D88d1 retained, Basef404 priorPASS234.690s retained. Current nativeSquare v11 unchecked; original8d530 kernel failure and af9 two-type-input negative remain historical, no source relabel. One failed native root plus necessary imports only.",
+  "previous_live_guard": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "af9d3a36c6f2b9dad24b3b6c24e1f381fe603ac862964e9d7acad9c7e4195cc0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "changes_from_v1": "Only new ConeExtension helpers and public section-law universe binders: explicit independent category/object and Hom universes for inverse/section squares and output B. Grouped Type* would otherwise tie distinct category worlds and could not supply the advertised independent output world. No existing declaration/body or native source/data changed.",
+  "changes_from_v2": "Full actual Bf62382ef/SOURCEb859 log read. Equality transport65 left Functor.whiskerLeft of categorical identity unsimplified: pinned Mathlib distinguishes whiskerLeft_id (NatTrans.id) from whiskerLeft_id-prime (categorical identity). Correct the actual failed new transport lemma and same reference in the new relative triangle law; no existing generic declaration/body/native source changed.",
+  "relocation_scope": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/RELOCATION_SCOPE.json",
+  "changes_from_v3": "Root replaces unexecuted v4-removal proposal with SINGLE exact declaration relocation: original CoefficientSquares149 doc/name/binder e/body copied verbatim into earlier Constancy, replacing my new duplicate; old exact block removed only, existing public import reexports it. Same used universe/context order, no Coherent premise. All other CoefficientSquares bytes and all native sources unchanged.",
+  "changes_from_v5": "Retain Rootauthorized original mate relocation exactly. Symbol reconciliation also found three new native bridge copies already in readonly SquareCoefficientAdjoint. Remove only my new copies from LimitFunctor/DirectImageSquareTriangle; import that existing producer in DiagramDirectImageTriangleComp and DirectImageSquareTriangle. Exact staged graph acyclic, native26headers/all data unchanged. SquareCoefficientAdjoint remains readonly/single original implementation; no further owner grant needed.",
+  "coefficient_squares_boundary": "Only original exact conjugate_triangleIso_hom declaration block relocated, preserving public binder e/body/doc/used universes/parameters and no Coherent premise. All other bytes unchanged; existing public import reexports it.",
+  "changes_from_v6": "Full actual B32b0b319/SOURCE998a4a2e log read. Original mate relocation works: currentConstancyb90 and CoefSquared833 actualPASS. Only current Extension failed: unused whole-unit simp entry97 removed; coefficient-unit component108 had residual right identity under final simpa-using. Normalize inferred component equation AND actual goal in place, then exact, following the previously successful native equation method. No statements/hypotheses/data/original bodies/relocation changed.",
+  "changes_from_v7": "Actual B55db5b64/SOURCE1945cae1 full log read. In-place normalization still leaves u\u226bv\u226bid=id, while goal u\u226bv=id; Category.comp_id tactic argument is unused. Remove it from simp list and close with explicit (Category.comp_id _).symm.trans ((Category.assoc _ _ _).trans h) on the same whole-law component. No new premise, model, statement or data. Root identifies this exact Extension as actual prerequisite for already-migrated Proper2; prioritize direct minimal finished producer graph, no new acceptance step.",
+  "changes_from_v8": "Full actual B556fecfb/source4b472 log read. Extension12eb, nativeLimit4a7, nativePullbackBasef404 pass. Sole actual failure nativeCompa0d contains only unusedSimpArgs52/53/98: remove eqToHom_app and Category.assoc from plain comp component proof, remove Functor.whiskerLeft_app only from reindexed component proof. No proof/type error or statement/map/data/premise change. Preserve healthy capturedProperA fab4b5; no cancel or source rewrite.",
+  "changes_from_v9": "Serious actual nativeSquare8d530 B7d460/source4a6f failed EqToHom-app type conversion34 and kernel200k37/54 in489.583s. Read full log, new PERFORMANCE shared-construction/proof-input methods and complete matching cases. Native-faithful formation-only probe2f15/1126 completed10.386s with ONLY2 file-header lints/no type or kernel diagnostic; not cleanPASS or originalP proof and not rerun merely for prose. New bounded route: shared regular whole propositions over original comparison heads; raw app evaluators over independent variable categories; D actual-comparison factories derive whole laws from same coherent D and independently proved origin identities. Native partial producer telescope and identity proof input TYPES normalize only rfl right/comp projection views before passing actual original isos/transports. Public native component proofs directly apply raw evaluators, no native post-evaluation simplification.",
+  "changes_from_v10": "Actual D88d1/SOURCE4cdf full contexts read: new Extension0f PASS5.321s; nativeSquareaf9 fails4.740s ONLY application39/65 because simplifier changed original equality proof inputs hc/hc0-prime to True while factory still expects Eq. No native kernel timeout reported. Replace only three proof-input normalization simp commands by dsimp, using pinned rfl projection/unop/double-symm rules, preserving equality types. Same whole-law factory/raw evaluator route, original maps/types/premises/limits/options. No further native concrete rewriting.",
+  "priority_freeze": {
+    "authority": "Latest Root steering prioritizes fixed current-source Proper main+two-endpoint milestone; nativeSquare is confirmed outside exact closure. Broker confirmed hold.",
+    "restriction": "No further noncritical N publication or new triangle graph until milestone closes/Root releases. R-only reasoning/repair staging allowed; no process cancellation or goal pause.",
+    "live_basis": "coherent-v10/READY.json",
+    "staged_basis": "coherent-v11/READY.json",
+    "milestone_label": "Root fixed Proper main Proper.BaseChange d04 plus two endpoints",
+    "last_author_N_publication": "v10 exact two-file shared-head route; no v11 publication/run."
+  },
+  "publication_guard": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v11.json",
+  "concrete_release": {
+    "authority": "Root current-execution reform plus concrete broker release: native expected-source continuation preserves fixed Proper SOURCE3dede on reserved A; Square closure83 verified disjoint from active/waiting A/C producers.",
+    "rule_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/CURRENT_EXECUTION.md",
+    "restriction": "Only staged nativeSquareac9 may publish; shared critical Extension0f and other6 files unchanged; no sync/modification of A; no new unrelated family or gate.",
+    "continuation": "Author owns existing8-source native compile/diagnose/repair directly with retained broker without Root redispatch."
+  }
+}

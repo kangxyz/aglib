@@ -1,0 +1,111 @@
+--- native616b/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
++++ shared-original/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
+@@ -289,6 +289,14 @@
+ 
+ variable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]
+ 
++/-- The existing field marking supplies the represented comparison once. -/
++private def fieldRepresentedH1AddEquiv
++    (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :=
++  Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
++    (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
++    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
++    (pointMark_equivariant K n) (finiteCoefficient K n)
++
+ /-- The etale-to-Galois first-cohomology map using the supplied `Stacks03AJ` and `Stacks03RV`
+ inputs. -/
+ def comparison (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :
+@@ -296,11 +304,7 @@
+         K)) n) →+
+       H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
+   (galoisRestriction K n).onH1.comp
+-    (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
+-        (geometricPoint K)
+-      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+-      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)
+-      (finiteCoefficient K n)).toAddMonoidHom
++    (fieldRepresentedH1AddEquiv K n hA hR).toAddMonoidHom
+ 
+ 
+ /-- The additive etale-to-Galois first-cohomology equivalence using the supplied comparison
+@@ -309,11 +313,23 @@
+     H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec (.of
+         K)) n) ≃+
+       H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
+-  (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
+-      (geometricPoint K)
+-      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+-      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)
+-      (finiteCoefficient K n)).trans (galoisRestrictionEquiv K n)
++  (fieldRepresentedH1AddEquiv K n hA hR).trans (galoisRestrictionEquiv K n)
++
++private theorem comparison_original
++    (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :
++    comparison K n hA hR = (galoisRestriction K n).onH1.comp
++      (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
++    (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
++    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
++    (pointMark_equivariant K n) (finiteCoefficient K n)).toAddMonoidHom := rfl
++
++private theorem comparisonEquiv_original
++    (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :
++    comparisonEquiv K n hA hR =
++      (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv
++    (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
++    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
++    (pointMark_equivariant K n) (finiteCoefficient K n)).trans (galoisRestrictionEquiv K n) := rfl
+ 
+ @[simp] theorem comparisonEquiv_apply (hA : Stacks03AJ.{u, w} (Spec (.of K)))
+     (hR : Stacks03RV (Spec (.of K)))
+@@ -351,6 +367,27 @@
+     (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)
+     Y τ t (fundamentalGroupContinuousEquiv K σ)
+ 
++private theorem fieldRepresentedH1AddEquiv_torsor_representative
++    (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K)))
++    (P : Torsor (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n))
++    (Y : Scheme.FiniteEtale (Spec (.of K))) (e : finiteRepresentedSetSheaf Y ≅ P.carrier)
++    (t : Fiber (geometricPoint K) Y) :
++    fieldRepresentedH1AddEquiv K n hA hR (torsorExtClass P) =
++      classOf (Scheme.EtaleFundamentalGroups.FiberAutGroup (geometricPoint K))
++        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
++        (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle
++          (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)
++          (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
++          (pointMark_equivariant K n) Y
++          (P.representedSchemeAction
++            (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t) := by
++  unfold fieldRepresentedH1AddEquiv
++  exact
++    Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative
++    (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
++    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
++    (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
++
+ theorem comparison_torsor_representative
+     (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K)))
+     (P : Torsor (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n))
+@@ -361,11 +398,7 @@
+         (fieldCocycle K n Y
+           (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y
+               e) t) := by
+-  have h :=
+-    Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative
+-      (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+-      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+-      (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
++  have h := fieldRepresentedH1AddEquiv_torsor_representative K n hA hR P Y e t
+   have hmap := congrArg ((galoisRestriction K n).onH1) h
+   have hclass :=
+     _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
+@@ -374,7 +407,9 @@
+         (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+         (pointMark_equivariant K n) Y
+         (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
+-  simpa only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
++  have hvalue := comparisonEquiv_apply K n hA hR (torsorExtClass P)
++  refine hvalue.symm.trans ?_
++  simpa only [comparisonEquiv, AddEquiv.trans_apply, galoisRestrictionEquiv,
+     fieldCocycle] using hmap.trans hclass
+ 
+ 

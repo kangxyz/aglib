@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
+public import Aglib.CategoryTheory.Adjunction.MateHomEquiv.Composition
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.ExactSequences
 
 /-!
@@ -56,31 +57,10 @@ theorem constantTransport_homEquiv (A : AddCommGrpCat.{u + 1})
       (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a) =
     (constantAdjunction X).homEquiv A L a ≫ globalSectionsPullback f L := by
   rw [← inverseImageConstantCanonicalIso_eq f]
-  let cX := constantAdjunction X
-  let cS := constantAdjunction S
-  let adj := inverseImageAdjunction f
-  let e := directImageGlobalSectionsIso f
-  let k := inverseImageConstantCanonicalIso f
-  have ht : (cX.comp adj).unit.app A ≫ e.hom.app _ =
-      cS.unit.app A ≫ (globalSections S).map (k.inv.app A) := by
-    have h := unit_conjugateEquiv (cX.comp adj) cS k.inv A
-    simpa only [cX, cS, adj, e, k, inverseImageConstantCanonicalIso,
-      Adjunction.conjugateEquiv_leftAdjointCompIso_inv] using h
-  change cS.homEquiv A _ (k.inv.app A ≫ (inverseImage f).map a) =
-    cX.homEquiv A L a ≫ ((globalSections X).map (adj.unit.app L) ≫ e.hom.app _)
-  rw [Adjunction.homEquiv_unit, Functor.map_comp, ← Category.assoc, ← ht,
-    Category.assoc, ← e.hom.naturality, ← Category.assoc,
-    Adjunction.comp_unit_app]
-  change (cX.unit.app A ≫ (globalSections X).map (adj.unit.app _)) ≫
-      (globalSections X).map ((directImage f).map ((inverseImage f).map a)) ≫ e.hom.app _ = _
-  have hn := adj.unit.naturality a
-  change a ≫ adj.unit.app L =
-    adj.unit.app _ ≫ (directImage f).map ((inverseImage f).map a) at hn
-  have hm := congrArg (globalSections X).map hn.symm
-  simp only [Functor.map_comp] at hm
-  rw [Adjunction.homEquiv_unit]
-  simpa only [Category.assoc, constantSheaf, Functor.comp_obj] using
-    congrArg (fun t => cX.unit.app A ≫ t ≫ e.hom.app ((inverseImage f).obj L)) hm
+  simpa only [inverseImageConstantCanonicalIso, globalSectionsPullback, Iso.app_inv] using
+    (Adjunction.homEquiv_leftAdjointCompIso_inv_map
+      (constantAdjunction X) (inverseImageAdjunction f) (constantAdjunction S)
+      (directImageGlobalSectionsIso f) a)
 
 
 section Cohomology

@@ -1,0 +1,48 @@
+--- current/Aglib/Logic/Function/SquareTransport.lean
++++ candidate/Aglib/Logic/Function/SquareTransport.lean
+@@ -37,4 +37,14 @@
+   have hcomp : Injective (f' ∘ i) := h.symm ▸ hj.comp hf
+   exact hcomp.of_comp_right hi
+ 
++universe uC
++
++/-- Evaluate the original composite comparison using an equation at its actual
++inferred source and the specified whole comparison map. -/
++theorem apply_eq_of_comp_eq
++    {C : Sort uC} {e : A → B} {x : A} {z : B} (h : e x = z)
++    (E : A → C) (g : B → C) (y : C)
++    (hE : E = g ∘ e) (hz : g z = y) : E x = y :=
++  (congrFun hE x).trans ((congrArg g h).trans hz)
++
+ end Function
+--- current/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
++++ candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
+@@ -10,6 +10,7 @@
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison
+ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
++public import Aglib.Logic.Function.SquareTransport
+ 
+ /-!
+ Native migration from `R5Lab.Aglib.AlgebraicGeometry.Cohomology.Kummer.Field` at R5 revision
+@@ -366,7 +367,6 @@
+       (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+       (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+       (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
+-  have hmap := congrArg ((galoisRestriction K n).onH1) h
+   have hclass :=
+     _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
+       (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle
+@@ -374,8 +374,10 @@
+         (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+         (pointMark_equivariant K n) Y
+         (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
+-  simpa only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
+-    fieldCocycle] using hmap.trans hclass
++  refine Function.apply_eq_of_comp_eq h (comparison K n hA hR)
++    ((galoisRestriction K n).onH1) _ ?_ ?_
++  · rfl
++  · exact hclass
+ 
+ 
+ 

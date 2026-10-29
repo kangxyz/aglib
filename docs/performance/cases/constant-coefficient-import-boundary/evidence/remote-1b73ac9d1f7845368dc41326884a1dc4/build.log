@@ -1,0 +1,50 @@
+✖ [2016/2116] Building Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy (2.5s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b73ac9d1f7845368dc41326884a1dc4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.setup.json --json
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:136:2: Type mismatch: After simplification, term
+  hv
+ has type
+  (D.leftCompIso f (g ≫ r)).hom.app F ≫
+      (D.leftCompIso g r).hom.app ((D.left f).obj F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ =
+    eqToHom ⋯ ≫
+      (D.leftCompIso (f ≫ g) r).hom.app F ≫
+        (D.left r).map ((D.leftCompIso f g).hom.app F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ
+but is expected to have type
+  (D.leftCompIso f (g ≫ r)).hom.app F ≫
+      (D.leftCompIso g r).hom.app ((D.left f).obj F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ =
+    (eqToHom ⋯).app F ≫
+      (D.leftCompIso (f ≫ g) r).hom.app F ≫
+        (D.left r).map ((D.leftCompIso f g).hom.app F) ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:131:62: This simp argument is unused:
+  Category.comp_id
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eqToHom_refl, NatTrans.id_app, Category.id_comp, Functor.map_comp, Category.assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean:225:8: Type mismatch
+  congrArg (fun t => t ≫ eqToHom (Eq.symm (hobj j)))
+    (triangle_fixed_coefficient D hD (b.π.app i) (b.π.app j) l (Y.map a) (c.ι.app i) (c.ι.app j) (Cone.w b a) (hl i)
+      (hl j) (Cocone.w c a) F)
+has type
+  ((D.triangleIso l (b.π.app i) (c.ι.app i) ⋯).hom.app F ≫
+        D.triangleCoefficientMap (Y.map a) (c.ι.app i) (c.ι.app j) ⋯
+          ((D.triangleIso (b.π.app j) (b.π.app i) (Y.map a) ⋯).inv.app F)) ≫
+      eqToHom ⋯ =
+    (D.triangleIso l (b.π.app j) (c.ι.app j) ⋯).hom.app F ≫ eqToHom ⋯
+but is expected to have type
+  (D.triangleIso l (b.π.app i) (c.ι.app i) ⋯).hom.app F ≫
+      D.triangleCoefficientMap (Y.map a) (c.ι.app i) (c.ι.app j) ⋯
+          ((D.triangleIso (b.π.app j) (b.π.app i) (Y.map a) ⋯).inv.app F) ≫
+        eqToHom ⋯ =
+    (D.triangleIso l (b.π.app j) (c.ι.app j) ⋯).hom.app F ≫ eqToHom ⋯
+✔ [3500/3501] Built Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic (23s)
+✖ [3501/3501] Building Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveDescent (22s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-1b73ac9d1f7845368dc41326884a1dc4/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AdditiveDescent.lean:27:31: overloaded, errors 
+  27:34 Unknown identifier `pullback`
+  
+  27:34 Unknown identifier `pullback`
+Some required targets logged failures:
+- Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy
+- Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AdditiveDescent
+error: build failed

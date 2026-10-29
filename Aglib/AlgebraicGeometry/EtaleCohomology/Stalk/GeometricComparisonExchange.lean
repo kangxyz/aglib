@@ -175,13 +175,13 @@ theorem geometricCohomologyComparison_exchange
     (z : ((pointSmallEtale (ζ ≫ g)).sheafFiber (A := AddCommGrpCat.{u + 1})).obj
       ((higherDirectImage f q).obj F)) :
     b' (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-        ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+        ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
         ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app
           ((higherDirectImage f q).obj F) z)) =
       geometricFibreCohomologyTransfer.{u, e} f f' g g' h ζ F q (b z) :=
   geometricCohomologyComparison_pointwise_of_hom_neighborhoodGerms.{u, w, w', s, s', e}
     f f' g g' h ζ F q
-    ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+    ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
     (fun U p y => higherBaseChangeMap_fibreProductCohomologyGerm.{u, w, w', s, s', e,
       dX, dS, dX', dS', dZU, dU, dZV, dV} f f' g g' h U F q ζ p y)
     b b' hb hb' z
@@ -211,7 +211,7 @@ theorem chartGeometricCohomologyComparison_exchange
       hTargetLimitExt hTargetGeometricExt hTargetQc hTargetQs hTargetColimits
       ((inverseImage g').obj F) q)
         (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-          ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+          ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
             hSourceDerived hSourceBaseDerived hTargetDerived hTargetBaseDerived
             f f' g g' h q).app F)
           ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app

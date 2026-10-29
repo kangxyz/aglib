@@ -1,0 +1,36 @@
+{
+  "target": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+  "target_sha256": "f2b0fba00d9c04af59cebfd655491a9af2084e0c9baf437e25ec48883efb9933",
+  "scope": "Ordinary currentN changed generic module only; thinR4/P6 not built in this run.",
+  "run": "remote-274bb8825e4046c88f4f9d65569bd948",
+  "source_content_sha256": "c9814ed37d5d092427c21a0fecfec0c3f59fc8b5564ca27185548f4ad3d1cdda",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-R4-framework-component-equation-274bb882.json",
+  "source_manifest_sha256": "f36acb231e0085af580e63419f0c4d484c1b2a8140b0039ec6a15a440ded1418",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-274bb8825e4046c88f4f9d65569bd948/receipt.json",
+  "receipt_sha256": "513efbc4a18e20dd06dae6af8d7a724843d7c45793dbddda8f3e95eca4a95a76",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism"
+  ],
+  "native_exit": 0,
+  "compiler_invocations": 1,
+  "compiler_failed": 0,
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 2,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 32768,
+    "threads": 4
+  },
+  "selected_log": [
+    "✔ [637/637] Built Aglib.CategoryTheory.Adjunction.Mates.UnitIsomorphism (1.8s)"
+  ],
+  "full_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-274bb8825e4046c88f4f9d65569bd948/build.log",
+  "full_log_sha256": "9d096ab9ce08a5d9340f8e57a6f3ea3038d40ffb75247e72ec1bf9adca87a667",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-274bb8825e4046c88f4f9d65569bd948/compiler-events.jsonl",
+  "events_sha256": "944b49b0de5feefb6b06ccc33c4f63cdf39d2d12506b0e10ed31545fe5796b80",
+  "remaining": "ThinR4current7f7d and actual dependent chain await relevant H1 provider settlement; no repeatedgenericcheck required.",
+  "timestamp_utc": "2026-10-27T18:02:25.090907+00:00"
+}

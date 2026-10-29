@@ -1,0 +1,34 @@
+{
+  "question": "Make the original native HomEquiv-zero calculation explicit after exact line135 type mismatch; preserve entire AS proof otherwise.",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "b6757edf7df596d1f764bcea24a75e231f14096833ea19413f618168022d8036",
+  "output_sha256": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+  "delta_sha256": "6ba2aa63d55f8ecf05b16bbb06f9d4ebfcf505f38078f7b822cb5f2dc608e1c4",
+  "closed_failure": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e5b2c8d38cd47ebb7f3db16ab7b7725",
+    "build_log_sha256": "32f21b79aca3c80d1df436d62018747fc188f1733e1797b28c30663acefe5d2e",
+    "receipt_sha256": "544e42438896704470eb44a7f8bd1634ad63a3e881d5ff34c661f9cc4340cc95",
+    "source_content_sha256": "97aa3a95b086c9f6362ed9f10630bd17a5deb617773bce57afe6e84ab8601804",
+    "source_line": 135,
+    "diagnostic": "Raw comp_zero lemma did not unfold local native HomEquiv E enough to match expected E 0 =0. The separate Proper lower import failure has another owner."
+  },
+  "repair": "Only hzE proof: explicitly unfold E, apply native Adjunction.homEquiv_apply, expose the actual fully typed right-functor zero on literal presheafToSheaf.obj endpoints, then comp_zero. This does not cast constantSheaf and sheafify carriers.",
+  "preservation": {
+    "presheaf_hz_calculation_and_native_naturality_transport_byte_identical": true,
+    "all_other_code_byte_identical": true,
+    "wrappers_held": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+    },
+    "same_maps_units_independent_worlds_and_selected_native_pair": true,
+    "new_flags_model_law_premise_or_hypothesis": false
+  },
+  "compile_targets": [
+    "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+  ],
+  "compiler_coverage": "UNCOMPILED repaired source; root retries same three completed changed modules plus necessary dependencies only. No untouched consumer target or extra test chain.",
+  "remaining_gap": "Native elaboration of this explicit HomEquiv-zero normalization and same fixed wrappers."
+}

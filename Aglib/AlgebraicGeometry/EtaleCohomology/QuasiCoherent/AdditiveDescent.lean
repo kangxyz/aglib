@@ -22,7 +22,11 @@ variable (X : Scheme.{u}) (F : X.Modules) [F.IsQuasicoherent]
 /-- The original lifted additive section presheaf is a sheaf on the big étale slice. -/
 theorem additiveSectionsPresheaf_isSheaf_etale :
     Presheaf.IsSheaf (Scheme.etaleTopology.over X) (additiveSectionsPresheaf X F) :=
-  liftAdditiveTransport_isSheaf _ (homPresheaf X F) _ _ _ _
+  CategoryTheory.PresheafTransport.liftAdditiveTransport_isSheaf
+    (Scheme.etaleTopology.over X) (homPresheaf X F)
+    (fun T => AddCommGrpCat.of Γ((Scheme.Modules.pullback T.hom).obj F, ⊤))
+    (sectionsEquiv X F) (fun f => sectionsAddHom X F f)
+    (fun f s => sectionsAddHom_apply X F f s)
     (homPresheaf_isSheaf_etale X F)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent

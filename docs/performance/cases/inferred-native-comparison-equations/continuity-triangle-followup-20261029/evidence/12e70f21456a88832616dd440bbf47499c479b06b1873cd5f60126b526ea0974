@@ -1,0 +1,32 @@
+✔ [3456/3479] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy (3.2s)
+✔ [3457/3479] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares (5.7s)
+✖ [3458/3479] Building Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension (3.1s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-32b0b319b0534121836b5d69a22718d0/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.setup.json --json
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:97:19: This simp argument is unused:
+  Category.comp_id
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [triangleIso, Iso.trans_hom, Functor.isoWhiskerRight_hom, eqToIso.hom, eqToHom_refl,
+    Category.id_comp, Category.assoc, eqToHom_trans] at ht ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean:108:2: Type mismatch: After simplification, term
+  h
+ has type
+  (D.triangleIso p f p ⋯).hom.app F ≫ (D.left p).map (eqToHom ⋯ ≫ (D.leftIdIso i).hom.app F) ≫ 𝟙 ((D.left p).obj F) =
+    𝟙 ((D.left p).obj F)
+but is expected to have type
+  (D.triangleIso p f p ⋯).hom.app F ≫ (D.left p).map (eqToHom ⋯ ≫ (D.leftIdIso i).hom.app F) = 𝟙 ((D.left p).obj F)
+✔ [3459/3479] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.SectionArrows (4.1s)
+✔ [3460/3479] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CohomologyCocone (6.8s)
+✔ [3461/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitCoefficients (60s)
+✔ [3463/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (5.9s)
+✔ [3466/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (3.7s)
+✔ [3467/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramArrowSections (3.9s)
+✔ [3468/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares (3.8s)
+✔ [3475/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyTransfers (85s)
+✔ [3476/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionTransfers (6.1s)
+✔ [3477/3479] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSectionNaturality (3.6s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension
+error: build failed

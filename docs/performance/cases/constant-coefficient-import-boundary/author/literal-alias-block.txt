@@ -1,0 +1,7 @@
+/-- The finite additive value in the native sheaf-value universe. -/
+abbrev value : AddCommGrpCat.{u + 1} := AddCommGrpCat.of (ULift.{u + 1} A)
+
+/-- The actual native constant abelian sheaf with the displayed finite value. -/
+abbrev coefficient (X : Scheme.{u}) : AbelianSheaf.{u, u + 1} X :=
+  (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (value A)
+

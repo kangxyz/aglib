@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorClassification
+public import Aglib.GroupCohomology.H1.Continuous.CoefficientTransport
 
 /-!
 # Marked descent of actual finite coefficient group schemes
@@ -280,10 +281,8 @@ variable [DistribMulAction G B] [ContinuousSMul G B] [DistribMulAction G D] [Con
 variable (e : B ≃+ D) (he : ∀ (γ : G) b, e (γ • b) = γ • e b)
 
 /-- A genuine equivariant additive marking, with its automatic discrete continuity. -/
-def coefficientMapOfEquiv : CoefficientMap G B D where
-  toContinuousAddMonoidHom := { e.toAddMonoidHom with continuous_toFun :=
-    continuous_of_discreteTopology }
-  map_smul' := he
+def coefficientMapOfEquiv : CoefficientMap G B D :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientMapOfEquiv e he
 
 include he in
 set_option linter.unusedSectionVars false in
@@ -292,36 +291,20 @@ set_option linter.unusedSectionVars false in
 -- Keep the original supplied class/data inputs and binder order of this interface.
 @[nolint unusedArguments]
 theorem coefficientEquiv_symm_equivariant (γ : G) (d : D) :
-    e.symm (γ • d) = γ • e.symm d := by
-  apply e.injective
-  rw [AddEquiv.apply_symm_apply, he, AddEquiv.apply_symm_apply]
+    e.symm (γ • d) = γ • e.symm d :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientEquiv_symm_equivariant e he γ d
 
 /-- Proved coefficient-universe transport of the one existing continuous H¹.
 Its cocycle map is literal postcomposition with the supplied marking. -/
-def coefficientH1Equiv : H1 G B ≃+ H1 G D where
-  toFun := (coefficientMapOfEquiv e he).onH1
-  invFun := (coefficientMapOfEquiv e.symm (coefficientEquiv_symm_equivariant e he)).onH1
-  left_inv a := by
-    obtain ⟨c, rfl⟩ := classOf_surjective G B a
-    simp only [CoefficientMap.onH1_classOf]
-    congr 1
-    apply Cocycle.ext
-    intro γ
-    exact e.symm_apply_apply _
-  right_inv a := by
-    obtain ⟨c, rfl⟩ := classOf_surjective G D a
-    simp only [CoefficientMap.onH1_classOf]
-    congr 1
-    apply Cocycle.ext
-    intro γ
-    exact e.apply_symm_apply _
-  map_add' := (coefficientMapOfEquiv e he).onH1.map_add
+def coefficientH1Equiv : H1 G B ≃+ H1 G D :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientH1Equiv e he
 
 /-- The universe/marking bridge does not change the cocycle beyond its stated
 coefficient map. -/
 theorem coefficientH1Equiv_classOf (c : Cocycle G B) :
     coefficientH1Equiv e he (classOf G B c) =
-      classOf G D ((coefficientMapOfEquiv e he).onCocycles c) := rfl
+      classOf G D ((coefficientMapOfEquiv e he).onCocycles c) :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientH1Equiv_classOf e he c
 
 end CommonH1Transport
 

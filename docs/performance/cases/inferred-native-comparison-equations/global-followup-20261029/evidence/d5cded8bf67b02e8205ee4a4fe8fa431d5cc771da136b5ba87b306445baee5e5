@@ -1,0 +1,59 @@
+# Fixed original-map correspondence
+
+Candidate-v3 is identified by its READY.json. The initial sources and required read-only providers are identified in initial-identity.json, with full bytes in before/. All 36 original public Global.Restriction declaration headers and all 19 original public AffineIntegralConstants.RepresentedSections declaration headers agree, including original variable blocks and native universes. Existing native options are unchanged; the new lower files use no added options.
+
+## Relative test construction
+
+The lower plain-Over `RelativeTests.tests Y` is exactly `Over.pullback Y.hom ⋙ Over.map Y.hom`. `mapApp U a` keeps the original `pullback.lift (pullback.fst U.hom Y.hom) (pullback.snd U.hom Y.hom ≫ a.left)` and its original commuting equation. Its two projections, test-variable naturality, relative identity/composition and the resulting two-variable functor are proved below Scheme.
+
+The morphism-property version is precomposition with the actual `MorphismProperty.Over.forget P ⊤ X`; it is not an identification of P.Over with plain Over. The native original site-base-change/forget composite has the same objects and arrows, as in existing `siteBaseChange_comp_forget_eq_original`. Native directImageTests and directImageTestsMap are thin instances of this construction. The old baseChangedTestMap_left remains rfl with the same lift.
+
+## Selected restriction isomorphism
+
+The lower `restrictionSchemeIso g Y U` is the same selected triple
+
+`pullbackSymmetry U.hom (pullback.snd Y.hom g) ≪≫ pullbackLeftPullbackSndIso Y.hom g U.hom ≪≫ pullbackSymmetry Y.hom (U.hom ≫ g)`.
+
+Its first projection is the original test projection. Its second projection is the original relative-object projection followed by `pullback.fst Y.hom g`. The Over structure map proof uses the original pullback condition. Naturality in both original variables is derived from those projection laws and the literal original test maps.
+
+`restrictionSchemeIso_hom_eq_pasting` relates this exact component to the existing `Over.pullbackPostcomposeIso Y.hom g`: first use the original relative map induced by `(symmetryOverIso g Y).inv`, then the existing pasting component. Both projection equations prove the equality. Thus the existing supplier is reused with its actual opposite pullback ordering. ChartTails was inspected: its analogous map requires real tail-diagram input, so this extraction does not invent an index diagram to access it.
+
+The existing `Over.mapPullbackAdj_counit_left` remains the original counit first-projection law. This extraction does not replace the adjunction or select a new pullback.
+
+## Independent value category and actual section maps
+
+For arbitrary value category A, `coordinates P F Y = (tests P Y).op ⋙ F` and coordinateMap is exactly whiskering the opposite original test map by F. Their complete functor laws are below Scheme.
+
+Given the actual section comparison `e : (Over.map g).op ⋙ F ≅ G`, `coordinateRestrictionIso` is the old full opComp/whisker/associator composite. Its component law is precisely
+
+`F.map ((restrictionIso P g hg Y).hom.app U).op ≫ e.hom.app (op ((tests P ((Over.pullback g).obj Y)).obj U))`.
+
+No final coordinate square is supplied as a field or premise. Relative naturality follows from the proved original relative-test square and `e.hom.naturality` at the actual relative test map. The complete coordinateRestrictionNatIso packages those same components.
+
+The native e is the original `sectionFunctorBaseChangeIso` followed by the original `sectionFunctorGroupIso (constantGroupBaseChangeIso ...)`. Native coordinateRestrictionIso_apply preserves the same original Over-adjunction pullbackSectionEquiv and fixed group-comparison hom on every lifted additive section. The nested native ULift/Additive carriers are not duplicated or changed.
+
+## Original represented transitions and CopyObj
+
+Native constantRepresentedDirectImageFunctor uses existing Functor.actualDiagramLift, which already uses native Faithful.div. Its object map and supplied arrow remain the original constantRepresentedDirectImage and constantRepresentedDirectImageMap. The coordinate functor supplies the proved laws; no arbitrary full functor or selected morphism preimage is assumed. The actual supplied map field is definitionally retained.
+
+Functor.copyObjRestrictionIso is the whole original isoCopyObj whisker composite. Its complete normalization is proved below Scheme. Functor.liftRestrictionIso is the same fully faithful preimageIso of the source-coordinate comparison, original coordinate restriction and inverse target-coordinate comparison. Its whole normalization is derived from map_preimage and cancellation of that actual target comparison. The native public wrappers retain the original component equations. The old public presheaf comparison still uses the same copyObjRestrictionIso, and the lifted construction is its same full composite after forgetting sheaf conditions.
+
+## Retained unit laws and canonical boundary
+
+The independent originalUnitTransport proof and its constantRepresentedDirectImageUnit_original instance remain byte-for-byte unchanged. The native representedEtaleRestrictionIso_unit and representedEtaleRestrictionIso_original proofs are also unchanged. All original finite/commutative/étale hypotheses and actual coefficient representations remain native inputs.
+
+Both existing maps `constantPushforwardEtaleBaseChangeComponent` and `(constantPushforwardRestrictionIso ...).app (op Y)` remain as defined, with no equality inserted from their endpoints. The common extraction proves the selected test/pasting and coordinate equations. It does not by itself supply the additional compatibility of the finite coefficient/group transport with the canonical exchange and the relative-object symmetry map.
+
+Precisely, for A equal to the original finite-constant pushforward at Y, δ the coordinate-built restriction hom, κ the canonical component hom, and η the original inverseImageAdjunction g unit, the unresolved compatibility is
+
+`η.app A ≫ (directImage g).map δ = η.app A ≫ (directImage g).map κ`.
+
+The existing adjunction homEquiv is injective, so this exact original-unit equation would prove δ = κ. The canonical side has the original baseChangeMap_horizontal_unit characterization and original coefficient/symmetry transitions. No proof of the coordinate side of this precise equation is claimed here, and no new hypothesis is added to any old theorem. The original native coordinate-built view is retained as directed by the principal.
+
+## Evidence boundary
+
+This is a fixed existing-proof refactor, with no new geometry or theory. Candidate-v1 was superseded before runtime capture by candidate-v3, whose only delta is proof-tactic normalization in the lower relative-test file. Compiler and ordinary-review results must bind their actual candidate hashes. No standalone lint/test/replay/client or untouched downstream build has been requested.
+
+## Existing group-section comparison reused in v3
+
+The full original constantDirectImageCoordinatesIso, including its naturality proof, now instantiates the already accepted CommutativeGroupSections.adjunctionIso, inversely whiskered by the actual site-base-change/forget composite. Its component is the original lifted additive inverse Over Hom equivalence. The original pullbackSectionMulEquiv and adj.homMulEquiv have the same given adj.homEquiv in both directions; multiplicativity proof fields do not change their maps. This completes the shared section-comparison constructor without another group-section model or duplicated naturality proof.

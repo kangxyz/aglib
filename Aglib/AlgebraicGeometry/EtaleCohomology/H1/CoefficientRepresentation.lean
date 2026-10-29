@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
+public import Aglib.CategoryTheory.Monoidal.Cartesian.RepresentedGroupReflection
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.CommGrp_
 
 /-!
@@ -117,22 +118,29 @@ theorem sectionEquiv_mul (U : X.Etale)
     (f g : (Scheme.Etale.forget X).obj U ⟶ (groupScheme L Y e).X) :
     sectionEquiv L Y e U (f * g) =
       sectionEquiv L Y e U f + sectionEquiv L Y e U g := by
-  let := coverGroup L Y e
-  let V : X.Etale := (toEtale X).obj (Y ⊗ Y)
-  let q : U ⟶ V := MorphismProperty.Over.homMk (lift f g).left (Over.w (lift f g)) (by trivial)
-  have hm : sectionEquiv L Y e V (μ[Y]).hom =
-      sectionEquiv L Y e V (fst Y Y).hom + sectionEquiv L Y e V (snd Y Y).hom := by
-    exact (sectionEquiv L Y e V).apply_symm_apply _
-  change sectionEquiv L Y e U ((Scheme.Etale.forget X).map q ≫ (μ[Y]).hom) = _
-  rw [sectionEquiv_naturality, hm, map_add]
-  rw [← sectionEquiv_naturality, ← sectionEquiv_naturality]
-  congr 1
-  · apply congrArg (sectionEquiv L Y e U)
-    change lift f g ≫ fst _ _ = f
-    exact lift_fst f g
-  · apply congrArg (sectionEquiv L Y e U)
-    change lift f g ≫ snd _ _ = g
-    exact lift_snd f g
+  let : (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X).Monoidal :=
+    coverForgetMonoidal (X := X)
+  let β : (toEtale X) ⋙ Scheme.Etale.forget X ≅
+      _root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X :=
+    NatIso.ofComponents (fun _ => Iso.refl _) (by
+      intro Z W a
+      simpa only [Iso.refl_hom, Category.comp_id, Category.id_comp] using
+        (show ((toEtale X) ⋙ Scheme.Etale.forget X).map a =
+          (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X).map a from rfl))
+  exact (CommutativeGroupSections.sectionEquiv_mul_of_original_representation.{u + 1}
+    (T := Scheme.Etale.forget X) (I := toEtale X)
+    (J := _root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X) (β := β)
+    (hT := Functor.FullyFaithful.ofFullyFaithful (Scheme.Etale.forget X))
+    (A := L.obj) (Y := Y) (α := representable L Y e)
+    (ξ := fun U => sectionEquiv L Y e U)
+    (hξ := by
+      intro U V a b
+      exact sectionEquiv_naturality L Y e a b)
+    (hα := by
+      intro Z a
+      change sectionEquiv L Y e ((toEtale X).obj Z) a.hom =
+        sectionEquiv L Y e ((toEtale X).obj Z) (𝟙 _ ≫ a.hom)
+      rw [Category.id_comp])) U f g
 
 /-- The actual additive sheaf isomorphism, including nonfinite etale test schemes. -/
 def sheafIso : representedSheaf (groupScheme L Y e) ≅ L :=
@@ -193,35 +201,23 @@ theorem representedSheafPreimage_app (q : representedSheaf H ⟶ representedShea
     ((underlyingSetFunctor X).map q) U f
 
 instance representedSheafPreimage_isMonHom (q : representedSheaf H ⟶ representedSheaf K) :
-    IsMonHom (representedSheafPreimage q) where
-  one_hom := by
-    have h := representedSheafPreimage_app q (etaleTerminal X) (η[H.X])
-    have hz : (ULift.up (Additive.ofMul (η[H.X])) :
-        RepresentedSections H ((Scheme.Etale.forget X).obj (etaleTerminal X))) = 0 := by
-      apply ULift.ext
-      change η[H.X] = toUnit (𝟙_ (Over X)) ≫ η[H.X]
-      rw [show toUnit (𝟙_ (Over X)) = 𝟙 _ from toUnit_unique _ _]
-      exact (Category.id_comp _).symm
-    rw [hz, map_zero] at h
-    have h' := congrArg (fun a => a.down.toMul) h
-    change η[H.X] ≫ representedSheafPreimage q = toUnit (𝟙_ (Over X)) ≫ η[K.X] at h'
-    rw [show toUnit (𝟙_ (Over X)) = 𝟙 _ from toUnit_unique _ _, Category.id_comp] at h'
-    exact h'
-  mul_hom := by
-    let HC := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom
-    let U := (toEtale X).obj (HC ⊗ HC)
-    let a : RepresentedSections H ((Scheme.Etale.forget X).obj U) := ⟨Additive.ofMul (fst H.X H.X)⟩
-    let b : RepresentedSections H ((Scheme.Etale.forget X).obj U) := ⟨Additive.ofMul (snd H.X H.X)⟩
-    have h := (q.hom.app (op U)).hom.map_add a b
-    change q.hom.app (op U) (ULift.up (Additive.ofMul ((fst H.X H.X) * (snd H.X H.X)))) =
-      q.hom.app (op U) a + q.hom.app (op U) b at h
-    rw [← representedSheafPreimage_app q U, ← representedSheafPreimage_app q U,
-      ← representedSheafPreimage_app q U] at h
-    have h' := congrArg (fun a => a.down.toMul) h
-    change (lift (fst H.X H.X) (snd H.X H.X) ≫ μ[H.X]) ≫ representedSheafPreimage q =
-      lift (fst H.X H.X ≫ representedSheafPreimage q)
-        (snd H.X H.X ≫ representedSheafPreimage q) ≫ μ[K.X] at h'
-    simpa only [lift_fst_snd, Category.id_comp, lift_fst_comp_snd_comp] using h'
+    IsMonHom (representedSheafPreimage q) := by
+  let T := Scheme.Etale.forget X
+  let Q (U : X.Etale) : AddCommGrpCat.of (RepresentedSections H (T.obj U)) ⟶
+      AddCommGrpCat.of (RepresentedSections K (T.obj U)) := q.hom.app (op U)
+  let HC := _root_.AlgebraicGeometry.Scheme.FiniteEtale.mk H.X.hom
+  let U₂ := (toEtale X).obj (HC ⊗ HC)
+  let κ₀ : T.obj (etaleTerminal X) ≅ 𝟙_ (Over X) := Iso.refl _
+  let : (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X).Monoidal :=
+    CoefficientRepresentation.coverForgetMonoidal (X := X)
+  let κ₂ : T.obj U₂ ≅ H.X ⊗ H.X :=
+    (Functor.Monoidal.μIso (_root_.AlgebraicGeometry.Scheme.FiniteEtale.forget X) HC HC).symm
+  exact CommutativeGroupSections.isMonHom_of_original_test_sections.{u + 1, u + 1}
+    (T := T) (H := H) (K := K) (U₀ := etaleTerminal X) (U₂ := U₂)
+    (κ₀ := κ₀) (κ₂ := κ₂) (Q := fun U => (Q U).hom) (r := representedSheafPreimage q)
+    (hr := by
+      intro U f
+      exact representedSheafPreimage_app q U f)
 
 /-- The recovered actual coefficient group-scheme morphism. -/
 def representedSheafGroupPreimage (q : representedSheaf H ⟶ representedSheaf K) : H ⟶ K :=

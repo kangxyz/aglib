@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles
+public import Aglib.Topology.Sheaves.Cech.Resolution
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.LocallyFree
 public import Mathlib.CategoryTheory.Adjunction.Whiskering
 public import Mathlib.Topology.Sheaves.Flasque
@@ -49,57 +50,39 @@ universe u
 variable (X : Scheme.{u})
 /-- The sheafified free abelian presheaf functor on the Zariski site of `X`. -/
 abbrev additiveFreeFunctor :=
-  (Functor.whiskeringRight X.Opensᵒᵖ _ _).obj AddCommGrpCat.free ⋙
-    presheafToSheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}
+  TopCat.Sheaf.Cech.additiveFreeFunctor X.toTopCat
+
 /-- The adjunction between sheafified free abelian presheaves and underlying presheaves of sets. -/
 abbrev additiveFreeAdjunction :=
-  (AddCommGrpCat.adj.whiskerRight X.Opensᵒᵖ).comp
-    (sheafificationAdjunction (Opens.grothendieckTopology X) AddCommGrpCat.{u})
+  TopCat.Sheaf.Cech.additiveFreeAdjunction X.toTopCat
+
 /-- The functor assigning to each open of `X` the free abelian sheaf on its representable
 presheaf. -/
 abbrev additiveOpenFreeFunctor :
     X.Opens ⥤ Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u} :=
-  yoneda ⋙ (additiveFreeFunctor X)
+  TopCat.Sheaf.Cech.additiveOpenFreeFunctor X.toTopCat
 
 /-- Morphisms from the free abelian sheaf on `U`, identified with sections of `A` over `U`. -/
-def additiveOpenHomEquiv (U : X.Opens)
+abbrev additiveOpenHomEquiv (U : X.Opens)
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}) :
     ((additiveOpenFreeFunctor X).obj U ⟶ A) ≃ A.obj.obj (op U) :=
-  ((additiveFreeAdjunction X).homEquiv _ _).trans yonedaEquiv
+  TopCat.Sheaf.Cech.additiveOpenHomEquiv X.toTopCat U A
 
 theorem additiveOpenHomEquiv_naturality {U V : X.Opens} (i : U ⟶ V)
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u})
     (f : (additiveOpenFreeFunctor X).obj V ⟶ A) :
     additiveOpenHomEquiv X U A ((additiveOpenFreeFunctor X).map i ≫ f) =
-      A.obj.map i.op (additiveOpenHomEquiv X V A f) := by
-  change yonedaEquiv ((additiveFreeAdjunction X).homEquiv _ _
-    ((additiveFreeFunctor X).map (yoneda.map i) ≫ f)) = _
-  rw [Adjunction.homEquiv_naturality_left]
-  exact (yonedaEquiv_naturality _ i).symm
+      A.obj.map i.op (additiveOpenHomEquiv X V A f) :=
+  TopCat.Sheaf.Cech.additiveOpenHomEquiv_naturality X.toTopCat i A f
 
 instance additiveOpenFreeFunctor_map_mono {U V : X.Opens} (i : U ⟶ V) :
-    Mono ((additiveOpenFreeFunctor X).map i) := by
-  change Mono ((presheafToSheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}).map
-    (Functor.whiskerRight (yoneda.map i) AddCommGrpCat.free))
-  have : Mono (Functor.whiskerRight (yoneda.map i) AddCommGrpCat.free) := by
-    apply NatTrans.mono_of_mono_app
-  infer_instance
+    Mono ((additiveOpenFreeFunctor X).map i) :=
+  TopCat.Sheaf.Cech.additiveOpenFreeFunctor_map_mono X.toTopCat i
 
 instance additiveSheaf_injective_isFlasque
     (A : Sheaf (Opens.grothendieckTopology X) AddCommGrpCat.{u}) [Injective A] :
-    TopCat.Presheaf.IsFlasque A.obj where
-  epi {U V} i := by
-    apply (AddCommGrpCat.epi_iff_surjective _).mpr
-    intro s
-    let f := (additiveOpenHomEquiv X V.unop A).symm s
-    let g := Injective.factorThru f ((additiveOpenFreeFunctor X).map i.unop)
-    refine ⟨additiveOpenHomEquiv X U.unop A g, ?_⟩
-    calc
-      _ = additiveOpenHomEquiv X V.unop A ((additiveOpenFreeFunctor X).map i.unop ≫ g) :=
-        (additiveOpenHomEquiv_naturality X i.unop A g).symm
-      _ = additiveOpenHomEquiv X V.unop A f :=
-        congrArg (additiveOpenHomEquiv X V.unop A) (Injective.comp_factorThru f _)
-      _ = s := (additiveOpenHomEquiv X V.unop A).apply_symm_apply s
+    TopCat.Presheaf.IsFlasque A.obj :=
+  TopCat.Sheaf.Cech.additiveSheaf_injective_isFlasque X.toTopCat A
 
 variable {X}
 

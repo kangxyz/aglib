@@ -66,6 +66,13 @@ presheaf only through generic equivalences such as `AddEquiv.addSubgroupCongr`; 
 subtypes of `Pic_{X/k,(fppf)}` exhausted kernel memory.
 [Over-category comparison case](performance/over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md).
 
+For continuity coefficient and cohomology legs, type the original component
+inverse or input at the literal diagram object, then compose its whole value
+law or apply native `H.map_comp_apply` directly. Reuse one typed alias for the
+original inverse constant-source arrow across assemblers; supply the given
+`HasExt` at its projected apex type. Retain the original maps and premises.
+[Continuity typed original endpoints](performance/continuity-typed-original-endpoints.md).
+
 **Prove the whole relevant equation before evaluating components.** Compose,
 transport or cancel the original transformations/isomorphisms over variables,
 match the consumer's exact association and whiskering, then evaluate once.
@@ -74,12 +81,59 @@ input `x`, output `y` and canonical equations so the generic conclusion is
 already the consumer's literal `E x = y`. The supplied equations remain proved
 from the original data; abstracting only one map or the final scalar step can
 leave the costly specialization unchanged.
+For native square and triangle comparisons, first derive the whole law on the
+actual original isos, using independently proved identities to the same
+coherent data. Then evaluate with raw variable-category lemmas at those same
+heads. Share the original coefficient constructor and instantiate its actual
+functors, units and adjunctions once; same-endpoint isos alone do not preserve
+the map. [Whole original comparison laws](performance/whole-original-comparison-laws.md).
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
 For a sheafified tensor associator, prove typed three-isomorphism cancellation
 and a variable-functor naturality/map-square equation before supplying the
 actual `L.obj` and tensor endpoints.
 [Chosen-associator case](performance/abstract-foundation-construction-boundaries.md#prove-the-chosen-associators-typed-square-before-tensor-specialization).
+
+**Consume a producer equation at its actual inferred type.** If the original
+proof application checks at its inferred proposition but conversion to a
+manually restated native equation times out, retain it with unannotated
+`have hcube := producer ...`. Feed that equation directly to complete
+variable-category morphism cancellation, keeping the original functor, target
+arrow and four comparison edges explicit while the equation infers its middle
+component and endpoints. Prove every native invertibility and conservativity
+fact; keep the original arrow in the conclusion. Generic whole-cube cancellation
+alone and explicit native functor/projection typing did not close this case.
+Raw dictionary differences and type-size measurements locate a diagnostic
+boundary, not a unique kernel cause. The full frozen theorem and later generic
+production module passed; the thin production consumer remains pending in this
+record. [Inferred native equation case](performance/inferred-native-comparison-equations.md).
+The later [source-bound integration milestone](performance/inferred-native-comparison-equations.md#integration-milestone-2026-10-27-source-33013d99)
+records the thin consumer passing on source `33013d99`; later changed imports
+and downstream endpoints retain their own coverage limits.
+
+**Infer a composed equality before normalizing it against a concrete goal.**
+When `simpa ... using` hits recursion limits or a type mismatch, compose the
+already proved equations without an expected target (`have hfinal := hmap.trans
+hclass`). Normalize that inferred hypothesis and the actual goal in their
+respective locations, then use `exact hfinal`. The Field case passed in two
+faithful isolated candidates and the exact adopted production module; it added
+no helper, model, import, option or hypothesis. Identical printed expressions do
+not identify the hidden conversion cause, and module times are not proof-only
+or matched speedup evidence.
+[Field follow-up](performance/inferred-native-comparison-equations.md#field-follow-up-infer-the-composed-equality-before-normalization).
+
+**Transpose the whole original composite over a variable adjunction.** When
+native sheafification zero/naturality laws elaborate but their final concrete
+transport still times out, use a helper whose conclusion is the actual supplied
+`k ≫ g = 0`. Keep the same adjunction and arrows, pass the whole equation
+`(adj.homEquiv P A) k = i` and proved presheaf composite, and pin naturality's
+source/target objects before specialization. At the caller, discharge those
+equations from the original unit law and ring calculation; do not add them as
+public assumptions or return a rebuilt inverse-HomEquiv map for another concrete
+comparison. A faithful formation check and prefix markers distinguish this
+frontier from earlier work; aggregate unfolding counters do not identify the
+exact conversion pair.
+[Native Artin–Schreier case](performance/native-artin-schreier-whole-transposition.md).
 
 **Match the actual transfer before cancellation.** If a cancellation lemma
 accepts one presentation of a cohomology transfer while its native consumer
@@ -170,6 +224,34 @@ The concrete equation still needs its original proof.
 [Equation/field cases](performance/equation-proofs-presentations-and-structure-fields.md),
 [conormal comparisons](performance/preserve-regular-equations-through-conormal-comparisons.md).
 
+For native raw-Hom charts, retain the same regular composition equation in
+its actual overlap relation and the generic cancellation helper. Prove the
+original diagonal scalar, transition identity and fully typed identity
+restriction separately, then compose those equations with the existing
+restriction-map view. This avoids asking one concrete simplification to
+traverse the entire pseudofunctor implementation. A regular equation used by
+a public definition must have the required public visibility; a private proof
+helper can remain private.
+[Raw-chart case](performance/native-line-bundle-raw-chart-equations.md).
+
+**Align a complete shared construction with its original proof inputs.** Build
+the full operational family once before its concrete representation. When
+the original equation still meets expensive conversion, normalize object and
+constructor projections in the instantiated core telescope and original
+component proof types before supplying the actual maps and proofs. Preserve
+the economical raw equation, actual values and selected realization. The
+[Global follow-up](performance/inferred-native-comparison-equations.md#global-follow-up-shared-construction-and-normalized-proof-inputs)
+records the failed diagnostics and the source-bound production module pass.
+
+**Keep equality proof inputs through projection normalization.** Build the
+whole law from the original comparison data and apply its raw evaluator only
+after identifying those same values. Normalize needed definitional projections
+in the instantiated telescope and proof-input types; if `simp` replaces an
+original equality type by `True`, use the appropriate definitional-only
+normalization and supply the original equality. The
+[continuity triangle case](performance/inferred-native-comparison-equations.md#continuity-triangle-follow-up-preserve-original-proof-inputs)
+records the failed input applications and source-bound native module pass.
+
 **Share the actual constructor, not only a theorem about rebuilt data.** Reuse
 the same function/functor/comparison head in definitions, statements and
 applications. If needed, construct the complete comparison inside the generic
@@ -177,11 +259,20 @@ producer. A tensor-chart witness had to construct its tensor comparison
 internally; coefficient-single tests had to reach the actual `zmodSingle`
 head expected by their provider.
 [Tensor witness](performance/construct-the-tensor-comparison-inside-the-shared-chart-witness.md),
-[coefficient-single cases](performance/share-the-actual-coefficient-single-data-head-before-transporting-exchange-tests.md).
+[coefficient-single cases](performance/share-the-actual-coefficient-single-data-head-before-transporting-exchange-tests.md). A later injective-assembly repair adds a lower view at variable
+`Z`, with the original construction equation `Z = U ⋙ single`, then supplies
+the actual `zmodSingle` and `rfl` at the native call. The full assembly and
+original data remain intact. [Proper injective follow-up](performance/inferred-native-comparison-equations.md#proper-injective-follow-up-retain-the-original-single-head).
 For localization triangles, share the actual lift, whole vertex factorization
 and specified first/second arrows with the transported original connecting
 arrow; retain named original-value equations for existing unfolding consumers.
 [Triangle and original-value case](performance/abstract-foundation-construction-boundaries.md#keep-intrinsic-comparisons-whole-and-retain-original-value-views).
+For a slice comparison built from an equivalence, share the native
+`compInverseIso` constructor and a regular whole counit equation over variable
+categories, then specialize those same heads. At its product boundary, an
+explicit equivalence retaining the original section values can relate the
+actual fibre to the existing chosen product fibre.
+[Validated slice case](performance/etale-slice-shared-comparison.md).
 
 **Reconcile native composition branches once.** For a derived comparison built
 from two composition isomorphisms and an ordinary isomorphism, use the installed
@@ -293,6 +384,10 @@ use `inferInstanceAs` for the actual `HasExt`, and obtain preservation from
 the original equivalence/adjunction before projecting its field. Use
 `IsIso.mono_of_iso` when that is precisely the available hypothesis.
 [Preservation dictionary](performance/pass-the-preservation-dictionary-of-an-equivalence-explicitly.md).
+At native Scheme/module wrappers, a functor ascription alone may leave the
+preservation predicate at another category/zero head. Supply the existing
+generic proof at the caller's explicit category and structure arguments.
+[Native evaluation and zero dictionaries](performance/native-evaluation-zero-dictionaries.md).
 For projected geometric fibres and cone apices, bind the original `HasExt.{e}`
 at the exact `Over`-left or `.pt.left` type with `inferInstanceAs`.
 [PBC projected dictionaries](performance/pbc-original-map-and-finite-model-boundaries.md#retain-the-whole-indexed-germ-law-before-point-evaluation).
@@ -353,6 +448,12 @@ mathematical conditions govern that choice.
   in a failed graph retains only its actual scope.
 - Use focused dependency owners for independent interfaces. Batch necessary
   edits to widely imported providers, and preserve unaffected consumers.
+- Separate primitive coefficient aliases from classification-heavy providers.
+  Preserve literal names, types, RHS and native lifts, reexport the leaf from
+  the geometric owner, and redirect only coefficient consumers. Bind existing
+  base instances at the actual functor image when needed. Retain matching
+  incremental passes; import-edge removal alone is no timing claim.
+  [Constant coefficient import boundary](performance/constant-coefficient-import-boundary.md).
 - When target graphs are already concurrent, avoid compiling the same unresolved
   prerequisite in both: keep it with one owner and partition the remaining
   pending branches. This does not require parallel workers or a new scheduler.
@@ -402,7 +503,11 @@ retain their existing requirements.
 1. Keep one implicated declaration/module on its actual pinned source, prepared
    dependencies and effective options. Put diagnostic outputs in scratch.
 2. Separate imports, elaboration, synthesis, tactics, kernel work, lint and
-   serialization. Instrumentation can itself cause failure.
+   serialization. Instrumentation can itself cause failure. For a native-faithful
+   scratch probe, obtain `lake --no-build setup-file actualModule` and pass the
+   resulting `--setup`, retaining exact module name, `isModule`, imports and all
+   library options. A managed resource wrapper alone does not forward them;
+   [A's earlier option-equivalence interpretation was withdrawn](performance/inferred-native-comparison-equations.md#native-option-faithfulness-and-withdrawn-interpretation).
 3. Inspect selected profiler frames, compact expression heads and actual implicit
    arguments. Unfolding counts are not per-constant time; large printed terms
    can consume diagnostic resources.
@@ -428,6 +533,18 @@ asynchronous kernel checks of the preceding declarations (a candidate reading
 whose totals matched in two profiles); compare it with those checks before
 attributing it to the tactic
 ([profile reading](performance/over-category-comparisons-type-identity-isomorphisms-at-the-actual-object.md)).
+
+**Keep a diagnostic frontier distinct from a repair result.** When short
+cohomology adapters have large named Kernel intervals, inspect one actual
+site/Ext/additive presentation and its scalar consumer before changing result
+types or transparency throughout the API. Elaboration traces through
+`Ext.homEquiv`, `Localization.SmallHom.equiv` or `equivShrink` identify a
+candidate boundary, not the exact kernel reduction pair or a speedup. Repeated
+zero-preservation synthesis at literal category/zero heads can justify a local
+pilot with an existing witness. Retain source/setup provenance, structured
+frames and exact excerpts; keep an oversized authoritative raw trace at its
+hash-bound durable locator. Do not allocate unprofiled wall time from overlapping
+instrumented intervals. [Čech diagnostic frontier](performance/cech-intrinsic-conversion-frontier.md).
 
 ### Search upstream references
 

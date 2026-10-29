@@ -39,10 +39,8 @@ theorem cohomologyMapIso_bijective {X : Scheme.{u}}
     [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
     {L M : AbelianSheaf.{u, u + 1} X} (e : L ≅ M) (q : ℕ) :
     Function.Bijective (Sheaf.H.map e.hom q) := by
-  have h (L M : AbelianSheaf.{u, u + 1} X) (e : L ≅ M) :
-      Function.LeftInverse (Sheaf.H.map e.inv q) (Sheaf.H.map e.hom q) := by
-    intro a
-    rw [← Sheaf.H.map_comp_apply, e.hom_inv_id, Sheaf.H.map_id_apply]
-  exact ⟨(h L M e).injective, (h M L e.symm).surjective⟩
+  let H : AbelianSheaf.{u, u + 1} X ⥤ AddCommGrpCat.{w} :=
+    Sheaf.functorH.{w, u + 1, u, u + 1} X.smallEtaleTopology q
+  exact (H.mapIso e).addCommGroupIsoToAddEquiv.bijective
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

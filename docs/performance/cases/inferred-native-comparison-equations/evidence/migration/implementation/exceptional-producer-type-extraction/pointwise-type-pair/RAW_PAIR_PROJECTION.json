@@ -1,0 +1,1102 @@
+{
+  "input_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-pointwise-type-pair-d72be55f/stdout.log",
+  "input_stdout_sha256": "4de9de7405d7b1386872b1e450cc88954974b4b53ed1fa88414c9003c875f6f7",
+  "actual": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/ACTUAL.rawexprdag.txt",
+    "sha256": "976ededafb405a30dfe66e98d8850c34536c81291ccc81563eb41b61ecda4820",
+    "bytes": 71343,
+    "root": 1247,
+    "structural_dag_nodes": 1248
+  },
+  "expected": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/EXPECTED.rawexprdag.txt",
+    "sha256": "f99d7902338ea8e1fa290b80c8f380096b49069846a2820152993767b2276226",
+    "bytes": 100900,
+    "root": 1843,
+    "structural_dag_nodes": 1844
+  },
+  "actual_has_mvars": false,
+  "expected_has_mvars": false,
+  "raw_alpha_equal": false,
+  "raw_structural_equal": false,
+  "first_difference_path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2].arg[5].head",
+  "first_difference_reason": "raw-constructor-or-payload",
+  "first_difference_actual": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/DIFF_ACTUAL.rawexprdag.txt",
+    "sha256": "51cb563afc563ce04aec2f036114519f125bec7c9039a3a14dd1165c10b70901",
+    "bytes": 232,
+    "root": 0,
+    "structural_dag_nodes": 1
+  },
+  "first_difference_expected": {
+    "file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/DIFF_EXPECTED.rawexprdag.txt",
+    "sha256": "d46accce304968397222e3bc07375ea5a46d7392786fe54b7036034896214426",
+    "bytes": 460,
+    "root": 0,
+    "structural_dag_nodes": 1
+  },
+  "difference_path_walk": [
+    {
+      "path": "root",
+      "actual": {
+        "node": 1247,
+        "kind": "app",
+        "head_node": 0,
+        "head_payload": "const name=`Eq levels=[Lean.Level.succ (Lean.Level.param `wAS')]",
+        "application_argument_count": 3,
+        "head_constant": "Eq",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `wAS')]",
+        "immediate_arguments": [
+          {
+            "node": 636,
+            "kind": "app",
+            "head_node": 1,
+            "head_payload": "const name=`Quiver.Hom levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "Quiver.Hom",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 926,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1246,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1843,
+        "kind": "app",
+        "head_node": 0,
+        "head_payload": "const name=`Eq levels=[Lean.Level.succ (Lean.Level.param `wAS')]",
+        "application_argument_count": 3,
+        "head_constant": "Eq",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `wAS')]",
+        "immediate_arguments": [
+          {
+            "node": 636,
+            "kind": "app",
+            "head_node": 1,
+            "head_payload": "const name=`Quiver.Hom levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "Quiver.Hom",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1286,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1842,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1]",
+      "actual": {
+        "node": 926,
+        "kind": "app",
+        "head_node": 638,
+        "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 7,
+        "head_constant": "CategoryTheory.CategoryStruct.comp",
+        "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 113,
+            "kind": "app",
+            "head_node": 58,
+            "head_payload": "const name=`CategoryTheory.Category.toCategoryStruct levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 2,
+            "head_constant": "CategoryTheory.Category.toCategoryStruct",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 420,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 751,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 635,
+            "kind": "app",
+            "head_node": 422,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 797,
+            "kind": "app",
+            "head_node": 754,
+            "head_payload": "const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.map",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 925,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1286,
+        "kind": "app",
+        "head_node": 638,
+        "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 7,
+        "head_constant": "CategoryTheory.CategoryStruct.comp",
+        "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 113,
+            "kind": "app",
+            "head_node": 58,
+            "head_payload": "const name=`CategoryTheory.Category.toCategoryStruct levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 2,
+            "head_constant": "CategoryTheory.Category.toCategoryStruct",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 420,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 751,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 635,
+            "kind": "app",
+            "head_node": 422,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 797,
+            "kind": "app",
+            "head_node": 754,
+            "head_payload": "const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.map",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1285,
+            "kind": "app",
+            "head_node": 638,
+            "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 7,
+            "head_constant": "CategoryTheory.CategoryStruct.comp",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6]",
+      "actual": {
+        "node": 925,
+        "kind": "app",
+        "head_node": 638,
+        "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 7,
+        "head_constant": "CategoryTheory.CategoryStruct.comp",
+        "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 113,
+            "kind": "app",
+            "head_node": 58,
+            "head_payload": "const name=`CategoryTheory.Category.toCategoryStruct levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 2,
+            "head_constant": "CategoryTheory.Category.toCategoryStruct",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 751,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 828,
+            "kind": "app",
+            "head_node": 800,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 635,
+            "kind": "app",
+            "head_node": 422,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 863,
+            "kind": "app",
+            "head_node": 831,
+            "head_payload": "const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.NatTrans.app",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 924,
+            "kind": "app",
+            "head_node": 865,
+            "head_payload": "const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.map",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1285,
+        "kind": "app",
+        "head_node": 638,
+        "head_payload": "const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 7,
+        "head_constant": "CategoryTheory.CategoryStruct.comp",
+        "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 113,
+            "kind": "app",
+            "head_node": 58,
+            "head_payload": "const name=`CategoryTheory.Category.toCategoryStruct levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 2,
+            "head_constant": "CategoryTheory.Category.toCategoryStruct",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 751,
+            "kind": "app",
+            "head_node": 116,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAS,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1188,
+            "kind": "app",
+            "head_node": 800,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 635,
+            "kind": "app",
+            "head_node": 422,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1223,
+            "kind": "app",
+            "head_node": 1191,
+            "head_payload": "const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.NatTrans.app",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1284,
+            "kind": "app",
+            "head_node": 1225,
+            "head_payload": "const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.map",
+            "head_levels_repr": "[Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3]",
+      "actual": {
+        "node": 828,
+        "kind": "app",
+        "head_node": 800,
+        "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 6,
+        "head_constant": "CategoryTheory.Functor.obj",
+        "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 677,
+            "kind": "app",
+            "head_node": 645,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 731,
+            "kind": "app",
+            "head_node": 679,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 112,
+            "kind": "app",
+            "head_node": 60,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 819,
+            "kind": "app",
+            "head_node": 805,
+            "head_payload": "const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.comp",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 827,
+            "kind": "app",
+            "head_node": 821,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1188,
+        "kind": "app",
+        "head_node": 800,
+        "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 6,
+        "head_constant": "CategoryTheory.Functor.obj",
+        "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 677,
+            "kind": "app",
+            "head_node": 645,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 731,
+            "kind": "app",
+            "head_node": 679,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 54,
+            "kind": "app",
+            "head_node": 2,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 112,
+            "kind": "app",
+            "head_node": 60,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 819,
+            "kind": "app",
+            "head_node": 805,
+            "head_payload": "const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wAX,\n Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 8,
+            "head_constant": "CategoryTheory.Functor.comp",
+            "head_levels_repr": "[Lean.Level.param `wAX,\n Lean.Level.param `wAX',\n Lean.Level.param `wAS',\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1187,
+            "kind": "app",
+            "head_node": 821,
+            "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 6,
+            "head_constant": "CategoryTheory.Functor.obj",
+            "head_levels_repr": "[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3].arg[5]",
+      "actual": {
+        "node": 827,
+        "kind": "app",
+        "head_node": 821,
+        "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 6,
+        "head_constant": "CategoryTheory.Functor.obj",
+        "head_levels_repr": "[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 257,
+            "kind": "app",
+            "head_node": 221,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 311,
+            "kind": "app",
+            "head_node": 259,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 677,
+            "kind": "app",
+            "head_node": 645,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 731,
+            "kind": "app",
+            "head_node": 679,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 740,
+            "kind": "app",
+            "head_node": 735,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]",
+            "application_argument_count": 5,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying",
+            "head_levels_repr": "[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]"
+          },
+          {
+            "node": 418,
+            "kind": "fvar",
+            "head_node": 418,
+            "head_payload": "fvar id=Lean.Name.mkNum `_uniq 103095 name=`K",
+            "application_argument_count": 0
+          }
+        ]
+      },
+      "expected": {
+        "node": 1187,
+        "kind": "app",
+        "head_node": 821,
+        "head_payload": "const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 6,
+        "head_constant": "CategoryTheory.Functor.obj",
+        "head_levels_repr": "[Lean.Level.param `wMX,\n Lean.Level.param `wAX,\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 1154,
+            "kind": "app",
+            "head_node": 221,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1182,
+            "kind": "app",
+            "head_node": 259,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 677,
+            "kind": "app",
+            "head_node": 645,
+            "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 4,
+            "head_constant": "DerivedCategory.Plus",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 731,
+            "kind": "app",
+            "head_node": 679,
+            "head_payload": "const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.ObjectProperty.FullSubcategory.category",
+            "head_levels_repr": "[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 740,
+            "kind": "app",
+            "head_node": 735,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]",
+            "application_argument_count": 5,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying",
+            "head_levels_repr": "[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]"
+          },
+          {
+            "node": 418,
+            "kind": "fvar",
+            "head_node": 418,
+            "head_payload": "fvar id=Lean.Name.mkNum `_uniq 103095 name=`K",
+            "application_argument_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3].arg[5].arg[0]",
+      "actual": {
+        "node": 257,
+        "kind": "app",
+        "head_node": 221,
+        "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 4,
+        "head_constant": "DerivedCategory.Plus",
+        "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 228,
+            "kind": "app",
+            "head_node": 222,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf levels=[Lean.Level.param `u]",
+            "application_argument_count": 3,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 241,
+            "kind": "app",
+            "head_node": 230,
+            "head_payload": "const name=`SheafOfModules.instCategory levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 4,
+            "head_constant": "SheafOfModules.instCategory",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 254,
+            "kind": "app",
+            "head_node": 243,
+            "head_payload": "const name=`SheafOfModules.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 6,
+            "head_constant": "SheafOfModules.instAbelian",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 256,
+            "kind": "fvar",
+            "head_node": 256,
+            "head_payload": "fvar id=Lean.Name.mkNum `_uniq 103082 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) \"_hygCtx\") \"_hyg\") 10",
+            "application_argument_count": 0
+          }
+        ]
+      },
+      "expected": {
+        "node": 1154,
+        "kind": "app",
+        "head_node": 221,
+        "head_payload": "const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "application_argument_count": 4,
+        "head_constant": "DerivedCategory.Plus",
+        "head_levels_repr": "[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+        "immediate_arguments": [
+          {
+            "node": 228,
+            "kind": "app",
+            "head_node": 222,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf levels=[Lean.Level.param `u]",
+            "application_argument_count": 3,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 241,
+            "kind": "app",
+            "head_node": 230,
+            "head_payload": "const name=`SheafOfModules.instCategory levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 4,
+            "head_constant": "SheafOfModules.instCategory",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 1152,
+            "kind": "app",
+            "head_node": 243,
+            "head_payload": "const name=`SheafOfModules.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 6,
+            "head_constant": "SheafOfModules.instAbelian",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 256,
+            "kind": "fvar",
+            "head_node": 256,
+            "head_payload": "fvar id=Lean.Name.mkNum `_uniq 103082 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) \"_hygCtx\") \"_hyg\") 10",
+            "application_argument_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2]",
+      "actual": {
+        "node": 254,
+        "kind": "app",
+        "head_node": 243,
+        "head_payload": "const name=`SheafOfModules.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "application_argument_count": 6,
+        "head_constant": "SheafOfModules.instAbelian",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "immediate_arguments": [
+          {
+            "node": 231,
+            "kind": "app",
+            "head_node": 10,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.Etale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.Etale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 233,
+            "kind": "app",
+            "head_node": 16,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.instCategoryEtale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.instCategoryEtale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 235,
+            "kind": "app",
+            "head_node": 36,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.smallEtaleTopology levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.smallEtaleTopology",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 240,
+            "kind": "app",
+            "head_node": 237,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantRing levels=[Lean.Level.param `u]",
+            "application_argument_count": 3,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantRing",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 248,
+            "kind": "app",
+            "head_node": 49,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.hasSheafifyLarge levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.hasSheafifyLarge",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 253,
+            "kind": "app",
+            "head_node": 250,
+            "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+            "application_argument_count": 3,
+            "head_constant": "CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1152,
+        "kind": "app",
+        "head_node": 243,
+        "head_payload": "const name=`SheafOfModules.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "application_argument_count": 6,
+        "head_constant": "SheafOfModules.instAbelian",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "immediate_arguments": [
+          {
+            "node": 231,
+            "kind": "app",
+            "head_node": 10,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.Etale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.Etale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 233,
+            "kind": "app",
+            "head_node": 16,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.instCategoryEtale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.instCategoryEtale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 235,
+            "kind": "app",
+            "head_node": 36,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.smallEtaleTopology levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.smallEtaleTopology",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 240,
+            "kind": "app",
+            "head_node": 237,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantRing levels=[Lean.Level.param `u]",
+            "application_argument_count": 3,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantRing",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 248,
+            "kind": "app",
+            "head_node": 49,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.EtaleCohomology.hasSheafifyLarge levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.EtaleCohomology.hasSheafifyLarge",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 1151,
+            "kind": "app",
+            "head_node": 822,
+            "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 13,
+            "head_constant": "CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2].arg[5]",
+      "actual": {
+        "node": 253,
+        "kind": "app",
+        "head_node": 250,
+        "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+        "application_argument_count": 3,
+        "head_constant": "CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+        "immediate_arguments": [
+          {
+            "node": 231,
+            "kind": "app",
+            "head_node": 10,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.Etale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.Etale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 233,
+            "kind": "app",
+            "head_node": 16,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.instCategoryEtale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.instCategoryEtale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 235,
+            "kind": "app",
+            "head_node": 36,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.smallEtaleTopology levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.smallEtaleTopology",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          }
+        ]
+      },
+      "expected": {
+        "node": 1151,
+        "kind": "app",
+        "head_node": 822,
+        "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "application_argument_count": 13,
+        "head_constant": "CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "immediate_arguments": [
+          {
+            "node": 231,
+            "kind": "app",
+            "head_node": 10,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.Etale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.Etale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 233,
+            "kind": "app",
+            "head_node": 16,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.instCategoryEtale levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.instCategoryEtale",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 235,
+            "kind": "app",
+            "head_node": 36,
+            "head_payload": "const name=`AlgebraicGeometry.Scheme.smallEtaleTopology levels=[Lean.Level.param `u]",
+            "application_argument_count": 1,
+            "head_constant": "AlgebraicGeometry.Scheme.smallEtaleTopology",
+            "head_levels_repr": "[Lean.Level.param `u]"
+          },
+          {
+            "node": 20,
+            "kind": "const",
+            "head_node": 20,
+            "head_payload": "const name=`AddCommGrpCat levels=[Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 0,
+            "head_constant": "AddCommGrpCat",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 22,
+            "kind": "const",
+            "head_node": 22,
+            "head_payload": "const name=`AddCommGrpCat.instCategory levels=[Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 0,
+            "head_constant": "AddCommGrpCat.instCategory",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 867,
+            "kind": "lambda",
+            "head_node": 867,
+            "head_payload": "lambda name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `x1.«_@».Mathlib.Algebra.Category.Grp.Basic 4010222601) \"_hygCtx\") \"_hyg\") 6 info=Lean.BinderInfo.default type=20 body=866",
+            "application_argument_count": 0
+          },
+          {
+            "node": 829,
+            "kind": "const",
+            "head_node": 829,
+            "head_payload": "const name=`AddCommGrpCat.carrier levels=[Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 0,
+            "head_constant": "AddCommGrpCat.carrier",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 879,
+            "kind": "lambda",
+            "head_node": 879,
+            "head_payload": "lambda name=`X info=Lean.BinderInfo.default type=20 body=878",
+            "application_argument_count": 0
+          },
+          {
+            "node": 881,
+            "kind": "const",
+            "head_node": 881,
+            "head_payload": "const name=`AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier levels=[Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 0,
+            "head_constant": "AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 1081,
+            "kind": "app",
+            "head_node": 883,
+            "head_payload": "const name=`CategoryTheory.sheafToPresheaf_isRightAdjoint levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 14,
+            "head_constant": "CategoryTheory.sheafToPresheaf_isRightAdjoint",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 1123,
+            "kind": "app",
+            "head_node": 1083,
+            "head_payload": "const name=`CategoryTheory.hasSheafCompose_of_preservesMulticospan levels=[Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]",
+            "application_argument_count": 9,
+            "head_constant": "CategoryTheory.hasSheafCompose_of_preservesMulticospan",
+            "head_levels_repr": "[Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]"
+          },
+          {
+            "node": 1149,
+            "kind": "app",
+            "head_node": 1125,
+            "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instPreservesSheafificationForgetOfPreservesLimitsOfHasColimitsOfShapeOfPreservesColimitsOfShapeOppositeCoverOfHasLimitsOfShapeWalkingMulticospanOfReflectsIsomorphisms levels=[Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 14,
+            "head_constant": "CategoryTheory.GrothendieckTopology.instPreservesSheafificationForgetOfPreservesLimitsOfHasColimitsOfShapeOfPreservesColimitsOfShapeOppositeCoverOfHasLimitsOfShapeWalkingMulticospanOfReflectsIsomorphisms",
+            "head_levels_repr": "[Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.succ (Lean.Level.param `u)]"
+          },
+          {
+            "node": 1080,
+            "kind": "const",
+            "head_node": 1080,
+            "head_payload": "const name=`AddCommGrpCat.forget_reflects_isos levels=[Lean.Level.succ (Lean.Level.param `u)]",
+            "application_argument_count": 0,
+            "head_constant": "AddCommGrpCat.forget_reflects_isos",
+            "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u)]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "root.arg[1].arg[6].arg[3].arg[5].arg[0].arg[2].arg[5].head",
+      "actual": {
+        "node": 250,
+        "kind": "const",
+        "head_node": 250,
+        "head_payload": "const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+        "application_argument_count": 0,
+        "head_constant": "CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]",
+        "immediate_arguments": []
+      },
+      "expected": {
+        "node": 822,
+        "kind": "const",
+        "head_node": 822,
+        "head_payload": "const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "application_argument_count": 0,
+        "head_constant": "CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget",
+        "head_levels_repr": "[Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),\n Lean.Level.param `u,\n Lean.Level.succ (Lean.Level.param `u),\n Lean.Level.succ (Lean.Level.param `u)]",
+        "immediate_arguments": []
+      }
+    }
+  ],
+  "aligned_context": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-producer-type-extraction/pointwise-type-pair/ALIGNED_CONTEXT.txt",
+  "aligned_context_sha256": "6628db1cdd202195ff416669104a51b5027b8a1142f7eda460b092ba1ab545d9",
+  "original_local_count": 19,
+  "expected_binder_mapping_count": 20,
+  "evidence_boundary": "Raw structural projection of existing output; no Lean execution, normalization, definitional equality, or mathematical interpretation."
+}

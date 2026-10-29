@@ -1,0 +1,26 @@
+{
+  "reviewer": "/root/review_represented_resolution_transpose",
+  "kind": "independent ordinary inline verdict, copied into assigned staging by source author",
+  "request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/REVIEW-REQUEST-v27.json",
+  "request_sha256": "74985f6973a6448f30935515df026537f43071254dd67efb56852dc72fc06680",
+  "READY": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v27/READY.json",
+  "READY_sha256": "ec5ec9aac9d4870bcbb21fabb8f4ce7cbaab3c5b0cb951cc5c9c2f6eb5e4f47f",
+  "source_vector": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "618897ffc91aa8ee8629e3414e9733b8c59e2bfd2460048117ded72770f3ecca",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35"
+  },
+  "verdict": "ACCEPTED affected mathematics, original-map/source correspondence and minimum-model interface; no gap found.",
+  "accepted_argument": [
+    "Iso.homCongr.symm is literally prior source.hom ≫ relative ≫ target.inv.",
+    "Generic core derives original lift normalization, projects it at i, substitutes actual hs/hh/ht, uses proven hc, expands F.map(u≫v≫k) with actual hk, cancels target.inv≫target.hom and applies actual F-faithfulness.",
+    "Native hc comes from complete variable-H/K theorem, so no new endpoint/unit caller hypothesis. hs/ht are original CopyObj component producers; hh existing coordinate component law; hk rfl original constructor.",
+    "Shared H adapter is same whiskered inverse original Over adjunction/one ULift; old B aliases/coordinates/maps reduce to originals; raw variable section proof unchanged.",
+    "Independent index/category/Hom worlds remain explicit, no extra representation/evaluation reflection/exactness/geometry; prior61/legacy55 headers and canonical/g-unit/HomEquiv/Iso tail exact. Added exports are5 generic lemmas, one shared native H adapter and public HomCongr import."
+  ],
+  "native_boundary": "Reviewer adopted no current V27 execution coverage and assigned no established status; formal/native/fullGlobal/callers were pending. Actual compiler evidence is recorded separately.",
+  "current_later_delta": "V28 source Global91a18323 changes only explicit actual functor/intermediate-object capture at the existing core application. This record remains fixed V27 source618897ff and does not silently extend native/source acceptance to later bytes.",
+  "formal_status_assigned": false,
+  "frozen_previous_reviews": "V25 inline acceptance and prior report pairs remain unchanged."
+}

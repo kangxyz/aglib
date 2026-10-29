@@ -1,0 +1,54 @@
+✖ [2125/2199] Building Aglib.CategoryTheory.Adjunction.CycleSections (3.3s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e55fbe2f23ba424681e50f9ecbcccc3c/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/CategoryTheory/Adjunction/CycleSections.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Adjunction/CycleSections.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Adjunction/CycleSections.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Adjunction/CycleSections.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Adjunction/CycleSections.setup.json --json
+error: Aglib/CategoryTheory/Adjunction/CycleSections.lean:56:12: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?f ≫ 𝟙 ?m.576
+in the target expression
+  adj.unit.app (T.map U).cycles ≫ U.map (((T.map U).mapCyclesIso L).inv ≫ ShortComplex.cyclesMap δ) ≫ U.map T.iCycles =
+    (T.map U).iCycles ≫ 𝟙 ((𝟭 C).obj (T.map U).X₂)
+
+C : Type u
+inst✝⁸ : Category.{v, u} C
+inst✝⁷ : Abelian C
+D : Type u₁
+inst✝⁶ : Category.{v₁, u₁} D
+inst✝⁵ : Abelian D
+L : C ⥤ D
+U : D ⥤ C
+inst✝⁴ : L.Additive
+inst✝³ : L.PreservesHomology
+inst✝² : U.Additive
+adj : L ⊣ U
+E : C ⥤ AddCommGrpCat
+inst✝¹ : E.Additive
+inst✝ : E.PreservesHomology
+T : ShortComplex D
+δ : (T.map U).map L ⟶ T
+H : C
+e : H ≅ (T.map U).homology
+c : H ⟶ U.obj T.homology
+hu : adj.unit.app (T.map U).X₂ ≫ U.map δ.τ₂ = 𝟙 ((𝟭 C).obj (T.map U).X₂)
+hπ :
+  (T.map U).homologyπ ≫ e.inv ≫ c =
+    adj.unit.app (T.map U).cycles ≫ U.map (((T.map U).mapCyclesIso L).inv ≫ ShortComplex.cyclesMap δ ≫ T.homologyπ)
+x : ↑(E.obj H)
+s : ↑(E.obj (T.map U).X₂)
+hs : (ConcreteCategory.hom (E.map (T.map U).g)) s = 0
+hx :
+  (ConcreteCategory.hom (E.map e.hom)) x =
+    (ConcreteCategory.hom ((T.map U).mapHomologyIso E).hom)
+      ((ConcreteCategory.hom ((T.map U).map E).homologyπ)
+        ((ConcreteCategory.hom ((T.map U).map E).abCyclesIso.inv) ⟨s, hs⟩))
+z₀ : ↑((T.map U).map E).cycles := (ConcreteCategory.hom ((T.map U).map E).abCyclesIso.inv) ⟨s, hs⟩
+zK : ↑(E.obj (T.map U).cycles) := (ConcreteCategory.hom ((T.map U).mapCyclesIso E).hom) z₀
+τ : (𝟭 C).obj (T.map U).cycles ⟶ U.obj T.cycles :=
+  adj.unit.app (T.map U).cycles ≫ U.map (((T.map U).mapCyclesIso L).inv ≫ ShortComplex.cyclesMap δ)
+h :
+  adj.unit.app (T.map U).cycles ≫ U.map (((T.map U).mapCyclesIso L).inv ≫ ShortComplex.cyclesMap δ) ≫ U.map T.iCycles =
+    (T.map U).iCycles ≫ 𝟙 ((𝟭 C).obj (T.map U).X₂)
+⊢ τ ≫ U.map T.iCycles = (T.map U).iCycles
+✔ [3505/3508] Built Aglib.CategoryTheory.Abelian.Injective.ExactFunctorSections (3.1s)
+✔ [3507/3593] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.RepresentedDiagram.ExactSequences (10s)
+✔ [3593/3593] Built Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartResolutionSections (6.7s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Adjunction.CycleSections
+error: build failed

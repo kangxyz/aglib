@@ -1,0 +1,30 @@
+✖ [3316/3316] Building Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence (18s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-c20c41042ab64721bf2d51ea8b1cf776/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.lean:42:2: stuck at solving universe constraint
+  u + 1 =?= max (u + 1) ?u.36
+while trying to unify
+  Limits.PreservesFilteredColimitsOfSize.{u + 1, u + 1, max (u + 1) ?u.36, max (u + 1) ?u.36, max (u + 2) (?u.36 + 1),
+      max (u + 2) (?u.36 + 1)}
+    (CategoryTheory.forget.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1, max (u + 1) ?u.36}
+      AddCommGrpCat.{max (u + 1) ?u.36}) : Prop
+with
+  Limits.PreservesFilteredColimits.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1,
+      (max (u + 1) ?u.36) + 1}
+    (CategoryTheory.forget.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1, max (u + 1) ?u.36}
+      AddCommGrpCat.{max (u + 1) ?u.36}) : Prop
+error: Aglib/AlgebraicGeometry/EtaleCohomology/PullbackEquivalence.lean:41:45: stuck at solving universe constraint
+  u + 1 =?= max (u + 1) ?u.36
+while trying to unify
+  Limits.PreservesFilteredColimitsOfSize.{u + 1, u + 1, max (u + 1) ?u.36, max (u + 1) ?u.36, max (u + 2) (?u.36 + 1),
+      max (u + 2) (?u.36 + 1)}
+    (CategoryTheory.forget.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1, max (u + 1) ?u.36}
+      AddCommGrpCat.{max (u + 1) ?u.36}) : Prop
+with
+  Limits.PreservesFilteredColimits.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1,
+      (max (u + 1) ?u.36) + 1}
+    (CategoryTheory.forget.{max (u + 1) ?u.36, max (u + 1) ?u.36, (max (u + 1) ?u.36) + 1, max (u + 1) ?u.36}
+      AddCommGrpCat.{max (u + 1) ?u.36}) : Prop
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
+error: build failed
+

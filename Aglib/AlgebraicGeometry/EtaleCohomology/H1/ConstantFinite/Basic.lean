@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorClassification
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteSetRepresentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity
@@ -24,13 +25,6 @@ universe u w w'
 attribute [local instance] hasSheafifyLarge Over.cartesianMonoidalCategory
 
 variable (A : Type u) [AddCommGroup A] [Finite A]
-
-/-- The finite additive value in the native sheaf-value universe. -/
-abbrev value : AddCommGrpCat.{u + 1} := AddCommGrpCat.of (ULift.{u + 1} A)
-
-/-- The actual native constant abelian sheaf with the displayed finite value. -/
-abbrev coefficient (X : Scheme.{u}) : AbelianSheaf.{u, u + 1} X :=
-  (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (value A)
 
 /-- The identity chart is an actual finite local trivialization of the constant sheaf. -/
 def localTrivialization (X : Scheme.{u}) : FiniteLocalTrivialization (coefficient A X) where

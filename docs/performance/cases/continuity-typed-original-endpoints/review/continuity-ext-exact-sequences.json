@@ -1,0 +1,581 @@
+{
+  "review_kind": "independent ordinary fixed-source mathematical and source-correspondence review",
+  "reviewer": "/root/review_initial_normalizations",
+  "date": "2026-10-27",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "immutable_baseline": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/audit-basis/aglib",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "entry_head": "56a07882f536a20bfbbfeed42c9adb5fe74ef9e9",
+  "mathlib_root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+  "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "lean": "4.34.1",
+  "established_status_assigned": false,
+  "execution_performed": [],
+  "no_source_writes": true,
+  "mathematical_judgment_independent_of_compilation": true,
+  "question": "Affected-source continuation: native exact-functor Ext-row morphism, generic colimit connecting-square and row assembly, and their actual original Scheme instantiations",
+  "fixed_version": "C2 v5 typed-equality encoding repair of reviewed v4 complete common proof",
+  "verdict": "mathematically_sound_complete_common_assembly_retained_on_fixed_v5_sources_native_elaboration_pending",
+  "blockers": [],
+  "source_targets": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v5/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+      "sha256": "e8b24314038d875cf9926b4035813322fd603351baeba6bb3284af1a2ed7018c",
+      "native_sha256_at_identity_binding": "e8b24314038d875cf9926b4035813322fd603351baeba6bb3284af1a2ed7018c",
+      "original_baseline_sha256": null,
+      "matches_supplied_manifest": true,
+      "status": "applied; v5 native elaboration pending"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v5/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+      "sha256": "318544c51a055a1d0b8c05aa7aa047086ef52c32edccf1dce8d02e8839835c8d",
+      "native_sha256_at_identity_binding": "318544c51a055a1d0b8c05aa7aa047086ef52c32edccf1dce8d02e8839835c8d",
+      "original_baseline_sha256": "97d169aec1cb02e82b0ff49768b4f602bcda26774cf1e574ba1701d038fb0100",
+      "matches_supplied_manifest": true,
+      "status": "applied; v5 native elaboration pending"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v5/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+      "sha256": "39056a2efc0dec8305d403670ad2e6ba2a4562bd0754d0488a4e77ad0202b315",
+      "native_sha256_at_identity_binding": "39056a2efc0dec8305d403670ad2e6ba2a4562bd0754d0488a4e77ad0202b315",
+      "original_baseline_sha256": "6e7461cad3431ec7d7cb51fad18576aa405c46b4e7c573e18bc36a7d501813a1",
+      "matches_supplied_manifest": true,
+      "status": "applied; v5 native elaboration pending"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+      "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v5/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+      "sha256": "6ce27e8c93ac2acb63b1775a6ecab31d3a2ab9869189823167eeff9c043b631e",
+      "native_sha256_at_identity_binding": "6ce27e8c93ac2acb63b1775a6ecab31d3a2ab9869189823167eeff9c043b631e",
+      "original_baseline_sha256": "f1e54cbf49e1696e3c68dfcadf9609a590df8e3c793c8335fa48b9307c2a8c8b",
+      "matches_supplied_manifest": true,
+      "status": "applied; v5 native elaboration pending"
+    }
+  ],
+  "input_packets": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v4/READY.json",
+      "sha256": "69eef621db297823a73ba9bba1021966b0a60af1a5548fed56f8652ec8f16a3f"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v5/READY.json",
+      "sha256": "6b3bb25c7fe5471e3e130bd7fb1cd02947230adb4705b54b45823d91ce753c1e"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram.lean",
+      "sha256": "542b37f06d1f3ebc0321109fb70bcf8c6a7c8605f09fe1a00b39e9ae937ca218"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cokernel.lean",
+      "sha256": "cd473bd91826ca41305d193ae6e7979586ae44fd187357fdfc48a1093db33fbb"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseNaturality.lean",
+      "sha256": "c425766624892a85c40b15983c441683d9734b6b157955d4692994ab78fd4fa6"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ShortComplexColimit.lean",
+      "sha256": "25a9034732f60dde83840f6b736b1a1f7fcbc99142a9ef21dcd636dbee5ac706"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/Ext/ShortExactComparison.lean",
+      "sha256": "287b5fb2d33d42fc5b6a47495c629ad5a0b7ab35a98a8cb9c993c30ac20b5440"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramInjectives.lean",
+      "sha256": "20b89eaac114fd46ff09ceeb54d4e6103054af7e0d177426c7dd9d5b1f16444e"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramConeNaturality.lean",
+      "sha256": "740ff6004268e59c7b6a76b01dd8e0626fb5a90c9590141ee8ec4e949e6cf0d0"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramShortExact.lean",
+      "sha256": "798f8f339aaa43287b68578a3de9c388f8040e624978e6a93fdf334859c7e3a9"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomology.lean",
+      "sha256": "90f356e8881a33a3cf33e0a36047e5b00addb9c3730d3dbf4c6d73354d47f6fc"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CohomologyTransfers.lean",
+      "sha256": "636b6f41738af52627557914a201a1ebbd61c836e244d5c165813ad33bef6d5d"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyCocone.lean",
+      "sha256": "617f9ad31b63a28bd88fbde220aae381a440f4e2c75dcfb776a575fdb12e64ad"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyNaturality.lean",
+      "sha256": "4b4bf89a1f0b5b429d91a730640c92674b96a9f67022c3e7e730fe6def6f4a03"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CohomologyConnectingTransfer.lean",
+      "sha256": "88703bd5894d01413b6193c809e79c7257e0e840fc1c2ba0720d78ad2e31435d"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean",
+      "sha256": "c32102e720e2d96ee67ecad6e2926274d9745e9c4b0956122b4ff7d296c30317"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Homology/DerivedCategory/Ext/ExtClass.lean",
+      "sha256": "28bd1d031e1ac428ae0ae05cd0c150946f4a44e2e5bd2da1de7df0a8b1622152"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
+      "sha256": "29037a4bb3559712b6933623fc410a60b2750b87cbf13c952da0933988aaee6c"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+      "sha256": "569864bb121cea1fc23d941995a101cc50ecd232e3dde49e467b3a148e7e24ee"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/SheafCohomology/ExactSequences.lean",
+      "sha256": "98506e4a3c3090d66e3a3d14645657ff099d57e8c995390332b8a49a9d3c7677"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+      "sha256": "b3d91d05ce401e9129ff08b17e11efc06d980d848a254443892760b024ceb436"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/AB.lean",
+      "sha256": "c7935ea4e442eb4d32196a5574742fb18c12d66345e20558527ac2d739187270"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/Ulift.lean",
+      "sha256": "f1882e0ee48d036a237f1b6084cd9546fa0f51f98b9d66bc8823fee1eeab6ffa"
+    }
+  ],
+  "c1_dependency": {
+    "fixed_version": "C1 v6",
+    "sources": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean",
+        "sha256": "dd35d1ef3e6e16aea1e4c9c5e1f93cf5f7573feb63e0f099be692b36416cfd5c",
+        "native_sha256_at_identity_binding": "dd35d1ef3e6e16aea1e4c9c5e1f93cf5f7573feb63e0f099be692b36416cfd5c"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+        "sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+        "native_sha256_at_identity_binding": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointCocone.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointCocone.lean",
+        "sha256": "f35ce7d0b499bc65ac31b728d659ccac80b4990c4fe4d64845edb3ddb8491f9e",
+        "native_sha256_at_identity_binding": "f35ce7d0b499bc65ac31b728d659ccac80b4990c4fe4d64845edb3ddb8491f9e"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointFamilies.lean",
+        "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointFamilies.lean",
+        "sha256": "6e6bdedc9bcabbabab6594ad1f410a7cede52958d6d073d8ab8a0f5e1db63abb",
+        "native_sha256_at_identity_binding": "6e6bdedc9bcabbabab6594ad1f410a7cede52958d6d073d8ab8a0f5e1db63abb"
+      }
+    ],
+    "packet_identities": [
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/REVIEW.json",
+        "sha256": "b41462ee6c430d04341669516a1935465d1976876ce537503362b1370197076b"
+      },
+      {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/versions/v6/compiler-result-all4.json",
+        "sha256": "e465a62537b95581839b32d6dfb1ee0768bb27f99ae5765f9f7dc71c041d7948"
+      }
+    ],
+    "mathematical_reconciliation": "Generic Cone dd35 and original coefficient functor/leg data are unchanged from the prior review. The current Cocone f35c delta binds the same caller hF at the definitionally identical generic functor type; it does not rebuild the colimit, injection or map. This dependency delta was read without reopening the unchanged C1 derivation or changing its report.",
+    "supplied_native_coverage": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean",
+        "sha256": "dd35d1ef3e6e16aea1e4c9c5e1f93cf5f7573feb63e0f099be692b36416cfd5c",
+        "run": "376370c00bdc4740a2deab2dec47f8e4",
+        "source_content_sha256": "3e5da4abe62c9fa02be1cf069b0e44ea2f21c7e5859bdbd1de3cf280514813da",
+        "module_result": "PASS",
+        "job_exit_code": 0
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+        "sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+        "run": "3907b6351d0344ccbb85ac9c925a581b",
+        "source_content_sha256": "e4bbe52f5cee9e8af82d6359b504ec90dc17a5f18aed7f1175caecd0e329ce21",
+        "module_result": "PASS",
+        "job_exit_code": 1,
+        "job_boundary": "Only this module's pass is reused; mixed run failed on other targets."
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointCocone.lean",
+        "sha256": "f35ce7d0b499bc65ac31b728d659ccac80b4990c4fe4d64845edb3ddb8491f9e",
+        "run": "9deaa40834284de8b251d81c7a7cb1f3",
+        "source_content_sha256": "85eb1d9832655981c65dc0f0b4c35e63c6de2f4842004e6cd97754482a19395f",
+        "module_result": "PASS",
+        "job_exit_code": 0
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramAdjointFamilies.lean",
+        "sha256": "6e6bdedc9bcabbabab6594ad1f410a7cede52958d6d073d8ab8a0f5e1db63abb",
+        "run": "9deaa40834284de8b251d81c7a7cb1f3",
+        "source_content_sha256": "85eb1d9832655981c65dc0f0b4c35e63c6de2f4842004e6cd97754482a19395f",
+        "module_result": "PASS",
+        "job_exit_code": 0
+      }
+    ],
+    "coverage_boundary": "Reused existing source-bound native results as dependency evidence; no reviewer execution, full-run extrapolation, family acceptance or established status."
+  },
+  "findings": [
+    {
+      "locator": "v4 ExactSequences.lean:103-132",
+      "conclusion": "extPrecompMap_connectingComplexHom maps the native row Ext^n(X,T2)→Ext^n(X,T3)→Ext^(n+1)(X,T1) to the native target row using original exact L, source a and sequence morphism alpha. Its row components are coefficient maps alpha.tau2, alpha.tau3 and alpha.tau1 respectively, after the same exact-functor source transport. comm12 follows from extPrecompMap_comp, mapExactFunctor_mk0, native Yoneda composition and alpha.comm23. comm23 is the reverse of the already reviewed native connecting-naturality square."
+    },
+    {
+      "locator": "v4 ExactSequences.lean:208-238",
+      "conclusion": "The colimit connecting theorem receives actual stage sequence morphisms alpha_i and original comparison arrows p1/p3 with their literal injection-value equations. After precomposing by the original cokernel-row injection, it reduces to delta_i followed by stage row tau3 = stage row tau2 followed by target delta. This is proved by the native stage morphism comm23. The h1/h3 equations do not assume the final connecting law or a surrogate isomorphism/continuity capability."
+    },
+    {
+      "locator": "v4 ExactSequences.lean:240-272",
+      "conclusion": "The complete common row assembly is generic. Its three morphism components are exactly the supplied p2,p3,p1 in row order. Both commutation squares are derived by colimit.hom_ext, original injection-value equations and the stage row comm12/comm23. No Scheme-specific universal-property proof remains in the two affected applications, and no new row/group model or desired-law record is introduced."
+    },
+    {
+      "locator": "v4 DiagramCohomologyConnecting.lean:61-80; DiagramCohomologyExact.lean:77-94; DiagramCokernelTransitions.lean:37-51",
+      "conclusion": "Scheme supplies exactly inverseImage of c.iota_i, the original constant ULift-integer sheaf V, inverseImageConstantIso.inv as source a_i, the original coefficient-colimit short complex and short-exact certificate, and actual diagramCokernelLimitLeg alpha_i. The p2/p3/p1 are the original schemeLimitCohomologyComparison maps; existing iota_schemeLimitCohomologyComparison gives literal required leg equations. The row components therefore retain the old actual pullback/Ext/coefficient/colimit maps. The explicit existing inverseImage preserves-zero dictionary only resolves instance elaboration and changes no data or public premise."
+    },
+    {
+      "locator": "v4 ExactSequences.lean:105-110,138-170,208-214,276-283; DiagramCohomologyExact.lean:44-57",
+      "conclusion": "Independent stage/apex object/Hom and index worlds, with one requested independent Ext e, are retained. The generic comparison assembly needs actual Ext colimits but not exact colimits; HasExactColimitsOfShape appears only for colimit exactness. Old AsSmall/ULift bridge, pointwise monicity, genuine coefficient short exactness/filteredness and original Scheme context are unchanged. No new enough-injectives or topology/point/model premise is inferred."
+    },
+    {
+      "locator": "v4 to v5 ExactSequences.lean, only two comm12 proof bodies",
+      "conclusion": "The elementwise equality previously proved after ext/change is first proved as a local h with its explicit original Ext X T.X2 n argument, using exactly the same native composition calculation; ext x then applies h x. The row comparison comm12 calculation is first proved as an explicit equality p2≫native target coefficient map = colim.map(original coefficient natTrans)≫p3, then supplied by exact h to the unchanged row field. These are local proved facts, not new hypotheses. All objects, arrows, functors, colimit dictionaries, statements, data components, worlds and assumptions remain unchanged. The complete v4 mathematical verdict therefore remains valid on v5."
+    }
+  ],
+  "conditions": [
+    "The unchanged original D, cartesian representing system U and pointwise monic actual eta; exact additive stage left functors.",
+    "Actual additive finite-limit/finite-colimit preserving apex functors L_i; actual source maps a_i and actual short-exact target S with sequence morphisms alpha_i.",
+    "The supplied p2/p3/p1 are original maps, identified on all literal colimit injections by h2/h3/h1; the final connecting/row laws are proved.",
+    "Independent object/Hom/index worlds; one requested native Ext e shared for the categorical row, unchanged from the original Scheme API.",
+    "Actual HasColimitsOfShape I AddCommGrpCat.{e}; actual HasExactColimitsOfShape only for the exact-colimit theorem. Original coefficient-value colimit, filteredness, monicity and stage/apex HasExt hypotheses retained."
+  ],
+  "api_correspondence": "All original public Scheme names, theorem statements and hypotheses are retained. The two material affected bodies now instantiate generic complete-common arguments. Whole row morphism components remain the same p2,p3,p1, with proof-only commutation fields changed. Cokernel3185 retains exactly the original three transitions and colimit injections through an explicit existing preserves-zero dictionary.",
+  "native_coverage": {
+    "current_v4": "Historical v4 generic failed on hidden native row-field rewrite transparency; Scheme3 unreached. Exact identities and failure are retained in affected_version_history.",
+    "retained_prior_generic": {
+      "target_sha256": "6aec3df96c934a41446ff725b92faedf25294f503b7f085fb43778cbe2b768d7",
+      "run": "remote-cc085927969c40b28f87039de26e488b",
+      "operation_id": "d0a96c530eb246d7b55b878c38b3d19e",
+      "source_content_sha256": "ee57c2bccc386a5908c75a428ae6d2a0dc91c9c3a6b6f1fcb38f3460ecdddcd6",
+      "source_manifest_sha256": "dc7c5640d5caaab942e3078c56865db8c4825c93bc1380a0c59ff531fa7e20a4",
+      "receipt_sha256": "89eac344f978529aee1b1fe9d68f70895b6e875bbebbb99f980642f206c4eea3",
+      "exit_code": 0,
+      "input_drift": [],
+      "coverage": "Existing source-bound incremental compilation/command diagnostics for one generic leaf, reused; no independent runtime re-audit"
+    },
+    "retained_prior_generic_boundary": "The cc085927 pass covers only 6aec3df9, not the extended 0ab90cea source.",
+    "metadata_correction": "A redundant copied compiler-result.json under v4 was read and explicitly identified as v2/6aec; author removed that copy and other stale metadata without changing READY or any Lean source. Original versions/v2 compiler-result remains the retained evidence.",
+    "reviewer_reran_checks": false,
+    "current_c1_dependency": "Existing exact current four C1 module passes reused separately; mixed job boundary preserved.",
+    "current_v5": "All four exact v5 reviewed sources applied; native compilation pending. No current pass inferred from old 6aec coverage or v4 failure."
+  },
+  "remaining": [
+    "Native elaboration of the four exact v5 C2 sources remains author/compiler-owner work; no new execution is requested or performed by this review.",
+    "Any later affected derivation/API repair needs a fixed source delta and only affected-source reconciliation.",
+    "No comparison invertibility, full geometric continuity, full-family acceptance, separate downstream acceptance chain or established status is assigned."
+  ],
+  "previous_reports": "Only this assigned C2 review pair is updated. The previous C1 review and all other reports remain untouched.",
+  "preserved_prior_review": {
+    "version": "v2 (including the prior C1 v3 to v4 dependency reconciliation)",
+    "markdown_sha256": "462c215dbd27e796b9b3d3f2150d51fced19dc7416480026faa810543747a84b",
+    "json_sha256": "1dbc71b978c8412ff75cf2dbec29bc88b28cdd2febc6b85a60dea15c84b75e95",
+    "unchanged_coverage": "All previously reviewed definitions and arguments outside the described material/encoding hunks remain retained; prior execution status is historical and not relabeled.",
+    "record": {
+      "review_kind": "independent ordinary fixed-source mathematical and source-correspondence review",
+      "reviewer": "/root/review_initial_normalizations",
+      "date": "2026-10-27",
+      "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+      "immutable_baseline": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/audit-basis/aglib",
+      "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+      "entry_head": "56a07882f536a20bfbbfeed42c9adb5fe74ef9e9",
+      "mathlib_root": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+      "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "lean": "4.34.1",
+      "established_status_assigned": false,
+      "execution_performed": [],
+      "no_source_writes": true,
+      "mathematical_judgment_independent_of_compilation": true,
+      "question": "C2 actual represented Ext connecting/exact rows, original transition and apex comparison maps, and staged Scheme specializations",
+      "fixed_version": "C2 v2",
+      "verdict": "mathematically_sound_source_correspondence_generic_native_coverage_retained_staged_wrappers_pending",
+      "blockers": [],
+      "source_targets": [
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+          "sha256": "f61e38ae13c760bcaff66bd78eb53861e54fe81c33567209a706e6dcc1209c4a",
+          "native_sha256_at_identity_binding": "6e7461cad3431ec7d7cb51fad18576aa405c46b4e7c573e18bc36a7d501813a1",
+          "baseline_sha256": "6e7461cad3431ec7d7cb51fad18576aa405c46b4e7c573e18bc36a7d501813a1",
+          "matches_supplied_manifest": true,
+          "status": "staged, unapplied and uncompiled"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+          "sha256": "8592a26c9c482e9093af97e6bc0a6e792c17ddf29d530a10016ace20d405c512",
+          "native_sha256_at_identity_binding": "f1e54cbf49e1696e3c68dfcadf9609a590df8e3c793c8335fa48b9307c2a8c8b",
+          "baseline_sha256": "f1e54cbf49e1696e3c68dfcadf9609a590df8e3c793c8335fa48b9307c2a8c8b",
+          "matches_supplied_manifest": true,
+          "status": "staged, unapplied and uncompiled"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+          "sha256": "0554f68a4f5b4d7e05f57db2a293fed68377a05f02374dd94b7aeeb9a1f2588a",
+          "native_sha256_at_identity_binding": "97d169aec1cb02e82b0ff49768b4f602bcda26774cf1e574ba1701d038fb0100",
+          "baseline_sha256": "97d169aec1cb02e82b0ff49768b4f602bcda26774cf1e574ba1701d038fb0100",
+          "matches_supplied_manifest": true,
+          "status": "staged, unapplied and uncompiled"
+        },
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v2/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+          "sha256": "6aec3df96c934a41446ff725b92faedf25294f503b7f085fb43778cbe2b768d7",
+          "native_sha256_at_identity_binding": "6aec3df96c934a41446ff725b92faedf25294f503b7f085fb43778cbe2b768d7",
+          "baseline_sha256": null,
+          "matches_supplied_manifest": true,
+          "status": "new generic leaf applied"
+        }
+      ],
+      "input_packets": [
+        {
+          "role": "packet",
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/SOURCE-READY.json",
+          "sha256": "e8cd8d02b79aa71616e2452181e85895efb5f7e1bf7eff39b6b4d65de443b51f"
+        },
+        {
+          "role": "packet",
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/SOURCE-MAP.json",
+          "sha256": "bf0c2809ce033fd225213f7d10ba6568650429f8e1777d374ffbf0cbc34df4c7"
+        },
+        {
+          "role": "packet",
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v2/compiler-result.json",
+          "sha256": "8bbb2d5f279771750a377479af545e39c8e9a39fba5c79c9609b27b23377eaca"
+        },
+        {
+          "role": "packet",
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/remaining-etale-systems-obligations/applicability-packet.md",
+          "sha256": "ac5978ec53ff3e491da0576c8dbbed23bb1910a706c798672a599a3677cfd878"
+        }
+      ],
+      "dependencies": [
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram.lean",
+          "sha256": "542b37f06d1f3ebc0321109fb70bcf8c6a7c8605f09fe1a00b39e9ae937ca218"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cokernel.lean",
+          "sha256": "cd473bd91826ca41305d193ae6e7979586ae44fd187357fdfc48a1093db33fbb"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseNaturality.lean",
+          "sha256": "c425766624892a85c40b15983c441683d9734b6b157955d4692994ab78fd4fa6"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/ShortComplexColimit.lean",
+          "sha256": "25a9034732f60dde83840f6b736b1a1f7fcbc99142a9ef21dcd636dbee5ac706"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/Ext/ShortExactComparison.lean",
+          "sha256": "287b5fb2d33d42fc5b6a47495c629ad5a0b7ab35a98a8cb9c993c30ac20b5440"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramInjectives.lean",
+          "sha256": "20b89eaac114fd46ff09ceeb54d4e6103054af7e0d177426c7dd9d5b1f16444e"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramConeNaturality.lean",
+          "sha256": "740ff6004268e59c7b6a76b01dd8e0626fb5a90c9590141ee8ec4e949e6cf0d0"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramShortExact.lean",
+          "sha256": "798f8f339aaa43287b68578a3de9c388f8040e624978e6a93fdf334859c7e3a9"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomology.lean",
+          "sha256": "90f356e8881a33a3cf33e0a36047e5b00addb9c3730d3dbf4c6d73354d47f6fc"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CohomologyTransfers.lean",
+          "sha256": "636b6f41738af52627557914a201a1ebbd61c836e244d5c165813ad33bef6d5d"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyCocone.lean",
+          "sha256": "617f9ad31b63a28bd88fbde220aae381a440f4e2c75dcfb776a575fdb12e64ad"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyNaturality.lean",
+          "sha256": "4b4bf89a1f0b5b429d91a730640c92674b96a9f67022c3e7e730fe6def6f4a03"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/CohomologyConnectingTransfer.lean",
+          "sha256": "88703bd5894d01413b6193c809e79c7257e0e840fc1c2ba0720d78ad2e31435d"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean",
+          "sha256": "c32102e720e2d96ee67ecad6e2926274d9745e9c4b0956122b4ff7d296c30317"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Homology/DerivedCategory/Ext/ExtClass.lean",
+          "sha256": "28bd1d031e1ac428ae0ae05cd0c150946f4a44e2e5bd2da1de7df0a8b1622152"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
+          "sha256": "29037a4bb3559712b6933623fc410a60b2750b87cbf13c952da0933988aaee6c"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+          "sha256": "569864bb121cea1fc23d941995a101cc50ecd232e3dde49e467b3a148e7e24ee"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Sites/SheafCohomology/ExactSequences.lean",
+          "sha256": "98506e4a3c3090d66e3a3d14645657ff099d57e8c995390332b8a49a9d3c7677"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+          "sha256": "b3d91d05ce401e9129ff08b17e11efc06d980d848a254443892760b024ceb436"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/AB.lean",
+          "sha256": "c7935ea4e442eb4d32196a5574742fb18c12d66345e20558527ac2d739187270"
+        },
+        {
+          "path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/Ulift.lean",
+          "sha256": "f1882e0ee48d036a237f1b6084cd9546fa0f51f98b9d66bc8823fee1eeab6ffa"
+        }
+      ],
+      "c1_dependency": {
+        "generic_cone_sha256": "dd35d1ef3e6e16aea1e4c9c5e1f93cf5f7573feb63e0f099be692b36416cfd5c",
+        "staged_diagram_limit_functor_sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+        "mathematical_dependency": "Actual coefficient functor and literal cone colimit injections; its comparison conclusion is not assumed",
+        "generic_native_status": "pending on fixed supplied metadata",
+        "scheme_native_status": "staged, unapplied and uncompiled",
+        "previous_reviewed_generic_cone_sha256": "f40b6f004eabd4ab645fcd8bb079769e701c8cf89906596cd5f594d85600267e",
+        "reconciliation": "C1 v3 to v4 changes only a private equality-transport normalization proof; all actual coefficient functor and staged Scheme interface data is unchanged. Affected-hunk mathematical review retained."
+      },
+      "findings": [
+        {
+          "locator": "ExactSequences.lean:111-152; InverseNaturality.lean:21-27; staged DiagramCokernelTransitions.lean:37-48",
+          "conclusion": "The transition morphism has tau1=F.leftMap D a, tau2=Q.leftMap D a and tau3=(System.cokernel D eta).leftMap D a. The two commutation proofs are the existing mate naturality squares. Scheme diagramInverseTransition unfolds to those exact native inverse-homEquiv maps, so all three old tau maps are retained. evaluationToColimit uses the three literal colimit.ι of the original short-complex diagrams."
+        },
+        {
+          "locator": "ExactSequences.lean:33-61,139-152; Ext/ShortExactComparison.lean:48-57; native ExtClass.lean:123-130",
+          "conclusion": "The native connecting component is precisely x ↦ x.comp h_i.extClass rfl. The naturality square is derived from extPrecompMap_connecting for the given exact L, then extClass_naturality for the actual sequence morphism and native Yoneda associativity. No desired connecting square is assumed; source transport a is the original inverse cartesian representing transition."
+        },
+        {
+          "locator": "ExactSequences.lean:84-99,154-180; ShortComplexColimit.lean:32-39; native Ext/ExactSequences.lean:98-111,139-153",
+          "conclusion": "Both rows use the native Ext coefficient map and original extension class. Their zero/exactness certificates are the native covariant sequence; evaluation reflection detects exactness of the functor row. The colimit theorem explicitly requires HasColimitsOfShape I AddCommGrpCat.{e} and HasExactColimitsOfShape I AddCommGrpCat.{e}; it does not derive geometric continuity from AB5 or assume enough injectives."
+        },
+        {
+          "locator": "staged DiagramCohomologyConnecting.lean:33-72; DiagramCohomologyCocone.lean:44-82; staged DiagramCohomologyExact.lean:63-85",
+          "conclusion": "The stage-to-apex square uses the original inverseImage of c.ι_i, the inverse of its original constant ULift-integer transport, and the existing coefficient evaluation-to-colimit leg. Its actual tau maps therefore compose to the original diagramCohomologyLeg. The comparison theorem is proved by colimit.hom_ext and the original injection normalization. The final comparison morphism retains literally the three old schemeLimitCohomologyComparison arrows; no comparison isomorphism or comparison conclusion is supplied as a premise."
+        },
+        {
+          "locator": "ExactSequences.lean:29-38,105-137,173-174; staged DiagramCohomologyExact.lean:44-55",
+          "conclusion": "The one requested Ext universe e is independent of both coefficient object/Hom worlds and of uI/vI. The Scheme wrappers keep original u/e/uI/vI and all stage/apex HasExt, pointwise monicity, filteredness and colimit hypotheses. The original AsSmall.{max e uI vI} and AddCommGrpCat.uliftFunctor.{max uI vI,e} exact-colimit bridge is byte-identical; it preserves and reflects finite limits and preserves actual-shaped colimits. The older extPrecompMap_connecting with separate w/w-prime remains unchanged; the new categorical row does not narrow it."
+        }
+      ],
+      "conditions": [
+        "Actual D, System U with isomorphic original left transitions, System.Hom eta with pointwise monic components",
+        "Additive finite-limit and finite-colimit preserving actual left transition functors",
+        "Stage HasExt.{e}, with one independent requested e; independent target category/Hom worlds",
+        "Actual HasExactColimitsOfShape for mapping the Ext row by colim",
+        "Original Scheme apex HasExt, IsFiltered and value/Ext colimit-existence assumptions"
+      ],
+      "api_correspondence": "All old public names, displayed types and meaningful context hypotheses retained; selected defs become transparent abbrevs. Original coefficient transition maps, delta values, stage/apex rows and the three comparison arrows are retained, with proof certificates identified by proof irrelevance.",
+      "native_coverage": {
+        "generic": {
+          "target_sha256": "6aec3df96c934a41446ff725b92faedf25294f503b7f085fb43778cbe2b768d7",
+          "run": "remote-cc085927969c40b28f87039de26e488b",
+          "operation_id": "d0a96c530eb246d7b55b878c38b3d19e",
+          "source_content_sha256": "ee57c2bccc386a5908c75a428ae6d2a0dc91c9c3a6b6f1fcb38f3460ecdddcd6",
+          "source_manifest_sha256": "dc7c5640d5caaab942e3078c56865db8c4825c93bc1380a0c59ff531fa7e20a4",
+          "receipt_sha256": "89eac344f978529aee1b1fe9d68f70895b6e875bbebbb99f980642f206c4eea3",
+          "exit_code": 0,
+          "input_drift": [],
+          "coverage": "Existing source-bound incremental compilation/command diagnostics for one generic leaf, reused; no independent runtime re-audit"
+        },
+        "staged_wrappers": "all three unapplied/uncompiled; N equals immutable original preimages",
+        "historical_v1": {
+          "target_sha256": "1459dc6bf3872557c98fa2baeca1e109c4f073d094486e25d48b00dcf8029dba",
+          "status": "failed; separate-e categorical morphism lacked a size bridge; neither source nor failure relabeled as v2"
+        },
+        "reviewer_reran_checks": false
+      },
+      "remaining": [
+        "The three staged Scheme wrappers require their later guarded application and native elaboration under author/principal ownership.",
+        "The staged apex integration depends on the exact C1 coefficient functor interface reviewed separately, whose current native elaboration remains pending.",
+        "No full continuity, invertibility, enough-injectives, family-wide or established-status conclusion is assigned."
+      ],
+      "previous_reports": "Retained; this review writes only its two newly assigned files."
+    }
+  },
+  "affected_version_history": [
+    {
+      "version": "v4",
+      "source_targets": [
+        {
+          "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v4/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+          "sha256": "0ab90cea208105e59bc4f109d4a5016e195dc08a340d5b62dbd0f9c9d8d14418",
+          "native_sha256_at_identity_binding": "0ab90cea208105e59bc4f109d4a5016e195dc08a340d5b62dbd0f9c9d8d14418",
+          "original_baseline_sha256": null,
+          "matches_supplied_manifest": true,
+          "status": "applied; v4 native elaboration pending"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+          "sha256": "318544c51a055a1d0b8c05aa7aa047086ef52c32edccf1dce8d02e8839835c8d",
+          "native_sha256_at_identity_binding": "318544c51a055a1d0b8c05aa7aa047086ef52c32edccf1dce8d02e8839835c8d",
+          "original_baseline_sha256": "97d169aec1cb02e82b0ff49768b4f602bcda26774cf1e574ba1701d038fb0100",
+          "matches_supplied_manifest": true,
+          "status": "applied; v4 native elaboration pending"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+          "sha256": "39056a2efc0dec8305d403670ad2e6ba2a4562bd0754d0488a4e77ad0202b315",
+          "native_sha256_at_identity_binding": "39056a2efc0dec8305d403670ad2e6ba2a4562bd0754d0488a4e77ad0202b315",
+          "original_baseline_sha256": "6e7461cad3431ec7d7cb51fad18576aa405c46b4e7c573e18bc36a7d501813a1",
+          "matches_supplied_manifest": true,
+          "status": "applied; v4 native elaboration pending"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+          "fixed_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+          "sha256": "6ce27e8c93ac2acb63b1775a6ecab31d3a2ab9869189823167eeff9c043b631e",
+          "native_sha256_at_identity_binding": "6ce27e8c93ac2acb63b1775a6ecab31d3a2ab9869189823167eeff9c043b631e",
+          "original_baseline_sha256": "f1e54cbf49e1696e3c68dfcadf9609a590df8e3c793c8335fa48b9307c2a8c8b",
+          "matches_supplied_manifest": true,
+          "status": "applied; v4 native elaboration pending"
+        }
+      ],
+      "verdict": "Mathematically sound complete common derivation; retained unchanged.",
+      "prior_report_sha256": {
+        "markdown": "d39bd2fa774d00ef66a9bc374b4d36a7cdc03ab2dad39861acc9cf54ec997ed8",
+        "json": "02c6ef50529eb1616f92c7496017c0f51777d83ca127f0af71dc5c70bfdbb6c2"
+      },
+      "native_result": {
+        "run": "remote-8b24d37a2ea243c19ee9adf287a50923",
+        "source_content_sha256": "ac3d9eb5bd7817ea22856d7c567ee6d82d12a0330d3536f53beb696739a6f991",
+        "generic_sha256": "0ab90cea208105e59bc4f109d4a5016e195dc08a340d5b62dbd0f9c9d8d14418",
+        "exit_code": 1,
+        "scope": "Generic rewrite transparency failed; three Scheme modules unreached. Not a pass and not transferred to v5."
+      }
+    }
+  ]
+}
+

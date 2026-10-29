@@ -26,7 +26,15 @@ theorem diagramCohomologyMap_pullbackCoefficientSystem
     (q : ℕ) {i j : I} (a : i ⟶ j) :
     diagramCohomologyMap Y (pullbackCoefficientSystem Y b F) q a =
       cohomologyTransfer (Y.map a).unop (pullbackCoefficientTransition Y b F a) q := by
-  exact congrArg (fun t => cohomologyTransfer (Y.map a).unop t q)
+  refine (diagramCohomologyMap_eq_transfer Y (pullbackCoefficientSystem Y b F) q a).trans ?_
+  exact congrArg
+    (fun t : (inverseImage (Y.map a).unop).obj
+        ((pullbackCoefficientSystem Y b F).obj i) ⟶ (pullbackCoefficientSystem Y b F).obj j =>
+      (cohomologyTransfer (Y.map a).unop
+        (F := (pullbackCoefficientSystem Y b F).obj i)
+        (G := (pullbackCoefficientSystem Y b F).obj j) t q :
+        AddCommGrpCat.of (Sheaf.H.{e} ((pullbackCoefficientSystem Y b F).obj i) q) ⟶
+          AddCommGrpCat.of (Sheaf.H.{e} ((pullbackCoefficientSystem Y b F).obj j) q)))
     (diagramInverseTransition_pullbackCoefficientSystem Y b F a)
 
 /-- Evaluate a whole triangle comparison at the original fixed coefficient system. -/

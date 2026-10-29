@@ -1,0 +1,50 @@
+{
+  "phase": "principal-authorized nine generic paths only",
+  "time_utc": "2026-10-27T20:25:37.456309+00:00",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "status_before_entries": 1031,
+  "status_after_entries": 1040,
+  "status_before_sha256": "81bd963420f3a5e2f8bd26fdcbd3de4e83bf58d69950916cafd2f5e897b52795",
+  "status_after_sha256": "36546b1e1ed3aa4a83104f5c3b8142e84c658301a13f84e6858c2a6bb9d63d2a",
+  "guard": "all nine absent; candidate hashes match; 100 native dependency hashes match; HEAD/status stable across guard",
+  "written": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+      "sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+      "sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+      "sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+      "sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+      "sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+      "sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+      "sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+      "sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd"
+    }
+  ],
+  "compile_status": "not yet submitted; no compiler evidence is claimed"
+}

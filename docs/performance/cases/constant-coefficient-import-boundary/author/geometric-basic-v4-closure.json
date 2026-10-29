@@ -1,0 +1,48 @@
+{
+  "kind": "Actual closure of the previously prerequisite-deferred geometric consumer; source unchanged.",
+  "basis": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/manifest.json",
+    "manifest_sha256": "c75aba4d667a9879ce5389e79d98870d27c7db2de4ec67b80dc03a19a83c8dc2",
+    "parent_fixed_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/performance-correspondence-v4/packet.json",
+    "parent_packet_sha256": "579652047bcdb65626cf84c7901711c494d2dea4dbaaf3ce3dbdeb0808d382cb"
+  },
+  "closed_consumer": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+    "sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+    "compiler_exit_code": 0
+  },
+  "native_run": {
+    "run": "remote-8e6f035d93cf4602aebe92004aba41d2",
+    "source_sha256": "ff6ce7814cbf443be573de5f9b5a07b1403cbbf4dc7cdffdd3f6fe5bbecca000",
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedFactor",
+      "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic"
+    ],
+    "shared_exit_code": 0,
+    "group_closed": true,
+    "input_drift": [],
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/receipt.json",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/build.log",
+    "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/compiler-events.jsonl"
+  },
+  "condition_change": "Genuine H1 native producers became valid in closed B9ed5183/source56d823; the broker then compiled only the previously deferred changed Basic leaf with compatible artifacts. No source, public model, world or mathematical premise changed.",
+  "retained_coverage": "All pure6 exact-v4 passes in the parent packet remain retained; this result supplies the seventh and final assigned module.",
+  "closure": "Full actual own7 native compiler coverage complete. No remaining implementation/compilation gap within the assigned seven-file scope.",
+  "limits": [
+    "The earlier fixed packet remains the true pure-ready milestone, including its then-deferred Basic status; this separate actual receipt closes that condition rather than relabeling old output.",
+    "No repeated pure checks, new mathematical review/execution gate, standalone lint/test/audit/replay, full-library or downstream build was added.",
+    "No matched wall/RSS performance claim. This only extends actual native source correspondence and compilation coverage.",
+    "Maintained PERFORMANCE/case delivery and broader project acceptance remain with the principal."
+  ]
+}

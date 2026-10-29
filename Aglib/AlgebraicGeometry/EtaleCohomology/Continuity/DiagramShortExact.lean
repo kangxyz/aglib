@@ -8,8 +8,6 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Cokernel
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexColimit
-public import Mathlib.Algebra.Category.Grp.AB
-public import Mathlib.Algebra.Category.Grp.Ulift
 public import Mathlib.CategoryTheory.Abelian.GrothendieckAxioms.Sheaf
 
 /-! # Short exact sequences of original limit coefficients
@@ -42,25 +40,22 @@ variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   (c : Cocone X) {F Q : DiagramCoefficientSystem X}
   (η : InjectiveSystem.System.Hom (diagramAdjunctionData X) F Q)
 
+local instance coneLeftPreservesFiniteLimits :
+    ∀ i, PreservesFiniteLimits ((diagramConeAdjunctionData X c).left i) := by
+  intro i
+  exact inverseImage_preservesFiniteLimits (c.ι.app i).unop
+
 /-- The two actual natural transformations have zero composite. -/
 theorem coneCoefficientNatTrans_comp_cokernelπ :
     coneCoefficientNatTrans X c η ≫ coneCoefficientNatTrans X c
         (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η) = 0 := by
-  apply NatTrans.ext
-  funext i
-  change (inverseImage (c.ι.app i).unop).map (η.app i) ≫
-      (inverseImage (c.ι.app i).unop).map
-        ((InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η).app i) = 0
-  rw [← Functor.map_comp, InjectiveSystem.System.comp_cokernelπ, Functor.map_zero]
+  exact (diagramConeAdjunctionData X c).coefficientNatTrans_comp_cokernelπ η
 
 /-- The original pulled-back coefficient diagrams and their actual quotient
 maps, packaged as a short complex in the functor category. -/
 def coneCoefficientCokernelComplex :
     ShortComplex (I ⥤ AbelianSheaf.{u, u + 1} c.pt.unop) :=
-  ShortComplex.mk (coneCoefficientNatTrans X c η)
-    (coneCoefficientNatTrans X c
-      (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η))
-    (coneCoefficientNatTrans_comp_cokernelπ X c η)
+  (diagramConeAdjunctionData X c).coefficientCokernelComplex η
 
 /-- Evaluation recovers the original pointwise cokernel sequence after the
 specified scheme projection's inverse image. -/
@@ -74,11 +69,7 @@ theorem coneCoefficientCokernelComplex_component (i : I) :
 sequence on the cone point. -/
 theorem coneCoefficientCokernelComplex_exact :
     (coneCoefficientCokernelComplex X c η).Exact := by
-  apply ShortComplex.exact_of_evaluation
-  intro i
-  rw [coneCoefficientCokernelComplex_component]
-  exact (InjectiveSystem.System.cokernelShortComplex_exact
-    (diagramAdjunctionData X) η i).map (inverseImage (c.ι.app i).unop)
+  exact (diagramConeAdjunctionData X c).coefficientCokernelComplex_exact η
 
 /-- A monic stage component gives the original short exact inverse-image
 sequence, without an injectivity assertion about any pulled-back object. -/
@@ -86,26 +77,13 @@ theorem coneCoefficientCokernelComplex_component_shortExact (i : I)
     [Mono (η.app i)] :
     ((coneCoefficientCokernelComplex X c η).map
       ((CategoryTheory.evaluation I (AbelianSheaf.{u, u + 1} c.pt.unop)).obj i)).ShortExact := by
-  rw [coneCoefficientCokernelComplex_component]
-  exact (InjectiveSystem.System.cokernelShortComplex_shortExact
-    (diagramAdjunctionData X) η i).map_of_exact (inverseImage (c.ι.app i).unop)
+  exact (diagramConeAdjunctionData X c).coefficientCokernelComplex_component_shortExact η i
 
 /-- A pointwise monic system morphism gives a short exact sequence of the
 actual coefficient diagrams on the cone point. -/
 theorem coneCoefficientCokernelComplex_shortExact (hη : ∀ i, Mono (η.app i)) :
-    (coneCoefficientCokernelComplex X c η).ShortExact where
-  exact := coneCoefficientCokernelComplex_exact X c η
-  mono_f := by
-    have (i : I) : Mono ((coneCoefficientCokernelComplex X c η).f.app i) := by
-      have : Mono (η.app i) := hη i
-      exact (coneCoefficientCokernelComplex_component_shortExact X c η i).mono_f
-    exact NatTrans.mono_of_mono_app _
-  epi_g := by
-    have (i : I) : Epi ((coneCoefficientCokernelComplex X c η).g.app i) := by
-      change Epi ((inverseImage (c.ι.app i).unop).map
-        ((InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η).app i))
-      infer_instance
-    exact NatTrans.epi_of_epi_app _
+    (coneCoefficientCokernelComplex X c η).ShortExact :=
+  (diagramConeAdjunctionData X c).coefficientCokernelComplex_shortExact η hη
 
 section Colimits
 
@@ -115,7 +93,7 @@ variable [HasColimitsOfShape I AddCommGrpCat.{u + 1}]
 colimits, not independently chosen morphisms with the same endpoints. -/
 def coneCoefficientColimitCokernelComplex :
     ShortComplex (AbelianSheaf.{u, u + 1} c.pt.unop) :=
-  (coneCoefficientCokernelComplex X c η).map colim
+  (diagramConeAdjunctionData X c).coefficientColimitCokernelComplex η
 
 @[simp]
 theorem coneCoefficientColimitCokernelComplex_f :
@@ -130,12 +108,8 @@ theorem coneCoefficientColimitCokernelComplex_g :
 
 private abbrev exactFilteredSheafColimits [IsFiltered I] (S : Scheme.{u}) :
     HasExactColimitsOfShape I (AbelianSheaf.{u, u + 1} S) := by
-  let E : I ≌ AsSmall.{max (u + 1) uI vI} I := AsSmall.equiv (C := I)
-  have : IsFiltered (AsSmall.{max (u + 1) uI vI} I) := IsFiltered.of_equivalence E
-  let : HasExactColimitsOfShape I AddCommGrpCat.{max (u + 1) uI vI} :=
-    HasExactColimitsOfShape.of_domain_equivalence AddCommGrpCat.{max (u + 1) uI vI} E.symm
   let : HasExactColimitsOfShape I AddCommGrpCat.{u + 1} :=
-    HasExactColimitsOfShape.domain_of_functor I AddCommGrpCat.uliftFunctor.{max uI vI, u + 1}
+    hasExactFilteredColimitsOfShape_addCommGrpCat_of_category I
   exact Sheaf.hasExactColimitsOfShape (K := I) (A := AddCommGrpCat.{u + 1})
     S.smallEtaleTopology
 
@@ -145,7 +119,7 @@ theorem coneCoefficientColimitCokernelComplex_exact [IsFiltered I] :
     (coneCoefficientColimitCokernelComplex X c η).Exact := by
   let : HasExactColimitsOfShape I (AbelianSheaf.{u, u + 1} c.pt.unop) :=
     exactFilteredSheafColimits c.pt.unop
-  exact (coneCoefficientCokernelComplex_exact X c η).map colim
+  exact (diagramConeAdjunctionData X c).coefficientColimitCokernelComplex_exact η
 
 /-- The original limit coefficients of a compatible monomorphism and its
 constructed quotient form a short exact sequence. -/
@@ -154,7 +128,7 @@ theorem coneCoefficientColimitCokernelComplex_shortExact [IsFiltered I]
     (coneCoefficientColimitCokernelComplex X c η).ShortExact := by
   let : HasExactColimitsOfShape I (AbelianSheaf.{u, u + 1} c.pt.unop) :=
     exactFilteredSheafColimits c.pt.unop
-  exact (coneCoefficientCokernelComplex_shortExact X c η hη).map_of_exact colim
+  exact (diagramConeAdjunctionData X c).coefficientColimitCokernelComplex_shortExact η hη
 
 end Colimits
 

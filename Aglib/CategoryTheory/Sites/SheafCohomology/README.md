@@ -64,6 +64,20 @@ and an outer colimit compute the actual arrow and diagonal colimits, retaining
 the original comparison legs. This categorical result leaves the geometric
 tail-colimit premise to its scheme consumer.
 
+[SectionArrows](Continuity/InjectiveDiagram/SectionArrows.lean) derives the
+whole square, system-square, Arrow-functor and cone naturality laws from the
+given section functors and their original pullback identity and composition
+laws. [Cone](Continuity/InjectiveDiagram/Cone.lean) also constructs the actual
+coefficient natural transformation, colimit map and injection equations.
+The small-etale consumers supply their original adjunction and section maps.
+
+[CohomologyCocone](Continuity/InjectiveDiagram/CohomologyCocone.lean) constructs
+the actual represented-Ext cocone and its colimit-desc comparison from the
+single cartesian source system, coefficient functor and original transfer
+triangles. Its local endpoint and stage/apex Ext hypotheses retain their stated
+universes. The raw exact-functor argument is shared through
+[Ext/SourceTransfer](../../Abelian/Ext/SourceTransfer.lean).
+
 ## Coverwise acyclicity
 
 The basis criterion assumes Čech exactness of the coefficient on the selected

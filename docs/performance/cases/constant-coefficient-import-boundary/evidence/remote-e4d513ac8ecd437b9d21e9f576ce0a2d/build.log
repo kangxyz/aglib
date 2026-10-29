@@ -1,0 +1,90 @@
+✔ [4397/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient (3.4s)
+✔ [4398/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AffineAcyclicity (6.2s)
+✖ [4399/4416] Building Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence (7.2s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean:60:8: failed to synthesize instance of type class
+  Subsingleton (((cyclicCoefficientFunctor X).obj ↧(ZMod p)).H q)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+✔ [4402/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction (12s)
+✔ [4403/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AffineVanishing (13s)
+✔ [4404/4416] Built Aglib.CategoryTheory.Sites.Torsor.Classification (39s)
+✖ [4406/4416] Building Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPushout (8.7s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:61:66: unsolved goals
+X : Scheme
+L M : AbelianSheaf X
+P : Torsor L
+q : L ⟶ M
+⊢ Sheaf.extensionFiberTorsor (torsorCoefficientExtension P q)
+      ((Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X)
+            (underlyingSetSheaf (torsorCoefficientExtension P q).X₃)).symm
+        (constantIntegerOne X))
+      ⋯ =
+    Sheaf.extensionFiberTorsor (Sheaf.torsorCoefficientExtension P q) (Sheaf.constantIntegerOne X.smallEtaleTopology) ⋯
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:63:26: This simp argument is unused:
+  constantIntegerOne_asGlobalPoint
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [torsorPushout, CategoryTheory.Sheaf.torsorPushout, extensionFiberTorsor]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:80:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  restrictSection ((constantSheaf (smallEtaleTopology ?m.38) AddCommGrpCat).obj ↧(ULift.{?u.37 + 1, 0} ℤ))
+    (constantIntegerOne ?m.38) ?U
+in the target expression
+  (ConcreteCategory.hom ((torsorAugmentation P).hom.app U)) (torsorGenerator P U t) =
+    restrictSection (torsorAugmentationComplex P).X₃ (constantIntegerOne X) U
+
+X : Scheme
+L : AbelianSheaf X
+P : Torsor L
+U : X.Etaleᵒᵖ
+t : P.carrier.obj.obj U
+⊢ (ConcreteCategory.hom ((torsorAugmentation P).hom.app U)) (torsorGenerator P U t) =
+    restrictSection (torsorAugmentationComplex P).X₃ (constantIntegerOne X) U
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    constantIntegerOne X
+  has type
+    ↑(((constantSheaf X.smallEtaleTopology AddCommGrpCat).obj ↧(ULift.{u + 1, 0} ℤ)).obj.obj (op (etaleTerminal X)))
+  but is expected to have type
+    ↑((torsorAugmentationComplex P).X₃.obj.obj (op (etaleTerminal X)))
+  in the application
+    restrictSection (torsorAugmentationComplex P).X₃ (constantIntegerOne X)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:108:4: Application type mismatch: The argument
+  Sheaf.torsorPushoutSection_equivariant P q U a t
+has type
+  Sheaf.torsorPushoutSection P q U (P.action U a t) =
+    (Sheaf.torsorPushout P q).action U ((ConcreteCategory.hom (q.hom.app U)) a) (Sheaf.torsorPushoutSection P q U t)
+but is expected to have type
+  torsorPushoutSection P q U (P.action U a t) =
+    (torsorPushout P q).action U ((ConcreteCategory.hom (q.hom.app U)) a) (torsorPushoutSection P q U t)
+in the application
+  congrArg Subtype.val (Sheaf.torsorPushoutSection_equivariant P q U a t)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getColimitCocone ↦ 30
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:117:33: Application type mismatch: The argument
+  ConcreteCategory.congr_hom ((Sheaf.torsorPushoutMap P q).map.hom.naturality f) t
+has type
+  (ConcreteCategory.hom (P.carrier.obj.map f ≫ (Sheaf.torsorPushoutMap P q).map.hom.app V)) t =
+    (ConcreteCategory.hom ((Sheaf.torsorPushoutMap P q).map.hom.app U ≫ (Sheaf.torsorPushout P q).carrier.obj.map f)) t
+but is expected to have type
+  (ConcreteCategory.hom (P.carrier.obj.map f ≫ ↾fun t => torsorPushoutSection P q V t)).toFun t =
+    (ConcreteCategory.hom ((↾fun t => torsorPushoutSection P q U t) ≫ (torsorPushout P q).carrier.obj.map f)).toFun t
+in the application
+  congrArg Subtype.val (ConcreteCategory.congr_hom ((Sheaf.torsorPushoutMap P q).map.hom.naturality f) t)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getColimitCocone ↦ 30
+error: Aglib/AlgebraicGeometry/EtaleCohomology/H1/TorsorPushout.lean:111:4: (kernel) declaration has metavariables 'AlgebraicGeometry.Scheme.EtaleCohomology.torsorPushoutMap'
+✔ [4408/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorTrivial (13s)
+✔ [4413/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.ZariskiComparison (70s)
+✔ [4414/4416] Built Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureComparison (360s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence
+- Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPushout
+error: build failed

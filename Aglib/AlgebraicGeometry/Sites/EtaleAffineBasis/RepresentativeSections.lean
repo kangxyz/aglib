@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionsSeparation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackEtaleNaturality
+public import Aglib.CategoryTheory.Functor.RepresentativeSections
 
 /-! # Original relative sections represented on etale coefficient objects -/
 
@@ -35,31 +36,17 @@ lemma etaleRepresentativeSection_restrict {X : Scheme.{u}}
     (U : X.Etale) (a : Y ⟶ (Etale.forget X).obj U) (s : F.obj.obj (op U)) :
     (pullbackSectionsFunctor F).map g.op (etaleRepresentativeSection F Y U a s) =
       etaleRepresentativeSection F Z U (g ≫ a) s :=
-  (ConcreteCategory.congr_hom ((pullbackSectionsFunctor F).map_comp a.op g.op)
-    ((pullbackSectionsEtaleEvaluationIso F U).inv s)).symm
+  Functor.representativeSection_restrict (Etale.forget X) (pullbackSectionsFunctor F)
+    (pullbackSectionsEtaleNatIso F) g U a s
 
 /-- Refining a representative uses the original coefficient restriction map. -/
 lemma etaleRepresentativeSection_refine {X : Scheme.{u}}
     (F : AbelianSheaf.{u, u + 1} X) (Y : Over X) {T U : X.Etale}
     (p : T ⟶ U) (a : Y ⟶ (Etale.forget X).obj T) (s : F.obj.obj (op U)) :
     etaleRepresentativeSection F Y U (a ≫ (Etale.forget X).map p) s =
-      etaleRepresentativeSection F Y T a (F.obj.map p.op s) := by
-  have h : (pullbackSectionsFunctor F).map ((Etale.forget X).map p).op
-      ((pullbackSectionsEtaleEvaluationIso F U).inv s) =
-      (pullbackSectionsEtaleEvaluationIso F T).inv (F.obj.map p.op s) := by
-    apply (ConcreteCategory.bijective_of_isIso
-      (pullbackSectionsEtaleEvaluationIso F T).hom).injective
-    have hn := ConcreteCategory.congr_hom (pullbackSectionsMap_etaleEvaluation F p)
-      ((pullbackSectionsEtaleEvaluationIso F U).inv s)
-    have hU := ConcreteCategory.congr_hom
-      (pullbackSectionsEtaleEvaluationIso F U).inv_hom_id s
-    have hT := ConcreteCategory.congr_hom
-      (pullbackSectionsEtaleEvaluationIso F T).inv_hom_id (F.obj.map p.op s)
-    exact hn.trans ((congrArg (F.obj.map p.op) hU).trans hT.symm)
-  exact (ConcreteCategory.congr_hom
-    ((pullbackSectionsFunctor F).map_comp ((Etale.forget X).map p).op a.op)
-    ((pullbackSectionsEtaleEvaluationIso F U).inv s)).trans
-    (congrArg ((pullbackSectionsFunctor F).map a.op) h)
+      etaleRepresentativeSection F Y T a (F.obj.map p.op s) :=
+  Functor.representativeSection_refine (Etale.forget X) (pullbackSectionsFunctor F)
+    (pullbackSectionsEtaleNatIso F) p a s
 
 /-- Common original coefficient witnesses on an actual cover prove equality
 of the original relative sections. -/
@@ -78,15 +65,10 @@ theorem etaleRepresentativeSection_eq_of_covering_witnesses
     (hst : ∀ j, F.obj.map (p j).op s = F.obj.map (q j).op t) :
     etaleRepresentativeSection F (Over.mk f) U a s =
       etaleRepresentativeSection F (Over.mk f) V b t := by
-  apply pullbackSections_eq_of_etale_cover f F W hcover
-  intro j
-  let g : Over.mk ((W j).hom ≫ f) ⟶ Over.mk f := Over.homMk (W j).hom
-  exact (etaleRepresentativeSection_restrict F g U a s).trans
-    ((congrArg (fun z ↦ etaleRepresentativeSection F _ U z s) (hp j).symm).trans
-      ((etaleRepresentativeSection_refine F _ (p j) (c j) s).trans
-        ((congrArg (etaleRepresentativeSection F _ (T j) (c j)) (hst j)).trans
-          ((etaleRepresentativeSection_refine F _ (q j) (c j) t).symm.trans
-            ((congrArg (fun z ↦ etaleRepresentativeSection F _ V z t) (hq j)).trans
-              (etaleRepresentativeSection_restrict F g V b t).symm)))))
+  let g (j : J) : Over.mk ((W j).hom ≫ f) ⟶ Over.mk f := Over.homMk (W j).hom
+  exact Functor.representativeSection_eq_of_witnesses (Etale.forget X)
+    (pullbackSectionsFunctor F) (pullbackSectionsEtaleNatIso F) g
+    (fun x y hxy => pullbackSections_eq_of_etale_cover f F W hcover x y hxy)
+    U V a b s t T p q c hp hq hst
 
 end AlgebraicGeometry.Scheme.EtaleAffineBasis

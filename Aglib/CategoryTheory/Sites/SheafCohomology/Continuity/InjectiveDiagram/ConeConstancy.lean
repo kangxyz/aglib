@@ -1,0 +1,328 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Cone
+public import Mathlib.CategoryTheory.Limits.Connected
+
+/-! # Coherent triangle transport and fixed coefficients at a cone point
+
+The ordinary adjunction data supplies triangle composition and the constancy of
+the actual fixed-coefficient diagram. Object and map correspondence identify
+the given diagram; compatibility of its structural components is proved here.
+The connected-colimit comparison uses the original constant object as apex.
+-/
+
+@[expose] public noncomputable section
+
+open CategoryTheory.Limits
+
+namespace CategoryTheory.InjectiveSystem.AdjunctionData
+
+universe uJ vJ uA vA uI vI
+
+variable {J : Type uJ} [Category.{vJ} J]
+  {A : J → Type uA} [∀ j, Category.{vA} (A j)]
+  (D : InjectiveSystem.AdjunctionData A)
+
+/-- The original left composition comparison with its actual triangle equality. -/
+def triangleIso {x y t : J} (p : x ⟶ t) (f : x ⟶ y) (q : y ⟶ t)
+    (h : f ≫ q = p) : D.left p ≅ D.left f ⋙ D.left q :=
+  eqToIso (congrArg D.left h.symm) ≪≫ D.leftCompIso f q
+
+/-- The conjugate right comparison, retaining the same equality transport. -/
+def triangleRightIso {x y t : J} (p : x ⟶ t) (f : x ⟶ y) (q : y ⟶ t)
+    (h : f ≫ q = p) : D.right q ⋙ D.right f ≅ D.right p :=
+  (D.compIso f q).symm ≪≫ eqToIso (congrArg D.right h)
+
+/-- Triangle transport uses the canonical comparison of the supplied adjunctions. -/
+theorem triangleIso_eq_leftAdjointCompIso {x y t : J}
+    (p : x ⟶ t) (f : x ⟶ y) (q : y ⟶ t) (h : f ≫ q = p) :
+    D.triangleIso p f q h =
+      (Adjunction.leftAdjointCompIso (D.adj f) (D.adj q) (D.adj p)
+        (D.triangleRightIso p f q h)).symm := by
+  cases h
+  simp only [triangleIso, triangleRightIso, eqToIso_refl, Iso.refl_trans, Iso.trans_refl]
+  rfl
+
+/-- The actual triangle comparisons have their actual right-triangle mates. -/
+theorem conjugate_triangleIso_hom {x y t : J}
+    (p : x ⟶ t) (f : x ⟶ y) (q : y ⟶ t) (e : f ≫ q = p) :
+    conjugateEquiv ((D.adj f).comp (D.adj q)) (D.adj p)
+      (D.triangleIso p f q e).hom = (D.triangleRightIso p f q e).hom := by
+  rw [D.triangleIso_eq_leftAdjointCompIso]
+  exact Adjunction.conjugateEquiv_leftAdjointCompIso_inv _ _ _ _
+
+/-- Equality transport of the original whole right triangle. -/
+theorem triangleRightIso_transport_whole {x y t : J}
+    (f g : x ⟶ y) (e : f = g) (p : x ⟶ t) (q : y ⟶ t)
+    (hf : f ≫ q = p) (hg : g ≫ q = p) :
+    Functor.whiskerLeft (D.right q) (eqToHom (congrArg D.right e)) ≫
+        (D.triangleRightIso p g q hg).hom =
+      (D.triangleRightIso p f q hf).hom := by
+  cases e
+  simp only [eqToHom_refl, Functor.whiskerLeft_id', Category.id_comp]
+
+variable (hD : D.Coherent)
+
+include hD in
+/-- Composition of the same right triangles, before evaluating their original objects. -/
+theorem triangleRightIso_comp_transport_whole {i j k t : J}
+    (a : i ⟶ j) (b : j ⟶ k) (d : i ⟶ k) (p : i ⟶ t) (q : j ⟶ t) (r : k ⟶ t)
+    (hd : d = a ≫ b) (hp : a ≫ q = p) (hq : b ≫ r = q) (hr : d ≫ r = p) :
+    Functor.whiskerRight (D.triangleRightIso q b r hq).hom (D.right a) ≫
+        (D.triangleRightIso p a q hp).hom =
+      (Functor.associator (D.right r) (D.right b) (D.right a)).hom ≫
+        Functor.whiskerLeft (D.right r)
+          ((D.compIso a b).inv ≫ eqToHom (congrArg D.right hd.symm)) ≫
+            (D.triangleRightIso p d r hr).hom := by
+  simpa only [triangleRightIso] using
+    Cone.rightTriangle_comp_transport_whole D hD a b d p q r hd hp hq hr
+
+include hD in
+/-- Evaluate the proved whole composition at the given original apex object. -/
+theorem triangleRightIso_comp_transport_app {i j k t : J}
+    (a : i ⟶ j) (b : j ⟶ k) (d : i ⟶ k) (p : i ⟶ t) (q : j ⟶ t) (r : k ⟶ t)
+    (hd : d = a ≫ b) (hp : a ≫ q = p) (hq : b ≫ r = q) (hr : d ≫ r = p)
+    (K : A t) :
+    (D.right a).map ((D.triangleRightIso q b r hq).hom.app K) ≫
+        (D.triangleRightIso p a q hp).hom.app K =
+      (D.compIso a b).inv.app ((D.right r).obj K) ≫
+        eqToHom (congrArg (fun f => (D.right f).obj ((D.right r).obj K)) hd.symm) ≫
+          (D.triangleRightIso p d r hr).hom.app K := by
+  have h := NatTrans.congr_app
+    (D.triangleRightIso_comp_transport_whole hD a b d p q r hd hp hq hr) K
+  simpa only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_hom_app, eqToHom_app, Category.id_comp, Category.assoc] using h
+
+include hD in
+/-- Right comparison coherence gives the whole original left associativity law. -/
+theorem leftCompIso_assoc_hom {i j k t : J}
+    (a : i ⟶ j) (b : j ⟶ k) (c : k ⟶ t) (F : A i) :
+    (D.leftCompIso (a ≫ b) c).hom.app F ≫
+        (D.left c).map ((D.leftCompIso a b).hom.app F) =
+      eqToHom (congrArg (fun f => (D.left f).obj F) (Category.assoc a b c)) ≫
+        (D.leftCompIso a (b ≫ c)).hom.app F ≫
+          (D.leftCompIso b c).hom.app ((D.left a).obj F) := by
+  let e := D.triangleRightIso ((a ≫ b) ≫ c) a (b ≫ c) (Category.assoc a b c).symm
+  have hc :
+      Functor.isoWhiskerLeft (D.right c) (D.compIso a b).symm ≪≫
+          (D.compIso (a ≫ b) c).symm =
+        (Functor.associator (D.right c) (D.right b) (D.right a)).symm ≪≫
+          Functor.isoWhiskerRight (D.compIso b c).symm (D.right a) ≪≫ e := by
+    apply Iso.ext
+    apply NatTrans.ext
+    funext K
+    simpa only [e, triangleRightIso, Iso.trans_hom, NatTrans.comp_app,
+      Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom,
+      Functor.whiskerLeft_app, Functor.whiskerRight_app, Iso.symm_hom,
+      Functor.associator_inv_app, Category.id_comp, eqToIso.hom, eqToHom_app,
+      Category.assoc] using InjectiveSystem.AdjunctionData.Coherent.inv_assoc D hD a b c K
+  have h := Adjunction.leftAdjointCompIso_assoc
+    (D.adj a) (D.adj b) (D.adj c) (D.adj (a ≫ b)) (D.adj (b ≫ c))
+    (D.adj ((a ≫ b) ≫ c)) (D.compIso a b).symm (D.compIso b c).symm e
+    (D.compIso (a ≫ b) c).symm hc
+  have he : Adjunction.leftAdjointCompIso (D.adj a) (D.adj (b ≫ c))
+      (D.adj ((a ≫ b) ≫ c)) e =
+        (D.triangleIso ((a ≫ b) ≫ c) a (b ≫ c) (Category.assoc a b c).symm).symm :=
+    (congrArg Iso.symm
+      (D.triangleIso_eq_leftAdjointCompIso ((a ≫ b) ≫ c) a (b ≫ c)
+        (Category.assoc a b c).symm)).symm
+  rw [he] at h
+  change Functor.isoWhiskerLeft (D.left a) (D.leftCompIso b c).symm ≪≫
+      (D.triangleIso ((a ≫ b) ≫ c) a (b ≫ c) (Category.assoc a b c).symm).symm =
+    (Functor.associator (D.left a) (D.left b) (D.left c)).symm ≪≫
+      Functor.isoWhiskerRight (D.leftCompIso a b).symm (D.left c) ≪≫
+        (D.leftCompIso (a ≫ b) c).symm at h
+  have hi := congrArg (fun e => e.inv.app F) h
+  simpa only [triangleIso, Iso.trans_hom, Iso.trans_inv, NatTrans.comp_app,
+    Functor.isoWhiskerLeft_inv, Functor.isoWhiskerRight_inv,
+    Functor.whiskerLeft_app, Functor.whiskerRight_app, Iso.symm_inv,
+    Functor.associator_hom_app, Category.comp_id, eqToIso.hom, eqToHom_app,
+    Category.assoc] using hi.symm
+
+/-- The actual coefficient transition transported through its original triangle. -/
+def triangleCoefficientMap {x y t : J} (f : x ⟶ y) (p : x ⟶ t) (q : y ⟶ t)
+    (h : f ≫ q = p) {F : A x} {G : A y} (φ : (D.left f).obj F ⟶ G) :
+    (D.left p).obj F ⟶ (D.left q).obj G :=
+  (D.triangleIso p f q h).hom.app F ≫ (D.left q).map φ
+
+include hD in
+/-- Whole composition of original coefficient triangles, including arbitrary second maps. -/
+theorem triangleCoefficientMap_comp {x y z t : J}
+    (f : x ⟶ y) (g : y ⟶ z) (p : x ⟶ t) (q : y ⟶ t) (r : z ⟶ t)
+    (hp : f ≫ q = p) (hq : g ≫ r = q)
+    {F : A x} {G : A y} {H : A z}
+    (φ : (D.left f).obj F ⟶ G) (ψ : (D.left g).obj G ⟶ H) :
+    D.triangleCoefficientMap f p q hp φ ≫ D.triangleCoefficientMap g q r hq ψ =
+      D.triangleCoefficientMap (f ≫ g) p r (by rw [Category.assoc, hq, hp])
+        ((D.leftCompIso f g).hom.app F ≫ (D.left g).map φ ≫ ψ) := by
+  cases hp
+  cases hq
+  have hn := (D.leftCompIso g r).hom.naturality φ
+  have ha := D.leftCompIso_assoc_hom hD f g r F
+  have ht := congrArg
+    (fun k => eqToHom (congrArg (fun a => (D.left a).obj F)
+      (Category.assoc f g r).symm) ≫ k) ha
+  have ha' :
+      (D.leftCompIso f (g ≫ r)).hom.app F ≫
+          (D.leftCompIso g r).hom.app ((D.left f).obj F) =
+        eqToHom (congrArg (fun a => (D.left a).obj F) (Category.assoc f g r).symm) ≫
+          (D.leftCompIso (f ≫ g) r).hom.app F ≫
+            (D.left r).map ((D.leftCompIso f g).hom.app F) := by
+    simpa only [Category.assoc, eqToHom_trans_assoc, eqToHom_refl, Category.id_comp] using ht.symm
+  dsimp only [triangleCoefficientMap, triangleIso, Iso.trans_hom, NatTrans.comp_app,
+    eqToIso.hom, eqToHom_app]
+  simp only [eqToHom_refl, NatTrans.id_app, Category.id_comp,
+    Functor.map_comp, Category.assoc]
+  rw [← Category.assoc ((D.left (g ≫ r)).map φ), hn]
+  have hv := congrArg
+    (fun k => k ≫ (D.left r).map ((D.left g).map φ) ≫ (D.left r).map ψ) ha'
+  simpa only [Category.assoc, Functor.comp_map, eqToHom_app] using hv
+
+include hD in
+/-- Composing two original structural triangle comparisons. -/
+theorem triangleIso_comp {x y z t : J}
+    (f : x ⟶ y) (g : x ⟶ z) (k : x ⟶ t) (q : z ⟶ t) (a : y ⟶ z)
+    (ha : f ≫ a = g) (hq : g ≫ q = k) (F : A x) :
+    (D.triangleIso k f (a ≫ q) (by rw [← Category.assoc, ha, hq])).hom.app F ≫
+        (D.leftCompIso a q).hom.app ((D.left f).obj F) =
+      (D.triangleIso k g q hq).hom.app F ≫
+        (D.left q).map ((D.triangleIso g f a ha).hom.app F) := by
+  cases ha
+  cases hq
+  simpa only [triangleIso, Iso.trans_hom, NatTrans.comp_app, eqToIso.hom,
+    eqToHom_app, eqToHom_refl, Category.id_comp, Category.assoc] using
+      (D.leftCompIso_assoc_hom hD f a q F).symm
+
+include hD in
+/-- Fixed coefficients commute with their actual structural triangle maps. -/
+theorem triangle_fixed_coefficient {x y z t : J}
+    (f : x ⟶ y) (g : x ⟶ z) (k : x ⟶ t)
+    (a : y ⟶ z) (p : y ⟶ t) (q : z ⟶ t)
+    (ha : f ≫ a = g) (hp : f ≫ p = k) (hq : g ≫ q = k) (ht : a ≫ q = p)
+    (F : A x) :
+    (D.triangleIso k f p hp).hom.app F ≫
+        D.triangleCoefficientMap a p q ht ((D.triangleIso g f a ha).inv.app F) =
+      (D.triangleIso k g q hq).hom.app F := by
+  cases ht
+  have hc := D.triangleIso_comp hD f g k q a ha hq F
+  have hc' := congrArg
+    (fun t => t ≫ (D.left q).map ((D.triangleIso g f a ha).inv.app F)) hc
+  have hi : (D.triangleIso (a ≫ q) a q rfl).hom.app ((D.left f).obj F) =
+      (D.leftCompIso a q).hom.app ((D.left f).obj F) := by
+    simp only [triangleIso, Iso.trans_hom, eqToIso.hom, eqToHom_refl, Category.id_comp]
+  dsimp only [triangleCoefficientMap]
+  rw [hi]
+  have hv : (D.triangleIso k f (a ≫ q) hp).hom.app F ≫
+      (D.leftCompIso a q).hom.app ((D.left f).obj F) ≫
+        (D.left q).map ((D.triangleIso g f a ha).inv.app F) =
+      (D.triangleIso k g q hq).hom.app F ≫ (D.left q).map (𝟙 ((D.left g).obj F)) := by
+    simpa only [Category.assoc, ← Functor.map_comp, Iso.hom_inv_id_app] using hc'
+  exact hv.trans ((congrArg (fun t => (D.triangleIso k g q hq).hom.app F ≫ t)
+    ((D.left q).map_id ((D.left g).obj F))).trans (Category.comp_id _))
+
+include hD in
+/-- The fixed-coefficient law as an equality of the whole natural transformations. -/
+theorem triangle_fixed_coefficient_nat {x y z t : J}
+    (f : x ⟶ y) (g : x ⟶ z) (k : x ⟶ t)
+    (a : y ⟶ z) (p : y ⟶ t) (q : z ⟶ t)
+    (ha : f ≫ a = g) (hp : f ≫ p = k) (hq : g ≫ q = k) (ht : a ≫ q = p) :
+    (D.triangleIso k f p hp).hom ≫
+      Functor.whiskerLeft (D.left f) (D.triangleIso p a q ht).hom ≫
+        (Functor.associator (D.left f) (D.left a) (D.left q)).inv ≫
+          Functor.whiskerRight (D.triangleIso g f a ha).inv (D.left q) =
+      (D.triangleIso k g q hq).hom := by
+  apply NatTrans.ext
+  funext F
+  simpa only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_inv_app, Category.id_comp, triangleCoefficientMap] using
+      D.triangle_fixed_coefficient hD f g k a p q ha hp hq ht F
+
+variable {I : Type uI} [Category.{vI} I] (Y : I ⥤ J)
+  (b : Limits.Cone Y) (c : Cocone Y) (l : b.pt ⟶ c.pt)
+  (hl : ∀ i, b.π.app i ≫ c.ι.app i = l) (F : A b.pt)
+  (C : I ⥤ A c.pt)
+  (hobj : ∀ i, C.obj i = (D.left (c.ι.app i)).obj ((D.left (b.π.app i)).obj F))
+
+/-- The original structural component, at the actual supplied diagram object. -/
+def fixedCoefficientComponent (i : I) :
+    (D.left l).obj F ≅ C.obj i :=
+  (D.triangleIso l (b.π.app i) (c.ι.app i) (hl i)).app F ≪≫ eqToIso (hobj i).symm
+
+include hD in
+/-- Constancy of the supplied coefficient diagram follows from its literal
+transition formula; compatibility of the components is not an input. -/
+def fixedCoefficientIso
+    (hmap : ∀ {i j : I} (a : i ⟶ j), C.map a =
+      eqToHom (hobj i) ≫
+        D.triangleCoefficientMap (Y.map a) (c.ι.app i) (c.ι.app j) (c.w a)
+          ((D.triangleIso (b.π.app j) (b.π.app i) (Y.map a) (b.w a)).inv.app F) ≫
+            eqToHom (hobj j).symm) :
+    (Functor.const I).obj ((D.left l).obj F) ≅ C :=
+  NatIso.ofComponents (D.fixedCoefficientComponent Y b c l hl F C hobj)
+    (fun {i j} a => by
+      have hn : (D.fixedCoefficientComponent Y b c l hl F C hobj i).hom ≫ C.map a =
+          (D.fixedCoefficientComponent Y b c l hl F C hobj j).hom := by
+        dsimp only [fixedCoefficientComponent, Iso.trans_hom, Iso.app_hom, eqToIso.hom]
+        rw [hmap]
+        simp only [Category.assoc, eqToHom_trans_assoc, eqToHom_refl, Category.id_comp]
+        simpa only [Category.assoc] using congrArg (fun t => t ≫ eqToHom (hobj j).symm)
+          (D.triangle_fixed_coefficient hD (b.π.app i) (b.π.app j) l (Y.map a)
+            (c.ι.app i) (c.ι.app j) (b.w a) (hl i) (hl j) (c.w a) F)
+      exact (Category.id_comp
+        (D.fixedCoefficientComponent Y b c l hl F C hobj j).hom).trans hn.symm)
+
+
+end CategoryTheory.InjectiveSystem.AdjunctionData
+
+namespace CategoryTheory.Limits
+
+universe uJ vJ uC vC
+
+/-- The original diagram colimit is compared directly with the actual constant
+object, using its native connected constant cocone. -/
+def constantDiagramColimitIso {I : Type uJ} {C : Type uC}
+    [Category.{vJ} I] [Category.{vC} C]
+    [IsConnected I] {D : I ⥤ C} [HasColimit D] {A : C}
+    (e : (Functor.const I).obj A ≅ D) : colimit D ≅ A :=
+  (colimit.isColimit D).coconePointUniqueUpToIso
+    ((IsColimit.precomposeHomEquiv e.symm (constCocone I A)).symm
+      (isColimitConstCocone I A))
+
+/-- Every original colimit insertion is the literal inverse component. -/
+@[reassoc]
+theorem constantDiagramColimitIso_ι {I : Type uJ} {C : Type uC}
+    [Category.{vJ} I] [Category.{vC} C]
+    [IsConnected I] {D : I ⥤ C} [HasColimit D] {A : C}
+    (e : (Functor.const I).obj A ≅ D) (i : I) :
+    colimit.ι D i ≫ (constantDiagramColimitIso e).hom = e.inv.app i := by
+  exact (colimit.comp_coconePointUniqueUpToIso_hom
+    ((IsColimit.precomposeHomEquiv e.symm (constCocone I A)).symm
+      (isColimitConstCocone I A)) i).trans (Category.comp_id _)
+
+/-- The direct actual-apex construction equals the former two-colimit
+composition as a whole isomorphism, by its original insertion values. -/
+theorem constantDiagramColimitIso_eq_isoOfNatIso {I : Type uJ} {C : Type uC}
+    [Category.{vJ} I] [Category.{vC} C]
+    [IsConnected I] {D : I ⥤ C} [HasColimit D] {A : C}
+    (e : (Functor.const I).obj A ≅ D) :
+    constantDiagramColimitIso e =
+      HasColimit.isoOfNatIso e.symm ≪≫
+        (colimit.isColimit ((Functor.const I).obj A)).coconePointUniqueUpToIso
+          (isColimitConstCocone I A) := by
+  apply Iso.ext
+  apply colimit.hom_ext
+  intro i
+  rw [constantDiagramColimitIso_ι]
+  change e.inv.app i = colimit.ι D i ≫ (HasColimit.isoOfNatIso e.symm).hom ≫
+    ((colimit.isColimit ((Functor.const I).obj A)).coconePointUniqueUpToIso
+      (isColimitConstCocone I A)).hom
+  rw [HasColimit.ι_isoOfNatIso_hom_assoc]
+  have hc := colimit.comp_coconePointUniqueUpToIso_hom (isColimitConstCocone I A) i
+  exact ((congrArg (fun t => e.inv.app i ≫ t) hc).trans (Category.comp_id _)).symm
+
+end CategoryTheory.Limits

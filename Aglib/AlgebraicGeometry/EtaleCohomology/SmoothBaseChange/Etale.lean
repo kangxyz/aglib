@@ -39,6 +39,10 @@ variable {X S S' : Scheme.{u}} (f : X ⟶ S) (g : S' ⟶ S) [Etale g]
   [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} (pullback g f))]
   [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} (pullback g f))]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original higher exchange is invertible on actual injective coefficients. -/
 theorem higherBaseChangeMap_etale_injective_isIso
     (I : AbelianSheaf.{u, u + 1} X) [Injective I] (q : ℕ) :
@@ -89,11 +93,19 @@ theorem derivedBaseChangeMap_etale_single_isIso
       (pullback.fst g f) g (pullback.snd g f) pullback.condition I).mpr
         (higherBaseChangeMap_etale_injective_isIso f g I)
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} (pullback g f))]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The canonical higher base-change map along an étale morphism is invertible
 in every natural degree for every abelian sheaf. -/
 theorem higherBaseChangeMap_etale_isIso (q : ℕ) :
     IsIso (higherBaseChangeMap f (pullback.fst g f) g (pullback.snd g f)
       pullback.condition q) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} (pullback g f))
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
   have (F : AbelianSheaf.{u, u + 1} X) :
       IsIso ((higherBaseChangeMap f (pullback.fst g f) g (pullback.snd g f)
         pullback.condition q).app F) :=

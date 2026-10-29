@@ -41,7 +41,8 @@ private theorem representedPostcomp_restriction
   rw [NatTrans.rightDerived_comp, NatTrans.rightDerived_comp] at hd
   have hc := congrArg (fun a => a.app M) hd
   dsimp only [NatTrans.comp_app] at hc
-  dsimp only [Iso.trans_hom, NatTrans.comp_app, rightDerivedNatIso]
+  dsimp only [Iso.trans_hom, NatTrans.comp_app, rightDerivedNatIso,
+    CategoryTheory.Functor.rightDerivedNatIsoOfAdditive]
   rw [← Category.assoc, hc, Category.assoc, rightDerivedPostcompIso_hom_natTrans]
   exact (Category.assoc _ _ _).symm
 

@@ -20,6 +20,8 @@ open CategoryTheory CategoryTheory.Limits
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u e uI vI
 attribute [local instance] hasSheafifyLarge
+attribute [local instance] schemeTransferLeftAdditive schemeTransferLeftLimits
+  schemeTransferLeftColimits schemeTransferSourceCartesian
 variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
 
 local instance diagramLeftAdditive :
@@ -54,6 +56,10 @@ abbrev diagramCohomologyObj (i : I) : AddCommGrpCat.{e} :=
   InjectiveSystem.representedCohomologyObj (diagramAdjunctionData X)
     (diagramIntegerSystem X) F n i
 
+/-- The single restricted integer source retains the original native cohomology object. -/
+lemma diagramCohomologyObj_eq (i : I) :
+    diagramCohomologyObj X F n i = AddCommGrpCat.of (Sheaf.H.{e} (F.obj i) n) := rfl
+
 /-- The original stage pullback followed by its compatible coefficient morphism. -/
 abbrev diagramCohomologyMap {i j : I} (a : i ⟶ j) :
     diagramCohomologyObj X F n i ⟶ diagramCohomologyObj X F n j :=
@@ -64,21 +70,10 @@ abbrev diagramCohomologyMap {i j : I} (a : i ⟶ j) :
 lemma diagramCohomologyMap_eq_transfer {i j : I} (a : i ⟶ j) :
     diagramCohomologyMap X F n a =
       cohomologyTransfer (X.map a).unop (diagramInverseTransition X F a) n := by
-  ext x
-  have hu : inv ((diagramIntegerSystem X).leftMap (diagramAdjunctionData X) a) =
-      (inverseImageConstantIso (X.map a).unop).inv.app
-        (AddCommGrpCat.of (ULift.{u + 1} ℤ)) := by
-    apply IsIso.inv_eq_of_hom_inv_id
-    rw [diagramIntegerSystem_leftMap]
-    exact Iso.hom_inv_id_app _ _
-  change ((((diagramAdjunctionData X).left a).extPrecompMap
-      (inv ((diagramIntegerSystem X).leftMap (diagramAdjunctionData X) a))
-      (F.obj i) n x).comp
-        (Abelian.Ext.mk₀ (F.leftMap (diagramAdjunctionData X) a)) (add_zero n)) =
-    Sheaf.H.map (diagramInverseTransition X F a) n
-      (cohomologyPullback (X.map a).unop (F.obj i) n x)
-  rw [hu]
-  rfl
+  have h := InjectiveSystem.representedCohomologyMap_reindex_eq_extTransfer
+    schemeAdjunctionData X schemeIntegerSystem F n a
+  exact h.trans (schemeIntegerSystem_extTransfer_eq_cohomologyTransfer
+    (X.map a) (diagramInverseTransition X F a) n)
 
 lemma diagramCohomologyMap_id (i : I) : diagramCohomologyMap X F n (𝟙 i) = 𝟙 _ :=
   InjectiveSystem.representedCohomologyMap_id (diagramAdjunctionData X)

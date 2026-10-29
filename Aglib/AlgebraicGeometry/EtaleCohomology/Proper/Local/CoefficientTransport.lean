@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
 public import Mathlib.Algebra.Group.Shrink
+public import Aglib.Logic.Function.SquareTransport
 
 /-! # Original cohomology pullback under coefficient isomorphisms
 
@@ -41,30 +42,21 @@ literal original cohomology pullback. -/
 theorem cohomologyPullback_surjective_of_iso (g : S ⟶ X)
     {F G : AbelianSheaf.{u, u + 1} X} (e : F ≅ G) (q : ℕ)
     (hF : Function.Surjective (cohomologyPullback.{u, eX, eS} g F q)) :
-    Function.Surjective (cohomologyPullback.{u, eX, eS} g G q) := by
-  intro z
-  obtain ⟨y, hy⟩ := (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).surjective z
-  obtain ⟨x, hx⟩ := hF y
-  refine ⟨Sheaf.H.map e.hom q x, ?_⟩
-  rw [cohomologyPullback_coefficientMap, hx]
-  exact hy
+    Function.Surjective (cohomologyPullback.{u, eX, eS} g G q) :=
+  Function.surjective_of_commutative_square
+    (funext (cohomologyPullback_coefficientMap g e.hom q))
+    (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).surjective hF
 
 /-- The same original coefficient square transports injectivity without
 any surjectivity premise on the pullback itself. -/
 theorem cohomologyPullback_injective_of_iso (g : S ⟶ X)
     {F G : AbelianSheaf.{u, u + 1} X} (e : F ≅ G) (q : ℕ)
     (hF : Function.Injective (cohomologyPullback.{u, eX, eS} g F q)) :
-    Function.Injective (cohomologyPullback.{u, eX, eS} g G q) := by
-  intro x y hxy
-  obtain ⟨a, rfl⟩ := (cohomologyMapIso_bijective e q).surjective x
-  obtain ⟨b, rfl⟩ := (cohomologyMapIso_bijective e q).surjective y
-  apply congrArg (Sheaf.H.map e.hom q)
-  apply hF
-  apply (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).injective
-  change Sheaf.H.map ((inverseImage g).map e.hom) q (cohomologyPullback g F q a) =
-    Sheaf.H.map ((inverseImage g).map e.hom) q (cohomologyPullback g F q b)
-  exact ((cohomologyPullback_coefficientMap g e.hom q a).symm.trans hxy).trans
-    (cohomologyPullback_coefficientMap g e.hom q b)
+    Function.Injective (cohomologyPullback.{u, eX, eS} g G q) :=
+  Function.injective_of_commutative_square
+    (funext (cohomologyPullback_coefficientMap g e.hom q))
+    (cohomologyMapIso_bijective ((inverseImage g).mapIso e) q).injective
+    (cohomologyMapIso_bijective e q).surjective hF
 
 namespace Proper
 

@@ -1,0 +1,431 @@
+{
+  "phase": "C56 repair-v3 bounded-constant generic leaf applied; Field diagnostic separate",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "basis_run": "remote-0116fbacf2d74456ad1c2e7f9bf70ed4",
+  "basis_source": "f99d984824d7d8076ab46ecb1a708647baa16731530f208dd4754a3c6b2f283b",
+  "write_scope": [
+    "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean"
+  ],
+  "changed_records": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+      "module": "Aglib.Algebra.Homology.DerivedCategory.Ext.BoundedConstants",
+      "before_sha256": "ee9a44baaae9f54527e051707cbdca7eda43be3cc28647396790326e3b211f0d",
+      "after_sha256": "26a8e9395085faf85bc4980cfd4f64da3d80913060ef8f184b0310138eeaa254",
+      "after": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/after/Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean"
+    }
+  ],
+  "records": [
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantImagesLinear.lean",
+      "module": "Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantImagesLinear",
+      "sha256": "4ad020d9858f8b8a1957eeeb0936ebd8fc26639fd8d4b16c661a06bef852c24a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantImagesLinear.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/UnderlyingLinearMap.lean",
+      "module": "Aglib.Algebra.Category.ModuleCat.UnderlyingLinearMap",
+      "sha256": "45a5d8427dd4de317674f769f66a94584767a288aa7cdc066e638f0667ede82b",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/Algebra/Category/ModuleCat/UnderlyingLinearMap.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+      "module": "Aglib.Algebra.Homology.DerivedCategory.Ext.BoundedConstants",
+      "sha256": "26a8e9395085faf85bc4980cfd4f64da3d80913060ef8f184b0310138eeaa254",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/after/Aglib/Algebra/Homology/DerivedCategory/Ext/BoundedConstants.lean",
+      "changed_since_v1": true
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverse.lean",
+      "module": "Aglib.Algebra.Homology.DerivedCategory.Ext.ChangeUniverse",
+      "sha256": "6b7bcf591514fce033e95828e9afcf58cbfd10e6d5f553f186ec9554e4e39a04",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverse.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverseExact.lean",
+      "module": "Aglib.Algebra.Homology.DerivedCategory.Ext.ChangeUniverseExact",
+      "sha256": "f6a085886b0b4d63876c13b07dcbe1a288630dc537fadfb1b7a77d6ad896955c",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/Algebra/Homology/DerivedCategory/Ext/ChangeUniverseExact.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Compactification/CurveDimension.lean",
+      "module": "Aglib.AlgebraicGeometry.Compactification.CurveDimension",
+      "sha256": "90c2af8565bf334796b6151e9cf9574fa8f52fb0068d12017c2bb7738fc55b6a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Compactification/CurveDimension.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/AffineCompletion.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.AffineCompletion",
+      "sha256": "0107837d81a4e7b911753a8f35abe5846287922b6ca21b9394f8e82011dece9f",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/AffineCompletion.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Divisors/OpenRestriction.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.Divisors.OpenRestriction",
+      "sha256": "115ed4131bf6a27067a38471805ca1131f1e05cea264723216a3bdf75e9479a7",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/Divisors/OpenRestriction.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/NormalClosedStalks.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.NormalClosedStalks",
+      "sha256": "4a1abcb154af145ac439b6fe934e9d454db86a2d352f302c44dc54be0af242c2",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/NormalClosedStalks.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/KummerOpenRestriction.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.Picard.KummerOpenRestriction",
+      "sha256": "04667a5f0592f5f9df4ce8f0898533f2e14e1cf1a237c203f615ffde18f88fc6",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/Picard/KummerOpenRestriction.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/KummerPairClasses.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.Picard.KummerPairClasses",
+      "sha256": "c5cdeb698dce3cd2e43823aee89c99cb5421421933a8e18d5b8372b9da9a3eea",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/Picard/KummerPairClasses.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/OpenKernel.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.Picard.OpenKernel",
+      "sha256": "be399d8e45a4fc3728d87a6c3f2d6335d9bf7e13e08bf9dbf3780573f8846922",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/Picard/OpenKernel.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/Picard/OpenRestriction.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.Picard.OpenRestriction",
+      "sha256": "65a4856d508e372f9191e7a8ae044b180a21ed6038a71f8c6ada2d6a21880a6f",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/Picard/OpenRestriction.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChange.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.PointDivisor.FieldBaseChange",
+      "sha256": "69f3e2f0386e5a3b4b079689192ddd06bdb2ac64cc75635a19ef0b1965e8bfc7",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChange.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChangeOrders.lean",
+      "module": "Aglib.AlgebraicGeometry.Curves.PointDivisor.FieldBaseChangeOrders",
+      "sha256": "547cff6cc851d6ca8fbedf8362c589e908662dae67aeb24f1f2ff730a1461a2a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Curves/PointDivisor/FieldBaseChangeOrders.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/DenseOpenCurve.lean",
+      "module": "Aglib.AlgebraicGeometry.Dimension.DenseOpenCurve",
+      "sha256": "307aac1be15f4d9d60877cf0122a73eb1d4cd994d7b3dd4d26b5bab75935cb24",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Dimension/DenseOpenCurve.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/DenseOpenCurveComponents.lean",
+      "module": "Aglib.AlgebraicGeometry.Dimension.DenseOpenCurveComponents",
+      "sha256": "80aa2418d579968501b410718fe45299b9a148836b28983c501c2cae1ffda6e9",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Dimension/DenseOpenCurveComponents.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Dimension/Finite.lean",
+      "module": "Aglib.AlgebraicGeometry.Dimension.Finite",
+      "sha256": "332ff996145ed60a1fa8625bd05d21a62ef5a8be0cc69e0aad633a8117cf5f58",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Dimension/Finite.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/ImagesLinear.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ImagesLinear",
+      "sha256": "0f58007953f3e5f64dfe85b2f01b6e2a629b6a7495ab5ae55a8b2cba6d1f2fff",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/Modules/ImagesLinear.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/BoundedConstants.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.BoundedConstants",
+      "sha256": "0bee040866506dd9d785cb0b9ce418770a2439cd027fab5c750425c7935a7a72",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/BoundedConstants.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/BoundedConstantReduction.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.BoundedConstantReduction",
+      "sha256": "9cb99872180780f83bf5056f170cc666d4a3f06a6c936b243d534e8096859664",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/BoundedConstantReduction.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/PurelyInseparable/FiniteConstants/Continuity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.FiniteConstants.Continuity",
+      "sha256": "9e64d80023d108c41f090c0b00d8b2e106e80291cb26efd1a7f618e092b29b7e",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/PurelyInseparable/FiniteConstants/Continuity.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/Injectivity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.Injectivity",
+      "sha256": "1660ff5500c051e6e2fa80e6a8d929b888444cc975be6c6e9963edc1446373a5",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/Injectivity.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/Roots/Injectivity.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.Roots.Injectivity",
+      "sha256": "15dfc8ded4aa49db3990f1162cfe70b62975dd4b7cf56ae6e8cbf095a3909025",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/Roots/Injectivity.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletion.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.CurveConstructibleCompletion",
+      "sha256": "18cea98999e633da40d8acbed90285cfa398041e1fb47d8650c79907754040e9",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletion.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletionOne.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.CurveConstructibleCompletionOne",
+      "sha256": "583330239a8e97bc687d6186d14833af9f0836cc0ae653c9dcd075670ee49b53",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleCompletionOne.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleGeometry.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.CurveConstructibleGeometry",
+      "sha256": "8167d9bde74555ef3e0fef4caa5c7c30fa24cf03618118d04e085a5e191e4e80",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleGeometry.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleRegular.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.CurveConstructibleRegular",
+      "sha256": "b472aaf1a8505ce6740c8f0a803e1ad46a4eadc233cf39e11f03f74df540f35f",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/CurveConstructibleRegular.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/ModuleCoefficients/Pullback.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.ModuleCoefficients.Pullback",
+      "sha256": "85b797de2cbce1845bd2f15f84b423997ec23cddaec5034add305c4e8885544c",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/ModuleCoefficients/Pullback.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceAlgebraicallyClosed.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceAlgebraicallyClosed",
+      "sha256": "c7dfebd3eb8c4d7159eb4a6e1b0321e541ee6246c770e19e88323a7170025572",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceAlgebraicallyClosed.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceBoundary.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceBoundary",
+      "sha256": "590f6929ffbb4c543ae3763186340b48bb997e0ef63bb853efbc72ee41ebb9bf",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceBoundary.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceConstantModules.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceConstantModules",
+      "sha256": "a0a8cf7b755c86d8eedd0d0fa6b9624c9d2151c4194c4a5fcfbbe6fac5e57b8e",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceConstantModules.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceDescent.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceDescent",
+      "sha256": "6b0aad1ba091e5f7adeb028fd28a633cfb4f2d78c0af938a3a2259a601e9256a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceDescent.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceFiniteConstants.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceFiniteConstants",
+      "sha256": "4d3b0789470552bdd43f68f26edf8d232e62aa17b2fa801b655c1c9271b03357",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceFiniteConstants.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGeneric.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceGeneric",
+      "sha256": "a5625a0484a9696cfa9b671ecd83d299e09e622efbc9b9146b78a917111752ef",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v2/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGeneric.lean",
+      "changed_since_v1": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGenericNaturality.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceGenericNaturality",
+      "sha256": "f9dae89d82f82a725d2b8ffcc20a1830e63942a4c27a8a7e4c658c27323a555e",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceGenericNaturality.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvariancePairs.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvariancePairs",
+      "sha256": "03ddbf85b6d262fff854e2122bfdb00c7737325b51e29e7b926e730cd65371c7",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvariancePairs.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProper.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceProper",
+      "sha256": "2c86d687d4cb3b95f13c6c80dd2362918fbe3193b703000d87853045d202543e",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProper.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProperPairs.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceProperPairs",
+      "sha256": "8739c2fa3ae788ecf9cb92bd3af3347f61976c1dc1e1ee3a1253880d312ad756",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceProperPairs.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceResidues.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceResidues",
+      "sha256": "39490268ee7e136d5dfcf8df6891e2d876f0fa3028097b9bacb4a77b07cd5364",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceResidues.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSeparablyClosed.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceSeparablyClosed",
+      "sha256": "6ce31746f450934bcfbd0cdb94d6e43d2fe56a32402bfb445a8bb3a0958f3e75",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSeparablyClosed.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSquare.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceSquare",
+      "sha256": "ad0686f80b53aa04e9b77122e7c6aada1aaa11c7dec2b3f6509ebfb7838d13bc",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceSquare.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.SmoothBaseChange.CurveFieldInvarianceUniverses",
+      "sha256": "2c0607d80c476ea478c03155244b72a1730ad273c28027aca4631803cb000ef2",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/CurveCompletion.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CurveCompletion",
+      "sha256": "03ea07edff7d4e550112466274fb4297c1ab08b81ad6c9028f27e218060b10ff",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Morphisms/FiniteEtale/CurveCompletion.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/ClosedPoints.lean",
+      "module": "Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.ClosedPoints",
+      "sha256": "6314ffe05a3024c6233ec61fd8c6ed739887c467cf61785832318ce2e783bdf5",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/ClosedPoints.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/EtaleCurve.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.EtaleCurve",
+      "sha256": "b188370b1c5462bcfd20e86e85983d6e1a752635d89a78ec988859f9a95f9cbf",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Normalization/EtaleCurve.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/FiniteFromDenseSource.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.FiniteFromDenseSource",
+      "sha256": "25d699941eac043e2bb1aa3e6d7e9207d02626b9834f8a89c89dfe1365498e3a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Normalization/FiniteFromDenseSource.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Nagata.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.GenericFiniteEtale.Nagata",
+      "sha256": "4b7ab5c35e6f6a16c10ef6f467f1dbd17413731d1d9cb9c53116b954bd9664bb",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Normalization/GenericFiniteEtale/Nagata.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/NormalSource.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.NormalSource",
+      "sha256": "f1c8d65c0bfca1439b8aeaf5639072b03824af77535a0c7fdda75d7f76c3684f",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Normalization/NormalSource.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Normalization/OpenFiniteRestriction.lean",
+      "module": "Aglib.AlgebraicGeometry.Normalization.OpenFiniteRestriction",
+      "sha256": "f206eaf94fade1d47f29bd7860c2570f02c2efc47c15d819d766f899a93f082a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Normalization/OpenFiniteRestriction.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Properties/IrreducibleComponents/FiniteCover.lean",
+      "module": "Aglib.AlgebraicGeometry.Properties.IrreducibleComponents.FiniteCover",
+      "sha256": "23a213b2adb2208bcf973c1c1434209b82777e7c680149e6191e6f44c69fdfe0",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/AlgebraicGeometry/Properties/IrreducibleComponents/FiniteCover.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/Pullback.lean",
+      "module": "Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Pullback",
+      "sha256": "55ae29805ef3d28e443b59b3ec23269418f0f03c06f9b7cb2b12531938c3c472",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v2/after/Aglib/CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/Pullback.lean",
+      "changed_since_v1": true
+    },
+    {
+      "path": "Aglib/CategoryTheory/Topos/AdditiveCoefficientAction/Cohomology.lean",
+      "module": "Aglib.CategoryTheory.Topos.AdditiveCoefficientAction.Cohomology",
+      "sha256": "0f0fbcfc6762a52d3fa849a9a1bbbafed65fc6da09356127792fadb40d6dcdd2",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/CategoryTheory/Topos/AdditiveCoefficientAction/Cohomology.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/RingTheory/KrullDimension/JacobsonPrincipalOpen.lean",
+      "module": "Aglib.RingTheory.KrullDimension.JacobsonPrincipalOpen",
+      "sha256": "14eff4deee39a722d952368a7926470e1ef7ccfc04a45062070b32f1a61814f2",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/RingTheory/KrullDimension/JacobsonPrincipalOpen.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/RingTheory/Nagata/FieldCurve.lean",
+      "module": "Aglib.RingTheory.Nagata.FieldCurve",
+      "sha256": "bbf1726c9175fc76e36036982d11aa1f9ed852539e9bfd0a4e1546272a40e730",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/RingTheory/Nagata/FieldCurve.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/RingTheory/Nagata/FiniteEtale.lean",
+      "module": "Aglib.RingTheory.Nagata.FiniteEtale",
+      "sha256": "1b38371ae50b4c72003ab5a8f0350858b2f8a10d2c6ff3dc96a3c085a34cc05c",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/candidate-v1/after/Aglib/RingTheory/Nagata/FiniteEtale.lean",
+      "changed_since_v1": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+      "sha256": "ae9a8aa06808167187457001e0bfb5f274454f721b143631e5ae1815f723e35a",
+      "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v2/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "changed_since_v1": true,
+      "additional_scope": "Root-approved existing Kummer/Field consumer proof only, preimage3ebdc716"
+    }
+  ],
+  "explicit_compile_roots": [
+    "Aglib.Algebra.Homology.DerivedCategory.Ext.BoundedConstants"
+  ],
+  "root_selection": "Only complete changed independent generic leaf. Kummer.Field ae9a remains unchanged and is not selected for an unchanged production retry. Three curve entry roots wait for its targeted diagnostic/repair and matching external providers.",
+  "repair_correspondence": "The same finite split family and original extPrecompMap are retained. map_zero receives its two explicit actual endpoints; the existing surjectivity hypothesis is retyped to t(B i) so chosen elements inhabit S.obj(B i); root map_sum is applied to the literal additive hom t Y, followed by the existing naturality equation. No new premise, quotient, coefficient model, universe identification or change to public statements.",
+  "proof_delta": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/bounded-proof-only.patch",
+  "field_diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/diagnostics/request.json",
+  "coverage": "Current bounded afterimage is uncompiled. Retain source-matching v1 own36 and v2 a562/55ae/native Module pullback successes. Independent review of v1 and repair-v2 is prior basis only; this proof-body typing delta is separately identified.",
+  "runtime_owner": "/root/incremental_compile_lane_b",
+  "budget_and_options": "Ordinary incremental native Lake; high concurrency8/default200000 and all pins/trust unchanged. No new solver/resource/recursion settings, suppressions, replay or separate checks.",
+  "provider_boundary": "This generic leaf uses no changed represented geometry providers. Future curve-root capture must reconcile their current independently owned exact basis; old f99 remains fixedv5."
+}

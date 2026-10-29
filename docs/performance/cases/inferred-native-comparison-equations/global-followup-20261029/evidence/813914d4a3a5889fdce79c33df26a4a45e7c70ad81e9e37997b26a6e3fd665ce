@@ -1,0 +1,20 @@
+{
+  "candidate": "v34",
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "changed": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "76aac49b4af2dc1e2c07615e3b94f023d5275901f6ebae346ce02797a0b7bd0c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "a02d460e490904cd82b8cc951404dd33893ee4bb688755a8f3ed552e11d1bb21"
+  },
+  "afterimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v34",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/NormalizedOperationalObjects-v34.json",
+  "mathematical_delta": "Restores the economical raw whole-section statement and unchanged proof. Adds three rfl object-value projections for the SAME operational represented functor, CopyObj coordinate functor, and literal etale restriction; normalizes the existing generic core telescope with these and Functor.comp_obj before supplying the original maps. Original source and target coordinate values and generic CopyObj component producers are reused. No new isomorphism, model, mathematical premise, option or generic-C leaf.",
+  "evidence_basis": "V33 measured5492 remaining at section proof-body entry (~194508 pre-body units in the current Core context, NOT independently isolated statement cost); explicit ext advances to1888. HC inspection reached after earlier producer failure; differing object-projection heads recorded, not a proved dictionary mismatch.",
+  "necessary_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit"
+  ],
+  "endpoint_correction": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/ENDPOINT-CORRECTION-20261029.json"
+}

@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.StalkUniverse
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.QcqsComparison
-public import Mathlib.CategoryTheory.Functor.ReflectsIso.Limits
+public import Aglib.CategoryTheory.Limits.Preserves.JointConservativity
 public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
 public import Mathlib.Algebra.Category.Grp.Ulift
 
@@ -29,18 +29,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u
 
 attribute [local instance] hasSheafifyLarge HasExt.standard
-
-private theorem preservesSequential_of_jointly
-    {A B I : Type*} [Category* A] [Category* B]
-    {D : I → Type*} [∀ i, Category* (D i)]
-    (H : A ⥤ B) (P : ∀ i, B ⥤ D i) (hP : JointlyReflectIsomorphisms P)
-    [HasColimitsOfShape ℕ B]
-    [∀ i, PreservesColimitsOfShape ℕ (P i)]
-    [∀ i, PreservesColimitsOfShape ℕ (H ⋙ P i)] :
-    PreservesColimitsOfShape ℕ H where
-  preservesColimit {_K} := {
-    preserves := fun {_c} hc => ⟨hP.jointlyReflectsColimit
-      (fun i => isColimitOfPreserves (H ⋙ P i) hc)⟩ }
 
 section MarkedChart
 
@@ -135,7 +123,7 @@ theorem higherDirectImage_preservesSequentialColimits
       PreservesColimitsOfShape ℕ (higherDirectImage f q ⋙ P x) :=
     higherDirectImage_geometricStalk_preservesSequentialColimits f q
       (FibrewiseClosed.pointField x.val) (FibrewiseClosed.geometricPoint x.val)
-  exact preservesSequential_of_jointly (higherDirectImage f q) P
+  exact preservesColimitsOfShape_of_jointlyReflectIsomorphisms (higherDirectImage f q) P
     (StalkUniverse.originalStalks_jointlyReflectIsomorphisms (𝟙 S))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

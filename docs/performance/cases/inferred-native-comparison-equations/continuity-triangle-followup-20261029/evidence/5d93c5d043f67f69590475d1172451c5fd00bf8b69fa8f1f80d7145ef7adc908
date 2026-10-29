@@ -1,0 +1,24 @@
+{
+  "question": "Existing continuity triangle-calculus refactor, not a new theory",
+  "run": "remote-88d1a641efd34eeabbd07613e356406c",
+  "source_hint": "4cdfbe28",
+  "status": "closed1,7success1failure; nativeSquareaf9 failed4.740s only application39/65, no nativekernel-timeout reported",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "af9d3a36c6f2b9dad24b3b6c24e1f381fe603ac862964e9d7acad9c7e4195cc0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "current_producer_pass": "Extension0f177c76 compiler0/5.321s",
+  "required_native_passes": {
+    "DiagramLimitFunctor4a7": "compiler0/139.382s",
+    "DiagramDirectImageTriangleCompfa14": "compiler0/14.099s"
+  },
+  "failure": "Proof-input simp changed original Eq proofs hc/hc0-prime to True; factory requires actual Eq identities. Full complete contexts read.",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/D-live-88d1a641/build.log.partial",
+  "repair": "v11 definitional-only normalization of proof inputs; original comparison proofs/types retained."
+}

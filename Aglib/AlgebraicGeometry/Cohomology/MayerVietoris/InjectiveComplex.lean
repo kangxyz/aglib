@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Evaluation
 public import Aglib.AlgebraicGeometry.Cohomology.Flasque.Basic
 public import Mathlib.Algebra.Homology.ShortComplex.Ab
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
@@ -125,9 +126,8 @@ theorem sectionSequence_shortExact (M : X.Modules)
   exact := sectionSequence_exact M U V hUV
 
 /-- The original additive section functor on an open. -/
-def sectionsFunctor (X : Scheme.{u}) (U : X.Opens) : X.Modules ⥤ AddCommGrpCat.{u} where
-  obj M := Γ(M, U)
-  map f := f.app U
+abbrev sectionsFunctor (X : Scheme.{u}) (U : X.Opens) : X.Modules ⥤ AddCommGrpCat.{u} :=
+  SheafOfModules.additiveEvaluation X.ringCatSheaf (op U)
 
 instance sectionsFunctor_additive (X : Scheme.{u}) (U : X.Opens) :
     (sectionsFunctor X U).Additive where

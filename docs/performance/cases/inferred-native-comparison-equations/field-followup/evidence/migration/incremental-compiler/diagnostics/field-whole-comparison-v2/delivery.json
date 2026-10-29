@@ -1,0 +1,40 @@
+{
+  "question": "Same literal original Field theorem via pinned original represented equivalence and native composition/coercion equations",
+  "kind": "single scratch full-proof candidate; no production/adoption coverage",
+  "record": {
+    "exit_code": 1,
+    "elapsed_seconds": 163.71686519682407,
+    "source_basis": "0e76420af5b24b975cf8e4b10d74a6782c1e7f98c6c72e0d2b3a95e9f226da17",
+    "candidate_sha256": "900decc5c11a160edc0a616c99e9e43b38e92b91c38f9dcf99e46f203775b908",
+    "setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+    "command": [
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2/Field.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2/Field.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2/Field.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2/Field.c"
+    ],
+    "folder": "/root/autodl-tmp/lean-build/logs/remote-1ab09e63b9f543a7be688376de889793/field-whole-comparison-v2",
+    "managed_source_mutations": 0
+  },
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "request_sha256": "7ffe85711ee5a8cbff35675e8d4c674056b4faf49a59a79a1e7c956d1c05a6bf",
+  "group_closed": true,
+  "input_drift": [],
+  "failure": "line396:4 hfactor local-eH composition vs unfolded explicit representedH1AddEquiv composition; exact original factorization goal traced; no maxRecDepth in this candidate",
+  "full_stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-whole-comparison-v2/stdout.log",
+  "full_stdout_sha256": "4ebb5170622328b0aa1b0b55744e9e370e6665974d57637a4dbc2b2ae5c382d6",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1ab09e63b9f543a7be688376de889793/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1ab09e63b9f543a7be688376de889793/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1ab09e63b9f543a7be688376de889793/compiler-events.jsonl",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C-AmitsurProducts-v2-4ead3636.json",
+  "source_archive_sha256": "5c1b222f826e4e4efae04b34afa9bfe742b393a4fbc3734bd963924022153ec5",
+  "remaining_gap": "Author-owned actual typed comparison factorization; no reinterpretation as a mathematical counterexample"
+}

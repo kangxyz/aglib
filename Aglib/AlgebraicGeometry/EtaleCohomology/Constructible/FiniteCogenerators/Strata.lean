@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.TorsionColimit.ConstructibleTorsion
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 public import Mathlib.CategoryTheory.Functor.ReflectsIso.Jointly
 
 /-! # Original coefficient detection on actual locally closed strata
@@ -74,7 +75,7 @@ def adjunctionProduct (F : AbelianSheaf.{u, u + 1} X)
     (G : ∀ i, AbelianSheaf.{u, u + 1} (t.stratum i))
     (a : ∀ i, (inverseImage (t.inclusion i)).obj F ⟶ G i) :
     F ⟶ ∏ᶜ fun i => (directImage (t.inclusion i)).obj (G i) :=
-  Pi.lift fun i => (inverseImageAdjunction (t.inclusion i)).homEquiv F (G i) (a i)
+  Adjunction.adjunctionProduct (fun i => inverseImageAdjunction (t.inclusion i)) F G a
 
 /-- Each original coordinate is exactly the adjunction unit followed by the
 direct image of the supplied original stratum map. -/
@@ -85,53 +86,38 @@ theorem adjunctionProduct_π (F : AbelianSheaf.{u, u + 1} X)
     t.adjunctionProduct F G a ≫ Pi.π (fun i => (directImage (t.inclusion i)).obj (G i)) i =
       (inverseImageAdjunction (t.inclusion i)).unit.app F ≫
         (directImage (t.inclusion i)).map (a i) :=
-  Pi.lift_comp_π (fun k => (inverseImageAdjunction (t.inclusion k)).homEquiv F (G k) (a k)) i
+  Adjunction.adjunctionProduct_π (fun i => inverseImageAdjunction (t.inclusion i)) F G a i
 
 /-- Monomorphisms on the actual covering strata give a genuine monomorphism
 into the finite product of their direct images. -/
 theorem mono_adjunctionProduct (F : AbelianSheaf.{u, u + 1} X)
     (G : ∀ i, AbelianSheaf.{u, u + 1} (t.stratum i))
     (a : ∀ i, (inverseImage (t.inclusion i)).obj F ⟶ G i) [∀ i, Mono (a i)] :
-    Mono (t.adjunctionProduct F G a) where
-  right_cancellation {Z} g h he := by
-    apply t.jointlyFaithful_inverseImages.map_injective
-    intro i
-    apply (cancel_mono (a i)).mp
-    apply ((inverseImageAdjunction (t.inclusion i)).homEquiv Z (G i)).injective
-    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_left]
-    let π := Pi.π (fun i => (directImage (t.inclusion i)).obj (G i)) i
-    have ht : t.adjunctionProduct F G a ≫ π =
-        (inverseImageAdjunction (t.inclusion i)).homEquiv F (G i) (a i) :=
-      t.adjunctionProduct_π F G a i
-    calc
-      _ = g ≫ (t.adjunctionProduct F G a ≫ π) := congrArg (fun k => g ≫ k) ht.symm
-      _ = (g ≫ t.adjunctionProduct F G a) ≫ π := (Category.assoc _ _ _).symm
-      _ = (h ≫ t.adjunctionProduct F G a) ≫ π := congrArg (fun k => k ≫ π) he
-      _ = h ≫ (t.adjunctionProduct F G a ≫ π) := Category.assoc _ _ _
-      _ = _ := congrArg (fun k => h ≫ k) ht
+    Mono (t.adjunctionProduct F G a) := by
+  exact Adjunction.mono_adjunctionProduct
+    (fun i => inverseImageAdjunction (t.inclusion i)) F
+    (fun _ _ _ h => t.jointlyFaithful_inverseImages.map_injective h) G a
 
 /-- The literal finite product of original stratum adjunction units. -/
 def unitProduct (F : AbelianSheaf.{u, u + 1} X) :
     F ⟶ ∏ᶜ fun i => (directImage (t.inclusion i)).obj
       ((inverseImage (t.inclusion i)).obj F) :=
-  t.adjunctionProduct F (fun i => (inverseImage (t.inclusion i)).obj F) (fun _ => 𝟙 _)
+  Adjunction.unitProduct (fun i => inverseImageAdjunction (t.inclusion i)) F
 
 /-- Each coordinate of the stratum product is the original adjunction unit. -/
 @[reassoc]
 theorem unitProduct_π (F : AbelianSheaf.{u, u + 1} X) (i : Fin t.count) :
     t.unitProduct F ≫ Pi.π (fun i => (directImage (t.inclusion i)).obj
       ((inverseImage (t.inclusion i)).obj F)) i =
-      (inverseImageAdjunction (t.inclusion i)).unit.app F := by
-  have h : t.unitProduct F ≫ Pi.π (fun i => (directImage (t.inclusion i)).obj
-      ((inverseImage (t.inclusion i)).obj F)) i =
-        (inverseImageAdjunction (t.inclusion i)).homEquiv F _ (𝟙 _) :=
-    t.adjunctionProduct_π F _ (fun _ => 𝟙 _) i
-  exact h.trans ((inverseImageAdjunction (t.inclusion i)).homEquiv_id F)
+      (inverseImageAdjunction (t.inclusion i)).unit.app F :=
+  Adjunction.unitProduct_π (fun i => inverseImageAdjunction (t.inclusion i)) F i
 
 /-- Every actual coefficient sheaf embeds into the finite product of the
 original direct images of its restrictions to the covering strata. -/
-theorem mono_unitProduct (F : AbelianSheaf.{u, u + 1} X) : Mono (t.unitProduct F) :=
-  t.mono_adjunctionProduct F _ (fun _ => 𝟙 _)
+theorem mono_unitProduct (F : AbelianSheaf.{u, u + 1} X) : Mono (t.unitProduct F) := by
+  exact Adjunction.mono_unitProduct
+    (fun i => inverseImageAdjunction (t.inclusion i)) F
+    (fun _ _ _ h => t.jointlyFaithful_inverseImages.map_injective h)
 
 end FiniteLocallyClosedPartition
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible

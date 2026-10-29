@@ -1,0 +1,33 @@
+# Complete original-map comparison candidate v6
+
+Fixed candidate-v6/READY.json identifies all four sources and required read-only supplier hashes. The 55 original native public headers are preserved. The only new public native conclusions identify the actual homs and the actual isomorphisms of the canonical and coordinate-built comparisons. All original definitions, units, coefficient representations, copyObj maps and selected test-pullback arrows remain as in the accepted v3 coordinate slice. No assumption is added to an old or new conclusion.
+
+The complete common test/coordinate/CopyObj extraction and its exact original values are described in CORRESPONDENCE-v3.md; PROVENANCE-v3.json corrects its inherited historical wording. RelativeTests has since received a typed-endpoint/op/binder repair and the original Hom-equivalence/pasting projection law. CopyObjRestriction e4ed and RepresentedSections430358 are unchanged in v6. Their actual coverage is retained only on its matching source basis.
+
+## Canonical comparison: exact coefficient arrows
+
+The native private normalization N states that the original represented pullback iso, the original recovered group map constantGroupBaseChangeIso, and the original target coefficient representation compose to inverseImage.map(original source representation) followed by the original inverseImageConstantIso. It follows from representedSheafMap_preimage and the defining composite, without a new naturality premise.
+
+The group composition/equality/square comparisons are the native mapGrpCompIso/mapGrpNatIso lifts of the original Over.pullbackComp and equality transports. Their explicit hom and inverse laws retain the exact original Over.pullbackSquareIso components. They are actual comparison arrows at the required boundary, with no new coefficient realization.
+
+The represented coefficient square R is derived from the already proved RepresentedBaseChange.iso_comp_of_hom on both sides and equality transport; its original group compositor value is independently displayed. The constant comparison square is derived from inverseImageComp_constant and the same equality transport, without importing a higher or derived owner. These squares and representedSheafBaseChangeIso_naturality imply the actual constant-group square G after faithful represented-sheaf comparison and cancellation of the original actual isomorphisms.
+
+The resulting constantCoefficient_square identifies the precise canonical coefficient arrow after its original source/target represented comparisons with representedSheafBaseChangeIso followed by the actual group-square inverse and pullback of the original group comparison. It does not posit the desired δ/κ equality.
+
+## Same literal test and section arrow
+
+The lower pasting_homEquiv_fst computes the q/p adjoint section through the original coefficient-square inverse using its first pullback projection. The inverse square projection follows from the already proved native square projection law; the adjunction maps are the actual mapPullbackAdj Hom equivalences. No mate square is assumed as input.
+
+The native representedRestriction_literal applies this value law to the original section. Its other projection is the original Over.w equation. The final actual relative-object symmetry is accounted for by the previously proved restrictionSchemeIso_hom_eq_pasting. Thus the original q/p adjoint expression is the same map as the coordinate restriction expression, before postcomposition by the same original group map. The nested native ULift/Additive carriers retain their original maps.
+
+representedRestriction_canonical then uses the existing inverseImageEtaleIso and representedEtaleRestrictionIso_original equations to recover the original canonical exchange on the represented coefficient.
+
+## Same original g-unit and both original isomorphisms
+
+The final hom theorem retains δ = (constantPushforwardRestrictionIso g B).hom.app (op Y) and κ = (constantPushforwardEtaleBaseChangeComponent g B Y).hom exactly as defined. It cancels only the original represented coefficient comparisons E and E', uses naturality of the original etaleBaseChangeIso, the original constantPushforwardFunctor symmetry transition, and constantCoefficient_square. Both transported arrows become the same original represented restriction arrow.
+
+The conclusion is proved by injectivity of the SAME inverseImageAdjunction g HomEquiv. Its unit formula is used after precomposing by the original E.hom and postcomposing by directImage(g).map(E'.inv); naturality of that original unit gives precisely η_A >> directImage(g).map δ = η_A >> directImage(g).map κ. No endpoint-identification or invertibility argument substitutes for this equation. Iso.ext then identifies the two original isomorphisms from their actual hom equality.
+
+## Status and version boundary
+
+All v6 declarations have complete proof candidates, with no deliberately open premise or hole in the source. Native compilation and affected ordinary review remain pending; no final correctness/closure verdict is inferred from this written proof candidate. The v3 implemented-coordinate review retains its explicitly open canonical boundary on its actual older input. The ongoing v5 run0116fbac/sourcef99d9848 is sealed and must remain evidence only on its actual v5 sources. v6 modifies only Global.Restriction; the other three source bytes are unchanged, so matching observed coverage can be retained. No additional lint/test/replay/client gate is requested.

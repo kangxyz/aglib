@@ -1,0 +1,102 @@
+✔ [7436/7488] Built Aglib.CategoryTheory.Adjunction.UnderlyingHomEquiv (2.7s)
+✔ [7437/7488] Built Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact (4.4s)
+✖ [7438/7488] Building Aglib.CategoryTheory.Preadditive.Annihilator.ProductReindex (4.8s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ea58796c97b44af5bb5072b84c7a0d3f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.setup.json --json
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:60:2: Type mismatch: After simplification, term
+  HasLimit.isoOfNatIso_inv_π (Discrete.natIso fun i => (nsmulKernelIso (L i.as) (A i.as) n).symm) { as := i }
+ has type
+  @Eq
+    (limit (Discrete.functor fun i => (L i).obj (kernel (n • 𝟙 (A i)))) ⟶
+      (Discrete.functor (nsmulKernelProductFamily n fun i => (L i).obj (A i))).obj { as := i })
+    ((HasLimit.isoOfNatIso (Discrete.natIso fun i => (nsmulKernelIso (L i.as) (A i.as) n).symm)).inv ≫
+      limit.π (Discrete.functor (nsmulKernelProductFamily n fun i => (L i).obj (A i))) { as := i })
+    (limit.π (Discrete.functor fun i => (L i).obj (kernel (n • 𝟙 (A i)))) { as := i } ≫
+      (Discrete.natIso fun i => (nsmulKernelIso (L i.as) (A i.as) n).symm).inv.app { as := i })
+but is expected to have type
+  @Eq ((∏ᶜ fun i => (L i).obj (kernel (n • 𝟙 (A i)))) ⟶ nsmulKernelProductFamily n (fun i => (L i).obj (A i)) i)
+    ((HasLimit.isoOfNatIso (Discrete.natIso fun i => (nsmulKernelIso (L i.as) (A i.as) n).symm)).inv ≫
+      Pi.π (nsmulKernelProductFamily n fun i => (L i).obj (A i)) i)
+    (Pi.π (fun i => (L i).obj (kernel (n • 𝟙 (A i)))) i ≫ (nsmulKernelIso (L i) (A i) n).hom)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  getLimitCone ↦ 14
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:75:4: Unknown identifier `scalarKernelImageProductIso`
+
+Note: A private declaration `scalarKernelImageProductIso` (from the current module) exists but would need to be public to access here.
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:86:13: declaration uses `sorry`
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:80:8: declaration uses `sorry`
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:122:4: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (nsmulKernelIso ?L ?A ?n).hom ≫ kernel.ι (?n • 𝟙 (Functor.obj ?L ?A))
+in the target expression
+  Pi.π (fun i => (L i).obj (kernel (n • 𝟙 (A i)))) i ≫
+      (nsmulKernelIso (L i) (A i) n).symm.inv ≫ kernel.ι (n • 𝟙 ((L i).obj (A i))) =
+    Pi.π (fun i => (L i).obj (kernel (n • 𝟙 (A i)))) i ≫ (L i).map (kernel.ι (n • 𝟙 (A i)))
+
+C : Type uC
+inst✝¹² : Category.{vC, uC} C
+inst✝¹¹ : Preadditive C
+D : Type uD
+inst✝¹⁰ : Category.{vD, uD} D
+inst✝⁹ : Preadditive D
+n : ℕ
+I : Type w
+L : I → D ⥤ C
+A : I → D
+inst✝⁸ : ∀ (i : I), (L i).Additive
+inst✝⁷ : ∀ (i : I), PreservesFiniteLimits (L i)
+inst✝⁶ : ∀ (i : I), HasKernel (n • 𝟙 (A i))
+inst✝⁵ : ∀ (i : I), HasKernel (n • 𝟙 ((L i).obj (A i)))
+inst✝⁴ : HasProduct fun i => (L i).obj (A i)
+inst✝³ : HasProduct (nsmulKernelProductFamily n fun i => (L i).obj (A i))
+inst✝² : HasProduct fun i => (L i).obj (kernel (n • 𝟙 (A i)))
+inst✝¹ : HasKernel (n • 𝟙 (∏ᶜ fun i => (L i).obj (A i)))
+inst✝ : HasProductsOfShape I C
+i : I
+⊢ Pi.π (fun i => (L i).obj (kernel (n • 𝟙 (A i)))) i ≫
+      (nsmulKernelIso (L i) (A i) n).symm.inv ≫ kernel.ι (n • 𝟙 ((L i).obj (A i))) =
+    Pi.π (fun i => (L i).obj (kernel (n • 𝟙 (A i)))) i ≫ (L i).map (kernel.ι (n • 𝟙 (A i)))
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:134:15: failed to synthesize instance of type class
+  HasKernel (n • 𝟙 (∏ᶜ G ∘ ⇑E))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:139:9: failed to synthesize instance of type class
+  ∀ (i : J), HasKernel (n • 𝟙 ((G ∘ ⇑E) i))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Aglib/CategoryTheory/Preadditive/Annihilator/ProductReindex.lean:135:31: tactic execution is stuck, goal contains metavariables
+  ?m.214 ≫ eP.hom = eP.hom ≫ ?m.218
+✔ [7439/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModImages (6.9s)
+✔ [7440/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract (4.8s)
+✔ [7441/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModAcyclic (11s)
+✔ [7442/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.GenuineModules (6.9s)
+✔ [7443/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ModuleCogenerators (9.1s)
+✔ [7444/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.BaseChange (6.5s)
+✔ [7445/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModDerivedImage (7.5s)
+✔ [7446/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CohomologyColimits (6.0s)
+✔ [7447/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.AffineRestriction (7.2s)
+✔ [7448/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange (5.8s)
+✔ [7449/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.Presentations (5.6s)
+✔ [7450/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomCocones (7.8s)
+✔ [7451/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.AnnihilatorProducts (12s)
+✔ [7453/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.FiniteCogenerators (5.7s)
+✔ [7455/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomLifts (18s)
+✔ [7456/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.CogeneratorCriterion (17s)
+✔ [7457/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.EmbeddingTransport (7.6s)
+✔ [7458/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ConstructibleComparison (18s)
+✔ [7467/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetTriangle (47s)
+✖ [7468/7488] Building Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients (161s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ea58796c97b44af5bb5072b84c7a0d3f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean:46:8: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean:75:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction.derivedExchange_on_all_zmodCoefficients'
+✔ [7475/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetData (232s)
+✔ [7476/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetHom (109s)
+✔ [7477/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.HomAbove (59s)
+✔ [7478/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FiniteDiagrams (5.8s)
+✔ [7479/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ModelClosure (5.8s)
+✔ [7480/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.GeneratorModels (5.4s)
+✔ [7481/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ModelEmbedding (5.5s)
+✔ [7482/7488] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.ChartGenerators (6.0s)
+Some required targets logged failures:
+- Aglib.CategoryTheory.Preadditive.Annihilator.ProductReindex
+- Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients
+error: build failed

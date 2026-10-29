@@ -1,0 +1,65 @@
+{
+  "status": "READY v4: exact root-selected map-equality candidate applied to AssociatedBundle only; native compiler verification pending.",
+  "recorded_at_utc": "2026-10-26T21:03:35.070794+00:00",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "target": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "before_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+  "after_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+  "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v4/before/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "after_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v4/after/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "delta_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/compiler-repair-v4/delta.patch",
+  "delta_sha256": "691793486d31cf430f12c2518450e473b722433c17ae6a2195c35d18f8a8bf69",
+  "selected_candidate_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/section-family-boundary-probe/candidate-map-equality/candidate.patch",
+  "selected_candidate_unchanged": true,
+  "held_files": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/PowerDescent.lean",
+      "sha256": "6f8658b9c48f8448a89b98b0234603c4afbdc8f9aa6055cc7ac8b39df2fbb11e",
+      "changed": false
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Cohomology/Projective/Projection/Vanishing.lean",
+      "sha256": "747f2814d2c315817c992b8ca8f5d9ad47986b8f3cb330566a5dd4f0b4da9c7b",
+      "changed": false
+    }
+  ],
+  "fixed_probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/section-family-boundary-probe/SectionFamilyBoundaryProbe.lean",
+    "sha256": "3fd6981aebbae927546414007511ec342534f0e01a7e0924643b08db7c39b674"
+  },
+  "corrected_diagnostic": {
+    "run": "remote-8340c48e4740422abcd98086bc0c7a07",
+    "delivered_directory": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8340c48e4740422abcd98086bc0c7a07",
+    "emitted_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/picard-corrected-probe-emitted.log",
+    "emitted_log_sha256": "962a2c0f7fdc9770410e30a77b7fec22e5fef9948328e4c841d3acc432b1e513",
+    "settings": "Same fixed probe; corrected -j4 -M12800, default trust, original200000 heartbeat.",
+    "observed": "Formation and actual declaration headers succeeded; actual body entered and intro completed; no AFTER_NATIVE_VIEW or AFTER_RELATION_SPECIALIZATION; actual error221 whnf200000 with counters.",
+    "termination": "Root terminated residual diagnostic frontend only AFTER standard-budget timeout/counters emitted; group CLOSED exit143. Residual-process cause unestablished; named actual timing tree incomplete.",
+    "evidence_boundary": "Sufficiently localizes the eager change step. No exact reduction pair, full compiler pass, benchmark or whole-source timing attribution.",
+    "superseded_non_evidence": [
+      "b85 zero-frontends setup/Lake parsing failure",
+      "56a9 terminated after erroneous -t4 trust override; no correct-settings completed result"
+    ]
+  },
+  "source_repair": "Move exact existing private presheafHom_map_eq_pullHom from its later position to the same owner scope before Construction; reuse it to prove fully typed hview. Keep original hr/hu simplification as hrestrict and close by hview.trans hrestrict, avoiding eager change.",
+  "correspondence": "rawPresheaf is the same Etale.forget.op composed with native presheafHom. Apply existing map lemma at f.unop and the same actual local c<U,s>; no global frame, new constructor/model/site/import/assumption or desired-naturality field.",
+  "math_gap": "No new mathematical premise/existence gap; original maps, M/c/u, actual chart relation, positive unit/descent/frame/power APIs retained. Remaining native elaboration is root-owned and pending.",
+  "checks": {
+    "HEAD_status_source_guard": true,
+    "one_native_file_changed": true,
+    "candidate_exact_after_hash": true,
+    "Power_and_Projective_unchanged": true,
+    "fixed_probe_unchanged": true,
+    "native_compiler_run_by_author": false,
+    "new_budget_or_flag": false,
+    "Git_mutation": false,
+    "root_registry_mutation": false,
+    "native_pass_claim": false
+  },
+  "preserved_history": [
+    "Initial reviewed d616/e553 packet",
+    "v2 source/failure/provenance",
+    "v3 source/probe/native08756 failure basis",
+    "Fixed probe request, read-only API note and provisional candidate metadata remain unchanged."
+  ]
+}

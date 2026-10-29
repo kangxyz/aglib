@@ -1,0 +1,17 @@
+--- versions/v6/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean
++++ versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean
+@@ -78,12 +78,12 @@
+     (diagramCohomologyConnectingComplex X η hη n).map colim ⟶
+       limitCohomologyConnectingComplex X η hη n c :=
+   InjectiveSystem.representedCohomologyConnectingComparison
++    (B := AbelianSheaf.{u, u + 1} c.pt.unop)
+     (diagramAdjunctionData X) η (diagramIntegerSystem X) hη n
+     (fun i => inverseImage (c.ι.app i).unop)
+     ((constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
+       (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+-    (fun i => (inverseImageConstantIso (c.ι.app i).unop).inv.app
+-      (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
++    (diagramIntegerConePrecomp X c)
+     (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+     (diagramCokernelLimitLeg X η c)
+     (schemeLimitCohomologyComparison X c Q n)

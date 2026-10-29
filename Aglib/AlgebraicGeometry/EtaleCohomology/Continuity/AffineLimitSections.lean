@@ -12,8 +12,7 @@ public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.StageSectionsInject
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.SectionReindex
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramNativeCocone
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTailLimit
-public import Mathlib.Algebra.Category.Grp.FilteredColimits
-public import Mathlib.CategoryTheory.Limits.Types.Filtered
+public import Aglib.CategoryTheory.Limits.Preserves.PresheafSections
 
 /-! # Actual section cocones on affine inverse limits
 
@@ -33,18 +32,6 @@ universe u
 open EtaleAffineBasis
 attribute [local instance] hasSheafifyLarge
 
-private theorem presheaf_comp_apply {C : Type*} [Category C]
-    (P : Cᵒᵖ ⥤ Ab.{u + 1}) {A B E : C} (f : A ⟶ B) (g : B ⟶ E)
-    (s : P.obj (op E)) :
-    P.map f.op (P.map g.op s) = P.map (f ≫ g).op s := by
-  exact (ConcreteCategory.congr_hom (P.map_comp g.op f.op) s).symm
-
-private theorem presheaf_eq_of_triangle {C : Type*} [Category C]
-    (P : Cᵒᵖ ⥤ Ab.{u + 1}) {A B E : C} (f : A ⟶ B) (g : B ⟶ E)
-    (a : A ⟶ E) (ha : f ≫ g = a) (s t : P.obj (op E))
-    (h : P.map g.op s = P.map g.op t) : P.map a.op s = P.map a.op t := by
-  simpa only [presheaf_comp_apply, ha] using congrArg (P.map f.op) h
-
 /-- Normalize only the structural arrow of the source of an actual relative map. -/
 private def relativeMapSourceIso {C : Type*} [Category C] {X : C}
     {A B : Over X} (a : A ⟶ B) : Over.mk (a.left ≫ B.hom) ≅ A :=
@@ -60,20 +47,8 @@ def isColimitPresheafMapConeOfSections
     (hinj : ∀ (i : I) (s t : P.obj (op (D.obj i))),
       P.map (c.π.app i).op s = P.map (c.π.app i).op t →
       ∃ (k : I) (q : k ⟶ i), P.map (D.map q).op s = P.map (D.map q).op t) :
-    IsColimit (P.mapCocone c.op) := by
-  let G := D.op ⋙ P
-  have : PreservesFilteredColimitsOfSize.{u, u} (CategoryTheory.forget Ab.{u + 1}) :=
-    preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u} _
-  have : ReflectsColimit G (CategoryTheory.forget Ab.{u + 1}) :=
-    reflectsColimit_of_reflectsIsomorphisms G _
-  apply isColimitOfReflects (CategoryTheory.forget Ab.{u + 1})
-  refine Types.FilteredColimit.isColimitOf' _ _ ?_ ?_
-  · intro s
-    obtain ⟨i, v, hv⟩ := hsurj s
-    exact ⟨op i, v, hv.symm⟩
-  · intro i s t h
-    obtain ⟨k, q, hq⟩ := hinj i.unop s t h
-    exact ⟨op k, q.op, hq⟩
+    IsColimit (P.mapCocone c.op) :=
+  CategoryTheory.Limits.isColimitPresheafMapConeOfSections P D c hsurj hinj
 
 section Relative
 

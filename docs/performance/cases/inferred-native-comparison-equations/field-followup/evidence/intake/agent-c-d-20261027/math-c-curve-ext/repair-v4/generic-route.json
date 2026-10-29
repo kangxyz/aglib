@@ -1,0 +1,18 @@
+{
+  "status": "R-only conditional route, uncompiled/unapplied until actual data reconciliation",
+  "scope": "Root conditionally added exactly SquareTransport926601; existing two generic square theorems remain byte-identical. Field public statements unchanged; only import and proof use change. No private generic helper is proposed in Scheme.",
+  "records": [
+    {
+      "path": "Aglib/Logic/Function/SquareTransport.lean",
+      "before_sha256": "926601b0ad2d94754657c6bbcd2375d8cfa4828115de5b12fed92802ce35bbce",
+      "after_sha256": "8ac041650a7f431c843f87419d3f5ed88fe88ac14612f0090dd92467a85f87c9"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "before_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+      "after_sha256": "cd9f32243beefa3395250a339ef136503d252ba7807ac91f0b70e7679dadebd1"
+    }
+  ],
+  "mathematics": "Minimal complete-evaluation supplier over A:SortuA,B:SortuB,C:SortuC. Its premises are plain original equations; the native caller supplies the actual inferred representative equation and onH1_classOf, with rfl for the original comparison factorization. No classifier record, competing torsor/Ext/coefficient model, native hypothesis or chosen endpoint Iso is introduced.",
+  "remaining_check": "Wait bounded FIELD_DATA comparison for genuine carrier/action/world differences; do not use the generic supplier to hide any difference. Native Field616b remains unchanged while the captured diagnostic runs."
+}

@@ -1,0 +1,28 @@
+{
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "owned_before": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "618897ffc91aa8ee8629e3414e9733b8c59e2bfd2460048117ded72770f3ecca",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35"
+  },
+  "readonly_suppliers": {
+    "Aglib/CategoryTheory/Over/ChartTails.lean": "c278e907a9bee6359d5f6dd72731c295d97ac6f1cc71773cf47feee1697e4bab",
+    "Aglib/CategoryTheory/Over/SitePullbackPasting.lean": "80e9a5d4d44ae0d3bc08c7deba3db49e8a3d130de88d9b50578887addb208fcf",
+    "Aglib/CategoryTheory/Functor/NaturalityTransport.lean": "19d4ac331cb444727e4e13b3da5a67b035df7057c0258561bc160ec9cf80beb2",
+    "Aglib/CategoryTheory/Functor/WhiskeredTransport.lean": "f8394d979331eec967951cdf091994f04d4082b1e9434fd765e9b9140aab845c",
+    "Aglib/AlgebraicGeometry/Sites/EtaleTopos.lean": "9aaad4f8608cb3624a8826139a431318bc17d03075cd129bca6f8d3e45d5993b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/EtaleRestriction.lean": "c4de9afa37af7ba68c0870fcadaa320b55f2dea9a0862a4768fc3818ae90a284",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": "42dac0fc6c143a299c241ae5ef3def9fddd53eb0a802a61050ad3e3b3d7469cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/Sections.lean": "5fda316bf90c454a65e87f633a308d1bfbcf8337192fe304c0820f09361c9b38",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean": "29a2ae6660a08e1113bae53642ae0cb416b9caaf2872a540f1c426b2f070bc28",
+    "Aglib/CategoryTheory/Monoidal/Cartesian/CommutativeGroupSections.lean": "e09de728865f06cabf66fc87bf0197837d25f4e57835c145dca0b053f8626753",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/RepresentedBaseChange.lean": "2a4eb01c34058dc3e2cd8507e360ebd27c3516768747586d3a278b37cfc98abd",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "4d9aa5c71baed05fef5f284e3dc92da87e53c922a722d2f22b23d4e6f514a049",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/CoefficientRepresentation.lean": "a345e9c7ad35028f6faa6f994448f6bc6091af309e960ef132d74ad5085bb7e0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/BaseChangeHorizontalUnit.lean": "72eef83bc71a88e4956dafcd2fa68017d9f0492ff5a44472980d6d8fe55826c1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageRestriction.lean": "34b52ce6ffbbdc74f4599dfe4b974885298f4f0bc176beaccec08f635ff47f2e",
+    "Aglib/CategoryTheory/Functor/ActualDiagramLift.lean": "640bb1af56cbdad388f7005ac6fa6fa73daafbf96c42402acfbd0a2922400508"
+  },
+  "source_boundary": "Global-only actual model capture at existing generic core call; no new interface/transport/condition. Entire variable helper/prefix and canonical/unit tail exact. A confirmed no active snapshot before application."
+}

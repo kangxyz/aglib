@@ -1,0 +1,46 @@
+{
+  "kind": "one instrumented diagnostic only; no new acceptance/benchmark/coverage",
+  "native_run": "remote-6536a79189ea41d098aedfdb4272f3a9",
+  "native_receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/receipt.json",
+  "native_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/build.log",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-6536a79189ea41d098aedfdb4272f3a9/compiler-events.jsonl",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-cech-profile-6536a791.json",
+  "source_archive_sha256": "2eed2f5f696c7169121c972d004889f9bbf5b5c270beedd461b8d94cae119046",
+  "source_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+  "setup_kind": "reconstructed via pinnedLake --no-build; originalfa261bytes unavailable",
+  "setup_sha256": "1f0adc79ba795e65b54db2f53e679690f57b51a999495f3ededacfb42099a159",
+  "profile_invocations": 1,
+  "preparation_compiler_starts": 0,
+  "profile_exit_code": 0,
+  "wall_seconds": 641.305450886488,
+  "native_resource_observation": {
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "peak_rss_bytes": 2355453952,
+    "sampled_process_average_cpu_cores": 1.8051825585201795,
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    }
+  },
+  "paths": {
+    "source.lean": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/source.lean",
+    "Comparison.setup.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/Comparison.setup.json",
+    "profile.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.json",
+    "preparation.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/preparation.json",
+    "setup.stdout.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/setup.stdout.log",
+    "setup.stderr.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/setup.stderr.log",
+    "profile.stdout.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stdout.log",
+    "profile.stderr.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/profile.stderr.log",
+    "outputs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/cech-profile-6536a791/outputs"
+  },
+  "timing_boundary": "inclusive and async frames can overlap; do not sum or infer matched benchmark/speedup"
+}

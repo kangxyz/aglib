@@ -14,7 +14,7 @@ public import
 
 The actual pullback of sections followed by the original higher exchange is
 computed by the actual inverse-image cycle comparison and the native lifted
-resolution map. All four derived-category models remain independent. No
+resolution map. The ordinary interface needs no derived-category data. No
 base-change isomorphism or cohomological exactness of global sections is used.
 -/
 
@@ -26,17 +26,13 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits HomologicalComplex
 
-universe u dX dS dX' dS'
+universe u
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
 variable {X S X' S' : Scheme.{u}}
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f)
 

@@ -1,0 +1,41 @@
+{
+  "source_sha256": "facac44d58e36efeecc50e1f18adc37a75ed900bd6e3703cb921f7c47c987d64",
+  "run": "remote-bdf660008c8143d393bc575c3eaa8d99",
+  "source_capture_sha256": "07b2c2a2d4dd461c608858cab92cce0dd68af87f81723a19a9e4b2a1dad6676b",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange"
+  ],
+  "native_exit": 1,
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 2,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 32768,
+    "threads": 4
+  },
+  "own_result": "FAILED at public properModuleDerivedBaseChange_isIso_of_torsion_homology:69:8 with kernel deterministic timeout",
+  "consequential_diagnostic": "The current module only contains private declarations (the sole public theorem failed kernel checking).",
+  "own_reported_module_seconds": 100,
+  "provider_frontends_passed": 164,
+  "provider_failure": false,
+  "full_outputs": {
+    "receipt.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-bdf660008c8143d393bc575c3eaa8d99/receipt.json",
+    "build.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-bdf660008c8143d393bc575c3eaa8d99/build.log",
+    "compiler-events.jsonl": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-bdf660008c8143d393bc575c3eaa8d99/compiler-events.jsonl"
+  },
+  "output_sha256": {
+    "receipt.json": "b169c3bb83fc311e673e0cf6301bc0d9436300b6f9392f0371838629e5f5d4d4",
+    "build.log": "802362aa0dfbedbcbb265b28b3ef96eb28f6108ffe9610ad63c0f19507442749",
+    "compiler-events.jsonl": "042ea65ca1eab7321b37d857d032f9d4f08787080ac0d19e572c096d221fb064"
+  },
+  "remaining_boundary": "No error was reported at private variable-category cancellation; the concrete public proof containing standard Ab realizations still exceeded the kernel budget. Exact expensive conversion pair not identified.",
+  "repair_2": "Move the existing native Ab-torsion/proper-exchange/conservativity/cube proof unchanged into a private pointwise theorem over the four supplied Ab derived data. The public theorem chooses the same four standard realizations once and applies this opaque theorem. Public module models, map, conditions and pointwise nature remain unchanged.",
+  "method_basis": [
+    "docs/PERFORMANCE.md#shared-constructions-and-equations",
+    "docs/performance/pbc-original-map-and-finite-model-boundaries.md#return-the-whole-standard-bounded-target-test"
+  ],
+  "evidence_boundary": "Second failed source-bound attempt; no new mathematical defect, successful native pass, unique cause or matched speedup is inferred."
+}

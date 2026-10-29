@@ -8,7 +8,9 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Torsor.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorBaseChange
+public import Aglib.AlgebraicGeometry.Sites.EtaleTopos
 
 /-!
 # Actual adjoint torsor maps and canonical extension naturality
@@ -36,52 +38,52 @@ variable {X S : Scheme.{u}} {L : AbelianSheaf.{u, u + 1} X} {M : AbelianSheaf.{u
 
 /-- A genuine adjoint torsor map: the only conditions concern actual sheaf
 maps and their ordinary action on sections. -/
-structure Torsor.AdjointHom (f : S ⟶ X) (q : L ⟶ (directImage f).obj M)
-    (P : Torsor L) (Q : Torsor M) where
-  /-- The carrier sheaf map from `P` to the direct image of the carrier of `Q`. -/
-  map : P.carrier ⟶ (setDirectImage f).obj Q.carrier
-  equivariant : ∀ (U : X.Etaleᵒᵖ) (a : L.obj.obj U) (t : P.carrier.obj.obj U),
-    map.hom.app U (P.action U a t) =
-      Q.action ((siteBaseChange f).op.obj U) (q.hom.app U a) (map.hom.app U t)
+abbrev Torsor.AdjointHom (f : S ⟶ X) (q : L ⟶ (directImage f).obj M)
+    (P : Torsor L) (Q : Torsor M) :=
+  CategoryTheory.Sheaf.Torsor.AdjointHom (siteBaseChange f) q P Q
 
 /-- Equality of morphisms out of the actual free sheaf is checked on its
 canonical torsor generators. -/
 theorem torsorFreeSheaf_hom_ext (P : Torsor L) {E : AbelianSheaf.{u, u + 1} X}
     (a b : torsorFreeSheaf P ⟶ E)
     (h : ∀ U t, a.hom.app U (torsorGenerator P U t) = b.hom.app U (torsorGenerator P U t)) :
-    a = b := by
-  let adj := sheafificationAdjunction (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}
-  apply (adj.homEquiv (torsorFreePresheaf P) E).injective
-  ext U z
-  change a.hom.app U ((toSheafify _ (torsorFreePresheaf P)).app U z) =
-    b.hom.app U ((toSheafify _ (torsorFreePresheaf P)).app U z)
-  induction z using FreeAbelianGroup.induction_on with
-  | zero => simp only [map_zero]
-  | of t => exact h U t
-  | neg z hz => simp only [map_neg, hz]
-  | add z w hz hw => simp only [map_add, hz, hw]
+    a = b :=
+  CategoryTheory.Sheaf.torsorFreeSheaf_hom_ext P a b h
 
 /-- The free-sheaf lift sends each canonical generator to its specified section. -/
 theorem torsorFreeLiftSheaf_generator (P : Torsor L) {E : AbelianSheaf.{u, u + 1} X}
     (r : P.carrier ⟶ underlyingSetSheaf E) (U : X.Etaleᵒᵖ) (t : P.carrier.obj.obj U) :
-    (torsorFreeLiftSheaf P r).hom.app U (torsorGenerator P U t) = r.hom.app U t := by
-  have h := congrArg (fun k => k.app U (FreeAbelianGroup.of t)) (torsorFreeLiftSheaf_unit P r)
-  exact h.trans (FreeAbelianGroup.lift_apply_of _ t)
+    (torsorFreeLiftSheaf P r).hom.app U (torsorGenerator P U t) = r.hom.app U t :=
+  CategoryTheory.Sheaf.torsorFreeLiftSheaf_generator P r U t
 
 /-- The canonical inclusion of a genuine torsor lands over literal integer one. -/
 theorem torsorCanonicalSetInclusion_projection (P : Torsor L)
     (U : X.Etaleᵒᵖ) (t : P.carrier.obj.obj U) :
     (torsorExtension P).g.hom.app U ((torsorCanonicalSetInclusion P).hom.app U t) =
-      restrictSection (constantIntegerSheaf X) (constantIntegerOne X) U :=
-  ((torsorCanonicalExtensionIso P).carrierIso.hom.hom.app U t).property
+      restrictSection (constantIntegerSheaf X) (constantIntegerOne X) U := by
+  rw [torsorCanonicalSetInclusion_eq_generic]
+  exact (CategoryTheory.Sheaf.torsorCanonicalSetInclusion_projection P U t).trans
+    (restrict_constantIntegerOne (X := X) U).symm
 
 variable (f : S ⟶ X) {q : L ⟶ (directImage f).obj M}
 variable {P : Torsor L} {Q : Torsor M} (r : Torsor.AdjointHom f q P Q)
 
+local instance nativeTorsorAdjunctionPullbackPreservesFiniteLimits :
+    PreservesFiniteLimits ((siteBaseChange f).sheafPullback AddCommGrpCat.{u + 1}
+      X.smallEtaleTopology S.smallEtaleTopology) :=
+  inverseImage_preservesFiniteLimits f
+
 /-- Compose the actual carrier map with the canonical target-extension inclusion. -/
-def torsorAdjunctionSetLift :
+abbrev torsorAdjunctionSetLift :
     P.carrier ⟶ underlyingSetSheaf ((directImage f).obj (torsorExtension Q).X₂) :=
-  r.map ≫ (setDirectImage f).map (torsorCanonicalSetInclusion Q)
+  CategoryTheory.Sheaf.torsorAdjunctionSetLift (siteBaseChange f) r
+
+/-- The topos direct-image lift is the original native carrier-map composition. -/
+theorem torsorAdjunctionSetLift_eq_original :
+    torsorAdjunctionSetLift f r =
+      r.map ≫ (setDirectImage f).map (torsorCanonicalSetInclusion Q) := by
+  rw [torsorCanonicalSetInclusion_eq_generic]
+  rfl
 
 /-- The resulting lift has the actual positive coefficient translation law. -/
 theorem torsorAdjunctionSetLift_action (U : X.Etaleᵒᵖ) (a : L.obj.obj U)
@@ -89,15 +91,19 @@ theorem torsorAdjunctionSetLift_action (U : X.Etaleᵒᵖ) (a : L.obj.obj U)
     (torsorAdjunctionSetLift f r).hom.app U (P.action U a t) =
       (q ≫ (directImage f).map (torsorExtension Q).f).hom.app U a +
         (show ((directImage f).obj (torsorExtension Q).X₂).obj.obj U from
-          (torsorAdjunctionSetLift f r).hom.app U t) := by
-  change (torsorCanonicalSetInclusion Q).hom.app ((siteBaseChange f).op.obj U)
-    (r.map.hom.app U (P.action U a t)) = _
-  rw [r.equivariant, torsorCanonicalSetInclusion_action]
-  rfl
+          (torsorAdjunctionSetLift f r).hom.app U t) :=
+  CategoryTheory.Sheaf.torsorAdjunctionSetLift_action (siteBaseChange f) r U a t
 
 /-- The canonical integer map adjoint to the fixed inverse-image integer isomorphism. -/
 def integerAdjunctionMap : constantIntegerSheaf X ⟶ (directImage f).obj (constantIntegerSheaf S) :=
   (inverseImageAdjunction f).homEquiv _ _ (inverseImageIntegerIso f).hom
+
+/-- The whole native integer transpose is the generic one on the same adjunction. -/
+theorem integerAdjunctionMap_eq_generic :
+    integerAdjunctionMap f = (etaleAdditiveCoefficientAction f).integerAdjunctionMap := by
+  unfold integerAdjunctionMap Topos.AdditiveCoefficientAction.integerAdjunctionMap
+  rw [etaleAdditiveCoefficientAction_integerIso]
+  rfl
 
 /-- This particular adjoint integer map sends actual integer one to actual integer one. -/
 theorem integerAdjunctionMap_one (U : X.Etaleᵒᵖ) :
@@ -112,93 +118,58 @@ theorem torsorAdjunctionFreeLift_projection :
     torsorFreeLiftSheaf P (torsorAdjunctionSetLift f r) ≫
         (directImage f).map (torsorExtension Q).g =
       torsorAugmentation P ≫ integerAdjunctionMap f := by
-  apply torsorFreeSheaf_hom_ext
-  intro U t
-  change (torsorExtension Q).g.hom.app ((siteBaseChange f).op.obj U)
-      ((torsorFreeLiftSheaf P (torsorAdjunctionSetLift f r)).hom.app U (torsorGenerator P U t)) =
-    (integerAdjunctionMap f).hom.app U ((torsorAugmentation P).hom.app U (torsorGenerator P U t))
-  rw [torsorFreeLiftSheaf_generator, torsorGenerator_augmentation]
-  erw [integerAdjunctionMap_one]
-  exact torsorCanonicalSetInclusion_projection Q _ _
+  rw [integerAdjunctionMap_eq_generic]
+  exact CategoryTheory.Sheaf.torsorAdjunctionFreeLift_projection (siteBaseChange f) r
 
 /-- The augmentation-kernel relation produces the actual canonical extension
 map into direct image by the pushout universal property. -/
-def torsorAdjunctionMiddle : (torsorExtension P).X₂ ⟶ (directImage f).obj (torsorExtension Q).X₂ :=
-  pushout.desc (torsorFreeLiftSheaf P (torsorAdjunctionSetLift f r))
-    (q ≫ (directImage f).map (torsorExtension Q).f)
-    (torsorFreeLiftSheaf_kernel P (torsorAdjunctionSetLift f r)
-      (q ≫ (directImage f).map (torsorExtension Q).f) (torsorAdjunctionSetLift_action f r))
+abbrev torsorAdjunctionMiddle : (torsorExtension P).X₂ ⟶ (directImage f).obj (torsorExtension
+  Q).X₂ :=
+  CategoryTheory.Sheaf.torsorAdjunctionMiddle (siteBaseChange f) r
 
 /-- The coefficient square of the actual direct-image extension map. -/
 @[simp] theorem torsorAdjunctionMiddle_inclusion :
     (torsorExtension P).f ≫ torsorAdjunctionMiddle f r =
       q ≫ (directImage f).map (torsorExtension Q).f :=
-  pushout.inr_desc _ _ _
+  CategoryTheory.Sheaf.torsorAdjunctionMiddle_inclusion (siteBaseChange f) r
 
 /-- The free generators have their prescribed images in the target extension. -/
 @[simp] theorem torsorAdjunctionMiddle_free :
     pushout.inl (torsorKernelSheafInclusion P) (torsorDifferenceSheafMap P) ≫
       torsorAdjunctionMiddle f r = torsorFreeLiftSheaf P (torsorAdjunctionSetLift f r) :=
-  pushout.inl_desc _ _ _
+  CategoryTheory.Sheaf.torsorAdjunctionMiddle_free (siteBaseChange f) r
 
 /-- The projection square uses the canonical integer adjunction, proved on
 actual free generators rather than assumed at the cohomology level. -/
 theorem torsorAdjunctionMiddle_projection :
     torsorAdjunctionMiddle f r ≫ (directImage f).map (torsorExtension Q).g =
       (torsorExtension P).g ≫ integerAdjunctionMap f := by
-  apply pushout.hom_ext
-  · simp only [← Category.assoc]
-    erw [torsorAdjunctionMiddle_free]
-    change _ = (pushout.inl (torsorAugmentationComplex P).f (torsorDifferenceSheafMap P) ≫
-      CategoryTheory.Abelian.ExtensionPushout.projection (torsorAugmentationComplex P)
-        (torsorDifferenceSheafMap P)) ≫
-        integerAdjunctionMap f
-    rw [CategoryTheory.Abelian.ExtensionPushout.inl_projection]
-    exact torsorAdjunctionFreeLift_projection f r
-  · simp only [← Category.assoc]
-    erw [torsorAdjunctionMiddle_inclusion]
-    change (q ≫ (directImage f).map (torsorExtension Q).f) ≫
-      (directImage f).map (torsorExtension Q).g =
-        ((torsorExtension P).f ≫ (torsorExtension P).g) ≫ integerAdjunctionMap f
-    rw [ShortComplex.zero, zero_comp, Category.assoc, ← Functor.map_comp, ShortComplex.zero]
-    ext U a
-    rfl
+  rw [integerAdjunctionMap_eq_generic]
+  exact CategoryTheory.Sheaf.torsorAdjunctionMiddle_projection (siteBaseChange f) r
 
 /-- The coefficient map transposed through the actual inverse/direct image adjunction. -/
-def torsorAdjunctionCoefficient : (inverseImage f).obj L ⟶ M :=
-  ((inverseImageAdjunction f).homEquiv L M).symm q
+abbrev torsorAdjunctionCoefficient : (inverseImage f).obj L ⟶ M :=
+  CategoryTheory.Sheaf.torsorAdjunctionCoefficient.{u + 1, u, u + 1, u, u + 1}
+    (siteBaseChange f) (q := q)
 
 /-- The constructed middle-sheaf map transposed through the same actual adjunction. -/
-def torsorAdjunctionMiddleAdjoint :
+abbrev torsorAdjunctionMiddleAdjoint :
     (inverseImage f).obj (torsorExtension P).X₂ ⟶ (torsorExtension Q).X₂ :=
-  ((inverseImageAdjunction f).homEquiv _ _).symm (torsorAdjunctionMiddle f r)
+  CategoryTheory.Sheaf.torsorAdjunctionMiddleAdjoint.{u + 1, u, u + 1, u, u + 1}
+    (siteBaseChange f) r
 
 /-- The coefficient square survives adjunction with its actual sheaf maps. -/
 theorem torsorAdjunctionMiddleAdjoint_inclusion :
     torsorAdjunctionCoefficient f (q := q) ≫ (torsorExtension Q).f =
-      (inverseImage f).map (torsorExtension P).f ≫ torsorAdjunctionMiddleAdjoint f r := by
-  apply ((inverseImageAdjunction f).homEquiv _ _).injective
-  rw [Adjunction.homEquiv_naturality_right, Adjunction.homEquiv_naturality_left]
-  change (inverseImageAdjunction f).homEquiv _ _
-      (((inverseImageAdjunction f).homEquiv _ _).symm q) ≫ _ =
-    (torsorExtension P).f ≫ (inverseImageAdjunction f).homEquiv _ _
-      (((inverseImageAdjunction f).homEquiv _ _).symm (torsorAdjunctionMiddle f r))
-  rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply, torsorAdjunctionMiddle_inclusion]
+      (inverseImage f).map (torsorExtension P).f ≫ torsorAdjunctionMiddleAdjoint f r :=
+  CategoryTheory.Sheaf.torsorAdjunctionMiddleAdjoint_inclusion (siteBaseChange f) r
 
 /-- The projection square survives adjunction with the fixed integer transport. -/
 theorem torsorAdjunctionMiddleAdjoint_projection :
     torsorAdjunctionMiddleAdjoint f r ≫ (torsorExtension Q).g =
-      (torsorInverseImageExtension f P).g := by
-  apply ((inverseImageAdjunction f).homEquiv _ _).injective
-  change (inverseImageAdjunction f).homEquiv _ _ (torsorAdjunctionMiddleAdjoint f r ≫
-      (torsorExtension Q).g) = (inverseImageAdjunction f).homEquiv _ _
-        ((inverseImage f).map (torsorExtension P).g ≫ (inverseImageIntegerIso f).hom)
-  rw [Adjunction.homEquiv_naturality_right, Adjunction.homEquiv_naturality_left]
-  change (inverseImageAdjunction f).homEquiv _ _
-      (((inverseImageAdjunction f).homEquiv _ _).symm (torsorAdjunctionMiddle f r)) ≫ _ =
-    (torsorExtension P).g ≫ integerAdjunctionMap f
-  rw [Equiv.apply_symm_apply]
-  exact torsorAdjunctionMiddle_projection f r
+      (torsorInverseImageExtension f P).g :=
+  (CategoryTheory.Sheaf.torsorAdjunctionMiddleAdjoint_projection (siteBaseChange f) r).trans
+    (torsorInverseImageProjection_eq_generic f P).symm
 
 /-- The actual canonical extension morphism induced by the ordinary adjoint
 torsor map. Both squares were constructed above. -/
@@ -222,15 +193,8 @@ scheme/coefficient naturality identity of their canonical Ext classes. -/
 theorem torsorExtClass_adjunction :
     coefficientMap (torsorAdjunctionCoefficient f (q := q))
       (h1Pullback f L (torsorExtClass P)) = torsorExtClass Q := by
-  have h := ShortComplex.ShortExact.extClass_naturality
-    (torsorInverseImageExtension_shortExact f P) (torsorExtension_shortExact Q)
-    (torsorAdjunctionExtensionMap f r)
-  change (torsorInverseImageExtension_shortExact f P).extClass.comp
-      (Abelian.Ext.mk₀ (torsorAdjunctionCoefficient f (q := q))) (add_zero 1) =
-    (Abelian.Ext.mk₀ (𝟙 (constantIntegerSheaf S))).comp
-      (torsorExtension_shortExact Q).extClass (zero_add 1) at h
-  rw [Abelian.Ext.mk₀_id_comp, torsorInverseImageExtension_extClass] at h
-  exact h
+  rw [h1Pullback_eq_generic]
+  exact CategoryTheory.Sheaf.torsorExtClass_adjunction (siteBaseChange f) r
 
 end ExtClass
 end AlgebraicGeometry.Scheme.EtaleCohomology

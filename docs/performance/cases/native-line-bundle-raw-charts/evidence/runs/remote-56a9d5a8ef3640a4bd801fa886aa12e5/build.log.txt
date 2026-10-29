@@ -1,0 +1,418 @@
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 84, num: 16):
+    [reduction] outParam ↦ 84
+    [reduction] semiOutParam ↦ 76
+    [reduction] Sheaf ↦ 71
+    [reduction] AbelianSheaf ↦ 71
+    [reduction] Functor.obj ↦ 67
+    [reduction] Opens ↦ 40
+    [reduction] FunLike ↦ 38
+    [reduction] unop ↦ 31
+    [reduction] Comma.left ↦ 31
+    [reduction] MorphismProperty.Comma.toComma ↦ 31
+    [reduction] LocallyRingedSpace.toSheafedSpace ↦ 29
+    [reduction] toLocallyRingedSpace ↦ 29
+    [reduction] SheafedSpace.toPresheafedSpace ↦ 29
+    [reduction] PresheafedSpace.presheaf ↦ 26
+    [reduction] Bundled.α ↦ 25
+    [reduction] EtaleCohomology.Torsor ↦ 21
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.command] [0.885271] ✅️ /-- Formation-only diagnostic: the actual target proposition is a theorem binder. -/
+    theorem sectionFamily_formation_probe (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+        (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ)
+        (_hr : ChartRelations P M c u) (_hu : ∀ U (s : P.carrier.obj.obj U), u U s s = 1)
+        (_result : NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c)) : True :=
+      by
+      run_tac
+        Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+      exact True.intro
+  [Elab.step] [0.064132] ✅️ expected type: Type (u + 2), term
+      Torsor A
+    [Elab.app.args] [0.062020] 💥️ elabAppArgs (1 args) `_root_.Torsor`
+      [Elab.coe] [0.061122] 💥️ adding coercion for A : AbelianSheaf X =?= Type ?u.6
+        [Meta.synthInstance] [0.061045] ❌️ CoeT (AbelianSheaf X) A (Type ?u.6)
+  [Elab.definition.header] [0.386850] ✅️ AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_formation_probe
+    [Elab.step] [0.017151] ✅️ expected type: Sort ?u.11, term
+        lineBundles.obj (.mk (op X))
+      [Elab.app.args] [0.016448] ✅️ elabAppArgs (1 args) (1 namedArgs) `@Prefunctor.obj`
+    [Elab.step] [0.297562] ✅️ expected type: Sort ?u.23, term
+        ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+      [Elab.step] [0.297466] ✅️ expected type: Sort ?u.23, term
+          ∀ (U : X.Etaleᵒᵖ), P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+        [Elab.step] [0.295276] ✅️ expected type: Sort ?u.27, term
+            P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+          [Elab.step] [0.012246] ✅️ expected type: Type (u + 1), term
+              P.carrier.obj.obj U
+          [Elab.step] [0.282886] ✅️ expected type: Sort ?u.36, term
+              P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+            [Elab.step] [0.012193] ✅️ expected type: Type (u + 1), term
+                P.carrier.obj.obj U
+            [Elab.step] [0.270509] ✅️ expected type: Type u, term
+                Γ(U.unop.left, ⊤)ˣ
+              [Elab.step] [0.270352] ✅️ expected type: Type u, term
+                  Units✝ Γ(U.unop.left, ⊤)
+                [Elab.app.args] [0.270099] ✅️ elabAppArgs (1 args) `Units`
+                  [Elab.step] [0.244072] ✅️ expected type: Type u, term
+                      Γ(U.unop.left, ⊤)
+                    [Elab.step] [0.140089] 💥️ expected type: Type ?u.46, term
+                        Γ(U.unop.left, ⊤)
+                      [Elab.step] [0.139838] 💥️ expected type: Type ?u.46, term
+                          (Scheme.Modules.presheaf✝ U.unop.left).obj✝ (.op✝ ⊤)
+                        [Elab.step] [0.139779] 💥️ expected type: <not-available>, term
+                            (Scheme.Modules.presheaf✝ U.unop.left)
+                          [Elab.step] [0.139716] 💥️ expected type: <not-available>, term
+                              Scheme.Modules.presheaf✝ U.unop.left
+                            [Elab.app.args] [0.139128] 💥️ elabAppArgs (1 args) `@presheaf`
+                              [Elab.coe] [0.130371] 💥️ adding coercion for (unop U).left : Scheme =?= Modules ?m.31
+                                [Meta.synthInstance] [0.130105] ❌️ CoeT Scheme (unop U).left (Modules ?m.31)
+                    [Elab.step] [0.072556] ✅️ expected type: Type ?u.46, term
+                        Γ(U.unop.left, ⊤)
+                      [Elab.step] [0.072172] ✅️ expected type: Type ?u.46, term
+                          (PresheafedSpace.presheaf✝
+                                (SheafedSpace.toPresheafedSpace✝
+                                  (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))).obj✝
+                            (op✝ (α✝ := Scheme.Opens✝ _) ⊤)
+                        [Elab.step] [0.016920] ✅️ expected type: <not-available>, term
+                            (PresheafedSpace.presheaf✝
+                              (SheafedSpace.toPresheafedSpace✝
+                                (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))))
+                          [Elab.step] [0.016855] ✅️ expected type: <not-available>, term
+                              PresheafedSpace.presheaf✝
+                                (SheafedSpace.toPresheafedSpace✝
+                                  (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))
+                            [Elab.app.args] [0.016468] ✅️ elabAppArgs (1 args) `@PresheafedSpace.presheaf`
+                              [Elab.step] [0.015794] ✅️ expected type: PresheafedSpace CommRingCat, term
+                                  (SheafedSpace.toPresheafedSpace✝
+                                    (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))
+                                [Elab.step] [0.015732] ✅️ expected type: PresheafedSpace CommRingCat, term
+                                    SheafedSpace.toPresheafedSpace✝
+                                      (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))
+                                  [Elab.app.args] [0.015332] ✅️ elabAppArgs (1 args)
+                                        @SheafedSpace.toPresheafedSpace
+                                    [Elab.step] [0.011474] ✅️ expected type: SheafedSpace CommRingCat, term
+                                        (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))
+                                      [Elab.step] [0.011404] ✅️ expected type: SheafedSpace CommRingCat, term
+                                          LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)
+                                        [Elab.app.args] [0.010985] ✅️ elabAppArgs (1 args)
+                                              LocallyRingedSpace.toSheafedSpace
+                        [Elab.app.args] [0.054603] ✅️ elabAppArgs (1 args) (1 namedArgs) `@Functor.obj`
+                          [Elab.step] [0.043544] ✅️ expected type: (TopologicalSpace.Opens ↥(unop U).left)ᵒᵖ, term
+                              (op✝ (α✝ := Scheme.Opens✝ _) ⊤)
+                            [Elab.step] [0.043482] ✅️ expected type: (TopologicalSpace.Opens ↥(unop U).left)ᵒᵖ, term
+                                op✝ (α✝ := Scheme.Opens✝ _) ⊤
+                              [Elab.app.args] [0.043242] ✅️ elabAppArgs (1 args) (1 namedArgs) `@op`
+                                [Elab.step] [0.039148] ✅️ expected type: (unop U).left.Opens, term
+                                    ⊤
+                                  [Elab.step] [0.039022] ✅️ expected type: (unop U).left.Opens, term
+                                      Top.top✝
+                                    [Elab.app.args] [0.038576] ✅️ elabAppArgs  `@Top.top`
+                                      [Elab.app.finalize] [0.038498] ✅️ ⊤ : (unop U).left.Opens
+                                        [Meta.synthInstance] [0.037102] ✅️ Top (unop U).left.Opens
+                                          [Meta.synthInstance.apply] [0.012628] ✅️ apply @CoheytingAlgebra.toOrderTop to OrderTop
+                                                (unop U).left.Opens
+                                            [Meta.synthInstance.tryResolve] [0.012334] ✅️ OrderTop
+                                                  (unop U).left.Opens ≟ OrderTop (unop U).left.Opens
+                                              [Meta.isDefEq] [0.011601] ✅️ ?m.54 =?= CoheytingAlgebra.toOrderTop
+                                                [Meta.isDefEq.assign] [0.011559] ✅️ ?m.54 := CoheytingAlgebra.toOrderTop
+                                                  [Meta.isDefEq.assign.checkTypes] [0.011494] ✅️ (?m.54 : OrderTop
+                                                        (unop
+                                                              U).left.Opens) := (CoheytingAlgebra.toOrderTop : OrderTop
+                                                        (unop U).left.Opens)
+                                                    [Meta.isDefEq] [0.011444] ✅️ OrderTop
+                                                          (unop U).left.Opens =?= OrderTop (unop U).left.Opens
+                    [Elab.coe] [0.030737] ✅️ adding coercion for Γ((unop U).left, ⊤) : CommRingCat =?= Type u
+                      [Meta.synthInstance] [0.029492] ✅️ CoeT CommRingCat Γ((unop U).left, ⊤) (Type u)
+                  [Elab.app.finalize] [0.025554] ✅️ (↑Γ((unop U).left, ⊤))ˣ : Type u
+                    [Meta.synthInstance] [0.025014] ✅️ Monoid ↑Γ((unop U).left, ⊤)
+    [Elab.step] [0.011399] ✅️ expected type: Prop, term
+        ChartRelations P M c u
+      [Elab.app.args] [0.011061] ✅️ elabAppArgs (4 args) `@ChartRelations`
+    [Elab.step] [0.022527] ✅️ expected type: Sort ?u.71, term
+        ∀ U (s : P.carrier.obj.obj U), u U s s = 1
+      [Elab.step] [0.012225] ✅️ expected type: Type (u + 1), term
+          P.carrier.obj.obj U
+    [Elab.step] [0.027925] ✅️ expected type: Prop, term
+        NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c)
+      [Elab.app.args] [0.027714] ✅️ elabAppArgs (3 args) `@NaturalFamily`
+SF_FORMATION_BODY_ENTERED
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 100, num: 21):
+    [reduction] semiOutParam ↦ 100
+    [reduction] Lean.Elab.TermElabM ↦ 95
+    [reduction] Lean.Elab.Tactic.TacticM ↦ 87
+    [reduction] outParam ↦ 84
+    [reduction] Lean.MetaM ↦ 74
+    [reduction] Sheaf ↦ 71
+    [reduction] AbelianSheaf ↦ 71
+    [reduction] Functor.obj ↦ 67
+    [reduction] Opens ↦ 40
+    [reduction] FunLike ↦ 38
+    [reduction] Lean.CoreM ↦ 37
+    [reduction] unop ↦ 31
+    [reduction] Comma.left ↦ 31
+    [reduction] MorphismProperty.Comma.toComma ↦ 31
+    [reduction] LocallyRingedSpace.toSheafedSpace ↦ 29
+    [reduction] toLocallyRingedSpace ↦ 29
+    [reduction] SheafedSpace.toPresheafedSpace ↦ 29
+    [reduction] PresheafedSpace.presheaf ↦ 26
+    [reduction] Bundled.α ↦ 26
+    [reduction] IO ↦ 21
+    [reduction] EtaleCohomology.Torsor ↦ 21
+  [def_eq] heuristic for solving `f a =?= f b` (max: 23, num: 1):
+    [def_eq] StateRefT' ↦ 23
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.async] [0.420960] ✅️ elaborating proof of AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_formation_probe
+  [Elab.definition.value] [0.410915] ✅️ AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_formation_probe
+    [Elab.step] [0.407524] ✅️ 
+          run_tac
+            Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+          exact True.intro
+      [Elab.step] [0.407403] ✅️ 
+            run_tac
+              Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+            exact True.intro
+        [Elab.step] [0.406683] ✅️ run_tac
+              Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+          [Elab.step] [0.270804] ✅️ expected type: Lean.Elab.Tactic.TacticM Unit, term
+              discard✝ do
+                Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+            [Elab.app.args] [0.270203] ✅️ elabAppArgs (1 args) `@discard`
+              [Elab.step] [0.261471] ✅️ expected type: Lean.Elab.Tactic.TacticM Unit, term
+                  do
+                    Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+                [Elab.step] [0.254162] ✅️ expected type: Lean.Elab.Tactic.TacticM Unit, term
+                    Lean.logInfo "SF_FORMATION_BODY_ENTERED"
+                  [Elab.app.args] [0.253762] ✅️ elabAppArgs (1 args) `@Lean.logInfo`
+                    [Elab.coe] [0.022647] ✅️ adding coercion for "SF_FORMATION_BODY_ENTERED" : String =?= Lean.MessageData
+                      [Meta.synthInstance] [0.021178] ✅️ CoeT String "SF_FORMATION_BODY_ENTERED" Lean.MessageData
+                    [Elab.app.finalize] [0.224053] ✅️ Lean.logInfo
+                          ((Lean.MessageData.ofFormat ∘ Std.format)
+                            "SF_FORMATION_BODY_ENTERED") : Lean.Elab.Tactic.TacticM Unit
+                      [Meta.synthInstance] [0.032903] ✅️ Lean.MonadLog Lean.Elab.Tactic.TacticM
+                      [Meta.synthInstance] [0.021955] ✅️ Lean.AddMessageContext Lean.Elab.Tactic.TacticM
+                      [Meta.synthInstance] [0.166420] ✅️ Lean.MonadOptions Lean.Elab.Tactic.TacticM
+          [Compiler] [0.133749] ✅️ compiling: [_private..lake.migration-probes.section-family-boundary.0._tmp._@..lake.migration-probes.section-family-boundary.4103767057._hygCtx._hyg.117]
+            [Compiler] [0.032303] ✅️ compiler phase: base, pass: specialize
+            [Compiler] [0.021767] ✅️ compiler phase: mono, pass: structProjCases
+.lake/migration-probes/section-family-boundary.lean:214:2: warning: Unused tactic linter: `run_tac
+  Lean.logInfo "SF_FORMATION_BODY_ENTERED"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 84, num: 16):
+    [reduction] outParam ↦ 84
+    [reduction] semiOutParam ↦ 76
+    [reduction] Sheaf ↦ 71
+    [reduction] AbelianSheaf ↦ 71
+    [reduction] Functor.obj ↦ 67
+    [reduction] Opens ↦ 40
+    [reduction] FunLike ↦ 38
+    [reduction] unop ↦ 31
+    [reduction] Comma.left ↦ 31
+    [reduction] MorphismProperty.Comma.toComma ↦ 31
+    [reduction] LocallyRingedSpace.toSheafedSpace ↦ 29
+    [reduction] toLocallyRingedSpace ↦ 29
+    [reduction] SheafedSpace.toPresheafedSpace ↦ 29
+    [reduction] PresheafedSpace.presheaf ↦ 26
+    [reduction] Bundled.α ↦ 25
+    [reduction] EtaleCohomology.Torsor ↦ 21
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.command] [53.401251] ✅️ /-- The proved transition relation and diagonal unit give whole raw-chart naturality. -/
+    theorem sectionFamily_natural (M : lineBundles.obj (.mk (op X))) (c : RawChartFamily P M)
+        (u : ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ)
+        (hr : ChartRelations P M c u) (hu : ∀ U (s : P.carrier.obj.obj U), u U s s = 1) :
+        NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c) :=
+      by
+      run_tac
+        Lean.logInfo "SF_ACTUAL_BODY_ENTERED"
+      intro U V f s
+      run_tac
+        Lean.logInfo "SF_ACTUAL_AFTER_INTRO"
+      change
+        pullHom (F := lineBundles) (c ⟨U.unop, s⟩) f.unop.left V.unop.hom V.unop.hom (MorphismProperty.Over.w f.unop)
+            (MorphismProperty.Over.w f.unop) =
+          c ⟨V.unop, P.carrier.obj.map f s⟩
+      run_tac
+        Lean.logInfo "SF_ACTUAL_AFTER_NATIVE_VIEW"
+      have hh := hr ⟨U.unop, s⟩ ⟨V.unop, P.carrier.obj.map f s⟩ f.unop (𝟙 V.unop)
+      run_tac
+        Lean.logInfo "SF_ACTUAL_AFTER_RELATION_SPECIALIZATION"
+      simpa only [ChartRelationOn, site_id_left, Quiver.Hom.op_unop, op_id, op_unop, CategoryTheory.Functor.map_id,
+        types_id_apply, hu, Units.val_one, AlgebraicGeometry.Scheme.Modules.Invertible.UnitDescent.transition_self_one,
+        Category.comp_id, pullHom_id] using hh
+  [Elab.step] [0.073010] ✅️ expected type: Type (u + 2), term
+      Torsor A
+    [Elab.app.args] [0.070635] 💥️ elabAppArgs (1 args) `_root_.Torsor`
+      [Elab.coe] [0.068404] 💥️ adding coercion for A : AbelianSheaf X =?= Type ?u.6
+        [Meta.synthInstance] [0.068307] ❌️ CoeT (AbelianSheaf X) A (Type ?u.6)
+  [Elab.definition.header] [0.386934] ✅️ AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_natural
+    [Elab.step] [0.017350] ✅️ expected type: Sort ?u.11, term
+        lineBundles.obj (.mk (op X))
+      [Elab.app.args] [0.016603] ✅️ elabAppArgs (1 args) (1 namedArgs) `@Prefunctor.obj`
+    [Elab.step] [0.298046] ✅️ expected type: Sort ?u.23, term
+        ∀ U : X.Etaleᵒᵖ, P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+      [Elab.step] [0.297957] ✅️ expected type: Sort ?u.23, term
+          ∀ (U : X.Etaleᵒᵖ), P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+        [Elab.step] [0.295666] ✅️ expected type: Sort ?u.27, term
+            P.carrier.obj.obj U → P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+          [Elab.step] [0.012271] ✅️ expected type: Type (u + 1), term
+              P.carrier.obj.obj U
+          [Elab.step] [0.283250] ✅️ expected type: Sort ?u.36, term
+              P.carrier.obj.obj U → Γ(U.unop.left, ⊤)ˣ
+            [Elab.step] [0.012308] ✅️ expected type: Type (u + 1), term
+                P.carrier.obj.obj U
+            [Elab.step] [0.270749] ✅️ expected type: Type u, term
+                Γ(U.unop.left, ⊤)ˣ
+              [Elab.step] [0.270602] ✅️ expected type: Type u, term
+                  Units✝ Γ(U.unop.left, ⊤)
+                [Elab.app.args] [0.270324] ✅️ elabAppArgs (1 args) `Units`
+                  [Elab.step] [0.244304] ✅️ expected type: Type u, term
+                      Γ(U.unop.left, ⊤)
+                    [Elab.step] [0.140264] 💥️ expected type: Type ?u.46, term
+                        Γ(U.unop.left, ⊤)
+                      [Elab.step] [0.140027] 💥️ expected type: Type ?u.46, term
+                          (Scheme.Modules.presheaf✝ U.unop.left).obj✝ (.op✝ ⊤)
+                        [Elab.step] [0.139963] 💥️ expected type: <not-available>, term
+                            (Scheme.Modules.presheaf✝ U.unop.left)
+                          [Elab.step] [0.139904] 💥️ expected type: <not-available>, term
+                              Scheme.Modules.presheaf✝ U.unop.left
+                            [Elab.app.args] [0.139154] 💥️ elabAppArgs (1 args) `@presheaf`
+                              [Elab.coe] [0.130364] 💥️ adding coercion for (unop U).left : Scheme =?= Modules ?m.31
+                                [Meta.synthInstance] [0.130097] ❌️ CoeT Scheme (unop U).left (Modules ?m.31)
+                    [Elab.step] [0.072774] ✅️ expected type: Type ?u.46, term
+                        Γ(U.unop.left, ⊤)
+                      [Elab.step] [0.072383] ✅️ expected type: Type ?u.46, term
+                          (PresheafedSpace.presheaf✝
+                                (SheafedSpace.toPresheafedSpace✝
+                                  (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))).obj✝
+                            (op✝ (α✝ := Scheme.Opens✝ _) ⊤)
+                        [Elab.step] [0.016868] ✅️ expected type: <not-available>, term
+                            (PresheafedSpace.presheaf✝
+                              (SheafedSpace.toPresheafedSpace✝
+                                (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))))
+                          [Elab.step] [0.016806] ✅️ expected type: <not-available>, term
+                              PresheafedSpace.presheaf✝
+                                (SheafedSpace.toPresheafedSpace✝
+                                  (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))
+                            [Elab.app.args] [0.016416] ✅️ elabAppArgs (1 args) `@PresheafedSpace.presheaf`
+                              [Elab.step] [0.015737] ✅️ expected type: PresheafedSpace CommRingCat, term
+                                  (SheafedSpace.toPresheafedSpace✝
+                                    (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)))
+                                [Elab.step] [0.015674] ✅️ expected type: PresheafedSpace CommRingCat, term
+                                    SheafedSpace.toPresheafedSpace✝
+                                      (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))
+                                  [Elab.app.args] [0.015275] ✅️ elabAppArgs (1 args)
+                                        @SheafedSpace.toPresheafedSpace
+                                    [Elab.step] [0.011526] ✅️ expected type: SheafedSpace CommRingCat, term
+                                        (LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left))
+                                      [Elab.step] [0.011456] ✅️ expected type: SheafedSpace CommRingCat, term
+                                          LocallyRingedSpace.toSheafedSpace✝ (Scheme.toLocallyRingedSpace✝ U.unop.left)
+                                        [Elab.app.args] [0.011046] ✅️ elabAppArgs (1 args)
+                                              LocallyRingedSpace.toSheafedSpace
+                        [Elab.app.args] [0.054847] ✅️ elabAppArgs (1 args) (1 namedArgs) `@Functor.obj`
+                          [Elab.step] [0.043793] ✅️ expected type: (TopologicalSpace.Opens ↥(unop U).left)ᵒᵖ, term
+                              (op✝ (α✝ := Scheme.Opens✝ _) ⊤)
+                            [Elab.step] [0.043731] ✅️ expected type: (TopologicalSpace.Opens ↥(unop U).left)ᵒᵖ, term
+                                op✝ (α✝ := Scheme.Opens✝ _) ⊤
+                              [Elab.app.args] [0.043483] ✅️ elabAppArgs (1 args) (1 namedArgs) `@op`
+                                [Elab.step] [0.039356] ✅️ expected type: (unop U).left.Opens, term
+                                    ⊤
+                                  [Elab.step] [0.039211] ✅️ expected type: (unop U).left.Opens, term
+                                      Top.top✝
+                                    [Elab.app.args] [0.038763] ✅️ elabAppArgs  `@Top.top`
+                                      [Elab.app.finalize] [0.038692] ✅️ ⊤ : (unop U).left.Opens
+                                        [Meta.synthInstance] [0.037280] ✅️ Top (unop U).left.Opens
+                                          [Meta.synthInstance.apply] [0.012647] ✅️ apply @CoheytingAlgebra.toOrderTop to OrderTop
+                                                (unop U).left.Opens
+                                            [Meta.synthInstance.tryResolve] [0.012373] ✅️ OrderTop
+                                                  (unop U).left.Opens ≟ OrderTop (unop U).left.Opens
+                                              [Meta.isDefEq] [0.011654] ✅️ ?m.54 =?= CoheytingAlgebra.toOrderTop
+                                                [Meta.isDefEq.assign] [0.011611] ✅️ ?m.54 := CoheytingAlgebra.toOrderTop
+                                                  [Meta.isDefEq.assign.checkTypes] [0.011548] ✅️ (?m.54 : OrderTop
+                                                        (unop
+                                                              U).left.Opens) := (CoheytingAlgebra.toOrderTop : OrderTop
+                                                        (unop U).left.Opens)
+                                                    [Meta.isDefEq] [0.011497] ✅️ OrderTop
+                                                          (unop U).left.Opens =?= OrderTop (unop U).left.Opens
+                    [Elab.coe] [0.030633] ✅️ adding coercion for Γ((unop U).left, ⊤) : CommRingCat =?= Type u
+                      [Meta.synthInstance] [0.029417] ✅️ CoeT CommRingCat Γ((unop U).left, ⊤) (Type u)
+                  [Elab.app.finalize] [0.025540] ✅️ (↑Γ((unop U).left, ⊤))ˣ : Type u
+                    [Meta.synthInstance] [0.025006] ✅️ Monoid ↑Γ((unop U).left, ⊤)
+    [Elab.step] [0.011599] ✅️ expected type: Prop, term
+        ChartRelations P M c u
+      [Elab.app.args] [0.011256] ✅️ elabAppArgs (4 args) `@ChartRelations`
+    [Elab.step] [0.022465] ✅️ expected type: Sort ?u.71, term
+        ∀ U (s : P.carrier.obj.obj U), u U s s = 1
+      [Elab.step] [0.012308] ✅️ expected type: Type (u + 1), term
+          P.carrier.obj.obj U
+    [Elab.step] [0.027752] ✅️ expected type: Prop, term
+        NaturalFamily P.carrier.obj (rawPresheaf X M) (sectionFamily P M c)
+      [Elab.app.args] [0.027541] ✅️ elabAppArgs (3 args) `@NaturalFamily`
+SF_ACTUAL_BODY_ENTERED
+SF_ACTUAL_AFTER_INTRO
+[diag] Diagnostics
+  [reduction] unfolded declarations (max: 36057, num: 32):
+    [reduction] Quiver.Hom.toLoc ↦ 36057
+    [reduction] Etale.forget ↦ 24354
+    [reduction] MorphismProperty.Comma.forget ↦ 24354
+    [reduction] ConcreteCategory.hom ↦ 8722
+    [reduction] coverMap ↦ 7651
+    [reduction] CategoryStruct.comp ↦ 3801
+    [reduction] DFunLike.coe ↦ 2650
+    [reduction] Set ↦ 1585
+    [reduction] Quiver.Hom ↦ 1474
+    [reduction] SetLike.coe ↦ 662
+    [reduction] TopCat.Hom.frameHom ↦ 662
+    [reduction] OrderHom.ofClass ↦ 566
+    [reduction] TopologicalSpace.Opens.map ↦ 472
+    [reduction] LocallyRingedSpace.comp ↦ 425
+    [reduction] PresheafedSpace.comp ↦ 425
+    [reduction] Scheme.Etale ↦ 267
+    [reduction] Classical.indefiniteDescription ↦ 150
+    [reduction] ConcreteCategory.ofHom ↦ 141
+    [reduction] PresheafOfModules.pushforward₀ ↦ 140
+    [reduction] toRingCatSheafHom ↦ 140
+    [reduction] PresheafOfModules.pushforward₀Obj ↦ 138
+    [reduction] SheafOfModules.pullbackPushforwardAdjunction ↦ 92
+    [reduction] pullbackPushforwardAdjunction ↦ 92
+    [reduction] CategoryTheory.Adjunction.ofIsRightAdjoint ↦ 90
+    [reduction] Classical.choose ↦ 58
+    [reduction] PresheafOfModules.pushforward ↦ 48
+    [reduction] PresheafOfModules.restrictScalars ↦ 48
+    [reduction] SheafOfModules.pushforward ↦ 48
+    [reduction] ModuleCat.restrictScalars ↦ 46
+    [reduction] PresheafOfModules.restrictScalarsObj ↦ 46
+    [reduction] ModuleCat.RestrictScalars.obj' ↦ 46
+    [reduction] Adjunction.toCat ↦ 24
+  [reduction] unfolded reducible declarations (max: 130242, num: 79):
+    [reduction] unop ↦ 130242
+    [reduction] Functor.obj ↦ 55911
+    [reduction] MorphismProperty.Comma.toComma ↦ 50982
+    [reduction] toLRSHom' ↦ 36839
+    [reduction] Discrete.as ↦ 36132
+    [reduction] Comma.hom ↦ 35575
+    [reduction] LocallyRingedSpace.Hom.toHom ↦ 28043
+    [reduction] MorphismProperty.Over.forget ↦ 24354
+    [reduction] Over.hom ↦ 17569
+    [reduction] PresheafedSpace.Hom.base ↦ 16930
+    [reduction] toLRSHom ↦ 13967
+    [reduction] TopCat.Hom.hom' ↦ 13394
+    [reduction] Sigma.fst ↦ 11573
+    [reduction] toLocallyRingedSpace ↦ 7403
+    [reduction] LocallyDiscrete.as ↦ 7268
+    [reduction] LocallyRingedSpace.toSheafedSpace ↦ 6145
+    [reduction] Comma.left ↦ 5104
+    [reduction] SheafedSpace.toPresheafedSpace ↦ 5095
+    [reduction] PresheafedSpace.carrier ↦ 2697
+    [reduction] Over.left ↦ 2485
+    [reduction] TopCat.carrier ↦ 2306
+    [reduction] ContinuousMap.toFun ↦ 1941
+    [reduction] PresheafedSpace.presheaf ↦ 1818
+    [reduction] PresheafedSpace.Hom.c ↦ 1129
+    [reduction] FrameHom.toInfTopHom ↦ 1038
+    [reduction] InfTopHom.toInfHom ↦ 1038
+    [reduction] NatTrans.app ↦ 832
+    [reduction] SheafOfModules.val ↦ 828
+    [reduction] Functor.fromPUnit ↦ 792
+    [reduction] TopologicalSpace.Opens.carrier ↦ 662
+    [reduction] PresheafOfModules

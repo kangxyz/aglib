@@ -1,0 +1,9 @@
+# AS coefficient native whole-zero repair 5
+
+Input `4d4bf8cf` timed out at whnf/200000 heartbeats in the final declaration in closed run `remote-64d200f146334c3db7402e9da2137d2f`. That declaration-level location does not identify proof elaboration, tactic work, kernel work or the concrete zero subproof as its cause. The production files were held while the current PERFORMANCE diagnosis/conversion methods and a native API alternative were inspected. The root then selected the exact native whole-zero route; no scratch compiler/probe was run by this author.
+
+Native `Mathlib/CategoryTheory/Adjunction/Additive.lean:85-86` proves `(adj.homEquiv X Y).symm 0 = 0` under left-functor additivity. This condition is already supplied from the same actual adjunction by `left_adjoint_additive`: its right functor is `sheafToPresheaf`, literally the native full-subcategory inclusion at `Sites/Sheaf.lean:328`, and the inclusion is natively additive (`Preadditive/AdditiveFunctor.lean:180-182`). Thus only the existing HasWeakSheafify premise is needed; no HasSheafify, desired-law premise or new model is added.
+
+The bounded repair imports native Adjunction.Additive and uses these two exact native theorems. It removes the concrete HomEquiv-zero unit projection and subsequent inverse-zero injectivity chase. The actual presheaf hz calculation, native naturality transport, selected left functor, sites, worlds, native pair and two fixed wrappers remain unchanged. Exact before/after/delta and source/API hashes are preserved here. Prior packets and other owned native paths are held.
+
+READY/HOLD, uncompiled. This is a source-supported native API route, not timeout attribution or a performance/timing claim. Root retries only the same three changed AS modules plus necessary dependencies, with no unchanged Proper3 or untouched AS-consumer target. If clean actual feedback remains insufficient, one scoped prefix phase probe is the next diagnostic.

@@ -1,0 +1,46 @@
+--- before/Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean
++++ after/Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean
+@@ -8,11 +8,15 @@
+ public import Mathlib.CategoryTheory.Adjunction.Mates
+ 
+ /-!
+-# Invertibility of an original unit image from its native mate
++# Invertibility from original mate and component equations
+ 
+ The given mate component and the target unit determine invertibility of the
+ image of the original source unit. Only the stated components are assumed
+ invertible. The source unit, the adjunctions and Mathlib's mate are unchanged.
++
++The component equation also reflects invertibility of a supplied original
++arrow through a conservative functor, using its actual invertible comparison
++arrows. This calculation is performed before concrete functor specialization.
+ -/
+ 
+ @[expose] public noncomputable section
+@@ -39,4 +43,26 @@
+   exact IsIso.of_isIso_comp_right (G.map (adj.unit.app M))
+     ((mateEquiv adj adj' (TwoSquare.mk _ _ _ _ α.hom)).app (L.obj M))
+ 
++/-- A proved component equation with invertible comparison arrows reflects
++invertibility of the supplied original arrow through a conservative functor. -/
++theorem isIso_of_component_equation
++    {C D : Type*} [Category* C] [Category* D] (F : C ⥤ D)
++    {M N : C} {P A B Q : D} (β : M ⟶ N) {a : A ⟶ B}
++    (u : P ⟶ A) (v : B ⟶ Q) (s : P ⟶ F.obj M) (t : F.obj N ⟶ Q)
++    (h : u ≫ a ≫ v = s ≫ F.map β ≫ t)
++    (ha : IsIso a) (hu : IsIso u) (hv : IsIso v)
++    (hs : IsIso s) (ht : IsIso t) (hF : F.ReflectsIsomorphisms) : IsIso β := by
++  let : IsIso a := ha
++  let : IsIso u := hu
++  let : IsIso v := hv
++  let : IsIso s := hs
++  let : IsIso t := ht
++  let : F.ReflectsIsomorphisms := hF
++  have hc : IsIso (s ≫ F.map β ≫ t) := by
++    rw [← h]
++    infer_instance
++  have hr : IsIso (F.map β ≫ t) := (isIso_comp_left_iff s _).mp hc
++  have : IsIso (F.map β) := (isIso_comp_right_iff _ t).mp hr
++  exact isIso_of_reflects_iso β F
++
+ end CategoryTheory

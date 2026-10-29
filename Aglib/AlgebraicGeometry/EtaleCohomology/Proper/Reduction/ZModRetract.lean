@@ -8,7 +8,9 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModImages
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.SurjectivePullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract
+public import Aglib.CategoryTheory.Adjunction.InjectiveTests
 public import Aglib.CategoryTheory.Sites.Torsion.ZMod.Sheaf
+public import Aglib.CategoryTheory.Sites.Torsion.Annihilator.ZMod
 
 /-! # Genuine injective module retracts along an actual surjection
 
@@ -33,21 +35,22 @@ universe u
 
 attribute [local instance] hasSheafifyLarge TorsionZMod.hasSheafifyStandard
 
-private theorem zmodModule_nsmul (n : ℕ) (M : ModuleCat.{u + 1} (ZMod n)) (x : M) :
-    n • x = 0 := by
-  rw [← Nat.cast_smul_eq_nsmul (R := ZMod n), ZMod.natCast_self, zero_smul]
-
 /-- The original underlying coefficient of a genuine ZMod-module sheaf is
 annihilated by the literal modulus on its original identity map. -/
 theorem zmodUnderlying_nsmul_id (X : Scheme.{u}) (n : ℕ) (I : ZModSheaf X n) :
-    n • 𝟙 ((zmodUnderlying X n).obj I) = 0 := by
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext U
-  apply AddCommGrpCat.hom_ext
-  apply AddMonoidHom.ext
-  intro x
-  exact zmodModule_nsmul n (I.obj.obj U) x
+    n • 𝟙 ((zmodUnderlying X n).obj I) = 0 :=
+  TorsionZMod.sheafUnderlying_nsmul_id.{u + 1, u, u + 1} X.smallEtaleTopology n I
+
+/-- The actual genuine module pullback is faithful along a surjective scheme map,
+by its original scalar-underlying comparison and the original abelian pullback. -/
+instance zmodInverseImage_faithful_of_surjective
+    {X S : Scheme.{u}} (f : X ⟶ S) [Surjective f] (n : ℕ) :
+    (zmodInverseImage f n).Faithful := by
+  let : (inverseImage f).Faithful := inverseImage_faithful_of_surjective f
+  let : (zmodUnderlying S n ⋙ inverseImage f).Faithful := inferInstance
+  let : (zmodInverseImage f n ⋙ zmodUnderlying X n).Faithful :=
+    Functor.Faithful.of_iso (zmodInverseImageUnderlyingIso f n).symm
+  exact Functor.Faithful.of_comp (zmodInverseImage f n) (zmodUnderlying X n)
 
 /-- Every genuine module injective downstairs is an actual coefficient retract
 of the genuine direct image of an actual module injective upstairs, for an
@@ -57,38 +60,11 @@ theorem exists_zmodInjective_directImage_retract
     (n : ℕ) (I : ZModSheaf S n) [Injective I] :
     ∃ J : ZModSheaf X n, Injective J ∧
       Nonempty (Retract I ((zmodDirectImage f n).obj J)) := by
-  let U := zmodUnderlying S n
-  let V := zmodUnderlying X n
-  let A := (inverseImage f).obj (U.obj I)
-  have hA : n • 𝟙 A = 0 := by
-    have h := congrArg (fun q => (inverseImage f).map q) (zmodUnderlying_nsmul_id S n I)
-    simpa only [CategoryTheory.Functor.map_nsmul, CategoryTheory.Functor.map_id,
-      CategoryTheory.Functor.map_zero] using h
-  let M : ZModSheaf X n := TorsionZMod.sheaf X.smallEtaleTopology n A hA
-  let eM : V.obj M ≅ A := TorsionZMod.sheafUnderlyingIso X.smallEtaleTopology n A hA
-  have : EnoughInjectives (ZModSheaf X n) :=
+  let : (zmodInverseImage f n).Faithful := zmodInverseImage_faithful_of_surjective f n
+  let : EnoughInjectives (ZModSheaf X n) :=
     TorsionZMod.enoughInjectivesStandard.{u + 1, u} X.smallEtaleTopology n
-  have : PreservesFiniteLimits V :=
-    TorsionZMod.underlying_preservesFiniteLimits.{u + 1, u} X.smallEtaleTopology n
-  have : (inverseImage f).Faithful := inverseImage_faithful_of_surjective f
-  have : U.Full := zmodUnderlying_full S n
-  obtain ⟨P⟩ := EnoughInjectives.presentation M
-  let j : A ⟶ V.obj P.J := eM.inv ≫ V.map P.f
-  have : Mono j := inferInstance
-  let a : U.obj I ⟶ (directImage f).obj (V.obj P.J) :=
-    (inverseImageAdjunction f).homEquiv _ _ j
-  have : Mono a := inferInstance
-  let eR : U.obj ((zmodDirectImage f n).obj P.J) ≅
-      (directImage f).obj (V.obj P.J) := (zmodDirectImageUnderlyingIso f n).app P.J
-  let i : I ⟶ (zmodDirectImage f n).obj P.J := U.preimage (a ≫ eR.inv)
-  have hi : Mono (U.map i) := by
-    rw [Functor.map_preimage]
-    infer_instance
-  have : Mono i := U.mono_of_mono_map hi
-  let r : Retract I ((zmodDirectImage f n).obj P.J) :=
-    { i := i
-      r := Injective.factorThru (𝟙 I) i
-      retract := Injective.comp_factorThru (𝟙 I) i }
-  exact ⟨P.J, inferInstance, ⟨r⟩⟩
+  exact CategoryTheory.Adjunction.exists_injective_rightAdjoint_retract
+    (C := ZModSheaf S n) (D := ZModSheaf X n)
+    (zmodInverseImage f n) (zmodDirectImage f n) (zmodImageAdjunction f n) I
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction

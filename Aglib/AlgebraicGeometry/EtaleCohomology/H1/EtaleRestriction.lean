@@ -10,6 +10,7 @@ module
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange
+public import Aglib.CategoryTheory.Topos.SheafMorphism
 public import Mathlib.CategoryTheory.Sites.CoverPreserving
 
 /-!
@@ -148,14 +149,48 @@ def inverseImageUnderlyingSetIso (f : S ⟶ X) :
       (presheafToSheaf (Scheme.smallEtaleTopology S) (Type (u + 1))) ≪≫
     Functor.isoWhiskerLeft (underlyingSetFunctor X) eT.symm
 
-/-- The genuine inverse image of set sheaves is left exact. -/
-instance setInverseImage_preservesFiniteLimits (f : S ⟶ X) :
-    PreservesFiniteLimits (setInverseImage f) := by
+/-- The actual small-etale geometric morphism, with the original Set adjunction. -/
+def setGeometricMorphism (f : S ⟶ X) :
+    LeftExactAdjunction (SetSheaf X) (SetSheaf S) := by
   let := flat_of_preservesFiniteLimits (siteBaseChange f)
   let := CategoryTheory.Functor.LargePresheaf.typeLan_preservesFiniteLimits (siteBaseChange f)
-  exact Functor.sheafPullbackConstruction.preservesFiniteLimits
-    (siteBaseChange f) (Type (u + 1))
-    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+  let : PreservesFiniteLimits (setInverseImage f) :=
+    Functor.sheafPullbackConstruction.preservesFiniteLimits
+      (siteBaseChange f) (Type (u + 1))
+      (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+  exact LeftExactAdjunction.ofAdjunction (setInverseImageAdjunction f)
+
+/-- The geometric-morphism package retains the literal original inverse-image head. -/
+theorem setGeometricMorphism_inverseImage (f : S ⟶ X) :
+    (setGeometricMorphism f).left.obj = setInverseImage f := rfl
+
+/-- The geometric-morphism package retains the literal original direct-image head. -/
+theorem setGeometricMorphism_directImage (f : S ⟶ X) :
+    (setGeometricMorphism f).right = setDirectImage f := rfl
+
+/-- No original adjunction is reselected by the geometric-morphism package. -/
+theorem setGeometricMorphism_adjunction (f : S ⟶ X) :
+    (setGeometricMorphism f).adj = setInverseImageAdjunction f := rfl
+
+/-- The original Set unit is exactly the geometric-morphism unit. -/
+theorem setGeometricMorphism_unit_app (f : S ⟶ X) (P : SetSheaf X) :
+    (setGeometricMorphism f).adj.unit.app P =
+      (setInverseImageAdjunction f).unit.app P := rfl
+
+/-- The original Set counit is exactly the geometric-morphism counit. -/
+theorem setGeometricMorphism_counit_app (f : S ⟶ X) (P : SetSheaf S) :
+    (setGeometricMorphism f).adj.counit.app P =
+      (setInverseImageAdjunction f).counit.app P := rfl
+
+/-- The genuine inverse image is left exact through the actual geometric-morphism core. -/
+instance setInverseImage_preservesFiniteLimits (f : S ⟶ X) :
+    PreservesFiniteLimits (setInverseImage f) :=
+  (setGeometricMorphism f).left.property
+
+/-- Actual direct image preserves intrinsic global points without a terminal site object. -/
+def setDirectImageGlobalPointEquiv (f : S ⟶ X) (P : SetSheaf S) :
+    Topos.GlobalPoint ((setDirectImage f).obj P) ≃ Topos.GlobalPoint P :=
+  Topos.SheafMorphism.directImageGlobalPointEquiv (setGeometricMorphism f) P
 
 /-- The underlying-set comparison respects the canonical adjunction unit,
 so it transports literal sections through actual scheme inverse image. -/

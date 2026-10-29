@@ -1,0 +1,50 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "version": "v2",
+  "applied": true,
+  "source_audit_indices": [
+    8,
+    9,
+    195
+  ],
+  "files": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "preimage_sha256": null,
+      "sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "previous_applied_sha256": "5e2eea2eabe25df97313b6716c5d9d1107d3b2d509f68a7cf81df41447b43991"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "preimage_sha256": "5bd994ff7ec4f07e125b4008c9bd49df15f1fcad9153b73225ea00352471080c",
+      "sha256": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603",
+      "previous_applied_sha256": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "preimage_sha256": "7b20cd117748e0ba32b9159179b7d6bd1df9409e7039edd80f15a136786578c0",
+      "sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "previous_applied_sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "preimage_sha256": "e21456749fa321677b7d7fa147acb9b4e0243c931cacd0785a2a01bc74fcd68e",
+      "sha256": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1",
+      "previous_applied_sha256": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1"
+    }
+  ],
+  "hold": "Owned files immutable pending broker capture.",
+  "targets": [
+    "Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier"
+  ],
+  "premises": "One additive F : AddCommGrpCat.{0} \u2964 Sheaf J AddCommGrpCat.{a}, preserves finite limits/colimits; native HasSheafify and HasExt with independent c/v/a/e universes; positivity and actual base-case original H vanishing/finiteness only.",
+  "correspondence": "Original two-ULift concrete cyclicCoefficientFunctor definition/instances unchanged; same mapped native ZMod arrows and original H/Ext. All old public statement strings unchanged. ArtinSchreier non-induction source preserved except added generic import.",
+  "native_source_signatures": "migration/incremental-compiler/source-inspection/mathlib-d13f23b7/SheafCohomology/{Basic,ExactSequences}.lean; verified pinned Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "validation": "Pending broker incremental native elaboration of v2 changed4/unavoidable imports; reuse compatible passes, same default200000/pins/trust; no extra flags or checks.",
+  "delta_from_v1": "Add omit [HasSheafify J AddCommGrpCat.{a}] in only for cyclicCoefficient_shortExact; no proof/code-data/wrapper change.",
+  "previous_native_evidence": "B remote-a9f429bedd3d4a9291f100c210a71ffa/source8b43afd95d07964ede012580562b0c6bf195a3d3a859e7d26bb0bf87c2ef5d77 generic 5e2eea2e failed at37:0 ONLY unused HasSheafify section assumption; wrappers unreached. That output remains evidence on v1 only.",
+  "ordinary_review": "Exact v1 accepted mathematically by review_represented_resolution_transpose; binder omission is scoped semantic correspondence only; no new proof hunk."
+}

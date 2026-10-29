@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.Composition
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.HomologyIsIso
 
 /-! # The original derived-single and all-degree exchange criteria
 
@@ -25,25 +26,6 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction
-
-section TypedTransport
-
-variable {A B C D : Type*} [Category* A] [Category* B] [Category* C] [Category* D]
-  {J : A ⥤ B} {L M : B ⥤ C} {H : C ⥤ D} {U V : A ⥤ D}
-
-private theorem isIso_middle_of_whiskered_transport
-    (s : U ≅ J ⋙ L ⋙ H) (β : L ⟶ M) (t : J ⋙ M ⋙ H ≅ V)
-    (δ : U ⟶ V)
-    (hδ : δ = s.hom ≫ Functor.whiskerLeft J (Functor.whiskerRight β H) ≫ t.hom)
-    (X : A) [IsIso (δ.app X)] : IsIso (H.map (β.app (J.obj X))) := by
-  have hi : IsIso (s.hom.app X ≫ H.map (β.app (J.obj X)) ≫ t.hom.app X) := by
-    change IsIso ((s.hom ≫ Functor.whiskerLeft J (Functor.whiskerRight β H) ≫
-      t.hom).app X)
-    rw [← hδ]
-    infer_instance
-  exact (isIso_comp_right_iff _ _).mp ((isIso_comp_left_iff _ _).mp hi)
-
-end TypedTransport
 
 universe u dX dS dX' dS'
 
@@ -83,18 +65,11 @@ theorem derivedBaseChangeMap_single_isIso_iff_higher
         ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj F)).IsGE 0 := h₂
     have : ((derivedInverseImage g' ⋙ derivedDirectImage f').obj
         ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj F)).IsGE 0 := h₄
-    apply (DerivedCategory.Plus.isIso_iff _).mpr
-    intro k
-    by_cases hk : k < 0
-    · exact (DerivedCategory.Plus.isZero_homology_of_isGE _ 0 k hk).isIso
-        (DerivedCategory.Plus.isZero_homology_of_isGE _ 0 k hk) _
-    · have he : (k.toNat : ℤ) = k := Int.toNat_of_nonneg (by omega)
-      rw [← he]
-      have := hF k.toNat
-      exact isIso_middle_of_whiskered_transport
-        (higherBaseChangeSourceIso f g k.toNat) (derivedBaseChangeMap f f' g g' h)
-        (higherBaseChangeTargetIso f' g' k.toNat)
-        (higherBaseChangeMap f f' g g' h k.toNat)
-        (higherBaseChangeMap_eq_transport f f' g g' h k.toNat) F
+    apply (DerivedCategory.Plus.isIso_iff_homology_nat _).mpr
+    intro q
+    exact (CategoryTheory.isIso_app_iff_of_whiskered_transport
+      (higherBaseChangeSourceIso f g q) (derivedBaseChangeMap f f' g g' h)
+      (higherBaseChangeTargetIso f' g' q) (higherBaseChangeMap f f' g g' h q)
+      (higherBaseChangeMap_eq_transport f f' g g' h q) F).mp (hF q)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper.Reduction

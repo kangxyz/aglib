@@ -1,0 +1,318 @@
+{
+  "question": "Bounded retention after repair1 literal original-single view/native-call delta; unchanged full assembly review reused",
+  "review_kind": "independent ordinary mathematical/source-correspondence review",
+  "reviewer": "/root/review_proper_injective_assembly",
+  "verdict": "supported_bounded_source_retention_repair1_compilation_pending",
+  "established_status_assignment": false,
+  "material_objections": [],
+  "identified_mathematical_gaps": [],
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "packet_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/READY.json",
+  "packet_sha256": "785b31b3830bb67ea5ef8ccba0e349958785b48e7596f7c06008eaffb37842ff",
+  "correspondence_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/CORRESPONDENCE.md",
+  "correspondence_sha256": "9274b61c0601b6300e27e3776bb292976a4b32d6560d8fff2a7243354f0d1175",
+  "sources": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "before_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb",
+      "after_sha256": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "before_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89",
+      "after_sha256": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b"
+    }
+  ],
+  "inspected_aglib_dependencies": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean",
+      "sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/TStructure.lean",
+      "sha256": "a12e2e7f94874358643cb444cf49f5b6273bf24f9e7943d10f3174879ce168ed"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/SingleHomology.lean",
+      "sha256": "f10ab33111b50b50ecfcd9b156161ddd9c7f97032652e093aa6001143e11d4ea"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ExchangeShift.lean",
+      "sha256": "2afd598d3be7f0b9d410becb55b74f8f8bb6d61bde5c3527b9d09896bb5140fd"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/InjectiveExchange.lean",
+      "sha256": "f0afd919a99b109a4a79f4d64354e85c2e84496bf80fc651b7d0d9ff1d674d2f"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModImages.lean",
+      "sha256": "e241aaca8f8173d03f6c5cfc190594f1c4290e128c94349d3e70aba1e3033b91",
+      "current_sha256": "b8c1e056716e14d28a410744f794b2a8adb25607c92047a96e0292a9657d83d3",
+      "current_coverage": "Retained unchanged ZModSheaf/zmodUnderlying construction definitions only; no verdict on separate adjunct-proof migration."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/Composition.lean",
+      "sha256": "4aa6fc90589beb918a7dd27fbe54fa4ce233ee95c7c658fc1dd38ee673780cc5"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/DirectImage.lean",
+      "sha256": "4c08906f2a0c6b8ab37a7edecc9ac9ffa6f125fcea151d041f60089807ee6165"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/Adjunction.lean",
+      "sha256": "25a54a9d3eb1bbe2a79629dd76dc6e2d63fbf4ea9c74425728e092fe960f0b94"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Basic.lean",
+      "sha256": "e41448a375c7d184547e1cfc08a686cb3adec3a88f5e3d08f442aae7992dc618"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Pullback.lean",
+      "sha256": "607722a4b520bb733a67018cc85ebac43081eb784194b79894093a418df422b5"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean",
+      "sha256": "4d9aa5c71baed05fef5f284e3dc92da87e53c922a722d2f22b23d4e6f514a049"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/Torsion/ZMod/Cohomology.lean",
+      "sha256": "8720fa67ec3bfa720cd805487f6cc9a1b30fe50dde09df53e50a983b3ec8e21a"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/Torsion/ZMod/Injectives.lean",
+      "sha256": "9fef8585b756e3d6274c2370c7d64eb2ed6a34bb296f3ca4e49aebc64f38a742"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/Torsion/ZMod/Sheaf.lean",
+      "sha256": "5208ac33666a3d5900701c90f8bc384fb0077c8665b0d4122cdc6824f0b7c5f4"
+    }
+  ],
+  "dependency_coverage": "Complete new leaf and native candidate/diff; complete core InjectiveComparison and TStructure arguments; relevant exact-single, native actual-map, coefficient and tail APIs. Existing lower APIs accepted as assignment dependencies; no new transitive trust audit.",
+  "lean_version": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "mathlib_read_path": "/Users/kang/Documents/New project/lean/.lake/packages/mathlib",
+  "results": [
+    {
+      "id": "InjectiveComparisonExact#isIso_app_single_of_injective_after_exact",
+      "outcome": "unchanged_source_derivation_retained_in_repair1_pending_compilation",
+      "conclusion": "For additive exact U:T->A and the displayed four additive functors, a shift-compatible beta between their two right-derived composites is invertible on the A-single of U(M) for every M, if it is so on U(I) for every injective I in T.",
+      "conditions": "Abelian T,A,B,C,D; enough injectives in T,A,B,C; selected derived realizations for A,B,C,D; U preserves finite limits and colimits; beta commutes with integer shifts; the stated injective tests hI."
+    },
+    {
+      "id": "InjectiveComparisonExact#isIso_app_of_injective_after_exact",
+      "outcome": "supported_literal_single_corollary_source_derivation_pending_compilation",
+      "conclusion": "The same beta is invertible on Z(M) for every M from its T-injective tests when Z is literally U followed by the original A-single.",
+      "conditions": "Unchanged assembly hypotheses and hZ: Z = U followed by singleFunctor A 0; native hZ is rfl."
+    },
+    {
+      "id": "AllModuleCoefficients#derivedExchange_on_all_zmodCoefficients",
+      "outcome": "source_correspondence_retained_in_repair1_pending_compilation",
+      "conclusion": "The original derivedBaseChangeMap is invertible on every original zmodSingle from its original tests on genuine ZModSheaf injectives.",
+      "conditions": "Exactly the original scheme square, h, arbitrary n, hI and four independent derived universes; no added geometric or coefficient hypothesis."
+    },
+    {
+      "id": "AllModuleCoefficients#derivedExchange_on_killedCoefficients",
+      "outcome": "source_correspondence_retained_in_repair1_pending_compilation",
+      "conclusion": "The same original derived exchange is invertible on the original degree-zero single of every F with n acting as zero on its identity.",
+      "conditions": "Exactly original hI and n • id F = 0; the canonical TorsionZMod coefficient and its underlying iso are retained."
+    },
+    {
+      "id": "AllModuleCoefficients#higherExchange_on_killedCoefficients",
+      "outcome": "source_correspondence_retained_in_repair1_pending_compilation",
+      "conclusion": "Every original natural-degree higherBaseChangeMap component on such an F is invertible.",
+      "conditions": "Exactly original hI, n • id F = 0 and arbitrary q:Nat; uses the existing native higher-map transport theorem."
+    }
+  ],
+  "preserved": [
+    "same actual beta and native base-change map",
+    "canonical derived-unit exact-single comparison",
+    "all three original native theorem statements",
+    "complete killed/higher proof tail",
+    "independent generic object/morphism/derived universes",
+    "independent native dX/dS/dX_prime/dS_prime",
+    "actual topos/sheaf coefficient worlds",
+    "arbitrary modulus including zero",
+    "no injectivity-after-forgetting assumption",
+    "proof-only standard T-derived model hidden from statement",
+    "no second/reference realization"
+  ],
+  "execution_evidence": {
+    "reviewer_operations": "Read-only delta, source/dependency identity reconciliation and existing actual compiler evidence inspection; only assigned reports written.",
+    "reviewer_compilation_run": false,
+    "tests_run": false,
+    "replay_run": false,
+    "client_checks_run": false,
+    "axiom_audit_run": false,
+    "retained_actual_execution": "c9ee lower passed; 7f83 native failed with kernel timeout and dependent missing constant.",
+    "candidate_state": "Actual published bff/b70 matches reviewed repair1; compilation pending.",
+    "validated_performance_claim": false,
+    "unique_kernel_cause_claim": false
+  },
+  "remaining_obligation": "Author/broker consume ordinary compiler coverage on actual bff/b70 and own any repairs; reconcile changed bytes. No new mathematical repair obligation or review gate introduced.",
+  "retained_mathematical_premise": "Original hI on genuine coefficient injectives is a premise, not established by this assembly.",
+  "fixed3_source": "3dede325a048fde9dc106d7561dfb72e3e44a1fc1c469e6d6ae0988a558cbabd",
+  "fixed3_new_coverage_claimed": false,
+  "writes": [
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json"
+  ],
+  "report_before_sha256": {
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md": "e1a9eb6e62075860adbdb79da0bfab30b44e3aea314afb20552db10c2ab90a47",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json": "82924ac8611655b9cb847eace48b816f9d5799612b77213dd8532d9c647f3b53"
+  },
+  "write_guard": {
+    "entry_head_matched": true,
+    "aglib_head_matched": true,
+    "repair_source_hashes_matched": true,
+    "actual_published_source_hashes_matched": true,
+    "prior_review_artifact_hashes_matched": true,
+    "relevant_dependency_identity_reconciled": true,
+    "entry_foreign_status_preserved": [
+      "M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_A_CONTINUITY_FINITE_PBC.md",
+      " M lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_B_CURVES_LOCAL_COMPARISON.md",
+      "?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_C_FINITENESS_VANISHING_SMOOTH.md",
+      "?? lean/R5Lab/Aglib/AlgebraicGeometry/EtaleCohomology/AGENT_D_EXCEPTIONAL_DIRECT_IMAGE.md",
+      "?? remote-latest-snapshot.jsonl"
+    ],
+    "native_source_status_observed": [
+      "M Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "?? Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean"
+    ]
+  },
+  "review_history": [
+    {
+      "phase": "initial ordinary source review before compiler feedback",
+      "verdict": "supported_source_review_conditional_uncompiled",
+      "sources": [
+        {
+          "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+          "before_sha256": null,
+          "after_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+          "before_sha256": "3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049",
+          "after_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+        },
+        {
+          "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/README.md",
+          "before_sha256": "416c92277304acaf432cdeec3c1096c9794a0d895e8d6d6b842a6bc3e669d598",
+          "after_sha256": "3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68"
+        }
+      ],
+      "packet_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/READY.json",
+      "packet_sha256": "a863bebad65588ae7b4be6f002f7d4fe4c966b29a1654375debd238ce3470813",
+      "results": [
+        {
+          "id": "InjectiveComparisonExact#isIso_app_single_of_injective_after_exact",
+          "outcome": "supported_source_derivation_uncompiled",
+          "conclusion": "For additive exact U:T->A and the displayed four additive functors, a shift-compatible beta between their two right-derived composites is invertible on the A-single of U(M) for every M, if it is so on U(I) for every injective I in T.",
+          "conditions": "Abelian T,A,B,C,D; enough injectives in T,A,B,C; selected derived realizations for A,B,C,D; U preserves finite limits and colimits; beta commutes with integer shifts; the stated injective tests hI."
+        },
+        {
+          "id": "AllModuleCoefficients#derivedExchange_on_all_zmodCoefficients",
+          "outcome": "supported_source_correspondence_uncompiled",
+          "conclusion": "The original derivedBaseChangeMap is invertible on every original zmodSingle from its original tests on genuine ZModSheaf injectives.",
+          "conditions": "Exactly the original scheme square, h, arbitrary n, hI and four independent derived universes; no added geometric or coefficient hypothesis."
+        },
+        {
+          "id": "AllModuleCoefficients#derivedExchange_on_killedCoefficients",
+          "outcome": "unchanged_tail_supported_under_revised_first_theorem_uncompiled",
+          "conclusion": "The same original derived exchange is invertible on the original degree-zero single of every F with n acting as zero on its identity.",
+          "conditions": "Exactly original hI and n • id F = 0; the canonical TorsionZMod coefficient and its underlying iso are retained."
+        },
+        {
+          "id": "AllModuleCoefficients#higherExchange_on_killedCoefficients",
+          "outcome": "unchanged_tail_supported_under_revised_first_theorem_uncompiled",
+          "conclusion": "Every original natural-degree higherBaseChangeMap component on such an F is invertible.",
+          "conditions": "Exactly original hI, n • id F = 0 and arbitrary q:Nat; uses the existing native higher-map transport theorem."
+        }
+      ],
+      "execution_evidence_at_initial_review": {
+        "source_identity_and_diff_only": true,
+        "compilation_claimed": false,
+        "tests_run": false,
+        "replay_run": false,
+        "client_checks_run": false,
+        "axiom_audit_run": false,
+        "candidate_state": "R-only, uncompiled"
+      },
+      "initial_report_sha256": {
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md": "e1a9eb6e62075860adbdb79da0bfab30b44e3aea314afb20552db10c2ab90a47",
+        "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json": "82924ac8611655b9cb847eace48b816f9d5799612b77213dd8532d9c647f3b53"
+      }
+    }
+  ],
+  "phase": "repair1 actual published bff/b70 source bound; mathematical delta supported; repair1 compiler result pending",
+  "repair_argument_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/ARGUMENT.md",
+  "repair_argument_sha256": "dcc94182d7f00d0e281abc0e4735eaa877a044ce91d3dd5cc3dabbee3fa14a1a",
+  "initial_correspondence_retained": true,
+  "compiler_feedback": {
+    "run": "remote-ea58796c97b44af5bb5072b84c7a0d3f",
+    "source": "926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f",
+    "aggregate_status": "failed",
+    "modules": {
+      "lower_c9ee": {
+        "wrapper_pid": 13215,
+        "exit_code": 0,
+        "elapsed_seconds": 3.87101
+      },
+      "native_7f83": {
+        "wrapper_pid": 13396,
+        "exit_code": 1,
+        "elapsed_seconds": 161.041797
+      }
+    },
+    "native_diagnostics": [
+      {
+        "line": 46,
+        "column": 8,
+        "diagnostic": "kernel deterministic timeout"
+      },
+      {
+        "line": 75,
+        "column": 8,
+        "diagnostic": "kernel unknown constant derivedExchange_on_all_zmodCoefficients; dependent cascade"
+      }
+    ],
+    "coverage_boundary": "The lower pass covers c9ee; native 7f83 failed. Neither is a pass on bff/b70.",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/build.log.partial",
+    "log_sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/compiler-events.jsonl.partial",
+    "events_sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/receipt.json.partial",
+    "receipt_sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+  },
+  "dependency_reconciliation": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/ZModImages.lean",
+      "before_sha256": "e241aaca8f8173d03f6c5cfc190594f1c4290e128c94349d3e70aba1e3033b91",
+      "after_sha256": "b8c1e056716e14d28a410744f794b2a8adb25607c92047a96e0292a9657d83d3",
+      "retained_use": "ZModSheaf and zmodUnderlying definitions unchanged in inspected actual diff. Other adjunct-proof migration is outside this review."
+    }
+  ],
+  "bounded_delta": {
+    "lower_added_declaration": "DerivedCategory.Plus.InjectiveComparison.isIso_app_of_injective_after_exact",
+    "construction_identity": "Z = U followed by DerivedCategory.Plus.singleFunctor A 0",
+    "proof": "subst Z; invoke unchanged isIso_app_single_of_injective_after_exact",
+    "native_actual_Z": "zmodSingle X n",
+    "native_identity_proof": "rfl",
+    "old_complete_assembly_body_unchanged": true,
+    "all_three_native_headers_unchanged": true,
+    "killed_higher_tail_unchanged": true,
+    "new_native_mathematical_premises": [],
+    "new_models": [],
+    "arbitrary_endpoint_iso_or_desired_coherence_input": false,
+    "complete_assembly_dependencies_hash_identical": true
+  },
+  "live_source_binding": {
+    "at_initial_delta_read": "c9ee/7f83",
+    "before_report_write": "Published bff/b70 matched staging; failed before-image guard reconciled before mutation.",
+    "repaired_live_source_bound": true,
+    "published_source_hashes": {
+      "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b"
+    }
+  }
+}

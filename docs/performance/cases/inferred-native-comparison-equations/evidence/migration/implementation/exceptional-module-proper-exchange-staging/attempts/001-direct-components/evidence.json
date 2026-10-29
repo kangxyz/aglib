@@ -1,0 +1,45 @@
+{
+  "source_sha256": "93b45985055582861a0aaef7be56f7406fd80ee2d6c9c7e72c889d4b4a789a69",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "run": "remote-b31c244c8b2a4b8886db58b754756945",
+  "source_capture_sha256": "6016371f4f0a9723b9120eb6f3812863d08a59f00c68618fe94cae97d0c66a70",
+  "native_exit": 1,
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Localization.DerivedDetection",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Localization.DerivedOpenClosed",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.ProperIsomorphism"
+  ],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 49152,
+    "threads": 4
+  },
+  "own_result": "FAILED: ProperBaseChange.lean:47:8: (kernel) deterministic timeout",
+  "own_reported_module_seconds": 98,
+  "other_provider_result": "Ordinary Proper.BaseChange passed in the same capture, reported 4.8s; no failed provider",
+  "scope": "The graph had 160 successful frontends and this sole failing frontend; R8 did not run.",
+  "preserved_full_outputs": {
+    "receipt.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b31c244c8b2a4b8886db58b754756945/receipt.json",
+    "build.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b31c244c8b2a4b8886db58b754756945/build.log",
+    "compiler-events.jsonl": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b31c244c8b2a4b8886db58b754756945/compiler-events.jsonl"
+  },
+  "output_sha256": {
+    "receipt.json": "4c8e04235e77d8f6913e71b84ed77fc39781416d53b4ec050ee099f38d1bb1cf",
+    "build.log": "ae4000c22326b598232208a928d68044dd6b5fcc5e5f6c840f9916bb69cc4b5c",
+    "compiler-events.jsonl": "f1ae7fb20b98b81608b7c1b4513aa361dc63d7681acd2929767817764a1c17e8"
+  },
+  "diagnosis": "Kernel phase known; exact expensive conversion pair not identified. The complete concrete component cancellation was specialized in the public theorem.",
+  "repair_basis": [
+    "docs/PERFORMANCE.md#conversion-boundaries",
+    "docs/performance/whole-module-exchange-comparisons-before-evaluating-components.md",
+    "docs/performance/étale-derived-comparisons-share-the-equation-then-specialize.md#higher-exchange-components-retain-the-whole-transport-equation"
+  ],
+  "repair": "Keep the existing whole HorizontalMateCubeEquation until a private variable-category cancellation lemma in this same leaf. Use the actual four natural-isomorphism instances; then specialize once at K. Public map, premises, worlds and local standard Ab selections unchanged. No IsIsoOn wrapper or data record.",
+  "causal_boundary": "This is a guided repair candidate, not an established attribution or benchmark."
+}

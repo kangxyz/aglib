@@ -7,43 +7,13 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackCoefficientSystem
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections
-public import Mathlib.CategoryTheory.Limits.Connected
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy
 
 /-! # The actual limit coefficient of a fixed pullback system -/
 
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite
-
-universe uJ vJ uC vC
-
-namespace CategoryTheory.Limits
-
-/-- The colimit of a diagram canonically isomorphic to a constant connected diagram. -/
-def constantDiagramColimitIso {I : Type uJ} {C : Type uC}
-    [Category.{vJ} I] [Category.{vC} C]
-    [IsConnected I] {D : I ⥤ C} [HasColimit D] {A : C}
-    (e : (Functor.const I).obj A ≅ D) : colimit D ≅ A :=
-  HasColimit.isoOfNatIso e.symm ≪≫
-    (colimit.isColimit ((Functor.const I).obj A)).coconePointUniqueUpToIso
-      (isColimitConstCocone I A)
-
-private theorem constantDiagramColimitIso_ι {I : Type uJ} {C : Type uC}
-    [Category.{vJ} I] [Category.{vC} C]
-    [IsConnected I] {D : I ⥤ C} [HasColimit D] {A : C}
-    (e : (Functor.const I).obj A ≅ D) (i : I) :
-    colimit.ι D i ≫ (constantDiagramColimitIso e).hom = e.inv.app i := by
-  change colimit.ι D i ≫ (HasColimit.isoOfNatIso e.symm).hom ≫
-    ((colimit.isColimit ((Functor.const I).obj A)).coconePointUniqueUpToIso
-      (isColimitConstCocone I A)).hom = e.inv.app i
-  rw [HasColimit.ι_isoOfNatIso_hom_assoc]
-  have hc : colimit.ι ((Functor.const I).obj A) i ≫
-      ((colimit.isColimit ((Functor.const I).obj A)).coconePointUniqueUpToIso
-        (isColimitConstCocone I A)).hom = 𝟙 A :=
-    colimit.comp_coconePointUniqueUpToIso_hom (isColimitConstCocone I A) i
-  exact (congrArg (fun t => e.inv.app i ≫ t) hc).trans (Category.comp_id _)
-
-end CategoryTheory.Limits
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Stalk
 
@@ -59,25 +29,12 @@ private theorem triangle_fixed_coefficient {X Y Z T : Scheme.{u}}
     (pullbackTriangleIso k f p hp).hom.app F ≫
         triangleCoefficientMap a p q ht ((pullbackTriangleIso g f a ha).inv.app F) =
       (pullbackTriangleIso k g q hq).hom.app F := by
-  subst p
-  have hc := pullbackTriangleIso_comp f g k q a ha hq F
-  have hc' := congrArg
-    (fun t => t ≫ (inverseImage q).map ((pullbackTriangleIso g f a ha).inv.app F)) hc
-  have ht' : (pullbackTriangleIso (q ≫ a) a q rfl).hom.app
-      ((inverseImage f).obj F) =
-        (inverseImageComp a q).hom.app ((inverseImage f).obj F) := by
-    simp only [pullbackTriangleIso, Iso.trans_hom,
-      eqToIso.hom, eqToHom_refl, Category.id_comp]
-  dsimp only [triangleCoefficientMap]
-  rw [ht']
-  have hv : (pullbackTriangleIso k f (q ≫ a) hp).hom.app F ≫
-      (inverseImageComp a q).hom.app ((inverseImage f).obj F) ≫
-        (inverseImage q).map ((pullbackTriangleIso g f a ha).inv.app F) =
-      (pullbackTriangleIso k g q hq).hom.app F ≫
-        (inverseImage q).map (𝟙 ((inverseImage g).obj F)) := by
-    simpa only [Category.assoc, ← Functor.map_comp, Iso.hom_inv_id_app] using hc'
-  exact hv.trans ((congrArg (fun t => (pullbackTriangleIso k g q hq).hom.app F ≫ t)
-    ((inverseImage q).map_id ((inverseImage g).obj F))).trans (Category.comp_id _))
+  simpa only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
+    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
+    triangleCoefficientMap, Quiver.Hom.unop_op] using
+    schemeAdjunctionData.triangle_fixed_coefficient schemeAdjunctionData_coherent
+      f.op g.op k.op a.op p.op q.op (congrArg Quiver.Hom.op ha)
+      (congrArg Quiver.Hom.op hp) (congrArg Quiver.Hom.op hq) (congrArg Quiver.Hom.op ht) F
 
 
 private theorem triangle_fixed_coefficient_nat {X Y Z T : Scheme.{u}}
@@ -89,11 +46,11 @@ private theorem triangle_fixed_coefficient_nat {X Y Z T : Scheme.{u}}
         (Functor.associator (inverseImage f) (inverseImage a) (inverseImage q)).inv ≫
           Functor.whiskerRight (pullbackTriangleIso g f a ha).inv (inverseImage q) =
       (pullbackTriangleIso k g q hq).hom := by
-  apply NatTrans.ext
-  funext F
-  simpa only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
-    Functor.associator_inv_app, Category.id_comp, triangleCoefficientMap] using
-      triangle_fixed_coefficient f g k a p q ha hp hq ht F
+  simpa only [schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
+    Quiver.Hom.unop_op] using
+    schemeAdjunctionData.triangle_fixed_coefficient_nat schemeAdjunctionData_coherent
+      f.op g.op k.op a.op p.op q.op (congrArg Quiver.Hom.op ha)
+      (congrArg Quiver.Hom.op hp) (congrArg Quiver.Hom.op hq) (congrArg Quiver.Hom.op ht)
 
 variable {I : Type uI} [Category.{vI} I] (Y : I ⥤ Scheme.{u}ᵒᵖ)
   (b : Cone Y) (c : Cocone Y) (l : b.pt ⟶ c.pt)
@@ -131,10 +88,10 @@ theorem pullbackConeCoefficientComponent_triangle {i j : I} (a : i ⟶ j) :
         triangleCoefficientMap (Y.map a).unop (c.ι.app i).unop (c.ι.app j).unop
           (congrArg Quiver.Hom.unop (c.w a)) (pullbackCoefficientTransition Y b F a) =
       (pullbackConeCoefficientComponent Y b c l hl F j).hom := by
-  have h := congrArg (fun t => t.app F) (fixed_coefficient_diagram_nat Y b c l hl a)
-  simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
-    Functor.associator_inv_app, Category.id_comp] at h
-  exact h
+  exact triangle_fixed_coefficient (b.π.app i).unop (b.π.app j).unop l.unop
+    (Y.map a).unop (c.ι.app i).unop (c.ι.app j).unop
+    (congrArg Quiver.Hom.unop (b.w a)) (congrArg Quiver.Hom.unop (hl i))
+    (congrArg Quiver.Hom.unop (hl j)) (congrArg Quiver.Hom.unop (c.w a)) F
 
 /-- The native cone coefficient map retains the original fixed-sheaf triangle transition. -/
 theorem coneCoefficientMap_pullbackCoefficientSystem {i j : I} (a : i ⟶ j) :
@@ -150,12 +107,34 @@ include hl in
 def pullbackConeCoefficientIso :
     (Functor.const I).obj ((inverseImage l.unop).obj F) ≅
       coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F) := by
-  exact NatIso.ofComponents (pullbackConeCoefficientComponent Y b c l hl F)
-    (fun {i j} a => (Category.id_comp
-      (pullbackConeCoefficientComponent Y b c l hl F j).hom).trans
-      ((congrArg (fun t => (pullbackConeCoefficientComponent Y b c l hl F i).hom ≫ t)
-        (coneCoefficientMap_pullbackCoefficientSystem Y b c F a)).trans
-          (pullbackConeCoefficientComponent_triangle Y b c l hl F a)).symm)
+  let C := coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)
+  let hobj : ∀ i, C.obj i =
+      (schemeAdjunctionData.left (c.ι.app i)).obj
+        ((schemeAdjunctionData.left (b.π.app i)).obj F) := fun _ => rfl
+  apply schemeAdjunctionData.fixedCoefficientIso schemeAdjunctionData_coherent
+    Y b c l hl F C hobj
+  intro i j a
+  change coneCoefficientMap Y c (pullbackCoefficientSystem Y b F) a =
+    𝟙 _ ≫ schemeAdjunctionData.triangleCoefficientMap (Y.map a)
+      (c.ι.app i) (c.ι.app j) (c.w a)
+      ((schemeAdjunctionData.triangleIso (b.π.app j) (b.π.app i)
+        (Y.map a) (b.w a)).inv.app F) ≫ 𝟙 _
+  rw [Category.id_comp, Category.comp_id, coneCoefficientMap_pullbackCoefficientSystem]
+  simp only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
+    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage, triangleCoefficientMap,
+    pullbackCoefficientTransition]
+  rfl
+
+/-- The generic constancy isomorphism retains every original structural component. -/
+theorem pullbackConeCoefficientIso_app (i : I) :
+    (pullbackConeCoefficientIso Y b c l hl F).app i =
+      pullbackConeCoefficientComponent Y b c l hl F i := by
+  apply Iso.ext
+  change (schemeAdjunctionData.triangleIso l (b.π.app i) (c.ι.app i) (hl i)).hom.app F ≫
+      𝟙 _ =
+    (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop
+      (congrArg Quiver.Hom.unop (hl i))).hom.app F
+  simp only [schemeTriangleIso_eq_pullbackTriangleIso, Category.comp_id]
 
 section Colimit
 
@@ -176,7 +155,13 @@ theorem ι_pullbackLimitCoefficientIso_hom (i : I) :
         (pullbackLimitCoefficientIso Y b c l hl F).hom =
       (pullbackTriangleIso l.unop (b.π.app i).unop (c.ι.app i).unop
         (congrArg Quiver.Hom.unop (hl i))).inv.app F := by
-  exact constantDiagramColimitIso_ι (pullbackConeCoefficientIso Y b c l hl F) i
+  have hι :
+      colimit.ι (coneCoefficientFunctor Y c (pullbackCoefficientSystem Y b F)) i ≫
+          (pullbackLimitCoefficientIso Y b c l hl F).hom =
+        (pullbackConeCoefficientComponent Y b c l hl F i).inv :=
+    (constantDiagramColimitIso_ι (pullbackConeCoefficientIso Y b c l hl F) i).trans
+      (congrArg Iso.inv (pullbackConeCoefficientIso_app Y b c l hl F i))
+  exact hι
 
 end Colimit
 

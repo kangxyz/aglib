@@ -1,0 +1,20 @@
+{
+  "material_retraction": "Native-option-equivalent interpretation of the earlier scratch formation probes is withdrawn. Their raw source-bound successful executions remain observations; neither was a production or theorem-proof pass.",
+  "affected_runs": [
+    {
+      "run": "remote-9971871b51874eee85fb256b97040c89",
+      "input": "GlobalSquareFormation.lean",
+      "sha256": "55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6"
+    },
+    {
+      "run": "remote-b3b1c7fb64f1440896052e3cc7f0b6f1",
+      "input": "CoordinateValueFormation.lean",
+      "sha256": "9b5d8dca5d9e5ad930f557b68e3269e9b878c9617938173791602bf5982f8e0d"
+    }
+  ],
+  "reason": "A identified that the lake --no-build env scratch invocation had not forwarded package leanOptions, specifically autoImplicit=false, warningAsError=true, and weak linters. File-local settings/default heartbeat budget alone do not provide native-option equivalence.",
+  "current_boundary": "A restores actual native module.setup/options for the next genuinely needed new probe/candidate. Do not replay all old formations for a receipt. Only a specific mathematically unresolved native-option formation query, identified after source inspection, would warrant a new batched probe. No such extra acceptance gate is created; the raw outcomes retain conditional utility on their actual configuration.",
+  "production_evidence_unchanged": "Actual native Root package frontends for CopyObj e4ed, Relative38b4, Representedbbe8 passed on their recorded actual bases; Global5634 native failed. Those used the package pipeline and remain valid observations.",
+  "fixed_history": "Frozen candidate READYs and review packets are not rewritten. This correction qualifies their diagnostic interpretation; source/mathematical values and supplied proof premises are unchanged.",
+  "root_policy": "Preserve raw formation outputs/configuration. No unchanged failed fullG probe or automatic formation replay. Coupled source proof repair continues incrementally."
+}

@@ -1,0 +1,18 @@
+NEEDED_PREFIX_IMPORT_PREPARATION_BEGIN
+✔ [3415/3417] Built Aglib.CategoryTheory.Functor.CopyObjRestriction (2.7s)
+✔ [3416/3417] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections (10s)
+✔ [3417/3417] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit (38s)
+Build completed successfully (3417 jobs).
+NEEDED_PREFIX_IMPORT_PREPARATION_END exit=0
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3"}
+V27_NATIVE_FULL_COORDINATE_ASSEMBLY_BEGIN sha256=96f15095aede06d53cb0539c2737812d2a03fdb4208f0671fc09834cca426ded
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-f0475947973144a5baed37b01bca90df/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-f0475947973144a5baed37b01bca90df/FullCoordinateAssembly-v27.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-f0475947973144a5baed37b01bca90df/NativeGlobal.setup.json"]
+/root/autodl-tmp/lean-build/logs/remote-f0475947973144a5baed37b01bca90df/FullCoordinateAssembly-v27.lean:784:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+V27_NATIVE_FULL_COORDINATE_ASSEMBLY_END exit=1
+{"prefix_exit": 1, "source_sha256": "96f15095aede06d53cb0539c2737812d2a03fdb4208f0671fc09834cca426ded", "native_setup_sha256": "f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3", "boundary": "complete generic fullcoordinate assembly and actualnative specialization; prefix only, no fullGlobal/tail/endpoints"}

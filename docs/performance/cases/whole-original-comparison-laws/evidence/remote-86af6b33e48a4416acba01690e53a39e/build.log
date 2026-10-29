@@ -1,0 +1,48 @@
+✔ [3357/3369] Built Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.CoefficientSquares (4.7s)
+✔ [3358/3369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareCoefficients (6.2s)
+✖ [3359/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (3.4s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-86af6b33e48a4416acba01690e53a39e/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean:23:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.squareCoefficientMap_id schemeAdjunctionData schemeAdjunctionData_coherent f.op
+    (congrArg Quiver.Hom.op e) F
+ has type
+  @Eq
+    ((inverseImage (𝟙 (Opposite.op X)).unop).obj ((inverseImage f.op.unop).obj F) ⟶
+      (inverseImage f.op.unop).obj ((𝟭 (AbelianSheaf S)).obj F))
+    (squareCoefficientMap f.op.unop f.op.unop (𝟙 (Opposite.op S)).unop (𝟙 (Opposite.op X)).unop ⋯
+      ((inverseImageId S).hom.app F))
+    ((inverseImageId X).hom.app ((inverseImage f.op.unop).obj F))
+but is expected to have type
+  @Eq ((inverseImage (𝟙 X)).obj ((inverseImage f).obj F) ⟶ (inverseImage f).obj ((𝟭 (AbelianSheaf S)).obj F))
+    (squareCoefficientMap f f (𝟙 S) (𝟙 X) e ((inverseImageId S).hom.app F))
+    ((inverseImageId X).hom.app ((inverseImage f).obj F))
+✖ [3369/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (5.3s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-86af6b33e48a4416acba01690e53a39e/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean:30:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.triangleCoefficientMap_square schemeAdjunctionData schemeAdjunctionData_coherent f.op
+    h.op v₀.op v₁.op l.op p₀.op p₁.op q₀.op q₁.op (congrArg Quiver.Hom.op he) (congrArg Quiver.Hom.op hp)
+    (congrArg Quiver.Hom.op hq) (congrArg Quiver.Hom.op hi) (congrArg Quiver.Hom.op hj) φ
+ has type
+  @Eq
+    ((inverseImage q₀.op.unop).obj ((inverseImage v₀.op.unop).obj F) ⟶
+      (inverseImage p₁.op.unop ⋙ inverseImage l.op.unop).obj G)
+    (((pullbackTriangleIso q₀.op.unop h.op.unop q₁.op.unop ⋯).hom.app ((inverseImage v₀.op.unop).obj F) ≫
+        (inverseImage q₁.op.unop).map (squareCoefficientMap v₀.op.unop v₁.op.unop f.op.unop h.op.unop ⋯ φ)) ≫
+      (inverseImageSquareIso p₁.op.unop q₁.op.unop v₁.op.unop l.op.unop ⋯).hom.app G)
+    ((inverseImageSquareIso p₀.op.unop q₀.op.unop v₀.op.unop l.op.unop ⋯).hom.app F ≫
+      (inverseImage l.op.unop).map
+        ((pullbackTriangleIso p₀.op.unop f.op.unop p₁.op.unop ⋯).hom.app F ≫ (inverseImage p₁.op.unop).map φ))
+but is expected to have type
+  @Eq ((inverseImage q₀).obj ((inverseImage v₀).obj F) ⟶ (inverseImage p₁ ⋙ inverseImage l).obj G)
+    (((pullbackTriangleIso q₀ h q₁ hq).hom.app ((inverseImage v₀).obj F) ≫
+        (inverseImage q₁).map (squareCoefficientMap v₀ v₁ f h he φ)) ≫
+      (inverseImageSquareIso p₁ q₁ v₁ l hj).hom.app G)
+    ((inverseImageSquareIso p₀ q₀ v₀ l hi).hom.app F ≫
+      (inverseImage l).map ((pullbackTriangleIso p₀ f p₁ hp).hom.app F ≫ (inverseImage p₁).map φ))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getLimitCone ↦ 3888
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle
+error: build failed

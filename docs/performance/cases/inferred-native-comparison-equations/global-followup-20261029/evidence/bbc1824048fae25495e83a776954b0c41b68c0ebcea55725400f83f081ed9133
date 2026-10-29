@@ -1,0 +1,18 @@
+# Direct original sheaf-coefficient route
+
+V12 preserves every fixed-v10/v11 public native header and the actual original δ/κ, unit, coefficient and selected test maps. It changes the proof route, retiring the added PRIVATE constantGroup_square, its iterated normalization and the extra chosen H_Y/H_P representatives. Those were not original public obligations. Their valid generic mapped comparison theorem remains below Scheme; their unsuccessful native applications remain source-bound historical evidence, not a theorem pass.
+
+Only H_X/H_T and the ACTUAL original q_g are needed by the public coordinate/canonical comparison. The same coefficient arrow is proved directly:
+
+L_p(e_f.hom) >> c_p >> e_q.inv
+  = b_p(PB_f H_X).hom >> repMap(t.inv >> PB_q(q_g.hom)).
+
+No endpoint comparison or desired-square premise substitutes for it. The complete new variable-category chase is RelativeTests.Comparison.coefficient_square. Its inputs are the actual R represented square, N naturality, C constant square, mapped coefficient normalization at f, mapped original q_g normalization, coefficient normalization at q, original represented-square naturality, the actual t/t.inv equation, defining cancellation of the original e_q inverse, and actual represented-map composition. Native epi/mono inputs are supplied by the original comparison isomorphisms. All middle arrows are inferred from these actual equations.
+
+The proof precomposes by the original sX and L_p(b_f), and postcomposes by the original e_q.hom. Both sides become L_q(b_g) >> b_q >> repMap(PB_q q_g) >> e_q.hom. It introduces no H_Y/H_P, no new coefficient realization, no group reflection, and no geometric premise. The target is the SAME original sheaf coefficient arrow used by κ and δ.
+
+The tail also retains producer values at their actual inferred types. The source-coordinate value is obtained by mapping the existing original coordinate-functor component equation, instead of restating a large native component rfl. The canonical restriction uses a reassociated mapped original relation before supplying any concrete tail. The complete canonical transport and the SAME original g-adjunction unit/naturality/HomEquiv-injectivity calculation are below Scheme and return the supplied original arrows. Native inputs remain original constructor, normalization, naturality and mate laws.
+
+V11 actual production evidence remains: lower19f3 and nativeRep7484 passed; Globalabc4 failed (first added G kernel timeout plus native proof/view boundaries), and caller roots were not reached. Earlier raw scratch formations remain qualified by DIAGNOSTIC-OPTIONS-CORRECTION.json; no automatic replay or native-option success is inferred. The negative native-configured R4 G probe remains on frozen5634/source7400/setupf2b7741e and is not relabeled as v12 evidence.
+
+V12 is a complete new proof candidate pending ordinary native incremental compilation and affected independent review. It is not an unchanged G attempt. CopyObj e4ed and unchanged nativeRep7484 retain matching prior coverage; changed lower and nativeGlobal plus necessary imports/callers require actual coverage. No options, model parameters, records, extra exactness/conservativity or replay/test/client stage are added.

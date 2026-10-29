@@ -10,12 +10,21 @@ sieves over an arbitrary field by finite Galois field covers.
 [CoverEffacement](CoverEffacement.lean) kills each individual positive
 original cohomology class by such a cover, with the normalized
 constant-integer/free-terminal source map.
+[PullbackEffacement](PullbackEffacement.lean) applies the general
+[original source-square zero theorem](../SlicePullback/SourceSquare.lean)
+to obtain vanishing under the original geometric pullback of that same class.
 
 [OverlapH1](OverlapH1.lean) and [ArtinianOverlap](ArtinianOverlap.lean)
 identify original represented Ext1 with original chart cohomology and use
 native semilocal Picard triviality. [GaloisCechCover](GaloisCechCover.lean)
 and [GaloisOverlapH1](GaloisOverlapH1.lean) retain the actual covering family,
 Artinian overlap and first free-resolution term.
+The complete comparison is supplied by
+[the represented Gm interface](../Kummer/EtaleSliceMultiplicative.lean);
+only the ambient Ext universe is public in these vanishing results. Slice and
+chart Ext sizes are chosen internally. The actual free tuple comparison uses
+[the general unique-family constructor](../../../CategoryTheory/Sites/SheafCohomology/ModuleCoefficients/UniqueFamily.lean).
+
 [AmitsurComplex](AmitsurComplex.lean), [GaloisCech](GaloisCech.lean) and
 [GaloisPrimitives](GaloisPrimitives.lean) transport actual multiplicative
 Amitsur primitives through the original differentials and sheafification

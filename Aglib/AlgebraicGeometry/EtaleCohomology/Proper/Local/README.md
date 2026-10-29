@@ -58,6 +58,13 @@ bijectivity; the abelian specialization also retains the literal equation
 supplies the finite-annihilator surjectivity and degree-zero injectivity tests
 used in this specialization.
 
+[CoefficientTransport](CoefficientTransport.lean) transports injectivity and
+surjectivity of the same original pullback through an actual coefficient
+isomorphism. The complete commuting-square argument is in
+[Function/SquareTransport](../../../../Logic/Function/SquareTransport.lean).
+Source and target Ext universes remain independent, and finite values are
+resized through the actual additive `Shrink` isomorphism at the geometric tests.
+
 ## Review scope and provenance
 
 The six-source local-criterion cut was reviewed as ACCEPT with its conditional

@@ -1,0 +1,16 @@
+{
+  "candidate": "v31",
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "changed": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "de7ca8da360c2e46e78ff742c6e01f00505861b319c917d7bb539420f5a181d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "fdce269bf721fecd7cf4a79f70156997a9caa88760f57e2d4c1de5731401400c"
+  },
+  "afterimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v31",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/SharedConstructorNormalization-v31.json",
+  "delta_from_reviewed_v30": "Seven shared definitions made public to permit use in existing public native aliases under Lean module visibility; exact same binders and bodies. Generic literal proof simplifies only source CopyObj/whisker components and sheaf-forget projections before using the same original section equation. No mathematical premise/map/model/options change.",
+  "retained_coverage": "Repde7 PASS7.721s and neededSheafColimitPASS27.719s onaaa250be/source1c345598; e6cd/5ab prior matching passes. V30 source-math review remains on fixedsource; V31 is this named implementation-only delta.",
+  "failure_basis": "V30 prefix6c24abe6/sourcea056: explicit private-visibility errors cause native alias cascades; separately generic hc consumes whnf200000. No prefix/fullGlobalpass."
+}

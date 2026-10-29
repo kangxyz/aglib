@@ -10,6 +10,7 @@ module
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization
+public import Aglib.CategoryTheory.Sites.Torsor.ChartTrivialization
 
 /-!
 # Finite locally constant torsors and their actual finite étale representatives
@@ -76,17 +77,33 @@ namespace Torsor
 variable {L : AbelianSheaf.{u, u + 1} X} (P : Torsor L)
 
 /-- Restrict a section on one chart along an étale test scheme over that chart. -/
-def restrictChartSection (U : X.Etale) (s : P.carrier.obj.obj (op U))
+abbrev restrictChartSection (U : X.Etale) (s : P.carrier.obj.obj (op U))
     (V : U.left.Etaleᵒᵖ) :
     P.carrier.obj.obj ((siteEtalePostcompose U.hom).op.obj V) :=
-  P.carrier.obj.map (MorphismProperty.Over.homMk V.unop.hom rfl (by trivial)).op s
+  CategoryTheory.Sheaf.Torsor.restrictChartSection P (siteEtalePostcompose U.hom) U
+    (fun V => MorphismProperty.Over.homMk V.hom rfl (by trivial)) s V
+
+/-- The lowered restriction uses the literal original chart-test arrow. -/
+theorem restrictChartSection_eq_original (U : X.Etale) (s : P.carrier.obj.obj (op U))
+    (V : U.left.Etaleᵒᵖ) :
+    P.restrictChartSection U s V =
+      P.carrier.obj.map (MorphismProperty.Over.homMk V.unop.hom rfl (by trivial)).op s := rfl
 
 /-- A section on an actual étale chart gives a genuine sheaf isomorphism
 between the restricted coefficient sheaf and the restricted torsor. -/
-def chartTrivialization (U : X.Etale) (s : P.carrier.obj.obj (op U)) :
+abbrev chartTrivialization (U : X.Etale) (s : P.carrier.obj.obj (op U)) :
     underlyingSetSheaf ((etaleRestriction U.hom).obj L) ≅
       (setEtaleRestriction U.hom).obj P.carrier :=
-  ObjectProperty.isoMk _ (NatIso.ofComponents
+  CategoryTheory.Sheaf.Torsor.chartTrivialization P (siteEtalePostcompose U.hom) U
+    (fun V => MorphismProperty.Over.homMk V.hom rfl (by trivial))
+    (by
+      intro V W f
+      apply MorphismProperty.Over.Hom.ext
+      exact MorphismProperty.Over.w f) s
+
+/-- The whole chart isomorphism is exactly the original natural section-equivalence map. -/
+theorem chartTrivialization_eq_original (U : X.Etale) (s : P.carrier.obj.obj (op U)) :
+    P.chartTrivialization U s = ObjectProperty.isoMk _ (NatIso.ofComponents
     (fun V => (P.sectionEquiv ((siteEtalePostcompose U.hom).op.obj V)
       (P.restrictChartSection U s V)).toIso)
     (fun {V W} f => by
@@ -102,21 +119,47 @@ def chartTrivialization (U : X.Etale) (s : P.carrier.obj.obj (op U)) :
       apply congrArg (fun a => P.carrier.obj.map a s)
       apply congrArg Quiver.Hom.op
       apply MorphismProperty.Over.Hom.ext
-      exact (MorphismProperty.Over.w f.unop).symm))
+      exact (MorphismProperty.Over.w f.unop).symm)) := by
+  apply CategoryTheory.Iso.ext
+  apply Sheaf.hom_ext
+  ext V a
+  exact CategoryTheory.Sheaf.Torsor.chartTrivialization_hom_app P
+    (K := Scheme.smallEtaleTopology U.left) (siteEtalePostcompose U.hom) U
+    (fun V => MorphismProperty.Over.homMk V.hom rfl (by trivial))
+    (by
+      intro V W f
+      apply MorphismProperty.Over.Hom.ext
+      exact MorphismProperty.Over.w f) s V a
 
 /-- A local coefficient chart and a torsor section give the actual finite
 constant-sheaf chart of the torsor. Finiteness is imposed separately. -/
-def finiteChartIso (U : X.Etale) (s : P.carrier.obj.obj (op U))
+abbrev finiteChartIso (U : X.Etale) (s : P.carrier.obj.obj (op U))
     (A : AddCommGrpCat.{u + 1})
     (e : (inverseImage U.hom).obj L ≅
       (constantSheaf (Scheme.smallEtaleTopology U.left) AddCommGrpCat.{u + 1}).obj A) :
     (setInverseImage U.hom).obj P.carrier ≅
       (constantSheaf (Scheme.smallEtaleTopology U.left) (Type (u + 1))).obj A :=
+  CategoryTheory.Sheaf.Torsor.constantChartIso P (siteEtalePostcompose U.hom) U
+    (fun V => MorphismProperty.Over.homMk V.hom rfl (by trivial))
+    (by
+      intro V W f
+      apply MorphismProperty.Over.Hom.ext
+      exact MorphismProperty.Over.w f) s A
+    ((setInverseImageEtaleIso U.hom).app P.carrier)
+    ((inverseImageEtaleIso U.hom).app L) e
+
+/-- The complete finite chart retains both original inverse-image comparisons and the
+native constant/underlying-set comparison on the same value type. -/
+theorem finiteChartIso_eq_original (U : X.Etale) (s : P.carrier.obj.obj (op U))
+    (A : AddCommGrpCat.{u + 1})
+    (e : (inverseImage U.hom).obj L ≅
+      (constantSheaf (Scheme.smallEtaleTopology U.left) AddCommGrpCat.{u + 1}).obj A) :
+    P.finiteChartIso U s A e =
   (setInverseImageEtaleIso U.hom).app P.carrier ≪≫
     (P.chartTrivialization U s).symm ≪≫
     (underlyingSetFunctor U.left).mapIso ((inverseImageEtaleIso U.hom).symm.app L ≪≫ e) ≪≫
     (constantCommuteCompose (Scheme.smallEtaleTopology U.left)
-      (CategoryTheory.forget AddCommGrpCat.{u + 1})).app A
+      (CategoryTheory.forget AddCommGrpCat.{u + 1})).app A := rfl
 
 /-- Simultaneously refine a coefficient chart and the torsor's local
 nonemptiness. Every base point has an actual étale chart with both properties. -/

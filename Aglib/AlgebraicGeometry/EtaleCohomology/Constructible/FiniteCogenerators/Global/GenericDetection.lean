@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.GenericModel
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Spectrum
+public import Aglib.CategoryTheory.Adjunction.MonicProducts
 
 /-! # Original dominant generic points detect the global model product
 
@@ -52,44 +53,28 @@ theorem globalModelProduct_π (t : FiniteIntegralLocallyClosedCover F)
 original maps, so the original normal-model product is monic. -/
 theorem mono_globalModelProduct (t : FiniteIntegralLocallyClosedCover F)
     (m : ∀ i, GlobalNormalGenericModel (t.inclusion i) F) :
-    Mono (globalModelProduct t m) where
-  right_cancellation {G} a b hab := by
+    Mono (globalModelProduct t m) := by
+  let N (i : t.index) := (m i).source
+  let f (i : t.index) := (m i).morphism
+  let k (i : t.index) := (N i).fromSpecStalk (genericPoint (N i)) ≫ f i
+  let M (i : t.index) :=
+    ConstantFinite.coefficient (m i).value (Spec (N i).functionField)
+  let v (i : t.index) : globalModelTargets t m i ⟶ (directImage (k i)).obj (M i) :=
+    (directImage (f i)).map
+      (NormalConstants.constantGenericIso (N i) (ConstantFinite.value (m i).value)).hom ≫
+      (directImageCompIso (f i) ((N i).fromSpecStalk (genericPoint (N i)))).hom.app (M i)
+  have hL (G : AbelianSheaf.{u, u + 1} X) (a b : G ⟶ F)
+      (h : ∀ i, (inverseImage (k i)).map a = (inverseImage (k i)).map b) : a = b := by
     apply t.fieldPoint_inverseImages_map_injective
       (fun i => (m i).source.functionField) (fun i => (m i).point) G
     funext i
     change (inverseImage ((m i).point ≫ t.inclusion i)).map a =
       (inverseImage ((m i).point ≫ t.inclusion i)).map b
     rw [(m i).over]
-    apply (cancel_mono (m i).trivialization.hom).mp
-    apply ((inverseImageAdjunction
-      (((m i).source).fromSpecStalk
-        (genericPoint ((m i).source)) ≫
-          (m i).morphism)).homEquiv G _).injective
-    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_left]
-    let π := Pi.π (globalModelTargets t m) i
-    have hp : globalModelProduct t m ≫ π = (m i).extensionMap :=
-      globalModelProduct_π t m i
-    have hcoord : a ≫ (m i).extensionMap = b ≫ (m i).extensionMap := by
-      have hproj : a ≫ (globalModelProduct t m ≫ π) = b ≫ (globalModelProduct t m ≫ π) :=
-        (Category.assoc a (globalModelProduct t m) π).symm.trans
-          ((congrArg (fun k => k ≫ π) hab).trans
-            (Category.assoc b (globalModelProduct t m) π))
-      exact (congrArg (fun k => a ≫ k) hp.symm).trans
-        (hproj.trans (congrArg (fun k => b ≫ k) hp))
-    let N := (m i).source
-    let f := (m i).morphism
-    let v := (directImage f).map
-      (NormalConstants.constantGenericIso N (ConstantFinite.value (m i).value)).hom ≫
-      (directImageCompIso f (N.fromSpecStalk (genericPoint N))).hom.app
-        (ConstantFinite.coefficient (m i).value (Spec N.functionField))
-    have hfac : (m i).extensionMap ≫ v =
-        (inverseImageAdjunction (N.fromSpecStalk (genericPoint N) ≫ f)).homEquiv F _
-          (m i).trivialization.hom := (m i).extensionMap_comp
-    exact (congrArg (fun k => a ≫ k) hfac.symm).trans
-      ((Category.assoc a (m i).extensionMap v).symm.trans
-        ((congrArg (fun k => k ≫ v) hcoord).trans
-          ((Category.assoc b (m i).extensionMap v).trans
-            (congrArg (fun k => b ≫ k) hfac))))
+    exact h i
+  exact Adjunction.mono_lift_of_monic_adjunct_factors
+    (fun i => inverseImageAdjunction (k i)) F hL M (fun i => (m i).trivialization.hom)
+    (fun i => (m i).extensionMap) v (fun i => (m i).extensionMap_comp)
 
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global

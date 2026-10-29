@@ -1,0 +1,63 @@
+--- a/Aglib/CategoryTheory/Topos/SlicePresentation.lean
++++ b/Aglib/CategoryTheory/Topos/SlicePresentation.lean
+@@ -82,16 +82,17 @@
+ /-- Normalize the actual product-comonad structure map as a whole morphism. -/
+ theorem Construction.star_obj_hom_fst [HasBinaryProducts B] (P H : B) :
+     ((Over.star P).obj H).hom = (prod.fst : P ⨯ H ⟶ P) := by
+-  rw [Over.star_obj_hom]
+-  exact prod.lift_fst _ _
++  exact (Over.star_obj_hom P H).trans (prod.lift_fst _ _)
+ 
+ /-- Coefficient naturality keeps the actual product-over-P map and projection. -/
+ theorem Construction.star_map_snd [HasBinaryProducts B] (P : B)
+     {H H' : B} (f : H ⟶ H') :
+     ((Over.star P).map f).left ≫ (prod.snd : P ⨯ H' ⟶ H') =
+       (prod.snd : P ⨯ H ⟶ H) ≫ f := by
+-  rw [Over.star_map_left]
+-  exact prod.map_snd _ _
++  have h : ((Over.star P).map f).left = prod.map (𝟙 P) f :=
++    Over.star_map_left P f
++  exact (congrArg (fun k : P ⨯ H ⟶ P ⨯ H' => k ≫ (prod.snd : P ⨯ H' ⟶ H')) h).trans
++    (prod.map_snd _ _)
+ 
+ end ComparisonConstruction
+ 
+@@ -411,6 +412,7 @@
+         ((ShrinkHoms.equivalence.{w} C).functor.map ((projection P.obj).map f))).op x.val =
+     Y.left.obj.map ((projection P.obj).map f).op x.val
+   rw [Construction.selectedSize_unit_map]
++  rfl
+ 
+ /-- An original morphism over P acts by its original coefficient component. -/
+ theorem fibreObjEquiv_map {Y Z : Over P} (f : Y ⟶ Z) (a : Site P.obj)
+@@ -660,10 +662,26 @@
+ /-- Restricting the actual product-over-P object gives the original H section. -/
+ def starFibreObjEquiv (H : Sheaf J (Type w)) (a : Site P.obj) :
+     ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.obj (op a) ≃
+-      H.obj.obj (op ((projection P.obj).obj a)) :=
+-  (fibreObjEquiv J P ((Over.star P).obj H) a).trans (by
+-    simpa only [Construction.star_obj_hom_fst] using
+-      productFibreEquiv J P H ((projection P.obj).obj a) a.unop.val)
++      H.obj.obj (op ((projection P.obj).obj a)) := by
++  let X := (projection P.obj).obj a
++  -- This comparison changes only the fibre proof; both sides use the original section value.
++  let e :
++      {y : ((Over.star P).obj H).left.obj.obj (op X) //
++        ((Over.star P).obj H).hom.hom.app (op X) y = a.unop.val} ≃
++      {y : (P ⨯ H).obj.obj (op X) //
++        (prod.fst : P ⨯ H ⟶ P).hom.app (op X) y = a.unop.val} :=
++    { toFun z := ⟨z.val, by
++        have h := congrArg (fun k : P ⨯ H ⟶ P => k.hom.app (op X) z.val)
++          (Construction.star_obj_hom_fst P H)
++        exact h.symm.trans z.property⟩
++      invFun z := ⟨z.val, by
++        have h := congrArg (fun k : P ⨯ H ⟶ P => k.hom.app (op X) z.val)
++          (Construction.star_obj_hom_fst P H)
++        exact h.trans z.property⟩
++      left_inv z := Subtype.ext rfl
++      right_inv z := Subtype.ext rfl }
++  exact (fibreObjEquiv J P ((Over.star P).obj H) a).trans
++    (e.trans (productFibreEquiv J P H X a.unop.val))
+ 
+ /-- The comparison uses the actual second product projection. -/
+ theorem starFibreObjEquiv_apply (H : Sheaf J (Type w)) (a : Site P.obj)

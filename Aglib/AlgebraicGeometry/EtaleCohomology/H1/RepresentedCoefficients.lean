@@ -11,6 +11,7 @@ Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteLocallyConstant
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Descent.Group
 public import Aglib.AlgebraicGeometry.Sites.Etale
+public import Aglib.CategoryTheory.Monoidal.Cartesian.CommutativeGroupSections
 public import Mathlib.AlgebraicGeometry.Limits
 public import Mathlib.Algebra.Category.Grp.FilteredColimits
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.Grp
@@ -49,22 +50,12 @@ actual test scheme, lifted to the coefficient universe. -/
 -- Keep commutativity as part of the original represented-coefficient section interface.
 @[nolint unusedArguments]
 abbrev RepresentedSections (H : Grp (Over X)) [IsCommMonObj H.X] (U : Over X) :=
-  ULift.{u + 1} (Additive (U ⟶ H.X))
+  CommutativeGroupSections.Sections.{u + 1} H U
 
 /-- The presheaf of actual sections, with its group-object addition. -/
 def representedPresheaf (H : Grp (Over X)) [IsCommMonObj H.X] :
-    X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} where
-  obj U := AddCommGrpCat.of (RepresentedSections H ((Scheme.Etale.forget X).obj U.unop))
-  map f := AddCommGrpCat.ofHom {
-    toFun s := ⟨Additive.ofMul ((Scheme.Etale.forget X).map f.unop ≫ s.down.toMul)⟩
-    map_zero' := by
-      apply ULift.ext
-      exact congrArg Additive.ofMul (MonObj.comp_one (M := H.X) _)
-    map_add' s t := by
-      apply ULift.ext
-      exact congrArg Additive.ofMul (MonObj.comp_mul _ s.down.toMul t.down.toMul) }
-  map_id U := by ext s; simp
-  map_comp f g := by ext s; simp [Category.assoc]
+    X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  (Scheme.Etale.forget X).op ⋙ CommutativeGroupSections.functor.{u + 1} H
 
 /-- The canonical presheaf of sections is an actual small-étale sheaf. -/
 theorem representedPresheaf_isSheaf (H : Grp (Over X)) [IsCommMonObj H.X] :
@@ -87,37 +78,22 @@ def representedSheaf (H : Grp (Over X)) [IsCommMonObj H.X] :
 /-- A genuine group-scheme map induces an additive sheaf map by postcomposition. -/
 def representedSheafMap {H K : Grp (Over X)} [IsCommMonObj H.X] [IsCommMonObj K.X]
     (q : H ⟶ K) : representedSheaf H ⟶ representedSheaf K where
-  hom := {
-    app U := AddCommGrpCat.ofHom {
-      toFun s := ⟨Additive.ofMul (s.down.toMul ≫ q.hom.hom)⟩
-      map_zero' := by
-        apply ULift.ext
-        exact congrArg Additive.ofMul (MonObj.one_comp q.hom.hom)
-      map_add' s t := by
-        apply ULift.ext
-        exact congrArg Additive.ofMul (MonObj.mul_comp s.down.toMul t.down.toMul q.hom.hom) }
-    naturality {U V} f := by
-      ext s
-      change ULift.up (Additive.ofMul (((Scheme.Etale.forget X).map f.unop ≫ s.down.toMul) ≫
-        q.hom.hom)) =
-        ULift.up (Additive.ofMul ((Scheme.Etale.forget X).map f.unop ≫ (s.down.toMul ≫ q.hom.hom)))
-      rw [Category.assoc] }
+  hom := Functor.whiskerLeft (Scheme.Etale.forget X).op
+    (CommutativeGroupSections.map.{u + 1} q)
 
 @[simp] theorem representedSheafMap_id (H : Grp (Over X)) [IsCommMonObj H.X] :
     representedSheafMap (𝟙 H) = 𝟙 (representedSheaf H) := by
-  ext U s
-  change ULift.up (Additive.ofMul (s.down.toMul ≫ 𝟙 H.X)) = s
-  cases s
-  simp
+  apply Sheaf.hom_ext
+  exact congrArg (Functor.whiskerLeft (Scheme.Etale.forget X).op)
+    (CommutativeGroupSections.map_id.{u + 1} H)
 
 @[simp] theorem representedSheafMap_comp {H K L : Grp (Over X)}
     [IsCommMonObj H.X] [IsCommMonObj K.X] [IsCommMonObj L.X]
     (q : H ⟶ K) (r : K ⟶ L) :
     representedSheafMap (q ≫ r) = representedSheafMap q ≫ representedSheafMap r := by
-  ext U s
-  change ULift.up (Additive.ofMul (s.down.toMul ≫ (q.hom.hom ≫ r.hom.hom))) =
-    ULift.up (Additive.ofMul ((s.down.toMul ≫ q.hom.hom) ≫ r.hom.hom))
-  rw [Category.assoc]
+  apply Sheaf.hom_ext
+  exact congrArg (Functor.whiskerLeft (Scheme.Etale.forget X).op)
+    (CommutativeGroupSections.map_comp.{u + 1} q r)
 
 /-- An actual group-scheme power identity annihilates every section and hence
 the represented additive sheaf. -/
@@ -126,13 +102,8 @@ theorem representedSheaf_killedBy_of_identity_pow (H : Grp (Over X))
     KilledBy n (representedSheaf H) := by
   ext U t
   change n • t = 0
-  apply ULift.ext
-  change Additive.ofMul (t.down.toMul ^ n) = Additive.ofMul 1
-  apply congrArg Additive.ofMul
-  calc
-    t.down.toMul ^ n = t.down.toMul ≫ (𝟙 H.X : H.X ⟶ H.X) ^ n := by
-      rw [MonObj.comp_pow, Category.comp_id]
-    _ = 1 := by rw [h, MonObj.comp_one]
+  exact CommutativeGroupSections.sections_nsmul_eq_zero_of_identity_pow.{u + 1}
+    H n h ((Scheme.Etale.forget X).obj U.unop) t
 
 section FiniteDescent
 open MonoidalCategory CartesianMonoidalCategory MonObj
@@ -215,14 +186,8 @@ variable (H : Grp (Over X)) [IsCommMonObj H.X]
 
 /-- Precomposition of actual scheme sections, as an additive homomorphism. -/
 def representedSectionsPullback {U V : Over X} (f : U ⟶ V) :
-    RepresentedSections H V →+ RepresentedSections H U where
-  toFun t := ⟨Additive.ofMul (f ≫ t.down.toMul)⟩
-  map_zero' := by
-    apply ULift.ext
-    exact congrArg Additive.ofMul (MonObj.comp_one (M := H.X) f)
-  map_add' t t' := by
-    apply ULift.ext
-    exact congrArg Additive.ofMul (MonObj.comp_mul f t.down.toMul t'.down.toMul)
+    RepresentedSections H V →+ RepresentedSections H U :=
+  CommutativeGroupSections.pullback.{u + 1} H f
 
 /-- Evaluation from the actual geometric sheaf fibre. The map is descended
 from the defining filtered colimit, by composing germs with their points. -/

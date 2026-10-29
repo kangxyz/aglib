@@ -1,0 +1,120 @@
+✔ [3336/3344] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections (3.7s)
+✔ [3337/3344] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramArrowSections (38s)
+✖ [3338/3344] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport (3.1s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ac3fc2af6a114bbda6fef1ea760b2383/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean:30:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.squareCoefficientMap_transport schemeAdjunctionData f₀.op f₁.op g.op g'.op h.op h'.op
+    (congrArg Quiver.Hom.op eg) (congrArg Quiver.Hom.op eh) (congrArg Quiver.Hom.op e) (congrArg Quiver.Hom.op e') φ
+ has type
+  @Eq ((inverseImage h'.op.unop).obj ((inverseImage f₀.op.unop).obj F) ⟶ (inverseImage f₁.op.unop).obj G)
+    (squareCoefficientMap f₀.op.unop f₁.op.unop g'.op.unop h'.op.unop ⋯ (eqToHom ⋯ ≫ φ))
+    (eqToHom ⋯ ≫ squareCoefficientMap f₀.op.unop f₁.op.unop g.op.unop h.op.unop ⋯ φ)
+but is expected to have type
+  @Eq ((inverseImage h').obj ((inverseImage f₀).obj F) ⟶ (inverseImage f₁).obj G)
+    (squareCoefficientMap f₀ f₁ g' h' e' (eqToHom ⋯ ≫ φ)) (eqToHom ⋯ ≫ squareCoefficientMap f₀ f₁ g h e φ)
+✖ [3339/3344] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity (19s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ac3fc2af6a114bbda6fef1ea760b2383/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean:24:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.squareIso_base_id schemeAdjunctionData schemeAdjunctionData_coherent f.op p.op h.op
+    (congrArg Quiver.Hom.op e)
+ has type
+  @Eq (inverseImage f.op.unop ⋙ inverseImage h.op.unop ≅ inverseImage p.op.unop)
+    ((inverseImageSquareIso f.op.unop p.op.unop (𝟙 (Opposite.op S)).unop h.op.unop ⋯).symm ≪≫
+      Functor.isoWhiskerRight (inverseImageId S) (inverseImage p.op.unop) ≪≫ (inverseImage p.op.unop).leftUnitor)
+    (pullbackTriangleIso p.op.unop f.op.unop h.op.unop ⋯).symm
+but is expected to have type
+  @Eq (inverseImage f ⋙ inverseImage h ≅ inverseImage p)
+    ((inverseImageSquareIso f p (𝟙 S) h ⋯).symm ≪≫
+      Functor.isoWhiskerRight (inverseImageId S) (inverseImage p) ≪≫ (inverseImage p).leftUnitor)
+    (pullbackTriangleIso p f h e).symm
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean:35:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.squareCoefficientMap_base_id schemeAdjunctionData schemeAdjunctionData_coherent f.op
+    p.op h.op (congrArg Quiver.Hom.op e) F
+ has type
+  @Eq
+    ((schemeAdjunctionData.left h.op).obj ((schemeAdjunctionData.left f.op).obj F) ⟶
+      (schemeAdjunctionData.left p.op).obj ((𝟭 (AbelianSheaf S)).obj F))
+    (schemeAdjunctionData.squareCoefficientMap f.op p.op (𝟙 (Opposite.op S)) h.op ⋯ ((inverseImageId S).hom.app F))
+    ((pullbackTriangleIso p.op.unop f.op.unop h.op.unop ⋯).inv.app F)
+but is expected to have type
+  @Eq ((inverseImage h).obj ((inverseImage f).obj F) ⟶ (inverseImage p).obj ((𝟭 (AbelianSheaf S)).obj F))
+    (squareCoefficientMap f p (𝟙 S) h ⋯ ((inverseImageId S).hom.app F)) ((pullbackTriangleIso p f h e).inv.app F)
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getLimitCone ↦ 1944
+✔ [3343/3369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSystemSquares (31s)
+✔ [3365/3369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeSquares (3.8s)
+✔ [3366/3369] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramAdjointCocone (11s)
+✖ [3367/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint (3.3s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ac3fc2af6a114bbda6fef1ea760b2383/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:42:89: unsolved goals
+S₀ X₀ S₁ X₁ : Schemeᵒᵖ
+f₀ : S₀ ⟶ X₀
+f₁ : S₁ ⟶ X₁
+g : S₀ ⟶ S₁
+h : X₀ ⟶ X₁
+e : g ≫ f₁ = f₀ ≫ h
+⊢ (directImageCompIso f₀.unop h.unop).symm.symm.hom ≫ (eqToIso ⋯ ≪≫ (directImageCompIso g.unop f₁.unop).symm).hom =
+    (directImageCompIso f₀.unop h.unop).hom ≫ eqToHom ⋯ ≫ (directImageCompIso g.unop f₁.unop).inv
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:45:46: This simp argument is unused:
+  Iso.symm_symm_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [InjectiveSystem.AdjunctionData.squareRightIso, directImageSquareIso,
+    schemeRightCompIso_eq_directImageCompIso, Iso.trans_hom, Iso.symm_hom, eqToIso.hom, schemeRight_eqToHom]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:46:46: This simp argument is unused:
+  schemeRight_eqToHom
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [InjectiveSystem.AdjunctionData.squareRightIso, directImageSquareIso,
+    schemeRightCompIso_eq_directImageCompIso, Iso.symm_symm_eq, Iso.trans_hom, Iso.symm_hom, eqToIso.hom]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:52:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.squareRightIso_transpose schemeAdjunctionData f.op f'.op g.op g'.op
+    (congrArg Quiver.Hom.op e)
+ has type
+  @Eq
+    (schemeAdjunctionData.right f'.op ⋙ schemeAdjunctionData.right g.op ≅
+      schemeAdjunctionData.right g'.op ⋙ schemeAdjunctionData.right f.op)
+    (directImageSquareIso g.op.unop g'.op.unop f.op.unop f'.op.unop ⋯)
+    (directImageSquareIso f.op.unop f'.op.unop g.op.unop g'.op.unop ⋯).symm
+but is expected to have type
+  @Eq (directImage f' ⋙ directImage g ≅ directImage g' ⋙ directImage f) (directImageSquareIso g g' f f' ⋯)
+    (directImageSquareIso f f' g g' e).symm
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:63:2: Type mismatch: After simplification, term
+  InjectiveSystem.AdjunctionData.conjugate_squareIso_inv schemeAdjunctionData f.op f'.op g.op g'.op
+    (congrArg Quiver.Hom.op e)
+ has type
+  @Eq
+    (schemeAdjunctionData.right f'.op ⋙ schemeAdjunctionData.right g.op ⟶
+      schemeAdjunctionData.right g'.op ⋙ schemeAdjunctionData.right f.op)
+    ((conjugateEquiv ((inverseImageAdjunction g.op.unop).comp (inverseImageAdjunction f'.op.unop))
+        ((inverseImageAdjunction f.op.unop).comp (inverseImageAdjunction g'.op.unop)))
+      (inverseImageSquareIso f.op.unop f'.op.unop g.op.unop g'.op.unop ⋯).inv)
+    (directImageSquareIso f.op.unop f'.op.unop g.op.unop g'.op.unop ⋯).inv
+but is expected to have type
+  @Eq (directImage f' ⋙ directImage g ⟶ directImage g' ⋙ directImage f)
+    ((conjugateEquiv ((inverseImageAdjunction g).comp (inverseImageAdjunction f'))
+        ((inverseImageAdjunction f).comp (inverseImageAdjunction g')))
+      (inverseImageSquareIso f f' g g' e).inv)
+    (directImageSquareIso f f' g g' e).inv
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean:79:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+✖ [3369/3369] Building Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle (167s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-ac3fc2af6a114bbda6fef1ea760b2383/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean:19:6: (kernel) deterministic timeout
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean:1:0: The current module only contains private declarations.
+
+Consider adding `public section` at the beginning of the module, or selectively marking declarations as `public`. Mark a `def` with `@[expose]` if downstream code needs it to be definitionally equal to its body (e.g. for `unfold`). Alternatively, add `@[expose] public section` to mark every definition as exposed.
+
+Note: This linter can be disabled with `set_option linter.privateModule false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareTransport
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareIdentity
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint
+- Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbackTriangle
+error: build failed

@@ -36,10 +36,9 @@ theorem smallFibreProductCohomologyPresheaf_map_shrink_symm
     {U V : S.Etale} (g : V ⟶ U)
     (x : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
     (smallFibreProductCohomologyPresheaf f F q).map g.op (Shrink.addEquiv.symm x) =
-      Shrink.addEquiv.symm (fibreProductCohomologyRestriction f g F q x) := by
-  change Shrink.addEquiv.symm (fibreProductCohomologyRestriction f g F q
-    (Shrink.addEquiv (Shrink.addEquiv.symm x))) = _
-  rw [AddEquiv.apply_symm_apply]
+      Shrink.addEquiv.symm (fibreProductCohomologyRestriction f g F q x) :=
+  CategoryTheory.resizeAdditiveDiagram_map_shrink_symm.{u + 1}
+    (Stalk.originalFibreProductCohomologyPresheaf f F q) g.op x
 
 variable {Ω : Type u} [Field Ω] [IsSepClosed Ω] (η : Spec (.of Ω) ⟶ S)
 

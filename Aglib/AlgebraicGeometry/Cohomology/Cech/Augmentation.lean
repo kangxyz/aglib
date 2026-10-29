@@ -5,107 +5,57 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
-public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.ExactSequences
+public import Aglib.Topology.Sheaves.Cech.Augmentation
 public import Mathlib.AlgebraicGeometry.Scheme
-public import Mathlib.Algebra.Homology.Single
+
 /-!
-# Cech augmentation on the opens of a scheme
+# Scheme views of the original Cech augmentation
 
-For a presheaf on scheme opens with preadditive coefficients and products,
-restriction from the whole space defines the degree-zero Cech augmentation.
-The signed first differential annihilates this map. With a zero object, it
-extends to a cochain map from the complex concentrated in degree zero and
-is natural in the coefficient presheaf.
+The construction is the topological augmentation on the original Cech complex.
+These transparent views retain the Scheme API and its literal component maps.
 
-Extraction source: the general augmentation block of
-`R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison` at R5Lab revision
-`95a3772b895fbc19a81684be4ffd519d0fdcd6b3`. Declaration names, types, and proofs
-are retained; the import-module owner is separated from the later resolution
-comparison.
+Extraction source: `R5Lab.AlgebraicGeometry.Curves.Cohomology.CechComparison` at
+R5Lab revision `95a3772b895fbc19a81684be4ffd519d0fdcd6b3`.
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
-noncomputable section
-set_option backward.defeqAttrib.useBackward true
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Limits AlgebraicGeometry TopologicalSpace Opposite
-namespace AlgebraicGeometry.Scheme.Cohomology
-universe u
-section CechAugmentation
-open CategoryTheory.Cech HomologicalComplex
-universe v
-variable (X : Scheme.{u}) {ι : Type u} (U : ι → X.Opens)
 
-section General
-variable {A : Type v} [Category A] [Preadditive A] [HasProducts.{u} A]
-variable (P : X.Opensᵒᵖ ⥤ A)
+namespace AlgebraicGeometry.Scheme.Cohomology
+
+universe u v
+open CategoryTheory.Cech HomologicalComplex
+variable (X : Scheme.{u}) {ι : Type u} (U : ι → X.Opens)
+  {A : Type v} [Category A] [Preadditive A] [HasProducts.{u} A]
+  (P : X.Opensᵒᵖ ⥤ A)
 
 /-- Restriction of global sections to all degree-zero Cech intersections. -/
-def cechAugmentationZero : P.obj (op ⊤) ⟶ ((cechComplexFunctor U).obj P).X 0 :=
-  Pi.lift fun _ => P.map (homOfLE le_top).op
+abbrev cechAugmentationZero := TopCat.Sheaf.Cech.cechAugmentationZero X.toTopCat U P
 
 @[reassoc (attr := simp)]
 theorem cechAugmentationZero_π (a : Fin 1 → ι) :
     cechAugmentationZero X U P ≫
       Pi.π (fun b : Fin 1 → ι => P.obj (op (∏ᶜ fun i => U (b i)))) a =
-        P.map (homOfLE le_top).op := by
-  exact Pi.lift_comp_π _ a
+        P.map (homOfLE le_top).op :=
+  TopCat.Sheaf.Cech.cechAugmentationZero_π X.toTopCat U P a
 
 theorem cechAugmentationZero_d :
-    cechAugmentationZero X U P ≫ ((cechComplexFunctor U).obj P).d 0 1 = 0 := by
-  apply Pi.hom_ext (f := fun b : Fin 2 → ι => P.obj (op (∏ᶜ fun i => U (b i))))
-  intro a
-  change (cechAugmentationZero X U P ≫ ((cechComplexFunctor U).obj P).d 0 1) ≫
-    Pi.π (fun b : Fin 2 → ι => P.obj (op (∏ᶜ fun i => U (b i)))) a = 0 ≫ _
-  rw [Category.assoc, cech_d_comp_π]
-  have ht (j : Fin 2) :
-      cechAugmentationZero X U P ≫
-        (Pi.π (fun b : Fin 1 → ι => P.obj (op (∏ᶜ fun i => U (b i))))
-          (fun k => a (j.succAbove k)) ≫
-        P.map (Pi.lift (fun k => Pi.π (fun i => U (a i)) (j.succAbove k))).op) =
-          P.map (homOfLE le_top).op := by
-    rw [← Category.assoc]
-    erw [cechAugmentationZero_π]
-    rw [← P.map_comp]
-    rfl
-  simp only [Preadditive.comp_sum, Preadditive.comp_zsmul, ht, zero_comp]
-  erw [Fin.sum_univ_two]
-  simp
+    cechAugmentationZero X U P ≫ ((cechComplexFunctor U).obj P).d 0 1 = 0 :=
+  TopCat.Sheaf.Cech.cechAugmentationZero_d X.toTopCat U P
 
 variable [HasZeroObject A]
 
-/-- The cochain augmentation of global sections into the Cech complex. -/
-def cechAugmentation : (CochainComplex.single₀ A).obj (P.obj (op ⊤)) ⟶
-    (cechComplexFunctor U).obj P :=
-  (CochainComplex.fromSingle₀Equiv _ _).symm
-    ⟨cechAugmentationZero X U P, cechAugmentationZero_d X U P⟩
+/-- The original cochain augmentation is the topological construction. -/
+abbrev cechAugmentation := TopCat.Sheaf.Cech.cechAugmentation X.toTopCat U P
 
 @[simp] theorem cechAugmentation_f_zero :
-    (cechAugmentation X U P).f 0 = cechAugmentationZero X U P := by
-  simp [cechAugmentation]
+    (cechAugmentation X U P).f 0 = cechAugmentationZero X U P :=
+  TopCat.Sheaf.Cech.cechAugmentation_f_zero X.toTopCat U P
 
 theorem cechAugmentation_naturality {P Q : X.Opensᵒᵖ ⥤ A} (f : P ⟶ Q) :
     (CochainComplex.single₀ A).map (f.app (op ⊤)) ≫ cechAugmentation X U Q =
-      cechAugmentation X U P ≫ (cechComplexFunctor U).map f := by
-  apply from_single_hom_ext
-  simp only [comp_f, CochainComplex.single₀_map_f_zero, cechAugmentation_f_zero]
-  apply Pi.hom_ext (f := fun b : Fin 1 → ι => Q.obj (op (∏ᶜ fun i => U (b i))))
-  intro a
-  change (f.app (op ⊤) ≫ cechAugmentationZero X U Q) ≫
-    Pi.π (fun b : Fin 1 → ι => Q.obj (op (∏ᶜ fun i => U (b i)))) a =
-      (cechAugmentationZero X U P ≫ Limits.Pi.map
-        (fun b : Fin 1 → ι => f.app (op (∏ᶜ fun i => U (b i))))) ≫ _
-  simp only [Category.assoc, Pi.map_π]
-  erw [cechAugmentationZero_π]
-  rw [← Category.assoc]
-  erw [cechAugmentationZero_π]
-  exact (f.naturality _).symm
-
-end General
-
-end CechAugmentation
+      cechAugmentation X U P ≫ (cechComplexFunctor U).map f :=
+  TopCat.Sheaf.Cech.cechAugmentation_naturality X.toTopCat U f
 
 end AlgebraicGeometry.Scheme.Cohomology

@@ -1,0 +1,12 @@
+{
+  "basis_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v2/READY-provider-v4.json",
+  "kind": "read-only input observation before next Field repair; not an acceptance or compiler claim",
+  "direct_provider_count": 74,
+  "drift": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Local/CoefficientTransport.lean",
+      "old_sha256": "b32a5fc8db4ba347bdb7f4ffb079a6157ff08492383800cf4954b083f457d616",
+      "current_sha256": "17e17b4f487e72ecbad00a07c619f8f50b8333a217d91e409e782a9ad2d225b7"
+    }
+  ]
+}

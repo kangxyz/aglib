@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramShortExact
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.RepresentedDiagram.ExactSequences
 
 /-! # The original stage and limit morphisms of compatible cokernel sequences -/
 
@@ -33,27 +34,20 @@ lemma diagramCokernelComplex_shortExact (hη : ∀ i, Mono (η.app i)) (i : I) :
   exact InjectiveSystem.System.cokernelShortComplex_shortExact (diagramAdjunctionData X) η i
 
 /-- The original inverse-image transition square is a morphism of actual coefficient sequences. -/
-def diagramCokernelTransition {i j : I} (a : i ⟶ j) :
+abbrev diagramCokernelTransition {i j : I} (a : i ⟶ j) :
     (diagramCokernelComplex X η i).map (inverseImage (X.map a).unop) ⟶
-      diagramCokernelComplex X η j where
-  τ₁ := diagramInverseTransition X F a
-  τ₂ := diagramInverseTransition X Q a
-  τ₃ := diagramInverseTransition X (diagramCokernelSystem X η) a
-  comm₁₂ := (diagramInverseTransition_naturality X η a).symm
-  comm₂₃ := (diagramInverseTransition_naturality X
-    (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η) a).symm
+      diagramCokernelComplex X η j := by
+  letI : ((diagramAdjunctionData X).left a).PreservesZeroMorphisms := by
+    change (inverseImage (X.map a).unop).PreservesZeroMorphisms
+    infer_instance
+  exact InjectiveSystem.System.cokernelLeftTransition (diagramAdjunctionData X) η a
 
 variable (c : Cocone X) [HasColimitsOfShape I AddCommGrpCat.{u + 1}]
 
 /-- The original coefficient injections form the actual stage-to-limit sequence morphism. -/
-def diagramCokernelLimitLeg (i : I) :
+abbrev diagramCokernelLimitLeg (i : I) :
     (diagramCokernelComplex X η i).map (inverseImage (c.ι.app i).unop) ⟶
-      coneCoefficientColimitCokernelComplex X c η where
-  τ₁ := colimit.ι (coneCoefficientFunctor X c F) i
-  τ₂ := colimit.ι (coneCoefficientFunctor X c Q) i
-  τ₃ := colimit.ι (coneCoefficientFunctor X c (diagramCokernelSystem X η)) i
-  comm₁₂ := coneCoefficientColimitMap_ι X c η i
-  comm₂₃ := coneCoefficientColimitMap_ι X c
-    (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η) i
+      coneCoefficientColimitCokernelComplex X c η :=
+  (coneCoefficientCokernelComplex X c η).evaluationToColimit i
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

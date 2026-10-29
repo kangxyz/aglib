@@ -12,3 +12,10 @@ The construction keeps the original site and coefficient maps; no derived-etale
 adjunction or geometric proper-base-change premise is used. The concrete etale
 module-coefficient consumers are documented in
 [ModuleCoefficients](../ModuleCoefficients/README.md).
+
+[Naturality](Naturality.lean) proves the complete source-square Ext comparison
+and zero transfer using the actual adjunction-source equivalence, with its
+exactness and source-isomorphism hypotheses. The zero-transfer theorem chooses
+its intermediate Ext size internally while preserving independent source and
+target Ext universes. Its scheme consumer is the original
+[pullback source square](../../../../AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean).

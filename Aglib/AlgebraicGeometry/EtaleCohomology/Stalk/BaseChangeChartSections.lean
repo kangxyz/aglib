@@ -21,7 +21,7 @@ The original higher base-change map for a literal étale chart sends every
 original represented class to its original chart cohomology class. This is an
 all-degree equality of the original maps, not a degree-zero certificate or a
 claim that represented classes extend globally. Base, slice and chart Ext
-universes and all four derived models remain independent.
+universes remain independent; this ordinary interface needs no derived model.
 -/
 
 @[expose] public noncomputable section
@@ -32,7 +32,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits HomologicalComplex Opposite
 
-universe u w s e dX dS dV dU
+universe u w s e
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
@@ -51,22 +51,9 @@ local instance baseChangeChartSections_chartIdentitySiteHasExt : HasExt.{e}
     (Sheaf ((𝟭 Scheme.{u}).obj ((siteBaseChange f).obj U).left).smallEtaleTopology
       AddCommGrpCat.{u + 1}) := hChartExt
 
-variable
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
-  [hDU : HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U.left)]
-
-/-- The supplied target-chart derived model at the identity presentation of its scheme. -/
-local instance baseChangeChartSectionsTargetIdentityHasDerivedCategory : HasDerivedCategory.{dU}
-    (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hDU
-
 omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
   [HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over ((siteBaseChange f).obj U))
-    AddCommGrpCat.{u + 1})] hChartExt
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))] hDU in
+    AddCommGrpCat.{u + 1})] hChartExt in
 /-- The actual ordinary section square, already in the functor-section
 heads consumed by the resolution exchange. -/
 private theorem originalChartSection_underived
@@ -95,10 +82,7 @@ private theorem originalChartSection_underived
 
 omit [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
   [HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over ((siteBaseChange f).obj U))
-    AddCommGrpCat.{u + 1})] hChartExt
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))] hDU in
+    AddCommGrpCat.{u + 1})] hChartExt in
 /-- The literal resolution lift on sections, including the original direct-image
 section identification, is fixed before representative pairing. -/
 private theorem originalChartSection_liftSections
@@ -138,10 +122,7 @@ private theorem originalChartSection_liftSections
         (I.cochainComplex.X (q : ℤ)) ((siteBaseChange f).obj U)).inv z)) h.symm
 
 omit [HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over ((siteBaseChange f).obj U))
-    AddCommGrpCat.{u + 1})] hChartExt
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))] hDU in
+    AddCommGrpCat.{u + 1})] hChartExt in
 /-- Convert the original source witness once from evaluation maps to the
 actual native section-functor maps. -/
 private theorem originalChartSection_sourceCycle
@@ -165,9 +146,6 @@ private theorem originalChartSection_sourceCycle
             (I.extMk a (q + 1) rfl ha)))) :=
   originalHigherSection_cycleWitness_extMk f U I q a ha
 
-omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))] hDU in
 /-- Convert the original target witness once to the literal fibre-product
 cohomology and native section-functor heads. -/
 private theorem originalChartSection_targetCycle
@@ -200,9 +178,6 @@ private theorem originalChartSection_targetCycle
   originalChartSection_cycleWitness_extMk
     (S' := U.left) ((siteBaseChange f).obj U) (pullback.fst U.hom f) I J q a ha
 
-omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dV} (AbelianSheaf.{u, u + 1} (pullback U.hom f))] hDU in
 private theorem originalChartSection_of_resolutionEquation
     (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
     (I : InjectiveResolution F)

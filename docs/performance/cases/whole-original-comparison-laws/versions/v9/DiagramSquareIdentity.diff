@@ -1,0 +1,26 @@
+--- v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean
++++ v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean
+@@ -22,7 +22,8 @@
+         Functor.isoWhiskerRight (inverseImageId S) (inverseImage p) ≪≫
+         Functor.leftUnitor (inverseImage p) = (pullbackTriangleIso p f h e).symm := by
+   simpa only [schemeSquareIso_eq_inverseImageSquareIso, schemeLeftIdIso_eq_inverseImageId,
+-    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage] using
++    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
++    unop_id, Quiver.Hom.unop_op] using
+     schemeAdjunctionData.squareIso_base_id schemeAdjunctionData_coherent
+       f.op p.op h.op (congrArg Quiver.Hom.op e)
+ 
+@@ -32,10 +33,9 @@
+     (F : AbelianSheaf.{u, u + 1} S) :
+     squareCoefficientMap f p (𝟙 S) h ((Category.comp_id p).trans e.symm)
+       ((inverseImageId S).hom.app F) = (pullbackTriangleIso p f h e).inv.app F := by
+-  simpa only [schemeSquareCoefficientMap_eq_squareCoefficientMap,
+-    schemeLeftIdIso_eq_inverseImageId, schemeTriangleIso_eq_pullbackTriangleIso] using
+-    schemeAdjunctionData.squareCoefficientMap_base_id schemeAdjunctionData_coherent
+-      f.op p.op h.op (congrArg Quiver.Hom.op e) F
++  exact Adjunction.CoefficientSquares.coefficient_base_id (inverseImageId S)
++    (inverseImageSquareIso f p (𝟙 S) h ((Category.comp_id p).trans e.symm))
++    (pullbackTriangleIso p f h e) (inverseImageSquareIso_base_id f p h e) F
+ 
+ /-- The base-identity section square is the original relative pullback on sections. -/
+ lemma squareSectionsMap_base_id {S : Scheme.{u}} (F : AbelianSheaf.{u, u + 1} S)

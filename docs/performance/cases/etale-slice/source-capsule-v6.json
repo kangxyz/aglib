@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "source_version": "v6",
+  "run_id": "remote-8c5ba5cbd63b45149e8a52cd3016b7e4",
+  "target_roots": [
+    "Aglib.CategoryTheory.Topos.SlicePresentation",
+    "Aglib.CategoryTheory.Topos.Slice.Grothendieck"
+  ],
+  "closure_method": {
+    "reader": "scripts/lean_tools/source.py:lean_imports",
+    "semantics": "nested Lean comments and strings masked before parsing the one-module header imports",
+    "scope": "recursively traverse selected Aglib imports from the two roots only; external imports resolve by the pinned dependencies below"
+  },
+  "source_set_identity": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "mathlib_pin": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "lean_version": "4.34.1",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lakefile_sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lake_manifest_sha256": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lean_toolchain_file_sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 110592,
+      "threads": 4
+    },
+    "receipt_reported_git_head": null
+  },
+  "full_source_manifest_binding": {
+    "original_r_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/etale-slice-closure-8c5ba5cb.json",
+    "sha256": "9451c11d148fec506a5d330d79f922813cf32597e1504ae52750f4d609b3db90",
+    "content_sha256": "e7c176b1c5b39d7b70a36e8f186d7ee57b45511a1cf881e7b01daef5ed839549",
+    "file_count": 7258,
+    "receipt_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8c5ba5cbd63b45149e8a52cd3016b7e4/receipt.json",
+    "receipt_sha256": "6f87f52dd7dc83fe828350c6d7d5be9bc96eab05b7a9f4419685ae8f3f8437fc",
+    "closure_note_receipt_sha256": "6f87f52dd7dc83fe828350c6d7d5be9bc96eab05b7a9f4419685ae8f3f8437fc",
+    "closure_note_manifest_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/etale-slice-closure-8c5ba5cb.json",
+    "closure_note_manifest_sha256": "9451c11d148fec506a5d330d79f922813cf32597e1504ae52750f4d609b3db90",
+    "receipt_expected_source": "e7c176b1c5b39d7b70a36e8f186d7ee57b45511a1cf881e7b01daef5ed839549",
+    "receipt_source_content_sha256": "e7c176b1c5b39d7b70a36e8f186d7ee57b45511a1cf881e7b01daef5ed839549",
+    "matched": true
+  },
+  "selected_aglib_source_hashes": {
+    "Aglib.CategoryTheory.Adjunction.LeftExact": {
+      "path": "Aglib/CategoryTheory/Adjunction/LeftExact.lean",
+      "sha256": "945e225c2d8804d3ccd50d53c4646b64d1c47e18bfc7f4c47266916836417728",
+      "direct_aglib_imports": [],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/LeftExact.lean"
+    },
+    "Aglib.CategoryTheory.Adjunction.Mates.Whole": {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+      "sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4",
+      "direct_aglib_imports": [],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/Mates/Whole.lean"
+    },
+    "Aglib.CategoryTheory.Functor.Sections.Initial": {
+      "path": "Aglib/CategoryTheory/Functor/Sections/Initial.lean",
+      "sha256": "8bfeb07ca94fe658b969e4e09e2e2b51ef4e3117e743355e273a0f9ba3133325",
+      "direct_aglib_imports": [],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Functor/Sections/Initial.lean"
+    },
+    "Aglib.CategoryTheory.Sites.Elements.SheafCondition": {
+      "path": "Aglib/CategoryTheory/Sites/Elements/SheafCondition.lean",
+      "sha256": "691ea311609dca03a97129912b6b3f160c48625cc6eb1f3b85c1cbd452294512",
+      "direct_aglib_imports": [
+        "Aglib.CategoryTheory.Sites.Elements.Topology"
+      ],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/Elements/SheafCondition.lean"
+    },
+    "Aglib.CategoryTheory.Sites.Elements.Topology": {
+      "path": "Aglib/CategoryTheory/Sites/Elements/Topology.lean",
+      "sha256": "a882209a2187bf76f5581d829fb37e601e2383361cd85ea79614938a3774e3de",
+      "direct_aglib_imports": [],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/Elements/Topology.lean"
+    },
+    "Aglib.CategoryTheory.Topos.GeometricMorphism": {
+      "path": "Aglib/CategoryTheory/Topos/GeometricMorphism.lean",
+      "sha256": "5ab67f43b11f077c9e8489b33aefa1a14fa964bc34782370c0d2953aa42b1666",
+      "direct_aglib_imports": [
+        "Aglib.CategoryTheory.Adjunction.LeftExact",
+        "Aglib.CategoryTheory.Adjunction.Mates.Whole"
+      ],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Topos/GeometricMorphism.lean"
+    },
+    "Aglib.CategoryTheory.Topos.Grothendieck": {
+      "path": "Aglib/CategoryTheory/Topos/Grothendieck.lean",
+      "sha256": "26ff027a546010a0ef1c8adc4251b92a0cdd84a67dafea35094964880e683b58",
+      "direct_aglib_imports": [],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Topos/Grothendieck.lean"
+    },
+    "Aglib.CategoryTheory.Topos.SheafMorphism": {
+      "path": "Aglib/CategoryTheory/Topos/SheafMorphism.lean",
+      "sha256": "5801ed7fe4e5c3ecdde80ece1c52a5caff1a1f0f1568c9b20ae800405479b899",
+      "direct_aglib_imports": [
+        "Aglib.CategoryTheory.Functor.Sections.Initial",
+        "Aglib.CategoryTheory.Topos.GeometricMorphism"
+      ],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Topos/SheafMorphism.lean"
+    },
+    "Aglib.CategoryTheory.Topos.Slice.Grothendieck": {
+      "path": "Aglib/CategoryTheory/Topos/Slice/Grothendieck.lean",
+      "sha256": "2dfd8f69750b9749c23b61c58ea8031b687b772a5da5ed25828b5f1adc734187",
+      "direct_aglib_imports": [
+        "Aglib.CategoryTheory.Topos.Grothendieck",
+        "Aglib.CategoryTheory.Topos.SlicePresentation"
+      ],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Topos/Slice/Grothendieck.lean"
+    },
+    "Aglib.CategoryTheory.Topos.SlicePresentation": {
+      "path": "Aglib/CategoryTheory/Topos/SlicePresentation.lean",
+      "sha256": "7c9d08a3b001b8cc9eab19cd5af522883be3001d7715d0643b99abd82e39e0f2",
+      "direct_aglib_imports": [
+        "Aglib.CategoryTheory.Sites.Elements.SheafCondition",
+        "Aglib.CategoryTheory.Topos.SheafMorphism"
+      ],
+      "source_locator": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Topos/SlicePresentation.lean"
+    }
+  },
+  "limits": [
+    "Capsule records the source-hash closure reached from SlicePresentation and the actual Slice.Grothendieck consumer; it does not reproduce other build targets from the full run.",
+    "The complete source manifest remains in its original R locator and is not duplicated here.",
+    "Mathlib and Lean source closure is represented by the fixed Mathlib pin and Lean toolchain identity; no per-file upstream source hashes are included.",
+    "Historical transitive import headers are read from the corresponding Aglib checkout paths where their recorded bytes match the full manifest; v4/v5 SlicePresentation and v4 Mates.Whole use their preserved exact snapshots."
+  ]
+}

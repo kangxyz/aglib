@@ -35,21 +35,8 @@ theorem cohomologyPullback_eq_zero_of_represented_precomp_eq_zero
     (F : AbelianSheaf.{u, u + 1} X) (n : ℕ) (α : Sheaf.H.{w} F n)
     (hα : (Ext.mk₀ (representedIntegerAugmentation U)).comp α (Nat.zero_add n) = 0) :
     cohomologyPullback.{u, w, w'} (X := X) (S := U.left) U.hom F n α = 0 := by
-  let : HasExt.{u + 2}
-      (Sheaf ((Scheme.smallEtaleTopology X).over U) AddCommGrpCat.{u + 1}) :=
-    HasExt.standard _
-  let e := ((Sheaf.functorH.{u + 2, u + 1, u, u + 1}
-    ((Scheme.smallEtaleTopology X).over U) n).mapIso
-      ((inverseImageSliceInverseIso U).app F)).addCommGroupIsoToAddEquiv
-  let s := sliceCohomologyEquiv.{u, u + 1, u + 2, w'} U
-    ((inverseImage (X := X) (S := U.left) U.hom).obj F) n
-  let d := Sheaf.SliceCohomology.sliceComparison.{w, u + 2, u + 1, u, u + 1}
-    (Scheme.smallEtaleTopology X) U F n
-  apply s.injective
-  apply e.injective
-  have h := cohomologyPullback_sliceComparison.{u, w, w', u + 2} (X := X) U F n α
-  have hz : e (s 0) = 0 := (congrArg e (map_zero s)).trans (map_zero e)
-  exact h.trans ((congrArg d hα).trans ((map_zero d).trans hz.symm))
+  exact EtaleCohomology.cohomologyPullback_eq_zero_of_represented_precomp_eq_zero
+    U F n α hα
 
 open Scheme.FiniteEtale Scheme.FiniteEtale.FieldGalois.Arbitrary
 

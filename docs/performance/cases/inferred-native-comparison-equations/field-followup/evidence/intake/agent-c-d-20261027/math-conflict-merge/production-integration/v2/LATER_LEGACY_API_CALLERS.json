@@ -1,0 +1,64 @@
+{
+  "question": "Later explicit archive callers affected by minimizing now-owned prerequisite values.",
+  "rule": "For specified-C values/proofs, use C and models C; for Nagata C0 values, use models (moduleExceptionalCompactification f). Preserve actual independent-family comparison maps and their parameters. No listed outside27 native source is edited.",
+  "files": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/FamilyModelComparison.lean",
+      "archive_sha256": "2c80cf4a1d267fda62445240d0b4d543e440dd8496e1f93d7a9a8f37f2626d96",
+      "native_in_scope27": false,
+      "native_present": false,
+      "hits": [
+        {
+          "line": 37,
+          "symbols": [
+            "moduleCompactificationFunctor_torsion"
+          ],
+          "text": "    (@moduleCompactificationFunctor_torsion X S f \u039b _ hX hS models\u2080 C)"
+        },
+        {
+          "line": 38,
+          "symbols": [
+            "moduleCompactificationFunctor_torsion"
+          ],
+          "text": "    (@moduleCompactificationFunctor_torsion X S f \u039b _ hX hS models\u2081 C)"
+        }
+      ]
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/BoundedBelow/ModelComparison.lean",
+      "archive_sha256": "228a177201e82912eb5cd77996023b1002dcbebcd13051161fa562070b87aad3",
+      "native_in_scope27": false,
+      "native_present": false,
+      "hits": [
+        {
+          "line": 37,
+          "symbols": [
+            "moduleCompactificationTorsionFunctor"
+          ],
+          "text": "  @moduleCompactificationTorsionFunctor X S f \u039b _ hX hS models C"
+        },
+        {
+          "line": 44,
+          "symbols": [
+            "moduleCompactificationFunctor_torsion"
+          ],
+          "text": "    (@moduleCompactificationFunctor_torsion X S f \u039b _ hX hS models\u2080 C)"
+        },
+        {
+          "line": 45,
+          "symbols": [
+            "moduleCompactificationFunctor_torsion"
+          ],
+          "text": "    (@moduleCompactificationFunctor_torsion X S f \u039b _ hX hS models\u2081 C)"
+        },
+        {
+          "line": 64,
+          "symbols": [
+            "moduleExceptionalDirectImagePlusTorsion"
+          ],
+          "text": "  @moduleExceptionalDirectImagePlusTorsion X S f _ \u039b _ hX hS models _ _ _ _"
+        }
+      ]
+    }
+  ]
+}

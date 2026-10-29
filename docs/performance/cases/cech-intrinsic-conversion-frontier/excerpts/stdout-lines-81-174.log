@@ -1,0 +1,94 @@
+              [Meta.synthInstance] [2.877661] ✅️ HasSheafify (Opens.grothendieckTopology ↥X) AddCommGrpCat
+                [Meta.synthInstance.apply] [0.103864] ❌️ apply @CompleteLattice.hasColimits_of_completeLattice to ∀
+                      (X_1 : TopologicalSpace.Opens ↥X), HasColimits ((Opens.grothendieckTopology ↥X).Cover X_1)
+                  [Meta.synthInstance.tryResolve] [0.103472] ❌️ HasColimits
+                        ((Opens.grothendieckTopology ↥X✝).Cover
+                          X) ≟ HasColimitsOfSize.{?u.107, ?u.108, ?u.109, ?u.109} (?m.55 X)
+                    [Meta.isDefEq] [0.103333] ❌️ HasColimits
+                          ((Opens.grothendieckTopology ↥X✝).Cover
+                            X) =?= HasColimitsOfSize.{?u.107, ?u.108, ?u.109, ?u.109} (?m.55 X)
+                      [Meta.isDefEq] [0.103204] ❌️ HasColimitsOfSize.{u, u, u, u}
+                            ((Opens.grothendieckTopology ↥X✝).Cover
+                              X) =?= HasColimitsOfSize.{?u.107, ?u.108, ?u.109, ?u.109} (?m.55 X)
+                        [Meta.isDefEq] [0.102330] ❌️ Preorder.smallCategory
+                              ((Opens.grothendieckTopology ↥X✝).Cover
+                                X) =?= Preorder.smallCategory ((Opens.grothendieckTopology ↥X✝).Cover X)
+                [Meta.synthInstance.apply] [0.117556] ❌️ apply @CompleteLattice.hasFiniteColimits_of_semilatticeSup_orderBot to ∀
+                      (X_1 : TopologicalSpace.Opens ↥X), HasFiniteColimits ((Opens.grothendieckTopology ↥X).Cover X_1)
+                  [Meta.synthInstance.tryResolve] [0.117222] ❌️ HasFiniteColimits
+                        ((Opens.grothendieckTopology ↥X✝).Cover X) ≟ HasFiniteColimits (?m.61 X)
+                    [Meta.isDefEq] [0.117069] ❌️ HasFiniteColimits
+                          ((Opens.grothendieckTopology ↥X✝).Cover X) =?= HasFiniteColimits (?m.61 X)
+                      [Meta.isDefEq] [0.116177] ❌️ Preorder.smallCategory
+                            ((Opens.grothendieckTopology ↥X✝).Cover
+                              X) =?= Preorder.smallCategory ((Opens.grothendieckTopology ↥X✝).Cover X)
+          [Elab.step] [2.987526] ✅️ expected type: Type (u + 1), term
+              Sheaf.H.{u + 1} A n
+            [Elab.app.args] [2.987196] ✅️ elabAppArgs (2 args) `@Sheaf.H`
+              [Elab.app.finalize] [2.980167] ✅️ A.H n : Type (u + 1)
+                [Meta.synthInstance] [2.880343] ✅️ HasSheafify (Opens.grothendieckTopology ↥X) AddCommGrpCat
+                  [Meta.synthInstance.apply] [0.103774] ❌️ apply @CompleteLattice.hasColimits_of_completeLattice to ∀
+                        (X_1 : TopologicalSpace.Opens ↥X), HasColimits ((Opens.grothendieckTopology ↥X).Cover X_1)
+                    [Meta.synthInstance.tryResolve] [0.103378] ❌️ HasColimits
+                          ((Opens.grothendieckTopology ↥X✝).Cover
+                            X) ≟ HasColimitsOfSize.{?u.111, ?u.112, ?u.113, ?u.113} (?m.62 X)
+                      [Meta.isDefEq] [0.103245] ❌️ HasColimits
+                            ((Opens.grothendieckTopology ↥X✝).Cover
+                              X) =?= HasColimitsOfSize.{?u.111, ?u.112, ?u.113, ?u.113} (?m.62 X)
+                        [Meta.isDefEq] [0.103122] ❌️ HasColimitsOfSize.{u, u, u, u}
+                              ((Opens.grothendieckTopology ↥X✝).Cover
+                                X) =?= HasColimitsOfSize.{?u.111, ?u.112, ?u.113, ?u.113} (?m.62 X)
+                          [Meta.isDefEq] [0.102254] ❌️ Preorder.smallCategory
+                                ((Opens.grothendieckTopology ↥X✝).Cover
+                                  X) =?= Preorder.smallCategory ((Opens.grothendieckTopology ↥X✝).Cover X)
+                  [Meta.synthInstance.apply] [0.121272] ❌️ apply @CompleteLattice.hasFiniteColimits_of_semilatticeSup_orderBot to ∀
+                        (X_1 : TopologicalSpace.Opens ↥X), HasFiniteColimits ((Opens.grothendieckTopology ↥X).Cover X_1)
+                    [Meta.synthInstance.tryResolve] [0.120945] ❌️ HasFiniteColimits
+                          ((Opens.grothendieckTopology ↥X✝).Cover X) ≟ HasFiniteColimits (?m.68 X)
+                      [Meta.isDefEq] [0.120800] ❌️ HasFiniteColimits
+                            ((Opens.grothendieckTopology ↥X✝).Cover X) =?= HasFiniteColimits (?m.68 X)
+                        [Meta.isDefEq] [0.119925] ❌️ Preorder.smallCategory
+                              ((Opens.grothendieckTopology ↥X✝).Cover
+                                X) =?= Preorder.smallCategory ((Opens.grothendieckTopology ↥X✝).Cover X)
+          [Elab.app.finalize] [0.202977] ✅️ ↑(A.H' n ⊤) ≃+ A.H n : Type (u + 1)
+            [Meta.synthInstance] [0.106281] ✅️ Add ↑(A.H' n ⊤)
+  [Elab.definition.value] [5.069687] ✅️ AlgebraicGeometry.Scheme.Cohomology.sheafHPrimeTopAddEquiv
+    [Elab.step] [2.635730] ✅️ expected type: ↑(A.H' n ⊤) ≃+ A.H n, term
+        TopCat.Sheaf.Cech.sheafHPrimeTopAddEquiv X.toTopCat A n
+      [Elab.app.args] [2.634723] ✅️ elabAppArgs (3 args)
+            TopCat.Sheaf.Cech.sheafHPrimeTopAddEquiv
+        [Elab.app.finalize] [2.575233] ✅️ TopCat.Sheaf.Cech.sheafHPrimeTopAddEquiv X.toTopCat A n : ↑(A.H' n ⊤) ≃+ A.H n
+          [Elab.app.finalize] [2.575028] ✅️ propagating expected type: ↑(A.H' n ⊤) ≃+ A.H n =?= ↑(A.H' n ⊤) ≃+ A.H n
+            [Meta.isDefEq] [2.574856] ✅️ ↑(A.H' n ⊤) ≃+ A.H n =?= ↑(A.H' n ⊤) ≃+ A.H n
+              [Meta.isDefEq] [0.107634] ✅️ ↑(A.H' n ⊤) =?= ↑(A.H' n ⊤)
+                [Meta.isDefEq] [0.107521] ✅️ (A.H' n ⊤).1 =?= (A.H' n ⊤).1
+                  [Meta.isDefEq] [0.102659] ✅️ Abelian.Ext
+                        (unop
+                          ((yoneda ⋙
+                                  (Functor.whiskeringRight (TopologicalSpace.Opens ↥X)ᵒᵖ (Type u) AddCommGrpCat).obj
+                                      AddCommGrpCat.free ⋙
+                                    presheafToSheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat).op.obj
+                            (op ⊤)))
+                        A
+                        n =?= Abelian.Ext
+                        (unop
+                          ((yoneda ⋙
+                                  (Functor.whiskeringRight (TopologicalSpace.Opens ↑X.toTopCat)ᵒᵖ (Type u)
+                                          AddCommGrpCat).obj
+                                      AddCommGrpCat.free ⋙
+                                    presheafToSheaf (Opens.grothendieckTopology ↑X.toTopCat) AddCommGrpCat).op.obj
+                            (op ⊤)))
+                        A n
+                    [Meta.isDefEq.delta] [0.102557] ✅️ Abelian.Ext
+                          (unop
+                            ((yoneda ⋙
+                                    (Functor.whiskeringRight (TopologicalSpace.Opens ↥X)ᵒᵖ (Type u) AddCommGrpCat).obj
+                                        AddCommGrpCat.free ⋙
+                                      presheafToSheaf (Opens.grothendieckTopology ↥X) AddCommGrpCat).op.obj
+                              (op ⊤)))
+                          A
+                          n =?= Abelian.Ext
+                          (unop
+                            ((yoneda ⋙
+                                    (Functor.whiskeringRight (TopologicalSpace.Opens ↑X.toTopCat)ᵒᵖ (Type u)
+                                            AddCommGrpCat).obj

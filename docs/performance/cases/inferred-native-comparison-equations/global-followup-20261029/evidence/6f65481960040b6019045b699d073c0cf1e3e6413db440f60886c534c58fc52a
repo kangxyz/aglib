@@ -1,0 +1,8 @@
+PREPARED_IMPORT_READINESS_BEGIN
+All targets up-to-date (3417 jobs).
+
+PREPARED_IMPORT_READINESS_END exit=0
+FIXED_DIAGNOSTIC_BEGIN CoordinateValueFormation sha256=9b5d8dca5d9e5ad930f557b68e3269e9b878c9617938173791602bf5982f8e0d
+
+FIXED_DIAGNOSTIC_END CoordinateValueFormation exit=0
+{"diagnostic_results": [{"name": "CoordinateValueFormation", "exit_code": 0, "source_sha256": "9b5d8dca5d9e5ad930f557b68e3269e9b878c9617938173791602bf5982f8e0d", "boundary": "fixed formation diagnostic only; no theorem proof or production Global coverage"}]}

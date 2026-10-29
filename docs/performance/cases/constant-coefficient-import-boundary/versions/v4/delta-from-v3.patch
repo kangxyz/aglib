@@ -1,0 +1,24 @@
+--- v3/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean
++++ v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean
+@@ -57,6 +57,10 @@
+     [Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X) q)]
+     (r : ℕ) :
+     Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod (p ^ r))) X) q) := by
++  let : Subsingleton (Sheaf.H.{w}
++      ((cyclicCoefficientFunctor X).obj (AddCommGrpCat.of (ZMod p))) q) :=
++    inferInstanceAs
++      (Subsingleton (Sheaf.H.{w} (ConstantFinite.coefficient (ULift.{u} (ZMod p)) X) q))
+   exact Sheaf.cyclicPrimePower_vanishing (cyclicCoefficientFunctor X) p hp q r
+ 
+ end AlgebraicGeometry.Scheme.EtaleCohomology.Curves
+--- v3/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean
++++ v4/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean
+@@ -134,7 +134,7 @@
+       (ConstantFinite.coefficient (ULift.{u} (ZMod p)) Y.left) q) :=
+     Finite.of_injective e e.injective
+   let : Finite (Sheaf.H.{w}
+-      (ConstantFinite.coefficient (ULift.{u} (ZMod p)) Y.left) q) := hp
++      ((cyclicCoefficientFunctor Y.left).obj (AddCommGrpCat.of (ZMod p))) q) := hp
+   exact Sheaf.cyclicPrimePower_cohomology_finite (cyclicCoefficientFunctor Y.left)
+     p (Fact.out : p.Prime).pos q r
+ 

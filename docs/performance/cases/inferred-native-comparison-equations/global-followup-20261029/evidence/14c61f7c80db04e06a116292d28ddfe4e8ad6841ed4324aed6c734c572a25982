@@ -1,0 +1,13 @@
+{
+  "question": "Does the ENTIRE generic factory/source/target/relative-map/whole-comparison assembly check before constants, and does the native endpoint consume those actual producers with one original Hconst/Kconst/c specialization?",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/FullCoordinateAssembly-v27.lean",
+  "sha256": "96f15095aede06d53cb0539c2737812d2a03fdb4208f0671fc09834cca426ded",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v27/READY.json",
+  "predicates": [
+    "generic liftRestrictionIso_app_eq_of_coordinates via required imports",
+    "representedSectionRestriction_coordinates",
+    "representedRestriction_literal"
+  ],
+  "runtime": "Minimal actual changed Core/Rep required import-output preparation, then official native Global setup/full4options/default200000 prefix. No per-helper acceptance, standalone lint/replay/client or unchanged fullGlobal retry.",
+  "coverage": "One coherent changed-producer prefix includes imported generic assembly, whole variable section proof and actual native constant consumption; ends before unchanged canonical/unit/fullGlobal/callers. On success continue current Global+Rootendpoint2 with matching guards."
+}

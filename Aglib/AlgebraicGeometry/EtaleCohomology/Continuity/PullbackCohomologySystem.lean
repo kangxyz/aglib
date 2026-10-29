@@ -11,8 +11,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.BaseChangeMap
 /-! # Original pullback of sections on relative schemes
 
 All section maps are the original adjunction-unit maps at the original terminal
-étale objects. Identity and composition are transported from the already proved
-original degree-zero cohomology laws; no Ext-universe choice occurs in the API.
+étale objects. Identity and composition follow the original constant-sheaf
+adjunction and inverse-image coherence, without an Ext realization in their proofs.
 -/
 
 @[expose] public noncomputable section
@@ -31,15 +31,39 @@ theorem globalSectionsPullback_id (X : Scheme.{u})
     (F : AbelianSheaf.{u, u + 1} X) :
     globalSectionsPullback (𝟙 X) F ≫
         (globalSections X).map ((inverseImageId X).hom.app F) = 𝟙 _ := by
-  let := hasExtStandard.{u, u + 1} X
-  ext z
-  let a := (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X)).symm z
-  have h := congrArg (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X))
-    (cohomologyPullback_id X F 0 a)
-  rw [← Sheaf.H.equiv₀_naturality, cohomologyPullback_equiv₀] at h
-  change ((inverseImageId X).hom.app F).hom.app (op (etaleTerminal X))
-    (globalSectionsPullback (𝟙 X) F z) = z
-  simpa only [a, AddEquiv.apply_symm_apply] using h
+  let A : AddCommGrpCat.{u + 1} := (globalSections X).obj F
+  let a : (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A ⟶ F :=
+    (constantAdjunction X).counit.app F
+  have ha : (constantAdjunction X).homEquiv A F a = 𝟙 A := by
+    rw [Adjunction.homEquiv_unit]
+    exact (constantAdjunction X).right_triangle_components F
+  have h : (constantAdjunction X).homEquiv A ((inverseImage (𝟙 X)).obj F)
+      (((inverseImageConstantIso (𝟙 X)).app A).inv ≫ (inverseImage (𝟙 X)).map a) =
+      globalSectionsPullback (𝟙 X) F :=
+    (constantTransport_homEquiv (𝟙 X) A (L := F) a).trans
+      ((congrArg (fun b : A ⟶ A => b ≫ globalSectionsPullback (𝟙 X) F) ha).trans
+        (Category.id_comp _))
+  have hi :
+      (((inverseImageConstantIso (𝟙 X)).app A).inv ≫
+        (inverseImage (𝟙 X)).map a) ≫ (inverseImageId X).hom.app F = a := by
+    rw [Category.assoc, (inverseImageId X).hom.naturality a, inverseImageId_constant]
+    dsimp only [Functor.id_obj]
+    simpa only [Functor.id_map, Iso.app_hom, Iso.app_inv] using
+      ((inverseImageConstantIso (𝟙 X)).app A).inv_hom_id_assoc a
+  calc
+    globalSectionsPullback (𝟙 X) F ≫
+        (globalSections X).map ((inverseImageId X).hom.app F) =
+      (constantAdjunction X).homEquiv A F
+        ((((inverseImageConstantIso (𝟙 X)).app A).inv ≫
+          (inverseImage (𝟙 X)).map a) ≫ (inverseImageId X).hom.app F) := by
+      exact (((constantAdjunction X).homEquiv_naturality_right
+        (((inverseImageConstantIso (𝟙 X)).app A).inv ≫ (inverseImage (𝟙 X)).map a)
+        ((inverseImageId X).hom.app F)).trans
+          (congrArg (fun b : A ⟶ (globalSections X).obj ((inverseImage (𝟙 X)).obj F) =>
+            b ≫ (globalSections X).map ((inverseImageId X).hom.app F)) h)).symm
+    _ = (constantAdjunction X).homEquiv A F a :=
+      congrArg ((constantAdjunction X).homEquiv A F) hi
+    _ = 𝟙 A := ha
 
 /-- Composition of actual section pullbacks, with the original inverse-image comparison. -/
 @[reassoc]
@@ -48,16 +72,75 @@ theorem globalSectionsPullback_comp {X S T : Scheme.{u}}
     globalSectionsPullback (g ≫ f) F ≫
         (globalSections T).map ((inverseImageComp f g).hom.app F) =
       globalSectionsPullback f F ≫ globalSectionsPullback g ((inverseImage f).obj F) := by
-  let := hasExtStandard.{u, u + 1} X
-  let := hasExtStandard.{u, u + 1} S
-  let := hasExtStandard.{u, u + 1} T
-  ext z
-  let a := (Sheaf.H.equiv₀ F (etaleTerminalIsTerminal X)).symm z
-  have h := congrArg (Sheaf.H.equiv₀ ((inverseImage g).obj ((inverseImage f).obj F))
-      (etaleTerminalIsTerminal T)) (cohomologyPullback_comp f g F 0 a)
-  rw [← Sheaf.H.equiv₀_naturality] at h
-  simp only [cohomologyPullback_equiv₀, a, AddEquiv.apply_symm_apply] at h
-  exact h
+  let A : AddCommGrpCat.{u + 1} := (globalSections X).obj F
+  let a : (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A ⟶ F :=
+    (constantAdjunction X).counit.app F
+  have ha : (constantAdjunction X).homEquiv A F a = 𝟙 A := by
+    rw [Adjunction.homEquiv_unit]
+    exact (constantAdjunction X).right_triangle_components F
+  have hf : (constantAdjunction S).homEquiv A ((inverseImage f).obj F)
+      (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a) =
+      globalSectionsPullback f F :=
+    (constantTransport_homEquiv f A (L := F) a).trans
+      ((congrArg (fun b : A ⟶ A => b ≫ globalSectionsPullback f F) ha).trans
+        (Category.id_comp _))
+  have hgf : (constantAdjunction T).homEquiv A ((inverseImage (g ≫ f)).obj F)
+      (((inverseImageConstantIso (g ≫ f)).app A).inv ≫ (inverseImage (g ≫ f)).map a) =
+      globalSectionsPullback (g ≫ f) F :=
+    (constantTransport_homEquiv (g ≫ f) A (L := F) a).trans
+      ((congrArg (fun b : A ⟶ A => b ≫ globalSectionsPullback (g ≫ f) F) ha).trans
+        (Category.id_comp _))
+  have hg : (constantAdjunction T).homEquiv A ((inverseImage g).obj ((inverseImage f).obj F))
+      (((inverseImageConstantIso g).app A).inv ≫ (inverseImage g).map
+        (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a)) =
+      (constantAdjunction S).homEquiv A ((inverseImage f).obj F)
+          (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a) ≫
+        globalSectionsPullback g ((inverseImage f).obj F) :=
+    constantTransport_homEquiv g A (L := (inverseImage f).obj F)
+      (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a)
+  have hc :
+      (((inverseImageConstantIso (g ≫ f)).app A).inv ≫
+        (inverseImage (g ≫ f)).map a) ≫ (inverseImageComp f g).hom.app F =
+      ((inverseImageConstantIso g).app A).inv ≫
+        (inverseImage g).map
+          (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a) := by
+    calc
+      _ = ((inverseImageConstantIso (g ≫ f)).app A).inv ≫
+          (inverseImageComp f g).hom.app
+            ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) ≫
+          (inverseImage g).map ((inverseImage f).map a) := by
+        simpa only [Category.assoc, Functor.comp_map] using
+          congrArg (fun q => ((inverseImageConstantIso (g ≫ f)).app A).inv ≫ q)
+            ((inverseImageComp f g).hom.naturality a)
+      _ = (((inverseImageConstantIso g).app A).inv ≫
+          (inverseImage g).map ((inverseImageConstantIso f).inv.app A)) ≫
+          (inverseImage g).map ((inverseImage f).map a) := by
+        simpa only [Category.assoc, Iso.app_inv] using
+          congrArg (fun q => q ≫ (inverseImage g).map ((inverseImage f).map a))
+            (inverseImageComp_constant_inv f g A)
+      _ = _ := by simp only [Functor.map_comp, Category.assoc, Iso.app_inv]
+  calc
+    globalSectionsPullback (g ≫ f) F ≫
+        (globalSections T).map ((inverseImageComp f g).hom.app F) =
+      (constantAdjunction T).homEquiv A _
+        ((((inverseImageConstantIso (g ≫ f)).app A).inv ≫
+          (inverseImage (g ≫ f)).map a) ≫ (inverseImageComp f g).hom.app F) := by
+      exact (((constantAdjunction T).homEquiv_naturality_right
+        (((inverseImageConstantIso (g ≫ f)).app A).inv ≫ (inverseImage (g ≫ f)).map a)
+        ((inverseImageComp f g).hom.app F)).trans
+          (congrArg (fun b : A ⟶ (globalSections T).obj ((inverseImage (g ≫ f)).obj F) =>
+            b ≫ (globalSections T).map ((inverseImageComp f g).hom.app F)) hgf)).symm
+    _ = (constantAdjunction T).homEquiv A _
+        (((inverseImageConstantIso g).app A).inv ≫
+          (inverseImage g).map
+            (((inverseImageConstantIso f).app A).inv ≫ (inverseImage f).map a)) :=
+      congrArg ((constantAdjunction T).homEquiv A
+        ((inverseImage g).obj ((inverseImage f).obj F))) hc
+    _ = globalSectionsPullback f F ≫
+        globalSectionsPullback g ((inverseImage f).obj F) := by
+      exact hg.trans (congrArg
+        (fun b : A ⟶ (globalSections S).obj ((inverseImage f).obj F) =>
+          b ≫ globalSectionsPullback g ((inverseImage f).obj F)) hf)
 
 /-- Native inverse-image identification attached to a commuting triangle. -/
 def pullbackTriangleIso {X Y Z : Scheme.{u}} (f : Y ⟶ X) (g : Z ⟶ X)

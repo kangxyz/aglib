@@ -1,0 +1,18 @@
+✔ [3553/3554] Built Aglib.AlgebraicGeometry.Picard.AssociatedBundle (140s)
+✖ [3554/3554] Building Aglib.AlgebraicGeometry.Picard.PowerDescent (94s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-8129c1ff775e40d7b8cedbe45b37c5ce/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Picard/PowerDescent.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/PowerDescent.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/PowerDescent.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/PowerDescent.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/PowerDescent.setup.json --json
+error: Aglib/AlgebraicGeometry/Picard/PowerDescent.lean:419:0: Please, write a comment here or remove this line, but do not place empty lines within commands!
+Context:
+                                                                          ↓
+  ⏎/-- The frame-section coordinate of each descended chart is literal. -/⏎⏎@[simp] theorem toFrame_sections (h : EtaleLineBundleDescent.{u}) (U : X.Etaleᵒᵖ) (s :⏎
+
+Note: This linter can be disabled with `set_option linter.style.emptyLine false`
+error: Aglib/AlgebraicGeometry/Picard/PowerDescent.lean:686:0: Please, write a comment here or remove this line, but do not place empty lines within commands!
+Context:
+                                                                                                      ↓
+  ⏎/-- A genuine equivariant map gives exactly the required chart square on every etale refinement. -/⏎⏎theorem frameMap_chart_comm (h : EtaleLineBundleDescent.{u}) (L : LineBundle X)⏎
+
+Note: This linter can be disabled with `set_option linter.style.emptyLine false`
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Picard.PowerDescent
+error: build failed

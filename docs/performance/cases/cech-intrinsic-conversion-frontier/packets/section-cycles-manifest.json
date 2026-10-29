@@ -1,0 +1,19 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "phase": "section-cycles",
+  "files": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cohomology/SectionCycles.lean",
+      "sha256": "9421e29e3eb6157f51216c1bd9e9f4d357c5c8ca6535ee9d959919cdab3c1faf"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "sha256": "756f2b94b276878584927ddd9e54f9c659b05980c60763f2397bc194ebb5d372"
+    }
+  ],
+  "targets": [
+    "Aglib.Topology.Sheaves.Cohomology.SectionCycles",
+    "Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles"
+  ],
+  "revision": 4
+}

@@ -22,40 +22,38 @@ lemma triangleCoefficientMap_naturality {Y Z T : Scheme.{u}} (f : Z ⟶ Y)
     (φ : (inverseImage f).obj F ⟶ G) (ψ : (inverseImage f).obj F' ⟶ G')
     (a : F ⟶ F') (b : G ⟶ G') (h : (inverseImage f).map a ≫ ψ = φ ≫ b) :
     triangleCoefficientMap f p q e φ ≫ (inverseImage q).map b =
-      (inverseImage p).map a ≫ triangleCoefficientMap f p q e ψ := by
-  have hn := (pullbackTriangleIso p f q e).hom.naturality a
-  change (inverseImage p).map a ≫ (pullbackTriangleIso p f q e).hom.app F' =
-    (pullbackTriangleIso p f q e).hom.app F ≫
-      (inverseImage q).map ((inverseImage f).map a) at hn
-  dsimp only [triangleCoefficientMap]
-  rw [Category.assoc, ← Functor.map_comp, ← h, Functor.map_comp, ← Category.assoc, ← hn,
-    Category.assoc]
+      (inverseImage p).map a ≫ triangleCoefficientMap f p q e ψ :=
+  Adjunction.triangleCoefficientMap_naturality (pullbackTriangleIso p f q e) φ ψ a b h
 
 variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ) (c : Cocone X)
   {F G : DiagramCoefficientSystem X}
   (η : InjectiveSystem.System.Hom (diagramAdjunctionData X) F G)
 
 /-- The original inverse-image maps define a morphism of the actual cone coefficient diagrams. -/
-def coneCoefficientNatTrans : coneCoefficientFunctor X c F ⟶ coneCoefficientFunctor X c G where
-  app i := (inverseImage (c.ι.app i).unop).map (η.app i)
-  naturality i j a := triangleCoefficientMap_naturality (X.map a).unop
-    (c.ι.app i).unop (c.ι.app j).unop
-    (congrArg (fun k : X.obj i ⟶ c.pt => k.unop) (c.w a))
-    (diagramInverseTransition X F a) (diagramInverseTransition X G a)
-    (η.app _) (η.app _) (diagramInverseTransition_naturality X η a)
+def coneCoefficientNatTrans : coneCoefficientFunctor X c F ⟶ coneCoefficientFunctor X c G :=
+  (diagramConeAdjunctionData X c).coefficientNatTrans η
+
+/-- The shared cone transformation has its literal original inverse-image value. -/
+lemma coneCoefficientNatTrans_app (i : I) :
+    (coneCoefficientNatTrans X c η).app i =
+      (inverseImage (c.ι.app i).unop).map (η.app i) := rfl
 
 variable [HasColimitsOfShape I (AbelianSheaf.{u, u + 1} c.pt.unop)]
 
 /-- The resulting map on the actual coefficient colimits. -/
 def coneCoefficientColimitMap : colimit (coneCoefficientFunctor X c F) ⟶
     colimit (coneCoefficientFunctor X c G) :=
-  colim.map (coneCoefficientNatTrans X c η)
+  (diagramConeAdjunctionData X c).coefficientColimitMap η
+
+/-- The colimit map is induced by that same actual coefficient transformation. -/
+lemma coneCoefficientColimitMap_eq_colim_map :
+    coneCoefficientColimitMap X c η = colim.map (coneCoefficientNatTrans X c η) := rfl
 
 @[reassoc]
 lemma coneCoefficientColimitMap_ι (i : I) :
     colimit.ι (coneCoefficientFunctor X c F) i ≫ coneCoefficientColimitMap X c η =
       (inverseImage (c.ι.app i).unop).map (η.app i) ≫
         colimit.ι (coneCoefficientFunctor X c G) i :=
-  colimit.ι_map (coneCoefficientNatTrans X c η) i
+  (diagramConeAdjunctionData X c).coefficientColimitMap_ι η i
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

@@ -1,0 +1,221 @@
+--- frozen4ea/ProperBaseChange.lean
++++ candidate/ProperBaseChange.lean
+@@ -11,88 +11,146 @@
+ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Conservative
+ 
+ /-!
+-# Proper base change for the original bounded-below module exchange
++# Producer declaration type metadata
+ 
+-The original abelian proper exchange on internally torsion homology, the exact
+-torsion comparison for scalar forgetting, and the original mate-cube equation
+-imply invertibility of the same module-derived exchange component. The four
+-module-derived categories remain independently supplied. Each auxiliary abelian
+-derived category is selected once inside the proof by its standard realization.
+-The coefficient ring is arbitrary, and no common annihilator is required.
++No theorem value access, reduction, unfolding, definitional-equality test, or
++budget/semantic option change. Outer telescopes are peeled syntactically.
+ -/
+ 
+-@[expose] public noncomputable section
++public section
+ 
+-open CategoryTheory CategoryTheory.Limits
++open Lean Meta
+ 
+-namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper
++namespace ProducerTypeExtraction
+ 
+-open Coefficients
++def emit (s : String) : MetaM Unit := do IO.println s
+ 
+-private theorem isIso_app_of_mateCube
+-    {A B C D A' B' C' D' : Type*}
+-    [Category* A] [Category* B] [Category* C] [Category* D]
+-    [Category* A'] [Category* B'] [Category* C'] [Category* D']
+-    {R₁ : B ⥤ A} {R₂ : D ⥤ C} {R₁' : B' ⥤ A'} {R₂' : D' ⥤ C'}
+-    {G : A ⥤ C} {H : B ⥤ D} {G' : A' ⥤ C'} {H' : B' ⥤ D'}
+-    {QA : A ⥤ A'} {QB : B ⥤ B'} {QC : C ⥤ C'} {QD : D ⥤ D'}
+-    {b₁ : R₁ ⋙ QA ⟶ QB ⋙ R₁'} {b₂ : R₂ ⋙ QC ⟶ QD ⋙ R₂'}
+-    {μ : R₁ ⋙ G ⟶ H ⋙ R₂} {μ' : R₁' ⋙ G' ⟶ H' ⋙ R₂'}
+-    {γ : QA ⋙ G' ⟶ G ⋙ QC} {δ : QB ⋙ H' ⟶ H ⋙ QD}
+-    (h : HorizontalMateCubeEquation b₁ b₂ μ μ' γ δ) (K : B)
+-    [IsIso b₁] [IsIso b₂] [IsIso γ] [IsIso δ]
+-    [IsIso (μ'.app (QB.obj K))] [QC.ReflectsIsomorphisms] : IsIso (μ.app K) := by
+-  have ht : IsIso (γ.app (R₁.obj K) ≫ QC.map (μ.app K) ≫ b₂.app (H.obj K)) := by
+-    rw [← h K]
+-    infer_instance
+-  have hr : IsIso (QC.map (μ.app K) ≫ b₂.app (H.obj K)) :=
+-    (isIso_comp_left_iff (γ.app (R₁.obj K)) _).mp ht
+-  have : IsIso (QC.map (μ.app K)) :=
+-    (isIso_comp_right_iff _ (b₂.app (H.obj K))).mp hr
+-  exact isIso_of_reflects_iso (μ.app K) QC
++def kind : Expr → String
++  | .bvar _ => "bvar" | .fvar _ => "fvar" | .mvar _ => "mvar"
++  | .sort _ => "sort" | .const _ _ => "const" | .app _ _ => "app"
++  | .lam _ _ _ _ => "lambda" | .forallE _ _ _ _ => "forall"
++  | .letE _ _ _ _ _ => "let" | .lit _ => "literal"
++  | .mdata _ _ => "metadata" | .proj _ _ _ => "projection"
+ 
+-universe u wMX wMS wMX' wMS' wAX wAS wAX' wAS'
++partial def head (e : Expr) : MetaM String := do
++  match e with
++  | .app f _ => head f
++  | .const n us => pure s!"const {n} universes={reprStr us}"
++  | .fvar _ => pure s!"fvar {(← getFVarLocalDecl e).userName}"
++  | .bvar i => pure s!"bvar {i}"
++  | .mvar id => pure s!"mvar {id.name}"
++  | .sort u => pure s!"sort {reprStr u}"
++  | .proj n i b => pure s!"projection {n}.{i} base=({← head b})"
++  | .lam n _ b _ => pure s!"lambda {n} body=({← head b})"
++  | .forallE n _ b _ => pure s!"forall {n} body=({← head b})"
++  | .letE n _ _ b _ => pure s!"let {n} body=({← head b})"
++  | .mdata _ b => pure s!"metadata ({← head b})"
++  | .lit l => pure s!"literal {reprStr l}"
+ 
+-attribute [local instance] hasSheafifyLarge
++partial def bounded (e : Expr) (depth : Nat) : MetaM String := do
++  if depth == 0 then return ← head e
++  match e with
++  | .app _ _ =>
++    let args := e.getAppArgs
++    let mut entries : Array String := #[]
++    for i in [:min args.size 6] do
++      entries := entries.push s!"{i}:({← bounded args[i]! (depth - 1)})"
++    pure s!"({← head e}) argc={args.size} [{String.intercalate "; " entries.toList}]"
++  | .lam n t b bi =>
++    pure s!"lambda {n} {reprStr bi} domain=({← head t}) \
++      body=({← bounded b (depth - 1)})"
++  | .proj n i b => pure s!"projection {n}.{i} base=({← bounded b (depth - 1)})"
++  | .mdata _ b => pure s!"metadata ({← bounded b (depth - 1)})"
++  | _ => head e
+ 
+-variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
+-  [HasDerivedCategory.{wMX} (ModuleSheaf X Λ)]
+-  [HasDerivedCategory.{wMS} (ModuleSheaf S Λ)]
+-  [HasDerivedCategory.{wMX'} (ModuleSheaf X' Λ)]
+-  [HasDerivedCategory.{wMS'} (ModuleSheaf S' Λ)]
+-  (f : X ⟶ S) [IsProper f] (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
+-  (sq : IsPullback g' f' f g)
++def nodes (e : Expr) : MetaM Nat := do
++  let r ← IO.mkRef 0
++  e.forEach fun _ => r.modify (· + 1)
++  r.get
+ 
+-private theorem moduleExchange_isIso_of_torsion_homology
+-    [HasDerivedCategory.{wAX} (AbelianSheaf.{u, u + 1} X)]
+-    [HasDerivedCategory.{wAS} (AbelianSheaf.{u, u + 1} S)]
+-    [HasDerivedCategory.{wAX'} (AbelianSheaf.{u, u + 1} X')]
+-    [HasDerivedCategory.{wAS'} (AbelianSheaf.{u, u + 1} S')]
+-    (K : DerivedCategory.Plus (ModuleSheaf X Λ))
+-    (hK : moduleTorsionCohomologyPlus X Λ K) :
+-    IsIso ((moduleDerivedBaseChangeMap Λ f f' g g' sq.w.symm).app K) := by
+-  let : (moduleDerivedUnderlying Λ S').ReflectsIsomorphisms :=
+-    Functor.rightDerivedFunctorPlus_reflectsIsomorphisms
+-      (SheafOfModules.toSheaf (constantRing S' Λ))
+-  let : IsIso ((derivedBaseChangeMap f f' g g' sq.w.symm).app
+-      ((moduleDerivedUnderlying Λ X).obj K)) :=
+-    properDerivedBaseChange_isIso_of_torsion_homology f f' g g' sq
+-      ((moduleDerivedUnderlying Λ X).obj K)
+-      ((moduleTorsionCohomologyPlus_iff_underlying X Λ K).mp hK)
+-  exact isIso_app_of_mateCube
+-    (moduleDerivedBaseChangeMap_underlying Λ f f' g g' sq.w.symm) K
++partial def binderNames (e : Expr) : Array Name :=
++  match e with
++  | .forallE n _ b _ => #[n] ++ binderNames b
++  | _ => #[]
+ 
+-/-- Proper base change makes the original module-derived exchange component
+-invertible on the actual bounded-below torsion-cohomology range. The proof-only
+-abelian derived realizations impose no additional choice on the statement. -/
+-theorem properModuleDerivedBaseChange_isIso_of_torsion_homology
+-    (K : DerivedCategory.Plus (ModuleSheaf X Λ))
+-    (hK : moduleTorsionCohomologyPlus X Λ K) :
+-    IsIso ((moduleDerivedBaseChangeMap Λ f f' g g' sq.w.symm).app K) := by
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+-  exact moduleExchange_isIso_of_torsion_homology Λ f f' g g' sq K hK
++def lookupLocal (locals : Array (Name × Expr)) (s : String) : MetaM Expr := do
++  for (n, e) in locals do
++    if n.toString == s then return e
++  throwError "Producer binder absent: {s}"
+ 
+-end AlgebraicGeometry.Scheme.EtaleCohomology.Proper
++def intended (locals : Array (Name × Expr)) (slot : String) : MetaM Expr := do
++  let coeff := `AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
++  let etale := `AlgebraicGeometry.Scheme.EtaleCohomology
++  let lam ← lookupLocal locals "Λ"
++  let (decl, arg, coefficient) ← match slot with
++    | "R₁" => pure (coeff ++ `moduleDerivedDirectImage, "f", true)
++    | "R₂" => pure (coeff ++ `moduleDerivedDirectImage, "f'", true)
++    | "R₁'" => pure (etale ++ `derivedDirectImage, "f", false)
++    | "R₂'" => pure (etale ++ `derivedDirectImage, "f'", false)
++    | "G" => pure (coeff ++ `moduleDerivedInverseImage, "g", true)
++    | "H" => pure (coeff ++ `moduleDerivedInverseImage, "g'", true)
++    | "G'" => pure (etale ++ `derivedInverseImage, "g", false)
++    | "H'" => pure (etale ++ `derivedInverseImage, "g'", false)
++    | "QA" => pure (coeff ++ `moduleDerivedUnderlying, "S", true)
++    | "QB" => pure (coeff ++ `moduleDerivedUnderlying, "X", true)
++    | "QC" => pure (coeff ++ `moduleDerivedUnderlying, "S'", true)
++    | "QD" => pure (coeff ++ `moduleDerivedUnderlying, "X'", true)
++    | _ => throwError "Unexpected functor slot {slot}"
++  let x ← lookupLocal locals arg
++  let e ← if coefficient then mkAppM decl #[lam, x] else mkAppM decl #[x]
++  instantiateMVars e
++
++def reportSlot (slot : String) (actual expected : Expr) : MetaM Unit := do
++  emit s!"SLOT {slot} actualKind={kind actual} actualNodes={← nodes actual} \
++    expectedNodes={← nodes expected} alphaEqual={actual == expected} \
++    structuralEqual={actual.equal expected} expectedHasMVars={expected.hasMVar}"
++  emit s!"ACTUAL {slot} {← bounded actual 2}"
++  emit s!"INTENDED {slot} {← bounded expected 1}"
++  if actual.getAppFn.isConstOf ``CategoryTheory.Functor.mk then
++    let args := actual.getAppArgs
++    let ci ← getConstInfo ``CategoryTheory.Functor.mk
++    match ci with
++    | .ctorInfo c =>
++      emit s!"FUNCTOR_CTOR {slot} numParams={c.numParams} totalArgs={args.size}"
++      for (field, offset) in [("obj", 0), ("map", 1)] do
++        if let some v := args[c.numParams + offset]? then
++          emit s!"FIELD {slot}.{field} kind={kind v} nodes={← nodes v} {← bounded v 3}"
++    | _ => throwError "Functor.mk is not constructor metadata"
++
++def reportCube (locals : Array (Name × Expr)) (body : Expr) : MetaM Unit := do
++  let cubeName := `CategoryTheory.HorizontalMateCubeEquation
++  unless body.getAppFn.isConstOf cubeName do
++    throwError "Raw producer conclusion has unexpected head: {← head body}"
++  emit s!"CUBE {← head body} argc={body.getAppArgs.size} nodes={← nodes body}"
++  let cube ← getConstInfo cubeName
++  let names := binderNames cube.type
++  let args := body.getAppArgs
++  unless names.size == args.size do
++    throwError "Cube binder count {names.size} differs from raw application count {args.size}"
++  let slots := ["R₁", "R₂", "R₁'", "R₂'", "G", "H", "G'", "H'", "QA", "QB", "QC", "QD"]
++  let mut seen : Nat := 0
++  for i in [:names.size] do
++    let n := names[i]!.toString
++    emit s!"CUBE_ARGUMENT index={i} binder={n} kind={kind args[i]!} head=({← head args[i]!})"
++    if slots.contains n then
++      let expected ← intended locals n
++      reportSlot n args[i]! expected
++      seen := seen + 1
++  unless seen == 12 do throwError "Expected twelve slots; found {seen}"
++  emit "COMPLETE twelve slots; raw type only; no theorem value/reduction/defeq inspected"
++
++partial def peel (e : Expr) (locals : Array (Name × Expr)) : MetaM Unit := do
++  match e with
++  | .forallE n t b bi =>
++    emit s!"PRODUCER_BINDER index={locals.size} name={n} binderInfo={reprStr bi} \
++      typeNodes={← nodes t} type=({← bounded t 1})"
++    withLocalDecl n bi t fun x => peel (b.instantiate1 x) (locals.push (n, x))
++  | _ => reportCube locals e
++
++run_meta do
++  let n := `AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_underlying
++  let ci ← getConstInfo n
++  emit s!"PRODUCER {n} levelParams={reprStr ci.levelParams} rawTypeNodes={← nodes ci.type}"
++  peel ci.type #[]
++
++end ProducerTypeExtraction

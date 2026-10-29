@@ -51,13 +51,10 @@ theorem power_bijective_of_curve (hdim : topologicalKrullDim X ≤ 1)
     toIsLocallyNoetherian := inferInstance
     toCompactSpace := inferInstance }
   let : HasExt.{u + 2} (AbelianSheaf.{u, u + 1} (genericArtinLocus X)) := HasExt.standard _
-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} (genericArtinLocus X))
-  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
-  let := HasDerivedCategory.standard AddCommGrpCat.{u + 1}
   cases q with
   | zero => omega
   | succ q =>
-    exact genericUnit_power_bijective.{u, u + 2, w, u + 2, u + 2, u + 2} X n
+    exact genericUnit_power_bijective.{u, u + 2, w} X n
       (fun r hr => genericKernel_subsingleton_H hdim (closed_residue_isSepClosed k X p) r hr)
       (fun r hr => genericCokernel_subsingleton_H hdim (closed_residue_isSepClosed k X p) r hr)
       (fun r hr => genericHigherImage_positive_nsmul_isIso X p hdim n hn hunit r hr)

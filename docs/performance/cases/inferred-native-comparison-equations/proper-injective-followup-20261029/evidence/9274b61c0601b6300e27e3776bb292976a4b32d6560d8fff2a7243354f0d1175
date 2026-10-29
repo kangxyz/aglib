@@ -1,0 +1,86 @@
+# Proper injective assembly: fixed preparation and correspondence
+
+Question: move the complete existing exact-coefficient injective-test assembly of
+`derivedExchange_on_all_zmodCoefficients` to a lower homological owner, then retain
+all three original theorem statements and their actual maps as thin native
+specializations. This is the bounded AllModuleCoefficients chain, not a claim of
+closure for Proper, EtaleCohomology or the fixed three-module production checkpoint.
+
+Input basis: Entry HEAD `3467423400c765167730d4372704650a52ab3a95`, Aglib HEAD
+`54d6974ace11bf7d197aa925cb8cade86db8a24f`; actual native and InjectiveComparison
+before-images are under `before/`. The fixed3 production source
+`3dede325a048fde9dc106d7561dfb72e3e44a1fc1c469e6d6ae0988a558cbabd` remains the broker's
+independent frozen basis. Toolchain Lean 4.34.1 and Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612` are unchanged.
+
+## Mathematical preparation and proof order
+
+1. Use coefficient category T with enough injectives, value categories A, B, C,
+   D, and a single chosen derived realization for each of the latter four.
+   Their object, morphism and derived size universes remain independent.
+2. Let U : T -> A be the actual additive exact coefficient functor. Take four
+   additive ordinary functors F1 : A -> B, F2 : B -> D, G1 : A -> C, G2 : C -> D.
+   The supplied beta is the actual shift-compatible natural transformation
+   RF1 >> RF2 -> RG1 >> RG2. The test is on the original A-single of U(I), where
+   I is injective in T. It does not require U(I) injective in A.
+3. Choose `HasDerivedCategory.standard T` internally, since its model is absent
+   from the theorem's conclusion. Form the literal precomposition alpha =
+   whiskerLeft RU beta. Its two functors are triangulated and carry their native
+   shift structures from the installed right-derived functors.
+4. Apply `rightDerivedFunctorPlus_isGE` successively to U, F1, F2 and to U, G1,
+   G2. This proves nonnegative bounds on the actual images of coefficient
+   singles; no bound or desired comparison is introduced as a new premise.
+5. Use exactly `(U.rightDerivedFunctorPlusSingleIso 0).app N`. That existing
+   comparison is constructed from the inverse native derived unit and the
+   actual single-complex map; `rightDerivedFunctorPlusSingleIso_unit` in
+   `RightDerivedFunctorPlus/SingleHomology.lean` characterizes its unit equation.
+6. Naturality of beta transports the original hI to alpha on injective singles.
+   Reuse `isIso_app_single_of_injective` in the unchanged core owner. Its native
+   single triangles, long exact sequences and finite degree induction extend
+   the tests to every coefficient single. Transport back through the same
+   exact-single comparison to recover beta on the original U(M)-single.
+7. Native implementation supplies actual module U, its existing exactness and
+   enough-injectives instances, the four actual image functors and original beta.
+   Existing killed-coefficient and higher-exchange proofs remain unchanged.
+   They already form the canonical coefficient and apply native comparison APIs.
+
+The new same-directory `InjectiveComparisonExact.lean` is a current-consumer
+leaf importing the unchanged core, exact-single API and lower-bound API. This
+avoids adding right-derived dependencies to every existing core consumer.
+
+## Whole original-map and value correspondence
+
+| Generic input/construction | Original value/construction |
+|---|---|
+| T | `ZModSheaf X n` for the original arbitrary n : Nat |
+| A | `AbelianSheaf X`, chosen derived universe dX |
+| B | `AbelianSheaf S`, chosen derived universe dS |
+| C | `AbelianSheaf X'`, chosen derived universe dX' |
+| D | `AbelianSheaf S'`, chosen derived universe dS' |
+| U | literal `zmodUnderlying X n` |
+| F1, F2 | `directImage f`, `inverseImage g` |
+| G1, G2 | `inverseImage g'`, `directImage f'` |
+| beta | same `derivedBaseChangeMap f f' g g' h` |
+| beta's shift structure | same `derivedBaseChangeMap_commShift f f' g g' h` |
+| original input single | definitional `(zmodSingle X n).obj M` |
+| exact-single comparison | same native `U.rightDerivedFunctorPlusSingleIso 0` |
+| injective premise | exactly original hI on genuine module injectives |
+| killed coefficient | unchanged `TorsionZMod.sheaf ... n F hF` |
+| killed-single transport | unchanged `sheafUnderlyingIso`, mapped by original single |
+| higher map | same `higherBaseChangeMap f f' g g' h q` and native implication |
+
+All original schemes, f/f'/g/g', equality h, arbitrary n, hI, killed coefficient
+condition `n • id F = 0`, and arbitrary q : Nat are retained. No properness,
+cartesianness, nonzero modulus, preservation of injectives by forgetting,
+endpoint isomorphism or desired coherence premise is added. Actual topos and
+sheaf worlds are supplied only by the native adapter.
+
+## Evidence and remaining obligations
+
+Source implementation is staged only. No Lean compilation is claimed yet.
+The author owns the complete compile/repair chain with the broker as sole remote
+compiler operator. Publish the two prospective source paths only after explicit
+hold release and before-image guards; then compile the changed native root and
+its new necessary lower import, preserving the broker's compatible evidence.
+No new tests, replay, separate client or audit chain is requested. Native batch
+final validation remains with the principal's existing migration workflow.

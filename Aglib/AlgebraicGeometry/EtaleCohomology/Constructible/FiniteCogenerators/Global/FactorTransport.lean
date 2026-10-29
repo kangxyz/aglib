@@ -7,6 +7,7 @@ module
 
 public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.NatIso
+public import Aglib.CategoryTheory.Functor.NaturalityTransport
 
 /-! # Original coefficient factorization through the original chart isomorphisms
 
@@ -32,19 +33,8 @@ theorem contraFunctorIso_chart_naturality
     (hc : a.hom ≫ R.map h = r ≫ b.hom) :
     L.map (P.map h.op) ≫ (e.hom.app (op Y) ≫ Q.map a.hom.op) =
       (e.hom.app (op Z) ≫ Q.map b.hom.op) ≫ Q.map r.op := by
-  have he : L.map (P.map h.op) ≫ e.hom.app (op Y) =
-      e.hom.app (op Z) ≫ Q.map (R.map h).op := e.hom.naturality h.op
-  have hm : Q.map (R.map h).op ≫ Q.map a.hom.op =
-      Q.map b.hom.op ≫ Q.map r.op :=
-    (Q.map_comp (R.map h).op a.hom.op).symm.trans
-      ((congrArg (fun k => Q.map k.op) hc).trans (Q.map_comp b.hom.op r.op))
-  exact (Category.assoc (L.map (P.map h.op)) (e.hom.app (op Y))
-    (Q.map a.hom.op)).symm.trans
-      ((congrArg (fun k => k ≫ Q.map a.hom.op) he).trans
-        ((Category.assoc (e.hom.app (op Z)) (Q.map (R.map h).op)
-          (Q.map a.hom.op)).trans
-            ((congrArg (fun k => e.hom.app (op Z) ≫ k) hm).trans
-              (Category.assoc (e.hom.app (op Z)) (Q.map b.hom.op) (Q.map r.op)).symm)))
+  exact CategoryTheory.Functor.NaturalityTransport.contraFunctorIso_chart_naturality
+    P Q R L e h a b r hc
 
 /-- A lift in the actual supplied iso square gives a lift through the
 original arrow, preserving that same original coefficient map. -/
@@ -54,7 +44,7 @@ theorem factor_through_original_iso_square
     (hτ : τ ≫ eA.hom = eB.hom ≫ τ')
     (α : F ⟶ A) (β : F ⟶ B') (hβ : β ≫ τ' = α ≫ eA.hom) :
     (β ≫ eB.inv) ≫ τ = α := by
-  apply (cancel_mono eA.hom).mp
-  simp only [Category.assoc, hτ, Iso.inv_hom_id_assoc, hβ]
+  exact CategoryTheory.Functor.NaturalityTransport.factor_through_original_iso_square
+    eA eB τ τ' hτ α β hβ
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.FiniteCogenerators.Global

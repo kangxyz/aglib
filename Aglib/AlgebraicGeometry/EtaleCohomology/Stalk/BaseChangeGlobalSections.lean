@@ -16,9 +16,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChangeResoluti
 The original higher base-change map on global higher-image sections commutes
 with the original Ext cohomology pullback. The proof compares actual cycle
 sections in the native resolutions, using their original term inclusions.
-Source and target Ext universes and all four derived models are independent.
-No properness, Cartesian hypothesis or base-change isomorphism is needed for
-this equality of the original maps.
+Source and target Ext universes remain independent. The ordinary formula has no
+derived-category parameter. No properness, Cartesian hypothesis or base-change
+isomorphism is needed for this equality of the original maps.
 -/
 
 @[expose] public noncomputable section
@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits HomologicalComplex
 
-universe u w w' dX dS dX' dS'
+universe u w w'
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
@@ -38,10 +38,6 @@ attribute [local instance] hasSheafifyLarge
 variable {X S X' S' : Scheme.{u}}
   [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
   [HasExt.{w'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f)
 

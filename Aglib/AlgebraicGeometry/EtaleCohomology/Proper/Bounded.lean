@@ -50,7 +50,7 @@ killed by a positive integer, in each of the original independent models. -/
 theorem properHigherBaseChange_isIso_of_killed
     (n : ℕ) (hn : n ≠ 0) (F : AbelianSheaf.{u, u + 1} X)
     (hF : n • 𝟙 F = 0) (q : ℕ) :
-    IsIso ((higherBaseChangeMap f f' g g' H.w.symm q).app F) :=
+    IsIso ((higherBaseChangeMapFromDerived f f' g g' H.w.symm q).app F) :=
   higherBaseChangeMap_isIso_of_boundedExchange f f' g g' H.w.symm n
     ((boundedBaseChange_proper n hn f) f' g g' H) F hF q
 
@@ -62,6 +62,8 @@ theorem properDerivedBaseChange_single_isIso_of_killed
     IsIso ((derivedBaseChangeMap f f' g g' H.w.symm).app
       ((DerivedCategory.Plus.singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj F)) :=
   (Reduction.derivedBaseChangeMap_single_isIso_iff_higher f f' g g' H.w.symm F).mpr
-    (properHigherBaseChange_isIso_of_killed f f' g g' H n hn F hF)
+    (by
+      simpa only [higherBaseChangeMapFromDerived_eq] using
+        (properHigherBaseChange_isIso_of_killed f f' g g' H n hn F hF))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Proper

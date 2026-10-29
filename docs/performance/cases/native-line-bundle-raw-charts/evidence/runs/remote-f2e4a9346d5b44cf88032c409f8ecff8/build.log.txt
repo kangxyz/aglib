@@ -1,0 +1,36 @@
+✖ [3553/3554] Building Aglib.AlgebraicGeometry.Picard.AssociatedBundle (137s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-f2e4a9346d5b44cf88032c409f8ecff8/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.setup.json --json
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:206:2: Unknown identifier `ChartComposition`
+
+Note: A private declaration `ChartComposition` (from the current module) exists but would need to be public to access here.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:267:42: Application type mismatch: The argument
+  hh
+has type
+  ChartRelationOn P M c u ⟨unop U, s⟩ ⟨unop V, (ConcreteCategory.hom (P.carrier.obj.map f)) s⟩ f.unop (𝟙 (unop V))
+but is expected to have type
+  ChartComposition ?m.705 ?m.707 ?m.706
+in the application
+  chartComposition_eq hh
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:716:2: 'change' tactic failed, pattern
+  pullHom (rawChart P χ i) a.left V.hom V.hom ⋯ ⋯ ≫
+      transition V.hom V.hom
+        ↑(transportUnit P χ (op V) ((ConcreteCategory.hom (P.carrier.obj.map a.op)) i.snd)
+            ((ConcreteCategory.hom (P.carrier.obj.map b.op)) j.snd)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom ⋯ ⋯
+is not definitionally equal to target
+  Construction.ChartRelationOn P ((cocycle P χ).descendedObject etaleLineBundleDescent ⋯) (rawChart P χ)
+    (transportUnit P χ) i j a b
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:740:2: Type mismatch
+  rawChart_relations P χ i j a b
+has type
+  Construction.ChartRelationOn P ((cocycle P χ).descendedObject etaleLineBundleDescent ⋯) (rawChart P χ)
+    (transportUnit P χ) i j a b
+but is expected to have type
+  pullHom (rawChart P χ i) a.left V.hom V.hom ⋯ ⋯ ≫
+      transition V.hom V.hom
+        ↑(transportUnit P χ (op V) ((ConcreteCategory.hom (P.carrier.obj.map a.op)) i.snd)
+            ((ConcreteCategory.hom (P.carrier.obj.map b.op)) j.snd)) =
+    pullHom (rawChart P χ j) b.left V.hom V.hom ⋯ ⋯
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+error: build failed

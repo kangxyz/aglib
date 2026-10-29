@@ -1,0 +1,12 @@
+{
+  "question": "Check the whole original comparison proof at its literal old native statement using the inferred representative equation and actual class equation. The private diagnostic-only generic function supplier concludes the exact supplied E x=y, and the native proof discharges E=f\u2218e by rfl and hz by original onH1_classOf. Thus the exact typed original factorization and class endpoint must close before the pure helper is moved to the Root-conditionally owned SquareTransport; zero proof-skipping data counts are not accepted as a carrier/type equivalence.",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/equation-route-after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "diagnostic_sha256": "6d80c9d07f79b2702dcc4172ce262849010901422be238c3a84ac85007c04cd5",
+  "basis_run": "remote-bf20009e4ff941a2affe91985903532b",
+  "basis_source": "8df5b6f8218a2af9c332adfaea0d853b5084d1b472c133ef32f6a8198e5c8e4e",
+  "change": "R-only faithful complete source with pure private function-equality supplier over three independent Sorts, and only the failing proof changed to apply it with the native equations. No public theorem/header/geometry/action/carrier/unit/generator/Ext world changes, no options or budget/recursion changes, no desired native identity assumption, no additional model. All helper hypotheses are discharged in the original theorem proof.",
+  "runtime": "One ordinary scoped candidate frontend on actual native setup/import basis. Preserve actual source identity; if it fails return the exact original E-definition or class-endpoint goal. No N source mutation and no unchanged production retry. C owns this route check; existing DATA helper output remains its separate diagnostic evidence.",
+  "adoption_boundary": "Only an actual completed old native proof with the displayed native rfl/original-producer obligations may justify the corresponding generic/native production patch. A mathematical/source review and later actual native production pass retain separate status."
+}

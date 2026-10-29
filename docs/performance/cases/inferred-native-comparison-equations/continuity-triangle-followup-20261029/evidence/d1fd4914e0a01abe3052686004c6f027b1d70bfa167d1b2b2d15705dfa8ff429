@@ -1,0 +1,27 @@
+{
+  "question": "Existing continuity triangle-calculus refactor, not a new theory",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "source_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": "ada16f2f9bab8488c7df73f8ff28f5a8d21d4420f20d0c68c71a373e3a513b25",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": "e4c28699b2b144a48eafa46ac224f51765ecea7e1d2f8b7188653aa4ccdc11d5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": "0a186f7a15d521590da8b1b9b25f6ea90e9a787d5385c81e5bf764883f6da392",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": "e7c797d2856816cfc5d3952b8cf9fb83c6c177a25631d5e41710345ada35a570",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": "2e697d4e5ba7551b9d74a67d5b5c2670a1cdfbc665cf79acb37358ffee2d5088"
+  },
+  "native_write_scope": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean"
+  ],
+  "generic_additions_only": [
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean"
+  ],
+  "frozen_previous_family": "Prior five-source cohomology cocone accepted, read-only; coherent-v11 final current a33/a4e447/63b/038c/1e480",
+  "audit": "migration/planning/remaining-closure-20261028/results/stalks_and_continuity_1.json#cone_functoriality_and_right_tails"
+}

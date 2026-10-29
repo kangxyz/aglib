@@ -1,0 +1,18 @@
+diff --git a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+--- a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
++++ b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+@@ -131,8 +131,12 @@
+       ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down = 0
+     let : Fact p.Prime := ⟨hp⟩
+     rw [← map_pow, ZMod.pow_card, sub_self]
+-  have hzE : E (0 : (presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀) = 0 :=
+-    CategoryTheory.Limits.comp_zero
++  have hzE : E (0 : (presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀) = 0 := by
++    dsimp only [E]
++    rw [Adjunction.homEquiv_apply]
++    change (sheafificationAdjunction J AddCommGrpCat.{max r w}).unit.app P₀ ≫
++      (0 : ((presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀).obj ⟶ A₀.obj) = 0
++    exact CategoryTheory.Limits.comp_zero
+   have hzE' : E.symm (0 : P₀ ⟶ A₀.obj) = 0 :=
+     E.injective ((E.apply_symm_apply _).trans hzE.symm)
+   exact ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv_naturality_right_symm

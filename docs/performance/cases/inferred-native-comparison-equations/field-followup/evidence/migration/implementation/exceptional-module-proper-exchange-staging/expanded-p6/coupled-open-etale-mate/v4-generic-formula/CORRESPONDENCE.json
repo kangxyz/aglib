@@ -1,0 +1,39 @@
+{
+  "question": "Prove the needed complete original right-comparison component formula in the existing generic site owner, then evaluate the actual Scheme square using that formula.",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "status_before": " M Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean\n",
+  "entries": [
+    {
+      "path": "Aglib/Algebra/Category/ModuleCat/Sheaf/ConstantRing/Coherence.lean",
+      "before_sha256": "171b7bc284d190b80493b15b4e1c5f4373dc467393e53e2c4407270fbb702742",
+      "after_sha256": "0f1ff6e769a1ad22c497a522203f1218d0acab55272fe40663de1d6947bb0101"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleEtaleExchangeMate.lean",
+      "before_sha256": "4c9ef5b143a57855d5773e8df310029d2bee836ed9e76698545806db84fdb982",
+      "after_sha256": "c8a91d9254fd88d70014d41d79f080efbeab9777bbc18f13c11e1fc140f07936"
+    }
+  ],
+  "authority": "Root explicit extra generic Coherence path grant at171b, in addition to the existing31; no other source authorized.",
+  "previous_failure": {
+    "run": "remote-4518d9b76b294c0fa804ff7936f7cc40",
+    "source_capture": "1fc29d52148d1cd89f2c66eb71592090b2ff9f9fa90721abe931f372d79bdc3d",
+    "source_sha256": "4c9ef5b143a57855d5773e8df310029d2bee836ed9e76698545806db84fdb982",
+    "actual": "35s frontend with deterministic whnf200000 and reassoc universe-count/unknown-constant errors; not a pass.",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-4518d9b76b294c0fa804ff7936f7cc40/build.log"
+  },
+  "performance_method": "docs/PERFORMANCE.md repair workflow, whole equation before components, and preservation of actual reduction interface; matching whole-module-exchange record was read. Concrete component matching is replaced by a theorem at the original generic factory head.",
+  "mathematical_argument": "The factory remains the original five-factor chain: associator; left-whiskered original F comparison; inverse associator; right-whiskered original G comparison; associator. At a variable coefficient M, the structural factors are identities and the two nonidentity factors are eF.app(dirG.obj M) and ValF.map(eG.app M). Prove this exact value formula over variable sites before Scheme data are supplied. The Scheme callback keeps its actual incoming square equation inferred and rewrites only each named right-comparison component using that formula.",
+  "conditions_preserved": [
+    "All pre-existing generic/native definitions and public headers; no constructor replacement",
+    "Independent u\u2081/v\u2081,u\u2082/v\u2082,u\u2083/v\u2083 site object/Hom universes and r/w scalar/value universes",
+    "Every existing sheafification/continuity/composition instance parameter at the original factory",
+    "Actual native chart comparison, original adjunctions, units, counits and mate",
+    "No new model, desired unit/square hypothesis, geometry restriction, option or budget",
+    "Frozen union27 sources and all other prior30 source hashes"
+  ],
+  "generic_formula_name": "ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompRightIso_hom_app",
+  "scope_limit": "One public value formula in the actual generic owner; Scheme component expansion removed. Existing generic-file options remain byte-identical, and the consumer gains no option.",
+  "native_status": "Prepared then guarded-applied coherent2; compilation pending ordinary broker run.",
+  "timestamp_utc": "2026-10-28T12:03:42.309108+00:00"
+}

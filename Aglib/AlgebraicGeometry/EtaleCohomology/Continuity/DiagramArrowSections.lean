@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramPullbacks
-public import Mathlib.CategoryTheory.Comma.Arrow
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.SectionArrows
 
 /-! # The actual Arrow diagram of a compatible coefficient system -/
 
@@ -16,6 +16,39 @@ open CategoryTheory
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
 universe u uI vI
 attribute [local instance] hasSheafifyLarge
+
+/-- The actual global-section functors and original adjunction-unit pullbacks. -/
+def schemeSectionData :
+    schemeAdjunctionData.Sections AddCommGrpCat.{u + 1} where
+  value S := globalSections S.unop
+  pullback a := globalSectionsPullbackNatTrans a.unop
+  id S F := by
+    change globalSectionsPullback (𝟙 S.unop) F ≫
+      (globalSections S.unop).map ((schemeAdjunctionData.leftIdIso S).hom.app F) = 𝟙 _
+    rw [schemeLeftIdIso_eq_inverseImageId]
+    exact globalSectionsPullback_id S.unop F
+  comp {i j k} a b F := by
+    change globalSectionsPullback (b.unop ≫ a.unop) F ≫
+        (globalSections k.unop).map ((schemeAdjunctionData.leftCompIso a b).hom.app F) =
+      globalSectionsPullback a.unop F ≫
+        globalSectionsPullback b.unop ((inverseImage a.unop).obj F)
+    rw [schemeLeftCompIso_eq_inverseImageComp]
+    exact globalSectionsPullback_comp a.unop b.unop F
+
+/-- The generic section square is the whole original étale section map. -/
+lemma schemeSectionSquareMap_eq {S₀ X₀ S₁ X₁ : Scheme.{u}ᵒᵖ}
+    (f₀ : S₀ ⟶ X₀) (f₁ : S₁ ⟶ X₁) (g : S₀ ⟶ S₁) (h : X₀ ⟶ X₁)
+    (e : g ≫ f₁ = f₀ ≫ h)
+    {F : AbelianSheaf.{u, u + 1} S₀.unop} {G : AbelianSheaf.{u, u + 1} S₁.unop}
+    (φ : (inverseImage g.unop).obj F ⟶ G) :
+    schemeSectionData.squareMap f₀ f₁ g h e φ =
+      squareSectionsMap f₀.unop f₁.unop g.unop h.unop (congrArg Quiver.Hom.unop e) φ := by
+  change globalSectionsPullback h.unop ((inverseImage f₀.unop).obj F) ≫
+      (globalSections X₁.unop).map
+        (schemeAdjunctionData.squareCoefficientMap f₀ f₁ g h e φ) = _
+  rw [schemeSquareCoefficientMap_eq_squareCoefficientMap]
+  rfl
+
 variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   (F : DiagramCoefficientSystem X)
 
@@ -27,9 +60,8 @@ abbrev arrowSectionsObj (a : Arrow I) : AddCommGrpCat.{u + 1} :=
 lemma arrowSectionsSquare {a b : Arrow I} (m : a ⟶ b) :
     (X.map b.hom).unop ≫ (X.map m.left).unop =
       (X.map m.right).unop ≫ (X.map a.hom).unop :=
-  congrArg (fun t : X.obj a.left ⟶ X.obj b.right => t.unop)
-    ((X.map_comp m.left b.hom).symm.trans
-      ((congrArg X.map m.w).trans (X.map_comp a.hom m.right)))
+  congrArg Quiver.Hom.unop
+    (InjectiveSystem.AdjunctionData.Sections.arrowSquare X m)
 
 /-- The section map of an indexing-arrow morphism, using the system transition and its square. -/
 def arrowSectionsMap {a b : Arrow I} (m : a ⟶ b) :
@@ -38,59 +70,32 @@ def arrowSectionsMap {a b : Arrow I} (m : a ⟶ b) :
     (X.map m.left).unop (X.map m.right).unop (arrowSectionsSquare X m)
     (diagramInverseTransition X F m.left)
 
+/-- The native map is the same complete square map used by the generic Arrow construction. -/
+lemma arrowSectionsMap_eq_sectionArrowMap {a b : Arrow I} (m : a ⟶ b) :
+    arrowSectionsMap X F m = schemeSectionData.arrowMap X F m := by
+  symm
+  exact schemeSectionSquareMap_eq (X.map a.hom) (X.map b.hom)
+    (X.map m.left) (X.map m.right)
+    (InjectiveSystem.AdjunctionData.Sections.arrowSquare X m)
+    (diagramInverseTransition X F m.left)
+
 lemma arrowSectionsMap_id (a : Arrow I) :
     arrowSectionsMap X F (𝟙 a) = 𝟙 (arrowSectionsObj X F a) := by
-  dsimp only [arrowSectionsMap]
-  change squareSectionsMap (X.map a.hom).unop (X.map a.hom).unop
-    (X.map (𝟙 a.left)).unop (X.map (𝟙 a.right)).unop _
-    (diagramInverseTransition X F (𝟙 a.left)) = _
-  rw [diagramInverseTransition_id]
-  simp only [diagramInverseImageId, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app]
-  exact (squareSectionsMap_transport (X.map a.hom).unop (X.map a.hom).unop
-    (𝟙 _) (X.map (𝟙 a.left)).unop (𝟙 _) (X.map (𝟙 a.right)).unop
-    (congrArg (fun k : X.obj a.left ⟶ X.obj a.left => k.unop) (X.map_id a.left))
-    (congrArg (fun k : X.obj a.right ⟶ X.obj a.right => k.unop) (X.map_id a.right))
-    (by rw [Category.comp_id, Category.id_comp]) _
-    ((inverseImageId (X.obj a.left).unop).hom.app (F.obj a.left))).trans
-      (squareSectionsMap_id _ _ _)
+  rw [arrowSectionsMap_eq_sectionArrowMap]
+  exact schemeSectionData.arrowMap_id schemeAdjunctionData_coherent X F a
 
 lemma arrowSectionsMap_comp {a b c : Arrow I} (m : a ⟶ b) (n : b ⟶ c) :
     arrowSectionsMap X F (m ≫ n) = arrowSectionsMap X F m ≫ arrowSectionsMap X F n := by
-  dsimp only [arrowSectionsMap]
-  change squareSectionsMap (X.map a.hom).unop (X.map c.hom).unop
-    (X.map (m.left ≫ n.left)).unop (X.map (m.right ≫ n.right)).unop _
-    (diagramInverseTransition X F (m.left ≫ n.left)) = _
-  rw [diagramInverseTransition_comp]
-  simp only [diagramInverseImageComp, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app]
-  let e : (X.map c.hom).unop ≫ ((X.map n.left).unop ≫ (X.map m.left).unop) =
-      ((X.map n.right).unop ≫ (X.map m.right).unop) ≫ (X.map a.hom).unop := by
-    rw [← Category.assoc, arrowSectionsSquare X n, Category.assoc,
-      arrowSectionsSquare X m, ← Category.assoc]
-  let φ : (inverseImage ((X.map n.left).unop ≫ (X.map m.left).unop)).obj
-      (F.obj a.left) ⟶ F.obj c.left :=
-    (inverseImageComp (X.map m.left).unop (X.map n.left).unop).hom.app (F.obj a.left) ≫
-      (inverseImage (X.map n.left).unop).map (diagramInverseTransition X F m.left) ≫
-        diagramInverseTransition X F n.left
-  have ht := squareSectionsMap_transport (X.map a.hom).unop (X.map c.hom).unop
-    ((X.map n.left).unop ≫ (X.map m.left).unop) (X.map (m.left ≫ n.left)).unop
-    ((X.map n.right).unop ≫ (X.map m.right).unop) (X.map (m.right ≫ n.right)).unop
-    (congrArg (fun k : X.obj a.left ⟶ X.obj c.left => k.unop) (X.map_comp m.left n.left))
-    (congrArg (fun k : X.obj a.right ⟶ X.obj c.right => k.unop) (X.map_comp m.right n.right))
-    e (arrowSectionsSquare X (m ≫ n)) φ
-  have hp := squareSectionsMap_hComp (X.map a.hom).unop (X.map b.hom).unop
-    (X.map c.hom).unop (X.map m.left).unop (X.map n.left).unop
-    (X.map m.right).unop (X.map n.right).unop
-    (arrowSectionsSquare X m) (arrowSectionsSquare X n) e
-    (diagramInverseTransition X F m.left) (diagramInverseTransition X F n.left)
-  exact ht.trans hp.symm
+  simp only [arrowSectionsMap_eq_sectionArrowMap]
+  exact schemeSectionData.arrowMap_comp schemeAdjunctionData_coherent X F m n
 
-/-- The arrow-indexed section diagram of the compatible coefficient system. -/
-def arrowSectionsFunctor : Arrow I ⥤ AddCommGrpCat.{u + 1} where
-  obj := arrowSectionsObj X F
-  map := arrowSectionsMap X F
-  map_id := arrowSectionsMap_id X F
-  map_comp := arrowSectionsMap_comp X F
+/-- The arrow-indexed section diagram, retaining the original native object and map values. -/
+def arrowSectionsFunctor : Arrow I ⥤ AddCommGrpCat.{u + 1} :=
+  schemeSectionData.arrowFunctorWithMap schemeAdjunctionData_coherent X F
+    (arrowSectionsMap X F) (arrowSectionsMap_eq_sectionArrowMap X F)
+
+/-- The shared construction stores the original native Arrow morphism. -/
+lemma arrowSectionsFunctor_map {a b : Arrow I} (m : a ⟶ b) :
+    (arrowSectionsFunctor X F).map m = arrowSectionsMap X F m := rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

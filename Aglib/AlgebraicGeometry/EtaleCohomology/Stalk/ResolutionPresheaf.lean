@@ -6,7 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
-public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedGamma
+public import
+  Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.DerivedPostcompResolution
 
 /-!
 # Resolution cohomology presheaves of the actual direct image
@@ -65,10 +66,24 @@ def resolutionCohomologySheafificationIso (q : ℕ) :
 def resolutionCohomologyToHigherDirectImage (q : ℕ) :
     resolutionCohomologyPresheaf f q ⟶ higherDirectImage f q ⋙
       sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1} :=
-  Functor.whiskerLeft (resolutionCohomologyPresheaf f q)
-      (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).unit ≫
-    Functor.whiskerRight (resolutionCohomologySheafificationIso f q).hom
-      (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+  (Adjunction.whiskerRight (AbelianSheaf.{u, u + 1} X)
+    (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})).homEquiv
+      (resolutionCohomologyPresheaf f q) (higherDirectImage f q)
+      (resolutionCohomologySheafificationIso f q).hom
+
+/-- The whole native transpose is the original whiskered unit and comparison. -/
+theorem resolutionCohomologyToHigherDirectImage_eq (q : ℕ) :
+    resolutionCohomologyToHigherDirectImage f q =
+      Functor.whiskerLeft (resolutionCohomologyPresheaf f q)
+          (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).unit ≫
+        Functor.whiskerRight (resolutionCohomologySheafificationIso f q).hom
+          (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}) :=
+  Sheaf.ModuleCoefficients.rightDerivedPostcompIso_transpose_eq
+    (directImagePresheaf f) (directImage f)
+    (presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafToPresheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (sheafificationAdjunction (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1})
+    (directImagePresheafSheafificationIso f) q
 
 /-- The map is the original sheafification unit followed by the native comparison. -/
 theorem resolutionCohomologyToHigherDirectImage_app (q : ℕ)
@@ -76,6 +91,8 @@ theorem resolutionCohomologyToHigherDirectImage_app (q : ℕ)
     (resolutionCohomologyToHigherDirectImage f q).app F =
       toSheafify (Scheme.smallEtaleTopology S)
           ((resolutionCohomologyPresheaf f q).obj F) ≫
-        ((resolutionCohomologySheafificationIso f q).hom.app F).hom := rfl
+        ((resolutionCohomologySheafificationIso f q).hom.app F).hom := by
+  rw [resolutionCohomologyToHigherDirectImage_eq]
+  rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

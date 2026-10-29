@@ -24,6 +24,8 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
+section Restriction
+
 variable {X S : Scheme.{u}} (f : X ⟶ S) {U V : S.Etale} (g : V ⟶ U)
   [hU : HasExt.{w₁} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
   [hV : HasExt.{w₂} (AbelianSheaf.{u, u + 1} (pullback V.hom f))]
@@ -67,5 +69,52 @@ theorem fibreProductCohomologyEquiv_restriction
     fibreProductCohomologyRestriction f g F q
       (fibreProductCohomologyEquiv f U F q x) :=
   originalCohomologyChartEquiv_restriction ((siteBaseChange f).map g) F q x
+
+end Restriction
+
+section FunctorLaws
+
+universe s t
+
+variable {X S : Scheme.{u}} (f : X ⟶ S)
+  [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
+  [∀ U : S.Etale, HasExt.{s} (Sheaf ((Scheme.smallEtaleTopology X).over
+    ((siteBaseChange f).obj U)) AddCommGrpCat.{u + 1})]
+  [∀ U : S.Etale, HasExt.{t} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
+  (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
+
+/-- The inverse value comparison preserves the actual scheme restriction. -/
+theorem fibreProductCohomologyRestriction_original {U V : S.Etale} (g : V ⟶ U)
+    (x : Sheaf.H.{t} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    (fibreProductCohomologyEquiv f V F q).symm
+        (fibreProductCohomologyRestriction f g F q x) =
+      (originalCohomologyPresheaf f F q).map g.op
+        ((fibreProductCohomologyEquiv f U F q).symm x) := by
+  obtain ⟨y, rfl⟩ := (fibreProductCohomologyEquiv f U F q).surjective x
+  rw [← fibreProductCohomologyEquiv_restriction, AddEquiv.symm_apply_apply,
+    AddEquiv.symm_apply_apply]
+
+/-- Identity for the actual original cohomology restriction. -/
+theorem fibreProductCohomologyRestriction_id (U : S.Etale)
+    (x : Sheaf.H.{t} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    fibreProductCohomologyRestriction f (𝟙 U) F q x = x := by
+  obtain ⟨y, rfl⟩ := (fibreProductCohomologyEquiv f U F q).surjective x
+  rw [← fibreProductCohomologyEquiv_restriction]
+  exact congrArg (fibreProductCohomologyEquiv f U F q)
+    (ConcreteCategory.congr_hom ((originalCohomologyPresheaf f F q).map_id (op U)) y)
+
+/-- Composition for the actual original cohomology restriction. -/
+theorem fibreProductCohomologyRestriction_comp {U V W : S.Etale}
+    (g : V ⟶ U) (h : W ⟶ V)
+    (x : Sheaf.H.{t} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
+    fibreProductCohomologyRestriction f (h ≫ g) F q x =
+      fibreProductCohomologyRestriction f h F q
+        (fibreProductCohomologyRestriction f g F q x) := by
+  obtain ⟨y, rfl⟩ := (fibreProductCohomologyEquiv f U F q).surjective x
+  rw [← fibreProductCohomologyEquiv_restriction,
+    ← fibreProductCohomologyEquiv_restriction, ← fibreProductCohomologyEquiv_restriction]
+  simp only [op_comp, Functor.map_comp, ConcreteCategory.comp_apply]
+
+end FunctorLaws
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

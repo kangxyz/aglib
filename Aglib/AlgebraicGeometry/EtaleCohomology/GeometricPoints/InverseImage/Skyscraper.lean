@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientStalkBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage.Unit
 public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
 public import Mathlib.CategoryTheory.Adjunction.Mates
 
@@ -36,7 +36,7 @@ open CoefficientStalkBaseChange
 def pointEquiv (U : X.Etale) :
     (pointSmallEtale (η ≫ f)).fiber.obj U ≃
       (pointSmallEtale η).fiber.obj ((siteBaseChange f).obj U) :=
-  SchemeTorsorBaseChange.pullbackSectionEquiv f (Over.mk η)
+  (Over.mapPullbackAdj f).homEquiv (Over.mk η)
     ((Scheme.Etale.forget X).obj U)
 
 /-- Its forward map is the original geometric pulled-back point. -/

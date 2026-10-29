@@ -1,0 +1,62 @@
+{
+  "family": "represented-relative-test-core",
+  "candidate": "v4",
+  "head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "changed": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "1914d68f06a24cded5e79a9ef49917b23cf6da83805ee1fc4c62d7ce98d1cce7",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "430358e07341df21847c0bfdfa455cc71fdc5a960acfeab340642eb3316340a2",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "6e667d7c0929d8bdf4743239ea80459a6d47c3525f45060aadc939be08eaee64"
+  },
+  "readonly_suppliers": {
+    "Aglib/CategoryTheory/Over/ChartTails.lean": "c278e907a9bee6359d5f6dd72731c295d97ac6f1cc71773cf47feee1697e4bab",
+    "Aglib/CategoryTheory/Over/SitePullbackPasting.lean": "80e9a5d4d44ae0d3bc08c7deba3db49e8a3d130de88d9b50578887addb208fcf",
+    "Aglib/CategoryTheory/Functor/NaturalityTransport.lean": "19d4ac331cb444727e4e13b3da5a67b035df7057c0258561bc160ec9cf80beb2",
+    "Aglib/CategoryTheory/Functor/WhiskeredTransport.lean": "f8394d979331eec967951cdf091994f04d4082b1e9434fd765e9b9140aab845c",
+    "Aglib/AlgebraicGeometry/Sites/EtaleTopos.lean": "9aaad4f8608cb3624a8826139a431318bc17d03075cd129bca6f8d3e45d5993b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/EtaleRestriction.lean": "c4de9afa37af7ba68c0870fcadaa320b55f2dea9a0862a4768fc3818ae90a284",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/EtaleDirectImageMate.lean": "42dac0fc6c143a299c241ae5ef3def9fddd53eb0a802a61050ad3e3b3d7469cc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/Sections.lean": "5fda316bf90c454a65e87f633a308d1bfbcf8337192fe304c0820f09361c9b38",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/SheafColimit.lean": "29a2ae6660a08e1113bae53642ae0cb416b9caaf2872a540f1c426b2f070bc28",
+    "Aglib/CategoryTheory/Monoidal/Cartesian/CommutativeGroupSections.lean": "e09de728865f06cabf66fc87bf0197837d25f4e57835c145dca0b053f8626753"
+  },
+  "public_header_comparison": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": {
+      "public_headers": 36,
+      "identical": true
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": {
+      "public_headers": 19,
+      "identical": true
+    }
+  },
+  "afterimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v4",
+  "beforeimages": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/before",
+  "plan": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/PLAN.md",
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/CORRESPONDENCE-v1.json",
+  "explicit_roots": [
+    "Aglib.CategoryTheory.Over.RelativeTests",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.RepresentedSections"
+  ],
+  "runtime": "lane B normal incremental finished changed4 + necessary imports only; default200000/pins/trust unchanged; C56/source52bb retained on sealed old basis",
+  "evidence_boundary": "Fixed v1 candidate; no new compiler pass claimed. Original selected map/value equations are preserved; canonical-versus-coordinate equality is not assumed.",
+  "no_extra_checks": true,
+  "supersedes_unexecuted_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v3/READY.json",
+  "source_only_repair": "Use reducible abbreviations for the original test composites, explicit Opposite.op, native whisker identity/composition lemmas and scoped minimal instance binders. No options/statement meanings/maps/native sources changed. Canonical obligation remains independent entrusted work.",
+  "actual_v3_feedback": {
+    "run": "remote-fdd36d606fc74661bdfc5161dd67c175",
+    "lane": "A dependent invocation, not a B v3 request",
+    "CopyObjRestriction": "e4ed PASS2.0s",
+    "RelativeTests": "df3077 FAIL at implicit endpoint/proof views, op namespace and unused binders",
+    "native2": "not reached, no pass claimed"
+  },
+  "retained_pass": {
+    "Aglib.CategoryTheory.Functor.CopyObjRestriction": {
+      "sha256": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc",
+      "run": "remote-fdd36d606fc74661bdfc5161dd67c175",
+      "frontend_seconds": 2.0
+    }
+  }
+}

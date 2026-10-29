@@ -1,0 +1,59 @@
+diff --git a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+--- a/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
++++ b/Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean
+@@ -28,7 +28,21 @@
+ 
+ namespace CategoryTheory.Sheaf.ArtinSchreier
+ 
+-universe u v r w
++universe u v r w u₁ u₂ v₁ v₂
++
++/-- Transport the whole original composite equation through a variable adjunction. -/
++private theorem transpose_comp_eq_zero
++    {D : Type u₁} [Category.{v₁} D] [Preadditive D]
++    {E : Type u₂} [Category.{v₂} E] [Preadditive E]
++    {L : D ⥤ E} {U : E ⥤ D} [U.Additive] (adj : L ⊣ U)
++    (P : D) (A B : E) (i : P ⟶ U.obj A) (k : L.obj P ⟶ A) (g : A ⟶ B)
++    (hk : (adj.homEquiv P A) k = i) (hz : i ≫ U.map g = 0) : k ≫ g = 0 := by
++  let : L.Additive := adj.left_adjoint_additive
++  apply (adj.homEquiv P B).injective
++  exact (adj.homEquiv_naturality_right (X := P) (Y := A) (Y' := B) k g).trans
++    ((congrArg (fun t : P ⟶ U.obj A => t ≫ U.map g) hk).trans
++      (hz.trans (adj.homAddEquiv_zero P B).symm))
++
+ 
+ /-- The native prime-field additive coefficient group in the chosen value world. -/
+ def primeFieldCoefficient (p : ℕ) : AddCommGrpCat.{w} :=
+@@ -123,21 +137,22 @@
+   let P₀ : Cᵒᵖ ⥤ AddCommGrpCat.{max r w} :=
+     (Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)
+   let A₀ : Sheaf J AddCommGrpCat.{max r w} := additiveSheaf.{w} R J hR
+-  let E : ((presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀) ≃ (P₀ ⟶ A₀.obj) :=
+-    (sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv P₀ A₀
+-  have hz : primeFieldPresheafMap R p h ≫ (artinSchreierMap R J hR p hp h).hom = 0 := by
++  let i₀ : P₀ ⟶ A₀.obj := primeFieldPresheafMap R p h
++  let k₀ : (presheafToSheaf J AddCommGrpCat.{max r w}).obj P₀ ⟶ A₀ :=
++    primeFieldToAdditive R J hR p h
++  let g₀ : A₀ ⟶ A₀ := artinSchreierMap R J hR p hp h
++  have hk₀ : (sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv P₀ A₀ k₀ = i₀ :=
++    toSheafify_primeFieldToAdditive R J hR p h
++  have hz : i₀ ≫ (sheafToPresheaf J AddCommGrpCat.{max r w}).map g₀ = 0 := by
+     ext U a
+     apply ULift.ext
+     change (ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down) ^ p -
+       ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down = 0
+     let : Fact p.Prime := ⟨hp⟩
+     rw [← map_pow, ZMod.pow_card, sub_self]
+-  let : (presheafToSheaf J AddCommGrpCat.{max r w}).Additive :=
+-    (sheafificationAdjunction J AddCommGrpCat.{max r w}).left_adjoint_additive
+-  have hzE' : E.symm (0 : P₀ ⟶ A₀.obj) = 0 :=
+-    (sheafificationAdjunction J AddCommGrpCat.{max r w}).homAddEquiv_symm_zero P₀ A₀
+-  exact ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv_naturality_right_symm
+-    (primeFieldPresheafMap R p h) (artinSchreierMap R J hR p hp h)).symm.trans
+-      ((congrArg E.symm hz).trans hzE')
++  exact transpose_comp_eq_zero
++    (L := presheafToSheaf J AddCommGrpCat.{max r w})
++    (U := sheafToPresheaf J AddCommGrpCat.{max r w})
++    (sheafificationAdjunction J AddCommGrpCat.{max r w}) P₀ A₀ A₀ i₀ k₀ g₀ hk₀ hz
+ 
+ end CategoryTheory.Sheaf.ArtinSchreier

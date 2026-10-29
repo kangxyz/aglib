@@ -12,6 +12,20 @@ with whole original-map equality and the same independent Ext universe.
 Geometric section-colimit and injective-acyclicity suppliers remain in this
 family and provide the continuity hypotheses used below.
 
+The original Arrow and cone section maps specialize the complete
+[section calculus](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/SectionArrows.lean)
+and [coefficient-cone constructors](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean).
+Their inputs are the actual scheme adjunctions, global sections and pullback
+maps. Native object and map values are retained.
+
+[DiagramCohomologyCocone](DiagramCohomologyCocone.lean) specializes the complete
+[source-system transfer and cocone construction](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CohomologyCocone.lean).
+The original coefficient functor has the same colimit, and every leg is the
+original stage pullback followed by its coefficient insertion. Only the actual
+stage and apex Ext instances are needed. Source cartesianness stays explicit;
+no cohomology-comparison invertibility or scheme-limit continuity premise is
+introduced.
+
 ## Filtered coefficients on a fixed qcqs scheme
 
 Let `S : Scheme.{u}` be quasi-compact and quasi-separated, let
@@ -68,6 +82,9 @@ import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsCoefficientContinu
 [AffineLimitSections](AffineLimitSections.lean) proves the actual relative
 section cocone is colimiting on affine inverse limits using real finite local
 representatives, matching, original-stage gluing and eventual equality.
+Its final presheaf criterion is the
+[general filtered-colimit argument](../../../CategoryTheory/Limits/Preserves/PresheafSections.lean),
+applied to the same original cocone and legs.
 [QcqsLimitSections](QcqsLimitSections.lean) extends this to qcqs stages with
 affine transitions using one finite affine one-hypercover at a fixed stage.
 It also proves `isColimitCompatibleSectionsOfQcqsStages` for the original

@@ -1,0 +1,26 @@
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean:51:2: failed to synthesize
+  ∀ (X_1 Y : AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (a b : ℤ),
+    Localization.HasSmallLocalizedHom
+      (HomologicalComplex.quasiIso (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i)))
+        (ComplexShape.up ℤ))
+      ((shiftFunctor
+            (HomologicalComplex (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (ComplexShape.up ℤ))
+            a).obj
+        ((CochainComplex.singleFunctor (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) 0).obj X_1))
+      ((shiftFunctor
+            (HomologicalComplex (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) (ComplexShape.up ℤ))
+            b).obj
+        ((CochainComplex.singleFunctor (AbelianSheaf (Opposite.unop (((Functor.const I).obj c.pt).obj i))) 0).obj Y))
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean:73:14: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.

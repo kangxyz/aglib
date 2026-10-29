@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H0.ProperHenselian.Sections
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.CoverEpimorphisms
+public import Aglib.CategoryTheory.Sites.Torsor.Transport
 
 /-! # Descent of actual finite torsor actions through finite-cover restriction -/
 
@@ -32,50 +33,35 @@ variable {B : Scheme.{u}} {G : Grp (Over B)} {Y : Over B}
   (τ : TorsorAction G (toUnit Y))
 
 /-- The original unique transporter, in the positive action convention. -/
-def difference {T : Over B} (x y : T ⟶ Y) : T ⟶ G.X :=
-  Classical.choose (τ.transport x y (toUnit_unique _ _))
+abbrev difference {T : Over B} (x y : T ⟶ Y) : T ⟶ G.X :=
+  τ.positiveTransport x y
 
 /-- The original positive transporter sends its source to its target. -/
 theorem act_difference {T : Over B} (x y : T ⟶ Y) :
     τ.act (difference τ x y) x = y :=
-  (Classical.choose_spec (τ.transport x y (toUnit_unique _ _))).1
+  τ.act_positiveTransport x y
 
 /-- Unique transport recovers the original translating coefficient point. -/
 theorem difference_act {T : Over B} (a : T ⟶ G.X) (x : T ⟶ Y) :
     difference τ x (τ.act a x) = a :=
-  ((Classical.choose_spec (τ.transport x (τ.act a x) (toUnit_unique _ _))).2 a rfl).symm
+  τ.positiveTransport_act a x
 
 /-- Positive transport commutes with every change of scheme-valued test object. -/
 theorem difference_naturality {T U : Over B} (g : T ⟶ U) (x y : U ⟶ Y) :
-    g ≫ difference τ x y = difference τ (g ≫ x) (g ≫ y) := by
-  apply (Classical.choose_spec
-    (τ.transport (g ≫ x) (g ≫ y) (toUnit_unique _ _))).2
-  rw [← τ.naturality, act_difference]
+    g ≫ difference τ x y = difference τ (g ≫ x) (g ≫ y) :=
+  τ.positiveTransport_naturality g x y
 
 /-- The difference map on the actual product of two torsor carriers. -/
-def differenceMap : Y ⊗ Y ⟶ G.X := difference τ (fst Y Y) (snd Y Y)
+abbrev differenceMap : Y ⊗ Y ⟶ G.X := τ.positiveDifferenceMap
 
 /-- Evaluation of the actual difference map is the original unique transporter. -/
 theorem comp_differenceMap {T : Over B} (x y : T ⟶ Y) :
-    lift x y ≫ differenceMap τ = difference τ x y := by
-  rw [differenceMap, difference_naturality, lift_fst, lift_snd]
+    lift x y ≫ differenceMap τ = difference τ x y :=
+  τ.comp_positiveDifferenceMap x y
 
 /-- Conjugation by the original carrier isomorphism preserves the actual coefficient action. -/
-def transportCarrier {Z : Over B} (e : Z ≅ Y) : TorsorAction G (toUnit Z) where
-  act a x := τ.act a (x ≫ e.hom) ≫ e.inv
-  naturality g a x := by
-    rw [← Category.assoc, τ.naturality, Category.assoc]
-  one_act x := by simp only [τ.one_act, Category.assoc, e.hom_inv_id, Category.comp_id]
-  mul_act a b x := by simp only [τ.mul_act, Category.assoc, e.inv_hom_id, Category.comp_id]
-  over _ _ := toUnit_unique _ _
-  transport x y _ := by
-    obtain ⟨a, ha, hu⟩ := τ.transport (x ≫ e.hom) (y ≫ e.hom) (toUnit_unique _ _)
-    refine ⟨a, ?_, ?_⟩
-    · simp only [ha, Category.assoc, e.hom_inv_id, Category.comp_id]
-    · intro b hb
-      apply hu
-      have h := congrArg (fun k => k ≫ e.hom) hb
-      simpa only [Category.assoc, e.inv_hom_id, Category.comp_id] using h
+abbrev transportCarrier {Z : Over B} (e : Z ≅ Y) : TorsorAction G (toUnit Z) :=
+  CategoryTheory.TorsorAction.transportCarrier τ e
 
 end Difference
 

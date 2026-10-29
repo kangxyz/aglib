@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.FiniteRefinement
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Pullback
-public import Mathlib.CategoryTheory.Sites.LocallyBijective
+public import Aglib.CategoryTheory.Sites.Pullback.LocalDescription
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 public import Mathlib.Algebra.Category.Grp.FilteredColimits
 
@@ -52,18 +52,8 @@ instance inverseImagePresentationMap_isLocallySurjective :
   let : EssentiallySmall.{u + 1} S.Etale := essentiallySmallSelf.{0, u, u + 1} S.Etale
   let : S.smallEtaleTopology.WEqualsLocallyBijective AddCommGrpCat.{u + 1} :=
     .ofEssentiallySmall S.smallEtaleTopology
-  let e := (Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} X.smallEtaleTopology S.smallEtaleTopology).symm.app F
-  have : IsIso e.hom.hom :=
-    Iso.isIso_hom ((sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).mapIso e)
-  let h₂ : Presheaf.IsLocallySurjective S.smallEtaleTopology e.hom.hom :=
-    Presheaf.isLocallySurjective_of_iso S.smallEtaleTopology e.hom.hom
-  let h₁ : Presheaf.IsLocallySurjective S.smallEtaleTopology
-      (toSheafify S.smallEtaleTopology (inverseImagePresentation f F)) :=
-    (S.smallEtaleTopology.W_toSheafify (inverseImagePresentation f F)).isLocallySurjective
-  exact @Presheaf.isLocallySurjective_comp _ _ S.smallEtaleTopology
-    _ _ _ _ _ _ _ _ _
-    (toSheafify S.smallEtaleTopology (inverseImagePresentation f F)) e.hom.hom h₁ h₂
+  exact Functor.sheafPullbackConstruction.isLocallySurjective_presentationMap
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology F
 
 /-- Every element of the native Kan extension has an actual original-section
 representative, since its costructured-arrow category is filtered. -/
@@ -80,10 +70,7 @@ theorem exists_inverseImagePresentation_representative (W : S.Etale)
       (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
     preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u + 1}
       (CategoryTheory.forget AddCommGrpCat.{u + 1})
-  let h := Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit G.op F.obj (op W)
-  obtain ⟨a, t, ht⟩ := Types.jointly_surjective_of_isColimit
-    (isColimitOfPreserves (CategoryTheory.forget AddCommGrpCat.{u + 1}) h) s
-  exact ⟨a.left.unop, a.hom.unop, t, ht⟩
+  exact Functor.exists_lan_representative G F.obj W s
 
 /-- Every section of the original inverse image on a quasi-compact test object
 has finitely many affine local representatives in the original coefficient sheaf. -/

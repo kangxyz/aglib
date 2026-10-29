@@ -1,0 +1,12 @@
+{
+  "question": "Does supplying all actual original factory functors and original map endpoints remove Core-application inference/conversion, and if not which actual binding exposes a real producer endpoint obligation?",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CapturedCoordinateAssembly-v28.lean",
+  "sha256": "bfa83a11cdc4594859b6a25ce19c8afb518c144ae26e8c569e4d2caa98d31375",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v28/READY.json",
+  "predicates": [
+    "representedSectionRestriction_coordinates",
+    "representedRestriction_literal"
+  ],
+  "runtime": "Official native Global setup/full4options/default200000/no-build warm currente6cd/4fa6/5ab imports. Trace-message progress only; no print commands, new options, preparation or per-helper/replay/client/lint gate.",
+  "coverage": "One changed full-producer prefix covering existing generic facts, whole variable comparison and concrete actual-input capture. Not fullGlobal/callers. Onpass run currentGlobal+Rootendpoint2 under matching guards."
+}

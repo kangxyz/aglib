@@ -1,0 +1,10 @@
+{
+  "question": "At the actual native Square37/54 kernel bottlenecks, can each exact original proposition be formed under unchanged native settings without supplying its proof?",
+  "input_basis": "Current nativeSquare8d530 negative B7d460/source4a6f; exact original proposition expressions/parameters copied into theorem binders, same actual imports/module section/local instance.",
+  "source_file": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-triangle-calculus-core-staging/diagnostics/square-v9-formation.lean",
+  "source_sha256": "1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164",
+  "execution_requirements": "Native-faithful scratch execution only: obtain lake --no-build setup-file for Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean and pass that --setup, retaining actual module name/isModule/imports/library options/default200000/pins/trust/warningAsError; no wrapper-only option equivalence. Do not overwrite/adopt production source or artifacts.",
+  "scope": "One bounded diagnostic frontend, cached required imports. No package root build, replay/client, standalone lint/test or acceptance stage.",
+  "acceptance_boundary": "Each theorem has _h:P and conclusion True; a pass is conditional type-formation evidence only and DOES NOT prove original P or close nativeSquare. No original-theorem/source pass is inferred.",
+  "next_use": "If formation checks pass, target proof conversion at original cheap functor/comparison heads with actual whole laws and normalized required projection views. If not, obtain scoped formation/remaining-budget detail before further repair."
+}

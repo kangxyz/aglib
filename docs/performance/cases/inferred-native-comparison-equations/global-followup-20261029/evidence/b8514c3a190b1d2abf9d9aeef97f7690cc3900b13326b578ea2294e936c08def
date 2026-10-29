@@ -1,0 +1,9 @@
+{
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v24/READY.json",
+  "basis_global": "759d3fb17673817586ce4237687361989b582b98801f8273a06fc3d7525d331e",
+  "proposed_full_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/PROPOSED-variable-section-v25.lean",
+  "sha256": "7e910d02e9a5469b15da25564c8c1e103075f696df8ddc1a3f9d41eb86d4ff65",
+  "state": "R-only main-author implementation draft of Root-peer fixed variable-H/K/c route. No production write or native result. Exact helper uses original whole constructors and existing lower pasted Over equation; concrete equation inferred only afterward.",
+  "coauthor_route": "/root/global_unit_functor_route mathematical fixed route, exact proposed source correspondence still to reconcile with its return.",
+  "native_public_contexts": "All original public headers/maps/units must remain exact; helper is private, no Etale/finite hypothesis on H/K added."
+}

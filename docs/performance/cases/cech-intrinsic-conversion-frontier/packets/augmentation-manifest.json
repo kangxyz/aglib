@@ -1,0 +1,19 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "phase": "augmentation",
+  "files": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Augmentation.lean",
+      "sha256": "26e0420d62881144e636866606b11295b4452518e3d57c0d965f96cb58ec9727"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "sha256": "af4a402c64b33c88fadeed16e76cfbf3f875e3d27abe08fa487dab6e37c67020"
+    }
+  ],
+  "targets": [
+    "Aglib.Topology.Sheaves.Cech.Augmentation",
+    "Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation"
+  ],
+  "revision": 2
+}

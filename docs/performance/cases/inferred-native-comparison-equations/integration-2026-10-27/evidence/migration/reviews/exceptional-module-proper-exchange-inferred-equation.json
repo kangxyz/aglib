@@ -1,0 +1,337 @@
+{
+  "review_kind": "Independent complex ordinary changed-proof review; no established-status assignment/restoration/retention",
+  "reviewer": "/root/review_finite_stage_diagram_descent",
+  "question": "Original proper module exchange at the given internally torsion-homology D+ object under the original proper Cartesian square.",
+  "candidate": "coherent2 final thinR4 7f7ddd67 + framework UnitIsomorphism f2b0fba0",
+  "verdict": "MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_PASS_ON_IDENTIFIED_NATIVE_PREREQUISITES; CURRENT_THIN_R4_INTEGRATION_PENDING",
+  "timestamp_utc": "2026-10-27T18:08:37.676587+00:00",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "runtime": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "targets": [
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "sha256": "f2b0fba00d9c04af59cebfd655491a9af2084e0c9baf437e25ec48883efb9933",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/after/Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "before_sha256": "66015c916be8e32e302fbc684596315803cb610c619d52c96cf4c09e0f476ad4",
+      "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/before/Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+      "live_matches_fixed": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+      "snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/after/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "before_sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111",
+      "before_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/before/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "live_matches_fixed": true
+    }
+  ],
+  "results": [
+    {
+      "id": "CT#isIso_of_component_equation",
+      "declaration": "CategoryTheory.isIso_of_component_equation",
+      "outcome": "MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_PASS",
+      "conclusion": "For F:C→D, β:M→N and composable arrows u:P→A, a:A→B, v:B→Q, s:P→F(M), t:F(N)→Q satisfying u≫a≫v=s≫F(β)≫t, if a,u,v,s,t are isomorphisms and F reflects isomorphisms, then β is an isomorphism.",
+      "proof": "The actual equation makes s≫F(β)≫t invertible. Native left cancellation of s and right cancellation of t give IsIso(F(β)); native reflection gives IsIso β. No equality reflection, faithfulness, fullness, exactness or adjunction hypothesis is used.",
+      "coverage": "Fixed framework UnitIsomorphism:46-66, identical binder list/body to frozen5d7d private helper."
+    },
+    {
+      "id": "R4#properModuleDerivedBaseChange_isIso_of_torsion_homology",
+      "declaration": "AlgebraicGeometry.Scheme.EtaleCohomology.Proper.properModuleDerivedBaseChange_isIso_of_torsion_homology",
+      "outcome": "MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_PASS_CURRENT_INTEGRATION_PENDING",
+      "conclusion": "For an arbitrary Ring Λ:Type(u+1), actual Cartesian square sq:IsPullback g′ f′ f g with IsProper f, four independently supplied module-derived realizations, and the given K:D+(ModuleSheaf X Λ) with internally torsion homology in every integer degree, the literal component (moduleDerivedBaseChangeMap Λ f f′ g g′ sq.w.symm).app K is an isomorphism.",
+      "proof": "The complete native component equation is obtained by unannotated have hcube from moduleDerivedBaseChangeMap_underlying ... K and passed unchanged to the generic helper. Its implicit a is the original abelian exchange on U_X(K). Original torsion-homology iff converts hK for exactly U_X(K), so native abelian proper base change proves IsIso a. Four edges are the displayed actual underlying comparison components or their functor images; conservativity is the original right-derived exact scalar-forgetting theorem.",
+      "coverage": "Fixed R4:33-85; all native dependency hashes match prior accepted R4; actual producer, component equation, comparisons, torsion and conservative applications read."
+    },
+    {
+      "id": "R4#selected-data-and-local-dictionary",
+      "outcome": "MATHEMATICAL_SOURCE_IDENTITY_PASS",
+      "conclusion": "Four independently supplied module HasDerivedCategory data remain public and determine K and β. The four respective auxiliary Ab categories each receive one standard realization only in the public proof. The local WEqualsLocallyBijective attribute changes only the proof argument of the same native SheafOfModules abelian constructor, not the ring, underlying category, sheafification data or chosen derived localization.",
+      "proof": "abWEqualsLocallyBijectiveStandard is a theorem of a Prop class. At fixed site and value categories any two such proofs are definitionally proof-irrelevant; passing them to the unchanged instAbelian constructor does not replace its data. Abelian itself is not claimed to be a Prop. HasDerivedCategory is actual HasLocalization data, and the code neither reselects nor transports the four supplied module instances.",
+      "coverage": "R4:35-45,47-51,81-85; native Ringed/ConstantRing:58-83; pinned LocallyBijective:105-108, Sheaf/Abelian:37-42, DerivedCategory/Basic:70-85."
+    },
+    {
+      "id": "G0#isIso_map_unit_of_iso_mate",
+      "declaration": "CategoryTheory.isIso_map_unit_of_iso_mate",
+      "outcome": "UNCHANGED_SOURCE_COVERAGE_RETAINED",
+      "conclusion": "The existing unit/mate theorem retains its original statement and complete proof verbatim. It gives invertibility of the image of the original source unit from the actual mate-component and target-unit hypotheses.",
+      "coverage": "Exact whole declaration comparison before66015c→afterf2b0; no added premise or altered unit/mate map."
+    }
+  ],
+  "actual_component_instantiation": [
+    {
+      "symbol": "F",
+      "actual": "moduleDerivedUnderlying Λ S′",
+      "role": "Original conservative functor D+(ModuleSheaf S′ Λ)→D+(AbelianSheaf S′)."
+    },
+    {
+      "symbol": "β",
+      "actual": "(moduleDerivedBaseChangeMap Λ f f′ g g′ sq.w.symm).app K",
+      "role": "Original module exchange whose invertibility is concluded."
+    },
+    {
+      "symbol": "a",
+      "actual": "(derivedBaseChangeMap f f′ g g′ sq.w.symm).app ((moduleDerivedUnderlying Λ X).obj K)",
+      "role": "Inferred directly from hcube; proper abelian exchange on the same underlying K."
+    },
+    {
+      "symbol": "u",
+      "actual": "(derivedInverseImage g).map ((moduleDerivedDirectImageUnderlyingIso Λ f).hom.app K)",
+      "role": "Map of the original direct-image underlying comparison."
+    },
+    {
+      "symbol": "v",
+      "actual": "(derivedDirectImage f′).map ((moduleDerivedInverseImageUnderlyingIso Λ g′).inv.app K)",
+      "role": "Map of the inverse original inverse-image comparison."
+    },
+    {
+      "symbol": "s",
+      "actual": "(moduleDerivedInverseImageUnderlyingIso Λ g).inv.app ((moduleDerivedDirectImage Λ f).obj K)",
+      "role": "Original left surrounding component."
+    },
+    {
+      "symbol": "t",
+      "actual": "(moduleDerivedDirectImageUnderlyingIso Λ f′).hom.app ((moduleDerivedInverseImage Λ g′).obj K)",
+      "role": "Original right surrounding component."
+    }
+  ],
+  "decisive_equation": "u ≫ a ≫ v = s ≫ (moduleDerivedUnderlying Λ S′).map β ≫ t, obtained directly from the original producer at the given K; no manual native equation retyping or independent cube premise.",
+  "conditions": [
+    "Λ is an arbitrary ring at the stated universe; X,S,X′,S′ are the actual schemes.",
+    "f is proper and sq is the actual Cartesian square in the displayed orientation.",
+    "K is bounded below and internal torsion is required in every integer homology degree; no uniform annihilator, upper bound, dimension bound or coefficient finiteness is inserted.",
+    "The current native ordinary abelian proper-base-change family, native exact-underlying comparisons, native mate-cube supplier and native category foundations are the assigned prerequisite inputs, not newly proved global closure here."
+  ],
+  "unchanged_native_dependencies": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingBaseChange.lean",
+      "sha256": "6a84bc472cb2a3b2841d27fdb753e907371fe633c7d0364fd288518b7a31afbf",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingBaseChange.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "full; complete native six-transformation producer and actual argument to whole-source mate cube"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChange.lean",
+      "sha256": "d4e4c03140f6d517bb7d3df038a919516044b56d2038f39b394906a6403dfcd2",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/BaseChange.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "30-81: exact module square and original mate definition/component"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Underlying.lean",
+      "sha256": "9fb8e9008ea9cc367dad723066db017d5003a6ef93937ba5adf04378750f9e12",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/Underlying.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "28-115: actual derived underlying functor and both original natural isomorphisms / acyclicity route"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingAdjunction.lean",
+      "sha256": "9b231955ce4cba2c4a51efd33c085f1d0cd13b653069b47efab325c06d4635d0",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingAdjunction.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "116-147: actual mate equality for original inverse/direct comparisons; prior remaining coverage retained"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingAcyclic.lean",
+      "sha256": "6df274983ecbf00fb3961ad427de8fb93197d9ab3f14c290a0207e359586524f",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingAcyclic.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "full: represented Ext vanishing→relative acyclicity, no forgotten-injectivity claim"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.lean",
+      "sha256": "7dd537655b8bd0574a39211723c1d0c16686e33a89281132e68017b94ed734d1",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/UnderlyingTorsion.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "full: exact native homology Iso and iff at given K"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionRange.lean",
+      "sha256": "e1f6a64c706c726e538784a6776a59dfa68a1e5460441ae0680b88bd2e1cef16",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/TorsionRange.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "25-55: original all-integer-homology predicate and distinction from uniformly killed input"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ClosedExactness.lean",
+      "sha256": "1546d334006e279e4387e54d221834fc78649ea39dda58aceca2c4eb9e6c6385",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/ClosedExactness.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "31-58: actual forgetting preserves epis and homology"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/UnderlyingComposition.lean",
+      "sha256": "243541c49c71f7b6bbac6f22fb7179387fa3c3720a68a7a7a21491774100049b",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/UnderlyingComposition.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "Unchanged source identity and accepted prior coverage retained; no blanket fresh transitive review."
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/BaseChange.lean",
+      "sha256": "74fd6fcd0abbf77edc3e00042f53e60f79ad6d4701bd5e7251067fb6422985da",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/BaseChange.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "24-65: original proper Cartesian / torsion-homology theorem; ordinary Ab family accepted as supplied prerequisite"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Conservative.lean",
+      "sha256": "14ed6bfd7ca0c2b559e5522dd48cb67dc87e7857b8ff2c11da8a87f2b94d771b",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Conservative.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "full: exact native homology comparison and reflected homology isomorphisms"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactMateCube.lean",
+      "sha256": "2d781d9bb611c69d1a3aeff6270299ac354b990b5ebb9bdd1201741fa12f06dc",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactMateCube.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "28-148: actual component equation and whole-source cube proof; no proper/exchange-IsIso premise"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactIsoCube.lean",
+      "sha256": "e85614c5252a0052b8595b2e5c65d098f8710fb80c093d933e12d842a8173323",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/ExactIsoCube.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "Unchanged source identity and accepted prior coverage retained; no blanket fresh transitive review."
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/HorizontalCube.lean",
+      "sha256": "0d4074ced56f52b4c3b3f7031409de5496f67e74e5fec4782533188ec5bd8526",
+      "coverage": "inspected typed source and relevant proof/application",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/HorizontalCube.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "Unchanged source identity and accepted prior coverage retained; no blanket fresh transitive review."
+    },
+    {
+      "path": "Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+      "sha256": "0e08de18803abf6008e23bd2593d39759fbce78add02965b06bbddef61dad6e4",
+      "coverage": "relevant native component, horizontal-pasting and top/bottom naturality arguments only; no unrelated vertical/identity re-audit",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Adjunction/Mates/Whole.lean",
+      "identity_reconciliation": "Matches prior independently accepted R4 dependency identity.",
+      "new_review_coverage": "Unchanged source identity and accepted prior coverage retained; no blanket fresh transitive review."
+    }
+  ],
+  "additional_local_proof_supplier": {
+    "path": "Aglib/CategoryTheory/Sites/Torsion/ZMod/Ringed/ConstantRing.lean",
+    "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/Torsion/ZMod/Ringed/ConstantRing.lean",
+    "sha256": "1a8454a4f9ef3d3963d9646fd2e1edcd10d091112cf47c56e04b17ca2d9b6636",
+    "coverage": "58-83: native standard sheafification theorem and Prop-valued abWEqualsLocallyBijectiveStandard; no scalar conversion or localization data used by the new attribute."
+  },
+  "mathlib_coverage": [
+    "CategoryTheory/Iso.lean:355-371, cancellation of invertible composition factors",
+    "CategoryTheory/Sites/LocallyBijective.lean:100-110, WEqualsLocallyBijective is Prop",
+    "Algebra/Category/ModuleCat/Sheaf/Abelian.lean:37-42, same native abelian constructor",
+    "CategoryTheory/Abelian/Basic.lean:103-119, Abelian is data-bearing (not asserted Prop)",
+    "Algebra/Homology/DerivedCategory/Basic.lean:70-89, supplied localization and standard construction",
+    "Algebra/Category/ModuleCat/Sheaf.lean:122-145, original underlying sheaf factor, faithful/additive functors",
+    "Algebra/Category/ModuleCat/Sheaf/Limits.lean:102-120, original finite-limit preservation"
+  ],
+  "source_correspondence": {
+    "framework_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/CORRESPONDENCE.json",
+    "framework_packet_sha256": "3ae12d353fd99dda6fd8d602c5e939adf465b1fb117f544ca725859fd1bc339e",
+    "adoption_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/adoption/inferred-equation-r4/CORRESPONDENCE.json",
+    "adoption_packet_sha256": "557ba8eeb8bf5986ecd440515d7632ad37fea884cf022f2050d75c04ec71da57",
+    "original_archive": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/before/archive/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "sha256": "f71393b974ea85508ef65323593c319225c2fe2f3d5f891f2c0b76329bd49c4f"
+    },
+    "previous_accepted_R4": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/adoption/inferred-equation-r4/before.lean",
+      "sha256": "4eaeb3d9a30da1e3eab8783af8fd741e455c2b54a8e4aafcc4ada2d697c1e553"
+    },
+    "complete_inferred_equation_preplacement": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/adoption/inferred-equation-r4/after.lean",
+      "sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111"
+    },
+    "helper_binders_and_proof_identical_after_rename": true,
+    "original_G0_unit_theorem_unchanged_verbatim": true,
+    "R4_public_declaration_and_proof_verbatim_from_4ea": true,
+    "native_conditions": "Original variable block, properness, Cartesian orientation, arbitrary Ring and four module-derived inputs retained; new local W is a proof-only capability.",
+    "no_new_model": "One original module-world realization per supplied category; one standard Ab realization per auxiliary category in proof; no replacement ring/category/object/β or model-comparison construction."
+  },
+  "retained_prior_review": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/exceptional-module-proper-exchange.json",
+    "sha256": "36425be355526de2d5e247f5d4bfc53b7e991e4d3cc7699a6da82582d3838f25",
+    "markdown": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/exceptional-module-proper-exchange.md",
+    "markdown_sha256": "480699b87c9cbf0b3da0ef518e52ef8d5d3ca87977379213090d1a2d0bfca3c0",
+    "basis": "4eaeb3d9 only; preserved read-only, not relabeled as current-source review."
+  },
+  "downstream_boundary": "Identical public R4 declaration and now-reviewed same mathematical conclusion permit retention of prior unchanged R8/U2/U4 use of this interface, subject to principal source/application correspondence. This report grants no new blanket coverage of their other arguments, changed sources, imports or runtime.",
+  "execution_evidence": {
+    "frozen_full_R4": {
+      "delivery": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/r4-full-inferred-equation-v1-2e13005a/delivery.json",
+      "delivery_sha256": "21dd33fbe2f0aada45137eb571a74e2f12ac270b3b3d595deecd71b63f16a7c7",
+      "candidate_sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111",
+      "run": "remote-2e13005a9ced49f9957f5f02c7754e8a",
+      "provider_source": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+      "setup_sha256": "922034a0e8a01bed3cdcc4a09ed1ab37d1fd5b7f6b15d5a3f26e1c8d58a250f5",
+      "default_budgets": true,
+      "diagnostic_only": true,
+      "exit_code": 0,
+      "wall_seconds": 6.536038860678673,
+      "compiler_starts": 1,
+      "controlled_phase_source": "71aa222819e1ac71ff5fc1c3c26d20f2224b36391cd62ecbd20cddb678ec16a8",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-2e13005a9ced49f9957f5f02c7754e8a/receipt.json",
+      "group_closed": true,
+      "input_drift": [],
+      "boundary": "Successful complete5d7d frozen-context diagnostic supports those bytes and provider65/setup922 only. It is not current-N thin7f7ddd compilation."
+    },
+    "current_framework": {
+      "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/exceptional-module-proper-exchange-staging/expanded-p6/framework-placement/component-equation/NATIVE_PASS.json",
+      "target_sha256": "f2b0fba00d9c04af59cebfd655491a9af2084e0c9baf437e25ec48883efb9933",
+      "run": "remote-274bb8825e4046c88f4f9d65569bd948",
+      "source_identity": "c9814ed37d5d092427c21a0fecfec0c3f59fc8b5564ca27185548f4ad3d1cdda",
+      "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-R4-framework-component-equation-274bb882.json",
+      "source_manifest_sha256": "f36acb231e0085af580e63419f0c4d484c1b2a8140b0039ec6a15a440ded1418",
+      "captured_target_hash_matches": true,
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-274bb8825e4046c88f4f9d65569bd948/receipt.json",
+      "receipt_sha256": "513efbc4a18e20dd06dae6af8d7a724843d7c45793dbddda8f3e95eca4a95a76",
+      "group_closed": true,
+      "input_drift": [],
+      "exit_code": 0,
+      "compiler_invocations": 1,
+      "elapsed_seconds": 3.2867511510849,
+      "boundary": "Actual current-N framework target pass; no R4/P6 consumer compilation in this run."
+    },
+    "current_R4": "Pending ordinary current-N integration through its current H1 imports as assigned. No success inferred from either retained run.",
+    "fresh_checks": "No compiler, lint, tests, axiom audit, kernel replay or separate client checks performed; existing task predicates remain with their owner."
+  },
+  "remaining_gap": {
+    "mathematics": null,
+    "source_correspondence": null,
+    "integration": "Exact current thinR4 7f7ddd and its actual affected consumer chain still need their assigned current-N compilation/evidence reconciliation; frozen5d7d and frameworkf2b0 successes do not close this.",
+    "scope": "Existing abelian proper-base-change family and unchanged foundations are identified accepted prerequisites; this is not a full transitive library or broader six-operation review.",
+    "formal_status": "No established-status decision authorized."
+  },
+  "material_changes": "The new review covers replacing the eight-category cube helper with the complete two-category morphism cancellation/reflection theorem, consuming the inferred native component equation directly, locally selecting the existing W proof, and relocating the identical generic helper. No mathematical conclusion is retracted; old reports/execution histories retain their actual bases.",
+  "prewrite_guards": {
+    "heads": {
+      "entry": "56a07882f536a20bfbbfeed42c9adb5fe74ef9e9",
+      "native": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+      "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+    },
+    "mathlib_clean": true,
+    "new_reports_absent": true,
+    "native_scoped_status": "?? Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean\n?? Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean",
+    "all_fixed_target_hashes_match": true,
+    "all_prior_inspected_dependency_hashes_match": true,
+    "old_review_hashes_unchanged": true
+  },
+  "independence": "No source edits or proposed incorporated load-bearing repairs; no helpers/subagents; only the two newly assigned reports created. Old review remains unchanged.",
+  "reproduction": "Recompute fixed before/after hashes at the two correspondence packets; compare exact helper body after name/privacy change, old G0 declaration and public R4 declaration/proof. Reuse the source-bound delivery/receipts only for their recorded inputs; no new validation chain."
+}

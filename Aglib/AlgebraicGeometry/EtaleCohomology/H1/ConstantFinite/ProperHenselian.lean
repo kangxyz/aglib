@@ -51,10 +51,18 @@ theorem represented_h1Pullback_surjective
   refine Quotient.inductionOn a ?_
   intro P hP
   change torsorExtClass P = coefficientIso eG c at hP
-  let Y₀ := P.finiteEtaleRepresentative (stacks03RV S) hG₀
-  let eP := P.finiteEtaleRepresentativeIso (stacks03RV S) hG₀
-  have hY₀ : Surjective Y₀.obj.hom := P.represented_surjective G₀ Y₀ eP
-  let σ := P.representedSchemeAction G₀ Y₀ eP
+  let Y₀ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) (stacks03RV S) hG₀
+  let eP :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) (stacks03RV S) hG₀
+  have hY₀ : Surjective Y₀.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := G₀) (P := P) (Y := Y₀) (e := eP)
+  let σ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := G₀) (P := P) (Y := Y₀) (e := eP)
   let Y := F.objPreimage Y₀
   let e := F.objObjPreimageIso Y₀
   let eY := (Scheme.FiniteEtale.forget S).mapIso e
@@ -76,7 +84,9 @@ theorem represented_h1Pullback_surjective
       simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id])
   have hclass : torsorExtClass (torsorOfSchemeAction G₀ (F.obj Y) τ) =
       coefficientIso eG c :=
-    (torsorExtClass_iso (θ.trans (P.representedSchemeActionIso G₀ Y₀ eP))).trans hP
+    (torsorExtClass_iso (θ.trans
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := G₀) (P := P) (Y := Y₀) (e := eP)))).trans hP
   refine ⟨torsorExtClass Q, ?_⟩
   apply (coefficientIso eG).injective
   have h := SchemeTorsorBaseChange.torsorExtClass_pullbackSchemeAction f G Y α

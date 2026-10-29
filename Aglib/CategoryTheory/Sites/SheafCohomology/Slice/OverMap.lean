@@ -37,15 +37,9 @@ instance overMapRestriction_additive : (overMapRestriction J f).Additive where
 
 instance overMapRestriction_preservesLimitsOfShape {K : Type w} [Category.{w'} K]
     [HasLimitsOfShape K AddCommGrpCat.{m}] :
-    PreservesLimitsOfShape K (overMapRestriction.{u, v, m} J f) := by
-  let R := overMapRestriction.{u, v, m} J f
-  let I := sheafToPresheaf (J.over V) AddCommGrpCat.{m}
-  have : PreservesLimitsOfShape K (R ⋙ I) := by
-    change PreservesLimitsOfShape K
-      (sheafToPresheaf (J.over U) AddCommGrpCat.{m} ⋙
-        (Functor.whiskeringLeft _ _ AddCommGrpCat.{m}).obj (Over.map f).op)
-    infer_instance
-  exact preservesLimitsOfShape_of_reflects_of_preserves R I
+    PreservesLimitsOfShape K (overMapRestriction.{u, v, m} J f) :=
+  Functor.sheafPushforwardContinuous_preservesLimitsOfShape
+    (Over.map f) AddCommGrpCat.{m} (J.over V) (J.over U)
 
 instance overMapRestriction_preservesFiniteLimits :
     PreservesFiniteLimits (overMapRestriction.{u, v, m} J f) :=

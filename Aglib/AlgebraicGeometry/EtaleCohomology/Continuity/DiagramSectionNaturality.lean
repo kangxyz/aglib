@@ -30,11 +30,29 @@ variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   {F G : DiagramCoefficientSystem X}
   (η : InjectiveSystem.System.Hom (diagramAdjunctionData X) F G)
 
+attribute [local instance] sectionDiagramLeftAdditive sectionDiagramIntegerCartesian
+
+/-- The original coefficient map has its original representing value. -/
+lemma diagramSectionsHomEquiv_naturality (i : I)
+    (f : (diagramIntegerSystem X).obj i ⟶ F.obj i) :
+    diagramSectionsHomEquiv X G i (f ≫ η.app i) =
+      (globalSections (X.obj i).unop).map (η.app i) (diagramSectionsHomEquiv X F i f) :=
+  sectionIntegerHomEquiv_naturality (X := (X.obj i).unop)
+    (F := F.obj i) (G := G.obj i) (η.app i) f
+
 /-- The actual component maps on the original source section diagrams. -/
-def diagramSectionsNatTrans : diagramSectionsFunctor X F ⟶ diagramSectionsFunctor X G where
-  app i := (globalSections (X.obj i).unop).map (η.app i)
-  naturality _ _ a := sectionTransfer_naturality (X.map a).unop
-    (diagramInverseTransition X F a) (diagramInverseTransition X G a)
-    (η.app _) (η.app _) (diagramInverseTransition_naturality X η a)
+def diagramSectionsNatTrans : diagramSectionsFunctor X F ⟶ diagramSectionsFunctor X G :=
+  InjectiveSystem.representedHomValuesNatTrans (diagramAdjunctionData X)
+    (diagramIntegerSystem X) η (diagramSectionsObj X F) (diagramSectionsObj X G)
+    (diagramSectionsMap X F) (diagramSectionsMap X G)
+    (diagramSectionsHomEquiv X F) (diagramSectionsHomEquiv X G)
+    (diagramSectionsMap_homEquiv X F) (diagramSectionsMap_homEquiv X G)
+    (fun i => (globalSections (X.obj i).unop).map (η.app i))
+    (diagramSectionsHomEquiv_naturality X η)
+
+/-- The whole original coefficient component is retained. -/
+lemma diagramSectionsNatTrans_app (i : I) :
+    (diagramSectionsNatTrans X η).app i =
+      (globalSections (X.obj i).unop).map (η.app i) := rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

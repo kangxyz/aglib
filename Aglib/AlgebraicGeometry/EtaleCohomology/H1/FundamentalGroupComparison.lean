@@ -12,6 +12,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorComparisonAdditiv
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CoefficientRepresentation
+public import Aglib.CategoryTheory.Sites.Torsor.CoefficientIso
 
 /-!
 # The actual finite-coefficient fundamental-group comparison
@@ -58,50 +59,26 @@ def FiniteCoefficient.ofIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
 
 /-- Transport of a genuine torsor through an actual coefficient isomorphism:
 the sheaf of sections is unchanged and the action uses the inverse coefficient map. -/
-def Torsor.ofCoefficientIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor N where
-  carrier := P.carrier
-  action U a t := P.action U (e.inv.hom.app U a) t
-  zero_action U t := by rw [map_zero]; exact P.zero_action U t
-  add_action U a b t := by rw [map_add]; exact P.add_action U _ _ t
-  naturality {U V} f a t := by
-    rw [P.naturality]
-    congr 1
-    exact (ConcreteCategory.congr_hom (e.inv.hom.naturality f) a).symm
-  unique_transport U x y := by
-    obtain ⟨a, ha, hu⟩ := P.unique_transport U x y
-    have hleft (b : L.obj.obj U) : e.inv.hom.app U (e.hom.hom.app U b) = b :=
-      congrArg (fun q : L ⟶ L => q.hom.app U b) e.hom_inv_id
-    have hright (b : N.obj.obj U) : e.hom.hom.app U (e.inv.hom.app U b) = b :=
-      congrArg (fun q : N ⟶ N => q.hom.app U b) e.inv_hom_id
-    refine ⟨e.hom.hom.app U a, ?_, ?_⟩
-    · change P.action U (e.inv.hom.app U (e.hom.hom.app U a)) x = y
-      rw [hleft]; exact ha
-    · intro b hb
-      exact (hright b).symm.trans (congrArg (e.hom.hom.app U) (hu _ hb))
-  locally_nonempty := P.locally_nonempty
+abbrev Torsor.ofCoefficientIso {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor N :=
+  CategoryTheory.Sheaf.Torsor.ofCoefficientIso P e
 
 /-- The identity on the carrier is genuinely equivariant for the coefficient iso. -/
-def Torsor.coefficientIsoHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.hom P (P.ofCoefficientIso e) where
-  map := 𝟙 P.carrier
-  equivariant U a t := by
-    change P.action U a t = P.action U (e.inv.hom.app U (e.hom.hom.app U a)) t
-    rw [show e.inv.hom.app U (e.hom.hom.app U a) = a from
-      congrArg (fun q : L ⟶ L => q.hom.app U a) e.hom_inv_id]
+abbrev Torsor.coefficientIsoHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.hom P (P.ofCoefficientIso e) :=
+  CategoryTheory.Sheaf.Torsor.coefficientIsoHom P e
 
 /-- The reverse identity carrier map has the inverse actual coefficient. -/
-def Torsor.coefficientIsoInvHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
-    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.inv (P.ofCoefficientIso e) P where
-  map := 𝟙 P.carrier
-  equivariant _ _ _ := rfl
+abbrev Torsor.coefficientIsoInvHom {X : Scheme.{u}} {L N : AbelianSheaf.{u, u + 1} X}
+    (P : Torsor L) (e : L ≅ N) : Torsor.Hom e.inv (P.ofCoefficientIso e) P :=
+  CategoryTheory.Sheaf.Torsor.coefficientIsoInvHom P e
 
 /-- Canonical extension classes commute with this literal coefficient transport. -/
 theorem torsorExtClass_ofCoefficientIso {X : Scheme.{u}}
     [HasExt.{w} (AbelianSheaf.{u, u + 1} X)] {L N : AbelianSheaf.{u, u + 1} X}
     (P : Torsor L) (e : L ≅ N) :
     coefficientIso e (torsorExtClass P) = torsorExtClass (P.ofCoefficientIso e) :=
-  torsorExtClass_naturality (P.coefficientIsoHom e)
+  CategoryTheory.Sheaf.torsorExtClass_ofCoefficientIso P e
 
 /-- An ordinary sheaf coefficient morphism gives its actual finite group-scheme
 morphism by the proved represented-coefficient full faithfulness. -/
@@ -305,7 +282,9 @@ theorem representedH1AddEquiv_torsor_pointModule (P : Torsor (representedSheaf H
           (pointModuleMark_equivariant s H M mark hmark) hR hcoeff.locally_constant P) := by
   let := pointModuleAction s H M mark
   let := pointModuleContinuousSMul s H M mark
-  change coefficientH1Equiv _ _ (smallRepresentedH1AddEquiv _ _ _ _ _ _ _ _ _) = _
+  change coefficientH1Equiv _ _
+    (smallRepresentedH1AddEquiv s H hA hR (PointModule s H) (pointModuleMark s H)
+      (pointModuleMark_equivariant s H M mark hmark) hcoeff (torsorExtClass P)) = _
   rw [smallRepresentedH1AddEquiv_torsor]
 
 /-- The arbitrary-universe cocycle is the common small-point cocycle followed

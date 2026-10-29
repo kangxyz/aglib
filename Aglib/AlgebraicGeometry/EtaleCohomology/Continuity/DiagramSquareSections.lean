@@ -20,29 +20,11 @@ lemma squareCoefficientMap_id {X S : Scheme.{u}} (f : X ⟶ S)
     (e : f ≫ 𝟙 S = 𝟙 X ≫ f) (F : AbelianSheaf.{u, u + 1} S) :
     squareCoefficientMap f f (𝟙 S) (𝟙 X) e ((inverseImageId S).hom.app F) =
       (inverseImageId X).hom.app ((inverseImage f).obj F) := by
-  have hc := congrArg (fun z => z.hom.app F) (inverseImageSquareIso_id f e)
-  simp only [Iso.trans_hom, NatTrans.comp_app, Functor.isoWhiskerLeft_hom,
-    Functor.isoWhiskerRight_hom, Functor.whiskerLeft_app, Functor.whiskerRight_app,
-    Functor.rightUnitor_hom_app, Functor.leftUnitor_hom_app] at hc
-  change (inverseImageSquareIso f f (𝟙 S) (𝟙 X) e).hom.app F ≫
-      (inverseImageId X).hom.app ((inverseImage f).obj F) ≫
-        𝟙 ((inverseImage f).obj F) =
-    (inverseImage f).map ((inverseImageId S).hom.app F) ≫
-      𝟙 ((inverseImage f).obj F) at hc
-  let m : (inverseImage (𝟙 X)).obj ((inverseImage f).obj F) ⟶
-      (inverseImage f).obj F := (inverseImageId X).hom.app ((inverseImage f).obj F)
-  let n : (inverseImage f).obj ((inverseImage (𝟙 S)).obj F) ⟶
-      (inverseImage f).obj F := (inverseImage f).map ((inverseImageId S).hom.app F)
-  have hc' : (inverseImageSquareIso f f (𝟙 S) (𝟙 X) e).hom.app F ≫ m = n :=
-    (congrArg
-      (fun k : (inverseImage (𝟙 X)).obj ((inverseImage f).obj F) ⟶
-          (inverseImage f).obj F =>
-        (inverseImageSquareIso f f (𝟙 S) (𝟙 X) e).hom.app F ≫ k)
-      (Category.comp_id m)).symm.trans (hc.trans (Category.comp_id n))
-  have ht := congrArg
-    (fun k => (inverseImageSquareIso f f (𝟙 S) (𝟙 X) e).inv.app F ≫ k) hc'
-  simpa only [squareCoefficientMap, ← Category.assoc, Iso.inv_hom_id_app,
-    Category.id_comp, m, n] using ht.symm
+  simpa only [schemeSquareCoefficientMap_eq_squareCoefficientMap,
+    schemeLeftIdIso_eq_inverseImageId, schemeLeft_eq_inverseImage,
+    unop_id, Quiver.Hom.unop_op] using
+    schemeAdjunctionData.squareCoefficientMap_id schemeAdjunctionData_coherent
+      f.op (congrArg Quiver.Hom.op e) F
 
 /-- Pullback on sections followed by the original coefficient square. -/
 def squareSectionsMap {X₀ S₀ X₁ S₁ : Scheme.{u}}

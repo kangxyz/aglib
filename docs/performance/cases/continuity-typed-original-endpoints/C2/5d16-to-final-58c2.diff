@@ -1,0 +1,11 @@
+--- versions/v7/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean
++++ versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean
+@@ -57,7 +57,7 @@
+       AddCommGrpCat.ofHom
+         (Sheaf.H.δ (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+           n (n + 1) rfl) := by
+-  letI connectingLegApexExt : HasExt.{e} (AbelianSheaf.{u, u + 1}
++  let connectingLegApexExt : HasExt.{e} (AbelianSheaf.{u, u + 1}
+       (((Functor.const I).obj c.pt).obj i).unop) :=
+     inferInstanceAs (HasExt.{e} (AbelianSheaf.{u, u + 1} c.pt.unop))
+   exact Functor.extPrecompMap_connecting_naturality

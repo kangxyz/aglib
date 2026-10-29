@@ -40,7 +40,7 @@ lemma inverseImageSquareIso_inv_eq_triangle_whole {X S Y Z : Scheme.{u}}
     (h : r ≫ u = w ≫ f) :
     (inverseImageSquareIso u w f r h.symm).inv =
       (pullbackTriangleIso (w ≫ f) u r h).inv ≫ (inverseImageComp f w).hom := by
-  simp only [inverseImageSquareIso, pullbackTriangleIso, Iso.trans_inv,
+  simp only [inverseImageSquareIso_eq_comp, pullbackTriangleIso, Iso.trans_inv,
     Iso.symm_inv, Category.assoc]
 
 /-- Evaluate the whole comparison at an arbitrary native coefficient. -/

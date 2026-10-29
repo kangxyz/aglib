@@ -1,0 +1,37 @@
+{
+  "question": "Original Field comparison with local eH unfolded at final typed factorization",
+  "kind": "scratch complete-proof candidate; no production adoption",
+  "record": {
+    "exit_code": 1,
+    "elapsed_seconds": 164.49895465373993,
+    "source_basis": "b16675952652f431a224f8f67dc7f79677295b7cc54ccfce99db86006b75ca91",
+    "candidate_sha256": "b62265bf0b51a6c824cec55f45858d73038e26ffa66a36d857b6e5617237be5f",
+    "setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+    "command": [
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/toolchain/bin/lean",
+      "-M12800",
+      "-j4",
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+      "--setup",
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.setup.json",
+      "-o",
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.c"
+    ],
+    "folder": "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3",
+    "managed_source_mutations": 0
+  },
+  "request_sha256": "9baf59ae0e6128a1dded72344569800ff066ad663a41f76bcdf3628b5bd5b3db",
+  "group_closed": true,
+  "input_drift": [],
+  "failure": "396:4 type mismatch after simp; actual and expected display identical explicit original producer terms after eH unfolding; getLimitCone/inv unexposed note",
+  "stdout": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/diagnostics/field-whole-comparison-v3/stdout.log",
+  "stdout_sha256": "735e2460654f7bc0ee60c5be73ea80bbb46e56b2ac9e77c5072cc3c52002c73c",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-614cbe7476874fcca5b896c5863a9584/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-614cbe7476874fcca5b896c5863a9584/build.log",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C-Field-whole-v3-614cbe74.json",
+  "source_archive_sha256": "92f5d3e56574b794983ec2d38ef85d85ceb03d39aad947e29a1c090513c01c38"
+}

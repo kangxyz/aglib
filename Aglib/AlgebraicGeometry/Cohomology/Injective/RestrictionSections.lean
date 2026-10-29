@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Sections
+public import Aglib.AlgebraicGeometry.Cohomology.MayerVietoris.InjectiveComplex
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Affine.Vanishing
 /-! # Actual sections of restricted injective resolutions

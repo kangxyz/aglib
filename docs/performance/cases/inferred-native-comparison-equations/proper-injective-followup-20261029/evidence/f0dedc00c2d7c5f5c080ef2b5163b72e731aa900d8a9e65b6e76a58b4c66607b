@@ -1,0 +1,58 @@
+{
+  "question": "Complete lower exact-coefficient injective-test assembly and thin original AllModuleCoefficients instantiation",
+  "phase": "Guarded source publication and fixed-vector source review complete; compiler continuation open",
+  "conclusion": "Complete exact-coefficient injective-test assembly is in a focused lower theorem leaf; original three native theorem statements and killed/higher proof tail are preserved",
+  "source_identity": {
+    "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "owned_sources": [
+      {
+        "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+        "before_sha256": null,
+        "after_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+      },
+      {
+        "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+        "before_sha256": "3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049",
+        "after_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+      },
+      {
+        "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/README.md",
+        "before_sha256": "416c92277304acaf432cdeec3c1096c9794a0d895e8d6d6b842a6bc3e669d598",
+        "after_sha256": "3f27da8b89e260e7110ea48f69fc103b4c293d0ac4749821fb40552d3e956e68"
+      }
+    ],
+    "unchanged_core": {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparison.lean",
+      "sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f"
+    }
+  },
+  "source_review": {
+    "status": "supported/no material objection, as accepted by Root",
+    "fixed_vector": [
+      "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb",
+      "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+    ],
+    "before_native_sha256": "3ca8459c118eeba3e9195c2dc5b9f872ac0544b7277850bc6de002967e381049",
+    "reports": [
+      "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.md",
+      "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/proper-injective-assembly-core.json"
+    ]
+  },
+  "coverage": {
+    "original_statement_correspondence": "three theorem headers byte-identical",
+    "killed_and_higher_tail": "byte-identical",
+    "source_publication": "exact two Lean paths plus bounded owning README",
+    "production_compilation": "pending broker coalesced capture/run, no pass claimed"
+  },
+  "conditions": [
+    "All original hI hypotheses, arbitrary n and q, actual beta and native exact-single comparison preserved",
+    "Independent dX/dS/dXprime/dSprime preserved; proof-only coefficient model internal",
+    "No injectivity-under-forgetting assumption, endpoint comparison premise or additional mathematical theory"
+  ],
+  "remaining_gap": "Production compiler evidence on the actual newly captured coherent source, with any failure-driven repairs owned by this author",
+  "next_action": "Broker directly resumes retained author with actual coalesced production results or proof diagnostics; no Root relay or duplicate producer",
+  "live_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/LIVE_READY.json",
+  "correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/CORRESPONDENCE.md",
+  "reproduction_only": "lake build +Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact +Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients",
+  "broader_boundary": "No whole Proper, EtaleCohomology or migration completion claim; no standalone acceptance replay/client/audit chain added"
+}

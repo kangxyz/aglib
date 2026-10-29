@@ -1,0 +1,136 @@
+--- author-b622
++++ C-factorization-data-v1
+@@ -73,6 +73,95 @@
+ open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois
+ open _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber fiberToFinite)
+ open _root_.GroupCohomology.ContinuousH1
++private structure CFieldFactorStats where
++  reports : IO.Ref Nat
++  exactMatches : IO.Ref Nat
++  sameTypeProofs : IO.Ref Nat
++  proofTypeSteps : IO.Ref Nat
++  depthTruncations : IO.Ref Nat
++
++private def cFieldFactorHead (e : Lean.Expr) : String :=
++  match e.consumeMData with
++  | .const n us => s!"const {n} levels={reprStr us}"
++  | .sort u => s!"sort levels={reprStr u}"
++  | .fvar id => s!"fvar {id.name}"
++  | .bvar i => s!"bvar {i}"
++  | .mvar id => s!"mvar {id.name}"
++  | .proj n i _ => s!"proj {n} index={i}"
++  | .lam .. => "lam"
++  | .forallE .. => "forallE"
++  | .letE .. => "letE"
++  | .lit .. => "literal"
++  | .app .. => "app"
++  | .mdata .. => "metadata"
++
++private def cFieldFactorShort (e : Lean.Expr) : Lean.MetaM String := do
++  let formatted ← Lean.Meta.ppExpr e
++  return String.ofList ((toString formatted).toList.take 1600)
++
++private def cFieldFactorTypeText (e : Lean.Expr) : Lean.MetaM String := do
++  if e.hasLooseBVars then return "unavailable: loose bound variables"
++  try
++    let t ← Lean.instantiateMVars (← Lean.Meta.inferType e)
++    if t.hasMVar then return "unavailable: unresolved type metavariables"
++    cFieldFactorShort t
++  catch _ => return "unavailable: type inference failed"
++
++private def cFieldFactorVisit (st : CFieldFactorStats) :
++    Nat → String → Lean.Expr → Lean.Expr → Lean.MetaM Unit
++  | 0, _, a, b => do
++    if (← st.reports.get) ≥ 20 then return
++    if Lean.Expr.equal a.consumeMData b.consumeMData then
++      st.exactMatches.modify (· + 1)
++    else
++      st.depthTruncations.modify (· + 1)
++  | fuel + 1, path, a, b => do
++    if (← st.reports.get) ≥ 20 then return
++    let a := a.consumeMData
++    let b := b.consumeMData
++    if Lean.Expr.equal a b then
++      st.exactMatches.modify (· + 1)
++      return
++    if a.hasMVar || b.hasMVar then
++      Lean.throwError "FIELD_FACTOR_INVALID unresolved metavariables at {path}"
++    if !a.hasLooseBVars && !b.hasLooseBVars then
++      if (← Lean.Meta.isProof a) && (← Lean.Meta.isProof b) then
++        let ta ← Lean.instantiateMVars (← Lean.Meta.inferType a)
++        let tb ← Lean.instantiateMVars (← Lean.Meta.inferType b)
++        if ta.hasMVar || tb.hasMVar then
++          Lean.throwError "FIELD_FACTOR_INVALID unresolved proof type at {path}"
++        if Lean.Expr.equal ta.consumeMData tb.consumeMData then
++          st.sameTypeProofs.modify (· + 1)
++          return
++        st.proofTypeSteps.modify (· + 1)
++        cFieldFactorVisit st fuel (path ++ "/proofType") ta tb
++        return
++    let af := a.getAppFn.consumeMData
++    let bf := b.getAppFn.consumeMData
++    let aa := a.getAppArgs
++    let ba := b.getAppArgs
++    if Lean.Expr.equal af bf && aa.size == ba.size && !aa.isEmpty then
++      for i in [:aa.size] do
++        cFieldFactorVisit st fuel (path ++ "/arg" ++ toString i) aa[i]! ba[i]!
++    else
++      match a, b with
++      | .lam _ atype abody _, .lam _ btype bbody _ =>
++        cFieldFactorVisit st fuel (path ++ "/domain") atype btype
++        cFieldFactorVisit st fuel (path ++ "/body") abody bbody
++      | .forallE _ atype abody _, .forallE _ btype bbody _ =>
++        cFieldFactorVisit st fuel (path ++ "/domain") atype btype
++        cFieldFactorVisit st fuel (path ++ "/body") abody bbody
++      | _, _ =>
++        st.reports.modify (· + 1)
++        Lean.logInfo m!"FIELD_FACTOR_DIFF path={path}"
++        Lean.logInfo m!"FIELD_FACTOR_HEAD actual={cFieldFactorHead af}"
++        Lean.logInfo m!"FIELD_FACTOR_HEAD expected={cFieldFactorHead bf}"
++        Lean.logInfo m!"FIELD_FACTOR_ARITY actual={aa.size} expected={ba.size}"
++        Lean.logInfo m!"FIELD_FACTOR_ACTUAL {← cFieldFactorShort a}"
++        Lean.logInfo m!"FIELD_FACTOR_EXPECTED {← cFieldFactorShort b}"
++        Lean.logInfo m!"FIELD_FACTOR_ACTUAL_TYPE {← cFieldFactorTypeText a}"
++        Lean.logInfo m!"FIELD_FACTOR_EXPECTED_TYPE {← cFieldFactorTypeText b}"
++
+ namespace GroupCohomology.Kummer.Field
+ universe u w
+ universe u₁ u₂ u₃
+@@ -392,8 +481,35 @@
+     (congrArg (fun g => ((galoisRestriction K n).onH1 : _ → _) ∘ g) hcoe)
+   refine evaluate_original_comparison (e := eH) h (comparison K n hA hR)
+     ((galoisRestriction K n).onH1) _ ?_ ?_
+-  · trace_state
+-    simpa only [comparison, eH] using hfactor
++  · simp only [comparison, eH] at hfactor ⊢
++    run_tac
++      Lean.Elab.Tactic.withMainContext do
++        let target ← Lean.instantiateMVars (← Lean.Elab.Tactic.getMainTarget)
++        let some decl := (← Lean.getLCtx).findFromUserName? (Lean.Name.mkSimple "hfactor")
++          | Lean.throwError "FIELD_FACTOR_INVALID missing current local hfactor"
++        let actual ← Lean.instantiateMVars (← Lean.Meta.inferType (Lean.mkFVar decl.fvarId))
++        if actual.hasMVar || target.hasMVar then
++          Lean.throwError "FIELD_FACTOR_INVALID unresolved initial expressions"
++        let reports ← IO.mkRef (0 : Nat)
++        let exactMatches ← IO.mkRef (0 : Nat)
++        let sameTypeProofs ← IO.mkRef (0 : Nat)
++        let proofTypeSteps ← IO.mkRef (0 : Nat)
++        let depthTruncations ← IO.mkRef (0 : Nat)
++        let st : CFieldFactorStats := {
++          reports := reports
++          exactMatches := exactMatches
++          sameTypeProofs := sameTypeProofs
++          proofTypeSteps := proofTypeSteps
++          depthTruncations := depthTruncations
++        }
++        Lean.logInfo "FIELD_FACTOR_BEGIN fully-resolved=true"
++        cFieldFactorVisit st 80 "type" actual target
++        Lean.logInfo m!"FIELD_FACTOR_END reports={← reports.get}"
++        Lean.logInfo m!"FIELD_FACTOR_STATS exact={← exactMatches.get}"
++        Lean.logInfo m!"FIELD_FACTOR_STATS sameTypeProofs={← sameTypeProofs.get}"
++        Lean.logInfo m!"FIELD_FACTOR_STATS proofTypeSteps={← proofTypeSteps.get}"
++        Lean.logInfo m!"FIELD_FACTOR_STATS depthTruncations={← depthTruncations.get}"
++    exact hfactor
+   · exact hclass
+ 
+ 

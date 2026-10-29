@@ -33,79 +33,65 @@ variable (X : Scheme.{u}) (n : ℕ) {k : ℕ}
 
 /-- The actual finite family of original coordinate annihilators. -/
 def annihilatorProductFamily (G : Fin k → AbelianSheaf.{u, u + 1} X) :
-    Fin k → AbelianSheaf.{u, u + 1} X := fun i => Sheaf.annihilator (G i) n
+    Fin k → AbelianSheaf.{u, u + 1} X :=
+  Preadditive.nsmulKernelProductFamily n G
 
 /-- The original product of the native kernel inclusions. -/
 def annihilatorProductInclusion (G : Fin k → AbelianSheaf.{u, u + 1} X) :
     (∏ᶜ annihilatorProductFamily X n G) ⟶ ∏ᶜ G :=
-  CategoryTheory.Limits.Pi.map fun i => Sheaf.annihilatorι (G i) n
+  Preadditive.nsmulKernelProductInclusion n G
 
 instance annihilatorProductInclusion_mono (G : Fin k → AbelianSheaf.{u, u + 1} X) :
-    Mono (annihilatorProductInclusion X n G) := by
-  dsimp only [annihilatorProductInclusion]
-  infer_instance
+    Mono (annihilatorProductInclusion X n G) :=
+  Preadditive.nsmulKernelProductInclusion_mono n G
 
 /-- The original coefficient maps induced by each product projection. -/
 def annihilatorProductForward (G : Fin k → AbelianSheaf.{u, u + 1} X) :
     Sheaf.annihilator (∏ᶜ G) n ⟶ ∏ᶜ annihilatorProductFamily X n G :=
-  Pi.lift fun i => Sheaf.annihilatorCoefficientMap (Pi.π G i) n
+  Preadditive.nsmulKernelProductForward n G
+
+/-- Each forward projection is the original annihilator coefficient map. -/
+@[reassoc]
+theorem annihilatorProductForward_π
+    (G : Fin k → AbelianSheaf.{u, u + 1} X) (i : Fin k) :
+    annihilatorProductForward X n G ≫ Pi.π (annihilatorProductFamily X n G) i =
+      Sheaf.annihilatorCoefficientMap (Pi.π G i) n := by
+  apply (cancel_mono (Sheaf.annihilatorι (G i) n)).mp
+  rw [Category.assoc, Sheaf.annihilatorCoefficientMap_ι]
+  exact Preadditive.nsmulKernelProductForward_π_ι n G i
 
 /-- The original product of coordinate annihilators is itself killed by n. -/
 theorem annihilatorProduct_nsmul_id
     (G : Fin k → AbelianSheaf.{u, u + 1} X) :
-    n • 𝟙 (∏ᶜ annihilatorProductFamily X n G) = 0 := by
-  apply Pi.hom_ext
-  intro i
-  have hi : n • 𝟙 (annihilatorProductFamily X n G i) = 0 :=
-    Sheaf.nsmul_id_annihilator (G i) n
-  calc
-    _ = Pi.π (annihilatorProductFamily X n G) i ≫
-        (n • 𝟙 (annihilatorProductFamily X n G i)) := by
-      simp only [Preadditive.nsmul_comp, Category.id_comp,
-        Preadditive.comp_nsmul, Category.comp_id]
-    _ = 0 := by rw [hi, comp_zero]
-    _ = _ := by rw [zero_comp]
+    n • 𝟙 (∏ᶜ annihilatorProductFamily X n G) = 0 :=
+  Preadditive.nsmulKernelProduct_nsmul_id n G
 
 /-- The native kernel lift of the actual product of kernel inclusions. -/
 def annihilatorProductBackward (G : Fin k → AbelianSheaf.{u, u + 1} X) :
     (∏ᶜ annihilatorProductFamily X n G) ⟶ Sheaf.annihilator (∏ᶜ G) n :=
-  killedKernelLift n (annihilatorProduct_nsmul_id X n G) (annihilatorProductInclusion X n G)
+  Preadditive.nsmulKernelProductBackward n G
 
 /-- The forward map retains the original product projections and kernel inclusion. -/
 @[reassoc]
 theorem annihilatorProductForward_inclusion
     (G : Fin k → AbelianSheaf.{u, u + 1} X) :
     annihilatorProductForward X n G ≫ annihilatorProductInclusion X n G =
-      Sheaf.annihilatorι (∏ᶜ G) n := by
-  apply Pi.hom_ext
-  intro i
-  rw [Category.assoc, annihilatorProductInclusion, Pi.map_π, ← Category.assoc,
-    annihilatorProductForward, Pi.lift_comp_π]
-  exact Sheaf.annihilatorCoefficientMap_ι (Pi.π G i) n
+      Sheaf.annihilatorι (∏ᶜ G) n :=
+  Preadditive.nsmulKernelProductForward_inclusion n G
 
 /-- The backward map retains the literal product of original kernel inclusions. -/
 @[reassoc]
 theorem annihilatorProductBackward_inclusion
     (G : Fin k → AbelianSheaf.{u, u + 1} X) :
     annihilatorProductBackward X n G ≫ Sheaf.annihilatorι (∏ᶜ G) n =
-      annihilatorProductInclusion X n G := by
-  change killedKernelLift n _ _ ≫ kernel.ι (n • 𝟙 (∏ᶜ G)) = _
-  exact kernel.lift_ι _ _ _
+      annihilatorProductInclusion X n G :=
+  Preadditive.nsmulKernelProductBackward_inclusion n G
 
 /-- The actual original annihilator of a finite product is the product of the
 actual coordinate annihilators, through the displayed original maps. -/
 def annihilatorProductIso (G : Fin k → AbelianSheaf.{u, u + 1} X) :
-    Sheaf.annihilator (∏ᶜ G) n ≅ ∏ᶜ annihilatorProductFamily X n G where
-  hom := annihilatorProductForward X n G
-  inv := annihilatorProductBackward X n G
-  hom_inv_id := by
-    apply (cancel_mono (Sheaf.annihilatorι (∏ᶜ G) n)).mp
-    rw [Category.assoc, annihilatorProductBackward_inclusion,
-      annihilatorProductForward_inclusion, Category.id_comp]
-  inv_hom_id := by
-    apply (cancel_mono (annihilatorProductInclusion X n G)).mp
-    rw [Category.assoc, annihilatorProductForward_inclusion,
-      annihilatorProductBackward_inclusion, Category.id_comp]
+    Sheaf.annihilator (∏ᶜ G) n ≅ ∏ᶜ annihilatorProductFamily X n G :=
+  Preadditive.nsmulKernelProductIso n G
 
 variable {X}
 

@@ -1,0 +1,11 @@
+{
+  "question": "Separate current Kummer representative theorem elaboration: h application already reached; does restriction congrArg, classOf transport, or final conversion hit maxRecDepth?",
+  "basis_run": "remote-0116fbacf2d74456ad1c2e7f9bf70ed4",
+  "basis_source": "f99d984824d7d8076ab46ecb1a708647baa16731530f208dd4754a3c6b2f283b",
+  "native_file": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+  "native_sha256": "ae9a8aa06808167187457001e0bfb5f274454f721b143631e5ae1815f723e35a",
+  "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/diagnostics/FieldComparisonPhases.lean",
+  "diagnostic_sha256": "41e7f7ef39278988d3bb80550e36867aae8c8cdd1b1292d97d4eaad8d1ed1a49",
+  "change": "Full current source retained, only failing expression split into hmap/hclass/final exact. No options, hypotheses, statement, map, budget or recursion changes. Line locations distinguish the phases.",
+  "runtime": "One bounded ordinary scratch diagnostic using actual sealed source/dependencies and valid existing caches, after/on a safe existing lane slot as broker decides. No production retry of unchanged ae9a, no replay/extra checks."
+}

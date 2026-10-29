@@ -269,18 +269,6 @@ variable
 local instance neighborhoodChartNormalizationBaseDerived : HasDerivedCategory.{dU}
     (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hBase
 
-omit hOriginalExt hSliceExt hChart in
-/-- Compare the original exchange values before taking a coefficient component. -/
-private theorem originalChartExchange_value_eq_primitive (q : ℕ) :
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
-      hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
-      U.hom (pullback.snd U.hom f) pullback.condition q) =
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f)
-      ((𝟭 Scheme.{u}).obj U.left)
-      hSourceDerived hTargetDerived hChartDerived
-      (@baseChangeChartSectionsTargetIdentityHasDerivedCategory.{u, dU} S U hBase)
-      f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q) := rfl
-
 private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     (fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
       (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
@@ -300,25 +288,21 @@ private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : �
     (@higherDirectImage.{u} X S f q)
     (@inverseImage.{u} X (pullback U.hom f) (pullback.snd U.hom f))
     (higherDirectImage (pullback.fst U.hom f) q)
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
       hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
       U.hom (pullback.snd U.hom f) pullback.condition q)
-    (@higherBaseChangeMap.{u, dX, dS, dZU, dU} X S (pullback U.hom f)
-      ((𝟭 Scheme.{u}).obj U.left)
-      hSourceDerived hTargetDerived hChartDerived
-      (@baseChangeChartSectionsTargetIdentityHasDerivedCategory.{u, dU} S U hBase)
-      f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q)
-    (originalChartExchange_value_eq_primitive f U
-      (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
-      (hChartDerived := hChartDerived) (hBase := hBase) q) F
+    (higherBaseChangeMap f (pullback.fst U.hom f) U.hom
+      (pullback.snd U.hom f) pullback.condition q)
+    (@higherBaseChangeMapFromDerived_eq.{u, dX, dS, dZU, dU}
+      X S (pullback U.hom f) U.left hSourceDerived hTargetDerived hChartDerived hBase
+      f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q) F
     (originalCohomologySectionHom f U F q)
     (fun z => cohomologyToHigherSections (pullback.fst U.hom f)
       ((inverseImage (pullback.snd U.hom f)).obj F) q
         (@fibreProductCohomologyEquiv.{u, w, s, e} X S f U
           hOriginalExt hSliceExt hChart F q z))
-    (@higherBaseChangeMap_originalChart.{u, w, s, e, dX, dS, dZU, dU}
-      X S f U hOriginalExt hSliceExt hChart
-      hSourceDerived hTargetDerived hChartDerived hBase F q) x
+    (@higherBaseChangeMap_originalChart.{u, w, s, e}
+      X S f U hOriginalExt hSliceExt hChart F q) x
 
 private theorem fibreProductChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     (fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
@@ -355,26 +339,25 @@ private theorem higherBaseChangeMap_coefficientSections_hom
     (G : AbelianSheaf.{u, u + 1} Y) (φ : (inverseImage r).obj F ⟶ G) (q : ℕ) :
     (globalSectionsPullback b ((higherDirectImage f q).obj F) ≫
       (globalSections T).map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S Y T
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S Y T
           hDomainDerived hDomainBaseDerived hCodomainDerived hCodomainBaseDerived
           f fT b r h q).app F ≫
           (higherDirectImage fT q).map φ)).hom.comp (cohomologyToHigherSections f F q) =
       (cohomologyToHigherSections fT G q).comp
         ((Sheaf.H.map φ q).comp (cohomologyPullback.{u, w, w'} r F q)) := by
+  rw [higherBaseChangeMapFromDerived_eq]
   let Γ : AbelianSheaf.{u, u + 1} T ⥤ AddCommGrpCat.{u + 1} := globalSections T
   let β : (inverseImage b).obj ((higherDirectImage f q).obj F) ⟶
       (higherDirectImage fT q).obj ((inverseImage r).obj F) :=
-    (@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S Y T
-    hDomainDerived hDomainBaseDerived hCodomainDerived hCodomainBaseDerived f fT b r h q).app F
+    (higherBaseChangeMap f fT b r h q).app F
   have hs : (Γ.map β).hom.comp
       ((globalSectionsPullback b ((higherDirectImage f q).obj F)).hom.comp
         (cohomologyToHigherSections f F q)) =
       (cohomologyToHigherSections fT ((inverseImage r).obj F) q).comp
         (cohomologyPullback.{u, w, w'} r F q) :=
     addHom_eq_of_apply _ _
-      (@higherBaseChangeMap_cohomologyToHigherSections.{u, w, w', dX, dS, dX', dS'}
-        X S Y T hDomainExt hCodomainExt
-        hDomainDerived hDomainBaseDerived hCodomainDerived hCodomainBaseDerived f fT b r h F q)
+      (@higherBaseChangeMap_cohomologyToHigherSections.{u, w, w'}
+        X S Y T hDomainExt hCodomainExt f fT b r h F q)
   have ht : (Γ.map ((higherDirectImage fT q).map φ)).hom.comp
       (cohomologyToHigherSections fT ((inverseImage r).obj F) q) =
       (cohomologyToHigherSections fT G q).comp (Sheaf.H.map φ q) :=
@@ -400,7 +383,7 @@ private theorem higherBaseChangeMap_coefficientTransferSections_hom
     (G : AbelianSheaf.{u, u + 1} Y) (φ : (inverseImage r).obj F ⟶ G) (q : ℕ) :
     (globalSectionsPullback b ((higherDirectImage f q).obj F) ≫
       (globalSections T).map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S Y T
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S Y T
           hDomainDerived hDomainBaseDerived hCodomainDerived hCodomainBaseDerived
           f fT b r h q).app F ≫
           (higherDirectImage fT q).map φ)).hom.comp (cohomologyToHigherSections f F q) =
@@ -483,7 +466,7 @@ theorem fibreProductBaseChangeSectionMap_eq_original
     fibreProductBaseChangeSectionMap.{u, dX, dS, dX', dS'} f f' g g' h U
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS') F q =
       ((inverseImageAdjunction g).unit.app ((higherDirectImage f q).obj F)).hom.app (op U) ≫
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F).hom.app
           (op ((siteBaseChange g).obj U)) :=
   @fibreProductBaseChangeSectionNatTrans_app.{u, dX, dS, dX', dS'} X S X' S'
@@ -506,7 +489,7 @@ private theorem higherBaseChangeMap_sectionChart_square
           ((higherDirectImage (pullback.fst U.hom f) q).obj
             ((inverseImage (pullback.snd U.hom f)).obj F)) ≫
         (globalSections ((siteBaseChange g).obj U).left).map
-          ((@higherBaseChangeMap.{u, dZU, dU, dZV, dV}
+          ((@higherBaseChangeMapFromDerived.{u, dZU, dU, dZV, dV}
             (pullback U.hom f) U.left
             (pullback ((siteBaseChange g).obj U).hom f') ((siteBaseChange g).obj U).left
             hDZU hDU hDZV hDV (pullback.fst U.hom f)
@@ -569,7 +552,7 @@ private theorem higherBaseChangeMap_fibreProductSection_whole
         ((higherDirectImage (pullback.fst U.hom f) q).obj
           ((inverseImage (pullback.snd U.hom f)).obj F)) ≫
       (globalSections ((siteBaseChange g).obj U).left).map
-        ((@higherBaseChangeMap.{u, dZU, dU, dZV, dV}
+        ((@higherBaseChangeMapFromDerived.{u, dZU, dU, dZV, dV}
           (pullback U.hom f) U.left
           (pullback ((siteBaseChange g).obj U).hom f') ((siteBaseChange g).obj U).left
           hDZU hDU hDZV hDV (pullback.fst U.hom f)
@@ -646,7 +629,7 @@ private theorem higherBaseChangeMap_fibreProductGerm_hom
     (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U) :
     ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F) ≫
       (pointSmallEtale ζ).sheafFiber.map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
           hDX hDS hDX' hDS' f f' g g' h q).app F)).hom.comp
           (fibreProductCohomologyGerm.{u, w, s, e} f U F q (ζ ≫ g) p) =
       (fibreProductCohomologyGerm.{u, w', s', e} f' ((siteBaseChange g).obj U)
@@ -662,7 +645,7 @@ private theorem higherBaseChangeMap_fibreProductGerm_hom
   let G := (inverseImage g').obj F
   let L' := (higherDirectImage f' q).obj G
   let β : (inverseImage g).obj L ⟶ L' :=
-    (@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+    (@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
       hDX hDS hDX' hDS' f f' g g' h q).app F
   let p' := CoefficientStalkBaseChange.pulledBackPoint g ζ U p
   exact germHom_of_sectionHom
@@ -671,7 +654,7 @@ private theorem higherBaseChangeMap_fibreProductGerm_hom
     (((inverseImageAdjunction g).unit.app L).hom.app (op U)) (β.hom.app (op V))
     ((pointSmallEtale ζ).toPresheafFiber V p' ((inverseImage g).obj L).obj)
     ((pointSmallEtale ζ).sheafFiber.map
-      ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+      ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
         hDX hDS hDX' hDS' f f' g g' h q).app F))
     ((pointSmallEtale ζ).toPresheafFiber V p' L'.obj)
     (fibreProductBaseChangeSectionMap.{u, dX, dS, dX', dS'} f f' g g' h U
@@ -698,7 +681,7 @@ private theorem higherBaseChangeMap_fibreProductGerm_hom
       (hDZU := hDZU) (hDU := hDU) (hDZV := hDZV) (hDV := hDV) F q)
     (((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F) ≫
       (pointSmallEtale ζ).sheafFiber.map
-        ((@higherBaseChangeMap.{u, dX, dS, dX', dS'} X S X' S'
+        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
           hDX hDS hDX' hDS' f f' g g' h q).app F)).hom.comp
             (fibreProductCohomologyGerm.{u, w, s, e} f U F q (ζ ≫ g) p))
     ((fibreProductCohomologyGerm.{u, w', s', e} f' ((siteBaseChange g).obj U)
@@ -718,7 +701,7 @@ theorem higherBaseChangeMap_fibreProductCohomologyGerm
     (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U)
     (y : Sheaf.H.{e} ((inverseImage (pullback.snd U.hom f)).obj F) q) :
     (pointSmallEtale ζ).sheafFiber.map
-        ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+        ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
         ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F)
           (fibreProductCohomologyGerm.{u, w, s, e} f U F q (ζ ≫ g) p y)) =
       fibreProductCohomologyGerm.{u, w', s', e} f' ((siteBaseChange g).obj U)
@@ -732,7 +715,7 @@ theorem higherBaseChangeMap_fibreProductCohomologyGerm
   exact germHom_apply
     ((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F))
     ((pointSmallEtale ζ).sheafFiber.map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F))
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F))
     (fibreProductCohomologyGerm.{u, w, s, e} f U F q (ζ ≫ g) p)
     (fibreProductCohomologyGerm.{u, w', s', e} f' ((siteBaseChange g).obj U)
       ((inverseImage g').obj F) q ζ (CoefficientStalkBaseChange.pulledBackPoint g ζ U p))

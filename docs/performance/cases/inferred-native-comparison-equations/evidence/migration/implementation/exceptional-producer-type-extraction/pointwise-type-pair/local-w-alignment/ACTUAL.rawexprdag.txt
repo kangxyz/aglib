@@ -1,0 +1,1434 @@
+RAW_ACTUAL_BEGIN
+RAW_NODE 0 const name=`Eq levels=[Lean.Level.succ (Lean.Level.param `wAS')]
+RAW_NODE 1 const name=`Quiver.Hom levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 2 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 3 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf levels=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 4 fvar id=Lean.Name.mkNum `_uniq 26277 name=`S'
+RAW_NODE 5 app fn=3 arg=4
+RAW_NODE 6 app fn=2 arg=5
+RAW_NODE 7 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 8 const name=`CategoryTheory.Functor levels=[Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 9 const name=`Opposite levels=[Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 10 const name=`AlgebraicGeometry.Scheme.Etale levels=[Lean.Level.param `u]
+RAW_NODE 11 app fn=10 arg=4
+RAW_NODE 12 app fn=9 arg=11
+RAW_NODE 13 app fn=8 arg=12
+RAW_NODE 14 const name=`CategoryTheory.Category.opposite levels=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 15 app fn=14 arg=11
+RAW_NODE 16 const name=`AlgebraicGeometry.Scheme.instCategoryEtale levels=[Lean.Level.param `u]
+RAW_NODE 17 app fn=16 arg=4
+RAW_NODE 18 app fn=15 arg=17
+RAW_NODE 19 app fn=13 arg=18
+RAW_NODE 20 const name=`AddCommGrpCat levels=[Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 21 app fn=19 arg=20
+RAW_NODE 22 const name=`AddCommGrpCat.instCategory levels=[Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 23 app fn=21 arg=22
+RAW_NODE 24 app fn=7 arg=23
+RAW_NODE 25 const name=`CategoryTheory.Functor.category levels=[Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 26 app fn=25 arg=12
+RAW_NODE 27 app fn=26 arg=18
+RAW_NODE 28 app fn=27 arg=20
+RAW_NODE 29 app fn=28 arg=22
+RAW_NODE 30 app fn=24 arg=29
+RAW_NODE 31 const name=`CategoryTheory.Presheaf.IsSheaf levels=[Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 32 app fn=31 arg=11
+RAW_NODE 33 app fn=32 arg=17
+RAW_NODE 34 app fn=33 arg=20
+RAW_NODE 35 app fn=34 arg=22
+RAW_NODE 36 const name=`AlgebraicGeometry.Scheme.smallEtaleTopology levels=[Lean.Level.param `u]
+RAW_NODE 37 app fn=36 arg=4
+RAW_NODE 38 app fn=35 arg=37
+RAW_NODE 39 app fn=30 arg=38
+RAW_NODE 40 app fn=6 arg=39
+RAW_NODE 41 const name=`CategoryTheory.sheafIsAbelian levels=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 42 app fn=41 arg=11
+RAW_NODE 43 app fn=42 arg=17
+RAW_NODE 44 app fn=43 arg=20
+RAW_NODE 45 app fn=44 arg=22
+RAW_NODE 46 const name=`AddCommGrpCat.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 47 app fn=45 arg=46
+RAW_NODE 48 app fn=47 arg=37
+RAW_NODE 49 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.hasSheafifyLarge levels=[Lean.Level.param `u]
+RAW_NODE 50 app fn=49 arg=4
+RAW_NODE 51 app fn=48 arg=50
+RAW_NODE 52 app fn=40 arg=51
+RAW_NODE 53 fvar id=Lean.Name.mkNum `_uniq 26285 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 56
+RAW_NODE 54 app fn=52 arg=53
+RAW_NODE 55 app fn=1 arg=54
+RAW_NODE 56 const name=`CategoryTheory.CategoryStruct.toQuiver levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 57 app fn=56 arg=54
+RAW_NODE 58 const name=`CategoryTheory.Category.toCategoryStruct levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 59 app fn=58 arg=54
+RAW_NODE 60 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 61 const name=`DerivedCategory levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 62 app fn=61 arg=5
+RAW_NODE 63 app fn=62 arg=39
+RAW_NODE 64 app fn=63 arg=51
+RAW_NODE 65 app fn=64 arg=53
+RAW_NODE 66 app fn=60 arg=65
+RAW_NODE 67 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 68 app fn=67 arg=5
+RAW_NODE 69 app fn=68 arg=39
+RAW_NODE 70 app fn=69 arg=51
+RAW_NODE 71 app fn=70 arg=53
+RAW_NODE 72 app fn=66 arg=71
+RAW_NODE 73 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 74 app fn=73 arg=65
+RAW_NODE 75 app fn=74 arg=71
+RAW_NODE 76 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 77 app fn=76 arg=5
+RAW_NODE 78 app fn=77 arg=39
+RAW_NODE 79 app fn=78 arg=51
+RAW_NODE 80 app fn=79 arg=53
+RAW_NODE 81 app fn=75 arg=80
+RAW_NODE 82 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 83 app fn=82 arg=5
+RAW_NODE 84 app fn=83 arg=39
+RAW_NODE 85 app fn=84 arg=51
+RAW_NODE 86 app fn=85 arg=53
+RAW_NODE 87 app fn=81 arg=86
+RAW_NODE 88 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 89 app fn=88 arg=5
+RAW_NODE 90 app fn=89 arg=39
+RAW_NODE 91 app fn=90 arg=51
+RAW_NODE 92 app fn=91 arg=53
+RAW_NODE 93 app fn=87 arg=92
+RAW_NODE 94 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 95 app fn=94 arg=5
+RAW_NODE 96 app fn=95 arg=39
+RAW_NODE 97 app fn=96 arg=51
+RAW_NODE 98 app fn=97 arg=53
+RAW_NODE 99 app fn=93 arg=98
+RAW_NODE 100 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 101 app fn=100 arg=5
+RAW_NODE 102 app fn=101 arg=39
+RAW_NODE 103 app fn=102 arg=51
+RAW_NODE 104 app fn=103 arg=53
+RAW_NODE 105 app fn=99 arg=104
+RAW_NODE 106 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 107 app fn=106 arg=5
+RAW_NODE 108 app fn=107 arg=39
+RAW_NODE 109 app fn=108 arg=51
+RAW_NODE 110 app fn=109 arg=53
+RAW_NODE 111 app fn=105 arg=110
+RAW_NODE 112 app fn=72 arg=111
+RAW_NODE 113 app fn=59 arg=112
+RAW_NODE 114 app fn=57 arg=113
+RAW_NODE 115 app fn=55 arg=114
+RAW_NODE 116 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 117 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 118 fvar id=Lean.Name.mkNum `_uniq 26275 name=`S
+RAW_NODE 119 app fn=3 arg=118
+RAW_NODE 120 app fn=117 arg=119
+RAW_NODE 121 app fn=10 arg=118
+RAW_NODE 122 app fn=9 arg=121
+RAW_NODE 123 app fn=8 arg=122
+RAW_NODE 124 app fn=14 arg=121
+RAW_NODE 125 app fn=16 arg=118
+RAW_NODE 126 app fn=124 arg=125
+RAW_NODE 127 app fn=123 arg=126
+RAW_NODE 128 app fn=127 arg=20
+RAW_NODE 129 app fn=128 arg=22
+RAW_NODE 130 app fn=7 arg=129
+RAW_NODE 131 app fn=25 arg=122
+RAW_NODE 132 app fn=131 arg=126
+RAW_NODE 133 app fn=132 arg=20
+RAW_NODE 134 app fn=133 arg=22
+RAW_NODE 135 app fn=130 arg=134
+RAW_NODE 136 app fn=31 arg=121
+RAW_NODE 137 app fn=136 arg=125
+RAW_NODE 138 app fn=137 arg=20
+RAW_NODE 139 app fn=138 arg=22
+RAW_NODE 140 app fn=36 arg=118
+RAW_NODE 141 app fn=139 arg=140
+RAW_NODE 142 app fn=135 arg=141
+RAW_NODE 143 app fn=120 arg=142
+RAW_NODE 144 app fn=41 arg=121
+RAW_NODE 145 app fn=144 arg=125
+RAW_NODE 146 app fn=145 arg=20
+RAW_NODE 147 app fn=146 arg=22
+RAW_NODE 148 app fn=147 arg=46
+RAW_NODE 149 app fn=148 arg=140
+RAW_NODE 150 app fn=49 arg=118
+RAW_NODE 151 app fn=149 arg=150
+RAW_NODE 152 app fn=143 arg=151
+RAW_NODE 153 fvar id=Lean.Name.mkNum `_uniq 26283 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 44
+RAW_NODE 154 app fn=152 arg=153
+RAW_NODE 155 app fn=116 arg=154
+RAW_NODE 156 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 157 const name=`DerivedCategory levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 158 app fn=157 arg=119
+RAW_NODE 159 app fn=158 arg=142
+RAW_NODE 160 app fn=159 arg=151
+RAW_NODE 161 app fn=160 arg=153
+RAW_NODE 162 app fn=156 arg=161
+RAW_NODE 163 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 164 app fn=163 arg=119
+RAW_NODE 165 app fn=164 arg=142
+RAW_NODE 166 app fn=165 arg=151
+RAW_NODE 167 app fn=166 arg=153
+RAW_NODE 168 app fn=162 arg=167
+RAW_NODE 169 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 170 app fn=169 arg=161
+RAW_NODE 171 app fn=170 arg=167
+RAW_NODE 172 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 173 app fn=172 arg=119
+RAW_NODE 174 app fn=173 arg=142
+RAW_NODE 175 app fn=174 arg=151
+RAW_NODE 176 app fn=175 arg=153
+RAW_NODE 177 app fn=171 arg=176
+RAW_NODE 178 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 179 app fn=178 arg=119
+RAW_NODE 180 app fn=179 arg=142
+RAW_NODE 181 app fn=180 arg=151
+RAW_NODE 182 app fn=181 arg=153
+RAW_NODE 183 app fn=177 arg=182
+RAW_NODE 184 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 185 app fn=184 arg=119
+RAW_NODE 186 app fn=185 arg=142
+RAW_NODE 187 app fn=186 arg=151
+RAW_NODE 188 app fn=187 arg=153
+RAW_NODE 189 app fn=183 arg=188
+RAW_NODE 190 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 191 app fn=190 arg=119
+RAW_NODE 192 app fn=191 arg=142
+RAW_NODE 193 app fn=192 arg=151
+RAW_NODE 194 app fn=193 arg=153
+RAW_NODE 195 app fn=189 arg=194
+RAW_NODE 196 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 197 app fn=196 arg=119
+RAW_NODE 198 app fn=197 arg=142
+RAW_NODE 199 app fn=198 arg=151
+RAW_NODE 200 app fn=199 arg=153
+RAW_NODE 201 app fn=195 arg=200
+RAW_NODE 202 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 203 app fn=202 arg=119
+RAW_NODE 204 app fn=203 arg=142
+RAW_NODE 205 app fn=204 arg=151
+RAW_NODE 206 app fn=205 arg=153
+RAW_NODE 207 app fn=201 arg=206
+RAW_NODE 208 app fn=168 arg=207
+RAW_NODE 209 app fn=155 arg=208
+RAW_NODE 210 app fn=209 arg=54
+RAW_NODE 211 app fn=210 arg=112
+RAW_NODE 212 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage levels=[Lean.Level.param `u, Lean.Level.param `wAS', Lean.Level.param `wAS]
+RAW_NODE 213 app fn=212 arg=4
+RAW_NODE 214 app fn=213 arg=118
+RAW_NODE 215 app fn=214 arg=53
+RAW_NODE 216 app fn=215 arg=153
+RAW_NODE 217 fvar id=Lean.Name.mkNum `_uniq 26288 name=`g
+RAW_NODE 218 app fn=216 arg=217
+RAW_NODE 219 app fn=211 arg=218
+RAW_NODE 220 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 221 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 222 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf levels=[Lean.Level.param `u]
+RAW_NODE 223 fvar id=Lean.Name.mkNum `_uniq 26274 name=`X
+RAW_NODE 224 app fn=222 arg=223
+RAW_NODE 225 fvar id=Lean.Name.mkNum `_uniq 26272 name=`Λ
+RAW_NODE 226 app fn=224 arg=225
+RAW_NODE 227 fvar id=Lean.Name.mkNum `_uniq 26273 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 3
+RAW_NODE 228 app fn=226 arg=227
+RAW_NODE 229 app fn=221 arg=228
+RAW_NODE 230 const name=`SheafOfModules.instCategory levels=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 231 app fn=10 arg=223
+RAW_NODE 232 app fn=230 arg=231
+RAW_NODE 233 app fn=16 arg=223
+RAW_NODE 234 app fn=232 arg=233
+RAW_NODE 235 app fn=36 arg=223
+RAW_NODE 236 app fn=234 arg=235
+RAW_NODE 237 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.constantRing levels=[Lean.Level.param `u]
+RAW_NODE 238 app fn=237 arg=223
+RAW_NODE 239 app fn=238 arg=225
+RAW_NODE 240 app fn=239 arg=227
+RAW_NODE 241 app fn=236 arg=240
+RAW_NODE 242 app fn=229 arg=241
+RAW_NODE 243 const name=`SheafOfModules.instAbelian levels=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 244 app fn=243 arg=231
+RAW_NODE 245 app fn=244 arg=233
+RAW_NODE 246 app fn=245 arg=235
+RAW_NODE 247 app fn=246 arg=240
+RAW_NODE 248 app fn=49 arg=223
+RAW_NODE 249 app fn=247 arg=248
+RAW_NODE 250 const name=`CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard levels=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.param `u]
+RAW_NODE 251 app fn=250 arg=231
+RAW_NODE 252 app fn=251 arg=233
+RAW_NODE 253 app fn=252 arg=235
+RAW_NODE 254 app fn=249 arg=253
+RAW_NODE 255 app fn=242 arg=254
+RAW_NODE 256 fvar id=Lean.Name.mkNum `_uniq 26278 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 10
+RAW_NODE 257 app fn=255 arg=256
+RAW_NODE 258 app fn=220 arg=257
+RAW_NODE 259 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 260 const name=`DerivedCategory levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 261 app fn=260 arg=228
+RAW_NODE 262 app fn=261 arg=241
+RAW_NODE 263 app fn=262 arg=254
+RAW_NODE 264 app fn=263 arg=256
+RAW_NODE 265 app fn=259 arg=264
+RAW_NODE 266 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 267 app fn=266 arg=228
+RAW_NODE 268 app fn=267 arg=241
+RAW_NODE 269 app fn=268 arg=254
+RAW_NODE 270 app fn=269 arg=256
+RAW_NODE 271 app fn=265 arg=270
+RAW_NODE 272 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 273 app fn=272 arg=264
+RAW_NODE 274 app fn=273 arg=270
+RAW_NODE 275 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 276 app fn=275 arg=228
+RAW_NODE 277 app fn=276 arg=241
+RAW_NODE 278 app fn=277 arg=254
+RAW_NODE 279 app fn=278 arg=256
+RAW_NODE 280 app fn=274 arg=279
+RAW_NODE 281 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 282 app fn=281 arg=228
+RAW_NODE 283 app fn=282 arg=241
+RAW_NODE 284 app fn=283 arg=254
+RAW_NODE 285 app fn=284 arg=256
+RAW_NODE 286 app fn=280 arg=285
+RAW_NODE 287 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 288 app fn=287 arg=228
+RAW_NODE 289 app fn=288 arg=241
+RAW_NODE 290 app fn=289 arg=254
+RAW_NODE 291 app fn=290 arg=256
+RAW_NODE 292 app fn=286 arg=291
+RAW_NODE 293 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 294 app fn=293 arg=228
+RAW_NODE 295 app fn=294 arg=241
+RAW_NODE 296 app fn=295 arg=254
+RAW_NODE 297 app fn=296 arg=256
+RAW_NODE 298 app fn=292 arg=297
+RAW_NODE 299 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 300 app fn=299 arg=228
+RAW_NODE 301 app fn=300 arg=241
+RAW_NODE 302 app fn=301 arg=254
+RAW_NODE 303 app fn=302 arg=256
+RAW_NODE 304 app fn=298 arg=303
+RAW_NODE 305 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 306 app fn=305 arg=228
+RAW_NODE 307 app fn=306 arg=241
+RAW_NODE 308 app fn=307 arg=254
+RAW_NODE 309 app fn=308 arg=256
+RAW_NODE 310 app fn=304 arg=309
+RAW_NODE 311 app fn=271 arg=310
+RAW_NODE 312 app fn=258 arg=311
+RAW_NODE 313 app fn=312 arg=154
+RAW_NODE 314 app fn=313 arg=208
+RAW_NODE 315 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMS,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 316 app fn=315 arg=257
+RAW_NODE 317 app fn=316 arg=311
+RAW_NODE 318 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 319 app fn=222 arg=118
+RAW_NODE 320 app fn=319 arg=225
+RAW_NODE 321 app fn=320 arg=227
+RAW_NODE 322 app fn=318 arg=321
+RAW_NODE 323 app fn=230 arg=121
+RAW_NODE 324 app fn=323 arg=125
+RAW_NODE 325 app fn=324 arg=140
+RAW_NODE 326 app fn=237 arg=118
+RAW_NODE 327 app fn=326 arg=225
+RAW_NODE 328 app fn=327 arg=227
+RAW_NODE 329 app fn=325 arg=328
+RAW_NODE 330 app fn=322 arg=329
+RAW_NODE 331 app fn=243 arg=121
+RAW_NODE 332 app fn=331 arg=125
+RAW_NODE 333 app fn=332 arg=140
+RAW_NODE 334 app fn=333 arg=328
+RAW_NODE 335 app fn=334 arg=150
+RAW_NODE 336 app fn=250 arg=121
+RAW_NODE 337 app fn=336 arg=125
+RAW_NODE 338 app fn=337 arg=140
+RAW_NODE 339 app fn=335 arg=338
+RAW_NODE 340 app fn=330 arg=339
+RAW_NODE 341 fvar id=Lean.Name.mkNum `_uniq 26279 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 17
+RAW_NODE 342 app fn=340 arg=341
+RAW_NODE 343 app fn=317 arg=342
+RAW_NODE 344 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 345 const name=`DerivedCategory levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 346 app fn=345 arg=321
+RAW_NODE 347 app fn=346 arg=329
+RAW_NODE 348 app fn=347 arg=339
+RAW_NODE 349 app fn=348 arg=341
+RAW_NODE 350 app fn=344 arg=349
+RAW_NODE 351 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 352 app fn=351 arg=321
+RAW_NODE 353 app fn=352 arg=329
+RAW_NODE 354 app fn=353 arg=339
+RAW_NODE 355 app fn=354 arg=341
+RAW_NODE 356 app fn=350 arg=355
+RAW_NODE 357 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 358 app fn=357 arg=349
+RAW_NODE 359 app fn=358 arg=355
+RAW_NODE 360 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 361 app fn=360 arg=321
+RAW_NODE 362 app fn=361 arg=329
+RAW_NODE 363 app fn=362 arg=339
+RAW_NODE 364 app fn=363 arg=341
+RAW_NODE 365 app fn=359 arg=364
+RAW_NODE 366 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 367 app fn=366 arg=321
+RAW_NODE 368 app fn=367 arg=329
+RAW_NODE 369 app fn=368 arg=339
+RAW_NODE 370 app fn=369 arg=341
+RAW_NODE 371 app fn=365 arg=370
+RAW_NODE 372 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 373 app fn=372 arg=321
+RAW_NODE 374 app fn=373 arg=329
+RAW_NODE 375 app fn=374 arg=339
+RAW_NODE 376 app fn=375 arg=341
+RAW_NODE 377 app fn=371 arg=376
+RAW_NODE 378 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 379 app fn=378 arg=321
+RAW_NODE 380 app fn=379 arg=329
+RAW_NODE 381 app fn=380 arg=339
+RAW_NODE 382 app fn=381 arg=341
+RAW_NODE 383 app fn=377 arg=382
+RAW_NODE 384 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 385 app fn=384 arg=321
+RAW_NODE 386 app fn=385 arg=329
+RAW_NODE 387 app fn=386 arg=339
+RAW_NODE 388 app fn=387 arg=341
+RAW_NODE 389 app fn=383 arg=388
+RAW_NODE 390 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 391 app fn=390 arg=321
+RAW_NODE 392 app fn=391 arg=329
+RAW_NODE 393 app fn=392 arg=339
+RAW_NODE 394 app fn=393 arg=341
+RAW_NODE 395 app fn=389 arg=394
+RAW_NODE 396 app fn=356 arg=395
+RAW_NODE 397 app fn=343 arg=396
+RAW_NODE 398 app fn=397 arg=154
+RAW_NODE 399 app fn=398 arg=208
+RAW_NODE 400 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage levels=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMX]
+RAW_NODE 401 app fn=400 arg=118
+RAW_NODE 402 app fn=401 arg=225
+RAW_NODE 403 app fn=402 arg=227
+RAW_NODE 404 app fn=403 arg=223
+RAW_NODE 405 fvar id=Lean.Name.mkNum `_uniq 26286 name=`f
+RAW_NODE 406 app fn=404 arg=405
+RAW_NODE 407 app fn=406 arg=341
+RAW_NODE 408 app fn=407 arg=256
+RAW_NODE 409 app fn=399 arg=408
+RAW_NODE 410 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wAS]
+RAW_NODE 411 app fn=410 arg=225
+RAW_NODE 412 app fn=411 arg=227
+RAW_NODE 413 app fn=412 arg=118
+RAW_NODE 414 app fn=413 arg=341
+RAW_NODE 415 app fn=414 arg=153
+RAW_NODE 416 app fn=409 arg=415
+RAW_NODE 417 app fn=314 arg=416
+RAW_NODE 418 fvar id=Lean.Name.mkNum `_uniq 26291 name=`K
+RAW_NODE 419 app fn=417 arg=418
+RAW_NODE 420 app fn=219 arg=419
+RAW_NODE 421 app fn=115 arg=420
+RAW_NODE 422 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 423 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 424 fvar id=Lean.Name.mkNum `_uniq 26276 name=`X'
+RAW_NODE 425 app fn=3 arg=424
+RAW_NODE 426 app fn=423 arg=425
+RAW_NODE 427 app fn=10 arg=424
+RAW_NODE 428 app fn=9 arg=427
+RAW_NODE 429 app fn=8 arg=428
+RAW_NODE 430 app fn=14 arg=427
+RAW_NODE 431 app fn=16 arg=424
+RAW_NODE 432 app fn=430 arg=431
+RAW_NODE 433 app fn=429 arg=432
+RAW_NODE 434 app fn=433 arg=20
+RAW_NODE 435 app fn=434 arg=22
+RAW_NODE 436 app fn=7 arg=435
+RAW_NODE 437 app fn=25 arg=428
+RAW_NODE 438 app fn=437 arg=432
+RAW_NODE 439 app fn=438 arg=20
+RAW_NODE 440 app fn=439 arg=22
+RAW_NODE 441 app fn=436 arg=440
+RAW_NODE 442 app fn=31 arg=427
+RAW_NODE 443 app fn=442 arg=431
+RAW_NODE 444 app fn=443 arg=20
+RAW_NODE 445 app fn=444 arg=22
+RAW_NODE 446 app fn=36 arg=424
+RAW_NODE 447 app fn=445 arg=446
+RAW_NODE 448 app fn=441 arg=447
+RAW_NODE 449 app fn=426 arg=448
+RAW_NODE 450 app fn=41 arg=427
+RAW_NODE 451 app fn=450 arg=431
+RAW_NODE 452 app fn=451 arg=20
+RAW_NODE 453 app fn=452 arg=22
+RAW_NODE 454 app fn=453 arg=46
+RAW_NODE 455 app fn=454 arg=446
+RAW_NODE 456 app fn=49 arg=424
+RAW_NODE 457 app fn=455 arg=456
+RAW_NODE 458 app fn=449 arg=457
+RAW_NODE 459 fvar id=Lean.Name.mkNum `_uniq 26284 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 50
+RAW_NODE 460 app fn=458 arg=459
+RAW_NODE 461 app fn=422 arg=460
+RAW_NODE 462 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 463 const name=`DerivedCategory levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 464 app fn=463 arg=425
+RAW_NODE 465 app fn=464 arg=448
+RAW_NODE 466 app fn=465 arg=457
+RAW_NODE 467 app fn=466 arg=459
+RAW_NODE 468 app fn=462 arg=467
+RAW_NODE 469 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 470 app fn=469 arg=425
+RAW_NODE 471 app fn=470 arg=448
+RAW_NODE 472 app fn=471 arg=457
+RAW_NODE 473 app fn=472 arg=459
+RAW_NODE 474 app fn=468 arg=473
+RAW_NODE 475 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 476 app fn=475 arg=467
+RAW_NODE 477 app fn=476 arg=473
+RAW_NODE 478 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 479 app fn=478 arg=425
+RAW_NODE 480 app fn=479 arg=448
+RAW_NODE 481 app fn=480 arg=457
+RAW_NODE 482 app fn=481 arg=459
+RAW_NODE 483 app fn=477 arg=482
+RAW_NODE 484 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 485 app fn=484 arg=425
+RAW_NODE 486 app fn=485 arg=448
+RAW_NODE 487 app fn=486 arg=457
+RAW_NODE 488 app fn=487 arg=459
+RAW_NODE 489 app fn=483 arg=488
+RAW_NODE 490 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 491 app fn=490 arg=425
+RAW_NODE 492 app fn=491 arg=448
+RAW_NODE 493 app fn=492 arg=457
+RAW_NODE 494 app fn=493 arg=459
+RAW_NODE 495 app fn=489 arg=494
+RAW_NODE 496 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 497 app fn=496 arg=425
+RAW_NODE 498 app fn=497 arg=448
+RAW_NODE 499 app fn=498 arg=457
+RAW_NODE 500 app fn=499 arg=459
+RAW_NODE 501 app fn=495 arg=500
+RAW_NODE 502 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 503 app fn=502 arg=425
+RAW_NODE 504 app fn=503 arg=448
+RAW_NODE 505 app fn=504 arg=457
+RAW_NODE 506 app fn=505 arg=459
+RAW_NODE 507 app fn=501 arg=506
+RAW_NODE 508 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 509 app fn=508 arg=425
+RAW_NODE 510 app fn=509 arg=448
+RAW_NODE 511 app fn=510 arg=457
+RAW_NODE 512 app fn=511 arg=459
+RAW_NODE 513 app fn=507 arg=512
+RAW_NODE 514 app fn=474 arg=513
+RAW_NODE 515 app fn=461 arg=514
+RAW_NODE 516 app fn=515 arg=54
+RAW_NODE 517 app fn=516 arg=112
+RAW_NODE 518 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage levels=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAS']
+RAW_NODE 519 app fn=518 arg=424
+RAW_NODE 520 app fn=519 arg=4
+RAW_NODE 521 app fn=520 arg=459
+RAW_NODE 522 app fn=521 arg=53
+RAW_NODE 523 fvar id=Lean.Name.mkNum `_uniq 26287 name=`f'
+RAW_NODE 524 app fn=522 arg=523
+RAW_NODE 525 app fn=517 arg=524
+RAW_NODE 526 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 527 app fn=526 arg=257
+RAW_NODE 528 app fn=527 arg=311
+RAW_NODE 529 app fn=528 arg=460
+RAW_NODE 530 app fn=529 arg=514
+RAW_NODE 531 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMX',
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 532 app fn=531 arg=257
+RAW_NODE 533 app fn=532 arg=311
+RAW_NODE 534 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 535 app fn=222 arg=424
+RAW_NODE 536 app fn=535 arg=225
+RAW_NODE 537 app fn=536 arg=227
+RAW_NODE 538 app fn=534 arg=537
+RAW_NODE 539 app fn=230 arg=427
+RAW_NODE 540 app fn=539 arg=431
+RAW_NODE 541 app fn=540 arg=446
+RAW_NODE 542 app fn=237 arg=424
+RAW_NODE 543 app fn=542 arg=225
+RAW_NODE 544 app fn=543 arg=227
+RAW_NODE 545 app fn=541 arg=544
+RAW_NODE 546 app fn=538 arg=545
+RAW_NODE 547 app fn=243 arg=427
+RAW_NODE 548 app fn=547 arg=431
+RAW_NODE 549 app fn=548 arg=446
+RAW_NODE 550 app fn=549 arg=544
+RAW_NODE 551 app fn=550 arg=456
+RAW_NODE 552 app fn=250 arg=427
+RAW_NODE 553 app fn=552 arg=431
+RAW_NODE 554 app fn=553 arg=446
+RAW_NODE 555 app fn=551 arg=554
+RAW_NODE 556 app fn=546 arg=555
+RAW_NODE 557 fvar id=Lean.Name.mkNum `_uniq 26280 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 24
+RAW_NODE 558 app fn=556 arg=557
+RAW_NODE 559 app fn=533 arg=558
+RAW_NODE 560 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 561 const name=`DerivedCategory levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 562 app fn=561 arg=537
+RAW_NODE 563 app fn=562 arg=545
+RAW_NODE 564 app fn=563 arg=555
+RAW_NODE 565 app fn=564 arg=557
+RAW_NODE 566 app fn=560 arg=565
+RAW_NODE 567 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 568 app fn=567 arg=537
+RAW_NODE 569 app fn=568 arg=545
+RAW_NODE 570 app fn=569 arg=555
+RAW_NODE 571 app fn=570 arg=557
+RAW_NODE 572 app fn=566 arg=571
+RAW_NODE 573 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 574 app fn=573 arg=565
+RAW_NODE 575 app fn=574 arg=571
+RAW_NODE 576 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 577 app fn=576 arg=537
+RAW_NODE 578 app fn=577 arg=545
+RAW_NODE 579 app fn=578 arg=555
+RAW_NODE 580 app fn=579 arg=557
+RAW_NODE 581 app fn=575 arg=580
+RAW_NODE 582 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 583 app fn=582 arg=537
+RAW_NODE 584 app fn=583 arg=545
+RAW_NODE 585 app fn=584 arg=555
+RAW_NODE 586 app fn=585 arg=557
+RAW_NODE 587 app fn=581 arg=586
+RAW_NODE 588 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 589 app fn=588 arg=537
+RAW_NODE 590 app fn=589 arg=545
+RAW_NODE 591 app fn=590 arg=555
+RAW_NODE 592 app fn=591 arg=557
+RAW_NODE 593 app fn=587 arg=592
+RAW_NODE 594 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 595 app fn=594 arg=537
+RAW_NODE 596 app fn=595 arg=545
+RAW_NODE 597 app fn=596 arg=555
+RAW_NODE 598 app fn=597 arg=557
+RAW_NODE 599 app fn=593 arg=598
+RAW_NODE 600 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 601 app fn=600 arg=537
+RAW_NODE 602 app fn=601 arg=545
+RAW_NODE 603 app fn=602 arg=555
+RAW_NODE 604 app fn=603 arg=557
+RAW_NODE 605 app fn=599 arg=604
+RAW_NODE 606 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 607 app fn=606 arg=537
+RAW_NODE 608 app fn=607 arg=545
+RAW_NODE 609 app fn=608 arg=555
+RAW_NODE 610 app fn=609 arg=557
+RAW_NODE 611 app fn=605 arg=610
+RAW_NODE 612 app fn=572 arg=611
+RAW_NODE 613 app fn=559 arg=612
+RAW_NODE 614 app fn=613 arg=460
+RAW_NODE 615 app fn=614 arg=514
+RAW_NODE 616 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMX']
+RAW_NODE 617 app fn=616 arg=223
+RAW_NODE 618 app fn=617 arg=225
+RAW_NODE 619 app fn=618 arg=227
+RAW_NODE 620 app fn=619 arg=424
+RAW_NODE 621 fvar id=Lean.Name.mkNum `_uniq 26289 name=`g'
+RAW_NODE 622 app fn=620 arg=621
+RAW_NODE 623 app fn=622 arg=256
+RAW_NODE 624 app fn=623 arg=557
+RAW_NODE 625 app fn=615 arg=624
+RAW_NODE 626 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wAX']
+RAW_NODE 627 app fn=626 arg=225
+RAW_NODE 628 app fn=627 arg=227
+RAW_NODE 629 app fn=628 arg=424
+RAW_NODE 630 app fn=629 arg=557
+RAW_NODE 631 app fn=630 arg=459
+RAW_NODE 632 app fn=625 arg=631
+RAW_NODE 633 app fn=530 arg=632
+RAW_NODE 634 app fn=633 arg=418
+RAW_NODE 635 app fn=525 arg=634
+RAW_NODE 636 app fn=421 arg=635
+RAW_NODE 637 app fn=0 arg=636
+RAW_NODE 638 const name=`CategoryTheory.CategoryStruct.comp levels=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 639 app fn=638 arg=54
+RAW_NODE 640 app fn=639 arg=113
+RAW_NODE 641 app fn=640 arg=420
+RAW_NODE 642 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 643 app fn=642 arg=257
+RAW_NODE 644 app fn=643 arg=311
+RAW_NODE 645 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 646 app fn=3 arg=223
+RAW_NODE 647 app fn=645 arg=646
+RAW_NODE 648 app fn=9 arg=231
+RAW_NODE 649 app fn=8 arg=648
+RAW_NODE 650 app fn=14 arg=231
+RAW_NODE 651 app fn=650 arg=233
+RAW_NODE 652 app fn=649 arg=651
+RAW_NODE 653 app fn=652 arg=20
+RAW_NODE 654 app fn=653 arg=22
+RAW_NODE 655 app fn=7 arg=654
+RAW_NODE 656 app fn=25 arg=648
+RAW_NODE 657 app fn=656 arg=651
+RAW_NODE 658 app fn=657 arg=20
+RAW_NODE 659 app fn=658 arg=22
+RAW_NODE 660 app fn=655 arg=659
+RAW_NODE 661 app fn=31 arg=231
+RAW_NODE 662 app fn=661 arg=233
+RAW_NODE 663 app fn=662 arg=20
+RAW_NODE 664 app fn=663 arg=22
+RAW_NODE 665 app fn=664 arg=235
+RAW_NODE 666 app fn=660 arg=665
+RAW_NODE 667 app fn=647 arg=666
+RAW_NODE 668 app fn=41 arg=231
+RAW_NODE 669 app fn=668 arg=233
+RAW_NODE 670 app fn=669 arg=20
+RAW_NODE 671 app fn=670 arg=22
+RAW_NODE 672 app fn=671 arg=46
+RAW_NODE 673 app fn=672 arg=235
+RAW_NODE 674 app fn=673 arg=248
+RAW_NODE 675 app fn=667 arg=674
+RAW_NODE 676 fvar id=Lean.Name.mkNum `_uniq 26282 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 38
+RAW_NODE 677 app fn=675 arg=676
+RAW_NODE 678 app fn=644 arg=677
+RAW_NODE 679 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 680 const name=`DerivedCategory levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 681 app fn=680 arg=646
+RAW_NODE 682 app fn=681 arg=666
+RAW_NODE 683 app fn=682 arg=674
+RAW_NODE 684 app fn=683 arg=676
+RAW_NODE 685 app fn=679 arg=684
+RAW_NODE 686 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 687 app fn=686 arg=646
+RAW_NODE 688 app fn=687 arg=666
+RAW_NODE 689 app fn=688 arg=674
+RAW_NODE 690 app fn=689 arg=676
+RAW_NODE 691 app fn=685 arg=690
+RAW_NODE 692 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 693 app fn=692 arg=684
+RAW_NODE 694 app fn=693 arg=690
+RAW_NODE 695 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 696 app fn=695 arg=646
+RAW_NODE 697 app fn=696 arg=666
+RAW_NODE 698 app fn=697 arg=674
+RAW_NODE 699 app fn=698 arg=676
+RAW_NODE 700 app fn=694 arg=699
+RAW_NODE 701 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 702 app fn=701 arg=646
+RAW_NODE 703 app fn=702 arg=666
+RAW_NODE 704 app fn=703 arg=674
+RAW_NODE 705 app fn=704 arg=676
+RAW_NODE 706 app fn=700 arg=705
+RAW_NODE 707 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 708 app fn=707 arg=646
+RAW_NODE 709 app fn=708 arg=666
+RAW_NODE 710 app fn=709 arg=674
+RAW_NODE 711 app fn=710 arg=676
+RAW_NODE 712 app fn=706 arg=711
+RAW_NODE 713 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 714 app fn=713 arg=646
+RAW_NODE 715 app fn=714 arg=666
+RAW_NODE 716 app fn=715 arg=674
+RAW_NODE 717 app fn=716 arg=676
+RAW_NODE 718 app fn=712 arg=717
+RAW_NODE 719 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 720 app fn=719 arg=646
+RAW_NODE 721 app fn=720 arg=666
+RAW_NODE 722 app fn=721 arg=674
+RAW_NODE 723 app fn=722 arg=676
+RAW_NODE 724 app fn=718 arg=723
+RAW_NODE 725 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 726 app fn=725 arg=646
+RAW_NODE 727 app fn=726 arg=666
+RAW_NODE 728 app fn=727 arg=674
+RAW_NODE 729 app fn=728 arg=676
+RAW_NODE 730 app fn=724 arg=729
+RAW_NODE 731 app fn=691 arg=730
+RAW_NODE 732 app fn=678 arg=731
+RAW_NODE 733 app fn=732 arg=154
+RAW_NODE 734 app fn=733 arg=208
+RAW_NODE 735 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]
+RAW_NODE 736 app fn=735 arg=225
+RAW_NODE 737 app fn=736 arg=227
+RAW_NODE 738 app fn=737 arg=223
+RAW_NODE 739 app fn=738 arg=256
+RAW_NODE 740 app fn=739 arg=676
+RAW_NODE 741 app fn=734 arg=740
+RAW_NODE 742 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage levels=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS]
+RAW_NODE 743 app fn=742 arg=223
+RAW_NODE 744 app fn=743 arg=118
+RAW_NODE 745 app fn=744 arg=676
+RAW_NODE 746 app fn=745 arg=153
+RAW_NODE 747 app fn=746 arg=405
+RAW_NODE 748 app fn=741 arg=747
+RAW_NODE 749 app fn=314 arg=748
+RAW_NODE 750 app fn=749 arg=418
+RAW_NODE 751 app fn=219 arg=750
+RAW_NODE 752 app fn=641 arg=751
+RAW_NODE 753 app fn=752 arg=635
+RAW_NODE 754 const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 755 app fn=754 arg=154
+RAW_NODE 756 app fn=755 arg=208
+RAW_NODE 757 app fn=756 arg=54
+RAW_NODE 758 app fn=757 arg=112
+RAW_NODE 759 app fn=758 arg=218
+RAW_NODE 760 app fn=759 arg=419
+RAW_NODE 761 app fn=760 arg=750
+RAW_NODE 762 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 763 app fn=762 arg=257
+RAW_NODE 764 app fn=763 arg=311
+RAW_NODE 765 app fn=764 arg=154
+RAW_NODE 766 app fn=765 arg=208
+RAW_NODE 767 app fn=766 arg=416
+RAW_NODE 768 app fn=767 arg=748
+RAW_NODE 769 const name=`CategoryTheory.Iso.hom levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS))
+   (Lean.Level.param `wMX)]
+RAW_NODE 770 const name=`CategoryTheory.Functor levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 771 app fn=770 arg=257
+RAW_NODE 772 app fn=771 arg=311
+RAW_NODE 773 app fn=772 arg=154
+RAW_NODE 774 app fn=773 arg=208
+RAW_NODE 775 app fn=769 arg=774
+RAW_NODE 776 const name=`CategoryTheory.Functor.category levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 777 app fn=776 arg=257
+RAW_NODE 778 app fn=777 arg=311
+RAW_NODE 779 app fn=778 arg=154
+RAW_NODE 780 app fn=779 arg=208
+RAW_NODE 781 app fn=775 arg=780
+RAW_NODE 782 app fn=781 arg=416
+RAW_NODE 783 app fn=782 arg=748
+RAW_NODE 784 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImageUnderlyingIso levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMS, Lean.Level.param `wAX, Lean.Level.param `wAS]
+RAW_NODE 785 app fn=784 arg=225
+RAW_NODE 786 app fn=785 arg=227
+RAW_NODE 787 app fn=786 arg=223
+RAW_NODE 788 app fn=787 arg=118
+RAW_NODE 789 app fn=788 arg=405
+RAW_NODE 790 app fn=789 arg=256
+RAW_NODE 791 app fn=790 arg=341
+RAW_NODE 792 app fn=791 arg=676
+RAW_NODE 793 app fn=792 arg=153
+RAW_NODE 794 app fn=783 arg=793
+RAW_NODE 795 app fn=768 arg=794
+RAW_NODE 796 app fn=795 arg=418
+RAW_NODE 797 app fn=761 arg=796
+RAW_NODE 798 app fn=753 arg=797
+RAW_NODE 799 app fn=640 arg=751
+RAW_NODE 800 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 801 app fn=800 arg=677
+RAW_NODE 802 app fn=801 arg=731
+RAW_NODE 803 app fn=802 arg=54
+RAW_NODE 804 app fn=803 arg=112
+RAW_NODE 805 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wAX,
+ Lean.Level.param `wAX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 806 app fn=805 arg=677
+RAW_NODE 807 app fn=806 arg=731
+RAW_NODE 808 app fn=807 arg=460
+RAW_NODE 809 app fn=808 arg=514
+RAW_NODE 810 app fn=809 arg=54
+RAW_NODE 811 app fn=810 arg=112
+RAW_NODE 812 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage levels=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAX]
+RAW_NODE 813 app fn=812 arg=424
+RAW_NODE 814 app fn=813 arg=223
+RAW_NODE 815 app fn=814 arg=459
+RAW_NODE 816 app fn=815 arg=676
+RAW_NODE 817 app fn=816 arg=621
+RAW_NODE 818 app fn=811 arg=817
+RAW_NODE 819 app fn=818 arg=524
+RAW_NODE 820 app fn=804 arg=819
+RAW_NODE 821 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 822 app fn=821 arg=257
+RAW_NODE 823 app fn=822 arg=311
+RAW_NODE 824 app fn=823 arg=677
+RAW_NODE 825 app fn=824 arg=731
+RAW_NODE 826 app fn=825 arg=740
+RAW_NODE 827 app fn=826 arg=418
+RAW_NODE 828 app fn=820 arg=827
+RAW_NODE 829 app fn=799 arg=828
+RAW_NODE 830 app fn=829 arg=635
+RAW_NODE 831 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wAX,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 832 app fn=831 arg=677
+RAW_NODE 833 app fn=832 arg=731
+RAW_NODE 834 app fn=833 arg=54
+RAW_NODE 835 app fn=834 arg=112
+RAW_NODE 836 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wAX,
+ Lean.Level.param `wAS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 837 app fn=836 arg=677
+RAW_NODE 838 app fn=837 arg=731
+RAW_NODE 839 app fn=838 arg=154
+RAW_NODE 840 app fn=839 arg=208
+RAW_NODE 841 app fn=840 arg=54
+RAW_NODE 842 app fn=841 arg=112
+RAW_NODE 843 app fn=842 arg=747
+RAW_NODE 844 app fn=843 arg=218
+RAW_NODE 845 app fn=835 arg=844
+RAW_NODE 846 app fn=845 arg=819
+RAW_NODE 847 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.derivedBaseChangeMap levels=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS, Lean.Level.param `wAX', Lean.Level.param `wAS']
+RAW_NODE 848 app fn=847 arg=223
+RAW_NODE 849 app fn=848 arg=118
+RAW_NODE 850 app fn=849 arg=424
+RAW_NODE 851 app fn=850 arg=4
+RAW_NODE 852 app fn=851 arg=676
+RAW_NODE 853 app fn=852 arg=153
+RAW_NODE 854 app fn=853 arg=459
+RAW_NODE 855 app fn=854 arg=53
+RAW_NODE 856 app fn=855 arg=405
+RAW_NODE 857 app fn=856 arg=523
+RAW_NODE 858 app fn=857 arg=217
+RAW_NODE 859 app fn=858 arg=621
+RAW_NODE 860 fvar id=Lean.Name.mkNum `_uniq 26290 name=`h
+RAW_NODE 861 app fn=859 arg=860
+RAW_NODE 862 app fn=846 arg=861
+RAW_NODE 863 app fn=862 arg=827
+RAW_NODE 864 app fn=830 arg=863
+RAW_NODE 865 const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wAX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 866 app fn=865 arg=460
+RAW_NODE 867 app fn=866 arg=514
+RAW_NODE 868 app fn=867 arg=54
+RAW_NODE 869 app fn=868 arg=112
+RAW_NODE 870 app fn=869 arg=524
+RAW_NODE 871 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wAX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 872 app fn=871 arg=677
+RAW_NODE 873 app fn=872 arg=731
+RAW_NODE 874 app fn=873 arg=460
+RAW_NODE 875 app fn=874 arg=514
+RAW_NODE 876 app fn=875 arg=817
+RAW_NODE 877 app fn=876 arg=827
+RAW_NODE 878 app fn=870 arg=877
+RAW_NODE 879 app fn=878 arg=634
+RAW_NODE 880 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 881 app fn=880 arg=257
+RAW_NODE 882 app fn=881 arg=311
+RAW_NODE 883 app fn=882 arg=460
+RAW_NODE 884 app fn=883 arg=514
+RAW_NODE 885 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 886 app fn=885 arg=257
+RAW_NODE 887 app fn=886 arg=311
+RAW_NODE 888 app fn=887 arg=677
+RAW_NODE 889 app fn=888 arg=731
+RAW_NODE 890 app fn=889 arg=460
+RAW_NODE 891 app fn=890 arg=514
+RAW_NODE 892 app fn=891 arg=740
+RAW_NODE 893 app fn=892 arg=817
+RAW_NODE 894 app fn=884 arg=893
+RAW_NODE 895 app fn=894 arg=632
+RAW_NODE 896 const name=`CategoryTheory.Iso.inv levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAX'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAX'))
+   (Lean.Level.param `wMX)]
+RAW_NODE 897 const name=`CategoryTheory.Functor levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 898 app fn=897 arg=257
+RAW_NODE 899 app fn=898 arg=311
+RAW_NODE 900 app fn=899 arg=460
+RAW_NODE 901 app fn=900 arg=514
+RAW_NODE 902 app fn=896 arg=901
+RAW_NODE 903 const name=`CategoryTheory.Functor.category levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 904 app fn=903 arg=257
+RAW_NODE 905 app fn=904 arg=311
+RAW_NODE 906 app fn=905 arg=460
+RAW_NODE 907 app fn=906 arg=514
+RAW_NODE 908 app fn=902 arg=907
+RAW_NODE 909 app fn=908 arg=632
+RAW_NODE 910 app fn=909 arg=893
+RAW_NODE 911 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImageUnderlyingIso levels=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wMX, Lean.Level.param `wAX', Lean.Level.param `wAX]
+RAW_NODE 912 app fn=911 arg=225
+RAW_NODE 913 app fn=912 arg=227
+RAW_NODE 914 app fn=913 arg=424
+RAW_NODE 915 app fn=914 arg=223
+RAW_NODE 916 app fn=915 arg=621
+RAW_NODE 917 app fn=916 arg=557
+RAW_NODE 918 app fn=917 arg=256
+RAW_NODE 919 app fn=918 arg=459
+RAW_NODE 920 app fn=919 arg=676
+RAW_NODE 921 app fn=910 arg=920
+RAW_NODE 922 app fn=895 arg=921
+RAW_NODE 923 app fn=922 arg=418
+RAW_NODE 924 app fn=879 arg=923
+RAW_NODE 925 app fn=864 arg=924
+RAW_NODE 926 app fn=798 arg=925
+RAW_NODE 927 app fn=637 arg=926
+RAW_NODE 928 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 929 app fn=928 arg=342
+RAW_NODE 930 app fn=929 arg=396
+RAW_NODE 931 app fn=930 arg=54
+RAW_NODE 932 app fn=931 arg=112
+RAW_NODE 933 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wAS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 934 app fn=933 arg=342
+RAW_NODE 935 app fn=934 arg=396
+RAW_NODE 936 app fn=935 arg=154
+RAW_NODE 937 app fn=936 arg=208
+RAW_NODE 938 app fn=937 arg=54
+RAW_NODE 939 app fn=938 arg=112
+RAW_NODE 940 app fn=939 arg=415
+RAW_NODE 941 app fn=940 arg=218
+RAW_NODE 942 app fn=932 arg=941
+RAW_NODE 943 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 944 app fn=943 arg=257
+RAW_NODE 945 app fn=944 arg=311
+RAW_NODE 946 app fn=945 arg=342
+RAW_NODE 947 app fn=946 arg=396
+RAW_NODE 948 app fn=947 arg=408
+RAW_NODE 949 app fn=948 arg=418
+RAW_NODE 950 app fn=942 arg=949
+RAW_NODE 951 app fn=640 arg=950
+RAW_NODE 952 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wMS',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 953 app fn=952 arg=342
+RAW_NODE 954 app fn=953 arg=396
+RAW_NODE 955 const name=`DerivedCategory.Plus levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 956 app fn=222 arg=4
+RAW_NODE 957 app fn=956 arg=225
+RAW_NODE 958 app fn=957 arg=227
+RAW_NODE 959 app fn=955 arg=958
+RAW_NODE 960 app fn=230 arg=11
+RAW_NODE 961 app fn=960 arg=17
+RAW_NODE 962 app fn=961 arg=37
+RAW_NODE 963 app fn=237 arg=4
+RAW_NODE 964 app fn=963 arg=225
+RAW_NODE 965 app fn=964 arg=227
+RAW_NODE 966 app fn=962 arg=965
+RAW_NODE 967 app fn=959 arg=966
+RAW_NODE 968 app fn=243 arg=11
+RAW_NODE 969 app fn=968 arg=17
+RAW_NODE 970 app fn=969 arg=37
+RAW_NODE 971 app fn=970 arg=965
+RAW_NODE 972 app fn=971 arg=50
+RAW_NODE 973 app fn=250 arg=11
+RAW_NODE 974 app fn=973 arg=17
+RAW_NODE 975 app fn=974 arg=37
+RAW_NODE 976 app fn=972 arg=975
+RAW_NODE 977 app fn=967 arg=976
+RAW_NODE 978 fvar id=Lean.Name.mkNum `_uniq 26281 name=Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange 3037794930) "_hygCtx") "_hyg") 31
+RAW_NODE 979 app fn=977 arg=978
+RAW_NODE 980 app fn=954 arg=979
+RAW_NODE 981 const name=`CategoryTheory.ObjectProperty.FullSubcategory.category levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 982 const name=`DerivedCategory levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 983 app fn=982 arg=958
+RAW_NODE 984 app fn=983 arg=966
+RAW_NODE 985 app fn=984 arg=976
+RAW_NODE 986 app fn=985 arg=978
+RAW_NODE 987 app fn=981 arg=986
+RAW_NODE 988 const name=`instCategoryDerivedCategory levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)), Lean.Level.succ (Lean.Level.param `u)]
+RAW_NODE 989 app fn=988 arg=958
+RAW_NODE 990 app fn=989 arg=966
+RAW_NODE 991 app fn=990 arg=976
+RAW_NODE 992 app fn=991 arg=978
+RAW_NODE 993 app fn=987 arg=992
+RAW_NODE 994 const name=`CategoryTheory.Triangulated.TStructure.plus levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 995 app fn=994 arg=986
+RAW_NODE 996 app fn=995 arg=992
+RAW_NODE 997 const name=`DerivedCategory.instPreadditive levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 998 app fn=997 arg=958
+RAW_NODE 999 app fn=998 arg=966
+RAW_NODE 1000 app fn=999 arg=976
+RAW_NODE 1001 app fn=1000 arg=978
+RAW_NODE 1002 app fn=996 arg=1001
+RAW_NODE 1003 const name=`DerivedCategory.instHasZeroObject levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1004 app fn=1003 arg=958
+RAW_NODE 1005 app fn=1004 arg=966
+RAW_NODE 1006 app fn=1005 arg=976
+RAW_NODE 1007 app fn=1006 arg=978
+RAW_NODE 1008 app fn=1002 arg=1007
+RAW_NODE 1009 const name=`DerivedCategory.instHasShiftInt levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1010 app fn=1009 arg=958
+RAW_NODE 1011 app fn=1010 arg=966
+RAW_NODE 1012 app fn=1011 arg=976
+RAW_NODE 1013 app fn=1012 arg=978
+RAW_NODE 1014 app fn=1008 arg=1013
+RAW_NODE 1015 const name=`DerivedCategory.instAdditiveShiftFunctorInt levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1016 app fn=1015 arg=958
+RAW_NODE 1017 app fn=1016 arg=966
+RAW_NODE 1018 app fn=1017 arg=976
+RAW_NODE 1019 app fn=1018 arg=978
+RAW_NODE 1020 app fn=1014 arg=1019
+RAW_NODE 1021 const name=`DerivedCategory.instPretriangulated levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1022 app fn=1021 arg=958
+RAW_NODE 1023 app fn=1022 arg=966
+RAW_NODE 1024 app fn=1023 arg=976
+RAW_NODE 1025 app fn=1024 arg=978
+RAW_NODE 1026 app fn=1020 arg=1025
+RAW_NODE 1027 const name=`DerivedCategory.TStructure.t levels=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1028 app fn=1027 arg=958
+RAW_NODE 1029 app fn=1028 arg=966
+RAW_NODE 1030 app fn=1029 arg=976
+RAW_NODE 1031 app fn=1030 arg=978
+RAW_NODE 1032 app fn=1026 arg=1031
+RAW_NODE 1033 app fn=993 arg=1032
+RAW_NODE 1034 app fn=980 arg=1033
+RAW_NODE 1035 app fn=1034 arg=54
+RAW_NODE 1036 app fn=1035 arg=112
+RAW_NODE 1037 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage levels=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMS']
+RAW_NODE 1038 app fn=1037 arg=118
+RAW_NODE 1039 app fn=1038 arg=225
+RAW_NODE 1040 app fn=1039 arg=227
+RAW_NODE 1041 app fn=1040 arg=4
+RAW_NODE 1042 app fn=1041 arg=217
+RAW_NODE 1043 app fn=1042 arg=341
+RAW_NODE 1044 app fn=1043 arg=978
+RAW_NODE 1045 app fn=1036 arg=1044
+RAW_NODE 1046 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying levels=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wAS']
+RAW_NODE 1047 app fn=1046 arg=225
+RAW_NODE 1048 app fn=1047 arg=227
+RAW_NODE 1049 app fn=1048 arg=4
+RAW_NODE 1050 app fn=1049 arg=978
+RAW_NODE 1051 app fn=1050 arg=53
+RAW_NODE 1052 app fn=1045 arg=1051
+RAW_NODE 1053 app fn=932 arg=1052
+RAW_NODE 1054 app fn=1053 arg=949
+RAW_NODE 1055 app fn=951 arg=1054
+RAW_NODE 1056 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1057 app fn=1056 arg=558
+RAW_NODE 1058 app fn=1057 arg=612
+RAW_NODE 1059 app fn=1058 arg=54
+RAW_NODE 1060 app fn=1059 arg=112
+RAW_NODE 1061 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wAX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1062 app fn=1061 arg=558
+RAW_NODE 1063 app fn=1062 arg=612
+RAW_NODE 1064 app fn=1063 arg=460
+RAW_NODE 1065 app fn=1064 arg=514
+RAW_NODE 1066 app fn=1065 arg=54
+RAW_NODE 1067 app fn=1066 arg=112
+RAW_NODE 1068 app fn=1067 arg=631
+RAW_NODE 1069 app fn=1068 arg=524
+RAW_NODE 1070 app fn=1060 arg=1069
+RAW_NODE 1071 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1072 app fn=1071 arg=257
+RAW_NODE 1073 app fn=1072 arg=311
+RAW_NODE 1074 app fn=1073 arg=558
+RAW_NODE 1075 app fn=1074 arg=612
+RAW_NODE 1076 app fn=1075 arg=624
+RAW_NODE 1077 app fn=1076 arg=418
+RAW_NODE 1078 app fn=1070 arg=1077
+RAW_NODE 1079 app fn=1055 arg=1078
+RAW_NODE 1080 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1081 app fn=1080 arg=342
+RAW_NODE 1082 app fn=1081 arg=396
+RAW_NODE 1083 app fn=1082 arg=54
+RAW_NODE 1084 app fn=1083 arg=112
+RAW_NODE 1085 app fn=1084 arg=941
+RAW_NODE 1086 app fn=1085 arg=1052
+RAW_NODE 1087 const name=`CategoryTheory.Iso.inv levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'))
+   (Lean.Level.param `wMS)]
+RAW_NODE 1088 const name=`CategoryTheory.Functor levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1089 app fn=1088 arg=342
+RAW_NODE 1090 app fn=1089 arg=396
+RAW_NODE 1091 app fn=1090 arg=54
+RAW_NODE 1092 app fn=1091 arg=112
+RAW_NODE 1093 app fn=1087 arg=1092
+RAW_NODE 1094 const name=`CategoryTheory.Functor.category levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1095 app fn=1094 arg=342
+RAW_NODE 1096 app fn=1095 arg=396
+RAW_NODE 1097 app fn=1096 arg=54
+RAW_NODE 1098 app fn=1097 arg=112
+RAW_NODE 1099 app fn=1093 arg=1098
+RAW_NODE 1100 app fn=1099 arg=1052
+RAW_NODE 1101 app fn=1100 arg=941
+RAW_NODE 1102 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImageUnderlyingIso levels=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMS, Lean.Level.param `wAS', Lean.Level.param `wAS]
+RAW_NODE 1103 app fn=1102 arg=225
+RAW_NODE 1104 app fn=1103 arg=227
+RAW_NODE 1105 app fn=1104 arg=4
+RAW_NODE 1106 app fn=1105 arg=118
+RAW_NODE 1107 app fn=1106 arg=217
+RAW_NODE 1108 app fn=1107 arg=978
+RAW_NODE 1109 app fn=1108 arg=341
+RAW_NODE 1110 app fn=1109 arg=53
+RAW_NODE 1111 app fn=1110 arg=153
+RAW_NODE 1112 app fn=1101 arg=1111
+RAW_NODE 1113 app fn=1086 arg=1112
+RAW_NODE 1114 app fn=1113 arg=949
+RAW_NODE 1115 app fn=1079 arg=1114
+RAW_NODE 1116 app fn=640 arg=1054
+RAW_NODE 1117 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMS',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1118 app fn=1117 arg=979
+RAW_NODE 1119 app fn=1118 arg=1033
+RAW_NODE 1120 app fn=1119 arg=54
+RAW_NODE 1121 app fn=1120 arg=112
+RAW_NODE 1122 app fn=1121 arg=1051
+RAW_NODE 1123 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1124 app fn=1123 arg=257
+RAW_NODE 1125 app fn=1124 arg=311
+RAW_NODE 1126 app fn=1125 arg=979
+RAW_NODE 1127 app fn=1126 arg=1033
+RAW_NODE 1128 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMX',
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1129 app fn=1128 arg=257
+RAW_NODE 1130 app fn=1129 arg=311
+RAW_NODE 1131 app fn=1130 arg=558
+RAW_NODE 1132 app fn=1131 arg=612
+RAW_NODE 1133 app fn=1132 arg=979
+RAW_NODE 1134 app fn=1133 arg=1033
+RAW_NODE 1135 app fn=1134 arg=624
+RAW_NODE 1136 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage levels=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMX']
+RAW_NODE 1137 app fn=1136 arg=4
+RAW_NODE 1138 app fn=1137 arg=225
+RAW_NODE 1139 app fn=1138 arg=227
+RAW_NODE 1140 app fn=1139 arg=424
+RAW_NODE 1141 app fn=1140 arg=523
+RAW_NODE 1142 app fn=1141 arg=978
+RAW_NODE 1143 app fn=1142 arg=557
+RAW_NODE 1144 app fn=1135 arg=1143
+RAW_NODE 1145 app fn=1127 arg=1144
+RAW_NODE 1146 app fn=1145 arg=418
+RAW_NODE 1147 app fn=1122 arg=1146
+RAW_NODE 1148 app fn=1116 arg=1147
+RAW_NODE 1149 app fn=1148 arg=1078
+RAW_NODE 1150 const name=`CategoryTheory.Functor.map levels=[Lean.Level.param `wMS',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1151 app fn=1150 arg=979
+RAW_NODE 1152 app fn=1151 arg=1033
+RAW_NODE 1153 app fn=1152 arg=54
+RAW_NODE 1154 app fn=1153 arg=112
+RAW_NODE 1155 app fn=1154 arg=1051
+RAW_NODE 1156 const name=`CategoryTheory.Functor.obj levels=[Lean.Level.param `wMS,
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1157 app fn=1156 arg=342
+RAW_NODE 1158 app fn=1157 arg=396
+RAW_NODE 1159 app fn=1158 arg=979
+RAW_NODE 1160 app fn=1159 arg=1033
+RAW_NODE 1161 app fn=1160 arg=1044
+RAW_NODE 1162 app fn=1161 arg=949
+RAW_NODE 1163 app fn=1155 arg=1162
+RAW_NODE 1164 app fn=1163 arg=1146
+RAW_NODE 1165 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1166 app fn=1165 arg=257
+RAW_NODE 1167 app fn=1166 arg=311
+RAW_NODE 1168 app fn=1167 arg=979
+RAW_NODE 1169 app fn=1168 arg=1033
+RAW_NODE 1170 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX,
+ Lean.Level.param `wMS,
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1171 app fn=1170 arg=257
+RAW_NODE 1172 app fn=1171 arg=311
+RAW_NODE 1173 app fn=1172 arg=342
+RAW_NODE 1174 app fn=1173 arg=396
+RAW_NODE 1175 app fn=1174 arg=979
+RAW_NODE 1176 app fn=1175 arg=1033
+RAW_NODE 1177 app fn=1176 arg=408
+RAW_NODE 1178 app fn=1177 arg=1044
+RAW_NODE 1179 app fn=1169 arg=1178
+RAW_NODE 1180 app fn=1179 arg=1144
+RAW_NODE 1181 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap levels=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMS, Lean.Level.param `wMX', Lean.Level.param `wMS']
+RAW_NODE 1182 app fn=1181 arg=225
+RAW_NODE 1183 app fn=1182 arg=227
+RAW_NODE 1184 app fn=1183 arg=223
+RAW_NODE 1185 app fn=1184 arg=118
+RAW_NODE 1186 app fn=1185 arg=424
+RAW_NODE 1187 app fn=1186 arg=4
+RAW_NODE 1188 app fn=1187 arg=256
+RAW_NODE 1189 app fn=1188 arg=341
+RAW_NODE 1190 app fn=1189 arg=557
+RAW_NODE 1191 app fn=1190 arg=978
+RAW_NODE 1192 app fn=1191 arg=405
+RAW_NODE 1193 app fn=1192 arg=523
+RAW_NODE 1194 app fn=1193 arg=217
+RAW_NODE 1195 app fn=1194 arg=621
+RAW_NODE 1196 app fn=1195 arg=860
+RAW_NODE 1197 app fn=1180 arg=1196
+RAW_NODE 1198 app fn=1197 arg=418
+RAW_NODE 1199 app fn=1164 arg=1198
+RAW_NODE 1200 app fn=1149 arg=1199
+RAW_NODE 1201 const name=`CategoryTheory.NatTrans.app levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1202 app fn=1201 arg=558
+RAW_NODE 1203 app fn=1202 arg=612
+RAW_NODE 1204 app fn=1203 arg=54
+RAW_NODE 1205 app fn=1204 arg=112
+RAW_NODE 1206 const name=`CategoryTheory.Functor.comp levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wMS',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1207 app fn=1206 arg=558
+RAW_NODE 1208 app fn=1207 arg=612
+RAW_NODE 1209 app fn=1208 arg=979
+RAW_NODE 1210 app fn=1209 arg=1033
+RAW_NODE 1211 app fn=1210 arg=54
+RAW_NODE 1212 app fn=1211 arg=112
+RAW_NODE 1213 app fn=1212 arg=1143
+RAW_NODE 1214 app fn=1213 arg=1051
+RAW_NODE 1215 app fn=1205 arg=1214
+RAW_NODE 1216 app fn=1215 arg=1069
+RAW_NODE 1217 const name=`CategoryTheory.Iso.hom levels=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'))
+   (Lean.Level.param `wMX')]
+RAW_NODE 1218 const name=`CategoryTheory.Functor levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1219 app fn=1218 arg=558
+RAW_NODE 1220 app fn=1219 arg=612
+RAW_NODE 1221 app fn=1220 arg=54
+RAW_NODE 1222 app fn=1221 arg=112
+RAW_NODE 1223 app fn=1217 arg=1222
+RAW_NODE 1224 const name=`CategoryTheory.Functor.category levels=[Lean.Level.param `wMX',
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]
+RAW_NODE 1225 app fn=1224 arg=558
+RAW_NODE 1226 app fn=1225 arg=612
+RAW_NODE 1227 app fn=1226 arg=54
+RAW_NODE 1228 app fn=1227 arg=112
+RAW_NODE 1229 app fn=1223 arg=1228
+RAW_NODE 1230 app fn=1229 arg=1214
+RAW_NODE 1231 app fn=1230 arg=1069
+RAW_NODE 1232 const name=`AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImageUnderlyingIso levels=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wMS', Lean.Level.param `wAX', Lean.Level.param `wAS']
+RAW_NODE 1233 app fn=1232 arg=225
+RAW_NODE 1234 app fn=1233 arg=227
+RAW_NODE 1235 app fn=1234 arg=424
+RAW_NODE 1236 app fn=1235 arg=4
+RAW_NODE 1237 app fn=1236 arg=523
+RAW_NODE 1238 app fn=1237 arg=557
+RAW_NODE 1239 app fn=1238 arg=978
+RAW_NODE 1240 app fn=1239 arg=459
+RAW_NODE 1241 app fn=1240 arg=53
+RAW_NODE 1242 app fn=1231 arg=1241
+RAW_NODE 1243 app fn=1216 arg=1242
+RAW_NODE 1244 app fn=1243 arg=1077
+RAW_NODE 1245 app fn=1200 arg=1244
+RAW_NODE 1246 app fn=1115 arg=1245
+RAW_NODE 1247 app fn=927 arg=1246
+RAW_ACTUAL_ROOT 1247 nodes=1248
+RAW_ACTUAL_END

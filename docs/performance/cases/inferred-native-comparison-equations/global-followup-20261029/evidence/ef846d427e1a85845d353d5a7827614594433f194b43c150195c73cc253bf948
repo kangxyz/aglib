@@ -1,0 +1,371 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59"}
+V33_NATIVE_OPERATIONAL_PROPOSITION_INSPECTION_BEGIN sha256=af771a01a7a640de3f7f3942858c5c226c9c65ed478304836e0f973275b6c542
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-44791797b8fd4f7095aedd681672d2f0/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-44791797b8fd4f7095aedd681672d2f0/OperationalPropositionInspection-v33.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-44791797b8fd4f7095aedd681672d2f0/NativeGlobal.setup.json"]
+V33_SECTION_BODY remainingHB=5492
+V33_EXPLICIT_NATTRANS_EXT remainingHB=1888
+/root/autodl-tmp/lean-build/logs/remote-44791797b8fd4f7095aedd681672d2f0/OperationalPropositionInspection-v33.lean:806:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+V33_CORE_BODY remainingHB=84131
+V33_COMPARISON_READY remainingHB=76828
+V33_FACTORY_BOUND remainingHB=75567
+V33_MAPS_BOUND remainingHB=35551
+V33_VALUES_BOUND remainingHB=34518
+V33_RELATIVE_CONSTRUCTOR_BOUND remainingHB=33553
+HC_RAW_SYNTAX_EQUAL false
+HC_ZETA_SYNTAX_EQUAL false
+HC_DIFFERING_SUBTERMS
+EXPECTED Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const
+                `AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf
+                [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404379))))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const
+                  `CategoryTheory.ObjectProperty.FullSubcategory.category
+                  [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean
+ACTUAL Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.param `u,
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CategoryTheory.Over [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404377)))))
+HC_DIFFERING_SUBTERMS
+EXPECTED Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.param `u,
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CategoryTheory.Over [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404377)))))
+ACTUAL Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const
+                    `CategoryTheory.MorphismProperty.Over.RelativeTests.coordinates
+                    [Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.param `u,
+                     Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                     Lean.Level.succ (Lean.Level.param `u)])
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+              (Lean.Expr.const `AlgebraicGeometry.Scheme.Pullback.instHasPullbacks [Lean.Level.param `u]))
+            (Lean.Expr.const `AlgebraicGeometry.Scheme.EtaleCohomology.etaleMorphismProperty [Lean.Level.param `u]))
+          (Lean.Expr.fvar (Le
+HC_DIFFERING_SUBTERMS
+EXPECTED Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const
+                `AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf
+                [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404379))))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const
+                  `CategoryTheory.ObjectProperty.FullSubcategory.category
+                  [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean
+ACTUAL Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.param `u,
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CategoryTheory.Over [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404377)))))
+HC_DIFFERING_SUBTERMS
+EXPECTED Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.param `u,
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CategoryTheory.Over [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404377)))))
+ACTUAL Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const
+                    `CategoryTheory.MorphismProperty.Over.RelativeTests.coordinates
+                    [Lean.Level.succ (Lean.Level.param `u),
+                     Lean.Level.param `u,
+                     Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+                     Lean.Level.succ (Lean.Level.param `u)])
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+              (Lean.Expr.const `AlgebraicGeometry.Scheme.Pullback.instHasPullbacks [Lean.Level.param `u]))
+            (Lean.Expr.const `AlgebraicGeometry.Scheme.EtaleCohomology.etaleMorphismProperty [Lean.Level.param `u]))
+          (Lean.Expr.fvar (Le
+HC_DIFFERING_SUBTERMS
+EXPECTED Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const
+                `AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf
+                [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+              (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404379))))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const
+                  `CategoryTheory.ObjectProperty.FullSubcategory.category
+                  [Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean
+ACTUAL Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const
+              `CategoryTheory.Functor.obj
+              [Lean.Level.param `u,
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.param `u),
+               Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+            (Lean.Expr.app
+              (Lean.Expr.const `Opposite [Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CategoryTheory.Over [Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])
+                    (Lean.Expr.const `AlgebraicGeometry.Scheme [Lean.Level.param `u]))
+                  (Lean.Expr.const `AlgebraicGeometry.Scheme.instCategory [Lean.Level.param `u]))
+                (Lean.Expr.fvar (Lean.Name.mkNum `_uniq 1404377)))))
+REMAINING_HEARTBEATS 29648
+/root/autodl-tmp/lean-build/logs/remote-44791797b8fd4f7095aedd681672d2f0/OperationalPropositionInspection-v33.lean:958:2: error: V33_INTENTIONAL_STOP_AFTER_PROPOSITION_INSPECTION
+X T : Scheme
+g : T ⟶ X
+inst✝² : Etale g
+Y : Over X
+H : Grp (Over X)
+inst✝¹ : IsCommMonObj H.X
+K : Grp (Over T)
+inst✝ : IsCommMonObj K.X
+c : baseChangedGroup g H ≅ K
+F : Sheaf T.smallEtaleTopology AddCommGrpCat ⥤ T.Etaleᵒᵖ ⥤ AddCommGrpCat :=
+  sheafToPresheaf T.smallEtaleTopology AddCommGrpCat
+W : (X.Etaleᵒᵖ ⥤ AddCommGrpCat) ⥤ T.Etaleᵒᵖ ⥤ AddCommGrpCat :=
+  (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op
+q : pullback g Y.hom ⟶ T := pullback.fst g Y.hom
+source : ((representedDirectImageFunctor H ⋙ etaleRestriction g) ⋙
+        sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).obj
+    (op Y) ≅
+  (representedCoordinateFunctor H ⋙
+        (Functor.whiskeringLeft T.Etaleᵒᵖ X.Etaleᵒᵖ AddCommGrpCat).obj (siteEtalePostcompose g).op).obj
+    (op Y) :=
+  (representedRestrictionSourceIso g H).app (op Y)
+target : (((Over.pullback g).op ⋙ representedDirectImageFunctor K) ⋙
+        sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).obj
+    (op Y) ≅
+  ((Over.pullback g).op ⋙ representedCoordinateFunctor K).obj (op Y) :=
+  (representedRestrictionTargetIso g K).app (op Y)
+e : ((directImage (Over.mk q).hom).obj (representedSheaf (baseChangedGroup (Over.mk q).hom K))).obj ≅
+  MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K) (Over.mk q) :=
+  representedDirectImageCoordinatesIso K (Over.mk q)
+middle : (siteEtalePostcompose g).op ⋙
+    MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor H) Y ⟶
+  MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K) ((Over.pullback g).obj Y) :=
+  (representedCoordinateRestrictionIso g H K c Y).hom
+relative : MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K)
+    (Over.mk (pullback.fst g Y.hom)) ⟶
+  MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K) ((Over.pullback g).obj Y) :=
+  MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty (sectionFunctor K)
+    (pullbackSymmetryOverIso g Y).inv
+u : (directImage Y.hom ⋙ etaleRestriction g).obj (representedSheaf (baseChangedGroup Y.hom H)) ⟶
+  (etaleRestriction (pullback.snd g Y.hom) ⋙ directImage (pullback.fst g Y.hom)).obj
+    (representedSheaf (baseChangedGroup Y.hom H)) :=
+  (etaleDirectImageRestrictionIso Y.hom g).hom.app (representedSheaf (baseChangedGroup Y.hom H))
+v : (directImage q).obj ((etaleRestriction (pullback.snd g Y.hom)).obj (representedSheaf (baseChangedGroup Y.hom H))) ⟶
+  (directImage q).obj (representedSheaf ((Over.pullback q).mapGrp.obj K)) :=
+  (directImage q).map
+    ((representedEtaleRestrictionIso (pullback.snd g Y.hom) (baseChangedGroup Y.hom H)).hom ≫
+      representedSheafMap
+        ((representedGroupSquareIso Y.hom q g (pullback.snd g Y.hom) ⋯ H).inv ≫ (Over.pullback q).mapGrp.map c.hom))
+hComparison :
+  ((representedRestrictionSourceIso g H).app (op Y)).hom ≫ (representedCoordinateRestrictionIso g H K c Y).hom =
+    (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).map
+        ((etaleDirectImageRestrictionIso Y.hom g).hom.app (representedSheaf (baseChangedGroup Y.hom H))) ≫
+      (sheafToPresheaf T.smallEtaleTopology AddCommGrpCat).map
+          ((directImage (pullback.fst g Y.hom)).map
+            ((representedEtaleRestrictionIso (pullback.snd g Y.hom) (baseChangedGroup Y.hom H)).hom ≫
+              representedSheafMap
+                ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g (pullback.snd g Y.hom) ⋯ H).inv ≫
+                  (Over.pullback (pullback.fst g Y.hom)).mapGrp.map c.hom))) ≫
+        (representedDirectImageCoordinatesIso K (Over.mk (pullback.fst g Y.hom))).hom ≫
+          MorphismProperty.Over.RelativeTests.coordinateMap etaleMorphismProperty (sectionFunctor K)
+            (pullbackSymmetryOverIso g Y).inv
+assemble✝² :
+  ∀
+    (source :
+      F.obj ((representedDirectImageFunctor H ⋙ etaleRestriction g).obj (op Y)) ≅
+        (representedCoordinateFunctor H ⋙ W).obj (op Y))
+    (target :
+      F.obj (((Over.pullback g).op ⋙ representedDirectImageFunctor K).obj (op Y)) ≅
+        ((Over.pullback g).op ⋙ representedCoordinateFunctor K).obj (op Y))
+    (e :
+      F.obj (representedDirectImage K (Over.mk q)) ≅
+        MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K) (Over.mk q))
+    (middle :
+      (representedCoordinateFunctor H ⋙ W).obj (op Y) ⟶
+        ((Over.pullback g).op ⋙ representedCoordinateFunctor K).obj (op Y))
+    (relative :
+      MorphismProperty.Over.RelativeTests.coordinates etaleMorphismProperty (sectionFunctor K) (Over.mk q) ⟶
+        ((Over.pullback g).op ⋙ representedCoordinateFunctor K).obj (op Y))
+    (u :
+      (representedDirectImageFunctor H ⋙ etaleRestriction g).obj (op Y) ⟶
+        (directImage q).obj
+          ((etaleRestriction (pullback.snd g Y.hom)).obj (representedSheaf (baseChangedGroup Y.hom H))))
+    (v :
+      (directImage q).obj
+          ((etaleRestriction (pullback.snd g Y.hom)).obj (representedSheaf (baseChangedGroup Y.hom H))) ⟶
+        representedDirectImage K (Over.mk q))
+    (k : representedDirectImage K (Over.mk q) ⟶ ((Over.pullback g).op ⋙ representedDirectImageFunctor K).obj (op Y)),
+    (representedRestrictionSourceIso g H).hom.app (op Y) = source.hom →
+      (representedCoordinateRestrictionFunctorIso g H K c).hom.app (op Y) = middle →
+        (representedRestrictionTargetIso g K).hom.app (op Y) = target.hom →
+          F.map k = (e.homCongr target).symm relative →
+            source.hom ≫ middle = F.map u ≫ F.map v ≫ e.hom ≫ relative →
+              (Functor.liftRestrictionIso F (Functor.FullyFaithful.ofFullyFaithful F)
+                        (representedRestrictionSourceIso g H) (representedCoordinateRestrictionFunctorIso g H K c)
+                        (representedRestrictionTargetIso g K)).hom.app
+                  (op Y) =
+                u ≫ v ≫ k
+assemble✝¹ :
+  (representedRestrictionSourceIso g H).hom.app (op Y) = source.hom →
+    (representedCoordinateRestrictionFunctorIso g H K c).hom.app (op Y) = middle →
+      (representedRestrictionTargetIso g K).hom.app (op Y) = target.hom →
+        F.map (representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv) = (e.homCongr target).symm relative →
+          source.hom ≫ middle = F.map u ≫ F.map v ≫ e.hom ≫ relative →
+            (Functor.liftRestrictionIso F (Functor.FullyFaithful.ofFullyFaithful F)
+                      (representedRestrictionSourceIso g H) (representedCoordinateRestrictionFunctorIso g H K c)
+                      (representedRestrictionTargetIso g K)).hom.app
+                (op Y) =
+              u ≫ v ≫ representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv
+assemble✝ :
+  F.map (representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv) = (e.homCongr target).symm relative →
+    source.hom ≫ middle = F.map u ≫ F.map v ≫ e.hom ≫ relative →
+      (Functor.liftRestrictionIso F (Functor.FullyFaithful.ofFullyFaithful F) (representedRestrictionSourceIso g H)
+                (representedCoordinateRestrictionFunctorIso g H K c) (representedRestrictionTargetIso g K)).hom.app
+          (op Y) =
+        u ≫ v ≫ representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv
+assemble :
+  source.hom ≫ middle = F.map u ≫ F.map v ≫ e.hom ≫ relative →
+    (Functor.liftRestrictionIso F (Functor.FullyFaithful.ofFullyFaithful F) (representedRestrictionSourceIso g H)
+              (representedCoordinateRestrictionFunctorIso g H K c) (representedRestrictionTargetIso g K)).hom.app
+        (op Y) =
+      u ≫ v ≫ representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv
+⊢ (representedRestrictionIso g H K c).hom.app (op Y) =
+    (etaleDirectImageRestrictionIso Y.hom g).hom.app (representedSheaf (baseChangedGroup Y.hom H)) ≫
+      (directImage (pullback.fst g Y.hom)).map
+          ((representedEtaleRestrictionIso (pullback.snd g Y.hom) (baseChangedGroup Y.hom H)).hom ≫
+            representedSheafMap
+              ((representedGroupSquareIso Y.hom (pullback.fst g Y.hom) g (pullback.snd g Y.hom) ⋯ H).inv ≫
+                (Over.pullback (pullback.fst g Y.hom)).mapGrp.map c.hom)) ≫
+        representedDirectImageMap K (pullbackSymmetryOverIso g Y).inv
+V33_NATIVE_OPERATIONAL_PROPOSITION_INSPECTION_END exit=1
+{"prefix_exit": 1, "source_sha256": "af771a01a7a640de3f7f3942858c5c226c9c65ed478304836e0f973275b6c542", "native_setup_sha256": "1e533fac3f194e7dd48e9645ffcbdbe5e8caf1ecb060524ca2ff7bc28d79ea59", "boundary": "author complete operational represented H/K/c family with finite aliases; no fullGlobalfollowup until authorrelease"}

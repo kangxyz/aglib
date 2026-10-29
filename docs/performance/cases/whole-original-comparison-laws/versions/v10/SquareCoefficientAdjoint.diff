@@ -1,0 +1,50 @@
+--- v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean
++++ v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean
+@@ -46,8 +46,11 @@
+       directImageSquareIso f₀.unop f₁.unop g.unop h.unop (congrArg Quiver.Hom.unop e) := by
+   have ha : (schemeAdjunctionData.compIso f₀ h).symm =
+       directImageCompIso f₀.unop h.unop := by
+-    simpa only [Iso.symm_symm_eq] using
+-      congrArg Iso.symm (schemeRightCompIso_eq_directImageCompIso f₀ h)
++    exact (congrArg
++      (fun z : directImage (h.unop ≫ f₀.unop) ≅
++        directImage h.unop ⋙ directImage f₀.unop => z.symm)
++      (schemeRightCompIso_eq_directImageCompIso f₀ h)).trans
++        (Iso.symm_symm_eq (directImageCompIso f₀.unop h.unop))
+   have hm : eqToIso (congrArg schemeAdjunctionData.right e.symm) =
+       eqToIso (congrArg (fun k : X₁.unop ⟶ S₀.unop => directImage k)
+         (congrArg Quiver.Hom.unop e).symm) := by
+@@ -80,11 +83,30 @@
+         ((inverseImageAdjunction f).comp (inverseImageAdjunction g'))
+         (inverseImageSquareIso f f' g g' e).inv =
+       (directImageSquareIso f f' g g' e).inv := by
+-  simpa only [schemeAdjunction_eq_inverseImageAdjunction, schemeSquareIso_eq_inverseImageSquareIso,
+-    schemeSquareRightIso_eq_directImageSquareIso, schemeRight_eq_directImage,
+-    Quiver.Hom.unop_op] using
++  have hs : schemeAdjunctionData.squareIso f.op f'.op g.op g'.op
++      (congrArg Quiver.Hom.op e) = inverseImageSquareIso f f' g g' e := by
++    simpa only [Quiver.Hom.unop_op] using
++      schemeSquareIso_eq_inverseImageSquareIso f.op f'.op g.op g'.op
++        (congrArg Quiver.Hom.op e)
++  have hr : schemeAdjunctionData.squareRightIso f.op f'.op g.op g'.op
++      (congrArg Quiver.Hom.op e) = directImageSquareIso f f' g g' e := by
++    simpa only [Quiver.Hom.unop_op] using
++      schemeSquareRightIso_eq_directImageSquareIso f.op f'.op g.op g'.op
++        (congrArg Quiver.Hom.op e)
++  have hc : conjugateEquiv ((inverseImageAdjunction g).comp (inverseImageAdjunction f'))
++      ((inverseImageAdjunction f).comp (inverseImageAdjunction g'))
++      (schemeAdjunctionData.squareIso f.op f'.op g.op g'.op
++        (congrArg Quiver.Hom.op e)).inv =
++      (schemeAdjunctionData.squareRightIso f.op f'.op g.op g'.op
++        (congrArg Quiver.Hom.op e)).inv :=
+     schemeAdjunctionData.conjugate_squareIso_inv f.op f'.op g.op g'.op
+       (congrArg Quiver.Hom.op e)
++  exact (congrArg
++    (fun s : inverseImage g ⋙ inverseImage f' ≅ inverseImage f ⋙ inverseImage g' =>
++      conjugateEquiv ((inverseImageAdjunction g).comp (inverseImageAdjunction f'))
++        ((inverseImageAdjunction f).comp (inverseImageAdjunction g')) s.inv) hs).symm.trans
++    (hc.trans (congrArg
++      (fun r : directImage g' ⋙ directImage f ≅ directImage f' ⋙ directImage g => r.inv) hr))
+ 
+ lemma squareCoefficientMap_homEquiv {X₀ X₁ Y₀ Y₁ : Scheme.{u}}
+     (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)

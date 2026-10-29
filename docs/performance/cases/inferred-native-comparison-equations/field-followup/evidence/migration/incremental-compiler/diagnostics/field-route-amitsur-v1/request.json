@@ -1,0 +1,24 @@
+{
+  "diagnostic_request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v4/diagnostics/equation-route-request.json",
+  "diagnostic_sha256": "6d80c9d07f79b2702dcc4172ce262849010901422be238c3a84ac85007c04cd5",
+  "native_field_sha256": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+  "amitsur_identity": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/amitsur-algebraic-suppliers-core-staging/candidate-v1/identity.json",
+  "native_roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections"
+  ],
+  "phase_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections"
+  ],
+  "branches": "native Amitsur ordinary Lake build and isolated Field original-equation route diagnostic run in parallel after native Field setup; no changed Amitsur input lies in Field header DAG",
+  "payload_sha256": "ba0506114f0d5b78ac5c9dc47fba53f9ce01f026d376c625e149101b86ba3ed1",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "retired_next_input": "Unlaunched DATA context lookup repair withdrawn by author; invalid marker no proof/cause use"
+}

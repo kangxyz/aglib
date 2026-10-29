@@ -1,0 +1,58 @@
+{
+  "actual_run": "remote-ea58796c97b44af5bb5072b84c7a0d3f",
+  "actual_source": "926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f",
+  "capture_utc": "2026-10-29T00:19:43.631982+00:00",
+  "filename_boundary": "Native broker delivery still named .partial at capture; bytes retained without relabelling finality",
+  "coverage": "Full available actual build log, receipt, compiler events and progress supporting original c9ee pass and7f83 failure; other independent module diagnostics remain their own evidence",
+  "artifacts": [
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/build.log.partial",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/build.log.partial",
+      "bytes": 12630,
+      "sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/receipt.json.partial",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/receipt.json.partial",
+      "bytes": 13877,
+      "sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/compiler-events.jsonl.partial",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/compiler-events.jsonl.partial",
+      "bytes": 80161,
+      "sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/progress.json",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/progress.json",
+      "bytes": 6439,
+      "sha256": "011ace44fde04543e61c53230fdf86071bb32d8fc65eb61482cf25d54a344cc5"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-proper-residual-coherent-v1-ea58796c.json",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/recovery-proper-residual-coherent-v1-ea58796c.json",
+      "bytes": 1116251,
+      "sha256": "5661b38b31c8ab0febba048bd6fa0f4b9ebd2685d55447cd42f4902888d7e389"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/build.log",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/build.log",
+      "bytes": 12630,
+      "sha256": "6639fbab5019e6957eef6d4c529374b47280839ceb4920057f7b8f396a979247"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/receipt.json",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/receipt.json",
+      "bytes": 13877,
+      "sha256": "c6663cf3cbb250ef001643da8a6f01edf154b4254cb426f6dc61e9499ce6d596"
+    },
+    {
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ea58796c97b44af5bb5072b84c7a0d3f/compiler-events.jsonl",
+      "archived": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/evidence/Aea58796-SOURCE926bd/final/compiler-events.jsonl",
+      "bytes": 80161,
+      "sha256": "d10e0b0df8dacc7e332f997154270ecaddacebe08d91ba0fe71a5a51bdea13a4"
+    }
+  ],
+  "final_delivery_reconciliation": "Retained original partial-named capture; appended actual final canonical outputs and full SOURCE manifest without rerunning or relabelling old source."
+}

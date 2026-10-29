@@ -1,0 +1,10 @@
+{
+  "run": "remote-669fe85c64774d379f36226b04d6c85d",
+  "source": "b7440f823a4831dbd18b26a5948827897015f978375477a1d5f353db5ac6616a",
+  "prefix": "abae81abf3f527f65726be186ae37fe450149eccebfe7c600cba674032908a6d",
+  "exit": 1,
+  "seconds": 193.77,
+  "last_marker": "V29_ORIGINAL_RELATIVE_CONSTRUCTOR_BOUND",
+  "failure": "sole784:0whnf200000 applying original hComparison; complete-core marker absent",
+  "boundary": "Original component/map bindings advanced. No fullGlobal/callers; native production91a1 unchanged."
+}

@@ -1,0 +1,22 @@
+--- v2/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
++++ v3/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
+@@ -366,13 +366,16 @@
+       (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+       (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+       (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
+-  exact (congrArg ((galoisRestriction K n).onH1) h).trans
+-    (_root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
++  have hmap := congrArg ((galoisRestriction K n).onH1) h
++  have hclass :=
++    _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
+       (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle
+         (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)
+         (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+         (pointMark_equivariant K n) Y
+-        (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t))
++        (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
++  simpa only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
++    fieldCocycle] using hmap.trans hclass
+ 
+ 
+ 

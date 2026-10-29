@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Mathlib.Algebra.Category.Grp.AB
+public import Mathlib.Algebra.Category.Grp.Ulift
 public import Mathlib.Algebra.Homology.ShortComplex.FunctorEquivalence
 public import Mathlib.CategoryTheory.Abelian.GrothendieckAxioms.Basic
 
@@ -77,3 +79,23 @@ lemma exact_obj_colimit (h : ∀ i, (T.obj (G.obj i)).Exact) :
   exact exact_of_iso (colimitComparisonIso T G) (hS.map colim)
 
 end CategoryTheory.ShortComplex
+
+namespace CategoryTheory
+
+open Limits
+
+universe e uI vI
+
+/-- Existing filtered colimits of abelian groups are exact with independent
+index-object, index-morphism and original coefficient universes. -/
+lemma hasExactFilteredColimitsOfShape_addCommGrpCat_of_category
+    (I : Type uI) [Category.{vI} I] [IsFiltered I]
+    [HasColimitsOfShape I AddCommGrpCat.{e}] :
+    HasExactColimitsOfShape I AddCommGrpCat.{e} := by
+  let E : I ≌ AsSmall.{max e uI vI} I := AsSmall.equiv (C := I)
+  have : IsFiltered (AsSmall.{max e uI vI} I) := IsFiltered.of_equivalence E
+  let : HasExactColimitsOfShape I AddCommGrpCat.{max e uI vI} :=
+    HasExactColimitsOfShape.of_domain_equivalence AddCommGrpCat.{max e uI vI} E.symm
+  exact HasExactColimitsOfShape.domain_of_functor I AddCommGrpCat.uliftFunctor.{max uI vI, e}
+
+end CategoryTheory

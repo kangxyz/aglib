@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.OfCommRing
 public import Mathlib.Algebra.Category.ModuleCat.Presheaf.Monoidal
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Colimits
 public import Mathlib.CategoryTheory.Sites.Whiskering
@@ -38,11 +39,6 @@ universe u v w
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 
-/-- Module sheaves over a sheaf of commutative rings, via its original underlying ring sheaf. -/
-abbrev SheafOfModulesOfCommRing {C : Type v} [Category.{w} C] {J : GrothendieckTopology C}
-    [J.HasSheafCompose (forget₂ CommRingCat.{u} RingCat.{u})]
-    (R : Sheaf J CommRingCat.{u}) :=
-  SheafOfModules.{u} ((sheafCompose J (forget₂ CommRingCat.{u} RingCat.{u})).obj R)
 
 namespace SheafOfModulesOfCommRing
 

@@ -146,11 +146,4 @@ theorem germ_stalkUnitNatIso (L : AbelianSheaf.{u, u + 1} X) (U : X.Etale)
           (pulledBackPoint f η U p) ((inverseImage f).obj L).obj :=
   germ_stalkUnit f η L U p
 
-/-- For finite represented coefficients this is the already constructed original isomorphism. -/
-theorem stalkUnitNatIso_app_eq (L : AbelianSheaf.{u, u + 1} X)
-    (R : CoefficientRepresentation L) :
-    (stalkUnitNatIso f η).app L = CoefficientStalkBaseChange.stalkUnitIso f η L R := by
-  apply Iso.ext
-  exact (CoefficientStalkBaseChange.stalkUnitIso_hom f η L R).symm
-
 end AlgebraicGeometry.Scheme.EtaleCohomology.StalkInverseImage

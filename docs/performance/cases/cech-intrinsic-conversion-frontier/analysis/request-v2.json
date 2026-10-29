@@ -1,0 +1,37 @@
+{
+  "question": "Which declarations and phases dominate the already-passed Scheme Comparison a9ff compilation (155s unprofiled), and does the evidence justify a bounded repair of the existing proof presentation?",
+  "authorization": "Principal explicitly requests one scoped diagnostic profile and permits it in parallel with the downstream Modules retry. This is not a new acceptance/benchmark chain.",
+  "max_profile_invocations": 1,
+  "module": "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+  "production_relative_path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+  "production_sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+  "faithful_source_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/overlay/Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+  "faithfulness": "Byte-identical complete production source; no instrumentation directives added to source. Use runtime profiler options only.",
+  "successful_basis": {
+    "run_id": "fa261c799e6541b9a68d7543dc7fb23c",
+    "source_sha256": "9437ec92a3ac6fe6040ff001e87ac862f1bca62eaf7d1081afca9df4f075dbb4",
+    "target_result": "Scheme Comparison exact source passed, native displayed 155s; whole command failed only downstream Modules.",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/receipt.json"
+  },
+  "pins": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "required_environment": "Use the same completed Scheme Comparison a9ff source, pinned Lean/mathlib/native package, compatible successful import outputs, and native mechanically regenerated module setup. Preserve normal wrapper/admission, 4 compiler threads, 12800 MiB frontend heap, normal 2-job/32768-MiB profile controls, all default source budgets/options. Stop if setup generation would expand to a library build or change a source/option/dependency basis; do not silently substitute another implementation. No cache cleaning or downstream targets.",
+  "diagnostic_cli_options": [
+    "-Dtrace.profiler=true",
+    "-Dtrace.profiler.threshold=100"
+  ],
+  "native_option_source": "Lean v4.34.1 Lean/Util/Trace.lean:175-187 registers these exact options; milliseconds are used by default. Lean/AddDecl.lean:183-191 emits named Kernel typechecking traces. Source inspected at local pinned toolchain.",
+  "output_isolation": "Broker owns runtime/source overlay and all diagnostic outputs under its assigned scratch/run directories. Route .olean/.ilean/.c output to a fresh diagnostic directory; never overwrite production artifacts. The authored faithful_source_copy is read-only input.",
+  "accepted_output": "One complete source-matching guarded profile invocation, full stdout/stderr and trace data, exact command/source/profile/setup identities, exit/resource data, and output paths. Preserve partial diagnostic evidence if instrumentation fails; do not automatically retry or raise limits.",
+  "analysis_boundary": "Profiled intervals can overlap (async kernel). Do not sum inclusive times into wall time, infer speedup from this run, or call this new mathematical acceptance. Identify top named declarations and phases, noting unavailable phases/attribution limits. Any proposed repair must retain original maps, hypotheses, worlds and reduction interfaces.",
+  "existing_timing_limit": "Current compiler event/build logs provide module elapsed time and target status only; they do not identify hot declarations. The one profile fills that precise gap.",
+  "revision": 2,
+  "supersedes": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/request.json",
+  "setup_input_change": "The original fa261 production Comparison.setup.json was removed by the native setup cleanup (removed2/4559704bytes); broker confirmed the current native path is absent. No diagnostic frontend has run. This revision explicitly permits recovery or mechanical regeneration of the pinned native setup for the same completed source and compatible compiled dependency basis; a regenerated file is not relabelled as the original archived artifact.",
+  "setup_recovery": "First recover a matching saved setup if available without a search/rebuild expansion. Otherwise use the existing native Lake/package setup-generation mechanism for exactly this module, without invoking the Lean frontend or rebuilding unchanged dependencies. Capture the generated setup bytes/hash, source/import/options identities and exact generation command. Compare any retained original setup hash when available; otherwise record that original-byte identity is unavailable and validate the regenerated setup against the pinned package options and preserved dependency artifacts.",
+  "profile_invocations_consumed": 0,
+  "count_boundary": "The one permitted diagnostic frontend is shared across request v1/v2, not one per revision. Native setup recovery/generation is preparation, not a repeat profile or acceptance check."
+}

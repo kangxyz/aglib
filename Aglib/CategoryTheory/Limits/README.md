@@ -1,4 +1,4 @@
-# Coproducts, pushouts and sequential colimits
+# Limits, colimits and preservation
 
 [NatTransCoproduct](NatTransCoproduct.lean), imported as `Aglib.CategoryTheory.Limits.NatTransCoproduct`, gives `CategoryTheory.NatTrans.isIso_app_coproduct` for the actual coproduct comparison with the source's preservation and componentwise-isomorphism hypotheses. [FiniteCoproductFunctor](../Abelian/FiniteCoproductFunctor.lean) separately supplies finite-limit/finite-colimit preservation of finite coproducts in the abelian setting.
 
@@ -27,3 +27,12 @@ cartesian over `Sigma.map f` in a finitary extensive category. Consumer: the fin
 of H-quasi-projective schemes
 ([ProjectiveSpace/QuasiProjective/Coproduct](../../AlgebraicGeometry/ProjectiveSpace/QuasiProjective/Coproduct.lean)),
 through `Sigma.desc_induction`.
+
+[JointConservativity](Preserves/JointConservativity.lean) proves colimit
+preservation for the actual supplied functor using a family that jointly
+reflects isomorphisms, with the stated target-colimit and preservation
+hypotheses. The index and category universes remain independent.
+[PresheafSections](Preserves/PresheafSections.lean) proves that the original
+abelian-valued presheaf cocone is colimiting from joint surjectivity and
+eventual equality. Its independent index, category and value universes retain
+the displayed size bounds; the original presheaf maps and cocone legs are used.

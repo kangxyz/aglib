@@ -1,0 +1,87 @@
+{
+  "phase": "d-foundation-first-generic9",
+  "source_author": "/root/archive_d_topos_foundation",
+  "run": "remote-c1ed9ead12694bc086ebc2ad247bcac1",
+  "source": "4395a978b043b5b28a18044fb11913490e421f90c41f18ef30d5656a83e92a8b",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/d-foundation-generic9-c1ed9ead.json",
+  "source_archive_sha256": "ab39703755e986d81a9d7bc4ede42f914a1f15c8332b1480c91e8111def9f802",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/receipt.json",
+  "receipt_sha256": "e0298c8d010c464038045a6a500d3e76d28d8d1733eaf3bfd262bb2a2129da28",
+  "compiler_events_sha256": "b4bb82cf8d72a9996e835fa8e088e8f19edd6808d27e74d098b62513509f0eee",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/build.log",
+  "command": [
+    "python3",
+    "-m",
+    "r5tools",
+    "lean",
+    "remote",
+    "--config",
+    "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote.json",
+    "build",
+    "--jobs",
+    "8",
+    "Aglib.Algebra.Homology.DerivedCategory.ExactFunctorHomology",
+    "Aglib.Algebra.Homology.DerivedCategory.JointConservativity",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Amplitude",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Cycles",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.DimensionShift",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Exchange",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.TruncationComparison",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Window",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.ExactAmplitude"
+  ],
+  "exit_code": 0,
+  "group_closed": true,
+  "coverage": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+      "sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+      "sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+      "sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+      "sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+      "sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+      "sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+      "sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+      "exit_code": 0
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+      "sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef",
+      "exit_code": 0
+    }
+  ],
+  "fresh_frontends": 9,
+  "fresh_passes": 9,
+  "peak_frontends": 4,
+  "peak_rss_bytes": 5521809408,
+  "boundary": "FreshexactDfoundationgeneric9passesonactualSOURCEandinvocation. No nativeadapter/geometric/fullarchiveadmission, oldDreceipt reuse, pin/optionchanges, standalonechecksorreplay."
+}

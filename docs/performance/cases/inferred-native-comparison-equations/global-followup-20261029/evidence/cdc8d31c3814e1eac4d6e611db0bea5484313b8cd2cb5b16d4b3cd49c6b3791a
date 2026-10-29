@@ -1,0 +1,18 @@
+NATIVE_LAKE_SETUP_COMMAND ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "setup-file", "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean"]
+NATIVE_MODULE_SETUP {"complete_options_equal": true, "isModule": true, "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction", "options": {"autoImplicit": false, "warningAsError": true, "weak.linter.mathlibStandardSet": true, "weak.linter.style.longFile": 1500}, "sha256": "f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3"}
+V29_NATIVE_ORIGINAL_COMPONENT_ASSEMBLY_BEGIN sha256=abae81abf3f527f65726be186ae37fe450149eccebfe7c600cba674032908a6d
+NATIVE_DIAGNOSTIC_ARGV ["/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake", "--no-build", "env", "/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/toolchain/bin/lean", "/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/OriginalComponentAssembly-v29.lean", "--setup", "/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/NativeGlobal.setup.json"]
+V29_NATIVE_BODY
+V29_ORIGINAL_COMPARISON_READY
+V29_FACTORY_BOUND
+V29_ORIGINAL_MAPS_BOUND
+V29_ORIGINAL_VALUES_BOUND
+V29_ORIGINAL_RELATIVE_CONSTRUCTOR_BOUND
+/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/OriginalComponentAssembly-v29.lean:784:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+V29_NATIVE_ORIGINAL_COMPONENT_ASSEMBLY_END exit=1
+{"prefix_exit": 1, "source_sha256": "abae81abf3f527f65726be186ae37fe450149eccebfe7c600cba674032908a6d", "native_setup_sha256": "f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3", "boundary": "author new original whole-source/target component assembly diagnostic; no fullGlobalfollowup evenexit0"}

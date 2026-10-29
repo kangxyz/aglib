@@ -68,7 +68,8 @@ theorem directImagePresheafRepresentedDerivedIso_zero_unit
       (directImagePresheafRepresentedIso f U) 0).hom.app F ≫
       (Sheaf.ModuleCoefficients.rightDerivedPostcompIso (directImagePresheaf f)
         ((CategoryTheory.evaluation _ AddCommGrpCat.{u + 1}).obj (op U)) 0).hom.app F = _
-  dsimp only [Sheaf.ModuleCoefficients.rightDerivedNatIso]
+  dsimp only [Sheaf.ModuleCoefficients.rightDerivedNatIso,
+    CategoryTheory.Functor.rightDerivedNatIsoOfAdditive]
   rw [← Category.assoc, h₁, Category.assoc, h₂]
   rfl
 

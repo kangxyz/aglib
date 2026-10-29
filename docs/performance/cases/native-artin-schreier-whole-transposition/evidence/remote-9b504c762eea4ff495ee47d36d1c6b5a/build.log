@@ -1,0 +1,167 @@
+AS_DIAG1 prefix-complete formation-start
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 63, num: 3):
+    [reduction] Functor.obj ↦ 63
+    [reduction] CommRingCat.carrier ↦ 38
+    [reduction] Sheaf ↦ 22
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.definition.header] ✅️ CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe
+AS_DIAG1 formation-body
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 87, num: 8):
+    [reduction] Lean.Elab.TermElabM ↦ 87
+    [reduction] Lean.Elab.Tactic.TacticM ↦ 81
+    [reduction] Lean.MetaM ↦ 68
+    [reduction] Functor.obj ↦ 63
+    [reduction] CommRingCat.carrier ↦ 38
+    [reduction] Lean.CoreM ↦ 35
+    [reduction] semiOutParam ↦ 24
+    [reduction] Sheaf ↦ 22
+  [def_eq] heuristic for solving `f a =?= f b` (max: 23, num: 1):
+    [def_eq] StateRefT' ↦ 23
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.definition.value] ✅️ CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.2724257991._hygCtx._hyg.79]
+[Kernel] ✅️ typechecking declarations [CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe]
+.lake/migration-probes/as-final-theorem.lean:130:2: warning: Unused tactic linter: `run_tac
+  Lean.logInfo "AS_DIAG1 formation-body"` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AS_DIAG1 formation-command-end proof-start
+[diag] Diagnostics
+  [reduction] unfolded reducible declarations (max: 63, num: 3):
+    [reduction] Functor.obj ↦ 63
+    [reduction] CommRingCat.carrier ↦ 38
+    [reduction] Sheaf ↦ 22
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+[Elab.definition.header] ✅️ CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap
+AS_DIAG1 body-entry
+AS_DIAG1 after-hz
+AS_DIAG1 after-left-additive-instance
+AS_DIAG1 after-native-zero
+AS_DIAG1 before-final-transport
+[diag] Diagnostics
+  [reduction] unfolded declarations (max: 551734, num: 19):
+    [reduction] Classical.indefiniteDescription ↦ 551734
+    [reduction] presheafToSheaf ↦ 403629
+    [reduction] Classical.choose ↦ 403629
+    [reduction] Functor.leftAdjoint ↦ 403629
+    [reduction] Quiver.Hom ↦ 37461
+    [reduction] sheafificationAdjunction ↦ 4770
+    [reduction] Adjunction.ofIsRightAdjoint ↦ 4770
+    [reduction] DFunLike.coe ↦ 1994
+    [reduction] CategoryStruct.comp ↦ 1233
+    [reduction] EquivLike.coe ↦ 632
+    [reduction] Adjunction.homEquiv ↦ 472
+    [reduction] primeFieldToAdditive ↦ 234
+    [reduction] OfNat.ofNat ↦ 66
+    [reduction] Zero.zero ↦ 64
+    [reduction] HSub.hSub ↦ 48
+    [reduction] Sub.sub ↦ 48
+    [reduction] ConcreteCategory.ofHom ↦ 34
+    [reduction] ConcreteCategory.hom ↦ 30
+    [reduction] InducedCategory.homEquiv ↦ 22
+  [reduction] unfolded reducible declarations (max: 403629, num: 43):
+    [reduction] Exists.choose ↦ 403629
+    [reduction] Subtype.val ↦ 403629
+    [reduction] Functor.map ↦ 284374
+    [reduction] InducedCategory.Hom.hom ↦ 150990
+    [reduction] NatTrans.app ↦ 55223
+    [reduction] AddCommGrpCat.Hom.hom' ↦ 23374
+    [reduction] AddMonoidHom.toZeroHom ↦ 9972
+    [reduction] Functor.obj ↦ 5098
+    [reduction] Nonempty.some ↦ 4770
+    [reduction] Adjunction.counit ↦ 4452
+    [reduction] ObjectProperty.FullSubcategory.obj ↦ 2069
+    [reduction] AddCommGrpCat.carrier ↦ 1362
+    [reduction] ZeroHom.toFun ↦ 1344
+    [reduction] Equiv.toFun ↦ 604
+    [reduction] Equiv.invFun ↦ 488
+    [reduction] Lean.Elab.TermElabM ↦ 435
+    [reduction] CommRingCat.commRing ↦ 412
+    [reduction] Lean.Elab.Tactic.TacticM ↦ 405
+    [reduction] CommRingCat.carrier ↦ 357
+    [reduction] Lean.MetaM ↦ 340
+    [reduction] additivePresheaf ↦ 282
+    [reduction] FunLike ↦ 269
+    [reduction] additiveSheaf ↦ 266
+    [reduction] AddCommGrpCat.of ↦ 227
+    [reduction] Sheaf ↦ 205
+    [reduction] Lean.CoreM ↦ 175
+    [reduction] outParam ↦ 146
+    [reduction] semiOutParam ↦ 144
+    [reduction] IO ↦ 95
+    [reduction] Lean.ImportM ↦ 90
+    [reduction] sheafToPresheaf ↦ 60
+    [reduction] AddCommGrpCat.str ↦ 54
+    [reduction] inferInstance ↦ 52
+    [reduction] Function.Injective.addCommGroup ↦ 50
+    [reduction] Function.Injective.addGroup ↦ 50
+    [reduction] Function.Injective.subNegMonoid ↦ 50
+    [reduction] HasWeakSheafify ↦ 48
+    [reduction] Nat.casesOn ↦ 38
+    [reduction] RingCat.ring ↦ 38
+    [reduction] AddCommGrpCat.ofHom ↦ 34
+    [reduction] ToType ↦ 33
+    [reduction] AddCommGrpCat.Hom.hom ↦ 30
+    [reduction] Unit ↦ 29
+  [type_class] used instances (max: 70, num: 7):
+    [type_class] instMonadStateOfOfMonadLift ↦ 70
+    [type_class] ReaderT.instMonadLift ↦ 65
+    [type_class] StateRefT'.instMonadLift ↦ 65
+    [type_class] Aesop.instMonadStatsOfMonadOptionsOfMonadStateOfStats ↦ 55
+    [type_class] Lean.instMonadOptionsOfMonadLift ↦ 50
+    [type_class] Aesop.MonadStats.toMonadOptions ↦ 50
+    [type_class] Lean.instMonadLogOfMonadLift ↦ 30
+  [def_eq] heuristic for solving `f a =?= f b` (max: 21420, num: 18):
+    [def_eq] Functor.map ↦ 21420
+    [def_eq] InducedCategory.Hom.hom ↦ 10684
+    [def_eq] NatTrans.app ↦ 5266
+    [def_eq] AddCommGrpCat.Hom.hom' ↦ 2565
+    [def_eq] AddMonoidHom.toZeroHom ↦ 963
+    [def_eq] DFunLike.coe ↦ 703
+    [def_eq] ZeroHom.toFun ↦ 649
+    [def_eq] CategoryStruct.comp ↦ 295
+    [def_eq] AddMonoidHom.comp ↦ 153
+    [def_eq] StateRefT' ↦ 115
+    [def_eq] ObjectProperty.FullSubcategory.category._aux_5 ↦ 101
+    [def_eq] NatTrans.vcomp ↦ 99
+    [def_eq] Equiv.toFun ↦ 51
+    [def_eq] Equiv.invFun ↦ 50
+    [def_eq] EquivLike.coe ↦ 50
+    [def_eq] Functor.obj ↦ 38
+    [def_eq] Adjunction.homEquiv ↦ 29
+    [def_eq] Equiv.symm ↦ 22
+  [reduction] Axioms (possibly imported non-exposed defs) that were tried to be unfolded (max: 556504, num: 1):
+    [reduction] Classical.choice ↦ 556504
+  use `set_option diagnostics.threshold <num>` to control threshold for reporting counters
+.lake/migration-probes/as-final-theorem.lean:140:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+[Elab.definition.value] 💥️ CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.78]
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.306]
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.340]
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.384]
+  [Kernel] ✅️ typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.393]
+tactic execution of Lean.Parser.Tactic.exact took 19.6s
+AS_DIAG1 proof-command-end
+cumulative profiling times:
+	attribute application 0.0289ms
+	compilation (IR) 5.25ms
+	compilation (LCNF base) 209ms
+	compilation (LCNF impure) 31.9ms
+	compilation (LCNF mono) 72ms
+	do element elaborator 7.13ms
+	elaboration 18.3ms
+	fix level params 0.128ms
+	instantiate metavars 0.0377ms
+	interpretation 1.11ms
+	let-to-have transformation 0.0709ms
+	overlappingInstancesLinter 3.78ms
+	process pre-definitions 0.366ms
+	share common exprs 0.356ms
+	tactic execution 19.7s
+	tacticAnalysis 5.04ms
+	type checking 10ms
+	typeclass inference 249ms

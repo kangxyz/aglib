@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartHomSections
-public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctorPlus
+public import Aglib.CategoryTheory.Abelian.Injective.ExactFunctorSections
 
 /-! # Original chart sources on actual resolution terms
 
@@ -67,37 +67,11 @@ theorem chartComparisonSource_sections_extendedLift {X : Scheme.{u}} (V : X.Etal
           (I.cochainComplex.X (q : ℤ)) V).inv
           (Sheaf.Hypercohomology.sectionsEquiv.{u + 1}
             (Scheme.smallEtaleTopology X) V _ (a ≫ (I.cochainComplexXIso q q rfl).inv))) := by
-  let a' := chartComparisonSource V ≫
-    (inverseImage V.hom).map (a ≫ (I.cochainComplexXIso q q rfl).inv)
+  refine InjectiveResolution.ExactFunctor.extendedLift_sections
+    (inverseImage V.hom) I J φ (chartComparisonSource V)
+    (globalSections V.left) (constantIntegerHomGlobalSectionsIso V.left) q a _ ?_
   let e := Continuity.pullbackSectionsEtaleEvaluationIso (I.cochainComplex.X (q : ℤ)) V
-  have hp : (constantIntegerHomGlobalSectionsIso V.left).hom.app _ a' =
-      e.inv (Sheaf.Hypercohomology.sectionsEquiv.{u + 1}
-        (Scheme.smallEtaleTopology X) V _ (a ≫ (I.cochainComplexXIso q q rfl).inv)) := by
-    have h := chartComparisonSource_sections_comp V (a ≫ (I.cochainComplexXIso q q rfl).inv)
-    exact (ConcreteCategory.congr_hom e.hom_inv_id _).symm.trans (congrArg e.inv h)
-  have hn := ConcreteCategory.congr_hom
-    ((constantIntegerHomGlobalSectionsIso V.left).hom.naturality
-      ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage V.hom) I J φ).f
-        (q : ℤ))) a'
-  change (constantIntegerHomGlobalSectionsIso V.left).hom.app _
-      (a' ≫ (InjectiveResolution.ExactFunctor.extendedLift (inverseImage V.hom) I J φ).f
-        (q : ℤ)) =
-    (globalSections V.left).map
-      ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage V.hom) I J φ).f
-        (q : ℤ)) ((constantIntegerHomGlobalSectionsIso V.left).hom.app _ a') at hn
-  have hterm :
-      ((chartComparisonSource V ≫ (inverseImage V.hom).map a ≫ φ.f q) ≫
-        (J.cochainComplexXIso q q rfl).inv) =
-      a' ≫ (InjectiveResolution.ExactFunctor.extendedLift (inverseImage V.hom) I J φ).f
-        (q : ℤ) := by
-    dsimp only [a']
-    rw [InjectiveResolution.ExactFunctor.extendedLift_f, CategoryTheory.Functor.map_comp]
-    simp only [Category.assoc, ← CategoryTheory.Functor.map_comp_assoc,
-      Iso.inv_hom_id, CategoryTheory.Functor.map_id, Category.id_comp]
-  exact (congrArg ((constantIntegerHomGlobalSectionsIso V.left).hom.app
-    (J.cochainComplex.X (q : ℤ))) hterm).trans (hn.trans (congrArg
-      (fun z => (globalSections V.left).map
-        ((InjectiveResolution.ExactFunctor.extendedLift (inverseImage V.hom) I J φ).f
-          (q : ℤ)) z) hp))
+  have h := chartComparisonSource_sections_comp V (a ≫ (I.cochainComplexXIso q q rfl).inv)
+  exact (ConcreteCategory.congr_hom e.hom_inv_id _).symm.trans (congrArg e.inv h)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

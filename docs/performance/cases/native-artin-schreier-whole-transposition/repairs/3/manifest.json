@@ -1,0 +1,53 @@
+{
+  "question": "Repair the native constantSheaf/sheafify Hom-carrier boundary in the original AS zero-composite proof, without any flag, model or mathematical premise change.",
+  "native_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "path": "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean",
+  "input_sha256": "f71d888bea46a41274070350390522357f5e2658c04715d8353b875b392a8483",
+  "output_sha256": "b6757edf7df596d1f764bcea24a75e231f14096833ea19413f618168022d8036",
+  "delta_sha256": "b2b5ac32620c8e1be95044dc349b914da1eb72e521c21c0330d18c376a67f4b5",
+  "closed_failure": {
+    "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dfdf9beaed40462ea787b2c0d19165f2",
+    "build_log_sha256": "e741fe834387900a15b6220d3608496634ad269ecf0d1c866509d7eb47ada7bf",
+    "receipt_sha256": "258d45b5e6e54ac53489236f3d44ce8d3365a7c0d58a3bd53b6e149b1827771f",
+    "source_content_sha256": "8cb91adf97b5d4200c4b151e1a22a22f984fc764ed3ec605e92b2c566485f68a",
+    "source_line": 127,
+    "diagnostic": "rw Category.assoc precheck sees preceding eager change mixing constantSheaf.obj(...).obj domain with sheafify J const domain at implicit transparency."
+  },
+  "PERFORMANCE_route": {
+    "owner": "docs/PERFORMANCE.md",
+    "owner_sha256": "9693b2f78ec6e76b48332adff94516c5718ec87a9ae63e35ebdb8810c5e2c92d",
+    "selected_sections": [
+      "Conversion boundaries: type complete comparison; whole equation before components",
+      "Shared constructions: actual same constructor and heads"
+    ],
+    "method": "Keep actual presheaf P0 and original additive sheaf A0 fixed. Prove actual whole presheaf residue-map/AS composite zero, then use native sheafificationAdjunction HomEquiv naturality in the output and native unit-zero/injectivity at literal presheafToSheaf.obj source. No eager sheafify-carrier change or association rewriting."
+  },
+  "dependencies": [
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+      "sha256": "8d886b21dc4ab48379e9c98653967307f7f57a97cc61f9db0dfd50d4d53353e8"
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+      "sha256": "3df0b49f121a026db6d8c4d5c352830d46bfdeab1a340ff3bf6e214ccd27a360"
+    }
+  ],
+  "preservation": {
+    "all_source_before_last_proof_byte_identical": true,
+    "last_theorem_statement_byte_identical": true,
+    "same_map_pow_ZMod_pow_card_sub_self_calculation": true,
+    "same_actual_functor_sheaf_unit_maps_and_independent_worlds": true,
+    "wrappers_held": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+    },
+    "new_transparency_flag_linter_suppression_law_premise_or_realization": false
+  },
+  "compile_targets": [
+    "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+  ],
+  "compiler_coverage": "UNCOMPILED repaired source. Root retries only these three completed changed modules plus necessary dependencies; no untouched AS consumer target.",
+  "remaining_gap": "Native elaboration of the whole HomEquiv transport and same fixed wrappers. No new mathematical claim, desired-law premise, or broadened build scope."
+}

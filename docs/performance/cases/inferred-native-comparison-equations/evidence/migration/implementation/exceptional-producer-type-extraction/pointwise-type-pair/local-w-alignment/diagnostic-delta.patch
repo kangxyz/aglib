@@ -1,0 +1,90 @@
+--- b49-pair
++++ local-w-alignment
+@@ -30,6 +30,7 @@
+ universe u wMX wMS wMX' wMS' wAX wAS wAX' wAS'
+ 
+ attribute [local instance] hasSheafifyLarge
++attribute [local instance] CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
+ 
+ variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
+   [HasDerivedCategory.{wMX} (ModuleSheaf X Λ)]
+@@ -136,6 +137,35 @@
+   emit s!"RAW_{label}_ROOT {root} nodes={state.rows.size}"
+   emit s!"RAW_{label}_END"
+ 
++def reportWHeads (label : String) (e : Expr) : MetaM Unit := do
++  let standard := `CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
++  let generic := Name.str `CategoryTheory.GrothendieckTopology
++    "instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreserves\
++      SheafificationOfReflectsIsomorphismsForget"
++  let standardCount ← IO.mkRef (0 : Nat)
++  let genericCount ← IO.mkRef (0 : Nat)
++  e.forEach fun node => do
++    if let .const n levels := node then
++      if n == standard then
++        standardCount.modify (· + 1)
++        emit s!"W_CONST {label} standard levels={reprStr levels}"
++      if n == generic then
++        genericCount.modify (· + 1)
++        emit s!"W_CONST {label} generic levels={reprStr levels}"
++  emit s!"W_HEADS {label} standardUniqueConstNodes={← standardCount.get} \
++    genericUniqueConstNodes={← genericCount.get}"
++
++partial def captureClosedBinders (label : String) (t : Expr) (index : Nat) : MetaM Unit := do
++  match t with
++  | .forallE n d b bi =>
++    emit s!"CLOSED_BINDER {label} index={index} name={n} info={reprStr bi}"
++    if d.getAppFn.isConstOf `HasDerivedCategory || n == `K || n == `_h then
++      let tag := s!"{label}_BINDER_{index}"
++      dump tag d
++      reportWHeads tag d
++    captureClosedBinders label b (index + 1)
++  | _ => emit s!"CLOSED_BINDERS_COMPLETE {label} count={index}"
++
+ def findLocal (locals : Array (Name × Expr)) (n : Name) (bi : BinderInfo)
+     (t : Expr) : MetaM Expr := do
+   if bi == .instImplicit then
+@@ -146,13 +176,22 @@
+     if name == n then return x
+   throwError "No original producer local named {n}"
+ 
+-partial def alignExpected (locals : Array (Name × Expr)) (t : Expr) : MetaM Expr := do
++partial def alignExpected (locals : Array (Name × Expr)) (t : Expr)
++    (index : Nat) : MetaM Expr := do
+   match t with
+   | .forallE n d b bi =>
+     if n == `_h then return d
+     let x ← findLocal locals n bi d
+     emit s!"EXPECTED_BINDER {n} mapsTo=({← head x}) typeHead=({← head d})"
+-    alignExpected locals (b.instantiate1 x)
++    let producerType := (← getFVarLocalDecl x).type
++    emit s!"BINDER_TYPE_MATCH index={index} name={n} alpha={d == producerType} \
++      structural={d.equal producerType}"
++    if d.getAppFn.isConstOf `HasDerivedCategory || n == `K then
++      dump s!"EXPECTED_PRE_REBIND_{index}" d
++      dump s!"PRODUCER_MATCHED_BINDER_{index}" producerType
++      reportWHeads s!"EXPECTED_PRE_REBIND_{index}" d
++      reportWHeads s!"PRODUCER_MATCHED_BINDER_{index}" producerType
++    alignExpected locals (b.instantiate1 x) (index + 1)
+   | _ =>
+     dump "EXPECTED_UNALIGNED_TYPE" t
+     throwError "Expected formation declaration has no final _h binder"
+@@ -207,11 +246,17 @@
+     emit s!"ACTUAL_INFER_START producerArgs={locals.size} KType=({← head kType})"
+     let actual ← inferType term
+     dump "ACTUAL" actual
++    reportWHeads "ACTUAL" actual
+     emit s!"ACTUAL_RETAINED kind={kind actual} head=({← head actual})"
+     let expectedCi ← getConstInfo
+       `AlgebraicGeometry.Scheme.EtaleCohomology.PointwiseTypePair.expectedFormation
+-    let expected ← alignExpected (locals.push (`K, k)) expectedCi.type
++    captureClosedBinders "EXPECTED_CLOSED" expectedCi.type 0
++    captureClosedBinders "PRODUCER_CLOSED" ci.type 0
++    dump "PRODUCER_K_TYPE" kType
++    reportWHeads "PRODUCER_K_TYPE" kType
++    let expected ← alignExpected (locals.push (`K, k)) expectedCi.type 0
+     dump "EXPECTED" expected
++    reportWHeads "EXPECTED" expected
+     emit s!"PAIR_RETAINED actualHasMVars={actual.hasMVar} expectedHasMVars={expected.hasMVar}"
+     emit s!"RAW_EQUALITY alpha={actual == expected} structural={actual.equal expected}"
+     if let some diff := firstDifference actual expected "root" 32 then

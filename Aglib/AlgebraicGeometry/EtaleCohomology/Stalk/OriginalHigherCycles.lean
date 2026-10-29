@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.OriginalCohomologyCycles
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ResolutionPresheafCycles
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero
+public import Aglib.CategoryTheory.Adjunction.CycleSections
 
 /-! # Actual cycles representing original higher-image sections
 
@@ -74,52 +75,34 @@ theorem originalHigherSection_exists_resolution_cycle
       (a ≫ I.cochainComplex.d (q : ℤ) ((q : ℤ) + 1)) = A.d _ _ s at he
     rw [ha, map_zero] at he
     exact he.symm
-  let z₀ := (A.sc (q : ℤ)).abCyclesIso.inv ⟨s, by
+  have hs' : E.map (K.sc (q : ℤ)).g s = 0 := by
     change A.d (q : ℤ) ((ComplexShape.up ℤ).next (q : ℤ)) s = 0
     rw [CochainComplex.next ℤ (q : ℤ)]
-    exact hs⟩
-  let zK := ((K.sc (q : ℤ)).mapCyclesIso E).hom z₀
-  let τ := toSheafify (Scheme.smallEtaleTopology S) (K.cycles (q : ℤ)) ≫
-    U.map (((K.sc (q : ℤ)).mapCyclesIso L).inv ≫ cyclesMap δ (q : ℤ))
-  have hi : τ ≫ U.map (T.iCycles (q : ℤ)) = K.iCycles (q : ℤ) := by
-    have h := (sheafificationAdjunction (Scheme.smallEtaleTopology S)
-      AddCommGrpCat.{u + 1}).cycles_unit_exact_left_iCycles (K.sc (q : ℤ))
-        ((shortComplexFunctor (AbelianSheaf.{u, u + 1} S) (.up ℤ) (q : ℤ)).map δ)
-    have hu : toSheafify (Scheme.smallEtaleTopology S) (K.X (q : ℤ)) ≫
-        U.map (δ.f (q : ℤ)) = 𝟙 _ :=
-      directImagePresheafSheafificationIso_unit f (I.cochainComplex.X (q : ℤ))
-    change τ ≫ U.map (T.iCycles (q : ℤ)) =
-      K.iCycles (q : ℤ) ≫ toSheafify (Scheme.smallEtaleTopology S) (K.X (q : ℤ)) ≫
-        U.map (δ.f (q : ℤ)) at h
-    rw [hu, Category.comp_id] at h
-    exact h
-  have hzK : E.map (K.iCycles (q : ℤ)) zK = s := by
-    have h := ConcreteCategory.congr_hom ((K.sc (q : ℤ)).mapCyclesIso_hom_iCycles E) z₀
-    exact h.trans ((A.sc (q : ℤ)).abCyclesIso_inv_apply_iCycles _)
+    exact hs
   have hx : E.map (I.isoRightDerivedObjCochain P q).hom x =
-      E.map (K.homologyπ (q : ℤ)) zK := by
-    rw [originalCohomologyResolutionEquivOfResolution_cocycle]
-    exact ConcreteCategory.congr_hom
-      (ShortComplex.homologyπ_mapHomologyIso_hom E (K.sc (q : ℤ))) z₀
-  have hx' : E.map (I.isoRightDerivedObjCochain P q).inv
-      (E.map (K.homologyπ (q : ℤ)) zK) = x := by
-    rw [← hx]
-    exact ConcreteCategory.congr_hom (E.mapIso (I.isoRightDerivedObjCochain P q)).hom_inv_id x
-  refine ⟨(τ.app (op V)) zK, ?_, ?_⟩
-  · have h := ConcreteCategory.congr_hom (congrArg (fun k => k.app (op V)) hi) zK
-    exact h.trans hzK
-  · have h := resolutionCohomologyToHigherDirectImage_cycles f I q
-    change K.homologyπ (q : ℤ) ≫ (I.isoRightDerivedObjCochain P q).inv ≫
-        (resolutionCohomologyToHigherDirectImage f q).app F ≫
-          U.map (I.isoRightDerivedObjCochain (directImage f) q).hom =
-      τ ≫ U.map (T.homologyπ (q : ℤ)) at h
-    have he := ConcreteCategory.congr_hom (congrArg (fun k => k.app (op V)) h) zK
-    change (I.isoRightDerivedObjCochain (directImage f) q).hom.hom.app (op V)
-        (((resolutionCohomologyToHigherDirectImage f q).app F).app (op V)
-          (E.map (I.isoRightDerivedObjCochain P q).inv
-            (E.map (K.homologyπ (q : ℤ)) zK))) =
-      (T.homologyπ (q : ℤ)).hom.app (op V) ((τ.app (op V)) zK) at he
-    rw [hx'] at he
-    exact he
+      ((K.sc (q : ℤ)).mapHomologyIso E).hom
+        (((K.sc (q : ℤ)).map E).homologyπ
+          (((K.sc (q : ℤ)).map E).abCyclesIso.inv ⟨s, hs'⟩)) := by
+    have h := originalCohomologyResolutionEquivOfResolution_cocycle f V I q a ha
+    change E.map (I.isoRightDerivedObjCochain P q).hom x =
+      ((K.sc (q : ℤ)).mapHomologyIso E).hom
+        (addCommGrpCycleClass A (q : ℤ) s hs) at h
+    dsimp only [addCommGrpCycleClass, HomologicalComplex.homologyπ,
+      HomologicalComplex.sc, shortComplexFunctor, shortComplexFunctor',
+      ShortComplex.map, Functor.mapHomologicalComplex, A] at h ⊢
+    exact h
+  change ∃ z : E.obj (U.obj (T.cycles (q : ℤ))),
+    E.map (U.map (T.iCycles (q : ℤ))) z = s ∧
+      E.map ((resolutionCohomologyToHigherDirectImage f q).app F ≫
+        U.map (I.isoRightDerivedObjCochain (directImage f) q).hom) x =
+          E.map (U.map (T.homologyπ (q : ℤ))) z
+  exact (sheafificationAdjunction (Scheme.smallEtaleTopology S)
+    AddCommGrpCat.{u + 1}).exists_cycleSection E (T.sc (q : ℤ))
+      ((shortComplexFunctor (AbelianSheaf.{u, u + 1} S) (.up ℤ) (q : ℤ)).map δ)
+      (I.isoRightDerivedObjCochain P q)
+      ((resolutionCohomologyToHigherDirectImage f q).app F ≫
+        U.map (I.isoRightDerivedObjCochain (directImage f) q).hom)
+      (directImagePresheafSheafificationIso_unit f (I.cochainComplex.X (q : ℤ)))
+      (resolutionCohomologyToHigherDirectImage_cycles f I q) x s hs' hx
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

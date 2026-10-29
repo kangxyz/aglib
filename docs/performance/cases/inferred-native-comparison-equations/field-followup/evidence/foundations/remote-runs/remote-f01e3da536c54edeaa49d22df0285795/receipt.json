@@ -1,0 +1,389 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.49907202235404546,
+      "cpu_usage_usec": 1570974157155,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 268435456,
+      "memory_current_bytes": 33566457856,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27242364928
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {},
+      "cpu_cores": 0.023146880604472297,
+      "cpu_usage_usec": 1570732683599,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 805306368,
+      "memory_current_bytes": 33524924416,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 27225542656
+    },
+    "max_frontends_if_alone": 8,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 2.084927577386821,
+  "cgroup_cpu_after": {
+    "nr_periods": 6477028,
+    "nr_throttled": 18522,
+    "system_usec": 144726143494,
+    "throttled_usec": 205534316,
+    "usage_usec": 1570974158751,
+    "user_usec": 1426248015256
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 6475870,
+    "nr_throttled": 18522,
+    "system_usec": 144707072962,
+    "throttled_usec": 205534316,
+    "usage_usec": 1570732684470,
+    "user_usec": 1426025611507
+  },
+  "cgroup_cpu_seconds_delta": 241.474281,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "from pathlib import Path\nimport os,json,hashlib,subprocess,sys,time\nworkspace=Path.cwd(); run=Path(os.environ['LEAN_SYSROOT']).parent\nrelative=Path('Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean')\nnative=workspace/relative; nativebytes=native.read_bytes()\nassert hashlib.sha256(nativebytes).hexdigest()=='616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce'\nsource=\"/-\\nCopyright (c) 2026 kangxyz. All rights reserved.\\nReleased under Apache 2.0 license as described in the file LICENSE.\\nAuthors: kangxyz\\n-/\\nmodule\\n\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk\\npublic import Aglib.GroupCohomology.Kummer.Basic\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteTrivialization\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FundamentalGroupComparison\\npublic import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover\\n\\n/-!\\nNative migration from `R5Lab.Aglib.AlgebraicGeometry.Cohomology.Kummer.Field` at R5 revision\\n`f8a3314ddecffcada2ec721d26d56a937bed9690`, SHA-256\\n`5436c5257f51bdb4d7f075e23a2a4c431ec1a2cad7673c39be471e5f461f5a3f`.\\nOriginal objects, maps, universes and explicit hypotheses are retained.\\nNative providers replace duplicate implementations.\\n-/\\n\\n@[expose] public section\\n\\nopen _root_.AlgebraicGeometry.Scheme.EtaleCohomology\\n/- Current interface migration: `46f53465aaf3b0167049e9c8e9e2294111bb4281`.\\nOriginal mathematical and construction provenance is retained below.\\nPrevious validation is historical; new-interface validation is pending. -/\\n/-!\\n# The actual etale root torsor and the existing field Kummer class\\n\\nC4/C5 field support, `K2-018#lem:k2018-geometric-exact-order` and\\n`K2-018#prop:k2018-arithmetic-characters`. Mathematical basis\\n`e73d98b1b5c1e5abcdebf7d058e436d792b87982`; frozen engineering basis\\n`7f86e4a1763cc4ec35e9b0a8acd659750355a0de`.\\n\\nFor a characteristic-zero field and positive level, the actual represented\\nmu_n coefficient has its genuine finite locally constant structure. Its\\npoint marking is literal root evaluation through Gamma(Spec). The action is\\ntransported through the existing proved field fundamental-group equivalence,\\nand the marking's evaluation formula is proved on actual scheme points.\\nA's actual Ext-H1 comparison and restriction along that equivalence give an\\nadditive equivalence with the existing common continuous H1 of Mu. The inverse\\nis proved on the same public cocycle quotient, with no new H1 model.\\n\\nThe only retained comparison inputs are A's precise 03AJ/03RV families and\\nits actual Galois-category/fibre-functor classes, plus the displayed Ext-size\\ninstance. The actual Kummer power-surjectivity family is supplied by the\\nconstructive generic RootCover theorem, rather than retained here.\\n\\nThe positive root torsor is identified with the genuine polynomial cover.\\nAn actual geometric fibre point evaluates to a root a with a^n=f. Its scheme\\ntransport is q/p, and actual Galois point precomposition evaluates to sigma(a).\\nConsequently its comparison cocycle is literally the existing sigma(a)/a\\nKummer cocycle, proving comparison_rootClass, not assuming it.\\n\\nThe higher weight-two map composes this actual H1 comparison with the existing\\nRootCup coefficient map. The existing primitive-root tensor equivalence gives\\nits additive equivalence, and the root torsor computes RootCup.cupKummer.\\nNeither a Milnor-symbol definition nor a Bockstein normalization assertion is\\nused to define any comparison. Curve-pair descent, geometric restriction and\\nthe final Bockstein square remain separate applications.\\n-/\\n\\nnoncomputable section\\nset_option backward.defeqAttrib.useBackward true\\nset_option backward.isDefEq.respectTransparency false\\nset_option backward.isDefEq.respectTransparency.types false\\nset_option linter.style.haveILetI false\\nopen CategoryTheory AlgebraicGeometry Opposite\\nopen scoped CategoryTheory.MonObj CategoryTheory.PreGaloisCategory\\nopen AlgebraicGeometry.Scheme.EtaleCohomology\\nopen AlgebraicGeometry.Scheme.Group\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois\\nopen _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber fiberToFinite)\\nopen _root_.GroupCohomology.ContinuousH1\\nnamespace GroupCohomology.Kummer.Field\\nuniverse u w\\nuniverse u\u2081 u\u2082 u\u2083\\n\\nprivate theorem evaluate_original_comparison\\n    {\u03b1 : Sort u\u2081} {\u03b2 : Sort u\u2082} {\u03b3 : Sort u\u2083}\\n    {e : \u03b1 \u2192 \u03b2} {x : \u03b1} {z : \u03b2} (h : e x = z)\\n    (E : \u03b1 \u2192 \u03b3) (f : \u03b2 \u2192 \u03b3) (y : \u03b3)\\n    (hE : E = f \u2218 e) (hz : f z = y) : E x = y :=\\n  (congrFun hE x).trans ((congrArg f h).trans hz)\\n\\nvariable (K : Type u) [Field K] [CharZero K] (n : \u2115) [NeZero n]\\n/-- A field unit as the actual global unit on its spectrum. -/\\ndef globalUnit (f : K\u02e3) : \u0393(Spec (.of K), \u22a4)\u02e3 :=\\n  Units.map (Scheme.\u0393SpecIso (.of K)).inv.hom.toMonoidHom f\\n\\nomit [CharZero K] in\\n/-- Evaluation of its pullback at the actual algebraic-closure point is the\\nexisting field-unit embedding, with no chosen scalar map. -/\\ntheorem globalUnit_geometric (f : K\u02e3) :\\n    Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom\\n      (Units.map (geometricPoint K).appTop.hom.toMonoidHom (globalUnit K f)) =\\n      GroupCohomology.Kummer.baseUnits K f := by\\n  apply Units.ext\\n  change (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom\\n    ((geometricPoint K).appTop.hom ((Scheme.\u0393SpecIso (.of K)).inv.hom (f : K))) =\\n    algebraMap K (AlgebraicClosure K) (f : K)\\n  have h := ConcreteCategory.congr_hom\\n    (Scheme.\u0393SpecIso_naturality (CommRingCat.ofHom (algebraMap K (AlgebraicClosure K))))\\n    ((Scheme.\u0393SpecIso (.of K)).inv.hom (f : K))\\n  change _ = (algebraMap K (AlgebraicClosure K))\\n    ((Scheme.\u0393SpecIso (.of K)).hom.hom ((Scheme.\u0393SpecIso (.of K)).inv.hom (f : K))) at h\\n  exact h.trans (congrArg (algebraMap K (AlgebraicClosure K))\\n    (ConcreteCategory.congr_hom (Scheme.\u0393SpecIso (.of K)).inv_hom_id (f : K)))\\n\\n/-- The commutative group structure on the scheme of `n`th roots of unity over `Spec K`. -/\\nlocal instance : CommGrpObj (MultiplicativeGroup.rootsScheme (Spec (.of K)) n) :=\\n  MultiplicativeGroup.rootsCommGroup (Spec (.of K)) n\\nlocal instance : IsFinite (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X.hom :=\\n  RootsFiniteEtale.rootsScheme_finite _ n (NeZero.pos n)\\nlocal instance : Etale (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n).X.hom :=\\n  RootsFiniteEtale.rootsScheme_etale _ n (NeZero.pos n)\\n      (GroupCohomology.Kummer.RootStalk.levelInvertible K n)\\n\\n\\n/-- The continuous map from the absolute Galois group to the field fundamental group. -/\\ndef fieldGroupHom : ContinuousMonoidHom (Field.absoluteGaloisGroup K) (FieldFundamentalGroup K) :=\\n  { (fundamentalGroupContinuousEquiv K).toMulEquiv.toMonoidHom with\\n    continuous_toFun := (fundamentalGroupContinuousEquiv K).continuous }\\n/-- The continuous inverse map from the field fundamental group to the absolute Galois group. -/\\ndef absoluteGroupHom : ContinuousMonoidHom (FieldFundamentalGroup K) (Field.absoluteGaloisGroup\\n    K) :=\\n  { (fundamentalGroupContinuousEquiv K).symm.toMulEquiv.toMonoidHom with\\n    continuous_toFun := (fundamentalGroupContinuousEquiv K).symm.continuous }\\n\\n/-- The fundamental-group action on roots of unity transported from the absolute Galois action. -/\\n@[instance_reducible] def fundamentalRootAction :\\n    DistribMulAction (FieldFundamentalGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n  restrictedAction (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (absoluteGroupHom K)\\n\\n/-- The transported fundamental-group action on the root coefficient group. -/\\nlocal instance : DistribMulAction (FieldFundamentalGroup K)\\n    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n    fundamentalRootAction K n\\nlocal instance : ContinuousSMul (FieldFundamentalGroup K)\\n    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n  restrictedAction_continuous (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (absoluteGroupHom K)\\n\\n/-- The multiplicative marking of geometric root-scheme points by roots in the algebraic closure. -/\\ndef pointMark : (Over.mk (geometricPoint K) \u27f6 MultiplicativeGroup.rootsScheme (Spec (.of K)) n) \u2243*\\n    Multiplicative (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where\\n  toFun p := Multiplicative.ofAdd\\n      (GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n (ULift.up\\n      (Additive.ofMul p)))\\n  invFun a := ((GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n).symm\\n      a.toAdd).down.toMul\\n  left_inv _p := congrArg (fun z => z.down.toMul)\\n      ((GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n).symm_apply_apply _)\\n  right_inv a := congrArg Multiplicative.ofAdd\\n      ((GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K\\n      n).apply_symm_apply a.toAdd)\\n  map_mul' a b := congrArg Multiplicative.ofAdd\\n      ((GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n).map_add\\n    (ULift.up (Additive.ofMul a)) (ULift.up (Additive.ofMul b)))\\n\\ntheorem pointMark_equivariant (\u03b3 : FieldFundamentalGroup K)\\n    (p : Over.mk (geometricPoint K) \u27f6 MultiplicativeGroup.rootsScheme (Spec (.of K)) n) :\\n    pointMark K n (\u03b3.hom.app (GroupCohomology.Kummer.RootStalk.rootsCover K n) p) =\\n      Multiplicative.ofAdd (\u03b3 \u2022 (pointMark K n p).toAdd) := by\\n  let \u03c3 := (fundamentalGroupContinuousEquiv K).symm \u03b3\\n  have he : \u03b3.hom.app (GroupCohomology.Kummer.RootStalk.rootsCover K n) p =\\n      pointEnd K \u03c3 \u226b p := by\\n    have h := fundamentalGroupContinuousEquiv_apply K \u03c3\\n        (GroupCohomology.Kummer.RootStalk.rootsCover K n) p\\n    simpa only [\u03c3, ContinuousMulEquiv.apply_symm_apply, act] using h\\n  change Multiplicative.ofAdd\\n      (GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n\\n    (ULift.up (Additive.ofMul (\u03b3.hom.app\\n        (GroupCohomology.Kummer.RootStalk.rootsCover K n) p)))) =\\n    Multiplicative.ofAdd (\u03c3 \u2022\\n        GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n (ULift.up\\n        (Additive.ofMul p)))\\n  exact congrArg Multiplicative.ofAdd ((congrArg (fun q =>\\n      GroupCohomology.Kummer.RootStalk.sectionRootsEquiv K n\\n    (ULift.up (Additive.ofMul q))) he).trans\\n        (GroupCohomology.Kummer.RootStalk.sectionRootsEquiv_galois K n \u03c3 p))\\n\\n/-- The finite etale cover adjoining an `n`th root of the field unit `f`. -/\\nabbrev rootCover (f : K\u02e3) : Scheme.FiniteEtale (Spec (.of K)) :=\\n  AlgebraicGeometry.Scheme.Group.RootCover.cover (Spec (.of K)) n (NeZero.pos n)\\n    (GroupCohomology.Kummer.RootStalk.levelInvertible K n) (globalUnit K f)\\n\\nlocal instance (f : K\u02e3) : Surjective (rootCover K n f).obj.hom :=\\n  AlgebraicGeometry.Scheme.Group.RootCover.cover_surjective _ _ _ _ _\\n\\n/-- The roots-of-unity torsor action on the cover adjoining an `n`th root of `f`. -/\\ndef rootAction (f : K\u02e3) :=\\n  AlgebraicGeometry.Scheme.Group.RootCover.coverTorsorAction (Spec (.of K)) n\\n    (NeZero.pos n) (GroupCohomology.Kummer.RootStalk.levelInvertible K n)\\n        (globalUnit K f)\\n\\n/-- The root in the algebraic closure obtained by evaluating a geometric point of the root cover. -/\\ndef rootValue (f : K\u02e3) (t : Fiber (geometricPoint K) (rootCover K n f)) : (AlgebraicClosure K)\u02e3 :=\\n  Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom\\n    (AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv (Spec (.of K)) n\\n      (globalUnit K f) (Over.mk (geometricPoint K)) t).val\\n\\ntheorem rootValue_pow (f : K\u02e3) (t : Fiber (geometricPoint K) (rootCover K n f)) :\\n    rootValue K n f t ^ n = GroupCohomology.Kummer.baseUnits K f := by\\n  rw [rootValue, \u2190 map_pow]\\n  exact (congrArg (Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom)\\n    (AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv (Spec (.of K)) n\\n      (globalUnit K f) (Over.mk (geometricPoint K)) t).property).trans (globalUnit_geometric K f)\\n\\nomit [CharZero K] in\\ntheorem units_galois (\u03c3 : Field.absoluteGaloisGroup K) (b : \u0393(Spec (.of (AlgebraicClosure K)),\\n    \u22a4)\u02e3) :\\n    Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom\\n      (Units.map (pointEnd K \u03c3).left.appTop.hom.toMonoidHom b) =\\n    GroupCohomology.Kummer.unitAction K \u03c3 (Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure\\n        K))).hom.hom.toMonoidHom b) := by\\n  apply Units.ext\\n  exact ConcreteCategory.congr_hom\\n    (Scheme.\u0393SpecIso_naturality (CommRingCat.ofHom (asAutomorphism K \u03c3).toRingHom)) b.val\\n\\ntheorem rootValue_galois (f : K\u02e3) (t : Fiber (geometricPoint K) (rootCover K n f))\\n    (\u03c3 : Field.absoluteGaloisGroup K) :\\n    rootValue K n f (pointEnd K \u03c3 \u226b t) = GroupCohomology.Kummer.unitAction K \u03c3 (rootValue K n f\\n        t) := by\\n  unfold rootValue\\n  rw [AlgebraicGeometry.Scheme.Group.RootCover.sectionsEquiv_naturality]\\n  exact units_galois K \u03c3 _\\n\\n\\nvariable [GaloisCategory (Scheme.FiniteEtale (Spec (.of K)))]\\n  [PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))]\\n\\n/-- The finite locally constant root coefficient at nonzero level over a characteristic-zero\\nfield. -/\\ndef finiteCoefficient : FiniteCoefficient\\n    (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n) where\\n  level := n\\n  positive := NeZero.pos n\\n  killed := GroupCohomology.Kummer.Coefficients.mu_killedBy _ n\\n  invertible := GroupCohomology.Kummer.RootStalk.levelInvertible K n\\n  locally_constant := representedSheaf_isFiniteLocallyConstant (s := geometricPoint K) _\\n\\n/-- Restriction along the proved field fundamental-group equivalence, on the\\nexisting coefficient group with its actual Galois action. -/\\ndef galoisRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (B :=\\n    Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)\\n    (fieldGroupHom K) where\\n  toFun := id\\n  map_zero' := rfl\\n  map_add' _ _ := rfl\\n  continuous_toFun := continuous_id\\n  map_smul' \u03c3 a := by\\n    change (fundamentalGroupContinuousEquiv K).symm (fundamentalGroupContinuousEquiv K \u03c3) \u2022 a =\\n        \u03c3 \u2022 a\\n    rw [ContinuousMulEquiv.symm_apply_apply]\\n\\n/-- The identity coefficient map for restriction from the Galois group to the fundamental group. -/\\ndef fundamentalRestriction : PullbackMap (A := Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (B :=\\n    Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)\\n    (absoluteGroupHom K) where\\n  toFun := id\\n  map_zero' := rfl\\n  map_add' _ _ := rfl\\n  continuous_toFun := continuous_id\\n  map_smul' _ _ := rfl\\n\\n/-- The additive equivalence on continuous first cohomology induced by the field group\\nequivalence. -/\\ndef galoisRestrictionEquiv : H1 (FieldFundamentalGroup K)\\n    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) \u2243+\\n    H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) where\\n  toFun := (galoisRestriction K n).onH1\\n  invFun := (fundamentalRestriction K n).onH1\\n  left_inv x := by\\n    obtain \u27e8c, rfl\u27e9 := classOf_surjective (FieldFundamentalGroup K)\\n        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) x\\n    change classOf _ _ ((fundamentalRestriction K n).onCocycles ((galoisRestriction K\\n        n).onCocycles c)) = classOf _ _ c\\n    congr 1\\n    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext\\n    intro \u03b3\\n    change c.val ((fundamentalGroupContinuousEquiv K) ((fundamentalGroupContinuousEquiv K).symm\\n        \u03b3)) = c.val \u03b3\\n    rw [ContinuousMulEquiv.apply_symm_apply]\\n  right_inv x := by\\n    obtain \u27e8c, rfl\u27e9 := classOf_surjective (Field.absoluteGaloisGroup K)\\n        (Field.absoluteGaloisGroup.RootsOfUnity.Mu\\n        K n) x\\n    change classOf _ _ ((galoisRestriction K n).onCocycles ((fundamentalRestriction K\\n        n).onCocycles c)) = classOf _ _ c\\n    congr 1\\n    apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext\\n    intro \u03c3\\n    change c.val ((fundamentalGroupContinuousEquiv K).symm ((fundamentalGroupContinuousEquiv K)\\n        \u03c3)) = c.val \u03c3\\n    rw [ContinuousMulEquiv.symm_apply_apply]\\n  map_add' := map_add _\\n\\nvariable [HasExt.{w} (AbelianSheaf.{u, u + 1} (Spec (.of K)))]\\n\\n/-- The etale-to-Galois first-cohomology map using the supplied `Stacks03AJ` and `Stacks03RV`\\ninputs. -/\\ndef comparison (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :\\n    H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec (.of\\n        K)) n) \u2192+\\n      H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n  (galoisRestriction K n).onH1.comp\\n    (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv\\n        (geometricPoint K)\\n      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR\\n      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)\\n      (finiteCoefficient K n)).toAddMonoidHom\\n\\n\\n/-- The additive etale-to-Galois first-cohomology equivalence using the supplied comparison\\ninputs. -/\\ndef comparisonEquiv (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K))) :\\n    H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec (.of\\n        K)) n) \u2243+\\n      H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n  (Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv\\n      (geometricPoint K)\\n      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR\\n      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)\\n      (finiteCoefficient K n)).trans (galoisRestrictionEquiv K n)\\n\\n@[simp] theorem comparisonEquiv_apply (hA : Stacks03AJ.{u, w} (Spec (.of K)))\\n    (hR : Stacks03RV (Spec (.of K)))\\n    (x : H1Etale (Spec (.of K)) (GroupCohomology.Kummer.Coefficients.mu (Spec\\n        (.of K)) n)) :\\n    comparisonEquiv K n hA hR x = comparison K n hA hR x := rfl\\n\\n\\n/-- The continuous Galois cocycle obtained from a based finite etale roots-of-unity torsor. -/\\ndef fieldCocycle (Y : Scheme.FiniteEtale (Spec (.of K)))\\n    (\u03c4 : _root_.CategoryTheory.TorsorAction\\n      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n          (CategoryTheory.CartesianMonoidalCategory.toUnit Y.obj))\\n    (t : Fiber (geometricPoint K) Y) :\\n    Cocycle (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=\\n  (galoisRestriction K n).onCocycles\\n    (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle\\n        (geometricPoint K)\\n      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K\\n          n) Y \u03c4 t)\\n\\ntheorem fieldCocycle_value (Y : Scheme.FiniteEtale (Spec (.of K)))\\n    (\u03c4 : _root_.CategoryTheory.TorsorAction\\n      (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n          (CategoryTheory.CartesianMonoidalCategory.toUnit Y.obj))\\n    (t : Fiber (geometricPoint K) Y) (\u03c3 : Field.absoluteGaloisGroup K) :\\n    (fieldCocycle K n Y \u03c4 t).val \u03c3 =\\n      (pointMark K n (Scheme.FiniteEtale.FiberTorsorActions.transport\\n        (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n        Y \u03c4 t (pointEnd K \u03c3 \u226b t))).toAdd := by\\n  exact Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle_apply (geometricPoint\\n    K)\\n    (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n    (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) (pointMark_equivariant K n)\\n    Y \u03c4 t (fundamentalGroupContinuousEquiv K \u03c3)\\n\\ntheorem comparison_torsor_representative\\n    (hA : Stacks03AJ.{u, w} (Spec (.of K))) (hR : Stacks03RV (Spec (.of K)))\\n    (P : Torsor (GroupCohomology.Kummer.Coefficients.mu (Spec (.of K)) n))\\n    (Y : Scheme.FiniteEtale (Spec (.of K))) (e : finiteRepresentedSetSheaf Y \u2245 P.carrier)\\n    (t : Fiber (geometricPoint K) Y) :\\n    comparison K n hA hR (torsorExtClass P) =\\n      classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)\\n        (fieldCocycle K n Y\\n          (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y\\n              e) t) := by\\n  have h :=\\n    Scheme.EtaleCohomology.FundamentalGroupComparison.representedH1AddEquiv_torsor_representative\\n      (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR\\n      (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)\\n      (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t\\n  have hclass :=\\n    _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)\\n      (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle\\n        (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n)\\n        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)\\n        (pointMark_equivariant K n) Y\\n        (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)\\n  refine evaluate_original_comparison h (comparison K n hA hR)\\n    ((galoisRestriction K n).onH1) _ ?_ ?_\\n  \u00b7 rfl\\n  \u00b7 exact hclass\\n\\n\\n\\n\\ntheorem root_fieldCocycle (f : K\u02e3) (t : Fiber (geometricPoint K) (rootCover K n f)) :\\n    fieldCocycle K n (rootCover K n f) (rootAction K n f) t =\\n      GroupCohomology.Kummer.cocycle K n (rootValue K n f t) (rootValue_pow K n f t) := by\\n  apply _root_.GroupCohomology.ContinuousH1.Cocycle.ext\\n  intro \u03c3\\n  rw [fieldCocycle_value]\\n  let z := Scheme.FiniteEtale.FiberTorsorActions.transport\\n      (geometricPoint K)\\n    (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) (rootCover K n f)\\n    (rootAction K n f) t (pointEnd K \u03c3 \u226b t)\\n  have hz := Scheme.FiniteEtale.FiberTorsorActions.transport_act\\n      (geometricPoint K)\\n    (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) (rootCover K n f)\\n    (rootAction K n f) t (pointEnd K \u03c3 \u226b t)\\n  have hr := AlgebraicGeometry.Scheme.Group.RootCover.torsorAction_transport_ratio\\n    (Spec (.of K)) n (globalUnit K f) (Over.mk (geometricPoint K)) z t (pointEnd K \u03c3 \u226b t) hz\\n  apply Additive.toMul.injective\\n  apply Subtype.ext\\n  change Units.map (Scheme.\u0393SpecIso (.of (AlgebraicClosure K))).hom.hom.toMonoidHom\\n    (MultiplicativeGroup.rootsHomEquiv (Spec (.of K)) n (Over.mk (geometricPoint K)) z).val =\\n      GroupCohomology.Kummer.unitAction K \u03c3 (rootValue K n f t) / rootValue K n f t\\n  calc\\n    _ = rootValue K n f (pointEnd K \u03c3 \u226b t) / rootValue K n f t := by\\n      rw [hr, map_div]\\n      rfl\\n    _ = _ := by rw [rootValue_galois]\\n\\n/-- The actual positive root torsor maps to the existing positive field Kummer\\nclass; the equality follows from actual transport \u03c3(a)/a. -/\\ntheorem comparison_rootClass (hA : Stacks03AJ.{u, w} (Spec (.of K)))\\n    (hR : Stacks03RV (Spec (.of K))) (f : K\u02e3) :\\n    comparison K n hA hR\\n      (GroupCohomology.Kummer.Torsor.rootClass\\n        GroupCohomology.Kummer.RootCover.etalePowerSurjectivity (Spec (.of K)) n\\n        (NeZero.pos n) (GroupCohomology.Kummer.RootStalk.levelInvertible K n)\\n            (globalUnit K f)) =\\n      GroupCohomology.Kummer.kummer K n (NeZero.pos n) f := by\\n  obtain \u27e8t\u27e9 :=\\n      Scheme.EtaleCohomology.SchemeTorsorClassification.nonempty_fiber_of_surjective\\n        (geometricPoint K)\\n          (rootCover K n f)\\n  rw [GroupCohomology.Kummer.RootCover.rootClass_eq_scheme]\\n  rw [comparison_torsor_representative K n hA hR _ (rootCover K n f) (Iso.refl _) t]\\n  rw [torsorOfSchemeAction_representedSchemeAction]\\n  change classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)\\n    (fieldCocycle K n (rootCover K n f) (rootAction K n f) t) = _\\n  rw [root_fieldCocycle]\\n  exact (GroupCohomology.Kummer.kummer_eq_class K n (rootValue K n f t) (rootValue_pow K n f t)\\n      (NeZero.pos n)).symm\\n\\n\\nend GroupCohomology.Kummer.Field\\n\"\nassert hashlib.sha256(source.encode()).hexdigest()=='6d80c9d07f79b2702dcc4172ce262849010901422be238c3a84ac85007c04cd5'\ndef lines(s,prefixes): return [x.strip() for x in s.splitlines() if x.strip().startswith(prefixes)]\nassert lines(source,('import ','public import '))==lines(nativebytes.decode(),('import ','public import '))\nassert lines(source,('set_option ',))==lines(nativebytes.decode(),('set_option ',))\nfolder=run/'field-equation-route';folder.mkdir();candidate=folder/'source'/relative;candidate.parent.mkdir(parents=True);candidate.write_text(source)\nbasis=json.loads((workspace.parent/'SOURCE.json').read_text())\nsetupcmd=[os.environ['LAKE'],'--no-build','setup-file',str(native)]\ns=subprocess.run(setupcmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n(folder/'setup.stdout').write_text(s.stdout);(folder/'setup.stderr').write_text(s.stderr)\nprint('FIELD_SETUP_ARGV='+json.dumps(setupcmd),flush=True)\nif s.returncode:\n print(s.stdout+s.stderr,flush=True);sys.exit(s.returncode)\nsetup=None\nfor line in reversed(s.stdout.splitlines()):\n try:\n  x=json.loads(line)\n  if isinstance(x,dict) and 'name' in x:setup=x;break\n except json.JSONDecodeError:pass\nassert setup is not None, 'native Lake setup unavailable'\nsetupfile=folder/'Field.setup.json';setupfile.write_text(json.dumps(setup))\nnativecmd=[os.environ['LAKE'],'--rehash','build',*['Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts', 'Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections']]\nnative_log=folder/'amitsur-build.log'\nnative_file=native_log.open('w')\nnative_process=subprocess.Popen(nativecmd,stdout=native_file,stderr=subprocess.STDOUT)\nprint('AMITSUR_NATIVE_BUILD_ARGV='+json.dumps(nativecmd),flush=True)\nprint('AMITSUR_NATIVE_BUILD_PID='+str(native_process.pid),flush=True)\ncmd=[os.environ['LEAN'],'-M12800','-j4',str(candidate),'--setup',str(setupfile),'-o',str(folder/'Field.olean'),'-i',str(folder/'Field.ilean'),'-c',str(folder/'Field.c')]\nprint('FIELD_ROUTE_REQUEST='+json.dumps({'actual_source':basis['content_sha256'],'original_basis':'8df5b6f8218a2af9c332adfaea0d853b5084d1b472c133ef32f6a8198e5c8e4e','native_sha256':hashlib.sha256(nativebytes).hexdigest(),'candidate_sha256':hashlib.sha256(source.encode()).hexdigest(),'setup':setup,'command':cmd,'kind':'one complete original-equation route diagnostic; no production Field coverage'}),flush=True)\nt=time.monotonic();p=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n(folder/'stdout.log').write_text(p.stdout);(folder/'stderr.log').write_text(p.stderr)\nprint('FIELD_ROUTE_STDOUT_BEGIN',flush=True);print(p.stdout,flush=True);print('FIELD_ROUTE_STDERR_BEGIN',flush=True);print(p.stderr,flush=True)\nassert native.read_bytes()==nativebytes\nrecord={'exit_code':p.returncode,'elapsed_seconds':time.monotonic()-t,'source_basis':basis['content_sha256'],'candidate_sha256':hashlib.sha256(source.encode()).hexdigest(),'setup_sha256':hashlib.sha256(setupfile.read_bytes()).hexdigest(),'command':cmd,'folder':str(folder),'managed_source_mutations':0}\n(folder/'result.json').write_text(json.dumps(record,indent=2)+'\\n');print('FIELD_ROUTE_RESULT='+json.dumps(record),flush=True);print('AMITSUR_NATIVE_BUILD_WAIT',flush=True)\nnative_exit=native_process.wait();native_file.close()\nprint('AMITSUR_NATIVE_BUILD_LOG_BEGIN',flush=True);print(native_log.read_text(),flush=True)\nprint('AMITSUR_NATIVE_BUILD_RESULT='+json.dumps({'exit_code':native_exit,'command':nativecmd,'source_basis':basis['content_sha256'],'roots':['Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts', 'Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections'],'kind':'ordinary production changed Amitsur roots'}),flush=True)\nsys.exit(p.returncode or native_exit)\n"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "compiler_failed": 2,
+  "compiler_invocations": 11,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 11
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 9,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {
+      "other_error": 2,
+      "recursion_budget": 1
+    },
+    "first": [
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:387:4: error: maximum recursion depth has been reached",
+      "error: Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.lean:65:2: Try this:"
+    ],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 115.81902585923672,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "8",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 8, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 65536, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+  "failure_reason": null,
+  "finished_at": "2026-10-28T10:24:55.250261+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean": "616b87a1041f6eed9b19b5d5ecd0bc50c3df4acf636496f42b7c4800883c35ce",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.lean": "d470d0372fa934a7134a3da91d13b861c321acc391f24eba90fa0d52e7d9c448",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurSections.lean": "19d5413e270f12a529495b1e912c2cc0a025e132be41925acb1aac2a00615e6d",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-10-28T10:22:59.424178+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-ce91a56e484ad0ab54ce68b3f66b62cc4d5006dcd9cfedd597af50e6dfc285a2.lock"
+  },
+  "lowest_disk_free_bytes": 44940386304,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections"
+  ],
+  "operation_id": "372b60c5852a40a7b078e2bb5a48cb60",
+  "outcome": "recursion_budget",
+  "peak_compiler_concurrency": 4,
+  "peak_rss_bytes": 6959284224,
+  "pgid": 948861,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "C-Amitsur-native-and-Field-equation-route",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795",
+  "sampled_process_average_cpu_cores": 2.010636838571098,
+  "sampled_process_cpu_seconds": 232.87,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 14952802,
+    "removed_setup_files": 10
+  },
+  "source_content_sha256": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+  "source_receipt_sha256": "5bcbf6aaa9afdeac0a16b344dc46470a42abe9b22b7f50aa6c5b08e5eee2f9ba",
+  "started_at": "2026-10-28T10:22:58.907133+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.49907202235404546,
+        "cpu_usage_usec": 1570974157155,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 268435456,
+        "memory_current_bytes": 33566457856,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27242364928
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {},
+        "cpu_cores": 0.023146880604472297,
+        "cpu_usage_usec": 1570732683599,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 805306368,
+        "memory_current_bytes": 33524924416,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 27225542656
+      },
+      "max_frontends_if_alone": 8,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 11
+    },
+    "execution_seconds": 115.81902585923672,
+    "exit_code": 1,
+    "expected_source": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+    "first_diagnostics": [
+      "/root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/field-equation-route/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:387:4: error: maximum recursion depth has been reached",
+      "error: Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.lean:65:2: Try this:"
+    ],
+    "frontend_failed": 2,
+    "frontend_invocations": 11,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 4,
+    "frontend_succeeded": 9,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "recursion_budget",
+    "peak_rss_bytes": 6959284224,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-f01e3da536c54edeaa49d22df0285795",
+    "sampled_process_average_cpu_cores": 2.010636838571098,
+    "source_basis": "7e2e7a9a4e0f6eeac13512dec2e4152afa8c7c396da3942fd1023e1e02d31fc2",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 116.34315875172615
+  },
+  "task_id": "etale-incremental-fastblocks-20261027",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 116.34315875172615,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean"
+}

@@ -1,0 +1,28 @@
+C2 native represented-Ext connecting boundary: supporting application
+
+The common mathematical proof remains the compiled generic ExactSequences
+source 5c73. Old native Connecting source 3905 exhausted the default typeclass
+budget of 20000 at its projected cone-apex HasExt goal and the default conversion
+budget of 200000 at its source-map lambda. The exact failed source and diagnostic,
+receipt and SOURCE links are preserved in capsule.json.
+
+The native repair supplies the original HasExt e dictionary at its exact head,
+pins the original source/apex categories, and names the same original inverse
+constant-source arrow at the literal diagramIntegerSystem.obj endpoints. The
+map definition reduces only the existing System.ofLeft object projection before
+returning the original inverseImageConstantIso.inv.app value. It chooses no
+other cohomology source, Ext world, model, comparison arrow or premise.
+
+Intermediate Connecting source 5d16 removed the two earlier diagnostics but
+failed an enabled style linter: Prop bindings use let rather than letI. Final
+Connecting source 58c2 makes only that binder edit; Exact source 680a is its
+companion actual generic-row instantiation. Both current native modules passed
+at default settings in closed d428d600/source56d823, with no input drift. Their
+reported module times were 118 s and 95 s. These are recorded outcomes, not a
+controlled timing or speedup comparison.
+
+This is a bounded application of existing PERFORMANCE exact-dictionary and
+typed-comparison methods. It identifies no unique causal conversion pair and
+establishes neither a compiler defect nor a universal speedup. Full raw logs
+stay at their hash-bound existing workspace paths. No extra Lean run, profiling,
+inventory, check or main-doc write was performed for this supporting packet.

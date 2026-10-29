@@ -1,0 +1,9 @@
+{
+  "run": "remote-7a9225c6ee474daba8be0f626223a656",
+  "actual_source": "dc51ca2e04d34883355f83d57eceb809797d99fd4aea956c44faf6347ac74edf",
+  "candidate_sha256": "41e7f7ef39278988d3bb80550e36867aae8c8cdd1b1292d97d4eaad8d1ed1a49",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-c-curve-ext/repair-v3/diagnostics/phase-result.log",
+  "log_sha256": "7bdfdea45637fc1da1bbbc5c1cfbeb126754997cf22f9c59285e8abc0d19f228",
+  "result": "one candidate frontend exit1; only377:8 maxRecDepth at final exact hmap.trans hclass; h/hmap/hclass earlier steps generated no diagnostics",
+  "boundary": "Faithful isolated diagnostic on actual dc51 dependencies, not oldf99 and not native Field coverage. No production source mutation or altered limit/options in the diagnostic."
+}

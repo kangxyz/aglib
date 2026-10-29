@@ -1,0 +1,8 @@
+RAW_DIFF_EXPECTED_BEGIN
+RAW_NODE 0 const name=`CategoryTheory.GrothendieckTopology.instWEqualsLocallyBijectiveOfHasWeakSheafifyOfHasSheafComposeOfPreservesSheafificationOfReflectsIsomorphismsForget levels=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]
+RAW_DIFF_EXPECTED_ROOT 0 nodes=1
+RAW_DIFF_EXPECTED_END

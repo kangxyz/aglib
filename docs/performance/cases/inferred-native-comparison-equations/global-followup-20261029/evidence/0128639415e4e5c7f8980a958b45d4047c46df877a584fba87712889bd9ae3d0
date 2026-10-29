@@ -1,0 +1,19 @@
+{
+  "question": "Identify EXACT original argument whose endpoint/type conversion remains after all original factory functors and M/N/E have been bound; print actual remaining Core telescope/current data before applying source, then bind source/target/e/middle/relative/u/v/k separately.",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/MorphismBindingTrace-v28.lean",
+  "sha256": "3919f189ae84e08c028a5b1034ef6a8938697687deb845a2784cd2c5bd7cb96e",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v28/READY.json",
+  "production_source_vector": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "91a18323faa9b32f68947f6d289ad7fa9a4ee60568fbb24243d494f73842b5eb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35"
+  },
+  "runtime": "Official native Global setup/full4options/default200000/no-build warm imports. Message tactics/one trace_state only; no print commands/new options/prep.",
+  "coverage": "Read-only needed source-interface localization, not fullGlobal/current producer closure. Production remains V28 unchanged. Do not dispatch fullGlobal after this diagnostic even if exit0; author adopts only a genuine repaired/coherent source afterward.",
+  "prior_actual": {
+    "run": "remote-2a84702e1a104c23a1cb46cd14a684ad",
+    "source_prefix": "a24f9485",
+    "result": "factory-models-bound marker reached, original-morphisms-bound absent; sole theorem-command whnf; no fullGlobal."
+  }
+}

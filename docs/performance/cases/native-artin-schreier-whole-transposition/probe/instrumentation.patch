@@ -1,0 +1,54 @@
+--- production-4f745918.lean
++++ ASFinalTheoremProbe.lean
+@@ -116,10 +116,32 @@
+       (primeFieldToAdditive R J hR p h).hom = primeFieldPresheafMap R p h := by
+   exact ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv _ _).apply_symm_apply _
+ 
++run_cmd Lean.logInfo "AS_DIAG1 prefix-complete formation-start"
++
++set_option profiler true in
++set_option diagnostics true in
++set_option trace.Kernel true in
++set_option trace.Elab.definition.header true in
++set_option trace.Elab.definition.value true in
++/-- Diagnosis only: check the exact original proposition in a theorem binder. -/
++theorem primeFieldToAdditive_artinSchreierMap_formationProbe (p : ℕ) (hp : p.Prime)
++    (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0)
++    (_h : primeFieldToAdditive R J hR p h ≫ artinSchreierMap R J hR p hp h = 0) : True := by
++  run_tac Lean.logInfo "AS_DIAG1 formation-body"
++  exact True.intro
++
++run_cmd Lean.logInfo "AS_DIAG1 formation-command-end proof-start"
++
++set_option profiler true in
++set_option diagnostics true in
++set_option trace.Kernel true in
++set_option trace.Elab.definition.header true in
++set_option trace.Elab.definition.value true in
+ /-- Original prime-field constants are annihilated by power-minus-identity. -/
+ theorem primeFieldToAdditive_artinSchreierMap (p : ℕ) (hp : p.Prime)
+     (h : ∀ U : Cᵒᵖ, (p : R.obj U) = 0) :
+     primeFieldToAdditive R J hR p h ≫ artinSchreierMap R J hR p hp h = 0 := by
++  run_tac Lean.logInfo "AS_DIAG1 body-entry"
+   let P₀ : Cᵒᵖ ⥤ AddCommGrpCat.{max r w} :=
+     (Functor.const Cᵒᵖ).obj (primeFieldCoefficient.{max r w} p)
+   let A₀ : Sheaf J AddCommGrpCat.{max r w} := additiveSheaf.{w} R J hR
+@@ -132,12 +154,18 @@
+       ZMod.castHom (ringChar.dvd (h U)) (R.obj U) a.down = 0
+     let : Fact p.Prime := ⟨hp⟩
+     rw [← map_pow, ZMod.pow_card, sub_self]
++  run_tac Lean.logInfo "AS_DIAG1 after-hz"
+   let : (presheafToSheaf J AddCommGrpCat.{max r w}).Additive :=
+     (sheafificationAdjunction J AddCommGrpCat.{max r w}).left_adjoint_additive
++  run_tac Lean.logInfo "AS_DIAG1 after-left-additive-instance"
+   have hzE' : E.symm (0 : P₀ ⟶ A₀.obj) = 0 :=
+     (sheafificationAdjunction J AddCommGrpCat.{max r w}).homAddEquiv_symm_zero P₀ A₀
++  run_tac Lean.logInfo "AS_DIAG1 after-native-zero"
++  run_tac Lean.logInfo "AS_DIAG1 before-final-transport"
+   exact ((sheafificationAdjunction J AddCommGrpCat.{max r w}).homEquiv_naturality_right_symm
+     (primeFieldPresheafMap R p h) (artinSchreierMap R J hR p hp h)).symm.trans
+       ((congrArg E.symm hz).trans hzE')
+ 
++run_cmd Lean.logInfo "AS_DIAG1 proof-command-end"
++
+ end CategoryTheory.Sheaf.ArtinSchreier

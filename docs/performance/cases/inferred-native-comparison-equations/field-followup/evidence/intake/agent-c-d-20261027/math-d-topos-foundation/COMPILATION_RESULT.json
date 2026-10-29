@@ -1,0 +1,104 @@
+{
+  "phase": "fresh incremental compilation of principal-assigned nine generic paths",
+  "source_content_sha256": "4395a978b043b5b28a18044fb11913490e421f90c41f18ef30d5656a83e92a8b",
+  "receipt_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/build.log",
+  "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c1ed9ead12694bc086ebc2ad247bcac1/compiler-events.jsonl",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.Algebra.Homology.DerivedCategory.ExactFunctorHomology",
+    "Aglib.Algebra.Homology.DerivedCategory.JointConservativity",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Amplitude",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Cycles",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.DimensionShift",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Exchange",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.TruncationComparison",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Window",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.ExactAmplitude"
+  ],
+  "modules": [
+    "Aglib.Algebra.Homology.DerivedCategory.ExactFunctorHomology",
+    "Aglib.Algebra.Homology.DerivedCategory.JointConservativity",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Amplitude",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Cycles",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.DimensionShift",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Exchange",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.TruncationComparison",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Computation.Window",
+    "Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.ExactAmplitude"
+  ],
+  "exit_code": 0,
+  "group_closed": true,
+  "compiler_invocations": 9,
+  "compiler_succeeded": 9,
+  "compiler_failed": 0,
+  "unfinished_compiler_records": [],
+  "input_drift": [],
+  "applied_files": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean",
+      "sha256": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean",
+      "sha256": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean",
+      "sha256": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean",
+      "sha256": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean",
+      "sha256": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean",
+      "sha256": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean",
+      "sha256": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean",
+      "sha256": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean",
+      "sha256": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd"
+    }
+  ],
+  "input_sha256": {
+    "Aglib/Algebra/Homology/DerivedCategory/ExactFunctorHomology.lean": "cabe4803228fafbed0aedc49376c990a1c08eb0e924ef93491d22fac35cae0b7",
+    "Aglib/Algebra/Homology/DerivedCategory/JointConservativity.lean": "6b64baece2e12fffa361be1a68d79ef6896e52aeeb9d9a3ebf9982e9f60ae7dc",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Amplitude.lean": "9bd5b1616c6efc28f54a903b0245193e42b5865c2f42bb7a53390747bacbb00e",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Cycles.lean": "a8c5b206b960db8a1810309d0cff3c225b522cde8dbce4856a633878447f9119",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/DimensionShift.lean": "9fdd6c3b2a3981890f976b55183a8c87a4140a87ac7351b6293ae456f84704e0",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Exchange.lean": "9cc67c5274bccd2474a3ebd60b33f55a50c98108d415f5960a0d68f4f6958aef",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/TruncationComparison.lean": "7638d92d1a04e3b83b1ab7c67b5b27cb980870ddbc4851d98a21463e98c4701d",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/Computation/Window.lean": "2f43b424dcdb6758ed9eea6357a7015cb7cbdbe80257b57ab67413832aec6767",
+    "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactAmplitude.lean": "8f7865404254324357954a21666fe82c9dd43326ff264b728a355d5bfec2f0cd",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "coverage_boundary": "Fresh compiler coverage for exactly nine generic targets, not lint/tests/replay or mathematical review; no Scheme adapter or geometry coverage. Actual full SOURCE/per-frontend mapping archive is retained by lane B.",
+  "lane_final_result": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-b/d-foundation-first-generic9-result.json",
+  "full_source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-b/d-foundation-generic9-c1ed9ead.json",
+  "full_source_manifest_sha256": "ab39703755e986d81a9d7bc4ede42f914a1f15c8332b1480c91e8111def9f802",
+  "lane_binding_statement": "All nine APPLY_RESULT path/hash pairs matched actual SOURCE and actual started/finished compiler events, per lane B final result; no additional source check or replay was run."
+}

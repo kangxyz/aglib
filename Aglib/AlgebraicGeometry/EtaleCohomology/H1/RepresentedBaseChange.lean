@@ -10,6 +10,7 @@ module
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
+public import Aglib.CategoryTheory.Adjunction.Mates.RepresentedCoherence
 public import Mathlib.CategoryTheory.Functor.KanExtension.Preserves
 public import Mathlib.CategoryTheory.Limits.Presheaf
 
@@ -273,6 +274,166 @@ theorem representedSheafBaseChangeIso_naturality (f : S ⟶ X)
         (P.map (representedPresheafBaseChangeIso f H).hom ≫ P.map qS.hom) ≫
           (sheafificationIso (representedSheaf (baseChangedGroup f K))).inv := by rw [h₂]
     _ = _ := by simp only [Category.assoc]; rw [h₃]
+
+namespace SchemeTorsorBaseChange
+
+section RepresentedSheaves
+
+variable (f : S ⟶ X) (A : Grp (Over X)) [IsCommMonObj A.X]
+
+attribute [local instance] hasSheafifyLarge
+
+/-- The actual coefficient section pullback, as a morphism into direct image. -/
+def representedCoefficientUnit :
+    representedSheaf A ⟶ (directImage f).obj (representedSheaf (baseChangedGroup f A)) :=
+  ⟨representedBaseChangeUnit f A⟩
+
+/-- The canonical represented-sheaf isomorphism has precisely the actual
+scheme-section pullback as its adjunction unit. -/
+theorem representedSheafBaseChangeIso_unit [Etale A.X.hom] :
+    (inverseImageAdjunction f).unit.app (representedSheaf A) ≫
+        (directImage f).map (representedSheafBaseChangeIso f A).hom =
+      representedCoefficientUnit f A := by
+  let e := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
+    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+  let k := representedPresheafBaseChangeIso f A
+  let R := representedSheaf (baseChangedGroup f A)
+  let F := (siteBaseChange f).op
+  let P := representedPresheaf A
+  have hu := Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f)
+    (Functor.sheafPullbackConstruction.sheafAdjunctionContinuous (siteBaseChange f)
+      AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S))
+    (representedSheaf A)
+  apply Sheaf.hom_ext
+  apply NatTrans.ext
+  funext U
+  let V := F.obj U
+  have huU := congrArg (fun r => r.hom.app U) hu
+  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
+      (e.hom.app (representedSheaf A)).hom.app V =
+    (F.leftKanExtensionUnit P).app U ≫
+      (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V at huU
+  have hk : (F.leftKanExtensionUnit P).app U ≫ k.hom.app V =
+      (representedBaseChangeUnit f A).app U := by
+    exact congr_app (Functor.descOfIsLeftKanExtension_fac _ _ _ _) U
+  have hn := (congr_app (toSheafify_naturality (Scheme.smallEtaleTopology S) k.hom) V).symm
+  change (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V ≫
+      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V =
+    k.hom.app V ≫ (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V at hn
+  have hr := congrArg (fun r => r.hom.app V) (sheafificationIso R).hom_inv_id
+  change (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V ≫
+    (sheafificationIso R).inv.hom.app V = 𝟙 _ at hr
+  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
+      (e.hom.app (representedSheaf A)).hom.app V ≫
+      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V ≫
+      (sheafificationIso R).inv.hom.app V = (representedBaseChangeUnit f A).app U
+  simp only [← Category.assoc]
+  erw [huU]
+  rw [Category.assoc ((F.leftKanExtensionUnit P).app U)
+    ((toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V)]
+  erw [hn]
+  rw [← Category.assoc ((F.leftKanExtensionUnit P).app U) (k.hom.app V), hk,
+    Category.assoc, hr]
+  exact Category.comp_id ((representedBaseChangeUnit f A).app U)
+
+/-- Thus the coefficient adjoint is the fixed actual represented-sheaf
+base-change isomorphism, not an arbitrary identification. -/
+theorem representedCoefficientUnit_adjoint [Etale A.X.hom] :
+    ((inverseImageAdjunction f).homEquiv _ _).symm (representedCoefficientUnit f A) =
+      (representedSheafBaseChangeIso f A).hom := by
+  apply ((inverseImageAdjunction f).homEquiv _ _).injective
+  rw [Equiv.apply_symm_apply, Adjunction.homEquiv_unit, representedSheafBaseChangeIso_unit]
+
+end RepresentedSheaves
+
+end SchemeTorsorBaseChange
+
+namespace RepresentedBaseChange
+
+open SchemeTorsorBaseChange
+
+attribute [local instance] hasSheafifyLarge
+
+/-- Literal represented coefficient units compose through the original
+site comparison and the specified canonical Over pullback arrow. -/
+theorem coefficientUnit_comp {T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S)
+    (A : Grp (Over X)) [IsCommMonObj A.X]
+    (q : baseChangedGroup g (baseChangedGroup f A) ⟶ baseChangedGroup (g ≫ f) A)
+    (hq : q.hom.hom = (Over.pullbackComp g f).inv.app A.X) :
+    representedCoefficientUnit f A ≫
+        (directImage f).map
+          (representedCoefficientUnit g (baseChangedGroup f A) ≫
+            (directImage g).map (representedSheafMap q)) ≫
+        (directImageCompIso f g).hom.app (representedSheaf (baseChangedGroup (g ≫ f) A)) =
+      representedCoefficientUnit (g ≫ f) A := by
+  apply Sheaf.hom_ext
+  apply NatTrans.ext
+  funext U
+  apply AddCommGrpCat.hom_ext
+  apply AddMonoidHom.ext
+  intro a
+  let V := (Scheme.Etale.forget X).obj U.unop
+  let c := Over.pullbackComp g f
+  let k := (Scheme.Etale.forget T).map ((siteBaseChangeComp f g).hom.app U.unop)
+  have hk : k = c.hom.app V :=
+    Adjunction.RepresentedCoherence.forget_pullbackComp_hom g f
+      etaleMorphismProperty.{u} (⊤ : MorphismProperty Scheme.{u}) U.unop
+  change ULift.up (Additive.ofMul
+      (k ≫ (Over.pullback g).map ((Over.pullback f).map a.down.toMul) ≫
+        q.hom.hom)) =
+    ULift.up (Additive.ofMul ((Over.pullback (g ≫ f)).map a.down.toMul))
+  apply ULift.ext
+  apply congrArg Additive.ofMul
+  rw [hk, hq]
+  exact (Category.assoc _ _ _).symm.trans
+    ((c.app A.X).comp_inv_eq.mpr (c.hom.naturality a.down.toMul).symm)
+
+/-- The original represented-sheaf comparisons compose whenever the given
+coefficient arrow has the original canonical pullback-composition value.
+The coefficient group need only be commutative and etale. -/
+theorem iso_comp_of_hom {T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S)
+    (A : Grp (Over X)) [IsCommMonObj A.X] [Etale A.X.hom]
+    (q : baseChangedGroup g (baseChangedGroup f A) ⟶ baseChangedGroup (g ≫ f) A)
+    (hq : q.hom.hom = (Over.pullbackComp g f).inv.app A.X) :
+    (inverseImageComp f g).hom.app (representedSheaf A) ≫
+        (inverseImage g).map (representedSheafBaseChangeIso f A).hom ≫
+        (representedSheafBaseChangeIso g (baseChangedGroup f A)).hom ≫
+        representedSheafMap q =
+      (representedSheafBaseChangeIso (g ≫ f) A).hom := by
+  apply ((inverseImageAdjunction (g ≫ f)).homEquiv _ _).injective
+  have hc : conjugateEquiv ((inverseImageAdjunction f).comp (inverseImageAdjunction g))
+      (inverseImageAdjunction (g ≫ f)) (inverseImageComp f g).hom =
+        (directImageCompIso f g).hom :=
+    Adjunction.conjugateEquiv_leftAdjointCompIso_inv
+      (inverseImageAdjunction f) (inverseImageAdjunction g)
+      (inverseImageAdjunction (g ≫ f)) (directImageCompIso f g)
+  have hf : (inverseImageAdjunction f).homEquiv _ _
+      (representedSheafBaseChangeIso f A).hom = representedCoefficientUnit f A := by
+    simpa only [Adjunction.homEquiv_unit] using representedSheafBaseChangeIso_unit f A
+  have hg : (inverseImageAdjunction g).homEquiv _ _
+      (representedSheafBaseChangeIso g (baseChangedGroup f A)).hom =
+        representedCoefficientUnit g (baseChangedGroup f A) := by
+    simpa only [Adjunction.homEquiv_unit] using
+      representedSheafBaseChangeIso_unit g (baseChangedGroup f A)
+  have hfg : (inverseImageAdjunction (g ≫ f)).homEquiv _ _
+      (representedSheafBaseChangeIso (g ≫ f) A).hom =
+        representedCoefficientUnit (g ≫ f) A := by
+    simpa only [Adjunction.homEquiv_unit] using
+      representedSheafBaseChangeIso_unit (g ≫ f) A
+  have hs := (inverseImageAdjunction g).homEquiv_naturality_right
+    (representedSheafBaseChangeIso g (baseChangedGroup f A)).hom (representedSheafMap q)
+  rw [hg] at hs
+  have h := Adjunction.RepresentedCoherence.homEquiv_comp
+    (inverseImageAdjunction f) (inverseImageAdjunction g)
+    (inverseImageAdjunction (g ≫ f)) (inverseImageComp f g).hom
+    (directImageCompIso f g).hom hc (representedSheaf A)
+    (representedSheaf (baseChangedGroup f A)) (representedSheaf (baseChangedGroup (g ≫ f) A))
+    (representedSheafBaseChangeIso f A).hom
+    ((representedSheafBaseChangeIso g (baseChangedGroup f A)).hom ≫ representedSheafMap q)
+  rw [hf, hs] at h
+  exact h.trans ((coefficientUnit_comp f g A q hq).trans hfg.symm)
+
+end RepresentedBaseChange
 
 section Cohomology
 universe w w'

@@ -1,0 +1,451 @@
+✔ [3572/3574] Built Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DirectImageSquareTriangle (5.3s)
+✖ [3573/3574] Building Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteLocallyConstantCompactness (8.8s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-81ad62292d6e4d6198d85ddbdf51ea0f/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean -o /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.olean -i /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.c --setup /root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:171:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.77 ≫ ?f
+in the target expression
+  (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ μ) = toCoefficient H μ
+
+X : Scheme
+H : Grp (Over X)
+inst✝ : Etale H.X.hom
+⊢ (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ μ) = toCoefficient H μ
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    𝟙 (H.X ⊗ H.X)
+  has type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver (H.X ⊗ H.X) (H.X ⊗ H.X)
+  but is expected to have type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver ((Etale.forget X).obj (squareObject H)) (H.X ⊗ H.X)
+  in the application
+    CategoryStruct.comp (𝟙 (H.X ⊗ H.X))
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 2
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:177:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.81 ≫ ?f
+in the target expression
+  (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ fst H.X H.X) = toCoefficient H (fst H.X H.X)
+
+X : Scheme
+H : Grp (Over X)
+inst✝ : Etale H.X.hom
+⊢ (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ fst H.X H.X) = toCoefficient H (fst H.X H.X)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    𝟙 (H.X ⊗ H.X)
+  has type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver (H.X ⊗ H.X) (H.X ⊗ H.X)
+  but is expected to have type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver ((Etale.forget X).obj (squareObject H)) (H.X ⊗ H.X)
+  in the application
+    CategoryStruct.comp (𝟙 (H.X ⊗ H.X))
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 2
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:183:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.81 ≫ ?f
+in the target expression
+  (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ snd H.X H.X) = toCoefficient H (snd H.X H.X)
+
+X : Scheme
+H : Grp (Over X)
+inst✝ : Etale H.X.hom
+⊢ (representedTests H).toCoefficient (𝟙 (H.X ⊗ H.X) ≫ snd H.X H.X) = toCoefficient H (snd H.X H.X)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    𝟙 (H.X ⊗ H.X)
+  has type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver (H.X ⊗ H.X) (H.X ⊗ H.X)
+  but is expected to have type
+    @Quiver.Hom (Over X) instCategoryOver.toQuiver ((Etale.forget X).obj (squareObject H)) (H.X ⊗ H.X)
+  in the application
+    CategoryStruct.comp (𝟙 (H.X ⊗ H.X))
+  
+  Note: The following definitions were not unfolded because their definition is not exposed:
+    getLimitCone ↦ 2
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:209:2: Type mismatch: After simplification, term
+  RepresentedGroupPresentability.TestObjects.homSection_formula (representedTests H) a.hom U t
+ has type
+  @Eq (↑(G.obj.obj (op U))) ((ConcreteCategory.hom (a.hom.app (op U))) t)
+    ((ConcreteCategory.hom (G.obj.map (toCoefficient H (Additive.toMul t.down)).op))
+      ((representedTests H).homSection a.hom))
+but is expected to have type
+  @Eq (↑(G.obj.obj (op U))) ((ConcreteCategory.hom (a.hom.app (op U))) t)
+    ((ConcreteCategory.hom (G.obj.map (toCoefficient H (Additive.toMul t.down)).op))
+      ((representedTests H).homSection a.hom))
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:227:2: Type mismatch: After simplification, term
+  RepresentedGroupPresentability.TestObjects.homSection_isAdditive (representedTests H) a.hom
+ has type
+  @Eq (↑(G.obj.obj (op (representedTests H).square)))
+    ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) ((representedTests H).homSection a.hom))
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) ((representedTests H).homSection a.hom) +
+      (ConcreteCategory.hom (G.obj.map (second H).op)) ((representedTests H).homSection a.hom))
+but is expected to have type
+  @Eq (↑(G.obj.obj (op (squareObject H))))
+    ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) ((representedTests H).homSection a.hom))
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) ((representedTests H).homSection a.hom) +
+      (ConcreteCategory.hom (G.obj.map (second H).op)) ((representedTests H).homSection a.hom))
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:240:4: Type mismatch: After simplification, term
+  hs
+ has type
+  @Eq (↑(G.obj.obj (op (squareObject H)))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+but is expected to have type
+  @Eq (↑(G.obj.obj (op (representedTests H).square))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:243:2: Type mismatch: After simplification, term
+  RepresentedGroupPresentability.TestObjects.restriction_additive_section (representedTests H) G.obj s hs' a b
+ has type
+  @Eq (↑(G.obj.obj (op U))) ((ConcreteCategory.hom (G.obj.map (toCoefficient H (a * b)).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (toCoefficient H a).op)) s +
+      (ConcreteCategory.hom (G.obj.map (toCoefficient H b).op)) s)
+but is expected to have type
+  @Eq (↑(G.obj.obj (op U))) ((ConcreteCategory.hom (G.obj.map (toCoefficient H (a * b)).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (toCoefficient H a).op)) s +
+      (ConcreteCategory.hom (G.obj.map (toCoefficient H b).op)) s)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:252:4: Type mismatch: After simplification, term
+  hs
+ has type
+  @Eq (↑(G.obj.obj (op (squareObject H)))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+but is expected to have type
+  @Eq (↑(G.obj.obj (op (representedTests H).square))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:247:4: (kernel) declaration has metavariables 'AlgebraicGeometry.Scheme.EtaleCohomology.FiniteLocallyConstantCompactness.homOfSection'
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:262:55: unsolved goals
+X : Scheme
+H : Grp (Over X)
+inst✝¹ : Etale H.X.hom
+inst✝ : IsCommMonObj H.X
+G : AbelianSheaf X
+s : ↑(G.obj.obj (op (coefficientObject H)))
+hs : IsAdditiveSection H G s
+U : X.Etale
+t : ↑((representedSheaf H).obj.obj (op U))
+⊢ (ConcreteCategory.hom (G.obj.map (toCoefficient H (Additive.toMul t.down)).op)) s =
+    (ConcreteCategory.hom (G.obj.map (toCoefficient H (Additive.toMul t.down)).op)) s
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:271:26: Unknown constant `_inhabitedExprDummy`
+error: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:274:8: Type mismatch: After simplification, term
+  hs
+ has type
+  @Eq (↑(G.obj.obj (op (squareObject H)))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+but is expected to have type
+  @Eq (↑(G.obj.obj (op (representedTests H).square))) ((ConcreteCategory.hom (G.obj.map (multiplication H).op)) s)
+    ((ConcreteCategory.hom (G.obj.map (first H).op)) s + (ConcreteCategory.hom (G.obj.map (second H).op)) s)
+info: Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteLocallyConstantCompactness.lean:266:0: PANIC at Lean.MetavarContext.getDecl Lean.MetavarContext:482:17: unknown metavariable _uniq.39863
+backtrace:
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x9907ad5) [0x7f73be68fad5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x98ff037) [0x7f73be687037]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(lean_panic_fn_borrowed+0x2b) [0x7f73be68711b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimMVar [private]+0x4a) [0x7f73b89dee9a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x5b1) [0x7f73b89e12d1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimMVarDeps+0x15e) [0x7f73b89e3efe]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.mkBinding+0x40) [0x7f73b89e61f0]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.mkBinding+0x12f) [0x7f73b89e6bbf]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkForallFVars+0x210) [0x7f73b8d58d90]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.unfoldThmType [λ, private]+0xe2) [0x7f73bdb69f82]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.unfoldThmType [boxed, λ, private]+0x32) [0x7f73bdb6a062]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/7>+0x786) [0x7f73be69d586]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescope [boxed, λ, arity↓] spec at Lean.Elab.Eqns.unfoldThmType+0x74) [0x7f73bdb699b4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescopeImp.process [arity↓, private]+0x92b) [0x7f73b8d72f8b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescopeImp [private]+0x6d) [0x7f73b8d73a1d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescope [arity↓] spec at Lean.Elab.Eqns.unfoldThmType+0x77) [0x7f73bdb69b37]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.unfoldThmType [private]+0x4a1) [0x7f73bdb6dac1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [private]+0x9b9) [0x7f73bdb9c9b9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [private]+0x24b) [0x7f73bdb9dceb]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [boxed, private]+0x19) [0x7f73bdb9e769]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/6>+0x1ac) [0x7f73be69b91c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(List.forIn'.loop [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x139) [0x7f73b9c1ee99]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [λ, private]+0x401) [0x7f73b9c1f7a1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, λ, private]+0x19) [0x7f73b9c1fa39]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, private]+0x76) [0x7f73b9c1fcb6]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withEqnOptions [boxed]+0x2d) [0x7f73b9c19b1d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?+0x103) [0x7f73b9c20033]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkSimpEntryOfDeclToUnfold+0x2a2) [0x7f73b9bf8d32]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabDeclToUnfoldOrTheorem [private]+0x909) [0x7f73bae54ab9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArg [private]+0x148c) [0x7f73bae5d77c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.forIn'Unsafe.loop [private] spec at Lean.Elab.Tactic.elabSimpArgs+0x158) [0x7f73bae636c8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x9d) [0x7f73bae67a8d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x152) [0x7f73bae686a2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withTrackingZetaDeltaSet [arity↓] spec at Lean.Elab.Tactic.elabSimpArgs+0x392) [0x7f73bae61e62]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x315) [0x7f73bae68c45]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x76) [0x7f73bae68d76]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x6fc) [0x7f73be69fb7c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs+0x167) [0x7f73bae690b7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext+0x92c) [0x7f73bae6c9ec]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext [boxed]+0x54) [0x7f73bae6d3f4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x8a3) [0x7f73be69fd23]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [λ, private]+0x771) [0x7f73bc8a6ed1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [boxed, λ, private]+0x188) [0x7f73bc8ae4a8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics+0xbe) [0x7f73bae8360e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics [boxed]+0x35) [0x7f73bae83855]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x801) [0x7f73be69fc81]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.focus [arity↓]+0x343) [0x7f73ba2c2963]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [private]+0xa87) [0x7f73bc8af0c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpa [boxed]+0x46) [0x7f73bc8b0d26]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/10>+0x25d) [0x7f73be6a071d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [λ, private]+0xf3) [0x7f73ba2a8a43]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x8a3) [0x7f73be69fd23]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.withInfoTreeContext [arity↓] spec at Lean.Elab.Tactic.evalTactic.eval+0x186) [0x7f73ba2aa856]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [λ, private]+0x206) [0x7f73ba2ab356]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [boxed, λ, private]+0x39) [0x7f73ba2ab4a9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x624) [0x7f73be69faa4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Term.withoutTacticIncrementality [arity↓] spec at Lean.Elab.Tactic.evalTactic.eval+0x699) [0x7f73ba2a53c9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [private]+0x432) [0x7f73ba2abf92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.expandEval [private]+0x1236) [0x7f73ba2ba326]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic [λ]+0x11b7) [0x7f73ba2bccc7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/3>+0xf8d) [0x7f73be69782d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic [λ]+0x679) [0x7f73ba2bf909]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic [boxed, λ]+0x31) [0x7f73ba2bfd01]
+PANIC at Lean.MetavarContext.getDecl Lean.MetavarContext:482:17: unknown metavariable _uniq.39863
+backtrace:
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x9907ad5) [0x7f73be68fad5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x98ff037) [0x7f73be687037]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(lean_panic_fn_borrowed+0x2b) [0x7f73be68711b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimMVar [private]+0x4a) [0x7f73b89dee9a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x5b1) [0x7f73b89e12d1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.visit [private]+0xbb) [0x7f73b89dd27b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.mapMUnsafe.map [private] spec at Lean.MetavarContext.MkBinding.elimApp+0x6d) [0x7f73b89deb9d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimApp [private]+0x65f) [0x7f73b89e137f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.elimMVarDeps+0x15e) [0x7f73b89e3efe]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.mkBinding+0x40) [0x7f73b89e61f0]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.mkBinding+0x12f) [0x7f73b89e6bbf]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkForallFVars+0x210) [0x7f73b8d58d90]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.saveEqn [λ, private]+0x535) [0x7f73bdb8d6f5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.saveEqn [boxed, λ, private]+0x27) [0x7f73bdb8db87]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/6>+0x68a) [0x7f73be69bdfa]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Eqns.saveEqn+0x25) [0x7f73bdb85f65]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Eqns.saveEqn+0x87) [0x7f73bdb86037]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqnTypes [private]+0x47) [0x7f73bdb96777]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [λ, private]+0x29d) [0x7f73bdb9ac2d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [boxed, λ, private]+0x27) [0x7f73bdb9af37]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/7>+0x941) [0x7f73be69d741]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescope [boxed, λ, arity↓] spec at Lean.Elab.Eqns.unfoldThmType+0x74) [0x7f73bdb699b4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/7>+0x941) [0x7f73be69d741]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [λ, arity↓, private]+0x253) [0x7f73b8d6c963]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [boxed, λ, arity↓, private]+0x7e) [0x7f73b8d6df9e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xcc5) [0x7f73be69abb5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [arity↓, private]+0x6a3) [0x7f73b8d6d613]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux [private]+0x6a) [0x7f73b8d6e5ba]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescope [arity↓] spec at Lean.Elab.Eqns.lhsDependsOn+0x71) [0x7f73bdb7dc81]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescope [boxed] spec at Lean.Elab.Eqns.lhsDependsOn+0x37) [0x7f73bdb7dec7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x59e) [0x7f73be69a48e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewMCtxDepthImp [arity↓, private]+0x229) [0x7f73b8d813a9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewMCtxDepth [arity↓] spec at Lean.Elab.Eqns.mkEqnProof+0x22) [0x7f73bdb7a5c2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [private]+0xcb5) [0x7f73bdb9ccb5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [private]+0x24b) [0x7f73bdb9dceb]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [boxed, private]+0x19) [0x7f73bdb9e769]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/6>+0x1ac) [0x7f73be69b91c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(List.forIn'.loop [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x139) [0x7f73b9c1ee99]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [λ, private]+0x401) [0x7f73b9c1f7a1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, λ, private]+0x19) [0x7f73b9c1fa39]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, private]+0x76) [0x7f73b9c1fcb6]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withEqnOptions [boxed]+0x2d) [0x7f73b9c19b1d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?+0x103) [0x7f73b9c20033]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkSimpEntryOfDeclToUnfold+0x2a2) [0x7f73b9bf8d32]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabDeclToUnfoldOrTheorem [private]+0x909) [0x7f73bae54ab9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArg [private]+0x148c) [0x7f73bae5d77c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.forIn'Unsafe.loop [private] spec at Lean.Elab.Tactic.elabSimpArgs+0x158) [0x7f73bae636c8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x9d) [0x7f73bae67a8d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x152) [0x7f73bae686a2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withTrackingZetaDeltaSet [arity↓] spec at Lean.Elab.Tactic.elabSimpArgs+0x392) [0x7f73bae61e62]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x315) [0x7f73bae68c45]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x76) [0x7f73bae68d76]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x6fc) [0x7f73be69fb7c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs+0x167) [0x7f73bae690b7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext+0x92c) [0x7f73bae6c9ec]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext [boxed]+0x54) [0x7f73bae6d3f4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x8a3) [0x7f73be69fd23]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [λ, private]+0x771) [0x7f73bc8a6ed1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [boxed, λ, private]+0x188) [0x7f73bc8ae4a8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics+0xbe) [0x7f73bae8360e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics [boxed]+0x35) [0x7f73bae83855]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x801) [0x7f73be69fc81]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.focus [arity↓]+0x343) [0x7f73ba2c2963]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [private]+0xa87) [0x7f73bc8af0c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpa [boxed]+0x46) [0x7f73bc8b0d26]
+PANIC at Lean.LocalContext.get! Lean.LocalContext:340:14: unknown free variable
+backtrace:
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x9907ad5) [0x7f73be68fad5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(+0x98ff037) [0x7f73be687037]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(lean_panic_fn_borrowed+0x2b) [0x7f73be68711b]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Nat.foldRevM.loop [arity↓, private] spec at Lean.MetavarContext.MkBinding.mkBinding+0xc4) [0x7f73b89e4c84]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.MkBinding.mkBinding+0x232) [0x7f73b89e63e2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MetavarContext.mkBinding+0x12f) [0x7f73b89e6bbf]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkForallFVars+0x210) [0x7f73b8d58d90]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.saveEqn [λ, private]+0x535) [0x7f73bdb8d6f5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.saveEqn [boxed, λ, private]+0x27) [0x7f73bdb8db87]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/6>+0x68a) [0x7f73be69bdfa]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Eqns.saveEqn+0x25) [0x7f73bdb85f65]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Eqns.saveEqn+0x87) [0x7f73bdb86037]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqnTypes [private]+0x47) [0x7f73bdb96777]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [λ, private]+0x29d) [0x7f73bdb9ac2d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [boxed, λ, private]+0x27) [0x7f73bdb9af37]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/7>+0x941) [0x7f73be69d741]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.lambdaTelescope [boxed, λ, arity↓] spec at Lean.Elab.Eqns.unfoldThmType+0x74) [0x7f73bdb699b4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/7>+0x941) [0x7f73be69d741]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [λ, arity↓, private]+0x253) [0x7f73b8d6c963]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [boxed, λ, arity↓, private]+0x7e) [0x7f73b8d6df9e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xcc5) [0x7f73be69abb5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [boxed, arity↓, private]+0x1f) [0x7f73b8d6ad1f]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstance [arity↓] spec at Lean.Meta.withNewLocalInstancesImp+0x13) [0x7f73b8d6ab33]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewLocalInstancesImp [arity↓, private]+0x7d8) [0x7f73b8d6b598]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux.process [arity↓, private]+0x6a3) [0x7f73b8d6d613]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescopeReducingAuxAux [private]+0x6a) [0x7f73b8d6e5ba]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescope [arity↓] spec at Lean.Elab.Eqns.lhsDependsOn+0x71) [0x7f73bdb7dc81]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.forallTelescope [boxed] spec at Lean.Elab.Eqns.lhsDependsOn+0x37) [0x7f73bdb7dec7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x59e) [0x7f73be69a48e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewMCtxDepthImp [arity↓, private]+0x229) [0x7f73b8d813a9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withNewMCtxDepth [arity↓] spec at Lean.Elab.Eqns.mkEqnProof+0x22) [0x7f73bdb7a5c2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.mkEqns [private]+0xcb5) [0x7f73bdb9ccb5]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [private]+0x24b) [0x7f73bdb9dceb]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Eqns.getEqnsFor? [boxed, private]+0x19) [0x7f73bdb9e769]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/6>+0x1ac) [0x7f73be69b91c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(List.forIn'.loop [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x139) [0x7f73b9c1ee99]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [λ, private]+0x401) [0x7f73b9c1f7a1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, λ, private]+0x19) [0x7f73b9c1fa39]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?Core [boxed, private]+0x76) [0x7f73b9c1fcb6]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xa1c) [0x7f73be69a90c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withEqnOptions [boxed]+0x2d) [0x7f73b9c19b1d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0x87a) [0x7f73be69a76a]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLocalContextImp [private]+0x26) [0x7f73b8d82496]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withLCtx [arity↓] spec at Lean.Meta.getEqnsFor?Core+0x22) [0x7f73b9c1ea92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.getEqnsFor?+0x103) [0x7f73b9c20033]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.mkSimpEntryOfDeclToUnfold+0x2a2) [0x7f73b9bf8d32]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabDeclToUnfoldOrTheorem [private]+0x909) [0x7f73bae54ab9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArg [private]+0x148c) [0x7f73bae5d77c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Array.forIn'Unsafe.loop [private] spec at Lean.Elab.Tactic.elabSimpArgs+0x158) [0x7f73bae636c8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x9d) [0x7f73bae67a8d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x152) [0x7f73bae686a2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withTrackingZetaDeltaSet [arity↓] spec at Lean.Elab.Tactic.elabSimpArgs+0x392) [0x7f73bae61e62]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [λ]+0x315) [0x7f73bae68c45]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs [boxed, λ]+0x76) [0x7f73bae68d76]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x6fc) [0x7f73be69fb7c]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.elabSimpArgs+0x167) [0x7f73bae690b7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext+0x92c) [0x7f73bae6c9ec]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.mkSimpContext [boxed]+0x54) [0x7f73bae6d3f4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x8a3) [0x7f73be69fd23]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [boxed, λ, arity↓] spec at Lean.Elab.Tactic.withMainContext+0x87) [0x7f73ba2d28c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/5>+0xaa8) [0x7f73be69a998]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Meta.withMVarContextImp [arity↓, private]+0x162) [0x7f73b8d83aa2]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.MVarId.withContext [arity↓] spec at Lean.Elab.Tactic.withMainContext+0xd1) [0x7f73ba2d2aa1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withMainContext [arity↓]+0x137) [0x7f73ba2d3087]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [λ, private]+0x771) [0x7f73bc8a6ed1]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [boxed, λ, private]+0x188) [0x7f73bc8ae4a8]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x3fd) [0x7f73be69f87d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics+0xbe) [0x7f73bae8360e]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.withSimpDiagnostics [boxed]+0x35) [0x7f73bae83855]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x801) [0x7f73be69fc81]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.focus [arity↓]+0x343) [0x7f73ba2c2963]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpaCore [private]+0xa87) [0x7f73bc8af0c7]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.Simpa.evalSimpa [boxed]+0x46) [0x7f73bc8b0d26]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/10>+0x25d) [0x7f73be6a071d]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [λ, private]+0xf3) [0x7f73ba2a8a43]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x8a3) [0x7f73be69fd23]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.withInfoTreeContext [arity↓] spec at Lean.Elab.Tactic.evalTactic.eval+0x186) [0x7f73ba2aa856]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [λ, private]+0x206) [0x7f73ba2ab356]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [boxed, λ, private]+0x39) [0x7f73ba2ab4a9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(<apply/9>+0x624) [0x7f73be69faa4]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Term.withoutTacticIncrementality [arity↓] spec at Lean.Elab.Tactic.evalTactic.eval+0x699) [0x7f73ba2a53c9]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.eval [private]+0x432) [0x7f73ba2abf92]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic.expandEval [private]+0x1236) [0x7f73ba2ba326]
+/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/../lib/lean/libleanshared.so(Lean.Elab.Tactic.evalTactic [λ]+0x11b7) [0x7f73ba2bccc7]
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteLocallyConstantCompactness
+error: build failed

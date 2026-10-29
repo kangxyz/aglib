@@ -7,6 +7,7 @@ module
 
 public import Mathlib.AlgebraicTopology.CechNerve
 public import Mathlib.Algebra.Category.CommAlgCat.Monoidal
+public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 
 /-!
 # The original algebraic Amitsur conerve
@@ -14,7 +15,9 @@ public import Mathlib.Algebra.Category.CommAlgCat.Monoidal
 The object is the native Čech conerve of the original algebra unit `R → S`
 in `CommAlgCat R`. Its actual wide-pushout inclusions determine its maps.
 The degree-zero comparison is the original copy of `S`; the successor
-comparison splits off the original first tensor factor.
+comparison splits off the original first tensor factor. The opposite term fan
+is a limiting product, and its image under any functor preserving these
+products is the native product Čech nerve, on every simplicial map.
 -/
 
 @[expose] public noncomputable section
@@ -169,5 +172,79 @@ def successorTensorIso (n : ℕ) :
         tensorToSuccessor R S n ≫ successorToTensor R S n).hom = _
       rw [includeRight_tensorToSuccessor_assoc, δ_zero_successorToTensor]
       rfl
+
+
+open Opposite
+
+/-- The original indexed algebra factors form the opposite product cone. -/
+def termFan (n : ℕ) :
+    Fan (fun _ : Fin (n + 1) => op (CommAlgCat.of R S)) :=
+  Fan.mk (op (term R S n)) (fun i => (ι R S n i).op)
+
+/-- The native wide pushout over the initial base algebra is a coproduct. -/
+def termFanIsLimit (n : ℕ) : IsLimit (termFan R S n) := by
+  refine Fan.IsLimit.mk _
+    (fun c => (WidePushout.desc (CommAlgCat.isInitialSelf.to c.pt.unop)
+      (fun i => (c.proj i).unop) (fun _ => CommAlgCat.isInitialSelf.hom_ext _ _)).op) ?_ ?_
+  · intro c i
+    apply Quiver.Hom.unop_inj
+    exact WidePushout.ι_desc _ _ _ _ _
+  · intro c f hf
+    apply Quiver.Hom.unop_inj
+    apply term_hom_ext
+    intro i
+    calc
+      _ = (c.proj i).unop := congrArg Quiver.Hom.unop (hf i)
+      _ = _ := (WidePushout.ι_desc
+        (fun _ : Fin (n + 1) => (unitArrow R S).hom)
+        (CommAlgCat.isInitialSelf.to c.pt.unop)
+        (fun j : Fin (n + 1) => (c.proj j).unop)
+        (fun _ => CommAlgCat.isInitialSelf.hom_ext _ _) i).symm
+
+universe v w
+
+variable {D : Type v} [Category.{w} D] (F : (CommAlgCat.{u} R)ᵒᵖ ⥤ D)
+
+/-- The original factors remain a limiting fan under a functor preserving this product. -/
+def mapFanIsLimit (n : ℕ)
+    [PreservesLimit (Discrete.functor
+      (fun _ : Fin (n + 1) => op (CommAlgCat.of R S))) F] :
+    IsLimit (Fan.mk (F.obj (op (term R S n)))
+      (fun i : Fin (n + 1) => F.map (ι R S n i).op)) :=
+  isLimitFanMkObjOfIsLimit F
+    (fun _ : Fin (n + 1) => op (CommAlgCat.of R S))
+    (fun i => (ι R S n i).op) (termFanIsLimit R S n)
+
+/-- The image of the original conerve term is its actual categorical product. -/
+def mapProductIso (n : ℕ)
+    [PreservesLimit (Discrete.functor
+      (fun _ : Fin (n + 1) => op (CommAlgCat.of R S))) F]
+    [HasProduct (fun _ : Fin (n + 1) => F.obj (op (CommAlgCat.of R S)))] :
+    F.obj (op (term R S n)) ≅
+      ∏ᶜ fun _ : Fin (n + 1) => F.obj (op (CommAlgCat.of R S)) :=
+  (mapFanIsLimit R S F n).conePointUniqueUpToIso (productIsProduct _)
+
+/-- The product comparison preserves every original indexed algebra factor. -/
+@[reassoc (attr := simp)]
+theorem mapProductIso_hom_π (n : ℕ)
+    [PreservesLimit (Discrete.functor
+      (fun _ : Fin (n + 1) => op (CommAlgCat.of R S))) F]
+    [HasProduct (fun _ : Fin (n + 1) => F.obj (op (CommAlgCat.of R S)))]
+    (i : Fin (n + 1)) :
+    (mapProductIso R S F n).hom ≫ Pi.π _ i = F.map (ι R S n i).op :=
+  (mapFanIsLimit R S F n).conePointUniqueUpToIso_hom_comp (productIsProduct _) ⟨i⟩
+
+/-- The original opposite conerve maps to the native product Čech nerve, on every map. -/
+def mapCechIso [HasFiniteProducts D]
+    [∀ n : ℕ, PreservesLimit (Discrete.functor
+      (fun _ : Fin (n + 1) => op (CommAlgCat.of R S))) F] :
+    (conerve R S).op ⋙ F ≅ cechNerveTerminalFrom (F.obj (op (CommAlgCat.of R S))) := by
+  refine NatIso.ofComponents (fun n => mapProductIso R S F n.unop.len) ?_
+  intro n m f
+  apply Pi.hom_ext
+  intro i
+  simp only [Category.assoc, mapProductIso_hom_π,
+    Functor.comp_map, Functor.op_map, cechNerveTerminalFrom, Pi.lift_comp_π,
+    ← Functor.map_comp, ← op_comp, ι_map]
 
 end Algebra.Amitsur

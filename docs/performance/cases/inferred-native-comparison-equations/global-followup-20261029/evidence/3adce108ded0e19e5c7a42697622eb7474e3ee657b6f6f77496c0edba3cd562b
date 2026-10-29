@@ -1,0 +1,38 @@
+{
+  "question": "Distinguish native literal header/body/data-constructor/component producer/core-application/final checking frontier, and inspect actual captured Cartesian/mapGrp implementations at the shared coordinate/middle endpoints. No additional transport layer is proposed.",
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CoordinateImplementationTrace-v27.lean",
+  "sha256": "cc0391ffb36395659307fe545fdf54b454a0e9c641eb63aeedfb65c074eaa548",
+  "basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/candidate-v27/READY.json",
+  "production_source_vector": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "618897ffc91aa8ee8629e3414e9733b8c59e2bfd2460048117ded72770f3ecca",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35"
+  },
+  "runtime": "Same official native Global setup/full4 library options/default200000/no-build warm imports. Only nonsemantic trace messages and scoped pretty-print commands added. pp.all/pp.proofs affect printed output only, not solver/budget/trust/native proof options.",
+  "inspection": [
+    "baseChangedGroup elaborated definition",
+    "representedDirectImageCoordinatesIso elaborated definition",
+    "constantRepresentedDirectImageFunctor elaborated definition",
+    "representedSectionRestriction_coordinates elaborated type; proof suppressed"
+  ],
+  "markers": [
+    "ASSEMBLY_NATIVE_BODY_ENTERED",
+    "ASSEMBLY_ORIGINAL_FUNCTOR_GEOMETRY_READY",
+    "ASSEMBLY_SHARED_COORDINATE_DATA_READY",
+    "ASSEMBLY_ORIGINAL_SHEAF_ARROWS_READY",
+    "ASSEMBLY_WHOLE_COMPARISON_SPECIALIZED",
+    "ASSEMBLY_ORIGINAL_SOURCE_COMPONENT_READY",
+    "ASSEMBLY_ORIGINAL_TARGET_COMPONENT_READY",
+    "ASSEMBLY_COMPLETE_GENERIC_RESULT_READY"
+  ],
+  "coverage": "Diagnostic implementation-selection/progress evidence only. No current fullGlobal/prefix/producer closure inferred from print output. No fullGlobal/root/client/replay/lint invocation after this query; source author interprets actual result and owns next genuine repair.",
+  "prior_actual": {
+    "run": "remote-f0475947973144a5baed37b01bca90df",
+    "source_prefix": "ca464f9f",
+    "Coree6cd": "PASS2.7s",
+    "Rep4fa6": "PASS10s",
+    "SheafColimit": "PASS38s",
+    "prefix": "sole784 commandwhnf, no body location or preceding variable-helper diagnostics"
+  }
+}

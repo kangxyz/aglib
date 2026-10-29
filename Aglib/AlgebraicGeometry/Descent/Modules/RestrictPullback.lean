@@ -104,6 +104,22 @@ lemma restrictFunctorIsoPullback_comp_hom_app (M : Z.Modules) :
   rw [reassoc_of% hf', reassoc_of% hg]
   rfl
 
+/-- Inverse coherence of the native restriction/pullback comparison. -/
+theorem restrictFunctorIsoPullback_comp_inv_app {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
+    [IsOpenImmersion f] [IsOpenImmersion g] (M : Z.Modules) :
+    (pullbackComp f g).hom.app M ≫ (restrictFunctorIsoPullback (f ≫ g)).inv.app M =
+      (restrictFunctorIsoPullback f).inv.app ((pullback g).obj M) ≫
+        (Scheme.Modules.restrictFunctor f).map ((restrictFunctorIsoPullback g).inv.app M) ≫
+          (restrictFunctorComp f g).inv.app M := by
+  have h : (restrictFunctorIsoPullback (f ≫ g)).app M ≪≫
+      ((pullbackComp f g).app M).symm =
+      (restrictFunctorComp f g).app M ≪≫
+        (Scheme.Modules.restrictFunctor f).mapIso ((restrictFunctorIsoPullback g).app M) ≪≫
+          (restrictFunctorIsoPullback f).app ((pullback g).obj M) :=
+    Iso.ext (restrictFunctorIsoPullback_comp_hom_app f g M)
+  simpa only [Iso.trans_inv, Iso.symm_inv, Iso.app_inv, Iso.app_hom,
+    Functor.mapIso_inv, Category.assoc] using congrArg Iso.inv h
+
 end
 
 /-- `restrictFunctorIsoPullback` is compatible with `restrictFunctorCongr` and
@@ -119,5 +135,15 @@ lemma restrictFunctorIsoPullback_congr_hom_app {f g : X ⟶ Y} (h : f = g) [IsOp
     exact M.presheaf.map_id _
   rw [this, Category.id_comp]
   simp [pullbackCongr]
+
+/-- Equality transport also commutes with the original inverse comparison. -/
+theorem restrictFunctorIsoPullback_congr_inv_app {X Y : Scheme.{u}} {f g : X ⟶ Y} (h : f = g)
+    [IsOpenImmersion f] [IsOpenImmersion g] (M : Y.Modules) :
+    (pullbackCongr h).hom.app M ≫ (restrictFunctorIsoPullback g).inv.app M =
+      (restrictFunctorIsoPullback f).inv.app M ≫ (restrictFunctorCongr h).hom.app M := by
+  apply (cancel_epi ((restrictFunctorIsoPullback f).hom.app M)).mp
+  rw [← Category.assoc, restrictFunctorIsoPullback_congr_hom_app]
+  simp only [Category.assoc, Iso.hom_inv_id_app, Category.comp_id,
+    Iso.hom_inv_id_app_assoc]
 
 end AlgebraicGeometry.Scheme.Modules

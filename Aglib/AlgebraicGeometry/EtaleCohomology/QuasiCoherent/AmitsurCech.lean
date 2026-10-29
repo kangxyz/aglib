@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurExactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts
+public import Mathlib.CategoryTheory.Opposites
 
 /-! # The original singleton spectrum Čech complex is exact in positive degree -/
 
@@ -23,13 +24,9 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent
 def rightOpSectionsIso {C D E A : Type*} [Category* C] [Category* D]
     [Category* E] [Category* A] (F : C ⥤ D) (G : Dᵒᵖ ⥤ E)
     (N : Cᵒᵖ ⥤ E) (e : F.op ⋙ G ≅ N) (P : Eᵒᵖ ⥤ A) :
-    F ⋙ G.rightOp ⋙ P ≅ N.rightOp ⋙ P := by
-  let e' : (F.op ⋙ G).rightOp ≅ N.rightOp := {
-    hom := e.inv.rightOp
-    inv := e.hom.rightOp
-    hom_inv_id := by rw [← NatTrans.rightOp_comp, e.hom_inv_id, NatTrans.rightOp_id]
-    inv_hom_id := by rw [← NatTrans.rightOp_comp, e.inv_hom_id, NatTrans.rightOp_id] }
-  exact Functor.isoWhiskerRight e' P
+    F ⋙ G.rightOp ⋙ P ≅ N.rightOp ⋙ P :=
+  Functor.isoWhiskerRight
+    ((Functor.leftOpRightOpEquiv C E).functor.mapIso (Iso.op e.symm)) P
 
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
   (F : (Spec (CommRingCat.of R)).Modules) [F.IsQuasicoherent]

@@ -11,6 +11,15 @@ coefficient/torsor leaves compare actual finite-etale group schemes, coefficient
 sheaves and their canonical maps. They reuse the single generic continuous-H1
 quotient and its affine torsor carrier.
 
+The underlying Set-sheaf language is the actual `Scheme.EtaleTopos X` and its
+induced geometric morphism `Scheme.etaleToposMorphism f`, provided below H1 by
+`Sites/EtaleTopos`. `TorsorAdjunction` uses its direct image in the carrier-map
+data and extension lift; `SchemeTorsorBaseChange` uses it for the represented
+section map. The original section values and native units/counits are retained.
+Abelian and module coefficient images keep their actual coefficient
+adjunctions and universe ranges. `DegreeZeroPullback` obtains the constant/Gamma
+transport equation from the shared adjunction Hom-mate proof.
+
 `FundamentalGroupComparison` gives the finite-coefficient comparison with the
 specified fibre functor and marking. `MarkedComparisonTransport`, `Naturality`,
 `PointedNaturality`, `PointedFieldTransport`, `PointedCoefficientNaturality` and
@@ -22,6 +31,14 @@ theorem. The separate proper-henselian results below apply to every actual
 finite locally constant abelian sheaf and impose no order-invertibility premise.
 No supplier is inferred from the presence of an abstract classification
 interface.
+
+[FiniteTorsorRepresentation](FiniteTorsorRepresentation.lean) specializes the
+[generic slice trivialization](../../../CategoryTheory/Sites/Torsor/ChartTrivialization.lean)
+at the original etale test maps. Its chart components are the same
+`sectionEquiv` maps; geometric covers and the Stacks03RV representative remain
+in this family. [TorsorFunctoriality](TorsorFunctoriality.lean) specializes the
+[generic pushout and inverse-image class operations](../../../CategoryTheory/Sites/Torsor/Functoriality.lean),
+retaining native Stacks03AJ headers and independent Ext universes.
 
 Generic Kan extension and extension-pushout algebra live below this family in
 `CategoryTheory`; finite-etale sheaf descent lives in

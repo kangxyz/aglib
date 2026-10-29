@@ -3,28 +3,17 @@ Copyright (c) 2026 kangxyz. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
-
 module
 
-/- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
-Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Torsor.Augmentation
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors
-public import Aglib.CategoryTheory.Abelian.ExtensionPushout
-public import Aglib.Algebra.Group.Action.TorsorAugmentation
-public import Mathlib.CategoryTheory.Sites.LocallySurjective
-public import Mathlib.Algebra.Category.Grp.Kernels
-public import Mathlib.CategoryTheory.Limits.FunctorCategory.Shapes.Kernels
-public import Mathlib.CategoryTheory.Sites.SheafCohomology.ExactSequences
 
-/-!
-# The torsor augmentation for the canonical Ext class
+/-! # The original etale torsor augmentation
 
-Construction prerequisite for `K2-018#eq:k2018-pointed-character`, frozen basis
-`7f86e4a1763cc4ec35e9b0a8acd659750355a0de`.
-
-This implements the actual free-abelian-sheaf augmentation used in Stacks
-03AJ, Lemma 21.4.3. A canonical Ext class requires the augmentation-kernel
-map and pushout extension; no torsor/H¹ bijectivity is assumed here.
+The selected generic-site producer retains the original free presheaf,
+augmentation kernel, difference map and pushout extension. This file supplies
+the actual small-etale site and retains the terminal-section presentation of
+integer one and of the degree-zero boundary formula.
 -/
 
 @[expose] public section
@@ -33,6 +22,7 @@ noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 universe u
@@ -40,188 +30,130 @@ attribute [local instance] hasSheafifyLarge
 variable {X : Scheme.{u}} {L : AbelianSheaf.{u, u + 1} X}
 
 /-- The free abelian presheaf on the actual torsor sheaf. -/
-def torsorFreePresheaf (P : Torsor L) : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
-  P.carrier.obj ⋙ AddCommGrpCat.free
+abbrev torsorFreePresheaf (P : Torsor L) : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  CategoryTheory.Sheaf.torsorFreePresheaf P
 
 /-- Augmentation assigns one to every torsor section. -/
-def torsorAugmentationPresheaf (P : Torsor L) :
+abbrev torsorAugmentationPresheaf (P : Torsor L) :
     torsorFreePresheaf P ⟶ (Functor.const X.Etaleᵒᵖ).obj
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ)) where
-  app U := AddCommGrpCat.ofHom (FreeAbelianGroup.lift (fun _ => (1 : ULift.{u + 1} ℤ)))
-  naturality {U V} f := by
-    ext t
-    simp only [torsorFreePresheaf, Functor.comp_map, AddCommGrpCat.free_map,
-      Functor.const_obj_map, AddCommGrpCat.comp_apply]
-    exact (FreeAbelianGroup.lift_comp _ (fun _ => (1 : ULift.{u + 1} ℤ)) t).symm
+      (AddCommGrpCat.of (ULift.{u + 1} ℤ)) :=
+  CategoryTheory.Sheaf.torsorAugmentationPresheaf P
 
 /-- The free abelian sheaf on the torsor. -/
-def torsorFreeSheaf (P : Torsor L) : AbelianSheaf.{u, u + 1} X :=
-  (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj (torsorFreePresheaf P)
+abbrev torsorFreeSheaf (P : Torsor L) : AbelianSheaf.{u, u + 1} X :=
+  CategoryTheory.Sheaf.torsorFreeSheaf P
 
 /-- The augmentation of the actual free abelian sheaf. -/
-def torsorAugmentation (P : Torsor L) : torsorFreeSheaf P ⟶
+abbrev torsorAugmentation (P : Torsor L) : torsorFreeSheaf P ⟶
     (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
       (AddCommGrpCat.of (ULift.{u + 1} ℤ)) :=
-  (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map
-    (torsorAugmentationPresheaf P)
+  CategoryTheory.Sheaf.torsorAugmentation P
 
 /-- Local nonemptiness makes augmentation locally surjective. -/
 instance torsorAugmentationPresheaf_locallySurjective (P : Torsor L) :
     Presheaf.IsLocallySurjective (Scheme.smallEtaleTopology X)
-      (torsorAugmentationPresheaf P) where
-  imageSieve_mem {U} z := by
-    refine (Scheme.smallEtaleTopology X).superset_covering ?_ (P.locally_nonempty U)
-    rintro V f ⟨t⟩
-    refine ⟨z.down • FreeAbelianGroup.of t, ?_⟩
-    change FreeAbelianGroup.lift (fun _ => (1 : ULift.{u + 1} ℤ))
-      (z.down • FreeAbelianGroup.of t) = z
-    simp only [map_zsmul, FreeAbelianGroup.lift_apply_of, zsmul_eq_mul, mul_one]
-    apply ULift.ext
-    simp
+      (torsorAugmentationPresheaf P) :=
+  CategoryTheory.Sheaf.torsorAugmentationPresheaf_locallySurjective P
 
 /-- Sheafification preserves local surjectivity of the torsor augmentation. -/
 instance torsorAugmentation_locallySurjective (P : Torsor L) :
-    Sheaf.IsLocallySurjective (torsorAugmentation P) := by
-  let J := Scheme.smallEtaleTopology X
-  let a := torsorAugmentationPresheaf P
-  have : Presheaf.IsLocallySurjective J (a ≫ toSheafify J _) := by
-    infer_instance
-  exact Presheaf.isLocallySurjective_of_isLocallySurjective_fac J
-    (toSheafify_naturality J a).symm
+    Sheaf.IsLocallySurjective (torsorAugmentation P) :=
+  CategoryTheory.Sheaf.torsorAugmentation_locallySurjective P
 
 /-- The augmentation of a locally nonempty torsor is an epimorphism. -/
-instance torsorAugmentation_epi (P : Torsor L) : Epi (torsorAugmentation P) := by
-  infer_instance
+instance torsorAugmentation_epi (P : Torsor L) : Epi (torsorAugmentation P) :=
+  CategoryTheory.Sheaf.torsorAugmentation_epi P
 
 /-- The augmentation is the universe lift of the ordinary integer augmentation. -/
 theorem torsorAugmentationPresheaf_apply (P : Torsor L) (U : X.Etaleᵒᵖ)
     (x : FreeAbelianGroup (P.carrier.obj.obj U)) :
     (torsorAugmentationPresheaf P).app U x =
-      ULift.up (AddAction.TorsorAugmentation.augmentation _ x) := by
-  exact FreeAbelianGroup.lift_comp_apply x (fun _ => (1 : ℤ))
-    (AddEquiv.ulift : ULift.{u + 1} ℤ ≃+ ℤ).symm.toAddMonoidHom
+      ULift.up (AddAction.TorsorAugmentation.augmentation _ x) :=
+  CategoryTheory.Sheaf.torsorAugmentationPresheaf_apply P U x
 
 /-- The actual augmentation kernels, objectwise, with restriction maps. -/
-def torsorKernelPresheaf (P : Torsor L) : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} where
-  obj U := AddCommGrpCat.of (AddAction.TorsorAugmentation.AugmentationKernel (P.carrier.obj.obj U))
-  map f := AddCommGrpCat.ofHom (AddAction.TorsorAugmentation.kernelMap (P.carrier.obj.map f))
-  map_id U := by
-    ext x
-    change FreeAbelianGroup.map (fun y => P.carrier.obj.map (𝟙 U) y) x.val = x.val
-    rw [P.carrier.obj.map_id]
-    exact FreeAbelianGroup.map_id_apply x.val
-  map_comp f g := by
-    ext x
-    change FreeAbelianGroup.map (fun y => P.carrier.obj.map (f ≫ g) y) x.val =
-      FreeAbelianGroup.map (fun y => P.carrier.obj.map g y)
-        (FreeAbelianGroup.map (fun y => P.carrier.obj.map f y) x.val)
-    rw [P.carrier.obj.map_comp]
-    simpa only [types_comp_apply, Function.comp_def] using
-      (FreeAbelianGroup.map_comp_apply
-        (f := fun y => P.carrier.obj.map f y)
-        (g := fun y => P.carrier.obj.map g y) x.val)
+abbrev torsorKernelPresheaf (P : Torsor L) : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1} :=
+  CategoryTheory.Sheaf.torsorKernelPresheaf P
 
 /-- Inclusion of the augmentation kernel presheaf. -/
-def torsorKernelInclusion (P : Torsor L) : torsorKernelPresheaf P ⟶ torsorFreePresheaf P where
-  app U := AddCommGrpCat.ofHom (AddAction.TorsorAugmentation.augmentation (P.carrier.obj.obj
-    U)).ker.subtype
-  naturality {U V} f := by ext x; rfl
+abbrev torsorKernelInclusion (P : Torsor L) : torsorKernelPresheaf P ⟶ torsorFreePresheaf P :=
+  CategoryTheory.Sheaf.torsorKernelInclusion P
 
 /-- The difference map is defined without choosing any global torsor section. -/
-def torsorKernelDifference (P : Torsor L) : torsorKernelPresheaf P ⟶ L.obj where
-  app U := by
-    let := P.sectionAction U
-    exact AddCommGrpCat.ofHom (AddAction.TorsorAugmentation.kernelDifference (P.unique_transport U))
-  naturality {U V} f := by
-    let := P.sectionAction U
-    let := P.sectionAction V
-    ext x
-    exact AddAction.TorsorAugmentation.kernelDifference_naturality (P.unique_transport U)
-      (P.unique_transport V) (L.obj.map f).hom (P.carrier.obj.map f) (P.naturality f) x
+abbrev torsorKernelDifference (P : Torsor L) : torsorKernelPresheaf P ⟶ L.obj :=
+  CategoryTheory.Sheaf.torsorKernelDifference P
 
 /-- The augmentation-kernel inclusion composes to zero. -/
 theorem torsorKernelInclusion_augmentation (P : Torsor L) :
-    torsorKernelInclusion P ≫ torsorAugmentationPresheaf P = 0 := by
-  ext U x
-  change (torsorAugmentationPresheaf P).app U x.val = 0
-  rw [torsorAugmentationPresheaf_apply, x.property]
-  rfl
+    torsorKernelInclusion P ≫ torsorAugmentationPresheaf P = 0 :=
+  CategoryTheory.Sheaf.torsorKernelInclusion_augmentation P
 
 /-- The explicit presheaf kernel identifies with the concrete kernel at each object. -/
-def torsorKernelPointIso (P : Torsor L) (U : X.Etaleᵒᵖ) :
+abbrev torsorKernelPointIso (P : Torsor L) (U : X.Etaleᵒᵖ) :
     (torsorKernelPresheaf P).obj U ≅
       AddCommGrpCat.of ((torsorAugmentationPresheaf P).app U).hom.ker :=
-  AddEquiv.toAddCommGrpIso {
-    toFun x := ⟨x.val, by
-      change (torsorAugmentationPresheaf P).app U x.val = 0
-      rw [torsorAugmentationPresheaf_apply, x.property]
-      rfl⟩
-    invFun x := ⟨x.val, by
-      have h := congrArg ULift.down x.property
-      change ((torsorAugmentationPresheaf P).app U x.val).down = 0 at h
-      rw [torsorAugmentationPresheaf_apply] at h
-      exact h⟩
-    left_inv _ := rfl
-    right_inv _ := rfl
-    map_add' _ _ := rfl }
+  CategoryTheory.Sheaf.torsorKernelPointIso P U
 
 /-- The actual augmentation kernel universal property, not a kernel-shaped premise. -/
-def torsorKernelIsLimit (P : Torsor L) :
-    IsLimit (KernelFork.ofι (torsorKernelInclusion P) (torsorKernelInclusion_augmentation P)) := by
-  refine evaluationJointlyReflectsLimits _ fun U =>
-    (KernelFork.isLimitMapConeEquiv ..).2 ?_
-  exact (AddCommGrpCat.kernelIsLimit ((torsorAugmentationPresheaf P).app U)).ofIsoLimit
-    (Fork.ext (torsorKernelPointIso P U).symm (by ext x; rfl))
+abbrev torsorKernelIsLimit (P : Torsor L) :
+    IsLimit (KernelFork.ofι (torsorKernelInclusion P) (torsorKernelInclusion_augmentation P)) :=
+  CategoryTheory.Sheaf.torsorKernelIsLimit P
 
 /-- The sheafified augmentation kernel. -/
-def torsorKernelSheaf (P : Torsor L) : AbelianSheaf.{u, u + 1} X :=
-  (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
-    (torsorKernelPresheaf P)
+abbrev torsorKernelSheaf (P : Torsor L) : AbelianSheaf.{u, u + 1} X :=
+  CategoryTheory.Sheaf.torsorKernelSheaf P
 
 /-- The morphism from the sheafified torsor augmentation kernel to the free abelian
 sheaf of the torsor, obtained by sheafifying `torsorKernelInclusion P`. -/
-def torsorKernelSheafInclusion (P : Torsor L) : torsorKernelSheaf P ⟶ torsorFreeSheaf P :=
-  (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map
-    (torsorKernelInclusion P)
+abbrev torsorKernelSheafInclusion (P : Torsor L) : torsorKernelSheaf P ⟶ torsorFreeSheaf P :=
+  CategoryTheory.Sheaf.torsorKernelSheafInclusion P
 
 /-- The canonical torsor-difference morphism from the actual sheaf kernel. -/
-def torsorDifferenceSheafMap (P : Torsor L) : torsorKernelSheaf P ⟶ L :=
-  ((sheafificationAdjunction (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).homEquiv
-    (torsorKernelPresheaf P) L).symm (torsorKernelDifference P)
+abbrev torsorDifferenceSheafMap (P : Torsor L) : torsorKernelSheaf P ⟶ L :=
+  CategoryTheory.Sheaf.torsorDifferenceSheafMap P
 
 theorem torsorKernelSheafInclusion_augmentation (P : Torsor L) :
-    torsorKernelSheafInclusion P ≫ torsorAugmentation P = 0 := by
-  change (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map _ ≫
-    (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map _ = 0
-  rw [← Functor.map_comp, torsorKernelInclusion_augmentation, Functor.map_zero]
+    torsorKernelSheafInclusion P ≫ torsorAugmentation P = 0 :=
+  CategoryTheory.Sheaf.torsorKernelSheafInclusion_augmentation P
 
 /-- The augmentation short complex of the actual free abelian sheaf. -/
-def torsorAugmentationComplex (P : Torsor L) : ShortComplex (AbelianSheaf.{u, u + 1} X) :=
-  ShortComplex.mk (torsorKernelSheafInclusion P) (torsorAugmentation P)
-    (torsorKernelSheafInclusion_augmentation P)
+abbrev torsorAugmentationComplex (P : Torsor L) : ShortComplex (AbelianSheaf.{u, u + 1} X) :=
+  CategoryTheory.Sheaf.torsorAugmentationComplex P
 
 /-- Exact sheafification transports the proved presheaf kernel universal property. -/
-def torsorKernelSheafIsLimit (P : Torsor L) :
+abbrev torsorKernelSheafIsLimit (P : Torsor L) :
     IsLimit (KernelFork.ofι (torsorKernelSheafInclusion P)
       (torsorKernelSheafInclusion_augmentation P)) :=
-  KernelFork.mapIsLimit _ (torsorKernelIsLimit P)
-    (presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1})
+  CategoryTheory.Sheaf.torsorKernelSheafIsLimit P
 
 /-- The torsor augmentation sequence is short exact. -/
 theorem torsorAugmentation_shortExact (P : Torsor L) :
-    (torsorAugmentationComplex P).ShortExact where
-  exact := (torsorAugmentationComplex P).exact_of_f_is_kernel (torsorKernelSheafIsLimit P)
-  mono_f := mono_of_isLimit_fork (torsorKernelSheafIsLimit P)
-  epi_g := torsorAugmentation_epi P
+    (torsorAugmentationComplex P).ShortExact :=
+  CategoryTheory.Sheaf.torsorAugmentation_shortExact P
 
 /-- The actual pushout extension of constant ℤ by the coefficient sheaf. -/
-def torsorExtension (P : Torsor L) : ShortComplex (AbelianSheaf.{u, u + 1} X) :=
-  CategoryTheory.Abelian.ExtensionPushout.complex (torsorAugmentationComplex P)
-    (torsorDifferenceSheafMap P)
+abbrev torsorExtension (P : Torsor L) : ShortComplex (AbelianSheaf.{u, u + 1} X) :=
+  CategoryTheory.Sheaf.torsorExtension P
 
 /-- Exactness of the canonical torsor extension is proved. -/
 theorem torsorExtension_shortExact (P : Torsor L) : (torsorExtension P).ShortExact :=
-  CategoryTheory.Abelian.ExtensionPushout.shortExact _ _ (torsorAugmentation_shortExact P)
+  CategoryTheory.Sheaf.torsorExtension_shortExact P
+
+/-- The original terminal-site value of the intrinsic integer-one global element. -/
+def constantIntegerOne (X : Scheme.{u}) :
+    ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
+      (AddCommGrpCat.of (ULift.{u + 1} ℤ))).obj.obj (op (etaleTerminal X)) :=
+  Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X) _
+    (CategoryTheory.Sheaf.constantIntegerOne (Scheme.smallEtaleTopology X))
+
+/-- The terminal-site presentation gives the same intrinsic integer-one arrow. -/
+theorem constantIntegerOne_asGlobalPoint :
+    (Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X)
+      (underlyingSetSheaf ((constantSheaf (Scheme.smallEtaleTopology X)
+        AddCommGrpCat.{u + 1}).obj (AddCommGrpCat.of (ULift.{u + 1} ℤ))))).symm
+      (constantIntegerOne X) =
+        CategoryTheory.Sheaf.constantIntegerOne (Scheme.smallEtaleTopology X) :=
+  (Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X) _).symm_apply_apply _
 
 section ExtClass
 universe w
@@ -229,29 +161,20 @@ variable [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
 /-- The canonical torsor-to-Ext class, constructed from the genuine pushout
 extension of Stacks 03AJ, with the `[s]-[t]` positive transport convention. -/
-def torsorExtClass (P : Torsor L) : H1Etale X L :=
-  (torsorExtension_shortExact P).extClass
+abbrev torsorExtClass (P : Torsor L) : H1Etale X L :=
+  CategoryTheory.Sheaf.torsorExtClass P
 
 /-- Equivalent coefficient-change description of the constructed pushout class. -/
 theorem torsorExtClass_eq (P : Torsor L) :
     torsorExtClass P = (torsorAugmentation_shortExact P).extClass.comp
       (Abelian.Ext.mk₀ (torsorDifferenceSheafMap P)) (add_zero 1) :=
-  (CategoryTheory.Abelian.ExtensionPushout.extClass _ _ (torsorAugmentation_shortExact P)).symm
+  CategoryTheory.Sheaf.torsorExtClass_eq P
 
 /-- The class is the connecting image of the identity class of constant ℤ. -/
 theorem torsorExtClass_boundary (P : Torsor L) :
     Sheaf.H.δ (torsorExtension_shortExact P) 0 1 rfl
-      (Abelian.Ext.mk₀ (𝟙 (torsorExtension P).X₃)) = torsorExtClass P := by
-  change (Abelian.Ext.mk₀ (𝟙 _)).comp _ (zero_add 1) = _
-  exact Abelian.Ext.mk₀_id_comp _
-
-/-- The global section `1` of the actual constant integer sheaf. -/
-def constantIntegerOne (X : Scheme.{u}) :
-    ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
-      (AddCommGrpCat.of (ULift.{u + 1} ℤ))).obj.obj (op (etaleTerminal X)) :=
-  (toSheafify (Scheme.smallEtaleTopology X)
-    ((Functor.const X.Etaleᵒᵖ).obj (AddCommGrpCat.of (ULift.{u + 1} ℤ)))).app
-      (op (etaleTerminal X)) (ULift.up 1)
+      (Abelian.Ext.mk₀ (𝟙 (torsorExtension P).X₃)) = torsorExtClass P :=
+  CategoryTheory.Sheaf.torsorExtClass_boundary P
 
 /-- The identity Ext⁰ class is exactly the global integer section `1`. -/
 theorem constantIntegerOne_identity :

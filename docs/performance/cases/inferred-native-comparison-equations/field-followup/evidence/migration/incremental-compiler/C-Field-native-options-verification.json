@@ -1,0 +1,49 @@
+{
+  "scope": "C Field effective native elaboration options; existing metadata only, no rerun",
+  "native_reference_run": "remote-bf20009e4ff941a2affe91985903532b",
+  "diagnostic_reference_run": "remote-614cbe7476874fcca5b896c5863a9584",
+  "diagnostic_setup_sha256": "8a299ce50e7cedd053744bfc5690f13486d51b67f52764383242576b28e72aa4",
+  "native_ir_setup_currently_exists": false,
+  "native_ir_bytewise_comparison": "unavailable: original production IR setup no longer retained at expected path; not claimed",
+  "native_invocation_evidence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-bf20009e4ff941a2affe91985903532b/build.log",
+  "diagnostic_invocation": [
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/toolchain/bin/lean",
+    "-M12800",
+    "-j4",
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean",
+    "--setup",
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.setup.json",
+    "-o",
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.olean",
+    "-i",
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.ilean",
+    "-c",
+    "/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/Field.c"
+  ],
+  "setup_generation": "Existing native Lake --no-build setup-file actual native Field.lean; full name/isModule/options/importArts retained in FIELD_WHOLE_V3_REQUEST",
+  "setup_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Field",
+  "setup_isModule": true,
+  "diagnostic_complete_options": {
+    "autoImplicit": false,
+    "warningAsError": true,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500
+  },
+  "package_AglibModules_complete_options": {
+    "autoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500,
+    "warningAsError": true
+  },
+  "complete_options_equal": true,
+  "package_lakefile_sha256": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+  "matches_native_production_lakefile_input": true,
+  "diagnostic_extra_D_flags": [],
+  "preserved_native_source_options": [
+    "set_option backward.defeqAttrib.useBackward true",
+    "set_option backward.isDefEq.respectTransparency false",
+    "set_option backward.isDefEq.respectTransparency.types false",
+    "set_option linter.style.haveILetI false"
+  ],
+  "boundary": "Recorded --setup covers all native per-library elaboration options. This is not a production/adoption claim. Separate pp.all diagnostic changes only its declared local display setting. No old-input rerun."
+}

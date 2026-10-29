@@ -19,67 +19,6 @@ with transitions obtained from the original inverse-image triangle isomorphisms.
 
 open CategoryTheory CategoryTheory.Limits Opposite
 
-namespace CategoryTheory.InjectiveSystem
-
-universe uI vI uA vA
-
-/-- Construct the actual right-adjoint system from coherent left-adjoint transitions. -/
-def System.ofLeftMaps {I : Type uI} [Category.{vI} I]
-    {A : I → Type uA} [∀ i, Category.{vA} (A i)] (D : AdjunctionData A)
-    (P : ∀ i, A i) (φ : ∀ {i j}, (a : i ⟶ j) → (D.left a).obj (P i) ⟶ P j)
-    (hId : ∀ i, φ (𝟙 i) = (D.leftIdIso i).hom.app (P i))
-    (hComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
-      φ (a ≫ b) = (D.leftCompIso a b).hom.app (P i) ≫
-        (D.left b).map (φ a) ≫ φ b) : System D where
-  obj := P
-  map a := (D.adj a).homEquiv _ _ (φ a)
-  map_id i := by
-    rw [hId]
-    have ht := homEquiv_precomp_conjugate Adjunction.id (D.adj (𝟙 i))
-      (D.leftIdIso i).hom (𝟙 (P i))
-    have hm : conjugateEquiv Adjunction.id (D.adj (𝟙 i)) (D.leftIdIso i).hom =
-        (D.idIso i).inv := Adjunction.conjugateEquiv_leftAdjointIdIso_hom _ _
-    rw [hm] at ht
-    have hid : Adjunction.id.homEquiv (P i) (P i) (𝟙 (P i)) = 𝟙 (P i) :=
-      (Adjunction.homEquiv_id Adjunction.id (P i)).trans rfl
-    have ht' := ht.trans (congrArg
-      (fun k => k ≫ (D.idIso i).inv.app (P i)) hid)
-    have hleft := congrArg ((D.adj (𝟙 i)).homEquiv (P i) (P i))
-      (Category.comp_id ((D.leftIdIso i).hom.app (P i)))
-    have hvalue := hleft.symm.trans (ht'.trans (Category.id_comp _))
-    exact (congrArg (fun k => k ≫ (D.idIso i).hom.app (P i)) hvalue).trans
-      ((D.idIso i).inv_hom_id_app (P i))
-  map_comp a b := by
-    rw [hComp, homEquiv_precomp_conjugate ((D.adj a).comp (D.adj b))
-      (D.adj (a ≫ b)) (D.leftCompIso a b).hom]
-    have hm : conjugateEquiv ((D.adj a).comp (D.adj b)) (D.adj (a ≫ b))
-        (D.leftCompIso a b).hom = (D.compIso a b).inv :=
-      Adjunction.conjugateEquiv_leftAdjointCompIso_inv _ _ _ _
-    rw [hm, Category.assoc, Iso.inv_hom_id_app, Category.comp_id,
-      Adjunction.comp_homEquiv]
-    change (D.adj a).homEquiv _ _ ((D.adj b).homEquiv _ _
-      ((D.left b).map (φ a) ≫ φ b)) = _
-    rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right]
-
-/-- Keep explicit comparison choices at the abstract adjunction boundary. -/
-def System.ofLeftMapsWithComparisons {I : Type uI} [Category.{vI} I]
-    {A : I → Type uA} [∀ i, Category.{vA} (A i)] (D : AdjunctionData A)
-    (eId : ∀ i, D.left (𝟙 i) ≅ 𝟭 (A i))
-    (eComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
-      D.left (a ≫ b) ≅ D.left a ⋙ D.left b)
-    (heId : ∀ i, D.leftIdIso i = eId i)
-    (heComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k), D.leftCompIso a b = eComp a b)
-    (P : ∀ i, A i) (φ : ∀ {i j}, (a : i ⟶ j) → (D.left a).obj (P i) ⟶ P j)
-    (hId : ∀ i, φ (𝟙 i) = (eId i).hom.app (P i))
-    (hComp : ∀ {i j k} (a : i ⟶ j) (b : j ⟶ k),
-      φ (a ≫ b) = (eComp a b).hom.app (P i) ≫ (D.left b).map (φ a) ≫ φ b) :
-    System D :=
-  System.ofLeftMaps D P φ
-    (fun i => by rw [heId]; exact hId i)
-    (fun a b => by rw [heComp]; exact hComp a b)
-
-end CategoryTheory.InjectiveSystem
-
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.Stalk
 
 universe u uI vI
@@ -178,19 +117,30 @@ theorem pullbackCoefficientTransition_comp {i j k : I} (a : i ⟶ j) (d : j ⟶ 
 
 /-- Pulling back one fixed sheaf gives a genuine compatible coefficient system. -/
 def pullbackCoefficientSystem : DiagramCoefficientSystem Y :=
-  InjectiveSystem.System.ofLeftMapsWithComparisons (diagramAdjunctionData Y)
-    (diagramInverseImageId Y) (diagramInverseImageComp Y)
-    (leftIdIso_eq_diagramInverseImageId Y) (leftCompIso_eq_diagramInverseImageComp Y)
+  InjectiveSystem.System.ofLeft (diagramAdjunctionData Y)
     (fun i => (inverseImage (b.π.app i).unop).obj F)
     (pullbackCoefficientTransition Y b F)
-    (pullbackCoefficientTransition_id Y b F)
-    (pullbackCoefficientTransition_comp Y b F)
+    (fun i => by
+      rw [leftIdIso_eq_diagramInverseImageId Y i]
+      exact pullbackCoefficientTransition_id Y b F i)
+    (fun a d => by
+      rw [leftCompIso_eq_diagramInverseImageComp Y a d]
+      exact pullbackCoefficientTransition_comp Y b F a d)
 
 /-- The inverse transition is literally the original triangle identification. -/
 @[simp]
 theorem diagramInverseTransition_pullbackCoefficientSystem {i j : I} (a : i ⟶ j) :
     diagramInverseTransition Y (pullbackCoefficientSystem Y b F) a =
-      pullbackCoefficientTransition Y b F a :=
-  Equiv.symm_apply_apply _ _
+      pullbackCoefficientTransition Y b F a := by
+  change (pullbackCoefficientSystem Y b F).leftMap (diagramAdjunctionData Y) a = _
+  exact InjectiveSystem.System.ofLeft_leftMap (diagramAdjunctionData Y)
+    (fun i => (inverseImage (b.π.app i).unop).obj F)
+    (fun {i j} (a : i ⟶ j) => pullbackCoefficientTransition Y b F a)
+    (fun i => by
+      rw [leftIdIso_eq_diagramInverseImageId Y i]
+      exact pullbackCoefficientTransition_id Y b F i)
+    (fun a d => by
+      rw [leftCompIso_eq_diagramInverseImageComp Y a d]
+      exact pullbackCoefficientTransition_comp Y b F a d) a
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

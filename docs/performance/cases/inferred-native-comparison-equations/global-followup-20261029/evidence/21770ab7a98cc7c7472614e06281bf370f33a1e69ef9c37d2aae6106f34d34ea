@@ -1,0 +1,31 @@
+{
+  "phase": "V30NativeSharedRepresentedConstruction",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "de7ca8da360c2e46e78ff742c6e01f00505861b319c917d7bb539420f5a181d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "7f855c431cb16eec134c96c0ec4ae6041cd4f22c40699e9ccb809dc57f8ac703"
+  },
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/SharedRepresentedConstruction-v30.json",
+  "metadata_sha256": "2e830a75b1f5305b67393f083e1b5815d3ee0c6edf7e8aab24f44481be378950",
+  "prefix_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/SharedRepresentedConstruction-v30.lean",
+  "prefix_sha256": "2cf13634bd2a5cd034fff1fb3410758838e4f56172c303d7474e4bcd20ea3fbe",
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-shared-construction-v30-payload.py",
+  "payload_sha256": "6ba22bf7c5279dfc65119385c0e477c5365e567d431e0198ff4d7bae6575eb55",
+  "expected_native_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+  "expected_native_options": {
+    "autoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500,
+    "warningAsError": true
+  },
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v30-import-aaa250be.json",
+  "prior_source_archive_sha256": "d0c24961ab40aeddcff0ec29a263ddeb0c725cc8d402dbcebde0dfbef18e2727",
+  "reused_preparation": "Actualaaa250/source1c345 changedRepde7 PASS7.721s+neededSheafColimit27.719s; no furtherprep/no unchangedproviderrepeat.",
+  "boundary": "Officialsame nativeGlobal setup/full4options/default200000; fixedprefix2cf136 only, complete module/callers remain separate."
+}

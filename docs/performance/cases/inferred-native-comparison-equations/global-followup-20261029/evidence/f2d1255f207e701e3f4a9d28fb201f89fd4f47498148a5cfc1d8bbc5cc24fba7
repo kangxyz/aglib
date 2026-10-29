@@ -1,0 +1,8 @@
+PREPARED_IMPORT_READINESS_BEGIN
+All targets up-to-date (3416 jobs).
+
+PREPARED_IMPORT_READINESS_END exit=0
+GLOBAL_SQUARE_FORMATION_DIAGNOSTIC_BEGIN sha256=55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6
+
+GLOBAL_SQUARE_FORMATION_DIAGNOSTIC_END exit=0
+{"diagnostic_exit": 0, "source_sha256": "55c4d276604ae1b371deda0edb86e845ff5fe6a70fbccbb6e09be84ebf4641a6", "boundary": "prefix plus faithful proposition binder probes only; no theorem proof or production coverage"}

@@ -1,0 +1,819 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.CategoryTheory.Sites.Elements.SheafCondition
+public import Aglib.CategoryTheory.Topos.SheafMorphism
+public import Mathlib.CategoryTheory.ObjectProperty.Equivalence
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.Logic.Equiv.Sum
+public import Mathlib.CategoryTheory.Limits.Types.Products
+public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
+public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
+public import Mathlib.CategoryTheory.Sites.Limits
+
+/-!
+# Intrinsic slices of the actual category of sheaves
+
+Restrict the native presheaf slice equivalence using genuine sheaf gluing.
+The aligned construction keeps its original fibre/sigma functors and unit
+and counit. The public independent-value realization uses one native
+Hom-size adapter and returns to the original site and actual sheaf slice.
+-/
+
+@[expose] public noncomputable section
+
+open CategoryTheory.Limits Opposite
+open CategoryTheory.Presheaf.ElementsSite CategoryTheory.OverPresheafAux
+
+namespace CategoryTheory.Topos.SlicePresentation
+
+universe u v w
+
+section Aligned
+
+variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
+  (P : Sheaf J (Type v))
+
+public abbrev Construction.overForget : Over P ⥤ Over P.obj :=
+  Over.post (sheafToPresheaf J (Type v))
+
+public abbrev Construction.overForgetFullyFaithful : (Construction.overForget J P).FullyFaithful :=
+  (fullyFaithfulSheafToPresheaf J (Type v)).over (X := P)
+
+/-- The native fibre functor, restricted through the original sheaf inclusion. -/
+def alignedFibreFunctor :
+    Over P ⥤ Sheaf (costructuredTopology P.obj J) (Type v) :=
+  ObjectProperty.lift _
+    (Construction.overForget J P ⋙ (overEquivPresheafCostructuredArrow P.obj).functor)
+    (fun Y => (isSheaf_iff_isSheaf_of_type _ _).2
+      (restrictedYonedaObj_isSheaf J
+        ((isSheaf_iff_isSheaf_of_type _ _).1 P.property) Y.hom.hom
+        ((isSheaf_iff_isSheaf_of_type _ _).1 Y.left.property)))
+
+/-- The native sigma functor lands in the actual sheaf slice because labels and
+fibres glue. No second total presheaf or sheafification is selected. -/
+def alignedTotalFunctor :
+    Sheaf (costructuredTopology P.obj J) (Type v) ⥤ Over P where
+  obj F :=
+    let T := (overEquivPresheafCostructuredArrow P.obj).inverse.obj F.obj
+    let hT : Presheaf.IsSheaf J T.left :=
+      (isSheaf_iff_isSheaf_of_type _ _).2
+        (yonedaCollection_isSheaf F.obj J
+          ((isSheaf_iff_isSheaf_of_type _ _).1 P.property)
+          ((isSheaf_iff_isSheaf_of_type _ _).1 F.property))
+    Over.mk (show (⟨T.left, hT⟩ : Sheaf J (Type v)) ⟶ P from ⟨T.hom⟩)
+  map {F G} f :=
+    Over.homMk
+      ⟨((overEquivPresheafCostructuredArrow P.obj).inverse.map f.hom).left⟩
+      (by
+        apply Sheaf.hom_ext
+        exact Over.w ((overEquivPresheafCostructuredArrow P.obj).inverse.map f.hom))
+  map_id F := by
+    apply Over.OverMorphism.ext
+    apply Sheaf.hom_ext
+    change ((overEquivPresheafCostructuredArrow P.obj).inverse.map (𝟙 F.obj)).left =
+      𝟙 (((overEquivPresheafCostructuredArrow P.obj).inverse.obj F.obj).left)
+    exact congrArg
+      (fun f : (overEquivPresheafCostructuredArrow P.obj).inverse.obj F.obj ⟶
+          (overEquivPresheafCostructuredArrow P.obj).inverse.obj F.obj => f.left)
+      ((overEquivPresheafCostructuredArrow P.obj).inverse.map_id F.obj)
+  map_comp {F G H} f g := by
+    apply Over.OverMorphism.ext
+    apply Sheaf.hom_ext
+    change ((overEquivPresheafCostructuredArrow P.obj).inverse.map (f.hom ≫ g.hom)).left =
+      ((overEquivPresheafCostructuredArrow P.obj).inverse.map f.hom ≫
+        (overEquivPresheafCostructuredArrow P.obj).inverse.map g.hom).left
+    exact congrArg
+      (fun h : (overEquivPresheafCostructuredArrow P.obj).inverse.obj F.obj ⟶
+          (overEquivPresheafCostructuredArrow P.obj).inverse.obj H.obj => h.left)
+      ((overEquivPresheafCostructuredArrow P.obj).inverse.map_comp f.hom g.hom)
+
+/-- Lift the original native unit through the fully faithful sheaf-slice inclusion. -/
+def alignedUnitIso :
+    𝟭 (Over P) ≅ alignedFibreFunctor J P ⋙ alignedTotalFunctor J P :=
+  ((Construction.overForgetFullyFaithful J P).whiskeringRight (Over P)).preimageIso
+    (Functor.isoWhiskerLeft (Construction.overForget J P)
+      (overEquivPresheafCostructuredArrow P.obj).unitIso)
+
+/-- Lift the original native counit through the original sheaf inclusion. -/
+def alignedCounitIso :
+    alignedTotalFunctor J P ⋙ alignedFibreFunctor J P ≅
+      𝟭 (Sheaf (costructuredTopology P.obj J) (Type v)) :=
+  ((fullyFaithfulSheafToPresheaf (costructuredTopology P.obj J) (Type v)).whiskeringRight
+    (Sheaf (costructuredTopology P.obj J) (Type v))).preimageIso
+      (Functor.isoWhiskerLeft (sheafToPresheaf (costructuredTopology P.obj J) (Type v))
+        (overEquivPresheafCostructuredArrow P.obj).counitIso)
+
+/-- The actual sheaf restriction of the native presheaf slice equivalence.
+This first lemma has the native matching Hom/value universe. -/
+def alignedFibreEquivalence :
+    Over P ≌ Sheaf (costructuredTopology P.obj J) (Type v) where
+  functor := alignedFibreFunctor J P
+  inverse := alignedTotalFunctor J P
+  unitIso := alignedUnitIso J P
+  counitIso := alignedCounitIso J P
+  functor_unitIso_comp Y := by
+    apply Sheaf.hom_ext
+    change (overEquivPresheafCostructuredArrow P.obj).functor.map
+        ((overEquivPresheafCostructuredArrow P.obj).unitIso.hom.app
+          ((Construction.overForget J P).obj Y)) ≫
+      (overEquivPresheafCostructuredArrow P.obj).counitIso.hom.app
+        ((overEquivPresheafCostructuredArrow P.obj).functor.obj
+          ((Construction.overForget J P).obj Y)) = 𝟙 _
+    exact (overEquivPresheafCostructuredArrow P.obj).functor_unitIso_comp _
+
+/-- The unit remains the original map on the underlying presheaf slice. -/
+theorem alignedUnitIso_hom_left (Y : Over P) :
+    ((alignedUnitIso J P).hom.app Y).left.hom =
+      ((overEquivPresheafCostructuredArrow P.obj).unitIso.hom.app
+        ((Construction.overForget J P).obj Y)).left := by
+  rfl
+
+/-- The counit remains the original native fibre-of-sigma extraction. -/
+theorem alignedCounitIso_hom
+    (F : Sheaf (costructuredTopology P.obj J) (Type v)) :
+    ((alignedCounitIso J P).hom.app F).hom =
+      (overEquivPresheafCostructuredArrow P.obj).counitIso.hom.app F.obj := by
+  rfl
+
+/-- On underlying presheaves the total/forget functor is the original native
+sigma functor, including its actual coefficient maps. -/
+def alignedTotalUnderlyingIso :
+    alignedTotalFunctor J P ⋙ Over.forget P ⋙ sheafToPresheaf J (Type v) ≅
+      sheafToPresheaf (costructuredTopology P.obj J) (Type v) ⋙
+        yonedaCollectionFunctor P.obj :=
+  Iso.refl _
+
+/-- The whole total comparison retains native sigma map1 on every coefficient arrow. -/
+theorem alignedTotalUnderlyingIso_map
+    {F G : Sheaf (costructuredTopology P.obj J) (Type v)} (f : F ⟶ G)
+    (X : C) (z : YonedaCollection F.obj X) :
+    ((alignedTotalUnderlyingIso J P).hom.app G).app (op X)
+        (((alignedTotalFunctor J P).map f).left.hom.app (op X) z) =
+      YonedaCollection.map₁ f.hom
+        (((alignedTotalUnderlyingIso J P).hom.app F).app (op X) z) := rfl
+
+/-- The same actual slice equivalence on the native category of elements. -/
+def alignedFibreElementsEquivalence :
+    Over P ≌ Sheaf (topology P.obj J) (Type v) :=
+  (alignedFibreEquivalence J P).trans
+    (Equivalence.sheafCongr (topology P.obj J) (costructuredTopology P.obj J)
+      (Functor.Elements.costructuredArrowYonedaEquivalence P.obj) (Type v)).symm
+
+end Aligned
+
+section IndependentValues
+
+variable {C : Type u} [Category.{v} C] [LocallySmall.{w} C]
+  (J : GrothendieckTopology C) (P : Sheaf J (Type w))
+
+public abbrev Construction.selectedSizeTopology (_Q : Sheaf J (Type w)) :=
+  (ShrinkHoms.equivalence.{w} C).inverse.inducedTopology J
+
+public abbrev Construction.selectedSizeSheafEquivalence (Q : Sheaf J (Type w)) :=
+  Equivalence.sheafCongr J (Construction.selectedSizeTopology J Q)
+    (ShrinkHoms.equivalence.{w} C) (Type w)
+
+public abbrev Construction.selectedSizedSheaf (Q : Sheaf J (Type w)) :=
+  (Construction.selectedSizeSheafEquivalence J Q).functor.obj Q
+
+/-- The selected size adapter cancels a map using its original identity unit. -/
+theorem Construction.selectedSize_unit_map {X Y : C} (f : X ⟶ Y) :
+    (ShrinkHoms.equivalence.{w} C).inverse.map
+      ((ShrinkHoms.equivalence.{w} C).functor.map f) = f := by
+  have h := (ShrinkHoms.equivalence.{w} C).unitIso.hom.naturality f
+  change f ≫ (𝟙 Y) = (𝟙 X) ≫
+    (ShrinkHoms.equivalence.{w} C).inverse.map
+      ((ShrinkHoms.equivalence.{w} C).functor.map f) at h
+  simpa only [Category.comp_id, Category.id_comp] using h.symm
+
+/-- The other map cancellation uses the same adapter's original identity counit. -/
+theorem Construction.selectedSize_counit_map {X Y : ShrinkHoms C} (f : X ⟶ Y) :
+    (ShrinkHoms.equivalence.{w} C).functor.map
+      ((ShrinkHoms.equivalence.{w} C).inverse.map f) = f := by
+  have h := (ShrinkHoms.equivalence.{w} C).counitIso.hom.naturality f
+  change (ShrinkHoms.equivalence.{w} C).functor.map
+      ((ShrinkHoms.equivalence.{w} C).inverse.map f) ≫ (𝟙 Y) = (𝟙 X) ≫ f at h
+  simpa only [Category.comp_id, Category.id_comp] using h
+
+/-- The same computed native element-size comparison used by the presentation. -/
+public def Construction.selectedElementSizeEquivalence :
+    Site (Construction.selectedSizedSheaf J P).obj ≌ Site P.obj := by
+  let eC := ShrinkHoms.equivalence.{w} C
+  let J' := eC.inverse.inducedTopology J
+  let eS := Equivalence.sheafCongr J J' eC (Type w)
+  let P' := eS.functor.obj P
+  let down : Site P'.obj ⥤ Site P.obj :=
+    (Functor.Elements.precomp eC.inverse.op P.obj).op
+  let up : Site P.obj ⥤ Site P'.obj :=
+    { obj := fun a => mk P'.obj (eC.functor.obj ((projection P.obj).obj a)) a.unop.val
+      map := fun {a b} f =>
+        homMk P'.obj (eC.functor.map ((projection P.obj).map f)) (by
+          change P.obj.map
+              (eC.inverse.map (eC.functor.map ((projection P.obj).map f))).op b.unop.val =
+            a.unop.val
+          rw [Construction.selectedSize_unit_map]
+          exact map_val P.obj f)
+      map_id := fun a => by
+        apply hom_ext P'.obj
+        change eC.functor.map (𝟙 _) = 𝟙 _
+        exact eC.functor.map_id _
+      map_comp := fun {a b c} f g => by
+        apply hom_ext P'.obj
+        change eC.functor.map ((projection P.obj).map (f ≫ g)) =
+          eC.functor.map ((projection P.obj).map f) ≫
+            eC.functor.map ((projection P.obj).map g)
+        rw [(projection P.obj).map_comp, eC.functor.map_comp] }
+  let eD : Site P'.obj ≌ Site P.obj :=
+    { functor := down
+      inverse := up
+      unitIso := NatIso.ofComponents
+        (fun a => (Functor.Elements.isoMk (Iso.refl _) (by simp)).op)
+        (by
+          intro a b f
+          apply hom_ext P'.obj
+          change (projection P'.obj).map f ≫ (𝟙 _) =
+            (𝟙 _) ≫ eC.functor.map (eC.inverse.map ((projection P'.obj).map f))
+          rw [Construction.selectedSize_counit_map]
+          simp only [Category.comp_id, Category.id_comp])
+      counitIso := NatIso.ofComponents
+        (fun a => (Functor.Elements.isoMk (Iso.refl _) (by simp)).op)
+        (by
+          intro a b f
+          apply hom_ext P.obj
+          change eC.inverse.map (eC.functor.map ((projection P.obj).map f)) ≫ (𝟙 _) =
+            (𝟙 _) ≫ (projection P.obj).map f
+          rw [Construction.selectedSize_unit_map]
+          simp only [Category.comp_id, Category.id_comp])
+      functor_unitIso_comp := fun a => by
+        apply hom_ext P.obj
+        change eC.inverse.map (𝟙 _) ≫ (𝟙 _) = 𝟙 _
+        simp }
+  exact eD
+
+public instance Construction.selectedElementSize_inverse_dense :
+    (Construction.selectedElementSizeEquivalence J P).inverse.IsDenseSubsite
+      (topology P.obj J)
+      (topology (Construction.selectedSizedSheaf J P).obj (Construction.selectedSizeTopology J
+        P)) := by
+  let eC := ShrinkHoms.equivalence.{w} C
+  let J' := Construction.selectedSizeTopology J P
+  let P' := Construction.selectedSizedSheaf J P
+  have hproj : (Construction.selectedElementSizeEquivalence J P).inverse ⋙ projection P'.obj =
+      projection P.obj ⋙ eC.functor := rfl
+  refine { functorPushforward_mem_iff := ?_ }
+  intro a S
+  rw [mem_topology_iff, mem_topology_iff, ← Sieve.functorPushforward_comp]
+  change S.functorPushforward
+      ((Construction.selectedElementSizeEquivalence J P).inverse ⋙ projection P'.obj) ∈ J' _ ↔
+    S.functorPushforward (projection P.obj) ∈ J _
+  rw [hproj, Sieve.functorPushforward_comp]
+  exact eC.functor.functorPushforward_mem_iff J J'
+
+public abbrev Construction.selectedElementSheafEquivalence :=
+  Equivalence.sheafCongr
+    (topology (Construction.selectedSizedSheaf J P).obj (Construction.selectedSizeTopology J P))
+    (topology P.obj J) (Construction.selectedElementSizeEquivalence J P) (Type w)
+
+public abbrev Construction.selectedCostructuredSheafEquivalence :=
+  Equivalence.sheafCongr
+    (topology (Construction.selectedSizedSheaf J P).obj (Construction.selectedSizeTopology J P))
+    (costructuredTopology (Construction.selectedSizedSheaf J P).obj
+      (Construction.selectedSizeTopology J P))
+    (Functor.Elements.costructuredArrowYonedaEquivalence (Construction.selectedSizedSheaf J P).obj)
+    (Type w)
+
+/-- Fibre equivalence on the original actual categories. One native Hom-size
+adapter is selected internally; the public worlds remain independent. -/
+def elementFibreEquivalence :
+    Over P ≌ Sheaf (topology P.obj J) (Type w) :=
+  ((Over.postEquiv (X := P) (Construction.selectedSizeSheafEquivalence J P)).trans
+    (alignedFibreElementsEquivalence (Construction.selectedSizeTopology J P)
+      (Construction.selectedSizedSheaf J P))).trans (Construction.selectedElementSheafEquivalence
+        J P)
+
+/-- The ordinary intrinsic slice presentation on the actual sheaf category. -/
+def elementSheafEquivalence :
+    Sheaf (topology P.obj J) (Type w) ≌ Over P :=
+  (elementFibreEquivalence J P).symm
+
+/-- The transported fibre is the actual subtype of sections over the specified
+label. Its value map is the identity on the original section. -/
+def fibreObjEquiv (Y : Over P) (a : Site P.obj) :
+    (((elementFibreEquivalence J P).functor.obj Y).obj.obj (op a)) ≃
+      {y : Y.left.obj.obj (op ((projection P.obj).obj a)) //
+        Y.hom.hom.app (op ((projection P.obj).obj a)) y = a.unop.val} where
+  toFun x := ⟨x.val, by
+    simpa only [Equiv.apply_symm_apply] using x.prop.app⟩
+  invFun y := ⟨y.val, ⟨by
+    simpa only [Equiv.apply_symm_apply] using y.property⟩⟩
+  left_inv x := Subtype.ext rfl
+  right_inv y := Subtype.ext rfl
+
+/-- Fibre transport retains every original restriction map. -/
+theorem fibreObjEquiv_restriction (Y : Over P) {a b : Site P.obj} (f : a ⟶ b)
+    (x : ((elementFibreEquivalence J P).functor.obj Y).obj.obj (op b)) :
+    (fibreObjEquiv J P Y a
+      (((elementFibreEquivalence J P).functor.obj Y).obj.map f.op x)).val =
+      Y.left.obj.map ((projection P.obj).map f).op (fibreObjEquiv J P Y b x).val := by
+  change Y.left.obj.map
+      ((ShrinkHoms.equivalence.{w} C).inverse.map
+        ((ShrinkHoms.equivalence.{w} C).functor.map ((projection P.obj).map f))).op x.val =
+    Y.left.obj.map ((projection P.obj).map f).op x.val
+  rw [Construction.selectedSize_unit_map]
+
+/-- An original morphism over P acts by its original coefficient component. -/
+theorem fibreObjEquiv_map {Y Z : Over P} (f : Y ⟶ Z) (a : Site P.obj)
+    (x : ((elementFibreEquivalence J P).functor.obj Y).obj.obj (op a)) :
+    (fibreObjEquiv J P Z a
+      (((elementFibreEquivalence J P).functor.map f).hom.app (op a) x)).val =
+      f.left.hom.app (op ((projection P.obj).obj a)) (fibreObjEquiv J P Y a x).val := rfl
+
+/-- The actual coefficient input to the selected native sigma construction.
+Only existing site transports and the original sheaf inclusion are composed. -/
+def nativeSigmaInput :=
+  (Construction.selectedElementSheafEquivalence J P).inverse ⋙
+    (Construction.selectedCostructuredSheafEquivalence J P).functor ⋙
+      sheafToPresheaf
+        (costructuredTopology (Construction.selectedSizedSheaf J P).obj
+          (Construction.selectedSizeTopology J P))
+        (Type w)
+
+public abbrev Construction.nativeSigmaSheafCore :=
+  (Construction.selectedElementSheafEquivalence J P).inverse ⋙
+    (Construction.selectedCostructuredSheafEquivalence J P).functor ⋙
+      alignedTotalFunctor (Construction.selectedSizeTopology J P) (Construction.selectedSizedSheaf
+        J P) ⋙
+        Over.forget (Construction.selectedSizedSheaf J P)
+
+public abbrev Construction.totalPresheafAtSize :=
+  (elementSheafEquivalence J P).functor ⋙ Over.forget P ⋙
+    (Construction.selectedSizeSheafEquivalence J P).functor ⋙
+      sheafToPresheaf (Construction.selectedSizeTopology J P) (Type w)
+
+/-- Presentation followed by actual total-object forgetting is the selected
+native sigma construction, under the same original size-transport counit. -/
+def totalForgetNativeSigmaIso :
+    Construction.totalPresheafAtSize J P ≅
+      nativeSigmaInput J P ⋙ yonedaCollectionFunctor (Construction.selectedSizedSheaf J P).obj :=
+  NatIso.ofComponents
+    (fun F => (sheafToPresheaf (Construction.selectedSizeTopology J P) (Type w)).mapIso
+      ((Construction.selectedSizeSheafEquivalence J P).counitIso.app
+        ((Construction.nativeSigmaSheafCore J P).obj F)))
+    (by
+      intro F G f
+      exact congrArg ((sheafToPresheaf (Construction.selectedSizeTopology J P) (Type w)).map)
+        ((Construction.selectedSizeSheafEquivalence J P).counitIso.hom.naturality
+          ((Construction.nativeSigmaSheafCore J P).map f)))
+
+/-- The whole total/forget comparison keeps native map1 on actual sigma values. -/
+theorem totalForgetNativeSigmaIso_map
+    {F G : Sheaf (topology P.obj J) (Type w)} (f : F ⟶ G)
+    (X : ShrinkHoms C) (z : ((Construction.totalPresheafAtSize J P).obj F).obj (op X)) :
+    ((totalForgetNativeSigmaIso J P).hom.app G).app (op X)
+        (((Construction.totalPresheafAtSize J P).map f).app (op X) z) =
+      YonedaCollection.map₁ ((nativeSigmaInput J P).map f)
+        (((totalForgetNativeSigmaIso J P).hom.app F).app (op X) z) := by
+  exact congrArg (fun h => h.app (op X) z)
+    ((totalForgetNativeSigmaIso J P).hom.naturality f)
+
+section PointwiseSigma
+
+/-- Decompose the actual selected total sheaf into its original labelled
+fibres, then apply the original presentation counit. No new total object is made. -/
+def sigmaObjEquiv (F : Sheaf (topology P.obj J) (Type w)) (X : C) :
+    ((elementFibreEquivalence J P).inverse.obj F).left.obj.obj (op X) ≃
+      Σ p : P.obj.obj (op X), F.obj.obj (op (mk P.obj X p)) :=
+  (Equiv.sigmaFiberEquiv (((elementFibreEquivalence J P).inverse.obj F).hom.hom.app (op
+    X))).symm.trans
+    (Equiv.sigmaCongrRight fun p =>
+      (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) (mk P.obj X p)).symm.trans
+        (((sheafToPresheaf (topology P.obj J) (Type w)).mapIso
+          ((elementFibreEquivalence J P).counitIso.app F)).app (op (mk P.obj X p))).toEquiv)
+
+/-- The sigma label is the original structure morphism to P. -/
+theorem sigmaObjEquiv_fst (F : Sheaf (topology P.obj J) (Type w)) (X : C)
+    (y : ((elementFibreEquivalence J P).inverse.obj F).left.obj.obj (op X)) :
+    (sigmaObjEquiv J P F X y).1 = ((elementFibreEquivalence J P).inverse.obj F).hom.hom.app (op
+      X) y := rfl
+
+/-- The inverse sigma comparison uses the original counit inverse and
+forgets the fibre proof on the original section. -/
+theorem sigmaObjEquiv_symm_apply (F : Sheaf (topology P.obj J) (Type w)) (X : C)
+    (p : P.obj.obj (op X)) (s : F.obj.obj (op (mk P.obj X p))) :
+    (sigmaObjEquiv J P F X).symm ⟨p, s⟩ =
+      (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) (mk P.obj X p)
+        (((elementFibreEquivalence J P).counitIso.app F).inv.hom.app (op (mk P.obj X p))
+          s)).val := rfl
+
+/-- A section already in the specified actual fibre is sent through the
+original counit component, with its original label. -/
+theorem sigmaObjEquiv_of_fibre (F : Sheaf (topology P.obj J) (Type w))
+    (X : C) (p : P.obj.obj (op X))
+    (z : ((elementFibreEquivalence J P).functor.obj ((elementFibreEquivalence J P).inverse.obj
+      F)).obj.obj (op (mk P.obj X p))) :
+    sigmaObjEquiv J P F X
+        (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) (mk P.obj X p) z).val =
+      ⟨p, ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op (mk P.obj X p)) z⟩ := by
+  apply (sigmaObjEquiv J P F X).symm.injective
+  rw [Equiv.symm_apply_apply, sigmaObjEquiv_symm_apply]
+  let i := ((sheafToPresheaf (topology P.obj J) (Type w)).mapIso
+    ((elementFibreEquivalence J P).counitIso.app F)).app (op (mk P.obj X p))
+  exact congrArg
+    (fun t => (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) (mk P.obj X p)
+      t).val)
+    (i.toEquiv.left_inv z).symm
+
+/-- Coefficient morphisms act on the original fibre section and retain its label. -/
+theorem sigmaObjEquiv_map
+    {F G : Sheaf (topology P.obj J) (Type w)} (f : F ⟶ G) (X : C)
+    (p : P.obj.obj (op X)) (s : F.obj.obj (op (mk P.obj X p))) :
+    sigmaObjEquiv J P G X
+        (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X)
+          ((sigmaObjEquiv J P F X).symm ⟨p, s⟩)) =
+      ⟨p, f.hom.app (op (mk P.obj X p)) s⟩ := by
+  let a := mk P.obj X p
+  let z := ((elementFibreEquivalence J P).counitIso.app F).inv.hom.app (op a) s
+  let z' := ((elementFibreEquivalence J P).functor.map ((elementFibreEquivalence J P).inverse.map
+    f)).hom.app (op a) z
+  have hv : (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj G) a z').val =
+      ((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X)
+        (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a z).val :=
+    fibreObjEquiv_map J P ((elementFibreEquivalence J P).inverse.map f) a z
+  have hn := congrArg (fun h => h.hom.app (op a) z)
+    ((elementFibreEquivalence J P).counitIso.hom.naturality f)
+  change ((elementFibreEquivalence J P).counitIso.app G).hom.hom.app (op a) z' =
+    f.hom.app (op a) (((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op a) z) at hn
+  let i := ((sheafToPresheaf (topology P.obj J) (Type w)).mapIso
+    ((elementFibreEquivalence J P).counitIso.app F)).app (op a)
+  have hc : ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op
+    a) z = s := i.toEquiv.right_inv s
+  rw [hc] at hn
+  calc
+    _ = sigmaObjEquiv J P G X
+        (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X)
+          (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a z).val) :=
+      congrArg (fun y => sigmaObjEquiv J P G X
+        (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X) y))
+        (sigmaObjEquiv_symm_apply J P F X p s)
+    _ = sigmaObjEquiv J P G X
+        (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj G) a z').val :=
+      congrArg (sigmaObjEquiv J P G X) hv.symm
+    _ = ⟨p, ((elementFibreEquivalence J P).counitIso.app G).hom.hom.app (op a) z'⟩ :=
+      sigmaObjEquiv_of_fibre J P G X p z'
+    _ = _ := congrArg (fun q => Sigma.mk p q) hn
+
+/-- The actual total restriction map is the original base-label restriction
+and the original lifted-fibre restriction, under the named sigma comparison. -/
+theorem sigmaObjEquiv_restriction (F : Sheaf (topology P.obj J) (Type w))
+    {X Y : C} (f : X ⟶ Y) (p : P.obj.obj (op Y))
+    (s : F.obj.obj (op (mk P.obj Y p))) :
+    sigmaObjEquiv J P F X
+        (((elementFibreEquivalence J P).inverse.obj F).left.obj.map f.op
+          ((sigmaObjEquiv J P F Y).symm ⟨p, s⟩)) =
+      ⟨P.obj.map f.op p,
+        F.obj.map (lift P.obj (mk P.obj Y p) f).op s⟩ := by
+  let b := mk P.obj Y p
+  let a := mk P.obj X (P.obj.map f.op p)
+  let l := lift P.obj b f
+  let z := ((elementFibreEquivalence J P).counitIso.app F).inv.hom.app (op b) s
+  let z' := ((elementFibreEquivalence J P).functor.obj ((elementFibreEquivalence J P).inverse.obj
+    F)).obj.map l.op z
+  have hv : (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a z').val =
+      ((elementFibreEquivalence J P).inverse.obj F).left.obj.map f.op
+        (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) b z).val :=
+    fibreObjEquiv_restriction J P ((elementFibreEquivalence J P).inverse.obj F) l z
+  have hn := ((elementFibreEquivalence J P).counitIso.app F).hom.hom.naturality_apply l.op z
+  change ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op a) z' =
+    F.obj.map l.op (((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op b) z) at hn
+  let i := ((sheafToPresheaf (topology P.obj J) (Type w)).mapIso
+    ((elementFibreEquivalence J P).counitIso.app F)).app (op b)
+  have hc : ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op
+    b) z = s := i.toEquiv.right_inv s
+  rw [hc] at hn
+  calc
+    _ = sigmaObjEquiv J P F X
+        (((elementFibreEquivalence J P).inverse.obj F).left.obj.map f.op
+          (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) b z).val) :=
+      congrArg (fun y => sigmaObjEquiv J P F X
+        (((elementFibreEquivalence J P).inverse.obj F).left.obj.map f.op y))
+        (sigmaObjEquiv_symm_apply J P F Y p s)
+    _ = sigmaObjEquiv J P F X
+        (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a z').val :=
+      congrArg (sigmaObjEquiv J P F X) hv.symm
+    _ = ⟨P.obj.map f.op p,
+        ((elementFibreEquivalence J P).counitIso.app F).hom.hom.app (op a) z'⟩ :=
+      sigmaObjEquiv_of_fibre J P F X (P.obj.map f.op p) z'
+    _ = _ := congrArg (fun q => Sigma.mk (P.obj.map f.op p) q) hn
+
+end PointwiseSigma
+
+section ProductRestriction
+
+/-- The existing chosen sheaf product, evaluated by the existing sheaf
+inclusion/evaluation functor, compares to the native Cartesian product of values. -/
+def productSectionsEquiv (H : Sheaf J (Type w)) (X : C) :
+    (P ⨯ H).obj.obj (op X) ≃ P.obj.obj (op X) × H.obj.obj (op X) :=
+  let ev : Sheaf J (Type w) ⥤ Type w :=
+    sheafToPresheaf J (Type w) ⋙ (evaluation Cᵒᵖ (Type w)).obj (op X)
+  ((PreservesLimitPair.iso ev P H) ≪≫
+    Types.binaryProductIso (ev.obj P) (ev.obj H)).toEquiv
+
+omit [LocallySmall.{w} C] in
+theorem productSectionsEquiv_fst (H : Sheaf J (Type w)) (X : C)
+    (z : (P ⨯ H).obj.obj (op X)) :
+    (productSectionsEquiv J P H X z).1 =
+      (prod.fst : P ⨯ H ⟶ P).hom.app (op X) z := by
+  let ev : Sheaf J (Type w) ⥤ Type w :=
+    sheafToPresheaf J (Type w) ⋙ (evaluation Cᵒᵖ (Type w)).obj (op X)
+  change ((Types.binaryProductIso (ev.obj P) (ev.obj H)).hom
+    ((PreservesLimitPair.iso ev P H).hom z)).1 = _
+  exact (ConcreteCategory.congr_hom
+    (Types.binaryProductIso_hom_comp_fst (ev.obj P) (ev.obj H))
+    ((PreservesLimitPair.iso ev P H).hom z)).trans
+      (ConcreteCategory.congr_hom (prodComparison_fst ev P H) z)
+
+omit [LocallySmall.{w} C] in
+theorem productSectionsEquiv_snd (H : Sheaf J (Type w)) (X : C)
+    (z : (P ⨯ H).obj.obj (op X)) :
+    (productSectionsEquiv J P H X z).2 =
+      (prod.snd : P ⨯ H ⟶ H).hom.app (op X) z := by
+  let ev : Sheaf J (Type w) ⥤ Type w :=
+    sheafToPresheaf J (Type w) ⋙ (evaluation Cᵒᵖ (Type w)).obj (op X)
+  change ((Types.binaryProductIso (ev.obj P) (ev.obj H)).hom
+    ((PreservesLimitPair.iso ev P H).hom z)).2 = _
+  exact (ConcreteCategory.congr_hom
+    (Types.binaryProductIso_hom_comp_snd (ev.obj P) (ev.obj H))
+    ((PreservesLimitPair.iso ev P H).hom z)).trans
+      (ConcreteCategory.congr_hom (prodComparison_snd ev P H) z)
+
+/-- The actual fibre of the actual chosen projection P times H to P is H. -/
+def productFibreEquiv (H : Sheaf J (Type w)) (X : C) (p : P.obj.obj (op X)) :
+    {z : (P ⨯ H).obj.obj (op X) //
+      (prod.fst : P ⨯ H ⟶ P).hom.app (op X) z = p} ≃ H.obj.obj (op X) where
+  toFun z := (productSectionsEquiv J P H X z.val).2
+  invFun h := ⟨(productSectionsEquiv J P H X).symm (p, h), by
+    rw [← productSectionsEquiv_fst J P H X]
+    simp⟩
+  left_inv z := by
+    apply Subtype.ext
+    apply (productSectionsEquiv J P H X).injective
+    simp only [Equiv.apply_symm_apply]
+    apply Prod.ext
+    · exact ((productSectionsEquiv_fst J P H X z.val).trans z.property).symm
+    · rfl
+  right_inv h := by
+    change (productSectionsEquiv J P H X
+      ((productSectionsEquiv J P H X).symm (p, h))).2 = h
+    simp
+
+/-- Restricting the actual product-over-P object gives the original H section. -/
+def starFibreObjEquiv (H : Sheaf J (Type w)) (a : Site P.obj) :
+    ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.obj (op a) ≃
+      H.obj.obj (op ((projection P.obj).obj a)) :=
+  (fibreObjEquiv J P ((Over.star P).obj H) a).trans (by
+    simpa only [Over.star_obj_left, Over.star_obj_hom, prod.lift_fst] using
+      productFibreEquiv J P H ((projection P.obj).obj a) a.unop.val)
+
+/-- The comparison uses the actual second product projection. -/
+theorem starFibreObjEquiv_apply (H : Sheaf J (Type w)) (a : Site P.obj)
+    (z : ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.obj (op a)) :
+    starFibreObjEquiv J P H a z =
+      (prod.snd : P ⨯ H ⟶ H).hom.app (op ((projection P.obj).obj a))
+        (fibreObjEquiv J P ((Over.star P).obj H) a z).val := by
+  change (productSectionsEquiv J P H ((projection P.obj).obj a)
+    (fibreObjEquiv J P ((Over.star P).obj H) a z).val).2 = _
+  exact productSectionsEquiv_snd J P H _ _
+
+/-- This is the literal existing element-site restriction functor. -/
+abbrev elementRestriction :
+    Sheaf J (Type w) ⥤ Sheaf (topology P.obj J) (Type w) :=
+  (projection P.obj).sheafPushforwardContinuous (Type w) (topology P.obj J) J
+
+/-- The original product-over-P inverse image corresponds to the original
+element-site restriction, as a natural isomorphism of whole functors. -/
+def starFibreRestrictionIso :
+    Over.star P ⋙ (elementFibreEquivalence J P).functor ≅ elementRestriction J P :=
+  NatIso.ofComponents
+    (fun H => ObjectProperty.isoMk _
+      (NatIso.ofComponents (fun a => (starFibreObjEquiv J P H a.unop).toIso)
+        (by
+          intro a b f
+          ext x
+          change starFibreObjEquiv J P H b.unop
+              (((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.map f x) =
+            H.obj.map ((projection P.obj).map f.unop).op
+              (starFibreObjEquiv J P H a.unop x)
+          erw [starFibreObjEquiv_apply, starFibreObjEquiv_apply,
+            fibreObjEquiv_restriction J P ((Over.star P).obj H) f.unop x]
+          exact (prod.snd : P ⨯ H ⟶ H).hom.naturality_apply
+            ((projection P.obj).map f.unop).op _)))
+    (by
+      intro H H' f
+      apply Sheaf.hom_ext
+      ext a x
+      change starFibreObjEquiv J P H' a.unop
+          (((elementFibreEquivalence J P).functor.map ((Over.star P).map f)).hom.app a x) =
+        f.hom.app (op ((projection P.obj).obj a.unop))
+          (starFibreObjEquiv J P H a.unop x)
+      erw [starFibreObjEquiv_apply, starFibreObjEquiv_apply,
+        fibreObjEquiv_map J P ((Over.star P).map f) a.unop x]
+      have h : ((Over.star P).map f).left ≫ (prod.snd : P ⨯ H' ⟶ H') =
+          (prod.snd : P ⨯ H ⟶ H) ≫ f := by
+        rw [Over.star_map_left]
+        exact prod.map_snd _ _
+      exact congrArg (fun g => g.hom.app (op ((projection P.obj).obj a.unop))
+        (fibreObjEquiv J P ((Over.star P).obj H) a.unop x).val) h)
+
+theorem starFibreRestrictionIso_hom_app_apply (H : Sheaf J (Type w)) (a : Site P.obj)
+    (z : ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)).obj.obj (op a)) :
+    ((starFibreRestrictionIso J P).hom.app H).hom.app (op a) z =
+      starFibreObjEquiv J P H a z := rfl
+
+/-- The comparison on intrinsic slices is obtained from the SAME original
+presentation equivalence, using its original unit through compInverseIso. -/
+def restrictionStarIso :
+    elementRestriction J P ⋙ (elementFibreEquivalence J P).inverse ≅ Over.star P :=
+  Iso.compInverseIso (H := (elementFibreEquivalence J P)) (starFibreRestrictionIso J P).symm
+
+/-- The component is the inverse-image map followed by the original R unit inverse. -/
+theorem restrictionStarIso_hom_app (H : Sheaf J (Type w)) :
+    (restrictionStarIso J P).hom.app H =
+      (elementFibreEquivalence J P).inverse.map ((starFibreRestrictionIso J P).inv.app H) ≫
+        (elementFibreEquivalence J P).unitIso.inv.app ((Over.star P).obj H) := by
+  simp [restrictionStarIso, Iso.compInverseIso]
+
+/-- Mapping the intrinsic comparison back through R gives the ORIGINAL counit. -/
+theorem restrictionStarIso_map_counit (H : Sheaf J (Type w)) :
+    (elementFibreEquivalence J P).functor.map ((restrictionStarIso J P).hom.app H) ≫
+        (starFibreRestrictionIso J P).hom.app H =
+      (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) := by
+  rw [restrictionStarIso_hom_app, Functor.map_comp,
+    ← (elementFibreEquivalence J P).counit_app_functor ((Over.star P).obj H)]
+  have hn := (elementFibreEquivalence J P).counitIso.hom.naturality
+    ((starFibreRestrictionIso J P).inv.app H)
+  change (elementFibreEquivalence J P).functor.map
+      ((elementFibreEquivalence J P).inverse.map ((starFibreRestrictionIso J P).inv.app H)) ≫
+      (elementFibreEquivalence J P).counitIso.hom.app
+        ((elementFibreEquivalence J P).functor.obj ((Over.star P).obj H)) =
+    (elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+      (starFibreRestrictionIso J P).inv.app H at hn
+  calc
+    _ = ((elementFibreEquivalence J P).counitIso.hom.app ((elementRestriction J P).obj H) ≫
+        (starFibreRestrictionIso J P).inv.app H) ≫
+          (starFibreRestrictionIso J P).hom.app H :=
+      congrArg (fun k => k ≫ (starFibreRestrictionIso J P).hom.app H) hn
+    _ = _ := by
+      rw [Category.assoc, Iso.inv_hom_id_app, Category.comp_id]
+
+/-- The intrinsic product comparison has the original labelled pair of values
+under the named actual-product and sigma comparisons. -/
+theorem restrictionStarIso_pair (H : Sheaf J (Type w)) (X : C)
+    (y : ((elementFibreEquivalence J P).inverse.obj ((elementRestriction J P).obj H)).left.obj.obj
+      (op X)) :
+    productSectionsEquiv J P H X
+        (((restrictionStarIso J P).hom.app H).left.hom.app (op X) y) =
+      ((sigmaObjEquiv J P ((elementRestriction J P).obj H) X y).1,
+        (sigmaObjEquiv J P ((elementRestriction J P).obj H) X y).2) := by
+  let G := (elementFibreEquivalence J P).inverse.obj ((elementRestriction J P).obj H)
+  let p := G.hom.hom.app (op X) y
+  let a := mk P.obj X p
+  let z := (fibreObjEquiv J P G a).symm ⟨y, rfl⟩
+  have hz : (fibreObjEquiv J P G a z).val = y := by
+    simp only [z, Equiv.apply_symm_apply]
+  have hs := sigmaObjEquiv_of_fibre J P ((elementRestriction J P).obj H) X p z
+  rw [hz] at hs
+  rw [hs]
+  apply Prod.ext
+  · erw [productSectionsEquiv_fst J P H X]
+    simpa only [Over.star_obj_hom, prod.lift_fst] using
+      congrArg (fun f => f.hom.app (op X) y)
+        (Over.w ((restrictionStarIso J P).hom.app H))
+  · erw [productSectionsEquiv_snd J P H X]
+    have hc := congrArg (fun f => f.hom.app (op a) z)
+      (restrictionStarIso_map_counit J P H)
+    change starFibreObjEquiv J P H a
+        (((elementFibreEquivalence J P).functor.map ((restrictionStarIso J P).hom.app H)).hom.app
+          (op a) z) =
+      ((elementFibreEquivalence J P).counitIso.app ((elementRestriction J P).obj
+        H)).hom.hom.app (op a) z at hc
+    erw [starFibreObjEquiv_apply,
+      fibreObjEquiv_map J P ((restrictionStarIso J P).hom.app H) a z, hz] at hc
+    exact hc
+
+end ProductRestriction
+
+section GlobalPoints
+
+/-- The original terminal object of the intrinsic slice is carried to the
+original terminal sheaf by the selected equivalence. -/
+def terminalFibreIso :
+    (elementFibreEquivalence J P).functor.obj (Over.mk (𝟙 P)) ≅ terminalSheaf (topology P.obj J) :=
+  ((Over.mkIdTerminal : IsTerminal (Over.mk (𝟙 P))).isTerminalObj
+    (elementFibreEquivalence J P).functor).uniqueUpToIso
+      (terminalSheafIsTerminal (topology P.obj J))
+
+/-- An intrinsic section is transported through R's fully faithful Hom
+equivalence, the original terminal comparison and the ORIGINAL R counit. -/
+def sectionToGlobalPointEquiv (F : Sheaf (topology P.obj J) (Type w)) :
+    (Over.mk (𝟙 P) ⟶ (elementFibreEquivalence J P).inverse.obj F) ≃ GlobalPoint F :=
+  (elementFibreEquivalence J P).fullyFaithfulFunctor.homEquiv.trans
+    (Iso.homCongr (terminalFibreIso J P) ((elementFibreEquivalence J P).counitIso.app F))
+
+theorem sectionToGlobalPointEquiv_apply
+    (F : Sheaf (topology P.obj J) (Type w)) (t : Over.mk (𝟙 P) ⟶ (elementFibreEquivalence J
+      P).inverse.obj F) :
+    sectionToGlobalPointEquiv J P F t =
+      (terminalFibreIso J P).inv ≫ (elementFibreEquivalence J
+        P).functor.map t ≫ (elementFibreEquivalence J P).counitIso.hom.app F := by
+  simp [sectionToGlobalPointEquiv, Iso.homCongr_apply]
+
+/-- Intrinsic global points are equivalent to actual sections over P. -/
+def globalPointSectionEquiv (F : Sheaf (topology P.obj J) (Type w)) :
+    GlobalPoint F ≃ (Over.mk (𝟙 P) ⟶ (elementFibreEquivalence J P).inverse.obj F) :=
+  (sectionToGlobalPointEquiv J P F).symm
+
+/-- The inverse point comparison is computed on the actual labelled sigma
+section, with no terminal object of the original site. -/
+theorem sectionToGlobalPointEquiv_sigma
+    (F : Sheaf (topology P.obj J) (Type w)) (t : Over.mk (𝟙 P) ⟶ (elementFibreEquivalence J
+      P).inverse.obj F)
+    (X : C) (p : P.obj.obj (op X)) :
+    sigmaObjEquiv J P F X (t.left.hom.app (op X) p) =
+      ⟨p, (sectionToGlobalPointEquiv J P F t).hom.app
+        (op (mk P.obj X p)) PUnit.unit⟩ := by
+  let a := mk P.obj X p
+  let u := (terminalFibreIso J P).inv.hom.app (op a) PUnit.unit
+  have hu : (fibreObjEquiv J P (Over.mk (𝟙 P)) a u).val = p := by
+    have h := (fibreObjEquiv J P (Over.mk (𝟙 P)) a u).property
+    change (fibreObjEquiv J P (Over.mk (𝟙 P)) a u).val = p at h
+    exact h
+  let z := ((elementFibreEquivalence J P).functor.map t).hom.app (op a) u
+  have hz : (fibreObjEquiv J P ((elementFibreEquivalence J P).inverse.obj F) a z).val =
+      t.left.hom.app (op X) p := by
+    have h := fibreObjEquiv_map J P t a u
+    rw [hu] at h
+    exact h
+  rw [← hz, sigmaObjEquiv_of_fibre]
+  exact congrArg (fun q : F.obj.obj (op a) => Sigma.mk p q) (by
+    rw [sectionToGlobalPointEquiv_apply]
+    rfl)
+
+/-- A global point gives p mapped to the original pair (p,s at X,p). -/
+theorem globalPointSectionEquiv_sigma
+    (F : Sheaf (topology P.obj J) (Type w)) (s : GlobalPoint F)
+    (X : C) (p : P.obj.obj (op X)) :
+    sigmaObjEquiv J P F X
+        ((globalPointSectionEquiv J P F s).left.hom.app (op X) p) =
+      ⟨p, s.hom.app (op (mk P.obj X p)) PUnit.unit⟩ := by
+  simpa only [globalPointSectionEquiv, Equiv.apply_symm_apply] using
+    sectionToGlobalPointEquiv_sigma J P F
+      ((sectionToGlobalPointEquiv J P F).symm s) X p
+
+/-- The same pointwise formula is the existing original compatible-family law. -/
+theorem globalPointSectionEquiv_sections
+    (F : Sheaf (topology P.obj J) (Type w)) (s : GlobalPoint F)
+    (X : C) (p : P.obj.obj (op X)) :
+    sigmaObjEquiv J P F X
+        ((globalPointSectionEquiv J P F s).left.hom.app (op X) p) =
+      ⟨p, (globalPointSectionsEquiv F s).val (op (mk P.obj X p))⟩ := by
+  simpa only [globalPointSectionsEquiv_val] using
+    globalPointSectionEquiv_sigma J P F s X p
+
+/-- The resulting original morphism really is a section of the original map to P. -/
+theorem globalPointSectionEquiv_rightInverse
+    (F : Sheaf (topology P.obj J) (Type w)) (s : GlobalPoint F) :
+    (globalPointSectionEquiv J P F s).left ≫ ((elementFibreEquivalence J P).inverse.obj
+      F).hom = 𝟙 P :=
+  Over.w (globalPointSectionEquiv J P F s)
+
+/-- Global-point transport preserves every original coefficient morphism. -/
+theorem globalPointSectionEquiv_naturality
+    {F G : Sheaf (topology P.obj J) (Type w)} (f : F ⟶ G) (s : GlobalPoint F) :
+    globalPointSectionEquiv J P G (s ≫ f) =
+      globalPointSectionEquiv J P F s ≫ (elementFibreEquivalence J P).inverse.map f := by
+  apply Over.OverMorphism.ext
+  apply Sheaf.hom_ext
+  ext X p
+  apply (sigmaObjEquiv J P G X.unop).injective
+  rw [globalPointSectionEquiv_sigma]
+  have hs : (globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p =
+      (sigmaObjEquiv J P F X.unop).symm
+        ⟨p, s.hom.app (op (mk P.obj X.unop p)) PUnit.unit⟩ := by
+    apply (sigmaObjEquiv J P F X.unop).injective
+    rw [globalPointSectionEquiv_sigma, Equiv.apply_symm_apply]
+  change _ = sigmaObjEquiv J P G X.unop
+    (((elementFibreEquivalence J P).inverse.map f).left.hom.app (op X.unop)
+      ((globalPointSectionEquiv J P F s).left.hom.app (op X.unop) p))
+  rw [hs, sigmaObjEquiv_map]
+  rfl
+
+end GlobalPoints
+
+end IndependentValues
+
+end CategoryTheory.Topos.SlicePresentation

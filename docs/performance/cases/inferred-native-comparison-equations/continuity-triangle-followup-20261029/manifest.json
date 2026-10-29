@@ -1,0 +1,482 @@
+{
+  "foundations/lane-b/remote-runs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/build.log": {
+    "sha256": "1048a536d11d731fe188f54de4c7954fae1b74261c44aa5e9fb5973fba4a3851",
+    "bytes": 2199,
+    "blob": "evidence/1048a536d11d731fe188f54de4c7954fae1b74261c44aa5e9fb5973fba4a3851"
+  },
+  "foundations/lane-b/remote-runs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/compiler-events.jsonl": {
+    "sha256": "9c3ed767a5fb44f8536f9e3fdcf9277664c290802d09e13806476123d650028e",
+    "bytes": 1064,
+    "blob": "evidence/9c3ed767a5fb44f8536f9e3fdcf9277664c290802d09e13806476123d650028e"
+  },
+  "foundations/lane-b/remote-runs/remote-2f15f0b9897649f3a410d48b9a3d7f7e/receipt.json": {
+    "sha256": "ba518b353c9c43cad470fa460ea52903698d63c0f1ef57af5199118d8dc9549a",
+    "bytes": 16898,
+    "blob": "evidence/ba518b353c9c43cad470fa460ea52903698d63c0f1ef57af5199118d8dc9549a"
+  },
+  "foundations/lane-b/remote-runs/remote-32b0b319b0534121836b5d69a22718d0/build.log": {
+    "sha256": "12e70f21456a88832616dd440bbf47499c479b06b1873cd5f60126b526ea0974",
+    "bytes": 4743,
+    "blob": "evidence/12e70f21456a88832616dd440bbf47499c479b06b1873cd5f60126b526ea0974"
+  },
+  "foundations/lane-b/remote-runs/remote-32b0b319b0534121836b5d69a22718d0/compiler-events.jsonl": {
+    "sha256": "0fb01a2abda5c6102ef2a8277acd1b13a32666ad62a0946d7a823c48979f56fa",
+    "bytes": 32706,
+    "blob": "evidence/0fb01a2abda5c6102ef2a8277acd1b13a32666ad62a0946d7a823c48979f56fa"
+  },
+  "foundations/lane-b/remote-runs/remote-32b0b319b0534121836b5d69a22718d0/receipt.json": {
+    "sha256": "36ae4544a151fe500cb3876b60de72349c7fc01169d9746db59ad7a78a14a85a",
+    "bytes": 14537,
+    "blob": "evidence/36ae4544a151fe500cb3876b60de72349c7fc01169d9746db59ad7a78a14a85a"
+  },
+  "foundations/lane-b/remote-runs/remote-556fecfbf1ef45c7931df903bbe2d1b9/build.log": {
+    "sha256": "c025becfbf965f6d8847297d7bf0242059574767f234573cfd397f6c759231b3",
+    "bytes": 4770,
+    "blob": "evidence/c025becfbf965f6d8847297d7bf0242059574767f234573cfd397f6c759231b3"
+  },
+  "foundations/lane-b/remote-runs/remote-556fecfbf1ef45c7931df903bbe2d1b9/compiler-events.jsonl": {
+    "sha256": "703d4009959aa5a2506c6abbb9d7dd7842dd410c17d15924f899918349bf7f24",
+    "bytes": 24696,
+    "blob": "evidence/703d4009959aa5a2506c6abbb9d7dd7842dd410c17d15924f899918349bf7f24"
+  },
+  "foundations/lane-b/remote-runs/remote-556fecfbf1ef45c7931df903bbe2d1b9/receipt.json": {
+    "sha256": "0ba7e15a677fbe1bd83d1a5d2d01217cbf8d8105c22218e6d6dfae92e5749923",
+    "bytes": 13994,
+    "blob": "evidence/0ba7e15a677fbe1bd83d1a5d2d01217cbf8d8105c22218e6d6dfae92e5749923"
+  },
+  "foundations/lane-b/remote-runs/remote-7d460a777767484d8999236e140a6ffe/build.log": {
+    "sha256": "c756b31cc559ac2fcdcf9b6bf4360a50b1a1d7537c4a0bcaa0d3803d8d9fc5ba",
+    "bytes": 3696,
+    "blob": "evidence/c756b31cc559ac2fcdcf9b6bf4360a50b1a1d7537c4a0bcaa0d3803d8d9fc5ba"
+  },
+  "foundations/lane-b/remote-runs/remote-7d460a777767484d8999236e140a6ffe/compiler-events.jsonl": {
+    "sha256": "7c09f374c1f47409e69c31a5359899723e4e3dee9f79260298e89b55cfe5fd77",
+    "bytes": 4905,
+    "blob": "evidence/7c09f374c1f47409e69c31a5359899723e4e3dee9f79260298e89b55cfe5fd77"
+  },
+  "foundations/lane-b/remote-runs/remote-7d460a777767484d8999236e140a6ffe/receipt.json": {
+    "sha256": "8afa9888ce43b5636347ac63384ca41a8a6dd9969525644a946f54f8a01eff43",
+    "bytes": 14295,
+    "blob": "evidence/8afa9888ce43b5636347ac63384ca41a8a6dd9969525644a946f54f8a01eff43"
+  },
+  "foundations/lane-b/remote-runs/remote-81ad62292d6e4d6198d85ddbdf51ea0f/build.log": {
+    "sha256": "bd3735a708f266c0bebd7340abc56221cb98f6b22dc0f3d5391a080821c2eefd",
+    "bytes": 63447,
+    "blob": "evidence/bd3735a708f266c0bebd7340abc56221cb98f6b22dc0f3d5391a080821c2eefd"
+  },
+  "foundations/lane-b/remote-runs/remote-81ad62292d6e4d6198d85ddbdf51ea0f/compiler-events.jsonl": {
+    "sha256": "d37f4e31bc2c34961c522d6bb843c2363b3793466577d6003336c00aafd7932c",
+    "bytes": 5077,
+    "blob": "evidence/d37f4e31bc2c34961c522d6bb843c2363b3793466577d6003336c00aafd7932c"
+  },
+  "foundations/lane-b/remote-runs/remote-81ad62292d6e4d6198d85ddbdf51ea0f/receipt.json": {
+    "sha256": "61ccf2f29f9e02899f66170e6bc119bc898cd8ffeb456ca916d1f04f0a3b27a3",
+    "bytes": 14363,
+    "blob": "evidence/61ccf2f29f9e02899f66170e6bc119bc898cd8ffeb456ca916d1f04f0a3b27a3"
+  },
+  "foundations/lane-b/remote-runs/remote-f62382ef588a4cf688c44bedd08c4b8b/build.log": {
+    "sha256": "39f242f8dd37610be8b8be376af1095175aff807d0c729d1c841c1dc8ee0afa1",
+    "bytes": 4679,
+    "blob": "evidence/39f242f8dd37610be8b8be376af1095175aff807d0c729d1c841c1dc8ee0afa1"
+  },
+  "foundations/lane-b/remote-runs/remote-f62382ef588a4cf688c44bedd08c4b8b/compiler-events.jsonl": {
+    "sha256": "bf5d736c89cacdc9f80291ce889599cc8cd15d3f091fba2d01f0497224580eb3",
+    "bytes": 28651,
+    "blob": "evidence/bf5d736c89cacdc9f80291ce889599cc8cd15d3f091fba2d01f0497224580eb3"
+  },
+  "foundations/lane-b/remote-runs/remote-f62382ef588a4cf688c44bedd08c4b8b/receipt.json": {
+    "sha256": "bd9e99486d549261d9fb02ba6129c28e326d684da73ea49b95d503d9e22898a1",
+    "bytes": 15250,
+    "blob": "evidence/bd9e99486d549261d9fb02ba6129c28e326d684da73ea49b95d503d9e22898a1"
+  },
+  "foundations/lane-d/remote-runs/remote-88d1a641efd34eeabbd07613e356406c/build.log": {
+    "sha256": "c2faa90fabe8e9ef438a5db91fd30d2d7820d7ecb78bff174dc7757f0f11fd0b",
+    "bytes": 3983,
+    "blob": "evidence/c2faa90fabe8e9ef438a5db91fd30d2d7820d7ecb78bff174dc7757f0f11fd0b"
+  },
+  "foundations/lane-d/remote-runs/remote-88d1a641efd34eeabbd07613e356406c/compiler-events.jsonl": {
+    "sha256": "dd3f6e88dea47de162864ee2563685e4559097a7085957fa6cf7ff6513e7f14f",
+    "bytes": 19738,
+    "blob": "evidence/dd3f6e88dea47de162864ee2563685e4559097a7085957fa6cf7ff6513e7f14f"
+  },
+  "foundations/lane-d/remote-runs/remote-88d1a641efd34eeabbd07613e356406c/receipt.json": {
+    "sha256": "4ddf2a0cb66a87547a429dea6a4c650042b210473bcb7a6afa757ece808e962b",
+    "bytes": 13342,
+    "blob": "evidence/4ddf2a0cb66a87547a429dea6a4c650042b210473bcb7a6afa757ece808e962b"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/CORRESPONDENCE.json": {
+    "sha256": "edebecfd101738146ee8adca169d7c6fcccb27726a5ee9f62aadd020e3186281",
+    "bytes": 20989,
+    "blob": "evidence/edebecfd101738146ee8adca169d7c6fcccb27726a5ee9f62aadd020e3186281"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/FROZEN_HANDOFF.json": {
+    "sha256": "6e3c2ea4f86ea3cf527302b1af39aa56b8dd87040090a9334d679607930f591f",
+    "bytes": 11259,
+    "blob": "evidence/6e3c2ea4f86ea3cf527302b1af39aa56b8dd87040090a9334d679607930f591f"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/PROOF_PLAN.md": {
+    "sha256": "b04c53bb346eeb03036128d8d66c2947a59db50fd472c65eca1ea7eb4e4cf4a0",
+    "bytes": 7263,
+    "blob": "evidence/b04c53bb346eeb03036128d8d66c2947a59db50fd472c65eca1ea7eb4e4cf4a0"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/REGISTRY_PUBLICATION_v11.json": {
+    "sha256": "60d12602cd19e30e718e968c8add21369718711fcfdc12b2bddc040109fcec24",
+    "bytes": 6782,
+    "blob": "evidence/60d12602cd19e30e718e968c8add21369718711fcfdc12b2bddc040109fcec24"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/REGISTRY_RESULT_v11.json": {
+    "sha256": "b47b7ef5dd8fd2cff46af4d8d2a95e67766889dc4d648ab0a054df4934e93724",
+    "bytes": 8427,
+    "blob": "evidence/b47b7ef5dd8fd2cff46af4d8d2a95e67766889dc4d648ab0a054df4934e93724"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/RELOCATION_SCOPE.json": {
+    "sha256": "fbbac1371aba72f1c7f271e8d906822f3a7780259bf55576ef92b30f06b876c4",
+    "bytes": 1721,
+    "blob": "evidence/fbbac1371aba72f1c7f271e8d906822f3a7780259bf55576ef92b30f06b876c4"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/RESULT.json": {
+    "sha256": "44b7d8ae1fdf5ef48ff94c44764c64ff4177aa2b605837951f7c3be475a8e03b",
+    "bytes": 10712,
+    "blob": "evidence/44b7d8ae1fdf5ef48ff94c44764c64ff4177aa2b605837951f7c3be475a8e03b"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline.json": {
+    "sha256": "d1fd4914e0a01abe3052686004c6f027b1d70bfa167d1b2b2d15705dfa8ff429",
+    "bytes": 2355,
+    "blob": "evidence/d1fd4914e0a01abe3052686004c6f027b1d70bfa167d1b2b2d15705dfa8ff429"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": {
+    "sha256": "ada16f2f9bab8488c7df73f8ff28f5a8d21d4420f20d0c68c71a373e3a513b25",
+    "bytes": 4641,
+    "blob": "evidence/ada16f2f9bab8488c7df73f8ff28f5a8d21d4420f20d0c68c71a373e3a513b25"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": {
+    "sha256": "78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412",
+    "bytes": 5936,
+    "blob": "evidence/78eeba5e0a80fadfb5e725328443480dea131a47751945ab3d84856b0219b412"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": {
+    "sha256": "e4c28699b2b144a48eafa46ac224f51765ecea7e1d2f8b7188653aa4ccdc11d5",
+    "bytes": 3273,
+    "blob": "evidence/e4c28699b2b144a48eafa46ac224f51765ecea7e1d2f8b7188653aa4ccdc11d5"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": {
+    "sha256": "0a186f7a15d521590da8b1b9b25f6ea90e9a787d5385c81e5bf764883f6da392",
+    "bytes": 11970,
+    "blob": "evidence/0a186f7a15d521590da8b1b9b25f6ea90e9a787d5385c81e5bf764883f6da392"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": {
+    "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+    "bytes": 47310,
+    "blob": "evidence/c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": {
+    "sha256": "e7c797d2856816cfc5d3952b8cf9fb83c6c177a25631d5e41710345ada35a570",
+    "bytes": 13540,
+    "blob": "evidence/e7c797d2856816cfc5d3952b8cf9fb83c6c177a25631d5e41710345ada35a570"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": {
+    "sha256": "482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6",
+    "bytes": 13789,
+    "blob": "evidence/482a2e552bbc1cb016cd9c0817a1934e0751b9b713606ac737f5ed205368bba6"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/baseline/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": {
+    "sha256": "2e697d4e5ba7551b9d74a67d5b5c2670a1cdfbc665cf79acb37358ffee2d5088",
+    "bytes": 6343,
+    "blob": "evidence/2e697d4e5ba7551b9d74a67d5b5c2670a1cdfbc665cf79acb37358ffee2d5088"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/READY.json": {
+    "sha256": "9854c8746075ca8f9ee293ef2bc0bd3d4c20cdb2f61eef9fa2d1193b6de7b96f",
+    "bytes": 11348,
+    "blob": "evidence/9854c8746075ca8f9ee293ef2bc0bd3d4c20cdb2f61eef9fa2d1193b6de7b96f"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/RUN.json": {
+    "sha256": "5d93c5d043f67f69590475d1172451c5fd00bf8b69fa8f1f80d7145ef7adc908",
+    "bytes": 2246,
+    "blob": "evidence/5d93c5d043f67f69590475d1172451c5fd00bf8b69fa8f1f80d7145ef7adc908"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": {
+    "sha256": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "bytes": 5449,
+    "blob": "evidence/fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": {
+    "sha256": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "bytes": 5883,
+    "blob": "evidence/4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": {
+    "sha256": "af9d3a36c6f2b9dad24b3b6c24e1f381fe603ac862964e9d7acad9c7e4195cc0",
+    "bytes": 8534,
+    "blob": "evidence/af9d3a36c6f2b9dad24b3b6c24e1f381fe603ac862964e9d7acad9c7e4195cc0"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": {
+    "sha256": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "bytes": 10397,
+    "blob": "evidence/f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": {
+    "sha256": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+    "bytes": 46879,
+    "blob": "evidence/d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": {
+    "sha256": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "bytes": 15263,
+    "blob": "evidence/f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": {
+    "sha256": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "bytes": 16412,
+    "blob": "evidence/b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v10/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": {
+    "sha256": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "bytes": 23037,
+    "blob": "evidence/0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/READY.json": {
+    "sha256": "6799fb879386909d6bba6a100e70188932398083fff8cc1e456955629d3160be",
+    "bytes": 13333,
+    "blob": "evidence/6799fb879386909d6bba6a100e70188932398083fff8cc1e456955629d3160be"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/RUN.json": {
+    "sha256": "30fb811dc49c10826412ab259c834d3ddf146a04724245c505d82b25e93321bb",
+    "bytes": 8627,
+    "blob": "evidence/30fb811dc49c10826412ab259c834d3ddf146a04724245c505d82b25e93321bb"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": {
+    "sha256": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "bytes": 5449,
+    "blob": "evidence/fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": {
+    "sha256": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "bytes": 5883,
+    "blob": "evidence/4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": {
+    "sha256": "ac9d78c2e93ec218429c2d91bb992044a61545c990a307f1c7e9e4386f7847b8",
+    "bytes": 8537,
+    "blob": "evidence/ac9d78c2e93ec218429c2d91bb992044a61545c990a307f1c7e9e4386f7847b8"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": {
+    "sha256": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "bytes": 10397,
+    "blob": "evidence/f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": {
+    "sha256": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+    "bytes": 46879,
+    "blob": "evidence/d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": {
+    "sha256": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "bytes": 15263,
+    "blob": "evidence/f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": {
+    "sha256": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "bytes": 16412,
+    "blob": "evidence/b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v11/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": {
+    "sha256": "0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace",
+    "bytes": 23037,
+    "blob": "evidence/0f177c76cd1785fc033a9305faa79ca85bb1e58ccd3258060ae010c881dbaace"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/READY.json": {
+    "sha256": "9629cd6b26a9bae08eb1e8846b6d8d0586c772faea82c7626c3ed722dcd6099d",
+    "bytes": 10329,
+    "blob": "evidence/9629cd6b26a9bae08eb1e8846b6d8d0586c772faea82c7626c3ed722dcd6099d"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/RUN.json": {
+    "sha256": "9ef8bea6c440111087ba4f139166e6333b0a5baf595aea95581e4a1f9c1dc95d",
+    "bytes": 3009,
+    "blob": "evidence/9ef8bea6c440111087ba4f139166e6333b0a5baf595aea95581e4a1f9c1dc95d"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/SQUARE-NEGATIVE.json": {
+    "sha256": "616d2e5f2dd7b3a0cc80123fb411f77d7841b75ed3d798b68b13add89f588a60",
+    "bytes": 1468,
+    "blob": "evidence/616d2e5f2dd7b3a0cc80123fb411f77d7841b75ed3d798b68b13add89f588a60"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramDirectImageTriangleComp.lean": {
+    "sha256": "fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec",
+    "bytes": 5449,
+    "blob": "evidence/fa14c8fb37ea897c0c722a6a073485cdc5841e082b8e46d54ff723fcea71efec"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramLimitFunctor.lean": {
+    "sha256": "4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da",
+    "bytes": 5883,
+    "blob": "evidence/4a7f4e31f433d4ae5a18cfab10c98695ad31f63edd02924332163368443223da"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DirectImageSquareTriangle.lean": {
+    "sha256": "8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49",
+    "bytes": 4227,
+    "blob": "evidence/8d5300bfb51eacc4e94fce2b6b3a36a5925f32812c3daa34000d8d479c837b49"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackSectionsBase.lean": {
+    "sha256": "f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4",
+    "bytes": 10397,
+    "blob": "evidence/f4048a82dda28c139e856828bafc476546fde3565e937ca05e7bce6eb42b9bf4"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean": {
+    "sha256": "d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50",
+    "bytes": 46879,
+    "blob": "evidence/d83329fbb8acfc60ce876d0a81edf793090d5fe9c0082b0c0d137c177ec55d50"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/Cone.lean": {
+    "sha256": "f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20",
+    "bytes": 15263,
+    "blob": "evidence/f61149f13918388487eeffb9ccd7b59f431b09c62dc696dfd80f3708c46d9c20"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeConstancy.lean": {
+    "sha256": "b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe",
+    "bytes": 16412,
+    "blob": "evidence/b90c6e00cebc0a318c791295d95c72dd8d2e2cddcff650f59e569d25799d7afe"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/coherent-v9/source/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/ConeExtension.lean": {
+    "sha256": "12eb7648ff15f4ebad9055f601067313ae5e6fa215e88af175c34495e06d24f4",
+    "bytes": 16195,
+    "blob": "evidence/12eb7648ff15f4ebad9055f601067313ae5e6fa215e88af175c34495e06d24f4"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/diagnostics/square-v9-formation.json": {
+    "sha256": "cf380528eb2c0337116cf95611dacfc4adee2f162d95e3868c51bd0e06ba87af",
+    "bytes": 1710,
+    "blob": "evidence/cf380528eb2c0337116cf95611dacfc4adee2f162d95e3868c51bd0e06ba87af"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/diagnostics/square-v9-formation.lean": {
+    "sha256": "1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164",
+    "bytes": 2077,
+    "blob": "evidence/1126e06c76ee3df038d7bd044f9dca14daefe078973acf86a55093effd9a8164"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v1.json": {
+    "sha256": "0bbc2bae15743f2114a0a726f9f8e3cefd4f0752eb80bd0c47f3a74471def230",
+    "bytes": 192602,
+    "blob": "evidence/0bbc2bae15743f2114a0a726f9f8e3cefd4f0752eb80bd0c47f3a74471def230"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v10.json": {
+    "sha256": "4d840ff0a72954abeec3f0ed749a780798d508b3ba8a45d407c1e2f8345c2753",
+    "bytes": 221139,
+    "blob": "evidence/4d840ff0a72954abeec3f0ed749a780798d508b3ba8a45d407c1e2f8345c2753"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v11.json": {
+    "sha256": "85193eeda514a1fd063836653f7a79bc68131071ecb62fd011a2ef1ca76bad5a",
+    "bytes": 221349,
+    "blob": "evidence/85193eeda514a1fd063836653f7a79bc68131071ecb62fd011a2ef1ca76bad5a"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v2.json": {
+    "sha256": "9b17ff46d82cef2fb5ba241bec4eff25e7e941b3c93cc65eb3e42925e93087c2",
+    "bytes": 192341,
+    "blob": "evidence/9b17ff46d82cef2fb5ba241bec4eff25e7e941b3c93cc65eb3e42925e93087c2"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v3.json": {
+    "sha256": "ddc5f97f534832f0b00d9d3df4a9ccf5bdb4712b8c2ad83ecf5dcda5a4eace66",
+    "bytes": 192418,
+    "blob": "evidence/ddc5f97f534832f0b00d9d3df4a9ccf5bdb4712b8c2ad83ecf5dcda5a4eace66"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v6.json": {
+    "sha256": "1fc3cf1fe605e465d5abcb2661a36a224236b6af79b819bb2edd6c428d354ef8",
+    "bytes": 193736,
+    "blob": "evidence/1fc3cf1fe605e465d5abcb2661a36a224236b6af79b819bb2edd6c428d354ef8"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v7.json": {
+    "sha256": "c55dbe844e587d0eef43bd5e25f6c7b3b17ff6e2986771b1ec20160565f1ac8b",
+    "bytes": 218640,
+    "blob": "evidence/c55dbe844e587d0eef43bd5e25f6c7b3b17ff6e2986771b1ec20160565f1ac8b"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v8.json": {
+    "sha256": "e66f88efb27acf642e1fdbcb6ad0c64778b231f5d364c700371e95060d6c8f27",
+    "bytes": 218723,
+    "blob": "evidence/e66f88efb27acf642e1fdbcb6ad0c64778b231f5d364c700371e95060d6c8f27"
+  },
+  "migration/implementation/continuity-triangle-calculus-core-staging/publication-guard-v9.json": {
+    "sha256": "c41680da727c7ffce78fa440a25bd78b9f4e04e6a5bfc9c89d09c490427291f5",
+    "bytes": 219949,
+    "blob": "evidence/c41680da727c7ffce78fa440a25bd78b9f4e04e6a5bfc9c89d09c490427291f5"
+  },
+  "migration/incremental-compiler/recovery-20261029/D-live-88d1a641/build.log.partial": {
+    "sha256": "c2faa90fabe8e9ef438a5db91fd30d2d7820d7ecb78bff174dc7757f0f11fd0b",
+    "bytes": 3983,
+    "blob": "evidence/c2faa90fabe8e9ef438a5db91fd30d2d7820d7ecb78bff174dc7757f0f11fd0b"
+  },
+  "migration/incremental-compiler/recovery-20261029/D-live-88d1a641/compiler-events.jsonl.partial": {
+    "sha256": "dd3f6e88dea47de162864ee2563685e4559097a7085957fa6cf7ff6513e7f14f",
+    "bytes": 19738,
+    "blob": "evidence/dd3f6e88dea47de162864ee2563685e4559097a7085957fa6cf7ff6513e7f14f"
+  },
+  "migration/incremental-compiler/recovery-20261029/D-live-88d1a641/receipt.json.partial": {
+    "sha256": "4ddf2a0cb66a87547a429dea6a4c650042b210473bcb7a6afa757ece808e962b",
+    "bytes": 13342,
+    "blob": "evidence/4ddf2a0cb66a87547a429dea6a4c650042b210473bcb7a6afa757ece808e962b"
+  },
+  "migration/incremental-compiler/recovery-20261029/square-v10-current-closure.json": {
+    "sha256": "48ade9bec0beb512be4a39f95151cc449e362b09e79ce7b1403754ec91948395",
+    "bytes": 5789,
+    "blob": "evidence/48ade9bec0beb512be4a39f95151cc449e362b09e79ce7b1403754ec91948395"
+  },
+  "migration/incremental-compiler/recovery-20261029/square-v10-production-input.json": {
+    "sha256": "a2b6c0cff7b9f50f37133101d9883ab6cab5943c6b32b2fe01c1ba3c1261fc3f",
+    "bytes": 2191,
+    "blob": "evidence/a2b6c0cff7b9f50f37133101d9883ab6cab5943c6b32b2fe01c1ba3c1261fc3f"
+  },
+  "migration/incremental-compiler/recovery-20261029/square-v9-formation-input.json": {
+    "sha256": "db702d3cb3c841996424bd7d6730ab9029beefceff7dd863b8a6d771969c6f43",
+    "bytes": 2415,
+    "blob": "evidence/db702d3cb3c841996424bd7d6730ab9029beefceff7dd863b8a6d771969c6f43"
+  },
+  "migration/incremental-compiler/recovery-20261029/square-v9-formation-payload.py": {
+    "sha256": "bb7844ed049350ab9bca5fb14c9fedebcf8b3447cb0a4409ad8be645c7eb7815",
+    "bytes": 3188,
+    "blob": "evidence/bb7844ed049350ab9bca5fb14c9fedebcf8b3447cb0a4409ad8be645c7eb7815"
+  },
+  "migration/incremental-compiler/recovery-20261029/triangle-tail-relocation-v6-closure.json": {
+    "sha256": "6346c9ffd3b19c1a05dfd10424346dc3dfa665db38b35bf56bf185881c12e59e",
+    "bytes": 23333,
+    "blob": "evidence/6346c9ffd3b19c1a05dfd10424346dc3dfa665db38b35bf56bf185881c12e59e"
+  },
+  "migration/incremental-compiler/recovery-20261029/triangle-tail-relocation-v6-input.json": {
+    "sha256": "cbfb14cb58f7125d6ab37db2629eeb549077b9fd056fcad5e13364a4d43ef232",
+    "bytes": 4252,
+    "blob": "evidence/cbfb14cb58f7125d6ab37db2629eeb549077b9fd056fcad5e13364a4d43ef232"
+  },
+  "migration/incremental-compiler/recovery-20261029/triangle-tail-relocation-v8-input.json": {
+    "sha256": "fe95a426c327856f79ca4e08aa5f4307647342e71f35d30f443c58bd78ac1ac4",
+    "bytes": 3914,
+    "blob": "evidence/fe95a426c327856f79ca4e08aa5f4307647342e71f35d30f443c58bd78ac1ac4"
+  },
+  "migration/reviews/continuity-triangle-calculus-core.json": {
+    "sha256": "f12c9c533cbb07fa1c4b48c34a247530bcc6b227792966f1e10a0636ec7e687b",
+    "bytes": 30426,
+    "blob": "evidence/f12c9c533cbb07fa1c4b48c34a247530bcc6b227792966f1e10a0636ec7e687b"
+  },
+  "migration/reviews/continuity-triangle-calculus-core.md": {
+    "sha256": "c9cc2dc03c3a5ce45b9e4cf060c4cf3fecc9905a553b54ef5e587818fd49fda3",
+    "bytes": 17501,
+    "blob": "evidence/c9cc2dc03c3a5ce45b9e4cf060c4cf3fecc9905a553b54ef5e587818fd49fda3"
+  },
+  "migration/source-manifests/recovery-continuity-final-native-7d460a77.json": {
+    "sha256": "2c6d2bbe20acdb7e4b4fb5a62e7c22f92a7c4dd4bd5cb26953ce6e070c1cfca0",
+    "bytes": 1115429,
+    "blob": "evidence/2c6d2bbe20acdb7e4b4fb5a62e7c22f92a7c4dd4bd5cb26953ce6e070c1cfca0"
+  },
+  "migration/source-manifests/recovery-released-existing-native-v1-81ad6229.json": {
+    "sha256": "511eee6003474e35780ffd3435695da44a7ad7717246843f640a2bedcb08fd9f",
+    "bytes": 1115831,
+    "blob": "evidence/511eee6003474e35780ffd3435695da44a7ad7717246843f640a2bedcb08fd9f"
+  },
+  "migration/source-manifests/recovery-square-v10-production-88d1a641.json": {
+    "sha256": "d0c145c70e33fcd5c96a427bbd21c93841300687db2910a5b1c9a71a60a742e1",
+    "bytes": 1115831,
+    "blob": "evidence/d0c145c70e33fcd5c96a427bbd21c93841300687db2910a5b1c9a71a60a742e1"
+  },
+  "migration/source-manifests/recovery-triangle-tail-v6-32b0b319.json": {
+    "sha256": "3e7a4ab3a8704d7c9560d2dd9e044cea83e6edc9c05932abfdbfa8c71916feb2",
+    "bytes": 1113144,
+    "blob": "evidence/3e7a4ab3a8704d7c9560d2dd9e044cea83e6edc9c05932abfdbfa8c71916feb2"
+  },
+  "migration/source-manifests/recovery-triangle-v8-556fecfb.json": {
+    "sha256": "d34472b0dc79680405b1c34acfc21fc4d97a5501bf742df29f670d986b284971",
+    "bytes": 1113144,
+    "blob": "evidence/d34472b0dc79680405b1c34acfc21fc4d97a5501bf742df29f670d986b284971"
+  }
+}

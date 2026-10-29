@@ -1,0 +1,36 @@
+name = "Aglib"
+version = "0.1.0"
+description = "General commutative algebra, scheme geometry, and coherent cohomology."
+keywords = ["math", "algebraic-geometry", "commutative-algebra", "cohomology"]
+license = "Apache-2.0"
+defaultTargets = ["Aglib"]
+testDriver = "AglibTest"
+lintDriver = "batteries/runLinter"
+lintDriverArgs = ["--no-build", "Aglib"]
+builtinLint = true
+enableArtifactCache = true
+restoreAllArtifacts = true
+# Resource-only flags retain the native artifact trace.
+weakLeanArgs = ["-M12800", "-j4"]
+
+[[lean_lib]]
+name = "Aglib"
+roots = []
+globs = ["Aglib"]
+# Native mk_all owns this import-only entry, like Mathlib.lean.
+leanOptions = {autoImplicit = false, weak.linter.mathlibStandardSet = true, weak.linter.style.longFile = 0, warningAsError = true}
+
+[[lean_lib]]
+name = "AglibModules"
+roots = []
+globs = ["Aglib.+"]
+leanOptions = {autoImplicit = false, weak.linter.mathlibStandardSet = true, weak.linter.style.longFile = 1500, warningAsError = true}
+
+[[lean_lib]]
+name = "AglibTest"
+globs = ["AglibTest.+"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "d13f23b723b8a846827a245b89c10fc7d3f11612"

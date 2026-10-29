@@ -1,0 +1,76 @@
+{
+  "question": "Current-native validation of the original arbitrary-ring module proper-exchange component at a given bounded-below internally torsion-homology object.",
+  "status": "CURRENT_NATIVE_PASS",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "target": "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange",
+  "target_sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4",
+  "run": "remote-c2c602c4e4e243d09be4b250ca35d3f0",
+  "source_capture": "33013d99bfd1b9f804c6cffd93496a4f9aec1ffbb57645d4925f4f61e61dcf70",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-R4-currentN-cap8-c2c602c4.json",
+  "source_manifest_sha256": "4948d610076288f421cdb8fe6f2a64136ce720c5431832c4bab67cc56c22cee9",
+  "held_eight_source_manifest_match": true,
+  "compiler_exit_code": 0,
+  "fresh_frontends": 257,
+  "failed_frontends": 0,
+  "target_lake_display_seconds": 5.9,
+  "target_observed_frontend_seconds": 5.272646561264992,
+  "run_native_execution_seconds": 1618.6432044357061,
+  "run_wall_seconds": 1619.056297287345,
+  "target_start": {
+    "event": "started",
+    "time": "2026-10-27T20:27:32.353904+00:00",
+    "monotonic": 75382434.26116161,
+    "wrapper_pid": 929301,
+    "pgid": 925646,
+    "compiler_pid": 929308,
+    "slot": 0,
+    "args": [
+      "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean",
+      "-o",
+      "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.c",
+      "--setup",
+      "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.setup.json",
+      "--json",
+      "-j4",
+      "-M12800"
+    ],
+    "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean",
+    "admission": {
+      "mode": "elastic"
+    },
+    "scope_lease_mode": "inherited"
+  },
+  "target_finish": {
+    "event": "finished",
+    "time": "2026-10-27T20:27:37.626546+00:00",
+    "monotonic": 75382439.53380817,
+    "wrapper_pid": 929301,
+    "pgid": 925646,
+    "compiler_pid": 929308,
+    "slot": 0,
+    "exit_code": 0
+  },
+  "files": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-c2c602c4e4e243d09be4b250ca35d3f0/receipt.json",
+      "sha256": "07bcdc616845127c7d9e17c95e64f5e32824dc1bae36c2940fc899e792edda00"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-c2c602c4e4e243d09be4b250ca35d3f0/compiler-events.jsonl",
+      "sha256": "36852c891260861802c70a612b458e072ef31e7ae1c8a0e47262a73b6df15031"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-c2c602c4e4e243d09be4b250ca35d3f0/build.log",
+      "sha256": "f00d4a079f6e015a8e92a0a5ee7aa2e328f630c1a07935ed94dffaffd5abf303"
+    }
+  },
+  "mathematical_boundary": "Literal original module\u03b2 and original inferred cube equation; complete generic two-category cancellation, genuine Ab proper exchange at sameU(K), original torsioncomparison and conservativity. Four modulederivedchoices stay public; four genuine Ab worlds localstandard once. Original refinementunit/closedcomplement and torsionFullSubcategory\u2192ambientD+ endpoint remain in downstream reviewed source.",
+  "options": "Native default200000 proof budget; no source flags, suppression, axiom, sorry, native_decide, replay or new model introduced.",
+  "coverage_boundary": "This closes source7f7d R4 on current native basis. G0 f2b0 prior current pass and full5d7d frozen diagnostic remain separate. Downstream P6 and archive merge candidates are not covered by this result.",
+  "performance_boundary": "Lake display and observed frontend interval are distinct metrics; whole-run duration includes refreshed dependencies. This is not a matched speedup experiment or a unique kernel-cause attribution.",
+  "timestamp_utc": "2026-10-27T20:30:47.738795+00:00"
+}

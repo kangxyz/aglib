@@ -1,0 +1,139 @@
+/-
+Copyright (c) 2026 Aglib contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramDirectImageTriangleComp
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.BaseChangeHorizontalUnit
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.SquareCoefficientAdjoint
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension
+
+/-! # Native right-adjoint square compatibility with cone triangles -/
+
+@[expose] public noncomputable section
+open CategoryTheory
+namespace AlgebraicGeometry.Scheme.EtaleCohomology.Continuity
+universe u
+attribute [local instance] hasSheafifyLarge
+
+/-- Prove the whole transport at the original comparison heads before evaluation. -/
+private lemma originalTriangleTransport {X Y T : Scheme.{u}}
+    (f g : Y ⟶ X) (e : f = g) (p : T ⟶ X) (q : T ⟶ Y)
+    (hf : q ≫ f = p) (hg : q ≫ g = p) :
+    Adjunction.RightTriangleCalculus.WholeTransportEquation
+      (eqToHom (congrArg directImage e))
+      (directImageTriangleIso f p q hf) (directImageTriangleIso g p q hg) := by
+  have make := schemeAdjunctionData.triangleRightIso_transport_whole_of_eq
+    f.op g.op (congrArg Quiver.Hom.op e) p.op q.op
+    (congrArg Quiver.Hom.op hf) (congrArg Quiver.Hom.op hg)
+  have ha := (schemeTriangleRightIso_eq_directImageTriangleIso f.op p.op q.op
+    (congrArg Quiver.Hom.op hf)).symm
+  have hb := (schemeTriangleRightIso_eq_directImageTriangleIso g.op p.op q.op
+    (congrArg Quiver.Hom.op hg)).symm
+  have hc := (schemeRight_eqToHom (congrArg Quiver.Hom.op e)).symm
+  dsimp only [schemeRight_eq_directImage] at make ha hb hc
+  dsimp only [Quiver.Hom.unop_op] at make ha hb hc
+  exact make (eqToHom (congrArg directImage e))
+    (directImageTriangleIso f p q hf) (directImageTriangleIso g p q hg) hc ha hb
+
+/-- Contract the original square through the original whole composition isos. -/
+private lemma originalSquareContraction {X₀ X₁ Y₀ Y₁ : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (he : v₁ ≫ f = h ≫ v₀) :
+    Adjunction.RightTriangleCalculus.WholeContractionEquation
+      (directImageSquareIso v₀ v₁ f h he) (directImageCompIso f v₁)
+      (directImageCompIso v₀ h) (eqToHom (congrArg directImage he.symm)) := by
+  have make := schemeAdjunctionData.squareRightIso_comp_whole_of_eq
+    f.op h.op v₀.op v₁.op (congrArg Quiver.Hom.op he)
+  have hs := (schemeSquareRightIso_eq_directImageSquareIso v₀.op v₁.op f.op h.op
+    (congrArg Quiver.Hom.op he)).symm
+  have hc₀ := congrArg
+    (fun z : directImage (v₁ ≫ f) ≅ directImage v₁ ⋙ directImage f => z.symm)
+    (schemeRightCompIso_eq_directImageCompIso f.op v₁.op)
+  have hc₁ := congrArg
+    (fun z : directImage (h ≫ v₀) ≅ directImage h ⋙ directImage v₀ => z.symm)
+    (schemeRightCompIso_eq_directImageCompIso v₀.op h.op)
+  have hc₀' := (hc₀.trans (Iso.symm_symm_eq (directImageCompIso f v₁))).symm
+  have hc₁' := (hc₁.trans (Iso.symm_symm_eq (directImageCompIso v₀ h))).symm
+  have ht := (schemeRight_eqToHom (congrArg Quiver.Hom.op he).symm).symm
+  dsimp only [schemeRight_eq_directImage, schemeRightCompIso_eq_directImageCompIso]
+    at make hs hc₀' hc₁' ht
+  dsimp only [Quiver.Hom.unop_op, Iso.symm_symm_eq] at make hs hc₀' hc₁' ht
+  exact make (directImageSquareIso v₀ v₁ f h he) (directImageCompIso f v₁)
+    (directImageCompIso v₀ h) (eqToHom (congrArg directImage he.symm)) hs hc₀' hc₁' ht
+
+/-- Derive the whole triangle square on its five original comparison values. -/
+private lemma originalSquareTriangle {X₀ X₁ Y₀ Y₁ T : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (p₀ : T ⟶ X₀) (p₁ : T ⟶ X₁) (q₀ : T ⟶ Y₀) (q₁ : T ⟶ Y₁)
+    (he : v₁ ≫ f = h ≫ v₀) (hp : p₁ ≫ f = p₀) (hq : q₁ ≫ h = q₀)
+    (hi : q₀ ≫ v₀ = p₀) (hj : q₁ ≫ v₁ = p₁) :
+    Adjunction.RightTriangleCalculus.WholeSquareTriangleEquation
+      (directImageTriangleIso h q₀ q₁ hq) (directImageTriangleIso v₀ p₀ q₀ hi)
+      (directImageTriangleIso v₁ p₁ q₁ hj) (directImageTriangleIso f p₀ p₁ hp)
+      (directImageSquareIso v₀ v₁ f h he) := by
+  have make := schemeAdjunctionData.squareRightIso_triangle_whole_of_eq
+    schemeAdjunctionData_coherent f.op h.op v₀.op v₁.op p₀.op p₁.op q₀.op q₁.op
+    (congrArg Quiver.Hom.op he) (congrArg Quiver.Hom.op hp)
+    (congrArg Quiver.Hom.op hq) (congrArg Quiver.Hom.op hi) (congrArg Quiver.Hom.op hj)
+  have hh := (schemeTriangleRightIso_eq_directImageTriangleIso h.op q₀.op q₁.op
+    (congrArg Quiver.Hom.op hq)).symm
+  have h₀ := (schemeTriangleRightIso_eq_directImageTriangleIso v₀.op p₀.op q₀.op
+    (congrArg Quiver.Hom.op hi)).symm
+  have h₁ := (schemeTriangleRightIso_eq_directImageTriangleIso v₁.op p₁.op q₁.op
+    (congrArg Quiver.Hom.op hj)).symm
+  have hf := (schemeTriangleRightIso_eq_directImageTriangleIso f.op p₀.op p₁.op
+    (congrArg Quiver.Hom.op hp)).symm
+  have hs := (schemeSquareRightIso_eq_directImageSquareIso v₀.op v₁.op f.op h.op
+    (congrArg Quiver.Hom.op he)).symm
+  dsimp only [schemeRight_eq_directImage] at make hh h₀ h₁ hf hs
+  dsimp only [Quiver.Hom.unop_op] at make hh h₀ h₁ hf hs
+  exact make (directImageTriangleIso h q₀ q₁ hq) (directImageTriangleIso v₀ p₀ q₀ hi)
+    (directImageTriangleIso v₁ p₁ q₁ hj) (directImageTriangleIso f p₀ p₁ hp)
+    (directImageSquareIso v₀ v₁ f h he) hh h₀ h₁ hf hs
+
+lemma directImageTriangleIso_transport {X Y T : Scheme.{u}}
+    (f g : Y ⟶ X) (e : f = g) (p : T ⟶ X) (q : T ⟶ Y)
+    (hf : q ≫ f = p) (hg : q ≫ g = p) (K : AbelianSheaf.{u, u + 1} T) :
+    eqToHom (congrArg (fun s => (directImage s).obj ((directImage q).obj K)) e) ≫
+        (directImageTriangleIso g p q hg).hom.app K =
+      (directImageTriangleIso f p q hf).hom.app K := by
+  exact Adjunction.RightTriangleCalculus.transport_app (congrArg directImage e)
+    (directImageTriangleIso f p q hf) (directImageTriangleIso g p q hg)
+    (originalTriangleTransport f g e p q hf hg) K
+
+/-- Contract the square's last native composition before inserting a cone triangle. -/
+lemma directImageSquareIso_comp_hom {X₀ X₁ Y₀ Y₁ : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (he : v₁ ≫ f = h ≫ v₀) (M : AbelianSheaf.{u, u + 1} Y₁)
+    {N : AbelianSheaf.{u, u + 1} X₀}
+    (r : (directImage (v₁ ≫ f)).obj M ⟶ N) :
+    (directImageSquareIso v₀ v₁ f h he).hom.app M ≫
+        (directImageCompIso f v₁).hom.app M ≫ r =
+      (directImageCompIso v₀ h).hom.app M ≫
+        eqToHom (congrArg (fun s : Y₁ ⟶ X₀ => (directImage s).obj M) he.symm) ≫ r := by
+  exact Adjunction.RightTriangleCalculus.contraction_app
+    (directImageSquareIso v₀ v₁ f h he) (directImageCompIso f v₁) (directImageCompIso v₀ h)
+    (congrArg directImage he.symm) (originalSquareContraction f h v₀ v₁ he) M r
+
+/-- All right-adjoint square paths into the same cone point agree by native composition. -/
+lemma directImageSquareTriangle {X₀ X₁ Y₀ Y₁ T : Scheme.{u}}
+    (f : X₁ ⟶ X₀) (h : Y₁ ⟶ Y₀) (v₀ : Y₀ ⟶ X₀) (v₁ : Y₁ ⟶ X₁)
+    (p₀ : T ⟶ X₀) (p₁ : T ⟶ X₁) (q₀ : T ⟶ Y₀) (q₁ : T ⟶ Y₁)
+    (he : v₁ ≫ f = h ≫ v₀) (hp : p₁ ≫ f = p₀) (hq : q₁ ≫ h = q₀)
+    (hi : q₀ ≫ v₀ = p₀) (hj : q₁ ≫ v₁ = p₁)
+    (K : AbelianSheaf.{u, u + 1} T) :
+    (directImage v₀).map ((directImageTriangleIso h q₀ q₁ hq).hom.app K) ≫
+        (directImageTriangleIso v₀ p₀ q₀ hi).hom.app K =
+      (directImageSquareIso v₀ v₁ f h he).hom.app ((directImage q₁).obj K) ≫
+        (directImage f).map ((directImageTriangleIso v₁ p₁ q₁ hj).hom.app K) ≫
+          (directImageTriangleIso f p₀ p₁ hp).hom.app K := by
+  exact Adjunction.RightTriangleCalculus.square_triangle_app
+    (directImageTriangleIso h q₀ q₁ hq) (directImageTriangleIso v₀ p₀ q₀ hi)
+    (directImageTriangleIso v₁ p₁ q₁ hj) (directImageTriangleIso f p₀ p₁ hp)
+    (directImageSquareIso v₀ v₁ f h he)
+    (originalSquareTriangle f h v₀ v₁ p₀ p₁ q₀ q₁ he hp hq hi hj) K
+
+end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

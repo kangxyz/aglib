@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.SpecSections
+public import Aglib.LinearAlgebra.TensorProduct.Map
 public import Aglib.Algebra.Homology.Amitsur.Positive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Mathlib.Algebra.Category.Grp.Ulift
@@ -36,11 +37,8 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.QuasiCoherent
 /-- Additive maps from a tensor product are determined on actual pure tensors. -/
 theorem tensorSectionAddHom_ext {R M N Z : Type u} [CommRing R]
     [AddCommGroup M] [AddCommGroup N] [AddCommGroup Z] [Module R M] [Module R N]
-    (f g : M ⊗[R] N →+ Z) (h : ∀ m n, f (m ⊗ₜ[R] n) = g (m ⊗ₜ[R] n)) : f = g := by
-  ext s
-  induction s using TensorProduct.inductionOn with
-  | tmul m n => exact h m n
-  | add s t hs ht => simp only [map_add, hs, ht]
+    (f g : M ⊗[R] N →+ Z) (h : ∀ m n, f (m ⊗ₜ[R] n) = g (m ⊗ₜ[R] n)) : f = g :=
+  TensorProduct.addHom_ext f g h
 
 variable (R : Type u) [CommRing R] (F : (Spec (CommRingCat.of R)).Modules)
   [F.IsQuasicoherent]

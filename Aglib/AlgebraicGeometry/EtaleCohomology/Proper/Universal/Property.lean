@@ -10,9 +10,9 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
 /-!
 # The original bounded exchange test
 
-This predicate retains the original all-degree higher exchange in the native
-standard models. Geometric closure theorems and transport to other supplied
-models consume the same definition without importing each other's proofs.
+This predicate retains the original all-degree higher exchange through intrinsic
+ordinary right-derived functors. Geometric closure and exact comparison with
+any selected derived family use the same predicate.
 -/
 
 @[expose] public noncomputable section
@@ -23,7 +23,7 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Proper
 
 universe u
 
-attribute [local instance] hasSheafifyLarge HasDerivedCategory.standard
+attribute [local instance] hasSheafifyLarge
 
 /-- The actual all-degree coefficient test at a specified original square.
 This shared predicate keeps the original maps whole during geometric transport. -/

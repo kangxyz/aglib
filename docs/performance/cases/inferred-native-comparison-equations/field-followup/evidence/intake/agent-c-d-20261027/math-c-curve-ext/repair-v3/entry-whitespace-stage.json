@@ -1,0 +1,7 @@
+{
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SmoothBaseChange/CurveFieldInvarianceUniverses.lean",
+  "before_sha256": "2c0607d80c476ea478c03155244b72a1730ad273c28027aca4631803cb000ef2",
+  "after_sha256": "b45c89322e68bc15a9aa98f5ad5f9425697e591d04e9bcb47857b4033e61ed4a",
+  "status": "R-only staged for the next unobserved entry-root invocation; native unchanged",
+  "change": "Wrap the visibly overlong universe-instantiation proof line; nonwhitespace byte stream identical. No theorem or proof-term token change. No separate lint or compiler invocation."
+}

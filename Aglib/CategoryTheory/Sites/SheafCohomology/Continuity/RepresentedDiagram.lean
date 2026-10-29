@@ -34,61 +34,6 @@ universe uI vI uA vA e
 variable {I : Type uI} [Category.{vI} I]
   {A : I → Type uA} [∀ i, Category.{vA} (A i)] (D : AdjunctionData A)
 
-/-- Construct the original system from left transitions with their actual comparison laws. -/
-def System.ofLeft (obj : ∀ i, A i)
-    (map : ∀ {i j : I} (a : i ⟶ j), (D.left a).obj (obj i) ⟶ obj j)
-    (map_id : ∀ i, map (𝟙 i) = (D.leftIdIso i).hom.app (obj i))
-    (map_comp : ∀ {i j k : I} (a : i ⟶ j) (b : j ⟶ k),
-      map (a ≫ b) = (D.leftCompIso a b).hom.app (obj i) ≫
-        (D.left b).map (map a) ≫ map b) : System D where
-  obj := obj
-  map a := (D.adj a).homEquiv _ _ (map a)
-  map_id i := by
-    rw [map_id]
-    have h := homEquiv_precomp_conjugate Adjunction.id (D.adj (𝟙 i))
-      (D.leftIdIso i).hom (𝟙 (obj i))
-    have hm : conjugateEquiv Adjunction.id (D.adj (𝟙 i)) (D.leftIdIso i).hom =
-        (D.idIso i).inv := Adjunction.conjugateEquiv_leftAdjointIdIso_hom _ _
-    rw [hm] at h
-    have hid : Adjunction.id.homEquiv (obj i) (obj i) (𝟙 (obj i)) = 𝟙 (obj i) :=
-      (Adjunction.homEquiv_id Adjunction.id (obj i)).trans rfl
-    let l : (D.left (𝟙 i)).obj (obj i) ⟶ obj i := (D.leftIdIso i).hom.app (obj i)
-    let r : obj i ⟶ (D.right (𝟙 i)).obj (obj i) := (D.idIso i).inv.app (obj i)
-    have h' : (D.adj (𝟙 i)).homEquiv _ _ (l ≫ 𝟙 (obj i)) =
-        𝟙 (obj i) ≫ r := h.trans (congrArg (· ≫ r) hid)
-    rw [Category.comp_id, Category.id_comp] at h'
-    change (D.adj (𝟙 i)).homEquiv _ _ l ≫ (D.idIso i).hom.app (obj i) = _
-    rw [h', Iso.inv_hom_id_app]
-    rfl
-  map_comp a b := by
-    rw [map_comp]
-    rw [homEquiv_precomp_conjugate ((D.adj a).comp (D.adj b))
-      (D.adj (a ≫ b)) (D.leftCompIso a b).hom]
-    have hm : conjugateEquiv ((D.adj a).comp (D.adj b)) (D.adj (a ≫ b))
-        (D.leftCompIso a b).hom = (D.compIso a b).inv :=
-      Adjunction.conjugateEquiv_leftAdjointCompIso_inv _ _ _ _
-    rw [hm]
-    simp only [Category.assoc, Iso.inv_hom_id_app, Category.comp_id]
-    rw [Adjunction.comp_homEquiv]
-    change (D.adj a).homEquiv _ _
-      ((D.adj b).homEquiv _ _ ((D.left b).map (map a) ≫ map b)) = _
-    rw [Adjunction.homEquiv_naturality_left,
-      Adjunction.homEquiv_naturality_right]
-
-/-- The constructor retains the supplied original left-transition map. -/
-@[simp]
-lemma System.ofLeft_leftMap (obj : ∀ i, A i)
-    (map : ∀ {i j : I} (a : i ⟶ j), (D.left a).obj (obj i) ⟶ obj j)
-    (map_id : ∀ i, map (𝟙 i) = (D.leftIdIso i).hom.app (obj i))
-    (map_comp : ∀ {i j k : I} (a : i ⟶ j) (b : j ⟶ k),
-      map (a ≫ b) = (D.leftCompIso a b).hom.app (obj i) ≫
-        (D.left b).map (map a) ≫ map b)
-    {i j : I} (a : i ⟶ j) :
-    (System.ofLeft D obj map map_id map_comp).leftMap D a = map a := by
-  change ((D.adj a).homEquiv (obj i) (obj j)).symm
-    (((D.adj a).homEquiv (obj i) (obj j)) (map a)) = map a
-  exact Equiv.symm_apply_apply _ _
-
 variable (U : System D)
   [∀ {i j : I} (a : i ⟶ j), IsIso (U.leftMap D a)]
 

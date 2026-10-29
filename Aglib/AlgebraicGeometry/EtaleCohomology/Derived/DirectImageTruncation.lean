@@ -6,8 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
-public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Layers
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Truncation.AtZero
 
 /-!
 # The degree-zero truncation of actual derived direct image
@@ -36,14 +35,21 @@ def derivedDirectImageTruncLTOneIso (f : S ⟶ X)
         ((derivedDirectImage f).obj
           ((singleFunctor (AbelianSheaf.{u, u + 1} S) 0).obj L)) ≅
       (singleFunctor (AbelianSheaf.{u, u + 1} X) 0).obj ((directImage f).obj L) := by
-  let K := (derivedDirectImage f).obj
-    ((singleFunctor (AbelianSheaf.{u, u + 1} S) 0).obj L)
-  let : K.IsGE 0 := (directImage f).rightDerivedFunctorPlus_isGE _ 0
-  let : ((TStructure.t.truncLT 1).obj K).IsLE 0 :=
-    TStructure.t.isLE_truncLT_obj K 1 0 (by omega)
-  exact isoSingleHomology ((TStructure.t.truncLT 1).obj K) 0 ≪≫
-    (singleFunctor (AbelianSheaf.{u, u + 1} X) 0).mapIso
-      (homologyTruncLTIso K 1 0 (by omega) ≪≫
-        (derivedDirectImageSingleHomologyZeroIso f).app L)
+  exact (directImage f).rightDerivedFunctorPlusTruncLTOneIso L
+
+/-- The actual direct-image comparison retains the original truncation arrow,
+native higher-image comparison and original right-derived-zero normalization. -/
+@[reassoc]
+theorem derivedDirectImageTruncLTOneIso_homology_zero (f : S ⟶ X)
+    (L : AbelianSheaf.{u, u + 1} S) :
+    (homologyFunctor (AbelianSheaf.{u, u + 1} X) 0).map
+        (derivedDirectImageTruncLTOneIso f L).hom ≫
+      (singleFunctorCompHomologyFunctorIso (C := AbelianSheaf.{u, u + 1} X) 0).hom.app
+        ((directImage f).obj L) =
+    (homologyFunctor (AbelianSheaf.{u, u + 1} X) 0).map ((TStructure.t.truncLTι 1).app
+        ((derivedDirectImage f).obj
+          ((singleFunctor (AbelianSheaf.{u, u + 1} S) 0).obj L))) ≫
+      (higherDirectImageIso f 0).inv.app L ≫ (directImage f).rightDerivedZeroIsoSelf.hom.app L :=
+  (directImage f).rightDerivedFunctorPlusTruncLTOneIso_homology_zero L
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

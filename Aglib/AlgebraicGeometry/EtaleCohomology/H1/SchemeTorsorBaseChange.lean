@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorAdjunction
+public import Aglib.AlgebraicGeometry.Sites.EtaleTopos
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedTorsor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.GroupScheme
@@ -151,75 +152,21 @@ instance baseChangedGroup_finite [IsFinite A.X.hom] : IsFinite (baseChangedGroup
 section RepresentedSheaves
 variable [IsCommMonObj A.X]
 
-/-- The actual coefficient section pullback, as a morphism into direct image. -/
-def representedCoefficientUnit :
-    representedSheaf A ⟶ (directImage f).obj (representedSheaf (baseChangedGroup f A)) :=
-  ⟨representedBaseChangeUnit f A⟩
-
-/-- The canonical represented-sheaf isomorphism has precisely the actual
-scheme-section pullback as its adjunction unit. -/
-theorem representedSheafBaseChangeIso_unit [Etale A.X.hom] :
-    (inverseImageAdjunction f).unit.app (representedSheaf A) ≫
-        (directImage f).map (representedSheafBaseChangeIso f A).hom =
-      representedCoefficientUnit f A := by
-  let e := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let k := representedPresheafBaseChangeIso f A
-  let R := representedSheaf (baseChangedGroup f A)
-  let F := (siteBaseChange f).op
-  let P := representedPresheaf A
-  have hu := Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f)
-    (Functor.sheafPullbackConstruction.sheafAdjunctionContinuous (siteBaseChange f)
-      AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S))
-    (representedSheaf A)
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext U
-  let V := F.obj U
-  have huU := congrArg (fun r => r.hom.app U) hu
-  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
-      (e.hom.app (representedSheaf A)).hom.app V =
-    (F.leftKanExtensionUnit P).app U ≫
-      (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V at huU
-  have hk : (F.leftKanExtensionUnit P).app U ≫ k.hom.app V =
-      (representedBaseChangeUnit f A).app U := by
-    exact congr_app (Functor.descOfIsLeftKanExtension_fac _ _ _ _) U
-  have hn := (congr_app (toSheafify_naturality (Scheme.smallEtaleTopology S) k.hom) V).symm
-  change (toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V =
-    k.hom.app V ≫ (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V at hn
-  have hr := congrArg (fun r => r.hom.app V) (sheafificationIso R).hom_inv_id
-  change (toSheafify (Scheme.smallEtaleTopology S) R.obj).app V ≫
-    (sheafificationIso R).inv.hom.app V = 𝟙 _ at hr
-  change ((inverseImageAdjunction f).unit.app (representedSheaf A)).hom.app U ≫
-      (e.hom.app (representedSheaf A)).hom.app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).map k.hom).hom.app V ≫
-      (sheafificationIso R).inv.hom.app V = (representedBaseChangeUnit f A).app U
-  simp only [← Category.assoc]
-  erw [huU]
-  rw [Category.assoc ((F.leftKanExtensionUnit P).app U)
-    ((toSheafify (Scheme.smallEtaleTopology S) (F.lan.obj P)).app V)]
-  erw [hn]
-  rw [← Category.assoc ((F.leftKanExtensionUnit P).app U) (k.hom.app V), hk,
-    Category.assoc, hr]
-  exact Category.comp_id ((representedBaseChangeUnit f A).app U)
-
-/-- Thus the coefficient adjoint is the fixed actual represented-sheaf
-base-change isomorphism, not an arbitrary identification. -/
-theorem representedCoefficientUnit_adjoint [Etale A.X.hom] :
-    ((inverseImageAdjunction f).homEquiv _ _).symm (representedCoefficientUnit f A) =
-      (representedSheafBaseChangeIso f A).hom := by
-  apply ((inverseImageAdjunction f).homEquiv _ _).injective
-  rw [Equiv.apply_symm_apply, Adjunction.homEquiv_unit, representedSheafBaseChangeIso_unit]
-
 /-- Scheme-theoretic pullback of torsor sections defines an actual set-sheaf map. -/
-def representedCarrierUnit : finiteRepresentedSetSheaf Y ⟶
-    (setDirectImage f).obj (finiteRepresentedSetSheaf ((baseChange f).obj Y)) where
+def representedCarrierUnit : (finiteRepresentedSetSheaf Y : Scheme.EtaleTopos X) ⟶
+    (Topos.GeometricMorphism.directImage (Scheme.etaleToposMorphism f)).obj
+      (finiteRepresentedSetSheaf ((baseChange f).obj Y) : Scheme.EtaleTopos S) where
   hom := {
     app U := TypeCat.ofHom (fun t => ULift.up ((Over.pullback f).map t.down))
     naturality {U V} g := by
       ext t
       exact congrArg ULift.up ((Over.pullback f).map_comp _ _) }
+
+/-- The topos carrier map retains the original scheme-theoretic section pullback. -/
+theorem representedCarrierUnit_app (U : X.Etaleᵒᵖ)
+    (t : (finiteRepresentedSetSheaf Y).obj.obj U) :
+    (representedCarrierUnit f Y).hom.app U t =
+      ULift.up ((Over.pullback f).map t.down) := rfl
 
 /-- The canonical represented section maps form a genuine adjoint torsor map. -/
 def representedTorsorAdjointHom [Surjective Y.obj.hom] :

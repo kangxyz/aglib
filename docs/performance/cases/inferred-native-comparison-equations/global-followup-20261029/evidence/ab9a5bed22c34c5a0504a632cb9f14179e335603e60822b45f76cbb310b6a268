@@ -1,0 +1,50 @@
+{
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "current_four_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "76aac49b4af2dc1e2c07615e3b94f023d5275901f6ebae346ce02797a0b7bd0c",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "e537aa98d10c228eff992b111596458733e3694d2c61c3576bb990aea3341a6f"
+  },
+  "production_source_has_diagnostic_traces": false,
+  "diagnostic_boundary": "V35 cb75 exits1 ONLY diagnostic trace-unused lints; no reported heartbeat/type/kernel error, full generic and finite markers reached. ActualN contains no V35trace, so ordinary production build proceeds without artificial prefix-cleanup replay.",
+  "old_plan": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/v15-fullGlobal-endpoint2-production3-input.json",
+  "old_plan_sha256": "816ba32e123ef7728da8ebb2e2db4fe417fb7900ef0597edab40b507d025db35",
+  "classification": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+      "sha256": "e537aa98d10c228eff992b111596458733e3694d2c61c3576bb990aea3341a6f",
+      "closure_count": 134,
+      "missing": [],
+      "known_failed_current_source": [],
+      "ready": true
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Universal/ProjectiveLine.lean",
+      "sha256": "01c9ddd753500f9526659e0906f890ccc319bc2ade1a484234bc24a182651eeb",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Universal.ProjectiveLine",
+      "closure_count": 3233,
+      "missing": [],
+      "known_failed_current_source": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.EtaleSliceRoots"
+      ],
+      "ready": false
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Bounded.lean",
+      "sha256": "1cde678bdf4eff4ffb308c6ef29c96f30eeb47f4df4b87d4a37f2b682841a8d1",
+      "module": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Bounded",
+      "closure_count": 3238,
+      "missing": [],
+      "known_failed_current_source": [
+        "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.EtaleSliceRoots"
+      ],
+      "ready": false
+    }
+  ],
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction"
+  ],
+  "boundary": "Only actual changed finished Global and source-identical existing eligible Proper endpoints. Hold any endpoint with actual failed current rootsSlice provider, no unrelated downstream prebuild."
+}

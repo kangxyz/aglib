@@ -1,0 +1,39 @@
+--- actual616b/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
++++ equation-route/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean
+@@ -75,6 +75,15 @@
+ open _root_.GroupCohomology.ContinuousH1
+ namespace GroupCohomology.Kummer.Field
+ universe u w
++universe u₁ u₂ u₃
++
++private theorem evaluate_original_comparison
++    {α : Sort u₁} {β : Sort u₂} {γ : Sort u₃}
++    {e : α → β} {x : α} {z : β} (h : e x = z)
++    (E : α → γ) (f : β → γ) (y : γ)
++    (hE : E = f ∘ e) (hz : f z = y) : E x = y :=
++  (congrFun hE x).trans ((congrArg f h).trans hz)
++
+ variable (K : Type u) [Field K] [CharZero K] (n : ℕ) [NeZero n]
+ /-- A field unit as the actual global unit on its spectrum. -/
+ def globalUnit (f : Kˣ) : Γ(Spec (.of K), ⊤)ˣ :=
+@@ -366,7 +375,6 @@
+       (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) hA hR
+       (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+       (pointMark_equivariant K n) (finiteCoefficient K n) P Y e t
+-  have hmap := congrArg ((galoisRestriction K n).onH1) h
+   have hclass :=
+     _root_.GroupCohomology.ContinuousH1.PullbackMap.onH1_classOf (galoisRestriction K n)
+       (Scheme.EtaleCohomology.FundamentalGroupComparison.markedBasedCocycle
+@@ -374,8 +382,10 @@
+         (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n)
+         (pointMark_equivariant K n) Y
+         (P.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec (.of K)) n) Y e) t)
+-  simpa only [comparison, AddMonoidHom.comp_apply, AddEquiv.coe_toAddMonoidHom,
+-    fieldCocycle] using hmap.trans hclass
++  refine evaluate_original_comparison h (comparison K n hA hR)
++    ((galoisRestriction K n).onH1) _ ?_ ?_
++  · rfl
++  · exact hclass
+ 
+ 
+ 

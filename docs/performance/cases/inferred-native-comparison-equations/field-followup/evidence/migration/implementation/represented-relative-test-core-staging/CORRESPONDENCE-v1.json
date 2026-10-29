@@ -1,0 +1,11 @@
+{
+  "plain_tests": "Over.pullback Y.hom followed by Over.map Y.hom, with the same selected pullbacks",
+  "relative_map": "literal pullback.lift fst (snd >> a.left), both projections and id/comp proved below",
+  "pasting_order": "same symmetry\u2013pullbackLeftPullbackSndIso\u2013symmetry component; hom_eq_pasting compares to existing opposite-order API by actual symmetry-induced relative map",
+  "property_boundary": "P.Over included by MorphismProperty.Over.forget; no identification with plain Over",
+  "coordinates": "same full op/whisker/associator composite and actual supplied Over-adjunction section/group comparison; both variable naturalities derived below",
+  "represented_functor": "existing actualDiagramLift/native Faithful.div retains exactly constantRepresentedDirectImageMap; no new maps or endpoint model",
+  "copyObj": "same isoCopyObj source and target components, same fully faithful preimageIso and complete normalization",
+  "units": "existing originalUnitTransport, representedEtaleRestrictionIso_unit and representedEtaleRestrictionIso_original retained unchanged",
+  "canonical_coordinate_boundary": "Both original maps retained. No new claim that constantPushforwardEtaleBaseChangeComponent equals constantPushforwardRestrictionIso.app; any required equality remains separately identified, not assumed."
+}

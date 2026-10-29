@@ -6,6 +6,8 @@ Authors: kangxyz
 module
 
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.SystemCoherence
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Cone
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexColimit
 public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
 public import Mathlib.CategoryTheory.Abelian.Exact
 
@@ -174,3 +176,113 @@ theorem cokernelShortComplex_shortExact (i : I) [Mono (η.app i)] :
 end System
 
 end CategoryTheory.InjectiveSystem
+
+namespace CategoryTheory.InjectiveSystem.AdjunctionData.Cone
+
+open Limits
+
+universe uI vI uA vA uB vB
+
+variable {I : Type uI} [Category.{vI} I]
+  {A : I → Type uA} [∀ i, Category.{vA} (A i)]
+  {D : AdjunctionData A} {B : Type uB} [Category.{vB} B] (P : D.Cone B)
+
+/-- The selected apex adjunction supplies its actual left-adjoint dictionary. -/
+instance left_isLeftAdjoint (i : I) : (P.left i).IsLeftAdjoint :=
+  ⟨P.right i, ⟨P.adj i⟩⟩
+
+variable [∀ i, Abelian (A i)] [Abelian B]
+  {F Q : System D} (η : System.Hom D F Q)
+
+/-- The original apex coefficient transformations have zero composite. -/
+theorem coefficientNatTrans_comp_cokernelπ :
+    P.coefficientNatTrans η ≫ P.coefficientNatTrans (System.cokernelπ D η) = 0 := by
+  apply NatTrans.ext
+  funext i
+  change (P.left i).map (η.app i) ≫ (P.left i).map ((System.cokernelπ D η).app i) = 0
+  rw [← Functor.map_comp, System.comp_cokernelπ, Functor.map_zero]
+
+/-- The complete coefficient-diagram short complex uses the original morphism
+and the projection from its actual pointwise cokernel system. -/
+def coefficientCokernelComplex : ShortComplex (I ⥤ B) :=
+  ShortComplex.mk (P.coefficientNatTrans η)
+    (P.coefficientNatTrans (System.cokernelπ D η))
+    (P.coefficientNatTrans_comp_cokernelπ η)
+
+/-- Evaluation retains the original component sequence and the actual apex
+left functor, rather than another cokernel or coefficient realization. -/
+theorem coefficientCokernelComplex_component (i : I) :
+    (P.coefficientCokernelComplex η).map ((CategoryTheory.evaluation I B).obj i) =
+      (System.cokernelShortComplex D η i).map (P.left i) := rfl
+
+/-- Exact apex left functors carry all the actual component sequences to an
+exact sequence of coefficient diagrams. -/
+theorem coefficientCokernelComplex_exact
+    [∀ i, PreservesFiniteLimits (P.left i)] :
+    (P.coefficientCokernelComplex η).Exact := by
+  apply ShortComplex.exact_of_evaluation
+  intro i
+  rw [P.coefficientCokernelComplex_component]
+  exact (System.cokernelShortComplex_exact D η i).map (P.left i)
+
+/-- A monic original component gives the short exact sequence after the same
+exact apex left functor; no injectivity statement is used. -/
+theorem coefficientCokernelComplex_component_shortExact (i : I)
+    [PreservesFiniteLimits (P.left i)] [Mono (η.app i)] :
+    ((P.coefficientCokernelComplex η).map
+      ((CategoryTheory.evaluation I B).obj i)).ShortExact := by
+  rw [P.coefficientCokernelComplex_component]
+  exact (System.cokernelShortComplex_shortExact D η i).map_of_exact (P.left i)
+
+/-- Pointwise monicity and exact apex left functors give the whole original
+short exact sequence of coefficient diagrams. -/
+theorem coefficientCokernelComplex_shortExact
+    [∀ i, PreservesFiniteLimits (P.left i)] (hη : ∀ i, Mono (η.app i)) :
+    (P.coefficientCokernelComplex η).ShortExact where
+  exact := P.coefficientCokernelComplex_exact η
+  mono_f := by
+    have (i : I) : Mono ((P.coefficientCokernelComplex η).f.app i) := by
+      have : Mono (η.app i) := hη i
+      exact (P.coefficientCokernelComplex_component_shortExact η i).mono_f
+    exact NatTrans.mono_of_mono_app _
+  epi_g := by
+    have (i : I) : Epi ((P.coefficientCokernelComplex η).g.app i) := by
+      change Epi ((P.left i).map ((System.cokernelπ D η).app i))
+      infer_instance
+    exact NatTrans.epi_of_epi_app _
+
+section Colimits
+
+variable [HasColimitsOfShape I B]
+
+/-- Map the whole original short complex through the actual colimit functor. -/
+def coefficientColimitCokernelComplex : ShortComplex B :=
+  (P.coefficientCokernelComplex η).map colim
+
+@[simp]
+theorem coefficientColimitCokernelComplex_f :
+    (P.coefficientColimitCokernelComplex η).f = P.coefficientColimitMap η := rfl
+
+@[simp]
+theorem coefficientColimitCokernelComplex_g :
+    (P.coefficientColimitCokernelComplex η).g =
+      P.coefficientColimitMap (System.cokernelπ D η) := rfl
+
+/-- Exact colimits carry the same original coefficient complex to an exact
+complex with its actual induced colimit maps. -/
+theorem coefficientColimitCokernelComplex_exact
+    [∀ i, PreservesFiniteLimits (P.left i)] [HasExactColimitsOfShape I B] :
+    (P.coefficientColimitCokernelComplex η).Exact :=
+  (P.coefficientCokernelComplex_exact η).map colim
+
+/-- The actual induced colimit maps give a short exact sequence under the
+original pointwise monicity and exactness conditions. -/
+theorem coefficientColimitCokernelComplex_shortExact
+    [∀ i, PreservesFiniteLimits (P.left i)] [HasExactColimitsOfShape I B]
+    (hη : ∀ i, Mono (η.app i)) :
+    (P.coefficientColimitCokernelComplex η).ShortExact :=
+  (P.coefficientCokernelComplex_shortExact η hη).map_of_exact colim
+
+end Colimits
+
+end CategoryTheory.InjectiveSystem.AdjunctionData.Cone

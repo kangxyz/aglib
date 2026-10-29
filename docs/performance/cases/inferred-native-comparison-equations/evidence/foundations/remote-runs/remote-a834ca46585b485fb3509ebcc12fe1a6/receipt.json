@@ -1,0 +1,377 @@
+{
+  "action": "phase",
+  "actor_executable": "/root/miniconda3/bin/python3.12",
+  "admission": {
+    "ceilings": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+    "final_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-19645e78081743e6b5807ab6a6e210aa": 1
+      },
+      "cpu_cores": 1.4105491466741686,
+      "cpu_usage_usec": 1483889297015,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 1610612736,
+      "memory_current_bytes": 52815003648,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 0.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 40304766976
+    },
+    "initial_observation": {
+      "active_compilers_by_run": {
+        "/root/autodl-tmp/lean-build/logs/remote-19645e78081743e6b5807ab6a6e210aa": 1
+      },
+      "cpu_cores": 1.0441893552893604,
+      "cpu_usage_usec": 1483870951889,
+      "effective_cpus": 32.0,
+      "errors": [],
+      "growth_and_startup_margin_bytes": 2147483648,
+      "memory_current_bytes": 53007839232,
+      "memory_full_avg10": 0.0,
+      "memory_some_avg10": 0.0,
+      "observation_ok": true,
+      "orphan_cap_bytes": 0,
+      "orphan_claims": 0,
+      "pending_cpu_cores": 1.0,
+      "policy": "elastic-sampled-v1",
+      "pool_cap_bytes": 115964116992,
+      "victim_runs": [],
+      "waiting_claims": 0,
+      "working_set_bytes": 39354343424
+    },
+    "max_frontends_if_alone": 2,
+    "mode": "elastic"
+  },
+  "allow_library_roots": false,
+  "cache_provenance": {
+    "configuration_sha256": {
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852"
+    },
+    "environment": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+      "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+    },
+    "lookup": "native Lake traces/artifact cache; no per-dependency prior-hit claim"
+  },
+  "cgroup_average_cpu_cores": 2.116211736090447,
+  "cgroup_cpu_after": {
+    "nr_periods": 5535610,
+    "nr_throttled": 18522,
+    "system_usec": 138907522570,
+    "throttled_usec": 205534316,
+    "usage_usec": 1483889297258,
+    "user_usec": 1344981774688
+  },
+  "cgroup_cpu_attribution": "whole observed cgroup; may include unrelated activity",
+  "cgroup_cpu_before": {
+    "nr_periods": 5535523,
+    "nr_throttled": 18522,
+    "system_usec": 138905862969,
+    "throttled_usec": 205534316,
+    "usage_usec": 1483870960740,
+    "user_usec": 1344965097771
+  },
+  "cgroup_cpu_seconds_delta": 18.336518,
+  "cgroup_memory_events_after": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_before": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "cgroup_memory_events_delta": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "command": [
+    "/root/miniconda3/bin/python3.12",
+    "-c",
+    "\"\"\"One author-selected candidate against the secured R4 context, diagnostic only.\"\"\"\nimport base64\nimport difflib\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport subprocess\nimport sys\nimport time\nimport uuid\n\ncontext = Path('/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9')\npackage = context / 'package'\nrelative = Path('Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean')\nsetup_path = context / 'ProperBaseChange.setup.json'\nfreeze = json.loads((context / 'freeze.json').read_text())\nassert freeze['source_basis'] == '65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7'\nassert freeze['compiler_starts'] == 0 and not freeze['setup_references_managed_C']\ncandidate_bytes = base64.b64decode(sys.argv[1], validate=True)\nexpected, label = sys.argv[2:4]\nassert hashlib.sha256(candidate_bytes).hexdigest() == expected\noriginal = (package / relative).read_bytes()\nassert hashlib.sha256(original).hexdigest() == freeze['initial_candidate_sha256']\nsetup_bytes = setup_path.read_bytes()\nassert hashlib.sha256(setup_bytes).hexdigest() == freeze['setup_sha256']\ndef imports(data):\n    return [s.strip() for s in data.decode().splitlines() if s.strip().startswith(('import ', 'public import ', 'meta import '))]\ndef options(data):\n    return [s.strip() for s in data.decode().splitlines() if s.strip().startswith('set_option ')]\nassert imports(candidate_bytes) == imports(original), 'candidate changes frozen imports; return to owner'\nassert options(candidate_bytes) == options(original), 'candidate changes source options; return to owner'\nattempt = context / 'attempts' / (label + '-' + uuid.uuid4().hex)\nsource = attempt / 'source' / relative\nsource.parent.mkdir(parents=True)\nsource.write_bytes(candidate_bytes)\noutput = attempt / 'outputs'\noutput.mkdir()\ndelta = ''.join(difflib.unified_diff(original.decode().splitlines(keepends=True), candidate_bytes.decode().splitlines(keepends=True), fromfile='frozen4ea/ProperBaseChange.lean', tofile='candidate/ProperBaseChange.lean'))\n(attempt / 'candidate.patch').write_text(delta)\nevents = Path(os.environ['LEAN_SYSROOT']).parent / 'compiler-events.jsonl'\ndef starts():\n    return 0 if not events.exists() else sum(json.loads(s).get('event') == 'started' for s in events.read_text().splitlines())\nassert starts() == 0\nlean = Path(os.environ['LEAN_SYSROOT']) / 'bin/lean'\ncommand = [str(lean), '-M12800', '-j4', str(source), '--setup', str(setup_path),\n           '-o', str(output / 'ProperBaseChange.olean'), '-i', str(output / 'ProperBaseChange.ilean'),\n           '-c', str(output / 'ProperBaseChange.c')]\nrecord = {'kind': 'author-selected R4 candidate diagnostic only; no current-N module coverage',\n          'label': label, 'attempt': str(attempt), 'source_basis': freeze['source_basis'],\n          'source_receipt_sha256': freeze['source_receipt_sha256'],\n          'provider_artifacts_sha256': freeze['provider_artifacts_sha256'],\n          'candidate_sha256': expected, 'candidate_patch_sha256': hashlib.sha256(delta.encode()).hexdigest(),\n          'setup_sha256': freeze['setup_sha256'], 'module': freeze['module'],\n          'imports': imports(candidate_bytes), 'setup_options': freeze['setup_options'],\n          'default_budgets': True, 'profile': freeze['candidate_profile'], 'command': command,\n          'managed_source_mutations': 0, 'frozen_context_mutations': 0}\n(attempt / 'request.json').write_text(json.dumps(record, indent=2) + '\\n')\nprint('R4_DIAGNOSTIC_ATTEMPT=' + str(attempt), flush=True)\nt = time.monotonic()\nwith (attempt / 'stdout.log').open('w') as stdout, (attempt / 'stderr.log').open('w') as stderr:\n    p = subprocess.run(command, cwd=package, stdout=stdout, stderr=stderr)\nassert starts() == 1\nassert setup_path.read_bytes() == setup_bytes and (package / relative).read_bytes() == original\nrecord.update(exit_code=p.returncode, wall_seconds=time.monotonic() - t, compiler_starts=starts())\n(attempt / 'result.json').write_text(json.dumps(record, indent=2) + '\\n')\nprint(json.dumps(record, sort_keys=True), flush=True)\nraise SystemExit(p.returncode)\n",
+    "Ly0gRGlhZ25vc3RpYyBzb3VyY2UgZm9yIHRoZSBleGlzdGluZyBQNiBSNCBrZXJuZWwgYm91bmRhcnkuIC0vCm1vZHVsZQoKcHVibGljIGltcG9ydCBBZ2xpYi5BbGdlYnJhaWNHZW9tZXRyeS5FdGFsZUNvaG9tb2xvZ3kuRXhjZXB0aW9uYWwuRGVyaXZlZC5VbmRlcmx5aW5nQmFzZUNoYW5nZQpwdWJsaWMgaW1wb3J0IEFnbGliLkFsZ2VicmFpY0dlb21ldHJ5LkV0YWxlQ29ob21vbG9neS5FeGNlcHRpb25hbC5EZXJpdmVkLlVuZGVybHlpbmdUb3JzaW9uCnB1YmxpYyBpbXBvcnQgQWdsaWIuQWxnZWJyYWljR2VvbWV0cnkuRXRhbGVDb2hvbW9sb2d5LlByb3Blci5CYXNlQ2hhbmdlCnB1YmxpYyBpbXBvcnQgQWdsaWIuQWxnZWJyYS5Ib21vbG9neS5EZXJpdmVkQ2F0ZWdvcnkuUmlnaHREZXJpdmVkRnVuY3RvclBsdXMuQ29uc2VydmF0aXZlCgpAW2V4cG9zZV0gcHVibGljIG5vbmNvbXB1dGFibGUgc2VjdGlvbgoKb3BlbiBDYXRlZ29yeVRoZW9yeSBDYXRlZ29yeVRoZW9yeS5MaW1pdHMKCm5hbWVzcGFjZSBBbGdlYnJhaWNHZW9tZXRyeS5TY2hlbWUuRXRhbGVDb2hvbW9sb2d5LlByb3Blci5SNFBoYXNlRm9ybWF0aW9uCgpvcGVuIENvZWZmaWNpZW50cwoKdW5pdmVyc2UgdSB3TVggd01TIHdNWCcgd01TJyB3QVggd0FTIHdBWCcgd0FTJwoKYXR0cmlidXRlIFtsb2NhbCBpbnN0YW5jZV0gaGFzU2hlYWZpZnlMYXJnZQoKc2VjdGlvbiBNb2R1bGVUYXJnZXQKCnZhcmlhYmxlICjOmyA6IFR5cGUgKHUgKyAxKSkgW1JpbmcgzptdIHtYIFMgWCcgUycgOiBTY2hlbWUue3V9fQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dNWH0gKE1vZHVsZVNoZWFmIFggzpspXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dNU30gKE1vZHVsZVNoZWFmIFMgzpspXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dNWCd9IChNb2R1bGVTaGVhZiBYJyDOmyldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d01TJ30gKE1vZHVsZVNoZWFmIFMnIM6bKV0KICAoZiA6IFgg4p+2IFMpIChmJyA6IFgnIOKftiBTJykgKGcgOiBTJyDin7YgUykgKGcnIDogWCcg4p+2IFgpCiAgKHNxIDogSXNQdWxsYmFjayBnJyBmJyBmIGcpCgovLS0gRmFpdGhmdWwgZm9ybWF0aW9uIGNoZWNrIGZvciB0aGUgb3JpZ2luYWwgbW9kdWxlLWV4Y2hhbmdlIGNvbmNsdXNpb24uIC0vCnRoZW9yZW0gdGFyZ2V0Rm9ybWF0aW9uIChLIDogRGVyaXZlZENhdGVnb3J5LlBsdXMgKE1vZHVsZVNoZWFmIFggzpspKQogICAgKF9oSyA6IG1vZHVsZVRvcnNpb25Db2hvbW9sb2d5UGx1cyBYIM6bIEspCiAgICAoX2ggOiBJc0lzbyAoKG1vZHVsZURlcml2ZWRCYXNlQ2hhbmdlTWFwIM6bIGYgZicgZyBnJyBzcS53LnN5bW0pLmFwcCBLKSkgOgogICAgVHJ1ZSA6PSBUcnVlLmludHJvCgplbmQgTW9kdWxlVGFyZ2V0CgpzZWN0aW9uIFVuZGVybHlpbmdUb3JzaW9uCgp2YXJpYWJsZSAoWCA6IFNjaGVtZS57dX0pICjOmyA6IFR5cGUgKHUgKyAxKSkgW1JpbmcgzptdCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d01YfSAoTW9kdWxlU2hlYWYgWCDOmyldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d0FYfSAoQWJlbGlhblNoZWFmLnt1LCB1ICsgMX0gWCldCgovLS0gRmFpdGhmdWwgZm9ybWF0aW9uIGNoZWNrIGZvciB0aGUgZXhhY3QgdW5kZXJseWluZyB0b3JzaW9uIHByZWRpY2F0ZS4gLS8KdGhlb3JlbSB0b3JzaW9uRm9ybWF0aW9uIChLIDogRGVyaXZlZENhdGVnb3J5LlBsdXMgKE1vZHVsZVNoZWFmIFggzpspKQogICAgKF9oIDog4oiAIG4gOiDihKQsIFNoZWFmLklzVG9yc2lvbgogICAgICAoKERlcml2ZWRDYXRlZ29yeS5QbHVzLmhvbW9sb2d5RnVuY3RvciAoQWJlbGlhblNoZWFmLnt1LCB1ICsgMX0gWCkgbikub2JqCiAgICAgICAgKChtb2R1bGVEZXJpdmVkVW5kZXJseWluZyDOmyBYKS5vYmogSykpKSA6IFRydWUgOj0gVHJ1ZS5pbnRybwoKLy0tIEZhaXRoZnVsIGZvcm1hdGlvbiBjaGVjayBmb3IgdGhlIGFjdHVhbCBjb25zZXJ2YXRpdmUgZnVuY3RvciBkaWN0aW9uYXJ5LiAtLwp0aGVvcmVtIHJlZmxlY3Rpb25Gb3JtYXRpb24KICAgIChfaCA6IChtb2R1bGVEZXJpdmVkVW5kZXJseWluZyDOmyBYKS5SZWZsZWN0c0lzb21vcnBoaXNtcykgOiBUcnVlIDo9IFRydWUuaW50cm8KCmVuZCBVbmRlcmx5aW5nVG9yc2lvbgoKc2VjdGlvbiBBYmVsaWFuRXhjaGFuZ2UKCnZhcmlhYmxlICjOmyA6IFR5cGUgKHUgKyAxKSkgW1JpbmcgzptdIHtYIFMgWCcgUycgOiBTY2hlbWUue3V9fQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dNWH0gKE1vZHVsZVNoZWFmIFggzpspXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dBWH0gKEFiZWxpYW5TaGVhZi57dSwgdSArIDF9IFgpXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dBU30gKEFiZWxpYW5TaGVhZi57dSwgdSArIDF9IFMpXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dBWCd9IChBYmVsaWFuU2hlYWYue3UsIHUgKyAxfSBYJyldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d0FTJ30gKEFiZWxpYW5TaGVhZi57dSwgdSArIDF9IFMnKV0KICAoZiA6IFgg4p+2IFMpIChmJyA6IFgnIOKftiBTJykgKGcgOiBTJyDin7YgUykgKGcnIDogWCcg4p+2IFgpCiAgKHNxIDogSXNQdWxsYmFjayBnJyBmJyBmIGcpCgovLS0gRmFpdGhmdWwgZm9ybWF0aW9uIGNoZWNrIGZvciB0aGUgb3JpZ2luYWwgYWJlbGlhbiBleGNoYW5nZSBhdCB1bmRlcmx5aW5nIEsuIC0vCnRoZW9yZW0gYWJlbGlhbkV4Y2hhbmdlRm9ybWF0aW9uIChLIDogRGVyaXZlZENhdGVnb3J5LlBsdXMgKE1vZHVsZVNoZWFmIFggzpspKQogICAgKF9oIDogSXNJc28gKChkZXJpdmVkQmFzZUNoYW5nZU1hcCBmIGYnIGcgZycgc3Eudy5zeW1tKS5hcHAKICAgICAgKChtb2R1bGVEZXJpdmVkVW5kZXJseWluZyDOmyBYKS5vYmogSykpKSA6IFRydWUgOj0gVHJ1ZS5pbnRybwoKZW5kIEFiZWxpYW5FeGNoYW5nZQoKc2VjdGlvbiBDdWJlCgp2YXJpYWJsZSAozpsgOiBUeXBlICh1ICsgMSkpIFtSaW5nIM6bXSB7WCBTIFgnIFMnIDogU2NoZW1lLnt1fX0KICBbSGFzRGVyaXZlZENhdGVnb3J5Lnt3TVh9IChNb2R1bGVTaGVhZiBYIM6bKV0KICBbSGFzRGVyaXZlZENhdGVnb3J5Lnt3TVN9IChNb2R1bGVTaGVhZiBTIM6bKV0KICBbSGFzRGVyaXZlZENhdGVnb3J5Lnt3TVgnfSAoTW9kdWxlU2hlYWYgWCcgzpspXQogIFtIYXNEZXJpdmVkQ2F0ZWdvcnkue3dNUyd9IChNb2R1bGVTaGVhZiBTJyDOmyldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d0FYfSAoQWJlbGlhblNoZWFmLnt1LCB1ICsgMX0gWCldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d0FTfSAoQWJlbGlhblNoZWFmLnt1LCB1ICsgMX0gUyldCiAgW0hhc0Rlcml2ZWRDYXRlZ29yeS57d0FYJ30gKEFiZWxpYW5TaGVhZi57dSwgdSArIDF9IFgnKV0KICBbSGFzRGVyaXZlZENhdGVnb3J5Lnt3QVMnfSAoQWJlbGlhblNoZWFmLnt1LCB1ICsgMX0gUycpXQogIChmIDogWCDin7YgUykgKGYnIDogWCcg4p+2IFMnKSAoZyA6IFMnIOKftiBTKSAoZycgOiBYJyDin7YgWCkKICAoc3EgOiBJc1B1bGxiYWNrIGcnIGYnIGYgZykKCi8tLSBGYWl0aGZ1bCBmb3JtYXRpb24gY2hlY2sgZm9yIHRoZSBleGFjdCBleGlzdGluZyB3aG9sZSBjdWJlIHByb3Bvc2l0aW9uLiAtLwp0aGVvcmVtIGN1YmVGb3JtYXRpb24gKF9oIDogSG9yaXpvbnRhbE1hdGVDdWJlRXF1YXRpb24KICAgICAgKG1vZHVsZURlcml2ZWREaXJlY3RJbWFnZVVuZGVybHlpbmdJc28gzpsgZikuaG9tCiAgICAgIChtb2R1bGVEZXJpdmVkRGlyZWN0SW1hZ2VVbmRlcmx5aW5nSXNvIM6bIGYnKS5ob20KICAgICAgKG1vZHVsZURlcml2ZWRCYXNlQ2hhbmdlTWFwIM6bIGYgZicgZyBnJyBzcS53LnN5bW0pCiAgICAgIChkZXJpdmVkQmFzZUNoYW5nZU1hcCBmIGYnIGcgZycgc3Eudy5zeW1tKQogICAgICAobW9kdWxlRGVyaXZlZEludmVyc2VJbWFnZVVuZGVybHlpbmdJc28gzpsgZykuaW52CiAgICAgIChtb2R1bGVEZXJpdmVkSW52ZXJzZUltYWdlVW5kZXJseWluZ0lzbyDOmyBnJykuaW52KSA6IFRydWUgOj0gVHJ1ZS5pbnRybwoKZW5kIEN1YmUKCmVuZCBBbGdlYnJhaWNHZW9tZXRyeS5TY2hlbWUuRXRhbGVDb2hvbW9sb2d5LlByb3Blci5SNFBoYXNlRm9ybWF0aW9uCg==",
+    "38af157eaa7f0c49b7e0ec91246a6cb93b16f3599aacb6c53db61b52639b8fcf",
+    "formation"
+  ],
+  "command_exit_code": 1,
+  "compiler_exit_codes": [
+    1
+  ],
+  "compiler_failed": 1,
+  "compiler_invocations": 1,
+  "compiler_observation": "wrapper-events-only",
+  "compiler_scope_lease_modes": {
+    "supervisor-only": 1
+  },
+  "compiler_scope_policy": "workspace descriptors or verified live supervisor; each compiler inherits its elastic claim",
+  "compiler_succeeded": 0,
+  "concurrency_basis": "compiler wrapper start/finish intervals, each holding one slot",
+  "diagnostics": {
+    "categories": {},
+    "first": [],
+    "observed_missing_count": 0,
+    "observed_missing_prefixes": {},
+    "observed_missing_prefixes_truncated": false,
+    "observed_missing_shortlist": []
+  },
+  "elapsed_seconds": 8.66478419303894,
+  "environment": {
+    "ELAN_HOME": "/root/autodl-tmp/lean-build/elan",
+    "LAKE_ARTIFACT_CACHE": "true",
+    "LAKE_CACHE_DIR": "/root/autodl-tmp/lean-build/cache/native",
+    "LAKE_OVERRIDE_LEAN": "1",
+    "LEAN_NUM_THREADS": "2",
+    "LEAN_SYSROOT": "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/toolchain",
+    "R5_LEAN_REMOTE_PROFILE": "{\"jobs\": 2, \"lean\": \"/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/toolchain/bin/lean\", \"lean_memory_mib\": 12800, \"rss_limit_mib\": 32768, \"schema_version\": 1, \"threads\": 4}",
+    "XDG_CACHE_HOME": "/root/autodl-tmp/lean-build/cache"
+  },
+  "exit_code": 1,
+  "expected_source": "00071ef6431e5ed38a293acfab6da6241903ed68526e401e76801480fc9dce62",
+  "failure_reason": null,
+  "finished_at": "2026-10-27T06:19:37.819323+00:00",
+  "forbid_compilation": false,
+  "forced_kill": false,
+  "git_head": null,
+  "group_closed": true,
+  "incomplete_compiler_events": 0,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": "4eaeb3d9a30da1e3eab8783af8fd741e455c2b54a8e4aafcc4ada2d697c1e553",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "lock_acquired_at": "2026-10-27T06:19:29.146760+00:00",
+  "locks": {
+    "cache_fetch_exclusive": null,
+    "legacy_shared_gate": "/root/autodl-tmp/lean-build/build.lock",
+    "workspace_exclusive": "/root/autodl-tmp/lean-build/locks/workspace-fff48b6425e43ac1291c2d857ab51425b5dbb67c2ef9d8a41db237a6b2112a2d.lock"
+  },
+  "lowest_disk_free_bytes": 5556772864,
+  "modules": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange"
+  ],
+  "operation_id": "e2ab9ae9734a450aa23b70b6a779797f",
+  "outcome": "execution_failure",
+  "peak_compiler_concurrency": 1,
+  "peak_rss_bytes": 2398494720,
+  "pgid": 880257,
+  "phase_executable_sha256": "0c05a22b0b180580a76437114a95cf138f67c8f46245acad26017c803b42b8c1",
+  "phase_label": "r4-frozen-formation-diagnostic",
+  "pins": {
+    "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+  },
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 2,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 32768,
+    "threads": 4
+  },
+  "resource_accounting": {
+    "global": "sampled cgroup memory/CPU, startup and growth credits; no peak-envelope reservation",
+    "isolation": "cooperative sampled admission; no per-run kernel memory isolation or OOM guarantee",
+    "run": "frontend/job/thread ceilings, sampled owned-tree RSS cutoff, own-tree pressure retreat"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cgroup": "/sys/fs/cgroup",
+    "cgroup_limits": [
+      {
+        "cpu.max": "3200000 100000",
+        "memory.max": "128849018880",
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "effective_cpus": 32.0,
+    "memory_bytes": 128849018880
+  },
+  "run_dir": "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6",
+  "sampled_process_average_cpu_cores": 1.0017560514632649,
+  "sampled_process_cpu_seconds": 8.68,
+  "schema_version": 1,
+  "setup_cleanup": {
+    "removed_setup_bytes": 0,
+    "removed_setup_files": 0
+  },
+  "source_content_sha256": "00071ef6431e5ed38a293acfab6da6241903ed68526e401e76801480fc9dce62",
+  "source_receipt_sha256": "f2e33cea2f1fe0a66603a13932fe79ed35280effa89ccc4acec8e1d97a6d0e78",
+  "started_at": "2026-10-27T06:19:28.720218+00:00",
+  "status": "failed",
+  "summary": {
+    "action": "phase",
+    "admission": {
+      "affinity_cpus": null,
+      "ceilings": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      },
+      "controller_sha256": "5d43246628b2332e8e6680a7f9515a023b54eea26a756a75eda14d00bb8d2e9c",
+      "final_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-19645e78081743e6b5807ab6a6e210aa": 1
+        },
+        "cpu_cores": 1.4105491466741686,
+        "cpu_usage_usec": 1483889297015,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 1610612736,
+        "memory_current_bytes": 52815003648,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 0.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 40304766976
+      },
+      "initial_observation": {
+        "active_compilers_by_run": {
+          "/root/autodl-tmp/lean-build/logs/remote-19645e78081743e6b5807ab6a6e210aa": 1
+        },
+        "cpu_cores": 1.0441893552893604,
+        "cpu_usage_usec": 1483870951889,
+        "effective_cpus": 32.0,
+        "errors": [],
+        "growth_and_startup_margin_bytes": 2147483648,
+        "memory_current_bytes": 53007839232,
+        "memory_full_avg10": 0.0,
+        "memory_some_avg10": 0.0,
+        "observation_ok": true,
+        "orphan_cap_bytes": 0,
+        "orphan_claims": 0,
+        "pending_cpu_cores": 1.0,
+        "policy": "elastic-sampled-v1",
+        "pool_cap_bytes": 115964116992,
+        "victim_runs": [],
+        "waiting_claims": 0,
+        "working_set_bytes": 39354343424
+      },
+      "max_frontends_if_alone": 2,
+      "mode": "elastic",
+      "request": null
+    },
+    "artifacts": {
+      "build.log": "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/build.log",
+      "compiler-events.jsonl": "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/compiler-events.jsonl",
+      "receipt.json": "/root/autodl-tmp/lean-build/logs/remote-a834ca46585b485fb3509ebcc12fe1a6/receipt.json"
+    },
+    "cgroup_memory_attribution": "whole observed cgroup; an OOM event alone does not identify its victim",
+    "cgroup_memory_events_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "compiler_observation": "wrapper-events-only",
+    "compiler_scope_lease_modes": {
+      "supervisor-only": 1
+    },
+    "execution_seconds": 8.66478419303894,
+    "exit_code": 1,
+    "expected_source": "00071ef6431e5ed38a293acfab6da6241903ed68526e401e76801480fc9dce62",
+    "first_diagnostics": [],
+    "frontend_failed": 1,
+    "frontend_invocations": 1,
+    "frontend_observation": "wrapper starts only; arbitrary phase tools may bypass local compiler caps",
+    "frontend_peak": 1,
+    "frontend_succeeded": 0,
+    "group_closed": true,
+    "native_exit": 1,
+    "outcome": "execution_failure",
+    "peak_rss_bytes": 2398494720,
+    "plan": null,
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 2,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 32768,
+      "threads": 4
+    },
+    "reason": "",
+    "run": "remote-a834ca46585b485fb3509ebcc12fe1a6",
+    "sampled_process_average_cpu_cores": 1.0017560514632649,
+    "source_basis": "00071ef6431e5ed38a293acfab6da6241903ed68526e401e76801480fc9dce62",
+    "status": "failed",
+    "unwrapped_frontend_count": "unknown",
+    "wall_seconds": 9.099136903882027
+  },
+  "task_id": "etale-mainline-universal-20261024",
+  "unfinished_compiler_records": [],
+  "waiting_for": null,
+  "wall_seconds": 9.099136903882027,
+  "worker_sha256": "7b1d09f535dc951f2f3ecae857f7b77b0ffc95f8f9e55352167a39b4387729a4",
+  "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean"
+}

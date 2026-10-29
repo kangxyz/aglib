@@ -1,0 +1,479 @@
+{
+  "question": "Apply existing PERFORMANCE whole-statement/original-value method at two actual native square kernel boundaries",
+  "native_HEAD": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_pins": {
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": [
+      {
+        "url": "https://github.com/leanprover-community/mathlib4.git",
+        "type": "git",
+        "subDir": null,
+        "scope": "",
+        "rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "name": "mathlib",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "inherited": false,
+        "configFile": "lakefile.lean"
+      }
+    ]
+  },
+  "fixed_input_manifest": {
+    "path": "author/fixed-performance-manifest.json",
+    "sha256": "ba08a493809dde15185eaced652ef4881237fee07f6bd1ea7677daa48ca52b38"
+  },
+  "additional_fixed_review": {
+    "md": "review/continuity-coefficient-squares.md",
+    "md_sha256": "6f91e912f6ebfd74ca94381bbfc4dcbb054b79e039bf5d28e5cf41b5bdcdc954",
+    "json": "review/continuity-coefficient-squares.json",
+    "json_sha256": "26f3cd18cff71cb069663035b044438029f4cfb86b65c1592d807330ac9f5ecc",
+    "boundary": "Separately supplied current-v10 ordinary review, captured without changing the older fixed packet."
+  },
+  "files": [
+    {
+      "path": "author/fixed-performance-manifest.json",
+      "sha256": "ba08a493809dde15185eaced652ef4881237fee07f6bd1ea7677daa48ca52b38",
+      "bytes": 25266,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/performance-whole-actual-comparisons/manifest.json",
+      "source_sha256": "ba08a493809dde15185eaced652ef4881237fee07f6bd1ea7677daa48ca52b38"
+    },
+    {
+      "path": "author/FINAL-RESULT.json",
+      "sha256": "2a4807058057ddee2e1749808dbd6e227e6bd85eb68fe00e11bdbac70fdcb1cd",
+      "bytes": 22377,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/RESULT.json",
+      "source_sha256": "2a4807058057ddee2e1749808dbd6e227e6bd85eb68fe00e11bdbac70fdcb1cd"
+    },
+    {
+      "path": "review/continuity-coefficient-squares.md",
+      "sha256": "6f91e912f6ebfd74ca94381bbfc4dcbb054b79e039bf5d28e5cf41b5bdcdc954",
+      "bytes": 18493,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/continuity-coefficient-squares.md",
+      "source_sha256": "6f91e912f6ebfd74ca94381bbfc4dcbb054b79e039bf5d28e5cf41b5bdcdc954"
+    },
+    {
+      "path": "review/continuity-coefficient-squares.json",
+      "sha256": "26f3cd18cff71cb069663035b044438029f4cfb86b65c1592d807330ac9f5ecc",
+      "bytes": 46097,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/continuity-coefficient-squares.json",
+      "source_sha256": "26f3cd18cff71cb069663035b044438029f4cfb86b65c1592d807330ac9f5ecc"
+    },
+    {
+      "path": "sources/v10/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad",
+      "bytes": 47310,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "source_sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82",
+      "bytes": 3883,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "source_sha256": "c606965663f63dbafd529166563abf3710113cc0883716fb801852115b2c0e82"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49",
+      "bytes": 9019,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "source_sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2",
+      "bytes": 2654,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "source_sha256": "36f8ce5f70ba3f0d7cf7361a6bbf8bf04f143e6f62292b14502e0d5cfbe388d2"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4",
+      "bytes": 3990,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "source_sha256": "09ce2f1d93a260f030647e59515d174293942c402247ef93016436b7a2c35ee4"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc",
+      "bytes": 3513,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "source_sha256": "51c04405f5ebd3cb071f919d72b5feaf6bef86c07f65f9a3b626a41372f9a5cc"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85",
+      "bytes": 1668,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "source_sha256": "ffb0329d8c2d36a5692670e820252b521b02e422724ff86ced9ffd653361ba85"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "sha256": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1",
+      "bytes": 6946,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "source_sha256": "bfeae121a17372881e46864e074ddfffc2f6081c2cfe2d1b3060c503ddd7f5b1"
+    },
+    {
+      "path": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c",
+      "bytes": 2290,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "source_sha256": "72c7d2c0be3496069b9c4a35bea1b4c14abaffad35e580d54110e96bfba3a13c"
+    },
+    {
+      "path": "sources/failed/DiagramSquareCoefficients.lean",
+      "sha256": "701e9ae82c306028ac376924caff9c835994a0fadd49b89b2a7484ad27fd2a0c",
+      "bytes": 7508,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v5/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "source_sha256": "701e9ae82c306028ac376924caff9c835994a0fadd49b89b2a7484ad27fd2a0c"
+    },
+    {
+      "path": "sources/failed/DiagramPullbackTriangle.lean",
+      "sha256": "5e4519902eae4c87b7c72223a6146c870b844d47d4ef0eb3eb482e7afa487bc4",
+      "bytes": 2077,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "source_sha256": "5e4519902eae4c87b7c72223a6146c870b844d47d4ef0eb3eb482e7afa487bc4"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "sha256": "c3961f6a65c05a57a4fad0cc7a7a395b113364e0fcea7f2e005d4288025d0828",
+      "bytes": 2156,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramPullbackTriangle.lean",
+      "source_sha256": "c3961f6a65c05a57a4fad0cc7a7a395b113364e0fcea7f2e005d4288025d0828"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "sha256": "e5c4b47f8bfd5c6fe9fddc2d9d060c4c77f1291b01c154b0ef38e7baf17dc5cd",
+      "bytes": 4307,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "source_sha256": "e5c4b47f8bfd5c6fe9fddc2d9d060c4c77f1291b01c154b0ef38e7baf17dc5cd"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "sha256": "c2a041be140df564200bef3351d304f40c651f548aa5752cfd547ff27a8c263c",
+      "bytes": 3397,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareIdentity.lean",
+      "source_sha256": "c2a041be140df564200bef3351d304f40c651f548aa5752cfd547ff27a8c263c"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "sha256": "6fff211ee6eff8a8eb2dc587beb441584245dc55634451353b7e14259353b0ab",
+      "bytes": 5151,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareSections.lean",
+      "source_sha256": "6fff211ee6eff8a8eb2dc587beb441584245dc55634451353b7e14259353b0ab"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "sha256": "027fce6eea34b84451290c550bb0982d08149dc293b2d5a1a4c0cf1de6e73855",
+      "bytes": 4377,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTopIdentity.lean",
+      "source_sha256": "027fce6eea34b84451290c550bb0982d08149dc293b2d5a1a4c0cf1de6e73855"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "sha256": "9783eaa1eb13476a2119d9e92cdd7e63b93bb46027fda8e859767c651c3083f5",
+      "bytes": 1391,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareTransport.lean",
+      "source_sha256": "9783eaa1eb13476a2119d9e92cdd7e63b93bb46027fda8e859767c651c3083f5"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "sha256": "beeb237d8332e67cb07bdc2556651a727c50b587796b2ee50c1387bc03832567",
+      "bytes": 3481,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "source_sha256": "beeb237d8332e67cb07bdc2556651a727c50b587796b2ee50c1387bc03832567"
+    },
+    {
+      "path": "sources/original/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "sha256": "07f478cfa06cac2f47de031b9eacc3a28d1caeadb496754a74f8ade5d931bc62",
+      "bytes": 2706,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/TriangleSquareAdjoint.lean",
+      "source_sha256": "07f478cfa06cac2f47de031b9eacc3a28d1caeadb496754a74f8ade5d931bc62"
+    },
+    {
+      "path": "sources/v5/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "sha256": "fabdca0b40e9541e3a1f4a9d0a33452941c21f705293aaf674fa03c1a0d8e69e",
+      "bytes": 37195,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v5/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "source_sha256": "fabdca0b40e9541e3a1f4a9d0a33452941c21f705293aaf674fa03c1a0d8e69e"
+    },
+    {
+      "path": "sources/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "sha256": "b3b18252d35086df5d0b097fc950f7939d75411d67e07b951133c06397e19717",
+      "bytes": 40468,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "source_sha256": "b3b18252d35086df5d0b097fc950f7939d75411d67e07b951133c06397e19717"
+    },
+    {
+      "path": "sources/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "sha256": "670830740a293b4d0a6cd505887ba03319c3e326b656bb956b9b43ccb1472f84",
+      "bytes": 5648,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/SquareCoefficientAdjoint.lean",
+      "source_sha256": "670830740a293b4d0a6cd505887ba03319c3e326b656bb956b9b43ccb1472f84"
+    },
+    {
+      "path": "versions/v5/READY-applied.json",
+      "sha256": "29853b0ee6d080450cf5eb1827ed2c36f4f15d22bba7ff527fd6058301291e95",
+      "bytes": 11732,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v5/READY-applied.json",
+      "source_sha256": "29853b0ee6d080450cf5eb1827ed2c36f4f15d22bba7ff527fd6058301291e95"
+    },
+    {
+      "path": "versions/v7/READY-applied.json",
+      "sha256": "2d1e19ad0fe7ae7f2318362f38407ed7e626765d4599e03ee3dfbf41706ee9af",
+      "bytes": 11686,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v7/READY-applied.json",
+      "source_sha256": "2d1e19ad0fe7ae7f2318362f38407ed7e626765d4599e03ee3dfbf41706ee9af"
+    },
+    {
+      "path": "versions/v8/READY-applied.json",
+      "sha256": "f86b94f4d77b2e227aaacdc93bc87d32fd9b55ef36de72df21badc61cee8513a",
+      "bytes": 12368,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v8/READY-applied.json",
+      "source_sha256": "f86b94f4d77b2e227aaacdc93bc87d32fd9b55ef36de72df21badc61cee8513a"
+    },
+    {
+      "path": "versions/v9/READY-applied.json",
+      "sha256": "58f36bc0b8bdf801498710bcca9239461604fa50085ed2c02d58522cd719c1b6",
+      "bytes": 13050,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/READY-applied.json",
+      "source_sha256": "58f36bc0b8bdf801498710bcca9239461604fa50085ed2c02d58522cd719c1b6"
+    },
+    {
+      "path": "versions/v10/READY-applied.json",
+      "sha256": "cb00fe20864f80f41b72cea62e92ce2c292a7b446440879e096e7ba7890b006f",
+      "bytes": 11757,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/READY-applied.json",
+      "source_sha256": "cb00fe20864f80f41b72cea62e92ce2c292a7b446440879e096e7ba7890b006f"
+    },
+    {
+      "path": "versions/v9/PUBLIC-HEADER-CORRESPONDENCE.json",
+      "sha256": "ca4dd69d093933bd55c6b83db0b4cbb0943c72497144081def8176521c4998df",
+      "bytes": 4040,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/PUBLIC-HEADER-CORRESPONDENCE.json",
+      "source_sha256": "ca4dd69d093933bd55c6b83db0b4cbb0943c72497144081def8176521c4998df"
+    },
+    {
+      "path": "versions/v9/compiler-result-partial.json",
+      "sha256": "2d945450f560159078ec140d77cbf4f734285e14b8703cdd65bfb01080491bbf",
+      "bytes": 7803,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/compiler-result-partial.json",
+      "source_sha256": "2d945450f560159078ec140d77cbf4f734285e14b8703cdd65bfb01080491bbf"
+    },
+    {
+      "path": "versions/v10/PUBLIC-HEADER-CORRESPONDENCE.json",
+      "sha256": "2abbb6a3d60ee322add633d5769e9a688f97b68dd9ab93723e4d3394d941c2ba",
+      "bytes": 3832,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/PUBLIC-HEADER-CORRESPONDENCE.json",
+      "source_sha256": "2abbb6a3d60ee322add633d5769e9a688f97b68dd9ab93723e4d3394d941c2ba"
+    },
+    {
+      "path": "versions/v10/compiler-result-all9.json",
+      "sha256": "dc74dc3a0066e74151211f6fb4e325efa815cb52f914a9543f0f13af92ebd404",
+      "bytes": 21443,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/compiler-result-all9.json",
+      "source_sha256": "dc74dc3a0066e74151211f6fb4e325efa815cb52f914a9543f0f13af92ebd404"
+    },
+    {
+      "path": "versions/v9/CoefficientSquares.diff",
+      "sha256": "56ff4880cb82bb40d1a983149fc609f558c2702556946ef207227215dafcb138",
+      "bytes": 7867,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/CoefficientSquares.diff",
+      "source_sha256": "56ff4880cb82bb40d1a983149fc609f558c2702556946ef207227215dafcb138"
+    },
+    {
+      "path": "versions/v9/DiagramPullbackTriangle.diff",
+      "sha256": "8864794c3821c18fbc3cdf7bb736ab6cddea908d5cbbc457c2342745131e916d",
+      "bytes": 3868,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/DiagramPullbackTriangle.diff",
+      "source_sha256": "8864794c3821c18fbc3cdf7bb736ab6cddea908d5cbbc457c2342745131e916d"
+    },
+    {
+      "path": "versions/v9/DiagramSquareIdentity.diff",
+      "sha256": "c5e1ce271b39705fd1e53b0c9dcd11db3d4a693137c921ab4a97ea3cbd39bb56",
+      "bytes": 1684,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/DiagramSquareIdentity.diff",
+      "source_sha256": "c5e1ce271b39705fd1e53b0c9dcd11db3d4a693137c921ab4a97ea3cbd39bb56"
+    },
+    {
+      "path": "versions/v9/DiagramSquareTopIdentity.diff",
+      "sha256": "2f5902f8a25c8ab2557a7e470f54e1ecab2211bf016c8244e76373d6dd0e6b00",
+      "bytes": 1695,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/DiagramSquareTopIdentity.diff",
+      "source_sha256": "2f5902f8a25c8ab2557a7e470f54e1ecab2211bf016c8244e76373d6dd0e6b00"
+    },
+    {
+      "path": "versions/v9/DiagramSquareTransport.diff",
+      "sha256": "4c3325a47e02638eba02a624a78a1a3960d9d7f0d5f4e94675fd1632a920cf72",
+      "bytes": 819,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/DiagramSquareTransport.diff",
+      "source_sha256": "4c3325a47e02638eba02a624a78a1a3960d9d7f0d5f4e94675fd1632a920cf72"
+    },
+    {
+      "path": "versions/v9/SquareCoefficientAdjoint.diff",
+      "sha256": "e36077190fa5822de9032b6a5cfb055302c33f2807a17c69f9ba97cccb639e13",
+      "bytes": 3988,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v9/SquareCoefficientAdjoint.diff",
+      "source_sha256": "e36077190fa5822de9032b6a5cfb055302c33f2807a17c69f9ba97cccb639e13"
+    },
+    {
+      "path": "versions/v10/SquareCoefficientAdjoint.diff",
+      "sha256": "21077b6214ddabbf0e623ba36c93a9743db1932e08bdba0bc6e63f2aa70a6e6c",
+      "bytes": 3033,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-cone-adjunction-core-staging/coefficient-squares/versions/v10/SquareCoefficientAdjoint.diff",
+      "source_sha256": "21077b6214ddabbf0e623ba36c93a9743db1932e08bdba0bc6e63f2aa70a6e6c"
+    },
+    {
+      "path": "evidence/remote-aeb4b5240d16454d8407596071bc75cc/receipt.json",
+      "sha256": "89e8624276163f49f1b1cfb1ea85b5880c8dc54d04118f27fc902db8781c9ac6",
+      "bytes": 15409,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-aeb4b5240d16454d8407596071bc75cc/receipt.json",
+      "source_sha256": "89e8624276163f49f1b1cfb1ea85b5880c8dc54d04118f27fc902db8781c9ac6"
+    },
+    {
+      "path": "evidence/remote-aeb4b5240d16454d8407596071bc75cc/build.log",
+      "sha256": "daf424c92b1b326f8b8f23d18954862620105e52574d3233af5c0c3a27964a73",
+      "bytes": 2607,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-aeb4b5240d16454d8407596071bc75cc/build.log",
+      "source_sha256": "daf424c92b1b326f8b8f23d18954862620105e52574d3233af5c0c3a27964a73"
+    },
+    {
+      "path": "evidence/remote-aeb4b5240d16454d8407596071bc75cc/compiler-events.jsonl",
+      "sha256": "81219dd6a3653df079ccbc158bf350e54cd43d76e3f49d75fe259e6b2332c958",
+      "bytes": 2497,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-aeb4b5240d16454d8407596071bc75cc/compiler-events.jsonl",
+      "source_sha256": "81219dd6a3653df079ccbc158bf350e54cd43d76e3f49d75fe259e6b2332c958"
+    },
+    {
+      "path": "evidence/remote-86af6b33e48a4416acba01690e53a39e/receipt.json",
+      "sha256": "ac6595ce1d20a49b2064463261a1cdfcadabe413172f4ff57819bedac4818762",
+      "bytes": 15520,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-86af6b33e48a4416acba01690e53a39e/receipt.json",
+      "source_sha256": "ac6595ce1d20a49b2064463261a1cdfcadabe413172f4ff57819bedac4818762"
+    },
+    {
+      "path": "evidence/remote-86af6b33e48a4416acba01690e53a39e/build.log",
+      "sha256": "352bd6f0fe7a6db5c9936d17858624628a0e43302f74b2a6db216512f6277149",
+      "bytes": 7897,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-86af6b33e48a4416acba01690e53a39e/build.log",
+      "source_sha256": "352bd6f0fe7a6db5c9936d17858624628a0e43302f74b2a6db216512f6277149"
+    },
+    {
+      "path": "evidence/remote-86af6b33e48a4416acba01690e53a39e/compiler-events.jsonl",
+      "sha256": "b63e93e16b0efd6ac99f42aacd8f767db0cd46661186f801cc4407d25a55b17c",
+      "bytes": 10060,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-86af6b33e48a4416acba01690e53a39e/compiler-events.jsonl",
+      "source_sha256": "b63e93e16b0efd6ac99f42aacd8f767db0cd46661186f801cc4407d25a55b17c"
+    },
+    {
+      "path": "evidence/remote-ac3fc2af6a114bbda6fef1ea760b2383/receipt.json",
+      "sha256": "7a74550e091b9a103decd37293d31e19f34bbdfeb6547c5e93496ecf60a98a32",
+      "bytes": 15083,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/receipt.json",
+      "source_sha256": "7a74550e091b9a103decd37293d31e19f34bbdfeb6547c5e93496ecf60a98a32"
+    },
+    {
+      "path": "evidence/remote-ac3fc2af6a114bbda6fef1ea760b2383/build.log",
+      "sha256": "8fd25026cb806b6fad3e5268c2e0dcfc00293ecbbeeab187f6f0eab1daddc632",
+      "bytes": 17349,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/build.log",
+      "source_sha256": "8fd25026cb806b6fad3e5268c2e0dcfc00293ecbbeeab187f6f0eab1daddc632"
+    },
+    {
+      "path": "evidence/remote-ac3fc2af6a114bbda6fef1ea760b2383/compiler-events.jsonl",
+      "sha256": "b3153fc419a0133d47dec55346024200d436e3de923fb9ff6c70c9398ab70a81",
+      "bytes": 22117,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ac3fc2af6a114bbda6fef1ea760b2383/compiler-events.jsonl",
+      "source_sha256": "b3153fc419a0133d47dec55346024200d436e3de923fb9ff6c70c9398ab70a81"
+    },
+    {
+      "path": "evidence/remote-b3a2978033524fe39a1d72c73d5478a3/receipt.json",
+      "sha256": "973bb11b69b96fafc874cd51cede74c91a532f4948412226dff752f5cf0933f1",
+      "bytes": 15439,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b3a2978033524fe39a1d72c73d5478a3/receipt.json",
+      "source_sha256": "973bb11b69b96fafc874cd51cede74c91a532f4948412226dff752f5cf0933f1"
+    },
+    {
+      "path": "evidence/remote-b3a2978033524fe39a1d72c73d5478a3/build.log",
+      "sha256": "e60bebe47a2b4f09e976d03036b0b9c488b5d194acf9262e2be803834ff73993",
+      "bytes": 8425,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b3a2978033524fe39a1d72c73d5478a3/build.log",
+      "source_sha256": "e60bebe47a2b4f09e976d03036b0b9c488b5d194acf9262e2be803834ff73993"
+    },
+    {
+      "path": "evidence/remote-b3a2978033524fe39a1d72c73d5478a3/compiler-events.jsonl",
+      "sha256": "c29e3dacdcaf54f1e82c9e3a8c4b38d9388660252205339fbd53cc5ae3da4034",
+      "bytes": 31881,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-b3a2978033524fe39a1d72c73d5478a3/compiler-events.jsonl",
+      "source_sha256": "c29e3dacdcaf54f1e82c9e3a8c4b38d9388660252205339fbd53cc5ae3da4034"
+    },
+    {
+      "path": "evidence/remote-5c98a3a074d248fa923c002d3e10ea07/receipt.json",
+      "sha256": "af2ba0c1c7d0948e7e43cc67aaf1741260b5be04b369eeaba78288d1e6d056be",
+      "bytes": 13394,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/receipt.json",
+      "source_sha256": "af2ba0c1c7d0948e7e43cc67aaf1741260b5be04b369eeaba78288d1e6d056be"
+    },
+    {
+      "path": "evidence/remote-5c98a3a074d248fa923c002d3e10ea07/build.log",
+      "sha256": "b201ff5103df5fffeaabb5e2d5a16d9d240caa116587f95a466c20d0a4171d5b",
+      "bytes": 425,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/build.log",
+      "source_sha256": "b201ff5103df5fffeaabb5e2d5a16d9d240caa116587f95a466c20d0a4171d5b"
+    },
+    {
+      "path": "evidence/remote-5c98a3a074d248fa923c002d3e10ea07/compiler-events.jsonl",
+      "sha256": "849b327fa54d9faba77ca2587e7ad57a9d6620590506479f1cb5bda5e9ccdc27",
+      "bytes": 9580,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c98a3a074d248fa923c002d3e10ea07/compiler-events.jsonl",
+      "source_sha256": "849b327fa54d9faba77ca2587e7ad57a9d6620590506479f1cb5bda5e9ccdc27"
+    }
+  ],
+  "generated_deltas": [
+    {
+      "path": "deltas/horizontal-701-to-265.diff",
+      "sha256": "55bc61968d68618f607af41af2244242c6fd281e7b9d98fd0285eb26a8d1964b",
+      "kind": "mechanical unified diff of the two saved source snapshots",
+      "before": "sources/failed/DiagramSquareCoefficients.lean",
+      "before_sha256": "701e9ae82c306028ac376924caff9c835994a0fadd49b89b2a7484ad27fd2a0c",
+      "after": "sources/v10/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramSquareCoefficients.lean",
+      "after_sha256": "265ebda49e0ed61776fd0c3f5ba6fcfb367302dd2c9acbe77d01c38d8eae5b49"
+    },
+    {
+      "path": "deltas/generic-v5-to-v7.diff",
+      "sha256": "18f372ba359e57ae71aee89916d3eed0229dfade2f5149ec00aacaf69838ba44",
+      "kind": "mechanical unified diff of the two saved source snapshots",
+      "before": "sources/v5/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "before_sha256": "fabdca0b40e9541e3a1f4a9d0a33452941c21f705293aaf674fa03c1a0d8e69e",
+      "after": "sources/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "after_sha256": "b3b18252d35086df5d0b097fc950f7939d75411d67e07b951133c06397e19717"
+    },
+    {
+      "path": "deltas/generic-v7-to-final.diff",
+      "sha256": "f3dacccd4136b21a61eb5ff17a38058e264e186e49c353fdfe93e8f3955f828d",
+      "kind": "mechanical unified diff of the two saved source snapshots",
+      "before": "sources/v7/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "before_sha256": "b3b18252d35086df5d0b097fc950f7939d75411d67e07b951133c06397e19717",
+      "after": "sources/v10/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CoefficientSquares.lean",
+      "after_sha256": "c4192e757a270f45c2fa220d6576036f56a55f30bf0a08dfa9f3bb1c05fd8cad"
+    }
+  ],
+  "large_external_source_archives": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-finiteValues-square-v9-b3a29780.json",
+      "sha256": "6ed8e1e8b3ed51ebe57575ce318bf85a4264f6713669458e7de9b575070e1b33",
+      "content_sha256": "335dcd514f9a63d1dccb6b47296b628e3d810c2749bdb19b68f60f3a64c24b6d",
+      "all9_fixed_applied_source_hashes_match": true,
+      "total_source_files": 7361
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-finiteValuesv2-squarev10-5c98a3a0.json",
+      "sha256": "9b83ea656dfc0e8451fb4c51009a3f645ff00572705f21b3c56f30107f671c04",
+      "content_sha256": "2db0785b6a4b29b25583e6a2da2c7129bd82dff81c539e4a5f193d6e3d1a861f",
+      "all9_fixed_v10_source_hashes_match": true,
+      "total_source_files": 7361
+    }
+  ],
+  "external_policy": "Full original SOURCE archives remain at durable R locators with supplied hashes and content keys. No whole-library data or inventory duplicated; no new provider fingerprint was performed."
+}

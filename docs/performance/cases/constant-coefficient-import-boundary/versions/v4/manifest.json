@@ -1,0 +1,80 @@
+{
+  "basis_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "version": "v4",
+  "applied": true,
+  "files": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "preimage_sha256": null,
+      "previous_applied_sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "preimage_sha256": "5bd994ff7ec4f07e125b4008c9bd49df15f1fcad9153b73225ea00352471080c",
+      "previous_applied_sha256": "773da9688e8a8714b86d852536eb69c971a4186f1c040ee67ab3d8aef2897817",
+      "sha256": "549761543a9ffff9a9de0d2633933404f87f8e09414b8e2a71a2d8e0913a5eb5"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "preimage_sha256": "7b20cd117748e0ba32b9159179b7d6bd1df9409e7039edd80f15a136786578c0",
+      "previous_applied_sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "preimage_sha256": "e21456749fa321677b7d7fa147acb9b4e0243c931cacd0785a2a01bc74fcd68e",
+      "previous_applied_sha256": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1",
+      "sha256": "10f5dc4427575489f225c1f27a67b32abc697535b57c8541921485fce539aacf"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean",
+      "preimage_sha256": null,
+      "previous_applied_sha256": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+      "sha256": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+      "preimage_sha256": "8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2",
+      "previous_applied_sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+      "sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+      "preimage_sha256": "dbb74ba713bd392b6071bb3ede3b35c8237aa629b4f5b10a09034b8502fa3ce6",
+      "previous_applied_sha256": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc",
+      "sha256": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc"
+    }
+  ],
+  "targets": [
+    "Aglib.CategoryTheory.Sites.SheafCohomology.ConstantCyclic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction"
+  ],
+  "ready_targets": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier"
+  ],
+  "retained_native_pass": "Generic ConstantCyclic510e pass from closed remote1b73/source052123; unchanged, no repeat requested.",
+  "retained_review": "Exact v3 ordinary mathematical review accepted. New adapter delta exposes existing base proof at a definitionally identical native F.obj value; generic mathematics, original coefficients and all public types unchanged. Reviewer notified of exact source hunk.",
+  "changed_assignment": "Root extended scope to coefficient-only module and exact import cuts after actual all-three consumer dependency on Class53fe. Prior captures confirmed sealed/CLOSED and safe author mutation by broker before applying.",
+  "relocation_correspondence": "Original value/coefficient doc+declaration headers+RHS copied as an exact block into same FQN namespace and same universe/section-variable order, with same local hasSheafifyLarge; Basic loses ONLY that block and gains public pure import. Other Basic headers/bodies byte-identical; Restriction/Sequence import substitutions only. Concrete functor and both ULifts unchanged.",
+  "audit_basis": "etale_exceptional_geometry.jsonl indices8/9/195 plus existing etale_coefficients.jsonl row197 full Basic geometry-retained audit SHA8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2. No fresh broad audit.",
+  "scope": "Exactly previous4 plus new Coefficient, Basic alias relocation/imports and ConstantRestriction import only; optional CharacteristicPrimary/RootsVanishing missing import writes reserved for actual compiler feedback, currently untouched.",
+  "validation": "Next select ONLY failed Sequence and two unreached Vanishing/Artin roots; retain generic/Coefficient/Restriction passes and compatible geometry. Geometric Basic deferred genuine classification producer. Same pins/default200000/no flags/new tests/audit/replay/Git.",
+  "deferred_targets": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Basic"
+  ],
+  "header_routing": "Own import headers unchanged from v3; reuse header-routing-v3.json as its actual original routing observation, not a new inventory or native graph claim.",
+  "delta_from_v3": "Bind the existing Subsingleton base at the displayed F.obj(ZMod p) type in Sequence; bind the existing hp Finite proof at that same displayed value in final Artin induction adapter. No new premise, model, carrier, import, flag or generic proof change.",
+  "actual_v3_native": "Closed remote-e4d513ac8ecd437b9d21e9f576ce0a2d/source90d732aee4ccef04b34feff281fa4554f83336379590ee621ba35d204f756dd8/no drift: Coefficientbae PASS, ConstantRestriction029 PASS; Sequence773 failed60:8 only missing base Subsingleton instance at F.obj value; Van/Artin unreached. Old output remains tied to v3.",
+  "retained_native_passes": [
+    "ConstantCyclic510e in remote1b73/source052123",
+    "Coefficientbae and ConstantRestriction029 in remotee4d5/source90d732"
+  ]
+}

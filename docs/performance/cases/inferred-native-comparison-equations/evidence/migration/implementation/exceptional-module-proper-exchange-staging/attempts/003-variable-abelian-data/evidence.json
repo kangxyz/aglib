@@ -1,0 +1,35 @@
+{
+  "source_sha256": "4eaeb3d9a30da1e3eab8783af8fd741e455c2b54a8e4aafcc4ada2d697c1e553",
+  "run": "remote-dd02c6acd7d44ad6b4d50f123ae4bf87",
+  "source_capture_sha256": "65bc75bd87f6942ed330fbc8ccfc98bdf61a14989f0b422a98d87f9a64e91ef7",
+  "native_exit": 1,
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.ProperBaseChange"
+  ],
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 2,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 32768,
+    "threads": 4
+  },
+  "primary_diagnostic": "Private pointwise theorem66:16 kernel deterministic timeout",
+  "cascade": "Public application88:8 unknown private constant",
+  "reported_module_seconds": 106.5,
+  "provider_rebuilds": 0,
+  "own_frontends": 1,
+  "full_outputs": {
+    "receipt.json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dd02c6acd7d44ad6b4d50f123ae4bf87/receipt.json",
+    "build.log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dd02c6acd7d44ad6b4d50f123ae4bf87/build.log",
+    "compiler-events.jsonl": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-dd02c6acd7d44ad6b4d50f123ae4bf87/compiler-events.jsonl"
+  },
+  "output_sha256": {
+    "receipt.json": "481009aab3e4e4775fef250fd3013dee03345d9f8a4ed04361c5b383f4658b05",
+    "build.log": "2de8be8d4ce53b88a28344ac23242137f397915ac124a3f48c71cfcdd3614953",
+    "compiler-events.jsonl": "d160974ff93494c62b36f72e38b689b8c79ace0269c4e4d2c5131c02fe307cd7"
+  },
+  "next_step": "Root-directed frozen phase/type-versus-value diagnosis before any further production proof-boundary rearrangement"
+}

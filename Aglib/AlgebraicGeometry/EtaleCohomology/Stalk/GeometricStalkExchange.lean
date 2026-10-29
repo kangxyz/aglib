@@ -119,7 +119,7 @@ theorem higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
       (relativeCohomologyTransfer.{u, e} ((inverseImage g').obj F) q
         (chartGeometricPointMap Ω ζ f' R' j' hζ))) :
     IsIso (((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)) := by
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)) := by
   let L := (higherDirectImage f q).obj F
   let sourceStalk : AddCommGrpCat.{u + 1} :=
     ((pointSmallEtale (ζ ≫ g)).sheafFiber (A := AddCommGrpCat.{u + 1})).obj L
@@ -133,7 +133,7 @@ theorem higherBaseChangeMap_geometricStalk_isIso_of_localTransfers
     (StalkInverseImage.stalkUnitNatIso g ζ).hom.app L
   let β : pulledBackStalk ⟶ targetStalk :=
     ((pointSmallEtale ζ).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-      ((higherBaseChangeMap.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
+      ((higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} f f' g g' h q).app F)
   let source : sourceStalk →+
       Sheaf.H.{e} ((inverseImage (pullback.snd (ζ ≫ g) f)).obj F) q :=
     chartGeometricCohomologyComparison.{u, w, s, e} Ω (ζ ≫ g) f R j hη F q

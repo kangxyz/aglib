@@ -7,10 +7,12 @@ module
 
 public import Aglib.Topology.Sheaves.Cech.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Generators.OpenFreeStalk
+public import Aglib.AlgebraicGeometry.Modules.Locality.Isomorphisms
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Cech.Comparison
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor
 public import Mathlib.AlgebraicGeometry.Modules.Tilde
 public import Mathlib.CategoryTheory.Adjunction.Additive
+public import Mathlib.CategoryTheory.Functor.ReflectsIso.Exact
 public import Mathlib.CategoryTheory.Abelian.Injective.Basic
 /-!
 # Exactness of the original Cech complexes with injective coefficients
@@ -58,13 +60,17 @@ lemma openFree_stalkCech_exact_succ (X : Scheme.{u}) (x : X)
 
 lemma shortComplex_exact_of_moduleStalk {X : Scheme.{u}} (S : ShortComplex X.Modules)
     (h : ∀ x, (S.map (moduleStalk X x)).Exact) : S.Exact := by
-  rw [ShortComplex.exact_iff_isZero_homology, isZero_iff_stalks]
-  intro x
-  have hz : IsZero ((moduleStalk X x).obj S.homology) :=
-    ((ShortComplex.exact_iff_isZero_homology _).mp (h x)).of_iso (S.mapHomologyIso (moduleStalk X
-      x)).symm
-  exact ((forget₂ (ModuleCat (X.presheaf.stalk x)) AddCommGrpCat.{u}).map_isZero hz).of_iso
-    ((moduleStalkForgetIso X x).app S.homology).symm
+  let hF : JointlyReflectIsomorphisms (fun x : X => moduleStalk X x) := by
+    refine ⟨?_⟩
+    intro M N f hf
+    apply (moduleSheaf_isIso_iff_stalks f).mpr
+    intro x
+    let : IsIso ((moduleStalk X x).map f) := hf x
+    exact (NatIso.isIso_map_iff (moduleStalkForgetIso X x) f).mp
+      (inferInstanceAs (IsIso
+        ((forget₂ (ModuleCat (X.presheaf.stalk x)) AddCommGrpCat.{u}).map
+          ((moduleStalk X x).map f))))
+  exact (hF.exact_iff S).mpr h
 
 /-- The actual Cech chain complex of open-free module sheaves, obtained by
 opposing mathlib's original Cech cochain construction. -/

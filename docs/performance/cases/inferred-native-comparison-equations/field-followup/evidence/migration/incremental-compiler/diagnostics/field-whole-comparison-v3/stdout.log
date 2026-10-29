@@ -1,0 +1,76 @@
+/root/autodl-tmp/lean-build/logs/remote-614cbe7476874fcca5b896c5863a9584/field-whole-comparison-v3/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:396:4: error: Type mismatch: After simplification, term
+  hfactor
+ has type
+  @Eq
+    (H1Etale (Spec ↧K) (representedSheaf (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n)) →
+      H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+    (⇑((galoisRestriction K n).onH1.comp
+        (FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+            (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+            (pointMark K n) ⋯ (finiteCoefficient K n)).toAddMonoidHom))
+    (⇑(galoisRestriction K n).onH1 ∘
+      ⇑(FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n)))
+but is expected to have type
+  @Eq
+    (H1Etale (Spec ↧K) (representedSheaf (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n)) →
+      H1 (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+    (⇑((galoisRestriction K n).onH1.comp
+        (FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+            (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+            (pointMark K n) ⋯ (finiteCoefficient K n)).toAddMonoidHom))
+    (⇑(galoisRestriction K n).onH1 ∘
+      ⇑(FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ (finiteCoefficient K n)))
+
+Note: The following definitions were not unfolded because their definition is not exposed:
+  Limits.getLimitCone ↦ 1
+  inv ↦ 4
+case refine_1
+K : Type u
+inst✝⁵ : Field K
+inst✝⁴ : CharZero K
+n : ℕ
+inst✝³ : NeZero n
+inst✝² : GaloisCategory (Spec ↧K).FiniteEtale
+inst✝¹ : PreGaloisCategory.FiberFunctor (fiberToFinite (geometricPoint K))
+inst✝ : HasExt (AbelianSheaf (Spec ↧K))
+hA : Stacks03AJ (Spec ↧K)
+hR : Stacks03RV (Spec ↧K)
+P : Scheme.EtaleCohomology.Torsor (Coefficients.mu (Spec ↧K) n)
+Y : (Spec ↧K).FiniteEtale
+e : finiteRepresentedSetSheaf Y ≅ P.carrier
+t : Fiber (geometricPoint K) Y
+eH : H1Etale (Spec ↧K) (representedSheaf (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n)) ≃+
+  H1 (Scheme.EtaleFundamentalGroups.FiberAutGroup (geometricPoint K)) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) :=
+  FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K) (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n)
+    hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n) (pointMark K n) ⋯ (finiteCoefficient K n)
+h :
+  (FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ (finiteCoefficient K n))
+      (torsorExtClass P) =
+    (classOf (Scheme.EtaleFundamentalGroups.FiberAutGroup (geometricPoint K))
+        (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+      (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e) t)
+hclass :
+  (galoisRestriction K n).onH1
+      ((classOf (FieldFundamentalGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+        (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e)
+          t)) =
+    (classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+      ((galoisRestriction K n).onCocycles
+        (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+          (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+          (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e)
+          t))
+hcomp : ⇑((galoisRestriction K n).onH1.comp eH.toAddMonoidHom) = ⇑(galoisRestriction K n).onH1 ∘ ⇑eH.toAddMonoidHom
+hcoe : ⇑eH.toAddMonoidHom = ⇑eH
+hfactor : ⇑((galoisRestriction K n).onH1.comp eH.toAddMonoidHom) = ⇑(galoisRestriction K n).onH1 ∘ ⇑eH
+⊢ ⇑(comparison K n hA hR) = ⇑(galoisRestriction K n).onH1 ∘ ⇑eH

@@ -115,3 +115,31 @@ Additional complete cases:
 
 New cases belong in separate case files; update the same file for follow-ups.
 Retain existing cases when refining key guidance in the main file.
+
+## Additional validated cases
+
+- [Native evaluation and exact category/zero dictionaries](native-evaluation-zero-dictionaries.md)
+- [Intrinsic slice comparison: shared native equation and typed product bridge](etale-slice-shared-comparison.md)
+- [Native line-bundle raw-chart equations](native-line-bundle-raw-chart-equations.md)
+
+- [Native Artin–Schreier: transpose the whole original composite](native-artin-schreier-whole-transposition.md)
+
+- [Constant coefficients: separate the primitive import boundary](constant-coefficient-import-boundary.md)
+
+- [Continuity: use the original value at its typed native endpoint](continuity-typed-original-endpoints.md)
+
+- [Prove whole laws on the actual original comparisons](whole-original-comparison-laws.md)
+
+- [Consume the original inferred equation before component cancellation](inferred-native-comparison-equations.md) — full frozen-source pass and ordinary generic-module pass; thin production integration was pending in the initial record. A [later integration milestone](inferred-native-comparison-equations.md#integration-milestone-2026-10-27-source-33013d99) records its pass on source `33013d99`; downstream P6 remains pending.
+
+- [Field follow-up: infer the composition, then normalize hypothesis and goal](inferred-native-comparison-equations.md#field-follow-up-infer-the-composed-equality-before-normalization) — two isolated passes and exact production Field pass; curve entries remain pending.
+
+- [Global follow-up: shared construction and normalized proof inputs](inferred-native-comparison-equations.md#global-follow-up-shared-construction-and-normalized-proof-inputs) — full Global module pass on its recorded source; Proper endpoint dependency closure remains blocked.
+
+- [Continuity triangle: preserve original proof inputs](inferred-native-comparison-equations.md#continuity-triangle-follow-up-preserve-original-proof-inputs) — reviewed eight-source construction and source-bound native module pass; the mixed build failed on a separate dependency.
+
+- [Proper injective follow-up: retain the original single head](inferred-native-comparison-equations.md#proper-injective-follow-up-retain-the-original-single-head) — reviewed source repair and two-module production pass; broader Proper remains open.
+
+## Diagnostic frontiers
+
+- [Čech intrinsic comparison: conversion frontier](cech-intrinsic-conversion-frontier.md) — one instrumented source-matching run; bounded dictionary and adapter pilots remain unmeasured.

@@ -1,0 +1,276 @@
+{
+  "basis": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "current_version": "v4",
+    "manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/manifest.json",
+    "manifest_sha256": "c75aba4d667a9879ce5389e79d98870d27c7db2de4ec67b80dc03a19a83c8dc2"
+  },
+  "purpose": "Fixed evidence for literal coefficient-alias relocation and removal of incidental classification imports; structural dependency reduction only.",
+  "files": [
+    {
+      "path": "author/packet.json",
+      "sha256": "579652047bcdb65626cf84c7901711c494d2dea4dbaaf3ce3dbdeb0808d382cb",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/performance-correspondence-v4/packet.json",
+      "source_sha256": "579652047bcdb65626cf84c7901711c494d2dea4dbaaf3ce3dbdeb0808d382cb"
+    },
+    {
+      "path": "author/literal-alias-block.txt",
+      "sha256": "59fd8a88d854c1c4736a11083f50d764baa64f0ffbea556a1f0a817bd065a87d",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/performance-correspondence-v4/literal-alias-block.txt",
+      "source_sha256": "59fd8a88d854c1c4736a11083f50d764baa64f0ffbea556a1f0a817bd065a87d"
+    },
+    {
+      "path": "versions/v2/manifest.json",
+      "sha256": "be9bad9229c06199b57258262aec01aa7835f46375193d95e12dc5e1ce44d0d2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/manifest.json",
+      "source_sha256": "be9bad9229c06199b57258262aec01aa7835f46375193d95e12dc5e1ce44d0d2"
+    },
+    {
+      "path": "versions/v3/manifest.json",
+      "sha256": "0333a8553899e7d86723fe9d0e1316fcc05b4347242b998f90fd18501ce0c18f",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/manifest.json",
+      "source_sha256": "0333a8553899e7d86723fe9d0e1316fcc05b4347242b998f90fd18501ce0c18f"
+    },
+    {
+      "path": "versions/v4/manifest.json",
+      "sha256": "c75aba4d667a9879ce5389e79d98870d27c7db2de4ec67b80dc03a19a83c8dc2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/manifest.json",
+      "source_sha256": "c75aba4d667a9879ce5389e79d98870d27c7db2de4ec67b80dc03a19a83c8dc2"
+    },
+    {
+      "path": "versions/v2/delta-from-v1.patch",
+      "sha256": "97be4bd679558f74caf0fe91286b007aa9db89bf77d72b30c8df028c81350316",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/delta-from-v1.patch",
+      "source_sha256": "97be4bd679558f74caf0fe91286b007aa9db89bf77d72b30c8df028c81350316"
+    },
+    {
+      "path": "versions/v3/delta-from-v2.patch",
+      "sha256": "b6e4e4212fd05bbd8cc87cd6a08d9ae99883c16b3210f6d0a29511a3b6134ea0",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/delta-from-v2.patch",
+      "source_sha256": "b6e4e4212fd05bbd8cc87cd6a08d9ae99883c16b3210f6d0a29511a3b6134ea0"
+    },
+    {
+      "path": "versions/v4/delta-from-v3.patch",
+      "sha256": "76d7cce965e4e19f9efe3023ed6a3f0739a914f37d334c626c1d6ec8cf60dfc2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/delta-from-v3.patch",
+      "source_sha256": "76d7cce965e4e19f9efe3023ed6a3f0739a914f37d334c626c1d6ec8cf60dfc2"
+    },
+    {
+      "path": "sources/v2/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "source_sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6"
+    },
+    {
+      "path": "sources/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "sha256": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "source_sha256": "531a66840e8f7fa10bcf3e52ea97b63074781ee126344a29b436070d118f29c1"
+    },
+    {
+      "path": "sources/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "sha256": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "source_sha256": "3ce703b115d15e4773e66c806256f4452ff027c5e9b83a95a51a94dc6288f603"
+    },
+    {
+      "path": "sources/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "source_sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68"
+    },
+    {
+      "path": "sources/v4/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "source_sha256": "510e0282ff85b01ee8a48b2f36cf79fffbc8311ecaa10495543a32561736fcc6"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "sha256": "10f5dc4427575489f225c1f27a67b32abc697535b57c8541921485fce539aacf",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/ArtinSchreier.lean",
+      "source_sha256": "10f5dc4427575489f225c1f27a67b32abc697535b57c8541921485fce539aacf"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "sha256": "549761543a9ffff9a9de0d2633933404f87f8e09414b8e2a71a2d8e0913a5eb5",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicCoefficientSequence.lean",
+      "source_sha256": "549761543a9ffff9a9de0d2633933404f87f8e09414b8e2a71a2d8e0913a5eb5"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/CyclicVanishing.lean",
+      "source_sha256": "7e42fb03c17f3053c8413eca340b24ad6f43b1e3ad6ca11629f348f3c19b1a68"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+      "sha256": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+      "source_sha256": "029676639cdf15bde8a099028154d2d9994007d3957ff04f1f3ffbc58a39f4cc"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean",
+      "sha256": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Coefficient.lean",
+      "source_sha256": "bae0006c159ac0d9fa7143f01f10f91c81a26369746d905dcc36806443e3eb32"
+    },
+    {
+      "path": "sources/v4/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+      "sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v4/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+      "source_sha256": "8303022b85d9823d0f9ef3da59146306242c3a92c0c0388b6110176edf4e3e38"
+    },
+    {
+      "path": "sources/v2/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+      "sha256": "8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/H1/ConstantFinite/Basic.lean",
+      "source_sha256": "8a90739868dd0354446e88d9af35cfcdac9fc4302f239afa4875a53fff56eef2"
+    },
+    {
+      "path": "sources/v2/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+      "sha256": "dbb74ba713bd392b6071bb3ede3b35c8237aa629b4f5b10a09034b8502fa3ce6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v3/preimages/Aglib/AlgebraicGeometry/EtaleCohomology/Curves/ConstantRestriction.lean",
+      "source_sha256": "dbb74ba713bd392b6071bb3ede3b35c8237aa629b4f5b10a09034b8502fa3ce6"
+    },
+    {
+      "path": "sources/old/ConstantCyclic.lean",
+      "sha256": "5e2eea2eabe25df97313b6716c5d9d1107d3b2d509f68a7cf81df41447b43991",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/versions/v1/Aglib/CategoryTheory/Sites/SheafCohomology/ConstantCyclic.lean",
+      "source_sha256": "5e2eea2eabe25df97313b6716c5d9d1107d3b2d509f68a7cf81df41447b43991"
+    },
+    {
+      "path": "author/header-routing-v3.json",
+      "sha256": "f94326fb568cf91432fbf268c3a8f1e56506cf82e0e05e5f858051d56925f0ea",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/header-routing-v3.json",
+      "source_sha256": "f94326fb568cf91432fbf268c3a8f1e56506cf82e0e05e5f858051d56925f0ea"
+    },
+    {
+      "path": "review/constant-cyclic-cohomology-core.md",
+      "sha256": "3c4ac8e76adf648cc007477c236917b4b717696cb56c4ef35c390d9bf3805737",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/constant-cyclic-cohomology-core.md",
+      "source_sha256": "3c4ac8e76adf648cc007477c236917b4b717696cb56c4ef35c390d9bf3805737"
+    },
+    {
+      "path": "review/constant-cyclic-cohomology-core.json",
+      "sha256": "ae5a523ca4d5accd46eaaf6aaae372327ed9ee03aadfcf99818856973dccf634",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/constant-cyclic-cohomology-core.json",
+      "source_sha256": "ae5a523ca4d5accd46eaaf6aaae372327ed9ee03aadfcf99818856973dccf634"
+    },
+    {
+      "path": "evidence/remote-a9f429bedd3d4a9291f100c210a71ffa/receipt.json",
+      "sha256": "d5cb8a77be20dfa8a1c3ee8d1d20a0b3962ad6aa8a84aa0c566afe2df11480e9",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/receipt.json",
+      "source_sha256": "d5cb8a77be20dfa8a1c3ee8d1d20a0b3962ad6aa8a84aa0c566afe2df11480e9"
+    },
+    {
+      "path": "evidence/remote-a9f429bedd3d4a9291f100c210a71ffa/build.log",
+      "sha256": "fc4924a648678b507732dccaa90d737a5cecfc7e0ad33d7921cf8bfd48269978",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/build.log",
+      "source_sha256": "fc4924a648678b507732dccaa90d737a5cecfc7e0ad33d7921cf8bfd48269978"
+    },
+    {
+      "path": "evidence/remote-a9f429bedd3d4a9291f100c210a71ffa/compiler-events.jsonl",
+      "sha256": "f64d029f5ad6b947e77def2b629d4ecf6f9d9b4521defb2677b41fca17502cc6",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a9f429bedd3d4a9291f100c210a71ffa/compiler-events.jsonl",
+      "source_sha256": "f64d029f5ad6b947e77def2b629d4ecf6f9d9b4521defb2677b41fca17502cc6"
+    },
+    {
+      "path": "evidence/remote-1b73ac9d1f7845368dc41326884a1dc4/receipt.json",
+      "sha256": "d4ec11ae344940b03c98c7870a9b4ba66ea7a154973cbd583cc2bb94cdbae1c0",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/receipt.json",
+      "source_sha256": "d4ec11ae344940b03c98c7870a9b4ba66ea7a154973cbd583cc2bb94cdbae1c0"
+    },
+    {
+      "path": "evidence/remote-1b73ac9d1f7845368dc41326884a1dc4/build.log",
+      "sha256": "42a24eb34e85e94f2ec6d21335f9ebcf9005a90edcca5dc3550c21b59687fb95",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/build.log",
+      "source_sha256": "42a24eb34e85e94f2ec6d21335f9ebcf9005a90edcca5dc3550c21b59687fb95"
+    },
+    {
+      "path": "evidence/remote-1b73ac9d1f7845368dc41326884a1dc4/compiler-events.jsonl",
+      "sha256": "e92a4b594ed1b2a40fd65c1a2533d5686e4a855f51ca79496c038d59a303c405",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-1b73ac9d1f7845368dc41326884a1dc4/compiler-events.jsonl",
+      "source_sha256": "e92a4b594ed1b2a40fd65c1a2533d5686e4a855f51ca79496c038d59a303c405"
+    },
+    {
+      "path": "evidence/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/receipt.json",
+      "sha256": "1299cc6d694b7e6ec91d687dd8632906fed9cd3f757dd8dcaef1dfbdd40e5dcf",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/receipt.json",
+      "source_sha256": "1299cc6d694b7e6ec91d687dd8632906fed9cd3f757dd8dcaef1dfbdd40e5dcf"
+    },
+    {
+      "path": "evidence/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/build.log",
+      "sha256": "ea94add88b0b17dac831ab4ae57ef7f711773f84163ef4490f14eccf99d593d4",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/build.log",
+      "source_sha256": "ea94add88b0b17dac831ab4ae57ef7f711773f84163ef4490f14eccf99d593d4"
+    },
+    {
+      "path": "evidence/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/compiler-events.jsonl",
+      "sha256": "76c5cd97168bae207c03b7169a02afd308b2c470177af49cb641cd1e4dd535f9",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e4d513ac8ecd437b9d21e9f576ce0a2d/compiler-events.jsonl",
+      "source_sha256": "76c5cd97168bae207c03b7169a02afd308b2c470177af49cb641cd1e4dd535f9"
+    },
+    {
+      "path": "evidence/remote-18dee922b63b4c4a80c77aa13505e07d/receipt.json",
+      "sha256": "cb6d976f2efce86565eef9404d1d85667d9bc33f69dcc35fe5fb8838400f0658",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/receipt.json",
+      "source_sha256": "cb6d976f2efce86565eef9404d1d85667d9bc33f69dcc35fe5fb8838400f0658"
+    },
+    {
+      "path": "evidence/remote-18dee922b63b4c4a80c77aa13505e07d/build.log",
+      "sha256": "d67f7881d7e173e80003d5262d1c9c43d627865060e2cbe69f2524d49d784620",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/build.log",
+      "source_sha256": "d67f7881d7e173e80003d5262d1c9c43d627865060e2cbe69f2524d49d784620"
+    },
+    {
+      "path": "evidence/remote-18dee922b63b4c4a80c77aa13505e07d/compiler-events.jsonl",
+      "sha256": "ca3907cefeff39f5f5ebf8ee537f4d118ed998adb8b364d231eb651ea1d89a8f",
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-18dee922b63b4c4a80c77aa13505e07d/compiler-events.jsonl",
+      "source_sha256": "ca3907cefeff39f5f5ebf8ee537f4d118ed998adb8b364d231eb651ea1d89a8f"
+    },
+    {
+      "path": "author/geometric-basic-v4-closure.json",
+      "sha256": "5e3124c751d84eea8cfb16e2e0e5e538b33fb900cff4754cded81bee6e60a635",
+      "bytes": 3413,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/geometric-basic-v4-closure.json",
+      "source_sha256": "5e3124c751d84eea8cfb16e2e0e5e538b33fb900cff4754cded81bee6e60a635"
+    },
+    {
+      "path": "author/result-at-basic-closure.txt",
+      "sha256": "5a9f016068168a1efd4aa1b6269553507f1a53b463967951e40fadf7db876cde",
+      "bytes": 3029,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/constant-cyclic-cohomology-core-staging/result.txt",
+      "source_sha256": "5a9f016068168a1efd4aa1b6269553507f1a53b463967951e40fadf7db876cde"
+    },
+    {
+      "path": "evidence/remote-8e6f035d93cf4602aebe92004aba41d2/receipt.json",
+      "sha256": "6074a4920b594477272b2f09f52040216eb877cb2c40074cbf0caa359fd64e8e",
+      "bytes": 12793,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/receipt.json",
+      "source_sha256": "6074a4920b594477272b2f09f52040216eb877cb2c40074cbf0caa359fd64e8e"
+    },
+    {
+      "path": "evidence/remote-8e6f035d93cf4602aebe92004aba41d2/build.log",
+      "sha256": "c907d738e5e21753f43c7275557da932a2713815b2da0fd72990f7556a6ed7b4",
+      "bytes": 322,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/build.log",
+      "source_sha256": "c907d738e5e21753f43c7275557da932a2713815b2da0fd72990f7556a6ed7b4"
+    },
+    {
+      "path": "evidence/remote-8e6f035d93cf4602aebe92004aba41d2/compiler-events.jsonl",
+      "sha256": "b46713acfb8923d1f4f582c5efa10195ef9167df00fa8fe873fbd158f3e14904",
+      "bytes": 7132,
+      "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-8e6f035d93cf4602aebe92004aba41d2/compiler-events.jsonl",
+      "source_sha256": "b46713acfb8923d1f4f582c5efa10195ef9167df00fa8fe873fbd158f3e14904"
+    }
+  ],
+  "external_evidence_policy": "Original absolute locators and hashes are retained. Raw native SOURCE keys identify different cohorts; no complete old graph is inferred. Whole-library archives remain with their original run owners, not duplicated here.",
+  "basic_closure_addendum": {
+    "packet": "author/geometric-basic-v4-closure.json",
+    "packet_sha256": "5e3124c751d84eea8cfb16e2e0e5e538b33fb900cff4754cded81bee6e60a635",
+    "meaning": "Separate later seventh-file closure on unchanged v4 source. Original packet remains historical pure-ready6 evidence. No new performance claim or mathematical verdict."
+  }
+}

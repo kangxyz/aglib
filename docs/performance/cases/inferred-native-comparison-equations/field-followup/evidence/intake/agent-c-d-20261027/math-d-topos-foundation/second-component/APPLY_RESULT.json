@@ -1,0 +1,81 @@
+{
+  "phase": "principal-authorized second-component production apply",
+  "time_utc": "2026-10-27T21:38:13.276431+00:00",
+  "native_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "scope_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/intake/agent-c-d-20261027/math-d-topos-foundation/second-component/SCOPE_MANIFEST.json",
+  "scope_manifest_sha256": "12da5422dfcac6855cd33ce33f761deab84991804e9ae2859aa7e5c0efd3992e",
+  "status_before_entries": 1153,
+  "status_after_entries": 1168,
+  "status_before_sha256": "4629234bb91cf965f81dadebc5235a246b26231becaca6cf08be5ffcd9510bb6",
+  "status_after_sha256": "d0526cde9ac3bdd4521774e8533f0796687381ff2fbfb058d45b0a3beda2b85b",
+  "guards": "All15 absent, candidates exact,21 current provider hashes matched, first9 unchanged, C56/P6union27 disjoint, HEAD/status stable across guard",
+  "written": [
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/Adjunction/UnitExpansion.lean",
+      "sha256": "9dc1b36953908557ec10fd5ede5e217b0d9220515fc6ba13543b8cf59a2a45bc"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/CoefficientBound.lean",
+      "sha256": "dbac121e37522615bc7ae77bab9b3d0c57ce54fa3dfb8d5c1e04666056c56d64"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/ExactSquare.lean",
+      "sha256": "6e816d6fa7bdcf2201673f213cfaa925ee05e60c2f0f8b9edb8dbf0c3b339e75"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/MateCubeIsomorphism.lean",
+      "sha256": "997e077d33c5b5e8f8ab48a2764b2ed738fcc6618928c155ca385b6d0f67b94d"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusAdjunction.lean",
+      "sha256": "f9654bd69b1655a575d8bc260139de6c3dcce4f7f8c5d04f448fc0a156b0f715"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusAdjunctionMate.lean",
+      "sha256": "8743503dfdd135be6186e9d4e11ece5136c0167dcb05b73daffb5459afe0e732"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusExactComparison.lean",
+      "sha256": "3e489c11a3f2d66e5d455fabf5ac8dbedf2ed2a4c219421e63d82fca9e34ae04"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/PlusExactSquare.lean",
+      "sha256": "46a1e0a5fb69b4cc5ce0ef6f15b4709180bbed839b6040ec9907b1b57fb8c3c8"
+    },
+    {
+      "path": "Aglib/Algebra/Homology/DerivedCategory/UnboundedRightDerived/SpecifiedMateCube.lean",
+      "sha256": "464016fe52cb4f2918be63fe3efbb7d4e99f4b9359d41e1e7cf94ced52dc601c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Coefficients/EtaleCover.lean",
+      "sha256": "d45817be3ea3c25934fa26ab77b101fbf92e3ebb6ba4601ea5de3360c35e798c"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChange.lean",
+      "sha256": "dc2c807a6814e0108d1c8cae953cc1d8b67c149027d8cf7f1bb2722068311fc9"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/BaseChangePlusComparison.lean",
+      "sha256": "bf11cb492299cac6fb0de7e6c95587497b05e6ef0d1b940260133af2900762aa"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/CohomologicalBound.lean",
+      "sha256": "b72b6fd8627cbc0c7543e0cbd4e86db4178902a59734f67bda348b6cfddd25c7"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/EtaleCover.lean",
+      "sha256": "b301e015e4582cca3fb3efe8629098545e4ca717883647fab8117cacb76506b6"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperBaseChange.lean",
+      "sha256": "699037ce03e1cc4d6b691b2a9a9d052dabf8a5c2211a1f055d32af8ec4442224"
+    }
+  ],
+  "target_roots": [
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/ProperBaseChange.lean",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Unbounded/EtaleCover.lean"
+  ],
+  "compile_status": "not yet queued",
+  "conditional_boundary": "ProperBaseChange retains the two finite-bound inputs; no geometric supplier admitted"
+}

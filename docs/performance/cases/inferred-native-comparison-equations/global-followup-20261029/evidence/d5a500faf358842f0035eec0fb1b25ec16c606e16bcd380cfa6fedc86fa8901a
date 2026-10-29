@@ -1,0 +1,91 @@
+{
+  "phase": "global-original-component-v29",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "run": "remote-669fe85c64774d379f36226b04d6c85d",
+  "source": "b7440f823a4831dbd18b26a5948827897015f978375477a1d5f353db5ac6616a",
+  "group_closed": true,
+  "exit_code": 1,
+  "input_drift": [],
+  "compiler_invocations": 1,
+  "compiler_succeeded": 0,
+  "compiler_failed": 1,
+  "execution_seconds": 193.76823964715004,
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-original-component-v29-input.json",
+  "input_sha256": "72003621730632507b860b6f175b7b7cb07f252fbece3c1f3d1b1b42f047b554",
+  "source_archive": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v29-669fe85c.json",
+    "sha256": "508a8eb6c6d64669e3a4209945d51f62a40143f484e76a715c9f4357753bca46"
+  },
+  "source_coverage": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean",
+      "sha256": "91a18323faa9b32f68947f6d289ad7fa9a4ee60568fbb24243d494f73842b5eb",
+      "fresh_frontends": [],
+      "status": "no fresh frontend; retained/unreached must follow actual prior evidence"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean",
+      "sha256": "4fa61d3620e9f12878b9aa40ffd5f6b67e3057ae6152e65ab9380a8473a59f79",
+      "fresh_frontends": [],
+      "status": "no fresh frontend; retained/unreached must follow actual prior evidence"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean",
+      "sha256": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+      "fresh_frontends": [],
+      "status": "no fresh frontend; retained/unreached must follow actual prior evidence"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Over/RelativeTests.lean",
+      "sha256": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+      "fresh_frontends": [],
+      "status": "no fresh frontend; retained/unreached must follow actual prior evidence"
+    }
+  ],
+  "all_frontend_coverage": [
+    {
+      "path": "/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/OriginalComponentAssembly-v29.lean",
+      "sha256": null,
+      "exit_code": 1,
+      "elapsed_seconds": 188.88886561989784
+    }
+  ],
+  "compiler_error_headers": [
+    "/root/autodl-tmp/lean-build/logs/remote-669fe85c64774d379f36226b04d6c85d/OriginalComponentAssembly-v29.lean:784:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"
+  ],
+  "artifacts": {
+    "receipt.json": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-669fe85c64774d379f36226b04d6c85d/receipt.json",
+      "sha256": "a7b9f2b1c8444bac13892f092f53e081f01bceb4d4c36fd04339fa3249aca56d"
+    },
+    "build.log": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-669fe85c64774d379f36226b04d6c85d/build.log",
+      "sha256": "cdc8d31c3814e1eac4d6e611db0bea5484313b8cd2cb5b16d4b3cd49c6b3791a"
+    },
+    "compiler-events.jsonl": {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-669fe85c64774d379f36226b04d6c85d/compiler-events.jsonl",
+      "sha256": "37073acfbc3a320c350fdb80ffe55b5f166aee6135a2dd30d425cec4870bac38"
+    }
+  },
+  "boundary": "Faithful native-option diagnostic PREFIX only, no full Global/caller pass or production adoption. Default200000; actual lastmarker relative constructor bound, complete-core marker absent. Provider priorpasses unchanged.",
+  "observed_markers": [
+    "V29_NATIVE_ORIGINAL_COMPONENT_ASSEMBLY_BEGIN sha256=abae81abf3f527f65726be186ae37fe450149eccebfe7c600cba674032908a6d",
+    "V29_NATIVE_BODY",
+    "V29_ORIGINAL_COMPARISON_READY",
+    "V29_FACTORY_BOUND",
+    "V29_ORIGINAL_MAPS_BOUND",
+    "V29_ORIGINAL_VALUES_BOUND",
+    "V29_ORIGINAL_RELATIVE_CONSTRUCTOR_BOUND",
+    "V29_NATIVE_ORIGINAL_COMPONENT_ASSEMBLY_END exit=1"
+  ],
+  "native_setup": [
+    "NATIVE_MODULE_SETUP {\"complete_options_equal\": true, \"isModule\": true, \"name\": \"Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction\", \"options\": {\"autoImplicit\": false, \"warningAsError\": true, \"weak.linter.mathlibStandardSet\": true, \"weak.linter.style.longFile\": 1500}, \"sha256\": \"f2b7741e936ee90bee75fd62988ca89d6e3139ccd4e8ce2a5860e675ce1591d3\"}"
+  ]
+}

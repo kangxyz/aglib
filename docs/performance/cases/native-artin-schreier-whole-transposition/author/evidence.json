@@ -1,0 +1,490 @@
+{
+  "product": "Source-bound mathematical/performance explanation for one durable case and one actionable main-guide method; no new executions.",
+  "scope": "Write only this performance-closure directory; N source/docs/registry/Git/remote held unchanged.",
+  "pins": {
+    "aglib_git_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "core_six_full_sources": [
+    {
+      "role": "failed-unit-projection",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-4/output/ArtinSchreier.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/01-failed-unit-projection-4d4bf8cf.lean",
+      "sha256": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+      "lines": 146,
+      "selected_locators": [
+        {
+          "line": 119,
+          "text": "theorem primeFieldToAdditive_artinSchreierMap (p : \u2115) (hp : p.Prime)"
+        }
+      ]
+    },
+    {
+      "role": "failed-native-zero",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-5/output/ArtinSchreier.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/02-failed-native-zero-4f745918.lean",
+      "sha256": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+      "lines": 143,
+      "selected_locators": [
+        {
+          "line": 120,
+          "text": "theorem primeFieldToAdditive_artinSchreierMap (p : \u2115) (hp : p.Prime)"
+        }
+      ]
+    },
+    {
+      "role": "phase-probe",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/diagnostic-1/ASFinalTheoremProbe.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/03-phase-probe-fe49f722.lean",
+      "sha256": "fe49f7228fcd8631581a7515fabddb030bd651eabc919dd5cad044dd0ce09f4c",
+      "lines": 171,
+      "selected_locators": [
+        {
+          "line": 127,
+          "text": "theorem primeFieldToAdditive_artinSchreierMap_formationProbe (p : \u2115) (hp : p.Prime)"
+        },
+        {
+          "line": 141,
+          "text": "theorem primeFieldToAdditive_artinSchreierMap (p : \u2115) (hp : p.Prime)"
+        }
+      ]
+    },
+    {
+      "role": "validated-whole-equation",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/repair-6/output/ArtinSchreier.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/04-validated-whole-equation-87ff6356.lean",
+      "sha256": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+      "lines": 158,
+      "selected_locators": [
+        {
+          "line": 34,
+          "text": "private theorem transpose_comp_eq_zero"
+        },
+        {
+          "line": 134,
+          "text": "theorem primeFieldToAdditive_artinSchreierMap (p : \u2115) (hp : p.Prime)"
+        }
+      ]
+    },
+    {
+      "role": "validated-scheme-frobenius",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/05-scheme-frobenius-5be6b57f.lean",
+      "sha256": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+      "lines": 58,
+      "selected_locators": [
+        {
+          "line": 41,
+          "text": "def structureFrobenius (X : Scheme.{u}) (p : \u2115) (hp : p.Prime)"
+        }
+      ]
+    },
+    {
+      "role": "validated-scheme-constants",
+      "original_frozen_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean",
+      "closure_frozen_copy": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/etale-artin-schreier-coefficients-staging/performance-closure/sources/06-scheme-constants-d2a7c746.lean",
+      "sha256": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca",
+      "lines": 77,
+      "selected_locators": [
+        {
+          "line": 54,
+          "text": "def primeFieldToStructure (X : Scheme.{u}) (p : \u2115) (hX : (p : \u0393(X, \u22a4)) = 0) :"
+        },
+        {
+          "line": 61,
+          "text": "theorem toSheafify_primeFieldToStructure (X : Scheme.{u}) (p : \u2115)"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "role": "unit-projection-budget-failure",
+      "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f/build.log",
+      "build_log_sha256": "1bf19761e00b8ec9f1ec853d639dc94864e02ebe00de137a121e3cfa5ee955b2",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-64d200f146334c3db7402e9da2137d2f/receipt.json",
+      "receipt_sha256": "c4486ea04a8bb94c99f3e023213cf905fe40ee128a805b34e18c58a34d0b95f7",
+      "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-proper-64d200f1.json",
+      "source_archive_sha256": "4048e0539f402d671b31321b4de8fb8ba62a1729ca9fd0a119186c48e5323c55",
+      "source_content_sha256": "61d5247827b3848216e52210813b26632e41f98f5090cdd5716215e94610d77a",
+      "selected_source_hashes": {
+        "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean": "4d4bf8cfc7046ee352aae7cf123774b473fc4fd473cf8bf50b2431dc779bb51a",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+      },
+      "selected_receipt": {
+        "command": [
+          "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+          "--rehash",
+          "build",
+          "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants",
+          "Aglib.CategoryTheory.Adjunction.InjectiveTests",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange"
+        ],
+        "exit_code": 1,
+        "status": "failed",
+        "outcome": "heartbeat_budget",
+        "elapsed_seconds": 25.99691954255104,
+        "wall_seconds": 26.418115988373756,
+        "compiler_invocations": 5,
+        "compiler_succeeded": 4,
+        "compiler_failed": 1,
+        "group_closed": true,
+        "input_drift": []
+      },
+      "profile_only": {
+        "jobs": 8,
+        "threads": 4,
+        "lean_memory_mib": 12800
+      },
+      "log_compile_lines": [
+        {
+          "line": 1,
+          "text": "\u2714 [3650/3656] Built Aglib.CategoryTheory.Adjunction.InjectiveTests (1.0s)"
+        },
+        {
+          "line": 2,
+          "text": "\u2714 [3651/3656] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveRetract (3.3s)"
+        },
+        {
+          "line": 3,
+          "text": "\u2714 [3652/3656] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ZModRetract (4.1s)"
+        },
+        {
+          "line": 4,
+          "text": "\u2714 [3653/3656] Built Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange (3.9s)"
+        },
+        {
+          "line": 5,
+          "text": "\u2716 [3654/3656] Building Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (23s)"
+        },
+        {
+          "line": 7,
+          "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:118:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"
+        }
+      ]
+    },
+    {
+      "role": "native-zero-budget-failure",
+      "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871/build.log",
+      "build_log_sha256": "919235d027276ca614b627a31392eb92a80fa1abcfc38ab271b5597f3ff73dea",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-a5e3496e48ac4278a033d9abdb074871/receipt.json",
+      "receipt_sha256": "a16c5c66ac0d2dadd1451dbf740afc4f4e956ad2cfb35c19b1a1b28124f81292",
+      "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-budget-a5e3496e.json",
+      "source_archive_sha256": "3d1f7a339ab8cedd20afe7c924f5d272250a752d79b801d67f6c933843bc3631",
+      "source_content_sha256": "21cd739c6a51dc625d579785a01b5000d34085ca98d0b11e1d22fc749d08b88d",
+      "selected_source_hashes": {
+        "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+      },
+      "selected_receipt": {
+        "command": [
+          "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+          "--rehash",
+          "build",
+          "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+        ],
+        "exit_code": 1,
+        "status": "failed",
+        "outcome": "heartbeat_budget",
+        "elapsed_seconds": 26.024770215153694,
+        "wall_seconds": 26.436887189745903,
+        "compiler_invocations": 1,
+        "compiler_succeeded": 0,
+        "compiler_failed": 1,
+        "group_closed": true,
+        "input_drift": []
+      },
+      "profile_only": {
+        "jobs": 8,
+        "threads": 4,
+        "lean_memory_mib": 12800
+      },
+      "log_compile_lines": [
+        {
+          "line": 1,
+          "text": "\u2716 [3156/3158] Building Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (23s)"
+        },
+        {
+          "line": 3,
+          "text": "error: Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean:119:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"
+        }
+      ]
+    },
+    {
+      "role": "phase-localization-probe",
+      "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a/build.log",
+      "build_log_sha256": "ead3603024d8ec884f8fc00d43236ea94837305133d9bf278a8923ca026846e1",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-9b504c762eea4ff495ee47d36d1c6b5a/receipt.json",
+      "receipt_sha256": "ccb1427e72ebf286acc47ea3470ccb8fd862a61e2594634b1dd842c95a57063e",
+      "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/as-prefix-diagnostic-9b504c76.json",
+      "source_archive_sha256": "f98cbc4ef6411daa5f74ce4dcc3d3ad1bfbafb10637257708f17bd0284bbd909",
+      "source_content_sha256": "71bb7f2cc656c08d07959609271b2e3ba2337d8e2881447fafde5463a0a53d07",
+      "selected_source_hashes": {
+        "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean": "4f74591813eb9b2c76d4f7c468e6a96ff21732caeb62f9dbb2b351b5a09527ac",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+      },
+      "selected_receipt": {
+        "command": [
+          "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+          "--no-build",
+          "env",
+          "lean",
+          "-j4",
+          "-M12800",
+          ".lake/migration-probes/as-final-theorem.lean"
+        ],
+        "exit_code": 1,
+        "status": "failed",
+        "outcome": "heartbeat_budget",
+        "elapsed_seconds": 24.9722910374403,
+        "wall_seconds": 25.38591405749321,
+        "compiler_invocations": 0,
+        "compiler_succeeded": 0,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": []
+      },
+      "profile_only": {
+        "jobs": 8,
+        "threads": 4,
+        "lean_memory_mib": 12800
+      },
+      "log_compile_lines": [
+        {
+          "line": 138,
+          "text": ".lake/migration-probes/as-final-theorem.lean:140:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"
+        }
+      ]
+    },
+    {
+      "role": "validated-lower",
+      "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da/build.log",
+      "build_log_sha256": "5f74a8536f00969b7794cee35199b428be395e98bd60a9bc93f1ceea27dbf647",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ca150085ba4940f4b318b1694924f5da/receipt.json",
+      "receipt_sha256": "496de7bdf3d951ea672d84cdcf9c71e22a763af8bef4296af3c9338a1776ef68",
+      "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-lower-pass-ca150085.json",
+      "source_archive_sha256": "125d4b4d897134f9af7ca08e2824e573c2d3c0910b48749c44d6a107a90c096e",
+      "source_content_sha256": "c312213a7acceb4f949e7ce39b8eeae518187db331e8bebde45d739fb10da1e9",
+      "selected_source_hashes": {
+        "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+      },
+      "selected_receipt": {
+        "command": [
+          "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+          "--rehash",
+          "build",
+          "Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier"
+        ],
+        "exit_code": 0,
+        "status": "succeeded",
+        "outcome": "native_build_completed",
+        "elapsed_seconds": 13.083733141422272,
+        "wall_seconds": 13.472964212298393,
+        "compiler_invocations": 1,
+        "compiler_succeeded": 1,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": []
+      },
+      "profile_only": {
+        "jobs": 2,
+        "threads": 4,
+        "lean_memory_mib": 12800
+      },
+      "log_compile_lines": [
+        {
+          "line": 1,
+          "text": "\u2714 [2410/2410] Built Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier (3.9s)"
+        }
+      ]
+    },
+    {
+      "role": "validated-wrappers",
+      "run_dir": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2/build.log",
+      "build_log_sha256": "c9a8215b3a7152e709860bd410937323272695f6af5fbf533152d71863b80900",
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-03a7acc97f2846b591fc7840baaee2b2/receipt.json",
+      "receipt_sha256": "b5913e7b93511b551d63dc77c34733f4bc4d62ca2cd108dc89a3e0ae58d6d5c6",
+      "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-as-wrappers-pass-03a7acc9.json",
+      "source_archive_sha256": "885a7b8db32f0084547af09ea4dae478d3575ee51b7634570d2ff15a3c32a1f9",
+      "source_content_sha256": "cf63e1b74c8930fcc40cb78f567634c9aab417b3079dcc482718aacd046bffc7",
+      "selected_source_hashes": {
+        "Aglib/Algebra/Category/Ring/Sheaf/ArtinSchreier.lean": "87ff6356a978b2998455b6ea671dbfdf3cb09f65a7785282ebe8b7aba4e4b9ec",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Frobenius.lean": "5be6b57f14457bda311e65781e412dd7414d43ac6c435217c4d480340a45c922",
+        "Aglib/AlgebraicGeometry/EtaleCohomology/ArtinSchreier/Constants.lean": "d2a7c7461e034f05b03adb49fa49b6fc6fab4eb440a45ded2cd2d0ec59ee8fca"
+      },
+      "selected_receipt": {
+        "command": [
+          "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+          "--rehash",
+          "build",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius",
+          "Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants"
+        ],
+        "exit_code": 0,
+        "status": "succeeded",
+        "outcome": "native_build_completed",
+        "elapsed_seconds": 11.12849646806717,
+        "wall_seconds": 11.534971192479134,
+        "compiler_invocations": 2,
+        "compiler_succeeded": 2,
+        "compiler_failed": 0,
+        "group_closed": true,
+        "input_drift": []
+      },
+      "profile_only": {
+        "jobs": 2,
+        "threads": 4,
+        "lean_memory_mib": 12800
+      },
+      "log_compile_lines": [
+        {
+          "line": 1,
+          "text": "\u2714 [3157/3158] Built Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius (3.5s)"
+        },
+        {
+          "line": 2,
+          "text": "\u2714 [3158/3158] Built Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Constants (4.2s)"
+        }
+      ]
+    }
+  ],
+  "selected_probe_locators": [
+    {
+      "line": 1,
+      "text": "AS_DIAG1 prefix-complete formation-start"
+    },
+    {
+      "line": 8,
+      "text": "[Elab.definition.header] \u2705\ufe0f CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe"
+    },
+    {
+      "line": 9,
+      "text": "AS_DIAG1 formation-body"
+    },
+    {
+      "line": 23,
+      "text": "[Elab.definition.value] \u2705\ufe0f CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe"
+    },
+    {
+      "line": 24,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.2724257991._hygCtx._hyg.79]"
+    },
+    {
+      "line": 25,
+      "text": "[Kernel] \u2705\ufe0f typechecking declarations [CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap_formationProbe]"
+    },
+    {
+      "line": 27,
+      "text": "  Lean.logInfo \"AS_DIAG1 formation-body\"` does nothing"
+    },
+    {
+      "line": 30,
+      "text": "AS_DIAG1 formation-command-end proof-start"
+    },
+    {
+      "line": 37,
+      "text": "[Elab.definition.header] \u2705\ufe0f CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap"
+    },
+    {
+      "line": 38,
+      "text": "AS_DIAG1 body-entry"
+    },
+    {
+      "line": 39,
+      "text": "AS_DIAG1 after-hz"
+    },
+    {
+      "line": 40,
+      "text": "AS_DIAG1 after-left-additive-instance"
+    },
+    {
+      "line": 41,
+      "text": "AS_DIAG1 after-native-zero"
+    },
+    {
+      "line": 42,
+      "text": "AS_DIAG1 before-final-transport"
+    },
+    {
+      "line": 138,
+      "text": ".lake/migration-probes/as-final-theorem.lean:140:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached"
+    },
+    {
+      "line": 141,
+      "text": "[Elab.definition.value] \ud83d\udca5\ufe0f CategoryTheory.Sheaf.ArtinSchreier.primeFieldToAdditive_artinSchreierMap"
+    },
+    {
+      "line": 142,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.78]"
+    },
+    {
+      "line": 143,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.306]"
+    },
+    {
+      "line": 144,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.340]"
+    },
+    {
+      "line": 145,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.384]"
+    },
+    {
+      "line": 146,
+      "text": "  [Kernel] \u2705\ufe0f typechecking declarations [_private..lake.migration-probes.as-final-theorem.0._tmp._@..lake.migration-probes.as-final-theorem.184095013._hygCtx._hyg.393]"
+    },
+    {
+      "line": 147,
+      "text": "tactic execution of Lean.Parser.Tactic.exact took 19.6s"
+    },
+    {
+      "line": 148,
+      "text": "AS_DIAG1 proof-command-end"
+    },
+    {
+      "line": 164,
+      "text": "\ttactic execution 19.7s"
+    },
+    {
+      "line": 166,
+      "text": "\ttype checking 10ms"
+    }
+  ],
+  "probe_binding": "The fixed supplied probe fe49f722 is separately preserved in full. The B_SOURCE archive verifies its held production prefix basis4f; the ignored .lake scratch file is not a files entry in that archive. Actual command/log name .lake/migration-probes/as-final-theorem.lean and contain the preserved phase/declaration sequence.",
+  "native_method_sources": [
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+      "locators": "homEquiv_naturality_right:237; homEquiv_naturality_right_symm:242"
+    },
+    {
+      "path": "Mathlib/CategoryTheory/Adjunction/Additive.lean",
+      "locators": "left_adjoint_additive:42; homAddEquiv_zero:68; homAddEquiv_symm_zero:85"
+    }
+  ],
+  "boundaries": [
+    "Exact compared conversion pair remains unidentified.",
+    "Unfold counts are not per-constant timing.",
+    "Probe tactic/kernel totals do not certify actual AS theorem kernel completion.",
+    "Receipt elapsed, wall, module-log times and profiled tactic times are distinct.",
+    "No matched speedup ratio, RSS attribution, overall migration/global closure or universal future-budget guarantee.",
+    "Only lower1 + changed wrappers2 passed; untouched Injective/Complex/Surjective/ShortExact are not covered by these passes.",
+    "Documentation performed no compilation, profiling, benchmark, replay or re-audit."
+  ]
+}

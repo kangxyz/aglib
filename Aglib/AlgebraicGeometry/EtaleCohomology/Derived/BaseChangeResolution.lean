@@ -16,7 +16,8 @@ The original ordinary and derived exchanges satisfy the proved complex-unit
 square. Consequently the original derived exchange is computed by termwise
 ordinary exchange and any actual augmentation-compatible lift into a target
 injective resolution. No base-change isomorphism, properness, smoothness or
-cohomological vanishing is assumed. The four derived models remain independent.
+cohomological vanishing is assumed. The derived statement retains its selected models;
+the ordinary higher formula has no derived-category parameter.
 -/
 
 @[expose] public noncomputable section
@@ -62,6 +63,10 @@ theorem derivedBaseChangeMap_resolution {F : AbelianSheaf.{u, u + 1} X}
     (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h) I J φ
     (derivedBaseChangeMap_actualUnit f f' g g' h) hφ
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original higher exchange is the homology map of the actual termwise
 ordinary exchange followed by the specified resolution lift, in every degree. -/
 theorem higherBaseChangeMap_resolution {F : AbelianSheaf.{u, u + 1} X}
@@ -79,16 +84,24 @@ theorem higherBaseChangeMap_resolution {F : AbelianSheaf.{u, u + 1} X}
     Functor.HigherResolutionExchangeEquation
       (directImage f) (directImage f') (inverseImage g) (inverseImage g')
       (baseChangeMap f f' g g' h) I J φ q
-      ((higherBaseChangeMap f f' g g' h q).app F) :=
-  Functor.higherResolutionExchangeEquation_of_actualTransport
+      ((higherBaseChangeMap f f' g g' h q).app F) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+  exact Functor.higherResolutionExchangeEquation_of_actualTransport
     (directImage f) (directImage f') (inverseImage g) (inverseImage g')
     (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h) I J φ q
     (higherDirectImageIso f q) (higherDirectImageIso f' q) rfl rfl
     (higherBaseChangeSourceIso f g q).hom (higherBaseChangeTargetIso f' g' q).hom
-    (higherBaseChangeMap f f' g g' h q) rfl
+    (higherBaseChangeMap f f' g g' h q) (higherBaseChangeMap_eq_transport f f' g g' h q)
     (derivedBaseChangeMap_resolution f f' g g' h I J φ hφ)
     (higherBaseChangeMap_app f f' g g' h q F)
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- The original higher exchange computed using the actual native resolution lift.
 The lift and its augmented triangle are constructed, not hypothesized. -/
 theorem higherBaseChangeMap_resolution_lift {F : AbelianSheaf.{u, u + 1} X}

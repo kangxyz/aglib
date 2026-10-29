@@ -1,0 +1,26 @@
+{
+  "question": "Place the exact validated complete generic cancellation proof in the existing categorical owner; retain the thin Scheme instantiation.",
+  "authorization": "Root explicitly directed this existing UnitIsomorphism owner and named public theorem. Both paths already owned; no new file/theory/source scope.",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "sources": {
+    "Aglib/CategoryTheory/Adjunction/Mates/UnitIsomorphism.lean": {
+      "before_sha256": "66015c916be8e32e302fbc684596315803cb610c619d52c96cf4c09e0f476ad4",
+      "after_sha256": "f2b0fba00d9c04af59cebfd655491a9af2084e0c9baf437e25ec48883efb9933"
+    },
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean": {
+      "before_sha256": "5d7d253d40622574dd66111024c0a67c388c238cc25f33d8cecd4019a3592111",
+      "after_sha256": "7f7ddd67dbab5b61f062332dc01e99b4d6c4a9c8d6531a465ab08f554bddf9f4"
+    }
+  },
+  "generic_declaration": "CategoryTheory.isIso_of_component_equation",
+  "generic_correspondence": "Identical binder list and proof body from validated5d7d helper; only privacy/name/module owner change. Takes original β, actual component a/edges/equation and their invertibility/conservativity facts. No model or new premise.",
+  "scheme_correspondence": "Remove private duplicate, import existing owner, rename one call. Public theorem including proof text is literal unchanged; unannotated hcube and exact original moduleβ remain.",
+  "original_G0": "isIso_map_unit_of_iso_mate declaration/proof is untouched. Overview broadened minimally to describe both actual component tests.",
+  "evidence": "Original5d7d full-source frozenPASS2e130 remains historical compatible argument evidence; new two-file currentN source compilation is pending. G066015 old pass does not masquerade as new changedG0 pass.",
+  "producer": "UnderlyingBaseChange6a84 remains byte-identical; no widefoundation repair.",
+  "validation_scope": "Ordinary currentN incremental R4 + exact finished P6 consumer closure, building changedG0 dependency; same default budget/pins/trust, no separate test/replay/client/audit chain.",
+  "affected_review": "Source placement and final5d7d argument preserved for independent affected review; no author verdict.",
+  "full_args_proof_literal_match": true,
+  "public_R4_decl_proof_literal_match": true,
+  "timestamp_utc": "2026-10-27T17:58:14.393053+00:00"
+}

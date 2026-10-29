@@ -51,30 +51,15 @@ variable (q : PullbackMap (A := B) (B := D) φ)
 
 /-- The actual marked coefficient map between small point modules is the
 explicit composite d⁻¹ ∘ q ∘ e; its relative equivariance is proved. -/
-def transportedPullbackMap : PullbackMap (A := B₀) (B := D₀) φ where
-  toFun b := d.symm (q (e b))
-  map_zero' := by
-    change d.symm (q (e 0)) = 0
-    rw [e.map_zero]
-    exact (congrArg d.symm q.toAddMonoidHom.map_zero).trans d.symm.map_zero
-  map_add' a b := by simp only [map_add, q.map_add]
-  continuous_toFun := continuous_of_discreteTopology
-  map_smul' h b := by
-    rw [he, q.map_smul]
-    exact coefficientEquiv_symm_equivariant d hd h _
+def transportedPullbackMap : PullbackMap (A := B₀) (B := D₀) φ :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.transportedPullbackMap φ e he d hd q
 
 /-- Marking/universe transport commutes with simultaneous group restriction
 and coefficient change on the one common continuous H¹ quotient. -/
 theorem coefficientH1Equiv_pullback (a : H1 G B₀) :
     coefficientH1Equiv d hd ((transportedPullbackMap φ e he d hd q).onH1 a) =
-      q.onH1 (coefficientH1Equiv e he a) := by
-  obtain ⟨c, rfl⟩ := classOf_surjective G B₀ a
-  rw [PullbackMap.onH1_classOf, coefficientH1Equiv_classOf,
-    coefficientH1Equiv_classOf, PullbackMap.onH1_classOf]
-  congr 1
-  apply Cocycle.ext
-  intro h
-  exact d.apply_symm_apply _
+      q.onH1 (coefficientH1Equiv e he a) :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientH1Equiv_pullback φ e he d hd q a
 
 end CoefficientTransport
 
@@ -92,21 +77,14 @@ variable (q : CoefficientMap G B D)
 
 /-- The explicit marked coefficient map on actual small point modules. -/
 def transportedCoefficientMap : CoefficientMap G B₀ D₀ :=
-  (coefficientMapOfEquiv d.symm (coefficientEquiv_symm_equivariant d hd)).comp
-    (q.comp (coefficientMapOfEquiv e he))
+  GroupCohomology.ContinuousH1.CoefficientTransport.transportedCoefficientMap e he d hd q
 
 /-- Ordinary coefficient change commutes with finite marking/universe transport
 on the existing common continuous cohomology quotient. -/
 theorem coefficientH1Equiv_coefficient (a : H1 G B₀) :
     coefficientH1Equiv d hd ((transportedCoefficientMap e he d hd q).onH1 a) =
-      q.onH1 (coefficientH1Equiv e he a) := by
-  obtain ⟨c, rfl⟩ := classOf_surjective G B₀ a
-  rw [CoefficientMap.onH1_classOf, coefficientH1Equiv_classOf,
-    coefficientH1Equiv_classOf, CoefficientMap.onH1_classOf]
-  congr 1
-  apply Cocycle.ext
-  intro g
-  exact d.apply_symm_apply _
+      q.onH1 (coefficientH1Equiv e he a) :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.coefficientH1Equiv_coefficient e he d hd q a
 
 end OrdinaryCoefficientTransport
 
@@ -126,15 +104,8 @@ theorem restriction_coefficientH1Equiv (a : H1 G B) :
     letI := restrictedAction D φ
     letI := restrictedAction_continuous D φ
     coefficientH1Equiv e (fun h b => he (φ h) b) (restriction B φ a) =
-      restriction D φ (coefficientH1Equiv e he a) := by
-  let := restrictedAction B φ
-  let := restrictedAction_continuous B φ
-  let := restrictedAction D φ
-  let := restrictedAction_continuous D φ
-  obtain ⟨c, rfl⟩ := classOf_surjective G B a
-  rw [restriction_classOf, coefficientH1Equiv_classOf,
-    coefficientH1Equiv_classOf, restriction_classOf]
-  congr 1
+      restriction D φ (coefficientH1Equiv e he a) :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.restriction_coefficientH1Equiv φ e he a
 
 end RestrictionTransport
 section RelativeCoefficient
@@ -149,22 +120,16 @@ explicit restricted action, with no action identification assumed. -/
 def pullbackCoefficientMap :
     letI := restrictedAction B φ
     letI := restrictedAction_continuous B φ
-    CoefficientMap H B D := by
-  letI := restrictedAction B φ
-  letI := restrictedAction_continuous B φ
-  exact { q.toContinuousAddMonoidHom with map_smul' := q.map_smul }
+    CoefficientMap H B D :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.pullbackCoefficientMap φ q
 
 /-- The two-step restriction/coefficient map is the existing single combined
 PullbackMap on the same common cohomology quotient. -/
 theorem pullbackCoefficientMap_restriction (a : H1 G B) :
     letI := restrictedAction B φ
     letI := restrictedAction_continuous B φ
-    (pullbackCoefficientMap φ q).onH1 (restriction B φ a) = q.onH1 a := by
-  let := restrictedAction B φ
-  let := restrictedAction_continuous B φ
-  obtain ⟨c, rfl⟩ := classOf_surjective G B a
-  rw [restriction_classOf, CoefficientMap.onH1_classOf, PullbackMap.onH1_classOf]
-  rfl
+    (pullbackCoefficientMap φ q).onH1 (restriction B φ a) = q.onH1 a :=
+  GroupCohomology.ContinuousH1.CoefficientTransport.pullbackCoefficientMap_restriction φ q a
 
 end RelativeCoefficient
 open MonoidalCategory CartesianMonoidalCategory
@@ -353,12 +318,22 @@ theorem representedH1AddEquiv_pullback (a : H1Etale X (representedSheaf A)) :
   obtain ⟨p, rfl⟩ := (hAX.bijective (representedSheaf A)).surjective a
   refine Quotient.inductionOn p ?_
   intro P
-  let Y := P.finiteEtaleRepresentative hRX hcoeff.locally_constant
-  let e := P.finiteEtaleRepresentativeIso hRX hcoeff.locally_constant
-  let τ := P.representedSchemeAction A Y e
-  let : Surjective Y.obj.hom := P.represented_surjective A Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hRX hcoeff.locally_constant
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hRX hcoeff.locally_constant
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := A) (P := P) (Y := Y) (e := e)
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := A) (P := P) (Y := Y) (e := e)
   have he : torsorExtClass (torsorOfSchemeAction A Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso A Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := A) (P := P) (Y := Y) (e := e))
   change representedH1AddEquiv s (baseChangedGroup f A) hAS hRS M _ _ _
     (coefficientMap (representedSheafBaseChangeIso f A).hom
       (h1Pullback f (representedSheaf A) (torsorExtClass P))) =

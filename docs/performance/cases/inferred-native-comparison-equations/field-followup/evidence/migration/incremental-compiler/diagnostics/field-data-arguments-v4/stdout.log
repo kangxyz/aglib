@@ -1,0 +1,16 @@
+/root/autodl-tmp/lean-build/logs/remote-2d656e9ab6e44242a3535333c4c57684/field-data-arguments/source/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Field.lean:413:2: error(lean.unknownIdentifier): Unknown identifier `hfinal✝`
+FIELD_DATA_DIFF type actual-head=?m.281 expected-head=@Eq
+FIELD_DATA_ARGS actual=0 expected=3
+FIELD_DATA_ACTUAL ?m.281
+FIELD_DATA_EXPECTED (galoisRestriction K n).onH1
+    ((FundamentalGroupComparison.representedH1AddEquiv (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) hA hR (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ (finiteCoefficient K n))
+      (torsorExtClass P)) =
+  (classOf (Field.absoluteGaloisGroup K) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n))
+    ((galoisRestriction K n).onCocycles
+      (FundamentalGroupComparison.markedBasedCocycle (geometricPoint K)
+        (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) (Field.absoluteGaloisGroup.RootsOfUnity.Mu K n)
+        (pointMark K n) ⋯ Y (Torsor.representedSchemeAction (MultiplicativeGroup.rootsGroupScheme (Spec ↧K) n) P Y e)
+        t))
+FIELD_DATA_END reported=1 proof-pairs-skipped=0

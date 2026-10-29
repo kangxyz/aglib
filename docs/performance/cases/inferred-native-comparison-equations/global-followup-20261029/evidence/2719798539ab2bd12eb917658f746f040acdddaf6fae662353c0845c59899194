@@ -1,0 +1,31 @@
+{
+  "phase": "V33NativeOperationalPropositionInspection",
+  "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_guards": {
+    "Aglib/CategoryTheory/Functor/CopyObjRestriction.lean": "e6cd595f727539698609abb2ede1d9691a3b494337164a57da4048a673be04a6",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "5ab29b5478f311465cafa54ae92c84a1f1d83cf57007ae011ed8613a6527ba35",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "de7ca8da360c2e46e78ff742c6e01f00505861b319c917d7bb539420f5a181d0",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "87734308ef3fa292c242125ad7c0fb0b1d497c50632991b874da3d8fba4bce52"
+  },
+  "metadata": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/OperationalPropositionInspection-v33.json",
+  "metadata_sha256": "74b678bb6b39ba4a7cad2d77e5172886423aee5cb69ab50202213c4ea543bc4c",
+  "prefix_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/OperationalPropositionInspection-v33.lean",
+  "prefix_sha256": "af771a01a7a640de3f7f3942858c5c226c9c65ed478304836e0f973275b6c542",
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/global-proposition-inspection-v33-payload.py",
+  "payload_sha256": "ca6a7d3aea5e32d4b5ff00349b3f83d7125ac465f72ad134a1a1c730dc1e5f6c",
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "expected_native_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.Global.Restriction",
+  "expected_native_options": {
+    "autoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.longFile": 1500,
+    "warningAsError": true
+  },
+  "prior_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/recovery-global-v32-prefix-bb87efc9.json",
+  "prior_source_archive_sha256": "9d3b6488ec83df747cc461cda58a552292ccbe6074c1900d0ac524dda74b9ab9",
+  "boundary": "Fixed read-only diagnosis: remaining-budget counters and raw/zeta AST comparison without isDefEq, intentional named failure. No automatic production Global/endpoints even on a partial helper success. Production unchanged8773/de7/e6cd/5ab.",
+  "runtime": "Official native setup/full four options/default200000; stdout forwarded, no changed Lean arguments/resources."
+}

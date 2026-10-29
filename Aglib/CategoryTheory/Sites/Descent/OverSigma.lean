@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.Elements.SheafCondition
+
 public import Mathlib.CategoryTheory.Sites.Over
 public import Mathlib.CategoryTheory.Sites.IsSheafFor
 public import Mathlib.CategoryTheory.Yoneda
@@ -163,63 +165,12 @@ sieve of `Over.mk g` for every `g : Y ⟶ S`, then `overSigma P` is a sheaf for 
 lemma isSheafFor_overSigma {Y : C} {R : Sieve Y} (hY : IsSheafFor (yoneda.obj S) R.arrows)
     (hP : ∀ g : Y ⟶ S, IsSheafFor P ((Sieve.overEquiv (Over.mk g)).symm R).arrows) :
     IsSheafFor (overSigma P) R.arrows := by
-  intro x hx
-  let x₀ : FamilyOfElements (yoneda.obj S) R.arrows := fun Z t ht ↦ (x t ht).1
-  have hx₀ : x₀.Compatible := fun Z₁ Z₂ W a b t₁ t₂ h₁ h₂ fac ↦
-    congrArg Sigma.fst (hx a b h₁ h₂ fac)
-  obtain ⟨g, hg, hgu⟩ := hY x₀ hx₀
-  have hg' : ∀ ⦃Z : C⦄ (t : Z ⟶ Y) (ht : R t), t ≫ g = (x t ht).1 := fun Z t ht ↦
-    hg t ht
-  have hw : ∀ ⦃Z : Over S⦄ (b : Z ⟶ Over.mk g) (hb : R b.left),
-      𝟙 Z.left ≫ (x b.left hb).1 = Z.hom := fun Z b hb ↦ by
-    rw [Category.id_comp, ← hg' b.left hb]
-    simpa using Over.w b
-  let x' : FamilyOfElements P ((Sieve.overEquiv (Over.mk g)).symm R).arrows := fun Z b hb ↦
-    P.map (Over.homMk (𝟙 Z.left) (hw b ((Sieve.overEquiv_symm_iff _ _).1 hb)) :
-      Z ⟶ Over.mk (x b.left ((Sieve.overEquiv_symm_iff _ _).1 hb)).1).op
-      (x b.left ((Sieve.overEquiv_symm_iff _ _).1 hb)).2
-  have hx' : x'.Compatible := by
-    intro Z₁ Z₂ W c₁ c₂ b₁ b₂ h₁ h₂ fac
-    have h₁' := (Sieve.overEquiv_symm_iff _ _).1 h₁
-    have h₂' := (Sieve.overEquiv_symm_iff _ _).1 h₂
-    have fac' : c₁.left ≫ b₁.left = c₂.left ≫ b₂.left := congrArg CommaMorphism.left fac
-    have key : (⟨c₁.left ≫ (x b₁.left h₁').1, P.map (Over.homMk c₁.left rfl :
-        Over.mk (c₁.left ≫ (x b₁.left h₁').1) ⟶ Over.mk (x b₁.left h₁').1).op (x b₁.left h₁').2⟩ :
-        Σ g : W.left ⟶ S, P.obj (op (Over.mk g))) =
-        ⟨c₂.left ≫ (x b₂.left h₂').1, P.map (Over.homMk c₂.left rfl :
-        Over.mk (c₂.left ≫ (x b₂.left h₂').1) ⟶ Over.mk (x b₂.left h₂').1).op (x b₂.left h₂').2⟩ :=
-      hx c₁.left c₂.left h₁' h₂' fac'
-    have hW₁ : 𝟙 W.left ≫ c₁.left ≫ (x b₁.left h₁').1 = W.hom := by
-      rw [← hg' _ h₁', Category.id_comp, ← Category.assoc]
-      simpa using Over.w (c₁ ≫ b₁)
-    have hW₂ : 𝟙 W.left ≫ c₂.left ≫ (x b₂.left h₂').1 = W.hom := by
-      rw [← hg' _ h₂', Category.id_comp, ← Category.assoc]
-      simpa using Over.w (c₂ ≫ b₂)
-    dsimp only [x']
-    rw [map_map_homMk_id P c₁ _ _ hW₁, map_map_homMk_id P c₂ _ _ hW₂]
-    exact map_homMk_eq_of_overSigma_eq P key W (𝟙 _) hW₁ hW₂
-  obtain ⟨φ, hφ, hφu⟩ := hP g x' hx'
-  have hamalg : x.IsAmalgamation ⟨g, φ⟩ := fun Z t ht ↦ by
-    refine (overSigma_map_apply P _ _).trans ?_
-    refine (sigma_over_ext P (hg' t ht) ?_).trans rfl
-    exact hφ (Over.homMk t rfl : Over.mk (t ≫ g) ⟶ Over.mk g)
-      ((Sieve.overEquiv_symm_iff _ _).2 ht)
-  refine ⟨⟨g, φ⟩, hamalg, fun z hz ↦ ?_⟩
-  obtain ⟨g', φ'⟩ := z
-  obtain rfl : g' = g := hgu g' (fun Z t ht ↦ congrArg Sigma.fst (hz t ht))
-  obtain rfl : φ' = φ := hφu φ' (fun Z b hb ↦ by
-    have hb' := (Sieve.overEquiv_symm_iff _ _).1 hb
-    have hzb : (⟨b.left ≫ g', P.map (Over.homMk b.left rfl :
-        Over.mk (b.left ≫ g') ⟶ Over.mk g').op φ'⟩ : Σ g : Z.left ⟶ S, P.obj (op (Over.mk g))) =
-        x b.left hb' := hz b.left hb'
-    have h₁ : 𝟙 Z.left ≫ b.left ≫ g' = Z.hom := by simpa using Over.w b
-    have := map_homMk_eq_of_overSigma_eq P hzb Z (𝟙 _) h₁ (hw b hb')
-    rw [map_map_eq] at this
-    have e : (Over.homMk (𝟙 Z.left) h₁ : Z ⟶ Over.mk (b.left ≫ g')) ≫
-        (Over.homMk b.left rfl : Over.mk (b.left ≫ g') ⟶ Over.mk g') = b := by
-      ext; simp
-    rw [e] at this
-    exact this)
-  rfl
+  let Q := (Presheaf.ElementsSite.representedElementsToOver S).op ⋙ P
+  apply Presheaf.ElementsSite.isSheafFor_of_sigma_equiv (yoneda.obj S) Q
+    (overSigma P) (fun Y => Equiv.refl _) ?_ hY ?_
+  · intro Y Z f z
+    rfl
+  · intro g
+    exact Presheaf.ElementsSite.representedElements_isSheafFor S P g (hP g)
 
 end CategoryTheory.Presieve

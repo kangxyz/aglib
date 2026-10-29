@@ -1,0 +1,47 @@
+{
+  "phase": "coordinate-value-formation-fixed-diagnostic",
+  "diagnostics": [
+    {
+      "name": "CoordinateValueFormation",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CoordinateValueFormation.lean",
+      "source_sha256": "9b5d8dca5d9e5ad930f557b68e3269e9b878c9617938173791602bf5982f8e0d",
+      "metadata_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/represented-relative-test-core-staging/diagnostics/CoordinateValueFormation.json",
+      "metadata_sha256": "030f67c0a8aa3cafcdcc98cc47e4b352a9773d39d03bbe246a14a91974715eed",
+      "probes": [
+        "representedRestrictionSourceCoordinatesIso_hom_app_formation",
+        "representedRestrictionTargetCoordinatesIso_hom_app_formation",
+        "constantPushforwardRestrictionIso_hom_eq_etaleBaseChangeComponent_formation",
+        "constantPushforwardRestrictionIso_eq_etaleBaseChangeComponent_formation"
+      ],
+      "declared_basis": "Frozen v10 Global5634; current nativeRepbbe8 and lower38b4 actual passes; original imports/pins/options. Only known unused Category.assoc removed, no equation/model rewrite."
+    }
+  ],
+  "module_scope": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.EtaleDirectImageMate"
+  ],
+  "payload": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/lane-a/coordinate-value-formation-payload.py",
+  "payload_sha256": "906d5c8f2772ca180b94e85105f6199047dc2c15e02d1c9c390f4ce92939eb28",
+  "previous_actual_source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/source-coherence-caller1-5fd97a31.json",
+  "boundary": "Exit0 would show proposition formation only; no original coordinate value equality, delta/kappa proof or native Global pass is inferred.",
+  "execution": "normal r5tools phase; no-build prepared import readiness, fixed compressed input restored byte-identically into run scratch, managed LEAN, no N source write/budget change",
+  "session_id": 15887,
+  "phase_state": "raw-scratch coordinate formation0; native-option-equivalence withdrawn; no automatic replay",
+  "updated_utc": "2026-10-28T11:05:00.414333+00:00",
+  "run": "remote-b3b1c7fb64f1440896052e3cc7f0b6f1",
+  "source": "0e76420af5b24b975cf8e4b10d74a6782c1e7f98c6c72e0d2b3a95e9f226da17",
+  "source_archive": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/lane-a/coordinate-value-formation-b3b1c7fb.json",
+  "observed_declared_basis_guards": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/Global/Restriction.lean": "5634b442fefe42102ba7f079c0f2d896ae65324d1ea820d8fc6a52269aa4f14b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Constructible/FiniteCogenerators/AffineIntegralConstants/RepresentedSections.lean": "bbe8c64d2f1b8ec1068e3307fab859db43fbb657a24afe27d6cb8a78c1f0d041",
+    "Aglib/CategoryTheory/Over/RelativeTests.lean": "38b4f078467f923bef991884dcba381bcbbc1016e2c3c811a9ffd9b4f61221b0"
+  },
+  "native_exit": 0,
+  "diagnostic_exit": 0,
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-b3b1c7fb64f1440896052e3cc7f0b6f1/receipt.json",
+  "observed_diagnostics": [],
+  "native_library_options_forwarded": false,
+  "native_option_equivalence_withdrawn": true,
+  "raw_option_evidence": "Managed LEAN resource wrapper used but scratch argv had no native module.setup or per-library -D flags. Full raw effective option map was not separately recorded; G96 was observed as warning. Source-local options remain exactly those in each frozen input.",
+  "coverage_correction": "Preserve actual raw result/source/argv and conditional utility; do not infer equivalent native-option formation or proof acceptance. No old-input replay requested by Root."
+}

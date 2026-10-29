@@ -1,0 +1,22 @@
+{
+  "contract": "Independent ordinary affected mathematical/source-map review of the fixed final-family candidate; no compiler gate or formal established status",
+  "candidate": "candidate-v10/READY.json",
+  "ready_sha256": "10147d24a66c3335af0a0b3cb8aaa33eb79725943bc9417b37a3fc802bb09460",
+  "fixed_sources": {
+    "Global.Restriction": "5634b442fefe42102ba7f079c0f2d896ae65324d1ea820d8fc6a52269aa4f14b",
+    "AffineIntegralConstants.RepresentedSections": "bbe8c64d2f1b8ec1068e3307fab859db43fbb657a24afe27d6cb8a78c1f0d041",
+    "Over.RelativeTests": "38b4f078467f923bef991884dcba381bcbbc1016e2c3c811a9ffd9b4f61221b0",
+    "Functor.CopyObjRestriction": "e4ed9e665ee9e72fa5e349edbfeabf410c4b2f47f60261e10b0f84dc121429bc"
+  },
+  "retained_math": "The complete fixed-v6 δκ hom/Iso derivation was independently accepted. Preserve that exact report/history; later formal encoding/constructor changes are named deltas, not relabelled v6 coverage.",
+  "before_after": "before/ + initial-identity.json; immutable candidate-v6, candidate-v8 and candidate-v10 afterimages",
+  "source_correspondence": "CORRESPONDENCE-v6.md, CORRESPONDENCE-v9.md, and v10 READY source_only_repair",
+  "affected_obligations": [
+    "Lower actual mapPullbackAdj forward/inverse projection laws use the same original mkOfHomEquiv and counit, and pasting retains the same selected test maps in independent category/Hom/value worlds",
+    "Native private raw variable-category cancellation consumes original whole comparison identities and independently proved native composition/unit/equality-transport laws; no final desired square or unit equation is assumed",
+    "The new named constantRepresentedCoefficientIso is exactly the old three-factor inner iso, and old DirectImageIso/its hom/inverse and original unit keep the same maps and old55 public headers",
+    "Inferred actual coordinate component/value equations and literal shared coefficient heads retain the complete original δκ argument via SAME inverseImageAdjunction g HomEquiv/unit, followed by Iso.ext"
+  ],
+  "compiler_boundary_at_request": "CopyObj e4ed prior matching PASS; Relative38b4 PASS5.9s on A509574/sourceead92; new Representedbbe8 PASS16s in healthy A2d987/source544b; Global5634 not invoked at last runtime observation. Formation55c4 is diagnostic-only, not a Global proof/pass. Final native result still author-owned/pending.",
+  "no_extra_actions": "Read-only review, no helper/source/runtime/Git writes or additional check/replay. Update only the already owning review pair if principal assigns."
+}

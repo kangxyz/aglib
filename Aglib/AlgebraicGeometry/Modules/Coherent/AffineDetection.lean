@@ -7,6 +7,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Coherent.Restriction
+public import Aglib.AlgebraicGeometry.Modules.Stalk.Basic
 /-! # Detecting zero coherent sheaves on affine charts
 
 A coherent sheaf vanishes if its actual restrictions to all affine open

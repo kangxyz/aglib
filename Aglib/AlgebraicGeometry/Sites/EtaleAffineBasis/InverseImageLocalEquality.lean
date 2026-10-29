@@ -29,18 +29,8 @@ instance inverseImagePresentationMap_isLocallyInjective :
   let : EssentiallySmall.{u + 1} S.Etale := essentiallySmallSelf.{0, u, u + 1} S.Etale
   let : S.smallEtaleTopology.WEqualsLocallyBijective AddCommGrpCat.{u + 1} :=
     .ofEssentiallySmall S.smallEtaleTopology
-  let e := (Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} X.smallEtaleTopology S.smallEtaleTopology).symm.app F
-  have : IsIso e.hom.hom :=
-    Iso.isIso_hom ((sheafToPresheaf S.smallEtaleTopology AddCommGrpCat.{u + 1}).mapIso e)
-  let h₂ : Presheaf.IsLocallyInjective S.smallEtaleTopology e.hom.hom :=
-    inferInstance
-  let h₁ : Presheaf.IsLocallyInjective S.smallEtaleTopology
-      (toSheafify S.smallEtaleTopology (inverseImagePresentation f F)) :=
-    (S.smallEtaleTopology.W_toSheafify (inverseImagePresentation f F)).isLocallyInjective
-  exact @Presheaf.isLocallyInjective_comp _ _ _ _ _ _ _ _ S.smallEtaleTopology
-    _ _ _
-    (toSheafify S.smallEtaleTopology (inverseImagePresentation f F)) e.hom.hom h₁ h₂
+  exact Functor.sheafPullbackConstruction.isLocallyInjective_presentationMap
+    (siteBaseChange f) X.smallEtaleTopology S.smallEtaleTopology F
 
 /-- Equality in the original inverse image is witnessed by finite affine local
 equalities in its native Kan presentation. -/
@@ -78,13 +68,6 @@ theorem exists_common_inverseImagePresentation_representative (W : S.Etale)
       (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
     preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u + 1}
       (CategoryTheory.forget AddCommGrpCat.{u + 1})
-  let hc := Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit G.op F.obj (op W)
-  obtain ⟨T, p, q, hpq⟩ := (Types.FilteredColimit.isColimit_eq_iff _
-    (isColimitOfPreserves (CategoryTheory.forget AddCommGrpCat.{u + 1}) hc)
-    (i := CostructuredArrow.mk a.op) (j := CostructuredArrow.mk b.op)
-    (xi := s) (xj := t)).mp h
-  refine ⟨T.left.unop, T.hom.unop, p.left.unop, q.left.unop, ?_, ?_, hpq⟩
-  · exact congrArg Quiver.Hom.unop (CostructuredArrow.w p)
-  · exact congrArg Quiver.Hom.unop (CostructuredArrow.w q)
+  exact Functor.exists_common_lan_representative G F.obj W U V a b s t h
 
 end AlgebraicGeometry.Scheme.EtaleAffineBasis

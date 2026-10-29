@@ -1,0 +1,26 @@
+{
+  "status": "ONE provisional R-only source candidate, pending corrected CLOSED probe. Not a production selection/pass.",
+  "recorded_at_utc": "2026-10-26T20:55:58.242860+00:00",
+  "native_input": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "native_input_sha256": "2083f9a19bbc86763080cb3539166752b739ba54b4e10f087080b9d83b8e18fb",
+  "candidate_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/section-family-boundary-probe/candidate-map-equality/after/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean",
+  "candidate_sha256": "d5550c87c483ad794b02df2e07931c11bb2e5882d54adce1dbe52df0c791c166",
+  "delta_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/associated-bundle-core-staging/section-family-boundary-probe/candidate-map-equality/candidate.patch",
+  "delta_sha256": "691793486d31cf430f12c2518450e473b722433c17ae6a2195c35d18f8a8bf69",
+  "probe_frozen_sha256": "3fd6981aebbae927546414007511ec342534f0e01a7e0924643b08db7c39b674",
+  "request_frozen_sha256": "3a4785e0f4b0e3a8c6e4cd7bd2feeda00be5678523e9b19523bcd837781db2a3",
+  "single_change_route": "Relocate the exact existing private presheafHom_map_eq_pullHom from498-504 to the same AssociatedBundle owner scope before Construction; reuse it verbatim. Replace only eager change in sectionFamily_natural by named fully typed hview and Eq.trans; final original relation/self-unit cancellation remains.",
+  "literal_bridge": {
+    "original_lemma_type": "(lineBundles.presheafHom M N).map ((Etale.forget S).map a).op g = pullHom g a.left V.hom V.hom (Over.w a) (Over.w a).",
+    "instantiation": "S=X; N=unitObject X; a=f.unop:V.unop to U.unop; g=c< U.unop,s >. Actual rawPresheaf X M is (Etale.forget X).op composed with that SAME presheafHom.",
+    "head_normalization": "Functor composition map and the opposite-functor map reduce one layer to the exact left side of the existing lemma; no pullback object, lineBundles implementation or chosen descended object is reconstructed. No additional Functor.comp_map equality is introduced unless actual corrected diagnostics require it.",
+    "explicit_typed_endpoints": "hview and hrestrict both pin F=lineBundles, M1=M, M2=unitObject X and source arrows U.unop.hom. Their RHS/LHS coincide literally, so Eq.trans reaches the original NaturalFamily component via the existing sectionFamily beta view.",
+    "why_no_desired_nat_assumption": "hview is proved by existing rfl map lemma; hrestrict still derives from actual hr and hu with the original identity/transition rules. No global frame or naturality conclusion is supplied as a premise."
+  },
+  "expected_boundary": "Avoid asking change to discover native H.map/pullHom conversion through unconstrained dependent Hom/pseudofunctor arguments. This is a source-supported candidate, not a measured cause or speedup. Corrected probe must establish where work occurs first.",
+  "evidence_correction": "Terminated56a9 used erroneous -t4 trust override; it yields no correct-settings probe result or timing. Earlier b85 had zero frontends. Corrected same source is running with -j4 -M12800 and default trust, per principal; no closed result available to this author.",
+  "scope_preserved": "Original M,c,u,ChartRelations,self-unit proof, native restriction maps/units, mathematical hypotheses, package budgets/flags, imports and N3. No additional construction/model/site/assumption or new probe.",
+  "native_mutations": false,
+  "compiler_run": false,
+  "git_actions": false
+}

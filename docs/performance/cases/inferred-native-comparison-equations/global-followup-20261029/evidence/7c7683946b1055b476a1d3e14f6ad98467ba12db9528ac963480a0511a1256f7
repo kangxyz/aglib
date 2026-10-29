@@ -1,0 +1,45 @@
+# Original canonical versus coordinate comparison: active derivation
+
+This extends the principal's direction after fixed v3. It is separate from the accepted implemented-coordinate v3 milestone and v4 encoding repair. No new native assertion or hypothesis has been added yet.
+
+Let f = Y.hom, q = pullback.fst g f, p = pullback.snd g f, with h = pullback.condition : q >> g = p >> f. Let r = pullback.snd f g, and s : Over.mk q ≅ Over.mk r be the original pullbackSymmetryOverIso. At each base V write H_V for the original ConstantFinite.representation B V.group and ρ_V for its original sheaf representation iso.
+
+For a base morphism k write b_k(H) = representedSheafBaseChangeIso k H, c_k = inverseImageConstantIso k at ConstantFinite.value B, and a_k = constantGroupBaseChangeIso k B. Its exact represented-sheaf normalization is forced by its original definition:
+
+b_k(H_base).hom >> representedSheafMap(a_k.hom) >> ρ_source.hom
+  = inverseImage(k).map(ρ_base.hom) >> c_k.hom.                 (N)
+
+This is not an extra compatibility premise: representedSheafMap_preimage and the definition of representedGroupIsoOfSheafIso prove it by cancellation.
+
+The actual group square t is the native Over.pullbackSquareIso f q g p h lifted by Functor.mapGrpNatIso and the native mapGrpCompIso comparisons. Its underlying Over arrow is exactly the original square component. The needed group equation is
+
+(PB_q).mapGrp.map(a_g.hom) >> a_q.hom
+  = t.hom >> (PB_p).mapGrp.map(a_f.hom) >> a_p.hom.             (G)
+
+There is a route from existing source facts to (G), without geometry or another representation:
+
+1. Construct the actual group compositor u_(k,l) from native mapGrpCompIso.symm followed by mapGrpNatIso(Over.pullbackComp l k).symm. Its underlying hom is exactly (Over.pullbackComp l k).inv.app H.X.
+2. Apply existing RepresentedBaseChange.iso_comp_of_hom to this actual u. Equality transport for the base map is proved by subst; it is the original eqToIso, not a newly selected endpoint comparison.
+3. These two composition laws and equality transport yield the represented-sheaf square
+
+inverseImageSquareIso(f,q,g,p,h).hom.app(rep H_X)
+  >> L_p(b_f(H_X).hom) >> b_p(PB_f H_X).hom
+ = L_q(b_g(H_X).hom) >> b_q(PB_g H_X).hom >> repMap(t.hom).   (R)
+
+Indeed expand both native square/compositor definitions, use the composition law on the p/f and q/g sides and the equality-transport equation in between, and cancel the original group compositor with its own inverse. No unproved composition datum is supplied.
+4. Apply representedSheafHomEquiv.injective to (G), precompose by the original iso L_q(b_g.hom) >> b_q.hom, and postcompose by ρ_P.hom. Rewrite representedSheafBaseChangeIso_naturality and (N). The left side becomes
+
+L_q(L_g(ρ_X.hom)) >> L_q(c_g.hom) >> c_q.hom.
+
+The right side becomes
+
+inverseImageSquareIso(...).hom.app(rep H_X)
+  >> L_p(L_f(ρ_X.hom)) >> L_p(c_f.hom) >> c_p.hom.
+
+Naturality of the original inverseImageSquareIso at ρ_X and constant-square coherence make them equal. The latter is derived directly from existing inverseImageComp_constant plus equality transport. An underived statement already occurs as inverseImageSquareIso_constant in Derived/BaseChange.lean:207–230, but this task must not import that higher/derived owner merely for it. Its short existing argument can be instantiated privately here from the underived comp laws; no new derived model is introduced.
+
+5. Evaluate the canonical etale exchange after the actual represented coefficient comparisons. The imported siteEtaleDirectImageRestrictionIso_forget gives the original Over.pullbackPostcomposeIso f g component; inverseImageEtaleIso_unit and representedEtaleRestrictionIso_original replace the inverse-image comparison only by the same actual restriction arrow. The finite coefficient normalization is (N), and (G) identifies the two original coefficient transports.
+6. The last relative-object symmetry in κ is the original constantPushforwardFunctor map at s.inv.op. Its coordinate value is the actual relative-test lift induced by s.inv. The proved restrictionSchemeIso_hom_eq_pasting says exactly that this lift followed by the imported opposite-order pasting is the selected symmetry–pasting–symmetry component used in δ. Its two projection equations establish equality of the underlying arrows.
+7. Consequently the two maps, after applying the SAME inverseImageAdjunction g HomEquiv, both give the original site-restriction/counit arrow followed by the original coefficient map. This is the precise original-unit equation η_A >> directImage(g).map δ = η_A >> directImage(g).map κ; injectivity of that HomEquiv gives δ = κ.
+
+Current status: the above is the active algebraic route and supporting native facts have been read, including complete represented iso_comp_of_hom and coefficient-unit composition proofs, inverseImageComp_constant, directImage exchange horizontal-unit formula, native mapGrpCompIso/mapGrpNatIso and the actual small-site exchange. It does not yet constitute a checked Lean proof of (R), (G), or the final component equality. The remaining work is those explicit derivations/encoding, not an unspecified geometric assumption. v3/v4 original maps remain unmodified while this extension is developed.

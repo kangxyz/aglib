@@ -25,24 +25,19 @@ variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   (η : InjectiveSystem.System.Hom (diagramAdjunctionData X) F Q)
   (hη : ∀ i, Mono (η.app i)) (n : ℕ)
 
-/-- The original varying-site fragment Hⁿ(Q) → Hⁿ(coker η) → Hⁿ⁺¹(F). -/
-def diagramCohomologyConnectingComplex : ShortComplex (I ⥤ AddCommGrpCat.{e}) where
-  f := diagramCohomologyNatTrans X n
-    (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η)
-  g := diagramCohomologyConnecting X η hη n
-  zero := by
-    apply NatTrans.ext
-    funext i
-    exact (Sheaf.H.longSequence_exact
-      (diagramCokernelComplex_shortExact X η hη i) n (n + 1) rfl).zero 1
+attribute [local instance] diagramLeftAdditive diagramLeftPreservesFiniteLimits
+  diagramLeftPreservesFiniteColimits diagramIntegerCartesian
 
-/-- Exactness is the original stage cohomology theorem at every index. -/
+/-- The original varying-site fragment Hⁿ(Q) → Hⁿ(coker η) → Hⁿ⁺¹(F). -/
+abbrev diagramCohomologyConnectingComplex : ShortComplex (I ⥤ AddCommGrpCat.{e}) :=
+  InjectiveSystem.representedCohomologyConnectingComplex (diagramAdjunctionData X) η
+    (diagramIntegerSystem X) hη n
+
+/-- Exactness is the native Ext sequence at every original index. -/
 lemma diagramCohomologyConnectingComplex_exact :
-    (diagramCohomologyConnectingComplex X η hη n).Exact := by
-  apply ShortComplex.exact_of_evaluation
-  intro i
-  exact Sheaf.H.longSequence_exact₃'
-    (diagramCokernelComplex_shortExact X η hη i) n (n + 1) rfl
+    (diagramCohomologyConnectingComplex X η hη n).Exact :=
+  InjectiveSystem.representedCohomologyConnectingComplex_exact (diagramAdjunctionData X) η
+    (diagramIntegerSystem X) hη n
 
 variable [HasColimitsOfShape I AddCommGrpCat.{e}]
 
@@ -58,37 +53,44 @@ private abbrev exactCohomologyFilteredColimits [IsFiltered I] :
 lemma diagramCohomologyConnectingComplex_colimit_exact [IsFiltered I] :
     ((diagramCohomologyConnectingComplex X η hη n).map colim).Exact := by
   let : HasExactColimitsOfShape I AddCommGrpCat.{e} := exactCohomologyFilteredColimits
-  exact (diagramCohomologyConnectingComplex_exact X η hη n).map colim
+  exact InjectiveSystem.representedCohomologyConnectingComplex_colimit_exact
+    (diagramAdjunctionData X) η (diagramIntegerSystem X) hη n
 
 variable (c : Cocone X) [HasExt.{e} (AbelianSheaf.{u, u + 1} c.pt.unop)]
   [IsFiltered I] [HasColimitsOfShape I AddCommGrpCat.{u + 1}]
 
 /-- The original corresponding fragment on the actual limit coefficients. -/
-def limitCohomologyConnectingComplex : ShortComplex AddCommGrpCat.{e} :=
-  ShortComplex.mk
-    (AddCommGrpCat.ofHom (Sheaf.H.map (coneCoefficientColimitCokernelComplex X c η).g n))
-    (AddCommGrpCat.ofHom
-      (Sheaf.H.δ (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
-        n (n + 1) rfl))
-    ((Sheaf.H.longSequence_exact
-      (coneCoefficientColimitCokernelComplex_shortExact X c η hη) n (n + 1) rfl).zero 1)
+abbrev limitCohomologyConnectingComplex : ShortComplex AddCommGrpCat.{e} :=
+  representedExtConnectingComplex
+    ((constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
+      (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (coneCoefficientColimitCokernelComplex_shortExact X c η hη) n
 
 omit [∀ i, HasExt.{e} (AbelianSheaf.{u, u + 1} (X.obj i).unop)]
   [HasColimitsOfShape I AddCommGrpCat.{e}] in
 lemma limitCohomologyConnectingComplex_exact :
     (limitCohomologyConnectingComplex X η hη n c).Exact :=
-  Sheaf.H.longSequence_exact₃'
-    (coneCoefficientColimitCokernelComplex_shortExact X c η hη) n (n + 1) rfl
+  representedExtConnectingComplex_exact _
+    (coneCoefficientColimitCokernelComplex_shortExact X c η hη) n
 
 /-- The three literal comparison maps form a morphism between the original exact rows. -/
 def diagramCohomologyConnectingComparison :
     (diagramCohomologyConnectingComplex X η hη n).map colim ⟶
-      limitCohomologyConnectingComplex X η hη n c where
-  τ₁ := schemeLimitCohomologyComparison X c Q n
-  τ₂ := schemeLimitCohomologyComparison X c (diagramCokernelSystem X η) n
-  τ₃ := schemeLimitCohomologyComparison X c F (n + 1)
-  comm₁₂ := (schemeLimitCohomologyComparison_naturality X c
-    (InjectiveSystem.System.cokernelπ (diagramAdjunctionData X) η) n).symm
-  comm₂₃ := (schemeLimitCohomologyComparison_connecting X η hη n c).symm
+      limitCohomologyConnectingComplex X η hη n c :=
+  InjectiveSystem.representedCohomologyConnectingComparison
+    (B := AbelianSheaf.{u, u + 1} c.pt.unop)
+    (diagramAdjunctionData X) η (diagramIntegerSystem X) hη n
+    (fun i => inverseImage (c.ι.app i).unop)
+    ((constantSheaf (Scheme.smallEtaleTopology c.pt.unop) AddCommGrpCat.{u + 1}).obj
+      (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (diagramIntegerConePrecomp X c)
+    (coneCoefficientColimitCokernelComplex_shortExact X c η hη)
+    (diagramCokernelLimitLeg X η c)
+    (schemeLimitCohomologyComparison X c Q n)
+    (schemeLimitCohomologyComparison X c (diagramCokernelSystem X η) n)
+    (schemeLimitCohomologyComparison X c F (n + 1))
+    (ι_schemeLimitCohomologyComparison X c Q n)
+    (ι_schemeLimitCohomologyComparison X c (diagramCokernelSystem X η) n)
+    (ι_schemeLimitCohomologyComparison X c F (n + 1))
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

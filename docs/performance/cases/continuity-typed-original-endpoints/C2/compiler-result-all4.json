@@ -1,0 +1,178 @@
+{
+  "family": "C2",
+  "version": "v8 final source vector",
+  "status": "All four assigned modules have exact source-bound native frontend passes",
+  "source_matrix": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+      "qualified_name": "Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.RepresentedDiagram.ExactSequences",
+      "sha256": "5c73f898c7e240f534f20f33ce628387901c59ec62ddd89f06ff7110c1c950be",
+      "native_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v8/Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/RepresentedDiagram/ExactSequences.lean",
+      "run": "remote-e55fbe2f23ba424681e50f9ecbcccc3c",
+      "source_content_sha256": "8b43afd95d07964ede012580562b0c6bf195a3d3a859e7d26bb0bf87c2ef5d77",
+      "source_manifest": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C2genericv6-cyclev3-extendedv2-e55fbe2f.json",
+        "sha256": "f59f1450ce5c4db7ec4e122520f3bcfc90b8dd094d0daa9192cda5f7f8dfceb6",
+        "bytes": 1030299
+      },
+      "receipt": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e55fbe2f23ba424681e50f9ecbcccc3c/receipt.json",
+        "sha256": "5552a5e13bb85aa0592f8a61856c60be9294127e8ab48ec472bf8c6d39753735",
+        "bytes": 14746
+      },
+      "build_log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e55fbe2f23ba424681e50f9ecbcccc3c/build.log",
+        "sha256": "9a3f1b6e4c62f87586420088f7e0ee29ded83d4eb91c2e3d0414df7985f35adc",
+        "bytes": 4586
+      },
+      "compiler_events": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-e55fbe2f23ba424681e50f9ecbcccc3c/compiler-events.jsonl",
+        "sha256": "d9ab15b70822099eaa9687d3f15adc1a4c583193a7279cd34f69ac49f3bc1275",
+        "bytes": 9550
+      },
+      "frontend_exit_code": 0,
+      "reported_module_seconds": 10,
+      "frontend_elapsed_seconds": 9.985127791762352,
+      "shared_run_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+      "qualified_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCokernelTransitions",
+      "sha256": "318544c51a055a1d0b8c05aa7aa047086ef52c32edccf1dce8d02e8839835c8d",
+      "native_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCokernelTransitions.lean",
+      "run": "remote-960222c105fb4095b940a5117ede023c",
+      "source_content_sha256": "a253e6ed716136ec332947626d58cee94c46278bf53a7aaecdba9014b4938d09",
+      "source_manifest": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-nativeconstancy-v6-C2-resize-960222c1.json",
+        "sha256": "e8610e9d4863dfcd2df8da4ac198e1b789829a6ff2385c4ec26b6d0f8716888b",
+        "bytes": 1030943
+      },
+      "receipt": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/receipt.json",
+        "sha256": "ddbdc8e43a0445270d33bf84e948009daf2821a4cc994496bf126b68d08906ce",
+        "bytes": 16816
+      },
+      "build_log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/build.log",
+        "sha256": "bf41a0f82d15fed3cfa99b2cf6f09a85006eded0d14f64b7c82a95c5eb3d4e15",
+        "bytes": 11757
+      },
+      "compiler_events": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-960222c105fb4095b940a5117ede023c/compiler-events.jsonl",
+        "sha256": "b22a458f50abbad46266fe57cacc52b6d64064b542b0970b8fe921af76251cf0",
+        "bytes": 43879
+      },
+      "frontend_exit_code": 0,
+      "reported_module_seconds": 6.2,
+      "frontend_elapsed_seconds": 5.707357540726662,
+      "shared_run_exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+      "qualified_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting",
+      "sha256": "58c287bbb56dcca4f59a9f437be634f77167f46322d808ed5d7fb660cf558321",
+      "native_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyConnecting.lean",
+      "run": "remote-d428d60042ce45b8abdf7914143ee304",
+      "source_content_sha256": "56d823510a95e073522f036d1163283d30ee7c7ea07b205c8dbed06c55acadf6",
+      "source_manifest": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C2v8-normalizationv2-d428d600.json",
+        "sha256": "8123ed7c733d03e1fbcb0c2bcc07c2d4bfe8e97708ac119a8e0745044b84e16e",
+        "bytes": 1034049
+      },
+      "receipt": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/receipt.json",
+        "sha256": "0e240eaeab63c845e680b59c9a1b2d8304c77a11c77c25241f3dd48d63ec0312",
+        "bytes": 13563
+      },
+      "build_log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/build.log",
+        "sha256": "2b0a17877a5b79b4d79b16526119be75c9f946d69a234f0c7a2a9e73622bdb02",
+        "bytes": 358
+      },
+      "compiler_events": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/compiler-events.jsonl",
+        "sha256": "3436cb61a70276eeafc991451f58cbcef5fa546dfeb6ee06a45320352cca22fa",
+        "bytes": 7491
+      },
+      "frontend_exit_code": 0,
+      "reported_module_seconds": 118,
+      "frontend_elapsed_seconds": 117.97512510418892,
+      "shared_run_exit_code": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+      "qualified_name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyExact",
+      "sha256": "680af1fe87100eb9f94c62f330f1c0faca7bdfd00218ccd583a854e4defc7b81",
+      "native_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+      "afterimage": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/continuity-ext-exact-sequences-staging/versions/v8/Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramCohomologyExact.lean",
+      "run": "remote-d428d60042ce45b8abdf7914143ee304",
+      "source_content_sha256": "56d823510a95e073522f036d1163283d30ee7c7ea07b205c8dbed06c55acadf6",
+      "source_manifest": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/incremental-C2v8-normalizationv2-d428d600.json",
+        "sha256": "8123ed7c733d03e1fbcb0c2bcc07c2d4bfe8e97708ac119a8e0745044b84e16e",
+        "bytes": 1034049
+      },
+      "receipt": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/receipt.json",
+        "sha256": "0e240eaeab63c845e680b59c9a1b2d8304c77a11c77c25241f3dd48d63ec0312",
+        "bytes": 13563
+      },
+      "build_log": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/build.log",
+        "sha256": "2b0a17877a5b79b4d79b16526119be75c9f946d69a234f0c7a2a9e73622bdb02",
+        "bytes": 358
+      },
+      "compiler_events": {
+        "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-d428d60042ce45b8abdf7914143ee304/compiler-events.jsonl",
+        "sha256": "3436cb61a70276eeafc991451f58cbcef5fa546dfeb6ee06a45320352cca22fa",
+        "bytes": 7491
+      },
+      "frontend_exit_code": 0,
+      "reported_module_seconds": 95,
+      "frontend_elapsed_seconds": 94.63353477418423,
+      "shared_run_exit_code": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 2,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 32768,
+        "threads": 4
+      }
+    }
+  ],
+  "retention_boundary": "Generic5c73 and Cokernel3185 passes retained at identical current bytes; only uncovered Connecting58c2 and Exact680a were explicitly checked in final d428. Earlier mixed shared-run exit codes do not erase own exit0 frontends.",
+  "coverage": "Native compilation and enabled command diagnostics at actual assigned modules only. No extra root, profile, replay, standalone lint/test/axiom audit or separate downstream validation added.",
+  "remaining_own_compiler_gap": null
+}

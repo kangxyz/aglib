@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Basic
+public import Aglib.AlgebraicGeometry.Sites.EtaleTopos
 public import Mathlib.CategoryTheory.Sites.Pullback
 public import Mathlib.AlgebraicGeometry.Limits
 public import Aglib.CategoryTheory.Functor.Flat
@@ -31,39 +32,6 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 universe u v
-
-/-- Actual scheme pullback on the small étale categories. -/
-abbrev siteBaseChange {X S : Scheme.{u}} (f : S ⟶ X) : X.Etale ⥤ S.Etale :=
-  MorphismProperty.Over.pullback @Etale ⊤ f
-
-instance {X S : Scheme.{u}} (f : S ⟶ X) :
-    PreservesFiniteLimits (siteBaseChange f) := by
-  exact inferInstanceAs (PreservesFiniteLimits (MorphismProperty.Over.pullback (@Etale :
-    MorphismProperty Scheme.{u}) ⊤ f))
-
-/-- Base change carries small-étale covering sieves to covering sieves. -/
-theorem siteBaseChange_coverPreserving {X S : Scheme.{u}} (f : S ⟶ X) :
-    CoverPreserving (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-      (siteBaseChange f) where
-  cover_preserve {U} {R} hR := by
-    apply Functor.mem_restrictedTopology_of_functorPushforward_mem
-    rw [← Sieve.functorPushforward_comp]
-    change R.functorPushforward
-      (MorphismProperty.Over.forget @Etale ⊤ X ⋙ CategoryTheory.Over.pullback f)
-        ∈ (Scheme.etaleTopology.over S) _
-    rw [Sieve.functorPushforward_comp]
-    apply (CategoryTheory.GrothendieckTopology.coverPreserving_overPullback Scheme.etaleTopology
-      f).cover_preserve
-    exact (Functor.coverPreserving_restrictedTopology
-      (MorphismProperty.Over.forget @Etale ⊤ X) (Scheme.etaleTopology.over X)).cover_preserve hR
-
-/-- Actual base change is a continuous morphism of small étale sites. -/
-instance {X S : Scheme.{u}} (f : S ⟶ X) :
-    (siteBaseChange f).IsContinuous (Scheme.smallEtaleTopology X)
-      (Scheme.smallEtaleTopology S) := by
-  let := flat_of_preservesFiniteLimits (siteBaseChange f)
-  exact Functor.isContinuous_iff_coverPreserving.mpr
-    (siteBaseChange_coverPreserving f)
 
 /-- Actual inverse image on abelian sheaves, constructed as sheafification of
 left Kan extension, in a value universe large enough for this site. -/

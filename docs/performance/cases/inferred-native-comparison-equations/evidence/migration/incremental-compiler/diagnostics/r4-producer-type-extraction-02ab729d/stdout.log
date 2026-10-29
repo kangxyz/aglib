@@ -1,0 +1,167 @@
+PRODUCER AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap_underlying levelParams=[`u, `wMX, `wMS, `wMX', `wMS', `wAX, `wAS, `wAX', `wAS'] rawTypeNodes=1584
+PRODUCER_BINDER index=0 name=Λ binderInfo=Lean.BinderInfo.default typeNodes=1 type=(sort Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)))
+PRODUCER_BINDER index=1 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3 binderInfo=Lean.BinderInfo.instImplicit typeNodes=3 type=((const Ring universes=[Lean.Level.succ (Lean.Level.param `u)]) argc=1 [0:(fvar Λ)])
+PRODUCER_BINDER index=2 name=X binderInfo=Lean.BinderInfo.implicit typeNodes=1 type=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+PRODUCER_BINDER index=3 name=S binderInfo=Lean.BinderInfo.implicit typeNodes=1 type=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+PRODUCER_BINDER index=4 name=X' binderInfo=Lean.BinderInfo.implicit typeNodes=1 type=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+PRODUCER_BINDER index=5 name=S' binderInfo=Lean.BinderInfo.implicit typeNodes=1 type=(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u])
+PRODUCER_BINDER index=6 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10 binderInfo=Lean.BinderInfo.instImplicit typeNodes=377 type=((const HasDerivedCategory universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf universes=[Lean.Level.param `u]); 1:(const SheafOfModules.instCategory universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]); 2:(const SheafOfModules.instAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=7 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17 binderInfo=Lean.BinderInfo.instImplicit typeNodes=377 type=((const HasDerivedCategory universes=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf universes=[Lean.Level.param `u]); 1:(const SheafOfModules.instCategory universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]); 2:(const SheafOfModules.instAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=8 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24 binderInfo=Lean.BinderInfo.instImplicit typeNodes=377 type=((const HasDerivedCategory universes=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf universes=[Lean.Level.param `u]); 1:(const SheafOfModules.instCategory universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]); 2:(const SheafOfModules.instAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=9 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31 binderInfo=Lean.BinderInfo.instImplicit typeNodes=377 type=((const HasDerivedCategory universes=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.ModuleSheaf universes=[Lean.Level.param `u]); 1:(const SheafOfModules.instCategory universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)]); 2:(const SheafOfModules.instAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=10 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38 binderInfo=Lean.BinderInfo.instImplicit typeNodes=51 type=((const HasDerivedCategory universes=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 1:(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]); 2:(const CategoryTheory.sheafIsAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=11 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44 binderInfo=Lean.BinderInfo.instImplicit typeNodes=51 type=((const HasDerivedCategory universes=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 1:(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]); 2:(const CategoryTheory.sheafIsAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=12 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50 binderInfo=Lean.BinderInfo.instImplicit typeNodes=51 type=((const HasDerivedCategory universes=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 1:(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]); 2:(const CategoryTheory.sheafIsAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=13 name=inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56 binderInfo=Lean.BinderInfo.instImplicit typeNodes=51 type=((const HasDerivedCategory universes=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]) argc=3 [0:(const AlgebraicGeometry.Scheme.EtaleCohomology.AbelianSheaf universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 1:(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))]); 2:(const CategoryTheory.sheafIsAbelian universes=[Lean.Level.succ (Lean.Level.param `u),
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `u,
+ Lean.Level.succ (Lean.Level.param `u)])])
+PRODUCER_BINDER index=14 name=f binderInfo=Lean.BinderInfo.default typeNodes=15 type=((const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]) argc=4 [0:(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u]); 1:(const CategoryTheory.CategoryStruct.toQuiver universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 2:(fvar X); 3:(fvar S)])
+PRODUCER_BINDER index=15 name=f' binderInfo=Lean.BinderInfo.default typeNodes=15 type=((const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]) argc=4 [0:(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u]); 1:(const CategoryTheory.CategoryStruct.toQuiver universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 2:(fvar X'); 3:(fvar S')])
+PRODUCER_BINDER index=16 name=g binderInfo=Lean.BinderInfo.default typeNodes=15 type=((const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]) argc=4 [0:(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u]); 1:(const CategoryTheory.CategoryStruct.toQuiver universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 2:(fvar S'); 3:(fvar S)])
+PRODUCER_BINDER index=17 name=g' binderInfo=Lean.BinderInfo.default typeNodes=15 type=((const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]) argc=4 [0:(const AlgebraicGeometry.Scheme universes=[Lean.Level.param `u]); 1:(const CategoryTheory.CategoryStruct.toQuiver universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 2:(fvar X'); 3:(fvar X)])
+PRODUCER_BINDER index=18 name=h binderInfo=Lean.BinderInfo.default typeNodes=37 type=((const Eq universes=[Lean.Level.succ (Lean.Level.param `u)]) argc=3 [0:(const Quiver.Hom universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 1:(const CategoryTheory.CategoryStruct.comp universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)]); 2:(const CategoryTheory.CategoryStruct.comp universes=[Lean.Level.param `u, Lean.Level.succ (Lean.Level.param `u)])])
+CUBE const CategoryTheory.HorizontalMateCubeEquation universes=[Lean.Level.param `wMS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wMX,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wMS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wMX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wAS,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wAX,
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wAS',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u)),
+ Lean.Level.param `wAX',
+ Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))] argc=34 nodes=1024
+CUBE_ARGUMENT index=0 binder=A kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=1 binder=B kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=2 binder=C kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=3 binder=D kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=4 binder=A' kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=5 binder=B' kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=6 binder=C' kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=7 binder=D' kind=app head=(const DerivedCategory.Plus universes=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.param `u), Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=8 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.10 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wMS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=9 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.13 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wMX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=10 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.16 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wMS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=11 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.19 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wMX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=12 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.22 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wAS, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=13 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.25 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wAX, Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=14 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.28 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wAS', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=15 binder=inst._@.Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube.283898718._hygCtx._hyg.31 kind=app head=(const CategoryTheory.ObjectProperty.FullSubcategory.category universes=[Lean.Level.param `wAX', Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))])
+CUBE_ARGUMENT index=16 binder=R₁ kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMX])
+CUBE_ARGUMENT index=17 binder=R₂ kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMX'])
+CUBE_ARGUMENT index=18 binder=R₁' kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS])
+CUBE_ARGUMENT index=19 binder=R₂' kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAS'])
+CUBE_ARGUMENT index=20 binder=G kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMS'])
+CUBE_ARGUMENT index=21 binder=H kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMX'])
+CUBE_ARGUMENT index=22 binder=G' kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAS', Lean.Level.param `wAS])
+CUBE_ARGUMENT index=23 binder=H' kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAX])
+CUBE_ARGUMENT index=24 binder=QA kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wAS])
+CUBE_ARGUMENT index=25 binder=QB kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX])
+CUBE_ARGUMENT index=26 binder=QC kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wAS'])
+CUBE_ARGUMENT index=27 binder=QD kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wAX'])
+CUBE_ARGUMENT index=28 binder=b₁ kind=app head=(const CategoryTheory.Iso.hom universes=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS))
+   (Lean.Level.param `wMX)])
+CUBE_ARGUMENT index=29 binder=b₂ kind=app head=(const CategoryTheory.Iso.hom universes=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'))
+   (Lean.Level.param `wMX')])
+CUBE_ARGUMENT index=30 binder=μ kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.moduleDerivedBaseChangeMap universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMS, Lean.Level.param `wMX', Lean.Level.param `wMS'])
+CUBE_ARGUMENT index=31 binder=μ' kind=app head=(const AlgebraicGeometry.Scheme.EtaleCohomology.derivedBaseChangeMap universes=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS, Lean.Level.param `wAX', Lean.Level.param `wAS'])
+CUBE_ARGUMENT index=32 binder=γ kind=app head=(const CategoryTheory.Iso.inv universes=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAS'))
+   (Lean.Level.param `wMS)])
+CUBE_ARGUMENT index=33 binder=δ kind=app head=(const CategoryTheory.Iso.inv universes=[Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAX'),
+ Lean.Level.max
+   (Lean.Level.max (Lean.Level.succ (Lean.Level.succ (Lean.Level.param `u))) (Lean.Level.param `wAX'))
+   (Lean.Level.param `wMX)])
+INTENDED_LEVELS R₁ nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMX]
+SLOT R₁ actualKind=app actualNodes=15 expectedNodes=11 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL R₁ (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMX]) argc=7 [0:(fvar S); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X); 4:(fvar f); 5:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17)]
+INTENDED R₁ (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMX]) argc=5 [0:(fvar S); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X); 4:(fvar f)]
+INTENDED_LEVELS R₂ nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMX']
+SLOT R₂ actualKind=app actualNodes=15 expectedNodes=11 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL R₂ (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMX']) argc=7 [0:(fvar S'); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X'); 4:(fvar f'); 5:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31)]
+INTENDED R₂ (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wMX']) argc=5 [0:(fvar S'); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X'); 4:(fvar f')]
+INTENDED_LEVELS R₁' nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS]
+SLOT R₁' actualKind=app actualNodes=11 expectedNodes=11 alphaEqual=true structuralEqual=true expectedHasMVars=false
+ACTUAL R₁' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS]) argc=5 [0:(fvar X); 1:(fvar S); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44); 4:(fvar f)]
+INTENDED R₁' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX, Lean.Level.param `wAS]) argc=5 [0:(fvar X); 1:(fvar S); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44); 4:(fvar f)]
+INTENDED_LEVELS R₂' nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAS']
+SLOT R₂' actualKind=app actualNodes=11 expectedNodes=11 alphaEqual=true structuralEqual=true expectedHasMVars=false
+ACTUAL R₂' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAS']) argc=5 [0:(fvar X'); 1:(fvar S'); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56); 4:(fvar f')]
+INTENDED R₂' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedDirectImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAS']) argc=5 [0:(fvar X'); 1:(fvar S'); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56); 4:(fvar f')]
+INTENDED_LEVELS G nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMS']
+SLOT G actualKind=app actualNodes=15 expectedNodes=11 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL G (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMS']) argc=7 [0:(fvar S); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar S'); 4:(fvar g); 5:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17)]
+INTENDED G (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wMS']) argc=5 [0:(fvar S); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar S'); 4:(fvar g)]
+INTENDED_LEVELS H nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMX']
+SLOT H actualKind=app actualNodes=15 expectedNodes=11 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL H (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMX']) argc=7 [0:(fvar X); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X'); 4:(fvar g'); 5:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10)]
+INTENDED H (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wMX']) argc=5 [0:(fvar X); 1:(fvar Λ); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 3:(fvar X'); 4:(fvar g')]
+INTENDED_LEVELS G' nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wAS', Lean.Level.param `wAS]
+SLOT G' actualKind=app actualNodes=11 expectedNodes=11 alphaEqual=true structuralEqual=true expectedHasMVars=false
+ACTUAL G' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAS', Lean.Level.param `wAS]) argc=5 [0:(fvar S'); 1:(fvar S); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44); 4:(fvar g)]
+INTENDED G' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAS', Lean.Level.param `wAS]) argc=5 [0:(fvar S'); 1:(fvar S); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44); 4:(fvar g)]
+INTENDED_LEVELS H' nativeParams=[`u, `w, `w'] selected=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAX]
+SLOT H' actualKind=app actualNodes=11 expectedNodes=11 alphaEqual=true structuralEqual=true expectedHasMVars=false
+ACTUAL H' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAX]) argc=5 [0:(fvar X'); 1:(fvar X); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38); 4:(fvar g')]
+INTENDED H' (const AlgebraicGeometry.Scheme.EtaleCohomology.derivedInverseImage universes=[Lean.Level.param `u, Lean.Level.param `wAX', Lean.Level.param `wAX]) argc=5 [0:(fvar X'); 1:(fvar X); 2:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38); 4:(fvar g')]
+INTENDED_LEVELS QA nativeParams=[`u, `wMX, `wAX] selected=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wAS]
+SLOT QA actualKind=app actualNodes=11 expectedNodes=7 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL QA (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wAS]) argc=5 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar S); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.17); 4:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.44)]
+INTENDED QA (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS, Lean.Level.param `wAS]) argc=3 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar S)]
+INTENDED_LEVELS QB nativeParams=[`u, `wMX, `wAX] selected=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]
+SLOT QB actualKind=app actualNodes=11 expectedNodes=7 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL QB (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]) argc=5 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar X); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.10); 4:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.38)]
+INTENDED QB (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX, Lean.Level.param `wAX]) argc=3 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar X)]
+INTENDED_LEVELS QC nativeParams=[`u, `wMX, `wAX] selected=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wAS']
+SLOT QC actualKind=app actualNodes=11 expectedNodes=7 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL QC (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wAS']) argc=5 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar S'); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.31); 4:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.56)]
+INTENDED QC (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMS', Lean.Level.param `wAS']) argc=3 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar S')]
+INTENDED_LEVELS QD nativeParams=[`u, `wMX, `wAX] selected=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wAX']
+SLOT QD actualKind=app actualNodes=11 expectedNodes=7 alphaEqual=false structuralEqual=false expectedHasMVars=false
+ACTUAL QD (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wAX']) argc=5 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar X'); 3:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.24); 4:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.50)]
+INTENDED QD (const AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients.moduleDerivedUnderlying universes=[Lean.Level.param `u, Lean.Level.param `wMX', Lean.Level.param `wAX']) argc=3 [0:(fvar Λ); 1:(fvar inst._@.Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange.3037794930._hygCtx._hyg.3); 2:(fvar X')]
+COMPLETE twelve slots; raw type only; no theorem value/reduction/defeq inspected

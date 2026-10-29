@@ -1,0 +1,84 @@
+--- C-v3
++++ C-v4
+@@ -73,6 +73,40 @@
+ open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois
+ open _root_.AlgebraicGeometry.Scheme.FiniteEtale (Fiber fiberToFinite)
+ open _root_.GroupCohomology.ContinuousH1
++private def cFieldDataVisit (count skipped : IO.Ref Nat) :
++    Nat → String → Lean.Expr → Lean.Expr → Lean.MetaM Unit
++  | 0, path, _, _ => Lean.logInfo m!"FIELD_DATA_DEPTH {path}"
++  | fuel + 1, path, a, b => do
++    if (← count.get) ≥ 20 then return
++    let a := a.consumeMData
++    let b := b.consumeMData
++    if a == b then return
++    if !a.hasLooseBVars && !b.hasLooseBVars then
++      if (← Lean.Meta.isProof a) && (← Lean.Meta.isProof b) then
++        skipped.modify (· + 1)
++        return
++    let af := a.getAppFn
++    let bf := b.getAppFn
++    let aa := a.getAppArgs
++    let ba := b.getAppArgs
++    if af == bf && aa.size == ba.size && !aa.isEmpty then
++      for i in [:aa.size] do
++        cFieldDataVisit count skipped fuel (path ++ "/arg" ++ toString i) aa[i]! ba[i]!
++    else
++      match a, b with
++      | .lam _ aType aBody _, .lam _ bType bBody _ =>
++        cFieldDataVisit count skipped fuel (path ++ "/domain") aType bType
++        cFieldDataVisit count skipped fuel (path ++ "/body") aBody bBody
++      | .forallE _ aType aBody _, .forallE _ bType bBody _ =>
++        cFieldDataVisit count skipped fuel (path ++ "/domain") aType bType
++        cFieldDataVisit count skipped fuel (path ++ "/body") aBody bBody
++      | _, _ =>
++        count.modify (· + 1)
++        Lean.logInfo m!"FIELD_DATA_DIFF {path} actual-head={af} expected-head={bf}"
++        Lean.logInfo m!"FIELD_DATA_ARGS actual={aa.size} expected={ba.size}"
++        Lean.logInfo m!"FIELD_DATA_ACTUAL {a}"
++        Lean.logInfo m!"FIELD_DATA_EXPECTED {b}"
++
+ namespace GroupCohomology.Kummer.Field
+ universe u w
+ variable (K : Type u) [Field K] [CharZero K] (n : ℕ) [NeZero n]
+@@ -382,39 +416,7 @@
+     let actual ← Lean.Meta.inferType term
+     let count ← IO.mkRef (0 : Nat)
+     let skipped ← IO.mkRef (0 : Nat)
+-    let rec visit : Nat → String → Lean.Expr → Lean.Expr → Lean.MetaM Unit
+-      | 0, path, _, _ => Lean.logInfo m!"FIELD_DATA_DEPTH {path}"
+-      | fuel + 1, path, a, b => do
+-        if (← count.get) ≥ 20 then return
+-        let a := a.consumeMData
+-        let b := b.consumeMData
+-        if a == b then return
+-        if !a.hasLooseBVars && !b.hasLooseBVars then
+-          if (← Lean.Meta.isProof a) && (← Lean.Meta.isProof b) then
+-            skipped.modify (· + 1)
+-            return
+-        let af := a.getAppFn
+-        let bf := b.getAppFn
+-        let aa := a.getAppArgs
+-        let ba := b.getAppArgs
+-        if af == bf && aa.size == ba.size && !aa.isEmpty then
+-          for i in [:aa.size] do
+-            visit fuel (path ++ "/arg" ++ toString i) aa[i]! ba[i]!
+-        else
+-          match a, b with
+-          | .lam _ aType aBody _, .lam _ bType bBody _ =>
+-            visit fuel (path ++ "/domain") aType bType
+-            visit fuel (path ++ "/body") aBody bBody
+-          | .forallE _ aType aBody _, .forallE _ bType bBody _ =>
+-            visit fuel (path ++ "/domain") aType bType
+-            visit fuel (path ++ "/body") aBody bBody
+-          | _, _ =>
+-            count.modify (· + 1)
+-            Lean.logInfo m!"FIELD_DATA_DIFF {path} actual-head={af} expected-head={bf}"
+-            Lean.logInfo m!"FIELD_DATA_ARGS actual={aa.size} expected={ba.size}"
+-            Lean.logInfo m!"FIELD_DATA_ACTUAL {a}"
+-            Lean.logInfo m!"FIELD_DATA_EXPECTED {b}"
+-    visit 80 "type" actual target
++    cFieldDataVisit count skipped 80 "type" actual target
+     Lean.logInfo m!"FIELD_DATA_END reported={← count.get} proof-pairs-skipped={← skipped.get}"
+   exact hfinal
+ 

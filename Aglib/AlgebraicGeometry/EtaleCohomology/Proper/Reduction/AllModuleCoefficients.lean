@@ -7,17 +7,15 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.ExchangeShift
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.InjectiveExchange
-public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparison
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact
 
 /-! # Original exchange on all genuine module coefficients
 
-The exact original underlying functor has a native bounded-below derived
-functor. Precomposing the actual canonical exchange with that functor gives
-a shift-compatible triangulated comparison. Its two sides preserve the
-nonnegative range, so tests on genuine module injectives extend to all
-genuine module singles by finite degree induction. The original exact-single
-comparison transports back to the displayed canonical exchange map.
+The lower injective-comparison owner performs the complete exact-coefficient
+assembly. The native adapter supplies the genuine module underlying functor,
+the four original image functors and the same canonical derived exchange.
+Actual killed coefficients and their natural-degree higher exchange retain
+their original coefficient singles and maps.
 -/
 
 @[expose] public noncomputable section
@@ -43,8 +41,8 @@ variable {X S X' S' : Scheme.{u}}
 
 /-- Tests on underlying genuine module injectives imply invertibility of the
 same original canonical derived exchange on every underlying module single.
-The auxiliary module-derived model is supplied by the native standard
-producer; all four original abelian-derived universes remain independent. -/
+The proof-only module-derived model is internal to the lower assembly; all
+four original abelian-derived universes remain independent. -/
 theorem derivedExchange_on_all_zmodCoefficients
     (hI : ∀ (I : ZModSheaf X n) [Injective I],
       IsIso ((derivedBaseChangeMap f f' g g' h).app
@@ -52,8 +50,6 @@ theorem derivedExchange_on_all_zmodCoefficients
     (M : ZModSheaf X n) :
     IsIso ((derivedBaseChangeMap f f' g g' h).app
       ((zmodSingle X n).obj M)) := by
-  let : HasDerivedCategory.{u + 2} (ZModSheaf X n) :=
-    HasDerivedCategory.standard (ZModSheaf X n)
   let U : ZModSheaf X n ⥤ AbelianSheaf.{u, u + 1} X := zmodUnderlying X n
   have : U.Additive :=
     { map_add := by
@@ -70,35 +66,9 @@ theorem derivedExchange_on_all_zmodCoefficients
     TorsionZMod.enoughInjectivesStandard.{u + 1, u} X.smallEtaleTopology n
   let β := derivedBaseChangeMap f f' g g' h
   have : NatTrans.CommShift β ℤ := derivedBaseChangeMap_commShift f f' g g' h
-  let F := U.rightDerivedFunctorPlus ⋙ (derivedDirectImage f ⋙ derivedInverseImage g)
-  let G := U.rightDerivedFunctorPlus ⋙ (derivedInverseImage g' ⋙ derivedDirectImage f')
-  let α : F ⟶ G := Functor.whiskerLeft U.rightDerivedFunctorPlus β
-  let e (N : ZModSheaf X n) :
-      U.rightDerivedFunctorPlus.obj ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N) ≅
-        (zmodSingle X n).obj N :=
-    (U.rightDerivedFunctorPlusSingleIso 0).app N
-  have hF (N : ZModSheaf X n) :
-      (F.obj ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N)).IsGE 0 := by
-    have := U.rightDerivedFunctorPlus_isGE
-      ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N) 0
-    have := (directImage f).rightDerivedFunctorPlus_isGE
-      (U.rightDerivedFunctorPlus.obj
-        ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N)) 0
-    exact (inverseImage g).rightDerivedFunctorPlus_isGE _ 0
-  have hG (N : ZModSheaf X n) :
-      (G.obj ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N)).IsGE 0 := by
-    have := U.rightDerivedFunctorPlus_isGE
-      ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N) 0
-    have := (inverseImage g').rightDerivedFunctorPlus_isGE
-      (U.rightDerivedFunctorPlus.obj
-        ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj N)) 0
-    exact (directImage f').rightDerivedFunctorPlus_isGE _ 0
-  have hJ (I : ZModSheaf X n) [Injective I] :
-      IsIso (α.app ((DerivedCategory.Plus.singleFunctor (ZModSheaf X n) 0).obj I)) := by
-    exact (NatTrans.isIso_app_iff_of_iso β (e I)).mpr (hI I)
-  have hM := DerivedCategory.Plus.InjectiveComparison.isIso_app_single_of_injective
-    F G α hF hG hJ M
-  exact (NatTrans.isIso_app_iff_of_iso β (e M)).mp hM
+  exact DerivedCategory.Plus.InjectiveComparison.isIso_app_of_injective_after_exact
+    U (zmodSingle X n) rfl
+    (directImage f) (inverseImage g) (inverseImage g') (directImage f') β hI M
 
 /-- An actual n-killed abelian coefficient carries its canonical genuine-module
 structure. No supplied coefficient marking is needed, and the conclusion is

@@ -1,0 +1,22 @@
+✔ [3697/3704] Built Aglib.CategoryTheory.Adjunction.MateHomEquiv.Composition (1.9s)
+✔ [3698/3704] Built Aglib.AlgebraicGeometry.Modules.Invertible.FibrewiseIsomorphism (5.1s)
+✔ [3699/3704] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConnectedTorsionSections (5.4s)
+✔ [3700/3704] Built Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.ConstantPullbackSections (6.5s)
+✔ [3701/3704] Built Aglib.AlgebraicGeometry.EtaleCohomology.H1.DegreeZeroPullback (51s)
+✔ [3702/3704] Built Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.FieldNaturality (98s)
+✖ [3703/3704] Building Aglib.AlgebraicGeometry.Picard.AssociatedBundle (148s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-664a5fa3fb36457da4e86e36c7088ea6/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean -o /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.olean -i /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.c --setup /root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/Picard/AssociatedBundle.setup.json --json
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:230:4: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:207:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Aglib/AlgebraicGeometry/Picard/AssociatedBundle.lean:720:8: (kernel) unknown constant 'AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.Construction.sectionFamily_natural'
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.Picard.AssociatedBundle
+error: build failed

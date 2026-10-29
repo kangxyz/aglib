@@ -1,0 +1,24 @@
+NATIVE_LOG_EXISTS True
+✔ [3569/3578] Built Aglib.LinearAlgebra.TensorProduct.Map (3.0s)
+✔ [3570/3578] Built Aglib.Algebra.Homology.Amitsur.Conerve (6.4s)
+✖ [3571/3578] Building Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts (4.6s)
+trace: .> LEAN_PATH=/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Cli/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/batteries/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/Qq/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/aesop/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/importGraph/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/plausible/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/packages/mathlib/.lake/build/lib/lean:/root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean /root/autodl-tmp/lean-build/logs/remote-f01e3da536c54edeaa49d22df0285795/toolchain/bin/lean -M12800 -j4 /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.lean -o /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.olean -i /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.ilean -c /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.c --setup /root/autodl-tmp/lean-build/workspaces/managed-9dff90d84fc5-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.setup.json --json
+error: Aglib/AlgebraicGeometry/EtaleCohomology/QuasiCoherent/AmitsurProducts.lean:65:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+✔ [3572/3578] Built Aglib.Algebra.Homology.Amitsur.Modules (4.7s)
+✔ [3573/3578] Built Aglib.Algebra.Homology.Amitsur.ScalarExtension (9.7s)
+✔ [3574/3578] Built Aglib.Algebra.Homology.Amitsur.Coordinates (6.5s)
+✔ [3575/3578] Built Aglib.Algebra.Homology.Amitsur.Comparison (7.8s)
+✔ [3576/3578] Built Aglib.Algebra.Homology.Amitsur.Exactness (3.4s)
+✔ [3577/3578] Built Aglib.Algebra.Homology.Amitsur.Positive (4.1s)
+✔ [3578/3578] Built Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurSections (34s)
+Some required targets logged failures:
+- Aglib.AlgebraicGeometry.EtaleCohomology.QuasiCoherent.AmitsurProducts
+error: build failed
+

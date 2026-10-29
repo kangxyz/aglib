@@ -5,19 +5,11 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Adjunction.Mates.SourceCoherence
+
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
-public import
-  Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.Normalization
-
-public import
-Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.CoherenceRawNormalization
-public import
-  Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.CoherenceDiagram
-
-public import
-  Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.WholeNormalization
-public import
-  Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ActualPasting
+public import Aglib.CategoryTheory.Adjunction.Mates.Whole
+public import Aglib.CategoryTheory.Adjunction.Mates.Coherence
 
 /-!
 # The canonical underived étale base-change map
@@ -472,8 +464,8 @@ variable {X X' S S' : Scheme.{u}}
 /-- The native inverse-image composition isomorphisms give the commuting pullback square. -/
 def inverseImageSquareIso :
     inverseImage g ⋙ inverseImage f' ≅ inverseImage f ⋙ inverseImage g' :=
-  (inverseImageComp g f').symm ≪≫
-    eqToIso (congrArg (fun k : X' ⟶ S => inverseImage k) h) ≪≫ inverseImageComp f g'
+  sourceSquareIso (inverseImageComp g f') (inverseImageComp f g')
+    (eqToIso (congrArg (fun k : X' ⟶ S => inverseImage k) h))
 
 /-- The canonical underived exchange is the mate under the two vertical adjunctions. -/
 def baseChangeMap :
@@ -528,7 +520,8 @@ theorem inverseImageSquareIso_id (e : f ≫ 𝟙 S = 𝟙 X ≫ f) :
         Functor.leftUnitor (inverseImage f) := by
   apply Iso.ext
   apply (cancel_epi (inverseImageComp (𝟙 S) f).hom).1
-  simp only [inverseImageSquareIso, Iso.trans_hom, Iso.symm_hom, Category.assoc,
+  simp only [inverseImageSquareIso, sourceSquareIso,
+    Iso.trans_hom, Iso.symm_hom, Category.assoc,
     Iso.hom_inv_id_assoc]
   have hA := congrArg Iso.hom (inverseImageComp_id_comp f)
   have hB := congrArg Iso.hom (inverseImageComp_comp_id f)
@@ -629,101 +622,99 @@ variable {X₀ S₀ X₁ S₁ X₂ S₂ : Scheme.{u}}
   (e₁ : f₁ ≫ g₁ = h₁ ≫ f₀) (e₂ : f₂ ≫ g₂ = h₂ ≫ f₁)
   (e : f₂ ≫ (g₂ ≫ g₁) = (h₂ ≫ h₁) ≫ f₀)
 
+/-- The original functors, source equalities and comparison families. -/
+def inverseImageHorizontalSourceData :
+    SourceCoherenceData
+      (AbelianSheaf.{u, u + 1} S₀)
+      (AbelianSheaf.{u, u + 1} S₁)
+      (AbelianSheaf.{u, u + 1} S₂)
+      (AbelianSheaf.{u, u + 1} X₀)
+      (AbelianSheaf.{u, u + 1} X₁)
+      (AbelianSheaf.{u, u + 1} X₂)
+      (X₂ ⟶ S₀) (X₁ ⟶ S₀) (X₂ ⟶ S₁) where
+  F₀ := (inverseImage f₀)
+  F₁ := (inverseImage f₁)
+  F₂ := (inverseImage f₂)
+  G₁ := (inverseImage g₁)
+  G₂ := (inverseImage g₂)
+  H₁ := (inverseImage h₁)
+  H₂ := (inverseImage h₂)
+  G₁₂ := (inverseImage (g₂ ≫ g₁))
+  H₁₂ := (inverseImage (h₂ ≫ h₁))
+  T := fun k => (inverseImage k)
+  P := fun k => (inverseImage k)
+  Q := fun k => (inverseImage k)
+  post := fun k => k ≫ g₁
+  pre := fun k => h₂ ≫ k
+  a₀ := f₂ ≫ (g₂ ≫ g₁)
+  a₅ := (h₂ ≫ h₁) ≫ f₀
+  p₀ := f₁ ≫ g₁
+  p₁ := h₁ ≫ f₀
+  q₀ := f₂ ≫ g₂
+  q₁ := h₂ ≫ f₁
+  first_eq := e₁
+  second_eq := e₂
+  start_eq := Category.assoc f₂ g₂ g₁
+  middle_eq := Category.assoc h₂ f₁ g₁
+  finish_eq := Category.assoc h₂ h₁ f₀
+  outer_eq := e
+  cG := inverseImageComp g₁ g₂
+  cH := inverseImageComp h₁ h₂
+  cOuter := inverseImageComp (g₂ ≫ g₁) f₂
+  cQ₀ := inverseImageComp g₂ f₂
+  cQ₁ := inverseImageComp f₁ h₂
+  cP₀ := inverseImageComp g₁ f₁
+  cP₁ := inverseImageComp f₀ h₁
+  cQ := fun k => inverseImageComp g₁ k
+  cP := fun k => inverseImageComp k h₂
+  cFinish := inverseImageComp f₀ (h₂ ≫ h₁)
+
 /-- The actual whole comparison diagram; no coherence proof is part of its data. -/
 def inverseImageHorizontalDiagram :
     ExchangeCoherenceDiagram
-      (AbelianSheaf.{u, u + 1} S₀ ⥤ AbelianSheaf.{u, u + 1} X₂) where
-  A := inverseImage (f₂ ≫ (g₂ ≫ g₁))
-  B := inverseImage (g₂ ≫ g₁) ⋙ inverseImage f₂
-  C₀ := inverseImage g₁ ⋙ inverseImage g₂ ⋙ inverseImage f₂
-  D := inverseImage g₁ ⋙ inverseImage (f₂ ≫ g₂)
-  E := inverseImage g₁ ⋙ inverseImage (h₂ ≫ f₁)
-  F := inverseImage g₁ ⋙ inverseImage f₁ ⋙ inverseImage h₂
-  G := inverseImage (f₁ ≫ g₁) ⋙ inverseImage h₂
-  H := inverseImage (h₁ ≫ f₀) ⋙ inverseImage h₂
-  I := inverseImage f₀ ⋙ inverseImage h₁ ⋙ inverseImage h₂
-  J := inverseImage ((f₂ ≫ g₂) ≫ g₁)
-  K := inverseImage ((h₂ ≫ f₁) ≫ g₁)
-  L := inverseImage (h₂ ≫ (f₁ ≫ g₁))
-  M := inverseImage (h₂ ≫ (h₁ ≫ f₀))
-  N := inverseImage ((h₂ ≫ h₁) ≫ f₀)
-  O := inverseImage f₀ ⋙ inverseImage (h₂ ≫ h₁)
-  p := (inverseImageComp (g₂ ≫ g₁) f₂).hom
-  q := Functor.whiskerRight (inverseImageComp g₁ g₂).hom (inverseImage f₂) ≫
-    (Functor.associator (inverseImage g₁) (inverseImage g₂) (inverseImage f₂)).hom
-  b₀ := Functor.whiskerLeft (inverseImage g₁) (inverseImageComp g₂ f₂).inv
-  t₂ := Functor.whiskerLeft (inverseImage g₁)
-    (eqToIso (congrArg (fun k : X₂ ⟶ S₁ => inverseImage k) e₂)).hom
-  c₀ := Functor.whiskerLeft (inverseImage g₁) (inverseImageComp f₁ h₂).hom
-  d := Functor.isoWhiskerRight (inverseImageComp g₁ f₁) (inverseImage h₂) ≪≫
-    Functor.associator (inverseImage g₁) (inverseImage f₁) (inverseImage h₂)
-  t₁ := Functor.whiskerRight
-    (eqToIso (congrArg (fun k : X₁ ⟶ S₀ => inverseImage k) e₁)).hom (inverseImage h₂)
-  e₀ := Functor.whiskerRight (inverseImageComp f₀ h₁).hom (inverseImage h₂) ≫
-    (Functor.associator (inverseImage f₀) (inverseImage h₁) (inverseImage h₂)).hom
-  a := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (Category.assoc f₂ g₂ g₁))).inv
-  m := (inverseImageComp g₁ (f₂ ≫ g₂)).hom
-  b := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (congrArg (fun k : X₂ ⟶ S₁ => k ≫ g₁) e₂))).hom
-  n := (inverseImageComp g₁ (h₂ ≫ f₁)).hom
-  c := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (Category.assoc h₂ f₁ g₁))).hom
-  r := (inverseImageComp (f₁ ≫ g₁) h₂).hom
-  e := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (congrArg (fun k : X₁ ⟶ S₀ => h₂ ≫ k) e₁))).hom
-  s := (inverseImageComp (h₁ ≫ f₀) h₂).hom
-  z := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (Category.assoc h₂ h₁ f₀))).inv
-  u := (inverseImageComp f₀ (h₂ ≫ h₁)).hom
-  v := Functor.whiskerLeft (inverseImage f₀) (inverseImageComp h₁ h₂).hom
-  τ := (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k) e)).hom
+      (AbelianSheaf.{u, u + 1} S₀ ⥤ AbelianSheaf.{u, u + 1} X₂) :=
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).diagram
 
 /-- The first actual whole comparison is the original associativity rotation. -/
 theorem inverseImageHorizontalDiagram_start :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).StartEquation :=
-  inverseImageComp_assoc_start_whole g₁ g₂ f₂
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).start
+    (inverseImageComp_assoc_hom g₁ g₂ f₂)
 
 /-- The second actual whole comparison is native equality transport. -/
 theorem inverseImageHorizontalDiagram_firstTransport :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).FirstTransportEquation :=
-  inverseImageComp_eqToHom_right_whole g₁ e₂
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).firstTransport
 
 /-- The middle actual whole comparison is the original associativity equation. -/
 theorem inverseImageHorizontalDiagram_middle :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).MiddleEquation :=
-  inverseImageComp_assoc_hom g₁ f₁ h₂
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).middle
+    (inverseImageComp_assoc_hom g₁ f₁ h₂)
 
 /-- The fourth actual whole comparison is native equality transport. -/
 theorem inverseImageHorizontalDiagram_secondTransport :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).SecondTransportEquation :=
-  inverseImageComp_eqToHom_left_whole e₁ h₂
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).secondTransport
 
 /-- The final actual whole comparison is the original associativity rotation. -/
 theorem inverseImageHorizontalDiagram_finish :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).FinishEquation :=
-  inverseImageComp_assoc_finish_whole f₀ h₁ h₂
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).finish
+    (inverseImageComp_assoc_hom f₀ h₁ h₂)
 
 /-- Source equalities close the actual whole transport pentagon. -/
 theorem inverseImageHorizontalDiagram_transport :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).TransportEquation :=
-  exchangeCoherence_whole_transport (fun k : X₂ ⟶ S₀ => inverseImage k)
-    (Category.assoc f₂ g₂ g₁)
-    (congrArg (fun k : X₂ ⟶ S₁ => k ≫ g₁) e₂)
-    (Category.assoc h₂ f₁ g₁)
-    (congrArg (fun k : X₁ ⟶ S₀ => h₂ ≫ k) e₁)
-    (Category.assoc h₂ h₁ f₀) e
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).transport
 
 /-- The whole actual comparison chase consumes only its named native witnesses. -/
 theorem inverseImageHorizontalDiagram_chain :
     (inverseImageHorizontalDiagram f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).ChainEquation :=
-  ExchangeCoherenceDiagram.chain _
-    (inverseImageHorizontalDiagram_start f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
-    (inverseImageHorizontalDiagram_firstTransport f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
-    (inverseImageHorizontalDiagram_middle f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
-    (inverseImageHorizontalDiagram_secondTransport f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
-    (inverseImageHorizontalDiagram_finish f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
-    (inverseImageHorizontalDiagram_transport f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).chain
+    (inverseImageComp_assoc_hom g₁ g₂ f₂)
+    (inverseImageComp_assoc_hom g₁ f₁ h₂)
+    (inverseImageComp_assoc_hom f₀ h₁ h₂)
 
 /-- Evaluate the proved whole diagram; no concrete comparison proof is repeated. -/
 theorem inverseImageHorizontalDiagram_chain_app (A : AbelianSheaf.{u, u + 1} S₀) :
@@ -781,23 +772,10 @@ theorem inverseImageSquareIso_hComp_whole :
       (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂).hom
       (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e).hom
       (inverseImageComp g₁ g₂).hom (inverseImageComp h₁ h₂).hom :=
-  exchangeCoherence_normalize_whole
-    (inverseImageComp g₁ g₂) (inverseImageComp h₁ h₂)
-    (inverseImageComp (g₂ ≫ g₁) f₂) (inverseImageComp g₂ f₂)
-    (eqToIso (congrArg (fun k : X₂ ⟶ S₁ => inverseImage k) e₂))
-    (inverseImageComp f₁ h₂)
-    (inverseImageComp g₁ f₁)
-    (eqToIso (congrArg (fun k : X₁ ⟶ S₀ => inverseImage k) e₁))
-    (inverseImageComp f₀ h₁)
-    (eqToIso (congrArg (fun k : X₂ ⟶ S₀ => inverseImage k) e))
-    (inverseImageComp f₀ (h₂ ≫ h₁))
-    (inverseImageSquareIso f₀ f₁ g₁ h₁ e₁)
-    (inverseImageSquareIso f₁ f₂ g₂ h₂ e₂)
-    (inverseImageSquareIso f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
-    (inverseImageSquareIso_eq_comp f₀ f₁ g₁ h₁ e₁)
-    (inverseImageSquareIso_eq_comp f₁ f₂ g₂ h₂ e₂)
-    (inverseImageSquareIso_eq_comp f₀ f₂ (g₂ ≫ g₁) (h₂ ≫ h₁) e)
-    (inverseImageHorizontalDiagram_whiskered f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e)
+  (inverseImageHorizontalSourceData f₀ f₁ f₂ g₁ g₂ h₁ h₂ e₁ e₂ e).whole
+    (inverseImageComp_assoc_hom g₁ g₂ f₂)
+    (inverseImageComp_assoc_hom g₁ f₁ h₂)
+    (inverseImageComp_assoc_hom f₀ h₁ h₂)
 
 /-- Evaluate only the final actual horizontal square, not its internal long chase. -/
 theorem inverseImageSquareIso_hComp (A : AbelianSheaf.{u, u + 1} S₀) :
@@ -848,7 +826,8 @@ theorem inverseImageSquareIso_transpose {X S X' S' : Scheme.{u}}
     (e : f' ≫ g = g' ≫ f) :
     inverseImageSquareIso g g' f f' e.symm =
       (inverseImageSquareIso f f' g g' e).symm := by
-  simp only [inverseImageSquareIso, Iso.trans_symm, Iso.symm_symm_eq, Iso.trans_assoc]
+  simp only [inverseImageSquareIso, sourceSquareIso,
+    Iso.trans_symm, Iso.symm_symm_eq, Iso.trans_assoc]
   rfl
 
 /-- The vertical square-coherence law follows from transposed horizontal coherence. -/

@@ -241,9 +241,15 @@ theorem representedH1AddEquiv_marking (hA : Stacks03AJ.{u, w} X) (hR : Stacks03R
   obtain ⟨p, rfl⟩ := (hA.bijective (representedSheaf H)).surjective a
   refine Quotient.inductionOn p ?_
   intro P
-  let Y := P.finiteEtaleRepresentative hR hcoeff.locally_constant
-  let d := P.finiteEtaleRepresentativeIso hR hcoeff.locally_constant
-  let : Surjective Y.obj.hom := P.represented_surjective H Y d
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hR hcoeff.locally_constant
+  let d :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hR hcoeff.locally_constant
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := H) (P := P) (Y := Y) (e := d)
   let : Nonempty (Fiber s Y) := nonempty_fiber_of_surjective s Y
   let t : Fiber s Y := Classical.choice inferInstance
   change representedH1AddEquiv _ _ _ _ _ _ _ _ (torsorExtClass P) =

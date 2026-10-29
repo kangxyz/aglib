@@ -1,0 +1,353 @@
+{
+  "product": "Existing Zariski Cech comparison and shared topological/sheaf core refactor",
+  "candidate": "v7",
+  "source_basis": {
+    "native_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "original_comparison_sha256": "0e1863171bcc6e87933a35b2c6292301da8070fd8617717b5bf9335610572375"
+  },
+  "files": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Augmentation.lean",
+      "sha256": "26e0420d62881144e636866606b11295b4452518e3d57c0d965f96cb58ec9727"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "sha256": "af4a402c64b33c88fadeed16e76cfbf3f875e3d27abe08fa487dab6e37c67020"
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cohomology/SectionCycles.lean",
+      "sha256": "9421e29e3eb6157f51216c1bd9e9f4d357c5c8ca6535ee9d959919cdab3c1faf"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "sha256": "756f2b94b276878584927ddd9e54f9c659b05980c60763f2397bc194ebb5d372"
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Resolution.lean",
+      "sha256": "d48f780b8afcd70989aa1d2c5cc24a8ac237c4b0374c543c4d403f6a061cff67"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "sha256": "32af5984bf3082f4533f155aef53f714c1a9f4038a7dd3b0074c1f8697cc2925"
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Comparison.lean",
+      "sha256": "84541fafe679d700362efcb7c93d41bf07c4ec912f82cc981ac0b290947b3a4e"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean",
+      "sha256": "e3776bb971ea3943fcc010812ed309358d46d7149a2e70b401d903ee1d192f3c"
+    }
+  ],
+  "packets": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/augmentation-manifest.json",
+      "revision": 2
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/section-cycles-manifest.json",
+      "revision": 4
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/resolution-rows-manifest.json",
+      "revision": 3
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/comparison-manifest.json",
+      "revision": 5
+    }
+  ],
+  "native_runs": [
+    {
+      "run_id": "5c00b1859e6b471780756e5cb1dd4885",
+      "source_sha256": "b2fcb81169a5e1ea1cc214fd449ef5ba925c0efcce6fa0456422ce87c5e01467",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Topology.Sheaves.Cech.Augmentation",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Augmentation",
+        "Aglib.Topology.Sheaves.Cohomology.SectionCycles",
+        "Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles"
+      ],
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-5c00b1859e6b471780756e5cb1dd4885/compiler-events.jsonl"
+    },
+    {
+      "run_id": "3d735e2bee0340a999423a2e7a216af7",
+      "source_sha256": "757d9f27839a17cb00f2edef144d92d190b0058ee5d1f5f5f1664a0bc1e7b3fb",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.Cohomology.Injective.SectionCycles",
+        "Aglib.Topology.Sheaves.Cech.Resolution",
+        "Aglib.AlgebraicGeometry.Cohomology.Affine.SheafCohomology",
+        "Aglib.Topology.Sheaves.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+      ],
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-3d735e2bee0340a999423a2e7a216af7/compiler-events.jsonl"
+    },
+    {
+      "run_id": "cf8e204824294062afa333fc66a226d3",
+      "source_sha256": "0b5dfa723085bc2e2dab31be1832800583d53e4322f84bc9feab5dbf58acd88d",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Topology.Sheaves.Cech.Resolution",
+        "Aglib.AlgebraicGeometry.Cohomology.Affine.SheafCohomology",
+        "Aglib.Topology.Sheaves.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+      ],
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-cf8e204824294062afa333fc66a226d3/compiler-events.jsonl"
+    },
+    {
+      "run_id": "ae63da9306854cd9bb487f59491c82fb",
+      "source_sha256": "3cf42c7ebf762c4435c95b1246d2e834262e538a74cfb1a94feec173dee83bce",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.Topology.Sheaves.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+      ],
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-ae63da9306854cd9bb487f59491c82fb/compiler-events.jsonl"
+    },
+    {
+      "run_id": "fa261c799e6541b9a68d7543dc7fb23c",
+      "source_sha256": "9437ec92a3ac6fe6040ff001e87ac862f1bca62eaf7d1081afca9df4f075dbb4",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Comparison",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+      ],
+      "exit_code": 1,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-fa261c799e6541b9a68d7543dc7fb23c/compiler-events.jsonl"
+    },
+    {
+      "run_id": "70c27e125c914672b7347ca866b14b5e",
+      "source_sha256": "94ff0139b4121437ff5e1fe111ffcf557a15e479e541a51a1506045fdc2721a8",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--rehash",
+        "build",
+        "Aglib.AlgebraicGeometry.Cohomology.Cech.Modules"
+      ],
+      "exit_code": 0,
+      "group_closed": true,
+      "input_drift": [],
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/receipt.json",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/build.log",
+      "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/remote-runs/remote-70c27e125c914672b7347ca866b14b5e/compiler-events.jsonl"
+    }
+  ],
+  "current_source_passes": [
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Augmentation.lean",
+      "sha256": "26e0420d62881144e636866606b11295b4452518e3d57c0d965f96cb58ec9727",
+      "run_id": "5c00b1859e6b471780756e5cb1dd4885",
+      "source_sha256": "b2fcb81169a5e1ea1cc214fd449ef5ba925c0efcce6fa0456422ce87c5e01467",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T02:36:25.140685+00:00",
+        "monotonic": 75318167.04795167,
+        "wrapper_pid": 865002,
+        "pgid": 864945,
+        "compiler_pid": 865004,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cohomology/SectionCycles.lean",
+      "sha256": "9421e29e3eb6157f51216c1bd9e9f4d357c5c8ca6535ee9d959919cdab3c1faf",
+      "run_id": "5c00b1859e6b471780756e5cb1dd4885",
+      "source_sha256": "b2fcb81169a5e1ea1cc214fd449ef5ba925c0efcce6fa0456422ce87c5e01467",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T02:37:42.339474+00:00",
+        "monotonic": 75318244.24674365,
+        "wrapper_pid": 865009,
+        "pgid": 864945,
+        "compiler_pid": 865011,
+        "slot": 1,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean",
+      "sha256": "af4a402c64b33c88fadeed16e76cfbf3f875e3d27abe08fa487dab6e37c67020",
+      "run_id": "5c00b1859e6b471780756e5cb1dd4885",
+      "source_sha256": "b2fcb81169a5e1ea1cc214fd449ef5ba925c0efcce6fa0456422ce87c5e01467",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T02:36:28.672268+00:00",
+        "monotonic": 75318170.57953744,
+        "wrapper_pid": 865024,
+        "pgid": 864945,
+        "compiler_pid": 865026,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean",
+      "sha256": "756f2b94b276878584927ddd9e54f9c659b05980c60763f2397bc194ebb5d372",
+      "run_id": "3d735e2bee0340a999423a2e7a216af7",
+      "source_sha256": "757d9f27839a17cb00f2edef144d92d190b0058ee5d1f5f5f1664a0bc1e7b3fb",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T02:58:33.154080+00:00",
+        "monotonic": 75319495.0613476,
+        "wrapper_pid": 865448,
+        "pgid": 865312,
+        "compiler_pid": 865452,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Resolution.lean",
+      "sha256": "d48f780b8afcd70989aa1d2c5cc24a8ac237c4b0374c543c4d403f6a061cff67",
+      "run_id": "cf8e204824294062afa333fc66a226d3",
+      "source_sha256": "0b5dfa723085bc2e2dab31be1832800583d53e4322f84bc9feab5dbf58acd88d",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T03:21:49.238784+00:00",
+        "monotonic": 75320891.14605401,
+        "wrapper_pid": 866538,
+        "pgid": 866478,
+        "compiler_pid": 866540,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Affine/SheafCohomology.lean",
+      "sha256": "32af5984bf3082f4533f155aef53f714c1a9f4038a7dd3b0074c1f8697cc2925",
+      "run_id": "cf8e204824294062afa333fc66a226d3",
+      "source_sha256": "0b5dfa723085bc2e2dab31be1832800583d53e4322f84bc9feab5dbf58acd88d",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T03:22:06.084329+00:00",
+        "monotonic": 75320907.99159747,
+        "wrapper_pid": 866634,
+        "pgid": 866478,
+        "compiler_pid": 866639,
+        "slot": 1,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/Topology/Sheaves/Cech/Comparison.lean",
+      "sha256": "84541fafe679d700362efcb7c93d41bf07c4ec912f82cc981ac0b290947b3a4e",
+      "run_id": "ae63da9306854cd9bb487f59491c82fb",
+      "source_sha256": "3cf42c7ebf762c4435c95b1246d2e834262e538a74cfb1a94feec173dee83bce",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T03:32:59.752851+00:00",
+        "monotonic": 75321561.66012949,
+        "wrapper_pid": 867151,
+        "pgid": 867094,
+        "compiler_pid": 867153,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean",
+      "sha256": "a9ff484188f60dc58dfe142249bc28ed0cf9fbde1280020dba63d2c5b9a76e8a",
+      "run_id": "fa261c799e6541b9a68d7543dc7fb23c",
+      "source_sha256": "9437ec92a3ac6fe6040ff001e87ac862f1bca62eaf7d1081afca9df4f075dbb4",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T03:46:48.726517+00:00",
+        "monotonic": 75322390.63378513,
+        "wrapper_pid": 867595,
+        "pgid": 867538,
+        "compiler_pid": 867597,
+        "slot": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean",
+      "sha256": "e3776bb971ea3943fcc010812ed309358d46d7149a2e70b401d903ee1d192f3c",
+      "run_id": "70c27e125c914672b7347ca866b14b5e",
+      "source_sha256": "94ff0139b4121437ff5e1fe111ffcf557a15e479e541a51a1506045fdc2721a8",
+      "finished_event": {
+        "event": "finished",
+        "time": "2026-10-27T03:59:19.299205+00:00",
+        "monotonic": 75323141.20647328,
+        "wrapper_pid": 867831,
+        "pgid": 867774,
+        "compiler_pid": 867833,
+        "slot": 0,
+        "exit_code": 0
+      }
+    }
+  ],
+  "mathematical_result": "The original Cech augmentation, topological open-free/stalk contraction, resolution cycles, gluing, actual resolution bicomplex and its two total augmentations are shared generic producers. Scheme consumers supply genuine quasicoherent affine-intersection acyclicity. The canonical AddEquiv/LinearEquiv selects one injective resolution internally; all old public APIs and legacy supplied-resolution value data remain via transparent views and the proved independence boundary.",
+  "conditions": [
+    "Topological spaces for the stalk/skyscraper contraction; no arbitrary-site enough-points claim.",
+    "Original AddCommGrpCat/cover-index universe u and Ext universe u+1 preserved.",
+    "Generic columns require actual positive section exactness; canonical comparison requires iSup U=top and actual positive HPrime vanishing on tuple intersections.",
+    "Quasicoherence, affine tuple intersections and the separated affine-cover specialization remain genuine Scheme hypotheses.",
+    "Original Cech complex, product cones, alternating signs, row/column augmentations, constant-integer values, HPrime/H normalization, scalar maps and geometric squares preserved; no replacement nerve, quotient or totalization."
+  ],
+  "compatibility_checks": {
+    "missing_original_public_names": {
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/Comparison.lean": [],
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/Augmentation.lean": [],
+      "Aglib/AlgebraicGeometry/Cohomology/Injective/SectionCycles.lean": [],
+      "Aglib/AlgebraicGeometry/Cohomology/Cech/Modules.lean": []
+    },
+    "affine_mathematical_tail_byte_identical": true,
+    "legacy_linear_equiv_data": "The original __ field is unchanged; only its scalar proof reuses the canonical linear comparison through the proved equality."
+  },
+  "review": {
+    "verdict": "Retained independent mathematical source reviewer accepted v7 affected reconciliation; no remaining mathematical defect in assigned closure.",
+    "markdown": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/cech-comparison-intrinsic-core.md",
+    "json": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/cech-comparison-intrinsic-core.json",
+    "boundary": "Source review is separate from native execution and task-final trust/status gates. The report pending-native wording predates the last current source pass; this result supplies that pass without a new review/replay."
+  },
+  "validation_boundary": "All nine current owned source paths have actual matching native compiler successes, retained incrementally across six captures. Five earlier whole invocations were mixed-result exit1; only the final one-leaf run is an entire exit0. No whole-library, standalone lint/test or final axiom-audit claim. No Git mutations.",
+  "remaining": "The source/compiler assignment is complete. Principal-owned final integrated lint/test/axiom predicates and any README/generated-entry work remain outside this worker scope. Separately authorized one-shot Scheme a9ff cost profile is still pending; it is diagnostic only and not an acceptance gate.",
+  "reproduction_on_coherent_native_basis": "lake build +Aglib.AlgebraicGeometry.Cohomology.Cech.Modules",
+  "profile_request": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/cech-comparison-intrinsic-core-staging/profile/request-v2.json"
+}

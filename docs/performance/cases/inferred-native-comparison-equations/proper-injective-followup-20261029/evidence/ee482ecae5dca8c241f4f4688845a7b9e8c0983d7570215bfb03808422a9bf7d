@@ -1,0 +1,51 @@
+{
+  "question": "Repair actual native7f83 kernel timeout while preserving complete exact-coefficient assembly and all original native data",
+  "phase": "LIVE READY: repair1 exact lowerbff/nativeb70 published; compiler pending",
+  "aglib_head": "54d6974ace11bf7d197aa925cb8cade86db8a24f",
+  "source_basis": {
+    "actual_run": "remote-ea58796c97b44af5bb5072b84c7a0d3f",
+    "source": "926bd397ee6c4d7bb9ae084137ace7d9cd5d49033ae153de43b610340845ff4f",
+    "lower_c9ee": "passed in 3.871s on its actual old module bytes",
+    "native_7f83": "kernel deterministic timeout at46:8; dependent unknown constant at75:8",
+    "actual_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/incremental-compiler/recovery-20261029/A-live-ea58796c/build.log.partial"
+  },
+  "sources": [
+    {
+      "relative_path": "Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "sha256": "bff0408c72a4155d49a803c31f04dd9db1568048bef526e45eb39331da620183",
+      "before": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean",
+      "before_sha256": "c9ee952332ea060208cefe1cd392978fd244ea3735e1786a4873f2b00c6fd2cb"
+    },
+    {
+      "relative_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "candidate": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/candidate/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "sha256": "b70a3c5d0988000990a1aa8b4a178089191e0ee2ee2f935753d2ec8fe3516e8b",
+      "before": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/proper-injective-assembly-core-staging/repairs/1/before/Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean",
+      "before_sha256": "7f83a301df8be8fa8e35acba008626b8ff34a36a99c4be2b204da8425d232d89"
+    }
+  ],
+  "change": "Add lower literal-single view at variable Z and original construction equality Z=U\u22d9single; native supplies actual zmodSingle and rfl, retaining all hI/conclusion heads",
+  "mathematical_delta": "No new mathematical premise in native statements; no new model, endpoint isomorphism or desired-coherence input. Complete prior assembly theorem body unchanged.",
+  "method": "PERFORMANCE shared actual coefficient-single data head; recorded method guides repair, no unique kernel-pair attribution claimed",
+  "source_checks": {
+    "derivedExchange_on_all_zmodCoefficients": true,
+    "derivedExchange_on_killedCoefficients": true,
+    "higherExchange_on_killedCoefficients": true,
+    "killed_higher_tail_identical": true
+  },
+  "unchanged_scope": [
+    "Core InjectiveComparison",
+    "Owning README",
+    "All three native theorem statements",
+    "Killed/higher theorem proof tail",
+    "Package options/pins/standard200000/trust"
+  ],
+  "required_root": "Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Reduction.AllModuleCoefficients",
+  "publication": "Broker explicit repair window after Aea58796 and B12a2 closed; all exact source/core/HEAD guards passed",
+  "compiler_status": "pending",
+  "author": "/root/proper_injective_assembly_author",
+  "broker": "/root/incremental_compile_recovery",
+  "unchanged_core_sha256": "7e54af9098fc49f2b09564e30facada627d7ab8b4a05c89d0c460e8c1cd7fc6f",
+  "owned_status_after": " M Aglib/AlgebraicGeometry/EtaleCohomology/Proper/Reduction/AllModuleCoefficients.lean\n?? Aglib/Algebra/Homology/DerivedCategory/Plus/InjectiveComparisonExact.lean\n"
+}

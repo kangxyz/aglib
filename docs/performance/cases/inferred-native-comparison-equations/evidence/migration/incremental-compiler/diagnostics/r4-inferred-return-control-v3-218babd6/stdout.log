@@ -1,0 +1,13 @@
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:52:4: error(lean.unknownIdentifier): Unknown identifier `proofConclusion`
+
+Note: A private declaration `proofConclusion` (from the current module) exists but would need to be public to access here.
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:42: error(lean.unknownIdentifier): Unknown identifier `f`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:44: error(lean.unknownIdentifier): Unknown identifier `f'`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:47: error(lean.unknownIdentifier): Unknown identifier `g`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:49: error(lean.unknownIdentifier): Unknown identifier `g'`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:53:52: error(lean.unknownIdentifier): Unknown constant `sq.w.symm`
+/root/autodl-tmp/lean-build/scratch/etale-r4-frozen-context/30dc64a3623e4b468377cd6cebf08bc9/attempts/inferred-return-control-v3-e5cf0ffa7f67429c9016451c7504d75e/source/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Derived/ProperBaseChange.lean:1:0: error: The current module only contains private declarations.
+
+Consider adding `public section` at the beginning of the module, or selectively marking declarations as `public`. Mark a `def` with `@[expose]` if downstream code needs it to be definitionally equal to its body (e.g. for `unfold`). Alternatively, add `@[expose] public section` to mark every definition as exposed.
+
+Note: This linter can be disabled with `set_option linter.privateModule false`

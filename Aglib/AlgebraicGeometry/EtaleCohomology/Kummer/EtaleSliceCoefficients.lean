@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.Sites.EtaleSliceTopology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.GlobalUnits
 
 /-! # Original multiplicative coefficients on an etale slice
 
@@ -32,29 +33,16 @@ set_option backward.defeqAttrib.useBackward true in
 to the actual etale slice, not a separately chosen coefficient model. -/
 def gmEtaleSliceIso :
     (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse.obj (gm U.left) ≅
-      (gm X).over U :=
-  ObjectProperty.isoMk _ (NatIso.ofComponents
-    (fun V => ((unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj V)).trans
-      (unitsSections X (op V.unop.left)).symm).toAddCommGrpIso)
-    (by
-      intro V W f
-      ext a
-      apply (unitsSections X (op W.unop.left)).injective
-      change (unitsSections X (op W.unop.left))
-        ((unitsSections X (op W.unop.left)).symm
-          (unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj W)
-            ((gm U.left).obj.map ((Scheme.Etale.sliceForward U).op.map f) a))) =
-        (unitsSections X (op W.unop.left) ((gm X).obj.map f.unop.left.op
-          ((unitsSections X (op V.unop.left)).symm
-            (unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj V) a))))
-      rw [AddEquiv.apply_symm_apply]
-      change (unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj W)
-        ((gm U.left).obj.map ((Scheme.Etale.sliceForward U).op.map f) a)).toMul =
-        (unitsSections X (op W.unop.left) ((gm X).obj.map f.unop.left.op
-          ((unitsSections X (op V.unop.left)).symm
-            (unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj V) a)))).toMul
-      rw [unitsSections_naturality, unitsSections_naturality,
-        AddEquiv.apply_symm_apply]
-      rfl))
+      (gm X).over U := by
+  let eP := Functor.isoWhiskerLeft (Scheme.Etale.sliceForward U).op (gmGlobalUnitsIso U.left)
+  let eQ := Functor.isoWhiskerLeft (Over.forget U).op (gmGlobalUnitsIso X)
+  exact ObjectProperty.isoMk _ (eP ≪≫ eQ.symm)
+
+/-- Whole global-units transport has the original forward section-coordinate value. -/
+theorem gmEtaleSliceIso_hom_apply (V : (Over U)ᵒᵖ)
+    (a : (gm U.left).obj.obj ((Scheme.Etale.sliceForward U).op.obj V)) :
+    (gmEtaleSliceIso U).hom.hom.app V a =
+      (unitsSections X (op V.unop.left)).symm
+        (unitsSections U.left ((Scheme.Etale.sliceForward U).op.obj V) a) := rfl
 
 end GroupCohomology.Kummer.Coefficients
