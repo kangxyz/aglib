@@ -404,7 +404,9 @@ change, not a reason to strengthen Aglib's endpoint. This was traced from the
 declarations that use the parameter, not re-proved. After M5
 the weakened parameter reduces to curve-specific inputs: a curve with
 `CurveProperties` is projective, and on curves the degree-zero condition is a
-Hilbert-polynomial stratum by Riemann–Roch. An open and closed subfunctor of a
+Hilbert-polynomial stratum by Riemann–Roch. At rational points of a representing scheme this is proved
+(`Curves/Jacobian/DegreeStrata`, in Kleiman's `L^{-1}` convention). The subfunctor form needs
+it at all points of the test schemes, through the degree on `X_{κ(t)}`. An open and closed subfunctor of a
 representable functor is then representable. Research uses of
 Picard varieties over fields and of `Pic_{X/O_v}` with geometrically integral
 fibres fall under targets 5 and 6. Néron models, `Pic^τ` and the abelian
@@ -922,6 +924,15 @@ descent of F6 are also on Aglib `main` (9819d40, d4202b1, 8fc143f).
     local base change to an algebraically closed residue field is replaced by base change to a
     residue field of `X` and fpqc descent of smoothness. No group-scheme input is used. A review
     found no mathematical gap; its repairs are applied.
+  - Curve consumer (2026-10-30, `Curves/Jacobian/*`; Stacks, Tag 0BA0; Kleiman, Thm 2.5(2), p. 18,
+    (4.8.1), p. 28): from `Curve.Properties X` alone, over any field, the closed embedding
+    `X ⊆ P^N_k` and target 6 for `X.hom` itself (`Curve.exists_representableBy_fppfPicardSheaf_properties`,
+    without the embedding-dependent strata); the Abel morphism `X^n ⟶ P` as the Yoneda image of the
+    graph-sum family; with a section, `Pic(X) ≃+ P(k)`; at rational points, the stratum of
+    `m ↦ m · deg O(1) + 1 - g - d` is the degree-`d` locus. Over an algebraically closed field, for
+    every separated representing `P` locally of finite type, `Pic⁰_{X/k}` is the image of `X^g` and
+    the degree-zero stratum, is proper, and its rational points are the degree-zero classes as a
+    group. Review `review-a` (2026-10-30): no mathematical gap; its repairs are applied.
 - **Next.**
   - Paused after target 6 (2026-10-25). M6 exit criterion, the R5Lab retargeting ("Consumers and
     migration"): weaken `DegreeZeroPicardRepresentability` to locally Noetherian test schemes and

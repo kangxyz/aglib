@@ -1821,6 +1821,12 @@ public import Aglib.AlgebraicGeometry.Curves.Genus
 public import Aglib.AlgebraicGeometry.Curves.Genus.BaseChange
 public import Aglib.AlgebraicGeometry.Curves.GenusOneGroupLaw
 public import Aglib.AlgebraicGeometry.Curves.Isogeny.Etale
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.AbelMorphism
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeStrata
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeZero
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.PicardScheme
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.RationalPoints
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree.Isomorphism
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Cartier
