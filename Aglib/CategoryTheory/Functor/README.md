@@ -46,3 +46,8 @@ constructor; the component views retain their original factors.
 composition comparisons on a complete cube before taking components. They
 are used by the scalar-forgetting derived mate cube; `CompositionSquare`
 retains the corresponding original two-dimensional equations.
+
+[NatTrans/UnitInsertion](NatTrans/UnitInsertion.lean) constructs the complete
+transformation inserting an original target unit into the same functor
+composite. Its whole-value and component equations retain the two original
+factors. The Godement pullback-pushforward unit is a current consumer.

@@ -20,3 +20,9 @@ action hypotheses. Generic split topological groups and equivariant quotient
 algebra are lower dependencies. Current consumers are finite-etale monodromy
 and actual small-etale finite-coefficient H1; no new identification with an
 unprovided cochain-complex or geometric realization is asserted.
+
+[Continuous/GroupEquivalence](Continuous/GroupEquivalence.lean) uses the supplied
+mutually inverse group and coefficient pullback maps on the existing
+continuous-H1 quotient. It retains the original cocycle values and independent
+group/coefficient universes. Its character construction requires trivial action
+only on the cohomology target; the native Kummer field comparison is a consumer.

@@ -160,7 +160,8 @@ theorem dualSection_iso_square (h : σ ≫ e.hom = v.hom ≫ τ) :
           AlgebraicGeometry.Scheme.Modules.InternalHom.map X v.hom (𝟙 _) := by
     rw [AlgebraicGeometry.Scheme.Modules.InternalHom.map_comp,
         AlgebraicGeometry.Scheme.Modules.InternalHom.map_comp, h]
-  simpa only [AlgebraicGeometry.Scheme.Modules.InternalHom.iso, Iso.symm_inv, Iso.refl_hom,
+  simpa only [AlgebraicGeometry.Scheme.Modules.InternalHom.iso,
+      SheafOfModules.InternalHom.iso, Iso.symm_inv, Iso.refl_hom,
       AlgebraicGeometry.Scheme.Modules.InternalHom.dualSection,
     dualUnitIso, Iso.trans_hom, Iso.symm_hom, Category.assoc, Iso.hom_inv_id_assoc]
     using congrArg (fun z ↦ z ≫

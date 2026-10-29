@@ -31,6 +31,10 @@ variable {X S S' : Scheme.{u}} (f : X ⟶ S) (g : S' ⟶ S)
   [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} (pullback g f))]
   [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')]
 
+omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX'} (AbelianSheaf.{u, u + 1} (pullback g f))]
+  [HasDerivedCategory.{dS'} (AbelianSheaf.{u, u + 1} S')] in
 /-- Original all-degree base change for smooth morphisms of relative dimension zero. -/
 theorem higherBaseChangeMap_smoothOfRelativeDimension_zero_isIso (q : ℕ) :
     IsIso (higherBaseChangeMap f (pullback.fst g f) g (pullback.snd g f)

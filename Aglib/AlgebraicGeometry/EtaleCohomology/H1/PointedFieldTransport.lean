@@ -187,12 +187,22 @@ theorem representedH1_point (a : H1Etale.{u, u + 1, w} X (representedSheaf A)) :
   obtain ⟨p, rfl⟩ := (hA.bijective (representedSheaf A)).surjective a
   refine Quotient.inductionOn p ?_
   intro P
-  let Y := P.finiteEtaleRepresentative hR hcoeff.locally_constant
-  let e := P.finiteEtaleRepresentativeIso hR hcoeff.locally_constant
-  let τ := P.representedSchemeAction A Y e
-  let : Surjective Y.obj.hom := P.represented_surjective A Y e
+  let Y :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentative
+      (P := P) hR hcoeff.locally_constant
+  let e :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.finiteEtaleRepresentativeIso
+      (P := P) hR hcoeff.locally_constant
+  let τ :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeAction
+      (H := A) (P := P) (Y := Y) (e := e)
+  let : Surjective Y.obj.hom :=
+    _root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.represented_surjective
+      (H := A) (P := P) (Y := Y) (e := e)
   have he : torsorExtClass (torsorOfSchemeAction A Y τ) = torsorExtClass P :=
-    torsorExtClass_iso (P.representedSchemeActionIso A Y e)
+    torsorExtClass_iso
+      (_root_.AlgebraicGeometry.Scheme.EtaleCohomology.Torsor.representedSchemeActionIso
+        (H := A) (P := P) (Y := Y) (e := e))
   let : Nonempty (Fiber (FieldGalois.geometricPoint F ≫ o) Y) :=
     SchemeTorsorClassification.nonempty_fiber_of_surjective (FieldGalois.geometricPoint F ≫ o) Y
   let t : Fiber (FieldGalois.geometricPoint F ≫ o) Y := Classical.choice inferInstance

@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleBaseChange
+public import Aglib.CategoryTheory.Adjunction.UnderlyingEquivalence
 
 /-! # Original native-to-valued adjunction compatibility -/
 
@@ -32,8 +33,10 @@ theorem moduleDirectImageTransportIso_inv_comparison (M : ModuleSheaf S Λ) :
   let E := moduleSheafEquivalence X Λ
   have hk : (moduleDirectImageTransportIso f Λ).inv.app M =
       E.functor.map ((moduleDirectImageComparison f Λ).inv.app M) ≫
-        E.counitIso.hom.app ((moduleDirectImage f Λ).obj M) := by
-    simp [moduleDirectImageTransportIso, E]
+        E.counitIso.hom.app ((moduleDirectImage f Λ).obj M) :=
+    Equivalence.transportRightIso_inv_app E (moduleDirectImage f Λ)
+      (moduleSheafEquivalence S Λ).inverse (moduleValuedDirectImage f Λ)
+      (moduleDirectImageComparison f Λ) M
   rw [hk, Functor.map_comp]
   change (E.inverse.map (E.functor.map _) ≫ E.inverse.map (E.counit.app _)) ≫ _ = _
   rw [← E.unitInv_app_inverse]
