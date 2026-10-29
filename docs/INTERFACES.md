@@ -21,6 +21,10 @@ do not install a global model instance or collapse necessary universe bounds.
 Different mathematical categories and genuinely required comparison maps
 remain part of their statements.
 
+Keep each specialized lemma's telescope limited to the objects, maps and
+conditions used by that claim. The [complete-construction rule](ARCHITECTURE.md#complete-abstraction-thin-instances-and-minimal-models)
+governs abstraction, specialization and evaluation before native inputs.
+
 ## Object properties and categorical structures
 
 Ambient module sheaves are Mathlib's actual `X.Modules`. Quasicoherence, finite type, finite presentation and finite local freeness are distinct properties of these sheaves. The locally Noetherian coherent category is an abelian/exact specialization; those categorical structures must not impose local Noetherianity on lower finite-type or finite-presentation constructions that do not need it.

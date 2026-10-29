@@ -20,6 +20,38 @@ If a lower object needs a generic map currently hidden in a higher source, split
 
 The implemented graph decides precise dependencies. A reading order or book chapter order is not a substitute for inspecting the actual imports and object types.
 
+## Complete abstraction, thin instances and minimal models
+
+Build the complete reusable construction, its operational maps and the laws
+needed by current consumers at the weakest sufficient mathematical layer.
+Categories and adjunctions own formal arguments; actual topoi and geometric
+morphisms provide intrinsic sheaf operations; sites provide presentations and
+local calculations. Complexes and derived categories supply the operations
+that require them. Keep the original coefficient, size, exactness, acyclicity,
+boundedness and geometric hypotheses explicit.
+
+Define native instances through the same chosen constructors and maps. A thin
+instance supplies the original geometric data and proves exact carrier, action,
+map and unit/counit correspondence. Complete comparison, mate/base-change and
+descent arguments include their required coherence and final assembly. A
+native instance discharges newly introduced comparison or coherence inputs
+from the original data. Genuinely unsupplied mathematical premises retain
+their original stated scope.
+
+Prove whole comparison laws before evaluating them at an object, coefficient
+or degree. Where evaluation itself carries substantial implementation data,
+prove that evaluation over variable categories and functors before specializing.
+Keep a local lemma's inputs limited to the actual maps and conditions used by
+its argument, and share the construction as well as its proof.
+
+Apply [minimal implementation choices](INTERFACES.md#minimal-implementation-choices)
+throughout: reuse one selected realization per actual object or category,
+retain genuinely independent comparison worlds and universe bounds, and use
+ordinary Hom, Ext or natural-degree cohomology when they suffice. Focused
+[compilation units](DEVELOPMENT.md#normal-task) keep stable constructions and
+independent proof repairs separately reusable. These rules govern the library
+and its native instances across topologies.
+
 ## Selecting a source family
 
 Use the actual pinned Mathlib subject as the first reference, inspecting its
