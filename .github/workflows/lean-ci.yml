@@ -40,11 +40,15 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
     outputs:
       outcome: ${{ steps.build.outcome }}
       cache-key: ${{ steps.restore.outputs.cache-primary-key }}
       staged: ${{ steps.stage.outputs.staged }}
     steps:
+      - name: Set Build deadline
+        shell: bash
+        run: echo "BUILD_DEADLINE=$(( $(date +%s) + 330 * 60 ))" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
@@ -159,7 +163,20 @@ jobs:
             echo '::error::build-targets must name at least one production root.'
             exit 1
           fi
-          lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"
+          remaining=$((BUILD_DEADLINE - $(date +%s)))
+          if test "$remaining" -le 0; then
+            echo '::warning::The Build job has used its 330-minute compiler budget. Cache saving will still be attempted; rerun this branch to resume from saved partial outputs.'
+            exit 124
+          fi
+          if timeout --signal=INT --kill-after=60s "${remaining}s" lake build --rehash "${targets[@]}" -o "$RUNNER_TEMP/outputs.jsonl"; then
+            exit 0
+          else
+            status=$?
+          fi
+          if test "$status" -eq 124 || test "$status" -eq 137; then
+            echo "::warning::Build stopped with timeout/kill status $status at the job's compiler cutoff. Partial outputs will be saved where possible by the following cache steps; rerun this branch to resume the incremental build."
+          fi
+          exit "$status"
       - name: Save compilation independently of Test and lint
         if: ${{ always() }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9

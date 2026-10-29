@@ -22,6 +22,17 @@ downloads from Reservoir/GitHub. This is separate from
   or an auditor, run generated-entry or text-style checks, or build `check-targets`.
   Its final report requires the production build to succeed; checker failures
   belong to Test and do not change Build's result. Production Build is not retried.
+  The first step records a compiler deadline 330 minutes after the Build job
+  starts, including checkout, cache restoration, setup and dependency downloads.
+  Production Lake receives only the time remaining, through GNU `timeout` with
+  `SIGINT` and a sixty-second kill grace period. An already expired deadline
+  skips Lake; timeout exit 124 or forced-kill exit 137 fails Build, so Test and
+  Publish cache do not run. The job limit is 360 minutes, reserving about thirty
+  minutes for the existing cache save and partial-output staging. Cache saving
+  still runs after compiler failure or cutoff, before staging. A later run on
+  the same branch restores compatible saved outputs and continues incrementally;
+  no automatic rerun is scheduled. Network failures or runner teardown can still
+  prevent cache delivery.
 - `test_lint` requires successful Build. It downloads this run's mandatory
   `cache-staging` artifact, overlays its native mappings/artifacts with
   `lake cache unstage --force-overwrite`, and verifies only the production targets
