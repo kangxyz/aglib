@@ -110,6 +110,16 @@ Each job restores `.lake` and the native cache directory together once. Build
 and Test run on separate runners and each saves its completed compilation,
 including partial progress on failure. Test's Actions restore warms dependency
 and checker/auditor outputs; it does not substitute for the current Build artifact.
+Before either job first invokes Lake, it removes only read-only, runner-owned
+regular `*.ltar.hash` sidecars under the root package's `.lake/build/ir`.
+Lake 4.34.1 writes these derived hash files directly. Runs 40818968404,
+40846135998 and 40880003859 repeatedly failed while writing the inherited
+`ToUnit.ltar.hash`; their logs establish failed writes and cache reuse, but
+do not record the original sidecar's mode, owner or origin.
+The cleanup requires runner-owned writable real build directories, skips
+symlinks, and unlinks metadata without changing immutable artifact permissions
+or shared cache inodes. The existing rehashed build regenerates those hashes;
+writable sidecars, compiled outputs and cache mappings are preserved.
 The required current-run artifact overwrites production cache mappings. The
 no-build check tests availability and applicability of those production outputs
 against native inputs, without requiring checker outputs from Build. It does not

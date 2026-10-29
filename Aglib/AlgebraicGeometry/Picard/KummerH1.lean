@@ -302,7 +302,7 @@ theorem pairClassToH1_forget [IsNoetherian X]
     (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤))) (P : Classes X n) :
     coefficientMap (inclusion X n) (pairClassToH1 X h n hn hinv P) =
       torsorClassToH1 (gm X)
-          (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv h
+          (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv X
           (forgetClass X P)) := by
   refine Quotient.inductionOn P ?_
   intro P
@@ -317,7 +317,7 @@ theorem pairClassToH1_injective_of_global_roots (h : EtaleLineBundleDescent.{u})
     Function.Injective (pairClassToH1 X h n hn hinv) := by
   intro P Q hPQ
   apply forgetClass_injective X hroot
-  apply (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv h).injective
+  apply (AlgebraicGeometry.Scheme.Modules.Invertible.AssociatedBundle.classEquiv X).injective
   apply (h03AJ.bijective (gm X)).injective
   rw [← pairClassToH1_forget X h n hn hinv, ← pairClassToH1_forget X h n hn hinv, hPQ]
 
@@ -377,8 +377,7 @@ theorem inclusion_H1_injective (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks0
   obtain ⟨Q, rfl⟩ := pairClassToH1_surjective X h h03AJ n hn hinv y
   have hpq : P = Q := by
     apply forgetClass_injective X hroot
-    apply (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X
-        h03AJ).injective
+    apply (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X).injective
     exact (pairClassToH1_forget X h n hn hinv P).symm.trans
       (hxy.trans (pairClassToH1_forget X h n hn hinv Q))
   rw [hpq]
@@ -397,11 +396,11 @@ theorem pairClassToH1_add (h : EtaleLineBundleDescent.{u}) (h03AJ : Stacks03AJ.{
     coefficientMap (X := X) (inclusion X n)
       (pairClassToH1 X h n hn hinv P + pairClassToH1 X h n hn hinv Q)
   rw [map_add, pairClassToH1_forget, pairClassToH1_forget, pairClassToH1_forget]
-  change (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
+  change (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
       (forgetClass X (P + Q)) =
-    (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
+    (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
         (forgetClass X P) +
-      (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv h X h03AJ)
+      (AlgebraicGeometry.Scheme.Modules.Invertible.FrameTensor.picardH1Equiv.{u, w} X)
           (forgetClass X Q)
   have hf : forgetClass X (P + Q) = forgetClass X P + forgetClass X Q :=
     congrArg Subtype.val ((picardTorsionAddEquiv X n hroot).map_add P Q)

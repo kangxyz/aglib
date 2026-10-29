@@ -234,6 +234,113 @@ class WorkflowGates(unittest.TestCase):
         self.assertIn('--root "$root"', step('test_lint', 'Audit production axioms')['run'])
 
 
+class RestoredArchiveHashMetadata(unittest.TestCase):
+    name = 'Remove read-only restored archive hash sidecars'
+
+    def cleanup(self, root):
+        return subprocess.run(['bash', '-e', '-o', 'pipefail', '-c',
+                               step('build', self.name)['run']], cwd=root,
+                              capture_output=True, text=True)
+
+    def test_both_jobs_clean_restored_metadata_before_first_lake_invocation(self):
+        for job in ('build', 'test_lint'):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, self.name)
+            restore = next(item for item in actions
+                           if item.get('uses', '').startswith('actions/cache/restore@'))
+            self.assertEqual(cleanup['run'], step('build', self.name)['run'])
+            self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
+            self.assertLess(actions.index(restore), actions.index(cleanup))
+            self.assertLess(actions.index(cleanup), actions.index(step(job, 'Configure Lean')))
+        self.assertIn('lake build --rehash', step('build', 'Build')['run'])
+
+    def test_tar_restored_readonly_sidecar_is_regenerated_without_mutating_artifacts(self):
+        with tempfile.TemporaryDirectory(prefix='restored-archive-hash-') as directory:
+            root = Path(directory)
+            source = root / 'source'
+            ir = source / '.lake/build/ir/Aglib/Path with spaces'
+            ir.mkdir(parents=True)
+            cached = source / 'native-cache/artifacts/immutable'
+            cached.parent.mkdir(parents=True)
+            cached.write_text('0123456789abcdef')
+            readonly = ir / 'ToUnit.ltar.hash'
+            os.link(cached, readonly)
+            cached.chmod(0o444)
+            for name, content, mode in (('Writable.ltar.hash', 'keep writable hash', 0o644),
+                                         ('ToUnit.ltar', 'immutable archive', 0o444),
+                                         ('ToUnit.olean.hash', 'other hash metadata', 0o444)):
+                path = ir / name
+                path.write_text(content)
+                path.chmod(mode)
+            archive = root / 'cache.tar'
+            with tarfile.open(archive, 'w') as stream:
+                stream.add(source / '.lake', arcname='.lake')
+                stream.add(source / 'native-cache', arcname='native-cache')
+            restored = root / 'restored'
+            restored.mkdir()
+            subprocess.run(['tar', '-xf', str(archive), '-C', str(restored)], check=True)
+            ir = restored / ir.relative_to(source)
+            cached = restored / cached.relative_to(source)
+            readonly = ir / readonly.name
+            self.assertEqual(readonly.stat().st_ino, cached.stat().st_ino)
+            self.assertEqual(readonly.stat().st_mode & 0o777, 0o444)
+            external = root / 'external'
+            external.mkdir()
+            target = external / 'Outside.ltar.hash'
+            target.write_text('external metadata')
+            target.chmod(0o444)
+            (ir / 'Linked.ltar.hash').symlink_to(target)
+            (ir / 'linked-directory').symlink_to(external, target_is_directory=True)
+            result = self.cleanup(restored)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('Removed 1 read-only', result.stdout)
+            self.assertFalse(readonly.exists())
+            readonly.write_text('fedcba9876543210')  # Native rehash can recreate the sidecar.
+            self.assertTrue(readonly.stat().st_mode & 0o200)
+            self.assertEqual(cached.read_text(), '0123456789abcdef')
+            self.assertEqual(cached.stat().st_mode & 0o777, 0o444)
+            self.assertEqual((ir / 'ToUnit.ltar').read_text(), 'immutable archive')
+            self.assertEqual((ir / 'ToUnit.ltar').stat().st_mode & 0o777, 0o444)
+            self.assertEqual((ir / 'Writable.ltar.hash').read_text(), 'keep writable hash')
+            self.assertEqual((ir / 'ToUnit.olean.hash').read_text(), 'other hash metadata')
+            self.assertTrue((ir / 'Linked.ltar.hash').is_symlink())
+            self.assertEqual(target.read_text(), 'external metadata')
+            self.assertEqual(target.stat().st_mode & 0o777, 0o444)
+
+    def test_missing_build_tree_is_a_noop(self):
+        with tempfile.TemporaryDirectory(prefix='missing-archive-hash-') as root:
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            self.assertEqual(list(Path(root).iterdir()), [])
+
+    def test_symlink_ancestors_and_nonwritable_directories_fail_before_unlink(self):
+        for ancestor in ('.lake', '.lake/build', '.lake/build/ir'):
+            with self.subTest(ancestor=ancestor), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                external = root / 'external'
+                external.mkdir()
+                path = root / ancestor
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.symlink_to(external, target_is_directory=True)
+                result = self.cleanup(root)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('Unsafe restored build directory', result.stderr)
+                self.assertEqual(list(external.iterdir()), [])
+        with tempfile.TemporaryDirectory() as directory:
+            ir = Path(directory) / '.lake/build/ir/Aglib'
+            ir.mkdir(parents=True)
+            sidecar = ir / 'ToUnit.ltar.hash'
+            sidecar.write_text('0123456789abcdef')
+            sidecar.chmod(0o444)
+            ir.chmod(0o555)
+            try:
+                result = self.cleanup(directory)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('Unsafe restored build directory', result.stderr)
+                self.assertTrue(sidecar.exists())
+            finally:
+                ir.chmod(0o755)
+
+
 class BuildJobBudget(unittest.TestCase):
     def test_deadline_is_first_and_includes_setup_time(self):
         first = JOBS['build']['steps'][0]

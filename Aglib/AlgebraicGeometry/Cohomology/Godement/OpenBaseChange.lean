@@ -36,6 +36,18 @@ set_option backward.defeqAttrib.useBackward true
 
 universe u
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+private lemma unit_span_pasting {C : Type*} [Category C]
+    {A B D E F G : C} {u : A ⟶ B} {p : B ⟶ D} {v : A ⟶ E}
+    {q : E ⟶ D} {r : D ⟶ F} {s : E ⟶ G} {t : G ⟶ F}
+    (h₁ : u ≫ p = v ≫ q) (h₂ : q ≫ r = s ≫ t) :
+    u ≫ p ≫ r = (v ≫ s) ≫ t := by
+  calc
+    u ≫ p ≫ r = (u ≫ p) ≫ r := (Category.assoc _ _ _).symm
+    _ = (v ≫ q) ≫ r := congrArg (fun k => k ≫ r) h₁
+    _ = v ≫ (q ≫ r) := Category.assoc _ _ _
+    _ = v ≫ (s ≫ t) := congrArg (fun k => v ≫ k) h₂
+    _ = (v ≫ s) ≫ t := (Category.assoc _ _ _).symm
+
 namespace AlgebraicGeometry.Scheme.Modules
 
 namespace Plus
@@ -288,11 +300,15 @@ lemma local_total_unit_component (K : CochainComplex.Plus X.Modules) (n : ℤ) :
     ((godementTotalPlusUnit W).app ((Scheme.Modules.pullback b).mapCochainComplexPlus.obj
       ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))).hom.f n ≫
         ((godementTotalPlus W).map (openTotalBridge a b f j h K)).hom.f n := by
-  rw [← openTotalBridge_f]
-  exact augmentation_component_naturality (godementTotalPlus W) (godementTotalPlusUnit W)
+  have hn := augmentation_component_naturality (godementTotalPlus W) (godementTotalPlusUnit W)
     ((Scheme.Modules.pullback b).mapCochainComplexPlus.obj
       ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))
     (restrictedTotalPlus a f K) (openTotalBridge a b f j h K) n
+  have hb := congrArg
+    (fun q => q ≫ ((godementTotalPlusUnit W).app (restrictedTotalPlus a f K)).hom.f n)
+    (openTotalBridge_f a b f j h K n)
+  have he := hb.symm.trans hn
+  exact he
 
 lemma open_component_first_square (K : CochainComplex.Plus X.Modules) (n : ℤ) :
     (((Scheme.Modules.restrictFunctor j).map
@@ -358,9 +374,10 @@ lemma open_unit_span_component (K : CochainComplex.Plus X.Modules) (n : ℤ) :
           ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.obj K))).hom.f n)) ≫
       (Scheme.Modules.pushforward b).map
         (((godementTotalPlus W).map (openTotalBridge a b f j h K)).hom.f n) := by
-  rw [← Category.assoc, open_component_first_square, Category.assoc,
-    open_component_second_square]
-  simp only [Category.assoc]
+  have h₁ := open_component_first_square a b f j h K n
+  have h₂ := open_component_second_square a b f j h K n
+  have he := unit_span_pasting h₁ h₂
+  exact he
 
 lemma open_unit_span_factorized (K : CochainComplex.Plus X.Modules) :
     ((Scheme.Modules.restrictFunctor j).mapCochainComplexPlus.map

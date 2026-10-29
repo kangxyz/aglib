@@ -168,9 +168,11 @@ theorem higherBaseChangeMap_smooth_isIso_of_line
     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
     (h : IsPullback g' f' f g) [QuasiCompact f] [QuasiSeparated f] [Smooth g]
     (hn : IsUnit (n : Γ(S, ⊤))) (F : AbelianSheaf.{u, u + 1} X) (hF : n • 𝟙 F = 0) (q : ℕ) :
-    IsIso ((higherBaseChangeMap f f' g g' h.w.symm q).app F) :=
-  Proper.higherBaseChangeMap_isIso_of_boundedExchange f f' g g' h.w.symm n
-    (uniformHigherBaseChange_smooth_of_line hline g f f' g' h
-      inferInstance inferInstance hn) F hF q
+    IsIso ((higherBaseChangeMap f f' g g' h.w.symm q).app F) := by
+  simpa only [higherBaseChangeMapFromDerived_eq] using
+    (Proper.higherBaseChangeMap_isIso_of_boundedExchange.{u, dX, dS, dX', dS'}
+      f f' g g' h.w.symm n
+      (uniformHigherBaseChange_smooth_of_line hline g f f' g' h
+        inferInstance inferInstance hn) F hF q)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.SmoothReduction

@@ -26,6 +26,11 @@ suppliers. No new extension-by-zero functor is constructed.
 `EtaleRelativeDimensionZero.lean` specializes both theorems through the native
 characterization of étaleness as smoothness of relative dimension zero.
 
+`Horizontal.lean` proves composition and cancellation for the original ordinary
+higher exchange without derived-category choices. Its étale specialization
+retains the four independent derived worlds used by the existing Cartesian
+comparison supplier.
+
 ## Allowed torsion and its original filtered presentation
 
 `AllowedTorsion.lean` defines `IsBaseInvertibleTorsion S F` using local positive

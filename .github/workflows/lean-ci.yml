@@ -66,6 +66,45 @@ jobs:
             lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory)) }}-
             lean-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles(format('{0}/lean-toolchain', inputs.package-directory), format('{0}/lake-manifest.json', inputs.package-directory)) }}-
             lean-${{ runner.os }}-${{ runner.arch }}-
+      - name: Remove read-only restored archive hash sidecars
+        working-directory: ${{ inputs.package-directory }}
+        run: &restore-writable-archive-hashes |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import stat
+
+          # Lake rewrites these derived hashes, even when the artifact is immutable.
+          # Unlink the sidecar instead of changing permissions on shared cache inodes.
+          def owned_directory(path):
+              metadata = path.lstat()
+              if (not stat.S_ISDIR(metadata.st_mode) or metadata.st_uid != os.getuid()
+                      or not metadata.st_mode & stat.S_IWUSR):
+                  raise SystemExit(f'Unsafe restored build directory: {path}')
+
+          root = Path('.lake/build/ir')
+          for parent in (Path('.lake'), Path('.lake/build'), root):
+              try:
+                  owned_directory(parent)
+              except FileNotFoundError:
+                  raise SystemExit(0)
+          removed = 0
+          for directory, children, files in os.walk(root, followlinks=False):
+              owned_directory(Path(directory))
+              children[:] = [name for name in children
+                             if not (Path(directory) / name).is_symlink()]
+              for name in files:
+                  if not name.endswith('.ltar.hash'):
+                      continue
+                  path = Path(directory) / name
+                  metadata = path.lstat()
+                  if stat.S_ISREG(metadata.st_mode) and not metadata.st_mode & stat.S_IWUSR:
+                      if metadata.st_uid != os.getuid():
+                          raise SystemExit(f'Foreign restored archive hash sidecar: {path}')
+                      path.unlink()
+                      removed += 1
+          print(f'Removed {removed} read-only restored archive hash sidecars; Lake will recompute them.')
+          PY
       - name: Configure Lean
         id: lean-setup
         working-directory: ${{ inputs.package-directory }}
@@ -252,6 +291,9 @@ jobs:
           restore-keys: |
             ${{ needs.build.outputs.cache-key }}-tests-
             ${{ needs.build.outputs.cache-key }}
+      - name: Remove read-only restored archive hash sidecars
+        working-directory: ${{ inputs.package-directory }}
+        run: *restore-writable-archive-hashes
       - name: Configure Lean
         id: lean-setup
         working-directory: ${{ inputs.package-directory }}

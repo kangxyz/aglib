@@ -100,8 +100,14 @@ theorem transportUnit_iso {Q : Torsor (gm X)} (e : Torsor.Iso P Q)
   have ht : transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
       (e.carrierIso.hom.hom.app (op U) t) = transport P (op U) s t := by
     apply transport_eq
-    rw [← e.equivariant, action_transport]
-  simp only [transportUnit, ht]
+    have he := e.equivariant (op U) (transport P (op U) s t) s
+    exact he.symm.trans
+      (congrArg (fun x : P.carrier.obj.obj (op U) => e.carrierIso.hom.hom.app (op U) x)
+        (action_transport P (op U) s t))
+  change (unitsSections X (op U) (transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
+      (e.carrierIso.hom.hom.app (op U) t))).toMul =
+    (unitsSections X (op U) (transport P (op U) s t)).toMul
+  exact congrArg (fun a : (gm X).obj.obj (op U) => (unitsSections X (op U) a).toMul) ht
 
 /-- Positive evaluation is natural under an actual equivariant torsor
 isomorphism, before any frame is selected. -/
@@ -147,7 +153,11 @@ theorem frameTransport_tensor (L M : LineBundle X)
     change frameAction etaleLineBundleDescent X L (op U) a s = s' at ha
     change frameAction etaleLineBundleDescent X M (op U) b t = t' at hb
     rw [ha, hb]
-  dsimp only [transportUnit]
+  change (unitsSections X (op U)
+      (transport (frameTorsor etaleLineBundleDescent X (tensorLineBundle X L M)) (op U)
+        (FrameTensor.tensorSection etaleLineBundleDescent X L M (op U) s t)
+        (FrameTensor.tensorSection etaleLineBundleDescent X L M (op U) s' t'))).toMul =
+    (unitsSections X (op U) a).toMul * (unitsSections X (op U) b).toMul
   rw [ht]
   exact congrArg Additive.toMul ((unitsSections X (op U)).map_add a b)
 
@@ -738,8 +748,8 @@ theorem class_eq_zero_of_kernelCharacter_eq_one [IsAlgClosed k]
       exact (congrArg Additive.ofMul ht).trans (map_zero _).symm
     have ha := action_transport P (op (cover f)) s
       (P.carrier.obj.map (kernelDeckRepresentation f x).hom.op s)
-    rw [hzero, P.zero_action] at ha
-    exact ha.symm
+    rw [hzero] at ha
+    exact ha.symm.trans (P.zero_action (op (cover f)) s)
   obtain ⟨t, _, _⟩ := deckInvariant_descends f P.carrier s hs
   let e := ((Scheme.Modules.pullbackId D.X.left).app L.val).symm ≪≫
     frameSectionsEquiv etaleLineBundleDescent D.X.left L (op (etaleTerminal D.X.left)) t ≪≫

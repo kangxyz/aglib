@@ -15,11 +15,42 @@ public import Aglib.CategoryTheory.Adjunction.ExchangeTransport
 
 open CategoryTheory CategoryTheory.Limits
 
+/-- Evaluate the original two-comparison chain before substituting concrete
+coefficient categories, keeping both actual comparison maps. -/
+private theorem comparison_comp_hom_app
+    {A B C D E F : Type*} [Category* A] [Category* B] [Category* C]
+    [Category* D] [Category* E] [Category* F]
+    (P : A ⥤ B) (Q : B ⥤ C) (U : A ⥤ D) (V : B ⥤ E) (W : C ⥤ F)
+    (P' : D ⥤ E) (Q' : E ⥤ F)
+    (a : P ⋙ V ≅ U ⋙ P') (b : Q ⋙ W ≅ V ⋙ Q')
+    (c : (P ⋙ Q) ⋙ W ≅ U ⋙ P' ⋙ Q')
+    (hc : c = Functor.associator P Q W ≪≫ Functor.isoWhiskerLeft P b ≪≫
+      (Functor.associator P V Q').symm ≪≫ Functor.isoWhiskerRight a Q' ≪≫
+        Functor.associator U P' Q') (M : A) :
+    c.hom.app M = b.hom.app (P.obj M) ≫ Q'.map (a.hom.app M) := by
+  subst c
+  simp
+
 universe u
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 open Coefficients
+
+/-- The native alias has the two original factors of the shared constant-ring
+comparison, with no replacement isomorphism or coefficient realization. -/
+private theorem native_compRightIso_hom_app {X S T : Scheme.{u}}
+    (Λ : Type (u + 1)) [Ring Λ] (f : S ⟶ X) (g : T ⟶ S) (M : ModuleSheaf T Λ) :
+    (moduleDirectImageCompRightIso Λ f g).hom.app M =
+      (moduleDirectImageComparison f Λ).hom.app ((moduleDirectImage g Λ).obj M) ≫
+        (moduleValuedDirectImage f Λ).map ((moduleDirectImageComparison g Λ).hom.app M) :=
+  comparison_comp_hom_app
+    (moduleDirectImage g Λ) (moduleDirectImage f Λ)
+    (moduleSheafEquivalence T Λ).inverse (moduleSheafEquivalence S Λ).inverse
+    (moduleSheafEquivalence X Λ).inverse
+    (moduleValuedDirectImage g Λ) (moduleValuedDirectImage f Λ)
+    (moduleDirectImageComparison g Λ) (moduleDirectImageComparison f Λ)
+    (moduleDirectImageCompRightIso Λ f g) rfl M
 
 variable {X S T : Scheme.{u}} (f : X ⟶ S) (g : T ⟶ S) [Etale g]
   (Λ : Type (u + 1)) [Ring Λ]
@@ -53,11 +84,7 @@ theorem moduleEtaleBaseChangeIso_horizontal_unit (M : ModuleSheaf X Λ) :
     (moduleEtaleBaseChangeIso_valued f g Λ)
     (moduleValuedEtaleBaseChangeIso_unit f g Λ) M
   intro N
-  simpa only [moduleDirectImageCompRightIso, Iso.trans_hom, NatTrans.comp_app,
-    Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom,
-    Functor.whiskerLeft_app, Functor.whiskerRight_app, Functor.associator_hom_app,
-    Functor.associator_inv_app, Iso.symm_hom, Functor.map_id,
-    Functor.comp_obj, Category.id_comp, Category.comp_id, Category.assoc] using
+  simpa only [native_compRightIso_hom_app, Category.assoc] using
     moduleDirectImageSquareIso_hom_valued Λ f (pullback.fst g f) g
       (pullback.snd g f) pullback.condition N
 
