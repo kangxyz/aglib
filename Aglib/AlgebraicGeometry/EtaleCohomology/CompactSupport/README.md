@@ -3,8 +3,12 @@
 This family defines compactly supported cohomology for an open immersion `j : U ⟶ X` of schemes
 in `Scheme.{u}` as the original cohomology of the extension by zero, with coefficients
 `AbelianSheaf.{u, u + 1}` on the actual small étale sites. Its declarations belong to
-`AlgebraicGeometry.Scheme.EtaleCohomology.CompactSupport`. Ext universes are explicit and
-independent (`w` on `X`, `w'` on a finite point scheme); `HasExt` is a size hypothesis.
+`AlgebraicGeometry.Scheme.EtaleCohomology.CompactSupport`, except the three extension-by-zero
+comparisons of [OpenLocalization](OpenLocalization.lean)
+(`etaleLowerShriek_counit_directImage_isIso_of_range_subset`, `inverseImageDirectImageCompIso`,
+`etaleLowerShriekDirectImageIso`), which are in `AlgebraicGeometry.Scheme.EtaleCohomology`. Ext
+universes are explicit and independent (`w` on `X`, `w'` on a closed part or finite point
+scheme); `HasExt` is a size hypothesis.
 
 ## Definition and long exact sequences
 
@@ -62,8 +66,41 @@ positive degree (`subsingleton_H_pointRemoval_third_of_sepClosed`), so
 `extensionCohomologyMap_bijective_of_sepClosed` and `extensionCohomologyAddEquiv` hold for
 `r ≥ 2`. `pointRemovalBoundary` and the low-degree exactness theorems give the degree-zero/one
 sequence through `pointScheme X D`. The third term is `i_* i^* (j_{U!} F)` on the whole support
-`X − V`. Its identification with the points of `U − V`, as in the sequence on `U` of Milne,
-loc. cit., Thm 14.7, proof, Step 2, p. 94, is not formalized.
+`X − V`; its identification with the points of `U − V` is not formalized. The sequence on `U` of
+Milne, loc. cit., Thm 14.7, proof, Step 2, p. 94, with third term on the points of `U − V`, is
+that of [OpenLocalization](OpenLocalization.lean) below; both sequences have the first map
+`extensionCohomologyMap`.
+
+## The open-closed sequence on an open subscheme
+
+[OpenLocalization](OpenLocalization.lean) takes open immersions `jV : V ⟶ U`, `jU : U ⟶ X`, a
+closed immersion `i : Z ⟶ U` with `Set.range jV = (Set.range i)ᶜ` such that `i ≫ jU` is a closed
+immersion, and `F` on `U`, and uses the long exact sequence of compactly supported cohomology
+along `jU` of the original sequence `0 → jV_! jV^* F → F → i_* i^* F → 0` on `U`
+(`abelianLocalization_shortExact`, Stacks, Tag 095L). Its terms are identified on the original
+maps. `lowerShriekAddEquiv : H^q_c(U, jV_! A) ≃+ H^q_c(V, A)` is `Sheaf.H` of the inverse of
+`etaleLowerShriekCompIso`; under it `H.map` of the counit `jV_! jV^* F ⟶ F` is the
+`extensionCohomologyMap` of [PointRemoval](PointRemoval.lean) (`extensionMap_eq_compIso_counit`,
+`extensionCohomologyMap_eq_map_counit`). `directImageAddEquiv : H^q_c(U, i_* M) ≃+ H^q(Z, M)` is
+`Sheaf.H` of `etaleLowerShriekDirectImageIso : jU_! ∘ i_* ≅ (i ≫ jU)_*` (Stacks, Tag 0GJ1, for
+the cartesian square of `i ≫ jU` and `jU`), followed by the finite direct-image comparison. That
+isomorphism is `jU_!` of the inverse of `inverseImageDirectImageCompIso : jU^* ∘ (i ≫ jU)_* ≅ i_*`
+followed by the original counit of `jU_! ⊣ jU^*`, which is invertible at `(i ≫ jU)_* M`
+(`etaleLowerShriek_counit_directImage_isIso_of_range_subset`; Stacks, Tag 0F70, second
+statement). With `compactRestriction` and `compactBoundary` the sequence
+`… → H^r_c(V, F|_V) → H^r_c(U, F) → H^r(Z, i^* F) → H^{r+1}_c(V, F|_V) → …` is exact
+(`exact_extensionCohomologyMap_compactRestriction`, `exact_compactRestriction_compactBoundary`,
+`exact_compactBoundary_extensionCohomologyMap`), and its first map is injective in degree zero
+(`extensionCohomologyMap_zero_injective_of_closedImmersion`). For a finite set `D` of points of
+`U` that are closed in `X` and `Set.range jV = Dᶜ`, `inclusion U D ≫ jU` is a closed immersion
+(`isClosedImmersion_inclusion_comp`); `compactPointRestriction` and `compactPointBoundary` give
+the sequence through `pointScheme U D` (`exact_extensionCohomologyMap_compactPointRestriction`,
+`exact_compactPointRestriction_compactPointBoundary`,
+`exact_compactPointBoundary_extensionCohomologyMap`), and its third term vanishes in positive
+degree when the residue fields at `D` are separably closed
+(`subsingleton_H_inverseImage_inclusion_of_sepClosed`). For `F = ℤ/n` and `D = {x}` this is the
+lower row of Milne, loc. cit., Thm 14.7, proof, Step 2, p. 94. The comparison of its third term
+with that of the point-removal sequence on `X` is not formalized.
 
 ## Roots of unity and curves
 
