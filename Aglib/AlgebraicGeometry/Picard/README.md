@@ -861,3 +861,10 @@ and the original family; classifying maps retain locally Noetherian tests.
 [Translation](LineBundleFamily/Translation.lean), [Fppf](LineBundleFamily/Fppf.lean)
 and [TranslationBaseChange](LineBundleFamily/TranslationBaseChange.lean)
 provide the original translated family and its comparisons.
+
+[IdentityComponentProjectiveSource](Scheme/IdentityComponentProjectiveSource.lean)
+gives the original Picard identity component's quasi-projective input from an
+H-projective, flat, geometrically integral field source and the supplied locally
+finite-type representative; no group or source rational point is required.
+[TranslationIso](LineBundleFamily/TranslationIso.lean) retains the actual
+parameterized translation isomorphisms and pullback coherence.

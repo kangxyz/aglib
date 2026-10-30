@@ -258,9 +258,8 @@ source locators for this branch, with their actual hypotheses retained.
 ## Dual abelian variety
 
 Use the same Picard representability technology for a projective abelian
-variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of
-`Pic⁰(A)` need abelian-variety suppliers; curve smoothness B1 does not provide
-them. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
+variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of `Pic⁰(A)` have criteria retaining the original
+coherent-H¹ bound; curve smoothness B1 does not supply that bound. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
 (**citation needed**), (6.6), (6.12)–(6.18), pp. 90–96, outlines the selected
 coherent-cohomology route.
 
@@ -279,6 +278,12 @@ The draft's (7.2)–(7.5), pp. 98–100, does not discharge this last step or it
 quotient/descent prerequisites merely by stating the dual-kernel theorem.
 Prove the ensuing Poincaré, biduality and homomorphism laws, (7.7)–(7.17),
 pp. 100–104, rather than installing them as curve-specific conditional fields.
+
+The finite-kernel criterion below the field specialization applies to group
+schemes over any base. Over an algebraically closed field, the supplied ample
+criterion proves that an original line bundle with a nonzero section and finite
+actual `φ_L` kernel is ample on a projective geometrically integral commutative
+group. Supplying theta and its actual finite kernel remains separate.
 
 ## Theta, principal polarization and Weil pairing
 
@@ -351,7 +356,7 @@ close the planned programme.
 | B6–B7 | **Partial source supplied:** positive multiplication on the original `J` is finite, flat and surjective over every field; at invertible levels it is finite étale and surjective. The all-divisor torsion criterion is supplied. Numerical degree, geometric divisor-level cardinalities and cohomology ranks remain open. |
 | D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Degree-one and general lcc perfectness, purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
-| W1 | **Partial source supplied:** the same rigidified Poincaré pair and original line-bundle morphism, with their displayed field and locally Noetherian classification bounds. Dual properness and smoothness, biduality, isogeny and character-descent laws remain open. |
+| W1 | **Partial source supplied:** the same Poincaré pair and original line-bundle morphism, with locally Noetherian classification; an ample original `φ_L` is finite. Dual properness, smoothness, dimension, geometric integrality, projectivity and finite-flat surjectivity are conditional on the original coherent-H¹ inequality `finrank H¹(O_A) ≤ finrank Cotangent(unit_A)` and the displayed source assumptions. That inequality, biduality, dual homomorphisms and character descent remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 

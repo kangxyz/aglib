@@ -159,3 +159,7 @@ rank-one target; canonical-module or trace compatibility is not assumed.
 retain actual line bundles and their stated base, separation and properness
 hypotheses. [Nonvanishing/Tensor](Nonvanishing/Tensor.lean) supplies the
 original unit/frame and tensor-section comparison used by the ample-kernel proof.
+
+[Power](Ample/Power.lean) provides the positive-power ampleness converse for
+the original line bundle; [Nonzero](Nonvanishing/Nonzero.lean) supplies the
+original nonzero-section interface used by the ample criterion.
