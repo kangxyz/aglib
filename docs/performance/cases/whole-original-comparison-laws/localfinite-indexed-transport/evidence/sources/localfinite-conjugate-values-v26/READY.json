@@ -1,0 +1,114 @@
+{
+  "package": "W10",
+  "version": "localfinite-conjugate-values-v26",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "sources": [
+    {
+      "path": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "before_sha256": null,
+      "sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "before_path": null
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "before_sha256": "9f80c35b47e879a9a26fd0b60182abfa9af221473456a8d8b809a28e3138065a",
+      "sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/source/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "before_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-conjugate-values-v26/before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean"
+    }
+  ],
+  "source_sha256": {
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831"
+  },
+  "fixed_owned_source_sha256": {
+    "Aglib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus/BaseChange/OrdinaryNatTrans.lean": "e45aa89c7e534cbdb955dd157fd63a10f04d82f687c0b1c75850a6db250dcc84",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Derived/BaseChange/Higher.lean": "9c578fb01ba45b2e8e2d787535afd5442059d5fd85e47f13e6b2f9a62ccb5a9f",
+    "Aglib/Algebra/Category/Grp/ExactSequenceConsequences.lean": "3228602f2974a3133e36a4dd3accfde4866e404933bbe60fff0d99f6baa6c0d4",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/SplitCoefficients.lean": "842c83a9744e71acb3cf348f1e0b947eac691e2d62ba4fde40e74b4f0ebf199f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisCech.lean": "9637a74165b32891dc7bda94b44253f4ff4a13ef42434c1f81ec3a5b8bc48f2e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/GaloisPrimitives.lean": "4a82dc7a3ec512ee2f701107af12d7eca129da3729bdf28f9368ce30a95ecdfc",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean": "c5733c8131bd9a5e1d6f7ab1de54b979230d667982d4d1c526adc1629be65942",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/SquareTransport.lean": "057c9205973e14951997e48f1b5c4111716f251c6041870d7a0a007f84a8d731",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/BoundaryNaturality.lean": "f9aed268f662a5d2486ed59dabfc5c9da56258c9e4eefcd90dbe6faa9d68e214",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/CohomologyConsequences.lean": "3753763d100d783e831d7ce633ae16594de4c2a8ca62082785fa5bf786d676aa",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/Divisibility.lean": "8fdc57ad662e74c663ed1b2fe725fa1265ae1ceb41c94114b1d71957a9d79e82",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections.lean": "2fc7056d079045e89eef675df8aaf77154b5dd3ac3de8278340c3d4bea3626c0",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Pullback.lean": "1930c0e10ace29d9c60a9bb1bd0d7da6ddcef144c1b28a97cca4aa1026ec48a5",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/DerivedPullback.lean": "0454513316150fd87ffde2fa757e67314a0fb9ce4a627e7245faf9d8d7adf372",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ExtPullback.lean": "d1ea19c6d66dddd59e5ae4ae622813bff7006207bb848af534490d65e6d487c1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean": "99bc01d24b4eb5651b372e0fb83995606c4ecb364fcd3529db6277d2ae8c97da",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Terminal.lean": "aa1604a3fd54c9cf83d6ad731f9782792766a2f6abdcf07868b0fdb9f0b3dd25",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/SourceCoherence.lean": "4434783c882e9eac535bbc9a25b83efd801fd44bfa958bc28e3f119191ecaf4c",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantCoherence.lean": "3c0ad44bddd46ab4cb08b57909f1cbf88951224241ee1c923371225a860de61f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean": "8ec1bbf610e14b6633a45d6d72675b85b15bb2c037c19bc07cb5fb3cea9d5285",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/Zero.lean": "2fc644327ac97d5d220138e61eaffb4966079b8b7788606779b53071eb66d73b",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/ConstantComposition.lean": "b641f2e997f98e42637d8da7dde06b1aa4dfa0c8c402bfed9647b90d4eff40bf",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/DegreeZeroPullback.lean": "0d5764bf53c45691aeafe658dd3eb9a00d495c565c81a0926f3ac54cef00fcc9",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/HenselianConstant.lean": "54395220331a4eac30740d1f1cec063b20a31b756bcc82c891a3b041606c0f01",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/InverseRectangle.lean": "20269ada008afa55594a013ffbb89663a89edeaf778f405ce948843895bfdd48",
+    "Aglib/CategoryTheory/Abelian/Ext/TransferConsequences.lean": "bfe6fbf09d7275e90ad0f250eabcd437466842a7f4108add585967476f5344d1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean": "e44959c6c7941a1e64cb440000dd09a0838b11e3ccd013784f09ef981459dd9d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricFibreTransfer.lean": "ba4641fe317d1c47a0f8ba67b71ceedad4b5502abef2cb29374474fe1b3d526b",
+    "Aglib/Algebra/Homology/RightDerived/Postcomp/RepresentedSections.lean": "9f9cf33d3e7c378e7fe0f0ab64358ad40b98a579746747debff532717424299d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalCohomologyZero.lean": "8f707952c7b753c2fa15bec2f9fc230887a0bf328c0b51ec1788e23a1698d44e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/OriginalRestriction.lean": "13ad86350bafc8c58d62008c7f9ae01edc64a2d2cbfc2c0f50e9dde42d0adb2d",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Slice/OriginalPullback.lean": "cbe94306f31845d4b0af2b66b2c1cf413553ed34ca5bd87aeba7abaa0d63e60f",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback.lean": "f43c4e78ac4e06e4fb1dfa93345896e23c06805f86f0328fb240da03c1f1fd0b",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean": "d70b5015a942ba3cccce72e48cb928b83f6358f18c76e8e724afa4c863ec27b5",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/AugmentationSections.lean": "7571fb8ff9cc0ccfb24afe56cc98861fbd241a6b26ada20a4beb5e7803d634eb",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/H1/OverField.lean": "a74097c1d73b3ea4a6e9c4927c9cdd554d3196dc021f4f536f661e20cd374069",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/PullbackLimitLegZero.lean": "7144fb97405d815bad06a07321fb91b67fd8cbe1bd0a147d437cd020d1882a6f",
+    "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean": "dd8eae75b2ea1b1690bca4958e9db00765d439858be7844bc126a59989c7505a",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean": "a1b0afb33a48438ccb8f96db750c17140ed9c0c98f4b9ce8a3a55c6734da6f8d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": "53f3b9a17d7ad854249c46b8b9553e6cb82bad1519c7ec4bd87d0a90832f358c",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/FixedSourceCohomology.lean": "0b76869bc83c0f64ac29a4c46e2d915e56f8298a0b874ad5ab9ff4851f22b9d8",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean": "3d6c2a26806d41bd28f11537d0f98ffb038a5463f29331a90b97b5c3db103a71",
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/NativeLineComparison.lean": "8716160edf6a1e4a1f287cbdd21070b82c71dd74b3b55a88298eaee8562d50a1",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramEtaleSections.lean": "9611c269490f4c6d67986dab2524f1f703658c1c6a003fd87e1e30127a298894",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "a1fb5123c6bbf273d62feff730e3e788abbab1e3615b3bc1afe20ddaf8b5a938"
+  },
+  "provider_sha256": {
+    "Aglib/CategoryTheory/Abelian/Ext/OriginalComparison.lean": "b4326fdbaf28b225738ddb9f5dedc254db39b3f641c440cab60b98c6f05a311e",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Pullback.lean": "61895cf04e779cd4b0d7b7ba685ab189577175a7f6391084d3c7808ff4f67500",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/BaseChangeMap.lean": "92334fb01cc9af91776313ff4d270c2e3aa2c69a616037ac3db2e9ffc708ef7a",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db"
+  },
+  "selected_alternative": {
+    "directory": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-whole-alternative-20261030",
+    "generic_original_sha256": "fb3ce070b87cc5eb83fa32586a0c1989f50f22bcb0bc065e34126db7398de17b",
+    "native_original_sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+    "change_on_adoption": "Only remove scratch-status prose from newgenericmodule documentation. Proofs/declarations unchanged; selectednative byteidenticalf656."
+  },
+  "actual_basis": {
+    "native9f80failure": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/CPP-4dbef214-LocalFinite-final.json",
+    "normal_P34_formation": "Directraw7f2c797b/SOURCE755fclosed0; exact corrected5af9only(_h:P):True,1scratchnormalKernelPASS13.2277s; NOTproofP/nativeCPP. Actualnative7148importArts excludes2changedRootSectionfiles, sourceboundcompatibility748\u2192755established.",
+    "formation_artifacts": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-formation-execution/raw-7f2c797b"
+  },
+  "construction": "NEWgeneric actualconjugateAddMonoidHomfamily E'\u2218\u03b2_*\u2218pG\u2218E^-1 constructsE/E' INTERNALLYfromsameoriginalexactadj/sourceIso. Its wholefamilyequalitytopHderivedusingexistingrawsource/mate laws+wholedefiningpG/pHequations, no desiredcohoSquare input. pG rangesarbitraryN/allq, IsIsoonlyatselectedM. NativepG/pHwholefamilyrflview beforef/R/F/q; \u03b2remainsliteralbaseChangeMap withgivenfiniteIsIsoatthathead. FourgenuineExt/valueworlds heterogeneousAddHom\u2014no lifting/value-universeequations/refmodel.",
+  "guards": {
+    "three_original_native_headers": {
+      "cohomologyPullback_source_bijective_of_finiteDirectImage": true,
+      "finite_projectiveLine_residuePullback_bijective_of_killed_of_isNoetherian": true,
+      "finite_projectiveLine_constantRestriction_bijective_of_isNoetherian": true
+    },
+    "both_later_corollaries_and_standard_Ext_scope_byte_identical": true,
+    "old_OriginalComparison_b432_unchanged": true,
+    "newlower_absent": true,
+    "all_lines_at_most100": true,
+    "all_maps_scalars_signs_conditions_worlds_preserved": true
+  },
+  "coverage": "FinishedRcoherentcandidate NOTCOMPILED. Native9f80failedproof, formationonlyPASS; newmodule+native require ordinaryowningCPP. All49matchingexistingpasses retained, no source/mathadoptionfromcounts.",
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison"
+  ],
+  "root_rule": "Exactchangednewlower+nativeLocalFinite+neededimports/actualeligibleconsumers via solecoordinator; no standalone lowergate/diagnostic/review/Rootgate/old9f80retry."
+}

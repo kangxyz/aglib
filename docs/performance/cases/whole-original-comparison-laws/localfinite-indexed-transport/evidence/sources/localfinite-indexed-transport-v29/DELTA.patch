@@ -1,0 +1,99 @@
+--- before/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean
++++ source/Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean
+@@ -19,31 +19,6 @@
+ @[expose] public noncomputable section
+ 
+ open CategoryTheory.Limits CategoryTheory.Abelian
+-
+-namespace CategoryTheory.Functor
+-
+-universe uI uC vC uE vE uD vD uV vV
+-
+-/-- Transport the complete original inverse-source composition before any
+-concrete indexing arrow or coefficient model is substituted. The input is the
+-original composition law at the equal target index. -/
+-theorem sourceInverse_composite_transport
+-    {I : Type uI} {C : Type uC} [Category.{vC} C]
+-    {E : Type uE} [Category.{vE} E] {D : Type uD} [Category.{vD} D]
+-    {V : Type uV} [Category.{vV} V]
+-    (K : I → C ⥤ D) {T : V ⥤ C} {R : V ⥤ E} {S : V ⥤ D}
+-    (q : ∀ i, T ⋙ K i ≅ S) {i j : I} (h : i = j)
+-    {F : C ⥤ E} {G : E ⥤ D} (e : T ⋙ F ≅ R) (e' : R ⋙ G ≅ S)
+-    (c : K j ≅ F ⋙ G) (A : V)
+-    (hc : (q j).inv.app A ≫ c.hom.app (T.obj A) =
+-      e'.inv.app A ≫ G.map (e.inv.app A)) :
+-    ((q i).app A).inv ≫
+-        (eqToIso (congrArg K h) ≪≫ c).hom.app (T.obj A) =
+-      (e'.app A).inv ≫ G.map (e.app A).inv := by
+-  cases h
+-  simpa only [eqToIso_refl, Iso.refl_trans, Iso.app_inv] using hc
+-
+-end CategoryTheory.Functor
+ 
+ namespace CategoryTheory.Adjunction
+ 
+@@ -157,4 +132,35 @@
+   rw [← h]
+   exact originalExtSourceComparisonConjugate_bijective adj adj' G H e e' β pG M n hG
+ 
++universe uIndex
++
++/-- Derive and consume the original indexed source transport inside the generic
++comparison factory. The native inputs contain only the original composition law
++at the equal target index; the transported source equation is not a parameter. -/
++theorem originalExtSourceComparison_bijective_of_transport_values
++    {I : Type uIndex} (K : I → C₀ ⥤ C₃)
++    {i j : I} (h : i = j)
++    [(K i).Additive] [PreservesFiniteLimits (K i)] [PreservesFiniteColimits (K i)]
++    (c₀ : K i ≅ G ⋙ L') (d₁ : K j ≅ L ⋙ H)
++    (s : (k : I) → U₃ ⟶ (K k).obj U₀)
++    (hleft : s i ≫ c₀.hom.app U₀ = e'.inv ≫ L'.map sG)
++    (hright : s j ≫ d₁.hom.app U₀ = sH ≫ H.map e.inv)
++    (β : R ⋙ G ⟶ H ⋙ R')
++    (hβ : β = (mateEquiv adj adj'
++      (TwoSquare.mk G L L' H (c₀.symm ≪≫ eqToIso (congrArg K h) ≪≫ d₁).hom)).natTrans)
++    (pG : (N : C₀) → (n : ℕ) → Ext.{e₀} U₀ N n →+ Ext.{e₂} U₂ (G.obj N) n)
++    (hpG : pG = fun N n => G.extPrecompMap sG N n)
++    (pH : (M : C₁) → (n : ℕ) → Ext.{e₁} U₁ M n →+ Ext.{e₃} U₃ (H.obj M) n)
++    (hpH : pH = fun M n => H.extPrecompMap sH M n)
++    (M : C₁) (n : ℕ) [IsIso (β.app M)]
++    (hG : Function.Bijective (pG (R.obj M) n)) :
++    Function.Bijective (pH M n) := by
++  have ht : s i ≫ (eqToIso (congrArg K h) ≪≫ d₁).hom.app U₀ =
++      sH ≫ H.map e.inv := by
++    cases h
++    simpa only [eqToIso_refl, Iso.refl_trans] using hright
++  exact originalExtSourceComparison_bijective_of_mate_values adj adj' G H e e'
++    (K i) c₀ (eqToIso (congrArg K h) ≪≫ d₁) sG sH (s i) hleft ht
++    β hβ pG hpG pH hpH M n hG
++
+ end CategoryTheory.Adjunction
+--- before/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean
++++ source/Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean
+@@ -72,19 +72,17 @@
+         (inverseImage f').map ((inverseImageConstantIso g).app A).inv := by
+     simpa only [Iso.app_inv] using inverseImageComp_constant_inv g f' A
+   have hSourceComp := inverseImageComp_constant_inv f g' A
+-  have ht := Functor.sourceInverse_composite_transport
+-    (fun k : X' ⟶ S => inverseImage k) (fun k => inverseImageConstantIso k) h.w.symm
+-    (inverseImageConstantIso f) (inverseImageConstantIso g') (inverseImageComp f g')
+-    A hSourceComp
+   let : IsIso ((baseChangeMap f f' g g' h.w.symm).app F) :=
+     Finite.finiteBaseChange_app_isIso f f' g g' h F
+-  exact Adjunction.originalExtSourceComparison_bijective_of_mate_values.{
+-    u + 2, u + 1, eS, u + 2, u + 1, eX, u + 2, u + 1, eS', u + 2, u + 1, eX'}
++  exact Adjunction.originalExtSourceComparison_bijective_of_transport_values.{
++    u + 2, u + 1, eS, u + 2, u + 1, eX, u + 2, u + 1, eS', u + 2, u + 1, eX', _}
+     (inverseImageAdjunction f) (inverseImageAdjunction f') (inverseImage g) (inverseImage g')
+     ((inverseImageConstantIso f).app A) ((inverseImageConstantIso f').app A)
+-    (inverseImage (f' ≫ g)) c d ((inverseImageConstantIso g).app A).inv
+-    ((inverseImageConstantIso g').app A).inv ((inverseImageConstantIso (f' ≫ g)).app A).inv
+-    hs ht (baseChangeMap f f' g g' h.w.symm) hMate
++    (sG := ((inverseImageConstantIso g).app A).inv)
++    (sH := ((inverseImageConstantIso g').app A).inv)
++    (fun k : X' ⟶ S => inverseImage k) h.w.symm c (inverseImageComp f g')
++    (fun k => ((inverseImageConstantIso k).app A).inv) hs hSourceComp
++    (baseChangeMap f f' g g' h.w.symm) hMate
+     (cohomologyPullback.{u, eS, eS'} g) (cohomologyPullback_originalFamily g)
+     (cohomologyPullback.{u, eX, eX'} g') (cohomologyPullback_originalFamily g') F q hF
+ 

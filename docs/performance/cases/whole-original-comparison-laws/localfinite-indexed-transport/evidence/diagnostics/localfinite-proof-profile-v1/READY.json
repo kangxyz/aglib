@@ -1,0 +1,11 @@
+{
+  "question": "ONE faithful failed-proof-boundary/profile diagnostic for V26 native f656 after normal P34 formation PASS. Locate named mate/sourceFirst/sourceSecond/finiteIso component checks and original full native proof; inspect inferred whole proof type vs expected native goal without native unfolding.",
+  "native_sha256": "f656cc8ca88d909b0fc911fb8c77af8c7c87d9a09932a2b73d9fbdf1675af831",
+  "newlower_sha256": "aa3d6ef9922cf4ed7e2ebff5852afb1380faf579e60ede4663587069630474e8",
+  "diagnostic_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v1/LocalFiniteProofProfile.lean",
+  "diagnostic_sha256": "2c8a91165c02ae592b6274ac5ead3ffca0f4bff61292351843c04bda26ab9a2a",
+  "mode": "One scratchfrontend, actualnative --setup/moduleName/isModule/full4opts/default200k/profile4threadsM12800. Source adds only diagnostic trace.profiler threshold100ms/diagnostics/prettyprinting and named same-data proofcomponent checks; preserves original first declaration data/conditions/4worlds. Its final application is retained as inferred hInferred then trace_state then exact, no native unfolding.",
+  "scope_boundary": "Component checks use minimal ordinary contexts with same original maps; their pass/failure is only diagnostic. Full original public-proof profile remains target. No production/module/P closure or unique-cause/speedup claim from scratch. No oldformation question/replay/client/limit/suppression/sourceedit.",
+  "actual_failure_basis": "D2f7f1878/SOURCE0f467, GenericValuesaa3dPASS/nativef656Kernel45+102cascade. P34formationalreadyseparate7f2cPASS.",
+  "context": "D is now healthyP22; maincoordinator allocating equivalentidleC actualsourcea5 afterneededclosure compatibility and necessaryaa3dimport preparation. Do notrestore/cancel D."
+}

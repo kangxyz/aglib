@@ -1,0 +1,21 @@
+{
+  "status": "reserved_same_W10_profile_mechanics_correction",
+  "execution_owner": "/root/cohomology_cocone_author",
+  "run": "remote-d5e3b3b4f2ac40b587d51510e0f14d90",
+  "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+  "raw_argv": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v2-mechanics/PROFILE-RAW-ARGV.json",
+  "purpose": "Same exact V26 failed-proof boundary with CLI debug flags/bounded syntactic heads, no source debug lints/fullpp. No production/root repeat/newquestion/budget/suppression.",
+  "prior_owned_diagnostic": {
+    "run": "remote-45e93e5b25e2477a8b960f028fdcf647",
+    "group_closed": true,
+    "exit": 143,
+    "canonical": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/localfinite-proof-profile-v1/raw-45e93e5b",
+    "reason": "Verifiedsupervisorstop ofknowninvalidfixture; no namednormalKernel conclusion."
+  },
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  }
+}

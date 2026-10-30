@@ -5142,6 +5142,7 @@ public import Aglib.CategoryTheory.Abelian.CoproductKernels
 public import Aglib.CategoryTheory.Abelian.Ext.ClasswiseDimensionShift
 public import Aglib.CategoryTheory.Abelian.Ext.CoefficientSquare
 public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparison
+public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparisonValues
 public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
 public import Aglib.CategoryTheory.Abelian.Ext.TransferConsequences
 public import Aglib.CategoryTheory.Abelian.Ext1.Equality

@@ -25,3 +25,5 @@ two-module pass; neither timing establishes a matched speedup or unique kernel
 cause.
 
 The [roots-section follow-up](cases/whole-original-comparison-laws/roots-section-follow-up/README.md) retains the actual whole transport and section isomorphism before coefficient evaluation. Its formation-only probe, failed variants and profile remain distinct from the final three fresh source-bound passes.
+
+The [LocalFinite indexed-transport follow-up](cases/whole-original-comparison-laws/localfinite-indexed-transport/README.md) derives and consumes the original transport inside its general factory; standalone generic and concrete scratch outcomes remain distinct from the final two-module pass.

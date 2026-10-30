@@ -107,6 +107,8 @@ source-bound module pass; it establishes no unique cause or controlled speedup.
 
 For dependent roots transport, retain the actual whole transport and its original constructor identity before coefficient evaluation; likewise retain the original whole section isomorphism before evaluating its component, and infer the literal endpoints. [Roots section transport follow-up](performance/cases/whole-original-comparison-laws/roots-section-follow-up/README.md) separates formation-only and profiled diagnostics from the final source-bound three-module pass; it establishes no unique kernel cause or controlled speedup.
 
+If a generic transport theorem passes but materializing its concrete equality still fails, derive and consume the original indexed transport inside the general comparison-values construction before specialization. Supply the original composition law at its inferred head and return the literal original-map conclusion; retain the indexed family, equality transport and independent worlds. [LocalFinite indexed transport](performance/cases/whole-original-comparison-laws/localfinite-indexed-transport/README.md) records the failed standalone and reduced-telescope attempts and the final source-bound pass without a unique-cause or controlled-speedup claim.
+
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
 For a sheafified tensor associator, prove typed three-isomorphism cancellation

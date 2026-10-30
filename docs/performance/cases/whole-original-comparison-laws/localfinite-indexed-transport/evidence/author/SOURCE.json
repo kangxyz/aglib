@@ -1,0 +1,48 @@
+{
+  "status": "fixed_uncompiled_integrated_consumer_candidate",
+  "source_owner_and_cpp": "/root/cohomology_cocone_author",
+  "sources": [
+    {
+      "target": "Aglib/CategoryTheory/Abelian/Ext/OriginalComparisonValues.lean",
+      "candidate": "OriginalComparisonValues.lean",
+      "before_sha256": "b62f08cb91e253f3e3457699cabe925756eb4755039c610ea0f91e83920d3261",
+      "sha256": "e1d0a92737405aec68ed643078b79eaf9bcbbab736d82ea9aa429caed14a133d"
+    },
+    {
+      "target": "Aglib/AlgebraicGeometry/EtaleCohomology/Fields/SeparableExtension/FiniteConstants/LocalFiniteComparison.lean",
+      "candidate": "LocalFiniteComparison.lean",
+      "before_sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+      "sha256": "0997517ed89eba60a57505a6665d1fc722afec046cf6afaa726ff8e4462d6988"
+    }
+  ],
+  "new_declaration": "CategoryTheory.Adjunction.originalExtSourceComparison_bijective_of_transport_values",
+  "retired_declaration": "CategoryTheory.Functor.sourceInverse_composite_transport",
+  "retirement_basis": "Primary-confirmed exact current N/Aglib use graph: only declaration and replaced LocalFinite ht use; Values is imported only by LocalFinite.",
+  "mathematical_delta": "Construct and consume indexed source transport inside the existing generic comparison-values consumer. Native passes original hSourceComp at its inferred native head, with same K/s/h/c/d1/source/mate values, and receives Bijective of literal original pH. No native transported Eq declaration remains.",
+  "preserved": [
+    "Five prior Values declarations",
+    "Three original public native headers and both corollary bodies",
+    "Four independent Ext worlds, arbitrary abelian F and every natural q",
+    "Original adjunctions, source maps, baseChangeMap and whole pG/pH families",
+    "Selected original category realizations and selected composite exactness",
+    "Original native imports/options/HasExt.standard placement",
+    "Stable OriginalComparison b4326fdb and SourceSection8856b0f8"
+  ],
+  "excluded": [
+    "No desired cohomology square or transported ht premise",
+    "No new derived model, reference equivalence, Prop wrapper or standalone constructor",
+    "No additional geometry/torsion/dimension/world-equality premise",
+    "No N/P/Git/options/budget/pin/guard/axiom mutation or worker-run execution"
+  ],
+  "historical_evidence": {
+    "formation": "7f2c normal P34 formation pass only",
+    "current_native": "C4e0c2743/SOURCE97107a0b: b62f lower pass, native655b kernel failure",
+    "ordinary_current": "f94/SOURCEa690: fe592 full ordinary proof kernel failure, no HasExt/F/q",
+    "ordinary_literal": "e2d8b8ce/SOURCEa690: 86fe full ordinary proof kernel failure, no HasExt/F/q"
+  },
+  "superseded_preliminary_hash": {
+    "sha256": "e3d6b658956f90d74c2580e85b70675a853e4b8f3c3ba5b0d8b81d894e5b77d7",
+    "reason": "Two duplicate blank lines removed before fixed handback; no proof/content change and no run used the preliminary hash."
+  },
+  "remaining": "Normal incremental compilation and coupled repairs by source owner. No new standalone formation/helper gate, no current native proof closure or performance result claimed."
+}

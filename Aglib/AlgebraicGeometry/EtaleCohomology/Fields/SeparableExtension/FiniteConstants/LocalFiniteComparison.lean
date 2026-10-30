@@ -8,6 +8,8 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.NoetherianComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ProjectiveLineTests
 public import Mathlib.GroupTheory.OrderOfElement
+public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparisonValues
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection
 
 /-! # Reverse finite-image transfer of the local projective-line comparison
 
@@ -27,6 +29,17 @@ universe u eX eS eX' eS'
 
 attribute [local instance] hasSheafifyLarge
 
+/-- Identify the complete original pullback family before any other geometric
+map, direct image, coefficient or degree is substituted. -/
+private theorem cohomologyPullback_originalFamily
+    {X S : Scheme.{u}}
+    [HasExt.{eX} (AbelianSheaf.{u, u + 1} X)]
+    [HasExt.{eS} (AbelianSheaf.{u, u + 1} S)]
+    (k : S ⟶ X) :
+    cohomologyPullback.{u, eX, eS} k =
+      (inverseImage k).extPrecompMap
+        (((inverseImageConstantIso k).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv) := rfl
+
 /-- The actual finite cohomology square also transports bijectivity from the
 finite direct-image coefficient back to its source. -/
 theorem cohomologyPullback_source_bijective_of_finiteDirectImage
@@ -40,31 +53,38 @@ theorem cohomologyPullback_source_bijective_of_finiteDirectImage
     (h : IsPullback g' f' f g) (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
     (hF : Function.Bijective (cohomologyPullback.{u, eS, eS'} g
       ((directImage f).obj F) q)) :
-    Function.Bijective (cohomologyPullback.{u, eX, eX'} g' F q) := by
+    Function.Bijective (cohomologyPullback.{u, eX, eX'} g' F q) :=
+  by
   let : IsFinite f' := MorphismProperty.of_isPullback h (inferInstance : IsFinite f)
-  let E : Sheaf.H.{eS} ((directImage f).obj F) q ≃+ Sheaf.H.{eX} F q :=
-    Finite.finiteCohomologyDirectImageAddEquiv f F q
-  let E' : Sheaf.H.{eS'} ((directImage f').obj ((inverseImage g').obj F)) q ≃+
-      Sheaf.H.{eX'} ((inverseImage g').obj F) q :=
-    Finite.finiteCohomologyDirectImageAddEquiv f' ((inverseImage g').obj F) q
-  let β := (baseChangeMap f f' g g' h.w.symm).app F
-  have : IsIso β := Finite.finiteBaseChange_app_isIso f f' g g' h F
-  have hb : Function.Bijective (fun a : Sheaf.H.{eX} F q =>
-      E' (Sheaf.H.map β q
-        (cohomologyPullback.{u, eS, eS'} g ((directImage f).obj F) q (E.symm a)))) :=
-    E'.bijective.comp ((cohomologyMapIso_bijective (asIso β) q).comp
-      (hF.comp E.symm.bijective))
-  have heq : (fun a : Sheaf.H.{eX} F q =>
-      E' (Sheaf.H.map β q
-        (cohomologyPullback.{u, eS, eS'} g ((directImage f).obj F) q (E.symm a)))) =
-      cohomologyPullback.{u, eX, eX'} g' F q := by
-    funext a
-    calc
-      _ = cohomologyPullback.{u, eX, eX'} g' F q (E (E.symm a)) :=
-        Finite.finiteCohomologyDirectImageAddEquiv_baseChange f f' g g' h F q (E.symm a)
-      _ = cohomologyPullback.{u, eX, eX'} g' F q a := by rw [E.apply_symm_apply]
-  rw [heq] at hb
-  exact hb
+  let A := AddCommGrpCat.of (ULift.{u + 1} ℤ)
+  let U := (constantSheaf (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}).obj A
+  let c := inverseImageComp g f'
+  let d := eqToIso (congrArg (fun k : X' ⟶ S => inverseImage k) h.w.symm) ≪≫ inverseImageComp f g'
+  have hSquare : inverseImageSquareIso f f' g g' h.w.symm = c.symm ≪≫ d :=
+    inverseImageSquareIso_eq_comp f f' g g' h.w.symm
+  have hMate : baseChangeMap f f' g g' h.w.symm =
+      (mateEquiv (inverseImageAdjunction f) (inverseImageAdjunction f')
+        (TwoSquare.mk (inverseImage g) (inverseImage f) (inverseImage f') (inverseImage g')
+          (c.symm ≪≫ d).hom)).natTrans := by
+    rw [baseChangeMap_eq_nativeMate, hSquare]
+  have hs : ((inverseImageConstantIso (f' ≫ g)).app A).inv ≫ c.hom.app U =
+      ((inverseImageConstantIso f').app A).inv ≫
+        (inverseImage f').map ((inverseImageConstantIso g).app A).inv := by
+    simpa only [Iso.app_inv] using inverseImageComp_constant_inv g f' A
+  have hSourceComp := inverseImageComp_constant_inv f g' A
+  let : IsIso ((baseChangeMap f f' g g' h.w.symm).app F) :=
+    Finite.finiteBaseChange_app_isIso f f' g g' h F
+  exact Adjunction.originalExtSourceComparison_bijective_of_transport_values.{
+    u + 2, u + 1, eS, u + 2, u + 1, eX, u + 2, u + 1, eS', u + 2, u + 1, eX', _}
+    (inverseImageAdjunction f) (inverseImageAdjunction f') (inverseImage g) (inverseImage g')
+    ((inverseImageConstantIso f).app A) ((inverseImageConstantIso f').app A)
+    (sG := ((inverseImageConstantIso g).app A).inv)
+    (sH := ((inverseImageConstantIso g').app A).inv)
+    (fun k : X' ⟶ S => inverseImage k) h.w.symm c (inverseImageComp f g')
+    (fun k => ((inverseImageConstantIso k).app A).inv) hs hSourceComp
+    (baseChangeMap f f' g g' h.w.symm) hMate
+    (cohomologyPullback.{u, eS, eS'} g) (cohomologyPullback_originalFamily g)
+    (cohomologyPullback.{u, eX, eX'} g') (cohomologyPullback_originalFamily g') F q hF
 
 attribute [local instance] HasExt.standard
 

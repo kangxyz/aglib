@@ -1,0 +1,15 @@
+{
+  "planned_run": "remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+  "source": "a6900933b6f95bed43897ed4902dc03cefad54333bf4b53801386ef5f77d396d",
+  "native_sha256": "655b2ec9420861b503e7f1bb59d54ad4983c801f67161fc6bf6d603b0c9841d6",
+  "scratch_sha256": "86fe6ef137da28646e37604b649306d22e78d0cb540a45192bfd7345e6b7674d",
+  "RAW_ARGV_sha256": "13ad76dc56944456c102c748810c9fd1d0384cb46999d9f397e9123a35eb19d9",
+  "payload_sha256": "7d87556e3483b04264ff395febdfe3627f15248b2ba305486ae096542068e1ec",
+  "remote_endpoint": "lean-build-cqa1",
+  "authority_record": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/REMOTE_AUTHORIZATION_RECONCILIATION_20261030.json",
+  "status": "actual_running",
+  "actual_run": "remote-e2d8b8ce14a3479eacc998b0f5835fe8",
+  "question": "Does the SAME complete ordinary source transport equation kernel-check with the reduced source-arrow transport telescope?",
+  "limits": "One normal scratch proof only. No resync, no unchanged native655 run, no changed options or production outputs.",
+  "local_session_id": 30626
+}
