@@ -120,6 +120,19 @@ The cleanup requires runner-owned writable real build directories, skips
 symlinks, and unlinks metadata without changing immutable artifact permissions
 or shared cache inodes. The existing rehashed build regenerates those hashes;
 writable sidecars, compiled outputs and cache mappings are preserved.
+The same guarded cleanup runs again after cache preparation, immediately before
+Build and Test's production-output verification. Startup cleanup alone does not
+cover metadata introduced by later cache acquisition. In pinned Lake 4.34.1,
+`Module.recBuildLean` can reuse compiled outputs, then `trackOutputsIfEnabled`
+packs a missing `.ltar` for `-o` and `Cache.saveArtifact` rewrites its `.hash`
+without first removing an existing sidecar. The job can therefore say
+`Replaying` while performing a new failing archive/hash write; that heading does
+not prove that the error was stored in an old log. A tiny isolated native Lake
+regression reproduces this exact sequence and verifies repair without changing
+the compiled output or native mappings. The AssociatedBundle report from run
+41013572331 establishes the failing path and replay/packing sequence; its live
+file mode, owner and original restoration point are unavailable. No saved error
+logs are stripped and no failed native invocation is treated as successful.
 The required current-run artifact overwrites production cache mappings. The
 no-build check tests availability and applicability of those production outputs
 against native inputs, without requiring checker outputs from Build. It does not

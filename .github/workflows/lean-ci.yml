@@ -192,6 +192,9 @@ jobs:
             | select(.rev | test("^[0-9a-f]{40}$"))
             | [.name, (.url | sub("^https://github[.]com/"; "") | sub("[.]git/?$"; "") | rtrimstr("/")), .rev]
             | @tsv' lake-manifest.json)
+      - name: Refresh archive hash metadata after cache preparation
+        working-directory: ${{ inputs.package-directory }}
+        run: *restore-writable-archive-hashes
       - name: Build
         id: build
         continue-on-error: true
@@ -351,6 +354,9 @@ jobs:
           mkdir -p "$RUNNER_TEMP/cache-staging"
           tar -xf "$LAKE_CACHE_DIR/lake-native-cache.tar" -C "$RUNNER_TEMP/cache-staging"
           lake cache unstage "$RUNNER_TEMP/cache-staging" --force-overwrite
+      - name: Refresh archive hash metadata after cache preparation
+        working-directory: ${{ inputs.package-directory }}
+        run: *restore-writable-archive-hashes
       - name: Verify Build outputs without compilation
         id: compiled
         working-directory: ${{ inputs.package-directory }}

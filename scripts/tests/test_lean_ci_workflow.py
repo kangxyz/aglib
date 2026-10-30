@@ -312,6 +312,73 @@ class RestoredArchiveHashMetadata(unittest.TestCase):
             self.assertEqual(self.cleanup(root).returncode, 0)
             self.assertEqual(list(Path(root).iterdir()), [])
 
+    def test_late_restoration_is_cleaned_after_all_cache_preparation(self):
+        for job, consumer in (('build', 'Build'),
+                              ('test_lint', 'Verify Build outputs without compilation')):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, 'Refresh archive hash metadata after cache preparation')
+            self.assertEqual(cleanup['run'], step(job, self.name)['run'])
+            self.assertEqual(cleanup['working-directory'], '${{ inputs.package-directory }}')
+            self.assertEqual(actions[actions.index(cleanup) + 1]['name'], consumer)
+            preparation = ('Restore published native dependency caches' if job == 'build'
+                           else "Restore this run's native Build outputs")
+            self.assertLess(actions.index(step(job, preparation)), actions.index(cleanup))
+        with tempfile.TemporaryDirectory(prefix='late-archive-hash-') as directory:
+            self.assertEqual(self.cleanup(directory).returncode, 0)
+            ir = Path(directory) / '.lake/build/ir/Aglib'
+            ir.mkdir(parents=True)
+            late = ir / 'AssociatedBundle.ltar.hash'
+            late.write_text('0123456789abcdef')
+            late.chmod(0o444)
+            self.assertEqual(self.cleanup(directory).returncode, 0)
+            self.assertFalse(late.exists())
+
+    def test_pinned_lake_replay_packs_missing_archive_and_repairs_only_hash_metadata(self):
+        # A software fixture only: no Aglib, Mathlib, dependency or project proofs.
+        toolchain = (ROOT / 'lean-toolchain').read_text().strip()
+        toolchain_name = toolchain.replace('/', '--').replace(':', '---')
+        lake = Path(os.environ.get('ELAN_HOME', Path.home() / '.elan')) / 'toolchains' / toolchain_name / 'bin/lake'
+        if not lake.is_file():
+            self.skipTest('pinned native Lake is not installed; do not download a toolchain')
+        with tempfile.TemporaryDirectory(prefix='native-replay-hash-') as directory:
+            root = Path(directory)
+            (root / 'lean-toolchain').write_text(toolchain + '\n')
+            (root / 'lakefile.toml').write_text(
+                'name = "fixture"\nenableArtifactCache = true\nrestoreAllArtifacts = true\n'
+                '[[lean_lib]]\nname = "Fixture"\n')
+            (root / 'Fixture.lean').write_text('def fixtureValue : Nat := 1\n')
+            cache = root / 'native-cache'
+            env = {**os.environ, 'LAKE_ARTIFACT_CACHE': 'true', 'LAKE_CACHE_DIR': str(cache)}
+            command = [str(lake), 'build', '--rehash', 'Fixture', '-o', 'outputs.jsonl']
+            def build():
+                return subprocess.run(command, cwd=root, env=env, capture_output=True,
+                                      text=True, timeout=30)
+            first = build()
+            self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
+            olean = root / '.lake/build/lib/lean/Fixture.olean'
+            original = (olean.read_bytes(), olean.stat().st_ino, olean.stat().st_mtime_ns)
+            mappings = {p.relative_to(cache): p.read_bytes()
+                        for p in (cache / 'outputs').rglob('*') if p.is_file()}
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            archive = root / '.lake/build/ir/Fixture.ltar'
+            sidecar = archive.with_suffix('.ltar.hash')
+            archive.unlink()
+            sidecar.chmod(0o444)  # Simulates read-only metadata restored after startup.
+            failed = build()
+            self.assertNotEqual(failed.returncode, 0)
+            failure_log = failed.stdout + failed.stderr
+            self.assertIn('Replaying Fixture', failure_log)
+            self.assertIn('leantar -s', failure_log)
+            self.assertIn('failed to cache artifact: permission denied', failure_log)
+            self.assertIn('Fixture.ltar.hash', failure_log)
+            self.assertEqual(self.cleanup(root).returncode, 0)
+            repaired = build()
+            self.assertEqual(repaired.returncode, 0, repaired.stdout + repaired.stderr)
+            self.assertEqual((olean.read_bytes(), olean.stat().st_ino, olean.stat().st_mtime_ns), original)
+            self.assertEqual({p.relative_to(cache): p.read_bytes()
+                              for p in (cache / 'outputs').rglob('*') if p.is_file()}, mappings)
+            self.assertNotIn('Built Fixture', repaired.stdout + repaired.stderr)
+
     def test_symlink_ancestors_and_nonwritable_directories_fail_before_unlink(self):
         for ancestor in ('.lake', '.lake/build', '.lake/build/ir'):
             with self.subTest(ancestor=ancestor), tempfile.TemporaryDirectory() as directory:
