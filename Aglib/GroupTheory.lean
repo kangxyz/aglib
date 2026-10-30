@@ -15,6 +15,7 @@ public import Aglib.GroupTheory.PGroup.FixedPoint
 public import Aglib.GroupTheory.Perm.CycleValues
 public import Aglib.GroupTheory.Perm.CyclicEnumeration
 public import Aglib.GroupTheory.Perm.FinRotate
+public import Aglib.GroupTheory.QuotientGroup.Nsmul
 public import Aglib.GroupTheory.QuotientGroup.Power
 public import Aglib.GroupTheory.Torsion.BoundedTower
 public import Aglib.GroupTheory.Torsion.Detectors

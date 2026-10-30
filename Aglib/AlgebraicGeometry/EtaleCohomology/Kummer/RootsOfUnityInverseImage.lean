@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnity
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ZMod
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.CoefficientBaseChange
 
 /-!
@@ -40,24 +40,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology
 open Coefficients GroupCohomology.Kummer.Coefficients GroupCohomology.Kummer.CoefficientBaseChange
 
 attribute [local instance] hasSheafifyLarge hasSheafifyModules moduleForget_preservesSheafification
-
-/-- Every additive map between `ULift (ZMod n)`-modules is linear: forgetting scalars is full. -/
-theorem moduleCat_uLiftZMod_forget₂_full (n : ℕ) :
-    (forget₂ (ModuleCat.{u + 1} (ULift.{u + 1} (ZMod n))) AddCommGrpCat.{u + 1}).Full where
-  map_surjective {M N} f := by
-    let g : M →+ N := f.hom
-    refine ⟨ModuleCat.ofHom { toFun := g, map_add' := g.map_add, map_smul' := fun r m => ?_ },
-      rfl⟩
-    obtain ⟨z, rfl⟩ : ∃ z : ℤ, (z : ULift.{u + 1} (ZMod n)) = r :=
-      ⟨ZMod.cast r.down, ULift.ext _ _
-        ((ULift.down_intCast _).trans (ZMod.intCast_zmod_cast r.down))⟩
-    simpa using map_intCast_smul g (ULift.{u + 1} (ZMod n)) (ULift.{u + 1} (ZMod n)) z m
-
-/-- Forgetting scalars from sheaves of modules over the constant ring sheaf `ℤ/n` is full. -/
-theorem moduleSheaf_uLiftZMod_toSheaf_full (X : Scheme.{u}) (n : ℕ) :
-    (SheafOfModules.toSheaf.{u + 1} (constantRing X (ULift.{u + 1} (ZMod n)))).Full := by
-  let := moduleCat_uLiftZMod_forget₂_full.{u} n
-  exact Functor.Full.of_iso (moduleSheafInverseUnderlyingIso X (ULift.{u + 1} (ZMod n)))
 
 variable {U X : Scheme.{u}} (j : U ⟶ X) (n : ℕ) (hn : 0 < n) (hinv : IsUnit (n : Γ(X, ⊤)))
 

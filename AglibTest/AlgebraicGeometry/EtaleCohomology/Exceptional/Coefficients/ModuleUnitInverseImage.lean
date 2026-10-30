@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleUnitInverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitInverseImage
 
 /-!
 # Tests for the inverse image of the rank-one module sheaf `ℤ/n`

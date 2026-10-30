@@ -5,8 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Curves.ProjectiveLine.Native
-public import Aglib.AlgebraicGeometry.Curves.Projectivity.Integral
+public import Aglib.AlgebraicGeometry.Curves.Projectivity.AffineMap
 public import Aglib.AlgebraicGeometry.Picard.IdentityComponent
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
 public import Aglib.AlgebraicGeometry.Picard.Smooth.Lifting
@@ -51,23 +50,6 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 open AlgebraicGeometry.ProjectiveSpace
-
-namespace AlgebraicGeometry.Scheme.OverField.Curve.Projectivity
-
-/-- A proper integral scheme of dimension one over a field has an affine morphism to the
-projective line: the finite dominant map of `exists_finite_dominant_map_to_nativeP1`, followed by
-the identification of the native projective line with `Proj k[x, y]`. -/
-theorem exists_isAffineHom_to_projectiveP1 {k : Type u} [Field k] {X : Scheme.{u}}
-    (p : X ⟶ Spec (.of k)) [IsProper p] [IsIntegral X] (hdim : topologicalKrullDim X = 1) :
-    ∃ ρ : X ⟶ Scheme.ProjectiveLine.projectiveP1 k, IsAffineHom ρ := by
-  have : IsProper (Over.mk p).hom := ‹IsProper p›
-  have : IsIntegral (Over.mk p).left := ‹IsIntegral X›
-  obtain ⟨π₁, hπ₁, -⟩ := exists_finite_dominant_map_to_nativeP1 (Over.mk p) hdim
-  let isoP1 := (Over.forget _).mapIso (ProjectiveLine.projectiveLineOverIsoNative k)
-  have : IsAffineHom π₁.left := inferInstance
-  exact ⟨π₁.left ≫ isoP1.inv, inferInstance⟩
-
-end AlgebraicGeometry.Scheme.OverField.Curve.Projectivity
 
 namespace AlgebraicGeometry.Scheme
 

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekExt
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleCohomology
-public import Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.LowerShriekExt
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.YonedaPairing
 
 /-!
 # The Yoneda pairing of compactly supported cohomology with Ext
@@ -75,7 +75,7 @@ composite of `c` with `j_! e`, first `c`, then `j_! e`. -/
 def moduleLowerShriekPairing {F G : ModuleSheaf U Λ} {r s t : ℕ}
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (e : Ext.{w} F G s)
     (h : r + s = t) : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj G) t :=
-  c.comp (e.mapExactFunctor (moduleLowerShriek j Λ)) h
+  Functor.extPairing (moduleLowerShriek j Λ) (moduleUnit X Λ) c e h
 
 theorem moduleLowerShriekPairing_def {F G : ModuleSheaf U Λ} {r s t : ℕ}
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (e : Ext.{w} F G s)
@@ -88,8 +88,7 @@ theorem moduleLowerShriekPairing_def {F G : ModuleSheaf U Λ} {r s t : ℕ}
 def moduleLowerShriekPairingHom (F G : ModuleSheaf U Λ) (r s t : ℕ) (h : r + s = t) :
     Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r →+
       Ext.{w} F G s →+ Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj G) t :=
-  (Ext.bilinearComp (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F)
-    ((moduleLowerShriek j Λ).obj G) r s t h).compl₂ (moduleLowerShriekExt j Λ F G s)
+  Functor.extPairingHom (moduleLowerShriek j Λ) (moduleUnit X Λ) F G r s t h
 
 @[simp]
 theorem moduleLowerShriekPairingHom_apply_apply (F G : ModuleSheaf U Λ) (r s t : ℕ)
@@ -110,7 +109,8 @@ theorem moduleLowerShriekPairing_add_left
     (h : r + s = t) :
     moduleLowerShriekPairing j Λ (c₁ + c₂) e h =
       moduleLowerShriekPairing j Λ c₁ e h + moduleLowerShriekPairing j Λ c₂ e h :=
-  Ext.add_comp _ _ _ h
+  Functor.extPairing_add_left
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c₁ c₂ e h
 
 @[simp]
 theorem moduleLowerShriekPairing_add_right
@@ -118,39 +118,45 @@ theorem moduleLowerShriekPairing_add_right
     (h : r + s = t) :
     moduleLowerShriekPairing j Λ c (e₁ + e₂) h =
       moduleLowerShriekPairing j Λ c e₁ h + moduleLowerShriekPairing j Λ c e₂ h :=
-  map_add (moduleLowerShriekPairingHom j Λ F G r s t h c) e₁ e₂
+  Functor.extPairing_add_right
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c e₁ e₂ h
 
 @[simp]
 theorem moduleLowerShriekPairing_zero_left (e : Ext.{w} F G s) (h : r + s = t) :
     moduleLowerShriekPairing j Λ
       (0 : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) e h = 0 :=
-  Ext.zero_comp _ _ _ _ h
+  Functor.extPairing_zero_left
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) e h
 
 @[simp]
 theorem moduleLowerShriekPairing_zero_right
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (h : r + s = t) :
     moduleLowerShriekPairing j Λ c (0 : Ext.{w} F G s) h = 0 :=
-  map_zero (moduleLowerShriekPairingHom j Λ F G r s t h c)
+  Functor.extPairing_zero_right
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c h
 
 @[simp]
 theorem moduleLowerShriekPairing_neg_left
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (e : Ext.{w} F G s)
     (h : r + s = t) :
     moduleLowerShriekPairing j Λ (-c) e h = -moduleLowerShriekPairing j Λ c e h :=
-  Ext.neg_comp _ _ h
+  Functor.extPairing_neg_left
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c e h
 
 @[simp]
 theorem moduleLowerShriekPairing_neg_right
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (e : Ext.{w} F G s)
     (h : r + s = t) :
     moduleLowerShriekPairing j Λ c (-e) h = -moduleLowerShriekPairing j Λ c e h :=
-  map_neg (moduleLowerShriekPairingHom j Λ F G r s t h c) e
+  Functor.extPairing_neg_right
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c e h
 
 theorem moduleLowerShriekPairing_zsmul_right
     (c : Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) (m : ℤ)
     (e : Ext.{w} F G s) (h : r + s = t) :
     moduleLowerShriekPairing j Λ c (m • e) h = m • moduleLowerShriekPairing j Λ c e h :=
-  map_zsmul (moduleLowerShriekPairingHom j Λ F G r s t h c) m e
+  Functor.extPairing_zsmul_right
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) c m e h
 
 end Biadditive
 
@@ -161,9 +167,9 @@ theorem moduleLowerShriekPairing_naturality {F F' G : ModuleSheaf U Λ} (u : F �
     (e' : Ext.{w} F' G s) (h : r + s = t) :
     moduleLowerShriekPairing j Λ
         (c.comp (Ext.mk₀ ((moduleLowerShriek j Λ).map u)) (add_zero r)) e' h =
-      moduleLowerShriekPairing j Λ c ((Ext.mk₀ u).comp e' (zero_add s)) h := by
-  rw [moduleLowerShriekPairing, moduleLowerShriekPairing, Ext.mapExactFunctor_comp,
-    Ext.mapExactFunctor_mk₀, Ext.comp_assoc c _ _ (add_zero r) (zero_add s) (by lia)]
+      moduleLowerShriekPairing j Λ c ((Ext.mk₀ u).comp e' (zero_add s)) h :=
+  Functor.extPairing_naturality
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) u c e' h
 
 /-- Naturality in the second variable: for `v : G ⟶ G'`, `φ(c, v_* e) = (j_! v)_* φ(c, e)`. -/
 theorem moduleLowerShriekPairing_comp_mk₀ {F G G' : ModuleSheaf U Λ} (v : G ⟶ G')
@@ -171,9 +177,9 @@ theorem moduleLowerShriekPairing_comp_mk₀ {F G G' : ModuleSheaf U Λ} (v : G �
     (e : Ext.{w} F G s) (h : r + s = t) :
     moduleLowerShriekPairing j Λ c (e.comp (Ext.mk₀ v) (add_zero s)) h =
       (moduleLowerShriekPairing j Λ c e h).comp
-        (Ext.mk₀ ((moduleLowerShriek j Λ).map v)) (add_zero t) := by
-  rw [moduleLowerShriekPairing, moduleLowerShriekPairing, Ext.mapExactFunctor_comp,
-    Ext.mapExactFunctor_mk₀, Ext.comp_assoc c _ _ h (add_zero s) (by lia)]
+        (Ext.mk₀ ((moduleLowerShriek j Λ).map v)) (add_zero t) :=
+  Functor.extPairing_comp_mk₀
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) v c e h
 
 /-- Compatibility with connecting maps, with sign `+1`. For a short exact sequence `S` on `U`,
 the connecting map of `H_c` is postcomposition with the extension class of `j_! S`, and the
@@ -185,9 +191,9 @@ theorem moduleLowerShriekPairing_extClass {S : ShortComplex (ModuleSheaf U Λ)}
     (e : Ext.{w} S.X₁ G s) (hr : r + 1 = r') (hs : 1 + s = s') (h : r' + s = t)
     (h' : r + s' = t) :
     moduleLowerShriekPairing j Λ (c.comp (shortExact_moduleLowerShriek j Λ hS).extClass hr) e h =
-      moduleLowerShriekPairing j Λ c (hS.extClass.comp e hs) h' := by
-  rw [moduleLowerShriekPairing, moduleLowerShriekPairing, Ext.mapExactFunctor_comp,
-    Ext.mapExactFunctor_extClass, Ext.comp_assoc c _ _ hr hs (by lia)]
+      moduleLowerShriekPairing j Λ c (hS.extClass.comp e hs) h' :=
+  Functor.extPairing_extClass
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS c e hr hs h h'
 
 /-- Compatibility with Mathlib's signed connecting map `Ext.δ`, which is
 `(-1)^s'` times the precomposition with the extension class on `Ext^s → Ext^s'`, `s + 1 = s'`:
@@ -200,9 +206,9 @@ theorem moduleLowerShriekPairing_δ {S : ShortComplex (ModuleSheaf U Λ)}
     moduleLowerShriekPairing j Λ c (Ext.δ hS s s' hs e) h' =
       (s' : ℤ).negOnePow •
         moduleLowerShriekPairing j Λ (c.comp (shortExact_moduleLowerShriek j Λ hS).extClass hr)
-          e h := by
-  rw [moduleLowerShriekPairing_extClass hS c e hr (by lia) h h', Ext.δ_apply, Units.smul_def,
-    Units.smul_def, moduleLowerShriekPairing_zsmul_right]
+          e h :=
+  Functor.extPairing_δ
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS c e hr hs h h'
 
 section DualHom
 
@@ -213,7 +219,7 @@ variable (j Λ)
 def moduleLowerShriekPairingDualHom (F G : ModuleSheaf U Λ) (d r : ℕ) (hr : r ≤ d) :
     Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r →+
       Ext.{w} F G (d - r) →+ Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj G) d :=
-  moduleLowerShriekPairingHom j Λ F G r (d - r) d (by lia)
+  Functor.extPairingDualHom (moduleLowerShriek j Λ) (moduleUnit X Λ) F G d r hr
 
 @[simp]
 theorem moduleLowerShriekPairingDualHom_apply_apply (F G : ModuleSheaf U Λ) (d r : ℕ)
@@ -232,9 +238,9 @@ theorem moduleLowerShriekPairingDualHom_naturality {F F' G : ModuleSheaf U Λ} (
     moduleLowerShriekPairingDualHom j Λ F' G d r hr
         (c.comp (Ext.mk₀ ((moduleLowerShriek j Λ).map u)) (add_zero r)) =
       (moduleLowerShriekPairingDualHom j Λ F G d r hr c).comp
-        ((Ext.mk₀ u).precomp G (zero_add (d - r))) := by
-  ext e'
-  exact moduleLowerShriekPairing_naturality u c e' (by lia)
+        ((Ext.mk₀ u).precomp G (zero_add (d - r))) :=
+  Functor.extPairingDualHom_naturality
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) u d r hr c
 
 /-- The square of the dual homomorphism against the connecting maps, sign `+1`: for a short
 exact sequence `S` on `U` and `r + 1 ≤ d`, `φ_{S.X₁}(δ c'') = φ_{S.X₃}(c'') ∘ δ`, with `δ` on
@@ -245,9 +251,9 @@ theorem moduleLowerShriekPairingDualHom_extClass {S : ShortComplex (ModuleSheaf 
     moduleLowerShriekPairingDualHom j Λ S.X₁ G d (r + 1) hr
         (c.comp (shortExact_moduleLowerShriek j Λ hS).extClass rfl) =
       (moduleLowerShriekPairingDualHom j Λ S.X₃ G d r (by lia) c).comp
-        (hS.extClass.precomp G (show 1 + (d - (r + 1)) = d - r by lia)) := by
-  ext e'
-  exact moduleLowerShriekPairing_extClass hS c e' rfl (by lia) (by lia) (by lia)
+        (hS.extClass.precomp G (show 1 + (d - (r + 1)) = d - r by lia)) :=
+  Functor.extPairingDualHom_extClass
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS G d r hr c
 
 /-- The square of the dual homomorphism against Mathlib's signed connecting map `Ext.δ`:
 `φ_{S.X₃}(c'') ∘ Ext.δ = (-1)^(d-r) φ_{S.X₁}(δ c'')`, for `r + 1 ≤ d`. -/
@@ -258,9 +264,9 @@ theorem moduleLowerShriekPairingDualHom_δ {S : ShortComplex (ModuleSheaf U Λ)}
         (Ext.δ hS (d - (r + 1)) (d - r) (by lia)) =
       ((d - r : ℕ) : ℤ).negOnePow •
         moduleLowerShriekPairingDualHom j Λ S.X₁ G d (r + 1) hr
-          (c.comp (shortExact_moduleLowerShriek j Λ hS).extClass rfl) := by
-  ext e'
-  exact moduleLowerShriekPairing_δ hS c e' rfl (by lia) (by lia) (by lia)
+          (c.comp (shortExact_moduleLowerShriek j Λ hS).extClass rfl) :=
+  Functor.extPairingDualHom_δ
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS G d r hr c
 
 end DualHom
 

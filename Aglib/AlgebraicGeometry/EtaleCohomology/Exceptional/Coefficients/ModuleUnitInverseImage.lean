@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleUnitUnderlying
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnityInverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitUnderlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ZMod
 
 /-!
 # Inverse image of the rank-one module sheaf `ℤ/n`

@@ -10,6 +10,14 @@ and counits are retained. Ring and module-carrier universes remain independent.
 The étale coefficient, open-restriction and constructibility families specialize
 these constructions; commutativity is not required for this bridge.
 
+[ConstantRing/UnitUnderlying](ConstantRing/UnitUnderlying.lean) gives the
+lifted unit, its section map, local injectivity and surjectivity, and the
+underlying constant-abelian-sheaf isomorphism on an arbitrary site under the
+displayed sheafification and local-bijectivity hypotheses.
+[ConstantRing/ZMod](ConstantRing/ZMod.lean) supplies full lifted-ZMod scalar
+forgetting and native constant-ring sheaf forgetting, and identity annihilation
+for every modulus. The scheme adapters use these constructors and maps.
+
 [ConstantRing/RingPullback](ConstantRing/RingPullback.lean) compares the actual
 native RingCat-valued inverse image of a constant ring with the target
 constant ring. It uses continuity, weak ring sheafification, native

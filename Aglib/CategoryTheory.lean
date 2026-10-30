@@ -299,6 +299,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Slic
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.UniqueAugmentation
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.UniqueFamily
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Unit
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Nsmul
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Adjunction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Comparison

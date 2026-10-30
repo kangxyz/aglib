@@ -19,6 +19,7 @@ package-wide conventions, reading routes and the scope of recorded evidence.
 | [Work plan](WORK_PLAN.md) | Current source boundaries and identified historical acceptance checkpoints |
 | [Cohomology development](COHOMOLOGY_PLAN.md) | Implemented cohomology endpoints, remaining targets and proof dependencies |
 | [Picard scheme development](PICARD_PLAN.md) | Picard functors, descent and representability targets, selected generality and dependencies |
+| [Jacobians and curve duality](JACOBIAN_PLAN.md) | General constructions, native Jacobian and curve-cohomology instances, torsion, polarization and Weil pairing proof routes |
 | [Zariski–Nagata purity](ZARISKI_NAGATA_PURITY.md) | Finite normal algebras and finite dominant integral morphisms; actual generic separability, source codimension-one conditions and proof dependencies |
 
 ## Mathematical routes

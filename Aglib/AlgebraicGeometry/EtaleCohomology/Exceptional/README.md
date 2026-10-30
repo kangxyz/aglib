@@ -11,6 +11,8 @@ implementation, not a completed exceptional calculus.
   hom-indexed coproduct/sheafification construction; adjunction, exactness,
   open full faithfulness/stalks, and comparisons are being implemented.
   Abelian source is an intermediate supplier, not the arbitrary-ring endpoint.
+  [LowerShriekExt](Open/LowerShriekExt.lean) retains the original exact-functor
+  and adjunction Ext APIs.
 - `Coefficients/`: actual constant ring sheaves, genuine `SheafOfModules`, and
   comparisons with module-valued sheaves. The standard explicit scalar/value
   range is `u+1` for schemes in `u`. No torsion or Noetherian condition belongs

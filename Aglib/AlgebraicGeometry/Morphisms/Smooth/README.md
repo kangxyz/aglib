@@ -50,6 +50,8 @@ representation on locally Noetherian test schemes supplies it.
 formally smooth, with no residue-field condition, and
 `Scheme.Hom.smooth_of_liftsAlongNoetherianSquareZero` gives `Smooth π` (Kleiman, *The Picard
 scheme*, arXiv:math/0504020v1, proof of Prop. 5.19, p. 47). The leaf imports no Picard module. The
-consumer is the [Picard scheme of a curve](../../Picard/Smooth/Curve.lean).
+consumer is the [Picard scheme of a curve](../../Picard/Smooth/Curve.lean). Its scalar triangle and local
+stalk factorization/injectivity use the shared
+[Stalk/SpecLocalRing](../../Stalk/SpecLocalRing.lean) construction.
 
 [StandardEtaleChart](StandardEtaleChart.lean) supplies `Scheme.StandardSmoothEtaleChart.coordinateMap` from the native standard-smooth theorem. The chart is exactly `Spec.map` of that chosen ring map, with its original algebra-map compatibility triangle. Over a regular base ring, `regularStalks` uses the native actual-stalk etale theorem and `Scheme.regularStalks_spec`; the relative dimension, algebra structures and common universe remain explicit.

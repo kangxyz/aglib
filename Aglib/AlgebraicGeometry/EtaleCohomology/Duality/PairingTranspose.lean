@@ -59,7 +59,7 @@ def moduleLowerShriekPairingTransposeHom (F G : ModuleSheaf U Λ) (d s : ℕ) (h
     Ext.{w} F G s →+
       Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) (d - s) →+
         Ext.{w'} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj G) d :=
-  (moduleLowerShriekPairingHom j Λ F G (d - s) s d (by lia)).flip
+  Functor.extPairingTransposeHom (moduleLowerShriek j Λ) (moduleUnit X Λ) F G d s hs
 
 @[simp]
 theorem moduleLowerShriekPairingTransposeHom_apply_apply (F G : ModuleSheaf U Λ) (d s : ℕ)
@@ -79,9 +79,9 @@ theorem moduleLowerShriekPairingTransposeHom_naturality {F F' G : ModuleSheaf U 
     moduleLowerShriekPairingTransposeHom j Λ F G d s hs ((Ext.mk₀ u).comp e' (zero_add s)) =
       (moduleLowerShriekPairingTransposeHom j Λ F' G d s hs e').comp
         ((Ext.mk₀ ((moduleLowerShriek j Λ).map u)).postcomp (moduleUnit X Λ)
-          (add_zero (d - s))) := by
-  ext c
-  exact (moduleLowerShriekPairing_naturality u c e' (by lia)).symm
+          (add_zero (d - s))) :=
+  Functor.extPairingTransposeHom_naturality
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) u d s hs e'
 
 /-- The square of the transposed map against the connecting maps, sign `+1`: for a short exact
 sequence `S` on `U` and `s + 1 ≤ d`, `ψ_{S.X₃}(δ e') = ψ_{S.X₁}(e') ∘ δ`, with `δ e'` the
@@ -94,10 +94,9 @@ theorem moduleLowerShriekPairingTransposeHom_extClass {S : ShortComplex (ModuleS
         (hS.extClass.comp e' (add_comm 1 s)) =
       (moduleLowerShriekPairingTransposeHom j Λ S.X₁ G d s (by lia) e').comp
         ((shortExact_moduleLowerShriek j Λ hS).extClass.postcomp (moduleUnit X Λ)
-          (show d - (s + 1) + 1 = d - s by lia)) := by
-  ext c
-  exact (moduleLowerShriekPairing_extClass hS c e' (by lia) (add_comm 1 s) (by lia)
-    (by lia)).symm
+          (show d - (s + 1) + 1 = d - s by lia)) :=
+  Functor.extPairingTransposeHom_extClass
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS G d s hs e'
 
 /-- The square of the transposed map against Mathlib's signed connecting map `Ext.δ`:
 `ψ_{S.X₃}(Ext.δ e') = (-1)^(s+1) ψ_{S.X₁}(e') ∘ δ`, for `s + 1 ≤ d`. -/
@@ -108,8 +107,8 @@ theorem moduleLowerShriekPairingTransposeHom_δ {S : ShortComplex (ModuleSheaf U
       ((s + 1 : ℕ) : ℤ).negOnePow •
         (moduleLowerShriekPairingTransposeHom j Λ S.X₁ G d s (by lia) e').comp
           ((shortExact_moduleLowerShriek j Λ hS).extClass.postcomp (moduleUnit X Λ)
-            (show d - (s + 1) + 1 = d - s by lia)) := by
-  ext c
-  exact moduleLowerShriekPairing_δ hS c e' (by lia) rfl (by lia) (by lia)
+            (show d - (s + 1) + 1 = d - s by lia)) :=
+  Functor.extPairingTransposeHom_δ
+    (L := moduleLowerShriek j Λ) (A := moduleUnit X Λ) hS G d s hs e'
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

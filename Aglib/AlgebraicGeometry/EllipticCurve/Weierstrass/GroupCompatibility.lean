@@ -14,7 +14,7 @@ public import Aglib.AlgebraicGeometry.EllipticCurve.Weierstrass.BaseChange
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.Group.PointedTranslation
 public import Aglib.AlgebraicGeometry.IdealSheaf.Affine
-public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.OpenImmersion
+public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.OpenRestriction
 
 /-!
 # The actual coordinate ideal in the group-law comparison
@@ -93,13 +93,8 @@ open CategoryTheory.Limits AlgebraicGeometry.Scheme.Hom
 recovers its actual factor ideal. -/
 def idealModulePullbackFactor {D U X : Scheme.{u}} (p : D ⟶ U)
     (i : U ⟶ X) [IsOpenImmersion i] :
-    (Scheme.Modules.pullback i).obj (idealModule (p ≫ i)) ≅ idealModule p := by
-  have h : (𝟙 D) ≫ (p ≫ i) = p ≫ i := Category.id_comp _
-  have H : IsPullback (𝟙 D) p (p ≫ i) i :=
-    IsPullback.of_horiz_isIso_mono ⟨h⟩
-  have : IsIso (idealPullbackMap (p ≫ i) p i (𝟙 D) h) :=
-    idealPullbackMap_isIso_of_isOpenImmersion (p ≫ i) p i (𝟙 D) h H
-  exact asIso (idealPullbackMap (p ≫ i) p i (𝟙 D) h)
+    (Scheme.Modules.pullback i).obj (idealModule (p ≫ i)) ≅ idealModule p :=
+  Scheme.Hom.idealModulePullbackFactor p i
 
 /-- Restricting the actual finite coordinate-point ideal to the original
 affine chart gives the sheafification of Mathlib's literal `XYIdeal`. -/
@@ -120,19 +115,8 @@ def affineCoordinateIdealIso (W : WeierstrassCurve k) (x y : k)
 
 /-- The ideal of a morphism from an empty scheme is the unit module. -/
 def idealModuleEmptyIso {D X : Scheme.{u}} [IsEmpty D] (i : D ⟶ X) :
-    idealModule i ≅ SheafOfModules.unit X.ringCatSheaf := by
-  have hz : structureModuleMap i = 0 := by
-    apply Scheme.Modules.hom_ext
-    intro U
-    have hU : i ⁻¹ᵁ U = ⊥ := SetLike.ext fun x => isEmptyElim x
-    let : Subsingleton Γ((Scheme.Modules.pushforward i).obj
-        (SheafOfModules.unit D.ringCatSheaf), U) := by
-      change Subsingleton Γ(D, i ⁻¹ᵁ U)
-      rw [hU]
-      infer_instance
-    ext a
-    exact Subsingleton.elim _ _
-  exact kernelIsoOfEq hz ≪≫ kernelZeroIsoSource
+    idealModule i ≅ SheafOfModules.unit X.ringCatSheaf :=
+  Scheme.Hom.idealModuleEmptyIso i
 
 /-- The original origin has empty inverse image on the affine complement. -/
 theorem origin_affine_pullback_isEmpty (W : WeierstrassCurve k) :

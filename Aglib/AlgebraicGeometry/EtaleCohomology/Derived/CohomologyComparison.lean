@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackComposition
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Nsmul
 
 /-!
 # Original cohomology and bounded-below derived sections
@@ -43,10 +44,7 @@ omit [HasDerivedCategory.{dX} (AbelianSheaf.{u, u + 1} X)]
 /-- Multiplication on original cohomology is computed by the original coefficient
 endomorphism, independently of the chosen Ext universe. -/
 theorem cohomology_map_nsmul_id (L : AbelianSheaf.{u, u + 1} X) (q n : ℕ)
-    (x : Sheaf.H.{w} L q) : Sheaf.H.map (n • 𝟙 L) q x = n • x := by
-  change ((Sheaf.functorH.{w, u + 1, u, u + 1}
-    (Scheme.smallEtaleTopology X) q).map (n • 𝟙 L)) x = n • x
-  rw [CategoryTheory.Functor.map_nsmul, CategoryTheory.Functor.map_id]
-  rfl
+    (x : Sheaf.H.{w} L q) : Sheaf.H.map (n • 𝟙 L) q x = n • x :=
+  Sheaf.H.map_nsmul_id_apply L q n x
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

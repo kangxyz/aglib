@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleCohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coefficient
 public import Mathlib.CategoryTheory.Sites.LocallyBijective
 
@@ -47,12 +47,8 @@ variable (X : Scheme.{u}) (Λ : Type (u + 1)) [Ring Λ]
 `Λ_X`: the original constant-ring unit `Λ → Λ_X(V)` on sections, followed by `ULift.up`. -/
 def moduleUnitConstantMap :
     (Functor.const X.Etaleᵒᵖ).obj (AddCommGrpCat.of Λ) ⟶
-      ((SheafOfModules.toSheaf (constantRing X Λ)).obj (moduleUnit X Λ)).obj where
-  app V := AddCommGrpCat.ofHom (AddEquiv.ulift.symm.toAddMonoidHom.comp
-    ((constantRingUnit X Λ).app V).hom.toAddMonoidHom)
-  naturality V W f := by
-    ext a
-    exact congrArg ULift.up (ConcreteCategory.congr_hom ((constantRingUnit X Λ).naturality f) a)
+      ((SheafOfModules.toSheaf (constantRing X Λ)).obj (moduleUnit X Λ)).obj :=
+  ModuleCat.Sheaf.ConstantRing.moduleUnitConstantMap (Scheme.smallEtaleTopology X) Λ
 
 /-- The comparison of `moduleUnitConstantMap` with the original constant-ring unit after
 forgetting to types: the identity of `Λ`, the unit, and `ULift.up`. -/
@@ -69,30 +65,28 @@ theorem moduleUnitConstantMap_whiskerRight_forget :
               (fun _ => rfl) :
             (constantRing X Λ).obj ⋙ CategoryTheory.forget RingCat.{u + 1} ≅
               ((SheafOfModules.toSheaf (constantRing X Λ)).obj (moduleUnit X Λ)).obj ⋙
-                CategoryTheory.forget AddCommGrpCat.{u + 1}).hom := by
-  ext V a
-  rfl
+                CategoryTheory.forget AddCommGrpCat.{u + 1}).hom :=
+  ModuleCat.Sheaf.ConstantRing.moduleUnitConstantMap_whiskerRight_forget
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The presheaf map `moduleUnitConstantMap` is locally injective. -/
 theorem moduleUnitConstantMap_isLocallyInjective :
-    Presheaf.IsLocallyInjective (Scheme.smallEtaleTopology X) (moduleUnitConstantMap X Λ) := by
-  rw [← Presheaf.isLocallyInjective_forget_iff, moduleUnitConstantMap_whiskerRight_forget]
-  infer_instance
+    Presheaf.IsLocallyInjective (Scheme.smallEtaleTopology X) (moduleUnitConstantMap X Λ) :=
+  ModuleCat.Sheaf.ConstantRing.moduleUnitConstantMap_isLocallyInjective
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The presheaf map `moduleUnitConstantMap` is locally surjective. -/
 theorem moduleUnitConstantMap_isLocallySurjective :
-    Presheaf.IsLocallySurjective (Scheme.smallEtaleTopology X) (moduleUnitConstantMap X Λ) := by
-  rw [Presheaf.isLocallySurjective_iff_whisker_forget, moduleUnitConstantMap_whiskerRight_forget]
-  infer_instance
+    Presheaf.IsLocallySurjective (Scheme.smallEtaleTopology X) (moduleUnitConstantMap X Λ) :=
+  ModuleCat.Sheaf.ConstantRing.moduleUnitConstantMap_isLocallySurjective
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The sheafification of `moduleUnitConstantMap` is an isomorphism. -/
 theorem moduleUnitConstantMap_presheafToSheaf_map_isIso :
     IsIso ((presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map
-      (moduleUnitConstantMap X Λ)) := by
-  have := moduleUnitConstantMap_isLocallyInjective X Λ
-  have := moduleUnitConstantMap_isLocallySurjective X Λ
-  exact ((Scheme.smallEtaleTopology X).W_iff _).mp
-    ((Scheme.smallEtaleTopology X).W_of_isLocallyBijective _)
+      (moduleUnitConstantMap X Λ)) :=
+  ModuleCat.Sheaf.ConstantRing.moduleUnitConstantMap_presheafToSheaf_map_isIso
+    (Scheme.smallEtaleTopology X) Λ
 
 /-- The constant abelian sheaf `Λ` is the underlying abelian sheaf of `Λ_X`: the sheafification
 of `moduleUnitConstantMap`, followed by the counit of the sheafification adjunction. -/
@@ -100,11 +94,7 @@ def moduleUnitUnderlyingIso :
     (constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj
         (AddCommGrpCat.of Λ) ≅
       (SheafOfModules.toSheaf (constantRing X Λ)).obj (moduleUnit X Λ) :=
-  @asIso _ _ _ _ ((presheafToSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).map
-      (moduleUnitConstantMap X Λ)) (moduleUnitConstantMap_presheafToSheaf_map_isIso X Λ) ≪≫
-    asIso ((sheafificationAdjunction (Scheme.smallEtaleTopology X)
-      AddCommGrpCat.{u + 1}).counit.app
-        ((SheafOfModules.toSheaf (constantRing X Λ)).obj (moduleUnit X Λ)))
+  ModuleCat.Sheaf.ConstantRing.moduleUnitUnderlyingIso (Scheme.smallEtaleTopology X) Λ
 
 /-- For `ℤ/n`, the constant coefficient `ConstantFinite.coefficient (ULift (ZMod n)) X` is the
 underlying abelian sheaf of `Λ_X`, `Λ = ULift (ZMod n)`. -/

@@ -181,3 +181,102 @@ Lemma 3.4 with its proof (pp. 22–23), Definition 3.6 with its functoriality re
 proof of Theorem 3.7 (p. 24) are cited by `EffectiveCartierDivisor/Relative`. The families
 `Picard`, `Picard/Comparison`, `Cohomology/Proper/StructureSheaf` and
 `CategoryTheory/Sites/Descent` cite other sections at their own locators.
+
+## Curves, Jacobians and étale duality
+
+These references supply the identified source basis and exact-version locators
+for the [Jacobian and curve-cohomology plan](JACOBIAN_PLAN.md). The existing
+[Kleiman entry](#the-picard-scheme) remains the Picard bibliography owner.
+Inspected passages and source obligations are distinguished in the plan;
+bibliographic identity does not establish an imported theorem or proof chain.
+
+### StacksProject
+
+The Stacks Project Authors, *The Stacks Project*, 2026,
+[project site](https://stacks.math.columbia.edu). The curve investigations used
+chapter PDFs at version `ed88ff78`, compiled 14 July 2026. Persistent tags are
+the primary locators: 03RN, 03RQ, 03RR and 0AMB for divisibility, curve
+cohomology and degree; 0BA0 for Picard/Jacobian geometry; 0BDP, 0BF0,
+0BF2–0BF4 for seesaw/cube suppliers; 0BF7, 0BFA, 0BFG, 0BFH and 0C1Z for
+abelian varieties, multiplication and curve torsion. Each use retains the
+tagged proof's actual hypotheses, including its base-change requirements.
+
+### Milne2013LecturesEtaleCohomology
+
+James S. Milne, *Lectures on Étale Cohomology*, version 2.21, 22 March 2013,
+[author's course notes](https://www.jmilne.org/math/CourseNotes/LEC.pdf).
+Locators use the printed pagination of that version: 14.2, 14.5, 14.7 with
+Steps 0–7 (pp. 94–96), 14.12, 14.20–14.21 (pp. 101–103), and the Yoneda
+pairing on p. 103. The omitted diagram arguments and the references to
+*Étale Cohomology* (EC), including p. 177, are not supplied by this entry.
+That book was not inspected for this programme (**citation needed**).
+
+### SGA4Tome3
+
+Michael Artin, Alexander Grothendieck and Jean-Louis Verdier,
+*Théorie des topos et cohomologie étale des schémas (SGA 4), Tome 3*,
+Lecture Notes in Mathematics 305, Springer, Berlin, 1973;
+DOI `10.1007/BFb0070714`. The inspected
+[LaTeX re-edition](https://www.normalesup.org/~forgogozo/SGA4/tomes/tome3.pdf)
+is version `71766d9`, 30 July 2024. Its pagination differs from the original;
+original page numbers appear in the margins. The programme uses exposé IX
+4.7 and exposé XVIII 1.1.3, with the further derived suppliers explicitly
+identified when needed.
+
+### SGA4Half
+
+Pierre Deligne, *Cohomologie étale*, Lecture Notes in Mathematics 569,
+Springer-Verlag, Berlin, 1977; DOI `10.1007/BFb0091516`.
+This is SGA 4½, with the collaboration of J. F. Boutot, A. Grothendieck,
+L. Illusie and J. L. Verdier. The inspected
+[1977 scan](https://websites.math.leidenuniv.nl/edixhoven/teaching/2015-2016/TAG/SGA4.5.pdf)
+uses printed pagination six pages behind the PDF page number. Formula
+inspection used the page images. Relevant locators are [Cycle]
+1.1.1–1.1.6 (printed pp. 131–132) and 2.1.2–2.1.5; [Dualité] 1.3,
+2.1–2.5, 3.2 and 3.4; and [Arcata] VI (2.3.3), printed p. 70.
+The last formula fixes the source torsor/Abel–Jacobi sign; the plan retains
+the separate comparison with Aglib's conventions.
+
+### Milne2021JacobianVarieties
+
+J. S. Milne, *Jacobian Varieties*,
+[corrected author version](https://www.jmilne.org/math/xnotes/JVs.pdf),
+12 June 2021, of Chapter VII in *Arithmetic Geometry* (1986), pp. 167–212,
+with unchanged numbering. The plan uses 5.1 and 6.6–6.11; locators referring
+to printed p. 16 or p. 22 use this author copy. Its theta construction uses
+the specified rational base point. Its fibre-length argument retains the
+actual geometric hypotheses described in the plan.
+
+### Milne1986AbelianVarieties
+
+James S. Milne, “Abelian Varieties,” in Gary Cornell and Joseph H. Silverman
+(eds.), *Arithmetic Geometry*, Springer, New York, 1986, pp. 103–150;
+DOI `10.1007/978-1-4613-8655-1_5`.
+The inspected [corrected author text](https://www.jmilne.org/math/xnotes/AVs.pdf)
+is dated 2 January 2022. The plan's “AVs” locators use this author-copy
+pagination and result numbering, including 7.1–7.2, 8.2–8.3 and 16.1.
+
+### Milne2008AbelianVarietiesNotes
+
+James S. Milne, *Abelian Varieties*, course notes, version 2.00,
+16 March 2008, [author's course notes](https://www.jmilne.org/math/CourseNotes/AV.pdf).
+The plan's “AV” locators refer to this version and its part/section numbering.
+References from these notes to inaccessible Mumford passages remain
+secondhand, unchecked attributions.
+
+### Inspected preliminary abelian-variety draft
+
+B. Edixhoven, G. van der Geer and B. Moonen, *Abelian Varieties*, preliminary
+draft chapter files on [Moonen's author page](https://www.math.ru.nl/~bmoonen/research.html#bookabvar).
+The inspected Cartier/dual/Weil chapters bear the footer date
+15 September 2011 and were downloaded on 29 October 2026. This identifies
+the inspected draft; its bibliography entry remains incomplete
+(**citation needed**). Relevant printed locators are (3.21)–(3.24),
+pp. 41–43; (6.6), (6.12)–(6.18), pp. 90–96; (7.2)–(7.17), pp. 98–104;
+(8.1)–(8.7), pp. 113–115; and (11.11)–(11.22), pp. 162–168.
+The stronger graded-bialgebra splitting in (6.12) is not adopted. The plan
+retains the necessary graded-algebra consequence and all actual theorem
+suppliers as open obligations. Cited quotient/descent and Riemann–Roch inputs,
+the unproved Fact (8.7), and the unposted Jacobian chapter do not acquire
+proof coverage here. Mumford and Howe sources not accessed in the accepted
+investigation remain unchecked; no proof attribution to them is added.

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleCohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
 
 /-!
 # Tests for the cohomology of constant-ring module sheaves computed among modules
@@ -40,30 +40,27 @@ example (G : ModuleSheaf X (ULift.{u + 1} (ZMod n))) (q : ℕ) :
     Ext.{u + 2} (moduleUnit X (ULift.{u + 1} (ZMod n))) G q ≃+
       Sheaf.H.{u + 2} ((SheafOfModules.toSheaf (constantRing X (ULift.{u + 1} (ZMod n)))).obj G)
         q :=
-  moduleUnitExtAddEquiv X _ G q
-
-/-- At the standard Ext universes the comparison is the existing étale specialization
-`etaleModuleExtCohomologyAddEquivLargeScalars` of the constant ring sheaf. -/
-example (G : ModuleSheaf X (ULift.{u + 1} (ZMod n))) (q : ℕ) :
-    moduleUnitExtAddEquiv X _ G q =
-      etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X (ULift.{u + 1} (ZMod n))) G
-        q :=
-  rfl
+  etaleModuleExtCohomologyAddEquivLargeScalars X
+      (constantRing X (ULift.{u + 1} (ZMod n))) G q
 
 /-- The comparison is natural in `G`. -/
 example {G G' : ModuleSheaf X (ULift.{u + 1} (ZMod n))} (f : G ⟶ G') (q : ℕ)
     (x : Ext.{u + 2} (moduleUnit X (ULift.{u + 1} (ZMod n))) G q) :
-    moduleUnitExtAddEquiv X _ G' q (x.comp (Ext.mk₀ f) (add_zero q)) =
+    etaleModuleExtCohomologyAddEquivLargeScalars X
+      (constantRing X (ULift.{u + 1} (ZMod n))) G' q (x.comp (Ext.mk₀ f) (add_zero q)) =
       Sheaf.H.map ((SheafOfModules.toSheaf (constantRing X (ULift.{u + 1} (ZMod n)))).map f) q
-        (moduleUnitExtAddEquiv X _ G q x) :=
+        (etaleModuleExtCohomologyAddEquivLargeScalars X
+      (constantRing X (ULift.{u + 1} (ZMod n))) G q x) :=
   moduleUnitExtAddEquiv_naturality X _ f q x
 
 /-- The comparison sends the module connecting map to the `Sheaf.H` connecting map. -/
 example (S : ShortComplex (ModuleSheaf X (ULift.{u + 1} (ZMod n)))) (hS : S.ShortExact)
     (q : ℕ) (x : Ext.{u + 2} (moduleUnit X (ULift.{u + 1} (ZMod n))) S.X₃ q) :
-    moduleUnitExtAddEquiv X _ S.X₁ (q + 1) (x.comp hS.extClass rfl) =
+    etaleModuleExtCohomologyAddEquivLargeScalars X
+      (constantRing X (ULift.{u + 1} (ZMod n))) S.X₁ (q + 1) (x.comp hS.extClass rfl) =
       Sheaf.H.δ (hS.map_of_exact (SheafOfModules.toSheaf (constantRing X _))) q (q + 1) rfl
-        (moduleUnitExtAddEquiv X _ S.X₃ q x) :=
+        (etaleModuleExtCohomologyAddEquivLargeScalars X
+      (constantRing X (ULift.{u + 1} (ZMod n))) S.X₃ q x) :=
   moduleUnitExtAddEquiv_connecting X _ S hS q x
 
 end AglibTest.EtaleDualityModuleCohomology
@@ -75,10 +72,10 @@ info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleUnit' depends on axioms: [
 #print axioms moduleUnit
 
 /--
-info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleUnitExtAddEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: 'AlgebraicGeometry.Scheme.EtaleCohomology.etaleModuleExtCohomologyAddEquivLargeScalars' depends on axioms: [propext, Classical.choice, Quot.sound]
 -/
 #guard_msgs (whitespace := lax) in
-#print axioms moduleUnitExtAddEquiv
+#print axioms etaleModuleExtCohomologyAddEquivLargeScalars
 
 /--
 info: 'AlgebraicGeometry.Scheme.EtaleCohomology.moduleUnitExtAddEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]

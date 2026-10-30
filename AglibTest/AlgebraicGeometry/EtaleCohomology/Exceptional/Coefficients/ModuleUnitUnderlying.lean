@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleUnitUnderlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitUnderlying
 
 /-!
 # Tests for the underlying abelian sheaf of the rank-one module sheaf

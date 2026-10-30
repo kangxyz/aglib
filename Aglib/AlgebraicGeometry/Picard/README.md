@@ -324,7 +324,10 @@ for `a • t = F(µ_a) t` (`tangentKernelEquiv_scale`, `tangentKernelModule`,
 `tangentKernelLinearEquiv`). `finrank_tangentKernel` gives
 `finrank_L ker(F(L[ε]) → F(L)) = finrank_k (𝔪/𝔪²)` for every field `L` over `k`, finite since `P` is
 locally Noetherian (`finite_tangentKernel`); `finrank_squareZeroKernel` is the `L ⊕ M` form. The
-focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`.
+focused test is `AglibTest.AlgebraicGeometry.Picard.Tangent.Points`. The
+structural scalar triangle and local stalk factorization/injectivity are
+imported from [Stalk/SpecLocalRing](../Stalk/SpecLocalRing.lean), also used by the
+general infinitesimal smoothness criterion.
 
 [Tangent/Comparison](Tangent/Comparison.lean) gives the vertical maps of Kleiman's Square (5.11.4)
 (arXiv:math/0504020v1, proof of Thm 5.11, pp. 43–44) for the fppf Picard sheaf. Let `k` be a field,
@@ -692,9 +695,10 @@ arXiv:math/0504020v1, Prop. 5.19, p. 47.
   proof lifts line bundles across `familySpecOverMap` on the two affine chart preimages of `P^1`
   (`exists_lineBundle_lift_twoAffine_of_square_zero`). No cohomology vanishing and no Artinian
   condition is used.
-- `OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1` gives an affine map to
-  `P^1_k` for a proper integral curve over a field, from
-  `exists_finite_dominant_map_to_nativeP1`.
+- The lower [Projectivity/AffineMap](../Curves/Projectivity/AffineMap.lean) leaf supplies
+  `OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1` for a proper integral
+  dimension-one scheme over a field, through the original finite native-line map and
+  projective-line comparison.
 - `smooth_picardScheme_of_curve h hdim`: let `k` be a field and `X ⊆ P^N_k` closed, flat with
   geometrically integral fibres, integral and of dimension one. Then `picardScheme h` and
   `picardIdentityComponent p (picardScheme h) (picardSchemeRepresentableBy h)` (`Pic⁰_{X/k}`)

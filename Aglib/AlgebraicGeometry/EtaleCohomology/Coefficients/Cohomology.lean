@@ -20,7 +20,7 @@ actual coefficient universe `u+1` and Ext universe `u+2`.
 
 @[expose] public noncomputable section
 
-universe u
+universe u w w'
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian AlgebraicGeometry
 
@@ -58,9 +58,11 @@ local instance moduleLargeHasExt
 /-- Large-valued constant-ring consumers have the same original etale comparison. -/
 def etaleModuleExtCohomologyAddEquivLargeScalars
     (R : Sheaf (Scheme.smallEtaleTopology X) RingCat.{u + 1})
+    [HasExt.{w} (SheafOfModules.{u + 1} R)]
+    [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
     (M : SheafOfModules.{u + 1} R) (n : ℕ) :
-    Ext.{u + 2} (SheafOfModules.liftedUnit.{u + 1, u, u + 1, u + 1} R) M n ≃+
-      Sheaf.H.{u + 2} ((SheafOfModules.toSheaf R).obj M) n :=
+    Ext.{w} (SheafOfModules.liftedUnit.{u + 1, u, u + 1, u + 1} R) M n ≃+
+      Sheaf.H.{w'} ((SheafOfModules.toSheaf R).obj M) n :=
   Sheaf.ModuleCoefficients.moduleExtCohomologyAddEquivLargeScalars
     terminalIsTerminal R M n
 

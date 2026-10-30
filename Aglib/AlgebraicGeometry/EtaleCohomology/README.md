@@ -16,7 +16,7 @@ Its principal declaration namespace is
 | [Connected FLC cogenerators](Constructible/FiniteCogenerators/LocallyConstant.lean) | On a connected scheme, an actual FLC coefficient embeds by the original adjunction unit and a produced trivialization into the finite direct image of an actual finite constant sheaf. The finite étale surjection and finite value at universe `u+1` are constructed. The separate original-unit monomorphism theorem retains FLC and flat surjective pullback on arbitrary schemes. |
 | [Normal constants](Constructible/NormalConstants.lean) | For integral `X` whose local rings are integrally closed and finite `A`, the original generic-point unit induces `constantGenericIso` from the constant sheaf on `X` to direct image of the constant sheaf on `Spec(X.functionField)`. This uses the original adjunction unit and inverse-image constant-coefficient map; it assumes no Noetherian, Nagata, excellence, quasi-compactness, invertible-order, properness or strict-henselization premise. It is a finite-constant comparison input, not finite cogeneration or proper base change. |
 | [FiniteLocallyConstant](FiniteLocallyConstant/CoefficientSquare.lean) | Coefficient, section and pullback comparisons with the original local-trivialization and comparison premises |
-| [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses |
+| [Kummer](Kummer/Coefficients.lean) | Actual root coefficients, power-fibre torsors and field/stalk comparison maps with their stated level and representation hypotheses. [Module roots](Kummer/RootsOfUnity.lean) allow every modulus; their [inverse-image comparison](Kummer/RootsOfUnityInverseImage.lean) for arbitrary scheme morphisms requires positive globally invertible modulus. |
 | [Derived cohomology](Derived/BaseChange.lean) | Original all-degree pullback, bounded-below `D+` exchange, and ordinary, derived and higher identity/pasting equations through the native comparisons. The finite subfamily supplies exchange invertibility for finite morphisms; general proper base change and unbounded scope remain open. |
 | [Continuity](Continuity/README.md) | Original all-degree fixed-qcqs coefficient continuity and varying-system qcqs scheme-limit continuity with affine transitions. The latter constructs the former section/cone inputs, retaining actual limit, independent Ext and group-colimit premises. |
 | [Finite direct image and base change](Finite/README.md) | For an arbitrary finite morphism, original direct image on `AbelianSheaf.{u,u+1}` preserves epimorphisms, homology and finite colimits, and positive higher direct images vanish. The canonical ordinary, `D+` and all-degree higher exchange maps are invertible for actual cartesian squares over arbitrary schemes, retaining the displayed derived-category universes. [Original cohomology](Finite/Cohomology.lean) identifies cohomology of finite direct image with source cohomology by actual pullback and counit. |
@@ -172,3 +172,34 @@ original units; it is not a definitional identification of the two carriers.
 
 The [source integration note](../../../docs/migration/etale-six-functor-suppliers-2026-10-24.md)
 records admitted families, excluded drafts, deduplication and exact boundaries.
+
+## Curve roots and trace
+
+[Kummer/UnitsQuotient](Kummer/UnitsQuotient.lean) gives, for any scheme and
+positive globally invertible `n`, the actual global-unit quotient, original H1
+and actual Picard torsion subgroup as an exact sequence: injection,
+`Function.Exact` and surjection on their original independent-universe
+carriers. Whole pullback squares retain the native maps; unit-quotient and
+torsion-Picard pullbacks preserve identity and composition.
+
+For algebraically closed `k`, `X : FScheme k` with `Curve.Properties X`, and
+positive `n` invertible in `k`, the following thin leaves use the original
+Kummer sheaf and `Sheaf.H` with independent Ext universe.
+
+| Leaf | Native assembly |
+| --- | --- |
+| [Trace](CurveCohomology/Trace.lean) | Original Kummer quotient boundary and Picard degree give `traceAddEquiv : H²(X, μ_n) ≃+ ZMod n`; `traceAddEquiv_comp_picardBoundary` fixes the degree normalization, and rational- and closed-point boundaries have trace one. The Kummer quotient equivalence also applies to finite-type schemes of dimension at most one over a separably closed field under the displayed level and size hypotheses. |
+| [Proper](CurveCohomology/Proper.lean) | `H⁰(X, μ_n) ≃+ μ_n(k)`, `H¹(X, μ_n) ≃+ Pic(X)[n]`, degree-two trace and vanishing above degree two; `rootsOneAddEquiv_subtype` identifies the whole H1 map after torsion inclusion with the original Kummer Picard map. Existing constant-root coefficients transport the table to `ZMod n`; H0 roots allow arbitrary `n`. |
+| [Complement](CurveCohomology/Complement.lean) | For an open immersion missing a closed point, open Picard divisibility and broad-curve Kummer vanishing give `H^q(U, μ_n) = 0` for `q ≥ 2`. |
+| [CompactSupportTrace](CurveCohomology/CompactSupportTrace.lean) | For the complement of finitely many closed points, `CompactSupport.rootsAddEquiv` followed by the same proper trace gives `H²_c(U, μ_n) ≃+ ZMod n` on original extension-by-zero cohomology. |
+
+The normalization is for Aglib's `Kummer.picardBoundary`: original `Sheaf.H.δ`
+after `Picard.picardCohomologyEquiv`, with frame torsor `Isom(L, 𝒪)` and scalar
+postcomposition. Thus `Tr(∂c) = deg(c) mod n` and `Tr(∂[𝒪(p)]) = 1`.
+Comparison with SGA 4½ [Cycle]'s torsor and connecting conventions, and with
+Yoneda, cup and Weil signs, remains pending. Sources: Stacks Tags 03RQ and
+03RR; Milne, *Lectures on Etale Cohomology* v2.21, Propositions 14.2 (p. 90),
+14.5 (p. 92), 14.12 (p. 97); SGA 4 XVIII (1.1.3.1)–(1.1.3.4), and SGA 4½
+[Cycle] 2.1.5. Duality, purity, torsion ranks, polarization, Weil comparisons,
+non-algebraically-closed separably closed base fields and l-adic coefficients
+remain outside this family.

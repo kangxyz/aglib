@@ -36,3 +36,11 @@ comparisons, both original inverse-image squares, and the literal equality of
 base-map composites are retained. No cartesianness, properness, or exchange
 invertibility is assumed. The derived consumer evaluates this whole cube only
 through the abstract exact-localization interface.
+
+[ModuleUnitUnderlying](ModuleUnitUnderlying.lean) specializes the generic
+unit comparison, including the constant finite coefficient isomorphism.
+[ModuleUnitInverseImage](ModuleUnitInverseImage.lean) lifts the original
+constant inverse-image comparison for any scheme morphism.
+[ZMod](ZMod.lean) provides `moduleCat_uLiftZMod_forget₂_full` and
+`moduleSheaf_uLiftZMod_toSheaf_full`; both unit and roots inverse-image
+adapters use this scalar-forgetting provider.

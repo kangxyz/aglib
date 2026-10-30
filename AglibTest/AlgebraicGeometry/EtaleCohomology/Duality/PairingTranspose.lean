@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 
 /-!
 # Tests for the transposed duality map

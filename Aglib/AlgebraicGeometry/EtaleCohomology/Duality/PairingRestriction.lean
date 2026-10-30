@@ -61,31 +61,8 @@ theorem moduleLowerShriekPairingTransposeHom_restriction (F G : ModuleSheaf U Λ
           ((moduleInverseImage jV Λ).obj G) d s hs
           (moduleLowerShriekExtEquiv jV Λ ((moduleInverseImage jV Λ).obj F) G s
             ((Ext.mk₀ ((moduleLowerShriekAdjunction jV Λ).counit.app F)).comp e
-              (zero_add s)))) := by
-  ext c
-  have h₁ : c.comp (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app
-        ((moduleInverseImage jV Λ).obj F) ≫
-          (moduleLowerShriek jU Λ).map ((moduleLowerShriekAdjunction jV Λ).counit.app F)))
-        (add_zero (d - s)) =
-      ((moduleLowerShriekCompAddEquiv jV jU Λ ((moduleInverseImage jV Λ).obj F) (d - s)).symm
-          c).comp
-        (Ext.mk₀ ((moduleLowerShriek jU Λ).map ((moduleLowerShriekAdjunction jV Λ).counit.app F)))
-        (add_zero (d - s)) := by
-    rw [moduleLowerShriekCompAddEquiv_symm_apply, ← Ext.mk₀_comp_mk₀]
-    exact (Ext.comp_assoc_of_third_deg_zero _ _ _ _).symm
-  change moduleLowerShriekPairing jU Λ (c.comp (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app
-        ((moduleInverseImage jV Λ).obj F) ≫
-          (moduleLowerShriek jU Λ).map ((moduleLowerShriekAdjunction jV Λ).counit.app F)))
-        (add_zero (d - s))) e (by lia) =
-      (moduleLowerShriekPairing (jV ≫ jU) Λ c
-        (moduleLowerShriekExtEquiv jV Λ ((moduleInverseImage jV Λ).obj F) G s
-          ((Ext.mk₀ ((moduleLowerShriekAdjunction jV Λ).counit.app F)).comp e (zero_add s)))
-        (by lia)).comp
-        (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app ((moduleInverseImage jV Λ).obj G) ≫
-          (moduleLowerShriek jU Λ).map ((moduleLowerShriekAdjunction jV Λ).counit.app G)))
-        (add_zero d)
-  rw [h₁, moduleLowerShriekPairing_naturality]
-  refine (moduleLowerShriekPairing_eq_comp_counit _ _ _).trans ?_
-  rw [AddEquiv.apply_symm_apply]
+              (zero_add s)))) :=
+  Functor.extPairingTransposeHom_restriction
+    (τ := moduleLowerShriekCompIso Λ jU jV) (adj := moduleLowerShriekAdjunction jV Λ) F G d s hs e
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

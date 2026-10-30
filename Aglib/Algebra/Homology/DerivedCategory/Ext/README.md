@@ -35,3 +35,23 @@ comparisons. Only projectivity of the displayed source object is required;
 there is no `HasExt`, enough-projectives, enough-injectives or coefficient
 projectivity premise. Concentrated finite-free derived global sections in
 relative projective Serre duality are a current consumer.
+
+[YonedaPairing](YonedaPairing.lean) constructs `(c, e) ↦ c.comp
+(e.mapExactFunctor L)` for an exact additive `L : C ⥤ D`, arbitrary
+`A : D`, and independent source and target `HasExt` universes. It gives
+the biadditive map, coefficient naturalities, unsigned connecting compatibility
+and both curried maps into total degree `d` with their three squares. The
+unsigned sign is `+1`; Mathlib's `Ext.δ` contributes `(-1)^(s+1)`, or
+`(-1)^(d-r)` in the total-degree dual square.
+
+[PairingComposition](PairingComposition.lean) supplies whole-map laws for
+natural transformations and exact-functor composition. For `K ≅ P ⋙ Q` and
+an exact adjunction `P ⊣ R`, it retains the original counit transformation
+`R ⋙ K ⟶ Q`, its formula, composition and pairing/restriction squares. Counit
+precomposition followed by `Adjunction.extEquiv` equals the native Ext map of
+`R`; comparison evaluation uses the native Ext functor's `mapIso`.
+
+[ZMod](ZMod.lean) proves Ext annihilation from `n • 𝟙 = 0` at either endpoint
+and preservation by additive functors. For every modulus, including zero, it
+provides named local canonical `ZMod n` actions, a bilinear pairing and both
+curried linear maps, using `AddCommGroup.zmodModule`.

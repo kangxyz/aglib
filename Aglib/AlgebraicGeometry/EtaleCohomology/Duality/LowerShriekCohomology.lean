@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ModuleCohomology
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.ModuleCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlying
 
 /-!
@@ -23,7 +23,7 @@ underlying sequence.
 For an open immersion `j` of a curve `U` into its complete model `X`, the right side is
 `H^r_c(U, F) = H^r(X, j_! F)` of Milne, *Lectures on Étale Cohomology* (v2.21), p. 92, and the
 left side is the same group computed in `Sh(X_et, n)` when `Λ = ℤ/n` (p. 102, "The Ext
-group"). The construction composes the comparison `moduleUnitExtAddEquiv` with `Sheaf.H` of the
+group"). The construction composes the canonical module-cohomology comparison with `Sheaf.H` of the
 original isomorphism `moduleLowerShriekUnderlyingIso`. No condition on `j`, `X` or `Λ` beyond
 étaleness of `j` is used; `HasExt` is a size hypothesis.
 -/
@@ -50,7 +50,8 @@ def moduleLowerShriekCohomologyAddEquiv (F : ModuleSheaf U Λ) (r : ℕ) :
     Ext.{w} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r ≃+
       Sheaf.H.{w'} ((etaleLowerShriek j).obj
         ((SheafOfModules.toSheaf (constantRing U Λ)).obj F)) r :=
-  (moduleUnitExtAddEquiv X Λ ((moduleLowerShriek j Λ).obj F) r).trans
+  (etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ)
+      ((moduleLowerShriek j Λ).obj F) r).trans
     ((Sheaf.functorH (Scheme.smallEtaleTopology X) r).mapIso
       ((moduleLowerShriekUnderlyingIso j Λ).app F)).addCommGroupIsoToAddEquiv
 
@@ -60,7 +61,8 @@ theorem moduleLowerShriekCohomologyAddEquiv_apply (F : ModuleSheaf U Λ) (r : �
     (c : Ext.{w} (moduleUnit X Λ) ((moduleLowerShriek j Λ).obj F) r) :
     moduleLowerShriekCohomologyAddEquiv j Λ F r c =
       Sheaf.H.map ((moduleLowerShriekUnderlyingIso j Λ).hom.app F) r
-        (moduleUnitExtAddEquiv X Λ ((moduleLowerShriek j Λ).obj F) r c) :=
+        (etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ)
+          ((moduleLowerShriek j Λ).obj F) r c) :=
   rfl
 
 /-- Naturality in the coefficient sheaf on `U`. -/

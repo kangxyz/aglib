@@ -22,6 +22,7 @@ morphism providers.
 | `Aglib.AlgebraicGeometry.Curves.Picard.DivisorInverse` | Actual fractional-ideal divisor sheaves, the divisor/Picard correspondence and residue-weighted line-bundle degree. Retains integral, Noetherian, closed-DVR, dimension and principal-product-formula conditions. |
 | `Aglib.AlgebraicGeometry.Curves.Picard.Degree.ProperCurveProductFormula` | The proved proper-curve principal product-formula family with original residue weights and scalar action, using native proper cohomology finiteness. |
 | `Aglib.AlgebraicGeometry.Curves.Picard.NormDegree.OrderFormula` | The proved all-field finite norm/order family, summing all maximal branches with actual residue degrees. No separability or perfectness condition is inserted. |
+| `Aglib.AlgebraicGeometry.Curves.Projectivity.AffineMap` | A proper integral dimension-one scheme over any field has an affine morphism to the literal projective line, through the existing finite native-line map and its original comparison isomorphism. |
 | `Aglib.AlgebraicGeometry.Curves.Projectivity.Integral` | Actual projective embedding of the original proper integral dimension-one field scheme, preserving its structural triangle. |
 | `Aglib.AlgebraicGeometry.Curves.Duality` | Actual canonical Ext/cohomology duality on a smooth curve with a closed projective embedding, retaining coefficient finiteness and original structural field actions. |
 | `Aglib.AlgebraicGeometry.Curves.RiemannRoch.LineBundle` | The proved `LineBundleRiemannRoch` family for actual line bundles, their actual O(D)-transferred degree and H0/H1 finranks. Closed-DVR, dimension, properness and constants hypotheses remain explicit. |
@@ -57,6 +58,10 @@ colliding with the historical global Quillen names. The projectivity graph
 uses this pure geometry without the optional older Laurent-module H1 proof.
 `ProjectiveLine.Native` retains the actual over-field isomorphism from literal
 homogeneous P1 to finite-coordinate projective space lifted to the field universe.
+[Projectivity/AffineMap](Projectivity/AffineMap.lean) owns
+`OverField.Curve.Projectivity.exists_isAffineHom_to_projectiveP1`, with the
+proper, integral and dimension-one hypotheses on the original field scheme.
+Picard smoothness imports this lower curve result.
 The general integral separated retraction theorem lives outside the curve family,
 in `Aglib.AlgebraicGeometry.Morphisms.GeometricRetraction`.
 
@@ -91,3 +96,26 @@ Focused interface guides: [Actual model component geometry](Models/Components/RE
 [Isogeny.Etale](Isogeny/Etale.md) proves the characteristic-zero finite
 surjective curve-group homomorphism family and binds it to the original
 pointed proper-curve consumer.
+
+## Point classes and Picard restriction
+
+[PointDivisor/IdealClass](PointDivisor/IdealClass.lean) identifies the divisor of
+the rational-point ideal inclusion with that point on an integral Noetherian
+scheme with DVR closed stalks. In dimension at most one its dual has the native
+point-divisor Picard class, without a trivializing chart in the final theorem.
+`PointDivisor/PoleFunctions` consumes these shared arguments.
+
+[Picard/PointDegree](Picard/PointDegree.lean) gives degree one for a rational
+point line bundle over any field. Over algebraically closed constants a closed
+point supplies degree and modulo-degree surjectivity.
+[Picard/OpenRestriction](Picard/OpenRestriction.lean) proves Picard restriction
+surjective for every open immersion into the curve; if a closed point is missed,
+its restriction on degree-zero classes is surjective. These two pure providers
+have no Jacobian or étale-cohomology module in their Aglib dependency closure.
+
+[Picard/DegreeQuotient](Picard/DegreeQuotient.lean) identifies the original
+`Pic(X)/n` with `ZMod n` over algebraically closed constants for `n` invertible
+in the field, using point degree and A4 divisibility.
+[Picard/OpenDivisibility](Picard/OpenDivisibility.lean) combines open restriction
+with A4 to give `n`-divisibility of the actual open Picard group under the same
+conditions. A4 retains its existing étale-finiteness input described above.

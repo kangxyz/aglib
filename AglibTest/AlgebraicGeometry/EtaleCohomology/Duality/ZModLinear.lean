@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ZModLinear
 
 /-!

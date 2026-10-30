@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleComparisons
 
 /-!
@@ -65,8 +66,8 @@ def moduleLowerShriekCompAddEquiv (A : ModuleSheaf V Λ) (r : ℕ) :
     Ext.{w''} (moduleUnit X Λ)
         ((moduleLowerShriek jU Λ).obj ((moduleLowerShriek jV Λ).obj A)) r ≃+
       Ext.{w''} (moduleUnit X Λ) ((moduleLowerShriek (jV ≫ jU) Λ).obj A) r :=
-  ((extFunctorObj (moduleUnit X Λ) r).mapIso
-    ((moduleLowerShriekCompIso Λ jU jV).app A).symm).addCommGroupIsoToAddEquiv
+  Functor.extPairingCompAddEquiv (moduleLowerShriek jV Λ) (moduleLowerShriek jU Λ)
+    (moduleLowerShriek (jV ≫ jU) Λ) (moduleLowerShriekCompIso Λ jU jV) (moduleUnit X Λ) A r
 
 theorem moduleLowerShriekCompAddEquiv_apply (A : ModuleSheaf V Λ) (r : ℕ)
     (c : Ext.{w''} (moduleUnit X Λ)
@@ -92,13 +93,9 @@ theorem moduleLowerShriekPairing_moduleLowerShriekExt {A B : ModuleSheaf V Λ} {
     moduleLowerShriekPairing jU Λ c (moduleLowerShriekExt jV Λ A B s e) h =
       (moduleLowerShriekPairing (jV ≫ jU) Λ (moduleLowerShriekCompAddEquiv jV jU Λ A r c) e
           h).comp
-        (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app B)) (add_zero t) := by
-  have hτ := Ext.mapExactFunctor_comp_mk₀_natTransApp e (moduleLowerShriekCompIso Λ jU jV).hom
-  rw [moduleLowerShriekPairing, moduleLowerShriekPairing, moduleLowerShriekExt_apply,
-    ← Ext.comp_mapExactFunctor, moduleLowerShriekCompAddEquiv_apply,
-    Ext.comp_assoc_of_third_deg_zero, hτ, Ext.comp_assoc_of_second_deg_zero,
-    Ext.mk₀_comp_mk₀_assoc, Iso.inv_hom_id_app]
-  exact congrArg (fun z => c.comp z h) (Ext.mk₀_id_comp _).symm
+        (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app B)) (add_zero t) :=
+  Functor.extPairing_mapExt
+    (τ := moduleLowerShriekCompIso Λ jU jV) c e h
 
 /-- The pairing on `U` for `jV_! A` is the pairing on `V` for `A`, followed by the map induced by
 the original composition comparison and `jU_!` of the original counit `jV_! jV^* B ⟶ B`:
@@ -114,11 +111,9 @@ theorem moduleLowerShriekPairing_eq_comp_counit {A : ModuleSheaf V Λ} {B : Modu
           (moduleLowerShriekExtEquiv jV Λ A B s e) h).comp
         (Ext.mk₀ ((moduleLowerShriekCompIso Λ jU jV).hom.app ((moduleInverseImage jV Λ).obj B) ≫
           (moduleLowerShriek jU Λ).map ((moduleLowerShriekAdjunction jV Λ).counit.app B)))
-        (add_zero t) := by
-  obtain ⟨e', rfl⟩ := (moduleLowerShriekExtEquiv jV Λ A B s).symm.surjective e
-  rw [AddEquiv.apply_symm_apply, moduleLowerShriekExtEquiv_symm_apply,
-    moduleLowerShriekPairing_comp_mk₀, moduleLowerShriekPairing_moduleLowerShriekExt,
-    ← Ext.mk₀_comp_mk₀, Ext.comp_assoc_of_third_deg_zero]
+        (add_zero t) :=
+  Functor.extPairing_eq_comp_counit
+    (τ := moduleLowerShriekCompIso Λ jU jV) (moduleLowerShriekAdjunction jV Λ) c e h
 
 variable (jV jU Λ)
 
@@ -135,8 +130,9 @@ theorem moduleLowerShriekPairingDualHom_eq_comp_counit (A : ModuleSheaf V Λ)
           (moduleUnit X Λ) (add_zero d)).comp
         ((moduleLowerShriekPairingDualHom (jV ≫ jU) Λ A ((moduleInverseImage jV Λ).obj B) d r hr
           (moduleLowerShriekCompAddEquiv jV jU Λ A r c)).comp
-          (moduleLowerShriekExtEquiv jV Λ A B (d - r)).toAddMonoidHom) := by
-  ext e
-  exact moduleLowerShriekPairing_eq_comp_counit c e (by lia)
+          (moduleLowerShriekExtEquiv jV Λ A B (d - r)).toAddMonoidHom) :=
+  Functor.extPairingDualHom_eq_comp_counit (moduleLowerShriek jV Λ) (moduleLowerShriek jU Λ)
+    (moduleLowerShriek (jV ≫ jU) Λ) (moduleLowerShriekCompIso Λ jU jV) (moduleUnit X Λ)
+    (moduleLowerShriekAdjunction jV Λ) A B d r hr c
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

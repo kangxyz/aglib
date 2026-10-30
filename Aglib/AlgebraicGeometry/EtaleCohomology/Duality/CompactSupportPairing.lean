@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.RootsOfUnity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
 
 /-!

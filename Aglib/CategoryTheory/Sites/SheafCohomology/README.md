@@ -95,3 +95,7 @@ Ext size. Geometric producers of the Čech hypothesis remain separate inputs.
 subsheaf and supplies section surjectivity when terminal covers split. Its
 small-etale consumer is
 [EtaleCohomology/StrictlyLocal](../../../AlgebraicGeometry/EtaleCohomology/StrictlyLocal/README.md).
+
+[Nsmul](Nsmul.lean) identifies the whole original cohomology map of
+`n • 𝟙 F` with native multiplication by `n`, and gives its evaluation formula.
+Site, coefficient and Ext universes remain independent.

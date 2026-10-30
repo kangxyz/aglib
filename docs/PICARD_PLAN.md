@@ -1,5 +1,9 @@
 # Picard scheme development plan
 
+The [Jacobian and curve-duality programme](JACOBIAN_PLAN.md) develops the curve
+applications through complete general constructions and thin native instances,
+retaining this plan's representability boundary.
+
 This plan targets the relative Picard functor, the descent theory it needs,
 representability of the fppf Picard functor by a scheme, and its basic
 properties. It follows Grothendieck's theorem in Kleiman's exposition: projective

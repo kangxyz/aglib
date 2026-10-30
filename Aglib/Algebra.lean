@@ -114,7 +114,9 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Presheaf
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Pullback
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.RingPullback
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Underlying
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitUnderlying
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Valued
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.ZMod
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Differentials.Relative
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Epimorphisms
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Evaluation
@@ -187,6 +189,7 @@ public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.NormalizedQuotient
 public import Aglib.Algebra.Group.Subgroup.Ker
 public import Aglib.Algebra.Group.Subgroup.KerEquiv
+public import Aglib.Algebra.Group.Subgroup.KerSurjective
 public import Aglib.Algebra.Group.Torsion
 public import Aglib.Algebra.Group.TwoTorsionSign
 public import Aglib.Algebra.Group.Units.Map
@@ -236,11 +239,14 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.EffacementComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ScalarTransfer
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SingleShift
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.SurjectiveColimit
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.YonedaPairing
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.ZMod
 public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction
 public import Aglib.Algebra.Homology.DerivedCategory.KInjective.Adjunction.Exact

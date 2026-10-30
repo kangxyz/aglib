@@ -7,7 +7,8 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
-public import Mathlib.Algebra.Module.ZMod
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.ZMod
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ZMod
 
 /-!
 # `ℤ/n`-linearity of the duality pairing
@@ -56,37 +57,21 @@ variable {X : Scheme.{u}} (n : ℕ)
 
 /-- In sheaves of `ℤ/n`-modules over the constant ring, multiplication by `n` is zero. -/
 theorem moduleSheaf_uLiftZMod_nsmul_id_eq_zero (F : ModuleSheaf X (ULift.{u + 1} (ZMod n))) :
-    n • 𝟙 F = 0 := by
-  have hΛ : (n : ULift.{u + 1} (ZMod n)) = 0 := ULift.ext _ _ (by simp)
-  apply (SheafOfModules.toSheaf (constantRing X (ULift.{u + 1} (ZMod n)))).map_injective
-  rw [Functor.map_nsmul, CategoryTheory.Functor.map_id, Functor.map_zero]
-  apply Sheaf.hom_ext
-  ext V x
-  have hR : (n : (constantRing X (ULift.{u + 1} (ZMod n))).obj.obj V) = 0 := by
-    rw [← map_natCast ((constantRingUnit X (ULift.{u + 1} (ZMod n))).app V).hom n]
-    exact (congrArg ((constantRingUnit X (ULift.{u + 1} (ZMod n))).app V).hom hΛ).trans
-      (map_zero _)
-  have hM : ∀ y : F.val.obj V, n • y = 0 := fun y => by
-    rw [← Nat.cast_smul_eq_nsmul ((constantRing X (ULift.{u + 1} (ZMod n))).obj.obj V), hR,
-      zero_smul]
-  exact hM x
+    n • 𝟙 F = 0 :=
+  ModuleCat.Sheaf.ConstantRing.uLiftZMod_nsmul_id_eq_zero.{u + 1, u, u + 1, u + 1}
+    (Scheme.smallEtaleTopology X) n F
 
 variable [HasExt.{w} (ModuleSheaf X (ULift.{u + 1} (ZMod n)))]
 
 /-- Every Ext group between sheaves of `ℤ/n`-modules is killed by `n`. -/
 theorem moduleSheaf_uLiftZMod_ext_nsmul_eq_zero {F G : ModuleSheaf X (ULift.{u + 1} (ZMod n))}
-    {q : ℕ} (e : Ext.{w} F G q) : n • e = 0 := by
-  have h : ∀ m : ℕ, (Ext.mk₀ (m • 𝟙 F)).comp e (zero_add q) = m • e := by
-    intro m
-    induction m with
-    | zero => simp only [zero_nsmul, Ext.mk₀_zero, Ext.zero_comp]
-    | succ m ih => simp only [succ_nsmul, Ext.mk₀_add, Ext.add_comp, ih, Ext.mk₀_id_comp]
-  rw [← h n, moduleSheaf_uLiftZMod_nsmul_id_eq_zero, Ext.mk₀_zero, Ext.zero_comp]
+    {q : ℕ} (e : Ext.{w} F G q) : n • e = 0 :=
+  Ext.nsmul_eq_zero_of_nsmul_id_left n (moduleSheaf_uLiftZMod_nsmul_id_eq_zero n F) e
 
 /-- The canonical `ZMod n`-module structure on an Ext group between sheaves of `ℤ/n`-modules. -/
 abbrev moduleSheafExtZModModule (F G : ModuleSheaf X (ULift.{u + 1} (ZMod n))) (q : ℕ) :
     Module (ZMod n) (Ext.{w} F G q) :=
-  AddCommGroup.zmodModule (moduleSheaf_uLiftZMod_ext_nsmul_eq_zero n)
+  Ext.zmodModuleOfNsmulIdLeft n (moduleSheaf_uLiftZMod_nsmul_id_eq_zero n F) G q
 
 end Torsion
 
@@ -101,20 +86,11 @@ theorem compactSupport_uLiftZMod_nsmul_eq_zero (F : ModuleSheaf U (ULift.{u + 1}
     (x : CompactSupport.H.{w'} j
       ((SheafOfModules.toSheaf (constantRing U (ULift.{u + 1} (ZMod n)))).obj F) r) :
     n • x = 0 := by
-  let F₀ := (SheafOfModules.toSheaf (constantRing U (ULift.{u + 1} (ZMod n)))).obj F
-  have hF : n • 𝟙 F₀ = 0 := by
-    have h := congrArg (SheafOfModules.toSheaf (constantRing U (ULift.{u + 1} (ZMod n)))).map
-      (moduleSheaf_uLiftZMod_nsmul_id_eq_zero n F)
-    rwa [Functor.map_nsmul, CategoryTheory.Functor.map_id, Functor.map_zero] at h
-  have hG : n • 𝟙 ((etaleLowerShriek j).obj F₀) = 0 := by
-    have h := congrArg (etaleLowerShriek j).map hF
-    rwa [Functor.map_nsmul, CategoryTheory.Functor.map_id, Functor.map_zero] at h
-  have hm : ∀ m : ℕ, Sheaf.H.map (m • 𝟙 ((etaleLowerShriek j).obj F₀)) r x = m • x := by
-    intro m
-    induction m with
-    | zero => simp only [zero_nsmul, Sheaf.H.map_apply, Ext.mk₀_zero, Ext.comp_zero]
-    | succ m ih => simp only [succ_nsmul, Sheaf.H.map_add_apply, ih, Sheaf.H.map_id_apply]
-  rw [← hm n, hG, Sheaf.H.map_apply, Ext.mk₀_zero, Ext.comp_zero]
+  have hF := Functor.nsmul_id_eq_zero_obj
+    (SheafOfModules.toSheaf (constantRing U (ULift.{u + 1} (ZMod n)))) n
+    (moduleSheaf_uLiftZMod_nsmul_id_eq_zero n F)
+  exact Ext.nsmul_eq_zero_of_nsmul_id_right n
+    ((etaleLowerShriek j).nsmul_id_eq_zero_obj n hF) x
 
 /-- The canonical `ZMod n`-module structure on compactly supported cohomology of the underlying
 abelian sheaf of a sheaf of `ℤ/n`-modules. -/
@@ -142,8 +118,8 @@ def moduleLowerShriekPairingDualLinearMap (F G : ModuleSheaf U (ULift.{u + 1} (Z
       Ext.{w} F G (d - r) →ₗ[ZMod n]
         Ext.{w'} (moduleUnit X (ULift.{u + 1} (ZMod n)))
           ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj G) d :=
-  AddMonoidHom.toZModLinearMap n ((AddMonoidHom.toZModLinearMapEquiv n).toAddMonoidHom.comp
-    (moduleLowerShriekPairingDualHom j (ULift.{u + 1} (ZMod n)) F G d r hr))
+  Functor.extPairingDualLinearMap (moduleLowerShriek j (ULift.{u + 1} (ZMod n)))
+    (moduleUnit X (ULift.{u + 1} (ZMod n))) n F G d r hr
 
 @[simp]
 theorem moduleLowerShriekPairingDualLinearMap_apply_apply
@@ -164,8 +140,8 @@ def moduleLowerShriekPairingTransposeLinearMap (F G : ModuleSheaf U (ULift.{u + 
           ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj F) (d - s) →ₗ[ZMod n]
         Ext.{w'} (moduleUnit X (ULift.{u + 1} (ZMod n)))
           ((moduleLowerShriek j (ULift.{u + 1} (ZMod n))).obj G) d :=
-  AddMonoidHom.toZModLinearMap n ((AddMonoidHom.toZModLinearMapEquiv n).toAddMonoidHom.comp
-    (moduleLowerShriekPairingTransposeHom j (ULift.{u + 1} (ZMod n)) F G d s hs))
+  Functor.extPairingTransposeLinearMap (moduleLowerShriek j (ULift.{u + 1} (ZMod n)))
+    (moduleUnit X (ULift.{u + 1} (ZMod n))) n F G d s hs
 
 @[simp]
 theorem moduleLowerShriekPairingTransposeLinearMap_apply_apply

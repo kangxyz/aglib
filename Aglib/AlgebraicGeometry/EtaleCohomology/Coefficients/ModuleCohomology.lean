@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Coefficients.Cohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ConstantRing
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.ExactSequences
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitUnderlying
 
 /-!
 # Cohomology of constant-ring module sheaves computed among modules
@@ -45,27 +46,20 @@ variable (X : Scheme.{u}) (Λ : Type (u + 1)) [Ring Λ]
 
 /-- The rank-one module sheaf `Λ_X`: the constant ring sheaf as a module over itself. -/
 abbrev moduleUnit : ModuleSheaf X Λ :=
-  SheafOfModules.liftedUnit.{u + 1, u, u + 1, u + 1} (constantRing X Λ)
+  ModuleCat.Sheaf.ConstantRing.moduleUnit (Scheme.smallEtaleTopology X) Λ
 
 variable [HasExt.{w} (ModuleSheaf X Λ)] [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
-
-/-- `Ext^q(Λ_X, G)` among `Λ_X`-modules is the cohomology of the underlying abelian sheaf. -/
-def moduleUnitExtAddEquiv (G : ModuleSheaf X Λ) (q : ℕ) :
-    Ext.{w} (moduleUnit X Λ) G q ≃+
-      Sheaf.H.{w'} ((SheafOfModules.toSheaf (constantRing X Λ)).obj G) q :=
-  Sheaf.ModuleCoefficients.moduleExtCohomologyAddEquivLargeScalars terminalIsTerminal
-    (constantRing X Λ) G q
 
 /-- The forward map is the original exact-forgetting comparison map. -/
 theorem moduleUnitExtAddEquiv_apply (G : ModuleSheaf X Λ) (q : ℕ)
     (x : Ext.{w} (moduleUnit X Λ) G q) :
-    moduleUnitExtAddEquiv X Λ G q x =
+    etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) G q x =
       Sheaf.ModuleCoefficients.cohomologyMap terminalIsTerminal (constantRing X Λ) G q x :=
   rfl
 
 /-- In degree zero the comparison is underlying-sheaf forgetting after the integer map. -/
 theorem moduleUnitExtAddEquiv_mk₀ (G : ModuleSheaf X Λ) (f : moduleUnit X Λ ⟶ G) :
-    moduleUnitExtAddEquiv X Λ G 0 (Ext.mk₀ f) =
+    etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) G 0 (Ext.mk₀ f) =
       Ext.mk₀ (Sheaf.ModuleCoefficients.liftedUnitIntegerMap terminalIsTerminal
         (constantRing X Λ) ≫ (SheafOfModules.toSheaf (constantRing X Λ)).map f) :=
   Sheaf.ModuleCoefficients.cohomologyMap_mk₀ terminalIsTerminal (constantRing X Λ) G f
@@ -74,18 +68,20 @@ theorem moduleUnitExtAddEquiv_mk₀ (G : ModuleSheaf X Λ) (f : moduleUnit X Λ 
 underlying map. -/
 theorem moduleUnitExtAddEquiv_naturality {G G' : ModuleSheaf X Λ} (f : G ⟶ G') (q : ℕ)
     (x : Ext.{w} (moduleUnit X Λ) G q) :
-    moduleUnitExtAddEquiv X Λ G' q (x.comp (Ext.mk₀ f) (add_zero q)) =
+    etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) G' q
+        (x.comp (Ext.mk₀ f) (add_zero q)) =
       Sheaf.H.map ((SheafOfModules.toSheaf (constantRing X Λ)).map f) q
-        (moduleUnitExtAddEquiv X Λ G q x) :=
+        (etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) G q x) :=
   Sheaf.ModuleCoefficients.cohomologyMap_naturality terminalIsTerminal (constantRing X Λ) f q x
 
 /-- Connecting maps: the module connecting map, postcomposition with the extension class, is
 the `Sheaf.H` connecting map of the underlying short exact sequence. -/
 theorem moduleUnitExtAddEquiv_connecting (S : ShortComplex (ModuleSheaf X Λ))
     (hS : S.ShortExact) (q : ℕ) (x : Ext.{w} (moduleUnit X Λ) S.X₃ q) :
-    moduleUnitExtAddEquiv X Λ S.X₁ (q + 1) (x.comp hS.extClass rfl) =
+    etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) S.X₁ (q + 1)
+        (x.comp hS.extClass rfl) =
       Sheaf.H.δ (hS.map_of_exact (SheafOfModules.toSheaf (constantRing X Λ))) q (q + 1) rfl
-        (moduleUnitExtAddEquiv X Λ S.X₃ q x) :=
+        (etaleModuleExtCohomologyAddEquivLargeScalars X (constantRing X Λ) S.X₃ q x) :=
   Sheaf.ModuleCoefficients.cohomologyMap_connecting terminalIsTerminal (constantRing X Λ)
     S hS q x
 
