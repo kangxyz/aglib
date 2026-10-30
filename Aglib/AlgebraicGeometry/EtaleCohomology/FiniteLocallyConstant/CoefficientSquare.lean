@@ -5,11 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
-
-public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence
-public import Aglib.AlgebraicGeometry.SchemeOverField
-public import Aglib.AlgebraicGeometry.Group.ScalarExtension
+public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence.Basic
 public import Aglib.CategoryTheory.Functor.CoefficientSquare
 
 /-!
@@ -17,15 +13,14 @@ Native migration from
 `R5Lab.Aglib.AlgebraicGeometry.Cohomology.FiniteLocallyConstant.CoefficientSquare` at R5 revision
 `f8a3314ddecffcada2ec721d26d56a937bed9690`, SHA-256
 `b39efd7022fab8e8451cf788b1c52dc28680e812a1004b3f4e625e1a89146685`.
-Original objects, maps, universes and explicit hypotheses are retained.
+Original objects, maps and universes are retained. Pure coherence omits
+unused geometric comparison hypotheses.
 Native providers replace duplicate implementations.
 -/
 
 @[expose] public section
 
 open _root_.AlgebraicGeometry.Scheme.EtaleCohomology
-open _root_.AlgebraicGeometry.Scheme.Group.BaseChange (scalarExtensionMap)
-open _root_.AlgebraicGeometry.Scheme.OverField (Base)
 
 /-!
 # Actual native coefficient pasting at the generic-point square
@@ -42,42 +37,35 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open MonoidalCategory CartesianMonoidalCategory MonObj
-open scoped CategoryTheory.PreGaloisCategory CategoryTheory.MonObj
 open AlgebraicGeometry.Scheme
-open _root_.AlgebraicGeometry.Scheme.FiniteEtale (fiberToFinite)
-open _root_.AlgebraicGeometry.Scheme.FiniteEtale
-open _root_.AlgebraicGeometry.Scheme.FiniteEtale.FieldGalois
 open AlgebraicGeometry.Scheme.EtaleCohomology
 open AlgebraicGeometry.Scheme.EtaleCohomology
-open AlgebraicGeometry.Scheme.EtaleCohomology.SheafCoherence
 open AlgebraicGeometry.Scheme.EtaleCohomology.TriangleCoherence
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.CoefficientSquare
 universe u w w' w''
-attribute [local instance] Over.cartesianMonoidalCategory hasSheafifyLarge
+attribute [local instance] hasSheafifyLarge
 
 section Coherence
-variable {B X Y Z : Scheme.{u}} {D : Type u} [Field D] [IsSepClosed D]
-variable (z : Spec (.of D) ⟶ Z)
-variable [GaloisCategory (Scheme.FiniteEtale Z)] [PreGaloisCategory.FiberFunctor (fiberToFinite z)]
+variable {B X Y Z : Scheme.{u}}
 
-omit [GaloisCategory (Scheme.FiniteEtale Z)] in
 /-- Composition followed by a triangle has exactly its equality transport. -/
--- Retain the original Galois-category input on the triangle source.
-@[nolint unusedArguments]
-theorem comp_triangle_hom [GaloisCategory (Scheme.FiniteEtale Z)]
+theorem comp_triangle_hom
     (g : Y ⟶ X) (m : Z ⟶ Y) (r : Z ⟶ X)
     (hm : m ≫ g = r) (L : AbelianSheaf.{u, u + 1} X) :
     (inverseImageComp g m).hom.app L ≫ (triangleIso g m r hm L).hom =
       (eqToIso (congrArg (fun k => (inverseImage k).obj L) hm)).hom := by
-  simp only [triangleIso, Iso.trans_hom, Iso.symm_hom, Iso.app_inv,
-    Iso.hom_inv_id_app_assoc]
+  simpa only [TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.comp_iso_hom
+      Continuity.schemeAdjunctionData g m r hm L
 
-include z in
 /-- The inner part of a pulled-back coefficient square, for arbitrary ordinary maps. -/
 theorem coefficient_route_inner (b : X ⟶ B) (g : Y ⟶ X) (m : Z ⟶ Y)
     (r : Z ⟶ X) (hm : m ≫ g = r) (q : Z ⟶ B) (hq : r ≫ b = q)
-    {L : AbelianSheaf.{u, u + 1} B} (R : CoefficientRepresentation L)
+    {L : AbelianSheaf.{u, u + 1} B}
     {N : AbelianSheaf.{u, u + 1} X} {Q : AbelianSheaf.{u, u + 1} Z}
     (e : (inverseImage b).obj L ⟶ N) (d : (inverseImage r).obj N ⟶ Q) :
     (triangleIso (g ≫ b) m q
@@ -85,22 +73,19 @@ theorem coefficient_route_inner (b : X ⟶ B) (g : Y ⟶ X) (m : Z ⟶ Y)
       (inverseImage m).map ((inverseImageComp b g).hom.app L ≫ (inverseImage g).map e) ≫
       (triangleIso g m r hm N).hom ≫ d =
     (triangleIso b r q hq L).inv ≫ (inverseImage r).map e ≫ d := by
-  let hb : m ≫ (g ≫ b) = q := (Category.assoc m g b).symm.trans
-    ((congrArg (fun t => t ≫ b) hm).trans hq)
-  simp only [CategoryTheory.Functor.map_comp, Category.assoc]
-  rw [reassoc_of% (triangleIso_naturality g m r hm e)]
-  rw [reassoc_of% (triangleIso_assoc_inv z b g m q hb (L := L) R)]
-  rw [triangleIso_congr_inv b hm q _ hq L]
-  simp only [Category.assoc]
-  rw [reassoc_of% (comp_triangle_hom g m r hm ((inverseImage b).obj L))]
-  simp only [Iso.inv_hom_id_assoc]
+  simpa only [TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.coefficient_route_inner
+      Continuity.schemeAdjunctionData Continuity.schemeAdjunctionData_coherent b g m r hm q hq e d
 
-include z in
 /-- Pasting the actual curve coefficient square with an actual generic-point triangle. -/
 theorem coefficient_square_route {U : Scheme.{u}} (p : U ⟶ B) (f : Y ⟶ U)
     (b : X ⟶ B) (g : Y ⟶ X) (hf : f ≫ p = g ≫ b) (m : Z ⟶ Y)
     (r : Z ⟶ X) (hm : m ≫ g = r) (q : Z ⟶ B) (hq : r ≫ b = q)
-    {L : AbelianSheaf.{u, u + 1} B} (R : CoefficientRepresentation L)
+    {L : AbelianSheaf.{u, u + 1} B}
     {N : AbelianSheaf.{u, u + 1} X} {Q : AbelianSheaf.{u, u + 1} Z}
     (e : (inverseImage b).obj L ⟶ N) (d : (inverseImage r).obj N ⟶ Q) :
     (inverseImageComp f m).hom.app ((inverseImage p).obj L) ≫
@@ -111,16 +96,15 @@ theorem coefficient_square_route {U : Scheme.{u}} (p : U ⟶ B) (f : Y ⟶ U)
       ((Category.assoc m f p).trans ((congrArg (fun t => m ≫ t) hf).trans
         ((Category.assoc m g b).symm.trans ((congrArg (fun t => t ≫ b) hm).trans hq)))) L).hom ≫
       (triangleIso b r q hq L).inv ≫ (inverseImage r).map e ≫ d := by
-  let hb : m ≫ (g ≫ b) = q := (Category.assoc m g b).symm.trans
-    ((congrArg (fun t => t ≫ b) hm).trans hq)
-  have ho := triangleIso_route z p f m (g ≫ b) hf q hb (L := L) R
-    ((inverseImageComp b g).hom.app L ≫ (inverseImage g).map e)
-    ((triangleIso g m r hm N).hom ≫ d)
-  have hi := coefficient_route_inner z b g m r hm q hq R e d
-  have ht := congrArg (fun t =>
-    (triangleIso p (m ≫ f) q
-      ((Category.assoc m f p).trans ((congrArg (fun t => m ≫ t) hf).trans hb)) L).hom ≫ t) hi
-  simpa only [CategoryTheory.Functor.map_comp, Category.assoc] using ho.trans ht
+  simpa only [TriangleCoherence.triangleIso_eq_originalData,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.pull,
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.composition,
+    Continuity.schemeLeftCompIso_eq_inverseImageComp,
+    Continuity.schemeLeft_eq_inverseImage, Quiver.Hom.unop_op] using
+    CategoryTheory.InjectiveSystem.AdjunctionData.OrdinaryTriangle.coefficient_square_route
+      Continuity.schemeAdjunctionData Continuity.schemeAdjunctionData_coherent p f b g hf m r hm q
+      hq e d
+
 end Coherence
 
 
@@ -130,8 +114,8 @@ variable {X Y U V : Scheme.{u}}
 variable [HasExt.{wA} (AbelianSheaf.{u, u + 1} X)] [HasExt.{wB} (AbelianSheaf.{u, u + 1} Y)]
 variable [HasExt.{wC} (AbelianSheaf.{u, u + 1} U)] [HasExt.{wD} (AbelianSheaf.{u, u + 1} V)]
 
-/-- Ext functoriality for a proved ordinary coefficient square. In the native
-application below, the entire coefficient equation is discharged explicitly. -/
+/-- Ext functoriality for a proved ordinary coefficient square. The supplied
+coefficient equation identifies the two original pullback routes. -/
 theorem h1_square_of_coefficient (f : Y ⟶ X) (m : V ⟶ Y) (k : U ⟶ X) (v : V ⟶ U)
     (hs : m ≫ f = v ≫ k) (A : AbelianSheaf.{u, u + 1} X) (B : AbelianSheaf.{u, u + 1} Y)
     (C : AbelianSheaf.{u, u + 1} U) (D : AbelianSheaf.{u, u + 1} V)

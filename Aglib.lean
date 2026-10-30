@@ -2726,6 +2726,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.Pull
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SectionComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.SheafCoherence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence
+public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.AbelBoundary
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ArtinSchreier
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ConstantModuleSheaves
@@ -5060,6 +5061,7 @@ public import Aglib.CategoryTheory
 public import Aglib.CategoryTheory.Abelian.CoproductKernelTransport
 public import Aglib.CategoryTheory.Abelian.CoproductKernels
 public import Aglib.CategoryTheory.Abelian.Ext.ClasswiseDimensionShift
+public import Aglib.CategoryTheory.Abelian.Ext.CoefficientSquare
 public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
 public import Aglib.CategoryTheory.Abelian.Ext1.Equality
 public import Aglib.CategoryTheory.Abelian.Ext1.Extension
@@ -5344,6 +5346,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDia
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeRightTail
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseNaturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseTransitions
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.OrdinaryTrianglePasting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Reindex
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.RightTail
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.SectionArrows
