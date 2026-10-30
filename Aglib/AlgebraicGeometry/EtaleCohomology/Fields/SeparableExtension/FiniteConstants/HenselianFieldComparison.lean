@@ -5,6 +5,9 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteCoverBaseChange
+public import Aglib.CategoryTheory.Over.PullbackMaps
+
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.LocalFiniteComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.ConstantMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.PurelyInseparable.FiniteConstants.Cohomology
@@ -41,11 +44,8 @@ variable {k C D E : Type u} [CommRing k] [CommRing C] [CommRing D] [CommRing E]
 /-- The original map between standard-order coefficient pullbacks. -/
 def coefficientPullbackMap (a : C →ₐ[k] D) :
     pullback p (Spec.algebraMap k D) ⟶ pullback p (Spec.algebraMap k C) :=
-  pullback.lift (pullback.fst p (Spec.algebraMap k D))
-    (pullback.snd p (Spec.algebraMap k D) ≫ Spec.map (CommRingCat.ofHom a.toRingHom))
-    (by
-      rw [Category.assoc, LocalRing.specMap_algHom_triangle]
-      exact pullback.condition)
+  pullback.mapRight p (Spec.algebraMap k C) (Spec.algebraMap k D)
+    (Spec.map (CommRingCat.ofHom a.toRingHom)) (LocalRing.specMap_algHom_triangle a)
 
 @[reassoc (attr := simp)]
 theorem coefficientPullbackMap_fst (a : C →ₐ[k] D) :
@@ -62,13 +62,16 @@ theorem coefficientPullbackMap_snd (a : C →ₐ[k] D) :
 theorem coefficientBaseChangeMap_comp (a : C →ₐ[k] D) (b : D →ₐ[k] E) :
     coefficientPullbackMap p b ≫ LocalRing.coefficientBaseChangeMap p a =
       LocalRing.coefficientBaseChangeMap p (b.comp a) := by
-  apply pullback.hom_ext
-  · simp only [Category.assoc, LocalRing.coefficientBaseChangeMap_fst,
-      coefficientPullbackMap_snd_assoc]
-    rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
-    rfl
-  · simp only [Category.assoc, LocalRing.coefficientBaseChangeMap_snd,
-      coefficientPullbackMap_fst]
+  change pullback.mapRight p (Spec.algebraMap k D) (Spec.algebraMap k E)
+      (Spec.map (CommRingCat.ofHom b.toRingHom)) (LocalRing.specMap_algHom_triangle b) ≫
+        pullback.mapRightToFlipped p (Spec.algebraMap k C) (Spec.algebraMap k D)
+          (Spec.map (CommRingCat.ofHom a.toRingHom)) (LocalRing.specMap_algHom_triangle a) =
+    pullback.mapRightToFlipped p (Spec.algebraMap k C) (Spec.algebraMap k E)
+      (Spec.map (CommRingCat.ofHom (b.comp a).toRingHom))
+      (LocalRing.specMap_algHom_triangle (b.comp a))
+  apply pullback.mapRight_comp_toFlipped
+  rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
+  rfl
 
 end CoefficientMaps
 
@@ -81,11 +84,7 @@ variable (k R : Type u) [CommRing k] [CommRing R] [Algebra k R]
 def finiteBaseChangeLineOverMap :
     Over.mk (pullback.snd (f ≫ ProjectiveLine.structureMap k) (Spec.algebraMap k R)) ⟶
       Over.mk (ProjectiveLine.structureMap R) :=
-  (Over.pullback (Spec.algebraMap k R)).map
-      (Over.homMk f rfl : Over.mk (f ≫ ProjectiveLine.structureMap k) ⟶
-        Over.mk (ProjectiveLine.structureMap k)) ≫
-    (AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.lineOverBaseChangeIso
-      (algebraMap k R)).inv
+  AlgebraicGeometry.ProjectiveSpace.finiteCoverBaseChangeOverMap (algebraMap k R) f
 
 /-- The finite map on the literal standard-order coefficient base change. -/
 def finiteBaseChangeLineMap :
@@ -99,18 +98,9 @@ theorem finiteBaseChangeLineMap_structureMap :
       pullback.snd (f ≫ ProjectiveLine.structureMap k) (Spec.algebraMap k R) :=
   (finiteBaseChangeLineOverMap k R f).w
 
-instance [IsFinite f] : IsFinite (finiteBaseChangeLineMap k R f) := by
-  let g : Over.mk (f ≫ ProjectiveLine.structureMap k) ⟶
-      Over.mk (ProjectiveLine.structureMap k) := Over.homMk f rfl
-  let hg : IsFinite (((Over.pullback (Spec.algebraMap k R)).map g).left) :=
-    MorphismProperty.overPullbackMap (P := @IsFinite)
-      (Spec.algebraMap k R) g (by change IsFinite f; infer_instance)
-  let e := AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.lineOverBaseChangeIso
-    (algebraMap k R)
-  let : IsIso e.inv.left := inferInstanceAs
-    (IsIso ((Over.forget (Spec (.of R))).map e.inv))
-  change IsFinite (((Over.pullback (Spec.algebraMap k R)).map g).left ≫ e.inv.left)
-  exact MorphismProperty.comp_mem (@IsFinite) _ _ hg inferInstance
+instance [IsFinite f] : IsFinite (finiteBaseChangeLineMap k R f) :=
+  inferInstanceAs (IsFinite
+    (AlgebraicGeometry.ProjectiveSpace.finiteCoverBaseChangeMap (algebraMap k R) f))
 
 end FiniteLineBaseChange
 

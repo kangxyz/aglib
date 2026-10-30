@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Over.PullbackMaps
+
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartGeometricComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Proper.Local.ResidueFieldExtension
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackIsomorphism
@@ -36,16 +38,8 @@ private theorem pullback_of_projection_iso {C : Type*} [Category* C]
     {X Y Z W : C} (f : X ⟶ Z) (g : Y ⟶ Z) [HasPullback f g]
     (e : W ≅ pullback f g) (p : W ⟶ X) (q : W ⟶ Y)
     (hp : e.hom ≫ pullback.fst f g = p) (hq : e.hom ≫ pullback.snd f g = q) :
-    IsPullback p q f g := by
-  have hw : p ≫ f = q ≫ g := by
-    calc
-      _ = (e.hom ≫ pullback.fst f g) ≫ f := congrArg (fun k => k ≫ f) hp.symm
-      _ = e.hom ≫ (pullback.fst f g ≫ f) := Category.assoc _ _ _
-      _ = e.hom ≫ (pullback.snd f g ≫ g) :=
-        congrArg (fun k => e.hom ≫ k) (pullback.condition (f := f) (g := g))
-      _ = (e.hom ≫ pullback.snd f g) ≫ g := (Category.assoc _ _ _).symm
-      _ = _ := congrArg (fun k => k ≫ g) hq
-  exact IsPullback.of_iso_pullback ⟨hw⟩ e hp hq
+    IsPullback p q f g :=
+  pullback.isPullback_of_projection_iso f g e p q hp hq
 
 private theorem line_chart_pullback
     {R K : Type u} [CommRing R] [CommRing K] (τ : R →+* K)
@@ -103,34 +97,18 @@ private theorem pullback_map_iso_square {C : Type*} [Category* C]
     (df : d.hom ≫ pullback.fst b f = t) (ds : d.hom ≫ pullback.snd b f = y)
     (mf : μ ≫ pullback.fst a f = pullback.fst b f ≫ r)
     (ms : μ ≫ pullback.snd a f = pullback.snd b f)
-    (lf : l ≫ s = t ≫ r) (ls : l ≫ x = y) : d.hom ≫ μ = l ≫ e.hom := by
-  apply pullback.hom_ext
-  · calc
-      _ = d.hom ≫ (μ ≫ pullback.fst a f) := Category.assoc _ _ _
-      _ = d.hom ≫ (pullback.fst b f ≫ r) := congrArg (fun k => d.hom ≫ k) mf
-      _ = (d.hom ≫ pullback.fst b f) ≫ r := (Category.assoc _ _ _).symm
-      _ = t ≫ r := congrArg (fun k => k ≫ r) df
-      _ = l ≫ s := lf.symm
-      _ = l ≫ (e.hom ≫ pullback.fst a f) := congrArg (fun k => l ≫ k) ef.symm
-      _ = _ := (Category.assoc _ _ _).symm
-  · calc
-      _ = d.hom ≫ (μ ≫ pullback.snd a f) := Category.assoc _ _ _
-      _ = d.hom ≫ pullback.snd b f := congrArg (fun k => d.hom ≫ k) ms
-      _ = y := ds
-      _ = l ≫ x := ls.symm
-      _ = l ≫ (e.hom ≫ pullback.snd a f) := congrArg (fun k => l ≫ k) es.symm
-      _ = _ := (Category.assoc _ _ _).symm
+    (lf : l ≫ s = t ≫ r) (ls : l ≫ x = y) : d.hom ≫ μ = l ≫ e.hom :=
+  pullback.map_iso_square f a b e d μ l r s t x y ef es df ds mf ms lf ls
 
 private theorem bijective_from_comparison {A B C D : Type*}
     (a : A → B) (b : B → C) (c : A → D) (d : D → C)
     (ha : Function.Bijective a) (hb : Function.Bijective b) (hd : Function.Bijective d)
     (h : ∀ x, d (c x) = b (a x)) : Function.Bijective c := by
-  constructor
-  · intro x y hxy
-    exact ha.injective (hb.injective ((h x).symm.trans ((congrArg d hxy).trans (h y))))
-  · intro y
-    obtain ⟨x, hx⟩ := (hb.comp ha).surjective (d y)
-    exact ⟨x, hd.injective ((h x).trans hx)⟩
+  have heq : d ∘ c = b ∘ a := funext h
+  have hcomp : Function.Bijective (d ∘ c) := by
+    rw [heq]
+    exact hb.comp ha
+  exact (hd.of_comp_iff' c).mp hcomp
 
 private theorem pullback_bijective_comp
     {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S)

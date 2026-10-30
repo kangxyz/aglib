@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.SeparableExtension.FiniteConstants.BoundedComparison
+public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparison
 
 /-! # Bounded field comparison on the original native projective-line map
 
@@ -24,38 +25,21 @@ universe u
 
 attribute [local instance] hasSheafifyLarge HasExt.standard
 
-private theorem bijective_of_comparison {A B C D : Type*}
-    (a : A → B) (b : B → C) (c : A → D) (d : D → C)
-    (ha : Function.Bijective a) (hb : Function.Bijective b) (hd : Function.Bijective d)
-    (h : ∀ x, d (c x) = b (a x)) : Function.Bijective c := by
-  constructor
-  · intro x y hxy
-    exact ha.injective (hb.injective
-      ((h x).symm.trans ((congrArg d hxy).trans (h y))))
-  · intro y
-    obtain ⟨x, hx⟩ := (hb.comp ha).surjective (d y)
-    exact ⟨x, hd.injective ((h x).trans hx)⟩
-
 /-- Keep the original composition comparison at variable schemes before
 specializing the native projective-line base-change isomorphism. -/
 private theorem cohomologyPullback_bijective_of_iso_factor
     {X S T : Scheme.{u}} (g : S ⟶ X) (e : T ≅ S) (f : T ⟶ X)
     (he : e.hom ≫ g = f) (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
     (hg : Function.Bijective (cohomologyPullback.{u, u + 2, u + 2} g F q)) :
-    Function.Bijective (cohomologyPullback.{u, u + 2, u + 2} f F q) := by
+    Function.Bijective (cohomologyPullback.{u, u + 2, u + 2} f F q) :=
+  by
   subst f
-  have hv : Function.Bijective
-      (cohomologyPullback.{u, u + 2, u + 2} e.hom ((inverseImage g).obj F) q) :=
-    cohomologyPullback_bijective_of_isEquivalence e.hom ((inverseImage g).obj F) q
-  let E : (inverseImage (e.hom ≫ g)).obj F ≅
-      (inverseImage e.hom).obj ((inverseImage g).obj F) := (inverseImageComp g e.hom).app F
-  have hE : Function.Bijective (Sheaf.H.map E.hom q) := cohomologyMapIso_bijective E q
-  exact bijective_of_comparison
-    (cohomologyPullback.{u, u + 2, u + 2} g F q)
-    (cohomologyPullback.{u, u + 2, u + 2} e.hom ((inverseImage g).obj F) q)
-    (cohomologyPullback.{u, u + 2, u + 2} (e.hom ≫ g) F q)
-    (Sheaf.H.map E.hom q) hg hv hE
-    (cohomologyPullback_comp g e.hom F q)
+  exact Functor.extPrecompMap_bijective_of_equivalence_factor (inverseImage g)
+    (inverseImage e.hom) (inverseImage (e.hom ≫ g)) (inverseImageComp g e.hom)
+    ((inverseImageConstantIso g).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    ((inverseImageConstantIso e.hom).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    ((inverseImageConstantIso (e.hom ≫ g)).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (inverseImageComp_constant_inv g e.hom _) F q hg
 
 variable (k K : Type u) [Field k] [Field K] [IsSepClosed k] [IsSepClosed K]
   [Algebra k K]
