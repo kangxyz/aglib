@@ -1,0 +1,38 @@
+{
+  "package": "W13",
+  "phase": "v6 whole actual functor-equality comparison, no indexed family parameter",
+  "status": "LIVE source applied; ordinary owning-family CPP ready",
+  "head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "before_status_scoped": " M Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean\n?? Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean\n?? Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean\n",
+  "author": "/root/roots_section_whole_alternative",
+  "lease": "Coordinator confirmed LOCAL N source lease OPEN, D snapshot1647 sealed; exact15 source/provider guard passed",
+  "files": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+      "before_sha256": "2eda2207c7a5a3a8dced1158ff6a36767636cbb195bbba61c8e896d3f865b6fe",
+      "sha256": "fa8bc2fbd17d52c123cb471e716b468a9ada941320b9fc099ec62132b909746e",
+      "before_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v5/after/Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+      "after_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "before_sha256": "b73fc2502fcec17922245aa5445c81552166355cf94be78da6bc28fece7d0340",
+      "sha256": "c703ba7109a3019809c0cf06502cecf41e9d6179e94c6a5c365f0d7227828ddf",
+      "before_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v5/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "after_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean"
+    }
+  ],
+  "unchanged_guard": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean",
+    "sha256": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+  ],
+  "actual_prior_CPP": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/CPP-ROOTS-SECTION-WHOLE-V5.json",
+  "last_diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v5-cuts/DIAGNOSIS-RESULT-v3.json",
+  "derivation": "The new abstract lemma takes actual F=G, original e:G\u2245Id, supplied whole t:F\u2245Id with t=eqToIso(h)\u226be, actual object equality hA and the literal producer equation. Substitute t, eliminate the functor equality over variables, reduce the reflexive object transport, and compose q=k with q=e.hom.app A. Native hF and t are exactly the original public RHS construction; ht=rfl before \u03bc evaluation. Object equality is inferred from the existing rootsPullbackIso_congr producer. No indexed family or additional implementation instance is supplied.",
+  "preserved": "All native public/private headers, original identity, coefficient-contraction and final thin wrapper proofs unchanged. Successful H1 whole-\u03c3 route retained; only its reported long line wrapped. Family451 unchanged. All2eda declarations/proofs retained. No new model, desired conclusion premise, world identification, unsafe flag, transparency/instance/budget/pin/trust change.",
+  "review_delta_pending": true,
+  "applied_at_utc": "2026-10-30T10:51:56.470343+00:00"
+}

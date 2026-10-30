@@ -57,3 +57,11 @@ both original projections, under the stated pullback and stability hypotheses.
 [Actual-point inverse-image comparison](Point/InverseImageComparison.lean) reindexes the original skyscraper products at the two supplied points and takes their mate under the given adjunction. Its whole unit and germ equations retain both product and colimit sizes. [Inverse-image unit coherence](Point/InverseImageUnitCoherence.lean) constructs the original section transport and proves its naturality, identity, composition and structural-test values on those same fibres.
 
 [Terminal values](ConstantRestriction/TerminalValues.lean) evaluates the actual constant-sheaf adjunction unit followed by the given sheaf map. [Relative point tests](Point/RelativeTest.lean) retain the actual pullback projections and original germ restriction. [Whole chart values](Point/SectionValuesTransport.lean) transports the proved equality of the original coefficient transformations before projecting the existing scalar chart law to section homomorphisms. No additional point, Gamma, integer source or derived realization is chosen.
+
+[Original coefficient section comparisons](Representable/SectionComparison.lean)
+derive identity and section contraction from the original composition and unit
+maps. [Whole comparison values](Representable/SectionComparisonValues.lean)
+retain the supplied original comparison before evaluating coefficients or
+cohomology classes. The [native roots section producer](../../AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean)
+uses the original roots composition and equality-transport maps, with independent
+source and target Ext universes.

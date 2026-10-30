@@ -1,0 +1,10 @@
+{
+  "run": "remote-501e262bce0f4bc4ad5b67eeda78120e",
+  "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-501e262bce0f4bc4ad5b67eeda78120e/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-501e262bce0f4bc4ad5b67eeda78120e/build.log",
+  "exit_code": 1,
+  "group_closed": true,
+  "meaning": "Lean rejects inference of theorem result type from proof: header holes resolved first. All three cuts have inference errors; a final recovered-cut kernel timeout also occurs. No clean isolated input or inferred-application outcome is accepted.",
+  "retraction": "V2 readiness claim that theorem : _ is resolved from the proof is incorrect and withdrawn. Printed signatures in error recovery are not accepted checked-cut evidence."
+}

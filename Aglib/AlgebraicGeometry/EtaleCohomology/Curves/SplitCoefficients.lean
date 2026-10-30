@@ -47,15 +47,15 @@ theorem constantRestriction_surjective_of_split_family
   choose y hy using fun i => hB i (Sheaf.H.map (C.map (r i)) q x)
   refine ⟨∑ i, Sheaf.H.map (D.map (s i)) q (y i), ?_⟩
   have hsum : ∑ i, Sheaf.H.map (C.map (r i ≫ s i)) q x = x := by
-    have heval (t : Finset ι) :
-        Sheaf.H.map (∑ i ∈ t, C.map (r i ≫ s i)) q x =
-          ∑ i ∈ t, Sheaf.H.map (C.map (r i ≫ s i)) q x := by
-      induction t using Finset.induction_on with
-      | empty => simp [Sheaf.H.map_apply]
-      | @insert i t hi ih =>
-          rw [Finset.sum_insert hi, Finset.sum_insert hi, Sheaf.H.map_add_apply, ih]
-    rw [← heval Finset.univ, ← CategoryTheory.Functor.map_sum, hs,
-      CategoryTheory.Functor.map_id, Sheaf.H.map_id_apply]
+    let T := C ⋙ Sheaf.functorH.{w', u + 1, u, u + 1} (Scheme.smallEtaleTopology S) q
+    have hmaps : ∑ i, T.map (r i ≫ s i) = 𝟙 _ := by
+      rw [← T.map_sum, hs, T.map_id]
+    let ev : (T.obj (ConstantFinite.value A) ⟶ T.obj (ConstantFinite.value A)) →+
+        T.obj (ConstantFinite.value A) :=
+      (AddMonoidHom.eval x).comp AddCommGrpCat.homAddEquiv.toAddMonoidHom
+    have hvalue := congrArg ev hmaps
+    rw [map_sum] at hvalue
+    exact hvalue
   calc
     constantRestriction A f q (∑ i, Sheaf.H.map (D.map (s i)) q (y i)) =
         ∑ i, Sheaf.H.map (C.map (s i)) q

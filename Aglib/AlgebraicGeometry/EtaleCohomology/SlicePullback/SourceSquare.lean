@@ -57,44 +57,10 @@ theorem sliceIntegerSource_sections (A : AbelianSheaf.{u, u + 1} U.left)
     sliceSectionsAddEquiv.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X) _
       (sliceIntegerSource U ≫
         (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse.map a) =
-      Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal U.left) A a := by
-  let c := constantSheafAdj ((Scheme.smallEtaleTopology X).over U)
-    AddCommGrpCat.{u + 1} Over.mkIdTerminal
-  let d := constantAdjunction U.left
-  let R := (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse
-  let e := (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).toAdjunction
-  have h : (c.comp e).homEquiv _ A
-      (((sliceConstantSheafIso.{u, u + 1} U).hom.app
-        (AddCommGrpCat.of (ULift.{u + 1} ℤ))) ≫ a) =
-      d.homEquiv _ A a := by
-    rw [Adjunction.homEquiv_naturality_right]
-    change (c.comp e).homEquiv _ _ (((c.comp e).leftAdjointUniq d).hom.app _) ≫
-      (globalSections U.left).map a = _
-    rw [Adjunction.homEquiv_leftAdjointUniq_hom_app]
-    exact (Adjunction.homEquiv_unit d _ _ a).symm
-  have h' := congrArg (fun k => k (ULift.up (1 : ℤ))) h
-  change (c.homEquiv (AddCommGrpCat.of (ULift.{u + 1} ℤ)) (R.obj A)
-    (sliceIntegerSource U ≫ R.map a)) (ULift.up (1 : ℤ)) =
-      (d.homEquiv _ A a) (ULift.up (1 : ℤ))
-  refine Eq.trans ?_ h'
-  have hq : sliceIntegerSource U ≫
-      (Scheme.Etale.sliceSheafEquivalence U AddCommGrpCat.{u + 1}).inverse.map a =
-      e.homEquiv _ A (((sliceConstantSheafIso.{u, u + 1} U).hom.app
-        (AddCommGrpCat.of (ULift.{u + 1} ℤ))) ≫ a) := by
-    change (e.unit.app _ ≫ R.map _) ≫ R.map a =
-      e.unit.app _ ≫ R.map (_ ≫ a)
-    exact (Category.assoc _ _ _).trans
-      (congrArg (fun k => e.unit.app _ ≫ k) (R.map_comp _ a).symm)
-  have hcomp := congrArg
-    (fun k => (k (AddCommGrpCat.of (ULift.{u + 1} ℤ)) A
-      (((sliceConstantSheafIso.{u, u + 1} U).hom.app
-        (AddCommGrpCat.of (ULift.{u + 1} ℤ))) ≫ a)) (ULift.up (1 : ℤ)))
-    (Adjunction.comp_homEquiv c e)
-  have heval := congrArg
-    (fun k : sliceIntegers.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X) U ⟶ R.obj A =>
-      (c.homEquiv (AddCommGrpCat.of (ULift.{u + 1} ℤ)) (R.obj A) k)
-        (ULift.up (1 : ℤ))) hq
-  exact heval.trans hcomp.symm
+      Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal U.left) A a :=
+  Sheaf.SliceCohomology.originalSliceIntegerSource_sections.{u + 1, u, u + 1, u, u + 1}
+    (Scheme.smallEtaleTopology X) U (Scheme.smallEtaleTopology U.left)
+    (Scheme.Etale.sliceEquivalence U) (etaleTerminalIsTerminal U.left) A a
 
 /-- The represented augmentation with exactly the original integer-source normalization. -/
 def representedIntegerAugmentation :
@@ -117,68 +83,20 @@ theorem inverseImageSlice_source_square :
           (AddCommGrpCat.of (ULift.{u + 1} ℤ))) =
     sliceComparisonUnit.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X) U ≫
       ((Scheme.smallEtaleTopology X).overPullback AddCommGrpCat.{u + 1} U).map
-        (representedIntegerAugmentation U) := by
-  let J := Scheme.smallEtaleTopology X
-  let Z := (constantSheaf J AddCommGrpCat.{u + 1}).obj
-    (AddCommGrpCat.of (ULift.{u + 1} ℤ))
-  let z := Sheaf.ModuleCoefficients.constantHomSectionsEquiv
-    (etaleTerminalIsTerminal X) Z (𝟙 Z)
-  let β : U ⟶ (siteEtalePostcompose U.hom).obj (etaleTerminal U.left) :=
-    ((Scheme.Etale.sliceEquivalence U).unitIso.app (Over.mk (𝟙 U))).hom.left
-  apply (sliceSectionsAddEquiv.{u + 1, u, u + 1} J _).injective
-  rw [← Category.assoc, sliceSections_postcomp, sliceIntegerSource_sections,
-    sliceSections_postcomp]
-  have hgen : sliceSectionsAddEquiv.{u + 1, u, u + 1} J
-      ((freeAbelianSheaf.{u + 1} J U).over U)
-      (sliceComparisonUnit.{u + 1, u, u + 1} J U) =
-      sectionsAddEquiv.{u + 1} J U (freeAbelianSheaf.{u + 1} J U) (𝟙 _) :=
-    sliceComparisonUnit_generator J U
-  rw [hgen]
-  have hc := constantTransport_homEquiv U.hom (AddCommGrpCat.of (ULift.{u + 1} ℤ)) (𝟙 Z)
-  let a := ((inverseImageConstantIso U.hom).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv
-  have ha : a ≫ (inverseImage U.hom).map (𝟙 Z) = a :=
-    (congrArg (fun k => a ≫ k) ((inverseImage U.hom).map_id Z)).trans
-      (Category.comp_id a)
-  have hc' := (congrArg ((constantAdjunction U.left).homEquiv
-    (AddCommGrpCat.of (ULift.{u + 1} ℤ)) ((inverseImage U.hom).obj Z)) ha).symm.trans hc
-  have hcz := congrArg (fun k => k (ULift.up (1 : ℤ))) hc'
-  change Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal U.left)
-    ((inverseImage U.hom).obj Z)
-      (((inverseImageConstantIso U.hom).app (AddCommGrpCat.of (ULift.{u + 1} ℤ))).inv) =
-      globalSectionsPullback U.hom Z z at hcz
-  refine (congrArg
-    (((inverseImageSliceInverseIso U).hom.app Z).hom.app (op (Over.mk (𝟙 U))))
-    hcz).trans ?_
-  change Z.obj.map β.op
-      (((inverseImageEtaleIso U.hom).hom.app Z).hom.app (op (etaleTerminal U.left))
-        (globalSectionsPullback U.hom Z z)) =
-    (representedIntegerAugmentation U).hom.app (op U)
-      (sectionsEquiv.{u + 1} J U (freeAbelianSheaf.{u + 1} J U) (𝟙 _))
-  have hg := congrArg (fun k => k z) (globalSectionsPullback_etaleRestriction U.hom Z)
-  change ((inverseImageEtaleIso U.hom).hom.app Z).hom.app (op (etaleTerminal U.left))
-      (globalSectionsPullback U.hom Z z) = _ at hg
-  refine (congrArg (Z.obj.map β.op) hg).trans ?_
-  have ht : β ≫ (etaleTerminalIsTerminal X).from
-      ((siteEtalePostcompose U.hom).obj (etaleTerminal U.left)) =
-      (etaleTerminalIsTerminal X).from U := (etaleTerminalIsTerminal X).hom_ext _ _
-  have hm := congrArg (fun k => k z) (Z.obj.map_comp
-    ((etaleTerminalIsTerminal X).from
-      ((siteEtalePostcompose U.hom).obj (etaleTerminal U.left))).op β.op)
-  refine hm.symm.trans ?_
-  refine (congrArg (fun k : U ⟶ etaleTerminal X => Z.obj.map k.op z) ht).trans ?_
-  let e := constantIntegerFreeTerminalIso.{u + 1, u, u + 1} J (etaleTerminalIsTerminal X)
-  have hz := constantIntegerFreeTerminalIso_evaluation J (etaleTerminalIsTerminal X) Z e.inv
-  have hz' : z = sectionsEquiv.{u + 1} J (etaleTerminal X) Z e.inv :=
-    (congrArg (Sheaf.ModuleCoefficients.constantHomSectionsEquiv
-      (etaleTerminalIsTerminal X) Z) e.hom_inv_id).symm.trans hz
-  have hpre := freeSections_naturality J
-    ((etaleTerminalIsTerminal X).from U) Z e.inv
-  have hrep := sectionsEquiv_naturality J U
-    (𝟙 (freeAbelianSheaf.{u + 1} J U)) (representedIntegerAugmentation U)
-  have hid := congrArg (sectionsEquiv.{u + 1} J U Z)
-    (Category.id_comp (representedIntegerAugmentation U))
-  exact (congrArg (Z.obj.map ((etaleTerminalIsTerminal X).from U).op) hz').trans
-    (hpre.symm.trans (hid.symm.trans hrep))
+        (representedIntegerAugmentation U) :=
+  by
+  let : ((Scheme.Etale.sliceEquivalence U).inverse ⋙ Over.forget U).IsContinuous
+      (Scheme.smallEtaleTopology U.left) (Scheme.smallEtaleTopology X) := by
+    change (siteEtalePostcompose U.hom).IsContinuous
+      (Scheme.smallEtaleTopology U.left) (Scheme.smallEtaleTopology X)
+    exact siteEtalePostcompose_continuous U.hom
+  exact Sheaf.SliceCohomology.originalInverseImageSlice_source_square.{u + 1, u, u + 1, u, u + 1}
+    (Scheme.smallEtaleTopology X) U (Scheme.smallEtaleTopology U.left)
+    (Scheme.Etale.sliceEquivalence U) (siteBaseChange U.hom)
+    (siteEtalePostcomposeAdj U.hom) (inverseImageAdjunction U.hom)
+    (etaleTerminalIsTerminal X) (etaleTerminalIsTerminal U.left)
+    (siteBaseChangeTerminalIso U.hom) (inverseImageConstantIso U.hom)
+    (inverseImageConstantCanonicalIso_eq U.hom).symm
 
 section Cohomology
 

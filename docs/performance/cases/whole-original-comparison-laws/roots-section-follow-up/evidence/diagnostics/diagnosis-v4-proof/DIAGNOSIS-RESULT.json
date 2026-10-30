@@ -1,0 +1,92 @@
+{
+  "run": "remote-522b2137e14347c5926fc4dcb5b0d775",
+  "source": "1f0ab1175ab2b027f33b80f395cf249591065e0f226734a911f018918fe89952",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/build.log",
+  "raw_log_sha256": "3c4b5db33a1057947902fde0347d675f5b5d90c9e3b4bb75ff28e00acb2b9edf",
+  "raw_log_bytes": 13823063,
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/compiler-events.jsonl",
+  "exit_code": 1,
+  "group_closed": true,
+  "setup": {
+    "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback",
+    "isModule": true,
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+    "source_sha256": "a01a7a59f728fe397e298d04076dcd474661e1eb04c2d167035286684e323d70",
+    "meaning": "Actual two failed proof declarations instrumented; separate from closed formation probe. No production output overwrite or budget change."
+  },
+  "instrumented_frontend_seconds": 437.91728058457375,
+  "kernel_frames": [
+    {
+      "raw_line": 12,
+      "frame": "[Kernel] [195.241524] \ud83d\udca5\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity]"
+    },
+    {
+      "raw_line": 22,
+      "frame": "[Kernel] [162.856255] \ud83d\udca5\ufe0f typechecking declarations [_private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.0.AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_of_original_coefficients]"
+    },
+    {
+      "raw_line": 26,
+      "frame": "[Kernel] [27.582118] \ud83d\udca5\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_roots]"
+    }
+  ],
+  "errors": [
+    {
+      "raw_line": 11,
+      "pos": {
+        "column": 8,
+        "line": 55
+      },
+      "message": "(kernel) deterministic timeout"
+    },
+    {
+      "raw_line": 15,
+      "pos": {
+        "column": 8,
+        "line": 66
+      },
+      "message": "(kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity'"
+    },
+    {
+      "raw_line": 21,
+      "pos": {
+        "column": 16,
+        "line": 87
+      },
+      "message": "(kernel) deterministic timeout"
+    },
+    {
+      "raw_line": 25,
+      "pos": {
+        "column": 8,
+        "line": 129
+      },
+      "message": "(kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.0.AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_of_original_coefficients'"
+    }
+  ],
+  "selected_frames": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/SELECTED-FRAMES.json",
+  "actual_inputs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/ACTUAL-INPUTS.json",
+  "observed_boundaries": [
+    {
+      "target": "rootsComposite_identity",
+      "matching_frame_seconds": 5.60329,
+      "producer": "(eqToIso objectEquality).hom \u226b originalIdentityRoots.hom = originalCompositeRoots.hom",
+      "generic_expected": "eqToHom objectEquality \u226b q = k",
+      "next_repair": "Keep the producer literal eqToIso.hom head; normalize it in an abstract-category adapter."
+    },
+    {
+      "target": "private sectionPullback_of_original_coefficients",
+      "matching_frame_seconds": 0.901094,
+      "producer": "((sectionCoefficientNatIso r a ha).app A).hom",
+      "generic_expected": "(Functor.sourceSectionIso c i).hom.app A",
+      "next_repair": "Pass the actual original whole comparison \u03c3 plus its rfl constructor identity before object evaluation; retain literal (\u03c3.app A).hom at native value equations."
+    }
+  ],
+  "limits": "These elaboration comparison frames and named Kernel timeouts identify concrete presentation boundaries to remove. They do not prove the exact kernel reduction pair, allocate kernel time by constant, establish a speedup, or close an original theorem. Prior formation-only successes remain separate."
+}

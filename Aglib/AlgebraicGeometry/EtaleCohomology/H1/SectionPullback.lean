@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection.Transport
 
 /-!
 # Actual section pullback on small-etale H¹
@@ -28,6 +29,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry
+
 namespace AlgebraicGeometry.Scheme.EtaleCohomology.PointedNaturality
 universe u w w'
 attribute [local instance] hasSheafifyLarge
@@ -40,6 +42,25 @@ def sectionCoefficientIso (L : AbelianSheaf.{u, u + 1} B) :
   ((inverseImageComp p o).app L).symm ≪≫
     eqToIso (congrArg (fun f : B ⟶ B => (inverseImage f).obj L) h) ≪≫
       (inverseImageId B).app L
+
+/-- The same original coefficient comparison as a whole natural isomorphism. -/
+def sectionCoefficientNatIso :
+    inverseImage p ⋙ inverseImage o ≅ 𝟭 (AbelianSheaf.{u, u + 1} B) :=
+  Functor.sourceSectionIso (inverseImageComp p o)
+    (eqToIso (congrArg (fun f : B ⟶ B => inverseImage f) h) ≪≫ inverseImageId B)
+
+/-- The whole coefficient comparison has exactly the original component. -/
+theorem sectionCoefficientNatIso_app (L : AbelianSheaf.{u, u + 1} B) :
+    (sectionCoefficientNatIso p o h).app L = sectionCoefficientIso p o h L :=
+  Functor.sourceSectionIso_transport_app (fun f : B ⟶ B => inverseImage f) h
+    (inverseImageComp p o) (inverseImageId B) L
+
+/-- Named whole value equality for original section and stalk consumers. -/
+theorem sectionCoefficientIso_hom_eq_original (L : AbelianSheaf.{u, u + 1} B) :
+    (sectionCoefficientIso p o h L).hom =
+      (inverseImageComp p o).inv.app L ≫
+        eqToHom (congrArg (fun f : B ⟶ B => (inverseImage f).obj L) h) ≫
+          (inverseImageId B).hom.app L := rfl
 
 variable [HasExt.{w} (AbelianSheaf.{u, u + 1} B)] [HasExt.{w'} (AbelianSheaf.{u, u + 1} X)]
 
@@ -64,28 +85,20 @@ theorem h1Pullback_eq_transport {Y Z : Scheme.{u}}
 /-- The actual origin pullback is a left inverse to actual base inflation. -/
 theorem sectionPullback_inflation (L : AbelianSheaf.{u, u + 1} B) (a : H1Etale.{u, u + 1, w} B L) :
     sectionPullback p o h L (h1Pullback p L a) = a := by
-  let a₀ : H1Etale.{u, u + 1, w} B ((inverseImage (o ≫ p)).obj L) := h1Pullback (o ≫ p) L a
-  have hc : coefficientMap ((inverseImageComp p o).inv.app L)
-      (h1Pullback o ((inverseImage p).obj L) (h1Pullback p L a)) = a₀ := by
-    change (coefficientIso ((inverseImageComp p o).app L)).symm
-      (h1Pullback o ((inverseImage p).obj L) (h1Pullback p L a)) = a₀
-    rw [← h1Pullback_comp p o L a]
-    exact (coefficientIso ((inverseImageComp p o).app L)).symm_apply_apply a₀
-  change coefficientMap (sectionCoefficientIso p o h L).hom
-    (h1Pullback o ((inverseImage p).obj L) (h1Pullback p L a)) = a
-  simp only [sectionCoefficientIso,
-    Iso.trans_hom, Iso.symm_hom, Iso.app_hom, Iso.app_inv, coefficientMap_comp,
-      AddMonoidHom.comp_apply]
-  change coefficientMap ((inverseImageId B).hom.app L)
-    (coefficientMap (eqToIso (congrArg (fun f : B ⟶ B => (inverseImage f).obj L) h)).hom
-      (coefficientMap ((inverseImageComp p o).inv.app L)
-        (h1Pullback o ((inverseImage p).obj L) (h1Pullback p L a)))) = a
-  rw [hc]
-  change coefficientMap ((inverseImageId B).hom.app L)
-    (coefficientMap (eqToIso (congrArg (fun f : B ⟶ B => (inverseImage f).obj L) h)).hom
-      (h1Pullback (o ≫ p) L a)) = a
-  rw [h1Pullback_eq_transport h L a]
-  exact h1Pullback_id B L a
+  let T := h1Functor.{u, u + 1, w} (X := B)
+  have hE : (fun b => sectionPullback p o h L b) =
+      fun b => T.map (sectionCoefficientIso p o h L).hom
+        (h1Pullback o ((inverseImage p).obj L) b) := rfl
+  have hc := h1Pullback_comp.{u, w, w', w} p o L a
+  have ht := h1Pullback_eq_transport.{u, w, w} h L a
+  have he := h1Pullback_id.{u, w} B L a
+  exact Functor.map_inverse_transport_apply_of_values T
+    ((inverseImageComp p o).app L)
+    (eqToIso (congrArg (fun f : B ⟶ B => (inverseImage f).obj L) h))
+    ((inverseImageId B).app L) (sectionCoefficientIso p o h L).hom
+    (sectionCoefficientIso_hom_eq_original p o h L)
+    (sectionPullback p o h L) (h1Pullback o ((inverseImage p).obj L)) hE
+    (h1Pullback p L a) (h1Pullback (o ≫ p) L a) (h1Pullback (𝟙 B) L a) a hc ht he
 
 set_option linter.unusedSectionVars false in
 -- Preserve the original auto-included hypothesis and binder order.
@@ -96,29 +109,31 @@ abelian coefficient-sheaf morphism, before taking cohomology. -/
 theorem sectionCoefficientIso_naturality {L D : AbelianSheaf.{u, u + 1} B} (q : L ⟶ D) :
     (inverseImage o).map ((inverseImage p).map q) ≫ (sectionCoefficientIso p o h D).hom =
       (sectionCoefficientIso p o h L).hom ≫ q := by
-  simp only [sectionCoefficientIso, Iso.trans_hom, Iso.symm_hom, Iso.app_hom,
-    Iso.app_inv, eqToIso.hom]
-  rw [← Category.assoc, ← Category.assoc, ← Functor.comp_map,
-    (inverseImageComp p o).inv.naturality q]
-  simp only [Category.assoc]
-  rw [eqToHom_naturality_assoc (fun f : B ⟶ B => (inverseImage f).map q) h,
-    (inverseImageId B).hom.naturality q]
-  rfl
+  have hn := (sectionCoefficientNatIso p o h).hom.naturality q
+  simpa only [Functor.comp_map, Functor.id_map, ← Iso.app_hom,
+    sectionCoefficientNatIso_app] using hn
 
 /-- Actual section H¹ pullback commutes with the actual base coefficient map. -/
 theorem sectionPullback_coefficient {L D : AbelianSheaf.{u, u + 1} B} (q : L ⟶ D)
     (a : H1Etale.{u, u + 1, w'} X ((inverseImage p).obj L)) :
     sectionPullback p o h D (coefficientMap ((inverseImage p).map q) a) =
       coefficientMap q (sectionPullback p o h L a) := by
-  change coefficientMap (sectionCoefficientIso p o h D).hom
-    (h1Pullback o ((inverseImage p).obj D) (coefficientMap ((inverseImage p).map q) a)) =
-    coefficientMap q (coefficientMap (sectionCoefficientIso p o h L).hom
-      (h1Pullback o ((inverseImage p).obj L) a))
-  rw [h1Pullback_coefficientMap]
-  change ((coefficientMap (sectionCoefficientIso p o h D).hom).comp
-    (coefficientMap ((inverseImage o).map ((inverseImage p).map q)))) _ =
-    ((coefficientMap q).comp (coefficientMap (sectionCoefficientIso p o h L).hom)) _
-  rw [← coefficientMap_comp, ← coefficientMap_comp, sectionCoefficientIso_naturality]
+  let T := h1Functor.{u, u + 1, w} (X := B)
+  have hEL : (fun b => sectionPullback p o h L b) =
+      fun b => T.map (sectionCoefficientIso p o h L).hom
+        (h1Pullback o ((inverseImage p).obj L) b) := rfl
+  have hED : (fun b => sectionPullback p o h D b) =
+      fun b => T.map (sectionCoefficientIso p o h D).hom
+        (h1Pullback o ((inverseImage p).obj D) b) := rfl
+  have hQ : (fun b => coefficientMap q b) = fun b => T.map q b := rfl
+  have hp := h1Pullback_coefficientMap.{u, w', w} o ((inverseImage p).map q) a
+  exact Functor.map_coefficient_square_apply_of_values T
+    ((inverseImage o).map ((inverseImage p).map q)) q
+    (sectionCoefficientIso p o h L).hom (sectionCoefficientIso p o h D).hom
+    (sectionCoefficientIso_naturality p o h q)
+    (sectionPullback p o h L) (sectionPullback p o h D)
+    (h1Pullback o ((inverseImage p).obj L)) (h1Pullback o ((inverseImage p).obj D))
+    (coefficientMap ((inverseImage p).map q)) (coefficientMap q) hEL hED hQ a hp
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.PointedNaturality
 

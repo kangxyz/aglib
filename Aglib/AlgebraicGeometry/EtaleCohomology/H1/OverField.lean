@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteLocallyConstant
 public import Aglib.AlgebraicGeometry.SchemeOverField
+public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
 
 /-!
 # Arbitrary coefficients and rational sections over a field
@@ -138,30 +139,18 @@ def overH1Pullback (q : X ⟶ Y) (L : AbelianSheaf.{u, u + 1} (Base F)) :
   (coefficientMap ((overInverseImage F q).hom.app L)).comp
     (h1Pullback q.left ((inverseImage Y.hom).obj L))
 
-private theorem coefficient_natural {B T : Scheme.{u}}
-    {V W : AbelianSheaf.{u, u + 1} B ⥤ AbelianSheaf.{u, u + 1} T} (e : V ⟶ W)
-    {L M : AbelianSheaf.{u, u + 1} B} (a : L ⟶ M)
-    (x : H1Etale.{u, u + 1, u + 2} T (V.obj L)) :
-    coefficientMap (e.app M) (coefficientMap (V.map a) x) =
-      coefficientMap (W.map a) (coefficientMap (e.app L) x) := by
-  change ((coefficientMap (e.app M)).comp (coefficientMap (V.map a))) x =
-    ((coefficientMap (W.map a)).comp (coefficientMap (e.app L))) x
-  rw [← coefficientMap_comp, ← coefficientMap_comp, e.naturality a]
-
 /-- All structural pullback wrappers commute with actual coefficient morphisms. -/
 theorem overH1Pullback_coefficient (q : X ⟶ Y)
     {L M : AbelianSheaf.{u, u + 1} (Base F)} (a : L ⟶ M)
     (x : H1Etale.{u, u + 1, u + 2} Y.left ((inverseImage Y.hom).obj L)) :
     overH1Pullback F q M (coefficientMap ((inverseImage Y.hom).map a) x) =
-      coefficientMap ((inverseImage X.hom).map a) (overH1Pullback F q L x) := by
-  let b : H1Etale.{u, u + 1, u + 2} X.left ((inverseImage q.left).obj ((inverseImage Y.hom).obj
-      L)) :=
-    h1Pullback q.left ((inverseImage Y.hom).obj L) x
-  calc
-    _ = coefficientMap ((overInverseImage F q).hom.app M)
-        (coefficientMap ((inverseImage q.left).map ((inverseImage Y.hom).map a)) b) :=
-      congrArg (coefficientMap ((overInverseImage F q).hom.app M))
-        (h1Pullback_coefficientMap q.left ((inverseImage Y.hom).map a) x)
-    _ = _ := coefficient_natural (overInverseImage F q).hom a b
+      coefficientMap ((inverseImage X.hom).map a) (overH1Pullback F q L x) :=
+  by
+  have h := Functor.extCoefficientTransfer_naturality (inverseImage q.left)
+    ((inverseImageConstantIso q.left).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    ((overInverseImage F q).hom.app L) ((overInverseImage F q).hom.app M)
+    ((inverseImage Y.hom).map a) ((inverseImage X.hom).map a)
+    ((overInverseImage F q).hom.naturality a) 1
+  exact (congrArg (fun k => k x) h).symm
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.TateCoefficients

@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GeometricFibreNeighb
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.RelativeCohomologySquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackEquivalence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.PullbackIsomorphism
+public import Aglib.CategoryTheory.Abelian.Ext.TransferConsequences
 
 /-! # Original cohomology transfer between the fibres over one point
 
@@ -40,8 +41,10 @@ private theorem transfer_bijective_of_iso_coefficients
     (r : A ⟶ B) [IsIso r] (F : AbelianSheaf.{u, u + 1} B)
     (G : AbelianSheaf.{u, u + 1} A) (E : (inverseImage r).obj F ≅ G) (q : ℕ) :
     Function.Bijective (cohomologyTransfer r E.hom q) :=
-  (cohomologyMapIso_bijective E q).comp
-    (cohomologyPullback_bijective_of_isEquivalence r F q)
+  by
+  rw [cohomologyTransfer_eq_extCoefficientTransfer]
+  exact (inverseImage r).extCoefficientTransfer_bijective_of_isEquivalence
+    ((inverseImageConstantIso r).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ))) E q
 
 private theorem transfer_family_bijective_of_iso
     {C : Type*} [Category* C] {A B : Scheme.{u}}
@@ -154,11 +157,6 @@ private theorem squareTransfer_relative
     B.hom B'.hom A.hom A'.hom v.left v'.left r σ g
     (Over.w v) (Over.w v') hR hS hRect F q
 
-private theorem groupSquare_apply {A B C D : AddCommGrpCat.{e}}
-    (r : A ⟶ B) (v : B ⟶ D) (w : A ⟶ C) (σ : C ⟶ D)
-    (h : r ≫ v = w ≫ σ) (x : A) : v (r x) = σ (w x) :=
-  ConcreteCategory.congr_hom h x
-
 /-- Evaluate the shared rectangle after fixing its four actual schemes,
 structural maps and original Ext witnesses. -/
 theorem cohomologySquareTriangleEquation_apply
@@ -182,14 +180,14 @@ theorem cohomologySquareTriangleEquation_apply
         ((inverseImageSquareIso p p' g r hR).inv.app F) q) x) =
       (@cohomologySquareTransfer.{u, e} X X' A' A hA' hA a a' g σ hS F q)
         ((@cohomologyTriangleTransfer.{u, e} X A B hA hB a p v hv F q) x) :=
-  groupSquare_apply
-    (@cohomologyTransfer.{u, e} B B' hB hB' r
-      ((inverseImage p).obj F) ((inverseImage p').obj ((inverseImage g).obj F))
-      ((inverseImageSquareIso p p' g r hR).inv.app F) q)
-    (@cohomologyTriangleTransfer.{u, e} X' A' B' hA' hB'
-      a' p' v' hv' ((inverseImage g).obj F) q)
-    (@cohomologyTriangleTransfer.{u, e} X A B hA hB a p v hv F q)
-    (@cohomologySquareTransfer.{u, e} X X' A' A hA' hA a a' g σ hS F q) h x
+  by
+  dsimp only [cohomologySquareTriangleEquation] at h
+  have hValue := congrArg
+    (fun k : AddCommGrpCat.of (Sheaf.H.{e} ((inverseImage p).obj F) q) ⟶
+        AddCommGrpCat.of (Sheaf.H.{e} ((inverseImage a').obj ((inverseImage g).obj F)) q) =>
+      k x) h
+  simp only [ConcreteCategory.comp_apply] at hValue ⊢
+  exact hValue
 
 /-- Evaluate the completed original rectangle only after its construction
 and transport have been normalized at variable relative schemes. -/

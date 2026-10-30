@@ -41,21 +41,9 @@ theorem representedIntegerAugmentation_sections {X : Scheme.{u}} (U : X.Etale)
     sectionsEquiv.{u + 1} (Scheme.smallEtaleTopology X) U A
         (representedIntegerAugmentation U ≫ a) =
       A.obj.map ((etaleTerminalIsTerminal X).from U).op
-        (Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal X) A a) := by
-  dsimp only [representedIntegerAugmentation]
-  rw [Category.assoc]
-  have hpre := Sheaf.SliceCohomology.freeSections_naturality.{u + 1}
-    (Scheme.smallEtaleTopology X) ((etaleTerminalIsTerminal X).from U) A
-      ((constantIntegerFreeTerminalIso.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X)
-        (etaleTerminalIsTerminal X)).inv ≫ a)
-  have h := constantIntegerFreeTerminalIso_evaluation.{u + 1, u, u + 1}
-    (Scheme.smallEtaleTopology X)
-    (etaleTerminalIsTerminal X) A
-      ((constantIntegerFreeTerminalIso.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X)
-        (etaleTerminalIsTerminal X)).inv ≫ a)
-  simp only [Iso.hom_inv_id_assoc] at h
-  exact hpre.trans
-    (congrArg (A.obj.map ((etaleTerminalIsTerminal X).from U).op) h.symm)
+        (Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal X) A a) :=
+  Sheaf.OriginalSections.representedIntegerAugmentation_sections
+    (Scheme.smallEtaleTopology X) (etaleTerminalIsTerminal X) U A a
 
 /-- At the actual base-changed terminal object, the same original represented
 source is the native terminal transport of the original global section. -/
@@ -66,14 +54,8 @@ theorem directImagePresheafRepresentedIso_augmentation {X S : Scheme.{u}} (f : X
     (directImagePresheafRepresentedIso f (etaleTerminal S)).hom.app A
         (representedIntegerAugmentation ((siteBaseChange f).obj (etaleTerminal S)) ≫ a) =
       (directImageGlobalSectionsIso f).inv.app A
-        ((constantIntegerHomGlobalSectionsIso X).hom.app A a) := by
-  change sectionsEquiv.{u + 1} (Scheme.smallEtaleTopology X) _ A
-      (representedIntegerAugmentation _ ≫ a) =
-    A.obj.map (siteBaseChangeTerminalIso f).hom.op
-      (Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal X) A a)
-  rw [representedIntegerAugmentation_sections]
-  exact congrArg (fun k => A.obj.map k.op
-    (Sheaf.ModuleCoefficients.constantHomSectionsEquiv (etaleTerminalIsTerminal X) A a))
-      ((etaleTerminalIsTerminal X).hom_ext _ _)
+        ((constantIntegerHomGlobalSectionsIso X).hom.app A a) :=
+  Sheaf.SliceCohomology.representedIntegerAugmentation_transport
+    (Scheme.smallEtaleTopology X) (etaleTerminalIsTerminal X) (siteBaseChangeTerminalIso f) A a
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

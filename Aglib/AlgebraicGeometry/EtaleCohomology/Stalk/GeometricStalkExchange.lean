@@ -32,14 +32,12 @@ private theorem isIso_of_additive_comparison {A B C : AddCommGrpCat.{v}}
     (htransfer : Function.Bijective transfer)
     (h : ∀ x, target ((unit ≫ exchange) x) = transfer (source x)) :
     IsIso exchange := by
-  have ht : Function.Bijective (unit ≫ exchange) := by
-    constructor
-    · intro x y hxy
-      exact hsource.injective (htransfer.injective
-        ((h x).symm.trans ((congrArg target hxy).trans (h y))))
-    · intro y
-      obtain ⟨x, hx⟩ := (htransfer.comp hsource).surjective (target y)
-      exact ⟨x, htarget.injective ((h x).trans hx)⟩
+  have heq : target ∘ (unit ≫ exchange) = transfer ∘ source := funext h
+  have hcomp : Function.Bijective (target ∘ (unit ≫ exchange)) := by
+    rw [heq]
+    exact htransfer.comp hsource
+  have ht : Function.Bijective (unit ≫ exchange) :=
+    (htarget.of_comp_iff' (unit ≫ exchange)).mp hcomp
   have hi : IsIso (unit ≫ exchange) :=
     (ConcreteCategory.isIso_iff_bijective (unit ≫ exchange)).mpr ht
   exact (isIso_comp_left_iff unit exchange).mp hi

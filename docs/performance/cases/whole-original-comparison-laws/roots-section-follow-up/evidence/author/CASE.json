@@ -1,0 +1,386 @@
+{
+  "question": "Retain original roots section maps while repairing native equality-transport kernel conversion and H1/raw-Ext boundary.",
+  "failed_source_sha256": "f5076ddc6f98dfd8efab5a43ec928d7073cf0f7ccbda16c4ebb11e4afcf63577",
+  "actual_run": "remote-cfe95b216f474e619bd1810e34ee2a9e",
+  "actual_source_prefix": "caa620",
+  "diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-partial-cfe95b21/Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.log",
+  "diagnostic_sha256": "3051d0060f244cc4e40a16c2878bd338bea51f5d97e3f1407a46e868798e4601",
+  "observed_failure": "Native175s frontend, identity-unit mismatch50, kernel deterministic timeout56 rootsComposite_identity, cascade66 and rawExt/H1 value mismatch104. No claimed per-tactic timing, unique reduction-pair cause, or matched speedup.",
+  "guidance_read": [
+    "docs/PERFORMANCE.md#conversion-boundaries",
+    "docs/performance/whole-original-comparison-laws.md",
+    "docs/performance/cases/whole-original-comparison-laws/README.md",
+    "docs/performance/continuity-typed-original-endpoints.md"
+  ],
+  "repair": "Prove whole equality-transport component law over variable categories/functor family, consume actual identity unit with its literal final component, and derive the whole function square over the actual original T:C\u2192AddCommGrp and supplied native pullback/section/coefficient values before class evaluation. Same constructors and original c/i/q/r/k comparisons and maps. Native original h1Functor replaces no object; it is the existing actual H1 presentation. No extra cohomology model or final-square premise.",
+  "status": "Original roots-section question closes on v6: lowerfa8/nativec703/Family451 actual3CPP pass, independent ordinary math/source review PASS. Additional final predicates/P integration are separate assigned products; no whole-library or sixteen-ID closure claimed.",
+  "current_sources": [
+    {
+      "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+      "before_sha256": null,
+      "sha256": "13306394b8af27df9d7bb7b1f7b8ec210094c87f577706465ededc02fa33c792",
+      "before_image": null,
+      "after_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-native-v2/after/Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "before_sha256": "f5076ddc6f98dfd8efab5a43ec928d7073cf0f7ccbda16c4ebb11e4afcf63577",
+      "sha256": "bd1296653631711748c76009f8a8dca41e18d26905c00287aa2dde685b70f4b5",
+      "before_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-native-v2/before/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+      "after_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-native-v2/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean"
+    }
+  ],
+  "trust": "Default200000 and pinnedtoolchain/options/trust remain unchanged. No linter suppression, new axiom, test/client/replay chain or broad rebuild. Existing17 generic and all other passing constructors unchanged.",
+  "v2_actual": {
+    "run": "remote-0970ceac18f94b9f863d265f50534576",
+    "source_prefix": "4bcd",
+    "native_sha256": "bd1296653631711748c76009f8a8dca41e18d26905c00287aa2dde685b70f4b5",
+    "native_diagnostics": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-final-0970ceac/Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.log",
+    "outcome": "Lower133 PASS3.048s; native444s frontend fails(kernel)54/88,70cascade. No reportedtype/motive mismatch; no matched speedup or uniquekernelcause claim."
+  },
+  "next_bounded_diagnosis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v2/DIAGNOSIS-READY.json",
+  "formation_diagnostic_actual_status": {
+    "prescription": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v2/DIAGNOSIS-READY.json",
+    "reconciled_with": "/root/compile_authorized_continuation",
+    "actual": "The bd129/133 formation diagnostic was never prepared or dispatched. No actual setup, run, result or pending producer exists. Historical queued label is not execution evidence.",
+    "continuation": "Do not rerun the old prescribed diagnostic by default; use actual new ordinary CPP feedback to decide any targeted diagnosis."
+  },
+  "v3_candidate": {
+    "ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/READY-roots-section-whole-v3.json",
+    "generic_sha256": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+    "native_sha256": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+    "family_unchanged_sha256": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+    "derivation": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/RESULT.md",
+    "change": "Equality elimination on the original dependent coefficient family before native substitution; full additive-map equality on original ordinary H1 functors with separate value universes; original H1/raw-cohomology equations discharged for arbitrary sheaves before roots/level substitution.",
+    "evidence": "Applied source only. No pass, speedup or unique reduction-pair cause claimed."
+  },
+  "v3_independent_review": {
+    "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w13-roots-section-continuation-20261030.json",
+    "verdict": "PASS_MATHEMATICAL_AND_SOURCE_CORRESPONDENCE_CPP_PENDING",
+    "remaining_gap": "Actual ordinary CPP must close for the changed lower provider, native helper/public theorems and existing Family451 consumer; no current compiler or performance success is claimed.",
+    "established_status_authorized": false,
+    "boundary": "Fixed8107/e03 mathematical/source review only; no CPP or kernel-cost evidence. Later changed sources require reconciliation of affected coverage."
+  },
+  "v3_actual": {
+    "run": "remote-ce6640a43a86458e8992b92316a374c3",
+    "source": "4d26d30123ef4411969b82423c919500d51d34be6ad26687e159bfce181317ef",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ce6640a43a86458e8992b92316a374c3/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ce6640a43a86458e8992b92316a374c3/compiler-events.jsonl",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-ce6640a43a86458e8992b92316a374c3/build.log",
+    "aggregate_exit": 1,
+    "group_closed": true,
+    "rows": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+        "sha256": "8107dc2a090ac63aecad698a2c6724f63d352cfba01cfd5ad588b2108cee7f14",
+        "exit_code": 0,
+        "frontend_seconds": 3.2204579561948776
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+        "sha256": "e03cfe26fda95e308601af1d0e94e8492397640275a860d215af4e5d2e3d68e1",
+        "exit_code": 1,
+        "frontend_seconds": 416.6903528571129,
+        "kernel_failures": [
+          "54 rootsComposite_identity",
+          "85 private sectionPullback_of_original_coefficients"
+        ],
+        "cascades": [
+          "65 roots_section_coefficients",
+          "129 sectionPullback_roots"
+        ]
+      }
+    ],
+    "unreached": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+    ],
+    "boundary": "New generic whole-map law passes. Native proof/kernel conversion is not closed. No matched speedup or unique reduction-pair cause claimed."
+  },
+  "v3_formation_actual": {
+    "run": "remote-eba1201c30df4f8990cf355760c20c2a",
+    "source": "748bf623a7e70359ed2eeb1891b22a310ebe4f8e30a123bc3098b92cb621407d",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/receipt.json",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/build.log",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-eba1201c30df4f8990cf355760c20c2a/compiler-events.jsonl",
+    "group_closed": true,
+    "exit_code": 0,
+    "setup": {
+      "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback",
+      "isModule": true,
+      "options": {
+        "autoImplicit": false,
+        "warningAsError": true,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.longFile": 1500
+      },
+      "setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+      "source_sha256": "b9a6aac2e8befd8d83b22d31ba2014a6691351f320ab89300eba4e4e87a9c884",
+      "meaning": "Three exact original propositions as (_h:P):True; no original proof."
+    },
+    "formation_frontend_seconds": 44.593340054154396,
+    "propositions": [
+      {
+        "declaration": "rootsComposite_identity_formation",
+        "formation": "PASS",
+        "original_proposition_proved": false
+      },
+      {
+        "declaration": "sectionPullback_of_original_coefficients_formation",
+        "formation": "PASS",
+        "original_proposition_proved": false
+      },
+      {
+        "declaration": "sectionPullback_roots_formation",
+        "formation": "PASS",
+        "original_proposition_proved": false
+      }
+    ],
+    "kernel_errors": [],
+    "warnings": [],
+    "informational_linter": "Three #check hashCommand informational notices; normal options/linters unchanged, exit0.",
+    "meaning": "Exact statement formation succeeds for the two public propositions and new private-helper proposition. Actual proof/kernel checking remains unresolved. This is not production theorem coverage.",
+    "basis_reconciliation": "Nativee03/lower810 and all15 bounded inspected source/provider hashes unchanged; actual whole SOURCE748 differs from failed CPP SOURCE4d26 and is retained separately."
+  },
+  "v4_actual": {
+    "run": "remote-05824407503d4f9ab9400a0ea4be9b2f",
+    "source": "755f892ddd60ca1b1a8910026d88645ce854cb096d8b0161a5d4752d9c7bf599",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-05824407503d4f9ab9400a0ea4be9b2f/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-05824407503d4f9ab9400a0ea4be9b2f/compiler-events.jsonl",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-05824407503d4f9ab9400a0ea4be9b2f/build.log",
+    "aggregate_exit": 1,
+    "group_closed": true,
+    "rows": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+        "sha256": "4ba68c21bc0b2da297849ca121d5c0e122e60a2c2d6507a94b0b0c22ba0bf356",
+        "exit_code": 0,
+        "frontend_seconds": 3.360807627439499
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+        "sha256": "72f3cf29f5074edace4ad239c05f3571488c92e4c8db6d665f943decfc11ab3c",
+        "exit_code": 1,
+        "frontend_seconds": 446.3730501681566,
+        "kernel_failures": [
+          "54 rootsComposite_identity",
+          "85 private sectionPullback_of_original_coefficients"
+        ],
+        "cascades": [
+          "65 roots_section_coefficients",
+          "127 sectionPullback_roots"
+        ]
+      }
+    ],
+    "unreached": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+    ],
+    "boundary": "Current generic extension passes; native actual proof checking remains open despite exact proposition formation success. No speedup or unique conversion-cause claim."
+  },
+  "v4_review": {
+    "artifact": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/reviews/whole-w13-roots-section-continuation-20261030.json",
+    "boundary": "Fixed4ba/72 math/source PASS, ordinary CPP failed; active native route is function equality, retained additive-hom theorem not a dependency."
+  },
+  "v4_proof_diagnosis": {
+    "run": "remote-522b2137e14347c5926fc4dcb5b0d775",
+    "source": "1f0ab1175ab2b027f33b80f395cf249591065e0f226734a911f018918fe89952",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/receipt.json",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/build.log",
+    "raw_log_sha256": "3c4b5db33a1057947902fde0347d675f5b5d90c9e3b4bb75ff28e00acb2b9edf",
+    "raw_log_bytes": 13823063,
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-522b2137e14347c5926fc4dcb5b0d775/compiler-events.jsonl",
+    "exit_code": 1,
+    "group_closed": true,
+    "setup": {
+      "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback",
+      "isModule": true,
+      "options": {
+        "autoImplicit": false,
+        "warningAsError": true,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.longFile": 1500
+      },
+      "setup_sha256": "9137bfeafe632490c8fbc3fe53bcb975beee01430a81ecab39f7b7594ca00d0a",
+      "source_sha256": "a01a7a59f728fe397e298d04076dcd474661e1eb04c2d167035286684e323d70",
+      "meaning": "Actual two failed proof declarations instrumented; separate from closed formation probe. No production output overwrite or budget change."
+    },
+    "instrumented_frontend_seconds": 437.91728058457375,
+    "kernel_frames": [
+      {
+        "raw_line": 12,
+        "frame": "[Kernel] [195.241524] \ud83d\udca5\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity]"
+      },
+      {
+        "raw_line": 22,
+        "frame": "[Kernel] [162.856255] \ud83d\udca5\ufe0f typechecking declarations [_private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.0.AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_of_original_coefficients]"
+      },
+      {
+        "raw_line": 26,
+        "frame": "[Kernel] [27.582118] \ud83d\udca5\ufe0f typechecking declarations [AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_roots]"
+      }
+    ],
+    "errors": [
+      {
+        "raw_line": 11,
+        "pos": {
+          "column": 8,
+          "line": 55
+        },
+        "message": "(kernel) deterministic timeout"
+      },
+      {
+        "raw_line": 15,
+        "pos": {
+          "column": 8,
+          "line": 66
+        },
+        "message": "(kernel) unknown constant 'AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.rootsComposite_identity'"
+      },
+      {
+        "raw_line": 21,
+        "pos": {
+          "column": 16,
+          "line": 87
+        },
+        "message": "(kernel) deterministic timeout"
+      },
+      {
+        "raw_line": 25,
+        "pos": {
+          "column": 8,
+          "line": 129
+        },
+        "message": "(kernel) unknown constant '_private.Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.0.AlgebraicGeometry.Scheme.EtaleCohomology.Kummer.SectionPullback.sectionPullback_of_original_coefficients'"
+      }
+    ],
+    "selected_frames": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/SELECTED-FRAMES.json",
+    "actual_inputs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v4-proof/ACTUAL-INPUTS.json",
+    "observed_boundaries": [
+      {
+        "target": "rootsComposite_identity",
+        "matching_frame_seconds": 5.60329,
+        "producer": "(eqToIso objectEquality).hom \u226b originalIdentityRoots.hom = originalCompositeRoots.hom",
+        "generic_expected": "eqToHom objectEquality \u226b q = k",
+        "next_repair": "Keep the producer literal eqToIso.hom head; normalize it in an abstract-category adapter."
+      },
+      {
+        "target": "private sectionPullback_of_original_coefficients",
+        "matching_frame_seconds": 0.901094,
+        "producer": "((sectionCoefficientNatIso r a ha).app A).hom",
+        "generic_expected": "(Functor.sourceSectionIso c i).hom.app A",
+        "next_repair": "Pass the actual original whole comparison \u03c3 plus its rfl constructor identity before object evaluation; retain literal (\u03c3.app A).hom at native value equations."
+      }
+    ],
+    "limits": "These elaboration comparison frames and named Kernel timeouts identify concrete presentation boundaries to remove. They do not prove the exact kernel reduction pair, allocate kernel time by constant, establish a speedup, or close an original theorem. Prior formation-only successes remain separate."
+  },
+  "v5_actual": {
+    "run": "remote-d29208dffb0d4994966a6f688275a601",
+    "source": "a5e1d20d99830a0d4c1d3139e0a204de7e2b35f5491427e88d544647aa1b1f6f",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d29208dffb0d4994966a6f688275a601/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d29208dffb0d4994966a6f688275a601/compiler-events.jsonl",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d29208dffb0d4994966a6f688275a601/build.log",
+    "aggregate_exit": 1,
+    "group_closed": true,
+    "rows": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+        "sha256": "2eda2207c7a5a3a8dced1158ff6a36767636cbb195bbba61c8e896d3f865b6fe",
+        "exit_code": 0,
+        "frontend_seconds": 2.6182376593351364
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+        "sha256": "b73fc2502fcec17922245aa5445c81552166355cf94be78da6bc28fece7d0340",
+        "exit_code": 1,
+        "frontend_seconds": 161.47487665712833,
+        "kernel_failures": [
+          "54 rootsComposite_identity"
+        ],
+        "other_errors": [
+          "118 line exceeds100characters"
+        ],
+        "cascades": [
+          "65 roots_section_coefficients unknown rootsComposite_identity",
+          "129 sectionPullback_roots unknown rootsComposite_identity"
+        ]
+      }
+    ],
+    "unreached": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+    ],
+    "progress": "No kernel timeout or unknown-constant error for the private H1 coefficient helper is reported in v5. Native module still fails; this does not claim an exported theorem/module pass or a matched speedup."
+  },
+  "v5_proof_value_cuts": {
+    "run": "remote-d645301c3ea44c46a7d3a16d8e95b66c",
+    "source": "1647aa8d1d19a3ad8c40017f9968a40edd1ca191f79b22efcb206f6bcecbbfee",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d645301c3ea44c46a7d3a16d8e95b66c/receipt.json",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d645301c3ea44c46a7d3a16d8e95b66c/build.log",
+    "exit_code": 1,
+    "group_closed": true,
+    "source_sha256": "b3959ba0a92305851ac721563946122f07e0b5bf1fbcaf068b172376dbc48ab1",
+    "outcomes": [
+      {
+        "cut": "rootsCongr_value_cut",
+        "observed": "Enabled defProp linter rejection; no clean pass claimed."
+      },
+      {
+        "cut": "rootsIdentity_value_cut",
+        "observed": "Enabled defProp linter rejection; no clean pass claimed."
+      },
+      {
+        "cut": "rootsComposite_inferred_cut",
+        "observed": "Actual kernel deterministic timeout at74; no unknown-constant cascade reported."
+      }
+    ],
+    "limits": "Proof-value definitions parsed and inferred, but input declarations are not clean accepted results because normal defProp rejects them. Do not infer original theorem closure, a public-header-only cause, or an exact kernel conversion pair. Linters remain enabled."
+  },
+  "v6_ready": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/READY-roots-section-whole-v6.json",
+  "v6_actual": {
+    "run": "remote-a915514036ca413b9bd53740882b4bb5",
+    "source": "e028160ad70b9552e7d57df0cafd9e2796023da2584af05f34ddf2d265da1fc0",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/compiler-events.jsonl",
+    "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-a915514036ca413b9bd53740882b4bb5/build.log",
+    "aggregate_exit": 0,
+    "group_closed": true,
+    "roots": [
+      "Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.KummerFamilyValues"
+    ],
+    "profile": {
+      "jobs": 8,
+      "threads": 4,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "maxHeartbeats": 200000
+    },
+    "rows": [
+      {
+        "path": "Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean",
+        "sha256": "fa8bc2fbd17d52c123cb471e716b468a9ada941320b9fc099ec62132b909746e",
+        "exit_code": 0,
+        "frontend_seconds": 3.3563457131385803,
+        "pid": 266238,
+        "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/CategoryTheory/Sites/Representable/SectionComparisonValues.lean"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+        "sha256": "c703ba7109a3019809c0cf06502cecf41e9d6179e94c6a5c365f0d7227828ddf",
+        "exit_code": 0,
+        "frontend_seconds": 29.87920680642128,
+        "pid": 266263,
+        "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean"
+      },
+      {
+        "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean",
+        "sha256": "451c01650bf736a429d57074a957b0becba274ad4e3279768256113c0d144152",
+        "exit_code": 0,
+        "frontend_seconds": 19.287935718894005,
+        "pid": 266308,
+        "source_image": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/after/Aglib/AlgebraicGeometry/EtaleCohomology/Finiteness/KummerFamilyValues.lean"
+      }
+    ],
+    "fresh_frontends": 3,
+    "boundary": "Three actual source-matched frontend passes. Lake3934 jobs includes retained cached dependencies; this is not3934 fresh compilations. No matched benchmark/speedup or unique kernel-cause claim. Standalone final predicates are separate."
+  },
+  "v6_source_math_CPP_complete": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/roots-section-whole-alternative-20261030/v6/SOURCE-CPP-COMPLETE.json",
+  "remaining_math_CPP_gap_for_three_paths": null
+}

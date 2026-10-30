@@ -13,6 +13,7 @@ public import Aglib.Algebra.Category.FGModuleCat.ScalarAutomorphisms
 public import Aglib.Algebra.Category.FGModuleCat.ScalarExtension
 public import Aglib.Algebra.Category.FGModuleCat.ScalarMatrices
 public import Aglib.Algebra.Category.Grp.AllowedOrders
+public import Aglib.Algebra.Category.Grp.ExactSequenceConsequences
 public import Aglib.Algebra.Category.Grp.FiniteColimits
 public import Aglib.Algebra.Category.Grp.FinitelyGeneratedColimit
 public import Aglib.Algebra.Category.Grp.ProductSections
@@ -414,6 +415,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.NatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.Normalization
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryExchange
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryNatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OriginalUnitUniqueness
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionComparison
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionCycleSections
@@ -576,6 +578,8 @@ public import Aglib.Algebra.Homology.QuasiIso
 public import Aglib.Algebra.Homology.QuasiIso.Colimit
 public import Aglib.Algebra.Homology.QuasiIso.Transfinite
 public import Aglib.Algebra.Homology.RightDerived.Postcomp
+public import Aglib.Algebra.Homology.RightDerived.Postcomp.RepresentedSections
+public import Aglib.Algebra.Homology.RightDerived.Postcomp.UnitAssembly
 public import Aglib.Algebra.Homology.RightDerived.Represented
 public import Aglib.Algebra.Homology.Semicontinuity
 public import Aglib.Algebra.Homology.ShortComplex.Adjunction
@@ -2905,6 +2909,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnityInverseImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitZeroLocus
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient
@@ -5136,7 +5141,9 @@ public import Aglib.CategoryTheory.Abelian.CoproductKernelTransport
 public import Aglib.CategoryTheory.Abelian.CoproductKernels
 public import Aglib.CategoryTheory.Abelian.Ext.ClasswiseDimensionShift
 public import Aglib.CategoryTheory.Abelian.Ext.CoefficientSquare
+public import Aglib.CategoryTheory.Abelian.Ext.OriginalComparison
 public import Aglib.CategoryTheory.Abelian.Ext.SourceTransfer
+public import Aglib.CategoryTheory.Abelian.Ext.TransferConsequences
 public import Aglib.CategoryTheory.Abelian.Ext1.Equality
 public import Aglib.CategoryTheory.Abelian.Ext1.Extension
 public import Aglib.CategoryTheory.Abelian.Ext1.Representability
@@ -5364,6 +5371,8 @@ public import Aglib.CategoryTheory.Sites.Pullback.FlatCoefficients
 public import Aglib.CategoryTheory.Sites.Pullback.LocalDescription
 public import Aglib.CategoryTheory.Sites.Pullback.RepresentedTarget
 public import Aglib.CategoryTheory.Sites.PushforwardSections
+public import Aglib.CategoryTheory.Sites.Representable.SectionComparison
+public import Aglib.CategoryTheory.Sites.Representable.SectionComparisonValues
 public import Aglib.CategoryTheory.Sites.RepresentedTransfer.OverProducts
 public import Aglib.CategoryTheory.Sites.SectionsAdditive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.AllCovers
@@ -5436,7 +5445,9 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDia
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeConstancy
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeExtension
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.ConeRightTail
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.FixedSourceCohomology
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseNaturality
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseRectangle
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.InverseTransitions
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.OrdinaryTrianglePasting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.InjectiveDiagram.Reindex
@@ -5524,6 +5535,16 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Uniq
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.UniqueFamily
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Unit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Nsmul
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantCoherence
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantComposition
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.DerivedPullback
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ExtPullback
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.GeneratorZero
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Pullback
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.SourceCoherence
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Terminal
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.Zero
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Adjunction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Module
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Trace
@@ -5538,8 +5559,11 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Injectives
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Large
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Naturality
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Ordinary
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OriginalPullback
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.OverMap
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Restriction
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection
+public import Aglib.CategoryTheory.Sites.SheafCohomology.SourceSection.Transport
 public import Aglib.CategoryTheory.Sites.SheafCohomology.SplitTerminal
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Splitting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Terminal.Comparison

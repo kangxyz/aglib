@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramSquareSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackUnitTransport
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSectionsBase
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.SourceCoherence
 
 /-! # Original coefficient-square section maps on etale tests
 
@@ -205,18 +206,9 @@ lemma squareSectionEvaluation_of_unit {C : Type*} [Category* C]
     (φ : D ⟶ J) (z : B ⟶ J) (m : A ⟶ H)
     (hu : u ≫ v = e.inv ≫ d) (hm : m = d ≫ k)
     (hn : φ ≫ e'.inv = v ≫ k) (hz : z = u ≫ φ) :
-    m ≫ e'.hom = e.hom ≫ z := by
-  have hs : e.inv ≫ m = z ≫ e'.inv := by
-    calc
-      _ = e.inv ≫ (d ≫ k) := congrArg (fun q => e.inv ≫ q) hm
-      _ = (e.inv ≫ d) ≫ k := (Category.assoc _ _ _).symm
-      _ = (u ≫ v) ≫ k := congrArg (fun q => q ≫ k) hu.symm
-      _ = u ≫ (φ ≫ e'.inv) :=
-        (Category.assoc _ _ _).trans (congrArg (fun q => u ≫ q) hn.symm)
-      _ = (u ≫ φ) ≫ e'.inv := (Category.assoc _ _ _).symm
-      _ = _ := congrArg (fun q => q ≫ e'.inv) hz.symm
-  exact e'.eq_comp_inv.mp
-    ((e.inv_comp_eq.mp hs).trans (Category.assoc e.hom z e'.inv).symm)
+    m ≫ e'.hom = e.hom ≫ z :=
+  CategoryTheory.Functor.NaturalityTransport.sectionSquareEvaluation_of_unit
+    e e' v u d k φ z m hu hm hn hz
 
 /-- The original adjoint coefficient map restricted along a specified etale test. -/
 lemma adjointCoefficient_test {X S : Scheme.{u}} (f : S ⟶ X)

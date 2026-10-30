@@ -78,10 +78,7 @@ def galoisCechAmitsurIso :
   let r : ((conerve E L).op ⋙ algSpec (CommRingCat.of E)).rightOp ≅
       (cechNerveTerminalFrom
         ((algSpec (CommRingCat.of E)).obj (op (CommAlgCat.of E L)))).rightOp :=
-    { hom := q.inv.rightOp
-      inv := q.hom.rightOp
-      hom_inv_id := by rw [← NatTrans.rightOp_comp, Iso.hom_inv_id, NatTrans.rightOp_id]
-      inv_hom_id := by rw [← NatTrans.rightOp_comp, Iso.inv_hom_id, NatTrans.rightOp_id] }
+    (Functor.leftOpRightOpEquiv _ _).functor.mapIso q.symm.op
   let e₆ := (AlgebraicTopology.alternatingCofaceMapComplex AddCommGrpCat.{u + 1}).mapIso
     (Functor.isoWhiskerRight r Q)
   let e₇ := (AlgebraicTopology.alternatingCofaceMapComplex AddCommGrpCat.{u + 1}).mapIso

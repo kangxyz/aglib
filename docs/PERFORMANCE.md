@@ -105,6 +105,8 @@ Relative case separates a native kernel failure, formation-only probe and later
 source-bound module pass; it establishes no unique cause or controlled speedup.
 [Relative inverse rectangle follow-up](performance/cases/whole-original-comparison-laws/relative-follow-up/README.md).
 
+For dependent roots transport, retain the actual whole transport and its original constructor identity before coefficient evaluation; likewise retain the original whole section isomorphism before evaluating its component, and infer the literal endpoints. [Roots section transport follow-up](performance/cases/whole-original-comparison-laws/roots-section-follow-up/README.md) separates formation-only and profiled diagnostics from the final source-bound three-module pass; it establishes no unique kernel cause or controlled speedup.
+
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
 For a sheafified tensor associator, prove typed three-isomorphism cancellation

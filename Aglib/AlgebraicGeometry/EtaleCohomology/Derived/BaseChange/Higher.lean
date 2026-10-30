@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Basic
-public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryExchange
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryNatTrans
 
 /-!
 # The original higher base-change map through ordinary right-derived functors
@@ -87,18 +87,15 @@ variable
 
 /-- The original higher exchange on intrinsic ordinary right-derived functors. -/
 def higherBaseChangeMap (q : ℕ) :
-    higherDirectImage f q ⋙ inverseImage g ⟶ inverseImage g' ⋙ higherDirectImage f' q where
-  app F := Functor.ordinaryHigherExchangeApp
+    higherDirectImage f q ⋙ inverseImage g ⟶ inverseImage g' ⋙ higherDirectImage f' q := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
+  exact Functor.ordinaryHigherExchangeOfActualUnit
     (directImage f) (directImage f') (inverseImage g) (inverseImage g')
-    (baseChangeMap f f' g g' h) F q
-  naturality {F G} a := by
-    let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
-    let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
-    let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
-    let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
-    rw [← higherBaseChangeTransport_app_eq_ordinary f f' g g' h F q,
-      ← higherBaseChangeTransport_app_eq_ordinary f f' g g' h G q]
-    exact (higherBaseChangeMapFromDerived f f' g g' h q).naturality a
+    (baseChangeMap f f' g g' h) (derivedBaseChangeMap f f' g g' h)
+    (derivedBaseChangeMap_actualUnit f f' g g' h) q
 
 /-- Naturality of the original higher base change in the coefficient sheaf. -/
 @[reassoc]

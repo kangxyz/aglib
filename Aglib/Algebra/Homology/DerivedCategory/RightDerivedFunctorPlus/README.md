@@ -111,6 +111,12 @@ exchange-map invertibility, proper base change, or unbounded derived scope. The 
 the principal-owned selected integration checks passed. See the
 migration note for the exact claim boundary.
 
+
+[BaseChange/OrdinaryNatTrans](BaseChange/OrdinaryNatTrans.lean) is the shared
+ordinary natural-transformation interface consumed by the native higher
+base-change adapter. Its actual-unit premise and other hypotheses remain
+explicit in the public declarations.
+
 ## Scalar-forgetting exchange cubes
 
 `BaseChange/ExactIsoCube`, `ExactMateCube`, `MateCubeComponent` and

@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.Algebra.Category.Grp.Basic
+public import Mathlib.CategoryTheory.CommSq
 
 /-! # The original cohomology comparison commutes with base change
 
@@ -30,15 +31,9 @@ theorem functor_map_square_element {C : Type*} [Category* C]
     (a : H.obj A) (b : H.obj B) (c : H.obj C₀) (d : H.obj D)
     (h₁ : H.map e₁ a = b) (ht : H.map t a = c) (h₂ : H.map e₂ c = d) :
     H.map δ b = d := by
-  calc
-    H.map δ b = H.map δ (H.map e₁ a) := congrArg (H.map δ) h₁.symm
-    _ = H.map (e₁ ≫ δ) a := by
-      simpa only [AddCommGrpCat.comp_apply] using
-        (ConcreteCategory.congr_hom (H.map_comp e₁ δ) a).symm
-    _ = H.map (t ≫ e₂) a := congrArg (fun k => H.map k a) hsquare
-    _ = H.map e₂ (H.map t a) := by
-      simpa only [AddCommGrpCat.comp_apply] using
-        ConcreteCategory.congr_hom (H.map_comp t e₂) a
-    _ = d := (congrArg (H.map e₂) ht).trans h₂
+  have h := ConcreteCategory.congr_hom ((CommSq.mk hsquare).map H).w a
+  simp only [AddCommGrpCat.comp_apply] at h
+  exact (congrArg (H.map δ) h₁.symm).trans
+    (h.trans ((congrArg (H.map e₂) ht).trans h₂))
 
 end CategoryTheory

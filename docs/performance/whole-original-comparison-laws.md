@@ -23,3 +23,5 @@ retains the actual indexed family and rectangle equality through generic inverse
 cancellation. Its exact proposition-formation probe is distinct from the final
 two-module pass; neither timing establishes a matched speedup or unique kernel
 cause.
+
+The [roots-section follow-up](cases/whole-original-comparison-laws/roots-section-follow-up/README.md) retains the actual whole transport and section isomorphism before coefficient evaluation. Its formation-only probe, failed variants and profile remain distinct from the final three fresh source-bound passes.

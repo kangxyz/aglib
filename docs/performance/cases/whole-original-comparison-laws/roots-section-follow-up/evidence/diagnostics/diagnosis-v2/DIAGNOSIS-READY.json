@@ -1,0 +1,20 @@
+{
+  "question": "Separate formation of two exact original native propositions from their actual proof/kernel checking before next bounded repair.",
+  "status": "Prescribed diagnostic only, no production source edits/pass claim",
+  "actual_input": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/aglib/Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean",
+    "sha256": "bd1296653631711748c76009f8a8dca41e18d26905c00287aa2dde685b70f4b5",
+    "actual_failed_run": "remote-0970ceac18f94b9f863d265f50534576",
+    "source_prefix": "4bcd",
+    "diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-final-0970ceac/Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.SectionPullback.log"
+  },
+  "probe": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w13-remaining/performance/roots-section-native/diagnosis-v2/Formation.lean",
+    "sha256": "e8f6ca09f4cf3fec61c8ff67e928b532d05dfa05a517a903289c733360f1535a",
+    "meaning": "Only formation: rootsComposite_identity and sectionPullback_roots exact original result propositions are binders _original_statement; result True.intro checks no original proof. Same imports/namespace/universes and native hypotheses. No sorry/axiom or kernel bypass.",
+    "output": "One native-faithful compile of this scratch probe with scoped profiler (trace.profiler and threshold only if supported); retain timings/errors and setup/output identity."
+  },
+  "execution": "Use the actual native module setup from lake --no-build setup-file Aglib/AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean, including module name/isModule/imports/library options. Compile scratch probe under that exact --setup on matching prepared imports, default200000/trust/pins unchanged. No production .olean replacement, no nativebd unchanged CPP rerun, no independentclient/replay/fullforest; this is coupled compilation troubleshooting only.",
+  "accepted_input": "Newlower133 actualPASS3.048s and prior17/H1Section7633/Transporta1fb currentpassed providers retained.",
+  "ownership": "Source author W13 retains mathematical route and production repair; sole broker runtime. Return actualformation outcome directly."
+}

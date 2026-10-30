@@ -29,9 +29,11 @@ group is finite.
   class-difference calculus uses the original H¹ pullback and section
   coefficient isomorphism.
 - `KummerFamilyValues` identifies original fixed-coefficient section pullback
-  with original roots cohomology pullback, using the native roots composition
-  and inverse-image unit laws. Only the receiving scheme needs the displayed
-  geometric Galois-category point; the family need not be connected.
+  with original roots cohomology pullback through the
+  [native roots section producer](../Kummer/SectionPullback.lean) and the
+  [original roots composition laws](../Kummer/RootsComposition.lean). Only the
+  receiving scheme needs the displayed geometric Galois-category point; the
+  family need not be connected.
 
 ## Actual curve H1 consumers
 

@@ -16,6 +16,9 @@ Scheme geometry belongs to the corresponding scheme family.
 | [Basis acyclicity](BasisAcyclicity/Basic.lean) | Čech acyclicity on a cofinal cover basis gives positive represented-object Ext vanishing on basis objects, and original `Sheaf.H` vanishing when a terminal object lies in the basis. The quasicoherent étale family uses these generic suppliers. |
 | [Exact-sequence vanishing](Vanishing/ExactSequence.lean) | Original connecting homomorphisms transport supplied vanishing and surjectivity through actual short exact coefficient sequences. |
 | [Split complexes](Splitting.lean) | On any site, a split short complex `0 → A → B → C → 0` of abelian sheaves gives `Sheaf.H.splittingAddEquiv : H^n(B) ≃+ H^n(A) × H^n(C)` and `Sheaf.H.kerAddEquivOfSplitting : ker H^n(g) ≃+ H^n(A)`, with injective first map; sheafification and the Ext universe remain explicit. The consumer is the split square-zero unit sequence [Ring/Sheaf/SquareZeroSplitting](../../../Algebra/Category/Ring/Sheaf/SquareZeroSplitting.lean). |
+| [Original sections](OriginalSections.lean) | Shared original-section construction and its [pullback](OriginalSections/Pullback.lean), [derived](OriginalSections/DerivedPullback.lean), [Ext](OriginalSections/ExtPullback.lean), terminal and coherence companions; native pullback adapters import this layer. |
+| [Source sections](SourceSection.lean) | Original source-section interface and [transport](SourceSection/Transport.lean), used by the native section-pullback comparisons. |
+| [Fixed-source diagrams](Continuity/InjectiveDiagram/FixedSourceCohomology.lean) | Fixed-source cohomology and the [inverse rectangle](Continuity/InjectiveDiagram/InverseRectangle.lean) on the supplied original diagram. |
 
 [Global/Comparison](Global/Comparison.lean) defines intrinsic additive global
 sections represented by the original constant-integer sheaf and compares their

@@ -1,0 +1,24 @@
+{
+  "run": "remote-d645301c3ea44c46a7d3a16d8e95b66c",
+  "source": "1647aa8d1d19a3ad8c40017f9968a40edd1ca191f79b22efcb206f6bcecbbfee",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d645301c3ea44c46a7d3a16d8e95b66c/receipt.json",
+  "log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-a/remote-runs/remote-d645301c3ea44c46a7d3a16d8e95b66c/build.log",
+  "exit_code": 1,
+  "group_closed": true,
+  "source_sha256": "b3959ba0a92305851ac721563946122f07e0b5bf1fbcaf068b172376dbc48ab1",
+  "outcomes": [
+    {
+      "cut": "rootsCongr_value_cut",
+      "observed": "Enabled defProp linter rejection; no clean pass claimed."
+    },
+    {
+      "cut": "rootsIdentity_value_cut",
+      "observed": "Enabled defProp linter rejection; no clean pass claimed."
+    },
+    {
+      "cut": "rootsComposite_inferred_cut",
+      "observed": "Actual kernel deterministic timeout at74; no unknown-constant cascade reported."
+    }
+  ],
+  "limits": "Proof-value definitions parsed and inferred, but input declarations are not clean accepted results because normal defProp rejects them. Do not infer original theorem closure, a public-header-only cause, or an exact kernel conversion pair. Linters remain enabled."
+}

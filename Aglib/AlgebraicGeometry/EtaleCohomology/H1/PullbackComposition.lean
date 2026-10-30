@@ -9,6 +9,7 @@ module
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackCoherence
+public import Aglib.CategoryTheory.Sites.SheafCohomology.OriginalSections.ConstantCoherence
 
 /-! Composition of actual étale H¹ pullback, including the constant transport.
 
@@ -64,8 +65,9 @@ abbrev inverseImageAdjunction {X S : Scheme.{u}} (f : S ⟶ X) :
 /-- Global sections commute with actual direct image via terminal transport. -/
 def directImageGlobalSectionsIso {X S : Scheme.{u}} (f : S ⟶ X) :
     directImage f ⋙ globalSections X ≅ globalSections S :=
-  NatIso.ofComponents (fun L => L.obj.mapIso (siteBaseChangeTerminalIso f).symm.op)
-    (fun q => (q.hom.naturality (siteBaseChangeTerminalIso f).inv.op).symm)
+  Sheaf.OriginalSections.terminalSectionsIso
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
+    (siteBaseChange f) (siteBaseChangeTerminalIso f)
 
 /-- An adjunction-mate description with a fixed terminal object at every base. -/
 def inverseImageConstantCanonicalIso {X S : Scheme.{u}} (f : S ⟶ X) :
@@ -76,27 +78,12 @@ def inverseImageConstantCanonicalIso {X S : Scheme.{u}} (f : S ⟶ X) :
 
 /-- The fixed-terminal mate is the already constructed constant-sheaf transport. -/
 theorem inverseImageConstantCanonicalIso_eq {X S : Scheme.{u}} (f : S ⟶ X) :
-    inverseImageConstantCanonicalIso f = inverseImageConstantIso f := by
-  apply Iso.ext
-  apply NatTrans.ext
-  funext A
-  let cAdj := constantAdjunction X
-  let adj := inverseImageAdjunction f
-  let targetAdj := constantSheafAdj (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
+    inverseImageConstantCanonicalIso f = inverseImageConstantIso f :=
+  Sheaf.OriginalSections.terminalConstantCanonical_eq
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) AddCommGrpCat.{u + 1}
+    (siteBaseChange f) (etaleTerminalIsTerminal X) (etaleTerminalIsTerminal S)
     ((etaleTerminalIsTerminal X).isTerminalObj (siteBaseChange f))
-  apply ((cAdj.comp adj).homEquiv _ _).injective
-  refine Eq.trans (unit_conjugateEquiv_symm (constantAdjunction S)
-    (cAdj.comp adj) (directImageGlobalSectionsIso f).inv A).symm ?_
-  refine Eq.trans ?_ (Adjunction.homEquiv_leftAdjointUniq_hom_app
-    (cAdj.comp adj) targetAdj A).symm
-  change (toSheafify (Scheme.smallEtaleTopology S) ((Functor.const S.Etaleᵒᵖ).obj A)).app
-      (op (etaleTerminal S)) ≫
-    (sheafify (Scheme.smallEtaleTopology S) ((Functor.const S.Etaleᵒᵖ).obj A)).map
-      (siteBaseChangeTerminalIso f).hom.op =
-    (toSheafify (Scheme.smallEtaleTopology S) ((Functor.const S.Etaleᵒᵖ).obj A)).app
-      (op ((siteBaseChange f).obj (etaleTerminal X)))
-  exact ((toSheafify (Scheme.smallEtaleTopology S) ((Functor.const S.Etaleᵒᵖ).obj A)).naturality
-    (siteBaseChangeTerminalIso f).hom.op).symm.trans (Category.id_comp _)
+    (inverseImage f) (inverseImageAdjunction f)
 
 /-- Actual direct-image composition induced by base change of test schemes. -/
 def directImageCompIso {X S T : Scheme.{u}} (f : S ⟶ X) (g : T ⟶ S) :
@@ -112,19 +99,12 @@ theorem directImageGlobalSectionsIso_comp {X S T : Scheme.{u}}
       directImageGlobalSectionsIso g =
     (Functor.associator (directImage g) (directImage f) (globalSections X)).symm ≪≫
       Functor.isoWhiskerRight (directImageCompIso f g) (globalSections X) ≪≫
-        directImageGlobalSectionsIso (g ≫ f) := by
-  apply Iso.ext
-  apply NatTrans.ext
-  funext L
-  change L.obj.map ((siteBaseChange g).map (siteBaseChangeTerminalIso f).inv).op ≫
-      L.obj.map (siteBaseChangeTerminalIso g).inv.op =
-    L.obj.map ((siteBaseChangeComp f g).hom.app (etaleTerminal X)).op ≫
-      L.obj.map (siteBaseChangeTerminalIso (g ≫ f)).inv.op
-  rw [← L.obj.map_comp, ← L.obj.map_comp]
-  apply congrArg L.obj.map
-  exact congrArg Quiver.Hom.op
-    ((((etaleTerminalIsTerminal X).isTerminalObj (siteBaseChange f)).isTerminalObj
-      (siteBaseChange g)).hom_ext _ _)
+        directImageGlobalSectionsIso (g ≫ f) :=
+  Sheaf.OriginalSections.terminalSectionsIso_comp
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology T)
+    AddCommGrpCat.{u + 1} (siteBaseChange f) (siteBaseChange g) (siteBaseChange (g ≫ f))
+    (siteBaseChangeComp f g) (siteBaseChangeTerminalIso f) (siteBaseChangeTerminalIso g)
+    (siteBaseChangeTerminalIso (g ≫ f)) (etaleTerminalIsTerminal T)
 
 /-- The actual inverse-image composition is compatible with constant sheaves. -/
 theorem inverseImageComp_constant {X S T : Scheme.{u}}
@@ -133,23 +113,16 @@ theorem inverseImageComp_constant {X S T : Scheme.{u}}
         ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) ≫
       (inverseImage g).map ((inverseImageConstantIso f).hom.app A) ≫
         (inverseImageConstantIso g).hom.app A =
-      (inverseImageConstantIso (g ≫ f)).hom.app A := by
-  have h := Adjunction.leftAdjointCompIso_assoc
-    (constantAdjunction X) (inverseImageAdjunction f) (inverseImageAdjunction g)
-    (constantAdjunction S) (inverseImageAdjunction (g ≫ f)) (constantAdjunction T)
-    (directImageGlobalSectionsIso f) (directImageCompIso f g)
-    (directImageGlobalSectionsIso (g ≫ f)) (directImageGlobalSectionsIso g)
+      (inverseImageConstantIso (g ≫ f)).hom.app A :=
+  Adjunction.originalSource_comp (constantAdjunction X) (constantAdjunction S)
+    (constantAdjunction T)
+    (inverseImageAdjunction f) (inverseImageAdjunction g) (inverseImageAdjunction (g ≫ f))
+    (directImageGlobalSectionsIso f) (directImageGlobalSectionsIso g)
+    (directImageGlobalSectionsIso (g ≫ f)) (directImageCompIso f g)
     (directImageGlobalSectionsIso_comp f g)
-  have hA := congrArg (fun e => e.hom.app A) h
-  change (inverseImageComp f g).inv.app
-      ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) ≫
-      (inverseImageConstantCanonicalIso (g ≫ f)).hom.app A =
-    (inverseImage g).map ((inverseImageConstantCanonicalIso f).hom.app A) ≫
-      (inverseImageConstantCanonicalIso g).hom.app A at hA
-  rw [inverseImageConstantCanonicalIso_eq, inverseImageConstantCanonicalIso_eq,
-    inverseImageConstantCanonicalIso_eq] at hA
-  rw [← hA]
-  simp
+    (inverseImageConstantIso f) (inverseImageConstantIso g) (inverseImageConstantIso (g ≫ f))
+    (inverseImageConstantCanonicalIso_eq f).symm (inverseImageConstantCanonicalIso_eq g).symm
+    (inverseImageConstantCanonicalIso_eq (g ≫ f)).symm (inverseImageComp f g) rfl A
 
 /-- Inverse constant transports satisfy the corresponding composition formula. -/
 theorem inverseImageComp_constant_inv {X S T : Scheme.{u}}
@@ -158,12 +131,16 @@ theorem inverseImageComp_constant_inv {X S T : Scheme.{u}}
       (inverseImageComp f g).hom.app
         ((constantSheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1}).obj A) =
     (inverseImageConstantIso g).inv.app A ≫
-      (inverseImage g).map ((inverseImageConstantIso f).inv.app A) := by
-  apply (cancel_mono ((inverseImage g).map ((inverseImageConstantIso f).hom.app A) ≫
-    (inverseImageConstantIso g).hom.app A)).mp
-  simp only [Category.assoc]
-  rw [inverseImageComp_constant]
-  simp [← Functor.map_comp_assoc]
+      (inverseImage g).map ((inverseImageConstantIso f).inv.app A) :=
+  Adjunction.originalSource_comp_inv (constantAdjunction X) (constantAdjunction S)
+    (constantAdjunction T)
+    (inverseImageAdjunction f) (inverseImageAdjunction g) (inverseImageAdjunction (g ≫ f))
+    (directImageGlobalSectionsIso f) (directImageGlobalSectionsIso g)
+    (directImageGlobalSectionsIso (g ≫ f)) (directImageCompIso f g)
+    (directImageGlobalSectionsIso_comp f g)
+    (inverseImageConstantIso f) (inverseImageConstantIso g) (inverseImageConstantIso (g ≫ f))
+    (inverseImageConstantCanonicalIso_eq f).symm (inverseImageConstantCanonicalIso_eq g).symm
+    (inverseImageConstantCanonicalIso_eq (g ≫ f)).symm (inverseImageComp f g) rfl A
 
 section Cohomology
 universe w w' w''
@@ -177,19 +154,13 @@ coefficient identification. -/
 theorem h1Pullback_comp (f : S ⟶ X) (g : T ⟶ S)
     (L : AbelianSheaf.{u, u + 1} X) (a : H1Etale X L) :
     coefficientMap ((inverseImageComp f g).hom.app L) (h1Pullback (g ≫ f) L a) =
-      h1Pullback g ((inverseImage f).obj L) (h1Pullback f L a) := by
-  change ((Abelian.Ext.mk₀ _).comp (a.mapExactFunctor (inverseImage (g ≫ f)))
-      (zero_add 1)).comp (Abelian.Ext.mk₀ ((inverseImageComp f g).hom.app L)) (add_zero 1) =
-    (Abelian.Ext.mk₀ _).comp
-      (((Abelian.Ext.mk₀ _).comp (a.mapExactFunctor (inverseImage f))
-        (zero_add 1)).mapExactFunctor (inverseImage g)) (zero_add 1)
-  rw [Abelian.Ext.comp_assoc_of_third_deg_zero,
-    Abelian.Ext.mapExactFunctor_comp_mk₀_natTransApp,
-    Abelian.Ext.comp_mapExactFunctor, Abelian.Ext.mapExactFunctor_comp,
-    Abelian.Ext.mapExactFunctor_mk₀]
-  rw [Abelian.Ext.mk₀_comp_mk₀_assoc, Abelian.Ext.mk₀_comp_mk₀_assoc]
-  congr 2
-  exact inverseImageComp_constant_inv f g _
+      h1Pullback g ((inverseImage f).obj L) (h1Pullback f L a) :=
+  Functor.extPrecompMap_comparison (inverseImage f) (inverseImage g)
+    (inverseImage (g ≫ f)) (inverseImageComp f g)
+    ((inverseImageConstantIso f).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    ((inverseImageConstantIso g).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    ((inverseImageConstantIso (g ≫ f)).inv.app (AddCommGrpCat.of (ULift.{u + 1} ℤ)))
+    (inverseImageComp_constant_inv f g _) L 1 a
 
 end Cohomology
 end AlgebraicGeometry.Scheme.EtaleCohomology
