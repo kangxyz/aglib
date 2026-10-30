@@ -56,10 +56,16 @@ variable {I : Type uI} [Category.{vI} I]
 The two laws concern the right-adjoint comparisons themselves, before choosing
 any coefficient system or any cocone of coefficient maps. -/
 structure AdjunctionData.Cone where
+  /-- The functors from each stage category to the apex category. -/
   left : ∀ i, A i ⥤ B
+  /-- The functors from the apex category to each stage category. -/
   right : ∀ i, B ⥤ A i
+  /-- The adjunction between the left and right functors at each stage. -/
   adj : ∀ i, left i ⊣ right i
+  /-- The comparison of an apex left functor with transport along a stage transition. -/
   leftTriangle : ∀ {i j : I} (a : i ⟶ j), left i ≅ D.left a ⋙ left j
+  /-- The comparison of an apex right functor followed by a stage right transition
+  with the earlier apex right functor. -/
   rightTriangle : ∀ {i j : I} (a : i ⟶ j), right j ⋙ D.right a ≅ right i
   conjugate : ∀ {i j : I} (a : i ⟶ j),
     conjugateEquiv ((D.adj a).comp (adj j)) (adj i) (leftTriangle a).hom =

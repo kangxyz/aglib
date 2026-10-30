@@ -54,7 +54,7 @@ def canonicalHomCoconeIsColimit
     (A : BoundedPresentation.Coefficient X n)
     (hA : BoundedPresentation.finiteColimitStages X n A) :
     IsColimit ((coyoneda.obj (op A)).mapCocone c) :=
-  AdjointStageHom.homCoconeIsColimit_of_finiteColimitClosure
+  AdjointStageHom.homCoconeIsColimitOfFiniteColimitClosure
     (BoundedPresentation.generators X n) c (by
       intro B hB
       exact Classical.choice (by

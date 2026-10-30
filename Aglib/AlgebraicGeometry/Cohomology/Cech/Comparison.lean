@@ -397,7 +397,6 @@ theorem resolutionSectionsCohomologyEquiv_mk (n : ℕ) (s : resolutionSectionCyc
   TopCat.Sheaf.Cech.resolutionSectionsCohomologyEquiv_mk (X := X.toTopCat) R n s
 
 /-- The cycle-class formula with the canonical quotient coercion on the left. -/
-@[simp]
 theorem resolutionSectionsCohomologyEquiv_coe (n : ℕ)
     (s : resolutionSectionCycles R (n + 1)) :
     resolutionSectionsCohomologyEquiv R n
@@ -543,7 +542,7 @@ abbrev additiveCechColumnAugmentation :
       additiveCechResolution U R :=
   TopCat.Sheaf.Cech.additiveCechColumnAugmentation (X := X.toTopCat) U R
 
-@[simp] theorem additiveCechColumnAugmentation_f_zero (p : ℕ) :
+theorem additiveCechColumnAugmentation_f_zero (p : ℕ) :
     ((additiveCechColumnAugmentation U R).f p).f 0 =
       ((additiveCechFunctor X U).map (R.ι.f 0)).f p :=
   TopCat.Sheaf.Cech.additiveCechColumnAugmentation_f_zero (X := X.toTopCat) U R p
@@ -696,7 +695,7 @@ abbrev moduleCechResolutionHomologyIso (n : ℕ) :
   TopCat.Sheaf.Cech.additiveCechResolutionHomologyIso (X := X.toTopCat) U R hcover
     (fun p a n => additiveResolution_sections_exact_of_isAffineOpen M R _ (haff p a) n) n
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem moduleCechResolutionHomologyIso_hom_comp (n : ℕ) :
     (moduleCechResolutionHomologyIso U M R hcover haff n).hom ≫
       homologyMap (additiveResolutionSectionsToTotal U R) n =

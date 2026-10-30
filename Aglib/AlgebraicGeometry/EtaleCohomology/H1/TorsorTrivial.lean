@@ -58,7 +58,7 @@ theorem torsorExtClass_eq_zero_of_section : torsorExtClass P = 0 :=
   CategoryTheory.Sheaf.torsorExtClass_eq_zero_of_globalPoint P
     ((Topos.globalPointTerminalEquiv (etaleTerminalIsTerminal X) P.carrier).symm s)
 
-@[simp] theorem torsorExtClass_trivial (L : AbelianSheaf.{u, u + 1} X) :
+theorem torsorExtClass_trivial (L : AbelianSheaf.{u, u + 1} X) :
     torsorExtClass (trivialTorsor L) = 0 :=
   CategoryTheory.Sheaf.torsorExtClass_trivial L
 

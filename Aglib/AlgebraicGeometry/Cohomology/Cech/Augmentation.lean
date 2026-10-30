@@ -33,7 +33,7 @@ variable (X : Scheme.{u}) {ι : Type u} (U : ι → X.Opens)
 /-- Restriction of global sections to all degree-zero Cech intersections. -/
 abbrev cechAugmentationZero := TopCat.Sheaf.Cech.cechAugmentationZero X.toTopCat U P
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem cechAugmentationZero_π (a : Fin 1 → ι) :
     cechAugmentationZero X U P ≫
       Pi.π (fun b : Fin 1 → ι => P.obj (op (∏ᶜ fun i => U (b i)))) a =
@@ -49,7 +49,7 @@ variable [HasZeroObject A]
 /-- The original cochain augmentation is the topological construction. -/
 abbrev cechAugmentation := TopCat.Sheaf.Cech.cechAugmentation X.toTopCat U P
 
-@[simp] theorem cechAugmentation_f_zero :
+theorem cechAugmentation_f_zero :
     (cechAugmentation X U P).f 0 = cechAugmentationZero X U P :=
   TopCat.Sheaf.Cech.cechAugmentation_f_zero X.toTopCat U P
 

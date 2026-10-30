@@ -251,6 +251,10 @@ The [curve representability interface](../Curves/RelativePicard/Representability
 remains an input to the prescribed-origin genus-one construction.
 [PowerRoot](PowerRoot.lean), [PowerDescent](PowerDescent.lean) and
 [FrameTorsor](FrameTorsor.lean) describe actual root, descent and frame objects.
+[AssociatedBundle](AssociatedBundle.lean) uses
+`AssociatedBundle.Construction.frameRawHomNative` for the original raw-frame map
+at the native line-bundle object; its identity-character compatibility API
+delegates to the same character construction.
 
 [Tangent/Thickening](Tangent/Thickening.lean), [Tangent/Generator](Tangent/Generator.lean) and
 [Tangent/DualNumbers](Tangent/DualNumbers.lean) give the algebraic core of the tangent space

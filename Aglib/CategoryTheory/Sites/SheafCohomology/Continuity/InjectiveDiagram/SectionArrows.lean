@@ -32,7 +32,9 @@ variable {J : Type uJ} [Category.{vJ} J]
 /-- Actual section functors and their original pullbacks, with structural laws
 before any coefficient square, indexing diagram or cone is chosen. -/
 structure Sections where
+  /-- The section functor on each stage category. -/
   value : ∀ j, A j ⥤ V
+  /-- The natural map from sections at a stage to sections after the left transition. -/
   pullback : ∀ {i j : J} (a : i ⟶ j), value i ⟶ D.left a ⋙ value j
   id : ∀ (i : J) (F : A i),
     (pullback (𝟙 i)).app F ≫ (value i).map ((D.leftIdIso i).hom.app F) = 𝟙 _

@@ -111,11 +111,9 @@ theorem ofEquivalence_directImage (e : E ≌ F) :
 theorem ofEquivalence_adjunction (e : E ≌ F) :
     adjunction (ofEquivalence e) = e.symm.toAdjunction := rfl
 
-@[simp]
 theorem ofEquivalence_unit (e : E ≌ F) :
     (adjunction (ofEquivalence e)).unit = e.counitInv := rfl
 
-@[simp]
 theorem ofEquivalence_counit (e : E ≌ F) :
     (adjunction (ofEquivalence e)).counit = e.unitInv := rfl
 

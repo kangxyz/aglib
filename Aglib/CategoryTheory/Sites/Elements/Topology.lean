@@ -42,7 +42,6 @@ def homMk {a b : Site A} (f : (projection A).obj a ⟶ (projection A).obj b)
     (h : A.map f.op b.unop.val = a.unop.val) : a ⟶ b :=
   (Functor.Elements.homMk f.op h).op
 
-@[simp]
 lemma projection_map_homMk {a b : Site A}
     (f : (projection A).obj a ⟶ (projection A).obj b)
     (h : A.map f.op b.unop.val = a.unop.val) :
@@ -58,7 +57,6 @@ lemma hom_ext {a b : Site A} {f g : a ⟶ b}
 instance : (projection A).Faithful where
   map_injective := fun h => hom_ext A h
 
-@[simp]
 lemma map_val {a b : Site A} (f : a ⟶ b) :
     A.map ((projection A).map f).op b.unop.val = a.unop.val := f.unop.map_val
 
@@ -71,11 +69,9 @@ def lift (a : Site A) {X : C} (f : X ⟶ (projection A).obj a) :
     liftObj A a f ⟶ a :=
   homMk A f rfl
 
-@[simp]
 lemma projection_obj_liftObj (a : Site A) {X : C} (f : X ⟶ (projection A).obj a) :
     (projection A).obj (liftObj A a f) = X := rfl
 
-@[simp]
 lemma projection_map_lift (a : Site A) {X : C} (f : X ⟶ (projection A).obj a) :
     (projection A).map (lift A a f) = f := rfl
 
@@ -116,7 +112,6 @@ lemma fromLift_comp {a b : Site A} (g : b ⟶ a) :
   change (𝟙 _) ≫ (projection A).map g = (projection A).map g
   exact Category.id_comp _
 
-@[simp]
 lemma toLift_comp {a b : Site A} (g : b ⟶ a) :
     toLift A g ≫ lift A a ((projection A).map g) = g := by
   apply hom_ext A

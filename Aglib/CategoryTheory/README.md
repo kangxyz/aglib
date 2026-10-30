@@ -21,6 +21,11 @@ universal natural comparison; it asserts no comparison-isomorphism theorem.
 provides endpoint equality transport, while cancellation and reassociation use
 the existing Mathlib API.
 
+[Filtered/AdjointStageHom](Filtered/AdjointStageHom.lean) supplies
+`AdjointStageHom.homCoconeIsColimitOfFiniteColimitClosure`: the fixed-cocone Hom
+universal property extends from a supplied object property to its finite-colimit
+closure under the displayed filteredness and generator hypotheses.
+
 Focused interface guides: [Effective epimorphisms over a base](EffectiveEpi/README.md).
 
 [ObjectProperty/Yoneda](ObjectProperty/Yoneda.lean) tests morphisms on the objects of a property

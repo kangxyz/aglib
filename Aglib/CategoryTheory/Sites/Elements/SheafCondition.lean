@@ -302,6 +302,7 @@ variable {C : Type u} [Category.{v} C] (A : Cᵒᵖ ⥤ Type v)
 /-- The native costructured-arrow presentation used by the existing sigma functor. -/
 abbrev CostructuredSite := CostructuredArrow yoneda A
 
+/-- The native projection from the costructured-arrow presentation to the original site. -/
 abbrev costructuredProjection : CostructuredSite A ⥤ C :=
   CostructuredArrow.proj yoneda A
 
@@ -311,7 +312,6 @@ abbrev costructuredTopology (J : GrothendieckTopology C) :
   (Functor.Elements.costructuredArrowYonedaEquivalence A).inverse.inducedTopology
     (topology A J)
 
-@[simp]
 lemma mem_costructuredTopology_iff (J : GrothendieckTopology C)
     {a : CostructuredSite A} (S : Sieve a) :
     S ∈ costructuredTopology A J a ↔

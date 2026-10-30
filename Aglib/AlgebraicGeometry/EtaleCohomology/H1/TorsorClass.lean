@@ -116,7 +116,7 @@ theorem torsorExtClass_iso {Q : Torsor L} (e : Torsor.Iso P Q) : torsorExtClass 
 abbrev torsorClassToH1 (L : AbelianSheaf.{u, u + 1} X) : TorsorClass L → H1Etale X L :=
   CategoryTheory.Sheaf.torsorClassToH1 L
 
-@[simp] theorem torsorClassToH1_mk (P : Torsor L) :
+theorem torsorClassToH1_mk (P : Torsor L) :
     torsorClassToH1 L (Quotient.mk (Torsor.isomorphicSetoid L) P) = torsorExtClass P :=
   CategoryTheory.Sheaf.torsorClassToH1_mk P
 

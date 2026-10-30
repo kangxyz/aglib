@@ -5,6 +5,11 @@ all-degree finite-constant restriction surjectivity for finite schemes over
 the native projective line of a strictly henselian local ring. Coefficients
 have value universe `u+1`; source and target Ext universes remain independent.
 
+[GenericDirectImageDivisibility](GenericDirectImageDivisibility.lean) retains
+independent source and target Ext universes for the original generic
+direct-image scalar bijectivity theorem; its ordinary cohomological statement
+requires no derived-category model.
+
 ## Strictly local endpoint
 
 [StrictlyLocalComparison](StrictlyLocalComparison.lean) proves

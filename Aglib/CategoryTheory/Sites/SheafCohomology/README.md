@@ -58,6 +58,10 @@ composition and coefficient naturality are proved from the system data.
 The additive, exactness, source-cartesianness and independent Ext-universe
 hypotheses remain explicit. The actual small-etale cohomology diagram
 specializes this constructor.
+[RepresentedDiagram/ExactSequences](Continuity/RepresentedDiagram/ExactSequences.lean)
+constructs `Functor.extPrecompMapConnectingComplexHom`, the morphism of native
+represented Ext connecting fragments induced by the given exact functor, source
+map and short-complex morphism.
 [SchemeSystemColimits](Continuity/SchemeSystemColimits.lean) proves the
 identity-arrow diagonal final. For a filtered index, supplied tail colimits
 and an outer colimit compute the actual arrow and diagonal colimits, retaining

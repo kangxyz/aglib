@@ -144,13 +144,13 @@ def liftAdditiveTransportForgetIso :
       rfl)
 
 /-- The comparison's forward map uses exactly the specified inverse value equivalence. -/
-@[simp] theorem liftAdditiveTransportForgetIso_hom_app (T : Cᵒᵖ)
+theorem liftAdditiveTransportForgetIso_hom_app (T : Cᵒᵖ)
     (s : ULift.{u + 1} (A T.unop)) :
     (liftAdditiveTransportForgetIso P A e r hr).hom.app T s =
       ULift.up ((e T.unop).symm s.down) := rfl
 
 /-- The comparison's inverse uses exactly the specified forward value equivalence. -/
-@[simp] theorem liftAdditiveTransportForgetIso_inv_app (T : Cᵒᵖ)
+theorem liftAdditiveTransportForgetIso_inv_app (T : Cᵒᵖ)
     (s : ULift.{u + 1} (P.obj T)) :
     (liftAdditiveTransportForgetIso P A e r hr).inv.app T s =
       ULift.up (e T.unop s.down) := rfl

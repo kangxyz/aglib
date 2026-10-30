@@ -28,7 +28,6 @@ is invertible on every internally torsion sheaf. -/
 theorem natTrans_isIso_of_isTorsion
     {C : Type u} [Category.{v} C] {D : Type uD} [Category.{vD} D]
     {J : GrothendieckTopology C} [HasSheafify J AddCommGrpCat.{w}]
-    [HasColimitsOfShape ℕ D]
     (L R : Sheaf J AddCommGrpCat.{w} ⥤ D) (α : L ⟶ R)
     [PreservesColimitsOfShape ℕ L] [PreservesColimitsOfShape ℕ R]
     (hbounded : ∀ (n : ℕ), n ≠ 0 →

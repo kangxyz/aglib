@@ -62,25 +62,45 @@ structure SourceCoherenceData
     (X₁ : Type uX₁) [Category.{vX₁} X₁]
     (X₂ : Type uX₂) [Category.{vX₂} X₂]
     (I₀ : Type uI₀) (I₁ : Type uI₁) (I₂ : Type uI₂) where
+  /-- The functor from the first source category to the first target category. -/
   F₀ : S₀ ⥤ X₀
+  /-- The functor from the middle source category to the middle target category. -/
   F₁ : S₁ ⥤ X₁
+  /-- The functor from the last source category to the last target category. -/
   F₂ : S₂ ⥤ X₂
+  /-- The first transition between source categories. -/
   G₁ : S₀ ⥤ S₁
+  /-- The second transition between source categories. -/
   G₂ : S₁ ⥤ S₂
+  /-- The first transition between target categories. -/
   H₁ : X₀ ⥤ X₁
+  /-- The second transition between target categories. -/
   H₂ : X₁ ⥤ X₂
+  /-- The specified composite transition between the endpoint source categories. -/
   G₁₂ : S₀ ⥤ S₂
+  /-- The specified composite transition between the endpoint target categories. -/
   H₁₂ : X₀ ⥤ X₂
+  /-- The indexed family of functors between the endpoint categories. -/
   T : I₀ → S₀ ⥤ X₂
+  /-- The indexed family of functors from the first source to the middle target. -/
   P : I₁ → S₀ ⥤ X₁
+  /-- The indexed family of functors from the middle source to the last target. -/
   Q : I₂ → S₁ ⥤ X₂
+  /-- The index map for comparisons with `G₁` followed by a member of `Q`. -/
   post : I₂ → I₀
+  /-- The index map for comparisons with a member of `P` followed by `H₂`. -/
   pre : I₁ → I₀
+  /-- The index of the initial endpoint comparison. -/
   a₀ : I₀
+  /-- The index of the final endpoint comparison. -/
   a₅ : I₀
+  /-- The index of the initial comparison in the `P` family. -/
   p₀ : I₁
+  /-- The index of the final comparison in the `P` family. -/
   p₁ : I₁
+  /-- The index of the initial comparison in the `Q` family. -/
   q₀ : I₂
+  /-- The index of the final comparison in the `Q` family. -/
   q₁ : I₂
   first_eq : p₀ = p₁
   second_eq : q₀ = q₁
@@ -88,15 +108,25 @@ structure SourceCoherenceData
   middle_eq : post q₁ = pre p₀
   finish_eq : a₅ = pre p₁
   outer_eq : a₀ = a₅
+  /-- The comparison between the specified source transition and its two factors. -/
   cG : G₁₂ ≅ G₁ ⋙ G₂
+  /-- The comparison between the specified target transition and its two factors. -/
   cH : H₁₂ ≅ H₁ ⋙ H₂
+  /-- The initial endpoint comparison with the composite source transition. -/
   cOuter : T a₀ ≅ G₁₂ ⋙ F₂
+  /-- The initial `Q` comparison with the second source transition. -/
   cQ₀ : Q q₀ ≅ G₂ ⋙ F₂
+  /-- The final `Q` comparison with the second target transition. -/
   cQ₁ : Q q₁ ≅ F₁ ⋙ H₂
+  /-- The initial `P` comparison with the first source transition. -/
   cP₀ : P p₀ ≅ G₁ ⋙ F₁
+  /-- The final `P` comparison with the first target transition. -/
   cP₁ : P p₁ ≅ F₀ ⋙ H₁
+  /-- The comparisons of the indexed endpoint functors with `G₁` followed by `Q`. -/
   cQ : ∀ k, T (post k) ≅ G₁ ⋙ Q k
+  /-- The comparisons of the indexed endpoint functors with `P` followed by `H₂`. -/
   cP : ∀ k, T (pre k) ≅ P k ⋙ H₂
+  /-- The final endpoint comparison with the composite target transition. -/
   cFinish : T a₅ ≅ F₀ ⋙ H₁₂
 
 namespace SourceCoherenceData

@@ -128,13 +128,13 @@ abbrev torsorAdjunctionMiddle : (torsorExtension P).X₂ ⟶ (directImage f).obj
   CategoryTheory.Sheaf.torsorAdjunctionMiddle (siteBaseChange f) r
 
 /-- The coefficient square of the actual direct-image extension map. -/
-@[simp] theorem torsorAdjunctionMiddle_inclusion :
+theorem torsorAdjunctionMiddle_inclusion :
     (torsorExtension P).f ≫ torsorAdjunctionMiddle f r =
       q ≫ (directImage f).map (torsorExtension Q).f :=
   CategoryTheory.Sheaf.torsorAdjunctionMiddle_inclusion (siteBaseChange f) r
 
 /-- The free generators have their prescribed images in the target extension. -/
-@[simp] theorem torsorAdjunctionMiddle_free :
+theorem torsorAdjunctionMiddle_free :
     pushout.inl (torsorKernelSheafInclusion P) (torsorDifferenceSheafMap P) ≫
       torsorAdjunctionMiddle f r = torsorFreeLiftSheaf P (torsorAdjunctionSetLift f r) :=
   CategoryTheory.Sheaf.torsorAdjunctionMiddle_free (siteBaseChange f) r

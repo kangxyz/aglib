@@ -368,7 +368,6 @@ abbrev trivializationOfSection (P : Torsor L) (hT : IsTerminal T)
   P.trivializationOfGlobalPoint ((Topos.globalPointTerminalEquiv hT P.carrier).symm s)
 
 /-- The specialized global point has exactly the original terminal-section restrictions. -/
-@[simp]
 theorem trivializationOfSection_point_restrict (P : Torsor L) (hT : IsTerminal T)
     (s : P.carrier.obj.obj (op T)) (U : Cᵒᵖ) :
     (Topos.globalPointSectionsEquiv P.carrier

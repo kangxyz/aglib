@@ -33,10 +33,6 @@ attribute [local instance] hasSheafifyLarge
 actual postfunctor. The identity functor is the original comparison itself;
 a chart inverse image is precisely its local test. -/
 def higherExchangeTest {X S X' S' T : Scheme.{u}}
-    [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X)]
-    [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S)]
-    [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X')]
-    [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S')]
     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
     (h : f' ≫ g = g' ≫ f)
     (E : AbelianSheaf.{u, u + 1} S' ⥤ AbelianSheaf.{u, u + 1} T)
@@ -53,10 +49,18 @@ variable {X S X' S' : Scheme.{u}}
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   (h : f' ≫ g = g' ≫ f) (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S')] in
 private theorem higherExchangeTest_of_isIso
     (hi : IsIso ((higherBaseChangeMap f f' g g' h q).app F)) :
     higherExchangeTest f f' g g' h (𝟭 _) F q := hi
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S')] in
 private theorem higherExchangeTest_isIso
     (hi : higherExchangeTest f f' g g' h (𝟭 _) F q) :
     IsIso ((higherBaseChangeMap f f' g g' h q).app F) := hi
@@ -78,6 +82,8 @@ variable {X₀ X₁ X₂ S₀ S₁ S₂ : Scheme.{u}}
   (e : f₂ ≫ (g₂ ≫ g₁) = (h₂ ≫ h₁) ≫ f₀)
   (F : AbelianSheaf.{u, u + 1} X₀) (q : ℕ)
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X₀)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S₀)] in
 /-- Original single-square cancellation, at the same shared test head on
 both sides before any indexed chart data is substituted. -/
 private theorem higherExchangeTest_inverseImage_of_etale_hComp
@@ -101,6 +107,10 @@ variable {X S X' S' : Scheme.{u}} {ι : Type v}
   (U : ι → S'.Etale)
   (hU : ∀ s : S', ∃ (i : ι) (x : (U i).left), (U i).hom x = s)
 
+omit [HasDerivedCategory.{dX₀} (AbelianSheaf.{u, u + 1} X)]
+  [HasDerivedCategory.{dS₀} (AbelianSheaf.{u, u + 1} S)]
+  [HasDerivedCategory.{dX₁} (AbelianSheaf.{u, u + 1} X')]
+  [HasDerivedCategory.{dS₁} (AbelianSheaf.{u, u + 1} S')] in
 include hU in
 /-- Cover detection at the same original-map test head. The coefficient and
 square are unchanged throughout this family. -/
@@ -119,6 +129,7 @@ variable (Y : ι → Scheme.{u})
 
 include hU hp
 
+omit DX DS in
 /-- Assemble the indexed original-map tests without unfolding their common
 regular head. This introduces no new mathematical condition. -/
 theorem higherExchangeTest_of_etale_cover
@@ -130,6 +141,7 @@ theorem higherExchangeTest_of_etale_cover
     higherExchangeTest_inverseImage_of_etale_hComp f f' (p i) g (U i).hom
       g' (k i) h (hc i) F q (hp i) (hloc i)
 
+omit DX DS in
 /-- Invertibility of the original higher exchange can be checked on any
 jointly surjective étale family on its target, using the actual cartesian
 restriction squares and the original composite exchange maps. -/

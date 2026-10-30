@@ -95,7 +95,7 @@ universe w uC vC
 
 /-- The original fixed-cocone Hom universal property extends from the supplied
 generators to their finite-colimit closure, using native finite-limit interchange. -/
-def homCoconeIsColimit_of_finiteColimitClosure
+def homCoconeIsColimitOfFiniteColimitClosure
     {J : Type w} [SmallCategory J] [IsFiltered J]
     {C : Type uC} [Category.{vC} C] (P : ObjectProperty C)
     {D : J ⥤ C} (c : Cocone D)

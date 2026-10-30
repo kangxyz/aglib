@@ -65,20 +65,26 @@ abbrev carrier (P : Torsor L) := CategoryTheory.Sheaf.Torsor.carrier P
 abbrev action (P : Torsor L) := CategoryTheory.Sheaf.Torsor.action P
 
 /-- The original zero-action law. -/
-abbrev zero_action (P : Torsor L) := CategoryTheory.Sheaf.Torsor.zero_action P
+theorem zero_action (P : Torsor L) : ∀ U t, P.action U 0 t = t :=
+  CategoryTheory.Sheaf.Torsor.zero_action P
 
 /-- The original additive action law. -/
-abbrev add_action (P : Torsor L) := CategoryTheory.Sheaf.Torsor.add_action P
+theorem add_action (P : Torsor L) :
+    ∀ U a b t, P.action U (a + b) t = P.action U a (P.action U b t) :=
+  CategoryTheory.Sheaf.Torsor.add_action P
 
 /-- The original restriction law for the action. -/
 abbrev naturality (P : Torsor L) {U V : X.Etaleᵒᵖ} :=
   CategoryTheory.Sheaf.Torsor.naturality P (U := U) (V := V)
 
 /-- The original unique-transport law. -/
-abbrev unique_transport (P : Torsor L) := CategoryTheory.Sheaf.Torsor.unique_transport P
+theorem unique_transport (P : Torsor L) : ∀ U s t, ∃! a, P.action U a s = t :=
+  CategoryTheory.Sheaf.Torsor.unique_transport P
 
 /-- The original local-nonemptiness law. -/
-abbrev locally_nonempty (P : Torsor L) := CategoryTheory.Sheaf.Torsor.locally_nonempty P
+theorem locally_nonempty (P : Torsor L) :
+    ∀ U, nonemptySieve P.carrier U ∈ Scheme.smallEtaleTopology X U :=
+  CategoryTheory.Sheaf.Torsor.locally_nonempty P
 
 /-- The original additive action on possibly empty section sets. -/
 abbrev sectionAction (P : Torsor L) (U : X.Etaleᵒᵖ) :

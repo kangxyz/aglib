@@ -31,6 +31,11 @@ higher exchange without derived-category choices. Its étale specialization
 retains the four independent derived worlds used by the existing Cartesian
 comparison supplier.
 
+[Locality](Locality.lean) defines `higherExchangeTest` directly on the intrinsic
+ordinary `higherBaseChangeMap`, with no derived-category choices. Its etale
+cover assembly retains the four independent models used by the actual
+Cartesian comparison on the restricted squares.
+
 ## Allowed torsion and its original filtered presentation
 
 `AllowedTorsion.lean` defines `IsBaseInvertibleTorsion S F` using local positive

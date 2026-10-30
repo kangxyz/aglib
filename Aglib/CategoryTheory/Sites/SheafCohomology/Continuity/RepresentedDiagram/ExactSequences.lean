@@ -111,7 +111,7 @@ variable {C : Type uC} [Category.{vC} C] [Abelian C] [HasExt.{e} C]
 
 /-- The actual sequence morphism and source transport give a morphism of the
 native represented Ext fragments. -/
-def Functor.extPrecompMap_connectingComplexHom :
+def Functor.extPrecompMapConnectingComplexHom :
     representedExtConnectingComplex X hT n ⟶ representedExtConnectingComplex V hS n where
   τ₁ := AddCommGrpCat.ofHom
     (((Ext.mk₀ α.τ₂).postcomp V (add_zero n)).comp (L.extPrecompMap a T.X₂ n))
@@ -225,11 +225,11 @@ lemma representedCohomologyConnecting_colimit_connecting
     (p₃ : colimit (representedCohomologyFunctor D U (System.cokernel D η) n) ⟶
       AddCommGrpCat.of (Ext V S.X₃ n))
     (h₁ : ∀ i, colimit.ι (representedCohomologyFunctor D U F (n + 1)) i ≫ p₁ =
-      ((L i).extPrecompMap_connectingComplexHom (a i)
+      ((L i).extPrecompMapConnectingComplexHom (a i)
         (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).τ₃)
     (h₃ : ∀ i,
       colimit.ι (representedCohomologyFunctor D U (System.cokernel D η) n) i ≫ p₃ =
-        ((L i).extPrecompMap_connectingComplexHom (a i)
+        ((L i).extPrecompMapConnectingComplexHom (a i)
           (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).τ₂) :
     colim.map (representedCohomologyConnecting D η U hη n) ≫ p₁ =
       p₃ ≫ AddCommGrpCat.ofHom
@@ -237,7 +237,7 @@ lemma representedCohomologyConnecting_colimit_connecting
   apply colimit.hom_ext
   intro i
   rw [colimit.ι_map_assoc, h₁, ← Category.assoc, h₃]
-  exact ((L i).extPrecompMap_connectingComplexHom (a i)
+  exact ((L i).extPrecompMapConnectingComplexHom (a i)
     (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).comm₂₃.symm
 
 /-- The three original comparison maps form a morphism of the actual
@@ -251,14 +251,14 @@ def representedCohomologyConnectingComparison
     (p₁ : colimit (representedCohomologyFunctor D U F (n + 1)) ⟶
       AddCommGrpCat.of (Ext V S.X₁ (n + 1)))
     (h₂ : ∀ i, colimit.ι (representedCohomologyFunctor D U Q n) i ≫ p₂ =
-      ((L i).extPrecompMap_connectingComplexHom (a i)
+      ((L i).extPrecompMapConnectingComplexHom (a i)
         (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).τ₁)
     (h₃ : ∀ i,
       colimit.ι (representedCohomologyFunctor D U (System.cokernel D η) n) i ≫ p₃ =
-        ((L i).extPrecompMap_connectingComplexHom (a i)
+        ((L i).extPrecompMapConnectingComplexHom (a i)
           (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).τ₂)
     (h₁ : ∀ i, colimit.ι (representedCohomologyFunctor D U F (n + 1)) i ≫ p₁ =
-      ((L i).extPrecompMap_connectingComplexHom (a i)
+      ((L i).extPrecompMapConnectingComplexHom (a i)
         (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).τ₃) :
     (representedCohomologyConnectingComplex D η U hη n).map colim ⟶
       representedExtConnectingComplex V hS n where
@@ -271,7 +271,7 @@ def representedCohomologyConnectingComparison
       apply colimit.hom_ext
       intro i
       rw [← Category.assoc, h₂, colimit.ι_map_assoc, h₃]
-      exact ((L i).extPrecompMap_connectingComplexHom (a i)
+      exact ((L i).extPrecompMapConnectingComplexHom (a i)
         (System.cokernelShortComplex_shortExact_of_mono D η hη i) hS (α i) n).comm₁₂
     exact h
   comm₂₃ := (representedCohomologyConnecting_colimit_connecting D η U hη n
