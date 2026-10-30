@@ -2580,6 +2580,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Underl
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingAcyclic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.UnderlyingTorsion
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.AbelianAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Comparisons
@@ -2617,6 +2618,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnd
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleValuedDirectImageSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Stalk
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Torsion
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Coherence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Comparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.PullbackCoherence
@@ -5180,6 +5182,7 @@ public import Aglib.CategoryTheory.Adjunction.Mates.Equivalences
 public import Aglib.CategoryTheory.Adjunction.Mates.OriginalExchange
 public import Aglib.CategoryTheory.Adjunction.Mates.RepresentedCoherence
 public import Aglib.CategoryTheory.Adjunction.Mates.RestrictionSections
+public import Aglib.CategoryTheory.Adjunction.Mates.ScalarConjugateCube
 public import Aglib.CategoryTheory.Adjunction.Mates.ScalarForgetting
 public import Aglib.CategoryTheory.Adjunction.Mates.ScalarForgettingCoherence
 public import Aglib.CategoryTheory.Adjunction.Mates.SelectedCoherence
@@ -5218,6 +5221,8 @@ public import Aglib.CategoryTheory.Functor.ActualDiagramLift
 public import Aglib.CategoryTheory.Functor.AutomorphismTransport
 public import Aglib.CategoryTheory.Functor.CoefficientSquare
 public import Aglib.CategoryTheory.Functor.ComparisonPasting
+public import Aglib.CategoryTheory.Functor.ComparisonPasting.ExchangeInterchange
+public import Aglib.CategoryTheory.Functor.ComparisonPasting.LocalizationVertices
 public import Aglib.CategoryTheory.Functor.CompositionCube
 public import Aglib.CategoryTheory.Functor.CompositionCubeWhole
 public import Aglib.CategoryTheory.Functor.CompositionSquare

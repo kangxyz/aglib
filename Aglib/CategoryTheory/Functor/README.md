@@ -58,3 +58,13 @@ retains the corresponding original two-dimensional equations.
 transformation inserting an original target unit into the same functor
 composite. Its whole-value and component equations retain the two original
 factors. The Godement pullback-pushforward unit is a current consumer.
+
+[ComparisonPasting/ExchangeInterchange](ComparisonPasting/ExchangeInterchange.lean)
+proves the complete noninvertible exchange rectangle from its original
+pastings, equality transports and comparison isomorphisms. Relative etale
+chart exchange uses this whole argument before evaluating components.
+[ComparisonPasting/LocalizationVertices](ComparisonPasting/LocalizationVertices.lean)
+constructs the whole natural isomorphism from two original localization
+factors and proves its unit and counit values. Bounded-below and unbounded
+localization specialize it separately, retaining their own categories and
+original connecting maps.

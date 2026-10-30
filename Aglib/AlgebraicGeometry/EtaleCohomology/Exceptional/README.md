@@ -76,3 +76,14 @@ localization or chosen-exceptional coherence endpoints.
 the original lower-shriek unit, counit and comparison-chain equations.
 
 The original module-slice and scalar-restriction comparisons in [Open/ModuleSliceUnderlying](Open/ModuleSliceUnderlying.lean) and [Open/ModuleScalarRestriction](Open/ModuleScalarRestriction.lean) specialize the complete forward comparison and preserve its original coefficient and unit/counit maps. [Open/Stalk](Open/Stalk.lean) proves the outside-open zero-stalk result from the actual empty point fibre and the existing lower-shriek/skyscraper adjunctions, with the original open and no-lift conditions.
+
+Finite module base change retains its four genuine module derived worlds;
+auxiliary abelian realizations needed only in its proof are chosen locally.
+The original homology and lower-shriek underlying isomorphisms transport
+internal per-degree or local-annihilator torsion without a uniform exponent
+or a preservation-of-injectives assumption on scalar forgetting.
+The bounded-below and full-unbounded localization consumers use whole
+first/third vertex comparisons with the original open counit, closed unit
+and mapping-cone connecting map. Full-unbounded localization gains no
+lower-bound or finite-cohomological-dimension premise. These statements
+do not assert an additional chosen exceptional coherence calculus.

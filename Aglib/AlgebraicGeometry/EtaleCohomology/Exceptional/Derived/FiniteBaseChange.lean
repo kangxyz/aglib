@@ -30,7 +30,7 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Finite
 
 open Coefficients
 
-universe u wMX wMS wMX' wMS' wAX wAS wAX' wAS'
+universe u wMX wMS wMX' wMS'
 
 attribute [local instance] hasSheafifyLarge
 
@@ -39,10 +39,6 @@ variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
   [HasDerivedCategory.{wMS} (ModuleSheaf S Λ)]
   [HasDerivedCategory.{wMX'} (ModuleSheaf X' Λ)]
   [HasDerivedCategory.{wMS'} (ModuleSheaf S' Λ)]
-  [HasDerivedCategory.{wAX} (AbelianSheaf.{u, u + 1} X)]
-  [HasDerivedCategory.{wAS} (AbelianSheaf.{u, u + 1} S)]
-  [HasDerivedCategory.{wAX'} (AbelianSheaf.{u, u + 1} X')]
-  [HasDerivedCategory.{wAS'} (AbelianSheaf.{u, u + 1} S')]
   (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
   [IsFinite f] (sq : IsPullback g' f' f g)
 
@@ -50,6 +46,10 @@ variable (Λ : Type (u + 1)) [Ring Λ] {X S X' S' : Scheme.{u}}
 invertible, with arbitrary ring coefficients and independent derived universes. -/
 theorem finiteModuleDerivedBaseChange_isIso :
     IsIso (moduleDerivedBaseChangeMap Λ f f' g g' sq.w.symm) := by
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S)
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} X')
+  let := HasDerivedCategory.standard (AbelianSheaf.{u, u + 1} S')
   let : IsIso (derivedBaseChangeMap f f' g g' sq.w.symm) :=
     finiteDerivedBaseChange_isIso f f' g g' sq
   exact (moduleDerivedBaseChangeMap_underlying Λ f f' g g' sq.w.symm).isIso

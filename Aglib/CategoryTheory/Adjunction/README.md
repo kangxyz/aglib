@@ -57,3 +57,10 @@ not assert a chosen exceptional associativity or six-operation calculus.
 [LowerShriekUnderlying](LowerShriekUnderlying.lean) supplies original whole
 unit/counit, mate and comparison-chain equations with independent category and
 Hom universes.
+
+[Mates/ScalarConjugateCube](Mates/ScalarConjugateCube.lean) derives the
+left scalar-comparison square from the original right precomposition square,
+then compares their actual adjunction mates. Its isomorphism factors and
+eight genuinely distinct category worlds remain explicit; no invertibility
+of the exchanged transformation is assumed. The module-coefficient
+base-change map is the native consumer.

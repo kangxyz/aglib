@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Localization.ModuleComplex
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ClosedExactness
+public import Aglib.CategoryTheory.Functor.ComparisonPasting.LocalizationVertices
 
 /-!
 # The actual derived vertices of module localization
@@ -33,31 +34,43 @@ variable {U Z X : Scheme.{u}} (j : U ⟶ X) [IsOpenImmersion j]
   [HasDerivedCategory.{wZ} (ModuleSheaf Z Λ)]
   [HasDerivedCategory.{wX} (ModuleSheaf X Λ)]
 
+/-- The whole open-vertex comparison uses the original exact factor and derived unit. -/
+def moduleLocalizationFirstVertexNatIso :
+    (moduleInverseImage j Λ).mapCochainComplexPlus ⋙
+        (moduleLowerShriek j Λ).mapCochainComplexPlus ⋙ DerivedCategory.Plus.Q ≅
+      DerivedCategory.Plus.Q ⋙ moduleDerivedInverseImage Λ j ⋙ moduleDerivedLowerShriek j Λ := by
+  let : IsIso (moduleInverseImage j Λ).rightDerivedFunctorPlusUnit :=
+    (moduleInverseImage j Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
+  exact Functor.compositeLocalizationIso
+    (moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.symm
+    (asIso (moduleInverseImage j Λ).rightDerivedFunctorPlusUnit)
+
+/-- The whole closed-vertex comparison uses the original direct-image unit and exact factor. -/
+def moduleLocalizationThirdVertexNatIso :
+    (moduleInverseImage i Λ).mapCochainComplexPlus ⋙
+        (moduleDirectImage i Λ).mapCochainComplexPlus ⋙ DerivedCategory.Plus.Q ≅
+      DerivedCategory.Plus.Q ⋙ moduleDerivedInverseImage Λ i ⋙ moduleDerivedDirectImage Λ i := by
+  let : IsIso (moduleDirectImage i Λ).rightDerivedFunctorPlusUnit :=
+    (moduleDirectImage i Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
+  exact Functor.compositeLocalizationIso
+    (asIso (moduleDirectImage i Λ).rightDerivedFunctorPlusUnit)
+    (moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.symm
+
 /-- The first vertex uses the exact-left comparison and original inverse-image derived unit. -/
 def moduleLocalizationFirstVertexIso (K : CochainComplex.Plus (ModuleSheaf X Λ)) :
     DerivedCategory.Plus.Q.obj ((moduleLowerShriek j Λ).mapCochainComplexPlus.obj
       ((moduleInverseImage j Λ).mapCochainComplexPlus.obj K)) ≅
     (moduleDerivedLowerShriek j Λ).obj
-      ((moduleDerivedInverseImage Λ j).obj (DerivedCategory.Plus.Q.obj K)) := by
-  let : IsIso (moduleInverseImage j Λ).rightDerivedFunctorPlusUnit :=
-    (moduleInverseImage j Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
-  exact ((moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.app
-      ((moduleInverseImage j Λ).mapCochainComplexPlus.obj K)).symm ≪≫
-    (moduleDerivedLowerShriek j Λ).mapIso
-      (asIso ((moduleInverseImage j Λ).rightDerivedFunctorPlusUnit.app K))
+      ((moduleDerivedInverseImage Λ j).obj (DerivedCategory.Plus.Q.obj K)) :=
+  (moduleLocalizationFirstVertexNatIso j Λ).app K
 
 /-- The third vertex is the actual separately derived closed direct image and inverse image. -/
 def moduleLocalizationThirdVertexIso (K : CochainComplex.Plus (ModuleSheaf X Λ)) :
     DerivedCategory.Plus.Q.obj ((moduleDirectImage i Λ).mapCochainComplexPlus.obj
       ((moduleInverseImage i Λ).mapCochainComplexPlus.obj K)) ≅
     (moduleDerivedDirectImage Λ i).obj
-      ((moduleDerivedInverseImage Λ i).obj (DerivedCategory.Plus.Q.obj K)) := by
-  let : IsIso (moduleDirectImage i Λ).rightDerivedFunctorPlusUnit :=
-    (moduleDirectImage i Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
-  exact asIso ((moduleDirectImage i Λ).rightDerivedFunctorPlusUnit.app
-      ((moduleInverseImage i Λ).mapCochainComplexPlus.obj K)) ≪≫
-    (moduleDerivedDirectImage Λ i).mapIso
-      ((moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.app K).symm
+      ((moduleDerivedInverseImage Λ i).obj (DerivedCategory.Plus.Q.obj K)) :=
+  (moduleLocalizationThirdVertexNatIso Λ i).app K
 
 /-- The first comparison identifies the original complex counit with the derived counit. -/
 theorem moduleLocalizationFirstVertexIso_counit
@@ -66,12 +79,14 @@ theorem moduleLocalizationFirstVertexIso_counit
       (moduleDerivedLowerShriekAdjunction j Λ).counit.app (DerivedCategory.Plus.Q.obj K) =
     DerivedCategory.Plus.Q.map
       ((moduleLowerShriekAdjunction j Λ).mapCochainComplexPlus.counit.app K) := by
-  change ((moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.inv.app
-      ((moduleInverseImage j Λ).mapCochainComplexPlus.obj K) ≫
-      (moduleDerivedLowerShriek j Λ).map
-        ((moduleInverseImage j Λ).rightDerivedFunctorPlusUnit.app K)) ≫ _ = _
-  rw [Category.assoc, moduleDerivedLowerShriekAdjunction_counit_fac,
-    ← Category.assoc, Iso.inv_hom_id_app, Category.id_comp]
+  let : IsIso (moduleInverseImage j Λ).rightDerivedFunctorPlusUnit :=
+    (moduleInverseImage j Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
+  exact Functor.compositeLocalizationIso_counit
+    (moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.symm
+    (asIso (moduleInverseImage j Λ).rightDerivedFunctorPlusUnit)
+    (moduleLowerShriekAdjunction j Λ).mapCochainComplexPlus.counit
+    (moduleDerivedLowerShriekAdjunction j Λ).counit
+    (moduleDerivedLowerShriekAdjunction_counit_fac j Λ) K
 
 /-- The third comparison identifies the original complex unit with the derived unit. -/
 theorem moduleLocalizationThirdVertexIso_unit
@@ -80,14 +95,13 @@ theorem moduleLocalizationThirdVertexIso_unit
         ((moduleInverseImageAdjunction i Λ).mapCochainComplexPlus.unit.app K) ≫
       (moduleLocalizationThirdVertexIso Λ i K).hom =
     (moduleDerivedAdjunction Λ i).unit.app (DerivedCategory.Plus.Q.obj K) := by
-  change _ ≫ ((moduleDirectImage i Λ).rightDerivedFunctorPlusUnit.app
-      ((moduleInverseImage i Λ).mapCochainComplexPlus.obj K) ≫
-      (moduleDerivedDirectImage Λ i).map
-        ((moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.inv.app K)) = _
-  rw [← Category.assoc, ← moduleDerivedAdjunction_unit_fac, Category.assoc,
-    ← CategoryTheory.Functor.map_comp, Iso.hom_inv_id_app]
-  erw [CategoryTheory.Functor.map_id]
-  exact Category.comp_id _
+  let : IsIso (moduleDirectImage i Λ).rightDerivedFunctorPlusUnit :=
+    (moduleDirectImage i Λ).isIso_rightDerivedFunctorPlusUnit_of_preservesHomology
+  exact Functor.compositeLocalizationIso_unit
+    (asIso (moduleDirectImage i Λ).rightDerivedFunctorPlusUnit)
+    (moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.symm
+    (moduleInverseImageAdjunction i Λ).mapCochainComplexPlus.unit
+    (moduleDerivedAdjunction Λ i).unit (moduleDerivedAdjunction_unit_fac Λ i) K
 
 /-- The first vertex comparison is natural for original complex morphisms. -/
 @[reassoc]
@@ -98,21 +112,8 @@ theorem moduleLocalizationFirstVertexIso_naturality
       (moduleLocalizationFirstVertexIso j Λ L).hom =
     (moduleLocalizationFirstVertexIso j Λ K).hom ≫
       (moduleDerivedLowerShriek j Λ).map
-        ((moduleDerivedInverseImage Λ j).map (DerivedCategory.Plus.Q.map a)) := by
-  change _ ≫ ((moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.inv.app _ ≫
-      (moduleDerivedLowerShriek j Λ).map
-        ((moduleInverseImage j Λ).rightDerivedFunctorPlusUnit.app L)) =
-    ((moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.inv.app _ ≫
-      (moduleDerivedLowerShriek j Λ).map
-        ((moduleInverseImage j Λ).rightDerivedFunctorPlusUnit.app K)) ≫ _
-  rw [← Category.assoc]
-  erw [(moduleLowerShriek j Λ).rightDerivedFunctorPlusExactComparison.inv.naturality
-    ((moduleInverseImage j Λ).mapCochainComplexPlus.map a)]
-  simp only [CategoryTheory.Functor.comp_map]
-  erw [Category.assoc, ← CategoryTheory.Functor.map_comp]
-  erw [(moduleInverseImage j Λ).rightDerivedFunctorPlusUnit.naturality a]
-  simp only [CategoryTheory.Functor.comp_map]
-  erw [CategoryTheory.Functor.map_comp, Category.assoc]
+        ((moduleDerivedInverseImage Λ j).map (DerivedCategory.Plus.Q.map a)) :=
+  (moduleLocalizationFirstVertexNatIso j Λ).hom.naturality a
 
 /-- The closed vertex comparison is natural for original complex morphisms. -/
 @[reassoc]
@@ -123,21 +124,8 @@ theorem moduleLocalizationThirdVertexIso_naturality
       (moduleLocalizationThirdVertexIso Λ i L).hom =
     (moduleLocalizationThirdVertexIso Λ i K).hom ≫
       (moduleDerivedDirectImage Λ i).map
-        ((moduleDerivedInverseImage Λ i).map (DerivedCategory.Plus.Q.map a)) := by
-  change _ ≫ ((moduleDirectImage i Λ).rightDerivedFunctorPlusUnit.app _ ≫
-      (moduleDerivedDirectImage Λ i).map
-        ((moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.inv.app L)) =
-    ((moduleDirectImage i Λ).rightDerivedFunctorPlusUnit.app _ ≫
-      (moduleDerivedDirectImage Λ i).map
-        ((moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.inv.app K)) ≫ _
-  rw [← Category.assoc]
-  erw [(moduleDirectImage i Λ).rightDerivedFunctorPlusUnit.naturality
-    ((moduleInverseImage i Λ).mapCochainComplexPlus.map a)]
-  simp only [CategoryTheory.Functor.comp_map]
-  erw [Category.assoc, ← CategoryTheory.Functor.map_comp]
-  erw [(moduleInverseImage i Λ).rightDerivedFunctorPlusExactComparison.inv.naturality a]
-  simp only [CategoryTheory.Functor.comp_map]
-  erw [CategoryTheory.Functor.map_comp, Category.assoc]
+        ((moduleDerivedInverseImage Λ i).map (DerivedCategory.Plus.Q.map a)) :=
+  (moduleLocalizationThirdVertexNatIso Λ i).hom.naturality a
 
 variable (hcomp : Set.range j = (Set.range i)ᶜ)
 

@@ -40,14 +40,10 @@ def moduleUnboundedLocalizationComplexFirstNatIso :
     moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp ⋙ Triangle.π₁ ≅
       DerivedCategory.Q ⋙ moduleUnboundedDerivedInverseImage Λ j ⋙
         moduleUnboundedDerivedLowerShriek j Λ :=
-  NatIso.ofComponents (moduleUnboundedLocalizationFirstVertexIso j Λ) (by
-    intro K L a
-    change (moduleUnboundedLocalizationComplexTriangleMap j Λ i hcomp a).hom₁ ≫ _ = _
-    rw [show (moduleUnboundedLocalizationComplexTriangleMap j Λ i hcomp a).hom₁ =
-      DerivedCategory.Q.map (((moduleLowerShriek j Λ).mapHomologicalComplex (.up ℤ)).map
-        (((moduleInverseImage j Λ).mapHomologicalComplex (.up ℤ)).map a)) from
-      moduleUnboundedLocalizationComplexTriangleMap_hom₁ j Λ i hcomp a]
-    exact moduleUnboundedLocalizationFirstVertexIso_naturality j Λ a)
+  Functor.isoOfSourceMap (moduleUnboundedLocalizationFirstVertexNatIso j Λ) rfl (by
+    apply heq_of_eq
+    funext K L a
+    exact moduleUnboundedLocalizationComplexTriangleMap_hom₁ j Λ i hcomp a)
 
 /-- The middle vertex remains the original localization functor. -/
 def moduleUnboundedLocalizationComplexMiddleNatIso :
@@ -65,14 +61,10 @@ def moduleUnboundedLocalizationComplexThirdNatIso :
     moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp ⋙ Triangle.π₃ ≅
       DerivedCategory.Q ⋙ moduleUnboundedDerivedInverseImage Λ i ⋙
         moduleUnboundedDerivedDirectImage Λ i :=
-  NatIso.ofComponents (moduleUnboundedLocalizationThirdVertexIso Λ i) (by
-    intro K L a
-    change (moduleUnboundedLocalizationComplexTriangleMap j Λ i hcomp a).hom₃ ≫ _ = _
-    rw [show (moduleUnboundedLocalizationComplexTriangleMap j Λ i hcomp a).hom₃ =
-      DerivedCategory.Q.map (((moduleDirectImage i Λ).mapHomologicalComplex (.up ℤ)).map
-        (((moduleInverseImage i Λ).mapHomologicalComplex (.up ℤ)).map a)) from
-      moduleUnboundedLocalizationComplexTriangleMap_hom₃ j Λ i hcomp a]
-    exact moduleUnboundedLocalizationThirdVertexIso_naturality Λ i a)
+  Functor.isoOfSourceMap (moduleUnboundedLocalizationThirdVertexNatIso Λ i) rfl (by
+    apply heq_of_eq
+    funext K L a
+    exact moduleUnboundedLocalizationComplexTriangleMap_hom₃ j Λ i hcomp a)
 
 /-- The original complex-triangle functor inverts the original quasi-isomorphisms. -/
 theorem moduleUnboundedLocalizationComplexTriangleFunctor_inverts :
@@ -187,7 +179,8 @@ theorem moduleUnboundedLocalizationFirstNatIso_hom_app
     (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
       ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₁ ≫
         (moduleUnboundedLocalizationFirstVertexIso j Λ K).hom := by
-  exact Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
+  have h :=
+    Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
       (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
       (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
       (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
@@ -197,6 +190,21 @@ theorem moduleUnboundedLocalizationFirstNatIso_hom_app
       (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
       Triangle.π₁ (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ)
         (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp) K
+  change (moduleUnboundedLocalizationFirstNatIso j Λ i hcomp).hom.app
+      (DerivedCategory.Q.obj K) =
+    ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₁ ≫
+      (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp).hom.app K at h
+  have hv := Functor.isoOfSourceMap_hom_app
+    (T := moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp ⋙ Triangle.π₁)
+    (moduleUnboundedLocalizationFirstVertexNatIso j Λ) rfl (by
+      apply heq_of_eq
+      funext A B a
+      exact moduleUnboundedLocalizationComplexTriangleMap_hom₁ j Λ i hcomp a) K
+  have hc : (moduleUnboundedLocalizationComplexFirstNatIso j Λ i hcomp).hom.app K =
+      (moduleUnboundedLocalizationFirstVertexIso j Λ K).hom :=
+    hv.trans (Category.id_comp _)
+  exact h.trans (congrArg (fun z =>
+    ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₁ ≫ z) hc)
 
 /-- The descended middle comparison is the original factorization component. -/
 @[simp]
@@ -228,7 +236,8 @@ theorem moduleUnboundedLocalizationThirdNatIso_hom_app
     (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).hom.app (DerivedCategory.Q.obj K) =
       ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₃ ≫
         (moduleUnboundedLocalizationThirdVertexIso Λ i K).hom := by
-  exact Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
+  have h :=
+    Localization.liftTriangleVertexIso_hom_app DerivedCategory.Q
       (HomologicalComplex.quasiIso (ModuleSheaf X Λ) (.up ℤ))
       (moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp)
       (moduleUnboundedDerivedInverseImage Λ j ⋙ moduleUnboundedDerivedLowerShriek j Λ) (𝟭 _)
@@ -238,6 +247,21 @@ theorem moduleUnboundedLocalizationThirdNatIso_hom_app
       (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp)
       Triangle.π₃ (moduleUnboundedDerivedInverseImage Λ i ⋙ moduleUnboundedDerivedDirectImage Λ i)
         (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp) K
+  change (moduleUnboundedLocalizationThirdNatIso j Λ i hcomp).hom.app
+      (DerivedCategory.Q.obj K) =
+    ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₃ ≫
+      (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp).hom.app K at h
+  have hv := Functor.isoOfSourceMap_hom_app
+    (T := moduleUnboundedLocalizationComplexTriangleFunctor j Λ i hcomp ⋙ Triangle.π₃)
+    (moduleUnboundedLocalizationThirdVertexNatIso Λ i) rfl (by
+      apply heq_of_eq
+      funext A B a
+      exact moduleUnboundedLocalizationComplexTriangleMap_hom₃ j Λ i hcomp a) K
+  have hc : (moduleUnboundedLocalizationComplexThirdNatIso j Λ i hcomp).hom.app K =
+      (moduleUnboundedLocalizationThirdVertexIso Λ i K).hom :=
+    hv.trans (Category.id_comp _)
+  exact h.trans (congrArg (fun z =>
+    ((moduleUnboundedLocalizationTriangleFunctorFac j Λ i hcomp).hom.app K).hom₃ ≫ z) hc)
 
 /-- The first descended arrow is the original derived adjunction counit, naturally. -/
 theorem moduleUnboundedLocalization_counit_comparison :
