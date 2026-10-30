@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.HomExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FiniteCogenerators.AffineIntegralConstants.SheafColimit
 public import Mathlib.AlgebraicGeometry.Morphisms.FormallyUnramified
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
@@ -36,30 +37,8 @@ argument is the native private unramified_hom_ext in FiniteEtale.Nilpotent. -/
 theorem unramified_precomposition_injective
     {T T' Z X : Scheme.{u}} (q : T' ⟶ T) [Surjective q]
     (p : Z ⟶ X) [FormallyUnramified p] [LocallyOfFiniteType p]
-    (s t : T ⟶ Z) (hbase : s ≫ p = t ≫ p) (heq : q ≫ s = q ≫ t) : s = t := by
-  let a : T ⟶ pullback p p := pullback.lift s t hbase
-  let j : pullback a (pullback.diagonal p) ⟶ T := pullback.fst _ _
-  have hjopen : IsOpenImmersion j := by dsimp [j]; infer_instance
-  have hqa : q ≫ a = (q ≫ s) ≫ pullback.diagonal p := by
-    apply pullback.hom_ext
-    · simp [a, pullback.lift_fst]
-    · simpa [a, pullback.lift_fst, pullback.lift_snd] using heq.symm
-  let l : T' ⟶ pullback a (pullback.diagonal p) := pullback.lift q (q ≫ s) hqa
-  have hlj : l ≫ j = q := by exact pullback.lift_fst _ _ _
-  have hjsurj : Surjective j := by
-    constructor
-    intro x
-    obtain ⟨z, hz⟩ := q.surjective x
-    exact ⟨l z, (congrArg (fun k : T' ⟶ T => k z) hlj).trans hz⟩
-  have : IsIso j := (isIso_iff_isOpenImmersion_and_surjective j).mpr ⟨hjopen, hjsurj⟩
-  apply (cancel_epi j).mp
-  have hj : j ≫ a = pullback.snd a (pullback.diagonal p) ≫ pullback.diagonal p :=
-    pullback.condition
-  calc
-    j ≫ s = (j ≫ a) ≫ pullback.fst p p := by simp [a, pullback.lift_fst]
-    _ = pullback.snd a (pullback.diagonal p) := by rw [hj]; simp
-    _ = (j ≫ a) ≫ pullback.snd p p := by rw [hj]; simp
-    _ = j ≫ t := by simp [a, pullback.lift_snd]
+    (s t : T ⟶ Z) (hbase : s ≫ p = t ≫ p) (heq : q ≫ s = q ≫ t) : s = t :=
+  Scheme.Hom.eq_of_precomp_eq_of_surjective q p s t hbase heq
 
 /-- The actual base-changed test map is the base change of the original
 relative scheme map in its literal cartesian square. -/

@@ -12,6 +12,7 @@ public import Aglib.Algebra.Category.FGModuleCat.RestrictScalars
 public import Aglib.Algebra.Category.FGModuleCat.ScalarAutomorphisms
 public import Aglib.Algebra.Category.FGModuleCat.ScalarExtension
 public import Aglib.Algebra.Category.FGModuleCat.ScalarMatrices
+public import Aglib.Algebra.Category.Grp.AllowedOrders
 public import Aglib.Algebra.Category.Grp.FiniteColimits
 public import Aglib.Algebra.Category.Grp.FinitelyGeneratedColimit
 public import Aglib.Algebra.Category.Grp.ProductSections
@@ -110,6 +111,8 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Coherence
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Equivalence
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Exactness
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Images
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSections
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSubobject
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.PointFibre
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Presheaf
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Pullback
@@ -2076,6 +2079,7 @@ public import Aglib.AlgebraicGeometry.Descent.Modules.ZariskiStack
 public import Aglib.AlgebraicGeometry.Descent.Opens
 public import Aglib.AlgebraicGeometry.Dimension.CodimensionTwo
 public import Aglib.AlgebraicGeometry.Dimension.CodimensionTwoClosed
+public import Aglib.AlgebraicGeometry.Dimension.Finite
 public import Aglib.AlgebraicGeometry.Dimension.FiniteTypeFibres
 public import Aglib.AlgebraicGeometry.Dimension.FlatDVR
 public import Aglib.AlgebraicGeometry.Dimension.OpenCover
@@ -4341,6 +4345,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Flat.DVRBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.DedekindBase
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.GenericFiberCriteria
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.ConnectedRigidity
+public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.HomExt
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.Immersions
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.SectionRigidity
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.StalkMap
@@ -5114,6 +5119,7 @@ public import Aglib.CategoryTheory.Adjunction.UnderlyingHomEquiv
 public import Aglib.CategoryTheory.Adjunction.UnderlyingMate
 public import Aglib.CategoryTheory.Adjunction.Unit
 public import Aglib.CategoryTheory.Adjunction.UnitComparisonCoherence
+public import Aglib.CategoryTheory.Adjunction.UnitHomMap
 public import Aglib.CategoryTheory.EffectiveEpi.Over
 public import Aglib.CategoryTheory.ExactCategory.Abelian
 public import Aglib.CategoryTheory.ExactCategory.BaseChange
@@ -5157,6 +5163,7 @@ public import Aglib.CategoryTheory.Grp
 public import Aglib.CategoryTheory.Iso.CertifiedHomTransport
 public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
+public import Aglib.CategoryTheory.Limits.CoconeValues
 public import Aglib.CategoryTheory.Limits.CoproductsFromFiltered
 public import Aglib.CategoryTheory.Limits.Equifibered
 public import Aglib.CategoryTheory.Limits.FiniteCoproductMaps
@@ -5236,6 +5243,7 @@ public import Aglib.CategoryTheory.Sites.Descent.SiteChange
 public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.Elements.SheafCondition
 public import Aglib.CategoryTheory.Sites.Elements.Topology
+public import Aglib.CategoryTheory.Sites.FiniteGroupAction.ModulePropertyDevissage
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Aglib.CategoryTheory.Sites.Hypercohomology.ContinuousPullback
 public import Aglib.CategoryTheory.Sites.Hypercohomology.FiniteSumDescent
@@ -5249,6 +5257,7 @@ public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.Point.Germ
 public import Aglib.CategoryTheory.Sites.Point.RepresentedAdditive
 public import Aglib.CategoryTheory.Sites.Point.SectionValues
+public import Aglib.CategoryTheory.Sites.PresheafAutomorphismAction
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.PresheafTransport
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
@@ -6211,6 +6220,11 @@ public import Aglib.RingTheory.Extension.Presentation.SelectedJacobianChart
 public import Aglib.RingTheory.Extension.Presentation.SelectedJacobianStopping
 public import Aglib.RingTheory.Extension.Presentation.SelectedRelationQuotient
 public import Aglib.RingTheory.Extension.Presentation.SelectedRelations
+public import Aglib.RingTheory.Finite.LocalPoints.Component
+public import Aglib.RingTheory.Finite.LocalPoints.Equiv
+public import Aglib.RingTheory.Finite.LocalPoints.Kernel
+public import Aglib.RingTheory.Finite.LocalPoints.LocalPoint
+public import Aglib.RingTheory.Finite.LocalPoints.ResidueEmbedding
 public import Aglib.RingTheory.FiniteAlgebraNormLength
 public import Aglib.RingTheory.FiniteEtale.CoefficientInertia
 public import Aglib.RingTheory.FiniteEtale.GenericMaps
@@ -6415,6 +6429,8 @@ public import Aglib.RingTheory.Henselian.StrictHenselization.RationalResidue
 public import Aglib.RingTheory.Henselian.StrictHenselization.SeparablyClosedResidue
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
+public import Aglib.RingTheory.Henselization.AtMaximal
+public import Aglib.RingTheory.Henselization.GenericMap
 public import Aglib.RingTheory.Ideal.ArtinReesInfMulSup
 public import Aglib.RingTheory.Ideal.AssociatedPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.AssociatedPrime.Reduced

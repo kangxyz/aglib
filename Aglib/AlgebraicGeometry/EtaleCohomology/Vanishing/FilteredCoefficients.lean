@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Limits.CoconeValues
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.QcqsComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Torsion.Colimit
 
@@ -41,12 +42,9 @@ theorem subsingleton_H_of_factorialAnnihilators
   let H := cohomologyFunctor.{u, e} X q
   let : PreservesColimitsOfShape ℕ H :=
     qcqsCohomologyFunctor_preservesSequentialColimits X q
-  have hzero : IsZero (G ⋙ H) := by
-    apply Functor.isZero
-    intro n
-    exact AddCommGrpCat.isZero_iff_subsingleton.mpr (hstage n)
-  have hc : IsZero (colimit (G ⋙ H)) := (colimit.isColimit (G ⋙ H)).isZero_pt hzero
-  have hcol : IsZero (H.obj (colimit G)) := hc.of_iso (preservesColimitIso H G)
+  have hcol : IsZero (H.obj (colimit G)) :=
+    CoconeValues.isZero_obj_of_preservesColimit H (colimit.isColimit G)
+      (fun n => AddCommGrpCat.isZero_iff_subsingleton.mpr (hstage n))
   exact AddCommGrpCat.isZero_iff_subsingleton.mp
     (hcol.of_iso (H.mapIso (torsionFilteredColimitIso F hF)).symm)
 

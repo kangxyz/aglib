@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.HomExt
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.ProperResidue.Existence
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.Adic.Fullness
 public import Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.BaseChange.Isomorphism
@@ -48,31 +49,8 @@ set_option backward.isDefEq.respectTransparency.types false in
 private theorem unramified_hom_ext
     {X X₀ Z S : Scheme.{u}} (i : X₀ ⟶ X) [Surjective i]
     (p : Z ⟶ S) [FormallyUnramified p] [LocallyOfFiniteType p]
-    (g h : X ⟶ Z) (hbase : g ≫ p = h ≫ p) (heq : i ≫ g = i ≫ h) : g = h := by
-  let a : X ⟶ pullback p p := pullback.lift g h hbase
-  let j : pullback a (pullback.diagonal p) ⟶ X := pullback.fst _ _
-  have hjopen : IsOpenImmersion j := by dsimp [j]; infer_instance
-  have hia : i ≫ a = (i ≫ g) ≫ pullback.diagonal p := by
-    apply pullback.hom_ext
-    · simp [a]
-    · simpa [a] using heq.symm
-  let l : X₀ ⟶ pullback a (pullback.diagonal p) := pullback.lift i (i ≫ g) hia
-  have hlj : l ≫ j = i := by simp [l, j]
-  have hjsurj : Surjective j := by
-    constructor
-    intro x
-    obtain ⟨z, hz⟩ := i.surjective x
-    exact ⟨l z, (congrArg (fun k : X₀ ⟶ X ↦ k z) hlj).trans hz⟩
-  have : IsIso j :=
-    (isIso_iff_isOpenImmersion_and_surjective j).mpr ⟨hjopen, hjsurj⟩
-  apply (cancel_epi j).mp
-  have hj : j ≫ a = pullback.snd a (pullback.diagonal p) ≫ pullback.diagonal p :=
-    pullback.condition
-  calc
-    j ≫ g = (j ≫ a) ≫ pullback.fst p p := by simp [a]
-    _ = pullback.snd a (pullback.diagonal p) := by rw [hj]; simp
-    _ = (j ≫ a) ≫ pullback.snd p p := by rw [hj]; simp
-    _ = j ≫ h := by simp [a]
+    (g h : X ⟶ Z) (hbase : g ≫ p = h ≫ p) (heq : i ≫ g = i ≫ h) : g = h :=
+  Scheme.Hom.eq_of_precomp_eq_of_surjective i p g h hbase heq
 
 private theorem overPullback_map_injective_of_unramified
     {S T : Scheme.{u}} (f : T ⟶ S) [Surjective f]
