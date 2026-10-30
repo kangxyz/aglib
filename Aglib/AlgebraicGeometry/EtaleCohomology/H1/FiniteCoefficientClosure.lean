@@ -24,6 +24,27 @@ universe u
 
 attribute [local instance] hasSheafifyLarge Fintype.ofFinite
 
+/-- Compose the original trivializing charts with the same surjective
+etale map, retaining values and the original composition comparison. -/
+theorem isFiniteLocallyConstant_of_etale_pullback
+    {X Y : Scheme.{u}} (p : Y ⟶ X) [Etale p] (hp : Function.Surjective p)
+    (F : AbelianSheaf.{u, u + 1} X)
+    (hF : IsFiniteLocallyConstant ((inverseImage p).obj F)) :
+    IsFiniteLocallyConstant F := by
+  obtain ⟨t⟩ := hF
+  refine ⟨{
+    index := t.index
+    chart := fun i => Scheme.Etale.mk ((t.chart i).hom ≫ p)
+    covers := ?_
+    value := t.value
+    finite_value := t.finite_value
+    trivialization := fun i =>
+      (inverseImageComp p (t.chart i).hom).app F ≪≫ t.trivialization i }⟩
+  intro x
+  obtain ⟨y, rfl⟩ := hp x
+  obtain ⟨i, z, hz⟩ := t.covers y
+  exact ⟨i, z, by change p ((t.chart i).hom z) = p y; rw [hz]⟩
+
 /-- The same actual charts trivialize the actual finite product; all
 categorical comparison factors come from the shared pure constructor. -/
 def FiniteLocalTrivialization.finitePower {X : Scheme.{u}}

@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientClosure
+
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteCokernel
 
 /-! # Cokernels of arbitrary finite locally constant coefficients over fields
@@ -30,20 +32,8 @@ theorem isFiniteLocallyConstant_of_etale_pullback
     {X Y : Scheme.{u}} (p : Y ⟶ X) [Etale p] (hp : Function.Surjective p)
     (F : AbelianSheaf.{u, u + 1} X)
     (hF : IsFiniteLocallyConstant ((inverseImage p).obj F)) :
-    IsFiniteLocallyConstant F := by
-  obtain ⟨t⟩ := hF
-  refine ⟨{
-    index := t.index
-    chart := fun i => Scheme.Etale.mk ((t.chart i).hom ≫ p)
-    covers := ?_
-    value := t.value
-    finite_value := t.finite_value
-    trivialization := fun i =>
-      (inverseImageComp p (t.chart i).hom).app F ≪≫ t.trivialization i }⟩
-  intro x
-  obtain ⟨y, rfl⟩ := hp x
-  obtain ⟨i, z, hz⟩ := t.covers y
-  exact ⟨i, z, by change p ((t.chart i).hom z) = p y; rw [hz]⟩
+    IsFiniteLocallyConstant F :=
+  AlgebraicGeometry.Scheme.EtaleCohomology.isFiniteLocallyConstant_of_etale_pullback p hp F hF
 
 /-- The literal cokernel of every actual map of finite locally constant
 coefficients over an arbitrary field is finite locally constant. -/
