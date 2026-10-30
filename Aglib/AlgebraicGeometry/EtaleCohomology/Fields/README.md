@@ -82,3 +82,5 @@ package the original splitting-chart component inclusions as one coefficient-fre
 site natural transformation. Continuous pushforward gives the original
 restriction maps on sections; the existing fan and section bijection retain the
 local product comparison for arbitrary original abelian coefficients.
+
+[Finite-etale transfers](FiniteEtaleTransfer/Trace.lean) supply the original splitting charts, matching equations and actual finite-flat rank to the generic finite-sum construction. The normalized source remains the original constant integer sheaf; the finite separable field specialization uses the actual field degree.

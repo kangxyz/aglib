@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Over.FixedFiberHom
+
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finiteness.ProperCurveH1Family.RationalValues
 
@@ -76,46 +78,31 @@ variable {k : Type u} [Field k] {X Y T : Scheme.{u}}
 /-- The literal arrow from the original scheme to the rational fibre of its
 Cartesian constant family. -/
 def fibreArrow : X ⟶ Y :=
-  h.lift (𝟙 X) (f ≫ b) (by simp [Category.assoc, hb])
+  h.splitBaseArrow b hb
 
 @[reassoc (attr := simp)]
 theorem fibreArrow_curveMap : fibreArrow h b hb ≫ r = 𝟙 X :=
-  h.lift_fst _ _ _
+  h.splitBaseArrow_fst b hb
 
 @[reassoc (attr := simp)]
 theorem fibreArrow_projection : fibreArrow h b hb ≫ p = f ≫ b :=
-  h.lift_snd _ _ _
+  h.splitBaseArrow_snd b hb
 
 /-- These two original projection equations determine the fibre arrow. -/
 theorem eq_fibreArrow (a : X ⟶ Y) (haX : a ≫ r = 𝟙 X)
     (haT : a ≫ p = f ≫ b) : a = fibreArrow h b hb :=
-  h.hom_ext (haX.trans (fibreArrow_curveMap h b hb).symm)
-    (haT.trans (fibreArrow_projection h b hb).symm)
+  h.eq_splitBaseArrow b hb a haX haT
 
 /-- Any actual map into this rational fibre factors through the original
 scheme, with its original projection as the factor. -/
 theorem comp_fibreArrow_eq {W : Scheme.{u}} (a : W ⟶ Y)
     (v : W ⟶ Spec (.of k)) (ha : a ≫ p = v ≫ b) :
-    (a ≫ r) ≫ fibreArrow h b hb = a := by
-  apply h.hom_ext
-  · simp only [Category.assoc, fibreArrow_curveMap, Category.comp_id]
-  · have hstruct : a ≫ r ≫ f = v := by
-      calc
-        a ≫ r ≫ f = a ≫ p ≫ t := by rw [h.w]
-        _ = v ≫ b ≫ t := by rw [← Category.assoc, ha, Category.assoc]
-        _ = v := by rw [hb, Category.comp_id]
-    calc
-      ((a ≫ r) ≫ fibreArrow h b hb) ≫ p = (a ≫ r ≫ f) ≫ b := by
-        simp only [Category.assoc, fibreArrow_projection]
-      _ = v ≫ b := congrArg (fun q => q ≫ b) hstruct
-      _ = a ≫ p := ha.symm
+    (a ≫ r) ≫ fibreArrow h b hb = a :=
+  h.comp_splitBaseArrow_eq b hb a v ha
 
 /-- The canonical original-scheme arrow gives the actual Cartesian fibre. -/
-theorem isPullback_fibreArrow : IsPullback (fibreArrow h b hb) f p b := by
-  have hout : IsPullback (fibreArrow h b hb ≫ r) f f (b ≫ t) := by
-    rw [fibreArrow_curveMap, hb]
-    exact IsPullback.of_horiz_isIso ⟨by simp⟩
-  exact hout.of_right (fibreArrow_projection h b hb) h
+theorem isPullback_fibreArrow : IsPullback (fibreArrow h b hb) f p b :=
+  h.isPullback_splitBaseArrow b hb
 
 /-- The original cohomology value at an actual rational parameter. -/
 def value (L : AbelianSheaf.{u, u + 1} X)

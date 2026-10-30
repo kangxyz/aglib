@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.FieldTerminal
-public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
+public import Mathlib.Algebra.Homology.DerivedCategory.Ext.Basic
 
 /-! # Original cohomology and higher-image sections over a separably closed field
 
@@ -52,7 +52,7 @@ theorem globalCohomologyTerminalClass_bijective {X S : Scheme.{u}} (f : X ⟶ S)
     Function.Bijective (globalCohomologyTerminalClass f F q) := by
   let a := representedIntegerAugmentation ((siteBaseChange f).obj (etaleTerminal S))
   let : IsIso a := representedIntegerAugmentation_baseChangeTerminal_isIso f
-  exact (Ext.precompLinearEquiv ℤ (asIso a) F q).bijective
+  exact ((((extFunctor q).mapIso (asIso a).op).app F).addCommGroupIsoToAddEquiv).bijective
 
 variable (Ω : Type u) [Field Ω] [IsSepClosed Ω] {X : Scheme.{u}}
   (f : X ⟶ Spec (.of Ω)) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]

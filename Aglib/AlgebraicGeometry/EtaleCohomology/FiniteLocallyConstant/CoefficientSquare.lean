@@ -10,6 +10,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SectionPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.FiniteLocallyConstant.TriangleCoherence
 public import Aglib.AlgebraicGeometry.SchemeOverField
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
+public import Aglib.CategoryTheory.Functor.CoefficientSquare
 
 /-!
 Native migration from
@@ -142,30 +143,19 @@ theorem h1_square_of_coefficient (f : Y ⟶ X) (m : V ⟶ Y) (k : U ⟶ X) (v : 
     (a : H1Etale.{u, u + 1, wA} X A) :
     coefficientMap β (h1Pullback m B (coefficientMap α (h1Pullback f A a))) =
       coefficientMap δ (h1Pullback v C (coefficientMap γ (h1Pullback k A a))) := by
-  rw [h1Pullback_coefficientMap, h1Pullback_coefficientMap,
-    ← h1Pullback_comp f m A a, ← h1Pullback_comp k v A a]
-  change Sheaf.H.map β 1 (Sheaf.H.map ((inverseImage m).map α) 1
-      (Sheaf.H.map ((inverseImageComp f m).hom.app A) 1 (h1Pullback (m ≫ f) A a))) =
-    Sheaf.H.map δ 1 (Sheaf.H.map ((inverseImage v).map γ) 1
-      (Sheaf.H.map ((inverseImageComp k v).hom.app A) 1 (h1Pullback (v ≫ k) A a)))
-  simp only [← Sheaf.H.map_comp_apply]
-  calc
-    _ = coefficientMap ((inverseImageComp f m).hom.app A ≫ ((inverseImage m).map α ≫ β))
-        (h1Pullback (m ≫ f) A a) :=
-      (Sheaf.H.map_comp_apply ((inverseImageComp f m).hom.app A)
-        ((inverseImage m).map α ≫ β) (h1Pullback (m ≫ f) A a)).symm
-    _ = coefficientMap ((eqToIso (congrArg (fun t => (inverseImage t).obj A) hs)).hom ≫
-        (inverseImageComp k v).hom.app A ≫ (inverseImage v).map γ ≫ δ)
-        (h1Pullback (m ≫ f) A a) :=
-      congrArg (fun t => coefficientMap t (h1Pullback (m ≫ f) A a)) hc
-    _ = coefficientMap ((inverseImageComp k v).hom.app A ≫ ((inverseImage v).map γ ≫ δ))
-        (h1Pullback (v ≫ k) A a) := by
-      rw [coefficientMap_comp]
-      exact congrArg (coefficientMap ((inverseImageComp k v).hom.app A ≫ (inverseImage v).map γ
-          ≫ δ))
-        (Scheme.EtaleCohomology.PointedNaturality.h1Pullback_eq_transport hs A a)
-    _ = _ := Sheaf.H.map_comp_apply ((inverseImageComp k v).hom.app A)
-        ((inverseImage v).map γ ≫ δ) (h1Pullback (v ≫ k) A a)
+  let T := h1Functor.{u, u + 1, wD} (X := V)
+  have hfm := h1Pullback_comp.{u, wA, wB, wD} f m A a
+  have hkv := h1Pullback_comp.{u, wA, wC, wD} k v A a
+  have hα := h1Pullback_coefficientMap.{u, wB, wD} m α
+    (h1Pullback.{u, wA, wB} f A a)
+  have hγ := h1Pullback_coefficientMap.{u, wC, wD} v γ
+    (h1Pullback.{u, wA, wC} k A a)
+  exact Functor.map_coefficient_square_of_family_values T
+    (fun t : V ⟶ X => (inverseImage t).obj A)
+    (fun t : V ⟶ X => h1Pullback.{u, wA, wD} t A a) hs
+    ((inverseImageComp f m).hom.app A) ((inverseImageComp k v).hom.app A)
+    ((inverseImage m).map α) β ((inverseImage v).map γ) δ hc hfm hkv hα hγ
+
 end CohomologySquare
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.CoefficientSquare

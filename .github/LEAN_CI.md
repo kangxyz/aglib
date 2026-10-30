@@ -165,7 +165,20 @@ preserving its working directory, environment and selected toolchain. The
 historical aggregate allowance is 13824 MiB, reduced only when physical RAM
 minus a 2048 MiB runner/system reserve is smaller. Swap is disabled for that
 scope, and the Actions runner stays outside its combined memory limit. The
-maintained libraries all use weak `-M12800 -j4` frontend arguments: a
+scope gets a unique explicit name recorded under this run, attempt and job in
+`RUNNER_TEMP`. Before either cache save, an always-run step outside those scopes
+synchronously stops only the recorded units. Systemd scopes remain live while
+any member process remains, so this also settles Lake/Lean descendants left when
+Actions cancels the outer command. Cache saving and partial-output staging are
+blocked if scope quiescence fails; normal compiler failure still saves completed
+outputs after quiescence. No unrelated job or global process list is targeted.
+This addresses the observed run 41004511190 cancellation race: cache tar reported
+`outputs/Aglib: file changed as we read it` before post-job orphan cleanup killed
+the old timeout, Lake and Lean. Systemd owns the scope stop semantics; the
+regression exercises recorded-scope selection and a live synthetic cache writer.
+See [scope lifecycle](https://www.freedesktop.org/software/systemd/man/latest/systemd.scope.html)
+and [synchronous stop](https://www.freedesktop.org/software/systemd/man/latest/systemctl.html).
+The maintained libraries all use weak `-M12800 -j4` frontend arguments: a
 12800 MiB managed-allocation limit and four threads for their own modules.
 Existing pinned dependencies and the separate auditor retain their own compiler
 arguments; the aggregate scope also bounds those processes. These resource-only

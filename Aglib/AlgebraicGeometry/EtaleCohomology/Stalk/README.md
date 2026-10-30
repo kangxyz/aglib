@@ -16,6 +16,7 @@ object.
 | [BaseChangeChartRelative](BaseChangeChartRelative.lean) | Whole `TwoSquare` interchange of the four original higher exchanges retains both inverse-image square comparisons and eight independent derived models. Its original component formula remains available without Cartesian or invertibility assumptions. |
 | [BaseChangeSectionComparison](BaseChangeSectionComparison.lean) | The original whole unit and relative-exchange equations give the actual section square before coefficient evaluation. Its component view retains the original section pullback and inverse coefficient comparison. This supplies an input to neighborhood-germ comparison, not proper base change by itself. |
 | [ChartExchangeMaps](ChartExchangeMaps.lean) | The chart witness uses the shared whole comparison family. Its original-factor, family-value and `IsIso` views preserve the four arbitrary models and obtain invertibility from the original etale exchange. |
+| [ChartCoefficientNaturality](ChartCoefficientNaturality.lean) | The original chart comparison is natural in the actual coefficient morphism, retaining the independent source, slice and chart Ext worlds. |
 
 ## Geometric neighborhood colimit
 

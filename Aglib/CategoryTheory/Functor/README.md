@@ -31,6 +31,13 @@ components and `Aut.autMulEquivOfIso`.
 comparisons and objectwise coordinate isomorphisms. Its shared compatibility
 predicate preserves the displayed composites and separate category universes.
 
+[CoefficientSquare](CoefficientSquare.lean) assembles an ordinary coefficient
+square on the values of one functor into abelian groups and one indexed
+object/value family. Equality transport is derived from that same family;
+the original elementary composition and coefficient-naturality equations
+then give the complete value square. The native small-etale H1 coefficient
+comparison supplies its original values to this construction.
+
 [ComparisonPasting](ComparisonPasting.lean) constructs one comparison from a
 section transformation and a coefficient transformation. Its whole composition
 and transport laws give a `CommSq` from the original whole unit and relative

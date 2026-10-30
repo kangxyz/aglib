@@ -5137,6 +5137,7 @@ public import Aglib.CategoryTheory.Filtered.AdjointStageHom
 public import Aglib.CategoryTheory.Filtered.FiniteDiagramDescent
 public import Aglib.CategoryTheory.Functor.ActualDiagramLift
 public import Aglib.CategoryTheory.Functor.AutomorphismTransport
+public import Aglib.CategoryTheory.Functor.CoefficientSquare
 public import Aglib.CategoryTheory.Functor.ComparisonPasting
 public import Aglib.CategoryTheory.Functor.CompositionCube
 public import Aglib.CategoryTheory.Functor.CompositionCubeWhole
@@ -5244,6 +5245,7 @@ public import Aglib.CategoryTheory.Sites.Descent.Transfer
 public import Aglib.CategoryTheory.Sites.Elements.SheafCondition
 public import Aglib.CategoryTheory.Sites.Elements.Topology
 public import Aglib.CategoryTheory.Sites.FiniteGroupAction.ModulePropertyDevissage
+public import Aglib.CategoryTheory.Sites.Free.FiniteSumTransfer
 public import Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Aglib.CategoryTheory.Sites.Hypercohomology.ContinuousPullback
 public import Aglib.CategoryTheory.Sites.Hypercohomology.FiniteSumDescent

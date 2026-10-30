@@ -49,3 +49,5 @@ terminal/counit laws. Comparison with a chosen categorical product preserves
 both original projections, under the stated pullback and stability hypotheses.
 
 [Point germ values](Point/Germ.lean) retain the literal germs of native point morphisms. [Represented additive evaluation](Point/RepresentedAdditive.lean) uses the original lifted additive sections and actual point fibre, with the stated full-inclusion and colimit premises. [Section values](Point/SectionValues.lean) assembles the original section and germ squares and cancels the actual invertible chart component. No additional point, section functor or derived realization is chosen.
+
+[FiniteSumTransfer](Free/FiniteSumTransfer.lean) glues finite labelled sums of the original free generators over an arbitrary covering family. It constructs the free-source arrow, proves its local restrictions and terminal rank equation, then normalizes through the original constant-integer source. Only the labels on each chart are finite; the common rank may be zero.

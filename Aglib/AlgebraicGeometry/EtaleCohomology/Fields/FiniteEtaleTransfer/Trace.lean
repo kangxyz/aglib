@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Fields.FiniteEtaleTransfer.Gluing
+public import Aglib.CategoryTheory.Sites.Free.FiniteSumTransfer
 public import Aglib.AlgebraicGeometry.FundamentalGroup.Field.ArbitraryGalois
 public import Aglib.AlgebraicGeometry.EtaleCohomology.StrictlyLocal.Site
 
@@ -48,8 +49,6 @@ theorem exists_freeRepresentable_transfer (n : ℕ) (hn : ∀ x : X, Y.obj.hom.f
   let T : X.Etale := Scheme.Etale.mk (𝟙 X)
   let hT : IsTerminal T :=
     MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X
-  let U := (toEtale X).obj Y
-  let F := freeAbelianSheaf.{u + 1} J U
   choose V A e v hv using exists_labelled_chart Y
   let p (x : X) : V x ⟶ T := hT.from (V x)
   have hp : Sieve.ofArrows V p ∈ J T :=
@@ -59,49 +58,11 @@ theorem exists_freeRepresentable_transfer (n : ℕ) (hn : ∀ x : X, Y.obj.hom.f
       change (p x).left ≫ 𝟙 X = (V x).hom at hw
       have hw' : (p x).left = (V x).hom := (Category.comp_id (p x).left).symm.trans hw
       exact (congrArg (fun k : (V x).left ⟶ X => k (v x)) hw').trans (hv x))
-  obtain ⟨t, ht, _⟩ := existsUnique_section_of_cover.{u + 1, u, u + 1, u} J F V p hp
-    (fun x => chartSum Y (e x))
+  obtain ⟨τ, _hlocal, hτ⟩ := exists_freeRepresentable_transfer_of_cover.{u + 1} J hT
+    V p hp (fun x => A x) (fun x => chartSiteSection Y (e x))
     (fun i j W f g _ => chartSum_matching Y V A e i j W f g)
-  let τ := (sectionsAddEquiv.{u + 1} J T F).symm t
-  have hτ : sectionsAddEquiv.{u + 1} J T F τ = t :=
-    (sectionsAddEquiv.{u + 1} J T F).apply_symm_apply t
-  have hlocal (x : X) : (freeAbelianSheafFunctor.{u + 1} J).map (p x) ≫ τ =
-      ∑ a : A x, (freeAbelianSheafFunctor.{u + 1} J).map (chartSiteSection Y (e x) a) := by
-    apply (sectionsAddEquiv.{u + 1} J (V x) F).injective
-    calc
-      _ = F.obj.map (p x).op (sectionsAddEquiv.{u + 1} J T F τ) :=
-        Sheaf.BasisAcyclicity.sectionsEquiv_precomp J (p x) F τ
-      _ = chartSum Y (e x) := (congrArg (F.obj.map (p x).op) hτ).trans (ht x)
-      _ = _ := by
-        simp only [map_sum, chartSum, representedSum, representedGenerator]
-        rfl
-  refine ⟨τ, ?_⟩
-  apply (sectionsAddEquiv.{u + 1} J T (freeAbelianSheaf.{u + 1} J T)).injective
-  apply section_eq_of_cover.{u + 1, u, u + 1, u} J V p hp
-  intro x
-  change (freeAbelianSheaf.{u + 1} J T).obj.map (p x).op
-      (sectionsEquiv.{u + 1} J T _ _) =
-    (freeAbelianSheaf.{u + 1} J T).obj.map (p x).op
-      (sectionsEquiv.{u + 1} J T _ _)
-  rw [← Sheaf.BasisAcyclicity.sectionsEquiv_precomp,
-    ← Sheaf.BasisAcyclicity.sectionsEquiv_precomp]
-  apply congrArg (sectionsEquiv.{u + 1} J (V x) _)
-  rw [← Category.assoc, hlocal, Preadditive.sum_comp]
-  have hc : Fintype.card (A x) = n := (chartSplitting_card Y (e x) (v x)).trans (hn _)
-  have heq (a : A x) : chartSiteSection Y (e x) a ≫ hT.from U = p x :=
-    hT.hom_ext _ _
-  change (∑ a : A x, (freeAbelianSheafFunctor.{u + 1} J).map
-      (chartSiteSection Y (e x) a) ≫ (freeAbelianSheafFunctor.{u + 1} J).map (hT.from U)) =
-    (freeAbelianSheafFunctor.{u + 1} J).map (p x) ≫
-      (n • 𝟙 ((freeAbelianSheafFunctor.{u + 1} J).obj T))
-  rw [Preadditive.comp_nsmul, Category.comp_id]
-  calc
-    _ = ∑ _a : A x, (freeAbelianSheafFunctor.{u + 1} J).map (p x) := by
-      apply Finset.sum_congr rfl
-      intro a _ha
-      exact ((freeAbelianSheafFunctor.{u + 1} J).map_comp _ _).symm.trans
-        (congrArg (freeAbelianSheafFunctor.{u + 1} J).map (heq a))
-    _ = _ := by rw [Finset.sum_const, Finset.card_univ, hc]
+    n (fun x => (chartSplitting_card Y (e x) (v x)).trans (hn _))
+  exact ⟨τ, hτ⟩
 
 /-- The same transfer with the exact original constant-integer source and
 represented augmentation used by field restriction. -/
@@ -115,13 +76,10 @@ theorem exists_normalized_transfer (n : ℕ) (hn : ∀ x : X, Y.obj.hom.finrank 
         (constantIntegerFreeTerminalIso (Scheme.smallEtaleTopology X)
           (MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X)).inv) =
         n • 𝟙 _ := by
-  obtain ⟨τ, hτ⟩ := exists_freeRepresentable_transfer Y n hn
-  let e := constantIntegerFreeTerminalIso.{u + 1, u, u + 1} (Scheme.smallEtaleTopology X)
+  exact exists_normalized_transfer_of_freeRepresentable.{u + 1}
+    (Scheme.smallEtaleTopology X)
     (MorphismProperty.Over.mkIdTerminal (@Etale : MorphismProperty Scheme.{u}) X)
-  refine ⟨e.hom ≫ τ, ?_⟩
-  change (e.hom ≫ τ) ≫ (_ ≫ e.inv) = n • 𝟙 _
-  rw [Category.assoc, ← Category.assoc τ, hτ, Preadditive.nsmul_comp,
-    Category.id_comp, Preadditive.comp_nsmul, Iso.hom_inv_id]
+    n (exists_freeRepresentable_transfer Y n hn)
 
 end AlgebraicGeometry.Scheme.FiniteEtale
 

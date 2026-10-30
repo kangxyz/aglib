@@ -30,7 +30,11 @@ defaults:
       "ci_memory_mb=$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / 1048576 - 2048 ));
       if test \"$ci_memory_mb\" -gt 13824; then ci_memory_mb=13824; fi;
       printf \"Native resources: group=%s MiB, Lake threads=1, CPUs=%s\n\" \"$ci_memory_mb\" \"$(nproc)\";
+      scope_dir=\"$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB\";
+      scope=\"lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-$(printf '%s' \"$0\" | sha256sum | cut -c1-20).scope\";
+      mkdir -p \"$scope_dir\"; printf '%s\n' \"$scope\" > \"$scope_dir/$scope\";
       exec sudo --preserve-env systemd-run --scope --quiet --collect
+      --unit=\"$scope\"
       --uid=\"$(id -u)\" --gid=\"$(id -g)\"
       --property=\"MemoryMax=$ci_memory_mb\"M --property=MemorySwapMax=0
       /usr/bin/env \"PATH=$PATH\" LEAN_NUM_THREADS=1
@@ -219,8 +223,46 @@ jobs:
             echo "::warning::Build stopped with timeout/kill status $status at the job's compiler cutoff. Partial outputs will be saved where possible by the following cache steps; rerun this branch to resume the incremental build."
           fi
           exit "$status"
-      - name: Save compilation independently of Test and lint
+      - name: Quiesce this job's native scopes before cache saving
+        id: quiesce
         if: ${{ always() }}
+        timeout-minutes: 3
+        shell: bash
+        run: &quiesce-native-scopes |
+          # Cancellation can end systemd-run while Lake/Lean remain in its scope.
+          # Stop only units recorded by this exact run/attempt/job; never scan PIDs.
+          prefix="lean-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB-"
+          directory="$RUNNER_TEMP/lean-ci-scopes/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$GITHUB_JOB"
+          test ! -L "$directory"
+          shopt -s nullglob
+          for marker in "$directory"/*.scope; do
+            test -f "$marker" && test ! -L "$marker"
+            unit=$(basename "$marker")
+            case "$unit" in
+              "$prefix"*.scope) ;;
+              *) echo "::error::Unexpected native scope marker: $unit"; exit 1 ;;
+            esac
+            test "$(cat "$marker")" = "$unit"
+            load=$(sudo systemctl show --property=LoadState --value -- "$unit")
+            if test "$load" = not-found; then
+              continue  # --collect already removed a scope whose processes exited.
+            fi
+            # No --no-block: cache readers must wait for the scope's processes.
+            if ! sudo systemctl stop -- "$unit"; then
+              # A naturally exiting --collect scope can disappear after show.
+              load=$(sudo systemctl show --property=LoadState --value -- "$unit")
+              if test "$load" = not-found; then continue; fi
+              echo "::error::Could not stop native scope: $unit"
+              exit 1
+            fi
+            state=$(sudo systemctl show --property=ActiveState --value -- "$unit")
+            if test "$state" != inactive; then
+              echo "::error::Native scope did not quiesce: $unit ($state)"
+              exit 1
+            fi
+          done
+      - name: Save compilation independently of Test and lint
+        if: ${{ always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -229,7 +271,7 @@ jobs:
           key: ${{ steps.restore.outputs.cache-primary-key }}
       - name: Stage completed native outputs
         id: stage
-        if: ${{ always() && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
+        if: ${{ always() && steps.quiesce.outcome == 'success' && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
         working-directory: ${{ inputs.package-directory }}
         run: |
           if test -s "$RUNNER_TEMP/outputs.jsonl"; then
@@ -458,8 +500,14 @@ jobs:
             lake env "$tool/.lake/build/bin/axiom-audit" --root "$root" || result=1
           done
           exit "$result"
-      - name: Save completed Test compilation
+      - name: Quiesce this job's native scopes before cache saving
+        id: quiesce
         if: ${{ always() }}
+        timeout-minutes: 3
+        shell: bash
+        run: *quiesce-native-scopes
+      - name: Save completed Test compilation
+        if: ${{ always() && steps.quiesce.outcome == 'success' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |

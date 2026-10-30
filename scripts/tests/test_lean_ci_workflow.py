@@ -11,6 +11,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 import tomllib
 import unittest
 
@@ -176,8 +177,9 @@ class WorkflowGates(unittest.TestCase):
     def test_failure_and_cancellation_keep_cache_cleanup_enabled(self):
         for job, name in (('build', 'Save compilation independently of Test and lint'),
                           ('test_lint', 'Save completed Test compilation')):
-            self.assertTrue(condition(step(job, name)['if'], {}, success=False))
-            self.assertTrue(condition(step(job, name)['if'], {}, success=False, cancelled=True))
+            values = {'steps.quiesce.outcome': 'success'}
+            self.assertTrue(condition(step(job, name)['if'], values, success=False))
+            self.assertTrue(condition(step(job, name)['if'], values, success=False, cancelled=True))
 
     def test_each_job_restores_native_and_lake_cache_once_together(self):
         for name in ('build', 'test_lint'):
@@ -502,7 +504,7 @@ timeout() {
     def test_partial_cache_save_precedes_staging_and_new_attempt_can_restore_it(self):
         actions = JOBS['build']['steps']
         save = step('build', 'Save compilation independently of Test and lint')
-        self.assertTrue(condition(save['if'], {}, success=False))
+        self.assertTrue(condition(save['if'], {'steps.quiesce.outcome': 'success'}, success=False))
         self.assertEqual(save['with']['path'].splitlines(),
                          ['${{ inputs.package-directory }}/.lake', '${{ runner.temp }}/lake-native-cache'])
         self.assertLess(actions.index(step('build', 'Build')), actions.index(save))
@@ -672,7 +674,9 @@ os.execv(args[index],args[index:])
                     result = subprocess.run(runner_arguments(shell.format(script)), cwd=root,
                         env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
                              'FIXTURE_PAGES': str(memory * 256), 'STATUS': str(status),
-                             'TRACE': str(root / 'trace'), 'VISIBLE_INPUT': 'retained'},
+                             'TRACE': str(root / 'trace'), 'VISIBLE_INPUT': 'retained',
+                             'RUNNER_TEMP': str(root), 'GITHUB_RUN_ID': '123',
+                             'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': 'build'},
                         text=True, capture_output=True)
                     self.assertEqual(result.returncode, status, result.stderr)
                     args = json.loads((root / 'trace').read_text())
@@ -681,6 +685,10 @@ os.execv(args[index],args[index:])
                     self.assertIn('--gid=' + str(os.getgid()), args)
                     self.assertIn(f'--property=MemoryMax={expected}M', args)
                     self.assertIn('--property=MemorySwapMax=0', args)
+                    unit = 'lean-ci-123-2-build-' + hashlib.sha256(str(script).encode()).hexdigest()[:20] + '.scope'
+                    self.assertIn('--unit=' + unit, args)
+                    marker = root / 'lean-ci-scopes/123-2-build' / unit
+                    self.assertEqual(marker.read_text().strip(), unit)
 
     def test_each_library_keeps_native_weak_resource_arguments(self):
         for name, threads in (('aglib', 4), ('quillen-k-theory', 4), ('motivic', 4)):
@@ -689,6 +697,127 @@ os.execv(args[index],args[index:])
                 continue
             config = tomllib.loads((root / 'lakefile.toml').read_text())
             self.assertEqual(config['weakLeanArgs'], ['-M12800', f'-j{threads}'])
+
+
+class NativeScopeQuiescence(unittest.TestCase):
+    name = "Quiesce this job's native scopes before cache saving"
+
+    def test_cancellation_quiesces_before_save_and_failed_quiescence_blocks_cache_readers(self):
+        for job, save in (('build', 'Save compilation independently of Test and lint'),
+                          ('test_lint', 'Save completed Test compilation')):
+            actions = JOBS[job]['steps']
+            cleanup = step(job, self.name)
+            self.assertEqual(cleanup['shell'], 'bash')  # Outside the scopes it stops.
+            self.assertFalse(cleanup.get('continue-on-error', False))
+            self.assertTrue(condition(cleanup['if'], {}, success=False, cancelled=True))
+            self.assertLess(actions.index(cleanup), actions.index(step(job, save)))
+            for outcome in ('success', 'failure', 'skipped', 'cancelled'):
+                values = {'steps.quiesce.outcome': outcome, 'steps.build.outcome': 'failure'}
+                self.assertEqual(condition(step(job, save)['if'], values,
+                                           success=False, cancelled=True), outcome == 'success')
+                if job == 'build':
+                    self.assertEqual(condition(step(job, 'Stage completed native outputs')['if'],
+                                               values, success=False), outcome == 'success')
+
+    def run_cleanup(self, root, *, failed=False, collected_during_stop=False):
+        binary = root / 'bin'; binary.mkdir(exist_ok=True)
+        (binary / 'sudo').write_text('#!/bin/sh\nexec "$@"\n')
+        (binary / 'systemctl').write_text(f'#!{sys.executable}\n' + r'''
+import json,os,signal,sys,time
+from pathlib import Path
+root=Path(os.environ['FIXTURE_ROOT']); args=sys.argv[1:]
+with (root/'calls').open('a') as stream: stream.write(json.dumps(args)+'\n')
+if os.environ.get('FIXTURE_FAIL') == '1': sys.exit(7)
+units=json.loads((root/'units.json').read_text()); unit=args[-1]; data=units.get(unit)
+if (root/'collected').exists(): data=None
+if args[0]=='show':
+    if '--property=LoadState' in args: print('loaded' if data else 'not-found')
+    else: print('inactive' if not data or Path(data['stopped']).exists() else 'active')
+elif args[0]=='stop':
+    if os.environ.get('FIXTURE_COLLECTED') == '1':
+        (root/'collected').touch(); sys.exit(5)
+    assert data, 'must not stop an unknown or unrecorded unit'
+    os.kill(data['pid'],signal.SIGTERM)
+    until=time.monotonic()+2
+    while not Path(data['stopped']).exists():
+        if time.monotonic()>until: sys.exit(8)
+        time.sleep(.01)
+else: sys.exit(9)
+''')
+        for file in binary.iterdir(): file.chmod(0o755)
+        return subprocess.run(['bash', '-eo', 'pipefail', '-c', step('build', self.name)['run']],
+                              env={**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH'],
+                                   'RUNNER_TEMP': str(root), 'GITHUB_RUN_ID': '123',
+                                   'GITHUB_RUN_ATTEMPT': '2', 'GITHUB_JOB': 'build',
+                                   'FIXTURE_ROOT': str(root), 'FIXTURE_FAIL': '1' if failed else '0',
+                                   'FIXTURE_COLLECTED': '1' if collected_during_stop else '0'},
+                              text=True, capture_output=True, timeout=5)
+
+    def test_live_owned_cache_writer_stops_and_other_job_keeps_running(self):
+        with tempfile.TemporaryDirectory(prefix='ci-scope-writer-') as directory:
+            root = Path(directory)
+            writer = ('import signal,sys,time\nfrom pathlib import Path\n'
+                      'output,stopped=map(Path,sys.argv[1:])\n'
+                      'def finish(*_):\n stopped.write_text("stopped"); sys.exit(0)\n'
+                      'signal.signal(signal.SIGTERM,finish)\n'
+                      'while True:\n output.write_text(str(time.monotonic())); time.sleep(.01)\n')
+            owned = subprocess.Popen([sys.executable, '-c', writer, str(root/'owned-output'), str(root/'owned-stopped')])
+            foreign = subprocess.Popen([sys.executable, '-c', writer, str(root/'foreign-output'), str(root/'foreign-stopped')])
+            try:
+                until = time.monotonic() + 2
+                while not all((root/name).exists() for name in ('owned-output', 'foreign-output')):
+                    self.assertLess(time.monotonic(), until)
+                    time.sleep(.01)
+                unit = 'lean-ci-123-2-build-owned.scope'
+                markers = root / 'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+                (markers / unit).write_text(unit + '\n')
+                gone = 'lean-ci-123-2-build-already-collected.scope'
+                (markers / gone).write_text(gone + '\n')
+                other = root / 'lean-ci-scopes/999-1-test'; other.mkdir()
+                foreign_unit = 'lean-ci-999-1-test-foreign.scope'
+                (other/foreign_unit).write_text(foreign_unit+'\n')
+                (root/'units.json').write_text(json.dumps({
+                    unit: {'pid': owned.pid, 'stopped': str(root/'owned-stopped')},
+                    foreign_unit: {'pid': foreign.pid, 'stopped': str(root/'foreign-stopped')}}))
+                result = self.run_cleanup(root)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(owned.wait(timeout=2), 0)
+                completed = (root/'owned-output').read_bytes()
+                time.sleep(.05)
+                self.assertEqual((root/'owned-output').read_bytes(), completed)
+                self.assertIsNone(foreign.poll())
+                self.assertFalse((root/'foreign-stopped').exists())
+                calls = [json.loads(line) for line in (root/'calls').read_text().splitlines()]
+                self.assertEqual([c[-1] for c in calls if c[0]=='stop'], [unit])
+                self.assertNotIn(foreign_unit, [c[-1] for c in calls])
+            finally:
+                for process in (owned, foreign):
+                    if process.poll() is None: process.terminate()
+                    process.wait(timeout=2)
+
+    def test_unexpected_marker_and_systemctl_failure_are_not_masked(self):
+        for invalid, failed in ((True, False), (False, True)):
+            with self.subTest(invalid=invalid), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                markers = root/'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+                unit = 'foreign.scope' if invalid else 'lean-ci-123-2-build-owned.scope'
+                (markers/unit).write_text(unit+'\n')
+                (root/'units.json').write_text('{}')
+                result = self.run_cleanup(root, failed=failed)
+                self.assertNotEqual(result.returncode, 0)
+                calls = (root/'calls').read_text() if (root/'calls').exists() else ''
+                self.assertNotIn('"stop"', calls)
+
+    def test_scope_collected_between_query_and_stop_is_already_quiescent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            markers = root/'lean-ci-scopes/123-2-build'; markers.mkdir(parents=True)
+            unit = 'lean-ci-123-2-build-finished.scope'
+            (markers/unit).write_text(unit+'\n')
+            (root/'units.json').write_text(json.dumps({unit: {'stopped': str(root/'finished')}}))
+            result = self.run_cleanup(root, collected_during_stop=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue((root/'collected').exists())
 
 
 class CheckerBoundaryAndLintTimeout(unittest.TestCase):
