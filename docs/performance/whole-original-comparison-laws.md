@@ -17,3 +17,9 @@ Failed 126/167s and repaired frontend times concern different inputs and context
 they establish no matched speedup, per-tactic cost or unique conversion pair.
 Only the assigned nine-file scope closes; no global improvement, whole-étale
 closure or R4 resolution is claimed.
+
+The [Relative inverse rectangle follow-up](cases/whole-original-comparison-laws/relative-follow-up/README.md)
+retains the actual indexed family and rectangle equality through generic inverse
+cancellation. Its exact proposition-formation probe is distinct from the final
+two-module pass; neither timing establishes a matched speedup or unique kernel
+cause.

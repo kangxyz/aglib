@@ -87,6 +87,15 @@ coherent data. Then evaluate with raw variable-category lemmas at those same
 heads. Share the original coefficient constructor and instantiate its actual
 functors, units and adjunctions once; same-endpoint isos alone do not preserve
 the map. [Whole original comparison laws](performance/whole-original-comparison-laws.md).
+
+For an inverse rectangle, prove the whole law on the five original comparison
+isomorphisms before choosing a coefficient. Evaluate generic inverse and prefix
+cancellation while retaining the actual indexed family and rectangle equality,
+so the conclusion contains the original objectwise equality transport. The
+Relative case separates a native kernel failure, formation-only probe and later
+source-bound module pass; it establishes no unique cause or controlled speedup.
+[Relative inverse rectangle follow-up](performance/cases/whole-original-comparison-laws/relative-follow-up/README.md).
+
 [Whole module exchange](performance/whole-module-exchange-comparisons-before-evaluating-components.md),
 [site-cohomology factories](performance/site-cohomology-share-the-comparison-definition-not-only-its-proof.md).
 For a sheafified tensor associator, prove typed three-isomorphism cancellation
