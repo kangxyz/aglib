@@ -239,6 +239,19 @@ etale structural maps on supplied finite locally closed partitions; the geometri
 partitions for affine structural maps and separated-base affine generators
 are constructed by the finite-stratification suppliers below.
 
+[FixedTargetData](PositivePresentation/NoetherianModels/FixedTargetData.lean)
+keeps the original fixed-model coefficient system, stage comparisons and
+coefficient-limit isomorphism. Its displayed stage and limit maps are the
+original inverse/direct-image adjunction units.
+[FixedTargetTriangle](PositivePresentation/NoetherianModels/FixedTargetTriangle.lean)
+derives their common calculations from unit naturality and the independently
+proved native identity triangle.
+[FixedTargetHom](PositivePresentation/NoetherianModels/FixedTargetHom.lean)
+uses the original Hom cocone and the lower `AdjointStageHom` factorization and
+eventual-equality arguments to obtain the actual later-stage maps. These
+statements retain the original affine-transition and finite-colimit-stage
+hypotheses and allow every modulus, including zero.
+
 ## General finite-diagram closure
 
 [ConstantRestriction](FiniteColimits/ConstantRestriction.lean) preserves the

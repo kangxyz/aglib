@@ -38,10 +38,8 @@ theorem adjoint_unit_of_iso {C D : Type*} [Category* C] [Category* D]
     {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) {A B : C}
     (e : A ≅ B) (m : L.obj A ⟶ L.obj B) (hm : m = L.map e.hom) :
     e.inv ≫ adj.homEquiv _ _ m = adj.unit.app B := by
-  have h := (congrArg (adj.homEquiv _ _) hm).trans (homEquiv_map_unit adj e.hom)
-  exact (congrArg (fun k => e.inv ≫ k) h).trans
-    ((Category.assoc e.inv e.hom (adj.unit.app B)).symm.trans
-      ((congrArg (fun k => k ≫ adj.unit.app B) e.inv_hom_id).trans (Category.id_comp _)))
+  rw [hm, homEquiv_map_unit]
+  exact e.inv_hom_id_assoc _
 
 /-- Keep a supplied target transport in the same original adjunction calculation. -/
 theorem adjoint_unit_of_comparison {C D : Type*} [Category* C] [Category* D]
@@ -65,8 +63,7 @@ theorem identity_triangle_transport {C D A B : Type*}
       (P q).map ((eqToIso (congrArg Q hδ) ≪≫ e).hom.app M) := by
   cases hr
   cases hδ
-  simp only [eqToHom_refl, Category.comp_id, eqToIso_refl, Iso.refl_trans]
-  exact hT _ M
+  simpa only [eqToHom_refl, Category.comp_id, eqToIso_refl, Iso.refl_trans] using hT _ M
 
 /-- The fixed-endpoint form has no residual identity transport to normalize. -/
 theorem identity_triangle_transport_same {C D A B : Type*}
@@ -144,11 +141,8 @@ theorem point_composition {C : Type*} [Category* C] {A B D E F : C}
     (m : B ⟶ E) (v : B ⟶ F) (w : A ⟶ F)
     (ha : a ≫ l = m) (hm : m ≫ t = v) (hv : e ≫ v = w) :
     (e ≫ a) ≫ l ≫ t = w := by
-  calc
-    _ = e ≫ (a ≫ l) ≫ t := by simp only [Category.assoc]
-    _ = e ≫ m ≫ t := congrArg (fun k => e ≫ k ≫ t) ha
-    _ = e ≫ v := congrArg (fun k => e ≫ k) hm
-    _ = w := hv
+  rw [Category.assoc e a (l ≫ t), ← Category.assoc a l t, ha, hm]
+  exact hv
 
 end NoetherianModels.FixedTargetTriangle
 end AlgebraicGeometry.Scheme.EtaleCohomology.Constructible.PositivePresentation

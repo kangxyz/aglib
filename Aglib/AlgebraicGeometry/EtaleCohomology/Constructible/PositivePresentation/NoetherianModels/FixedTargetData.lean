@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.PositivePresentation.NoetherianModels.FixedTargetTriangle
+public import Mathlib.CategoryTheory.IsConnected
 
 /-! # Original bounded targets pulled from a fixed model
 
@@ -106,43 +107,28 @@ theorem baseRightTailUnit_value (n : ℕ)
       (inverseImageAdjunction (X.map a.hom).unop).homEquiv _ _
         ((pullbackTriangleIso (r.app a.right).unop (r.app i).unop (X.map a.hom).unop
           (congrArg Quiver.Hom.unop (b.w a.hom))).inv.app B.obj) := rfl
-  have hvalue : e ≫
-      (inverseImageAdjunction (X.map a.hom).unop).homEquiv _ _
-        ((pullbackTriangleIso (r.app a.right).unop (r.app i).unop (X.map a.hom).unop
-          (congrArg Quiver.Hom.unop (b.w a.hom))).inv.app B.obj) ≫
-      (directImage (X.map a.hom).unop).map (baseStageIso X i r hr n B a).hom =
-      (inverseImageAdjunction (X.map a.hom).unop).unit.app B.obj :=
+  have hvalue :=
     adjoint_triangle_identity (r.app i).unop (congrArg Quiver.Hom.unop hr)
-    (X.map a.hom).unop (r.app a.right).unop
-    (congrArg Quiver.Hom.unop (b.w a.hom))
-    (congrArg Quiver.Hom.unop (baseCone_leg X i r hr a)) B.obj
-  exact (Category.assoc e (F.map a.hom)
+      (X.map a.hom).unop (r.app a.right).unop
+      (congrArg Quiver.Hom.unop (b.w a.hom))
+      (congrArg Quiver.Hom.unop (baseCone_leg X i r hr a)) B.obj
+  have hfinal := (Category.assoc e (F.map a.hom)
     ((directImage (X.map a.hom).unop).map (baseStageIso X i r hr n B a).hom)).trans
       ((congrArg (fun k => e ≫ k ≫
         (directImage (X.map a.hom).unop).map (baseStageIso X i r hr n B a).hom) hmap).trans
           hvalue)
+  exact hfinal
 
 variable [IsFiltered I] (c : Cocone X)
 
 include hr in
 /-- The fixed-base cone and original limit cocone have their actual common composite. -/
 theorem baseCone_fac (j : I) : r.app j ≫ c.ι.app j = c.ι.app i := by
-  let a := IsFiltered.leftToMax i j
-  let b := IsFiltered.rightToMax i j
-  have ha : r.app (IsFiltered.max i j) = X.map a :=
-    baseCone_leg X i r hr (Under.mk a)
-  have hb : r.app (IsFiltered.max i j) = r.app j ≫ X.map b := by
-    have h := r.naturality b
-    change 𝟙 (X.obj i) ≫ r.app (IsFiltered.max i j) = r.app j ≫ X.map b at h
-    exact (Category.id_comp _).symm.trans h
-  calc
-    r.app j ≫ c.ι.app j = r.app j ≫ X.map b ≫ c.ι.app (IsFiltered.max i j) := by
-      rw [c.w b]
-    _ = r.app (IsFiltered.max i j) ≫ c.ι.app (IsFiltered.max i j) := by
-      rw [← Category.assoc, ← hb]
-    _ = X.map a ≫ c.ι.app (IsFiltered.max i j) :=
-      congrArg (fun k => k ≫ c.ι.app (IsFiltered.max i j)) ha
-    _ = c.ι.app i := c.w a
+  let : IsConnected I := IsFiltered.isConnected I
+  have h := nat_trans_from_is_connected (r ≫ c.ι) j i
+  change r.app j ≫ c.ι.app j = r.app i ≫ c.ι.app i at h
+  exact h.trans ((congrArg (fun k : X.obj i ⟶ X.obj i => k ≫ c.ι.app i) hr).trans
+    (Category.id_comp (c.ι.app i)))
 
 local instance : IsConnected I := IsFiltered.isConnected I
 
@@ -169,26 +155,17 @@ theorem baseRightTailUnit_point (n : ℕ)
   let l := diagramRightTailLeg X F c a.hom
   have hleg : F.map a.hom ≫ l = diagramAdjointLeg X c F i :=
     (diagramAdjointLeg_naturality X c F a.hom).symm
-  have hins : colimit.ι (coneCoefficientFunctor X c F) i ≫ E.hom =
-      (pullbackTriangleIso (c.ι.app i).unop (r.app i).unop (c.ι.app i).unop
-        (congrArg Quiver.Hom.unop (baseCone_fac X i r hr c i))).inv.app B.obj :=
+  have hins :=
     Stalk.ι_pullbackLimitCoefficientIso_hom X (Cone.mk (X.obj i) r) c (c.ι.app i)
       (baseCone_fac X i r hr c) B.obj i
-  have hunit : e ≫
-      (inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _
-        ((pullbackTriangleIso (c.ι.app i).unop (r.app i).unop (c.ι.app i).unop
-          (congrArg Quiver.Hom.unop (baseCone_fac X i r hr c i))).inv.app B.obj) =
-      (inverseImageAdjunction (c.ι.app i).unop).unit.app B.obj :=
+  have hunit :=
     adjoint_triangle_identity_same (r.app i).unop (congrArg Quiver.Hom.unop hr)
       (c.ι.app i).unop (congrArg Quiver.Hom.unop (baseCone_fac X i r hr c i)) B.obj
-  have htrans : diagramAdjointLeg X c F i ≫
-      (directImage (c.ι.app i).unop).map E.hom =
-      (inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _
-        ((pullbackTriangleIso (c.ι.app i).unop (r.app i).unop (c.ι.app i).unop
-          (congrArg Quiver.Hom.unop (baseCone_fac X i r hr c i))).inv.app B.obj) :=
+  have htrans0 :=
     ((inverseImageAdjunction (c.ι.app i).unop).homEquiv_naturality_right
-      (colimit.ι (coneCoefficientFunctor X c F) i) E.hom).symm.trans
-        (congrArg ((inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _) hins)
+      (colimit.ι (coneCoefficientFunctor X c F) i) E.hom).symm
+  have htrans := htrans0.trans
+    (congrArg ((inverseImageAdjunction (c.ι.app i).unop).homEquiv _ _) hins)
   exact point_composition e (F.map a.hom) l ((directImage (c.ι.app i).unop).map E.hom)
     (diagramAdjointLeg X c F i) _ _ hleg htrans hunit
 
