@@ -5205,6 +5205,7 @@ public import Aglib.CategoryTheory.Monoidal.GrpObjShear
 public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
+public import Aglib.CategoryTheory.MorphismProperty.OverPullbackCoherence
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj

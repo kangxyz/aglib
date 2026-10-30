@@ -5,6 +5,10 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Adjunction.Mates.SelectedCoherence
+
+public import Aglib.CategoryTheory.MorphismProperty.OverPullbackCoherence
+
 public import Aglib.CategoryTheory.Adjunction.Mates.SourceCoherence
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
@@ -51,20 +55,16 @@ open CategoryTheory.Limits
 theorem siteBaseChange_eqToHom_fst {X S : Scheme.{u}} {f g : S ⟶ X}
     (h : f = g) (U : X.Etale) :
     (eqToHom (congrArg (fun k => (siteBaseChange k).obj U) h)).left ≫
-        pullback.fst U.hom g = pullback.fst U.hom f := by
-  subst g
-  change (𝟙 _) ≫ pullback.fst U.hom f = _
-  exact Category.id_comp _
+        pullback.fst U.hom g = pullback.fst U.hom f :=
+  MorphismProperty.Over.pullbackCoherence_eqToHom_fst (P := @Etale) (Q := ⊤) h U
 
 /-- Transport along equality of base maps preserves the structural pullback projection. -/
 @[reassoc (attr := simp)]
 theorem siteBaseChange_eqToHom_snd {X S : Scheme.{u}} {f g : S ⟶ X}
     (h : f = g) (U : X.Etale) :
     (eqToHom (congrArg (fun k => (siteBaseChange k).obj U) h)).left ≫
-        pullback.snd U.hom g = pullback.snd U.hom f := by
-  subst g
-  change (𝟙 _) ≫ pullback.snd U.hom f = _
-  exact Category.id_comp _
+        pullback.snd U.hom g = pullback.snd U.hom f :=
+  MorphismProperty.Over.pullbackCoherence_eqToHom_snd (P := @Etale) (Q := ⊤) h U
 
 /-- Underlying scheme maps of composable étale arrows compose without extra transports. -/
 @[simp]
@@ -79,24 +79,23 @@ theorem etaleHom_id_left {X : Scheme.{u}} (U : X.Etale) :
 /-- The structural arrow of the original base-changed étale object. -/
 @[simp]
 theorem siteBaseChange_obj_hom {X S : Scheme.{u}} (f : S ⟶ X) (U : X.Etale) :
-    ((siteBaseChange f).obj U).hom = pullback.snd U.hom f := rfl
+    ((siteBaseChange f).obj U).hom = pullback.snd U.hom f :=
+  MorphismProperty.Over.pullbackCoherence_obj_hom (P := @Etale) (Q := ⊤) f U
 
 /-- The first projection of the original site base-change map. -/
 @[reassoc (attr := simp)]
 theorem siteBaseChange_map_fst {X S : Scheme.{u}} (f : S ⟶ X)
     {U V : X.Etale} (a : U ⟶ V) :
     ((siteBaseChange f).map a).left ≫ pullback.fst V.hom f =
-      pullback.fst U.hom f ≫ a.left := by
-  change pullback.lift _ _ _ ≫ pullback.fst _ _ = _
-  exact pullback.lift_fst _ _ _
+      pullback.fst U.hom f ≫ a.left :=
+  MorphismProperty.Over.pullbackCoherence_map_fst (P := @Etale) (Q := ⊤) f a
 
 /-- The structural projection of the original site base-change map. -/
 @[reassoc (attr := simp)]
 theorem siteBaseChange_map_snd {X S : Scheme.{u}} (f : S ⟶ X)
     {U V : X.Etale} (a : U ⟶ V) :
-    ((siteBaseChange f).map a).left ≫ pullback.snd V.hom f = pullback.snd U.hom f := by
-  change pullback.lift _ _ _ ≫ pullback.snd _ _ = _
-  exact pullback.lift_snd _ _ _
+    ((siteBaseChange f).map a).left ≫ pullback.snd V.hom f = pullback.snd U.hom f :=
+  MorphismProperty.Over.pullbackCoherence_map_snd (P := @Etale) (Q := ⊤) f a
 
 /-- The original composition comparison preserves the projection to the étale object. -/
 @[reassoc (attr := simp)]
@@ -105,7 +104,7 @@ theorem siteBaseChangeComp_hom_fst_fst {X S T : Scheme.{u}}
     ((siteBaseChangeComp f g).hom.app U).left ≫
         pullback.fst (pullback.snd U.hom f) g ≫ pullback.fst U.hom f =
       pullback.fst U.hom (g ≫ f) :=
-  MorphismProperty.Over.pullbackComp_left_fst_fst g f U
+  MorphismProperty.Over.pullbackCompositionIso_hom_fst_fst (P := @Etale) (Q := ⊤) f g U
 
 /-- The middle structural projection of the original composition comparison. -/
 @[reassoc (attr := simp)]
@@ -113,8 +112,8 @@ theorem siteBaseChangeComp_hom_fst_snd {X S T : Scheme.{u}}
     (f : S ⟶ X) (g : T ⟶ S) (U : X.Etale) :
     ((siteBaseChangeComp f g).hom.app U).left ≫
         pullback.fst (pullback.snd U.hom f) g ≫ pullback.snd U.hom f =
-      pullback.snd U.hom (g ≫ f) ≫ g := by
-  simp [siteBaseChangeComp]
+      pullback.snd U.hom (g ≫ f) ≫ g :=
+  MorphismProperty.Over.pullbackCompositionIso_hom_fst_snd (P := @Etale) (Q := ⊤) f g U
 
 /-- The final structural projection of the original composition comparison. -/
 @[reassoc (attr := simp)]
@@ -122,12 +121,13 @@ theorem siteBaseChangeComp_hom_snd {X S T : Scheme.{u}}
     (f : S ⟶ X) (g : T ⟶ S) (U : X.Etale) :
     ((siteBaseChangeComp f g).hom.app U).left ≫
         pullback.snd (pullback.snd U.hom f) g = pullback.snd U.hom (g ≫ f) :=
-  MorphismProperty.Over.w ((siteBaseChangeComp f g).hom.app U)
+  MorphismProperty.Over.pullbackCompositionIso_hom_snd (P := @Etale) (Q := ⊤) f g U
 
 /-- The identity site comparison is its original first pullback projection. -/
 @[simp]
 theorem siteBaseChangeId_hom_left (X : Scheme.{u}) (U : X.Etale) :
-    ((siteBaseChangeId X).hom.app U).left = pullback.fst U.hom (𝟙 X) := rfl
+    ((siteBaseChangeId X).hom.app U).left = pullback.fst U.hom (𝟙 X) :=
+  MorphismProperty.Over.pullbackIdentityIso_hom_left (P := @Etale) (Q := ⊤) X U
 
 /-- The original site pullback comparisons satisfy associativity on every étale object. -/
 @[reassoc]
@@ -137,56 +137,8 @@ theorem siteBaseChangeComp_assoc {X S T V : Scheme.{u}}
         (siteBaseChangeComp g h).hom.app ((siteBaseChange f).obj U) =
       (eqToIso (congrArg (fun k => (siteBaseChange k).obj U) (Category.assoc h g f))).hom ≫
         (siteBaseChangeComp (g ≫ f) h).hom.app U ≫
-        (siteBaseChange h).map ((siteBaseChangeComp f g).hom.app U) := by
-  have hff := siteBaseChangeComp_hom_fst_fst g h ((siteBaseChange f).obj U)
-  have hfs := siteBaseChangeComp_hom_fst_snd g h ((siteBaseChange f).obj U)
-  have hs := siteBaseChangeComp_hom_snd g h ((siteBaseChange f).obj U)
-  simp only [siteBaseChange_obj_hom] at hff hfs hs
-  have hfff := congrArg (fun a => a ≫ pullback.fst U.hom f) hff
-  have hffs := congrArg (fun a => a ≫ pullback.snd U.hom f) hff
-  simp only [Category.assoc] at hfff hffs
-  have hMF := siteBaseChange_map_fst h ((siteBaseChangeComp f g).hom.app U)
-  have hMS := siteBaseChange_map_snd h ((siteBaseChangeComp f g).hom.app U)
-  simp only [Functor.comp_obj, siteBaseChange_obj_hom] at hMF hMS
-  have hMFF := congrArg (fun a => a ≫ pullback.fst (pullback.snd U.hom f) g ≫
-    pullback.fst U.hom f) hMF
-  have hMFS := congrArg (fun a => a ≫ pullback.fst (pullback.snd U.hom f) g ≫
-    pullback.snd U.hom f) hMF
-  have hMSF := congrArg (fun a => a ≫ pullback.snd (pullback.snd U.hom f) g) hMF
-  simp only [Category.assoc, siteBaseChangeComp_hom_fst_fst] at hMFF
-  simp only [Category.assoc, siteBaseChangeComp_hom_fst_snd] at hMFS
-  simp only [Category.assoc, siteBaseChangeComp_hom_snd] at hMSF
-  have hCF := siteBaseChangeComp_hom_fst_fst (g ≫ f) h U
-  have hCFS := siteBaseChangeComp_hom_fst_snd (g ≫ f) h U
-  have hCS := siteBaseChangeComp_hom_snd (g ≫ f) h U
-  have hCFSg := congrArg (fun a => a ≫ g) hCFS
-  simp only [Category.assoc] at hCFSg
-  have htF := siteBaseChange_eqToHom_fst (Category.assoc h g f) U
-  have htS := siteBaseChange_eqToHom_snd (Category.assoc h g f) U
-  have htSh := congrArg (fun a => a ≫ h) htS
-  have htShg := congrArg (fun a => a ≫ h ≫ g) htS
-  simp only [Category.assoc] at htSh htShg
-  apply MorphismProperty.Over.Hom.ext
-  simp only [etaleHom_comp_left]
-  apply pullback.hom_ext
-  · apply pullback.hom_ext
-    · apply pullback.hom_ext
-      · simp only [Category.assoc, siteBaseChange_obj_hom, eqToIso.hom,
-          siteBaseChangeComp_hom_fst_fst, hfff]
-        rw [hMFF, hCF]
-        exact htF.symm
-      · simp only [Category.assoc, siteBaseChange_obj_hom, eqToIso.hom,
-          siteBaseChangeComp_hom_fst_snd, hffs]
-        rw [hMFS, hCFSg]
-        exact htShg.symm
-    · simp only [Category.assoc, siteBaseChange_obj_hom, eqToIso.hom,
-        siteBaseChangeComp_hom_snd_assoc, hfs]
-      rw [hMSF, hCFS]
-      exact htSh.symm
-  · simp only [Category.assoc, siteBaseChange_obj_hom, eqToIso.hom,
-      siteBaseChangeComp_hom_snd, hs]
-    rw [hMS, hCS]
-    exact htS.symm
+        (siteBaseChange h).map ((siteBaseChangeComp f g).hom.app U) :=
+  MorphismProperty.Over.pullbackCompositionIso_assoc (P := @Etale) (Q := ⊤) f g h U
 
 /-- The site comparison with an identity in the second position is normalized by
 its original pullback projection. -/
@@ -194,16 +146,8 @@ its original pullback projection. -/
 theorem siteBaseChangeComp_comp_id {X S : Scheme.{u}} (f : S ⟶ X) (U : X.Etale) :
     (siteBaseChangeComp f (𝟙 S)).hom.app U ≫
         (siteBaseChangeId S).hom.app ((siteBaseChange f).obj U) =
-      eqToHom (congrArg (fun k => (siteBaseChange k).obj U) (Category.id_comp f)) := by
-  apply MorphismProperty.Over.Hom.ext
-  simp only [etaleHom_comp_left, siteBaseChangeId_hom_left]
-  apply pullback.hom_ext
-  · simp only [Category.assoc, siteBaseChange_obj_hom,
-      siteBaseChangeComp_hom_fst_fst]
-    exact (siteBaseChange_eqToHom_fst (Category.id_comp f) U).symm
-  · simp only [Category.assoc, siteBaseChange_obj_hom,
-      siteBaseChangeComp_hom_fst_snd, Category.comp_id]
-    exact (siteBaseChange_eqToHom_snd (Category.id_comp f) U).symm
+      eqToHom (congrArg (fun k => (siteBaseChange k).obj U) (Category.id_comp f)) :=
+  MorphismProperty.Over.pullbackCompositionIso_comp_id (P := @Etale) (Q := ⊤) f U
 
 /-- The site comparison with an identity in the first position is normalized by
 its original pullback projection. -/
@@ -211,17 +155,8 @@ its original pullback projection. -/
 theorem siteBaseChangeComp_id_comp {X S : Scheme.{u}} (f : S ⟶ X) (U : X.Etale) :
     (siteBaseChangeComp (𝟙 X) f).hom.app U ≫
         (siteBaseChange f).map ((siteBaseChangeId X).hom.app U) =
-      eqToHom (congrArg (fun k => (siteBaseChange k).obj U) (Category.comp_id f)) := by
-  apply MorphismProperty.Over.Hom.ext
-  simp only [etaleHom_comp_left]
-  apply pullback.hom_ext
-  · simp only [Category.assoc, siteBaseChange_map_fst, siteBaseChangeId_hom_left,
-      siteBaseChange_obj_hom,
-      siteBaseChangeComp_hom_fst_fst]
-    exact (siteBaseChange_eqToHom_fst (Category.comp_id f) U).symm
-  · simp only [Category.assoc, siteBaseChange_map_snd, siteBaseChange_obj_hom,
-      siteBaseChangeComp_hom_snd]
-    exact (siteBaseChange_eqToHom_snd (Category.comp_id f) U).symm
+      eqToHom (congrArg (fun k => (siteBaseChange k).obj U) (Category.comp_id f)) :=
+  MorphismProperty.Over.pullbackCompositionIso_id_comp (P := @Etale) (Q := ⊤) f U
 
 /-- Equality transport of direct images is the contravariant transport on test objects. -/
 theorem directImage_eqToHom_hom_app {X S : Scheme.{u}} {f g : S ⟶ X}
@@ -292,48 +227,21 @@ theorem inverseImageComp_assoc {X S T V : Scheme.{u}}
         inverseImageComp (g ≫ f) h ≪≫
         Functor.isoWhiskerRight (inverseImageComp f g) (inverseImage h) ≪≫
         Functor.associator (inverseImage f) (inverseImage g) (inverseImage h) := by
-  let af := inverseImageAdjunction f
-  let ag := inverseImageAdjunction g
-  let ah := inverseImageAdjunction h
-  let afg := inverseImageAdjunction (g ≫ f)
-  let agh := inverseImageAdjunction (h ≫ g)
-  let adjTotal := inverseImageAdjunction ((h ≫ g) ≫ f)
-  let adjTotalAssoc := inverseImageAdjunction (h ≫ (g ≫ f))
-  have hL : conjugateEquiv (af.comp (ag.comp ah)) adjTotal
-      ((inverseImageComp f (h ≫ g)).hom ≫
-        Functor.whiskerLeft (inverseImage f) (inverseImageComp g h).hom) =
-      Functor.whiskerRight (directImageCompIso g h).hom (directImage f) ≫
-        (directImageCompIso f (h ≫ g)).hom := by
-    rw [← conjugateEquiv_comp _ (af.comp agh), conjugateEquiv_whiskerLeft]
-    rw [conjugateEquiv_inverseImageComp_hom, conjugateEquiv_inverseImageComp_hom]
-  have hR : conjugateEquiv (af.comp (ag.comp ah)) adjTotal
-      (eqToHom (congrArg (fun k : V ⟶ X => inverseImage k) (Category.assoc h g f)) ≫
-        (inverseImageComp (g ≫ f) h).hom ≫
-        Functor.whiskerRight (inverseImageComp f g).hom (inverseImage h) ≫
-        (Functor.associator (inverseImage f) (inverseImage g) (inverseImage h)).hom) =
-      (Functor.associator (directImage h) (directImage g) (directImage f)).hom ≫
-        Functor.whiskerLeft (directImage h) (directImageCompIso f g).hom ≫
-        (directImageCompIso (g ≫ f) h).hom ≫
-        eqToHom (congrArg (fun k : V ⟶ X => directImage k) (Category.assoc h g f).symm) := by
-    rw [← conjugateEquiv_comp _ adjTotalAssoc, ← conjugateEquiv_comp _ (afg.comp ah),
-      ← conjugateEquiv_comp _ ((af.comp ag).comp ah),
-      conjugateEquiv_associator_hom, conjugateEquiv_whiskerRight]
-    rw [conjugateEquiv_inverseImageComp_hom, conjugateEquiv_inverseImageComp_hom,
-      conjugateEquiv_inverseImage_eqToHom]
-    all_goals simp only [Category.assoc]
-  apply Iso.ext
-  apply (conjugateEquiv (af.comp (ag.comp ah)) adjTotal).injective
-  simp only [Iso.trans_hom, Functor.isoWhiskerLeft_hom, Functor.isoWhiskerRight_hom,
-    eqToIso.hom]
-  rw [hL, hR]
-  apply NatTrans.ext
-  funext F
-  simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
-    Functor.associator_hom_app, Category.id_comp, eqToHom_app]
-  apply (cancel_mono (eqToIso
-    (congrArg (fun k => (directImage k).obj F) (Category.assoc h g f))).hom).mp
-  simpa only [Category.assoc, eqToIso.hom, eqToHom_trans, eqToHom_refl,
-    Category.comp_id] using directImageCompIso_assoc_app f g h F
+  exact CategoryTheory.SelectedAdjointCoherence.assoc_of_right_app
+    (fun k : V ⟶ X => inverseImage k) (fun k : V ⟶ X => directImage k)
+    (fun k => inverseImageAdjunction k)
+    (inverseImageAdjunction f) (inverseImageAdjunction g) (inverseImageAdjunction h)
+    (inverseImageAdjunction (g ≫ f)) (inverseImageAdjunction (h ≫ g))
+    (Category.assoc h g f)
+    (inverseImageComp f g) (inverseImageComp g h)
+    (inverseImageComp f (h ≫ g)) (inverseImageComp (g ≫ f) h)
+    (directImageCompIso f g) (directImageCompIso g h)
+    (directImageCompIso f (h ≫ g)) (directImageCompIso (g ≫ f) h)
+    (conjugateEquiv_inverseImageComp_hom f g) (conjugateEquiv_inverseImageComp_hom g h)
+    (conjugateEquiv_inverseImageComp_hom f (h ≫ g))
+    (conjugateEquiv_inverseImageComp_hom (g ≫ f) h)
+    (fun F => by
+      simpa only [eqToIso.hom, eqToHom_app] using directImageCompIso_assoc_app f g h F)
 
 /-- Direct-image composition with the source identity uses the original identity comparison. -/
 theorem directImageCompIso_comp_id {X S : Scheme.{u}} (f : S ⟶ X) :
@@ -405,27 +313,13 @@ theorem inverseImageComp_comp_id {X S : Scheme.{u}} (f : S ⟶ X) :
         Functor.isoWhiskerLeft (inverseImage f) (inverseImageId S) ≪≫
         Functor.rightUnitor (inverseImage f) =
       eqToIso (congrArg (fun k : S ⟶ X => inverseImage k) (Category.id_comp f)) := by
-  let af := inverseImageAdjunction f
-  let ai := inverseImageAdjunction (𝟙 S)
-  let atotal := inverseImageAdjunction (𝟙 S ≫ f)
-  have hc : conjugateEquiv af atotal
-      ((inverseImageComp f (𝟙 S)).hom ≫
-        Functor.whiskerLeft (inverseImage f) (inverseImageId S).hom ≫
-        (Functor.rightUnitor (inverseImage f)).hom) =
-      (Functor.leftUnitor (directImage f)).inv ≫
-        Functor.whiskerRight (directImageIdIso S).inv (directImage f) ≫
-        (directImageCompIso f (𝟙 S)).hom := by
-    rw [← conjugateEquiv_comp _ (af.comp ai),
-      ← conjugateEquiv_comp _ (af.comp Adjunction.id),
-      conjugateEquiv_rightUnitor_hom, conjugateEquiv_whiskerLeft,
-      conjugateEquiv_inverseImageId_hom, conjugateEquiv_inverseImageComp_hom]
-    simp only [Category.assoc]
-  apply Iso.ext
-  apply (conjugateEquiv af atotal).injective
-  simp only [Iso.trans_hom, Functor.isoWhiskerLeft_hom, eqToIso.hom]
-  rw [hc, conjugateEquiv_inverseImage_eqToHom (Category.id_comp f)]
-  simpa only [Iso.trans_inv, Iso.symm_inv, Functor.isoWhiskerRight_inv,
-    eqToIso.inv, Category.assoc] using congrArg Iso.inv (directImageCompIso_comp_id f)
+  exact CategoryTheory.SelectedAdjointCoherence.comp_id_of_right
+    (fun k : S ⟶ X => inverseImage k) (fun k : S ⟶ X => directImage k)
+    (fun k => inverseImageAdjunction k) (inverseImageAdjunction (𝟙 S))
+    (Category.id_comp f) (inverseImageComp f (𝟙 S)) (directImageCompIso f (𝟙 S))
+    (inverseImageId S) (directImageIdIso S)
+    (conjugateEquiv_inverseImageComp_hom f (𝟙 S))
+    (conjugateEquiv_inverseImageId_hom S) (directImageCompIso_comp_id f)
 
 /-- The native inverse-image comparison with the target identity is normalized. -/
 theorem inverseImageComp_id_comp {X S : Scheme.{u}} (f : S ⟶ X) :
@@ -433,27 +327,13 @@ theorem inverseImageComp_id_comp {X S : Scheme.{u}} (f : S ⟶ X) :
         Functor.isoWhiskerRight (inverseImageId X) (inverseImage f) ≪≫
         Functor.leftUnitor (inverseImage f) =
       eqToIso (congrArg (fun k : S ⟶ X => inverseImage k) (Category.comp_id f)) := by
-  let af := inverseImageAdjunction f
-  let ai := inverseImageAdjunction (𝟙 X)
-  let atotal := inverseImageAdjunction (f ≫ 𝟙 X)
-  have hc : conjugateEquiv af atotal
-      ((inverseImageComp (𝟙 X) f).hom ≫
-        Functor.whiskerRight (inverseImageId X).hom (inverseImage f) ≫
-        (Functor.leftUnitor (inverseImage f)).hom) =
-      (Functor.rightUnitor (directImage f)).inv ≫
-        Functor.whiskerLeft (directImage f) (directImageIdIso X).inv ≫
-        (directImageCompIso (𝟙 X) f).hom := by
-    rw [← conjugateEquiv_comp _ (ai.comp af),
-      ← conjugateEquiv_comp _ (Adjunction.id.comp af),
-      conjugateEquiv_leftUnitor_hom, conjugateEquiv_whiskerRight,
-      conjugateEquiv_inverseImageId_hom, conjugateEquiv_inverseImageComp_hom]
-    simp only [Category.assoc]
-  apply Iso.ext
-  apply (conjugateEquiv af atotal).injective
-  simp only [Iso.trans_hom, Functor.isoWhiskerRight_hom, eqToIso.hom]
-  rw [hc, conjugateEquiv_inverseImage_eqToHom (Category.comp_id f)]
-  simpa only [Iso.trans_inv, Iso.symm_inv, Functor.isoWhiskerLeft_inv,
-    eqToIso.inv, Category.assoc] using congrArg Iso.inv (directImageCompIso_id_comp f)
+  exact CategoryTheory.SelectedAdjointCoherence.id_comp_of_right
+    (fun k : S ⟶ X => inverseImage k) (fun k : S ⟶ X => directImage k)
+    (fun k => inverseImageAdjunction k) (inverseImageAdjunction (𝟙 X))
+    (Category.comp_id f) (inverseImageComp (𝟙 X) f) (directImageCompIso (𝟙 X) f)
+    (inverseImageId X) (directImageIdIso X)
+    (conjugateEquiv_inverseImageComp_hom (𝟙 X) f)
+    (conjugateEquiv_inverseImageId_hom X) (directImageCompIso_id_comp f)
 
 end CompositionCoherence
 
