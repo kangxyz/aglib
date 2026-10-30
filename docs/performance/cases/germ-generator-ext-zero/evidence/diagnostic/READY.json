@@ -1,0 +1,17 @@
+{
+  "question": "Inspect exactinferred types of actualhvalue and originalchartgenerator before failed trans at144; notanotherblindnativecast",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/germ-input-types-diagnostic-v1/GermInputTypes.lean",
+  "source_sha256": "02923c3ff20ff1561526668c57a0b84f45d89f24964bf83655e2f7b5b2b31ea4",
+  "actual_module": "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero",
+  "native_source_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+  "native_source_sha256": "18e5c930c14a1b0b138a5ba02e4c115fa4da4ec55b27587d4439dccd08e07e4e",
+  "input_failure": {
+    "run": "remote-5f28bb81f2e540949c2b69c63cf42655",
+    "source_short": "abf342",
+    "full_owned_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-final-5f28bb81/Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero.log",
+    "site": "144:7 maxRecDepth comparing actualhsource suppliedto trans; no limitincrease."
+  },
+  "setup_requirement": "Actualnative ModuleName/isModule/full4options/setup/pins/profile unchanged, originalprefix/imports/proofcontext copied to failedstep, no failedGermimport orproductionoutputoverwrite. Scopedtrace_state thenintentionalcompletionerror only; no recovery/sorry/Pproof/nativeclosureclaim. Keeporiginalforall/publicP unchanged beforedebugstop.",
+  "boundary": "Expected diagnosticexit1 with GERM_INPUT_TYPES_DIAGNOSTIC_COMPLETE after hvalue/hsource/goal. This extracts actualinputpresentations for repair only; not proofacceptance or newclient/replay/certificationstage."
+}

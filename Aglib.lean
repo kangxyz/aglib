@@ -106,11 +106,16 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRestriction
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Basic
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Coherence
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Equivalence
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Exactness
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Images
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Presheaf
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Pullback
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.RingPullback
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.ScalarRestriction
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Torsion
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Torsion.Derived
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Underlying
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitDetection
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitUnderlying
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Valued
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.ZMod
@@ -2776,6 +2781,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberTransport
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionTorsor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientClosure
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteEtaleRigidity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteLocallyConstant
@@ -5228,7 +5234,11 @@ public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.PresheafTransport
 public import Aglib.CategoryTheory.Sites.Pullback.Coefficients
+public import Aglib.CategoryTheory.Sites.Pullback.DenseRestriction
+public import Aglib.CategoryTheory.Sites.Pullback.FiniteProducts
+public import Aglib.CategoryTheory.Sites.Pullback.FlatCoefficients
 public import Aglib.CategoryTheory.Sites.Pullback.LocalDescription
+public import Aglib.CategoryTheory.Sites.Pullback.RepresentedTarget
 public import Aglib.CategoryTheory.Sites.PushforwardSections
 public import Aglib.CategoryTheory.Sites.SectionsAdditive
 public import Aglib.CategoryTheory.Sites.SheafCohomology.BasisAcyclicity.AllCovers
@@ -5379,6 +5389,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Pres
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.ProjectiveHomComplex
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.RepresentedSections
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Restriction
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.RingAction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.SectionLifting
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Size
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.Slice

@@ -147,3 +147,7 @@ Retain existing cases when refining key guidance in the main file.
 ## Diagnostic frontiers
 
 - [Čech intrinsic comparison: conversion frontier](cech-intrinsic-conversion-frontier.md) — one instrumented source-matching run; bounded dictionary and adapter pilots remain unmeasured.
+
+- [Reuse a guarded sealed native source for subsequent phases](cases/sealed-native-source-reuse/README.md)
+
+- [Original generator-to-Ext-zero value before specialization](cases/germ-generator-ext-zero/README.md)

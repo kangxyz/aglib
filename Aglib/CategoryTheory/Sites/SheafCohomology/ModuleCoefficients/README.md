@@ -24,3 +24,9 @@ The [intrinsic Global interface](../Global/Comparison.lean) represents additive
 module sections by the actual lifted rank-one module. Its comparison with
 evaluation uses [Terminal/Comparison](../Terminal/Comparison.lean) and an
 explicit terminal object.
+
+[RingAction](RingAction.lean) constructs scalar endomorphisms from the original
+natural ring-section cone and one lifted additive coefficient. Its cohomology
+action uses the actual `H.map`, with the original multiplication order and
+Frobenius square. Scheme-specific section and characteristic facts remain in
+the native consumer.

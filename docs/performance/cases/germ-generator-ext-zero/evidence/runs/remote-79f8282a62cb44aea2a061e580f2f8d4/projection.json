@@ -1,0 +1,77 @@
+{
+  "run": "remote-79f8282a62cb44aea2a061e580f2f8d4",
+  "source": "8c8a6e2d0bb3efefeb4effa9c0d1228451e5a26317f576ab118820e38933bbd5",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "aggregate_frontends": 130,
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/PullbackCohomologySystem.lean",
+      "sha256": "8ec1bbf610e14b6633a45d6d72675b85b15bb2c037c19bc07cb5fb3cea9d5285",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 73.78126548230648
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/RelativeCohomologySquare.lean",
+      "sha256": "771313931644a3dacc548a0aa6de95e9fe9d59f0474ce2dbb094afa0b3c00f84",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 183.23570601642132
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/AugmentationSections.lean",
+      "sha256": "7571fb8ff9cc0ccfb24afe56cc98861fbd241a6b26ada20a4beb5e7803d634eb",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 4.497144103050232
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "sha256": "0d21bfa7dc572899c782946b234dded91c2c14f2f939f72c31a74aae4b11551a",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 90.55908767879009
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramEtaleSections.lean",
+      "sha256": "9611c269490f4c6d67986dab2524f1f703658c1c6a003fd87e1e30127a298894",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 47.889732509851456
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean",
+      "sha256": "d70b5015a942ba3cccce72e48cb928b83f6358f18c76e8e724afa4c863ec27b5",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 83.56393636763096
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/PullbackComposition.lean",
+      "sha256": "99bc01d24b4eb5651b372e0fb83995606c4ecb364fcd3529db6277d2ae8c97da",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 167.03531694412231
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Finite/ExactImageComparison/Cohomology.lean",
+      "sha256": "c5733c8131bd9a5e1d6f7ab1de54b979230d667982d4d1c526adc1629be65942",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 76.19346068799496
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Curves/SplitCoefficients.lean",
+      "sha256": "842c83a9744e71acb3cf348f1e0b947eac691e2d62ba4fde40e74b4f0ebf199f",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 23.170092344284058
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-79f8282a62cb44aea2a061e580f2f8d4/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-79f8282a62cb44aea2a061e580f2f8d4/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-79f8282a62cb44aea2a061e580f2f8d4/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/ancestor-repairs-v13/LIVE_READY.json",
+  "boundary": "Exactcapturedbasis only; successfulmodules surviveaggregatefailure, actualownnewfailuresboundtotheir oldsource, no replay."
+}

@@ -1,0 +1,18 @@
+{
+  "question": "Existing exact02923 old18e5 native-prefix type diagnostic; retired after source changed",
+  "diagnostic_sha256": "02923c3ff20ff1561526668c57a0b84f45d89f24964bf83655e2f7b5b2b31ea4",
+  "old_native_sha256": "18e5c930c14a1b0b138a5ba02e4c115fa4da4ec55b27587d4439dccd08e07e4e",
+  "attempts": [
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/germ-probe-executor/PRE-DISPATCH-TRANSPORT-FAILURE.json",
+      "sha256": "3baf1679fcc333cb55e9d0dbd2d74edab4d246b5a48488b4e126c2c4f3cddcbc"
+    },
+    {
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/germ-probe-executor/GERM02923-REMOTE-RUN-RESULT.json",
+      "sha256": "91823aeffb98d448299e6900bc66305f9b088161786a97a698cc25d6d0a66c28"
+    }
+  ],
+  "outcome": "No Lean invocation, setup or hvalue/hsource trace in either attempt. First SSH255 before allocation; later1e4939 allocated currentV21 source and rejected old-owner guard before Lean.",
+  "decision": "Root retires further attempts by default. Only a concrete unresolved boundary from actual new production CPP could justify a newly source-bound diagnostic; no production gate or pending old probe.",
+  "production_scope": "V21 a1b0/576 actually dispatched ordinary B31201; outcomes independent and not inferred here."
+}

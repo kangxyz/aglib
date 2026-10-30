@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.Pullback.DenseRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.Basic
 public import Mathlib.CategoryTheory.Adjunction.FullyFaithful
@@ -48,23 +49,10 @@ instance siteEtalePostcompose_isCoverDense :
       Presieve.in_coverByImage (siteEtalePostcompose f) a, inferInstance, hy⟩
 
 /-- Actual coefficient restriction to a surjective etale chart is faithful. -/
-instance etaleRestriction_faithful : (etaleRestriction f).Faithful where
-  map_injective {F G} α β h := by
-    apply Sheaf.hom_ext
-    apply NatTrans.ext
-    funext U
-    apply AddCommGrpCat.hom_ext
-    apply AddMonoidHom.ext
-    intro x
-    apply Functor.IsCoverDense.ext (siteEtalePostcompose f)
-      ((underlyingSetFunctor X).obj G) U.unop
-    intro V a
-    have ha := congrArg (fun z => z.hom.app (op V)) h
-    change α.hom.app (op ((siteEtalePostcompose f).obj V)) =
-      β.hom.app (op ((siteEtalePostcompose f).obj V)) at ha
-    exact (ConcreteCategory.congr_hom (α.hom.naturality a.op) x).symm.trans
-      ((congrArg (fun z => z (F.obj.map a.op x)) ha).trans
-        (ConcreteCategory.congr_hom (β.hom.naturality a.op) x))
+instance etaleRestriction_faithful : (etaleRestriction f).Faithful :=
+  CategoryTheory.Functor.sheafPushforwardContinuous_faithful_of_isCoverDense.{
+    u + 1, u, u + 1, u, u + 1}
+    (siteEtalePostcompose f) (Scheme.smallEtaleTopology S) (Scheme.smallEtaleTopology X)
 
 /-- The original inverse image on a surjective etale cover is faithful. -/
 instance inverseImage_faithful : (inverseImage f).Faithful :=

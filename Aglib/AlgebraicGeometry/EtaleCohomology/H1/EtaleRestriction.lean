@@ -8,6 +8,7 @@ module
 
 /- Current interface basis: 46f53465aaf3b0167049e9c8e9e2294111bb4281.
 Original construction and mathematical provenance are retained below. -/
+public import Aglib.CategoryTheory.Sites.Pullback.FlatCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.Torsors
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedBaseChange
 public import Aglib.CategoryTheory.Topos.SheafMorphism
@@ -128,26 +129,11 @@ def inverseImageUnderlyingSetIso (f : S ⟶ X) :
     inverseImage f ⋙ underlyingSetFunctor S ≅
       underlyingSetFunctor X ⋙ setInverseImage f := by
   letI := flat_of_preservesFiniteLimits (siteBaseChange f)
-  letI : (CategoryTheory.forget AddCommGrpCat.{u + 1}).PreservesLeftKanExtensions (siteBaseChange
-    f).op :=
-    fun P => forget_preserves_flat_leftKan (siteBaseChange f) P
-  let eA := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let eT := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    (Type (u + 1)) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let c := sheafComposeNatIso (Scheme.smallEtaleTopology S) (CategoryTheory.forget
-    AddCommGrpCat.{u + 1})
-    (sheafificationAdjunction _ AddCommGrpCat.{u + 1}) (sheafificationAdjunction _ (Type (u + 1)))
-  let k := (CategoryTheory.forget AddCommGrpCat.{u + 1}).lanCompIsoOfPreserves (siteBaseChange f).op
-  exact Functor.isoWhiskerRight eA (underlyingSetFunctor S) ≪≫
-    Functor.isoWhiskerLeft
-      (sheafToPresheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1} ⋙
-        (siteBaseChange f).op.lan) c.symm ≪≫
-    Functor.isoWhiskerRight
-      (Functor.isoWhiskerLeft (sheafToPresheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u +
-        1}) k)
-      (presheafToSheaf (Scheme.smallEtaleTopology S) (Type (u + 1))) ≪≫
-    Functor.isoWhiskerLeft (underlyingSetFunctor X) eT.symm
+  letI : (CategoryTheory.forget AddCommGrpCat.{u + 1}).PreservesLeftKanExtensions
+      (siteBaseChange f).op := fun P => forget_preserves_flat_leftKan (siteBaseChange f) P
+  exact Functor.sheafPullbackCoefficientInverseIso (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+    (CategoryTheory.forget AddCommGrpCat.{u + 1})
 
 /-- The actual small-etale geometric morphism, with the original Set adjunction. -/
 def setGeometricMorphism (f : S ⟶ X) :
@@ -199,92 +185,11 @@ theorem inverseImageUnderlyingSetIso_unit (f : S ⟶ X) (L : AbelianSheaf.{u, u 
       (setDirectImage f).map ((inverseImageUnderlyingSetIso f).hom.app L) =
     (setInverseImageAdjunction f).unit.app ((underlyingSetFunctor X).obj L) := by
   let := flat_of_preservesFiniteLimits (siteBaseChange f)
-  let : (CategoryTheory.forget AddCommGrpCat.{u + 1}).PreservesLeftKanExtensions (siteBaseChange
-    f).op :=
-    fun P => forget_preserves_flat_leftKan (siteBaseChange f) P
-  let eA := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let eT := Functor.sheafPullbackConstruction.sheafPullbackIso (siteBaseChange f)
-    (Type (u + 1)) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
-  let c := sheafComposeNatIso (Scheme.smallEtaleTopology S) (CategoryTheory.forget
-    AddCommGrpCat.{u + 1})
-    (sheafificationAdjunction _ AddCommGrpCat.{u + 1}) (sheafificationAdjunction _ (Type (u + 1)))
-  let k := (CategoryTheory.forget AddCommGrpCat.{u + 1}).lanCompIsoOfPreserves (siteBaseChange f).op
-  have hA := Adjunction.unit_leftAdjointUniq_hom_app (inverseImageAdjunction f)
-    (Functor.sheafPullbackConstruction.sheafAdjunctionContinuous (siteBaseChange f)
-      AddCommGrpCat.{u + 1} (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)) L
-  have hT := Adjunction.unit_leftAdjointUniq_hom_app (setInverseImageAdjunction f)
-    (Functor.sheafPullbackConstruction.sheafAdjunctionContinuous (siteBaseChange f)
-      (Type (u + 1)) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S))
-        ((underlyingSetFunctor X).obj L)
-  apply (cancel_mono ((setDirectImage f).map
-    (eT.hom.app ((underlyingSetFunctor X).obj L)))).mp
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext U
-  have hAU := congrArg (fun a => (CategoryTheory.forget AddCommGrpCat.{u + 1}).map (a.hom.app U)) hA
-  have hTU := congrArg (fun a => a.hom.app U) hT
-  let F := (siteBaseChange f).op
-  let A := F.lan.obj L.obj
-  let V := F.obj U
-  change (CategoryTheory.forget AddCommGrpCat.{u + 1}).map (((inverseImageAdjunction f).unit.app
-    L).hom.app U) ≫
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((eA.hom.app L).hom.app V) =
-    (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((F.leftKanExtensionUnit L.obj).app U ≫
-      (toSheafify (Scheme.smallEtaleTopology S) A).app V) at hAU
-  change ((setInverseImageAdjunction f).unit.app ((underlyingSetFunctor X).obj L)).hom.app U ≫
-      (eT.hom.app ((underlyingSetFunctor X).obj L)).hom.app V =
-    (F.leftKanExtensionUnit (L.obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1})).app U ≫
-      (toSheafify (Scheme.smallEtaleTopology S)
-        (F.lan.obj (L.obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1}))).app V at hTU
-  have hcancel : (eT.inv.app ((underlyingSetFunctor X).obj L)).hom.app V ≫
-      (eT.hom.app ((underlyingSetFunctor X).obj L)).hom.app V = 𝟙 _ :=
-    congrArg (fun a => a.hom.app V) (eT.inv_hom_id_app ((underlyingSetFunctor X).obj L))
-  change (CategoryTheory.forget AddCommGrpCat.{u + 1}).map (((inverseImageAdjunction f).unit.app
-    L).hom.app U) ≫
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((eA.hom.app L).hom.app V) ≫
-      (c.inv.app A).hom.app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) (Type (u + 1))).map
-        (k.hom.app L.obj)).hom.app V ≫
-      (eT.inv.app ((underlyingSetFunctor X).obj L)).hom.app V ≫
-      (eT.hom.app ((underlyingSetFunctor X).obj L)).hom.app V = _
-  erw [hcancel, Category.comp_id]
-  change ((CategoryTheory.forget AddCommGrpCat.{u + 1}).map (((inverseImageAdjunction f).unit.app
-    L).hom.app U) ≫
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((eA.hom.app L).hom.app V)) ≫
-      (c.inv.app A).hom.app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) (Type (u + 1))).map
-        (k.hom.app L.obj)).hom.app V =
-    ((setInverseImageAdjunction f).unit.app ((underlyingSetFunctor X).obj L)).hom.app U ≫
-      (eT.hom.app ((underlyingSetFunctor X).obj L)).hom.app V
-  erw [hAU, hTU, Functor.map_comp]
-  have hc : (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((toSheafify
-    (Scheme.smallEtaleTopology S) A).app V) ≫
-      (c.inv.app A).hom.app V =
-    (toSheafify (Scheme.smallEtaleTopology S) (A ⋙ CategoryTheory.forget AddCommGrpCat.{u +
-      1})).app V :=
-    congr_app (sheafComposeIso_inv_fac (Scheme.smallEtaleTopology S) (CategoryTheory.forget
-      AddCommGrpCat.{u + 1})
-      A) V
-  have hn := (congr_app (toSheafify_naturality (Scheme.smallEtaleTopology S) (k.hom.app L.obj))
-    V).symm
-  have hk := Functor.leftKanExtensionCompIsoOfPreserves_hom_fac_app
-    (CategoryTheory.forget AddCommGrpCat.{u + 1}) L.obj F U
-  change (toSheafify (Scheme.smallEtaleTopology S) (A ⋙ CategoryTheory.forget AddCommGrpCat.{u +
-    1})).app V ≫
-      ((presheafToSheaf (Scheme.smallEtaleTopology S) (Type (u + 1))).map
-        (k.hom.app L.obj)).hom.app V =
-    (k.hom.app L.obj).app V ≫
-      (toSheafify (Scheme.smallEtaleTopology S)
-        (F.lan.obj (L.obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1}))).app V at hn
-  change (CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((F.leftKanExtensionUnit L.obj).app U) ≫
-      (k.hom.app L.obj).app V =
-    (F.leftKanExtensionUnit (L.obj ⋙ CategoryTheory.forget AddCommGrpCat.{u + 1})).app U at hk
-  simp only [Category.assoc] at ⊢
-  erw [← Category.assoc ((CategoryTheory.forget AddCommGrpCat.{u + 1}).map ((toSheafify
-    (Scheme.smallEtaleTopology
-    S) A).app V)),
-    hc, hn, ← Category.assoc, hk]
+  let : (CategoryTheory.forget AddCommGrpCat.{u + 1}).PreservesLeftKanExtensions
+      (siteBaseChange f).op := fun P => forget_preserves_flat_leftKan (siteBaseChange f) P
+  exact Functor.sheafPullbackCoefficientInverseIso_unit (siteBaseChange f)
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+    (CategoryTheory.forget AddCommGrpCat.{u + 1}) L
 
 end AlgebraicGeometry.Scheme.EtaleCohomology
 

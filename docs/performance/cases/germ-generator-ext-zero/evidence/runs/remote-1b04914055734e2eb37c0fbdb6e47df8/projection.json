@@ -1,0 +1,27 @@
+{
+  "run": "remote-1b04914055734e2eb37c0fbdb6e47df8",
+  "source": "63f97efd5430591df9fcb1d8d20231e74e8e5754531529c85c8eefe6f1915436",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/GeometricCohomologyDiagram.lean",
+      "sha256": "3d6c2a26806d41bd28f11537d0f98ffb038a5463f29331a90b97b5c3db103a71",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 115.962432295084
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "sha256": "bb4293939dbddb023bff5e67709ffe7423978153f6e50f674aac70e0a873ea0a",
+      "verdict": "fresh_failure",
+      "exit_code": 1,
+      "elapsed_seconds": 75.8505791425705
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1b04914055734e2eb37c0fbdb6e47df8/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1b04914055734e2eb37c0fbdb6e47df8/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-1b04914055734e2eb37c0fbdb6e47df8/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/germ-generator-view-v18/LIVE_READY.json",
+  "boundary": "Exactactualproducingbasis only; B1bGeometric3d6pass/Germbbfailure distinctcurrentGerm18e5; db7daRelative20269/e449bothfreshPASS clearsRelativecut, notothermodules."
+}

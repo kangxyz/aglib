@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Exactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
 public import Mathlib.Algebra.Category.ModuleCat.Sheaf.Abelian
 public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
@@ -30,30 +31,46 @@ universe u
 attribute [local instance] hasSheafifyLarge
   CategoryTheory.TorsionZMod.Ringed.abWEqualsLocallyBijectiveStandard
 
+attribute [local instance] hasSheafifyModules
+  moduleForget_preservesSheafification
+  moduleForget_preservesLeftKanExtensions
+  CategoryTheory.TorsionZMod.Ringed.hasSheafifyRingStandard
+  CategoryTheory.TorsionZMod.Ringed.hasSheafifyAbStandard
+  CategoryTheory.TorsionZMod.Ringed.ringWEqualsLocallyBijectiveStandard
+
+
 variable {X S : Scheme.{u}} (f : S ⟶ X) (Λ : Type (u + 1)) [Ring Λ]
+
+local instance nativeModuleAbelianPullback_preservesFiniteLimits :
+    PreservesFiniteLimits ((siteBaseChange f).sheafPullback AddCommGrpCat.{u + 1}
+      X.smallEtaleTopology S.smallEtaleTopology) :=
+  inverseImage_preservesFiniteLimits f
 
 instance moduleInverseImage_isLeftAdjoint : (moduleInverseImage f Λ).IsLeftAdjoint :=
   (moduleInverseImageAdjunction f Λ).isLeftAdjoint
 
 instance moduleInverseImage_preservesFiniteLimits :
-    PreservesFiniteLimits (moduleInverseImage f Λ) := by
-  let : PreservesFiniteLimits
-      (moduleInverseImage f Λ ⋙ SheafOfModules.toSheaf (constantRing S Λ)) :=
-    preservesFiniteLimits_of_natIso (moduleInverseImageUnderlyingIso Λ f).symm
-  exact preservesFiniteLimits_of_reflects_of_preserves
-    (moduleInverseImage f Λ) (SheafOfModules.toSheaf (constantRing S Λ))
+    PreservesFiniteLimits (moduleInverseImage f Λ) :=
+  ModuleCat.Sheaf.ConstantRing.moduleInverseImage_preservesFiniteLimits.{
+    u + 1, u, u + 1, u, u + 1, u + 1}
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 instance moduleInverseImage_preservesColimits :
     PreservesColimits (moduleInverseImage f Λ) := by infer_instance
 
 instance moduleInverseImage_additive : (moduleInverseImage f Λ).Additive :=
-  Functor.additive_of_preserves_binary_products _
+  ModuleCat.Sheaf.ConstantRing.moduleInverseImage_additive.{
+    u + 1, u, u + 1, u, u + 1, u + 1}
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 instance moduleDirectImage_additive : (moduleDirectImage f Λ).Additive :=
   (moduleInverseImageAdjunction f Λ).right_adjoint_additive
 
 instance moduleInverseImage_preservesHomology :
-    (moduleInverseImage f Λ).PreservesHomology := by infer_instance
+    (moduleInverseImage f Λ).PreservesHomology :=
+  ModuleCat.Sheaf.ConstantRing.moduleInverseImage_preservesHomology.{
+    u + 1, u, u + 1, u, u + 1, u + 1}
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 /-- The actual ringed inverse image preserves short exact sequences. -/
 theorem shortExact_moduleInverseImage {T : ShortComplex (ModuleSheaf X Λ)}
@@ -63,7 +80,8 @@ theorem shortExact_moduleInverseImage {T : ShortComplex (ModuleSheaf X Λ)}
 /-- The original ringed direct image preserves injective objects. -/
 instance moduleDirectImage_preservesInjectiveObjects :
     (moduleDirectImage f Λ).PreservesInjectiveObjects :=
-  Functor.preservesInjectiveObjects_of_adjunction_of_preservesMonomorphisms
-    (moduleInverseImageAdjunction f Λ)
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImage_preservesInjectiveObjects.{
+    u + 1, u, u + 1, u, u + 1, u + 1}
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

@@ -11,6 +11,7 @@ public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.UnitDescent
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Coefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.TorsorPullback
+public import Aglib.CategoryTheory.Sites.Torsor.Transport
 public import Aglib.AlgebraicGeometry.Modules.InternalHom
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
@@ -273,44 +274,33 @@ end Construction
 def transport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) : A.obj.obj U :=
   (P.sectionEquiv U s).symm t
 
+/-- The legacy value is the same generic positive transporter, by uniqueness. -/
+theorem transport_eq_positiveTransport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :
+    transport P U s t = P.positiveTransport U s t :=
+  (P.positiveTransport_eq_sectionEquiv_symm U s t).symm
+
 @[simp] theorem action_transport (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U) :
-    P.action U (transport P U s t) s = t := (P.sectionEquiv U s).apply_symm_apply t
+    P.action U (transport P U s t) s = t := by
+  simpa only [transport_eq_positiveTransport] using P.action_positiveTransport U s t
 
 theorem transport_eq (U : X.Etaleᵒᵖ) (s t : P.carrier.obj.obj U)
     (a : A.obj.obj U) (ha : P.action U a s = t) : transport P U s t = a := by
-  apply (P.sectionEquiv U s).injective
-  exact (action_transport P U s t).trans ha.symm
+  rw [transport_eq_positiveTransport]
+  exact P.positiveTransport_eq U s t a ha
 
 @[simp] theorem transport_self (U : X.Etaleᵒᵖ) (s : P.carrier.obj.obj U) :
-    transport P U s s = 0 := transport_eq P U s s 0 (P.zero_action U s)
+    transport P U s s = 0 := by
+  simpa only [transport_eq_positiveTransport] using P.positiveTransport_self U s
 
 theorem transport_trans (U : X.Etaleᵒᵖ) (s t r : P.carrier.obj.obj U) :
     transport P U s t + transport P U t r = transport P U s r := by
-  symm
-  apply transport_eq
-  have hact : P.action U (transport P U t r + transport P U s t) s =
-      P.action U (transport P U t r) (P.action U (transport P U s t) s) :=
-    CategoryTheory.Sheaf.Torsor.add_action P U (transport P U t r) (transport P U s t) s
-  calc
-    P.action U (transport P U s t + transport P U t r) s =
-        P.action U (transport P U t r + transport P U s t) s :=
-      congrArg (fun a : A.obj.obj U => P.action U a s) (add_comm _ _)
-    _ = P.action U (transport P U t r) (P.action U (transport P U s t) s) := hact
-    _ = P.action U (transport P U t r) t :=
-      congrArg (P.action U (transport P U t r)) (action_transport P U s t)
-    _ = r := action_transport P U t r
+  simpa only [transport_eq_positiveTransport] using P.positiveTransport_trans U s t r
 
 theorem transport_naturality {U V : X.Etaleᵒᵖ} (f : U ⟶ V)
     (s t : P.carrier.obj.obj U) :
     A.obj.map f (transport P U s t) =
       transport P V (P.carrier.obj.map f s) (P.carrier.obj.map f t) := by
-  symm
-  apply transport_eq
-  have hnat : P.carrier.obj.map f (P.action U (transport P U s t) s) =
-      P.action V (A.obj.map f (transport P U s t)) (P.carrier.obj.map f s) :=
-    CategoryTheory.Sheaf.Torsor.naturality P f (transport P U s t) s
-  exact hnat.symm.trans
-    (congrArg (P.carrier.obj.map f) (action_transport P U s t))
+  simpa only [transport_eq_positiveTransport] using P.positiveTransport_naturality f s t
 
 namespace Character
 

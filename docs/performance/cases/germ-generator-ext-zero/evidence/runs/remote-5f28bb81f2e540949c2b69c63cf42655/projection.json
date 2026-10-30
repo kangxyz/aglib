@@ -1,0 +1,12 @@
+{
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+  "sha256": "18e5c930c14a1b0b138a5ba02e4c115fa4da4ec55b27587d4439dccd08e07e4e",
+  "verdict": "fresh_failure",
+  "exit_code": 1,
+  "run": "remote-5f28bb81f2e540949c2b69c63cf42655",
+  "source": "abf342c7034d1636bfbcba3834829a3e8fd786cfb64c7cc2982147e91f90539e",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-5f28bb81f2e540949c2b69c63cf42655/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-5f28bb81f2e540949c2b69c63cf42655/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-5f28bb81f2e540949c2b69c63cf42655/build.log",
+  "actual_error": "144:7maxRecDepthathvalue/generator.trans; duplicatea50esamefailnotnewbasis"
+}

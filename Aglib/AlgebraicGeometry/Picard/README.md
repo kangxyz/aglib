@@ -256,6 +256,11 @@ remains an input to the prescribed-origin genus-one construction.
 at the native line-bundle object; its identity-character compatibility API
 delegates to the same character construction.
 
+Its positive transport is the original section-equivalence inverse, identified by
+`transport_eq_positiveTransport` with the generic sheaf-torsor transporter.
+Action, composition and restriction laws use that same construction; character
+and identity-character unit transitions retain the original frame carrier.
+
 [Tangent/Thickening](Tangent/Thickening.lean), [Tangent/Generator](Tangent/Generator.lean) and
 [Tangent/DualNumbers](Tangent/DualNumbers.lean) give the algebraic core of the tangent space
 of the Picard functor (Kleiman, arXiv:math/0504020v1, proof of Thm 5.11, p. 43). For morphisms

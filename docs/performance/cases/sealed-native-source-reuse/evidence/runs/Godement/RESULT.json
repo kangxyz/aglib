@@ -1,0 +1,79 @@
+{
+  "commands": [
+    {
+      "kind": "entry",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "mathlib/mk_all",
+        "--lib",
+        "Aglib",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 1.7697467058897018
+    },
+    {
+      "kind": "textstyle",
+      "command": [
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "mathlib/lint-style",
+        "Aglib"
+      ],
+      "exit": 0,
+      "seconds": 11.547543168067932
+    },
+    {
+      "kind": "decllint",
+      "command": [
+        "timeout",
+        "--kill-after=30s",
+        "20m",
+        "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+        "--no-build",
+        "exe",
+        "batteries/runLinter",
+        "--no-build",
+        "--trace",
+        "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange"
+      ],
+      "exit": 0,
+      "seconds": 13.890318930149078
+    }
+  ],
+  "family_source_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean": "d0594d133f27d56747f5a0daeaab4cd296e533e6137dd2df8ce9f069f69f5871",
+    "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean": "a3c32be2f1ef4768b058dc006c5c79446b643a6d298f2967a99858839142ead0",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean": "ed96fbf7d031ec78c541d5eabdb225e8b98efeb884df7a1ba147597abcc0fd47",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean": "0017416d20d1bf61a6d3f3d152e7f184a0a497134dbae605ead5241b8ee1ee1d",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean": "b1cd0df977d580645d71aaa6a884a2b3e79e16de66ad8863fd312b7441e57f20",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean": "c4da49721d261a5623feac69ec09e6e5a705705fec2d608eaf002a8ee2e7090f",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean": "3241adae150f33d252df65728316fa92ed5613387ef79caa63844188f17821df",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean": "05927d624a8ec60b52a25efefcdd2ca52eb0b4b334e8769f319102f0d88c6254"
+  },
+  "CPP_basis": "Qe9ad/dc117 passes; required60Aglibproviders and pins byte-identical inP; nativePplan d029 source7c134 has0missing/0fronts",
+  "declaration_origin_coverage": "Existing runLinter getDeclsInPackage(Aglib) covers imported Aglib origins; legacyterminal imports all11 finished family files; single environment only, no fullAglib loader",
+  "textstyle_coverage": "Native workflow lint-style Aglib is source-only over current native-generated aggregate imports, including all11 family paths; no proof build",
+  "boundary": "Actual P7c134 final native integration checks only; no Test/axiom/client/replay, unchanged native predicates/exclusions/pins/profile",
+  "run": "remote-fb057fa7bbf6485ab1f09af63cae1498",
+  "source": "7c1346d0ef690c4995b2882ad26a789127870d2b60ce72c1905f0d1311d6519d",
+  "P_captured_HEAD": "4d4b5bd851583c2f34284e019b07279abf71179d",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-published-lint-c-runs/remote-fb057fa7bbf6485ab1f09af63cae1498/receipt.json",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-C-P4d-7c134-Godement-final.json",
+  "source_manifest_raw_sha256": "aa99d019ca16fde49017b761182a0d69ef16ac9853a3c68068a662b5c05342e4",
+  "compiler_frontends": 0,
+  "exit_code": 0,
+  "elapsed_seconds": 27.400148421525955,
+  "per_command_logs": {
+    "entry": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/Godement-P-final-integration/entry.log",
+    "textstyle": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/Godement-P-final-integration/textstyle.log",
+    "decllint": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/Godement-P-final-integration/decllint.log"
+  },
+  "source_correspondence": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/Godement-Q-to-P-necessary-provider-correspondence.json"
+}

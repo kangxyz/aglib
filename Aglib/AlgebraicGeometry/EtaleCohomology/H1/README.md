@@ -69,3 +69,9 @@ The [all-coefficient stalk inverse-image comparison](../GeometricPoints/InverseI
 proves the original `stalkUnit` isomorphism for every standard-value abelian
 sheaf, independently of finite-local-constant or Ext hypotheses. This is a
 stalk comparison, not an H1 or proper-base-change theorem.
+
+[FiniteCoefficientClosure](FiniteCoefficientClosure.lean) supplies finite-power
+trivializations with the original charts, covering witnesses and finite values.
+Its categorical product comparison and value finiteness come from
+[the generic product leaf](../../../CategoryTheory/Sites/Pullback/FiniteProducts.lean).
+The published cut contains the finite-power interface used by `Fields/FiniteProducts`.

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.RingAction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.ArtinSchreier.Frobenius
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Constants
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.Basic
@@ -48,93 +49,54 @@ theorem structureSectionMap_naturality (X : Scheme.{u})
 
 /-- Actual multiplication by a global section on the original lifted coefficient. -/
 def structureScalar (X : Scheme.{u}) (a : Γ(X, ⊤)) :
-    additiveStructureSheaf X ⟶ additiveStructureSheaf X where
-  hom := {
-    app U := AddCommGrpCat.uliftFunctor.map (AddCommGrpCat.ofHom
-      { toFun := fun (x : ((structurePresheaf X).obj U)) => structureSectionMap X U a * x
-        map_zero' := mul_zero _
-        map_add' := mul_add _ })
-    naturality {U V} f := by
-      ext x
-      change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-      apply ULift.ext
-      symm
-      change ((structurePresheaf X).map f).hom
-          (structureSectionMap X U a * x.down) =
-        structureSectionMap X V a * ((structurePresheaf X).map f).hom x.down
-      rw [map_mul]
-      congr 1
-      exact structureSectionMap_naturality X f a }
+    additiveStructureSheaf X ⟶ additiveStructureSheaf X :=
+  CategoryTheory.Sheaf.RingAction.scalar (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a) a
 
-@[simp] theorem structureScalar_zero (X : Scheme.{u}) : structureScalar X 0 = 0 := by
-  ext U x
-  change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-  apply ULift.ext
-  change structureSectionMap X U 0 * x.down = 0
-  simp
+@[simp] theorem structureScalar_zero (X : Scheme.{u}) : structureScalar X 0 = 0 :=
+  CategoryTheory.Sheaf.RingAction.scalar_zero (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a)
 
-@[simp] theorem structureScalar_one (X : Scheme.{u}) : structureScalar X 1 = 𝟙 _ := by
-  ext U x
-  change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-  apply ULift.ext
-  change structureSectionMap X U 1 * x.down = x.down
-  simp
+@[simp] theorem structureScalar_one (X : Scheme.{u}) : structureScalar X 1 = 𝟙 _ :=
+  CategoryTheory.Sheaf.RingAction.scalar_one (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a)
 
 @[simp] theorem structureScalar_add (X : Scheme.{u}) (a b : Γ(X, ⊤)) :
-    structureScalar X (a + b) = structureScalar X a + structureScalar X b := by
-  ext U x
-  change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-  apply ULift.ext
-  change structureSectionMap X U (a + b) * x.down =
-    structureSectionMap X U a * x.down + structureSectionMap X U b * x.down
-  simp [add_mul]
+    structureScalar X (a + b) = structureScalar X a + structureScalar X b :=
+  CategoryTheory.Sheaf.RingAction.scalar_add (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a) a b
 
 /-- Composition order matches multiplication on cohomology endomorphisms. -/
 theorem structureScalar_mul (X : Scheme.{u}) (a b : Γ(X, ⊤)) :
-    structureScalar X (a * b) = structureScalar X b ≫ structureScalar X a := by
-  ext U x
-  change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-  apply ULift.ext
-  change structureSectionMap X U (a * b) * x.down =
-    structureSectionMap X U a * (structureSectionMap X U b * x.down)
-  simp [mul_assoc]
+    structureScalar X (a * b) = structureScalar X b ≫ structureScalar X a :=
+  CategoryTheory.Sheaf.RingAction.scalar_mul (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a) a b
 
 /-- The exact scalar/Frobenius square on the principal's original coefficient. -/
 theorem structureScalar_frobenius (X : Scheme.{u}) (p : ℕ) (hp : p.Prime)
     (hX : (p : Γ(X, ⊤)) = 0) (a : Γ(X, ⊤)) :
     structureScalar X a ≫ structureFrobenius X p hp hX =
-      structureFrobenius X p hp hX ≫ structureScalar X (a ^ p) := by
-  ext U x
-  change ULift.{u + 1} ((structurePresheaf X).obj U) at x
-  apply ULift.ext
-  change (structureSectionMap X U a * x.down) ^ p =
-    structureSectionMap X U (a ^ p) * x.down ^ p
-  simp [mul_pow]
+      structureFrobenius X p hp hX ≫ structureScalar X (a ^ p) :=
+  CategoryTheory.Sheaf.RingAction.scalar_frobenius
+    (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a)
+    p hp (primeCast_eq_zero_on_test X p hX) a
 
 variable (X : Scheme.{u}) [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]
 
 /-- The actual scalar action on original cohomology, in its independent Ext universe. -/
 def structureCohomologyScalars (q : ℕ) :
-    Γ(X, ⊤) →+* AddMonoid.End (Sheaf.H.{w} (additiveStructureSheaf X) q) where
-  toFun a := Sheaf.H.map (structureScalar X a) q
-  map_zero' := by
-    ext x
-    rw [structureScalar_zero]
-    change (Sheaf.functorH _ q).map 0 x = 0
-    rw [CategoryTheory.Functor.map_zero]
-    rfl
-  map_one' := by
-    ext x
-    rw [structureScalar_one]
-    exact Sheaf.H.map_id_apply x
-  map_add' a b := by
-    ext x
-    rw [structureScalar_add]
-    exact Sheaf.H.map_add_apply _ _ x
-  map_mul' a b := by
-    ext x
-    rw [structureScalar_mul]
-    exact Sheaf.H.map_comp_apply _ _ x
+    Γ(X, ⊤) →+* AddMonoid.End (Sheaf.H.{w} (additiveStructureSheaf X) q) :=
+  CategoryTheory.Sheaf.RingAction.cohomologyScalars
+    (structurePresheaf X) (Scheme.smallEtaleTopology X)
+    (additiveStructurePresheaf_isSheaf X) Γ(X, ⊤) (structureSectionMap X)
+    (fun {_ _} f a => structureSectionMap_naturality X f a) q
 
 variable {k : Type u} [Field k]
 

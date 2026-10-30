@@ -1,0 +1,29 @@
+{
+  "run": "remote-b3a82007c0694d4a86abee6f287cc497",
+  "source": "76d810217d7d537ffd07830702d05f31d304b872b35b5aecaf7a302f6edf881c",
+  "source_receipt_sha256": "bb5525ed45b9b08084d9cd5bb2b487a065c5a2880c036ba6974b4c2bf17b984c",
+  "group_closed": true,
+  "aggregate_exit": 0,
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "sha256": "53f3b9a17d7ad854249c46b8b9553e6cb82bad1519c7ec4bd87d0a90832f358c",
+      "verdict": "fresh_pass",
+      "exit_code": 0,
+      "elapsed_seconds": 88.99279806017876
+    }
+  ],
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-b3a82007c0694d4a86abee6f287cc497/receipt.json",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-b3a82007c0694d4a86abee6f287cc497/compiler-events.jsonl",
+  "canonical_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-b3a82007c0694d4a86abee6f287cc497/build.log",
+  "source_basis": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/germ-private-telescope-v23/LIVE_READY.json",
+  "profile": {
+    "allow_cpu_oversubscription": false,
+    "jobs": 8,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "threads": 4
+  },
+  "compiler_invocations": 1,
+  "boundary": "ONEfreshnativeGerm53f3PASS. LowerGeneratora1b0 retains actualf1bfPASS; no explicitpassedGerm/Relative/Sectionreplay, no broaderdependent CPP inferred. Oldrecursion/HDC/unusedversions and retired02923 failures remain distinct."
+}

@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitDetection
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.PullbackComposition
 
@@ -51,31 +52,8 @@ theorem moduleInverseImage_unit_map_isIso_iff
     IsIso (H.map ((moduleInverseImageAdjunction f Λ).unit.app M)) ↔
       IsIso (((moduleSheafEquivalence X Λ).functor ⋙ H).map
         ((moduleValuedInverseImageAdjunction f Λ).unit.app
-          ((moduleSheafEquivalence X Λ).inverse.obj M))) := by
-  have hn : IsIso (H.map ((moduleInverseImageAdjunction f Λ).unit.app M)) ↔
-      IsIso (H.map ((moduleTransportAdjunction f Λ).unit.app M)) := by
-    rw [← moduleInverseImageTransportIso_unit f Λ M, CategoryTheory.Functor.map_comp,
-      isIso_comp_right_iff]
-  rw [hn]
-  let EX := moduleSheafEquivalence X Λ
-  let ES := moduleSheafEquivalence S Λ
-  let adj := EX.symm.toAdjunction.comp (moduleValuedInverseImageAdjunction f Λ)
-  change IsIso (H.map ((adj.comp ES.toAdjunction).unit.app M ≫
-    (moduleDirectImageTransportIso f Λ).inv.app
-      (((EX.inverse ⋙ moduleValuedInverseImage f Λ) ⋙ ES.functor).obj M))) ↔ _
-  rw [CategoryTheory.Functor.map_comp, isIso_comp_right_iff,
-    Adjunction.comp_unit_app, CategoryTheory.Functor.map_comp]
-  let : IsIso (ES.toAdjunction.unit.app
-      ((EX.inverse ⋙ moduleValuedInverseImage f Λ).obj M)) := by
-    change IsIso (ES.unitIso.hom.app _)
-    infer_instance
-  rw [isIso_comp_right_iff]
-  change IsIso (H.map ((EX.symm.toAdjunction.comp
-    (moduleValuedInverseImageAdjunction f Λ)).unit.app M)) ↔ _
-  rw [Adjunction.comp_unit_app, CategoryTheory.Functor.map_comp]
-  let : IsIso (EX.symm.toAdjunction.unit.app M) := by
-    change IsIso (EX.counitIso.inv.app M)
-    infer_instance
-  exact isIso_comp_left_iff _ _
+          ((moduleSheafEquivalence X Λ).inverse.obj M))) :=
+  ModuleCat.Sheaf.ConstantRing.moduleInverseImage_unit_map_isIso_iff
+    (siteBaseChange f) (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S) Λ H M
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients

@@ -87,3 +87,11 @@ smoothness, commutativity, ample line bundle or dimension bound is used.
 [IdentityComponent](IdentityComponent/README.md): the identity component of a group scheme locally
 of finite type over a field: open, closed, geometrically connected, a group scheme, compatible with
 field extension, geometrically irreducible, quasi-compact and of finite type.
+
+[IsogenyPairing](IsogenyPairing.lean) obtains frame-evaluation characters from the
+same positive transporter and framed character in
+[generic sheaf-torsor transport](../../CategoryTheory/Sites/Torsor/Transport.lean).
+The original coefficient-unit fixedness supplies the character hypothesis;
+`scalar_eq_framedScalar` and `character_eq_framedCharacter` identify the actual
+units-valued maps. Frame and equivariant-isomorphism independence retain the
+original deck action and positive sign.

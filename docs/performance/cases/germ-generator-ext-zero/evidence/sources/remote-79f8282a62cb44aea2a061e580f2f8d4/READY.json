@@ -1,0 +1,55 @@
+{
+  "package": "W10",
+  "version": "fibre-zero-unit-v1",
+  "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+  "entry_head": "3467423400c765167730d4372704650a52ab3a95",
+  "sources": [
+    {
+      "path": "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean",
+      "before_sha256": null,
+      "sha256": "0912a38e752d48c87e9c783488088849e37a1df4a490bdb32b370e04cb98582e",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/fibre-zero-unit-v1/source/Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean",
+      "before_sha256": null,
+      "sha256": "543f76d76d955aaec556fcfad5139ca068fd464c5b3aaea5860b29fbb185017d",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/fibre-zero-unit-v1/source/Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean",
+      "before_sha256": "2ca8a5e3f305fd5a5f7778614f70027f389d1f7d3f419215c979fb4e32b8a62d",
+      "sha256": "0d21bfa7dc572899c782946b234dded91c2c14f2f939f72c31a74aae4b11551a",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/fibre-zero-unit-v1/source/Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean"
+    }
+  ],
+  "source_sha256": {
+    "Aglib/Algebra/Homology/RightDerived/Postcomp/UnitAssembly.lean": "0912a38e752d48c87e9c783488088849e37a1df4a490bdb32b370e04cb98582e",
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean": "543f76d76d955aaec556fcfad5139ca068fd464c5b3aaea5860b29fbb185017d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": "0d21bfa7dc572899c782946b234dded91c2c14f2f939f72c31a74aae4b11551a"
+  },
+  "roots": [
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermZero"
+  ],
+  "complete_construction": [
+    "Original actual unit Iso derives the actual counit by Hom-equivalence injectivity, with no Faithful/injective-preservation premise. Its original postcomposition comparison, zero unit and WHOLE derived transpose-unit equality follow below sheaves/geometry; no desired derived/germ equation input.",
+    "Actual original identity-generator value plus full ordinary representations/constant adjunction derives every source Hom value and original Ext-zero source value; no arbitrary E/hE, x/hx or cohomology-zero square assumption.",
+    "Native ordinary sheafification comparison and resolution transpose units become exact instances of those constructions. Chart degreezero uses SAME original free sections representation, actual chart evaluation whole NatIso and W09 original source-generator theorem. Geometric germ value then uses existing actual point germ naturality after those whole maps are established."
+  ],
+  "conditions": "Three actual derived-domain/target categories retain independent object/Hom worlds; only source EnoughInjectives and exact/additive postcomposition as existing native constructor needs. Actual composite Q\u22d9R additive sufficient; no left/forgetful injectivity preservation or derived model. Ordinary generator law only Preadditive, Ext-zero exact case independent C/D/Ext worlds. Original coefficient/world/field/sepclosed/point/fibre/slice HasExt assumptions retained at native boundary.",
+  "native_values": "All7 old native headers and every operational germ/fibre/chart/cohomology comparison map unchanged. Actual original unit Iso is sheafificationNatIso, its hom is original toSheafify; actual counit/derived transpose constructed from same datum. Readonly ResolutionPresheaf/OriginalCohomology/ChartSource/ChartHom definitions untouched, no new point/stalk/Gamma/source/reference model. Final original geometric naturality/surjection transport uses original map operands and data.",
+  "public_native_headers": {
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": [
+      "directImagePresheafSheafificationIso_unit",
+      "resolutionCohomologySheafificationIso_zero_unit",
+      "resolutionCohomologyToHigherDirectImage_zero_unit",
+      "originalCohomologyGerm_mk\u2080",
+      "originalCohomologyChartEquiv_equiv\u2080",
+      "fibreProductCohomologyGerm_equiv\u2080",
+      "fibreProductCohomologyGerm_equiv\u2080_symm"
+    ]
+  },
+  "publication": "STAGED complete3; exact before/absence/HEADguards matched, actual broker window requested",
+  "CPP": "NOT RUN",
+  "review": "Fixed complete same-W10 original zero/germ branch for Root routing; no per-helper gate."
+}

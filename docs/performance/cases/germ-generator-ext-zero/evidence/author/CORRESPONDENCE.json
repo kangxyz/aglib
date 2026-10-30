@@ -1,0 +1,34 @@
+{
+  "question": "germ-whole-values-v21",
+  "original_values": [
+    "Keep E(M,a) equal to the existing chartHomSectionsEquiv V M a. Its already proved naturality and its existing chartHomSectionsEquiv_source identify the SAME actual source generator b=chartComparisonSource V; no composition of separately presented generator values is performed natively.",
+    "For variable abelian categories and independent Ext worlds, reduce an arbitrary Ext-zero class x to Ext.mk\u2080 a. The original raw source comparison z=Ext.mk\u2080 b composed with mapExactFunctor x becomes Ext.mk\u2080(b composed with L.map a).",
+    "Ext.addEquiv\u2080 gives the original Hom b composed with L.map a. Naturality of E, the original generator equation, and naturality of the represented coefficient transformation beta identify its section with beta(a). This proves every source Hom and Ext-zero value from the original generator, not a desired output premise.",
+    "The generic theorem retains the actual z, complete evaluation function T and actual target t through their defining equations. It concludes literal T z=t, eliminating the original native hevaluation/hgenerator assembly as well as hvalue/hsource assembly.",
+    "Before supplying the large represented source P or actual b, the native private originalChartZeroSections_value proves by rfl the complete variable-coefficient function identity: chart evaluation after original Sheaf.H.equiv\u2080 equals original chartHomSectionsEquiv after Ext.addEquiv\u2080. It uses exactly the existing constant adjunction and integer-one evaluation.",
+    "The native adapter supplies the original naturality/source theorem, originalCohomologyChartEquiv_apply at the actual x, the complete variable-coefficient value view, and the literal original output representation. No alternate comparison, generator or cohomology construction is chosen."
+  ],
+  "conditions": "Same X,V,F, freeAbelianSheaf P, original chartComparisonSource b, constant integer source, original chart and fibre-product equivalences, Ext worlds w/e and slice s, geometric point, field/separable closure, arrows, unit and germ maps. No new native naturality/coherence/desired-output premise, category/model/realization, world identification, geometry, budget, recursion, pin or trust change.",
+  "mechanical_guards": {
+    "all_eight_original_native_headers": {
+      "directImagePresheafSheafificationIso_unit": true,
+      "resolutionCohomologySheafificationIso_zero_unit": true,
+      "resolutionCohomologyToHigherDirectImage_zero_unit": true,
+      "originalIntegerHomSections_value": true,
+      "originalCohomologyGerm_mk\u2080": true,
+      "originalCohomologyChartEquiv_equiv\u2080": true,
+      "fibreProductCohomologyGerm_equiv\u2080": true,
+      "fibreProductCohomologyGerm_equiv\u2080_symm": true
+    },
+    "original_P_beta_block": true,
+    "later_native_bodies": true,
+    "old_lower_prefix": true,
+    "imports_options": true,
+    "all_lines_at_most_100": true
+  },
+  "source_identity": {
+    "Aglib/CategoryTheory/Sites/SheafCohomology/OriginalSections/GeneratorZero.lean": "a1b0afb33a48438ccb8f96db750c17140ed9c0c98f4b9ce8a3a55c6734da6f8d",
+    "Aglib/AlgebraicGeometry/EtaleCohomology/Stalk/FibreProductGermZero.lean": "5764233c0b53f51feecf566ac72f4fd211773418f80137160d0c3a732c1d3944"
+  },
+  "remaining_gap": "Ordinary CPP of exact two selected sources, including whole variable-coefficient rfl view and faithful API elaboration; no mathematical final conclusion assumed."
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "pre-dispatch-transport-failure",
+  "diagnostic": "exact-Germ02923-input-types",
+  "lane": "D",
+  "packet_sha256": "52386f85482034947b5fea4dc2a6ee65910d8fa599cd22b0d5d351bbd1e24edf",
+  "argv_sha256": "2e6dd8142dd2d60546eae93c192c6610395f28453886ff1578d23cb5d5cd5d29",
+  "input_source_sha256": "02923c3ff20ff1561526668c57a0b84f45d89f24964bf83655e2f7b5b2b31ea4",
+  "native_owner_sha256": "18e5c930c14a1b0b138a5ba02e4c115fa4da4ec55b27587d4439dccd08e07e4e",
+  "outer_exit": 2,
+  "outer_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/germ-probe-executor/outer-dispatch.log",
+  "observed": "SSH exit 255 while deploying lean_remote_storage helper; remote phase did not return a run ID or source ID. A separate read-only remote status call also exited 255, so remote process reconciliation is unavailable.",
+  "boundary": "No native Lean trace/setup was produced; expected diagnostic has not run. D reservation remains pending to prevent duplicate dispatch until coordinator reconciles transport/lease state.",
+  "recorded_epoch": 1793336590.523541
+}

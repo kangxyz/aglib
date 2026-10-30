@@ -51,74 +51,89 @@ def scalar (s : P.carrier.obj.obj (op U)) (g : H) : Γ(U.left, ⊤)ˣ :=
   transportUnit P (op U) s (P.carrier.obj.map (ρ g).hom.op s)
 
 include hunit in
+/-- Original unit-fixedness implies fixedness of the same coefficient sections. -/
+theorem coefficient_restriction_fixed (g : H) (a : (gm X).obj.obj (op U)) :
+    (gm X).obj.map (ρ g).hom.op a = a := by
+  apply (unitsSections X (op U)).injective
+  apply Additive.toMul.injective
+  exact (unitsSections_naturality X (ρ g).hom.op a).trans (hunit g _)
+
+/-- The original scalar is the unit value of the same generic framed scalar. -/
+theorem scalar_eq_framedScalar (s : P.carrier.obj.obj (op U)) (g : H) :
+    scalar P U ρ s g = (unitsSections X (op U) (P.framedScalar U ρ s g)).toMul := by
+  change (unitsSections X (op U)
+    (transport P (op U) s (P.carrier.obj.map (ρ g).hom.op s))).toMul = _
+  rw [transport_eq_positiveTransport]
+  rfl
+
+include hunit in
 /-- Positive transport is multiplicative when deck maps fix the global units. -/
 theorem scalar_mul (s : P.carrier.obj.obj (op U)) (g h : H) :
     scalar P U ρ s (g * h) = scalar P U ρ s g * scalar P U ρ s h := by
-  have hm : P.carrier.obj.map (ρ (g * h)).hom.op s =
-      P.carrier.obj.map (ρ h).hom.op (P.carrier.obj.map (ρ g).hom.op s) := by
-    rw [map_mul, Aut.Aut_mul_def, Iso.trans_hom, op_comp, CategoryTheory.Functor.map_comp]
-    rfl
-  dsimp only [scalar]
-  rw [hm]
-  rw [← transportUnit_trans P (op U) s (P.carrier.obj.map (ρ h).hom.op s)]
-  rw [← transportUnit_naturality P (ρ h).hom.op]
-  change scalar P U ρ s h * pullUnit (ρ h).hom.left (scalar P U ρ s g) =
-    scalar P U ρ s g * scalar P U ρ s h
-  rw [hunit, mul_comm]
+  simp only [scalar_eq_framedScalar]
+  change (unitsSections X (op U) (P.framedScalar U ρ s (g * h))).toMul =
+    ((unitsSections X (op U) (P.framedScalar U ρ s g)) +
+      (unitsSections X (op U) (P.framedScalar U ρ s h))).toMul
+  exact congrArg Additive.toMul
+    ((congrArg (unitsSections X (op U))
+      (P.framedScalar_mul U ρ (coefficient_restriction_fixed U ρ hunit) s g h)).trans
+        ((unitsSections X (op U)).map_add _ _))
 
 /-- The character supplied by a chosen torsor frame. -/
 def character (s : P.carrier.obj.obj (op U)) : H →* Γ(U.left, ⊤)ˣ where
   toFun := scalar P U ρ s
   map_one' := by
-    simp only [scalar, map_one]
-    change transportUnit P (op U) s (P.carrier.obj.map (𝟙 (op U)) s) = 1
-    rw [CategoryTheory.Functor.map_id]
-    exact transportUnit_self P (op U) s
+    rw [scalar_eq_framedScalar, P.framedScalar_one U ρ s, map_zero]
+    rfl
   map_mul' := scalar_mul P U ρ hunit s
+
+/-- The actual units coordinate, as a homomorphism on the same coefficient values. -/
+def unitsCharacterMap : Multiplicative ((gm X).obj.obj (op U)) →* Γ(U.left, ⊤)ˣ where
+  toFun a := (unitsSections X (op U) a.toAdd).toMul
+  map_one' := by
+    change (unitsSections X (op U) 0).toMul = 1
+    rw [map_zero]
+    rfl
+  map_mul' a b := by
+    change (unitsSections X (op U) (a.toAdd + b.toAdd)).toMul = _
+    rw [map_add]
+    rfl
+
+/-- The whole legacy character is the generic character followed by actual units evaluation. -/
+theorem character_eq_framedCharacter (s : P.carrier.obj.obj (op U)) :
+    character P U ρ hunit s = (unitsCharacterMap U).comp
+      (P.framedCharacter U ρ (coefficient_restriction_fixed U ρ hunit) s) := by
+  apply MonoidHom.ext
+  intro g
+  exact scalar_eq_framedScalar P U ρ s g
 
 include hunit in
 /-- The evaluation character is independent of the chosen frame. -/
 theorem scalar_independent (s t : P.carrier.obj.obj (op U)) (g : H) :
     scalar P U ρ s g = scalar P U ρ t g := by
-  let rs := P.carrier.obj.map (ρ g).hom.op s
-  let rt := P.carrier.obj.map (ρ g).hom.op t
-  have hn : transportUnit P (op U) rs rt = transportUnit P (op U) s t := by
-    exact (transportUnit_naturality P (ρ g).hom.op s t).symm.trans (hunit g _)
-  have h₁ := transportUnit_trans P (op U) s t rt
-  have h₂ := transportUnit_trans P (op U) s rs rt
-  rw [hn] at h₂
-  apply mul_right_cancel (b := transportUnit P (op U) s t)
-  change transportUnit P (op U) s rs * transportUnit P (op U) s t =
-    transportUnit P (op U) t rt * transportUnit P (op U) s t
-  rw [h₂, mul_comm (transportUnit P (op U) t rt), h₁]
+  simpa only [scalar_eq_framedScalar] using
+    congrArg (fun a => (unitsSections X (op U) a).toMul)
+      (P.framedScalar_independent U ρ (coefficient_restriction_fixed U ρ hunit) s t g)
 
 /-- Equivariant torsor isomorphisms preserve the literal positive transport. -/
 theorem transportUnit_iso {Q : Torsor (gm X)} (e : Torsor.Iso P Q)
     (s t : P.carrier.obj.obj (op U)) :
     transportUnit Q (op U) (e.carrierIso.hom.hom.app (op U) s)
       (e.carrierIso.hom.hom.app (op U) t) = transportUnit P (op U) s t := by
-  have ht : transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
-      (e.carrierIso.hom.hom.app (op U) t) = transport P (op U) s t := by
-    apply transport_eq
-    have he := e.equivariant (op U) (transport P (op U) s t) s
-    exact he.symm.trans
-      (congrArg (fun x : P.carrier.obj.obj (op U) => e.carrierIso.hom.hom.app (op U) x)
-        (action_transport P (op U) s t))
-  change (unitsSections X (op U) (transport Q (op U) (e.carrierIso.hom.hom.app (op U) s)
-      (e.carrierIso.hom.hom.app (op U) t))).toMul =
-    (unitsSections X (op U) (transport P (op U) s t)).toMul
-  exact congrArg (fun a : (gm X).obj.obj (op U) => (unitsSections X (op U) a).toMul) ht
+  change (unitsSections X (op U) (transport Q (op U)
+    (e.carrierIso.hom.hom.app (op U) s) (e.carrierIso.hom.hom.app (op U) t))).toMul =
+      (unitsSections X (op U) (transport P (op U) s t)).toMul
+  rw [transport_eq_positiveTransport, transport_eq_positiveTransport]
+  exact congrArg (fun a => (unitsSections X (op U) a).toMul)
+    (CategoryTheory.Sheaf.Torsor.positiveTransport_iso e (op U) s t)
 
 /-- Positive evaluation is natural under an actual equivariant torsor
 isomorphism, before any frame is selected. -/
 theorem scalar_iso {Q : Torsor (gm X)} (e : Torsor.Iso P Q)
     (s : P.carrier.obj.obj (op U)) (g : H) :
     scalar P U ρ s g = scalar Q U ρ (e.carrierIso.hom.hom.app (op U) s) g := by
-  have hn : e.carrierIso.hom.hom.app (op U) (P.carrier.obj.map (ρ g).hom.op s) =
-      Q.carrier.obj.map (ρ g).hom.op (e.carrierIso.hom.hom.app (op U) s) :=
-    congrArg (fun a => a s) (e.carrierIso.hom.hom.naturality (ρ g).hom.op)
-  dsimp only [scalar]
-  rw [← hn, transportUnit_iso]
+  simpa only [scalar_eq_framedScalar] using
+    congrArg (fun a => (unitsSections X (op U) a).toMul) (P.framedScalar_iso U ρ e s g)
 
 include hunit in
 /-- Frame-independent evaluation agrees on equivariantly isomorphic torsors. -/

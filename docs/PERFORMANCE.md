@@ -48,6 +48,15 @@ Historical command sequences in records describe their original runs.
 
 ## Conversion boundaries
 
+**Prove the original generator-to-Ext-zero value before specialization.**
+Keep the original Hom-section family variable and prove its whole evaluation
+function before inserting the concrete source and generator. Derive the
+original Ext-zero value from naturality, the source comparison and `mk0`
+surjectivity; expose the existing Ext dictionary at the actual object head.
+[Generator-to-Ext-zero case](performance/cases/germ-generator-ext-zero/README.md)
+retains six distinct failures and a source-bound pass, with no unique-cause or
+matched-speedup claim.
+
 **Type the complete comparison.** Fix actual source/target objects, Hom carriers,
 intermediate isomorphisms, input/output values and structures before applying a
 generic law. For module sheaves, keep a single `M : X.Modules` and its actual
@@ -452,6 +461,13 @@ mathematical conditions govern that choice.
 
 ## Build-and-check costs
 
+- When a subsequent authorized phase uses the same sealed native source, the
+  owner may invoke the existing guarded native worker with the exact workspace
+  and expected source, fresh argv and run ID, and the applicable source, pin,
+  lock, profile and tool guards. Changed inputs require synchronization.
+  [Sealed native-source reuse](performance/cases/sealed-native-source-reuse/README.md)
+  records the observed upload stage and historical scoped phases; it establishes
+  no unique transport cause or matched speedup.
 - Keep compatible native artifacts and successful check categories. A cache
   candidate is not current lint/axiom evidence; a successful unchanged frontend
   in a failed graph retains only its actual scope.
