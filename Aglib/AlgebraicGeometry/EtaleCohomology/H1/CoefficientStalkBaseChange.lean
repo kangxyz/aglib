@@ -120,12 +120,9 @@ theorem stalkUnit_fiberPointEquiv (a : coefficientFiber (s ≫ f) L) :
 canonical adjunction-unit map on actual germs. -/
 theorem pullbackStalkEquiv_stalkUnit (a : coefficientFiber (s ≫ f) L) :
     pullbackStalkEquiv f s R (stalkUnit f s L a) = a := by
-  apply (R.fiberPointEquiv (s ≫ f)).injective
-  change (R.fiberPointEquiv (s ≫ f)) ((R.fiberPointEquiv (s ≫ f)).symm
-    ((pullbackFiberMulEquiv f s R.group).symm.toAdditive
-      ((pulledBackRepresentation f R).fiberPointEquiv s (stalkUnit f s L a)))) = _
-  rw [AddEquiv.apply_symm_apply, stalkUnit_fiberPointEquiv]
-  exact congrArg Additive.ofMul ((pullbackFiberMulEquiv f s R.group).symm_apply_apply _)
+  rw [← StalkInverseImage.stalkUnitNatIso_hom f s L]
+  exact (((StalkInverseImage.stalkUnitNatIso f s).app L).addCommGroupIsoToAddEquiv).symm_apply_apply
+    a
 
 /-- The inverse represented stalk comparison is uniquely specified by its actual germ-unit map. -/
 theorem stalkUnit_eq_inverse (a : coefficientFiber (s ≫ f) L) :
@@ -200,8 +197,9 @@ theorem pullbackStalkEquiv_naturality {N : AbelianSheaf.{u, u + 1} X}
 theorem pullbackStalkEquiv_points (a : coefficientFiber s ((inverseImage f).obj L)) :
     R.fiberPointEquiv (s ≫ f) (pullbackStalkEquiv f s R a) =
       Additive.ofMul ((pullbackFiberMulEquiv f s R.group).symm
-        ((pulledBackRepresentation f R).fiberPointEquiv s a).toMul) :=
-  (R.fiberPointEquiv (s ≫ f)).apply_symm_apply _
+        ((pulledBackRepresentation f R).fiberPointEquiv s a).toMul) := by
+  rw [Naturality.pullbackStalkEquiv_eq_represented]
+  exact (R.fiberPointEquiv (s ≫ f)).apply_symm_apply _
 
 /-- The actual pulled-back stalk action is the restriction of actual intrinsic
 monodromy along the actual induced fundamental-group homomorphism. -/

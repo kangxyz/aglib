@@ -5303,6 +5303,7 @@ public import Aglib.CategoryTheory.PresentationColimit
 public import Aglib.CategoryTheory.Pseudofunctor.PresheafHomSource
 public import Aglib.CategoryTheory.Sites.ConstantRestriction
 public import Aglib.CategoryTheory.Sites.ConstantRestriction.Cohomology
+public import Aglib.CategoryTheory.Sites.ConstantRestriction.TerminalValues
 public import Aglib.CategoryTheory.Sites.ConstantSheaf.Unit
 public import Aglib.CategoryTheory.Sites.Continuous.KanUnit
 public import Aglib.CategoryTheory.Sites.Continuous.Limits
@@ -5333,8 +5334,14 @@ public import Aglib.CategoryTheory.Sites.LocallyBijective
 public import Aglib.CategoryTheory.Sites.OverExtensive
 public import Aglib.CategoryTheory.Sites.OverMapCovering
 public import Aglib.CategoryTheory.Sites.Point.Germ
+public import Aglib.CategoryTheory.Sites.Point.InitialEvaluation
+public import Aglib.CategoryTheory.Sites.Point.InitialOfSubterminal
+public import Aglib.CategoryTheory.Sites.Point.InverseImageComparison
+public import Aglib.CategoryTheory.Sites.Point.InverseImageUnitCoherence
+public import Aglib.CategoryTheory.Sites.Point.RelativeTest
 public import Aglib.CategoryTheory.Sites.Point.RepresentedAdditive
 public import Aglib.CategoryTheory.Sites.Point.SectionValues
+public import Aglib.CategoryTheory.Sites.Point.SectionValuesTransport
 public import Aglib.CategoryTheory.Sites.PresheafAutomorphismAction
 public import Aglib.CategoryTheory.Sites.PresheafRepresentedDescent
 public import Aglib.CategoryTheory.Sites.PresheafTransport
@@ -5584,6 +5591,8 @@ public import Aglib.CategoryTheory.Topos.GeometricMorphism
 public import Aglib.CategoryTheory.Topos.Grothendieck
 public import Aglib.CategoryTheory.Topos.Point
 public import Aglib.CategoryTheory.Topos.SheafMorphism
+public import Aglib.CategoryTheory.Topos.Slice.EmptyPointFibre
+public import Aglib.CategoryTheory.Topos.Slice.ForwardComparison
 public import Aglib.CategoryTheory.TorsorAction.Basic
 public import Aglib.CategoryTheory.TorsorAction.CoefficientTransport
 public import Aglib.CategoryTheory.TorsorAction.KernelMarkingOrbits

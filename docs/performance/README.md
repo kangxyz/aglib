@@ -144,6 +144,8 @@ Retain existing cases when refining key guidance in the main file.
 
 - [Proper injective follow-up: retain the original single head](inferred-native-comparison-equations.md#proper-injective-follow-up-retain-the-original-single-head) — reviewed source repair and two-module production pass; broader Proper remains open.
 
+- [Indexed cone: construct the whole original row at the literal native target](cases/indexed-cone-literal-target/README.md)
+
 ## Diagnostic frontiers
 
 - [Čech intrinsic comparison: conversion frontier](cech-intrinsic-conversion-frontier.md) — one instrumented source-matching run; bounded dictionary and adapter pilots remain unmeasured.

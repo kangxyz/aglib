@@ -33,3 +33,5 @@ etale coefficient forgetting, torsor direct images, intrinsic trivialization
 and slice-cohomology restriction. The broader migration and deferred higher
 foundations are described in the
 [refactor plan](../../../docs/design/SHEAF_COHOMOLOGY_SIX_FUNCTOR_REFACTOR_PLAN.md).
+
+[Forward slice comparison](Slice/ForwardComparison.lean) transports the supplied inverse comparison through the actual coefficient equivalences using native composition constructors; its value is the original unit/counit chain. [Empty point fibres](Slice/EmptyPointFibre.lean) make the original restricted skyscraper zero and use the same slice and point adjunctions to prove the actual extension fibre zero. The source and target category, point, product, colimit and coefficient worlds retain their stated ranges.

@@ -25,14 +25,38 @@ variable (R Ω : Type u) [CommRing R] [Field Ω] [Algebra R Ω] [IsSepClosed Ω]
 abbrev directImageStageSections : (GeometricEtaleNeighborhood R Ω)ᵒᵖᵒᵖ ⥤
     AddCommGrpCat.{u + 1} := (baseChangedEtaleDiagram R Ω f).op ⋙ F.obj
 
+/-- The coefficient functor of the original base-changed stage sections. -/
+abbrev directImageStageSectionsFunctor :
+    AbelianSheaf.{u, u + 1} X ⥤
+      ((GeometricEtaleNeighborhood R Ω)ᵒᵖᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :=
+  sheafToPresheaf (Scheme.smallEtaleTopology X) AddCommGrpCat.{u + 1} ⋙
+    (Functor.whiskeringLeft _ _ AddCommGrpCat.{u + 1}).obj (baseChangedEtaleDiagram R Ω f).op
+
+/-- The two original final functors give one whole natural stalk comparison. -/
+def directImageStalkStagesComparison :
+    directImage f ⋙ sheafToPresheaf (Scheme.smallEtaleTopology (Spec (.of R)))
+        AddCommGrpCat.{u + 1} ⋙
+        (pointSmallEtale (Spec.algebraMap R Ω)).presheafFiber ≅
+      directImageStageSectionsFunctor R Ω f ⋙ colim :=
+  Functor.isoWhiskerLeft
+      (directImage f ⋙ sheafToPresheaf (Scheme.smallEtaleTopology (Spec (.of R)))
+        AddCommGrpCat.{u + 1}) (stalkComparison R Ω).symm ≪≫
+    Functor.isoWhiskerLeft (directImageStageSectionsFunctor R Ω f)
+      (Functor.Final.colimIso (opOpEquivalence (GeometricEtaleNeighborhood R Ω)).inverse)
+
 /-- Reindexing the original stalk by the actual finite-presentation neighborhoods
 requires no finiteness assumption on the source map. -/
 def directImageStalkStagesIso :
     (pointSmallEtale (Spec.algebraMap R Ω)).presheafFiber.obj ((directImage f).obj F).obj ≅
       colimit (directImageStageSections R Ω f F) :=
-  (stalkIso R Ω ((directImage f).obj F).obj).symm ≪≫
-    Functor.Final.colimitIso (opOpEquivalence (GeometricEtaleNeighborhood R Ω)).inverse
-      (directImageStageSections R Ω f F)
+  (directImageStalkStagesComparison R Ω f).app F
+
+/-- Each component is the original two-final-functor comparison. -/
+theorem directImageStalkStagesIso_eq_original :
+    directImageStalkStagesIso R Ω f F =
+      (stalkIso R Ω ((directImage f).obj F).obj).symm ≪≫
+        Functor.Final.colimitIso (opOpEquivalence (GeometricEtaleNeighborhood R Ω)).inverse
+          (directImageStageSections R Ω f F) := rfl
 
 /-- Every original geometric germ is carried to its literal base-changed stage leg. -/
 @[reassoc (attr := simp)]

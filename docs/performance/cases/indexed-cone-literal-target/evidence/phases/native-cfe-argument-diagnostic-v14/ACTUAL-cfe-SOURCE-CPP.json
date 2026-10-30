@@ -1,0 +1,29 @@
+{
+  "run": "remote-cfe95b216f474e619bd1810e34ee2a9e",
+  "SOURCE": "caa620ff1f0d135a34e5776301105dd3d13fc284c42dfdb98fd46b8d8cdbaac8",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-B-N-caa620-Cart-cfe95b21.json",
+  "source_manifest_sha256": "77310274a2a83febef827ea162084aa59f4b0879603afbbbf2dac51069d887fd",
+  "all26_current_hashes_match": true,
+  "events_snapshot": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/N-partial-cfe95b21/compiler-events.snapshot.jsonl",
+  "events_snapshot_sha256": "45ba52fd995914fac9b782a230bc0e79d1c4acaaa7759fb5450b5239ce56e721",
+  "incomplete_event_lines": 0,
+  "owned_completed_frontends": [
+    {
+      "path": "Aglib/CategoryTheory/Filtered/IndexedConeSections.lean",
+      "sha256": "38a11b392fef99f7f89ffd2f32b6c390f94d8812b17574361bc75979ab4eb69a",
+      "exit_code": 0,
+      "started": "2026-10-30T06:20:07.625585+00:00",
+      "finished": "2026-10-30T06:20:10.445909+00:00",
+      "wrapper_pid": 193710
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+      "sha256": "83b76c519c53ef7db5b8c9d298da5d097f103721e96f89f1f67d79e4a84d9494",
+      "exit_code": 1,
+      "started": "2026-10-30T06:20:10.934767+00:00",
+      "finished": "2026-10-30T06:22:18.310991+00:00",
+      "wrapper_pid": 193775
+    }
+  ],
+  "boundary": "Partialsealedgraph actualcompletedfrontend observations only; no aggregateverdict assumed. Indexed38a currentPASS retained, native83b currentFAIL not pass, unknownNatTrans/applicationerrorscascading. Diagnosisv14separatefromproduction."
+}

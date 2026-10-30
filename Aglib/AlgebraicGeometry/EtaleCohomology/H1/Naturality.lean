@@ -14,6 +14,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.FiniteCoefficientPullba
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.MarkedCoefficients
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.RepresentedComparisonNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.SchemeTorsorBaseChange
+public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
+public import Aglib.CategoryTheory.Sites.Point.InverseImageUnitCoherence
 
 /-!
 # Naturality of the actual finite-coefficient étale H¹ comparison
@@ -510,18 +512,150 @@ theorem coefficientMap_pullback_representation (q : (inverseImage f).obj L ⟶ D
 end SheafPullbackAlgebra
 
 section ActualStalkPullback
+open Opposite (op)
+open _root_.AlgebraicGeometry.Scheme.FiniteEtale.GroupBaseChange (pullbackFiberMulEquiv)
+
 variable {X S : Scheme.{u}} {K : Type u} [Field K] [IsSepClosed K]
 variable (f : S ⟶ X) (s : Spec (CommRingCat.of K) ⟶ S)
 variable {L : AbelianSheaf.{u, u + 1} X} (R : CoefficientRepresentation L)
 
-/-- The actual geometric stalk of the inverse-image coefficient is identified
-with the original stalk through genuine represented-sheaf stalks and the actual
-scheme pullback-fibre equivalence. Every component is an actual additive map. -/
-def pullbackStalkEquiv : coefficientFiber s ((inverseImage f).obj L) ≃+
+/-- The original all-coefficient unit is the complete lower transport at its actual section unit. -/
+theorem stalkUnit_eq_pointTransport (L : AbelianSheaf.{u, u + 1} X) :
+    CoefficientStalkBaseChange.stalkUnit f s L =
+      GrothendieckTopology.Point.UnitTransport.map
+        (Scheme.pointSmallEtale (s ≫ f)) (Scheme.pointSmallEtale s) (siteBaseChange f)
+        (fun U p => CoefficientStalkBaseChange.pulledBackPoint f s U p)
+        (fun a p => CoefficientStalkBaseChange.pulledBackPoint_naturality f s a p)
+        ((inverseImageAdjunction f).unit.app L).hom := by
+  apply (Scheme.pointSmallEtale (s ≫ f)).presheafFiber_hom_ext
+  intro U p
+  exact (CoefficientStalkBaseChange.germ_stalkUnit f s L U p).trans
+    (GrothendieckTopology.Point.UnitTransport.germ_map
+      (Scheme.pointSmallEtale (s ≫ f)) (Scheme.pointSmallEtale s) (siteBaseChange f)
+      (fun U p => CoefficientStalkBaseChange.pulledBackPoint f s U p)
+      (fun a p => CoefficientStalkBaseChange.pulledBackPoint_naturality f s a p)
+      ((inverseImageAdjunction f).unit.app L).hom U p).symm
+
+section OriginalRepresentedUnit
+variable (H : Grp (Over X)) [IsCommMonObj H.X] [Etale H.X.hom]
+
+/-- The actual coefficient-point pullback, with the sheaf-value universe lift explicit. -/
+private def representedPointPullbackValue :
+    AddCommGrpCat.of (RepresentedSections H (Over.mk (s ≫ f))) ⟶
+      AddCommGrpCat.of (RepresentedSections (baseChangedGroup f H) (Over.mk s)) :=
+  AddCommGrpCat.ofHom ((AddEquiv.ulift.trans
+    (pullbackFiberMulEquiv f s H).toAdditive).trans AddEquiv.ulift.symm).toAddMonoidHom
+
+/-- On represented coefficients the genuine unit-on-germs map is exactly
+pullback of actual coefficient points, under the fixed represented sheaf iso. -/
+private theorem represented_stalkUnit_value :
+    CoefficientStalkBaseChange.stalkUnit f s (representedSheaf H) ≫
+        ((Scheme.pointSmallEtale s).sheafFiber (A := AddCommGrpCat.{u + 1})).map
+          (representedSheafBaseChangeIso f H).hom ≫
+        representedFiberEvaluation s (baseChangedGroup f H) =
+      representedFiberEvaluation (s ≫ f) H ≫ representedPointPullbackValue f s H := by
+  rw [stalkUnit_eq_pointTransport]
+  refine GrothendieckTopology.Point.UnitTransport.map_square_of_values
+    (Scheme.pointSmallEtale (s ≫ f)) (Scheme.pointSmallEtale s) (siteBaseChange f)
+    (fun U p => CoefficientStalkBaseChange.pulledBackPoint f s U p)
+    (fun a p => CoefficientStalkBaseChange.pulledBackPoint_naturality f s a p)
+    ((inverseImageAdjunction f).unit.app (representedSheaf H)).hom _ _ _
+    (fun U p => AddCommGrpCat.ofHom (representedSectionsPullback H p))
+    (fun V q => (representedSheafBaseChangeIso f H).hom.hom.app (op V) ≫
+      AddCommGrpCat.ofHom (representedSectionsPullback (baseChangedGroup f H) q)) ?_ ?_ ?_
+  · intro U p
+    exact representedFiberEvaluation_germ_hom (s ≫ f) H U p
+  · intro V q
+    exact ((Scheme.pointSmallEtale s).toPresheafFiber_naturality_assoc
+      (representedSheafBaseChangeIso f H).hom.hom V q
+      (representedFiberEvaluation s (baseChangedGroup f H))).trans
+      (congrArg (fun k => (representedSheafBaseChangeIso f H).hom.hom.app (op V) ≫ k)
+        (representedFiberEvaluation_germ_hom s (baseChangedGroup f H) V q))
+  · intro U p
+    have hu := congrArg (fun q => q.hom.app (op U)) (representedSheafBaseChangeIso_unit f H)
+    change ((inverseImageAdjunction f).unit.app (representedSheaf H)).hom.app (op U) ≫
+        (representedSheafBaseChangeIso f H).hom.hom.app (op ((siteBaseChange f).obj U)) =
+      (representedBaseChangeUnit f H).app (op U) at hu
+    rw [← Category.assoc, hu]
+    apply AddCommGrpCat.hom_ext
+    apply AddMonoidHom.ext
+    intro a
+    apply ULift.ext
+    change Additive.ofMul (CoefficientStalkBaseChange.pulledBackPoint f s U p ≫
+      (Over.pullback f).map a.down.toMul) =
+        Additive.ofMul (pullbackFiberMulEquiv f s H (p ≫ a.down.toMul))
+    exact congrArg Additive.ofMul
+      ((Over.mapPullbackAdj f).homEquiv_naturality_right
+        (X := Over.mk s) p a.down.toMul).symm
+
+end OriginalRepresentedUnit
+
+/-- The original represented view is retained solely as its coordinate description. -/
+def representedPullbackStalkEquiv : coefficientFiber s ((inverseImage f).obj L) ≃+
     coefficientFiber (s ≫ f) L :=
   ((pulledBackRepresentation f R).fiberPointEquiv s).trans
     ((Scheme.FiniteEtale.GroupBaseChange.pullbackFiberMulEquiv f s R.group).symm.toAdditive.trans
       (R.fiberPointEquiv (s ≫ f)).symm)
+
+/-- The actual all-coefficient stalk pullback uses the inverse of the one original unit Iso. -/
+def canonicalPullbackStalkEquiv (L : AbelianSheaf.{u, u + 1} X) :
+    coefficientFiber s ((inverseImage f).obj L) ≃+ coefficientFiber (s ≫ f) L :=
+  ((StalkInverseImage.stalkUnitNatIso f s).app L).addCommGroupIsoToAddEquiv.symm
+
+/-- The represented coordinate view agrees with the one actual all-coefficient inverse. -/
+theorem canonicalPullbackStalkEquiv_eq_represented :
+    canonicalPullbackStalkEquiv f s L = representedPullbackStalkEquiv f s R := by
+  let E := ((StalkInverseImage.stalkUnitNatIso f s).app L).addCommGroupIsoToAddEquiv
+  have hunit (a : coefficientFiber (s ≫ f) L) :
+      (pulledBackRepresentation f R).fiberPointEquiv s
+          (CoefficientStalkBaseChange.stalkUnit f s L a) =
+        Additive.ofMul (pullbackFiberMulEquiv f s R.group
+          (R.fiberPointEquiv (s ≫ f) a).toMul) := by
+    let F := (Scheme.pointSmallEtale s).sheafFiber (A := AddCommGrpCat.{u + 1})
+    let G := (Scheme.pointSmallEtale (s ≫ f)).sheafFiber (A := AddCommGrpCat.{u + 1})
+    have hn := ConcreteCategory.congr_hom
+      (CoefficientStalkBaseChange.stalkUnit_naturality f s L R.iso.inv) a
+    have hr := ConcreteCategory.congr_hom
+      (represented_stalkUnit_value f s R.group) (G.map R.iso.inv a)
+    change (representedFiberEvaluation s (baseChangedGroup f R.group)
+      (F.map ((inverseImage f).map R.iso.inv ≫ (representedSheafBaseChangeIso f R.group).hom)
+        (CoefficientStalkBaseChange.stalkUnit f s L a))).down = _
+    rw [F.map_comp]
+    change (representedFiberEvaluation s (baseChangedGroup f R.group)
+      (F.map (representedSheafBaseChangeIso f R.group).hom
+        (F.map ((inverseImage f).map R.iso.inv)
+          (CoefficientStalkBaseChange.stalkUnit f s L a)))).down = _
+    change CoefficientStalkBaseChange.stalkUnit f s (representedSheaf R.group)
+        (G.map R.iso.inv a) =
+      F.map ((inverseImage f).map R.iso.inv) (CoefficientStalkBaseChange.stalkUnit f s L a) at hn
+    rw [← hn]
+    exact congrArg ULift.down hr
+  have he (a : coefficientFiber (s ≫ f) L) : representedPullbackStalkEquiv f s R (E a) = a := by
+    apply (R.fiberPointEquiv (s ≫ f)).injective
+    change (R.fiberPointEquiv (s ≫ f)) ((R.fiberPointEquiv (s ≫ f)).symm
+      ((pullbackFiberMulEquiv f s R.group).symm.toAdditive
+        ((pulledBackRepresentation f R).fiberPointEquiv s (E a)))) = _
+    rw [AddEquiv.apply_symm_apply]
+    have hu := hunit a
+    rw [← StalkInverseImage.stalkUnitNatIso_hom f s L] at hu
+    change (pulledBackRepresentation f R).fiberPointEquiv s (E a) = _ at hu
+    exact (congrArg (fun z => (pullbackFiberMulEquiv f s R.group).symm.toAdditive z)
+      hu).trans
+      (congrArg Additive.ofMul ((pullbackFiberMulEquiv f s R.group).symm_apply_apply _))
+  ext a
+  obtain ⟨b, rfl⟩ := E.surjective a
+  exact (E.symm_apply_apply b).trans (he b).symm
+
+/-- The legacy represented interface now forwards to that same canonical inverse. -/
+def pullbackStalkEquiv : coefficientFiber s ((inverseImage f).obj L) ≃+
+    coefficientFiber (s ≫ f) L :=
+  let _ := R
+  canonicalPullbackStalkEquiv f s L
+
+/-- Its original genuine coefficient-point coordinate description is retained whole. -/
+theorem pullbackStalkEquiv_eq_represented :
+    pullbackStalkEquiv f s R = representedPullbackStalkEquiv f s R :=
+  canonicalPullbackStalkEquiv_eq_represented f s R
 
 /-- The marking obtained from the actual stalk pullback is exactly the canonical
 point marking of the actual base-changed coefficient group. -/
@@ -529,6 +663,7 @@ theorem pullbackStalkEquiv_pointMark (M : Type v) [AddCommGroup M]
     (mark : coefficientFiber (s ≫ f) L ≃+ M) :
     (pulledBackRepresentation f R).pointMark s ((pullbackStalkEquiv f s R).trans mark) =
       canonicalPullbackFiberMark f R.group s (R.pointMark (s ≫ f) mark) := by
+  rw [pullbackStalkEquiv_eq_represented]
   ext a
   apply Multiplicative.toAdd.injective
   change mark ((R.fiberPointEquiv (s ≫ f)).symm
@@ -537,6 +672,21 @@ theorem pullbackStalkEquiv_pointMark (M : Type v) [AddCommGroup M]
         (((pulledBackRepresentation f R).fiberPointEquiv s).symm (Additive.ofMul a))))) = _
   rw [AddEquiv.apply_symm_apply]
   rfl
+
+/-- Transport the one canonical inverse along the original actual basepoint equality. -/
+def pointedCanonicalPullbackStalkEquiv (L : AbelianSheaf.{u, u + 1} X)
+    (x : Spec (CommRingCat.of K) ⟶ X) (hx : s ≫ f = x) :
+    coefficientFiber s ((inverseImage f).obj L) ≃+ coefficientFiber x L := by
+  subst x
+  exact canonicalPullbackStalkEquiv f s L
+
+/-- Its inverse is the original pointed unit map, by the proved APIC hom equality. -/
+theorem pointedStalkUnit_eq_canonical_inverse (L : AbelianSheaf.{u, u + 1} X)
+    (x : Spec (CommRingCat.of K) ⟶ X) (hx : s ≫ f = x) (a : coefficientFiber x L) :
+    CoefficientStalkBaseChange.pointedStalkUnit f s L x hx a =
+      (pointedCanonicalPullbackStalkEquiv f s L x hx).symm a := by
+  subst x
+  exact (ConcreteCategory.congr_hom (StalkInverseImage.stalkUnitNatIso_hom f s L) a).symm
 
 end ActualStalkPullback
 

@@ -1,0 +1,43 @@
+{
+  "question": "CurrentIndexed83b constructor argument vsliteralnative result boundary",
+  "run": "remote-29a9058c96744c19a48b50d4d68cc9dd",
+  "SOURCE": "caa620ff1f0d135a34e5776301105dd3d13fc284c42dfdb98fd46b8d8cdbaac8",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/W12-Indexed-boundary-29a9058c/receipt.json",
+  "receipt_sha256": "ad072d1ec1c5f3dafe834f2b16be6e0685938fa306cff31f9107e353a599d7b0",
+  "group_closed": true,
+  "exit_code": 1,
+  "elapsed_seconds": 130.46851229667664,
+  "probe_sha256": "102137312a973240636e6a670103f7c2715715f4027d5f4344b931e4c7a8239c",
+  "actual_native_setup_sha256": "b005039bb7d818316e39584d4605bcf72cb7238061c2a81f69560879e735f752",
+  "scratch_setup_sha256": "7f2c312fb41c673992dcc0c1e13acd76c278a4ffb1dd10d1742312c2ddb1b47f",
+  "actual_equal_fields": {
+    "name": "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections",
+    "isModule": true,
+    "options": {
+      "autoImplicit": false,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.longFile": 1500
+    },
+    "package": "Aglib"
+  },
+  "complete_Lean_errors": [
+    {
+      "data": "(kernel) deterministic timeout",
+      "pos": {
+        "column": 4,
+        "line": 135
+      },
+      "endPos": {
+        "column": 21,
+        "line": 135
+      },
+      "severity": "error",
+      "fileName": "/root/autodl-tmp/lean-build/logs/remote-29a9058c96744c19a48b50d4d68cc9dd/IndexedConstructorArgumentBoundary.lean"
+    }
+  ],
+  "complete_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/W12-Indexed-boundary-29a9058c/build.log",
+  "complete_log_sha256": "d23327edabe6d3b2f4ddd2475718c101bc1f8200b395e7c68c25bc1e735c828b",
+  "supported_conclusion": "Solegenuinekernelerror135w12ICNativeTarget; priornamedactuallegs/triangle/mate/source/rowvalues/inferredwholeCtor emittednoerrors. Thisseparates remainingliteralnative-result conversion fromthoseargumentvalues; no production/nativeCPP oruniqueexpensivereductionpair claimed.",
+  "selected_repair": "Phasev15 R-onlyfinishednative usesliteral ORIGINAL providertriangle/mate bodies and canonicalFunctor.associator into literalnativeArrow/Under target; helper38/sourceothersunchanged, no functorEqcast/model/budget."
+}

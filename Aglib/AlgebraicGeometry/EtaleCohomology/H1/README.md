@@ -77,3 +77,5 @@ Its categorical product comparison and value finiteness come from
 The published cut contains the finite-power interface used by `Fields/FiniteProducts`.
 
 [RepresentedCoefficients](RepresentedCoefficients.lean) obtains its original additive stalk evaluation and inverse from [the general point construction](../../../CategoryTheory/Sites/Point/RepresentedAdditive.lean). The coefficient group, field-valued point, lifted section values and original germs remain unchanged.
+
+[Naturality](Naturality.lean) defines stalk pullback by the inverse of the one original all-coefficient stalk-unit isomorphism and proves agreement with its represented coordinate view. [CoefficientStalkBaseChange](CoefficientStalkBaseChange.lean) and [PointedNaturality](PointedNaturality.lean) retain the actual unit, coefficient, section, point and action equations. The finite/Galois/marking hypotheses of the represented H1 comparison remain at their existing callers; the underlying all-coefficient stalk comparison is separate from H1 classification.

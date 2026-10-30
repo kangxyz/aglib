@@ -1,0 +1,19 @@
+{
+  "dispatch_mechanism": "collaboration.followup_task to soleoperator; deliveryalonewasnotrunproof",
+  "actual_acknowledgment": "soleoperatordirectmessage confirms currentCone26fc included",
+  "actual_run": "remote-f1bf09f603624c478c4fc757f36bb132",
+  "actual_SOURCE": "eff0705357218b9bbd5067106a8fd24270abeafa23bfd0a90b824166b20932d6",
+  "client": 31201,
+  "state": "actual_running_result_pending",
+  "consumer_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+  "consumer_sha256": "26fc6aa1cfc76dd5825f137c3d466a68b6724bb13e70a9a8b5b42730d7cbdea4",
+  "cohort_reported": "five finished changed roots: Cone26fc + GermV21 + torsion2 + FGf4e",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536
+  },
+  "coverage_boundary": "Actual includedconsumer/buildidentity only. No currentconsumer/frontendPASS or aggregateverdict yet; originalCart/SourceIso continuation remains pendingactualdependencycuts. No identicalrerun requested or queuedmessage treatedaslaunchproof.",
+  "recorded_utc": "2026-10-30T05:09:37.230189+00:00"
+}

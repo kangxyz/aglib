@@ -74,3 +74,5 @@ localization or chosen-exceptional coherence endpoints.
 [ModuleUnderlyingCoherence](Open/ModuleUnderlyingCoherence.lean) and
 [ModuleUnderlyingComposition](Open/ModuleUnderlyingComposition.lean) retain
 the original lower-shriek unit, counit and comparison-chain equations.
+
+The original module-slice and scalar-restriction comparisons in [Open/ModuleSliceUnderlying](Open/ModuleSliceUnderlying.lean) and [Open/ModuleScalarRestriction](Open/ModuleScalarRestriction.lean) specialize the complete forward comparison and preserve its original coefficient and unit/counit maps. [Open/Stalk](Open/Stalk.lean) proves the outside-open zero-stalk result from the actual empty point fibre and the existing lower-shriek/skyscraper adjunctions, with the original open and no-lift conditions.

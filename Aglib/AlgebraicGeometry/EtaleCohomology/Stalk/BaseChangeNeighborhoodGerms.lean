@@ -16,6 +16,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.GlobalSectionsNatura
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.CohomologyTransfers
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
+public import Aglib.CategoryTheory.Sites.Point.SectionValuesTransport
 
 /-! # Original higher exchange on arbitrary pointed neighborhood classes
 
@@ -37,140 +38,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-open CategoryTheory CategoryTheory.Limits Opposite
-
-universe v
-
-namespace CategoryTheory
-
-/-- The original represented-section construction from its actual edge and equivalence. -/
-def representedSectionHomOfEquiv
-    {A : Type*} [AddCommGroup A] {P Q : AddCommGrpCat.{v}}
-    (edge : P ⟶ Q) (resolution : A ≃+ P) : A →+ Q :=
-  edge.hom.comp resolution.toAddMonoidHom
-
-/-- The actual unit followed by its section-level coefficient map. -/
-def unitSectionMapOfHom {A B C : AddCommGrpCat.{v}}
-    (unit : A ⟶ B) (coefficient : B ⟶ C) : A ⟶ C :=
-  unit ≫ coefficient
-
-end CategoryTheory
-
-private theorem iso_section_injective {A B : AddCommGrpCat.{v}} (e : A ≅ B)
-    {x y : A} (h : e.hom x = e.hom y) : x = y :=
-  (ConcreteCategory.congr_hom e.hom_inv_id x).symm.trans
-    ((congrArg e.inv h).trans (ConcreteCategory.congr_hom e.hom_inv_id y))
-
-private theorem addHom_eq_of_apply {A B : Type*} [AddCommGroup A] [AddCommGroup B]
-    (f g : A →+ B) (h : ∀ x, f x = g x) : f = g :=
-  AddMonoidHom.ext h
-
-private theorem originalChartHom_of_scalar
-    {C : Type*} [Category* C] (Γ : C ⥤ AddCommGrpCat.{v})
-    {A B : Type*} [AddCommGroup A] [AddCommGroup B]
-    {U V : C} {P Q : AddCommGrpCat.{v}}
-    (E : Γ.obj U ≅ Q) (β : U ⟶ V)
-    (resolution : A ≃+ P) (edge : P ⟶ Q)
-    (comparison : A ≃+ B) (higher : B →+ Γ.obj V)
-    (h : ∀ x, Γ.map β (E.inv (edge (resolution x))) = higher (comparison x)) :
-    (chartSectionMapOfHom Γ E β).hom.comp
-        (representedSectionHomOfEquiv edge resolution) =
-      higher.comp comparison.toAddMonoidHom := by
-  exact AddMonoidHom.ext h
-
-private theorem chartHom_normalize
-    {A B C D : Type*} [AddCommGroup A] [AddCommGroup B]
-    [AddCommGroup C] [AddCommGroup D]
-    (e : A ≃+ B) (s : A →+ C) (m : C →+ D) (t : B →+ D)
-    (source : B →+ C) (hsource : source = s.comp e.symm.toAddMonoidHom)
-    (h : m.comp s = t.comp e.toAddMonoidHom) : m.comp source = t := by
-  subst source
-  apply AddMonoidHom.ext
-  intro x
-  have hx := DFunLike.congr_fun h (e.symm x)
-  exact hx.trans (congrArg t (e.apply_symm_apply x))
-
-private theorem mapped_coefficient_hom
-    {C : Type*} [Category* C] (Γ : C ⥤ AddCommGrpCat.{v})
-    {A B D : C} (f : A ⟶ B) (g : B ⟶ D)
-    {P R T : Type*} [AddCommGroup P] [AddCommGroup R] [AddCommGroup T]
-    (a : P →+ Γ.obj A) (b : R →+ Γ.obj B) (c : T →+ Γ.obj D)
-    (r : P →+ R) (t : R →+ T)
-    (hf : (Γ.map f).hom.comp a = b.comp r)
-    (hg : (Γ.map g).hom.comp b = c.comp t) :
-    (Γ.map (f ≫ g)).hom.comp a = c.comp (t.comp r) := by
-  rw [Γ.map_comp]
-  calc
-    _ = (Γ.map g).hom.comp ((Γ.map f).hom.comp a) := rfl
-    _ = (Γ.map g).hom.comp (b.comp r) := congrArg ((Γ.map g).hom.comp) hf
-    _ = ((Γ.map g).hom.comp b).comp r := rfl
-    _ = (c.comp t).comp r := congrArg (fun z => z.comp r) hg
-    _ = _ := rfl
-
-private theorem sectionHom_cancel
-    {A B C D : AddCommGrpCat.{v}} (k : A ⟶ B) (a : A ⟶ C)
-    (b : B ⟶ D) (c : C ⟶ D) [IsIso b]
-    {P R : Type*} [AddCommGroup P] [AddCommGroup R]
-    (source : P →+ A) (target : R →+ B) (r : P →+ R)
-    (sourceHigher : P →+ C) (targetHigher : R →+ D)
-    (hsquare : k ≫ b = a ≫ c)
-    (hsource : a.hom.comp source = sourceHigher)
-    (hglobal : c.hom.comp sourceHigher = targetHigher.comp r)
-    (htarget : b.hom.comp target = targetHigher) :
-    k.hom.comp source = target.comp r := by
-  have hh : b.hom.comp (k.hom.comp source) = b.hom.comp (target.comp r) := by
-    calc
-      _ = (k ≫ b).hom.comp source := rfl
-      _ = (a ≫ c).hom.comp source := congrArg (fun z => z.hom.comp source) hsquare
-      _ = c.hom.comp (a.hom.comp source) := rfl
-      _ = c.hom.comp sourceHigher := congrArg c.hom.comp hsource
-      _ = targetHigher.comp r := hglobal
-      _ = (b.hom.comp target).comp r := congrArg (fun z => z.comp r) htarget.symm
-      _ = _ := rfl
-  apply AddMonoidHom.ext
-  intro x
-  exact iso_section_injective (asIso b) (DFunLike.congr_fun hh x)
-
-private theorem germHom_of_sectionHom
-    {A B C D E F : AddCommGrpCat.{v}}
-    (a : A ⟶ B) (σ : B ⟶ D) (u : A ⟶ C) (b : C ⟶ E)
-    (c : C ⟶ D) (β : D ⟶ F) (t : E ⟶ F) (k : A ⟶ E)
-    (hk : k = u ≫ b) (hu : a ≫ σ = u ≫ c) (hn : c ≫ β = b ≫ t)
-    {P R : Type*} [AddCommGroup P] [AddCommGroup R]
-    (source : P →+ A) (target : R →+ E) (r : P →+ R)
-    (sourceGerm : P →+ B) (targetGerm : R →+ F)
-    (hsource : sourceGerm = a.hom.comp source)
-    (htarget : targetGerm = t.hom.comp target)
-    (hsection : k.hom.comp source = target.comp r)
-    (left right : P →+ F)
-    (hleft : left = (σ ≫ β).hom.comp sourceGerm)
-    (hright : right = targetGerm.comp r) : left = right := by
-  subst left
-  subst right
-  have hd : a ≫ σ ≫ β = k ≫ t := by
-    calc
-      _ = (a ≫ σ) ≫ β := (Category.assoc _ _ _).symm
-      _ = (u ≫ c) ≫ β := congrArg (fun z => z ≫ β) hu
-      _ = u ≫ (c ≫ β) := Category.assoc _ _ _
-      _ = u ≫ (b ≫ t) := congrArg (fun z => u ≫ z) hn
-      _ = (u ≫ b) ≫ t := (Category.assoc _ _ _).symm
-      _ = k ≫ t := congrArg (fun z => z ≫ t) hk.symm
-  calc
-    _ = (σ ≫ β).hom.comp (a.hom.comp source) := congrArg (σ ≫ β).hom.comp hsource
-    _ = (a ≫ σ ≫ β).hom.comp source := rfl
-    _ = (k ≫ t).hom.comp source := congrArg (fun z => z.hom.comp source) hd
-    _ = t.hom.comp (k.hom.comp source) := rfl
-    _ = t.hom.comp (target.comp r) := congrArg t.hom.comp hsection
-    _ = (t.hom.comp target).comp r := rfl
-    _ = _ := congrArg (fun z => z.comp r) htarget.symm
-
-private theorem germHom_apply
-    {P R : Type*} [AddCommGroup P] [AddCommGroup R]
-    {A B C : AddCommGrpCat.{v}} (σ : A ⟶ B) (β : B ⟶ C)
-    (source : P →+ A) (target : R →+ C) (r : P →+ R)
-    (h : (σ ≫ β).hom.comp source = target.comp r) (x : P) :
-    β (σ (source x)) = target (r x) :=
-  DFunLike.congr_fun h x
+open CategoryTheory CategoryTheory.Limits Opposite CategoryTheory.OriginalSectionValues
 
 universe u w w' s s' e dX dS dX' dS' dZU dU dZV dV
 
@@ -178,34 +46,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
-
-/-- Normalize the coefficient object before specializing its additive-group carrier. -/
-private theorem chartScalar_comp_obj {X S Z : Scheme.{u}} (U : S.Etale)
-    (P : AbelianSheaf.{u, u + 1} X ⥤ AbelianSheaf.{u, u + 1} S)
-    (K : AbelianSheaf.{u, u + 1} X ⥤ AbelianSheaf.{u, u + 1} Z)
-    (R : AbelianSheaf.{u, u + 1} Z ⥤
-      AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left))
-    (α : P ⋙ @inverseImage.{u} S U.left U.hom ⟶ K ⋙ R)
-    (α₀ : P ⋙ @inverseImage.{u} S ((𝟭 Scheme.{u}).obj U.left) U.hom ⟶ K ⋙ R)
-    (hα : α = α₀) (F : AbelianSheaf.{u, u + 1} X) {T : Type*}
-    (source : T → (P.obj F).obj.obj (op U))
-    (target : T → (R.obj (K.obj F)).obj.obj
-      (op (etaleTerminal ((𝟭 Scheme.{u}).obj U.left))))
-    (h : ∀ x, @Eq ((globalSections U.left).obj ((K ⋙ R).obj F))
-      ((globalSections U.left).map (α₀.app F)
-        ((Continuity.pullbackSectionsEtaleEvaluationIso (P.obj F) U).inv (source x)))
-      (target x)) (x : T) :
-    @Eq ((globalSections U.left).obj (R.obj (K.obj F)))
-      ((chartSectionMapOfHom (globalSections U.left)
-        (Continuity.pullbackSectionsEtaleEvaluationIso (P.obj F) U) (α.app F)).hom
-          (source x)) (target x) := by
-  have hcomponent : α.app F = α₀.app F := NatTrans.congr_app hα F
-  have hx := (congrArg
-    (fun b => (globalSections U.left).map b
-      ((Continuity.pullbackSectionsEtaleEvaluationIso (P.obj F) U).inv (source x)))
-    hcomponent).trans (h x)
-  simpa only [Functor.comp_obj, chartSectionMapOfHom, AddCommGrpCat.Hom.hom,
-    ConcreteCategory.comp_apply] using hx
 
 section ChartNormalization
 
@@ -265,10 +105,6 @@ variable
   [hChartDerived : HasDerivedCategory.{dZU} (AbelianSheaf.{u, u + 1} (pullback U.hom f))]
   [hBase : HasDerivedCategory.{dU} (AbelianSheaf.{u, u + 1} U.left)]
 
-/-- The supplied base derived model at the identity presentation used by chart normalization. -/
-local instance neighborhoodChartNormalizationBaseDerived : HasDerivedCategory.{dU}
-    (AbelianSheaf.{u, u + 1} ((𝟭 Scheme.{u}).obj U.left)) := hBase
-
 private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     (fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
       (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
@@ -284,10 +120,11 @@ private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : �
   rw [fibreProductChartSectionMap_eq_constructor.{u, dX, dS, dZU, dU} f U
     (hSourceDerived := hSourceDerived) (hTargetDerived := hTargetDerived)
     (hChartDerived := hChartDerived) (hBase := hBase) F q]
-  exact chartScalar_comp_obj U
+  exact DFunLike.congr_fun (chartSectionHom_of_whole_values
     (@higherDirectImage.{u} X S f q)
     (@inverseImage.{u} X (pullback U.hom f) (pullback.snd U.hom f))
     (higherDirectImage (pullback.fst U.hom f) q)
+    (@inverseImage.{u} S U.left U.hom) (globalSections U.left)
     (@higherBaseChangeMapFromDerived.{u, dX, dS, dZU, dU} X S (pullback U.hom f) U.left
       hSourceDerived hTargetDerived hChartDerived hBase f (pullback.fst U.hom f)
       U.hom (pullback.snd U.hom f) pullback.condition q)
@@ -296,13 +133,14 @@ private theorem originalChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : �
     (@higherBaseChangeMapFromDerived_eq.{u, dX, dS, dZU, dU}
       X S (pullback U.hom f) U.left hSourceDerived hTargetDerived hChartDerived hBase
       f (pullback.fst U.hom f) U.hom (pullback.snd U.hom f) pullback.condition q) F
+    (Continuity.pullbackSectionsEtaleEvaluationIso ((higherDirectImage f q).obj F) U)
     (originalCohomologySectionHom f U F q)
-    (fun z => cohomologyToHigherSections (pullback.fst U.hom f)
-      ((inverseImage (pullback.snd U.hom f)).obj F) q
-        (@fibreProductCohomologyEquiv.{u, w, s, e} X S f U
-          hOriginalExt hSliceExt hChart F q z))
+    (@fibreProductCohomologyEquiv.{u, w, s, e} X S f U
+      hOriginalExt hSliceExt hChart F q)
+    (cohomologyToHigherSections (pullback.fst U.hom f)
+      ((inverseImage (pullback.snd U.hom f)).obj F) q)
     (@higherBaseChangeMap_originalChart.{u, w, s, e}
-      X S f U hOriginalExt hSliceExt hChart F q) x
+      X S f U hOriginalExt hSliceExt hChart F q)) x
 
 private theorem fibreProductChartSection_hom (F : AbelianSheaf.{u, u + 1} X) (q : ℕ) :
     (fibreProductChartSectionMap.{u, dX, dS, dZU, dU} f U
@@ -679,19 +517,7 @@ private theorem higherBaseChangeMap_fibreProductGerm_hom
       dX, dS, dX', dS', dZU, dU, dZV, dV} f f' g g' h U
       (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS')
       (hDZU := hDZU) (hDU := hDU) (hDZV := hDZV) (hDV := hDV) F q)
-    (((StalkInverseImage.stalkUnitNatIso g ζ).hom.app ((higherDirectImage f q).obj F) ≫
-      (pointSmallEtale ζ).sheafFiber.map
-        ((@higherBaseChangeMapFromDerived.{u, dX, dS, dX', dS'} X S X' S'
-          hDX hDS hDX' hDS' f f' g g' h q).app F)).hom.comp
-            (fibreProductCohomologyGerm.{u, w, s, e} f U F q (ζ ≫ g) p))
-    ((fibreProductCohomologyGerm.{u, w', s', e} f' ((siteBaseChange g).obj U)
-      ((inverseImage g').obj F) q ζ
-      (CoefficientStalkBaseChange.pulledBackPoint g ζ U p)).comp
-        (Continuity.cohomologyTransfer (fibreProductBaseChangeMap f f' g g' h U)
-          ((inverseImageSquareIso (pullback.snd U.hom f)
-            (pullback.snd ((siteBaseChange g).obj U).hom f') g'
-            (fibreProductBaseChangeMap f f' g g' h U)
-            (fibreProductBaseChangeMap_snd f f' g g' h U).symm).inv.app F) q).hom) rfl rfl
+
 
 /-- The original arbitrary-neighborhood germ exchange, retaining its original
 stalk unit, actual pulled-back point and exact coefficient-square transfer. -/

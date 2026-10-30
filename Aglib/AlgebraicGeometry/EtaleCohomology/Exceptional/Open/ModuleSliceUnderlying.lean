@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.AbelianAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.Underlying
+public import Aglib.CategoryTheory.Topos.Slice.ForwardComparison
 
 /-! # Original underlying sheaves for the actual module slice equivalence -/
 
@@ -42,6 +43,13 @@ def moduleEtaleSliceUnderlyingIso :
     sheafCompose (Scheme.smallEtaleTopology U)
         (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1}) ⋙
       (etaleSliceSheafEquivalence (Scheme.Etale.mk j)).functor :=
+  Equivalence.forwardComparison (moduleEtaleSliceSheafEquivalence j Λ)
+      (etaleSliceSheafEquivalence (Scheme.Etale.mk j)) _ _
+    (moduleEtaleSliceInverseUnderlyingIso j Λ)
+
+/-- The native forward comparison retains exactly the original unit/counit chain. -/
+theorem moduleEtaleSliceUnderlyingIso_eq_original :
+    moduleEtaleSliceUnderlyingIso j Λ =
   (Functor.rightUnitor _).symm ≪≫
     Functor.isoWhiskerLeft _ (etaleSliceSheafEquivalence (Scheme.Etale.mk j)).counitIso.symm ≪≫
     Functor.associator _ _ _ ≪≫
@@ -51,6 +59,9 @@ def moduleEtaleSliceUnderlyingIso :
     Functor.isoWhiskerLeft _ (Functor.associator _ _ _) ≪≫
     (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (moduleEtaleSliceSheafEquivalence j Λ).unitIso.symm _ ≪≫
-    Functor.leftUnitor _
+    Functor.leftUnitor _ := by
+  exact Equivalence.forwardComparison_eq_original (moduleEtaleSliceSheafEquivalence j Λ)
+      (etaleSliceSheafEquivalence (Scheme.Etale.mk j)) _ _
+    (moduleEtaleSliceInverseUnderlyingIso j Λ)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

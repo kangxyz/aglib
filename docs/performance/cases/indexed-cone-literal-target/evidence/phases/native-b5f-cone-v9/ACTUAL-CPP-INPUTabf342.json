@@ -1,0 +1,37 @@
+{
+  "run": "remote-5f28bb81f2e540949c2b69c63cf42655",
+  "SOURCE": "abf342c7034d1636bfbcba3834829a3e8fd786cfb64c7cc2982147e91f90539e",
+  "source_manifest": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-B-N-abf342-5f28bb81.json",
+  "source_manifest_sha256": "e6f21bf1eea8eff35becf99efa614118952cd168a758105cbfbf70eb9c1f2470",
+  "all_prior24_hashes_match": true,
+  "extra_readonly_consumer": {
+    "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+    "sha256": "04900e2bd39b91403a943d38a823b3e70e4d6c00047d4f1d2701218985a1a8f6"
+  },
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-5f28bb81f2e540949c2b69c63cf42655/receipt.json",
+  "receipt_sha256": "076efa8d1f4b591caae505cae754e9fcae1fbfe69d3a0fa9ca5b910db466ec86",
+  "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-5f28bb81f2e540949c2b69c63cf42655/compiler-events.jsonl",
+  "group_closed": true,
+  "aggregate_exit": 1,
+  "aggregate_pass": 80,
+  "aggregate_fail": 5,
+  "owned_frontends_plus_actual_extra": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestRelativeCone.lean",
+      "sha256": "1d669d9b82f0df3816bdb98069ab441725dab2f999ed5f7400649176179997d9",
+      "exit_code": 0,
+      "started": "2026-10-30T04:00:54.057573+00:00",
+      "finished": "2026-10-30T04:01:11.348522+00:00",
+      "wrapper_pid": 159644
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+      "sha256": "04900e2bd39b91403a943d38a823b3e70e4d6c00047d4f1d2701218985a1a8f6",
+      "exit_code": 1,
+      "started": "2026-10-30T04:01:13.521876+00:00",
+      "finished": "2026-10-30T04:01:50.114197+00:00",
+      "wrapper_pid": 159815
+    }
+  ],
+  "boundary": "Relative1d669 actualPASS retained, original24 sourcecompilerremaining5native. NewextraConeSections0490 actualfailure remains outsidepriorgrant untilRootdecision; no Nwrite/newpass. Queuedduplicatea50e notnewrepairbasis."
+}

@@ -32,26 +32,6 @@ attribute [local instance] hasSheafifyLarge
 
 open Continuity Finite.GeometricNeighborhood
 
-private theorem overPullback_comp_eq
-    {X S T A B : Scheme.{u}} (f : X ⟶ S) (t : T ⟶ S) (a : A ⟶ S) (b : B ⟶ S)
-    (α : Over.mk (pullback.snd t f) ⟶ Over.mk (pullback.snd a f))
-    (β : Over.mk (pullback.snd a f) ⟶ Over.mk (pullback.snd b f))
-    (γ : Over.mk (pullback.snd t f) ⟶ Over.mk (pullback.snd b f))
-    (m : T ⟶ A) (n : A ⟶ B)
-    (hα : α.left ≫ pullback.fst a f = pullback.fst t f ≫ m)
-    (hβ : β.left ≫ pullback.fst b f = pullback.fst a f ≫ n)
-    (hγ : γ.left ≫ pullback.fst b f = pullback.fst t f ≫ m ≫ n) : α ≫ β = γ := by
-  apply Over.OverMorphism.ext
-  apply pullback.hom_ext
-  · calc
-      _ = α.left ≫ (β.left ≫ pullback.fst b f) := Category.assoc _ _ _
-      _ = α.left ≫ (pullback.fst a f ≫ n) := congrArg (fun z => α.left ≫ z) hβ
-      _ = (α.left ≫ pullback.fst a f) ≫ n := (Category.assoc _ _ _).symm
-      _ = (pullback.fst t f ≫ m) ≫ n := congrArg (fun z => z ≫ n) hα
-      _ = pullback.fst t f ≫ m ≫ n := Category.assoc _ _ _
-      _ = _ := hγ.symm
-  · exact (Over.w (α ≫ β)).trans (Over.w γ).symm
-
 private theorem groupMap_comp_hom {A B C : AddCommGrpCat.{e}}
     (f : A ⟶ B) (g : B ⟶ C) (h : A ⟶ C) (heq : f ≫ g = h) :
     g.hom.comp f.hom = h.hom :=
@@ -93,15 +73,8 @@ variable (Ω : Type u) [Field Ω] [IsSepClosed Ω]
 
 /-- The literal geometric fibre maps to each original marked neighborhood fibre. -/
 def geometricFibrePointedMap (d : (pointSmallEtale η).fiber.Elements) :
-    Over.mk (pullback.snd η f) ⟶ (pointedNeighborhoodBaseChangedDiagram Ω η f).obj d := by
-  change Over.mk (pullback.snd η f) ⟶ Over.mk (pullback.snd d.obj.hom f)
-  let p : Over.mk η ⟶ (Scheme.Etale.forget S).obj d.obj := d.val
-  exact Over.homMk
-    (pullback.lift (f := d.obj.hom) (g := f)
-      (pullback.fst η f ≫ p.left) (pullback.snd η f)
-      ((Category.assoc _ _ _).trans
-        ((congrArg (fun t => pullback.fst η f ≫ t) (Over.w p)).trans pullback.condition)))
-    (pullback.lift_snd _ _ _)
+    Over.mk (pullback.snd η f) ⟶ (pointedNeighborhoodBaseChangedDiagram Ω η f).obj d :=
+  (Over.pullback f).map d.val
 
 /-- Its first projection retains the original marked point. -/
 theorem geometricFibrePointedMap_fst (d : (pointSmallEtale η).fiber.Elements) :
@@ -124,13 +97,9 @@ def chartGeometricPointMap :
     Over.mk (pullback.snd η f) ⟶ (pointedNeighborhoodBaseChangedCone R Ω j η hη f).pt := by
   change Over.mk (pullback.snd η f) ⟶
     Over.mk (pullback.snd (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)
-  exact Over.homMk
-    (pullback.lift (f := Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) (g := f)
-      (pullback.fst η f ≫ point R Ω) (pullback.snd η f)
-      ((Category.assoc _ _ _).trans
-        ((congrArg (fun t => pullback.fst η f ≫ t)
-          (point_pointedNeighborhood_structure R Ω j η hη)).trans pullback.condition)))
-    (pullback.lift_snd _ _ _)
+  exact (Over.pullback f).map
+    (Over.homMk (point R Ω) (point_pointedNeighborhood_structure R Ω j η hη) :
+      Over.mk η ⟶ Over.mk (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j))
 
 /-- The actual point is retained by the first projection. -/
 theorem chartGeometricPointMap_fst :
@@ -151,24 +120,19 @@ theorem chartGeometricPointMap_π (d : (pointSmallEtale η).fiber.Elements) :
     chartGeometricPointMap Ω η f R j hη ≫
         (pointedNeighborhoodBaseChangedCone R Ω j η hη f).π.app d =
       geometricFibrePointedMap Ω η f d := by
-  have hfst :
-      ((pointedNeighborhoodBaseChangedCone R Ω j η hη f).π.app d).left ≫
-          pullback.fst d.obj.hom f =
-        pullback.fst (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f ≫
-          (pointedNeighborhoodCone R Ω j η hη).π.app d :=
-    pullback.lift_fst _ _ _
-  have hγ : (geometricFibrePointedMap Ω η f d).left ≫ pullback.fst d.obj.hom f =
-      pullback.fst η f ≫ point R Ω ≫ (pointedNeighborhoodCone R Ω j η hη).π.app d :=
-    (geometricFibrePointedMap_fst Ω η f d).trans
-      (congrArg (fun z => pullback.fst η f ≫ z)
-        (point_pointedNeighborhoodCone_π R Ω j η hη d).symm)
-  exact overPullback_comp_eq f η
-    (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) d.obj.hom
-    (chartGeometricPointMap Ω η f R j hη)
-    ((pointedNeighborhoodBaseChangedCone R Ω j η hη f).π.app d)
-    (geometricFibrePointedMap Ω η f d) (point R Ω)
-    ((pointedNeighborhoodCone R Ω j η hη).π.app d)
-    (chartGeometricPointMap_fst Ω η f R j hη) hfst hγ
+  change (Over.pullback f).map
+      (Over.homMk (point R Ω) (point_pointedNeighborhood_structure R Ω j η hη) :
+      Over.mk η ⟶ Over.mk (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j)) ≫
+        (Over.pullback f).map
+          (Over.homMk ((pointedNeighborhoodCone R Ω j η hη).π.app d)
+            (pointedNeighborhoodCone_π_structure R Ω j η hη d) :
+          Over.mk (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) ⟶
+            Over.mk d.obj.hom) =
+    (Over.pullback f).map d.val
+  rw [← Functor.map_comp]
+  congr 1
+  apply Over.OverMorphism.ext
+  exact point_pointedNeighborhoodCone_π R Ω j η hη d
 
 variable
   [HasExt.{w} (AbelianSheaf.{u, u + 1} X)]

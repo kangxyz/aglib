@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.FullyFaithful
 public import Aglib.AlgebraicGeometry.EtaleCohomology.GeometricPoints.InverseImage
+public import Aglib.CategoryTheory.Topos.Slice.EmptyPointFibre
 
 /-!
 # Original geometric stalks of extension by zero
@@ -43,28 +44,23 @@ theorem isZero_etaleRestriction_skyscraper_of_no_lift
     (η : Spec (.of Ω) ⟶ X) (hη : ∀ ζ : Spec (.of Ω) ⟶ U, ζ ≫ j ≠ η)
     (N : AddCommGrpCat.{u + 1}) :
     IsZero ((etaleRestriction j).obj ((pointSmallEtale η).skyscraperSheaf N)) := by
-  apply (IsZero.iff_id_eq_zero _).mpr
-  apply Sheaf.hom_ext
-  apply NatTrans.ext
-  funext V
-  apply Pi.hom_ext
-  intro p
-  exact (hη (p.left ≫ V.unop.hom) (by
-    have hp := Over.w p
-    change p.left ≫ (V.unop.hom ≫ j) = η at hp
-    exact (Category.assoc _ _ _).trans hp)).elim
+  let Φ := pointSmallEtale η
+  have hU : IsEmpty (Φ.fiber.obj (Scheme.Etale.mk j)) :=
+    ⟨fun q => hη q.left (Over.w q)⟩
+  change IsZero ((etaleSliceSheafEquivalence (Scheme.Etale.mk j)).inverse.obj
+    (((Scheme.smallEtaleTopology X).overPullback AddCommGrpCat.{u + 1}
+      (Scheme.Etale.mk j)).obj (Φ.skyscraperSheaf N)))
+  exact Functor.map_isZero (etaleSliceSheafEquivalence (Scheme.Etale.mk j)).inverse
+    (Φ.isZero_overPullback_skyscraper (Scheme.Etale.mk j) hU N)
 
 /-- The original geometric stalk of lower shriek vanishes when the point has no open lift. -/
 theorem isZero_etaleLowerShriek_stalk_of_no_lift
     (η : Spec (.of Ω) ⟶ X) (hη : ∀ ζ : Spec (.of Ω) ⟶ U, ζ ≫ j ≠ η)
     (F : AbelianSheaf.{u, u + 1} U) :
     IsZero ((pointSmallEtale η).sheafFiber.obj ((etaleLowerShriek j).obj F)) := by
-  apply (IsZero.iff_id_eq_zero _).mpr
-  let N := (pointSmallEtale η).sheafFiber.obj ((etaleLowerShriek j).obj F)
-  let e := ((pointSmallEtale η).skyscraperSheafAdjunction.homEquiv _ N).trans
-    ((etaleLowerShriekRestrictionAdjunction j).homEquiv F _)
-  exact e.injective
-    ((isZero_etaleRestriction_skyscraper_of_no_lift j η hη N).eq_of_tgt _ _)
+  exact (pointSmallEtale η).isZero_sheafFiber_of_skyscraper_restriction
+    (etaleLowerShriek j) (etaleRestriction j) (etaleLowerShriekRestrictionAdjunction j)
+    (fun N => isZero_etaleRestriction_skyscraper_of_no_lift j η hη N) F
 
 /-- At a geometric point outside the open image, the original extension stalk is zero. -/
 theorem isZero_etaleLowerShriek_stalk_of_not_mem

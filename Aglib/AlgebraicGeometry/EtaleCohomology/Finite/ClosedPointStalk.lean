@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Finite.ComponentSections
 public import Mathlib.Algebra.Category.Grp.FilteredColimits
+public import Aglib.CategoryTheory.Sites.Point.InitialOfSubterminal
 
 /-! # Original germs at the closed point of a strictly local scheme -/
 
@@ -47,27 +48,11 @@ theorem closedPoint_germ_bijective
     (P : (Spec (.of B)).Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :
     Function.Bijective ((closedPoint B).toPresheafFiber
       (StrictlyLocal.terminalObject B) (closedTerminalPoint B) P) := by
-  let : PreservesFilteredColimitsOfSize.{u, u}
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
-    preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u} _
-  constructor
-  · intro a b hab
-    obtain ⟨U, f, t, _, h⟩ := ((closedPoint B).toPresheafFiber_eq_iff'
-      (StrictlyLocal.terminalObject B) (closedTerminalPoint B) a b).mp hab
-    obtain ⟨s, _⟩ := exists_pointed_section B U t
-    have hsf : s ≫ f = 𝟙 _ := (StrictlyLocal.terminalIsTerminal B).hom_ext _ _
-    have hm : P.map f.op ≫ P.map s.op = 𝟙 _ := by
-      rw [← P.map_comp, ← op_comp, hsf, op_id, P.map_id]
-    have hval (z : P.obj (op (StrictlyLocal.terminalObject B))) :
-        P.map s.op (P.map f.op z) = z := ConcreteCategory.congr_hom hm z
-    exact (hval a).symm.trans ((congrArg (fun z => P.map s.op z) h).trans (hval b))
-  · intro z
-    obtain ⟨U, t, a, rfl⟩ := (closedPoint B).toPresheafFiber_jointly_surjective z
-    obtain ⟨s, hs⟩ := exists_pointed_section B U t
-    refine ⟨P.map s.op a, ?_⟩
-    have h := (closedPoint B).toPresheafFiber_w s (closedTerminalPoint B) P
-    rw [hs] at h
-    exact ConcreteCategory.congr_hom h a
+  exact (ConcreteCategory.isIso_iff_bijective _).mp
+    ((closedPoint B).isIso_toPresheafFiber_of_subterminal
+      (StrictlyLocal.terminalObject B) (closedTerminalPoint B)
+      (isSubterminal_of_isTerminal (StrictlyLocal.terminalIsTerminal B))
+      (exists_pointed_section B) P)
 
 /-- The literal original closed-point germ is an isomorphism. -/
 theorem closedPoint_germ_isIso

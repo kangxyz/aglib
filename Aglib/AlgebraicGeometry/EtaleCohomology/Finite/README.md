@@ -113,3 +113,5 @@ uses the proved scalar-forgetting exchange square and conservative exact
 derived forgetting; its eight derived-model universes remain independent.
 
 [GeometricNeighborhoodStalk](GeometricNeighborhoodStalk.lean) is the component of the existing whole final-functor colimit comparison, with its literal stage-germ equation. [PointStalkExtension](ExactImageComparison/PointStalkExtension.lean) uses the same actual fibre precomposition and native point-morphism germ law under extension of separably closed geometric fields.
+
+[ClosedPointStalk](ClosedPointStalk.lean) and [StrictLocalOpenStalk](StrictLocalOpenStalk.lean) use initiality of the same pointed subterminal object; their closed-point, Henselian and ambient-open hypotheses remain explicit. [DirectImageStalkStages](DirectImageStalkStages.lean) assembles the two original final-functor comparisons as one natural isomorphism, and [DirectImageStalkNaturality](DirectImageStalkNaturality.lean) is its original coefficient map law. The stage reindexing itself adds no finiteness premise on the source morphism.

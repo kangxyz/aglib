@@ -66,35 +66,15 @@ bijective for every abelian-valued presheaf. -/
 theorem openComponent_germ_bijective (P : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :
     Function.Bijective ((openComponentPoint B p).toPresheafFiber
       (Scheme.Etale.mk p) (openComponentFiberPoint B p) P) := by
-  let : PreservesFilteredColimitsOfSize.{u, u}
-      (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
-    preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u} _
-  constructor
-  · intro a b hab
-    obtain ⟨U, f, t, _, h⟩ := ((openComponentPoint B p).toPresheafFiber_eq_iff'
-      (Scheme.Etale.mk p) (openComponentFiberPoint B p) a b).mp hab
-    obtain ⟨s, _⟩ := exists_openComponent_pointed_map B p U t
-    have hsf : s ≫ f = 𝟙 _ := by
-      apply MorphismProperty.Over.Hom.ext
-      apply (cancel_mono p).mp
-      change (s.left ≫ f.left) ≫ p = (𝟙 (Spec (.of B))) ≫ p
-      have hf : f.left ≫ p = U.hom := f.w
-      have hs : s.left ≫ U.hom = p := s.w
-      exact (Category.assoc s.left f.left p).trans
-        ((congrArg (fun k : U.left ⟶ X => s.left ≫ k) hf).trans
-          (hs.trans (Category.id_comp p).symm))
-    have hm : P.map f.op ≫ P.map s.op = 𝟙 _ := by
-      rw [← P.map_comp, ← op_comp, hsf, op_id, P.map_id]
-    have hval (z : P.obj (op (Scheme.Etale.mk p))) :
-        P.map s.op (P.map f.op z) = z := ConcreteCategory.congr_hom hm z
-    exact (hval a).symm.trans ((congrArg (fun z => P.map s.op z) h).trans (hval b))
-  · intro z
-    obtain ⟨U, t, a, rfl⟩ := (openComponentPoint B p).toPresheafFiber_jointly_surjective z
-    obtain ⟨s, hs⟩ := exists_openComponent_pointed_map B p U t
-    refine ⟨P.map s.op a, ?_⟩
-    have h := (openComponentPoint B p).toPresheafFiber_w s (openComponentFiberPoint B p) P
-    rw [hs] at h
-    exact ConcreteCategory.congr_hom h a
+  have hT : IsSubterminal (Scheme.Etale.mk p) := by
+    intro Z f g
+    apply MorphismProperty.Over.Hom.ext
+    apply (cancel_mono p).mp
+    exact f.w.trans g.w.symm
+  exact (ConcreteCategory.isIso_iff_bijective _).mp
+    ((openComponentPoint B p).isIso_toPresheafFiber_of_subterminal
+      (Scheme.Etale.mk p) (openComponentFiberPoint B p) hT
+      (exists_openComponent_pointed_map B p) P)
 
 /-- The literal ambient germ is an isomorphism, with no coefficient replacement. -/
 theorem openComponent_germ_isIso (P : X.Etaleᵒᵖ ⥤ AddCommGrpCat.{u + 1}) :

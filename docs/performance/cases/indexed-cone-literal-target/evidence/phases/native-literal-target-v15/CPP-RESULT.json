@@ -1,0 +1,42 @@
+{
+  "question": "Actual ordinary native CPP for literal original-triangle/canonical-associator V15 after isolated result-conversion failure",
+  "run": "remote-c94045066de14e938698fd81b8ecb32c",
+  "SOURCE": "3dc6a4e0cc486a7539fe26e5215400b12d07bad4f9a33f1e6a35fda47bd09465",
+  "native_path": "Aglib/AlgebraicGeometry/EtaleCohomology/Continuity/DiagramTestConeSections.lean",
+  "native_sha256": "6bace9cea969a6e22a4e9edaaba7291f5374e6a5ab7648a8b1fdabcd08bbe5b6",
+  "generic_helper_sha256": "38a11b392fef99f7f89ffd2f32b6c390f94d8812b17574361bc75979ab4eb69a",
+  "generic_evidence": "Retained prior38a pass; no fresh helper invocation in this run",
+  "scope_packet": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w12-remaining/REVIEW-CANDIDATE-v7-LITERAL-TARGET-DELTA.json",
+  "scope_packet_sha256": "ac2037a39d309b4d2dfb3a145a4712f7469d884e1d1e936794133d9b9bb8ce8f",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c94045066de14e938698fd81b8ecb32c/receipt.json",
+  "receipt_sha256": "4fc4051d239ee5280fac23c385cd48c960a96bdd6e1c237e918095980c8cf066",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c94045066de14e938698fd81b8ecb32c/build.log",
+  "compiler_events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/foundations/lane-b/remote-runs/remote-c94045066de14e938698fd81b8ecb32c/compiler-events.jsonl",
+  "command": [
+    "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+    "--rehash",
+    "build",
+    "Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestConeSections"
+  ],
+  "group_closed": true,
+  "exit_code": 0,
+  "compiler_invocations": 1,
+  "compiler_succeeded": 1,
+  "elapsed_seconds": 28.105760529637337,
+  "peak_rss_bytes": 3270193152,
+  "OOM": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "input_drift": [],
+  "coverage": "The original DiagramTestConeSections native module and original app formula now pass; all26 local hashes still match v7. Retain earlier20 matching outcomes; five original W12 native consumers remain uncovered. No whole-W12/Cartesian/theory closure, replay, or matched speedup claim.",
+  "local_guard_only_clients": [
+    2377,
+    46606
+  ],
+  "actual_public_client": 59645,
+  "created_utc": "2026-10-30T07:50:14.080614+00:00"
+}

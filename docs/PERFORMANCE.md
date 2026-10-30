@@ -112,6 +112,14 @@ and a variable-functor naturality/map-square equation before supplying the
 actual `L.obj` and tensor endpoints.
 [Chosen-associator case](performance/abstract-foundation-construction-boundaries.md#prove-the-chosen-associators-typed-square-before-tensor-specialization).
 
+For an indexed cone, construct the whole original row and target-map law
+before native specialization. Preserve the literal original triangle and mate
+families, then use the canonical functor associator at the actual nested target;
+identity components recover the same application by `comp_id`.
+[Indexed cone literal-target case](performance/cases/indexed-cone-literal-target/README.md)
+separates failed native versions, faithful boundary diagnostics and the final
+source-bound pass without claiming a unique cause or matched speedup.
+
 **Consume a producer equation at its actual inferred type.** If the original
 proof application checks at its inferred proposition but conversion to a
 manually restated native equation times out, retain it with unannotated

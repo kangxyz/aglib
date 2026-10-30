@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleAdjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ScalarRestriction
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
+public import Aglib.CategoryTheory.Topos.Slice.ForwardComparison
 
 /-! # Genuine lower shriek commutes with actual restriction of coefficient rings -/
 
@@ -43,6 +44,13 @@ def moduleEtaleSliceScalarRestrictionIso :
       sheafCompose ((Scheme.smallEtaleTopology X).over (Scheme.Etale.mk j))
         (ModuleCat.restrictScalars.{u + 1} φ) ≅
       moduleValuedRestrictScalars U φ ⋙ (moduleEtaleSliceSheafEquivalence j Λ).functor :=
+  Equivalence.forwardComparison (moduleEtaleSliceSheafEquivalence j Γ)
+      (moduleEtaleSliceSheafEquivalence j Λ) _ _
+    (moduleEtaleSliceInverseScalarRestrictionIso j φ)
+
+/-- The native forward comparison retains exactly the original unit/counit chain. -/
+theorem moduleEtaleSliceScalarRestrictionIso_eq_original :
+    moduleEtaleSliceScalarRestrictionIso j φ =
   (Functor.rightUnitor _).symm ≪≫
     Functor.isoWhiskerLeft _ (moduleEtaleSliceSheafEquivalence j Λ).counitIso.symm ≪≫
     Functor.associator _ _ _ ≪≫
@@ -52,7 +60,10 @@ def moduleEtaleSliceScalarRestrictionIso :
     Functor.isoWhiskerLeft _ (Functor.associator _ _ _) ≪≫
     (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (moduleEtaleSliceSheafEquivalence j Γ).unitIso.symm _ ≪≫
-    Functor.leftUnitor _
+    Functor.leftUnitor _ := by
+  exact Equivalence.forwardComparison_eq_original (moduleEtaleSliceSheafEquivalence j Γ)
+      (moduleEtaleSliceSheafEquivalence j Λ) _ _
+    (moduleEtaleSliceInverseScalarRestrictionIso j φ)
 
 /-- Actual module-valued lower shriek commutes with restriction along a ring homomorphism. -/
 def moduleValuedLowerShriekScalarRestrictionIso :
