@@ -1869,6 +1869,7 @@ public import Aglib.AlgebraicGeometry.Compactification.Refinements.BaseChangeIte
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.BaseChangeIterationAmbient
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.BaseChangeSourceIso
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.BaseChangeTriple
+public import Aglib.AlgebraicGeometry.Compactification.Refinements.CartesianBaseChange
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.Category
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.ClosedAmbient
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.Cofiltered
@@ -1882,6 +1883,7 @@ public import Aglib.AlgebraicGeometry.Compactification.Refinements.OpenSquare
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.SourceIso
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.SourceIsoCoherence
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.SourceIsoEquality
+public import Aglib.AlgebraicGeometry.Compactification.Refinements.Supplied
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.Uniqueness
 public import Aglib.AlgebraicGeometry.Cover.AffineBinary
 public import Aglib.AlgebraicGeometry.Cover.AffineBinary.Limit
@@ -5204,7 +5206,9 @@ public import Aglib.CategoryTheory.Adjunction.UnderlyingEquivalence
 public import Aglib.CategoryTheory.Adjunction.UnderlyingHomEquiv
 public import Aglib.CategoryTheory.Adjunction.UnderlyingMate
 public import Aglib.CategoryTheory.Adjunction.Unit
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonBaseChange
 public import Aglib.CategoryTheory.Adjunction.UnitComparisonCoherence
+public import Aglib.CategoryTheory.Adjunction.UnitComparisonNaturality
 public import Aglib.CategoryTheory.Adjunction.UnitHomMap
 public import Aglib.CategoryTheory.EffectiveEpi.Over
 public import Aglib.CategoryTheory.ExactCategory.Abelian
@@ -5301,6 +5305,12 @@ public import Aglib.CategoryTheory.Monoidal.UnitMultiplication
 public import Aglib.CategoryTheory.Monoidal.Untwist
 public import Aglib.CategoryTheory.Monoidal.UntwistVanishing
 public import Aglib.CategoryTheory.MorphismProperty.OverPullbackCoherence
+public import Aglib.CategoryTheory.NatTrans.CartesianSourceExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchange
+public import Aglib.CategoryTheory.NatTrans.CompositeExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.IsIsoOn
+public import Aglib.CategoryTheory.NatTrans.NormalizedExchangeNaturality
+public import Aglib.CategoryTheory.NatTrans.OverComparisonEquation
 public import Aglib.CategoryTheory.NatTrans.Unit
 public import Aglib.CategoryTheory.ObjectProperty.EquivalenceRelation
 public import Aglib.CategoryTheory.ObjectProperty.GrpObj

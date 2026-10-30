@@ -64,3 +64,10 @@ then compares their actual adjunction mates. Its isomorphism factors and
 eight genuinely distinct category worlds remain explicit; no invertibility
 of the exchanged transformation is assumed. The module-coefficient
 base-change map is the native consumer.
+
+[UnitComparisonBaseChange](UnitComparisonBaseChange.lean) transports a specified
+unit comparison through the actual mate and a commuting left-comparison square.
+[UnitComparisonNaturality](UnitComparisonNaturality.lean) packages the whole
+unit-comparison naturality equation and derives it from the original component
+formulas and comparison cube. The independent category and Hom universes and
+the given unit, mate and comparison maps remain explicit.

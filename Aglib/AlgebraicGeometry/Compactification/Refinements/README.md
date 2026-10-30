@@ -118,3 +118,11 @@ triple associator theorem; only then is thinness applied. It records naturality,
 equality after the original final normalization inclusion, and its structural
 projection. This geometric coherence is not a derived exchange or
 exceptional-direct-image coherence theorem.
+
+`Supplied.lean` selects one dense compactification from an explicit
+`Nonempty (DenseCompactification f)` instance. It uses that supplied existence
+without adding a new existence theorem or coefficient category.
+`CartesianBaseChange.lean` proves the actual Cartesian open squares for raw
+base change and source transport, including the square of the original ambient
+refinement map. The open-square refinement result retains quasi-compactness of
+`f`, and all projection maps are the original scheme morphisms.
