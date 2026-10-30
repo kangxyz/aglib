@@ -1,0 +1,123 @@
+{
+  "run": "remote-11723fa959224d3ab572665028d8fd6a",
+  "raw_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-11723fa959224d3ab572665028d8fd6a/build.log",
+  "raw_size_bytes": 48440672,
+  "raw_sha256": "12ddd254f4e0b51579003dc77a572d5cd8099354531a8ba71c60e170b6a16cba",
+  "markers": [
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 16,
+      "data": "GOPT_IMPORTED_PASSED_PROVIDER monoMs=75550794229"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 75,
+      "data": "GOPT_ORIGINAL_MODEL_REGISTERED AlgebraicGeometry.Scheme.Modules.Godement.openBaseChangeDerivedStandard"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 75,
+      "data": "GOPT_ORIGINAL_HELPER_RESOLVED _private.Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.0.unit_span_pasting"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 75,
+      "data": "GOPT_BEFORE_SPAN_DECLARATION monoMs=75550796095"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 79,
+      "data": "GOPT_TYPE_GETTER_ENTERED monoMs=75550796097"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 79,
+      "data": "GOPT_TYPE_METADATA_RETURNED monoMs=75550796097"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 80,
+      "data": "GOPT_BODY_ENTERED_BEFORE_INTRO monoMs=75550796742"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 80,
+      "data": "remainingHB=197964"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 84,
+      "data": "GOPT_AFTER_INTRO monoMs=75550797481"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 84,
+      "data": "remainingHB=195926"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 88,
+      "data": "GOPT_FIRST_ORIGINAL_SQUARE_READY monoMs=75550798291"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 88,
+      "data": "remainingHB=193820"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 92,
+      "data": "GOPT_SECOND_ORIGINAL_SQUARE_READY monoMs=75550799098"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 92,
+      "data": "remainingHB=191713"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 96,
+      "data": "GOPT_WHOLE_PASTING_RESULT_BEFORE_EXACT monoMs=75550892720"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 96,
+      "data": "remainingHB=24842"
+    },
+    {
+      "severity": "information",
+      "kind": "[anonymous]",
+      "line": 75,
+      "data": "GOPT_AFTER_SYNCHRONOUS_COMMAND monoMs=75550903918"
+    }
+  ],
+  "errors_prefixes": [
+    {
+      "kind": "runtime.maxHeartbeats",
+      "line": 79,
+      "data_prefix": "(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    }
+  ],
+  "message_kinds": {
+    "[anonymous]": 17,
+    "runtime.maxHeartbeats": 1,
+    "trace": 3
+  },
+  "boundary": "Compact selected messages only. Full raw trace retained at original path; no UI or Git copy of bulk. Instrumented synchronous imported TYPE trial, not unprofiled production/speed baseline."
+}

@@ -1322,6 +1322,15 @@ public import Aglib.AlgebraicGeometry.Cohomology.Godement.DerivedPushforward.She
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.DerivedPushforward.Total
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.First
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Basic
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Bridge
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.FirstSquare
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Geometry
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SecondSquare
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.Span
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanComponent
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanData
+public import Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SpanFactorized
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.ProjectionFormula
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.PullbackPushforward
 public import Aglib.AlgebraicGeometry.Cohomology.Godement.Resolution
@@ -5097,6 +5106,7 @@ public import Aglib.CategoryTheory.Functor.KanExtension.ClosedImage
 public import Aglib.CategoryTheory.Functor.MapComparisonSquare
 public import Aglib.CategoryTheory.Functor.ModelAutomorphisms
 public import Aglib.CategoryTheory.Functor.NatTrans.UnitInsertion
+public import Aglib.CategoryTheory.Functor.NatTrans.UnitInsertionSpan
 public import Aglib.CategoryTheory.Functor.NaturalityTransport
 public import Aglib.CategoryTheory.Functor.RepresentativeSections
 public import Aglib.CategoryTheory.Functor.Sections.Initial

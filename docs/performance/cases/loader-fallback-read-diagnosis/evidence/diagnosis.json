@@ -1,0 +1,78 @@
+{
+  "question": "Do phase4de lint/audit file-read errors establish missing native artifacts or a reproducible workflow restoration gap?",
+  "basis": {
+    "Q_git_head": "05b8c4704abf0759cfdac5f5ddabe440dc73874b",
+    "actual_phase": "remote-4de18255c0f147f6840ba94808626277",
+    "source_content_sha256": "fadfd749ca286b281cae778f3b7ea7836e4adbb5df8a1129c38b6fa7fe40b0b4",
+    "source_receipt_sha256": "ad9769d3c0347f0e2c17a4a1575cdd40109082af202064356ec8adebf83193f9",
+    "workspace": "/root/autodl-tmp/lean-build/workspaces/managed-fa4f50e1dc41-315a5e4a9466/lean",
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "audit": "46024e005996495c65ef609368e11ab39c4222e3"
+  },
+  "conclusion": "No missing-artifact or workflow lazy-restoration gap is established. The exact diagnostic identifies a native loader fallback-read failure after opening/stat/header-read, rather than a missing file. The precise syscall failure and cause remain to be measured by the sole operator.",
+  "qualification": "This supersedes an initial missing-file interpretation for phase4de only; it neither changes earlier cache-sidecar repair evidence nor asserts hosted CI success, lint correctness or axiom closure.",
+  "evidence": {
+    "actual_phase_logs": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-b-runs/remote-4de18255c0f147f6840ba94808626277",
+    "build_log_sha256": "9c82db4b9705d3454472b82c429ffacc4c7b0f610860951bd40e518b290a7027",
+    "receipt_sha256": "a9525b2c5b1fb48537b3220604f2ae61ff58db20b912f1b4cd15abfcf717787e",
+    "failure_lines": {
+      "lint": 215,
+      "audit": 221
+    },
+    "phase_exit": 1,
+    "compiler_successes": 184,
+    "compiler_failures": 0,
+    "input_drift": [],
+    "cgroup_oom_delta": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    },
+    "prior_actual_restoration": {
+      "run": "remote-97a5bdd02c4b4f9485078ee55c6383b5",
+      "source": "f0b46f3d8001eebbedc63938bb4a401b077a1061ab10941ea12252b066ea5338",
+      "same_workspace": true,
+      "Haar_private_line": 49965,
+      "General_olean_line": 50952,
+      "coverage_boundary": "Prior source basis; evidence of file restoration, not current-phase check success."
+    },
+    "operator_report_not_independently_repeated": {
+      "files_exist_and_readable": true,
+      "mode": "0444",
+      "Haar_private_bytes": 993640,
+      "Haar_private_ctime_UTC": "17:25",
+      "General_olean_bytes": 546160,
+      "General_olean_ctime_UTC": "17:16",
+      "phase_start_UTC": "19:30:28",
+      "vm.max_map_count": 65530,
+      "RLIMIT_NOFILE_soft": 1024,
+      "RLIMIT_NOFILE_hard": 1048576,
+      "RLIMIT_AS": "unlimited"
+    }
+  },
+  "pinned_source": {
+    "native_loader": "https://raw.githubusercontent.com/leanprover/lean4/v4.34.1/src/library/module.cpp",
+    "native_loader_locators": {
+      "file_descriptor_close": "75-97",
+      "open_stat_header_errors": "434-459",
+      "mapping_attempt": "485-503",
+      "fallback_and_exact_diagnostic": "517-523"
+    },
+    "interpretation": "Failed mappings fall back to malloc then readn. The bare error is emitted on failed/short fallback read. The allocation result is unchecked. Map-limit exhaustion causing allocation failure and EFAULT is a hypothesis, not an observed errno.",
+    "lean_importer": "Lean/Environment.lean:2078-2091 reads main/server/private parts",
+    "lake_restoration": "Lake/Build/Module.lean:809-822 restores all artifacts, including private; 1014-1059 selects restoration on native-cache hits",
+    "lake_option_precedence": "Lake/Config/Monad.lean:182-183 and Lake/Config/Workspace.lean:151-152",
+    "Q_config": "lakefile.toml:11-12 enableArtifactCache=true, restoreAllArtifacts=true; Aglib.lean:6067 imports General",
+    "mathlib_config": "lakefile.lean:68 restoreAllArtifacts=true",
+    "CI_transfer_and_prepare": ".github/workflows/lean-ci.yml:345-363 unstages same-run output then explicitly restores production outputs using LAKE_RESTORE_ARTIFACTS=true lake build --no-build --rehash",
+    "setup_cleanup_boundary": "infra/src/r5tools/lean_remote_storage.py:259-286 prunes only *.setup.json under .lake/build/ir"
+  },
+  "bounded_next_action": {
+    "owner": "/root/compile_authorized_continuation",
+    "instruction": "Keep cache and source unchanged. Capture failing mmap/read/brk errno and process maps/fd count during one exact failed-check replay under the existing native phase/limits. Confirm runtime binary corresponds to the pinned source. Select any resource repair only after that evidence; do not rebuild or clear the production library."
+  },
+  "work_performed": "Read-only source/log diagnosis; wrote only this assigned scratch result. No workflow/source/cache/runtime mutations, no new native run, no repetition of prior 57-test result."
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "expected_source": "fadfd749ca286b281cae778f3b7ea7836e4adbb5df8a1129c38b6fa7fe40b0b4",
+    "exit_code": 1,
+    "command_exit_code": 1,
+    "elapsed_seconds": 4.9077174961566925,
+    "compiler_invocations": 1,
+    "compiler_succeeded": 0,
+    "compiler_failed": 1,
+    "group_closed": true,
+    "incomplete_compiler_events": 0,
+    "input_drift": [],
+    "input_sha256": {
+      "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertion.lean": "7da85dc12042849006c8baa2c847c7ab87d13c844e488d34c8a96692ff7bfc7b",
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "phase_label": "whole-original-unit-span-generic-author-diagnostic",
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "pins": {
+      "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+      "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+      "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+      "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+    },
+    "run_id": "remote-8436511a9c32462f9c1f2f9f752450cd",
+    "source_sha256": "f37cbc43fed6d87195a3508771737000d6ea0cf9c9b1b6886982af75292b704c",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-8436511a9c32462f9c1f2f9f752450cd/receipt.json",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-8436511a9c32462f9c1f2f9f752450cd/build.log"
+  },
+  {
+    "expected_source": "fadfd749ca286b281cae778f3b7ea7836e4adbb5df8a1129c38b6fa7fe40b0b4",
+    "exit_code": 0,
+    "command_exit_code": 0,
+    "elapsed_seconds": 5.326452225446701,
+    "compiler_invocations": 1,
+    "compiler_succeeded": 1,
+    "compiler_failed": 0,
+    "group_closed": true,
+    "incomplete_compiler_events": 0,
+    "input_drift": [],
+    "input_sha256": {
+      "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertion.lean": "7da85dc12042849006c8baa2c847c7ab87d13c844e488d34c8a96692ff7bfc7b",
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "phase_label": "whole-original-unit-span-generic-author-repair-v2",
+    "diagnostics": {
+      "categories": {},
+      "first": [],
+      "observed_missing_count": 0,
+      "observed_missing_prefixes": {},
+      "observed_missing_prefixes_truncated": false,
+      "observed_missing_shortlist": []
+    },
+    "pins": {
+      "lake": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "lake_sha256": "6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d",
+      "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+      "lean": "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+      "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)"
+    },
+    "run_id": "remote-a595daf4f5314710b3814880cab11b5c",
+    "source_sha256": "285026f32bb0868648de9f7072e2b27cd9cc207a3381d9f0c3f223d0004b16d6",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-a595daf4f5314710b3814880cab11b5c/receipt.json",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-a595daf4f5314710b3814880cab11b5c/build.log"
+  }
+]

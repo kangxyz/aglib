@@ -1,0 +1,327 @@
+{
+  "status": "COMPLETE_MATCHING_NATIVE_FAMILY_COVERAGE",
+  "final_owning_root": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+  "final_run": "remote-dc117035f822435c959fbae836ff2c8d",
+  "final_SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+  "files": [
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+      "exit_code": 0,
+      "frontend_seconds": 3.1013037711381912,
+      "started_at": "2026-10-30T01:56:02.464647+00:00",
+      "finished_at": "2026-10-30T01:56:05.565945+00:00",
+      "sha256": "d0594d133f27d56747f5a0daeaab4cd296e533e6137dd2df8ce9f069f69f5871",
+      "run": "remote-dc117035f822435c959fbae836ff2c8d",
+      "SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean",
+      "exit_code": 0,
+      "frontend_seconds": 46.63098254799843,
+      "started_at": "2026-10-29T21:43:25.494425+00:00",
+      "finished_at": "2026-10-29T21:44:12.125399+00:00",
+      "sha256": "a3c32be2f1ef4768b058dc006c5c79446b643a6d298f2967a99858839142ead0",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean",
+      "exit_code": 0,
+      "frontend_seconds": 8.09514494240284,
+      "started_at": "2026-10-29T21:43:25.482397+00:00",
+      "finished_at": "2026-10-29T21:43:33.577531+00:00",
+      "sha256": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean",
+      "exit_code": 0,
+      "frontend_seconds": 248.97302561998367,
+      "started_at": "2026-10-29T21:44:12.516538+00:00",
+      "finished_at": "2026-10-29T21:48:21.489559+00:00",
+      "sha256": "ed96fbf7d031ec78c541d5eabdb225e8b98efeb884df7a1ba147597abcc0fd47",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean",
+      "exit_code": 0,
+      "frontend_seconds": 352.76752646267414,
+      "started_at": "2026-10-29T21:48:21.870871+00:00",
+      "finished_at": "2026-10-29T21:54:14.638389+00:00",
+      "sha256": "3241adae150f33d252df65728316fa92ed5613387ef79caa63844188f17821df",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+      "exit_code": 0,
+      "frontend_seconds": 13.671893551945686,
+      "started_at": "2026-10-29T21:43:33.973629+00:00",
+      "finished_at": "2026-10-29T21:43:47.645517+00:00",
+      "sha256": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+      "exit_code": 0,
+      "frontend_seconds": 556.7519431859255,
+      "started_at": "2026-10-30T00:00:11.136077+00:00",
+      "finished_at": "2026-10-30T00:09:27.888018+00:00",
+      "sha256": "0017416d20d1bf61a6d3f3d152e7f184a0a497134dbae605ead5241b8ee1ee1d",
+      "run": "remote-aea9cae634c24e6d9323eb65ce15d43c",
+      "SOURCE": "1d49ed6925980915f5a9f00b43e0c4ab9df6f3643a05744d3e1fc8f7c980376e"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean",
+      "exit_code": 0,
+      "frontend_seconds": 358.4107626825571,
+      "started_at": "2026-10-30T01:23:46.605311+00:00",
+      "finished_at": "2026-10-30T01:29:45.016069+00:00",
+      "sha256": "c4da49721d261a5623feac69ec09e6e5a705705fec2d608eaf002a8ee2e7090f",
+      "run": "remote-5c803ce865cb4c8aad12a9ba6412f841",
+      "SOURCE": "e7788ac5f742d948e7ffcb9affe60c9ba87d639fd013b31fd3d7fbbd092297e9"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean",
+      "exit_code": 0,
+      "frontend_seconds": 394.56415873765945,
+      "started_at": "2026-10-30T01:37:36.143011+00:00",
+      "finished_at": "2026-10-30T01:44:10.707168+00:00",
+      "sha256": "05927d624a8ec60b52a25efefcdd2ca52eb0b4b334e8769f319102f0d88c6254",
+      "run": "remote-f5e90209372b4bfbace5da3e7dc12d01",
+      "SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff"
+    },
+    {
+      "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+      "exit_code": 0,
+      "frontend_seconds": 300.66769328713417,
+      "started_at": "2026-10-30T01:51:01.395017+00:00",
+      "finished_at": "2026-10-30T01:56:02.062704+00:00",
+      "sha256": "b1cd0df977d580645d71aaa6a884a2b3e79e16de66ad8863fd312b7441e57f20",
+      "run": "remote-dc117035f822435c959fbae836ff2c8d",
+      "SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+      "exit_code": 0,
+      "frontend_seconds": 2.6112018078565598,
+      "started_at": "2026-10-29T21:43:25.476618+00:00",
+      "finished_at": "2026-10-29T21:43:28.087812+00:00",
+      "sha256": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2"
+    }
+  ],
+  "runs": [
+    {
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+      "source_receipt_sha256": "61e7832a0afdcb483b1b4624d5e92825ff71799b7792d9ed765818bbd3de2ea5",
+      "exit_code": 1,
+      "phase_seconds": 1402.5777577757835,
+      "peak_owned_rss_bytes": 18919768064,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078/receipt.json",
+      "receipt_sha256": "0755907513de0c04186d5d2526532f6f0781a6eb318fe2f359f27fa838672759",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078/compiler-events.jsonl",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078/build.log",
+      "build_log_sha256": "dce05bf118f73cfc588b32bb76b419928d5b779f599db59e23efbe6a9cbaf900",
+      "frontends": [
+        {
+          "path": "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+          "exit_code": 0,
+          "frontend_seconds": 2.6112018078565598,
+          "started_at": "2026-10-29T21:43:25.476618+00:00",
+          "finished_at": "2026-10-29T21:43:28.087812+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean",
+          "exit_code": 0,
+          "frontend_seconds": 8.09514494240284,
+          "started_at": "2026-10-29T21:43:25.482397+00:00",
+          "finished_at": "2026-10-29T21:43:33.577531+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+          "exit_code": 0,
+          "frontend_seconds": 13.671893551945686,
+          "started_at": "2026-10-29T21:43:33.973629+00:00",
+          "finished_at": "2026-10-29T21:43:47.645517+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean",
+          "exit_code": 0,
+          "frontend_seconds": 46.63098254799843,
+          "started_at": "2026-10-29T21:43:25.494425+00:00",
+          "finished_at": "2026-10-29T21:44:12.125399+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean",
+          "exit_code": 0,
+          "frontend_seconds": 248.97302561998367,
+          "started_at": "2026-10-29T21:44:12.516538+00:00",
+          "finished_at": "2026-10-29T21:48:21.489559+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean",
+          "exit_code": 0,
+          "frontend_seconds": 352.76752646267414,
+          "started_at": "2026-10-29T21:48:21.870871+00:00",
+          "finished_at": "2026-10-29T21:54:14.638389+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+          "exit_code": 1,
+          "frontend_seconds": 478.9939914494753,
+          "started_at": "2026-10-29T21:54:15.051920+00:00",
+          "finished_at": "2026-10-29T22:02:14.045896+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+          "exit_code": 1,
+          "frontend_seconds": 750.1661410480738,
+          "started_at": "2026-10-29T21:54:15.040100+00:00",
+          "finished_at": "2026-10-29T22:06:45.206236+00:00"
+        }
+      ]
+    },
+    {
+      "run": "remote-aea9cae634c24e6d9323eb65ce15d43c",
+      "SOURCE": "1d49ed6925980915f5a9f00b43e0c4ab9df6f3643a05744d3e1fc8f7c980376e",
+      "source_receipt_sha256": "014afe00a0504b59f1769247e73afff0e919fd86780a6d5bd293edbfb4de2745",
+      "exit_code": 0,
+      "phase_seconds": 560.3391599357128,
+      "peak_owned_rss_bytes": 10888245248,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/receipt.json",
+      "receipt_sha256": "762851622724e1f80173b94ecef0a4cef0847f52a4d759b54e017c7317d70060",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/compiler-events.jsonl",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/build.log",
+      "build_log_sha256": "d7a802186da5f1f540a0e1f762eb78f1d5000dcadf16b9af026f48d15c8f2c78",
+      "frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+          "exit_code": 0,
+          "frontend_seconds": 556.7519431859255,
+          "started_at": "2026-10-30T00:00:11.136077+00:00",
+          "finished_at": "2026-10-30T00:09:27.888018+00:00"
+        }
+      ]
+    },
+    {
+      "run": "remote-5c803ce865cb4c8aad12a9ba6412f841",
+      "SOURCE": "e7788ac5f742d948e7ffcb9affe60c9ba87d639fd013b31fd3d7fbbd092297e9",
+      "source_receipt_sha256": "c923e7835336be28bb86804c719c59e0259b7cec0185b40e9a6b95033509b315",
+      "exit_code": 0,
+      "phase_seconds": 361.61781272292137,
+      "peak_owned_rss_bytes": 11805548544,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/receipt.json",
+      "receipt_sha256": "f8fef4e73192c55e8d8ed5d3d7f5bf573c95ed22dd15b26c80bc9e212e9860d4",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/compiler-events.jsonl",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-5c803ce865cb4c8aad12a9ba6412f841/build.log",
+      "build_log_sha256": "65bf84557f20d531c6bc4a1565b38ec9a7d9027d1ab09089e5cd7485aacb582d",
+      "frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean",
+          "exit_code": 0,
+          "frontend_seconds": 358.4107626825571,
+          "started_at": "2026-10-30T01:23:46.605311+00:00",
+          "finished_at": "2026-10-30T01:29:45.016069+00:00"
+        }
+      ]
+    },
+    {
+      "run": "remote-f5e90209372b4bfbace5da3e7dc12d01",
+      "SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+      "source_receipt_sha256": "2e1c6c972e3cbeda9c478f7b59748d366bd7af1419b9889a3d65cb8a14d5cd63",
+      "exit_code": 0,
+      "phase_seconds": 398.0840799063444,
+      "peak_owned_rss_bytes": 13060161536,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/receipt.json",
+      "receipt_sha256": "b14b6d626f7dbc428c931bd5eb6fce45411e7c145e10b4630773755baa9bae90",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/compiler-events.jsonl",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f5e90209372b4bfbace5da3e7dc12d01/build.log",
+      "build_log_sha256": "7ee56c331ae97b1fee3dfb2d230040012a5cc79fa9812d2d38b683e47aa105fd",
+      "frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanFactorized.lean",
+          "exit_code": 0,
+          "frontend_seconds": 394.56415873765945,
+          "started_at": "2026-10-30T01:37:36.143011+00:00",
+          "finished_at": "2026-10-30T01:44:10.707168+00:00"
+        }
+      ]
+    },
+    {
+      "run": "remote-dc117035f822435c959fbae836ff2c8d",
+      "SOURCE": "e9ad8c9d8096784793242fecf0712f2d18fdef19c8cde5eece836e90a55f46ff",
+      "source_receipt_sha256": "2e1c6c972e3cbeda9c478f7b59748d366bd7af1419b9889a3d65cb8a14d5cd63",
+      "exit_code": 0,
+      "phase_seconds": 307.5154719799757,
+      "peak_owned_rss_bytes": 8780865536,
+      "input_drift": [],
+      "profile": {
+        "allow_cpu_oversubscription": false,
+        "jobs": 8,
+        "lean_memory_mib": 12800,
+        "rss_limit_mib": 65536,
+        "threads": 4
+      },
+      "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/receipt.json",
+      "receipt_sha256": "4ae1822753911657fb05959aa9742f7cc5990307a14e8b79e1a5d829bd232d94",
+      "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/compiler-events.jsonl",
+      "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-dc117035f822435c959fbae836ff2c8d/build.log",
+      "build_log_sha256": "3f1b2526fd8ac6f6eb86e20319e4f0c2d315d1c195889c0f0af1dc0b5c85cc54",
+      "frontends": [
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+          "exit_code": 0,
+          "frontend_seconds": 300.66769328713417,
+          "started_at": "2026-10-30T01:51:01.395017+00:00",
+          "finished_at": "2026-10-30T01:56:02.062704+00:00"
+        },
+        {
+          "path": "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+          "exit_code": 0,
+          "frontend_seconds": 3.1013037711381912,
+          "started_at": "2026-10-30T01:56:02.464647+00:00",
+          "finished_at": "2026-10-30T01:56:05.565945+00:00"
+        }
+      ]
+    }
+  ],
+  "limits": "Final owning-root build freshly compiled only Span and facade and reused matching successful dependencies. The earlier f0e group failed overall; only its six fresh successful source modules are retained. No full-Aglib/standalone style/audit/hosted CI/cold benchmark claim."
+}

@@ -463,6 +463,23 @@ mathematical conditions govern that choice.
 - Reuse matching checker setup through the existing native entry. A missing tool
   needs that dependency, not a clean mathematical rebuild. Distinguish a driver
   launch failure from a reported source-style error.
+- For a bare native loader read error, inspect the actual artifact and pinned
+  loader branch, then compare mappings, file descriptors and RSS with limits.
+  Scoped failure-only observation can distinguish a NULL-buffer fallback read
+  from a missing artifact; reserve slots for the terminal failure. The recorded
+  diagnosis establishes neither a successful repair nor a unique map-limit cause.
+  [Loader fallback diagnosis](performance/loader-fallback-read-diagnosis.md).
+- Build a large native coherence family from complete variable-input
+  constructions, then specialize only the original-data view needed by each
+  square. Keep stable producers and independent proofs in cached focused
+  modules, retaining faithful original views.
+  [Godement construction and split](performance/cases/godement-unit-insertion/README.md)
+  records native closure and reuse, without a controlled cold-build speedup.
+- For source-section transport, retain the ordinary H1 functor and original
+  functions. Prove inverse, identity, transport and coefficient-square laws
+  before taking native component views. Separate formation probes, resource
+  interruptions, proof failures and actual module passes.
+  [Ordinary H1 section transport](performance/cases/section-h1-transport/README.md).
 - Inspect the pinned native checker's import loop before passing overlapping
   module arguments. If each imports the same package environment, establish
   with the native source parser that one terminal target reaches every required

@@ -1,0 +1,25 @@
+{
+  "changed_basis": "Actual ONE control49abc0ebec12484eb2691b43dc32e338/SOURCE4c06 fixed MetaIR but rejected unknown identifier hw outside main-goal localcontext. Both expensive continuations were blocked/not started. Recovery mvar report is invalid.",
+  "repair": "Only wrap report tactic body with withMainContext. Preserve two meta helper markers, extractor logic, native selected statement/body/models and deliberate stop.",
+  "utility_sha256": "62e6c41281720374fca6d2a2606a6421e75ec200f0db89575397157a1286ce62",
+  "native_diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/diagnostic/SpanFactorizedSeam-v3.lean",
+  "native_sha256": "c335ff45f56b3b88d8050bd0dc05c6cb1bee6243147b8bc5bbb4c7b07fe29285",
+  "control": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/diagnostic/SeamUtilityControl-v3.lean",
+  "control_sha256": "67dc4a2781b5ee69b2f119d027713748c559a13cf67e75c2794a411f66265b5c",
+  "expected_control": "Genuine inferred Eq for local hw:n=n versus goal n+0=n, three Eq parts and bounded raw differences; deliberate SPAN_SEAM_DIAGNOSTIC_COMPLETE is sole error. No unknown identifier, mvar recovery, invalid-meta or tactic-notimplemented. Expected intentionalexit1 is not proof acceptance.",
+  "sequence": "One shared pinned tiny control; reuse for Second with identical wrapper; only then same selected native questions.",
+  "production_changes": "None. Qcommon84/Span1a and six fine passes preserved.",
+  "actual_control": {
+    "run": "remote-443b7fe766b04f3bb844fbe591d4b7fb",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "status": "VALID utility control; intentionalexit1, not proofpass",
+    "observation": "Both genuineconstEq/arity3; intendedrawfalse; only lhs fvarn versusHAdd mismatch; sole intentionalmarker; noUnknown/MetaIR/mvarrecovery",
+    "runtime_predicate_correction": "InitialRAW_EQtrue gate was incorrect for mismatch control. Originalgatefalse preserved; same actual log reused by explicit CONTROL-REINTERPRETATION, no rerun."
+  },
+  "native_continuation": {
+    "run": "remote-688514002ee045b58d50b08e5af15241",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "span_sha256": "c335ff45f56b3b88d8050bd0dc05c6cb1bee6243147b8bc5bbb4c7b07fe29285",
+    "state": "Running; no raw native report yet"
+  }
+}

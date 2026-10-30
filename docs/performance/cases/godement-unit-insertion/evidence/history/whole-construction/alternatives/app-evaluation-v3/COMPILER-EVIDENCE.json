@@ -1,0 +1,54 @@
+{
+  "generic_source_sha256": "15599d581a7fa963bba1277ff7648a135204437a04f5ca5add9fd5d64f9bed14",
+  "native_source_sha256": "c926418588627468340cd933fbec775e8f2117e05b995e5596325f848fee431e",
+  "native_run": "remote-ed3dd01423474dabb29a04aa01945bae",
+  "native_state": "CLOSED1; failed, not accepted as a native construction",
+  "native_provider": "Actual archived original OpenBaseChange48cabc artifact from producer1365174c, guarded and mapped explicitly; live C source dde71 is separate and not claimed compiled",
+  "evidence_basis": "Normal native options and budget; no transferred current-production coverage",
+  "generic": {
+    "expected_source": "e46a7c1e689eb02c128c78f98b0de9f73e9f2f929e094ff925c32a074c3fed12",
+    "exit_code": 0,
+    "command_exit_code": 0,
+    "elapsed_seconds": 5.739385187625885,
+    "compiler_invocations": 1,
+    "compiler_succeeded": 1,
+    "compiler_failed": 0,
+    "group_closed": true,
+    "input_drift": [],
+    "input_sha256": {
+      "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertion.lean": "7da85dc12042849006c8baa2c847c7ab87d13c844e488d34c8a96692ff7bfc7b",
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "phase_label": "alternate-generic-raw-app-projections-after-actual-failure",
+    "peak_rss_bytes": 877195264,
+    "run_id": "remote-8af06a502f2547f38726c6921883c213",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-8af06a502f2547f38726c6921883c213/receipt.json",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-8af06a502f2547f38726c6921883c213/build.log"
+  },
+  "native": {
+    "expected_source": "e46a7c1e689eb02c128c78f98b0de9f73e9f2f929e094ff925c32a074c3fed12",
+    "exit_code": 1,
+    "command_exit_code": 1,
+    "elapsed_seconds": 1030.9426377862692,
+    "compiler_invocations": 1,
+    "compiler_succeeded": 0,
+    "compiler_failed": 1,
+    "group_closed": true,
+    "input_drift": [],
+    "input_sha256": {
+      "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean": "dde71a9871605ee565d195d58e150f61554cd3f1168a927b4649ec9046b0fcdb",
+      "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+      "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+      "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    "phase_label": "changed-raw-app-alternate-native-on-frozen-passed48",
+    "peak_rss_bytes": 13483364352,
+    "run_id": "remote-ed3dd01423474dabb29a04aa01945bae",
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-ed3dd01423474dabb29a04aa01945bae/receipt.json",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-ed3dd01423474dabb29a04aa01945bae/build.log"
+  },
+  "native_diagnostics": "WHNF200000 at c926 line64:8 (exact hw after raw-app specialization); kernel excessive memory at line66:6 (dependent component declaration).",
+  "changed_assignment": "Root explicitly requested fine source/cache split. New common point/evaluation API and Span leaf have their own split/span manifests and new source identities; neither old adapter outcome covers them."
+}

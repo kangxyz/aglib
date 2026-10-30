@@ -1,0 +1,137 @@
+{
+  "question": "Compile the original29-public-declaration family as its actual smaller native dependency graph, preserving maps, hypotheses and selected model constants.",
+  "status": "CLOSED_PARTIAL_PASS_SIX_MODULES_TWO_PROOF_LEAVES_FAILED",
+  "run": "remote-f0e024e250804c8d979a57763b374078",
+  "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+  "head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "scope": "FirstSquare, SecondSquare and Span as normal owning roots; their actual imports schedule independent Basic/Geometry/common producers and then Bridge/SpanData. No monolithic or whole-forest replay.",
+  "profile": "Unchanged native8jobs/4threads/default200000 heartbeats/M12800/RSS65536; default scheduling and trust predicates.",
+  "pending": [
+    "SecondSquare repair",
+    "Span repair",
+    "import-only compatibility facade after actual dependencies pass"
+  ],
+  "evidence_status": "Canonical complete receipt/events/log inspected. Six fresh module passes are retained at their captured hashes; two independent leaf errors remain. No whole-family or facade closure is inferred.",
+  "facade_boundary": "Current leaf graph was captured before facade d059 publication and does not import the legacy root. The import-only changed legacy root must receive its own ordinary compilation after its actual dependencies pass.",
+  "historical_boundary": "The old unsplit dde71/e46 production failed in2723.483s frontend time. That negative is preserved in production-integration/PRODUCTION-v3.json and is not transferred to this different native family. No matched whole-build speedup is claimed.",
+  "canonical_directory": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-f0e024e250804c8d979a57763b374078",
+  "receipt_sha256": "0755907513de0c04186d5d2526532f6f0781a6eb318fe2f359f27fa838672759",
+  "source_receipt_sha256": "61e7832a0afdcb483b1b4624d5e92825ff71799b7792d9ed765818bbd3de2ea5",
+  "build_log_sha256": "dce05bf118f73cfc588b32bb76b419928d5b779f599db59e23efbe6a9cbaf900",
+  "phase_seconds": 1402.5777577757835,
+  "actual_frontends": [
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean",
+      "seconds": 2.6112018078565598,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:43:25.476618+00:00",
+      "finished_at": "2026-10-29T21:43:28.087812+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean",
+      "seconds": 8.09514494240284,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:43:25.482397+00:00",
+      "finished_at": "2026-10-29T21:43:33.577531+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+      "seconds": 13.671893551945686,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:43:33.973629+00:00",
+      "finished_at": "2026-10-29T21:43:47.645517+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Basic.lean",
+      "seconds": 46.63098254799843,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:43:25.494425+00:00",
+      "finished_at": "2026-10-29T21:44:12.125399+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Bridge.lean",
+      "seconds": 248.97302561998367,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:44:12.516538+00:00",
+      "finished_at": "2026-10-29T21:48:21.489559+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanData.lean",
+      "seconds": 352.76752646267414,
+      "exit_code": 0,
+      "started_at": "2026-10-29T21:48:21.870871+00:00",
+      "finished_at": "2026-10-29T21:54:14.638389+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+      "seconds": 478.9939914494753,
+      "exit_code": 1,
+      "started_at": "2026-10-29T21:54:15.051920+00:00",
+      "finished_at": "2026-10-29T22:02:14.045896+00:00"
+    },
+    {
+      "source_file": "/root/autodl-tmp/lean-build/workspaces/managed-d1ad007a676d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+      "seconds": 750.1661410480738,
+      "exit_code": 1,
+      "started_at": "2026-10-29T21:54:15.040100+00:00",
+      "finished_at": "2026-10-29T22:06:45.206236+00:00"
+    }
+  ],
+  "failed_seams": [
+    {
+      "module": "SecondSquare",
+      "line": 89,
+      "kind": "whnf200000"
+    },
+    {
+      "module": "Span",
+      "line": 62,
+      "kind": "whnf200000"
+    },
+    {
+      "module": "Span",
+      "line": 99,
+      "kind": "whnf200000"
+    }
+  ],
+  "kernel_memory_diagnostic": false,
+  "fresh_successes": [
+    {
+      "module": "UnitInsertionSpan",
+      "sha256": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342",
+      "frontend_seconds": 2.6112018078565598,
+      "exit_code": 0
+    },
+    {
+      "module": "Geometry",
+      "sha256": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+      "frontend_seconds": 8.09514494240284,
+      "exit_code": 0
+    },
+    {
+      "module": "FirstSquare",
+      "sha256": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+      "frontend_seconds": 13.671893551945686,
+      "exit_code": 0
+    },
+    {
+      "module": "Basic",
+      "sha256": "a3c32be2f1ef4768b058dc006c5c79446b643a6d298f2967a99858839142ead0",
+      "frontend_seconds": 46.63098254799843,
+      "exit_code": 0
+    },
+    {
+      "module": "Bridge",
+      "sha256": "ed96fbf7d031ec78c541d5eabdb225e8b98efeb884df7a1ba147597abcc0fd47",
+      "frontend_seconds": 248.97302561998367,
+      "exit_code": 0
+    },
+    {
+      "module": "SpanData",
+      "sha256": "3241adae150f33d252df65728316fa92ed5613387ef79caa63844188f17821df",
+      "frontend_seconds": 352.76752646267414,
+      "exit_code": 0
+    }
+  ],
+  "timing_basis": "Native compiler-event monotonic finish minus start for exact frontend intervals; these may differ by microseconds from rounded UTC timestamps or Lake display timings."
+}

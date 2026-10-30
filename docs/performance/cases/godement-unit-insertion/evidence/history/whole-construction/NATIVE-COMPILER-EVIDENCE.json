@@ -1,0 +1,54 @@
+{
+  "expected_source": "fadfd749ca286b281cae778f3b7ea7836e4adbb5df8a1129c38b6fa7fe40b0b4",
+  "exit_code": 1,
+  "command_exit_code": 1,
+  "elapsed_seconds": 1318.839724779129,
+  "compiler_invocations": 1,
+  "compiler_succeeded": 0,
+  "compiler_failed": 1,
+  "group_closed": true,
+  "input_drift": [],
+  "input_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+    "lake-manifest.json": "4b56d1e50c168c3ab7816447e7f98da2584f9d509825422c22afaf48ab1ebea2",
+    "lakefile.toml": "74dd001400a84f17bd496d0b490cd72f4ab75455961ca2cd75bab5903990d852",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+  },
+  "phase_label": "complete-alternate-godement-native-adapter-author-diagnostic",
+  "peak_rss_bytes": 13475532800,
+  "source_sha256": "543e1618f94fb874f2e28072e4bbdf07acd80e3e369935861528618206a2606d",
+  "run_id": "remote-3cf0da64cf0f4f4c8c596323ca18d887",
+  "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-3cf0da64cf0f4f4c8c596323ca18d887/receipt.json",
+  "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261029/native-q-runs/remote-3cf0da64cf0f4f4c8c596323ca18d887/build.log",
+  "diagnostics": [
+    {
+      "line": 64,
+      "column": 2,
+      "kind": "whnf deterministic timeout",
+      "heartbeats": 200000
+    },
+    {
+      "line": 38,
+      "column": 6,
+      "kind": "kernel excessive memory"
+    },
+    {
+      "line": 66,
+      "column": 6,
+      "kind": "kernel unknown constant whole_open_unit_span_factorized",
+      "status": "cascade after failed factorized declaration"
+    },
+    {
+      "line": 106,
+      "column": 2,
+      "kind": "whnf deterministic timeout",
+      "heartbeats": 200000
+    },
+    {
+      "line": 87,
+      "column": 6,
+      "kind": "kernel excessive memory"
+    }
+  ],
+  "conclusion": "Old adapter543e failed. Generic285 remains a valid independent pass. No acceptance or speedup. Failures are not relabelled as evidence about independently running productiondde71."
+}

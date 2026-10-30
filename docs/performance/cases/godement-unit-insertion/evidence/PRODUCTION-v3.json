@@ -1,0 +1,91 @@
+{
+  "question": "Does the complete variable-functor construction preserve the original full Godement OpenBaseChange module and reduce its actual native compilation cost?",
+  "status": "CLOSED_FAILED_UNSPLIT_SOURCE_SUPERSEDED_BY_HUMAN_REQUESTED_FINE_DAG",
+  "run": "remote-e7c0b4d9cf4441d98520827822b02536",
+  "source_content_sha256": "e46a7c1e689eb02c128c78f98b0de9f73e9f2f929e094ff925c32a074c3fed12",
+  "captured_Q_head": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "source_packet": "LIVE-READY-v3.json",
+  "original_native_root": "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange",
+  "native_sha256": "dde71a9871605ee565d195d58e150f61554cd3f1168a927b4649ec9046b0fcdb",
+  "lower_sha256": "285026f32bb0868648de9f7072e2b27cd9cc207a3381d9f0c3f223d0004b16d6",
+  "runtime_owner": "/root/compile_authorized_continuation",
+  "profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "maxHeartbeats": 200000,
+    "scheduling": "native default async",
+    "observation": "normal unprofiled module build; no diagnostic scheduling or profiler options"
+  },
+  "baseline": {
+    "native_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+    "run": "remote-1365174cb8f44e038233169dfca41303",
+    "frontend_seconds": 1898.4342926442623,
+    "phase_seconds": 1913.2485866248608,
+    "scope": "The actual earlier complete native module pass, not the synchronous imported Span diagnostic. The earlier run is retained, not repeated."
+  },
+  "parallel_work": "The separate sealed543e native adapter remains on old SOURCEfadfd in C; its proof and timing coverage are not transferred to this changed full production module.",
+  "limits": "No current full-module pass, speedup or unique cause is claimed before actual completion. Source changes, provider/pin compatibility, runtime options and observed resource/load conditions must remain explicit in the final comparison.",
+  "source_manifest": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/source-manifests/continuation-B-Q7d-godement-production-e7c0b4d9.json",
+    "raw_sha256": "a8bb3e47d75a926f93df2b48339f29f914e2c617ce702bc9caaad1b5894708fa"
+  },
+  "independent_ordinary_review": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/ordinary-review/REPORT-v2-v3.md",
+    "sha256": "b76ca2e7a20b9a3f4d4889a35cf38a7c2ca9b1ca2dfa56813614e3c4dc514b47",
+    "outcome": "Accepted mathematics and original-source correspondence on frozen v2 and token-equivalent v3; retains original geometric/hK conditions. Native CPP/performance was pending at review, and is not inferred from it."
+  },
+  "provider_comparison": "PROVIDER-COMPARISON-v3.json",
+  "actual_result": {
+    "exit_code": 1,
+    "input_drift": [],
+    "fresh_frontends": 2,
+    "lower_frontend_seconds": 2.16925610601902,
+    "lower_exit_code": 0,
+    "native_frontend_seconds": 2723.4833539277315,
+    "native_exit_code": 1,
+    "phase_seconds": 2729.1278619915247,
+    "peak_owned_rss_bytes": 14357446656,
+    "native_errors": [
+      {
+        "line": 296,
+        "kind": "whnf200000"
+      },
+      {
+        "line": 315,
+        "kind": "whnf200000"
+      },
+      {
+        "line": 344,
+        "kind": "whnf200000"
+      },
+      {
+        "line": 317,
+        "kind": "Kernel excessive memory"
+      },
+      {
+        "line": 364,
+        "kind": "isDefEq200000"
+      },
+      {
+        "line": 401,
+        "kind": "whnf200000"
+      },
+      {
+        "line": 403,
+        "kind": "unknown factorized constant, downstream cascade"
+      },
+      {
+        "line": 425,
+        "kind": "unknown factorized constant, downstream cascade"
+      }
+    ],
+    "canonical_directory": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-b-runs/remote-e7c0b4d9cf4441d98520827822b02536",
+    "build_log_sha256": "5004ffc231f2de8180bedcbc5662d4f87cf76ec770e4d2a1c0f24b8491284cc7"
+  },
+  "performance_conclusion": "This candidate did not provide a passing or faster full native module. Its failed2723.483s frontend is not a performance success over the earlier passing1898.434s baseline; different run/load conditions remain explicit.",
+  "superseding_assignment": "The human explicitly requested finer parts. New Basic/Geometry/Bridge/SpanData/FirstSquare/SecondSquare/Span sources preserve all29 original public headers, and legacy source is now an import-only facade. Their real DAG executes separately under unchanged budgets; no unsplit result is transferred to them.",
+  "current_split_packet": "../split/OWNERSHIP-DAG-v1.json",
+  "rollback_boundary": "The stored48 beforeimage/ROLLBACK-v3.patch remains historical evidence for the exact formerdde71+285 two-path input only. Current split family/facade/common ownership differs, so that patch must not be applied without new exact guards and ownership reconciliation."
+}

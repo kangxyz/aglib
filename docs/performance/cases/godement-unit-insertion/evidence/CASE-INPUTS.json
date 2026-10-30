@@ -1,0 +1,69 @@
+{
+  "question": "Complete bounded evidence for the adopted native family, with historical failures kept on their own source bases.",
+  "inputs": [
+    {
+      "role": "source_vector",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/SOURCE-VECTOR.json",
+      "sha256": "2f7ad689b7ecd6453e70529ec6e5d77ae9f1f7b11ec482944bdfebafe3e0c778"
+    },
+    {
+      "role": "correspondence",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/SOURCE-CORRESPONDENCE.json",
+      "sha256": "428ce0d1c76ff8b198fad449b93686b2bbccf30b080e5dbeeb705ac2f6c0b2a5"
+    },
+    {
+      "role": "coverage",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/final-delivery/CPP-COVERAGE.json",
+      "sha256": "9014669671b044577c39ae75b655ebc4874c110ae910bf8051079442ed1c73d5"
+    },
+    {
+      "role": "old_passing_baseline",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/godement-baseline/BASELINE.json",
+      "sha256": "76e1f532bb36d84abc3984c922a77e3ea9e71ffbff12d12f5036f79d604ebdff"
+    },
+    {
+      "role": "failed_monolith",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/production-integration/PRODUCTION-v3.json",
+      "sha256": "a8e5a11713242d3752de68e61b699af8b2b99c79f86bd50ce07b2d4fdaf7b723"
+    },
+    {
+      "role": "v5_observation",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/V5-OBSERVATION.json",
+      "sha256": "9863dad407fd3f58e91da357dee9468e80e4a61b9b02c16c902ebf81be0b75ba"
+    },
+    {
+      "role": "v6_observation",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/V6-OBSERVATION.json",
+      "sha256": "4a018878844dad0d1cbbe525d087f5a710a33adaa5a37f65c86c30495f240b42"
+    },
+    {
+      "role": "v7_observation",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/V7-OBSERVATION.json",
+      "sha256": "d012177c78a7875c570d35a9cd59879833560c55a220ee8bca60d000c9452745"
+    },
+    {
+      "role": "first_split_graph",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/CPP-v1.json",
+      "sha256": "41a0c4b30b41a56ad3f5dbdff57c523064fd0c7942bf65963b67b3a68ff66a1b"
+    },
+    {
+      "role": "second_author_result",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/second-square/RESULT.json",
+      "sha256": "536db60f29aa1558bafead7e2bce4346b4ec1e3cf8b3e8ad5a72382ac1148326"
+    },
+    {
+      "role": "span_author_result",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/FINAL-RESULT.json",
+      "sha256": "accc0cd4a5f9fe7436d10bf1772e327fe3872528be7a57204350b82dc074c0e7"
+    },
+    {
+      "role": "native_entry",
+      "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/runtime/native-entry-fine-godement/RESULT.json",
+      "sha256": "4e16b1a56bacc6f99d262a331076fd2069eb09311b37a2241caee2d5c7efaef2"
+    }
+  ],
+  "complete_small_logs": "case/logs/ contains the five complete canonical normal-build logs used for current coverage.",
+  "source_snapshots": "source/before/ and source/after/ contain exact old baseline and final11-file source vectors.",
+  "bulk_boundary": "Large diagnostic traces remain at their recorded R locators with hashes; do not copy bulk traces into Git or relabel them as production evidence.",
+  "new_execution": "None requested or performed for this handoff."
+}

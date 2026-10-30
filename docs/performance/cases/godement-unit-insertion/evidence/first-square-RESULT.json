@@ -1,0 +1,54 @@
+{
+  "status": "SCOPED_FIRST_SQUARE_COMPLETE_NATIVE_PASS",
+  "written_utc": "2026-10-29T21:51:18.645696+00:00",
+  "question": "Prove and incrementally compile the finer first-square native Lean leaf, preserving the exact original Godement.open_component_first_square.",
+  "original48_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/production-integration/before/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+  "original48_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+  "Q_HEAD": "7d071440653407d30fd41d8dbbafce1673a3039b",
+  "owned_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+  "staged_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/first-square/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/FirstSquare.lean",
+  "source_sha256": "f5b264357254605e1124c194f7b2c31e3d9af87779502a7fdecbb76263f6bb94",
+  "public_header_correspondence": "Byte-identical, including original objects/maps/hypotheses/universes",
+  "mathematical_contribution": "The complete first square is derived by the shared generic comparison-naturality theorem from the original geometric unit square and actual Godement augmentation; a generic functor-map evaluator evaluates it before native specialization. The native public theorem is the direct original specialization.",
+  "actual_native_inputs": "Original openPushPlusIso, openPullPlusIso, Godement augmentation and open_geometric_unit a b f j h K; evaluator is original Plus inclusion composed with HomologicalComplex.eval.",
+  "proof_provider": "CategoryTheory.NatTrans.unitInsertion_first_square_point_map, based on unitInsertion_first_square_point",
+  "import_sha256": {
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Geometry.lean": "8b2bb306df1a7fc007f2c37e7eb52146e7d3858c7d314b63122cef0708a48537",
+    "Aglib/AlgebraicGeometry/Cohomology/Godement/TotalComplex/QuasiIso.lean": "02e787dcd393d9595cae79b7384cc42fad3cd70ab06f0d5e022f084a06c81dee",
+    "Aglib/CategoryTheory/Functor/NatTrans/UnitInsertionSpan.lean": "84bdff5cea154b04a0f2df6429e2ba6505034a7831c0620521da33dd30c62342"
+  },
+  "actual_compile": {
+    "operator": "/root/compile_authorized_continuation",
+    "run_id": "f0e024e250804c8d979a57763b374078",
+    "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "wrapper_pid": 112796,
+    "compiler_pid": 112798,
+    "started_utc": "2026-10-29T21:43:33.973629+00:00",
+    "finished_utc": "2026-10-29T21:43:47.645517+00:00",
+    "module_exit_code": 0,
+    "wrapper_seconds": 13.671888,
+    "lake_reported_seconds": 14,
+    "conditions": "Normal admitted existing native profile: standard maxHeartbeats200000, asynchronous checking,4threads,12800MiB/frontend; no diagnostic instrumentation.",
+    "fresh_coverage": [
+      "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.FirstSquare",
+      "Geometry predecessor",
+      "UnitInsertionSpan84bd predecessor"
+    ],
+    "retained_coverage": "Existing matching Godement.TotalComplex.QuasiIso dependency cache; no new totalization-wide or whole-library build coverage asserted.",
+    "remote_logs": "/root/autodl-tmp/lean-build/logs/remote-f0e024e250804c8d979a57763b374078",
+    "evidence_source": "Direct sole-operator module-pass event delivered to author; local partial projection preservation pending at this record creation.",
+    "aggregate_status_at_return": "Other branches of the same3root graph still running. This module pass does not claim aggregate exit0."
+  },
+  "changed_from_uncompiled_drafts": "afb00d nativewholePlus/projection draft replaced by smaller comparison-point mapped law;09589345 unused SpanData import/model activation replaced by exact Geometry+QuasiIso imports. Both drafts archived and never claimed compiled.",
+  "conditions_and_limits": [
+    "Original cartesian square, open-immersion hypotheses, module functors, Godement augmentation, comparison iso, mate and universes are unchanged.",
+    "No new desired-conclusion premise, selected model, instance, budget, linter, package pin or trust condition.",
+    "One original public theorem only; no duplicate original public provider definitions.",
+    "No additional lint/test/axiom/replay/client stage is created by this scoped return. Broader final-validation predicates remain with the principal and reuse compatible evidence.",
+    "Frontend duration is source-bound compiler evidence, not a matched speedup experiment or a whole-Godement/whole-etale performance claim."
+  ],
+  "write_scope_observed": "Only owned Q FirstSquare.lean plus this assigned first-square scratch subtree; no Git/index/HEAD mutation.",
+  "consumer": "Principal and global_restriction_core compatibility facade integrator",
+  "remaining_gap": "None for this assigned first-square proof/ordinary incremental compile milestone. Other proof leaves, facade integration and broader validation remain independently owned.",
+  "reproduction": "lake build +Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.FirstSquare"
+}

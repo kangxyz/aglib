@@ -1,0 +1,71 @@
+{
+  "status": "complete for assigned second-square native proof leaf",
+  "mathematical_result": "Original whole target augmentation naturality, evaluated at the literal openTotalBridge and then pushed forward by the original b map, supplies local_total_unit_component and open_component_second_square. Both native statements and proof bodies are exact original48. No new mathematical assumptions, maps, realization or model.",
+  "conditions": "Original schemes W,U,V,X in universe u; a:W\u2192U and j:V\u2192X open immersions; b:W\u2192V, f:U\u2192X; original IsPullback a b f j; bounded-below original K in X.Modules; degree n in Z. Existing Godement.openBaseChangeDerivedStandard activated locally; no new standard instance.",
+  "source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+  "source_sha256": "0017416d20d1bf61a6d3f3d152e7f184a0a497134dbae605ead5241b8ee1ee1d",
+  "staged_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/second-square/staged/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SecondSquare.lean",
+  "original_source": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/production-integration/before/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange.lean",
+  "original_source_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+  "correspondence": {
+    "basis_sha256": "48cabc494c9aba779b667c5b6fc4d4b235fae3af40c5479ddf25a5be273867f3",
+    "declarations": [
+      "local_total_unit_component",
+      "open_component_second_square"
+    ],
+    "scope": "entire header and proof body byte-identical, ignoring only block-separating outer whitespace"
+  },
+  "native_result": {
+    "run": "remote-aea9cae634c24e6d9323eb65ce15d43c",
+    "SOURCE": "1d49ed6925980915f5a9f00b43e0c4ab9df6f3643a05744d3e1fc8f7c980376e",
+    "source_sha256": "0017416d20d1bf61a6d3f3d152e7f184a0a497134dbae605ead5241b8ee1ee1d",
+    "git_head": null,
+    "exit_code": 0,
+    "fresh_frontend_passes": 1,
+    "fresh_frontend_failures": 0,
+    "execution_seconds": 560.3391599357128,
+    "wall_seconds": 560.7818292379379,
+    "peak_rss_bytes": 10888245248,
+    "command": [
+      "/root/autodl-tmp/lean-build/elan/toolchains/leanprover--lean4---v4.34.1/bin/lake",
+      "--rehash",
+      "build",
+      "Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SecondSquare"
+    ],
+    "profile": {
+      "allow_cpu_oversubscription": false,
+      "jobs": 8,
+      "lean_memory_mib": 12800,
+      "rss_limit_mib": 65536,
+      "threads": 4
+    },
+    "receipt": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/receipt.json",
+    "events": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/compiler-events.jsonl",
+    "build_log": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/native-q-a-runs/remote-aea9cae634c24e6d9323eb65ce15d43c/build.log",
+    "coverage": "Only Aglib.AlgebraicGeometry.Cohomology.Godement.OpenBaseChange.SecondSquare freshly compiled. Six prior producer/common/First passes remain retained; required matching imported artifacts were reused. Lake3031 total jobs is not the fresh compile count. No new benchmark, lint batch, axiom audit or family closure claimed."
+  },
+  "failed_routes": [
+    {
+      "source": "d1b33f84ed591e0a79c5085d695ed61b2f9e76928cd11e4969250fbad8c840b8",
+      "run": "remote-f0e024e250804c8d979a57763b374078",
+      "SOURCE": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+      "diagnostic": "sole second-square exact helper application89 WHNF200000; local original proof no diagnostics"
+    },
+    {
+      "source": "48ad70fd77fe5b56471b0140bd773a5e8917595265ead6e1aa2eaccc7ef50257",
+      "run": "remote-69d1ea0d434d4a41bbd58568b8041df9",
+      "SOURCE": "2e7f0b323aa734b0dc182e9bf838b8c576bb3e43d8c266302ddb2d9c7f7f4282",
+      "diagnostic": "sole final exact98 WHNF200000, wall659.683s"
+    },
+    {
+      "source": "2444183b16372a8cbf7d00853dd5d660d38c60d0392dc61c6511da4519e61f99",
+      "run": "remote-1eadc50a3e374839bfc29f8c30263469",
+      "SOURCE": "27c4d125b3786df343e2c01ddca0674ecdc91534a3b21f37694180b30270093c",
+      "diagnostic": "sole declaration76:0 WHNF200000, wall341.703s; no phase conclusion follows from position"
+    }
+  ],
+  "valid_diagnostic": "d95/6885 controlled report shows .X/Functor.obj and nested FullSubcategory projection mismatches for d1 helper; only that tested route. No model obstruction or unique kernel-cause attribution. Invalid earlier raw reports were not promoted.",
+  "withdrawn_unexecuted_diagnostic": "3b98 exact244 phase probe never dispatched; no result or timing.",
+  "remaining_gap": "None in assigned two-theorem leaf. Final span proof, facade/integration, package lint/audit and broader Etale closure remain with their actual owners; no new acceptance stage created.",
+  "write_scope": "Only owned Q/OpenBaseChange/SecondSquare.lean and split/second-square scratch written; no Git/index/HEAD/push or provider/doc edits."
+}

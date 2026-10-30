@@ -118,6 +118,10 @@ Retain existing cases when refining key guidance in the main file.
 
 ## Additional validated cases
 
+- [Native loader fallback read failures: diagnosis and limits](loader-fallback-read-diagnosis.md)
+- [Godement: complete generic construction and original native views](cases/godement-unit-insertion/README.md)
+- [Section pullback: retain the ordinary H1 functor](cases/section-h1-transport/README.md)
+
 - [Native evaluation and exact category/zero dictionaries](native-evaluation-zero-dictionaries.md)
 - [Intrinsic slice comparison: shared native equation and typed product bridge](etale-slice-shared-comparison.md)
 - [Native line-bundle raw-chart equations](native-line-bundle-raw-chart-equations.md)

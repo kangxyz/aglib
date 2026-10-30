@@ -1,0 +1,19 @@
+{
+  "changed_basis": "Actual selected54e4/SOURCE4c06 diagnostic39291 failed MetaIR before inspector executed; no raw report obtained.",
+  "repair": "Only mark two helper definitions meta. Tactic body, extractor logic, actual native selected statement/body and deliberate stop unchanged.",
+  "utility_sha256": "2aa07e7356ad96e907d61ace164b50e80aefabd09222d00818a27451d2ece34a",
+  "native_diagnostic": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/diagnostic/SpanFactorizedSeam-v2.lean",
+  "native_sha256": "d72da6039a7e0ffd9068354defb1effed4b59b5572c9689dcb74a23b939c1f11",
+  "control": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/diagnostic/SeamUtilityControl-v2.lean",
+  "control_sha256": "3d860fd3b78fd7f6e19a9673e3375c3edf0677e357ab43b2e9d6f40ceac54bdf",
+  "expected_control": "Lean-only pinned compilation produces raw Eq-part/difference report then exactly deliberate SPAN_SEAM_DIAGNOSTIC_COMPLETE; exit1 is intentional, not a theorem proof pass. No invalid-meta/tactic-notimplemented.",
+  "sequence": "One shared tiny control first; reuse success for Second renamed helper variant; then resume the same selected native questions. No duplicated controls or750s leaf rerun.",
+  "production_changes": "None. Qcommon84/Span1a and six successful fine artifacts preserved.",
+  "actual_control": {
+    "run": "remote-49abc0ebec12484eb2691b43dc32e338",
+    "source": "4c06e06973aab5d5814d8883e0bf0ccf02da9c6d798656debb20b98c3de008f2",
+    "phase_seconds": 5.971,
+    "outcome": "MetaIR fixed; rejected unknown local hw; invalid recovery report; bothnative continuations blocked",
+    "next": "READY-v3.json"
+  }
+}

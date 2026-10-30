@@ -1,0 +1,38 @@
+{
+  "status": "HistoricalindependentmappedComponentb36 failed; notadopted",
+  "component": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/independent-component-v1/staged/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean",
+    "sha256": "b36bdd2f1f5f0e9581b7a7567dfd995418aace9eebdada07e9493ec8cb75c4ef",
+    "public_names": [
+      "open_unit_span_component"
+    ],
+    "production_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/SpanComponent.lean"
+  },
+  "span": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/ci-repair-20261030/godement-optimization/split/span/independent-component-v1/staged/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean",
+    "sha256": "b1cd0df977d580645d71aaa6a884a2b3e79e16de66ad8863fd312b7441e57f20",
+    "public_names": [
+      "open_unit_span",
+      "pullbackPushforwardPlusUnit_restrict_quasiIso"
+    ],
+    "production_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/ci-etale-abstract-20261029/Aglib/AlgebraicGeometry/Cohomology/Godement/OpenBaseChange/Span.lean"
+  },
+  "independence": "Imports only passed SpanData/common84. Does NOT refer to native open_unit_span_factorized or First/Second proofs. New private P-first wrapper projects the already-proved complete generic span law; only original geometric unit and bridge rfl supply premises.",
+  "data": "Same original Plus inclusion/degree evaluation; same Godement totals/units, comparison/mate and named standard context. Two private original unit/comparison component value views are rfl, pending CPP. Independent category/Hom universes retained.",
+  "boundaries": "Normalize actual evaluation/object/map projections in partial core before concreteGodement data. Then original primitive projection/rfl views only; no Godement definition unfolding and no source/model/pin/option/budget weakening.",
+  "source_basis": "Original4publicSpan headers inherited from1a16; Factorizeda7 failed and remainsseparate. Prior d870 depended on nativefactorized and is explicitly NOT this candidate.",
+  "next": "If component passes, original faithful ObjectProperty.hom_ext/HomologicalComplex.Hom.ext route can prove unchanged factorized theorem importing it. No expensive fullPlus specialization required.",
+  "long_lines": [],
+  "untouched": "FailedFactorizeda7, common84, allpassedproviders/First/Second, Rootdocs/aggregate/Git/N unchanged.",
+  "actual_outcome": {
+    "run": "remote-8aa8de991948456b92f6f93ae3d529b4",
+    "source": "6c3390597738dea497b0be1ddb4a291edb485a5b2222d7d4d552fa40628d00c2",
+    "exit_code": 1,
+    "phase_seconds": 45.142099529504776,
+    "errors": [
+      "declaration54WHNF200000",
+      "only-private-declarations cascade"
+    ],
+    "successful_successor": "thin-component-v1/READY.json"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "question": "Alternative proof route for SectionPullback548 inflation/coefficient kernel failures, retaining original native data and independent H1 worlds.",
+  "status": "Complete two-file staged Lean candidate; NOT COMPILED. Mathematical derivation supplied, not independent review or accepted proof closure.",
+  "basis": {
+    "native_head": "3ab570353d8ccfb0db62b01300f7be9a79ec44a8",
+    "native_section_before_sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+    "transport_before_sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+    "fixed_before_source_root": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/lower-repairs-v9/source",
+    "inspected_native_dependency_sha256": {
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Basic.lean": "a96427fb0f37e60d35ae4e3567db13b915dd83c8f27564c92a0707120cb05781",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/Pullback.lean": "607722a4b520bb733a67018cc85ebac43081eb784194b79894093a418df422b5",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackCoherence.lean": "600a3a8036f443038c4a5fc0b1c20d26b83ac3710572323f4f06dd1986082899",
+      "Aglib/AlgebraicGeometry/EtaleCohomology/H1/PullbackComposition.lean": "90f83c812551762229d078f12246e7d2efa853ebcb78563e991ff18559a9edab",
+      "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection.lean": "8856b0f8b5ba12512ef628a1d6fe4cfa2b0d7fcd041563cf3989bc316b7a74db"
+    },
+    "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "lean": "4.34.1"
+  },
+  "sources": [
+    {
+      "path": "Aglib/AlgebraicGeometry/EtaleCohomology/H1/SectionPullback.lean",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-alternative/SectionPullback.lean",
+      "before_sha256": "54827938e612b1945ac212115ec394572be025da4688e9be4e5dd6ceb45437a7",
+      "sha256": "7633e1a279c7b0b61ff16f2d8cc5a4fc967a55b0084a56b9307298cb87c0d295"
+    },
+    {
+      "path": "Aglib/CategoryTheory/Sites/SheafCohomology/SourceSection/Transport.lean",
+      "source_path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-alternative/Transport.lean",
+      "before_sha256": "1af9eadc0e50ec6b1c9995c98d16096b2268d54245562293405938fdea3c66ba",
+      "sha256": "2dee3b021c79520b0d20be7f742c630916d0f3d6c690ee64c3449a4a80a593f6"
+    }
+  ],
+  "extracted_generic_source": {
+    "path": "/Users/kang/Documents/New project/tmp/work/etale-abstract-core-research-20261025/migration/implementation/whole-w10-remaining/section-kernel-alternative/FunctionEvaluation.lean",
+    "sha256": "b9bd8c795bf173a464e44636c9836b5af0c9245aebf80e9884a5776dd09ed896",
+    "scope": "Two complete generic proof bodies; for inspection only. Production candidate places them in existing SourceSection.Transport, not a new framework."
+  },
+  "mechanical_guards": {
+    "unchanged_data_blocks": {
+      "sectionCoefficientIso": true,
+      "sectionCoefficientNatIso": true,
+      "sectionPullback": true
+    },
+    "unchanged_original_public_theorem_headers": {
+      "sectionCoefficientNatIso_app": true,
+      "sectionCoefficientIso_hom_eq_original": true,
+      "h1Pullback_eq_transport": true,
+      "sectionPullback_inflation": true,
+      "sectionCoefficientIso_naturality": true,
+      "sectionPullback_coefficient": true
+    },
+    "maximum_line_length": 99
+  },
+  "proof": [
+    "The inverse-transport evaluator uses only the original functor T, inverse of c, transport t, and unit e. It rewrites the actual E definition, uses functoriality, cancels T(c^-1) T(c), and consumes the original transport/unit values.",
+    "Native inflation sets T to the existing h1Functor on B. c is inverseImageComp.app L, t is eqToIso of the given section equality at L, e is inverseImageId.app L. The coefficient-arrow equation is the existing original-value theorem. Its three element equations are existing h1Pullback_comp, h1Pullback_eq_transport, h1Pullback_id.",
+    "The coefficient evaluator maps the actual ordinary coefficient square through T, uses the existing pullback coefficient equation, and retains original complete EL/EM/P/Q functions. Native supplies sectionCoefficientIso_naturality and h1Pullback_coefficientMap.",
+    "The only new native views are rfl equalities of functions from unchanged sectionPullback to h1Functor.map of its original coefficient arrow after unchanged h1Pullback. No H1-to-Ext, Ext.homEquiv, equivShrink or raw Ext group-structure conversion is requested in the native proof."
+  ],
+  "conditions": "No new geometric, point, source-square, cohomology-retraction or cohomology-naturality hypothesis; no model/reference iso/category; no collapse of w and w-prime. Generic evaluator premises are existing proved lower equations and definitional function views, not the desired theorem. Original source/generator/scalar/sign and geometric inputs are unchanged.",
+  "remaining_gap": "Candidate has not been compiled. The decisive untested boundary is whether the native function rfl views and inferred h1Functor equations check within the unchanged native kernel budget. Generic proof parsing/API details also await ordinary compilation.",
+  "coordination": "Primary cohomology_cocone_author owns V11/production and all N writes. This is an R-only fallback, not replacement of V11 or a parallel native producer. compile_authorized_continuation is sole operator; do not submit duplicate native work.",
+  "next_action": "If V11 does not close, primary author/operator may select this pair as one incremental changed-module attempt in the existing lane/cache, retaining native module setup and fixed normal profile. Do not rerun formation-only probes, rebuild the library, or add replay/client checks.",
+  "coverage": "Read-only source investigation and exact source-text guards only. No compilation, lint, audit, trust verdict or speedup evidence."
+}
