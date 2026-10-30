@@ -8,7 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Group.CurveIsogeny
 public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
-public import Aglib.AlgebraicGeometry.Group.Translation
+public import Aglib.AlgebraicGeometry.Group.Translation.LocalProperty
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.Locus
 public import Mathlib.AlgebraicGeometry.AlgClosed.Basic
 public import Mathlib.AlgebraicGeometry.Morphisms.LocalFlatDescent
@@ -92,30 +92,6 @@ theorem exists_genericPoint_etale_neighborhood_of_charZero
 
 end AlgebraicGeometry.Scheme
 
-namespace AlgebraicGeometry.Scheme.Group.Translation
-
-attribute [local instance] Over.cartesianMonoidalCategory
-
-variable {S : Scheme.{u}} {G H : Grp (Over S)}
-
-/-- Translation by the inverse point is the inverse of the actual translation. -/
-def translationIso (a : 𝟙_ (Over S) ⟶ G.X) : G.X ≅ G.X where
-  hom := translation a
-  inv := translation a⁻¹
-  hom_inv_id := by
-    change translationHom (G := G) a⁻¹ * translationHom (G := G) a = 1
-    rw [← map_mul, inv_mul_cancel, map_one]
-  inv_hom_id := by
-    change translationHom (G := G) a * translationHom (G := G) a⁻¹ = 1
-    rw [← map_mul, mul_inv_cancel, map_one]
-
-/-- A native group homomorphism commutes with the literal translations. -/
-@[reassoc] theorem translation_comp_hom (f : G ⟶ H)
-    (a : 𝟙_ (Over S) ⟶ G.X) :
-    translation a ≫ f.hom.hom = f.hom.hom ≫ translation (a ≫ f.hom.hom) := by
-  simp [translation, MonObj.mul_comp, MonObj.comp_mul]
-
-end AlgebraicGeometry.Scheme.Group.Translation
 
 namespace AlgebraicGeometry.Scheme.OverField.Curve
 
@@ -130,66 +106,8 @@ theorem etale_of_nonempty_etale_open
     {k : Type u} [Field k] [IsAlgClosed k] (G H : Grp (FScheme k))
     [LocallyOfFiniteType G.X.hom] (f : G ⟶ H)
     (W : G.X.left.Opens) (hW : Nonempty W) [Etale (W.ι ≫ f.hom.hom.left)] :
-    Etale f.hom.hom.left := by
-  let : JacobsonSpace G.X.left := LocallyOfFiniteType.jacobsonSpace G.X.hom
-  obtain ⟨p, hpW, hp⟩ := nonempty_inter_closedPoints
-    (show (W : Set G.X.left).Nonempty from
-      ⟨(Classical.choice hW).val, (Classical.choice hW).property⟩) W.isOpen.isLocallyClosed
-  let c : 𝟙_ (FScheme k) ⟶ G.X :=
-    Over.homMk (pointOfClosedPoint G.X.hom p hp) (pointOfClosedPoint_comp G.X.hom p hp)
-  have hc : c.left (IsLocalRing.closedPoint k) = p := by
-    exact pointOfClosedPoint_apply G.X.hom p hp _
-  let t (a : 𝟙_ (FScheme k) ⟶ G.X) : W.toScheme ⟶ G.X.left :=
-    W.ι ≫ (translation a).left
-  have htIso (a : 𝟙_ (FScheme k) ⟶ G.X) : IsIso (translation a).left := by
-    let : IsIso (translation a) := (translationIso a).isIso_hom
-    exact (Over.forget (Base k)).map_isIso (translation a)
-  have htOpen (a : 𝟙_ (FScheme k) ⟶ G.X) : IsOpenImmersion (t a) := by
-    let := htIso a
-    dsimp [t]
-    infer_instance
-  let U (a : 𝟙_ (FScheme k) ⟶ G.X) : G.X.left.Opens := (t a).opensRange
-  have hEtale (a : 𝟙_ (FScheme k) ⟶ G.X) : Etale (t a ≫ f.hom.hom.left) := by
-    have heq : t a ≫ f.hom.hom.left =
-        (W.ι ≫ f.hom.hom.left) ≫ (translation (a ≫ f.hom.hom)).left := by
-      dsimp [t]
-      rw [Category.assoc, ← Over.comp_left, translation_comp_hom]
-      rfl
-    rw [heq]
-    let : IsIso (translation (a ≫ f.hom.hom)).left := by
-      let : IsIso (translation (a ≫ f.hom.hom)) :=
-        (translationIso (a ≫ f.hom.hom)).isIso_hom
-      exact (Over.forget (Base k)).map_isIso (translation (a ≫ f.hom.hom))
-    infer_instance
-  have hCover : iSup U = ⊤ := by
-    apply top_le_iff.mp
-    intro x _
-    by_contra hx
-    obtain ⟨q, hqU, hq⟩ := nonempty_inter_closedPoints
-      (show ((iSup U : G.X.left.Opens) : Set G.X.left)ᶜ.Nonempty from ⟨x, hx⟩)
-      (iSup U).isOpen.isClosed_compl.isLocallyClosed
-    let b : 𝟙_ (FScheme k) ⟶ G.X :=
-      Over.homMk (pointOfClosedPoint G.X.hom q hq) (pointOfClosedPoint_comp G.X.hom q hq)
-    have hb : b.left (IsLocalRing.closedPoint k) = q :=
-      pointOfClosedPoint_apply G.X.hom q hq _
-    have htrans : c ≫ translation (b * c⁻¹) = b := by
-      simp [comp_translation]
-    have hq : q ∈ U (b * c⁻¹) := by
-      refine ⟨⟨p, hpW⟩, ?_⟩
-      have hpoint := congrArg
-        (fun z : 𝟙_ (FScheme k) ⟶ G.X => z.left (IsLocalRing.closedPoint k)) htrans
-      change (translation (b * c⁻¹)).left p = q
-      simpa only [Over.comp_left, Scheme.Hom.comp_apply, hc, hb] using hpoint
-    exact hqU (Opens.mem_iSup.mpr ⟨b * c⁻¹, hq⟩)
-  apply IsZariskiLocalAtSource.of_iSup_eq_top (P := @Etale) U hCover
-  intro a
-  let := htOpen a
-  let := hEtale a
-  let e := IsOpenImmersion.isoOfRangeEq (t a) (U a).ι (by simp [U])
-  apply (MorphismProperty.cancel_left_of_respectsIso @Etale e.hom
-    ((U a).ι ≫ f.hom.hom.left)).mp
-  rw [← Category.assoc, IsOpenImmersion.isoOfRangeEq_hom_fac]
-  infer_instance
+    Etale f.hom.hom.left :=
+  Scheme.Group.Translation.property_of_nonempty_open @Etale G H f W hW inferInstance
 
 /-- A finite surjective homomorphism of actual smooth proper geometrically
 connected curve groups over an algebraically closed characteristic-zero field

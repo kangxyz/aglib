@@ -298,6 +298,7 @@ public import Aglib.RingTheory.Etale.QuadraticResidue
 public import Aglib.RingTheory.Etale.QuadraticRoot
 public import Aglib.RingTheory.Etale.Reduction.PointBijection
 public import Aglib.RingTheory.Etale.Reduction.PointSpecialization
+public import Aglib.RingTheory.Etale.SmoothDifferential
 public import Aglib.RingTheory.Etale.TargetFlat
 public import Aglib.RingTheory.Etale.TracePairing
 public import Aglib.RingTheory.Etale.ZariskiNagataPurity
@@ -333,6 +334,11 @@ public import Aglib.RingTheory.Extension.Presentation.SelectedJacobianChart
 public import Aglib.RingTheory.Extension.Presentation.SelectedJacobianStopping
 public import Aglib.RingTheory.Extension.Presentation.SelectedRelationQuotient
 public import Aglib.RingTheory.Extension.Presentation.SelectedRelations
+public import Aglib.RingTheory.Finite.LocalPoints.Component
+public import Aglib.RingTheory.Finite.LocalPoints.Equiv
+public import Aglib.RingTheory.Finite.LocalPoints.Kernel
+public import Aglib.RingTheory.Finite.LocalPoints.LocalPoint
+public import Aglib.RingTheory.Finite.LocalPoints.ResidueEmbedding
 public import Aglib.RingTheory.FiniteAlgebraNormLength
 public import Aglib.RingTheory.FiniteEtale.CoefficientInertia
 public import Aglib.RingTheory.FiniteEtale.GenericMaps
@@ -371,6 +377,7 @@ public import Aglib.RingTheory.FittingIdeal.LocallyFree
 public import Aglib.RingTheory.FittingIdeal.Minors
 public import Aglib.RingTheory.FittingIdeal.Stratification
 public import Aglib.RingTheory.Flat.Adic.FiniteFree
+public import Aglib.RingTheory.Flat.Descent
 public import Aglib.RingTheory.Flat.EquationalCriterion
 public import Aglib.RingTheory.Flat.Exact
 public import Aglib.RingTheory.Flat.FilteredColimit
@@ -537,6 +544,8 @@ public import Aglib.RingTheory.Henselian.StrictHenselization.RationalResidue
 public import Aglib.RingTheory.Henselian.StrictHenselization.SeparablyClosedResidue
 public import Aglib.RingTheory.HenselianPrincipalRoots
 public import Aglib.RingTheory.HenselianUniformizerNormalization
+public import Aglib.RingTheory.Henselization.AtMaximal
+public import Aglib.RingTheory.Henselization.GenericMap
 public import Aglib.RingTheory.Ideal.ArtinReesInfMulSup
 public import Aglib.RingTheory.Ideal.AssociatedPrime.FlatBaseChange
 public import Aglib.RingTheory.Ideal.AssociatedPrime.Reduced
@@ -673,6 +682,7 @@ public import Aglib.RingTheory.LocalRing.ResidueSpanAnnihilator
 public import Aglib.RingTheory.LocalRing.ResidueTensor
 public import Aglib.RingTheory.LocalRing.SeparatedPrincipal
 public import Aglib.RingTheory.LocalRing.SquareZeroLift
+public import Aglib.RingTheory.Localization.AdjoinMap
 public import Aglib.RingTheory.Localization.Away.FiniteTypeSubalgebra
 public import Aglib.RingTheory.Localization.Away.MapInverse
 public import Aglib.RingTheory.Localization.Away.Products

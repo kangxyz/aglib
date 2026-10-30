@@ -203,3 +203,8 @@ Yoneda, cup and Weil signs, remains pending. Sources: Stacks Tags 03RQ and
 [Cycle] 2.1.5. Duality, purity, torsion ranks, polarization, Weil comparisons,
 non-algebraically-closed separably closed base fields and l-adic coefficients
 remain outside this family.
+
+[RootsComposition](Kummer/RootsComposition.lean) and
+[ModuleRootsComposition](Kummer/ModuleRootsComposition.lean) retain the
+original roots inverse-image composition for positive globally invertible
+levels, including its module-sheaf lift.

@@ -33,7 +33,29 @@ The groups carry no `Λ`-linear structure from Mathlib's `Ext/Linear.lean`: the 
 categories have no `Linear` instance, so for a general `Λ` bilinearity is biadditivity. For
 `Λ = ULift (ZMod n)` the groups are killed by `n`, and [ZModLinear](ZModLinear.lean) supplies
 their canonical `ZMod n`-module structures as named declarations for local instances
-(`moduleSheafExtZModModule`, `compactSupportZModModule`). The trace `H^2_c(U, μ_n) ≅ ℤ/n`, its
-compatibility with restriction to an open, finite-pushforward compatibility, exact finite-module dualization, perfectness, and purity and local cohomology at
-points are not asserted here. No production module outside this family consumes it yet; it
-serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
+(`moduleSheafExtZModModule`, `compactSupportZModModule`). [Trace](Trace.lean) identifies the original module Ext² with `ZMod n` for a
+smooth proper geometrically connected curve over an algebraically closed field,
+positive invertible `n` and finite closed complement. It compares the original
+module/abelian and proper traces and gives the smaller-open square. The
+normalization is Aglib's Kummer boundary; SGA torsor, connecting and cup/Yoneda
+sign comparisons remain open. Finite-pushforward compatibility, sheaf-dual
+comparison, degree-one and general-coefficient perfectness, purity and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
+
+[TracePairing](TracePairing.lean) composes the original linear Yoneda pairing
+with normalized module trace. Its `moduleDualityMap` and
+`moduleDualityTransposeMap` retain whole coefficient naturality, extension
+class and signed original connecting squares, degree-zero source precomposition
+and identity/trace normalization. [ConstantCoefficients](ConstantCoefficients.lean)
+lifts the existing root comparison through scalar forgetting; on every
+connected scheme and for positive `n`, unit endomorphisms and Ext⁰ are uniquely
+scalar multiples of the original identity.
+
+[ConstantPerfectness](ConstantPerfectness.lean) proves native perfectness for
+the unit coefficient in compact-support degrees 0 and 2 and for their transposes.
+The curve is smooth proper geometrically connected over an algebraically closed
+field; the open immersion has finite closed complement, possibly empty; `n` is
+positive and invertible, including composite levels and one, with the displayed
+global-section level conditions and independent Ext universes. The public
+statement chooses no basis or root. Degree-one constant perfectness, general
+finite locally constant coefficients, purity, finite-pushforward compatibility
+and SGA torsor, connecting, cup/Yoneda and Weil sign comparisons remain open.

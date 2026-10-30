@@ -55,3 +55,7 @@ precomposition followed by `Adjunction.extEquiv` equals the native Ext map of
 and preservation by additive functors. For every modulus, including zero, it
 provides named local canonical `ZMod n` actions, a bilinear pairing and both
 curried linear maps, using `AddCommGroup.zmodModule`.
+
+[PairingZero](PairingZero.lean) gives original degree-zero source and
+coefficient maps and unit/scalar laws for the exact-functor Yoneda pairing,
+with independent category and Ext universes.

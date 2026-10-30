@@ -847,3 +847,17 @@ Open: representability by `∅` on the `r = 0` piece, gluing over the clopen `h^
 module form `O(D) ≅ L_T ⊗ p_T^*N` of the divisor class (the class form is `AbelClass`), which F17
 does not need.
 The focused test is `AglibTest.AlgebraicGeometry.Picard.LinearSystem` (with axiom guards).
+
+[QuasiProjectiveLevel](Scheme/QuasiProjectiveLevel.lean) places the specified
+Picard fibre-condition opens in quasi-projective levels under the displayed
+Noetherian, flat and geometrically integral projective-family hypotheses.
+[IdentityComponentQuasiProjective](Scheme/IdentityComponentQuasiProjective.lean)
+applies this to the same Picard identity component over any field;
+[IdentityComponentBaseChangeMap](Scheme/IdentityComponentBaseChangeMap.lean)
+retains its original base-change structure-map triangle.
+[Normalized](LineBundleFamily/Normalized.lean), [Rigidified](LineBundleFamily/Rigidified.lean)
+and [Classifying](LineBundleFamily/Classifying.lean) use native line bundles
+and the original family; classifying maps retain locally Noetherian tests.
+[Translation](LineBundleFamily/Translation.lean), [Fppf](LineBundleFamily/Fppf.lean)
+and [TranslationBaseChange](LineBundleFamily/TranslationBaseChange.lean)
+provide the original translated family and its comparisons.

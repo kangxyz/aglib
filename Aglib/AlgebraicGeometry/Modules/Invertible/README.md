@@ -154,3 +154,8 @@ local line comparison. [Bidual/Map](Bidual/Map.md) proves naturality of
 original evaluation and extends a supplied map into an actual line to the
 bidual. The one-pole differential consumer supplies that map and its
 rank-one target; canonical-module or trace compatibility is not assumed.
+
+[Ample](Ample/Basic.lean), [Tensor](Ample/Tensor.lean) and [Proper](Ample/Proper.lean)
+retain actual line bundles and their stated base, separation and properness
+hypotheses. [Nonvanishing/Tensor](Nonvanishing/Tensor.lean) supplies the
+original unit/frame and tensor-section comparison used by the ample-kernel proof.

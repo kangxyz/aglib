@@ -55,3 +55,5 @@ stalk factorization/injectivity use the shared
 [Stalk/SpecLocalRing](../../Stalk/SpecLocalRing.lean) construction.
 
 [StandardEtaleChart](StandardEtaleChart.lean) supplies `Scheme.StandardSmoothEtaleChart.coordinateMap` from the native standard-smooth theorem. The chart is exactly `Spec.map` of that chosen ring map, with its original algebra-map compatibility triangle. Over a regular base ring, `regularStalks` uses the native actual-stalk etale theorem and `Scheme.regularStalks_spec`; the relative dimension, algebra structures and common universe remain explicit.
+
+[RelativeDimension](RelativeDimension.lean) supplies the smooth-field relative dimension comparison used at the original rational point.

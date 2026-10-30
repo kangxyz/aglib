@@ -119,3 +119,15 @@ in the field, using point degree and A4 divisibility.
 [Picard/OpenDivisibility](Picard/OpenDivisibility.lean) combines open restriction
 with A4 to give `n`-divisibility of the actual open Picard group under the same
 conditions. A4 retains its existing étale-finiteness input described above.
+
+[Jacobian smoothness and dimension](Jacobian/Dimension.lean) retain the same
+supplied `P,R` and identity component over any field: the component is smooth,
+geometrically integral and has dimension `coherentGenus k X`.
+[Projectivity](Jacobian/ProjectivityField.lean) holds for that same component
+over any field with the displayed separated and locally finite-type hypotheses.
+[Etale](Jacobian/Etale.lean) gives invertible-level multiplication étaleness
+over any field. [FiniteFlat](Jacobian/FiniteFlat.lean) proves the literal
+multiplication on that same `J` finite, flat and surjective for every positive
+level over any field, and finite étale and surjective when the level is a unit.
+The supplied representative remains separated and locally of finite type. [LineBundle](Jacobian/LineBundle.lean) specializes
+the cube, square and multiplication laws to the same component.

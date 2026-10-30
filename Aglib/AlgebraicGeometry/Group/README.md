@@ -95,3 +95,13 @@ The original coefficient-unit fixedness supplies the character hypothesis;
 `scalar_eq_framedScalar` and `character_eq_framedCharacter` identify the actual
 units-valued maps. Frame and equivariant-isomorphism independence retain the
 original deck action and positive sign.
+
+[Dimension](Dimension.lean) supplies smooth-group dimension comparisons at the
+original identity. [Commutative](IdentityComponent/Commutative.lean) transfers
+commutativity through the actual identity-component inclusion.
+[MultiplicationSmoothEtale](MultiplicationSmoothEtale.lean) proves original
+multiplication étale for a smooth commutative field group when `n` is a unit.
+[FiniteFlat](Multiplication/FiniteFlat.lean) and [FiniteKernel](Multiplication/FiniteKernel.lean)
+retain the general finite-surjective homomorphism flatness and finite-kernel
+interfaces; positive-level projective conclusions belong to
+[AbelianScheme/OverField](../AbelianScheme/README.md).

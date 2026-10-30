@@ -70,3 +70,7 @@ selected worlds; their publication does not assert the remaining torsion,
 localization or chosen-exceptional coherence endpoints.
 
 [Open/ModuleStalk](Open/ModuleStalk.lean) specializes the [general constant-ring point fibre](../../../Algebra/Category/ModuleCat/Sheaf/ConstantRing/PointFibre.lean) to the actual native site and coefficient worlds. The underlying additive comparison and outside-open zero-stalk conclusion use the original coefficient forgetting and original lower-shriek stalk.
+
+[ModuleUnderlyingCoherence](Open/ModuleUnderlyingCoherence.lean) and
+[ModuleUnderlyingComposition](Open/ModuleUnderlyingComposition.lean) retain
+the original lower-shriek unit, counit and comparison-chain equations.

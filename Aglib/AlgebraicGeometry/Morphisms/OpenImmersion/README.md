@@ -12,3 +12,5 @@ projection is the original restricted morphism followed by `hU.isoSpec.hom`.
 The statement requires only affineness of the target open. Principal-open
 cohomology localization uses this same square and its native affine-open
 isomorphism directly.
+
+[CompactFactorization](CompactFactorization.lean) factors compact images through an actual member of an increasing open family; Picard quasi-projective levels consume it.

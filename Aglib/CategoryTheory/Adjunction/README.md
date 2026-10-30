@@ -53,3 +53,7 @@ literal source comparison, original source-unit pasting and the adjusted
 exchange with its identity and composition laws. The module image and
 compactification-refinement consumers use the same maps; these results do
 not assert a chosen exceptional associativity or six-operation calculus.
+
+[LowerShriekUnderlying](LowerShriekUnderlying.lean) supplies original whole
+unit/counit, mate and comparison-chain equations with independent category and
+Hom universes.

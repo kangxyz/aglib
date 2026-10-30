@@ -34,3 +34,7 @@ the native `coherentGenus F E.X = 1`, `0 < n` and `IsUnit (n : F)` hypotheses.
 The scalar action is canonical; the existing Galois action is linear and the
 actual level maps have their canonical semilinearity. Level one is included.
 No Galois equivariance of the selected basis or perfect pairing is asserted.
+
+[Rank](Rank.lean) gives native coordinates for positive `n` when every divisor
+`d` of `n` has `#T[d] = d^r`, including rank zero and `n = 1`; no canonical
+basis is asserted. [RankTwo](RankTwo.lean) specializes the same construction.

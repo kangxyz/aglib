@@ -38,6 +38,13 @@ coefficient geometry retains positivity and invertibility where required.
 For noninvertible positive levels, a perfect finite-flat group-scheme pairing
 and a perfect pairing of geometric points are distinct conclusions.
 
+## Abelian-scheme ownership
+
+[AbelianScheme](../Aglib/AlgebraicGeometry/AbelianScheme/README.md) owns the
+field-specific constructions under `OverField/`, using native group objects.
+Their placement does not assert an arbitrary-base theorem. General group and
+Picard suppliers and curve-only consequences retain their existing owners.
+
 ## Reusable constructions before geometric instances
 
 Build each operation together with the formulas and laws its consumers use.
@@ -150,9 +157,8 @@ of `H^q(U, μ_n)` for `q ≥ 2`. This vanishing does not need a finite complemen
 The general unit/Kummer H¹ exact sequence specializes to the same `U`, without
 rebuilding its boundary or H¹ maps. For finite closed `D`, including empty
 `D`, compose `CompactSupport.rootsAddEquiv` with the same proper trace to get
-`H²_c(U, μ_n) ≃+ ZMod n`. Compatibility under shrinking `U` or changing
-completion requires the original module/abelian and roots comparisons and
-remains a separate obligation.
+`H²_c(U, μ_n) ≃+ ZMod n`. The original module/abelian and roots comparisons
+supply compatibility under shrinking `U`; changing completion remains separate.
 
 The normalization above is Aglib's. Its
 [frame torsor](../Aglib/AlgebraicGeometry/Picard/FrameTorsor.lean) uses
@@ -194,7 +200,7 @@ Before native perfectness, supply the following maps and their diagrams:
    Milne Lemma 14.21, including local-to-global Ext compatibility.
 
 Then follow [Milne LEC](REFERENCES.md#milne2013lecturesetalecohomology), 14.7,
-Steps 0–7 (pp. 94–96): degrees zero and two; degree-one injectivity from
+Steps 0–7 (pp. 94–96): the constant degree-zero and degree-two cases are supplied; degree-one injectivity proceeds from
 torsors and a class-killing cyclic cover; the proper case by equal finite
 orders; point removal through the single localization sequence and five
 lemma; and locally constant coefficients through finite pushforward and exact
@@ -211,17 +217,15 @@ the selected cohomology objects.
 
 ## Abelian varieties, multiplication and ranks
 
-Construct seesaw using a scheme-theoretic universal triviality locus and the
-base-change laws needed by cube. Fibrewise triviality over a nonreduced base
+The field cube is supplied for projective geometrically integral groups. A stronger relative seesaw would require a scheme-theoretic universal triviality locus and its base-change laws. Fibrewise triviality over a nonreduced base
 is insufficient; reduced-base Grauert does not supply that locus. Check the
 line-bundle and cohomology suppliers against [Stacks](REFERENCES.md#stacksproject),
 0BDP, 0BF0, 0BF2, 0BF3 and 0BF4.
 
-Prove cube, square and the original multiplication pullback law once for the
-relevant group/abelian variety. For an abelian variety `A`, put `d = dim A`.
+The original cube, square and multiplication pullback laws are supplied for projective geometrically integral field groups. For an abelian variety `A`, put `d = dim A`.
 With a symmetric ample line bundle, obtain `deg [n]_A = n^(2d)` for every
 positive `n` from Hilbert polynomials or intersection theory. Specialize to
-`deg [n]_J = n^(2g)` only after the still-open B2 theorem `dim J = g`.
+`deg [n]_J = n^(2g)` using the supplied B2 theorem `dim J = g`.
 Supply the polynomial-degree/support-dimension theorem and
 leading-coefficient/rank scaling. The unrestricted equality
 `chi(f^*L^m) = rank(f) * chi(L^m)` for a finite flat map is not the available
@@ -232,8 +236,7 @@ and [Milne AV](REFERENCES.md#milne2008abelianvarietiesnotes), I 6.4 and 7.2.
 
 Use smoothness and the differential of `[n]` for étaleness at invertible `n`.
 This branch can proceed from smooth-group dimension and the existing
-multiplication differential before cube or the degree formula. Finite
-flatness for every positive `n` is a separate group-scheme theorem.
+multiplication differential before cube or the degree formula. Finite flatness and surjectivity for every positive `n` are supplied for projective geometrically integral commutative field groups.
 
 For composite `n`, prove the prime-power/divisor-level kernel cardinalities
 required by a general finite-module classification criterion. Annihilation
@@ -255,8 +258,7 @@ source locators for this branch, with their actual hypotheses retained.
 ## Dual abelian variety
 
 Use the same Picard representability technology for a projective abelian
-variety `A`, then construct its rigidified Poincaré bundle, dual homomorphisms,
-biduality and isogeny laws at the general level. Properness and smoothness of
+variety `A`, and use the supplied rigidified Poincaré bundle and line-bundle morphism; construct dual homomorphisms, biduality and isogeny laws. Properness and smoothness of
 `Pic⁰(A)` need abelian-variety suppliers; curve smoothness B1 does not provide
 them. The [inspected preliminary draft](REFERENCES.md#inspected-preliminary-abelian-variety-draft)
 (**citation needed**), (6.6), (6.12)–(6.18), pp. 90–96, outlines the selected
@@ -342,14 +344,14 @@ close the planned programme.
 | B1 | **Implemented:** [curve Picard smoothness](../Aglib/AlgebraicGeometry/Picard/Smooth/Curve.lean), with no rational-point hypothesis in the final curve theorem. |
 | E1–E3 | **Implemented:** [original trace, proper table, open vanishing and compact trace](../Aglib/AlgebraicGeometry/EtaleCohomology/README.md), supported by general quotients/Kummer and geometric point/restriction providers. Trace is normalized to Aglib's boundary; rank and SGA-sign comparison remain open. |
 | E4 | **Implemented:** [compact-support cohomology and localization](../Aglib/AlgebraicGeometry/EtaleCohomology/CompactSupport/README.md) on the original extension by zero, with finite-complement and point-term comparisons. Purity is a separate target. |
-| E5, D1 | **Implemented formal constructions:** [generic Ext calculus](../Aglib/Algebra/Homology/DerivedCategory/Ext/README.md), canonical module/abelian comparison, and [native pairings and coherence](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md). The trace comparisons, exact finite-module dualization and perfectness suppliers above remain open. |
-| B2 | **Open:** `dim J = g`, through smooth-group dimension and the existing [Picard tangent comparison](../Aglib/AlgebraicGeometry/Picard/Tangent/StructureCohomology.lean). |
-| B3–B4 | **Open:** scheme-theoretic seesaw/rigidity over the required nonreduced bases, then complete cube and square constructions and laws. |
-| B5 | **Open:** Jacobian projectivity via [Picard levels](../Aglib/AlgebraicGeometry/Picard/Representability/FineStrata.lean), and later the separate general multiplication-degree theorem. |
-| B6–B7 | **Open:** all-positive-level finite-flat multiplication, invertible-level étaleness, divisor-level torsion classification and the explicit proper/affine cohomology ranks. A4 does not include these conclusions. |
-| D2–D6 | **Open:** native curve perfectness, through normalized trace, restriction, purity, finite pushforward, exact dualization and lcc comparison, following the [duality route](#curve-duality). |
+| E5, D1 | **Implemented formal constructions:** [generic Ext calculus](../Aglib/Algebra/Homology/DerivedCategory/Ext/README.md), canonical module/abelian comparison, and [native pairings and coherence](../Aglib/AlgebraicGeometry/EtaleCohomology/Duality/README.md). The module trace comparisons and exact finite-module dualization are supplied; geometric perfectness remains open. |
+| B2 | **Source supplied:** same `P,R,J` smoothness, geometric integrality and `dim J = g` over every field, through the original cotangent/H1 comparison. |
+| B3–B4 | **Field source supplied:** normalized and rigidified families, projective geometrically integral group cube, square and multiplication laws; the unrestricted relative cube remains open. |
+| B5 | **Projectivity source supplied over every field:** same `P,R,J` through Picard levels and properness descent. Numerical multiplication degree remains open. |
+| B6–B7 | **Partial source supplied:** positive multiplication on the original `J` is finite, flat and surjective over every field; at invertible levels it is finite étale and surjective. The all-divisor torsion criterion is supplied. Numerical degree, geometric divisor-level cardinalities and cohomology ranks remain open. |
+| D2–D6 | **Partial source supplied:** module trace and smaller-open compatibility, exact finite-module dualization, finite biduality, and constant-coefficient perfectness in degrees 0 and 2 with transposes, for finite complement including empty and positive invertible `n`. Degree-one and general lcc perfectness, purity, finite-pushforward compatibility and lcc internal-Hom/Ext comparison remain open. |
 | D7 | **Open:** constructible devissage/local comparison, with the unchecked Milne EC reference and alternative Artin route kept explicit. |
-| W1 | **Open:** [dual abelian variety](#dual-abelian-variety), rigidified Poincaré bundle, biduality and isogeny laws, including properness/smoothness and character-descent suppliers. |
+| W1 | **Partial source supplied:** the same rigidified Poincaré pair and original line-bundle morphism, with their displayed field and locally Noetherian classification bounds. Dual properness and smoothness, biduality, isogeny and character-descent laws remain open. |
 | W2–W3 | **Open:** [Cartier theta geometry, canonical principal polarization and general Weil pairing](#theta-principal-polarization-and-weil-pairing), with all-positive-level group-scheme and prime-to-characteristic point conclusions distinguished. |
 | W4 | **Open:** original-map and sign comparison of Yoneda, cup, Kummer, Abel–Jacobi, Cartier and polarization constructions. |
 

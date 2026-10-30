@@ -196,3 +196,8 @@ The focused tests are `AglibTest.AlgebraicGeometry.Picard.Comparison.Endomorphis
 Planned consumers are the normalized representability of target 6 and the representability
 assembly (F17), which can use `normalizedFppfIsoOfIsProperOfFlatOfGeometricallyIntegral` and
 `relativeFppfIsoOfIsSplitEpiOfIsProperOfFlatOfGeometricallyIntegral`.
+
+[UniversalRigidified](UniversalRigidified.lean) selects the actual universal
+rigidified pair for the supplied representative. Pullbacks, original represented
+class equations, unique rigidified comparisons and their coherence use that
+same pair; classification is on the locally Noetherian represented tests.

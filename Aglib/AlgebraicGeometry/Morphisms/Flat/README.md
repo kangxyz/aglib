@@ -40,3 +40,5 @@ Purity and flat-local regularity remain separate interfaces.
 
 The earlier local-geometry leaves preserve the exact maps and assumptions of
 the frozen R5 packet at `f8a3314ddecffcada2ec721d26d56a937bed9690`.
+
+[Generic](Generic.lean) and [Descent](Descent.lean) supply generic flatness and faithfully flat descent for the original morphisms used by finite group-homomorphism flatness.

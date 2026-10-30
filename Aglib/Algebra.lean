@@ -18,8 +18,15 @@ public import Aglib.Algebra.Category.FGModuleCat.RestrictScalars
 public import Aglib.Algebra.Category.FGModuleCat.ScalarAutomorphisms
 public import Aglib.Algebra.Category.FGModuleCat.ScalarExtension
 public import Aglib.Algebra.Category.FGModuleCat.ScalarMatrices
+public import Aglib.Algebra.Category.Grp.AllowedOrders
+public import Aglib.Algebra.Category.Grp.FiniteColimits
 public import Aglib.Algebra.Category.Grp.FinitelyGeneratedColimit
 public import Aglib.Algebra.Category.Grp.ProductSections
+public import Aglib.Algebra.Category.Grp.Products.TupleCoordinates
+public import Aglib.Algebra.Category.Grp.ProjectiveInt
+public import Aglib.Algebra.Category.Grp.Resize
+public import Aglib.Algebra.Category.Grp.Resize.Diagram
+public import Aglib.Algebra.Category.Grp.ZModEndomorphisms
 public import Aglib.Algebra.Category.Grp.ZModQuotient
 public import Aglib.Algebra.Category.Grp.ZModSequence
 public import Aglib.Algebra.Category.ModuleCat.BaseChange
@@ -87,6 +94,7 @@ public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ForgetToModuleCat
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
+public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestrictionUnit
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.ProjectiveKernel
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Descent
@@ -109,11 +117,20 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRestriction
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Basic
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Coherence
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Equivalence
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Exactness
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Images
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSections
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.InvariantSubobject
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.PointFibre
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Presheaf
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Pullback
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.RingPullback
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.ScalarRestriction
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Torsion
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Torsion.Derived
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Underlying
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnderlyingComposition
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitDetection
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnitUnderlying
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.Valued
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.ZMod
@@ -136,6 +153,8 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.InternalHom.TensorAdjunctio
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Linear
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Locality
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.LocallyFree.Pushforward
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.LowerShriekTransport
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.OfCommRing
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Presentation
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.AdjunctionSquare
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.Hom
@@ -143,6 +162,7 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.Restriction
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Pullback.Tensor
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent.Pushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.SheafificationPushforward
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.Stalk
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Basic
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Associator
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.Tensor.Monoidal.Basic
@@ -159,6 +179,7 @@ public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorPushforwardMap
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.TensorSections
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.UnderlyingExact
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ValuedComparison
 public import Aglib.Algebra.Category.ModuleCat.SquareZeroMorphisms
 public import Aglib.Algebra.Category.ModuleCat.SquareZeroProjective
 public import Aglib.Algebra.Category.ModuleCat.StablyFreeBaseChange
@@ -166,6 +187,7 @@ public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOne
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ExtOneCoefficient
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension
 public import Aglib.Algebra.Category.ModuleCat.Tensor.ScalarExtension.FirstVariable
+public import Aglib.Algebra.Category.Ring.AdjoinDiagram
 public import Aglib.Algebra.Category.Ring.Descent.Etale
 public import Aglib.Algebra.Category.Ring.Descent.FiniteEtale
 public import Aglib.Algebra.Category.Ring.Descent.FinitePresentation.Factorization
@@ -174,6 +196,7 @@ public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Propagation
 public import Aglib.Algebra.Category.Ring.Descent.FiniteType.Surjectivity
 public import Aglib.Algebra.Category.Ring.FilteredPullback
 public import Aglib.Algebra.Category.Ring.Localization
+public import Aglib.Algebra.Category.Ring.Sheaf.ArtinSchreier
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroCohomology
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernel
 public import Aglib.Algebra.Category.Ring.Sheaf.SquareZeroKernelIso
@@ -240,6 +263,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingZero
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ScalarTransfer
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
@@ -321,7 +345,9 @@ public import Aglib.Algebra.Homology.DerivedCategory.Plus.Divisibility
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Divisibility.Truncation
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.ExactDerivedContraction
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Ext
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.HomologyIsIso
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparison
+public import Aglib.Algebra.Homology.DerivedCategory.Plus.InjectiveComparisonExact
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Bounds
 public import Aglib.Algebra.Homology.DerivedCategory.Plus.Postnikov.Comparison
@@ -350,6 +376,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adj
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.NaturalityRight
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Postcomposition
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.PullbackCoherence
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Shift
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.Transport
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.TransportedComposition
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Adjunction.TransportedIdentity
@@ -373,7 +400,9 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactIsoCube
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactMateCube
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactSquare
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ExactUnitIsomorphism
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.H1Normalization
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherComparisons
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherHorizontal
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherHorizontalDiagram
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.HigherHorizontalEdges
@@ -389,6 +418,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.MateCubeIsomorphism
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.NatTrans
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.Normalization
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OrdinaryExchange
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.OriginalUnitUniqueness
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionComparison
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ResolutionCycleSections
@@ -400,6 +430,8 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Bas
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SingleCoherence
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SingleSquare
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.SquarePasting
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.ThreeFactorSquare
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.UnderlyingMate
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.UnitComparison
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.VerticalNormalization
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.VerticalReflection
@@ -421,6 +453,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Sin
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.SingleUnit.ShortExact
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TStructure
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.TransformationShift
+public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.Truncation.AtZero
 public import Aglib.Algebra.Homology.DerivedCategory.TStructure.HomToSingle
 public import Aglib.Algebra.Homology.DerivedCategory.TStructure.Homology
 public import Aglib.Algebra.Homology.DerivedCategory.UnboundedRightDerived.Adjunction
@@ -633,11 +666,17 @@ public import Aglib.Algebra.Module.FiniteParametrix
 public import Aglib.Algebra.Module.FinitePresentationCoordinates
 public import Aglib.Algebra.Module.FinitePresentationPolynomialSolver
 public import Aglib.Algebra.Module.FiniteTorsion
+public import Aglib.Algebra.Module.Injective.Dual
 public import Aglib.Algebra.Module.LinearMap.Exact.Diagram
 public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule
 public import Aglib.Algebra.Module.MatrixBaseChange
 public import Aglib.Algebra.Module.MatrixPresentation
 public import Aglib.Algebra.Module.PolynomialPresentationCoordinates
+public import Aglib.Algebra.Module.ZMod.CyclicPairing
+public import Aglib.Algebra.Module.ZMod.Dual
+public import Aglib.Algebra.Module.ZMod.FiniteDual
+public import Aglib.Algebra.Module.ZMod.Injective
+public import Aglib.Algebra.Module.ZMod.PerfectPairing
 public import Aglib.Algebra.MvPolynomial.CoupledDivisibilityEquations
 public import Aglib.Algebra.MvPolynomial.CoupledQuotientPrecision
 public import Aglib.Algebra.MvPolynomial.CoupledUnitQuotient

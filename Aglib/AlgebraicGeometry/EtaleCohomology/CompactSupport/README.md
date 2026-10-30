@@ -119,3 +119,8 @@ two take `IsUnit (n : k)`; `isUnit_natCast_globalSections` supplies `hinv` from 
 
 Not asserted: independence of the compactification, purity or local cohomology at points, the
 trace `H^2(X, μ_n) ≅ ℤ/n`, and duality.
+
+[RootsComposition](RootsComposition.lean) proves the original coefficient
+extension and whole cohomology roots-extension squares in every degree, using
+the composed counit and compatible roots isomorphisms. The map equations need
+no curve or finite-complement hypothesis.

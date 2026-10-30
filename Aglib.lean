@@ -20,6 +20,7 @@ public import Aglib.Algebra.Category.Grp.Products.TupleCoordinates
 public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Aglib.Algebra.Category.Grp.Resize
 public import Aglib.Algebra.Category.Grp.Resize.Diagram
+public import Aglib.Algebra.Category.Grp.ZModEndomorphisms
 public import Aglib.Algebra.Category.Grp.ZModQuotient
 public import Aglib.Algebra.Category.Grp.ZModSequence
 public import Aglib.Algebra.Category.ModuleCat.BaseChange
@@ -87,6 +88,7 @@ public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ExteriorPower.Universal
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.ForgetToModuleCat
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestriction
+public import Aglib.Algebra.Category.ModuleCat.Presheaf.SheafificationRestrictionUnit
 public import Aglib.Algebra.Category.ModuleCat.Presheaf.TensorPushforward
 public import Aglib.Algebra.Category.ModuleCat.ProjectiveKernel
 public import Aglib.Algebra.Category.ModuleCat.Quotient.Descent
@@ -255,6 +257,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.Equivalence
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.InjectiveColimit
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.LinearEquiv
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingComposition
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.PairingZero
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Quotient
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ScalarTransfer
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.ShortExactComparison
@@ -657,11 +660,17 @@ public import Aglib.Algebra.Module.FiniteParametrix
 public import Aglib.Algebra.Module.FinitePresentationCoordinates
 public import Aglib.Algebra.Module.FinitePresentationPolynomialSolver
 public import Aglib.Algebra.Module.FiniteTorsion
+public import Aglib.Algebra.Module.Injective.Dual
 public import Aglib.Algebra.Module.LinearMap.Exact.Diagram
 public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule
 public import Aglib.Algebra.Module.MatrixBaseChange
 public import Aglib.Algebra.Module.MatrixPresentation
 public import Aglib.Algebra.Module.PolynomialPresentationCoordinates
+public import Aglib.Algebra.Module.ZMod.CyclicPairing
+public import Aglib.Algebra.Module.ZMod.Dual
+public import Aglib.Algebra.Module.ZMod.FiniteDual
+public import Aglib.Algebra.Module.ZMod.Injective
+public import Aglib.Algebra.Module.ZMod.PerfectPairing
 public import Aglib.Algebra.MvPolynomial.CoupledDivisibilityEquations
 public import Aglib.Algebra.MvPolynomial.CoupledQuotientPrecision
 public import Aglib.Algebra.MvPolynomial.CoupledUnitQuotient
@@ -685,6 +694,17 @@ public import Aglib.Algebra.Polynomial.RationalValues
 public import Aglib.Algebra.QuadraticNorm
 public import Aglib.Algebra.Ring.Pi.FiniteProjection
 public import Aglib.AlgebraicGeometry
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Poincare
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.AmpleKernel
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.BaseChange
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Cube
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.FamilyFormula
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.KernelClass
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Morphism
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Multiplication
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Square
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.LineBundle.Symmetric
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Multiplication.Finite
 public import Aglib.AlgebraicGeometry.AffineScheme.AlgebraMapTriangles
 public import Aglib.AlgebraicGeometry.AffineScheme.BaseChangeChart
 public import Aglib.AlgebraicGeometry.AffineScheme.BaseChangeChartNaturality
@@ -1897,10 +1917,17 @@ public import Aglib.AlgebraicGeometry.Curves.Isogeny.Etale
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.AbelMorphism
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeStrata
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.DegreeZero
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Dimension
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Etale
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.FiniteFlat
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.IdentityComponent
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.LineBundle
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.Multiplication
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.PicardScheme
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Projectivity
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.ProjectivityField
 public import Aglib.AlgebraicGeometry.Curves.Jacobian.RationalPoints
+public import Aglib.AlgebraicGeometry.Curves.Jacobian.Smooth
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree
 public import Aglib.AlgebraicGeometry.Curves.LineBundleDegree.Isomorphism
 public import Aglib.AlgebraicGeometry.Curves.Models.Components.Cartier
@@ -2183,6 +2210,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.FiniteCompl
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.Localization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.OpenLocalization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.PointRemoval
+public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.RootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Basic.FiniteCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.FieldTrivialization
@@ -2505,11 +2533,15 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibili
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Trace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ZModLinear
 public import Aglib.AlgebraicGeometry.EtaleCohomology.EtaleCover
@@ -2580,6 +2612,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleSou
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleStalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleStalkInside
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlying
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingCoherence
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlyingComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleValuedDirectImageSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Stalk
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Refinement.Coherence
@@ -2860,10 +2894,12 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Sections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleRootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootCover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootStalk
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnity
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnityInverseImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.Torsor
@@ -3267,10 +3303,12 @@ public import Aglib.AlgebraicGeometry.Group.BaseChange.PointTransport
 public import Aglib.AlgebraicGeometry.Group.BaseChange.UnitRange
 public import Aglib.AlgebraicGeometry.Group.CurveGenus
 public import Aglib.AlgebraicGeometry.Group.CurveIsogeny
+public import Aglib.AlgebraicGeometry.Group.Dimension
 public import Aglib.AlgebraicGeometry.Group.DualIsogeny
 public import Aglib.AlgebraicGeometry.Group.EtaleQuotient
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.BaseChange
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Basic
+public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Commutative
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.FiniteType
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.Irreducible
 public import Aglib.AlgebraicGeometry.Group.IdentityComponent.QuasiCompact
@@ -3280,7 +3318,11 @@ public import Aglib.AlgebraicGeometry.Group.Kernel.Basic
 public import Aglib.AlgebraicGeometry.Group.Kernel.DeckTranslation
 public import Aglib.AlgebraicGeometry.Group.Kernel.PrimeDegree
 public import Aglib.AlgebraicGeometry.Group.Kernel.Remarking
+public import Aglib.AlgebraicGeometry.Group.LineBundleCube.Basic
+public import Aglib.AlgebraicGeometry.Group.LineBundleCube.Rigidity
 public import Aglib.AlgebraicGeometry.Group.Monodromy
+public import Aglib.AlgebraicGeometry.Group.Multiplication.FiniteFlat
+public import Aglib.AlgebraicGeometry.Group.Multiplication.FiniteKernel
 public import Aglib.AlgebraicGeometry.Group.MultiplicationCotangent
 public import Aglib.AlgebraicGeometry.Group.MultiplicationDegree
 public import Aglib.AlgebraicGeometry.Group.MultiplicationEtale
@@ -3290,6 +3332,7 @@ public import Aglib.AlgebraicGeometry.Group.MultiplicationInvertible
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.MonodromyQuotient
 public import Aglib.AlgebraicGeometry.Group.MultiplicationKernel.Transitions
+public import Aglib.AlgebraicGeometry.Group.MultiplicationSmoothEtale
 public import Aglib.AlgebraicGeometry.Group.MultiplicationSurjective
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTorsion
 public import Aglib.AlgebraicGeometry.Group.MultiplicationTransport
@@ -3304,6 +3347,7 @@ public import Aglib.AlgebraicGeometry.Group.RootsFiniteEtale
 public import Aglib.AlgebraicGeometry.Group.RootsHopfAlgebra
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.Group.Translation
+public import Aglib.AlgebraicGeometry.Group.Translation.LocalProperty
 public import Aglib.AlgebraicGeometry.Group.WeilPairing
 public import Aglib.AlgebraicGeometry.HilbertScheme.Affine
 public import Aglib.AlgebraicGeometry.HilbertScheme.ClosedSubscheme.Containment
@@ -3742,6 +3786,9 @@ public import Aglib.AlgebraicGeometry.Modules.InternalHom.PresheafTensor
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Refinement
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Restriction
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Ample.Basic
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Ample.Proper
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Ample.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Basic
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Bidual.Affine
@@ -3804,6 +3851,7 @@ public import Aglib.AlgebraicGeometry.Modules.Invertible.Locus
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonvanishing
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonvanishing.GlobalFrame
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonvanishing.Pullback
+public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonvanishing.Tensor
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonvanishing.Trivialization
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Nonzero
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Power.Coherence
@@ -4344,6 +4392,8 @@ public import Aglib.AlgebraicGeometry.Morphisms.FiniteType.Generators
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.AffineStalk
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.DVRBaseChange
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.DedekindBase
+public import Aglib.AlgebraicGeometry.Morphisms.Flat.Descent
+public import Aglib.AlgebraicGeometry.Morphisms.Flat.Generic
 public import Aglib.AlgebraicGeometry.Morphisms.Flat.GenericFiberCriteria
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.ConnectedRigidity
 public import Aglib.AlgebraicGeometry.Morphisms.FormallyUnramified.HomExt
@@ -4366,6 +4416,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenRestriction
 public import Aglib.AlgebraicGeometry.Morphisms.IsIso.OpenSection
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Affine
 public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Cartesian
+public import Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.CompactFactorization
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.AffineStein
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalDVR
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.BirationalFunctions
@@ -4393,6 +4444,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure.Comparison
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.GraphClosure.TargetChart
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.LocalBaseOpenCover
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.Over
+public import Aglib.AlgebraicGeometry.Morphisms.Proper.QuasiAffine
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.QuasiFinite
 public import Aglib.AlgebraicGeometry.Morphisms.Proper.TraitSections
 public import Aglib.AlgebraicGeometry.Morphisms.Restrict.Agreement
@@ -4411,6 +4463,7 @@ public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Properties
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.RegularScheme
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.Regularity
+public import Aglib.AlgebraicGeometry.Morphisms.Smooth.RelativeDimension
 public import Aglib.AlgebraicGeometry.Morphisms.Smooth.StandardEtaleChart
 public import Aglib.AlgebraicGeometry.Morphisms.SpreadingOut
 public import Aglib.AlgebraicGeometry.Morphisms.Surjective.GenericPoint
@@ -4452,6 +4505,7 @@ public import Aglib.AlgebraicGeometry.Picard.Comparison.PullbackFullyFaithful
 public import Aglib.AlgebraicGeometry.Picard.Comparison.RepresentableBy
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Rigidified
 public import Aglib.AlgebraicGeometry.Picard.Comparison.Sheaf
+public import Aglib.AlgebraicGeometry.Picard.Comparison.UniversalRigidified
 public import Aglib.AlgebraicGeometry.Picard.FamilyBaseChange
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.OpenSubfunctor
 public import Aglib.AlgebraicGeometry.Picard.FiberCondition.RelativeCover
@@ -4465,6 +4519,14 @@ public import Aglib.AlgebraicGeometry.Picard.FrameTorsor
 public import Aglib.AlgebraicGeometry.Picard.GroupLaw
 public import Aglib.AlgebraicGeometry.Picard.IdentityComponent
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Classifying
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Fppf
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.GroupRigidity
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Normalized
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.ProjectiveCube
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Rigidified
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.Translation
+public import Aglib.AlgebraicGeometry.Picard.LineBundleFamily.TranslationBaseChange
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.AbelClass
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Basic
 public import Aglib.AlgebraicGeometry.Picard.LinearSystem.Bijection
@@ -4484,11 +4546,15 @@ public import Aglib.AlgebraicGeometry.Picard.Representability.FineStrata
 public import Aglib.AlgebraicGeometry.Picard.Representability.LocallyNoetherianBase
 public import Aglib.AlgebraicGeometry.Picard.Scheme.FieldProperties
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Glue
+public import Aglib.AlgebraicGeometry.Picard.Scheme.IdentityComponentBaseChangeMap
+public import Aglib.AlgebraicGeometry.Picard.Scheme.IdentityComponentQuasiProjective
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Properties
+public import Aglib.AlgebraicGeometry.Picard.Scheme.QuasiProjectiveLevel
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Separated
 public import Aglib.AlgebraicGeometry.Picard.Scheme.Stratification
 public import Aglib.AlgebraicGeometry.Picard.Smooth.Curve
 public import Aglib.AlgebraicGeometry.Picard.Smooth.Lifting
+public import Aglib.AlgebraicGeometry.Picard.Smooth.Representative
 public import Aglib.AlgebraicGeometry.Picard.Strata.BaseAndRank
 public import Aglib.AlgebraicGeometry.Picard.Strata.Conditions
 public import Aglib.AlgebraicGeometry.Picard.Strata.DivisorLocus
@@ -4512,6 +4578,7 @@ public import Aglib.AlgebraicGeometry.Picard.Tangent.Comparison
 public import Aglib.AlgebraicGeometry.Picard.Tangent.DualNumbers
 public import Aglib.AlgebraicGeometry.Picard.Tangent.FieldExtension
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Generator
+public import Aglib.AlgebraicGeometry.Picard.Tangent.IdentityComponent
 public import Aglib.AlgebraicGeometry.Picard.Tangent.KernelMap
 public import Aglib.AlgebraicGeometry.Picard.Tangent.Points
 public import Aglib.AlgebraicGeometry.Picard.Tangent.StructureCohomology
@@ -4534,6 +4601,7 @@ public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.Open
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.OpenChart
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AffineImmersion.QuasiProjective
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.Ample
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.AwayAlgebra
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.BaseChange.Affine
@@ -4754,6 +4822,8 @@ public import Aglib.AlgebraicGeometry.RationalPoint.ClosedLift
 public import Aglib.AlgebraicGeometry.RationalPoint.Completion
 public import Aglib.AlgebraicGeometry.RationalPoint.ConstantsTriangles
 public import Aglib.AlgebraicGeometry.RationalPoint.Cotangent
+public import Aglib.AlgebraicGeometry.RationalPoint.CotangentComparison
+public import Aglib.AlgebraicGeometry.RationalPoint.Etale
 public import Aglib.AlgebraicGeometry.RationalPoint.ExtensionSource
 public import Aglib.AlgebraicGeometry.RationalPoint.FieldAutomorphism
 public import Aglib.AlgebraicGeometry.RationalPoint.FieldExtension
@@ -4763,6 +4833,7 @@ public import Aglib.AlgebraicGeometry.RationalPoint.LocallyConstantValues
 public import Aglib.AlgebraicGeometry.RationalPoint.ResidueFactor
 public import Aglib.AlgebraicGeometry.RationalPoint.ResidueUnits
 public import Aglib.AlgebraicGeometry.RationalPoint.SmoothCurve
+public import Aglib.AlgebraicGeometry.RationalPoint.Unramified
 public import Aglib.AlgebraicGeometry.ResidueField.Constants
 public import Aglib.AlgebraicGeometry.ResidueField.CurveAlgebra
 public import Aglib.AlgebraicGeometry.ResidueField.CurveCoordinates
@@ -5099,6 +5170,7 @@ public import Aglib.CategoryTheory.Adjunction.InjectiveTests
 public import Aglib.CategoryTheory.Adjunction.KernelSupport
 public import Aglib.CategoryTheory.Adjunction.LeftAdjointComparison
 public import Aglib.CategoryTheory.Adjunction.LeftExact
+public import Aglib.CategoryTheory.Adjunction.LowerShriekUnderlying
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv
 public import Aglib.CategoryTheory.Adjunction.MateHomEquiv.Composition
 public import Aglib.CategoryTheory.Adjunction.Mates
@@ -5201,6 +5273,7 @@ public import Aglib.CategoryTheory.Monoidal.AdjunctionHomMulEquiv
 public import Aglib.CategoryTheory.Monoidal.Cartesian.CommutativeGroupSections
 public import Aglib.CategoryTheory.Monoidal.Cartesian.RepresentedGroupReflection
 public import Aglib.CategoryTheory.Monoidal.Cartesian.Shear
+public import Aglib.CategoryTheory.Monoidal.CommMonObjOfMono
 public import Aglib.CategoryTheory.Monoidal.Discrete
 public import Aglib.CategoryTheory.Monoidal.GrpObjOfMono
 public import Aglib.CategoryTheory.Monoidal.GrpObjShear
@@ -5436,6 +5509,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Adj
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Module
 public import Aglib.CategoryTheory.Sites.SheafCohomology.RepresentedTransfer.Trace
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Adjunction
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.CoefficientMates
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coefficients
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Comparison
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Coproduct
@@ -5667,6 +5741,7 @@ public import Aglib.GroupTheory.Torsion.Finite
 public import Aglib.GroupTheory.Torsion.FiniteCharacters
 public import Aglib.GroupTheory.Torsion.FiniteKernel
 public import Aglib.GroupTheory.Torsion.Levels
+public import Aglib.GroupTheory.Torsion.Rank
 public import Aglib.GroupTheory.Torsion.RankTwo
 public import Aglib.KTheory
 public import Aglib.KTheory.MilnorK
@@ -6191,6 +6266,7 @@ public import Aglib.RingTheory.Etale.QuadraticResidue
 public import Aglib.RingTheory.Etale.QuadraticRoot
 public import Aglib.RingTheory.Etale.Reduction.PointBijection
 public import Aglib.RingTheory.Etale.Reduction.PointSpecialization
+public import Aglib.RingTheory.Etale.SmoothDifferential
 public import Aglib.RingTheory.Etale.TargetFlat
 public import Aglib.RingTheory.Etale.TracePairing
 public import Aglib.RingTheory.Etale.ZariskiNagataPurity
@@ -6269,6 +6345,7 @@ public import Aglib.RingTheory.FittingIdeal.LocallyFree
 public import Aglib.RingTheory.FittingIdeal.Minors
 public import Aglib.RingTheory.FittingIdeal.Stratification
 public import Aglib.RingTheory.Flat.Adic.FiniteFree
+public import Aglib.RingTheory.Flat.Descent
 public import Aglib.RingTheory.Flat.EquationalCriterion
 public import Aglib.RingTheory.Flat.Exact
 public import Aglib.RingTheory.Flat.FilteredColimit

@@ -26,3 +26,16 @@ linear equivalence from its summand equations and proves the specified
 canonical map bijective. The constructor and its theorems share the same
 regular definition. Its module universes are
 independent, allowing comparison with larger-universe original cohomology.
+
+[Injective dual](Module/Injective/Dual.lean) proves exactness of native dual
+maps over a self-injective commutative ring. For nonzero `n`,
+[ZMod injectivity](Module/ZMod/Injective.lean), [dual](Module/ZMod/Dual.lean),
+[finite dual](Module/ZMod/FiniteDual.lean) and [perfect pairing](Module/ZMod/PerfectPairing.lean)
+supply exact dualization, finite biduality and native `IsPerfPair` criteria.
+Modulus zero is excluded from self-injectivity.
+
+[ZMod endomorphisms](Category/Grp/ZModEndomorphisms.lean) parametrize the
+actual additive endomorphisms of the lifted cyclic group by scalars for
+positive modulus, including one. [CyclicPairing](Module/ZMod/CyclicPairing.lean)
+gives a native perfect-pairing criterion from an actual scalar generator and
+bijective evaluation, and handles subsingleton modules.

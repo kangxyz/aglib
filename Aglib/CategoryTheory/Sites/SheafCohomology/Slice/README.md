@@ -19,3 +19,6 @@ exactness and source-isomorphism hypotheses. The zero-transfer theorem chooses
 its intermediate Ext size internally while preserving independent source and
 target Ext universes. Its scheme consumer is the original
 [pullback source square](../../../../AlgebraicGeometry/EtaleCohomology/SlicePullback/SourceSquare.lean).
+
+[CoefficientMates](CoefficientMates.lean) identifies literal restriction as
+the mate of the actual coproduct/sheafification comparison.
