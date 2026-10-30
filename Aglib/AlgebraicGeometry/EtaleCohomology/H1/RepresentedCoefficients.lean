@@ -16,6 +16,7 @@ public import Mathlib.AlgebraicGeometry.Limits
 public import Mathlib.Algebra.Category.Grp.FilteredColimits
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.Grp
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.Over
+public import Aglib.CategoryTheory.Sites.Point.RepresentedAdditive
 
 /-!
 # Represented additive coefficients on the small étale site
@@ -194,16 +195,9 @@ from the defining filtered colimit, by composing germs with their points. -/
 def representedFiberEvaluation :
     ((Scheme.pointSmallEtale s).sheafFiber (A := AddCommGrpCat.{u + 1})).obj (representedSheaf H) ⟶
       AddCommGrpCat.of (RepresentedSections H (Over.mk s)) :=
-  (Scheme.pointSmallEtale s).presheafFiberDesc
-    (fun U p => AddCommGrpCat.ofHom (representedSectionsPullback H p))
-    (by
-      intro U V f p
-      apply AddCommGrpCat.hom_ext
-      apply AddMonoidHom.ext
-      intro t
-      change ULift.up (Additive.ofMul (p ≫ ((Scheme.Etale.forget X).map f ≫ t.down.toMul))) =
-        ULift.up (Additive.ofMul ((p ≫ (Scheme.Etale.forget X).map f) ≫ t.down.toMul))
-      rw [Category.assoc])
+  GrothendieckTopology.Point.RepresentedAdditive.evaluation.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H
 
 @[simp] theorem representedFiberEvaluation_germ (U : X.Etale)
     (p : Over.mk s ⟶ (Scheme.Etale.forget X).obj U)
@@ -211,11 +205,19 @@ def representedFiberEvaluation :
     representedFiberEvaluation s H
       ((Scheme.pointSmallEtale s).toPresheafFiber U p (representedPresheaf H) t) =
       ULift.up (Additive.ofMul (p ≫ t.down.toMul)) := by
-  have h := (Scheme.pointSmallEtale s).toPresheafFiber_presheafFiberDesc
-    (P := representedPresheaf H)
-    (fun U p => AddCommGrpCat.ofHom (representedSectionsPullback H p))
-    (X := U) (x := p)
-  exact ConcreteCategory.congr_hom h t
+  exact GrothendieckTopology.Point.RepresentedAdditive.evaluation_germ.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H U p t
+
+/-- The original whole germ leg is the same additive point precomposition. -/
+@[reassoc]
+theorem representedFiberEvaluation_germ_hom (U : X.Etale)
+    (p : Over.mk s ⟶ (Scheme.Etale.forget X).obj U) :
+    (Scheme.pointSmallEtale s).toPresheafFiber U p (representedPresheaf H) ≫
+        representedFiberEvaluation s H = AddCommGrpCat.ofHom (representedSectionsPullback H p) :=
+  GrothendieckTopology.Point.RepresentedAdditive.germ_evaluation_hom.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H U p
 
 variable [Etale H.X.hom]
 
@@ -226,49 +228,47 @@ def representedFiberGerm (p : RepresentedSections H (Over.mk s)) :
   (Scheme.pointSmallEtale s).toPresheafFiber (Scheme.Etale.mk H.X.hom) p.down.toMul
     (representedPresheaf H) (ULift.up (Additive.ofMul (𝟙 H.X)))
 
+/-- The generic identity germ is the same literal native germ; the identity factor cancels. -/
+private theorem representedFiberGerm_eq_generic (p : RepresentedSections H (Over.mk s)) :
+    representedFiberGerm s H p =
+      GrothendieckTopology.Point.RepresentedAdditive.germ.{u + 1}
+        (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+        (fun _ => Equiv.refl _) H (Scheme.Etale.mk H.X.hom) (Iso.refl _) p := by
+  change (Scheme.pointSmallEtale s).toPresheafFiber (Scheme.Etale.mk H.X.hom)
+      p.down.toMul (representedPresheaf H) (ULift.up (Additive.ofMul (𝟙 H.X))) =
+    (Scheme.pointSmallEtale s).toPresheafFiber (Scheme.Etale.mk H.X.hom)
+      (p.down.toMul ≫ 𝟙 H.X) (representedPresheaf H) (ULift.up (Additive.ofMul (𝟙 H.X)))
+  rw [Category.comp_id]
+
 @[simp] theorem representedFiberEvaluation_germ_self (p : RepresentedSections H (Over.mk s)) :
     representedFiberEvaluation s H (representedFiberGerm s H p) = p := by
-  rw [representedFiberGerm, representedFiberEvaluation_germ]
-  apply ULift.ext
-  change Additive.ofMul (p.down.toMul ≫ 𝟙 H.X) = p.down
-  rw [Category.comp_id]
-  rfl
+  rw [representedFiberGerm_eq_generic]
+  exact GrothendieckTopology.Point.RepresentedAdditive.evaluation_germ_self.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H (Scheme.Etale.mk H.X.hom) (Iso.refl _) p
 
 theorem representedFiberGerm_evaluation (t :
     ((Scheme.pointSmallEtale s).sheafFiber (A := AddCommGrpCat.{u + 1})).obj (representedSheaf H)) :
     representedFiberGerm s H (representedFiberEvaluation s H t) = t := by
-  let : Limits.PreservesFilteredColimitsOfSize.{u, u} (CategoryTheory.forget AddCommGrpCat.{u +
-    1}) :=
+  let : Limits.PreservesFilteredColimitsOfSize.{u, u}
+      (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
     Limits.preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u} _
-  obtain ⟨U, p, t, rfl⟩ := (Scheme.pointSmallEtale s).toPresheafFiber_jointly_surjective (P :=
-    representedPresheaf H) t
-  rw [representedFiberEvaluation_germ]
-  let f : U ⟶ Scheme.Etale.mk H.X.hom :=
-    MorphismProperty.Over.homMk t.down.toMul.left (Over.w t.down.toMul) (by trivial)
-  have e := (Scheme.pointSmallEtale s).toPresheafFiber_w f p (representedPresheaf H)
-  have h := ConcreteCategory.congr_hom e (ULift.up (Additive.ofMul (𝟙 H.X)))
-  change (Scheme.pointSmallEtale s).toPresheafFiber U p (representedPresheaf H)
-      (ULift.up (Additive.ofMul (t.down.toMul ≫ 𝟙 H.X))) = _ at h
-  have hf : (Scheme.Etale.forget X).map f = t.down.toMul := by ext; rfl
-  change (Scheme.pointSmallEtale s).toPresheafFiber U p (representedPresheaf H)
-      (ULift.up (Additive.ofMul (t.down.toMul ≫ 𝟙 H.X))) =
-    (Scheme.pointSmallEtale s).toPresheafFiber (Scheme.Etale.mk H.X.hom)
-      (p ≫ (Scheme.Etale.forget X).map f) (representedPresheaf H)
-      (ULift.up (Additive.ofMul (𝟙 H.X))) at h
-  rw [hf, Category.comp_id] at h
-  change (Scheme.pointSmallEtale s).toPresheafFiber (Scheme.Etale.mk H.X.hom)
-      (p ≫ t.down.toMul) (representedPresheaf H) (ULift.up (Additive.ofMul (𝟙 H.X))) = _
-  cases t
-  exact h.symm
+  rw [representedFiberGerm_eq_generic]
+  exact GrothendieckTopology.Point.RepresentedAdditive.germ_evaluation.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H (Scheme.Etale.mk H.X.hom) (Iso.refl _) t
 
 /-- The actual small-étale stalk of an étale represented commutative group
 sheaf is the lifted additive group of its geometric scheme-valued points. -/
 def representedFiberIso :
     ((Scheme.pointSmallEtale s).sheafFiber (A := AddCommGrpCat.{u + 1})).obj (representedSheaf H) ≅
-      AddCommGrpCat.of (RepresentedSections H (Over.mk s)) :=
-  AddEquiv.toAddCommGrpIso (AddEquiv.ofBijective (representedFiberEvaluation s H).hom
-    ⟨Function.LeftInverse.injective (representedFiberGerm_evaluation s H),
-      Function.RightInverse.surjective (representedFiberEvaluation_germ_self s H)⟩)
+      AddCommGrpCat.of (RepresentedSections H (Over.mk s)) := by
+  let : Limits.PreservesFilteredColimitsOfSize.{u, u}
+      (CategoryTheory.forget AddCommGrpCat.{u + 1}) :=
+    Limits.preservesFilteredColimitsOfSize_of_univLE.{u + 1, u + 1, u, u} _
+  exact GrothendieckTopology.Point.RepresentedAdditive.iso.{u + 1}
+    (Scheme.pointSmallEtale s) (Scheme.Etale.forget X) (Over.mk s)
+    (fun _ => Equiv.refl _) (by intros; rfl) H (Scheme.Etale.mk H.X.hom) (Iso.refl _)
 
 end Fibre
 

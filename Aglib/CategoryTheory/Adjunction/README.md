@@ -41,3 +41,15 @@ its unit and naturality to the underlying adjunct value. Its preimage formula
 requires the actual underlying functor to be full and faithful and retains the
 given right comparison inverse. The Proper ZMod reduction consumes these laws
 with its original module/abelian adjunctions and scalar action.
+
+[Mates/OriginalExchange](Mates/OriginalExchange.lean) constructs original
+exchange transport and identifies it through the actual adjunction unit.
+[Mates/SelectedCoherence](Mates/SelectedCoherence.lean) identifies selected
+composition and identity comparisons by their original conjugates, then
+transports the existing right-adjoint laws.
+[Mates/SelectedUnitValues](Mates/SelectedUnitValues.lean) retains their unit
+and counit values. [Mates/SourceChange](Mates/SourceChange.lean) constructs
+literal source comparison, original source-unit pasting and the adjusted
+exchange with its identity and composition laws. The module image and
+compactification-refinement consumers use the same maps; these results do
+not assert a chosen exceptional associativity or six-operation calculus.

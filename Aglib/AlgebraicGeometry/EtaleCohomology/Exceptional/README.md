@@ -58,3 +58,15 @@ extensions use their native site owner rather than duplicating scheme functors.
 Precise current acceptance is recorded separately with successful source hashes
 and native receipts; uncompiled source is not described here as a closed result.
 Generated imports and shared publication are serialized by the principal.
+
+The ordinary module comparison adapters use the complete categorical
+original-unit, selected-adjoint and source-pasting constructions. Their
+valued comparisons retain the original coefficient equivalences and
+preimage maps. The derived underlying mate is the canonical three-factor
+comparison from exact forgetting and the existing relative-acyclicity
+argument. The dense refinement map uses the same lower comparison-pasting
+constructor. These interfaces preserve the existing coefficient ranges and
+selected worlds; their publication does not assert the remaining torsion,
+localization or chosen-exceptional coherence endpoints.
+
+[Open/ModuleStalk](Open/ModuleStalk.lean) specializes the [general constant-ring point fibre](../../../Algebra/Category/ModuleCat/Sheaf/ConstantRing/PointFibre.lean) to the actual native site and coefficient worlds. The underlying additive comparison and outside-open zero-stalk conclusion use the original coefficient forgetting and original lower-shriek stalk.

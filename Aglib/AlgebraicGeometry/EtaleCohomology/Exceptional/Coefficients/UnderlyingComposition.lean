@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.N
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleExchangeMate
 public import Aglib.Algebra.Homology.DerivedCategory.RightDerivedFunctorPlus.BaseChange.VerticalReflection
 public import Aglib.CategoryTheory.Functor.CompositionCubeWhole
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.UnderlyingComposition
 
 /-!
 # Original scalar-forgetting composition and source squares
@@ -27,6 +28,13 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Coefficients
 
 universe u
 
+open CategoryTheory.TorsionZMod.Ringed
+
+attribute [local instance] hasSheafifyLarge hasSheafifyModules
+  moduleForget_preservesSheafification moduleForget_preservesLeftKanExtensions
+  hasSheafifyRingStandard hasSheafifyAbStandard
+  ringWEqualsLocallyBijectiveStandard abWEqualsLocallyBijectiveStandard
+
 variable (Λ : Type (u + 1)) [Ring Λ]
 
 /-- The forward native direct-image comparison retains the inverse original abelian
@@ -36,14 +44,11 @@ theorem moduleDirectImageCompIso_hom_underlying {X S T : Scheme.{u}}
     (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).map
         ((moduleDirectImageCompIso Λ f g).hom.app M) =
       (directImageCompIso f g).inv.app
-        ((SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).obj M) := by
-  have h : ((SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).mapIso
-      ((moduleDirectImageCompIso Λ f g).app M)).symm =
-      (directImageCompIso f g).app
-        ((SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).obj M) := by
-    apply Iso.ext
-    exact moduleDirectImageCompIso_inv_underlying Λ f g M
-  exact congrArg Iso.inv h
+        ((SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).obj M) :=
+  ModuleCat.Sheaf.ConstantRing.moduleDirectImageCompIso_hom_underlying
+    (siteBaseChange f) (siteBaseChange g) (siteBaseChange (g ≫ f))
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+    (Scheme.smallEtaleTopology T) Λ (siteBaseChangeComp f g).symm M
 
 /-- The original scalar-forgetting inverse comparisons preserve the original
 inverse-image composition, by reflection through their actual mates. -/
@@ -56,47 +61,12 @@ theorem moduleInverseImageUnderlyingIso_inv_comp {X S T : Scheme.{u}}
       (moduleInverseImageUnderlyingIso Λ g).inv.app ((moduleInverseImage f Λ).obj M) =
     (moduleInverseImageUnderlyingIso Λ (g ≫ f)).inv.app M ≫
       (SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).map
-        ((moduleInverseImageCompIso Λ f g).hom.app M) := by
-  apply verticalSquareEquation
-    (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ f).inv)
-    (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ g).inv)
-    (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ (g ≫ f)).inv)
-    (moduleInverseImageCompIso Λ f g) (inverseImageComp f g)
-    (moduleDirectImageCompIso Λ f g) (directImageCompIso f g).symm
-    (moduleInverseImageAdjunction f Λ) (inverseImageAdjunction f)
-    (moduleInverseImageAdjunction g Λ) (inverseImageAdjunction g)
-    (moduleInverseImageAdjunction (g ≫ f) Λ) (inverseImageAdjunction (g ≫ f))
-    (conjugateEquiv_moduleInverseImageCompIso_hom Λ f g)
-    (conjugateEquiv_inverseImageComp_hom f g) _ M
-  intro N
-  change (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).map
-      ((moduleDirectImageCompIso Λ f g).hom.app N) ≫
-    ((mateEquiv (moduleInverseImageAdjunction f Λ) (inverseImageAdjunction f)
-      (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ f).inv)).natTrans).app
-        ((moduleDirectImage g Λ).obj N) ≫
-    (directImage f).map
-      (((mateEquiv (moduleInverseImageAdjunction g Λ) (inverseImageAdjunction g)
-        (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ g).inv)).natTrans).app N) =
-    ((mateEquiv (moduleInverseImageAdjunction (g ≫ f) Λ)
-      (inverseImageAdjunction (g ≫ f))
-      (TwoSquare.mk _ _ _ _ (moduleInverseImageUnderlyingIso Λ (g ≫ f)).inv)).natTrans).app N ≫
-      (directImageCompIso f g).inv.app
-        ((SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).obj N)
-  rw [congr_app (mate_moduleInverseImageUnderlyingIso_inv (Λ := Λ) (f := f))
-      ((moduleDirectImage g Λ).obj N),
-    congr_app (mate_moduleInverseImageUnderlyingIso_inv (Λ := Λ) (f := g)) N,
-    congr_app (mate_moduleInverseImageUnderlyingIso_inv (Λ := Λ) (f := g ≫ f)) N]
-  let a := (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ)).map
-    ((moduleDirectImageCompIso Λ f g).hom.app N)
-  let b := (directImageCompIso f g).inv.app
-    ((SheafOfModules.toSheaf.{u + 1} (constantRing T Λ)).obj N)
-  let Z := (moduleDirectImage g Λ ⋙
-    SheafOfModules.toSheaf.{u + 1} (constantRing S Λ)).obj N
-  change a ≫ 𝟙 ((directImage f).obj Z) ≫ (directImage f).map (𝟙 Z) = 𝟙 _ ≫ b
-  exact (congrArg (fun z => a ≫ 𝟙 _ ≫ z) ((directImage f).map_id Z)).trans
-    ((congrArg (fun z => a ≫ z) (Category.id_comp (𝟙 ((directImage f).obj Z)))).trans
-      ((Category.comp_id a).trans ((moduleDirectImageCompIso_hom_underlying Λ f g N).trans
-        (Category.id_comp b).symm)))
+        ((moduleInverseImageCompIso Λ f g).hom.app M) :=
+  ModuleCat.Sheaf.ConstantRing.moduleInverseImageUnderlyingIso_inv_comp
+    (siteBaseChange f) (siteBaseChange g) (siteBaseChange (g ≫ f))
+    (Scheme.smallEtaleTopology X) (Scheme.smallEtaleTopology S)
+    (Scheme.smallEtaleTopology T) Λ (siteBaseChangeComp f g).symm (inverseImageComp f g)
+    (conjugateEquiv_inverseImageComp_hom f g) M
 
 /-- Equality transport of base maps commutes with the specified scalar-forgetting
 inverse comparison. -/
@@ -109,8 +79,12 @@ theorem moduleInverseImageUnderlyingIso_inv_eqToHom {X S : Scheme.{u}}
     (moduleInverseImageUnderlyingIso Λ f).inv.app M ≫
       (SheafOfModules.toSheaf.{u + 1} (constantRing S Λ)).map
         (eqToHom (congrArg (fun k => (moduleInverseImage k Λ).obj M) h)) := by
-  subst g
-  simp
+  simpa only [eqToIso.hom, eqToHom_app] using
+    Functor.comparisonTransportEquation_eqToIso
+      (fun k : S ⟶ X => moduleInverseImage k Λ) (fun k : S ⟶ X => inverseImage k)
+      (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ))
+      (SheafOfModules.toSheaf.{u + 1} (constantRing S Λ))
+      (fun k => moduleInverseImageUnderlyingIso Λ k) h M
 
 /-- Equality transport at the whole-functor level retains the original scalar
 comparison before either natural isomorphism is evaluated. -/
@@ -121,14 +95,12 @@ theorem moduleInverseImageUnderlyingIso_inv_eqToIso_app {X S : Scheme.{u}}
       (moduleInverseImageUnderlyingIso Λ g).inv.app M =
     (moduleInverseImageUnderlyingIso Λ f).inv.app M ≫
       (SheafOfModules.toSheaf.{u + 1} (constantRing S Λ)).map
-        ((eqToIso (congrArg (fun k : S ⟶ X => moduleInverseImage k Λ) h)).hom.app M) := by
-  subst g
-  let a := (moduleInverseImageUnderlyingIso Λ f).inv.app M
-  let U := SheafOfModules.toSheaf.{u + 1} (constantRing S Λ)
-  change 𝟙 _ ≫ a = a ≫ U.map (𝟙 ((moduleInverseImage f Λ).obj M))
-  exact (Category.id_comp a).trans
-    ((congrArg (fun z => a ≫ z) (U.map_id ((moduleInverseImage f Λ).obj M))).trans
-      (Category.comp_id a)).symm
+        ((eqToIso (congrArg (fun k : S ⟶ X => moduleInverseImage k Λ) h)).hom.app M) :=
+  Functor.comparisonTransportEquation_eqToIso
+    (fun k : S ⟶ X => moduleInverseImage k Λ) (fun k : S ⟶ X => inverseImage k)
+    (SheafOfModules.toSheaf.{u + 1} (constantRing X Λ))
+    (SheafOfModules.toSheaf.{u + 1} (constantRing S Λ))
+    (fun k => moduleInverseImageUnderlyingIso Λ k) h M
 
 private theorem module_inverse_square_whole {X X' S S' : Scheme.{u}}
     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)

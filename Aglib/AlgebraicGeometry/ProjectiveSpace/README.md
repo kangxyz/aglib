@@ -468,3 +468,5 @@ pass to the embedded families `c a ≫ toSpec` (`flat_c_comp_toSpec`,
 `geometricallyIntegral_c_comp_toSpec`), which are proper (`isProper_c_comp_toSpec`), so `f` is
 proper (`isProper`; Stacks, Lemma 29.44.5, Tag 01WC). Consumer:
 [Picard/Representability/LocallyNoetherianBase](../Picard/Representability/LocallyNoetherianBase.lean).
+
+[FiniteCoverBaseChange](FiniteCoverBaseChange.lean) base-changes a map to the native projective line along a given map of commutative rings. Its Over arrow is the original pullback map followed by the inverse of BinaryFormProduct.lineOverBaseChangeIso. The same underlying map has its original structure triangle and is finite when the supplied cover is finite. The residue-fibre cover specializes this constructor to the original residue map and chosen pullback.

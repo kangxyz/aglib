@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.BaseChangeSource
+public import Aglib.AlgebraicGeometry.ProjectiveSpace.FiniteCoverBaseChange
 public import Aglib.AlgebraicGeometry.Spec.ResidueFiber
 public import Mathlib.AlgebraicGeometry.Noetherian
 public import Mathlib.AlgebraicGeometry.Morphisms.Finite
@@ -41,11 +41,7 @@ abbrev residueFiberStructureMap : residueFiber p ⟶ Spec (.of (IsLocalRing.Resi
 def residueFiberLineOverMap :
     Over.mk (residueFiberStructureMap p) ⟶
       Over.mk (ProjectiveLine.structureMap (IsLocalRing.ResidueField R)) :=
-  (Over.pullback (LocalRing.residueSpecMap R)).map
-      (Over.homMk p rfl : Over.mk (p ≫ ProjectiveLine.structureMap R) ⟶
-        Over.mk (ProjectiveLine.structureMap R)) ≫
-    (AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.lineOverBaseChangeIso
-      (IsLocalRing.residue R)).inv
+  AlgebraicGeometry.ProjectiveSpace.finiteCoverBaseChangeOverMap (IsLocalRing.residue R) p
 
 /-- The finite cover of the projective line on the literal closed fibre. -/
 def residueFiberLineMap :
@@ -58,18 +54,9 @@ theorem residueFiberLineMap_structureMap :
       residueFiberStructureMap p :=
   (residueFiberLineOverMap p).w
 
-instance [IsFinite p] : IsFinite (residueFiberLineMap p) := by
-  let g : Over.mk (p ≫ ProjectiveLine.structureMap R) ⟶
-      Over.mk (ProjectiveLine.structureMap R) := Over.homMk p rfl
-  let hg : IsFinite (((Over.pullback (LocalRing.residueSpecMap R)).map g).left) :=
-    MorphismProperty.overPullbackMap (P := @IsFinite)
-      (LocalRing.residueSpecMap R) g (by change IsFinite p; infer_instance)
-  let e := AlgebraicGeometry.ProjectiveSpace.BinaryFormProduct.lineOverBaseChangeIso
-    (IsLocalRing.residue R)
-  let : IsIso e.inv.left := inferInstanceAs
-    (IsIso ((Over.forget (Spec (.of (IsLocalRing.ResidueField R)))).map e.inv))
-  change IsFinite (((Over.pullback (LocalRing.residueSpecMap R)).map g).left ≫ e.inv.left)
-  exact MorphismProperty.comp_mem (@IsFinite) _ _ hg inferInstance
+instance [IsFinite p] : IsFinite (residueFiberLineMap p) :=
+  inferInstanceAs (IsFinite
+    (AlgebraicGeometry.ProjectiveSpace.finiteCoverBaseChangeMap (IsLocalRing.residue R) p))
 
 instance [IsFinite p] : IsProper (residueFiberStructureMap p) := by
   let : IsProper (p ≫ ProjectiveLine.structureMap R) := inferInstance

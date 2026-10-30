@@ -11,6 +11,7 @@ public import Aglib.CategoryTheory.Sites.SheafCohomology.Slice.Adjunction
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.SheafEquiv
 public import Mathlib.Algebra.Category.ModuleCat.AB
 public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.LowerShriekTransport
 
 /-!
 # Exact extension by zero for genuine constant-ring modules
@@ -90,42 +91,40 @@ instance moduleValuedLowerShriek_preservesFiniteLimits :
 
 /-- Genuine native constant-ring module extension by zero. -/
 def moduleLowerShriek : ModuleSheaf U Λ ⥤ ModuleSheaf X Λ :=
-  ((moduleSheafEquivalence U Λ).inverse ⋙ moduleValuedLowerShriek j Λ) ⋙
-    (moduleSheafEquivalence X Λ).functor
+  Equivalence.coefficientLeftFunctor (moduleSheafEquivalence U Λ)
+    (moduleSheafEquivalence X Λ) (moduleValuedLowerShriek j Λ)
 
 /-- The transported adjunction before identifying its native right adjoint. -/
 def moduleLowerShriekTransportAdjunction :
     moduleLowerShriek j Λ ⊣
       (moduleSheafEquivalence X Λ).inverse ⋙
         moduleValuedInverseImage j Λ ⋙ (moduleSheafEquivalence U Λ).functor :=
-  (((moduleSheafEquivalence U Λ).symm.toAdjunction.comp
-    (moduleValuedLowerShriekAdjunction j Λ)).comp
-      (moduleSheafEquivalence X Λ).toAdjunction)
+  Equivalence.coefficientTransportAdjunction (moduleSheafEquivalence U Λ)
+    (moduleSheafEquivalence X Λ) (moduleValuedLowerShriekAdjunction j Λ)
 
 /-- The right-adjoint identification uses the proved original native pullback comparison. -/
 def moduleLowerShriekRightIso :
     (moduleSheafEquivalence X Λ).inverse ⋙
         moduleValuedInverseImage j Λ ⋙ (moduleSheafEquivalence U Λ).functor ≅
       moduleInverseImage j Λ :=
-  (Functor.associator _ _ _).symm ≪≫ (moduleInverseImageTransportIso j Λ).symm
+  Equivalence.coefficientRightIso (moduleSheafEquivalence U Λ)
+    (moduleSheafEquivalence X Λ) (moduleInverseImage j Λ)
+    (moduleInverseImageTransportIso j Λ)
 
 /-- The actual module lower-shriek/native inverse-image adjunction. -/
 def moduleLowerShriekAdjunction : moduleLowerShriek j Λ ⊣ moduleInverseImage j Λ :=
-  (moduleLowerShriekTransportAdjunction j Λ).ofNatIsoRight (moduleLowerShriekRightIso j Λ)
+  Equivalence.coefficientAdjunction (moduleSheafEquivalence U Λ)
+    (moduleSheafEquivalence X Λ) (moduleValuedLowerShriekAdjunction j Λ)
+    (moduleInverseImage j Λ) (moduleInverseImageTransportIso j Λ)
 
 instance moduleLowerShriek_isLeftAdjoint : (moduleLowerShriek j Λ).IsLeftAdjoint :=
   (moduleLowerShriekAdjunction j Λ).isLeftAdjoint
 
 instance moduleLowerShriek_preservesFiniteLimits :
     PreservesFiniteLimits (moduleLowerShriek j Λ) := by
-  let EU := moduleSheafEquivalence U Λ
-  let EX := moduleSheafEquivalence X Λ
-  let : PreservesLimitsOfSize.{0, 0} EU.inverse := EU.toAdjunction.rightAdjoint_preservesLimits
-  let : PreservesFiniteLimits EU.inverse := PreservesLimitsOfSize0.preservesFiniteLimits _
-  let : PreservesLimitsOfSize.{0, 0} EX.functor :=
-    EX.symm.toAdjunction.rightAdjoint_preservesLimits
-  let : PreservesFiniteLimits EX.functor := PreservesLimitsOfSize0.preservesFiniteLimits _
-  exact comp_preservesFiniteLimits (EU.inverse ⋙ moduleValuedLowerShriek j Λ) EX.functor
+  exact Equivalence.coefficientLeft_preservesFiniteLimits
+    (moduleSheafEquivalence U Λ) (moduleSheafEquivalence X Λ)
+    (moduleValuedLowerShriek j Λ)
 
 instance moduleLowerShriek_preservesColimits : PreservesColimits (moduleLowerShriek j Λ) := by
   infer_instance
@@ -137,6 +136,15 @@ instance moduleLowerShriek_additive : (moduleLowerShriek j Λ).Additive :=
 theorem shortExact_moduleLowerShriek {S : ShortComplex (ModuleSheaf U Λ)}
     (hS : S.ShortExact) : (S.map (moduleLowerShriek j Λ)).ShortExact :=
   hS.map_of_exact (moduleLowerShriek j Λ)
+
+/-- The whole native unit is exactly the original coefficient-transport unit. -/
+theorem moduleLowerShriekAdjunction_unit_whole :
+    (moduleLowerShriekAdjunction j Λ).unit =
+      (moduleLowerShriekTransportAdjunction j Λ).unit ≫
+        Functor.whiskerLeft (moduleLowerShriek j Λ) (moduleLowerShriekRightIso j Λ).hom :=
+  Equivalence.coefficientAdjunction_unit (moduleSheafEquivalence U Λ)
+    (moduleSheafEquivalence X Λ) (moduleValuedLowerShriekAdjunction j Λ)
+    (moduleInverseImage j Λ) (moduleInverseImageTransportIso j Λ)
 
 /-- The actual adjunction unit is the transported unit followed by the native comparison. -/
 theorem moduleLowerShriekAdjunction_unit (M : ModuleSheaf U Λ) :

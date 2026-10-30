@@ -32,11 +32,8 @@ def pointedNeighborhoodDiagram : (pointSmallEtale η).fiber.Elements ⥤ Scheme.
 
 /-- The literal spectrum cone regarded over the restricted original diagram. -/
 def chartPointedNeighborhoodCone :
-    Cone (chartToPointElements R Ω j η hη ⋙ pointedNeighborhoodDiagram Ω η) where
-  pt := (specCone R Ω).pt
-  π :=
-    { app := fun i => (specCone R Ω).π.app i
-      naturality := fun _ _ a => (specCone R Ω).π.naturality a }
+    Cone (chartToPointElements R Ω j η hη ⋙ pointedNeighborhoodDiagram Ω η) :=
+  specCone R Ω
 
 /-- The restricted cone has the original spectrum universal property. -/
 def chartPointedNeighborhoodConeIsLimit :

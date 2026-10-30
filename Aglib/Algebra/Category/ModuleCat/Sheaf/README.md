@@ -89,3 +89,12 @@ variable-ring evaluation functor, with independent ring, coefficient, site
 and morphism universes. It unfolds the existing forget/evaluation composite;
 there is no second section functor. The scheme-complex basis criterion
 consumes it and retains the explicit installed scheme module structures.
+
+[LowerShriekTransport](LowerShriekTransport.lean) constructs the original
+three-factor left functor through two actual coefficient equivalences,
+its adjunction, finite-limit transfer and unit. The native module lower
+shriek specializes this construction.
+[ValuedComparison](ValuedComparison.lean) constructs the inverse-valued
+comparison and original exchanged isomorphism, proving their whole unit,
+preimage and direct-image comparison laws before taking components. The
+coefficient categories and their genuinely distinct worlds are retained.

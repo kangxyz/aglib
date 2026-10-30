@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleUnderlying
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.Stalk
+public import Aglib.Algebra.Category.ModuleCat.Sheaf.ConstantRing.PointFibre
 
 /-! # Actual module-valued geometric stalks of native extension by zero -/
 
@@ -18,15 +19,18 @@ universe u
 
 namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
-open Coefficients
+open Coefficients CategoryTheory.TorsionZMod.Ringed
+
+attribute [local instance] hasSheafifyRingStandard hasSheafifyAbStandard
+  ringWEqualsLocallyBijectiveStandard abWEqualsLocallyBijectiveStandard
 
 variable {X U : Scheme.{u}} (Λ : Type (u + 1)) [Ring Λ]
   {Ω : Type u} [Field Ω] [IsSepClosed Ω]
 
 /-- The actual module-valued geometric stalk of a genuine constant-ring module sheaf. -/
 def moduleGeometricStalk (η : Spec (.of Ω) ⟶ X) : ModuleSheaf X Λ ⥤ ModuleCat.{u + 1} Λ :=
-  (moduleSheafEquivalence X Λ).inverse ⋙
-    (pointSmallEtale η).sheafFiber (A := ModuleCat.{u + 1} Λ)
+  ModuleCat.Sheaf.ConstantRing.pointFibre.{u + 1, u, u + 1, u + 1, u}
+    (Scheme.smallEtaleTopology X) Λ (pointSmallEtale η)
 
 /-- Forgetting the actual module stalk recovers the original abelian geometric stalk. -/
 def moduleGeometricStalkUnderlyingIso (η : Spec (.of Ω) ⟶ X) :
@@ -38,12 +42,8 @@ def moduleGeometricStalkUnderlyingIso (η : Spec (.of Ω) ⟶ X) :
     ModuleCat.forget₂PreservesColimitsOfSize.{u + 1, u + 1, u, u} Λ
   let : PreservesFilteredColimitsOfSize.{u, u} V :=
     ⟨fun _ _ _ => inferInstance⟩
-  exact Functor.associator _ _ _ ≪≫
-    Functor.isoWhiskerLeft _ ((pointSmallEtale η).sheafFiberCompIso
-      (A := ModuleCat.{u + 1} Λ) (B := AddCommGrpCat.{u + 1})
-      (forget₂ (ModuleCat.{u + 1} Λ) AddCommGrpCat.{u + 1})).symm ≪≫
-    (Functor.associator _ _ _).symm ≪≫
-    Functor.isoWhiskerRight (moduleSheafInverseUnderlyingIso X Λ) _
+  exact ModuleCat.Sheaf.ConstantRing.pointFibreUnderlyingIso.{u + 1, u, u + 1, u + 1, u}
+    (Scheme.smallEtaleTopology X) Λ (pointSmallEtale η)
 
 variable (j : U ⟶ X) [IsOpenImmersion j]
 

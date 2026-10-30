@@ -119,3 +119,14 @@ whole cube before deriving. `Conservative` proves reflection of isomorphisms
 for the actual exact derived functor. Their geometric consumer is the
 original genuine-module scalar-forgetting exchange square and finite base
 change in `EtaleCohomology/Exceptional/Derived`, with independent models.
+
+[BaseChange/ExactUnitIsomorphism](BaseChange/ExactUnitIsomorphism.lean)
+proves invertibility of an original derived exchange from its actual unit
+equation and the stated exactness/acyclicity data.
+[BaseChange/UnderlyingMate](BaseChange/UnderlyingMate.lean) assembles the
+original inverse exact square, rotates the canonical three-factor unit
+using only exact horizontal units, and identifies the specified direct
+comparison as the derived mate. Four genuinely different categories retain
+independent derived realizations. The native module/abelian forgetting
+consumer uses its existing relative-acyclicity proof, without requiring
+forgetting to preserve injectives.

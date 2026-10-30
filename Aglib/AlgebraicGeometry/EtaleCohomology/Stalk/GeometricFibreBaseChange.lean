@@ -5,6 +5,8 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Over.PullbackMaps
+
 public import Mathlib.AlgebraicGeometry.Limits
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
@@ -33,21 +35,13 @@ variable {X S X' S' : Scheme.{u}}
 
 /-- The actual map of fibres over the same specified point. -/
 def geometricFibreBaseChangeMap : pullback ζ f' ⟶ pullback (ζ ≫ g) f :=
-  pullback.lift (pullback.fst ζ f') (pullback.snd ζ f' ≫ g') (by
-    calc
-      pullback.fst ζ f' ≫ (ζ ≫ g) = (pullback.fst ζ f' ≫ ζ) ≫ g :=
-        (Category.assoc _ _ _).symm
-      _ = (pullback.snd ζ f' ≫ f') ≫ g :=
-        congrArg (fun k => k ≫ g) pullback.condition
-      _ = pullback.snd ζ f' ≫ (f' ≫ g) := Category.assoc _ _ _
-      _ = pullback.snd ζ f' ≫ (g' ≫ f) := congrArg (fun k => pullback.snd ζ f' ≫ k) h
-      _ = (pullback.snd ζ f' ≫ g') ≫ f := (Category.assoc _ _ _).symm)
+  pullback.map ζ f' (ζ ≫ g) f (𝟙 _) g' g (by simp) h
 
 /-- Its first projection is the unchanged map to the point. -/
 theorem geometricFibreBaseChangeMap_fst :
     geometricFibreBaseChangeMap f f' g g' h ζ ≫ pullback.fst (ζ ≫ g) f =
       pullback.fst ζ f' :=
-  pullback.lift_fst _ _ _
+  by simp only [geometricFibreBaseChangeMap, pullback.lift_fst, Category.comp_id]
 
 /-- Its second projection retains the original base-change arrow g'. -/
 theorem geometricFibreBaseChangeMap_snd :
@@ -58,17 +52,8 @@ theorem geometricFibreBaseChangeMap_snd :
 /-- Pasting the original Cartesian square with the point square proves
 invertibility of this actual fibre map. -/
 theorem geometricFibreBaseChangeMap_isIso (H : IsPullback g' f' f g) :
-    IsIso (geometricFibreBaseChangeMap f f' g g' h ζ) := by
-  have H₀ : IsPullback (pullback.fst ζ f') (pullback.snd ζ f' ≫ g') (ζ ≫ g) f :=
-    ((IsPullback.of_hasPullback ζ f').flip.paste_horiz H).flip
-  have heq : geometricFibreBaseChangeMap f f' g g' h ζ = H₀.isoPullback.hom := by
-    apply pullback.hom_ext
-    · exact (geometricFibreBaseChangeMap_fst f f' g g' h ζ).trans
-        H₀.isoPullback_hom_fst.symm
-    · exact (geometricFibreBaseChangeMap_snd f f' g g' h ζ).trans
-        H₀.isoPullback_hom_snd.symm
-  rw [heq]
-  infer_instance
+    IsIso (geometricFibreBaseChangeMap f f' g g' h ζ) :=
+  pullback.isIso_map_of_isPullback f f' g g' h ζ H
 
 /-- The same original fibre map, packaged as its proved Cartesian isomorphism. -/
 def geometricFibreBaseChangeIso (H : IsPullback g' f' f g) :

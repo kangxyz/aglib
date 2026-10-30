@@ -75,3 +75,5 @@ trivializations with the original charts, covering witnesses and finite values.
 Its categorical product comparison and value finiteness come from
 [the generic product leaf](../../../CategoryTheory/Sites/Pullback/FiniteProducts.lean).
 The published cut contains the finite-power interface used by `Fields/FiniteProducts`.
+
+[RepresentedCoefficients](RepresentedCoefficients.lean) obtains its original additive stalk evaluation and inverse from [the general point construction](../../../CategoryTheory/Sites/Point/RepresentedAdditive.lean). The coefficient group, field-valued point, lifted section values and original germs remain unchanged.

@@ -99,3 +99,13 @@ small-etale consumer is
 [Nsmul](Nsmul.lean) identifies the whole original cohomology map of
 `n • 𝟙 F` with native multiplication by `n`, and gives its evaluation formula.
 Site, coefficient and Ext universes remain independent.
+
+[Represented trace](RepresentedTransfer/Trace.lean) constructs the original
+three-factor trace on pullback product tests, with site/coefficient naturality
+and the original unit/rank equation from the represented augmentation relation.
+[Module](RepresentedTransfer/Module.lean) lifts the same trace over an arbitrary
+commutative scalar ring using coefficient naturality and the existing underlying
+comparison. [Adjunction](RepresentedTransfer/Adjunction.lean) returns it to the
+original inverse image through uniqueness of the actual adjunction. The native
+small-etale adapters supply their original maps and continuity, without adding a
+free-sheaf, module-sheaf or cohomology realization.

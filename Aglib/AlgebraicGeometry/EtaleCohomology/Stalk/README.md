@@ -100,3 +100,7 @@ route to locally torsion higher and D+ proper exchange. Unbounded exchange
 retains its separate homological obligations.
 [ChartLimitZero](ChartLimitZero.lean) separately spreads original vanishing
 on an actual qcqs affine-transition limit to a genuine pointed etale stage.
+
+[GeometricFibreBaseChange](GeometricFibreBaseChange.lean) keeps the actual pullback map over one specified common point and both original projections; the original Cartesian-square hypothesis proves that same map invertible. [PointedNeighborhoodLimit](PointedNeighborhoodLimit.lean) extends the original spectrum cone along the initial marked-chart index, retaining its apex, structural map, legs and chosen geometric point.
+
+[ChartEvaluationGerm](ChartEvaluationGerm.lean) identifies the original chart-evaluation inverse with the terminal germ after the original stalk unit. [ChartExchangeMaps](ChartExchangeMaps.lean) keeps one witness for the same chart-comparison family component and its invertibility, retaining the actual exchange and all four independent supplied derived worlds.

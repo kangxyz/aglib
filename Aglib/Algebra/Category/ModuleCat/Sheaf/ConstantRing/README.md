@@ -14,3 +14,12 @@ These leaves reuse their actual ring maps, coefficient equivalence and units.
 
 Site, ring, module-value and derived universes retain their stated ranges.
 No finiteness assumption on the underlying coefficient group is introduced.
+
+[UnderlyingComposition](UnderlyingComposition.lean) derives the underlying
+values of the original direct-image composition from its site-isomorphism
+section maps. The original adjunction mates reflect that equation to
+inverse-image composition; literal equality transport feeds the existing
+whole source-cube construction. It uses the same ringed images and
+coefficient equivalences, with arbitrary ring and independent site worlds.
+
+[PointFibre](PointFibre.lean) applies the existing constant-ring coefficient equivalence and the supplied point's module fibre. Its whole underlying additive comparison uses the same point-sized filtered colimits and coefficient comparison, keeping site, Hom, scalar, module-value and point worlds separate.

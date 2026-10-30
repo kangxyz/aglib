@@ -111,3 +111,5 @@ does not prove constructibility for arbitrary finite direct image.
 original genuine constant-ring module D+ exchange over arbitrary rings. It
 uses the proved scalar-forgetting exchange square and conservative exact
 derived forgetting; its eight derived-model universes remain independent.
+
+[GeometricNeighborhoodStalk](GeometricNeighborhoodStalk.lean) is the component of the existing whole final-functor colimit comparison, with its literal stage-germ equation. [PointStalkExtension](ExactImageComparison/PointStalkExtension.lean) uses the same actual fibre precomposition and native point-morphism germ law under extension of separably closed geometric fields.

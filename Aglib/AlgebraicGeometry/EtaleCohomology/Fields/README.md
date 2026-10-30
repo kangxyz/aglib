@@ -76,3 +76,9 @@ original finite-etale base-change functor for arbitrary, including infinite,
 purely inseparable extensions. Its original root-cohomology pullback
 is bijective in every degree for positive invertible order, with independent
 source and target Ext universes.
+
+[Finite direct-image local products](FiniteDirectImageExact/LocalProduct.lean)
+package the original splitting-chart component inclusions as one coefficient-free
+site natural transformation. Continuous pushforward gives the original
+restriction maps on sections; the existing fan and section bijection retain the
+local product comparison for arbitrary original abelian coefficients.

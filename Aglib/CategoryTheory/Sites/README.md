@@ -42,3 +42,10 @@ carrier with the inverse coefficient action.
 pushouts and inverse-image carriers on isomorphism classes, with their stated
 sheafification and Ext hypotheses. The class formulas retain those actual
 representatives.
+
+[OverProducts](RepresentedTransfer/OverProducts.lean) constructs pullback product
+tests in a full morphism-property Over category, their maps, symmetry and
+terminal/counit laws. Comparison with a chosen categorical product preserves
+both original projections, under the stated pullback and stability hypotheses.
+
+[Point germ values](Point/Germ.lean) retain the literal germs of native point morphisms. [Represented additive evaluation](Point/RepresentedAdditive.lean) uses the original lifted additive sections and actual point fibre, with the stated full-inclusion and colimit premises. [Section values](Point/SectionValues.lean) assembles the original section and germ squares and cancels the actual invertible chart component. No additional point, section functor or derived realization is chosen.

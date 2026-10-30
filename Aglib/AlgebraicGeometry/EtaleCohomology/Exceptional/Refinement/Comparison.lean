@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.Compactification.Refinements.OpenSquare
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleCartesianBaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Derived.Open
+public import Aglib.CategoryTheory.Functor.ComparisonPasting
 
 /-!
 # The original derived-unit comparison for a compactification refinement
@@ -52,12 +53,8 @@ def moduleDerivedRefinementComparison :
     moduleDerivedLowerShriek D.j Λ ⟶
       moduleDerivedLowerShriek C.j Λ ⋙ moduleDerivedDirectImage Λ a.hom :=
   (Functor.rightUnitor (moduleDerivedLowerShriek D.j Λ)).inv ≫
-    Functor.whiskerLeft (moduleDerivedLowerShriek D.j Λ)
-      (moduleDerivedAdjunction Λ a.hom).unit ≫
-    (Functor.associator (moduleDerivedLowerShriek D.j Λ)
-      (moduleDerivedInverseImage Λ a.hom) (moduleDerivedDirectImage Λ a.hom)).inv ≫
-    Functor.whiskerRight (moduleDerivedRefinementPullbackIso a Λ).hom
-      (moduleDerivedDirectImage Λ a.hom)
+    Functor.comparisonPasting (moduleDerivedAdjunction Λ a.hom).unit
+      (moduleDerivedRefinementPullbackIso a Λ).hom
 
 /-- Every component retains the original derived adjunction unit, not a chosen isomorphism. -/
 theorem moduleDerivedRefinementComparison_app (K : DerivedCategory.Plus (ModuleSheaf X Λ)) :

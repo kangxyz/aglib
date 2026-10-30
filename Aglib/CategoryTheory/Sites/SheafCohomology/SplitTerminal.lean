@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Mathlib.CategoryTheory.Sites.EpiMono
 public import Mathlib.CategoryTheory.Sites.SheafCohomology.Basic
 public import Mathlib.CategoryTheory.Abelian.Exact
@@ -172,19 +173,6 @@ theorem sections_preservesFiniteColimits
     Functor.preservesHomology_of_preservesEpis_and_kernels Γ
   exact Functor.preservesFiniteColimits_of_preservesHomology Γ
 
-private theorem projective_uliftZ : Projective (AddCommGrpCat.of (ULift.{v} ℤ)) := by
-  constructor
-  intro E X f e he
-  obtain ⟨x, hx⟩ := (AddCommGrpCat.epi_iff_surjective e).mp he (f (ULift.up 1))
-  let g := (AddCommGrpCat.uliftZMultiplesAddEquiv E).symm x
-  refine ⟨g, ?_⟩
-  apply (AddCommGrpCat.uliftZMultiplesAddEquiv X).injective
-  have hg : g (ULift.up 1) = x :=
-    (AddCommGrpCat.uliftZMultiplesAddEquiv E).apply_symm_apply x
-  change e (g (ULift.up 1)) = f (ULift.up 1)
-  rw [hg]
-  exact hx
-
 /-- The actual constant integer sheaf is projective, using the native constant
 sheaf/evaluation adjunction. -/
 theorem constant_integer_projective
@@ -193,7 +181,7 @@ theorem constant_integer_projective
       (AddCommGrpCat.of (ULift.{v} ℤ))) := by
   let : ((sheafSections J AddCommGrpCat.{v}).obj (op T)).PreservesEpimorphisms :=
     sections_preservesEpimorphisms J T h
-  exact (constantSheafAdj J AddCommGrpCat hT).map_projective _ projective_uliftZ
+  exact (constantSheafAdj J AddCommGrpCat hT).map_projective _ AddCommGrpCat.projective_uliftZ
 
 variable [HasExt.{w} (Sheaf J AddCommGrpCat.{v})]
 
