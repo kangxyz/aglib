@@ -36,3 +36,12 @@ hypotheses. The index and category universes remain independent.
 abelian-valued presheaf cocone is colimiting from joint surjectivity and
 eventual equality. Its independent index, category and value universes retain
 the displayed size bounds; the original presheaf maps and cocone legs are used.
+
+[ConeTriangle](ConeTriangle.lean) transports the supplied contravariant cocone
+along its actual cone triangle and evaluates the resulting cone directly.
+[OverChartTransitions](OverChartTransitions.lean) constructs the original
+property-Over charts and their transition values.
+[CoconeValues](CoconeValues.lean) keeps the supplied cocone and legs for zero
+detection, filtered representatives and relations, and naturality of uniqueness
+isomorphisms. Each theorem retains its stated colimit, preservation or
+filteredness hypotheses.

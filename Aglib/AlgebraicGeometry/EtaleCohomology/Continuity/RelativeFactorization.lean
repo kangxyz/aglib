@@ -43,11 +43,28 @@ theorem exists_relative_factorization {U V : Over X}
   have heq : c.π.app j.unop ≫ (r ≫ v) = c.π.app i ≫ a :=
     (Category.assoc _ _ _).symm.trans
       ((congrArg (fun q ↦ q ≫ v) hr).trans hs)
-  let hV := representedSectionsCoconeIsColimit D c hc V
-  obtain ⟨k, d, b, hdb⟩ := (Types.FilteredColimit.isColimit_eq_iff _ hV).mp heq
-  refine ⟨k.unop, b.unop, D.map d.unop ≫ r, ?_, ?_⟩
-  · exact (Category.assoc _ _ _).trans hdb
-  · exact (Category.assoc _ _ _).symm.trans
-      ((congrArg (fun q ↦ q ≫ r) (c.w d.unop)).trans hr)
+  let D₀ := D ⋙ Over.forget X
+  have (j : I) : CompactSpace (D₀.obj j) :=
+    inferInstanceAs (CompactSpace (D.obj j).left)
+  have (j : I) : QuasiSeparatedSpace (D₀.obj j) :=
+    inferInstanceAs (QuasiSeparatedSpace (D.obj j).left)
+  have {j k : I} (f : j ⟶ k) : IsAffineHom (D₀.map f) :=
+    inferInstanceAs (IsAffineHom (D.map f).left)
+  let t : D₀ ⟶ (Functor.const I).obj X := {
+    app j := (D.obj j).hom
+    naturality {j k} f := by
+      change (D.map f).left ≫ (D.obj k).hom = (D.obj j).hom ≫ 𝟙 X
+      rw [Category.comp_id]
+      exact Over.w (D.map f) }
+  obtain ⟨k, d, b, hdb⟩ :=
+    Scheme.exists_hom_hom_comp_eq_comp_of_locallyOfFiniteType D₀ t V.hom
+      ((Over.forget X).mapCone c) hc
+      (r ≫ v).left (Over.w (r ≫ v)).symm a.left (Over.w a).symm
+      (congrArg (fun q => q.left) heq)
+  have hdb' : D.map d ≫ (r ≫ v) = D.map b ≫ a :=
+    Over.OverMorphism.ext hdb
+  refine ⟨k, b, D.map d ≫ r, (Category.assoc _ _ _).trans hdb', ?_⟩
+  exact (Category.assoc _ _ _).symm.trans
+    ((congrArg (fun q => q ≫ r) (c.w d)).trans hr)
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

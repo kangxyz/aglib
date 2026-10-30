@@ -8,6 +8,7 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleTest
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramEtaleSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTail
+public import Aglib.CategoryTheory.Limits.OverChartTransitions
 
 /-! # Original chart and triangle comparisons for the direct test-section argument
 
@@ -30,7 +31,7 @@ attribute [local instance] hasSheafifyLarge
 def siteBaseChangeTriangleIso {X Y Z : Scheme.{u}}
     (f : Y ⟶ X) (p : Z ⟶ X) (q : Z ⟶ Y) (h : q ≫ f = p) :
     siteBaseChange p ≅ siteBaseChange f ⋙ siteBaseChange q :=
-  eqToIso (congrArg siteBaseChange h.symm) ≪≫ siteBaseChangeComp f q
+  MorphismProperty.Over.ChartTransition.triangleIso etaleMorphismProperty f p q h
 
 @[reassoc]
 lemma siteBaseChangeTriangleIso_hom_fst_fst {X Y Z : Scheme.{u}}
@@ -38,10 +39,8 @@ lemma siteBaseChangeTriangleIso_hom_fst_fst {X Y Z : Scheme.{u}}
     ((siteBaseChangeTriangleIso f p q h).hom.app T).left ≫
       pullback.fst (pullback.snd T.hom f) q ≫ pullback.fst T.hom f =
         pullback.fst T.hom p := by
-  subst p
-  simpa only [siteBaseChangeTriangleIso, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app, eqToHom_refl, Category.id_comp] using
-      siteBaseChangeComp_hom_fst_fst f q T
+  exact MorphismProperty.Over.ChartTransition.triangleIso_hom_fst_fst
+    etaleMorphismProperty f p q h T
 
 @[reassoc]
 lemma siteBaseChangeTriangleIso_hom_fst_snd {X Y Z : Scheme.{u}}
@@ -49,10 +48,8 @@ lemma siteBaseChangeTriangleIso_hom_fst_snd {X Y Z : Scheme.{u}}
     ((siteBaseChangeTriangleIso f p q h).hom.app T).left ≫
       pullback.fst (pullback.snd T.hom f) q ≫ pullback.snd T.hom f =
         pullback.snd T.hom p ≫ q := by
-  subst p
-  simpa only [siteBaseChangeTriangleIso, Iso.trans_hom, NatTrans.comp_app,
-    eqToIso.hom, eqToHom_app, eqToHom_refl, Category.id_comp] using
-      siteBaseChangeComp_hom_fst_snd f q T
+  exact MorphismProperty.Over.ChartTransition.triangleIso_hom_fst_snd
+    etaleMorphismProperty f p q h T
 
 /-- The direct-image triangle acts by the original contravariant site triangle. -/
 lemma directImageTriangleIso_component {X Y Z : Scheme.{u}}
@@ -86,14 +83,7 @@ lemma presheafTransition_chartIso {C D : Type*} [Category* C] [Category* D]
     (ha : e'.inv ≫ a = c ≫ K.map e.inv) :
     η.app (op U) ≫ Q.map a.op ≫ Q.map e'.inv.op =
       P.map e.inv.op ≫ η.app (op U') ≫ Q.map c.op := by
-  have hm : Q.map a.op ≫ Q.map e'.inv.op = Q.map ((K.map e.inv).op) ≫ Q.map c.op :=
-    (Q.map_comp _ _).symm.trans
-      ((congrArg (fun f => Q.map f.op) ha).trans (Q.map_comp _ _))
-  have hn : η.app (op U) ≫ Q.map ((K.map e.inv).op) =
-      P.map e.inv.op ≫ η.app (op U') := (η.naturality e.inv.op).symm
-  exact (congrArg (fun f => η.app (op U) ≫ f) hm).trans
-    ((Category.assoc _ _ _).symm.trans
-      ((congrArg (fun f => f ≫ Q.map c.op) hn).trans (Category.assoc _ _ _)))
+  exact Functor.presheafTransition_chartIso K P Q η e e' c a ha
 
 /-- Original square transfer, expressed in two specified isomorphic test charts. -/
 lemma squareSectionsMap_chartIso {X S : Scheme.{u}} (f : S ⟶ X)
@@ -187,41 +177,9 @@ def diagramEtaleTestArrow {a b : Under i} (m : a ⟶ b) :
 lemma diagramEtaleTestArrow_left {a b : Under i} (m : a ⟶ b) :
     (unitRepresentativeArrow (X.map m.right).unop (diagramEtaleTestArrow X i T m)).left =
       ((diagramEtaleTest X i T).map m).unop := by
-  apply pullback.hom_ext
-  · exact (Over.w (unitRepresentativeArrow (X.map m.right).unop
-      (diagramEtaleTestArrow X i T m))).trans (diagramEtaleTest_map_fst X i T m).symm
-  · let ε : pullback (X.map b.hom).unop T.hom ⟶
-        pullback T.hom (X.map b.hom).unop := (diagramEtaleTestChartIso X i T b).hom.left
-    let τ : pullback T.hom (X.map b.hom).unop ⟶
-        pullback (pullback.snd T.hom (X.map a.hom).unop) (X.map m.right).unop :=
-      ((siteBaseChangeTriangleIso (X.map a.hom).unop (X.map b.hom).unop
-        (X.map m.right).unop (diagramEtaleTest_triangle X i m)).hom.app T).left
-    let μ : pullback (pullback.snd T.hom (X.map a.hom).unop) (X.map m.right).unop ⟶
-        pullback (diagramEtaleTestChart X i T a).hom (X.map m.right).unop :=
-      ((siteBaseChange (X.map m.right).unop).map (diagramEtaleTestChartIso X i T a).inv).left
-    let ρ := pullback.fst (diagramEtaleTestChart X i T a).hom (X.map m.right).unop
-    let σ := pullback.snd (X.map a.hom).unop T.hom
-    let π := pullback.fst (pullback.snd T.hom (X.map a.hom).unop) (X.map m.right).unop
-    have hm : μ ≫ ρ ≫ σ = π ≫ pullback.fst T.hom (X.map a.hom).unop :=
-      (Category.assoc μ ρ σ).symm.trans
-        ((congrArg (fun z => z ≫ σ)
-          (siteBaseChange_map_fst (X.map m.right).unop
-            (diagramEtaleTestChartIso X i T a).inv)).trans
-          ((Category.assoc _ _ _).trans
-            (congrArg (fun z => π ≫ z) (diagramEtaleTestChartIso_inv_snd X i T a))))
-    have ht : τ ≫ π ≫ pullback.fst T.hom (X.map a.hom).unop =
-        pullback.fst T.hom (X.map b.hom).unop :=
-      siteBaseChangeTriangleIso_hom_fst_fst (X.map a.hom).unop (X.map b.hom).unop
-        (X.map m.right).unop (diagramEtaleTest_triangle X i m) T
-    have he : ε ≫ pullback.fst T.hom (X.map b.hom).unop =
-        pullback.snd (X.map b.hom).unop T.hom := diagramEtaleTestChartIso_hom_fst X i T b
-    change ((ε ≫ τ ≫ μ) ≫ ρ) ≫ σ = _
-    exact (Category.assoc _ _ _).trans
-      ((Category.assoc _ _ _).trans
-        ((congrArg (fun z => ε ≫ z) (Category.assoc τ μ (ρ ≫ σ))).trans
-          ((congrArg (fun z => ε ≫ τ ≫ z) hm).trans
-            ((congrArg (fun z => ε ≫ z) ht).trans
-              (he.trans (diagramEtaleTest_map_snd X i T m).symm)))))
+  exact MorphismProperty.Over.ChartTransition.representative_testArrow_left
+    etaleMorphismProperty (X.map a.hom).unop (X.map b.hom).unop
+    (X.map m.right).unop (diagramEtaleTest_triangle X i m) T
 
 /-- The native right-tail transition is the original coefficient map and direct-image triangle. -/
 lemma diagramRightTailTransition_triangle {j k l : I}

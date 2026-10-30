@@ -7,6 +7,8 @@ module
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.ChartStrictLocalComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.PullbackLimitLegNaturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Stalk.FibreProductGermNaturality
+public import Aglib.CategoryTheory.Limits.CoconeValues
+public import Aglib.Algebra.Category.Grp.Resize.Naturality
 /-! # Coefficient naturality of the original strict-local comparison -/
 
 @[expose] public noncomputable section
@@ -32,7 +34,7 @@ theorem uliftComparison_naturality
       (E.addCommGroupIsoToAddEquiv.trans AddEquiv.ulift)) x) =
     (AddEquiv.ulift.symm.trans
       (E'.addCommGroupIsoToAddEquiv.trans AddEquiv.ulift)) (a x) :=
-  congrArg ULift.down (ConcreteCategory.congr_hom h (ULift.up x))
+  AddCommGrpCat.uliftComparison_naturality E E' a b h x
 end UliftNaturality
 
 variable (R Ω : Type u) [CommRing R] [Field Ω] [Algebra R Ω] [IsSepClosed Ω]
@@ -89,7 +91,59 @@ theorem chartLimitCohomologyCocone_naturality (U : GeometricEtaleNeighborhood R 
       (chartGeometricBaseChangedCone R Ω j f)
       ((opOpEquivalence (GeometricEtaleNeighborhood R Ω)).inverse.obj i)) g q U
 
-/-- The coefficient square on one original lifted neighborhood leg. -/
+/-- Naturality of the SAME original uniqueness comparisons, from both actual leg squares. -/
+theorem chartStrictLocalComparisonUliftIso_naturality :
+    (chartStrictLocalComparisonUliftIso R Ω j η hη f F q).hom ≫
+        AddCommGrpCat.uliftFunctor.{u + 1, e}.map
+          (AddCommGrpCat.ofHom (Sheaf.H.map ((inverseImage
+            (pullback.snd (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)).map g) q)) =
+      AddCommGrpCat.uliftFunctor.{e, u + 1}.map
+        (((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).map
+          ((higherDirectImage f q).map g)) ≫
+        (chartStrictLocalComparisonUliftIso R Ω j η hη f G q).hom := by
+  let a := ((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).map
+    ((higherDirectImage f q).map g)
+  let b := AddCommGrpCat.ofHom (Sheaf.H.map ((inverseImage
+    (pullback.snd (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)).map g) q)
+  let φ (U : GeometricEtaleNeighborhood R Ω) :
+      AddCommGrpCat.of (Sheaf.H.{e} ((inverseImage (pullback.snd
+        ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)).hom f)).obj F) q) ⟶
+      AddCommGrpCat.of (Sheaf.H.{e} ((inverseImage (pullback.snd
+        ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)).hom f)).obj G) q) :=
+    AddCommGrpCat.ofHom (Sheaf.H.map ((inverseImage (pullback.snd
+      ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)).hom f)).map g) q)
+  exact CoconeValues.coconePointUniqueUpToIso_naturality
+    (chartOriginalStalkCoconeIsColimit R Ω j η hη f F q)
+    (isColimitOfPreserves AddCommGrpCat.uliftFunctor.{u + 1, e}
+      (chartLimitCohomologyCoconeIsColimit R Ω j f F q))
+    (chartOriginalStalkCoconeIsColimit R Ω j η hη f G q)
+    (isColimitOfPreserves AddCommGrpCat.uliftFunctor.{u + 1, e}
+      (chartLimitCohomologyCoconeIsColimit R Ω j f G q))
+    (fun U => AddCommGrpCat.uliftFunctor.{u + 1, e}.map (φ U))
+    (AddCommGrpCat.uliftFunctor.{e, u + 1}.map a)
+    (AddCommGrpCat.uliftFunctor.{u + 1, e}.map b)
+    (fun U => by
+      apply ConcreteCategory.hom_ext
+      intro x
+      obtain ⟨x⟩ := x
+      have hsource := chartOriginalStalkCocone_apply R Ω j η hη f F q U x
+      have htarget := chartOriginalStalkCocone_apply R Ω j η hη f G q U ((φ U).hom x)
+      have hgerm := fibreProductCohomologyGerm_naturality f
+        ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)) g q
+        η (chartStagePoint R Ω j η hη U) x
+      exact (congrArg (AddCommGrpCat.uliftFunctor.{e, u + 1}.map a) hsource).trans
+        ((congrArg ULift.up hgerm).trans htarget.symm))
+    (fun U => by
+      have hmap := congrArg (fun z => AddCommGrpCat.uliftFunctor.{u + 1, e}.map z)
+        (chartLimitCohomologyCocone_naturality R Ω j f g q U)
+      have hleft := (AddCommGrpCat.uliftFunctor.{u + 1, e}.map_comp
+        ((chartLimitCohomologyCocone R Ω j f F q).ι.app U) b).symm
+      have hright := AddCommGrpCat.uliftFunctor.{u + 1, e}.map_comp (φ U)
+        ((chartLimitCohomologyCocone R Ω j f G q).ι.app U)
+      have hfinal := hleft.trans (hmap.trans hright)
+      exact hfinal)
+
+/-- The whole original comparison square on an actual neighborhood leg. -/
 theorem chartStrictLocalComparisonUliftIso_naturality_leg
     (U : GeometricEtaleNeighborhood R Ω) :
     (chartOriginalStalkCocone R Ω j η hη f F q).ι.app U ≫
@@ -102,48 +156,9 @@ theorem chartStrictLocalComparisonUliftIso_naturality_leg
           (((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).map
             ((higherDirectImage f q).map g)) ≫
           (chartStrictLocalComparisonUliftIso R Ω j η hη f G q).hom := by
-  let a := ((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-    ((higherDirectImage f q).map g)
-  let b := AddCommGrpCat.ofHom (Sheaf.H.map ((inverseImage
-    (pullback.snd (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)).map g) q)
-  apply ConcreteCategory.hom_ext
-  intro x
-  obtain ⟨x⟩ := x
-  rw [← Category.assoc, chartStrictLocalComparisonUliftIso_leg]
-  have hleg := ConcreteCategory.congr_hom
-    (chartLimitCohomologyCocone_naturality R Ω j f g q U) x
-  have hgerm := fibreProductCohomologyGerm_naturality f
-    ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)) g q
-    η (chartStagePoint R Ω j η hη U) x
-  have hsource := chartOriginalStalkCocone_apply R Ω j η hη f F q U x
-  have htarget := chartStrictLocalCohomologyAddEquiv_germ R Ω j η hη f G q U
-    (Sheaf.H.map ((inverseImage (pullback.snd
-      ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)).hom f)).map g) q x)
-  have hvalue : b ((chartLimitCohomologyCocone R Ω j f F q).ι.app U x) =
-      chartStrictLocalCohomologyAddEquiv R Ω j η hη f G q
-        (a (fibreProductCohomologyGerm f
-          ((Scheme.EtalePointOpen.postcompose j).obj (etaleObject R Ω U)) F q η
-          (chartStagePoint R Ω j η hη U) x)) :=
-    hleg.trans (htarget.symm.trans
-      (congrArg (chartStrictLocalCohomologyAddEquiv R Ω j η hη f G q) hgerm.symm))
-  have hr := congrArg
-    (fun t => (chartStrictLocalComparisonUliftIso R Ω j η hη f G q).hom
-      ((AddCommGrpCat.uliftFunctor.{e, u + 1}.map a) t)) hsource
-  exact (congrArg ULift.up hvalue).trans hr.symm
-
-/-- Naturality as a whole morphism between the original lifted colimits. -/
-theorem chartStrictLocalComparisonUliftIso_naturality :
-    (chartStrictLocalComparisonUliftIso R Ω j η hη f F q).hom ≫
-        AddCommGrpCat.uliftFunctor.{u + 1, e}.map
-          (AddCommGrpCat.ofHom (Sheaf.H.map ((inverseImage
-            (pullback.snd (Spec.algebraMap R (GeometricEtaleColimit R Ω) ≫ j) f)).map g) q)) =
-      AddCommGrpCat.uliftFunctor.{e, u + 1}.map
-        (((pointSmallEtale η).sheafFiber (A := AddCommGrpCat.{u + 1})).map
-          ((higherDirectImage f q).map g)) ≫
-        (chartStrictLocalComparisonUliftIso R Ω j η hη f G q).hom := by
-  apply (chartOriginalStalkCoconeIsColimit R Ω j η hη f F q).hom_ext
-  intro U
-  exact chartStrictLocalComparisonUliftIso_naturality_leg R Ω j η hη f g q U
+  have h := congrArg (fun z => (chartOriginalStalkCocone R Ω j η hη f F q).ι.app U ≫ z)
+    (chartStrictLocalComparisonUliftIso_naturality R Ω j η hη f g q)
+  exact h
 
 /-- Naturality of the original stalk-to-strict-local-cohomology comparison. -/
 theorem chartStrictLocalCohomologyAddEquiv_naturality

@@ -18,6 +18,17 @@ and [coefficient-cone constructors](../../../CategoryTheory/Sites/SheafCohomolog
 Their inputs are the actual scheme adjunctions, global sections and pullback
 maps. Native object and map values are retained.
 
+The varying and fixed-source systems use the complete generic
+[system constructors](../../../CategoryTheory/Filtered/SystemConstructions.lean).
+[DiagramLimitSections](DiagramLimitSections.lean),
+[DiagramSmallIndex](DiagramSmallIndex.lean) and
+[DiagramRawConeSections](DiagramRawConeSections.lean) evaluate one shared
+[coefficient-section functor](../../../CategoryTheory/Filtered/CoefficientSections.lean).
+The test Arrow row and its canonical Tail cocone specialize the whole
+[indexed cone comparison](../../../CategoryTheory/Filtered/IndexedConeSections.lean),
+with the original pullback and chart-comparison component values. The geometric
+colimit hypotheses remain in their native suppliers.
+
 [DiagramCohomologyCocone](DiagramCohomologyCocone.lean) specializes the complete
 [source-system transfer and cocone construction](../../../CategoryTheory/Sites/SheafCohomology/Continuity/InjectiveDiagram/CohomologyCocone.lean).
 The original coefficient functor has the same colimit, and every leg is the

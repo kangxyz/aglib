@@ -7,6 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyConnecting
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramCohomologyNaturality
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexColimit
 
 /-! # Actual long-exact-sequence fragments for varying étale sites
 
@@ -43,11 +44,7 @@ variable [HasColimitsOfShape I AddCommGrpCat.{e}]
 
 private abbrev exactCohomologyFilteredColimits [IsFiltered I] :
     HasExactColimitsOfShape I AddCommGrpCat.{e} := by
-  let E : I ≌ AsSmall.{max e uI vI} I := AsSmall.equiv (C := I)
-  have : IsFiltered (AsSmall.{max e uI vI} I) := IsFiltered.of_equivalence E
-  let : HasExactColimitsOfShape I AddCommGrpCat.{max e uI vI} :=
-    HasExactColimitsOfShape.of_domain_equivalence AddCommGrpCat.{max e uI vI} E.symm
-  exact HasExactColimitsOfShape.domain_of_functor I AddCommGrpCat.uliftFunctor.{max uI vI, e}
+  exact hasExactFilteredColimitsOfShape_addCommGrpCat_of_category I
 
 /-- The actual colimit of the varying-site fragment is exact. -/
 lemma diagramCohomologyConnectingComplex_colimit_exact [IsFiltered I] :

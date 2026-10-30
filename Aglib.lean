@@ -20,6 +20,7 @@ public import Aglib.Algebra.Category.Grp.Products.TupleCoordinates
 public import Aglib.Algebra.Category.Grp.ProjectiveInt
 public import Aglib.Algebra.Category.Grp.Resize
 public import Aglib.Algebra.Category.Grp.Resize.Diagram
+public import Aglib.Algebra.Category.Grp.Resize.Naturality
 public import Aglib.Algebra.Category.Grp.ZModEndomorphisms
 public import Aglib.Algebra.Category.Grp.ZModQuotient
 public import Aglib.Algebra.Category.Grp.ZModSequence
@@ -5208,7 +5209,11 @@ public import Aglib.CategoryTheory.ExactCategory.MatrixDeflation
 public import Aglib.CategoryTheory.ExactCategory.Small
 public import Aglib.CategoryTheory.ExactCategory.Subcategory
 public import Aglib.CategoryTheory.Filtered.AdjointStageHom
+public import Aglib.CategoryTheory.Filtered.CoefficientSections
 public import Aglib.CategoryTheory.Filtered.FiniteDiagramDescent
+public import Aglib.CategoryTheory.Filtered.IndexedConeSections
+public import Aglib.CategoryTheory.Filtered.SectionDiagrams
+public import Aglib.CategoryTheory.Filtered.SystemConstructions
 public import Aglib.CategoryTheory.Functor.ActualDiagramLift
 public import Aglib.CategoryTheory.Functor.AutomorphismTransport
 public import Aglib.CategoryTheory.Functor.CoefficientSquare
@@ -5239,6 +5244,7 @@ public import Aglib.CategoryTheory.Iso.CertifiedHomTransport
 public import Aglib.CategoryTheory.Iso.Composite
 public import Aglib.CategoryTheory.Limits.BiproductPushout
 public import Aglib.CategoryTheory.Limits.CoconeValues
+public import Aglib.CategoryTheory.Limits.ConeTriangle
 public import Aglib.CategoryTheory.Limits.CoproductsFromFiltered
 public import Aglib.CategoryTheory.Limits.Equifibered
 public import Aglib.CategoryTheory.Limits.FiniteCoproductMaps
@@ -5246,6 +5252,7 @@ public import Aglib.CategoryTheory.Limits.FiniteCoproductPowers
 public import Aglib.CategoryTheory.Limits.FullSubcategory.Pushout
 public import Aglib.CategoryTheory.Limits.Monomorphisms
 public import Aglib.CategoryTheory.Limits.NatTransCoproduct
+public import Aglib.CategoryTheory.Limits.OverChartTransitions
 public import Aglib.CategoryTheory.Limits.OverCoproducts
 public import Aglib.CategoryTheory.Limits.OverExtensive
 public import Aglib.CategoryTheory.Limits.Preserves.JointConservativity

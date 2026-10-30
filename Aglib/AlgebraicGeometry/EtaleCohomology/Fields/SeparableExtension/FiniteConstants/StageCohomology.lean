@@ -11,6 +11,7 @@ public import Mathlib.Algebra.Category.Grp.FilteredColimits
 public import Mathlib.CategoryTheory.Filtered.Connected
 public import Mathlib.CategoryTheory.Limits.ConcreteCategory.Basic
 public import Mathlib.CategoryTheory.Limits.Preserves.Filtered
+public import Aglib.CategoryTheory.Limits.CoconeValues
 
 /-! # Actual classes and relations descend along qcqs scheme limits -/
 
@@ -29,19 +30,6 @@ universe u e
 attribute [local instance] hasSheafifyLarge
 
 open Continuity
-
-private theorem concreteGroup_exists_relation
-    {J : Type u} [Category.{u} J] [IsFiltered J] (D : J ⥤ AddCommGrpCat.{e})
-    [PreservesColimit D (CategoryTheory.forget AddCommGrpCat.{e})]
-    (C : Cocone D) (hC : IsColimit C) {i j : J}
-    (a : D.obj i) (a' : D.obj j)
-    (h : (C.ι.app i).hom a = (C.ι.app j).hom a') :
-    ∃ (t : J) (f : i ⟶ t) (g : j ⟶ t),
-      (D.map f).hom a = (D.map g).hom a' := by
-  exact Concrete.isColimit_exists_of_rep_eq (C := AddCommGrpCat.{e})
-    (FC := fun A B : AddCommGrpCat.{e} => A →+ B)
-    (CC := fun A : AddCommGrpCat.{e} => (A : Type e))
-    (D := C) (i := i) (j := j) D hC a a' h
 
 variable {I : Type u} [Category.{u} I] [IsFiltered I]
   (X : I ⥤ Scheme.{u}ᵒᵖ) (b : Cone X) (c : Cocone X) (hc : IsColimit c)
@@ -82,7 +70,7 @@ theorem exists_stage_cohomologyClass (q : ℕ)
           (congrArg Quiver.Hom.unop (hl i))).inv.app F) q aᵢ = a := by
   let : PreservesFilteredColimitsOfSize.{u, u} (CategoryTheory.forget AddCommGrpCat.{e}) :=
     preservesFilteredColimitsOfSize_of_univLE.{e, e, u, u} _
-  obtain ⟨i, aᵢ, haᵢ⟩ := Concrete.isColimit_exists_rep
+  obtain ⟨i, aᵢ, haᵢ⟩ := CoconeValues.exists_rep
     (diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q)
       (isColimitPullbackCohomologyCocone X b c hc l hl F q) a
   refine ⟨i, aᵢ, ?_⟩
@@ -106,7 +94,7 @@ theorem exists_stage_cohomologyRelation (q : ℕ) (i j : I)
     diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q
   let C : Cocone D := pullbackLimitCohomologyCocone X b c l hl F q
   let hC : IsColimit C := isColimitPullbackCohomologyCocone X b c hc l hl F q
-  exact concreteGroup_exists_relation D C hC a a' h
+  exact CoconeValues.exists_relation D hC a a' h
 
 include hc in
 /-- A stage class vanishing at the limit vanishes after an actual transition. -/
@@ -115,11 +103,10 @@ theorem exists_stage_cohomologyZero (q : ℕ) (i : I)
     (ha : ((pullbackLimitCohomologyCocone X b c l hl F q).ι.app i).hom a = 0) :
     ∃ (t : I) (f : i ⟶ t),
       ((diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q).map f).hom a = 0 := by
-  have hi0 : ((pullbackLimitCohomologyCocone X b c l hl F q).ι.app i).hom 0 = 0 :=
-    ((pullbackLimitCohomologyCocone X b c l hl F q).ι.app i).hom.map_zero
-  obtain ⟨t, f, g, hfg⟩ := exists_stage_cohomologyRelation X b c hc l hl F q i i a 0
-    (ha.trans hi0.symm)
-  exact ⟨t, f, hfg.trans
-    ((diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q).map g).hom.map_zero⟩
+  let : PreservesFilteredColimitsOfSize.{u, u} (CategoryTheory.forget AddCommGrpCat.{e}) :=
+    preservesFilteredColimitsOfSize_of_univLE.{e, e, u, u} _
+  exact CoconeValues.exists_map_eq_zero
+    (diagramCohomologyFunctor X (pullbackCoefficientSystem X b F) q)
+    (isColimitPullbackCohomologyCocone X b c hc l hl F q) a ha
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Stalk

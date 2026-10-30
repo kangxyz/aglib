@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestRela
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramTestOuterSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramConeExtension
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRawConeSections
+public import Aglib.CategoryTheory.Filtered.IndexedConeSections
 
 /-! # The original test-row comparison to evaluated limit coefficients -/
 
@@ -61,9 +62,31 @@ lemma diagramTestConeSystemSectionsMap_eq {a b : Under i} (m : a ⟶ b) :
 /-- The original relative row maps, assembled before applying the whole chart comparison. -/
 def diagramTestRawConeSectionsNatTrans :
     diagramTestArrowSectionsFunctor X F i T ⟶
-      Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T where
-  app := diagramTestConeArrowSectionsMap X F c i T
-  naturality _ _ m := diagramTestConeArrowSectionsMap_naturality X F c i T m
+      Arrow.leftFunc ⋙ diagramTestRawConeSectionsFunctor X F c i T :=
+  let row := schemeSectionData.indexedConeNatTransWithMap schemeAdjunctionData_coherent X F
+    (Arrow.leftFunc ⋙ Under.forget i) (Arrow.rightFunc ⋙ diagramEtaleTest X i T)
+    (diagramTestArrowProjection X i T) (diagramTestExtendedCone X c i T)
+    (Functor.whiskerLeft Arrow.rightFunc (diagramEtaleTestCocone X i T c).ι)
+    (fun a => congrArg Quiver.Hom.op (diagramTestConeArrowTriangle X c i T a))
+    (fun {j k} a => pullbackTriangleIso
+      ((diagramTestExtendedCone X c i T).ι.app j).unop (X.map a).unop
+      ((diagramTestExtendedCone X c i T).ι.app k).unop
+      (congrArg (fun z : X.obj j ⟶ (diagramTestExtendedCone X c i T).pt => z.unop)
+        ((diagramTestExtendedCone X c i T).w a)))
+    (fun {j k} a => pullbackTriangleIso_mate (X.map a).unop
+      ((diagramTestExtendedCone X c i T).ι.app j).unop
+      ((diagramTestExtendedCone X c i T).ι.app k).unop
+      (congrArg (fun z : X.obj j ⟶ (diagramTestExtendedCone X c i T).pt => z.unop)
+        ((diagramTestExtendedCone X c i T).w a)))
+    (fun m => diagramTestArrowSectionsMap X F i T m)
+    (fun m => diagramTestArrowSectionsMap_eq_generic X F i T m)
+    (diagramTestConeArrowSectionsMap X F c i T)
+    (fun a => systemSquareSectionsMap_eq_sectionSystemSquareMap X F (𝟙 a.left.right)
+      (diagramTestArrowSchemeMap X i T a) (diagramTestConeSchemeMap X c i T a.left)
+      ((diagramEtaleTestCocone X i T c).ι.app a.right).unop
+      (diagramTestConeArrowSquare X c i T a))
+  row ≫ (Functor.associator Arrow.leftFunc (Under.forget i)
+    (coneOriginalSectionsFunctor X F (diagramTestExtendedCone X c i T))).hom
 
 /-- The genuine natural comparison is a composition of whole original transformations. -/
 def diagramTestConeSectionsNatTrans :
@@ -78,9 +101,10 @@ lemma diagramTestConeSectionsNatTrans_app (a : Arrow (Under i)) :
       pullbackSectionsMap (F.obj a.left.right) (diagramTestConeArrowOverHom X c i T a) ≫
         (pullbackSectionsBaseEtaleIso (c.ι.app a.left.right).unop
           (F.obj a.left.right)).hom.app (op (diagramEtaleTestLimitChart X i T c)) := by
-  change diagramTestConeArrowSectionsMap X F c i T a ≫
+  change (diagramTestConeArrowSectionsMap X F c i T a ≫ 𝟙 _) ≫
     (diagramTestConeSectionsIso X F c i T a.left).hom = _
-  rw [diagramTestConeArrowSectionsMap_eq_pullback, diagramTestConeSectionsIso_hom]
+  rw [Category.comp_id, diagramTestConeArrowSectionsMap_eq_pullback,
+    diagramTestConeSectionsIso_hom]
   rfl
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

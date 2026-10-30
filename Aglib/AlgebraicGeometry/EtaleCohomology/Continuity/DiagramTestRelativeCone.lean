@@ -36,17 +36,11 @@ lemma diagramTestConeSquare {a b : Under i} (m : a ⟶ b) :
 lemma diagramTestConeArrowTriangle (a : Arrow (Under i)) :
     ((diagramEtaleTestCocone X i T c).ι.app a.right).unop ≫
         diagramTestArrowSchemeMap X i T a = diagramTestConeSchemeMap X c i T a.left := by
-  have hp := congrArg Quiver.Hom.unop (diagramEtaleTestProjection_cocone X i T c a.right)
-  change ((diagramEtaleTestCocone X i T c).ι.app a.right).unop ≫
-      (diagramEtaleTestChart X i T a.right).hom =
-    (diagramEtaleTestLimitChart X i T c).hom ≫ (c.ι.app a.right.right).unop at hp
-  change _ ≫ ((diagramEtaleTestChart X i T a.right).hom ≫
-      (X.map a.hom.right).unop) = _
-  exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun k => k ≫ (X.map a.hom.right).unop) hp).trans
-      ((Category.assoc _ _ _).trans
-        (congrArg (fun k => (diagramEtaleTestLimitChart X i T c).hom ≫ k)
-          (coneSquare X c a.hom.right))))
+  exact congrArg Quiver.Hom.unop
+    (Functor.arrowProjection_comp_cocone (Under.forget i) X (diagramEtaleTest X i T)
+      (diagramEtaleTestProjection X i T) c (diagramEtaleTestCocone X i T c)
+      (diagramEtaleTestLimitProjection X i T c)
+      (diagramEtaleTestProjection_cocone X i T c) a)
 
 /-- The genuine Over map giving every fixed-source row leg. -/
 def diagramTestConeArrowOverHom (a : Arrow (Under i)) :
@@ -99,46 +93,60 @@ lemma diagramTestConeArrowSectionsMap_eq_pullback (a : Arrow (Under i)) :
   exact ht.trans (squareSectionsMap_base_id (F.obj a.left.right)
     (diagramTestConeArrowOverHom X c i T a))
 
+/-- Actual cone legs on the target-test indexing family, at the SAME original point. -/
+private def diagramTestConeSectionLegs :
+    Arrow.rightFunc ⋙ diagramEtaleTest X i T ⟶
+      (Functor.const (Arrow (Under i))).obj (diagramTestExtendedCone X c i T).pt :=
+  Functor.whiskerLeft Arrow.rightFunc (diagramEtaleTestCocone X i T c).ι
+
+private theorem diagramTestConeSectionTriangle (a : Arrow (Under i)) :
+    (diagramTestArrowProjection X i T).app a ≫
+        (diagramTestConeSectionLegs X c i T).app a =
+      (diagramTestExtendedCone X c i T).ι.app a.left.right :=
+  congrArg Quiver.Hom.op (diagramTestConeArrowTriangle X c i T a)
+
+/-- The original relative row map is the shared indexed cone map. -/
+private lemma diagramTestConeArrowSectionsMap_eq_generic (a : Arrow (Under i)) :
+    diagramTestConeArrowSectionsMap X F c i T a =
+      schemeSectionData.indexedConeMap X F (Arrow.leftFunc ⋙ Under.forget i)
+        (Arrow.rightFunc ⋙ diagramEtaleTest X i T) (diagramTestArrowProjection X i T)
+        (diagramTestExtendedCone X c i T) (diagramTestConeSectionLegs X c i T)
+        (diagramTestConeSectionTriangle X c i T) a :=
+  systemSquareSectionsMap_eq_sectionSystemSquareMap X F (𝟙 a.left.right)
+    (diagramTestArrowSchemeMap X i T a) (diagramTestConeSchemeMap X c i T a.left)
+    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop
+    (diagramTestConeArrowSquare X c i T a)
+
+/-- The original fixed-apex transition is the same generic cone-system map. -/
+lemma diagramTestConeSystemSectionsMap_eq_generic {a b : Under i} (m : a ⟶ b) :
+    diagramTestConeSystemSectionsMap X F c i T m =
+      schemeSectionData.coneSystemMap X F (diagramTestExtendedCone X c i T) m.right :=
+  coneSystemSectionsMap_eq_sectionConeSystemMap X F (diagramTestExtendedCone X c i T) m.right
+
 lemma diagramTestConeArrowSectionsMap_naturality {a b : Arrow (Under i)} (m : a ⟶ b) :
     diagramTestArrowSectionsMap X F i T m ≫ diagramTestConeArrowSectionsMap X F c i T b =
       diagramTestConeArrowSectionsMap X F c i T a ≫
         diagramTestConeSystemSectionsMap X F c i T m.left := by
-  let e : diagramTestConeSchemeMap X c i T b.left ≫ (X.map m.left.right).unop =
-      ((diagramEtaleTestCocone X i T c).ι.app a.right).unop ≫
-        diagramTestArrowSchemeMap X i T a :=
-    (diagramTestConeSquare X c i T m.left).trans
-      (diagramTestConeArrowTriangle X c i T a).symm
-  let e₁ : diagramTestConeSchemeMap X c i T b.left ≫
-      (X.map (m.left.right ≫ 𝟙 b.left.right)).unop =
-      ((diagramEtaleTestCocone X i T c).ι.app a.right).unop ≫
-        diagramTestArrowSchemeMap X i T a := by simpa only [Category.comp_id] using e
-  let e₂ : diagramTestConeSchemeMap X c i T b.left ≫
-      (X.map (𝟙 a.left.right ≫ m.left.right)).unop =
-      ((diagramEtaleTestCocone X i T c).ι.app a.right).unop ≫
-        diagramTestArrowSchemeMap X i T a := by simpa only [Category.id_comp] using e
-  have h₁ := systemSquareSectionsMap_comp X F m.left.right (𝟙 b.left.right)
-    (diagramTestArrowSchemeMap X i T a) (diagramTestArrowSchemeMap X i T b)
-    (diagramTestConeSchemeMap X c i T b.left)
-    ((diagramEtaleTest X i T).map m.right).unop
-    ((diagramEtaleTestCocone X i T c).ι.app b.right).unop
-    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop
-    (coneSquare (diagramEtaleTest X i T) (diagramEtaleTestCocone X i T c) m.right).symm
-    (diagramTestArrowSquare X i T m) (diagramTestConeArrowSquare X c i T b) e₁
-  have h₂ := systemSquareSectionsMap_comp X F (𝟙 a.left.right) m.left.right
-    (diagramTestArrowSchemeMap X i T a) (diagramTestConeSchemeMap X c i T a.left)
-    (diagramTestConeSchemeMap X c i T b.left)
-    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop (𝟙 _)
-    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop
-    (Category.id_comp _).symm (diagramTestConeArrowSquare X c i T a)
-    ((diagramTestConeSquare X c i T m.left).trans (Category.id_comp _).symm) e₂
-  have hi := systemSquareSectionsMap_congr X F (m.left.right ≫ 𝟙 b.left.right) m.left.right
-    (Category.comp_id _) (diagramTestArrowSchemeMap X i T a)
-    (diagramTestConeSchemeMap X c i T b.left)
-    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop e₁ e
-  have hj := systemSquareSectionsMap_congr X F (𝟙 a.left.right ≫ m.left.right) m.left.right
-    (Category.id_comp _) (diagramTestArrowSchemeMap X i T a)
-    (diagramTestConeSchemeMap X c i T b.left)
-    ((diagramEtaleTestCocone X i T c).ι.app a.right).unop e₂ e
-  exact h₁.symm.trans (hi.trans (hj.symm.trans h₂))
+  let Va : AddCommGrpCat.{u + 1} :=
+    (globalSections (diagramTestExtendedCone X c i T).pt.unop).obj
+      ((inverseImage (diagramTestConeSchemeMap X c i T a.left)).obj (F.obj a.left.right))
+  let Vb : AddCommGrpCat.{u + 1} :=
+    (globalSections (diagramTestExtendedCone X c i T).pt.unop).obj
+      ((inverseImage (diagramTestConeSchemeMap X c i T b.left)).obj (F.obj b.left.right))
+  have h := schemeSectionData.indexedConeMap_naturality schemeAdjunctionData_coherent X F
+    (Arrow.leftFunc ⋙ Under.forget i) (Arrow.rightFunc ⋙ diagramEtaleTest X i T)
+    (diagramTestArrowProjection X i T) (diagramTestExtendedCone X c i T)
+    (diagramTestConeSectionLegs X c i T) (diagramTestConeSectionTriangle X c i T) m
+  have hl := congrArg₂
+    (fun (f : diagramTestArrowSectionsObj X F i T a ⟶ diagramTestArrowSectionsObj X F i T b)
+      (g : diagramTestArrowSectionsObj X F i T b ⟶ Vb) => f ≫ g)
+    (diagramTestArrowSectionsMap_eq_generic X F i T m)
+    (diagramTestConeArrowSectionsMap_eq_generic X F c i T b)
+  have hr := congrArg₂
+    (fun (f : diagramTestArrowSectionsObj X F i T a ⟶ Va) (g : Va ⟶ Vb) => f ≫ g)
+    (diagramTestConeArrowSectionsMap_eq_generic X F c i T a)
+    (diagramTestConeSystemSectionsMap_eq_generic X F c i T m.left)
+  have hfinal := hl.trans (h.trans hr.symm)
+  exact hfinal
 
 end AlgebraicGeometry.Scheme.EtaleCohomology.Continuity

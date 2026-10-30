@@ -26,6 +26,19 @@ the existing Mathlib API.
 universal property extends from a supplied object property to its finite-colimit
 closure under the displayed filteredness and generator hypotheses.
 
+[Filtered/SystemConstructions](Filtered/SystemConstructions.lean) constructs
+restrictions, square pullbacks and fixed-source systems from one coherent
+adjunction datum. [CoefficientSections](Filtered/CoefficientSections.lean)
+evaluates its existing coefficient diagram.
+[SectionDiagrams](Filtered/SectionDiagrams.lean) and
+[IndexedConeSections](Filtered/IndexedConeSections.lean) construct the indexed
+section row and its cone comparison from the original units, compositions and
+triangle maps. Index, base, coefficient and section universes remain independent.
+
+[Group resize naturality](../Algebra/Category/Grp/Resize/Naturality.lean)
+evaluates the supplied common-ULift comparison square and recovers the same
+unlifted map naturality without changing either group or its maps.
+
 Focused interface guides: [Effective epimorphisms over a base](EffectiveEpi/README.md).
 
 [ObjectProperty/Yoneda](ObjectProperty/Yoneda.lean) tests morphisms on the objects of a property

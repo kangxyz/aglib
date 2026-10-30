@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramRightTai
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.FamilyBaseChange
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.FiniteSheafHomCocone
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexCocone
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ShortComplexColimit
 public import Aglib.CategoryTheory.Sites.SheafCohomology.ModuleCoefficients.InjectiveAcyclic
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.Algebra.Category.Grp.Ulift
@@ -91,13 +92,8 @@ theorem familyTailCochainCocone_exactAt [IsFiltered I]
       (((sheafSections (X.obj i).unop.smallEtaleTopology AddCommGrpCat.{u + 1}).obj
         (op (∏ᶜ fun k => U (a k)).left)).mapCocone (diagramRightTailCocone X F c i)))
     (n : ℕ) : (familyTailCochainCocone X F i U c).pt.ExactAt (n + 1) := by
-  let E : Under i ≌ AsSmall.{max (u + 1) uI vI} (Under i) := AsSmall.equiv
-  have : IsFiltered (AsSmall.{max (u + 1) uI vI} (Under i)) := IsFiltered.of_equivalence E
-  let : HasExactColimitsOfShape (Under i) AddCommGrpCat.{max (u + 1) uI vI} :=
-    HasExactColimitsOfShape.of_domain_equivalence AddCommGrpCat.{max (u + 1) uI vI} E.symm
   let : HasExactColimitsOfShape (Under i) AddCommGrpCat.{u + 1} :=
-    HasExactColimitsOfShape.domain_of_functor (Under i)
-      AddCommGrpCat.uliftFunctor.{max uI vI, u + 1}
+    hasExactFilteredColimitsOfShape_addCommGrpCat_of_category (Under i)
   let T := HomologicalComplex.shortComplexFunctor AddCommGrpCat.{u + 1} (.up ℕ) (n + 1)
   let hc := familyTailCochainCoconeIsColimit X F i U c hsec
   exact ShortComplex.exact_of_componentwise_colimit

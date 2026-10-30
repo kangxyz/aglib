@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitFunctor
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.DiagramLimitSections
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.QcqsSections
 public import Mathlib.CategoryTheory.Limits.Preserves.Filtered
 
@@ -36,11 +36,11 @@ variable {I : Type u} [Category.{u} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
 
 /-- The actual global-section diagram, with the geometry theorem's original small index. -/
 def smallConeCoefficientSectionsFunctor : I ⥤ AddCommGrpCat.{u + 1} :=
-  coneCoefficientFunctor X c F ⋙ globalSections c.pt.unop
+  coneCoefficientSectionsFunctor X c F
 
-/-- Its original coefficient-colimit cocone. -/
+/-- The original small-index name is an alias of the SAME mapped coefficient cocone. -/
 def smallConeCoefficientSectionsCocone : Cocone (smallConeCoefficientSectionsFunctor X c F) :=
-  (globalSections c.pt.unop).mapCocone (colimit.cocone (coneCoefficientFunctor X c F))
+  coneCoefficientSectionsCocone X c F
 
 /-- The actual outer colimit for the small-index geometric theorem. -/
 def isColimitSmallConeCoefficientSections [IsFiltered I]

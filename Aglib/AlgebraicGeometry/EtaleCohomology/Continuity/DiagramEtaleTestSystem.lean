@@ -30,11 +30,8 @@ variable {I : Type uI} [Category.{vI} I] (X : I ⥤ Scheme.{u}ᵒᵖ)
   (F : DiagramCoefficientSystem X) (i : I)
 
 /-- Restrict the original right-transition system to its actual tail. -/
-def diagramCoefficientTail : DiagramCoefficientSystem (diagramSchemeTail X i) where
-  obj a := F.obj a.right
-  map m := F.map m.right
-  map_id a := F.map_id a.right
-  map_comp m n := F.map_comp m.right n.right
+def diagramCoefficientTail : DiagramCoefficientSystem (diagramSchemeTail X i) :=
+  InjectiveSystem.System.restrictAlong schemeAdjunctionData X F (Under.forget i)
 
 /-- The tail's inverse-image transition is still the original transition. -/
 theorem diagramInverseTransition_coefficientTail {a b : Under i} (m : a ⟶ b) :

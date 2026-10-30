@@ -73,9 +73,9 @@ def diagramTestRelativeTailSectionsCoconeIso :
   change (𝟙 _ ≫ pullbackSectionsMap (F.obj a.right)
       (diagramTestConeArrowOverHom X c i T (Arrow.mk b.hom))) ≫
         (diagramTestConeSectionsIso X F c i T a).hom =
-      diagramTestConeArrowSectionsMap X F c i T (Arrow.mk b.hom) ≫
-        (diagramTestConeSectionsIso X F c i T a).hom
-  rw [Category.id_comp, diagramTestConeArrowSectionsMap_eq_pullback]
+      (diagramTestConeSectionsNatTrans X F c i T).app (Arrow.mk b.hom)
+  rw [Category.id_comp, diagramTestConeSectionsNatTrans_app,
+    diagramTestConeSectionsIso_hom]
   rfl
 
 /-- Remove only the double-opposite index from the original geometric row certificate. -/

@@ -10,6 +10,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.PullbackSection
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.RelativeChartTailCone
 public import Aglib.AlgebraicGeometry.Sites.EtaleAffineBasis.QcqsHypercover
 public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.FiniteMatchingCocone
+public import Aglib.CategoryTheory.Limits.ConeTriangle
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.CategoryTheory.Filtered.Final
 
@@ -39,29 +40,18 @@ def presheafCoconeIsoOfConeTriangle
     (hw : ∀ k, t.π.app k ≫ d.hom.app k = e.hom ≫ c.π.app (R.obj k))
     (P : Cᵒᵖ ⥤ A) :
     (Cocone.precompose (Functor.isoWhiskerRight (NatIso.op d) P).hom).obj
-      (P.mapCocone t.op) ≅ (P.mapCocone c.op).whisker R.op := by
-  refine Cocone.ext (P.mapIso e.op).symm ?_
-  intro k
-  have h : e.inv ≫ t.π.app k.unop ≫ d.hom.app k.unop =
-      c.π.app (R.obj k.unop) :=
-    (congrArg (fun a ↦ e.inv ≫ a) (hw k.unop)).trans (e.inv_hom_id_assoc _)
-  change (P.map (d.hom.app k.unop).op ≫ P.map (t.π.app k.unop).op) ≫
-      P.map e.inv.op = P.map (c.π.app (R.obj k.unop)).op
-  simpa only [op_comp, Functor.map_comp, Category.assoc] using
-    congrArg (fun a ↦ P.map a.op) h
+      (P.mapCocone t.op) ≅ (P.mapCocone c.op).whisker R.op :=
+  ConeTriangle.presheafCoconeIsoOfConeTriangle D c R T t d e hw P
 
 /-- Evaluate a whole contravariant section cocone before specializing its coefficients. -/
 def isColimitFunctorConeOpEvaluationEquiv
     {J C B A : Type*} [Category J] [Category C] [Category B] [Category A]
-    (H : J ⥤ C ⥤ B) (c : Cone H) (P : Bᵒᵖ ⥤ A) (U : C)
-    (d : Cone (H ⋙ (CategoryTheory.evaluation C B).obj U))
-    (hd : ((CategoryTheory.evaluation C B).obj U).mapCone c = d) :
+    (H : J ⥤ C ⥤ B) (c : Cone H) (P : Bᵒᵖ ⥤ A) (U : C) :
     IsColimit (((CategoryTheory.evaluation Cᵒᵖ A).obj (op U)).mapCocone
       ((Functor.opHom C B ⋙
         (Functor.whiskeringRight Cᵒᵖ Bᵒᵖ A).obj P).mapCocone c.op)) ≃
-      IsColimit (P.mapCocone d.op) := by
-  subst d
-  exact Equiv.refl _
+      IsColimit (P.mapCocone (((CategoryTheory.evaluation C B).obj U).mapCone c).op) :=
+  ConeTriangle.isColimitFunctorConeOpEvaluationEquiv H c P U
 
 /-- Apply the original relative section functor to a chart-variable relative scheme. -/
 def relativeChartSectionsFunctor (S X : Scheme.{u})
@@ -151,8 +141,7 @@ def nativeChartSectionsAffineIsColimit (U : (D.obj i).left.Etale) [IsAffine U.le
     IsColimit (((CategoryTheory.evaluation (D.obj i).left.Etaleᵒᵖ Ab.{u + 1}).obj
       (op U)).mapCocone (nativeChartSectionsCocone D c i F)) := by
   exact (isColimitFunctorConeOpEvaluationEquiv (relativeChartTails D i).flip
-    (nativeChartTailsCone D c i) (pullbackSectionsFunctor F) U
-    (nativeChartTailCone D c i U) rfl).symm
+    (nativeChartTailsCone D c i) (pullbackSectionsFunctor F) U).symm
       (affinePullbackSectionsCoconeIsColimit (relativeChartTail D i U)
         (nativeChartTailCone D c i U) (nativeChartTailConeIsLimit D c hc i U) F)
 
@@ -194,7 +183,6 @@ def qcqsPullbackSectionsCoconeIsColimit
   have hT := isColimitFunctorConeOpEvaluationEquiv (relativeChartTails D i).flip
     (nativeChartTailsCone D c i) (pullbackSectionsFunctor F)
     (etaleTerminal (D.obj i).left)
-    (nativeChartTailCone D c i (etaleTerminal (D.obj i).left)) rfl
     (nativeChartSectionsTerminalIsColimit D c i F hc)
   let e := Functor.isoWhiskerRight (NatIso.op (terminalChartTailIso D i))
     (pullbackSectionsFunctor F)
