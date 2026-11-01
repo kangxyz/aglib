@@ -258,6 +258,7 @@ public import Aglib.Algebra.Category.Ring.Sheaf.Units
 public import Aglib.Algebra.Central.Matrix
 public import Aglib.Algebra.CharP.Frobenius
 public import Aglib.Algebra.DirectSumTransport
+public import Aglib.Algebra.Graded.DirectSum
 public import Aglib.Algebra.Group.Action.CyclicCoefficients
 public import Aglib.Algebra.Group.Action.TorsorAugmentation
 public import Aglib.Algebra.Group.Equiv.ComparisonComposite
@@ -310,6 +311,7 @@ public import Aglib.Algebra.Homology.DerivedCategory.Ext.AcyclicComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AdjunctionAcyclic
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.AdjunctionPostcomp
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Bifunctor
+public import Aglib.Algebra.Homology.DerivedCategory.Ext.Bifunctor.Linear
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.BiproductComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.CogeneratorComparison
 public import Aglib.Algebra.Homology.DerivedCategory.Ext.Cokernel
@@ -679,6 +681,7 @@ public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Elements
 public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Functor
 public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Quotient
 public import Aglib.Algebra.Homology.Koszul.Top
+public import Aglib.Algebra.Homology.Kunneth.MayerVietoris
 public import Aglib.Algebra.Homology.MappingCocone.Map
 public import Aglib.Algebra.Homology.MappingCocone.ShortExact
 public import Aglib.Algebra.Homology.MappingCone.Acyclicity
@@ -829,6 +832,7 @@ public import Aglib.Algebra.Module.LocalizedModule.FiniteSubmodule
 public import Aglib.Algebra.Module.MatrixBaseChange
 public import Aglib.Algebra.Module.MatrixPresentation
 public import Aglib.Algebra.Module.PolynomialPresentationCoordinates
+public import Aglib.Algebra.Module.TensorProduct.External
 public import Aglib.Algebra.Module.ZMod.CyclicPairing
 public import Aglib.Algebra.Module.ZMod.Dual
 public import Aglib.Algebra.Module.ZMod.FiniteDual

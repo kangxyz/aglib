@@ -691,6 +691,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ThickeningCohom
 public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ThickeningSections
 public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ThickeningSectionsReduction
 public import Aglib.AlgebraicGeometry.Cohomology.FormalFunctions.ThickeningTower
+public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.Composition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.GlobalSectionsComposition
 public import Aglib.AlgebraicGeometry.Cohomology.Functoriality.GlobalSectionsComposition.SingleUnit
@@ -1000,6 +1001,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.TwoIdeal.
 public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.TwoIdeal.StageAlgebraization
 public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.UniformTwist
 public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.UniformTwistBaseChange
+public import Aglib.AlgebraicGeometry.Cohomology.Group.Connected
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.DegreeZero
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Injective.RestrictionSections
@@ -1199,6 +1201,23 @@ public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Coefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Geometric
 public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Open
 public import Aglib.AlgebraicGeometry.Cohomology.Restriction.Top
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Cup
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Cup.Naturality
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Coherence
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Ext
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.MayerVietoris
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Naturality
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Point
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.ExternalProduct.Sections
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Graded
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.Kunneth
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethAffine
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethAffineComparison
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpen
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenAffine
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenMayerVietoris
+public import Aglib.AlgebraicGeometry.Cohomology.StructureSheaf.KunnethOpenTop
 public import Aglib.AlgebraicGeometry.Cohomology.Support.Finite
 public import Aglib.AlgebraicGeometry.Cohomology.Support.Skyscraper
 public import Aglib.AlgebraicGeometry.Cohomology.Vanishing.Basic
@@ -4347,6 +4366,7 @@ public import Aglib.AlgebraicGeometry.Modules.Pullback.FreeComp
 public import Aglib.AlgebraicGeometry.Modules.Pullback.FreeMap
 public import Aglib.AlgebraicGeometry.Modules.Pullback.FreeTransfer
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Isomorphism
+public import Aglib.AlgebraicGeometry.Modules.Pullback.Linear
 public import Aglib.AlgebraicGeometry.Modules.Pullback.LocalBases
 public import Aglib.AlgebraicGeometry.Modules.Pullback.LocalSpectrum
 public import Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestriction
@@ -4510,6 +4530,8 @@ public import Aglib.AlgebraicGeometry.Modules.Subobjects.Gluing
 public import Aglib.AlgebraicGeometry.Modules.Support
 public import Aglib.AlgebraicGeometry.Modules.Tensor.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Basic
+public import Aglib.AlgebraicGeometry.Modules.Tensor.External
+public import Aglib.AlgebraicGeometry.Modules.Tensor.ExternalLinear
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Linear
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Associator
 public import Aglib.AlgebraicGeometry.Modules.Tensor.Monoidal.Basic
@@ -5630,6 +5652,7 @@ public import Aglib.AlgebraicGeometry.Stalk.OpenSmoothCurveDVR
 public import Aglib.AlgebraicGeometry.Stalk.Polynomial
 public import Aglib.AlgebraicGeometry.Stalk.PrincipalBaseChange
 public import Aglib.AlgebraicGeometry.Stalk.PrincipalColength
+public import Aglib.AlgebraicGeometry.Stalk.Product
 public import Aglib.AlgebraicGeometry.Stalk.ResidueCharacteristic
 public import Aglib.AlgebraicGeometry.Stalk.Scalar
 public import Aglib.AlgebraicGeometry.Stalk.SmoothDVRParameter

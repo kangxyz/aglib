@@ -350,9 +350,13 @@ coherent-cohomology route.
 
 The generic module-open Mayer–Vietoris source sequence and its unsigned boundary
 comparison are supplied, as is the open-free pullback object isomorphism for
-arbitrary morphisms. Geometric Künneth and the H¹ bound remain open.
+arbitrary morphisms. The original [structure-sheaf Künneth map](../Aglib/AlgebraicGeometry/Cohomology/StructureSheaf/Kunneth.lean)
+is bijective in every natural degree for qcqs factors over any field, including
+empty factors and characteristic two. It uses the original projection pullbacks
+and cup product. The graded algebra isomorphism, coalgebra laws and H¹ bound
+remain open.
 
-For that route, supply finiteness and vanishing, `H⁰ = k`, Künneth, the graded
+For that route, supply finiteness and vanishing, `H⁰ = k`, the graded
 bialgebra laws and the field-extension comparison. Require the Borel–Hopf
 graded-**algebra** consequence giving `dim H¹ ≤ dim A`. The stronger
 graded-bialgebra splitting asserted in draft (6.12) is not adopted. Its
