@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Trace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Trace
 
 /-!
 # The trace `H^2(X, μ_n) ≅ ℤ/n` of a smooth proper curve

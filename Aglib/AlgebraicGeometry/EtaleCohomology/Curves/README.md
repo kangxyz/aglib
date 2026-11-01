@@ -10,6 +10,22 @@ independent source and target Ext universes for the original generic
 direct-image scalar bijectivity theorem; its ordinary cohomological statement
 requires no derived-category model.
 
+## Proper and open curves
+
+For a smooth proper geometrically connected curve over an algebraically
+closed field and a positive invertible integer `n`, [Trace](Trace.lean)
+constructs the degree-normalized trace `H²(X, μ_n) ≃+ ℤ/n`.
+[Proper](Proper.lean) supplies the root-coefficient comparisons in degrees
+zero and one and the stated transport to constant coefficients.
+[CompactSupportTrace](CompactSupportTrace.lean) retains the original
+extension-by-zero cohomology for the complement of a finite set of closed
+points. [Complement](Complement.lean) proves root-cohomology vanishing in
+degrees at least two for an open curve missing a closed point. Their stated
+coefficient and geometric hypotheses are retained in each module.
+
+These modules share the `AlgebraicGeometry.Scheme.EtaleCohomology.Curves`
+namespace and this directory with the restriction and strictly local results.
+
 ## Strictly local endpoint
 
 [StrictlyLocalComparison](StrictlyLocalComparison.lean) proves
@@ -50,6 +66,5 @@ inseparable root comparison. Artin–Schreier is used on the characteristic-p
 fibre, without asserting such a sequence on a mixed-characteristic total
 scheme. Root coordinates are constructed rather than supplied as markings.
 
-The stated curve module is mathematically complete. General torsion proper
-base change, its proper-surjective descent and the unbounded six-operation
-assembly remain separate work.
+Proper base change, proper-surjective descent and the unbounded exceptional
+functor are documented by their own families.

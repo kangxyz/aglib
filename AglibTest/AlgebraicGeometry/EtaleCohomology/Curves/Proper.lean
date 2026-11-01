@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Proper
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Proper
 
 /-!
 # The cohomology of `μ_n` and `ℤ/n` on a smooth proper curve

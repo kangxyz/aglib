@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Trace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.UnitsQuotient
 public import Aglib.AlgebraicGeometry.Picard.KummerH1
@@ -26,7 +26,7 @@ Prop. 14.2, p. 90):
   `KummerH1.h1PicardTorsionEquiv`, whose global-root hypothesis holds because the global units
   are `k^×`. `rootsOneAddEquiv_subtype` identifies its whole underlying Picard map with the
   original Kummer inclusion followed by the Picard comparison;
-* `traceAddEquiv` (in `CurveCohomology.Trace`): `H^2(X, μ_n) ≃+ ℤ/n`;
+* `traceAddEquiv` (in `Curves.Trace`): `H^2(X, μ_n) ≃+ ℤ/n`;
 * `roots_subsingleton_H_of_curve` (in `Curves.PrimeToCharacteristicVanishing`):
   `H^q(X, μ_n) = 0` for `q ≥ 3`.
 

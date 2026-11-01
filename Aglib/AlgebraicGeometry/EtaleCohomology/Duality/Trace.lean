@@ -11,7 +11,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleRootsComposit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.RootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ZModLinear
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.RootsOfUnityInverseImage
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.CompactSupportTrace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CompactSupportTrace
 
 /-!
 # The normalized module compact-support trace

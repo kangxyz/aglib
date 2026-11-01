@@ -7,7 +7,7 @@ module
 
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Complement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Complement
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Open.ModuleIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Exceptional.Coefficients.ModuleUnitInverseImage
 public import Aglib.Algebra.Module.ZMod.CyclicPairing

@@ -2490,10 +2490,6 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.Fi
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.Objects
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.StageSupport.TupleProducts
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Continuity.TriangleSquareAdjoint
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.CompactSupportTrace
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Complement
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Proper
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ArtinSchreierVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimary
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrimaryGeometry
@@ -2501,6 +2497,8 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CharacteristicPrima
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ClosedSupportAcyclic
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ClosedSupportUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CoefficientNaturality
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CompactSupportTrace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Complement
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ConstantRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSequence
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing
@@ -2546,6 +2544,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedSubob
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimePowerReduction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicDegreeTwo
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PrimeToCharacteristicVanishing
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Proper
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueFiber
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueFiberDimension
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.ResidueRootsVanishing
@@ -2555,6 +2554,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StrictlyLocalCompar
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureComparison
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureFrobenius
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.StructureScalars
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.Adjunction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.BaseChange.Basic

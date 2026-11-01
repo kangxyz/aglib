@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Trace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.CompactSupport.CurveRoots
 
 /-!

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.CompactSupportTrace
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CompactSupportTrace
 
 /-!
 # The trace on compactly supported cohomology of an open curve

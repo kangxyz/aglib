@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.EtaleCohomology.CurveCohomology.Complement
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.Complement
 
 /-!
 # The cohomology of `μ_n` on an open subscheme of a curve
