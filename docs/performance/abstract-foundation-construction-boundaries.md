@@ -284,6 +284,18 @@ derived model or geometric short-exactness premise changed. The
 records the construction, declaration repair and final component-proof
 continuation at their distinct source hashes.
 
+### CI follow-up: consume the proved slice-comparison value
+
+The native slice mate later failed at a final `rfl` that reconstructed the
+forward comparison's original unit/counit chain. Supplying the existing
+`moduleEtaleSliceUnderlyingIso_eq_original` equation instead preserves the
+actual mate and all hypotheses. The changed leaf freshly compiled in
+14.112 seconds at the ordinary 200000-heartbeat budget. The
+[source-bound follow-up](cases/abstract-foundation-construction-boundaries/ci-slice-original-value/README.md)
+retains the failed CI log, full before/after sources, unchanged providers and
+actual producing events. This does not claim a controlled speedup or success
+of the enclosing CI graph.
+
 ## Failed revisions retained with their actual outcomes
 
 Run identifiers below name directories under the sibling research

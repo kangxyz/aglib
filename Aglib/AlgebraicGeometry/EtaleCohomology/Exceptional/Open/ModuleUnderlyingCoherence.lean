@@ -45,7 +45,8 @@ theorem mate_moduleEtaleSliceUnderlyingIso_inv :
         (moduleEtaleSliceInverseUnderlyingIso j Λ).inv :=
   mateEquiv_equivalence_comparison (moduleEtaleSliceSheafEquivalence j Λ)
     (etaleSliceSheafEquivalence (Scheme.Etale.mk j))
-    (moduleEtaleSliceInverseUnderlyingIso j Λ) (moduleEtaleSliceUnderlyingIso j Λ) rfl
+    (moduleEtaleSliceInverseUnderlyingIso j Λ) (moduleEtaleSliceUnderlyingIso j Λ)
+    (moduleEtaleSliceUnderlyingIso_eq_original j Λ)
 
 /-- The actual slice lower-shriek coefficient comparison has the literal restriction mate. -/
 theorem mate_sliceLowerShriekCoefficientIso :

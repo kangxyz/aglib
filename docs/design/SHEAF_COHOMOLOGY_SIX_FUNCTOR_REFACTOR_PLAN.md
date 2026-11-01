@@ -1,12 +1,102 @@
 # Shared sheaf and cohomology core: implementation plan
 
-Updated plan, 2026-10-26; research began on 2026-10-25. P1 is complete in its
-recorded scope. The user has authorized foundation-first P2–P5 work with
-simultaneous thin migration of actual existing consumers. The active foundation
-scope is complete with source-bound final native validation. Genuinely new full-six and higher-descent existence packages follow
-those foundations with their proof obligations intact. This status update
-admits no held C/D intake, changes no pins and authorizes no downstream build
-or publication. Original and amendment review scopes remain recorded below.
+Current execution revision: 2026-10-30. The active assignment combines the
+existing etale migration and the integration of already completed C/D results.
+Section 0 is the current execution contract. Sections 1-11 preserve the dated
+mathematical design, source snapshots and historical scope reports; their old
+running and admission descriptions are not current execution verdicts.
+
+## 0. Unified execution scope: 2026-10-30
+
+This execution amendment governs the existing etale migration and the integration
+of **already completed C/D results together**, with one dependency graph and one
+result-disposition map. Earlier selected-cohort inventories and running counts
+below are dated evidence, not the boundary or completion status of this combined
+assignment. Their original mathematical hypotheses and source identities remain
+unchanged.
+
+### Included results and explicit exclusions
+
+The fixed mature-library audit retains its 421 original clause identities. The
+later C/D intake contributes 1,398 completed-claim entries, representing 1,397
+unique source paths. These are source and claim counts, not 1,397 independent
+theorems or a count of unproved results. Preserve both sets of original identities
+and record overlaps through explicit mathematical/source correspondence.
+
+The original 40 unique unaccepted or draft paths remain outside implementation.
+Do not complete their unfinished theory. Completed intermediate results in an
+otherwise unfinished theme remain eligible: an unfinished C3/C4 endpoint does not
+remove an already proved geometric or cohomological lemma from this assignment.
+A historical completed claim still needs its actual statement, premises, source
+and compatible evidence; archive labels alone do not establish current closure.
+
+The existing source-disposition map is under
+`intake/agent-c-d-20261027/current-public-disposition-20261030/` in the research
+workspace. At its frozen public basis `854c49d9`, the byte join records 16
+identical public paths, 17 different public paths, 294 paths present only in the
+research implementation and 1,070 paths absent at their original locations in
+both trees. Different or absent paths may have explicit generalized replacements;
+these counts are not remaining theorem counts or semantic nonexistence claims.
+Unresolved correspondence must remain visible until the actual result is joined.
+
+### One mathematical dependency graph
+
+1. Reconcile each completed original result with its current owner, precise
+   hypotheses, maps, review and compiler basis. Reuse existing compatible
+   evidence and record genuine generalized replacements instead of copying
+   duplicate implementations.
+2. Put complete reusable constructions and their laws in the weakest fitting
+   category, site, operational topos or derived owner. Reuse one selected
+   realization per mathematical category and preserve genuinely independent
+   universes and original comparison obligations. Pure categorical or geometric
+   arguments acquire no unused topos record.
+3. Keep etale results as thin realizations of those same constructions. Supply
+   original geometric and coefficient facts rather than a new assumption of the
+   desired conclusion. Existing maps, scalar/sign conventions, annihilator and
+   torsion ranges, bounds and original theorem-family inputs remain intact.
+4. Advance ready disjoint producers and consumers concurrently. Compile only
+   completed changed parts, required dependencies and ready affected consumers.
+   A new handoff, commit or publication creates no new replay or acceptance
+   cycle; retain actual source-bound successes and fill only changed gaps.
+5. Publish coherent checked cuts on `etale-abstract` and update the same result
+   map. Public declarations moved into a lower leaf must have their old
+   definition holders reconciled in the same coherent cut. Do not treat a
+   research-tree compiler pass as publication, or a containing path as closure
+   of every archived result.
+
+The concrete next shared frontier is Cartesian: all 42 selected research sources
+have matching compilation, but their publication is separate. The first ten
+new, dependency-closed sources form a checked publication cut. The other 32
+currently need 27 direct supplier paths absent from the public tree. Reconcile
+and integrate those already completed suppliers together with the archived
+results; they are part of this same plan, not a deferred integration project.
+
+The current implementation checkpoint is: ordinary-topos foundations and the
+mature-library migration batches have source-bound completed scopes; W10 has
+29 original findings and 53 current sources with matching compilation; W11 has
+21 source-matching passes; W13 has all 16 original finding bindings; Cartesian
+has 42 source-matching passes. Public cuts and remaining archive integration
+retain their separate actual states. The detailed current record is
+`migration/ci-repair-20261030/CURRENT.json` in the research workspace. These scoped
+facts do not close the combined C/D assignment or claim hosted CI success.
+
+### One curve-cohomology family
+
+`EtaleCohomology/Curves` and the four-file `CurveCohomology` directory concern the
+same etale curve theory and already use the mathematical namespace
+`AlgebraicGeometry.Scheme.EtaleCohomology.Curves`. Consolidate their module
+organization under `Curves`, with proper-curve, trace, compact-support and open
+complement leaves as appropriate. Preserve the existing trace normalization,
+coefficient choices and mathematical declarations. Reconcile paths and actual
+imports with the completed curve-result integration in one coherent batch so
+that the reorganization does not create a second implementation or repeated
+unrelated recompilation.
+
+New higher foundations, unfinished C/D endpoints and new six-operation existence
+theory remain outside implementation. The later mathematical design sections
+retain those future obligations. Broad Zariski refactoring remains deferred;
+its already completed results and actual shared-interface requirements remain
+preserved.
 
 ## 1. Decision and fixed basis
 

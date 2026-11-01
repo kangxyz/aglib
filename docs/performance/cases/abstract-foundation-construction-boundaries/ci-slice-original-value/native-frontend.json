@@ -1,0 +1,56 @@
+{
+  "question": "Fresh ordinary default200k frontend of priority CI160 repair",
+  "native_run": "remote-1c16d780b2a643809e27b31a3f982d47",
+  "source_content_sha256": "bb2e2d802a93b4164169b0586ba5b04c8ebc0d0d62eee58a416064a7f4144539",
+  "path": "Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+  "source_sha256": "160c719b1a952b1c7ce438f614096fc39713dce04c60cb3c37fce7a15d760447",
+  "started_event": {
+    "event": "started",
+    "time": "2026-11-01T00:41:10.952812+00:00",
+    "monotonic": 75743252.8600698,
+    "wrapper_pid": 353060,
+    "pgid": 350796,
+    "compiler_pid": 353064,
+    "slot": 0,
+    "args": [
+      "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.lean",
+      "-o",
+      "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.olean",
+      "-i",
+      "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/lib/lean/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.ilean",
+      "-c",
+      "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.c",
+      "--setup",
+      "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean/.lake/build/ir/Aglib/AlgebraicGeometry/EtaleCohomology/Exceptional/Open/ModuleUnderlyingCoherence.setup.json",
+      "--json",
+      "-j4",
+      "-M12800"
+    ],
+    "cwd": "/root/autodl-tmp/lean-build/workspaces/managed-dcedb1b3ce2d-315a5e4a9466/lean",
+    "admission": {
+      "mode": "elastic"
+    },
+    "scope_lease_mode": "inherited"
+  },
+  "finished_event": {
+    "event": "finished",
+    "time": "2026-11-01T00:41:25.064857+00:00",
+    "monotonic": 75743266.97212271,
+    "wrapper_pid": 353060,
+    "pgid": 350796,
+    "compiler_pid": 353064,
+    "slot": 0,
+    "exit_code": 0
+  },
+  "frontend_seconds": 14.112052917480469,
+  "native_profile": {
+    "jobs": 8,
+    "threads": 4,
+    "lean_memory_mib": 12800,
+    "rss_limit_mib": 65536,
+    "maxHeartbeats": "ordinary default200000; no override"
+  },
+  "boundary": "Completed producing frontend on fixed locked source. D broader Curves native group still running; final group closure/input_drift and separate final predicates pending. This is not cache-only, high-budget, replay, or full CI closure.",
+  "remote_log": "/root/autodl-tmp/lean-build/logs/remote-1c16d780b2a643809e27b31a3f982d47/build.log",
+  "remote_events": "/root/autodl-tmp/lean-build/logs/remote-1c16d780b2a643809e27b31a3f982d47/compiler-events.jsonl"
+}

@@ -296,7 +296,7 @@ original data remain intact. [Proper injective follow-up](performance/inferred-n
 For localization triangles, share the actual lift, whole vertex factorization
 and specified first/second arrows with the transported original connecting
 arrow; retain named original-value equations for existing unfolding consumers.
-[Triangle and original-value case](performance/abstract-foundation-construction-boundaries.md#keep-intrinsic-comparisons-whole-and-retain-original-value-views).
+[Triangle and original-value case](performance/abstract-foundation-construction-boundaries.md#keep-intrinsic-comparisons-whole-and-retain-original-value-views). The [slice-mate CI follow-up](performance/cases/abstract-foundation-construction-boundaries/ci-slice-original-value/README.md) records consumption of the existing original-value equation at the native comparison, with a fresh default-budget pass.
 For a slice comparison built from an equivalence, share the native
 `compInverseIso` constructor and a regular whole counit equation over variable
 categories, then specialize those same heads. At its product boundary, an
