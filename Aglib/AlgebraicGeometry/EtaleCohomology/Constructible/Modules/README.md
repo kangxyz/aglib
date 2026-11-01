@@ -157,3 +157,10 @@ fields, for arbitrary commutative coefficient rings and independent Ext
 universes. `Finiteness/DimensionZeroModules` combines that result with original
 positive-degree vanishing for all-degree finite generation in dimension zero.
 No general finite-fp image-constructibility or D localization premise is used.
+
+[FiniteEtaleTrivialization](FiniteEtaleTrivialization.lean) constructs a
+connected Galois finite étale trivialization on a connected scheme for a
+finite-type locally constant module over a finite commutative ring when
+additive forgetting is full. Native positive `ZMod n` and its lift discharge
+that fullness; the constant module is the actual global-sections module on
+the chosen cover and is not assumed free.

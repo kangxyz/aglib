@@ -734,6 +734,7 @@ public import Aglib.Algebra.Polynomial.RationalValues
 public import Aglib.Algebra.QuadraticNorm
 public import Aglib.Algebra.Ring.Pi.FiniteProjection
 public import Aglib.AlgebraicGeometry
+public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Bidual
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Dimension
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Homogeneity
 public import Aglib.AlgebraicGeometry.AbelianScheme.OverField.Dual.Isogeny
@@ -1724,6 +1725,7 @@ public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Linear
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.MayerVietoris
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Open
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.OpenKernel
+public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.OpenPullback
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Pullback
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Restriction
 public import Aglib.AlgebraicGeometry.Cohomology.Modules.Ext.Scalars
@@ -2384,6 +2386,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.Fiel
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteConstantCharts
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleImage
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleProduct
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.FiniteEtaleTrivialization
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisAction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisActionMaps
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Constructible.Modules.GaloisInvariantSections
@@ -2547,6 +2550,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicCoefficientSe
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.CyclicVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.EtaleDimensionOne
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteClosedSupport
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteCoefficientsVanishing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteConstantReduction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportDiagram
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.FiniteSupportExhaustion
@@ -2581,6 +2585,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.GenericUnitTuple
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.HigherImageAffineCriterion
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.LowDegree
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OnePointRestriction
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.OpenRank
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedClosedUnit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedFactor
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Curves.PointSupportedSections
@@ -2615,8 +2620,10 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.HorizontalComposit
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.OriginalDivisibility
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Derived.PullbackIsomorphism
 public import Aglib.AlgebraicGeometry.EtaleCohomology.DirectImage
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CoefficientExactness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.CompactSupportPairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantCoefficients
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantOnePerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.ConstantPerfectness
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LocallyConstantExt
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekCohomology
@@ -2625,6 +2632,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.LowerShriekDirectI
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PairingTranspose
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.PointPurity.Finite
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.Trace
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.TracePairing
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Duality.YonedaPairing
@@ -2910,6 +2918,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Coeffici
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.ProperHenselian
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ConstantFinite.Representatives
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ContinuousTorsors
+public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.CyclicKilling
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.DegreeZeroPullback
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.EtaleRestriction
 public import Aglib.AlgebraicGeometry.EtaleCohomology.H1.ExtensionFiberClass
@@ -2981,6 +2990,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Cover
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Naturality
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.HenselianConstant.Sections
+public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.LowerShriekCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleCohomology
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.ModuleRootsComposition
 public import Aglib.AlgebraicGeometry.EtaleCohomology.Kummer.PowerFiber

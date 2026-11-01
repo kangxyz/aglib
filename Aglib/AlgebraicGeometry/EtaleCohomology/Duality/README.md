@@ -66,8 +66,8 @@ a smooth proper geometrically connected curve over an algebraically closed
 field, at positive invertible `n`. Its degree-two class maps to the original
 Kummer boundary of the positive point bundle and has trace one. The construction
 uses the actual point and localization maps, and includes composite levels and
-level one. Finite-set purity, general locally constant coefficients and SGA
-sign comparison remain open.
+level one. General locally constant coefficient purity and SGA sign
+comparison remain open.
 
 [LocallyConstantExt](LocallyConstantExt.lean) compares the original module
 Ext with ordinary cohomology of the original internal Hom for an actual
@@ -77,3 +77,29 @@ inverse, degree-zero normalization and roots-coefficient endomorphism laws
 with independent Ext universes. No smoothness, properness, finite-free source
 or projectivity is assumed. Source-coefficient and connecting-map laws, cup
 comparison and SGA/Weil signs remain separate.
+
+[PointPurity/Finite](PointPurity/Finite.lean) uses the same finite
+residue-field point scheme and original pushed-forward unit. Its actual
+unit and scalar-forgetting triangles give an all-degree Ext decomposition;
+the whole support-forgetting map and proper trace are sums of the original
+point maps. Over an algebraically closed field for a smooth proper
+geometrically connected curve and positive invertible `n`, supported Ext is
+zero outside degree two and degree two has its native pointwise coordinates.
+Empty support, composite levels and level one are included. This does not
+assert general-coefficient purity or the open-curve rank formula.
+
+[Kummer/LowerShriekCohomology](../Kummer/LowerShriekCohomology.lean) gives
+the original lower-shriek unit Ext/roots-cohomology equivalence for any
+étale morphism at positive globally invertible level, with its whole counit
+square and independent Ext universes.
+
+[CoefficientExactness](CoefficientExactness.lean) proves the actual
+surjective-étale lower-shriek counit is epi, its original Ext square, finite
+unit presentations and the whole unsigned source-boundary pairing squares.
+Its degree-zero diagram chases retain their stated component-map hypotheses
+and the actual compact `C³(K) = 0` premise where used.
+[ConstantOnePerfectness](ConstantOnePerfectness.lean) supplies original
+class-killing covers, the conditional degree-one injectivity chase and proper
+degree-one finiteness/equal-order inputs. Unconditional proper degree-zero
+and degree-one perfectness still require the actual finite-pushforward trace
+comparison and pairing square.

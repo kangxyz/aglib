@@ -78,3 +78,13 @@ that original source pullback by `[n]` is `[n]` on this same `D` for every
 natural `n`, with contravariant composition and field-base-change laws.
 These results do not supply the separate coherent-H¹ bound or these dual
 geometry hypotheses.
+
+[Bidual](OverField/Dual/Bidual.lean) constructs the original map `h_A`
+by transposing the selected Poincaré bundle and classifying it through a
+second supplied Picard representative `Q,S` of the same `D`. For a proper
+geometrically integral field group `A`, it gives the original component and
+pointed maps; the component construction assumes `Q` locally of finite type,
+and its group-map law additionally assumes `Q` separated. It proves the
+original contravariant naturality and `h_A ≫ (φ_L)^∨ = φ_L` under their
+stated inputs. No properness or geometric integrality of `D`, coherent H¹
+bound, bidual isomorphism or dual-isogeny degree formula is asserted.
