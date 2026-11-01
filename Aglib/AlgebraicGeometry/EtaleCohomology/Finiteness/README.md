@@ -88,3 +88,12 @@ intermediate uses no Noetherianity. `DimensionZeroModules` combines actual
 constructible H0 finiteness with positive vanishing to give all-degree original
 module finiteness in proper dimension zero over separably closed fields,
 without Noetherianity, torsion or reducedness assumptions.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ConstructibleConstantReduction](ConstructibleConstantReduction.lean)
+- [HigherImageFiniteCogenerators](HigherImageFiniteCogenerators.lean)
+- [ProperConstantDegreeZero](ProperConstantDegreeZero.lean)
+- [ProperFromCurves](ProperFromCurves.lean)

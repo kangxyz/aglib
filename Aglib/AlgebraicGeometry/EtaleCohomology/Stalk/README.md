@@ -113,3 +113,13 @@ on an actual qcqs affine-transition limit to a genuine pointed etale stage.
 [GeometricComparisonExchange](GeometricComparisonExchange.lean) proves that the original higher exchange commutes with the two common-point geometric comparisons, using their original neighborhood-germ formulas. [GeometricStalkExchange](GeometricStalkExchange.lean) obtains invertibility of that exact stalk map from the actual Cartesian square and the two given local-to-geometric transfer bijectivities. The original stalk unit, maps, coefficient identifications and independent derived-category worlds are retained.
 
 [ProjectiveLineGeometricTransfer](ProjectiveLineGeometricTransfer.lean) transports the actual projective-line chart to its strict-local and geometric fibres. The transfer for a sheaf killed by a nonzero natural number is bijective through the actual native residue-field embedding, with the original maps and chosen models retained.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [GeometricCohomologyDiagram](GeometricCohomologyDiagram.lean)
+- [GeometricComparisonEquation](GeometricComparisonEquation.lean)
+- [HigherImageLocalZero](HigherImageLocalZero.lean)
+- [OriginalPresheafCoefficients](OriginalPresheafCoefficients.lean)
+- [PullbackLimitCoefficient](PullbackLimitCoefficient.lean)

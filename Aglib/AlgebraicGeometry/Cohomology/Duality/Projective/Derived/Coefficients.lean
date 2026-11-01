@@ -7,7 +7,7 @@ module
 
 public import Aglib.Algebra.Homology.CochainComplex.TopHomology
 public import Aglib.Algebra.Homology.Flat.ModuleTensor
-public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.Derived
+public import Aglib.AlgebraicGeometry.Cohomology.Cech.Finite.ModelComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Cech.TensorCoefficients
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.TwistCohomology.Flat
 public import Aglib.AlgebraicGeometry.Cohomology.Duality.Projective.Derived.Trace
@@ -340,35 +340,21 @@ theorem projectiveResidueCoefficientsDerivedModelIso_naturality (n : ℕ)
             ((moduleTensorLeftFunctor (ProjectiveSpace R ι)
               (twistingSheaf R ι (-(Fintype.card ι : ℤ)))).map
               ((Scheme.Modules.pullback (toSpec R ι)).map (tilde.map f))))) := by
-  let X := ProjectiveSpace R ι
-  let α := (toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom
-  let M := projectiveResidueTwistTensorCoefficients R ι J
-  let N := projectiveResidueTwistTensorCoefficients R ι J'
-  let g : M ⟶ N := (moduleTensorLeftFunctor X
-    (twistingSheaf R ι (-(Fintype.card ι : ℤ)))).map
-      ((Scheme.Modules.pullback (toSpec R ι)).map (tilde.map f))
-  let : M.IsQuasicoherent := isQuasicoherent_moduleTensorLeftFunctor
-    (twistingSheaf R ι (-(Fintype.card ι : ℤ)))
-    ((Scheme.Modules.pullback (toSpec R ι)).obj (tilde (R := CommRingCat.of R) J))
-  let : N.IsQuasicoherent := isQuasicoherent_moduleTensorLeftFunctor
-    (twistingSheaf R ι (-(Fintype.card ι : ℤ)))
-    ((Scheme.Modules.pullback (toSpec R ι)).obj (tilde (R := CommRingCat.of R) J'))
-  let I := injectiveResolution M
-  let I' := injectiveResolution N
-  let φ : InjectiveResolution.Hom I I' g :=
-    ⟨InjectiveResolution.desc g I' I, by
-      simpa only [CochainComplex.single₀_map_f_zero] using
-        InjectiveResolution.desc_commutes_zero g I' I⟩
-  have hμ := congrArg (fun q => DerivedCategory.Q.map q)
+  let : (projectiveResidueTwistTensorCoefficients R ι J).IsQuasicoherent :=
+    isQuasicoherent_moduleTensorLeftFunctor (twistingSheaf R ι (-(Fintype.card ι : ℤ)))
+      ((Scheme.Modules.pullback (toSpec R ι)).obj (tilde (R := CommRingCat.of R) J))
+  let : (projectiveResidueTwistTensorCoefficients R ι J').IsQuasicoherent :=
+    isQuasicoherent_moduleTensorLeftFunctor (twistingSheaf R ι (-(Fintype.card ι : ℤ)))
+      ((Scheme.Modules.pullback (toSpec R ι)).obj (tilde (R := CommRingCat.of R) J'))
+  exact moduleFiniteCechModelComparison_naturality (ProjectiveSpace R ι)
+    ((toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom) (coordinateOpen R ι)
+    ((moduleTensorLeftFunctor (ProjectiveSpace R ι)
+      (twistingSheaf R ι (-(Fintype.card ι : ℤ)))).map
+        ((Scheme.Modules.pullback (toSpec R ι)).map (tilde.map f)))
+    n e (isAffineOpen_coordinateOpen R ι) (iSup_coordinateOpen_eq_top R ι) _
+    (projectiveResidueFiniteCechTensorIso R ι n e J)
+    (projectiveResidueFiniteCechTensorIso R ι n e J')
     (projectiveResidueFiniteCechTensorIso_naturality R ι n e f)
-  have hD := moduleFiniteCechDerivedGlobalSectionsIso_naturality X α
-    (coordinateOpen R ι) M I n e (isAffineOpen_coordinateOpen R ι)
-    (iSup_coordinateOpen_eq_top R ι) φ
-  simp only [CategoryTheory.Functor.map_comp] at hμ
-  rw [projectiveResidueCoefficientsDerivedModelIso_hom,
-    projectiveResidueCoefficientsDerivedModelIso_hom]
-  simp only [Category.assoc]
-  rw [reassoc_of% hμ, hD]
 
 /-- The actual trace is natural for every native base-module morphism. -/
 @[reassoc]
@@ -710,24 +696,14 @@ theorem projectiveResidueFiniteCechTensorIso_self (n : ℕ) (e : ι ≃ Fin (n +
         (projectiveResidueTwistTensorSelfIso R ι).hom =
     (NatTrans.mapHomologicalComplex (rightUnitorNatIso (ModuleCat.{u} R)).hom (.up ℤ)).app
       (projectiveResidueFiniteCechComplex R ι n) := by
-  let X := ProjectiveSpace R ι
-  let α := (toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom
-  let ω := twistingSheaf R ι (-(Fintype.card ι : ℤ))
-  let K := moduleCechIntComplex X α (coordinateOpen R ι) ω
-  let (q : ℤ) : Module.Flat R (K.X q) :=
-    twistingCechIntComplex_flat_X R ι (-(Fintype.card ι : ℤ)) q
-  let u := (projectiveResidueTwistTensorSelfIso R ι).hom
-  let i := moduleFiniteCechInclusion X α (coordinateOpen R ι) ω n
-  let : Mono i := by
-    change Mono (HomologicalComplex.ιTruncLE K (ComplexShape.embeddingUpIntLE (n : ℤ)))
-    infer_instance
-  apply (cancel_mono i).mp
-  simp only [Category.assoc]
-  rw [moduleFiniteCechInclusion_naturality, ← Category.assoc]
-  rw [projectiveResidueFiniteCechTensorIso_hom_ιTruncLE, Category.assoc,
-    projectiveCechIntTensorCoefficients_self]
-  exact (NatTrans.mapHomologicalComplex (rightUnitorNatIso (ModuleCat.{u} R)).hom
-    (.up ℤ)).naturality i
+  exact moduleFiniteCechModelComparison_unitor (ProjectiveSpace R ι)
+    ((toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom) (coordinateOpen R ι)
+    (twistingSheaf R ι (-(Fintype.card ι : ℤ))) _
+    (projectiveResidueTwistTensorSelfIso R ι).hom n
+    ((tensorRight (ModuleCat.of R R)).mapHomologicalComplex (.up ℤ))
+    (NatTrans.mapHomologicalComplex (rightUnitorNatIso (ModuleCat.{u} R)).hom (.up ℤ))
+    (projectiveResidueFiniteCechTensorIso_hom_ιTruncLE R ι n e (ModuleCat.of R R))
+    (projectiveCechIntTensorCoefficients_self R ι)
 
 /-- The tensor of the actual chain trace at `J = R` respects the original native unitors. -/
 @[reassoc]
@@ -781,50 +757,19 @@ theorem projectiveDerivedTraceCoefficients_self (n : ℕ) (e : ι ≃ Fin (n + 1
           ((DerivedCategory.Plus.singleFunctor (ProjectiveSpace R ι).Modules 0).map
             (projectiveResidueTwistTensorSelfIso R ι).hom)) ≫
       projectiveDerivedTrace R ι n e := by
-  let X := ProjectiveSpace R ι
-  let α := (toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom
-  let ω := twistingSheaf R ι (-(Fintype.card ι : ℤ))
-  let M := projectiveResidueTwistTensorCoefficients R ι (ModuleCat.of R R)
-  let : M.IsQuasicoherent := isQuasicoherent_moduleTensorLeftFunctor ω
-    ((Scheme.Modules.pullback (toSpec R ι)).obj
-      (tilde (R := CommRingCat.of R) (ModuleCat.of R R)))
-  let I := injectiveResolution M
-  let I' := injectiveResolution ω
-  let u := (projectiveResidueTwistTensorSelfIso R ι).hom
-  let φ : InjectiveResolution.Hom I I' u :=
-    ⟨InjectiveResolution.desc u I' I, by
-      simpa only [CochainComplex.single₀_map_f_zero] using
-        InjectiveResolution.desc_commutes_zero u I' I⟩
-  have hD := moduleFiniteCechDerivedGlobalSectionsIso_naturality X α
-    (coordinateOpen R ι) M I n e (isAffineOpen_coordinateOpen R ι)
-    (iSup_coordinateOpen_eq_top R ι) φ
-  have hμ := congrArg (fun q => DerivedCategory.Q.map q)
+  let : (projectiveResidueTwistTensorCoefficients R ι (ModuleCat.of R R)).IsQuasicoherent :=
+    isQuasicoherent_moduleTensorLeftFunctor (twistingSheaf R ι (-(Fintype.card ι : ℤ)))
+      ((Scheme.Modules.pullback (toSpec R ι)).obj
+        (tilde (R := CommRingCat.of R) (ModuleCat.of R R)))
+  exact moduleFiniteCechModelComparison_trace (ProjectiveSpace R ι)
+    ((toSpec R ι).appTop.hom.comp (Scheme.ΓSpecIso (.of R)).inv.hom) (coordinateOpen R ι)
+    (projectiveResidueTwistTensorSelfIso R ι).hom n e
+    (isAffineOpen_coordinateOpen R ι) (iSup_coordinateOpen_eq_top R ι)
+    (projectiveResidueFiniteCechTensorIso R ι n e (ModuleCat.of R R))
+    (projectiveDerivedTrace R ι n e)
     (projectiveResidueFiniteCechTensorIso_self R ι n e)
-  have hf := congrArg (fun q => DerivedCategory.Q.map q)
+    (projectiveFiniteResidueTrace_derived R ι n e)
     (projectiveFiniteResidueTrace_tensorRight_self R ι n e)
-  simp only [CategoryTheory.Functor.map_comp] at hμ hf
-  apply (cancel_epi
-    (projectiveResidueCoefficientsDerivedModelIso R ι n e (ModuleCat.of R R)).hom).mp
-  dsimp only [projectiveDerivedTraceCoefficients]
-  simp only [Iso.hom_inv_id_assoc]
-  rw [projectiveResidueCoefficientsDerivedModelIso_hom]
-  simp only [Category.assoc]
-  rw [← reassoc_of% hD, reassoc_of% hμ]
-  have htrace := projectiveFiniteResidueTrace_derived R ι n e
-  change DerivedCategory.Q.map (projectiveFiniteResidueTrace R ι n e) =
-    (moduleFiniteCechDerivedGlobalSectionsIso X α (coordinateOpen R ι) ω I' n e
-      (isAffineOpen_coordinateOpen R ι) (iSup_coordinateOpen_eq_top R ι)).hom ≫
-      projectiveDerivedTrace R ι n e at htrace
-  rw [← htrace]
-  change DerivedCategory.Q.map
-      (((tensorRight (ModuleCat.of R R)).mapHomologicalComplex (.up ℤ)).map
-        (projectiveFiniteResidueTrace R ι n e)) ≫
-      DerivedCategory.Q.map
-        ((HomologicalComplex.singleMapHomologicalComplex (tensorRight (ModuleCat.of R R))
-          (.up ℤ) (n : ℤ)).hom.app (ModuleCat.of R R)) ≫
-      (DerivedCategory.singleFunctor (ModuleCat.{u} R) (n : ℤ)).map
-        (λ_ (ModuleCat.of R R)).hom = _ at hf
-  exact hf
 
 /-- At the ring coefficient, native top homology retains the unchanged original residue
 functional. -/

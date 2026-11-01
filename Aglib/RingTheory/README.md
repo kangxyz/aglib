@@ -110,3 +110,16 @@ separate obligations.
 level `n^(d+1)` maps to zero at level `n` for positive `n,d`, including
 composite `n` and one. Its natural-number divisibility lemma also allows
 `n = 0`.
+
+## Canonical finite generic separable parts
+
+`Etale/FiniteReducedFactorization` constructs the separable part of a finite
+reduced algebra over a field from its actual residue fields and proves the
+radicial property of its original inclusion. `Localization/SubalgebraPreimage`
+proves that localizing the original inverse-image subalgebra recovers the
+specified localized subalgebra, without a Noetherian or finite-generation
+premise. `Etale/FiniteGenericSubalgebra` combines these maps into the canonical
+intermediate subalgebra; its finiteness over the original base retains the
+Noetherian-base and finite-ambient-module hypotheses. `Localization/FiniteSubalgebra`
+factors a finitely generated fraction-field subalgebra through an actual
+nonzero principal localization, preserving the original inclusion.

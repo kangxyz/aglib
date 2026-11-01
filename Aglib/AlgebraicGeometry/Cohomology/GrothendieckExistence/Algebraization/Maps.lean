@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.Operations
+public import Aglib.AlgebraicGeometry.Cohomology.GrothendieckExistence.Algebraization.NativeOperations
 
 /-! # Lifting algebra maps with the whole original-stage certificate
 

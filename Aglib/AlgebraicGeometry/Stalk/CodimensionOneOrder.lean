@@ -39,6 +39,22 @@ theorem genericPoint_stalk_dimension_zero (X : Scheme.{u}) [IsIntegral X] :
   change ringKrullDim X.functionField = 0
   exact ringKrullDim_eq_zero_of_field _
 
+/-- In an integral scheme, a strict generization of a codimension-one point
+is the original generic point. -/
+theorem generic_of_strict_generalization_of_coheight_one
+    {Y : Scheme.{u}} [IsIntegral Y] {x y : Y} (hx : Order.coheight x = 1)
+    (hy : y ⤳ x) (hne : y ≠ x) : y = genericPoint Y := by
+  have hxy : x < y := lt_iff_le_not_ge.mpr
+    ⟨hy, fun h => hne (Specializes.antisymm hy h).eq⟩
+  have hh : Order.coheight y + 1 ≤ 1 := by
+    simpa only [hx] using Order.coheight_add_one_le hxy
+  have hy0 : Order.coheight y = 0 := by
+    apply le_antisymm _ bot_le
+    exact (ENat.add_le_add_iff_right (by simp : (1 : ℕ∞) ≠ ⊤)).mp hh
+  have hm := Order.coheight_eq_zero.mp hy0
+  apply (Specializes.antisymm _ ((genericPoint_spec Y).specializes (Set.mem_univ y))).eq
+  exact hm ((genericPoint_spec Y).specializes (Set.mem_univ y))
+
 namespace CodimensionOnePoint
 
 /-- A codimension-one point is closed if every actual stalk has dimension at most one. -/

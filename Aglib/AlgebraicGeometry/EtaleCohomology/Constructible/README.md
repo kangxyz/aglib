@@ -346,5 +346,25 @@ Arbitrary pullback, Zariski and jointly surjective etale descent, and
 finite-etale image constructibility are supplied. Finite sums/products work
 over arbitrary commutative rings; kernel, cokernel and extension closure uses
 a Noetherian coefficient ring and retains the weak-Serre scope.
-General finite-image constructibility, arbitrary qcqs-surjective descent and
+Finite-image constructibility over arbitrary targets, arbitrary qcqs-surjective descent and
 Noetherian-model descent of coefficient objects/arrows remain separate results.
+
+## Reduced closed-support partition induction and finite module images
+
+[NoetherianInduction](FiniteStratification/NoetherianInduction.lean) constructs
+an actual finite partition of a Noetherian scheme from generic-open pieces on
+every nonempty reduced closed subscheme. Its predicate is on the original
+stratum maps; reduced complements and all inclusion maps are constructed by
+the induction. The empty-source branch has an empty partition.
+
+The [module finite-image theorem](Modules/FiniteImageLocallyNoetherian.lean)
+uses this constructor with current actual-partition detection. Every finite
+map with locally Noetherian target preserves genuine constructible module
+coefficients over an arbitrary commutative ring in an independent universe.
+The original finite map needs no extra finite-presentation premise.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteCogenerators/ConnectedTrivialization](FiniteCogenerators/ConnectedTrivialization.lean)

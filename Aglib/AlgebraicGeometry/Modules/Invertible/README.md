@@ -163,3 +163,9 @@ original unit/frame and tensor-section comparison used by the ample-kernel proof
 [Power](Ample/Power.lean) provides the positive-power ampleness converse for
 the original line bundle; [Nonzero](Nonvanishing/Nonzero.lean) supplies the
 original nonzero-section interface used by the ample criterion.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Bidual/Affine](Bidual/Affine.lean)

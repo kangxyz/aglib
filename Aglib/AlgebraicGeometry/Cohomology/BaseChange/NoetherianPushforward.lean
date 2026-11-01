@@ -6,6 +6,7 @@ Authors: kangxyz
 
 module
 
+public import Aglib.AlgebraicGeometry.Modules.Flat.Relative.LocallyFree
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.LocallyNoetherian
 public import Aglib.AlgebraicGeometry.Cohomology.BaseChange.HigherDirectImage.Nonflat.Affine
 public import Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.Square
@@ -626,25 +627,7 @@ theorem pushforward_hasRank_of_geometric_concentration
       (moduleH0Equiv (Over.mk b) N).symm
   exact E.finrank_eq.trans (hgeom K t).1
 
-/-- A locally free coefficient is flat over the base of a flat morphism. -/
-theorem relativeFlat_of_isLocallyFree_of_flat
-    {X S : Scheme.{u}} (f : X ⟶ S) [Flat f] (M : X.Modules)
-    [SheafOfModules.IsLocallyFree.{u} M] : relativeFlat f M := by
-  obtain ⟨q, hq⟩ := SheafOfModules.IsLocallyFree.exists_isLocallyFreeData (M := M)
-  intro x
-  obtain ⟨i, hi⟩ := (_root_.Opens.coversTop_iff X q.X).mp q.coversTop |>.exists_mem x
-  let U : X.Opens := q.X i
-  let E : M.restrict U.ι ≅
-      SheafOfModules.free (R := U.toScheme.ringCatSheaf) (q.generators i).I :=
-    (restrictFunctorIsoPullback U.ι).app M ≪≫ (localBasisRestrictedIso M q hq i).symm
-  have hfree : relativeFlat (U.ι ≫ f)
-      (SheafOfModules.free (R := U.toScheme.ringCatSheaf) (q.generators i).I) :=
-    relativeFlat_coproduct (U.ι ≫ f)
-      (fun _ : (q.generators i).I => SheafOfModules.unit U.toScheme.ringCatSheaf)
-      (fun _ => relativeFlat_unit_of_flat (U.ι ≫ f))
-  have hlocal : relativeFlat (U.ι ≫ f) (M.restrict U.ι) :=
-    relativeFlat_of_iso (U.ι ≫ f) E hfree
-  exact flat_stalk_of_flat_stalk_restrict U.ι f M ⟨x, hi⟩ (hlocal ⟨x, hi⟩)
+
 
 end AlgebraicGeometry.Scheme.Modules
 

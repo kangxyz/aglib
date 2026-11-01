@@ -57,10 +57,9 @@ theorem exists_finiteEtale_moduleSheafRetraction (n : ℕ)
     ∃ r : (moduleDirectImage R Y.obj.hom).obj ((moduleInverseImage R Y.obj.hom).obj F) ⟶ F,
       (moduleImageAdjunction R Y.obj.hom).unit.app F ≫ r = 𝟙 F := by
   obtain ⟨tr, htr⟩ := exists_finiteEtale_moduleSheafTrace R Y n hn
-  let : IsIso (n • 𝟙 F) := Preadditive.isIso_nsmul_id_of_coprime F n p hcop hp
-  refine ⟨tr.app F ≫ inv (n • 𝟙 F), ?_⟩
-  rw [← Category.assoc, htr F]
-  exact IsIso.hom_inv_id (n • 𝟙 F)
+  let h := Preadditive.retractOfCoprimeTrace
+    ((moduleImageAdjunction R Y.obj.hom).unit.app F) (tr.app F) n p (htr F) hcop hp
+  exact ⟨h.r, h.retract⟩
 
 /-- The exact module-sheaf unit is split under the coprime-annihilator hypotheses. -/
 theorem finiteEtale_moduleUnit_isSplitMono (n : ℕ)
@@ -80,8 +79,9 @@ theorem exists_finiteEtale_moduleSheafRetraction_map (n : ℕ)
     ∃ r : G.obj ((moduleDirectImage R Y.obj.hom).obj
         ((moduleInverseImage R Y.obj.hom).obj F)) ⟶ G.obj F,
       G.map ((moduleImageAdjunction R Y.obj.hom).unit.app F) ≫ r = 𝟙 _ := by
-  obtain ⟨r, hr⟩ := exists_finiteEtale_moduleSheafRetraction R Y n hn F p hcop hp
-  refine ⟨G.map r, ?_⟩
-  exact (G.map_comp _ _).symm.trans ((congrArg G.map hr).trans (G.map_id F))
+  obtain ⟨tr, htr⟩ := exists_finiteEtale_moduleSheafTrace R Y n hn
+  let h := (Preadditive.retractOfCoprimeTrace
+    ((moduleImageAdjunction R Y.obj.hom).unit.app F) (tr.app F) n p (htr F) hcop hp).map G
+  exact ⟨h.r, h.retract⟩
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

@@ -53,3 +53,9 @@ extended-ideal bound to the original scalar ring, with the stated scalar
 towers. Neither result needs finiteness or flatness. The affine bounded
 reconstruction in Grothendieck existence uses these bounds on its actual
 comparison maps.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [SemilinearConjugate](SemilinearConjugate.lean)

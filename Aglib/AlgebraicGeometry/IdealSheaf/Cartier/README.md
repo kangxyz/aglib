@@ -42,3 +42,10 @@ adapters retain the same original ideal module and canonical maps.
 
 Interface source: R5 packet revision `f8a3314ddecffcada2ec721d26d56a937bed9690`,
 `R5Lab.Aglib.AlgebraicGeometry.Divisors.Cartier.{Interfaces,Restriction}`.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Avoidance](Avoidance.lean)
+- [RegularQuotient](RegularQuotient.lean)

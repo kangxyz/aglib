@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.IdealSheaf.Cartier.Interfaces
+public import Aglib.AlgebraicGeometry.IdealSheaf.ClosedImmersionStalk
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine
 public import Aglib.AlgebraicGeometry.IdealSheaf.LocallyClosed
 public import Aglib.AlgebraicGeometry.IdealSheaf.BaseChange.Affine
@@ -39,18 +40,6 @@ universe u
 namespace AlgebraicGeometry.Scheme.Hom
 
 variable {X D Y D' : Scheme.{u}}
-
-/-- The kernel ideal data in an actual cartesian square of a closed immersion is
-the native inverse-image ideal data. -/
-theorem ker_eq_comap_of_isPullback_of_isClosedImmersion
-    (i : D ⟶ X) (i' : D' ⟶ Y) (f : Y ⟶ X) (a : D' ⟶ D)
-    (H : IsPullback a i' i f) [IsClosedImmersion i] : i'.ker = i.ker.comap f := by
-  have hsnd : (pullback.snd i f).ker = i.ker.comap f := by
-    rw [← Scheme.IdealSheafData.ker_fst_of_isClosedImmersion i f,
-      ← Hom.ker_comp_of_isIso (pullbackSymmetry i f).hom (pullback.fst f i)]
-    simp
-  rw [← hsnd, ← Hom.ker_comp_of_isIso H.isoPullback.hom (pullback.snd i f)]
-  simp
 
 /-- An inverse-image ideal avoiding containment has a nonzero ideal on every
 nonempty affine chart of an integral scheme. -/

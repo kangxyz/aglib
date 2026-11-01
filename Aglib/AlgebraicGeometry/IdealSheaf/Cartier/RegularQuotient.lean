@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.IdealSheaf.Modules.Stalk
+public import Aglib.AlgebraicGeometry.IdealSheaf.ClosedImmersionStalk
 public import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.StalkKernel
 public import Aglib.AlgebraicGeometry.Modules.Pullback.LocalSpectrum
 public import Aglib.AlgebraicGeometry.Modules.Invertible.LocalRing
@@ -33,15 +34,6 @@ namespace AlgebraicGeometry.Scheme.Hom
 universe u
 
 variable {Z X : Scheme.{u}}
-
-/-- The stalk of the actual kernel ideal sheaf at an image point is the kernel
-of the original closed-immersion stalk map. -/
-theorem ker_stalkIdeal_eq_ker_stalkMap (i : Z ⟶ X) [IsClosedImmersion i] (z : Z) :
-    i.ker.stalkIdeal (i z) = RingHom.ker (i.stalkMap z).hom := by
-  obtain ⟨U, hU, hxU, _⟩ := exists_isAffineOpen_mem_and_subset
-    (show i z ∈ (⊤ : X.Opens) from trivial)
-  rw [i.ker.stalkIdeal_eq_map ⟨U, hU⟩ (i z) hxU, i.ker_apply ⟨U, hU⟩,
-    ker_stalkMap_eq_map_ker_app i U hU z hxU]
 
 /-- A regular point of a closed subscheme with locally rank-one actual ideal module
 has a regular ambient local ring, provided that ambient local ring is Noetherian. -/

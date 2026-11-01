@@ -27,8 +27,8 @@ def etaleRepresentativeSection {X : Scheme.{u}}
     (F : AbelianSheaf.{u, u + 1} X) (Y : Over X) (U : X.Etale)
     (a : Y ⟶ (Etale.forget X).obj U) (s : F.obj.obj (op U)) :
     (pullbackSectionsFunctor F).obj (op Y) :=
-  (pullbackSectionsFunctor F).map a.op
-    ((pullbackSectionsEtaleEvaluationIso F U).inv s)
+  Functor.representativeSection (Etale.forget X) (pullbackSectionsFunctor F)
+    (pullbackSectionsEtaleNatIso F) U a s
 
 /-- Restriction retains the literal composite of the original relative maps. -/
 lemma etaleRepresentativeSection_restrict {X : Scheme.{u}}

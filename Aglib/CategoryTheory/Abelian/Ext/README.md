@@ -16,3 +16,11 @@ identifies it with the original pullback family by the mate and source laws.
 Its indexed source transport is derived and consumed inside the general
 comparison construction. The four category and Ext worlds remain independent;
 invertibility is required only at the selected exchange component.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DiagramMap/RestrictionSquare](DiagramMap/RestrictionSquare.lean)
+- [DiagramMap/Scalars](DiagramMap/Scalars.lean)
+- [SourceTransfer/SourceNaturality](SourceTransfer/SourceNaturality.lean)

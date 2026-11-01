@@ -95,3 +95,9 @@ for the root-stalk action and proves its original root-marked scalar formula.
 étale cover killing an original H¹ class of a finite locally constant
 abelian sheaf on any scheme. On a connected base it gives a connected Galois
 refinement.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteEtaleCoinduction](FiniteEtaleCoinduction.lean)

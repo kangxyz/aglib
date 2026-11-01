@@ -159,3 +159,9 @@ Nitsure, arXiv:math/0504590v1, Lemma 2.1 (c), p. 10, and `O(m) ⊗ F` is globall
 `O(m) ⊗ F = 0`, and `F = 0` by tensoring with `O(-m)` (`twistingTensorEquivalence`). Stacks has no
 direct statement (compare Tag 08AE); Tags 0BEN (Lemma 33.45.2) and 0BEV (Lemma 33.45.9) give an
 indirect route. Consumer: [HilbertScheme/Nonempty](../../../HilbertScheme/Nonempty.lean).
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [EulerCharacteristic](EulerCharacteristic.lean)

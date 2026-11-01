@@ -161,3 +161,9 @@ the whole compatible family; individual comparison components need not be
 injective. The [bounded coherent reconstruction](../../Cohomology/GrothendieckExistence/BoundedCoherentReconstruction.lean)
 and [formal modification comparison](../../Cohomology/GrothendieckExistence/FormalModificationBoundedComparison.lean)
 consume these original restriction, gluing, and equality interfaces.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FreeFrameCompatibility](FreeFrameCompatibility.lean)

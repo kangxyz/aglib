@@ -117,3 +117,11 @@ free-sheaf, module-sheaf or cohomology realization.
 left-exact comparison to module-sheaf internal Hom using proved injective-image
 acyclicity. Its ordinary-cohomology inverse, degree-zero and target naturality
 laws retain actual target acyclicity and independent Ext universes.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DiagramTransfer](DiagramTransfer.lean)
+- [ModuleCompositeCoefficient](ModuleCompositeCoefficient.lean)
+- [ModuleCompositeNaturality](ModuleCompositeNaturality.lean)

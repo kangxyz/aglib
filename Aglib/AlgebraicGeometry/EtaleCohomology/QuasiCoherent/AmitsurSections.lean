@@ -51,22 +51,6 @@ instance : (moduleAdditiveLift R).Additive :=
   inferInstanceAs (forget₂ (ModuleCat.{u} R) AddCommGrpCat.{u} ⋙
     AddCommGrpCat.uliftFunctor.{u + 1, u}).Additive
 
-/-- The actual tensor-section map with only its additive structure retained. -/
-def tensorSectionsAddHom (A : CommAlgCat.{u} R) :
-    A ⊗[R] moduleSpecΓFunctor.obj F →+
-      Γ((pullback (Spec.map (CommRingCat.ofHom (algebraMap R A)))).obj F, ⊤) :=
-  (specTensorSectionsIso R F A).hom.hom.toAddMonoidHom
-
-/-- All algebra-map compatibility is checked on native additive maps before value lifting. -/
-theorem tensorSectionsAddHom_naturality {A B : CommAlgCat.{u} R} (f : A ⟶ B) :
-    (tensorSectionsAddHom R F B).comp
-      (f.hom.toLinearMap.rTensor (moduleSpecΓFunctor.obj F)).toAddMonoidHom =
-    (sectionsAddHom (Spec (CommRingCat.of R)) F
-      ((algSpec (CommRingCat.of R)).map f.op)).comp (tensorSectionsAddHom R F A) := by
-  apply tensorSectionAddHom_ext
-  intro a s
-  exact (sectionsPresheaf_map_specTensor_tmul R F f a s).symm
-
 /-- Tensor coordinates form a natural isomorphism for all native algebra maps. -/
 def specTensorSectionsNatIso :
     ModuleCat.Amitsur.tensorModule R (moduleSpecΓFunctor.obj F) ⋙ moduleAdditiveLift R ≅

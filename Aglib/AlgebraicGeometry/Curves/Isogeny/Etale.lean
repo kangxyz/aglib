@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Group.CurveIsogeny
-public import Aglib.AlgebraicGeometry.FunctionField.GenericFiber
+public import Aglib.AlgebraicGeometry.FunctionField.Finite
 public import Aglib.AlgebraicGeometry.Group.ScalarExtension
 public import Aglib.AlgebraicGeometry.Group.Translation.LocalProperty
 public import Aglib.AlgebraicGeometry.Morphisms.Etale.Locus
@@ -47,15 +47,6 @@ namespace AlgebraicGeometry.Scheme
 
 variable {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
 
-/-- The actual generic-field map of a finite dominant morphism is finite. -/
-theorem functionFieldMap_finite (f : X ⟶ Y) [IsDominant f] [IsFinite f] :
-    (functionFieldMap f).Finite := by
-  let : IsIso (genericFibreMap f) := genericFibreMap_isIso f
-  have h : IsFinite (Spec.map (CommRingCat.ofHom (functionFieldMap f))) := by
-    rw [← show genericFibreMap f ≫ pullback.snd f (Y.fromSpecStalk (genericPoint Y)) =
-      Spec.map (CommRingCat.ofHom (functionFieldMap f)) from pullback.lift_snd _ _ _]
-    infer_instance
-  exact (IsFinite.SpecMap_iff _).mp h
 
 /-- Characteristic zero makes the finite extension on the actual generic fields
 formally etale; no separability premise is supplied. -/

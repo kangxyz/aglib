@@ -100,3 +100,17 @@ The canonical line base-change isomorphism and original inverse-image
 composition identify it with the categorical field comparison. Both fields are
 separably closed; the original coefficient is killed by a nonzero integer, and
 the conclusion holds in every degree.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [BoundedClassFiniteConstant](BoundedClassFiniteConstant.lean)
+- [FiniteSeparableZero](FiniteSeparableZero.lean)
+- [SeparableExtension/FiniteConstants/ConstantMaps](SeparableExtension/FiniteConstants/ConstantMaps.lean)
+- [SeparableExtension/FiniteConstants/FiniteTypeCohomology](SeparableExtension/FiniteConstants/FiniteTypeCohomology.lean)
+- [SeparableExtension/FiniteConstants/StageCohomology](SeparableExtension/FiniteConstants/StageCohomology.lean)
+- [TwoFieldEffacement/Boundary](TwoFieldEffacement/Boundary.lean)
+- [TwoFieldEffacement/CommonFieldCompositeZero](TwoFieldEffacement/CommonFieldCompositeZero.lean)
+- [TwoFieldEffacement/FiniteSource](TwoFieldEffacement/FiniteSource.lean)
+- [TwoFieldEffacement/ScalarSquare](TwoFieldEffacement/ScalarSquare.lean)

@@ -178,3 +178,9 @@ quasicoherent base coefficient; coherent bijectivity requires a Noetherian
 separated base and coherent source. The chosen closed-embedding comparison
 retains the actual right-adjoint coefficient. Internal RHom, coefficient
 complexes, embedding independence and general proper duality remain separate.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Coefficients](Coefficients.lean)

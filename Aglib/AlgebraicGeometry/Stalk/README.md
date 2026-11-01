@@ -72,3 +72,11 @@ the original germ. No properness of the scheme map, Noetherianity, completeness,
 or flatness is required. The
 [finite-etale good-open construction](../Morphisms/FiniteEtale/Adic/CoherentGoodOpens.lean)
 uses this proper-ideal condition in the finite local etaleness criterion.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DVRVerticalCodimension](DVRVerticalCodimension.lean)
+- [EtaleLocalBase](EtaleLocalBase.lean)
+- [SmoothDVRParameter](SmoothDVRParameter.lean)

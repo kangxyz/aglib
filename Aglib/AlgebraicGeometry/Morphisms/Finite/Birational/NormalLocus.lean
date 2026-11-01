@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Morphisms.Finite.Birational
-public import Aglib.AlgebraicGeometry.Stalk.FlatBaseChange
+public import Aglib.AlgebraicGeometry.Stalk.IntegralBaseChange
 
 /-!
 # Finite birational maps with normality only outside the isomorphism open
@@ -28,37 +28,6 @@ open CategoryTheory Limits TopologicalSpace
 universe u
 
 namespace AlgebraicGeometry.Scheme
-
-private theorem isIntegral_pullback_fromSpecStalk
-    {Y X : Scheme.{u}} [IsIntegral Y] [IsIntegral X]
-    (p : Y ⟶ X) [IsDominant p] (x : X) :
-    IsIntegral (pullback p (X.fromSpecStalk x)) := by
-  let s := X.fromSpecStalk x
-  let a := pullback.fst p s
-  let : Flat s := Scheme.fromSpecStalk_flat X x
-  let (z : (pullback p s : Scheme.{u})) :
-      IsDomain ((pullback p s).presheaf.stalk z) := by
-    let : IsIso (a.stalkMap z) :=
-      Hom.isIso_stalkMap_of_flat_of_surjectiveOnStalks a z
-    exact (asIso (a.stalkMap z)).commRingCatIsoToRingEquiv.symm.toMulEquiv.isDomain _
-  let : IsReduced (pullback p s) := isReduced_of_isReduced_stalk _
-  have hg : genericPoint X ∈ Set.range s := by
-    rw [Scheme.range_fromSpecStalk]
-    exact (genericPoint_spec X).specializes trivial
-  obtain ⟨t, ht⟩ := hg
-  obtain ⟨z, hz, _⟩ := Scheme.Pullback.exists_preimage_pullback (genericPoint Y) t
-    ((Scheme.map_genericPoint_of_isDominant Y p).trans ht.symm)
-  have hgeneric : IsGenericPoint z (Set.univ : Set (pullback p s : Scheme.{u})) := by
-    apply isGenericPoint_iff_specializes.mpr
-    intro w
-    refine ⟨fun _ => trivial, fun _ => ?_⟩
-    apply a.isEmbedding.isInducing.specializes_iff.mp
-    change pullback.fst p s z ⤳ pullback.fst p s w
-    rw [hz]
-    exact (genericPoint_spec Y).specializes trivial
-  let : IrreducibleSpace (pullback p s : Scheme.{u}) :=
-    (irreducibleSpace_def _).mpr hgeneric.isIrreducible
-  exact isIntegral_of_irreducibleSpace_of_isReduced _
 
 private theorem isIso_restrict_pullback_snd
     {Y X T : Scheme.{u}} (p : Y ⟶ X) (s : T ⟶ X) (U : X.Opens)

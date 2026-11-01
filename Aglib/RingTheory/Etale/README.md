@@ -102,3 +102,9 @@ ring. If `(p : R) = 0`, the quotient is étale, including when `R` is the zero
 ring. The scheme root-cover consumer belongs to
 [EtaleCohomology/ArtinSchreier](../../AlgebraicGeometry/EtaleCohomology/ArtinSchreier/README.md);
 the full additive coefficient sequence is not asserted there.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [NilpotentScalarIso](NilpotentScalarIso.lean)

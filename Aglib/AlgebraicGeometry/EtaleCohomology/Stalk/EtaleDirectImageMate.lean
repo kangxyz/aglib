@@ -66,7 +66,7 @@ private theorem directImage_eqToIso_transform {X S : Scheme.{u}} {f g : S ⟶ X}
   change (𝟙 _) = F.obj.map (𝟙 _)
   exact (F.obj.map_id _).symm
 
-private theorem directImageSquareIso_transform {X S X' S' : Scheme.{u}}
+theorem directImageSquareIso_transform {X S X' S' : Scheme.{u}}
     (f : X ⟶ S) (f' : X' ⟶ S') (g : S' ⟶ S) (g' : X' ⟶ X)
     (h : f' ≫ g = g' ≫ f) :
     (directImageSquareIso f f' g g' h).hom =

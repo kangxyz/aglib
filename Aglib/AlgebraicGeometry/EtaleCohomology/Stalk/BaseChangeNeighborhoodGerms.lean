@@ -461,7 +461,7 @@ theorem higherBaseChangeMap_fibreProductSection
     (hDX := hDX) (hDS := hDS) (hDX' := hDX') (hDS' := hDS')
     (hDZU := hDZU) (hDU := hDU) (hDZV := hDZV) (hDV := hDV) F q
 
-private theorem higherBaseChangeMap_fibreProductGerm_hom
+theorem higherBaseChangeMap_fibreProductGerm_hom
     (F : AbelianSheaf.{u, u + 1} X) (q : ℕ)
     {Ω : Type u} [Field Ω] [IsSepClosed Ω] (ζ : Spec (.of Ω) ⟶ S')
     (p : (pointSmallEtale (ζ ≫ g)).fiber.obj U) :

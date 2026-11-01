@@ -88,10 +88,10 @@ theorem pullbackConeCoefficientComponent_triangle {i j : I} (a : i ⟶ j) :
         triangleCoefficientMap (Y.map a).unop (c.ι.app i).unop (c.ι.app j).unop
           (congrArg Quiver.Hom.unop (c.w a)) (pullbackCoefficientTransition Y b F a) =
       (pullbackConeCoefficientComponent Y b c l hl F j).hom := by
-  exact triangle_fixed_coefficient (b.π.app i).unop (b.π.app j).unop l.unop
-    (Y.map a).unop (c.ι.app i).unop (c.ι.app j).unop
-    (congrArg Quiver.Hom.unop (b.w a)) (congrArg Quiver.Hom.unop (hl i))
-    (congrArg Quiver.Hom.unop (hl j)) (congrArg Quiver.Hom.unop (c.w a)) F
+  have h := congrArg (fun t => t.app F) (fixed_coefficient_diagram_nat Y b c l hl a)
+  simp only [NatTrans.comp_app, Functor.whiskerLeft_app, Functor.whiskerRight_app,
+    Functor.associator_inv_app, Category.id_comp] at h
+  exact h
 
 /-- The native cone coefficient map retains the original fixed-sheaf triangle transition. -/
 theorem coneCoefficientMap_pullbackCoefficientSystem {i j : I} (a : i ⟶ j) :
@@ -101,6 +101,21 @@ theorem coneCoefficientMap_pullbackCoefficientSystem {i j : I} (a : i ⟶ j) :
   congrArg (triangleCoefficientMap (Y.map a).unop (c.ι.app i).unop (c.ι.app j).unop
     (congrArg Quiver.Hom.unop (c.w a)))
       (diagramInverseTransition_pullbackCoefficientSystem Y b F a)
+
+/-- The original fixed-coefficient transition agrees with the abstract triangle map. -/
+theorem triangleCoefficientMap_fixed_eq_scheme
+    {X Y Z T : Scheme.{u}ᵒᵖ} (f : X ⟶ Y) (g : X ⟶ Z)
+    (a : Y ⟶ Z) (p : Y ⟶ T) (q : Z ⟶ T)
+    (ha : f ≫ a = g) (ht : a ≫ q = p)
+    (F : AbelianSheaf.{u, u + 1} X.unop) :
+    triangleCoefficientMap a.unop p.unop q.unop (congrArg Quiver.Hom.unop ht)
+        ((pullbackTriangleIso g.unop f.unop a.unop
+          (congrArg Quiver.Hom.unop ha)).inv.app F) =
+      schemeAdjunctionData.triangleCoefficientMap a p q ht
+        ((schemeAdjunctionData.triangleIso g f a ha).inv.app F) := by
+  simp only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
+    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage,
+    triangleCoefficientMap]
 
 include hl in
 /-- The actual pulled-back coefficient diagram is canonically constant. -/
@@ -119,11 +134,11 @@ def pullbackConeCoefficientIso :
       (c.ι.app i) (c.ι.app j) (c.w a)
       ((schemeAdjunctionData.triangleIso (b.π.app j) (b.π.app i)
         (Y.map a) (b.w a)).inv.app F) ≫ 𝟙 _
-  rw [Category.id_comp, Category.comp_id, coneCoefficientMap_pullbackCoefficientSystem]
-  simp only [InjectiveSystem.AdjunctionData.triangleCoefficientMap,
-    schemeTriangleIso_eq_pullbackTriangleIso, schemeLeft_eq_inverseImage, triangleCoefficientMap,
-    pullbackCoefficientTransition]
-  rfl
+  have hm := coneCoefficientMap_pullbackCoefficientSystem Y b c F a
+  have ht := triangleCoefficientMap_fixed_eq_scheme (b.π.app i) (b.π.app j)
+    (Y.map a) (c.ι.app i) (c.ι.app j) (b.w a) (c.w a) F
+  have hmap := hm.trans ht
+  simpa only [Category.id_comp, Category.comp_id] using hmap
 
 /-- The generic constancy isomorphism retains every original structural component. -/
 theorem pullbackConeCoefficientIso_app (i : I) :

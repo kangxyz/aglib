@@ -5,3 +5,12 @@
 [PullbackMaps](PullbackMaps.lean) constructs right-cospan maps in the original standard and flipped pullback orders, proves their projection and composition laws, and identifies the actual fibre map with the pasted Cartesian comparison. Only invertibility requires the original IsPullback premise.
 
 The étale fixed-point comparison adapters and the common-point geometric-fibre base-change map use these same constructors and projections.
+
+## Entire pullback chart maps
+
+[FullPullbackChart](FullPullbackChart.lean) constructs
+`Over.fullPullbackChartMap` in any category with pullbacks. An actual Cartesian
+square and an actual Over-isomorphism give the map from the entire composite
+pullback into the supplied source chart. `fullPullbackChartMap_over` proves
+its original source-projection equation. Finite radicial chart geometry uses
+this same constructor without a second chart realization.

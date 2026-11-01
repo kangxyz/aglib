@@ -88,3 +88,9 @@ higher fibre cohomology vanishes (Kleiman's (4.8.3), p. 29, with `m = 0`, which
 is stronger than 3.10 (v)), the direct image `E = f_*M` is locally free of rank
 `r` and commutes with every base change, so `Q = E^∨` is locally free
 (3.10 (i)).
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [HigherDirectImage/Nonflat/AffineTensorCriterion](HigherDirectImage/Nonflat/AffineTensorCriterion.lean)

@@ -101,3 +101,11 @@ functions or any flatness or finiteness premise.
 [PresentationUnit](PresentationUnit.lean) retains the inverse-coordinate unit image as a regular
 predicate. The original presentation factorization and its pure-tensor image
 prove it by abstract isomorphism cancellation before concrete specialization.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [RestrictionData/OriginalMates](RestrictionData/OriginalMates.lean)
+- [Square/IsIso](Square/IsIso.lean)
+- [TopComparison](TopComparison.lean)

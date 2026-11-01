@@ -63,3 +63,10 @@ group map from its finite actual kernel for locally finite-type group schemes
 over any base, using geometric fibres and the marked-kernel torsor.
 [Finite](Finite.lean) gives finiteness over any base when the source is proper
 and the locally finite-type target is separated.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ClosedImmersion](ClosedImmersion.lean)
+- [ScalarExtension](ScalarExtension.lean)

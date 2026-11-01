@@ -12,3 +12,9 @@ additive reindexing and coordinate isomorphisms. Its full value equation
 `t ≫ b.hom = a.hom ≫ E.hom` proves invertibility of the original arrow, including
 transport through an existing source isomorphism, with independent coefficient
 and index universes and no finite-index premise.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Grp/ComparisonComposite](Grp/ComparisonComposite.lean)

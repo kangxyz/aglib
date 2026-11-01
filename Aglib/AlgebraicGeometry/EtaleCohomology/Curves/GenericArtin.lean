@@ -9,6 +9,7 @@ public import Aglib.AlgebraicGeometry.EtaleCohomology.Picard.LocalRing
 public import Mathlib.AlgebraicGeometry.Artinian
 public import Mathlib.AlgebraicGeometry.Stalk
 public import Mathlib.AlgebraicGeometry.Limits
+public import Aglib.AlgebraicGeometry.Morphisms.Flat.GenericPoints
 
 /-!
 # Actual generic Artin loci
@@ -29,13 +30,6 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology.Curves
 universe u w
 
 variable (X : Scheme.{u})
-
-/-- A component-generic point is maximal in the scheme's specialization order. -/
-theorem genericPoint_isMax (η : genericPoints X) : IsMax η.val := by
-  intro x hx
-  change η.val ⤳ x
-  exact specializes_iff_closure_subset.mpr
-    (η.property.2 isIrreducible_singleton.closure hx.closure_subset)
 
 /-- The actual stalk ring at a component-generic point has dimension zero. -/
 theorem genericStalk_krullDimLE_zero (η : genericPoints X) :

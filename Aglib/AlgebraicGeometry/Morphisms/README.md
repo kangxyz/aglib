@@ -66,3 +66,9 @@ pairwise disjoint opens `V k`, each separated over `S`, is separated over `S`
 (for `V ≤ U`, `U.ι ⁻¹ᵁ V ⟶ U ⟶ P` has image `V`) and `isSeparated_comp_iff_of_range_eq` (open
 immersions with the same image are separated over `S` together). No finiteness or Noetherian
 hypothesis. Consumer: `Picard/Scheme/Separated`.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Restrict/BaseOpen](Restrict/BaseOpen.lean)

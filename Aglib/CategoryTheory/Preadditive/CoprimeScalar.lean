@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Mathlib.CategoryTheory.Preadditive.Basic
+public import Mathlib.CategoryTheory.Retract
 public import Mathlib.Data.Int.GCD
 
 /-! # Coprime scalar inversion on an annihilated object
@@ -41,5 +42,22 @@ theorem isIso_nsmul_id_of_coprime (A : C) (n p : ℕ) (hcop : n.Coprime p)
   · rw [← natCast_zsmul (𝟙 A) n]
     rw [zsmul_comp, comp_zsmul, Category.id_comp, ← mul_smul, mul_comm]
     exact hs
+
+/-- A trace whose composite is a scalar prime to an annihilator gives a native
+retract, retaining the original forward arrow. -/
+def retractOfCoprimeTrace {A B : C} (i : A ⟶ B) (t : B ⟶ A)
+    (n p : ℕ) (ht : i ≫ t = n • 𝟙 A) (hcop : n.Coprime p)
+    (hp : p • 𝟙 A = 0) : Retract A B := by
+  let : IsIso (n • 𝟙 A) := isIso_nsmul_id_of_coprime A n p hcop hp
+  exact { i := i
+          r := t ≫ inv (n • 𝟙 A)
+          retract := by rw [← Category.assoc, ht]; exact IsIso.hom_inv_id _ }
+
+/-- The coprime trace retract uses exactly the supplied forward arrow. -/
+@[simp]
+theorem retractOfCoprimeTrace_i {A B : C} (i : A ⟶ B) (t : B ⟶ A)
+    (n p : ℕ) (ht : i ≫ t = n • 𝟙 A) (hcop : n.Coprime p)
+    (hp : p • 𝟙 A = 0) :
+    (retractOfCoprimeTrace i t n p ht hcop hp).i = i := rfl
 
 end CategoryTheory.Preadditive

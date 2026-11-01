@@ -11,9 +11,9 @@ public import Mathlib.AlgebraicGeometry.Morphisms.QuasiFinite
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 
 /-!
-# The actual generic fibre of a finite dominant morphism
+# The actual generic fibre of a locally quasi-finite dominant morphism
 
-For finite dominant maps of integral schemes, the canonical lift from the
+For locally quasi-finite dominant maps of integral schemes, the canonical lift from the
 source generic stalk is an isomorphism. No Noetherian, normality, separability
 or dimension hypothesis occurs.
 
@@ -75,7 +75,7 @@ private theorem reduced_of_flat_preimmersion {X Y : Scheme.{u}}
 
 /-- The original lift from the actual generic-point stalk is an isomorphism. -/
 theorem genericFibreMap_isIso {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
-    (f : X ⟶ Y) [IsDominant f] [IsFinite f] : IsIso (genericFibreMap f) := by
+    (f : X ⟶ Y) [IsDominant f] [LocallyQuasiFinite f] : IsIso (genericFibreMap f) := by
   let P := pullback f ((Y.fromSpecStalk (genericPoint Y)))
   let p : P ⟶ X := pullback.fst f ((Y.fromSpecStalk (genericPoint Y)))
   let q : P ⟶ Spec Y.functionField := pullback.snd f ((Y.fromSpecStalk (genericPoint Y)))
@@ -85,8 +85,8 @@ theorem genericFibreMap_isIso {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral Y]
   have : IsPreimmersion p :=
     inferInstanceAs (IsPreimmersion (pullback.fst f ((Y.fromSpecStalk (genericPoint Y)))))
   have : Flat p := inferInstanceAs (Flat (pullback.fst f ((Y.fromSpecStalk (genericPoint Y)))))
-  have : IsFinite q :=
-    inferInstanceAs (IsFinite (pullback.snd f ((Y.fromSpecStalk (genericPoint Y)))))
+  have : LocallyQuasiFinite q :=
+    inferInstanceAs (LocallyQuasiFinite (pullback.snd f ((Y.fromSpecStalk (genericPoint Y)))))
   have : IsLocallyArtinian P := IsLocallyArtinian.of_locallyQuasiFinite q
   have : DiscreteTopology P := inferInstance
   have hp : ∀ x : P, p x = genericPoint X := by

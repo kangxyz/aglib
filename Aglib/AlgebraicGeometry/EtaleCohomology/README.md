@@ -208,3 +208,13 @@ remain outside this family.
 [ModuleRootsComposition](Kummer/ModuleRootsComposition.lean) retain the
 original roots inverse-image composition for positive globally invertible
 levels, including its module-sheaf lift.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Kummer/Field](Kummer/Field.lean)
+- [Kummer/FiniteCoproduct](Kummer/FiniteCoproduct.lean)
+- [Kummer/RelativeNormalizedPicard](Kummer/RelativeNormalizedPicard.lean)
+- [ModuleCoefficients/FiniteEtaleDescent](ModuleCoefficients/FiniteEtaleDescent.lean)
+- [Pullback/UniverseChange](Pullback/UniverseChange.lean)

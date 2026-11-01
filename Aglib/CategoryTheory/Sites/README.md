@@ -65,3 +65,9 @@ retain the supplied original comparison before evaluating coefficients or
 cohomology classes. The [native roots section producer](../../AlgebraicGeometry/EtaleCohomology/Kummer/SectionPullback.lean)
 uses the original roots composition and equality-transport maps, with independent
 source and target Ext universes.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Continuous/SheafificationComparison](Continuous/SheafificationComparison.lean)

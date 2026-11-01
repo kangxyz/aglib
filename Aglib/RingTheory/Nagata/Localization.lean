@@ -8,7 +8,7 @@ module
 public import Aglib.RingTheory.Nagata.Basic
 public import Aglib.RingTheory.IntegralClosure.Localization
 public import Mathlib.RingTheory.Localization.Finiteness
-public import Mathlib.RingTheory.Localization.LocalizationLocalization
+public import Aglib.RingTheory.Localization.FractionRing
 public import Mathlib.RingTheory.Localization.Submodule
 
 /-!
@@ -27,25 +27,6 @@ complete-ring normalization theorem.
 
 universe u
 
-private theorem isFractionRing_of_domain_localization
-    {R S K : Type u} [CommRing R] [IsDomain R] [CommRing S] [IsDomain S]
-    [CommRing K] [Algebra R S] [Algebra R K] [Algebra S K]
-    [IsScalarTower R S K] (M : Submonoid R) [IsLocalization M S]
-    [IsFractionRing S K] : IsFractionRing R K := by
-  have hM : M ≤ nonZeroDivisors R := by
-    intro x hx
-    rw [mem_nonZeroDivisors_iff_ne_zero]
-    intro hzero
-    exact (IsLocalization.map_units S ⟨x, hx⟩).ne_zero (by simp [hzero])
-  have hinj := IsLocalization.injective S hM
-  have hsub : (nonZeroDivisors S).comap (algebraMap R S) = nonZeroDivisors R :=
-    le_antisymm (comap_nonZeroDivisors_le_of_injective hinj)
-      (nonZeroDivisors_le_comap_nonZeroDivisors_of_injective _ hinj)
-  change IsLocalization (nonZeroDivisors R) K
-  rw [← hsub]
-  exact IsLocalization.localization_localization_isLocalization_of_has_all_units
-    M (nonZeroDivisors S) K (fun _ hx => hx.mem_nonZeroDivisors)
-
 /-- A domain localization of a Japanese domain is Japanese, retaining
 the original coefficient maps and without assuming Noetherianity. -/
 theorem IsJapaneseRing.of_isLocalization
@@ -54,7 +35,7 @@ theorem IsJapaneseRing.of_isLocalization
     (h : IsJapaneseRing.{u, 0} R) : IsJapaneseRing.{u, 0} S := by
   intro L hL hFL hSL hT hfin
   let : IsFractionRing R (FractionRing S) :=
-    isFractionRing_of_domain_localization (R := R) (S := S) (K := FractionRing S) M
+    IsFractionRing.of_domain_localization (R := R) (S := S) (K := FractionRing S) M
   let : Algebra R L := ((algebraMap S L).comp (algebraMap R S)).toAlgebra
   let : IsScalarTower R S L := IsScalarTower.of_algebraMap_eq fun _ => rfl
   let : IsScalarTower R (FractionRing S) L :=

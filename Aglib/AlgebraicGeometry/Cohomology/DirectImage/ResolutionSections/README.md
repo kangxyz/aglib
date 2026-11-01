@@ -41,3 +41,9 @@ the later invertibility argument.
 The native section complexes, original cohomology equivalences and open,
 coefficient and presheaf comparisons are documented in the
 [owning direct-image guide](../README.md).
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Restriction](Restriction.lean)

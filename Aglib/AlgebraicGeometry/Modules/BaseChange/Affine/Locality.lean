@@ -67,23 +67,6 @@ def nativeRestrictionSquareIso (f : X ⟶ Y) (U : Y.Opens) :
     pullbackSquareIso (f ⁻¹ᵁ U).ι (f ∣_ U) f U.ι (morphismRestrict_ι f U).symm ≪≫
       Functor.isoWhiskerLeft _ (Scheme.Modules.restrictFunctorIsoPullback (f ⁻¹ᵁ U).ι).symm
 
-private theorem conjugateEquiv_localPullbackIso_inv (f : X ⟶ Y) (U : Y.Opens) :
-    conjugateEquiv (Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction f U)
-      ((Scheme.Modules.restrictAdjunction U.ι).comp
-        (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)))
-      (Scheme.Modules.Pullback.OpenRestriction.localPullbackIso f U).inv =
-        (Scheme.Modules.Pullback.OpenRestriction.pushforwardSquare f U).hom := by
-  simpa only [Scheme.Modules.Pullback.OpenRestriction.localPullbackIso,
-    Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction,
-    Adjunction.squareLeftIso, Adjunction.squareLeftAdjunction,
-    Adjunction.squareRightAdjunction] using
-    (conjugateEquiv_leftAdjointUniq_ofNatIsoRight_inv
-      ((Scheme.Modules.pullbackPushforwardAdjunction f).comp
-        (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι))
-      ((Scheme.Modules.restrictAdjunction U.ι).comp
-        (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)))
-      (Scheme.Modules.Pullback.OpenRestriction.pushforwardSquare f U))
-
 theorem nativeRestrictionSquareIso_eq (f : X ⟶ Y) (U : Y.Opens) :
     nativeRestrictionSquareIso f U = (Scheme.Modules.Pullback.OpenRestriction.localPullbackIso f
       U).symm := by
@@ -91,8 +74,10 @@ theorem nativeRestrictionSquareIso_eq (f : X ⟶ Y) (U : Y.Opens) :
   apply (conjugateEquiv (Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction f U)
     ((Scheme.Modules.restrictAdjunction U.ι).comp
       (Scheme.Modules.pullbackPushforwardAdjunction (f ∣_ U)))).injective
-  simp only [Iso.symm_hom]
-  rw [conjugateEquiv_localPullbackIso_inv]
+  simp only [Scheme.Modules.Pullback.OpenRestriction.localPullbackIso, Iso.symm_hom,
+    Adjunction.squareLeftIso, Adjunction.squareLeftAdjunction, Adjunction.squareRightAdjunction,
+    Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction]
+  rw [conjugateEquiv_leftAdjointUniq_ofNatIsoRight_inv]
   change conjugateEquiv ((Scheme.Modules.pullbackPushforwardAdjunction f).comp
     (Scheme.Modules.restrictAdjunction (f ⁻¹ᵁ U).ι))
     ((Scheme.Modules.restrictAdjunction U.ι).comp
@@ -200,9 +185,9 @@ theorem conjugateEquiv_nativeRestrictionSquareIso (f : X ⟶ Y) (U : Y.Opens) :
       (nativeRestrictionSquareIso f U).hom =
         (Scheme.Modules.Pullback.OpenRestriction.pushforwardSquare f U).hom := by
   rw [nativeRestrictionSquareIso_eq]
-  simpa only [Iso.symm_hom,
-    Scheme.Modules.Pullback.OpenRestriction.restrictedLeftAdjunction,
-    Adjunction.squareLeftAdjunction] using (conjugateEquiv_localPullbackIso_inv f U)
+  simp only [Scheme.Modules.Pullback.OpenRestriction.localPullbackIso, Iso.symm_hom,
+    Adjunction.squareLeftIso, Adjunction.squareLeftAdjunction, Adjunction.squareRightAdjunction]
+  exact conjugateEquiv_leftAdjointUniq_ofNatIsoRight_inv _ _ _
 
 theorem testOpenPastedSquare_eq (a : P ⟶ X) (b : P ⟶ T) (f : X ⟶ Y) (g : T ⟶ Y)
     (h : a ≫ f = b ≫ g) (U : T.Opens) :

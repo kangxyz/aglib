@@ -49,6 +49,7 @@ theorem canonicalAmbientSheafHomologyMap_eq_step (n : ℤ) :
       closedImmersionChartModelStepHomologyMap (Spec.map σ) J
         (Spec.map ψ) (Spec.map φ) (Spec.map τ) h n := by
   simp only [canonicalAmbientSheafHomologyMap, closedImmersionChartModelStepHomologyMap,
-    canonicalAmbientModelOpenIso_eq_modelOpenIso]
+    canonicalAmbientModelOpenIso_eq_modelOpenIso, HomologicalComplex.homologyCounitMap,
+    canonicalAmbientSourceSheafComplex]
 
 end AlgebraicGeometry.Scheme.Modules

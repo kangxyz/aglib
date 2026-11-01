@@ -96,3 +96,13 @@ restriction, unsigned boundary and kernel-of-sum laws also allow empty
 support. Composite levels, level one and genus zero are included. No
 splitting, free basis or canonical or Galois-equivariant coordinates are
 asserted.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteConstantAnnihilator](FiniteConstantAnnihilator.lean)
+- [GenericArtinEtalePoints](GenericArtinEtalePoints.lean)
+- [KummerResidueExtension](KummerResidueExtension.lean)
+- [KummerResidueNaturality](KummerResidueNaturality.lean)
+- [StructureComparison](StructureComparison.lean)

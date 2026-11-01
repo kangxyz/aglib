@@ -61,3 +61,9 @@ generic map and makes no finite-flat or finite-étale assertion.
 The [cohomology](Cohomology/README.md), [duality](Cohomology/Duality/Projective/Relative/README.md)
 and [descent](Descent/README.md) guides describe the completed prerequisites
 and their conditions; general singular-surface resolution remains open.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Sites/EtaleAffineBasis/RepresentativeSections](Sites/EtaleAffineBasis/RepresentativeSections.lean)

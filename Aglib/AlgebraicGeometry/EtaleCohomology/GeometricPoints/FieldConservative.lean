@@ -30,38 +30,64 @@ namespace AlgebraicGeometry.Scheme.EtaleCohomology
 
 attribute [local instance] hasSheafifyLarge
 
-variable (Ω : Type u) [Field Ω] [IsSepClosed Ω]
+variable (K : Type u) [Field K] {Ω : Type u} [Field Ω] [IsSepClosed Ω]
+  (η : Spec (.of Ω) ⟶ Spec (.of K))
 
-/-- The singleton original identity point, at the native coefficient universe. -/
-def fieldIdentityPointFamily :
+/-- A singleton chosen geometric point of a field, at the native value universe. -/
+def fieldGeometricPointFamily :
     ObjectProperty (GrothendieckTopology.Point.{u + 1}
-      (Spec (.of Ω)).smallEtaleTopology) :=
-  ObjectProperty.ofObj (fun _ : Unit => FibrewiseClosed.largePoint (𝟙 (Spec (.of Ω))))
+      (Spec (.of K)).smallEtaleTopology) :=
+  ObjectProperty.ofObj (fun _ : Unit => FibrewiseClosed.largePoint η)
 
-/-- The actual identity geometric point is conservative on the small etale site. -/
-theorem fieldIdentityPointFamily_isConservative :
-    (fieldIdentityPointFamily Ω).IsConservativeFamilyOfPoints := by
+/-- Any chosen separably closed geometric point of a field is conservative. -/
+theorem fieldGeometricPointFamily_isConservative :
+    (fieldGeometricPointFamily K η).IsConservativeFamilyOfPoints := by
   apply ObjectProperty.IsConservativeFamilyOfPoints.mk'
   intro U R hR
   obtain ⟨ι, V, a, rfl⟩ := R.exists_eq_ofArrows
   rw [ofArrows_mem_smallEtaleTopology_iff]
   ext s
   simp only [Set.mem_iUnion, Set.mem_range, Set.mem_univ, iff_true]
-  let η := 𝟙 (Spec (.of Ω))
   have hη : U.hom s = η default :=
-    @Subsingleton.elim (Spec (.of Ω)) inferInstance (U.hom s) (η default)
+    @Subsingleton.elim (Spec (.of K)) inferInstance (U.hom s) (η default)
   obtain ⟨l, hl, hls⟩ := exists_fac_of_etale_of_isSepClosed U.hom η s hη
   let t : (FibrewiseClosed.largePoint η).fiber.obj U := ULift.up (Over.homMk l hl)
   obtain ⟨W, g, ⟨Z, k, _, ⟨i⟩, rfl⟩, y, hy⟩ :=
     hR ⟨FibrewiseClosed.largePoint η, ⟨()⟩⟩ t
   have hraw := congrArg ULift.down hy
   have hleft := congrArg
-    (fun q : Over.mk η ⟶ (Scheme.Etale.forget (Spec (.of Ω))).obj U => q.left) hraw
+    (fun q : Over.mk η ⟶ (Scheme.Etale.forget (Spec (.of K))).obj U => q.left) hraw
   have heq : (y.down.left ≫ k.left) ≫ (a i).left = l := by
     change y.down.left ≫ (k.left ≫ (a i).left) = l at hleft
     exact (Category.assoc _ _ _).trans hleft
   refine ⟨i, (y.down.left ≫ k.left) (default : Spec (.of Ω)), ?_⟩
   exact (congrArg (fun q : Spec (.of Ω) ⟶ U.left => q default) heq).trans hls
+
+/-- The original stalk at a chosen separably closed geometric point detects
+isomorphisms of abelian sheaves over any field. -/
+theorem isIso_of_field_geometricStalk
+    {F G : AbelianSheaf.{u, u + 1} (Spec (.of K))} (a : F ⟶ G)
+    [IsIso ((pointSmallEtale η).sheafFiber.map a)] : IsIso a := by
+  have hlarge : IsIso ((FibrewiseClosed.largePoint η).sheafFiber.map a) :=
+    (NatIso.isIso_map_iff (StalkUniverse.sheafFiberIso η) a).mpr inferInstance
+  rw [((fieldGeometricPointFamily_isConservative K η).jointlyReflectIsomorphisms
+    AddCommGrpCat.{u + 1}).isIso_iff]
+  rintro ⟨Ψ, hΨ⟩
+  obtain ⟨j⟩ := hΨ
+  exact hlarge
+
+variable (Ω : Type u) [Field Ω] [IsSepClosed Ω]
+
+/-- The singleton original identity point, at the native coefficient universe. -/
+def fieldIdentityPointFamily :
+    ObjectProperty (GrothendieckTopology.Point.{u + 1}
+      (Spec (.of Ω)).smallEtaleTopology) :=
+  fieldGeometricPointFamily Ω (𝟙 (Spec (.of Ω)))
+
+/-- The actual identity geometric point is conservative on the small etale site. -/
+theorem fieldIdentityPointFamily_isConservative :
+    (fieldIdentityPointFamily Ω).IsConservativeFamilyOfPoints :=
+  fieldGeometricPointFamily_isConservative Ω (𝟙 (Spec (.of Ω)))
 
 /-- Original global sections over a separably closed field detect isomorphisms
 of actual abelian sheaves, through the original terminal germs. -/
@@ -78,12 +104,7 @@ theorem isIso_of_field_globalSections
     let : IsIso (a.hom.app (op (etaleTerminal (Spec (.of Ω))))) :=
       inferInstanceAs (IsIso ((globalSections (Spec (.of Ω))).map a))
     infer_instance
-  have hlarge : IsIso ((FibrewiseClosed.largePoint (𝟙 (Spec (.of Ω)))).sheafFiber.map a) :=
-    (NatIso.isIso_map_iff (StalkUniverse.sheafFiberIso (𝟙 (Spec (.of Ω)))) a).mpr hraw
-  rw [((fieldIdentityPointFamily_isConservative Ω).jointlyReflectIsomorphisms
-    AddCommGrpCat.{u + 1}).isIso_iff]
-  rintro ⟨Ψ, hΨ⟩
-  obtain ⟨j⟩ := hΨ
-  exact hlarge
+  let := hraw
+  exact isIso_of_field_geometricStalk Ω (𝟙 (Spec (.of Ω))) a
 
 end AlgebraicGeometry.Scheme.EtaleCohomology

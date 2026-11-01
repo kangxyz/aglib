@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Dual
+public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.AffineSections
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Pullback
 public import Aglib.AlgebraicGeometry.Modules.LocallyFree.Basic
 public import Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Tensor
@@ -79,11 +80,6 @@ def globalSectionsTensorIso (M N : (Spec R).Modules) [M.IsQuasicoherent] [N.IsQu
   moduleSpecΓFunctor.mapIso (tensorSheafIso (Spec R) (asIso M.fromTildeΓ).symm
       (asIso N.fromTildeΓ).symm ≪≫ tildeTensorIso _ _) ≪≫
     (tilde.toTildeΓNatIso.app (moduleSpecΓFunctor.obj M ⊗ moduleSpecΓFunctor.obj N)).symm
-
-/-- Global sections of the structure sheaf of `Spec R` are `R`. -/
-def globalSectionsUnitIso :
-    moduleSpecΓFunctor.obj (SheafOfModules.unit (Spec R).ringCatSheaf) ≅ ModuleCat.of R R :=
-  (tilde.toTildeΓNatIso.app (ModuleCat.of R R)).symm
 
 /-- The global sections of a line bundle on `Spec R` form an invertible `R`-module. -/
 instance invertible_globalSections (L : LineBundle (Spec R)) :

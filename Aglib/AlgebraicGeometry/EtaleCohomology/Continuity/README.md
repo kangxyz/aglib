@@ -139,3 +139,12 @@ naturality and original degree-zero normalization. The
 [proper family](../Proper/README.md) uses these inputs for the original locally
 torsion higher and D+ exchange; properness and torsion remain conditions of
 those endpoints.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteTypeArrowCoefficients](FiniteTypeArrowCoefficients.lean)
+- [GenericCoverCoefficientZeroSpreading](GenericCoverCoefficientZeroSpreading.lean)
+- [GenericCoverZeroSpreading](GenericCoverZeroSpreading.lean)
+- [PrincipalLocalizationInjectiveAcyclic](PrincipalLocalizationInjectiveAcyclic.lean)

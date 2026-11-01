@@ -155,3 +155,9 @@ is local on `T` through arbitrary cartesian squares over open immersions
 (`relativeFlat_of_forall_isPullback`), with the point-lifting step
 `exists_apply_eq_of_isPullback`; the counterpart of `relativeFlat_of_isPullback_of_forall_exists`
 ([LocalOnBase](LocalOnBase.lean)) for modules not pulled back from a base.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [LocallyFree](LocallyFree.lean)

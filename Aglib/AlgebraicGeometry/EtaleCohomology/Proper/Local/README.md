@@ -79,3 +79,9 @@ packet manifest (SHA-256
 `4bcd68942cb8b6cf1d759651462f437a320cf61cb6650640a5a2eceaa96d476a`). The
 accepted scope leaves the global finite-embedding supplier and the general
 assembly of proper base change open.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [FiniteTests](FiniteTests.lean)

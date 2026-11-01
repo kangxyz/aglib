@@ -45,3 +45,12 @@ are retained. This construction requires complementary open/closed immersions,
 not boundedness, torsion, finite cohomological dimension, or proper base change.
 It does not assert compactification independence or the remaining exceptional
 base-change and composition calculus.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ClosedSummandDetection](ClosedSummandDetection.lean)
+- [ModuleInjectiveRetract](ModuleInjectiveRetract.lean)
+- [OpenInjectiveHigherVanishing](OpenInjectiveHigherVanishing.lean)
+- [OpenSummandDetection](OpenSummandDetection.lean)

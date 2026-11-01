@@ -38,3 +38,9 @@ retain the original Picard group, quotient and boundary. Surjectivity is not ass
 local spectra through this same comparison. Thus original `H1(gm(Spec R))`
 is a subsingleton for any local commutative ring, in particular for a field.
 It introduces no replacement coefficient or cohomology group.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [DivisibilityReflection](DivisibilityReflection.lean)

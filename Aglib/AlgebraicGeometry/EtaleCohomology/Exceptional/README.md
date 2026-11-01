@@ -87,3 +87,9 @@ first/third vertex comparisons with the original open counit, closed unit
 and mapping-cone connecting map. Full-unbounded localization gains no
 lower-bound or finite-cohomological-dimension premise. These statements
 do not assert an additional chosen exceptional coherence calculus.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Open/ModuleStalkInside](Open/ModuleStalkInside.lean)

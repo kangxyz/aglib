@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.Finiteness
-public import Aglib.AlgebraicGeometry.Cohomology.Exact.Euler
+public import Aglib.AlgebraicGeometry.Cohomology.Exact.AlternatingEuler
 public import Mathlib.Algebra.BigOperators.Finprod
 public import Aglib.AlgebraicGeometry.Modules.StructureSheaf.Hom
 
@@ -42,24 +42,6 @@ open AlgebraicGeometry.Scheme.Cohomology.QuotientEuler.ExactDimensions
 universe u
 
 namespace AlgebraicGeometry.Scheme.Cohomology
-
-/-- Alternating sums along a long exact sequence telescope: if `b q = rf q + rg q`,
-`c q = rg q + rd q`, `a (q + 1) = rd q + rf (q + 1)` and `a 0 = rf 0`, the alternating sum
-of `b - a - c` up to degree `M` is `-(-1)^M rd M`. -/
-theorem sum_range_alternating_of_long_exact (a b c rf rg rd : ℕ → ℕ)
-    (h0 : a 0 = rf 0) (ha : ∀ q, a (q + 1) = rd q + rf (q + 1))
-    (hb : ∀ q, b q = rf q + rg q) (hc : ∀ q, c q = rg q + rd q) (M : ℕ) :
-    ∑ q ∈ Finset.range (M + 1), (-1 : ℤ) ^ q * ((b q : ℤ) - a q - c q) =
-      -((-1 : ℤ) ^ M * rd M) := by
-  induction M with
-  | zero =>
-    rw [Finset.sum_range_one, hb 0, h0, hc 0]
-    push_cast
-    ring
-  | succ M ih =>
-    rw [Finset.sum_range_succ, ih, hb (M + 1), ha M, hc (M + 1)]
-    push_cast
-    ring
 
 variable (k : Type u) [Field k] (ι : Type u)
 
@@ -144,59 +126,16 @@ theorem projectiveEulerChar_add_of_shortExact (n : ℕ) (e : ι ≃ Fin (n + 1))
     (h₃ : affineLocallyFiniteType (ProjectiveSpace k ι) S.X₃) :
     projectiveEulerChar k ι S.X₂ =
       projectiveEulerChar k ι S.X₁ + projectiveEulerChar k ι S.X₃ := by
-  let X := ProjectiveSpace k ι
-  let α := projectiveConstants k ι
   let : S.X₁.IsQuasicoherent := quasicoherent_of_affineCharts _ (fun A j _ => (h₁ A j).1)
   let : S.X₂.IsQuasicoherent := quasicoherent_of_affineCharts _ (fun A j _ => (h₂ A j).1)
   let : S.X₃.IsQuasicoherent := quasicoherent_of_affineCharts _ (fun A j _ => (h₃ A j).1)
-  have := hS.mono_f
   rw [projectiveEulerChar_eq_sum_range k ι n e S.X₁, projectiveEulerChar_eq_sum_range k ι n e S.X₂,
     projectiveEulerChar_eq_sum_range k ι n e S.X₃]
-  let rf : ℕ → ℕ := fun q => by
-    letI := moduleCohomologyModuleOfHom X α S.X₁ q
-    letI := moduleCohomologyModuleOfHom X α S.X₂ q
-    exact Module.finrank k (LinearMap.range (moduleCohomologyMapOfHom X α S.f q))
-  let rg : ℕ → ℕ := fun q => by
-    letI := moduleCohomologyModuleOfHom X α S.X₂ q
-    letI := moduleCohomologyModuleOfHom X α S.X₃ q
-    exact Module.finrank k (LinearMap.range (moduleCohomologyMapOfHom X α S.g q))
-  let rd : ℕ → ℕ := fun q => by
-    letI := moduleCohomologyModuleOfHom X α S.X₃ q
-    letI := moduleCohomologyModuleOfHom X α S.X₁ (q + 1)
-    exact Module.finrank k (LinearMap.range (moduleCohomologyConnectingOfHom X α S hS q))
-  have h0 : projectiveCohomologyDim k ι S.X₁ 0 = rf 0 := by
-    let := moduleCohomologyModuleOfHom X α S.X₁ 0
-    let := moduleCohomologyModuleOfHom X α S.X₂ 0
-    exact (range_finrank_of_injective _ (moduleH0MapOfHom_injective X α S.f)).symm
-  have ha (q : ℕ) : projectiveCohomologyDim k ι S.X₁ (q + 1) = rd q + rf (q + 1) := by
-    let := moduleCohomologyModuleOfHom X α S.X₃ q
-    let := moduleCohomologyModuleOfHom X α S.X₁ (q + 1)
-    let := moduleCohomologyModuleOfHom X α S.X₂ (q + 1)
-    have := projectiveCohomology_finite k ι n e S.X₁ h₁ (q + 1)
-    have h := exact_dimensions _ _ (moduleCohomologyConnectingOfHom_exact_right X α S hS q)
-    exact h.symm.trans (Nat.add_comm _ _)
-  have hb (q : ℕ) : projectiveCohomologyDim k ι S.X₂ q = rf q + rg q := by
-    let := moduleCohomologyModuleOfHom X α S.X₁ q
-    let := moduleCohomologyModuleOfHom X α S.X₂ q
-    let := moduleCohomologyModuleOfHom X α S.X₃ q
-    have := projectiveCohomology_finite k ι n e S.X₂ h₂ q
-    have h := exact_dimensions _ _ (moduleCohomologyMapOfHom_exact X α S hS q)
-    exact h.symm.trans (Nat.add_comm _ _)
-  have hc (q : ℕ) : projectiveCohomologyDim k ι S.X₃ q = rg q + rd q := by
-    let := moduleCohomologyModuleOfHom X α S.X₂ q
-    let := moduleCohomologyModuleOfHom X α S.X₃ q
-    let := moduleCohomologyModuleOfHom X α S.X₁ (q + 1)
-    have := projectiveCohomology_finite k ι n e S.X₃ h₃ q
-    have h := exact_dimensions _ _ (moduleCohomologyConnectingOfHom_exact_left X α S hS q)
-    exact h.symm.trans (Nat.add_comm _ _)
-  have hrd : rd n = 0 := by
-    have h := ha n
-    rw [projectiveCohomologyDim_eq_zero_of_lt k ι n e S.X₁ (Nat.lt_succ_self n)] at h
-    omega
-  have key := sum_range_alternating_of_long_exact _ _ _ rf rg rd h0 ha hb hc n
-  rw [hrd, Nat.cast_zero, mul_zero, neg_zero] at key
-  simp only [mul_sub, Finset.sum_sub_distrib] at key
-  linarith
+  exact moduleCohomology_alternatingSum_add (ProjectiveSpace k ι) (projectiveConstants k ι) S hS
+    (projectiveCohomology_finite k ι n e S.X₁ h₁)
+    (projectiveCohomology_finite k ι n e S.X₂ h₂)
+    (projectiveCohomology_finite k ι n e S.X₃ h₃) n
+    (projectiveCohomology_subsingleton_of_gt k ι n e S.X₁ (n + 1) (Nat.lt_succ_self n))
 
 /-! ### Dimension comparisons -/
 

@@ -8,6 +8,8 @@ module
 public import Mathlib.Algebra.Category.Grp.Limits
 public import Mathlib.CategoryTheory.Sites.Abelian
 public import Mathlib.CategoryTheory.Limits.Shapes.Kernels
+public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Kernels
+public import Mathlib.CategoryTheory.Sites.Limits
 
 /-!
 # Actual sheaf kernels from component lifts
@@ -30,6 +32,51 @@ namespace CategoryTheory.Sheaf
 universe u v w
 variable {C : Type u} [Category.{v} C] {J : GrothendieckTopology C}
 variable {L M N : Sheaf J AddCommGrpCat.{w}}
+
+/-- Evaluation of the actual categorical sheaf kernel, through the native
+preserved-kernel comparison and the native additive-group kernel. -/
+def kernelComponentIso (p : M ⟶ N) (U : Cᵒᵖ) :
+    (kernel p).obj.obj U ≅ AddCommGrpCat.of (p.hom.app U).hom.ker :=
+  PreservesKernel.iso
+      (sheafToPresheaf J AddCommGrpCat.{w} ⋙ (evaluation Cᵒᵖ AddCommGrpCat.{w}).obj U) p ≪≫
+    AddCommGrpCat.kernelIsoKer (p.hom.app U)
+
+/-- The comparison retains the original categorical kernel inclusion. -/
+@[reassoc]
+theorem kernelComponentIso_hom_comp_subtype (p : M ⟶ N) (U : Cᵒᵖ) :
+    (kernelComponentIso p U).hom ≫
+        AddCommGrpCat.ofHom (AddSubgroup.subtype (p.hom.app U).hom.ker) =
+      (kernel.ι p).hom.app U := by
+  simp only [kernelComponentIso, Iso.trans_hom, Category.assoc,
+    AddCommGrpCat.kernelIsoKer_hom_comp_subtype, PreservesKernel.iso_hom]
+  exact kernelComparison_comp_ι p
+    (sheafToPresheaf J AddCommGrpCat.{w} ⋙ (evaluation Cᵒᵖ AddCommGrpCat.{w}).obj U)
+
+/-- The actual component is additively equivalent to the concrete kernel values,
+without constructing another presheaf or sheaf. -/
+def kernelComponentEquiv (p : M ⟶ N) (U : Cᵒᵖ) :
+    (kernel p).obj.obj U ≃+ (p.hom.app U).hom.ker :=
+  (kernelComponentIso p U).addCommGroupIsoToAddEquiv
+
+/-- Forward evaluation is exactly the original kernel inclusion. -/
+theorem kernelComponentEquiv_val (p : M ⟶ N) (U : Cᵒᵖ)
+    (x : (kernel p).obj.obj U) :
+    (kernelComponentEquiv p U x).val = (kernel.ι p).hom.app U x :=
+  ConcreteCategory.congr_hom (kernelComponentIso_hom_comp_subtype p U) x
+
+/-- Lifting a concrete kernel value retains that original section. -/
+theorem kernelComponentEquiv_symm_ι (p : M ⟶ N) (U : Cᵒᵖ)
+    (x : (p.hom.app U).hom.ker) :
+    (kernel.ι p).hom.app U ((kernelComponentEquiv p U).symm x) = x.val := by
+  rw [← kernelComponentEquiv_val, AddEquiv.apply_symm_apply]
+
+/-- Restriction of actual kernel sections is the original coefficient restriction. -/
+theorem kernelComponentEquiv_naturality (p : M ⟶ N) {U V : Cᵒᵖ} (f : U ⟶ V)
+    (x : (kernel p).obj.obj U) :
+    (kernelComponentEquiv p V ((kernel p).obj.map f x)).val =
+      M.obj.map f (kernelComponentEquiv p U x).val := by
+  rw [kernelComponentEquiv_val, kernelComponentEquiv_val]
+  exact ConcreteCategory.congr_hom ((kernel.ι p).hom.naturality f) x
 
 /-- Injectivity of the original component maps proves monicity of the same sheaf map. -/
 theorem mono_of_component_injective (i : L ⟶ M)

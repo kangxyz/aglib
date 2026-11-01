@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Projective
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.SeparatedFieldComparison
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.HilbertPolynomial.GeneralHyperplane
 public import Aglib.AlgebraicGeometry.ProjectiveSpace.Tensor.Equivalence
 public import Aglib.AlgebraicGeometry.Modules.Invertible.Affine
@@ -105,8 +106,8 @@ theorem embeddedFiberTwistDim_zero_le_add_one [IsClosedImmersion i] (N : ℕ)
     Invertible.lineBundle_isQuasicoherent ⟨_, isLocallyRankOne_pulledTwist _ n L.property⟩
   have := hq m
   have := hq (m + 1)
-  rw [← embeddedFiberTwistDim_fieldBaseChange i k σ L.val m 0,
-    ← embeddedFiberTwistDim_fieldBaseChange i k σ L.val (m + 1) 0]
+  rw [← embeddedFiberTwistDim_fieldBaseChange_of_isSeparated i k σ L.val m 0,
+    ← embeddedFiberTwistDim_fieldBaseChange_of_isSeparated i k σ L.val (m + 1) 0]
   have hL' : affineLocallyFiniteType _
       ((Scheme.Modules.pullback (fieldExtensionBaseChange i k σ)).obj L.val) :=
     affineLocallyFiniteType_of_isLocallyRankOne

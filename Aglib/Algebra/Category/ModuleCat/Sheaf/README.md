@@ -103,3 +103,9 @@ The internal-Hom source functor and source-complex construction give original
 short exactness in the source into an actual injective target and its
 resolution terms. Their availability does not itself prove source-coefficient
 or source-connecting compatibility of the Ext/cohomology comparison.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [InternalHom/BidualNaturality](InternalHom/BidualNaturality.lean)

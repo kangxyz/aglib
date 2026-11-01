@@ -7,3 +7,23 @@
 The lower inputs have their broader mathematical owners: [affine normality](../../Properties/Normal/Affine.lean), [integral going-down stalk dimensions](../../Stalk/IntegralExtension.lean), [function-field maps](../../FunctionField/README.md), and [finite-etale integral closure](../../../RingTheory/IntegralClosure/FiniteEtale.lean). Generic restriction full faithfulness is in [Morphisms/FiniteEtale/GenericFiber](../../Morphisms/FiniteEtale/GenericFiber.lean).
 
 Each source leaf records the frozen R5 source identity. Source correspondence and wrapper-body substitution do not claim native elaboration or independent proof acceptance.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [BaseLocalizationSection](BaseLocalizationSection.lean)
+- [FlatPreimmersionEtale](FlatPreimmersionEtale.lean)
+- [FullOpenRecovery](FullOpenRecovery.lean)
+- [GaloisExtension](GaloisExtension.lean)
+- [GaloisRestrictedExtension](GaloisRestrictedExtension.lean)
+- [LocalFactorRootChart](LocalFactorRootChart.lean)
+- [ParameterPointTransport](ParameterPointTransport.lean)
+- [PointComponentLocalization](PointComponentLocalization.lean)
+- [RegularBase](RegularBase.lean)
+- [RootBaseChangedComponentChart](RootBaseChangedComponentChart.lean)
+- [RootCoverLift](RootCoverLift.lean)
+- [RootNativePoint](RootNativePoint.lean)
+- [RootPointedRefinement](RootPointedRefinement.lean)
+- [SmoothSectionPurityStep](SmoothSectionPurityStep.lean)
+- [StalkBaseChange](StalkBaseChange.lean)

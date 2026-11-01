@@ -164,3 +164,12 @@ the actual generic fibre and relative normalization to construct a curve, a
 finite dominant map, an open immersion and the original cartesian square.
 For a finite closed complement, including the empty set, the actual inverse
 image is finite and closed. Étaleness at the boundary is not asserted.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [Abel/BoundedFamily/RepresentedMorphism](Abel/BoundedFamily/RepresentedMorphism.lean)
+- [Divisors/FieldExtensionBoundary](Divisors/FieldExtensionBoundary.lean)
+- [FiniteEtaleCompactification](FiniteEtaleCompactification.lean)
+- [FiniteNormalCompactification](FiniteNormalCompactification.lean)

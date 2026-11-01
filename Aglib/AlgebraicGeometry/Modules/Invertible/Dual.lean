@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Aglib.AlgebraicGeometry.Modules.Invertible.TensorAssociator
-public import Aglib.AlgebraicGeometry.Modules.InternalHom
+public import Aglib.AlgebraicGeometry.Modules.InternalHom.Dual
 public import Aglib.Algebra.Category.ModuleCat.Sheaf.InternalHom.Evaluation
 
 /-!
@@ -34,10 +34,6 @@ open AlgebraicGeometry CategoryTheory Opposite TopologicalSpace
 namespace AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 variable (X : Scheme.{u})
-/-- The structure-linear internal-Hom sheaf from M to the structure-module unit. -/
-def dualSheaf (M : SheafOfModules.{u} X.ringCatSheaf) : SheafOfModules.{u} X.ringCatSheaf :=
-  InternalHom.sheaf X M (SheafOfModules.unit X.ringCatSheaf)
-
 /-- The local trivialization of the dual induced by the supplied trivialization of M. -/
 def dualLocalIso (M : SheafOfModules.{u} X.ringCatSheaf) (U : X.Opens)
     (e : M.over U ≅ SheafOfModules.unit (X.ringCatSheaf.over U)) :

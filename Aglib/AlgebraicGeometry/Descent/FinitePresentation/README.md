@@ -69,3 +69,9 @@ eventual closedness and the two forms of separatedness descent.
 The resulting model does not supply a projective-line morphism, overlap recovery
 equalities, or an `IsScalarTower D C R` instance. The cover existence is the
 explicit output `Nonempty (Scheme.AffineBinaryCover M.X)`.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [MorphismSections](MorphismSections.lean)

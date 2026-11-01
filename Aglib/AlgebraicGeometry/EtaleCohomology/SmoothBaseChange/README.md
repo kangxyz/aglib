@@ -65,3 +65,10 @@ curve effacement, low-degree curve invariance, and tame-cover extension.
 The intended torsion orders are invertible on the entire base, not merely at
 the coefficient point. The étale theorem makes no assertion about this missing
 positive-relative-dimension argument or about an unbounded derived comparison.
+
+## Additional source entry points
+
+Each source states the exact hypotheses, maps, and realization bounds of its interfaces.
+
+- [ModuleInjectiveTests](ModuleInjectiveTests.lean)
+- [OrdinaryCartesian](OrdinaryCartesian.lean)
