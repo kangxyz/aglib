@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Basic
 public import Aglib.AlgebraicGeometry.Cohomology.Projective.EmbeddedFibers.Projective
 public import Aglib.AlgebraicGeometry.Cohomology.Fibers.BaseChange
 public import Aglib.AlgebraicGeometry.Cohomology.Proper.Semicontinuity

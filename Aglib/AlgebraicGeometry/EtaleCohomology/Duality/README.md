@@ -38,8 +38,8 @@ smooth proper geometrically connected curve over an algebraically closed field,
 positive invertible `n` and finite closed complement. It compares the original
 module/abelian and proper traces and gives the smaller-open square. The
 normalization is Aglib's Kummer boundary; SGA torsor, connecting and cup/Yoneda
-sign comparisons remain open. Finite-pushforward compatibility, sheaf-dual
-comparison, degree-one and general-coefficient perfectness, general purity and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
+sign comparisons remain open. All-degree/open finite-pushforward compatibility, sheaf-dual
+comparison, general degree-one and open perfectness, general purity and local cohomology remain open. It serves Poincaré duality for curves (Milne LEC Thm 14.7, p. 93, and Thm 14.20, p. 101).
 
 [TracePairing](TracePairing.lean) composes the original linear Yoneda pairing
 with normalized module trace. Its `moduleDualityMap` and
@@ -56,9 +56,11 @@ The curve is smooth proper geometrically connected over an algebraically closed
 field; the open immersion has finite closed complement, possibly empty; `n` is
 positive and invertible, including composite levels and one, with the displayed
 global-section level conditions and independent Ext universes. The public
-statement chooses no basis or root. Degree-one constant perfectness, general
-finite locally constant coefficients, general purity, finite-pushforward compatibility
-and SGA torsor, connecting, cup/Yoneda and Weil sign comparisons remain open.
+statement chooses no basis or root. Proper unit degree-one perfectness and the
+proper degree-zero transpose for finite locally constant coefficients are supplied
+below. General degree-one and open perfectness, general purity, all-degree/open
+finite-pushforward compatibility and SGA torsor, connecting, cup/Yoneda and Weil
+sign comparisons remain open.
 
 [PointPurity](PointPurity.lean) proves the original supported module Ext
 vanishes in degrees zero, one and above two for a closed point of an open in
@@ -100,9 +102,8 @@ Its degree-zero diagram chases retain their stated component-map hypotheses
 and the actual compact `C³(K) = 0` premise where used.
 [ConstantOnePerfectness](ConstantOnePerfectness.lean) supplies original
 class-killing covers, the conditional degree-one injectivity chase and proper
-degree-one finiteness/equal-order inputs. Unconditional proper degree-zero
-and degree-one perfectness still require the actual finite-pushforward trace
-comparison and pairing square.
+degree-one finiteness/equal-order inputs. The finite-pushforward trace comparison and the degree-two/zero pairing
+square supply the proper degree-zero and unit degree-one conclusions below.
 
 [PointRemoval](PointRemoval.lean) proves the original trace pairing perfect
 in compact degrees `r ≤ 2` for the actual pushed-forward unit at one
@@ -125,5 +126,11 @@ for the stated finite étale restriction and original finite dominant curve
 completion. [LocallyConstantPerfectness](LocallyConstantPerfectness.lean)
 proves compact Ext vanishes above degree two for actual finite locally
 constant coefficients under its displayed curve, complement and positive
-invertible-level hypotheses. These results do not assert the all-degree
-finite-pairing square or general finite-locally-constant perfectness.
+invertible-level hypotheses. For every proper finite locally constant
+coefficient it proves the original degree-zero transpose bijective, and it
+proves both original proper degree-one pairing adjoints for the unit. The
+curve is smooth and geometrically connected over an algebraically closed
+field; the positive level is invertible in the field and globally. Composite
+levels and level one are included, with independent Ext universes. General
+finite-locally-constant degree-one perfectness and the all-degree/open
+finite-pairing square remain open.
